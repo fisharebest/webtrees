@@ -220,11 +220,9 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
-     * @param Tree $tree
-     *
      * @return array<string,string>
      */
-    public function subtags(Tree $tree): array
+    public function subtags(): array
     {
         return $this->subtags;
     }

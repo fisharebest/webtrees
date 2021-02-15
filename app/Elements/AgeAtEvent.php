@@ -39,7 +39,7 @@ use function strtoupper;
  * MM        = number of months
  * DDD       = number of days
  * CHILD     = age < 8 years
- * INFANT    = age<1year
+ * INFANT    = age <1year
  * STILLBORN = died just prior, at, or near birth, 0 years
  */
 class AgeAtEvent extends AbstractElement
@@ -49,15 +49,12 @@ class AgeAtEvent extends AbstractElement
     public function canonical(string $value): string
     {
         $value = parent::canonical($value);
-
         $upper = strtoupper($value);
 
         if ($upper === 'CHILD' || $upper === 'INFANT' || $upper === 'STILLBORN') {
-            $value = $upper;
-        } else {
-            $value = strtolower($value);
+            return $upper;
         }
 
-        return $value;
+        return strtolower($value);
     }
 }

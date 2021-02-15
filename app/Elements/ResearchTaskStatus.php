@@ -19,46 +19,38 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
-use function e;
-use function rawurlencode;
-use function strtoupper;
-
 /**
- * A custom field used in _LOC records
+ * <TYPE_OF_TODO>:= Status, by values [ open | completed | auto ]
+ * ("auto" = created by the program)
  */
-class GovId extends AbstractElement
+class ResearchTaskStatus extends AbstractElement
 {
-    protected const EXTERNAL_URL = 'https://gov.genealogy.net/item/show/';
-
-    protected const MAXIMUM_LENGTH = 12;
-
     /**
-     * Convert a value to a canonical form.
+     * Create a default value for this element.
      *
-     * @param string $value
+     * @param Tree $tree
      *
      * @return string
      */
-    public function canonical(string $value): string
+    public function default(Tree $tree): string
     {
-        return strtoupper(parent::canonical($value));
+        return '1';
     }
-
     /**
-     * Display the value of this type of element.
+     * A list of controlled values for this element
      *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
+     * @return array<int|string,string>
      */
-    public function value(string $value, Tree $tree): string
+    public function values(): array
     {
-        $canonical = $this->canonical($value);
-        $url       = static::EXTERNAL_URL . rawurlencode($canonical);
-
-        return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
+        return [
+            ''          => '',
+            'open'      => I18N::translate('Research'),
+            'completed' => I18N::translate('Correspondence'),
+            'auto'      => I18N::translate('Other'),
+        ];
     }
 }

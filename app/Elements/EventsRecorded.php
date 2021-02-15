@@ -28,7 +28,9 @@ use Ramsey\Uuid\Uuid;
 use function array_map;
 use function explode;
 use function implode;
+use function strpos;
 use function strtoupper;
+use function trim;
 use function view;
 
 /**
@@ -101,7 +103,13 @@ class EventsRecorded extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtoupper(strtr(parent::canonical($value), [' ' => '']));
+        $value = strtoupper(strtr(parent::canonical($value), [' ' => ',']));
+
+        while (strpos($value, ',,') !== false) {
+            $value = strtr($value, [',,' => ',']);
+        }
+
+        return trim($value, ',');
     }
 
     /**
@@ -163,7 +171,7 @@ class EventsRecorded extends AbstractElement
                 }
             }
 
-            return $tag;
+            return e($tag);
         }, $tags);
 
         return implode(I18N::$list_separator, $events);

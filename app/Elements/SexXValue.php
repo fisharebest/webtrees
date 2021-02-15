@@ -29,7 +29,7 @@ use function view;
  * A modification to the standard SEX record, which allows 'X'.
  * Gedcom-L defines this as 'Intersex'.  We use the more general term 'Other'.
  */
-class SexXValue extends AbstractElement
+class SexXValue extends SexValue
 {
     /**
      * A list of controlled values for this element

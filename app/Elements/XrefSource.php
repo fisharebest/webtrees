@@ -44,12 +44,6 @@ class XrefSource extends AbstractXrefElement
         'QUAY' => '0:1',
     ];
 
-    protected const ABRIDGED_SUBTAGS = [
-        'PAGE' => '0:1',
-        'DATA' => '0:1',
-        'OBJE' => '0:M',
-    ];
-
     /**
      * An edit control for this data.
      *
@@ -79,20 +73,6 @@ class XrefSource extends AbstractXrefElement
             '</div>' .
             $select .
             '</div>';
-    }
-
-    /**
-     * @param Tree $tree
-     *
-     * @return array<string,string>
-     */
-    public function subtags(Tree $tree): array
-    {
-        if ($tree->getPreference('FULL_SOURCES') === '1') {
-            return static::SUBTAGS;
-        }
-
-        return static::ABRIDGED_SUBTAGS;
     }
 
     /**

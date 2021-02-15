@@ -19,26 +19,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\TestCase;
-
 /**
  * Test harness for the class DateValue
  *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\DateValue
  */
-class DateValueTest extends TestCase
+class DateValueTest extends AbstractElementTest
 {
+    /**
+     * Standard tests for all elements.
+     */
+    public static function setupBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+
+        static::$element = new DateValue('label');
+    }
+
     /**
      * @return void
      */
-    public function testEscape(): void
+    public function testEscapeAtSigns(): void
     {
-        $element = new DateValue('');
-
         self::assertSame(
-            '@#DJULAIN@ 44 B.C. INT (says test@@example.com)',
-            $element->escape('@#DJULAIN@ 44 B.C. INT (says test@example.com)')
+            '@#DJULIAN@ 44 B.C. INT (says test@@example.com)',
+            static::$element->escape('@#DJULIAN@ 44 B.C. INT (says test@example.com)')
         );
     }
 }

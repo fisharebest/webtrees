@@ -37,7 +37,7 @@ class FileName extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        // Don't change spaces. " Foo  bar.jpeg" is a valid file name!
-        return $value;
+        // Leading/trailing/multiple spaces are valid in filenames.
+        return strtr($value, ["\t" => '', "\r" => '', "\n" => '']);
     }
 }

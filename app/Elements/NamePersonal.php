@@ -103,11 +103,9 @@ class NamePersonal extends AbstractElement
     }
 
     /**
-     * @param Tree $tree
-     *
      * @return array<string,string>
      */
-    public function subtags(Tree $tree): array
+    public function subtags(): array
     {
         $language = I18N::languageTag();
 

@@ -27,18 +27,26 @@ use Fisharebest\Webtrees\TestCase;
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\LanguageId
  */
-class LanguageIdTest extends TestCase
+class LanguageIdTest extends AbstractElementTest
 {
+    /**
+     * Standard tests for all elements.
+     */
+    public static function setupBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+
+        static::$element = new LanguageId('label');
+    }
+
     /**
      * @return void
      */
     public function testCanonical(): void
     {
-        $element = new LanguageId('');
-
-        self::assertSame('English', $element->canonical("\t English\t "));
-        self::assertSame('Klingon', $element->canonical('kLiNgOn'));
-        self::assertSame('Anglo-Saxon', $element->canonical('anglo-saxon'));
-        self::assertSame('Catalan_Spn', $element->canonical('CATALAN_SPN'));
+        self::assertSame('English', self::$element->canonical("\t English\t "));
+        self::assertSame('Klingon', self::$element->canonical('kLiNgOn'));
+        self::assertSame('Anglo-Saxon', self::$element->canonical('anglo-saxon'));
+        self::assertSame('Catalan_Spn', self::$element->canonical('CATALAN_SPN'));
     }
 }

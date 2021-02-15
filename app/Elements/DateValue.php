@@ -98,6 +98,6 @@ class DateValue extends AbstractElement
 
         $date = new Date($canonical);
 
-        return $date->display(true);
+        return $date->display();
     }
 }

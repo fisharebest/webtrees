@@ -21,11 +21,15 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Elements\IndividualRecord;
+use Fisharebest\Webtrees\Elements\ResearchTask;
+use Fisharebest\Webtrees\Elements\TransmissionDate;
+use Fisharebest\Webtrees\Elements\WebtreesUser;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
@@ -48,15 +52,16 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private const LIMIT_LOW  = 10;
     private const LIMIT_HIGH = 20;
 
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
+    public function boot(): void
     {
-        /* I18N: Name of a module. Tasks that need further research. */
-        return I18N::translate('Research tasks');
+        Registry::elementFactory()->register([
+            'FAM:_TODO'           => new ResearchTask(I18N::translate('Research task')),
+            'FAM:_TODO:DATE'      => new TransmissionDate(I18N::translate('Date')),
+            'FAM:_TODO:_WT_USER'  => new WebtreesUser(I18N::translate('User')),
+            'INDI:_TODO'          => new ResearchTask(I18N::translate('Research task')),
+            'INDI:_TODO:DATE'     => new TransmissionDate(I18N::translate('Date')),
+            'INDI:_TODO:_WT_USER' => new WebtreesUser(I18N::translate('User')),
+        ]);
     }
 
     /**
@@ -137,6 +142,65 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
+     * @param Tree $tree
+     * @param int  $max_julian_day
+     *
+     * @return Collection<Individual>
+     */
+    private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
+    {
+        return DB::table('individuals')
+            ->join('dates', static function (JoinClause $join): void {
+                $join
+                    ->on('i_file', '=', 'd_file')
+                    ->on('i_id', '=', 'd_gid');
+            })
+            ->where('i_file', '=', $tree->id())
+            ->where('d_fact', '=', '_TODO')
+            ->where('d_julianday1', '<', $max_julian_day)
+            ->select(['individuals.*'])
+            ->distinct()
+            ->get()
+            ->map(Registry::individualFactory()->mapper($tree))
+            ->filter(GedcomRecord::accessFilter());
+    }
+
+    /**
+     * @param Tree $tree
+     * @param int  $max_julian_day
+     *
+     * @return Collection<Family>
+     */
+    private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
+    {
+        return DB::table('families')
+            ->join('dates', static function (JoinClause $join): void {
+                $join
+                    ->on('f_file', '=', 'd_file')
+                    ->on('f_id', '=', 'd_gid');
+            })
+            ->where('f_file', '=', $tree->id())
+            ->where('d_fact', '=', '_TODO')
+            ->where('d_julianday1', '<', $max_julian_day)
+            ->select(['families.*'])
+            ->distinct()
+            ->get()
+            ->map(Registry::familyFactory()->mapper($tree))
+            ->filter(GedcomRecord::accessFilter());
+    }
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module. Tasks that need further research. */
+        return I18N::translate('Research tasks');
+    }
+
+    /**
      * Should this block load asynchronously using AJAX?
      *
      * Simple blocks are faster in-line, more complex ones can be loaded later.
@@ -172,7 +236,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      * Update the configuration for a block.
      *
      * @param ServerRequestInterface $request
-     * @param int     $block_id
+     * @param int                    $block_id
      *
      * @return void
      */
@@ -204,53 +268,5 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             'show_other'      => $show_other,
             'show_unassigned' => $show_unassigned,
         ]);
-    }
-
-    /**
-     * @param Tree $tree
-     * @param int  $max_julian_day
-     *
-     * @return Collection<Family>
-     */
-    private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
-    {
-        return DB::table('families')
-            ->join('dates', static function (JoinClause $join): void {
-                $join
-                    ->on('f_file', '=', 'd_file')
-                    ->on('f_id', '=', 'd_gid');
-            })
-            ->where('f_file', '=', $tree->id())
-            ->where('d_fact', '=', '_TODO')
-            ->where('d_julianday1', '<', $max_julian_day)
-            ->select(['families.*'])
-            ->distinct()
-            ->get()
-            ->map(Registry::familyFactory()->mapper($tree))
-            ->filter(GedcomRecord::accessFilter());
-    }
-
-    /**
-     * @param Tree $tree
-     * @param int  $max_julian_day
-     *
-     * @return Collection<Individual>
-     */
-    private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
-    {
-        return DB::table('individuals')
-            ->join('dates', static function (JoinClause $join): void {
-                $join
-                    ->on('i_file', '=', 'd_file')
-                    ->on('i_id', '=', 'd_gid');
-            })
-            ->where('i_file', '=', $tree->id())
-            ->where('d_fact', '=', '_TODO')
-            ->where('d_julianday1', '<', $max_julian_day)
-            ->select(['individuals.*'])
-            ->distinct()
-            ->get()
-            ->map(Registry::individualFactory()->mapper($tree))
-            ->filter(GedcomRecord::accessFilter());
     }
 }

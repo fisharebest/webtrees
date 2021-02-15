@@ -30,22 +30,4 @@ class SourceData extends EmptyElement
         'DATE' => '0:1',
         'TEXT' => '0:M',
     ];
-
-    protected const ABRIDGED_SUBTAGS = [
-        'TEXT' => '0:M',
-    ];
-
-    /**
-     * @param Tree $tree
-     *
-     * @return array<string,string>
-     */
-    public function subtags(Tree $tree): array
-    {
-        if ($tree->getPreference('FULL_SOURCES') === '1') {
-            return static::SUBTAGS;
-        }
-
-        return static::ABRIDGED_SUBTAGS;
-    }
 }

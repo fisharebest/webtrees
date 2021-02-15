@@ -48,7 +48,7 @@ class MultimediaFileReference extends AbstractElement
     public function canonical(string $value): string
     {
         // Leading/trailing/multiple spaces are valid in filenames.
-        return strtr($value, ["\t" => ' ', "\r" => ' ', "\n" => ' ']);
+        return strtr($value, ["\t" => '', "\r" => '', "\n" => '']);
     }
 
     /**

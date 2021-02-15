@@ -60,9 +60,9 @@ class SourceMediaType extends AbstractElement
             'audio'       => /* I18N: Type of media object */ I18N::translate('Audio'),
             'book'        => /* I18N: Type of media object */ I18N::translate('Book'),
             'card'        => /* I18N: Type of media object */ I18N::translate('Card'),
-            'certificate' => /* I18N: Type of media object */ I18N::translate('Certificate'), // ***
-            'coat'        => /* I18N: Type of media object */ I18N::translate('Coat of arms'), // ***
-            'document'    => /* I18N: Type of media object */ I18N::translate('Document'), // ***
+            'certificate' => /* I18N: Type of media object */ I18N::translate('Certificate'),
+            'coat'        => /* I18N: Type of media object */ I18N::translate('Coat of arms'),
+            'document'    => /* I18N: Type of media object */ I18N::translate('Document'),
             'electronic'  => /* I18N: Type of media object */ I18N::translate('Electronic'),
             'fiche'       => /* I18N: Type of media object */ I18N::translate('Microfiche'),
             'film'        => /* I18N: Type of media object */ I18N::translate('Microfilm'),
@@ -70,9 +70,9 @@ class SourceMediaType extends AbstractElement
             'manuscript'  => /* I18N: Type of media object */ I18N::translate('Manuscript'),
             'map'         => /* I18N: Type of media object */ I18N::translate('Map'),
             'newspaper'   => /* I18N: Type of media object */ I18N::translate('Newspaper'),
-            'other'       => /* I18N: Type of media object */ I18N::translate('Other'), // ***
+            'other'       => /* I18N: Type of media object */ I18N::translate('Other'),
             'photo'       => /* I18N: Type of media object */ I18N::translate('Photo'),
-            'painting'    => /* I18N: Type of media object */ I18N::translate('Painting'), // ***
+            'painting'    => /* I18N: Type of media object */ I18N::translate('Painting'),
             'tombstone'   => /* I18N: Type of media object */ I18N::translate('Tombstone'),
             'video'       => /* I18N: Type of media object */ I18N::translate('Video'),
         ];

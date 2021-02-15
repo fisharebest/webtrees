@@ -62,6 +62,9 @@ use Fisharebest\Webtrees\Elements\CopyrightSourceData;
 use Fisharebest\Webtrees\Elements\CountOfChildren;
 use Fisharebest\Webtrees\Elements\CountOfMarriages;
 use Fisharebest\Webtrees\Elements\Cremation;
+use Fisharebest\Webtrees\Elements\CustomElement;
+use Fisharebest\Webtrees\Elements\CustomEvent;
+use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\Elements\DateLdsOrd;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\Death;
@@ -78,14 +81,17 @@ use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
+use Fisharebest\Webtrees\Elements\FamilyStatusText;
 use Fisharebest\Webtrees\Elements\FileName;
 use Fisharebest\Webtrees\Elements\FirstCommunion;
 use Fisharebest\Webtrees\Elements\Form;
 use Fisharebest\Webtrees\Elements\Gedcom;
 use Fisharebest\Webtrees\Elements\GenerationsOfAncestors;
 use Fisharebest\Webtrees\Elements\GenerationsOfDescendants;
+use Fisharebest\Webtrees\Elements\GovIdentifier;
 use Fisharebest\Webtrees\Elements\Graduation;
 use Fisharebest\Webtrees\Elements\HeaderRecord;
+use Fisharebest\Webtrees\Elements\HierarchicalRelationship;
 use Fisharebest\Webtrees\Elements\Immigration;
 use Fisharebest\Webtrees\Elements\IndividualRecord;
 use Fisharebest\Webtrees\Elements\LanguageId;
@@ -98,6 +104,8 @@ use Fisharebest\Webtrees\Elements\LdsEndowment;
 use Fisharebest\Webtrees\Elements\LdsEndowmentDateStatus;
 use Fisharebest\Webtrees\Elements\LdsSpouseSealing;
 use Fisharebest\Webtrees\Elements\LdsSpouseSealingDateStatus;
+use Fisharebest\Webtrees\Elements\LocationRecord;
+use Fisharebest\Webtrees\Elements\MaidenheadLocator;
 use Fisharebest\Webtrees\Elements\Marriage;
 use Fisharebest\Webtrees\Elements\MarriageBanns;
 use Fisharebest\Webtrees\Elements\MarriageContract;
@@ -152,6 +160,9 @@ use Fisharebest\Webtrees\Elements\RelationIsDescriptor;
 use Fisharebest\Webtrees\Elements\ReligiousAffiliation;
 use Fisharebest\Webtrees\Elements\RepositoryRecord;
 use Fisharebest\Webtrees\Elements\ResearchTask;
+use Fisharebest\Webtrees\Elements\ResearchTaskPriority;
+use Fisharebest\Webtrees\Elements\ResearchTaskStatus;
+use Fisharebest\Webtrees\Elements\ResearchTaskType;
 use Fisharebest\Webtrees\Elements\Residence;
 use Fisharebest\Webtrees\Elements\ResponsibleAgency;
 use Fisharebest\Webtrees\Elements\RestrictionNotice;
@@ -160,6 +171,7 @@ use Fisharebest\Webtrees\Elements\RoleInEvent;
 use Fisharebest\Webtrees\Elements\RomanizedType;
 use Fisharebest\Webtrees\Elements\ScholasticAchievement;
 use Fisharebest\Webtrees\Elements\SexValue;
+use Fisharebest\Webtrees\Elements\SexXValue;
 use Fisharebest\Webtrees\Elements\SocialSecurityNumber;
 use Fisharebest\Webtrees\Elements\SourceCallNumber;
 use Fisharebest\Webtrees\Elements\SourceData;
@@ -187,6 +199,7 @@ use Fisharebest\Webtrees\Elements\WhereWithinSource;
 use Fisharebest\Webtrees\Elements\Will;
 use Fisharebest\Webtrees\Elements\XrefFamily;
 use Fisharebest\Webtrees\Elements\XrefIndividual;
+use Fisharebest\Webtrees\Elements\XrefLocation;
 use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\Elements\XrefRepository;
 use Fisharebest\Webtrees\Elements\XrefSource;
@@ -202,8 +215,8 @@ use function strpos;
  */
 class ElementFactory implements ElementFactoryInterface
 {
-    /** @var null|array<string,ElementInterface> */
-    private $elements;
+    /** @var array<string,ElementInterface> */
+    private $elements = [];
 
     /**
      * Create a GEDCOM element that corresponds to a GEDCOM tag.
@@ -220,36 +233,6 @@ class ElementFactory implements ElementFactoryInterface
     }
 
     /**
-     * @param string $tag
-     *
-     * @return ElementInterface|null
-     */
-    private function findElementByWildcard(string $tag): ?ElementInterface
-    {
-        foreach ($this->elements() as $tags => $element) {
-            if (strpos($tags, '*') !== false) {
-                $regex = '/^' . strtr($tags, ['*' => '[^:]+']) . '$/';
-
-                if (preg_match($regex, $tag)) {
-                    return $element;
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Register more elements.
-     *
-     * @param array<string,ElementInterface> $elements
-     */
-    public function register(array $elements): void
-    {
-        $this->elements = array_merge($this->elements(), $elements);
-    }
-
-    /**
      * Association between GEDCOM tags and GEDCOM elements.
      * We can't initialise this in the constructor, as the I18N package isn't available then.
      *
@@ -257,8 +240,8 @@ class ElementFactory implements ElementFactoryInterface
      */
     private function elements(): array
     {
-        if ($this->elements === null) {
-            // Custom tags are indicated with ***
+        if ($this->elements === []) {
+            // Gedcom 5.5.1
             $this->elements = [
                 'FAM'                      => new FamilyRecord(I18N::translate('Family')),
                 'FAM:*:ADDR'               => new AddressLine(I18N::translate('Address')),
@@ -305,14 +288,12 @@ class ElementFactory implements ElementFactoryInterface
                 'FAM:*:WIFE'               => new EmptyElement(I18N::translate('Wife'), ['AGE' => '0:1']),
                 'FAM:*:WIFE:AGE'           => new AgeAtEvent(I18N::translate('Wife’s age')),
                 'FAM:*:WWW'                => new AddressWebPage(I18N::translate('URL')),
-                'FAM:*:_ASSO'              => new XrefIndividual(I18N::translate('Associate')), // ***
-                'FAM:*:_ASSO:RELA'         => new RelationIsDescriptor(I18N::translate('Relationship')), // ***
                 'FAM:ANUL'                 => new Annulment(I18N::translate('Annulment')),
                 'FAM:CENS'                 => new Census(I18N::translate('Census')),
                 'FAM:CHAN'                 => new Change(I18N::translate('Last change')),
                 'FAM:CHAN:DATE'            => new ChangeDate(I18N::translate('Date of last change')),
                 'FAM:CHAN:DATE:TIME'       => new TimeValue(I18N::translate('Time')),
-                'FAM:CHAN:_WT_USER'        => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
+                'FAM:CHAN:NOTE'            => new NoteStructure(I18N::translate('Note')),
                 'FAM:CHIL'                 => new XrefIndividual(I18N::translate('Child')),
                 'FAM:DIV'                  => new Divorce(I18N::translate('Divorce')),
                 'FAM:DIVF'                 => new DivorceFiled(I18N::translate('Divorce filed')),
@@ -346,7 +327,7 @@ class ElementFactory implements ElementFactoryInterface
                 'FAM:SLGS:PLAC'            => new PlaceLivingOrdinance(I18N::translate('Place')),
                 'FAM:SLGS:STAT'            => new LdsSpouseSealingDateStatus(I18N::translate('Status')),
                 'FAM:SLGS:STAT:DATE'       => new ChangeDate(I18N::translate('Status change date')),
-                'FAM:SLGS:TEMP'            => new TempleCode(/* I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)*/ I18N::translate('Temple')),
+                'FAM:SLGS:TEMP'            => new TempleCode(I18N::translate('Temple')),
                 'FAM:SOUR'                 => new XrefSource(I18N::translate('Source')),
                 'FAM:SOUR:DATA'            => new SourceData(I18N::translate('Data')),
                 'FAM:SOUR:DATA:DATE'       => new EntryRecordingDate(I18N::translate('Date of entry in original source')),
@@ -359,10 +340,6 @@ class ElementFactory implements ElementFactoryInterface
                 'FAM:SOUR:QUAY'            => new CertaintyAssessment(I18N::translate('Quality of data')),
                 'FAM:SUBM'                 => new XrefSubmitter(I18N::translate('Submitter')),
                 'FAM:WIFE'                 => new XrefIndividual(I18N::translate('Wife')),
-                'FAM:_TODO'                => new ResearchTask(I18N::translate('Research task')), // *** webtrees
-                'FAM:_TODO:DATE'           => new TransmissionDate(I18N::translate('Date')), // *** webtrees
-                'FAM:_TODO:_WT_USER'       => new WebtreesUser(I18N::translate('User')), // *** webtrees
-                'FAM:_UID'                 => new PafUid(I18N::translate('Unique identifier')), // ***
                 'HEAD'                     => new HeaderRecord(I18N::translate('Header')),
                 'HEAD:CHAR'                => new CharacterSet(I18N::translate('Character set')),
                 'HEAD:CHAR:VERS'           => new VersionNumber(I18N::translate('Version')),
@@ -410,8 +387,6 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:*:ADDR:STAE'         => new AddressState(I18N::translate('State')),
                 'INDI:*:AGE'               => new AgeAtEvent(I18N::translate('Age')),
                 'INDI:*:AGNC'              => new ResponsibleAgency(I18N::translate('Agency')),
-                'INDI:*:ASSO'              => new XrefIndividual(I18N::translate('Associate')), // ***
-                'INDI:*:ASSO:RELA'         => new RelationIsDescriptor(I18N::translate('Relationship')),
                 'INDI:*:CAUS'              => new CauseOfEvent(I18N::translate('Cause')),
                 'INDI:*:DATE'              => new DateValue(I18N::translate('Date')),
                 'INDI:*:EMAIL'             => new AddressEmail(I18N::translate('Email address')),
@@ -429,7 +404,6 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:*:PLAC:NOTE'         => new NoteStructure(I18N::translate('Note')),
                 'INDI:*:PLAC:ROMN'         => new PlaceRomanizedVariation(I18N::translate('Romanized place')),
                 'INDI:*:PLAC:ROMN:TYPE'    => new RomanizedType(I18N::translate('Type')),
-                'INDI:*:PLAC:_HEB'         => new NoteStructure(I18N::translate('Place in Hebrew')), // ***
                 'INDI:*:RELI'              => new ReligiousAffiliation(I18N::translate('Religion')),
                 'INDI:*:RESN'              => new RestrictionNotice(I18N::translate('Restriction')),
                 'INDI:*:SOUR'              => new XrefSource(I18N::translate('Source')),
@@ -444,8 +418,6 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:*:SOUR:QUAY'         => new CertaintyAssessment(I18N::translate('Quality of data')),
                 'INDI:*:TYPE'              => new EventOrFactClassification(I18N::translate('Type')),
                 'INDI:*:WWW'               => new AddressWebPage(I18N::translate('URL')),
-                'INDI:*:_ASSO'             => new XrefIndividual(I18N::translate('Associate')), // ***
-                'INDI:*:_ASSO:RELA'        => new RelationIsDescriptor(I18N::translate('Relationship')), // ***
                 'INDI:ADOP'                => new Adoption(I18N::translate('Adoption')),
                 'INDI:ADOP:DATE'           => new DateValue(I18N::translate('Date of adoption')),
                 'INDI:ADOP:FAMC'           => new XrefFamily(I18N::translate('Adoptive parents')),
@@ -457,13 +429,14 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:ASSO'                => new XrefIndividual(I18N::translate('Associate')),
                 'INDI:ASSO:NOTE'           => new NoteStructure(I18N::translate('Note')),
                 'INDI:ASSO:RELA'           => new RelationIsDescriptor(I18N::translate('Relationship')),
+                'INDI:ASSO:SOUR'           => new XrefSource(I18N::translate('Source citation')),
                 'INDI:BAPL'                => new LdsBaptism(I18N::translate('LDS baptism')),
                 'INDI:BAPL:DATE'           => new DateLdsOrd(I18N::translate('Date of LDS baptism')),
                 'INDI:BAPL:NOTE'           => new NoteStructure(I18N::translate('Note')),
                 'INDI:BAPL:PLAC'           => new PlaceLivingOrdinance(I18N::translate('Place of LDS baptism')),
                 'INDI:BAPL:STAT'           => new LdsBaptismDateStatus(I18N::translate('Status')),
                 'INDI:BAPL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
-                'INDI:BAPL:TEMP'           => new TempleCode(/* I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)*/ I18N::translate('Temple')),
+                'INDI:BAPL:TEMP'           => new TempleCode(I18N::translate('Temple')),
                 'INDI:BAPM'                => new Baptism(I18N::translate('Baptism')),
                 'INDI:BAPM:DATE'           => new DateValue(I18N::translate('Date of baptism')),
                 'INDI:BAPM:PLAC'           => new PlaceName(I18N::translate('Place of baptism')),
@@ -490,7 +463,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:CHAN'                => new Change(I18N::translate('Last change')),
                 'INDI:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
                 'INDI:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time')),
-                'INDI:CHAN:_WT_USER'       => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
+                'INDI:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
                 'INDI:CHR'                 => new Christening(I18N::translate('Christening')),
                 'INDI:CHR:DATE'            => new DateValue(I18N::translate('Date of christening')),
                 'INDI:CHR:FAMC'            => new XrefFamily(I18N::translate('Godparents')),
@@ -505,7 +478,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:CONL:PLAC'           => new PlaceLivingOrdinance(I18N::translate('Place of LDS confirmation')),
                 'INDI:CONL:STAT'           => new LdsSpouseSealingDateStatus(I18N::translate('Status')),
                 'INDI:CONL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
-                'INDI:CONL:TEMP'           => new TempleCode(/* I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)*/ I18N::translate('Temple')),
+                'INDI:CONL:TEMP'           => new TempleCode(I18N::translate('Temple')),
                 'INDI:CREM'                => new Cremation(I18N::translate('Cremation')),
                 'INDI:CREM:DATE'           => new Cremation(I18N::translate('Date of cremation')),
                 'INDI:CREM:PLAC'           => new Cremation(I18N::translate('Place of cremation')),
@@ -526,7 +499,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:ENDL:PLAC'           => new PlaceLivingOrdinance(I18N::translate('Place of LDS endowment')),
                 'INDI:ENDL:STAT'           => new LdsEndowmentDateStatus(I18N::translate('Status')),
                 'INDI:ENDL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
-                'INDI:ENDL:TEMP'           => new TempleCode(/* I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)*/ I18N::translate('Temple')),
+                'INDI:ENDL:TEMP'           => new TempleCode(I18N::translate('Temple')),
                 'INDI:EVEN'                => new EventDescriptor(I18N::translate('Event')),
                 'INDI:EVEN:DATE'           => new DateValue(I18N::translate('Date of event')),
                 'INDI:EVEN:PLAC'           => new PlaceName(I18N::translate('Place of event')),
@@ -607,7 +580,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:SLGC:PLAC'           => new PlaceLivingOrdinance(I18N::translate('Place of LDS child sealing')),
                 'INDI:SLGC:STAT'           => new LdsChildSealingDateStatus(I18N::translate('Status')),
                 'INDI:SLGC:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
-                'INDI:SLGC:TEMP'           => new TempleCode(/* I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)*/ I18N::translate('Temple')),
+                'INDI:SLGC:TEMP'           => new TempleCode(I18N::translate('Temple')),
                 'INDI:SOUR'                => new XrefSource(I18N::translate('Source')),
                 'INDI:SOUR:DATA'           => new SourceData(I18N::translate('Data')),
                 'INDI:SOUR:DATA:DATE'      => new EntryRecordingDate(I18N::translate('Date of entry in original source')),
@@ -622,22 +595,15 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:SUBM'                => new XrefSubmitter(I18N::translate('Submitter')),
                 'INDI:TITL'                => new NobilityTypeTitle(I18N::translate('Title')),
                 'INDI:WILL'                => new Will(I18N::translate('Will')),
-                'INDI:_TODO'               => new ResearchTask(I18N::translate('Research task')), // *** webtrees
-                'INDI:_TODO:DATE'          => new TransmissionDate(I18N::translate('Date')), // *** webtrees
-                'INDI:_TODO:_WT_USER'      => new WebtreesUser(I18N::translate('User')), // *** webtrees
-                'INDI:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
-                'INDI:_WT_OBJE_SORT'       => new XrefMedia(I18N::translate('Re-order media')), // *** webtrees 1.7
                 'NOTE'                     => new NoteRecord(I18N::translate('Note')),
                 'NOTE:CHAN'                => new Change(I18N::translate('Last change')),
                 'NOTE:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
                 'NOTE:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time')),
                 'NOTE:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
-                'NOTE:CHAN:_WT_USER'       => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
                 'NOTE:CONC'                => new SubmitterText(I18N::translate('Note')),
                 'NOTE:CONT'                => new SubmitterText(I18N::translate('Continued')),
                 'NOTE:REFN'                => new UserReferenceNumber(I18N::translate('Reference number')),
                 'NOTE:REFN:TYPE'           => new UserReferenceType(I18N::translate('Type')),
-                'NOTE:RESN'                => new RestrictionNotice(I18N::translate('Restriction')), // *** webtrees
                 'NOTE:RIN'                 => new AutomatedRecordId(I18N::translate('Record ID number')),
                 'NOTE:SOUR'                => new XrefSource(I18N::translate('Source')),
                 'NOTE:SOUR:DATA'           => new SourceData(I18N::translate('Data')),
@@ -649,13 +615,11 @@ class ElementFactory implements ElementFactoryInterface
                 'NOTE:SOUR:OBJE'           => new XrefMedia(I18N::translate('Media object')),
                 'NOTE:SOUR:PAGE'           => new WhereWithinSource(I18N::translate('Citation details')),
                 'NOTE:SOUR:QUAY'           => new CertaintyAssessment(I18N::translate('Quality of data')),
-                'NOTE:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
                 'OBJE'                     => new MediaRecord(I18N::translate('Media object')),
                 'OBJE:CHAN'                => new Change(I18N::translate('Last change')),
                 'OBJE:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
                 'OBJE:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time')),
                 'OBJE:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
-                'OBJE:CHAN:_WT_USER'       => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
                 'OBJE:FILE'                => new MultimediaFileReference(I18N::translate('Filename')),
                 'OBJE:FILE:FORM'           => new MultimediaFormat(I18N::translate('Format')),
                 'OBJE:FILE:FORM:TYPE'      => new SourceMediaType(I18N::translate('Media type')),
@@ -663,7 +627,6 @@ class ElementFactory implements ElementFactoryInterface
                 'OBJE:NOTE'                => new NoteStructure(I18N::translate('Note')),
                 'OBJE:REFN'                => new UserReferenceNumber(I18N::translate('Reference number')),
                 'OBJE:REFN:TYPE'           => new UserReferenceType(I18N::translate('Type')),
-                'OBJE:RESN'                => new RestrictionNotice(I18N::translate('Restriction')), // *** webtrees
                 'OBJE:RIN'                 => new AutomatedRecordId(I18N::translate('Record ID number')),
                 'OBJE:SOUR'                => new XrefSource(I18N::translate('Source')),
                 'OBJE:SOUR:DATA'           => new SourceData(I18N::translate('Data')),
@@ -675,7 +638,6 @@ class ElementFactory implements ElementFactoryInterface
                 'OBJE:SOUR:OBJE'           => new XrefMedia(I18N::translate('Media object')),
                 'OBJE:SOUR:PAGE'           => new WhereWithinSource(I18N::translate('Citation details')),
                 'OBJE:SOUR:QUAY'           => new CertaintyAssessment(I18N::translate('Quality of data')),
-                'OBJE:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
                 'REPO'                     => new RepositoryRecord(I18N::translate('Repository')),
                 'REPO:ADDR'                => new AddressLine(I18N::translate('Address')),
                 'REPO:ADDR:ADR1'           => new AddressLine1(I18N::translate('Address line 1')),
@@ -689,7 +651,6 @@ class ElementFactory implements ElementFactoryInterface
                 'REPO:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
                 'REPO:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time')),
                 'REPO:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
-                'REPO:CHAN:_WT_USER'       => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
                 'REPO:EMAIL'               => new AddressEmail(I18N::translate('Email address')),
                 'REPO:FAX'                 => new AddressFax(I18N::translate('Fax')),
                 'REPO:NAME'                => new NameOfRepository(I18N::translateContext('Repository', 'Name')),
@@ -697,10 +658,8 @@ class ElementFactory implements ElementFactoryInterface
                 'REPO:PHON'                => new PhoneNumber(I18N::translate('Phone')),
                 'REPO:REFN'                => new UserReferenceNumber(I18N::translate('Reference number')),
                 'REPO:REFN:TYPE'           => new UserReferenceType(I18N::translate('Type')),
-                'REPO:RESN'                => new RestrictionNotice(I18N::translate('Restriction')), // *** webtrees
                 'REPO:RIN'                 => new AutomatedRecordId(I18N::translate('Record ID number')),
                 'REPO:WWW'                 => new AddressWebPage(I18N::translate('URL')),
-                'REPO:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
                 'SOUR'                     => new SourceRecord(I18N::translate('Source')),
                 'SOUR:ABBR'                => new SourceFiledByEntry(I18N::translate('Abbreviation')),
                 'SOUR:AUTH'                => new SourceOriginator(I18N::translate('Author')),
@@ -708,7 +667,6 @@ class ElementFactory implements ElementFactoryInterface
                 'SOUR:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
                 'SOUR:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time')),
                 'SOUR:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
-                'SOUR:CHAN:_WT_USER'       => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
                 'SOUR:DATA'                => new EmptyElement(I18N::translate('Data'), ['EVEN' => '0:M', 'AGNC' => '0:1', 'NOTE' => '0:M']),
                 'SOUR:DATA:AGNC'           => new ResponsibleAgency(I18N::translate('Agency')),
                 'SOUR:DATA:EVEN'           => new EventsRecorded(I18N::translate('Events')),
@@ -724,11 +682,9 @@ class ElementFactory implements ElementFactoryInterface
                 'SOUR:REPO:CALN'           => new SourceCallNumber(I18N::translate('Call number')),
                 'SOUR:REPO:CALN:MEDI'      => new SourceMediaType(I18N::translate('Media type')),
                 'SOUR:REPO:NOTE'           => new NoteStructure(I18N::translate('Note')),
-                'SOUR:RESN'                => new RestrictionNotice(I18N::translate('Restriction')), // *** webtrees
                 'SOUR:RIN'                 => new AutomatedRecordId(I18N::translate('Record ID number')),
                 'SOUR:TEXT'                => new TextFromSource(I18N::translate('Text')),
                 'SOUR:TITL'                => new DescriptiveTitle(I18N::translate('Title')),
-                'SOUR:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
                 'SUBM'                     => new SubmitterRecord(I18N::translate('Submitter')),
                 'SUBM:ADDR'                => new AddressLine(I18N::translate('Address')),
                 'SUBM:ADDR:ADR1'           => new AddressLine1(I18N::translate('Address line 1')),
@@ -742,7 +698,6 @@ class ElementFactory implements ElementFactoryInterface
                 'SUBM:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
                 'SUBM:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time')),
                 'SUBM:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
-                'SUBM:CHAN:_WT_USER'       => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
                 'SUBM:EMAIL'               => new AddressEmail(I18N::translate('Email address')),
                 'SUBM:FAX'                 => new AddressFax(I18N::translate('Fax')),
                 'SUBM:LANG'                => new LanguageId(I18N::translate('Language')),
@@ -750,31 +705,683 @@ class ElementFactory implements ElementFactoryInterface
                 'SUBM:NOTE'                => new NoteStructure(I18N::translate('Note')),
                 'SUBM:OBJE'                => new XrefMedia(I18N::translate('Media object')),
                 'SUBM:PHON'                => new PhoneNumber(I18N::translate('Phone')),
-                'SUBM:RESN'                => new RestrictionNotice(I18N::translate('Restriction')), // *** webtrees
                 'SUBM:RFN'                 => new SubmitterRegisteredRfn(I18N::translate('Record file number')),
                 'SUBM:RIN'                 => new AutomatedRecordId(I18N::translate('Record ID number')),
                 'SUBM:WWW'                 => new AddressWebPage(I18N::translate('URL')),
-                'SUBM:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
                 'SUBN'                     => new SubmissionRecord(I18N::translate('Submission')),
                 'SUBN:ANCE'                => new GenerationsOfAncestors(I18N::translate('Generations of ancestors')),
                 'SUBN:CHAN'                => new Change(I18N::translate('Last change')),
                 'SUBN:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
                 'SUBN:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time')),
                 'SUBN:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
-                'SUBN:CHAN:_WT_USER'       => new WebtreesUser(I18N::translate('Author of last change')), // *** webtrees
                 'SUBN:DESC'                => new GenerationsOfDescendants(I18N::translate('Generations of descendants')),
                 'SUBN:FAMF'                => new NameOfFamilyFile(I18N::translate('Family file')),
                 'SUBN:NOTE'                => new NoteStructure(I18N::translate('Note')),
                 'SUBN:ORDI'                => new OrdinanceProcessFlag(I18N::translate('Ordinance')),
-                'SUBN:RESN'                => new RestrictionNotice(I18N::translate('Restriction')), // *** webtrees
                 'SUBN:RIN'                 => new AutomatedRecordId(I18N::translate('Record ID number')),
                 'SUBN:SUBM'                => new XrefSubmitter(I18N::translate('Submitter')),
                 'SUBN:TEMP'                => new TempleCode(/* I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)*/ I18N::translate('Temple')),
-                'SUBN:_UID'                => new PafUid(I18N::translate('Unique identifier')), // ***
                 'TRLR'                     => new EmptyElement(I18N::translate('Trailer')),
             ];
+
+            // Aldfaer extensions
+            $this->register([
+                'FAM:MARR_CIVIL'     => new CustomEvent(I18N::translate('Civil marriage')),
+                'FAM:MARR_RELIGIOUS' => new CustomEvent(I18N::translate('Religious marriage')),
+                'FAM:MARR_PARTNERS'  => new CustomEvent(I18N::translate('Registered partnership')),
+                'FAM:MARR_UNKNOWN'   => new CustomEvent(I18N::translate('Marriage type unknown')),
+            ]);
+
+            // Ancestry extensions
+            $this->register([
+                'INDI:*:SOUR:_APID' => new CustomElement(I18N::translate('Ancestry PID')),
+                'INDI:_EMPLOY'      => new CustomEvent(I18N::translate('Occupation')),
+            ]);
+
+            // Brother’s Keeper extensions
+            $this->register([
+                'FAM:*:_EVN'       => new CustomElement('Event number'),
+                'FAM:CHIL:_FREL'   => new CustomElement('Relationship to father'),
+                'FAM:CHIL:_MREL'   => new CustomElement('Relationship to mother'),
+                'FAM:_COML'        => new CustomEvent(I18N::translate('Common law marriage')),
+                'FAM:_MARI'        => new CustomEvent(I18N::translate('Marriage intention')),
+                'FAM:_MBON'        => new CustomEvent(I18N::translate('Marriage bond')),
+                'FAM:_NMR'         => new CustomEvent(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+                'FAM:_PRMN'        => new CustomElement(I18N::translate('Permanent number')),
+                'FAM:_SEPR'        => new CustomEvent(I18N::translate('Separated')),
+                'FAM:_TODO'        => new CustomElement(I18N::translate('Research task')),
+                'INDI:*:_EVN'      => new CustomElement('Event number'),
+                'INDI:NAME:_ADPN'  => new NamePersonal(I18N::translate('Adopted name')),
+                'INDI:NAME:_AKAN'  => new NamePersonal(I18N::translate('Also known as')),
+                'INDI:NAME:_BIRN'  => new NamePersonal(I18N::translate('Birth name')),
+                'INDI:NAME:_CALL'  => new NamePersonal('Called name'),
+                'INDI:NAME:_CENN'  => new NamePersonal('Census name'),
+                'INDI:NAME:_CURN'  => new NamePersonal('Current name'),
+                'INDI:NAME:_FARN'  => new NamePersonal(I18N::translate('Estate name')),
+                'INDI:NAME:_FKAN'  => new NamePersonal('Formal name'),
+                'INDI:NAME:_FRKA'  => new NamePersonal('Formerly known as'),
+                'INDI:NAME:_GERN'  => new NamePersonal('German name'),
+                'INDI:NAME:_HEBN'  => new NamePersonal(I18N::translate('Hebrew name')),
+                'INDI:NAME:_HNM'   => new NamePersonal(I18N::translate('Hebrew name')),
+                'INDI:NAME:_INDG'  => new NamePersonal('Indigenous name'),
+                'INDI:NAME:_INDN'  => new NamePersonal('Indian name'),
+                'INDI:NAME:_LNCH'  => new NamePersonal('Legal name change'),
+                'INDI:NAME:_MARN'  => new NamePersonal('Married name'),
+                'INDI:NAME:_MARNM' => new NamePersonal('Married name'),
+                'INDI:NAME:_OTHN'  => new NamePersonal('Other name'),
+                'INDI:NAME:_RELN'  => new NamePersonal('Religious name'),
+                'INDI:NAME:_SHON'  => new NamePersonal('Short name'),
+                'INDI:NAME:_SLDN'  => new NamePersonal('Soldier name'),
+                'INDI:_ADPF'       => new CustomElement(I18N::translate('Adopted by father')),
+                'INDI:_ADPM'       => new CustomElement(I18N::translate('Adopted by mother')),
+                'INDI:_BRTM'       => new CustomEvent(I18N::translate('Brit milah')),
+                'INDI:_BRTM:DATE'  => new DateValue(I18N::translate('Date of brit milah')),
+                'INDI:_BRTM:PLAC'  => new PlaceName(I18N::translate('Place of brit milah')),
+                'INDI:_EMAIL'      => new AddressEmail(I18N::translate('Email address')),
+                'INDI:_EYEC'       => new CustomFact(I18N::translate('Eye color')),
+                'INDI:_FRNL'       => new CustomElement(I18N::translate('Funeral')),
+                'INDI:_HAIR'       => new CustomFact(I18N::translate('Hair color')),
+                'INDI:_HEIG'       => new CustomFact(I18N::translate('Height')),
+                'INDI:_INTE'       => new CustomElement(I18N::translate('Interment')),
+                'INDI:_MEDC'       => new CustomFact(I18N::translate('Medical')),
+                'INDI:_MILT'       => new CustomElement(I18N::translate('Military service')),
+                'INDI:_NLIV'       => new CustomFact(I18N::translate('Not living')),
+                'INDI:_NMAR'       => new CustomEvent(I18N::translate('Never married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+                'INDI:_PRMN'       => new CustomElement(I18N::translate('Permanent number')),
+                'INDI:_TODO'       => new CustomElement(I18N::translate('Research task')),
+                'INDI:_WEIG'       => new CustomFact(I18N::translate('Weight')),
+                'INDI:_YART'       => new CustomEvent(I18N::translate('Yahrzeit')),
+                // 1 XXXX
+                // 2 _EVN ##
+                // 1 ASSO @Xnnn@
+                // 2 RELA Witness at event _EVN ##
+            ]);
+
+            // Family Tree Builder extensions
+            $this->register([
+                '*:_UPD'              => new CustomElement(I18N::translate('Last change')), // e.g. "1 _UPD 14 APR 2012 00:14:10 GMT-5"
+                'INDI:NAME:_AKA'      => new NamePersonal(I18N::translate('Also known as')),
+                'OBJE:_ALBUM'         => new CustomElement(I18N::translate('Album')), // XREF to an album
+                'OBJE:_DATE'          => new DateValue(I18N::translate('Date')),
+                'OBJE:_FILESIZE'      => new CustomElement(I18N::translate('File size')),
+                'OBJE:_PHOTO_RIN'     => new CustomElement(I18N::translate('Photo')),
+                'OBJE:_PLACE'         => new PlaceName(I18N::translate('Place')),
+                '_ALBUM:_PHOTO'       => new CustomElement(I18N::translate('Photo')),
+                '_ALBUM:_PHOTO:_PRIN' => new CustomElement(I18N::translate('Highlighted image')),
+            ]);
+
+            // Family Tree Maker extensions
+            $this->register([
+                'FAM:CHIL:_FREL'              => new CustomElement(I18N::translate('Relationship to father')),
+                'FAM:CHIL:_MREL'              => new CustomElement(I18N::translate('Relationship to mother')),
+                'FAM:_DETS'                   => new CustomElement(I18N::translate('Death of one spouse')),
+                'FAM:_FA1'                    => new CustomElement('Fact 1'),
+                'FAM:_FA10'                   => new CustomElement('Fact 10'),
+                'FAM:_FA11'                   => new CustomElement('Fact 11'),
+                'FAM:_FA12'                   => new CustomElement('Fact 12'),
+                'FAM:_FA13'                   => new CustomElement('Fact 13'),
+                'FAM:_FA2'                    => new CustomElement('Fact 2'),
+                'FAM:_FA3'                    => new CustomElement('Fact 3'),
+                'FAM:_FA4'                    => new CustomElement('Fact 4'),
+                'FAM:_FA5'                    => new CustomElement('Fact 5'),
+                'FAM:_FA6'                    => new CustomElement('Fact 6'),
+                'FAM:_FA7'                    => new CustomElement('Fact 7'),
+                'FAM:_FA8'                    => new CustomElement('Fact 8'),
+                'FAM:_FA9'                    => new CustomElement('Fact 9'),
+                'FAM:_MEND'                   => new CustomElement(I18N::translate('Marriage ending status')),
+                'FAM:_MSTAT'                  => new CustomElement(I18N::translate('Marriage beginning status')),
+                'FAM:_SEPR'                   => new CustomElement(I18N::translate('Separation')),
+                'HEAD:_SCHEMA'                => new CustomElement('Schema'),
+                'HEAD:_SCHEMA:FAM'            => new CustomElement(I18N::translate('Family')),
+                'HEAD:_SCHEMA:FAM:_FA*:LABL'  => new CustomElement(I18N::translate('Label')),
+                'HEAD:_SCHEMA:FAM:_FA1'       => new CustomElement(I18N::translate('Fact 1')),
+                'HEAD:_SCHEMA:FAM:_FA10'      => new CustomElement(I18N::translate('Fact 10')),
+                'HEAD:_SCHEMA:FAM:_FA11'      => new CustomElement(I18N::translate('Fact 11')),
+                'HEAD:_SCHEMA:FAM:_FA12'      => new CustomElement(I18N::translate('Fact 12')),
+                'HEAD:_SCHEMA:FAM:_FA13'      => new CustomElement(I18N::translate('Fact 13')),
+                'HEAD:_SCHEMA:FAM:_FA2'       => new CustomElement(I18N::translate('Fact 2')),
+                'HEAD:_SCHEMA:FAM:_FA3'       => new CustomElement(I18N::translate('Fact 3')),
+                'HEAD:_SCHEMA:FAM:_FA4'       => new CustomElement(I18N::translate('Fact 4')),
+                'HEAD:_SCHEMA:FAM:_FA5'       => new CustomElement(I18N::translate('Fact 5')),
+                'HEAD:_SCHEMA:FAM:_FA6'       => new CustomElement(I18N::translate('Fact 6')),
+                'HEAD:_SCHEMA:FAM:_FA7'       => new CustomElement(I18N::translate('Fact 7')),
+                'HEAD:_SCHEMA:FAM:_FA8'       => new CustomElement(I18N::translate('Fact 8')),
+                'HEAD:_SCHEMA:FAM:_FA9'       => new CustomElement(I18N::translate('Fact 9')),
+                'HEAD:_SCHEMA:FAM:_M*:LABL'   => new CustomElement(I18N::translate('Label')),
+                'HEAD:_SCHEMA:FAM:_MEND'      => new CustomElement(I18N::translate('Marriage ending status')),
+                'HEAD:_SCHEMA:FAM:_MSTAT'     => new CustomElement(I18N::translate('Marriage beginning status')),
+                'HEAD:_SCHEMA:INDI'           => new CustomElement(I18N::translate('Individual')),
+                'HEAD:_SCHEMA:INDI:_FA*:LABL' => new CustomElement(I18N::translate('Label')),
+                'HEAD:_SCHEMA:INDI:_FA1'      => new CustomElement(I18N::translate('Fact 1')),
+                'HEAD:_SCHEMA:INDI:_FA10'     => new CustomElement(I18N::translate('Fact 10')),
+                'HEAD:_SCHEMA:INDI:_FA11'     => new CustomElement(I18N::translate('Fact 11')),
+                'HEAD:_SCHEMA:INDI:_FA12'     => new CustomElement(I18N::translate('Fact 12')),
+                'HEAD:_SCHEMA:INDI:_FA13'     => new CustomElement(I18N::translate('Fact 13')),
+                'HEAD:_SCHEMA:INDI:_FA2'      => new CustomElement(I18N::translate('Fact 2')),
+                'HEAD:_SCHEMA:INDI:_FA3'      => new CustomElement(I18N::translate('Fact 3')),
+                'HEAD:_SCHEMA:INDI:_FA4'      => new CustomElement(I18N::translate('Fact 4')),
+                'HEAD:_SCHEMA:INDI:_FA5'      => new CustomElement(I18N::translate('Fact 5')),
+                'HEAD:_SCHEMA:INDI:_FA6'      => new CustomElement(I18N::translate('Fact 6')),
+                'HEAD:_SCHEMA:INDI:_FA7'      => new CustomElement(I18N::translate('Fact 7')),
+                'HEAD:_SCHEMA:INDI:_FA8'      => new CustomElement(I18N::translate('Fact 8')),
+                'HEAD:_SCHEMA:INDI:_FA9'      => new CustomElement(I18N::translate('Fact 9')),
+                'HEAD:_SCHEMA:INDI:_FREL'     => new CustomElement('Relationship to father'),
+                'HEAD:_SCHEMA:INDI:_M*:LABL'  => new CustomElement(I18N::translate('Label')),
+                'HEAD:_SCHEMA:INDI:_MREL'     => new CustomElement('Relationship to mother'),
+                'INDI:*:SOUR:_APID'           => new CustomElement('Ancestry.com source identifier'),
+                'INDI:*:SOUR:_LINK'           => new CustomElement('External link'),
+                'INDI:NAME:_AKA'              => new NamePersonal(I18N::translate('Also known as')),
+                'INDI:NAME:_MARNM'            => new NamePersonal(I18N::translate('Married name')),
+                'INDI:_CIRC'                  => new CustomElement('Circumcision'),
+                'INDI:_DCAUSE'                => new CustomElement(I18N::translate('Cause of death')),
+                'INDI:_DEG'                   => new CustomElement(I18N::translate('Degree')),
+                'INDI:_DNA'                   => new CustomElement(I18N::translate('DNA markers')),
+                'INDI:_ELEC'                  => new CustomElement('Elected'),
+                'INDI:_EMPLOY'                => new CustomElement('Employment'),
+                'INDI:_EXCM'                  => new CustomElement('Excommunicated'),
+                'INDI:_FA1'                   => new CustomElement('Fact 1'),
+                'INDI:_FA10'                  => new CustomElement('Fact 10'),
+                'INDI:_FA11'                  => new CustomElement('Fact 11'),
+                'INDI:_FA12'                  => new CustomElement('Fact 12'),
+                'INDI:_FA13'                  => new CustomElement('Fact 13'),
+                'INDI:_FA2'                   => new CustomElement('Fact 2'),
+                'INDI:_FA3'                   => new CustomElement('Fact 3'),
+                'INDI:_FA4'                   => new CustomElement('Fact 4'),
+                'INDI:_FA5'                   => new CustomElement('Fact 5'),
+                'INDI:_FA6'                   => new CustomElement('Fact 6'),
+                'INDI:_FA7'                   => new CustomElement('Fact 7'),
+                'INDI:_FA8'                   => new CustomElement('Fact 8'),
+                'INDI:_FA9'                   => new CustomElement('Fact 9'),
+                'INDI:_MDCL'                  => new CustomElement('Medical'),
+                'INDI:_MILT'                  => new CustomElement(I18N::translate('Military service')),
+                'INDI:_MILTID'                => new CustomElement('Military ID number'),
+                'INDI:_MISN'                  => new CustomElement('Mission'),
+                'INDI:_NAMS'                  => new CustomElement(I18N::translate('Namesake')),
+                'INDI:_UNKN'                  => new CustomElement(I18N::translate('Unknown')), // Special individual ID code for later file comparisons
+                // The context and meaning of these tags is unknown
+                '_FOOT'                       => new CustomElement(''),
+                '_FUN'                        => new CustomElement(''),
+                '_JUST'                       => new CustomElement(''),
+                '_PHOTO'                      => new CustomElement(''),
+            ]);
+
+            // Gedcom 5.3 extensions
+            $this->register([
+                'EVEN'                       => new CustomElement('Event'),
+                'EVEN:*:*:NAME'              => new NamePersonal(I18N::translate('Name')),
+                'EVEN:*:AUDIO'               => new CustomElement(I18N::translate('Audio')),
+                'EVEN:*:BROT'                => new PlaceName('Brother'),
+                'EVEN:*:BUYR'                => new PlaceName('Buyer'),
+                'EVEN:*:CHIL'                => new PlaceName('Child'),
+                'EVEN:*:DATE'                => new DateValue('Date'),
+                'EVEN:*:FATH'                => new PlaceName('Father'),
+                'EVEN:*:GODP'                => new PlaceName('Godparent'),
+                'EVEN:*:HDOH'                => new PlaceName('Head of household'),
+                'EVEN:*:HEIR'                => new PlaceName('Heir'),
+                'EVEN:*:HFAT'                => new PlaceName('Husband’s father'),
+                'EVEN:*:HMOT'                => new PlaceName('Husband’s mother'),
+                'EVEN:*:HUSB'                => new PlaceName('Husband'),
+                'EVEN:*:IMAGE'               => new CustomElement('Image'),
+                'EVEN:*:INDI'                => new PlaceName('Individual'),
+                'EVEN:*:INFT'                => new PlaceName('Informant'),
+                'EVEN:*:LEGA'                => new PlaceName('Legatee'),
+                'EVEN:*:MBR'                 => new PlaceName('Member'),
+                'EVEN:*:MOTH'                => new PlaceName('Mother'),
+                'EVEN:*:OFFI'                => new PlaceName('Official'),
+                'EVEN:*:PARE'                => new PlaceName('Parent'),
+                'EVEN:*:PHOTO'               => new CustomElement(I18N::translate('Photo')),
+                'EVEN:*:PHUS'                => new PlaceName('Previous husband'),
+                'EVEN:*:PLAC'                => new PlaceName('Place'),
+                'EVEN:*:PWIF'                => new PlaceName('Previous wife'),
+                'EVEN:*:RECO'                => new PlaceName('Recorder'),
+                'EVEN:*:REL'                 => new PlaceName('Relative'),
+                'EVEN:*:SELR'                => new PlaceName('Seller'),
+                'EVEN:*:SIBL'                => new PlaceName('Sibling'),
+                'EVEN:*:SIST'                => new PlaceName('Sister'),
+                'EVEN:*:SPOU'                => new PlaceName('Spouse'),
+                'EVEN:*:TXPY'                => new PlaceName('Taxpayer'),
+                'EVEN:*:VIDEO'               => new CustomElement(I18N::translate('Video')),
+                'EVEN:*:WFAT'                => new PlaceName('Wife’s father'),
+                'EVEN:*:WIFE'                => new PlaceName('Wife'),
+                'EVEN:*:WITN'                => new PlaceName('Witness'),
+                'EVEN:*:WMOT'                => new PlaceName('Wife’s mother'),
+                'EVEN:TYPE'                  => new CustomElement('Type of event'),
+                'FAM:*:*:QUAY'               => new CertaintyAssessment(I18N::translate('Quality of data')),
+                'FAM:*:PLAC:SITE'            => new CustomElement('Site'),
+                'FAM:*:QUAY'                 => new CertaintyAssessment(I18N::translate('Quality of data')),
+                'FAM:AUDIO'                  => new CustomElement(I18N::translate('Audio')),
+                'FAM:IMAGE'                  => new CustomElement('Image'),
+                'FAM:PHOTO'                  => new CustomElement(I18N::translate('Photo')),
+                'FAM:VIDEO'                  => new CustomElement(I18N::translate('Video')),
+                'HEAD:SCHEMA'                => new CustomElement(I18N::translate('Unknown')),
+                'HEAD:SCHEMA:FAM'            => new CustomElement(I18N::translate('Family')),
+                'HEAD:SCHEMA:FAM:*:_*'       => new CustomElement('Custom event'),
+                'HEAD:SCHEMA:FAM:*:_*:DEFN'  => new CustomElement('Definition'),
+                'HEAD:SCHEMA:FAM:*:_*:ISA'   => new CustomElement('Type of event'),
+                'HEAD:SCHEMA:FAM:*:_*:LABL'  => new CustomElement('Label'),
+                'HEAD:SCHEMA:FAM:_*'         => new CustomElement('Custom event'),
+                'HEAD:SCHEMA:FAM:_*:DEFN'    => new CustomElement('Definition'),
+                'HEAD:SCHEMA:FAM:_*:ISA'     => new CustomElement('Type of event'),
+                'HEAD:SCHEMA:FAM:_*:LABL'    => new CustomElement('Label'),
+                'HEAD:SCHEMA:INDI'           => new CustomElement(I18N::translate('Individual')),
+                'HEAD:SCHEMA:INDI:*:_*'      => new CustomElement('Custom event'),
+                'HEAD:SCHEMA:INDI:*:_*:DEFN' => new CustomElement('Definition'),
+                'HEAD:SCHEMA:INDI:*:_*:ISA'  => new CustomElement('Type of event'),
+                'HEAD:SCHEMA:INDI:*:_*:LABL' => new CustomElement('Label'),
+                'HEAD:SCHEMA:INDI:_*'        => new CustomElement('Custom event'),
+                'HEAD:SCHEMA:INDI:_*:DEFN'   => new CustomElement('Definition'),
+                'HEAD:SCHEMA:INDI:_*:ISA'    => new CustomElement('Type of event'),
+                'HEAD:SCHEMA:INDI:_*:LABL'   => new CustomElement('Label'),
+                'INDI:*:*:QUAY'              => new CertaintyAssessment(I18N::translate('Quality of data')),
+                'INDI:*:PLAC:SITE'           => new CustomElement('Site'),
+                'INDI:*:QUAY'                => new CertaintyAssessment(I18N::translate('Quality of data')),
+                'INDI:AUDIO'                 => new CustomElement(I18N::translate('Audio')),
+                'INDI:BURI:PLAC:CEME'        => new CustomElement(I18N::translate('Cemetery')),
+                'INDI:BURI:PLAC:CEME:PLOT'   => new CustomElement('Burial plot'),
+                'INDI:IMAGE'                 => new CustomElement('Image'),
+                'INDI:NAMR'                  => new CustomElement(I18N::translate('Religious name')),
+                'INDI:NAMS'                  => new CustomElement(I18N::translate('Namesake')),
+                'INDI:PHOTO'                 => new CustomElement(I18N::translate('Photo')),
+                'INDI:SIGN'                  => new CustomElement('Signature'),
+                'INDI:VIDEO'                 => new CustomElement(I18N::translate('Video')),
+                'REPO:CALN:ITEM'             => new CustomElement('Item'),
+                'REPO:CALN:PAGE'             => new CustomElement('Page'),
+                'REPO:CALN:SHEE'             => new CustomElement('Sheet'),
+                'REPO:CNTC'                  => new CustomElement('Contact person'),
+                'REPO:MEDI'                  => new SourceMediaType(I18N::translate('Media type')),
+                'REPO:REFN'                  => new CustomElement('Reference number'),
+                'SOUR:AUDIO'                 => new CustomElement(I18N::translate('Audio')),
+                'SOUR:CENS'                  => new CustomElement('Census'),
+                'SOUR:CENS:DATE'             => new CustomElement('Census'),
+                'SOUR:CENS:DWEL'             => new CustomElement('Dwelling number'),
+                'SOUR:CENS:FAMN'             => new CustomElement('Family number'),
+                'SOUR:CENS:LINE'             => new CustomElement('Line number'),
+                'SOUR:CLAS'                  => new CustomElement('Source classification'),
+                'SOUR:CPLR'                  => new CustomElement('Compiler'),
+                'SOUR:EDTR'                  => new CustomElement('Editor'),
+                'SOUR:EVEN'                  => new CustomElement('Source events'),
+                'SOUR:FIDE'                  => new CustomElement('Fidelity'),
+                'SOUR:FILM'                  => new CustomElement(I18N::translate('Microfilm')),
+                'SOUR:IMAGE'                 => new CustomElement('Image'),
+                'SOUR:INDX'                  => new CustomElement('Indexed'),
+                'SOUR:INTV'                  => new CustomElement('Interviewer'),
+                'SOUR:ORIG'                  => new CustomElement('Originator'),
+                'SOUR:ORIG:NAME'             => new CustomElement('Name'),
+                'SOUR:ORIG:NOTE'             => new CustomElement('Note'),
+                'SOUR:ORIG:TYPE'             => new CustomElement('Type'),
+                'SOUR:PERI'                  => new CustomElement('Date period'),
+                'SOUR:PHOTO'                 => new CustomElement(I18N::translate('Photo')),
+                'SOUR:PUBL:DATE'             => new CustomElement('Date'),
+                'SOUR:PUBL:EDTN'             => new CustomElement('Edition'),
+                'SOUR:PUBL:ISSU'             => new CustomElement('Issue'),
+                'SOUR:PUBL:LCCN'             => new CustomElement('Library of Congress call number'),
+                'SOUR:PUBL:NAME'             => new CustomElement('Name'),
+                'SOUR:PUBL:PUBR'             => new CustomElement('Publisher'),
+                'SOUR:PUBL:SERS'             => new CustomElement('Series'),
+                'SOUR:PUBL:TYPE'             => new CustomElement('Type'),
+                'SOUR:QUAY'                  => new CertaintyAssessment(I18N::translate('Quality of data')),
+                'SOUR:RECO'                  => new CustomElement('Recording agency?'),
+                'SOUR:REFS'                  => new XrefSource('Referenced source'),
+                'SOUR:REPO'                  => new XrefRepository('Repository'),
+                'SOUR:REPO:DPRT:ARVL'        => new CustomElement('Departure'),
+                'SOUR:REPO:DPRT:ARVL:DATE'   => new DateValue('Date'),
+                'SOUR:REPO:DPRT:ARVL:PLAC'   => new PlaceName('Place'),
+                'SOUR:REPO:NAME'             => new CustomElement('Name of vessel'),
+                'SOUR:REPO:NOTE'             => new NoteStructure(I18N::translate('Note')),
+                'SOUR:REPO:PORT'             => new CustomElement('Port'),
+                'SOUR:REPO:PORT:ARVL'        => new CustomElement('Arrival'),
+                'SOUR:REPO:PORT:ARVL:DATE'   => new DateValue('Date'),
+                'SOUR:REPO:PORT:ARVL:PLAC'   => new PlaceName('Place'),
+                'SOUR:REPO:TEXT'             => new TextFromSource(I18N::translate('Text')),
+                'SOUR:SEQU'                  => new CustomElement('Sequence'),
+                'SOUR:STAT'                  => new CustomElement('Search status'),
+                'SOUR:STAT:DATE'             => new DateValue('Date'),
+                'SOUR:TEXT'                  => new TextFromSource(I18N::translate('Text')),
+                'SOUR:TYPE'                  => new CustomElement('Type of source'),
+                'SOUR:VIDEO'                 => new CustomElement(I18N::translate('Video')),
+                'SOUR:XLTR'                  => new CustomElement('Translator'),
+            ]);
+
+            // Gedcom 5.5 extensions
+            $this->register([
+                'OBJE:BLOB' => new UnknownElement(I18N::translate('Binary data object')),
+            ]);
+
+            // Gedcom-L extensions
+            $this->register([
+                'FAM:*:ADDR:_NAME'               => new CustomElement('Name of addressee'),
+                'FAM:*:PLAC:_GOV'                => new GovIdentifier(I18N::translate('GOV identifier')),
+                'FAM:*:PLAC:_LOC'                => new XrefLocation(I18N::translate('Location')),
+                'FAM:*:PLAC:_MAIDENHEAD'         => new MaidenheadLocator('Maidenhead locator'),
+                'FAM:*:PLAC:_POST'               => new AddressPostalCode('Postal code'),
+                'FAM:*:PLAC:_POST:DATE'          => new DateValue(I18N::translate('Date')),
+                'FAM:*:_ASSO'                    => new XrefIndividual(I18N::translate('Associate')),
+                'FAM:*:_ASSO:NOTE'               => new NoteStructure(I18N::translate('Note')),
+                'FAM:*:_ASSO:RELA'               => new RelationIsDescriptor(I18N::translate('Relationship')),
+                'FAM:*:_ASSO:SOUR'               => new XrefSource(I18N::translate('Source citation')),
+                'FAM:_STAT'                      => new FamilyStatusText(I18N::translate('Family status')),
+                'FAM:_STAT:DATE'                 => new DateValue(I18N::translate('Date')),
+                'FAM:_STAT:NOTE'                 => new NoteStructure(I18N::translate('Note')),
+                'FAM:_STAT:PLAC'                 => new PlaceName(I18N::translate('Place')),
+                'FAM:_STAT:SOUR'                 => new XrefSource(I18N::translate('Source citation')),
+                'FAM:_TODO'                      => new ResearchTask(I18N::translate('Research task')),
+                'FAM:_TODO:DATA'                 => new SubmitterText(I18N::translate('The solution')),
+                'FAM:_TODO:DATE'                 => new DateValue(I18N::translate('Creation date')),
+                'FAM:_TODO:DESC'                 => new CustomElement(I18N::translate('Description')),
+                'FAM:_TODO:NOTE'                 => new SubmitterText(I18N::translate('The problem')),
+                'FAM:_TODO:REPO'                 => new XrefRepository('Repository'),
+                'FAM:_TODO:STAT'                 => new ResearchTaskStatus(I18N::translate('Status')),
+                'FAM:_TODO:TYPE'                 => new ResearchTaskType(I18N::translate('Type of research task')),
+                'FAM:_TODO:_CAT'                 => new CustomElement(I18N::translate('Category')),
+                'FAM:_TODO:_CDATE'               => new DateValue(I18N::translate('Completion date')),
+                'FAM:_TODO:_PRTY'                => new ResearchTaskPriority(I18N::translate('Priority')),
+                'FAM:_TODO:_RDATE'               => new DateValue(I18N::translate('Reminder date')),
+                'FAM:_UID'                       => new PafUid(I18N::translate('Unique identifier')),
+                'HEAD:SOUR:CORP:ADDR:_NAME'      => new CustomElement('Name of addressee'),
+                'HEAD:_SCHEMA'                   => new EmptyElement(I18N::translate('Schema')),
+                'HEAD:_SCHEMA:*'                 => new EmptyElement(I18N::translate('Base GEDCOM tag')),
+                'HEAD:_SCHEMA:*:*'               => new EmptyElement(I18N::translate('New GEDCOM tag')),
+                'HEAD:_SCHEMA:*:*:*'             => new EmptyElement(I18N::translate('New GEDCOM tag')),
+                'HEAD:_SCHEMA:*:*:*:*'           => new EmptyElement(I18N::translate('New GEDCOM tag')),
+                'HEAD:_SCHEMA:*:*:*:*:*'         => new EmptyElement(I18N::translate('New GEDCOM tag')),
+                'HEAD:_SCHEMA:*:*:*:*:*:*'       => new EmptyElement(I18N::translate('New GEDCOM tag')),
+                'HEAD:_SCHEMA:*:*:*:*:*:*:_DEFN' => new EmptyElement(I18N::translate('Definition')),
+                'HEAD:_SCHEMA:*:*:*:*:*:_DEFN'   => new EmptyElement(I18N::translate('Definition')),
+                'HEAD:_SCHEMA:*:*:*:*:_DEFN'     => new EmptyElement(I18N::translate('Definition')),
+                'HEAD:_SCHEMA:*:*:*:_DEFN'       => new EmptyElement(I18N::translate('Definition')),
+                'HEAD:_SCHEMA:*:*:_DEFN'         => new EmptyElement(I18N::translate('Definition')),
+                'INDI:*:ADDR:_NAME'              => new CustomElement('Name of addressee'),
+                'INDI:*:PLAC:_GOV'               => new GovIdentifier(I18N::translate('GOV identifier')),
+                'INDI:*:PLAC:_LOC'               => new XrefLocation(I18N::translate('Location')),
+                'INDI:*:PLAC:_MAIDENHEAD'        => new MaidenheadLocator('Maidenhead locator'),
+                'INDI:*:PLAC:_POST'              => new AddressPostalCode('Postal code'),
+                'INDI:*:PLAC:_POST:DATE'         => new DateValue(I18N::translate('Date')),
+                'INDI:*:_ASSO'                   => new XrefIndividual(I18N::translate('Associate')),
+                'INDI:*:_ASSO:NOTE'              => new NoteStructure(I18N::translate('Note')),
+                'INDI:*:_ASSO:RELA'              => new RelationIsDescriptor(I18N::translate('Relationship')),
+                'INDI:*:_ASSO:SOUR'              => new XrefSource(I18N::translate('Source citation')),
+                'INDI:*:_WITN'                   => new CustomElement('Witness'),
+                'INDI:BAPM:_GODP'                => new CustomElement('Godparent'),
+                'INDI:CHR:_GODP'                 => new CustomElement('Godparent'),
+                'INDI:NAME:_RUFNAME'             => new NamePieceGiven(I18N::translate('Rufname')),
+                'INDI:OBJE:_PRIM'                => new CustomElement(I18N::translate('Highlighted image')),
+                'INDI:SEX'                       => new SexXValue(I18N::translate('Gender')),
+                'INDI:_TODO'                     => new ResearchTask(I18N::translate('Research task')),
+                'INDI:_TODO:DATA'                => new SubmitterText(I18N::translate('The solution')),
+                'INDI:_TODO:DATE'                => new DateValue(I18N::translate('Creation date')),
+                'INDI:_TODO:DESC'                => new CustomElement(I18N::translate('Description')),
+                'INDI:_TODO:NOTE'                => new SubmitterText(I18N::translate('The problem')),
+                'INDI:_TODO:REPO'                => new XrefRepository('Repository'),
+                'INDI:_TODO:STAT'                => new ResearchTaskStatus(I18N::translate('Status')),
+                'INDI:_TODO:TYPE'                => new ResearchTaskType(I18N::translate('Type of research task')),
+                'INDI:_TODO:_CAT'                => new CustomElement(I18N::translate('Category')),
+                'INDI:_TODO:_CDATE'              => new DateValue(I18N::translate('Completion date')),
+                'INDI:_TODO:_PRTY'               => new ResearchTaskPriority(I18N::translate('Priority')),
+                'INDI:_TODO:_RDATE'              => new DateValue(I18N::translate('Reminder date')),
+                'INDI:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                'NOTE:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                'OBJE:FILE:_PRIM'                => new CustomElement(I18N::translate('Highlighted image')),
+                'OBJE:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                'REPO:ADDR:_NAME'                => new CustomElement('Name of addressee'),
+                'REPO:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                'SOUR:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                'SUBM:ADDR:_NAME'                => new CustomElement('Name of addressee'),
+                'SUBM:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                'SUBN:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                '_LOC'                           => new LocationRecord(I18N::translate('Location')),
+                '_LOC::NOTE'                     => new NoteStructure(I18N::translate('Note')),
+                '_LOC::OBJE'                     => new XrefMedia(I18N::translate('Media object')),
+                '_LOC::SOUR'                     => new XrefSource(I18N::translate('Source')),
+                '_LOC:CHAN'                      => new Change(I18N::translate('Last change')),
+                '_LOC:CHAN:DATE'                 => new ChangeDate(I18N::translate('Date of last change')),
+                '_LOC:CHAN:DATE:TIME'            => new TimeValue(I18N::translate('Time')),
+                '_LOC:CHAN:NOTE'                 => new NoteStructure(I18N::translate('Note')),
+                '_LOC:EVEN'                      => new EventDescriptor(I18N::translate('Event')),
+                '_LOC:EVEN:TYPE'                 => new EventAttributeType(I18N::translate('Type of event')),
+                '_LOC:MAP'                       => new EmptyElement(I18N::translate('Coordinates')),
+                '_LOC:MAP:LATI'                  => new PlaceLatitude(I18N::translate('Latitude')),
+                '_LOC:MAP:LONG'                  => new PlaceLongtitude(I18N::translate('Longitude')),
+                '_LOC:NAME'                      => new PlaceName(I18N::translate('Place')),
+                '_LOC:NAME:ABBR'                 => new CustomElement(I18N::translate('Abbreviation')),
+                '_LOC:NAME:ABBR:TYPE'            => new CustomElement(I18N::translate('Type of abbreviation')),
+                '_LOC:NAME:DATE'                 => new DateValue(I18N::translate('Date')),
+                '_LOC:NAME:LANG'                 => new LanguageId(I18N::translate('Language')),
+                '_LOC:NAME:SOUR'                 => new XrefSource(I18N::translate('Source')),
+                '_LOC:RELI'                      => new ReligiousAffiliation('Religion'),
+                '_LOC:TYPE'                      => new CustomElement(I18N::translate('Type of location')),
+                '_LOC:TYPE:DATE'                 => new DateValue(I18N::translate('Date')),
+                '_LOC:TYPE:SOUR'                 => new XrefSource(I18N::translate('Source')),
+                '_LOC:TYPE:_GOVTYPE'             => new CustomElement('GOV identifier type'),
+                '_LOC:_AIDN'                     => new CustomElement('Administrative ID'),
+                '_LOC:_AIDN:DATE'                => new DateValue(I18N::translate('Date')),
+                '_LOC:_AIDN:SOUR'                => new XrefSource(I18N::translate('Source')),
+                '_LOC:_AIDN:TYPE'                => new CustomElement(I18N::translate('Type of administrative ID')),
+                '_LOC:_DMGD'                     => new CustomElement('Demographic data'),
+                '_LOC:_DMGD:DATE'                => new DateValue(I18N::translate('Date')),
+                '_LOC:_DMGD:SOUR'                => new XrefSource(I18N::translate('Source')),
+                '_LOC:_DMGD:TYPE'                => new CustomElement(I18N::translate('Type of demographic data')),
+                '_LOC:_GOV'                      => new GovIdentifier(I18N::translate('GOV identifier')),
+                '_LOC:_LOC'                      => new XrefLocation(I18N::translate('Location')),
+                '_LOC:_LOC:DATE'                 => new DateValue(I18N::translate('Date')),
+                '_LOC:_LOC:SOUR'                 => new XrefSource(I18N::translate('Source')),
+                '_LOC:_LOC:TYPE'                 => new HierarchicalRelationship(I18N::translate('Hierarchical relationship')),
+                '_LOC:_MAIDENHEAD'               => new MaidenheadLocator('Maidenhead locator'),
+                '_LOC:_POST'                     => new AddressPostalCode(I18N::translate('Postal code')),
+                '_LOC:_POST:DATE'                => new DateValue(I18N::translate('Date')),
+                '_LOC:_POST:SOUR'                => new XrefSource(I18N::translate('Source')),
+                '_LOC:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+            ]);
+
+            // Legacy extensions
+            $this->register([
+                'FAM:*:ADDR:_PRIV'             => new CustomElement('Indicates that an address or event is marked as Private.'),
+                'FAM:*:PLAC:_VERI'             => new CustomElement('Indicates that a source citation or place name has a checkmark in the Verified column.'),
+                'FAM:*:SOUR:_VERI'             => new CustomElement('Indicates that a source citation or place name has a checkmark in the Verified column.'),
+                'FAM:*:_PRIV'                  => new CustomElement('Indicates that an address or event is marked as Private.'),
+                'FAM:CHIL:_FREL'               => new CustomElement('The Relationship of a child to the Father (under a CHIL block under a FAM record).'),
+                'FAM:CHIL:_MREL'               => new CustomElement('The Relationship of a child to the Mother (under a CHIL block under a FAM record).'),
+                'FAM:CHIL:_STAT'               => new CustomElement('The Status of a marriage (Married, Unmarried, etc.).  Also the Status of a child (Twin, Triplet, etc.).  (The marriage status of Divorced is exported using a DIV tag.)'),
+                'FAM:EVEN:_OVER'               => new CustomElement('An event sentence override (under an EVEN block).'),
+                'FAM:MARR:_STAT'               => new CustomElement('The Status of a marriage (Married, Unmarried, etc.).  Also the Status of a child (Twin, Triplet, etc.).  (The marriage status of Divorced is exported using a DIV tag.)'),
+                'FAM:SOUR:_VERI'               => new CustomElement('Indicates that a source citation or place name has a checkmark in the Verified column.'),
+                'FAM:_NONE'                    => new CustomElement('Indicates that a couple had no children (under a FAM record).'),
+                'HEAD:_EVENT_DEFN'             => new CustomElement('Indicates the start of an Event Definition record that describes the attributes of an event or fact.'),
+                'HEAD:_EVENT_DEFN:_CONF_FLAG'  => new CustomElement('Indicates that an event is Confidential or Private (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_DATE_TYPE'  => new CustomElement('Indicates whether or not a Date field is shown for a specific event (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_DESC_FLAG'  => new CustomElement('Indicates whether or not a Description field is shown for a specific event (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_PLACE_TYPE' => new CustomElement('Indicates whether or not a Place field is shown for a specific event (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_PP_EXCLUDE' => new CustomElement('Indicates that an event is to be Excluded from the Potential Problems reporting (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN1'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN2'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN3'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN4'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN5'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN6'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN7'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SEN8'       => new CustomElement('Event sentence definitions (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENDOF'     => new CustomElement('Event sentence for PAF5 if only the Date field is filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENDOM'     => new CustomElement('Event sentence for PAF5 if only the Date field is filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENDOU'     => new CustomElement('Event sentence for PAF5 if only the Date field is filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENDPF'     => new CustomElement('Event sentence for PAF5 if only the Date and Place fields are filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENDPM'     => new CustomElement('Event sentence for PAF5 if only the Date and Place fields are filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENDPU'     => new CustomElement('Event sentence for PAF5 if only the Date and Place fields are filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENF'       => new CustomElement('Event sentence for PAF5 if all fields are filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENM'       => new CustomElement('Event sentence for PAF5 if all fields are filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENPOF'     => new CustomElement('Event sentence for PAF5 if only the Place field is filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENPOM'     => new CustomElement('Event sentence for PAF5 if only the Place field is filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENPOU'     => new CustomElement('Event sentence for PAF5 if only the Place field is filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_EVENT_DEFN:_SENU'       => new CustomElement('Event sentence for PAF5 if all fields are filled in for a Male individual (under an _EVENT_DEFN record).'),
+                'HEAD:_PLAC_DEFN'              => new CustomElement('Indicates the start of a Place Definition record that describes the attribute of a place.'),
+                'HEAD:_PLAC_DEFN:_PREP'        => new CustomElement('A location Preposition (under a _PLAC_DEFN record).'),
+                'INDI:*:ADDR:_LIST3 YES'       => new CustomElement('Indicates that a person’s address is part of the Birthday grouping (under an ADDR block).'),
+                'INDI:*:ADDR:_LIST4 YES'       => new CustomElement('Indicates that a person’s address is part of the Research grouping (under an ADDR block).'),
+                'INDI:*:ADDR:_LIST5 YES'       => new CustomElement('Indicates that a person’s address is part of the Christmas grouping (under an ADDR block).'),
+                'INDI:*:ADDR:_LIST6 YES'       => new CustomElement('Indicates that a person’s address is part of the Holiday grouping (under an ADDR block).'),
+                'INDI:*:ADDR:_NAME'            => new CustomElement('The name of an individual as part of an address (under an ADDR block).'),
+                'INDI:*:ADDR:_PRIV'            => new CustomElement('Indicates that an address or event is marked as Private.'),
+                'INDI:*:ADDR:_SORT'            => new CustomElement('The spelling of a name to be used when sorting addresses for a report (under an ADDR block).'),
+                'INDI:*:ADDR:_TAG'             => new CustomElement('Indicates that an address, or place has been tagged.  Also used for Tag 1 selection for an individual.'),
+                'INDI:*:PLAC:_TAG'             => new CustomElement('Indicates that an address, or place has been tagged.  Also used for Tag 1 selection for an individual.'),
+                'INDI:*:PLAC:_VERI'            => new CustomElement('Indicates that a source citation or place name has a checkmark in the Verified column.'),
+                'INDI:*:SOUR:_VERI'            => new CustomElement('Indicates that a source citation or place name has a checkmark in the Verified column.'),
+                'INDI:*:_PRIV'                 => new CustomElement('Indicates that an address or event is marked as Private.'),
+                'INDI:ADDR:_EMAIL'             => new CustomElement('An email address (under an ADDR block).'),
+                'INDI:ADDR:_LIST1 YES'         => new CustomElement('Indicates that a person’s address is part of the Newsletter grouping (under an ADDR block).'),
+                'INDI:ADDR:_LIST2 YES'         => new CustomElement('Indicates that a person’s address is part of the Family Association grouping (under an ADDR block).'),
+                'INDI:EVEN:_OVER'              => new CustomElement('An event sentence override (under an EVEN block).'),
+                'INDI:SOUR:_VERI'              => new CustomElement('Indicates that a source citation or place name has a checkmark in the Verified column.'),
+                'INDI:_TAG'                    => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG2'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG3'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG4'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG5'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG6'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG7'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG8'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TAG9'                   => new CustomElement('When under an INDI record, indicates that an individual has been given certain tag marks.'),
+                'INDI:_TODO'                   => new CustomElement('Research task'),
+                'INDI:_TODO:_CAT'              => new CustomElement('The Category of a To-Do item (under a _TODO record).'),
+                'INDI:_TODO:_CDATE'            => new CustomElement('Closed Date of a To-Do item (under a _TODO record).'),
+                'INDI:_TODO:_LOCL'             => new CustomElement('The Locality of a To-Do item (under a _TODO record).'),
+                'INDI:_TODO:_RDATE'            => new CustomElement('Reminder date on to-do items. (Under a _TODO record.)'),
+                'INDI:_UID'                    => new CustomElement('A Unique Identification Number given to each individual in a family file.'),
+                'INDI:_URL'                    => new CustomElement('An Internet address (under an INDI record).'),
+                'OBJE:_DATE'                   => new CustomElement('A date associated with a multimedia object, usually a picture or video (under an OBJE block).'),
+                'OBJE:_PRIM'                   => new CustomElement('Means a multimedia object, usually a picture, is the Primary object (the one that is shown on a report) (under an OBJE block).'),
+                'OBJE:_SCBK'                   => new CustomElement('Indicates that a Picture is tagged to be included in a scrapbook report (under an OBJE block).'),
+                'OBJE:_SOUND'                  => new CustomElement('A sound file name that is attached to a picture (under an OBJE block).'),
+                'OBJE:_TYPE'                   => new CustomElement('The type of a multimedia object: Photo, Sound, or Video (under an OBJE block).'),
+                'SOUR:_ITALIC Y'               => new CustomElement('Indicates that a source title should be printed on a report in italics (under a SOUR record).'),
+                'SOUR:_PAREN'                  => new CustomElement('Indicates that the Publication Facts of a source should be printed within parentheses on a report (under a SOUR record).'),
+                'SOUR:_QUOTED Y'               => new CustomElement('Indicates that a source title should be printed within quotes on a report (under a SOUR record).'),
+                'SOUR:_TAG NO'                 => new CustomElement('When used under a SOUR record, indicates to exclude the source citation detail on reports.'),
+                'SOUR:_TAG2 NO'                => new CustomElement('When used under a SOUR record, indicates to exclude the source citation on reports.'),
+                'SOUR:_TAG3 YES'               => new CustomElement('When used under a SOUR record, indicates to include the source citation detail text on reports.'),
+                'SOUR:_TAG4 YES'               => new CustomElement('When used under a SOUR record, indicates to include the source citation detail notes on reports.'),
+                '_PREF'                        => new CustomElement('Indicates a Preferred spouse, child or parents.'), // How is this used?
+            ]);
+
+            // Personal Ancestral File extensions
+            $this->register([
+                'INDI:NAME:_ADPN' => new NamePersonal(I18N::translate('Adopted name')),
+                'INDI:NAME:_AKA'  => new NamePersonal(I18N::translate('Also known as')),
+                'INDI:NAME:_AKAN' => new NamePersonal(I18N::translate('Also known as')),
+                'URL'             => new CustomElement(I18N::translate('URL')),
+                '_HEB'            => new CustomElement(I18N::translate('Hebrew')),
+                '_NAME'           => new CustomElement(I18N::translate('Mailing name')),
+                '_SCBK'           => new CustomElement(I18N::translate('Scrapbook')),
+                '_SSHOW'          => new CustomElement(I18N::translate('Slide show')),
+                '_TYPE'           => new CustomElement(I18N::translate('Media type')),
+                '_URL'            => new CustomElement(I18N::translate('URL')),
+            ]);
+
+            // PhpGedView extensions
+            $this->register([
+                'FAM:CHAN:_PGVU'        => new WebtreesUser(I18N::translate('Author of last change')),
+                'FAM:COMM'              => new CustomElement(I18N::translate('Comment')),
+                'INDI:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
+                'INDI:COMM'             => new CustomElement(I18N::translate('Comment')),
+                'INDI:NAME:_HEB'        => new NamePersonal(I18N::translate('Name in Hebrew')),
+                'INDI:_HOL'             => new CustomEvent(I18N::translate('Holocaust')),
+                'INDI:_PGV_OBJS'        => new XrefMedia(I18N::translate('Re-order media')),
+                'NOTE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
+                'OBJE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
+                'OBJE:_PRIM'            => new CustomElement(I18N::translate('Highlighted image')),
+                'OBJE:_THUM'            => new CustomElement(I18N::translate('Thumbnail image')),
+                'REPO:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
+                'SOUR:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
+                'SOUR:SERV'             => new CustomElement(I18N::translate('Remote server')),
+                'SOUR:URL'              => new AddressWebPage(I18N::translate('URL')),
+                'SOUR:URL:TYPE'         => new CustomElement(I18N::translate('Type')), // e.g. "FamilySearch"
+                'SOUR:URL:_BLOCK'       => new CustomElement(I18N::translate('Block')), // "e.g. "false"
+                'SOUR:_DBID'            => new CustomElement(I18N::translate('Database name')),
+                'SOUR:_DBID:_PASS'      => new CustomElement(I18N::translate('Database password')),
+                'SOUR:_DBID:_PASS:RESN' => new RestrictionNotice(I18N::translate('Restriction')),
+                'SOUR:_DBID:_USER'      => new CustomElement(I18N::translate('Database user account')),
+            ]);
+
+            // Reunion extensions
+            $this->register([
+                'INDI:EMAL'       => new AddressEmail(I18N::translate('Email address')),
+                'INDI:CITN'  => new CustomElement(I18N::translate('Citizenship')),
+                'INDI:_LEGA' => new CustomElement(I18N::translate('Legatee')),
+                'INDI:_MDCL' => new CustomElement(I18N::translate('Medical')),
+                'INDI:_PURC' => new CustomElement('Land purchase'),
+                'INDI:_SALE' => new CustomElement('Land sale'),
+            ]);
+
+            // Roots Magic extensions
+            $this->register([
+                'INDI:_DNA'  => new CustomElement(I18N::translate('DNA markers')),
+                'SOUR:_BIBL' => new CustomElement(I18N::translate('Bibliography')),
+                'SOUR:_SUBQ' => new CustomElement(I18N::translate('Abbreviation')),
+            ]);
+
+            // webtrees extensions
+            $this->register([
+                'FAM:*:_ASSO'        => new XrefIndividual(I18N::translate('Associate')),
+                'FAM:*:_ASSO:RELA'   => new RelationIsDescriptor(I18N::translate('Relationship')),
+                'FAM:CHAN:_WT_USER'  => new WebtreesUser(I18N::translate('Author of last change')),
+                'FAM:_UID'           => new PafUid(I18N::translate('Unique identifier')),
+                'INDI:*:ASSO'        => new XrefIndividual(I18N::translate('Associate')),
+                'INDI:*:ASSO:RELA'   => new RelationIsDescriptor(I18N::translate('Relationship')),
+                'INDI:*:PLAC:_HEB'   => new NoteStructure(I18N::translate('Place in Hebrew')),
+                'INDI:*:_ASSO'       => new XrefIndividual(I18N::translate('Associate')),
+                'INDI:*:_ASSO:RELA'  => new RelationIsDescriptor(I18N::translate('Relationship')),
+                'INDI:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
+                'INDI:_UID'          => new PafUid(I18N::translate('Unique identifier')),
+                'INDI:_WT_OBJE_SORT' => new XrefMedia(I18N::translate('Re-order media')),
+                'NOTE:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
+                'NOTE:RESN'          => new RestrictionNotice(I18N::translate('Restriction')),
+                'NOTE:_UID'          => new PafUid(I18N::translate('Unique identifier')),
+                'OBJE:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
+                'OBJE:RESN'          => new RestrictionNotice(I18N::translate('Restriction')),
+                'OBJE:_UID'          => new PafUid(I18N::translate('Unique identifier')),
+                'REPO:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
+                'REPO:RESN'          => new RestrictionNotice(I18N::translate('Restriction')),
+                'REPO:_UID'          => new PafUid(I18N::translate('Unique identifier')),
+                'SOUR:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
+                'SOUR:RESN'          => new RestrictionNotice(I18N::translate('Restriction')),
+                'SOUR:_UID'          => new PafUid(I18N::translate('Unique identifier')),
+                'SUBM:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
+                'SUBM:RESN'          => new RestrictionNotice(I18N::translate('Restriction')),
+                'SUBM:_UID'          => new PafUid(I18N::translate('Unique identifier')),
+                'SUBN:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
+                'SUBN:RESN'          => new RestrictionNotice(I18N::translate('Restriction')),
+                'SUBN:_UID'          => new PafUid(I18N::translate('Unique identifier')),
+            ]);
         }
 
         return $this->elements;
+    }
+
+    /**
+     * Register more elements.
+     *
+     * @param array<string,ElementInterface> $elements
+     */
+    public function register(array $elements): void
+    {
+        $this->elements = array_merge($this->elements(), $elements);
+    }
+
+    /**
+     * @param string $tag
+     *
+     * @return ElementInterface|null
+     */
+    private function findElementByWildcard(string $tag): ?ElementInterface
+    {
+        foreach ($this->elements() as $tags => $element) {
+            if (strpos($tags, '*') !== false) {
+                $regex = '/^' . strtr($tags, ['*' => '[^:]+']) . '$/';
+
+                if (preg_match($regex, $tag)) {
+                    return $element;
+                }
+            }
+        }
+
+        return null;
     }
 }

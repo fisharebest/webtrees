@@ -1367,7 +1367,7 @@ class GedcomRecord
     {
         $next_level = substr_count($tag, ':') + 1;
         $factory    = Registry::elementFactory();
-        $subtags    = $factory->make($tag)->subtags($this->tree);
+        $subtags    = $factory->make($tag)->subtags();
 
         // The first part is level N (includes CONT records).  The remainder are level N+1.
         $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);

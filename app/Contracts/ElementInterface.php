@@ -83,11 +83,9 @@ interface ElementInterface
     public function labelValue(string $value, Tree $tree): string;
 
     /**
-     * @param Tree $tree
-     *
      * @return array<string,string>
      */
-    public function subtags(Tree $tree): array;
+    public function subtags(): array;
 
     /**
      * Display the value of this type of element.

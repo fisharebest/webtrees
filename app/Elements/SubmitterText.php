@@ -37,7 +37,7 @@ class SubmitterText extends AbstractElement
     public function canonical(string $value): string
     {
         // Browsers use MS-DOS line endings in multi-line data.
-        return strtr($value, ["\r\n" => "\n", "\r" => "\n"]);
+        return strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
     }
 
     /**
