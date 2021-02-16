@@ -317,7 +317,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
                 return (object) [
                     'record' => Registry::gedcomRecordFactory()->make($row->xref, $tree, $row->new_gedcom),
                     'time'   => Carbon::create($row->change_time)->local(),
-                    'user'   => $this->user_service->find($row->user_id),
+                    'user'   => $this->user_service->find((int) $row->user_id),
                 ];
             })
             ->filter(static function (stdClass $row): bool {
