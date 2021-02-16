@@ -185,7 +185,7 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
         ];
 
         return view('modules/top10_givnnames/config', [
-            'infoStyle'   => $info_style,
+            'info_style'  => $info_style,
             'info_styles' => $info_styles,
             'num'         => $num,
         ]);
