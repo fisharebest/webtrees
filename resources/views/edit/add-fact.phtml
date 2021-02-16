@@ -20,7 +20,7 @@ use Ramsey\Uuid\Uuid;
 
 ?>
 
-<h2 class="wt-page-title"><?= $title ?></h2>z
+<h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
