@@ -63,7 +63,7 @@ use Illuminate\Support\Collection;
         <?php foreach ($faqs as $faq) : ?>
             <tr class="faq_edit_pos">
                 <td>
-                    <?= I18N::number($faq->block_order + 1) ?>
+                    <?= I18N::number($faq->block_order) ?>
                 </td>
                 <td>
                     <?php if ($faq->gedcom_id === null) : ?>

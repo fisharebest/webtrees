@@ -346,7 +346,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $header      = $params['header'];
         $languages   = $params['languages'] ?? [];
         $gedcom_id   = $params['gedcom_id'];
-        $block_order = $params['block_order'];
+        $block_order = (int) $params['block_order'];
 
         if ($gedcom_id === '') {
             $gedcom_id = null;
