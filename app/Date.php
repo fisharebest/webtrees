@@ -263,9 +263,7 @@ class Date
             $CALENDAR_FORMAT = '';
         }
 
-        if ($date_format === null) {
-            $date_format = I18N::dateFormat();
-        }
+        $date_format = $date_format ?? I18N::dateFormat();
 
         if ($convert_calendars) {
             $calendar_format = explode('_and_', $CALENDAR_FORMAT);
