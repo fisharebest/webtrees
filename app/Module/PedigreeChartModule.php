@@ -22,10 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -103,7 +103,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             ->allows(RequestMethodInterface::METHOD_POST)
             ->tokens([
                 'generations' => '\d+',
-                'style'       => implode('|', array_keys($this->styles())),
+                'style'       => implode('|', array_keys($this->styles('ltr'))),
             ]);
     }
 
@@ -267,7 +267,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             'max_generations'    => self::MAXIMUM_GENERATIONS,
             'min_generations'    => self::MINIMUM_GENERATIONS,
             'style'              => $style,
-            'styles'             => $this->styles(),
+            'styles'             => $this->styles(I18N::direction()),
             'title'              => $this->chartTitle($individual),
             'tree'               => $tree,
         ]);
@@ -375,15 +375,27 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * This chart can display its output in a number of styles
      *
+     * @param string $direction
+     *
      * @return array<string>
      */
-    protected function styles(): array
+    protected function styles(string $direction): array
     {
+        // On right-to-left pages, the CSS will mirror the chart, so we need to mirror the label.
+        if ($direction === 'rtl') {
+            return [
+                self::STYLE_RIGHT => view('icons/pedigree-left') . I18N::translate('left'),
+                self::STYLE_LEFT  => view('icons/pedigree-right') . I18N::translate('right'),
+                self::STYLE_UP    => view('icons/pedigree-up') . I18N::translate('up'),
+                self::STYLE_DOWN  => view('icons/pedigree-down') . I18N::translate('down'),
+            ];
+        }
+
         return [
-            self::STYLE_LEFT  => I18N::translate('Left'),
-            self::STYLE_RIGHT => I18N::translate('Right'),
-            self::STYLE_UP    => I18N::translate('Up'),
-            self::STYLE_DOWN  => I18N::translate('Down'),
+            self::STYLE_LEFT  => view('icons/pedigree-left') . I18N::translate('left'),
+            self::STYLE_RIGHT => view('icons/pedigree-right') . I18N::translate('right'),
+            self::STYLE_UP    => view('icons/pedigree-up') . I18N::translate('up'),
+            self::STYLE_DOWN  => view('icons/pedigree-down') . I18N::translate('down'),
         ];
     }
 }

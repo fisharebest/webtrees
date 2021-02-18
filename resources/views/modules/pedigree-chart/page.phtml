@@ -5,14 +5,15 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string     $ajax_url
- * @var int        $generations
- * @var Individual $individual
- * @var int        $max_generations
- * @var int        $min_generations
- * @var string     $style
- * @var string     $title
- * @var Tree       $tree
+ * @var string               $ajax_url
+ * @var int                  $generations
+ * @var Individual           $individual
+ * @var int                  $max_generations
+ * @var int                  $min_generations
+ * @var string               $style
+ * @var array<string,string> $styles
+ * @var string               $title
+ * @var Tree                 $tree
  */
 
 ?>
@@ -47,7 +48,7 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('Layout') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/radios-inline', ['name' => 'style', 'options' => ['left' => view('icons/pedigree-left') . I18N::translate('left'), 'right' => view('icons/pedigree-right') . I18N::translate('right'), 'up' => view('icons/pedigree-up') . I18N::translate('up'), 'down' => view('icons/pedigree-down') . I18N::translate('down'),], 'selected' => $style]) ?>
+            <?= view('components/radios-inline', ['name' => 'style', 'options' => $styles, 'selected' => $style]) ?>
         </div>
     </div>
 
