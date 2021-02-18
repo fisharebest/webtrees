@@ -421,9 +421,6 @@ class WebRoutes
                 $router->post(DeleteUser::class, '/users/delete/{user_id}');
                 $router->get(UserPageDefaultEdit::class, '/user-page-default-edit');
                 $router->post(UserPageDefaultUpdate::class, '/user-page-default-update');
-
-                // @deprecated since 2.0.8 - will be removed in 2.1.0
-                $router->get('modules', '/modules', ModulesAllPage::class);
             });
 
             // Manager routes (multiple trees).

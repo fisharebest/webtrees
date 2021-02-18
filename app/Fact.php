@@ -431,20 +431,6 @@ class Fact
     }
 
     /**
-     * Used to convert a real fact (e.g. BIRT) into a close-relative’s fact (e.g. _BIRT_CHIL)
-     *
-     * @param string $tag
-     *
-     * @return void
-     *
-     * @deprecated since 2.0.5.  Will be removed in 2.1.0
-     */
-    public function setTag(string $tag): void
-    {
-        $this->tag = $tag;
-    }
-
-    /**
      * The Person/Family record where this Fact came from
      *
      * @return Individual|Family|Source|Repository|Media|Note|Submitter|Submission|Location|Header|GedcomRecord

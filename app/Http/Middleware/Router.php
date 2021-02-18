@@ -153,10 +153,6 @@ class Router implements MiddlewareInterface
         $dispatcher = new Dispatcher($middleware, app());
 
         // These are deprecated, and will be removed in webtrees 2.1.0
-        app()->instance('cache.array', Registry::cache()->array());
-        app()->instance('cache.files', Registry::cache()->file());
-
-        // These are deprecated, and will be removed in webtrees 2.1.0
         $request = $request
             ->withAttribute('filesystem.data', Registry::filesystem()->data())
             ->withAttribute('filesystem.data.name', Registry::filesystem()->dataName())

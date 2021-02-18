@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
 use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
 
 /**
@@ -30,38 +29,6 @@ class Submitter extends GedcomRecord
     public const RECORD_TYPE = 'SUBM';
 
     protected const ROUTE_NAME = SubmitterPage::class;
-
-    /**
-     * A closure which will create a record from a database row.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::submitterFactory()
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    public static function rowMapper(Tree $tree): Closure
-    {
-        return Registry::submitterFactory()->mapper($tree);
-    }
-
-    /**
-     * Get an instance of a submitter object. For single records,
-     * we just receive the XREF. For bulk records (such as lists
-     * and search results) we can receive the GEDCOM data as well.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::submitterFactory()
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Submitter|null
-     */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Submitter
-    {
-        return Registry::submitterFactory()->make($xref, $tree, $gedcom);
-    }
 
     /**
      * Extract names from the GEDCOM record.

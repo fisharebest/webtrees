@@ -140,7 +140,6 @@ class SetupWizard implements RequestHandlerInterface
         $request     = $request->withAttribute('client-ip', $ip_address);
 
         app()->instance(ServerRequestInterface::class, $request);
-        app()->instance('cache.array', new Cache(new NullAdapter()));
 
         $data = $this->userData($request);
 

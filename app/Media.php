@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -33,38 +32,6 @@ class Media extends GedcomRecord
     public const RECORD_TYPE = 'OBJE';
 
     protected const ROUTE_NAME = MediaPage::class;
-
-    /**
-     * A closure which will create a record from a database row.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::mediaFactory()
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    public static function rowMapper(Tree $tree): Closure
-    {
-        return Registry::mediaFactory()->mapper($tree);
-    }
-
-    /**
-     * Get an instance of a media object. For single records,
-     * we just receive the XREF. For bulk records (such as lists
-     * and search results) we can receive the GEDCOM data as well.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::mediaFactory()
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Media|null
-     */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Media
-    {
-        return Registry::mediaFactory()->make($xref, $tree, $gedcom);
-    }
 
     /**
      * Each object type may have its own special rules, and re-implement this function.

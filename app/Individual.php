@@ -51,20 +51,6 @@ class Individual extends GedcomRecord
     private $estimated_death_date;
 
     /**
-     * A closure which will create a record from a database row.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::individualFactory()
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    public static function rowMapper(Tree $tree): Closure
-    {
-        return Registry::individualFactory()->mapper($tree);
-    }
-
-    /**
      * A closure which will compare individuals by birth date.
      *
      * @return Closure
@@ -86,24 +72,6 @@ class Individual extends GedcomRecord
         return static function (Individual $x, Individual $y): int {
             return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
         };
-    }
-
-    /**
-     * Get an instance of an individual object. For single records,
-     * we just receive the XREF. For bulk records (such as lists
-     * and search results) we can receive the GEDCOM data as well.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::individualFactory()
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Individual|null
-     */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Individual
-    {
-        return Registry::individualFactory()->make($xref, $tree, $gedcom);
     }
 
     /**
@@ -478,18 +446,6 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Get the year of birth
-     *
-     * @return string the year of birth
-     *
-     * @deprecated - will be removed in 2.1.0
-     */
-    public function getBirthYear(): string
-    {
-        return $this->getBirthDate()->minimumDate()->format('%Y');
-    }
-
-    /**
      * Get the date of death
      *
      * @return Date
@@ -517,18 +473,6 @@ class Individual extends GedcomRecord
         }
 
         return new Place('', $this->tree);
-    }
-
-    /**
-     * get the death year
-     *
-     * @return string the year of death
-     *
-     * @deprecated - will be removed in 2.1.0
-     */
-    public function getDeathYear(): string
-    {
-        return $this->getDeathDate()->minimumDate()->format('%Y');
     }
 
     /**

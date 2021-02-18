@@ -312,72 +312,6 @@ class Tree
     }
 
     /**
-     * Delete everything relating to a tree
-     *
-     * @return void
-     *
-     * @deprecated - since 2.0.12 - will be removed in 2.1.0
-     */
-    public function delete(): void
-    {
-        $tree_service = new TreeService();
-
-        $tree_service->delete($this);
-    }
-
-    /**
-     * Delete all the genealogy data from a tree - in preparation for importing
-     * new data. Optionally retain the media data, for when the user has been
-     * editing their data offline using an application which deletes (or does not
-     * support) media data.
-     *
-     * @param bool $keep_media
-     *
-     * @return void
-     *
-     * @deprecated - since 2.0.12 - will be removed in 2.1.0
-     */
-    public function deleteGenealogyData(bool $keep_media): void
-    {
-        $tree_service = new TreeService();
-
-        $tree_service->deleteGenealogyData($this, $keep_media);
-    }
-
-    /**
-     * Export the tree to a GEDCOM file
-     *
-     * @param resource $stream
-     *
-     * @return void
-     *
-     * @deprecated since 2.0.5.  Will be removed in 2.1.0
-     */
-    public function exportGedcom($stream): void
-    {
-        $gedcom_export_service = new GedcomExportService();
-
-        $gedcom_export_service->export($this, $stream);
-    }
-
-    /**
-     * Import data from a gedcom file into this tree.
-     *
-     * @param StreamInterface $stream   The GEDCOM file.
-     * @param string          $filename The preferred filename, for export/download.
-     *
-     * @return void
-     *
-     * @deprecated since 2.0.12.  Will be removed in 2.1.0
-     */
-    public function importGedcomFile(StreamInterface $stream, string $filename): void
-    {
-        $tree_service = new TreeService();
-
-        $tree_service->importGedcomFile($this, $stream, $filename);
-    }
-
-    /**
      * Create a new record from GEDCOM data.
      *
      * @param string $gedcom
@@ -418,17 +352,6 @@ class Tree
         }
 
         return Registry::gedcomRecordFactory()->new($xref, '', $gedcom, $this);
-    }
-
-    /**
-     * Generate a new XREF, unique across all family trees
-     *
-     * @return string
-     * @deprecated - use the factory directly.
-     */
-    public function getNewXref(): string
-    {
-        return Registry::xrefFactory()->make(GedcomRecord::RECORD_TYPE);
     }
 
     /**

@@ -83,20 +83,6 @@ class Age
      * Show zero ages without any units.
      *
      * @return string
-     * @deprecated - will be removed in 2.1.0
-     */
-    public function ageString(): string
-    {
-        return $this->__toString();
-    }
-
-    /**
-     * Show an age in a human-friendly form, such as "34 years", "8 months", "20 days".
-     * Show an empty string for invalid/missing dates.
-     * Show a warning icon for negative ages.
-     * Show zero ages without any units.
-     *
-     * @return string
      */
     public function __toString(): string
     {
@@ -171,51 +157,5 @@ class Age
 
 
         return I18N::number($this->years);
-    }
-
-    /**
-     * @param bool $living
-     *
-     * @return string
-     * @deprecated - will be removed in 2.1.0
-     */
-    public function ageAtEvent(bool $living): string
-    {
-        $age = (string) $this;
-
-        if ($age === '') {
-            return '';
-        }
-
-        if ($living) {
-            /* I18N: The current age of a living individual */
-            return I18N::translate('(age %s)', $age);
-        }
-
-        /* I18N: The age of an individual at a given date */
-        return I18N::translate('(aged %s)', $age);
-    }
-
-    /**
-     * Similar to ageAtEvent, but for events such as burial, cremation, etc.
-     *
-     * @return string
-     * @deprecated - will be removed in 2.1.0
-     */
-    public function timeAfterDeath(): string
-    {
-        if (!$this->is_valid) {
-            return '';
-        }
-
-        if ($this->years === 0 && $this->months === 0 && $this->days === 0) {
-            if ($this->is_exact) {
-                return I18N::translate('(on the date of death)');
-            }
-
-            return '';
-        }
-
-        return I18N::translate('(%s after death)', (string) $this);
     }
 }

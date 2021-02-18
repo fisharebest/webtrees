@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Closure;
 use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
 
 /**
@@ -30,38 +29,6 @@ class Repository extends GedcomRecord
     public const RECORD_TYPE = 'REPO';
 
     protected const ROUTE_NAME = RepositoryPage::class;
-
-    /**
-     * A closure which will create a record from a database row.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::repositoryFactory()
-     *
-     * @param Tree $tree
-     *
-     * @return Closure
-     */
-    public static function rowMapper(Tree $tree): Closure
-    {
-        return Registry::repositoryFactory()->mapper($tree);
-    }
-
-    /**
-     * Get an instance of a repository object. For single records,
-     * we just receive the XREF. For bulk records (such as lists
-     * and search results) we can receive the GEDCOM data as well.
-     *
-     * @deprecated since 2.0.4.  Will be removed in 2.1.0 - Use Registry::repositoryFactory()
-     *
-     * @param string      $xref
-     * @param Tree        $tree
-     * @param string|null $gedcom
-     *
-     * @return Repository|null
-     */
-    public static function getInstance(string $xref, Tree $tree, string $gedcom = null): ?Repository
-    {
-        return Registry::repositoryFactory()->make($xref, $tree, $gedcom);
-    }
 
     /**
      * Extract names from the GEDCOM record.

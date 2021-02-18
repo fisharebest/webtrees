@@ -848,9 +848,6 @@ class ModuleService
      */
     public function bootModules(ModuleThemeInterface $current_theme): void
     {
-        // @deprecated since 2.0.8 - will be removed in 2.1.0
-        app()->instance('cache.array', Registry::cache()->array());
-
         foreach ($this->all() as $module) {
             // Only bootstrap the current theme.
             if ($module instanceof ModuleThemeInterface && $module !== $current_theme) {
