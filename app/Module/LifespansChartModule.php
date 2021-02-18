@@ -264,7 +264,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         // Round to whole decades
         $start_year = intdiv($this->minYear($individuals), 10) * 10;
-        $end_year   = intdiv($this->maxYear($individuals), 10) * 10;
+        $end_year   = intdiv($this->maxYear($individuals) + 9, 10) * 10;
 
         $lifespans = $this->layoutIndividuals($individuals);
 
