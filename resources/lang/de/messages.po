@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-01-05 13:29+0000\n"
-"PO-Revision-Date: 2020-08-21 17:21+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-01-05 13:29+0000\nPO-Revision-Date: 2021-02-26 12:36+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -134,7 +122,7 @@ msgstr "%1$s × %2$s Pixel"
 #: resources/views/edit/edit-fact.phtml:118
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:548 app/Module/StatisticsChartModule.php:871
@@ -493,7 +481,7 @@ msgstr "(%s alt)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s alt)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:352
@@ -501,7 +489,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s alt)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -1479,7 +1467,7 @@ msgstr "Adresszeile 2"
 #. I18N: gedcom tag ADD2
 #: app/GedcomTag.php:457
 msgid "Address line 3"
-msgstr ""
+msgstr "Adresszeile 3"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
@@ -3391,7 +3379,7 @@ msgstr "Blöcke auf der “Meine Seite”-Seite ändern"
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Geändert von %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
@@ -3932,7 +3920,7 @@ msgstr "CEME-Tag nach GEDCOM 5.5.1 konvertieren"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:85
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "_XXX-Tags in NAME nach GEDCOM 5.5.1 konvertieren"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
@@ -3962,7 +3950,7 @@ msgstr "Cookies"
 #. I18N: gedcom tag MAP
 #: app/GedcomTag.php:791
 msgid "Coordinates"
-msgstr ""
+msgstr "Koordinaten"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:318
@@ -5521,7 +5509,7 @@ msgstr "Elul"
 
 #: resources/views/password-request-page.phtml:21
 msgid "Email"
-msgstr "Email"
+msgstr "E-Mail"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -6661,7 +6649,7 @@ msgstr "GEDCOM-Datei"
 #. I18N: gedcom tag _GOV - see https://gov.genealogy.net
 #: app/GedcomTag.php:1142
 msgid "GOV identifier"
-msgstr ""
+msgstr "GOV-Kennung"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7154,7 +7142,7 @@ msgstr "für niemand zeigen"
 
 #: resources/views/admin/locations.phtml:31
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Unbenutzte Orte ausblenden"
 
 #. I18N: gedcom tag _PRIM
 #: app/GedcomTag.php:1174 resources/xml/reports/individual_ext_report.xml:11
@@ -7692,7 +7680,7 @@ msgstr "Interaktives Sanduhrdiagramm von %s"
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1161
 msgid "Interment"
-msgstr ""
+msgstr "Beisetzung"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
@@ -9468,7 +9456,7 @@ msgstr "Die meisten Mailserver benötigen einen gültigen Domainnamen."
 
 #: resources/views/admin/site-mail.phtml:68
 msgid "Most mail servers require a valid email address."
-msgstr "Die meisten Mailserver benötigen eine gültige Email-Adresse."
+msgstr "Die meisten Mailserver benötigen eine gültige E-Mail-Adresse."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:171
@@ -12130,7 +12118,7 @@ msgstr "Eine Test-E-Mail mit diesen Einstellungen senden"
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:14
 msgid "Send out reminder emails"
-msgstr "Erinnerungs E-Mails versenden"
+msgstr "Erinnerungs-E-Mails versenden"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
@@ -12140,7 +12128,7 @@ msgstr "Absender"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:64
 #: resources/views/admin/control-panel.phtml:186
 msgid "Sending email"
-msgstr "Sende E-Mail"
+msgstr "E-Mail-Versand"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:165
@@ -12165,7 +12153,7 @@ msgstr "Sep"
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1235
 msgid "Separation"
-msgstr ""
+msgstr "Trennung"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -12678,7 +12666,7 @@ msgstr "Zeige die Geburtsorte der Vorfahren in einer Landkarte."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Datum und Zeit anzeigen"
 
 #: resources/views/modules/html/config.phtml:45
 msgid "Show the date and time of update"
@@ -12958,7 +12946,7 @@ msgstr "Manche Genealogie-Software erstellt GEDCOM-Dateien, die Medien-Dateiname
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:96
 msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr ""
+msgstr "Einige Genealogie-Anwendungen speichern alle Namen in einem einzigen Namensdatensatz und verwenden dafür benutzerdefinierte Tags wie _MARNM und _AKA. Eine Alternative ist, für jeden Namen einen neuen Namensdatensatz zu erstellen."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:639
@@ -14142,7 +14130,7 @@ msgstr[1] "Es gab keine Veränderungen in den letzen %s Tagen."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:107
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr "Es gibt kein Benutzerkonto mit der Email “%s”."
+msgstr "Es gibt kein Benutzerkonto mit der E-Mail “%s”."
 
 #: app/Http/Controllers/Admin/MediaController.php:472
 #: app/Http/Controllers/EditMediaController.php:128
@@ -14194,7 +14182,7 @@ msgstr "Das Benutzerkonto wurde noch nicht genehmigt. Bitte warten Sie auf die B
 
 #: app/Http/RequestHandlers/LoginAction.php:132
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Das Benutzerkonto wurde noch nicht verifiziert. Bitte den E-Mail Posteingang auf eine Bestätigungsmeldung überprüfen."
+msgstr "Das Benutzerkonto wurde noch nicht verifiziert. Bitte den E-Mail-Posteingang auf eine Bestätigungsmeldung überprüfen."
 
 #: resources/views/modules/review_changes/config.phtml:8
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -15726,7 +15714,7 @@ msgstr "Wasserzeichen sind optional und sind normalerweise nur für Besucher sic
 #: resources/views/register-success-page.phtml:17
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt. Sie müssen den in der Mail enthaltenen Anweisungen folgen, um Ihr Benutzerkonto zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihre Registrierungsanfrage automatisch verworfen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungsmail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie dann Ihren Benutzernamen und Ihr Passwort."
+msgstr "Ihnen wird nun eine Bestätigungs-E-Mail an die Adresse <b>%s</b> geschickt. Sie müssen den in der E-Mail enthaltenen Anweisungen folgen, um Ihr Benutzerkonto zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihre Registrierungsanfrage automatisch verworfen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs-E-Mail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie dann Ihren Benutzernamen und Ihr Passwort."
 
 #: resources/views/admin/control-panel.phtml:130
 #: resources/views/admin/control-panel.phtml:573
@@ -16080,7 +16068,7 @@ msgstr "Bitte entfernen Sie das „%1$s“ von „%2$s“ und versuchen Sie es e
 
 #: resources/views/admin/users-edit.phtml:95
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Sie sollten keinen Zugang genehmigen, solange Sie nicht wissen, dass die E-Mail-Adresse richtig ist."
+msgstr "Sie sollten keinen Zugang genehmigen, solange Sie nicht wissen, ob die E-Mail-Adresse richtig ist."
 
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:19
@@ -19607,12 +19595,12 @@ msgstr "zeigen"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "In webtrees gemachte Änderungen anzeigen"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "In den genealogischen Daten gespeicherte Änderungen anzeigen"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:23
@@ -20164,7 +20152,7 @@ msgstr "webtrees benötigt eine Datenbank zum Speichern Ihrer genealogischen Dat
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr "webtrees muss Emails wie Passworterinnerungen und Webseiten-Benachrichtigungen senden."
+msgstr "webtrees muss E-Mails wie Passworterinnerungen und Webseiten-Benachrichtigungen senden."
 
 #: app/Services/MessageService.php:228
 msgid "webtrees sends emails with no storage"
