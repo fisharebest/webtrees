@@ -93,13 +93,11 @@ use Fisharebest\Webtrees\View;
     'use strict';
 
     window.WT_OSM_ADMIN = (function () {
-        const minZoom = 2;
+        const minZoom   = 2;
+        const provider  = <?= json_encode($provider) ?>;
+        const add_place = <?= json_encode($location->id() === null) ?>;
 
-        let provider = <?= json_encode($provider) ?>;
         let map = null;
-        let add_place = <?= json_encode($location->id() === null) ?>;
-        console.log(add_place);
-
         // map components
 
         // postcss_image_inliner breaks the autodetection of image paths.
@@ -114,7 +112,6 @@ use Fisharebest\Webtrees\View;
                 map.panTo(coords);
                 $('#new_place_lati').val(Number(coords.lat).toFixed(5));
                 $('#new_place_long').val(Number(coords.lng).toFixed(5));
-                $('#new_zoom_factor').val(Number(map.getZoom()));
             });
 
         //reset map to initial state
@@ -161,15 +158,14 @@ use Fisharebest\Webtrees\View;
         })
             .on('markgeocode', function (result) {
                 let coords = result.geocode.center;
-                let place = result.geocode.name.split(',', 1);
+                let place = result.geocode.name.split(',', 1).toString();
                 marker.setLatLng(coords);
                 map.panTo(coords);
                 if (add_place) {
-                    $('#new_place_name').val(place.shift());
+                    $('#new_place_name').val(place);
                 }
                 $('#new_place_lati').val(Number(coords.lat).toFixed(5));
                 $('#new_place_long').val(Number(coords.lng).toFixed(5));
-                $('#new_zoom_factor').val(Number(map.getZoom()));
             });
 
         /**
@@ -201,7 +197,7 @@ use Fisharebest\Webtrees\View;
             .addLayer(L.tileLayer(provider.url, provider.options))
             .fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]})
             .on('zoomend', function () {
-                $('#new_zoom_factor').val(map.getZoom());
+              $('.editable').trigger('change');
             });
 
         return 'Leaflet map interface for webtrees-2';
