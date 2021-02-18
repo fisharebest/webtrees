@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use DOMDocument;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -28,6 +29,9 @@ use Fisharebest\Webtrees\Tree;
  */
 abstract class AbstractElementTest extends TestCase
 {
+    private const EVIL_VALUE = '<script>evil()</script>';
+    private const TEST_VALUE = '01 JAN 1970';
+
     /** @var ElementInterface */
     protected static $element;
 
@@ -59,11 +63,10 @@ abstract class AbstractElementTest extends TestCase
     public function testXssInValue(): void
     {
         $tree    = $this->createMock(Tree::class);
-        $evil    = '<script>evil()</script>';
-        $html    = static::$element->value($evil, $tree);
+        $html    = static::$element->value(self::EVIL_VALUE, $tree);
         $message = 'XSS vulnerability in value()';
 
-        self::assertStringNotContainsStringIgnoringCase($evil, $html, $message);
+        self::assertStringNotContainsStringIgnoringCase(self::EVIL_VALUE, $html, $message);
     }
 
     /**
@@ -72,11 +75,10 @@ abstract class AbstractElementTest extends TestCase
     public function testXssInLabelValue(): void
     {
         $tree    = $this->createMock(Tree::class);
-        $evil    = '<script>evil()</script>';
-        $html    = static::$element->labelValue($evil, $tree);
-        $message = 'XSS vulnerability in lebelValue()';
+        $html    = static::$element->labelValue(self::EVIL_VALUE, $tree);
+        $message = 'XSS vulnerability in labelValue()';
 
-        self::assertStringNotContainsStringIgnoringCase($evil, $html, $message);
+        self::assertStringNotContainsStringIgnoringCase(self::EVIL_VALUE, $html, $message);
     }
 
     /**
@@ -85,10 +87,31 @@ abstract class AbstractElementTest extends TestCase
     public function testXssInEdit(): void
     {
         $tree    = $this->createMock(Tree::class);
-        $evil    = '<script>evil()</script>';
-        $html    = static::$element->edit('id', 'name', $evil, $tree);
+        $html    = static::$element->edit('id', 'name', self::EVIL_VALUE, $tree);
         $message = 'XSS vulnerability in edit()';
 
-        self::assertStringNotContainsStringIgnoringCase($evil, $html, $message);
+        self::assertStringNotContainsStringIgnoringCase(self::EVIL_VALUE, $html, $message);
+    }
+
+    /**
+     * @return void
+     */
+    public function testValidHtmlInValue(): void
+    {
+        $tree = $this->createMock(Tree::class);
+        $html = static::$element->value(self::TEST_VALUE, $tree);
+        $doc  = new DOMDocument();
+        self::assertTrue($doc->loadHTML($html), 'HTML=' . $html);
+    }
+
+    /**
+     * @return void
+     */
+    public function testValidHtmlInEdit(): void
+    {
+        $tree = $this->createMock(Tree::class);
+        $html = static::$element->edit('id', 'name', self::TEST_VALUE, $tree);
+        $doc  = new DOMDocument();
+        self::assertTrue($doc->loadHTML($html), 'HTML=' . $html);
     }
 }
