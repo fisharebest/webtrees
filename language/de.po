@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-16 12:14+0000\n"
+"PO-Revision-Date: 2021-02-25 15:45+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -810,7 +810,7 @@ msgstr "Eine Begrüßungsnachricht für Besucher der Seite."
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr ""
 "Eine Liste der Änderungen, die die Zustimmung des Moderators brauchen, sowie "
-"Email-Benachrichtigungen."
+"E-Mail-Benachrichtigungen."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
@@ -881,7 +881,7 @@ msgstr "Für Ihren Benutzernamen wurde ein neues Passwort angefordert."
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
 "Ein neuer Benutzer (%1$s) hat ein Benutzerkonto (%2$s) angefragt und und "
-"dies mit der Email-Adresse (%3$s) bestätigt."
+"dies mit der E-Mail-Adresse (%3$s) bestätigt."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -1056,7 +1056,7 @@ msgstr "Eine Zeitleiste der Ereignisse einer Person."
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
-"Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen „Email "
+"Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen „E-Mail "
 "überprüft“ und „Vom Administrator zugelassen“ erfüllt sind."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
@@ -1184,7 +1184,7 @@ msgstr "Zugriff auf Stammbäume und Einstellungen"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
-msgstr "Zugangsgenehmigung und Überprüfung Email-Adresse"
+msgstr "Zugangsgenehmigung und Überprüfung E-Mail-Adresse"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
@@ -5341,7 +5341,7 @@ msgstr "Duodi"
 
 #: admin_users.php:73 edituser.php:60 login.php:289
 msgid "Duplicate email address. A user with that email already exists."
-msgstr "Es ist bereits ein Benutzer mit dieser Email vorhanden."
+msgstr "Es ist bereits ein Benutzer mit dieser E-Mail vorhanden."
 
 #: admin_users.php:71 edituser.php:58 login.php:287
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
@@ -5563,7 +5563,7 @@ msgstr "Elul"
 #: app/Module/UserMessagesModule.php:114 edituser.php:259 login.php:325
 #: login.php:430 message.php:117 message.php:270 setup.php:443
 msgid "Email address"
-msgstr "Email-Adresse"
+msgstr "E-Mail-Adresse"
 
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:865
@@ -5572,7 +5572,7 @@ msgstr "Die E-Mail-Adresse, die für das «Absender:» Feld von automatisch erst
 
 #: admin_users.php:381
 msgid "Email verified"
-msgstr "Email-Adresse überprüft"
+msgstr "E-Mail-Adresse überprüft"
 
 #: app/Stats.php:84
 msgid "Embedded variable"
@@ -6428,7 +6428,7 @@ msgstr "Verzeichnisname auf dem Server"
 
 #: login.php:342
 msgid "Follow this link to verify your email address."
-msgstr "Folgen Sie diesem Link, um Ihre Email-Adresse zu bestätigen."
+msgstr "Folgen Sie diesem Link, um Ihre E-Mail-Adresse zu bestätigen."
 
 #: modules_v3/ahnentafel_report/report.xml:15
 #: modules_v3/bdm_report/report.xml:14 modules_v3/birth_report/report.xml:12
@@ -7296,8 +7296,8 @@ msgstr "Diese Sprache wird genutzt, wenn im Browser des Besuchers keine oder ein
 #: admin_users.php:391
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
 msgstr ""
-"Wenn ein Verwalter ein Benutzerkonto anlegt, wird keine Email zur "
-"Überprüfung gesendet und die Email muss manuell geprüft werden."
+"Wenn ein Verwalter ein Benutzerkonto anlegt, wird keine E-Mail zur "
+"Überprüfung gesendet und die E-Mail muss manuell geprüft werden."
 
 #: help_text.php:228
 #, php-format
@@ -7631,7 +7631,7 @@ msgstr "Interne Nachrichtenfunktion"
 
 #: app/Functions/FunctionsEdit.php:248
 msgid "Internal messaging with emails"
-msgstr "Interne Nachrichtenfunktion mit Emails"
+msgstr "Interne Nachrichtenfunktion mit E-Mails"
 
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1547
@@ -8103,7 +8103,7 @@ msgstr "Letzte Änderung"
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr "Die letzte Email als Erinnerung wurde gesendet "
+msgstr "Die letzte E-Mail als Erinnerung wurde gesendet "
 
 #: statistics.php:371
 msgid "Last event"
@@ -9697,7 +9697,7 @@ msgstr "Zeitung"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr "Nächste Email als Erinnerung wird gesendet nach "
+msgstr "Nächste E-Mail als Erinnerung wird gesendet nach "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -10900,7 +10900,7 @@ msgstr "Bitte geben Sie einen Betreff ein."
 
 #: message.php:50
 msgid "Please enter a valid email address."
-msgstr "Bitte geben Sie eine gültige Email-Adresse ein."
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein."
 
 #: app/Module/CensusAssistantModule.php:169 find.php:127 search.php:36
 #: search.php:48
@@ -11488,7 +11488,7 @@ msgstr "Kirchliche Trauung"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
-msgstr "Häufigkeit der Erinnerungs-Email (Tage)"
+msgstr "Häufigkeit der Erinnerungs E-Mail (Tage)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:766
@@ -12085,7 +12085,7 @@ msgstr "Rundmails senden"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Erinnerungs-Emails versenden"
+msgstr "Erinnerungs-E-Mails versenden"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
@@ -12095,7 +12095,7 @@ msgstr "Absender"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr "Einstellungen Email-Versand"
+msgstr "E-Mail-Versand"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
@@ -13830,8 +13830,8 @@ msgstr "Die neuen Dateien befinden sich aktuell im Verzeichnis %s."
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
-"Der neue Benutzer wird aufgefordert seine Email-Adresse zu bestätigen, bevor "
-"das Konto erstellt wird."
+"Der neue Benutzer wird aufgefordert seine E-Mail-Adresse zu bestätigen, "
+"bevor das Konto erstellt wird."
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13974,7 +13974,7 @@ msgstr "Der Benutzer “%s” wurde gelöscht."
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
 msgstr ""
-"Dem Benutzer wurde eine Email geschickt mit den notwendigen Informationen, "
+"Dem Benutzer wurde eine E-Mail geschickt mit den notwendigen Informationen, "
 "um die Zugangsanfrage zu bestätigen."
 
 #: login.php:82 login.php:87
@@ -14146,15 +14146,15 @@ msgstr "Das Benutzerkonto wurde noch nicht genehmigt. Bitte warten Sie auf die B
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
-"Das Benutzerkonto wurde noch nicht verifiziert. Bitte prüfen Sie Ihren Email-"
-"Posteingang auf eine Bestätigungsmeldung."
+"Das Benutzerkonto wurde noch nicht verifiziert. Bitte den E-Mail-Posteingang "
+"auf eine Bestätigungsmeldung überprüfen."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
 "Dieser Block zeigt dem Bearbeiter eine Liste von Datensätzen mit "
 "ausstehenden Änderungen, die von einem Moderator genehmigt werden müssen. Es "
-"erzeugt auch täglich die Emails an die Moderatoren, wenn ausstehende "
+"erzeugt auch täglich die E-Mails an die Moderatoren, wenn ausstehende "
 "Änderungen vorhanden sind."
 
 #: setup.php:351 setup.php:362
@@ -14169,7 +14169,7 @@ msgstr "Ihre Datenbank lässt nur MySQL Version %s zu. Sie können hier webtrees
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
-"Diese Email-Adresse dient dem Versand von Passworterinnerungen, "
+"Diese E-Mail-Adresse dient dem Versand von Passworterinnerungen, "
 "Webseitenbenachrichtigungen und Nachrichten von anderen Familienmitgliedern, "
 "die auf der Seite registriert sind."
 
@@ -14455,7 +14455,7 @@ msgstr "Das Passwort muss mindestens sechs Zeichen lang sein. Groß- und Kleinsc
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
 "Dieser Name wird für die Absenderangabe im „Von“-Feld benutzt, wenn "
-"automatische Emails von diesem Server versandt werden."
+"automatische E-Mails von diesem Server versandt werden."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
@@ -15464,7 +15464,7 @@ msgstr "Benutzername"
 
 #: app/Module/LoginBlockModule.php:101 login.php:224
 msgid "Username or email address"
-msgstr "Benutzername oder Email-Adresse"
+msgstr "Benutzername oder E-Mail-Adresse"
 
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
@@ -15722,14 +15722,14 @@ msgstr "Das Erzeugen von Wasserzeichen kann für große Bilder sehr langsam sein
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr ""
-"Ihnen wird nun eine Bestätigungs-Email an die Adresse <b>%s</b> geschickt. "
-"Sie müssen den in der Email enthaltenen Anweisungen folgen, um Ihr "
+"Ihnen wird nun eine Bestätigungs-E-Mail an die Adresse <b>%s</b> geschickt. "
+"Sie müssen den in der E-Mail enthaltenen Anweisungen folgen, um Ihr "
 "Benutzerkonto zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht "
 "reagieren, wird Ihre Registrierungsanfrage automatisch verworfen. Sie müssen "
-"dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs-"
-"Email gefolgt sind, muss der Verwalter Ihren Benutzernamen noch "
-"freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser "
-"Webseite anzumelden, benötigen Sie dann Ihren Benutzernamen und Ihr Passwort."
+"dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs-E-"
+"Mail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, "
+"bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite "
+"anzumelden, benötigen Sie dann Ihren Benutzernamen und Ihr Passwort."
 
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
@@ -15799,10 +15799,10 @@ msgstr "Wenn ein Datensatz bearbeitet wird, werden der Benutzer und der Zeitstem
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
-"Sobald ein Besucher ein Benutzerkonto anfragt, wird eine Email mit einem "
+"Sobald ein Besucher ein Benutzerkonto anfragt, wird eine E-Mail mit einem "
 "Bestätigungslink an die angegebene Adresse gesandt. Wenn dieser dem Link "
-"folgt, wissen Sie, dass die Email-Adresse korrekt ist. Damit wird die "
-"Einstellung „Email überprüft“ automatisch ausgewählt."
+"folgt, wissen Sie, dass die Emailadresse korrekt ist. Damit wird die "
+"Einstellung „E-Mail überprüft“ automatisch ausgewählt."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15973,7 +15973,7 @@ msgstr "Jemen"
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
 "Sie selbst (oder jemand der sich für Sie ausgibt) hat bei %1$s ein "
-"Benutzerkonto unter Benutzung der Email-Adresse %2$s angefragt."
+"Benutzerkonto unter Benutzung der E-Mail-Adresse %2$s angefragt."
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
@@ -16186,13 +16186,13 @@ msgstr "Bitte entfernen Sie das „%1$s“ von „%2$s“ und versuchen Sie es e
 #: admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
-"Sie sollten keinen Zugang genehmigen, solange Sie nicht wissen, dass die "
-"Email-Adresse richtig ist."
+"Sie sollten keinen Zugang genehmigen, solange Sie nicht wissen, ob die E"
+"-Mail-Adresse richtig ist."
 
 #: login.php:328
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr ""
-"Sie werden per Email informiert, wenn diese Benutzer die Anfrage bestätigt "
+"Sie werden per E-Mail informiert, wenn diese Benutzer die Anfrage bestätigt "
 "hat. Sie können dann den Prozess abschließen, wenn Sie den Benutzer "
 "aktivieren. Der Benutzer wird sich nicht anmelden können, bis Sie den Zugang "
 "aktiviert haben."
@@ -20127,7 +20127,7 @@ msgstr "webtrees E-Mail-Antwortadresse"
 
 #: app/Functions/FunctionsEdit.php:249
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees sendet Emails ohne sie zu speichern"
+msgstr "webtrees sendet E-Mails ohne sie zu speichern"
 
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
