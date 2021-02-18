@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\I18N;
         <?= I18N::translate('Number of days to show') ?>
     </label>
     <div class="col-sm-9">
-        <input class="form-control" id="days" name="days" type="number" min="1" max="<?= $max_days ?>" value="<?= e($days) ?>" required>
+        <input class="form-control" id="days" name="days" type="number" min="1" max="<?= $max_days ?>" value="<?= e($days) ?>" required="required">
         <?= I18N::plural('maximum %s day', 'maximum %s days', $max_days, I18N::number($max_days)) ?>
     </div>
 </div>

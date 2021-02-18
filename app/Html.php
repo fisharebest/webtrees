@@ -36,7 +36,7 @@ class Html
     /**
      * Convert an array of HTML attributes to an HTML string.
      *
-     * @param mixed[] $attributes
+     * @param array<string,string|int|bool> $attributes
      *
      * @return string
      */
@@ -48,8 +48,8 @@ class Html
                 $html[] = e($key) . '="' . e($value) . '"';
             } elseif (is_int($value)) {
                 $html[] = e($key) . '="' . $value . '"';
-            } elseif ($value !== false) {
-                $html[] = e($key);
+            } elseif ($value === true) {
+                $html[] = e($key) . '="' . e($key) . '"';
             }
         }
 

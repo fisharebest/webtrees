@@ -78,7 +78,7 @@ use Illuminate\Support\Collection;
                         <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
                     </span>
                 </div>
-                <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required type="text" value="<?= e($tree->name()) ?>">
+                <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required="required" type="text" value="<?= e($tree->name()) ?>">
                 <div class="input-group-append">
                     <span class="input-group-text" dir="ltr">
                         <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>

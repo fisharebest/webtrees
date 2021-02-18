@@ -38,14 +38,14 @@ use Illuminate\Support\Collection;
             <label for="from">
                 <?= I18N::translateContext('Start of date range', 'From') ?>
             </label>
-            <input type="date" class="form-control" id="from" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="from" value="<?= e($from) ?>" required>
+            <input type="date" class="form-control" id="from" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="from" value="<?= e($from) ?>" required="required">
         </div>
 
         <div class="form-group col-sm-6 col-sm-3">
             <label for="to">
                 <?= I18N::translateContext('End of date range', 'To') ?>
             </label>
-            <input type="date" class="form-control" id="to" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="to" value="<?= e($to) ?>" required>
+            <input type="date" class="form-control" id="to" max="<?= e($latest) ?>" min="<?= e($earliest) ?>" name="to" value="<?= e($to) ?>" required="required">
         </div>
 
         <div class="form-group col-sm-6 col-sm-2">

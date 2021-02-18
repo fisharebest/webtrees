@@ -29,7 +29,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Data fix') ?>
         </label>
         <div class="col-sm-9">
-            <select class="form-control" id="data_fix" name="data_fix" type="text" required>
+            <select class="form-control" id="data_fix" name="data_fix" type="text" required="required">
                 <option value=""><?= I18N::translate('&lt;select&gt;') ?></option>
                 <?php foreach ($data_fixes as $data_fix) : ?>
                     <option value="<?= $data_fix->name() ?>">

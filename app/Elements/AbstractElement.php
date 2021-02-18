@@ -149,7 +149,7 @@ abstract class AbstractElement implements ElementInterface
             'pattern'  => static::PATTERN,
         ];
 
-        return '<input ' . Html::attributes($attributes) . '">';
+        return '<input ' . Html::attributes($attributes) . '>';
     }
 
     /**

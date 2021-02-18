@@ -30,7 +30,7 @@ use Illuminate\Support\Collection;
         <label for="to"><?= I18N::translate('Send a message') ?></label>
 
         <div class="input-group">
-            <select class="form-control" id="to" name="to" required>
+            <select class="form-control" id="to" name="to" required="required">
                 <option value=""><?= I18N::translate('&lt;select&gt;') ?></option>
                 <?php foreach ($users as $user): ?>
                     <option value="<?= e($user->userName()) ?>">

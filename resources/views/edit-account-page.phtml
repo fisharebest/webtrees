@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Username') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input type="text" class="form-control" id="user-name" name="user_name" value="<?= e($user->userName()) ?>" dir="auto" aria-describedby="username-description" required>
+            <input type="text" class="form-control" id="user-name" name="user_name" value="<?= e($user->userName()) ?>" dir="auto" aria-describedby="username-description" required="required">
             <p class="small text-muted" id="username-description">
                 <?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
             </p>
@@ -45,7 +45,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Real name') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <input type="text" class="form-control" id="real-name" name="real_name" value="<?= e($user->realName()) ?>" dir="auto" aria-describedby="real-name-description" required>
+            <input type="text" class="form-control" id="real-name" name="real_name" value="<?= e($user->realName()) ?>" dir="auto" aria-describedby="real-name-description" required="required">
             <p class="small text-muted" id="real-name-description">
                 <?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
             </p>

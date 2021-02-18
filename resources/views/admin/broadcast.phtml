@@ -49,7 +49,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Subject') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" id="subject" type="text" name="subject" value="<?= e($subject) ?>" required>
+            <input class="form-control" id="subject" type="text" name="subject" value="<?= e($subject) ?>" required="required">
         </div>
     </div>
 
@@ -58,7 +58,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Message') ?>
         </label>
         <div class="col-sm-9">
-            <textarea class="form-control" id="body" name="body" rows="5" dir="auto" required><?= e($body) ?></textarea>
+            <textarea class="form-control" id="body" name="body" rows="5" dir="auto" required="required"><?= e($body) ?></textarea>
         </div>
     </div>
 
