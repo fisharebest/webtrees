@@ -136,7 +136,7 @@ class EventsRecorded extends AbstractElement
         $id2 = Uuid::uuid4()->toString();
 
         // Our form element name contains "[]", and multiple selections would create multiple values.
-        $hidden = '<input type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '">';
+        $hidden = '<input type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
         // Combine them into a single value.
         // The change event doesn't seem to fire for select2 controls, so use form.submit instead.
         $js = 'document.getElementById("' . $id2 . '").form.addEventListener("submit", function () { document.getElementById("' . $id . '").value = Array.from(document.getElementById("' . $id2 . '").selectedOptions).map(x => x.value).join(","); });';

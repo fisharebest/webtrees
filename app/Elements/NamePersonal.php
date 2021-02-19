@@ -96,7 +96,7 @@ class NamePersonal extends AbstractElement
         return
             '<div class="input-group">' .
             view('edit/input-addon-edit-name', ['id' => $id]) .
-            '<input class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" readonly>' .
+            '<input class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" readonly="readonly" />' .
             view('edit/input-addon-keyboard', ['id' => $id]) .
             view('edit/input-addon-help', ['fact' => 'NAME']) .
             '</div>';

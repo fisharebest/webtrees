@@ -61,7 +61,7 @@ class DateValue extends AbstractElement
 
         return
             '<div class="input-group">' .
-            '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="webtrees.reformatDate(this, \'' . e($dmy) . '\')" dir="ltr">' .
+            '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="webtrees.reformatDate(this, \'' . e($dmy) . '\')" dir="ltr" />' .
             view('edit/input-addon-calendar', ['id' => $id]) .
             view('edit/input-addon-help', ['fact' => 'DATE']) .
             '</div>' .

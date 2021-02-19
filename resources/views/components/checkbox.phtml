@@ -16,9 +16,9 @@
         name="<?= e($name) ?>"
         id="<?= e($id ?? $name . '-' . ($value ?? '1')) ?>"
         value="<?= e($value ?? '1') ?>"
-        <?= $checked ?? false ? 'checked' : '' ?>
-        <?= $disabled ?? false ? 'disabled' : '' ?>
-    >
+        <?= $checked ?? false ? 'checked="checked"' : '' ?>
+        <?= $disabled ?? false ? 'disabled="disabled"' : '' ?>
+    />
     <label class="form-check-label" for="<?= e($id ?? $name . '-' . ($value ?? '1')) ?>">
         <?= $label ?>
     </label>

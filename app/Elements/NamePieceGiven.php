@@ -47,7 +47,7 @@ class NamePieceGiven extends AbstractElement
     {
         return
             '<div class="input-group">' .
-            '<input class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '">' .
+            '<input class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
             view('edit/input-addon-keyboard', ['id' => $id]) .
             '</div>';
     }

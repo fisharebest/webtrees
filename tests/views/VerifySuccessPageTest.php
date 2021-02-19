@@ -17,29 +17,20 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Elements;
-
-use Fisharebest\Webtrees\Tree;
-
-use function e;
+namespace Fisharebest\Webtrees;
 
 /**
- * An empty element with no data - only child elements.
+ * Test harness for the view verify-success-page
  */
-class EmptyElement extends AbstractElement
+class VerifySuccessPageTest extends AbstractViewTest
 {
     /**
-     * An edit control for this data.
-     *
-     * @param string $id
-     * @param string $name
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
+     * Standard tests for all elements.
      */
-    public function edit(string $id, string $name, string $value, Tree $tree): string
+    public function testView(): void
     {
-        return '<input class="form-control" type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
+        $this->doTestView('verify-success-page', [
+            'title' => ['title']
+        ]);
     }
 }

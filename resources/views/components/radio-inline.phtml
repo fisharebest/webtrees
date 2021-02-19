@@ -16,10 +16,10 @@
     name="<?= e($name) ?>"
     id="<?= e($id ?? $name . '-' . $value) ?>"
     value="<?= e($value) ?>"
-        <?= $checked ?? false ? 'checked' : '' ?>
-        <?= $disabled ?? false ? 'disabled' : '' ?>
-        required
-    >
+        <?= $checked ?? false ? 'checked="checked"' : '' ?>
+        <?= $disabled ?? false ? 'disabled="disabled"' : '' ?>
+        required="required"
+    />
     <label class="form-check-label" for="<?= e($id ?? $name . '-' . $value) ?>">
         <?= $label ?>
     </label>

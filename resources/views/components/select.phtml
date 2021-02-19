@@ -17,7 +17,7 @@
     <?= is_array($selected) ? 'multiple' : '' ?>
 >
     <?php foreach ($options as $key => $value) : ?>
-        <option value="<?= e((string) $key) ?>" <?= (is_array($selected) ? in_array($key, $selected, false) : (string) $key === (string) $selected) ?  'selected' : '' ?>>
+        <option value="<?= e((string) $key) ?>"<?= (is_array($selected) ? in_array($key, $selected, false) : (string) $key === (string) $selected) ?  ' selected="selected"' : '' ?>>
             <?= $value === '' ? '&nbsp;' : e($value) ?>
         </option>
     <?php endforeach ?>

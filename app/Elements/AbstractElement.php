@@ -149,7 +149,7 @@ abstract class AbstractElement implements ElementInterface
             'pattern'  => static::PATTERN,
         ];
 
-        return '<input ' . Html::attributes($attributes) . '>';
+        return '<input ' . Html::attributes($attributes) . ' />';
     }
 
     /**
@@ -163,7 +163,7 @@ abstract class AbstractElement implements ElementInterface
      */
     public function editHidden(string $id, string $name, string $value): string
     {
-        return '<input class="form-control" type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '">';
+        return '<input class="form-control" type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
     }
 
     /**
