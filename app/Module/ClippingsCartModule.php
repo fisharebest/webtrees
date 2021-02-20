@@ -21,13 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Aura\Router\Route;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
-use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
-use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
-use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
-use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -37,16 +30,19 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
@@ -66,16 +62,15 @@ use function assert;
 use function fopen;
 use function in_array;
 use function is_string;
-use function key;
 use function preg_match_all;
 use function redirect;
 use function rewind;
 use function route;
 use function str_replace;
 use function stream_get_meta_data;
-use function strip_tags;
 use function tmpfile;
 use function uasort;
+use function view;
 
 use const PREG_SET_ORDER;
 
@@ -94,6 +89,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         'Note'       => NotePage::class,
         'Repository' => RepositoryPage::class,
         'Source'     => SourcePage::class,
+        'Submitter'  => SubmitterPage::class,
     ];
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
@@ -115,17 +111,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     {
         $this->gedcom_export_service = $gedcom_export_service;
         $this->user_service          = $user_service;
-    }
-
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module */
-        return I18N::translate('Clippings cart');
     }
 
     /**
@@ -164,11 +149,15 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $route = $request->getAttribute('route');
         assert($route instanceof Route);
 
+        $cart  = Session::get('cart', []);
+        $count = count($cart[$tree->name()] ?? []);
+        $badge = view('components/badge', ['count' => $count]);
+
         $submenus = [
-            new Menu($this->title(), route('module', [
+            new Menu($this->title() . ' ' . $badge, route('module', [
                 'module' => $this->name(),
                 'action' => 'Show',
-                'tree'    => $tree->name(),
+                'tree'   => $tree->name(),
             ]), 'menu-clippings-cart', ['rel' => 'nofollow']),
         ];
 
@@ -181,7 +170,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 'module' => $this->name(),
                 'action' => 'Add' . $action,
                 'xref'   => $xref,
-                'tree'    => $tree->name(),
+                'tree'   => $tree->name(),
             ]);
 
             $submenus[] = new Menu(I18N::translate('Add to the clippings cart'), $add_route, 'menu-clippings-add', ['rel' => 'nofollow']);
@@ -191,17 +180,63 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             $submenus[] = new Menu(I18N::translate('Empty the clippings cart'), route('module', [
                 'module' => $this->name(),
                 'action' => 'Empty',
-                'tree'    => $tree->name(),
+                'tree'   => $tree->name(),
             ]), 'menu-clippings-empty', ['rel' => 'nofollow']);
 
             $submenus[] = new Menu(I18N::translate('Download'), route('module', [
                 'module' => $this->name(),
                 'action' => 'DownloadForm',
-                'tree'    => $tree->name(),
+                'tree'   => $tree->name(),
             ]), 'menu-clippings-download', ['rel' => 'nofollow']);
         }
 
         return new Menu($this->title(), '#', 'menu-clippings', ['rel' => 'nofollow'], $submenus);
+    }
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module */
+        return I18N::translate('Clippings cart');
+    }
+
+    /**
+     * @param Tree $tree
+     *
+     * @return bool
+     */
+    private function isCartEmpty(Tree $tree): bool
+    {
+        $cart     = Session::get('cart', []);
+        $contents = $cart[$tree->name()] ?? [];
+
+        return $contents === [];
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function getDownloadFormAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $user  = $request->getAttribute('user');
+        $title = I18N::translate('Family tree clippings cart') . ' — ' . I18N::translate('Download');
+
+        return $this->viewResponse('modules/clippings/download', [
+            'is_manager' => Auth::isManager($tree, $user),
+            'is_member'  => Auth::isMember($tree, $user),
+            'module'     => $this->name(),
+            'title'      => $title,
+            'tree'       => $tree,
+        ]);
     }
 
     /**
@@ -218,7 +253,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $params = (array) $request->getParsedBody();
 
-        $privatize_export = $params['privatize_export'];
+        $privatize_export = $params['privatize_export'] ?? 'none';
 
         if ($privatize_export === 'none' && !Auth::isManager($tree)) {
             $privatize_export = 'member';
@@ -318,7 +353,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Create a source, to indicate the source of the data.
         $record = "0 @WEBTREES@ SOUR\n1 TITL " . $base_url;
-        $author   = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
+        $author = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
         if ($author !== null) {
             $record .= "\n1 AUTH " . $author->realName();
         }
@@ -357,28 +392,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return ResponseInterface
      */
-    public function getDownloadFormAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user  = $request->getAttribute('user');
-        $title = I18N::translate('Family tree clippings cart') . ' — ' . I18N::translate('Download');
-
-        return $this->viewResponse('modules/clippings/download', [
-            'is_manager' => Auth::isManager($tree, $user),
-            'is_member'  => Auth::isMember($tree, $user),
-            'module'     => $this->name(),
-            'title'      => $title,
-            'tree'       => $tree,
-        ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function getEmptyAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
@@ -391,7 +404,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Show',
-            'tree'    => $tree->name(),
+            'tree'   => $tree->name(),
         ]);
 
         return redirect($url);
@@ -407,7 +420,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $cart = Session::get('cart', []);
         unset($cart[$tree->name()][$xref]);
@@ -416,7 +429,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $url = route('module', [
             'module' => $this->name(),
             'action' => 'Show',
-            'tree'    => $tree->name(),
+            'tree'   => $tree->name(),
         ]);
 
         return redirect($url);
@@ -441,6 +454,36 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
+     * Get all the records in the cart.
+     *
+     * @param Tree $tree
+     *
+     * @return GedcomRecord[]
+     */
+    private function allRecordsInCart(Tree $tree): array
+    {
+        $cart = Session::get('cart', []);
+
+        $xrefs = array_keys($cart[$tree->name()] ?? []);
+        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+
+        // Fetch all the records in the cart.
+        $records = array_map(static function (string $xref) use ($tree): ?GedcomRecord {
+            return Registry::gedcomRecordFactory()->make($xref, $tree);
+        }, $xrefs);
+
+        // Some records may have been deleted after they were added to the cart.
+        $records = array_filter($records);
+
+        // Group and sort.
+        uasort($records, static function (GedcomRecord $x, GedcomRecord $y): int {
+            return $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y);
+        });
+
+        return $records;
+    }
+
+    /**
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
@@ -450,43 +493,28 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $family = Registry::familyFactory()->make($xref, $tree);
+        $family = Auth::checkFamilyAccess($family);
+        $name   = $family->fullName();
 
-        if ($family === null) {
-            throw new FamilyNotFoundException();
-        }
-
-        $options = $this->familyOptions($family);
-
-        $title = I18N::translate('Add %s to the clippings cart', $family->fullName());
-
-        return $this->viewResponse('modules/clippings/add-options', [
-            'options' => $options,
-            'default' => key($options),
-            'record'  => $family,
-            'title'   => $title,
-            'tree'    => $tree,
-        ]);
-    }
-
-    /**
-     * @param Family $family
-     *
-     * @return array<string>
-     */
-    private function familyOptions(Family $family): array
-    {
-        $name = strip_tags($family->fullName());
-
-        return [
-            'parents'     => $name,
+        $options = [
+            'record'      => $name,
             /* I18N: %s is a family (husband + wife) */
             'members'     => I18N::translate('%s and their children', $name),
             /* I18N: %s is a family (husband + wife) */
             'descendants' => I18N::translate('%s and their descendants', $name),
         ];
+
+        $title = I18N::translate('Add %s to the clippings cart', $name);
+
+        return $this->viewResponse('modules/clippings/add-options', [
+            'options' => $options,
+            'record'  => $family,
+            'title'   => $title,
+            'tree'    => $tree,
+        ]);
     }
 
     /**
@@ -501,17 +529,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $params = (array) $request->getParsedBody();
 
-        $xref   = $params['xref'];
-        $option = $params['option'];
+        $xref   = $params['xref'] ?? '';
+        $option = $params['option'] ?? '';
 
         $family = Registry::familyFactory()->make($xref, $tree);
-
-        if ($family === null) {
-            throw new FamilyNotFoundException();
-        }
+        $family = Auth::checkFamilyAccess($family);
 
         switch ($option) {
-            case 'parents':
+            case 'self':
                 $this->addFamilyToCart($family);
                 break;
 
@@ -527,17 +552,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         return redirect($family->url());
     }
 
+
     /**
      * @param Family $family
      *
      * @return void
      */
-    private function addFamilyToCart(Family $family): void
+    protected function addFamilyAndChildrenToCart(Family $family): void
     {
-        $this->addRecordToCart($family);
+        $this->addFamilyToCart($family);
 
-        foreach ($family->spouses() as $spouse) {
-            $this->addRecordToCart($spouse);
+        foreach ($family->children() as $child) {
+            $this->addIndividualToCart($child);
         }
     }
 
@@ -546,32 +572,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addFamilyAndChildrenToCart(Family $family): void
+    protected function addFamilyAndDescendantsToCart(Family $family): void
     {
-        $this->addRecordToCart($family);
+        $this->addFamilyAndChildrenToCart($family);
 
-        foreach ($family->spouses() as $spouse) {
-            $this->addRecordToCart($spouse);
-        }
         foreach ($family->children() as $child) {
-            $this->addRecordToCart($child);
-        }
-    }
-
-    /**
-     * @param Family $family
-     *
-     * @return void
-     */
-    private function addFamilyAndDescendantsToCart(Family $family): void
-    {
-        $this->addRecordToCart($family);
-
-        foreach ($family->spouses() as $spouse) {
-            $this->addRecordToCart($spouse);
-        }
-        foreach ($family->children() as $child) {
-            $this->addRecordToCart($child);
             foreach ($child->spouseFamilies() as $child_family) {
                 $this->addFamilyAndDescendantsToCart($child_family);
             }
@@ -588,55 +593,40 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $individual = Registry::individualFactory()->make($xref, $tree);
-
-        if ($individual === null) {
-            throw new IndividualNotFoundException();
-        }
-
-        $options = $this->individualOptions($individual);
-
-        $title = I18N::translate('Add %s to the clippings cart', $individual->fullName());
-
-        return $this->viewResponse('modules/clippings/add-options', [
-            'options' => $options,
-            'default' => key($options),
-            'record'  => $individual,
-            'title'   => $title,
-            'tree'    => $tree,
-        ]);
-    }
-
-    /**
-     * @param Individual $individual
-     *
-     * @return array<string>
-     */
-    private function individualOptions(Individual $individual): array
-    {
-        $name = strip_tags($individual->fullName());
+        $individual = Auth::checkIndividualAccess($individual);
+        $name       = $individual->fullName();
 
         if ($individual->sex() === 'F') {
-            return [
-                'self'              => $name,
+            $options = [
+                'record'            => $name,
                 'parents'           => I18N::translate('%s, her parents and siblings', $name),
                 'spouses'           => I18N::translate('%s, her spouses and children', $name),
                 'ancestors'         => I18N::translate('%s and her ancestors', $name),
                 'ancestor_families' => I18N::translate('%s, her ancestors and their families', $name),
                 'descendants'       => I18N::translate('%s, her spouses and descendants', $name),
             ];
+        } else {
+            $options = [
+                'record'            => $name,
+                'parents'           => I18N::translate('%s, his parents and siblings', $name),
+                'spouses'           => I18N::translate('%s, his spouses and children', $name),
+                'ancestors'         => I18N::translate('%s and his ancestors', $name),
+                'ancestor_families' => I18N::translate('%s, his ancestors and their families', $name),
+                'descendants'       => I18N::translate('%s, his spouses and descendants', $name),
+            ];
         }
 
-        return [
-            'self'              => $name,
-            'parents'           => I18N::translate('%s, his parents and siblings', $name),
-            'spouses'           => I18N::translate('%s, his spouses and children', $name),
-            'ancestors'         => I18N::translate('%s and his ancestors', $name),
-            'ancestor_families' => I18N::translate('%s, his ancestors and their families', $name),
-            'descendants'       => I18N::translate('%s, his spouses and descendants', $name),
-        ];
+        $title = I18N::translate('Add %s to the clippings cart', $name);
+
+        return $this->viewResponse('modules/clippings/add-options', [
+            'options' => $options,
+            'record'  => $individual,
+            'title'   => $title,
+            'tree'    => $tree,
+        ]);
     }
 
     /**
@@ -651,18 +641,15 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $params = (array) $request->getParsedBody();
 
-        $xref   = $params['xref'];
-        $option = $params['option'];
+        $xref   = $params['xref'] ?? '';
+        $option = $params['option'] ?? '';
 
         $individual = Registry::individualFactory()->make($xref, $tree);
-
-        if ($individual === null) {
-            throw new IndividualNotFoundException();
-        }
+        $individual = Auth::checkIndividualAccess($individual);
 
         switch ($option) {
             case 'self':
-                $this->addRecordToCart($individual);
+                $this->addIndividualToCart($individual);
                 break;
 
             case 'parents':
@@ -700,12 +687,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addAncestorsToCart(Individual $individual): void
+    protected function addAncestorsToCart(Individual $individual): void
     {
-        $this->addRecordToCart($individual);
+        $this->addIndividualToCart($individual);
 
         foreach ($individual->childFamilies() as $family) {
-            $this->addRecordToCart($family);
+            $this->addFamilyToCart($family);
 
             foreach ($family->spouses() as $parent) {
                 $this->addAncestorsToCart($parent);
@@ -718,7 +705,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return void
      */
-    private function addAncestorFamiliesToCart(Individual $individual): void
+    protected function addAncestorFamiliesToCart(Individual $individual): void
     {
         foreach ($individual->childFamilies() as $family) {
             $this->addFamilyAndChildrenToCart($family);
@@ -739,39 +726,24 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $media = Registry::mediaFactory()->make($xref, $tree);
+        $media = Auth::checkMediaAccess($media);
+        $name  = $media->fullName();
 
-        if ($media === null) {
-            throw new MediaNotFoundException();
-        }
+        $options = [
+            'record' => $name,
+        ];
 
-        $options = $this->mediaOptions($media);
-
-        $title = I18N::translate('Add %s to the clippings cart', $media->fullName());
+        $title = I18N::translate('Add %s to the clippings cart', $name);
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
-            'default' => key($options),
             'record'  => $media,
             'title'   => $title,
             'tree'    => $tree,
         ]);
-    }
-
-    /**
-     * @param Media $media
-     *
-     * @return array<string>
-     */
-    private function mediaOptions(Media $media): array
-    {
-        $name = strip_tags($media->fullName());
-
-        return [
-            'self' => $name,
-        ];
     }
 
     /**
@@ -784,15 +756,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $media = Registry::mediaFactory()->make($xref, $tree);
+        $media = Auth::checkMediaAccess($media);
 
-        if ($media === null) {
-            throw new MediaNotFoundException();
-        }
-
-        $this->addRecordToCart($media);
+        $this->addMediaToCart($media);
 
         return redirect($media->url());
     }
@@ -807,39 +776,24 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $note = Registry::noteFactory()->make($xref, $tree);
+        $note = Auth::checkNoteAccess($note);
+        $name = $note->fullName();
 
-        if ($note === null) {
-            throw new NoteNotFoundException();
-        }
+        $options = [
+            'record' => $name,
+        ];
 
-        $options = $this->noteOptions($note);
-
-        $title = I18N::translate('Add %s to the clippings cart', $note->fullName());
+        $title = I18N::translate('Add %s to the clippings cart', $name);
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
-            'default' => key($options),
             'record'  => $note,
             'title'   => $title,
             'tree'    => $tree,
         ]);
-    }
-
-    /**
-     * @param Note $note
-     *
-     * @return array<string>
-     */
-    private function noteOptions(Note $note): array
-    {
-        $name = strip_tags($note->fullName());
-
-        return [
-            'self' => $name,
-        ];
     }
 
     /**
@@ -852,15 +806,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $note = Registry::noteFactory()->make($xref, $tree);
+        $note = Auth::checkNoteAccess($note);
 
-        if ($note === null) {
-            throw new NoteNotFoundException();
-        }
-
-        $this->addRecordToCart($note);
+        $this->addNoteToCart($note);
 
         return redirect($note->url());
     }
@@ -875,39 +826,24 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $repository = Registry::repositoryFactory()->make($xref, $tree);
+        $repository = Auth::checkRepositoryAccess($repository);
+        $name       = $repository->fullName();
 
-        if ($repository === null) {
-            throw new RepositoryNotFoundException();
-        }
+        $options = [
+            'record' => $name,
+        ];
 
-        $options = $this->repositoryOptions($repository);
-
-        $title = I18N::translate('Add %s to the clippings cart', $repository->fullName());
+        $title = I18N::translate('Add %s to the clippings cart', $name);
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
-            'default' => key($options),
             'record'  => $repository,
             'title'   => $title,
             'tree'    => $tree,
         ]);
-    }
-
-    /**
-     * @param Repository $repository
-     *
-     * @return array<string>
-     */
-    private function repositoryOptions(Repository $repository): array
-    {
-        $name = strip_tags($repository->fullName());
-
-        return [
-            'self' => $name,
-        ];
     }
 
     /**
@@ -920,15 +856,16 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $repository = Registry::repositoryFactory()->make($xref, $tree);
+        $repository = Auth::checkRepositoryAccess($repository);
 
-        if ($repository === null) {
-            throw new RepositoryNotFoundException();
+        $this->addRepositoryToCart($repository);
+
+        foreach ($repository->linkedSources('REPO') as $source) {
+            $this->addSourceToCart($source);
         }
-
-        $this->addRecordToCart($repository);
 
         return redirect($repository->url());
     }
@@ -943,40 +880,25 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
         $source = Registry::sourceFactory()->make($xref, $tree);
+        $source = Auth::checkSourceAccess($source);
+        $name   = $source->fullName();
 
-        if ($source === null) {
-            throw new SourceNotFoundException();
-        }
+        $options = [
+            'record' => $name,
+            'linked' => I18N::translate('%s and the individuals that reference it.', $name),
+        ];
 
-        $options = $this->sourceOptions($source);
-
-        $title = I18N::translate('Add %s to the clippings cart', $source->fullName());
+        $title = I18N::translate('Add %s to the clippings cart', $name);
 
         return $this->viewResponse('modules/clippings/add-options', [
             'options' => $options,
-            'default' => key($options),
             'record'  => $source,
             'title'   => $title,
             'tree'    => $tree,
         ]);
-    }
-
-    /**
-     * @param Source $source
-     *
-     * @return array<string>
-     */
-    private function sourceOptions(Source $source): array
-    {
-        $name = strip_tags($source->fullName());
-
-        return [
-            'only'   => strip_tags($source->fullName()),
-            'linked' => I18N::translate('%s and the individuals that reference it.', $name),
-        ];
     }
 
     /**
@@ -991,23 +913,20 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $params = (array) $request->getParsedBody();
 
-        $xref   = $params['xref'];
-        $option = $params['option'];
+        $xref   = $params['xref'] ?? '';
+        $option = $params['option'] ?? '';
 
         $source = Registry::sourceFactory()->make($xref, $tree);
+        $source = Auth::checkSourceAccess($source);
 
-        if ($source === null) {
-            throw new SourceNotFoundException();
-        }
-
-        $this->addRecordToCart($source);
+        $this->addSourceToCart($source);
 
         if ($option === 'linked') {
             foreach ($source->linkedIndividuals('SOUR') as $individual) {
-                $this->addRecordToCart($individual);
+                $this->addIndividualToCart($individual);
             }
             foreach ($source->linkedFamilies('SOUR') as $family) {
-                $this->addRecordToCart($family);
+                $this->addFamilyToCart($family);
             }
         }
 
@@ -1015,71 +934,267 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     }
 
     /**
-     * Get all the records in the cart.
+     * @param ServerRequestInterface $request
      *
-     * @param Tree $tree
-     *
-     * @return GedcomRecord[]
+     * @return ResponseInterface
      */
-    private function allRecordsInCart(Tree $tree): array
+    public function getAddSubmitterAction(ServerRequestInterface $request): ResponseInterface
     {
-        $cart = Session::get('cart', []);
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
 
-        $xrefs = array_keys($cart[$tree->name()] ?? []);
-        $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
+        $xref = $request->getQueryParams()['xref'] ?? '';
 
-        // Fetch all the records in the cart.
-        $records = array_map(static function (string $xref) use ($tree): ?GedcomRecord {
-            return Registry::gedcomRecordFactory()->make($xref, $tree);
-        }, $xrefs);
+        $submitter = Registry::submitterFactory()->make($xref, $tree);
+        $submitter = Auth::checkSubmitterAccess($submitter);
+        $name      = $submitter->fullName();
 
-        // Some records may have been deleted after they were added to the cart.
-        $records = array_filter($records);
+        $options = [
+            'record' => $name,
+        ];
 
-        // Group and sort.
-        uasort($records, static function (GedcomRecord $x, GedcomRecord $y): int {
-            return $x->tag() <=> $y->tag() ?: GedcomRecord::nameComparator()($x, $y);
-        });
+        $title = I18N::translate('Add %s to the clippings cart', $name);
 
-        return $records;
+        return $this->viewResponse('modules/clippings/add-options', [
+            'options' => $options,
+            'record'  => $submitter,
+            'title'   => $title,
+            'tree'    => $tree,
+        ]);
     }
 
     /**
-     * Add a record (and direclty linked sources, notes, etc. to the cart.
+     * @param ServerRequestInterface $request
      *
-     * @param GedcomRecord $record
-     *
-     * @return void
+     * @return ResponseInterface
      */
-    private function addRecordToCart(GedcomRecord $record): void
+    public function postAddSubmitterAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref = $request->getQueryParams()['xref'] ?? '';
+
+        $submitter = Registry::submitterFactory()->make($xref, $tree);
+        $submitter = Auth::checkSubmitterAccess($submitter);
+
+        $this->addSubmitterToCart($submitter);
+
+        return redirect($submitter->url());
+    }
+
+    /**
+     * @param Family $family
+     */
+    protected function addFamilyToCart(Family $family): void
     {
         $cart = Session::get('cart', []);
+        $tree = $family->tree()->name();
+        $xref = $family->xref();
 
-        $tree_name = $record->tree()->name();
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
 
-        // Add this record
-        $cart[$tree_name][$record->xref()] = true;
+            Session::put('cart', $cart);
 
-        // Add directly linked media, notes, repositories and sources.
-        preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
+            foreach ($family->spouses() as $spouse) {
+                $this->addIndividualToCart($spouse);
+            }
 
-        foreach ($matches[1] as $match) {
-            $cart[$tree_name][$match] = true;
+            $this->addMediaLinksToCart($family);
+            $this->addNoteLinksToCart($family);
+            $this->addSourceLinksToCart($family);
+            $this->addSubmitterLinksToCart($family);
         }
-
-        Session::put('cart', $cart);
     }
 
     /**
-     * @param Tree $tree
-     *
-     * @return bool
+     * @param Individual $individual
      */
-    private function isCartEmpty(Tree $tree): bool
+    protected function addIndividualToCart(Individual $individual): void
     {
-        $cart     = Session::get('cart', []);
-        $contents = $cart[$tree->name()] ?? [];
+        $cart = Session::get('cart', []);
+        $tree = $individual->tree()->name();
+        $xref = $individual->xref();
 
-        return $contents === [];
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
+
+            Session::put('cart', $cart);
+
+            $this->addMediaLinksToCart($individual);
+            $this->addNoteLinksToCart($individual);
+            $this->addSourceLinksToCart($individual);
+        }
+    }
+
+    /**
+     * @param Media $media
+     */
+    protected function addMediaToCart(Media $media): void
+    {
+        $cart = Session::get('cart', []);
+        $tree = $media->tree()->name();
+        $xref = $media->xref();
+
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
+
+            Session::put('cart', $cart);
+
+            $this->addNoteLinksToCart($media);
+        }
+    }
+
+    /**
+     * @param GedcomRecord $record
+     */
+    protected function addMediaLinksToCart(GedcomRecord $record): void
+    {
+        preg_match_all('/\n\d OBJE @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
+
+        foreach ($matches[1] as $xref) {
+            $media = Registry::mediaFactory()->make($xref, $record->tree());
+
+            if ($media instanceof Media && $media->canShow()) {
+                $this->addMediaToCart($media);
+            }
+        }
+    }
+
+    /**
+     * @param Note $note
+     */
+    protected function addNoteToCart(Note $note): void
+    {
+        $cart = Session::get('cart', []);
+        $tree = $note->tree()->name();
+        $xref = $note->xref();
+
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
+
+            Session::put('cart', $cart);
+        }
+    }
+
+    /**
+     * @param GedcomRecord $record
+     */
+    protected function addNoteLinksToCart(GedcomRecord $record): void
+    {
+        preg_match_all('/\n\d NOTE @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
+
+        foreach ($matches[1] as $xref) {
+            $note = Registry::noteFactory()->make($xref, $record->tree());
+
+            if ($note instanceof Note && $note->canShow()) {
+                $this->addNoteToCart($note);
+            }
+        }
+    }
+
+    /**
+     * @param Source $source
+     */
+    protected function addSourceToCart(Source $source): void
+    {
+        $cart = Session::get('cart', []);
+        $tree = $source->tree()->name();
+        $xref = $source->xref();
+
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
+
+            Session::put('cart', $cart);
+
+            $this->addNoteLinksToCart($source);
+            $this->addRepositoryLinksToCart($source);
+        }
+    }
+
+    /**
+     * @param GedcomRecord $record
+     */
+    protected function addSourceLinksToCart(GedcomRecord $record): void
+    {
+        preg_match_all('/\n\d SOUR @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
+
+        foreach ($matches[1] as $xref) {
+            $source = Registry::sourceFactory()->make($xref, $record->tree());
+
+            if ($source instanceof Source && $source->canShow()) {
+                $this->addSourceToCart($source);
+            }
+        }
+    }
+
+    /**
+     * @param Repository $repository
+     */
+    protected function addRepositoryToCart(Repository $repository): void
+    {
+        $cart = Session::get('cart', []);
+        $tree = $repository->tree()->name();
+        $xref = $repository->xref();
+
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
+
+            Session::put('cart', $cart);
+
+            $this->addNoteLinksToCart($repository);
+        }
+    }
+
+
+    /**
+     * @param GedcomRecord $record
+     */
+    protected function addRepositoryLinksToCart(GedcomRecord $record): void
+    {
+        preg_match_all('/\n\d REPO @(' . Gedcom::REGEX_XREF . '@)/', $record->gedcom(), $matches);
+
+        foreach ($matches[1] as $xref) {
+            $repository = Registry::repositoryFactory()->make($xref, $record->tree());
+
+            if ($repository instanceof Repository && $repository->canShow()) {
+                $this->addRepositoryToCart($repository);
+            }
+        }
+    }
+
+    /**
+     * @param Submitter $submitter
+     */
+    protected function addSubmitterToCart(Submitter $submitter): void
+    {
+        $cart = Session::get('cart', []);
+        $tree = $submitter->tree()->name();
+        $xref = $submitter->xref();
+
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
+
+            Session::put('cart', $cart);
+
+            $this->addNoteLinksToCart($submitter);
+        }
+    }
+
+    /**
+     * @param GedcomRecord $record
+     */
+    protected function addSubmitterLinksToCart(GedcomRecord $record): void
+    {
+        preg_match_all('/\n\d SUBM @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
+
+        foreach ($matches[1] as $xref) {
+            $submitter = Registry::submitterFactory()->make($xref, $record->tree());
+
+            if ($submitter instanceof Submitter && $submitter->canShow()) {
+                $this->addSubmitterToCart($submitter);
+            }
+        }
     }
 }

@@ -4,7 +4,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * @var string               $default
  * @var array<string,string> $options
  * @var GedcomRecord         $record
  * @var string               $title
@@ -23,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
             <?= I18N::translate('Add to the clippings cart') ?>
         </div>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/radios', ['name' => 'option', 'options' => $options, 'selected' => $default]) ?>
+            <?= view('components/radios', ['name' => 'option', 'options' => $options, 'selected' => key($options)]) ?>
         </div>
     </div>
 
