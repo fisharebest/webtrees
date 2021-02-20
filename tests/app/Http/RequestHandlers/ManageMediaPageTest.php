@@ -26,10 +26,12 @@ use Fisharebest\Webtrees\TestCase;
 /**
  * Test ManageMediaPage class.
  *
- * @covers \Fisharebest\Webtrees\Http\Controllers\Admin\ManageMediaPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage
  */
 class ManageMediaPageTest extends TestCase
 {
+    protected static $uses_database = true;
+
     /**
      * @return void
      */

@@ -172,10 +172,10 @@ trait ModuleDataFixTrait
     protected function familiesToFixQuery(Tree $tree, array $params): Builder
     {
         $query = DB::table('families')
-            ->where('i_file', '=', $tree->id());
+            ->where('f_file', '=', $tree->id());
 
         if (isset($params['start'], $params['end'])) {
-            $query->whereBetween('i_id', [$params['start'], $params['end']]);
+            $query->whereBetween('f_id', [$params['start'], $params['end']]);
         }
 
         return $query;
