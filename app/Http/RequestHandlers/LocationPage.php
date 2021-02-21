@@ -23,8 +23,8 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -40,30 +40,32 @@ use function redirect;
 use const PHP_INT_MAX;
 
 /**
- * Show a repository's page.
+ * Show a location's page.
  */
-class RepositoryPage implements RequestHandlerInterface
+class LocationPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
     // Show the repository's facts in this order:
     private const FACT_ORDER = [
-        1 => 'REPO:NAME',
-        'REPO:ADDR',
-        'REPO:NOTE',
-        'REPO:WWW',
-        'REPO:REFN',
-        'REPO:RIN',
-        'REPO:_UID',
-        'REPO:CHAN',
-        'REPO:RESN',
+        1 => '_LOC:NAME',
+        '_LOC:TYPE',
+        '_LOC:_POST',
+        '_LOC:_GOV',
+        '_LOC:MAP',
+        '_LOC:_MAIDENHEAD',
+        '_LOC:RELI',
+        '_LOC:EVEN',
+        '_LOC:_LOC',
+        '_LOC:_DMGD',
+        '_LOC:_AIDN',
     ];
 
     /** @var ClipboardService */
     private $clipboard_service;
 
     /**
-     * RepositoryPage constructor.
+     * LocationPage constructor.
      *
      * @param ClipboardService $clipboard_service
      */
@@ -85,34 +87,35 @@ class RepositoryPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $repository = Registry::repositoryFactory()->make($xref, $tree);
-        $repository = Auth::checkRepositoryAccess($repository, false);
+        $location = Registry::locationFactory()->make($xref, $tree);
+        $location = Auth::checkLocationAccess($location, false);
 
         // Redirect to correct xref/slug
-        if ($repository->xref() !== $xref || $request->getAttribute('slug') !== $repository->slug()) {
-            return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        if ($location->xref() !== $xref || $request->getAttribute('slug') !== $location->slug()) {
+            return redirect($location->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        return $this->viewResponse('record-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($repository, new Collection()),
-            'facts'            => $this->facts($repository),
-            'meta_description' => '',
-            'meta_robots'      => 'index,follow',
-            'record'       => $repository,
-            'sources'          => $repository->linkedSources('REPO'),
-            'title'            => $repository->fullName(),
-            'tree'             => $tree,
+        return $this->viewResponse('gedcom-record-page', [
+            'facts'         => $location->facts(),
+            'families'      => $location->linkedFamilies('_LOC'),
+            'individuals'   => $location->linkedIndividuals('_LOC'),
+            'notes'         => new Collection(),
+            'media_objects' => new Collection(),
+            'record'        => $location,
+            'sources'       => new Collection(),
+            'title'         => $location->fullName(),
+            'tree'          => $tree,
         ]);
     }
 
     /**
-     * @param Repository $record
+     * @param Location $location
      *
      * @return Collection<Fact>
      */
-    private function facts(Repository $record): Collection
+    private function facts(Location $location): Collection
     {
-        return $record->facts()
+        return $location->facts()
             ->sort(static function (Fact $x, Fact $y): int {
                 $sort_x = array_search($x->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
                 $sort_y = array_search($y->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;

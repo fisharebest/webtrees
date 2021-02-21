@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\FamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\RepositoryPage;
@@ -33,6 +34,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SourcePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SubmitterPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Note;
@@ -86,6 +88,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         'Family'     => FamilyPage::class,
         'Individual' => IndividualPage::class,
         'Media'      => MediaPage::class,
+        'Location'   => LocationPage::class,
         'Note'       => NotePage::class,
         'Repository' => RepositoryPage::class,
         'Source'     => SourcePage::class,
@@ -721,6 +724,56 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @return ResponseInterface
      */
+    public function getAddLocationAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref = $request->getQueryParams()['xref'] ?? '';
+
+        $location = Registry::locationFactory()->make($xref, $tree);
+        $location = Auth::checkLocationAccess($location);
+        $name     = $location->fullName();
+
+        $options = [
+            'record' => $name,
+        ];
+
+        $title = I18N::translate('Add %s to the clippings cart', $name);
+
+        return $this->viewResponse('modules/clippings/add-options', [
+            'options' => $options,
+            'record'  => $location,
+            'title'   => $title,
+            'tree'    => $tree,
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAddLocationAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree = $request->getAttribute('tree');
+        assert($tree instanceof Tree);
+
+        $xref = $request->getQueryParams()['xref'] ?? '';
+
+        $location = Registry::locationFactory()->make($xref, $tree);
+        $location = Auth::checkLocationAccess($location);
+
+        $this->addLocationToCart($location);
+
+        return redirect($location->url());
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
     public function getAddMediaAction(ServerRequestInterface $request): ResponseInterface
     {
         $tree = $request->getAttribute('tree');
@@ -1001,6 +1054,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 $this->addIndividualToCart($spouse);
             }
 
+            $this->addLocationLinksToCart($family);
             $this->addMediaLinksToCart($family);
             $this->addNoteLinksToCart($family);
             $this->addSourceLinksToCart($family);
@@ -1022,9 +1076,47 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
             Session::put('cart', $cart);
 
+            $this->addLocationLinksToCart($individual);
             $this->addMediaLinksToCart($individual);
             $this->addNoteLinksToCart($individual);
             $this->addSourceLinksToCart($individual);
+        }
+    }
+
+    /**
+     * @param Location $location
+     */
+    protected function addLocationToCart(Location $location): void
+    {
+        $cart = Session::get('cart', []);
+        $tree = $location->tree()->name();
+        $xref = $location->xref();
+
+        if (($cart[$tree][$xref] ?? false) === false) {
+            $cart[$tree][$xref] = true;
+
+            Session::put('cart', $cart);
+
+            $this->addLocationLinksToCart($location);
+            $this->addMediaLinksToCart($location);
+            $this->addNoteLinksToCart($location);
+            $this->addSourceLinksToCart($location);
+        }
+    }
+
+    /**
+     * @param GedcomRecord $record
+     */
+    protected function addLocationLinksToCart(GedcomRecord $record): void
+    {
+        preg_match_all('/\n\d _LOC @(' . Gedcom::REGEX_XREF . ')@/', $record->gedcom(), $matches);
+
+        foreach ($matches[1] as $xref) {
+            $location = Registry::locationFactory()->make($xref, $record->tree());
+
+            if ($location instanceof Location && $location->canShow()) {
+                $this->addLocationToCart($location);
+            }
         }
     }
 
@@ -1146,7 +1238,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             $this->addNoteLinksToCart($repository);
         }
     }
-
 
     /**
      * @param GedcomRecord $record

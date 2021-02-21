@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
@@ -52,6 +53,7 @@ class GedcomRecordPage implements RequestHandlerInterface
         Family::class,
         Header::class,
         Individual::class,
+        Location::class,
         Media::class,
         Note::class,
         Repository::class,

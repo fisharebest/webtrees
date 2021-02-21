@@ -278,6 +278,10 @@ table {
     content: url(webtrees/menu/list-indi.png);
 }
 
+.menu-list-loc::before {
+    content: url(webtrees/menu/list-plac.png);
+}
+
 .menu-list-note::before {
     content: url(webtrees/menu/list-note.png);
 }

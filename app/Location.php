@@ -19,12 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
+
 /**
  * A GEDCOM location (_LOC) object.
  */
 class Location extends GedcomRecord
 {
     public const RECORD_TYPE = '_LOC';
+
+    protected const ROUTE_NAME = LocationPage::class;
 
     /**
      * Extract names from the GEDCOM record.

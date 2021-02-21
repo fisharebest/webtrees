@@ -229,6 +229,10 @@
     content: url(colors/menu/list-indi.png);
 }
 
+.menu-list-loc::before {
+    content: url(colors/menu/list-plac.png);
+}
+
 .menu-list-note::before {
     content: url(colors/menu/list-note.png);
 }

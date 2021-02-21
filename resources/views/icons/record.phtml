@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -27,4 +28,6 @@ use Fisharebest\Webtrees\Submitter;
     <?= view('icons/media') ?>
 <?php elseif ($record->tag() === Submitter::RECORD_TYPE) : ?>
     <?= view('icons/submitter') ?>
+<?php elseif ($record->tag() === Location::RECORD_TYPE) : ?>
+    <?= view('icons/map') ?>
 <?php endif;

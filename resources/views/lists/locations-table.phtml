@@ -1,0 +1,97 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Expression;
+use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Location> $locations
+ * @var Tree                   $tree
+ */
+
+?>
+
+<?php
+// Count the number of linked records. These numbers include private records.
+// It is not good to bypass privacy, but many servers do not have the resources
+// to process privacy for every record in the tree
+$count_individuals = DB::table('individuals')
+    ->join('link', static function (JoinClause $join): void {
+        $join->on('l_from', '=', 'i_id');
+        $join->on('l_file', '=', 'i_file');
+    })
+    ->where('l_type', '=', '_LOC')
+    ->where('l_file', '=', $tree->id())
+    ->groupBy(['l_to'])
+    ->select(['l_to', new Expression('COUNT(*) AS total')])
+    ->pluck('total', 'l_to')
+    ->all();
+
+$count_families = DB::table('families')
+    ->join('link', static function (JoinClause $join): void {
+        $join->on('l_from', '=', 'f_id');
+        $join->on('l_file', '=', 'f_file');
+    })
+    ->where('l_type', '=', '_LOC')
+    ->where('l_file', '=', $tree->id())
+    ->groupBy(['l_to'])
+    ->select(['l_to', new Expression('COUNT(*) AS total')])
+    ->pluck('total', 'l_to')
+    ->all();
+?>
+
+<table
+    class="table table-bordered table-sm wt-table-location datatables d-none"
+    <?= view('lists/datatables-attributes') ?>
+    data-columns="<?= e(json_encode([
+        null,
+        ['visible' => array_sum($count_individuals) > 0],
+        ['visible' => array_sum($count_families) > 0],
+        ['visible' => (bool) $tree->getPreference('SHOW_LAST_CHANGE'), 'searchable' => false],
+    ])) ?>"
+>
+    <caption class="sr-only">
+        <?= $caption ?? I18N::translate('Locations') ?>
+    </caption>
+
+    <thead>
+        <tr>
+            <th><?= I18N::translate('Location') ?></th>
+            <th><?= I18N::translate('Individuals') ?></th>
+            <th><?= I18N::translate('Families') ?></th>
+            <th><?= I18N::translate('Last change') ?></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($locations as $location) : ?>
+            <tr class="<?= $location->isPendingAddition() ? 'wt-new' : '' ?> <?= $location->isPendingDeletion() ? 'wt-old' : '' ?>">
+                <!-- Location name -->
+                <td data-sort="<?= e($location->sortName()) ?>">
+                    <a href="<?= e($location->url()) ?>">
+                        <?= $location->fullName() ?>
+                    </a>
+                </td>
+
+                <!-- Count of linked individuals -->
+                <td class="text-center" data-sort="<?= $count_individuals[$location->xref()] ?? 0 ?>">
+                    <?= I18N::number($count_individuals[$location->xref()] ?? 0) ?>
+                </td>
+
+                <!-- Count of linked families -->
+                <td class="text-center" data-sort="<?= $count_families[$location->xref()] ?? 0 ?>">
+                    <?= I18N::number($count_families[$location->xref()] ?? 0) ?>
+                </td>
+
+                <!-- Last change -->
+                <td data-sort="<?= $location->lastChangeTimestamp()->unix() ?>">
+                    <?= view('components/datetime', ['timestamp' => $location->lastChangeTimestamp()]) ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>

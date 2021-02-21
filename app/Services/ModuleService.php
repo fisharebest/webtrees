@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Module\LocationListModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
@@ -413,6 +414,7 @@ class ModuleService
         'lifespans_chart'         => LifespansChartModule::class,
         'lightbox'                => AlbumModule::class,
         'lists-menu'              => ListsMenuModule::class,
+        'location_list'           => LocationListModule::class,
         'logged_in'               => LoggedInUsersModule::class,
         'login_block'             => LoginBlockModule::class,
         'marriage_report'         => MarriageReportModule::class,

@@ -307,6 +307,33 @@ class Auth
     }
 
     /**
+     * @param Location|null $location
+     * @param bool       $edit
+     *
+     * @return Location
+     * @throws RecordNotFoundException
+     * @throws RecordAccessDeniedException
+     */
+    public static function checkLocationAccess(?Location $location, bool $edit = false): Location
+    {
+        if ($location === null) {
+            throw new RecordNotFoundException();
+        }
+
+        if ($edit && $location->canEdit()) {
+            $location->lock();
+
+            return $location;
+        }
+
+        if ($location->canShow()) {
+            return $location;
+        }
+
+        throw new RecordAccessDeniedException();
+    }
+
+    /**
      * @param Media|null $media
      * @param bool       $edit
      *

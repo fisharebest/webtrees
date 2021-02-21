@@ -19,6 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+use function e;
+use function preg_match;
+
 /**
  * NOTE can be text or an XREF.
  */
@@ -35,5 +42,61 @@ class NoteStructure extends AbstractElement
     {
         // Browsers use MS-DOS line endings in multi-line data.
         return strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
+    }
+
+    /**
+     * An edit control for this data.
+     *
+     * @param string $id
+     * @param string $name
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function edit(string $id, string $name, string $value, Tree $tree): string
+    {
+        $submitter_text = new SubmitterText('');
+        $xref_note      = new XrefNote('');
+
+        // Existing shared note.
+        if (preg_match('/@' . Gedcom::REGEX_XREF . '@/', $value)) {
+            return $xref_note->edit($id, $name, $value, $tree);
+        }
+
+        // Existing inline note.
+        if ($value !== '') {
+            return $submitter_text->edit($id, $name, $value, $tree);
+        }
+
+        $options = [
+            'inline' => I18N::translate('Add a note'),
+            'shared' => I18N::translate('Add a shared note'),
+        ];
+
+        // New note - either inline or shared
+        return
+            '<div id="' . e($id) . '-note-structure">' .
+            '<div id="' . e($id) . '-options">' .
+            view('components/radios-inline', ['name' => $id . '-options', 'options' => $options, 'selected' => 'inline']) .
+            '</div>' .
+            '<div id="' . e($id) . '-inline">' .
+            $submitter_text->edit($id, $name, $value, $tree) .
+            '</div>' .
+            '<div id="' . e($id) . '-shared" class="d-none">' .
+            $xref_note->edit($id, $name, $value, $tree) .
+            '</div>' .
+            '</div>' .
+            '<script>' .
+            'document.getElementById("' . e($id) . '-shared").querySelector("select").disabled=true;' .
+            'document.getElementById("' . e($id) . '-options").addEventListener("change", function(){' .
+            ' document.getElementById("' . e($id) . '-inline").classList.toggle("d-none");' .
+            ' document.getElementById("' . e($id) . '-shared").classList.toggle("d-none");' .
+            ' const inline = document.getElementById("' . e($id) . '-inline").querySelector("textarea");' .
+            ' const shared = document.getElementById("' . e($id) . '-shared").querySelector("select");' .
+            ' inline.disabled = !inline.disabled;' .
+            ' shared.disabled = !shared.disabled;' .
+            '})' .
+            '</script>';
     }
 }

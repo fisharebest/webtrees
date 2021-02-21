@@ -137,6 +137,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToRecordAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToSourceModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\LocationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
@@ -637,6 +638,7 @@ class WebRoutes
                 $router->get(FamilyPage::class, '/family/{xref}{/slug}');
                 $router->get(HeaderPage::class, '/header/{xref}{/slug}');
                 $router->get(IndividualPage::class, '/individual/{xref}{/slug}');
+                $router->get(LocationPage::class, '/location/{xref}{/slug}');
                 $router->get(MediaFileThumbnail::class, '/media-thumbnail');
                 $router->get(MediaFileDownload::class, '/media-download');
                 $router->get(MediaPage::class, '/media/{xref}{/slug}');

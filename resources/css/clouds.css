@@ -296,6 +296,10 @@ table {
     content: url(clouds/menu/list-indi.png);
 }
 
+.menu-list-loc::before {
+    content: url(clouds/menu/list-plac.png);
+}
+
 .menu-list-note::before {
     content: url(clouds/menu/list-note.png);
 }
