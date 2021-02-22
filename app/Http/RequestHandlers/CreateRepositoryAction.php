@@ -72,7 +72,7 @@ class CreateRepositoryAction implements RequestHandlerInterface
         // id and text are for select2 / autocomplete
         // html is for interactive modals
         return response([
-            'id'   => $record->xref(),
+            'id'   => '@' . $record->xref() . '@',
             'text' => view('selects/repository', [
                 'repository' => $record,
             ]),

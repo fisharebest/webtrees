@@ -52,7 +52,7 @@ class CreateLocationAction implements RequestHandlerInterface
         $record = Registry::locationFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
         return response([
-            'id'   => $record->xref(),
+            'id'   => '@' . $record->xref() . '@',
             'text' => view('selects/location', [
                 'location' => $record,
             ]),

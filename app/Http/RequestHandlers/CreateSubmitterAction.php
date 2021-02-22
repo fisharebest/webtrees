@@ -79,8 +79,10 @@ class CreateSubmitterAction implements RequestHandlerInterface
         $record = $tree->createRecord($gedcom);
         $record = Registry::submitterFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
+        // id and text are for select2 / autocomplete
+        // html is for interactive modals
         return response([
-            'id'   => $record->xref(),
+            'id'   => '@' . $record->xref() . '@',
             'text' => view('selects/submitter', [
                 'submitter' => $record,
             ]),

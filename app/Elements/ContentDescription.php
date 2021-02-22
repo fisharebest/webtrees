@@ -26,6 +26,6 @@ namespace Fisharebest\Webtrees\Elements;
  * receiving the data knows what genealogical information the transmission
  * contains.
  */
-class ContentDescription extends AbstractElement
+class ContentDescription extends SubmitterText
 {
 }

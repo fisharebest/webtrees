@@ -36,4 +36,14 @@ class ContentDescriptionTest extends AbstractElementTest
 
         self::$element = new ContentDescription('label');
     }
+
+    /**
+     * @return void
+     */
+    public function testCanonical(): void
+    {
+        self::assertSame('Foo  bAr  baZ', self::$element->canonical("Foo  bAr  baZ"));
+        self::assertSame('  Foo  bAr  baZ  ', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
+        self::assertSame("\nFoo \n\n bAr \n baZ\n", self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
+    }
 }

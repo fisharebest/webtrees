@@ -261,7 +261,7 @@ class GedcomEditService
                 $newline = (int) $this->glevels[$j] + $levelAdjust . ' ' . $this->tag[$j];
                 if ($this->text[$j] !== '') {
                     if ($this->islink[$j]) {
-                        $newline .= ' @' . $this->text[$j] . '@';
+                        $newline .= ' @' . trim($this->text[$j], '@') . '@';
                     } else {
                         $newline .= ' ' . $this->text[$j];
                     }
