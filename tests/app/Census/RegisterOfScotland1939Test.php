@@ -22,14 +22,14 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class RegisterOfEngland1939
+ * Test harness for the class RegisterOfScotland1939
  */
 class RegisterOfScotland1939Test extends TestCase
 {
     /**
      * Test the census place and date
      *
-     * @covers \Fisharebest\Webtrees\Census\RegisterOfEngland1939
+     * @covers \Fisharebest\Webtrees\Census\RegisterOfScotland1939
      *
      * @return void
      */
@@ -44,14 +44,14 @@ class RegisterOfScotland1939Test extends TestCase
     /**
      * Test the census columns
      *
-     * @covers \Fisharebest\Webtrees\Census\RegisterOfEngland1939
+     * @covers \Fisharebest\Webtrees\Census\RegisterOfScotland1939
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      *
      * @return void
      */
     public function testColumns(): void
     {
-        $census  = new RegisterOfEngland1939();
+        $census  = new RegisterOfScotland1939();
         $columns = $census->columns();
 
         self::assertCount(8, $columns);
