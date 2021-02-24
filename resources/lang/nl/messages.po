@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-01-05 13:29+0000\n"
-"PO-Revision-Date: 2020-12-08 04:04+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-01-05 13:29+0000\nPO-Revision-Date: 2021-02-26 12:36+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -138,7 +122,7 @@ msgstr "%1$s × %2$s pixels"
 #: resources/views/edit/edit-fact.phtml:118
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:548 app/Module/StatisticsChartModule.php:871
@@ -497,7 +481,7 @@ msgstr "(leeftijd %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(leeftijd %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:352
@@ -505,7 +489,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(leeftijd %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -1483,7 +1467,7 @@ msgstr "Adresregel 2"
 #. I18N: gedcom tag ADD2
 #: app/GedcomTag.php:457
 msgid "Address line 3"
-msgstr ""
+msgstr "Adresregel 3"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
@@ -3395,7 +3379,7 @@ msgstr "Verander de “Mijn pagina” blokken"
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Gewijzigd door %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
@@ -3936,12 +3920,12 @@ msgstr "Converteer CEME label naar GEDCOM 5.5.1"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:85
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converteer NAME:_XXX labels naar GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:49
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr "Converteer  _PRIM labels naar GEDCOM 5.5.1"
+msgstr "Converteer _PRIM labels naar GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:279
 #: resources/views/admin/trees-export.phtml:66
@@ -3966,7 +3950,7 @@ msgstr "Cookies"
 #. I18N: gedcom tag MAP
 #: app/GedcomTag.php:791
 msgid "Coordinates"
-msgstr ""
+msgstr "Coördinaten"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:318
@@ -6665,7 +6649,7 @@ msgstr "GEDCOM-bestand"
 #. I18N: gedcom tag _GOV - see https://gov.genealogy.net
 #: app/GedcomTag.php:1142
 msgid "GOV identifier"
-msgstr ""
+msgstr "GOV-identificatienummer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7158,7 +7142,7 @@ msgstr "Verberg voor iedereen"
 
 #: resources/views/admin/locations.phtml:31
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Verberg ongebruikte locaties"
 
 #. I18N: gedcom tag _PRIM
 #: app/GedcomTag.php:1174 resources/xml/reports/individual_ext_report.xml:11
@@ -7696,7 +7680,7 @@ msgstr "Interactieve boom van %s"
 #. I18N: gedcom tag _INTE
 #: app/GedcomTag.php:1161
 msgid "Interment"
-msgstr ""
+msgstr "Begrafenis"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
@@ -12169,7 +12153,7 @@ msgstr "sep."
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1235
 msgid "Separation"
-msgstr ""
+msgstr "Scheiding"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -12682,7 +12666,7 @@ msgstr "Toon de geboorteplaats van voorouders op de kaart."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Toon de datum en tijd"
 
 #: resources/views/modules/html/config.phtml:45
 msgid "Show the date and time of update"
@@ -12957,12 +12941,12 @@ msgstr "Somalië"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Sommige genealogie programma's maken GEDCOM-bestanden die mediabestandsnamen bevatten met volledige pad namen. Deze paden bestaan niet op de web-server. Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste deel van het pad worden verwijderd."
+msgstr "Sommige genealogieprogramma's maken GEDCOM-bestanden die mediabestandsnamen bevatten met volledige padnamen. Deze paden bestaan niet op de web-server. Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste deel van het pad worden verwijderd."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:96
 msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr ""
+msgstr "Sommige genelealogietoepassingen slaan alle namen op in één naamrecord, met behulp van aangepaste tags zoals _MARNM en _AKA. Een alternatief is het maken van een nieuwe naamrecord voor elke naam."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:639
@@ -18693,12 +18677,12 @@ msgstr "halfzus"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:191
 msgid "herself"
-msgstr "zij zelf"
+msgstr "zijzelf"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:561
 msgid "hh:mm or hh:mm:ss"
-msgstr "hh:mm or hh:mm:ss"
+msgstr "hh:mm of hh:mm:ss"
 
 #: resources/views/admin/trees-preferences.phtml:274
 #: resources/views/admin/trees-preferences.phtml:354
@@ -18713,7 +18697,7 @@ msgstr "verberg"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:188
 msgid "himself"
-msgstr "hij zelf"
+msgstr "hijzelf"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -19611,12 +19595,12 @@ msgstr "toon"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "toon wijzigingen die zijn aangebracht in webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "toon wijzigingen die zijn vastgelegd in de genealogische gegevens"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:23
