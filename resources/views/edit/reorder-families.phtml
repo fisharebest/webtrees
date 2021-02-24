@@ -43,7 +43,7 @@ use Illuminate\Support\Collection;
             </button>
         </p>
 
-        <div class="wt-sortable-list-fams">
+        <div class="wt-sortable-list wt-sortable-list-fams">
             <?php foreach ($fams_facts as $fact) : ?>
                 <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
                     <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
@@ -77,7 +77,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('The first family in the list will be used in charts, lists, reports, etc.') ?>
         </p>
 
-        <div class="wt-sortable-list-famc">
+        <div class="wt-sortable-list wt-sortable-list-famc">
             <?php foreach ($famc_facts as $fact) : ?>
                 <div class="card my-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
                     <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
