@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-01-19 11:55+0000\n"
+"PO-Revision-Date: 2021-02-26 12:36+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -12950,7 +12950,11 @@ msgstr "Somalië"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Sommige genealogie programma's maken GEDCOM-bestanden die mediabestandsnamen bevatten met volledige pad namen. Deze paden bestaan niet op de web-server. Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste deel van het pad worden verwijderd."
+msgstr ""
+"Sommige genealogieprogramma's maken GEDCOM-bestanden die mediabestandsnamen "
+"bevatten met volledige padnamen. Deze paden bestaan niet op de web-server. "
+"Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste "
+"deel van het pad worden verwijderd."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
@@ -18734,12 +18738,12 @@ msgstr "half jaar na huwelijk"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
 msgid "herself"
-msgstr "zij zelf"
+msgstr "zijzelf"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:762
 msgid "hh:mm or hh:mm:ss"
-msgstr "hh:mm or hh:mm:ss"
+msgstr "hh:mm of hh:mm:ss"
 
 #: admin_trees_config.php:42 app/Module/GoogleMapsModule.php:342
 msgid "hide"
@@ -18748,7 +18752,7 @@ msgstr "verberg"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
 msgid "himself"
-msgstr "hij zelf"
+msgstr "hijzelf"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1908
 #: edit_interface.php:1943
