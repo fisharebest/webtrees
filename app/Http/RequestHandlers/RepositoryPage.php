@@ -93,12 +93,12 @@ class RepositoryPage implements RequestHandlerInterface
             return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        return $this->viewResponse('record-page', [
+        return $this->viewResponse('repository-page', [
             'clipboard_facts'  => $this->clipboard_service->pastableFacts($repository, new Collection()),
             'facts'            => $this->facts($repository),
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
-            'record'       => $repository,
+            'repository'       => $repository,
             'sources'          => $repository->linkedSources('REPO'),
             'title'            => $repository->fullName(),
             'tree'             => $tree,
