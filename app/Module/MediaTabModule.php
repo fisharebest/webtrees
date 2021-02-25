@@ -132,21 +132,27 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      */
     protected function getFactsWithMedia(Individual $individual): Collection
     {
-        return Registry::cache()->array()->remember(__CLASS__ . ':' . __METHOD__, static function () use ($individual): Collection {
-            $facts = $individual->facts();
+        $cacheTag = $individual->xref() . '@' . $individual->tree()->id();
+        return Registry::cache()->array()->remember(
+            __CLASS__ . ':' . __METHOD__ . '-' . $cacheTag,
+            static function () use ($individual): Collection {
+                $facts = $individual->facts();
 
-            foreach ($individual->spouseFamilies() as $family) {
-                if ($family->canShow()) {
-                    $facts = $facts->concat($family->facts());
+                foreach ($individual->spouseFamilies() as $family) {
+                    if ($family->canShow()) {
+                        $facts = $facts->concat($family->facts());
+                    }
                 }
-            }
 
-            $facts = $facts->filter(static function (Fact $fact): bool {
-                return preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom()) === 1;
-            });
+                $facts = $facts->filter(static function (Fact $fact): bool {
+                    return preg_match('/(?:^1|\n\d) OBJE @' . Gedcom::REGEX_XREF . '@/', $fact->gedcom()) === 1;
+                });
 
-            return Fact::sortFacts($facts);
-        });
+                return Fact::sortFacts($facts);
+            },
+            null,
+            ['gedrec-' . $cacheTag]
+        );
     }
 
     /**

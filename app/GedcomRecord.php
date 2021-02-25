@@ -283,7 +283,7 @@ class GedcomRecord
 
         return Registry::cache()->array()->remember($cache_key, function () use ($access_level) {
             return $this->canShowRecord($access_level);
-        });
+        }, null, ['gedrec-' . $this->tree->id() . '-' . $this->xref]);
     }
 
     /**
@@ -973,6 +973,7 @@ class GedcomRecord
             ]);
 
             $this->pending = $new_gedcom;
+            $this->invalidateInCache();
 
             if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
                 app(PendingChangesService::class)->acceptRecord($this);
@@ -1019,6 +1020,7 @@ class GedcomRecord
 
         // Clear the cache
         $this->pending = $gedcom;
+        $this->invalidateInCache();
 
         // Accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
@@ -1050,12 +1052,28 @@ class GedcomRecord
             ]);
         }
 
+        $this->invalidateInCache();
+
         // Auto-accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
             app(PendingChangesService::class)->acceptRecord($this);
         }
 
         Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
+    }
+
+    /**
+     * Invalidate this record in the caches
+     * Only the array cache is invalidated
+     *
+     * @return bool
+     */
+    public function invalidateInCache(): bool
+    {
+        return Registry::cache()->array()->invalidateTags([
+            'gedrec-' . $this->xref . '@' . $this->tree()->id() . '',
+            'pending-t-' . $this->tree->id()
+        ]);
     }
 
     /**

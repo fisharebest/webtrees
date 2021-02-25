@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use InvalidArgumentException;
 use Symfony\Component\Cache\Adapter\NullAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 
 use function stream_get_contents;
 
@@ -42,7 +43,7 @@ class TreeTest extends TestCase
         parent::setUp();
 
         $cache_factory = self::createMock(CacheFactoryInterface::class);
-        $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
+        $cache_factory->method('array')->willReturn(new Cache(new TagAwareAdapter(new NullAdapter())));
         Registry::cache($cache_factory);
     }
 

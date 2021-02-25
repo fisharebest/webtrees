@@ -68,7 +68,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
                 ->map(Registry::individualFactory()->mapper($tree));
 
             return new Family($xref, $gedcom ?? '', $pending, $tree);
-        });
+        }, null, ['gedrec-' . $xref . '@' . $tree->id()]);
     }
 
     /**

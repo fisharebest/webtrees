@@ -59,7 +59,7 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
             $xref = $this->extractXref($gedcom ?? $pending, $xref);
 
             return new Note($xref, $gedcom ?? '', $pending, $tree);
-        });
+        }, null, ['gedrec-' . $xref . '@' . $tree->id()]);
     }
 
     /**
