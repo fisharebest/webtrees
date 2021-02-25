@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -821,15 +820,13 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $axis = [];
         foreach ($boundaries as $n => $boundary) {
             if ($n === 0) {
-                $date = new Date('BEF ' . $boundary);
+                $axis[$boundary - 1] = '–' . I18N::digits($boundary);
             } else {
-                $date = new Date('BET ' . $boundaries[$n - 1] . ' AND ' . ($boundary - 1));
+                $axis[$boundary - 1] = I18N::digits($boundaries[$n - 1]) . '–' . I18N::digits($boundary);
             }
-            $axis[$boundary - 1] = strip_tags($date->display());
         }
 
-        $date              = new Date('AFT ' . $boundaries[count($boundaries) - 1]);
-        $axis[PHP_INT_MAX] = strip_tags($date->display());
+        $axis[PHP_INT_MAX] = I18N::digits($boundaries[count($boundaries) - 1]) . '–';
 
         return $axis;
     }
