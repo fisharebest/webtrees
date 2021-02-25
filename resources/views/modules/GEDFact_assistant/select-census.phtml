@@ -28,9 +28,8 @@ use Fisharebest\Webtrees\I18N;
           <?php foreach ($census_place->allCensusDates() as $census) : ?>
               <option value="<?= $census->censusDate() ?>" data-place="<?= $census->censusPlace() ?>" data-census="<?= get_class($census) ?>">
                   <?= (new Date($census->censusDate()))->minimumDate()->format('%Y') ?>
-                    <?php if ($census_place->censusPlace() !== $census->censusPlace()): ?>
-                      — (<?= $census->censusPlace() ?>)
-                     <?php endif ?>
+                  —
+                  <?= $census->censusPlace() ?>
               </option>
           <?php endforeach ?>
         </optgroup>
