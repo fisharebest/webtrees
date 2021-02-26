@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-04 19:26+0000\n"
+"PO-Revision-Date: 2021-02-26 19:22+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -271,8 +271,8 @@ msgstr[1] "%s परिवारों को अपडेट कर दिय�
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] "%s फॅमिली ट्री"
-msgstr[1] "%s फॅमिली ट्रीस"
+msgstr[0] "%s वंशवृक्ष"
+msgstr[1] "%s वंशवृक्ष"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
