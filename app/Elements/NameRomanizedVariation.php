@@ -35,6 +35,8 @@ use function view;
  */
 class NameRomanizedVariation extends AbstractElement
 {
+    protected const SUBTAGS = ['NPFX', 'GIVN', 'SPFX','SURN', 'NSFX', 'NICK', 'TYPE'];
+
     protected const MAXIMUM_LENGTH = 120;
 
     /**
