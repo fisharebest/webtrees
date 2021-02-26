@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
-"PO-Revision-Date: 2021-02-26 12:36+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-26 12:38+0000\nPO-Revision-Date: 2021-02-26 19:22+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -764,7 +752,7 @@ msgstr "Eine Liste der Personen."
 #. I18N: Description of the “Repositories” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Eine Liste der Orte."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -1565,7 +1553,7 @@ msgstr "Adoptiert von der Mutter"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
-msgstr ""
+msgstr "Adoptivname"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
@@ -1645,7 +1633,7 @@ msgstr "Adoption eines Sohns"
 
 #: app/Factories/ElementFactory.php:423
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Adoptiveltern"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:471 app/GedcomTag.php:569
@@ -2575,7 +2563,7 @@ msgstr "Barbados"
 
 #: app/Factories/ElementFactory.php:1082
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Standard-GEDCOM-Feldname"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:446 app/GedcomTag.php:496
@@ -2828,7 +2816,7 @@ msgstr "von Geburtsdatum"
 
 #: app/Factories/ElementFactory.php:756
 msgid "Birth name"
-msgstr ""
+msgstr "Geburtsname"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -2905,7 +2893,7 @@ msgstr "Geburt eines Sohns"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Birth parents"
-msgstr ""
+msgstr "Leibliche Eltern"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3384,7 +3372,7 @@ msgstr "Kategorien"
 
 #: app/Factories/ElementFactory.php:1075 app/Factories/ElementFactory.php:1117
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #. I18N: gedcom tag CAUS
 #: app/Factories/ElementFactory.php:256 app/Factories/ElementFactory.php:390
@@ -3957,7 +3945,7 @@ msgstr "Fertiggestellt; Datum unbekannt"
 
 #: app/Factories/ElementFactory.php:1076 app/Factories/ElementFactory.php:1118
 msgid "Completion date"
-msgstr ""
+msgstr "Fertigstellungsdatum"
 
 #: app/Http/RequestHandlers/HelpText.php:284
 #: resources/views/admin/trees-export.phtml:57
@@ -4144,7 +4132,7 @@ msgstr "Fehlerhafte NAME Datensätze, wie zum Beispiel 'Hans/Müller/' oder 'Han
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Korrespondenz"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4189,7 +4177,7 @@ msgstr "Einen Stammbaum erstellen"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Einen Ort erstellen"
 
 #: app/Elements/XrefMedia.php:61 app/Functions/FunctionsEdit.php:492
 #: resources/views/modals/create-media-from-file.phtml:19
