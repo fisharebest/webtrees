@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-25 15:45+0000\n"
+"PO-Revision-Date: 2021-02-27 11:40+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -6660,7 +6660,7 @@ msgstr "Begräbnis"
 #. I18N: A configuration setting
 #: admin_trees_check.php:139 admin_trees_config.php:1588
 msgid "GEDCOM errors"
-msgstr "GEDCOM Fehler"
+msgstr "GEDCOM-Fehler"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
@@ -11488,7 +11488,7 @@ msgstr "Kirchliche Trauung"
 
 #: app/Module/ReviewChangesModule.php:189
 msgid "Reminder email frequency (days)"
-msgstr "Häufigkeit der Erinnerungs E-Mail (Tage)"
+msgstr "Häufigkeit der Erinnerungs-E-Mail (Tage)"
 
 #. I18N: gedcom tag SERV
 #: app/GedcomTag.php:766
