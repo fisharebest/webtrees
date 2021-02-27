@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-02-27 11:40+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-02-27 13:18+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1965,11 +1965,11 @@ msgstr "Vorfahren von %s"
 #. I18N: gedcom tag AFN
 #: app/Factories/ElementFactory.php:426 app/GedcomTag.php:446
 msgid "Ancestral file number"
-msgstr "Ancestral File-Nummer"
+msgstr "Ahnendatei-Nummer (AFN)"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Ancestry PID"
-msgstr ""
+msgstr "Ancestry-PID"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -8514,7 +8514,7 @@ msgstr "Letzte Änderung"
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
-msgstr "Die letzte E-Mail als Erinnerung wurde gesendet "
+msgstr "Die letzte Erinnerungs-E-Mail wurde versandt "
 
 #: resources/views/statistics/other/total-events.phtml:39
 msgid "Last event"
@@ -10177,7 +10177,7 @@ msgstr "Zeitung"
 
 #: app/Module/ReviewChangesModule.php:162
 msgid "Next email reminder will be sent after "
-msgstr "Nächste E-Mail als Erinnerung wird gesendet nach "
+msgstr "Die nächste Erinnerungs-E-Mail wird gesendet nach "
 
 #: resources/views/modules/random_media/slide-show.phtml:32
 #: resources/views/modules/random_media/slide-show.phtml:34
@@ -12181,7 +12181,7 @@ msgstr "Neues Benutzerkonto anfragen"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr "Recherche"
+msgstr "Forschung"
 
 #. I18N: gedcom tag _TODO
 #: app/Factories/ElementFactory.php:752 app/Factories/ElementFactory.php:791
@@ -13191,15 +13191,15 @@ msgstr "Zeige vertrauliche Beziehungen"
 
 #: resources/views/modules/todo/config.phtml:21
 msgid "Show research tasks that are assigned to other users"
-msgstr "Zeige Forschungsaufgaben die anderen Benutzern zugeordnet sind"
+msgstr "Forschungsaufgaben anzeigen, die anderen Benutzern zugeordnet sind"
 
 #: resources/views/modules/todo/config.phtml:31
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Zeige Forschungsaufgaben die keinem anderen Benutzer zugeordnet sind"
+msgstr "Forschungsaufgaben anzeigen, die keinem anderen Benutzer zugeordnet sind"
 
 #: resources/views/modules/todo/config.phtml:40
 msgid "Show research tasks that have a date in the future"
-msgstr "Forschungsaufgaben mit einem Datum in der Zukunft anzeigen"
+msgstr "Forschungsaufgaben anzeigen, die ein Datum in der Zukunft haben"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
@@ -15544,7 +15544,7 @@ msgstr "Ihnen stehen einige Standardvorlagen zur Verfügung, um den Einstieg mit
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Um neue Forschungsaufgaben zu erstellen, müssen Sie zunächst eine „Forschungsaufgabe“ zur Liste der Tatsachen und Ereignisse in den Stammbaumeinstellungen hinzufügen."
+msgstr "Um neue Forschungsaufgaben zu erstellen, müssen Sie zuerst die „Forschungsaufgabe“ zur Liste der Tatsachen und Ereignisse in den Stammbaumeinstellungen hinzufügen."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
@@ -15855,15 +15855,15 @@ msgstr "Typ"
 
 #: app/Factories/ElementFactory.php:1146
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Art der Abkürzung"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Art der Verwaltungs-ID"
 
 #: app/Factories/ElementFactory.php:1174
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Art der demografischen Daten"
 
 #: app/Factories/ElementFactory.php:304 app/Factories/ElementFactory.php:506
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:688
@@ -15876,19 +15876,19 @@ msgstr "Art der Tatsache"
 
 #: app/Factories/ElementFactory.php:1163
 msgid "Type of location"
-msgstr ""
+msgstr "Art des Standortes"
 
 #: app/Factories/ElementFactory.php:314
 msgid "Type of marriage"
-msgstr ""
+msgstr "Art der Eheschließung"
 
 #: app/Factories/ElementFactory.php:547
 msgid "Type of name"
-msgstr ""
+msgstr "Art des Namens"
 
 #: app/Factories/ElementFactory.php:1074 app/Factories/ElementFactory.php:1116
 msgid "Type of research task"
-msgstr ""
+msgstr "Art der Forschungsaufgabe"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -17224,7 +17224,7 @@ msgstr "Volkszählung hinzugefügt"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "ungeklärt"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
@@ -17250,7 +17250,7 @@ msgstr "Kind"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "Bürger"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17309,7 +17309,7 @@ msgstr "erstellen"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulturell"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17381,7 +17381,7 @@ msgstr "starb"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "widerlegt"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -17897,7 +17897,7 @@ msgstr "Geschlecht"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geografisch"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -19456,7 +19456,7 @@ msgstr "er selbst"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "Haushalt"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -19993,7 +19993,7 @@ msgstr "Prozentzahl"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "politisch"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20018,7 +20018,7 @@ msgstr "sicher, Primärquelle"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "nachgewiesen"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
@@ -20056,7 +20056,7 @@ msgstr "verworfen"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "kirchlich"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
