@@ -60,7 +60,7 @@ class ChildLinkageStatus extends AbstractElement
             ''           => '',
             'challenged' => /* I18N: Status of child-parent link */ I18N::translate('challenged'),
             'disproven'  => /* I18N: Status of child-parent link */ I18N::translate('disproven'),
-            'proven'     =>/* I18N: Status of child-parent link */  I18N::translate('proven'),
+            'proven'     => /* I18N: Status of child-parent link */ I18N::translate('proven'),
         ];
     }
 }

@@ -79,12 +79,14 @@ class ChartService
      */
     public function descendants(Individual $individual, int $generations): Collection
     {
-        $descendants = new Collection([$individual]);
+        $descendants = new Collection([$individual->xref() => $individual]);
 
         if ($generations > 0) {
             foreach ($individual->spouseFamilies() as $family) {
                 foreach ($family->children() as $child) {
-                    $descendants = $descendants->merge($this->descendants($child, $generations - 1));
+                    if (!$descendants->has($child->xref())) {
+                        $descendants = $descendants->merge($this->descendants($child, $generations - 1));
+                    }
                 }
             }
         }

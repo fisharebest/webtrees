@@ -220,8 +220,10 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
                     ]);
 
                 case self::CHART_STYLE_INDIVIDUALS:
+                    $individuals = $this->chart_service->descendants($individual, $generations - 1);
+
                     return $this->viewResponse('lists/individuals-table', [
-                        'individuals' => $this->chart_service->descendants($individual, $generations - 1),
+                        'individuals' => $individuals,
                         'sosa'        => false,
                         'tree'        => $tree,
                     ]);
@@ -229,7 +231,10 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
                 case self::CHART_STYLE_FAMILIES:
                     $families = $this->chart_service->descendantFamilies($individual, $generations - 1);
 
-                    return $this->viewResponse('lists/families-table', ['families' => $families, 'tree' => $tree]);
+                    return $this->viewResponse('lists/families-table', [
+                        'families' => $families,
+                        'tree'     => $tree,
+                    ]);
             }
         }
 
