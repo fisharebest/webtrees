@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-02-27 13:18+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-02-27 17:47+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -884,7 +884,7 @@ msgstr "Ein Bericht mit personenbezogenen Detailinformationen."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Ein Bericht der Ereignisse, welche durch die gewählte Quelle belegt sind."
+msgstr "Ein Bericht der Tatsachen, welche durch die gewählte Quelle belegt sind."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
@@ -1241,7 +1241,7 @@ msgstr "Eine Tochter hinzufügen"
 
 #: resources/views/edit/raw-gedcom-record.phtml:53
 msgid "Add a fact"
-msgstr "Eine Tatsache hinzufügen"
+msgstr "Eine Tatsache  hinzufügen"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:61
 #: resources/views/family-page-grandparents.phtml:33
@@ -1910,7 +1910,7 @@ msgstr "Eine alternative An- oder Abmeldemöglichkeit."
 
 #: app/Functions/FunctionsEdit.php:456
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "Eine verbundene Person ist eine Person, die bei dieser Tastasche oder diesem Ereignis z.B. als Zeuge oder Geistlicher beteiligt war."
+msgstr "Eine verbundene Person ist eine Person, die bei dieser Tatsache oder diesem Ereignis z.B. als Zeuge oder Geistlicher beteiligt war."
 
 #: app/Functions/FunctionsEdit.php:454
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -4049,17 +4049,17 @@ msgstr "Verwaltung"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr "CEME-Tag nach GEDCOM 5.5.1 konvertieren"
+msgstr "CEME-Kennzeichen nach GEDCOM 5.5.1 konvertieren"
 
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:84
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr "_XXX-Tags in NAME nach GEDCOM 5.5.1 konvertieren"
+msgstr "_XXX-Kennzeichen in NAME nach GEDCOM 5.5.1 konvertieren"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr "_PRIM-Tags nach GEDCOM 5.5.1 konvertieren"
+msgstr "_PRIM-Kennzeichen nach GEDCOM 5.5.1 konvertieren"
 
 #: app/Http/RequestHandlers/HelpText.php:279
 #: resources/views/admin/trees-export.phtml:72
@@ -6146,7 +6146,7 @@ msgstr "Tatsachen und Ereignisse für Archivdatensätze"
 
 #: resources/views/admin/trees-preferences.phtml:784
 msgid "Facts for source records"
-msgstr "Quellenereignisse"
+msgstr "Tatsachen und Ereignisse für Quellendatensätze"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:191
@@ -7469,7 +7469,7 @@ msgstr "für niemand zeigen"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
-msgstr "Unbenutzte Orte ausblenden"
+msgstr "Ungenutzte Orte ausblenden"
 
 #: app/Factories/ElementFactory.php:1179
 msgid "Hierarchical relationship"
@@ -7617,7 +7617,7 @@ msgstr "Identitätsnummer"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr "Falls ein Medienobjekt mit einer Person verknüpft ist, jedoch mit einem Fakt oder Ereignis verknüpft sein soll, können Sie es an die richtige Stelle verschieben."
+msgstr "Falls ein Medienobjekt mit einer Person verknüpft ist, jedoch mit einer Tatsache oder einem Ereignis verknüpft sein soll, können Sie es an die richtige Stelle verschieben."
 
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/site-preferences.phtml:89
@@ -8659,7 +8659,7 @@ msgstr "Lima, Peru"
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:730
 msgid "Link media objects to facts and events"
-msgstr "Medienobjekte mit Fakten und Ereignissen verknüpfen"
+msgstr "Medienobjekte mit Tatsachen und Ereignissen verknüpfen"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
@@ -8748,13 +8748,13 @@ msgstr "Lokale Dateien"
 #: app/Factories/ElementFactory.php:1131 app/GedcomTag.php:1144
 #: resources/views/lists/locations-table.phtml:63
 msgid "Location"
-msgstr "Standort"
+msgstr "Ort"
 
 #. I18N: Name of a module/list
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr "Standorte"
+msgstr "Orte"
 
 #: app/Elements/RelationIsDescriptor.php:141
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -8974,7 +8974,7 @@ msgstr "Manuskript"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:653
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Viele Ahnenforschungsprogramme erzeugen GEDCOM Dateien mit programmspezifischen Tags, die webtrees in den meisten Fällen kennt und korrekt interpretiert. Wenn unbekannte Tags gefunden werden, erlaubt diese Option, die Tags zu ignorieren oder eine Warnmeldung auszugeben."
+msgstr "Viele Ahnenforschungsprogramme erzeugen GEDCOM-Dateien mit programmspezifischen Kennzeichen, die webtrees in den meisten Fällen kennt und korrekt interpretiert. Wenn unbekannte Kennzeichen gefunden werden, erlaubt diese Option, diese zu ignorieren oder eine Warnmeldung auszugeben."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:71
@@ -10328,7 +10328,7 @@ msgstr "Es wurde keine Verknüpfung zwischen den beiden Personen gefunden."
 #: resources/views/admin/merge-records-step-2.phtml:122
 #: resources/views/admin/merge-records-step-2.phtml:168
 msgid "No matching facts found"
-msgstr "Keine übereinstimmenden Angaben gefunden"
+msgstr "Keine übereinstimmenden Ereignisse gefunden"
 
 #: resources/views/modules/gedcom_news/list.phtml:18
 #: resources/views/modules/user_blog/list.phtml:18
@@ -10818,7 +10818,7 @@ msgstr "Sonstiges"
 
 #: resources/views/admin/trees-preferences.phtml:425
 msgid "Other facts to show in charts"
-msgstr "Andere auf Diagrammen zu zeigende Ereignisse"
+msgstr "Andere in Diagrammen zu zeigende Ereignisse"
 
 #: resources/views/admin/trees-preferences.phtml:894
 msgid "Other preferences"
@@ -11558,7 +11558,7 @@ msgstr "Datenschutzeinschränkungen"
 
 #: resources/views/admin/trees-privacy.phtml:232
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Datenschutzeinschränkungen - diese werden auf Datensätze angewandt, die keinen GEDCOM RESN-Tag enthalten"
+msgstr "Datenschutzeinschränkungen - diese werden auf Datensätze und Ereignisse angewandt, die kein GEDCOM-RESN-Kennzeichen enthalten"
 
 #: app/GedcomRecord.php:412 app/GedcomRecord.php:520
 #: app/Report/ReportParserGenerate.php:967
@@ -12075,7 +12075,7 @@ msgstr "Entfernen Sie den GEDCOM-Medienpfad aus den Dateinamen"
 
 #: resources/views/admin/locations.phtml:128
 msgid "Remove this location?"
-msgstr "Diese Ortsdaten entfernen?"
+msgstr "Diesen Ort entfernen?"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:171 app/GedcomCode/GedcomCodeTemp.php:579
@@ -12100,7 +12100,7 @@ msgstr "Ersetzen"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr "Friedhof-Tags mit Begräbnisorten ersetzen."
+msgstr "Friedhof-Kennzeichen mit Begräbnisorten ersetzen."
 
 #: resources/views/search-replace-page.phtml:35
 msgid "Replace with"
@@ -12199,11 +12199,11 @@ msgstr "Forschungsaufgaben"
 
 #: resources/views/modules/todo/config.phtml:14
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem Stammbaum hinzugefügt werden können, um die Notwendigkeit weitergehender Forschungen zu beschreiben. Man kann sie als Erinnerung nutzen, um Fakten gegen zuverlässigere Quellen zu überprüfen, um Dokumente oder Fotos zu erhalten oder um widersprüchliche Informationen auzulösen, etc."
+msgstr "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem Stammbaum hinzugefügt werden können, um die Notwendigkeit weitergehender Forschungen zu beschreiben. Man kann sie als Erinnerung nutzen, um Fakten gegen zuverlässigere Quellen zu überprüfen, um Dokumente oder Fotos zu erhalten oder um widersprüchliche Informationen aufzulösen."
 
 #: resources/views/modules/todo/config.phtml:16
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags „_TODO“ gespeichert. Andere Genealogie-Anwendungen können dieses Tag möglicherweise nicht korrekt interpretieren."
+msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM -Kennzeichens „_TODO“ gespeichert. Andere Genealogie-Anwendungen können dieses Kennzeichen möglicherweise nicht korrekt interpretieren."
 
 #: resources/views/admin/location-edit.phtml:130
 msgid "Reset to initial map state"
@@ -12623,7 +12623,7 @@ msgstr "Wählen Sie die gewünschte Alters-Zeitspanne"
 
 #: resources/views/admin/merge-records-step-2.phtml:34
 msgid "Select the facts and events to keep from both records."
-msgstr "Wählen Sie die Fakten und Ereignisse die Sie aus beiden Datensätzen übernehmen möchten."
+msgstr "Wählen Sie die Tatsachen und Ereignisse, die Sie aus beiden Datensätzen übernehmen möchten."
 
 #: resources/views/admin/merge-records-step-1.phtml:47
 msgid "Select two records to merge."
@@ -13268,7 +13268,7 @@ msgstr "Zeige Liste der Nachnamen"
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:78
 msgid "Show the location of events on a map."
-msgstr "Zeige die Orte von Ereignissen in einer Landkarte."
+msgstr "Zeige den Ort von Ereignissen auf einer Landkarte."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:58
@@ -13526,7 +13526,7 @@ msgstr "Manche Genealogie-Software erstellt GEDCOM-Dateien, die Medien-Dateiname
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
 msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr "Einige Genealogie-Anwendungen speichern alle Namen in einem einzigen Namensdatensatz und verwenden dafür benutzerdefinierte Tags wie _MARNM und _AKA. Eine Alternative ist, für jeden Namen einen neuen Namensdatensatz zu erstellen."
+msgstr "Einige Genealogie-Anwendungen speichern alle Namen in einem einzigen Namensdatensatz und verwenden dafür benutzerdefinierte Kennzeichen wie _MARNM und _AKA. Eine Alternative ist, für jeden Namen einen neuen Namensdatensatz zu erstellen."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:668
@@ -14395,7 +14395,7 @@ msgstr "Die folgenden Tatsachen und Ereignisse wurden in beiden Datensätze gefu
 #: resources/views/admin/merge-records-step-2.phtml:132
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr "Die folgenden Tatsachen und Ereignisse wurden nur im Datensatz %s gefunden."
+msgstr "Die folgenden Tatsachen und Ereignisse wurden nur im Datensatz von %s gefunden."
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
@@ -14434,7 +14434,7 @@ msgstr "Das Listen-Menü."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 msgid "The location has been created"
-msgstr "Der Standort wurde erstellt"
+msgstr "Der Ort wurde erstellt"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
@@ -14740,7 +14740,7 @@ msgstr "Themen"
 
 #: resources/views/modules/personal_facts/tab.phtml:46
 msgid "There are no facts for this individual."
-msgstr "Zu dieser Person gibt es keine Fakten."
+msgstr "Zu dieser Person gibt es keine Ereignisse."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:288
 msgid "There are no links to this media object."
@@ -15001,22 +15001,22 @@ msgstr "Diese Information ist vertraulich und wird deshalb nicht angezeigt."
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:876
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem Bearbeitungsformular für Namen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Namen in verschiedenen Alphabeten zu speichern."
+msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM-Ereigniskennzeichen, die in dem Bearbeitungsformular für Namen gezeigt werden. Wenn Sie nicht-lateinische Alphabete wie Hebräisch, Griechisch, Kyrillisch oder Arabisch verwenden, können Sie Kennzeichen wie _HEB, ROMN, FONE usw. hinzufügen, damit Sie Namen in mehreren verschiedenen Alphabeten speichern können."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: resources/views/admin/trees-preferences.phtml:766
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Heiratsdatum und Heiratsort auf dem Formular angezeigt."
+msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM-Ereigniskennzeichen, die beim Hinzufügen einer neuen Familie angezeigt wird. Wenn z. B. MARR in der Liste steht, werden die Felder für Heiratsdatum und Heiratsort im Formular angezeigt."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: resources/views/admin/trees-preferences.phtml:712
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Person angezeigt wird. Zum Beispiel: Wenn das Tag BIRT in der Liste erscheint, werden die Felder für Geburtsdatum und Geburtsort auf dem Formular angezeigt."
+msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM-Ereigniskennzeichen, die beim Hinzufügen einer neuen Person angezeigt wird. Wenn z. B. BIRT in der Liste steht, werden die Felder für Geburtsdatum und Geburtsort im Formular angezeigt."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:889
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem Bearbeitungsformular für Ortsnamen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Ortsnamen in verschiedenen Alphabeten zu speichern."
+msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM-Ereigniskennzeichen, die angezeigt werden, wenn Sie Ortsnamen hinzufügen oder bearbeiten. Wenn Sie nicht-lateinische Alphabete wie Hebräisch, Griechisch, Kyrillisch oder Arabisch verwenden, können Sie Kennzeichen wie _HEB, ROMN, FONE usw. hinzufügen, damit Sie Ortsnamen in mehreren verschiedenen Alphabeten speichern können."
 
 #: resources/views/edit-account-page.phtml:69
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -15040,42 +15040,42 @@ msgstr "Dies ist die neueste Version von webtrees. Es ist keine Aktualisierung v
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:740
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die diesem Familiendatensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Familien</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die zu Familien hinzugefügt werden können. Sie können diese Liste ändern, indem Sie Ereignisnamen, auch benutzerdefinierte, nach Bedarf entfernen oder hinzufügen. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Einmalige Tatsachen oder Ereignisse von Familien“ erscheinen."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:686
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die diesem Personendatensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Personen</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die zu Personen hinzugefügt werden können. Sie können diese Liste ändern, indem Sie Ereignisnamen, auch benutzerdefinierte, nach Bedarf entfernen oder hinzufügen. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Einmalige Tatsachen oder Ereignisse von Personen“ erscheinen."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:835
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die diesem Archiv-Datensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Archiven</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die zu Archiven hinzugefügt werden können. Sie können diese Liste ändern, indem Sie Ereignisnamen, auch benutzerdefinierte, nach Bedarf entfernen oder hinzufügen. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Einmalige Tatsachen oder Ereignisse von Archiven“ erscheinen."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:794
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die diesem Quellendatensatz hinzugefügt werden können. Sie können diese Liste durch Entfernen oder Hinzufügen von Ereignis-Merkmalen nach Ihren Wünschen ändern. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Einmalige Tatsachen oder Ereignisse von Quellen</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die zu Quellen hinzugefügt werden können. Sie können diese Liste ändern, indem Sie Ereignisnamen, auch benutzerdefinierte, nach Bedarf entfernen oder hinzufügen. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Einmalige Tatsachen oder Ereignisse von Quellen“ erscheinen."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:753
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die im Familiendatensatz nur <u>einmal</u> vorkommen dürfen; z.B., wenn MARR hier eingegeben ist, darf jeder Familiendatensatz nur eine MARR Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Familien</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die nur <u>einmal</u> zu Familien hinzugefügt werden können. Wenn zum Beispiel MARR in dieser Liste steht, kann nicht mehr als ein MARR-Datensatz zu einer Familie hinzugefügt werden. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Alle Tatsachen und Ereignisse von Familien“ erscheinen."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:699
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die im Personendatensatz nur <u>einmal</u> vorkommen dürfen; z.B., wenn BIRT hier eingegeben ist, darf jeder Personendatensatz nur eine BIRT Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Personen</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die nur <u>einmal</u> zu Personen hinzugefügt werden können. Wenn zum Beispiel BIRT in dieser Liste steht, kann nicht mehr als ein BIRT-Datensatz zu einer Person hinzugefügt werden. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Alle Tatsachen und Ereignisse von Personen“ erscheinen."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:848
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die im Archiv-Datensatz nur <u>einmal</u> vorkommen dürfen; z.B., wenn NAME hier eingegeben ist, darf jeder Archiv-Datensatz nur eine NAME Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Archiven</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die nur <u>einmal</u> zu Archiven hinzugefügt werden können. Wenn zum Beispiel NAME in dieser Liste steht, kann nicht mehr als ein NAME-Datensatz zu einem Archiv hinzugefügt werden. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Alle Tatsachen und Ereignisse von Archiven“ erscheinen."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:807
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Diese Liste enthält alle Ereignisse, die im Quellendatensatz nur <u>einmal</u> vorkommen dürfen; z.B., wenn TITL hier eingegeben ist, darf jeder Quellendatensatz nur eine TITL Zeile enthalten. Ereignis-Merkmale dieser Liste dürfen <u>nicht</u> in der Liste <i>Alle Tatsachen und Ereignisse von Quellen</i> vorkommen; d.h., jedes Ereignis-Merkmal darf in nur einer Liste vorkommen."
+msgstr "Dies ist die Liste der GEDCOM-Ereignisse, die nur <u>einmal</u> zu Quellen hinzugefügt werden können. Wenn zum Beispiel TITL in dieser Liste steht, kann nicht mehr als ein TITL-Datensatz zu einer Quelle hinzugefügt werden. Ereignisnamen, die in dieser Liste erscheinen, dürfen <u>nicht</u> auch in der Liste „Alle Tatsachen und Ereignisse von Quellen“ erscheinen."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:85
@@ -15305,7 +15305,7 @@ msgstr "Das Speicherlimt des Servers liegt bei %sMB und das CPU-Zeitlimit bei %s
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:432
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Die Liste, deren Einträge durch Komma oder Leerzeichen getrennt sind, bestimmt die Ereignisse oder Fakten die in Boxen in Diagrammen auftreten dürfen. Alle Einträge in dieser Liste müssen Fakten sein, wie im GEDCOM 5.5.1 Standard definiert. Zum Beispiel, falls der Beruf der Person in deren Box zu zeigen ist, muss dieses Feld den Eintrag „OCCU“ enthalten."
+msgstr "Dies sollte eine durch Komma oder Leerzeichen getrennte Liste von Ereignissen sein, zusätzlich zu Geburt und Tod, die in Diagrammen wie dem Stammbaumdiagramm erscheinen sollen. Für diese Liste müssen Sie Ereignis-Kennzeichen verwenden, wie sie im GEDCOM 5.5.1-Standard definiert sind. Wenn Sie z. B. möchten, dass der Beruf im Diagramm erscheint, sollten Sie „OCCU“ zu diesem Feld hinzufügen."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
@@ -15876,7 +15876,7 @@ msgstr "Art der Tatsache"
 
 #: app/Factories/ElementFactory.php:1163
 msgid "Type of location"
-msgstr "Art des Standortes"
+msgstr "Art des Ortes"
 
 #: app/Factories/ElementFactory.php:314
 msgid "Type of marriage"
@@ -16504,7 +16504,7 @@ msgstr "Sobald ein Besucher ein Benutzerkonto anfragt, wird eine E-Mail mit eine
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:935
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Beim Hinzufügen von nahen Verwandten, können Quellangaben zu den Personen- und Familendatensätzen oder zu Ereignissen wie Geburt, Heirat und Tod erfolgen. Diese Auswahl steuert die Voreinstellung für dieses Verhalten."
+msgstr "Beim Hinzufügen von neuen nahen Verwandten, können Quellangaben zu den Personen- und Familendatensätzen oder zu Ereignissen wie Geburt, Heirat und Tod erfolgen. Diese Auswahl steuert, ob standardmäßig Datensätze oder Ereignisse  ausgewählt werden sollen."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
@@ -16711,7 +16711,7 @@ msgstr "Sie können diesen Stammbaum neu nummerieren."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:172
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Sie können die Zugriffsrechte für einzelne Datensätze, Gegebenheiten oder Ereignisse setzen, indem Sie eine Einschränkung hinzufügen. Wenn ein Datensatz, eine Gegebenheit oder ein Ereignis keine Einschränkung aufweist, gelten die folgenden voreingestellten Einschränkungen."
+msgstr "Sie können die Zugriffsrechte für einzelne Datensätze, Tatsachen oder Ereignisse setzen, indem Sie eine Einschränkung hinzufügen. Wenn ein Datensatz, eine Tatsache oder ein Ereignis keine Einschränkung aufweist, gelten die folgenden voreingestellten Einschränkungen."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -17499,7 +17499,7 @@ msgstr "Datei exportieren"
 #: app/Http/RequestHandlers/TreePreferencesPage.php:116
 #: resources/xml/reports/fact_sources.xml:6
 msgid "facts"
-msgstr "Fakten"
+msgstr "Tatsachen"
 
 #: app/Functions/Functions.php:622
 msgid "father"
@@ -19550,7 +19550,7 @@ msgstr "Liste"
 #: app/Http/RequestHandlers/MapDataImportAction.php:186
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr "%s Orte aktualisiert, %s Orte hinzugefügt"
+msgstr "Orte aktualisiert: %s, Orte hinzugefügt: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:59 app/GedcomCode/GedcomCodeName.php:148
@@ -21027,7 +21027,7 @@ msgstr "„%s” wurde gelöscht."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:59
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "\"Hervorgehobenes Bild\"-Tags (_PRIM) werden von einigen Genealogie-Programmen verwendet, um das bevorzugte Bild für eine Person anzuzeigen. Eine Alternative besteht darin, die Bilder so anzuordnen, dass das bevorzugte Bild zuerst aufgeführt wird."
+msgstr "\"Hervorgehobenes Bild\" (_PRIM)-Kennzeichen werden von einigen Genealogie-Programmen verwendet, um das bevorzugte Bild für eine Person anzuzeigen. Eine Alternative besteht darin, die Bilder so anzuordnen, dass das bevorzugte Bild zuerst aufgeführt wird."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:121
 #: app/Report/ReportParserGenerate.php:972
