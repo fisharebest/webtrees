@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-27 11:40+0000\n"
+"PO-Revision-Date: 2021-02-27 15:35+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -10750,17 +10750,17 @@ msgstr "Plaatsnamen zijn vaak te lang om op diagrammen, lijsten etc. te tonen. Z
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
 msgid "Place of LDS baptism"
-msgstr "Plaats van LDS doop"
+msgstr "Plaats van LDS-doop"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr "Plaats van de LDS-kindverzegeling"
+msgstr "Plaats van LDS-kindverzegeling"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr "Plaats van de LDS-schenking"
+msgstr "Plaats van LDS-schenking"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
@@ -11088,7 +11088,7 @@ msgstr "Privacy"
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: admin_trees_config.php:498
 msgid "Privacy restrictions"
-msgstr "Privacy beperkingen"
+msgstr "Privacybeperkingen"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
@@ -11708,11 +11708,11 @@ msgstr "Geromaniseerd"
 
 #: app/GedcomTag.php:690
 msgid "Romanized place"
-msgstr "Plaatsnaam geromaniseerd"
+msgstr "Geromaniseerde plaatsnaam"
 
 #: app/GedcomTag.php:838
 msgid "Romanized title"
-msgstr "Titel geromaniseerd"
+msgstr "Geromaniseerde titel"
 
 #: app/Functions/FunctionsPrintLists.php:267
 #: app/Functions/FunctionsPrintLists.php:657
