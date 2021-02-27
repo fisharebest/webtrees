@@ -761,7 +761,7 @@ msgstr "A list of frequently asked questions and answers."
 msgid "A list of individuals."
 msgstr "A list of individuals."
 
-#. I18N: Description of the “Repositories” module
+#. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
 msgstr ""

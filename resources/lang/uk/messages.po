@@ -779,7 +779,7 @@ msgstr "Список поширених запитань і відповідей
 msgid "A list of individuals."
 msgstr "Список осіб."
 
-#. I18N: Description of the “Repositories” module
+#. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
 msgstr ""

@@ -838,7 +838,7 @@ msgstr "قائمة بالأسئلة الأكثر شيوعاً والإجابات
 msgid "A list of individuals."
 msgstr "قائمة أفراد."
 
-#. I18N: Description of the “Repositories” module
+#. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
 msgstr ""

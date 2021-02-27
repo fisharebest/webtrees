@@ -80,7 +80,7 @@ class LocationListModule extends AbstractModule implements ModuleListInterface, 
      */
     public function description(): string
     {
-        /* I18N: Description of the “Repositories” module */
+        /* I18N: Description of the “Locations” module */
         return I18N::translate('A list of locations.');
     }
 

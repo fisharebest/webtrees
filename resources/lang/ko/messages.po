@@ -743,7 +743,7 @@ msgstr ""
 msgid "A list of individuals."
 msgstr "인물 목록."
 
-#. I18N: Description of the “Repositories” module
+#. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
 msgstr ""

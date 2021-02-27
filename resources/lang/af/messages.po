@@ -749,7 +749,7 @@ msgstr "’n Lys met vrae en antwoorde wat gereeld gevra word."
 msgid "A list of individuals."
 msgstr "’n Lys van persone."
 
-#. I18N: Description of the “Repositories” module
+#. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
 msgstr "'n Lys liggings."

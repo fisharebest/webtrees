@@ -766,7 +766,7 @@ msgstr "Gyakran ismételt kérdések (GYIK) és válaszok listája."
 msgid "A list of individuals."
 msgstr "Személyek listája."
 
-#. I18N: Description of the “Repositories” module
+#. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
 msgstr ""

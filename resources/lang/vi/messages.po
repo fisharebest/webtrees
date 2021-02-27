@@ -747,7 +747,7 @@ msgstr "Danh sách các câu hỏi thường gặp và câu trả lời."
 msgid "A list of individuals."
 msgstr "Danh sách các cá nhân."
 
-#. I18N: Description of the “Repositories” module
+#. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
 msgstr ""
