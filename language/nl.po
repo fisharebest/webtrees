@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-26 12:36+0000\n"
+"PO-Revision-Date: 2021-02-27 11:40+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -2000,7 +2000,7 @@ msgstr "Voorouders van %s"
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
 msgid "Ancestral file number"
-msgstr "Ancestral File Nummer"
+msgstr "Voorouderlijkdossiernummer (AFN)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
@@ -4090,7 +4090,7 @@ msgstr "Creëer"
 
 #: admin_trees_manage.php:634
 msgid "Create a family tree"
-msgstr "Maak een nieuwe stamboom"
+msgstr "Maak een nieuwe stamboom aan"
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
@@ -4099,7 +4099,7 @@ msgstr "Maak een nieuw media object aan"
 #: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
 #: edit_interface.php:1555
 msgid "Create a repository"
-msgstr "Maak een nieuwe opslagplaats"
+msgstr "Maak een nieuwe opslagplaats aan"
 
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
@@ -4110,7 +4110,7 @@ msgstr "Maak een nieuwe gedeelde notitie aan"
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "Maak een nieuwe gedeelde notitie met behulp van de assistent"
+msgstr "Maak een nieuwe gedeelde notitie aan met behulp van de assistent"
 
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
 #: edit_interface.php:1259
@@ -5090,7 +5090,7 @@ msgstr "Beschrijving"
 #. I18N: A configuration setting
 #: admin_trees_config.php:939
 msgid "Description META tag"
-msgstr "META-tag omschrijving"
+msgstr "META-labelomschrijving"
 
 #: app/Module/CensusAssistantModule.php:316
 msgid "Description unavailable"
@@ -6651,7 +6651,7 @@ msgstr "Begrafenis"
 #. I18N: A configuration setting
 #: admin_trees_check.php:139 admin_trees_config.php:1588
 msgid "GEDCOM errors"
-msgstr "GEDCOM fouten"
+msgstr "GEDCOM-fouten"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
@@ -8558,7 +8558,11 @@ msgstr "Manuscript"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1593
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Veel genealogie programma's maken GEDCOM-bestanden met eigen tags aan en webtrees begrijpt de meeste daarvan. Als echter onherkenbare tags worden gevonden laat deze optie u kiezen of deze moeten worden genegeerd of dat er een waarschuwing wordt getoond."
+msgstr ""
+"Veel genealogieprogramma's maken GEDCOM-bestanden met eigen labels aan en "
+"webtrees begrijpt de meeste daarvan. Als echter onherkenbare labels worden "
+"gevonden laat deze optie u kiezen of deze moeten worden genegeerd of dat er "
+"een waarschuwing wordt getoond."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:433
@@ -11088,7 +11092,9 @@ msgstr "Privacy beperkingen"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Privacy beperkingen - deze worden toegepast op records en feiten zonder GEDCOM RESN tag"
+msgstr ""
+"Privacybeperkingen - deze worden toegepast op records en feiten zonder "
+"GEDCOM RESN-label"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -11627,7 +11633,9 @@ msgstr "Onderzoekstaken zijn speciale gebeurtenissen, toegevoegd aan personen in
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Onderzoekstaken worden opgeslagen met de speciale GEDCOM tag ‘_TODO’. Het zou kunnen dat andere genealogie programma’s deze tag niet herkennen."
+msgstr ""
+"Onderzoekstaken worden opgeslagen met het speciale GEDCOM-label \"_TODO\". "
+"Het zou kunnen dat andere genealogieprogramma’s dit label niet herkennen."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -14284,22 +14292,40 @@ msgstr "Met dit invulvak kunt u het jaar van de kalender wijzigen. Type een jaar
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Dit is een door komma's gescheiden lijst van GEDCOM-feiten/gebeurtenissen die getoond worden wanneer u een naam toevoegt of wijzigt. Als u niet-Latijnse alfabetten, zoals Hebreeuws, Grieks, Cyrillisch of Arabisch gebruikt, kunt u hier extra labels toevoegen zoals _HEB, ROMN, FONE, enzovoorts zodat u namen kunt opslaan in verschillende alfabetten."
+msgstr ""
+"Dit is een door komma's gescheiden lijst van GEDCOM-feitlabels die getoond "
+"worden wanneer u een naam toevoegt of bewerkt. Als u niet-Latijnse "
+"alfabetten, zoals Hebreeuws, Grieks, Cyrillisch of Arabisch gebruikt, kunt u "
+"hier extra labels toevoegen zoals _HEB, ROMN, FONE, enzovoort zodat u namen "
+"kunt opslaan in verschillende alfabetten."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Dit is een door komma's gescheiden lijst van GEDCOM-feiten/gebeurtenissen die getoond worden wanneer u een nieuw gezin toevoegt. Als bijvoorbeeld MARR in de lijst staat, dan worden invoervelden voor huwelijksdatum en -plaats in het formulier getoond."
+msgstr ""
+"Dit is een door komma's gescheiden lijst van GEDCOM-feitlabels die getoond "
+"worden wanneer u een nieuw gezin toevoegt. Als bijvoorbeeld MARR in de lijst "
+"staat, dan worden invoervelden voor huwelijksdatum en -plaats in het "
+"formulier getoond."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Dit is een door komma's gescheiden lijst van GEDCOM-feiten/gebeurtenissen die getoond worden wanneer u een nieuwe persoon toevoegt. Als bijvoorbeeld BIRT in die lijst staat, dan worden invoervelden voor geboortedatum en -plaats in het formulier getoond."
+msgstr ""
+"Dit is een door komma's gescheiden lijst van GEDCOM-feitlabels die getoond "
+"worden wanneer u een nieuwe persoon toevoegt. Als bijvoorbeeld BIRT in die "
+"lijst staat, dan worden invoervelden voor geboortedatum en -plaats in het "
+"formulier getoond."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Dit is een door komma's gescheiden lijst van GEDCOM-feiten/gebeurtenissen die getoond worden wanneer u een plaatsnaam toevoegt of wijzigt. Als u niet-Latijnse alfabetten, zoals Hebreeuws, Grieks, Cyrillisch of Arabisch gebruikt, kunt u hier extra labels toevoegen zoals _HEB, ROMN, FONE, enzovoorts zodat u plaatsnamen kunt opslaan in verschillende alfabetten."
+msgstr ""
+"Dit is een door komma's gescheiden lijst van GEDCOM-feitlabels die getoond "
+"worden wanneer u een plaatsnaam toevoegt of wijzigt. Als u niet-Latijnse "
+"alfabetten, zoals Hebreeuws, Grieks, Cyrillisch of Arabisch gebruikt, kunt u "
+"hier extra labels toevoegen zoals _HEB, ROMN, FONE, enzovoort zodat u "
+"plaatsnamen kunt opslaan in verschillende alfabetten."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14620,7 +14646,12 @@ msgstr "De geheugenlimiet van deze server is %sMB en de tijdslimiet van de proce
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Dit is een door een komma of spatie gescheiden lijst met feiten/gebeurtenissen, anders dan geboorte en overlijden, die u wilt tonen in diagrammen zoals de kwartierstaat. Deze lijst vereist dat u feitlabels (tags) gebruikt zoals gedefinieerd in de GEDCOM 5.5.1 standaard. Als u bijvoorbeeld het beroep in een persoons-vak wilt tonen, dan voert u hier ‘OCCU’ in."
+msgstr ""
+"Dit is een door een komma of spatie gescheiden lijst met feiten/"
+"gebeurtenissen, anders dan geboorte en overlijden, die u wilt tonen in "
+"diagrammen zoals de kwartierstaat. Deze lijst vereist dat u feitlabels "
+"gebruikt zoals gedefinieerd in de GEDCOM 5.5.1-standaard. Als u bijvoorbeeld "
+"het beroep in een persoonsvak wilt tonen, dan voert u hier ‘OCCU’ in."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
@@ -19850,7 +19881,7 @@ msgstr "tabel"
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:165
 msgid "tag cloud"
-msgstr "Tagwolk"
+msgstr "labelwolk"
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
