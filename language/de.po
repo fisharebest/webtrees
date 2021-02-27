@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-27 11:40+0000\n"
+"PO-Revision-Date: 2021-02-27 15:35+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -924,7 +924,7 @@ msgstr "Ein Bericht mit personenbezogenen Detailinformationen."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Ein Bericht der Ereignisse, welche durch die gewählte Quelle belegt sind."
+msgstr "Ein Bericht der Fakten, welche durch die gewählte Quelle belegt sind."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -1031,7 +1031,7 @@ msgstr "Ein Reiter zur Anzeige von nahen Verwandten einer Person."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "Ein Reiter zur Anzeige der Tatsachen und Ereignisse einer Person."
+msgstr "Ein Reiter zur Anzeige der Fakten und Ereignisse einer Person."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
@@ -2009,7 +2009,7 @@ msgstr "Vorfahren von %s"
 #. I18N: gedcom tag AFN
 #: app/GedcomTag.php:138
 msgid "Ancestral file number"
-msgstr "Ancestral File-Nummer"
+msgstr "Ahnendatei-Nummer (AFN)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:91
@@ -8103,7 +8103,7 @@ msgstr "Letzte Änderung"
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr "Die letzte E-Mail als Erinnerung wurde gesendet "
+msgstr "Die letzte Erinnerungs-E-Mail wurde versandt "
 
 #: statistics.php:371
 msgid "Last event"
@@ -8560,7 +8560,11 @@ msgstr "Manuskript"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: admin_trees_config.php:1593
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Viele Ahnenforschungsprogramme erzeugen GEDCOM Dateien mit programmspezifischen Tags, die webtrees in den meisten Fällen kennt und korrekt interpretiert. Wenn unbekannte Tags gefunden werden, erlaubt diese Option, die Tags zu ignorieren oder eine Warnmeldung auszugeben."
+msgstr ""
+"Viele Ahnenforschungsprogramme erzeugen GEDCOM-Dateien mit "
+"programmspezifischen Kennzeichen, die webtrees in den meisten Fällen kennt "
+"und korrekt interpretiert. Wenn unbekannte Kennzeichen gefunden werden, "
+"erlaubt diese Option, diese zu ignorieren oder eine Warnmeldung auszugeben."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:433
@@ -9697,7 +9701,7 @@ msgstr "Zeitung"
 
 #: app/Module/ReviewChangesModule.php:115
 msgid "Next email reminder will be sent after "
-msgstr "Nächste E-Mail als Erinnerung wird gesendet nach "
+msgstr "Die nächste Erinnerungs-E-Mail wird gesendet nach "
 
 #: app/Module/SlideShowModule.php:140
 msgid "Next image"
@@ -11090,7 +11094,9 @@ msgstr "Datenschutzeinschränkungen"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Datenschutzeinschränkungen - diese werden auf Datensätze angewandt, die keinen GEDCOM RESN-Tag enthalten"
+msgstr ""
+"Datenschutzeinschränkungen - diese werden auf Datensätze angewandt, die kein "
+"GEDCOM-RESN-Kennzeichen enthalten"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -11629,7 +11635,10 @@ msgstr "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem S
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags „_TODO“ gespeichert. Andere Genealogie-Anwendungen können dieses Tag möglicherweise nicht korrekt interpretieren."
+msgstr ""
+"Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM -"
+"Kennzeichens „_TODO“ gespeichert. Andere Genealogie-Anwendungen können "
+"dieses Kennzeichen möglicherweise nicht korrekt interpretieren."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -12641,15 +12650,16 @@ msgstr "Verbundene Personen/Familien anzeigen"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr "Zeige Forschungsaufgaben die anderen Benutzern zugeordnet sind"
+msgstr "Forschungsaufgaben anzeigen, die anderen Benutzern zugeordnet sind"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Zeige Forschungsaufgaben die keinem anderen Benutzer zugeordnet sind"
+msgstr ""
+"Forschungsaufgaben anzeigen, die keinem anderen Benutzer zugeordnet sind"
 
 #: app/Module/ResearchTaskModule.php:221
 msgid "Show research tasks that have a date in the future"
-msgstr "Forschungsaufgaben mit einem Datum in der Zukunft anzeigen"
+msgstr "Forschungsaufgaben anzeigen, die ein Datum in der Zukunft haben"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
@@ -14288,22 +14298,41 @@ msgstr "In diesem Feld können Sie das Jahr für die Liste im Modus «Jahr zeige
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem Bearbeitungsformular für Namen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Namen in verschiedenen Alphabeten zu speichern."
+msgstr ""
+"Dies ist eine Komma-getrennte Liste von GEDCOM-Tatsachenkennzeichen, die in "
+"dem Bearbeitungsformular für Namen gezeigt werden. Wenn Sie nicht-"
+"lateinische Alphabete wie Hebräisch, Griechisch, Kyrillisch oder Arabisch "
+"verwenden, können Sie Kennzeichen wie _HEB, ROMN, FONE usw. hinzufügen, "
+"damit Sie Namen in mehreren verschiedenen Alphabeten speichern können."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM Ereignis-Tags, die beim Hinzufügen einer neuen Familie angezeigt wird. Zum Beispiel: Wenn das Tag MARR in der Liste erscheint, werden die Felder für Heiratsdatum und Heiratsort auf dem Formular angezeigt."
+msgstr ""
+"Dies ist eine Komma-getrennte Liste von GEDCOM-Tatsachen-Kennzeichen, die "
+"beim Hinzufügen einer neuen Familie angezeigt wird. Wenn z. B. MARR in der "
+"Liste steht, werden die Felder für Heiratsdatum und Heiratsort im Formular "
+"angezeigt."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Dies ist eine Komma-getrennte Liste von korrespondierenden GEDCOM-Ereignis-Tags, die beim Hinzufügen einer neuen Person angezeigt wird. Zum Beispiel: Wenn das Tag BIRT in der Liste erscheint, werden die Felder für Geburtsdatum und Geburtsort auf dem Formular angezeigt."
+msgstr ""
+"Dies ist eine Komma-getrennte Liste von GEDCOM-Tatsachen-Kennzeichen, die "
+"beim Hinzufügen einer neuen Person angezeigt wird. Wenn z. B. BIRT in der "
+"Liste steht, werden die Felder für Geburtsdatum und Geburtsort im Formular "
+"angezeigt."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Dies ist eine Komma-getrennte Liste von GEDCOM Ereignis-Tags die in dem Bearbeitungsformular für Ortsnamen gezeigt werden. Wenn Sie Alphabete benutzen, die nicht vom lateinischen Alphabet stammen, z.B., die hebräischen, griechischen, russischen, oder arabischen Alphabete, möchten Sie wahrscheinlich Tags wie _HEB, ROM, FONE, usw. dem Formular hinzufügen. Solche Tags ermöglichen Ihnen, Ortsnamen in verschiedenen Alphabeten zu speichern."
+msgstr ""
+"Dies ist eine Komma-getrennte Liste von GEDCOM-Tatsachen-Kennzeichen, die "
+"angezeigt werden, wenn Sie Ortsnamen hinzufügen oder bearbeiten. Wenn Sie "
+"nicht-lateinische Alphabete wie Hebräisch, Griechisch, Kyrillisch oder "
+"Arabisch verwenden, können Sie Kennzeichen wie _HEB, ROMN, FONE usw. "
+"hinzufügen, damit Sie Ortsnamen in mehreren verschiedenen Alphabeten "
+"speichern können."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -14630,7 +14659,13 @@ msgstr "Das Speicherlimt des Servers liegt bei %sMB und das CPU-Zeitlimit bei %s
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Die Liste, deren Einträge durch Komma oder Leerzeichen getrennt sind, bestimmt die Ereignisse oder Fakten die in Boxen in Diagrammen auftreten dürfen. Alle Einträge in dieser Liste müssen Fakten sein, wie im GEDCOM 5.5.1 Standard definiert. Zum Beispiel, falls der Beruf der Person in deren Box zu zeigen ist, muss dieses Feld den Eintrag „OCCU“ enthalten."
+msgstr ""
+"Dies sollte eine durch Komma oder Leerzeichen getrennte Liste von Tatsachen "
+"sein, zusätzlich zu Geburt und Tod, die in Diagrammen wie dem "
+"Stammbaumdiagramm erscheinen sollen. Für diese Liste müssen Sie Tatsachen-"
+"Kennzeichen verwenden, wie sie im GEDCOM 5.5.1-Standard definiert sind. Wenn "
+"Sie z. B. möchten, dass der Beruf im Diagramm erscheint, sollten Sie „OCCU“ "
+"zu diesem Feld hinzufügen."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
@@ -14828,7 +14863,10 @@ msgstr "Um die Aktualisierung abzuschließen, installieren Sie die Dateien manue
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Um neue Forschungsaufgaben zu erstellen, müssen Sie zunächst eine „Forschungsaufgabe“ zur Liste der Tatsachen und Ereignisse in den Stammbaumeinstellungen hinzufügen."
+msgstr ""
+"Um neue Forschungsaufgaben zu erstellen, müssen Sie zuerst die "
+"„Forschungsaufgabe“ zur Liste der Tatsachen und Ereignisse in den "
+"Stammbaumeinstellungen hinzufügen."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
