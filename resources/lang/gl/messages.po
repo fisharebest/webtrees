@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2017-08-14 11:04+0000\n"
 "Last-Translator: Alberto Barros <bertobarros@hotmail.com>\n"
 "Language-Team: Galician <https://translate.webtrees.net/projects/webtrees/webtrees/gl/>\n"
@@ -17251,6 +17251,7 @@ msgstr "Anular"
 msgid "census added"
 msgstr ""
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17276,6 +17277,7 @@ msgstr ""
 msgid "child"
 msgstr "fillo/a"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17334,6 +17336,7 @@ msgstr "continuar"
 msgid "create"
 msgstr ""
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17405,6 +17408,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr ""
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17921,6 +17925,7 @@ msgstr ""
 msgid "gender"
 msgstr ""
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19479,6 +19484,7 @@ msgstr "agochar"
 msgid "himself"
 msgstr ""
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20015,6 +20021,7 @@ msgstr ""
 msgid "percentage"
 msgstr ""
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20039,6 +20046,7 @@ msgstr "anterior"
 msgid "primary evidence"
 msgstr ""
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20076,6 +20084,7 @@ msgstr "rexeitar"
 msgid "rejected"
 msgstr ""
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

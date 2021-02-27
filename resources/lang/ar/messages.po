@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2019-11-27 20:16+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Arabic <https://translate.webtrees.net/projects/webtrees/webtrees/ar/>\n"
@@ -1577,7 +1577,7 @@ msgstr "سطر ثاني للعنوان"
 msgid "Address line 2"
 msgstr "سطر ثالث للعنوان"
 
-#. I18N: gedcom tag ADD2
+#. I18N: gedcom tag ADD3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
@@ -17346,6 +17346,7 @@ msgstr "إلغاء"
 msgid "census added"
 msgstr "تم إضافة التعداد"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17371,6 +17372,7 @@ msgstr "تعديل إسم"
 msgid "child"
 msgstr "مولود"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17429,6 +17431,7 @@ msgstr "إستمرار"
 msgid "create"
 msgstr "إنشاء"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17500,6 +17503,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "تُوفي"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -18019,6 +18023,7 @@ msgstr "دائرة كاملة"
 msgid "gender"
 msgstr "الجنس"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19577,6 +19582,7 @@ msgstr "إخفاء"
 msgid "himself"
 msgstr "هو نفسه"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20117,6 +20123,7 @@ msgstr "مُعلق"
 msgid "percentage"
 msgstr "نسبة مئوية"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20141,6 +20148,7 @@ msgstr "السابق"
 msgid "primary evidence"
 msgstr "قرينة أولية"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20178,6 +20186,7 @@ msgstr "رفض"
 msgid "rejected"
 msgstr "مرفوض"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

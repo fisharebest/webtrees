@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2016-05-18 18:38+0000\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Yiddish <https://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
@@ -17249,6 +17249,7 @@ msgstr "רוף אָפּ"
 msgid "census added"
 msgstr "צענזוס צוגעגעבן"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17274,6 +17275,7 @@ msgstr "טוישן פון נאָמען"
 msgid "child"
 msgstr "קינד"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17332,6 +17334,7 @@ msgstr "פאָרזעצן"
 msgid "create"
 msgstr "שאַפֿן"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17403,6 +17406,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "געשטארבן"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17918,6 +17922,7 @@ msgstr "גאַנץ קרייַז"
 msgid "gender"
 msgstr "מין"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19476,6 +19481,7 @@ msgstr "באַהאַלטן"
 msgid "himself"
 msgstr ""
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20012,6 +20018,7 @@ msgstr "הענגענדיק"
 msgid "percentage"
 msgstr "פראָצענט"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20036,6 +20043,7 @@ msgstr "פרייַערדיק"
 msgid "primary evidence"
 msgstr ""
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20073,6 +20081,7 @@ msgstr "בראַקירן"
 msgid "rejected"
 msgstr "פארווארפן"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

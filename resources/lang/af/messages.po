@@ -1,5 +1,17 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-26 12:38+0000\nPO-Revision-Date: 2021-02-26 19:22+0000\nLast-Translator: Chris Theron <tronsmit@gmail.com>\nLanguage-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\nLanguage: af\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr ""
+"Project-Id-Version: webtrees\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
+"PO-Revision-Date: 2021-02-26 19:22+0000\n"
+"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
+"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1488,7 +1500,7 @@ msgstr "Adresreël 1"
 msgid "Address line 2"
 msgstr "Adresreël 2"
 
-#. I18N: gedcom tag ADD2
+#. I18N: gedcom tag ADD3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
@@ -17221,6 +17233,7 @@ msgstr "kanselleer"
 msgid "census added"
 msgstr "sensus bygevoeg"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr "uitgedaag"
@@ -17246,6 +17259,7 @@ msgstr "naamverandering"
 msgid "child"
 msgstr "kind"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr "burger"
@@ -17304,6 +17318,7 @@ msgstr "gaan voort"
 msgid "create"
 msgstr "skep"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr "kulturele"
@@ -17375,6 +17390,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "oorlede"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr "weerlê"
@@ -17890,6 +17906,7 @@ msgstr "volledige sirkel"
 msgid "gender"
 msgstr "geslag"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr "geografies"
@@ -19448,6 +19465,7 @@ msgstr "verberg"
 msgid "himself"
 msgstr "homself"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr "huishouding"
@@ -19984,6 +20002,7 @@ msgstr "hangende"
 msgid "percentage"
 msgstr "persentasie"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr "politiese"
@@ -20008,6 +20027,7 @@ msgstr "vorige"
 msgid "primary evidence"
 msgstr "primêre getuienis"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr "bewys"
@@ -20045,6 +20065,7 @@ msgstr "van die hand wys"
 msgid "rejected"
 msgstr "van die hand gewys"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr "godsdienstig"

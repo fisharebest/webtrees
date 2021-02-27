@@ -1,5 +1,17 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-26 12:38+0000\nPO-Revision-Date: 2021-02-26 19:22+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr ""
+"Project-Id-Version: webtrees 1.0\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
+"PO-Revision-Date: 2021-02-26 19:22+0000\n"
+"Last-Translator: Martin <der@bauschaffen.de>\n"
+"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -17221,6 +17233,7 @@ msgstr "Abbrechen"
 msgid "census added"
 msgstr "Volkszählung hinzugefügt"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17246,6 +17259,7 @@ msgstr "Namensänderung"
 msgid "child"
 msgstr "Kind"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17304,6 +17318,7 @@ msgstr "Weiter"
 msgid "create"
 msgstr "erstellen"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17375,6 +17390,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "starb"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17890,6 +17906,7 @@ msgstr "Vollkreis"
 msgid "gender"
 msgstr "Geschlecht"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19448,6 +19465,7 @@ msgstr "verbergen"
 msgid "himself"
 msgstr "er selbst"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -19984,6 +20002,7 @@ msgstr "ausstehend"
 msgid "percentage"
 msgstr "Prozentzahl"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20008,6 +20027,7 @@ msgstr "zurück"
 msgid "primary evidence"
 msgstr "sicher, Primärquelle"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20045,6 +20065,7 @@ msgstr "Verwerfen"
 msgid "rejected"
 msgstr "verworfen"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2020-11-29 17:13+0000\n"
 "Last-Translator: Fosstributor <fosstributor@protonmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/webtrees/webtrees/pt_BR/>\n"
@@ -1497,7 +1497,7 @@ msgstr "Endereço"
 msgid "Address line 1"
 msgstr "Endereço (linha 1)"
 
-#. I18N: gedcom tag ADD3
+#. I18N: gedcom tag ADD2
 #: app/Factories/ElementFactory.php:249 app/Factories/ElementFactory.php:362
 #: app/Factories/ElementFactory.php:382 app/Factories/ElementFactory.php:644
 #: app/Factories/ElementFactory.php:691 app/GedcomTag.php:433
@@ -17237,6 +17237,7 @@ msgstr "cancelar"
 msgid "census added"
 msgstr "censo adicionado"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17262,6 +17263,7 @@ msgstr "mudança de nome"
 msgid "child"
 msgstr "criança"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17320,6 +17322,7 @@ msgstr "continuar"
 msgid "create"
 msgstr "criar"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17391,6 +17394,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "falecido"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17906,6 +17910,7 @@ msgstr "círculo completo"
 msgid "gender"
 msgstr "gênero"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19464,6 +19469,7 @@ msgstr "esconder"
 msgid "himself"
 msgstr "ele mesmo"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20000,6 +20006,7 @@ msgstr "pendente"
 msgid "percentage"
 msgstr "Percentagem"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20024,6 +20031,7 @@ msgstr "anterior"
 msgid "primary evidence"
 msgstr "evidência primária"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20061,6 +20069,7 @@ msgstr "rejeitar"
 msgid "rejected"
 msgstr "rejeitado"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

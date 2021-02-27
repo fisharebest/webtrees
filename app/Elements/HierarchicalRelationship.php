@@ -53,10 +53,10 @@ class HierarchicalRelationship extends AbstractElement
     {
         $values = [
             ''     => '',
-            'POLI' => I18N::translate('political'),
-            'RELI' => I18N::translate('religious'),
-            'GEOG' => I18N::translate('geographic'),
-            'CULT' => I18N::translate('cultural'),
+            'POLI' => /* I18N: Type of location hierarchy */ I18N::translate('political'),
+            'RELI' => /* I18N: Type of location hierarchy */ I18N::translate('religious'),
+            'GEOG' => /* I18N: Type of location hierarchy */ I18N::translate('geographic'),
+            'CULT' => /* I18N: Type of location hierarchy */ I18N::translate('cultural'),
         ];
 
         uasort($values, [I18N::class, 'strcasecmp']);

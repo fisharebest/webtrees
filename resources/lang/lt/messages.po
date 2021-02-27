@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2019-10-22 21:17+0000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <http://weblate.iet.open.ac.uk/projects/webtrees/webtrees/lt/>\n"
@@ -17265,6 +17265,7 @@ msgstr "atšaukti"
 msgid "census added"
 msgstr "cenzas įvestas"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17290,6 +17291,7 @@ msgstr "pasikeistas vardas"
 msgid "child"
 msgstr "vaikas"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17348,6 +17350,7 @@ msgstr "tęsti"
 msgid "create"
 msgstr "sukurti"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17419,6 +17422,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "mirė"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17935,6 +17939,7 @@ msgstr "pilnas apskritimas"
 msgid "gender"
 msgstr "lytis"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19493,6 +19498,7 @@ msgstr "paslėpti"
 msgid "himself"
 msgstr ""
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20030,6 +20036,7 @@ msgstr "nepatikrintas"
 msgid "percentage"
 msgstr "procentais"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20054,6 +20061,7 @@ msgstr "ankstesnis"
 msgid "primary evidence"
 msgstr "pagrindinis įrodymas"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20091,6 +20099,7 @@ msgstr "atšaukti"
 msgid "rejected"
 msgstr "atmestas"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

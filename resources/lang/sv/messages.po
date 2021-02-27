@@ -1,5 +1,21 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-26 12:38+0000\nPO-Revision-Date: 2021-02-27 08:58+0000\nLast-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+"Project-Id-Version: webtrees\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
+"PO-Revision-Date: 2021-02-26 12:36+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+>>>>>>> Update I18N
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -17221,6 +17237,7 @@ msgstr "avbryt"
 msgid "census added"
 msgstr "census tillagd"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17246,6 +17263,7 @@ msgstr "namnbyte"
 msgid "child"
 msgstr "barn"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17304,6 +17322,7 @@ msgstr "fortsätt"
 msgid "create"
 msgstr "skapa"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17375,6 +17394,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "dog"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17890,6 +17910,7 @@ msgstr "helcirkel"
 msgid "gender"
 msgstr "kön"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19448,6 +19469,7 @@ msgstr "dölj"
 msgid "himself"
 msgstr "han själv"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr "hushåll"
@@ -19984,6 +20006,7 @@ msgstr "väntande"
 msgid "percentage"
 msgstr "procent"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20008,6 +20031,7 @@ msgstr "föregående"
 msgid "primary evidence"
 msgstr "primärt bevis"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20045,6 +20069,7 @@ msgstr "avslå"
 msgid "rejected"
 msgstr "avslagen"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

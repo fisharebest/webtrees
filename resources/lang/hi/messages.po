@@ -4,7 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-26 12:38+0000\nPO-Revision-Date: 2021-02-26 19:23+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr ""
+"Project-Id-Version: webtrees 1.0\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
+"PO-Revision-Date: 2021-02-26 19:23+0000\n"
+"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
+"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1493,7 +1505,7 @@ msgstr "पता पंक्ति 1"
 msgid "Address line 2"
 msgstr "पता पंक्ति 2"
 
-#. I18N: gedcom tag ADD2
+#. I18N: gedcom tag ADD3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
@@ -17226,6 +17238,7 @@ msgstr "रद्द"
 msgid "census added"
 msgstr "जनगणना शामिल"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr "चुनौतीः"
@@ -17251,6 +17264,7 @@ msgstr "नाम की बदली"
 msgid "child"
 msgstr "संतान"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr "नागरिक"
@@ -17309,6 +17323,7 @@ msgstr "जारी"
 msgid "create"
 msgstr "बनाएँ"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr "सांस्कृतिक"
@@ -17380,6 +17395,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "मृत्यु हुई"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr "असिद्धि"
@@ -17895,6 +17911,7 @@ msgstr "पूर्ण-चक्र"
 msgid "gender"
 msgstr "लिंग"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr "भौगोलिक"
@@ -19453,6 +19470,7 @@ msgstr "छुपाएं"
 msgid "himself"
 msgstr "स्वयं"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr "गृहस्थी"
@@ -19989,6 +20007,7 @@ msgstr "अनिर्णीत"
 msgid "percentage"
 msgstr "प्रतिशत"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr "राजनीतिक"
@@ -20013,6 +20032,7 @@ msgstr "पिछला"
 msgid "primary evidence"
 msgstr "मुख्य सबूत"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr "सिद्ध"
@@ -20050,6 +20070,7 @@ msgstr "अस्वीकार"
 msgid "rejected"
 msgstr "अस्वीकृत"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr "धार्मिक"

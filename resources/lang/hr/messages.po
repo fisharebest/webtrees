@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2018-10-14 23:55+0000\n"
 "Last-Translator: Milivoj Bartoš <mic@mikrotakt.com>\n"
 "Language-Team: Croatian <https://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
@@ -1522,7 +1522,7 @@ msgstr "Adresa, 1. red"
 msgid "Address line 2"
 msgstr "Adresa, 2. red"
 
-#. I18N: gedcom tag ADD2
+#. I18N: gedcom tag ADD3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
@@ -17271,6 +17271,7 @@ msgstr "odustani"
 msgid "census added"
 msgstr "dodani odjeljak"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17296,6 +17297,7 @@ msgstr "promijenio ime"
 msgid "child"
 msgstr "djete"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17354,6 +17356,7 @@ msgstr "nastavi"
 msgid "create"
 msgstr "kreiraj"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17425,6 +17428,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "umro"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17941,6 +17945,7 @@ msgstr "puni krug"
 msgid "gender"
 msgstr "spol"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19499,6 +19504,7 @@ msgstr "sakri"
 msgid "himself"
 msgstr "on"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20036,6 +20042,7 @@ msgstr "na čekanju"
 msgid "percentage"
 msgstr "postotak"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20060,6 +20067,7 @@ msgstr "prethodna"
 msgid "primary evidence"
 msgstr "primarni dokaz"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20097,6 +20105,7 @@ msgstr "odbij"
 msgid "rejected"
 msgstr "odbijeno"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

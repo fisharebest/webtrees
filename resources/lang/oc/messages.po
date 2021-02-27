@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2020-05-30 07:30+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: Occitan <https://translate.webtrees.net/projects/webtrees/webtrees/oc/>\n"
@@ -1518,7 +1518,7 @@ msgstr "Adreça linha 1"
 msgid "Address line 2"
 msgstr "Adreça linha 2"
 
-#. I18N: gedcom tag ADD2
+#. I18N: gedcom tag ADD3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
@@ -17490,6 +17490,7 @@ msgstr "Anullar"
 msgid "census added"
 msgstr ""
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17515,6 +17516,7 @@ msgstr ""
 msgid "child"
 msgstr ""
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17573,6 +17575,7 @@ msgstr "seguir"
 msgid "create"
 msgstr ""
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17644,6 +17647,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "defuntat"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -18160,6 +18164,7 @@ msgstr "tot el cercle"
 msgid "gender"
 msgstr "sèxe"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19718,6 +19723,7 @@ msgstr ""
 msgid "himself"
 msgstr ""
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20257,6 +20263,7 @@ msgstr "pendent"
 msgid "percentage"
 msgstr "percentatge"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20281,6 +20288,7 @@ msgstr "precedent"
 msgid "primary evidence"
 msgstr "font primari"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20318,6 +20326,7 @@ msgstr "regetar"
 msgid "rejected"
 msgstr "regetat"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

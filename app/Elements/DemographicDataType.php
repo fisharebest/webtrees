@@ -52,8 +52,8 @@ class DemographicDataType extends AbstractElement
     {
         $values = [
             ''     => '',
-            'HSHO' => I18N::translate('household'),
-            'CITI' => I18N::translate('citizen'),
+            'HSHO' => /* I18N: Type of demographic data */ I18N::translate('household'),
+            'CITI' => /* I18N: Type of demographic data */ I18N::translate('citizen'),
         ];
 
         uasort($values, [I18N::class, 'strcasecmp']);

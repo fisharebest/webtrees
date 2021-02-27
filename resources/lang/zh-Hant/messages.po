@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Traditional) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2020-03-22 11:51+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hant/>\n"
@@ -18597,6 +18597,7 @@ msgstr "取消"
 msgid "census added"
 msgstr "人口普查增加"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -18625,6 +18626,7 @@ msgstr "更改後的姓名"
 msgid "child"
 msgstr "孩子"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -18688,6 +18690,7 @@ msgstr "繼續"
 msgid "create"
 msgstr "創建"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -18760,6 +18763,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "去世"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -19302,6 +19306,7 @@ msgstr "整圈"
 msgid "gender"
 msgstr "性別"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -20873,6 +20878,7 @@ msgstr "隱藏"
 msgid "himself"
 msgstr "他自己"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -21431,6 +21437,7 @@ msgstr "待定"
 msgid "percentage"
 msgstr "百分比"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -21457,6 +21464,7 @@ msgstr "上一頁"
 msgid "primary evidence"
 msgstr "主要証據"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -21496,6 +21504,7 @@ msgstr "拒絕"
 msgid "rejected"
 msgstr "拒絕"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""

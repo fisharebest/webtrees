@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-26 12:38+0000\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2020-06-22 15:24+0000\n"
 "Last-Translator: De Tran <trande@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\n"
@@ -1486,7 +1486,7 @@ msgstr "Địa chỉ dòng 1"
 msgid "Address line 2"
 msgstr "Địa chỉ dòng 2"
 
-#. I18N: gedcom tag ADD2
+#. I18N: gedcom tag ADD3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
@@ -17244,6 +17244,7 @@ msgstr "Hủy bỏ"
 msgid "census added"
 msgstr "thống kê thêm"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
 msgstr ""
@@ -17269,6 +17270,7 @@ msgstr "đổi tên"
 msgid "child"
 msgstr "con cái"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
 msgstr ""
@@ -17327,6 +17329,7 @@ msgstr "tiếp tục"
 msgid "create"
 msgstr "tạo"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
 msgstr ""
@@ -17398,6 +17401,7 @@ msgctxt "MALE"
 msgid "died"
 msgstr "mất"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
 msgstr ""
@@ -17913,6 +17917,7 @@ msgstr "giáp chu kỳ"
 msgid "gender"
 msgstr "nam/nữ"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
 msgstr ""
@@ -19471,6 +19476,7 @@ msgstr "ẩn"
 msgid "himself"
 msgstr "Bản thân ông ấy"
 
+#. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
 msgstr ""
@@ -20006,6 +20012,7 @@ msgstr "chờ"
 msgid "percentage"
 msgstr "tỷ lệ phần trăm"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
 msgstr ""
@@ -20030,6 +20037,7 @@ msgstr "trước"
 msgid "primary evidence"
 msgstr "chứng cứ chính"
 
+#. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
 msgstr ""
@@ -20067,6 +20075,7 @@ msgstr "từ chối"
 msgid "rejected"
 msgstr "từ chối"
 
+#. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
 msgstr ""
