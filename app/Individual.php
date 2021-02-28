@@ -481,6 +481,8 @@ class Individual extends GedcomRecord
      * Get the year of birth
      *
      * @return string the year of birth
+     *
+     * @deprecated - will be removed in 2.1.0
      */
     public function getBirthYear(): string
     {
@@ -521,6 +523,8 @@ class Individual extends GedcomRecord
      * get the death year
      *
      * @return string the year of death
+     *
+     * @deprecated - will be removed in 2.1.0
      */
     public function getDeathYear(): string
     {
@@ -537,18 +541,23 @@ class Individual extends GedcomRecord
      */
     public function lifespan(): string
     {
-        // Just the first part of the place name
+        // Just the first part of the place name.
         $birth_place = strip_tags($this->getBirthPlace()->shortName());
         $death_place = strip_tags($this->getDeathPlace()->shortName());
-        // Remove markup from dates
+
+        // Remove markup from dates.
         $birth_date = strip_tags($this->getBirthDate()->display());
         $death_date = strip_tags($this->getDeathDate()->display());
+
+        // Use minimum and maximum dates - to agree with the age calculations.
+        $birth_year = $this->getBirthDate()->minimumDate()->format('%Y');
+        $death_year = $this->getDeathDate()->maximumDate()->format('%Y');
 
         /* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */
         return I18N::translate(
             '%1$s–%2$s',
-            '<span title="' . $birth_place . ' ' . $birth_date . '">' . $this->getBirthYear() . '</span>',
-            '<span title="' . $death_place . ' ' . $death_date . '">' . $this->getDeathYear() . '</span>'
+            '<span title="' . $birth_place . ' ' . $birth_date . '">' . $birth_year . '</span>',
+            '<span title="' . $death_place . ' ' . $death_date . '">' . $death_year . '</span>'
         );
     }
 
