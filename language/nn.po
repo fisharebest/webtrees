@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-11 03:42+0000\n"
+"PO-Revision-Date: 2021-02-28 16:20+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -11605,20 +11605,27 @@ msgstr "Søk om brukarkonto"
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
 msgid "Research task"
-msgstr "Forskingsoppgåve"
+msgstr "Granskingsoppgåve"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr "Forskningsoppgåver"
+msgstr "Granskingsoppgåver"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Forskningsoppgåver er særskilde hendingar knytte til personar i slektstreet, som syner trong til vidare gransking. Dei kan nyttast som påminning om at data må kontrollerast mot andre kjelder, at dokument eller bileter må innhentast, at motstridande informasjon må kontrollerast, osb."
+msgstr ""
+"Granskingsoppgåver er særskilde hendingar knytte til personar i slektstreet, "
+"som syner trong til vidare gransking. Dei kan nyttast som påminning om at "
+"data må kontrollerast mot andre kjelder, at dokument eller bileter må "
+"innhentast, at motstridande informasjon må kontrollerast, osb."
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Forskningsoppgåver vert lagra under koden «_TODO». Sidan denne ikkje finnast i GEDCOM-standarden, er det ikkje sikkert at andre slektsforskningsprogram vil forstå den."
+msgstr ""
+"Granskingsoppgåver vert lagra under koden «_TODO». Sidan denne ikkje finnast "
+"i GEDCOM-standarden, er det ikkje sikkert at andre slektsforskningsprogram "
+"vil forstå den."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -11687,15 +11694,15 @@ msgstr "Romania"
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:762
 msgid "Romanized"
-msgstr "Latinsk"
+msgstr "Latinsk form"
 
 #: app/GedcomTag.php:690
 msgid "Romanized place"
-msgstr "Stad (latinsk)"
+msgstr "Stad (latinsk form)"
 
 #: app/GedcomTag.php:838
 msgid "Romanized title"
-msgstr "Tittel (latin)"
+msgstr "Tittel (latinsk form)"
 
 #: app/Functions/FunctionsPrintLists.php:267
 #: app/Functions/FunctionsPrintLists.php:657
@@ -12630,15 +12637,15 @@ msgstr "Syn slekta personar/familier"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr "Syn forskningsoppgåver som er tildelt andre brukarar"
+msgstr "Syn granskingsoppgåver som er tildelt andre brukarar"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Syn forskningsoppgåver som ikkje er tildelt nokon brukar"
+msgstr "Syn granskingsoppgåver som ikkje er tildelt nokon brukar"
 
 #: app/Module/ResearchTaskModule.php:221
 msgid "Show research tasks that have a date in the future"
-msgstr "Syn komande forskningsoppgåver"
+msgstr "Syn komande granskingsoppgåver"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
@@ -14058,7 +14065,7 @@ msgstr "Det finnast ingen ventande endringar."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
-msgstr "Det er ingen forskningsoppgåver knytte til slektstreet."
+msgstr "Det er ingen granskingsoppgåver knytte til slektstreet."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
@@ -14802,7 +14809,9 @@ msgstr "For å fullføre oppgraderinga, må du installere filene manuelt."
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "For å opprette nye forskningsoppgåver må først «forskningsoppgåve» leggjast til i lista over fakta og hendingar i innstillingane for slektstreet."
+msgstr ""
+"For å opprette nye granskingsoppgåver må først «granskingsoppgåve» leggjast "
+"til i lista over fakta og hendingar i innstillingane for slektstreet."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
