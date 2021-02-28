@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2019-04-30 22:45+0100\n"
-"PO-Revision-Date: 2021-01-15 18:36+0000\n"
+"PO-Revision-Date: 2021-03-01 12:17+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/he/>\n"
@@ -4820,7 +4820,7 @@ msgstr "ארצות"
 #: app/Module/GoogleMapsModule.php:1436 app/Module/GoogleMapsModule.php:3444
 #: app/GedcomTag.php:638 app/Statistics/Google/ChartDistribution.php:118
 msgid "Country"
-msgstr "ארץ"
+msgstr "מדינה"
 
 #: statisticsplot.php:914 statisticsplot.php:964 statisticsplot.php:1018
 #: statisticsplot.php:1068 statisticsplot.php:1122 statisticsplot.php:1172
@@ -14048,11 +14048,11 @@ msgstr "לטיני"
 
 #: app/GedcomTag.php:690 app/GedcomTag.php:933
 msgid "Romanized place"
-msgstr "מקום לטיני"
+msgstr "מקום בתעתיק לטיני"
 
 #: app/GedcomTag.php:838 app/GedcomTag.php:1057
 msgid "Romanized title"
-msgstr "כותרת לטינית"
+msgstr "כותרת בתעתיק לטיני"
 
 #: app/Functions/FunctionsPrintLists.php:267
 #: app/Functions/FunctionsPrintLists.php:657
