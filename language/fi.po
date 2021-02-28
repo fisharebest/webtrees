@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2021-03-01 12:17+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fi/>\n"
@@ -981,11 +981,16 @@ msgstr "Raportti henkilön ja hänen omaistensa puuttuvista tiedoista."
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Raportti keskeisistä tapahtumista, tiettynä ajanjaksona tai tietyssä paikassa."
+msgstr ""
+"Raportti keskeisistä tapahtumista, tiettynä päivänä tai tietyssä paikassa."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Rooli on joukko käyttöoikeuksia, joilla voi lukea tai muuttaa tietoja, muuttaa asetuksia, jne. Erilaisia käyttöoikeuksia annetaan kullekin roolille. Rooli myönnetään kullekin käyttäjälle. Jokainen sukupuu voi antaa roolille eri käyttöoikeudet ja myöntää eri roolit käyttäjille."
+msgstr ""
+"Rooli on joukko käyttöoikeuksia, joilla voi lukea tai muuttaa tietoja, "
+"muuttaa asetuksia jne. Erilaisia käyttöoikeuksia annetaan kullekin roolille. "
+"Rooli myönnetään kullekin käyttäjälle. Jokainen sukupuu voi antaa roolille "
+"eri käyttöoikeudet ja myöntää eri roolit käyttäjille."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1745,7 +1750,7 @@ msgstr "Ikä vihkimisvuonna"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
 msgid "Age of parents next to child’s birthdate"
-msgstr "Vanhempien ikä lasten syntymäajan viereen"
+msgstr "Vanhempien ikä lasten syntymäpäivän viereen"
 
 #: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
@@ -3903,12 +3908,12 @@ msgstr "Kompaktipuu - %s"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:100
 msgid "Completed before 1970; date not available"
-msgstr "Valmistui ennen 1970, aika ei tiedossa"
+msgstr "Valmistui ennen 1970, päivämäärä ei tiedossa"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:80
 msgid "Completed; date unknown"
-msgstr "(mormoni) Valmis; aika tuntematon"
+msgstr "(mormoni) Valmis; päivä tuntematon"
 
 #: admin_trees_download.php:141
 msgid "Compress the GEDCOM file"
@@ -4384,43 +4389,43 @@ msgstr "Päivämäärä"
 
 #: app/Module/RelativesTabModule.php:315
 msgid "Date differences"
-msgstr "Päivämäärä erot"
+msgstr "Päivämääräerot"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
-msgstr "MAP-kasteen aika"
+msgstr "MAP-kastepäivä"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr "MAP-lapsen sinetöinnin aika"
+msgstr "MAP-lapsen sinetöintipäivä"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr "MAP-endaumentin aika"
+msgstr "MAP-endaumentin päivä"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
 msgid "Date of LDS spouse sealing"
-msgstr "MAP-puolison sinetöinnin aika"
+msgstr "MAP-puolison sinetöinnin päivä"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
-msgstr "Adoption aika"
+msgstr "Adoptiopäivä"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
-msgstr "Kasteen aika"
+msgstr "Kastepäivä"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:212
 msgid "Date of bar mitzvah"
-msgstr "Bar mitsva aika"
+msgstr "Bar mitsva päivä"
 
 #: app/GedcomTag.php:200 modules_v3/missing_facts_report/report.xml:253
 msgid "Date of bat mitzvah"
-msgstr "Bat mitsva aika"
+msgstr "Bat mitsva päivä"
 
 #: app/GedcomTag.php:208 modules_v3/fact_sources/report.xml:68
 #: modules_v3/fact_sources/report.xml:272
@@ -4431,88 +4436,88 @@ msgstr "Syntymäaika"
 
 #: app/GedcomTag.php:216
 msgid "Date of blessing"
-msgstr "Siunauksen aika"
+msgstr "Siunauksen päivämäärä"
 
 #: app/GedcomTag.php:1090
 msgid "Date of brit milah"
-msgstr "Brit mila aika"
+msgstr "Brit mila päivä"
 
 #: app/GedcomTag.php:228 modules_v3/missing_facts_report/report.xml:546
 msgid "Date of burial"
-msgstr "Hautausaika"
+msgstr "Hautauspäivä"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr "Kasteen aika"
+msgstr "Kasteen päivämäärä"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
-msgstr "Rippitilaisuuden aika"
+msgstr "Rippitilaisuuden päivämäärä"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr "Polttohautauksen aika"
+msgstr "Polttohautauspäivä"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:505
 msgid "Date of death"
-msgstr "Kuolinaika"
+msgstr "Kuolinpäivä"
 
 #: app/GedcomTag.php:462
 msgid "Date of divorce"
-msgstr "Avioeron aika"
+msgstr "Avioeron päivämäärä"
 
 #: app/GedcomTag.php:406
 msgid "Date of emigration"
-msgstr "Maastamuuton aika"
+msgstr "Maastamuuton päivämäärä"
 
 #: app/GedcomTag.php:422 modules_v3/missing_facts_report/report.xml:336
 msgid "Date of engagement"
-msgstr "Kihlausaika"
+msgstr "Kihlauspäivä"
 
 #: app/GedcomTag.php:344
 msgid "Date of entry in original source"
-msgstr "Kirjausaika alkuperäisessä lähteessä"
+msgstr "Alkuperäisen lähteen päivämäärä"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr "Tapahtuman aika"
+msgstr "Tapahtuman päivämäärä"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
-msgstr "Ensimmäisen ehtoollisen aika"
+msgstr "Ensimmäisen ehtoollisen päivä"
 
 #: app/GedcomTag.php:526
 msgid "Date of immigration"
-msgstr "Maahanmuuton aika"
+msgstr "Maahanmuuton päivä"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
 msgid "Date of last change"
-msgstr "Viimeisin muutosaika"
+msgstr "Viimeisin muutoksen päivämäärä"
 
 #: app/GedcomTag.php:464 app/GedcomTag.php:578
 #: modules_v3/fact_sources/report.xml:319
 #: modules_v3/missing_facts_report/report.xml:463
 msgid "Date of marriage"
-msgstr "Avioitumisaika"
+msgstr "Avioitumipäivä"
 
 #: app/GedcomTag.php:562 modules_v3/missing_facts_report/report.xml:420
 msgid "Date of marriage banns"
-msgstr "Avioliittokuulutus aika"
+msgstr "Avioliittokuulutus päivä"
 
 #: app/GedcomTag.php:620
 msgid "Date of naturalization"
-msgstr "Kansalaistamisaika"
+msgstr "Kansalaisuuden päivämäärä"
 
 #: app/GedcomTag.php:668
 msgid "Date of ordination"
-msgstr "Papiksivihkimisen aika"
+msgstr "Papiksivihkimisen päivä"
 
 #: app/GedcomTag.php:734
 msgid "Date of residence"
-msgstr "Asuinpaikan aika"
+msgstr "Asuinpaikan päivämäärä"
 
 #: help_text.php:159
 msgid "Date period"
@@ -4520,7 +4525,9 @@ msgstr "Päivämääräjakso"
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Päivämääräjaksoja käytetään kun esimerkiksi ammattia on harjoitettu tietty aika."
+msgstr ""
+"Päivämääräjaksoja käytetään osoittamaan, että tosiasia, kuten ammatti, "
+"jatkui jonkin aikaa."
 
 #: help_text.php:148 statistics.php:723
 msgid "Date range"
@@ -4528,7 +4535,9 @@ msgstr "Ajanjakso"
 
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Ajanjajaksoja käytetään esimerkiksi silloin kun tarkka syntymäaika ei ole tiedossa."
+msgstr ""
+"Ajanjaksoja käytetään osoittamaan, että tapahtuma, kuten syntymä, tapahtui "
+"tuntemattomana päivänä mahdollisella aikavälillä."
 
 #: admin_users.php:850
 msgid "Date registered"
@@ -4536,17 +4545,23 @@ msgstr "Rekisteröintipäivä"
 
 #: app/Module/UserMessagesModule.php:113
 msgid "Date sent"
-msgstr "Luontipäivä"
+msgstr "Lähetyspäivä"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:709
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
-msgstr "Ajat muunnetaan ainoastaan, jos ne ovat voimassa kalenterissa. Esimerkiksi vain %1$s ja %2$s väliset ajat muunnetaan Ranskan kalenteriin ja vain ajat %3$s jälkeen muunnetaan gregoriaaniseen kalenteriin."
+msgstr ""
+"Päivämäärät muunnetaan vain, jos ne ovat voimassa kalenterissa. Esimerkiksi "
+"vain %1$s ja %2$s väliset päivämäärät muunnetaan ranskalaiseksi kalenteriksi "
+"ja vain päivämäärät %3$s jälkeen muunnetaan gregoriaaniseksi kalenteriksi."
 
 #: help_text.php:134
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr "Ajat tallennetaan käyttäen englanninkielisiä lyhenteitä ja avainsanoja. Näiden lyhenteiden kirjoittamisen sijasta voit käyttää pikavalintoja."
+msgstr ""
+"Päivämäärät tallennetaan englanninkielisillä lyhenteillä ja avainsanoilla. "
+"Pikanäppäimet ovat saatavana vaihtoehtona näille lyhenteille ja "
+"avainsanoille."
 
 #: modules_v3/family_group_report/report.xml:809
 #: modules_v3/individual_ext_report/report.xml:562
@@ -5206,7 +5221,14 @@ msgstr "Eroavuudet"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:706
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Eri kalenterijärjestelmiä käytetään eri puolilla maailmaa, ja monet muut kalenterijärjestelmät olivat käytössä aikaisemmin. Jos mahdollista, sinun pitäisi kirjoittaa ajat käyttämällä kalenteria jossa tapahtuma alun perin kirjattiin. Tämän jälkeen voit määrittää muunnoksen ja näyttää nämä ajat tutummassa kalenterissa. Jos säännöllisesti käytät kahta kalenteria, voit määrittää kaksi muunnosta ja ajat muunnetaan molempiin valittuihin kalenterieihin."
+msgstr ""
+"Eri kalenterijärjestelmiä käytetään eri puolilla maailmaa, ja monet muut "
+"kalenterijärjestelmät olivat käytössä aikaisemmin. Jos mahdollista, syötä "
+"päivämäärät käyttämällä kalenteria, johon tapahtuma alun perin kirjattiin. "
+"Tämän jälkeen voit määrittää muunnoksen ja näyttää nämä päivqmäärät "
+"tutummassa kalenterissa. Jos säännöllisesti käytät kahta kalenteria, voit "
+"määrittää kaksi muunnosta ja ajat muunnetaan molemmiksi valituiksi "
+"kalentereiksi."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5336,7 +5358,16 @@ msgstr "Tämä käyttäjätunnus on jo olemassa. Valitse toinen käyttäjätunnu
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi väestölaskenta kuvaa väestönlaskennan tiedot ja kirkonkirjat kuvaavat syntymä-, avioliitto- ja kuolematiedot.<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatietona ”Oulu, Oulu, FIN” (pitäjä, l??äni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
+msgstr ""
+"Jokainen lähde tallentaa tietyt tapahtumat, yleensä tietylle ajanjaksolle ja "
+"paikkakunnalle. Esimerkiksi väestönlaskenta kirjaa väestönlaskennan "
+"tapahtumia ja kirkon arkistot kirjaavat syntymä-, avioliitto- ja "
+"kuolemantapahtumia. .<br><br>Valitse tapahtumat jotka voi saada tästä "
+"tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli "
+"alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. "
+"Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja jotka kosktapahtuivat "
+"Oulussa, paikkatie on ”Oulu, Oulu, FIN” (pitäjä, lääni, maa) tai esim. tieto "
+"Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5621,7 +5652,7 @@ msgstr "Viimeinen IP-osoite"
 #. I18N: The latest year in a range
 #: lifespan.php:77
 msgid "End year"
-msgstr "Lopetusvuosi"
+msgstr "Loppuvuosi"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
@@ -5706,7 +5737,7 @@ msgstr "Esfand"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1184
 msgid "Estimated dates for birth and death"
-msgstr "Syntymä- ja kuolemapäivämäärien arvioitu ajankohta"
+msgstr "Arvioidut syntymä- ja kuolemapäivät"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6743
@@ -7312,7 +7343,11 @@ msgstr "Jos sukunimi on tuntematon, käytä tyhjiä kauttaviivoja: <%s>Mary //<%
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Jos tällä henkilöllä on muita tapahtumia kuin kuolema, hautajaiset tai polttohautaus, ja ne ovat ajallisesti tapahtuneet näin monen vuoden sisällä, niin henkilön tulkitaan olevan ”elossa”. Lapsen syntymäaika tulkintaan merkiksi ”elossa” olemisesta."
+msgstr ""
+"Jos tällä henkilöllä on muita tapahtumia kuin kuolema, hautaaminen tai "
+"polttohautaus, ja ne ovat ajallisesti tapahtuneet näin monen vuoden sisällä, "
+"niin henkilön tulkitaan olevan ”elossa”. Lasten syntymäaikoja pidetään "
+"tällaisina tapahtumina tähän tarkoitukseen."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
@@ -8587,7 +8622,11 @@ msgstr "maaliskuu"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown on yksinkertainen muotoilujärjestelmä, jota käytettään esim. Wikipedia sivustoilla. Se käyttää vaatimattomia välimerkkejä luodessaan otsikoita, alaotsikoita, lihavoituja ja kursivoituja tekstejä, luetteloita, taulukoita, jne."
+msgstr ""
+"Markdown on yksinkertainen muotoilujärjestelmä, jota käytettään esim. "
+"Wikipedia sivustoilla. Se käyttää vaatimattomia välimerkkejä luodessaan "
+"otsikoita, alaotsikoita, lihavoituja ja kursivoituja tekstejä, luetteloita, "
+"taulukoita jne."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:449
@@ -8668,11 +8707,11 @@ msgstr "Avioliittosopimus"
 
 #: modules_v3/marriage_report/report.xml:8
 msgid "Marriage date range end"
-msgstr "Avioitumisajanjakson loppu"
+msgstr "Avioliiton ajanjakson loppu"
 
 #: modules_v3/marriage_report/report.xml:7
 msgid "Marriage date range start"
-msgstr "Avioitumisajanjakson alku"
+msgstr "Avioliiton ajanjakson alku"
 
 #. I18N: gedcom tag _MEND
 #: app/GedcomTag.php:1655
@@ -12480,7 +12519,7 @@ msgstr "Näytä viimeisen sadan vuoden aikana vihityt parit."
 
 #: app/Functions/FunctionsPrintLists.php:675
 msgid "Show couples with an unknown marriage date."
-msgstr "Näytä parit, joiden vihkimisaika on tuntematon."
+msgstr "Näytä parit, joiden vihkimispäivä on tuntematon."
 
 #: ancestry.php:75
 msgid "Show cousins"
@@ -12489,7 +12528,7 @@ msgstr "Näytä serkut"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Näytä viimeisin päivitysaika"
+msgstr "Näytä viimeisimmän päivityksen päivämäärä"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
@@ -12804,7 +12843,11 @@ msgstr "Sisään kirjautuminen ja rekisteröinti"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Avainsanan lisääminen on valinnaista, jos kirjoitetun kuukauden ja vuoden tietojen perusteella voidaan päätellä mistä kalenterista on kysymys."
+msgstr ""
+"Yksinkertaisten  päivämäärien oletetaan noudattavan gregoriaanista "
+"kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan "
+"päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden "
+"muoto tekee päivämäärästä yksiselitteisen."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6872
@@ -13021,7 +13064,11 @@ msgstr "Lähde"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2110
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Lähdetietoviitteet voivat myös sisältää tietoa lähdetiedon luotettavuudesta (ensikäden, välikäden jne.) sekä päiväyksen milloin lähdetieto on saatu. Näitä lisäkenttiä voidaan poistaa käytöstä kirjoitettaessa uusia lähdetietoviitteitä."
+msgstr ""
+"Lähdetietoviitteet voivat myös sisältää tietoa lähdetiedon luotettavuudesta ("
+"ensisijainen, toissijainen jne.) sekä päiväyksen milloin lähdetieto "
+"lisättiin lähteeseen. Jos et käytä näitä kenttiä, voit poistaa ne käytöstä, "
+"kun luot uusia lähdetietoviitteitä."
 
 #. I18N: Label for search field
 #: find.php:257
@@ -13193,7 +13240,7 @@ msgstr "Tila"
 
 #: app/GedcomTag.php:806
 msgid "Status change date"
-msgstr "Tilan muutosaika"
+msgstr "Tilan muutospäivä"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
@@ -13930,7 +13977,9 @@ msgstr "Aika sekunneissa, miten kauan webtrees sessio / käyttäjän istunto pys
 
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr "Aikavyöhykettä tarvitaan päivämäärä laskelmiin, kuten tietämään tämä päivä."
+msgstr ""
+"Aikavyöhykettä tarvitaan päivämäärälaskelmiin, kuten tietämään tämän päivän "
+"päivämäärä."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
@@ -14265,12 +14314,19 @@ msgstr "Pilkuilla \",\" eroteltu luettelo GEDCOM faktatunnisteista, joita esitet
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM faktatunnisteista, joita näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR (avioliitto) on luettelossa, esitetään avioliittoaika ja -paikka lomakkeessa."
+msgstr ""
+"Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM faktatunnisteista, joita "
+"näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR "
+"(avioliitto) on luettelossa, esitetään avioliiton päivämäärä ja -paikka "
+"lomakkeessa."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Tämä on pilkkumerkein \",\" eroteltu lista GEDCOM faktatunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäaika ja -paikka lomakkeessa."
+msgstr ""
+"Tämä on pilkkuilla \",\" erotettu luettelo GEDCOM faktatunnisteita (tag), "
+"joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) "
+"on listassa, esitetään syntymäpäivä ja -paikka lomakkeessa."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
@@ -14464,12 +14520,17 @@ msgstr "Tällä valinnalla vaikutetaan siihen, näytetäänkö automaattisesti <
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1316
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Tällä valinnalla päätät näytetäänkö kaavioissa lasten syntymäajan vieressä isän ja äidin senhetkinen ikä."
+msgstr ""
+"Tällä valinnalla päätät näytetäänkö kaavioissa lasten syntymäpäivän vieressä "
+"isän ja äidin senhetkinen ikä."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1189
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Tällä valinnalla päätetään, esitetäänkö arvioidut syntymä- ja kuolinajat, jos päivämääriä ei tunneta. Muuten ajat esitetään tyhjinä henkilöluetteloissa ja kaavioissa."
+msgstr ""
+"Tällä valinnalla päätetään, esitetäänkö arvioidut syntymä- ja kuolinpäivät, "
+"jos päivämääriä ei tunneta. Muuten ajat esitetään tyhjinä "
+"henkilöluetteloissa ja kaavioissa."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1303
@@ -14799,7 +14860,11 @@ msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä, jne."
+msgstr ""
+"Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, "
+"muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, "
+"muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta "
+"voidaan tukea esittelyä, ymmärtämistä jne."
 
 #: admin_site_upgrade.php:340
 #, php-format
@@ -15183,7 +15248,11 @@ msgstr "Unique identifier - Yksilöllinen tunniste"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "Yksilöllisten tunnisteiden avulla sama tietue voi löytyä eri sukupuissa ja eri järjestelmissä. Ne lisätään aina kun tietue luodaan tai päivitetään. Jos et halua että yksilöllisiä tunnisteita näytetään, voit piilottaa ne käyttämällä yksityissääntöjä."
+msgstr ""
+"Yksilöllisten tunnisteiden avulla sama tietue voi löytyä eri sukupuissa ja "
+"eri järjestelmissä. Ne lisätään aina kun tietue luodaan tai päivitetään. Jos "
+"et halua että yksilöllisiä tunnisteita näytetään, voit piilottaa ne "
+"käyttämällä tietosuojasääntöjä."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
@@ -15791,7 +15860,7 @@ msgstr "Mihin on asennettu PhpGedView aineistosi?"
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Mitkä sukupuut tulisi sisällyttää sivustokarttoihin\n"
+msgstr "Mitkä sukupuut tulisi sisällyttää sivustokarttoihin"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
@@ -16170,7 +16239,7 @@ msgstr "Leikekorisi on tyhjä."
 
 #: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
-msgstr "Nimi"
+msgstr "Nimesi"
 
 #. I18N: %s is a server name/URL
 #: login.php:350
@@ -19648,17 +19717,17 @@ msgstr "järjestä päivämäärän mukaan"
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of birth"
-msgstr "järjestä syntymäajan mukaan"
+msgstr "järjestä syntymäpäivän mukaan"
 
 #: modules_v3/bdm_report/report.xml:11 modules_v3/cemetery_report/report.xml:6
 #: modules_v3/death_report/report.xml:9
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "sort by date of death"
-msgstr "järjestä kuolinajan mukaan"
+msgstr "järjestä kuolinpäivän mukaan"
 
 #: edit_interface.php:2182 modules_v3/marriage_report/report.xml:9
 msgid "sort by date of marriage"
-msgstr "järjestä avioitumisajan mukaan"
+msgstr "järjestä avioitumispäivän mukaan"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
