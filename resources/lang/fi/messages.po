@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-02-26 12:36+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
-"Language: fi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-01 12:17+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -764,7 +752,7 @@ msgstr "Luettelo henkilöistä."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Luettelo sijainneista."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -965,11 +953,11 @@ msgstr "Raportti henkilön ja hänen omaistensa puuttuvista tiedoista."
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Raportti keskeisistä tapahtumista, tiettynä ajanjaksona tai tietyssä paikassa."
+msgstr "Raportti keskeisistä tapahtumista, tiettynä päivänä tai tietyssä paikassa."
 
 #: resources/views/admin/users-edit.phtml:233
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Rooli on joukko käyttöoikeuksia, joilla voi lukea tai muuttaa tietoja, muuttaa asetuksia, jne. Erilaisia käyttöoikeuksia annetaan kullekin roolille. Rooli myönnetään kullekin käyttäjälle. Jokainen sukupuu voi antaa roolille eri käyttöoikeudet ja myöntää eri roolit käyttäjille."
+msgstr "Rooli on joukko käyttöoikeuksia, joilla voi lukea tai muuttaa tietoja, muuttaa asetuksia jne. Erilaisia käyttöoikeuksia annetaan kullekin roolille. Rooli myönnetään kullekin käyttäjälle. Jokainen sukupuu voi antaa roolille eri käyttöoikeudet ja myöntää eri roolit käyttäjille."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -1565,7 +1553,7 @@ msgstr "Äidin adoptoima"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
-msgstr ""
+msgstr "Adoptoitu nimi"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
@@ -1645,7 +1633,7 @@ msgstr "Pojan adoptio"
 
 #: app/Factories/ElementFactory.php:423
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Adoptiovanhemmat"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:471 app/GedcomTag.php:569
@@ -1742,7 +1730,7 @@ msgstr "Ikäväli"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:411
 msgid "Age of parents next to child’s birthdate"
-msgstr "Vanhempien ikä lasten syntymäajan viereen"
+msgstr "Vanhempien ikä lasten syntymäpäivän viereen"
 
 #: resources/views/lists/individuals-table.phtml:490
 #: resources/views/lists/individuals-table.phtml:532
@@ -1981,7 +1969,7 @@ msgstr "Ancestral file number (AFN)"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Ancestry PID"
-msgstr ""
+msgstr "Ancestry henkilötunnus"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -2575,7 +2563,7 @@ msgstr "Barbados"
 
 #: app/Factories/ElementFactory.php:1082
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Perus-GEDCOM-tunniste"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:446 app/GedcomTag.php:496
@@ -2828,7 +2816,7 @@ msgstr "Syntymäajanjakson alku"
 
 #: app/Factories/ElementFactory.php:756
 msgid "Birth name"
-msgstr ""
+msgstr "Syntymänimi"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -2905,7 +2893,7 @@ msgstr "Pojan syntymä"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Birth parents"
-msgstr ""
+msgstr "Syntymävanhemmat"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3384,7 +3372,7 @@ msgstr "Luokat"
 
 #: app/Factories/ElementFactory.php:1075 app/Factories/ElementFactory.php:1117
 msgid "Category"
-msgstr ""
+msgstr "Kategoria"
 
 #. I18N: gedcom tag CAUS
 #: app/Factories/ElementFactory.php:256 app/Factories/ElementFactory.php:390
@@ -3944,7 +3932,7 @@ msgstr "Vertailu"
 #: app/Elements/LdsSpouseSealingDateStatus.php:73
 #: app/GedcomCode/GedcomCodeStat.php:133
 msgid "Completed before 1970; date not available"
-msgstr "Valmistui ennen 1970, aika ei tiedossa"
+msgstr "Valmistui ennen 1970, päivämäärä ei tiedossa"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -3953,11 +3941,11 @@ msgstr "Valmistui ennen 1970, aika ei tiedossa"
 #: app/Elements/LdsSpouseSealingDateStatus.php:65
 #: app/GedcomCode/GedcomCodeStat.php:118
 msgid "Completed; date unknown"
-msgstr "(mormoni) Valmis; aika tuntematon"
+msgstr "(mormoni) Valmis; päivä tuntematon"
 
 #: app/Factories/ElementFactory.php:1076 app/Factories/ElementFactory.php:1118
 msgid "Completion date"
-msgstr ""
+msgstr "Valmistumispäivä"
 
 #: app/Http/RequestHandlers/HelpText.php:284
 #: resources/views/admin/trees-export.phtml:57
@@ -4144,7 +4132,7 @@ msgstr "Korjaa NAME tietueiden esitystapa ”Matti/Meikäläinen/” tai ”Matt
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Kirjeenvaihto"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4189,7 +4177,7 @@ msgstr "Luo sukupuu"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Luo sijainti"
 
 #: app/Elements/XrefMedia.php:61 app/Functions/FunctionsEdit.php:492
 #: resources/views/modals/create-media-from-file.phtml:19
@@ -4219,7 +4207,7 @@ msgstr "Luo lähde"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Luo lähetys"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:555
 #: resources/views/modals/create-submitter.phtml:16
@@ -4248,7 +4236,7 @@ msgstr "Luo, päivitä ja poista sukupuu jokaiselle GEDCOM tiedostolle joka löy
 
 #: app/Factories/ElementFactory.php:1069 app/Factories/ElementFactory.php:1111
 msgid "Creation date"
-msgstr ""
+msgstr "Luomispäivä"
 
 #. I18N: gedcom tag CREM
 #: app/Factories/ElementFactory.php:482 app/GedcomTag.php:603
@@ -4555,49 +4543,49 @@ msgstr "Päivämäärä"
 
 #: resources/views/modules/relatives/tab.phtml:36
 msgid "Date differences"
-msgstr "Päivämäärä erot"
+msgstr "Päivämääräerot"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:434 app/GedcomTag.php:476
 msgid "Date of LDS baptism"
-msgstr "MAP-kasteen aika"
+msgstr "MAP-kastepäivä"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:577 app/GedcomTag.php:952
 msgid "Date of LDS child sealing"
-msgstr "MAP-lapsen sinetöinnin aika"
+msgstr "MAP-lapsen sinetöintipäivä"
 
 #: app/Factories/ElementFactory.php:476
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "MAP-konfirmaatiopäivä"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:497 app/GedcomTag.php:669
 msgid "Date of LDS endowment"
-msgstr "MAP-endaumentin aika"
+msgstr "MAP-endaumentin päivä"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 msgid "Date of LDS spouse sealing"
-msgstr "MAP-puolison sinetöinnin aika"
+msgstr "MAP-puolison sinetöinnin päivä"
 
 #: app/Factories/ElementFactory.php:422 app/GedcomTag.php:441
 msgid "Date of adoption"
-msgstr "Adoption aika"
+msgstr "Adoptiopäivä"
 
 #: app/Factories/ElementFactory.php:441 app/GedcomTag.php:484
 #: resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
-msgstr "Kasteen aika"
+msgstr "Kastepäivä"
 
 #: app/Factories/ElementFactory.php:444 app/GedcomTag.php:491
 #: resources/xml/reports/missing_facts_report.xml:212
 msgid "Date of bar mitzvah"
-msgstr "Bar mitsva aika"
+msgstr "Bar mitsva päivä"
 
 #: app/Factories/ElementFactory.php:447 app/GedcomTag.php:498
 #: resources/xml/reports/missing_facts_report.xml:253
 msgid "Date of bat mitzvah"
-msgstr "Bat mitsva aika"
+msgstr "Bat mitsva päivä"
 
 #: app/Factories/ElementFactory.php:450 app/GedcomTag.php:505
 #: resources/xml/reports/fact_sources.xml:68
@@ -4609,50 +4597,50 @@ msgstr "Syntymäaika"
 
 #: app/Factories/ElementFactory.php:454 app/GedcomTag.php:512
 msgid "Date of blessing"
-msgstr "Siunauksen aika"
+msgstr "Siunauksen päivämäärä"
 
 #: app/Factories/ElementFactory.php:778 app/GedcomTag.php:1054
 msgid "Date of brit milah"
-msgstr "Brit mila aika"
+msgstr "Brit mila päivä"
 
 #: app/Factories/ElementFactory.php:457 app/GedcomTag.php:522
 #: resources/xml/reports/missing_facts_report.xml:546
 msgid "Date of burial"
-msgstr "Hautausaika"
+msgstr "Hautauspäivä"
 
 #: app/Factories/ElementFactory.php:468 app/GedcomTag.php:564
 #: resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr "Kasteen aika"
+msgstr "Kasteen päivämäärä"
 
 #: app/Factories/ElementFactory.php:473 app/GedcomTag.php:589
 #: resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr "Rippitilaisuuden aika"
+msgstr "Rippitilaisuuden päivämäärä"
 
 #: app/Factories/ElementFactory.php:483 app/GedcomTag.php:605
 msgid "Date of cremation"
-msgstr "Polttohautauksen aika"
+msgstr "Polttohautauspäivä"
 
 #: app/Factories/ElementFactory.php:487 app/GedcomTag.php:626
 #: resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
 #: resources/xml/reports/missing_facts_report.xml:505
 msgid "Date of death"
-msgstr "Kuolinaika"
+msgstr "Kuolinpäivä"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:222
 msgid "Date of divorce"
-msgstr "Avioeron aika"
+msgstr "Avioeron päivämäärä"
 
 #: app/Factories/ElementFactory.php:494 app/GedcomTag.php:661
 msgid "Date of emigration"
-msgstr "Maastamuuton aika"
+msgstr "Maastamuuton päivämäärä"
 
 #: app/Factories/ElementFactory.php:301 app/GedcomTag.php:677
 #: resources/xml/reports/missing_facts_report.xml:336
 msgid "Date of engagement"
-msgstr "Kihlausaika"
+msgstr "Kihlauspäivä"
 
 #: app/Factories/ElementFactory.php:279 app/Factories/ElementFactory.php:333
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:586
@@ -4660,20 +4648,20 @@ msgstr "Kihlausaika"
 #: app/Factories/ElementFactory.php:1155 app/GedcomTag.php:615
 #: resources/views/cards/add-source-citation.phtml:73
 msgid "Date of entry in original source"
-msgstr "Kirjausaika alkuperäisessä lähteessä"
+msgstr "Alkuperäisen lähteen päivämäärä"
 
 #: app/Factories/ElementFactory.php:504 app/GedcomTag.php:684
 msgid "Date of event"
-msgstr "Tapahtuman aika"
+msgstr "Tapahtuman päivämäärä"
 
 #: app/Factories/ElementFactory.php:515 app/GedcomTag.php:713
 #: resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
-msgstr "Ensimmäisen ehtoollisen aika"
+msgstr "Ensimmäisen ehtoollisen päivä"
 
 #: app/Factories/ElementFactory.php:521 app/GedcomTag.php:747
 msgid "Date of immigration"
-msgstr "Maahanmuuton aika"
+msgstr "Maahanmuuton päivä"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/Factories/ElementFactory.php:294 app/Factories/ElementFactory.php:464
@@ -4682,31 +4670,31 @@ msgstr "Maahanmuuton aika"
 #: app/Factories/ElementFactory.php:698 app/Factories/ElementFactory.php:714
 #: app/Factories/ElementFactory.php:1136 app/GedcomTag.php:550
 msgid "Date of last change"
-msgstr "Viimeisin muutosaika"
+msgstr "Viimeisin muutoksen päivämäärä"
 
 #: app/Factories/ElementFactory.php:312 app/GedcomTag.php:788
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:226
 #: resources/xml/reports/fact_sources.xml:319
 #: resources/xml/reports/missing_facts_report.xml:463
 msgid "Date of marriage"
-msgstr "Avioitumisaika"
+msgstr "Avioitumipäivä"
 
 #: app/Factories/ElementFactory.php:307 app/GedcomTag.php:775
 #: resources/xml/reports/missing_facts_report.xml:420
 msgid "Date of marriage banns"
-msgstr "Avioliittokuulutus aika"
+msgstr "Avioliittokuulutus päivä"
 
 #: app/Factories/ElementFactory.php:550 app/GedcomTag.php:819
 msgid "Date of naturalization"
-msgstr "Kansalaistamisaika"
+msgstr "Kansalaisuuden päivämäärä"
 
 #: app/Factories/ElementFactory.php:560 app/GedcomTag.php:857
 msgid "Date of ordination"
-msgstr "Papiksivihkimisen aika"
+msgstr "Papiksivihkimisen päivä"
 
 #: app/Factories/ElementFactory.php:568 app/GedcomTag.php:912
 msgid "Date of residence"
-msgstr "Asuinpaikan aika"
+msgstr "Asuinpaikan päivämäärä"
 
 #: resources/views/help/date.phtml:104
 msgid "Date period"
@@ -4714,7 +4702,7 @@ msgstr "Päivämääräjakso"
 
 #: resources/views/help/date.phtml:97
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Päivämääräjaksoja käytetään kun esimerkiksi ammattia on harjoitettu tietty aika."
+msgstr "Päivämääräjaksoja käytetään osoittamaan, että tosiasia, kuten ammatti, jatkui jonkin aikaa."
 
 #: app/Factories/ElementFactory.php:673 resources/views/help/date.phtml:66
 #: resources/views/modules/statistics-chart/custom.phtml:96
@@ -4723,7 +4711,7 @@ msgstr "Ajanjakso"
 
 #: resources/views/help/date.phtml:59
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Ajanjajaksoja käytetään esimerkiksi silloin kun tarkka syntymäaika ei ole tiedossa."
+msgstr "Ajanjaksoja käytetään osoittamaan, että tapahtuma, kuten syntymä, tapahtui tuntemattomana päivänä mahdollisella aikavälillä."
 
 #: resources/views/admin/users.phtml:31
 msgid "Date registered"
@@ -4731,17 +4719,17 @@ msgstr "Rekisteröintipäivä"
 
 #: resources/views/modules/user-messages/user-messages.phtml:71
 msgid "Date sent"
-msgstr "Luontipäivä"
+msgstr "Lähetyspäivä"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
 #, php-format
 msgid "Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar."
-msgstr "Ajat muunnetaan ainoastaan, jos ne ovat voimassa kalenterissa. Esimerkiksi vain %1$s ja %2$s väliset ajat muunnetaan Ranskan kalenteriin ja vain ajat %3$s jälkeen muunnetaan gregoriaaniseen kalenteriin."
+msgstr "Päivämäärät muunnetaan vain, jos ne ovat voimassa kalenterissa. Esimerkiksi vain %1$s ja %2$s väliset päivämäärät muunnetaan ranskalaiseksi kalenteriksi ja vain päivämäärät %3$s jälkeen muunnetaan gregoriaaniseksi kalenteriksi."
 
 #: resources/views/help/date.phtml:21
 msgid "Dates are stored using English abbreviations and keywords. Shortcuts are available as alternatives to these abbreviations and keywords."
-msgstr "Ajat tallennetaan käyttäen englanninkielisiä lyhenteitä ja avainsanoja. Näiden lyhenteiden kirjoittamisen sijasta voit käyttää pikavalintoja."
+msgstr "Päivämäärät tallennetaan englanninkielisillä lyhenteillä ja avainsanoilla. Pikanäppäimet ovat saatavana vaihtoehtona näille lyhenteille ja avainsanoille."
 
 #: resources/views/edit/change-family-members.phtml:65
 #: resources/xml/reports/family_group_report.xml:809
@@ -5151,7 +5139,7 @@ msgstr "Oletusteema"
 #: app/Factories/ElementFactory.php:1090 app/Factories/ElementFactory.php:1091
 #: app/Factories/ElementFactory.php:1092
 msgid "Definition"
-msgstr ""
+msgstr "Määritelmä"
 
 #. I18N: gedcom tag _DEG
 #: app/Factories/ElementFactory.php:877 app/GedcomTag.php:1068
@@ -5426,7 +5414,7 @@ msgstr "Eroavuudet"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:129
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Eri kalenterijärjestelmiä käytetään eri puolilla maailmaa, ja monet muut kalenterijärjestelmät olivat käytössä aikaisemmin. Jos mahdollista, sinun pitäisi kirjoittaa ajat käyttämällä kalenteria jossa tapahtuma alun perin kirjattiin. Tämän jälkeen voit määrittää muunnoksen ja näyttää nämä ajat tutummassa kalenterissa. Jos säännöllisesti käytät kahta kalenteria, voit määrittää kaksi muunnosta ja ajat muunnetaan molempiin valittuihin kalenterieihin."
+msgstr "Eri kalenterijärjestelmiä käytetään eri puolilla maailmaa, ja monet muut kalenterijärjestelmät olivat käytössä aikaisemmin. Jos mahdollista, syötä päivämäärät käyttämällä kalenteria, johon tapahtuma alun perin kirjattiin. Tämän jälkeen voit määrittää muunnoksen ja näyttää nämä päivqmäärät tutummassa kalenterissa. Jos säännöllisesti käytät kahta kalenteria, voit määrittää kaksi muunnosta ja ajat muunnetaan molemmiksi valituiksi kalentereiksi."
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:91
@@ -5563,7 +5551,7 @@ msgstr "Tämä käyttäjätunnus on jo olemassa. Valitse toinen käyttäjätunnu
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi väestölaskenta kuvaa väestönlaskennan tiedot ja kirkonkirjat kuvaavat syntymä-, avioliitto- ja kuolematiedot.<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatietona ”Oulu, Oulu, FIN” (pitäjä, l??äni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
+msgstr "Jokainen lähde tallentaa tietyt tapahtumat, yleensä tietylle ajanjaksolle ja paikkakunnalle. Esimerkiksi väestönlaskenta kirjaa väestönlaskennan tapahtumia ja kirkon arkistot kirjaavat syntymä-, avioliitto- ja kuolemantapahtumia. .<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja jotka kosktapahtuivat Oulussa, paikkatie on ”Oulu, Oulu, FIN” (pitäjä, lääni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
 
 #: resources/views/help/pending-changes.phtml:25
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5827,7 +5815,7 @@ msgstr "Tällä valinnalla pakotetaan kaikkia vierailijoita ensin kirjautumaan s
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
-msgstr "Lopetusvuosi"
+msgstr "Loppuvuosi"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
@@ -5903,12 +5891,12 @@ msgstr "Esfand"
 
 #: app/Factories/ElementFactory.php:760
 msgid "Estate name"
-msgstr ""
+msgstr "Kartanon nimi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
 msgid "Estimated dates for birth and death"
-msgstr "Syntymä- ja kuolemapäivämäärien arvioitu ajankohta"
+msgstr "Arvioidut syntymä- ja kuolemapäivät"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:181
@@ -6267,7 +6255,7 @@ msgstr "Perhe - %s"
 
 #: app/Factories/ElementFactory.php:1062
 msgid "Family status"
-msgstr ""
+msgstr "Perhetilanne"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
@@ -6932,7 +6920,7 @@ msgstr "Hautajaiset"
 
 #: app/Factories/ElementFactory.php:351
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:23
@@ -7039,7 +7027,7 @@ msgstr "Esipolvien määrä"
 
 #: app/Factories/ElementFactory.php:717
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Jälkeläisten sukupolvet"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7164,7 +7152,7 @@ msgstr "Kummi"
 
 #: app/Factories/ElementFactory.php:469
 msgid "Godparents"
-msgstr ""
+msgstr "Kummivanhemmat"
 
 #: app/Elements/RelationIsDescriptor.php:66
 #: app/Elements/RelationIsDescriptor.php:101
@@ -7485,7 +7473,7 @@ msgstr "Piilota käyttämättömät sijainnit"
 
 #: app/Factories/ElementFactory.php:1179
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Hierarkkinen suhde"
 
 #. I18N: gedcom tag _PRIM
 #: app/Factories/ElementFactory.php:810 app/Factories/ElementFactory.php:1107
@@ -7676,7 +7664,7 @@ msgstr "Jos pikkukuva on sama kuin alkuperäinen kuva, sitä ei enää tarvita j
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Jos tällä henkilöllä on muita tapahtumia kuin kuolema, hautajaiset tai polttohautaus, ja ne ovat ajallisesti tapahtuneet näin monen vuoden sisällä, niin henkilön tulkitaan olevan ”elossa”. Lapsen syntymäaika tulkintaan merkiksi ”elossa” olemisesta."
+msgstr "Jos tällä henkilöllä on muita tapahtumia kuin kuolema, hautaaminen tai polttohautaus, ja ne ovat ajallisesti tapahtuneet näin monen vuoden sisällä, niin henkilön tulkitaan olevan ”elossa”. Lasten syntymäaikoja pidetään tällaisina tapahtumina tähän tarkoitukseen."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:259
@@ -7821,7 +7809,7 @@ msgstr "webtrees-versiossa 2 omat pikkukuvat tallennetaan toisena mediatiedoston
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr "Sisällytä aliakset\n"
+msgstr "Sisällytä aliakset"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
@@ -8440,7 +8428,7 @@ msgstr "MAP-puolison sinetöinti"
 #: app/Factories/ElementFactory.php:836 app/Factories/ElementFactory.php:850
 #: app/Factories/ElementFactory.php:854 app/Factories/ElementFactory.php:869
 msgid "Label"
-msgstr ""
+msgstr "Nimiö"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -8766,7 +8754,7 @@ msgstr "Sijaintipaikka"
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "Sijainnit"
 
 #: app/Elements/RelationIsDescriptor.php:141
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -9031,7 +9019,7 @@ msgstr "maaliskuu"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown on yksinkertainen muotoilujärjestelmä, jota käytettään esim. Wikipedia sivustoilla. Se käyttää vaatimattomia välimerkkejä luodessaan otsikoita, alaotsikoita, lihavoituja ja kursivoituja tekstejä, luetteloita, taulukoita, jne."
+msgstr "Markdown on yksinkertainen muotoilujärjestelmä, jota käytettään esim. Wikipedia sivustoilla. Se käyttää vaatimattomia välimerkkejä luodessaan otsikoita, alaotsikoita, lihavoituja ja kursivoituja tekstejä, luetteloita, taulukoita jne."
 
 #. I18N: gedcom tag MARR
 #: app/Factories/ElementFactory.php:311 app/GedcomTag.php:786
@@ -9121,11 +9109,11 @@ msgstr "Avioliittosopimus"
 
 #: resources/xml/reports/marriage_report.xml:8
 msgid "Marriage date range end"
-msgstr "Avioitumisajanjakson loppu"
+msgstr "Avioliiton ajanjakson loppu"
 
 #: resources/xml/reports/marriage_report.xml:7
 msgid "Marriage date range start"
-msgstr "Avioitumisajanjakson alku"
+msgstr "Avioliiton ajanjakson alku"
 
 #. I18N: gedcom tag _MEND
 #: app/Factories/ElementFactory.php:831 app/Factories/ElementFactory.php:851
@@ -10143,7 +10131,7 @@ msgstr "Uusi-Kaledonia"
 #: app/Factories/ElementFactory.php:1085 app/Factories/ElementFactory.php:1086
 #: app/Factories/ElementFactory.php:1087
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "Uusi GEDCOM-tunniste"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
@@ -10961,7 +10949,7 @@ msgstr "Paraguay"
 
 #: app/Factories/ElementFactory.php:1176
 msgid "Parent"
-msgstr ""
+msgstr "Vanhempi"
 
 #: app/Factories/ElementFactory.php:578
 #: app/Http/RequestHandlers/IndividualPage.php:223
@@ -11129,7 +11117,7 @@ msgstr "Foneettisesti otsikko"
 
 #: app/Factories/ElementFactory.php:531
 msgid "Phonetic type"
-msgstr ""
+msgstr "Foneettinentyyppi"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:74 app/Factories/ElementFactory.php:807
@@ -11199,7 +11187,7 @@ msgstr "Usein paikan nimet ovat liian pitkiä sovitettavaksi kaavioihin, listoih
 
 #: resources/views/help/place.phtml:12
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää lähteissä, lisätiedoissa, jne."
+msgstr "Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää lähteissä, lisätiedoissa jne."
 
 #: resources/views/help/place.phtml:8
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -11217,7 +11205,7 @@ msgstr "MAP-lapsen sinetöinnin paikka"
 
 #: app/Factories/ElementFactory.php:478
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "MAP-konfirmaation paikka"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:499 app/GedcomTag.php:672
@@ -11545,7 +11533,7 @@ msgstr "Tulosta perustapahtumat, jotka ovat tyhjiä"
 
 #: app/Factories/ElementFactory.php:1077 app/Factories/ElementFactory.php:1119
 msgid "Priority"
-msgstr ""
+msgstr "Prioriteetti"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
@@ -11736,19 +11724,19 @@ msgstr "Rada - maito-sukulaisuus"
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada - maito-sukulaisuus"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada - maito-sukulaisuus"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada - maito-sukulaisuus"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
@@ -12052,7 +12040,7 @@ msgstr "Lataa kartta uudelleen"
 
 #: app/Factories/ElementFactory.php:1078 app/Factories/ElementFactory.php:1120
 msgid "Reminder date"
-msgstr ""
+msgstr "Muistutuspäivä"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
@@ -12193,7 +12181,7 @@ msgstr "Pyydä uusi käyttäjätili"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Tutkimus"
 
 #. I18N: gedcom tag _TODO
 #: app/Factories/ElementFactory.php:752 app/Factories/ElementFactory.php:791
@@ -12294,7 +12282,7 @@ msgstr "Länsimaisilla aakkosilla"
 
 #: app/Factories/ElementFactory.php:537
 msgid "Romanized name"
-msgstr ""
+msgstr "Romanisoitu nimi Latinalaisilla merkeillä"
 
 #: app/Factories/ElementFactory.php:273 app/Factories/ElementFactory.php:405
 #: app/GedcomTag.php:876
@@ -12307,7 +12295,7 @@ msgstr "Länsimaisilla aakkosilla otsikko"
 
 #: app/Factories/ElementFactory.php:544
 msgid "Romanized type"
-msgstr ""
+msgstr "Romanisoitu tyyppi"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:221
@@ -12316,7 +12304,7 @@ msgstr "Juuret"
 
 #: app/Factories/ElementFactory.php:1106
 msgid "Rufname"
-msgstr ""
+msgstr "Lempinimi"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
@@ -12482,7 +12470,7 @@ msgstr "Saudi-Arabia"
 
 #: app/Factories/ElementFactory.php:1081
 msgid "Schema"
-msgstr ""
+msgstr "Skeema"
 
 #: app/Factories/ElementFactory.php:492 app/Factories/ElementFactory.php:518
 #: app/GedcomTag.php:651
@@ -13089,12 +13077,12 @@ msgstr "Näytä viimeisen sadan vuoden aikana vihityt parit."
 
 #: resources/views/lists/families-table.phtml:189
 msgid "Show couples with an unknown marriage date."
-msgstr "Näytä parit, joiden vihkimisaika on tuntematon."
+msgstr "Näytä parit, joiden vihkimispäivä on tuntematon."
 
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:35
 msgid "Show date of last update"
-msgstr "Näytä viimeisin päivitysaika"
+msgstr "Näytä viimeisimmän päivityksen päivämäärä"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:52
@@ -13396,7 +13384,7 @@ msgstr "Sisään kirjautuminen ja rekisteröinti"
 
 #: resources/views/help/date.phtml:135
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Avainsanan lisääminen on valinnaista, jos kirjoitetun kuukauden ja vuoden tietojen perusteella voidaan päätellä mistä kalenterista on kysymys."
+msgstr "Yksinkertaisten  päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. Tämä avainsana on valinnainen, jos kuukauden tai vuoden muoto tekee päivämäärästä yksiselitteisen."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:437
@@ -13642,12 +13630,12 @@ msgstr "Lähde"
 #: app/Factories/ElementFactory.php:432 app/Factories/ElementFactory.php:1061
 #: app/Factories/ElementFactory.php:1066 app/Factories/ElementFactory.php:1102
 msgid "Source citation"
-msgstr ""
+msgstr "Lähdetietoviite"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:920
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Lähdetietoviitteet voivat myös sisältää tietoa lähdetiedon luotettavuudesta (ensikäden, välikäden jne.) sekä päiväyksen milloin lähdetieto on saatu. Näitä lisäkenttiä voidaan poistaa käytöstä kirjoitettaessa uusia lähdetietoviitteitä."
+msgstr "Lähdetietoviitteet voivat myös sisältää tietoa lähdetiedon luotettavuudesta (ensisijainen, toissijainen jne.) sekä päiväyksen milloin lähdetieto lisättiin lähteeseen. Jos et käytä näitä kenttiä, voit poistaa ne käytöstä, kun luot uusia lähdetietoviitteitä."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:930
@@ -13819,7 +13807,7 @@ msgstr "Tila"
 #: app/Factories/ElementFactory.php:480 app/Factories/ElementFactory.php:501
 #: app/Factories/ElementFactory.php:582 app/GedcomTag.php:975
 msgid "Status change date"
-msgstr "Tilan muutosaika"
+msgstr "Tilan muutospäivä"
 
 #: app/Functions/FunctionsDate.php:55 app/Functions/FunctionsPrint.php:250
 msgid "Stillborn"
@@ -14372,7 +14360,7 @@ msgstr "Tiedosto ”%s” ei ole olemassa."
 
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr "Luettelon ensimmäistä perhettä käytetään kaavioissa, luetteloissa, raporteissa, jne."
+msgstr "Luettelon ensimmäistä perhettä käytetään kaavioissa, luetteloissa, raporteissa jne."
 
 #: app/Http/RequestHandlers/DeletePath.php:70
 #, php-format
@@ -14446,7 +14434,7 @@ msgstr "Luetteloiden valikko."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 msgid "The location has been created"
-msgstr ""
+msgstr "Sijainti on luotu"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
@@ -14530,7 +14518,7 @@ msgstr "Lisätieto on luotu"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Parametri “%s” puuttuu."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -14587,7 +14575,7 @@ msgstr "Etuliite on valinnainen, mutta suositeltava. Antamalla taulukon nimille 
 
 #: app/Factories/ElementFactory.php:1071 app/Factories/ElementFactory.php:1113
 msgid "The problem"
-msgstr ""
+msgstr "Ongelma"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14622,7 +14610,7 @@ msgstr "Palvelimen asetukset ovat kunnossa."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Palvelin ei voinut ymmärtää tätä pyyntöä."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
@@ -14640,7 +14628,7 @@ msgstr "Sukupuun koko, varhaisin ja uusin tapahtuma, yleisimmät nimet jne."
 
 #: app/Factories/ElementFactory.php:1068 app/Factories/ElementFactory.php:1110
 msgid "The solution"
-msgstr ""
+msgstr "Ratkaisu"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -14648,7 +14636,7 @@ msgstr "Lähde on luotu"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Lähetys on luotu"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -14663,7 +14651,7 @@ msgstr "Sukunimi on suljettu kauttaviivoilla: <%s>John Paul /Smith/<%s>"
 #: resources/views/admin/users-edit.phtml:141
 #: resources/views/edit-account-page.phtml:117
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr "Aikavyöhykettä tarvitaan päivämäärä laskelmiin, kuten tietämään tämä päivä."
+msgstr "Aikavyöhykettä tarvitaan päivämäärälaskelmiin, kuten tietämään tämän päivän päivämäärä."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:28
@@ -14856,7 +14844,7 @@ msgstr "Tässä lohkossa esitetään vireillä olevat muutokset muokkaajille. Va
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Tämän voi aiheutua virheestä %s:ssa"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -14868,7 +14856,7 @@ msgstr "Tätä sähköpostiosoitetta käytetään kun sinulle lähetetään sala
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Tämä tapahtui, mutta yksityiskohtia ei tunneta."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15018,12 +15006,12 @@ msgstr "Pilkuilla \",\" eroteltu luettelo GEDCOM faktatunnisteista, joita esitet
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: resources/views/admin/trees-preferences.phtml:766
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
-msgstr "Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM faktatunnisteista, joita näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR (avioliitto) on luettelossa, esitetään avioliittoaika ja -paikka lomakkeessa."
+msgstr "Tämä on pilkkumerkein (,) eroteltu luettelo GEDCOM faktatunnisteista, joita näytetään lisättäessä uuden perheen tiedot. Esimerkiksi, jos MARR (avioliitto) on luettelossa, esitetään avioliiton päivämäärä ja -paikka lomakkeessa."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: resources/views/admin/trees-preferences.phtml:712
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Tämä on pilkkumerkein \",\" eroteltu lista GEDCOM faktatunnisteita (tag) joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäaika ja -paikka lomakkeessa."
+msgstr "Tämä on pilkkuilla \",\" erotettu luettelo GEDCOM faktatunnisteita (tag), joita esitetään kun uusi henkilö lisätään. Esimerkiksi, jos BIRT (syntymä) on listassa, esitetään syntymäpäivä ja -paikka lomakkeessa."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:889
@@ -15189,12 +15177,12 @@ msgstr "Tällä valinnalla vaikutetaan siihen, näytetäänkö automaattisesti <
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:416
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Tällä valinnalla päätät näytetäänkö kaavioissa lasten syntymäajan vieressä isän ja äidin senhetkinen ikä."
+msgstr "Tällä valinnalla päätät näytetäänkö kaavioissa lasten syntymäpäivän vieressä isän ja äidin senhetkinen ikä."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:385
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Tällä valinnalla päätetään, esitetäänkö arvioidut syntymä- ja kuolinajat, jos päivämääriä ei tunneta. Muuten ajat esitetään tyhjinä henkilöluetteloissa ja kaavioissa."
+msgstr "Tällä valinnalla päätetään, esitetäänkö arvioidut syntymä- ja kuolinpäivät, jos päivämääriä ei tunneta. Muuten ajat esitetään tyhjinä henkilöluetteloissa ja kaavioissa."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:288
@@ -15561,7 +15549,7 @@ msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä, jne."
+msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä jne."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
@@ -15867,15 +15855,15 @@ msgstr "Tyyppi"
 
 #: app/Factories/ElementFactory.php:1146
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Lyhenteen tyyppi"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Hallinnollisen tunnuksen tyyppi"
 
 #: app/Factories/ElementFactory.php:1174
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Väestötietojen tyyppi"
 
 #: app/Factories/ElementFactory.php:304 app/Factories/ElementFactory.php:506
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:688
@@ -15888,19 +15876,19 @@ msgstr "Faktatyyppi"
 
 #: app/Factories/ElementFactory.php:1163
 msgid "Type of location"
-msgstr ""
+msgstr "Sijainnin tyyppi"
 
 #: app/Factories/ElementFactory.php:314
 msgid "Type of marriage"
-msgstr ""
+msgstr "Avioliiton tyyppi"
 
 #: app/Factories/ElementFactory.php:547
 msgid "Type of name"
-msgstr ""
+msgstr "Nimen tyyppi"
 
 #: app/Factories/ElementFactory.php:1074 app/Factories/ElementFactory.php:1116
 msgid "Type of research task"
-msgstr ""
+msgstr "Tutkimustehtävän tyyppi"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -15972,7 +15960,7 @@ msgstr "Unique identifier - Yksilöllinen tunniste"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:150
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr "Yksilöllisten tunnisteiden avulla sama tietue voi löytyä eri sukupuissa ja eri järjestelmissä. Ne lisätään aina kun tietue luodaan tai päivitetään. Jos et halua että yksilöllisiä tunnisteita näytetään, voit piilottaa ne käyttämällä yksityissääntöjä."
+msgstr "Yksilöllisten tunnisteiden avulla sama tietue voi löytyä eri sukupuissa ja eri järjestelmissä. Ne lisätään aina kun tietue luodaan tai päivitetään. Jos et halua että yksilöllisiä tunnisteita näytetään, voit piilottaa ne käyttämällä tietosuojasääntöjä."
 
 #: resources/views/admin/trees-preferences.phtml:694
 msgid "Unique individual facts"
@@ -16538,7 +16526,7 @@ msgstr "Kun käyttäjätunnus on liitetty tiettyyn sukupuussa olevaan henkilöö
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:27
 msgid "Which family trees should be included in the sitemaps"
-msgstr "Mitkä sukupuut tulisi sisällyttää sivustokarttoihin\n"
+msgstr "Mitkä sukupuut tulisi sisällyttää sivustokarttoihin"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:269
@@ -16845,7 +16833,7 @@ msgstr "Leikekorisi on tyhjä."
 #: resources/views/contact-page.phtml:42
 #: resources/views/setup/step-5-administrator.phtml:54
 msgid "Your name"
-msgstr "Nimi"
+msgstr "Nimesi"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:77
 msgid "Your password has been updated."
@@ -17236,7 +17224,7 @@ msgstr "väestönlaskenta lisätty"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "haastettu"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
@@ -17262,7 +17250,7 @@ msgstr "lapsi"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "kansalainen"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17321,7 +17309,7 @@ msgstr "luo"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulttuurinen"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17393,7 +17381,7 @@ msgstr "kuoli"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "kumottu"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -17909,7 +17897,7 @@ msgstr "sukupuoli"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "maantieteellinen"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -19468,7 +19456,7 @@ msgstr "hän itse"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "perhekunta"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -20005,7 +19993,7 @@ msgstr "prosenttiosuus"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "poliittinen"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20030,7 +20018,7 @@ msgstr "ensisijainen todiste"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "oikeaksi todistettu"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
@@ -20068,7 +20056,7 @@ msgstr "hylätty"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "uskonnollinen"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
@@ -20529,20 +20517,20 @@ msgstr "järjestä päivämäärän mukaan"
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of birth"
-msgstr "järjestä syntymäajan mukaan"
+msgstr "järjestä syntymäpäivän mukaan"
 
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/cemetery_report.xml:6
 #: resources/xml/reports/death_report.xml:9
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of death"
-msgstr "järjestä kuolinajan mukaan"
+msgstr "järjestä kuolinpäivän mukaan"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-families.phtml:42
 #: resources/xml/reports/marriage_report.xml:9
 msgid "sort by date of marriage"
-msgstr "järjestä avioitumisajan mukaan"
+msgstr "järjestä avioitumispäivän mukaan"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:270 app/Module/RecentChangesModule.php:268
