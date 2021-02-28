@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-28 16:20+0000\n"
+"PO-Revision-Date: 2021-02-28 19:27+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -6084,7 +6084,7 @@ msgstr "Familie med foreldre"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:139
 msgid "Family with rada parents"
-msgstr "Familie med rada-foreldre"
+msgstr "Familie med amme/pleieforeldre"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
