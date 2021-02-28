@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-02-28 16:20+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-01 12:17+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1969,7 +1969,7 @@ msgstr "AFN nummer"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Ancestry PID"
-msgstr ""
+msgstr "Ancestry PID"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -6320,7 +6320,7 @@ msgstr "Familie med foreldre"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:155 app/Individual.php:934
 msgid "Family with rada parents"
-msgstr "Familie med rada-foreldre"
+msgstr "Familie med amme/pleieforeldre"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:152 app/Individual.php:932
@@ -11718,25 +11718,25 @@ msgstr "Rabi' al-thani"
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:109
 msgid "Rada"
-msgstr "Ammebarn"
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr "Ammedatter"
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr "Ammesønn"
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr "Ammebarn"
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
