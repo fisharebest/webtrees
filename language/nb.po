@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-11 03:42+0000\n"
+"PO-Revision-Date: 2021-02-28 16:20+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
@@ -4038,7 +4038,9 @@ msgstr "Firma"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:39
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "Korriger NAME-poster på formen 'John/DOE/' eller 'John /DOE', som eldre slektsforskningsprogrammer bruker."
+msgstr ""
+"Korriger NAME-poster på formen 'John/DOE/' eller 'John /DOE', som eldre "
+"slektsprogrammer bruker."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6724
@@ -11225,7 +11227,7 @@ msgstr "Rabi' al-thani"
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
 msgid "Rada"
-msgstr "Rada"
+msgstr "Ammebarn"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:96
@@ -11601,20 +11603,28 @@ msgstr "Søk om brukerkonto"
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
 msgid "Research task"
-msgstr "Forskningsoppgave"
+msgstr "Granskingsoppgave"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr "Forskningsoppgaver"
+msgstr "Granskingsoppgaver"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Forskningsoppgaver er en spesiell form for hendelser som kan legges til personer i slektstreet for å angi hvor det trengs nærmere undersøkelse. De kan brukes som en påminnelse om å kontrollere fakta i mer pålitelige kilder, om å skaffe dokumenter eller bilder, for å bedømme motstridende opplysninger, osv."
+msgstr ""
+"Granskingsoppgaver er en spesiell form for hendelser som kan legges til "
+"personer i slektstreet for å angi hvor det trengs nærmere undersøkelse. De "
+"kan brukes som en påminnelse om å kontrollere fakta i mer pålitelige kilder, "
+"om å skaffe dokumenter eller bilder, for å bedømme motstridende "
+"opplysninger, osv."
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Forskningsoppgaver lagres under det tilpassede feltet «_TODO». Siden dette ikke finnes i GEDCOM-standarden, er det ikke sikkert at andre slektsforskningsprogrammer vil forstå den."
+msgstr ""
+"Granskingsoppgaver lagres under det tilpassede feltet «_TODO». Siden dette "
+"ikke finnes i GEDCOM-standarden, er det ikke sikkert at andre "
+"slektsprogrammer vil forstå den."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -11683,15 +11693,15 @@ msgstr "Romania"
 #. I18N: gedcom tag ROMN
 #: app/GedcomTag.php:762
 msgid "Romanized"
-msgstr "Romanisert"
+msgstr "Latinsk form"
 
 #: app/GedcomTag.php:690
 msgid "Romanized place"
-msgstr "Romanisert sted"
+msgstr "Sted (latinsk form)"
 
 #: app/GedcomTag.php:838
 msgid "Romanized title"
-msgstr "Romanisert tittel"
+msgstr "Tittel (latinsk form)"
 
 #: app/Functions/FunctionsPrintLists.php:267
 #: app/Functions/FunctionsPrintLists.php:657
@@ -12626,15 +12636,15 @@ msgstr "Vis beslektede personer/familier"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr "Vis forskningsoppgaver tildelt andre brukere"
+msgstr "Vis granskingsoppgaver tildelt andre brukere"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Vis forskningsoppgaver som ikke er tildelt noen bruker"
+msgstr "Vis granskingsoppgaver som ikke er tildelt noen bruker"
 
 #: app/Module/ResearchTaskModule.php:221
 msgid "Show research tasks that have a date in the future"
-msgstr "Vis kommende forskningsoppgaver"
+msgstr "Vis kommende granskingsoppgaver"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
@@ -14054,7 +14064,7 @@ msgstr "Det er ingen ventende endringer."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
-msgstr "Det er ingen forskningsoppgaver knyttet til slektstreet."
+msgstr "Det er ingen granskingsoppgaver knyttet til slektstreet."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
@@ -14799,12 +14809,17 @@ msgstr "For å fullføre oppdateringen må filene installeres manuelt."
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "For å opprette nye forskningsoppgaver må først «forskningsoppgave» føyes til i listen over fakta og hendelser i innstillingene for slektstreet."
+msgstr ""
+"For å opprette nye granskingsoppgaver må først «granskingsoppgave» føyes til "
+"i listen over fakta og hendelser i innstillingene for slektstreet."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "For å sikre kompatibilitet med andre slektsforskningsprogrammer bør notater, tekster og transkripsjoner nedtegnes med enkel, uformatert tekst. Det er likevel ofte ønskelig med en viss formatering for å gjøre fremstillingen tydeligere."
+msgstr ""
+"For å sikre kompatibilitet med andre slektsprogrammer bør notater, tekster "
+"og transkripsjoner nedtegnes med enkel, uformatert tekst. Det er likevel "
+"ofte ønskelig med en viss formatering for å gjøre fremstillingen tydeligere."
 
 #: admin_site_upgrade.php:340
 #, php-format
