@@ -426,13 +426,13 @@ class GedcomTag
                 /* I18N: gedcom tag ADDR */
                 return I18N::translate('Address');
             case 'ADR1':
-                /* I18N: gedcom tag ADD1 */
+                /* I18N: gedcom tag ADR1 */
                 return I18N::translate('Address line 1');
             case 'ADR2':
-                /* I18N: gedcom tag ADD2 */
+                /* I18N: gedcom tag ADR2 */
                 return I18N::translate('Address line 2');
             case 'ADR3':
-                /* I18N: gedcom tag ADD3 */
+                /* I18N: gedcom tag ADR3 */
                 return I18N::translate('Address line 3');
             case 'ADOP':
                 /* I18N: gedcom tag ADOP */

@@ -1486,21 +1486,21 @@ msgstr "Add/edit a journal/news entry"
 msgid "Address"
 msgstr "Address"
 
-#. I18N: gedcom tag ADD1
+#. I18N: gedcom tag ADR1
 #: app/Factories/ElementFactory.php:248 app/Factories/ElementFactory.php:361
 #: app/Factories/ElementFactory.php:381 app/Factories/ElementFactory.php:643
 #: app/Factories/ElementFactory.php:690 app/GedcomTag.php:430
 msgid "Address line 1"
 msgstr "Address line 1"
 
-#. I18N: gedcom tag ADD2
+#. I18N: gedcom tag ADR2
 #: app/Factories/ElementFactory.php:249 app/Factories/ElementFactory.php:362
 #: app/Factories/ElementFactory.php:382 app/Factories/ElementFactory.php:644
 #: app/Factories/ElementFactory.php:691 app/GedcomTag.php:433
 msgid "Address line 2"
 msgstr "Address line 2"
 
-#. I18N: gedcom tag ADD3
+#. I18N: gedcom tag ADR3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
