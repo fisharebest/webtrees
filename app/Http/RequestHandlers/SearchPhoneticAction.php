@@ -46,11 +46,12 @@ class SearchPhoneticAction implements RequestHandlerInterface
         $params = (array) $request->getParsedBody();
 
         return redirect(route(SearchPhoneticPage::class, [
-            'firstname' => $params['firstname'] ?? '',
-            'lastname'  => $params['lastname'] ?? '',
-            'place'     => $params['place'] ?? '',
-            'soundex'   => $params['soundex'] ?? 'Russell',
-            'tree'      => $tree->name(),
+            'firstname'    => $params['firstname'] ?? '',
+            'lastname'     => $params['lastname'] ?? '',
+            'place'        => $params['place'] ?? '',
+            'search_trees' => $params['search_trees'] ?? [],
+            'soundex'      => $params['soundex'] ?? 'Russell',
+            'tree'         => $tree->name(),
         ]));
     }
 }

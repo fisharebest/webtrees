@@ -79,25 +79,26 @@ class SearchPhoneticPage implements RequestHandlerInterface
 
         // What trees to search?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
-            $all_trees = $this->tree_service->all()->all();
+            $all_trees = $this->tree_service->all();
         } else {
-            $all_trees = [$tree];
+            $all_trees = new Collection([$tree]);
         }
 
-        $search_tree_names = $params['search_trees'] ?? [];
+        $search_tree_names = new Collection($params['search_trees'] ?? []);
 
-        $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->name(), $search_tree_names, true);
-        });
+        $search_trees = $all_trees
+            ->filter(static function (Tree $tree) use ($search_tree_names): bool {
+                return $search_tree_names->containsStrict($tree->name());
+            });
 
-        if ($search_trees === []) {
-            $search_trees = [$tree];
+        if ($search_trees->isEmpty()) {
+            $search_trees->add($tree);
         }
 
         $individuals = new Collection();
 
         if ($lastname !== '' || $firstname !== '' || $place !== '') {
-            $individuals = $this->search_service->searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, $search_trees);
+            $individuals = $this->search_service->searchIndividualsPhonetic($soundex, $lastname, $firstname, $place, $search_trees->all());
         }
 
         $title = I18N::translate('Phonetic search');

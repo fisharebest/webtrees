@@ -98,19 +98,20 @@ class SearchGeneralPage implements RequestHandlerInterface
 
         // What trees to search?
         if (Site::getPreference('ALLOW_CHANGE_GEDCOM') === '1') {
-            $all_trees = $this->tree_service->all()->all();
+            $all_trees = $this->tree_service->all();
         } else {
-            $all_trees = [$tree];
+            $all_trees = new Collection([$tree]);
         }
 
-        $search_tree_names = $params['search_trees'] ?? [];
+        $search_tree_names = new Collection($params['search_trees'] ?? []);
 
-        $search_trees = array_filter($all_trees, static function (Tree $tree) use ($search_tree_names): bool {
-            return in_array($tree->name(), $search_tree_names, true);
-        });
+        $search_trees = $all_trees
+            ->filter(static function (Tree $tree) use ($search_tree_names): bool {
+                return $search_tree_names->containsStrict($tree->name());
+            });
 
-        if ($search_trees === []) {
-            $search_trees = [$tree];
+        if ($search_trees->isEmpty()) {
+            $search_trees->add($tree);
         }
 
         // Do the search
@@ -122,12 +123,12 @@ class SearchGeneralPage implements RequestHandlerInterface
 
         if ($search_terms !== []) {
             if ($search_individuals) {
-                $individuals = $this->search_service->searchIndividuals($search_trees, $search_terms);
+                $individuals = $this->search_service->searchIndividuals($search_trees->all(), $search_terms);
             }
 
             if ($search_families) {
-                $tmp1 = $this->search_service->searchFamilies($search_trees, $search_terms);
-                $tmp2 = $this->search_service->searchFamilyNames($search_trees, $search_terms);
+                $tmp1 = $this->search_service->searchFamilies($search_trees->all(), $search_terms);
+                $tmp2 = $this->search_service->searchFamilyNames($search_trees->all(), $search_terms);
 
                 $families = $tmp1->merge($tmp2)->unique(static function (Family $family): string {
                     return $family->xref() . '@' . $family->tree()->id();
@@ -135,15 +136,15 @@ class SearchGeneralPage implements RequestHandlerInterface
             }
 
             if ($search_repositories) {
-                $repositories = $this->search_service->searchRepositories($search_trees, $search_terms);
+                $repositories = $this->search_service->searchRepositories($search_trees->all(), $search_terms);
             }
 
             if ($search_sources) {
-                $sources = $this->search_service->searchSources($search_trees, $search_terms);
+                $sources = $this->search_service->searchSources($search_trees->all(), $search_terms);
             }
 
             if ($search_notes) {
-                $notes = $this->search_service->searchNotes($search_trees, $search_terms);
+                $notes = $this->search_service->searchNotes($search_trees->all(), $search_terms);
             }
         }
 

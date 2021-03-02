@@ -1,0 +1,67 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Tree> $all_trees
+ * @var Collection<Tree> $search_trees
+ */
+
+?>
+
+<?php if ($all_trees->count() > 1) : ?>
+    <fieldset class="form-group">
+        <div class="row">
+            <div class="col-sm-3 col-form-label wt-page-options-label">
+                <?= I18N::translate('Family trees') ?>
+            </div>
+            <div class="col-sm-9 wt-page-options-value pt-2">
+                <div id="search-trees">
+                    <?php if ($all_trees->count() > 3): ?>
+                        <div class="d-flex">
+                            <?php if ($all_trees->count() > $search_trees->count()): ?>
+                                <div class="mr-2">
+                                    <button type="button" data-toggle="collapse" class="btn btn-secondary btn-sm" href="#more-trees,#select-all" aria-expanded="false" aria-controls="more-trees">
+                                        <?= view('icons/expand') ?>
+                                        <?= view('icons/collapse') ?>
+                                    </button>
+                                </div>
+                            <?php endif ?>
+                            <div>
+                                <?php foreach ($search_trees as $n => $tree) : ?>
+                                    <?= view('components/checkbox', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => $tree->name(), 'label' => $tree->title()]) ?>
+                                <?php endforeach ?>
+                                <div id="more-trees" class="<?= $all_trees->count() > $search_trees->count() ? 'collapse' : '' ?>">
+                                    <?php foreach ($all_trees as $n => $tree) : ?>
+                                        <?php if (!$search_trees->containsStrict($tree)): ?>
+                                            <?= view('components/checkbox', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => $tree->name(), 'label' => $tree->title()]) ?>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                </div>
+                            </div>
+                            <div class="ml-auto <?= $all_trees->count() > $search_trees->count() ? 'collapse' : '' ?>" id="select-all">
+                                <button type="button" class="btn btn-sm btn-secondary mx-1" onclick="document.querySelectorAll('#search-trees [type=checkbox]').forEach((element) => {element.checked=true;});">
+                                    <?= /* I18N: select all (of a list of options) */ I18N::translate('select all') ?>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-secondary mx-1" onclick="document.querySelectorAll('#search-trees [type=checkbox]').forEach((element) => {element.checked=false;});">
+                                    <?= /* I18N: select none (of a list of options) */  I18N::translate('select none') ?>
+                                </button>
+                                <?php if ($all_trees->count() > 10) : ?>
+                                    <button type="button"  class="btn btn-sm btn-secondary mx-1" onclick="document.querySelectorAll('#search-trees [type=checkbox]').forEach((element) => {element.checked=!element.checked;});">
+                                        <?= /* I18N: reverse the selection (of a list of options) */ I18N::translate('invert selection') ?>
+                                    </button>
+                                <?php endif ?>
+                            </div>
+                    </div>
+                    <?php else: ?>
+                        <?php foreach ($all_trees as $n => $tree) : ?>
+                            <?= view('components/checkbox-inline', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => $tree->name(), 'label' => $tree->title()]) ?>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+<?php endif ?>

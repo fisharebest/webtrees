@@ -3,23 +3,24 @@
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchGeneralAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 /**
- * @var array<Tree>                                                      $all_trees
- * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Family>     $families
- * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Individual> $individuals
- * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Note>       $notes
- * @var string                                                           $query
- * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Repository> $repositories
- * @var \Illuminate\Support\Collection<\Fisharebest\Webtrees\Source>     $sources
- * @var bool                                                             $search_families
- * @var bool                                                             $search_individuals
- * @var bool                                                             $search_notes
- * @var bool                                                             $search_repositories
- * @var bool                                                             $search_sources
- * @var array<Tree>                                                      $search_trees
- * @var string                                                           $title
- * @var Tree                                                             $tree
+ * @var Collection<Tree> $all_trees
+ * @var Collection       $families
+ * @var Collection       $individuals
+ * @var Collection       $notes
+ * @var string           $query
+ * @var Collection       $repositories
+ * @var Collection       $sources
+ * @var bool             $search_families
+ * @var bool             $search_individuals
+ * @var bool             $search_notes
+ * @var bool             $search_repositories
+ * @var bool             $search_sources
+ * @var Collection<Tree> $search_trees
+ * @var string           $title
+ * @var Tree             $tree
  */
 
 ?>
@@ -91,47 +92,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </fieldset>
 
-    <?php if (count($all_trees) > 1) : ?>
-        <fieldset class="form-group">
-            <div class="row">
-                <label class="col-sm-3 col-form-label wt-page-options-label">
-                    <?= I18N::translate('Family trees') ?>
-                </label>
-                <div class="col-sm-9 wt-page-options-value pt-2">
-                    <div class="d-flex justify-content-between">
-                        <div id="search-trees" class="form-check">
-                            <?php foreach ($all_trees as $tree) : ?>
-                                <div class="col px-0">
-                                    <label class="form-check-label">
-                                        <input class="form-check form-check-input"
-                                               type="checkbox" <?= in_array($tree, $search_trees, true) ? 'checked' : '' ?>
-                                               value="<?= $tree->name() ?>" name="search_trees[]">
-                                        <?= e($tree->title()) ?>
-                                    </label>
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                        <?php if (count($all_trees) > 3) : ?>
-                            <div class="d-row align-self-end mb-2">
-                                <input type="button" class="btn btn-sm btn-secondary mx-1"
-                                       value="<?= /* I18N: select all (of the family trees) */
-                                       I18N::translate('select all') ?>"
-                                       onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', true);});return false;">
-                                <input type="button" class="btn btn-sm btn-secondary mx-1"
-                                       value="<?= /* I18N: select none (of the family trees) */
-                                       I18N::translate('select none') ?>"
-                                       onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', false);});return false;">
-                                <?php if (count($all_trees) > 10) : ?>
-                                    <input type="button" value="<?= I18N::translate('invert selection') ?>"
-                                           onclick="$('#search-trees :checkbox').each(function(){$(this).attr('checked', !$(this).attr('checked'));});return false;">
-                                <?php endif ?>
-                            </div>
-                        <?php endif ?>
-                    </div>
-                </div>
-            </div>
-        </fieldset>
-    <?php endif ?>
+    <?= view('search-trees', ['all_trees' => $all_trees, 'search_trees' => $search_trees]) ?>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label"></label>
