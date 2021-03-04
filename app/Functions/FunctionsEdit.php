@@ -467,11 +467,7 @@ class FunctionsEdit
             $html .= '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>';
             $html .= '<p class="text-muted">' . (new Date($value))->display() . '</p>';
         } elseif ($fact === 'FAMC') {
-            $html .=
-                '<div class="input-group">' .
-                '<div class="input-group-prepend"><button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-target="#modal-create-family" data-element-id="' . $id . '" title="' . I18N::translate('Create a family') . '">' . view('icons/add') . '</button></div>' .
-                view('components/select-family', ['id' => $id, 'name' => $name, 'family' => Registry::familyFactory()->make($value, $tree), 'tree' => $tree]) .
-                '</div>';
+            $html .= view('components/select-family', ['id' => $id, 'name' => $name, 'family' => Registry::familyFactory()->make($value, $tree), 'tree' => $tree]);
         } elseif ($fact === 'LATI') {
             $html .= '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" oninput="webtrees.reformatLatitude(this)">';
         } elseif ($fact === 'LONG') {
