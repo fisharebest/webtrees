@@ -165,6 +165,6 @@ class MergeFactsAction implements RequestHandlerInterface
             $record2_name
         ), 'success');
 
-        return redirect(route(MergeRecordsPage::class, ['tree' => $tree->name()]));
+        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
     }
 }
