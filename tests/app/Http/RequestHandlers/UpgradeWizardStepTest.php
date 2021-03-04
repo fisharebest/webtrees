@@ -155,8 +155,6 @@ class UpgradeWizardStepTest extends TestCase
      */
     public function testStepPendingExist(): void
     {
-        $this->expectException(HttpServerErrorException::class);
-
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
         $user         = (new UserService())->create('user', 'name', 'email', 'password');
@@ -171,7 +169,9 @@ class UpgradeWizardStepTest extends TestCase
         );
 
         $request = self::createRequest(RequestMethodInterface::METHOD_POST, ['step' => 'Pending']);
-        $handler->handle($request);
+        $response = $handler->handle($request);
+
+        self::assertSame(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR, $response->getStatusCode());
     }
 
     /**
