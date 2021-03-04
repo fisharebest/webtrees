@@ -270,7 +270,7 @@ class View
     }
 
     /**
-     * Crate and render a view in a single operation.
+     * Create and render a view in a single operation.
      *
      * @param string  $name
      * @param mixed[] $data
