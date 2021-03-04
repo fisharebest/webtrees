@@ -28,9 +28,6 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
         <?php endif ?>
     </div>
     <?php if ($individual->childFamilies()->first() !== null) : ?>
-        <div class="wt-chart-horizontal-spacer">
-            <div class="wt-chart-horizontal-line"></div>
-        </div>
         <?= view('modules/hourglass-chart/parents', ['generations' => $generations - 1, 'family' => $individual->childFamilies()->first()]) ?>
     <?php endif ?>
 </div>

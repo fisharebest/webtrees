@@ -11,6 +11,9 @@ use Fisharebest\Webtrees\Individual;
 ?>
 
 <div class="d-flex">
+    <div class="wt-chart-horizontal-spacer">
+        <div class="wt-chart-horizontal-line"></div>
+    </div>
     <div class="align-self-center">
         <div class="d-flex">
             <div class="wt-chart-horizontal-spacer">
@@ -22,10 +25,6 @@ use Fisharebest\Webtrees\Individual;
             </div>
 
             <?php if ($family->husband() instanceof Individual && $family->husband()->childFamilies()->first() instanceof Family) : ?>
-                <div class="wt-chart-horizontal-spacer">
-                    <div class="wt-chart-horizontal-line"></div>
-                </div>
-
                 <?php if ($generations > 1) : ?>
                     <?= view('modules/hourglass-chart/parents', ['family' => $family->husband()->childFamilies()->first(), 'generations' => $generations - 1]) ?>
                 <?php else : ?>
@@ -48,10 +47,6 @@ use Fisharebest\Webtrees\Individual;
             </div>
 
             <?php if ($family->wife() instanceof Individual && $family->wife()->childFamilies()->first() instanceof Family) : ?>
-                <div class="wt-chart-horizontal-spacer">
-                    <div class="wt-chart-horizontal-line"></div>
-                </div>
-
                 <?php if ($generations > 1) : ?>
                     <?= view('modules/hourglass-chart/parents', ['family' => $family->wife()->childFamilies()->first(), 'generations' => $generations - 1]) ?>
                 <?php else : ?>
