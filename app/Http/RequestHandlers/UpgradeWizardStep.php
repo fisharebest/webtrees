@@ -209,7 +209,9 @@ class UpgradeWizardStep implements RequestHandlerInterface
         $changes = DB::table('change')->where('status', '=', 'pending')->exists();
 
         if ($changes) {
-            throw new HttpServerErrorException(I18N::translate('You should accept or reject all pending changes before upgrading.'));
+            return response(view('components/alert-danger', [
+                'alert' => I18N::translate('You should accept or reject all pending changes before upgrading.'),
+            ]), StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
         }
 
         return response(view('components/alert-success', [
