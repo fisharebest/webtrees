@@ -96,7 +96,7 @@ class LocationPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('gedcom-record-page', [
-            'facts'         => $location->facts(),
+            'facts'         => $this->facts($location),
             'families'      => $location->linkedFamilies('_LOC'),
             'individuals'   => $location->linkedIndividuals('_LOC'),
             'notes'         => new Collection(),
