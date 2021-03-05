@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-07-31 06:37+0000\n"
+"PO-Revision-Date: 2021-03-05 11:56+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -16504,7 +16504,7 @@ msgstr "Nevytvorili ste v denníku žiadne položky."
 
 #: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr "Vybrali ste GEDCOM z odlišným názvom. Je to srávne?"
+msgstr "Vybrali ste GEDCOM z odlišným názvom. Je to správne?"
 
 #: logout.php:27
 msgid "You have signed out."
