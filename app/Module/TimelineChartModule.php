@@ -60,16 +60,17 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
     // GEDCOM events that may have DATE data, but should not be displayed
     protected const NON_FACTS = [
-        'BAPL',
-        'ENDL',
-        'SLGC',
-        'SLGS',
-        '_TODO',
-        'CHAN',
+        'FAM:CHAN',
+        'INDI:BAPL',
+        'INDI:CHAN',
+        'INDI:ENDL',
+        'INDI:SLGC',
+        'INDI:SLGS',
+        'INDI:_TODO',
     ];
-    protected const BHEIGHT   = 30;
 
     // Box height
+    protected const BHEIGHT = 30;
 
     /**
      * Initialization.
@@ -294,10 +295,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
                     $facts->push($fact);
                 }
             }
+
             foreach ($facts as $event) {
-                // get the fact type
-                $fact = $event->getTag();
-                if (!in_array($fact, self::NON_FACTS, true)) {
+                if (!in_array($event->tag(), self::NON_FACTS, true)) {
                     // check for a date
                     $date = $event->date();
                     if ($date->isOK()) {
