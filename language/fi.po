@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-01 12:17+0000\n"
+"PO-Revision-Date: 2021-03-11 08:30+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fi/>\n"
@@ -16834,19 +16834,19 @@ msgstr "11. serkku"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr "talon nimi"
+msgstr "maatilan nimi"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "talon nimi"
+msgstr "maatilan nimi"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr "talon nimi"
+msgstr "maatilan nimi"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
