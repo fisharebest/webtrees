@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -55,14 +56,19 @@ class GedcomLoad implements RequestHandlerInterface
     /** @var TimeoutService */
     private $timeout_service;
 
+    /** @var TreeService */
+    private $tree_service;
+
     /**
      * GedcomLoad constructor.
      *
      * @param TimeoutService $timeout_service
+     * @param TreeService    $tree_service
      */
-    public function __construct(TimeoutService $timeout_service)
+    public function __construct(TimeoutService $timeout_service, TreeService $tree_service)
     {
         $this->timeout_service = $timeout_service;
+        $this->tree_service    = $tree_service;
     }
 
     /**
@@ -122,6 +128,8 @@ class GedcomLoad implements RequestHandlerInterface
 
                 // If we are loading the first (header) record, make sure the encoding is UTF-8.
                 if ($first_time) {
+                    $this->tree_service->deleteGenealogyData($tree, (bool) $tree->getPreference('keep_media'));
+
                     // Remove any byte-order-mark
                     if (str_starts_with($data->chunk_data, Gedcom::UTF8_BOM)) {
                         $data->chunk_data = substr($data->chunk_data, strlen(Gedcom::UTF8_BOM));
