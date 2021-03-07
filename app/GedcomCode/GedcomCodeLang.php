@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\GedcomCode;
 
+use DomainException;
 use Fisharebest\Localization\Locale;
 
 use function array_search;
@@ -133,7 +134,7 @@ class GedcomCodeLang
 
         try {
             return Locale::create($code)->endonym();
-        } catch (\DomainException $ex) {
+        } catch (DomainException $ex) {
             return $type;
         }
     }

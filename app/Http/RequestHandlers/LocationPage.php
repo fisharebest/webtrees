@@ -61,19 +61,6 @@ class LocationPage implements RequestHandlerInterface
         '_LOC:_AIDN',
     ];
 
-    /** @var ClipboardService */
-    private $clipboard_service;
-
-    /**
-     * LocationPage constructor.
-     *
-     * @param ClipboardService $clipboard_service
-     */
-    public function __construct(ClipboardService $clipboard_service)
-    {
-        $this->clipboard_service = $clipboard_service;
-    }
-
     /**
      * @param ServerRequestInterface $request
      *

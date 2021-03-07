@@ -105,7 +105,7 @@ class ChartCommonSurname
 
         return [
             (string) $top_name,
-            (int) $count_per
+            $count_per
         ];
     }
 

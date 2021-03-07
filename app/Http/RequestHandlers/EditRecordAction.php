@@ -41,19 +41,14 @@ class EditRecordAction implements RequestHandlerInterface
     /** @var GedcomEditService */
     private $gedcom_edit_service;
 
-    /** @var ModuleService */
-    private $module_service;
-
     /**
      * EditFactAction constructor.
      *
      * @param GedcomEditService $gedcom_edit_service
-     * @param ModuleService     $module_service
      */
-    public function __construct(GedcomEditService $gedcom_edit_service, ModuleService $module_service)
+    public function __construct(GedcomEditService $gedcom_edit_service)
     {
         $this->gedcom_edit_service = $gedcom_edit_service;
-        $this->module_service      = $module_service;
     }
 
     /**

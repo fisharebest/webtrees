@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -123,7 +124,7 @@ class PendingChangesService
      * @param int  $n
      *
      * @return void
-     * @throws \Fisharebest\Webtrees\Exceptions\GedcomErrorException
+     * @throws GedcomErrorException
      */
     public function acceptTree(Tree $tree, int $n): void
     {

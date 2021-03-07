@@ -765,22 +765,6 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Generate the CSS class to be used for drawing this individual
-     *
-     * @return string
-     */
-    public function getBoxStyle(): string
-    {
-        $tmp = [
-            'M' => '',
-            'F' => 'F',
-            'U' => 'NN',
-        ];
-
-        return 'person_box' . $tmp[$this->sex()];
-    }
-
-    /**
      * Get a list of this individual’s spouse families
      *
      * @param int|null $access_level

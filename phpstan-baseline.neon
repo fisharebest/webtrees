@@ -1155,11 +1155,6 @@ parameters:
 			path: app/Module/StatisticsChartModule.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: app/Module/StatisticsChartModule.php
-
-		-
 			message: "#^Binary operation \"\\-\" between string and 1 results in an error\\.$#"
 			count: 2
 			path: app/Module/StatisticsChartModule.php

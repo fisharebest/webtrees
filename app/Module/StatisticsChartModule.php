@@ -758,7 +758,6 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
             default:
                 throw new HttpNotFoundException();
-                break;
         }
     }
 

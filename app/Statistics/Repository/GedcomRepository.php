@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Exception;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
@@ -135,7 +136,7 @@ class GedcomRepository implements GedcomRepositoryInterface
 
     /**
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public function gedcomDate(): string
     {

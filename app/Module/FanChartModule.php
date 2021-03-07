@@ -286,7 +286,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $scale = $fanw / 640;
 
         // Create the image
-        $image = imagecreate($fanw, (int) $fanh);
+        $image = imagecreate($fanw, $fanh);
 
         // Create colors
         $transparent = imagecolorallocate($image, 0, 0, 0);

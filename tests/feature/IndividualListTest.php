@@ -39,8 +39,8 @@ class IndividualListTest extends TestCase
      */
     public function testIndividualList(): void
     {
-        $tree                    = $this->importTree('demo.ged');
-        $list_module             = new IndividualListModule(new LocalizationService());
+        $tree        = $this->importTree('demo.ged');
+        $list_module = new IndividualListModule(new LocalizationService());
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree]);
         $response = $list_module->handle($request);
