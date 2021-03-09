@@ -1,0 +1,209 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderImportPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderUpdateStyles;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form method='post' action='<?= e(route(MapProviderAction::class)) ?>'>
+  <?= csrf_field() ?>
+
+  <fieldset>
+    <div class='row'>
+      <span class='col-form-label col-sm-3'>
+        <?= /* I18N: A configuration setting */ I18N::translate('Default map provider and style') ?>
+      </span>
+      <div class='col-sm-9'>
+        <div class='row'>
+          <div class='col-sm-6'>
+            <?= view('components/select', ['name' => 'provider', 'selected' => $data->current_default->get('provider'), 'options' => $data->providers]) ?>
+          </div>
+          <div class='col-sm-6'>
+            <?= view('components/select', ['name' => 'style', 'selected' => $data->current_default->get('style'), 'options' => $data->styles]) ?>
+          </div>
+        </div>
+      </div>
+      <p class='col-sm-9 offset-3 small text-muted'>
+        <?= /* I18N: Help text for the “Default map provider configuration setting */ I18N::translate('The values for the provider and style set here will be used as the default when viewing a map') ?>
+      </p>
+    </div>
+  </fieldset>
+
+  <hr>
+
+  <div class='row'>
+    <span class='h5 col-sm-3'><?=$data->providers[$data->system_default->get('provider')] ?></span>
+    <span class='small text-muted col-sm-9'><?= I18N::translate('%s is the default provider and cannot be disabled', $data->providers[$data->system_default->get('provider')]) ?></span>
+  </div>
+
+  <hr>
+
+  <?php foreach($data->provider_data as $datum) : ?>
+    <h4 class='mb-0'><?= $datum->title ?></h4>
+
+    <fieldset>
+      <div class='row'>
+        <label class='col-sm-3 col-form-label'>
+          <?= I18N::translate('Enabled') ?>
+        </label>
+        <div class='col-sm-8'>
+          <?= view('components/radios-inline', ['name' => 'system-' . $datum->key . '-enabled', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => $datum->enabled]) ?>
+        </div>
+        <div class='col-sm-1'>
+            <a class='pdelete btn'
+             role='button'
+             href='<?= e(route(MapProviderDelete::class, ['provider' => $datum->key])) ?>'
+             title='<?= I18N::translate('Remove %s from the system', $datum->title) ?>'
+             >
+              <?= view('icons/delete') ?>
+            </a>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class='row'>
+        <?php foreach($datum->parameters as $key => $parameter) : ?>
+          <label for='<?= e($datum->key . '-' . $key) ?>' class='col-sm-3 col-form-label'>
+            <?= e($key) ?>
+          </label>
+          <div class='col-sm-9'>
+            <input class='<?= e($datum->key . '-' . $key) ?> form-control' class='form-control' dir='ltr' maxlength='255' type='text' required <?= $datum->enabled ? '' : 'disabled' ?> name='<?= e('user-' . $datum->key . '-' . $key) ?>' value='<?= e($parameter) ?>'>
+          </div>
+        <?php endforeach ?>
+      </div>
+    </fieldset>
+
+    <?php if($datum->help_url !== null) :?>
+      <p class='small text-muted offset-3 col-sm-9'>
+        <?=I18N::translate('You will need an account and the following code(s) “%s” from %s.', $datum->parameters->keys()->implode(', '), $datum->help_url) ?>
+      </p>
+    <?php endif; ?>
+
+    <hr>
+
+  <?php endforeach ?>
+
+  <div class='form-group row'>
+    <div class='col-sm-4'>
+      <button type='submit' class='btn btn-primary'>
+        <?= view('icons/save') ?>
+        <?= I18N::translate('save') ?>
+      </button>
+      <a href='<?= route(ControlPanel::class) ?>' class='btn btn-secondary'>
+        <?= view('icons/cancel') ?>
+        <?= I18N::translate('cancel') ?>
+      </a>
+    </div>
+    <div class='col-sm-4'>
+      <a class='btn btn-primary' href='<?= e(route(MapProviderImportPage::class)) ?>'>
+        <?= view('icons/upload') ?>
+        <?= /* I18N: A button label. */ I18N::translate('import provider data') ?>
+      </a>
+    </div>
+  </div>
+</form>
+
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  const provider_selector = $('#provider');
+  const current_default   = <?= json_encode($data->current_default) ?>;
+  const system_default    = <?= json_encode($data->system_default) ?>;
+
+  // set initial state of provider select box
+  $('.form-check').children('input:checked').each(function(ndx, item) {
+    if ($(this).val() === '0') {
+      let id       = $(this).attr('id');
+      let provider = id.split('-')[1];
+      provider_selector.children('option[value="' + provider + '"]').attr('hidden', true);
+    }
+  });
+
+  // update default style dropdown on default provider change
+  provider_selector.on('change', function() {
+    const style_selector    = $('#style');
+    const selected_provider = $(this).children("option:selected").val();
+
+    style_selector.children().remove();
+    $.post("<?= e(route(MapProviderUpdateStyles::class)) ?>", {
+      provider: selected_provider,
+      _csrf: document.querySelector('meta[name=csrf]').content,
+    })
+    .done(function(data) {
+      $.each(data, function(index, value) {
+        style_selector
+          .append($("<option></option>")
+          .attr("value", index)
+          .text(value));
+      });
+    })
+    .always(function() {
+      if (selected_provider === system_default.provider) {
+        style_selector.children('option[value="' + system_default.style + '"]').attr('selected', true);
+      } else if (selected_provider === current_default.provider) {
+        style_selector.children('option[value="' + current_default.style + '"]').attr('selected', true);
+      } else {
+        style_selector.children().first().attr('selected', true);
+      }
+    });
+
+  });
+
+  // On change of provider enable/disable check box
+  $('.form-check').on('change', function() {
+    const curr_selected_provider = provider_selector.children('option:selected').val();
+    const id                     = $(this).children('input').attr('id');
+    const enabled                = !!+$(this).children('.form-check-input').val();
+    const provider_name          = id.split('-')[1];
+
+    //Enable/Disable form fields for this provider
+    $('input[class^= "' + provider_name + '"]').prop('disabled', !enabled);
+
+    // Update default provider list
+    let new_provider = null;
+
+    //work out what the new selected provider will be
+    if (!enabled && provider_name === curr_selected_provider) {
+      new_provider = system_default.provider;
+    } else if (enabled && provider_name === current_default.provider) {
+      new_provider = current_default.provider;
+    }
+
+    if (new_provider !== null) {
+      // Action the change
+      // Unselect all providers
+      provider_selector.children('option').attr('selected', false);
+      // Select new provider
+      provider_selector.children('option[value="' + new_provider + '"]').attr('selected', true);
+      provider_selector
+        .children('option[value="' + provider_name + '"]')
+        .attr('hidden', !enabled)
+        .trigger('change');
+    }
+  });
+
+  // For delete anchors, convert get to post
+  $('.pdelete').on('click', function(e) {
+    e.preventDefault();
+    let that = $(this);
+    if (confirm(that.attr('title'))) {
+      $.post(that.attr('href'))
+       .always(function() {
+          location.reload();
+      });
+    }
+  })
+
+</script>
+<?php View::endpush() ?>

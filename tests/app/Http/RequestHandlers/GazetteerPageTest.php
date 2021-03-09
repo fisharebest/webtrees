@@ -20,15 +20,14 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the MapProviderPage request handler.
+ * Test the GazetteerPage request handler.
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\GazetteerPage
  */
-class MapProviderPageTest extends TestCase
+class GazetteerPageTest extends TestCase
 {
     protected static $uses_database = true;
 
@@ -37,7 +36,7 @@ class MapProviderPageTest extends TestCase
      */
     public function testMapProviderPage(): void
     {
-        $handler  = new MapProviderPage(new MapProviderService());
+        $handler  = new GazetteerPage();
         $request  = self::createRequest();
         $response = $handler->handle($request);
 

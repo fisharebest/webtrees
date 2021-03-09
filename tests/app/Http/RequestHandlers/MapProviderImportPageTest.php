@@ -20,27 +20,27 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the MapProviderPage request handler.
+ * Test the provider import.
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderImportPage
  */
-class MapProviderPageTest extends TestCase
+class MapProviderImportPageTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
      * @return void
      */
-    public function testMapProviderPage(): void
+    public function testImportPage(): void
     {
-        $handler  = new MapProviderPage(new MapProviderService());
+        $handler  = new MapProviderImportPage();
         $request  = self::createRequest();
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame($response->getHeaderLine('Content-Type'), 'text/html; charset=UTF-8');
     }
 }

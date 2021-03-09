@@ -19,10 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\Site;
+use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function explode;
+use function redirect;
+use function route;
+use function serialize;
+use function substr;
 
 /**
  * Select a map provider.
@@ -38,9 +47,41 @@ class MapProviderAction implements RequestHandlerInterface
     {
         $settings = (array) $request->getParsedBody();
 
-        Site::setPreference('map-provider', $settings['provider']);
-        Site::setPreference('geonames', $settings['geonames']);
+        Registry::cache()->array()->forget('map-layers');
+        Registry::cache()->array()->forget('default-map-layers');
 
-        return redirect(route(ControlPanel::class));
+        if ($settings['provider'] !== '' && $settings['style'] !== '') {
+            Site::setPreference('default-map-provider', $settings['provider'] . '.' . $settings['style']);
+        } else {
+            Site::setPreference('default-map-provider', MapProviderService::SYSTEM_DEFAULT);
+        }
+
+        unset($settings['provider']);
+        unset($settings['style']);
+
+        $user_parameters = [];
+        foreach ($settings as $key => $value) {
+            list($type, $provider_key, $name) = explode('-', $key);
+            if ($type === 'user') {
+                $user_parameters[$provider_key][] = [
+                    'parameter_name'  => $name,
+                    'parameter_value' => $value,
+                ];
+            } else {
+                Site::setPreference(substr($provider_key . '-' . $name, 0, 32), $value); // database limit is 32
+            }
+        }
+
+        foreach ($user_parameters as $key => $user_parameters) {
+            foreach ($user_parameters as $parm) {
+                DB::table('map_parameters as p1')
+                    ->join('map_names as n1', 'p1.parent_id', '=', 'n1.id')
+                    ->where('n1.key_name', '=', $key)
+                    ->where('p1.parameter_name', '=', $parm['parameter_name'])
+                    ->update(['p1.parameter_value' => serialize($parm['parameter_value'])]);
+            }
+        }
+
+        return redirect(route(MapProviderPage::class));
     }
 }

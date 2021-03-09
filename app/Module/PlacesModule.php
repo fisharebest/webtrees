@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\Site;
 use Illuminate\Support\Collection;
 use stdClass;
@@ -54,7 +55,21 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
         'EDUC' => ['color' => 'violet', 'name' => 'university fas'],
     ];
 
+    /** @var MapProviderService */
+    private $map_provider_service;
+
     protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
+
+    /**
+     * PlacesModule constructor.
+     *
+     * @param MapProviderService $map_provider_service
+     */
+    public function __construct(MapProviderService $map_provider_service)
+    {
+        $this->map_provider_service = $map_provider_service;
+    }
+
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -97,8 +112,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      */
     public function hasTabContent(Individual $individual): bool
     {
-        return Site::getPreference('map-provider') !== '' &&
-            $this->getMapData($individual)->features !== [];
+        return $this->getMapData($individual)->features !== [];
     }
 
     /**
@@ -135,13 +149,8 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     {
         return view('modules/places/tab', [
             'data'     => $this->getMapData($individual),
-            'provider' => [
-                'url'    => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                'options' => [
-                    'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
-                    'max_zoom'    => 19
-                ]
-            ]
+            'provider' => $this->map_provider_service->providerLayers(),
+            'defaults' => $this->map_provider_service->defaultLayers(),
         ]);
     }
 

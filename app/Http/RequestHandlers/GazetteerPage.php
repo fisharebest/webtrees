@@ -19,28 +19,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapProviderService;
-use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Test the MapProviderPage request handler.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage
+ * Enable/disable the use of a gazetteer.
  */
-class MapProviderPageTest extends TestCase
+class GazetteerPage implements RequestHandlerInterface
 {
-    protected static $uses_database = true;
+    use ViewResponseTrait;
 
     /**
-     * @return void
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
      */
-    public function testMapProviderPage(): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $handler  = new MapProviderPage(new MapProviderService());
-        $request  = self::createRequest();
-        $response = $handler->handle($request);
+        $this->layout = 'layouts/administration';
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        return $this->viewResponse('admin/gazetteer', [
+            'title'    => I18N::translate('Place autocomplete'),
+            'geonames' => Site::getPreference('geonames'),
+        ]);
     }
 }

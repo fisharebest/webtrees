@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\MapDataService;
+use Fisharebest\Webtrees\Services\MapProviderService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -39,15 +40,18 @@ class MapDataAdd implements RequestHandlerInterface
 
     /** @var MapDataService */
     private $map_data_service;
+    /** @var MapProviderService */
+    private $map_provider_service;
 
     /**
      * Dependency injection.
      *
      * @param MapDataService $map_data_service
      */
-    public function __construct(MapDataService $map_data_service)
+    public function __construct(MapDataService $map_data_service, MapProviderService $map_provider_service)
     {
         $this->map_data_service = $map_data_service;
+        $this->map_provider_service = $map_provider_service;
     }
 
     /**
@@ -104,13 +108,8 @@ class MapDataAdd implements RequestHandlerInterface
             'map_bounds'      => $map_bounds,
             'marker_position' => $marker_position,
             'parent'          => $parent,
-            'provider'        => [
-                'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                'options' => [
-                    'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
-                    'max_zoom'    => 19
-                ]
-            ],
+            'provider'        => $this->map_provider_service->providerLayers(),
+            'defaults'        => $this->map_provider_service->defaultLayers(),
         ]);
     }
 }

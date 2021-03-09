@@ -22,13 +22,14 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -49,9 +50,10 @@ use function view;
 /**
  * Class IndividualListModule
  */
-class PlaceHierarchyListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface
+class PlaceHierarchyListModule extends AbstractModule implements ModuleListInterface, RequestHandlerInterface, ModuleConfigInterface
 {
     use ModuleListTrait;
+    use ModuleConfigTrait;
 
     protected const ROUTE_URL = '/tree/{tree}/place-list';
 
@@ -60,15 +62,18 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
     /** @var SearchService */
     private $search_service;
-
+    /** @var MapProviderService */
+    private $map_provider_service;
     /**
      * PlaceHierarchy constructor.
      *
      * @param SearchService $search_service
+     * @param MapProviderService $map_provider_service
      */
-    public function __construct(SearchService $search_service)
+    public function __construct(SearchService $search_service, MapProviderService $map_provider_service)
     {
-        $this->search_service = $search_service;
+        $this->search_service       = $search_service;
+        $this->map_provider_service = $map_provider_service;
     }
 
     /**
@@ -83,6 +88,38 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         $router_container->getMap()
             ->get(static::class, static::ROUTE_URL, $this);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+
+        return $this->viewResponse('modules/place-hierarchy/config', [
+            'title'    => I18N::translate('Module preferences') . ' — ' . $this->title(),
+            'use_maps' => $this->getPreference('hierarchy_map', ''),
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $params = (array) $request->getParsedBody();
+
+        $use_maps = $params['hierarchy_map'];
+        $this->setPreference('hierarchy_map', $use_maps);
+
+        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
+
+        return redirect($this->getConfigLink());
     }
 
     /**
@@ -181,25 +218,20 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         $place_id = (int) ($request->getQueryParams()['place_id'] ?? 0);
         $place    = Place::find($place_id, $tree);
 
-        // Request for a non-existent place?
+        // Request for a non-existant place?
         if ($place_id !== $place->id()) {
             return redirect($place->url());
         }
 
         $content = '';
-        $showmap = Site::getPreference('map-provider') !== '';
         $data    = null;
+        $showmap = (bool) $this->getPreference('hierarchy_map', '');
 
         if ($showmap) {
             $content .= view('modules/place-hierarchy/map', [
                 'data'     => $this->mapData($tree, $place),
-                'provider' => [
-                    'url'    => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    'options' => [
-                        'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
-                        'max_zoom'    => 19
-                    ]
-                ]
+                'provider' => $this->map_provider_service->providerLayers(),
+                'defaults' => $this->map_provider_service->defaultLayers(),
             ]);
         }
 

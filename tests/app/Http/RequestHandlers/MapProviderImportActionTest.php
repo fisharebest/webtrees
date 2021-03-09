@@ -19,28 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\TestCase;
 
+use function dirname;
+
 /**
- * Test the MapProviderPage request handler.
+ * Test the provider import.
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderImportAction
  */
-class MapProviderPageTest extends TestCase
+class MapProviderImportActionTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
      * @return void
      */
-    public function testMapProviderPage(): void
+    public function testImportAction(): void
     {
-        $handler  = new MapProviderPage(new MapProviderService());
-        $request  = self::createRequest();
+        $json     = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/openstreetmap.json', 'application/json');
+        $handler  = new MapProviderImportAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['serverfile' => $json]);
         $response = $handler->handle($request);
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

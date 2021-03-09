@@ -95,10 +95,11 @@ use Fisharebest\Webtrees\View;
 
     window.WT_OSM_ADMIN = (function () {
         const minZoom   = 2;
-        const provider  = <?= json_encode($provider) ?>;
         const add_place = <?= json_encode($location->id() === null) ?>;
+        const layers    = <?= json_encode($provider) ?>;
+        const base      = <?= json_encode($defaults) ?>;
+        let map         = null;
 
-        let map = null;
         // map components
 
         // postcss_image_inliner breaks the autodetection of image paths.
@@ -118,7 +119,7 @@ use Fisharebest\Webtrees\View;
         //reset map to initial state
         let resetControl = L.Control.extend({
             options: {
-                position: 'topleft'
+              position: 'topleft'
             },
             onAdd: function (map) {
                 let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
@@ -147,8 +148,28 @@ use Fisharebest\Webtrees\View;
             zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
         });
 
+        /**
+         *  Build layers for base map switching
+         *  Convert layer data into L.tileLayer objects
+         *
+         * @private
+         */
+        let _prepareLayers = function() {
+          let tmp  = null;
+          let bing = null;
+
+          layers.forEach(function (items) {
+            bing = items.label.indexOf('Bing') !== -1;
+            items.children.forEach(function (style) {
+              tmp         = style.layer;
+              style.layer = bing ? L.tileLayer.bing(tmp.parameters) : L.tileLayer(tmp.url, tmp.parameters);
+            });
+          });
+        }
+
         // Geocoder (place lookup)
         let geocoder = new L.Control.geocoder({
+            position: 'bottomleft',
             defaultMarkGeocode: false,
             expand: 'click',
             showResultIcons: true,
@@ -157,17 +178,17 @@ use Fisharebest\Webtrees\View;
             errorMessage: <?= json_encode(I18N::translate('Nothing found.')) ?>,
             iconLabel: <?= json_encode(I18N::translate('Search')) ?>
         })
-            .on('markgeocode', function (result) {
-                let coords = result.geocode.center;
-                let place = result.geocode.name.split(',', 1).toString();
-                marker.setLatLng(coords);
-                map.panTo(coords);
-                if (add_place) {
-                    $('#new_place_name').val(place);
-                }
-                $('#new_place_lati').val(Number(coords.lat).toFixed(5));
-                $('#new_place_long').val(Number(coords.lng).toFixed(5));
-            });
+        .on('markgeocode', function (result) {
+            let coords = result.geocode.center;
+            let place = result.geocode.name.split(',', 1).toString();
+            marker.setLatLng(coords);
+            map.panTo(coords);
+            if (add_place) {
+                $('#new_place_name').val(place);
+            }
+            $('#new_place_lati').val(Number(coords.lat).toFixed(5));
+            $('#new_place_long').val(Number(coords.lng).toFixed(5));
+        });
 
         /**
          *
@@ -186,6 +207,8 @@ use Fisharebest\Webtrees\View;
             });
         });
 
+        _prepareLayers();
+
         // Create the map with all controls and layers
         map = L.map('osm-map', {
             minZoom: minZoom, // maxZoom set by leaflet-providers.js
@@ -195,7 +218,11 @@ use Fisharebest\Webtrees\View;
             .addControl(zoomCtl)
             .addControl(geocoder)
             .addLayer(marker)
-            .addLayer(L.tileLayer(provider.url, provider.options))
+            .addLayer(layers[base.provider].children[base.style].layer)
+            .addControl(L.control.layers.tree(layers, null, {
+              closedSymbol: <?= json_encode(view('icons/expand')) ?>,
+              openedSymbol: <?= json_encode(view('icons/collapse')) ?>,
+            }))
             .fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]})
             .on('zoomend', function () {
               if (!map.getBounds().contains(marker.getLatLng())) {

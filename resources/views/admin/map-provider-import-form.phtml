@@ -1,0 +1,93 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderImportPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderImportAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+
+/**
+ * @var array<string> $files
+ * @var string        $folder
+ * @var string        $title
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(MapProviderPage::class)  => I18N::translate('Map providers'), $title]]) ?>
+
+<h3><?= $title ?></h3>
+
+<form method='post' action='<?= e(route(MapProviderImportAction::class)) ?>' id='upload_form' enctype='multipart/form-data'>
+  <?= csrf_field() ?>
+
+  <!-- Server file -->
+  <div class='row form-group'>
+    <label class='col-form-label col-sm-4' for='serverfile'>
+      <?= I18N::translate('A file on the server') ?>
+    </label>
+    <div class='col-sm-8'>
+      <div class='input-group' dir='ltr'>
+        <div class='input-group-prepend'>
+          <span class='input-group-text'>
+            <?= e($folder) ?>
+          </span>
+        </div>
+        <select id='serverfile' name='serverfile' class='form-control'>
+          <option><!--select2 placeholder--></option>
+          <?php foreach ($files as $file) : ?>
+            <option value='<?= e($file) ?>'>
+              <?= e($file) ?>
+            </option>
+          <?php endforeach ?>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- local file -->
+  <div class='row form-group'>
+    <label class='col-form-label col-sm-4' for='localfile'>
+      <?= I18N::translate('A file on your computer') ?>
+    </label>
+    <div class='col-sm-8'>
+      <input id='localfile' type='file' name='localfile' class='form-control-file'>
+    </div>
+  </div>
+
+  <!-- SAVE BUTTON -->
+  <div class='row form-group'>
+    <div class='offset-sm-4 col-sm-8'>
+      <button type='submit' class='btn btn-primary'>
+        <?= view('icons/save') ?>
+        <?= I18N::translate('continue') ?>
+      </button>
+      <a class='btn btn-secondary' role='button' href='<?= e(route(MapProviderPage::class)) ?>'>
+        <?= view('icons/cancel') ?>
+        <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
+      </a>
+    </div>
+  </div>
+</form>
+
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  $('#upload_form').on('submit', function(e) {
+    e.preventDefault();
+    if (!confirm('<?= I18N::translate('By selecting `Continue`, any previously defined definition for this provider will be overwritten') ?> ')) {
+      return false;
+    }
+
+     this.submit();
+  });
+
+  $("#serverfile").select2({
+    placeholder: "<?= I18N::translate('Select a file to import') ?>",
+    allowClear: true,
+  });
+
+</script>
+<?php View::endpush() ?>

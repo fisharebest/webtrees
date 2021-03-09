@@ -34,10 +34,11 @@ use Fisharebest\Webtrees\I18N;
     window.WT_OSM = (function() {
         const minZoom = 2;
 
-        let map       = null;
-        let zoom      = null;
-        let sidebar   = $('.osm-sidebar');
-        let provider  = <?=  json_encode($provider) ?>;
+        let map     = null;
+        let zoom    = null;
+        let sidebar = $('.osm-sidebar');
+        let layers  = <?= json_encode($provider) ?>;
+        let base    = <?= json_encode($defaults) ?>;
 
         // Map components
         let markers = L.markerClusterGroup({
@@ -80,6 +81,25 @@ use Fisharebest\Webtrees\I18N;
         });
 
         /**
+         *  Build layers for base map switching
+         *  Convert layer data into L.tileLayer objects
+         *
+         * @private
+         */
+          let _prepareLayers = function() {
+          let tmp  = null;
+          let bing = null;
+
+          layers.forEach(function (items) {
+            bing = items.label.indexOf('Bing') !== -1;
+            items.children.forEach(function (style) {
+              tmp         = style.layer;
+              style.layer = bing ? L.tileLayer.bing(tmp.parameters) : L.tileLayer(tmp.url, tmp.parameters);
+            });
+          });
+        }
+
+        /**
          *
          * @private
          */
@@ -91,7 +111,11 @@ use Fisharebest\Webtrees\I18N;
                 })
                 .addControl(new resetControl())
                 .addControl(newZoomControl)
-                .addLayer(L.tileLayer(provider.url, provider.options));
+                .addLayer(layers[base.provider].children[base.style].layer)
+                .addControl(L.control.layers.tree(layers, null, {
+                  closedSymbol: <?= json_encode(view('icons/expand')) ?>,
+                  openedSymbol: <?= json_encode(view('icons/collapse')) ?>,
+                }));
         };
 
         /**
@@ -189,6 +213,7 @@ use Fisharebest\Webtrees\I18N;
             });
         });
 
+        _prepareLayers();
         _drawMap();
         _buildMapData();
 

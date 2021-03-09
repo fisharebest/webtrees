@@ -19,28 +19,27 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapProviderService;
-use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Site;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Test the MapProviderPage request handler.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage
+ * Enable/disable the use of a gazetteer.
  */
-class MapProviderPageTest extends TestCase
+class GazetteerAction implements RequestHandlerInterface
 {
-    protected static $uses_database = true;
-
     /**
-     * @return void
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
      */
-    public function testMapProviderPage(): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $handler  = new MapProviderPage(new MapProviderService());
-        $request  = self::createRequest();
-        $response = $handler->handle($request);
+        $settings = (array) $request->getParsedBody();
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        Site::setPreference('geonames', $settings['geonames']);
+
+        return redirect(route(ControlPanel::class));
     }
 }

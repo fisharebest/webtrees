@@ -19,28 +19,28 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test the MapProviderPage request handler.
+ * Test the GazetteerAction request handler.
  *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\GazetteerAction
  */
-class MapProviderPageTest extends TestCase
+class GazetteerActionTest extends TestCase
 {
     protected static $uses_database = true;
 
     /**
      * @return void
      */
-    public function testMapProviderPage(): void
+    public function testMapProviderAction(): void
     {
-        $handler  = new MapProviderPage(new MapProviderService());
-        $request  = self::createRequest();
+        $handler  = new GazetteerAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['geonames' => '']);
         $response = $handler->handle($request);
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
 }

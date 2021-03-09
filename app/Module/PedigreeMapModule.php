@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -83,15 +84,19 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     /** @var ChartService */
     private $chart_service;
+    /** @var MapProviderService */
+    private $map_provider_service;
 
     /**
      * PedigreeMapModule constructor.
      *
      * @param ChartService $chart_service
+     * @param MapProviderService $map_provider_service
      */
-    public function __construct(ChartService $chart_service)
+    public function __construct(ChartService $chart_service, MapProviderService $map_provider_service)
     {
-        $this->chart_service = $chart_service;
+        $this->chart_service        = $chart_service;
+        $this->map_provider_service = $map_provider_service;
     }
 
     /**
@@ -218,13 +223,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
         $map = view('modules/pedigree-map/chart', [
             'data'     => $this->getMapData($request),
-            'provider' => [
-                'url'    => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                'options' => [
-                    'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
-                    'max_zoom'    => 19
-                ]
-            ]
+            'provider' => $this->map_provider_service->providerLayers(),
+            'defaults' => $this->map_provider_service->defaultLayers(),
         ]);
 
         return $this->viewResponse('modules/pedigree-map/page', [

@@ -1,7 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\GazetteerAction;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -14,24 +14,8 @@ use Fisharebest\Webtrees\I18N;
 
 <?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
 
-<form method="post" action="<?= e(route(MapProviderAction::class)) ?>">
+<form method="post" action="<?= e(route(GazetteerAction::class)) ?>">
     <?= csrf_field() ?>
-
-    <div class="form-group">
-        <div class="form-row">
-            <label class="col-form-label col-sm-3" for="provider-default">
-                <?= I18N::translate('Map provider') ?>
-            </label>
-            <div class="col-sm-9">
-                <?= view('components/radios', ['name' => 'provider', 'selected' => $provider, 'options' => [
-                ''    => I18N::translate('Do not use maps'),
-                'osm' => I18N::translate('OpenStreetMap™'),
-                ]]) ?>
-            </div>
-        </div>
-    </div>
-
-    <hr>
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="geonames">

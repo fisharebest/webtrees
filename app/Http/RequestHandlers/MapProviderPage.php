@@ -21,17 +21,32 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\MapProviderService;
 use Fisharebest\Webtrees\Site;
+use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Select a map provider.
+ * Manage map providers.
  */
 class MapProviderPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    /** @var MapProviderService */
+    private $map_provider_service;
+
+    /**
+     * Dependency injection.
+     *
+     * @param MapProviderService $map_provider_service
+     */
+    public function __construct(MapProviderService $map_provider_service)
+    {
+        $this->map_provider_service = $map_provider_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -40,12 +55,38 @@ class MapProviderPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $this->layout = 'layouts/administration';
+        $this->layout  = 'layouts/administration';
+        $default       = $this->map_provider_service->defaultProvider();
+        $provider_data = [];
 
-        return $this->viewResponse('admin/map-provider', [
-            'title'    => I18N::translate('Map provider'),
-            'provider' => Site::getPreference('map-provider'),
-            'geonames' => Site::getPreference('geonames'),
+        $help = DB::table('map_parameters as p1')
+            ->join('map_names as n1', 'p1.parent_id', '=', 'n1.id')
+            ->whereNull('n1.provider_id')
+            ->where('p1.parameter_name', '=', 'help')
+            ->pluck('p1.parameter_value', 'n1.key_name')
+            ->map(function ($item) {
+                return unserialize($item ?? '');
+            });
+
+        foreach ($this->map_provider_service->providers('added') as $key => $name) {
+            $provider_data[] = (object) [
+                'title'      => $name,
+                'key'        => $key,
+                'parameters' => $this->map_provider_service->userParameters($key),
+                'enabled'    => (int) Site::getPreference($key . '-enabled'),
+                'help_url'   => $help->get($key),
+            ];
+        }
+
+        return $this->viewResponse('admin/map-providers', [
+            'title'    => I18N::translate('Map Providers'),
+            'data'     => (object) [
+                'current_default'  => $default,
+                'system_default'   => $this->map_provider_service->systemDefault(),
+                'providers'        => $this->map_provider_service->providers(),
+                'styles'           => $this->map_provider_service->styles($default->get('provider')),
+                'provider_data'    => $provider_data,
+            ],
         ]);
     }
 }

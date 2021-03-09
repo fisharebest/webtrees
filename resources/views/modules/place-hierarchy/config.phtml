@@ -1,0 +1,43 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string $use_maps
+ * @var string $title
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Modules'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form method="post">
+    <?= csrf_field() ?>
+
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-3">
+                <?= /* I18N: A configuration setting */ I18N::translate('Enable map display') ?>
+            </legend>
+            <div class="col-sm-9">
+                <?= view('components/radios-inline', ['name' => 'hierarchy_map', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $use_maps]) ?>
+                <p class="small text-muted">
+                    <?= /* I18N: Help text for the “hierarchy map” configuration setting */ I18N::translate('Display a map on the place hierarchy page.') ?>
+                </p>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="row form-group">
+        <div class="offset-sm-3 col-sm-9">
+            <button type="submit" class="btn btn-primary">
+                <?= view('icons/save') ?>
+                <?= I18N::translate('save') ?>
+            </button>
+        </div>
+    </div>
+</form>
