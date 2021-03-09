@@ -28,6 +28,7 @@ class Confirmation extends AbstractElement
         'DATE' => '0:1',
         'AGE'  => '0:1',
         'PLAC' => '0:1',
+        'RELI' => '0:1',
         'NOTE' => '0:M',
         'OBJE' => '0:M',
         'SOUR' => '0:M',
