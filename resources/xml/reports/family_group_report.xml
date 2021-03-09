@@ -143,7 +143,7 @@
 						<HighlightedImage left="$pwidth" width="80"/>
 					</if>
 					<!-- print the name and any level 1 sources -->
-					<TextBox bgcolor="$malebox_bgcolor" border="1" width="$width" newline="1">
+					<TextBox bgcolor="$malebox_bgcolor" border="1" left ="0" width="$width" newline="1">
 						<Text color="$tcolor" style="text"><var var="I18N::translate('Husband')" />  </Text>
 						<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 						<if condition="$sources=='on'">
@@ -497,7 +497,7 @@
 						<HighlightedImage left="$pwidth" width="80"/>
 					</if>
 					<!-- print the name and sources -->
-					<TextBox bgcolor="$femalebox_bgcolor" border="1" width="$width" newline="1">
+					<TextBox bgcolor="$femalebox_bgcolor" border="1" left="0" width="$width" newline="1">
 						<Text color="$tcolor" style="text"><var var="I18N::translate('Wife')" />  </Text>
 						<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 						<if condition="$sources=='on'">
