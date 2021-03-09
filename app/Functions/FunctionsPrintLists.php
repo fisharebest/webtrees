@@ -146,12 +146,12 @@ class FunctionsPrintLists
                 }
                 $newcol = (int) ceil($count / $col);
                 $html2  = '<table class="table list_table"><tr>';
-                $html2 .= '<td class="list_value">';
+                $html2 .= '<td class="list_value_wrap">';
 
                 foreach ($html as $i => $surns) {
                     $html2 .= $surns . '<br>';
                     if (($i + 1) % $newcol === 0) {
-                        $html2 .= '</td><td class="list_value">';
+                        $html2 .= '</td><td class="list_value_wrap">';
                     }
                 }
                 $html2 .= '</td></tr></table>';
