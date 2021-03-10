@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -626,7 +626,10 @@ if (
                         <?php echo /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)); ?>
                     </a>
                     <?php else: ?>
-                        <?php echo I18N::translate('This is the latest version of webtrees. No upgrade is available.'); ?>
+                        <span class="text-danger">
+                            webtrees 1.7 has reached end-of-life.
+                            You should upgrade to webtrees 2.
+                        </span>
                     <?php endif; ?>
                 </p>
                 <?php endif; ?>

@@ -1,7 +1,7 @@
 <?php
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,15 @@ use Symfony\Component\HttpFoundation\Request;
  * This is the bootstrap script, that is run on every request.
  */
 
+if (version_compare(PHP_VERSION, '7.4.0') >= 0) {
+    echo '<!DOCTYPE html><html lang="en"><body>';
+    echo 'PHP ' . PHP_VERSION . ' detected.<br>';
+    echo 'webtrees 1.7 requires PHP 5.3 - 7.3.<br>';
+    echo 'Visit https://webtrees.net for more information.<br>';
+    echo '</body></html>';
+    exit;
+}
+
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
     http_response_code(403);
@@ -41,7 +50,7 @@ global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.7.17');
+define('WT_VERSION', '1.7.18');
 
 // External URLs
 define('WT_WEBTREES_URL', 'https://www.webtrees.net/');
