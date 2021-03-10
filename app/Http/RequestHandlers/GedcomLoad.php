@@ -29,7 +29,10 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\DetectsDeadlocks;
 use Illuminate\Database\Query\Expression;
+use Illuminate\Support\Str;
+use PDOException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -52,6 +55,7 @@ use function view;
 class GedcomLoad implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+    use DetectsDeadlocks;
 
     /** @var TimeoutService */
     private $timeout_service;
@@ -84,12 +88,6 @@ class GedcomLoad implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         try {
-            // Only allow one process to import each gedcom at a time
-            DB::table('gedcom_chunk')
-                ->where('gedcom_id', '=', $tree->id())
-                ->lockForUpdate()
-                ->get();
-
             // What is the current import status?
             $import_offset = DB::table('gedcom_chunk')
                 ->where('gedcom_id', '=', $tree->id())
@@ -126,7 +124,23 @@ class GedcomLoad implements RequestHandlerInterface
                     ->select(['gedcom_chunk_id', 'chunk_data'])
                     ->first();
 
-                // If we are loading the first (header) record, make sure the encoding is UTF-8.
+                if ($data === null) {
+                    break;
+                }
+
+                // Mark the chunk as imported.  This will create a row-lock, to prevent other
+                // processes from reading it until we have finished.
+                $n = DB::table('gedcom_chunk')
+                    ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
+                    ->where('imported', '=', '0')
+                    ->update(['imported' => 1]);
+
+                // Another process has already imported this data?
+                if ($n === 0) {
+                    break;
+                }
+
+                // If we are loading the first (header) record, then delete old data and convert to UTF-8.
                 if ($first_time) {
                     $this->tree_service->deleteGenealogyData($tree, (bool) $tree->getPreference('keep_media'));
 
@@ -152,6 +166,7 @@ class GedcomLoad implements RequestHandlerInterface
                     } else {
                         $charset = 'ASCII';
                     }
+
                     // MySQL supports a wide range of collation conversions. These are ones that
                     // have been encountered "in the wild".
                     switch ($charset) {
@@ -218,10 +233,6 @@ class GedcomLoad implements RequestHandlerInterface
                         ->first();
                 }
 
-                if (!$data) {
-                    break;
-                }
-
                 $data->chunk_data = str_replace("\r", "\n", $data->chunk_data);
 
                 // Import all the records in this chunk of data
@@ -233,10 +244,10 @@ class GedcomLoad implements RequestHandlerInterface
                     }
                 }
 
-                // Mark the chunk as imported
+                // Do not need the data any more.
                 DB::table('gedcom_chunk')
                     ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
-                    ->update(['imported' => 1]);
+                    ->update(['chunk_data' => '']);
             } while (!$this->timeout_service->isTimeLimitUp());
 
             return $this->viewResponse('admin/import-progress', [
@@ -246,6 +257,15 @@ class GedcomLoad implements RequestHandlerInterface
             ]);
         } catch (Exception $ex) {
             DB::connection()->rollBack();
+
+            // Deadlock? Try again.
+            if ($this->causedByDeadlock($ex)) {
+                return $this->viewResponse('admin/import-progress', [
+                    'errors'   => '',
+                    'progress' => $progress ?? 0.0,
+                    'tree'     => $tree,
+                ]);
+            }
 
             return $this->viewResponse('admin/import-fail', [
                 'error' => $ex->getMessage(),

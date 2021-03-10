@@ -400,18 +400,18 @@ parameters:
 			path: app/Http/RequestHandlers/FixLevel0MediaData.php
 
 		-
-			message: "#^Cannot access property \\$chunk_data on object\\|null\\.$#"
-			count: 6
-			path: app/Http/RequestHandlers/GedcomLoad.php
-
-		-
-			message: "#^Cannot access property \\$gedcom_chunk_id on object\\|null\\.$#"
-			count: 2
+			message: "#^Access to an undefined property object\\:\\:\\$gedcom_chunk_id\\.$#"
+			count: 3
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$chunk_data\\.$#"
-			count: 2
+			count: 5
+			path: app/Http/RequestHandlers/GedcomLoad.php
+
+		-
+			message: "#^Cannot access property \\$chunk_data on object\\|null\\.$#"
+			count: 3
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
@@ -420,7 +420,7 @@ parameters:
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
 		-
-			message: "#^Access to an undefined property object\\:\\:\\$gedcom_chunk_id\\.$#"
+			message: "#^Cannot access property \\$gedcom_chunk_id on object\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
