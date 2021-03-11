@@ -127,6 +127,7 @@ class Migration44 implements MigrationInterface
             $select1 = DB::table('placelocation')
                 ->leftJoin('place_location', 'id', '=', 'pl_id')
                 ->whereNull('id')
+                ->orderBy('pl_level')
                 ->orderBy('pl_id')
                 ->select([
                     'pl_id',
@@ -140,6 +141,7 @@ class Migration44 implements MigrationInterface
             $select2 = DB::table('placelocation')
                 ->leftJoin('place_location', 'id', '=', 'pl_id')
                 ->whereNull('id')
+                ->orderBy('pl_level')
                 ->orderBy('pl_id')
                 ->select([
                     'pl_id',
