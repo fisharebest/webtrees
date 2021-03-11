@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Schema;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use PDOException;
@@ -78,6 +79,28 @@ class Migration44 implements MigrationInterface
                 ->update([
                     'pl1.pl_parent_id' => 0,
                 ]);
+
+            // Remove invalid values.
+            DB::table('placelocation')
+                ->where('pl_lati', 'LIKE', '%,%')
+                ->orWhere('pl_lati', 'LIKE', '%-%')
+                ->orWhere('pl_long', 'LIKE', '%,%')
+                ->orWhere('pl_long', 'LIKE', '%-%')
+                ->orWhere(function (Builder $query): void {
+                    $query
+                        ->where('pl_lati', 'NOT LIKE', 'N%')
+                        ->where('pl_lati', 'NOT LIKE', 'S%');
+                })
+                ->orWhere(function (Builder $query): void {
+                    $query
+                        ->where('pl_long', 'NOT LIKE', 'E%')
+                        ->where('pl_long', 'NOT LIKE', 'W%');
+                })
+                ->update([
+                    'pl_lati' => '',
+                    'pl_long' => '',
+                ]);
+
 
             // The lack of unique key constraints means that there may be duplicates...
             while (true) {
