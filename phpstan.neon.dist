@@ -4,7 +4,5 @@ includes:
 parameters:
     ignoreErrors:
         - '#^Call to an undefined method Aura\\Router\\Map::extras\(\)\.$#'
-        - '#^Call to an undefined method Illuminate\\Support\\Fluent::references\(\)\.$#'
         - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::[a-zA-Z]+\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
         - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::[a-zA-Z]+\(\) expects array\|Closure\|string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager::table\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'

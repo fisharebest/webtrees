@@ -138,7 +138,7 @@ class ImageFactory implements ImageFactoryInterface
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', basename(get_class($ex)) . ': ' . $ex->getMessage());
+                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -250,7 +250,7 @@ class ImageFactory implements ImageFactoryInterface
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', basename(get_class($ex)) . ': ' . $ex->getMessage());
+                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
