@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
+use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -279,7 +280,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Create a new/empty .ZIP file
         $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
-        $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
+        $zip_provider   = new FilesystemZipArchiveProvider($temp_zip_file, 0755);
+        $zip_adapter    = new ZipArchiveAdapter($zip_provider);
         $zip_filesystem = new Filesystem($zip_adapter);
 
         $media_filesystem = $tree->mediaFilesystem($data_filesystem);
@@ -374,9 +376,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         // Finally add the GEDCOM file to the .ZIP file.
         $zip_filesystem->writeStream('clippings.ged', $stream);
-
-        // Need to force-close ZipArchive filesystems.
-        $zip_adapter->getArchive()->close();
 
         // Use a stream, so that we do not have to load the entire file into memory.
         $stream = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);

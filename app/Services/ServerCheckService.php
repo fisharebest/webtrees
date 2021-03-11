@@ -51,10 +51,9 @@ class ServerCheckService
     private const PHP_SUPPORT_URL   = 'https://www.php.net/supported-versions.php';
     private const PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
     private const PHP_SUPPORT_DATES = [
-        '7.1' => '2019-12-01',
-        '7.2' => '2020-11-30',
         '7.3' => '2021-12-06',
         '7.4' => '2022-11-28',
+        '8.0' => '2023-11-26',
     ];
 
     // As required by illuminate/database 5.8

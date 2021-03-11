@@ -23,7 +23,10 @@ use Exception;
 use Fisharebest\Webtrees\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\UnableToDeleteDirectory;
+use League\Flysystem\UnableToDeleteFile;
 
 /**
  * Clean up old data, files and folders.
@@ -461,17 +464,13 @@ class HousekeepingService
     {
         if ($filesystem->fileExists($path)) {
             try {
-                $metadata = $filesystem->getMetadata($path);
-
-                if ($metadata['type'] === 'dir') {
+                $filesystem->delete($path);
+            } catch (FilesystemException | UnableToDeleteFile $ex) {
+                try {
                     $filesystem->deleteDirectory($path);
+                } catch (FilesystemException | UnableToDeleteDirectory $ex) {
+                    return false;
                 }
-
-                if ($metadata['type'] === 'file') {
-                    $filesystem->delete($path);
-                }
-            } catch (Exception $ex) {
-                return false;
             }
         }
 

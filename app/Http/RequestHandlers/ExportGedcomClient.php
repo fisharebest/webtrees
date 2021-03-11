@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
+use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -121,7 +122,8 @@ class ExportGedcomClient implements RequestHandlerInterface
 
             // Create a new/empty .ZIP file
             $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
-            $zip_adapter    = new ZipArchiveAdapter($temp_zip_file);
+            $zip_provider   = new FilesystemZipArchiveProvider($temp_zip_file, 0755);
+            $zip_adapter    = new ZipArchiveAdapter($zip_provider);
             $zip_filesystem = new Filesystem($zip_adapter);
             $zip_filesystem->writeStream($download_filename, $tmp_stream);
             fclose($tmp_stream);
@@ -145,9 +147,6 @@ class ExportGedcomClient implements RequestHandlerInterface
                     }
                 }
             }
-
-            // Need to force-close ZipArchive filesystems.
-            $zip_adapter->getArchive()->close();
 
             // Use a stream, so that we do not have to load the entire file into memory.
             $stream_factory = app(StreamFactoryInterface::class);

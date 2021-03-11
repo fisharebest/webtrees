@@ -32,6 +32,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\UnableToReadFile;
 use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -128,7 +129,7 @@ class ManageMediaData implements RequestHandlerInterface
 
                 $url = route(AdminMediaFileDownload::class, ['path' => $path]);
                 $img = '<a href="' . e($url) . '" type="' . $mime_type . '" class="gallery">' . $img . '</a>';
-            } catch (FileNotFoundException $ex) {
+            } catch (UnableToReadFile $ex) {
                 $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
                 $img = '<img src="' . e($url) . '">';
             }

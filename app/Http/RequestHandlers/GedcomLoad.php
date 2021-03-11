@@ -257,7 +257,7 @@ class GedcomLoad implements RequestHandlerInterface
             DB::connection()->rollBack();
 
             // Deadlock? Try again.
-            if ($this->causedByDeadlock($ex)) {
+            if ($this->causedByConcurrencyError($ex)) {
                 return $this->viewResponse('admin/import-progress', [
                     'errors'   => '',
                     'progress' => $progress ?? 0.0,

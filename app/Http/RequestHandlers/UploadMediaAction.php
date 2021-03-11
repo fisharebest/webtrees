@@ -116,7 +116,7 @@ class UploadMediaAction implements RequestHandlerInterface
 
             $path = $folder . $filename;
 
-            if ($data_filesystem->has($path)) {
+            if ($data_filesystem->fileExists($path)) {
                 FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
                 continue;
             }
