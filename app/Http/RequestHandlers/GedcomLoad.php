@@ -29,10 +29,8 @@ use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\DetectsDeadlocks;
+use Illuminate\Database\DetectsConcurrencyErrors;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Support\Str;
-use PDOException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -55,7 +53,7 @@ use function view;
 class GedcomLoad implements RequestHandlerInterface
 {
     use ViewResponseTrait;
-    use DetectsDeadlocks;
+    use DetectsConcurrencyErrors;
 
     /** @var TimeoutService */
     private $timeout_service;
