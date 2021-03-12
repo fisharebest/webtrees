@@ -104,7 +104,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
 
         $html = ob_get_clean();
 
-        return strip_tags($html, '<a><div><span>');
+        return strip_tags($html, '<a><div><span><i>');
     }
 
     /**
