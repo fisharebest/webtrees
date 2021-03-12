@@ -1,9 +1,13 @@
 language: php
 
-php:
-  - 7.3
-  - 7.4
-  - 8.0
+matrix:
+  include:
+    - php: 7.3
+      dist: bionic
+    - php: 7.4
+      dist: focal
+    - php: 8.0
+      dist: focal
 
 ## Non-sudo environments are faster
 sudo: false
