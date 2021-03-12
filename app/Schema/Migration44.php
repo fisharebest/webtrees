@@ -93,7 +93,7 @@ class Migration44 implements MigrationInterface
 
             DB::table('placelocation')
                 ->update([
-                    'pl_place' => new Expression('SUBSTR(pl_place, 1, 60)'),
+                    'pl_place' => new Expression('SUBSTR(pl_place, 1, 120)'),
                 ]);
 
             // The lack of unique key constraints means that there may be duplicates...
