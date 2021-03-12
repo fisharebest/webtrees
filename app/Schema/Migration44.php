@@ -81,26 +81,20 @@ class Migration44 implements MigrationInterface
                 ]);
 
             // Remove invalid values.
-            DB::table('placelocation')
-                ->where('pl_lati', 'LIKE', '%,%')
-                ->orWhere('pl_lati', 'LIKE', '%-%')
-                ->orWhere('pl_long', 'LIKE', '%,%')
-                ->orWhere('pl_long', 'LIKE', '%-%')
-                ->orWhere(function (Builder $query): void {
-                    $query
-                        ->where('pl_lati', 'NOT LIKE', 'N%')
-                        ->where('pl_lati', 'NOT LIKE', 'S%');
-                })
-                ->orWhere(function (Builder $query): void {
-                    $query
-                        ->where('pl_long', 'NOT LIKE', 'E%')
-                        ->where('pl_long', 'NOT LIKE', 'W%');
-                })
-                ->update([
-                    'pl_lati' => '',
-                    'pl_long' => '',
-                ]);
+            if (DB::connection()->getDriverName() === 'mysql') {
+                DB::table('placelocation')
+                    ->where('pl_lati', 'NOT REGEXP', '[^NS][0-9]+[.]?[0-9]*$')
+                    ->orWhere('pl_long', 'NOT REGEXP', '[^EW][0-9]+[.]?[0-9]*$')
+                    ->update([
+                        'pl_lati' => '',
+                        'pl_long' => '',
+                    ]);
+            }
 
+            DB::table('placelocation')
+                ->update([
+                    'pl_place' => new Expression('SUBSTR(pl_place, 1, 60)'),
+                ]);
 
             // The lack of unique key constraints means that there may be duplicates...
             while (true) {
