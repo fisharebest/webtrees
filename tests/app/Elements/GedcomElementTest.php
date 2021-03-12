@@ -20,8 +20,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * HEAD:GEDC is an empty element with children; VERS and FORM.
+ * Test harness for the class Gedcom
+ *
+ * @covers \Fisharebest\Webtrees\Elements\AbstractElement
+ * @covers \Fisharebest\Webtrees\Elements\GedcomElement
  */
-class Gedcom extends EmptyElement
+class GedcomElementTest extends AbstractElementTest
 {
+    /**
+     * Standard tests for all elements.
+     */
+    public static function setupBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+
+        self::$element = new GedcomElement('label');
+    }
 }
