@@ -21,8 +21,6 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Gedcom;
 
-use function abs;
-
 /**
  * Utilities for manipulating GEDCOM data.
  */

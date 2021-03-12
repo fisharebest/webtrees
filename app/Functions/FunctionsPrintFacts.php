@@ -58,7 +58,6 @@ use function preg_match;
 use function preg_match_all;
 use function preg_replace;
 use function preg_split;
-use function rawurlencode;
 use function route;
 use function str_contains;
 use function str_replace;

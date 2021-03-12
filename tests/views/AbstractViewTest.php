@@ -23,7 +23,6 @@ use DOMDocument;
 use Exception;
 
 use function str_starts_with;
-use function trim;
 
 use const LIBXML_PEDANTIC;
 

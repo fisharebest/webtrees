@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\TestCase;
-
 /**
  * Test harness for the class LanguageId
  *

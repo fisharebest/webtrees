@@ -30,7 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function pathinfo;
-use function strtolower;
 
 use const PATHINFO_EXTENSION;
 

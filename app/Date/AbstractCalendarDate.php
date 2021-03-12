@@ -33,18 +33,13 @@ use function get_class;
 use function intdiv;
 use function is_array;
 use function is_int;
-use function max;
 use function preg_match;
 use function route;
 use function sprintf;
 use function str_contains;
 use function strpbrk;
 use function strtr;
-use function trigger_error;
 use function trim;
-use function view;
-
-use const E_USER_DEPRECATED;
 
 /**
  * Classes for Gedcom Date/Calendar functionality.

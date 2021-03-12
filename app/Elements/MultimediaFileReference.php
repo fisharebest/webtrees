@@ -22,8 +22,6 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Tree;
 
 use function preg_match;
-use function strpos;
-use function trim;
 
 /**
  * MULTIMEDIA_FILE_REFERENCE := {Size=1:30}

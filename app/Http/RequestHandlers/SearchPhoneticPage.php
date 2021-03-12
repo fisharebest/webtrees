@@ -30,9 +30,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function array_filter;
 use function assert;
-use function in_array;
 
 /**
  * Search for (and optionally replace) genealogy data

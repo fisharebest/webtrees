@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Tree;
 
 use function mb_substr;
 use function pathinfo;
-use function str_ends_with;
 use function strtolower;
 
 use const PATHINFO_EXTENSION;

@@ -42,7 +42,6 @@ use function explode;
 use function in_array;
 use function is_numeric;
 use function sprintf;
-use function strip_tags;
 
 /**
  * Class StatisticsChartModule

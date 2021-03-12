@@ -20,10 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
-
-use function strtoupper;
-use function view;
 
 /**
  * A modification to the standard SEX record, which allows 'X'.

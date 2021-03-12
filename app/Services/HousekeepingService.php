@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Exception;
 use Fisharebest\Webtrees\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;

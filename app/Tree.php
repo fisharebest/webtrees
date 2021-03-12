@@ -22,23 +22,18 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Services\GedcomExportService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
-use Psr\Http\Message\StreamInterface;
 use stdClass;
 
 use function app;
 use function array_key_exists;
 use function date;
 use function str_starts_with;
-use function strlen;
 use function strtoupper;
-use function substr;
 use function substr_replace;
 
 /**
