@@ -9,9 +9,6 @@
 [![StyleCI](https://github.styleci.io/repos/11836349/shield?branch=main)](https://github.styleci.io/repos/11836349?branch=main)
 # webtrees - online collaborative genealogy
 
-The project’s website is [www.webtrees.net](https://www.webtrees.net).
-Further documentation is available at [wiki.webtrees.net](https://wiki.webtrees.net) and [webtrees.github.io](https://webtrees.github.io).
-
 ## Contents
 
 * [License](#license)
