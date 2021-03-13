@@ -187,7 +187,7 @@ class Fact
             $this->id     = $id;
             $this->tag    = $match[1];
         } else {
-            throw new InvalidArgumentException('Invalid GEDCOM data passed to Fact::_construct(' . $gedcom . ')');
+            throw new InvalidArgumentException('Invalid GEDCOM data passed to Fact::_construct(' . $gedcom . ',' . $parent->xref() . ')');
         }
     }
 
