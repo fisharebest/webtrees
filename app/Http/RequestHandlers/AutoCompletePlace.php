@@ -33,6 +33,8 @@ use function is_array;
 use function json_decode;
 use function rawurlencode;
 
+use const JSON_THROW_ON_ERROR;
+
 /**
  * Autocomplete handler for places
  */
@@ -74,7 +76,7 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
             $client = new Client();
             try {
                 $json   = $client->get($url, self::GUZZLE_OPTIONS)->getBody()->__toString();
-                $places = json_decode($json, true);
+                $places = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
                 if (isset($places['geonames']) && is_array($places['geonames'])) {
                     foreach ($places['geonames'] as $k => $place) {
                         $data->add($place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName']);

@@ -47,6 +47,7 @@ use function route;
 use function str_contains;
 use function stream_get_contents;
 
+use const JSON_THROW_ON_ERROR;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -97,7 +98,7 @@ class MapDataImportAction implements RequestHandlerInterface
 
         // Check the file type
         if (str_contains($string, 'FeatureCollection')) {
-            $input_array = json_decode($string, false);
+            $input_array = json_decode($string, false, 512, JSON_THROW_ON_ERROR);
 
             foreach ($input_array->features as $feature) {
                 $places[] = [

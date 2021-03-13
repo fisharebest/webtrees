@@ -35,6 +35,8 @@ use function assert;
 use function json_encode;
 use function response;
 
+use const JSON_THROW_ON_ERROR;
+
 /**
  * Run a data-fix.
  */
@@ -145,6 +147,6 @@ class DataFixUpdateAll implements RequestHandlerInterface
             })
             ->all();
 
-        return response(json_encode($updates));
+        return response(json_encode($updates, JSON_THROW_ON_ERROR));
     }
 }

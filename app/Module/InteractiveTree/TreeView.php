@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use const JSON_THROW_ON_ERROR;
+
 /**
  * Class TreeView
  */
@@ -113,7 +115,7 @@ class TreeView
             }
         }
 
-        return json_encode($r);
+        return json_encode($r, JSON_THROW_ON_ERROR);
     }
 
     /**

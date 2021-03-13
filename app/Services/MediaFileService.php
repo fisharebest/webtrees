@@ -386,6 +386,10 @@ class MediaFileService
 
     /**
      * Some special media folders were created by earlier versions of webtrees.
+     *
+     * @param string $path
+     *
+     * @return bool
      */
     private function isLegacyFolder(string $path): bool
     {
