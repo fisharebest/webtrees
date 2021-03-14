@@ -28,7 +28,7 @@
     "datatables.net-bs4": "^1.10.23",
     "dejavu-fonts-ttf": "^2.37.3",
     "hideshowpassword": "^2.2.0",
-    "jquery": "^3.6.0",
+    "jquery": "3.5.1",
     "jquery-colorbox": "^1.6.4",
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.1.0",
