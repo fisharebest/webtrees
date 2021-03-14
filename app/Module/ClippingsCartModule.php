@@ -84,6 +84,16 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 
+    // What to add to the cart?
+    private const ADD_RECORD_ONLY        = 'record';
+    private const ADD_CHILDREN           = 'children';
+    private const ADD_DESCENDANTS        = 'descendants';
+    private const ADD_PARENT_FAMILIES    = 'parents';
+    private const ADD_SPOUSE_FAMILIES    = 'spouses';
+    private const ADD_ANCESTORS          = 'ancestors';
+    private const ADD_ANCESTOR_FAMILIES  = 'families';
+    private const ADD_LINKED_INDIVIDUALS = 'linked';
+
     // Routes that have a record which can be added to the clipboard
     private const ROUTES_WITH_RECORDS = [
         'Family'     => FamilyPage::class,
@@ -502,11 +512,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $name   = $family->fullName();
 
         $options = [
-            'record'      => $name,
+            self::ADD_RECORD_ONLY => $name,
             /* I18N: %s is a family (husband + wife) */
-            'members'     => I18N::translate('%s and their children', $name),
+            self::ADD_CHILDREN    => I18N::translate('%s and their children', $name),
             /* I18N: %s is a family (husband + wife) */
-            'descendants' => I18N::translate('%s and their descendants', $name),
+            self::ADD_DESCENDANTS => I18N::translate('%s and their descendants', $name),
         ];
 
         $title = I18N::translate('Add %s to the clippings cart', $name);
@@ -538,15 +548,15 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $family = Auth::checkFamilyAccess($family);
 
         switch ($option) {
-            case 'self':
+            case self::ADD_RECORD_ONLY:
                 $this->addFamilyToCart($family);
                 break;
 
-            case 'members':
+            case self::ADD_CHILDREN:
                 $this->addFamilyAndChildrenToCart($family);
                 break;
 
-            case 'descendants':
+            case self::ADD_DESCENDANTS:
                 $this->addFamilyAndDescendantsToCart($family);
                 break;
         }
@@ -603,21 +613,21 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         if ($individual->sex() === 'F') {
             $options = [
-                'record'            => $name,
-                'parents'           => I18N::translate('%s, her parents and siblings', $name),
-                'spouses'           => I18N::translate('%s, her spouses and children', $name),
-                'ancestors'         => I18N::translate('%s and her ancestors', $name),
-                'ancestor_families' => I18N::translate('%s, her ancestors and their families', $name),
-                'descendants'       => I18N::translate('%s, her spouses and descendants', $name),
+                self::ADD_RECORD_ONLY       => $name,
+                self::ADD_PARENT_FAMILIES   => I18N::translate('%s, her parents and siblings', $name),
+                self::ADD_SPOUSE_FAMILIES   => I18N::translate('%s, her spouses and children', $name),
+                self::ADD_ANCESTORS         => I18N::translate('%s and her ancestors', $name),
+                self::ADD_ANCESTOR_FAMILIES => I18N::translate('%s, her ancestors and their families', $name),
+                self::ADD_DESCENDANTS       => I18N::translate('%s, her spouses and descendants', $name),
             ];
         } else {
             $options = [
-                'record'            => $name,
-                'parents'           => I18N::translate('%s, his parents and siblings', $name),
-                'spouses'           => I18N::translate('%s, his spouses and children', $name),
-                'ancestors'         => I18N::translate('%s and his ancestors', $name),
-                'ancestor_families' => I18N::translate('%s, his ancestors and their families', $name),
-                'descendants'       => I18N::translate('%s, his spouses and descendants', $name),
+                self::ADD_RECORD_ONLY       => $name,
+                self::ADD_PARENT_FAMILIES   => I18N::translate('%s, his parents and siblings', $name),
+                self::ADD_SPOUSE_FAMILIES   => I18N::translate('%s, his spouses and children', $name),
+                self::ADD_ANCESTORS         => I18N::translate('%s and his ancestors', $name),
+                self::ADD_ANCESTOR_FAMILIES => I18N::translate('%s, his ancestors and their families', $name),
+                self::ADD_DESCENDANTS       => I18N::translate('%s, his spouses and descendants', $name),
             ];
         }
 
@@ -650,31 +660,31 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $individual = Auth::checkIndividualAccess($individual);
 
         switch ($option) {
-            case 'self':
+            case self::ADD_RECORD_ONLY:
                 $this->addIndividualToCart($individual);
                 break;
 
-            case 'parents':
+            case self::ADD_PARENT_FAMILIES:
                 foreach ($individual->childFamilies() as $family) {
                     $this->addFamilyAndChildrenToCart($family);
                 }
                 break;
 
-            case 'spouses':
+            case self::ADD_SPOUSE_FAMILIES:
                 foreach ($individual->spouseFamilies() as $family) {
                     $this->addFamilyAndChildrenToCart($family);
                 }
                 break;
 
-            case 'ancestors':
+            case self::ADD_ANCESTORS:
                 $this->addAncestorsToCart($individual);
                 break;
 
-            case 'ancestor_families':
+            case self::ADD_ANCESTOR_FAMILIES:
                 $this->addAncestorFamiliesToCart($individual);
                 break;
 
-            case 'descendants':
+            case self::ADD_DESCENDANTS:
                 foreach ($individual->spouseFamilies() as $family) {
                     $this->addFamilyAndDescendantsToCart($family);
                 }
@@ -735,7 +745,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $name     = $location->fullName();
 
         $options = [
-            'record' => $name,
+            self::ADD_RECORD_ONLY => $name,
         ];
 
         $title = I18N::translate('Add %s to the clippings cart', $name);
@@ -785,7 +795,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $name  = $media->fullName();
 
         $options = [
-            'record' => $name,
+            self::ADD_RECORD_ONLY => $name,
         ];
 
         $title = I18N::translate('Add %s to the clippings cart', $name);
@@ -835,7 +845,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $name = $note->fullName();
 
         $options = [
-            'record' => $name,
+            self::ADD_RECORD_ONLY => $name,
         ];
 
         $title = I18N::translate('Add %s to the clippings cart', $name);
@@ -885,7 +895,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $name       = $repository->fullName();
 
         $options = [
-            'record' => $name,
+            self::ADD_RECORD_ONLY => $name,
         ];
 
         $title = I18N::translate('Add %s to the clippings cart', $name);
@@ -939,8 +949,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $name   = $source->fullName();
 
         $options = [
-            'record' => $name,
-            'linked' => I18N::translate('%s and the individuals that reference it.', $name),
+            self::ADD_RECORD_ONLY        => $name,
+            self::ADD_LINKED_INDIVIDUALS => I18N::translate('%s and the individuals that reference it.', $name),
         ];
 
         $title = I18N::translate('Add %s to the clippings cart', $name);
@@ -973,7 +983,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $this->addSourceToCart($source);
 
-        if ($option === 'linked') {
+        if ($option === self::ADD_LINKED_INDIVIDUALS) {
             foreach ($source->linkedIndividuals('SOUR') as $individual) {
                 $this->addIndividualToCart($individual);
             }
@@ -1002,7 +1012,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $name      = $submitter->fullName();
 
         $options = [
-            'record' => $name,
+            self::ADD_RECORD_ONLY => $name,
         ];
 
         $title = I18N::translate('Add %s to the clippings cart', $name);
