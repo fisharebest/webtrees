@@ -1022,7 +1022,6 @@ class ElementFactory implements ElementFactoryInterface
                 'SOUR:QUAY'                  => new CertaintyAssessment(I18N::translate('Quality of data')),
                 'SOUR:RECO'                  => new CustomElement('Recording agency?'),
                 'SOUR:REFS'                  => new XrefSource('Referenced source'),
-                'SOUR:REPO'                  => new XrefRepository('Repository'),
                 'SOUR:REPO:DPRT:ARVL'        => new CustomElement('Departure'),
                 'SOUR:REPO:DPRT:ARVL:DATE'   => new DateValue('Date'),
                 'SOUR:REPO:DPRT:ARVL:PLAC'   => new PlaceName('Place'),
