@@ -95,9 +95,10 @@ class Migration44 implements MigrationInterface
             // Need to remove the constraint before we truncate/merge them.
             try {
                 DB::schema()->table('placelocation', static function (Blueprint $table): void {
-                    $table->dropIndex('placelocation_pl_parent_id_pl_place_unique');
+                    $table->dropUnique(['pl_parent_id', 'pl_place']);
                 });
             } catch (PDOException $ex) {
+                throw $ex;
                 // Already deleted, or does not exist;
             }
 
