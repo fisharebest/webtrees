@@ -293,19 +293,23 @@ class MediaFileService
      * @param bool               $subfolders Include subfolders
      *
      * @return Collection<string>
-     * @throws FilesystemException
      */
     public function allFilesOnDisk(FilesystemOperator $filesystem, string $folder, bool $subfolders): Collection
     {
-        $files = $filesystem->listContents($folder, $subfolders)
-            ->filter(function (StorageAttributes $attributes): bool {
-                return $attributes->isFile() && !$this->isLegacyFolder($attributes->path());
-            })
-            ->map(static function (StorageAttributes $attributes): string {
-                return $attributes->path();
-            });
+        try {
+            $files = $filesystem->listContents($folder, $subfolders)
+                ->filter(function (StorageAttributes $attributes): bool {
+                    return $attributes->isFile() && !$this->isLegacyFolder($attributes->path());
+                })
+                ->map(static function (StorageAttributes $attributes): string {
+                    return $attributes->path();
+                })
+                ->toArray();
+        } catch (FilesystemException $ex) {
+            $files = [];
+        }
 
-        return new Collection($files->toArray());
+        return new Collection($files);
     }
 
     /**

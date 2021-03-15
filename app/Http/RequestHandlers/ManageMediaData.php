@@ -31,7 +31,9 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToReadFile;
 use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
@@ -211,8 +213,8 @@ class ManageMediaData implements RequestHandlerInterface
 
                 $callback = function (array $row) use ($data_filesystem, $media_trees): array {
                     try {
-                        $mime_type = $data_filesystem->mimeType($row[0]);
-                    } catch (UnableToRetrieveMetadata $ex) {
+                        $mime_type = $data_filesystem->mimeType($row[0]) ?: Mime::DEFAULT_TYPE;
+                    } catch (FileSystemException | UnableToRetrieveMetadata $ex) {
                         $mime_type = Mime::DEFAULT_TYPE;
                     }
 
@@ -314,8 +316,18 @@ class ManageMediaData implements RequestHandlerInterface
         $html .= '<dt>' . I18N::translate('Filename') . '</dt>';
         $html .= '<dd>' . e($file) . '</dd>';
 
-        if ($data_filesystem->fileExists($file)) {
-            $size = $data_filesystem->fileSize($file);
+        try {
+            $file_exists = $data_filesystem->fileExists($file);
+        } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+            $file_exists = false;
+        }
+
+        if ($file_exists) {
+            try {
+                $size = $data_filesystem->fileSize($file);
+            } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+                $size = 0;
+            }
             $size = intdiv($size + 1023, 1024); // Round up to next KB
             /* I18N: size of file in KB */
             $size = I18N::translate('%s KB', I18N::number($size));
@@ -329,7 +341,7 @@ class ManageMediaData implements RequestHandlerInterface
                 $html    .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
                 /* I18N: image dimensions, width × height */
                 $html .= '<dd>' . I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
-            } catch (Throwable $ex) {
+            } catch (FilesystemException | UnableToReadFile | Throwable $ex) {
                 // Not an image, or not a valid image?
             }
         }

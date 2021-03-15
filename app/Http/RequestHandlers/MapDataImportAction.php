@@ -27,6 +27,9 @@ use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Illuminate\Database\Capsule\Manager as DB;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToCheckFileExistence;
+use League\Flysystem\UnableToReadFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -82,9 +85,20 @@ class MapDataImportAction implements RequestHandlerInterface
 
         $fp = false;
 
-        if ($serverfile !== '' && $data_filesystem->fileExists(MapDataService::PLACES_FOLDER . $serverfile)) {
+        try {
+            $file_exists = $data_filesystem->fileExists(MapDataService::PLACES_FOLDER . $serverfile);
+        } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+            $file_exists = false;
+        }
+
+
+        if ($serverfile !== '' && $file_exists) {
             // first choice is file on server
-            $fp = $data_filesystem->readStream(MapDataService::PLACES_FOLDER . $serverfile);
+            try {
+                $fp = $data_filesystem->readStream(MapDataService::PLACES_FOLDER . $serverfile);
+            } catch (FilesystemException | UnableToReadFile $ex) {
+                $fp = false;
+            }
         } elseif ($local_file instanceof UploadedFileInterface && $local_file->getError() === UPLOAD_ERR_OK) {
             // 2nd choice is local file
             $fp = $local_file->getStream()->detach();

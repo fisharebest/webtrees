@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Illuminate\Database\Eloquent\Collection;
+use League\Flysystem\FilesystemException;
 use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -52,15 +53,20 @@ class MapDataImportPage implements RequestHandlerInterface
         $data_filesystem      = Registry::filesystem()->data();
         $data_filesystem_name = Registry::filesystem()->dataName();
 
-        $files = $data_filesystem->listContents('places')
-            ->filter(static function (StorageAttributes $attributes): bool {
-                $extension = pathinfo($attributes->path(), PATHINFO_EXTENSION);
+        try {
+            $files = $data_filesystem->listContents('places')
+                ->filter(static function (StorageAttributes $attributes): bool {
+                    $extension = pathinfo($attributes->path(), PATHINFO_EXTENSION);
 
-                return $extension === 'csv' || $extension === 'geojson';
-            })
-            ->map(static function (StorageAttributes $attributes): string {
-                return pathinfo($attributes->path(), PATHINFO_BASENAME);
-            });
+                    return $extension === 'csv' || $extension === 'geojson';
+                })
+                ->map(static function (StorageAttributes $attributes): string {
+                    return pathinfo($attributes->path(), PATHINFO_BASENAME);
+                })
+                ->toArray();
+        } catch (FilesystemException $ex) {
+            $files = [];
+        }
 
         $files = Collection::make($files)->sort();
 

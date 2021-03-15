@@ -48,6 +48,7 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemException;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -257,6 +258,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
+     * @throws FilesystemException
      */
     public function postDownloadAction(ServerRequestInterface $request): ResponseInterface
     {
@@ -353,7 +355,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                     foreach ($object->mediaFiles() as $media_file) {
                         $from = $media_file->filename();
                         $to   = $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $media_filesystem->fileExists($from) && !$zip_filesystem->fileExists($to)) {
+                        if (!$media_file->isExternal() && $media_filesystem->fileExists($from)) {
                             $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                         }
                     }

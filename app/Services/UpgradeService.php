@@ -32,6 +32,8 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\StorageAttributes;
+use League\Flysystem\UnableToDeleteFile;
+use League\Flysystem\UnableToWriteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use ZipArchive;
@@ -131,14 +133,10 @@ class UpgradeService
      * @param string             $path
      *
      * @return int The number of bytes downloaded
+     * @throws FilesystemException
      */
     public function downloadFile(string $url, FilesystemOperator $filesystem, string $path): int
     {
-        // Overwrite any previous/partial/failed download.
-        if ($filesystem->fileExists($path)) {
-            $filesystem->delete($path);
-        }
-
         // We store the data in PHP temporary storage.
         $tmp = fopen('php://temp', 'wb+');
 
@@ -204,15 +202,23 @@ class UpgradeService
     public function cleanFiles(FilesystemOperator $filesystem, Collection $folders_to_clean, Collection $files_to_keep): void
     {
         foreach ($folders_to_clean as $folder_to_clean) {
-            foreach ($filesystem->listContents($folder_to_clean, Filesystem::LIST_DEEP) as $path) {
-                if ($path['type'] === 'file' && !$files_to_keep->contains($path['path'])) {
-                    $filesystem->delete($path['path']);
-                }
+            try {
+                foreach ($filesystem->listContents($folder_to_clean, Filesystem::LIST_DEEP) as $path) {
+                    if ($path['type'] === 'file' && !$files_to_keep->contains($path['path'])) {
+                        try {
+                            $filesystem->delete($path['path']);
+                        } catch (FilesystemException | UnableToDeleteFile $ex) {
+                            // Skip to the next file.
+                        }
+                    }
 
-                // If we run out of time, then just stop.
-                if ($this->timeout_service->isTimeNearlyUp()) {
-                    return;
+                    // If we run out of time, then just stop.
+                    if ($this->timeout_service->isTimeNearlyUp()) {
+                        return;
+                    }
                 }
+            } catch (FilesystemException $ex) {
+                // Skip to the next folder.
             }
         }
     }

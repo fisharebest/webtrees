@@ -26,6 +26,9 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToReadFile;
+use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -79,22 +82,26 @@ class SynchronizeTrees implements RequestHandlerInterface
 
         foreach ($gedcom_files as $gedcom_file) {
             // Only import files that have changed
-            $filemtime = (string) $data_filesystem->lastModified($gedcom_file);
+            try {
+                $filemtime = (string) $data_filesystem->lastModified($gedcom_file);
 
-            $tree = $this->tree_service->all()->get($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
+                $tree = $this->tree_service->all()->get($gedcom_file) ?? $this->tree_service->create($gedcom_file, $gedcom_file);
 
-            if ($tree->getPreference('filemtime') !== $filemtime) {
-                $resource = $data_filesystem->readStream($gedcom_file);
-                $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
-                $this->tree_service->importGedcomFile($tree, $stream, $gedcom_file);
-                $stream->close();
-                $tree->setPreference('filemtime', $filemtime);
+                if ($tree->getPreference('filemtime') !== $filemtime) {
+                    $resource = $data_filesystem->readStream($gedcom_file);
+                    $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                    $this->tree_service->importGedcomFile($tree, $stream, $gedcom_file);
+                    $stream->close();
+                    $tree->setPreference('filemtime', $filemtime);
 
-                FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
+                    FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
 
-                if ($this->timeout_service->isTimeNearlyUp(10.0)) {
-                    return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                    if ($this->timeout_service->isTimeNearlyUp(10.0)) {
+                        return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                    }
                 }
+            } catch (FilesystemException | UnableToRetrieveMetadata | UnableToReadFile $ex) {
+                // Can't read the file - skip it.
             }
         }
 

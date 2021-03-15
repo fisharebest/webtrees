@@ -26,6 +26,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToCheckFileExistence;
+use League\Flysystem\UnableToWriteFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -116,7 +119,13 @@ class UploadMediaAction implements RequestHandlerInterface
 
             $path = $folder . $filename;
 
-            if ($data_filesystem->fileExists($path)) {
+            try {
+                $file_exists = $data_filesystem->fileExists($path);
+            } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+                $file_exists = false;
+            }
+
+            if ($file_exists) {
                 FlashMessages::addMessage(I18N::translate('The file %s already exists. Use another filename.', $path, 'error'));
                 continue;
             }
@@ -126,7 +135,7 @@ class UploadMediaAction implements RequestHandlerInterface
                 $data_filesystem->writeStream($path, $uploaded_file->getStream()->detach());
                 FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($path)), 'success');
                 Log::addMediaLog('Media file ' . $path . ' uploaded');
-            } catch (Throwable $ex) {
+            } catch (FilesystemException | UnableToWriteFile $ex) {
                 FlashMessages::addMessage(I18N::translate('There was an error uploading your file.') . '<br>' . e($ex->getMessage()), 'danger');
             }
         }

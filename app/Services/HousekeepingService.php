@@ -461,15 +461,13 @@ class HousekeepingService
      */
     private function deleteFileOrFolder(FilesystemOperator $filesystem, string $path): bool
     {
-        if ($filesystem->fileExists($path)) {
+        try {
+            $filesystem->delete($path);
+        } catch (FilesystemException | UnableToDeleteFile $ex) {
             try {
-                $filesystem->delete($path);
-            } catch (FilesystemException | UnableToDeleteFile $ex) {
-                try {
-                    $filesystem->deleteDirectory($path);
-                } catch (FilesystemException | UnableToDeleteDirectory $ex) {
-                    return false;
-                }
+                $filesystem->deleteDirectory($path);
+            } catch (FilesystemException | UnableToDeleteDirectory $ex) {
+                return false;
             }
         }
 

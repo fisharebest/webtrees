@@ -23,6 +23,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaFileThumbnail;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\UnableToCheckFileExistence;
+use League\Flysystem\UnableToReadFile;
+use League\Flysystem\UnableToRetrieveMetadata;
 
 use function bin2hex;
 use function getimagesizefromstring;
@@ -316,14 +319,18 @@ class MediaFile
                 $bytes                       = $this->media()->tree()->mediaFilesystem($data_filesystem)->fileSize($this->filename());
                 $kb                          = intdiv($bytes + 1023, 1024);
                 $attributes['__FILE_SIZE__'] = I18N::translate('%s KB', I18N::number($kb));
-            } catch (FilesystemException $ex) {
+            } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
                 // External/missing files have no size.
             }
 
-            // Note: getAdapter() is defined on Filesystem, but not on FilesystemInterface.
             $filesystem = $this->media()->tree()->mediaFilesystem($data_filesystem);
-            [$width, $height] = getimagesizefromstring($filesystem->read($this->filename()));
-            $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
+            try {
+                $data                         = $filesystem->read($this->filename());
+                [$width, $height]             = getimagesizefromstring($data);
+                $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
+            } catch (FilesystemException | UnableToReadFile $ex) {
+                // Cannot read the file.
+            }
         }
 
         return $attributes;
@@ -338,7 +345,11 @@ class MediaFile
      */
     public function fileContents(FilesystemOperator $data_filesystem): string
     {
-        return $this->media->tree()->mediaFilesystem($data_filesystem)->read($this->multimedia_file_refn);
+        try {
+            return $this->media->tree()->mediaFilesystem($data_filesystem)->read($this->multimedia_file_refn);
+        } catch (FilesystemException | UnableToReadFile $ex) {
+            return '';
+        }
     }
 
     /**
@@ -350,7 +361,11 @@ class MediaFile
      */
     public function fileExists(FilesystemOperator $data_filesystem): bool
     {
-        return $this->media->tree()->mediaFilesystem($data_filesystem)->fileExists($this->multimedia_file_refn);
+        try {
+            return $this->media->tree()->mediaFilesystem($data_filesystem)->fileExists($this->multimedia_file_refn);
+        } catch (FilesystemException | UnableToCheckFileExistence $ex) {
+            return false;
+        }
     }
 
     /**

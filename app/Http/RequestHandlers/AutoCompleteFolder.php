@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
@@ -32,6 +33,11 @@ use function assert;
  */
 class AutoCompleteFolder extends AbstractAutocompleteHandler
 {
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return Collection<string>
+     */
     protected function search(ServerRequestInterface $request): Collection
     {
         $tree = $request->getAttribute('tree');
@@ -41,14 +47,18 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
 
         $media_filesystem = Registry::filesystem()->media($tree);
 
-        $contents = new Collection($media_filesystem->listContents('', Filesystem::LIST_DEEP));
+        try {
+            $contents = new Collection($media_filesystem->listContents('', Filesystem::LIST_DEEP));
 
-        return $contents
-            ->filter(static function (array $object) use ($query): bool {
-                return $object['type'] === 'dir' && str_contains($object['path'], $query);
-            })
-            ->values()
-            ->pluck('path')
-            ->take(static::LIMIT);
+            return $contents
+                ->filter(static function (array $object) use ($query): bool {
+                    return $object['type'] === 'dir' && str_contains($object['path'], $query);
+                })
+                ->values()
+                ->pluck('path')
+                ->take(static::LIMIT);
+        } catch (FilesystemException $ex) {
+            return new Collection();
+        }
     }
 }

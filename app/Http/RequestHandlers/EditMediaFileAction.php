@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToMoveFile;
+use League\Flysystem\UnableToRetrieveMetadata;
 use League\Flysystem\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -140,12 +141,20 @@ class EditMediaFileAction implements RequestHandlerInterface
         // Update the filesystem, if we can.
         if ($old !== $new && !$media_file->isExternal() && $filesystem->fileExists($old)) {
             try {
-                $filesystem->move($old, $new);
-                FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-            } catch (FilesystemException | UnableToMoveFile $ex) {
-                // Don't overwrite existing file
-                FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
-                $file = $old;
+                $file_exists = $filesystem->fileExists($old);
+
+                if ($file_exists) {
+                    try {
+                        $filesystem->move($old, $new);
+                        FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                    } catch (FilesystemException | UnableToMoveFile $ex) {
+                        // Don't overwrite existing file
+                        FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($media_file->filename()), Html::filename($file)), 'info');
+                        $file = $old;
+                    }
+                }
+            } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
+                // File does not exist?
             }
         }
 

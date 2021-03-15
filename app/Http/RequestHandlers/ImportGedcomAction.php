@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToReadFile;
 use Nyholm\Psr7\UploadedFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -56,6 +58,8 @@ class ImportGedcomAction implements RequestHandlerInterface
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
+     * @throws FilesystemException
+     * @throws UnableToReadFile
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
