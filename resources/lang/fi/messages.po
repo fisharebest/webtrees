@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-01 12:17+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-18 13:37+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -4557,7 +4557,7 @@ msgstr "MAP-lapsen sinetöintipäivä"
 
 #: app/Factories/ElementFactory.php:476
 msgid "Date of LDS confirmation"
-msgstr "MAP-konfirmaatiopäivä"
+msgstr "MAP-konfirmaation päivä"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:497 app/GedcomTag.php:669
@@ -5891,7 +5891,7 @@ msgstr "Esfand"
 
 #: app/Factories/ElementFactory.php:760
 msgid "Estate name"
-msgstr "Kartanon nimi"
+msgstr "Maatilan nimi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
@@ -17459,19 +17459,19 @@ msgstr "11. serkku"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:55 app/GedcomCode/GedcomCodeName.php:129
 msgid "estate name"
-msgstr "talon nimi"
+msgstr "maatilan nimi"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:125
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr "talon nimi"
+msgstr "maatilan nimi"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:120
 msgctxt "MALE"
 msgid "estate name"
-msgstr "talon nimi"
+msgstr "maatilan nimi"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:350
