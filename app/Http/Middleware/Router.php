@@ -147,17 +147,10 @@ class Router implements MiddlewareInterface
             $request = $request->withAttribute((string) $key, $value);
         }
 
-        // Bind the request into the container
+        // Bind the updated request into the container
         app()->instance(ServerRequestInterface::class, $request);
 
         $dispatcher = new Dispatcher($middleware, app());
-
-        // These are deprecated, and will be removed in webtrees 2.1.0
-        $request = $request
-            ->withAttribute('filesystem.data', Registry::filesystem()->data())
-            ->withAttribute('filesystem.data.name', Registry::filesystem()->dataName())
-            ->withAttribute('filesystem.root', Registry::filesystem()->root())
-            ->withAttribute('filesystem.root.name', Registry::filesystem()->rootName());
 
         return $dispatcher->dispatch($request);
     }
