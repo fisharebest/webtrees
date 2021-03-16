@@ -25,21 +25,12 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
-use function call_user_func;
-use function explode;
-use function str_contains;
-use function substr_compare;
 
 /**
- * Middleware to run a controller/action or a request-handler.
+ * Middleware to run a request-handler.
  */
 class WrapHandler implements MiddlewareInterface
 {
-    private const CONTROLLER_NAMESPACE = '\\Fisharebest\\Webtrees\\Http\\Controllers\\';
-
-    // To parse Controller::action
-    private const SCOPE_OPERATOR = '::';
-
     /** @var string|RequestHandlerInterface */
     private $handler;
 
@@ -64,19 +55,6 @@ class WrapHandler implements MiddlewareInterface
         // A request handler object?
         if ($this->handler instanceof RequestHandlerInterface) {
             return $this->handler->handle($request);
-        }
-
-        // A string containing class::method
-        if (str_contains($this->handler, self::SCOPE_OPERATOR)) {
-            [$class, $method] = explode(self::SCOPE_OPERATOR, $this->handler);
-
-            if (substr_compare($class, '\\', 0, 1) !== 0) {
-                $class = self::CONTROLLER_NAMESPACE . $class;
-            }
-
-            $controller = app($class);
-
-            return call_user_func([$controller, $method], $request);
         }
 
         // A string containing a request handler class name
