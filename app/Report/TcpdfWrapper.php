@@ -41,12 +41,12 @@ class TcpdfWrapper extends TCPDF
      *
      * @param mixed $h       Cell height. Default value: 0.
      * @param mixed $y       Starting y position, leave empty for current position.
-     * @param bool  $add_page If true add a page, otherwise only return the true/false state
+     * @param bool  $addpage If true add a page, otherwise only return the true/false state
      *
      * @return boolean true in case of page break, false otherwise.
      */
-    public function checkPageBreak($h = 0, $y = '', $add_page = true): bool
+    public function checkPageBreak($h = 0, $y = '', $addpage = true): bool
     {
-        return parent::checkPageBreak($h, $y, $add_page);
+        return parent::checkPageBreak($h, $y, $addpage);
     }
 }

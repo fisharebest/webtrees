@@ -975,12 +975,12 @@ class Individual extends GedcomRecord
      * 2 SURN Vasquez,Sante
      *
      * @param string $type
-     * @param string $full
+     * @param string $value
      * @param string $gedcom
      *
      * @return void
      */
-    protected function addName(string $type, string $full, string $gedcom): void
+    protected function addName(string $type, string $value, string $gedcom): void
     {
         ////////////////////////////////////////////////////////////////////////////
         // Extract the structured name parts - use for "sortable" names and indexes
@@ -1005,12 +1005,12 @@ class Individual extends GedcomRecord
         ////////////////////////////////////////////////////////////////////////////
 
         // Fix bad slashes. e.g. 'John/Smith' => 'John/Smith/'
-        if (substr_count($full, '/') % 2 === 1) {
-            $full .= '/';
+        if (substr_count($value, '/') % 2 === 1) {
+            $value .= '/';
         }
 
         // GEDCOM uses "//" to indicate an unknown surname
-        $full = preg_replace('/\/\//', '/@N.N./', $full);
+        $full = preg_replace('/\/\//', '/@N.N./', $value);
 
         // Extract the surname.
         // Note, there may be multiple surnames, e.g. Jean /Vasquez/ y /Cortes/
