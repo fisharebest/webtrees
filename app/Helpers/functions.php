@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Session as WebtreesSession;
 use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Container\Container;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -39,10 +39,10 @@ use Psr\Http\Message\StreamFactoryInterface;
 function app(string $abstract = null)
 {
     if ($abstract === null) {
-        return Application::getInstance();
+        return Container::getInstance();
     }
 
-    return Application::getInstance()->make($abstract);
+    return Container::getInstance()->make($abstract);
 }
 
 /**
