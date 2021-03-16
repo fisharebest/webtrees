@@ -250,11 +250,6 @@ parameters:
 			path: app/Http/Middleware/BaseUrl.php
 
 		-
-			message: "#^Caught class League\\\\Flysystem\\\\NotSupportedException not found\\.$#"
-			count: 1
-			path: app/Http/Middleware/HandleExceptions.php
-
-		-
 			message: "#^Parameter \\#1 \\$message of static method Fisharebest\\\\Webtrees\\\\Log\\:\\:addErrorLog\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/Middleware/HandleExceptions.php
