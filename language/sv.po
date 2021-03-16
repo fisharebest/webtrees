@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-11 08:30+0000\n"
+"PO-Revision-Date: 2021-03-18 13:37+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sv/>\n"
@@ -561,7 +561,7 @@ msgstr "&lt;välj&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(ålder %s)"
+msgstr "(%s gammal)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -928,7 +928,7 @@ msgstr "En rapport över familjemedlemmar och deras uppgifter."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "En rapport om personer som dog i en given tid eller plats."
+msgstr "En rapport om personer som dog i en given tid eller ort."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
@@ -939,19 +939,19 @@ msgstr "En rapport om personer som hade ett visst yrke."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "En rapport om personer som är födda i en viss tid eller plats."
+msgstr "En rapport om personer som är födda i en viss tid eller ort."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "En rapport om personer som begravdes på en viss plats."
+msgstr "En rapport om personer som begravdes på en viss ort."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "En rapport om personer som gifte sig i en given tid eller plats."
+msgstr "En rapport om personer som gifte sig i en given tid eller ort."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -985,7 +985,7 @@ msgstr "En rapport om den information som saknas för en person och dess anhöri
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "En sammanställning av vitala händelserna vid specifik tid eller plats."
+msgstr "En sammanställning av vitala händelserna vid specifik tid eller ort."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1147,7 +1147,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr "Förkorta platsnamn"
+msgstr "Förkorta ortnamn"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -4398,7 +4398,7 @@ msgstr "Datum för LDS dop"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr "LDS Barns beseglingsdatum"
+msgstr "LDS Barns förseglingsdatum"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
@@ -4408,7 +4408,7 @@ msgstr "LDS gåva datum"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
 msgid "Date of LDS spouse sealing"
-msgstr "LDS Makes/makas beseglingsdatum"
+msgstr "LDS Makes/makas förseglingsdatum"
 
 #: app/GedcomTag.php:132
 msgid "Date of adoption"
@@ -5278,7 +5278,7 @@ msgstr "Skapa inte nya platser, importera bara koordinater för befintliga plats
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:88
 msgid "Do not seal, previous sealing canceled"
-msgstr "(mormon) Besegling inte, tidigare besegling upphävd"
+msgstr "(mormon) Försegla inte, tidigare försegling upphävd"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:84
@@ -5774,7 +5774,7 @@ msgstr "Exkludera undermappar"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:92
 msgid "Excluded from this submission"
-msgstr "Utesluten från denna skickning"
+msgstr "Utesluten från denna inlämning"
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:487
@@ -6089,7 +6089,7 @@ msgstr "Familj med rada föräldrar"
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:135
 msgid "Family with sealing parents"
-msgstr "Familj med besegling föräldrar"
+msgstr "Familj med förseglade föräldrar"
 
 #: app/Theme/AbstractTheme.php:994
 msgid "Family with spouse"
@@ -8012,7 +8012,7 @@ msgstr "LDS dop"
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:776
 msgid "LDS child sealing"
-msgstr "LDS Barns besegling"
+msgstr "LDS Barns försegling"
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:318
@@ -8022,7 +8022,7 @@ msgstr "LDS konfirmation"
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:412
 msgid "LDS endowment"
-msgstr "LDS gåva"
+msgstr "LDS begåvning"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1324
@@ -8032,7 +8032,7 @@ msgstr "LDS religiösa förrättningar i diagram rutor"
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:784
 msgid "LDS spouse sealing"
-msgstr "LDS Makes/makas besegling"
+msgstr "LDS Makes/makas försegling"
 
 #: app/Functions/FunctionsPrint.php:480
 msgid "LDS temple"
@@ -8333,7 +8333,7 @@ msgstr "Lokala filer"
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:1552
 msgid "Location"
-msgstr "Lokalitet"
+msgstr "Plats"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
@@ -10732,7 +10732,11 @@ msgstr "Ortsförteckning"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Fullständiga ortsnamn är ofta alltför långa för att få plats i diagram, listor, osv. De kan förkortas genom att visa endast de allra första delarna av namnet, t.ex. <i>by, socken</i>, eller de allra sista, t.ex. <i>län, land</i>."
+msgstr ""
+"Fullständiga ortnamn är ofta alltför långa för att få plats i diagram, "
+"listor, osv. De kan förkortas genom att visa endast de allra första delarna "
+"av namnet, t.ex. <i>by, socken</i>, eller de allra sista, t.ex. <i>län, "
+"land</i>."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
@@ -10742,17 +10746,17 @@ msgstr "Dop ort (mormonkyrkan)"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr "LDS Barns beseglingsort"
+msgstr "LDS Barns förseglingsort"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr "LDS gåva ort"
+msgstr "LDS begåvnings ort"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr "LDS Makes/makas beseglingsort"
+msgstr "LDS Makes/makas förseglingsort"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
@@ -10797,7 +10801,7 @@ msgstr "Konfirmationsort"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
-msgstr "Kremeringsplats"
+msgstr "Kremeringsort"
 
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
@@ -10858,7 +10862,7 @@ msgstr "Placera webbplatsen on-line genom att ta bort filen %s…"
 
 #: admin_trees_config.php:1500 search.php:204 statistics.php:408
 msgid "Places"
-msgstr "Orter"
+msgstr "Platser"
 
 #: find.php:665
 msgid "Places found"
@@ -11521,7 +11525,7 @@ msgstr "Ta bort GEDCOM media sökvägen från filnamn"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
-msgstr "Ta bort denna lokalitet?"
+msgstr "Ta bort denna plats?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
@@ -11877,24 +11881,24 @@ msgstr "Urklippsalbum"
 #: app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr "Besegling"
+msgstr "Försegling"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr "Besegling"
+msgstr "Försegling"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr "Besegling"
+msgstr "Försegling"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:67
 msgid "Sealing canceled (divorce)"
-msgstr "(mormon) Besegling upphävd (skilsmässa)"
+msgstr "(mormon) Försegling upphävd (skilsmässa)"
 
 #: app/Module/DescendancyModule.php:101 app/Module/DescendancyModule.php:134
 #: app/Module/FamiliesSidebarModule.php:149
@@ -13255,17 +13259,17 @@ msgstr "Ärende"
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:814
 msgid "Submission"
-msgstr "Skickning"
+msgstr "Inlämning"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Submitted but not yet cleared"
-msgstr "Framlagt, men inte ännu klargjorts"
+msgstr "Lämnat in, men inte ännu klargjorts"
 
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Avsändare"
+msgstr "Sändare"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
@@ -14279,7 +14283,12 @@ msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara ortnamnen enligt flera alfabet."
+msgstr ""
+"Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på "
+"lägg till/redigera ortnamn formuläret. Om du väljer ett icke latinskt "
+"alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske "
+"lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara "
+"ortnamnen enligt flera alfabet."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -15281,7 +15290,7 @@ msgstr "Uppdatera alla ortsnamn i ett släktträd"
 
 #: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
-msgstr "Uppdatera ortsnamn"
+msgstr "Uppdatera ortnamn"
 
 #. I18N: Ignore the warnings, and…
 #: admin_site_upgrade.php:138 admin_site_upgrade.php:202
@@ -15378,7 +15387,7 @@ msgstr "Använd siluettbilder"
 
 #: admin_trees_config.php:1534
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "Använd GeoNames-databas för att autokomplettera platser"
+msgstr "Använd GeoNames-databasen för att autoslutföra platser"
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
