@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-02-26 12:36+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-18 13:38+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -494,7 +478,7 @@ msgstr "(ålder %s)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(ålder %s)"
+msgstr "(%s gammal)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:354
@@ -503,7 +487,7 @@ msgstr "(ålder %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(ålder %s)"
+msgstr "(%s gammal)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -512,7 +496,7 @@ msgstr "(ålder %s)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(ålder %s)"
+msgstr "(%s gammal)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -768,7 +752,7 @@ msgstr "En lista över individer."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "En lista över platser."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -911,7 +895,7 @@ msgstr "En rapport över familjemedlemmar och deras uppgifter."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "En rapport om personer som dog i en given tid eller plats."
+msgstr "En rapport om personer som dog i en given tid eller ort."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:56
@@ -922,19 +906,19 @@ msgstr "En rapport om personer som hade ett visst yrke."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "En rapport om personer som är födda i en viss tid eller plats."
+msgstr "En rapport om personer som är födda i en viss tid eller ort."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "En rapport om personer som begravdes på en viss plats."
+msgstr "En rapport om personer som begravdes på en viss ort."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
 #: resources/xml/reports/marriage_report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "En rapport om personer som gifte sig i en given tid eller plats."
+msgstr "En rapport om personer som gifte sig i en given tid eller ort."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
@@ -969,7 +953,7 @@ msgstr "En rapport om den information som saknas för en person och dess anhöri
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "En sammanställning av vitala händelserna vid specifik tid eller plats."
+msgstr "En sammanställning av vitala händelserna vid specifik tid eller ort."
 
 #: resources/views/admin/users-edit.phtml:233
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1103,7 +1087,7 @@ msgstr "Aban"
 #: resources/views/admin/trees-preferences.phtml:587
 #: resources/views/admin/trees-preferences.phtml:591
 msgid "Abbreviate place names"
-msgstr "Förkorta platsnamn"
+msgstr "Förkorta ortnamn"
 
 #. I18N: gedcom tag ABBR
 #: app/Factories/ElementFactory.php:664 app/Factories/ElementFactory.php:1145
@@ -1569,7 +1553,7 @@ msgstr "Adopterad av modern"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
-msgstr ""
+msgstr "Adoptivnamn"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
@@ -1985,7 +1969,7 @@ msgstr "Ancestral file number (AFN)"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Ancestry PID"
-msgstr ""
+msgstr "Ancestry PID"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -2579,7 +2563,7 @@ msgstr "Barbados"
 
 #: app/Factories/ElementFactory.php:1082
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Bas GEDCOM-tagg"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:446 app/GedcomTag.php:496
@@ -2832,7 +2816,7 @@ msgstr "Födelsedatums intervallstart"
 
 #: app/Factories/ElementFactory.php:756
 msgid "Birth name"
-msgstr ""
+msgstr "Födelsenamn"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -2909,7 +2893,7 @@ msgstr "Sons födelse"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Birth parents"
-msgstr ""
+msgstr "Födelseföräldrar"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3125,7 +3109,7 @@ msgstr "Bulgarien"
 #: resources/xml/reports/family_group_report.xml:1049
 #: resources/xml/reports/missing_facts_report.xml:25
 msgid "Burial"
-msgstr "Begravd"
+msgstr "Begravning"
 
 #: app/Module/IndividualFactsTabModule.php:466
 msgid "Burial of a brother"
@@ -3961,7 +3945,7 @@ msgstr "(mormon) Färdig; datum okänd"
 
 #: app/Factories/ElementFactory.php:1076 app/Factories/ElementFactory.php:1118
 msgid "Completion date"
-msgstr ""
+msgstr "Slutförelsedatum"
 
 #: app/Http/RequestHandlers/HelpText.php:284
 #: resources/views/admin/trees-export.phtml:57
@@ -4193,7 +4177,7 @@ msgstr "Skapa ett släktträd"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Skapa en plats"
 
 #: app/Elements/XrefMedia.php:61 app/Functions/FunctionsEdit.php:492
 #: resources/views/modals/create-media-from-file.phtml:19
@@ -4223,7 +4207,7 @@ msgstr "Skapa en källa"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Skapa en inlämning"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:555
 #: resources/views/modals/create-submitter.phtml:16
@@ -4252,7 +4236,7 @@ msgstr "Skapa, uppdatera och ta bort ett släktträd för varje GEDCOM-fil i dat
 
 #: app/Factories/ElementFactory.php:1069 app/Factories/ElementFactory.php:1111
 msgid "Creation date"
-msgstr ""
+msgstr "Skapelsedag"
 
 #. I18N: gedcom tag CREM
 #: app/Factories/ElementFactory.php:482 app/GedcomTag.php:603
@@ -4569,11 +4553,11 @@ msgstr "Datum för LDS dop"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:577 app/GedcomTag.php:952
 msgid "Date of LDS child sealing"
-msgstr "LDS Barns beseglingsdatum"
+msgstr "LDS Barns förseglingsdatum"
 
 #: app/Factories/ElementFactory.php:476
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Datum för LDS konfirmation"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:497 app/GedcomTag.php:669
@@ -4582,7 +4566,7 @@ msgstr "LDS gåva datum"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 msgid "Date of LDS spouse sealing"
-msgstr "LDS Makes/makas beseglingsdatum"
+msgstr "LDS Makes/makas förseglingsdatum"
 
 #: app/Factories/ElementFactory.php:422 app/GedcomTag.php:441
 msgid "Date of adoption"
@@ -5155,7 +5139,7 @@ msgstr "Standardtema"
 #: app/Factories/ElementFactory.php:1090 app/Factories/ElementFactory.php:1091
 #: app/Factories/ElementFactory.php:1092
 msgid "Definition"
-msgstr ""
+msgstr "Definition"
 
 #. I18N: gedcom tag _DEG
 #: app/Factories/ElementFactory.php:877 app/GedcomTag.php:1068
@@ -5469,7 +5453,7 @@ msgstr "Visa och kontrollera en användares favoritsidor."
 #: resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
 msgid "Divorce"
-msgstr "Skild"
+msgstr "Skillsmässa"
 
 #. I18N: gedcom tag DIVF
 #: app/Factories/ElementFactory.php:299 app/GedcomTag.php:643
@@ -5491,7 +5475,7 @@ msgstr "Djibouti"
 #: app/Elements/LdsSpouseSealingDateStatus.php:69
 #: app/GedcomCode/GedcomCodeStat.php:124
 msgid "Do not seal, previous sealing canceled"
-msgstr "(mormon) Besegling inte, tidigare besegling upphävd"
+msgstr "(mormon) Försegla inte, tidigare försegling upphävd"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -5907,7 +5891,7 @@ msgstr "Esfand"
 
 #: app/Factories/ElementFactory.php:760
 msgid "Estate name"
-msgstr ""
+msgstr "Jordegendoms namn"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
@@ -5987,7 +5971,7 @@ msgstr "Exkludera undermappar"
 #: app/Elements/LdsSpouseSealingDateStatus.php:71
 #: app/GedcomCode/GedcomCodeStat.php:127
 msgid "Excluded from this submission"
-msgstr "Utesluten från denna skickning"
+msgstr "Utesluten från denna inlämning"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6271,7 +6255,7 @@ msgstr "Familj %s"
 
 #: app/Factories/ElementFactory.php:1062
 msgid "Family status"
-msgstr ""
+msgstr "Familjestatus"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
@@ -6341,7 +6325,7 @@ msgstr "Familj med rada föräldrar"
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/GedcomCode/GedcomCodePedi.php:152 app/Individual.php:932
 msgid "Family with sealing parents"
-msgstr "Familj med besegling föräldrar"
+msgstr "Familj med förseglade föräldrar"
 
 #: app/Module/ModuleThemeTrait.php:173 resources/views/chart-box.phtml:35
 msgid "Family with spouse"
@@ -7043,7 +7027,7 @@ msgstr "Hänför sig till en persons förfäder"
 
 #: app/Factories/ElementFactory.php:717
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Generationer av ättlingar"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -8424,7 +8408,7 @@ msgstr "LDS dop"
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:576 app/GedcomTag.php:949
 msgid "LDS child sealing"
-msgstr "LDS Barns besegling"
+msgstr "LDS Barns försegling"
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:475 app/GedcomTag.php:594
@@ -8434,17 +8418,17 @@ msgstr "LDS konfirmation"
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:496 app/GedcomTag.php:666
 msgid "LDS endowment"
-msgstr "LDS gåva"
+msgstr "LDS begåvning"
 
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:324 app/GedcomTag.php:958
 msgid "LDS spouse sealing"
-msgstr "LDS Makes/makas besegling"
+msgstr "LDS Makes/makas försegling"
 
 #: app/Factories/ElementFactory.php:836 app/Factories/ElementFactory.php:850
 #: app/Factories/ElementFactory.php:854 app/Factories/ElementFactory.php:869
 msgid "Label"
-msgstr ""
+msgstr "Märka"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -8764,13 +8748,13 @@ msgstr "Lokala filer"
 #: app/Factories/ElementFactory.php:1131 app/GedcomTag.php:1144
 #: resources/views/lists/locations-table.phtml:63
 msgid "Location"
-msgstr "Lokalitet"
+msgstr "Plats"
 
 #. I18N: Name of a module/list
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "Platser"
 
 #: app/Elements/RelationIsDescriptor.php:141
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -10147,7 +10131,7 @@ msgstr "Nya Kaledonien"
 #: app/Factories/ElementFactory.php:1085 app/Factories/ElementFactory.php:1086
 #: app/Factories/ElementFactory.php:1087
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "Ny GEDCOM-tagg"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
@@ -11133,7 +11117,7 @@ msgstr "Fonetisk titel"
 
 #: app/Factories/ElementFactory.php:531
 msgid "Phonetic type"
-msgstr ""
+msgstr "Fonetisk typ"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:74 app/Factories/ElementFactory.php:807
@@ -11199,7 +11183,7 @@ msgstr "Ortsförteckning"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: resources/views/admin/trees-preferences.phtml:601
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Fullständiga ortsnamn är ofta alltför långa för att få plats i diagram, listor, osv. De kan förkortas genom att visa endast de allra första delarna av namnet, t.ex. <i>by, socken</i>, eller de allra sista, t.ex. <i>län, land</i>."
+msgstr "Fullständiga ortnamn är ofta alltför långa för att få plats i diagram, listor, osv. De kan förkortas genom att visa endast de allra första delarna av namnet, t.ex. <i>by, socken</i>, eller de allra sista, t.ex. <i>län, land</i>."
 
 #: resources/views/help/place.phtml:12
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
@@ -11217,20 +11201,20 @@ msgstr "Dop ort (mormonkyrkan)"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:580 app/GedcomTag.php:955
 msgid "Place of LDS child sealing"
-msgstr "LDS Barns beseglingsort"
+msgstr "LDS Barns förseglingsort"
 
 #: app/Factories/ElementFactory.php:478
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "Ort för LDS konfirmation"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:499 app/GedcomTag.php:672
 msgid "Place of LDS endowment"
-msgstr "LDS gåva ort"
+msgstr "LDS begåvnings ort"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 msgid "Place of LDS spouse sealing"
-msgstr "LDS Makes/makas beseglingsort"
+msgstr "LDS Makes/makas förseglingsort"
 
 #: app/Factories/ElementFactory.php:425 app/GedcomTag.php:443
 msgid "Place of adoption"
@@ -11282,7 +11266,7 @@ msgstr "Konfirmationsort"
 
 #: app/Factories/ElementFactory.php:484 app/GedcomTag.php:607
 msgid "Place of cremation"
-msgstr "Kremeringsplats"
+msgstr "Kremeringsort"
 
 #: app/Factories/ElementFactory.php:488 app/GedcomTag.php:628
 #: resources/xml/reports/fact_sources.xml:275
@@ -11342,7 +11326,7 @@ msgstr "Hemort"
 #: resources/views/search-replace-page.phtml:47
 #: resources/views/statistics/other/places.phtml:12
 msgid "Places"
-msgstr "Orter"
+msgstr "Platser"
 
 #: resources/views/layouts/default.phtml:165
 #: resources/views/modules/random_media/slide-show.phtml:24
@@ -11740,19 +11724,19 @@ msgstr "Rada"
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
@@ -12056,7 +12040,7 @@ msgstr "Ladda om kartan"
 
 #: app/Factories/ElementFactory.php:1078 app/Factories/ElementFactory.php:1120
 msgid "Reminder date"
-msgstr ""
+msgstr "Påminnelsedatum"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
@@ -12091,7 +12075,7 @@ msgstr "Ta bort GEDCOM media sökvägen från filnamn"
 
 #: resources/views/admin/locations.phtml:128
 msgid "Remove this location?"
-msgstr "Ta bort denna lokalitet?"
+msgstr "Ta bort denna plats?"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:171 app/GedcomCode/GedcomCodeTemp.php:579
@@ -12320,7 +12304,7 @@ msgstr "Rötter"
 
 #: app/Factories/ElementFactory.php:1106
 msgid "Rufname"
-msgstr ""
+msgstr "Smeknamn"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
@@ -12486,7 +12470,7 @@ msgstr "Saudiarabien"
 
 #: app/Factories/ElementFactory.php:1081
 msgid "Schema"
-msgstr ""
+msgstr "Schema"
 
 #: app/Factories/ElementFactory.php:492 app/Factories/ElementFactory.php:518
 #: app/GedcomTag.php:651
@@ -12508,14 +12492,14 @@ msgstr "Urklippsalbum"
 #: app/Elements/PedigreeLinkageType.php:64 app/GedcomCode/GedcomCodePedi.php:98
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr "Besegling"
+msgstr "Försegling"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/Elements/PedigreeLinkageType.php:54 app/GedcomCode/GedcomCodePedi.php:93
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr "Besegling"
+msgstr "Försegling"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #. I18N: “sealing” is a ceremony in the Mormon church.
@@ -12523,14 +12507,14 @@ msgstr "Besegling"
 #: app/GedcomCode/GedcomCodePedi.php:102
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr "Besegling"
+msgstr "Försegling"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Elements/LdsSpouseSealingDateStatus.php:63
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Sealing canceled (divorce)"
-msgstr "(mormon) Besegling upphävd (skilsmässa)"
+msgstr "(mormon) Försegling upphävd (skilsmässa)"
 
 #. I18N: Name of a module
 #. I18N: A button label.
@@ -13284,7 +13268,7 @@ msgstr "Visa släktnamnslistan"
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:78
 msgid "Show the location of events on a map."
-msgstr "Visa lokaliteten för händelser på en karta."
+msgstr "Visa händelseplatserna på en karta."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:58
@@ -13877,7 +13861,7 @@ msgstr "Ärende"
 #: app/GedcomTag.php:981 app/Submission.php:95 app/Submission.php:96
 #: app/Submission.php:97
 msgid "Submission"
-msgstr "Inlämna"
+msgstr "Inlämning"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -13887,7 +13871,7 @@ msgstr "Inlämna"
 #: app/Elements/LdsSpouseSealingDateStatus.php:75
 #: app/GedcomCode/GedcomCodeStat.php:139
 msgid "Submitted but not yet cleared"
-msgstr "Framlagt, men inte ännu klargjorts"
+msgstr "Lämnat in, men inte ännu klargjorts"
 
 #. I18N: gedcom tag SUBM
 #: app/Factories/ElementFactory.php:341 app/Factories/ElementFactory.php:377
@@ -13897,11 +13881,11 @@ msgstr "Framlagt, men inte ännu klargjorts"
 #: resources/views/modals/submission-fields.phtml:14
 #: resources/views/modules/recent_changes/changes-table.phtml:74
 msgid "Submitter"
-msgstr "Avsändare"
+msgstr "Sändare"
 
 #: resources/views/lists/submitters-table.phtml:67
 msgid "Submitter name"
-msgstr "Avsändarens namn"
+msgstr "Sändarens namn"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:115 app/Module/SubmitterListModule.php:73
@@ -13910,7 +13894,7 @@ msgstr "Avsändarens namn"
 #: resources/views/admin/merge-records-step-1.phtml:57
 #: resources/views/lists/submitters-table.phtml:62
 msgid "Submitters"
-msgstr "Avsändare"
+msgstr "Sändare"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -14450,7 +14434,7 @@ msgstr "Lista-menyn."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 msgid "The location has been created"
-msgstr ""
+msgstr "Platsen har skapats"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
@@ -14534,7 +14518,7 @@ msgstr "Anteckningen har skapats"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Parametern ”%s” saknas."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -14591,7 +14575,7 @@ msgstr "Prefixet är valfritt, men rekommenderat. Genom att ge tabellnamnen ett 
 
 #: app/Factories/ElementFactory.php:1071 app/Factories/ElementFactory.php:1113
 msgid "The problem"
-msgstr ""
+msgstr "Problemet"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14626,7 +14610,7 @@ msgstr "Server-konfigurationen är OK."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Servern kunde inte förstå denna begäran."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
@@ -14644,7 +14628,7 @@ msgstr "Släktträdets storlek, äldsta och yngsta händelse, vanligaste namn o.
 
 #: app/Factories/ElementFactory.php:1068 app/Factories/ElementFactory.php:1110
 msgid "The solution"
-msgstr ""
+msgstr "Lösningen"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -14652,7 +14636,7 @@ msgstr "Källan har skapats"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Inlämningen har skapats"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -14860,7 +14844,7 @@ msgstr "Detta block visar editorerna en lista poster med väntande ändringar so
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Detta kan orsakas av ett fel på %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -14872,7 +14856,7 @@ msgstr "Denna e-postadress kommer att användas för att skicka dig lösenordsp�
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Denna händelse inträffade, men detaljerna är okända."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15032,7 +15016,7 @@ msgstr "Detta är en kommaseparerad lista med GEDCOM faktataggar som visas när 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:889
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
-msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortsnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara ortnamnen enligt flera alfabet."
+msgstr "Detta är en kommaseparerad lista av GEDCOM-fakta som kommer att visas på lägg till/redigera ortnamn formuläret. Om du väljer ett icke latinskt alfabet som Hebreiska, Grekiska, Kyrilliskt eller Arabiskt vill du kanske lägga till taggar som _HEB, ROMN, FONE, osv. för att låta dig spara ortnamnen enligt flera alfabet."
 
 #: resources/views/edit-account-page.phtml:69
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -15875,11 +15859,11 @@ msgstr "Typ av förkortning"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Typ av administrativ ID"
 
 #: app/Factories/ElementFactory.php:1174
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Typ av demografisk data"
 
 #: app/Factories/ElementFactory.php:304 app/Factories/ElementFactory.php:506
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:688
@@ -15892,11 +15876,11 @@ msgstr "Faktumtyp"
 
 #: app/Factories/ElementFactory.php:1163
 msgid "Type of location"
-msgstr ""
+msgstr "Typ av plats"
 
 #: app/Factories/ElementFactory.php:314
 msgid "Type of marriage"
-msgstr ""
+msgstr "Typ av äktenskap"
 
 #: app/Factories/ElementFactory.php:547
 msgid "Type of name"
@@ -16063,12 +16047,12 @@ msgstr "Uppdatera allt"
 #. I18N: Name of a module
 #: app/Module/FixPlaceNames.php:62
 msgid "Update place names"
-msgstr "Uppdatera ortsnamn"
+msgstr "Uppdatera ortnamn"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:73
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr "Uppdatera delar av platsnamn på högre nivå samtidigt som du håller delarna på lägre nivå."
+msgstr "Uppdatera de högre nivåerna av ortnamn samtidigt som du håller kvar de lägre delarna."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16161,7 +16145,7 @@ msgstr "Använd siluettbilder"
 
 #: resources/views/admin/map-provider.phtml:38
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr "Använd GeoNames-databas för att autokomplettera platser"
+msgstr "Använd GeoNames-databasen för att autoslutföra platser"
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -17240,7 +17224,7 @@ msgstr "census tillagd"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "utmanade"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
@@ -17266,7 +17250,7 @@ msgstr "barn"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "medborgare"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17325,7 +17309,7 @@ msgstr "skapa"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulturell"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17397,7 +17381,7 @@ msgstr "dog"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "motbevisad"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -17913,7 +17897,7 @@ msgstr "kön"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geografisk"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -19566,7 +19550,7 @@ msgstr "lista"
 #: app/Http/RequestHandlers/MapDataImportAction.php:186
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr "lokaliteter uppdaterade: %s, lokaliteter tillläggda: %s"
+msgstr "platser uppdaterade: %s, platser tillläggda: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:59 app/GedcomCode/GedcomCodeName.php:148
@@ -20009,7 +19993,7 @@ msgstr "procent"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "politisk"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20034,7 +20018,7 @@ msgstr "primärt bevis"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "bevisad"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
@@ -20072,7 +20056,7 @@ msgstr "avslagen"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "religiös"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
