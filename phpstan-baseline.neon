@@ -280,11 +280,6 @@ parameters:
 			path: app/Http/Middleware/UseTransaction.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(mixed, string\\) given\\.$#"
-			count: 1
-			path: app/Http/Middleware/WrapHandler.php
-
-		-
 			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$anniv\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CalendarEvents.php

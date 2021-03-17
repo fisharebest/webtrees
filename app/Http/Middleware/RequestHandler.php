@@ -19,31 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Aura\Router\Route;
+use Illuminate\Container\Container;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
+use function is_string;
 
 /**
  * Middleware to run a request-handler.
  */
-class WrapHandler implements MiddlewareInterface
+class RequestHandler implements MiddlewareInterface
 {
-    /** @var string|RequestHandlerInterface */
-    private $handler;
-
-    /**
-     * WrapController constructor.
-     *
-     * @param string|RequestHandlerInterface $handler
-     */
-    public function __construct($handler)
-    {
-        $this->handler = $handler;
-    }
-
     /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
@@ -52,12 +42,17 @@ class WrapHandler implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // A request handler object?
-        if ($this->handler instanceof RequestHandlerInterface) {
-            return $this->handler->handle($request);
+        /** @var Route $route */
+        $route = $request->getAttribute('route');
+
+        $request_handler = $route->handler;
+
+        if (is_string($request_handler)) {
+            $request_handler = Container::getInstance()->get($request_handler);
         }
 
-        // A string containing a request handler class name
-        return app($this->handler)->handle($request);
+        assert($request_handler instanceof RequestHandlerInterface);
+
+        return $request_handler->handle($request);
     }
 }
