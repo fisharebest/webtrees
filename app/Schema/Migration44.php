@@ -98,7 +98,6 @@ class Migration44 implements MigrationInterface
                     $table->dropUnique(['pl_parent_id', 'pl_place']);
                 });
             } catch (PDOException $ex) {
-                throw $ex;
                 // Already deleted, or does not exist;
             }
 
