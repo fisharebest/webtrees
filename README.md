@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=main)](https://travis-ci.org/fisharebest/webtrees)
 [![Coverage Status](https://coveralls.io/repos/github/fisharebest/webtrees/badge.svg?branch=main)](https://coveralls.io/github/fisharebest/webtrees?branch=main)
 [![Translation status](https://weblate.iet.open.ac.uk/widgets/webtrees/-/svg-badge.svg)](https://weblate.iet.open.ac.uk/projects/webtrees/webtrees/)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de/mini.png)](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de/mini.png)](https://insight.symfony.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=main)
 [![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 [![StyleCI](https://github.styleci.io/repos/11836349/shield?branch=main)](https://github.styleci.io/repos/11836349?branch=main)
