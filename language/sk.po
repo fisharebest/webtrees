@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-05 11:56+0000\n"
+"PO-Revision-Date: 2021-03-18 13:37+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -11833,20 +11833,26 @@ msgstr "Vyžiadať nový užívateľský účet"
 #. I18N: gedcom tag _TODO
 #: app/GedcomTag.php:1743
 msgid "Research task"
-msgstr "Úloha na prieskum"
+msgstr "Úloha na výskum"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:39
 msgid "Research tasks"
-msgstr "Úlohy na preskúmanie"
+msgstr "Úlohy na výskum"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Úlohy na preskúmanie sú špeciálne udalosti priradené osobám vo vašom rodokmeni, ktoré označujú potrebu ďalšieho bádania v rodokmeni. Môžete ich použiť ako pripomienku pre kontrolu zo spoľahlivejších zdrojov, obstaranie dokumentov alebo fotiek, vyriešenie protichodných informácií a podobne."
+msgstr ""
+"Úlohy na výskum sú špeciálne udalosti priradené osobám vo vašom rodokmeni, "
+"ktoré označujú potrebu ďalšieho bádania v rodokmeni. Môžete ich použiť ako "
+"pripomienku pre kontrolu zo spoľahlivejších zdrojov, obstaranie dokumentov "
+"alebo fotiek, vyriešenie protichodných informácií a podobne."
 
 #: app/Module/ResearchTaskModule.php:203
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Úlohy na preskúmanie sú uložené s neštandardným GEDCOM tagom „_TODO“. Iné genealogické programy pravdepodobne nerozpoznajú tento tag."
+msgstr ""
+"Úlohy na výskum sa ukladajú pomocou neštandardného GEDCOM tagu „_TODO“. Iné "
+"genealogické programy nemusia rozpoznať tento tag."
 
 #. I18N: gedcom tag RESI
 #: app/GedcomTag.php:732
@@ -12870,16 +12876,15 @@ msgstr "Zobraziť príbuzné osoby / rodiny"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr "Zobraziť úlohy na preskúmanie, ktoré sú priradené iným užívateľom"
+msgstr "Zobraziť úlohy na výskum, ktoré sú priradené iným užívateľom"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
-"Zobraziť úlohy na preskúmanie, ktoré nie sú priradené žiadnemu užívateľovi"
+msgstr "Zobraziť úlohy na výskum, ktoré nie sú priradené žiadnemu užívateľovi"
 
 #: app/Module/ResearchTaskModule.php:221
 msgid "Show research tasks that have a date in the future"
-msgstr "Zobraziť úlohy na preskúmanie, ktoré majú dátum v budúcnosti"
+msgstr "Zobraziť úlohy na výskum, ktoré majú dátum v budúcnosti"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
@@ -14369,7 +14374,7 @@ msgstr "Nie sú žiadne čakajúce zmeny."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
-msgstr "V tomto rodokmeni nie sú žiadne úlohy na preskúmanie."
+msgstr "V tomto rodokmeni nie sú žiadne úlohy na výskum."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
@@ -15217,7 +15222,9 @@ msgstr "Pre dokončenie aktualizácie musíte nainštalovať súbory manuálne."
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Aby ste vytvorili nové úlohy na preskúmanie, musíte najskôr pridať „úlohu na preskúmanie“ do zoznamu faktov a udalostí v nastavení vášho rodokmeňa."
+msgstr ""
+"Aby ste vytvorili nové úlohy na výskume, musíte najskôr pridať „úlohu na "
+"výskum“ do zoznamu faktov a udalostí v nastavení vášho rodokmeňa."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
@@ -16504,7 +16511,7 @@ msgstr "Nevytvorili ste v denníku žiadne položky."
 
 #: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr "Vybrali ste GEDCOM z odlišným názvom. Je to správne?"
+msgstr "Vybrali ste GEDCOM s odlišným názvom. Je to správne?"
 
 #: logout.php:27
 msgid "You have signed out."
