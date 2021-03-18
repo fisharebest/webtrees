@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -56,7 +55,9 @@ class AddNewFact implements RequestHandlerInterface
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
-        $title = $record->fullName() . ' - ' . GedcomTag::getLabel($record->tag() . ':' . $fact);
+        $element = Registry::elementFactory()->make($record->tag() . ':' . $fact);
+
+        $title = $record->fullName() . ' - ' . $element->label();
 
         return $this->viewResponse('edit/add-fact', [
             'fact'   => $fact,
