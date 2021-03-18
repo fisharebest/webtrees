@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
@@ -740,7 +739,7 @@ class FunctionsEdit
             } //else: source records themselves, i.e. 0 SOUR / 1 DATA don't get a 2 DATE!
         }
 
-        if (GedcomCodeTemp::isTagLDS($level1type)) {
+        if ($level1type === 'BAPL' || $level1type === 'CONL' || $level1type === 'ENDL' || $level1type === 'SLGC' || $level1type === 'SLGS') {
             $expected_subtags['STAT'] = ['DATE'];
         }
 
@@ -886,7 +885,7 @@ class FunctionsEdit
                         echo self::addSimpleTag($tree, '3 PLAC');
                         break;
                     case 'STAT':
-                        if (GedcomCodeTemp::isTagLDS($level1tag)) {
+                        if ($level1tag === 'BAPL' || $level1tag === 'CONL' || $level1tag === 'ENDL' || $level1tag === 'SLGC' || $level1tag === 'SLGS') {
                             echo self::addSimpleTag($tree, '3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
                         }
                         break;
