@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
@@ -183,24 +182,6 @@ class FunctionsEdit
             '0' => I18N::translate('no'),
             '1' => I18N::translate('yes'),
         ];
-    }
-
-    /**
-     * A list of GEDCOM relationships (e.g. for an edit control).
-     *
-     * @param string $relationship
-     *
-     * @return array<string>
-     */
-    public static function optionsRelationships(string $relationship): array
-    {
-        $relationships = GedcomCodeRela::getValues();
-        // The user is allowed to specify values that aren't in the list.
-        if (!array_key_exists($relationship, $relationships)) {
-            $relationships[$relationship] = I18N::translate($relationship);
-        }
-
-        return $relationships;
     }
 
     /**
@@ -519,7 +500,7 @@ class FunctionsEdit
             $element = Registry::elementFactory()->make('INDI:SOUR:QUAY');
             $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => $element->values()]);
         } elseif ($fact === 'RELA') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => self::optionsRelationships($value)]);
+            $html .= Registry::elementFactory()->make('INDI:ASSO:RELA')->edit($id, $name, $value, $tree);
         } elseif ($fact === 'REPO') {
             $html .=
                 '<div class="input-group">' .
