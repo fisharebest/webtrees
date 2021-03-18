@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
@@ -542,7 +541,7 @@ class FunctionsEdit
                 view('components/select-source', ['id' => $id, 'name' => $name, 'source' => Registry::sourceFactory()->make($value, $tree), 'tree' => $tree]) .
                 '</div>';
         } elseif ($fact === 'STAT') {
-            $html .= view('components/select', ['id' => $id, 'name' => $name, 'selected' => $value, 'options' => GedcomCodeStat::statusNames($upperlevel)]);
+            $html .= Registry::elementFactory()->make(($upperlevel === 'SLGS' ? 'FAM:' : 'INDI:') . $upperlevel . ':STAT')->edit($id, $name, $value, $tree);
         } elseif ($fact === 'SUBM') {
             $html .=
                 '<div class="input-group">' .
