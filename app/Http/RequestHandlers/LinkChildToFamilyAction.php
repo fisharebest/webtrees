@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -68,7 +67,24 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
             }
         }
 
-        $gedcom = GedcomCodePedi::createNewFamcPedi($PEDI, $famid);
+        switch ($PEDI) {
+            case '':
+                $gedcom = "1 FAMC @$famid@";
+                break;
+            case 'adopted':
+                $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$famid@\n3 ADOP BOTH";
+                break;
+            case 'sealing':
+                $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$famid@";
+                break;
+            case 'foster':
+                $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
+                break;
+            default:
+                $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI";
+                break;
+        }
+
         $individual->updateFact($fact_id, $gedcom, true);
 
         // Only set the family->child link if it does not already exist

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
@@ -86,7 +85,25 @@ class AddChildToFamilyAction implements RequestHandlerInterface
                 $gedrec .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
             }
         }
-        $gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
+
+        switch ($PEDI) {
+            case '':
+                $gedrec .= "\n1 FAMC @$xref@";
+                break;
+            case 'adopted':
+                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$xref@\n3 ADOP BOTH";
+                break;
+            case 'sealing':
+                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$xref@";
+                break;
+            case 'foster':
+                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
+                break;
+            default:
+                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI";
+                break;
+        }
+
         if ($params['SOUR_INDI'] ?? false) {
             $gedrec = $this->gedcom_edit_service->handleUpdates($gedrec);
         } else {

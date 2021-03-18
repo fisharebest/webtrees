@@ -1,9 +1,9 @@
 <?php
 
-use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkChildToFamilyAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('Pedigree') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'PEDI', 'selected' => '', 'options' => GedcomCodePedi::getValues($individual)]) ?>
+            <?= Registry::elementFactory()->make('INDI:FAMC:PEDI')->edit('PEDI', 'PEDI', '', $individual->tree()) ?>
             <p class="small text-muted">
                 <?= I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.') ?>
             </p>

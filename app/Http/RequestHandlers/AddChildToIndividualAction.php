@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
@@ -91,7 +90,25 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         $gedcom = '0 @@ INDI';
         $gedcom .= $this->gedcom_edit_service->addNewName($request, $tree);
         $gedcom .= $this->gedcom_edit_service->addNewSex($request);
-        $gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->xref());
+
+        switch ($PEDI) {
+            case '':
+                $gedcom .= "\n1 FAMC @$xref@";
+                break;
+            case 'adopted':
+                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$xref@\n3 ADOP BOTH";
+                break;
+            case 'sealing':
+                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$xref@";
+                break;
+            case 'foster':
+                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
+                break;
+            default:
+                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI";
+                break;
+        }
+
         if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
             foreach ($matches[1] as $match) {
                 $gedcom .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
