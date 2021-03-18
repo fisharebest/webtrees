@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
@@ -52,36 +52,36 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 
     // All standard GEDCOM 5.5.1 events except CENS, RESI and EVEN
     private const ALL_EVENTS = [
-        'ADOP',
-        'ANUL',
-        'BAPM',
-        'BARM',
-        'BASM',
-        'BIRT',
-        'BLES',
-        'BURI',
-        'CHR',
-        'CHRA',
-        'CONF',
-        'CREM',
-        'DEAT',
-        'DIV',
-        'DIVF',
-        'EMIG',
-        'ENGA',
-        'FCOM',
-        'GRAD',
-        'IMMI',
-        'MARB',
-        'MARC',
-        'MARL',
-        'MARR',
-        'MARS',
-        'NATU',
-        'ORDN',
-        'PROB',
-        'RETI',
-        'WILL',
+        'ADOP' => 'INDI:ADOP',
+        'ANUL' => 'FAM:ANUL',
+        'BAPM' => 'INDI:BAPM',
+        'BARM' => 'INDI:BARM',
+        'BASM' => 'INDI:BASM',
+        'BIRT' => 'INDI:BIRT',
+        'BLES' => 'INDI:BLES',
+        'BURI' => 'INDI:BURI',
+        'CHR'  => 'INDI:CHR',
+        'CHRA' => 'INDI:CHRA',
+        'CONF' => 'INDI:CONF',
+        'CREM' => 'INDI:CREM',
+        'DEAT' => 'INDI:DEAT',
+        'DIV'  => 'FAM:DIV',
+        'DIVF' => 'FAM:DIVF',
+        'EMIG' => 'INDI:EMIG',
+        'ENGA' => 'FAM:ENGA',
+        'FCOM' => 'INDI:FCOM',
+        'GRAD' => 'INDI:GRAD',
+        'IMMI' => 'INDI:IMMI',
+        'MARB' => 'FAM:MARB',
+        'MARC' => 'FAM:MARC',
+        'MARL' => 'FAM:MARL',
+        'MARR' => 'FAM:MARR',
+        'MARS' => 'FAM:MARS',
+        'NATU' => 'INDI:NATU',
+        'ORDN' => 'INDI:ORDN',
+        'PROB' => 'INDI:PROB',
+        'RETI' => 'INDI:RETI',
+        'WILL' => 'INDI:WILL',
     ];
 
     private const DEFAULT_EVENTS = [
@@ -250,8 +250,8 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $event_array = explode(',', $events);
 
         $all_events = [];
-        foreach (self::ALL_EVENTS as $event) {
-            $all_events[$event] = GedcomTag::getLabel($event);
+        foreach (self::ALL_EVENTS as $event => $tag) {
+            $all_events[$event] = Registry::elementFactory()->make($tag)->label();
         }
 
         $info_styles = [

@@ -308,7 +308,7 @@ class MediaFile
      *
      * @param FilesystemOperator $data_filesystem
      *
-     * @return array<string>
+     * @return array<string,string>
      */
     public function attributes(FilesystemOperator $data_filesystem): array
     {
@@ -318,7 +318,7 @@ class MediaFile
             try {
                 $bytes                       = $this->media()->tree()->mediaFilesystem($data_filesystem)->fileSize($this->filename());
                 $kb                          = intdiv($bytes + 1023, 1024);
-                $attributes['__FILE_SIZE__'] = I18N::translate('%s KB', I18N::number($kb));
+                $attributes[I18N::translate('File size')] = I18N::translate('%s KB', I18N::number($kb));
             } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
                 // External/missing files have no size.
             }
@@ -327,7 +327,7 @@ class MediaFile
             try {
                 $data                         = $filesystem->read($this->filename());
                 [$width, $height]             = getimagesizefromstring($data);
-                $attributes['__IMAGE_SIZE__'] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
+                $attributes[I18N::translate('Image dimensions')] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
             } catch (FilesystemException | UnableToReadFile $ex) {
                 // Cannot read the file.
             }

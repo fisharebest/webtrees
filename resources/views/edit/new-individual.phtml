@@ -5,7 +5,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToIndividualAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualAction;
@@ -17,6 +16,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -193,7 +193,8 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         // Edit existing tags, grouped together
         if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
             foreach ($match[1] as $value) {
-                echo FunctionsEdit::addSimpleTag($tree, '2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag));
+                $label = Registry::elementFactory()->make('INDI:NAME:' . $tag)->label();
+                echo FunctionsEdit::addSimpleTag($tree, '2 ' . $tag . ' ' . $value, '', $label);
                 if ($tag === '_MARNM') {
                     preg_match_all('/\/([^\/]*)\//', $value, $matches);
                     echo FunctionsEdit::addSimpleTag($tree, '2 _MARNM_SURN ' . implode(',', $matches[1]));
@@ -202,7 +203,8 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
         }
         // Allow a new tag to be entered
         if (!array_key_exists($tag, $name_fields)) {
-            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag));
+            $label = Registry::elementFactory()->make('INDI:NAME:' . $tag)->label();
+            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag, '', $label);
             if ($tag === '_MARNM') {
                 echo FunctionsEdit::addSimpleTag($tree, '0 _MARNM_SURN');
             }

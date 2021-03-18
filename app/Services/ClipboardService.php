@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Session;
 use Illuminate\Support\Collection;
 
+use function explode;
+
 /**
  * Copy and past facts between records.
  */
@@ -46,10 +48,7 @@ class ClipboardService
         // If we are copying the same fact twice, make sure the new one is at the end.
         unset($clipboard[$record_type][$fact_id]);
 
-        $clipboard[$record_type][$fact_id] = [
-            'factrec' => $fact->gedcom(),
-            'fact'    => $fact->getTag(),
-        ];
+        $clipboard[$record_type][$fact_id] = $fact->gedcom();
 
         // The clipboard only holds a limited number of facts.
         $clipboard[$record_type] = array_slice($clipboard[$record_type], -self::CLIPBOARD_SIZE);
@@ -72,7 +71,7 @@ class ClipboardService
         $record_type = $record->tag();
 
         if (isset($clipboard[$record_type][$fact_id])) {
-            $record->createFact($clipboard[$record_type][$fact_id]['factrec'], true);
+            $record->createFact($clipboard[$record_type][$fact_id], true);
 
             return true;
         }
@@ -84,21 +83,18 @@ class ClipboardService
      * Create a list of facts that can be pasted into a given record
      *
      * @param GedcomRecord $record
-     * @param Collection   $exclude_types
      *
      * @return Collection<Fact>
      */
-    public function pastableFacts(GedcomRecord $record, Collection $exclude_types): Collection
+    public function pastableFacts(GedcomRecord $record): Collection
     {
         // The facts are stored in the session.
         return (new Collection(Session::get('clipboard', [])[$record->tag()] ?? []))
             // Put the most recently copied fact at the top of the list.
             ->reverse()
             // Create facts for the record.
-            ->map(static function (array $clipping) use ($record): Fact {
-                return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
-            })->filter(static function (Fact $fact) use ($exclude_types): bool {
-                return $exclude_types->isEmpty() || !$exclude_types->contains($fact->getTag());
+            ->map(static function (string $clipping) use ($record): Fact {
+                return new Fact($clipping, $record, md5($clipping));
             });
     }
 
@@ -116,11 +112,11 @@ class ClipboardService
         return (new Collection(Session::get('clipboard', [])))
             ->flatten(1)
             ->reverse()
-            ->map(static function (array $clipping) use ($record): Fact {
-                return new Fact($clipping['factrec'], $record, md5($clipping['factrec']));
+            ->map(static function (string $clipping) use ($record): Fact {
+                return new Fact($clipping, $record, md5($clipping));
             })
             ->filter(static function (Fact $fact) use ($types): bool {
-                return $types->contains($fact->getTag());
+                return $types->contains(explode(':', $fact->tag())[1]);
             });
     }
 }

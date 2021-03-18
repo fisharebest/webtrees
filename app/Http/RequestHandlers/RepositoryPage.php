@@ -94,7 +94,7 @@ class RepositoryPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('repository-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($repository, new Collection()),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($repository),
             'facts'            => $this->facts($repository),
             'meta_description' => '',
             'meta_robots'      => 'index,follow',

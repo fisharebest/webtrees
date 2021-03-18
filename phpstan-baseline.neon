@@ -101,11 +101,6 @@ parameters:
 			path: app/Functions/FunctionsPrint.php
 
 		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
 			message: "#^Parameter \\#3 \\$offset of function strpos expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
@@ -1563,11 +1558,6 @@ parameters:
 			message: "#^Cannot access offset mixed on array\\|object\\|null\\.$#"
 			count: 2
 			path: app/Services/CaptchaService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFacts\\(\\) has parameter \\$exclude_types with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Services/ClipboardService.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFactsOfType\\(\\) has parameter \\$types with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"

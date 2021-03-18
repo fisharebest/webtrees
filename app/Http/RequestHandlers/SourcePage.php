@@ -99,7 +99,7 @@ class SourcePage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('source-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($source, new Collection()),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($source),
             'facts'            => $this->facts($source),
             'families'         => $source->linkedFamilies('SOUR'),
             'individuals'      => $source->linkedIndividuals('SOUR'),

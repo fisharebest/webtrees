@@ -37,12 +37,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
-use function array_merge;
-use function array_unique;
 use function assert;
 use function e;
 use function explode;
-use function uasort;
 
 /**
  * Edit the tree preferences.
@@ -53,7 +50,7 @@ class TreePreferencesPage implements RequestHandlerInterface
 
     private const ALL_FAM_FACTS = [
         'RESN', 'ANUL', 'CENS', 'DIV', 'DIVF', 'ENGA', 'MARB', 'MARC', 'MARR', 'MARL', 'MARS', 'RESI', 'EVEN',
-        'NCHI', 'SUBM', 'SLGS', 'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
+        'NCHI', 'SUBM', 'SLGS', 'REFN', 'RIN', 'CHAN', 'NOTE', 'SOUR', 'OBJE',
         '_NMR', '_COML', '_MBON', '_MARI', '_SEPR', '_TODO',
     ];
 
@@ -62,7 +59,7 @@ class TreePreferencesPage implements RequestHandlerInterface
         'BLES', 'CHRA', 'CONF', 'FCOM', 'ORDN', 'NATU', 'EMIG', 'IMMI', 'CENS', 'PROB', 'WILL',
         'GRAD', 'RETI', 'EVEN', 'CAST', 'DSCR', 'EDUC', 'IDNO', 'NATI', 'NCHI', 'NMR', 'OCCU', 'PROP',
         'RELI', 'RESI', 'SSN', 'TITL', 'FACT', 'BAPL', 'CONL', 'ENDL', 'SLGC', 'SUBM', 'ASSO',
-        'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN', 'REFN', 'RIN', 'CHAN', 'NOTE', 'SHARED_NOTE', 'SOUR', 'OBJE',
+        'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN', 'REFN', 'RIN', 'CHAN', 'NOTE', 'SOUR', 'OBJE',
         '_BRTM', '_DEG', '_DNA', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL', '_INTE', '_MDCL',
         '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS', '_NLIV', '_NMAR', '_PRMN', '_TODO', '_UID', '_WEIG', '_YART',
     ];
@@ -76,12 +73,12 @@ class TreePreferencesPage implements RequestHandlerInterface
     ];
 
     private const ALL_REPO_FACTS = [
-        'NAME', 'ADDR', 'PHON', 'EMAIL', 'FAX', 'WWW', 'NOTE', 'SHARED_NOTE', 'REFN', 'RIN', 'CHAN', 'RESN',
+        'NAME', 'ADDR', 'PHON', 'EMAIL', 'FAX', 'WWW', 'NOTE', 'REFN', 'RIN', 'CHAN', 'RESN',
     ];
 
     private const ALL_SOUR_FACTS = [
         'DATA', 'AUTH', 'TITL', 'ABBR', 'PUBL', 'TEXT', 'REPO', 'REFN', 'RIN',
-        'CHAN', 'NOTE', 'SHARED_NOTE', 'OBJE', 'RESN',
+        'CHAN', 'NOTE', 'OBJE', 'RESN',
     ];
 
     /** @var ModuleService */
@@ -161,29 +158,6 @@ class TreePreferencesPage implements RequestHandlerInterface
             Auth::PRIV_HIDE => I18N::translate('Hide from everyone'),
         ];
 
-        $tags = array_unique(array_merge(
-            explode(',', $tree->getPreference('INDI_FACTS_ADD')),
-            explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('FAM_FACTS_ADD')),
-            explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('NOTE_FACTS_ADD')),
-            explode(',', $tree->getPreference('NOTE_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('SOUR_FACTS_ADD')),
-            explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('REPO_FACTS_ADD')),
-            explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')),
-            ['SOUR', 'REPO', 'OBJE', '_PRIM', 'NOTE', 'SUBM', 'SUBN', '_UID', 'CHAN']
-        ));
-
-        $all_tags = [];
-        foreach ($tags as $tag) {
-            if ($tag) {
-                $all_tags[$tag] = GedcomTag::getLabel($tag);
-            }
-        }
-
-        uasort($all_tags, '\Fisharebest\Webtrees\I18N::strcasecmp');
-
         // For historical reasons, we have two fields in one
         $calendar_formats = explode('_and_', $tree->getPreference('CALENDAR_FORMAT') . '_and_');
 
@@ -222,7 +196,7 @@ class TreePreferencesPage implements RequestHandlerInterface
 
         $all_repo_facts = Collection::make(self::ALL_REPO_FACTS)
             ->mapWithKeys(static function (string $tag): array {
-                return [$tag => Registry::elementFactory()->make('SOUR:' . $tag)->label()];
+                return [$tag => Registry::elementFactory()->make('REPO:' . $tag)->label()];
             })
             ->sort(I18N::comparator());
 

@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -331,6 +330,6 @@ class CheckTree implements RequestHandlerInterface
      */
     private function formatType(string $type): string
     {
-        return '<b title="' . GedcomTag::getLabel($type) . '">' . $type . '</b>';
+        return '<b>' . $type . '</b>';
     }
 }

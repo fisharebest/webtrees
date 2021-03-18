@@ -80,7 +80,7 @@ class MediaPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('media-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($media, new Collection()),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($media),
             'data_filesystem'  => $data_filesystem,
             'families'         => $media->linkedFamilies('OBJE'),
             'facts'            => $this->facts($media),

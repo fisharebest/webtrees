@@ -4,7 +4,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\CopyFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditName;
@@ -59,7 +58,7 @@ if ($fact->isPendingDeletion()) {
                 <?php [, $tag, $value] = $match ?>
                 <?php if ($tag !== 'SOUR' && $tag !== 'NOTE') : ?>
                     <dt class="col-md-4 col-lg-3">
-                        <?= GedcomTag::getLabel($tag) ?>
+                        <?= Registry::elementFactory()->make($fact->tag() . ':' . $tag)->label() ?>
                     </dt>
                     <dd class="col-md-8 col-lg-9">
                         <?php if ($tag === 'TYPE') : ?>

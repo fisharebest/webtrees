@@ -79,7 +79,7 @@ class NotePage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('note-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($note, new Collection()),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($note),
             'facts'            => $this->facts($note),
             'families'         => $note->linkedFamilies('NOTE'),
             'individuals'      => $note->linkedIndividuals('NOTE'),

@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -283,15 +283,19 @@ class FunctionsImport
         // import different types of records
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $xref, $type] = $match;
-            // check for a _UID, if the record doesn't have one, add one
-            if ($tree->getPreference('GENERATE_UIDS') === '1' && !str_contains($gedrec, "\n1 _UID ")) {
-                $gedrec .= "\n1 _UID " . GedcomTag::createUid();
-            }
         } elseif (preg_match('/0 (HEAD|TRLR|_PLAC |_PLAC_DEFN)/', $gedrec, $match)) {
             $type = $match[1];
             $xref = $type; // For records without an XREF, use the type as a pseudo XREF.
         } else {
             throw new GedcomErrorException($gedrec);
+        }
+
+        // Add a _UID
+        if ($tree->getPreference('GENERATE_UIDS') === '1' && !str_contains($gedrec, "\n1 _UID ")) {
+            $element = Registry::elementFactory()->make($type . ':_UID');
+            if (!$element instanceof UnknownElement) {
+                $gedrec .= "\n1 _UID " . $element->default($tree);
+            }
         }
 
         // If the user has downloaded their GEDCOM data (containing media objects) and edited it

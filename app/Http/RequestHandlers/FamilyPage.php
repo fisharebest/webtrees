@@ -81,7 +81,7 @@ class FamilyPage implements RequestHandlerInterface
             return redirect($family->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        $clipboard_facts = $this->clipboard_service->pastableFacts($family, new Collection());
+        $clipboard_facts = $this->clipboard_service->pastableFacts($family);
 
         $facts = $family->facts([], true)
             ->filter(static function (Fact $fact): bool {
