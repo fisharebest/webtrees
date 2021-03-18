@@ -133,7 +133,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($infoStyle) {
             case 'tagcloud':
-                uksort($all_surnames, [I18N::class, 'strcasecmp']);
+                uksort($all_surnames, I18N::comparator());
                 $content = FunctionsPrintLists::surnameTagCloud($all_surnames, $module, true, $tree);
                 break;
             case 'list':

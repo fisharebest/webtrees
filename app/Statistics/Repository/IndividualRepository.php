@@ -558,7 +558,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         switch ($sorting) {
             default:
             case 'alpha':
-                uksort($surnames, [I18N::class, 'strcasecmp']);
+                uksort($surnames, I18N::comparator());
                 break;
             case 'count':
                 break;

@@ -207,7 +207,7 @@ class TempleCode extends AbstractElement
             'WINTE' => /* I18N: Location of an LDS church temple */ I18N::translate('Winter Quarters, Nebraska, United States'),
         ];
 
-        uasort($values, [I18N::class, 'strcasecmp']);
+        uasort($values, I18N::comparator());
         $values = ['' => I18N::translate('No temple - living ordinance')] + $values;
 
         return $values;

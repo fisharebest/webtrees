@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Census\Census;
 use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\PafUid;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -641,7 +642,7 @@ class FunctionsEdit
         } else {
             self::$tags[0] = $fact;
             if ($fact === '_UID') {
-                $fact .= ' ' . GedcomTag::createUid();
+                $fact .= ' ' . (new PafUid(''))->default($tree);
             }
             // These new level 1 tags need to be turned into links
             if (in_array($fact, ['ALIA', 'ASSO'], true)) {

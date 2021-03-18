@@ -270,7 +270,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
             'hourglass'   => I18N::translate('Hourglass chart'),
             'treenav'     => I18N::translate('Interactive tree'),
         ];
-        uasort($charts, 'Fisharebest\Webtrees\I18N::strcasecmp');
+        uasort($charts, I18N::comparator());
 
         $individual = Registry::individualFactory()->make($xref, $tree);
 

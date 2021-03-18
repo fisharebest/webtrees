@@ -47,18 +47,20 @@ class I18NTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\I18N::strcasecmp()
+     * @covers \Fisharebest\Webtrees\I18N::comparator()
      *
      * @return void
      */
-    public function testStrcasecmp(): void
+    public function testComparator(): void
     {
-        self::assertSame(I18N::strcasecmp('', ''), 0);
-        self::assertSame(I18N::strcasecmp('Abc', 'abc'), 0);
-        self::assertTrue(I18N::strcasecmp('Abc', 'bcd') < 0);
-        self::assertTrue(I18N::strcasecmp('bcd', 'ABC') > 0);
-        self::assertTrue(I18N::strcasecmp('Abc', 'abcd') < 0);
-        self::assertTrue(I18N::strcasecmp('Abcd', 'abc') > 0);
+        $comparator = I18N::comparator();
+
+        self::assertSame($comparator('', ''), 0);
+        self::assertSame($comparator('Abc', 'abc'), 0);
+        self::assertTrue($comparator('Abc', 'bcd') < 0);
+        self::assertTrue($comparator('bcd', 'ABC') > 0);
+        self::assertTrue($comparator('Abc', 'abcd') < 0);
+        self::assertTrue($comparator('Abcd', 'abc') > 0);
     }
 
     /**

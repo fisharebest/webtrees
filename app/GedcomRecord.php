@@ -135,7 +135,7 @@ class GedcomRecord
         return static function (GedcomRecord $x, GedcomRecord $y): int {
             if ($x->canShowName()) {
                 if ($y->canShowName()) {
-                    return I18N::strcasecmp($x->sortName(), $y->sortName());
+                    return I18N::comparator()($x->sortName(), $y->sortName());
                 }
 
                 return -1; // only $y is private

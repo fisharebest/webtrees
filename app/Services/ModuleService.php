@@ -515,20 +515,20 @@ class ModuleService
 
         switch ($interface) {
             case ModuleFooterInterface::class:
-                return $modules->sort($this->footerSorter());
+                return $modules->sort($this->footerComparator());
 
             case ModuleMenuInterface::class:
-                return $modules->sort($this->menuSorter());
+                return $modules->sort($this->menuComparator());
 
             case ModuleSidebarInterface::class:
-                return $modules->sort($this->sidebarSorter());
+                return $modules->sort($this->sidebarComparator());
 
             case ModuleTabInterface::class:
-                return $modules->sort($this->tabSorter());
+                return $modules->sort($this->tabComparator());
 
             default:
                 if ($sort) {
-                    return $modules->sort($this->moduleSorter());
+                    return $modules->sort($this->moduleComparator());
                 }
 
                 return $modules;
@@ -725,7 +725,7 @@ class ModuleService
      *
      * @return Closure
      */
-    private function footerSorter(): Closure
+    private function footerComparator(): Closure
     {
         return static function (ModuleFooterInterface $x, ModuleFooterInterface $y): int {
             return $x->getFooterOrder() <=> $y->getFooterOrder();
@@ -737,7 +737,7 @@ class ModuleService
      *
      * @return Closure
      */
-    private function menuSorter(): Closure
+    private function menuComparator(): Closure
     {
         return static function (ModuleMenuInterface $x, ModuleMenuInterface $y): int {
             return $x->getMenuOrder() <=> $y->getMenuOrder();
@@ -749,7 +749,7 @@ class ModuleService
      *
      * @return Closure
      */
-    private function sidebarSorter(): Closure
+    private function sidebarComparator(): Closure
     {
         return static function (ModuleSidebarInterface $x, ModuleSidebarInterface $y): int {
             return $x->getSidebarOrder() <=> $y->getSidebarOrder();
@@ -761,7 +761,7 @@ class ModuleService
      *
      * @return Closure
      */
-    private function tabSorter(): Closure
+    private function tabComparator(): Closure
     {
         return static function (ModuleTabInterface $x, ModuleTabInterface $y): int {
             return $x->getTabOrder() <=> $y->getTabOrder();
@@ -776,13 +776,13 @@ class ModuleService
      *
      * @return Closure
      */
-    private function moduleSorter(): Closure
+    private function moduleComparator(): Closure
     {
         return static function (ModuleInterface $x, ModuleInterface $y): int {
             $title1 = $x instanceof ModuleLanguageInterface ? $x->locale()->endonymSortable() : $x->title();
             $title2 = $y instanceof ModuleLanguageInterface ? $y->locale()->endonymSortable() : $y->title();
 
-            return I18N::strcasecmp($title1, $title2);
+            return I18N::comparator()($title1, $title2);
         };
     }
 

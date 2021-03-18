@@ -124,7 +124,7 @@ class TreePrivacyPage implements RequestHandlerInterface
                 return $row;
             })
             ->sort(static function (stdClass $x, stdClass $y): int {
-                return I18N::strcasecmp($x->tag_label, $y->tag_label);
+                return I18N::comparator()($x->tag_label, $y->tag_label);
             })
             ->all();
     }
@@ -170,7 +170,7 @@ class TreePrivacyPage implements RequestHandlerInterface
             }
         }
 
-        uasort($all_tags, '\Fisharebest\Webtrees\I18N::strcasecmp');
+        uasort($all_tags, I18N::comparator());
 
         return array_merge(
             ['' => I18N::translate('All facts and events')],

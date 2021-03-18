@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -561,12 +560,11 @@ class FunctionsPrint
         $addfacts            = array_merge(self::checkFactUnique($uniquefacts, $usedfacts), $addfacts);
         $quickfacts          = array_intersect($quickfacts, $addfacts);
         $translated_addfacts = [];
+
         foreach ($addfacts as $addfact) {
-            $translated_addfacts[$addfact] = GedcomTag::getLabel($record->tag() . ':' . $addfact);
+            $translated_addfacts[$addfact] = Registry::elementFactory()->make($record->tag() . ':' . $addfact)->label();
         }
-        uasort($translated_addfacts, static function (string $x, string $y): int {
-            return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
-        });
+        uasort($translated_addfacts, I18N::comparator());
 
         echo view('edit/add-fact-row', [
             'add_facts'   => $translated_addfacts,

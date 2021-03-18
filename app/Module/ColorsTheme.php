@@ -183,7 +183,7 @@ class ColorsTheme extends CloudsTheme
             'tealtop'          => I18N::translate('Teal Top'),
         ];
 
-        uasort($palettes, '\Fisharebest\Webtrees\I18N::strcasecmp');
+        uasort($palettes, I18N::comparator());
 
         return $palettes;
     }

@@ -77,7 +77,7 @@ class SourceMediaType extends AbstractElement
             'video'       => /* I18N: Type of media object */ I18N::translate('Video'),
         ];
 
-        uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');
+        uasort($values, I18N::comparator());
 
         return $values;
     }

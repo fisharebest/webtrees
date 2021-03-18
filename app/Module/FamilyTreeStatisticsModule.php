@@ -124,7 +124,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 $all_surnames[$top_surname] = $variants;
             }
 
-            uksort($all_surnames, [I18N::class, 'strcasecmp']);
+            uksort($all_surnames, I18N::comparator());
 
             //find a module providing individual lists
             $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(static function (ModuleInterface $module) {
