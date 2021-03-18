@@ -4,7 +4,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\CopyFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
@@ -45,7 +44,7 @@ if ($fact->isPendingDeletion()) {
             <?= $fake_individual->fullName() ?>
             <?php if ($fact->attribute('TYPE') !== '') : ?>
                 —
-                <?= GedcomCodeName::getValue($fact->attribute('TYPE'), $fact->record()) ?>
+                <?= Registry::elementFactory()->make('INDI:NAME:TYPE')->value($fact->attribute('TYPE'), $tree) ?>
             <?php endif ?>
         </a>
     </div>
@@ -64,7 +63,7 @@ if ($fact->isPendingDeletion()) {
                     </dt>
                     <dd class="col-md-8 col-lg-9">
                         <?php if ($tag === 'TYPE') : ?>
-                            <?= GedcomCodeName::getValue(e($value), $individual) ?>
+                            <?= Registry::elementFactory()->make('INDI:NAME:TYPE')->value($value, $tree) ?>
                         <?php else: ?>
                             <span dir="auto"><?= e($value) ?></span>
                         <?php endif ?>
