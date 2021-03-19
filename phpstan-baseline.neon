@@ -16,11 +16,6 @@ parameters:
 			path: app/Date/AbstractCalendarDate.php
 
 		-
-			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Elements/AbstractElement.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\DateValue\\:\\:escape\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Elements/DateValue.php

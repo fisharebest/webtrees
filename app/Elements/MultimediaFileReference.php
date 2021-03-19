@@ -59,12 +59,6 @@ class MultimediaFileReference extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        $canonical = $this->canonical($value);
-
-        if (preg_match(static::REGEX_URL, $canonical)) {
-            return '<a href="' . e($canonical) . '">' . e($canonical) . '</a>';
-        }
-
-        return parent::value($value, $tree);
+        return $this->valueAutoLink($value);
     }
 }

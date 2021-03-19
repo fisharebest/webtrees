@@ -52,4 +52,17 @@ class WhereWithinSource extends AbstractElement
     {
         return '<input data-autocomplete-url="' . e(route(AutoCompleteCitation::class, ['tree' => $tree->name()])) . '" data-autocomplete-extra="SOUR" autocomplete="off" class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
     }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        return $this->valueAutoLink($value);
+    }
 }
