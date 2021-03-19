@@ -227,74 +227,59 @@
 
 					<!-- print all of the other facts -->
 					<Facts ignore="$ignore">
-						<if condition="@fact!='NOTE'">
-							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
-								<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
-								<if condition="$sources=='on'">
-									<RepeatTag tag="@fact:SOUR">
-										<Footnote>
-											<Gedcom id="@SOUR">
-												<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
-												«<GedcomValue tag="TITL" />»
-												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
-											</Gedcom>
-											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-											<GedcomValue tag="SOUR:DATA:TEXT" />
-										</Footnote>
-										<SetVar name="source_exist" value="1"/>
-									</RepeatTag>
+						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
+							<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
+							<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
+							<if condition="$sources=='on'">
+								<RepeatTag tag="@fact:SOUR">
+									<Footnote>
+										<Gedcom id="@SOUR">
+											<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+											«<GedcomValue tag="TITL" />»
+											<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+										</Gedcom>
+										<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+										 <GedcomValue tag="SOUR:DATA:TEXT" />
+									</Footnote>
+									<SetVar name="source_exist" value="1"/>
+								</RepeatTag>
+							</if>
+						</TextBox>
+						<if condition="@desc!=''">
+							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
+								<Text color="$tcolor" style="text">
+									<if condition="@desc=='Y'">
+										<var var="I18N::translate('yes')" />  <GedcomValue tag="@fact:PLAC"/>
+									</if>
+									<if condition="@desc=='N'">
+										<var var="I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
+									</if>
+								<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
+									<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
 								</if>
-							</TextBox>
-							<if condition="@desc!=''">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-									<Text color="$tcolor" style="text">
-										<if condition="@desc=='Y'">
-											<var var="I18N::translate('yes')" />  <GedcomValue tag="@fact:PLAC"/>
-										</if>
-										<if condition="@desc=='N'">
-											<var var="I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
-										</if>
-									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
-										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
-									</if>
-									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
-										<GedcomValue tag="@desc"/>
-									</if>
-									</Text>
-									<Gedcom id="@ASSO">
-										<GetPersonName id=""/>
-									</Gedcom>
-								</TextBox>
-							</if>
-							<if condition="@desc==''">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-									<Text color="$tcolor" style="text">
-										<if condition="@PLAC!='' and @TEMP!=''">
-											<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
-										</if>
-										<if condition="@PLAC!='' and @TEMP==''">
-											<GedcomValue tag="@fact:PLAC" />
-										</if>
-										<if condition="@PLAC=='' and @TEMP!=''">
-											<GedcomValue tag="@fact:TEMP" />
-										</if>
-									</Text>
-								</TextBox>
-							</if>
-						</if>
-						<if condition="@fact=='NOTE' and $notes=='on'">
-							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
-								<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
-							</TextBox>
-							<if condition="@desc!=''">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-									<Text color="$tcolor" style="text">
+								<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
 									<GedcomValue tag="@desc"/>
-									</Text>
-								</TextBox>
-							</if>
+								</if>
+								</Text>
+								<Gedcom id="@ASSO">
+									 <GetPersonName id=""/>
+								</Gedcom>
+							</TextBox>
+						</if>
+						<if condition="@desc==''">
+							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
+								<Text color="$tcolor" style="text">
+									<if condition="@PLAC!='' and @TEMP!=''">
+										<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+									</if>
+									<if condition="@PLAC!='' and @TEMP==''">
+										<GedcomValue tag="@fact:PLAC" />
+									</if>
+									<if condition="@PLAC=='' and @TEMP!=''">
+										<GedcomValue tag="@fact:TEMP" />
+									</if>
+								</Text>
+							</TextBox>
 						</if>
 					</Facts>
 
@@ -596,74 +581,59 @@
 
 					<!-- print all of the other facts -->
 					<Facts ignore="$ignore">
-						<if condition="@fact!='NOTE'">
-							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
-								<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
-								<if condition="$sources=='on'">
-									<RepeatTag tag="@fact:SOUR">
-										<Footnote>
-											<Gedcom id="@SOUR">
-												<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
-												«<GedcomValue tag="TITL" />»
-												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
-											</Gedcom>
-											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-											<GedcomValue tag="SOUR:DATA:TEXT" />
-										</Footnote>
-										<SetVar name="source_exist" value="1"/>
-									</RepeatTag>
-								</if>
-							</TextBox>
-							<if condition="@desc!=''">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-									<Text color="$tcolor" style="text">
-										<if condition="@desc=='Y'">
-											<var var="I18N::translate('yes')" />  <GedcomValue tag="@fact:PLAC"/>
-										</if>
-										<if condition="@desc=='N'">
-											<var var="I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
-										</if>
+						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
+							<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
+							<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
+							<if condition="$sources=='on'">
+								<RepeatTag tag="@fact:SOUR">
+									<Footnote>
+										<Gedcom id="@SOUR">
+											<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+											«<GedcomValue tag="TITL" />»
+											<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+										</Gedcom>
+										<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+										 <GedcomValue tag="SOUR:DATA:TEXT" />
+									</Footnote>
+									<SetVar name="source_exist" value="1"/>
+								</RepeatTag>
+							</if>
+						</TextBox>
+						<if condition="@desc!=''">
+							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
+								<Text color="$tcolor" style="text">
+									<if condition="@desc=='Y'">
+										<var var="I18N::translate('yes')" />  <GedcomValue tag="@fact:PLAC"/>
+									</if>
+									<if condition="@desc=='N'">
+										<var var="I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
+									</if>
 									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
 										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
 									</if>
 									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
 										<GedcomValue tag="@desc"/>
 									</if>
-									</Text>
-									<Gedcom id="@ASSO">
-										<GetPersonName id=""/>
-									</Gedcom>
-								</TextBox>
-							</if>
-							<if condition="@desc==''">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-									<Text color="$tcolor" style="text">
-										<if condition="@PLAC!='' and @TEMP!=''">
-											<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
-										</if>
-										<if condition="@PLAC!='' and @TEMP==''">
-											<GedcomValue tag="@fact:PLAC" />
-										</if>
-										<if condition="@PLAC=='' and @TEMP!=''">
-											<GedcomValue tag="@fact:TEMP" />
-										</if>
-									</Text>
-								</TextBox>
-							</if>
-						</if>
-						<if condition="@fact=='NOTE' and $notes=='on'">
-							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
-								<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
+								</Text>
+								<Gedcom id="@ASSO">
+									 <GetPersonName id=""/>
+								</Gedcom>
 							</TextBox>
-							<if condition="@desc!=''">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-									<Text color="$tcolor" style="text">
-									<GedcomValue tag="@desc"/>
-									</Text>
-								</TextBox>
-							</if>
+						</if>
+						<if condition="@desc==''">
+							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
+								<Text color="$tcolor" style="text">
+								<if condition="@PLAC!='' and @TEMP!=''">
+									<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+								</if>
+								<if condition="@PLAC!='' and @TEMP==''">
+									<GedcomValue tag="@fact:PLAC" />
+								</if>
+								<if condition="@PLAC=='' and @TEMP!=''">
+									<GedcomValue tag="@fact:TEMP" />
+								</if>
+								</Text>
+							</TextBox>
 						</if>
 					</Facts>
 
@@ -955,74 +925,59 @@
 
 						<!-- print all of the other facts -->
 						<Facts ignore="$ignore">
-							<if condition="@fact!='NOTE'">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-									<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
-									<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
-									<if condition="$sources=='on'">
-										<RepeatTag tag="@fact:SOUR">
-											<Footnote>
-												<Gedcom id="@SOUR">
-													<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
-													«<GedcomValue tag="TITL" />»
-													<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
-												</Gedcom>
-												<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-												<GedcomValue tag="SOUR:DATA:TEXT" />
-											</Footnote>
-											<SetVar name="source_exist" value="1"/>
-										</RepeatTag>
-									</if>
-								</TextBox>
-								<if condition="@desc!=''">
-									<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-										<Text color="$tcolor" style="text">
-											<if condition="@desc=='Y'">
-												<var var="I18N::translate('yes')" />  <GedcomValue tag="@fact:PLAC"/>
-											</if>
-											<if condition="@desc=='N'">
-												<var var="I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
-											</if>
+							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
+								<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
+								<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
+								<if condition="$sources=='on'">
+									<RepeatTag tag="@fact:SOUR">
+										<Footnote>
+											<Gedcom id="@SOUR">
+												<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+												«<GedcomValue tag="TITL" />»
+												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+											</Gedcom>
+											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+											 <GedcomValue tag="SOUR:DATA:TEXT" />
+										</Footnote>
+										<SetVar name="source_exist" value="1"/>
+									</RepeatTag>
+								</if>
+							</TextBox>
+							<if condition="@desc!=''">
+								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
+									<Text color="$tcolor" style="text">
+										<if condition="@desc=='Y'">
+											<var var="I18N::translate('yes')" />  <GedcomValue tag="@fact:PLAC"/>
+										</if>
+										<if condition="@desc=='N'">
+											<var var="I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
+										</if>
 										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
 											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
 										</if>
 										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
 											<GedcomValue tag="@desc"/>
 										</if>
-										</Text>
-										<Gedcom id="@ASSO">
-											<GetPersonName id=""/>
-										</Gedcom>
-									</TextBox>
-								</if>
-								<if condition="@desc==''">
-									<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-										<Text color="$tcolor" style="text">
-											<if condition="@PLAC!='' and @TEMP!=''">
-												<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
-											</if>
-											<if condition="@PLAC!='' and @TEMP==''">
-												<GedcomValue tag="@fact:PLAC" />
-											</if>
-											<if condition="@PLAC=='' and @TEMP!=''">
-												<GedcomValue tag="@fact:TEMP" />
-											</if>
-										</Text>
-									</TextBox>
-								</if>
-							</if>
-							<if condition="@fact=='NOTE' and $notes=='on'">
-								<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-									<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
-									<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
+									</Text>
+									<Gedcom id="@ASSO">
+										 <GetPersonName id=""/>
+									</Gedcom>
 								</TextBox>
-								<if condition="@desc!=''">
-									<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
-										<Text color="$tcolor" style="text">
-										<GedcomValue tag="@desc"/>
-										</Text>
-									</TextBox>
-								</if>
+							</if>
+							<if condition="@desc==''">
+								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
+									<Text color="$tcolor" style="text">
+									<if condition="@PLAC!='' and @TEMP!=''">
+										<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+									</if>
+									<if condition="@PLAC!='' and @TEMP==''">
+										<GedcomValue tag="@fact:PLAC" />
+									</if>
+									<if condition="@PLAC=='' and @TEMP!=''">
+										<GedcomValue tag="@fact:TEMP" />
+									</if>
+									</Text>
+								</TextBox>
 							</if>
 						</Facts>
 
