@@ -53,6 +53,7 @@ class CensusOfWales1891 extends CensusOfWales implements CensusInterface
             new CensusColumnNull($this, 'OAC', 'Own account'),
             new CensusColumnBirthPlace($this, 'Birthplace', 'Where born'),
             new CensusColumnNull($this, 'Infirm', 'Whether deaf-and-dumb, blind, lunatic or imbecile'),
+            new CensusColumnNull($this, 'Lang', 'Language spoken'),
         ];
     }
 }
