@@ -230,7 +230,7 @@ class ChartDistribution
      *
      * @param string $surname
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     private function queryRecords(string $surname): array
     {

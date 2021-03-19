@@ -133,7 +133,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     public function getFavorites(Tree $tree, UserInterface $user): array
     {

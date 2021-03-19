@@ -343,7 +343,7 @@ class Family extends GedcomRecord
     /**
      * Derived classes should redefine this function, otherwise the object will have no name
      *
-     * @return array<array<string>>
+     * @return array<int,array<string,string>>
      */
     public function getAllNames(): array
     {

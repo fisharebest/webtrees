@@ -118,7 +118,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     /**
      * @param Individual $individual
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     private function getStoriesForIndividual(Individual $individual): array
     {

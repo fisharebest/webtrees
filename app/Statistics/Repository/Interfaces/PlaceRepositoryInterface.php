@@ -34,7 +34,7 @@ interface PlaceRepositoryInterface
      * @param int    $parent
      * @param bool   $country
      *
-     * @return int[]|stdClass[]
+     * @return array<int|stdClass>
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array;
 

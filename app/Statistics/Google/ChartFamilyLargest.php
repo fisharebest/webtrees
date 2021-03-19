@@ -67,7 +67,7 @@ class ChartFamilyLargest
      *
      * @param int $total
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     private function queryRecords(int $total): array
     {

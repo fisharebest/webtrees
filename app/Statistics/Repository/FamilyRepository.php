@@ -545,7 +545,7 @@ class FamilyRepository
      * @param int    $year1
      * @param int    $year2
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {

@@ -421,7 +421,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * @param Individual[] $individuals
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     private function layoutIndividuals(array $individuals): array
     {

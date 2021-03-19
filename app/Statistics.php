@@ -843,7 +843,7 @@ class Statistics implements
      * @param int    $parent
      * @param bool   $country
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
