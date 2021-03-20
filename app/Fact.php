@@ -812,4 +812,14 @@ class Fact
     {
         return $this->id . '@' . $this->record->xref();
     }
+
+    /**
+     * Add blank lines, to allow a user to add/edit new values.
+     *
+     * @return string
+     */
+    public function insertMissingSubtags(): string
+    {
+        return $this->record()->insertMissingLevels($this->tag(), $this->gedcom());
+    }
 }
