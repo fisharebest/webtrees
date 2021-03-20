@@ -46,7 +46,7 @@ class ModuleServiceTest extends TestCase
      * @covers \Fisharebest\Webtrees\Services\ModuleService::all
      * @covers \Fisharebest\Webtrees\Services\ModuleService::coreModules
      * @covers \Fisharebest\Webtrees\Services\ModuleService::customModules
-     * @covers \Fisharebest\Webtrees\Services\ModuleService::moduleSorter
+     * @covers \Fisharebest\Webtrees\Services\ModuleService::moduleComparator
      * @return void
      */
     public function testAll(): void
@@ -58,9 +58,9 @@ class ModuleServiceTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\ModuleService::findByComponent
-     * @covers \Fisharebest\Webtrees\Services\ModuleService::menuSorter
-     * @covers \Fisharebest\Webtrees\Services\ModuleService::sidebarSorter
-     * @covers \Fisharebest\Webtrees\Services\ModuleService::tabSorter
+     * @covers \Fisharebest\Webtrees\Services\ModuleService::menuComparator
+     * @covers \Fisharebest\Webtrees\Services\ModuleService::sidebarComparator
+     * @covers \Fisharebest\Webtrees\Services\ModuleService::tabComparator
      * @return void
      */
     public function testFindByComponent(): void
