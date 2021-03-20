@@ -39,10 +39,10 @@ use function redirect;
 class RedirectPedigreePhp implements RequestHandlerInterface
 {
     private const CHART_STYLES = [
-        '0' => 'right',
-        '1' => 'right',
-        '2' => 'top',
-        '3' => 'bottom',
+        0 => 'right',
+        1 => 'right',
+        2 => 'top',
+        3 => 'bottom',
     ];
 
     /** @var TreeService */
