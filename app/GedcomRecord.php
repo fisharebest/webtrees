@@ -403,9 +403,7 @@ class GedcomRecord
     {
         static $language_script;
 
-        if ($language_script === null) {
-            $language_script = $language_script ?? I18N::locale()->script()->code();
-        }
+        $language_script ??= I18N::locale()->script()->code();
 
         if ($this->getPrimaryName === null) {
             // Generally, the first name is the primary one....

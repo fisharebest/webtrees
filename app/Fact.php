@@ -365,9 +365,7 @@ class Fact
      */
     public function place(): Place
     {
-        if ($this->place === null) {
-            $this->place = new Place($this->attribute('PLAC'), $this->record()->tree());
-        }
+        $this->place ??= new Place($this->attribute('PLAC'), $this->record()->tree());
 
         return $this->place;
     }
@@ -381,9 +379,7 @@ class Fact
      */
     public function date(): Date
     {
-        if ($this->date === null) {
-            $this->date = new Date($this->attribute('DATE'));
-        }
+        $this->date ??= new Date($this->attribute('DATE'));
 
         return $this->date;
     }
