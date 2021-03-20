@@ -60,14 +60,14 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param string $id
+     * @param string $session_id
      *
      * @return string
      */
-    public function read($id): string
+    public function read($session_id): string
     {
         $this->row = DB::table('session')
-            ->where('session_id', '=', $id)
+            ->where('session_id', '=', $session_id)
             ->first();
 
 
@@ -75,12 +75,12 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param string $id
-     * @param string $data
+     * @param string $session_id
+     * @param string $session_data
      *
      * @return bool
      */
-    public function write($id, $data): bool
+    public function write($session_id, $session_data): bool
     {
         $ip_address   = $this->request->getAttribute('client-ip');
         $session_time = Carbon::now();
@@ -88,11 +88,11 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
         if ($this->row === null) {
             DB::table('session')->insert([
-                'session_id' => $id,
+                'session_id'   => $session_id,
                 'session_time' => $session_time,
                 'user_id'      => $user_id,
                 'ip_address'   => $ip_address,
-                'session_data' => $data,
+                'session_data' => $session_data,
             ]);
         } else {
             $updates = [];
@@ -106,8 +106,8 @@ class SessionDatabaseHandler implements SessionHandlerInterface
                 $updates['ip_address'] = $ip_address;
             }
 
-            if ($this->row->session_data !== $data) {
-                $updates['session_data'] = $data;
+            if ($this->row->session_data !== $session_data) {
+                $updates['session_data'] = $session_data;
             }
 
             if ($session_time->subMinute()->gt($this->row->session_time)) {
@@ -116,7 +116,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
             if ($updates !== []) {
                 DB::table('session')
-                    ->where('session_id', '=', $id)
+                    ->where('session_id', '=', $session_id)
                     ->update($updates);
             }
         }
@@ -125,14 +125,14 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param string $id
+     * @param string $session_id
      *
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy($session_id): bool
     {
         DB::table('session')
-            ->where('session_id', '=', $id)
+            ->where('session_id', '=', $session_id)
             ->delete();
 
         return true;
