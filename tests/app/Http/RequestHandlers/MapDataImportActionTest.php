@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 
 use function dirname;
@@ -40,11 +39,10 @@ class MapDataImportActionTest extends TestCase
      */
     public function testImportAction(): void
     {
-        $map_data_service = new MapDataService();
-        $csv              = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
-        $handler          = new MapDataImportAction($map_data_service);
-        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['serverfile' => $csv]);
-        $response         = $handler->handle($request);
+        $csv      = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
+        $handler  = new MapDataImportAction();
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['serverfile' => $csv]);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
