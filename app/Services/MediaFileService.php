@@ -124,7 +124,6 @@ class MediaFileService
      * @param FilesystemOperator $data_filesystem
      *
      * @return array<string>
-     * @throws FilesystemException
      */
     public function unusedFiles(Tree $tree, FilesystemOperator $data_filesystem): array
     {
