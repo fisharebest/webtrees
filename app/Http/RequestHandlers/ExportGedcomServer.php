@@ -32,7 +32,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
-use Throwable;
 
 use function assert;
 use function fclose;

@@ -23,7 +23,6 @@ use Aura\Router\RouterContainer;
 use Aura\Router\Rule\Accepts;
 use Aura\Router\Rule\Allows;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;

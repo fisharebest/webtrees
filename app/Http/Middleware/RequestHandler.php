@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Aura\Router\Route;
 use Illuminate\Container\Container;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;

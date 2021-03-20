@@ -19,9 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Ramsey\Uuid\Uuid;
-
-use function array_filter;
 use function str_contains;
 
 /**

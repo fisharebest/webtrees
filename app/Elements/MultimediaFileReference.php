@@ -21,8 +21,6 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Tree;
 
-use function preg_match;
-
 /**
  * MULTIMEDIA_FILE_REFERENCE := {Size=1:30}
  * A complete local or remote file reference to the auxiliary data to be linked

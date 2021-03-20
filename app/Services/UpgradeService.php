@@ -33,7 +33,6 @@ use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToDeleteFile;
-use League\Flysystem\UnableToWriteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use ZipArchive;

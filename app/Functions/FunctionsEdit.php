@@ -50,7 +50,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 
 use function app;
-use function array_key_exists;
 use function array_merge;
 use function array_slice;
 use function count;
