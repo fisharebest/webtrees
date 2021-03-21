@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-01 12:17+0000\n"
+"PO-Revision-Date: 2021-03-23 09:11+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -14609,7 +14609,12 @@ msgstr "Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Auf dieser Seite können Sie die üblichen Bearbeitungsformulare umgehen und die zugrunde liegenden Daten direkt bearbeiten. Hierbei hanndelt es sich um eine erweiterte Option, die Sie nicht verwenden sollten, ohne das GEDCOM-Format vollständig verstanden zu haben. Hier begangene Fehler können nur sehr schwer identifiziert und behoben werden."
+msgstr ""
+"Auf dieser Seite können Sie die üblichen Bearbeitungsformulare umgehen und "
+"die zugrunde liegenden Daten direkt bearbeiten. Hierbei handelt es sich um "
+"eine erweiterte Option, die Sie nicht verwenden sollten, ohne das GEDCOM-"
+"Format vollständig verstanden zu haben. Hier begangene Fehler können nur "
+"sehr schwer identifiziert und behoben werden."
 
 #: app/Theme/AbstractTheme.php:482
 #, php-format
