@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-01 12:17+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-23 09:11+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -15202,7 +15202,7 @@ msgstr "Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von
 #: resources/views/edit/raw-gedcom-fact.phtml:24
 #: resources/views/edit/raw-gedcom-record.phtml:25
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
-msgstr "Auf dieser Seite können Sie die üblichen Bearbeitungsformulare umgehen und die zugrunde liegenden Daten direkt bearbeiten. Hierbei hanndelt es sich um eine erweiterte Option, die Sie nicht verwenden sollten, ohne das GEDCOM-Format vollständig verstanden zu haben. Hier begangene Fehler können nur sehr schwer identifiziert und behoben werden."
+msgstr "Auf dieser Seite können Sie die üblichen Bearbeitungsformulare umgehen und die zugrunde liegenden Daten direkt bearbeiten. Hierbei handelt es sich um eine erweiterte Option, die Sie nicht verwenden sollten, ohne das GEDCOM-Format vollständig verstanden zu haben. Hier begangene Fehler können nur sehr schwer identifiziert und behoben werden."
 
 #: app/Module/HitCountFooterModule.php:115
 #, php-format
