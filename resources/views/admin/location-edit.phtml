@@ -198,7 +198,9 @@ use Fisharebest\Webtrees\View;
             .addLayer(L.tileLayer(provider.url, provider.options))
             .fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]})
             .on('zoomend', function () {
-              $('.editable').trigger('change');
+              if (!map.getBounds().contains(marker.getLatLng())) {
+                map.panTo(marker.getLatLng());
+              }
             });
 
         return 'Leaflet map interface for webtrees-2';
