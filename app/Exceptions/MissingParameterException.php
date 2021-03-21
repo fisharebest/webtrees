@@ -39,7 +39,7 @@ class MissingParameterException extends HttpBadRequestException
 
         if ($referer !== '') {
             $message .= ' ';
-            /* I88N: %s is a URL */
+            /* I18N: %s is a URL */
             $message .= I18N::translate('This could be caused by an error at %s', $referer);
         }
 

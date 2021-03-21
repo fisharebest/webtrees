@@ -64,7 +64,7 @@ class DataFixUpdate implements RequestHandlerInterface
         assert($module instanceof ModuleDataFixInterface);
 
         $xref   = $request->getQueryParams()['xref'] ?? '';
-        $params = (array) $request->getQueryParams();
+        $params = $request->getQueryParams();
 
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);

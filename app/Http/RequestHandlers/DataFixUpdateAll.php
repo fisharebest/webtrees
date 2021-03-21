@@ -79,7 +79,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
         $module   = $this->module_service->findByName($data_fix);
         assert($module instanceof ModuleDataFixInterface);
 
-        $params = (array) $request->getQueryParams();
+        $params = $request->getQueryParams();
         $rows   = $module->recordsToFix($tree, $params);
 
         if ($rows->isEmpty()) {

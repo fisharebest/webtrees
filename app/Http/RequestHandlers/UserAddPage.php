@@ -41,7 +41,7 @@ class UserAddPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $params    = (array) $request->getQueryParams();
+        $params    = $request->getQueryParams();
         $email     = $params['email'] ?? '';
         $real_name = $params['real_name'] ?? '';
         $username  = $params['username'] ?? '';

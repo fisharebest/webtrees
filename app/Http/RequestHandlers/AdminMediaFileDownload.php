@@ -39,7 +39,7 @@ class AdminMediaFileDownload implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $filesystem = Registry::filesystem()->data();
-        $params     = (array) $request->getQueryParams();
+        $params     = $request->getQueryParams();
         $path       = $params['path'] ?? '';
 
         return Registry::imageFactory()->fileResponse($filesystem, $path, false);

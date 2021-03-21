@@ -43,7 +43,7 @@ class UserListPage implements RequestHandlerInterface
 
         $user = $request->getAttribute('user');
 
-        $params = (array) $request->getQueryParams();
+        $params = $request->getQueryParams();
         $filter = $params['filter'] ?? '';
 
         $page_size = (int) $user->getPreference(' admin_users_page_size', '10');
