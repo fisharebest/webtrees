@@ -41,8 +41,6 @@ class SourcePublicationFacts extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        $canonical = $this->canonical($value);
-
-        return $this->valueAutoLink($canonical);
+        return $this->valueAutoLink($value);
     }
 }

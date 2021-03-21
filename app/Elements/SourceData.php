@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Tree;
-
 /**
  * SOUR:DATA is an empty element with children; EVEN, AGNC and NOTE.
  */

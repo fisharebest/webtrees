@@ -21,10 +21,6 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Tree;
 
-use function preg_match;
-use function strpos;
-use function trim;
-
 /**
  * MULTIMEDIA_FILE_REFERENCE := {Size=1:30}
  * A complete local or remote file reference to the auxiliary data to be linked
@@ -61,12 +57,6 @@ class MultimediaFileReference extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        $canonical = $this->canonical($value);
-
-        if (preg_match(static::REGEX_URL, $canonical)) {
-            return '<a href="' . e($canonical) . '">' . e($canonical) . '</a>';
-        }
-
-        return parent::value($value, $tree);
+        return $this->valueAutoLink($value);
     }
 }

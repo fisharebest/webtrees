@@ -23,23 +23,12 @@ use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use League\CommonMark\Block\Element\Document;
-use League\CommonMark\Block\Element\Paragraph;
-use League\CommonMark\Block\Renderer\DocumentRenderer;
-use League\CommonMark\Block\Renderer\ParagraphRenderer;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
-use League\CommonMark\Inline\Element\Link;
-use League\CommonMark\Inline\Element\Text;
-use League\CommonMark\Inline\Parser\AutolinkParser;
-use League\CommonMark\Inline\Renderer\LinkRenderer;
-use League\CommonMark\Inline\Renderer\TextRenderer;
 
 use function array_key_exists;
 use function array_map;
 use function e;
 use function is_numeric;
-use function preg_replace;
+use function preg_match;
 use function strpos;
 use function trim;
 use function view;
@@ -271,21 +260,13 @@ abstract class AbstractElement implements ElementInterface
      */
     protected function valueAutoLink(string $value): string
     {
-        // Convert URLs into markdown auto-links.
-        $value = preg_replace(self::REGEX_URL, '<$0>', $value);
+        $canonical = $this->canonical($value);
 
-        // Create a minimal commonmark processor - just add support for autolinks.
-        $environment = new Environment();
-        $environment
-            ->addBlockRenderer(Document::class, new DocumentRenderer())
-            ->addBlockRenderer(Paragraph::class, new ParagraphRenderer())
-            ->addInlineRenderer(Text::class, new TextRenderer())
-            ->addInlineRenderer(Link::class, new LinkRenderer())
-            ->addInlineParser(new AutolinkParser());
+        if (preg_match(static::REGEX_URL, $canonical)) {
+            return '<a href="' . e($canonical) . '" rel="no-follow">' . e($canonical) . '</a>';
+        }
 
-        $converter = new CommonMarkConverter(['html_input' => Environment::HTML_INPUT_ESCAPE], $environment);
-
-        return $converter->convertToHtml($value);
+        return e($canonical);
     }
 
     /**

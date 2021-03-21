@@ -59,7 +59,7 @@ class HierarchicalRelationship extends AbstractElement
             'CULT' => /* I18N: Type of location hierarchy */ I18N::translate('cultural'),
         ];
 
-        uasort($values, [I18N::class, 'strcasecmp']);
+        uasort($values, I18N::comparator());
 
         return $values;
     }

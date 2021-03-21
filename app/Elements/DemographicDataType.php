@@ -56,7 +56,7 @@ class DemographicDataType extends AbstractElement
             'CITI' => /* I18N: Type of demographic data */ I18N::translate('citizen'),
         ];
 
-        uasort($values, [I18N::class, 'strcasecmp']);
+        uasort($values, I18N::comparator());
 
         return $values;
     }
