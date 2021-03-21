@@ -204,7 +204,7 @@ class PlaceLocation
      */
     public function boundingRectangle(): array
     {
-        if ($this->id() === 0) {
+        if ($this->id() === null) {
             return [[-180.0, -90.0], [180.0, 90.0]];
         }
 
