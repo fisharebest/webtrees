@@ -446,17 +446,17 @@ class FunctionsPrint
                     $map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
                     $map_long = trim(strtr($map_long, 'NSEW,�', ' - -. ')); // E3.456� ==> 3.456
 
-                    $html .= '<a href="https://maps.google.com/maps?q=' . e($map_lati) . ',' . e($map_long) . '" rel="nofollow" title="' . I18N::translate('Google Maps™') . '">' .
+                    $html .= '<a href="https://maps.google.com/maps?q=' . e($map_lati) . ',' . e($map_long) . '" rel="nofollow" target="_top" title="' . I18N::translate('Google Maps™') . '">' .
                         view('icons/google-maps') .
                         '<span class="sr-only">' . I18N::translate('Google Maps™') . '</span>' .
                         '</a>';
 
-                    $html .= '<a href="https://www.bing.com/maps/?lvl=15&cp=' . e($map_lati) . '~' . e($map_long) . '" rel="nofollow" title="' . I18N::translate('Bing Maps™') . '">' .
+                    $html .= '<a href="https://www.bing.com/maps/?lvl=15&cp=' . e($map_lati) . '~' . e($map_long) . '" rel="nofollow" target="_top" title="' . I18N::translate('Bing Maps™') . '">' .
                         view('icons/bing-maps') .
                         '<span class="sr-only">' . I18N::translate('Bing Maps™') . '</span>' .
                         '</a>';
 
-                    $html .= '<a href="https://www.openstreetmap.org/#map=15/' . e($map_lati) . '/' . e($map_long) . '" rel="nofollow" title="' . I18N::translate('OpenStreetMap™') . '">' .
+                    $html .= '<a href="https://www.openstreetmap.org/#map=15/' . e($map_lati) . '/' . e($map_long) . '" rel="nofollow" target="_top" title="' . I18N::translate('OpenStreetMap™') . '">' .
                         view('icons/openstreetmap') .
                         '<span class="sr-only">' . I18N::translate('OpenStreetMap™') . '</span>' .
                         '</a>';
