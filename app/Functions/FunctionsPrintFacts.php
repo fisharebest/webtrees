@@ -236,6 +236,8 @@ class FunctionsPrintFacts
                 case 'DATE':
                 case 'TIME':
                 case 'AGE':
+                case 'HUSB':
+                case 'WIFE':
                 case 'PLAC':
                 case 'ADDR':
                 case 'ALIA':
