@@ -26,12 +26,4 @@ jobs:
 
       - run: composer install --no-progress
 
-      - run: composer require pcov/clobber
-      - run: vendor/bin/pcov clobber
-
-      - run: vendor/bin/phpunit --coverage-clover=tests/coverage.xml
-
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: tests/coverage.xml
+      - run: vendor/bin/phpunit
