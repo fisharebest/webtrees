@@ -67,7 +67,7 @@ class DutchMonarchs extends AbstractModule implements ModuleHistoricEventsInterf
             "1 EVEN Wilhelmina\n2 NAME Wilhelmina Helena Pauline Maria van Oranje-Nassau\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 23 NOV 1890 TO 04 SEP 1948\n2 NOTE Koningkrijk der Nederlanden",
             "1 EVEN Juliana\n2 NAME Juliana Louise Emma Marie Wilhelmina van Oranje-Nassau\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 04 SEP 1948 TO 30 APR 1980\n2 NOTE Koningkrijk der Nederlanden",
             "1 EVEN Beatrix\n2 NAME Beatrix Wilhelmina Armgard van Oranje-Nassau\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 30 APR 1980 TO 30 APR 2013\n2 NOTE Koningkrijk der Nederlanden",
-            "1 EVEN Willem-Alexander\n2 NAME Willem-Alexander Claus George Ferdinand van Oranje-Nassau\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 30 APR 2013\n2 NOTE Koningkrijk der Nederlanden",
+            "1 EVEN Willem-Alexander\n2 NAME Willem-Alexander Claus George Ferdinand van Oranje-Nassau\n2 TYPE Koning der Nederlanden\n2 DATE FROM 30 APR 2013\n2 NOTE Koningkrijk der Nederlanden",
         ]);
     }
 }
