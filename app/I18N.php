@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Closure;
 use Collator;
 use Exception;
 use Fisharebest\Localization\Locale;
@@ -555,6 +556,24 @@ class I18N
         }
 
         return strcmp(self::strtolower($string1), self::strtolower($string2));
+    }
+
+    /**
+     * A closure which will compare strings using local collation rules.
+     *
+     * @return Closure
+     */
+    public static function comparator(): Closure
+    {
+        if (self::$collator instanceof Collator) {
+            return static function (string $x, string $y): int {
+                return (int) self::$collator->compare($x, $y);
+            };
+        }
+
+        return static function (string $x, string $y): int {
+            return strcmp(self::strtolower($x), self::strtolower($y));
+        };
     }
 
     /**
