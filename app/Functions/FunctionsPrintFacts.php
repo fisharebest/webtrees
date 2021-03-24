@@ -193,7 +193,7 @@ class FunctionsPrintFacts
         }
 
         // Print the value of this fact/event
-        // we handle ASSO later, in format_asso_rela_record()
+        // we handle ASSO later, in formatAssociateRelationship()
         if ($tag !== 'ASSO') {
             echo '<div class="field">', $element->value($value, $tree), '</div>';
         }
@@ -345,12 +345,17 @@ class FunctionsPrintFacts
             $person = Registry::individualFactory()->make($amatch[1], $event->record()->tree());
             if ($person && $person->canShowName()) {
                 // Is there a "RELA" tag
-                if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
+                if (preg_match('/\n([23]) RELA (.+)/', $amatch[2], $rmatch)) {
+                    if ($rmatch[1] === '2') {
+                        $base_tag = $event->record()->tag();
+                    } else {
+                        $base_tag = $event->tag();
+                    }
                     // Use the supplied relationship as a label
-                    $label = Registry::elementFactory()->make($event->record()::RECORD_TYPE . ':ASSO:RELA')->value($rmatch[1], $parent->tree());
+                    $label = Registry::elementFactory()->make($base_tag . ':_ASSO:RELA')->value($rmatch[2], $parent->tree());
                 } else {
                     // Use a default label
-                    $label = Registry::elementFactory()->make($event->record()::RECORD_TYPE . ':ASSO')->label();
+                    $label = Registry::elementFactory()->make($base_tag . ':_ASSO')->label();
                 }
 
                 if ($person->getBirthDate()->isOK() && $event->date()->isOK()) {
