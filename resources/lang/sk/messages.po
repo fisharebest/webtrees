@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-18 13:37+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-27 04:01+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -243,7 +243,7 @@ msgstr[2] "%s rodín"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s rodina bola zmenená.."
+msgstr[0] "%s rodina bola zmenená."
 msgstr[1] "%s rodiny boli zmenené."
 msgstr[2] "%s rodín bolo zmenených."
 
@@ -861,7 +861,7 @@ msgstr "Objekt média je záznam v rodokmeni, ktorý obsahuje informácie o medi
 #: resources/views/emails/verify-notify-text.phtml:15
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr "Nový užívateľ (%1$s) požiadal o vytvorenie účtu (%2$s) a potvrdil svoju emailovú adresu (%3$s)."
+msgstr "Nový užívateľ (%1$s) požiadal o vytvorenie účtu (%2$s) a potvrdil svoju e-mailovú adresu (%3$s)."
 
 #: app/Http/RequestHandlers/LoginAction.php:83
 #: resources/views/admin/control-panel.phtml:163
@@ -1034,7 +1034,7 @@ msgstr "Časová os zobrazujúca udalosti osoby."
 
 #: resources/views/admin/users-edit.phtml:117
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Užívateľ sa nebude môcť prihlásiť, pokiaľ nebudú zaškrtnuté voľby  „Email overený“ a „Schválené administrátorom“."
+msgstr "Užívateľ sa nebude môcť prihlásiť, pokiaľ nebudú zaškrtnuté voľby  „E-mail overený“ a „Schválené administrátorom“."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1146,7 +1146,7 @@ msgstr "Prístup k rodokmeňom"
 
 #: resources/views/admin/users-edit.phtml:95
 msgid "Account approval and email verification"
-msgstr "Účet bol schválený a e-mail overený"
+msgstr "Schválenie účtu a overenie e-mailu"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54 app/GedcomCode/GedcomCodeTemp.php:228
@@ -4699,7 +4699,7 @@ msgstr "Dátum imigrácie"
 #: app/Factories/ElementFactory.php:698 app/Factories/ElementFactory.php:714
 #: app/Factories/ElementFactory.php:1136 app/GedcomTag.php:550
 msgid "Date of last change"
-msgstr "Dátum posldnej zmeny"
+msgstr "Dátum poslednej zmeny"
 
 #: app/Factories/ElementFactory.php:312 app/GedcomTag.php:788
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:226
@@ -5760,7 +5760,7 @@ msgstr "Elul"
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -5783,7 +5783,7 @@ msgstr "E-mailová adresa"
 
 #: resources/views/admin/users-edit.phtml:101
 msgid "Email verified"
-msgstr "Email overený"
+msgstr "E-mail overený"
 
 #. I18N: gedcom tag EMIG
 #: app/Factories/ElementFactory.php:493 app/GedcomTag.php:659
@@ -5925,7 +5925,7 @@ msgstr "Názov nehnuteľnosti"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
 msgid "Estimated dates for birth and death"
-msgstr "Odhadovaný dátum pre narodenia a úmrtie"
+msgstr "Odhadovaný dátum pre narodenie a úmrtie"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:181
@@ -6374,13 +6374,13 @@ msgstr "Rodina s manželkou"
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
 msgid "Fan chart"
-msgstr "Kruhový diagram"
+msgstr "Kruhová schéma"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Kruhový diagram %s"
+msgstr "Kruhová schéma %s"
 
 #: app/Date/JalaliDate.php:259
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -6674,7 +6674,7 @@ msgstr "Meno priečinka na serveri"
 #: resources/views/emails/register-user-html.phtml:24
 #: resources/views/emails/register-user-text.phtml:18
 msgid "Follow this link to verify your email address."
-msgstr "Prosím kliknite na nasledujúci odkaz kvôli overeniu vašej e-mailovej adresy."
+msgstr "Kliknite na nasledujúci odkaz kvôli overeniu vašej e-mailovej adresy."
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -7573,7 +7573,7 @@ msgstr "Schéma presýpacích hodín"
 #: app/Module/HourglassChartModule.php:136
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Schéma presýpacích hodín osoby %s"
+msgstr "Schéma presýpacích hodín %s"
 
 #: resources/views/modules/census-assistant.phtml:111
 msgid "Household"
@@ -7755,7 +7755,7 @@ msgstr "Keď povolíte zobraziť žijúce osoby návštevníkom, tak všetky ost
 
 #: resources/views/setup/step-2-server-checks.phtml:80
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
-msgstr "Ak sa pokúsite presiahnúť tieto limity, môžou sa vám zobraziť prázdne stránky, prípadne time-outy."
+msgstr "Ak sa pokúsite prekročiť tieto limity, môžu sa vám zobraziť prázdne stránky, prípadne oznamy o uplynutí časového limitu."
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php:42
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
@@ -8058,7 +8058,7 @@ msgstr "Interné zasielanie odkazov"
 
 #: app/Services/MessageService.php:227
 msgid "Internal messaging with emails"
-msgstr "Interné odkazy spolu s e-mailami"
+msgstr "Interné odkazy s e-mailmi"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:136
 msgid "Invalid GEDCOM file - no header record found."
@@ -8543,7 +8543,7 @@ msgstr "Posledná zmena"
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
-msgstr "Posledná upomienka e-mailo bola odoslaná "
+msgstr "Posledná e-mailová pripomienka bola odoslaná "
 
 #: resources/views/statistics/other/total-events.phtml:39
 msgid "Last event"
@@ -10206,7 +10206,7 @@ msgstr "Noviny"
 
 #: app/Module/ReviewChangesModule.php:162
 msgid "Next email reminder will be sent after "
-msgstr "Ďalšia upomienka e-mailom bude odoslaná po "
+msgstr "Ďalšia e-mailová pripomienka bude odoslaná po "
 
 #: resources/views/modules/random_media/slide-show.phtml:32
 #: resources/views/modules/random_media/slide-show.phtml:34
@@ -10363,7 +10363,7 @@ msgstr "Nenašli sa žiadne zodpovedajúce fakty"
 #: resources/views/modules/gedcom_news/list.phtml:18
 #: resources/views/modules/user_blog/list.phtml:18
 msgid "No news articles have been submitted."
-msgstr "Žiadne články, novinky neboli pridané."
+msgstr "Neboli pridané žiadne žiadne novinky."
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:47
 msgid "No predefined text"
@@ -10372,7 +10372,7 @@ msgstr "Žiaden prednastavený text"
 #: resources/views/lists/datatables-attributes.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:33
 msgid "No records to display"
-msgstr "Žiadne záznamy k zobrazeniu"
+msgstr "Žiadne záznamy na zobrazenie"
 
 #: resources/views/modules/place-hierarchy/events.phtml:34
 #: resources/views/modules/place-hierarchy/events.phtml:46
@@ -10452,7 +10452,7 @@ msgstr "Nórsko"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Not approved by an administrator"
-msgstr "Neverifikované administrátorom"
+msgstr "Neoverené administrátorom"
 
 #. I18N: gedcom tag _NLIV
 #: app/Factories/ElementFactory.php:788 app/GedcomTag.php:1189
@@ -10468,7 +10468,7 @@ msgstr "Nezosobášení"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Not verified by the user"
-msgstr "Neverifikované užívateľom"
+msgstr "Neoverené užívateľom"
 
 #. I18N: gedcom tag NOTE
 #: app/Factories/ElementFactory.php:262 app/Factories/ElementFactory.php:272
@@ -11366,7 +11366,7 @@ msgstr "Prehrať"
 
 #: app/Http/RequestHandlers/ContactAction.php:120
 msgid "Please enter a valid email address."
-msgstr "Prosím zadajte platnú e-mailovú adresu."
+msgstr "Zadajte, prosím, platnú e-mailovú adresu."
 
 #: app/Http/RequestHandlers/ContactAction.php:115
 #: app/Http/RequestHandlers/PasswordResetAction.php:85
@@ -12074,7 +12074,7 @@ msgstr "Dátum pripomienky"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
-msgstr "Frekvencia pripomínacích e-mailov (v dňoch)"
+msgstr "Frekvencia e-mailových pripomienok (v dňoch)"
 
 #. I18N: gedcom tag SERV
 #: app/Factories/ElementFactory.php:1309 app/GedcomTag.php:941
@@ -12717,7 +12717,7 @@ msgstr "Poslať testovací e-mail s použitím týchto nastavení"
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:19
 msgid "Send out reminder emails"
-msgstr "Odoslať pripomínacie e-maily"
+msgstr "Odoslať pripomienkové e-maily"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
@@ -12727,7 +12727,7 @@ msgstr "Meno odosielateľa"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:64
 #: resources/views/admin/control-panel.phtml:195
 msgid "Sending email"
-msgstr "Poslanie emailu"
+msgstr "Poslanie e-mailu"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:165
@@ -12858,7 +12858,7 @@ msgstr "Nastaviť  status na „schválené“."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:638
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Ak nastavíte <b>Áno</b>, budú na stránky osôb, prameňov a rodín pridané odkazy, ktoré umožnia užívateľom otvoriť ďalšie okno so surovými údajmi, tak ako sú zapísané v súbore GEDCOM."
+msgstr "Ak nastavíte <b>áno</b>, budú na stránky osôb, prameňov a rodín pridané odkazy, ktoré umožnia užívateľom otvoriť ďalšie okno s údajmi tak, ako sú zapísané v súbore GEDCOM."
 
 #: resources/views/layouts/setup.phtml:16
 #: resources/views/layouts/setup.phtml:24
@@ -14297,13 +14297,13 @@ msgstr "Schránka výstrižkov vám umožňuje vyberať úrivky z rodokmeňa a s
 
 #: resources/views/admin/trees-preferences.phtml:395
 msgid "The date and time of the last update"
-msgstr "Dátum a čas posledného update"
+msgstr "Dátum a čas poslednej aktualizácie"
 
 #: app/Http/RequestHandlers/AccountUpdate.php:114
 #: app/Http/RequestHandlers/MapDataSave.php:86
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr "Detaily miesta „%s“ boli upravené."
+msgstr "Detaily miesta „%s“ boli aktualizované."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php:98
@@ -14572,7 +14572,7 @@ msgstr "Hierarchia miest."
 #: app/Http/RequestHandlers/TreePreferencesAction.php:143
 #: app/Http/RequestHandlers/TreePrivacyAction.php:118
 msgid "The preferences for all family trees have been updated."
-msgstr "Nastavenia pre všetky rodokmene boli upravené."
+msgstr "Nastavenia pre všetky rodokmene boli aktualizované."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:147
 #: app/Http/RequestHandlers/TreePrivacyAction.php:121
@@ -14709,7 +14709,7 @@ msgstr "Užívateľ %s bol vymazaný."
 #: resources/views/emails/register-notify-html.phtml:39
 #: resources/views/emails/register-notify-text.phtml:30
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr "Užívateľovi bol odoslaný email s informáciami potrebnými pre potvrdenie žiadosti o prístup."
+msgstr "Užívateľovi bol odoslaný e-mail s informáciami potrebnými pre potvrdenie žiadosti o prístup."
 
 #: app/Http/RequestHandlers/LoginAction.php:122
 #: app/Http/RequestHandlers/LoginAction.php:127
@@ -14867,7 +14867,7 @@ msgstr "Tento účet nie je ešte potvrdený. Počkajte, pokým ho administráto
 
 #: app/Http/RequestHandlers/LoginAction.php:132
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr "Tento účet ešte nebol overený. Prekontrolujte, prosím, vašu e-mailovú schránku, či sa tam nenachádza správa, potrebná pre verifikáciu."
+msgstr "Tento účet ešte nebol overený. Prekontrolujte, prosím, vašu e-mailovú schránku, či sa tam nenachádza správa, zaslaná na overenie."
 
 #: resources/views/modules/review_changes/config.phtml:13
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -15034,7 +15034,7 @@ msgstr "Podrobnosti o tejto osobe sú neverejné."
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:876
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Toto je zoznam čiarkami oddelených GEDCOM-tagov pre fakty, ktoré sa zobrazia na formulári pre pridanie/úpravu mena. Ak používate inú než latinskú abecedu (hebrejčina, azbuka, …), pridajte príslušný tag, napr. _HEB, ROMN, FONE atd., aby ste boli schopný uložiť tieto údaje v rôznych abecedách."
+msgstr "Toto je čiarkami oddelený zoznam GEDCOM-tagov pre fakty, ktoré sa zobrazia na formulári pre pridanie/úpravu mena. Ak používate inú než latinskú abecedu (hebrejčina, azbuka, …), pridajte príslušný tag, napr. _HEB, ROMN, FONE atd., aby ste boli schopní uložiť tieto údaje v rôznych abecedách."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: resources/views/admin/trees-preferences.phtml:766
@@ -15044,7 +15044,7 @@ msgstr "Toto je čiarkami oddelený zoznam GEDCOM-tagov, ktoré sa zobrazia pri 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: resources/views/admin/trees-preferences.phtml:712
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
-msgstr "Toto je čiarkami oddelený zoznam GEDCOM-tagov, ktoré sa zobrazia pri pridávaní novej osoby. Napríklad ak je v zozname BIRT, tak sa vo formulári zobrazí pole pre zadanie dátumu narodenia a miesta narodenia."
+msgstr "Toto je čiarkami oddelený zoznam GEDCOM-tagov, ktoré sa zobrazia pri pridávaní novej osoby. Napríklad, ak je v zozname BIRT, tak sa vo formulári zobrazí pole pre zadanie dátumu a miesta narodenia."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:889
@@ -15073,22 +15073,22 @@ msgstr "Toto je aktuálna verzia webtrees. Nie je dostupná žiadna aktualizáci
 #. I18N: Help text for the “All family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:740
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridávať k rodinám. Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú objaviť v zozname „Unikátne fakty rodiny“."
+msgstr "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridávať k rodinám. Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v tomto zozname sa nesmú objaviť v zozname „Unikátne fakty rodiny“."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:686
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k osobám. Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú objaviť v zozname „Unikátne fakty osoby“."
+msgstr "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k osobám. Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v tomto zozname sa nesmú objaviť v zozname „Unikátne fakty osoby“."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:835
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k archívom. Môžete ho upraviť pridaním alebo odstránením názvov faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú objaviť v zozname „Unikátne fakty archívu“."
+msgstr "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k archívom. Môžete ho upraviť pridaním alebo odstránením názvov faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa zobrazia v tomto zozname sa nesmú objaviť v zozname „Unikátne fakty archívu“."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:794
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k zdrojom. Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v zozname sa nesmú objaviť v zozname „Unikátne fakty zdroja“."
+msgstr "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k zdrojom. Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež vytvorením vlastných. Názvy faktov, ktoré sa objavia v tomto zozname sa nesmú objaviť v zozname „Unikátne fakty zdroja“."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:753
@@ -15098,17 +15098,17 @@ msgstr "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridať k rodin
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:699
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k osobám <u>práve raz</u>. Napríklad ak BIRT je v tomto zoznamu, užívatelia nebudú môcť pridať tento záznam k osobe viackrát než raz. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i>Fakty pridané k osobám</i>."
+msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k osobám <u>práve raz</u>. Napríklad, ak je v tomto zozname BIRT, užívatelia nebudú môcť pridať tento záznam k osobe viac než raz. Názvy faktov, ktoré sa zobrazia v tomto zozname sa nesmú objaviť v zozname <i>Fakty pridané k osobám</i>."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:848
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k archívom <u>práve raz</u>. Napríklad ak je v tomto zozname NAME, užívatelia nebudú môcť pridať tento záznam k archívu viac než jeden raz. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú objaviť v zozname <i>Fakty pridávané k archívom</i>."
+msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k archívom <u>práve raz</u>. Napríklad ak je v tomto zozname NAME, užívatelia nebudú môcť pridať tento záznam k archívu viac než jeden raz. Názvy faktov, ktoré sa zobrazia v tomto zozname sa nesmú objaviť v zozname <i>Fakty pridávané k archívom</i>."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:807
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať ku zdrojom <u>práve raz</u>. Napríklad ak je v tomto zozname TITL, užívatelia nebudú môcť pridať tento záznam ku zdrojom viac než jeden raz. Názvy faktov, ktoré sa objavia v zozname sa nesmú objaviť v zozname <i>Faktov pridávaných ku zdrojom</i>."
+msgstr "Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať ku zdrojom <u>práve raz</u>. Napríklad ak je v tomto zozname TITL, užívatelia nebudú môcť pridať tento záznam ku zdrojom viac než jeden raz. Názvy faktov, ktoré sa objavia v tomto zozname sa nesmú objaviť v zozname <i>Faktov pridávaných ku zdrojom</i>."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:85
@@ -15215,7 +15215,7 @@ msgstr "Toto nastavenie určuje, či sa v schémach zobrazí vek rodičov pri na
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:385
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Táto voľba kontroluje, či sa majú zobrazovať odhadované dátumy narodenia a úmrtia miesto zanechávania prázdnych polí na zoznamoch a schémach pre osoby, ktorých údaje nie sú známe."
+msgstr "Táto voľba určuje, či sa majú zobrazovať odhadované dátumy narodenia a úmrtia miesto prázdnych polí na zoznamoch a schémach pre osoby, ktorých údaje nie sú známe."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:288
@@ -15404,7 +15404,7 @@ msgstr "Táto stránka je dočasne nedostupná"
 
 #: resources/views/modules/privacy-policy/page.phtml:22
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr "Táto webová stránka spracúva osobné údaje pre účely historického a genealogického výskumu."
+msgstr "Táto webová stránka spracúva osobné údaje na účely historického a genealogického výskumu."
 
 #: resources/views/modules/privacy-policy/page.phtml:33
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
@@ -16074,7 +16074,7 @@ msgstr "Nadchádzajúce výročia"
 
 #: app/Http/RequestHandlers/DataFixData.php:108
 msgid "Update"
-msgstr "Potvrdiť zmenu"
+msgstr "Aktualizovať"
 
 #: resources/views/admin/data-fix-page.phtml:47
 msgid "Update all"
@@ -16278,7 +16278,7 @@ msgstr "Vanuatu"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:99
 msgid "Various statistics charts."
-msgstr "Rôzne štatistické diagramy."
+msgstr "Rôzne štatistické schémy."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
@@ -16476,7 +16476,7 @@ msgstr "Vodoznak je voliteľný a bežne sa zobrazuje len návštevníkom."
 #: resources/views/register-success-page.phtml:23
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte potvrdiť Vašu žiadosť o účet postupom, uvedeným v potvrdzujúcom e-maile. Pokiaľ Vašu požiadavku nepotvrdíte v priebehu siedmych dní, bude Vaša žiadosť automaticky zamietnutá. V takomto prípade musíte opätovne požiadať o vytvorenie účtu.<br><br>Po vykonaní inštrukcí v potvrdzujúcom je ešte potrebné, aby Váš prístup schválil administrátor.<br><br>Pre prihlásenie na túto stránku potrebujete poznať svoje užívateľské meno a heslo."
+msgstr "Teraz vám zašleme na adresu <b>%s</b> e-mail na potvrdenie. Musíte potvrdiť Vašu žiadosť o účet postupom, uvedeným v potvrdzujúcom e-maile. Pokiaľ Vašu požiadavku nepotvrdíte v priebehu siedmych dní, bude Vaša žiadosť automaticky zamietnutá. V takomto prípade musíte opätovne požiadať o vytvorenie účtu.<br><br>Po vykonaní inštrukcií v potvrdzujúcom e-maile je ešte potrebné, aby Váš prístup schválil administrátor.<br><br>Pre prihlásenie na túto stránku potrebujete poznať svoje užívateľské meno a heslo."
 
 #: resources/views/admin/control-panel.phtml:139
 #: resources/views/admin/control-panel.phtml:582
@@ -16536,7 +16536,7 @@ msgstr "Pri úprave záznamu sa zaznamenáva užívateľ a časová značka. Nie
 
 #: resources/views/admin/users-edit.phtml:108
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Pri registrácii nového užívateľa sa zašle uvítacia správa s overovacím odkazom na jeho e-mailovú adresu. Keď naň klikne vieme, že emailová adresa je správna a automataticky sa potvrdí voľba „email overený“."
+msgstr "Pri registrácii nového užívateľa sa zašle uvítacia správa s overovacím odkazom na jeho e-mailovú adresu. Keď naň klikne vieme, že e-mailová adresa je správna a automaticky sa potvrdí voľba „E-mail overený“."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:935
@@ -16550,7 +16550,7 @@ msgstr "Ak má osoba viac ako jedného manžela, mali by ste zoradiť rodiny v c
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:905
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr "Ak pridáte nového člena rodiny, bude u pridané implicitné priezvisko. Toto priezvisko bude závislé na lokálnej tradícii priezvísk."
+msgstr "Ak pridáte nového člena rodiny, bude mu pridané implicitné priezvisko. Toto priezvisko bude závislé na lokálnej tradícii priezvisk."
 
 #: resources/views/help/pending-changes.phtml:12
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
@@ -16695,7 +16695,7 @@ msgstr "Áno"
 #: resources/views/emails/register-user-text.phtml:16
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr "Požiadali ste (alebo niekto, kto tvrdí, že jste vy) o vytvorenie účtu na %1$s použitím emailové adresy %2$s."
+msgstr "Požiadali ste (alebo niekto, kto tvrdí, že ste vy) o vytvorenie účtu na %1$s použitím e-mailovej adresy %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:127
 #: app/Http/RequestHandlers/RegisterAction.php:254
@@ -16748,12 +16748,12 @@ msgstr "Môžete prečíslovať tento rodokmeň."
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:172
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr "Môžete nastaviť prístup ku konkrétnemu záznamu, faktu, alebo udalosti pridaním obmedzenia prístupu. Ak záznam, fakt, alebo udalosť nemajú obmedzenie prístupu, tak sa použijú nasledovné prednastavené obmedzenia."
+msgstr "Môžete nastaviť prístup ku konkrétnemu záznamu, faktu alebo udalosti pridaním obmedzenia prístupu. Ak záznam, fakt alebo udalosť nemajú obmedzenie prístupu, tak sa použijú nasledovné prednastavené obmedzenia."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Môžete zrýchliť zisťovanie obmedzenia prístupu pridaním údaju o úmrtí osôb, ktorých úmrtie sa dá odvodiť z iných údajov, ale nemajú záznam o úmrtí, pohrebe, kremácie a pod."
+msgstr "Môžete zrýchliť zisťovanie obmedzenia prístupu pridaním údaju o úmrtí osôb, ktorých úmrtie sa dá odvodiť z iných údajov, ale nemajú záznam o úmrtí, pohrebe, kremácii a pod."
 
 #: app/Http/RequestHandlers/LoginAction.php:115
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -16816,7 +16816,7 @@ msgstr "Musíte skontrolovať podrobnosti účtu."
 
 #: resources/views/setup/step-5-administrator.phtml:49
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr "Nastavte účet administrátora. Tento účet kontroluje celú inštaláciu webtrees. Prosím zvolte si silné heslo."
+msgstr "Nastavte účet administrátora. Tento účet má úplný prístup k všetkým možnostiam tejto inštalácie webtrees. Zvoľte, prosím, silné heslo."
 
 #: resources/views/emails/message-copy-html.phtml:20
 #: resources/views/emails/message-copy-text.phtml:16
@@ -16836,12 +16836,12 @@ msgstr "Môžete zmazať „%1$s“ z „%2$s“ a skúsiť znovu."
 
 #: resources/views/admin/users-edit.phtml:114
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "Nemal byste schvalovať účet, ak neviete, že je emailová adresa správna."
+msgstr "Nemali by ste schvaľovať účet, ak neviete, či je e-mailová adresa správna."
 
 #: resources/views/emails/register-notify-html.phtml:43
 #: resources/views/emails/register-notify-text.phtml:32
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
-msgstr "Budete informovaný emailom keď tento užívateľ potvrdí požiadavku. Potom môžete dokončiť proces aktiváciou užívateľského účtu. Nový užívateľ sa bude môcť prihlásiť až keď mu aktivujete jeho účet."
+msgstr "Budete informovaný e-mailom keď tento užívateľ potvrdí požiadavku. Potom môžete dokončiť proces aktiváciou užívateľského účtu. Nový užívateľ sa bude môcť prihlásiť až keď mu aktivujete jeho účet."
 
 #: resources/views/setup/step-5-administrator.phtml:71
 msgid "You will use this to sign in to webtrees."
@@ -19588,7 +19588,7 @@ msgstr "zoznam"
 #: app/Http/RequestHandlers/MapDataImportAction.php:186
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr "upravené miesta: %s, pridané miesta: %s"
+msgstr "aktualizované miesta: %s, pridané miesta: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:59 app/GedcomCode/GedcomCodeName.php:148
@@ -20966,11 +20966,11 @@ msgstr "webtrees vyžaduje databázu na ukladanie genealogických údajov."
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr "webtrees vyžaduje zasielanie emailov napríklad pre pripomenutie hesla, alebo oznámenia z webovej stránky."
+msgstr "webtrees musí zasielať e-maily napríklad pre pripomenutie hesla, alebo oznámenia z webovej stránky."
 
 #: app/Services/MessageService.php:228
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees odosiela maily bez ukladania"
+msgstr "webtrees odosiela e-maily bez toho, že by ich ukladal"
 
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
