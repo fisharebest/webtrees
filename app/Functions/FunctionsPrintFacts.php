@@ -483,9 +483,12 @@ class FunctionsPrintFacts
                     }
                     // Use the supplied relationship as a label
                     $label = Registry::elementFactory()->make($base_tag . ':_ASSO:RELA')->value($rmatch[2], $parent->tree());
+                } elseif (preg_match('/^1 _?ASSO/', $event->gedcom())) {
+                    // Use a default label
+                    $label = Registry::elementFactory()->make($event->tag())->label();
                 } else {
                     // Use a default label
-                    $label = Registry::elementFactory()->make($base_tag . ':_ASSO')->label();
+                    $label = Registry::elementFactory()->make($event->tag() . ':_ASSO')->label();
                 }
 
                 if ($person->getBirthDate()->isOK() && $event->date()->isOK()) {
