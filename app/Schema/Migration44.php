@@ -82,11 +82,11 @@ class Migration44 implements MigrationInterface
             // Remove invalid values.
             if (DB::connection()->getDriverName() === 'mysql') {
                 DB::table('placelocation')
-                    ->where('pl_lati', 'NOT REGEXP', '[^NS][0-9]+[.]?[0-9]*$')
-                    ->orWhere('pl_long', 'NOT REGEXP', '[^EW][0-9]+[.]?[0-9]*$')
+                    ->where('pl_lati', 'NOT REGEXP', '^[NS][0-9]+[.]?[0-9]*$')
+                    ->orWhere('pl_long', 'NOT REGEXP', '^[EW][0-9]+[.]?[0-9]*$')
                     ->update([
-                        'pl_lati' => '',
-                        'pl_long' => '',
+                        'pl_lati' => null,
+                        'pl_long' => null,
                     ]);
             }
 
