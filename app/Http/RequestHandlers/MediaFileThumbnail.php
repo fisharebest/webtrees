@@ -51,8 +51,8 @@ class MediaFileThumbnail implements RequestHandlerInterface
         assert($user instanceof UserInterface);
 
         $params  = $request->getQueryParams();
-        $xref    = $params['xref'];
-        $fact_id = $params['fact_id'];
+        $xref    = $params['xref'] ?? '';
+        $fact_id = $params['fact_id'] ?? '';
         $media   = Registry::mediaFactory()->make($xref, $tree);
 
         if ($media === null) {
