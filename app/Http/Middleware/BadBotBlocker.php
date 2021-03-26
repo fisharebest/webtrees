@@ -61,6 +61,7 @@ class BadBotBlocker implements MiddlewareInterface
         'DotBot',
         'Grapeshot',
         'ia_archiver',
+        'Linguee',
         'MJ12bot',
         'panscient',
         'PetalBot',
