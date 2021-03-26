@@ -69,6 +69,7 @@ class BadBotBlocker implements MiddlewareInterface
         'SemrushBot',
         'Turnitin',
         'XoviBot',
+        'zoominfobot',
     ];
 
     /**
