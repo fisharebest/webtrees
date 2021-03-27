@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-23 09:11+0000\n"
+"PO-Revision-Date: 2021-03-27 16:00+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -3689,75 +3689,75 @@ msgstr "Wählen: "
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr "Taufe"
+msgstr "Kindstaufe"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
-msgstr "Taufe eines Bruders"
+msgstr "Kindstaufe eines Bruders"
 
 #: app/GedcomTag.php:1199
 msgid "Christening of a child"
-msgstr "Taufe eines Kindes"
+msgstr "Kindstaufe eines Kindes"
 
 #: app/GedcomTag.php:1197
 msgid "Christening of a daughter"
-msgstr "Taufe einer Tochter"
+msgstr "Kindstaufe einer Tochter"
 
 #: app/GedcomTag.php:1208 app/GedcomTag.php:1217 app/GedcomTag.php:1226
 msgid "Christening of a grandchild"
-msgstr "Taufe eines Enkels"
+msgstr "Kindstaufe eines Enkels"
 
 #: app/GedcomTag.php:1206
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkeltochter"
 
 #: app/GedcomTag.php:1215
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkeltochter"
 
 #: app/GedcomTag.php:1224
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkeltochter"
 
 #: app/GedcomTag.php:1204
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkelsohns"
 
 #: app/GedcomTag.php:1213
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkelsohns"
 
 #: app/GedcomTag.php:1222
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkelsohns"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-brother"
-msgstr "Taufe eines Halbbruders"
+msgstr "Kinfstaufe eines Halbbruders"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr "Taufe eines Halbgeschwisters"
+msgstr "Kindstaufe eines Halbgeschwisters"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
-msgstr "Taufe einer Halbschwester"
+msgstr "Kindstaufe einer Halbschwester"
 
 #: app/GedcomTag.php:1244
 msgid "Christening of a sibling"
-msgstr "Taufe eines Geschwisters"
+msgstr "Kindstaufe eines Geschwisters"
 
 #: app/GedcomTag.php:1242
 msgid "Christening of a sister"
-msgstr "Taufe einer Schwester"
+msgstr "Kindstaufe einer Schwester"
 
 #: app/GedcomTag.php:1195
 msgid "Christening of a son"
-msgstr "Taufe eines Sohns"
+msgstr "Kindstaufe eines Sohns"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
@@ -4459,7 +4459,7 @@ msgstr "Bestattungsdatum"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr "Taufdatum"
+msgstr "Kindstaufdatum"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
@@ -7042,7 +7042,7 @@ msgstr "Er wurde bestattet"
 
 #: modules_v3/ahnentafel_report/report.xml:166
 msgid "He was christened"
-msgstr "Er wurde getauft"
+msgstr "Er wurde als Kind getauft"
 
 #: modules_v3/ahnentafel_report/report.xml:314
 msgid "He was cremated"
@@ -10807,7 +10807,7 @@ msgstr "Bestattungsort"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr "Taufort"
+msgstr "Kindstaufort"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
@@ -12387,7 +12387,7 @@ msgstr "Sie wurde bestattet"
 
 #: modules_v3/ahnentafel_report/report.xml:167
 msgid "She was christened"
-msgstr "Sie wurde getauft"
+msgstr "Sie wurde als Kind getauft"
 
 #: modules_v3/ahnentafel_report/report.xml:315
 msgid "She was cremated"
