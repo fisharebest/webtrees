@@ -80,13 +80,15 @@ class MediaFileThumbnail implements RequestHandlerInterface
 
                 $image_factory = Registry::imageFactory();
 
-                return $image_factory->mediaFileThumbnailResponse(
+                $response = $image_factory->mediaFileThumbnailResponse(
                     $media_file,
                     (int) $params['w'],
                     (int) $params['h'],
                     $params['fit'],
                     $image_factory->fileNeedsWatermark($media_file, $user)
                 );
+
+                return $response->withHeader('Cache-Control', 'public,max-age=31536000');
             }
         }
 
