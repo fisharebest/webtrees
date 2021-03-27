@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-23 09:11+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-27 16:00+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3676,77 +3676,77 @@ msgstr "Selbsterstellter Text wie unten angegeben"
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Christening"
-msgstr "Taufe"
+msgstr "Kindstaufe"
 
 #: app/Module/IndividualFactsTabModule.php:333
 msgid "Christening of a brother"
-msgstr "Taufe eines Bruders"
+msgstr "Kindstaufe eines Bruders"
 
 #: app/Module/IndividualFactsTabModule.php:312
 msgid "Christening of a child"
-msgstr "Taufe eines Kindes"
+msgstr "Kindstaufe eines Kindes"
 
 #: app/Module/IndividualFactsTabModule.php:311
 msgid "Christening of a daughter"
-msgstr "Taufe einer Tochter"
+msgstr "Kindstaufe einer Tochter"
 
 #: app/Module/IndividualFactsTabModule.php:381
 #: app/Module/IndividualFactsTabModule.php:404
 #: app/Module/IndividualFactsTabModule.php:427
 msgid "Christening of a grandchild"
-msgstr "Taufe eines Enkels"
+msgstr "Kindstaufe eines Enkels"
 
 #: app/Module/IndividualFactsTabModule.php:380
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkeltochter"
 
 #: app/Module/IndividualFactsTabModule.php:403
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkeltochter"
 
 #: app/Module/IndividualFactsTabModule.php:426
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Taufe einer Enkeltochter"
+msgstr "Kindstaufe einer Enkeltochter"
 
 #: app/Module/IndividualFactsTabModule.php:379
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkelsohns"
 
 #: app/Module/IndividualFactsTabModule.php:402
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkelsohns"
 
 #: app/Module/IndividualFactsTabModule.php:425
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Taufe eines Enkelsohns"
+msgstr "Kindstaufe eines Enkelsohns"
 
 #: app/Module/IndividualFactsTabModule.php:356
 msgid "Christening of a half-brother"
-msgstr "Taufe eines Halbbruders"
+msgstr "Kinfstaufe eines Halbbruders"
 
 #: app/Module/IndividualFactsTabModule.php:358
 msgid "Christening of a half-sibling"
-msgstr "Taufe eines Halbgeschwisters"
+msgstr "Kindstaufe eines Halbgeschwisters"
 
 #: app/Module/IndividualFactsTabModule.php:357
 msgid "Christening of a half-sister"
-msgstr "Taufe einer Halbschwester"
+msgstr "Kindstaufe einer Halbschwester"
 
 #: app/Module/IndividualFactsTabModule.php:335
 msgid "Christening of a sibling"
-msgstr "Taufe eines Geschwisters"
+msgstr "Kindstaufe eines Geschwisters"
 
 #: app/Module/IndividualFactsTabModule.php:334
 msgid "Christening of a sister"
-msgstr "Taufe einer Schwester"
+msgstr "Kindstaufe einer Schwester"
 
 #: app/Module/IndividualFactsTabModule.php:310
 msgid "Christening of a son"
-msgstr "Taufe eines Sohns"
+msgstr "Kindstaufe eines Sohns"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
@@ -4611,7 +4611,7 @@ msgstr "Bestattungsdatum"
 #: app/Factories/ElementFactory.php:468 app/GedcomTag.php:564
 #: resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
-msgstr "Taufdatum"
+msgstr "Kindstaufdatum"
 
 #: app/Factories/ElementFactory.php:473 app/GedcomTag.php:589
 #: resources/xml/reports/missing_facts_report.xml:294
@@ -7335,7 +7335,7 @@ msgstr "Er wurde bestattet"
 
 #: resources/xml/reports/ahnentafel_report.xml:167
 msgid "He was christened"
-msgstr "Er wurde getauft"
+msgstr "Er wurde als Kind getauft"
 
 #: resources/xml/reports/ahnentafel_report.xml:313
 msgid "He was cremated"
@@ -11257,7 +11257,7 @@ msgstr "Bestattungsort"
 #: app/Factories/ElementFactory.php:470 app/GedcomTag.php:566
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
-msgstr "Taufort"
+msgstr "Kindstaufort"
 
 #: app/Factories/ElementFactory.php:474 app/GedcomTag.php:591
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -11544,7 +11544,7 @@ msgstr "Datenschutz"
 #: app/Module/PrivacyPolicy.php:67 app/Module/PrivacyPolicy.php:128
 #: resources/views/modules/privacy-policy/footer.phtml:16
 msgid "Privacy policy"
-msgstr "Impressum"
+msgstr "Datenschutzerklärung"
 
 #. I18N: a restrction on viewing data
 #: resources/views/modals/restriction-fields.phtml:9
@@ -12966,7 +12966,7 @@ msgstr "Sie wurde bestattet"
 
 #: resources/xml/reports/ahnentafel_report.xml:168
 msgid "She was christened"
-msgstr "Sie wurde getauft"
+msgstr "Sie wurde als Kind getauft"
 
 #: resources/xml/reports/ahnentafel_report.xml:314
 msgid "She was cremated"
