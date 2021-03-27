@@ -71,7 +71,9 @@ class MediaFileDownload implements RequestHandlerInterface
                 $watermark = $media_file->isImage() && $image_factory->fileNeedsWatermark($media_file, $user);
                 $download  = $disposition === 'attachment';
 
-                return $image_factory->mediaFileResponse($media_file, $watermark, $download);
+                $response = $image_factory->mediaFileResponse($media_file, $watermark, $download);
+
+                return $response->withHeader('Cache-Control', 'public,max-age=31536000');
             }
         }
 
