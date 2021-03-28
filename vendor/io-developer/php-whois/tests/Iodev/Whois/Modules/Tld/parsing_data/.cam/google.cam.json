@@ -1,0 +1,19 @@
+{
+  "domainName": "google.cam",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.googledomains.com",
+    "ns2.googledomains.com",
+    "ns3.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "creationDate": "2016-12-05T02:46:58-0800",
+  "expirationDate": "2020-12-05T00:00:00-0800",
+  "states": [
+    "clientupdateprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor, Inc."
+}

@@ -1,0 +1,15 @@
+{
+  "domainName": "google.film",
+  "whoisServer": "whois.tucows.com",
+  "nameServers": [
+    "root-dns.netcup.net",
+    "second-dns.netcup.net",
+    "third-dns.netcup.net"
+  ],
+  "creationDate": "2020-01-10T09:26:25",
+  "expirationDate": "2021-01-10T09:26:26",
+  "states": [
+  ],
+  "owner": "REDACTED FOR PRIVACY",
+  "registrar": "TUCOWS, INC."
+}
