@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-27 04:01+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-31 02:30+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -730,7 +730,7 @@ msgstr "Súbor na serveri"
 #: resources/views/modals/media-file-fields.phtml:25
 #: resources/views/modals/media-file-fields.phtml:41
 msgid "A file on your computer"
-msgstr "Súbor na vašom počítači"
+msgstr "Súbor vo vašom počítači"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:73
@@ -8050,7 +8050,7 @@ msgstr "Interaktívny strom %s"
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:785 app/GedcomTag.php:1140
 msgid "Interment"
-msgstr "Pohreb"
+msgstr "Pochovanie"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
