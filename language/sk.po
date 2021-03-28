@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-27 04:01+0000\n"
+"PO-Revision-Date: 2021-03-31 02:30+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -837,7 +837,7 @@ msgstr "Súbor na serveri"
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 #: app/Module/GoogleMapsModule.php:3639
 msgid "A file on your computer"
-msgstr "Súbor na vašom počítači"
+msgstr "Súbor vo vašom počítači"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
