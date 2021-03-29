@@ -36,4 +36,20 @@ class MultimediaFormatTest extends AbstractElementTest
 
         self::$element = new MultimediaFormat('label');
     }
+
+    /**
+     * @return void
+     */
+    public function testCanonical(): void
+    {
+        self::assertSame('jpg', self::$element->canonical("file.jpg"));
+        self::assertSame('jpg', self::$element->canonical("file.jpeg"));
+        self::assertSame('jpg', self::$element->canonical("FILE.JPG"));
+        self::assertSame('jpg', self::$element->canonical("FILE.JPEG"));
+        self::assertSame('tif', self::$element->canonical("file.tif"));
+        self::assertSame('tif', self::$element->canonical("file.tiff"));
+        self::assertSame('tif', self::$element->canonical("FILE.TIF"));
+        self::assertSame('tif', self::$element->canonical("FILE.TIFF"));
+        self::assertSame('pdf', self::$element->canonical("document.pdf"));
+    }
 }
