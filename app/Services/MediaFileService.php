@@ -71,8 +71,8 @@ class MediaFileService
     ];
 
     public const EXTENSION_TO_FORM = [
-        'jpg' => 'jpeg',
-        'tif' => 'tiff',
+        'jpeg' => 'jpg',
+        'tiff' => 'tif',
     ];
 
     /**

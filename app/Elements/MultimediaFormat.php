@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use function strtolower;
+
 /**
  * MULTIMEDIA_FORMAT := {Size=3:4}
  * [ bmp | gif | jpg | ole | pcx | tif | wav ]
@@ -32,4 +34,25 @@ class MultimediaFormat extends AbstractElement
     protected const SUBTAGS = [
         'TYPE' => '0:1',
     ];
+
+    // GEDCOM uses the abbreviated versions of these extensions
+    protected const EXTENSIONS = [
+        'jpeg' => 'jpg',
+        'tiff' => 'tif',
+    ];
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        $value = parent::canonical($value);
+        $value = strtolower($value);
+
+        return self::EXTENSIONS[$value] ?? $value;
+    }
 }
