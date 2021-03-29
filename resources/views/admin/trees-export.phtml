@@ -8,6 +8,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
+ * @var string $filename
  * @var string $title
  * @var Tree   $tree
  */
@@ -19,7 +20,7 @@ use Fisharebest\Webtrees\Tree;
 <h1><?= $title ?></h1>
 
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-5">
         <div class="card">
             <div class="card-header">
                 <?= I18N::translate('A file on the server') ?>
@@ -27,6 +28,12 @@ use Fisharebest\Webtrees\Tree;
             <div class="card-body">
                 <form method="post" action="<?= e(route(ExportGedcomServer::class, ['tree' => $tree->name()])) ?>" class="form form-horizontal">
                     <?= csrf_field() ?>
+
+
+                    <div class="form-group">
+                        <label for="filename"><?= I18N::translate('Filename') ?></label>
+                        <input type="text" class="form-control" id="filename" name="filename" value="<?= e($filename) ?>">
+                    </div>
 
                     <button type="submit" class="btn btn-primary">
                         <?= view('icons/save') ?>
@@ -38,7 +45,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-5">
         <div class="card">
             <div class="card-header">
                 <?= I18N::translate('A file on your computer') ?>

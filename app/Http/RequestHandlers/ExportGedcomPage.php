@@ -28,6 +28,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function e;
+use function pathinfo;
+use function strtolower;
+
+use const PATHINFO_EXTENSION;
 
 /**
  * Show download forms/optiosn.
@@ -50,9 +54,17 @@ class ExportGedcomPage implements RequestHandlerInterface
 
         $this->layout = 'layouts/administration';
 
+        $filename = $tree->name();
+
+        // Force a ".ged" suffix
+        if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {
+            $filename .= '.ged';
+        }
+
         return $this->viewResponse('admin/trees-export', [
-            'title' => $title,
-            'tree'  => $tree,
+            'filename' => $filename,
+            'title'    => $title,
+            'tree'     => $tree,
         ]);
     }
 }
