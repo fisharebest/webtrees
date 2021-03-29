@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '6e316ca3bf7babd861e1e04c78ee0a2ed3adf3c8',
+    'reference' => '6d39c0762b04fb3a09a62f8569784d169ce87df7',
     'name' => 'fisharebest/webtrees',
   ),
   'versions' => 
@@ -135,7 +135,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '6e316ca3bf7babd861e1e04c78ee0a2ed3adf3c8',
+      'reference' => '6d39c0762b04fb3a09a62f8569784d169ce87df7',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -220,12 +220,12 @@
     ),
     'league/commonmark' => 
     array (
-      'pretty_version' => '1.5.7',
-      'version' => '1.5.7.0',
+      'pretty_version' => '1.5.8',
+      'version' => '1.5.8.0',
       'aliases' => 
       array (
       ),
-      'reference' => '11df9b36fd4f1d2b727a73bf14931d81373b9a54',
+      'reference' => '08fa59b8e4e34ea8a773d55139ae9ac0e0aecbaf',
     ),
     'league/flysystem' => 
     array (
@@ -462,12 +462,12 @@
     ),
     'symfony/cache' => 
     array (
-      'pretty_version' => 'v4.4.20',
-      'version' => '4.4.20.0',
+      'pretty_version' => 'v4.4.21',
+      'version' => '4.4.21.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8fa248b0105d962ac279ae973dee2a32ae009dee',
+      'reference' => 'b7ff54be3f3eb1ce09643692f0c309b1b27bc992',
     ),
     'symfony/cache-contracts' => 
     array (
@@ -568,12 +568,12 @@
     ),
     'symfony/translation' => 
     array (
-      'pretty_version' => 'v4.4.20',
-      'version' => '4.4.20.0',
+      'pretty_version' => 'v4.4.21',
+      'version' => '4.4.21.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2271b6d577018a7dea75a9162a08ac84f8234deb',
+      'reference' => 'eb8f5428cc3b40d6dffe303b195b084f1c5fbd14',
     ),
     'symfony/translation-contracts' => 
     array (
