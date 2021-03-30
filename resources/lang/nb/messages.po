@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-18 13:37+0000\nLast-Translator: Eyolf Østrem <eyolf@oestrem.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-31 02:30+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -470,7 +470,7 @@ msgstr "(%s etter dødsfall)"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr "(alder %s)"
+msgstr "(%s gammel)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:358
