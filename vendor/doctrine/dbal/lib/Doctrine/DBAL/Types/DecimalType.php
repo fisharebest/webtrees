@@ -14,15 +14,15 @@ class DecimalType extends Type
      */
     public function getName()
     {
-        return Type::DECIMAL;
+        return Types::DECIMAL;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
-        return $platform->getDecimalTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getDecimalTypeDeclarationSQL($column);
     }
 
     /**

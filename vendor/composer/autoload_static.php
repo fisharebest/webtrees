@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6
+class ComposerStaticInit919f273f6cb9099e3b8d4da41df99126
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -109,6 +109,7 @@ class ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6
         ),
         'D' => 
         array (
+            'Doctrine\\Deprecations\\' => 22,
             'Doctrine\\DBAL\\' => 14,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
@@ -316,6 +317,10 @@ class ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
+        'Doctrine\\Deprecations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations',
+        ),
         'Doctrine\\DBAL\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/dbal/lib/Doctrine/DBAL',
@@ -382,10 +387,10 @@ class ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit7d360cc4dbe7b779c9aaf36521d08fe6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit919f273f6cb9099e3b8d4da41df99126::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit919f273f6cb9099e3b8d4da41df99126::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit919f273f6cb9099e3b8d4da41df99126::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit919f273f6cb9099e3b8d4da41df99126::$classMap;
 
         }, null, ClassLoader::class);
     }

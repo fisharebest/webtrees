@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '6d39c0762b04fb3a09a62f8569784d169ce87df7',
+    'reference' => '49142d24f827c8e92003844d5a40aaeaa64f5182',
     'name' => 'fisharebest/webtrees',
   ),
   'versions' => 
@@ -44,12 +44,21 @@ private static $installed = array (
     ),
     'doctrine/dbal' => 
     array (
-      'pretty_version' => 'v2.9.3',
-      'version' => '2.9.3.0',
+      'pretty_version' => '2.13.0',
+      'version' => '2.13.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7345cd59edfa2036eb0fa4264b77ae2576842035',
+      'reference' => '67d56d3203b33db29834e6b2fcdbfdc50535d796',
+    ),
+    'doctrine/deprecations' => 
+    array (
+      'pretty_version' => 'v0.5.3',
+      'version' => '0.5.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9504165960a1f83cc1480e2be1dd0a0478561314',
     ),
     'doctrine/event-manager' => 
     array (
@@ -148,7 +157,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '6d39c0762b04fb3a09a62f8569784d169ce87df7',
+      'reference' => '49142d24f827c8e92003844d5a40aaeaa64f5182',
     ),
     'guzzlehttp/guzzle' => 
     array (
