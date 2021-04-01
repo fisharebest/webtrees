@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-01-13 06:50+0000\n"
-"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
+"PO-Revision-Date: 2021-04-01 13:26+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/el/>\n"
 "Language: el\n"
@@ -19084,7 +19084,7 @@ msgstr "9ος ξάδερφος"
 #: modules_v3/individual_ext_report/report.xml:182
 #: modules_v3/individual_report/report.xml:178
 msgid "no"
-msgstr "Όχι"
+msgstr "όχι"
 
 #. I18N: None of the other options
 #: admin_site_config.php:111 admin_trees_config.php:63
@@ -20125,7 +20125,7 @@ msgstr "ετών"
 #: modules_v3/individual_ext_report/report.xml:179
 #: modules_v3/individual_report/report.xml:175
 msgid "yes"
-msgstr "Ναι"
+msgstr "ναι"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:91
