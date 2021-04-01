@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-01-03 13:32+0000\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
+"PO-Revision-Date: 2021-04-01 13:26+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +147,7 @@ msgstr "%1$s × %2$s pixelů"
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:549 app/Module/StatisticsChartModule.php:862
@@ -524,7 +525,7 @@ msgstr "(ve věku %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(ve věku %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -533,7 +534,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(ve věku %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -789,7 +790,7 @@ msgstr "Seznam jednotlivců."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Seznam míst."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -1530,7 +1531,7 @@ msgstr "2. řádek adresy"
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
 msgid "Address line 3"
-msgstr ""
+msgstr "3. řádek adresy"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55 app/GedcomCode/GedcomCodeTemp.php:231
@@ -1590,7 +1591,7 @@ msgstr "Adoptován matkou"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
-msgstr ""
+msgstr "Osvojené jméno"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
@@ -1670,7 +1671,7 @@ msgstr "Adopce syna"
 
 #: app/Factories/ElementFactory.php:423
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Osvojení rodiče"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:471 app/GedcomTag.php:569
@@ -2006,7 +2007,7 @@ msgstr "Číslo souboru předků"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Ancestry PID"
-msgstr ""
+msgstr "PID původu"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -2600,7 +2601,7 @@ msgstr "Barbados"
 
 #: app/Factories/ElementFactory.php:1082
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Základní tag GEDCOMu"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:446 app/GedcomTag.php:496
@@ -2853,7 +2854,7 @@ msgstr "Počátek rozmezí data narození"
 
 #: app/Factories/ElementFactory.php:756
 msgid "Birth name"
-msgstr ""
+msgstr "Rodné jméno"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -2930,7 +2931,7 @@ msgstr "Narození syna"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Birth parents"
-msgstr ""
+msgstr "Rodní rodiče"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3409,7 +3410,7 @@ msgstr "Kategorie"
 
 #: app/Factories/ElementFactory.php:1075 app/Factories/ElementFactory.php:1117
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #. I18N: gedcom tag CAUS
 #: app/Factories/ElementFactory.php:256 app/Factories/ElementFactory.php:390
@@ -3521,7 +3522,7 @@ msgstr "Změnit bloky na stránce „Moje stránka“"
 #: resources/views/modules/recent_changes/changes-list.phtml:51
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Změnil %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:49
@@ -3983,7 +3984,7 @@ msgstr "Dokončeno; datum neznámé"
 
 #: app/Factories/ElementFactory.php:1076 app/Factories/ElementFactory.php:1118
 msgid "Completion date"
-msgstr ""
+msgstr "Datum dokončení"
 
 #: app/Http/RequestHandlers/HelpText.php:284
 #: resources/views/admin/trees-export.phtml:57
@@ -4092,7 +4093,7 @@ msgstr "Převést tagy CEME do standardu GEDCOM 5.5.1"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:84
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Převést tagy NAME:_XXX na GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
@@ -4123,7 +4124,7 @@ msgstr "Cookies"
 #: app/Factories/ElementFactory.php:269 app/Factories/ElementFactory.php:401
 #: app/Factories/ElementFactory.php:1141 app/GedcomTag.php:770
 msgid "Coordinates"
-msgstr ""
+msgstr "Souřadnice"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84 app/GedcomCode/GedcomCodeTemp.php:318
@@ -4170,7 +4171,7 @@ msgstr "Opravit záznamy NAME ve tvaru 'Jan/NOVÁK/' NEBO 'Jan /NOVÁK', které 
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Podobnost"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4215,7 +4216,7 @@ msgstr "Vytvořit nový rodokmen"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Vytvořit místo"
 
 #: app/Elements/XrefMedia.php:61 app/Functions/FunctionsEdit.php:492
 #: resources/views/modals/create-media-from-file.phtml:19
@@ -4245,7 +4246,7 @@ msgstr "Vytvořit nový pramen"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Vytvořit podřízení"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:555
 #: resources/views/modals/create-submitter.phtml:16
@@ -4274,7 +4275,7 @@ msgstr "Vytvořit, aktualizovat a smazat rodokmen pro každý soubor GEDCOM ve s
 
 #: app/Factories/ElementFactory.php:1069 app/Factories/ElementFactory.php:1111
 msgid "Creation date"
-msgstr ""
+msgstr "Datum vytvoření"
 
 #. I18N: gedcom tag CREM
 #: app/Factories/ElementFactory.php:482 app/GedcomTag.php:603
@@ -4595,7 +4596,7 @@ msgstr "Datum obřadu LDS (child sealing)"
 
 #: app/Factories/ElementFactory.php:476
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Datum konfirmace LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:497 app/GedcomTag.php:669
@@ -5177,7 +5178,7 @@ msgstr "Výchozí motiv"
 #: app/Factories/ElementFactory.php:1090 app/Factories/ElementFactory.php:1091
 #: app/Factories/ElementFactory.php:1092
 msgid "Definition"
-msgstr ""
+msgstr "Definice"
 
 #. I18N: gedcom tag _DEG
 #: app/Factories/ElementFactory.php:877 app/GedcomTag.php:1068
@@ -5929,7 +5930,7 @@ msgstr "Esfand"
 
 #: app/Factories/ElementFactory.php:760
 msgid "Estate name"
-msgstr ""
+msgstr "Název majetku"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
@@ -6293,7 +6294,7 @@ msgstr "Rodina od %s"
 
 #: app/Factories/ElementFactory.php:1062
 msgid "Family status"
-msgstr ""
+msgstr "Status rodiny"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
@@ -6958,7 +6959,7 @@ msgstr "Pohřeb"
 
 #: app/Factories/ElementFactory.php:351
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:23
@@ -6977,7 +6978,7 @@ msgstr "Soubor GEDCOM"
 #: app/Factories/ElementFactory.php:1053 app/Factories/ElementFactory.php:1094
 #: app/Factories/ElementFactory.php:1175 app/GedcomTag.php:1121
 msgid "GOV identifier"
-msgstr ""
+msgstr "Identifikátor GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7065,7 +7066,7 @@ msgstr "Generace předků"
 
 #: app/Factories/ElementFactory.php:717
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Generace potomků"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7190,7 +7191,7 @@ msgstr "Kmotři"
 
 #: app/Factories/ElementFactory.php:469
 msgid "Godparents"
-msgstr ""
+msgstr "Kmotři"
 
 #: app/Elements/RelationIsDescriptor.php:66
 #: app/Elements/RelationIsDescriptor.php:101
@@ -7507,11 +7508,11 @@ msgstr "Schovat přede všemi"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Skrýt nepoužitá místa"
 
 #: app/Factories/ElementFactory.php:1179
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Hierarchický vztah"
 
 #. I18N: gedcom tag _PRIM
 #: app/Factories/ElementFactory.php:810 app/Factories/ElementFactory.php:1107
@@ -8059,7 +8060,7 @@ msgstr "Interaktivní strom pro %s"
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:785 app/GedcomTag.php:1140
 msgid "Interment"
-msgstr ""
+msgstr "Pohřbení"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
@@ -8466,7 +8467,7 @@ msgstr "Obřad LDS (spouse sealing)"
 #: app/Factories/ElementFactory.php:836 app/Factories/ElementFactory.php:850
 #: app/Factories/ElementFactory.php:854 app/Factories/ElementFactory.php:869
 msgid "Label"
-msgstr ""
+msgstr "Štítek"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -8792,7 +8793,7 @@ msgstr "Umístění"
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "Místa"
 
 #: app/Elements/RelationIsDescriptor.php:141
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -10169,7 +10170,7 @@ msgstr "Nová Kaledonie"
 #: app/Factories/ElementFactory.php:1085 app/Factories/ElementFactory.php:1086
 #: app/Factories/ElementFactory.php:1087
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "Nový tag GEDCOM"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
@@ -10988,7 +10989,7 @@ msgstr "Paraguay"
 
 #: app/Factories/ElementFactory.php:1176
 msgid "Parent"
-msgstr ""
+msgstr "Rodič"
 
 #: app/Factories/ElementFactory.php:578
 #: app/Http/RequestHandlers/IndividualPage.php:223
@@ -11156,7 +11157,7 @@ msgstr "Název foneticky"
 
 #: app/Factories/ElementFactory.php:531
 msgid "Phonetic type"
-msgstr ""
+msgstr "Fonetický typ"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:74 app/Factories/ElementFactory.php:807
@@ -11244,7 +11245,7 @@ msgstr "Místo obřadu LDS (child sealing)"
 
 #: app/Factories/ElementFactory.php:478
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "Místo konfirmace LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:499 app/GedcomTag.php:672
@@ -11572,7 +11573,7 @@ msgstr "Tisknout základní události, i když jsou prázdné"
 
 #: app/Factories/ElementFactory.php:1077 app/Factories/ElementFactory.php:1119
 msgid "Priority"
-msgstr ""
+msgstr "Priorita"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
@@ -11763,19 +11764,19 @@ msgstr "Rada"
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
@@ -12079,7 +12080,7 @@ msgstr "Znovu nahrát mapu"
 
 #: app/Factories/ElementFactory.php:1078 app/Factories/ElementFactory.php:1120
 msgid "Reminder date"
-msgstr ""
+msgstr "Datum upomínky"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
@@ -12220,7 +12221,7 @@ msgstr "Zažádat o nový uživatelský účet"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Bádání"
 
 #. I18N: gedcom tag _TODO
 #: app/Factories/ElementFactory.php:752 app/Factories/ElementFactory.php:791
@@ -12321,7 +12322,7 @@ msgstr "Latinkou"
 
 #: app/Factories/ElementFactory.php:537
 msgid "Romanized name"
-msgstr ""
+msgstr "Romanizované jméno"
 
 #: app/Factories/ElementFactory.php:273 app/Factories/ElementFactory.php:405
 #: app/GedcomTag.php:876
@@ -12334,7 +12335,7 @@ msgstr "Název v latince"
 
 #: app/Factories/ElementFactory.php:544
 msgid "Romanized type"
-msgstr ""
+msgstr "Romanizovaný typ"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:221
@@ -12343,7 +12344,7 @@ msgstr "Kořeny"
 
 #: app/Factories/ElementFactory.php:1106
 msgid "Rufname"
-msgstr ""
+msgstr "Přezdívka"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
@@ -12509,7 +12510,7 @@ msgstr "Saúdská Arábie"
 
 #: app/Factories/ElementFactory.php:1081
 msgid "Schema"
-msgstr ""
+msgstr "Schéma"
 
 #: app/Factories/ElementFactory.php:492 app/Factories/ElementFactory.php:518
 #: app/GedcomTag.php:651
@@ -12765,7 +12766,7 @@ msgstr "Odloučení"
 #. I18N: gedcom tag _SEPR
 #: app/Factories/ElementFactory.php:833 app/GedcomTag.php:1214
 msgid "Separation"
-msgstr ""
+msgstr "Odloučení"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -13281,7 +13282,7 @@ msgstr "Ukázat na mapě místa narození předků."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Zobrazit datum a čas"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -13566,6 +13567,9 @@ msgstr "Některé genealogické programy vytvářejí soubory GEDCOM, které obs
 #: app/Module/FixNameTags.php:95
 msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"Některé genelealogické aplikace ukládají všechna jména do jediného záznamu "
+"jmen pomocí vlastních tagů jako jsou _MARNM a _AKA. Alternativou je "
+"vytvoření nového záznamu jména pro každé jméno."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:668
@@ -13669,7 +13673,7 @@ msgstr "Pramen"
 #: app/Factories/ElementFactory.php:432 app/Factories/ElementFactory.php:1061
 #: app/Factories/ElementFactory.php:1066 app/Factories/ElementFactory.php:1102
 msgid "Source citation"
-msgstr ""
+msgstr "Citace pramene"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:920
@@ -14473,7 +14477,7 @@ msgstr "Menu Seznamy."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 msgid "The location has been created"
-msgstr ""
+msgstr "Místo bylo vytvořeno"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
@@ -14557,7 +14561,7 @@ msgstr "Je vytvořena poznámka"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Chybí parametr \"%s\"."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -14614,7 +14618,7 @@ msgstr "Předpona je nepovinná, ale doporučená. Jestliže přidělíte jmén�
 
 #: app/Factories/ElementFactory.php:1071 app/Factories/ElementFactory.php:1113
 msgid "The problem"
-msgstr ""
+msgstr "Problém"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14649,7 +14653,7 @@ msgstr "Nastavení serveru je v pořádku."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Server tento požadavek nerozeznal."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
@@ -14667,7 +14671,7 @@ msgstr "Velikost rodokmenu, nejstarší a nejnovější události, společná jm
 
 #: app/Factories/ElementFactory.php:1068 app/Factories/ElementFactory.php:1110
 msgid "The solution"
-msgstr ""
+msgstr "Řešení"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -14675,7 +14679,7 @@ msgstr "Je vytvořen pramen"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Podřízení bylo vytvořeno"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -14885,7 +14889,7 @@ msgstr "Tento blok zobrazí editorům seznam záznamů s dosud neschválenými z
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "To mohla způsobit chyba v %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -14897,7 +14901,7 @@ msgstr "Tato emailová adresa se použije pro zasílání připomínek k heslu, 
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Tato událost nastala, ale nejsou známy podrobnosti."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15900,15 +15904,15 @@ msgstr "Typ"
 
 #: app/Factories/ElementFactory.php:1146
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Typ zkratky"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Typ administrativního ID"
 
 #: app/Factories/ElementFactory.php:1174
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Typ demografického údaje"
 
 #: app/Factories/ElementFactory.php:304 app/Factories/ElementFactory.php:506
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:688
@@ -15921,19 +15925,19 @@ msgstr "Typ faktu"
 
 #: app/Factories/ElementFactory.php:1163
 msgid "Type of location"
-msgstr ""
+msgstr "Typ místa"
 
 #: app/Factories/ElementFactory.php:314
 msgid "Type of marriage"
-msgstr ""
+msgstr "Typ sňatku"
 
 #: app/Factories/ElementFactory.php:547
 msgid "Type of name"
-msgstr ""
+msgstr "Typ jména"
 
 #: app/Factories/ElementFactory.php:1074 app/Factories/ElementFactory.php:1116
 msgid "Type of research task"
-msgstr ""
+msgstr "Typ badatelského úkolu"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -17270,7 +17274,7 @@ msgstr "sčítání přidáno"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "postižený"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
@@ -17296,7 +17300,7 @@ msgstr "dítě"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "občan"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17355,7 +17359,7 @@ msgstr "vytvořit"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulturní"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17427,7 +17431,7 @@ msgstr "zemřel"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "vyvrácený"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -17944,7 +17948,7 @@ msgstr "pohlaví"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "zeměpisný"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -19503,7 +19507,7 @@ msgstr "on sám"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "domácnost"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -20041,7 +20045,7 @@ msgstr "procento"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "politický"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20066,7 +20070,7 @@ msgstr "hlavní důkaz"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "ověřený"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
@@ -20104,7 +20108,7 @@ msgstr "odmítnuta"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "náboženský"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
@@ -20417,12 +20421,12 @@ msgstr "zobrazit"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "zobrazit změny provedené ve webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "zobrazit změny zaznamenané v genealogických údajích"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
