@@ -1,5 +1,18 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-03-01 12:17+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/webtrees/webtrees/nb_NO/>\nLanguage: nb\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr ""
+"Project-Id-Version: webtrees\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2021-02-27 08:59+0000\n"
+"PO-Revision-Date: 2021-04-01 13:26+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
+"webtrees/webtrees-20/nb_NO/>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -174,7 +187,7 @@ msgstr "%s og hans aner"
 #: app/Module/ClippingsCartModule.php:944
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s og de personer knyttet til den."
+msgstr "%s og personer knyttet til den."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:508
@@ -470,7 +483,7 @@ msgstr "(%s etter dødsfall)"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr "(alder %s)"
+msgstr "(%s gammel)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:358
@@ -478,7 +491,7 @@ msgstr "(alder %s)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(alder %s)"
+msgstr "(%s gammel)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:354
@@ -487,7 +500,7 @@ msgstr "(alder %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "( %s gammel)"
+msgstr "(%s gammel)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -496,7 +509,7 @@ msgstr "( %s gammel)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "( %s gammel)"
+msgstr "(%s gammel)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -642,7 +655,7 @@ msgstr "En URL"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:110
 msgid "A chart displaying relationships between two individuals."
-msgstr "Et diagram som viser slekskap mellom to personer."
+msgstr "Et diagram som viser slektskap mellom to personer."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
@@ -2563,7 +2576,7 @@ msgstr "Barbados"
 
 #: app/Factories/ElementFactory.php:1082
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Basis GEDCOM-tag"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:446 app/GedcomTag.php:496
@@ -4207,7 +4220,7 @@ msgstr "Opprett en ny kilde"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Opprett et bidrag"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:555
 #: resources/views/modals/create-submitter.phtml:16
@@ -6546,7 +6559,7 @@ msgstr "Finn spesialtegn"
 
 #: app/Module/RelationshipsChartModule.php:713
 msgid "Find all possible relationships"
-msgstr "Finn alle mulige slekskap"
+msgstr "Finn alle mulige slektskap"
 
 #: app/Module/RelationshipsChartModule.php:441
 msgid "Find any relationship"
@@ -6559,7 +6572,7 @@ msgstr "Finn duplikat"
 
 #: app/Module/RelationshipsChartModule.php:715
 msgid "Find other relationships"
-msgstr "Finn andre slekskap"
+msgstr "Finn andre slektskap"
 
 #: app/Module/RelationshipsChartModule.php:442
 #: resources/views/modules/relationships-chart/page.phtml:56
@@ -6939,7 +6952,7 @@ msgstr "GEDCOMfil"
 #: app/Factories/ElementFactory.php:1053 app/Factories/ElementFactory.php:1094
 #: app/Factories/ElementFactory.php:1175 app/GedcomTag.php:1121
 msgid "GOV identifier"
-msgstr ""
+msgstr "GOV identifikator"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7558,7 +7571,7 @@ msgstr "Houston, Texas, USA"
 #. I18N: Configuration option
 #: resources/views/modules/relationships-chart/config.phtml:45
 msgid "How much recursion to use when searching for relationships"
-msgstr "Grad av rekursjon brukt i søk av slekskap"
+msgstr "Grad av rekursjon brukt i søk av slektskap"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:245
@@ -8428,7 +8441,7 @@ msgstr "Ektefelles besegling (mormon)"
 #: app/Factories/ElementFactory.php:836 app/Factories/ElementFactory.php:850
 #: app/Factories/ElementFactory.php:854 app/Factories/ElementFactory.php:869
 msgid "Label"
-msgstr ""
+msgstr "Etikett"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -11969,7 +11982,7 @@ msgstr "Nære slektninger"
 #: app/GedcomTag.php:899 app/Module/BranchesListModule.php:399
 #: app/Module/BranchesListModule.php:437
 msgid "Relationship"
-msgstr "Slektskap"
+msgstr "Forbindelse"
 
 #. I18N: gedcom tag _FREL
 #: app/Factories/ElementFactory.php:815 app/GedcomTag.php:1112
@@ -12566,7 +12579,7 @@ msgstr "Søk tekst/mønster"
 
 #: resources/views/modules/relationships-chart/config.phtml:24
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
-msgstr "Søk etter alle mulige slekskap kan ta lang tid i komplekse trær."
+msgstr "Søk etter alle mulige slektskap kan ta lang tid i komplekse trær."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:179 app/GedcomCode/GedcomCodeTemp.php:603
@@ -16521,7 +16534,11 @@ msgstr "Når du legger til, endrer eller sletter informasjon, blir ikke endringe
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Når en bruker er knyttet til en personregistrering i et slektstre og har rollen som medlem, redigerer (editor) eller moderator, kan du nekte brukeren tilgang til nålevende med fjernt slektskap. Du angir antall slektskapstrinn brukeren får lov til å se."
+msgstr ""
+"Når en bruker er knyttet til en personregistrering i et slektstre og har "
+"rollen som medlem, redigerer (editor) eller moderator, kan brukeren nektes "
+"tilgang til nålevende med fjernt slektskap. Angi antall slektskapstrinn "
+"brukeren får se."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:27
