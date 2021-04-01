@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2020-05-04 15:39+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
-"Language: ko\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-01 13:27+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -241,7 +229,7 @@ msgstr[0] "%s 가족이 업데이트 되었습니다."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
+msgstr[0] "%s 가계도들"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -505,117 +493,117 @@ msgstr ""
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:324
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Statistics/Service/CenturyService.php:67
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "10번째"
 
 #: app/Statistics/Service/CenturyService.php:65
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "11번째"
 
 #: app/Statistics/Service/CenturyService.php:63
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "12번째"
 
 #: app/Statistics/Service/CenturyService.php:61
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "13번째"
 
 #: app/Statistics/Service/CenturyService.php:59
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14번째"
 
 #: app/Statistics/Service/CenturyService.php:57
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15번째"
 
 #: app/Statistics/Service/CenturyService.php:55
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "16번째"
 
 #: app/Statistics/Service/CenturyService.php:53
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "17번째"
 
 #: app/Statistics/Service/CenturyService.php:51
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "18번째"
 
 #: app/Statistics/Service/CenturyService.php:49
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "19번째"
 
 #: app/Statistics/Service/CenturyService.php:85
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "1번째"
 
 #: app/Statistics/Service/CenturyService.php:47
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "20번째"
 
 #: app/Statistics/Service/CenturyService.php:45
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "21번째"
 
 #: app/Statistics/Service/CenturyService.php:83
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "2번째"
 
 #: app/Statistics/Service/CenturyService.php:81
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "3번째"
 
 #: app/Statistics/Service/CenturyService.php:79
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "4번째"
 
 #: app/Statistics/Service/CenturyService.php:77
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "5번째"
 
 #: app/Statistics/Service/CenturyService.php:75
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "6번째"
 
 #: app/Statistics/Service/CenturyService.php:73
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "7번째"
 
 #: app/Statistics/Service/CenturyService.php:71
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "8번째"
 
 #: app/Statistics/Service/CenturyService.php:69
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "9번째"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
 #: app/Http/RequestHandlers/UserEditPage.php:114
 msgid "<default theme>"
-msgstr ""
+msgstr "<기본 테마>"
 
 #: resources/views/register-page.phtml:26
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -626,7 +614,7 @@ msgstr "<div class=\"largeError\">Notice:</div><div class=\"error\">이 양식�
 #: app/Functions/FunctionsPrintFacts.php:525 app/GedcomTag.php:1283
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
-msgstr ""
+msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:33
@@ -670,12 +658,12 @@ msgstr "인물의 수명 차트."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr ""
+msgstr "자녀는 둘 이상의 부모 세트를 가질 수 있습니다. 자녀와 부모 사이의 관계는 생물학적, 법적 또는 현지 문화와 전통을 기반으로 할 수 있습니다. 가계도가 지정되지 않으면 생물학적 관계가 가정됩니다."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:70
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr ""
+msgstr "일반적인 오류는 같은 레코드에 여러 개의 링크가있는 것입니다 (예 : 가족 레코드에 같은 아이를 두 번 이상 나열하는 것)."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
@@ -726,7 +714,7 @@ msgstr ""
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
-msgstr ""
+msgstr "중재자가 검토해야하는 변경 사항 목록 및 EMAIL 알림."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:57
@@ -736,7 +724,7 @@ msgstr ""
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:84
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "자주 묻는 질문 및 답변 목록."
 
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:111
@@ -756,7 +744,7 @@ msgstr ""
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:99
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "최근에 업데이트 된 레코드 목록."
 
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:84
@@ -781,27 +769,27 @@ msgstr ""
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:75
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "가계도에 연결된 직업 및 활동 목록."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:77
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr ""
+msgstr "가까운 미래에 일어날 히브리 사망의 기념일 목록."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:112
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "오늘의 주요 기념일."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:116
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "며칠 뒤에 있을 주요 기념일."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "가장 많은 이름의 목록입니다."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:76
@@ -811,29 +799,29 @@ msgstr "가장 많은 가문이름의 목록입니다."
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:58
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "가장 많이 본 페이지 목록입니다."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "현재 온라인 상태 인 사용자 및 방문자 목록."
 
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr ""
+msgstr "미디어 개체는 미디어 파일에 대한 정보가 포함 된 가계도의 레코드입니다. 이 정보에는 제목, 저작권 표시, 대화 내용, 개인 정보 제한 등이 포함될 수 있습니다. 사진 또는 비디오와 같은 미디어 파일은 로컬 (이 웹 서버) 또는 원격 (다른 웹 서버)에 저장 될 수 있습니다."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:20
 #: resources/views/emails/verify-notify-text.phtml:15
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
-msgstr ""
+msgstr "새 사용자 (%1$s)가 계정 (%2$s)을 요청하고 이메일 주소 (%3$s)를 확인했습니다."
 
 #: app/Http/RequestHandlers/LoginAction.php:83
 #: resources/views/admin/control-panel.phtml:163
 #: resources/views/admin/upgrade/wizard.phtml:29
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "새로운 버전의 Webtrees를 사용할 수 있습니다."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:103
 #, php-format
@@ -843,14 +831,14 @@ msgstr ""
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "노트를 기록하거나 저널을 보관하는 개인 구역."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:22
 #: resources/views/emails/register-notify-text.phtml:18
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "사용자가 %s 에서 Webtree에 등록했습니다."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
@@ -884,7 +872,7 @@ msgstr "특정 출처에서 지원하는 정보에 대한 보고서."
 #: app/Module/FamilyGroupReportModule.php:56
 #: resources/xml/reports/family_group_report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "가족 및 세부 보고서."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
@@ -918,7 +906,7 @@ msgstr "결혼한 시간이나 장소에 관한 인물에 대한 보고서."
 #: app/Module/ChangeReportModule.php:56
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "최근 및 보류중인 변경 사항에 대한 보고서입니다."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:56
@@ -935,7 +923,7 @@ msgstr "인물과 밀접한 관련이있는 가족에 대한 보고서."
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:56
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "출처가 제공 한 정보의 보고서."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:56
@@ -947,11 +935,11 @@ msgstr "인물 및 친척에게 누락 된 정보에 대한 보고서."
 #: app/Module/BirthDeathMarriageReportModule.php:52
 #: resources/xml/reports/bdm_report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "중요한 날짜나 장소에 대한 기록의 보고서."
 
 #: resources/views/admin/users-edit.phtml:233
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr ""
+msgstr "등급은 데이터를 보거나 환경 설정을 변경할 수있는 권한을 부여하는 일련의 액세스 권한입니다. 액세스 권한은 등급에 할당되며 사용자에게 등급이 부여됩니다. 각 가계도는 각 등급에 다른 액세스 권한을 할당 할 수 있으며 사용자는 각 가계도에서 다른 등급을 가질 수 있습니다."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
@@ -1000,7 +988,7 @@ msgstr "인물의 사건을 표시하는 타임 라인."
 
 #: resources/views/admin/users-edit.phtml:117
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr ""
+msgstr "\"이메일 확인\"과 \"관리자가 승인 함\"이 모두 선택 될 때까지 사용자는 로그인 할 수 없습니다."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1020,7 +1008,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1040,35 +1028,35 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53 app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "나이지리아 아바"
 
 #: app/Date/JalaliDate.php:266
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:139
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:229
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:184
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
@@ -1081,7 +1069,7 @@ msgstr "Aban"
 #: resources/views/admin/trees-preferences.phtml:587
 #: resources/views/admin/trees-preferences.phtml:591
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "장소 이름을 축약"
 
 #. I18N: gedcom tag ABBR
 #: app/Factories/ElementFactory.php:664 app/Factories/ElementFactory.php:1145
@@ -1089,16 +1077,16 @@ msgstr ""
 #: resources/views/lists/sources-table.phtml:94
 #: resources/views/modals/source-fields.phtml:22
 msgid "Abbreviation"
-msgstr ""
+msgstr "약어"
 
 #: resources/views/pending-changes-page.phtml:47
 #: resources/views/pending-changes-page.phtml:59
 msgid "Accept"
-msgstr ""
+msgstr "승인"
 
 #: resources/views/pending-changes-page.phtml:101
 msgid "Accept all changes"
-msgstr ""
+msgstr "모든 변경사항 승인"
 
 #: resources/views/admin/components.phtml:42
 #: resources/views/admin/components.phtml:99
@@ -1108,11 +1096,11 @@ msgstr "접근 레벨"
 
 #: resources/views/admin/users-edit.phtml:230
 msgid "Access to family trees"
-msgstr ""
+msgstr "가계도 이용"
 
 #: resources/views/admin/users-edit.phtml:95
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "계정 승인 및 이메일 확인"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54 app/GedcomCode/GedcomCodeTemp.php:228
@@ -1127,7 +1115,7 @@ msgstr ""
 #: app/Date/JewishDate.php:190
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:294
@@ -1139,66 +1127,66 @@ msgstr "Adar"
 #: app/Date/JewishDate.php:242
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:138
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:188
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:292
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:240
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:136
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:208
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:312
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:260
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:156
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: app/Http/RequestHandlers/MapDataAdd.php:76
 #: app/Http/RequestHandlers/MapDataAdd.php:79
 msgid "Add"
-msgstr ""
+msgstr "추가"
 
 #: app/Module/ClippingsCartModule.php:513
 #: app/Module/ClippingsCartModule.php:625
@@ -1210,7 +1198,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:1009
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr ""
+msgstr "클리핑 카트에 %s 추가"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
@@ -1220,7 +1208,7 @@ msgstr ""
 #: resources/views/family-page-menu.phtml:47
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a child"
-msgstr ""
+msgstr "자녀 추가"
 
 #: app/Http/RequestHandlers/AddChildToIndividualPage.php:55
 #: resources/views/modules/relatives/tab.phtml:157
@@ -1242,12 +1230,12 @@ msgstr "정보 추가"
 #: resources/views/family-page-grandparents.phtml:41
 #: resources/views/modules/relatives/tab.phtml:49
 msgid "Add a father"
-msgstr ""
+msgstr "아버지 추가"
 
 #: resources/views/modules/favorites/favorites.phtml:44
 #: resources/views/modules/favorites/favorites.phtml:54
 msgid "Add a favorite"
-msgstr ""
+msgstr "즐겨찾기 추가"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:59
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:56
@@ -1256,7 +1244,7 @@ msgstr ""
 #: resources/views/modules/relatives/family.phtml:63
 #: resources/views/modules/relatives/tab.phtml:136
 msgid "Add a husband"
-msgstr ""
+msgstr "남편 추가"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:56
 #: resources/views/modules/relatives/tab.phtml:148
@@ -1265,7 +1253,7 @@ msgstr "기존 인물 데이터베이스 자료를 사용하여 남편 추가"
 
 #: resources/views/modules/user_blog/list.phtml:59
 msgid "Add a journal entry"
-msgstr ""
+msgstr "저널 기입 추가"
 
 #: app/Http/RequestHandlers/AddMediaFileModal.php:78
 #: resources/views/media-page.phtml:210
@@ -1279,32 +1267,32 @@ msgstr "미디어 파일 추가"
 #: resources/views/individual-page.phtml:94
 #: resources/views/source-page.phtml:111
 msgid "Add a media object"
-msgstr ""
+msgstr "새로운 미디어 개체를 추가"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:58
 #: resources/views/family-page-grandparents.phtml:63
 #: resources/views/family-page-grandparents.phtml:71
 #: resources/views/modules/relatives/tab.phtml:56
 msgid "Add a mother"
-msgstr ""
+msgstr "어머니 추가"
 
 #: app/Http/RequestHandlers/AddName.php:55
 #: resources/views/individual-page-menu.phtml:31
 msgid "Add a name"
-msgstr ""
+msgstr "이름 추가"
 
 #: resources/views/modules/gedcom_news/list.phtml:60
 msgid "Add a news article"
-msgstr ""
+msgstr "뉴스 기사 추가"
 
 #: app/Elements/NoteStructure.php:73 resources/views/family-page.phtml:75
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a note"
-msgstr ""
+msgstr "노트 추가"
 
 #: resources/views/media-page.phtml:200
 msgid "Add a restriction"
-msgstr ""
+msgstr "제한 추가"
 
 #: app/Elements/NoteStructure.php:74 resources/views/family-page.phtml:86
 #: resources/views/media-page.phtml:190
@@ -1329,18 +1317,18 @@ msgstr ""
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:180
 #: resources/views/modules/sources_tab/tab.phtml:53
 msgid "Add a source citation"
-msgstr ""
+msgstr "출처 인용 추가"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/config.phtml:38
 #: resources/views/modules/stories/tab.phtml:36
 msgid "Add a story"
-msgstr ""
+msgstr "이야기 추가"
 
 #: app/Http/RequestHandlers/UserAddPage.php:48
 #: resources/views/admin/control-panel.phtml:474
 msgid "Add a user"
-msgstr ""
+msgstr "사용자 추가"
 
 #: app/Http/RequestHandlers/AddSpouseToFamilyPage.php:56
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:60
@@ -1349,7 +1337,7 @@ msgstr ""
 #: resources/views/modules/relatives/family.phtml:100
 #: resources/views/modules/relatives/tab.phtml:134
 msgid "Add a wife"
-msgstr ""
+msgstr "부인 추가"
 
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:59
 #: resources/views/modules/relatives/tab.phtml:146
@@ -1360,7 +1348,7 @@ msgstr "기존 인물 데이터베이스 자료를 사용하여 부인 추가"
 #: app/Module/FrequentlyAskedQuestionsModule.php:301
 #: resources/views/modules/faq/config.phtml:46
 msgid "Add an FAQ"
-msgstr ""
+msgstr "FAQ 추가"
 
 #: resources/views/cards/add-sour-data-even.phtml:15
 msgid "Add an event"
@@ -1376,7 +1364,7 @@ msgstr ""
 
 #: resources/views/edit/paste-fact-row.phtml:20
 msgid "Add from clipboard"
-msgstr ""
+msgstr "클립보드에 추가"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
@@ -1388,7 +1376,7 @@ msgstr "인물 추가"
 
 #: resources/views/modules/relatives/family.phtml:149
 msgid "Add marriage details"
-msgstr ""
+msgstr "결혼 세부 정보 추가"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:69
@@ -1398,7 +1386,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:58
 msgid "Add missing death records"
-msgstr ""
+msgstr "누락 된 사망 기록 추가"
 
 #: resources/views/edit-blocks-page.phtml:46
 msgid "Add more blocks from the following list."
@@ -1406,7 +1394,7 @@ msgstr ""
 
 #: resources/views/search-advanced-page.phtml:45
 msgid "Add more fields"
-msgstr ""
+msgstr "더 많은 필드 추가"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:78
@@ -1419,7 +1407,7 @@ msgstr "새로운 레코드 추가 및 기존 레코드 업데이트"
 
 #: resources/views/admin/trees-import.phtml:100
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "긴 줄이 감긴 공간 추가"
 
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
@@ -1429,35 +1417,35 @@ msgstr ""
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:83
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "파일 이름에 GEDCOM 미디어 경로 추가"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Add to TITLE header tag"
-msgstr ""
+msgstr "TITLE 헤더 태그에 추가"
 
 #: app/Module/ClippingsCartModule.php:179
 #: resources/views/modules/clippings/add-options.phtml:22
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "클리핑 카트에 추가"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "고유 식별자 추가"
 
 #: resources/views/admin/trees.phtml:216
 msgid "Add unlinked records"
-msgstr ""
+msgstr "연결되지 않은 레코드 추가"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:69
 msgid "Add your own text and graphics."
-msgstr ""
+msgstr "자신만의 텍스트와 그래픽을 추가하십시오."
 
 #: app/Module/FamilyTreeNewsModule.php:182 app/Module/UserJournalModule.php:182
 msgid "Add/edit a journal/news entry"
-msgstr ""
+msgstr "저널/뉴스 항목 추가/편집"
 
 #. I18N: gedcom tag ADDR
 #: app/Factories/ElementFactory.php:247 app/Factories/ElementFactory.php:360
@@ -1466,21 +1454,21 @@ msgstr ""
 #: app/Module/FixCemeteryTag.php:85
 #: resources/views/modals/submitter-fields.phtml:33
 msgid "Address"
-msgstr ""
+msgstr "주소"
 
 #. I18N: gedcom tag ADR1
 #: app/Factories/ElementFactory.php:248 app/Factories/ElementFactory.php:361
 #: app/Factories/ElementFactory.php:381 app/Factories/ElementFactory.php:643
 #: app/Factories/ElementFactory.php:690 app/GedcomTag.php:430
 msgid "Address line 1"
-msgstr ""
+msgstr "주소 라인 1"
 
 #. I18N: gedcom tag ADR2
 #: app/Factories/ElementFactory.php:249 app/Factories/ElementFactory.php:362
 #: app/Factories/ElementFactory.php:382 app/Factories/ElementFactory.php:644
 #: app/Factories/ElementFactory.php:691 app/GedcomTag.php:433
 msgid "Address line 2"
-msgstr ""
+msgstr "주소 라인 2"
 
 #. I18N: gedcom tag ADR3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
@@ -1497,19 +1485,19 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
 msgid "Administrator"
-msgstr ""
+msgstr "관리자"
 
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "Administrator account"
-msgstr ""
+msgstr "관리자 계정"
 
 #: resources/views/admin/users-edit.phtml:209
 msgid "Administrator comments on user"
-msgstr ""
+msgstr "사용자에 대한 관리자 의견"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Administrators"
-msgstr ""
+msgstr "관리자"
 
 #: app/Elements/PedigreeLinkageType.php:61 app/GedcomCode/GedcomCodePedi.php:74
 msgctxt "Female pedigree"
@@ -1519,31 +1507,31 @@ msgstr "입양"
 #: app/Elements/PedigreeLinkageType.php:51 app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Male pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "입양"
 
 #: app/Elements/PedigreeLinkageType.php:71 app/GedcomCode/GedcomCodePedi.php:77
 msgctxt "Pedigree"
 msgid "Adopted"
-msgstr ""
+msgstr "입양"
 
 #: app/Elements/AdoptedByWhichParent.php:57
 #: app/GedcomCode/GedcomCodeAdop.php:49
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "부모 모두에 의해 입양"
 
 #. I18N: gedcom tag _ADPF
 #: app/Elements/AdoptedByWhichParent.php:58
 #: app/Factories/ElementFactory.php:775 app/GedcomCode/GedcomCodeAdop.php:50
 #: app/GedcomTag.php:1027
 msgid "Adopted by father"
-msgstr ""
+msgstr "아버지에 의해 입양"
 
 #. I18N: gedcom tag _ADPM
 #: app/Elements/AdoptedByWhichParent.php:59
 #: app/Factories/ElementFactory.php:776 app/GedcomCode/GedcomCodeAdop.php:51
 #: app/GedcomTag.php:1031
 msgid "Adopted by mother"
-msgstr ""
+msgstr "어머니에 의해 입양"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
@@ -1553,77 +1541,77 @@ msgstr ""
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
 #: app/GedcomTag.php:439
 msgid "Adoption"
-msgstr ""
+msgstr "양자"
 
 #: app/Module/IndividualFactsTabModule.php:343
 msgid "Adoption of a brother"
-msgstr ""
+msgstr "양자의 형제"
 
 #: app/Module/IndividualFactsTabModule.php:322
 msgid "Adoption of a child"
-msgstr ""
+msgstr "양자의 아이"
 
 #: app/Module/IndividualFactsTabModule.php:321
 msgid "Adoption of a daughter"
-msgstr ""
+msgstr "양자의 딸"
 
 #: app/Module/IndividualFactsTabModule.php:391
 #: app/Module/IndividualFactsTabModule.php:414
 #: app/Module/IndividualFactsTabModule.php:437
 msgid "Adoption of a grandchild"
-msgstr ""
+msgstr "양자의 손주"
 
 #: app/Module/IndividualFactsTabModule.php:390
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "양자의 손녀"
 
 #: app/Module/IndividualFactsTabModule.php:413
 msgctxt "daughter’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "양자의 손녀"
 
 #: app/Module/IndividualFactsTabModule.php:436
 msgctxt "son’s daughter"
 msgid "Adoption of a granddaughter"
-msgstr ""
+msgstr "양자의 손녀"
 
 #: app/Module/IndividualFactsTabModule.php:389
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "양자의 손자"
 
 #: app/Module/IndividualFactsTabModule.php:412
 msgctxt "daughter’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "양자의 손자"
 
 #: app/Module/IndividualFactsTabModule.php:435
 msgctxt "son’s son"
 msgid "Adoption of a grandson"
-msgstr ""
+msgstr "양자의 손자"
 
 #: app/Module/IndividualFactsTabModule.php:366
 msgid "Adoption of a half-brother"
-msgstr ""
+msgstr "양자의 half-brother"
 
 #: app/Module/IndividualFactsTabModule.php:368
 msgid "Adoption of a half-sibling"
-msgstr ""
+msgstr "양자의 half-sibling"
 
 #: app/Module/IndividualFactsTabModule.php:367
 msgid "Adoption of a half-sister"
-msgstr ""
+msgstr "양자의 half-sister"
 
 #: app/Module/IndividualFactsTabModule.php:345
 msgid "Adoption of a sibling"
-msgstr ""
+msgstr "양자의 형제"
 
 #: app/Module/IndividualFactsTabModule.php:344
 msgid "Adoption of a sister"
-msgstr ""
+msgstr "양자의 여자형제"
 
 #: app/Module/IndividualFactsTabModule.php:320
 msgid "Adoption of a son"
-msgstr ""
+msgstr "양자의 아들"
 
 #: app/Factories/ElementFactory.php:423
 msgid "Adoptive parents"
@@ -1632,7 +1620,7 @@ msgstr ""
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:471 app/GedcomTag.php:569
 msgid "Adult christening"
-msgstr ""
+msgstr "성인 세례"
 
 #: resources/views/admin/trees-preferences.phtml:866
 msgid "Advanced fact preferences"
@@ -1640,16 +1628,16 @@ msgstr "확장된 정보 환경 설정"
 
 #: resources/views/admin/trees-preferences.phtml:871
 msgid "Advanced name facts"
-msgstr ""
+msgstr "확장된 이름"
 
 #: resources/views/admin/trees-preferences.phtml:884
 msgid "Advanced place name facts"
-msgstr ""
+msgstr "확장된 장소 이름"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:168
 #: app/Module/SearchMenuModule.php:125
 msgid "Advanced search"
-msgstr ""
+msgstr "확장 검색"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
@@ -1662,7 +1650,7 @@ msgstr ""
 
 #: resources/views/admin/trees-create.phtml:61
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
-msgstr ""
+msgstr "가계도를 만든 후에는 GEDCOM 파일에서 데이터를 가져올 수 있습니다."
 
 #. I18N: gedcom tag AGE
 #: app/Factories/ElementFactory.php:388 app/Functions/FunctionsPrint.php:390
@@ -1676,36 +1664,36 @@ msgstr ""
 #: resources/views/lists/individuals-table.phtml:252
 #: resources/views/modules/timeline-chart/chart.phtml:414
 msgid "Age"
-msgstr ""
+msgstr "나이"
 
 #: resources/views/statistics/families/birth-age.phtml:12
 msgid "Age at birth of child"
-msgstr ""
+msgstr "자녀가 태어난 나이"
 
 #: resources/views/admin/trees-privacy.phtml:71
 msgid "Age at which to assume an individual is dead"
-msgstr ""
+msgstr "사망 한 것으로 추정되는 연령"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
-msgstr ""
+msgstr "남편과 아내 사이의 나이 차이"
 
 #: resources/views/statistics/families/age-difference.phtml:20
 msgid "Age between siblings"
-msgstr ""
+msgstr "형제 사이의 나이 차이"
 
 #: resources/views/statistics/families/age-difference.phtml:51
 msgid "Age between wife and husband"
-msgstr ""
+msgstr "아내와 남편 사이의 나이 차이"
 
 #: resources/views/statistics/families/age-difference.phtml:12
 msgid "Age difference"
-msgstr ""
+msgstr "나이 차이"
 
 #: app/Module/StatisticsChartModule.php:645
 #: resources/views/modules/statistics-chart/custom.phtml:40
 msgid "Age in year of first marriage"
-msgstr ""
+msgstr "첫 결혼 연도"
 
 #: app/Module/StatisticsChartModule.php:584
 #: resources/views/lists/families-table.phtml:482
@@ -1798,7 +1786,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:46
 msgid "All"
-msgstr ""
+msgstr "전체"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:176
 #: resources/views/admin/trees-privacy.phtml:272
@@ -1900,7 +1888,7 @@ msgstr ""
 #. I18N: Description of the “Sign in” module
 #: app/Module/LoginBlockModule.php:54
 msgid "An alternative way to sign in and sign out."
-msgstr ""
+msgstr "로그인 로그아웃에 대한 방법."
 
 #: app/Functions/FunctionsEdit.php:456
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2009,7 +1997,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:62
 msgid "Antarctica"
-msgstr "Antarctica"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:66
@@ -2587,7 +2575,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
 msgid "Belgium"
-msgstr "Belgium"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:98
@@ -2903,7 +2891,7 @@ msgstr ""
 #: resources/xml/reports/birth_report.xml:3
 #: resources/xml/reports/birth_report.xml:31
 msgid "Births"
-msgstr ""
+msgstr "출생"
 
 #: app/Statistics/Google/ChartBirth.php:129
 #: resources/views/statistics/individuals/total-events.phtml:31
@@ -3083,7 +3071,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:108
 msgid "Brunei Darussalam"
-msgstr "Brunei Darussalam"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:63 app/GedcomCode/GedcomCodeTemp.php:255
@@ -3314,7 +3302,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
 msgid "Cambodia"
-msgstr "Cambodia"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:130
@@ -3329,7 +3317,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:118
 msgid "Canada"
-msgstr "Canada"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:142
@@ -4712,7 +4700,7 @@ msgstr ""
 
 #: resources/views/modules/user-messages/user-messages.phtml:71
 msgid "Date sent"
-msgstr ""
+msgstr "보낸 날짜"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
@@ -5184,7 +5172,7 @@ msgstr ""
 #: resources/views/source-page-menu.phtml:24
 #: resources/views/submitter-page-menu.phtml:28
 msgid "Delete"
-msgstr ""
+msgstr "삭제"
 
 #: resources/views/admin/map-import-form.phtml:62
 msgid "Delete all existing geographic data before importing the file."
@@ -6203,7 +6191,7 @@ msgstr ""
 #: resources/xml/reports/family_group_report.xml:88
 #: resources/xml/reports/family_group_report.xml:96
 msgid "Family"
-msgstr ""
+msgstr "가족"
 
 #. I18N: gedcom tag FAMC
 #: app/Factories/ElementFactory.php:509 app/GedcomTag.php:699
@@ -6524,7 +6512,7 @@ msgstr ""
 #: resources/views/calendar-page.phtml:119
 #: resources/views/lists/datatables-attributes.phtml:32
 msgid "Filter"
-msgstr ""
+msgstr "필터"
 
 #: resources/xml/reports/fact_sources.xml:5
 msgid "Find a source"
@@ -9360,7 +9348,7 @@ msgstr ""
 #: resources/views/lists/media-table.phtml:77
 #: resources/views/modules/recent_changes/changes-table.phtml:65
 msgid "Media"
-msgstr ""
+msgstr "미디어"
 
 #: resources/views/admin/media-upload.phtml:31
 #: resources/views/admin/media.phtml:100
@@ -9578,7 +9566,7 @@ msgstr ""
 #: app/Module/UserMessagesModule.php:76
 #: resources/views/admin/site-mail.phtml:43
 msgid "Messages"
-msgstr ""
+msgstr "메세지"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:153
@@ -9861,7 +9849,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:47
 msgid "Most viewed pages"
-msgstr ""
+msgstr "많이 본 페이지"
 
 #: resources/views/search-advanced-page.phtml:74
 #: resources/xml/reports/bdm_report.xml:120
@@ -10175,7 +10163,7 @@ msgstr ""
 #: resources/views/modules/random_media/slide-show.phtml:32
 #: resources/views/modules/random_media/slide-show.phtml:34
 msgid "Next image"
-msgstr ""
+msgstr "다음 이미지"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
@@ -10948,7 +10936,7 @@ msgstr ""
 #: resources/views/edit/reorder-families.phtml:72
 #: resources/views/modules/family_nav/sidebar-family.phtml:41
 msgid "Parents"
-msgstr ""
+msgstr "부모"
 
 #: resources/xml/reports/individual_ext_report.xml:6
 #: resources/xml/reports/individual_ext_report.xml:89
@@ -10973,7 +10961,7 @@ msgstr ""
 #: resources/views/register-page.phtml:72
 #: resources/views/setup/step-5-administrator.phtml:78
 msgid "Password"
-msgstr ""
+msgstr "비밀번호"
 
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:73
@@ -11324,7 +11312,7 @@ msgstr ""
 #: resources/views/modules/random_media/slide-show.phtml:24
 #: resources/views/modules/random_media/slide-show.phtml:26
 msgid "Play"
-msgstr ""
+msgstr "재생"
 
 #: app/Http/RequestHandlers/ContactAction.php:120
 msgid "Please enter a valid email address."
@@ -11786,7 +11774,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:62
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "현재 가족 트리에서 임의의 이미지."
 
 #: app/Http/RequestHandlers/ReorderChildrenPage.php:57
 #: resources/views/family-page-children.phtml:50
@@ -11809,7 +11797,7 @@ msgstr ""
 #: resources/views/individual-page-menu.phtml:88
 #: resources/views/individual-page-menu.phtml:93
 msgid "Re-order media"
-msgstr ""
+msgstr "미디어 재정렬"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:57
 #: resources/views/individual-page-menu.phtml:37
@@ -12105,7 +12093,7 @@ msgstr ""
 #: resources/views/modules/user-messages/user-messages.phtml:131
 #: resources/views/modules/user-messages/user-messages.phtml:132
 msgid "Reply"
-msgstr ""
+msgstr "회신"
 
 #: app/Http/RequestHandlers/ReportGenerate.php:121
 #: resources/views/admin/modules.phtml:224
@@ -12162,14 +12150,14 @@ msgstr ""
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
 #: resources/views/modules/login_block/sign-in.phtml:55
 msgid "Request a new password"
-msgstr ""
+msgstr "새 암호 요청"
 
 #: app/Http/RequestHandlers/RegisterAction.php:198
 #: app/Http/RequestHandlers/RegisterPage.php:68
 #: app/Module/WelcomeBlockModule.php:114 resources/views/login-page.phtml:66
 #: resources/views/modules/login_block/sign-in.phtml:49
 msgid "Request a new user account"
-msgstr ""
+msgstr "새 사용자 계정 요청"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
@@ -12647,7 +12635,7 @@ msgstr ""
 #: resources/views/contact-page.phtml:79 resources/views/message-page.phtml:68
 #: resources/views/modules/user-messages/user-messages.phtml:42
 msgid "Send"
-msgstr ""
+msgstr "보내기"
 
 #: app/Http/RequestHandlers/ContactPage.php:96
 #: app/Http/RequestHandlers/MessagePage.php:76
@@ -12655,7 +12643,7 @@ msgstr ""
 #: resources/views/modules/user-messages/user-messages.phtml:30
 #: resources/views/pending-changes-page.phtml:78
 msgid "Send a message"
-msgstr ""
+msgstr "메시지 보내기"
 
 #: app/Services/MessageService.php:210
 #: resources/views/admin/control-panel.phtml:496
@@ -13199,7 +13187,7 @@ msgstr ""
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
-msgstr ""
+msgstr "슬라이드 쇼 컨트롤을 표시 하시겠습니까"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -13362,12 +13350,12 @@ msgstr "Sierra Leone"
 #: app/Http/RequestHandlers/LoginPage.php:80 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:286
 msgid "Sign in"
-msgstr ""
+msgstr "로그인"
 
 #: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:302
 #: resources/views/layouts/administration.phtml:66
 msgid "Sign out"
-msgstr ""
+msgstr "로그아웃"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:44
 #: resources/views/admin/control-panel.phtml:201
@@ -13474,17 +13462,17 @@ msgstr "노예"
 #: app/Factories/ElementFactory.php:1286 app/GedcomTag.php:1217
 #: app/Module/SlideShowModule.php:189
 msgid "Slide show"
-msgstr ""
+msgstr "슬라이드 쇼"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
 msgid "Slovakia"
-msgstr "Slovakia"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:465
 msgid "Slovenia"
-msgstr "Slovenia"
+msgstr ""
 
 #: resources/views/setup/step-2-server-checks.phtml:68
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
@@ -13823,7 +13811,7 @@ msgstr ""
 #: resources/views/modules/random_media/slide-show.phtml:28
 #: resources/views/modules/random_media/slide-show.phtml:30
 msgid "Stop"
-msgstr ""
+msgstr "정지"
 
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:208
@@ -13846,7 +13834,7 @@ msgstr "스토리 제목"
 #: resources/views/contact-page.phtml:59 resources/views/message-page.phtml:48
 #: resources/views/modules/user-messages/user-messages.phtml:70
 msgid "Subject"
-msgstr ""
+msgstr "제목"
 
 #. I18N: gedcom tag SUBN
 #: app/Factories/ElementFactory.php:378 app/Factories/ElementFactory.php:711
@@ -15647,7 +15635,7 @@ msgstr ""
 #: resources/views/lists/chart-by-age.phtml:29
 #: resources/views/lists/chart-by-decade.phtml:21
 msgid "Total"
-msgstr "Total"
+msgstr ""
 
 #: resources/xml/reports/change_report.xml:127
 msgid "Total accepted changes: "
@@ -15655,25 +15643,25 @@ msgstr "허용되는 Total 변경 사항: "
 
 #: resources/views/statistics/individuals/total-events.phtml:22
 msgid "Total births"
-msgstr "Total 출생"
+msgstr ""
 
 #: resources/views/statistics/individuals/total-records.phtml:61
 msgid "Total dead"
-msgstr "Total 사망"
+msgstr ""
 
 #: resources/views/statistics/individuals/total-events.phtml:70
 msgid "Total deaths"
-msgstr "Total 사망"
+msgstr ""
 
 #: resources/views/statistics/families/total-records.phtml:72
 msgid "Total divorces"
-msgstr "Total 이혼"
+msgstr ""
 
 #: resources/views/modules/gedcom_stats/config.phtml:52
 #: resources/views/statistics/other/total-events.phtml:12
 #: resources/xml/reports/missing_facts_report.xml:602
 msgid "Total events"
-msgstr "Total 이벤트"
+msgstr ""
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:133
 #: resources/views/statistics/families/total-records.phtml:13
@@ -15683,15 +15671,15 @@ msgstr "Total 이벤트"
 #: resources/xml/reports/fact_sources.xml:354
 #: resources/xml/reports/marriage_report.xml:111
 msgid "Total families"
-msgstr "Total 가족"
+msgstr ""
 
 #: resources/views/statistics/individuals/total-records.phtml:32
 msgid "Total females"
-msgstr "Total 가족"
+msgstr ""
 
 #: resources/views/statistics/individuals/names.phtml:46
 msgid "Total given names"
-msgstr "Total 이름"
+msgstr ""
 
 #: resources/views/statistics/individuals/total-records.phtml:12
 #: resources/xml/reports/bdm_report.xml:210
@@ -15706,19 +15694,19 @@ msgstr "Total 이름"
 #: resources/xml/reports/occupation_report.xml:94
 #: resources/xml/reports/relative_ext_report.xml:147
 msgid "Total individuals"
-msgstr "Total 인물"
+msgstr ""
 
 #: resources/views/statistics/individuals/total-records.phtml:53
 msgid "Total living"
-msgstr "Total 생존"
+msgstr ""
 
 #: resources/views/statistics/individuals/total-records.phtml:23
 msgid "Total males"
-msgstr "Total 남성"
+msgstr ""
 
 #: resources/views/statistics/families/total-records.phtml:24
 msgid "Total marriages"
-msgstr "Total 결혼"
+msgstr ""
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
@@ -15728,11 +15716,11 @@ msgstr "모든 보류중인 변경 사항: "
 #: resources/views/modules/html/template-statistics.phtml:36
 #: resources/views/statistics/individuals/names.phtml:22
 msgid "Total surnames"
-msgstr "Total 가문이름"
+msgstr ""
 
 #: resources/views/modules/gedcom_stats/config.phtml:53
 msgid "Total users"
-msgstr "Total 사용자"
+msgstr ""
 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php:41
 #: app/Module/ModuleAnalyticsTrait.php:79
@@ -16024,7 +16012,7 @@ msgstr "다가오는 이벤트"
 
 #: app/Http/RequestHandlers/DataFixData.php:108
 msgid "Update"
-msgstr ""
+msgstr "업데이트"
 
 #: resources/views/admin/data-fix-page.phtml:47
 msgid "Update all"
@@ -16184,12 +16172,12 @@ msgstr "사용자 확인"
 #: resources/views/register-page.phtml:60
 #: resources/views/setup/step-5-administrator.phtml:66
 msgid "Username"
-msgstr ""
+msgstr "사용자 이름"
 
 #: resources/views/forgot-password-page.phtml:22
 #: resources/views/modules/login_block/sign-in.phtml:58
 msgid "Username or email address"
-msgstr ""
+msgstr "사용자 이름이나 이메일 주소"
 
 #: resources/views/admin/users-create.phtml:50
 #: resources/views/admin/users-edit.phtml:60
@@ -19770,7 +19758,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:119
 #: resources/views/setup/step-5-administrator.phtml:104
 msgid "next"
-msgstr ""
+msgstr "다음"
 
 #: app/Functions/Functions.php:770
 msgctxt "brother’s daughter"
@@ -19885,7 +19873,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:190
 #: resources/xml/reports/individual_report.xml:178
 msgid "no"
-msgstr ""
+msgstr "아니오"
 
 #. I18N: None of the other options
 #: app/Http/RequestHandlers/TreePreferencesPage.php:109
@@ -19894,7 +19882,7 @@ msgstr ""
 #: app/Services/EmailService.php:234
 #: resources/views/modules/statistics-chart/custom.phtml:83
 msgid "none"
-msgstr ""
+msgstr "없음"
 
 #: app/SurnameTradition.php:114
 msgctxt "Surname tradition"
@@ -19991,7 +19979,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:123
 #: resources/views/setup/step-5-administrator.phtml:108
 msgid "previous"
-msgstr ""
+msgstr "이전"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52 app/GedcomCode/GedcomCodeQuay.php:49
@@ -20380,12 +20368,12 @@ msgstr ""
 #: resources/views/login-page.phtml:57
 #: resources/views/modules/login_block/sign-in.phtml:38
 msgid "sign in"
-msgstr ""
+msgstr "로그인"
 
 #. I18N: A button label.
 #: resources/views/modules/login_block/sign-out.phtml:20
 msgid "sign out"
-msgstr ""
+msgstr "로그아웃"
 
 #: app/Functions/Functions.php:743
 msgid "sister"
@@ -20832,7 +20820,7 @@ msgstr ""
 #: app/Module/InteractiveTree/TreeView.php:353
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "알 수 없음"
 
 #: app/Module/RelationshipsChartModule.php:458
 msgid "unlimited"
@@ -20851,7 +20839,7 @@ msgstr ""
 
 #: resources/views/admin/trees-unconnected.phtml:31
 msgid "update"
-msgstr ""
+msgstr "업데이트"
 
 #. I18N: A button label.
 #: resources/views/admin/media-upload.phtml:74
@@ -20971,7 +20959,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:187
 #: resources/xml/reports/individual_report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "예"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:30
