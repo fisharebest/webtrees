@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-04 15:39+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"PO-Revision-Date: 2021-04-01 13:27+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ko/>\n"
 "Language: ko\n"
@@ -72,7 +72,7 @@ msgstr "%1$s %2$s 에 %4$s 에 대한 %3$s 링크가 있습니다."
 #: app/Functions/Functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s %2$s  오름차순으로 제거"
+msgstr "%1$s %2$s  오름차순으로 삭제 된 횟수"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2135
@@ -96,7 +96,7 @@ msgstr "%1$s KB 를 다운로드 하는데 %2$s 초 걸렸습니다."
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s 존재하지 않음"
+msgstr "%1$s 존재하지 않음."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
@@ -115,7 +115,7 @@ msgstr "%1$s 에 %2$s 에 대한 링크가 없습니다."
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s 파일이 %2$s 초 안에 압축이 풀렸습니다."
+msgstr[0] "%1$s 파일들이 %2$s 초 안에 압축이 풀렸습니다."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -219,7 +219,7 @@ msgstr "%s 및 이를 참조하는 인물."
 #: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
-msgstr "%s 와 그들의 자녀"
+msgstr "%s 와 그들의 아이"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:141
@@ -231,7 +231,7 @@ msgstr "%s 와 그들의 자손"
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] "익명으로 로그인 한 사용자 %s 명"
+msgstr[0] "익명으로 로그인 한 사용자들은 %s 명"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
@@ -384,7 +384,7 @@ msgstr[0] "로그인 한 사용자 %s"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s 출처가 업데이트 되었습니다."
+msgstr[0] "%s 가 업데이트되었습니다."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
@@ -415,14 +415,14 @@ msgstr "%s 가 내림차순으로 두 번 제거"
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] "%s 주"
+msgstr[0] "$%s 주"
 
 #: app/Functions/FunctionsDate.php:48 app/I18N.php:300
 #: app/Module/RelativesTabModule.php:83
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] "%s 년"
+msgstr[0] "%s 세"
 
 #: app/I18N.php:794
 #, php-format
@@ -523,7 +523,7 @@ msgstr "%s, 그의 배우자와 후손"
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr "&lt;선택&gt;"
+msgstr "<선택&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:329 app/I18N.php:333
@@ -690,9 +690,9 @@ msgstr "<기본 테마>"
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
 msgstr ""
-"<div class=\"largeError\">공지:</div><div class=\"error\">이 양식을 작성하여 제출하면 다음에 "
-"동의하는 것입니다.:<ul><li>당사 사이트에 나열된 살아있는 인물의 개인 정보를 보호하기 위해;</li><li>아래 텍스트 상자에 "
-"귀하와 관련이있는 인물을 설명하거나 당사 웹 사이트에 등록해야하는 인물에 대한 정보를 제공하십시오.</li></ul></div>"
+"<div class=\"largeError\">Notice:</div><div class=\"error\">이 양식을 작성하여 제출하면 "
+"다음에 동의하는 것입니다.:<ul><li>당사 사이트에 나열된 살아있는 인물의 개인 정보를 보호하기 위해;</li><li>아래 텍스트 "
+"상자에 귀하와 관련이있는 인물을 설명하거나 당사 웹 사이트에 등록해야하는 인물에 대한 정보를 제공하십시오.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
@@ -711,7 +711,7 @@ msgstr "두 인물의 관계를 보여주는 차트."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "패밀리북 모양으로 인물 조상과 후손을 보여주는 차트."
+msgstr "Family Book 모양으로 인물 조상과 후손을 보여주는 차트."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
@@ -770,12 +770,12 @@ msgstr "내 컴퓨터에 저장된 파일"
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr "인사말 메시지와 사용자를위한 유용한 링크."
+msgstr "인사말 메시지와 사용자를 위한 유용한 링크."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
 msgid "A greeting message for site visitors."
-msgstr "사이트 방문자를위한 인사 메시지."
+msgstr "사이트 방문자를 위한 인사 메시지."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
@@ -820,7 +820,7 @@ msgstr "가장 많은 이름의 목록입니다."
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr "\"가장 많은 가문의 목록입니다."
+msgstr "가장 많은 가문이름의 목록입니다."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
@@ -940,7 +940,7 @@ msgstr "최근 및 보류중인 변경 사항에 대한 보고서입니다."
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "인물과 밀접한 관련이 있는 가족에 대한 보고서."
+msgstr "인물과 밀접한 관련이있는 가족에 대한 보고서."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
@@ -1009,7 +1009,7 @@ msgstr "인물의 친척을 보여주는 탭."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr "인물의 사실과 사건을 보여주는 탭."
+msgstr "인물의 미디어 오브젝트 연결을 보여주는 탭."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
@@ -1024,7 +1024,7 @@ msgstr "인물에 연결된 출처를 보여주는 탭."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr "인물의 이벤트를 표시하는 타임 라인."
+msgstr "인물의 사건을 표시하는 타임 라인."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
@@ -1160,7 +1160,7 @@ msgstr "계정 승인 및 이메일 확인"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Accra, Ghana"
-msgstr "Accra, Ghana"
+msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1266,7 +1266,7 @@ msgstr ""
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "사실 추가"
+msgstr "정보 추가"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
@@ -1491,7 +1491,7 @@ msgstr "주소 라인 2"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Adelaide, Australia"
-msgstr "Adelaide, Australia"
+msgstr ""
 
 #: admin_users.php:514 admin_users.php:563
 msgid "Administrator"
@@ -1652,7 +1652,7 @@ msgstr "성인 세례"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
-msgstr "확장된 사실 환경 설정"
+msgstr "확장된 정보 환경 설정"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
@@ -1670,11 +1670,11 @@ msgstr "확장 검색"
 #. I18N: Name of a country or state
 #: app/Stats.php:6672
 msgid "Afghanistan"
-msgstr "Afghanistan"
+msgstr ""
 
 #: statistics.php:697
 msgid "Africa"
-msgstr "Africa"
+msgstr ""
 
 #: admin_trees_manage.php:691
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
@@ -1810,11 +1810,11 @@ msgstr ""
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
-msgstr ""
+msgstr "모든 정보와 이벤트"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
-msgstr ""
+msgstr "가족의 모든 정보"
 
 #: login.php:415
 msgid "All fields must be completed."
@@ -1826,11 +1826,11 @@ msgstr ""
 
 #: admin_trees_config.php:1618
 msgid "All individual facts"
-msgstr ""
+msgstr "인물의 모든 사실"
 
 #: calendar.php:228 calendar.php:239 calendar.php:438
 msgid "All individuals"
-msgstr ""
+msgstr "모든 인물"
 
 #: admin_trees_config.php:554
 msgid "All records"
@@ -1838,11 +1838,11 @@ msgstr ""
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr ""
+msgstr "모든 저장소 정보"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
-msgstr ""
+msgstr "모든 출처 사실"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -1908,7 +1908,7 @@ msgstr ""
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:44
 msgid "An alternative way to enter census transcripts and link them to individuals."
-msgstr ""
+msgstr "인구조사 사본을 입력하고 인물과 연결하는 다른 방법."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:32
@@ -1922,11 +1922,11 @@ msgstr "로그인 로그아웃에 대한 방법."
 
 #: app/Functions/FunctionsEdit.php:910
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr ""
+msgstr "동료는 증인이나 성직자와 같은 이 사실이나 사건에 연루된 다른 인물입니다."
 
 #: app/Functions/FunctionsEdit.php:908
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr ""
+msgstr "동료는 친구 나 고용주와 같이 인물과 관련된 다른 인물입니다."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:33
@@ -1941,7 +1941,7 @@ msgstr ""
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr ""
+msgstr "인물의 조상과 자손의 모래 시계 차트."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -2112,7 +2112,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1026
 #: app/Functions/FunctionsPrintFacts.php:1174
 msgid "Are you sure you want to delete this fact?"
-msgstr ""
+msgstr "이 정보를 삭제 하시겠습니까?"
 
 #: app/Module/UserMessagesModule.php:96 app/Module/UserMessagesModule.php:139
 msgid "Are you sure you want to delete this message? It cannot be retrieved later."
@@ -2134,7 +2134,7 @@ msgstr ""
 #: edituser.php:320
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr ""
+msgstr "“%s”을 (를) 삭제 하시겠습니까?"
 
 #: edit_changes.php:236
 msgid "Are you sure you want to reject all the changes to this family tree?"
@@ -2146,7 +2146,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeFavoritesModule.php:156
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr ""
+msgstr "즐겨 찾기 목록에서 이 항목을 제거 하시겠습니까?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6679
@@ -2184,6 +2184,9 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:316
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
 msgstr ""
+"툴바를 사용하여 HTML 형식을 적용 할뿐만 아니라 자동으로 업데이트되는 데이터베이스 필드를 삽입 할 수 있습니다. 이 특수 필드에는 "
+"<b>#</b> 문자가 표시되어 있습니다. 예를 들어 <b>#totalFamilies#</b>는 데이터베이스의 실제 가족 수로 바뀝니다. "
+"고급 사용자는 서식이 현재 선택된 테마와 일치하도록 CSS 클래스를 텍스트에 적용 할 수 있습니다."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:77
@@ -2202,7 +2205,7 @@ msgstr ""
 
 #: edit_interface.php:1221 help_text.php:292
 msgid "Associate events with this source"
-msgstr ""
+msgstr "이 소스와 사건 연관"
 
 #: search.php:107 search.php:266
 msgid "Associates"
@@ -2225,7 +2228,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:62
 msgid "Attendant"
-msgstr ""
+msgstr "기다리는 중"
 
 #: app/GedcomCode/GedcomCodeRela.php:60
 msgctxt "FEMALE"
@@ -2239,7 +2242,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:71
 msgid "Attending"
-msgstr ""
+msgstr "참석"
 
 #: app/GedcomCode/GedcomCodeRela.php:69
 msgctxt "FEMALE"
@@ -2313,7 +2316,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1489
 msgid "Automatically expand sources"
-msgstr ""
+msgstr "출처 자동 확장"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:147
@@ -2351,7 +2354,7 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:390
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2599 statistics.php:149
 msgid "Average age at death"
-msgstr ""
+msgstr "사망 평균 연령"
 
 #: app/Stats.php:3930 app/Stats.php:3931 app/Stats.php:3935 app/Stats.php:3939
 #: app/Stats.php:3942
@@ -2366,7 +2369,7 @@ msgstr ""
 #: app/Module/FamilyTreeStatisticsModule.php:418
 #: app/Module/HtmlBlockModule.php:251 app/Stats.php:4947 statistics.php:306
 msgid "Average number of children per family"
-msgstr ""
+msgstr "가족당 평균 자녀 수"
 
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:627 admin_trees_manage.php:680
@@ -2777,11 +2780,11 @@ msgstr ""
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr ""
+msgstr "생년월일 범위 종료"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr ""
+msgstr "생년월일 범위 시작"
 
 #: app/GedcomTag.php:1079
 msgid "Birth of a brother"
@@ -3450,11 +3453,11 @@ msgstr ""
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "“Home page” 블록 변경"
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "“My page” 블록 변경"
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:261
@@ -3789,7 +3792,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:38
 msgid "Clippings cart"
-msgstr ""
+msgstr "클리핑 카트"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1918
@@ -3848,11 +3851,11 @@ msgstr ""
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:297 admin_site_access.php:366 app/GedcomTag.php:298
 msgid "Comment"
-msgstr ""
+msgstr "답변"
 
 #: login.php:326 login.php:348 login.php:483
 msgid "Comments"
-msgstr ""
+msgstr "답변"
 
 #. I18N: gedcom tag _COML
 #: app/GedcomTag.php:1249
@@ -4072,12 +4075,12 @@ msgstr ""
 
 #: addmedia.php:80 addmedia.php:402 app/Functions/FunctionsEdit.php:417
 msgid "Create a media object"
-msgstr ""
+msgstr "미디어 개체 작성"
 
 #: app/Functions/FunctionsEdit.php:428 edit_interface.php:1492
 #: edit_interface.php:1555
 msgid "Create a repository"
-msgstr ""
+msgstr "저장소 작성"
 
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
@@ -4093,7 +4096,7 @@ msgstr ""
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
 #: edit_interface.php:1259
 msgid "Create a source"
-msgstr ""
+msgstr "출처 작성"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
@@ -4101,7 +4104,7 @@ msgstr ""
 
 #: edit_interface.php:730
 msgid "Create an individual"
-msgstr ""
+msgstr "인물 만들기"
 
 #: statistics.php:497
 msgid "Create your own chart"
@@ -4266,11 +4269,11 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:625 calendar.php:281
 msgid "Custom event"
-msgstr ""
+msgstr "사용자 정의 사건"
 
 #: app/Functions/FunctionsPrint.php:624
 msgid "Custom fact"
-msgstr ""
+msgstr "사용자 정의 사실"
 
 #: admin_modules.php:191 admin_site_upgrade.php:126 admin_site_upgrade.php:129
 msgid "Custom module"
@@ -4502,7 +4505,7 @@ msgstr ""
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr ""
+msgstr "날짜 기간은 직업과 같은 정보가 일정 기간 동안 지속되었음을 나타내는 데 사용됩니다."
 
 #: help_text.php:148 statistics.php:723
 msgid "Date range"
@@ -4510,7 +4513,7 @@ msgstr ""
 
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr ""
+msgstr "날짜 범위는 출생과 같은 사건이 가능한 범위 내에서 알 수 없는 날짜에 발생했음을 나타내는 데 사용됩니다."
 
 #: admin_users.php:850
 msgid "Date registered"
@@ -4557,7 +4560,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:218 app/Stats.php:1069
 #: app/Stats.php:1071
 msgid "Dead"
-msgstr ""
+msgstr "죽은"
 
 #. I18N: gedcom tag DEAT
 #: app/GedcomTag.php:352 modules_v3/ahnentafel_report/report.xml:457
@@ -4845,11 +4848,11 @@ msgstr ""
 #: app/Functions/FunctionsPrintLists.php:494
 #: app/Functions/FunctionsPrintLists.php:968
 msgid "Decade of birth"
-msgstr ""
+msgstr "출생의 10 년"
 
 #: app/Functions/FunctionsPrintLists.php:497
 msgid "Decade of death"
-msgstr ""
+msgstr "사망의 10 년"
 
 #: app/Functions/FunctionsPrintLists.php:969
 msgid "Decade of marriage"
@@ -5001,7 +5004,7 @@ msgstr ""
 
 #: app/Controller/FamilyController.php:95
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr ""
+msgstr "가족을 삭제하면 모든 이 서로 연결이 끊어 지지만 인물은 그대로 유지됩니다. 이 가족을 삭제 하시겠습니까?"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6718
@@ -5219,12 +5222,12 @@ msgstr ""
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
 msgid "Display and manage a family tree’s favorite pages."
-msgstr ""
+msgstr "가계도의 즐겨 찾는 페이지를 표시하고 관리합니다."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "사용자가 좋아하는 페이지를 표시하고 관리합니다."
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5456,7 +5459,7 @@ msgstr ""
 
 #: app/Module/StoriesModule.php:106 app/Module/StoriesModule.php:188
 msgid "Edit the story"
-msgstr ""
+msgstr "이야기 편집"
 
 #: admin_users.php:272
 msgid "Edit the user"
@@ -5877,11 +5880,11 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:1459
 msgid "Fact icons"
-msgstr ""
+msgstr "정보 아이콘"
 
 #: admin_trees_config.php:529 app/Functions/FunctionsPrint.php:614
 msgid "Fact or event"
-msgstr ""
+msgstr "정보 또는 이벤트"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:36
@@ -5889,31 +5892,31 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:153
 #: modules_v3/individual_report/report.xml:149
 msgid "Facts and events"
-msgstr "사실 및 이벤트"
+msgstr "정보 및 이벤트"
 
 #: admin_trees_config.php:1731
 msgid "Facts for family records"
-msgstr ""
+msgstr "가족 기록에 대한 정보"
 
 #: admin_trees_config.php:1613
 msgid "Facts for individual records"
-msgstr ""
+msgstr "인물 기록에 대한 정보"
 
 #: admin_trees_config.php:1794
 msgid "Facts for new families"
-msgstr ""
+msgstr "새로운 가족들에 대한 정보"
 
 #: admin_trees_config.php:1676
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "새로운 인물에 대한 정보"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
-msgstr ""
+msgstr "저장소 기록에 대한 정보"
 
 #: admin_trees_config.php:1849
 msgid "Facts for source records"
-msgstr ""
+msgstr "출처 기록에 대한 정보"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6748
@@ -6289,7 +6292,7 @@ msgstr ""
 #: app/Functions/FunctionsPrint.php:748 find.php:69
 #: modules_v3/fact_sources/report.xml:5
 msgid "Find a source"
-msgstr ""
+msgstr "출처 찾기"
 
 #: app/Functions/FunctionsPrint.php:720 find.php:72
 msgid "Find a special character"
@@ -6471,7 +6474,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr ""
+msgstr "위탁"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
@@ -7271,17 +7274,20 @@ msgstr ""
 #: help_text.php:228
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr ""
+msgstr "인물에게 성이 없으면 슬래시가 필요하지 않습니다. <%s> Jon Einarsson <%s>"
 
 #: help_text.php:226
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 msgstr ""
+"인물이 두 개의 별명을 가진 경우 둘 다 슬래시로 묶어야합니다. <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: help_text.php:232
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 msgstr ""
+"인물이 정식 이름의 일부가 아닌 닉네임으로 알려진 경우 따옴표로 묶어야합니다. 예를 들어 <%s> John \"Nobby\"/Clark/ "
+"<%s>입니다."
 
 #: help_text.php:230
 #, php-format
@@ -7543,7 +7549,7 @@ msgstr ""
 #: statisticsplot.php:886 statisticsplot.php:936 statisticsplot.php:1144
 #: statisticsplot.php:1194 statisticsplot.php:1244 statisticsplot.php:1294
 msgid "Individuals"
-msgstr "개인"
+msgstr "인물"
 
 #: app/Stats.php:422 statistics.php:394
 msgid "Individuals with sources"
@@ -9063,16 +9069,16 @@ msgstr ""
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "병합"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
 msgid "Merge family trees"
-msgstr ""
+msgstr "가계도 병합"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
-msgstr ""
+msgstr "자료 병합"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:243
@@ -9160,7 +9166,7 @@ msgstr ""
 #. I18N: gedcom tag _MILT
 #: app/GedcomTag.php:1663
 msgid "Military service"
-msgstr ""
+msgstr "병역"
 
 #: app/Module/GoogleMapsModule.php:366
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas."
@@ -9846,7 +9852,7 @@ msgstr ""
 
 #: admin_site_merge.php:241 admin_site_merge.php:288 admin_site_merge.php:334
 msgid "No matching facts found"
-msgstr ""
+msgstr "일치하는 정보를 찾을 수 없습니다"
 
 #: addmedia.php:168 addmedia.php:302 admin_media_upload.php:126
 msgid "No media file was provided."
@@ -11624,7 +11630,7 @@ msgstr ""
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
-msgstr ""
+msgstr "기록 또는 정보에 제한을 추가 할 수 있습니다. 데이터를 볼 수있는 사람과 편집 할 수있는 사람을 제한합니다."
 
 #: app/Stats.php:87
 msgid "Resulting value"
@@ -12649,28 +12655,28 @@ msgstr ""
 #: admin_trees_config.php:1516
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr ""
+msgstr "장소 이름의 %1$s %2$s 부분을 표시하십시오."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
-msgstr ""
+msgstr "업데이트 날짜 및 시간 표시"
 
 #: admin_trees_config.php:1368
 msgid "Show the events of close relatives on the individual page"
-msgstr ""
+msgstr "인물 페이지에 가까운 친척의 사건을 보여주십시오"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
 msgid "Show the family tree"
-msgstr ""
+msgstr "가계도 표시"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "인물 목록 표시"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "가문 목록 표시"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -12680,17 +12686,17 @@ msgstr ""
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "변경한 사용자 표시"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr ""
+msgstr "어떤 언어에 대해 이 블록을 표시"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr ""
+msgstr "썸네일 이미지를 차트와 가족 그룹으로 표시하십시오."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -12700,7 +12706,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:836
 #: app/Functions/FunctionsPrintFacts.php:1102
 msgid "Show to managers"
-msgstr ""
+msgstr "관리자에게 표시"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -12711,7 +12717,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:833
 #: app/Functions/FunctionsPrintFacts.php:1099
 msgid "Show to members"
-msgstr ""
+msgstr "회원에게 표시"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -12722,48 +12728,49 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:830
 #: app/Functions/FunctionsPrintFacts.php:1096
 msgid "Show to visitors"
-msgstr ""
+msgstr "방문자에게 표시"
 
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr ""
+msgstr "“떠난”커플 또는 개인을 보여줍니다. 이들은 살아 있지만 데이터베이스에 기록 된 자녀가없는 개인입니다."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
 msgstr ""
+"뿌리” 커플 또는 개인을 보여줍니다. 이 사람들은 또한“가부장”이라고도합니다. 그들은 데이터베이스에 부모가 기록되어 있지 않은 개인입니다."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
 #, php-format
 msgid "Showing %1$s to %2$s of %3$s"
-msgstr ""
+msgstr "%3$s의 %1$s ~ %2$s 표시"
 
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Sibling"
-msgstr ""
+msgstr "형제"
 
 #: app/Controller/HourglassController.php:358
 #: app/Controller/PedigreeController.php:285
 msgid "Siblings"
-msgstr ""
+msgstr "형제"
 
 #: admin_module_sidebar.php:87 admin_modules.php:218
 msgid "Sidebar"
-msgstr ""
+msgstr "사이드바"
 
 #. I18N: Menu entry
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "사이드바"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6877
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #. I18N: Name of a module
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
@@ -12783,76 +12790,80 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "로그인 및 등록"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
 msgstr ""
+"간단한 날짜는 그레고리력으로되어 있다고 가정합니다. 다른 캘린더에서 날짜를 지정하려면 날짜 앞에 키워드를 추가하십시오. 월 또는 연도 "
+"형식으로 날짜를 모호하지 않게하려면이 키워드는 선택 사항입니다."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6872
 msgid "Singapore"
-msgstr ""
+msgstr "Singapore"
 
 #: modules_v3/individual_ext_report/report.xml:355
 #: modules_v3/individual_report/report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "여자형제"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:569 admin_site_config.php:585
 #: admin_site_config.php:610
 msgid "Site identification code"
-msgstr ""
+msgstr "사이트 식별 코드"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "사이트 회원은 서로 메시지를 보낼 수 있습니다. 이러한 메시지를 보내는 방법을 선택하거나 전혀받지 않도록 선택할 수 있습니다."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
-msgstr ""
+msgstr "사이트 인증 코드"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "웹 트리가 하위 폴더에 설치되어 있으면 사이트 확인 코드가 작동하지 않습니다."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
 msgid "Sitemaps"
-msgstr ""
+msgstr "사이트맵"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:306
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
+"사이트 맵은 웹 마스터가 크롤링 할 수있는 웹 사이트의 페이지에 대해 검색 엔진에 알리는 방법입니다. 모든 주요 검색 엔진은 사이트 맵을 "
+"지원합니다."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:145
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:183
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:107
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Size of map (in pixels)"
@@ -12861,21 +12872,21 @@ msgstr ""
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr ""
+msgstr "내용으로 건너 뛰기"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
-msgstr ""
+msgstr "노예"
 
 #: app/GedcomCode/GedcomCodeRela.php:252
 msgctxt "FEMALE"
 msgid "Slave"
-msgstr ""
+msgstr "노예"
 
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Slave"
-msgstr ""
+msgstr "노예"
 
 #. I18N: gedcom tag _SSHOW
 #. I18N: Name of a module
@@ -12895,7 +12906,7 @@ msgstr ""
 
 #: setup.php:176
 msgid "Small systems (500 individuals): 16–32 MB, 10–20 seconds"
-msgstr ""
+msgstr "소규모 시스템 (개인 500 명) : 16–32MB, 10–20 초"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:345
@@ -12905,7 +12916,7 @@ msgstr ""
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
 msgid "Social security number"
-msgstr ""
+msgstr "주민등록번호"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6876
@@ -12921,11 +12932,13 @@ msgstr ""
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"일부 계보 소프트웨어는 전체 경로가 포함 된 미디어 파일 이름이 포함 된 GEDCOM 파일을 생성합니다. 이 경로는 웹 서버에 존재하지 "
+"않습니다. 웹 트리가 파일을 찾도록하려면 경로의 첫 부분을 제거해야합니다."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "일부 페이지는 방문한 횟수를 표시 할 수 있습니다."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -12934,19 +12947,19 @@ msgstr ""
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "일부 테마는 “정보 및 이벤트” 탭에 아이콘을 표시 할 수 있습니다."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
 #: modules_v3/individual_report/report.xml:530
 msgid "Son"
-msgstr ""
+msgstr "아들"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:346
 #, php-format
 msgid "Son of %s"
-msgstr ""
+msgstr "%s의 아들"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:207
@@ -12961,7 +12974,7 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "정렬 순서"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: app/Controller/BranchesController.php:214
@@ -12973,7 +12986,7 @@ msgstr ""
 #: search_advanced.php:160 search_advanced.php:222 search_advanced.php:237
 #: search_advanced.php:258 search_advanced.php:273
 msgid "Sounds like"
-msgstr ""
+msgstr "처럼 들린다"
 
 #. I18N: gedcom tag SOUR
 #. I18N: Name of a module/report
@@ -12999,12 +13012,14 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:529
 #: modules_v3/missing_facts_report/report.xml:570
 msgid "Source"
-msgstr ""
+msgstr "출처"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2110
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
 msgstr ""
+"출처 인용에는 데이터의 품질 (1 차, 2 차 등) 및 이벤트가 소스에 기록 된 날짜를 기록하는 필드가 포함될 수 있습니다. 이 입력란을 "
+"사용하지 않으면 새 출처 인용을 만들 때 사용 중지 할 수 있습니다."
 
 #. I18N: Label for search field
 #: find.php:257
@@ -13014,7 +13029,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:2118 modules_v3/fact_sources/report.xml:6
 msgid "Source type"
-msgstr ""
+msgstr "출처 유형"
 
 #. I18N: Name of a module
 #: admin.php:770 admin.php:819 admin_trees_duplicates.php:141
@@ -13034,7 +13049,7 @@ msgstr ""
 #: search.php:98 source.php:144 sourcelist.php:33 sourcelist.php:37
 #: statistics.php:354 statistics.php:391
 msgid "Sources"
-msgstr ""
+msgstr "출처"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
@@ -13078,7 +13093,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:202
 #: modules_v3/individual_ext_report/report.xml:219
 msgid "Spouse"
-msgstr ""
+msgstr "배우자"
 
 #: app/GedcomTag.php:458
 msgid "Spouse census date"
@@ -13090,17 +13105,17 @@ msgstr ""
 
 #: app/GedcomTag.php:468
 msgid "Spouse note"
-msgstr ""
+msgstr "배우자 노트"
 
 #: app/Functions/FunctionsPrintLists.php:1431
 msgid "Spouses"
-msgstr ""
+msgstr "배우자"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr ""
+msgstr "배우자와 자녀"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6804
@@ -13139,21 +13154,21 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr ""
+msgstr "페이지 로드 시 슬라이드 쇼 시작"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
 msgid "Start year"
-msgstr ""
+msgstr "시작년도"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
-msgstr ""
+msgstr "변경 날짜의 시작 범위"
 
 #. I18N: gedcom tag STAE
 #: app/GedcomTag.php:800 app/Module/GoogleMapsModule.php:3446
 msgid "State"
-msgstr ""
+msgstr "주"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
@@ -13162,7 +13177,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:162 app/Module/StatisticsChartModule.php:33
 #: statistics.php:40 statistics.php:65
 msgid "Statistics"
-msgstr ""
+msgstr "통계"
 
 #: statisticsplot.php:852
 msgid "Statistics chart"
@@ -13172,20 +13187,20 @@ msgstr ""
 #: admin_site_change.php:321 admin_site_change.php:388
 #: app/Functions/FunctionsPrint.php:483 app/GedcomTag.php:804
 msgid "Status"
-msgstr ""
+msgstr "상태"
 
 #: app/GedcomTag.php:806
 msgid "Status change date"
-msgstr ""
+msgstr "날짜 변경 상태"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
-msgstr ""
+msgstr "사산"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
 msgid "Stillborn: exempt"
-msgstr ""
+msgstr "사산 : 면제"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:353
@@ -13211,16 +13226,16 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr ""
+msgstr "스토리"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
-msgstr ""
+msgstr "스토리"
 
 #: app/Module/StoriesModule.php:228 app/Module/StoriesModule.php:374
 #: app/Module/StoriesModule.php:458
 msgid "Story title"
-msgstr ""
+msgstr "스토리 제목"
 
 #. I18N: Part of a country, state/region/county
 #: app/Module/GoogleMapsModule.php:654 app/Module/GoogleMapsModule.php:1344
@@ -13234,7 +13249,7 @@ msgstr "제목"
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:814
 msgid "Submission"
-msgstr ""
+msgstr "제출"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
@@ -13244,7 +13259,7 @@ msgstr "제출했지만 아직 지워지지 않았습니다"
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr ""
+msgstr "제출자"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
@@ -13268,7 +13283,7 @@ msgstr ""
 #: admin.php:617
 #, php-format
 msgid "Support and documentation can be found at %s."
-msgstr ""
+msgstr "지원 및 설명서는 %s에서 찾을 수 있습니다."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6884
@@ -13278,38 +13293,38 @@ msgstr ""
 #. I18N: gedcom tag SURN
 #: app/GedcomTag.php:818 help_text.php:297 search.php:236
 msgid "Surname"
-msgstr ""
+msgstr "가문이름"
 
 #: app/Stats.php:1638 statistics.php:658
 msgid "Surname distribution chart"
-msgstr ""
+msgstr "가문이름 분포도"
 
 #: admin_trees_config.php:1151
 msgid "Surname list style"
-msgstr ""
+msgstr "가문이름 목록 스타일"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:153
 msgid "Surname option"
-msgstr ""
+msgstr "가문이름 옵션"
 
 #. I18N: gedcom tag SPFX
 #: app/GedcomTag.php:792
 msgid "Surname prefix"
-msgstr ""
+msgstr "가문이름 접두사"
 
 #: admin_trees_config.php:2092
 msgid "Surname tradition"
-msgstr ""
+msgstr "가문이름 전통"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "가문이름은 개인의 성별과 결혼 상태를 나타내기 위해 활용됩니다."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:93
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "가문이름은 개인의 성별을 나타 내기 위해 활용됩니다."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
@@ -13324,7 +13339,7 @@ msgstr ""
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
 msgid "Swap individuals"
-msgstr ""
+msgstr "인물 교환"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
@@ -13348,7 +13363,7 @@ msgstr ""
 
 #: admin_trees_manage.php:750
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "GEDCOM 파일과 가계도 동기화"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6891
@@ -13357,17 +13372,17 @@ msgstr ""
 
 #: admin_module_tabs.php:87 admin_modules.php:211
 msgid "Tab"
-msgstr ""
+msgstr "탭"
 
 #: setup.php:379
 msgid "Table prefix"
-msgstr ""
+msgstr "테이블 접두사"
 
 #. I18N: Menu entry
 #: admin_module_tabs.php:28 admin_modules.php:160
 #: app/Theme/AdministrationTheme.php:192
 msgid "Tabs"
-msgstr ""
+msgstr "탭"
 
 #: find.php:519
 msgid "Tag"
@@ -13430,7 +13445,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:895
 msgid "Technical help contact"
-msgstr ""
+msgstr "기술 지원 문의"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
@@ -13439,12 +13454,12 @@ msgstr ""
 
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
-msgstr ""
+msgstr "템플릿"
 
 #. I18N: gedcom tag TEMP
 #: app/GedcomTag.php:822 modules_v3/individual_report/report.xml:208
 msgid "Temple"
-msgstr ""
+msgstr "사원"
 
 #: app/Module/GoogleMapsModule.php:329
 msgid "Terrain"
@@ -13477,7 +13492,7 @@ msgstr ""
 #. I18N: gedcom tag TEXT
 #: app/GedcomTag.php:826
 msgid "Text"
-msgstr ""
+msgstr "텍스트"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6895
@@ -13487,15 +13502,21 @@ msgstr ""
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
+"<b>이름</b> 입력란에는 철자가 기록되거나 기록 된대로 개인의 성명이 포함됩니다. 이것이 화면에 표시되는 방식입니다. 표준 계보 "
+"주석을 사용하여 이름의 다른 부분을 식별합니다."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
+"<b>가문이름</b> 필드에는 정렬 및 그룹화에 사용되는 이름이 있습니다. 항상 <b>이름</b> 입력란에서 가져온 개인의 실제 "
+"가문이름과 다를 수 있습니다. 이 필드는 접두사 (Gogh / van Gogh)가 있거나 없는 가문이름을 정렬하고 철자 변형 또는 변곡 ("
+"Kowalski / Kowalska)을 그룹화하는 데 사용할 수 있습니다. 개인을 둘 이상의 가문이름 아래에 나열해야하는 경우 각 이름은 "
+"쉼표로 구분해야합니다."
 
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM 파일 “%s”을(를) 가져 왔습니다."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13505,7 +13526,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:82
 msgid "The PHP temporary folder is missing."
-msgstr ""
+msgstr "PHP 임시 폴더가 없습니다."
 
 #: admin_trees_manage.php:714
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one. It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database. The following requirements are necessary:"
@@ -13514,27 +13535,27 @@ msgstr ""
 #: admin_users.php:101
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr ""
+msgstr "웹 트리 사이트 %s의 관리자가 귀하의 계정 신청을 승인했습니다. 다음 링크에 액세스하여 로그인 할 수 있습니다 : %s"
 
 #: login.php:616
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
-msgstr ""
+msgstr "관리자에게 정보가 제공되었습니다. 로그인 권한을 부여하면 사용자 이름과 비밀번호로 로그인 할 수 있습니다."
 
 #. I18N: %s is the name of a genealogy record
 #: action.php:50
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr ""
+msgstr "“%s”에 대한 변경이 승인되었습니다."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:234
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr ""
+msgstr "“%s”에 대한 변경이 거부되었습니다."
 
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr ""
+msgstr "클리핑 카트를 사용하면 이 가계도에서 추출한 내용을 가져 와서 GEDCOM 파일로 다운로드 할 수 있습니다."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -13542,7 +13563,7 @@ msgstr ""
 
 #: admin_trees_config.php:1197
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "마지막 업데이트 날짜 및 시간"
 
 #: family.php:111
 msgid "The details of this family are private."
@@ -13556,59 +13577,59 @@ msgstr ""
 #: admin_site_upgrade.php:231 admin_trees_export.php:41
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr ""
+msgstr "가계도를 %s로 내보냈습니다."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "가계도 “%s”이(가) 이미 존재합니다."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "가계도 “%s”이(가) 생성되었습니다."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "가계도 “%s”이(가) 삭제되었습니다."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "이 웹 사이트에 처음 방문하면 가계도 “%s”이(가) 방문자에게 표시됩니다."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "가계도가 성공적으로 병합되었습니다."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:144
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr ""
+msgstr "“%s” 가계는 하나의 구성원 만 있기 때문에 삭제되었습니다."
 
 #: addmedia.php:178 admin_media_upload.php:136
 #, php-format
 msgid "The file %s already exists. Use another filename."
-msgstr ""
+msgstr "파일 %s이(가) 이미 존재합니다. 다른 파일 이름을 사용하십시오."
 
 #: admin_site_upgrade.php:233 admin_site_upgrade.php:360
 #: admin_site_upgrade.php:393 admin_trees_export.php:44
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "파일 %s을(를) 만들 수 없습니다."
 
 #: admin_media.php:63 admin_media.php:72 admin_site_clean.php:38
 #: admin_site_upgrade.php:415 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "파일 %s을(를) 지울 수 없습니다."
 
 #: admin_site_upgrade.php:335
 #, php-format
@@ -13624,28 +13645,28 @@ msgstr ""
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "파일 %s이(가) 삭제되었습니다."
 
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "%s 파일이 업로드되었습니다."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
 msgid "The file was only partially uploaded. Please try again."
-msgstr ""
+msgstr "파일이 부분적으로 만 업로드되었습니다. 다시 시도하십시오."
 
 #. I18N: %s is a filename
 #: medialist.php:301 mediaviewer.php:146
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr ""
+msgstr "“%s”파일이 없습니다."
 
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "폴더 %s을(를) 삭제할 수 없습니다."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13660,30 +13681,32 @@ msgstr ""
 #: admin_trees_config.php:285
 #, php-format
 msgid "The folder %s has been created."
-msgstr ""
+msgstr "폴더 %s이(가) 생성되었습니다."
 
 #: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "폴더 %s이(가) 삭제되었습니다."
 
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"폴더는 전체 (예 : /home/user_name/webtrees_data/) 또는 설치 폴더 (예 : ../../"
+"webtrees_data/)와 관련하여 지정할 수 있습니다."
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "다음 정보와 이벤트는 2개의 레코드에서 발견되었습니다."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "다음 정보와 이벤트는 %s의 레코드에서만 발견되었습니다."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
-msgstr ""
+msgstr "다음 목록은 일반적인 요구 사항을 보여줍니다."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
@@ -13699,40 +13722,40 @@ msgstr ""
 
 #: help_text.php:321
 msgid "The help text has not been written for this item."
-msgstr ""
+msgstr "이 항목에 대한 도움말 텍스트가 작성되지 않았습니다."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:909
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr ""
+msgstr "웹 사이트에서 발생한 기술적 질문 또는 오류에 대해 연락을 받을 인물입니다."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:887
 msgid "The individual to contact about the genealogy data on this website."
-msgstr ""
+msgstr "이 웹 사이트에서 계보 데이터에 대해 문의 할 인물입니다."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:152 action.php:156 app/Controller/GedcomRecordController.php:57
 #: app/Controller/GedcomRecordController.php:65
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr ""
+msgstr "%1$s”에서“%2$s”로의 링크가 삭제되었습니다."
 
 #. I18N: The placeholders are the names of individuals, sources, etc.
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "“%1$s”에서“%2$s”로의 링크가 업데이트되었습니다."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr ""
+msgstr "미디어 파일 %1$s의 이름을 %2$s(으)로 바꿀 수 없습니다."
 
 #: addmedia.php:342
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr ""
+msgstr "미디어 파일 %1$s의 이름이 %2$s(으)로 바뀌었습니다."
 
 #: addmedia.php:349
 #, php-format
@@ -13749,46 +13772,46 @@ msgstr ""
 
 #: setup.php:172
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr ""
+msgstr "메모리 및 CPU 사양 요구 사항은 가계도의 인물 수에 따라 다릅니다."
 
 #: message.php:193
 msgid "The message was not sent."
-msgstr ""
+msgstr "메시지가 전송되지 않았습니다."
 
 #: message.php:191
 #, php-format
 msgid "The message was successfully sent to %s."
-msgstr ""
+msgstr "메시지가 %s에 성공적으로 전송되었습니다."
 
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "“%s”모듈이 비활성화되었습니다."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "“%s”모듈이 활성화되었습니다."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "가장 일반적인 가족 정보와 이벤트는 별도로 나열되므로 더 쉽게 추가 할 수 있습니다."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1726
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "가장 일반적인 개별 정보와 이벤트는 별도로 나열되므로 더 쉽게 추가 할 수 있습니다."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "가장 일반적인 저장소 정보는 별도로 나열되므로 더 쉽게 추가 할 수 있습니다."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1933
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr ""
+msgstr "가장 일반적인 출처 정보는 별도로 나열되므로 더 쉽게 추가 할 수 있습니다."
 
 #: admin_site_upgrade.php:338
 #, php-format
@@ -13797,7 +13820,7 @@ msgstr ""
 
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr ""
+msgstr "계정을 만들기 전에 새 사용자에게 전자 메일 주소를 확인하라는 메시지가 표시됩니다."
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13805,12 +13828,12 @@ msgstr ""
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr ""
+msgstr "비밀번호는 6자 이상이어야합니다."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:407
 msgid "The password required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP 서버 인증에 필요한 비밀번호입니다."
 
 #: admin_users.php:75 edituser.php:134 setup.php:419
 msgid "The passwords do not match."
@@ -13818,11 +13841,11 @@ msgstr ""
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "모든 가계도에 대한 환경 설정이 업데이트되었습니다."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "새로운 가계도에 대한 환경 설정이 업데이트되었습니다."
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
@@ -13832,17 +13855,17 @@ msgstr ""
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "가계도 “%s”의 환경 설정이 업데이트되었습니다."
 
 #: admin_modules.php:86
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "모듈 “%s”의 기본 설정이 삭제되었습니다."
 
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "“%s”모듈의 환경 설정이 업데이트되었습니다."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
@@ -13855,13 +13878,13 @@ msgstr ""
 
 #: action.php:92
 msgid "The record has been copied to the clipboard."
-msgstr ""
+msgstr "레코드가 클립 보드에 복사되었습니다."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:172
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "“%1$s” 및 “%2$s” 레코드가 병합되었습니다."
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
@@ -13870,11 +13893,11 @@ msgstr ""
 
 #: setup.php:154
 msgid "The server configuration is OK."
-msgstr ""
+msgstr "서버 설정이 정상입니다."
 
 #: admin_trees_renumber.php:257
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "서버의 시간 제한에 도달했습니다."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:42
@@ -13884,7 +13907,7 @@ msgstr "가계도의 크기, 가장 빠른 최신 이벤트, 일반적인 이름
 #: help_text.php:222
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "가문이름은 슬래시로 묶습니다. <%s>John Paul /Smith/<%s>"
 
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:965
@@ -13913,41 +13936,41 @@ msgstr ""
 
 #: admin_site_config.php:242 admin_users.php:427 edituser.php:253
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "시간대는 오늘 날짜 알기 등의 날짜 계산에 필요합니다."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:90
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
+msgstr[0] "두 가계도에는 동일한 “XREF”를 사용하는 %1$s 레코드가 있습니다."
 
 #: admin_site_upgrade.php:447
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "업그레이드가 완료되었습니다."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:73
 msgid "The uploaded file exceeds the allowed size."
-msgstr ""
+msgstr "업로드 된 파일이 허용 된 크기를 초과합니다."
 
 #: admin_users.php:786
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "사용자 %s이(가) 삭제되었습니다."
 
 #: login.php:327
 msgid "The user has been sent an email with the information necessary to confirm the access request."
-msgstr ""
+msgstr "사용자에게 액세스 요청을 확인하는 데 필요한 정보가 포함 된 이메일이 발송되었습니다."
 
 #: login.php:82 login.php:87
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "사용자 이름 또는 비밀번호가 올바르지 않습니다."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:394
 msgid "The username required for authentication with the SMTP server."
-msgstr ""
+msgstr "SMTP 서버 인증에 필요한 사용자 이름입니다."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:951
@@ -13979,16 +14002,18 @@ msgstr ""
 #: admin_site_config.php:47 admin_site_config.php:66 admin_site_config.php:78
 #: admin_site_config.php:93 admin_site_config.php:102
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "웹 사이트 환경 설정이 업데이트되었습니다."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:1547
 msgid "The website www.geonames.org provides a large database of place names. This can be searched when entering new places. To use this feature, you must register for a free account at www.geonames.org and provide the username."
 msgstr ""
+"웹 사이트 www.geonames.org는 큰 장소 이름 데이터베이스를 제공합니다. 새로운 장소를 입력 할 때 검색 할 수 있습니다. 이 "
+"기능을 사용하려면 www.geonames.org에서 무료 계정을 등록하고 사용자 이름을 제공해야합니다."
 
 #: setup.php:509
 msgid "The webtrees developers would be very interested to learn about this error. If you contact them, they will help you resolve the problem."
-msgstr ""
+msgstr "webtrees 개발자는  오류에 대해 매우 관심이 있습니다. 연락하면 문제 해결에 도움이됩니다."
 
 #: admin_site_access.php:279
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
@@ -13997,12 +14022,12 @@ msgstr ""
 #: admin_modules.php:251 admin_users.php:485 app/Theme/AbstractTheme.php:1778
 #: edituser.php:272
 msgid "Theme"
-msgstr ""
+msgstr "테마"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
 msgid "Theme change"
-msgstr ""
+msgstr "테마 변경"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:960
@@ -14011,7 +14036,7 @@ msgstr ""
 
 #: admin_modules.php:165
 msgid "Themes"
-msgstr ""
+msgstr "테마"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
@@ -14020,38 +14045,38 @@ msgstr ""
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
 msgid "There are no facts for this individual."
-msgstr ""
+msgstr "이 인물에 대한 정보는 없습니다."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
-msgstr "선택한 사람에 대한 미디어 개체가 없습니다."
+msgstr "선택한 인물에 대한 미디어 개체가 없습니다."
 
 #: app/Module/NotesTabModule.php:90
 msgid "There are no notes for this individual."
-msgstr ""
+msgstr "이 인물에 대한 노트가 없습니다."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
-msgstr ""
+msgstr "보류중인 변경 사항이 없습니다."
 
 #: app/Module/ResearchTaskModule.php:151
 msgid "There are no research tasks in this family tree."
-msgstr ""
+msgstr "이 가계도에는 연구 과제가 없습니다."
 
 #: app/Module/SourcesTabModule.php:83
 msgid "There are no source citations for this individual."
-msgstr ""
+msgstr "이 인물에 대한 출처 인용이 없습니다."
 
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961
 msgid "There are pending changes for you to moderate."
-msgstr ""
+msgstr "평가할 보류중인 변경 사항이 있습니다."
 
 #: app/Module/RecentChangesModule.php:89
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
+msgstr[0] "지난 %s일동안 변경 사항이 없습니다."
 
 #: login.php:266
 #, php-format
@@ -14060,13 +14085,13 @@ msgstr ""
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
-msgstr ""
+msgstr "파일을 업로드하는 중에 오류가 발생했습니다."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:164
@@ -14089,7 +14114,7 @@ msgstr ""
 #: admin_trees_unconnected.php:80
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "이 인물 그룹은 %s와 관련이 없습니다."
 
 #: admin.php:578
 msgid "These pages provide access to all the preferences and management tools for this webtrees site."
@@ -14103,15 +14128,17 @@ msgstr ""
 
 #: login.php:97
 msgid "This account has not been approved. Please wait for an administrator to approve it."
-msgstr ""
+msgstr "이 계정은 승인되지 않았습니다. 관리자가 승인 할 때까지 기다리십시오."
 
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
-msgstr ""
+msgstr "이 계정은 확인되지 않았습니다. 이메일에서 확인 메시지를 확인하십시오."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
 msgstr ""
+"이 블록은 편집자에게 중재자가 검토해야하는 보류중인 변경 사항이있는 레코드 목록을 표시합니다. 또한 보류중인 변경 사항이있을 때마다 "
+"중재자에게 매일 전자 메일을 생성합니다."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14124,7 +14151,7 @@ msgstr ""
 
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr ""
+msgstr "이 이메일 주소는 비밀번호 알림, 웹 사이트 알림 및 웹 사이트에 등록 된 다른 가족 구성원의 메시지를 보내는 데 사용됩니다."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14132,27 +14159,27 @@ msgstr ""
 
 #: family.php:63
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "이 가족이 존재하지 않거나 볼 수있는 권한이 없습니다."
 
 #: family.php:44
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 가족은 삭제되었습니다. 중재자가 삭제를 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:39
 #, php-format
 msgid "This family has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "이 가족은 삭제되었습니다. 삭제를 검토 한 다음 %1$s 또는 %2$s 해야합니다."
 
 #: family.php:54
 msgid "This family has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 가족은 편집되었습니다. 중재자가 변경 사항을 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: family.php:49
 #, php-format
 msgid "This family has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "이 가족은 편집되었습니다. 변경 사항을 검토 한 다음 %1$s 또는 %2$s 변경해야 합니다."
 
 #: app/Functions/FunctionsCharts.php:409 app/Functions/FunctionsCharts.php:546
 msgid "This family remained childless"
@@ -14162,23 +14189,27 @@ msgstr ""
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
+msgstr[0] "이 가계도에는 다른 가계도와 동일한 “XREF”를 사용하는 %s 레코드가 있습니다."
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr ""
+msgstr "이 가계도에는 표시 할 이미지가 없습니다."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
 msgstr ""
+"이 가계도는 #gedcomUpdated#에서 마지막으로 업데이트되었습니다. 이 가계도에는 #totalSurnames# 가문이 있습니다. "
+"가장 먼저 기록 된 이벤트는 #firstEventYear#에서 #firstEventName#의 #firstEventType#입니다. 가장 "
+"최근의 이벤트는 #lastEventYear#의 #lastEventName#의 #lastEventType#입니다. <br><br> 답변이나 "
+"의견이 있으면 #contactWebmaster#로 문의하십시오."
 
 #. I18N: %s is a date
 #: app/Module/FamilyTreeStatisticsModule.php:101
 #: app/Module/HtmlBlockModule.php:165
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr ""
+msgstr "이 가계도는 %s에서 마지막으로 업데이트되었습니다."
 
 #: addmedia.php:334
 msgid "This file is linked to another family tree on this server. It cannot be deleted, moved, or renamed until these links have been removed."
@@ -14188,50 +14219,52 @@ msgstr ""
 #: admin_site_config.php:186
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
 msgstr ""
+"이 폴더는 웹 트리에서 미디어 파일, GEDCOM 파일, 임시 파일 등을 저장하는 데 사용됩니다.이 파일은 개인 데이터를 포함 할 수 "
+"있으며 인터넷을 통해 사용할 수 없습니다."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1006
 msgid "This folder will be used to store the media files for this family tree."
-msgstr ""
+msgstr "이 폴더는이 가계도의 미디어 파일을 저장하는 데 사용됩니다."
 
 #: app/Filter.php:480
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "이 양식은 만료되었습니다. 다시 시도하십시오."
 
 #: app/Controller/ChartController.php:57 individual.php:80
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "이 인물이 존재하지 않거나 볼 수있는 권한이 없습니다."
 
 #: individual.php:58
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 인물이 삭제되었습니다. 중재자가 삭제를 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:53
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "이 인물이 삭제되었습니다. 삭제를 검토 한 다음 %1$s 또는 %2$s 해야 합니다."
 
 #: individual.php:68
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 인물은 편집되었습니다. 중재자가 변경 사항을 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: individual.php:63
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "이 인물은 편집되었습니다. 변경 사항을 검토 한 다음 %1$s 또는 %2$s 변경해야합니다."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:680 edituser.php:207
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr ""
+msgstr "이 인물은 차트와 보고서를 볼 때 기본적으로 선택됩니다."
 
 #: app/Stats.php:1452 app/Stats.php:2267 app/Stats.php:2375 app/Stats.php:2950
 #: app/Stats.php:3124 app/Stats.php:3422 app/Stats.php:4405 app/Stats.php:4537
 #: app/Stats.php:4586 timeline.php:287
 msgid "This information is private and cannot be shown."
-msgstr ""
+msgstr "이 정보는 개인 정보이므로 표시 할 수 없습니다."
 
 #: help_text.php:280
 msgid "This input box lets you change that year of the calendar. Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View the year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>. This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned. Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -14241,25 +14274,35 @@ msgstr ""
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
 msgstr ""
+"이름 추가/편집 양식에 표시되는 GEDCOM 팩트 태그의 쉼표로 구분 된 목록입니다. 히브리어, 그리스어, 키릴 어 또는 아랍어와 같은 "
+"비 라틴어 알파벳을 사용하는 경우 이름을 여러 알파벳으로 저장할 수 있도록 _HEB, ROMN, FONE 등과 같은 태그를 추가 할 수 "
+"있습니다."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
 msgstr ""
+"새 패밀리를 추가 할 때 표시되는 쉼표로 구분 된 GEDCOM fact 태그 목록입니다. 예를 들어 MARR이 목록에 있으면 결혼 날짜 "
+"및 결혼 장소 필드가 양식에 표시됩니다."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form."
 msgstr ""
+"새 인물을 추가 할 때 표시되는 쉼표로 구분 된 GEDCOM fact 태그 목록입니다. 예를 들어, BIRT가 목록에 있으면 생년월일 및 "
+"출생지 필드가 양식에 표시됩니다."
 
 #. I18N: Help text for the “Advanced place name facts” configuration setting
 #: admin_trees_config.php:2082
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets."
 msgstr ""
+"장소 이름을 추가하거나 편집 할 때 표시되는 쉼표로 구분 된 GEDCOM 팩트 태그 목록입니다. 히브리어, 그리스어, 키릴 어 또는 "
+"아랍어와 같은 비 라틴어 알파벳을 사용하는 경우 _HEB, ROMN, FONE 등과 같은 태그를 추가하여 여러 다른 알파벳으로 장소 "
+"이름을 저장할 수 있습니다."
 
 #: edituser.php:190
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr ""
+msgstr "이것은 가계도에서 자신의 기록에 대한 링크입니다. 인물이 잘못된 경우 관리자에게 문의하십시오."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated.
 #: admin_trees_config.php:1329
@@ -14268,7 +14311,7 @@ msgstr ""
 
 #: setup.php:290 setup.php:294
 msgid "This is case sensitive."
-msgstr ""
+msgstr "대소문자를 구분합니다."
 
 #: setup.php:377
 msgid "This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails."
@@ -14281,52 +14324,69 @@ msgstr ""
 
 #: admin.php:629 admin_site_upgrade.php:67
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "이것은 최신 버전의 webtrees입니다. 사용 가능한 업그레이드가 없습니다."
 
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1757
 msgid "This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list."
 msgstr ""
+"이것은 사용자가 가족에게 추가 할 수있는 GEDCOM 정보의 목록입니다. 필요에 따라 정보 이름, 심지어 사용자 정의 이름을 제거하거나 "
+"추가하여 이 목록을 수정할 수 있습니다. 이 목록에 나오는 정보 이름은 “고유 한 가족 정보”목록에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr ""
+"이것은 사용자가 인물에게 추가 할 수있는 GEDCOM 정보의 목록입니다. 필요에 따라 정보 이름, 심지어 사용자 정의 이름을 제거하거나 "
+"추가하여이 목록을 수정할 수 있습니다. 이 목록에 나타나는 정보 이름은 “고유 한 개별 정보”목록에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1964
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr ""
+"사용자가 저장소에 추가 할 수있는 GEDCOM 정보 목록입니다. 필요에 따라 정보 이름, 심지어 사용자 정의 이름을 제거하거나 추가하여이 "
+"목록을 수정할 수 있습니다. 이 목록에 나타나는 정보 이름은 “고유 저장소 사실”정보에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr ""
+"사용자가 출처에 추가 할 수있는 GEDCOM 정보 목록입니다. 필요에 따라 정보 이름, 심지어 사용자 정의 이름을 제거하거나 추가하여이 "
+"목록을 수정할 수 있습니다. 이 목록에 나타나는 정보 이름은 “고유 출처 정보”목록에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list."
 msgstr ""
+"이것은 사용자가 가족에게 한 번만 추가 할 수있는 GEDCOM 정보의 목록입니다. 예를 들어 MARR이 이 목록에 있으면 사용자는 하나 "
+"이상의 MARR 레코드를 가족에 추가 할 수 없습니다. 이 목록에 나오는 정보 이름은 “모든 가족 정보” 목록에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr ""
+"사용자가 인물에게 한 번만 추가 할 수있는 GEDCOM 정보 목록입니다. 예를 들어, BIRT가 이 목록에 있으면 사용자는 둘 이상의 "
+"BIRT 레코드를 인물에게 추가 할 수 없습니다. 이 목록에 나타나는 정보 이름은 “모든 개별 정보” 목록에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1993
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr ""
+"사용자가 저장소에 한 번만 추가 할 수있는 GEDCOM 정보 목록입니다. 예를 들어, NAME이 이 목록에 있으면 사용자는 저장소에 둘 "
+"이상의 NAME 레코드를 추가 할 수 없습니다. 이 목록에 나타나는 정보 이름은“모든 저장소 정보” 목록에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr ""
+"사용자가 출처에 한 번만 추가 할 수있는 GEDCOM 정보 목록입니다. 예를 들어 TITL이이 목록에 있으면 사용자는 둘 이상의 TITL "
+"레코드를 정보에 추가 할 수 없습니다. 이 목록에 나타나는 정보 이름은 “모든 출처 정보” 목록에도 나타나지 않아야합니다."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
 msgstr ""
+"이것은 SMTP 서버의 이름입니다. “localhost”는 메일 서비스가 웹 서버와 동일한 컴퓨터에서 실행되고 있음을 의미합니다."
 
 #. I18N: Help text for the “Width of generated thumbnails” configuration setting
 #: admin_trees_config.php:1090
@@ -14335,7 +14395,7 @@ msgstr ""
 
 #: admin_users.php:317 edituser.php:176 login.php:424 setup.php:430
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "화면에 표시하려는 실제 이름입니다."
 
 #: admin_trees_check.php:135
 msgid "This may be a mistake in your data."
@@ -14363,27 +14423,27 @@ msgstr "미디어 파일이 손상 되었거나 워터 마크 할 수 없습니�
 
 #: mediaviewer.php:60
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "이 미디어 개체가 없거나 볼 수있는 권한이 없습니다."
 
 #: mediaviewer.php:45
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 미디어 개체가 삭제되었습니다. 중재자가 삭제를 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:40
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "이 미디어 개체가 삭제되었습니다. 삭제를 검토 한 다음 %1$s 또는 %2$s 해야합니다."
 
 #: mediaviewer.php:55
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 미디어 개체가 편집되었습니다. 중재자가 변경 사항을 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:50
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "이 미디어 개체가 편집되었습니다. 변경 사항을 검토 한 다음 %1$s 또는 %2$s 변경해야합니다."
 
 #: admin_media.php:570 find.php:634
 msgid "This media object is not linked to any other record."
@@ -14400,56 +14460,56 @@ msgstr ""
 
 #: setup.php:438
 msgid "This must be at least six characters long. It is case-sensitive."
-msgstr ""
+msgstr "6자 이상이어야합니다. 대소문자를 구분합니다."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:340
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr ""
+msgstr "이 이름은 이 서버에서 자동 이메일을 보낼 때 “보낸 사람” 필드에 사용됩니다."
 
 #: note.php:61
 msgid "This note does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "이 노트는 존재하지 않거나 볼 수있는 권한이 없습니다."
 
 #: note.php:46
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 노트가 삭제되었습니다. 중재자가 삭제를 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:41
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "이 노트가 삭제되었습니다. 삭제를 검토 한 다음 %1$s 또는 %2$s 해야합니다."
 
 #: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 노트가 편집되었습니다. 중재자가 변경 사항을 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: note.php:51
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "이 노트가 편집되었습니다. 변경 사항을 검토 한 다음 %1$s 또는 %2$s 변경해야합니다."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1480
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr ""
+msgstr "이 옵션은 인물 페이지에 <i>Note</i> 레코드의 컨텐츠를 자동으로 표시할지 여부를 제어합니다."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1495
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr ""
+msgstr "이 옵션은 인물 페이지에 <i>출처</i> 레코드의 컨텐츠를 자동으로 표시할지 여부를 제어합니다."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1316
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr ""
+msgstr "이 옵션은 자녀의 생년월일 옆에 아버지와 어머니의 연령을 차트에 표시할지 여부를 제어합니다."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1189
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr ""
+msgstr "이 옵션은 날짜를 모르는 개인의 인물 목록 및 차트에 공백을 남기지 않고 출생 및 사망 예상 날짜를 표시할지 여부를 제어합니다."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1303
@@ -14464,27 +14524,32 @@ msgstr ""
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "이 옵션을 사용하면 사용자가 이미지를보다 쉽게 다운로드 할 수 있습니다."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
 msgstr ""
+"이 옵션은 가족 기록을 개인 기록으로 유지합니다. 이는 가계도 및 인물이 있는 다른 차트에 빈 “비공개”상자가 표시됨을 의미합니다."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:475
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
 msgstr ""
+"이 옵션은 인물의 이름 (다른 세부 사항은 아님)을 표시합니다. 인물이 아직 살아 있거나 개인 기록에 개인 정보 제한이 추가 된 경우의 "
+"인물입니다. 특정 이름을 숨기려면 해당 이름 레코드에 개인 정보 제한을 추가하십시오."
 
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"이 페이지에서는 일반적인 양식을 무시하고 기본 데이터를 직접 편집 할 수 있습니다. 고급 옵션이며 GEDCOM 형식을 이해하지 않으면 "
+"사용하지 마십시오. 여기에서 실수하면 수정하기가 어려울 수 있습니다."
 
 #: app/Theme/AbstractTheme.php:482
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
+msgstr[0] "이 페이지는 %s번 조회되었습니다."
 
 #: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
@@ -14492,75 +14557,79 @@ msgstr ""
 
 #: help_text.php:307
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr ""
+msgstr "이 과정을 통해 사이트 소유자는 새로운 정보가 사이트의 표준 및 규칙을 따르고 적절한 소스 속성 등을 갖도록 할 수 있습니다."
 
 #: gedrecord.php:72
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "이 레코드가 존재하지 않거나 볼 수있는 권한이 없습니다."
 
 #: gedrecord.php:57
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 레코드가 삭제되었습니다. 중재자가 삭제를 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:52
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "이 레코드가 삭제되었습니다. 삭제를 검토 한 다음 %1$s 또는 %2$s 해야합니다."
 
 #: gedrecord.php:67
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 레코드는 편집되었습니다. 중재자가 변경 사항을 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: gedrecord.php:62
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "이 레코드는 편집되었습니다. 변경 사항을 검토 한 다음 %1$s 또는 %2$s 변경해야합니다."
 
 #: repo.php:60
 msgid "This repository does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "이 저장소가 존재하지 않거나 볼 수있는 권한이 없습니다."
 
 #: repo.php:45
 msgid "This repository has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 저장소가 삭제되었습니다. 중재자가 삭제를 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:40
 #, php-format
 msgid "This repository has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "이 저장소가 삭제되었습니다. 삭제를 검토 한 다음 %1$s 또는 %2$s 해야합니다."
 
 #: repo.php:55
 msgid "This repository has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 저장소가 편집되었습니다. 중재자가 변경 사항을 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: repo.php:50
 #, php-format
 msgid "This repository has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "이 저장소가 편집되었습니다. 변경 사항을 검토 한 다음 %1$s 또는 %2$s 변경해야합니다."
 
 #: admin_users.php:552
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
-msgstr ""
+msgstr "이 역할에는 편집자 역할의 모든 권한과 다른 사용자의 변경 사항을 수락 / 거부 할 수있는 권한이 있습니다."
 
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr ""
+"이 역할에는 모든 가계도에서 관리자 역할의 모든 권한과 웹 사이트, 사용자 및 모듈의 설정 / 구성을 변경할 수있는 권한이 있습니다."
 
 #: admin_users.php:546
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
 msgstr ""
+"이 역할에는 멤버 역할의 모든 권한과 데이터 추가/변경/삭제 권한이 있습니다. 사용자가 “변경 사항을 자동으로 수락하지 않는 한” "
+"변경자는 중재자가 검토해야합니다."
 
 #: admin_users.php:560
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
 msgstr ""
+"이 역할에는 중재자 역할의 모든 권한과 가계도 구성에서 부여한 추가 액세스 권한과 가계도의 설정/구성을 변경할 수있는 권한이 있습니다."
 
 #: admin_users.php:538
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr ""
+msgstr "이 역할에는 방문자 역할의 모든 권한과 가계도 구성에서 부여한 추가 액세스 권한이 있습니다."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:262
@@ -14570,65 +14639,68 @@ msgstr ""
 #: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr ""
+msgstr "이 서버의 메모리 제한은 %s MB이고 CPU 시간 제한은 %s 초입니다."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr ""
+"가계도와 같은 차트 상자에 표시하려는 출생 및 사망 외에 쉼표 또는 공백으로 구분 된 사실 목록이어야합니다. 이 목록에는 GEDCOM "
+"5.5.1 표준에 정의 된 팩트 태그를 사용해야합니다. 예를 들어, 직업을 상자에 표시하려면이 필드에 “OCCU”를 추가하십시오."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "이 출처가 존재하지 않거나 볼 수있는 권한이 없습니다."
 
 #: source.php:45
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 출처가 삭제되었습니다. 중재자가 삭제를 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:40
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "이 출처가 삭제되었습니다. 삭제를 검토 한 다음 %1$s 또는 %2$s 해야합니다."
 
 #: source.php:55
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "이 출처는 편집되었습니다. 중재자가 변경 사항을 검토해야합니다."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:50
 #, php-format
 msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "이 출처는 편집되었습니다. 변경 사항을 검토 한 다음 %1$s 또는 %2$s 변경해야 합니다."
 
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: admin_trees_config.php:931
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
-msgstr ""
+msgstr "이 텍스트는 각 페이지 제목에 추가됩니다. 브라우저의 제목 표시 줄, 책갈피 등에 표시됩니다."
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
-msgstr ""
+msgstr "이 유형의 링크는 여기에서 허용되지 않습니다."
 
 #: includes/session.php:435
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "이 사용자 계정은 어떤 가계도에도 액세스 할 수 없습니다."
 
 #: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr ""
+msgstr "이것은 일반적으로 퍼미션을 777로 변경해야 함을 의미합니다."
 
 #: admin_site_upgrade.php:41
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "이 웹 사이트는 업그레이드 중입니다. 몇 분 후에 다시 시도하십시오."
 
 #: site-offline.php:71
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
 msgstr ""
+"이 웹 사이트는 유지 관리를 위해 다운되었습니다. 몇 분 안에 <a href=\"index.php\">다시 시도</a> 해야합니다."
 
 #: site-offline.php:65 site-unavailable.php:76
 msgid "This website is temporarily unavailable"
-msgstr ""
+msgstr "이 웹 사이트는 일시적으로 이용할 수 없습니다"
 
 #: app/Theme/AbstractTheme.php:346
 msgid "This website uses cookies to learn about visitor behaviour."
@@ -14638,7 +14710,7 @@ msgstr ""
 #: admin_trees_manage.php:199
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr ""
+msgstr "그러면 “%s”에서 모든 계보 데이터가 삭제되고 GEDCOM 파일의 데이터로 대체됩니다."
 
 #: admin_trees_places.php:98
 msgid "This will update the highest-level part or parts of the place name. For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -14655,7 +14727,7 @@ msgstr ""
 
 #: admin_trees_config.php:1041 admin_trees_config.php:1046
 msgid "Thumbnail images"
-msgstr ""
+msgstr "썸네일 이미지"
 
 #: addmedia.php:459 admin_media_upload.php:208
 msgid "Thumbnail to upload"
@@ -14673,18 +14745,18 @@ msgstr ""
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
 msgid "Time"
-msgstr ""
+msgstr "시간"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:237 admin_users.php:422 edituser.php:247
 msgid "Time zone"
-msgstr ""
+msgstr "타임존"
 
 #. I18N: Name of a module/chart
 #: app/Controller/TimelineController.php:74
 #: app/Module/TimelineChartModule.php:33 timeline.php:246
 msgid "Timeline"
-msgstr ""
+msgstr "타임라인"
 
 #: admin_site_change.php:387 admin_site_logs.php:327
 msgid "Timestamp"
@@ -14752,7 +14824,7 @@ msgstr ""
 #: app/GedcomTag.php:834 app/Module/FamilyTreeFavoritesModule.php:224
 #: editnews.php:68 modules_v3/GEDFact_assistant/census/census-edit.php:139
 msgid "Title"
-msgstr ""
+msgstr "제목"
 
 #: app/GedcomTag.php:840
 msgid "Title in Hebrew"
@@ -14766,6 +14838,8 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:291
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
 msgstr ""
+"이 블록을 시작하는 데 도움을주기 위해 몇 가지 표준 템플릿을 만들었습니다. 이러한 템플릿 중 하나를 선택하면 텍스트 영역에 사이트의 "
+"요구 사항에 맞게 변경할 수있는 사본이 포함됩니다."
 
 #: admin_site_upgrade.php:337
 msgid "To complete the upgrade, you should install the files manually."
@@ -14773,12 +14847,14 @@ msgstr ""
 
 #: app/Module/ResearchTaskModule.php:202
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr ""
+msgstr "새로운 연구 과제를 만들려면 먼저 가계도 환경 설정의 사실 및 사건 목록에 “연구 과제”를 추가해야합니다."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1562
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
 msgstr ""
+"다른 계보 응용 프로그램과의 호환성을 보장하려면 노트, 텍스트 및 대화내용을 형식이 지정되지 않은 간단한 텍스트로 기록해야합니다. 그러나 "
+"프리젠테이션, 이해력 등을 돕기 위해 형식을 지정하는 것이 바람직합니다."
 
 #: admin_site_upgrade.php:340
 #, php-format
@@ -14789,19 +14865,22 @@ msgstr ""
 #: admin_site_config.php:189
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
 msgstr ""
+"이 개인 데이터를 보호하기 위해 웹 트리는이 폴더에 대한 모든 액세스를 차단하는 Apache 구성 파일 (.htaccess)을 "
+"사용합니다. 웹 서버가 .htaccess 파일을 지원하지 않고이 폴더에 대한 액세스를 제한 할 수없는 경우 웹 문서에서 다른 폴더를 "
+"선택할 수 있습니다."
 
 #: admin_trees_download.php:144 app/Module/ClippingsCartModule.php:377
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-msgstr ""
+msgstr "다운로드 크기를 줄이려면 데이터를 .ZIP 파일로 압축 할 수 있습니다. .ZIP 파일의 압축을 풀어야 사용할 수 있습니다."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:483
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "이 언어를 다른 언어로 설정하려면 해당 언어로 전환 한 후이 페이지를 다시 방문해야합니다."
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr ""
+msgstr "검색 엔진에 사이트 맵을 사용할 수 있도록하려면 다음 링크를 사용하십시오."
 
 #: app/Module/SiteMapModule.php:328
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
@@ -14841,24 +14920,24 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
+msgstr[0] "상위 %s 이름"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
+msgstr[0] "상위 %s 가문이름"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:71
 msgid "Top given name"
-msgstr ""
+msgstr "제일 많은 이름"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:31 statistics.php:201
 msgid "Top given names"
-msgstr ""
+msgstr "제일 많은 이름"
 
 #: app/Module/GoogleMapsModule.php:3944 app/Module/GoogleMapsModule.php:4020
 #: placelist.php:107
@@ -14868,12 +14947,12 @@ msgstr ""
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:94
 msgid "Top surname"
-msgstr ""
+msgstr "제일 많은 가문이름"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopSurnamesModule.php:37 statistics.php:200
 msgid "Top surnames"
-msgstr ""
+msgstr "제일 많은 가문이름"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:373
@@ -14886,7 +14965,7 @@ msgstr ""
 
 #: modules_v3/change_report/report.xml:127
 msgid "Total accepted changes: "
-msgstr ""
+msgstr "허용되는 Total 변경 사항: "
 
 #: statistics.php:113
 msgid "Total births"
@@ -14968,7 +15047,7 @@ msgstr ""
 
 #: modules_v3/change_report/report.xml:87
 msgid "Total pending changes: "
-msgstr ""
+msgstr "모든 보류중인 변경 사항: "
 
 #. I18N: A count of places
 #: app/Module/GoogleMapsModule.php:1556
@@ -14997,7 +15076,7 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_config.php:150 app/Theme/AdministrationTheme.php:99
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "추적 및 분석"
 
 #: admin_site_config.php:575 admin_site_config.php:600
 #: admin_site_config.php:625
@@ -15007,7 +15086,7 @@ msgstr ""
 #. I18N: gedcom tag TRLR
 #: app/GedcomTag.php:844
 msgid "Trailer"
-msgstr ""
+msgstr "트레일러"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:199
@@ -15073,15 +15152,15 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:696 app/GedcomTag.php:848
 #: medialist.php:149
 msgid "Type"
-msgstr ""
+msgstr "유형"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr ""
+msgstr "이벤트 유형"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr ""
+msgstr "정보 유형"
 
 #: app/Module/GoogleMapsModule.php:452
 msgid "Type of place markers in the place hierarchy"
@@ -15146,33 +15225,35 @@ msgstr ""
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:112
 msgid "Uncleared: insufficient data"
-msgstr ""
+msgstr "불분명 : 데이터 부족"
 
 #: admin_trees_config.php:1765
 msgid "Unique family facts"
-msgstr ""
+msgstr "독특한 가족 정보"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
 msgid "Unique identifier"
-msgstr ""
+msgstr "고유 식별자"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: admin_trees_config.php:725
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
 msgstr ""
+"고유 식별자를 사용하면 다른 가계도 및 다른 시스템에서 동일한 레코드를 찾을 수 있습니다. 레코드가 작성되거나 업데이트 될 때마다 "
+"추가됩니다. 고유 식별자를 표시하지 않으려면 개인 정보 보호 규칙을 사용하여 숨길 수 있습니다."
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
-msgstr ""
+msgstr "독특한 인물 정보"
 
 #: admin_trees_config.php:1972
 msgid "Unique repository facts"
-msgstr ""
+msgstr "독특한 저장소 정보"
 
 #: admin_trees_config.php:1883
 msgid "Unique source facts"
-msgstr ""
+msgstr "독특한 출처 정보"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
@@ -15192,12 +15273,12 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/GedcomRecord.php:1158 app/GedcomRecord.php:1162 app/Stats.php:6670
 msgid "Unknown"
-msgstr ""
+msgstr "알 수 없는"
 
 #: app/Stats.php:5190
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "알 수 없는"
 
 #: app/Controller/IndividualController.php:256
 #: app/Controller/IndividualController.php:259
@@ -15209,12 +15290,12 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "알 수 없는"
 
 #: app/Stats.php:941 app/Stats.php:947 edituser.php:187
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "알 수 없는"
 
 #: app/Module/AlbumModule.php:190
 msgid "Unlink the media object"
@@ -15222,22 +15303,22 @@ msgstr ""
 
 #: app/GedcomTag.php:1797
 msgid "Unrecognized GEDCOM code"
-msgstr ""
+msgstr "인식 할 수없는 GEDCOM 코드"
 
 #: admin_media.php:642
 msgid "Unused files"
-msgstr ""
+msgstr "사용하지 않는 파일"
 
 #. I18N: The system is about to…; %s is a .ZIP file.
 #: admin_site_upgrade.php:273
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "임시 폴더에 %s의 압축을 풉니다…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
 msgid "Upcoming events"
-msgstr ""
+msgstr "다가오는 이벤트"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
@@ -15246,7 +15327,7 @@ msgstr "업데이트"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:79
 msgid "Update all"
-msgstr ""
+msgstr "전부 업데이트"
 
 #: admin_trees_places.php:84
 msgid "Update all the place names in a family tree"
@@ -15254,7 +15335,7 @@ msgstr ""
 
 #: admin_trees_manage.php:489 app/Module/GoogleMapsModule.php:2297
 msgid "Update place names"
-msgstr ""
+msgstr "장소이름 업데이트"
 
 #. I18N: Ignore the warnings, and…
 #: admin_site_upgrade.php:138 admin_site_upgrade.php:202
@@ -15279,11 +15360,12 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_media_upload.php:37 app/Theme/AdministrationTheme.php:179
 msgid "Upload media files"
-msgstr ""
+msgstr "미디어 파일 업로드"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr ""
+"로컬 컴퓨터에서 하나 이상의 미디어 파일을 업로드하십시오. 미디어 파일은 사진, 비디오, 오디오 또는 기타 형식 일 수 있습니다."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6910
@@ -15300,65 +15382,69 @@ msgstr ""
 
 #: admin_site_config.php:119
 msgid "Use SMTP to send messages"
-msgstr ""
+msgstr "SMTP를 사용하여 메시지 보내기"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr ""
+msgstr "“?”를 사용하십시오 단일 문자를 일치 시키려면 “*”를 사용하여 0 개 이상의 문자를 일치시킵니다."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:341 login.php:455
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
+msgstr[0] "%s자 이상을 사용하십시오."
 
 #: modules_v3/family_group_report/report.xml:12
 #: modules_v3/individual_ext_report/report.xml:13
 #: modules_v3/individual_report/report.xml:10
 msgid "Use colors"
-msgstr ""
+msgstr "색상 사용"
 
 #: app/Module/InteractiveTree/TreeView.php:59
 msgid "Use compact layout"
-msgstr ""
+msgstr "컴팩트 레이아웃 사용"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2105
 msgid "Use full source citations"
-msgstr ""
+msgstr "전체 출처 인용 사용"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:376
 msgid "Use password"
-msgstr ""
+msgstr "비밀번호 사용"
 
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "sendmail을 사용하여 메시지 보내기"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr ""
+"해당 인물에 대해 강조 표시된 이미지가 지정되지 않은 경우 실루엣 이미지를 사용하십시오. 사용 된 이미지는 해당 인물의 성별에 따라 "
+"다릅니다."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1059
 msgid "Use silhouettes"
-msgstr ""
+msgstr "실루엣 사용"
 
 #: admin_trees_config.php:1534
 msgid "Use the GeoNames database for autocomplete on places"
-msgstr ""
+msgstr "장소에서 자동 완성을 위해 GeoNames 데이터베이스 사용"
 
 #: login.php:491
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
+"이 필드를 사용하여 사이트 관리자에게 계정을 요청하는 이유와이 사이트에 표시된 계보와 관련이있는 방법을 알려줍니다. 이를 사용하여 사이트 "
+"관리자에 대해 다른 의견을 입력 할 수도 있습니다."
 
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "이 이미지를 차트와 인물 페이지에 사용하십시오."
 
 #: app/Module/GoogleMapsModule.php:3277
 msgid "Use this value"
@@ -15367,21 +15453,21 @@ msgstr ""
 #: admin_site_change.php:351 admin_site_change.php:391 admin_site_logs.php:291
 #: admin_site_logs.php:331 edit_changes.php:183
 msgid "User"
-msgstr ""
+msgstr "사용자"
 
 #. I18N: Menu entry
 #: admin_users.php:298 admin_users.php:670 admin_users.php:794
 #: admin_users_bulk.php:33 app/Theme/AdministrationTheme.php:163
 msgid "User administration"
-msgstr ""
+msgstr "사용자 관리"
 
 #: admin_users.php:735
 msgid "User didn’t verify within 7 days."
-msgstr ""
+msgstr "사용자가 7 일 이내에 확인하지 않았습니다."
 
 #: admin_users.php:759
 msgid "User not verified by administrator."
-msgstr ""
+msgstr "관리자가 사용자를 확인하지 않았습니다."
 
 #: admin_trees_config.php:956
 msgid "User preferences"
@@ -15389,7 +15475,7 @@ msgstr ""
 
 #: login.php:518 login.php:524 login.php:582 login.php:586
 msgid "User verification"
-msgstr ""
+msgstr "사용자 확인"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent_string
 #: admin_site_access.php:274 admin_site_access.php:364
@@ -15411,11 +15497,13 @@ msgstr "사용자 이름이나 이메일 주소"
 #: admin_users.php:330 edituser.php:164 login.php:444
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr ""
+"사용자 이름은 대소 문자를 구분하지 않으며 악센트 부호 문자를 무시하므로 “chloe”, “chloë”및 “Chloe”는 동일하게 "
+"간주됩니다."
 
 #. I18N: Menu entry
 #: admin.php:643 admin.php:651 app/Theme/AdministrationTheme.php:162
 msgid "Users"
-msgstr ""
+msgstr "사용자"
 
 #: admin.php:731
 msgid "Users who are signed in"
@@ -15423,7 +15511,7 @@ msgstr ""
 
 #: admin_users.php:711
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "사용자 계정이 너무 오래 비활성 상태입니다: "
 
 #: app/Module/GoogleMapsModule.php:599
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
@@ -15447,7 +15535,7 @@ msgstr ""
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:42
 msgid "Various statistics charts."
-msgstr ""
+msgstr "다양한 통계 차트."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6913
@@ -15528,12 +15616,12 @@ msgstr ""
 #. I18N: gedcom tag VERS
 #: admin_modules.php:193 app/GedcomTag.php:856
 msgid "Version"
-msgstr ""
+msgstr "버젼"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1940
 msgid "Video"
-msgstr ""
+msgstr "영상"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6918
@@ -15543,7 +15631,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:1028
 #: app/Functions/FunctionsPrintFacts.php:1060
 msgid "View"
-msgstr ""
+msgstr "보기"
 
 #: placelist.php:157
 msgid "View all records found in this place"
@@ -15559,7 +15647,7 @@ msgstr ""
 
 #: calendar.php:292
 msgid "View this day"
-msgstr ""
+msgstr "오늘 보기"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15569,7 +15657,7 @@ msgstr ""
 #: app/Stats.php:4535 app/Stats.php:4562 app/Stats.php:4573 app/Stats.php:4582
 #: medialist.php:313 modules_v3/GEDFact_assistant/MEDIA_ctrl.php:99
 msgid "View this family"
-msgstr ""
+msgstr "가족 보기"
 
 #: app/Module/SlideShowModule.php:177 medialist.php:310
 msgid "View this individual"
@@ -15577,7 +15665,7 @@ msgstr ""
 
 #: calendar.php:296
 msgid "View this month"
-msgstr ""
+msgstr "월 보기"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 msgid "View this source"
@@ -15585,7 +15673,7 @@ msgstr ""
 
 #: calendar.php:300
 msgid "View this year"
-msgstr ""
+msgstr "년 보기"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -15595,12 +15683,12 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_users.php:453
 msgid "Visible online"
-msgstr ""
+msgstr "온라인으로 표시"
 
 #. I18N: A configuration setting
 #: admin_users.php:459 edituser.php:306
 msgid "Visible to other users when online"
-msgstr ""
+msgstr "온라인 일 때 다른 사용자에게 공개"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:193 admin_users.php:39 admin_users.php:529
@@ -15609,13 +15697,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:782
 #: app/Module/ClippingsCartModule.php:789
 msgid "Visitor"
-msgstr ""
+msgstr "방문자"
 
 #. I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:33 calendar.php:254
 #: modules_v3/bdm_report/report.xml:3 modules_v3/bdm_report/report.xml:34
 msgid "Vital records"
-msgstr ""
+msgstr "중요한 기록"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6921
@@ -15629,17 +15717,17 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:263
 msgid "Ward"
-msgstr ""
+msgstr "후견인"
 
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgctxt "FEMALE"
 msgid "Ward"
-msgstr ""
+msgstr "후견인"
 
 #: app/GedcomCode/GedcomCodeRela.php:259
 msgctxt "MALE"
 msgid "Ward"
-msgstr ""
+msgstr "후견인"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:387
@@ -15648,12 +15736,12 @@ msgstr ""
 
 #: admin_trees_config.php:1095
 msgid "Watermarks"
-msgstr ""
+msgstr "워터마크"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: admin_trees_config.php:1141
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "워터 마크는 선택사항이며 일반적으로 방문자에게만 표시됩니다."
 
 #. I18N: Help text for the “Store watermarked full size images on server” configuration setting
 #: admin_trees_config.php:1118
@@ -15664,11 +15752,14 @@ msgstr ""
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
 msgstr ""
+"이제 <b>%s</b> 주소로 확인 이메일을 보내드립니다. 확인 이메일의 지침에 따라 계정 요청을 확인해야합니다. 7일 이내에 계정 "
+"요청을 확인하지 않으면 신청서가 자동으로 거부됩니다. 다시 신청해야합니다. <br><br> 확인 이메일의 지침을 따른 후에도 관리자는 "
+"계정을 사용하기 전에 요청을 승인해야합니다. <br><br> 로그인하려면 웹 사이트에서 사용자 이름과 비밀번호를 알아야합니다."
 
 #. I18N: Menu entry
 #: admin_trees_config.php:914 app/Theme/AdministrationTheme.php:94
 msgid "Website"
-msgstr ""
+msgstr "웹사이트"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:305
@@ -15684,12 +15775,12 @@ msgstr ""
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:100
 msgid "Website logs"
-msgstr ""
+msgstr "웹사이트 로그"
 
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:95
 msgid "Website preferences"
-msgstr ""
+msgstr "웹사이트 환경설정"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
@@ -15703,22 +15794,22 @@ msgstr ""
 #. I18N: gedcom tag _WEIG
 #: app/GedcomTag.php:1759
 msgid "Weight"
-msgstr ""
+msgstr "무게"
 
 #. I18N: A greeting; %s is the user’s name
 #: app/Module/UserWelcomeModule.php:51
 #, php-format
 msgid "Welcome %s"
-msgstr ""
+msgstr "환영합니다 %s"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:466
 msgid "Welcome text on sign-in page"
-msgstr ""
+msgstr "로그인 페이지의 환영 텍스트"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr ""
+msgstr "이 계보 웹 사이트에 오신 것을 환영합니다"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -15729,10 +15820,14 @@ msgstr ""
 #: admin_trees_config.php:2136
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr ""
+"레코드가 편집되면 사용자 및 타임 스탬프가 기록됩니다. 예를 들어 다른 사람의 데이터를 약간 수정하는 경우와 같이 기존의 “마지막 변경”"
+"정보를 유지하는 것이 바람직 할 수 있습니다. 이 옵션은이 기능이 기본적으로 선택되는지 여부를 제어합니다."
 
 #: admin_users.php:388
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr ""
+"사용자가 계정을 등록하면 확인 링크가 포함 된 이메일이 이메일 주소로 전송됩니다. 그들이이 링크를 따라갈 때, 우리는 이메일 주소가 "
+"정확하다는 것을 알고 있으며“이메일 확인”옵션이 자동으로 선택됩니다."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -15742,15 +15837,19 @@ msgstr ""
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr ""
+"가까운 친척을 추가 할 때 기록 (인물 및 가족) 또는 정보 및 이벤트 (출생, 결혼 및 사망)에 출처 인용을 추가 할 수 있습니다. 이 "
+"옵션은 기본적으로 레코드 또는 정보 선택할지 여부를 제어합니다."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
 msgid "When you add a new family member, a default surname can be provided. This surname will depend on the local tradition."
-msgstr ""
+msgstr "새 가족 구성원을 추가 할 때 기본 가문이름을 제공 할 수 있습니다. 이 가문이름은 지역 전통에 따라 다릅니다."
 
 #: help_text.php:305
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"정보를 추가, 편집 또는 삭제할 때 변경 사항이 즉시 저장되지 않습니다. 대신 “보류중인”영역에 유지됩니다. 이러한 보류중인 변경 사항은 "
+"중재자가 승인하기 전에 검토해야합니다."
 
 #: message.php:132
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15759,6 +15858,8 @@ msgstr ""
 #: admin_users.php:599
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
+"사용자가 가계도의 개별 레코드에 연결되어 있고 구성원, 편집자 또는 중재자 역할을하는 경우, 먼 관계에있는 세부 정보에 액세스하지 못하게 "
+"할 수 있습니다. 사용자가 볼 수있는 관계 단계 수를 지정합니다."
 
 #: admin_pgv_to_wt.php:163
 msgid "Where is your PhpGedView installation?"
@@ -15767,17 +15868,17 @@ msgstr ""
 #. I18N: Label for a configuration option
 #: app/Module/SiteMapModule.php:308
 msgid "Which family trees should be included in the sitemaps"
-msgstr ""
+msgstr "사이트 맵에 포함되어야하는 가계도"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1018
 msgid "Who can upload new media files"
-msgstr ""
+msgstr "새 미디어 파일을 업로드 할 수있는 사람"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr ""
+msgstr "온라인 상태 인 사람"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
 msgid "Whole words only"
@@ -15785,11 +15886,11 @@ msgstr ""
 
 #: app/Functions/FunctionsPrintLists.php:637
 msgid "Widow"
-msgstr ""
+msgstr "배우자와 사별한 부인"
 
 #: app/Functions/FunctionsPrintLists.php:628
 msgid "Widower"
-msgstr ""
+msgstr "배우자와 사별한 남편"
 
 #: app/Module/GoogleMapsModule.php:435
 msgid "Width"
@@ -15812,19 +15913,19 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:489
 #: modules_v3/relative_ext_report/report.xml:104
 msgid "Wife"
-msgstr ""
+msgstr "부인"
 
 #: app/Controller/TimelineController.php:228
 msgid "Wife’s age"
-msgstr ""
+msgstr "부인의 나이"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "아내의 가문이름은 이름이 새로워집니다"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:158
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "아내의 가문이름은 남편의 가문이름으로 대체"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:164
 msgid "Wildcards"
@@ -15833,7 +15934,7 @@ msgstr ""
 #. I18N: gedcom tag WILL
 #: app/GedcomTag.php:864
 msgid "Will"
-msgstr ""
+msgstr "유언"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:389
@@ -15842,16 +15943,16 @@ msgstr ""
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
-msgstr ""
+msgstr "출처와 함께"
 
 #: app/Stats.php:420 app/Stats.php:518
 msgid "Without sources"
-msgstr ""
+msgstr "출처 없이"
 
 #. I18N: gedcom tag _WITN
 #: app/GedcomCode/GedcomCodeRela.php:267 app/GedcomTag.php:1763
 msgid "Witness"
-msgstr ""
+msgstr "증거"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -15859,11 +15960,11 @@ msgstr ""
 #: app/SurnameTradition.php:73 app/SurnameTradition.php:92
 #: app/SurnameTradition.php:97
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "아내는 남편의 가문이름을 가져옵니다."
 
 #: statistics.php:679
 msgid "World"
-msgstr ""
+msgstr "세계"
 
 #. I18N: A configuration setting. The first letter(s) in a GEDCOM identifier.
 #: admin_trees_config.php:733
@@ -15882,7 +15983,7 @@ msgstr ""
 
 #: app/Theme/AbstractTheme.php:1067 calendar.php:203 search.php:248
 msgid "Year"
-msgstr ""
+msgstr "년"
 
 #: help_text.php:279
 msgid "Year input box"
@@ -15890,7 +15991,7 @@ msgstr ""
 
 #: timeline.php:132 timeline.php:377
 msgid "Year:"
-msgstr ""
+msgstr "년도:"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6923
@@ -15901,27 +16002,27 @@ msgstr ""
 #: login.php:340
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr ""
+msgstr "귀하 (또는 귀하를 주장하는 사람)가 이메일 주소 %2$s을(를) 사용하여 %1$s에 계정을 요청했습니다."
 
 #: login.php:292 message.php:57
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "외부 링크가 포함 된 메시지를 보낼 수 없습니다."
 
 #: app/Module/LoginBlockModule.php:64
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "%s(으)로 로그인했습니다."
 
 #: login.php:170 login.php:173 login.php:176
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "아래 링크를 사용하여 계정을 신청할 수 있습니다."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:255 admin_trees_config.php:978 edituser.php:287
 msgid "You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc."
-msgstr ""
+msgstr "”테마”를 사용하여 웹 트리의 모양을 변경할 수 있습니다. 각 테마마다 스타일, 레이아웃, 색 구성표 등이 다릅니다."
 
 #. I18N: An XREF is the identification number used in GEDCOM files, such as F123 or R14.
 #: admin_trees_config.php:842
@@ -15930,17 +16031,19 @@ msgstr ""
 
 #: admin_users.php:462 edituser.php:312
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "현재 로그인 한 사용자 목록에 표시할지 여부를 선택할 수 있습니다."
 
 #. I18N: %s is a URL
 #: help_text.php:288
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "%s에서 GEDCOM 사양 사본을 다운로드 할 수 있습니다."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:44
 msgid "You can make it easier to search for married women by recording their married name. However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr ""
+"결혼 한 이름을 기록하여 기혼 여성을보다 쉽게 검색 할 수 있습니다. 그러나 모든 여성이 남편의 성을 사용하는 것은 아니므로 "
+"데이터베이스에 잘못된 정보를 도입하지 않도록주의하십시오."
 
 #: admin_site_upgrade.php:137
 msgid "You can re-enable these modules after the upgrade."
@@ -15952,11 +16055,11 @@ msgstr ""
 
 #: admin_trees_renumber.php:266
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "가계도에서 레코드의 번호를 다시 매길 수 있으므로 이러한 내부 참조 번호가 다른 가계도에서 중복되지 않습니다."
 
 #: admin_trees_renumber.php:279
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "이 가계도의 번호를 다시 지정할 수 있습니다."
 
 #: admin_site_config.php:209 admin_site_config.php:228
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -15966,10 +16069,14 @@ msgstr ""
 #: admin_trees_config.php:500
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
 msgstr ""
+"제한을 추가하여 특정 레코드, 정보 또는 이벤트에 대한 액세스를 설정할 수 있습니다. 레코드, 정보 또는 이벤트에 제한이없는 경우 다음 "
+"기본 제한이 사용됩니다."
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
 msgstr ""
+"다른 날짜로부터 사망을 유추 할 수 있지만 사망, 매장, 화장 등을 기록하지 않은 인물에게 사망 기록을 추가하여 인물 정보 계산 속도를 "
+"높일 수 있습니다."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
@@ -15977,11 +16084,11 @@ msgstr ""
 
 #: login.php:75
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "브라우저가 쿠키를 허용하지 않기 때문에 로그인 할 수 없습니다."
 
 #: includes/session.php:493
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "이 페이지를 볼 수있는 권한이 없습니다."
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
@@ -15989,7 +16096,7 @@ msgstr ""
 
 #: login.php:615
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "등록 된 사용자가 되기위한 요청을 확인했습니다."
 
 #: app/Module/UserJournalModule.php:93
 msgid "You have not created any journal items."
@@ -15997,11 +16104,11 @@ msgstr ""
 
 #: admin_trees_manage.php:201
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr ""
+msgstr "다른 이름의 GEDCOM 파일을 선택했습니다. 맞습니까?"
 
 #: logout.php:27
 msgid "You have signed out."
-msgstr ""
+msgstr "로그아웃 했습니다."
 
 #: addmedia.php:473
 msgid "You may enter a URL, beginning with “http://”."
@@ -16009,7 +16116,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:445
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr ""
+msgstr "HTML을 사용하여 답변의 형식을 지정하고 다른 웹 사이트에 대한 링크를 추가 할 수 있습니다."
 
 #: admin_site_config.php:441
 msgid "You must also enable “less secure applications” in your Google account."
@@ -16034,7 +16141,7 @@ msgstr ""
 
 #: setup.php:421
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "모든 관리자 계정 필드를 입력해야합니다."
 
 #: edit_interface.php:1502
 msgid "You must provide a repository name."
@@ -16046,35 +16153,35 @@ msgstr ""
 
 #: admin_trees_merge.php:96
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "병합하기 전에 트리 중 하나의 레코드 번호를 다시 매겨 야합니다."
 
 #: app/Module/ChartsBlockModule.php:138
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr ""
+msgstr "블록 환경 설정에서 인물 및 차트 유형을 선택해야합니다"
 
 #: admin_users.php:286
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr ""
+msgstr "사용자를 직계 가족으로 제한하기 전에 인물 레코드를 지정해야합니다."
 
 #: login.php:176
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "이 웹 사이트에 접속하려면 가족 구성원이어야합니다."
 
 #: login.php:173
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "이 웹 사이트에 액세스하려면 인증 된 사용자 여야합니다."
 
 #: admin_trees_manage.php:320
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "가계도를 만들어야합니다."
 
 #: login.php:567
 msgid "You need to review the account details."
-msgstr ""
+msgstr "계정 정보를 검토해야합니다."
 
 #: setup.php:425
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
-msgstr ""
+msgstr "관리자 계정을 설정해야합니다. 이 계정은이 웹 트리 설치의 모든면을 제어 할 수 있습니다."
 
 #: admin_pgv_to_wt.php:1151
 msgid "You need to sign in again, using your PhpGedView username and password."
@@ -16095,7 +16202,7 @@ msgstr "웹 트리 사용자에게 다음 메시지를 보냈습니다:"
 
 #: admin_site_upgrade.php:99
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "업그레이드하기 전에 보류중인 모든 변경 사항을 수락하거나 거부해야합니다."
 
 #: admin_site_upgrade.php:136
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -16109,50 +16216,52 @@ msgstr ""
 #: login.php:293 message.php:58
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "”%2$s”에서 “%1$s”을(를) 삭제하고 다시 시도해야합니다."
 
 #: admin_users.php:394
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr ""
+msgstr "이메일 주소가 정확하다는 것을 모르면 계정을 승인해서는 안됩니다."
 
 #: login.php:328
 msgid "You will be informed by email when this prospective user has confirmed the request. You can then complete the process by activating the username. The new user will not be able to sign in until you activate the account."
 msgstr ""
+"이 예상 사용자가 요청을 확인하면 이메일로 알려드립니다. 그런 다음 사용자 이름을 활성화하여 프로세스를 완료 할 수 있습니다. 새 "
+"사용자는 계정을 활성화 할 때까지 로그인 할 수 없습니다."
 
 #: setup.php:434
 msgid "You will use this to sign in to webtrees."
-msgstr ""
+msgstr "이를 사용하여 웹 트리에 로그인합니다."
 
 #: statistics.php:286
 msgid "Youngest father"
-msgstr ""
+msgstr "가장 어린 아버지"
 
 #: statistics.php:264
 msgid "Youngest female"
-msgstr ""
+msgstr "가장 어린 여성"
 
 #: statistics.php:263
 msgid "Youngest male"
-msgstr ""
+msgstr "가장 어린 남성"
 
 #: statistics.php:287
 msgid "Youngest mother"
-msgstr ""
+msgstr "가장 어린 어머니"
 
 #: app/Module/ClippingsCartModule.php:357
 #: app/Module/ClippingsCartModule.php:691
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "클리핑 카트가 비어 있습니다."
 
 #: message.php:116 message.php:269 setup.php:428
 msgid "Your name"
-msgstr ""
+msgstr "당신의 이름"
 
 #. I18N: %s is a server name/URL
 #: login.php:350
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "%s에 등록"
 
 #: setup.php:277
 msgid "Your server’s administrator will provide you with the connection details."
@@ -16166,6 +16275,7 @@ msgstr ""
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
 msgstr ""
+"웹 서버가 더 이상 보안 업데이트를받지 않는 PHP 버전 %s을(를) 사용하고 있습니다. 가능한 빨리 최신 버전으로 업그레이드해야합니다."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6925
@@ -16185,11 +16295,11 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:1497 app/Module/GoogleMapsModule.php:2344
 #: fanchart.php:109
 msgid "Zoom"
-msgstr ""
+msgstr "Zoom"
 
 #: timeline.php:313
 msgid "Zoom in"
-msgstr ""
+msgstr "확대"
 
 #: app/Theme/AbstractTheme.php:756 app/Theme/AbstractTheme.php:808
 msgid "Zoom in/out on this box."
@@ -16206,7 +16316,7 @@ msgstr ""
 
 #: timeline.php:314
 msgid "Zoom out"
-msgstr ""
+msgstr "축소"
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:84
@@ -16217,24 +16327,24 @@ msgstr ""
 #: app/Date.php:298
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "약 %s"
 
 #: family.php:50 gedrecord.php:63 individual.php:64 mediaviewer.php:51
 #: note.php:52 repo.php:51 source.php:51
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "동의"
 
 #: family.php:40 gedrecord.php:53 individual.php:54 mediaviewer.php:41
 #: note.php:42 repo.php:41 source.php:41
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr ""
+msgstr "동의"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
 msgid "accepted"
-msgstr ""
+msgstr "인정됨"
 
 #. I18N: A button label.
 #: admin_trees_config.php:537 app/Functions/FunctionsPrint.php:569
@@ -16243,28 +16353,28 @@ msgstr ""
 #: app/Module/FamilyTreeFavoritesModule.php:228
 #: app/Module/GoogleMapsModule.php:4024 timeline.php:306
 msgid "add"
-msgstr ""
+msgstr "추가"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:55
 msgid "adopted name"
-msgstr ""
+msgstr "입양 된 이름"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "입양 된 이름"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "입양 된 이름"
 
 #: app/Stats.php:2913
 msgid "adoption"
-msgstr ""
+msgstr "양자"
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "after"
@@ -16274,7 +16384,7 @@ msgstr "이후"
 #: app/Date.php:313
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "%s 이후"
 
 #: app/Functions/FunctionsPrint.php:375
 msgid "after death"
@@ -16283,7 +16393,7 @@ msgstr ""
 #: statisticsplot.php:1133 statisticsplot.php:1183 statisticsplot.php:1233
 #: statisticsplot.php:1283
 msgid "age"
-msgstr ""
+msgstr "나이"
 
 #. I18N: An access rule - allow access to the site
 #: admin_site_access.php:27 admin_site_access.php:34
@@ -16293,24 +16403,24 @@ msgstr ""
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:67
 msgid "also known as"
-msgstr ""
+msgstr "~으로 알려진"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:64
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "~으로 알려진"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:61
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "~으로 알려진"
 
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:657
 msgid "always"
-msgstr ""
+msgstr "항상"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4533
 #: app/Stats.php:4559 app/Stats.php:4570 app/Stats.php:4580 app/Stats.php:5911
@@ -16322,56 +16432,56 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:433
 #: modules_v3/descendancy_report/report.xml:486
 msgid "and"
-msgstr ""
+msgstr "그리고"
 
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "숙모"
 
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "고모"
 
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "외숙모"
 
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "이모"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "숙모(외숙모)"
 
 #: app/Functions/Functions.php:904
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "고모(이모)"
 
 #: app/Functions/Functions.php:846
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "고모/삼촌"
 
 #: app/Functions/Functions.php:884
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "이모/외삼촌"
 
 #: app/Functions/Functions.php:902
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "고모/삼촌(이모/외삼촌)"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:387
 msgid "back to top"
-msgstr ""
+msgstr "맨 위로"
 
 #: app/Module/TopPageViewsModule.php:167
 msgid "before"
@@ -16381,69 +16491,69 @@ msgstr "이전"
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "%s 이전"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "%s와 %s 사이"
 
 #: app/Stats.php:2910
 msgid "birth"
-msgstr ""
+msgstr "출생"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:79
 msgid "birth name"
-msgstr ""
+msgstr "출생 이름"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:76
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "출생 이름"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "출생 이름"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: admin_trees_config.php:450
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr ""
+msgstr "지난 %1$s년에 출생 또는 지난 %2$s년에 사망"
 
 #: app/Functions/Functions.php:768
 msgid "brother"
-msgstr ""
+msgstr "남자형제"
 
 #: app/Functions/Functions.php:1030
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "사돈총각"
 
 #: app/Functions/Functions.php:854
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "시숙"
 
 #: app/Functions/Functions.php:1146
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "시매부"
 
 #: app/Functions/Functions.php:922
 msgctxt "sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "매부"
 
 #: app/Functions/Functions.php:1312
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "시돈총각"
 
 #: app/Functions/Functions.php:934
 msgctxt "spouse’s brother"
@@ -16453,12 +16563,12 @@ msgstr ""
 #: app/Functions/Functions.php:952
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "처남"
 
 #: app/Functions/Functions.php:1368
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "동서"
 
 #: app/Functions/Functions.php:1032
 msgctxt "brother’s wife’s sibling"
@@ -16492,30 +16602,30 @@ msgstr ""
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "bullet list"
-msgstr ""
+msgstr "글 머리 기호 목록"
 
 #: app/Stats.php:2914
 msgid "burial"
-msgstr ""
+msgstr "매장"
 
 #: app/GedcomTag.php:1715
 msgid "by"
-msgstr ""
+msgstr "으로"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "계산 된 %s"
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:809
 msgid "cancel"
-msgstr ""
+msgstr "취소"
 
 #: app/Stats.php:2915
 msgid "census added"
-msgstr ""
+msgstr "인구 조사 추가"
 
 #: app/Stats.php:2585 app/Stats.php:3926 app/Stats.php:3928 app/Stats.php:4940
 #: app/Stats.php:4942 app/Stats.php:4944 app/Stats.php:5190
@@ -16525,24 +16635,24 @@ msgstr ""
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:91
 msgid "change of name"
-msgstr ""
+msgstr "이름 변경"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:88
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "이름 변경"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:85
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "이름 변경"
 
 #: app/Functions/Functions.php:751 edit_interface.php:1981
 #: edit_interface.php:2003
 msgid "child"
-msgstr ""
+msgstr "아이"
 
 #: statisticsplot.php:1333
 msgid "children"
@@ -16561,7 +16671,7 @@ msgstr ""
 #: edit_interface.php:2568 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
-msgstr ""
+msgstr "닫기"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
@@ -16575,7 +16685,7 @@ msgstr ""
 
 #: app/Module/TopSurnamesModule.php:165
 msgid "compact list"
-msgstr ""
+msgstr "컴팩트 목록"
 
 #. I18N: A button label.
 #: admin_pgv_to_wt.php:183 admin_pgv_to_wt.php:1152 admin_site_merge.php:391
@@ -16589,12 +16699,12 @@ msgstr ""
 #: login.php:228 login.php:498 reportengine.php:131 reportengine.php:265
 #: setup.php:190 setup.php:216 setup.php:298 setup.php:384 setup.php:449
 msgid "continue"
-msgstr ""
+msgstr "계속"
 
 #. I18N: A button label.
 #: admin_trees_manage.php:688
 msgid "create"
-msgstr ""
+msgstr "만들기"
 
 #. I18N: a program feature
 #: setup.php:135
@@ -16603,56 +16713,56 @@ msgstr ""
 
 #: statistics.php:718
 msgid "date periods"
-msgstr ""
+msgstr "날짜 기간"
 
 #: app/Functions/Functions.php:749 app/Functions/FunctionsCharts.php:312
 #: edit_interface.php:1980
 msgid "daughter"
-msgstr ""
+msgstr "딸"
 
 #: modules_v3/descendancy_report/report.xml:226
 msgid "daughter of"
-msgstr ""
+msgstr "의 딸"
 
 #: app/Functions/Functions.php:824
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "며느리"
 
 #: app/Functions/Functions.php:932
 msgctxt "son’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "며느리"
 
 #: app/Functions/Functions.php:1360
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr ""
+msgstr "며느리의 아버지"
 
 #: app/Functions/Functions.php:1362
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr ""
+msgstr "며느리의 어머니"
 
 #: app/Functions/Functions.php:1364
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr ""
+msgstr "며느리의 부모"
 
 #: app/Stats.php:2911
 msgid "death"
-msgstr ""
+msgstr "사망"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:3359 app/Module/GoogleMapsModule.php:3370
 msgid "degrees"
-msgstr ""
+msgstr "계급"
 
 #. I18N: A button label.
 #: admin_site_change.php:374 admin_site_clean.php:115 admin_site_logs.php:314
 #: admin_users.php:772
 msgid "delete"
-msgstr ""
+msgstr "삭제"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:28 admin_site_access.php:35
@@ -16663,20 +16773,20 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:365
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "사망"
 
 #: modules_v3/descendancy_report/report.xml:134
 #: modules_v3/descendancy_report/report.xml:435
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "사망"
 
 #. I18N: A button label.
 #: admin_site_change.php:370 admin_site_logs.php:310
 #: app/Module/ClippingsCartModule.php:445
 #: app/Module/ClippingsCartModule.php:810 app/Module/GoogleMapsModule.php:4083
 msgid "download"
-msgstr ""
+msgstr "다운로드"
 
 #: app/Module/GoogleMapsModule.php:3372
 msgid "east"
@@ -16694,76 +16804,76 @@ msgstr ""
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr ""
+msgstr "편집"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
-msgstr ""
+msgstr "여덟 번째 사촌"
 
 #: app/Functions/Functions.php:534
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "여덟 번째 사촌"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:491
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "여덟 번째 사촌"
 
 #: app/Functions/Functions.php:763
 msgid "elder brother"
-msgstr ""
+msgstr "손윗남자형제"
 
 #: app/Functions/Functions.php:797
 msgid "elder sibling"
-msgstr ""
+msgstr "손윗형제"
 
 #: app/Functions/Functions.php:780
 msgid "elder sister"
-msgstr ""
+msgstr "손윗여자형제"
 
 #: app/Functions/Functions.php:575
 msgid "eleventh cousin"
-msgstr ""
+msgstr "열한 번째 사촌"
 
 #: app/Functions/Functions.php:540
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "열한 번째 사촌"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:500
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "열한 번째 사촌"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr ""
+msgstr "부동산 이름"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "부동산 이름"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "부동산 이름"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "예상 %s"
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
-msgstr ""
+msgstr "전 남편"
 
 #: app/Functions/Functions.php:734
 msgid "ex-partner"
@@ -16781,82 +16891,82 @@ msgstr ""
 
 #: app/Functions/Functions.php:739
 msgid "ex-spouse"
-msgstr ""
+msgstr "전 배우자"
 
 #: app/Functions/Functions.php:721
 msgid "ex-wife"
-msgstr ""
+msgstr "전 부인"
 
 #: admin_trees_config.php:69 modules_v3/fact_sources/report.xml:6
 msgid "facts"
-msgstr ""
+msgstr "정보"
 
 #: app/Functions/Functions.php:689
 msgid "father"
-msgstr ""
+msgstr "아버지"
 
 #: app/Functions/Functions.php:860
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "시아버지"
 
 #: app/Functions/Functions.php:940
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "시아버지/장인어른"
 
 #: app/Functions/Functions.php:958
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "장인어른"
 
 #: app/Functions/Functions.php:583
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "15 번째 사촌"
 
 #: app/Functions/Functions.php:548
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "15 번째 사촌"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:512
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "15 번째 사촌"
 
 #. I18N: A Spanish relationship name, such as fifth great-nephew
 #: app/Functions/Functions.php:643
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "다섯 번째 %s"
 
 #: app/Functions/Functions.php:628
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "다섯 번째 %s"
 
 #: app/Functions/Functions.php:613
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "다섯 번째 %s"
 
 #: app/Functions/Functions.php:563
 msgid "fifth cousin"
-msgstr ""
+msgstr "다섯 번째 사촌"
 
 #: app/Functions/Functions.php:528
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "다섯 번째 사촌"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:482
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "다섯 번째 사촌"
 
 #. I18N: a program feature
 #: setup.php:146
@@ -16866,67 +16976,67 @@ msgstr ""
 #. I18N: A button label, first page
 #: admin_trees_config.php:1508 app/I18N.php:222
 msgid "first"
-msgstr ""
+msgstr "첫번째"
 
 #: admin_trees_config.php:1519
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "첫번째"
 
 #. I18N: A Spanish relationship name, such as first great-nephew
 #: app/Functions/Functions.php:635
 #, php-format
 msgid "first %s"
-msgstr ""
+msgstr "첫번째 %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:620
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "첫번째 %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:605
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "첫번째 %s"
 
 #: app/Functions/Functions.php:555
 msgid "first cousin"
-msgstr ""
+msgstr "첫번째 사촌"
 
 #: app/Functions/Functions.php:520
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "첫번째 사촌"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:470
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "첫번째 사촌"
 
 #: app/Functions/Functions.php:1086
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "첫번째 사촌"
 
 #: app/Functions/Functions.php:1088
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "첫번째 사촌"
 
 #: app/Functions/Functions.php:1090
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "첫번째 사촌"
 
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "첫번째 사촌"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
