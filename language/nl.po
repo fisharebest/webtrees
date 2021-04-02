@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-27 15:35+0000\n"
+"PO-Revision-Date: 2021-04-05 08:25+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -9235,7 +9235,7 @@ msgstr "Module"
 #: app/Module/StoriesModule.php:213 app/Module/StoriesModule.php:348
 #: app/Theme/AdministrationTheme.php:190
 msgid "Module administration"
-msgstr "Module beheer"
+msgstr "Modulebeheer"
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:189
@@ -20110,7 +20110,7 @@ msgstr "webtrees kan geen verbinding maken met de database van PhpGedView: %s."
 
 #: message.php:40 message.php:260 message.php:320
 msgid "webtrees message"
-msgstr "webtrees bericht"
+msgstr "webtreesbericht"
 
 #: setup.php:276
 #, php-format
