@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-31 02:30+0000\n"
+"PO-Revision-Date: 2021-04-05 08:25+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -971,7 +971,7 @@ msgstr "Protokol o podrobnostiach konkrétnej osoby."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Protokol o faktoch, ktoré sú v doložené konkrétnym zdrojom."
+msgstr "Protokol faktov, ktoré sú doložené konkrétnym zdrojom."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
@@ -1899,7 +1899,7 @@ msgstr "Všetky fakty a udalosti"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
-msgstr "Všetky fakty rodiny"
+msgstr "Všetky fakty rodín"
 
 #: login.php:415
 msgid "All fields must be completed."
@@ -1911,7 +1911,7 @@ msgstr "Všetky súbory majú oprávnenie na čítanie a zápis."
 
 #: admin_trees_config.php:1618
 msgid "All individual facts"
-msgstr "Všetky fakty osoby"
+msgstr "Všetky fakty osôb"
 
 #: calendar.php:228 calendar.php:239 calendar.php:438
 msgid "All individuals"
@@ -1923,11 +1923,11 @@ msgstr "Všetky záznamy"
 
 #: admin_trees_config.php:1943
 msgid "All repository facts"
-msgstr "Všetky fakty archívu"
+msgstr "Všetky fakty archívov"
 
 #: admin_trees_config.php:1854
 msgid "All source facts"
-msgstr "Všetky fakty zdroja"
+msgstr "Všetky fakty zdrojov"
 
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:32
@@ -2041,7 +2041,7 @@ msgstr ""
 
 #: setup.php:507
 msgid "An unexpected database error occurred."
-msgstr "Objavila sa neočakávaná chyba databázy."
+msgstr "Vyskytla sa neočakávaná chyba databázy."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2311,7 +2311,7 @@ msgstr "Pridružené osoby"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:97
 msgid "Asuncion, Paraguay"
-msgstr "Asuncion, Paraguay"
+msgstr "Asuncion, Paraguaj"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6869
@@ -5249,25 +5249,25 @@ msgstr "Dey"
 #: app/Date/HijriDate.php:101
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "dhú l-hidždža"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:165
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "dhú l-hidždža"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:133
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "dhú l-hidždža"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:69
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "dhú l-hidždža"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:100
@@ -6048,11 +6048,11 @@ msgstr "Fakty pre záznamy osôb"
 
 #: admin_trees_config.php:1794
 msgid "Facts for new families"
-msgstr "Fakty pre novú rodinu"
+msgstr "Fakty pre nové rodiny"
 
 #: admin_trees_config.php:1676
 msgid "Facts for new individuals"
-msgstr "Fakty pre novú osobu"
+msgstr "Fakty pre nové osoby"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
@@ -6778,7 +6778,7 @@ msgstr "Fukuoka, Japonsko"
 #. I18N: gedcom tag _FNRL
 #: app/GedcomTag.php:1501
 msgid "Funeral"
-msgstr "Pohreb"
+msgstr "Pohrebný obrad"
 
 #. I18N: A configuration setting
 #: admin_trees_check.php:139 admin_trees_config.php:1588
@@ -7255,25 +7255,25 @@ msgstr "Hermosillo, Mexiko"
 #: app/Date/JewishDate.php:136
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Chešvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:212
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Chešvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:174
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Chešvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:98
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "Chešvan"
 
 #: admin_trees_config.php:82 admin_trees_config.php:89
 #: admin_trees_config.php:492 admin_trees_config.php:1021
@@ -7294,7 +7294,7 @@ msgstr "Zvýraznený obrázok"
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
 msgid "Hijri"
-msgstr "Hijri"
+msgstr "Hidžri (islamský)"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
@@ -7349,7 +7349,7 @@ msgstr "Domácnosť"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:197
 msgid "Houston, Texas, United States"
-msgstr "Houston, Texas, United States"
+msgstr "Houston, Texas, USA"
 
 #. I18N: Configuration option
 #: app/Module/RelationshipsChartModule.php:188
@@ -7406,7 +7406,7 @@ msgstr "Ikona"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:199
 msgid "Idaho Falls, Idaho, United States"
-msgstr "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, USA"
 
 #. I18N: gedcom tag IDNO
 #: app/GedcomTag.php:520
@@ -7467,9 +7467,9 @@ msgstr ""
 #: admin_trees_config.php:1008
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
 msgstr ""
-"Ak dva rodokmene používajú ten istý priečinok pre médiá, tak sa môžu zdielať "
+"Ak dva rodokmene používajú ten istý priečinok pre médiá, tak sa môžu zdieľať "
 "súbory medzi rodokmeňmi. Ak sa použijú rôzne priečinky, tak ich súbory budú "
-"uložené zvlášť."
+"oddelené."
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7608,11 +7608,11 @@ msgstr ""
 "a súčasne aj latinkou, tak ako by sa vyslovilo v jazyku, ktoré používa "
 "latinku<br><br>Ak dávate v štandardných políčkach pre mená prednosť "
 "nelatinskej abecede, ako napr. alfabeta, azbuka, hebrejská, arabská alebo "
-"čínska, tak môžete toto pole použiť pre zápis mena pomocou latinskej "
-"abecedy. Obe verzie mena sa objavia v zoznamoch a schémach.<br><br>Aj keď je "
-"toto pole označené ako „romanizované“, nie je obmedzené na použitie iba "
-"latinskej abecedy. Môže sa použiť pri japonských menách, kde sa môžu použiť "
-"až tri rôzne abecedy."
+"čínska, tak môžete toto pole použiť pre zápis mena latinskou abecedou. Obe "
+"verzie mena sa objavia v zoznamoch a schémach.<br><br>Aj keď je toto pole "
+"označené ako „romanizované“, nie je obmedzené na použitie iba latinskej "
+"abecedy. Môže sa použiť pri japonských menách, kde sa môžu vyskytnúť až tri "
+"rôzne abecedy."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
@@ -7888,25 +7888,25 @@ msgstr "Taliansko"
 #: app/Date/JewishDate.php:144
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "Ijar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "Ijar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:182
 msgctxt "LOCATIVE"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "Ijar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:106
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr "Iyar"
+msgstr "Ijar"
 
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:203
@@ -7971,7 +7971,7 @@ msgstr "Jordánsko"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:205
 msgid "Jordan River, Utah, United States"
-msgstr "Jordan River, Utah, United States"
+msgstr "Jordan River, Utah, USA"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:47
@@ -8012,49 +8012,49 @@ msgstr "júl"
 #: app/Date/HijriDate.php:94
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "džumádá l-úlá"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:158
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "džumádá l-úlá"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:126
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "džumádá l-úlá"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr "Jumada al-awwal"
+msgstr "džumádá l-úlá"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:95
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "džumádá l-áchira"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:159
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "džumádá l-áchira"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:127
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "džumádá l-áchira"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr "Jumada al-thani"
+msgstr "džumádá l-áchira"
 
 #: app/Date/CalendarDate.php:326
 msgctxt "Abbreviation for June"
@@ -8281,7 +8281,7 @@ msgstr "Najväčší počet vnukov"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Las Vegas, Nevada, United States"
-msgstr "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, USA"
 
 #. I18N: gedcom tag CHAN
 #: app/GedcomTag.php:258 modules_v3/change_report/report.xml:66
@@ -8555,7 +8555,7 @@ msgstr "Podnájomník"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:217
 msgid "Logan, Utah, United States"
-msgstr "Logan, Utah, United States"
+msgstr "Logan, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:219
@@ -8589,7 +8589,7 @@ msgstr "Zabudnuté heslo"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:221
 msgid "Louisville, Kentucky, United States"
-msgstr "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, USA"
 
 #: app/Stats.php:1738
 msgid "Lowest population"
@@ -8598,7 +8598,7 @@ msgstr "Najnižšia populácia"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:223
 msgid "Lubbock, Texas, United States"
-msgstr "Lubbock, Texas, United States"
+msgstr "Lubbock, Texas, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6807
@@ -8738,7 +8738,7 @@ msgstr "Manila, Filipíny"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:235
 msgid "Manti, Utah, United States"
-msgstr "Manti, Utah, United States"
+msgstr "Manti, Utah, USA"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1930
@@ -9057,7 +9057,7 @@ msgstr "Musí sa zhodovať s kalendárom"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:139
 msgid "Match the exact text, even if it occurs in the middle of a word."
-msgstr "Musí sa zhodovať presný text, i vtedy keď sa objaví uprostred slova."
+msgstr "Musí sa zhodovať presný text, aj vtedy, keď sa objaví uprostred slova."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:140
 msgid "Match the exact text, unless it occurs in the middle of a word."
@@ -9125,7 +9125,7 @@ msgstr "Mayotte"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:237
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, USA"
 
 #. I18N: Name of a module
 #. I18N: Menu entry
@@ -9270,7 +9270,7 @@ msgstr "Maximálna veľkosť pamäte"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:241
 msgid "Memphis, Tennessee, United States"
-msgstr "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, USA"
 
 #: admin_module_menus.php:87 admin_modules.php:204
 msgid "Menu"
@@ -9506,7 +9506,7 @@ msgstr "Mesiac:"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:251
 msgid "Monticello, Utah, United States"
-msgstr "Monticello, Utah, United States"
+msgstr "Monticello, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
@@ -9647,25 +9647,25 @@ msgstr "Mozambik"
 #: app/Date/HijriDate.php:90
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "al-muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:154
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "al-muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:122
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "al-muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:58
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr "Muharram"
+msgstr "al-muharram"
 
 #: app/Functions/FunctionsPrintLists.php:713
 msgid "Multiple marriages"
@@ -9787,7 +9787,7 @@ msgstr "Rozprávačský popis"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:257
 msgid "Nashville, Tennessee, United States"
-msgstr "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, USA"
 
 #. I18N: gedcom tag NATI
 #: app/GedcomTag.php:614
@@ -9923,25 +9923,25 @@ msgstr "Nigéria"
 #: app/Date/JewishDate.php:143
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "Nisan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:219
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "Nisan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:181
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "Nisan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "Nisan"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6840
@@ -10059,7 +10059,7 @@ msgstr[2] "Neexistujú žiadne udalosti pre žijúce osoby pre nasledujúcich %s
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
-msgstr "Žiadne fakty pre túto rodinu."
+msgstr "Táto rodina nemá žiadne fakty."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -10413,7 +10413,7 @@ msgstr "október"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:275
 msgid "Ogden, Utah, United States"
-msgstr "Ogden, Utah, United States"
+msgstr "Ogden, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:277
@@ -11170,7 +11170,7 @@ msgstr "Číslo portu"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Portland, Oregon, United States"
-msgstr "Portland, Oregon, United States"
+msgstr "Portland, Oregon, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:283
@@ -11337,7 +11337,7 @@ msgstr "Provo City Center, Utah, USA"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
 msgid "Provo, Utah, United States"
-msgstr "Provo, Utah, United States"
+msgstr "Provo, Utah, USA"
 
 #. I18N: gedcom tag PUBL
 #: app/GedcomTag.php:708
@@ -11375,19 +11375,19 @@ msgstr "Quetzaltenango, Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
-msgstr "Rýchle rodinné fakty"
+msgstr "Časté fakty rodín"
 
 #: admin_trees_config.php:1705
 msgid "Quick individual facts"
-msgstr "Rýchle osobné fakty"
+msgstr "Časté fakty osôb"
 
 #: admin_trees_config.php:2001
 msgid "Quick repository facts"
-msgstr "Rýchle fakty archívov"
+msgstr "Časté fakty archívov"
 
 #: admin_trees_config.php:1912
 msgid "Quick source facts"
-msgstr "Rýchle fakty o zdrojoch"
+msgstr "Časté fakty zdrojov"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:201
@@ -11465,25 +11465,25 @@ msgstr "radāʿ"
 #: app/Date/HijriDate.php:96
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "radžab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:160
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "radžab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:128
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "radžab"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr "Rajab"
+msgstr "radžab"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:309
@@ -11494,25 +11494,25 @@ msgstr "Raleigh, North Carolina, USA"
 #: app/Date/HijriDate.php:98
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "ramadán"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:162
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "ramadán"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:130
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "ramadán"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr "Ramadan"
+msgstr "ramadán"
 
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
@@ -11596,7 +11596,7 @@ msgstr "Referenčné číslo"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:315
 msgid "Regina, Saskatchewan, Canada"
-msgstr "Regina, Saskatchewan, Canada"
+msgstr "Regina, Saskatchewan, Kanada"
 
 #: app/GedcomTag.php:584 modules_v3/fact_sources/report.xml:205
 msgid "Registered partnership"
@@ -11756,7 +11756,7 @@ msgstr "Odstrániť toto miesto?"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
 msgid "Reno, Nevada, United States"
-msgstr "Reno, Nevada, United States"
+msgstr "Reno, Nevada, USA"
 
 #: admin_trees_manage.php:519
 msgid "Renumber"
@@ -11974,25 +11974,25 @@ msgstr "Sacramento, California, USA"
 #: app/Date/HijriDate.php:91
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:155
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr "Safar"
+msgstr "safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:123
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr "Safar"
+msgstr "safar"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
@@ -12027,7 +12027,7 @@ msgstr "Svätý Vincent a Grenadíny"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:341
 msgid "Salt Lake City, Utah, United States"
-msgstr "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, USA"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6922
@@ -12037,7 +12037,7 @@ msgstr "Samoa"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:327
 msgid "San Antonio, Texas, United States"
-msgstr "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:329
@@ -12047,7 +12047,7 @@ msgstr "San Diego, California, USA"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:339
 msgid "San Jose, Costa Rica"
-msgstr "San Jose, Costa Rica"
+msgstr "San José, Kostarika"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6879
@@ -12195,7 +12195,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
 msgid "Seattle, Washington, United States"
-msgstr "Seattle, Washington, United States"
+msgstr "Seattle, Washington, USA"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
@@ -12462,9 +12462,9 @@ msgstr "Nastaviť  status na „schválené“."
 #: admin_trees_config.php:1580
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
 msgstr ""
-"Ak nastavíte <b>áno</b>, budú na stránky osôb, prameňov a rodín pridané "
-"odkazy, ktoré umožnia užívateľom otvoriť ďalšie okno s údajmi tak, ako sú "
-"zapísané v súbore GEDCOM."
+"Ak nastavíte <b>áno</b>, budú na stránky osôb, zdrojov a rodín pridané "
+"odkazy, ktoré umožnia užívateľom otvoriť ďalšie okno so surovými údajmi tak, "
+"ako sú zapísané v súbore GEDCOM."
 
 #: setup.php:93
 msgid "Setup wizard for webtrees"
@@ -12533,25 +12533,25 @@ msgstr "Zdieľané poznámky boli najdené"
 #: app/Date/HijriDate.php:99
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "šauvál"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:163
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "šauvál"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:131
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "šauvál"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:67
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr "Shawwal"
+msgstr "šauvál"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
@@ -12614,25 +12614,25 @@ msgstr "Bola spopolnená"
 #: app/Date/JewishDate.php:139
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Švat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Švat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:177
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Švat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "Švat"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:90
@@ -13177,7 +13177,7 @@ msgstr "Malý systém (500 osôb): 16-32MB, 10-20 sekúnd"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:345
 msgid "Snowflake, Arizona, United States"
-msgstr "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, USA"
 
 #. I18N: gedcom tag SSN
 #: app/GedcomTag.php:796
@@ -13362,7 +13362,7 @@ msgstr "Španielska"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:351
 msgid "Spokane, Washington, United States"
-msgstr "Spokane, Washington, United States"
+msgstr "Spokane, Washington, USA"
 
 #: modules_v3/bdm_report/report.xml:169
 #: modules_v3/individual_ext_report/report.xml:202
@@ -13400,17 +13400,17 @@ msgstr "Srí Lanka"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:337
 msgid "St. George, Utah, United States"
-msgstr "St. George, Utah, United States"
+msgstr "St. George, Utah, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:343
 msgid "St. Louis, Missouri, United States"
-msgstr "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, USA"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:349
 msgid "St. Paul, Minnesota, United States"
-msgstr "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, USA"
 
 #: app/Module/GoogleMapsModule.php:457
 msgid "Standard"
@@ -14056,7 +14056,9 @@ msgstr "Súbor médií, ktorý nahrávate, môže byť, alebo bude musieť byť 
 
 #: setup.php:172
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "Požiadavky na pamäť a procesorový čas závisia na počtu osôb vo vašom rodokmeni."
+msgstr ""
+"Požiadavky na pamäť a procesorový čas závisia na počte osôb vo vašom "
+"rodokmeni."
 
 #: message.php:193
 msgid "The message was not sent."
@@ -14081,29 +14083,29 @@ msgstr "Modul „%s“ bol aktivovaný."
 #: admin_trees_config.php:1844
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
 msgstr ""
-"Najpoužívanejšie rodinné fakty a udalosti sú zobrazené separátne, aby sa "
-"dali jednoducho pridať."
+"Najpoužívanejšie fakty a udalosti rodín sú zobrazené zvlášť, aby sa dali "
+"jednoduchšie pridať."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1726
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
 msgstr ""
-"Najpoužívanejšie fakty a udalosti osôb sú zobrazené separátne, aby sa dali "
-"jednoducho pridať."
+"Najpoužívanejšie fakty a udalosti osôb sú zobrazené zvlášť, aby sa dali "
+"jednoduchšie pridať."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
 msgstr ""
-"Najpoužívanejšie fakty o archívoch sú zobrazené separátne, aby sa dali "
-"jednoducho pridať."
+"Najpoužívanejšie fakty a udalosti archívov sú zobrazené zvlášť, aby sa dali "
+"jednoduchšie pridať."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1933
 msgid "The most common source facts are listed separately, so that they can be added more easily."
 msgstr ""
-"Najpoužívanejšie fakty o zdrojoch sú zobrazené separátne, aby sa dali "
-"jednoducho pridať."
+"Najpoužívanejšie fakty zdrojov sú zobrazené zvlášť, aby sa dali jednoduchšie "
+"pridať."
 
 #: admin_site_upgrade.php:338
 #, php-format
@@ -14402,7 +14404,7 @@ msgstr "Účet s užívateľským menom, alebo e-mailom „%s“ neexistuje."
 
 #: addmedia.php:185 admin_media_upload.php:145
 msgid "There was an error uploading your file."
-msgstr "V priebehu nahrávania vášho súboru sa objavila chyba."
+msgstr "V priebehu nahrávania vášho súboru nastala chyba."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:98
@@ -14677,8 +14679,8 @@ msgid "This is the list of GEDCOM facts that your users can add to families. You
 msgstr ""
 "Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridávať k rodinám. "
 "Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež "
-"vytvorením vlastných. Názvy faktov, ktoré sa objavia v tomto zozname sa "
-"nesmú objaviť v zozname „Unikátne fakty rodiny“."
+"vytvorením vlastných. Názvy faktov, ktoré sú v tomto zozname, nesmú byť "
+"uvedené v zozname „Unikátne fakty rodín“."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1639
@@ -14686,8 +14688,8 @@ msgid "This is the list of GEDCOM facts that your users can add to individuals. 
 msgstr ""
 "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k osobám. "
 "Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež "
-"vytvorením vlastných. Názvy faktov, ktoré sa objavia v tomto zozname sa "
-"nesmú objaviť v zozname „Unikátne fakty osoby“."
+"vytvorením vlastných. Názvy faktov, ktoré sú v tomto zozname, nesmú byť "
+"uvedené v zozname „Unikátne fakty osôb“."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:1964
@@ -14695,8 +14697,8 @@ msgid "This is the list of GEDCOM facts that your users can add to repositories.
 msgstr ""
 "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k archívom. "
 "Môžete ho upraviť pridaním alebo odstránením názvov faktov, prípadne tiež "
-"vytvorením vlastných. Názvy faktov, ktoré sa zobrazia v tomto zozname sa "
-"nesmú objaviť v zozname „Unikátne fakty archívu“."
+"vytvorením vlastných. Názvy faktov, ktoré sú v tomto zozname, nesmú byť "
+"uvedené v zozname „Unikátne fakty archívov“."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:1875
@@ -14704,8 +14706,8 @@ msgid "This is the list of GEDCOM facts that your users can add to sources. You 
 msgstr ""
 "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridávať k zdrojom. "
 "Môžete ho upraviť pridaním alebo odstránením faktov, prípadne tiež "
-"vytvorením vlastných. Názvy faktov, ktoré sa objavia v tomto zozname sa "
-"nesmú objaviť v zozname „Unikátne fakty zdroja“."
+"vytvorením vlastných. Názvy faktov, ktoré sú v tomto zozname, nesmú byť "
+"uvedené v zozname „Unikátne fakty zdrojov“."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1786
@@ -14713,38 +14715,35 @@ msgid "This is the list of GEDCOM facts that your users can only add once to fam
 msgstr ""
 "Toto je zoznam GEDCOM faktov, ktoré môžu užívatelia pridať k rodine len raz. "
 "Napríklad ak je MARR v tomto zozname, užívatelia nebudú môcť pridať tento "
-"záznam k rodine viackrát. Názvy faktov, ktoré sa zobrazia v zozname sa nesmú "
-"objaviť v zozname „Všetky fakty rodiny“."
+"záznam k rodine viackrát. Názvy faktov, ktoré sú v tomto zozname, nesmú byť "
+"uvedené v zozname „Všetky fakty rodín“."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1668
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list."
 msgstr ""
-"Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k "
-"osobám <u>práve raz</u>. Napríklad, ak je v tomto zozname BIRT, užívatelia "
-"nebudú môcť pridať tento záznam k osobe viac než raz. Názvy faktov, ktoré sa "
-"zobrazia v tomto zozname sa nesmú objaviť v zozname <i>Fakty pridané k "
-"osobám</i>."
+"Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridať k osobám "
+"práve raz. Napríklad, ak je v tomto zozname BIRT, užívatelia nebudú môcť "
+"pridať k osobe tento záznam viac než raz. Názvy faktov, ktoré sú v tomto "
+"zozname, nesmú byť uvedené v zozname „Všetky fakty osôb“."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:1993
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories. For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository. Fact names that appear in this list must not also appear in the “All repository facts” list."
 msgstr ""
-"Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať k "
-"archívom <u>práve raz</u>. Napríklad ak je v tomto zozname NAME, užívatelia "
-"nebudú môcť pridať tento záznam k archívu viac než jeden raz. Názvy faktov, "
-"ktoré sa zobrazia v tomto zozname sa nesmú objaviť v zozname <i>Fakty "
-"pridávané k archívom</i>."
+"Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridať k archívom "
+"práve raz. Napríklad ak je v tomto zozname NAME, užívatelia nebudú môcť "
+"pridať tento záznam k archívu viac než  raz. Názvy faktov, ktoré sú v tomto "
+"zozname, nesmú byť uvedené v zozname „Všetky fakty archívov“."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can only add once to sources. For example, if TITL is in this list, users will not be able to add more than one TITL record to a source. Fact names that appear in this list must not also appear in the “All source facts” list."
 msgstr ""
-"Toto je zoznam GEDCOM-tagov faktov, ktoré vaši užívatelia môžu pridať ku "
-"zdrojom <u>práve raz</u>. Napríklad ak je v tomto zozname TITL, užívatelia "
-"nebudú môcť pridať tento záznam ku zdrojom viac než jeden raz. Názvy faktov, "
-"ktoré sa objavia v tomto zozname sa nesmú objaviť v zozname <i>Faktov "
-"pridávaných ku zdrojom</i>."
+"Toto je zoznam GEDCOM faktov, ktoré vaši užívatelia môžu pridať ku zdrojom "
+"práve raz. Napríklad ak je v tomto zozname TITL, užívatelia nebudú môcť "
+"pridať tento záznam ku zdrojom viac než raz. Názvy faktov, ktoré sú v tomto "
+"zozname, nesmú byť uvedené v zozname „Všetky fakty zdrojov“."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:355
@@ -15038,7 +15037,12 @@ msgstr "Limit pamäte pre tento server je %s MB a limit pre procesorový čas je
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1358
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Toto má byť zoznam faktov oddelených čiarkami alebo medzerami, naviac k narodeniu a, ktoré chcete, aby sa zobrazovali v schémach ako je napr. vývod. Tento zoznam vyžaduje použitie tagov definovaných v štandarde GEDCOM 5.5.1. Napríklad ak chcete, aby sa zobrazilo v rámčeku povolanie, pridajte „OCCU“ do tohoto poľa."
+msgstr ""
+"Toto má byť zoznam faktov oddelených čiarkami alebo medzerami, naviac k "
+"narodeniu a úmrtiu, ktoré chcete, aby sa zobrazovali v schémach ako napr. "
+"vývod. Tento zoznam vyžaduje použitie tagov definovaných v štandarde GEDCOM "
+"5.5.1. Napríklad ak chcete, aby sa zobrazilo v rámčeku povolanie, pridajte "
+"„OCCU“ do tohoto poľa."
 
 #: source.php:60
 msgid "This source does not exist or you do not have permission to view it."
@@ -15199,25 +15203,25 @@ msgstr "Tir"
 #: app/Date/JewishDate.php:135
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "Tišri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "Tišri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:173
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "Tišri"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "Tišri"
 
 #. I18N: gedcom tag TITL
 #: app/GedcomTag.php:834 app/Module/FamilyTreeFavoritesModule.php:224
@@ -15373,7 +15377,7 @@ msgstr "Top priezviská"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:373
 msgid "Toronto, Ontario, Canada"
-msgstr "Toronto, Ontario, Canada"
+msgstr "Toronto, Ontario, Kanada"
 
 #: admin.php:851
 msgid "Total"
@@ -15645,7 +15649,7 @@ msgstr "Nevyjasnené: nedostatok údajov"
 
 #: admin_trees_config.php:1765
 msgid "Unique family facts"
-msgstr "Unikátne fakty rodiny"
+msgstr "Unikátne fakty rodín"
 
 #. I18N: gedcom tag _UID
 #: app/GedcomTag.php:1751
@@ -15663,15 +15667,15 @@ msgstr ""
 
 #: admin_trees_config.php:1647
 msgid "Unique individual facts"
-msgstr "Unikátne fakty osoby"
+msgstr "Unikátne fakty osôb"
 
 #: admin_trees_config.php:1972
 msgid "Unique repository facts"
-msgstr "Unikátne fakty archívu"
+msgstr "Unikátne fakty archívov"
 
 #: admin_trees_config.php:1883
 msgid "Unique source facts"
-msgstr "Unikátne fakty zdroja"
+msgstr "Unikátne fakty zdrojov"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6678
@@ -16030,7 +16034,7 @@ msgstr "Overené"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:383
 msgid "Vernal, Utah, United States"
-msgstr "Vernal, Utah, United States"
+msgstr "Vernal, Utah, USA"
 
 #. I18N: gedcom tag VERS
 #: admin_modules.php:193 app/GedcomTag.php:856
@@ -16151,7 +16155,7 @@ msgstr "Chovanec"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:387
 msgid "Washington, District of Columbia, United States"
-msgstr "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, USA"
 
 #: admin_trees_config.php:1095
 msgid "Watermarks"
@@ -16267,10 +16271,10 @@ msgstr "Ak pridáte odkaz, pole ID nesmie zostať prázdne."
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr ""
-"Keď pridávate nových blízkych príbuzných, môžete pridať citáciu zdroja k "
-"záznamu (osoby, alebo rodiny), alebo k faktom a udalostiam (narodenie, "
-"sobáš, ...). Toto nastavenie určuje, či bude zvolený celý záznam, alebo "
-"fakty a udalosti."
+"Keď pridávate nových blízkych príbuzných, môžete pridať citáciu zdroja buď k "
+"záznamu (osoby alebo rodiny), alebo k faktom a udalostiam (narodenie, sobáš, "
+"...). Toto nastavenie určuje, či bude prednastavený celý záznam, alebo "
+"jednotlivé fakty a udalosti."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -16369,7 +16373,7 @@ msgstr "Záveť"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:389
 msgid "Winter Quarters, Nebraska, United States"
-msgstr "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, USA"
 
 #: app/Stats.php:421 app/Stats.php:519
 msgid "With sources"
@@ -16896,7 +16900,7 @@ msgstr "a"
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "teta"
+msgstr "stryná"
 
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
@@ -16906,7 +16910,7 @@ msgstr "teta"
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr "teta"
+msgstr "ujčiná"
 
 #: app/Functions/Functions.php:886
 msgctxt "mother’s sister"
@@ -16931,12 +16935,12 @@ msgstr "teta/strýc"
 #: app/Functions/Functions.php:884
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr "teta/strýc"
+msgstr "teta/strýko"
 
 #: app/Functions/Functions.php:902
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr "teta/strýc"
+msgstr "teta/strýko"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:387
 msgid "back to top"
@@ -17206,7 +17210,7 @@ msgstr "svatka"
 #: app/Functions/Functions.php:1364
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr "svat"
+msgstr "svat/svatka"
 
 #: app/Stats.php:2911
 msgid "death"
@@ -17377,7 +17381,7 @@ msgstr "svokor"
 #: app/Functions/Functions.php:958
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr "svokor"
+msgstr "tesť"
 
 #: app/Functions/Functions.php:583
 msgid "fifteenth cousin"
@@ -17841,7 +17845,7 @@ msgstr "%s× prateta"
 #: app/Functions/Functions.php:1669
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "%s× prateta/prastrýc"
+msgstr "%s× prateta/prastrýko"
 
 #: app/Functions/Functions.php:2042 app/Functions/Functions.php:2057
 #, php-format
@@ -17981,7 +17985,7 @@ msgstr "4× prateta"
 
 #: app/Functions/Functions.php:1581
 msgid "great ×4 aunt/uncle"
-msgstr "4× prateta/prastrýc"
+msgstr "4× prateta/prastrýko"
 
 #: app/Functions/Functions.php:1994
 msgid "great ×4 grandchild"
@@ -18073,7 +18077,7 @@ msgstr "5× prateta"
 
 #: app/Functions/Functions.php:1596
 msgid "great ×5 aunt/uncle"
-msgstr "5× prateta/prastrýc"
+msgstr "5× prateta/prastrýko"
 
 #: app/Functions/Functions.php:2004
 msgid "great ×5 grandchild"
@@ -18165,7 +18169,7 @@ msgstr "6× prateta"
 
 #: app/Functions/Functions.php:1611
 msgid "great ×6 aunt/uncle"
-msgstr "6× prateta/prastrýc"
+msgstr "6× prateta/prastrýko"
 
 #: app/Functions/Functions.php:2014
 msgid "great ×6 grandchild"
@@ -18212,7 +18216,7 @@ msgstr "7× prateta"
 
 #: app/Functions/Functions.php:1626
 msgid "great ×7 aunt/uncle"
-msgstr "7× prateta/prastrýc"
+msgstr "7× prateta/prastrýko"
 
 #: app/Functions/Functions.php:2024
 msgid "great ×7 grandchild"
@@ -19506,7 +19510,7 @@ msgstr "svokra"
 #: app/Functions/Functions.php:960
 msgctxt "wife’s mother"
 msgid "mother-in-law"
-msgstr "svokra"
+msgstr "testiná"
 
 #: app/Functions/Functions.php:948
 msgctxt "spouse’s parent"
@@ -20175,7 +20179,7 @@ msgstr "svatka"
 #: app/Functions/Functions.php:1076
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr "svat"
+msgstr "svat/svatka"
 
 #: app/Functions/Functions.php:822
 msgctxt "child’s spouse"
@@ -20503,32 +20507,32 @@ msgstr "dvojča"
 #: app/Functions/Functions.php:834
 msgctxt "father’s brother"
 msgid "uncle"
-msgstr "strýc"
+msgstr "strýko"
 
 #: app/Functions/Functions.php:1134
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr "strýc"
+msgstr "sváko"
 
 #: app/Functions/Functions.php:870
 msgctxt "mother’s brother"
 msgid "uncle"
-msgstr "strýc"
+msgstr "ujo"
 
 #: app/Functions/Functions.php:1202
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr "strýc"
+msgstr "sváko"
 
 #: app/Functions/Functions.php:890
 msgctxt "parent’s brother"
 msgid "uncle"
-msgstr "strýc"
+msgstr "strýko"
 
 #: app/Functions/Functions.php:1244
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr "strýc"
+msgstr "sváko"
 
 #: admin_site_access.php:26 admin_site_access.php:33
 #: app/Module/FamilyNavigatorModule.php:188
