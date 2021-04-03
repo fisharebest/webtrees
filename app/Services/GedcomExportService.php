@@ -159,7 +159,7 @@ class GedcomExportService
         $gedcom .= "\n1 DEST DISKETTE";
         $gedcom .= "\n1 DATE " . strtoupper(date('d M Y'));
         $gedcom .= "\n2 TIME " . date('H:i:s');
-        $gedcom .= "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
+        $gedcom .= "\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED";
         $gedcom .= "\n1 CHAR " . $encoding;
         $gedcom .= "\n1 FILE " . $filename;
 
