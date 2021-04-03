@@ -23,7 +23,7 @@ modules containing `.` are ignored.
 
 ## Writing modules
 
-To write a module, you need to understand the PHP programming langauge.
+To write a module, you need to understand the PHP programming language.
 
 The rest of this document is aimed at PHP developers.
 
