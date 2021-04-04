@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Filter;
+use Psr\Http\Message\ServerRequestInterface;
 
 use function array_key_exists;
 use function array_map;
@@ -263,7 +265,8 @@ abstract class AbstractElement implements ElementInterface
         $canonical = $this->canonical($value);
 
         if (preg_match(static::REGEX_URL, $canonical)) {
-            return '<a href="' . e($canonical) . '" rel="no-follow">' . e($canonical) . '</a>';
+            $request = app(ServerRequestInterface::class);
+            return Filter::expandUrls(e($canonical), $request->getAttribute('tree'));
         }
 
         return e($canonical);
