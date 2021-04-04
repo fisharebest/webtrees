@@ -23,8 +23,6 @@ use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\Filter;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function array_key_exists;
 use function array_map;
@@ -265,8 +263,18 @@ abstract class AbstractElement implements ElementInterface
         $canonical = $this->canonical($value);
 
         if (preg_match(static::REGEX_URL, $canonical)) {
-            $request = app(ServerRequestInterface::class);
-            return Filter::expandUrls($canonical, $request->getAttribute('tree'));
+            // find all non-url-matching substrings
+            $nonUrls = preg_split(static::REGEX_URL, $canonical);
+            // find all url-matching substrings. Guaranteed one less than above
+            preg_match_all(static::REGEX_URL . "i", $canonical, $urls, PREG_SET_ORDER);
+            $numUrls = count($urls);
+            // escape the non-urls substrings and tag the links
+            $escape = "";
+            for ($i = 0; $i < $numUrls; $i++) {
+                $escape = $escape . e($nonUrls[$i]) . '<a href="' . $urls[$i][0] . '" rel="no-follow">' . $urls[$i][0] . '</a>';
+            }
+            // numUrls = count($nonUrls)-1, i.e. last index of $nonUrls
+            return $escape . e($nonUrls[$numUrls]);
         }
 
         return e($canonical);
