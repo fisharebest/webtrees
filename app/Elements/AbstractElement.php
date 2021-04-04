@@ -266,7 +266,7 @@ abstract class AbstractElement implements ElementInterface
 
         if (preg_match(static::REGEX_URL, $canonical)) {
             $request = app(ServerRequestInterface::class);
-            return Filter::expandUrls(e($canonical), $request->getAttribute('tree'));
+            return Filter::expandUrls($canonical, $request->getAttribute('tree'));
         }
 
         return e($canonical);
