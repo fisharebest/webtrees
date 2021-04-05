@@ -22,7 +22,10 @@ namespace Fisharebest\Webtrees\Services;
 use Closure;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Module\DutchMonarchs;
+use Fisharebest\Webtrees\Module\DutchPrimeMinisters;
 use Fisharebest\Webtrees\Module\LocationListModule;
+use Fisharebest\Webtrees\Module\LowCountriesRulers;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
@@ -310,6 +313,8 @@ class ModuleService
         'descendancy'             => DescendancyModule::class,
         'descendancy_chart'       => DescendancyChartModule::class,
         'descendancy_report'      => DescendancyReportModule::class,
+        'dutch_monarchs'          => DutchMonarchs::class,
+        'dutch_prime_ministers'   => DutchPrimeMinisters::class,
         'extra_info'              => IndividualMetadataModule::class,
         'fab'                     => FabTheme::class,
         'fact_sources'            => FactSourcesReportModule::class,
@@ -417,6 +422,7 @@ class ModuleService
         'location_list'           => LocationListModule::class,
         'logged_in'               => LoggedInUsersModule::class,
         'login_block'             => LoginBlockModule::class,
+        'low_countries_rulers'    => LowCountriesRulers::class,
         'marriage_report'         => MarriageReportModule::class,
         'matomo-analytics'        => MatomoAnalyticsModule::class,
         'media'                   => MediaTabModule::class,
