@@ -83,8 +83,8 @@ class CalendarPage implements RequestHandlerInterface
         }
 
         // need BC to parse date
-        if ($year < 0) {
-            $year = (-$year) . ' B.C.';
+        if (str_starts_with($year, '-')) {
+            $year = substr($year, 1) . ' B.C.';
         }
         $ged_date = new Date("{$cal} {$day} {$month} {$year}");
         // need negative year for year entry field.
