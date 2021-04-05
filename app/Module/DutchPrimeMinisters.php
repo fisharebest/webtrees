@@ -35,7 +35,7 @@ class DutchPrimeMinisters extends AbstractModule implements ModuleHistoricEvents
      */
     public function title(): string
     {
-        return 'Lijst van premiers en kabinetten van Nederland nl';
+        return 'Lijst van premiers en kabinetten van Nederland 🇳🇱';
     }
 
     /**

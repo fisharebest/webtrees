@@ -35,7 +35,7 @@ class DutchMonarchs extends AbstractModule implements ModuleHistoricEventsInterf
      */
     public function title(): string
     {
-        return 'Nederlandse Monarchiën nl';
+        return 'Nederlandse Monarchiën 🇳🇱';
     }
 
     /**

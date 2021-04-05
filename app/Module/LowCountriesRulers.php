@@ -35,7 +35,7 @@ class LowCountriesRulers extends AbstractModule implements ModuleHistoricEventsI
      */
     public function title(): string
     {
-        return 'Machthebbers van de Lage Landen nl';
+        return 'Machthebbers van de Lage Landen 🇳🇱';
     }
 
     /**
