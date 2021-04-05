@@ -602,7 +602,8 @@
               if (that.dataset.autocompleteExtra === 'SOUR') {
                 const element = that.closest('.form-group').previousElementSibling.querySelector('select');
                 const extra   = element.options[element.selectedIndex].value;
-                return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery) + '?extra=' + encodeURIComponent(extra);
+                const symbol  = (url.indexOf("?") > 0) ? '&' : '?';
+                return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery) + symbol + 'extra=' + encodeURIComponent(extra);
               }
               return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery);
             },
