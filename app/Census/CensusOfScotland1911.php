@@ -42,16 +42,17 @@ class CensusOfScotland1911 extends CensusOfScotland implements CensusInterface
     public function columns(): array
     {
         return [
+            new CensusColumnNull($this, 'Rooms', 'Rooms with one or more windows'),
             new CensusColumnFullName($this, 'Name', 'Name and surname'),
+            new CensusColumnNull($this, 'NoPers', 'Number of persons in the house'),
             new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relation to head of household'),
             new CensusColumnAgeMale($this, 'AgeM', 'Age (males)'),
             new CensusColumnAgeFemale($this, 'AgeF', 'Age (females)'),
-            new CensusColumnNull($this, 'Lang', 'Language spoken'),
+            new CensusColumnNull($this, 'Lang', 'Gaelic or G & E'),
             new CensusColumnConditionEnglish($this, 'Condition', 'Condition'),
             new CensusColumnYearsMarried($this, 'YrM', 'Years married'),
             new CensusColumnChildrenBornAlive($this, 'ChA', 'Children born alive'),
             new CensusColumnChildrenLiving($this, 'ChL', 'Children who are still alive'),
-            new CensusColumnChildrenDied($this, 'ChD', 'Children who have died'),
             new CensusColumnOccupation($this, 'Occupation', 'Rank, profession or occupation'),
             new CensusColumnNull($this, 'Ind', 'Industry'),
             new CensusColumnNull($this, 'Emp', 'Employer, worker or own account'),
