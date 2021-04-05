@@ -600,9 +600,10 @@
             url: this.dataset.autocompleteUrl,
             replace: function (url, uriEncodedQuery) {
               if (that.dataset.autocompleteExtra === 'SOUR') {
-                const element = that.closest('.form-group').previousElementSibling.querySelector('select');
-                const extra   = element.options[element.selectedIndex].value;
-                return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery) + '?extra=' + encodeURIComponent(extra);
+                const element  = that.closest('.form-group').previousElementSibling.querySelector('select');
+                const extra    = element.options[element.selectedIndex].value;
+                const extraKey = (url.indexOf("?") > 0) ? '&extra=' : '?extra=';
+                return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery) + extraKey + encodeURIComponent(extra);
               }
               return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery);
             },
