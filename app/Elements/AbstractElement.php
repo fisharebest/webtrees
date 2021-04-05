@@ -271,7 +271,7 @@ abstract class AbstractElement implements ElementInterface
             // escape the non-urls substrings and tag the links
             $escape = "";
             for ($i = 0; $i < $numUrls; $i++) {
-                $escape = $escape . e($nonUrls[$i]) . '<a href="' . $urls[$i][0] . '" rel="no-follow">' . $urls[$i][0] . '</a>';
+                $escape = $escape . e($nonUrls[$i]) . '<a href="' . e($urls[$i][0]) . '" rel="no-follow">' . e($urls[$i][0]) . '</a>';
             }
             // numUrls = count($nonUrls)-1, i.e. last index of $nonUrls
             return $escape . e($nonUrls[$numUrls]);
