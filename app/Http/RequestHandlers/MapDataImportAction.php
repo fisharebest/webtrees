@@ -54,6 +54,18 @@ use const UPLOAD_ERR_OK;
  */
 class MapDataImportAction implements RequestHandlerInterface
 {
+    private MapDataService $map_data_service;
+
+    /**
+     * MapDataImportAction constructor.
+     *
+     * @param MapDataService $map_data_service
+     */
+    public function __construct(MapDataService $map_data_service)
+    {
+        $this->map_data_service = $map_data_service;
+    }
+
     /**
      * This function assumes the input file layout is
      * level followed by a variable number of placename fields
@@ -133,6 +145,9 @@ class MapDataImportAction implements RequestHandlerInterface
             DB::table('place_location')
                 ->whereNull('parent_id')
                 ->delete();
+
+            // Automatically import any new/missing places.
+            $this->map_data_service->importMissingLocations();
         }
 
         $added   = 0;
