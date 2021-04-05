@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-01 13:26+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2021-04-06 13:49+0000\n"
+"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/el/>\n"
 "Language: el\n"
@@ -561,7 +561,7 @@ msgstr "&lt;επιλογή&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "( %s ετών)"
+msgstr "(%s)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -722,6 +722,12 @@ msgstr "<Προεπιλεγμένο Θέμα>"
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
 msgstr ""
+"<div class = \"largeError\"> Σημείωση: </div> <div class = \"error\"> "
+"Συμπληρώνοντας και υποβάλλοντας αυτήν τη φόρμα, συμφωνείτε: <ul> <li> για "
+"την προστασία του απορρήτου των ζωντανών ατόμων που αναφέρονται στον "
+"ιστότοπό μας. </li> <li> και στο παρακάτω πλαίσιο κειμένου, για να εξηγήσετε "
+"σε ποιον συσχετίζεστε ή να μας παράσχετε πληροφορίες σχετικά με κάποιον που "
+"πρέπει να αναφέρεται στον ιστότοπό μας. </li> </ul> </div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:413 app/Functions/FunctionsPrintFacts.php:545
@@ -815,17 +821,20 @@ msgstr "Μια λίστα με συχνές ερωτήσεις και απαντ
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Μια λίστα με εγγραφές που ενημερώθηκαν πρόσφατα."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
 msgstr ""
+"Μια λίστα εργασιών και δραστηριοτήτων που συνδέονται με το οικογενειακό "
+"δέντρο."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr ""
+"Μια λίστα με τις εβραϊκές επετείους θανάτου που θα συμβούν στο εγγύς μέλλον."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
@@ -860,6 +869,12 @@ msgstr "Μια λίστα χρηστών και επισκεπτών που εί
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"Ένα αντικείμενο πολυμέσων είναι μια εγγραφή στο οικογενειακό δέντρο που "
+"περιέχει πληροφορίες σχετικά με ένα αρχείο πολυμέσων. Αυτές οι πληροφορίες "
+"μπορεί να περιλαμβάνουν τίτλο, σημείωση πνευματικών δικαιωμάτων, αντίγραφο, "
+"περιορισμούς απορρήτου κ.λπ. Το αρχείο πολυμέσων, όπως η φωτογραφία ή το "
+"βίντεο, μπορεί να αποθηκευτεί τοπικά (σε αυτόν τον διακομιστή ιστού) ή "
+"απομακρυσμένα (σε διαφορετικό διακομιστή ιστού)."
 
 #: login.php:264
 #, php-format
@@ -875,6 +890,8 @@ msgstr "Έχει γίνει αίτημα νέου συνθηματικού γι�
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"Ένας νέος χρήστης (%1$s) ζήτησε έναν λογαριασμό (%2$s)  και επαλήθευσε μια "
+"διεύθυνση email (%3$s)."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
@@ -884,12 +901,14 @@ msgstr "Μια νέα έκδοση του webtrees είναι διαθέσιμη
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
 msgstr ""
+"Ένας ιδιωτικός χώρος για την καταγραφή σημειώσεων ή την τήρηση ενός "
+"ημερολογίου."
 
 #. I18N: %s is a server name/URL
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Ένας υποψήφιος χρήστης έχει εγγραφεί σε δέντρα ιστού στο %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -901,57 +920,57 @@ msgstr "Μια αναφορά με τους προγόνους ενός ατόμ
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Μια αναφορά των προγόνων ενός ατόμου, σε αφηγηματικό στυλ."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Μια αναφορά των απογόνων ενός ατόμου, σε αφηγηματικό στυλ."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Μια αναφορά των λεπτομερειών ενός ατόμου."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Μια αναφορά γεγονότων που υποστηρίζονται από μια δεδομένη πηγή."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Μια αναφορά των μελών της οικογένειας και τα στοιχεία τους."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Αναφορά ατόμων που πέθαναν σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που είχαν ένα συγκεκριμένο επάγγελμα."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που γεννήθηκαν σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που γεννήθηκαν σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που ήταν παντρεμένα σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
@@ -980,6 +999,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr ""
+"Μια αναφορά των πληροφοριών που λείπουν για ένα άτομο και τους συγγενείς του."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
@@ -990,6 +1010,11 @@ msgstr "Έκθεση εγγραφών ζωής για μια δοσμένη ημ
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
+"Ένας ρόλος είναι ένα σύνολο δικαιωμάτων πρόσβασης, τα οποία επιτρέπουν την "
+"προβολή δεδομένων, την αλλαγή προτιμήσεων κ.λπ. Τα δικαιώματα πρόσβασης "
+"εκχωρούνται σε ρόλους και οι ρόλοι εκχωρούνται στους χρήστες. Κάθε "
+"οικογενειακό δέντρο μπορεί να εκχωρήσει διαφορετική πρόσβαση σε κάθε ρόλο "
+"και οι χρήστες μπορούν να έχουν διαφορετικό ρόλο σε κάθε οικογενειακό δέντρο."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1005,50 +1030,56 @@ msgstr ""
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
 msgstr ""
+"Ένα πλευρικό πλαίσιο που δείχνει τις στενές οικογένειες και συγγενείς ενός "
+"ατόμου."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
 msgstr ""
+"Ένα πλευρικό πλαίσιο που εμφανίζει μη γενεαλογικές πληροφορίες για ένα άτομο."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "Ένα πλευρικό πλαίσιο που δείχνει τους απογόνους ενός ατόμου."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τους στενούς συγγενείς ενός ατόμου."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τα γεγονότα και τα γεγονότα ενός ατόμου."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
 msgstr ""
+"Μια καρτέλα που δείχνει τα αντικείμενα πολυμέσων που συνδέονται με ένα άτομο."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τις σημειώσεις που συνδέονται με ένα άτομο."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τις πηγές που συνδέονται με ένα άτομο."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Ένα χρονοδιάγραμμα που εμφανίζει μεμονωμένα συμβάντα."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"Ένας χρήστης δεν θα μπορεί να συνδεθεί έως ότου επιλεγούν τόσο η \""
+"επαλήθευση email\" όσο και η \"έγκριση από τον διαχειριστή\"."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1175,7 +1206,7 @@ msgstr "Πρόσβαση σε γενεαλ. δέντρα"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Έγκριση λογαριασμού και επαλήθευση email"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
@@ -1441,7 +1472,7 @@ msgstr "Προσθήκη περισσότερων πεδίων"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Προσθέστε αφηγηματικές ιστορίες σε άτομα στο οικογενειακό δέντρο."
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -1451,7 +1482,7 @@ msgstr "Προσθήκη κενών όπου έχει γίνει αναδίπλ�
 #: admin_trees_download.php:160 app/Module/ClippingsCartModule.php:435
 #: app/Module/ClippingsCartModule.php:798
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Προσθέστε τη διαδρομή πολυμέσων GEDCOM στα ονόματα αρχείων"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:919
@@ -1470,12 +1501,12 @@ msgstr "Προσθήκη στα αγαπημένα"
 #: app/Module/ClippingsCartModule.php:459
 #: app/Module/ClippingsCartModule.php:575
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Προσθήκη στο καλάθι αποκοπής"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:720
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "Προσθέστε μοναδικά αναγνωριστικά"
 
 #: admin_trees_manage.php:540
 msgid "Add unlinked records"
@@ -1719,7 +1750,7 @@ msgstr "Ηλικία κατά τη γέννηση του τέκνου"
 
 #: admin_trees_config.php:403
 msgid "Age at which to assume an individual is dead"
-msgstr "Ηλικία στην οποία υποθέτουμε οτι καποιος εχει απεβιώσει"
+msgstr "Ηλικία στην οποία υποθέτουμε ότι κάποιος έχει αποβιώσει"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
@@ -1830,11 +1861,11 @@ msgstr ""
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
-msgstr ""
+msgstr "Όλα τα στοιχεία και τα γεγονότα"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
-msgstr ""
+msgstr "Όλα τα οικογενειακά γεγονότα"
 
 #: login.php:415
 msgid "All fields must be completed."
@@ -1846,7 +1877,7 @@ msgstr ""
 
 #: admin_trees_config.php:1618
 msgid "All individual facts"
-msgstr ""
+msgstr "Όλα τα ατομικά γεγονότα"
 
 #: calendar.php:228 calendar.php:239 calendar.php:438
 msgid "All individuals"
@@ -1919,6 +1950,8 @@ msgstr ""
 #: app/Module/AlbumModule.php:49
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
 msgstr ""
+"Μια εναλλακτική λύση στην καρτέλα \"Πολυμέσα\" και μια βελτιωμένη προβολή "
+"εικόνων."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:39
@@ -3471,11 +3504,11 @@ msgstr ""
 
 #: admin_trees_manage.php:408 index_edit.php:50
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Αλλάξτε τα μπλοκ \"Αρχική σελίδα\""
 
 #: index_edit.php:42
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Αλλάξτε τα μπλοκ \"Η σελίδα μου\""
 
 #. I18N: [a record was] Changed on <date/time>
 #: app/Module/RecentChangesModule.php:261
@@ -3885,6 +3918,7 @@ msgstr "Γάμος κοινού δικαίου"
 #: app/Module/UserMessagesModule.php:38
 msgid "Communicate directly with other users, using private messages."
 msgstr ""
+"Επικοινωνήστε απευθείας με άλλους χρήστες, χρησιμοποιώντας ιδιωτικά μηνύματα."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6722
@@ -4473,7 +4507,7 @@ msgstr ""
 
 #: app/GedcomTag.php:422 modules_v3/missing_facts_report/report.xml:336
 msgid "Date of engagement"
-msgstr ""
+msgstr "Ημερομηνία αρραβώνων"
 
 #: app/GedcomTag.php:344
 msgid "Date of entry in original source"
@@ -4504,7 +4538,7 @@ msgstr "Ημ/νία γάμου"
 
 #: app/GedcomTag.php:562 modules_v3/missing_facts_report/report.xml:420
 msgid "Date of marriage banns"
-msgstr ""
+msgstr "Ημερομηνία γάμου"
 
 #: app/GedcomTag.php:620
 msgid "Date of naturalization"
@@ -5242,11 +5276,12 @@ msgstr "Εμφάνιση %s"
 #: app/Module/FamilyTreeFavoritesModule.php:71
 msgid "Display and manage a family tree’s favorite pages."
 msgstr ""
+"Εμφάνιση και διαχείριση των αγαπημένων σελίδων ενός οικογενειακού δέντρου."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr ""
+msgstr "Εμφάνιση και διαχείριση των αγαπημένων σελίδων ενός χρήστη."
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5341,6 +5376,19 @@ msgstr "Διπλότυπο όνομα χρήστη. Υπάρχει ήδη χρή
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
+"Κάθε πηγή καταγράφει συγκεκριμένα συμβάντα, γενικά για ένα δεδομένο εύρος "
+"ημερομηνιών και για μια περιοχή δικαιοδοσίας. Για παράδειγμα, η Απογραφή "
+"καταγράφει γεγονότα απογραφής και η εκκλησία καταγράφει γεγονότα γέννησης, "
+"γάμου και θανάτου. <br> <br> Επιλέξτε τα συμβάντα που καταγράφονται από "
+"αυτήν την πηγή από τη λίστα των παρεχόμενων συμβάντων. Η ημερομηνία πρέπει "
+"να καθορίζεται σε μορφή εύρους όπως <i> ΑΠΟ 1900 - 1910 </i>. Η περιοχή "
+"δικαιοδοσίας είναι το όνομα της χαμηλότερης δικαιοδοσίας που περιλαμβάνει "
+"όλες τις θέσεις χαμηλότερου επιπέδου που αναφέρονται σε αυτήν την πηγή. Για "
+"παράδειγμα, το \"Oneida, Idaho, USA\" θα χρησιμοποιείται ως πηγή "
+"δικαιοδοσίας για εκδηλώσεις που συμβαίνουν στις διάφορες πόλεις της "
+"κομητείας Oneida. Το \"Idaho, USA\" θα ήταν ο τόπος δικαιοδοσίας προέλευσης "
+"εάν τα καταγεγραμμένα γεγονότα πραγματοποιήθηκαν όχι μόνο στην κομητεία "
+"Oneida αλλά και σε άλλες κομητείες στο Idaho."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -6447,6 +6495,10 @@ msgstr ""
 #: admin_users.php:600
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
+"ια παράδειγμα, εάν καθορίσετε ένα μήκος διαδρομής 2, το άτομο θα μπορεί να "
+"δει τον εγγονό του (παιδί, παιδί), τη θεία του (γονέας, αδελφό), τη θετή "
+"κόρη τους (σύζυγο, παιδί), αλλά όχι τον πρώτο ξάδερφό τους (γονέας, αδελφός, "
+"παιδί)."
 
 #: app/Theme/AbstractTheme.php:296
 #, php-format
@@ -6467,6 +6519,9 @@ msgstr "Για τεχνική υποστήριξη ή γενεαλογικές �
 #: admin_site_config.php:283
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
 msgstr ""
+"Για ιστότοπους με περισσότερα από ένα οικογενειακά δέντρα, αυτή η επιλογή θα "
+"εμφανίσει τη λίστα των οικογενειακών δέντρων στο κύριο μενού, τις σελίδες "
+"αναζήτησης κ.λπ."
 
 #: app/Module/LoginBlockModule.php:87 login.php:210
 msgid "Forgot password?"
@@ -6878,7 +6933,7 @@ msgstr "Παππούδες"
 
 #: statistics.php:163
 msgid "Greatest age at death"
-msgstr "Μεγαλύτερη ηλικία κατα τον θάνατο"
+msgstr "Μεγαλύτερη ηλικία κατά τον θάνατο"
 
 #: statistics.php:331
 msgid "Greatest age between siblings"
@@ -7283,6 +7338,10 @@ msgstr "Αριθμός Ταυτότητας"
 #: admin_trees_config.php:646
 msgid "If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines."
 msgstr ""
+"Εάν ένας επισκέπτης του ιστότοπου δεν έχει επιλέξει μια προτιμώμενη γλώσσα "
+"στις προτιμήσεις του προγράμματος περιήγησής του ή έχει επιλέξει μια μη "
+"υποστηριζόμενη γλώσσα, τότε αυτή η γλώσσα θα χρησιμοποιηθεί. Συνήθως αυτό "
+"ισχύει για τις μηχανές αναζήτησης."
 
 #: admin_users.php:391
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7331,6 +7390,8 @@ msgstr ""
 #: admin_trees_config.php:1023
 msgid "If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only."
 msgstr ""
+"Εάν ανησυχείτε ότι οι χρήστες ενδέχεται να ανεβάζουν ακατάλληλες εικόνες, "
+"μπορείτε να περιορίσετε τις μεταφορτώσεις πολυμέσων μόνο στους διαχειριστές."
 
 #: site-unavailable.php:82
 msgid "If you are the website administrator, you should check that:"
@@ -7381,6 +7442,8 @@ msgstr ""
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
 msgstr ""
+"Εάν προσπαθήσετε να υπερβείτε αυτά τα όρια, ενδέχεται να αντιμετωπίσετε "
+"χρονικά όρια διακομιστή και κενές σελίδες."
 
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
@@ -7432,10 +7495,32 @@ msgstr ""
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"Σε πολλούς πολιτισμούς είναι συνηθισμένο να υπάρχει ένα παραδοσιακό όνομα με "
+"τους παραδοσιακούς χαρακτήρες και επίσης μια λατινική έκδοση του ονόματος, "
+"όπως θα γράφεται ή προφέρεται σε γλώσσες με βάση το λατινικό αλφάβητο, όπως "
+"τα αγγλικά. <br> <br> Εάν προτιμάτε να χρησιμοποιήσετε ένα μη λατινικό "
+"αλφάβητο, όπως εβραϊκά, ελληνικά, ρωσικά, κινέζικα ή αραβικά για να "
+"εισαγάγετε το όνομα στα τυπικά πεδία ονόματος και, στη συνέχεια, μπορείτε να "
+"χρησιμοποιήσετε αυτό το πεδίο για να εισαγάγετε το ίδιο όνομα "
+"χρησιμοποιώντας το λατινικό αλφάβητο. Και οι δύο εκδόσεις του ονόματος θα "
+"εμφανίζονται σε λίστες και γραφήματα. <br> <br> Αν και αυτό το πεδίο έχει "
+"την ένδειξη \"Romanized\", δεν περιορίζεται στο να περιέχει μόνο χαρακτήρες "
+"που βασίζονται στο λατινικό αλφάβητο. Αυτό μπορεί να είναι χρήσιμο με "
+"ιαπωνικά ονόματα, όπου ενδέχεται να εμφανιστούν τρία διαφορετικά αλφάβητα."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
+"Σε πολλούς πολιτισμούς είναι συνηθισμένο να υπάρχει ένα παραδοσιακό όνομα με "
+"τους παραδοσιακούς χαρακτήρες και επίσης μια λατινική έκδοση του ονόματος, "
+"όπως θα γράφεται ή προφέρεται σε γλώσσες με βάση το λατινικό αλφάβητο, όπως "
+"τα αγγλικά. <br> <br> Εάν προτιμάτε να χρησιμοποιήσετε το λατινικό αλφάβητο "
+"για να εισαγάγετε το όνομα στα τυπικά πεδία ονόματος και, στη συνέχεια, "
+"μπορείτε να χρησιμοποιήσετε αυτό το πεδίο για να εισαγάγετε το ίδιο όνομα "
+"στο μη λατινικό αλφάβητο όπως ελληνικά, εβραϊκά, ρωσικά, αραβικά ή κινέζικα. "
+"Και οι δύο εκδόσεις του ονόματος θα εμφανίζονται σε λίστες και γραφήματα. "
+"<br> <br> Αν και αυτό το πεδίο έχει την ένδειξη \"Εβραϊκά\", δεν "
+"περιορίζεται στο να περιέχει μόνο εβραϊκούς χαρακτήρες."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
@@ -8550,6 +8635,10 @@ msgstr "Χειρόγραφο"
 #: admin_trees_config.php:1593
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
 msgstr ""
+"Πολλά προγράμματα γενεαλογίας δημιουργούν αρχεία GEDCOM με προσαρμοσμένες "
+"ετικέτες και τα δέντρα ιστού κατανοούν τα περισσότερα από αυτά. Όταν βρεθούν "
+"μη αναγνωρισμένες ετικέτες, αυτή η επιλογή σάς επιτρέπει να επιλέξετε αν θα "
+"τις αγνοήσετε ή θα εμφανίσετε ένα προειδοποιητικό μήνυμα."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:433
@@ -10443,7 +10532,7 @@ msgstr "Σελίδα"
 #: medialist.php:245
 #, php-format
 msgid "Page %s of %s"
-msgstr ""
+msgstr "Σελίδα %s από %s"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -10593,6 +10682,10 @@ msgstr "Εκκρεμείς αλλαγές"
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 msgstr ""
+"Οι εκκρεμείς αλλαγές εμφανίζονται μόνο όταν ο λογαριασμός σας έχει άδεια "
+"επεξεργασίας. Όταν αποσυνδεθείτε, δεν θα μπορείτε πλέον να τα δείτε. Επίσης, "
+"οι εκκρεμείς αλλαγές εμφανίζονται μόνο σε συγκεκριμένες σελίδες. Για "
+"παράδειγμα, δεν εμφανίζονται σε λίστες, αναφορές ή αποτελέσματα αναζήτησης."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -10733,6 +10826,10 @@ msgstr "Κατάλογος τοποθεσιών"
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
 msgstr ""
+"Τα ονόματα των μερών είναι συχνά πολύ μεγάλα για να ταιριάζουν σε γραφήματα, "
+"λίστες κ.λπ. Μπορούν να συντομευθούν δείχνοντας μόνο τα πρώτα μέρη του "
+"ονόματος, όπως <i> χωριό, νομός </i> ή το τελευταίο μέρος αυτού , όπως <i> "
+"περιοχή, χώρα </i>."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
@@ -10832,7 +10929,7 @@ msgstr "Τόπος γάμου"
 
 #: app/GedcomTag.php:564 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr ""
+msgstr "Τόπος γάμου"
 
 #: app/GedcomTag.php:622
 msgid "Place of naturalization"
@@ -11287,7 +11384,7 @@ msgstr "Ραμαζάνι"
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:39
 msgid "Random images from the current family tree."
-msgstr ""
+msgstr "Τυχαίες εικόνες από το τρέχον οικογενειακό δέντρο."
 
 #: app/Controller/FamilyController.php:88 app/Module/RelativesTabModule.php:279
 #: edit_interface.php:1779 edit_interface.php:1849
@@ -11759,7 +11856,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr ""
+msgstr "Φασκόμηλο"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
@@ -12012,7 +12109,7 @@ msgstr "Επιλογή αρχείων από το οικογενειακό δέ�
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
-msgstr ""
+msgstr "Επιλέξτε το επιθυμητό χρονικό διάστημα"
 
 #: statistics.php:635
 msgid "Select the desired count interval"
@@ -12465,6 +12562,8 @@ msgstr "Τοποθέτηση μετρήσεων πριν ή μετά το όνο
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
 msgstr ""
+"Εμφάνιση ζευγαριών όπου ένας από τους δύο συντρόφους παντρεύτηκε "
+"περισσότερες από μία φορές."
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
@@ -12830,6 +12929,8 @@ msgstr ""
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Τα μέλη του ιστότοπου μπορούν να στέλνουν μεταξύ τους μηνύματα. Μπορείτε να "
+"επιλέξετε τον τρόπο αποστολής αυτών των μηνυμάτων ή να μην λάβετε καθόλου."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:527 admin_site_config.php:548
@@ -12947,6 +13048,8 @@ msgstr ""
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
 msgstr ""
+"Ορισμένες σελίδες μπορούν να εμφανίσουν τον αριθμό των φορών που έχουν "
+"επισκεφτεί."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -14131,6 +14234,8 @@ msgstr ""
 #: login.php:92
 msgid "This account has not been verified. Please check your email for a verification message."
 msgstr ""
+"Αυτός ο λογαριασμός δεν έχει επαληθευτεί. Ελέγξτε το email σας για ένα "
+"μήνυμα επαλήθευσης."
 
 #: app/Module/ReviewChangesModule.php:179
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
@@ -14148,6 +14253,9 @@ msgstr ""
 #: admin_users.php:366 edituser.php:265 login.php:434 setup.php:445
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
 msgstr ""
+"Αυτή η διεύθυνση ηλεκτρονικού ταχυδρομείου θα χρησιμοποιηθεί για την "
+"αποστολή υπενθυμίσεων κωδικού πρόσβασης, ειδοποιήσεων ιστότοπου και "
+"μηνυμάτων από άλλα μέλη της οικογένειας που είναι εγγεγραμμένα στον ιστότοπο."
 
 #: addmedia.php:540
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14270,6 +14378,10 @@ msgstr ""
 #: admin_trees_config.php:1815
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form."
 msgstr ""
+"Αυτή είναι μια λίστα με ετικέτες γεγονότων GEDCOM που διαχωρίζονται με κόμμα "
+"και θα εμφανίζονται κατά την προσθήκη μιας νέας οικογένειας. Για παράδειγμα, "
+"εάν το MARR βρίσκεται στη λίστα, τότε τα πεδία για την ημερομηνία γάμου και "
+"τον τόπο γάμου θα εμφανίζονται στη φόρμα."
 
 #. I18N: Help text for the “Facts for new individuals” configuration setting
 #: admin_trees_config.php:1697
@@ -14459,16 +14571,22 @@ msgstr ""
 #: admin_trees_config.php:1480
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
 msgstr ""
+"Αυτή η επιλογή ελέγχει εάν θα εμφανίζεται αυτόματα ή όχι περιεχόμενο μιας "
+"εγγραφής <i> Σημείωση</i> στην ατομική σελίδα."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: admin_trees_config.php:1495
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
 msgstr ""
+"Αυτή η επιλογή ελέγχει εάν θα εμφανίζεται αυτόματα ή όχι περιεχόμενο μιας "
+"εγγραφής <i> Πηγές</i> στη ατομική σελίδα."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1316
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
+"Αυτή η επιλογή ελέγχει εάν θα εμφανίζεται ή όχι η ηλικία του πατέρα και της "
+"μητέρας δίπλα στην ημερομηνία γέννησης του παιδιού στα γραφήματα."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1189
@@ -14488,7 +14606,7 @@ msgstr "This tells whether the pedigree chart should be generated in landscape o
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
 msgid "This option will make it easier for users to download images."
-msgstr ""
+msgstr "Αυτή η επιλογή θα διευκολύνει τους χρήστες να κατεβάσουν εικόνες."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
@@ -14503,13 +14621,18 @@ msgstr ""
 #: help_text.php:286
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix."
 msgstr ""
+"Αυτή η σελίδα σάς επιτρέπει να παρακάμψετε τις συνήθεις φόρμες και να "
+"επεξεργαστείτε απευθείας τα υποκείμενα δεδομένα. Είναι μια επιλογή για "
+"προχωρημένους και δεν πρέπει να τη χρησιμοποιήσετε εκτός εάν κατανοείτε τη "
+"μορφή GEDCOM. Εάν κάνετε κάποιο λάθος εδώ, μπορεί να είναι δύσκολο να το "
+"διορθώσετε."
 
 #: app/Theme/AbstractTheme.php:482
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αυτή η σελίδα έχει προβληθεί %s φορά."
+msgstr[1] "Αυτή η σελίδα έχει προβληθεί %s φορές."
 
 #: app/Module/GoogleMapsModule.php:2417
 msgid "This place has no coordinates"
@@ -14574,6 +14697,9 @@ msgstr ""
 #: admin_users.php:566
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
 msgstr ""
+"Αυτός ο ρόλος έχει όλα τα δικαιώματα του ρόλου διαχειριστή σε όλα τα "
+"οικογενειακά δέντρα, καθώς και άδεια για αλλαγή των ρυθμίσεων / διαμόρφωσης "
+"του ιστότοπου, των χρηστών και των ενοτήτων."
 
 #: admin_users.php:546
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled."
@@ -14630,6 +14756,8 @@ msgstr "Αυτή η πηγή έχει τροποποιηθεί. Πρέπει ν�
 #: admin_trees_config.php:931
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
 msgstr ""
+"Αυτό το κείμενο θα προσαρτηθεί σε κάθε τίτλο σελίδας. Θα εμφανίζεται στη "
+"γραμμή τίτλου του προγράμματος περιήγησης, σελιδοδείκτες κ.λπ."
 
 #: admin_trees_check.php:180 admin_trees_check.php:185
 msgid "This type of link is not allowed here."
@@ -14823,6 +14951,8 @@ msgstr ""
 #: admin_site_config.php:483
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
 msgstr ""
+"Για να ορίσετε αυτό το κείμενο για άλλες γλώσσες, πρέπει να μεταβείτε σε "
+"αυτήν τη γλώσσα και να επισκεφτείτε ξανά αυτήν τη σελίδα."
 
 #: app/Module/SiteMapModule.php:331
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15365,12 +15495,15 @@ msgstr "Χρήση κωδικού πρόσβασης"
 #. I18N: "sendmail" is the name of some mail software
 #: admin_site_config.php:118
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Χρησιμοποιήστε το sendmail για να στείλετε μηνύματα"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1064
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
 msgstr ""
+"Χρησιμοποιήστε εικόνες σιλουέτας όταν δεν έχει καθοριστεί καμία επισημασμένη "
+"εικόνα για αυτό το άτομο. Οι εικόνες που χρησιμοποιούνται είναι "
+"συγκεκριμένες για το φύλο του συγκεκριμένου ατόμου."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1059
@@ -15388,6 +15521,7 @@ msgstr ""
 #: app/Functions/FunctionsEdit.php:665
 msgid "Use this image for charts and on the individual’s page."
 msgstr ""
+"Χρησιμοποιήστε αυτήν την εικόνα για γραφήματα και στη σελίδα του ατόμου."
 
 #: app/Module/GoogleMapsModule.php:3277
 msgid "Use this value"
@@ -15771,6 +15905,10 @@ msgstr ""
 #: admin_trees_config.php:2123
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
 msgstr ""
+"Κατά την προσθήκη νέων στενών συγγενών, μπορείτε να προσθέσετε παραπομπές "
+"πηγής στα αρχεία (άτομο και οικογένεια) ή στα γεγονότα και γεγονότα ("
+"γέννηση, γάμος και θάνατος) Αυτή η επιλογή ελέγχει εάν τα αρχεία ή τα "
+"γεγονότα θα επιλεγούν από προεπιλογή."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2097
@@ -15845,7 +15983,7 @@ msgstr "Σύζυγος (γυναίκα)"
 
 #: app/Controller/TimelineController.php:228
 msgid "Wife’s age"
-msgstr ""
+msgstr "Η ηλικία της συζύγου"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:160
 msgid "Wife’s maiden surname becomes new given name"
@@ -16010,7 +16148,7 @@ msgstr ""
 
 #: includes/session.php:493
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Δεν έχετε άδεια για προβολή αυτής της σελίδας."
 
 #: admin_site_merge.php:55
 msgid "You entered the same IDs. You cannot merge the same records."
@@ -17469,12 +17607,12 @@ msgstr ""
 #: app/Functions/Functions.php:1737
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1739
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1741
 msgctxt "(a woman’s) great ×4 nephew"
@@ -17484,12 +17622,12 @@ msgstr ""
 #: app/Functions/Functions.php:1753
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1755
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1757
 msgctxt "(a woman’s) great ×4 nephew/niece"
@@ -17499,12 +17637,12 @@ msgstr ""
 #: app/Functions/Functions.php:1745
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1747
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1749
 msgctxt "(a woman’s) great ×4 niece"
@@ -17514,17 +17652,17 @@ msgstr ""
 #: app/Functions/Functions.php:1572
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1574
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1576
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1594
 msgid "great ×5 aunt"
@@ -18075,47 +18213,47 @@ msgstr "προ-γιαγιά"
 #: app/Functions/Functions.php:1100
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1112
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1124
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1180
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1192
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1214
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1226
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1238
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1040
 msgctxt "child’s child’s son"
@@ -18164,187 +18302,187 @@ msgstr ""
 
 #: app/Functions/Functions.php:1549
 msgid "great-great-aunt"
-msgstr ""
+msgstr "3ης γενιάς θεία"
 
 #: app/Functions/Functions.php:1551
 msgid "great-great-aunt/uncle"
-msgstr ""
+msgstr "3ης γενιάς θεία/θείος"
 
 #: app/Functions/Functions.php:1974
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "τρισέγγονο"
 
 #: app/Functions/Functions.php:1972
 msgid "great-great-granddaughter"
-msgstr ""
+msgstr "τρισέγγονη"
 
 #: app/Functions/Functions.php:1852
 msgid "great-great-grandfather"
-msgstr ""
+msgstr "προ-προ-παππούς"
 
 #: app/Functions/Functions.php:1854
 msgid "great-great-grandmother"
-msgstr ""
+msgstr "προ-προ-γιαγιά"
 
 #: app/Functions/Functions.php:1856
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "προ-προ-παππούς/προ-προ-γιαγιά"
 
 #: app/Functions/Functions.php:1970
 msgid "great-great-grandson"
-msgstr ""
+msgstr "τρισέγγονος"
 
 #: app/Functions/Functions.php:1564
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "4ης γενιάς θεία"
 
 #: app/Functions/Functions.php:1566
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "4ης γενιάς θεία/θείος"
 
 #: app/Functions/Functions.php:1984
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "τετρασέγγονο"
 
 #: app/Functions/Functions.php:1982
 msgid "great-great-great-granddaughter"
-msgstr ""
+msgstr "τετρασέγγονη"
 
 #: app/Functions/Functions.php:1861
 msgid "great-great-great-grandfather"
-msgstr ""
+msgstr "προ-προ-προ-παππούς"
 
 #: app/Functions/Functions.php:1863
 msgid "great-great-great-grandmother"
-msgstr ""
+msgstr "προ-προ-προ-γιαγιά"
 
 #: app/Functions/Functions.php:1865
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "προ-προ-προ-παππούς και γιαγιά"
 
 #: app/Functions/Functions.php:1980
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "τετρασέγγονος"
 
 #: app/Functions/Functions.php:1710
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1712
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1714
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1726
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1728
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1730
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1718
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1720
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1722
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1557
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1559
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1561
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1683
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1685
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1687
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1699
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1701
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1703
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1691
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1693
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1695
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1542
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "3ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1544
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "3ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1546
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "3ης γενιάς θείος"
 
 #: app/Functions/Functions.php:985
 msgctxt "(a man’s) brother’s child’s son"
@@ -18842,7 +18980,7 @@ msgstr ""
 
 #: admin_trees_config.php:469
 msgid "managers"
-msgstr ""
+msgstr "διευθυντές"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
@@ -19150,17 +19288,17 @@ msgstr "γονέας"
 
 #: app/Functions/Functions.php:736
 msgid "partner"
-msgstr ""
+msgstr "σύντροφος"
 
 #: app/Functions/Functions.php:718
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "σύντροφος"
 
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "σύντροφος"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
