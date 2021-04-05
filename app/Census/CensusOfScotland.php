@@ -40,6 +40,7 @@ class CensusOfScotland extends Census implements CensusPlaceInterface
             new CensusOfScotland1891(),
             new CensusOfScotland1901(),
             new CensusOfScotland1911(),
+            new RegisterOfScotland1939()
         ];
     }
 
