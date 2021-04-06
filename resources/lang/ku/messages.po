@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2020-02-16 09:07+0000\n"
-"Last-Translator: Victor Tiltay <vtiltay@gmail.com>\n"
-"Language-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\n"
-"Language: ku\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-06 13:49+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Kurdish <https://translate.webtrees.net/projects/webtrees/webtrees/ku/>\nLanguage: ku\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -471,7 +459,7 @@ msgstr ""
 #: resources/views/edit/add-fact-row.phtml:32
 #: resources/views/modules/user-messages/user-messages.phtml:34
 msgid "&lt;select&gt;"
-msgstr "&lt;select&gt;"
+msgstr ""
 
 #: app/Age.php:219 app/Functions/FunctionsPrint.php:375
 #, php-format
@@ -637,7 +625,7 @@ msgstr "<default theme>"
 
 #: resources/views/register-page.phtml:26
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
+msgstr ""
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:643 app/Functions/FunctionsPrint.php:111
@@ -659,12 +647,12 @@ msgstr ""
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "A chart of an individual’s ancestors and descendants, as a family book."
+msgstr ""
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:96
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "A chart of an individual’s ancestors, as a compact tree."
+msgstr ""
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
@@ -14934,7 +14922,7 @@ msgstr ""
 #: app/Exceptions/IndividualAccessDeniedException.php:35
 #: app/Exceptions/IndividualNotFoundException.php:35
 msgid "This individual does not exist or you do not have permission to view it."
-msgstr "Ev kes tuneye an jî destûra we tuneye ku hûn bibînin"
+msgstr "Ev kes tuneye an jî destûra we tuneye ku hûn bibînin."
 
 #: resources/views/individual-page.phtml:37
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
