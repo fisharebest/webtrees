@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-01 13:26+0000\n"
+"PO-Revision-Date: 2021-04-07 19:59+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/he/>\n"
@@ -13791,7 +13791,7 @@ msgstr "תחילת התחום של תאריכי שינוי"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr "Statcounter™ &lrm;"
+msgstr "Statcounter™ ‎"
 
 #. I18N: gedcom tag STAE
 #: app/Factories/ElementFactory.php:254 app/Factories/ElementFactory.php:367
