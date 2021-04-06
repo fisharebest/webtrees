@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2020-06-22 15:24+0000\n"
-"Last-Translator: De Tran <trande@gmail.com>\n"
-"Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\n"
-"Language: vi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-06 13:49+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3570,7 +3554,7 @@ msgstr "Kiểm tra cấu hình máy phục vụ"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:78 app/GedcomCode/GedcomCodeTemp.php:300
 msgid "Chicago, Illinois, United States"
-msgstr "Chicago, Illinois, Hoa kỳ "
+msgstr "Chicago, Illinois, Hoa kỳ"
 
 #. I18N: gedcom tag CHIL
 #: app/Factories/ElementFactory.php:297 app/Functions/FunctionsDate.php:51
@@ -7656,7 +7640,7 @@ msgstr "Nếu hình thu nhỏ là ảnh tự tạo, bạn phải thêm nói ở 
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
-msgstr "Nếu hình thu nhỏ giống như hình gốc, thì ảnh đó không cần nữa và bạn nên xóa đi. "
+msgstr "Nếu hình thu nhỏ giống như hình gốc, thì ảnh đó không cần nữa và bạn nên xóa đi."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
