@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -34,6 +35,18 @@ class Form extends AbstractElement
     protected const MAXIMUM_LENGTH = 20;
 
     /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        return strtoupper(parent::canonical($value));
+    }
+
+    /**
      * Create a default value for this element.
      *
      * @param Tree $tree
@@ -43,5 +56,17 @@ class Form extends AbstractElement
     public function default(Tree $tree): string
     {
         return 'LINEAGE-LINKED';
+    }
+
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        return [
+            'LINEAGE-LINKED' => 'LINEAGE-LINKED',
+        ];
     }
 }
