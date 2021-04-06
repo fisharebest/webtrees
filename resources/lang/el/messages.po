@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-06 09:12+0000\n"
+"PO-Revision-Date: 2021-04-06 09:40+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/el/>\n"
@@ -984,6 +984,7 @@ msgstr ""
 #: resources/xml/reports/missing_facts_report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr ""
+"Μια αναφορά των πληροφοριών που λείπουν για ένα άτομο και τους συγγενείς του."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:52
@@ -994,55 +995,66 @@ msgstr "Έκθεση εγγραφών ζωής για μια δοσμένη ημ
 #: resources/views/admin/users-edit.phtml:233
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
+"Ένας ρόλος είναι ένα σύνολο δικαιωμάτων πρόσβασης, τα οποία επιτρέπουν την "
+"προβολή δεδομένων, την αλλαγή προτιμήσεων κ.λπ. Τα δικαιώματα πρόσβασης "
+"εκχωρούνται σε ρόλους και οι ρόλοι εκχωρούνται στους χρήστες. Κάθε "
+"οικογενειακό δέντρο μπορεί να εκχωρήσει διαφορετική πρόσβαση σε κάθε ρόλο "
+"και οι χρήστες μπορούν να έχουν διαφορετικό ρόλο σε κάθε οικογενειακό δέντρο."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
 msgid "A sidebar showing an individual’s close families and relatives."
 msgstr ""
+"Ένα πλευρικό πλαίσιο που δείχνει τις στενές οικογένειες και συγγενείς ενός "
+"ατόμου."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/IndividualMetadataModule.php:67
 msgid "A sidebar showing non-genealogy information about an individual."
 msgstr ""
+"Ένα πλευρικό πλαίσιο που εμφανίζει μη γενεαλογικές πληροφορίες για ένα άτομο."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:73
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "Ένα πλευρικό πλαίσιο που δείχνει τους απογόνους ενός ατόμου."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:53
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τους στενούς συγγενείς ενός ατόμου."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:78
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τα γεγονότα και τα γεγονότα ενός ατόμου."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
 msgid "A tab showing the media objects linked to an individual."
 msgstr ""
+"Μια καρτέλα που δείχνει τα αντικείμενα πολυμέσων που συνδέονται με ένα άτομο."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τις σημειώσεις που συνδέονται με ένα άτομο."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:70
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Μια καρτέλα που δείχνει τις πηγές που συνδέονται με ένα άτομο."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:108
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Ένα χρονοδιάγραμμα που εμφανίζει μεμονωμένα συμβάντα."
 
 #: resources/views/admin/users-edit.phtml:117
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"Ένας χρήστης δεν θα μπορεί να συνδεθεί έως ότου επιλεγούν τόσο η \""
+"επαλήθευση email\" όσο και η \"έγκριση από τον διαχειριστή\"."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -1154,7 +1166,7 @@ msgstr "Πρόσβαση σε γενεαλ. δέντρα"
 
 #: resources/views/admin/users-edit.phtml:95
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Έγκριση λογαριασμού και επαλήθευση email"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54 app/GedcomCode/GedcomCodeTemp.php:228
@@ -1163,7 +1175,7 @@ msgstr ""
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:43
 msgid "Action"
-msgstr ""
+msgstr "Ενέργεια"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:190
@@ -1256,7 +1268,7 @@ msgstr "Προσθήκη %s στο καλάθι"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
-msgstr ""
+msgstr "Προσθέστε έναν αδερφό"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:60
 #: resources/views/family-page-menu.phtml:47
@@ -1273,7 +1285,7 @@ msgstr "Προσθήκη τέκνου για την δημιουργία μον�
 #: resources/views/family-page-children.phtml:45
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr ""
+msgstr "Προσθέστε μια αδερφή"
 
 #: resources/views/edit/raw-gedcom-record.phtml:53
 msgid "Add a fact"
@@ -1313,7 +1325,7 @@ msgstr "Προσθήκη νέας καταχώρησης ημερολογίου"
 #: resources/views/media-page.phtml:210
 #: resources/views/modals/add-media-file.phtml:21
 msgid "Add a media file"
-msgstr ""
+msgstr "Προσθέστε ένα αρχείο πολυμέσων"
 
 #: resources/views/cards/add-media-object.phtml:16
 #: resources/views/family-page.phtml:98
@@ -1356,17 +1368,17 @@ msgstr "Προσθήκη κοινόχρηστης σημείωσης"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr ""
+msgstr "Προσθέστε αδελφό/-η"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
-msgstr ""
+msgstr "Προσθέστε μια αδερφή"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:58
 #: resources/views/family-page-children.phtml:41
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a son"
-msgstr ""
+msgstr "Προσθέστε ένα γιο"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:180
 #: resources/views/modules/sources_tab/tab.phtml:53
@@ -1406,15 +1418,17 @@ msgstr "Προσθήκη συχνής ερώτησης"
 
 #: resources/views/cards/add-sour-data-even.phtml:15
 msgid "Add an event"
-msgstr ""
+msgstr "Προσθέστε ένα συμβάν"
 
 #: resources/views/modules/custom-css-js/edit.phtml:34
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
 msgstr ""
+"Προσθέστε περιεχόμενο στο τέλος του στοιχείου <code>&lt;body&gt;</code> ."
 
 #: resources/views/modules/custom-css-js/edit.phtml:22
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
 msgstr ""
+"Προσθέστε περιεχόμενο στο τέλος του στοιχείου <code>&lt;head&gt;</code>."
 
 #: resources/views/edit/paste-fact-row.phtml:20
 msgid "Add from clipboard"
@@ -1435,7 +1449,7 @@ msgstr "Προσθήκη λεπτομερειών γάμου"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:69
 msgid "Add married names"
-msgstr ""
+msgstr "Προσθέστε επίθετο μετά γάμου"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:58
@@ -1444,7 +1458,7 @@ msgstr "Συμπλήρωση ελλειπών εγγραφών θανάτων"
 
 #: resources/views/edit-blocks-page.phtml:46
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Προσθέστε περισσότερα μπλοκ από την ακόλουθη λίστα."
 
 #: resources/views/search-advanced-page.phtml:45
 msgid "Add more fields"
@@ -1453,11 +1467,11 @@ msgstr "Προσθήκη περισσότερων πεδίων"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:78
 msgid "Add narrative stories to individuals in the family tree."
-msgstr ""
+msgstr "Προσθέστε αφηγηματικές ιστορίες σε άτομα στο οικογενειακό δέντρο."
 
 #: resources/views/admin/map-import-form.phtml:77
 msgid "Add new, and update existing records"
-msgstr ""
+msgstr "Προσθέστε νέα και ενημερώστε τις υπάρχουσες εγγραφές"
 
 #: resources/views/admin/trees-import.phtml:100
 msgid "Add spaces where long lines were wrapped"
@@ -1471,7 +1485,7 @@ msgstr "Προσθέστε στυλ και κώδικα σε κάθε σελίδ
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:83
 msgid "Add the GEDCOM media path to filenames"
-msgstr ""
+msgstr "Προσθέστε τη διαδρομή πολυμέσων GEDCOM στα ονόματα αρχείων"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
@@ -1481,12 +1495,12 @@ msgstr "Προσθήκη ΤΙΤΛΟΥ σε ετικέτα κεφαλίδας"
 #: app/Module/ClippingsCartModule.php:179
 #: resources/views/modules/clippings/add-options.phtml:22
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Προσθήκη στο καλάθι αποκοπής"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
 msgid "Add unique identifiers"
-msgstr ""
+msgstr "Προσθέστε μοναδικά αναγνωριστικά"
 
 #: resources/views/admin/trees.phtml:216
 msgid "Add unlinked records"
@@ -1529,7 +1543,7 @@ msgstr "Διεύθυνση Γραμμή 1"
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
 msgid "Address line 3"
-msgstr ""
+msgstr "Γραμμή διεύθυνσης 3"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55 app/GedcomCode/GedcomCodeTemp.php:231
@@ -1589,7 +1603,7 @@ msgstr "Υιοθετήθηκε από την μητέρα"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
-msgstr ""
+msgstr "Όνομα μετά από υιοθεσία"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
@@ -1669,7 +1683,7 @@ msgstr "Υιοθεσία υιού"
 
 #: app/Factories/ElementFactory.php:423
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Θετοί γονείς"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:471 app/GedcomTag.php:569
@@ -1845,7 +1859,7 @@ msgstr "ΌΛΑ"
 #: app/Http/RequestHandlers/TreePrivacyPage.php:176
 #: resources/views/admin/trees-privacy.phtml:272
 msgid "All facts and events"
-msgstr ""
+msgstr "Όλα τα στοιχεία και τα γεγονότα"
 
 #: resources/views/admin/trees-preferences.phtml:735
 msgid "All family facts"
@@ -20094,17 +20108,17 @@ msgstr "γονέας"
 
 #: app/Functions/Functions.php:694
 msgid "partner"
-msgstr "σύζυγος"
+msgstr "σύντροφος"
 
 #: app/Functions/Functions.php:671
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "σύζυγος"
+msgstr "σύντροφος"
 
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr "σύζυγος"
+msgstr "σύντροφος"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
