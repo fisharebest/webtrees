@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-05 08:25+0000\n"
+"PO-Revision-Date: 2021-04-06 13:50+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -531,13 +531,13 @@ msgstr "bratranec z %s. kolena"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;pred n.l."
+msgstr "%s&nbsp;pred n.&nbsp;l."
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;n.l."
+msgstr "%s&nbsp;n.&nbsp;l."
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
@@ -567,7 +567,7 @@ msgstr "%s, jej manželia a deti"
 #: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr "%s, je manželia a potomkovia"
+msgstr "%s, jej manželia a potomkovia"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:238
@@ -11412,49 +11412,49 @@ msgstr "Rabín"
 #: app/Date/HijriDate.php:92
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "rabí’ al-avval"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:156
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "rabí’ al-avval"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:124
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "rabí’ al-avval"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr "Rabi' al-awwal"
+msgstr "rabí’ al-avval"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "rabí’ ath-thání"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:157
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "rabí’ ath-thání"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:125
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "rabí’ ath-thání"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr "Rabi' al-thani"
+msgstr "rabí’ ath-thání"
 
 #. I18N: This is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/GedcomCode/GedcomCodePedi.php:93
@@ -12557,25 +12557,25 @@ msgstr "šauvál"
 #: app/Date/HijriDate.php:97
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "ša’bán"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:161
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "ša’bán"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:129
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "ša’bán"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr "Sha'aban"
+msgstr "ša’bán"
 
 #: modules_v3/descendancy_report/report.xml:358
 msgid "She "
@@ -12712,7 +12712,7 @@ msgstr "Umiestniť súčty pred alebo za mená"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
-msgstr "Ukázať páry, kde aspoň jeden partner aml viac ako jedno manželstvo."
+msgstr "Ukázať páry, kde aspoň jeden partner mal viac ako jedno manželstvo."
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
@@ -19337,25 +19337,25 @@ msgstr "invertovať výber"
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr "doplnkové dni (Francúzsky republikánsky kalendár)"
+msgstr "doplnkového dňa"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "doplnkové dni (Francúzsky republikánsky kalendár)"
+msgstr "doplnkovým dňom"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "doplnkové dni (Francúzsky republikánsky kalendár)"
+msgstr "doplnkovom dni"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr "doplnkové dni (Francúzsky republikánsky kalendár)"
+msgstr "doplnkový deň"
 
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
