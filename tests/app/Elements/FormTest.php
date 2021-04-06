@@ -36,4 +36,14 @@ class FormTest extends AbstractElementTest
 
         self::$element = new Form('label');
     }
+
+    /**
+     * @return void
+     */
+    public function testCanonical(): void
+    {
+        self::assertSame('FOO BAR BAZ', self::$element->canonical("Foo  bAr  baZ"));
+        self::assertSame('FOO BAR BAZ', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
+        self::assertSame('FOO BAR BAZ', self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
+    }
 }
