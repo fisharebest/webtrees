@@ -70,8 +70,8 @@ class NoteStructure extends AbstractElement
         }
 
         $options = [
-            'inline' => I18N::translate('Add a note'),
-            'shared' => I18N::translate('Add a shared note'),
+            'inline' => I18N::translate('inline note'),
+            'shared' => I18N::translate('shared note'),
         ];
 
         // New note - either inline or shared
