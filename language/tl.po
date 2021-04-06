@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-06-26 11:52+0000\n"
-"Last-Translator: Lyndsey Grace Nepomuceno <lyndsey_gpn@yahoo.com>\n"
+"PO-Revision-Date: 2021-04-06 13:51+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Tagalog <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/tl/>\n"
 "Language: tl\n"
@@ -250,8 +250,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] "araw"
-msgstr[1] "mga araw"
+msgstr[0] "%s araw"
+msgstr[1] "%s araw"
 
 #: app/I18N.php:802
 #, php-format
@@ -356,8 +356,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "buwan"
-msgstr[1] "mga buwan"
+msgstr[0] "%s buwan"
+msgstr[1] "%s buwan"
 
 #: app/I18N.php:798
 #, php-format
