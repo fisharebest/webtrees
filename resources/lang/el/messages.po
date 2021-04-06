@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2021-04-06 13:49+0000\n"
-"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/el/>\n"
 "Language: el\n"
@@ -760,7 +760,7 @@ msgstr "Μια λίστα αλλαγών που πρέπει να αναθεωρ
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:57
 msgid "A list of families."
-msgstr "Λίστα οικογενειών"
+msgstr "Λίστα οικογενειών."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:84
