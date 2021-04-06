@@ -263,18 +263,7 @@ abstract class AbstractElement implements ElementInterface
         $canonical = $this->canonical($value);
 
         if (preg_match(static::REGEX_URL, $canonical)) {
-            // find all non-url-matching substrings
-            $nonUrls = preg_split(static::REGEX_URL, $canonical);
-            // find all url-matching substrings. Guaranteed one less than above
-            preg_match_all(static::REGEX_URL . "i", $canonical, $urls, PREG_SET_ORDER);
-            $numUrls = count($urls);
-            // escape the non-urls substrings and tag the links
-            $escape = "";
-            for ($i = 0; $i < $numUrls; $i++) {
-                $escape = $escape . e($nonUrls[$i]) . '<a href="' . e($urls[$i][0]) . '" rel="no-follow">' . e($urls[$i][0]) . '</a>';
-            }
-            // numUrls = count($nonUrls)-1, i.e. last index of $nonUrls
-            return $escape . e($nonUrls[$numUrls]);
+            return preg_replace(static::REGEX_URL . 'i', '<a href="' . '\0' . '" rel="nofollow">' . '\0' . '</a>', e($canonical));
         }
 
         return e($canonical);
