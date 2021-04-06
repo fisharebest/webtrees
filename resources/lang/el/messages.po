@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-06 10:43+0000\nLast-Translator: Klimis Panagiotis <klimis.p@gmail.com>\nLanguage-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-06 13:49+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -737,7 +737,7 @@ msgstr "Μια λίστα αλλαγών που πρέπει να αναθεωρ
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:57
 msgid "A list of families."
-msgstr "Λίστα οικογενειών"
+msgstr "Λίστα οικογενειών."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:84
