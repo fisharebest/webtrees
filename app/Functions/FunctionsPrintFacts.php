@@ -463,7 +463,7 @@ class FunctionsPrintFacts
                         $data .= '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">';
                         $data .= view('icons/expand');
                         $data .= view('icons/collapse');
-                        $data .= '</a> ';
+                        $data .= '</a>';
                     }
                     $data .= GedcomTag::getLabelValue('SOUR', '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>', null, 'span');
                     $data .= '</div>';

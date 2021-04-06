@@ -13,21 +13,21 @@ use Fisharebest\Webtrees\Submitter;
 /**
  * @var GedcomRecord $record
  */
-?>
-<?php if ($record->tag() === Individual::RECORD_TYPE) : ?>
-    <?= view('icons/individual') ?>
+
+if ($record->tag() === Individual::RECORD_TYPE) : ?>
+<?= view('icons/individual') ?>
 <?php elseif ($record->tag() === Family::RECORD_TYPE) : ?>
-    <?= view('icons/family') ?>
+<?= view('icons/family') ?>
 <?php elseif ($record->tag() === Source::RECORD_TYPE) : ?>
-    <?= view('icons/source') ?>
+<?= view('icons/source') ?>
 <?php elseif ($record->tag() === Repository::RECORD_TYPE) : ?>
-    <?= view('icons/repository') ?>
+<?= view('icons/repository') ?>
 <?php elseif ($record->tag() === Note::RECORD_TYPE) : ?>
-    <?= view('icons/note') ?>
+<?= view('icons/note') ?>
 <?php elseif ($record->tag() === Media::RECORD_TYPE) : ?>
-    <?= view('icons/media') ?>
+<?= view('icons/media') ?>
 <?php elseif ($record->tag() === Submitter::RECORD_TYPE) : ?>
-    <?= view('icons/submitter') ?>
+<?= view('icons/submitter') ?>
 <?php elseif ($record->tag() === Location::RECORD_TYPE) : ?>
-    <?= view('icons/location') ?>
-<?php endif;
+<?= view('icons/location') ?>
+<?php endif ?>
