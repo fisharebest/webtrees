@@ -54,7 +54,8 @@ use const UPLOAD_ERR_OK;
  */
 class MapDataImportAction implements RequestHandlerInterface
 {
-    private MapDataService $map_data_service;
+    /** @var MapDataService  */
+    private $map_data_service;
 
     /**
      * MapDataImportAction constructor.
