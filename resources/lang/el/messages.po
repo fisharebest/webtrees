@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-06 06:24+0000\n"
+"PO-Revision-Date: 2021-04-06 09:12+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/el/>\n"
@@ -892,7 +892,7 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:18
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Ένας υποψήφιος χρήστης έχει εγγραφεί σε δέντρα ιστού στο %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:52
@@ -904,57 +904,57 @@ msgstr "Μια αναφορά με τους προγόνους ενός ατόμ
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Μια αναφορά των προγόνων ενός ατόμου, σε αφηγηματικό στυλ."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
 #: resources/xml/reports/descendancy_report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Μια αναφορά των απογόνων ενός ατόμου, σε αφηγηματικό στυλ."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:52
 #: resources/xml/reports/individual_report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Μια αναφορά των λεπτομερειών ενός ατόμου."
 
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Μια αναφορά γεγονότων που υποστηρίζονται από μια δεδομένη πηγή."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:56
 #: resources/xml/reports/family_group_report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Μια αναφορά των μελών της οικογένειας και τα στοιχεία τους."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Αναφορά ατόμων που πέθαναν σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που είχαν ένα συγκεκριμένο επάγγελμα."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που γεννήθηκαν σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που γεννήθηκαν σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
 #: resources/xml/reports/marriage_report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Μια αναφορά ατόμων που ήταν παντρεμένα σε δεδομένο χρόνο ή τόπο."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
@@ -6740,6 +6740,10 @@ msgstr ""
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
 msgstr ""
+"ια παράδειγμα, εάν καθορίσετε ένα μήκος διαδρομής 2, το άτομο θα μπορεί να "
+"δει τον εγγονό του (παιδί, παιδί), τη θεία του (γονέας, αδελφό), τη θετή "
+"κόρη τους (σύζυγο, παιδί), αλλά όχι τον πρώτο ξάδερφό τους (γονέας, αδελφός, "
+"παιδί)."
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
@@ -7236,7 +7240,7 @@ msgstr "Αποφοίτηση"
 
 #: resources/views/statistics/individuals/greatest-age.phtml:12
 msgid "Greatest age at death"
-msgstr "Μεγαλύτερη ηλικία κατα τον θάνατο"
+msgstr "Μεγαλύτερη ηλικία κατά τον θάνατο"
 
 #: resources/views/statistics/families/age-difference.phtml:29
 msgid "Greatest age between siblings"
@@ -13160,6 +13164,8 @@ msgstr ""
 #: resources/views/lists/families-table.phtml:205
 msgid "Show couples where either partner married more than once."
 msgstr ""
+"Εμφάνιση ζευγαριών όπου ένας από τους δύο συντρόφους παντρεύτηκε "
+"περισσότερες από μία φορές."
 
 #: resources/views/lists/families-table.phtml:163
 msgid "Show couples where only the female partner is dead."
@@ -18330,12 +18336,12 @@ msgstr ""
 #: app/Functions/Functions.php:1855
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1859
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1862
 msgctxt "(a woman’s) great ×4 nephew"
@@ -18345,12 +18351,12 @@ msgstr ""
 #: app/Functions/Functions.php:1878
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1882
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1885
 msgctxt "(a woman’s) great ×4 nephew/niece"
@@ -18360,12 +18366,12 @@ msgstr ""
 #: app/Functions/Functions.php:1867
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1871
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1874
 msgctxt "(a woman’s) great ×4 niece"
@@ -18375,17 +18381,17 @@ msgstr ""
 #: app/Functions/Functions.php:1627
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1631
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1634
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1657
 msgid "great ×5 aunt"
@@ -18936,47 +18942,47 @@ msgstr "προ-γιαγιά"
 #: app/Functions/Functions.php:1060
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1072
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1084
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1140
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1158
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1192
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1204
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1216
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr "προ-παππούς/πρό-γιαγιά"
+msgstr "προ-παππούς/προ-γιαγιά"
 
 #: app/Functions/Functions.php:1000
 msgctxt "child’s child’s son"
@@ -19025,187 +19031,187 @@ msgstr ""
 
 #: app/Functions/Functions.php:1600
 msgid "great-great-aunt"
-msgstr ""
+msgstr "3ης γενιάς θεία"
 
 #: app/Functions/Functions.php:1603
 msgid "great-great-aunt/uncle"
-msgstr ""
+msgstr "3ης γενιάς θεία/θείος"
 
 #: app/Functions/Functions.php:2191
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "τρισέγγονο"
 
 #: app/Functions/Functions.php:2188
 msgid "great-great-granddaughter"
-msgstr ""
+msgstr "τρισέγγονη"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
-msgstr ""
+msgstr "προ-προ-παππούς"
 
 #: app/Functions/Functions.php:2042
 msgid "great-great-grandmother"
-msgstr ""
+msgstr "προ-προ-γιαγιά"
 
 #: app/Functions/Functions.php:2045
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "προ-προ-παππούς/προ-προ-γιαγιά"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
-msgstr ""
+msgstr "τρισέγγονος"
 
 #: app/Functions/Functions.php:1619
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "4ης γενιάς θεία"
 
 #: app/Functions/Functions.php:1622
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "4ης γενιάς θεία/θείος"
 
 #: app/Functions/Functions.php:2202
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "τετρασέγγονο"
 
 #: app/Functions/Functions.php:2199
 msgid "great-great-great-granddaughter"
-msgstr ""
+msgstr "τετρασέγγονη"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
-msgstr ""
+msgstr "προ-προ-προ-παππούς"
 
 #: app/Functions/Functions.php:2053
 msgid "great-great-great-grandmother"
-msgstr ""
+msgstr "προ-προ-προ-γιαγιά"
 
 #: app/Functions/Functions.php:2056
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "προ-προ-προ-παππούς και γιαγιά"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "τετρασέγγονος"
 
 #: app/Functions/Functions.php:1820
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1824
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1827
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1843
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1847
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1850
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1832
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1836
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1839
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "4ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1608
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1612
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1615
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "4ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1785
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1789
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1792
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός"
 
 #: app/Functions/Functions.php:1808
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1812
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1815
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιός/ανιψιά"
 
 #: app/Functions/Functions.php:1797
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1801
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1804
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "3ης γενιάς ανιψιά"
 
 #: app/Functions/Functions.php:1589
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "3ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1593
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "3ης γενιάς θείος"
 
 #: app/Functions/Functions.php:1596
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "3ης γενιάς θείος"
 
 #: app/Functions/Functions.php:945
 msgctxt "(a man’s) brother’s child’s son"
@@ -20088,17 +20094,17 @@ msgstr "γονέας"
 
 #: app/Functions/Functions.php:694
 msgid "partner"
-msgstr ""
+msgstr "σύζυγος"
 
 #: app/Functions/Functions.php:671
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "σύζυγος"
 
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "σύζυγος"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
