@@ -127,7 +127,7 @@ class FunctionsPrint
             '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
             view('icons/expand') .
             view('icons/collapse') .
-            '</a> ' .
+            '</a>' .
             '<span class="label">' . $label . ':</span> ' .
             $first_line .
             '</div>' .

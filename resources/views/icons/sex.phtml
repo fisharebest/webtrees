@@ -4,13 +4,12 @@
  * @var string $sex
  */
 
-?>
-<?php if ($sex === 'F') : ?>
+if ($sex === 'F') : ?>
 <span class="wt-icon-sex wt-icon-sex-f"><i class="fas fa-venus fa-fw" aria-hidden="true"></i></span>
 <?php elseif ($sex === 'M') : ?>
-    <span class="wt-icon-sex wt-icon-sex-m"><i class="fas fa-mars fa-fw" aria-hidden="true"></i></span>
+<span class="wt-icon-sex wt-icon-sex-m"><i class="fas fa-mars fa-fw" aria-hidden="true"></i></span>
 <?php elseif ($sex === 'X') : ?>
-    <span class="wt-icon-sex wt-icon-sex-x"><i class="fas fa-transgender fa-fw" aria-hidden="true"></i></span>
+<span class="wt-icon-sex wt-icon-sex-x"><i class="fas fa-transgender fa-fw" aria-hidden="true"></i></span>
 <?php elseif ($sex === 'U') : ?>
-    <span class="wt-icon-sex wt-icon-sex-u"><i class="fas fa-genderless fa-fw" aria-hidden="true"></i></span>
+<span class="wt-icon-sex wt-icon-sex-u"><i class="fas fa-genderless fa-fw" aria-hidden="true"></i></span>
 <?php endif ?>
