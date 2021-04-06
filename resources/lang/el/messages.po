@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-06 13:49+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-06 13:54+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -8926,7 +8926,7 @@ msgstr "Διαχείριση οικογενειακών δένδρων"
 #: resources/views/admin/trees-renumber.phtml:17
 #: resources/views/admin/trees-unconnected.phtml:21
 msgid "Manage family trees "
-msgstr "Διαχείριση οικογενειακών δέντρων"
+msgstr "Διαχείριση οικογενειακών δέντρων "
 
 #: app/Http/RequestHandlers/ManageMediaPage.php:68
 #: resources/views/admin/control-panel.phtml:718
