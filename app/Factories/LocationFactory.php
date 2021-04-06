@@ -59,7 +59,7 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
             $xref = $this->extractXref($gedcom ?? $pending, $xref);
 
             return new Location($xref, $gedcom ?? '', $pending, $tree);
-        });
+        }, null, ['gedrec-' . $xref . '@' . $tree->id()]);
     }
 
     /**

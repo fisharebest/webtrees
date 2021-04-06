@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Contracts\Cache\TagAwareCacheInterface;
 
 /**
  * Wrapper around the symfony PSR6 cache library.
@@ -29,17 +29,29 @@ use Symfony\Contracts\Cache\ItemInterface;
  */
 class Cache
 {
-    /** @var CacheInterface */
+    /** @var TagAwareCacheInterface */
     private $cache;
 
     /**
      * Cache constructor.
      *
-     * @param CacheInterface $cache
+     * @param TagAwareCacheInterface $cache
      */
-    public function __construct(CacheInterface $cache)
+    public function __construct(TagAwareCacheInterface $cache)
     {
         $this->cache = $cache;
+    }
+
+    /**
+     * Generate a key compatible with PSR-6 requirements
+     * @see https://www.php-fig.org/psr/psr-6/
+     *
+     * @param string $key
+     * @return string
+     */
+    public function safeKey(string $key): string
+    {
+        return md5($key);
     }
 
     /**
@@ -48,16 +60,33 @@ class Cache
      * @param string   $key
      * @param Closure  $closure
      * @param int|null $ttl
+     * @param string[] $tags
      *
      * @return mixed
      */
-    public function remember(string $key, Closure $closure, int $ttl = null)
+    public function remember(string $key, Closure $closure, int $ttl = null, array $tags = [])
     {
-        return $this->cache->get(md5($key), static function (ItemInterface $item) use ($closure, $ttl) {
-            $item->expiresAfter($ttl);
+        $tags = array_map([$this, 'safeKey'], $tags);
+        return $this->cache->get(
+            $this->safeKey($key),
+            static function (ItemInterface $item) use ($closure, $tags, $ttl) {
+                $item->expiresAfter($ttl);
+                $item->tag($tags);
 
-            return $closure();
-        });
+                return $closure();
+            }
+        );
+    }
+
+    /**
+     * Invalidate cache items based on tags.
+     *
+     * @param string[] $tags
+     * @return bool
+     */
+    public function invalidateTags(array $tags): bool
+    {
+        return $this->cache->invalidateTags(array_map([$this, 'safeKey'], $tags));
     }
 
     /**
@@ -67,6 +96,6 @@ class Cache
      */
     public function forget(string $key): void
     {
-        $this->cache->delete(md5($key));
+        $this->cache->delete($this->safeKey($key));
     }
 }

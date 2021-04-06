@@ -59,7 +59,7 @@ class SubmissionFactory extends AbstractGedcomRecordFactory implements Submissio
             $xref = $this->extractXref($gedcom ?? $pending, $xref);
 
             return new Submission($xref, $gedcom ?? '', $pending, $tree);
-        });
+        }, null, ['gedrec-' . $xref . '@' . $tree->id()]);
     }
 
     /**

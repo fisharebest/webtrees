@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
 use Symfony\Component\Cache\Adapter\NullAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 
 /**
  * Test the UserService class
@@ -36,7 +37,7 @@ class UserServiceTest extends TestCase
         parent::setUp();
 
         $cache_factory = self::createMock(CacheFactoryInterface::class);
-        $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
+        $cache_factory->method('array')->willReturn(new Cache(new TagAwareAdapter(new NullAdapter())));
         Registry::cache($cache_factory);
     }
 

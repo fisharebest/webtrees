@@ -23,7 +23,8 @@ use Fisharebest\Webtrees\Cache;
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Webtrees;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Cache\Adapter\FilesystemTagAwareAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 
 use function random_int;
 
@@ -39,10 +40,10 @@ class CacheFactory implements CacheFactoryInterface
     private const FILES_TTL = 8640000;
     private const FILES_DIR = Webtrees::DATA_DIR . 'cache/';
 
-    /** @var ArrayAdapter */
+    /** @var TagAwareAdapter */
     private $array_adapter;
 
-    /** @var FilesystemAdapter */
+    /** @var FilesystemTagAwareAdapter */
     private $filesystem_adapter;
 
     /**
@@ -50,8 +51,8 @@ class CacheFactory implements CacheFactoryInterface
      */
     public function __construct()
     {
-        $this->array_adapter      = new ArrayAdapter(0, false);
-        $this->filesystem_adapter = new FilesystemAdapter('', self::FILES_TTL, self::FILES_DIR);
+        $this->array_adapter      = new TagAwareAdapter(new ArrayAdapter(0, false));
+        $this->filesystem_adapter = new FilesystemTagAwareAdapter('', self::FILES_TTL, self::FILES_DIR);
     }
 
     /**

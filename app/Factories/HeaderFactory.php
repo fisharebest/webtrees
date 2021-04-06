@@ -59,7 +59,7 @@ class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactory
             $xref = $this->extractXref($gedcom ?? $pending, $xref);
 
             return new Header($xref, $gedcom ?? '', $pending, $tree);
-        });
+        }, null, ['gedrec-' . $xref . '@' . $tree->id()]);
     }
 
     /**

@@ -58,7 +58,7 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
             $xref = $this->extractXref($gedcom ?? $pending, $xref);
 
             return new Individual($xref, $gedcom ?? '', $pending, $tree);
-        });
+        }, null, ['gedrec-' . $xref . '@' . $tree->id()]);
     }
 
     /**
