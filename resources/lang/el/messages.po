@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-06 05:20+0000\n"
+"PO-Revision-Date: 2021-04-06 06:24+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/el/>\n"
@@ -487,7 +487,7 @@ msgstr "(%s μετά θάνατο)"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr "(%s ετών)"
+msgstr "(%s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:358
@@ -495,7 +495,7 @@ msgstr "(%s ετών)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s ετών)"
+msgstr "(%s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:354
@@ -504,7 +504,7 @@ msgstr "(%s ετών)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s ετών)"
+msgstr "(%s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -513,7 +513,7 @@ msgstr "(%s ετών)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s ετών)"
+msgstr "(%s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -1726,7 +1726,7 @@ msgstr "Ηλικία κατά τη γέννηση του τέκνου"
 
 #: resources/views/admin/trees-privacy.phtml:71
 msgid "Age at which to assume an individual is dead"
-msgstr "Ηλικία στην οποία υποθέτουμε οτι καποιος εχει απεβιώσει"
+msgstr "Ηλικία στην οποία υποθέτουμε ότι κάποιος έχει αποβιώσει"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
