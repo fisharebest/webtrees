@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-06 13:49+0000\n"
+"PO-Revision-Date: 2021-04-07 19:59+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -3279,7 +3279,7 @@ msgstr "Pohreb syna"
 
 #: app/Module/IndividualFactsTabModule.php:265
 msgid "Burial of a spouse"
-msgstr "Pohreb manžela"
+msgstr "Pohreb manžela/manželky"
 
 #: app/Module/IndividualFactsTabModule.php:264
 msgid "Burial of a wife"
@@ -4416,7 +4416,7 @@ msgstr "Kremácia syna"
 
 #: app/Module/IndividualFactsTabModule.php:270
 msgid "Cremation of a spouse"
-msgstr "Kremácia manžela"
+msgstr "Kremácia manžela/manželky"
 
 #: app/Module/IndividualFactsTabModule.php:269
 msgid "Cremation of a wife"
@@ -5085,7 +5085,7 @@ msgstr "Úmrtie syna"
 #: app/Module/IndividualFactsTabModule.php:260
 #: resources/views/admin/trees-preferences.phtml:519
 msgid "Death of a spouse"
-msgstr "Úmrtie manžela/ky"
+msgstr "Úmrtie manžela/manželky"
 
 #: app/Module/IndividualFactsTabModule.php:259
 msgid "Death of a wife"
@@ -5425,7 +5425,7 @@ msgstr "dhú l-hidždža"
 #: app/Date/HijriDate.php:148
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi'dah"
+msgstr "dhú l-ka’da"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:238
@@ -6271,7 +6271,7 @@ msgstr "Rodina ako dieťa"
 #. I18N: gedcom tag FAMS
 #: app/Factories/ElementFactory.php:513 app/GedcomTag.php:705
 msgid "Family as a spouse"
-msgstr "Rodina ako partner"
+msgstr "Rodina ako manžel/manželka"
 
 #. I18N: Name of a module/chart
 #: app/Module/FamilyBookChartModule.php:92
@@ -6380,7 +6380,7 @@ msgstr "Rodina s pečatiacimi rodičmi (LDS)"
 
 #: app/Module/ModuleThemeTrait.php:173 resources/views/chart-box.phtml:35
 msgid "Family with spouse"
-msgstr "Rodina s partnerom"
+msgstr "Rodina s manželom/manželkou"
 
 #: resources/views/modules/gedcom_stats/config.phtml:60
 #: resources/views/modules/gedcom_stats/statistics.phtml:237
@@ -13797,7 +13797,7 @@ msgstr "Spokane, Washington, USA"
 #: resources/xml/reports/individual_ext_report.xml:210
 #: resources/xml/reports/individual_ext_report.xml:227
 msgid "Spouse"
-msgstr "Partner"
+msgstr "Manžel/manželka"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:223
 msgid "Spouse note"
@@ -16673,7 +16673,9 @@ msgstr ""
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr "Ak má osoba viac ako jedného manžela, mali by ste zoradiť rodiny v chronologickom poradí."
+msgstr ""
+"Ak má osoba viac ako jedného partner/partnerku, mali by ste zoradiť rodiny v "
+"chronologickom poradí."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:905
@@ -20743,7 +20745,7 @@ msgstr "triediť podľa mena"
 
 #: app/Functions/Functions.php:685
 msgid "spouse"
-msgstr "manžel(ka)"
+msgstr "manžel/manželka"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: app/Services/EmailService.php:236
