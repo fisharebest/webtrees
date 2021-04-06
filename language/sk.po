@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-06 13:50+0000\n"
+"PO-Revision-Date: 2021-04-07 19:59+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/sk/>\n"
@@ -3312,7 +3312,7 @@ msgstr "Pohreb syna"
 
 #: app/GedcomTag.php:1190
 msgid "Burial of a spouse"
-msgstr "Pohreb manžela"
+msgstr "Pohreb manžela/manželky"
 
 #: app/GedcomTag.php:1188
 msgid "Burial of a wife"
@@ -4351,7 +4351,7 @@ msgstr "Kremácia syna"
 
 #: app/GedcomTag.php:1347
 msgid "Cremation of a spouse"
-msgstr "Kremácia manžela"
+msgstr "Kremácia manžela/manželky"
 
 #: app/GedcomTag.php:1345
 msgid "Cremation of a wife"
@@ -4924,7 +4924,7 @@ msgstr "Úmrtie syna"
 
 #: app/GedcomTag.php:1450
 msgid "Death of a spouse"
-msgstr "Úmrtie manžela/ky"
+msgstr "Úmrtie manžela/manželky"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
@@ -5273,7 +5273,7 @@ msgstr "dhú l-hidždža"
 #: app/Date/HijriDate.php:100
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr "Dhu al-Qi'dah"
+msgstr "dhú l-ka’da"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:164
@@ -6111,7 +6111,7 @@ msgstr "Rodina ako dieťa"
 #. I18N: gedcom tag FAMS
 #: app/GedcomTag.php:456
 msgid "Family as a spouse"
-msgstr "Rodina ako partner"
+msgstr "Rodina ako manžel/manželka"
 
 #. I18N: Name of a module/chart
 #: app/Controller/FamilyBookController.php:63
@@ -6220,7 +6220,7 @@ msgstr "Rodina s pečatiacimi rodičmi (LDS)"
 
 #: app/Theme/AbstractTheme.php:994
 msgid "Family with spouse"
-msgstr "Rodina s partnerom"
+msgstr "Rodina s manželom/manželkou"
 
 #: app/Module/FamilyTreeStatisticsModule.php:186
 #: app/Module/FamilyTreeStatisticsModule.php:404
@@ -13368,7 +13368,7 @@ msgstr "Spokane, Washington, USA"
 #: modules_v3/individual_ext_report/report.xml:202
 #: modules_v3/individual_ext_report/report.xml:219
 msgid "Spouse"
-msgstr "Partner"
+msgstr "Manžel/manželka"
 
 #: app/GedcomTag.php:458
 msgid "Spouse census date"
@@ -20253,7 +20253,7 @@ msgstr "juh"
 #: app/Functions/Functions.php:745 edit_interface.php:1910
 #: edit_interface.php:1920 edit_interface.php:1945 edit_interface.php:1956
 msgid "spouse"
-msgstr "manžel(ka)"
+msgstr "manžel/manželka"
 
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: admin_site_config.php:112
