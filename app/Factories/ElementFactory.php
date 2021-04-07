@@ -207,7 +207,6 @@ use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\Elements\XrefSubmission;
 use Fisharebest\Webtrees\Elements\XrefSubmitter;
 use Fisharebest\Webtrees\I18N;
-
 use function preg_match;
 use function strpos;
 
@@ -1134,9 +1133,6 @@ class ElementFactory implements ElementFactoryInterface
                 'SUBM:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
                 'SUBN:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
                 '_LOC'                           => new LocationRecord(I18N::translate('Location')),
-                '_LOC::NOTE'                     => new NoteStructure(I18N::translate('Note')),
-                '_LOC::OBJE'                     => new XrefMedia(I18N::translate('Media object')),
-                '_LOC::SOUR'                     => new XrefSource(I18N::translate('Source')),
                 '_LOC:CHAN'                      => new Change(I18N::translate('Last change')),
                 '_LOC:CHAN:DATE'                 => new ChangeDate(I18N::translate('Date of last change')),
                 '_LOC:CHAN:DATE:TIME'            => new TimeValue(I18N::translate('Time')),
@@ -1178,7 +1174,7 @@ class ElementFactory implements ElementFactoryInterface
                 '_LOC:_DMGD:SOUR'                => new XrefSource(I18N::translate('Source')),
                 '_LOC:_DMGD:TYPE'                => new CustomElement(I18N::translate('Type of demographic data')),
                 '_LOC:_GOV'                      => new GovIdentifier(I18N::translate('GOV identifier')),
-                '_LOC:_LOC'                      => new XrefLocation(I18N::translate('Parent')),
+                '_LOC:_LOC'                      => new XrefLocation(I18N::translate('Parent'), ['DATE' => '0:1', 'SOUR' => '0:M', 'TYPE' => '0:1']),
                 '_LOC:_LOC:DATE'                 => new DateValue(I18N::translate('Date')),
                 '_LOC:_LOC:SOUR'                 => new XrefSource(I18N::translate('Source')),
                 '_LOC:_LOC:TYPE'                 => new HierarchicalRelationship(I18N::translate('Hierarchical relationship')),
@@ -1187,6 +1183,15 @@ class ElementFactory implements ElementFactoryInterface
                 '_LOC:_POST:DATE'                => new DateValue(I18N::translate('Date')),
                 '_LOC:_POST:SOUR'                => new XrefSource(I18N::translate('Source')),
                 '_LOC:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+                '_LOC:*:SOUR:DATA'          => new SourceData(I18N::translate('Data')),
+                '_LOC:*:SOUR:DATA:DATE'     => new EntryRecordingDate(I18N::translate('Date of entry in original source')),
+                '_LOC:*:SOUR:DATA:TEXT'     => new TextFromSource(I18N::translate('Text')),
+                '_LOC:*:SOUR:EVEN'          => new EventTypeCitedFrom(I18N::translate('Event')),
+                '_LOC:*:SOUR:EVEN:ROLE'     => new RoleInEvent(I18N::translate('Role')),
+                '_LOC:*:SOUR:NOTE'          => new NoteStructure(I18N::translate('Note')),
+                '_LOC:*:SOUR:OBJE'          => new XrefMedia(I18N::translate('Media object')),
+                '_LOC:*:SOUR:PAGE'          => new WhereWithinSource(I18N::translate('Citation details')),
+                '_LOC:*:SOUR:QUAY'          => new CertaintyAssessment(I18N::translate('Quality of data')),
             ]);
 
             // Legacy extensions
