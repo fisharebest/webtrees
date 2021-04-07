@@ -1142,7 +1142,7 @@ class ElementFactory implements ElementFactoryInterface
                 '_LOC:MAP'                       => new EmptyElement(I18N::translate('Coordinates')),
                 '_LOC:MAP:LATI'                  => new PlaceLatitude(I18N::translate('Latitude')),
                 '_LOC:MAP:LONG'                  => new PlaceLongtitude(I18N::translate('Longitude')),
-                '_LOC:NAME'                      => new PlaceName(I18N::translate('Place')),
+                '_LOC:NAME'                      => new PlaceName(I18N::translate('Place'), ['ABBR' => '0:1', 'DATE' => '0:1', 'LANG' => '0:1', 'SOUR' => '0:M']),
                 '_LOC:NAME:ABBR'                 => new CustomElement(I18N::translate('Abbreviation')),
                 '_LOC:NAME:ABBR:TYPE'            => new CustomElement(I18N::translate('Type of abbreviation')),
                 '_LOC:NAME:DATE'                 => new DateValue(I18N::translate('Date')),
