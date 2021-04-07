@@ -19,28 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use function strtoupper;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+use function e;
 
 /**
- * ANCESTRAL_FILE_NUMBER := {Size=1:12}
- * A unique permanent record number of an individual record contained in the
- * Family History Department's Ancestral File.
+ * Events which can take "Y" to indicate that they occurred, but date/place are unknown.
  */
-class AncestralFileNumber extends AbstractExternalLink
+class AbstractExternalLink extends AbstractElement
 {
-    protected const EXTERNAL_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId={ID}';
-
-    protected const MAXIMUM_LENGTH = 12;
-
     /**
-     * Convert a value to a canonical form.
+     * Display the value of this type of element.
      *
      * @param string $value
+     * @param Tree   $tree
      *
      * @return string
      */
-    public function canonical(string $value): string
+    public function value(string $value, Tree $tree): string
     {
-        return strtoupper(parent::canonical($value));
+        $canonical = $this->canonical($value);
+        $url       = strtr(static::EXTERNAL_URL, ['{ID}' => rawurlencode($canonical)]);
+
+        return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
     }
 }

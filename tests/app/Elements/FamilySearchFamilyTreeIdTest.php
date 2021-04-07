@@ -20,13 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * Test harness for the class AncestralFileNumber
+ * Test harness for the class FamilySearchFamilyTreeId
  *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
- * @covers \Fisharebest\Webtrees\Elements\AncestralFileNumber
+ * @covers \Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId
  */
-class AncestralFileNumberTest extends AbstractElementTest
+class FamilySearchFamilyTreeIdTest extends AbstractElementTest
 {
     /**
      * Standard tests for all elements.
