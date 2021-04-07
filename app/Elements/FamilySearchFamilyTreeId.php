@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Tree;
+
+use function e;
+use function rawurlencode;
 use function strtoupper;
 
 /**
@@ -26,11 +30,11 @@ use function strtoupper;
  * A unique permanent record number of an individual record contained in the
  * Family History Department's Ancestral File.
  */
-class AncestralFileNumber extends AbstractExternalLink
+class FamilySearchFamilyTreeId extends AbstractExternalLink
 {
-    protected const EXTERNAL_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId={ID}';
+    protected const EXTERNAL_URL = 'https://ancestors.familysearch.org/en/{ID}';
 
-    protected const MAXIMUM_LENGTH = 12;
+    protected const MAXIMUM_LENGTH = 8;
 
     /**
      * Convert a value to a canonical form.

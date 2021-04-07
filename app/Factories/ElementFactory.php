@@ -81,6 +81,7 @@ use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
+use Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId;
 use Fisharebest\Webtrees\Elements\FamilyStatusText;
 use Fisharebest\Webtrees\Elements\FileName;
 use Fisharebest\Webtrees\Elements\FirstCommunion;
@@ -795,6 +796,11 @@ class ElementFactory implements ElementFactoryInterface
                 // 2 _EVN ##
                 // 1 ASSO @Xnnn@
                 // 2 RELA Witness at event _EVN ##
+            ]);
+
+            // familysearch.org extensions
+            $this->register([
+                'INDI:_FSFTID' => /* I18N: familysearch.org */ new FamilySearchFamilyTreeId(I18N::translate('FamilySearch ID')),
             ]);
 
             // Family Tree Builder extensions
