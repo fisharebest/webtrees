@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-01 13:27+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2021-04-07 19:59+0000\n"
+"Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
 "Language-Team: Portuguese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pt/>\n"
 "Language: pt\n"
@@ -491,19 +491,19 @@ msgstr "primo de %sº grau"
 #: app/Date/JulianDate.php:85
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;AEC"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;EC"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s+"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:235
@@ -515,7 +515,7 @@ msgstr "%s, os seus antepassados e suas famílias"
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, seus pais e irmãos"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:200
@@ -16565,7 +16565,7 @@ msgstr "sepultamento"
 
 #: app/GedcomTag.php:1715
 msgid "by"
-msgstr "Última Alteração por"
+msgstr "por"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
