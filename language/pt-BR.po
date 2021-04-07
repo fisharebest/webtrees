@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-12-08 04:04+0000\n"
-"Last-Translator: Fosstributor <fosstributor@protonmail.com>\n"
+"PO-Revision-Date: 2021-04-07 19:59+0000\n"
+"Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/pt_BR/>\n"
 "Language: pt-BR\n"
@@ -16564,7 +16564,7 @@ msgstr "sepultamento"
 
 #: app/GedcomTag.php:1715
 msgid "by"
-msgstr "Última Alteração por"
+msgstr "por"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:301
