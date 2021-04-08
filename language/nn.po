@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-18 13:37+0000\n"
+"PO-Revision-Date: 2021-04-09 06:51+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -767,7 +767,11 @@ msgstr "Eit diagram over personar sine tidslinjer."
 
 #: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Et barn kan ha fleire sett med foreldre. Forholdet mellom foreldre og barn kan vere biologisk, juridisk, eller basert på lokale kulturar og tradisjonar. Om forholdet ikkje vert spesifisert, vert det antatt å vere biologisk."
+msgstr ""
+"Eit barn kan ha fleire sett med foreldre. Forholdet mellom foreldre og barn "
+"kan vere biologisk, juridisk, eller basert på lokale kulturar og "
+"tradisjonar. Om forholdet ikkje vert spesifisert, vert det antatt å vere "
+"biologisk."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
