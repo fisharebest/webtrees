@@ -263,7 +263,7 @@ abstract class AbstractElement implements ElementInterface
         $canonical = $this->canonical($value);
         $autoLink = preg_replace(static::REGEX_URL, '<a href="' . '\0' . '" rel="nofollow">' . '\0' . '</a>', e($canonical));
 
-        return $autoLink ?? e(canonical($value));
+        return $autoLink ?? e($canonical);
     }
 
     /**
