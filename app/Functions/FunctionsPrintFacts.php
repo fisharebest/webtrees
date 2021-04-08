@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
 
@@ -386,7 +387,7 @@ class FunctionsPrintFacts
 
                 if ($module instanceof RelationshipsChartModule) {
                     foreach ($associates as $associate) {
-                        $relationship_name = Functions::getCloseRelationshipName($associate, $person);
+                        $relationship_name = app(RelationshipService::class)->getCloseRelationshipName($associate, $person);
                         if ($relationship_name === '') {
                             $relationship_name = GedcomTag::getLabel('RELA');
                         }

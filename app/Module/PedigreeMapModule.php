@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -370,6 +371,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             $sosa = intdiv($sosa, 2);
         }
 
-        return Functions::getRelationshipNameFromPath($path);
+        return app(RelationshipService::class)->legacyNameAlgorithm($path);
     }
 }
