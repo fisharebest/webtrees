@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-01 13:26+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2021-04-09 06:50+0000\n"
+"Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nn/>\n"
 "Language: nn\n"
@@ -693,7 +693,11 @@ msgstr "Eit diagram over personar sine tidslinjer."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Et barn kan ha fleire sett med foreldre. Forholdet mellom foreldre og barn kan vere biologisk, juridisk, eller basert på lokale kulturar og tradisjonar. Om forholdet ikkje vert spesifisert, vert det antatt å vere biologisk."
+msgstr ""
+"Eit barn kan ha fleire sett med foreldre. Forholdet mellom foreldre og barn "
+"kan vere biologisk, juridisk, eller basert på lokale kulturar og "
+"tradisjonar. Om forholdet ikkje vert spesifisert, vert det antatt å vere "
+"biologisk."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:70
