@@ -120,7 +120,7 @@ class EmailService
      *
      * @return Swift_Transport
      */
-    private function transport(): Swift_Transport
+    protected function transport(): Swift_Transport
     {
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'sendmail':
