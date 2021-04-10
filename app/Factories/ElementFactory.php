@@ -1357,6 +1357,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:*:PLAC:_HEB'   => new NoteStructure(I18N::translate('Place in Hebrew')),
                 'INDI:*:_ASSO'       => new XrefIndividual(I18N::translate('Associate')),
                 'INDI:*:_ASSO:RELA'  => new RelationIsDescriptor(I18N::translate('Relationship')),
+                'INDI:ADDR'          => new AddressLine(I18N::translate('Address')),
                 'INDI:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
                 'INDI:_UID'          => new PafUid(I18N::translate('Unique identifier')),
                 'INDI:_WT_OBJE_SORT' => new XrefMedia(I18N::translate('Re-order media')),
