@@ -29,7 +29,7 @@ use function view;
 /**
  * Show a list of modules.
  */
-class ModulesSidebarsPage extends AbstractModuleComponentPage
+class ModulesSharesPage extends AbstractModuleComponentPage
 {
     /**
      * @param ServerRequestInterface $request

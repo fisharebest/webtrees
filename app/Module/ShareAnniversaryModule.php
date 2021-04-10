@@ -100,7 +100,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
     {
         if ($record instanceof Individual) {
             $facts = $record->facts(static::INDIVIDUAL_EVENTS, true)
-                ->merge($record->spouseFamilies()->map(fn(Family $family): Collection => $family->facts(static::FAMILY_EVENTS, true)));
+                ->merge($record->spouseFamilies()->map(fn (Family $family): Collection => $family->facts(static::FAMILY_EVENTS, true)));
         } elseif ($record instanceof Family) {
             $facts = $record->facts(static::FAMILY_EVENTS, true);
         } else {
@@ -110,11 +110,11 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         // iCalendar only supports exact Gregorian dates.
         $facts = $facts
             ->flatten()
-            ->filter(fn(Fact $fact): bool => $fact->date()->isOK())
-            ->filter(fn(Fact $fact): bool => $fact->date()->qual1 === '')
-            ->filter(fn(Fact $fact): bool => $fact->date()->minimumDate() instanceof GregorianDate)
-            ->filter(fn(Fact $fact): bool => $fact->date()->minimumDate() === $fact->date()->maximumDate())
-            ->mapWithKeys(fn(Fact $fact): array => [
+            ->filter(fn (Fact $fact): bool => $fact->date()->isOK())
+            ->filter(fn (Fact $fact): bool => $fact->date()->qual1 === '')
+            ->filter(fn (Fact $fact): bool => $fact->date()->minimumDate() instanceof GregorianDate)
+            ->filter(fn (Fact $fact): bool => $fact->date()->minimumDate() === $fact->date()->maximumDate())
+            ->mapWithKeys(fn (Fact $fact): array => [
                 route(static::class, ['tree' => $record->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()]) =>
                     $fact->label() . ' — ' . $fact->date()->display(false, null, false),
             ]);
@@ -149,7 +149,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
         $record = Auth::checkRecordAccess($record);
 
         $fact = $record->facts()
-            ->filter(fn(Fact $fact): bool => $fact->id() === $fact_id)
+            ->filter(fn (Fact $fact): bool => $fact->id() === $fact_id)
             ->first();
 
         if ($fact instanceof Fact) {
