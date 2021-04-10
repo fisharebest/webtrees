@@ -13542,7 +13542,7 @@ msgstr "कुछ वंशावली सॉफ़्टवेयर GEDCOM �
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr "कुछ वंशावली अनुप्रयोग सभी नामों को एक ही नाम रिकॉर्ड में संग्रहीत करते हैं, कस्टम टैग जैसे _MARNM और _AKA का उपयोग करते हैं।  एक विकल्प यह है कि प्रत्येक नाम के लिए एक नया नाम रिकॉर्ड बनाना है।"
 
 #. I18N: Help text for the “Hit counters” configuration setting

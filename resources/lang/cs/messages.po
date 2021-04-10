@@ -13545,7 +13545,7 @@ msgstr "Některé genealogické programy vytvářejí soubory GEDCOM, které obs
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr "Některé genelealogické aplikace ukládají všechna jména do jediného záznamu jmen pomocí vlastních tagů jako jsou _MARNM a _AKA. Alternativou je vytvoření nového záznamu jména pro každé jméno."
 
 #. I18N: Help text for the “Hit counters” configuration setting

@@ -92,7 +92,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
     public function description(): string
     {
         /* I18N: Description of a “Data fix” module */
-        return I18N::translate('Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name.');
+        return I18N::translate('Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name.');
     }
 
     /**

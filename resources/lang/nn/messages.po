@@ -13525,7 +13525,7 @@ msgstr "Enkelte slektsprogram opprettar GEDCOM-filer som inneheld filnamn med he
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr "Enkelte slektsprogram lagrar alle namn under ein post, ved å nytte eigentilpassa underpostar som _MARNM og _AKA. Eit alternativ er å opprette ein ny post for kvart namn."
 
 #. I18N: Help text for the “Hit counters” configuration setting
