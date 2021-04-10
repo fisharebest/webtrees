@@ -105,8 +105,12 @@ final class Grapheme
         return 0 === $len && '' !== $s ? null : $len;
     }
 
-    public static function grapheme_substr($s, $start, $len = 2147483647)
+    public static function grapheme_substr($s, $start, $len = null)
     {
+        if (null === $len) {
+            $len = 2147483647;
+        }
+
         preg_match_all('/'.SYMFONY_GRAPHEME_CLUSTER_RX.'/u', $s, $s);
 
         $slen = \count($s[0]);
@@ -116,10 +120,14 @@ final class Grapheme
             $start += $slen;
         }
         if (0 > $start) {
-            return false;
+            if (\PHP_VERSION_ID < 80000) {
+                return false;
+            }
+
+            $start = 0;
         }
         if ($start >= $slen) {
-            return false;
+            return \PHP_VERSION_ID >= 80000 ? '' : false;
         }
 
         $rem = $slen - $start;
@@ -131,7 +139,7 @@ final class Grapheme
             return '';
         }
         if (0 > $len) {
-            return false;
+            return \PHP_VERSION_ID >= 80000 ? '' : false;
         }
         if ($len > $rem) {
             $len = $rem;
