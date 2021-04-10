@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-09 06:50+0000\n"
+"PO-Revision-Date: 2021-04-10 21:28+0000\n"
 "Last-Translator: ELVEDIN ZLATARAC <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/bs/>\n"
@@ -5155,7 +5155,7 @@ msgstr "Dekada vjenčanja"
 #: app/Date/AbstractGregorianJulianDate.php:109
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "decembara"
+msgstr "decembra"
 
 #: app/Date/AbstractGregorianJulianDate.php:179
 msgctxt "INSTRUMENTAL"
