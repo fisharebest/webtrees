@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
+"PO-Revision-Date: 2021-04-10 21:28+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
@@ -8410,7 +8410,7 @@ msgstr "Les fichiers locaux"
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:1552
 msgid "Location"
-msgstr "Emplacement"
+msgstr "Lieu partagé"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
@@ -13354,7 +13354,7 @@ msgstr "Objet"
 #. I18N: gedcom tag SUBN
 #: app/GedcomTag.php:814
 msgid "Submission"
-msgstr "Données fournies"
+msgstr "Envoi de données"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:108
@@ -13364,7 +13364,7 @@ msgstr "Soumis non encore autorisé"
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Fournisseur"
+msgstr "Fournisseur de données"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
