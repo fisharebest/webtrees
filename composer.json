@@ -68,6 +68,7 @@
         "psr/http-server-handler": "~1.0",
         "psr/http-server-middleware": "~1.0",
         "ramsey/uuid": "~4.1",
+        "sabre/vobject": "~4.3",
         "swiftmailer/swiftmailer": "~6.2",
         "symfony/cache": "~5.2",
         "symfony/expression-language": "~5.2",

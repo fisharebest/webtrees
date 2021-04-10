@@ -19,38 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\Route;
-use Aura\Router\RouterContainer;
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Source;
-use Fisharebest\Webtrees\Submitter;
-use Fisharebest\Webtrees\Tree;
-use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Expression;
-use Illuminate\Support\Collection;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
-use function assert;
-use function date;
-use function redirect;
-use function response;
-use function route;
 use function view;
 
 /**

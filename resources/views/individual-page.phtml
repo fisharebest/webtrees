@@ -194,4 +194,4 @@ use Illuminate\Support\Collection;
 <?php View::endpush() ?>
 
 <?= view('modals/ajax') ?>
-<?= view('modals/shares', ['shares' => $shares, 'title' => I18N::translate('Share')]) ?>
+<?= view('modals/shares', ['shares' => $shares, 'title' => I18N::translate('Share') . ' — ' . $individual->fullName()]) ?>

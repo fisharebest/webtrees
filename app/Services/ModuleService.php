@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Module\DutchPrimeMinisters;
 use Fisharebest\Webtrees\Module\LocationListModule;
 use Fisharebest\Webtrees\Module\LowCountriesRulers;
 use Fisharebest\Webtrees\Module\ModuleShareInterface;
+use Fisharebest\Webtrees\Module\ShareAnniversaryModule;
 use Fisharebest\Webtrees\Module\ShareUrlModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
@@ -452,6 +453,7 @@ class ModuleService
         'repository_list'         => RepositoryListModule::class,
         'review_changes'          => ReviewChangesModule::class,
         'search-menu'             => SearchMenuModule::class,
+        'share-anniversary'       => ShareAnniversaryModule::class,
         'share-url'               => ShareUrlModule::class,
         'sitemap'                 => SiteMapModule::class,
         'source_list'             => SourceListModule::class,
