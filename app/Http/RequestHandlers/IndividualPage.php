@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Registry;
@@ -134,6 +135,10 @@ class IndividualPage implements RequestHandlerInterface
             }
         }
 
+        $shares = $this->module_service->findByInterface(ModuleShareInterface::class)
+            ->map(fn (ModuleShareInterface $module) => $module->share($individual))
+            ->filter();
+
         return $this->viewResponse('individual-page', [
             'age'              => $this->ageString($individual),
             'clipboard_facts'  => $this->clipboard_service->pastableFacts($individual),
@@ -143,6 +148,7 @@ class IndividualPage implements RequestHandlerInterface
             'meta_robots'      => 'index,follow',
             'name_records'     => $name_records,
             'sex_records'      => $sex_records,
+            'shares'           => $shares,
             'sidebars'         => $this->getSidebars($individual),
             'tabs'             => $this->getTabs($individual),
             'significant'      => $this->significant($individual),

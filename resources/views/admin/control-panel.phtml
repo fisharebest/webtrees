@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesListsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSharesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSidebarsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesTabsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesThemesPage;
@@ -56,6 +57,7 @@ use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -113,6 +115,8 @@ use Illuminate\Support\Collection;
  * @var Collection<string>                        $server_errors
  * @var Collection<string>                        $server_warnings
  * @var bool                                      $show_synchronize
+ * @var Collection<ModuleShareInterface>          $share_modules_disabled
+ * @var Collection<ModuleShareInterface>          $share_modules_enabled
  * @var Collection<ModuleSidebarInterface>        $sidebar_modules_disabled
  * @var Collection<ModuleSidebarInterface>        $sidebar_modules_enabled
  * @var Collection<string,int>                    $sources
@@ -656,6 +660,13 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Historic events') ?>
                         </a>
                         <?= view('components/badge', ['count' => $history_modules_enabled->count(), 'total' => $history_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/share') ?></span>
+                        <a href="<?= e(route(ModulesSharesPage::class)) ?>">
+                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Shares') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $share_modules_enabled->count(), 'total' => $share_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
 
