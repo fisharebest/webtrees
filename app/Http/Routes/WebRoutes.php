@@ -193,6 +193,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSharesAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSharesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSidebarsAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSidebarsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesTabsAction;
@@ -394,6 +396,8 @@ class WebRoutes
                 $router->post(ModulesLanguagesAction::class, '/languages');
                 $router->get(ModulesReportsPage::class, '/reports');
                 $router->post(ModulesReportsAction::class, '/reports');
+                $router->get(ModulesSharesPage::class, '/shares');
+                $router->post(ModulesSharesAction::class, '/shares');
                 $router->get(ModulesSidebarsPage::class, '/sidebars');
                 $router->post(ModulesSidebarsAction::class, '/sidebars');
                 $router->get(ModulesTabsPage::class, '/tabs');

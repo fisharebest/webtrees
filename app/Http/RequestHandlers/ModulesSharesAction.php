@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -31,7 +31,7 @@ use function route;
 /**
  * Update a list of modules.
  */
-class ModulesSidebarsAction extends AbstractModuleComponentAction
+class ModulesSharesAction extends AbstractModuleComponentAction
 {
     /**
      * @param ServerRequestInterface $request
@@ -40,9 +40,7 @@ class ModulesSidebarsAction extends AbstractModuleComponentAction
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $this->updateStatus(ModuleSidebarInterface::class, $request);
-        $this->updateOrder(ModuleSidebarInterface::class, 'sidebar_order', $request);
-        $this->updateAccessLevel(ModuleSidebarInterface::class, $request);
+        $this->updateStatus(ModuleShareInterface::class, $request);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 

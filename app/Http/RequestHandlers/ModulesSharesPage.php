@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -39,8 +39,8 @@ class ModulesSharesPage extends AbstractModuleComponentPage
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return $this->listComponents(
-            ModuleSidebarInterface::class,
-            view('icons/sidebar') . I18N::translate('Sidebars'),
+            ModuleShareInterface::class,
+            view('icons/sidebar') . I18N::translate('Shares'),
             ''
         );
     }

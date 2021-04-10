@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -195,6 +196,8 @@ class ControlPanel implements RequestHandlerInterface
             'menu_modules_enabled'       => $this->module_service->findByInterface(ModuleMenuInterface::class),
             'report_modules_disabled'    => $this->module_service->findByInterface(ModuleReportInterface::class, true),
             'report_modules_enabled'     => $this->module_service->findByInterface(ModuleReportInterface::class),
+            'share_modules_disabled'     => $this->module_service->findByInterface(ModuleShareInterface::class, true),
+            'share_modules_enabled'      => $this->module_service->findByInterface(ModuleShareInterface::class),
             'sidebar_modules_disabled'   => $this->module_service->findByInterface(ModuleSidebarInterface::class, true),
             'sidebar_modules_enabled'    => $this->module_service->findByInterface(ModuleSidebarInterface::class),
             'tab_modules_disabled'       => $this->module_service->findByInterface(ModuleTabInterface::class, true),
