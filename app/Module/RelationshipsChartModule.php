@@ -131,12 +131,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartMenu(Individual $individual): Menu
     {
-        $gedcomid = $individual->tree()->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
+        $my_xref = $individual->tree()->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
 
-        if ($gedcomid !== '' && $gedcomid !== $individual->xref()) {
+        if ($my_xref !== '' && $my_xref !== $individual->xref()) {
+            $my_record = Registry::individualFactory()->make($my_xref, $individual->tree());
+
             return new Menu(
                 I18N::translate('Relationship to me'),
-                $this->chartUrl($individual, ['xref2' => $gedcomid]),
+                $this->chartUrl($my_record, ['xref2' => $individual->xref()]),
                 $this->chartMenuClass(),
                 $this->chartUrlAttributes()
             );
