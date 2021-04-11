@@ -207,6 +207,7 @@ use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\Elements\XrefSubmission;
 use Fisharebest\Webtrees\Elements\XrefSubmitter;
 use Fisharebest\Webtrees\I18N;
+
 use function preg_match;
 use function strpos;
 
@@ -426,7 +427,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:AFN'                 => new AncestralFileNumber(I18N::translate('Ancestral file number')),
                 'INDI:ALIA'                => new XrefIndividual(I18N::translate('Alias')),
                 'INDI:ANCI'                => new XrefSubmitter(I18N::translate('Ancestors interest')),
-                'INDI:ASSO'                => new XrefIndividual(I18N::translate('Associate')),
+                'INDI:ASSO'                => new XrefIndividual(I18N::translate('Associate'), ['RELA' => '0:1', 'NOTE' => '0:M', 'SOUR' > '0:M']),
                 'INDI:ASSO:NOTE'           => new NoteStructure(I18N::translate('Note')),
                 'INDI:ASSO:RELA'           => new RelationIsDescriptor(I18N::translate('Relationship')),
                 'INDI:ASSO:SOUR'           => new XrefSource(I18N::translate('Source citation')),
@@ -1059,7 +1060,7 @@ class ElementFactory implements ElementFactoryInterface
                 'FAM:*:PLAC:_MAIDENHEAD'         => new MaidenheadLocator('Maidenhead locator'),
                 'FAM:*:PLAC:_POST'               => new AddressPostalCode('Postal code'),
                 'FAM:*:PLAC:_POST:DATE'          => new DateValue(I18N::translate('Date')),
-                'FAM:*:_ASSO'                    => new XrefIndividual(I18N::translate('Associate')),
+                'FAM:*:_ASSO'                    => new XrefIndividual(I18N::translate('Associate'), ['RELA' => '0:1', 'NOTE' => '0:M', 'SOUR' > '0:M']),
                 'FAM:*:_ASSO:NOTE'               => new NoteStructure(I18N::translate('Note')),
                 'FAM:*:_ASSO:RELA'               => new RelationIsDescriptor(I18N::translate('Relationship')),
                 'FAM:*:_ASSO:SOUR'               => new XrefSource(I18N::translate('Source citation')),
@@ -1100,7 +1101,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:*:PLAC:_MAIDENHEAD'        => new MaidenheadLocator('Maidenhead locator'),
                 'INDI:*:PLAC:_POST'              => new AddressPostalCode('Postal code'),
                 'INDI:*:PLAC:_POST:DATE'         => new DateValue(I18N::translate('Date')),
-                'INDI:*:_ASSO'                   => new XrefIndividual(I18N::translate('Associate')),
+                'INDI:*:_ASSO'                   => new XrefIndividual(I18N::translate('Associate'), ['RELA' => '0:1', 'NOTE' => '0:M', 'SOUR' > '0:M']),
                 'INDI:*:_ASSO:NOTE'              => new NoteStructure(I18N::translate('Note')),
                 'INDI:*:_ASSO:RELA'              => new RelationIsDescriptor(I18N::translate('Relationship')),
                 'INDI:*:_ASSO:SOUR'              => new XrefSource(I18N::translate('Source citation')),
@@ -1183,15 +1184,15 @@ class ElementFactory implements ElementFactoryInterface
                 '_LOC:_POST:DATE'                => new DateValue(I18N::translate('Date')),
                 '_LOC:_POST:SOUR'                => new XrefSource(I18N::translate('Source')),
                 '_LOC:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
-                '_LOC:*:SOUR:DATA'          => new SourceData(I18N::translate('Data')),
-                '_LOC:*:SOUR:DATA:DATE'     => new EntryRecordingDate(I18N::translate('Date of entry in original source')),
-                '_LOC:*:SOUR:DATA:TEXT'     => new TextFromSource(I18N::translate('Text')),
-                '_LOC:*:SOUR:EVEN'          => new EventTypeCitedFrom(I18N::translate('Event')),
-                '_LOC:*:SOUR:EVEN:ROLE'     => new RoleInEvent(I18N::translate('Role')),
-                '_LOC:*:SOUR:NOTE'          => new NoteStructure(I18N::translate('Note')),
-                '_LOC:*:SOUR:OBJE'          => new XrefMedia(I18N::translate('Media object')),
-                '_LOC:*:SOUR:PAGE'          => new WhereWithinSource(I18N::translate('Citation details')),
-                '_LOC:*:SOUR:QUAY'          => new CertaintyAssessment(I18N::translate('Quality of data')),
+                '_LOC:*:SOUR:DATA'               => new SourceData(I18N::translate('Data')),
+                '_LOC:*:SOUR:DATA:DATE'          => new EntryRecordingDate(I18N::translate('Date of entry in original source')),
+                '_LOC:*:SOUR:DATA:TEXT'          => new TextFromSource(I18N::translate('Text')),
+                '_LOC:*:SOUR:EVEN'               => new EventTypeCitedFrom(I18N::translate('Event')),
+                '_LOC:*:SOUR:EVEN:ROLE'          => new RoleInEvent(I18N::translate('Role')),
+                '_LOC:*:SOUR:NOTE'               => new NoteStructure(I18N::translate('Note')),
+                '_LOC:*:SOUR:OBJE'               => new XrefMedia(I18N::translate('Media object')),
+                '_LOC:*:SOUR:PAGE'               => new WhereWithinSource(I18N::translate('Citation details')),
+                '_LOC:*:SOUR:QUAY'               => new CertaintyAssessment(I18N::translate('Quality of data')),
             ]);
 
             // Legacy extensions
@@ -1288,7 +1289,7 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:NAME:_ADPN' => new NamePersonal(I18N::translate('Adopted name')),
                 'INDI:NAME:_AKA'  => new NamePersonal(I18N::translate('Also known as')),
                 'INDI:NAME:_AKAN' => new NamePersonal(I18N::translate('Also known as')),
-                'INDI:_EMAIL'      => new AddressEmail(I18N::translate('Email address')),
+                'INDI:_EMAIL'     => new AddressEmail(I18N::translate('Email address')),
                 'URL'             => new CustomElement(I18N::translate('URL')),
                 '_HEB'            => new CustomElement(I18N::translate('Hebrew')),
                 '_NAME'           => new CustomElement(I18N::translate('Mailing name')),
@@ -1348,15 +1349,11 @@ class ElementFactory implements ElementFactoryInterface
 
             // webtrees extensions
             $this->register([
-                'FAM:*:_ASSO'        => new XrefIndividual(I18N::translate('Associate')),
-                'FAM:*:_ASSO:RELA'   => new RelationIsDescriptor(I18N::translate('Relationship')),
                 'FAM:CHAN:_WT_USER'  => new WebtreesUser(I18N::translate('Author of last change')),
                 'FAM:_UID'           => new PafUid(I18N::translate('Unique identifier')),
-                'INDI:*:ASSO'        => new XrefIndividual(I18N::translate('Associate')),
+                'INDI:*:ASSO'        => new XrefIndividual(I18N::translate('Associate'), ['RELA' => '0:1']),
                 'INDI:*:ASSO:RELA'   => new RelationIsDescriptor(I18N::translate('Relationship')),
                 'INDI:*:PLAC:_HEB'   => new NoteStructure(I18N::translate('Place in Hebrew')),
-                'INDI:*:_ASSO'       => new XrefIndividual(I18N::translate('Associate')),
-                'INDI:*:_ASSO:RELA'  => new RelationIsDescriptor(I18N::translate('Relationship')),
                 'INDI:ADDR'          => new AddressLine(I18N::translate('Address')),
                 'INDI:CHAN:_WT_USER' => new WebtreesUser(I18N::translate('Author of last change')),
                 'INDI:_UID'          => new PafUid(I18N::translate('Unique identifier')),
