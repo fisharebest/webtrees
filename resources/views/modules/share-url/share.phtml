@@ -20,8 +20,13 @@ use Fisharebest\Webtrees\I18N;
 
 <script>
     document.getElementById('share-url-button').addEventListener('click', function () {
-        const url = document.getElementById('share-url-input').value;
-        navigator.clipboard.writeText(url);
+        const input = document.getElementById('share-url-input');
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(input.value);
+        } else {
+            input.select();
+            document.execCommand("copy");
+        }
         alert(<?= json_encode(I18N::translate('The URL was copied to the clipboard')) ?>);
     });
 </script>
