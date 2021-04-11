@@ -370,7 +370,7 @@ class WebRoutes
                 $router->get(MapDataImportPage::class, '/locations-import');
                 $router->post(MapDataImportAction::class, '/locations-import');
                 $router->get(MapDataList::class, '/map-data{/parent_id}');
-                $router->post(MapDataSave::class, '/map-data-update');
+                $router->post(MapDataSave::class, '/map-data-update{/parent_id,place_id}');
                 $router->get(MapProviderPage::class, '/map-provider');
                 $router->post(MapProviderAction::class, '/map-provider');
                 $router->post(ModuleDeleteSettings::class, '/module-delete-settings');

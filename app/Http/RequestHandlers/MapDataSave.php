@@ -43,10 +43,11 @@ class MapDataSave implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $parent_id = $request->getAttribute('parent_id');
+        $place_id  = $request->getAttribute('place_id');
+
         $params = (array) $request->getParsedBody();
 
-        $place_id  = $params['place_id'] ?? '';
-        $parent_id = $params['parent_id'] ?? null;
         $latitude  = $params['new_place_lati'] ?? '';
         $longitude = $params['new_place_long'] ?? '';
         $name      = mb_substr($params['new_place_name'] ?? '', 0, 120);
@@ -66,7 +67,7 @@ class MapDataSave implements RequestHandlerInterface
             }
         }
 
-        if ($place_id === '') {
+        if ($place_id === null) {
             DB::table('place_location')->insert([
                 'parent_id' => $parent_id,
                 'place'     => $name,
