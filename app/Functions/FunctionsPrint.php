@@ -59,6 +59,7 @@ use function strtoupper;
 use function substr;
 use function trim;
 use function uasort;
+use function var_export;
 use function view;
 
 use const PREG_SET_ORDER;
@@ -94,25 +95,29 @@ class FunctionsPrint
             $label      = I18N::translate('Shared note');
             $html       = Filter::formatText($note->getNote(), $tree);
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
+
+            $one_line_only = strip_tags($note->fullName()) === strip_tags($note->getNote());
         } else {
             // Inline note.
             $label = I18N::translate('Note');
             $html  = Filter::formatText($text, $tree);
 
-            // Only one line?  Remove block-level attributes and skip expand/collapse.
-            if (!str_contains($text, "\n")) {
-                return
-                    '<div class="fact_NOTE">' .
-                    I18N::translate(
-                        '<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>',
-                        $label,
-                        strip_tags($html, '<a><strong><em>')
-                    ) .
-                    '</div>';
-            }
+            [$first_line] = explode("\n", strip_tags($text));
+            // Use same logic as note objects
+            $first_line = Str::limit($first_line, 100, I18N::translate('…'));
 
-            [$text] = explode("\n", strip_tags($text));
-            $first_line = Str::limit($text, 50, I18N::translate('…'));
+            $one_line_only = !str_contains($text, "\n") && mb_strlen($text) <= 100;
+        }
+
+        if ($one_line_only) {
+            return
+                '<div class="fact_NOTE">' .
+                I18N::translate(
+                    '<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>',
+                    $label,
+                    $first_line
+                ) .
+                '</div>';
         }
 
         $id       = 'collapse-' . Uuid::uuid4()->toString();
