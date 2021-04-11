@@ -13,6 +13,7 @@ use Fisharebest\Webtrees\Webtrees;
  * @var string   $SMTP_ACTIVE
  * @var string   $SMTP_AUTH
  * @var string   $SMTP_AUTH_USER
+ * @var string   $SMTP_DISP_NAME
  * @var string   $SMTP_FROM_NAME
  * @var string   $SMTP_HELO
  * @var string   $SMTP_HOST
@@ -52,12 +53,26 @@ use Fisharebest\Webtrees\Webtrees;
     </div>
 
     <div class="row form-group">
-        <label for="SMTP_FROM_NAME" class="col-sm-3 col-form-label">
+        <label for="SMTP_DISP_NAME" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Sender name') ?>
         </label>
         <div class="col-sm-9">
-            <input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= e($SMTP_FROM_NAME) ?>" maxlength="255">
+            <input type="text" class="form-control" id="SMTP_DISP_NAME" name="SMTP_DISP_NAME" value="<?= e($SMTP_DISP_NAME) ?>" maxlength="255" required="required">
+            <p class="small text-muted">
+                <?= /* I18N: Help text for the “Sender name” site configuration setting */
+                I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="SMTP_FROM_NAME" class="col-sm-3 col-form-label">
+            <?= /* I18N: A configuration setting */
+            I18N::translate('Sender email') ?>
+        </label>
+        <div class="col-sm-9">
+            <input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= e($SMTP_FROM_NAME) ?>" maxlength="255" required="required">
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Sender name” site configuration setting */
                 I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
