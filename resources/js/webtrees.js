@@ -600,7 +600,11 @@
             url: this.dataset.autocompleteUrl,
             replace: function (url, uriEncodedQuery) {
               if (that.dataset.autocompleteExtra === 'SOUR') {
-                const element = that.closest('.form-group').previousElementSibling.querySelector('select');
+                let row_group = that.closest('.form-group').previousElementSibling;
+                while (row_group.querySelector('select') === null) {
+                  row_group = row_group.previousElementSibling;
+                }
+                const element = row_group.querySelector('select');
                 const extra   = element.options[element.selectedIndex].value;
                 const symbol  = (url.indexOf("?") > 0) ? '&' : '?';
                 return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery) + symbol + 'extra=' + encodeURIComponent(extra);
