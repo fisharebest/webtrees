@@ -54,24 +54,17 @@ class MediaFile
         'image/webp',
     ];
 
-    /** @var string The filename */
-    private $multimedia_file_refn = '';
+    private string $multimedia_file_refn = '';
 
-    /** @var string The file extension; jpeg, txt, mp4, etc. */
-    private $multimedia_format = '';
+    private string $multimedia_format = '';
 
-    /** @var string The type of document; newspaper, microfiche, etc. */
-    private $source_media_type = '';
-    /** @var string The filename */
+    private string $source_media_type = '';
 
-    /** @var string The name of the document */
-    private $descriptive_title = '';
+    private string $descriptive_title = '';
 
-    /** @var Media $media The media object to which this file belongs */
-    private $media;
+    private Media $media;
 
-    /** @var string */
-    private $fact_id;
+    private string $fact_id;
 
     /**
      * Create a MediaFile from raw GEDCOM data.
@@ -316,18 +309,27 @@ class MediaFile
 
         if (!$this->isExternal() || $this->fileExists($data_filesystem)) {
             try {
-                $bytes                       = $this->media()->tree()->mediaFilesystem($data_filesystem)->fileSize($this->filename());
-                $kb                          = intdiv($bytes + 1023, 1024);
-                $attributes[I18N::translate('File size')] = I18N::translate('%s KB', I18N::number($kb));
+                $bytes = $this->media()->tree()->mediaFilesystem($data_filesystem)->fileSize($this->filename());
+                $kb    = intdiv($bytes + 1023, 1024);
+                $text  = I18N::translate('%s KB', I18N::number($kb));
+
+                $attributes[I18N::translate('File size')] = $text;
             } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
                 // External/missing files have no size.
             }
 
             $filesystem = $this->media()->tree()->mediaFilesystem($data_filesystem);
             try {
-                $data                         = $filesystem->read($this->filename());
-                [$width, $height]             = getimagesizefromstring($data);
-                $attributes[I18N::translate('Image dimensions')] = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
+                $data       = $filesystem->read($this->filename());
+                $image_size = getimagesizefromstring($data);
+
+                if (is_array($image_size)) {
+                    [$width, $height] = $image_size;
+
+                    $text = I18N::translate('%1$s × %2$s pixels', I18N::number($width), I18N::number($height));
+
+                    $attributes[I18N::translate('Image dimensions')] = $text;
+                }
             } catch (FilesystemException | UnableToReadFile $ex) {
                 // Cannot read the file.
             }
