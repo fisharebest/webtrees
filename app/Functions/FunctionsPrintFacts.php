@@ -145,7 +145,7 @@ class FunctionsPrintFacts
 
         // Event of close associates
         if ($id === 'asso') {
-            $styles[] = 'wt-relation-fact collapse';
+            $styles[] = 'wt-associate-fact collapse';
         }
 
         // historical facts

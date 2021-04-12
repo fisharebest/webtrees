@@ -663,6 +663,7 @@ a:hover, a:hover .name1, a:hover .name2 {
     color: #f00;
 }
 
+.wt-associate-fact,
 .wt-relation-fact,
 .wt-historic-fact {
     opacity: 0.8;
