@@ -30,7 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
 use function filter_var;
-
 use function gethostbyaddr;
 use function gethostbyname;
 use function gethostname;
