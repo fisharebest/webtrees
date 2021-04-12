@@ -58,7 +58,7 @@ class SubmitterFactory extends AbstractGedcomRecordFactory implements SubmitterF
 
             $xref = $this->extractXref($gedcom ?? $pending, $xref);
 
-            return new Submitter($xref, $gedcom ?? '', $pending, $tree);
+            return $this->new($xref, $gedcom ?? '', $pending, $tree);
         });
     }
 
