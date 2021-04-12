@@ -315,6 +315,11 @@ parameters:
 			path: app/Http/RequestHandlers/EditRawRecordAction.php
 
 		-
+			message: "#^Parameter \\#1 \\$hostname of function gethostbyname expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/EmailPreferencesPage.php
+
+		-
 			message: "#^Parameter \\#1 \\$stream of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
@@ -850,6 +855,11 @@ parameters:
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualFactsTabModule\\:\\:historicFacts\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Module/IndividualFactsTabModule.php
+
+		-
 			message: "#^Parameter \\#1 \\$gedcom of class Fisharebest\\\\Webtrees\\\\Fact constructor expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Module/IndividualFactsTabModule.php
@@ -978,6 +988,11 @@ parameters:
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Module/ReviewChangesModule.php
+
+		-
+			message: "#^Call to an undefined method Sabre\\\\VObject\\\\Node\\:\\:add\\(\\)\\.$#"
+			count: 3
+			path: app/Module/ShareAnniversaryModule.php
 
 		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\SourcesTabModule\\:\\:\\$facts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
@@ -1523,16 +1538,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ClipboardService\\:\\:pastableFactsOfType\\(\\) has parameter \\$types with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Services/ClipboardService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\EmailService\\:\\:localDomain\\(\\) should return string but returns string\\|false\\.$#"
-			count: 1
-			path: app/Services/EmailService.php
-
-		-
-			message: "#^Parameter \\#1 \\$hostname of function gethostbyname expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Services/EmailService.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomExportService\\:\\:convertMediaPath\\(\\) should return string but returns string\\|null\\.$#"
