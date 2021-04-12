@@ -189,6 +189,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesListsAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesListsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapLinksAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapLinksPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsAction;
@@ -390,6 +392,8 @@ class WebRoutes
                 $router->post(ModulesHistoricEventsAction::class, '/historic-events');
                 $router->get(ModulesListsPage::class, '/lists');
                 $router->post(ModulesListsAction::class, '/lists');
+                $router->get(ModulesMapLinksPage::class, '/map-links');
+                $router->post(ModulesMapLinksAction::class, '/map-links');
                 $router->get(ModulesMenusPage::class, '/menus');
                 $router->post(ModulesMenusAction::class, '/menus');
                 $router->get(ModulesLanguagesPage::class, '/languages');

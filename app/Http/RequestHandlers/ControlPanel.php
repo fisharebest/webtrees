@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleShareInterface;
@@ -192,6 +193,8 @@ class ControlPanel implements RequestHandlerInterface
             'language_modules_enabled'   => $this->module_service->findByInterface(ModuleLanguageInterface::class),
             'list_modules_disabled'      => $this->module_service->findByInterface(ModuleListInterface::class, true),
             'list_modules_enabled'       => $this->module_service->findByInterface(ModuleListInterface::class),
+            'map_link_modules_disabled'  => $this->module_service->findByInterface(ModuleMapLinkInterface::class, true),
+            'map_link_modules_enabled'   => $this->module_service->findByInterface(ModuleMapLinkInterface::class),
             'menu_modules_disabled'      => $this->module_service->findByInterface(ModuleMenuInterface::class, true),
             'menu_modules_enabled'       => $this->module_service->findByInterface(ModuleMenuInterface::class),
             'report_modules_disabled'    => $this->module_service->findByInterface(ModuleReportInterface::class, true),

@@ -26,6 +26,10 @@ use Fisharebest\Webtrees\Module\DutchMonarchs;
 use Fisharebest\Webtrees\Module\DutchPrimeMinisters;
 use Fisharebest\Webtrees\Module\LocationListModule;
 use Fisharebest\Webtrees\Module\LowCountriesRulers;
+use Fisharebest\Webtrees\Module\MapLinkBingModule;
+use Fisharebest\Webtrees\Module\MapLinkGoogleModule;
+use Fisharebest\Webtrees\Module\MapLinkOpenStreetMapModule;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Fisharebest\Webtrees\Module\ShareAnniversaryModule;
 use Fisharebest\Webtrees\Module\ShareUrlModule;
@@ -259,6 +263,7 @@ class ModuleService
         ModuleHistoricEventsInterface::class,
         ModuleLanguageInterface::class,
         ModuleListInterface::class,
+        ModuleMapLinkInterface::class,
         ModuleMenuInterface::class,
         ModuleReportInterface::class,
         ModuleShareInterface::class,
@@ -427,6 +432,9 @@ class ModuleService
         'logged_in'               => LoggedInUsersModule::class,
         'login_block'             => LoginBlockModule::class,
         'low_countries_rulers'    => LowCountriesRulers::class,
+        'map-link-bing'           => MapLinkBingModule::class,
+        'map-link-google'         => MapLinkGoogleModule::class,
+        'map-link-openstreetmap'  => MapLinkOpenStreetMapModule::class,
         'marriage_report'         => MarriageReportModule::class,
         'matomo-analytics'        => MatomoAnalyticsModule::class,
         'media'                   => MediaTabModule::class,

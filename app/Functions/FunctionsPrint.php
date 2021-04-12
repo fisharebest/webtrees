@@ -29,10 +29,12 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -40,6 +42,7 @@ use Illuminate\Support\Str;
 use LogicException;
 use Ramsey\Uuid\Uuid;
 
+use function app;
 use function array_filter;
 use function array_intersect;
 use function array_merge;
@@ -57,9 +60,7 @@ use function strlen;
 use function strpos;
 use function strtoupper;
 use function substr;
-use function trim;
 use function uasort;
-use function var_export;
 use function view;
 
 use const PREG_SET_ORDER;
@@ -431,37 +432,21 @@ class FunctionsPrint
                         $html     .= ' - ' . $wt_place->fullName();
                     }
                 }
-                $map_lati = '';
-                $cts      = preg_match('/\d LATI (.*)/', $placerec, $match);
-                if ($cts > 0) {
-                    $map_lati = $match[1];
-                    $html     .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $map_lati;
-                }
-                $map_long = '';
-                $cts      = preg_match('/\d LONG (.*)/', $placerec, $match);
-                if ($cts > 0) {
-                    $map_long = $match[1];
-                    $html     .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $map_long;
-                }
-                if ($map_lati && $map_long) {
-                    $map_lati = trim(strtr($map_lati, 'NSEW,�', ' - -. ')); // S5,6789 ==> -5.6789
-                    $map_long = trim(strtr($map_long, 'NSEW,�', ' - -. ')); // E3.456� ==> 3.456
 
-                    $html .= '<a href="https://maps.google.com/maps?q=' . e($map_lati) . ',' . e($map_long) . '" rel="nofollow" target="_top" title="' . I18N::translate('Google Maps™') . '">' .
-                        view('icons/google-maps') .
-                        '<span class="sr-only">' . I18N::translate('Google Maps™') . '</span>' .
-                        '</a>';
+                $latitude  = $event->latitude();
+                $longitude = $event->longitude();
 
-                    $html .= '<a href="https://www.bing.com/maps/?lvl=15&cp=' . e($map_lati) . '~' . e($map_long) . '" rel="nofollow" target="_top" title="' . I18N::translate('Bing Maps™') . '">' .
-                        view('icons/bing-maps') .
-                        '<span class="sr-only">' . I18N::translate('Bing Maps™') . '</span>' .
-                        '</a>';
+                if ($latitude !== null && $longitude !== null) {
+                    $html .= '<br><span class="label">' . I18N::translate('Latitude') . ': </span>' . $latitude;
+                    $html .= ' <span class="label">' . I18N::translate('Longitude') . ': </span>' . $longitude;
 
-                    $html .= '<a href="https://www.openstreetmap.org/#map=15/' . e($map_lati) . '/' . e($map_long) . '" rel="nofollow" target="_top" title="' . I18N::translate('OpenStreetMap™') . '">' .
-                        view('icons/openstreetmap') .
-                        '<span class="sr-only">' . I18N::translate('OpenStreetMap™') . '</span>' .
-                        '</a>';
+                    // Links to external maps
+                    $html .= app(ModuleService::class)
+                        ->findByInterface(ModuleMapLinkInterface::class)
+                        ->map(fn (ModuleMapLinkInterface $module): string => ' ' . $module->mapLink($event))
+                        ->implode('');
                 }
+
                 if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
                     $html .= '<br>' . self::printFactNotes($tree, $placerec, 3);
                 }
