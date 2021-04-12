@@ -136,12 +136,14 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         if ($my_xref !== '' && $my_xref !== $individual->xref()) {
             $my_record = Registry::individualFactory()->make($my_xref, $individual->tree());
 
-            return new Menu(
-                I18N::translate('Relationship to me'),
-                $this->chartUrl($my_record, ['xref2' => $individual->xref()]),
-                $this->chartMenuClass(),
-                $this->chartUrlAttributes()
-            );
+            if ($my_record instanceof Individual) {
+                return new Menu(
+                    I18N::translate('Relationship to me'),
+                    $this->chartUrl($my_record, ['xref2' => $individual->xref()]),
+                    $this->chartMenuClass(),
+                    $this->chartUrlAttributes()
+                );
+            }
         }
 
         return new Menu(
