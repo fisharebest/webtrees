@@ -23,12 +23,10 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
 use Throwable;
 
 use function filter_var;
