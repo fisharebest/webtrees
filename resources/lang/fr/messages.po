@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-10 21:28+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"PO-Revision-Date: 2021-04-15 14:52+0000\n"
+"Last-Translator: Vincent Denis <vincent.denis06@gmail.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fr/>\n"
 "Language: fr\n"
@@ -4657,7 +4657,7 @@ msgstr "Date de l’émigration"
 #: app/Factories/ElementFactory.php:301 app/GedcomTag.php:677
 #: resources/xml/reports/missing_facts_report.xml:336
 msgid "Date of engagement"
-msgstr "Date de fianciailles"
+msgstr "Date de fiançailles"
 
 #: app/Factories/ElementFactory.php:279 app/Factories/ElementFactory.php:333
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:586
@@ -11298,7 +11298,7 @@ msgstr "Lieu de l’émigration"
 #: app/Factories/ElementFactory.php:302 app/GedcomTag.php:679
 #: resources/xml/reports/missing_facts_report.xml:347
 msgid "Place of engagement"
-msgstr "Lieu de fianciailles"
+msgstr "Lieu des fiançailles"
 
 #: app/Factories/ElementFactory.php:505 app/GedcomTag.php:686
 msgid "Place of event"
