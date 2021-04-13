@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-10 21:29+0000\nLast-Translator: Jonathan Jaubart <dev@jaubart.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-15 14:54+0000\nLast-Translator: Vincent Denis <vincent.denis06@gmail.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -4640,7 +4640,7 @@ msgstr "Date de l’émigration"
 #: app/Factories/ElementFactory.php:301 app/GedcomTag.php:677
 #: resources/xml/reports/missing_facts_report.xml:336
 msgid "Date of engagement"
-msgstr "Date de fianciailles"
+msgstr "Date de fiançailles"
 
 #: app/Factories/ElementFactory.php:279 app/Factories/ElementFactory.php:333
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:586
@@ -11281,7 +11281,7 @@ msgstr "Lieu de l’émigration"
 #: app/Factories/ElementFactory.php:302 app/GedcomTag.php:679
 #: resources/xml/reports/missing_facts_report.xml:347
 msgid "Place of engagement"
-msgstr "Lieu de fianciailles"
+msgstr "Lieu des fiançailles"
 
 #: app/Factories/ElementFactory.php:505 app/GedcomTag.php:686
 msgid "Place of event"
