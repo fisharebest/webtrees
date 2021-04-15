@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-07 19:59+0000\n"
+"PO-Revision-Date: 2021-04-28 07:05+0000\n"
 "Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/pt_BR/>\n"
@@ -15360,7 +15360,9 @@ msgstr "Usar SMTP para enviar mensagens"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:141
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Use “?” para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
+msgstr ""
+"Use “?” para coincidir um único caracter e “*” para coincidir zero um mais "
+"caracteres."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:341 login.php:455
