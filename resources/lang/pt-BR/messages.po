@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-07 19:59+0000\nLast-Translator: Alan Benazzi <alan.benazzi@gmail.com>\nLanguage-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/webtrees/webtrees/pt_BR/>\nLanguage: pt-BR\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-28 07:05+0000\nLast-Translator: Alan Benazzi <alan.benazzi@gmail.com>\nLanguage-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/webtrees/webtrees/pt_BR/>\nLanguage: pt-BR\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -16088,7 +16088,7 @@ msgstr "Usar SMTP para enviar mensagens"
 
 #: app/Module/FixSearchAndReplace.php:103
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Use “?” para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
+msgstr "Use “?” para coincidir um único caracter e “*” para coincidir zero um mais caracteres."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
