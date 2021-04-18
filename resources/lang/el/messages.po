@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-15 11:30+0000\n"
+"PO-Revision-Date: 2021-04-27 01:06+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/el/>\n"
@@ -5111,11 +5111,11 @@ msgstr "Θάνατος γονέα"
 
 #: app/Module/IndividualFactsTabModule.php:793
 msgid "Death of a paternal grandfather"
-msgstr "Θάνατος μητρικού παππού"
+msgstr "Θάνατος πατρικού παππού"
 
 #: app/Module/IndividualFactsTabModule.php:794
 msgid "Death of a paternal grandmother"
-msgstr "Θάνατος μητρικής γιαγιάς"
+msgstr "Θάνατος πατρικής γιαγιάς"
 
 #: app/Module/IndividualFactsTabModule.php:463
 #: resources/views/admin/trees-preferences.phtml:507
