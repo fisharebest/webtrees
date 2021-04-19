@@ -31,6 +31,8 @@ class CensusOfSlovakia extends Census implements CensusPlaceInterface
     {
         return [
             new CensusOfSlovakia1869(),
+            new CensusOfSlovakia1930(),
+            new CensusOfSlovakia1940(),
         ];
     }
 
