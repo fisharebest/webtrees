@@ -102,7 +102,9 @@ class IndividualPage implements RequestHandlerInterface
         $individual = Auth::checkIndividualAccess($individual);
 
         // Redirect to correct xref/slug
-        if ($individual->xref() !== $xref || $request->getAttribute('slug') !== $individual->slug()) {
+        $slug = Registry::slugFactory()->make($individual);
+
+        if ($individual->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($individual->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

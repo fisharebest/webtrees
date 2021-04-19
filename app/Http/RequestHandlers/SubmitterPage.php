@@ -77,7 +77,9 @@ class SubmitterPage implements RequestHandlerInterface
         $submitter = Auth::checkSubmitterAccess($submitter, false);
 
         // Redirect to correct xref/slug
-        if ($submitter->xref() !== $xref || $request->getAttribute('slug') !== $submitter->slug()) {
+        $slug = Registry::slugFactory()->make($submitter);
+
+        if ($submitter->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($submitter->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

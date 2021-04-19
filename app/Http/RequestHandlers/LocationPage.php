@@ -77,7 +77,9 @@ class LocationPage implements RequestHandlerInterface
         $location = Auth::checkLocationAccess($location, false);
 
         // Redirect to correct xref/slug
-        if ($location->xref() !== $xref || $request->getAttribute('slug') !== $location->slug()) {
+        $slug = Registry::slugFactory()->make($location);
+
+        if ($location->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($location->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
