@@ -35,7 +35,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
     protected const MALE_COUSINS = [
         ['', ''],
         ['bratranec', '%s bratranca'],
-        ['druhostupňový bratranca', '%s druhostupňový bratranca'],
+        ['druhostupňový bratranec', '%s druhostupňový bratranca'],
         ['bratranec z 3. kolena', '%s bratranca z 3. kolena'],
         ['bratranec zo 4. kolena', '%s bratranca zo 4. kolena'],
         ['bratranec z 5. kolena', '%s bratranca z 5. kolena'],
