@@ -35,7 +35,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
     protected const MALE_COUSINS = [
         ['', ''],
         ['bratranec', '%s bratranca'],
-        ['druhostupňový bratranec', '%s druhostupňový bratranca'],
+        ['druhostupňový bratranec', '%s druhostupňového bratranca'],
         ['bratranec z 3. kolena', '%s bratranca z 3. kolena'],
         ['bratranec zo 4. kolena', '%s bratranca zo 4. kolena'],
         ['bratranec z 5. kolena', '%s bratranca z 5. kolena'],
@@ -56,7 +56,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
     protected const FEMALE_COUSINS = [
         ['', ''],
         ['sesternica', '%s sesternice'],
-        ['druhostupňový sesternica', '%s druhostupňový sesternice'],
+        ['druhostupňová sesternica', '%s druhostupňovej sesternice'],
         ['sesternica z 3. kolena', '%s sesternice z 3. kolena'],
         ['sesternica zo 4. kolena', '%s sesternice zo 4. kolena'],
         ['sesternica z 5. kolena', '%s sesternice z 5. kolena'],
@@ -104,22 +104,22 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             // Children
             Relationship::fixed('syn', '%s syna')->son(),
             Relationship::fixed('dcéra', '%s dcéry')->daughter(),
-            Relationship::fixed('dcéra', '%s dcéry')->child(),
+            Relationship::fixed('dieťa', '%s dieťaťa')->child(),
             // Siblings
             Relationship::fixed('brat', '%s brata')->brother(),
             Relationship::fixed('sestra', '%s sestry')->sister(),
             Relationship::fixed('súrodenec', '%s súrodenca')->sibling(),
             // Divorced partners
-            Relationship::fixed('exmanželka', '%s exmanželka')->divorced()->partner()->female(),
+            Relationship::fixed('exmanželka', '%s exmanželky')->divorced()->partner()->female(),
             Relationship::fixed('exmanžel', '%s exmanžela')->divorced()->partner()->male(),
-            Relationship::fixed('exmanžel/manželka', '%s exmanžel/manželka')->divorced()->partner(),
+            Relationship::fixed('exmanžel/manželka', '%s exmanžela/manželky')->divorced()->partner(),
             // Engaged partners
-            Relationship::fixed('snúbenec', '%s snúbenec')->engaged()->partner()->female(),
-            Relationship::fixed('snúbenica', '%s snúbenica')->engaged()->partner()->male(),
+            Relationship::fixed('snúbenec', '%s snúbence')->engaged()->partner()->female(),
+            Relationship::fixed('snúbenica', '%s snúbenice')->engaged()->partner()->male(),
             // Married parters
             Relationship::fixed('manželka', '%s manželky')->wife(),
             Relationship::fixed('manžel', '%s manžela')->husband(),
-            Relationship::fixed('manžel/manželka', '%s manžel/manželka')->spouse(),
+            Relationship::fixed('manžel/manželka', '%s manžela/manželky')->spouse(),
             Relationship::fixed('partnerka', '%s partnerky')->partner()->female(),
             // Unmarried partners
             Relationship::fixed('partner', '%s partnera')->partner(),
@@ -127,7 +127,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             Relationship::fixed('tesť', '%s tesťa')->wife()->father(),
             Relationship::fixed('testiná', '%s testinej')->wife()->mother(),
             Relationship::fixed('svokor', '%s svokra')->spouse()->father(),
-            Relationship::fixed('svokora', '%s svokry')->spouse()->mother(),
+            Relationship::fixed('svokra', '%s svokry')->spouse()->mother(),
             Relationship::fixed('zať', '%s zaťa')->child()->husband(),
             Relationship::fixed('nevesta', '%s nevesty')->child()->wife(),
             Relationship::fixed('švagor', '%s švagra')->spouse()->brother(),
@@ -137,7 +137,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             // Half-siblings
             Relationship::fixed('nevlastný brat', '%s nevlastného brata')->parent()->son(),
             Relationship::fixed('nevlastná sestra', '%s nevlastnej sestry')->parent()->daughter(),
-            Relationship::fixed('nevlastná súrodenec', '%s nevlastnej súrodenca')->parent()->child(),
+            Relationship::fixed('nevlastný súrodenec', '%s nevlastného súrodenca')->parent()->child(),
             // Grandparents
             Relationship::fixed('starý otec', '%s starého otca')->parent()->father(),
             Relationship::fixed('stará matka', '%s starej matky')->parent()->mother(),
@@ -160,7 +160,7 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             Relationship::fixed('pravnúča', '%s pravnúčaťa')->child()->child()->child(),
             // Descendants
             Relationship::dynamic(fn (int $n) => $pra($n - 1, 'pravnuk', '%s pravnuka'))->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'pravnučka', '%s prastarej matky'))->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'pravnučka', '%s pravnučky'))->ancestor()->female(),
             Relationship::dynamic(fn (int $n) => $pra($n - 1, 'pravnúča', '%s pravnúčaťa'))->ancestor(),
             // Aunts and uncles
             Relationship::fixed('ujo', '%s uja')->mother()->brother(),
