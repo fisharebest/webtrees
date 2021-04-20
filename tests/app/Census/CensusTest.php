@@ -31,7 +31,195 @@ class CensusTest extends TestCase
      *
      * @return void
      */
-    public function testCensusPlaces(): void
+    public function testCensusPlacesCzech(): void
+    {
+        $censuses = Census::censusPlaces('cs');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesDanish(): void
+    {
+        $censuses = Census::censusPlaces('da');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesGerman(): void
+    {
+        $censuses = Census::censusPlaces('de');
+
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesAustralianEnglish(): void
+    {
+        $censuses = Census::censusPlaces('en-AU');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesBritishEnglish(): void
+    {
+        $censuses = Census::censusPlaces('en-GB');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesUSEnglish(): void
+    {
+        $censuses = Census::censusPlaces('en-US');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesFrench(): void
+    {
+        $censuses = Census::censusPlaces('fr');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesCanadianFrench(): void
+    {
+        $censuses = Census::censusPlaces('fr-CA');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesSlovak(): void
+    {
+        $censuses = Census::censusPlaces('sk');
+
+        self::assertCount(9, $censuses);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[0]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\Census
+     *
+     * @return void
+     */
+    public function testCensusPlacesDefault(): void
     {
         $censuses = Census::censusPlaces('XX');
 

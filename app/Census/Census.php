@@ -45,6 +45,32 @@ class Census
                     new CensusOfWales(),
                 ];
 
+            case 'da':
+                return [
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfEngland(),
+                    new CensusOfFrance(),
+                    new CensusOfScotland(),
+                    new CensusOfSlovakia(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
+
+            case 'de':
+                return [
+                    new CensusOfDeutschland(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfEngland(),
+                    new CensusOfFrance(),
+                    new CensusOfScotland(),
+                    new CensusOfSlovakia(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
+
             case 'en-AU':
             case 'en-GB':
                 return [
@@ -80,32 +106,6 @@ class Census
                     new CensusOfDenmark(),
                     new CensusOfDeutschland(),
                     new CensusOfEngland(),
-                    new CensusOfScotland(),
-                    new CensusOfSlovakia(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfWales(),
-                ];
-
-            case 'da':
-                return [
-                    new CensusOfDenmark(),
-                    new CensusOfDeutschland(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfEngland(),
-                    new CensusOfFrance(),
-                    new CensusOfScotland(),
-                    new CensusOfSlovakia(),
-                    new CensusOfUnitedStates(),
-                    new CensusOfWales(),
-                ];
-
-            case 'de':
-                return [
-                    new CensusOfDeutschland(),
-                    new CensusOfCzechRepublic(),
-                    new CensusOfDenmark(),
-                    new CensusOfEngland(),
-                    new CensusOfFrance(),
                     new CensusOfScotland(),
                     new CensusOfSlovakia(),
                     new CensusOfUnitedStates(),
