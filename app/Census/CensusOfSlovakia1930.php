@@ -29,7 +29,7 @@ class CensusOfSlovakia1930 extends CensusOfSlovakia implements CensusInterface
      */
     public function censusDate(): string
     {
-        return '1 DEC 1930';
+        return '01 DEC 1930';
     }
 
     /**
