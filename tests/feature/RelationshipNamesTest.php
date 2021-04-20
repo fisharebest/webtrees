@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
  * @covers \Fisharebest\Webtrees\Relationship
  * @covers \Fisharebest\Webtrees\Services\RelationshipService
  * @covers \Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain
- * @covers \Fisharebest\Webtrees\Module\LanguageModuleTrait
+ * @covers \Fisharebest\Webtrees\Module\ModuleLanguageTrait
  */
 class RelationshipNamesTest extends TestCase
 {

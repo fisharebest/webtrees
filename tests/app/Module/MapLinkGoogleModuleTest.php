@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * @covers \Fisharebest\Webtrees\Module\MapLinkBingModule
- * @covers \Fisharebest\Webtrees\Module\MapLinkTrait
+ * @covers \Fisharebest\Webtrees\Module\ModuleMapLinkTrait
  */
 class MapLinkGoogleModuleTest extends TestCase
 {

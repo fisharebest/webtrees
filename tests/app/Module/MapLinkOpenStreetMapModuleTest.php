@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\TestCase;
 
 /**
  * @covers \Fisharebest\Webtrees\Module\MapLinkOpenStreetMapModule
- * @covers \Fisharebest\Webtrees\Module\MapLinkTrait
+ * @covers \Fisharebest\Webtrees\Module\ModuleMapLinkTrait
  */
 class MapLinkOpenStreetMapModuleTest extends TestCase
 {
