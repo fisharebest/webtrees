@@ -407,7 +407,7 @@ class Relationship
                 $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
                 $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
-                return Date::compare($date1, $date2) < 0;
+                return Date::compare($date1, $date2) > 0;
             }
 
             return false;
@@ -491,7 +491,7 @@ class Relationship
             }
 
 
-            $nodes      = array_slice($nodes, 2 * $n);
+            $nodes      = array_slice($nodes, 2 * (2 * $n + 1));
             $patterns   = [];
             $captures[] = $n;
 
@@ -543,7 +543,7 @@ class Relationship
                 $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
                 $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
-                return Date::compare($date1, $date2) > 0;
+                return Date::compare($date1, $date2) < 0;
             }
 
             return false;
