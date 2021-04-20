@@ -172,8 +172,8 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             Relationship::dynamic(fn (int $n) => $pra($n - 2, 'prastrýko', '%s prastrýka'))->ancestor()->brother(),
             Relationship::dynamic(fn (int $n) => $pra($n - 2, 'prateta', '%s pratety'))->ancestor()->sister(),
             // Nieces and nephews
-            Relationship::fixed('neter', '%s netere')->sibling()->son(),
-            Relationship::fixed('synovec', '%s synovca')->sibling()->daughter(),
+            Relationship::fixed('synovec', '%s synovca')->sibling()->son(),
+            Relationship::fixed('neter', '%s netere')->sibling()->daughter(),
             // Great-nieces and great-nephews
             Relationship::fixed('prasynovec', '%s prasynovca')->sibling()->child()->son(),
             Relationship::fixed('praneter', '%s pranetere')->sibling()->child()->daughter(),
