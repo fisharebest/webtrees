@@ -66,11 +66,11 @@ class RelationshipNamesTest extends TestCase
         //                      |                  |                                                       |
         //                     i1m===f1m==========i2f===f2d===i6m=====f13m===i31m===f14d===i32f           i35m===f17
         //                            |                  |                           |                            |
-        //                        +---+---+          +---+---+                       |                            |
-        //                        |   |   |          |   |   |                       |                            |
-        //          i10f===f3e===i3m i4f i5u       i7ma i8f i9u===f6===i15u         i33f                         i36f
+        //                        +---+---+          +---+---+                 +-----+                            |
+        //                        |   |   |          |   |   |                 |     |                            |
+        //          i10f===f3e===i3m i4f i5u       i7ma i8f i9u===f6===i15u   i33f  i39mo                        i36f
         //
-        // Individual suffixes - m(ale), f(emale), u(nknown), a(dopted)
+        // Individual suffixes - m(ale), f(emale), u(nknown), a(dopted), o(foster)
         // Family suffixes - m(arried), d(ivorced), e(ngaged)
         //
         $tree = $this->createMock(Tree::class);
@@ -119,6 +119,7 @@ class RelationshipNamesTest extends TestCase
         $i36f = new Individual('i36f', "0 @i36f@ INDI\n1 SEX F\n1 FAMC @f17@", null, $tree);
         $i37f = new Individual('i37f', "0 @i37f@ INDI\n1 SEX F\n1 FAMC @f8@", null, $tree);
         $i38f = new Individual('i38f', "0 @i38f@ INDI\n1 SEX F\n1 FAMC @f7@", null, $tree);
+        $i39mo = new Individual('i39mo', "0 @i39o@ INDI\n1 SEX M\n1 FAMC @f14d@\n2 PEDI foster", null, $tree);
 
         $individual_factory->method('make')->will($this->returnValueMap([
             'i1m'  => $i1m,
@@ -159,6 +160,7 @@ class RelationshipNamesTest extends TestCase
             'i36f' => $i36f,
             'i37f' => $i37f,
             'i38f' => $i38f,
+            'i39mo' => $i39mo
         ]));
 
         $f1m  = new Family('f1m', "0 @f1m@ FAM\n1 MARR Y\n1 HUSB @i1m@\n1 WIFE @i2f@\n1 CHIL @i3m@\n1 CHIL @i4f@\n1 CHIL @i5u@", null, $tree);
@@ -174,10 +176,10 @@ class RelationshipNamesTest extends TestCase
         $f11m = new Family('f11m', "0 @f11m@ FAM\n1 MARR Y\n1 HUSB @i24m@\n1 WIFE @i25f@\n1 CHIL @i26f@", null, $tree);
         $f12  = new Family('f12', "0 @f12@ FAM\n1 HUSB @i27m@\n1 WIFE @i26f@\n1 CHIL @i28u@\n1 CHIL @i29m@", null, $tree);
         $f13m = new Family('f13m', "0 @f13m@ FAM\n1 MARR Y\n1 HUSB @i6m@\n1 WIFE @i31m@", null, $tree);
-        $f14d = new Family('f14d', "0 @f14d@ FAM\n1 DIV Y\n1 HUSB @i31m@\n1 WIFE @i32f@\n1 CHIL @i33f@\n", null, $tree);
-        $f15  = new Family('f15', "0 @f15@ FAM\n1 HUSB @i29m@\n1 CHIL @i34f@\n", null, $tree);
-        $f16  = new Family('f16', "0 @f16@ FAM\n1 WIFE @i34f@\n1 CHIL @i35m@\n", null, $tree);
-        $f17  = new Family('f17', "0 @f17@ FAM\n1 HUSB @i35m@\n1 CHIL @i36f@\n", null, $tree);
+        $f14d = new Family('f14d', "0 @f14d@ FAM\n1 DIV Y\n1 HUSB @i31m@\n1 WIFE @i32f@\n1 CHIL @i33f@\n1 CHIL @i39mo@", null, $tree);
+        $f15  = new Family('f15', "0 @f15@ FAM\n1 HUSB @i29m@\n1 CHIL @i34f@", null, $tree);
+        $f16  = new Family('f16', "0 @f16@ FAM\n1 WIFE @i34f@\n1 CHIL @i35m@", null, $tree);
+        $f17  = new Family('f17', "0 @f17@ FAM\n1 HUSB @i35m@\n1 CHIL @i36f@", null, $tree);
 
         $family_factory->method('make')->will($this->returnValueMap([
             'f1m'  => $f1m,
@@ -196,7 +198,7 @@ class RelationshipNamesTest extends TestCase
             'f14d' => $f14d,
             'f15'  => $f15,
             'f16'  => $f16,
-            'f17'  => $f17,
+            'f17'  => $f17
         ]));
 
         ///////////////////////////////////////////////////////////////////////
@@ -278,38 +280,34 @@ class RelationshipNamesTest extends TestCase
             self::assertRelationships('enfant', 'père', [$i1m, $f1m, $i5u], $fr);
             self::assertRelationships('grand frère', 'petite sœur', [$i4f, $f1m, $i3m], $fr);
             self::assertRelationships('petit frère/sœur', 'grand frère', [$i3m, $f1m, $i5u], $fr);
-            self::assertRelationships('frère', 'sœur', [$i8f, $f2d, $i7ma], $fr);
-            self::assertRelationship('sœur', [$i7ma, $f2d, $i8f], $fr);
-            self::assertRelationship('frère/sœur', [$i7ma, $f2d, $i9u], $fr);
-            self::assertRelationship('mère adoptive', [$i7ma, $f2d, $i2f], $fr);
-            self::assertRelationship('père adoptif', [$i7ma, $f2d, $i6m], $fr);
-            self::assertRelationship('fils adoptif', [$i6m, $f2d, $i7ma], $fr);
-            self::assertRelationship('beau-père', [$i8f, $f2d, $i2f, $f1m, $i1m], $fr);
-            self::assertRelationship('belle-fille', [$i1m, $f1m, $i2f, $f2d, $i8f], $fr);
-            self::assertRelationship('demi-frère', [$i8f, $f2d, $i2f, $f1m, $i3m], $fr);
+            self::assertRelationships('frère', 'sœur', [$i38f, $f7, $i11m], $fr);
+            self::assertRelationships('frère/sœur', 'sœur', [$i8f, $f2d, $i9u], $fr);
+            self::assertRelationships('mère adoptive', 'fils adoptif', [$i7ma, $f2d, $i2f], $fr);
+            self::assertRelationships('père adoptif', 'fils adoptif', [$i7ma, $f2d, $i6m], $fr);
+            self::assertRelationships('sœur adoptive', 'frère adoptif', [$i7ma, $f2d, $i8f], $fr);
+            self::assertRelationships('mère d’accueil', 'fils accueilli', [$i39mo, $f14d, $i32f], $fr);
+            self::assertRelationships('père d’accueil', 'fils accueilli', [$i39mo, $f14d, $i31m], $fr);
+            self::assertRelationships('sœur d’accueil', 'frère accueilli', [$i39mo, $f14d, $i33f], $fr);
+            self::assertRelationships('beau-père', 'belle-fille', [$i8f, $f2d, $i2f, $f1m, $i1m], $fr);
+            self::assertRelationships('demi-frère', 'demi-frère/sœur', [$i9u, $f2d, $i2f, $f1m, $i3m], $fr);
             self::assertRelationship('quasi-sœur', [$i8f, $f2d, $i6m, $f13m, $i31m, $f14d, $i33f], $fr);
-            self::assertRelationship('beau-père', [$i8f, $f2d, $i6m, $f13m, $i31m], $fr);
-            self::assertRelationship('belle-mère', [$i2f, $f1m, $i1m, $f4m, $i12f], $fr);
-            self::assertRelationship('belle-fille', [$i12f, $f4m, $i1m, $f1m, $i2f], $fr);
-            // Dynamic relationships
+            self::assertRelationships('beau-père', 'gendre', [$i1m, $f1m, $i2f, $f5m, $i13m], $fr);
+            self::assertRelationships('belle-mère', 'bru', [$i2f, $f1m, $i1m, $f4m, $i12f], $fr);
             self::assertRelationships('grand-père paternel', 'petit-fils', [$i3m, $f1m, $i1m, $f4m, $i11m], $fr);
             self::assertRelationships('grand-mère paternelle', 'petite-fille', [$i4f, $f1m, $i1m, $f4m, $i12f], $fr);
             self::assertRelationships('grand-père maternel', 'petit-fils', [$i3m, $f1m, $i2f, $f5m, $i13m], $fr);
             self::assertRelationships('grand-mère maternelle', 'petite-fille', [$i4f, $f1m, $i2f, $f5m, $i14f], $fr);
             self::assertRelationships('arrière-grand-père paternel', 'arrière-petit-fils', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i16m], $fr);
             self::assertRelationships('arrière-grand-mère paternelle', 'arrière-petite-fille', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f], $fr);
-            self::assertRelationships('arrière-arrière-grand-père paternel', 'arrière-arrière-petit-fils', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m], $fr);
-            self::assertRelationships('arrière-arrière-grand-mère paternelle', 'arrière-arrière-petite-fille', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i19f], $fr);
-            self::assertRelationships('arrière-(x3)-grand-père paternel', 'arrière-(x3)-petit-fils', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i20m], $fr);
-            self::assertRelationships('arrière-(x3)-grand-mère paternelle', 'arrière-(x3)-petite-fille', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f], $fr);
-            self::assertRelationships('arrière-(x4)-grand-père paternel', 'arrière-(x4)-petit-fils', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i22m], $fr);
-            self::assertRelationships('arrière-(x4)-grand-mère paternelle', 'arrière-(x4)-petite-fille', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i23f], $fr);
+            self::assertRelationships('trisaïeul paternel', 'petit-fils au 3<sup>e</sup> degré', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m], $fr);
+            self::assertRelationships('trisaïeule paternelle', 'petite-fille au 3<sup>e</sup> degré', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i19f], $fr);
+            self::assertRelationships('grand-père paternel au 4<sup>e</sup> degré', 'petit-fils au 4<sup>e</sup> degré', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i20m], $fr);
+            self::assertRelationships('grand-mère paternelle au 4<sup>e</sup> degré', 'petite-fille au 4<sup>e</sup> degré', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f], $fr);
             self::assertRelationships('oncle', 'neveu', [$i18m, $f9, $i21f, $f10, $i24m], $fr);
-            self::assertRelationships('grand-oncle', 'petit-neveu', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr);
+            self::assertRelationships('grand-oncle', 'petite-nièce', [$i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr);
             self::assertRelationships('arrière-grand-oncle', 'arrière-petit-neveu', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr);
-            self::assertRelationships('neveu', 'oncle', [$i24m, $f10, $i21f, $f9, $i18m], $fr);
-            self::assertRelationships('petite-nièce', 'grand-oncle', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $fr);
-            self::assertRelationships('arrière-petit-neveu', 'arrière-grand-oncle', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m], $fr);
+            self::assertRelationships('grand-oncle au 3<sup>e</sup> degré', 'petit-neveu au 3<sup>e</sup> degré', [$i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr);
+            self::assertRelationships('grand-oncle au 4<sup>e</sup> degré', 'petite-nièce au 4<sup>e</sup> degré', [$i4f, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr);
             self::assertRelationships('cousine germaine', 'cousin germain', [$i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $fr);
             self::assertRelationships('cousin issu de germain', 'cousin issu de germain', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $fr);
             self::assertRelationships('cousine au 3<sup>e</sup> degré', 'cousin au 3<sup>e</sup> degré', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $fr);
@@ -319,6 +317,10 @@ class RelationshipNamesTest extends TestCase
             self::assertRelationships('cousine du 3<sup>e</sup> au 2<sup>e</sup> degré', 'cousine du 2<sup>e</sup> au 3<sup>e</sup> degré', [$i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $fr);
             // Compound relationships
             self::assertRelationships('ex-époux de l’épouse', 'époux de l’ex-épouse', [$i1m, $f1m, $i2f, $f2d, $i6m], $fr);
+            self::assertRelationship('fiancée du petit-neveu au 4<sup>e</sup> degré', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m, $f4m, $i1m, $f1m, $i3m, $f3e, $i10f], $fr);
+            self::assertRelationship('épouse de l’arrière-petit-neveu', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m, $f4m, $i12f], $fr);
+            self::assertRelationship('conjoint de la petite-nièce', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i16m], $fr);
+            self::assertRelationship('conjointe du neveu', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i19f], $fr);
         }
 
         ///////////////////////////////////////////////////////////////////////
