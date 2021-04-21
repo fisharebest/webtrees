@@ -92,5 +92,4 @@ class CensusColumnFullNameTest extends TestCase
 
         self::assertSame('Jane Smith', $column->generate($individual, $individual));
     }
-
 }

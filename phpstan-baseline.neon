@@ -36,29 +36,19 @@ parameters:
 			path: app/Fact.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Factories/SlugFactory.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Factories/SlugFactory.php
+
+		-
 			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Filter.php
-
-		-
-			message: "#^Array \\(array\\<string\\>\\) does not accept string\\|null\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:childFamilies\\(\\)\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:spouseFamilies\\(\\)\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\Functions\\:\\:getRelationshipNameFromPath\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Functions/Functions.php
 
 		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|null given\\.$#"
@@ -165,11 +155,6 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Cannot call method transliterate\\(\\) on Transliterator\\|null\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:insertMissingSubtags\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/GedcomRecord.php
@@ -186,16 +171,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
-			count: 3
+			count: 2
 			path: app/GedcomRecord.php
 
 		-
 			message: "#^Parameter \\#2 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateFact\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/GedcomRecord.php
 
@@ -546,6 +526,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method compare\\(\\) on Collator\\|null\\.$#"
+			count: 1
+			path: app/I18N.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\I18N\\:\\:language\\(\\) should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface but returns Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\|null\\.$#"
 			count: 1
 			path: app/I18N.php
 
@@ -960,6 +945,16 @@ parameters:
 			path: app/Module/RecentChangesModule.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
+			count: 1
+			path: app/Module/RelationshipsChartModule.php
+
+		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: app/Module/RelationshipsChartModule.php
+
+		-
 			message: "#^Cannot call method gedcom\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 2
 			path: app/Module/RelationshipsChartModule.php
@@ -1028,6 +1023,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\TimelineChartModule\\:\\:chart\\(\\) has parameter \\$xrefs with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/TimelineChartModule.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\TopSurnamesModule\\:\\:surnameCountSort\\(\\) should return int but returns float\\|int\\.$#"
+			count: 1
+			path: app/Module/TopSurnamesModule.php
 
 		-
 			message: "#^Cannot access property \\$body on object\\|null\\.$#"
@@ -1603,6 +1603,51 @@ parameters:
 			message: "#^Cannot call method addDay\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
 			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:childFamilies\\(\\)\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:sex\\(\\)\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:spouseFamilies\\(\\)\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:legacyNameAlgorithm\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:matchRelationships\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Relationship\\> but returns array\\<array\\<string\\>\\|Fisharebest\\\\Webtrees\\\\Relationship\\>\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Offset 0 does not exist on array\\(\\?0 \\=\\> string, 1 \\=\\> string\\)\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:reflexivePronoun\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Parameter \\#2 \\$person1 of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:legacyNameAlgorithm\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual\\|null, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
+
+		-
+			message: "#^Parameter \\#3 \\$person2 of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:legacyNameAlgorithm\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual\\|null, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
+			count: 1
+			path: app/Services/RelationshipService.php
 
 		-
 			message: "#^Binary operation \"\\*\" between 365 and 0\\|string results in an error\\.$#"

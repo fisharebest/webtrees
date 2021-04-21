@@ -57,7 +57,7 @@ class Relationship
     // Generates a name from the matched relationship.
     private Closure $callback;
 
-    // List of rules that need to match.
+    /** @var array<Closure> List of rules that need to match */
     private array $matchers;
 
     /**
@@ -81,7 +81,7 @@ class Relationship
      */
     public static function fixed(string $nominative, string $genitive): Relationship
     {
-        return new static(fn () => [$nominative, $genitive]);
+        return new self(fn () => [$nominative, $genitive]);
     }
 
     /**
@@ -93,7 +93,7 @@ class Relationship
      */
     public static function dynamic(Closure $callback): Relationship
     {
-        return new static($callback);
+        return new self($callback);
     }
 
     /**
@@ -102,7 +102,7 @@ class Relationship
      * @param array<Individual|Family> $nodes
      * @param array<string>            $patterns
      *
-     * @return array [nominative, genitive] or null
+     * @return array<string>|null [nominative, genitive] or null
      */
     public function match(array $nodes, array $patterns): ?array
     {

@@ -100,9 +100,8 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
      * - un `(arrière-)grand-cousin` est l'enfant d'un `(arrière-)grand-oncle`/`grand-tante` (= cousin du 1er au N-ème degré)
      * - un `(arrière-)petit-cousin` est un `(arrière-)petit-neveu`/`petite-nièce` d'un parent (= cousin du Ner au 1er degré)
      *
-     * @return array
-     */
-    public function relationships(): array
+     * @return array<Relationship>
+     */    public function relationships(): array
     {
         $genitive = fn (string $s, string $genitive_link): array => [$s, '%s ' . $genitive_link . $s];
 
