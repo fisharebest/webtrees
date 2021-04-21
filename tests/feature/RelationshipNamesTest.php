@@ -52,18 +52,18 @@ class RelationshipNamesTest extends TestCase
         //                                                      +-----+-----+
         //                                                      |           |
         //                                        i20m===f9===i21f         i24m===f11m===i25f
-        //                                            |                        |
-        //                               i19f===f8===i18m                     i26f===f12===i27m
-        //                                       |                                    |
-        //                                   +---+---+                            +---+---+
-        //                                   |       |                            |       |
-        //                     i16m===f7===i17f     i30m                         i28u    i29m===f15
-        //                            |                                                          |
-        //              i12f===f4m===i11m  i13m===f5m===i14f                                    i34f
-        //                      |                  |
-        //                     i1m===f1m==========i2f===f2d===i6m=====f13m===i31m===f14d===i32f
-        //                            |                  |                           |
-        //                        +---+---+          +---+---+                       |
+        //                                            |                            |
+        //                               i19f===f8===i18m                         i26f===f12===i27m
+        //                                       |                                        |
+        //                                   +---+---+                                +---+---+
+        //                                   |       |                                |       |
+        //                     i16m===f7===i17f     i30m                             i28u    i29m===f15
+        //                            |                                                              |
+        //              i12f===f4m===i11m  i13m===f5m===i14f                                        i34f===f16
+        //                      |                  |                                                        |
+        //                     i1m===f1m==========i2f===f2d===i6m=====f13m===i31m===f14d===i32f            i35m===f17
+        //                            |                  |                           |                             |
+        //                        +---+---+          +---+---+                       |                            i36f
         //                        |   |   |          |   |   |                       |
         //          i10f===f3e===i3m i4f i5u       i7ma i8f i9u===f6===i15u         i33f
         //
@@ -112,6 +112,8 @@ class RelationshipNamesTest extends TestCase
         $i32f = new Individual('i32f', "0 @i32f@ INDI\n1 SEX F\n1 FAMS @f14d@", null, $tree);
         $i33f = new Individual('i33f', "0 @i33f@ INDI\n1 SEX F\n1 FAMC @f14d@", null, $tree);
         $i34f = new Individual('i34f', "0 @i34f@ INDI\n1 SEX F\n1 FAMC @f15@", null, $tree);
+        $i35m = new Individual('i35m', "0 @i35m@ INDI\n1 SEX M\n1 FAMS @f17@\n1 FAMC @f16@", null, $tree);
+        $i36f = new Individual('i36f', "0 @i36f@ INDI\n1 SEX F\n1 FAMC @fF17@", null, $tree);
 
         $individual_factory->method('make')->will($this->returnValueMap([
             'i1m'  => $i1m,
@@ -148,6 +150,8 @@ class RelationshipNamesTest extends TestCase
             'i32f' => $i32f,
             'i33f' => $i33f,
             'i34f' => $i34f,
+            'i35m' => $i35m,
+            'i36f' => $i36f,
         ]));
 
         $f1m  = new Family('f1m', "0 @f1m@ FAM\n1 MARR Y\n1 HUSB @i1m@\n1 WIFE @i2f@\n1 CHIL @i3m@\n1 CHIL @i4f@\n1 CHIL @i5u@", null, $tree);
@@ -165,6 +169,8 @@ class RelationshipNamesTest extends TestCase
         $f13m = new Family('f13m', "0 @f13m@ FAM\n1 MARR Y\n1 HUSB @i6m@\n1 WIFE @i31m@", null, $tree);
         $f14d = new Family('f14d', "0 @f14d@ FAM\n1 DIV Y\n1 HUSB @i31m@\n1 WIFE @i32f@\n1 CHIL @i33f@\n", null, $tree);
         $f15  = new Family('f15', "0 @f15@ FAM\n1 HUSB @i29m@\n1 CHIL @i34f@\n", null, $tree);
+        $f16  = new Family('f16', "0 @f16@ FAM\n1 WIFE @i34f@\n1 CHIL @i35m@\n", null, $tree);
+        $f17  = new Family('f17', "0 @f17@ FAM\n1 HUSB @i35m@\n1 CHIL @i36f@\n", null, $tree);
 
         $family_factory->method('make')->will($this->returnValueMap([
             'f1m'  => $f1m,
@@ -182,9 +188,9 @@ class RelationshipNamesTest extends TestCase
             'f13m' => $f13m,
             'f14d' => $f14d,
             'f15'  => $f15,
+            'f16'  => $f16,
+            'f17'  => $f17,
         ]));
-
-        $service = new RelationshipService();
 
         ///////////////////////////////////////////////////////////////////////
         // ENGLISH
@@ -233,14 +239,22 @@ class RelationshipNamesTest extends TestCase
             self::assertRelationship('nephew', [$i24m, $f10, $i21f, $f9, $i18m], $en);
             self::assertRelationship('great-niece', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $en);
             self::assertRelationship('great-great-nephew', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m], $en);
-            self::assertRelationship('first cousin', [$i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en);
-            self::assertRelationship('second cousin', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en);
-            self::assertRelationship('first cousin once removed ascending', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en);
-            self::assertRelationship('first cousin once removed descending', [$i26f, $f11m, $i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $en);
-            self::assertRelationship('second cousin once removed ascending', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en);
+            self::assertRelationships('first cousin', 'first cousin', [$i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en);
+            self::assertRelationships('second cousin', 'second cousin', [$i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en);
+            self::assertRelationships('first cousin once removed ascending', 'first cousin once removed descending', [$i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en);
+            self::assertRelationships('third cousin', 'third cousin', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $en);
+            self::assertRelationships('second cousin once removed ascending', 'second cousin once removed descending', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en);
+            self::assertRelationships('first cousin twice removed ascending', 'first cousin twice removed descending', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en);
+            self::assertRelationships('fourth cousin', 'fourth cousin', [$i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f, $f16, $i35m], $en);
+            self::assertRelationships('third cousin once removed ascending', 'third cousin once removed descending', [$i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $en);
+            self::assertRelationships('second cousin twice removed ascending', 'second cousin twice removed descending', [$i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en);
             // Compound relationships
             self::assertRelationship('wife’s ex-husband', [$i1m, $f1m, $i2f, $f2d, $i6m], $en);
         }
+
+        self::assertRelationships('first cousin thrice removed ascending', 'first cousin thrice removed descending', [$i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en_au);
+        self::assertRelationships('first cousin thrice removed ascending', 'first cousin thrice removed descending', [$i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en_gb);
+        self::assertRelationships('first cousin three times removed ascending', 'first cousin three times removed descending', [$i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en_us);
 
         ///////////////////////////////////////////////////////////////////////
         // FRENCH
