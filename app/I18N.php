@@ -325,7 +325,7 @@ class I18N
                 }, $translations);
 
             self::$language = $module_service
-                ->findByInterface(ModuleLanguageInterface::Class)
+                ->findByInterface(ModuleLanguageInterface::class)
                 ->first(fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === $code);
         }
 

@@ -114,7 +114,7 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             fn (int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array =>
                 $great($n - 1, ($n > 0 ? $first_level : '' ) . $suffix, $n === 0 ? $genitive_none : $genitive_first);
 
-        $symmetricCousin = fn(int $n, string $sex): array  => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
+        $symmetricCousin = fn (int $n, string $sex): array  => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
             $sex === 'F' ? 'cousine au ' . $n . '<sup>e</sup> degré' : 'cousin au ' . $n . '<sup>e</sup> degré',
             $sex === 'F'  ? 'de la ' : 'du '
         );
@@ -232,10 +232,10 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'petit-', 'neveu', 'du ', 'du '))->sibling()->descendant()->male(),
             Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'petit-', 'neveu par alliance', 'du ', 'du '))->married()->spouse()->sibling()->descendant()->male(),
             // Cousins (based on canon law)
-            Relationship::dynamic(fn(int $n) => $symmetricCousin($n, 'F'))->symmetricCousin()->female(),
-            Relationship::dynamic(fn(int $n) => $symmetricCousin($n, 'M'))->symmetricCousin()->male(),
-            Relationship::dynamic(fn(int $up, int $down) => $asymmetricCousin($up, $down, 'F'))->cousin()->female(),
-            Relationship::dynamic(fn(int $up, int $down) => $asymmetricCousin($up, $down, 'M'))->cousin()->male(),
+            Relationship::dynamic(fn (int $n) => $symmetricCousin($n, 'F'))->symmetricCousin()->female(),
+            Relationship::dynamic(fn (int $n) => $symmetricCousin($n, 'M'))->symmetricCousin()->male(),
+            Relationship::dynamic(fn (int $up, int $down) => $asymmetricCousin($up, $down, 'F'))->cousin()->female(),
+            Relationship::dynamic(fn (int $up, int $down) => $asymmetricCousin($up, $down, 'M'))->cousin()->male(),
 
         ];
     }
