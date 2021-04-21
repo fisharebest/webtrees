@@ -197,8 +197,8 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             // Cousins (based on canon law)
             Relationship::dynamic(fn(int $n) => $symmetricCousin($n, 'F'))->symmetricCousin()->female(),
             Relationship::dynamic(fn(int $n) => $symmetricCousin($n, 'M'))->symmetricCousin()->male(),
-            Relationship::dynamic(fn(int $up, int $down) => $asymmetricCousin($up, $down, 'F'))->asymmetricCousin()->female(),
-            Relationship::dynamic(fn(int $up, int $down) => $asymmetricCousin($up, $down, 'M'))->asymmetricCousin()->male(),
+            Relationship::dynamic(fn(int $up, int $down) => $asymmetricCousin($up, $down, 'F'))->cousin()->female(),
+            Relationship::dynamic(fn(int $up, int $down) => $asymmetricCousin($up, $down, 'M'))->cousin()->male(),
 
         ];
     }

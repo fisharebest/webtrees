@@ -21,9 +21,14 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Module\LanguageEnglishAustralia;
 use Fisharebest\Webtrees\Module\LanguageEnglishGreatBritain;
+use Fisharebest\Webtrees\Module\LanguageEnglishUnitedStates;
 use Fisharebest\Webtrees\Module\LanguageFrench;
+use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\RelationshipService;
+
+use function array_reverse;
 
 /**
  * Test the user functions
@@ -142,7 +147,7 @@ class RelationshipNamesTest extends TestCase
             'i31m' => $i31m,
             'i32f' => $i32f,
             'i33f' => $i33f,
-            'i34f' => $i34f
+            'i34f' => $i34f,
         ]));
 
         $f1m  = new Family('f1m', "0 @f1m@ FAM\n1 MARR Y\n1 HUSB @i1m@\n1 WIFE @i2f@\n1 CHIL @i3m@\n1 CHIL @i4f@\n1 CHIL @i5u@", null, $tree);
@@ -176,126 +181,164 @@ class RelationshipNamesTest extends TestCase
             'f12'  => $f12,
             'f13m' => $f13m,
             'f14d' => $f14d,
-            'f15'  => $f15
+            'f15'  => $f15,
         ]));
 
         $service = new RelationshipService();
 
+        ///////////////////////////////////////////////////////////////////////
         // ENGLISH
+        ///////////////////////////////////////////////////////////////////////
+
+        $en_au = new LanguageEnglishAustralia();
         $en_gb = new LanguageEnglishGreatBritain();
-        // Static relationships
-        self::assertSame('wife', $service->nameFromPath([$i1m, $f1m, $i2f], $en_gb));
-        self::assertSame('husband', $service->nameFromPath([$i2f, $f1m, $i1m], $en_gb));
-        self::assertSame('partner', $service->nameFromPath([$i9u, $f6, $i15u], $en_gb));
-        self::assertSame('ex-husband', $service->nameFromPath([$i2f, $f2d, $i6m], $en_gb));
-        self::assertSame('ex-wife', $service->nameFromPath([$i6m, $f2d, $i2f], $en_gb));
-        self::assertSame('fiancé', $service->nameFromPath([$i10f, $f3e, $i3m], $en_gb));
-        self::assertSame('fiancée', $service->nameFromPath([$i3m, $f3e, $i10f], $en_gb));
-        self::assertSame('son', $service->nameFromPath([$i1m, $f1m, $i3m], $en_gb));
-        self::assertSame('daughter', $service->nameFromPath([$i1m, $f1m, $i4f], $en_gb));
-        self::assertSame('child', $service->nameFromPath([$i1m, $f1m, $i5u], $en_gb));
-        self::assertSame('elder brother', $service->nameFromPath([$i4f, $f1m, $i3m], $en_gb));
-        self::assertSame('younger sister', $service->nameFromPath([$i3m, $f1m, $i4f], $en_gb));
-        self::assertSame('younger sibling', $service->nameFromPath([$i3m, $f1m, $i5u], $en_gb));
-        self::assertSame('brother', $service->nameFromPath([$i8f, $f2d, $i7ma], $en_gb));
-        self::assertSame('sister', $service->nameFromPath([$i7ma, $f2d, $i8f], $en_gb));
-        self::assertSame('sibling', $service->nameFromPath([$i7ma, $f2d, $i9u], $en_gb));
-        self::assertSame('adoptive-mother', $service->nameFromPath([$i7ma, $f2d, $i2f], $en_gb));
-        self::assertSame('adoptive-father', $service->nameFromPath([$i7ma, $f2d, $i6m], $en_gb));
-        self::assertSame('adopted-son', $service->nameFromPath([$i6m, $f2d, $i7ma], $en_gb));
-        self::assertSame('stepfather', $service->nameFromPath([$i8f, $f2d, $i2f, $f1m, $i1m], $en_gb));
-        self::assertSame('stepdaughter', $service->nameFromPath([$i1m, $f1m, $i2f, $f2d, $i8f], $en_gb));
-        self::assertSame('half-brother', $service->nameFromPath([$i8f, $f2d, $i2f, $f1m, $i3m], $en_gb));
-        self::assertSame('stepsister', $service->nameFromPath([$i8f, $f2d, $i6m, $f13m, $i31m, $f14d, $i33f], $en_gb));
-        self::assertSame('stepfather', $service->nameFromPath([$i8f, $f2d, $i6m, $f13m, $i31m], $en_gb));
-        self::assertSame('mother-in-law', $service->nameFromPath([$i2f, $f1m, $i1m, $f4m, $i12f], $en_gb));
-        self::assertSame('daughter-in-law', $service->nameFromPath([$i12f, $f4m, $i1m, $f1m, $i2f], $en_gb));
-        self::assertSame('paternal-grandfather', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m], $en_gb));
-        self::assertSame('paternal-grandmother', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i12f], $en_gb));
-        self::assertSame('maternal-grandfather', $service->nameFromPath([$i3m, $f1m, $i2f, $f5m, $i13m], $en_gb));
-        self::assertSame('maternal-grandmother', $service->nameFromPath([$i3m, $f1m, $i2f, $f5m, $i14f], $en_gb));
-        // Dynamic relationships
-        self::assertSame('paternal great-grandfather', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i16m], $en_gb));
-        self::assertSame('paternal great-grandmother', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f], $en_gb));
-        self::assertSame('paternal great-great-grandfather', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m], $en_gb));
-        self::assertSame('paternal great-great-grandmother', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i19f], $en_gb));
-        self::assertSame('paternal great-great-great-grandfather', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i20m], $en_gb));
-        self::assertSame('paternal great-great-great-grandmother', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f], $en_gb));
-        self::assertSame('paternal great ×4 grandfather', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i22m], $en_gb));
-        self::assertSame('paternal great ×4 grandmother', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i23f], $en_gb));
-        self::assertSame('uncle', $service->nameFromPath([$i18m, $f9, $i21f, $f10, $i24m], $en_gb));
-        self::assertSame('great-uncle', $service->nameFromPath([$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m], $en_gb));
-        self::assertSame('great-great-uncle', $service->nameFromPath([$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $en_gb));
-        self::assertSame('nephew', $service->nameFromPath([$i24m, $f10, $i21f, $f9, $i18m], $en_gb));
-        self::assertSame('great-niece', $service->nameFromPath([$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $en_gb));
-        self::assertSame('great-great-nephew', $service->nameFromPath([$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m], $en_gb));
-        self::assertSame('first cousin', $service->nameFromPath([$i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en_gb));
-        self::assertSame('second cousin', $service->nameFromPath([$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en_gb));
-        self::assertSame('first cousin once removed ascending', $service->nameFromPath([$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en_gb));
-        self::assertSame('first cousin once removed descending', $service->nameFromPath([$i26f, $f11m, $i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $en_gb));
-        self::assertSame('second cousin once removed ascending', $service->nameFromPath([ $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en_gb));
-        // Compound relationships
-        self::assertSame('wife’s ex-husband', $service->nameFromPath([$i1m, $f1m, $i2f, $f2d, $i6m], $en_gb));
+        $en_us = new LanguageEnglishUnitedStates();
 
+        foreach ([$en_us, $en_gb, $en_au] as $en) {
+            self::assertRelationship('himself', [$i3m], $en);
+            self::assertRelationship('herself', [$i4f], $en);
+            self::assertRelationship('themself', [$i5u], $en);
+            self::assertRelationships('wife', 'husband', [$i1m, $f1m, $i2f], $en);
+            self::assertRelationships('partner', 'partner', [$i9u, $f6, $i15u], $en);
+            self::assertRelationships('ex-husband', 'ex-wife', [$i2f, $f2d, $i6m], $en);
+            self::assertRelationships('fiancé', 'fiancée', [$i10f, $f3e, $i3m], $en);
+            self::assertRelationships('son', 'father', [$i1m, $f1m, $i3m], $en);
+            self::assertRelationships('daughter', 'mother', [$i2f, $f1m, $i4f], $en);
+            self::assertRelationships('child', 'father', [$i1m, $f1m, $i5u], $en);
+            self::assertRelationships('elder brother', 'younger sister', [$i4f, $f1m, $i3m], $en);
+            self::assertRelationships('younger sibling', 'elder brother', [$i3m, $f1m, $i5u], $en);
+            self::assertRelationships('brother', 'sister', [$i8f, $f2d, $i7ma], $en);
+            self::assertRelationships('sibling', 'brother', [$i7ma, $f2d, $i9u], $en);
+            self::assertRelationships('adoptive-mother', 'adopted-son', [$i7ma, $f2d, $i2f], $en);
+            self::assertRelationships('stepfather', 'stepchild', [$i9u, $f2d, $i2f, $f1m, $i1m], $en);
+            self::assertRelationships('stepdaughter', 'stepmother', [$i2f, $f1m, $i2f, $f2d, $i8f], $en);
+            self::assertRelationships('stepsister', 'stepsibling', [$i9u, $f2d, $i6m, $f13m, $i31m, $f14d, $i33f], $en);
+            self::assertRelationships('half-brother', 'half-sister', [$i8f, $f2d, $i2f, $f1m, $i3m], $en);
+            self::assertRelationships('mother-in-law', 'daughter-in-law', [$i2f, $f1m, $i1m, $f4m, $i12f], $en);
+            self::assertRelationships('paternal-grandfather', 'grandson', [$i3m, $f1m, $i1m, $f4m, $i11m], $en);
+            self::assertRelationships('paternal-grandmother', 'granddaughter', [$i4f, $f1m, $i1m, $f4m, $i12f], $en);
+            self::assertRelationships('maternal-grandfather', 'grandson', [$i3m, $f1m, $i2f, $f5m, $i13m], $en);
+            self::assertRelationships('maternal-grandmother', 'grandchild', [$i5u, $f1m, $i2f, $f5m, $i14f], $en);
+            self::assertRelationship('paternal great-grandfather', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i16m], $en);
+            self::assertRelationship('paternal great-grandmother', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f], $en);
+            self::assertRelationship('paternal great-great-grandfather', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m], $en);
+            self::assertRelationship('paternal great-great-grandmother', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i19f], $en);
+            self::assertRelationship('paternal great-great-great-grandfather', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i20m], $en);
+            self::assertRelationship('paternal great-great-great-grandmother', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f], $en);
+            self::assertRelationship('paternal great ×4 grandfather', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i22m], $en);
+            self::assertRelationship('paternal great ×4 grandmother', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i23f], $en);
+            self::assertRelationship('uncle', [$i18m, $f9, $i21f, $f10, $i24m], $en);
+            self::assertRelationship('great-uncle', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m], $en);
+            self::assertRelationship('great-great-uncle', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $en);
+            self::assertRelationship('nephew', [$i24m, $f10, $i21f, $f9, $i18m], $en);
+            self::assertRelationship('great-niece', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $en);
+            self::assertRelationship('great-great-nephew', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m], $en);
+            self::assertRelationship('first cousin', [$i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en);
+            self::assertRelationship('second cousin', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en);
+            self::assertRelationship('first cousin once removed ascending', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $en);
+            self::assertRelationship('first cousin once removed descending', [$i26f, $f11m, $i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $en);
+            self::assertRelationship('second cousin once removed ascending', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $en);
+            // Compound relationships
+            self::assertRelationship('wife’s ex-husband', [$i1m, $f1m, $i2f, $f2d, $i6m], $en);
+        }
+
+        ///////////////////////////////////////////////////////////////////////
         // FRENCH
-        $fr = new LanguageFrench();
+        ///////////////////////////////////////////////////////////////////////
 
-        // Static relationships
-        self::assertSame('épouse', $service->nameFromPath([$i1m, $f1m, $i2f], $fr));
-        self::assertSame('époux', $service->nameFromPath([$i2f, $f1m, $i1m], $fr));
-        self::assertSame('conjoint', $service->nameFromPath([$i9u, $f6, $i15u], $fr));
-        self::assertSame('ex-époux', $service->nameFromPath([$i2f, $f2d, $i6m], $fr));
-        self::assertSame('ex-épouse', $service->nameFromPath([$i6m, $f2d, $i2f], $fr));
-        self::assertSame('fiancé', $service->nameFromPath([$i10f, $f3e, $i3m], $fr));
-        self::assertSame('fiancée', $service->nameFromPath([$i3m, $f3e, $i10f], $fr));
-        self::assertSame('fils', $service->nameFromPath([$i1m, $f1m, $i3m], $fr));
-        self::assertSame('fille', $service->nameFromPath([$i1m, $f1m, $i4f], $fr));
-        self::assertSame('enfant', $service->nameFromPath([$i1m, $f1m, $i5u], $fr));
-        self::assertSame('grand frère', $service->nameFromPath([$i4f, $f1m, $i3m], $fr));
-        self::assertSame('petite sœur', $service->nameFromPath([$i3m, $f1m, $i4f], $fr));
-        self::assertSame('petit frère/sœur', $service->nameFromPath([$i3m, $f1m, $i5u], $fr));
-        self::assertSame('frère', $service->nameFromPath([$i8f, $f2d, $i7ma], $fr));
-        self::assertSame('sœur', $service->nameFromPath([$i7ma, $f2d, $i8f], $fr));
-        self::assertSame('frère/sœur', $service->nameFromPath([$i7ma, $f2d, $i9u], $fr));
-        self::assertSame('mère adoptive', $service->nameFromPath([$i7ma, $f2d, $i2f], $fr));
-        self::assertSame('père adoptif', $service->nameFromPath([$i7ma, $f2d, $i6m], $fr));
-        self::assertSame('fils adoptif', $service->nameFromPath([$i6m, $f2d, $i7ma], $fr));
-        self::assertSame('beau-père', $service->nameFromPath([$i8f, $f2d, $i2f, $f1m, $i1m], $fr));
-        self::assertSame('belle-fille', $service->nameFromPath([$i1m, $f1m, $i2f, $f2d, $i8f], $fr));
-        self::assertSame('demi-frère', $service->nameFromPath([$i8f, $f2d, $i2f, $f1m, $i3m], $fr));
-        self::assertSame('quasi-sœur', $service->nameFromPath([$i8f, $f2d, $i6m, $f13m, $i31m, $f14d, $i33f], $fr));
-        self::assertSame('beau-père', $service->nameFromPath([$i8f, $f2d, $i6m, $f13m, $i31m], $fr));
-        self::assertSame('belle-mère', $service->nameFromPath([$i2f, $f1m, $i1m, $f4m, $i12f], $fr));
-        self::assertSame('belle-fille', $service->nameFromPath([$i12f, $f4m, $i1m, $f1m, $i2f], $fr));
-        // Dynamic relationships
-        self::assertSame('grand-père paternel', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m], $fr));
-        self::assertSame('grand-mère paternelle', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i12f], $fr));
-        self::assertSame('grand-père maternel', $service->nameFromPath([$i3m, $f1m, $i2f, $f5m, $i13m], $fr));
-        self::assertSame('grand-mère maternelle', $service->nameFromPath([$i3m, $f1m, $i2f, $f5m, $i14f], $fr));
-        self::assertSame('arrière-grand-père paternel', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i16m], $fr));
-        self::assertSame('arrière-grand-mère paternelle', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f], $fr));
-        self::assertSame('arrière-arrière-grand-père paternel', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m], $fr));
-        self::assertSame('arrière-arrière-grand-mère paternelle', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i19f], $fr));
-        self::assertSame('arrière-(x3)-grand-père paternel', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i20m], $fr));
-        self::assertSame('arrière-(x3)-grand-mère paternelle', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f], $fr));
-        self::assertSame('arrière-(x4)-grand-père paternel', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i22m], $fr));
-        self::assertSame('arrière-(x4)-grand-mère paternelle', $service->nameFromPath([$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i23f], $fr));
-        self::assertSame('oncle', $service->nameFromPath([$i18m, $f9, $i21f, $f10, $i24m], $fr));
-        self::assertSame('grand-oncle', $service->nameFromPath([$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr));
-        self::assertSame('arrière-grand-oncle', $service->nameFromPath([$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr));
-        self::assertSame('neveu', $service->nameFromPath([$i24m, $f10, $i21f, $f9, $i18m], $fr));
-        self::assertSame('petite-nièce', $service->nameFromPath([$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $fr));
-        self::assertSame('arrière-petit-neveu', $service->nameFromPath([$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m], $fr));
-        self::assertSame('cousine germaine', $service->nameFromPath([$i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $fr));
-        self::assertSame('cousin issu de germain', $service->nameFromPath([$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $fr));
-        self::assertSame('cousine au 3<sup>e</sup> degré', $service->nameFromPath([$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $fr));
-        self::assertSame('grand-cousine', $service->nameFromPath([$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $fr));
-        self::assertSame('petit-cousin', $service->nameFromPath([$i26f, $f11m, $i24m, $f10, $i21f, $f9, $i18m, $f8, $i30m], $fr));
-        self::assertSame('cousin du 2<sup>e</sup> au 3<sup>e</sup> degré', $service->nameFromPath([ $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $fr));
-        self::assertSame('cousine du 3<sup>e</sup> au 2<sup>e</sup> degré', $service->nameFromPath([ $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $fr));
-        // Compound relationships
-        self::assertSame('ex-époux de l’épouse', $service->nameFromPath([$i1m, $f1m, $i2f, $f2d, $i6m], $fr));
+        $fr_fr = new LanguageFrench();
+        $fr_ca = new LanguageFrench();
 
+        foreach ([$fr_fr, $fr_ca] as $fr) {
+            // Static relationships
+            self::assertRelationship('épouse', [$i1m, $f1m, $i2f], $fr);
+            self::assertRelationship('époux', [$i2f, $f1m, $i1m], $fr);
+            self::assertRelationship('conjoint', [$i9u, $f6, $i15u], $fr);
+            self::assertRelationship('ex-époux', [$i2f, $f2d, $i6m], $fr);
+            self::assertRelationship('ex-épouse', [$i6m, $f2d, $i2f], $fr);
+            self::assertRelationship('fiancé', [$i10f, $f3e, $i3m], $fr);
+            self::assertRelationship('fiancée', [$i3m, $f3e, $i10f], $fr);
+            self::assertRelationship('fils', [$i1m, $f1m, $i3m], $fr);
+            self::assertRelationship('fille', [$i1m, $f1m, $i4f], $fr);
+            self::assertRelationship('enfant', [$i1m, $f1m, $i5u], $fr);
+            self::assertRelationship('grand frère', [$i4f, $f1m, $i3m], $fr);
+            self::assertRelationship('petite sœur', [$i3m, $f1m, $i4f], $fr);
+            self::assertRelationship('petit frère/sœur', [$i3m, $f1m, $i5u], $fr);
+            self::assertRelationship('frère', [$i8f, $f2d, $i7ma], $fr);
+            self::assertRelationship('sœur', [$i7ma, $f2d, $i8f], $fr);
+            self::assertRelationship('frère/sœur', [$i7ma, $f2d, $i9u], $fr);
+            self::assertRelationship('mère adoptive', [$i7ma, $f2d, $i2f], $fr);
+            self::assertRelationship('père adoptif', [$i7ma, $f2d, $i6m], $fr);
+            self::assertRelationship('fils adoptif', [$i6m, $f2d, $i7ma], $fr);
+            self::assertRelationship('beau-père', [$i8f, $f2d, $i2f, $f1m, $i1m], $fr);
+            self::assertRelationship('belle-fille', [$i1m, $f1m, $i2f, $f2d, $i8f], $fr);
+            self::assertRelationship('demi-frère', [$i8f, $f2d, $i2f, $f1m, $i3m], $fr);
+            self::assertRelationship('quasi-sœur', [$i8f, $f2d, $i6m, $f13m, $i31m, $f14d, $i33f], $fr);
+            self::assertRelationship('beau-père', [$i8f, $f2d, $i6m, $f13m, $i31m], $fr);
+            self::assertRelationship('belle-mère', [$i2f, $f1m, $i1m, $f4m, $i12f], $fr);
+            self::assertRelationship('belle-fille', [$i12f, $f4m, $i1m, $f1m, $i2f], $fr);
+            // Dynamic relationships
+            self::assertRelationship('grand-père paternel', [$i3m, $f1m, $i1m, $f4m, $i11m], $fr);
+            self::assertRelationship('grand-mère paternelle', [$i3m, $f1m, $i1m, $f4m, $i12f], $fr);
+            self::assertRelationship('grand-père maternel', [$i3m, $f1m, $i2f, $f5m, $i13m], $fr);
+            self::assertRelationship('grand-mère maternelle', [$i3m, $f1m, $i2f, $f5m, $i14f], $fr);
+            self::assertRelationship('arrière-grand-père paternel', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i16m], $fr);
+            self::assertRelationship('arrière-grand-mère paternelle', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f], $fr);
+            self::assertRelationship('arrière-arrière-grand-père paternel', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m], $fr);
+            self::assertRelationship('arrière-arrière-grand-mère paternelle', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i19f], $fr);
+            self::assertRelationship('arrière-(x3)-grand-père paternel', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i20m], $fr);
+            self::assertRelationship('arrière-(x3)-grand-mère paternelle', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f], $fr);
+            self::assertRelationship('arrière-(x4)-grand-père paternel', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i22m], $fr);
+            self::assertRelationship('arrière-(x4)-grand-mère paternelle', [$i3m, $f1m, $i1m, $f4m, $i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i23f], $fr);
+            self::assertRelationship('oncle', [$i18m, $f9, $i21f, $f10, $i24m], $fr);
+            self::assertRelationship('grand-oncle', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr);
+            self::assertRelationship('arrière-grand-oncle', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m], $fr);
+            self::assertRelationship('neveu', [$i24m, $f10, $i21f, $f9, $i18m], $fr);
+            self::assertRelationship('petite-nièce', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f], $fr);
+            self::assertRelationship('arrière-petit-neveu', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m], $fr);
+            self::assertRelationship('cousine germaine', [$i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $fr);
+            self::assertRelationship('cousin issu de germain', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $fr);
+            self::assertRelationship('cousine au 3<sup>e</sup> degré', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $fr);
+            self::assertRelationship('grand-cousine', [$i30m, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $fr);
+            self::assertRelationship('petit-cousin', [$i26f, $f11m, $i24m, $f10, $i21f, $f9, $i18m, $f8, $i30m], $fr);
+            self::assertRelationship('cousin du 2<sup>e</sup> au 3<sup>e</sup> degré', [$i11m, $f7, $i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m], $fr);
+            self::assertRelationship('cousine du 3<sup>e</sup> au 2<sup>e</sup> degré', [$i17f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f, $f12, $i29m, $f15, $i34f], $fr);
+            // Compound relationships
+            self::assertRelationship('ex-époux de l’épouse', [$i1m, $f1m, $i2f, $f2d, $i6m], $fr);
+        }
+
+        ///////////////////////////////////////////////////////////////////////
         // SLOVAK
+        ///////////////////////////////////////////////////////////////////////
+    }
+
+    /**
+     * @param string                  $expected
+     * @param array                   $nodes
+     * @param ModuleLanguageInterface $language
+     */
+    private static function assertRelationship(string $expected, array $nodes, ModuleLanguageInterface $language): void
+    {
+        $service = new RelationshipService();
+        $actual  = $service->nameFromPath($nodes, $language);
+        $path    = implode('-', array_map(fn (GedcomRecord $record): string => $record->xref(), $nodes));
+        $english = $service->nameFromPath($nodes, new LanguageEnglishUnitedStates());
+        $message = 'Language: ' . $language->title() . PHP_EOL . 'Path: ' . $path . ' (' . $english . ')';
+
+        self::assertSame($expected, $actual, $message);
+    }
+
+    /**
+     * Test a relationship name in both directions
+     *
+     * @param string                  $fwd
+     * @param string                  $rev
+     * @param array                   $nodes
+     * @param ModuleLanguageInterface $language
+     */
+    private static function assertRelationships(string $fwd, string $rev, array $nodes, ModuleLanguageInterface $language): void
+    {
+        self::assertRelationship($fwd, $nodes, $language);
+        self::assertRelationship($rev, array_reverse($nodes), $language);
     }
 }

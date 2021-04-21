@@ -181,7 +181,7 @@ class Relationship
      *
      * @return Relationship
      */
-    public function asymmetricCousin(): Relationship
+    public function cousin(): Relationship
     {
         return $this->ancestor()->sibling()->descendant();
     }
