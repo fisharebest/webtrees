@@ -403,14 +403,10 @@ class Relationship
     public function older(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            if (count($nodes) > 2) {
-                $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-                $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
-                return Date::compare($date1, $date2) > 0;
-            }
-
-            return false;
+            return Date::compare($date1, $date2) > 0;
         };
 
         return $this;
@@ -507,19 +503,15 @@ class Relationship
     public function twin(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            if (count($nodes) > 2) {
-                $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-                $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
-                return
-                    $date1->isOK() &&
-                    $date2->isOK() &&
-                    abs($date1->julianDay() - $date2->julianDay()) < 2 &&
-                    $date1->minimumDate()->day > 0 &&
-                    $date2->minimumDate()->day > 0;
-            }
-
-            return false;
+            return
+                $date1->isOK() &&
+                $date2->isOK() &&
+                abs($date1->julianDay() - $date2->julianDay()) < 2 &&
+                $date1->minimumDate()->day > 0 &&
+                $date2->minimumDate()->day > 0;
         };
 
         return $this;
@@ -539,14 +531,10 @@ class Relationship
     public function younger(): Relationship
     {
         $this->matchers[] = static function (array $nodes): bool {
-            if (count($nodes) > 2) {
-                $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
-                $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date1 = $nodes[0]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
+            $date2 = $nodes[2]->facts(['BIRT'], false, Auth::PRIV_HIDE)->map(fn (Fact $fact): Date => $fact->date())->first() ?? new Date('');
 
-                return Date::compare($date1, $date2) < 0;
-            }
-
-            return false;
+            return Date::compare($date1, $date2) < 0;
         };
 
         return $this;

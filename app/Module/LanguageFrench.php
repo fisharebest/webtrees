@@ -64,6 +64,44 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
         return new LocaleFr();
     }
 
+    /**
+     * Pour les traducteurs français, certaines configurations peuvent avoir plusieurs traduction françaises possibles,
+     * ou aucune. Voici les choix qui ont été faits (mais complètement ouvert à discussion):
+     *
+     * - je n'ai aucune intention de rentrer dans le débat de l'écriture inclusive, mais malheureusement un choix doit
+     *   être fait: lorsque nécessaire dans les choix des articles ou accords, je m'en suis tenu à la recommandation de
+     *   l'Académie Française d'utiliser la forme non marquée (et donc le masculin) pour le genre neutre.
+     * - dans le cas de frère/sœur jumeau, j'évite le problème en utiliseant le substantif `jumeau` lorsque le sexe
+     *   n'est pas connu, alors que j'utilise la structure `frère jumeau`/`sœur jum elle` lorsque le sexe est connu.
+     * - `conjoint` a été choisi pour un couple non marié (`époux`/`épouse` lorsque les conjoints sont mariés).
+     *   Une alternative est `partenaire`, mais `conjoint` est le terme déjà utilisé dans les traductions françaises.
+     * - la notion de `foster` (qui peut traduire plusieurs réalités différentes en français) a été traduite dans le
+     *   cadre de la `famille d'accueil`. Les suggestions sont les bienvenues.
+     * - La situation des enfants dans les familles recomposées a été traduites:
+     * - `frère`/`sœur` pour les enfants dont les deux parents sont les mêmes
+     * - `demi-frère`/`demi-sœur` pour les enfants qui ont un parent en commun
+     * - `quasi-frère`/`quasi-sœur` pour les enfants qui ne partagent aucun parent en commun, mais dont les parents
+     *   sont en couple
+     * - la notion d'âge entre frères/sœurs a été traduite par `grand frère`/`petit frère`, plutôt que des variants sur
+     *   `frère aîné`/`frère cadet` ou `frère plus âgé`/`frère plus jeune`
+     * - De manière arbitraire, au delà de deux `arrière-`, la forme est raccourcie par `arrière-(xN)-` avec N décrivant
+     *   le nombre de degré. Techniquement, en français, il n'existe pas de forme raccourcie, mais je ne pense pas que
+     *   ce soit une bonne idée de multiplier les `arrière-`. On pourrait utiliser les termes `quadrisaïeul` /
+     *   `quinquisaïeul`  /`sextaïeul` / `septaïeul` /... mais ils me semblent assez peu usités.
+     * - Pour les cousins, c'est la description selon le droit canon qui a été choisie (principalement car elle donne
+     *   une meilleure visibilité de la distance à l'ancêtre commun que la description en droit civil), donc:
+     * - l'enfant d'un oncle/tante est un `cousin germain`/`cousine germaine` (= cousins au 1er degré)
+     * - les enfants de cousins germains sont des `cousins issus de germain` (= cousins au 2e degré)
+     * - pour les enfants des cousins issus de germains, et ainsi de suite, la relation est décrite suivant le nombre
+     *   de degré séparant les cousins de l'ancêtre commun:
+     * - en cas de symétrie des chemins, ils sont dits `cousins au N-ème degré`
+     * - en cas d'asymétrie des chemins, ils sont dit  `cousins du N-ème au M-ème degré`
+     * - de plus, les notions de `grand-cousin` et `petit-cousin` ont été implémentées comme suit:
+     * - un `(arrière-)grand-cousin` est l'enfant d'un `(arrière-)grand-oncle`/`grand-tante` (= cousin du 1er au N-ème degré)
+     * - un `(arrière-)petit-cousin` est un `(arrière-)petit-neveu`/`petite-nièce` d'un parent (= cousin du Ner au 1er degré)
+     *
+     * @return array
+     */
     public function relationships(): array
     {
         $genitive = fn (string $s, string $genitive_link): array => [$s, '%s ' . $genitive_link . $s];
