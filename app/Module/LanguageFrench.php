@@ -121,7 +121,7 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
         );
 
         $asymmetricCousin =
-            function (int $up, int $down, string $sex) use ($symmetricCousin, $compoundgreat, $genitive): array {
+            static function (int $up, int $down, string $sex) use ($symmetricCousin, $compoundgreat, $genitive): array {
                 if ($up === $down) {
                     return $symmetricCousin($up, $sex);
                 }
