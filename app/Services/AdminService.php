@@ -119,6 +119,7 @@ class AdminService
             ->groupBy(['s_name'])
             ->having(new Expression('COUNT(s_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(s_id) AS xrefs')])
+            ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Source {
@@ -139,6 +140,7 @@ class AdminService
             ->having(new Expression('COUNT(DISTINCT d_gid)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(DISTINCT d_gid ORDER BY d_gid) AS xrefs')])
             ->distinct()
+            ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Individual {
@@ -153,6 +155,7 @@ class AdminService
             ->groupBy([new Expression('GREATEST(f_husb, f_wife)')])
             ->having(new Expression('COUNT(f_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(f_id) AS xrefs')])
+            ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Family {
@@ -167,6 +170,7 @@ class AdminService
             ->groupBy(['descriptive_title'])
             ->having(new Expression('COUNT(m_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(m_id) AS xrefs')])
+            ->orderBy('xrefs')
             ->pluck('xrefs')
             ->map(static function (string $xrefs) use ($tree): array {
                 return array_map(static function (string $xref) use ($tree): Media {

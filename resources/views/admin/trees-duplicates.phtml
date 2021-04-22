@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Tree;
     <h2><?= $category ?></h2>
 
     <?php if (!empty($records)) : ?>
-        <ul>
+        <ol>
             <?php foreach ($records as $duplicates) : ?>
                 <li>
                     <?= $duplicates[0]->fullName() ?>
@@ -41,7 +41,7 @@ use Fisharebest\Webtrees\Tree;
                     <?php endif ?>
                 </li>
             <?php endforeach ?>
-        </ul>
+        </ol>
     <?php else : ?>
         <p><?= I18N::translate('No duplicates have been found.') ?></p>
     <?php endif ?>
