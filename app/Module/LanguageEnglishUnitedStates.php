@@ -142,9 +142,15 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
             Relationship::fixed('foster-mother', 'foster-mother’s %s')->fostering()->mother(),
             Relationship::fixed('foster-father', 'foster-father’s %s')->fostering()->father(),
             Relationship::fixed('foster-parent', 'foster-parent’s %s')->fostering()->parent(),
+            Relationship::fixed('foster-sister', 'foster-sister’s %s')->fostering()->sister(),
+            Relationship::fixed('foster-brother', 'foster-brother’s %s')->fostering()->brother(),
+            Relationship::fixed('foster-sibling', 'foster-sibling’s %s')->fostering()->sibling(),
             Relationship::fixed('foster-daughter', 'foster-daughter’s %s')->fostered()->daughter(),
             Relationship::fixed('foster-son', 'foster-son’s %s')->fostered()->son(),
             Relationship::fixed('foster-child', 'foster-child’s %s')->fostered()->child(),
+            Relationship::fixed('foster-sister', 'foster-sister’s %s')->fostered()->sister(),
+            Relationship::fixed('foster-brother', 'foster-brother’s %s')->fostered()->brother(),
+            Relationship::fixed('foster-sibling', 'foster-sibling’s %s')->fostered()->sibling(),
             // Parents
             Relationship::fixed('mother', 'mother’s %s')->mother(),
             Relationship::fixed('father', 'father’s %s')->father(),
@@ -167,9 +173,9 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
             Relationship::fixed('brother', 'brother’s %s')->brother(),
             Relationship::fixed('sibling', 'sibling’s %s')->sibling(),
             // Half-siblings
-            Relationship::fixed('half-sister', 'half-sister’s %s')->parent()->daughter(),
-            Relationship::fixed('half-brother', 'half-brother’s %s')->parent()->son(),
-            Relationship::fixed('half-sibling', 'half-sibling’s %s')->parent()->child(),
+            Relationship::fixed('half-sister', 'half-sister’s %s')->biological()->parent()->biologicallyBorn()->daughter(),
+            Relationship::fixed('half-brother', 'half-brother’s %s')->biological()->parent()->biologicallyBorn()->son(),
+            Relationship::fixed('half-sibling', 'half-sibling’s %s')->biological()->parent()->biologicallyBorn()->child(),
             // Stepfamily
             Relationship::fixed('stepmother', 'stepmother’s %s')->parent()->wife(),
             Relationship::fixed('stepfather', 'stepfather’s %s')->parent()->husband(),

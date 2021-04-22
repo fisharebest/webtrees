@@ -126,11 +126,7 @@ class Relationship
      */
     public function adopted(): Relationship
     {
-        $this->matchers[] = fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
-                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
-                ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === 'adopted');
-
-        return $this;
+        return $this->linkedByType('adopted');
     }
 
     /**
@@ -138,9 +134,56 @@ class Relationship
      */
     public function adoptive(): Relationship
     {
-        $this->matchers[] = fn (array $nodes): bool => $nodes[0]
-            ->facts(['FAMC'], false, Auth::PRIV_HIDE)
-            ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === 'adopted');
+        return $this->linkingByType('adopted');
+    }
+
+    /**
+     * @return Relationship
+     */
+    public function biologicallyBorn(): Relationship
+    {
+        return $this->linkedByType('birth', true);
+    }
+
+    /**
+     * @return Relationship
+     */
+    public function biological(): Relationship
+    {
+        return $this->linkingByType('birth', true);
+    }
+
+    /**
+     * Matches a pedigree linkage type based on the target node's child family status.
+     *
+     * @param string $pedigree_type
+     * @param bool $is_default
+     * @return Relationship
+     */
+    protected function linkedByType(string $pedigree_type, bool $is_default = false): Relationship
+    {
+        $this->matchers[] = fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
+                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+                ->map(fn (Fact $fact): array => [$fact->value(), $fact->attribute('PEDI')])
+                ->contains(fn (array $fact): bool => $fact[0] === '@' . $nodes[1]->xref() . '@'
+                    && ($fact[1] === $pedigree_type || ($fact[1] === '' && $is_default)));
+
+        return $this;
+    }
+
+    /**
+     * Matches a pedigree linkage type based on the initial node's child family status.
+     *
+     * @param string $pedigree_type
+     * @return Relationship
+     */
+    protected function linkingByType(string $pedigree_type, bool $is_default = false): Relationship
+    {
+        $this->matchers[] = fn (array $nodes): bool => count($nodes) > 1 && $nodes[0]
+                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
+                ->map(fn (Fact $fact): array => [$fact->value(), $fact->attribute('PEDI')])
+                ->contains(fn (array $fact): bool => $fact[0] === '@' . $nodes[1]->xref() . '@'
+                    && ($fact[1] === $pedigree_type || ($fact[1] === '' && $is_default)));
 
         return $this;
     }
@@ -346,11 +389,7 @@ class Relationship
      */
     public function fostered(): Relationship
     {
-        $this->matchers[] = fn (array $nodes): bool => count($nodes) > 2 && $nodes[2]
-                ->facts(['FAMC'], false, Auth::PRIV_HIDE)
-                ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === 'foster');
-
-        return $this;
+        return $this->linkedByType('foster');
     }
 
     /**
@@ -358,11 +397,7 @@ class Relationship
      */
     public function fostering(): Relationship
     {
-        $this->matchers[] = fn (array $nodes): bool => $nodes[0]
-            ->facts(['FAMC'], false, Auth::PRIV_HIDE)
-            ->contains(fn (Fact $fact): bool => $fact->value() === '@' . $nodes[1]->xref() . '@' && $fact->attribute('PEDI') === 'foster');
-
-        return $this;
+        return $this->linkingByType('foster');
     }
 
     /**
@@ -515,6 +550,22 @@ class Relationship
         };
 
         return $this;
+    }
+
+    /**
+     * @return Relationship
+     */
+    public function wetNursed(): Relationship
+    {
+        return $this->linkedByType('rada');
+    }
+
+    /**
+     * @return Relationship
+     */
+    public function wetNursing(): Relationship
+    {
+        return $this->linkingByType('rada');
     }
 
     /**

@@ -84,9 +84,9 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
      *      sont en couple
      * - la notion d'âge entre frères/sœurs a été traduite par `grand frère`/`petit frère`, plutôt que des variantes sur
      *   `frère aîné`/`frère cadet` ou `frère plus âgé`/`frère plus jeune`
-     * - Lorsqu'il est nécessaire d'aller au-delà d'un `arrière-`{substantif} (par exemple, pour décrire le case de 
-     *   l'enfant d'un arrière-petit-enfant), la forme `{substantif} au Ne degré` est choisie, avec pour convention 
-     *   N = 1 pour le niveau du substantif racine, on utilisera donc par exemple: 
+     * - Lorsqu'il est nécessaire d'aller au-delà d'un `arrière-`{substantif} (par exemple, pour décrire le case de
+     *   l'enfant d'un arrière-petit-enfant), la forme `{substantif} au Ne degré` est choisie, avec pour convention
+     *   N = 1 pour le niveau du substantif racine, on utilisera donc par exemple:
      *      - `petit-enfant` (= petit-enfant au 1er degré)
      *      - `arrière-petit-enfant` (= petit-enfant au 2e degré)
      *      - `petit-enfant au 3e degré` et ainsi de suite pour les degrés supérieurs
@@ -113,19 +113,19 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
         $genitive = fn (string $s, string $genitive_link): array => [$s, '%s ' . $genitive_link . $s];
 
         // Functions to coumpound the name that can be indefinitely repeated
-        $degree = fn (int $n, string $suffix, string $genitive_link) : array =>
+        $degree = fn (int $n, string $suffix, string $genitive_link): array =>
                 $genitive("$suffix au {$n}<sup>e</sup> degré", $genitive_link);
-        
-        $great = fn (int $n, string $suffix, string $genitive_link): array => 
+
+        $great = fn (int $n, string $suffix, string $genitive_link): array =>
                 $n <= 1 ? $genitive('arrière-' . $suffix, 'de l’') : $degree($n + 1, $suffix, $genitive_link);
-        
+
         $firstCompound = fn (int $n, string $suffix, string $genitive_link): array =>
                 $n <= 1 ? $genitive($suffix, $genitive_link) : $great($n - 1, $suffix, $genitive_link);
-        
-        $compound = 
+
+        $compound =
             fn (int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array =>
                 $n <= 1 ? $genitive($suffix, $genitive_none) : $firstCompound($n - 1, $first_level . $suffix, $genitive_first);
-        
+
         // Functions to translate cousins' degree of relationship
         $symmetricCousin = fn (int $n, string $sex): array => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
             $sex === 'F' ? 'cousine au ' . $n . '<sup>e</sup> degré' : 'cousin au ' . $n . '<sup>e</sup> degré',
@@ -155,16 +155,45 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('mère adoptive', '%s de la mère adoptive')->adoptive()->mother(),
             Relationship::fixed('père adoptif', '%s du père adoptif')->adoptive()->father(),
             Relationship::fixed('parent adoptif', '%s du parent adoptif')->adoptive()->parent(),
+            Relationship::fixed('sœur adoptive', '%s de la sœur adoptive')->adoptive()->sister(),
+            Relationship::fixed('frère adoptif', '%s du frère adoptif')->adoptive()->brother(),
+            Relationship::fixed('frère/sœur adoptif', '%s du frère/sœur adoptif')->adoptive()->sibling(),
             Relationship::fixed('fille adoptive', '%s de la fille adoptive')->adopted()->daughter(),
             Relationship::fixed('fils adoptif', '%s du fils adoptif')->adopted()->son(),
             Relationship::fixed('enfant adoptif', '%s de l’enfant adoptif')->adopted()->child(),
+            Relationship::fixed('sœur adoptive', '%s de la sœur adoptive')->adopted()->sister(),
+            Relationship::fixed('frère adoptif', '%s du frère adoptif')->adopted()->brother(),
+            Relationship::fixed('frère/sœur adoptif', '%s du frère/sœur adoptif')->adopted()->sibling(),
             // Fostered
             Relationship::fixed('mère d’accueil', '%s de la mère d’acceuil')->fostering()->mother(),
             Relationship::fixed('père d’accueil', '%s du père d’acceuil')->fostering()->father(),
             Relationship::fixed('parent d’accueil', '%s du parent d’acceuil')->fostering()->parent(),
+            Relationship::fixed('sœur d’accueil', '%s de la sœur d’accueil')->fostering()->sister(),
+            Relationship::fixed('frère d’accueil', '%s du frère d’accueil')->fostering()->brother(),
+            Relationship::fixed('frère/sœur d’accueil', '%s du frère/sœur d’accueil')->fostering()->sibling(),
             Relationship::fixed('fille accueillie', '%s de la fille accueillie')->fostered()->daughter(),
             Relationship::fixed('fils accueilli', '%s du fils accueilli')->fostered()->son(),
             Relationship::fixed('enfant accueilli', '%s de l’enfant accueilli')->fostered()->child(),
+            Relationship::fixed('sœur accueillie', '%s de la sœur accueillie')->fostered()->sister(),
+            Relationship::fixed('frère accueilli', '%s du frère accueilli')->fostered()->brother(),
+            Relationship::fixed('frère/sœur accueilli', '%s du frère/sœur accueilli')->fostered()->sibling(),
+            // Wet-nursed (rada)
+            Relationship::fixed('mère de lait', '%s de la mère de lait')->wetNursing()->mother(),
+            Relationship::fixed('sœur de lait', '%s de la sœur de lait')->wetNursing()->sister(),
+            Relationship::fixed('sœur de lait', '%s de la sœur de lait')->wetNursing()->parent()->daughter(),
+            Relationship::fixed('frère de lait', '%s du frère de lait')->wetNursing()->brother(),
+            Relationship::fixed('frère de lait', '%s du frère de lait')->wetNursing()->parent()->brother(),
+            Relationship::fixed('frère/sœur de lait', '%s du frère/sœur de lait')->wetNursing()->sibling(),
+            Relationship::fixed('frère/sœur de lait', '%s du frère/sœur de lait')->wetNursing()->parent()->sibling(),
+            Relationship::fixed('fille de lait', '%s de la fille de lait')->wetNursed()->daughter(),
+            Relationship::fixed('fils de lait', '%s de lait')->wetNursed()->son(),
+            Relationship::fixed('enfant de lait', '%s de lait')->wetNursed()->child(),
+            Relationship::fixed('sœur de lait', '%s de la sœur de lait')->wetNursed()->sister(),
+            Relationship::fixed('sœur de lait', '%s de la sœur de lait')->parent()->wetNursed()->daughter(),
+            Relationship::fixed('frère de lait', '%s de lait')->wetNursed()->brother(),
+            Relationship::fixed('frère de lait', '%s de lait')->parent()->wetNursed()->son(),
+            Relationship::fixed('frère/sœur de lait', '%s du frère/sœur de lait')->wetNursed()->sibling(),
+            Relationship::fixed('frère/sœur de lait', '%s du frère/sœur de lait')->parent()->wetNursed()->child(),
             // Parents
             Relationship::fixed('mère', '%s de la mère')->mother(),
             Relationship::fixed('père', '%s du père')->father(),
@@ -187,15 +216,15 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('frère', '%s du frère')->brother(),
             Relationship::fixed('frère/sœur', '%s du frère/sœur')->sibling(),
             // Half-family
-            Relationship::fixed('demi-sœur', '%s de la demi-sœur')->parent()->daughter(),
-            Relationship::fixed('demi-frère', '%s du demi-frère')->parent()->son(),
-            Relationship::fixed('demi-frère/sœur', '%s du demi-frère/sœur')->parent()->child(),
+            Relationship::fixed('demi-sœur', '%s de la demi-sœur')->biological()->parent()->biologicallyBorn()->daughter(),
+            Relationship::fixed('demi-frère', '%s du demi-frère')->biological()->parent()->biologicallyBorn()->son(),
+            Relationship::fixed('demi-frère/sœur', '%s du demi-frère/sœur')->biological()->parent()->biologicallyBorn()->child(),
             // Stepfamily
             Relationship::fixed('belle-mère', '%s de la belle-mère')->parent()->wife(),
             Relationship::fixed('beau-père', '%s du beau-père')->parent()->husband(),
             Relationship::fixed('beau-parent', '%s du beau-parent')->parent()->married()->spouse(),
             Relationship::fixed('belle-fille', '%s de la belle-fille')->married()->spouse()->daughter(),
-            Relationship::fixed('beau-fils', '%s du beau-fils')->married()->spouse()->son(),
+            Relationship::fixed('gendre', '%s du beau-fils')->married()->spouse()->son(),
             Relationship::fixed('beau-fils/fille', '%s du beau-fils/fille')->married()->spouse()->child(),
             Relationship::fixed('quasi-sœur', '%s de la quasi-sœur')->parent()->spouse()->daughter(),
             Relationship::fixed('quasi-frère', '%s du quasi-frère')->parent()->spouse()->son(),
