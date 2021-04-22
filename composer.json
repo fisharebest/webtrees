@@ -29,6 +29,7 @@
         "process-timeout": 3600
     },
     "require": {
+        "php": "7.4|8.0",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
@@ -41,7 +42,7 @@
         "ext-xml": "*",
         "ext-zip": "*",
         "aura/router": "~3.1",
-        "doctrine/dbal": "~3.0",
+        "doctrine/dbal": "~3.1",
         "ezyang/htmlpurifier": "~4.13",
         "fig/http-message-util": "^1.1",
         "fisharebest/algorithm": "~1.5",
@@ -49,9 +50,9 @@
         "fisharebest/flysystem-chroot-adapter": "~2.0",
         "fisharebest/localization": "~1.15",
         "guzzlehttp/guzzle": "~7.3",
-        "illuminate/container": "~8.36",
-        "illuminate/database": "~8.36",
-        "illuminate/support": "~8.36",
+        "illuminate/container": "~8.38",
+        "illuminate/database": "~8.38",
+        "illuminate/support": "~8.38",
         "intervention/image": "^2.5",
         "io-developer/php-whois": "~4.0",
         "league/commonmark": "~1.5",
@@ -83,7 +84,7 @@
         "composer/composer": "~2.0",
         "league/flysystem-memory": "~2.0",
         "maximebf/debugbar": "~1.16",
-        "php-coveralls/php-coveralls": "~2.2",
+        "php-coveralls/php-coveralls": "~2.4",
         "phpunit/phpunit": "~9.5"
     },
     "suggest": {
