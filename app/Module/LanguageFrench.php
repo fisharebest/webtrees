@@ -113,9 +113,9 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
 
         $compoundgreat =
             fn (int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array =>
-                $great($n - 1, ($n > 0 ? $first_level : '' ) . $suffix, $n === 0 ? $genitive_none : $genitive_first);
+                $great($n - 1, ($n > 0 ? $first_level : '') . $suffix, $n === 0 ? $genitive_none : $genitive_first);
 
-        $symmetricCousin = fn (int $n, string $sex): array  => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
+        $symmetricCousin = fn (int $n, string $sex): array => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
             $sex === 'F' ? 'cousine au ' . $n . '<sup>e</sup> degré' : 'cousin au ' . $n . '<sup>e</sup> degré',
             $sex === 'F'  ? 'de la ' : 'du '
         );
