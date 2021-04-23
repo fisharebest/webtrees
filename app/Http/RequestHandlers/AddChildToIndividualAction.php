@@ -91,21 +91,22 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         $gedcom .= $this->gedcom_edit_service->addNewName($request, $tree);
         $gedcom .= $this->gedcom_edit_service->addNewSex($request);
 
+        $fam_xref = $family->xref();
         switch ($PEDI) {
             case '':
-                $gedcom .= "\n1 FAMC @$xref@";
+                $gedcom .= "\n1 FAMC @$fam_xref@";
                 break;
             case 'adopted':
-                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$xref@\n3 ADOP BOTH";
+                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$fam_xref@\n3 ADOP BOTH";
                 break;
             case 'sealing':
-                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$xref@";
+                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$fam_xref@";
                 break;
             case 'foster':
-                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
+                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
                 break;
             default:
-                $gedcom .= "\n1 FAMC @$xref@\n2 PEDI $PEDI";
+                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI";
                 break;
         }
 
