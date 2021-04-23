@@ -9,12 +9,12 @@ use Fisharebest\Webtrees\View;
 /**
  * @var array<string,string> $breadcrumbs
  * @var string               $latitude
+ * @var object               $leaflet_config
  * @var string               $longitude
  * @var PlaceLocation        $location
  * @var array<array<float>>  $map_bounds
  * @var array<float>         $marker_position
  * @var PlaceLocation        $parent
- * @var mixed                $provider
  * @var string               $title
  */
 
@@ -94,12 +94,8 @@ use Fisharebest\Webtrees\View;
     'use strict';
 
     window.WT_OSM_ADMIN = (function () {
-        const minZoom   = 2;
-        const provider  = <?= json_encode($provider) ?>;
+        const config = <?= json_encode($leaflet_config) ?>;
         const add_place = <?= json_encode($location->id() === null) ?>;
-
-        let map = null;
-        // map components
 
         // postcss_image_inliner breaks the autodetection of image paths.
         L.Icon.Default.imagePath = <?= json_encode(asset('css/images/')) ?>;
@@ -128,7 +124,7 @@ use Fisharebest\Webtrees\View;
                     $('form').trigger('reset');
                     return false;
                 };
-                let reset = <?= json_encode(I18N::translate('Reset to initial map state')) ?>;
+                let reset = config.i18n.reset;
                 let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
                 anchor.setAttribute('aria-label', reset);
                 anchor.href = '#';
@@ -141,14 +137,9 @@ use Fisharebest\Webtrees\View;
             }
         });
 
-        // zoom control with localised text
-        let zoomCtl = new L.control.zoom({
-            zoomInTitle:  <?= json_encode(I18N::translate('Zoom in')) ?>,
-            zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
-        });
-
         // Geocoder (place lookup)
         let geocoder = new L.Control.geocoder({
+            position: 'bottomleft',
             defaultMarkGeocode: false,
             expand: 'click',
             showResultIcons: true,
@@ -170,7 +161,6 @@ use Fisharebest\Webtrees\View;
             });
 
         /**
-         *
          * @private
          */
         $(function () {
@@ -186,16 +176,10 @@ use Fisharebest\Webtrees\View;
             });
         });
 
-        // Create the map with all controls and layers
-        map = L.map('osm-map', {
-            minZoom: minZoom, // maxZoom set by leaflet-providers.js
-            zoomControl: false,   // remove default
-        })
+      const map = webtrees.buildLeafletJsMap('osm-map', config)
             .addControl(new resetControl())
-            .addControl(zoomCtl)
             .addControl(geocoder)
             .addLayer(marker)
-            .addLayer(L.tileLayer(provider.url, provider.options))
             .fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]})
             .on('zoomend', function () {
               if (!map.getBounds().contains(marker.getLatLng())) {

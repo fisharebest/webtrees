@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 20 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,15 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
+use Fisharebest\Webtrees\Module\ModuleMapGeoLocationInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
+
+use function redirect;
+use function route;
 
 /**
- * Select a map provider.
+ * Update a list of modules.
  */
-class MapProviderAction implements RequestHandlerInterface
+class ModulesMapGeoLocationsAction extends AbstractModuleComponentAction
 {
     /**
      * @param ServerRequestInterface $request
@@ -36,10 +41,9 @@ class MapProviderAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $settings = (array) $request->getParsedBody();
+        $this->updateStatus(ModuleMapGeoLocationInterface::class, $request);
 
-        Site::setPreference('map-provider', $settings['provider']);
-        Site::setPreference('geonames', $settings['geonames']);
+        FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
         return redirect(route(ControlPanel::class));
     }

@@ -19,46 +19,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 
 use function view;
 
 /**
- * Class MapLinkGoogleModule - show locations in external maps
+ * Class MapLocationOpenRouteService - use geonames to find locations
  */
-class MapLinkGoogleModule extends AbstractModule implements ModuleMapLinkInterface
+class MapGeoLocationOpenRouteService extends AbstractModule implements ModuleConfigInterface, ModuleMapGeoLocationInterface
 {
-    use ModuleMapLinkTrait;
+    use ModuleConfigTrait;
+    use ModuleMapGeoLocationTrait;
 
     /**
      * Name of the map provider.
      *
      * @return string
      */
-    protected function providerName(): string
+    public function title(): string
     {
-        return I18N::translate('Google™ maps');
-    }
-
-    /**
-     * @return string
-     */
-    protected function icon(): string
-    {
-        return view('icons/google-maps');
-    }
-
-    /**
-     * @param Fact $fact
-     *
-     * @return string
-     */
-    protected function mapUrl(Fact $fact): string
-    {
-        // This URL allows us to add a pin at the location.
-        // Other URLs allow us to set the zoom.
-        // Is there one that does both?
-        return 'http://maps.google.com/maps?q=loc:' . $fact->latitude() . '+' . $fact->longitude();
+        return /* I18N: https://openrouteservice.org */ I18N::translate('OpenRouteService');
     }
 }

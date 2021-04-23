@@ -19,16 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 
-use function strip_tags;
 use function view;
 
 /**
- * Class MapLinkBingModule - show locations in external maps
+ * Class MapLinkOpenStreetMap - show locations in external maps
  */
-class MapLinkBingModule extends AbstractModule implements ModuleMapLinkInterface
+class MapLinkOpenStreetMap extends AbstractModule implements ModuleMapLinkInterface
 {
     use ModuleMapLinkTrait;
 
@@ -39,7 +37,7 @@ class MapLinkBingModule extends AbstractModule implements ModuleMapLinkInterface
      */
     protected function providerName(): string
     {
-        return I18N::translate('Bing™ maps');
+        return I18N::translate('OpenStreetMap™');
     }
 
     /**
@@ -47,22 +45,20 @@ class MapLinkBingModule extends AbstractModule implements ModuleMapLinkInterface
      */
     protected function icon(): string
     {
-        return view('icons/bing-maps');
+        return view('icons/openstreetmap');
     }
 
     /**
-     * @param Fact $fact
+     * @param \Fisharebest\Webtrees\Fact $fact
      *
      * @return string
      */
-    protected function mapUrl(Fact $fact): string
+    protected function mapUrl(\Fisharebest\Webtrees\Fact $fact): string
     {
         $latitude  = $fact->latitude();
         $longitude = $fact->longitude();
-        $center    = $latitude . '~' . $longitude;
-        $label     = strip_tags($fact->record()->fullName()) . ' — ' . $fact->label();
-        $pointer   = $latitude . '_' . $longitude . '_' . rawurlencode($label);
 
-        return 'http://www.bing.com/maps/?v=2&cp=' . $center . '&lvl=10&dir=0&sty=o&sp=point.' . $pointer;
+        // mlat/mlon is the marker postion
+        return 'https://www.openstreetmap.org/?mlat=' . $latitude . '&mlon=' . $longitude . '#map=10/' . $latitude . '/' . $longitude;
     }
 }

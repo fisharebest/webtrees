@@ -10,7 +10,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ImportThumbnailsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
-use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MergeTreesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
@@ -21,7 +20,10 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesHistoricEventsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesLanguagesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesListsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapAutocompletePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapLinksPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapGeoLocationsPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapProvidersPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMenusPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesReportsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesSharesPage;
@@ -56,7 +58,10 @@ use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
+use Fisharebest\Webtrees\Module\ModuleMapGeoLocationInterface;
 use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
+use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleShareInterface;
@@ -73,67 +78,73 @@ use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<User>                          $administrators
- * @var Collection<ModuleInterface>               $all_modules_disabled
- * @var Collection<ModuleInterface>               $all_modules_enabled
- * @var Collection<Tree>                          $all_trees
- * @var Collection<User>                          $all_users
- * @var Collection<ModuleAnalyticsInterface>      $analytics_modules_disabled
- * @var Collection<ModuleAnalyticsInterface>      $analytics_modules_enabled
- * @var Collection<ModuleBlockInterface>          $block_modules_disabled
- * @var Collection<ModuleBlockInterface>          $block_modules_enabled
- * @var array<string,int>                         $changes
- * @var Collection<ModuleChartInterface>          $chart_modules_disabled
- * @var Collection<ModuleChartInterface>          $chart_modules_enabled
- * @var Collection<ModuleCustomInterface>         $custom_updates
- * @var Collection<ModuleDataFixInterface>        $data_fix_modules_disabled
- * @var Collection<ModuleDataFixInterface>        $data_fix_modules_enabled
- * @var Collection<string,int>                    $families
- * @var FamilyListModule|null                     $family_list_module
- * @var Collection<ModuleFooterInterface>         $footer_modules_disabled
- * @var Collection<ModuleFooterInterface>         $footer_modules_enabled
- * @var Collection<ModuleHistoricEventsInterface> $history_modules_disabled
- * @var Collection<ModuleHistoricEventsInterface> $history_modules_enabled
- * @var Collection<string,int>                    $individuals
- * @var IndividualListModule|null                 $individual_list_module
- * @var Collection<ModuleLanguageInterface>       $language_modules_disabled
- * @var Collection<ModuleLanguageInterface>       $language_modules_enabled
- * @var string                                    $latest_version
- * @var Collection<ModuleListInterface>           $list_modules_disabled
- * @var Collection<ModuleListInterface>           $list_modules_enabled
- * @var Collection<ModuleMapLinkInterface>        $map_link_modules_disabled
- * @var Collection<ModuleMapLinkInterface>        $map_link_modules_enabled
- * @var Collection<User>                          $managers
- * @var Collection<string,int>                    $media
- * @var MediaListModule|null                      $media_list_module
- * @var Collection<ModuleMenuInterface>           $menu_modules_disabled
- * @var Collection<ModuleMenuInterface>           $menu_modules_enabled
- * @var Collection<User>                          $moderators
- * @var Collection<string,int>                    $notes
- * @var NoteListModule|null                       $note_list_module
- * @var Collection<ModuleInterface>               $other_modules
- * @var Collection<ModuleReportInterface>         $report_modules_disabled
- * @var Collection<ModuleReportInterface>         $report_modules_enabled
- * @var Collection<string,int>                    $repositories
- * @var RepositoryListModule|null                 $repository_list_module
- * @var Collection<string>                        $server_errors
- * @var Collection<string>                        $server_warnings
- * @var bool                                      $show_synchronize
- * @var Collection<ModuleShareInterface>          $share_modules_disabled
- * @var Collection<ModuleShareInterface>          $share_modules_enabled
- * @var Collection<ModuleSidebarInterface>        $sidebar_modules_disabled
- * @var Collection<ModuleSidebarInterface>        $sidebar_modules_enabled
- * @var Collection<string,int>                    $sources
- * @var SourceListModule|null                     $source_list_module
- * @var Collection<string,int>                    $submitters
- * @var SubmitterListModule|null                  $submitter_list_module
- * @var Collection<ModuleTabInterface>            $tab_modules_disabled
- * @var Collection<ModuleTabInterface>            $tab_modules_enabled
- * @var Collection<ModuleThemeInterface>          $theme_modules_disabled
- * @var Collection<ModuleThemeInterface>          $theme_modules_enabled
- * @var string                                    $title
- * @var Collection<User>                          $unapproved
- * @var Collection<User>                          $unverified
+ * @var Collection<User>                           $administrators
+ * @var Collection<ModuleInterface>                $all_modules_disabled
+ * @var Collection<ModuleInterface>                $all_modules_enabled
+ * @var Collection<Tree>                           $all_trees
+ * @var Collection<User>                           $all_users
+ * @var Collection<ModuleAnalyticsInterface>       $analytics_modules_disabled
+ * @var Collection<ModuleAnalyticsInterface>       $analytics_modules_enabled
+ * @var Collection<ModuleBlockInterface>           $block_modules_disabled
+ * @var Collection<ModuleBlockInterface>           $block_modules_enabled
+ * @var array<string,int>                          $changes
+ * @var Collection<ModuleChartInterface>           $chart_modules_disabled
+ * @var Collection<ModuleChartInterface>           $chart_modules_enabled
+ * @var Collection<ModuleCustomInterface>          $custom_updates
+ * @var Collection<ModuleDataFixInterface>         $data_fix_modules_disabled
+ * @var Collection<ModuleDataFixInterface>         $data_fix_modules_enabled
+ * @var Collection<string,int>                     $families
+ * @var FamilyListModule|null                      $family_list_module
+ * @var Collection<ModuleFooterInterface>          $footer_modules_disabled
+ * @var Collection<ModuleFooterInterface>          $footer_modules_enabled
+ * @var Collection<ModuleHistoricEventsInterface>  $history_modules_disabled
+ * @var Collection<ModuleHistoricEventsInterface>  $history_modules_enabled
+ * @var Collection<string,int>                     $individuals
+ * @var IndividualListModule|null                  $individual_list_module
+ * @var Collection<ModuleLanguageInterface>        $language_modules_disabled
+ * @var Collection<ModuleLanguageInterface>        $language_modules_enabled
+ * @var string                                     $latest_version
+ * @var Collection<ModuleListInterface>            $list_modules_disabled
+ * @var Collection<ModuleListInterface>            $list_modules_enabled
+ * @var Collection<ModuleMapLinkInterface>         $map_link_modules_disabled
+ * @var Collection<ModuleMapLinkInterface>         $map_link_modules_enabled
+ * @var Collection<ModuleMapAutocompleteInterface> $map_autocomplete_modules_disabled
+ * @var Collection<ModuleMapAutocompleteInterface> $map_autocomplete_modules_enabled
+ * @var Collection<ModuleMapProviderInterface>     $map_provider_modules_disabled
+ * @var Collection<ModuleMapProviderInterface>     $map_provider_modules_enabled
+ * @var Collection<ModuleMapGeoLocationInterface>  $map_search_modules_disabled
+ * @var Collection<ModuleMapGeoLocationInterface>  $map_search_modules_enabled
+ * @var Collection<User>                           $managers
+ * @var Collection<string,int>                     $media
+ * @var MediaListModule|null                       $media_list_module
+ * @var Collection<ModuleMenuInterface>            $menu_modules_disabled
+ * @var Collection<ModuleMenuInterface>            $menu_modules_enabled
+ * @var Collection<User>                           $moderators
+ * @var Collection<string,int>                     $notes
+ * @var NoteListModule|null                        $note_list_module
+ * @var Collection<ModuleInterface>                $other_modules
+ * @var Collection<ModuleReportInterface>          $report_modules_disabled
+ * @var Collection<ModuleReportInterface>          $report_modules_enabled
+ * @var Collection<string,int>                     $repositories
+ * @var RepositoryListModule|null                  $repository_list_module
+ * @var Collection<string>                         $server_errors
+ * @var Collection<string>                         $server_warnings
+ * @var bool                                       $show_synchronize
+ * @var Collection<ModuleShareInterface>           $share_modules_disabled
+ * @var Collection<ModuleShareInterface>           $share_modules_enabled
+ * @var Collection<ModuleSidebarInterface>         $sidebar_modules_disabled
+ * @var Collection<ModuleSidebarInterface>         $sidebar_modules_enabled
+ * @var Collection<string,int>                     $sources
+ * @var SourceListModule|null                      $source_list_module
+ * @var Collection<string,int>                     $submitters
+ * @var SubmitterListModule|null                   $submitter_list_module
+ * @var Collection<ModuleTabInterface>             $tab_modules_disabled
+ * @var Collection<ModuleTabInterface>             $tab_modules_enabled
+ * @var Collection<ModuleThemeInterface>           $theme_modules_disabled
+ * @var Collection<ModuleThemeInterface>           $theme_modules_enabled
+ * @var string                                     $title
+ * @var Collection<User>                           $unapproved
+ * @var Collection<User>                           $unverified
  */
 
 ?>
@@ -548,6 +559,92 @@ use Illuminate\Support\Collection;
         <div class="row">
             <div class="col-sm-4">
                 <h3>
+                    <?= I18N::translate('Website') ?>
+                </h3>
+
+                <ul class="fa-ul">
+                    <li>
+                        <span class="fa-li"><?= view('icons/footer') ?></span>
+                        <a href="<?= e(route(ModulesFootersPage::class)) ?>">
+                            <?= I18N::translate('Footers') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $footer_modules_enabled->count(), 'total' => $footer_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/analytics') ?></span>
+                        <a href="<?= e(route(ModulesAnalyticsPage::class)) ?>">
+                            <?= I18N::translate('Tracking and analytics') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $analytics_modules_enabled->count(), 'total' => $analytics_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/theme') ?></span>
+                        <a href="<?= e(route(ModulesThemesPage::class)) ?>">
+                            <?= I18N::translate('Themes') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $theme_modules_enabled->count(), 'total' => $theme_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/language') ?></span>
+                        <a href="<?= e(route(ModulesLanguagesPage::class)) ?>">
+                            <?= I18N::translate('Languages') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $language_modules_enabled->count(), 'total' => $language_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                </ul>
+
+                <h3>
+                    <?= I18N::translate('Home page') ?>
+                </h3>
+
+                <ul class="fa-ul">
+                    <li>
+                        <span class="fa-li"><?= view('icons/block') ?></span>
+                        <a href="<?= e(route(ModulesBlocksPage::class)) ?>">
+                            <?= I18N::translate('Blocks') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                </ul>
+
+                <h3>
+                    <?= I18N::translate('Geographic data') ?>
+                </h3>
+
+                <ul class="fa-ul">
+                    <li>
+                        <span class="fa-li"><?= view('icons/search') ?></span>
+                        <a href="<?= e(route(ModulesMapAutocompletePage::class)) ?>">
+                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Autocomplete') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $map_autocomplete_modules_enabled->count(), 'total' => $map_autocomplete_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/search-location') ?></span>
+                        <a href="<?= e(route(ModulesMapGeoLocationsPage::class)) ?>">
+                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Geolocation') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $map_search_modules_enabled->count(), 'total' => $map_search_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/location') ?></span>
+                        <a href="<?= e(route(ModulesMapLinksPage::class)) ?>">
+                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Map links') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $map_link_modules_enabled->count(), 'total' => $map_link_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                    <li>
+                        <span class="fa-li"><?= view('icons/map') ?></span>
+                        <a href="<?= e(route(ModulesMapProvidersPage::class)) ?>">
+                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Map providers') ?>
+                        </a>
+                        <?= view('components/badge', ['count' => $map_provider_modules_enabled->count(), 'total' => $map_provider_modules_disabled->count(), 'context' => 'primary']) ?>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-4">
+                <h3>
                     <?= I18N::translate('Genealogy') ?>
                 </h3>
 
@@ -590,59 +687,6 @@ use Illuminate\Support\Collection;
                 </ul>
 
                 <h3>
-                    <?= I18N::translate('Website') ?>
-                </h3>
-
-                <ul class="fa-ul">
-                    <li>
-                        <span class="fa-li"><?= view('icons/footer') ?></span>
-                        <a href="<?= e(route(ModulesFootersPage::class)) ?>">
-                            <?= I18N::translate('Footers') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $footer_modules_enabled->count(), 'total' => $footer_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/analytics') ?></span>
-                        <a href="<?= e(route(ModulesAnalyticsPage::class)) ?>">
-                            <?= I18N::translate('Tracking and analytics') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $analytics_modules_enabled->count(), 'total' => $analytics_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/theme') ?></span>
-                        <a href="<?= e(route(ModulesThemesPage::class)) ?>">
-                            <?= I18N::translate('Themes') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $theme_modules_enabled->count(), 'total' => $theme_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/language') ?></span>
-                        <a href="<?= e(route(ModulesLanguagesPage::class)) ?>">
-                            <?= I18N::translate('Languages') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $language_modules_enabled->count(), 'total' => $language_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                </ul>
-
-            </div>
-
-            <div class="col-sm-4">
-
-                <h3>
-                    <?= I18N::translate('Home page') ?>
-                </h3>
-
-                <ul class="fa-ul">
-                    <li>
-                        <span class="fa-li"><?= view('icons/block') ?></span>
-                        <a href="<?= e(route(ModulesBlocksPage::class)) ?>">
-                            <?= I18N::translate('Blocks') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $block_modules_enabled->count(), 'total' => $block_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                </ul>
-
-                <h3>
                     <?= I18N::translate('Individual page') ?>
                 </h3>
 
@@ -676,20 +720,6 @@ use Illuminate\Support\Collection;
                         <?= view('components/badge', ['count' => $share_modules_enabled->count(), 'total' => $share_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
-
-                <h3>
-                    <?= I18N::translate('Geographic data') ?>
-                </h3>
-
-                <ul class="fa-ul">
-                    <li>
-                        <span class="fa-li"><?= view('icons/location') ?></span>
-                        <a href="<?= e(route(ModulesMapLinksPage::class)) ?>">
-                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Map links') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $map_link_modules_enabled->count(), 'total' => $map_link_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                </ul>
             </div>
 
             <div class="col-sm-4">
@@ -714,7 +744,7 @@ use Illuminate\Support\Collection;
                                 <?php endif ?>
                             <?php else : ?>
                                 <span class="text-muted">
-                                    <span class="fa-li"><?= view('icons/module') ?></span>
+                                    <span class="fa-li"><?= view('icons/module') ?>
                                      <?= $module->title() ?>
                                     <?php if ($module instanceof ModuleConfigInterface) : ?>
                                         <?= view('icons/preferences') ?>
@@ -780,22 +810,12 @@ use Illuminate\Support\Collection;
     </div>
     <div class="card-body">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/location') ?></span>
                         <a href="<?= e(route(MapDataList::class)) ?>">
                             <?= I18N::translate('Geographic data') ?>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-6">
-                <ul class="fa-ul">
-                    <li>
-                        <span class="fa-li"><?= view('icons/map') ?></span>
-                        <a href="<?= e(route(MapProviderPage::class)) ?>">
-                            <?= I18N::translate('Map provider') ?>
                         </a>
                     </li>
                 </ul>

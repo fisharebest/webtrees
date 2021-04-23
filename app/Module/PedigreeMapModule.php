@@ -23,14 +23,14 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
+use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -55,7 +55,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/pedigree-map-{generations}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/pedigree-map-{generations}/{xref}';
 
     // Defaults
     public const DEFAULT_GENERATIONS = '4';
@@ -82,17 +82,20 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
 
     private const DEFAULT_ZOOM = 2;
 
-    /** @var ChartService */
-    private $chart_service;
+    private ChartService $chart_service;
+
+    private LeafletJsService $leaflet_js_service;
 
     /**
      * PedigreeMapModule constructor.
      *
-     * @param ChartService $chart_service
+     * @param ChartService     $chart_service
+     * @param LeafletJsService $leaflet_js_service
      */
-    public function __construct(ChartService $chart_service)
+    public function __construct(ChartService $chart_service, LeafletJsService $leaflet_js_service)
     {
-        $this->chart_service = $chart_service;
+        $this->chart_service      = $chart_service;
+        $this->leaflet_js_service = $leaflet_js_service;
     }
 
     /**
@@ -199,8 +202,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $individual  = Registry::individualFactory()->make($xref, $tree);
-        $individual  = Auth::checkIndividualAccess($individual, false, true);
+        $individual = Registry::individualFactory()->make($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
 
         $user        = $request->getAttribute('user');
         $generations = (int) $request->getAttribute('generations');
@@ -218,14 +221,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         }
 
         $map = view('modules/pedigree-map/chart', [
-            'data'     => $this->getMapData($request),
-            'provider' => [
-                'url'    => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                'options' => [
-                    'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
-                    'max_zoom'    => 19
-                ]
-            ]
+            'data'           => $this->getMapData($request),
+            'leaflet_config' => $this->leaflet_js_service->config(),
         ]);
 
         return $this->viewResponse('modules/pedigree-map/page', [

@@ -19,29 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleFrCa;
-use Fisharebest\Localization\Locale\LocaleInterface;
-
 /**
- * Class LanguageFrenchCanada.
+ * Interface ModuleMapProviderInterface - Classes and libraries for module system
  */
-class LanguageFrenchCanada extends LanguageFrench
+interface ModuleMapProviderInterface extends ModuleInterface
 {
     /**
-     * Should this module be enabled when it is first installed?
+     * Parameters to create a TileLayer in LeafletJs.
      *
-     * @return bool
+     * @return array<object>
      */
-    public function isEnabledByDefault(): bool
-    {
-        return false;
-    }
-
-    /**
-     * @return LocaleInterface
-     */
-    public function locale(): LocaleInterface
-    {
-        return new LocaleFrCa();
-    }
+    public function leafletJsTileLayers(): array;
 }

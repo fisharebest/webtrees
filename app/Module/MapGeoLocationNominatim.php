@@ -19,29 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Localization\Locale\LocaleFrCa;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N;
 
 /**
- * Class LanguageFrenchCanada.
+ * Class MapLocationNominatim - use geonames to find locations
  */
-class LanguageFrenchCanada extends LanguageFrench
+class MapGeoLocationNominatim extends AbstractModule implements ModuleConfigInterface, ModuleMapGeoLocationInterface
 {
-    /**
-     * Should this module be enabled when it is first installed?
-     *
-     * @return bool
-     */
-    public function isEnabledByDefault(): bool
-    {
-        return false;
-    }
+    use ModuleConfigTrait;
+    use ModuleMapGeoLocationTrait;
 
     /**
-     * @return LocaleInterface
+     * Name of the map provider.
+     *
+     * @return string
      */
-    public function locale(): LocaleInterface
+    public function title(): string
     {
-        return new LocaleFrCa();
+        return /* I18N: https://nominatim.org */ I18N::translate('Nominatim');
     }
 }

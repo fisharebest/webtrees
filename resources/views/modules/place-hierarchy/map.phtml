@@ -5,7 +5,7 @@ use Fisharebest\Webtrees\View;
 
 /**
  * @var array<mixed> $data
- * @var array<mixed> $provider
+ * @var object       $leaflet_config
  */
 
 ?>
@@ -43,12 +43,11 @@ use Fisharebest\Webtrees\View;
     "use strict";
 
     window.WT_OSM = (function () {
-        const minZoom = 2;
+        const config = <?= json_encode($leaflet_config) ?>;
 
         let map      = null;
         let zoom     = null;
         let sidebar  = $('.osm-sidebar');
-        let provider = <?= json_encode($provider) ?>;
 
         // Map components
         let markers = L.markerClusterGroup({
@@ -73,7 +72,7 @@ use Fisharebest\Webtrees\View;
                     return false;
                 };
                 let anchor   = L.DomUtil.create("a", "leaflet-control-reset", container);
-                let reset    = <?= json_encode(I18N::translate('Reload map')) ?>;
+                let reset    = config.i18n.reset;
                 anchor.setAttribute('aria-label', reset);
                 anchor.href  = "#";
                 anchor.title = reset;
@@ -85,29 +84,15 @@ use Fisharebest\Webtrees\View;
             },
         });
 
-        // Zoom control with localised text
-        let newZoomControl = new L.control.zoom({
-            zoomInTitle : <?= json_encode(I18N::translate('Zoom in')) ?>,
-            zoomOutTitle: <?= json_encode(I18N::translate('Zoom out')) ?>,
-        });
-
-        /**
-        *
+       /**
         * @private
         */
         let _drawMap = function() {
-            map = L.map('osm-map', {
-                center     : [0, 0],
-                minZoom    : minZoom,   // maxZoom set by leaflet-providers.js
-                zoomControl: false,     // remove default
-            })
-            .addControl(new resetControl())
-            .addControl(newZoomControl)
-            .addLayer(L.tileLayer(provider.url, provider.options));
+            map = webtrees.buildLeafletJsMap('osm-map', config)
+            .addControl(new resetControl());
         };
 
         /**
-        *
         * @private
         */
         let _buildMapData = function () {

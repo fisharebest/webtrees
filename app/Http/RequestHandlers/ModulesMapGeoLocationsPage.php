@@ -19,20 +19,18 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Module\ModuleMapGeoLocationInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
+
+use function view;
 
 /**
- * Select a map provider.
+ * Show a list of modules.
  */
-class MapProviderPage implements RequestHandlerInterface
+class ModulesMapGeoLocationsPage extends AbstractModuleComponentPage
 {
-    use ViewResponseTrait;
-
     /**
      * @param ServerRequestInterface $request
      *
@@ -40,12 +38,10 @@ class MapProviderPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $this->layout = 'layouts/administration';
-
-        return $this->viewResponse('admin/map-provider', [
-            'title'    => I18N::translate('Map provider'),
-            'provider' => Site::getPreference('map-provider'),
-            'geonames' => Site::getPreference('geonames'),
-        ]);
+        return $this->listComponents(
+            ModuleMapGeoLocationInterface::class,
+            view('icons/search-location') . ' ' . I18N::translate('Geolocation'),
+            I18N::translate('Search for locations in an external database.')
+        );
     }
 }

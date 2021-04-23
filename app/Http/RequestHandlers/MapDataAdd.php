@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,17 +38,20 @@ class MapDataAdd implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MapDataService */
-    private $map_data_service;
+    private LeafletJsService $leaflet_js_service;
+
+    private MapDataService $map_data_service;
 
     /**
      * Dependency injection.
      *
-     * @param MapDataService $map_data_service
+     * @param LeafletJsService $leaflet_js_service
+     * @param MapDataService   $map_data_service
      */
-    public function __construct(MapDataService $map_data_service)
+    public function __construct(LeafletJsService $leaflet_js_service, MapDataService $map_data_service)
     {
-        $this->map_data_service = $map_data_service;
+        $this->leaflet_js_service = $leaflet_js_service;
+        $this->map_data_service   = $map_data_service;
     }
 
     /**
@@ -104,13 +108,7 @@ class MapDataAdd implements RequestHandlerInterface
             'map_bounds'      => $map_bounds,
             'marker_position' => $marker_position,
             'parent'          => $parent,
-            'provider'        => [
-                'url'     => 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                'options' => [
-                    'attribution' => '<a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors',
-                    'max_zoom'    => 19
-                ]
-            ],
+            'leaflet_config'  => $this->leaflet_js_service->config(),
         ]);
     }
 }

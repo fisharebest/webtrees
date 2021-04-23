@@ -24,41 +24,20 @@ use Fisharebest\Webtrees\I18N;
 use function view;
 
 /**
- * Class MapLinkOpenStreetMapModule - show locations in external maps
+ * Class MapLocationGeonames - use geonames to find locations
  */
-class MapLinkOpenStreetMapModule extends AbstractModule implements ModuleMapLinkInterface
+class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInterface, ModuleMapGeoLocationInterface
 {
-    use ModuleMapLinkTrait;
+    use ModuleConfigTrait;
+    use ModuleMapGeoLocationTrait;
 
     /**
      * Name of the map provider.
      *
      * @return string
      */
-    protected function providerName(): string
+    public function title(): string
     {
-        return I18N::translate('OpenStreetMap™');
-    }
-
-    /**
-     * @return string
-     */
-    protected function icon(): string
-    {
-        return view('icons/openstreetmap');
-    }
-
-    /**
-     * @param \Fisharebest\Webtrees\Fact $fact
-     *
-     * @return string
-     */
-    protected function mapUrl(\Fisharebest\Webtrees\Fact $fact): string
-    {
-        $latitude  = $fact->latitude();
-        $longitude = $fact->longitude();
-
-        // mlat/mlon is the marker postion
-        return 'https://www.openstreetmap.org/?mlat=' . $latitude . '&mlon=' . $longitude . '#map=10/' . $latitude . '/' . $longitude;
+        return /* I18N: https://www.geonames.org */ I18N::translate('GeoNames');
     }
 }

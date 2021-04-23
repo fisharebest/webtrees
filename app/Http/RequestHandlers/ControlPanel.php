@@ -33,7 +33,10 @@ use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
+use Fisharebest\Webtrees\Module\ModuleMapGeoLocationInterface;
 use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
+use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Module\ModuleShareInterface;
@@ -73,26 +76,19 @@ class ControlPanel implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var AdminService */
-    private $admin_service;
+    private AdminService $admin_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var HousekeepingService */
-    private $housekeeping_service;
+    private HousekeepingService $housekeeping_service;
 
-    /** @var ServerCheckService */
-    private $server_check_service;
+    private ServerCheckService $server_check_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
-    /** @var UpgradeService */
-    private $upgrade_service;
+    private UpgradeService $upgrade_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * ControlPanel constructor.
@@ -113,7 +109,8 @@ class ControlPanel implements RequestHandlerInterface
         TreeService $tree_service,
         UpgradeService $upgrade_service,
         UserService $user_service
-    ) {
+    )
+    {
         $this->admin_service        = $admin_service;
         $this->housekeeping_service = $housekeeping_service;
         $this->module_service       = $module_service;
@@ -145,69 +142,75 @@ class ControlPanel implements RequestHandlerInterface
         $gedcom_file_count       = $this->admin_service->gedcomFiles(Registry::filesystem()->data())->count();
 
         return $this->viewResponse('admin/control-panel', [
-            'title'                      => I18N::translate('Control panel'),
-            'server_errors'              => $this->server_check_service->serverErrors(),
-            'server_warnings'            => $this->server_check_service->serverWarnings(),
-            'latest_version'             => $this->upgrade_service->latestVersion(),
-            'all_users'                  => $this->user_service->all(),
-            'administrators'             => $this->user_service->administrators(),
-            'managers'                   => $this->user_service->managers(),
-            'moderators'                 => $this->user_service->moderators(),
-            'unapproved'                 => $this->user_service->unapproved(),
-            'unverified'                 => $this->user_service->unverified(),
-            'all_trees'                  => $this->tree_service->all(),
-            'changes'                    => $this->totalChanges(),
-            'individuals'                => $this->totalIndividuals(),
-            'families'                   => $this->totalFamilies(),
-            'sources'                    => $this->totalSources(),
-            'media'                      => $this->totalMediaObjects(),
-            'repositories'               => $this->totalRepositories(),
-            'notes'                      => $this->totalNotes(),
-            'submitters'                 => $this->totalSubmitters(),
-            'individual_list_module'     => $this->module_service->findByInterface(IndividualListModule::class)->last(),
-            'family_list_module'         => $this->module_service->findByInterface(FamilyListModule::class)->first(),
-            'media_list_module'          => $this->module_service->findByInterface(MediaListModule::class)->first(),
-            'note_list_module'           => $this->module_service->findByInterface(NoteListModule::class)->first(),
-            'repository_list_module'     => $this->module_service->findByInterface(RepositoryListModule::class)->first(),
-            'source_list_module'         => $this->module_service->findByInterface(SourceListModule::class)->first(),
-            'submitter_list_module'      => $this->module_service->findByInterface(SubmitterListModule::class)->first(),
-            'files_to_delete'            => $files_to_delete,
-            'all_modules_disabled'       => $this->module_service->all(true),
-            'all_modules_enabled'        => $this->module_service->all(),
-            'deleted_modules'            => $this->module_service->deletedModules(),
-            'analytics_modules_disabled' => $this->module_service->findByInterface(ModuleAnalyticsInterface::class, true),
-            'analytics_modules_enabled'  => $this->module_service->findByInterface(ModuleAnalyticsInterface::class),
-            'block_modules_disabled'     => $this->module_service->findByInterface(ModuleBlockInterface::class, true),
-            'block_modules_enabled'      => $this->module_service->findByInterface(ModuleBlockInterface::class),
-            'chart_modules_disabled'     => $this->module_service->findByInterface(ModuleChartInterface::class, true),
-            'chart_modules_enabled'      => $this->module_service->findByInterface(ModuleChartInterface::class),
-            'custom_updates'             => $custom_updates,
-            'data_fix_modules_disabled'  => $this->module_service->findByInterface(ModuleDataFixInterface::class, true),
-            'data_fix_modules_enabled'   => $this->module_service->findByInterface(ModuleDataFixInterface::class),
-            'other_modules'              => $this->module_service->otherModules(true),
-            'footer_modules_disabled'    => $this->module_service->findByInterface(ModuleFooterInterface::class, true),
-            'footer_modules_enabled'     => $this->module_service->findByInterface(ModuleFooterInterface::class),
-            'history_modules_disabled'   => $this->module_service->findByInterface(ModuleHistoricEventsInterface::class, true),
-            'history_modules_enabled'    => $this->module_service->findByInterface(ModuleHistoricEventsInterface::class),
-            'language_modules_disabled'  => $this->module_service->findByInterface(ModuleLanguageInterface::class, true),
-            'language_modules_enabled'   => $this->module_service->findByInterface(ModuleLanguageInterface::class),
-            'list_modules_disabled'      => $this->module_service->findByInterface(ModuleListInterface::class, true),
-            'list_modules_enabled'       => $this->module_service->findByInterface(ModuleListInterface::class),
-            'map_link_modules_disabled'  => $this->module_service->findByInterface(ModuleMapLinkInterface::class, true),
-            'map_link_modules_enabled'   => $this->module_service->findByInterface(ModuleMapLinkInterface::class),
-            'menu_modules_disabled'      => $this->module_service->findByInterface(ModuleMenuInterface::class, true),
-            'menu_modules_enabled'       => $this->module_service->findByInterface(ModuleMenuInterface::class),
-            'report_modules_disabled'    => $this->module_service->findByInterface(ModuleReportInterface::class, true),
-            'report_modules_enabled'     => $this->module_service->findByInterface(ModuleReportInterface::class),
-            'share_modules_disabled'     => $this->module_service->findByInterface(ModuleShareInterface::class, true),
-            'share_modules_enabled'      => $this->module_service->findByInterface(ModuleShareInterface::class),
-            'sidebar_modules_disabled'   => $this->module_service->findByInterface(ModuleSidebarInterface::class, true),
-            'sidebar_modules_enabled'    => $this->module_service->findByInterface(ModuleSidebarInterface::class),
-            'tab_modules_disabled'       => $this->module_service->findByInterface(ModuleTabInterface::class, true),
-            'tab_modules_enabled'        => $this->module_service->findByInterface(ModuleTabInterface::class),
-            'theme_modules_disabled'     => $this->module_service->findByInterface(ModuleThemeInterface::class, true),
-            'theme_modules_enabled'      => $this->module_service->findByInterface(ModuleThemeInterface::class),
-            'show_synchronize'           => $gedcom_file_count >= $multiple_tree_threshold,
+            'title'                             => I18N::translate('Control panel'),
+            'server_errors'                     => $this->server_check_service->serverErrors(),
+            'server_warnings'                   => $this->server_check_service->serverWarnings(),
+            'latest_version'                    => $this->upgrade_service->latestVersion(),
+            'all_users'                         => $this->user_service->all(),
+            'administrators'                    => $this->user_service->administrators(),
+            'managers'                          => $this->user_service->managers(),
+            'moderators'                        => $this->user_service->moderators(),
+            'unapproved'                        => $this->user_service->unapproved(),
+            'unverified'                        => $this->user_service->unverified(),
+            'all_trees'                         => $this->tree_service->all(),
+            'changes'                           => $this->totalChanges(),
+            'individuals'                       => $this->totalIndividuals(),
+            'families'                          => $this->totalFamilies(),
+            'sources'                           => $this->totalSources(),
+            'media'                             => $this->totalMediaObjects(),
+            'repositories'                      => $this->totalRepositories(),
+            'notes'                             => $this->totalNotes(),
+            'submitters'                        => $this->totalSubmitters(),
+            'individual_list_module'            => $this->module_service->findByInterface(IndividualListModule::class)->last(),
+            'family_list_module'                => $this->module_service->findByInterface(FamilyListModule::class)->first(),
+            'media_list_module'                 => $this->module_service->findByInterface(MediaListModule::class)->first(),
+            'note_list_module'                  => $this->module_service->findByInterface(NoteListModule::class)->first(),
+            'repository_list_module'            => $this->module_service->findByInterface(RepositoryListModule::class)->first(),
+            'source_list_module'                => $this->module_service->findByInterface(SourceListModule::class)->first(),
+            'submitter_list_module'             => $this->module_service->findByInterface(SubmitterListModule::class)->first(),
+            'files_to_delete'                   => $files_to_delete,
+            'all_modules_disabled'              => $this->module_service->all(true),
+            'all_modules_enabled'               => $this->module_service->all(),
+            'deleted_modules'                   => $this->module_service->deletedModules(),
+            'analytics_modules_disabled'        => $this->module_service->findByInterface(ModuleAnalyticsInterface::class, true),
+            'analytics_modules_enabled'         => $this->module_service->findByInterface(ModuleAnalyticsInterface::class),
+            'block_modules_disabled'            => $this->module_service->findByInterface(ModuleBlockInterface::class, true),
+            'block_modules_enabled'             => $this->module_service->findByInterface(ModuleBlockInterface::class),
+            'chart_modules_disabled'            => $this->module_service->findByInterface(ModuleChartInterface::class, true),
+            'chart_modules_enabled'             => $this->module_service->findByInterface(ModuleChartInterface::class),
+            'custom_updates'                    => $custom_updates,
+            'data_fix_modules_disabled'         => $this->module_service->findByInterface(ModuleDataFixInterface::class, true),
+            'data_fix_modules_enabled'          => $this->module_service->findByInterface(ModuleDataFixInterface::class),
+            'other_modules'                     => $this->module_service->otherModules(true),
+            'footer_modules_disabled'           => $this->module_service->findByInterface(ModuleFooterInterface::class, true),
+            'footer_modules_enabled'            => $this->module_service->findByInterface(ModuleFooterInterface::class),
+            'history_modules_disabled'          => $this->module_service->findByInterface(ModuleHistoricEventsInterface::class, true),
+            'history_modules_enabled'           => $this->module_service->findByInterface(ModuleHistoricEventsInterface::class),
+            'language_modules_disabled'         => $this->module_service->findByInterface(ModuleLanguageInterface::class, true),
+            'language_modules_enabled'          => $this->module_service->findByInterface(ModuleLanguageInterface::class),
+            'list_modules_disabled'             => $this->module_service->findByInterface(ModuleListInterface::class, true),
+            'list_modules_enabled'              => $this->module_service->findByInterface(ModuleListInterface::class),
+            'map_autocomplete_modules_disabled' => $this->module_service->findByInterface(ModuleMapAutocompleteInterface::class, true),
+            'map_autocomplete_modules_enabled'  => $this->module_service->findByInterface(ModuleMapAutocompleteInterface::class),
+            'map_link_modules_disabled'         => $this->module_service->findByInterface(ModuleMapLinkInterface::class, true),
+            'map_link_modules_enabled'          => $this->module_service->findByInterface(ModuleMapLinkInterface::class),
+            'map_provider_modules_disabled'     => $this->module_service->findByInterface(ModuleMapProviderInterface::class, true),
+            'map_provider_modules_enabled'      => $this->module_service->findByInterface(ModuleMapProviderInterface::class),
+            'map_search_modules_disabled'       => $this->module_service->findByInterface(ModuleMapGeoLocationInterface::class, true),
+            'map_search_modules_enabled'        => $this->module_service->findByInterface(ModuleMapGeoLocationInterface::class),
+            'menu_modules_disabled'             => $this->module_service->findByInterface(ModuleMenuInterface::class, true),
+            'menu_modules_enabled'              => $this->module_service->findByInterface(ModuleMenuInterface::class),
+            'report_modules_disabled'           => $this->module_service->findByInterface(ModuleReportInterface::class, true),
+            'report_modules_enabled'            => $this->module_service->findByInterface(ModuleReportInterface::class),
+            'share_modules_disabled'            => $this->module_service->findByInterface(ModuleShareInterface::class, true),
+            'share_modules_enabled'             => $this->module_service->findByInterface(ModuleShareInterface::class),
+            'sidebar_modules_disabled'          => $this->module_service->findByInterface(ModuleSidebarInterface::class, true),
+            'sidebar_modules_enabled'           => $this->module_service->findByInterface(ModuleSidebarInterface::class),
+            'tab_modules_disabled'              => $this->module_service->findByInterface(ModuleTabInterface::class, true),
+            'tab_modules_enabled'               => $this->module_service->findByInterface(ModuleTabInterface::class),
+            'theme_modules_disabled'            => $this->module_service->findByInterface(ModuleThemeInterface::class, true),
+            'theme_modules_enabled'             => $this->module_service->findByInterface(ModuleThemeInterface::class),
+            'show_synchronize'                  => $gedcom_file_count >= $multiple_tree_threshold,
         ]);
     }
 

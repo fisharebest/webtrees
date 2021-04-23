@@ -25,17 +25,17 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * @covers \Fisharebest\Webtrees\Module\MapLinkOpenStreetMapModule
+ * @covers \Fisharebest\Webtrees\Module\MapLinkBing
  * @covers \Fisharebest\Webtrees\Module\ModuleMapLinkTrait
  */
-class MapLinkOpenStreetMapModuleTest extends TestCase
+class MapLinkBingTest extends TestCase
 {
     /**
      * @return void
      */
     public function testNoCoordinates(): void
     {
-        $module = new MapLinkOpenStreetMapModule();
+        $module = new MapLinkBing();
 
         $fact = $this->createMock(Fact::class);
         $fact->method('latitude')->willReturn(null);
@@ -47,11 +47,13 @@ class MapLinkOpenStreetMapModuleTest extends TestCase
     }
 
     /**
+     * Test that the class exists
+     *
      * @return void
      */
     public function testLink(): void
     {
-        $module = new MapLinkOpenStreetMapModule();
+        $module = new MapLinkBing();
 
         $record = $this->createMock(Individual::class);
         $record->method('fullName')->willReturn('FULL NAME');

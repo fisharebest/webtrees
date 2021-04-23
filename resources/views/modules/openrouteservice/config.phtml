@@ -1,0 +1,51 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string $api_key
+ * @var string $title
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Modules'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form method="post">
+    <?= csrf_field() ?>
+
+    <div class="row form-group">
+        <label class="col-sm-3 col-form-label" for="api_key">
+            <?= I18N::translate('API key') ?>
+        </label>
+        <div class="col-sm-9">
+            <input
+                    class="form-control"
+                    dir="ltr"
+                    id="api_key"
+                    maxlength="255"
+                    name="api_key"
+                    type="text"
+                    value="<?= e($api_key) ?>"
+            >
+            <p class="small text-muted">
+                <?= I18N::translate('To use this service, you need an API key.') ?>
+                <br>
+                <?= I18N::translate('For more information, see %s.', '<a href="https://openrouteservice.org/dev">openrouteservice.org/dev</a>') ?>
+            </p>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <?= I18N::translate('save') ?>
+    </button>
+
+    <a href="<?= route(ControlPanel::class) ?>" class="btn btn-secondary">
+        <?= view('icons/cancel') ?>
+        <?= I18N::translate('cancel') ?>
+    </a>
+</form>

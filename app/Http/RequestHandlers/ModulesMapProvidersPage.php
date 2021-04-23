@@ -17,31 +17,31 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Module;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Localization\Locale\LocaleFrCa;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function view;
 
 /**
- * Class LanguageFrenchCanada.
+ * Show a list of modules.
  */
-class LanguageFrenchCanada extends LanguageFrench
+class ModulesMapProvidersPage extends AbstractModuleComponentPage
 {
     /**
-     * Should this module be enabled when it is first installed?
+     * @param ServerRequestInterface $request
      *
-     * @return bool
+     * @return ResponseInterface
      */
-    public function isEnabledByDefault(): bool
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return false;
-    }
-
-    /**
-     * @return LocaleInterface
-     */
-    public function locale(): LocaleInterface
-    {
-        return new LocaleFrCa();
+        return $this->listComponents(
+            ModuleMapProviderInterface::class,
+            view('icons/map') . ' ' . I18N::translate('Map providers'),
+            I18N::translate('Use maps in webtrees.')
+        );
     }
 }

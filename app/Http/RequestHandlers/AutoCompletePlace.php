@@ -20,12 +20,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Collection;
+use Iodev\Whois\Modules\Module;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
@@ -47,6 +51,18 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
         'timeout'         => 3,
     ];
 
+    private ModuleService $module_service;
+
+    /**
+     * @param SearchService $search_service
+     */
+    public function __construct(SearchService $search_service, ModuleService $module_service)
+    {
+        parent::__construct($search_service);
+
+        $this->module_service = $module_service;
+    }
+
     protected function search(ServerRequestInterface $request): Collection
     {
         $tree = $request->getAttribute('tree');
@@ -60,33 +76,13 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
                 return $place->gedcomName();
             });
 
-        $geonames = Site::getPreference('geonames');
-
-        if ($data->isEmpty() && $geonames !== '') {
-            // No place found? Use an external gazetteer
-            $url =
-                'https://secure.geonames.org/searchJSON' .
-                '?name_startsWith=' . rawurlencode($query) .
-                '&lang=' . I18N::languageTag() .
-                '&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC' .
-                '&style=full' .
-                '&username=' . rawurlencode($geonames);
-
-            // Read from the URL
-            $client = new Client();
-            try {
-                $json   = $client->get($url, self::GUZZLE_OPTIONS)->getBody()->__toString();
-                $places = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
-                if (isset($places['geonames']) && is_array($places['geonames'])) {
-                    foreach ($places['geonames'] as $k => $place) {
-                        $data->add($place['name'] . ', ' . $place['adminName2'] . ', ' . $place['adminName1'] . ', ' . $place['countryName']);
-                    }
-                }
-            } catch (RequestException $ex) {
-                // Service down?  Quota exceeded?
+        // No place found? Use external gazetteers.
+        foreach ($this->module_service->findByInterface(ModuleMapAutocompleteInterface::class) as $module) {
+            if ($data->isEmpty()) {
+                $data = $data->concat($module->searchPlaceNames($query))->sort();
             }
         }
 
-        return new Collection($data);
+        return $data;
     }
 }

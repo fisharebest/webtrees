@@ -17,31 +17,31 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Module;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Localization\Locale\LocaleFrCa;
-use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function view;
 
 /**
- * Class LanguageFrenchCanada.
+ * Show a list of modules.
  */
-class LanguageFrenchCanada extends LanguageFrench
+class ModulesMapAutocompletePage extends AbstractModuleComponentPage
 {
     /**
-     * Should this module be enabled when it is first installed?
+     * @param ServerRequestInterface $request
      *
-     * @return bool
+     * @return ResponseInterface
      */
-    public function isEnabledByDefault(): bool
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return false;
-    }
-
-    /**
-     * @return LocaleInterface
-     */
-    public function locale(): LocaleInterface
-    {
-        return new LocaleFrCa();
+        return $this->listComponents(
+            ModuleMapAutocompleteInterface::class,
+            view('icons/search') . ' ' . I18N::translate('Autocomplete'),
+            I18N::translate('Search for place names in an external database.')
+        );
     }
 }

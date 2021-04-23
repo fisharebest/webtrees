@@ -17,29 +17,22 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\RequestHandlers;
+namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\I18N;
 
 /**
- * Test the MapProviderPage request handler.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderPage
+ * Trait ModuleMapProviderTrait - default implementation of ModuleMapProviderInterface
  */
-class MapProviderPageTest extends TestCase
+trait ModuleMapProviderTrait
 {
-    protected static $uses_database = true;
-
     /**
-     * @return void
+     * Parameters to create a TileLayer in LeafletJs.
+     *
+     * @return array<object>
      */
-    public function testMapProviderPage(): void
+    public function leafletJsTileLayers(): array
     {
-        $handler  = new MapProviderPage();
-        $request  = self::createRequest();
-        $response = $handler->handle($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        return [];
     }
 }

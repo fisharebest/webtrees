@@ -17,30 +17,17 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\RequestHandlers;
-
-use Fig\Http\Message\RequestMethodInterface;
-use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\TestCase;
+namespace Fisharebest\Webtrees\Module;
 
 /**
- * Test the MapProviderAction request handler.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction
+ * Interface ModuleMapAutocompleteInterface - Classes and libraries for module system
  */
-class MapProviderActionTest extends TestCase
+interface ModuleMapAutocompleteInterface extends ModuleInterface
 {
-    protected static $uses_database = true;
-
     /**
-     * @return void
+     * @param string $place
+     *
+     * @return array<string>
      */
-    public function testMapProviderAction(): void
-    {
-        $handler  = new MapProviderAction();
-        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '']);
-        $response = $handler->handle($request);
-
-        self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
-    }
+    public function searchPlaceNames(string $place): array;
 }
