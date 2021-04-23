@@ -85,7 +85,7 @@ class MapDataSave implements RequestHandlerInterface
                     'latitude'  => $latitude,
                     'longitude' => $longitude,
                 ]);
-                
+
                 $message = I18N::translate('The location has been created', e($name));
                 FlashMessages::addMessage($message, 'success');
             }
