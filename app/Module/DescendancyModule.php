@@ -177,7 +177,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
         return
             '<li class="sb_desc_indi_li">' .
-            '<a class="sb_desc_indi" href="' . e(route('module', [
+            '<a class="sb_desc_indi" href="#" data-href="' . e(route('module', [
                 'module' => $this->name(),
                 'action' => 'Descendants',
                 'tree'    => $person->tree()->name(),
@@ -218,7 +218,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
         return
             '<li class="sb_desc_indi_li">' .
-            '<a class="sb_desc_indi" href="#"><i class="plusminus icon-minus"></i>' .
+            '<a class="sb_desc_indi" href="#" data-href="#"><i class="plusminus icon-minus"></i>' .
             $spouse_name .
             $marr .
             '</a>' .
