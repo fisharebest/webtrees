@@ -60,7 +60,7 @@ class UsersCleanupAction implements RequestHandlerInterface
         $delete = $params['delete'] ?? [];
 
         foreach ($delete as $user_id) {
-            $user = $this->user_service->find($user_id);
+            $user = $this->user_service->find((int) $user_id);
             if ($user instanceof UserInterface) {
                 $this->user_service->delete($user);
 
