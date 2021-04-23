@@ -37,8 +37,7 @@ use function route;
  */
 class UsersCleanupAction implements RequestHandlerInterface
 {
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * @param UserService $user_service
@@ -60,7 +59,7 @@ class UsersCleanupAction implements RequestHandlerInterface
         $delete = $params['delete'] ?? [];
 
         foreach ($delete as $user_id) {
-            $user = $this->user_service->find($user_id);
+            $user = $this->user_service->find((int) $user_id);
             if ($user instanceof UserInterface) {
                 $this->user_service->delete($user);
 
