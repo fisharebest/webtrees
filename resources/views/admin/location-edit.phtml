@@ -32,8 +32,8 @@ use Fisharebest\Webtrees\View;
 
 <form method="post" action="<?= e(route(MapDataSave::class)) ?>">
     <?= csrf_field() ?>
+    <input type="hidden" name="parent_id" value="<?= e($parent->id()) ?>">
     <input type="hidden" name="place_id" value="<?= e($location->id()) ?>">
-    <input type="hidden" name="parent_id" value="<?= e($location->parent()->id()) ?>">
 
     <div class="form-group row">
         <label class="col-form-label col-sm-1" for="new_place_name">

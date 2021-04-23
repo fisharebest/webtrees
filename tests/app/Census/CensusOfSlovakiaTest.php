@@ -43,7 +43,7 @@ class CensusOfSlovakiaTest extends TestCase
     /**
      * Test the census language
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     * @covers \Fisharebest\Webtrees\Census\CensusOfSlovakia
      *
      * @return void
      */
@@ -67,7 +67,9 @@ class CensusOfSlovakiaTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        self::assertCount(1, $census_dates);
+        self::assertCount(3, $census_dates);
         self::assertInstanceOf(CensusOfSlovakia1869::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfSlovakia1930::class, $census_dates[1]);
+        self::assertInstanceOf(CensusOfSlovakia1940::class, $census_dates[2]);
     }
 }

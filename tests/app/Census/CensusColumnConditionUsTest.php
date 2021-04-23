@@ -371,4 +371,74 @@ class CensusColumnConditionUsTest extends TestCase
 
         self::assertSame('D', $column->generate($individual, $individual));
     }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
+     */
+    public function testMarriedMale(): void
+    {
+        $fact = self::createMock(Fact::class);
+
+        $family = self::createMock(Family::class);
+        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family
+            ->expects(self::exactly(2))
+            ->method('facts')
+            ->withConsecutive(
+                [['MARR']],
+                [['DIV']]
+            )->willReturnOnConsecutiveCalls(
+                new Collection([$fact]),
+                new Collection()
+            );
+
+        $individual = self::createMock(Individual::class);
+        $individual->method('sex')->willReturn('M');
+        $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
+
+        $census = self::createMock(CensusInterface::class);
+
+        $column = new CensusColumnConditionUs($census, '', '');
+        $census->method('censusDate')->willReturn('30 JUN 1830');
+
+        self::assertSame('M', $column->generate($individual, $individual));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionUs
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
+     *
+     * @return void
+     */
+    public function testMarriedFemale(): void
+    {
+        $fact = self::createMock(Fact::class);
+
+        $family = self::createMock(Family::class);
+        $family->expects(self::once())->method('getMarriageDate')->willReturn(new Date(''));
+        $family
+            ->expects(self::exactly(2))
+            ->method('facts')
+            ->withConsecutive(
+                [['MARR']],
+                [['DIV']]
+            )->willReturnOnConsecutiveCalls(
+                new Collection([$fact]),
+                new Collection()
+            );
+
+        $individual = self::createMock(Individual::class);
+        $individual->method('sex')->willReturn('F');
+        $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
+
+        $census = self::createMock(CensusInterface::class);
+
+        $column = new CensusColumnConditionUs($census, '', '');
+        $census->method('censusDate')->willReturn('30 JUN 1830');
+
+        self::assertSame('M', $column->generate($individual, $individual));
+    }
 }

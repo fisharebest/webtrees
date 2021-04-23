@@ -23,11 +23,16 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Throwable;
 
 use function filter_var;
+use function gethostbyaddr;
+use function gethostbyname;
+use function gethostname;
 
 use const FILTER_VALIDATE_DOMAIN;
 
@@ -66,14 +71,28 @@ class EmailPreferencesPage implements RequestHandlerInterface
         $SMTP_ACTIVE    = Site::getPreference('SMTP_ACTIVE');
         $SMTP_AUTH      = Site::getPreference('SMTP_AUTH');
         $SMTP_AUTH_USER = Site::getPreference('SMTP_AUTH_USER');
-        $SMTP_FROM_NAME = $this->email_service->senderEmail();
-        $SMTP_HELO      = $this->email_service->localDomain();
+        $SMTP_DISP_NAME = Site::getPreference('SMTP_DISP_NAME');
+        $SMTP_FROM_NAME = Site::getPreference('SMTP_FROM_NAME');
+        $SMTP_HELO      = Site::getPreference('SMTP_HELO');
         $SMTP_HOST      = Site::getPreference('SMTP_HOST');
         $SMTP_PORT      = Site::getPreference('SMTP_PORT');
         $SMTP_SSL       = Site::getPreference('SMTP_SSL');
         $DKIM_DOMAIN    = Site::getPreference('DKIM_DOMAIN');
         $DKIM_SELECTOR  = Site::getPreference('DKIM_SELECTOR');
         $DKIM_KEY       = Site::getPreference('DKIM_KEY');
+
+        try {
+            $hostname = gethostbyaddr(gethostbyname(gethostname()));
+        } catch (Throwable $ex) {
+            $hostname = 'localhost';
+        }
+
+        // Defaults
+        $SMTP_PORT      = $SMTP_PORT ?: '25';
+        $SMTP_HELO      = $SMTP_HELO ?: $hostname;
+        $SMTP_FROM_NAME = $SMTP_FROM_NAME ?: ('no-reply@' . $SMTP_HELO);
+        $SMTP_DISP_NAME = $SMTP_DISP_NAME ?: Webtrees::NAME;
+
 
         $smtp_from_name_valid = $this->email_service->isValidEmail($SMTP_FROM_NAME);
         $smtp_helo_valid      = filter_var($SMTP_HELO, FILTER_VALIDATE_DOMAIN);
@@ -89,6 +108,7 @@ class EmailPreferencesPage implements RequestHandlerInterface
             'SMTP_ACTIVE'            => $SMTP_ACTIVE,
             'SMTP_AUTH'              => $SMTP_AUTH,
             'SMTP_AUTH_USER'         => $SMTP_AUTH_USER,
+            'SMTP_DISP_NAME'         => $SMTP_DISP_NAME,
             'SMTP_FROM_NAME'         => $SMTP_FROM_NAME,
             'SMTP_HELO'              => $SMTP_HELO,
             'SMTP_HOST'              => $SMTP_HOST,

@@ -1,0 +1,38 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact> $facts
+ * @var Individual       $record
+ * @var string           $url
+ */
+
+?>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" dir="ltr">iCalendar</span>
+    </div>
+    <select class="custom-select" id="share-anniversary-select" aria-label=" <?= I18N::translate('Anniversary') ?>" name="fact_id">
+        <?php foreach ($facts as $url => $label): ?>
+            <option value="<?= e($url) ?>"><?= $label ?></option>
+        <?php endforeach ?>
+    </select>
+    <div class="input-group-append">
+        <button class="btn btn-primary" type="button" id="share-anniversary-button"><?= view('icons/download') ?><?= I18N::translate('Download') ?></button>
+    </div>
+</div>
+<form id="share-anniversary-form"></form>
+<script>
+    document.getElementById('share-anniversary-button').addEventListener('click', function () {
+        console.log('clicked');
+        const select = document.getElementById('share-anniversary-select');
+        let form = document.getElementById('share-anniversary-form');
+        form.action = select.options[select.selectedIndex].value;;
+        form.submit();
+        console.log('submitted');
+    });
+</script>

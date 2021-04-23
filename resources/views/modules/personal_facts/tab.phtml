@@ -12,7 +12,9 @@ use Illuminate\Support\Collection;
  * @var bool             $can_edit
  * @var Collection<Fact> $clipboard_facts
  * @var Collection<Fact> $facts
- * @var bool             $has_historical_facts
+ * @var bool             $has_associate_facts
+ * @var bool             $has_historic_facts
+ * @var bool             $has_relative_facts
  * @var Individual       $individual
  */
 
@@ -23,11 +25,21 @@ use Illuminate\Support\Collection;
         <tbody>
             <tr>
                 <td colspan="2">
-                    <label>
-                        <input id="show-relatives-facts" type="checkbox" data-toggle="collapse" data-target=".wt-relation-fact">
-                        <?= I18N::translate('Events of close relatives') ?>
-                    </label>
-                    <?php if ($has_historical_facts) : ?>
+                    <?php if ($has_associate_facts) : ?>
+                        <label>
+                            <input id="show-associate-facts" type="checkbox" data-toggle="collapse" data-target=".wt-associate-fact">
+                            <?= I18N::translate('Associated events') ?>
+                        </label>
+                    <?php endif ?>
+
+                    <?php if ($has_relative_facts) : ?>
+                        <label>
+                            <input id="show-relatives-facts" type="checkbox" data-toggle="collapse" data-target=".wt-relation-fact">
+                            <?= I18N::translate('Events of close relatives') ?>
+                        </label>
+                    <?php endif ?>
+
+                    <?php if ($has_historic_facts) : ?>
                         <label>
                             <input id="show-historical-facts" type="checkbox" data-toggle="collapse" data-target=".wt-historic-fact">
                             <?= I18N::translate('Historic events') ?>
@@ -61,6 +73,7 @@ use Illuminate\Support\Collection;
 <script>
   'use strict';
 
+  webtrees.persistentToggle('show-associate-facts');
   webtrees.persistentToggle('show-relatives-facts');
   webtrees.persistentToggle('show-historical-facts');
 </script>

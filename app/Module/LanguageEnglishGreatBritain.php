@@ -25,9 +25,41 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 /**
  * Class LanguageEnglishGreatBritain.
  */
-class LanguageEnglishGreatBritain extends AbstractModule implements ModuleLanguageInterface
+class LanguageEnglishGreatBritain extends LanguageEnglishUnitedStates
 {
-    use ModuleLanguageTrait;
+    // British English changes "three-times" to "thrice"
+    protected const REMOVED = [
+        '',
+        ' once removed',
+        ' twice removed',
+        ' thrice removed',
+        ' four times removed',
+        ' five times removed',
+        ' six times removed',
+        ' seven times removed',
+        ' eight times removed',
+        ' nine times removed',
+        ' ten times removed',
+        ' eleven removed',
+        ' twelve removed',
+        ' thirteen removed',
+        ' fourteen times removed',
+        ' fifteen times removed',
+        ' sixteen times removed',
+        ' seventeen times removed',
+        ' eighteen times removed',
+        ' nineteen times removed',
+        ' twenty times removed',
+        ' twenty-one times removed',
+        ' twenty-two times removed',
+        ' twenty-three times removed',
+        ' twenty-four times removed',
+        ' twenty-five times removed',
+        ' twenty-six times removed',
+        ' twenty-seven times removed',
+        ' twenty-eight times removed',
+        ' twenty-nine times removed',
+    ];
 
     /**
      * @return LocaleInterface

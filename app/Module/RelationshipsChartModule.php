@@ -25,16 +25,20 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -69,15 +73,18 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         'recursion' => self::DEFAULT_RECURSION,
     ];
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
+
+    private RelationshipService $relationship_service;
 
     /**
-     * @param TreeService   $tree_service
+     * @param RelationshipService $relationship_service
+     * @param TreeService         $tree_service
      */
-    public function __construct(TreeService $tree_service)
+    public function __construct(RelationshipService $relationship_service, TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
+        $this->relationship_service = $relationship_service;
+        $this->tree_service         = $tree_service;
     }
 
     /**
@@ -131,15 +138,19 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function chartMenu(Individual $individual): Menu
     {
-        $gedcomid = $individual->tree()->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
+        $my_xref = $individual->tree()->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
 
-        if ($gedcomid !== '' && $gedcomid !== $individual->xref()) {
-            return new Menu(
-                I18N::translate('Relationship to me'),
-                $this->chartUrl($individual, ['xref2' => $gedcomid]),
-                $this->chartMenuClass(),
-                $this->chartUrlAttributes()
-            );
+        if ($my_xref !== '' && $my_xref !== $individual->xref()) {
+            $my_record = Registry::individualFactory()->make($my_xref, $individual->tree());
+
+            if ($my_record instanceof Individual) {
+                return new Menu(
+                    I18N::translate('Relationship to me'),
+                    $this->chartUrl($my_record, ['xref2' => $individual->xref()]),
+                    $this->chartMenuClass(),
+                    $this->chartUrlAttributes()
+                );
+            }
         }
 
         return new Menu(
@@ -307,7 +318,23 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                 // Cannot see one of the families/individuals, due to privacy;
                 continue;
             }
-            echo '<h3>', I18N::translate('Relationship: %s', Functions::getRelationshipNameFromPath(implode('', $relationships), $individual1, $individual2)), '</h3>';
+
+            $nodes = Collection::make($path)
+                ->map(static function (string $xref, int $key) use ($tree): GedcomRecord {
+                    if ($key % 2 === 0) {
+                        return Registry::individualFactory()->make($xref, $tree);
+                    }
+
+                    return  Registry::familyFactory()->make($xref, $tree);
+                });
+
+            $language = app(ModuleService::class)
+                ->findByInterface(ModuleLanguageInterface::class, true)
+                ->first(fn (ModuleLanguageInterface $language): bool => $language->locale()->languageTag() === I18N::languageTag());
+
+
+
+            echo '<h3>', I18N::translate('Relationship: %s', $this->relationship_service->nameFromPath($nodes->all(), $language)), '</h3>';
             $num_paths++;
 
             // Use a table/grid for layout.
@@ -329,17 +356,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'bro':
                         case 'sis':
                         case 'sib':
-                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
+                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
                             $x += 2;
                             break;
                         case 'son':
                         case 'dau':
                         case 'chi':
                             if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . Functions::getRelationshipNameFromPath($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
                                 $x += 2;
                             } else {
-                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
                             }
                             $y -= 2;
                             break;
@@ -347,10 +374,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'mot':
                         case 'par':
                             if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . Functions::getRelationshipNameFromPath($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
                                 $x += 2;
                             } else {
-                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . Functions::getRelationshipNameFromPath($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
+                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
                             }
                             $y += 2;
                             break;

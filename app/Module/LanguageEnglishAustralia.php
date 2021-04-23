@@ -25,10 +25,8 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 /**
  * Class LanguageEnglishAustralia.
  */
-class LanguageEnglishAustralia extends AbstractModule implements ModuleLanguageInterface
+class LanguageEnglishAustralia extends LanguageEnglishGreatBritain
 {
-    use ModuleLanguageTrait;
-
     /**
      * Should this module be enabled when it is first installed?
      *

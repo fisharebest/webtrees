@@ -113,9 +113,20 @@ class ManageMediaData implements RequestHandlerInterface
             $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);
 
-            $path = $row->media_folder . $row->multimedia_file_refn;
+            $is_http  = str_starts_with($row->multimedia_file_refn, 'http://');
+            $is_https = str_starts_with($row->multimedia_file_refn, 'https://');
+
+            if ($is_http || $is_https) {
+                return [
+                    '<a href="' . e($row->multimedia_file_refn) . '">' . e($row->multimedia_file_refn) . '</a>',
+                    view('icons/mime', ['type' => Mime::DEFAULT_TYPE]),
+                    $this->mediaObjectInfo($media),
+                ];
+            }
 
             try {
+                $path = $row->media_folder . $row->multimedia_file_refn;
+
                 try {
                     $mime_type = Registry::filesystem()->data()->mimeType($path);
                 } catch (UnableToRetrieveMetadata $ex) {
@@ -137,7 +148,7 @@ class ManageMediaData implements RequestHandlerInterface
             }
 
             return [
-                $row->multimedia_file_refn,
+                e($row->multimedia_file_refn),
                 $img,
                 $this->mediaObjectInfo($media),
             ];

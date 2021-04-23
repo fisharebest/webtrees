@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\SiteUser;
 use Psr\Http\Message\ServerRequestInterface;
 use Swift_Mailer;
 use Swift_Message;
@@ -32,15 +33,11 @@ use Swift_SendmailTransport;
 use Swift_Signers_DKIMSigner;
 use Swift_SmtpTransport;
 use Swift_Transport;
-use Throwable;
 
 use function assert;
 use function checkdnsrr;
 use function filter_var;
 use function function_exists;
-use function gethostbyaddr;
-use function gethostbyname;
-use function gethostname;
 use function str_replace;
 use function strrchr;
 use function substr;
@@ -68,24 +65,17 @@ class EmailService
      */
     public function send(UserInterface $from, UserInterface $to, UserInterface $reply_to, string $subject, string $message_text, string $message_html): bool
     {
-        // Mail needs MSDOS line endings
+        // Mail needs MS-DOS line endings
         $message_text = str_replace("\n", "\r\n", $message_text);
         $message_html = str_replace("\n", "\r\n", $message_html);
-
-        // Special accounts do not have an email address.  Use the system one.
-        $from_email     = $from->email() ?: $this->senderEmail();
-        $reply_to_email = $reply_to->email() ?: $this->senderEmail();
 
         try {
             $message = (new Swift_Message())
                 ->setSubject($subject)
-                ->setFrom($from_email, $from->realName())
+                ->setFrom($from->email(), $from->realName())
                 ->setTo($to->email(), $to->realName())
+                ->setReplyTo($reply_to->email(), $reply_to->realName())
                 ->setBody($message_html, 'text/html');
-
-            if ($from_email !== $reply_to_email) {
-                $message->setReplyTo($reply_to_email, $reply_to->realName());
-            }
 
             $dkim_domain   = Site::getPreference('DKIM_DOMAIN');
             $dkim_selector = Site::getPreference('DKIM_SELECTOR');
@@ -120,7 +110,7 @@ class EmailService
      *
      * @return Swift_Transport
      */
-    private function transport(): Swift_Transport
+    protected function transport(): Swift_Transport
     {
         switch (Site::getPreference('SMTP_ACTIVE')) {
             case 'sendmail':
@@ -134,6 +124,7 @@ class EmailService
 
             case 'external':
                 // SMTP
+                $smtp_helo = Site::getPreference('SMTP_HELO');
                 $smtp_host = Site::getPreference('SMTP_HOST');
                 $smtp_port = (int) Site::getPreference('SMTP_PORT', '25');
                 $smtp_auth = (bool) Site::getPreference('SMTP_AUTH');
@@ -147,7 +138,7 @@ class EmailService
 
                 $transport = new Swift_SmtpTransport($smtp_host, $smtp_port, $smtp_encr);
 
-                $transport->setLocalDomain($this->localDomain());
+                $transport->setLocalDomain($smtp_helo);
 
                 if ($smtp_auth) {
                     $transport
@@ -161,38 +152,6 @@ class EmailService
                 // For testing
                 return new Swift_NullTransport();
         }
-    }
-
-    /**
-     * Where are we sending mail from?
-     *
-     * @return string
-     */
-    public function localDomain(): string
-    {
-        $local_domain = Site::getPreference('SMTP_HELO');
-
-        try {
-            // Look ourself up using DNS.
-            $default = gethostbyaddr(gethostbyname(gethostname()));
-        } catch (Throwable $ex) {
-            $default = 'localhost';
-        }
-
-        return $local_domain ?: $default;
-    }
-
-    /**
-     * Who are we sending mail from?
-     *
-     * @return string
-     */
-    public function senderEmail(): string
-    {
-        $sender  = Site::getPreference('SMTP_FROM_NAME');
-        $default = 'no-reply@' . $this->localDomain();
-
-        return $sender ?: $default;
     }
 
     /**

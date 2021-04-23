@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Relationship;
 
 /**
  * Trait ModuleLanguageEventsTrait - default implementation of ModuleLanguageInterface.
@@ -54,5 +55,13 @@ trait ModuleLanguageTrait
     public function locale(): LocaleInterface
     {
         return new LocaleEnUs();
+    }
+
+    /**
+     * @return array<Relationship>
+     */
+    public function relationships(): array
+    {
+        return [];
     }
 }

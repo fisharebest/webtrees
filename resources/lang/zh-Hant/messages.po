@@ -14623,7 +14623,7 @@ msgstr "一些家譜軟體創建 GEDCOM 文件，其中包含多媒體文件名�
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
 
 # I18N: Help text for the “Hit counters” configuration setting

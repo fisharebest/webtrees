@@ -143,10 +143,11 @@ class BadBotBlocker implements MiddlewareInterface
      * Some search engines operate from within a designated autonomous system.
      *
      * @see https://developers.facebook.com/docs/sharing/webmasters/crawler
+     * @see https://www.facebook.com/peering/
      */
-    private const ROBOT_ASN = [
-        'facebook' => 'AS32934',
-        'twitter'  => 'AS13414',
+    private const ROBOT_ASNS = [
+        'facebook' => ['AS32934', 'AS63293'],
+        'twitter'  => ['AS13414'],
     ];
 
     /**
@@ -194,15 +195,17 @@ class BadBotBlocker implements MiddlewareInterface
             }
         }
 
-        foreach (self::ROBOT_ASN as $robot => $asn) {
-            if (str_contains($ua, $robot)) {
-                foreach ($this->fetchIpRangesForAsn($asn) as $range) {
-                    if ($range->contains($address)) {
-                        continue 2;
+        foreach (self::ROBOT_ASNS as $robot => $asns) {
+            foreach ($asns as $asn) {
+                if (str_contains($ua, $robot)) {
+                    foreach ($this->fetchIpRangesForAsn($asn) as $range) {
+                        if ($range->contains($address)) {
+                            continue 2;
+                        }
                     }
-                }
 
-                return $this->response();
+                    return $this->response();
+                }
             }
         }
 

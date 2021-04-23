@@ -22,6 +22,7 @@ use Illuminate\Support\Collection;
  * @var Collection<Media>                  $individual_media
  * @var Collection<Fact>                   $name_records
  * @var Collection<Fact>                   $sex_records
+ * @var Collection<string>                 $shares
  * @var Collection<ModuleTabInterface>     $tabs
  * @var Tree                               $tree
  */
@@ -52,7 +53,7 @@ use Illuminate\Support\Collection;
         <?= $individual->fullName() ?><?= $user_link ?>, <?= $individual->lifespan() ?> <?= $age ?>
     </h2>
     <?php if ($individual->canEdit()) : ?>
-        <?= view('individual-page-menu', ['record' => $individual]) ?>
+        <?= view('individual-page-menu', ['record' => $individual, 'shares' => $shares]) ?>
     <?php endif ?>
 </div>
 
@@ -193,3 +194,4 @@ use Illuminate\Support\Collection;
 <?php View::endpush() ?>
 
 <?= view('modals/ajax') ?>
+<?= view('modals/shares', ['shares' => $shares, 'title' => I18N::translate('Share') . ' — ' . $individual->fullName()]) ?>

@@ -57,23 +57,27 @@ class I18N
     // MO files use special characters for plurals and context.
     public const PLURAL  = "\x00";
     public const CONTEXT = "\x04";
+
+    // Digits are always rendered LTR, even in RTL text.
     private const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
+
+    // These locales need special handling for the dotless letter I.
     private const DOTLESS_I_LOCALES = [
         'az',
         'tr',
     ];
+
     private const DOTLESS_I_TOLOWER = [
         'I' => 'ı',
         'İ' => 'i',
     ];
 
-    // Digits are always rendered LTR, even in RTL text.
     private const DOTLESS_I_TOUPPER = [
         'ı' => 'I',
         'i' => 'İ',
     ];
 
-    // These locales need special handling for the dotless letter I.
+    // The ranges of characters used by each script.
     private const SCRIPT_CHARACTER_RANGES = [
         [
             'Latn',
@@ -174,6 +178,8 @@ class I18N
         ],
         // Mixed CJK, not just Hans
     ];
+
+    // Characters that are displayed in mirror form in RTL text.
     private const MIRROR_CHARACTERS = [
         '('  => ')',
         ')'  => '(',
@@ -194,18 +200,17 @@ class I18N
         '‘ ' => '’',
         '’ ' => '‘',
     ];
-    /** @var string Punctuation used to separate list items, typically a comma */
-    public static $list_separator;
 
-    // The ranges of characters used by each script.
-    /** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
-    private static $locale;
+    // Punctuation used to separate list items, typically a comma
+    public static string $list_separator;
 
-    // Characters that are displayed in mirror form in RTL text.
-    /** @var Translator An object that performs translation */
-    private static $translator;
-    /** @var  Collator|null From the php-intl library */
-    private static $collator;
+    private static ?ModuleLanguageInterface $language;
+
+    private static LocaleInterface $locale;
+
+    private static Translator $translator;
+
+    private static ?Collator $collator;
 
     /**
      * The preferred locales for this site, or a default list if no preference.
@@ -311,11 +316,17 @@ class I18N
 
         // Add translations from custom modules (but not during setup, as we have no database/modules)
         if (!$setup) {
-            $translations = app(ModuleService::class)
+            $module_service = app(ModuleService::class);
+
+            $translations = $module_service
                 ->findByInterface(ModuleCustomInterface::class)
                 ->reduce(static function (array $carry, ModuleCustomInterface $item): array {
                     return array_merge($carry, $item->customTranslations(self::$locale->languageTag()));
                 }, $translations);
+
+            self::$language = $module_service
+                ->findByInterface(ModuleLanguageInterface::class)
+                ->first(fn (ModuleLanguageInterface $module): bool => $module->locale()->languageTag() === $code);
         }
 
         // Create a translator
@@ -369,6 +380,14 @@ class I18N
     public static function locale(): LocaleInterface
     {
         return self::$locale;
+    }
+
+    /**
+     * @return ModuleLanguageInterface
+     */
+    public static function language(): ModuleLanguageInterface
+    {
+        return self::$language;
     }
 
     /**

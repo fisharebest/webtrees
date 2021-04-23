@@ -46,7 +46,7 @@ class SiteUser implements UserInterface
      */
     public function email(): string
     {
-        return '';
+        return Site::getPreference('SMTP_FROM_NAME');
     }
 
     /**
@@ -56,7 +56,7 @@ class SiteUser implements UserInterface
      */
     public function realName(): string
     {
-        return Webtrees::NAME;
+        return Site::getPreference('SMTP_DISP_NAME');
     }
 
     /**

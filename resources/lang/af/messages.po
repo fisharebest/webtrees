@@ -13537,7 +13537,7 @@ msgstr "Sommige genealogie programme skep GEDCOM-lêers wat media-lêername met 
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr "Sommige genealogiese toepassings stoor alle name in 'n enkele naamrekord, met behulp van aangepaste etikette soos _MARNM en _AKA. 'n Alternatief is om 'n nuwe naamrekord vir elke naam op te stel."
 
 #. I18N: Help text for the “Hit counters” configuration setting

@@ -25,9 +25,8 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 /**
  * Class LanguageFrenchCanada.
  */
-class LanguageFrenchCanada extends AbstractModule implements ModuleLanguageInterface
+class LanguageFrenchCanada extends LanguageFrench
 {
-    use ModuleLanguageTrait;
 
     /**
      * Should this module be enabled when it is first installed?

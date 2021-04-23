@@ -26,6 +26,13 @@ use Fisharebest\Webtrees\Module\DutchMonarchs;
 use Fisharebest\Webtrees\Module\DutchPrimeMinisters;
 use Fisharebest\Webtrees\Module\LocationListModule;
 use Fisharebest\Webtrees\Module\LowCountriesRulers;
+use Fisharebest\Webtrees\Module\MapLinkBingModule;
+use Fisharebest\Webtrees\Module\MapLinkGoogleModule;
+use Fisharebest\Webtrees\Module\MapLinkOpenStreetMapModule;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
+use Fisharebest\Webtrees\Module\ModuleShareInterface;
+use Fisharebest\Webtrees\Module\ShareAnniversaryModule;
+use Fisharebest\Webtrees\Module\ShareUrlModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
@@ -256,8 +263,10 @@ class ModuleService
         ModuleHistoricEventsInterface::class,
         ModuleLanguageInterface::class,
         ModuleListInterface::class,
+        ModuleMapLinkInterface::class,
         ModuleMenuInterface::class,
         ModuleReportInterface::class,
+        ModuleShareInterface::class,
         ModuleSidebarInterface::class,
         ModuleTabInterface::class,
         ModuleThemeInterface::class,
@@ -423,6 +432,9 @@ class ModuleService
         'logged_in'               => LoggedInUsersModule::class,
         'login_block'             => LoginBlockModule::class,
         'low_countries_rulers'    => LowCountriesRulers::class,
+        'map-link-bing'           => MapLinkBingModule::class,
+        'map-link-google'         => MapLinkGoogleModule::class,
+        'map-link-openstreetmap'  => MapLinkOpenStreetMapModule::class,
         'marriage_report'         => MarriageReportModule::class,
         'matomo-analytics'        => MatomoAnalyticsModule::class,
         'media'                   => MediaTabModule::class,
@@ -449,6 +461,8 @@ class ModuleService
         'repository_list'         => RepositoryListModule::class,
         'review_changes'          => ReviewChangesModule::class,
         'search-menu'             => SearchMenuModule::class,
+        'share-anniversary'       => ShareAnniversaryModule::class,
+        'share-url'               => ShareUrlModule::class,
         'sitemap'                 => SiteMapModule::class,
         'source_list'             => SourceListModule::class,
         'sources_tab'             => SourcesTabModule::class,

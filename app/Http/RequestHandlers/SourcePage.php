@@ -94,7 +94,9 @@ class SourcePage implements RequestHandlerInterface
         $source = Auth::checkSourceAccess($source, false);
 
         // Redirect to correct xref/slug
-        if ($source->xref() !== $xref || $request->getAttribute('slug') !== $source->slug()) {
+        $slug = Registry::slugFactory()->make($source);
+
+        if ($source->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

@@ -45,11 +45,14 @@ class MapDataSave implements RequestHandlerInterface
     {
         $params = (array) $request->getParsedBody();
 
+        $parent_id = $params['parent_id'] ?? '';
         $place_id  = $params['place_id'] ?? '';
-        $parent_id = $params['parent_id'] ?? null;
         $latitude  = $params['new_place_lati'] ?? '';
         $longitude = $params['new_place_long'] ?? '';
         $name      = mb_substr($params['new_place_name'] ?? '', 0, 120);
+
+        $place_id  = $place_id === '' ? null : $place_id;
+        $parent_id = $parent_id === '' ? null : $parent_id;
 
         if ($latitude === '' || $longitude === '') {
             $latitude  = null;
@@ -66,13 +69,26 @@ class MapDataSave implements RequestHandlerInterface
             }
         }
 
-        if ($place_id === '') {
-            DB::table('place_location')->insert([
-                'parent_id' => $parent_id,
-                'place'     => $name,
-                'latitude'  => $latitude,
-                'longitude' => $longitude,
-            ]);
+        if ($place_id === null) {
+            $exists_query = DB::table('place_location')->where('place', '=', $name);
+
+            if ($parent_id === null) {
+                $exists_query->whereNull('parent_id');
+            } else {
+                $exists_query->where('parent_id', '=', $parent_id);
+            }
+
+            if (!$exists_query->exists()) {
+                DB::table('place_location')->insert([
+                    'parent_id' => $parent_id,
+                    'place'     => $name,
+                    'latitude'  => $latitude,
+                    'longitude' => $longitude,
+                ]);
+                
+                $message = I18N::translate('The location has been created', e($name));
+                FlashMessages::addMessage($message, 'success');
+            }
         } else {
             DB::table('place_location')
                 ->where('id', '=', $place_id)
@@ -81,10 +97,10 @@ class MapDataSave implements RequestHandlerInterface
                     'latitude'  => $latitude,
                     'longitude' => $longitude,
                 ]);
-        }
 
-        $message = I18N::translate('The details for “%s” have been updated.', e($name));
-        FlashMessages::addMessage($message, 'success');
+            $message = I18N::translate('The details for “%s” have been updated.', e($name));
+            FlashMessages::addMessage($message, 'success');
+        }
 
         $url = route(MapDataList::class, ['parent_id' => $parent_id]);
 

@@ -75,7 +75,9 @@ class MediaPage implements RequestHandlerInterface
         $media = Auth::checkMediaAccess($media);
 
         // Redirect to correct xref/slug
-        if ($media->xref() !== $xref || $request->getAttribute('slug') !== $media->slug()) {
+        $slug = Registry::slugFactory()->make($media);
+
+        if ($media->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($media->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

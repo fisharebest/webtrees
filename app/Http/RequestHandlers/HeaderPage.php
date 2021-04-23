@@ -78,7 +78,9 @@ class HeaderPage implements RequestHandlerInterface
         $header = Auth::checkHeaderAccess($header, false);
 
         // Redirect to correct xref/slug
-        if ($header->xref() !== $xref || $request->getAttribute('slug') !== $header->slug()) {
+        $slug = Registry::slugFactory()->make($header);
+
+        if ($header->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($header->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

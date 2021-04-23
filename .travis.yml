@@ -17,7 +17,7 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
-  - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"; fi
   - travis_retry composer install
 
 # Coverage testing is slow, so only do it once.

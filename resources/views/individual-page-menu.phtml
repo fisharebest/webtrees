@@ -6,14 +6,16 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Illuminate\Support\Collection;
 
 /**
- * @var Individual $record
+ * @var Individual         $record
+ * @var Collection<string> $shares
  */
 
 ?>
@@ -25,6 +27,15 @@ use Fisharebest\Webtrees\Individual;
     </button>
 
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
+        <?php if ($shares->isNotEmpty()): ?>
+            <button class="dropdown-item"  data-toggle="modal" data-target="#wt-shares-modal">
+                <?= view('icons/share') ?>
+                <?= I18N::translate('Share') ?>
+            </button>
+
+            <hr>
+        <?php endif ?>
+
         <a class="dropdown-item" href="<?= e(route(AddName::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a name') ?>

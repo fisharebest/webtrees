@@ -58,7 +58,7 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
 
             $xref = $this->extractXref($gedcom ?? $pending, $xref);
 
-            return new Media($xref, $gedcom ?? '', $pending, $tree);
+            return $this->new($xref, $gedcom ?? '', $pending, $tree);
         });
     }
 

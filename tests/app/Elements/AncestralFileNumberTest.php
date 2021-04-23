@@ -23,6 +23,7 @@ namespace Fisharebest\Webtrees\Elements;
  * Test harness for the class AncestralFileNumber
  *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
+ * @covers \Fisharebest\Webtrees\Elements\AbstractExternalLink
  * @covers \Fisharebest\Webtrees\Elements\AncestralFileNumber
  */
 class AncestralFileNumberTest extends AbstractElementTest

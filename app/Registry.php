@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
+use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
@@ -41,53 +42,39 @@ use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
  */
 class Registry
 {
-    /** @var CacheFactoryInterface */
-    private static $cache_factory;
+    private static CacheFactoryInterface $cache_factory;
 
-    /** @var ElementFactoryInterface */
-    private static $element_factory;
+    private static ElementFactoryInterface $element_factory;
 
-    /** @var FamilyFactoryInterface */
-    private static $family_factory;
+    private static FamilyFactoryInterface $family_factory;
 
-    /** @var FilesystemFactoryInterface */
-    private static $filesystem_factory;
+    private static FilesystemFactoryInterface $filesystem_factory;
 
-    /** @var GedcomRecordFactoryInterface */
-    private static $gedcom_record_factory;
+    private static GedcomRecordFactoryInterface $gedcom_record_factory;
 
-    /** @var HeaderFactoryInterface */
-    private static $header_factory;
+    private static HeaderFactoryInterface $header_factory;
 
-    /** @var ImageFactoryInterface */
-    private static $image_factory;
+    private static ImageFactoryInterface $image_factory;
 
-    /** @var IndividualFactoryInterface */
-    private static $individual_factory;
+    private static IndividualFactoryInterface $individual_factory;
 
-    /** @var LocationFactoryInterface */
-    private static $location_factory;
+    private static LocationFactoryInterface $location_factory;
 
-    /** @var MediaFactoryInterface */
-    private static $media_factory;
+    private static MediaFactoryInterface $media_factory;
 
-    /** @var NoteFactoryInterface */
-    private static $note_factory;
+    private static NoteFactoryInterface $note_factory;
 
-    /** @var RepositoryFactoryInterface */
-    private static $repository_factory;
+    private static RepositoryFactoryInterface $repository_factory;
 
-    /** @var SourceFactoryInterface */
-    private static $source_factory;
+    private static SlugFactoryInterface $slug_factory;
 
-    /** @var SubmissionFactoryInterface */
-    private static $submission_factory;
+    private static SourceFactoryInterface $source_factory;
 
-    /** @var SubmitterFactoryInterface */
-    private static $submitter_factory;
+    private static SubmissionFactoryInterface $submission_factory;
 
-    /** @var XrefFactoryInterface */
-    private static $xref_factory;
+    private static SubmitterFactoryInterface $submitter_factory;
+
+    private static XrefFactoryInterface $xref_factory;
 
     /**
      * Store or retrieve a factory object.
@@ -279,6 +266,22 @@ class Registry
         }
 
         return self::$repository_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param SlugFactoryInterface|null $factory
+     *
+     * @return SlugFactoryInterface
+     */
+    public static function slugFactory(SlugFactoryInterface $factory = null): SlugFactoryInterface
+    {
+        if ($factory instanceof SlugFactoryInterface) {
+            self::$slug_factory = $factory;
+        }
+
+        return self::$slug_factory;
     }
 
     /**

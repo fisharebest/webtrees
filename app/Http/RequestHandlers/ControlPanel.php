@@ -33,8 +33,10 @@ use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -191,10 +193,14 @@ class ControlPanel implements RequestHandlerInterface
             'language_modules_enabled'   => $this->module_service->findByInterface(ModuleLanguageInterface::class),
             'list_modules_disabled'      => $this->module_service->findByInterface(ModuleListInterface::class, true),
             'list_modules_enabled'       => $this->module_service->findByInterface(ModuleListInterface::class),
+            'map_link_modules_disabled'  => $this->module_service->findByInterface(ModuleMapLinkInterface::class, true),
+            'map_link_modules_enabled'   => $this->module_service->findByInterface(ModuleMapLinkInterface::class),
             'menu_modules_disabled'      => $this->module_service->findByInterface(ModuleMenuInterface::class, true),
             'menu_modules_enabled'       => $this->module_service->findByInterface(ModuleMenuInterface::class),
             'report_modules_disabled'    => $this->module_service->findByInterface(ModuleReportInterface::class, true),
             'report_modules_enabled'     => $this->module_service->findByInterface(ModuleReportInterface::class),
+            'share_modules_disabled'     => $this->module_service->findByInterface(ModuleShareInterface::class, true),
+            'share_modules_enabled'      => $this->module_service->findByInterface(ModuleShareInterface::class),
             'sidebar_modules_disabled'   => $this->module_service->findByInterface(ModuleSidebarInterface::class, true),
             'sidebar_modules_enabled'    => $this->module_service->findByInterface(ModuleSidebarInterface::class),
             'tab_modules_disabled'       => $this->module_service->findByInterface(ModuleTabInterface::class, true),

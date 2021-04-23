@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Tree;
 use Ramsey\Uuid\Uuid;
 
@@ -145,7 +146,7 @@ class FunctionsPrintFacts
 
         // Event of close associates
         if ($id === 'asso') {
-            $styles[] = 'wt-relation-fact collapse';
+            $styles[] = 'wt-associate-fact collapse';
         }
 
         // historical facts
@@ -386,7 +387,7 @@ class FunctionsPrintFacts
 
                 if ($module instanceof RelationshipsChartModule) {
                     foreach ($associates as $associate) {
-                        $relationship_name = Functions::getCloseRelationshipName($associate, $person);
+                        $relationship_name = app(RelationshipService::class)->getCloseRelationshipName($associate, $person);
                         if ($relationship_name === '') {
                             $relationship_name = GedcomTag::getLabel('RELA');
                         }
@@ -463,7 +464,7 @@ class FunctionsPrintFacts
                         $data .= '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">';
                         $data .= view('icons/expand');
                         $data .= view('icons/collapse');
-                        $data .= '</a> ';
+                        $data .= '</a>';
                     }
                     $data .= GedcomTag::getLabelValue('SOUR', '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>', null, 'span');
                     $data .= '</div>';

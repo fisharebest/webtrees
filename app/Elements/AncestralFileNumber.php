@@ -19,10 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Tree;
-
-use function e;
-use function rawurlencode;
 use function strtoupper;
 
 /**
@@ -30,9 +26,9 @@ use function strtoupper;
  * A unique permanent record number of an individual record contained in the
  * Family History Department's Ancestral File.
  */
-class AncestralFileNumber extends AbstractElement
+class AncestralFileNumber extends AbstractExternalLink
 {
-    protected const EXTERNAL_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId=';
+    protected const EXTERNAL_URL = 'https://www.familysearch.org/search/family-trees/results?q.afnId={ID}';
 
     protected const MAXIMUM_LENGTH = 12;
 
@@ -46,21 +42,5 @@ class AncestralFileNumber extends AbstractElement
     public function canonical(string $value): string
     {
         return strtoupper(parent::canonical($value));
-    }
-
-    /**
-     * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
-     */
-    public function value(string $value, Tree $tree): string
-    {
-        $canonical = $this->canonical($value);
-        $url       = static::EXTERNAL_URL . rawurlencode($canonical);
-
-        return '<a dir="ltr" href="' . e($url) . '" rel="nofollow">' . e($canonical) . '</a>';
     }
 }

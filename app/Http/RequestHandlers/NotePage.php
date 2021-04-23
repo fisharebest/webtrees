@@ -74,7 +74,9 @@ class NotePage implements RequestHandlerInterface
         $note = Auth::checkNoteAccess($note, false);
 
         // Redirect to correct xref/slug
-        if ($note->xref() !== $xref || $request->getAttribute('slug') !== $note->slug()) {
+        $slug = Registry::slugFactory()->make($note);
+
+        if ($note->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($note->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

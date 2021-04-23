@@ -76,7 +76,9 @@ class FamilyPage implements RequestHandlerInterface
         $family = Auth::checkFamilyAccess($family, false);
 
         // Redirect to correct xref/slug
-        if ($family->xref() !== $xref || $request->getAttribute('slug') !== $family->slug()) {
+        $slug = Registry::slugFactory()->make($family);
+
+        if ($family->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
             return redirect($family->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
