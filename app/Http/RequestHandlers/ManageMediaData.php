@@ -113,27 +113,34 @@ class ManageMediaData implements RequestHandlerInterface
             $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);
 
-            $path = $row->media_folder . $row->multimedia_file_refn;
+            $is_http  = str_starts_with($row->multimedia_file_refn, 'http://');
+            $is_https = str_starts_with($row->multimedia_file_refn, 'https://');
 
-            try {
+            if ($is_http || $is_https) {
+                $img = view('icons/mime', ['type' => Mime::DEFAULT_TYPE]);
+            } else {
                 try {
-                    $mime_type = Registry::filesystem()->data()->mimeType($path);
-                } catch (UnableToRetrieveMetadata $ex) {
-                    $mime_type = Mime::DEFAULT_TYPE;
-                }
+                    $path = $row->media_folder . $row->multimedia_file_refn;
 
-                if (str_starts_with($mime_type, 'image/')) {
+                    try {
+                        $mime_type = Registry::filesystem()->data()->mimeType($path);
+                    } catch (UnableToRetrieveMetadata $ex) {
+                        $mime_type = Mime::DEFAULT_TYPE;
+                    }
+
+                    if (str_starts_with($mime_type, 'image/')) {
+                        $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
+                        $img = '<img src="' . e($url) . '">';
+                    } else {
+                        $img = view('icons/mime', ['type' => $mime_type]);
+                    }
+
+                    $url = route(AdminMediaFileDownload::class, ['path' => $path]);
+                    $img = '<a href="' . e($url) . '" type="' . $mime_type . '" class="gallery">' . $img . '</a>';
+                } catch (UnableToReadFile $ex) {
                     $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
                     $img = '<img src="' . e($url) . '">';
-                } else {
-                    $img = view('icons/mime', ['type' => $mime_type]);
                 }
-
-                $url = route(AdminMediaFileDownload::class, ['path' => $path]);
-                $img = '<a href="' . e($url) . '" type="' . $mime_type . '" class="gallery">' . $img . '</a>';
-            } catch (UnableToReadFile $ex) {
-                $url = route(AdminMediaFileThumbnail::class, ['path' => $path]);
-                $img = '<img src="' . e($url) . '">';
             }
 
             return [
