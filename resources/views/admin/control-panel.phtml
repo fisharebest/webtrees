@@ -675,6 +675,13 @@ use Illuminate\Support\Collection;
                         </a>
                         <?= view('components/badge', ['count' => $share_modules_enabled->count(), 'total' => $share_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
+                </ul>
+
+                <h3>
+                    <?= I18N::translate('Geographic data') ?>
+                </h3>
+
+                <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/location') ?></span>
                         <a href="<?= e(route(ModulesMapLinksPage::class)) ?>">
@@ -683,7 +690,6 @@ use Illuminate\Support\Collection;
                         <?= view('components/badge', ['count' => $map_link_modules_enabled->count(), 'total' => $map_link_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
-
             </div>
 
             <div class="col-sm-4">

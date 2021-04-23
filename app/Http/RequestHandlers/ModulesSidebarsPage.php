@@ -40,7 +40,7 @@ class ModulesSidebarsPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleSidebarInterface::class,
-            view('icons/sidebar') . I18N::translate('Sidebars'),
+            view('icons/sidebar') . ' ' . I18N::translate('Sidebars'),
             ''
         );
     }

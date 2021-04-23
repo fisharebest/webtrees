@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function view;
+
 /**
  * Show a list of modules.
  */
@@ -38,7 +40,7 @@ class ModulesAnalyticsPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleAnalyticsInterface::class,
-            I18N::translate('Tracking and analytics'),
+            view('icons/analytics') . ' ' . I18N::translate('Tracking and analytics'),
             I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically.')
         );
     }

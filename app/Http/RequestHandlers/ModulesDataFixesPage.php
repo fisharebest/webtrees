@@ -40,7 +40,7 @@ class ModulesDataFixesPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleDataFixInterface::class,
-            view('icons/data-fix') . I18N::translate('Data fixes'),
+            view('icons/data-fix') . ' ' . I18N::translate('Data fixes'),
             ''
         );
     }

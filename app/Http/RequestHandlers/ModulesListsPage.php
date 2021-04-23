@@ -40,7 +40,7 @@ class ModulesListsPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleListInterface::class,
-            view('icons/list') . I18N::translate('Lists'),
+            view('icons/list') . ' ' . I18N::translate('Lists'),
             ''
         );
     }

@@ -40,7 +40,7 @@ class ModulesThemesPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleThemeInterface::class,
-            view('icons/theme') . I18N::translate('Themes'),
+            view('icons/theme') . ' ' . I18N::translate('Themes'),
             ''
         );
     }

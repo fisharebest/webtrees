@@ -40,7 +40,7 @@ class ModulesBlocksPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleBlockInterface::class,
-            view('icons/block') . I18N::translate('Blocks'),
+            view('icons/block') . ' ' . I18N::translate('Blocks'),
             ''
         );
     }

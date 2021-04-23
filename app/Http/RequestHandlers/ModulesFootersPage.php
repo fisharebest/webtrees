@@ -40,7 +40,7 @@ class ModulesFootersPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleFooterInterface::class,
-            view('icons/footer') . I18N::translate('Footers'),
+            view('icons/footer') . ' ' . I18N::translate('Footers'),
             ''
         );
     }

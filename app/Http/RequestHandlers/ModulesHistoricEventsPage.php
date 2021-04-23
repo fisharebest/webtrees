@@ -40,7 +40,7 @@ class ModulesHistoricEventsPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleHistoricEventsInterface::class,
-            view('icons/history') . I18N::translate('Historic events'),
+            view('icons/history') . ' ' . I18N::translate('Historic events'),
             ''
         );
     }

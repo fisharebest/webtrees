@@ -40,7 +40,7 @@ class ModulesMenusPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleMenuInterface::class,
-            view('icons/menu') . I18N::translate('Menus'),
+            view('icons/menu') . ' ' . I18N::translate('Menus'),
             ''
         );
     }

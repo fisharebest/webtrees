@@ -40,7 +40,7 @@ class ModulesChartsPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleChartInterface::class,
-            view('icons/chart') . I18N::translate('Charts'),
+            view('icons/chart') . ' ' . I18N::translate('Charts'),
             ''
         );
     }

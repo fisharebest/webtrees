@@ -40,7 +40,7 @@ class ModulesTabsPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleTabInterface::class,
-            view('icons/tab') . I18N::translate('Tabs'),
+            view('icons/tab') . ' ' . I18N::translate('Tabs'),
             ''
         );
     }

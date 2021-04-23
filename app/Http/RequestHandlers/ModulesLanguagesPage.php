@@ -40,7 +40,7 @@ class ModulesLanguagesPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleLanguageInterface::class,
-            view('icons/language') . I18N::translate('Languages'),
+            view('icons/language') . ' ' . I18N::translate('Languages'),
             ''
         );
     }

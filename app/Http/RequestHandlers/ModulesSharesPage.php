@@ -40,7 +40,7 @@ class ModulesSharesPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleShareInterface::class,
-            view('icons/sidebar') . I18N::translate('Shares'),
+            view('icons/sidebar') . ' ' . I18N::translate('Shares'),
             ''
         );
     }

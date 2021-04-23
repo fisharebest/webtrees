@@ -40,7 +40,7 @@ class ModulesMapLinksPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleMapLinkInterface::class,
-            view('icons/location') . I18N::translate('Map links'),
+            view('icons/location') . ' ' . I18N::translate('Map links'),
             I18N::translate('Show the location of an event on an external map.')
         );
     }
