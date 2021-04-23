@@ -129,13 +129,13 @@ abstract class AbstractElement implements ElementInterface
         }
 
         $attributes = [
-            'class'    => 'form-control',
-            'type'     => 'text',
-            'id'       => $id,
-            'name'     => $name,
-            'value'    => $value,
-            'maxvalue' => static::MAXIMUM_LENGTH,
-            'pattern'  => static::PATTERN,
+            'class'     => 'form-control',
+            'type'      => 'text',
+            'id'        => $id,
+            'name'      => $name,
+            'value'     => $value,
+            'maxlength' => static::MAXIMUM_LENGTH,
+            'pattern'   => static::PATTERN,
         ];
 
         return '<input ' . Html::attributes($attributes) . ' />';
