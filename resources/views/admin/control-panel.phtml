@@ -163,21 +163,24 @@ use Illuminate\Support\Collection;
             <?= /* I18N: %s is a URL/link to the project website */
             I18N::translate('Support and documentation can be found at %s.', '<a href="https://webtrees.net/">webtrees.net</a>') ?>
         </p>
-        <p class="card-text">
-            <?php if ($latest_version === '') : ?>
+
+        <?php if ($latest_version === '') : ?>
+            <p class="card-text">
                 <?= I18N::translate('No upgrade information is available.') ?>
-            <?php elseif (version_compare(Webtrees::VERSION, $latest_version) < 0) : ?>
-                <div class="alert alert-info">
-                    <?= I18N::translate('A new version of webtrees is available.') ?>
-                    <a href="<?= e(route(UpgradeWizardPage::class)) ?>" class="alert-link">
-                        <?= /* I18N: %s is a version number */
-                        I18N::translate('Upgrade to webtrees %s.', e($latest_version)) ?>
-                    </a>
-                </div>
-            <?php else : ?>
+            </p>
+        <?php elseif (version_compare(Webtrees::VERSION, $latest_version) < 0) : ?>
+            <p class="card-text alert alert-info">
+                <?= I18N::translate('A new version of webtrees is available.') ?>
+                <a href="<?= e(route(UpgradeWizardPage::class)) ?>" class="alert-link">
+                    <?= /* I18N: %s is a version number */
+                    I18N::translate('Upgrade to webtrees %s.', e($latest_version)) ?>
+                </a>
+            </p>
+        <?php else : ?>
+            <p class="card-text">
                 <?= I18N::translate('This is the latest version of webtrees. No upgrade is available.') ?>
-            <?php endif ?>
-        </p>
+            </p>
+        <?php endif ?>
 
         <?php foreach ($custom_updates as $module) : ?>
         <div class="alert alert-info">
