@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2019-11-09 09:32+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Russian <http://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
+"PO-Revision-Date: 2021-04-25 20:17+0000\n"
+"Last-Translator: Alex <zink@mail.ru>\n"
+"Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.9.1\n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -509,7 +511,7 @@ msgstr "(%s после смерти)"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(возраст %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:358
@@ -526,7 +528,7 @@ msgstr "(в возрасте %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(в возрасте %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -535,7 +537,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(в возрасте %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -756,17 +758,17 @@ msgstr "Приветствующее сообщение для посетите�
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
 msgid "A link to the site contacts."
-msgstr ""
+msgstr "Ссылка на контакты сайта."
 
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr ""
+msgstr "Ссылка на домашнюю страницу webtrees."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:115
 msgid "A list of branches of a family."
-msgstr ""
+msgstr "Список ветвей семьи."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
@@ -776,7 +778,7 @@ msgstr "Список изменений, ожидающие проверку м�
 #. I18N: Description of the “Families” module
 #: app/Module/FamilyListModule.php:57
 msgid "A list of families."
-msgstr ""
+msgstr "Список семей."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:84
@@ -786,17 +788,17 @@ msgstr "Список часто задаваемых вопросов (ЧаВо)
 #. I18N: Description of the “Individuals” module
 #: app/Module/IndividualListModule.php:111
 msgid "A list of individuals."
-msgstr ""
+msgstr "Список лиц."
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Список мест."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
 msgid "A list of media objects."
-msgstr ""
+msgstr "Список медиа-объектов."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:99
@@ -1259,7 +1261,7 @@ msgstr "Добавить %s в корзину"
 
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a brother"
-msgstr ""
+msgstr "Добавить брата"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:60
 #: resources/views/family-page-menu.phtml:47
@@ -1276,7 +1278,7 @@ msgstr "Добавить ребенка создав неполную семью
 #: resources/views/family-page-children.phtml:45
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a daughter"
-msgstr ""
+msgstr "Добавить дочь"
 
 #: resources/views/edit/raw-gedcom-record.phtml:53
 msgid "Add a fact"
@@ -1363,13 +1365,13 @@ msgstr ""
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
-msgstr ""
+msgstr "Добавить сестру"
 
 #: app/Http/RequestHandlers/AddChildToFamilyPage.php:58
 #: resources/views/family-page-children.phtml:41
 #: resources/views/modules/relatives/family.phtml:220
 msgid "Add a son"
-msgstr ""
+msgstr "Добавить сына"
 
 #: resources/views/family-page.phtml:110 resources/views/media-page.phtml:180
 #: resources/views/modules/sources_tab/tab.phtml:53
@@ -1409,7 +1411,7 @@ msgstr "Добавить «ЧаВо» запись"
 
 #: resources/views/cards/add-sour-data-even.phtml:15
 msgid "Add an event"
-msgstr ""
+msgstr "Добавить событие"
 
 #: resources/views/modules/custom-css-js/edit.phtml:34
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
@@ -1425,7 +1427,7 @@ msgstr "Добавить из буфера обмена"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr ""
+msgstr "Добавьить исторические события на страницу отдельного человека."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
 msgid "Add individuals"
@@ -1438,7 +1440,7 @@ msgstr "Добавить подробности брака"
 #. I18N: Name of a module
 #: app/Module/FixMissingMarriedNames.php:69
 msgid "Add married names"
-msgstr ""
+msgstr "Добавить фамилию в браке"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:58
@@ -1871,7 +1873,7 @@ msgstr "Все персоны"
 #: resources/views/admin/components.phtml:28
 #: resources/views/admin/control-panel.phtml:531
 msgid "All modules"
-msgstr ""
+msgstr "Все модули"
 
 #: resources/views/admin/trees-privacy.phtml:179
 #: resources/views/admin/trees-privacy.phtml:265
@@ -1962,7 +1964,7 @@ msgstr "Песочный график предков и потомков пер�
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
-msgstr ""
+msgstr "У человека может быть несколько родителей. Например, родные и приемные."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:64
@@ -1976,7 +1978,7 @@ msgstr "Возникла неожиданная ошибка в базе дан�
 
 #: resources/views/admin/control-panel.phtml:177
 msgid "An upgrade is available."
-msgstr ""
+msgstr "Доступно обновление."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2687,7 +2689,7 @@ msgstr "Bing Maps™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Bing™ webmaster tools"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:65 app/GedcomCode/GedcomCodeTemp.php:261
@@ -2855,7 +2857,7 @@ msgstr "Период даты рождения (начало)"
 
 #: app/Factories/ElementFactory.php:756
 msgid "Birth name"
-msgstr ""
+msgstr "Имя при рождении"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -2911,7 +2913,7 @@ msgstr "Рождение неполнородного брата"
 
 #: app/Module/IndividualFactsTabModule.php:353
 msgid "Birth of a half-sibling"
-msgstr "Рождение неполнородного сибса"
+msgstr "Рождение неполнородного брата или сестры"
 
 #: app/Module/IndividualFactsTabModule.php:352
 msgid "Birth of a half-sister"
@@ -2920,7 +2922,7 @@ msgstr "Рождение неполнородной сестры"
 #: app/Module/IndividualFactsTabModule.php:330
 #: resources/views/admin/trees-preferences.phtml:461
 msgid "Birth of a sibling"
-msgstr "Рождение сибса"
+msgstr "Рождение брата или сестры"
 
 #: app/Module/IndividualFactsTabModule.php:329
 msgid "Birth of a sister"
@@ -2932,7 +2934,7 @@ msgstr "Рождение сына"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Birth parents"
-msgstr ""
+msgstr "Биологические родители"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3411,7 +3413,7 @@ msgstr "Категории"
 
 #: app/Factories/ElementFactory.php:1075 app/Factories/ElementFactory.php:1117
 msgid "Category"
-msgstr ""
+msgstr "Категория"
 
 #. I18N: gedcom tag CAUS
 #: app/Factories/ElementFactory.php:256 app/Factories/ElementFactory.php:390
@@ -3494,7 +3496,7 @@ msgstr "Центрально-Африканская Республика"
 #: resources/views/lists/individuals-table.phtml:127
 #: resources/views/lists/individuals-table.phtml:142
 msgid "Century"
-msgstr ""
+msgstr "Век"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:63
@@ -3985,7 +3987,7 @@ msgstr "Завершено; дата неизвестна"
 
 #: app/Factories/ElementFactory.php:1076 app/Factories/ElementFactory.php:1118
 msgid "Completion date"
-msgstr ""
+msgstr "Дата завершения"
 
 #: app/Http/RequestHandlers/HelpText.php:284
 #: resources/views/admin/trees-export.phtml:57
@@ -4110,7 +4112,7 @@ msgstr "Преобразовать из UTF-8 в ISO-8859-1"
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
 msgid "Convert to"
-msgstr ""
+msgstr "Конвертировать в"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
@@ -4125,7 +4127,7 @@ msgstr "Куки"
 #: app/Factories/ElementFactory.php:269 app/Factories/ElementFactory.php:401
 #: app/Factories/ElementFactory.php:1141 app/GedcomTag.php:770
 msgid "Coordinates"
-msgstr ""
+msgstr "Координаты"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84 app/GedcomCode/GedcomCodeTemp.php:318
@@ -4191,7 +4193,7 @@ msgstr "Не удалось проверить введенную информа
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:86
 msgid "Count the visits to each page"
-msgstr ""
+msgstr "Подсчет посещений каждой страницы"
 
 #. I18N: gedcom tag CTRY
 #: app/Factories/ElementFactory.php:252 app/Factories/ElementFactory.php:365
@@ -4217,7 +4219,7 @@ msgstr "Создать новое генеалогическое дерево"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Создать локацию"
 
 #: app/Elements/XrefMedia.php:61 app/Functions/FunctionsEdit.php:492
 #: resources/views/modals/create-media-from-file.phtml:19
@@ -4256,7 +4258,7 @@ msgstr "Создать подателя"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Создать временную папку…"
 
 #: resources/views/modals/media-file-fields.phtml:81
 msgid "Create a unique filename"
@@ -4276,7 +4278,7 @@ msgstr "Создание, обновление и удаление генеал�
 
 #: app/Factories/ElementFactory.php:1069 app/Factories/ElementFactory.php:1111
 msgid "Creation date"
-msgstr ""
+msgstr "Дата создания"
 
 #. I18N: gedcom tag CREM
 #: app/Factories/ElementFactory.php:482 app/GedcomTag.php:603
@@ -4545,7 +4547,7 @@ msgstr "Пароль базы данных"
 
 #: resources/views/setup/step-3-database-type.phtml:52
 msgid "Database type"
-msgstr ""
+msgstr "Тип базы данных"
 
 #: app/Factories/ElementFactory.php:1316
 #: resources/views/setup/step-4-database-mysql.phtml:81
@@ -5022,7 +5024,7 @@ msgstr "Смерть неполнородного брата"
 
 #: app/Module/IndividualFactsTabModule.php:481
 msgid "Death of a half-sibling"
-msgstr "Смерть неполнородного сибса"
+msgstr "Смерть неполнородного брата или сестры"
 
 #: app/Module/IndividualFactsTabModule.php:480
 msgid "Death of a half-sister"
@@ -5526,7 +5528,7 @@ msgstr "Неназначено: несанкционированный"
 
 #: resources/views/admin/map-provider.phtml:27
 msgid "Do not use maps"
-msgstr ""
+msgstr "Не использовать карту"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:65
@@ -6915,13 +6917,13 @@ msgstr "Фример"
 #: resources/views/message-page.phtml:29
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "Из"
 
 #: resources/views/admin/changes-log.phtml:41
 #: resources/views/admin/site-logs.phtml:39
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Из"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -7004,7 +7006,7 @@ msgstr "Пол"
 
 #: resources/views/admin/control-panel.phtml:540
 msgid "Genealogy"
-msgstr ""
+msgstr "Генеалогия"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:161
@@ -7509,11 +7511,11 @@ msgstr "Скрыть от всех"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Скрыть неиспользуемые локации"
 
 #: app/Factories/ElementFactory.php:1179
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Иерархические отношения"
 
 #. I18N: gedcom tag _PRIM
 #: app/Factories/ElementFactory.php:810 app/Factories/ElementFactory.php:1107
@@ -7540,7 +7542,7 @@ msgstr "Его род занятий было"
 #: resources/views/admin/modules.phtml:251
 #: resources/views/modules/personal_facts/tab.phtml:33
 msgid "Historic events"
-msgstr ""
+msgstr "Исторические события"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
@@ -7736,6 +7738,7 @@ msgstr "Если Вы создали этот файл, используя ге�
 #: resources/views/emails/password-request-text.phtml:18
 msgid "If you did not request a new password, please ignore this message."
 msgstr ""
+"Если вы не запрашивали новый пароль, не обращайте внимания на это сообщение."
 
 #: resources/views/emails/register-user-html.phtml:34
 #: resources/views/emails/register-user-text.phtml:22
@@ -7948,7 +7951,7 @@ msgstr "Карта распределения персон"
 
 #: resources/views/admin/control-panel.phtml:635
 msgid "Individual page"
-msgstr ""
+msgstr "Индивидуальная страница"
 
 #: resources/views/admin/trees-preferences.phtml:437
 msgid "Individual pages"
@@ -8468,7 +8471,7 @@ msgstr "Запечатывание супруга (мормоны)"
 #: app/Factories/ElementFactory.php:836 app/Factories/ElementFactory.php:850
 #: app/Factories/ElementFactory.php:854 app/Factories/ElementFactory.php:869
 msgid "Label"
-msgstr ""
+msgstr "Метка"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -8794,7 +8797,7 @@ msgstr "Расположение"
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "Географические места"
 
 #: app/Elements/RelationIsDescriptor.php:141
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -9247,7 +9250,7 @@ msgstr "Брак родителя"
 #: app/Module/IndividualFactsTabModule.php:576
 #: resources/views/admin/trees-preferences.phtml:481
 msgid "Marriage of a sibling"
-msgstr "Брак сибса"
+msgstr "Брак брата или сестры"
 
 #: app/Module/IndividualFactsTabModule.php:575
 msgid "Marriage of a sister"
@@ -10555,7 +10558,7 @@ msgstr "Ничего не найдено."
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:107
 msgid "Nothing to show"
-msgstr ""
+msgstr "Ничего нет для показа"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -10990,7 +10993,7 @@ msgstr "Парагвай"
 
 #: app/Factories/ElementFactory.php:1176
 msgid "Parent"
-msgstr ""
+msgstr "Родитель"
 
 #: app/Factories/ElementFactory.php:578
 #: app/Http/RequestHandlers/IndividualPage.php:223
@@ -11098,7 +11101,7 @@ msgstr "Удалить безвозвратно эти записи?"
 
 #: resources/views/modules/privacy-policy/page.phtml:18
 msgid "Personal data"
-msgstr ""
+msgstr "Персональные данные"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:159 app/GedcomCode/GedcomCodeTemp.php:543
@@ -11229,10 +11232,16 @@ msgstr "Топонимы часто слишком длинное и не пом
 #: resources/views/help/place.phtml:12
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
 msgstr ""
+"Названия мест могут со временем меняться. В генеалогии принято использовать "
+"нынешнее название города или страны. Историческое название может быть "
+"указано в источниках, примечаниях и т. д."
 
 #: resources/views/help/place.phtml:8
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
 msgstr ""
+"Названия мест следует вводить в виде списка, разделенного запятыми, начиная "
+"с наименьшего места и заканчивая страной. Например, «Вестминстер, Лондон, "
+"Англия»."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:436 app/GedcomTag.php:479
@@ -11384,7 +11393,7 @@ msgstr "Ошибка в электронном адресе. Введите пр
 #: app/Http/RequestHandlers/PasswordResetPage.php:77
 #: app/Http/RequestHandlers/RegisterAction.php:101
 msgid "Please try again."
-msgstr ""
+msgstr "Попробуйте еще раз."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
@@ -11554,7 +11563,7 @@ msgstr "Престон, Англия"
 #: app/Http/RequestHandlers/DataFixPreview.php:85
 #: resources/views/admin/analytics-edit.phtml:27
 msgid "Preview"
-msgstr ""
+msgstr "Предпросмотр"
 
 #: app/Elements/RelationIsDescriptor.php:75
 #: app/Elements/RelationIsDescriptor.php:110
@@ -11574,7 +11583,7 @@ msgstr "Отображать основные события если нет с�
 
 #: app/Factories/ElementFactory.php:1077 app/Factories/ElementFactory.php:1119
 msgid "Priority"
-msgstr ""
+msgstr "Приоритет"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
@@ -12077,7 +12086,7 @@ msgstr "Религиозное имя"
 #: resources/views/modules/place-hierarchy/map.phtml:76
 #: resources/views/modules/places/tab.phtml:63
 msgid "Reload map"
-msgstr ""
+msgstr "Обновить карту"
 
 #: app/Factories/ElementFactory.php:1078 app/Factories/ElementFactory.php:1120
 msgid "Reminder date"
@@ -12135,7 +12144,6 @@ msgid "Renumber family tree"
 msgstr "Перенумеровать генеалогическое дерево"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
-#, fuzzy
 msgid "Replace"
 msgstr "Заменить"
 
@@ -12223,7 +12231,7 @@ msgstr "Регистрация нового пользователя"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Исследовать"
 
 #. I18N: gedcom tag _TODO
 #: app/Factories/ElementFactory.php:752 app/Factories/ElementFactory.php:791
@@ -12512,7 +12520,7 @@ msgstr "Саудовская Аравия"
 
 #: app/Factories/ElementFactory.php:1081
 msgid "Schema"
-msgstr ""
+msgstr "Схема"
 
 #: app/Factories/ElementFactory.php:492 app/Factories/ElementFactory.php:518
 #: app/GedcomTag.php:651
@@ -12588,6 +12596,8 @@ msgstr "Поиск и замена текста с использованием 
 #: resources/views/admin/trees-preferences.phtml:235
 msgid "Search engines may use this description of your site in their search results."
 msgstr ""
+"Поисковые системы могут использовать это описание вашего сайта в своих "
+"результатах поиска."
 
 #: resources/views/modules/media-list/page.phtml:76
 msgid "Search filters"
@@ -12724,7 +12734,7 @@ msgstr "Послать сообщения пользователям, не вх�
 
 #: resources/views/admin/site-mail.phtml:221
 msgid "Send a test email using these settings"
-msgstr ""
+msgstr "Отправьте тестовое электронное письмо с этими настройками"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:19
@@ -12768,7 +12778,7 @@ msgstr "В разводе"
 #. I18N: gedcom tag _SEPR
 #: app/Factories/ElementFactory.php:833 app/GedcomTag.php:1214
 msgid "Separation"
-msgstr ""
+msgstr "Разделение"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -13069,7 +13079,7 @@ msgstr "Показать ссылку на скачивание в медиап�
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Покажите политику конфиденциальности."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:69
@@ -13284,7 +13294,7 @@ msgstr "Показывать место рождения предков на к�
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Показать дату и время"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -13569,6 +13579,9 @@ msgstr "Некоторое генеалогическое программное
 #: app/Module/FixNameTags.php:95
 msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
+"Некоторые генеалогические программы хранят все имена в одной записи  с "
+"использованием настраиваемых тегов, таких как _MARNM и _AKA. Альтернативой "
+"является создание новой записи имени для каждого имени."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:668
@@ -14282,7 +14295,7 @@ msgstr "Администратор был проинформирован. Как
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
 msgid "The calendar menu."
-msgstr ""
+msgstr "Меню календаря."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:69
@@ -14301,7 +14314,7 @@ msgstr "Изменения для «%s» отклонены."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:70
 msgid "The charts menu."
-msgstr ""
+msgstr "Меню графиков."
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -14354,7 +14367,7 @@ msgstr "Фамильные деревья были успешно объедин
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:71
 msgid "The family trees menu."
-msgstr ""
+msgstr "Меню семейных деревьев."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:75
@@ -14403,6 +14416,8 @@ msgstr "Файл «%s» не существует."
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
 msgstr ""
+"Первое семейство в списке будет использоваться в диаграммах, списках, "
+"отчетах и т. д."
 
 #: app/Http/RequestHandlers/DeletePath.php:70
 #, php-format
@@ -14476,11 +14491,11 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 msgid "The location has been created"
-msgstr ""
+msgstr "Локация создана"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Местоположение этого места неизвестно."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:151
 #, php-format
@@ -14644,7 +14659,7 @@ msgstr ""
 
 #: app/Services/SearchService.php:1171
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Поиск дал слишком много результатов."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
@@ -15024,7 +15039,7 @@ msgstr "Эта персона будет выбрана по умолчанию 
 #: resources/views/statistics/other/places.phtml:55
 #: resources/views/statistics/other/top10-list.phtml:26
 msgid "This information is not available."
-msgstr ""
+msgstr "Эта информация недоступна."
 
 #: app/Statistics/Repository/EventRepository.php:254
 #: app/Statistics/Repository/FamilyDatesRepository.php:110
@@ -15142,6 +15157,8 @@ msgstr ""
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
 msgstr ""
+"Этот список создается с помощью простого (но быстрого) поиска и поэтому "
+"включает записи, которые не будут обновляться."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
@@ -15417,10 +15434,14 @@ msgstr "Сайт временно недоступен"
 #: resources/views/modules/privacy-policy/page.phtml:22
 msgid "This website processes personal data for the purpose of historical and genealogical research."
 msgstr ""
+"Этот веб-сайт обрабатывает личные данные с целью исторического и "
+"генеалогического исследования."
 
 #: resources/views/modules/privacy-policy/page.phtml:33
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
 msgstr ""
+"Этот веб-сайт использует файлы cookie для включения сеансов входа в систему "
+"и запоминания таких предпочтений, как выбранный вами язык."
 
 #: resources/views/modules/privacy-policy/footer.phtml:21
 msgid "This website uses cookies to learn about visitor behavior."
@@ -15429,6 +15450,8 @@ msgstr "Данный сайт использует куки, чтобы запо
 #: resources/views/modules/privacy-policy/page.phtml:45
 msgid "This website uses third-party services to learn about visitor behavior."
 msgstr ""
+"Этот веб-сайт использует сторонние сервисы, чтобы узнать о поведении "
+"посетителей."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:27
@@ -15576,13 +15599,13 @@ msgstr "Название на иврите"
 #: resources/views/contact-page.phtml:32 resources/views/message-page.phtml:38
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "По"
 
 #: resources/views/admin/changes-log.phtml:48
 #: resources/views/admin/site-logs.phtml:46
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "По"
 
 #: resources/views/modules/html/config.phtml:32
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15818,7 +15841,7 @@ msgstr "Анонс"
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:28
 msgid "Tree"
-msgstr ""
+msgstr "Дерево"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
@@ -15924,15 +15947,15 @@ msgstr "Тип факта"
 
 #: app/Factories/ElementFactory.php:1163
 msgid "Type of location"
-msgstr ""
+msgstr "Тип локации"
 
 #: app/Factories/ElementFactory.php:314
 msgid "Type of marriage"
-msgstr ""
+msgstr "Тип брака"
 
 #: app/Factories/ElementFactory.php:547
 msgid "Type of name"
-msgstr ""
+msgstr "Тип имени"
 
 #: app/Factories/ElementFactory.php:1074 app/Factories/ElementFactory.php:1116
 msgid "Type of research task"
@@ -16101,6 +16124,8 @@ msgstr "Обновить географические названия"
 #: app/Module/FixPlaceNames.php:73
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
 msgstr ""
+"Обновите части топонимов более высокого уровня, сохранив части более низкого "
+"уровня."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16170,7 +16195,7 @@ msgstr "Использовать полную цитату источника"
 #: resources/views/setup/step-4-database-sqlite.phtml:84
 #: resources/views/setup/step-4-database-sqlsvr.phtml:110
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Используйте буквы A – Z, a – z, цифры 0–9 или символы подчеркивания"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:108
@@ -16558,6 +16583,8 @@ msgstr "При добавлении новых близких родственн
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
 msgstr ""
+"Если у человека более одного супруга, вам следует отсортировать семьи в "
+"порядке дат."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:905
@@ -16589,7 +16616,7 @@ msgstr "Сейчас на сайте"
 
 #: resources/views/admin/data-fix-page.phtml:82
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Почему в этот список включены записи, которые не нужно обновлять?"
 
 #: resources/views/lists/families-table.phtml:169
 msgid "Widow"
@@ -16748,6 +16775,8 @@ msgstr "Вы можете облегчить поиск замужних жен�
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
+"Вы можете отказаться от отслеживания, установив заголовок «Не отслеживать» в "
+"настройках браузера."
 
 #: resources/views/admin/trees-renumber.phtml:26
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -17299,7 +17328,7 @@ msgstr "ребенок"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "гражданин"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17358,7 +17387,7 @@ msgstr "Создать"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "культурный"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17430,13 +17459,13 @@ msgstr "умер"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "опровергнутый"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
 #: resources/views/edit/reorder-card-header.phtml:30
 msgid "down"
-msgstr ""
+msgstr "вниз"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -17571,7 +17600,7 @@ msgstr "тесть"
 
 #: app/Functions/Functions.php:640
 msgid "fiancé"
-msgstr ""
+msgstr "жених"
 
 #: app/Functions/Functions.php:687
 msgid "fiancé(e)"
@@ -17947,7 +17976,7 @@ msgstr "пол"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "географический"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -19585,7 +19614,7 @@ msgstr "последнии"
 #: app/Module/PedigreeChartModule.php:387
 #: app/Module/PedigreeChartModule.php:395
 msgid "left"
-msgstr ""
+msgstr "налево"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -20044,7 +20073,7 @@ msgstr "процент"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "политический"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20069,7 +20098,7 @@ msgstr "первоисточник"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "доказано"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
@@ -20143,7 +20172,7 @@ msgstr "сбросить"
 #: app/Module/PedigreeChartModule.php:388
 #: app/Module/PedigreeChartModule.php:396
 msgid "right"
-msgstr ""
+msgstr "направо"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:40
@@ -20420,12 +20449,12 @@ msgstr "показать"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "показать изменения, внесенные в веб-деревья"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "показать изменения, записанные в генеалогических данных"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
@@ -20434,7 +20463,7 @@ msgstr ""
 #: resources/views/modules/user_blog/list.phtml:26
 #: resources/views/modules/yahrzeit/list.phtml:21
 msgid "show more"
-msgstr ""
+msgstr "подробнее"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
@@ -20915,7 +20944,7 @@ msgstr "недостоверный источник"
 #: app/Module/PedigreeChartModule.php:397
 #: resources/views/edit/reorder-card-header.phtml:26
 msgid "up"
-msgstr ""
+msgstr "вверх"
 
 #: resources/views/admin/trees-unconnected.phtml:31
 msgid "update"
@@ -20973,12 +21002,14 @@ msgstr "Сообщение webtrees"
 
 #: resources/views/setup/step-3-database-type.phtml:47
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees нужна база данных для хранения ваших генеалогических данных."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
+"webtrees необходимо отправлять электронные письма, например напоминания о "
+"пароле и уведомления веб-сайтов."
 
 #: app/Services/MessageService.php:228
 msgid "webtrees sends emails with no storage"
@@ -21080,6 +21111,10 @@ msgstr "\"%s\" был удалён."
 #: app/Module/FixPrimaryTag.php:59
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 msgstr ""
+"Теги «выделенное изображение» (_PRIM) используются некоторыми "
+"генеалогическими программами для обозначения предпочтительного изображения "
+"для человека. Альтернативой является переупорядочение изображений так, чтобы "
+"предпочтительное из них было указано первым."
 
 #: app/Functions/FunctionsPrint.php:119 app/Note.php:121
 #: app/Report/ReportParserGenerate.php:972
