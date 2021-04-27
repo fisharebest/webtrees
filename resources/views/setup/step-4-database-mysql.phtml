@@ -119,7 +119,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Table prefix') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" dir="ltr" id="tblpfx" maxlength="15" name="tblpfx" pattern="^[^`]*$" type="text" value="<?= e($tblpfx) ?>">
+            <input class="form-control" dir="ltr" id="tblpfx" maxlength="15"  name="tblpfx" pattern="[a-zA-Z0-9_]+" type="text" value="<?= e($tblpfx) ?>">
             <p class="small text-muted">
                 <?= I18N::translate('The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database.') ?>
                 <?= I18N::translate('Use letters A-Z, a-z, digits 0-9, or underscores') ?>
