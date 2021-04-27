@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-25 20:17+0000\n"
+"PO-Revision-Date: 2021-04-28 07:05+0000\n"
 "Last-Translator: Alex <zink@mail.ru>\n"
 "Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ru/>\n"
@@ -247,9 +247,9 @@ msgstr[2] "%s дней"
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s семья"
+msgstr[1] "%s семей"
+msgstr[2] "%s семей"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:79
 #: app/Http/RequestHandlers/SearchReplaceAction.php:119
@@ -818,12 +818,12 @@ msgstr ""
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
 msgid "A list of sources."
-msgstr ""
+msgstr "Список источников."
 
 #. I18N: Description of the “Shared submitters” module
 #: app/Module/SubmitterListModule.php:84
 msgid "A list of submitters."
-msgstr ""
+msgstr "Список отправителей."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:75
@@ -885,7 +885,7 @@ msgstr "Доступна новая версия webtrees."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:103
 #, php-format
 msgid "A password reset link has been sent to “%s”."
-msgstr ""
+msgstr "Ссылка для сброса пароля была отправлена на “%s”."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
@@ -1361,7 +1361,7 @@ msgstr "Добавить новое общее примечание"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
-msgstr ""
+msgstr "Добавить брата или сестру"
 
 #: resources/views/modules/relatives/family.phtml:224
 msgid "Add a sister"
@@ -1415,11 +1415,11 @@ msgstr "Добавить событие"
 
 #: resources/views/modules/custom-css-js/edit.phtml:34
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Добавьте содержимое в конец <code>&lt;body&gt;</code> элемента."
 
 #: resources/views/modules/custom-css-js/edit.phtml:22
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Добавьте содержимое в конец <code>&lt;head&gt;</code> элемента."
 
 #: resources/views/edit/paste-fact-row.phtml:20
 msgid "Add from clipboard"
@@ -1449,7 +1449,7 @@ msgstr "Добавить отсутствующие записи о смерти
 
 #: resources/views/edit-blocks-page.phtml:46
 msgid "Add more blocks from the following list."
-msgstr ""
+msgstr "Добавьте дополнительные блоки из следующего списка."
 
 #: resources/views/search-advanced-page.phtml:45
 msgid "Add more fields"
@@ -1471,7 +1471,7 @@ msgstr "Добавить пространства, где были заверн�
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
 msgid "Add styling and scripts to every page."
-msgstr ""
+msgstr "Добавьте стили и сценарии на каждую страницу."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:83
@@ -1594,7 +1594,7 @@ msgstr "Усыновлен матерью"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
-msgstr ""
+msgstr "Принятое имя"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
@@ -1674,7 +1674,7 @@ msgstr "Усыновление"
 
 #: app/Factories/ElementFactory.php:423
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Приемные родители"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:471 app/GedcomTag.php:569
@@ -2401,7 +2401,7 @@ msgstr "Средняя продолжительность жизни"
 
 #: app/Statistics/Google/ChartMarriageAge.php:162
 msgid "Average age at marriage"
-msgstr ""
+msgstr "Средний возраст вступления в брак"
 
 #: app/Statistics/Google/ChartMarriageAge.php:159
 msgid "Average age in century of marriage"
@@ -4174,7 +4174,7 @@ msgstr "Исправить записи имени NAME как 'Иван/ИВА�
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Переписка"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4249,7 +4249,7 @@ msgstr "Создать новый источник"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Создать заявку"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:555
 #: resources/views/modals/create-submitter.phtml:16
@@ -4467,7 +4467,7 @@ msgstr "Чехия"
 #. I18N: https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail
 #: resources/views/admin/site-mail.phtml:184
 msgid "DKIM digital signature"
-msgstr ""
+msgstr "Цифровая подпись DKIM"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/Factories/ElementFactory.php:878 app/Factories/ElementFactory.php:1331
@@ -5565,7 +5565,7 @@ msgstr "Скачать файл"
 
 #: resources/views/edit-blocks-page.phtml:23
 msgid "Drag the blocks to change their position."
-msgstr ""
+msgstr "Перетащите блоки, чтобы изменить их положение."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:91 app/GedcomCode/GedcomCodeTemp.php:339
@@ -5933,7 +5933,7 @@ msgstr "Эсфанд"
 
 #: app/Factories/ElementFactory.php:760
 msgid "Estate name"
-msgstr ""
+msgstr "Название поместья"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:380
@@ -6297,7 +6297,7 @@ msgstr "Семья %s"
 
 #: app/Factories/ElementFactory.php:1062
 msgid "Family status"
-msgstr ""
+msgstr "Семейный статус"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
@@ -6733,6 +6733,8 @@ msgstr "Например, если указать ступень родства 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
 msgstr ""
+"Например, мы можем быстро найти людей, у которых не было случая смерти, но "
+"гораздо медленнее вычислить, умер ли этот человек."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -7069,7 +7071,7 @@ msgstr "Генерации предков"
 
 #: app/Factories/ElementFactory.php:717
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Поколения потомков"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7194,7 +7196,7 @@ msgstr "Крестный родитель"
 
 #: app/Factories/ElementFactory.php:469
 msgid "Godparents"
-msgstr ""
+msgstr "Крестные родители"
 
 #: app/Elements/RelationIsDescriptor.php:66
 #: app/Elements/RelationIsDescriptor.php:101
@@ -7702,6 +7704,8 @@ msgstr ""
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
 msgstr ""
+"Если эскизное изображение такое же, как и исходное изображение, то оно "
+"больше не требуется и его следует удалить."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
@@ -7852,7 +7856,7 @@ msgstr "В Webtrees версии 2, пользовательские миниа�
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr ""
+msgstr "Включить псевдонимы"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
@@ -7875,11 +7879,11 @@ msgstr "Включая вложенные папки"
 
 #: resources/views/modules/custom-css-js/edit.phtml:39
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "Включите <code>&lt;script&gt;&lt;/script&gt;</code> теги."
 
 #: resources/views/modules/custom-css-js/edit.phtml:27
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "Включите <code>&lt;style&gt;&lt;/style&gt;</code> теги."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
@@ -8064,7 +8068,7 @@ msgstr "Интерактивное дерево для %s"
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:785 app/GedcomTag.php:1140
 msgid "Interment"
-msgstr ""
+msgstr "Погребение"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
@@ -8080,7 +8084,7 @@ msgstr "Недопустимый файл GEDCOM - запись заголовк
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Неверная запись GEDCOM"
 
 #: app/Date.php:381
 msgid "Invalid date"
@@ -8797,7 +8801,7 @@ msgstr "Расположение"
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr "Географические места"
+msgstr "Локации"
 
 #: app/Elements/RelationIsDescriptor.php:141
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -11376,7 +11380,7 @@ msgstr "Место проживания"
 #: resources/views/search-replace-page.phtml:47
 #: resources/views/statistics/other/places.phtml:12
 msgid "Places"
-msgstr "Географических названий"
+msgstr "Места"
 
 #: resources/views/layouts/default.phtml:165
 #: resources/views/modules/random_media/slide-show.phtml:24
@@ -11475,7 +11479,7 @@ msgstr "Почтовый индекс"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "Сделано на webtrees ™"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
@@ -12090,7 +12094,7 @@ msgstr "Обновить карту"
 
 #: app/Factories/ElementFactory.php:1078 app/Factories/ElementFactory.php:1120
 msgid "Reminder date"
-msgstr ""
+msgstr "Дата напоминания"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
@@ -12844,7 +12848,7 @@ msgstr "Имя сервера"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:64
 msgid "Set a new password"
-msgstr ""
+msgstr "Установите новый пароль"
 
 #: resources/views/admin/trees.phtml:129 resources/views/admin/trees.phtml:136
 msgid "Set as default"
@@ -13685,7 +13689,7 @@ msgstr "Источник"
 #: app/Factories/ElementFactory.php:432 app/Factories/ElementFactory.php:1061
 #: app/Factories/ElementFactory.php:1066 app/Factories/ElementFactory.php:1102
 msgid "Source citation"
-msgstr ""
+msgstr "Источник цитаты"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:920
@@ -13940,7 +13944,7 @@ msgstr "Заявитель"
 
 #: resources/views/lists/submitters-table.phtml:67
 msgid "Submitter name"
-msgstr ""
+msgstr "Имя отправителя"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:115 app/Module/SubmitterListModule.php:73
@@ -13949,7 +13953,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-1.phtml:57
 #: resources/views/lists/submitters-table.phtml:62
 msgid "Submitters"
-msgstr ""
+msgstr "Отправители"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -14441,7 +14445,7 @@ msgstr "Папка может быть указана в полном объем
 #: app/Http/RequestHandlers/SitePreferencesAction.php:55
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Папка «%s» не существует."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
@@ -14575,7 +14579,7 @@ msgstr "Примечание создано"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Параметр “1%s” испорчен."
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -14589,12 +14593,12 @@ msgstr "Пароль, необходимый для аутентификации
 #: app/Http/RequestHandlers/PasswordResetAction.php:84
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Срок действия ссылки для сброса пароля истек."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:109
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Иерархия мест."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:143
 #: app/Http/RequestHandlers/TreePrivacyAction.php:118
@@ -14632,7 +14636,7 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:1071 app/Factories/ElementFactory.php:1113
 msgid "The problem"
-msgstr ""
+msgstr "Проблема"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14685,7 +14689,7 @@ msgstr "Размер генеалогического дерева, самые �
 
 #: app/Factories/ElementFactory.php:1068 app/Factories/ElementFactory.php:1110
 msgid "The solution"
-msgstr ""
+msgstr "Решение"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -14693,7 +14697,7 @@ msgstr "Источник создан"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Заявка создана"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -14842,7 +14846,7 @@ msgstr[2] "За последние %s дней не было никаких из
 #: app/Http/RequestHandlers/PasswordRequestAction.php:107
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Нет учетной записи с email адресом “1%s”."
 
 #: app/Http/RequestHandlers/AddMediaFileAction.php:88
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:81
@@ -14877,7 +14881,7 @@ msgstr "Термидор"
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Эти файлы cookie являются «необходимыми» и не требуют согласия."
 
 #: resources/views/admin/trees-unconnected.phtml:35
 #, php-format
@@ -14887,6 +14891,8 @@ msgstr "Эти группы персон не связаны с %s."
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "These services may use cookies or other tracking technology."
 msgstr ""
+"Эти службы могут использовать файлы cookie или другие технологии "
+"отслеживания."
 
 #: app/Http/RequestHandlers/LoginAction.php:137
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14915,7 +14921,7 @@ msgstr "Этот адрес будет использоваться для от�
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Это событие произошло, но подробности неизвестны."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15152,7 +15158,7 @@ msgstr "Ваше настоящее имя, которое будет отобр
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:104
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Эта ссылка действительна в течение одного часа."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
@@ -15632,7 +15638,7 @@ msgstr "Чтобы уменьшить размер файла для загру�
 #: resources/views/emails/password-request-html.phtml:18
 #: resources/views/emails/password-request-text.phtml:14
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Чтобы установить новый пароль, перейдите по этой ссылке."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:43
@@ -15926,7 +15932,7 @@ msgstr "Тип"
 
 #: app/Factories/ElementFactory.php:1146
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Тип сокращения"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Type of administrative ID"
@@ -15934,7 +15940,7 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:1174
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Тип демографических данных"
 
 #: app/Factories/ElementFactory.php:304 app/Factories/ElementFactory.php:506
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:688
@@ -15959,7 +15965,7 @@ msgstr "Тип имени"
 
 #: app/Factories/ElementFactory.php:1074 app/Factories/ElementFactory.php:1116
 msgid "Type of research task"
-msgstr ""
+msgstr "Тип исследовательской задачи"
 
 #. I18N: gedcom tag URL (A web address / URL)
 #. I18N: gedcom tag WWW (A web address / URL)
@@ -16915,7 +16921,7 @@ msgstr "Ваше имя"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:77
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Ваш пароль был обновлен."
 
 #: app/Http/RequestHandlers/RegisterAction.php:149
 #, php-format
@@ -17302,7 +17308,7 @@ msgstr "перепись добавлена"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "оспаривается"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
