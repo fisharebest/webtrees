@@ -67,6 +67,7 @@ trait ModuleMapAutocompleteTrait
             // Service down?  Quota exceeded?
             // Don't try for another hour.
             $cache->remember($key, fn () => [], 3600);
+
             return [];
         }
     }

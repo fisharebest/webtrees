@@ -245,6 +245,16 @@ parameters:
 			path: app/Http/Middleware/UseTransaction.php
 
 		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:searchPlaceNames\\(\\)\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/AutoCompletePlace.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\AutoCompletePlace\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/AutoCompletePlace.php
+
+		-
 			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$anniv\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CalendarEvents.php

@@ -109,8 +109,7 @@ class ControlPanel implements RequestHandlerInterface
         TreeService $tree_service,
         UpgradeService $upgrade_service,
         UserService $user_service
-    )
-    {
+    ) {
         $this->admin_service        = $admin_service;
         $this->housekeeping_service = $housekeeping_service;
         $this->module_service       = $module_service;

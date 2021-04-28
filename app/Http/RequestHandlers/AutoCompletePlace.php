@@ -63,6 +63,11 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
         $this->module_service = $module_service;
     }
 
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return Collection<string>
+     */
     protected function search(ServerRequestInterface $request): Collection
     {
         $tree = $request->getAttribute('tree');

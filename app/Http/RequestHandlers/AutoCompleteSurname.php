@@ -30,6 +30,11 @@ use function assert;
  */
 class AutoCompleteSurname extends AbstractAutocompleteHandler
 {
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return Collection<string>
+     */
     protected function search(ServerRequestInterface $request): Collection
     {
         $tree = $request->getAttribute('tree');
