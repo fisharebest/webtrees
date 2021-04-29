@@ -109,7 +109,7 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
 
         return [
             (object) [
-                'api_key'     => $api_key,
+                'apiKey'      => $api_key,
                 'attribution' => '<a href="https://legal.here.com/en/terms/serviceterms/us">Terms of use</a> ©1987-2021 HERE',
                 'base'        => 'base',
                 'format'      => 'png8',
@@ -124,7 +124,7 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 'variant'     => 'normal.day',
             ],
             (object) [
-                'api_key'     => $api_key,
+                'apiKey'      => $api_key,
                 'attribution' => '<a href="https://legal.here.com/en/terms/serviceterms/us">Terms of use</a> ©1987-2021 HERE',
                 'base'        => 'base',
                 'format'      => 'png8',
