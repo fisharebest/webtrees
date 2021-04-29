@@ -731,9 +731,8 @@ use Illuminate\Support\Collection;
                 <ul class="fa-ul">
                     <?php foreach ($other_modules as $module) : ?>
                         <li>
-                            <span class="fa-li"><?= view('icons/module') ?></span>
-
                             <?php if ($module->isEnabled()) : ?>
+                                <span class="fa-li"><?= view('icons/module') ?></span>
                                 <?php if ($module instanceof ModuleConfigInterface) : ?>
                                     <a href="<?= e($module->getConfigLink()) ?>">
                                     <?= $module->title() ?>
@@ -744,8 +743,8 @@ use Illuminate\Support\Collection;
                                 <?php endif ?>
                             <?php else : ?>
                                 <span class="text-muted">
-                                    <span class="fa-li"><?= view('icons/module') ?>
-                                     <?= $module->title() ?>
+                                    <span class="fa-li"><?= view('icons/module') ?></span>
+                                    <?= $module->title() ?>
                                     <?php if ($module instanceof ModuleConfigInterface) : ?>
                                         <?= view('icons/preferences') ?>
                                     <?php endif ?>
