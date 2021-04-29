@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MergeRecordsAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -19,6 +20,8 @@ use Fisharebest\Webtrees\View;
  * @var Family|null     $family2
  * @var Individual|null $individual1
  * @var Individual|null $individual2
+ * @var Location|null      $location1
+ * @var Location|null      $Location2
  * @var Media|null      $media1
  * @var Media|null      $media2
  * @var Note|null       $note1
@@ -55,6 +58,7 @@ use Fisharebest\Webtrees\View;
                 <option value="note"><?= I18N::translate('Notes') ?></option>
                 <option value="media"><?= I18N::translate('Media objects') ?></option>
                 <option value="submitter"><?= I18N::translate('Submitters') ?></option>
+                <option value="location"><?= I18N::translate('Locations') ?></option>
             </select>
         </div>
     </div>
@@ -91,6 +95,10 @@ use Fisharebest\Webtrees\View;
         <span class="col-sm-9 select-record select-submitter d-none">
             <?= view('components/select-submitter', ['name' => 'xref1', 'id' => 'submitter-xref-1', 'submitter' => $submitter1, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
+
+        <span class="col-sm-9 select-record select-location d-none">
+            <?= view('components/select-location', ['name' => 'xref1', 'id' => 'location-xref-1', 'location' => $location1, 'tree' => $tree, 'disabled' => true]) ?>
+        </span>
     </label>
 
     <label class="row form-group">
@@ -124,6 +132,10 @@ use Fisharebest\Webtrees\View;
 
         <span class="col-sm-9 select-record select-submitter d-none">
             <?= view('components/select-submitter', ['name' => 'xref2', 'id' => 'submitter-xref-2', 'submitter' => $submitter2, 'tree' => $tree, 'disabled' => true]) ?>
+        </span>
+
+        <span class="col-sm-9 select-record select-location d-none">
+            <?= view('components/select-location', ['name' => 'xref2', 'id' => 'location-xref-2', 'location' => $location2, 'tree' => $tree, 'disabled' => true]) ?>
         </span>
     </label>
 

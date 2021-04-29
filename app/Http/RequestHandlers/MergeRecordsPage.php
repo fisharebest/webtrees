@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
@@ -81,6 +82,8 @@ class MergeRecordsPage implements RequestHandlerInterface
             'note2'       => $record2 instanceof Note ? $record2 : null,
             'submitter1'  => $record1 instanceof Submitter ? $record1 : null,
             'submitter2'  => $record2 instanceof Submitter ? $record2 : null,
+            'location1'   => $record1 instanceof Location ? $record1 : null,
+            'location2'   => $record2 instanceof Location ? $record2 : null,
             'title'       => $title,
             'tree'        => $tree,
         ]);
