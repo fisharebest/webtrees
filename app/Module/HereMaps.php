@@ -139,7 +139,7 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
                 'variant'     => 'normal.day.grey',
             ],
             (object) [
-                'api_key'     => $api_key,
+                'apiKey'      => $api_key,
                 'attribution' => '<a href="https://legal.here.com/en/terms/serviceterms/us">Terms of use</a> ©1987-2021 HERE',
                 'base'        => 'aerial',
                 'format'      => 'png8',
