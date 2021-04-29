@@ -178,6 +178,30 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      *
      * @return Collection<string>|null
      */
+    protected function locationsToFix(Tree $tree, array $params): ?Collection
+    {
+        if ($params['type'] !== Note::RECORD_TYPE || $params['search'] === '') {
+            return null;
+        }
+
+        $query = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', Location::RECORD_TYPE);
+
+        $this->recordQuery($query, 'o_gedcom', $params);
+
+        return $query->pluck('o_id');
+    }
+
+    /**
+     * A list of all records that need examining.  This may include records
+     * that do not need updating, if we can't detect this quickly using SQL.
+     *
+     * @param Tree                 $tree
+     * @param array<string,string> $params
+     *
+     * @return Collection<string>|null
+     */
     protected function mediaToFix(Tree $tree, array $params): ?Collection
     {
         if ($params['type'] !== Media::RECORD_TYPE || $params['search'] === '') {
