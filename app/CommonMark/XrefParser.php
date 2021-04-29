@@ -58,14 +58,14 @@ class XrefParser implements InlineParserInterface
     }
 
     /**
-     * @param InlineParserContext $context
+     * @param InlineParserContext $inlineContext
      *
      * @return bool
      */
-    public function parse(InlineParserContext $context): bool
+    public function parse(InlineParserContext $inlineContext): bool
     {
         // The cursor should be positioned on the opening '@'.
-        $cursor = $context->getCursor();
+        $cursor = $inlineContext->getCursor();
 
         // If this isn't the start of an XREF, we'll need to rewind to here.
         $previous_state = $cursor->saveState();
@@ -77,7 +77,7 @@ class XrefParser implements InlineParserInterface
             $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
 
             if ($record instanceof GedcomRecord) {
-                $context->getContainer()->appendChild(new XrefNode($record));
+                $inlineContext->getContainer()->appendChild(new XrefNode($record));
 
                 return true;
             }

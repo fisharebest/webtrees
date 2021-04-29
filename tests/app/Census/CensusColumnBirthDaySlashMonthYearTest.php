@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
@@ -30,29 +29,21 @@ use Fisharebest\Webtrees\TestCase;
 class CensusColumnBirthDaySlashMonthYearTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYearTest
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthDaySlashMonthYear
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      *
      * @return void
      */
     public function testGenerateColumn(): void
     {
-        $cal_date = self::createMock(GregorianDate::class);
-        $cal_date->method('format')->willReturn('30/6 1832');
-
-        $date = self::createMock(Date::class);
-        $date->method('minimumJulianDay')->willReturn(2390364);
-        $date->method('maximumJulianDay')->willReturn(2390364);
-        $date->method('minimumDate')->willReturn($cal_date);
-
         $individual = self::createMock(Individual::class);
-        $individual->method('getBirthDate')->willReturn($date);
+        $individual->method('getEstimatedBirthDate')->willReturn(new Date('02 MAR 1800'));
 
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthDaySlashMonthYear($census, '', '');
 
-        self::assertSame('30/6 1832', $column->generate($individual, $individual));
+        self::assertSame('2/3 1800', $column->generate($individual, $individual));
     }
 }

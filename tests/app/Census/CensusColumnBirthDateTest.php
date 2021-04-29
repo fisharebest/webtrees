@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
 
@@ -37,20 +36,14 @@ class CensusColumnBirthDateTest extends TestCase
      */
     public function testGenerateColumn(): void
     {
-        $cal_date = self::createMock(GregorianDate::class);
-        $cal_date->method('format')->willReturn('1 1 1800');
-
-        $date = self::createMock(Date::class);
-        $date->method('minimumDate')->willReturn($cal_date);
-
         $individual = self::createMock(Individual::class);
-        $individual->method('getEstimatedBirthDate')->willReturn($date);
+        $individual->method('getEstimatedBirthDate')->willReturn(new Date('02 MAR 1800'));
 
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthDate($census, '', '');
 
-        self::assertSame('1 1 1800', $column->generate($individual, $individual));
+        self::assertSame('2 3 1800', $column->generate($individual, $individual));
     }
 }

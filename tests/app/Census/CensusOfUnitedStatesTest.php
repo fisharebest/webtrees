@@ -43,7 +43,7 @@ class CensusOfUnitedStatesTest extends TestCase
     /**
      * Test the census language
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfCzechRepublic
+     * @covers \Fisharebest\Webtrees\Census\CensusOfUnitedStates
      *
      * @return void
      */

@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use DOMDocument;
-use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -65,10 +64,10 @@ class XrefIndividualTest extends TestCase
         $dom->loadHTML($html);
 
         $select_nodes = $dom->getElementsByTagName('select');
-        self::assertEquals(1, $select_nodes->length);
+        self::assertEquals(1, $select_nodes->count());
 
         $option_nodes = $select_nodes[0]->getElementsByTagName('option');
-        self::assertEquals(1, $option_nodes->length);
+        self::assertEquals(1, $option_nodes->count());
     }
 
     /**

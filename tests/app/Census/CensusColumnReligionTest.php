@@ -30,7 +30,7 @@ use Illuminate\Support\Collection;
 class CensusColumnReligionTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      * @return void
      */
@@ -51,7 +51,7 @@ class CensusColumnReligionTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      * @return void
      */
@@ -70,7 +70,7 @@ class CensusColumnReligionTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnOccupation
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnReligion
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      * @return void
      */
