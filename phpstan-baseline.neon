@@ -1035,11 +1035,6 @@ parameters:
 			path: app/Module/TimelineChartModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\TopSurnamesModule\\:\\:surnameCountSort\\(\\) should return int but returns float\\|int\\.$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
 			message: "#^Cannot access property \\$body on object\\|null\\.$#"
 			count: 1
 			path: app/Module/UserJournalModule.php
