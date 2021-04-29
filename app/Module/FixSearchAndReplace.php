@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
@@ -108,6 +109,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
         $types = [
             Family::RECORD_TYPE     => I18N::translate('Families'),
             Individual::RECORD_TYPE => I18N::translate('Individuals'),
+            Location::RECORD_TYPE   => I18N::translate('Locations'),
             Media::RECORD_TYPE      => I18N::translate('Media objects'),
             Note::RECORD_TYPE       => I18N::translate('Notes'),
             Repository::RECORD_TYPE => I18N::translate('Repositories'),
