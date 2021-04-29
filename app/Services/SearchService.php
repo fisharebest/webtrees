@@ -1210,8 +1210,8 @@ class SearchService
      */
     private function locationRowMapper(): Closure
     {
-        return function (stdClass $row): Media {
-            $tree = $this->tree_service->find((int) $row->m_file);
+        return function (stdClass $row): Location {
+            $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::locationFactory()->mapper($tree)($row);
         };
