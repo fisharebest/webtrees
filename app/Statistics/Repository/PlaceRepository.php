@@ -19,8 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Statistics\Google\ChartDistribution;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
@@ -153,16 +156,22 @@ class PlaceRepository implements PlaceRepositoryInterface
                 ->orderBy('country');
         }
 
-        if ($what === 'INDI') {
+        if ($what === Individual::RECORD_TYPE) {
             $query->join('individuals', static function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
             });
-        } elseif ($what === 'FAM') {
+        } elseif ($what === Family::RECORD_TYPE) {
             $query->join('families', static function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');
             });
+        } elseif ($what === Location::RECORD_TYPE) {
+            $query->join('other', static function (JoinClause $join): void {
+                $join->on('pl_file', '=', 'o_file')
+                    ->on('pl_gid', '=', 'o_id');
+            })
+            ->where('o_type', '=', Location::RECORD_TYPE);
         }
 
         return $query
@@ -170,6 +179,7 @@ class PlaceRepository implements PlaceRepositoryInterface
             ->map(static function (stdClass $entry) {
                 // Map total value to integer
                 $entry->tot = (int) $entry->tot;
+
                 return $entry;
             })
             ->all();

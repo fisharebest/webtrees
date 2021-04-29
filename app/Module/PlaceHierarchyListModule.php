@@ -22,7 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\LeafletJsService;
@@ -45,6 +48,7 @@ use function ceil;
 use function count;
 use function redirect;
 use function route;
+use function var_export;
 use function view;
 
 /**
@@ -298,17 +302,17 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             $statistics = new Statistics(app(ModuleService::class), $tree, app(UserService::class));
 
             //Stats
-            $placeStats = [];
-            foreach (['INDI', 'FAM'] as $type) {
-                $tmp               = $statistics->statsPlaces($type, '', $place->id());
-                $placeStats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
+            $stats = [];
+            foreach ([Individual::RECORD_TYPE, Family::RECORD_TYPE, Location::RECORD_TYPE] as $type) {
+                $tmp          = $statistics->statsPlaces($type, '', $place->id());
+                $stats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
             $sidebar .= view('modules/place-hierarchy/sidebar', [
                 'showlink'      => $show_link,
                 'id'            => $id,
                 'place'         => $place,
                 'sidebar_class' => $sidebar_class,
-                'stats'         => $placeStats,
+                'stats'         => $stats,
             ]);
         }
 

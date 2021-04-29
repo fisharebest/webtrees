@@ -1,6 +1,9 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 
 /**
@@ -34,11 +37,20 @@ use Fisharebest\Webtrees\Place;
 
     <div class="row">
         <div class="col-sm-9"><?= I18N::translate('Individuals') ?></div>
-        <div class="col-sm-3 align-digits"><?= $stats['INDI'] ?></div>
+        <div class="col-sm-3 align-digits"><?= I18N::number($stats[Individual::RECORD_TYPE]) ?></div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-9"><?= I18N::translate('Families') ?></div>
-        <div class="col-sm-3 align-digits"><?= $stats['FAM'] ?></div>
-    </div>
+    <?php if ($stats[Family::RECORD_TYPE] > 0): ?>
+        <div class="row">
+            <div class="col-sm-9"><?= I18N::translate('Families') ?></div>
+            <div class="col-sm-3 align-digits"><?= I18N::number($stats[Family::RECORD_TYPE]) ?></div>
+        </div>
+    <?php endif ?>
+
+    <?php if ($stats[Location::RECORD_TYPE] > 0): ?>
+        <div class="row">
+            <div class="col-sm-9"><?= I18N::translate('Locations') ?></div>
+            <div class="col-sm-3 align-digits"><?= I18N::number($stats[Location::RECORD_TYPE]) ?></div>
+        </div>
+    <?php endif ?>
 </li>
