@@ -28,25 +28,24 @@
     "require-dev": {
         "alcaeus/mongo-php-adapter": "^1.1",
         "mongodb/mongodb": "^1.1",
-        "phpunit/phpunit": "^7.0",
+        "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
         "predis/predis":   "~1.0",
-        "doctrine/coding-standard": "^6.0"
+        "doctrine/coding-standard": "^8.0",
+        "psr/cache": "^1.0 || ^2.0",
+        "cache/integration-tests": "dev-master",
+        "symfony/cache": "^4.4 || ^5.2"
     },
     "suggest": {
         "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
     },
     "conflict": {
-        "doctrine/common": ">2.2,<2.4"
+        "doctrine/common": ">2.2,<2.4",
+        "psr/cache": ">=3"
     },
     "autoload": {
         "psr-4": { "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache" }
     },
     "autoload-dev": {
         "psr-4": { "Doctrine\\Tests\\": "tests/Doctrine/Tests" }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.9.x-dev"
-        }
     }
 }

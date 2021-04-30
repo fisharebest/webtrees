@@ -3,12 +3,15 @@
 namespace Doctrine\Common\Cache;
 
 use Traversable;
+
 use function array_values;
 use function count;
 use function iterator_to_array;
 
 /**
  * Cache provider that allows to easily chain multiple cache providers
+ *
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
  */
 class ChainCache extends CacheProvider
 {
@@ -28,7 +31,7 @@ class ChainCache extends CacheProvider
             : array_values($cacheProviders);
     }
 
-    public function setDefaultLifeTimeForDownstreamCacheProviders(int $defaultLifeTimeForDownstreamCacheProviders) : void
+    public function setDefaultLifeTimeForDownstreamCacheProviders(int $defaultLifeTimeForDownstreamCacheProviders): void
     {
         $this->defaultLifeTimeForDownstreamCacheProviders = $defaultLifeTimeForDownstreamCacheProviders;
     }

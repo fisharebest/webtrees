@@ -7,11 +7,13 @@ use function time;
 /**
  * Array cache driver.
  *
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
+ *
  * @link   www.doctrine-project.org
  */
 class ArrayCache extends CacheProvider
 {
-    /** @var array[] $data each element being a tuple of [$data, $expiration], where the expiration is int|bool */
+    /** @psalm-var array<string, array{mixed, int|bool}>> $data each element being a tuple of [$data, $expiration], where the expiration is int|bool */
     private $data = [];
 
     /** @var int */

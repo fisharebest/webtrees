@@ -13,6 +13,8 @@ use function var_export;
 
 /**
  * Php file cache driver.
+ *
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
  */
 class PhpFileCache extends FileCache
 {
@@ -96,9 +98,9 @@ class PhpFileCache extends FileCache
     }
 
     /**
-     * @return array|null
+     * @return mixed[]|null
      */
-    private function includeFileForId(string $id) : ?array
+    private function includeFileForId(string $id): ?array
     {
         $fileName = $this->getFilename($id);
 

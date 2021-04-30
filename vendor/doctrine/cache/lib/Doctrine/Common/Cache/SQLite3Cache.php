@@ -4,9 +4,7 @@ namespace Doctrine\Common\Cache;
 
 use SQLite3;
 use SQLite3Result;
-use const SQLITE3_ASSOC;
-use const SQLITE3_BLOB;
-use const SQLITE3_TEXT;
+
 use function array_search;
 use function implode;
 use function serialize;
@@ -14,8 +12,14 @@ use function sprintf;
 use function time;
 use function unserialize;
 
+use const SQLITE3_ASSOC;
+use const SQLITE3_BLOB;
+use const SQLITE3_TEXT;
+
 /**
  * SQLite3 cache provider.
+ *
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
  */
 class SQLite3Cache extends CacheProvider
 {
@@ -55,7 +59,7 @@ class SQLite3Cache extends CacheProvider
         $this->ensureTableExists();
     }
 
-    private function ensureTableExists() : void
+    private function ensureTableExists(): void
     {
         $this->sqlite->exec(
             sprintf(
@@ -147,9 +151,9 @@ class SQLite3Cache extends CacheProvider
      *
      * @param mixed $id
      *
-     * @return array|null
+     * @return mixed[]|null
      */
-    private function findById($id, bool $includeData = true) : ?array
+    private function findById($id, bool $includeData = true): ?array
     {
         [$idField] = $fields = $this->getFields();
 
@@ -185,9 +189,9 @@ class SQLite3Cache extends CacheProvider
     /**
      * Gets an array of the fields in our table.
      *
-     * @return array
+     * @psalm-return array{string, string, string}
      */
-    private function getFields() : array
+    private function getFields(): array
     {
         return [static::ID_FIELD, static::DATA_FIELD, static::EXPIRATION_FIELD];
     }
@@ -195,9 +199,9 @@ class SQLite3Cache extends CacheProvider
     /**
      * Check if the item is expired.
      *
-     * @param array $item
+     * @param mixed[] $item
      */
-    private function isExpired(array $item) : bool
+    private function isExpired(array $item): bool
     {
         return isset($item[static::EXPIRATION_FIELD]) &&
             $item[self::EXPIRATION_FIELD] !== null &&

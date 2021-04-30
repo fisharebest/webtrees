@@ -3,6 +3,7 @@
 namespace Doctrine\Common\Cache;
 
 use Memcached;
+
 use function array_keys;
 use function preg_match;
 use function strlen;
@@ -11,6 +12,8 @@ use function time;
 
 /**
  * Memcached cache provider.
+ *
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
  *
  * @link   www.doctrine-project.org
  */

@@ -3,6 +3,7 @@
 namespace Doctrine\Common\Cache;
 
 use Redis;
+
 use function array_combine;
 use function array_diff_key;
 use function array_fill_keys;
@@ -15,6 +16,8 @@ use function is_bool;
 
 /**
  * Redis cache provider.
+ *
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
  *
  * @link   www.doctrine-project.org
  */
@@ -60,7 +63,7 @@ class RedisCache extends CacheProvider
         $fetchedItems = array_combine($keys, $this->redis->mget($keys));
 
         // Redis mget returns false for keys that do not exist. So we need to filter those out unless it's the real data.
-        $keysToFilter = array_keys(array_filter($fetchedItems, static function ($item) : bool {
+        $keysToFilter = array_keys(array_filter($fetchedItems, static function ($item): bool {
             return $item === false;
         }));
 
@@ -69,6 +72,7 @@ class RedisCache extends CacheProvider
             foreach ($keysToFilter as $key) {
                 $multi->exists($key);
             }
+
             $existItems     = array_filter($multi->exec());
             $missedItemKeys = array_diff_key($keysToFilter, $existItems);
             $fetchedItems   = array_diff_key($fetchedItems, array_fill_keys($missedItemKeys, true));
@@ -88,6 +92,7 @@ class RedisCache extends CacheProvider
             foreach ($keysAndValues as $key => $value) {
                 $multi->setex($key, $lifetime, $value);
             }
+
             $succeeded = array_filter($multi->exec());
 
             return count($succeeded) == count($keysAndValues);

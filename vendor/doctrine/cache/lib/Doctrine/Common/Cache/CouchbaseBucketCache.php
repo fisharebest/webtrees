@@ -8,6 +8,7 @@ use Couchbase\Bucket;
 use Couchbase\Document;
 use Couchbase\Exception;
 use RuntimeException;
+
 use function phpversion;
 use function serialize;
 use function sprintf;
@@ -18,6 +19,8 @@ use function version_compare;
 
 /**
  * Couchbase ^2.3.0 cache provider.
+ *
+ * @deprecated Deprecated without replacement in doctrine/cache 1.11. This class will be dropped in 2.0
  */
 final class CouchbaseBucketCache extends CacheProvider
 {
@@ -170,7 +173,7 @@ final class CouchbaseBucketCache extends CacheProvider
         ];
     }
 
-    private function normalizeKey(string $id) : string
+    private function normalizeKey(string $id): string
     {
         $normalized = substr($id, 0, self::MAX_KEY_LENGTH);
 
@@ -186,7 +189,7 @@ final class CouchbaseBucketCache extends CacheProvider
      *
      * @src https://developer.couchbase.com/documentation/server/4.1/developer-guide/expiry.html
      */
-    private function normalizeExpiry(int $expiry) : int
+    private function normalizeExpiry(int $expiry): int
     {
         if ($expiry > self::THIRTY_DAYS_IN_SECONDS) {
             return time() + $expiry;
