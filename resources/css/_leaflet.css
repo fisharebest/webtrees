@@ -14,5 +14,23 @@
  */
 
 /*
- * Temporary fixes for things that are broken upstream.
+ * Formatting for LeafletJS based maps.
  */
+
+.leaflet-control-layers-selector {
+    margin-right: 2px;
+}
+
+/* Default is 12px - a bit too small */
+.leaflet-container {
+    font-size: 0.8rem;
+}
+
+/* No way to target parents-only... */
+.leaflet-layerstree-header-name {
+    font-weight: bold;
+}
+
+.leaflet-layerstree-node .leaflet-layerstree-node .leaflet-layerstree-header-name {
+    font-weight: normal;
+}
