@@ -58,9 +58,8 @@ class TreePageBlockEdit implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user     = $request->getAttribute('user');
         $block_id = (int) $request->getQueryParams()['block_id'];
-        $block    = $this->home_page_service->treeBlock($request, $user);
+        $block    = $this->home_page_service->treeBlock($request);
         $title    = $block->title() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [

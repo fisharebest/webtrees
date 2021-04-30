@@ -55,8 +55,7 @@ class TreePageBlockUpdate implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user     = $request->getAttribute('user');
-        $block    = $this->home_page_service->treeBlock($request, $user);
+        $block    = $this->home_page_service->treeBlock($request);
         $block_id = (int) $request->getQueryParams()['block_id'];
 
         $block->saveBlockConfiguration($request, $block_id);

@@ -53,14 +53,13 @@ class HomePageService
     }
 
     /**
-     * Load a block and check we have permission to edit it.
+     * Load a tree block.
      *
      * @param ServerRequestInterface $request
-     * @param UserInterface          $user
      *
      * @return ModuleBlockInterface
      */
-    public function treeBlock(ServerRequestInterface $request, UserInterface $user): ModuleBlockInterface
+    public function treeBlock(ServerRequestInterface $request): ModuleBlockInterface
     {
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
@@ -73,25 +72,19 @@ class HomePageService
             ->whereNull('user_id')
             ->first();
 
-        if (!$block instanceof stdClass) {
-            throw new HttpNotFoundException();
+        if ($block instanceof stdClass) {
+            $module = $this->module_service->findByName($block->module_name);
+
+            if ($module instanceof ModuleBlockInterface) {
+                return $module;
+            }
         }
 
-        $module = $this->module_service->findByName($block->module_name);
-
-        if (!$module instanceof ModuleBlockInterface) {
-            throw new HttpNotFoundException();
-        }
-
-        if ($block->user_id !== $user->id() && !Auth::isAdmin()) {
-            throw new HttpAccessDeniedException();
-        }
-
-        return $module;
+        throw new HttpNotFoundException();
     }
 
     /**
-     * Load a block and check we have permission to edit it.
+     * Load a user block.
      *
      * @param ServerRequestInterface $request
      * @param UserInterface          $user
@@ -108,23 +101,15 @@ class HomePageService
             ->whereNull('gedcom_id')
             ->first();
 
-        if (!$block instanceof stdClass) {
-            throw new HttpNotFoundException('This block does not exist');
+        if ($block instanceof stdClass) {
+            $module = $this->module_service->findByName($block->module_name);
+
+            if ($module instanceof ModuleBlockInterface) {
+                return $module;
+            }
         }
 
-        $module = $this->module_service->findByName($block->module_name);
-
-        if (!$module instanceof ModuleBlockInterface) {
-            throw new HttpNotFoundException($block->module_name . ' is not a block');
-        }
-
-        $block_owner_id = (int) $block->user_id;
-
-        if ($block_owner_id !== $user->id() && !Auth::isAdmin()) {
-            throw new HttpAccessDeniedException('You are not allowed to edit this block');
-        }
-
-        return $module;
+        throw new HttpNotFoundException();
     }
 
     /**
