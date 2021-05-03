@@ -40,6 +40,8 @@ final class Configuration implements ConfigurationInterface
     public function get(?string $key = null, $default = null)
     {
         if ($key === null) {
+            @\trigger_error('Calling Configuration::get() without a $key is deprecated in league/commonmark 1.6 and will not be allowed in 2.0', \E_USER_DEPRECATED);
+
             return $this->config;
         }
 
@@ -57,12 +59,21 @@ final class Configuration implements ConfigurationInterface
 
     public function set(string $key, $value = null)
     {
+        if (\func_num_args() === 1) {
+            @\trigger_error('Calling Configuration::set() without a $value is deprecated in league/commonmark 1.6 and will not be allowed in 2.0', \E_USER_DEPRECATED);
+        }
+
         // accept a/b/c as ['a']['b']['c']
         if (\strpos($key, '/')) {
             $this->setByPath($key, $value);
         }
 
         $this->config[$key] = $value;
+    }
+
+    public function exists(string $key): bool
+    {
+        return $this->getConfigByPath($key, self::MISSING) !== self::MISSING;
     }
 
     /**

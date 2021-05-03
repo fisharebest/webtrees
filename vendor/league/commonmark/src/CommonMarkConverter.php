@@ -17,7 +17,7 @@ namespace League\CommonMark;
 /**
  * Converts CommonMark-compatible Markdown to HTML.
  */
-class CommonMarkConverter extends Converter
+class CommonMarkConverter extends MarkdownConverter
 {
     /**
      * The currently-installed version.
@@ -27,10 +27,7 @@ class CommonMarkConverter extends Converter
      * @deprecated in 1.5.0 and will be removed from 2.0.0.
      *   Use \Composer\InstalledVersions provided by composer-runtime-api instead.
      */
-    public const VERSION = '1.5.8';
-
-    /** @var EnvironmentInterface */
-    protected $environment;
+    public const VERSION = '1.6.0';
 
     /**
      * Create a new commonmark converter instance.
@@ -42,19 +39,14 @@ class CommonMarkConverter extends Converter
     {
         if ($environment === null) {
             $environment = Environment::createCommonMarkEnvironment();
+        } else {
+            @\trigger_error(\sprintf('Passing an $environment into the "%s" constructor is deprecated in 1.6 and will not be supported in 2.0; use MarkdownConverter instead', self::class));
         }
 
         if ($environment instanceof ConfigurableEnvironmentInterface) {
             $environment->mergeConfig($config);
         }
 
-        $this->environment = $environment;
-
-        parent::__construct(new DocParser($environment), new HtmlRenderer($environment));
-    }
-
-    public function getEnvironment(): EnvironmentInterface
-    {
-        return $this->environment;
+        parent::__construct($environment);
     }
 }

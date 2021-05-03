@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '06c54ff1151afbd958f35f9b54219f4e020ad5b0',
+    'reference' => '649e8c9c3b115e3ca9c5543f1798b86ccac1036a',
     'name' => 'fisharebest/webtrees',
   ),
   'versions' => 
@@ -168,7 +168,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '06c54ff1151afbd958f35f9b54219f4e020ad5b0',
+      'reference' => '649e8c9c3b115e3ca9c5543f1798b86ccac1036a',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -253,12 +253,12 @@ private static $installed = array (
     ),
     'league/commonmark' => 
     array (
-      'pretty_version' => '1.5.8',
-      'version' => '1.5.8.0',
+      'pretty_version' => '1.6.0',
+      'version' => '1.6.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '08fa59b8e4e34ea8a773d55139ae9ac0e0aecbaf',
+      'reference' => '19a9673b833cc37770439097b381d86cd125bfe8',
     ),
     'league/flysystem' => 
     array (
@@ -307,12 +307,12 @@ private static $installed = array (
     ),
     'nesbot/carbon' => 
     array (
-      'pretty_version' => '2.46.0',
-      'version' => '2.46.0.0',
+      'pretty_version' => '2.47.0',
+      'version' => '2.47.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4',
+      'reference' => '606262fd8888b75317ba9461825a24fc34001e1e',
     ),
     'nyholm/psr7' => 
     array (
@@ -495,12 +495,12 @@ private static $installed = array (
     ),
     'symfony/cache' => 
     array (
-      'pretty_version' => 'v4.4.21',
-      'version' => '4.4.21.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'b7ff54be3f3eb1ce09643692f0c309b1b27bc992',
+      'reference' => '0da1df9b1a31f328f1711b5cd922c38a15c5fc74',
     ),
     'symfony/cache-contracts' => 
     array (
@@ -520,12 +520,12 @@ private static $installed = array (
     ),
     'symfony/expression-language' => 
     array (
-      'pretty_version' => 'v4.4.20',
-      'version' => '4.4.20.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a6b2c711e4d4dcba4db7b36a8a1835b0720d07fe',
+      'reference' => '0dd911bbb99d7210a8f38d8de4a7964ff4a06533',
     ),
     'symfony/polyfill-ctype' => 
     array (
@@ -626,12 +626,12 @@ private static $installed = array (
     ),
     'symfony/var-exporter' => 
     array (
-      'pretty_version' => 'v4.4.20',
-      'version' => '4.4.20.0',
+      'pretty_version' => 'v4.4.22',
+      'version' => '4.4.22.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3a3ea598bba6901d20b58c2579f68700089244ed',
+      'reference' => 'ef3054c7e878fe0837ef9ac2c5ecfddfd27dd9e9',
     ),
     'tecnickcom/tcpdf' => 
     array (
