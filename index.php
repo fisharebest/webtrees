@@ -40,18 +40,23 @@ if (PHP_SAPI === 'cli-server') {
 }
 
 // Create the application.
-$application = new Webtrees();
-$application->bootstrap();
-
-// Select a PSR message factory.
-$application->selectMessageFactory();
+$webtrees = new Webtrees();
+$webtrees->registerErrorHandler();
+$webtrees->registerFactories();
 
 // The application is defined by a stack of middleware and a PSR-11 container.
-$middleware = $application->middleware();
+$middleware = $webtrees->middleware();
 $container  = app();
 $dispatcher = new Dispatcher($middleware, $container);
 
 // Build the request from the PHP super-globals.
-$request = app(ServerRequestCreator::class)->fromGlobals();
+$server_request_creator = new ServerRequestCreator(
+    Registry::serverRequestFactory(),
+    Registry::uriFactory(),
+    Registry::uploadedFileFactory(),
+    Registry::streamFactory()
+);
+
+$request = $server_request_creator->fromGlobals();
 
 $dispatcher->dispatch($request);

@@ -20,14 +20,13 @@ declare(strict_types=1);
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session as WebtreesSession;
 use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Container\Container;
-use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
 
 /**
  * Get the IoC container, or fetch something from it.
@@ -96,10 +95,7 @@ function csrf_token(): string
  */
 function redirect(string $url, $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
 {
-    /** @var ResponseFactoryInterface $response_factory */
-    $response_factory = app(ResponseFactoryInterface::class);
-
-    return $response_factory
+    return Registry::responseFactory()
         ->createResponse($code)
         ->withHeader('Location', $url);
 }
@@ -134,15 +130,9 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
         }
     }
 
-    /** @var ResponseFactoryInterface $response_factory */
-    $response_factory = app(ResponseFactoryInterface::class);
+    $stream = Registry::streamFactory()->createStream($content);
 
-    /** @var StreamFactoryInterface $stream_factory */
-    $stream_factory = app(StreamFactoryInterface::class);
-
-    $stream = $stream_factory->createStream($content);
-
-    $response = $response_factory
+    $response = Registry::responseFactory()
         ->createResponse($code)
         ->withBody($stream);
 

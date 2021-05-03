@@ -30,10 +30,8 @@ use League\Flysystem\UnableToReadFile;
 use Nyholm\Psr7\UploadedFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function assert;
 use function basename;
 use function redirect;
@@ -98,7 +96,7 @@ class ImportGedcomAction implements RequestHandlerInterface
 
             if ($basename) {
                 $resource = $data_filesystem->readStream($basename);
-                $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                $stream   = Registry::streamFactory()->createStreamFromResource($resource);
                 $this->tree_service->importGedcomFile($tree, $stream, $basename);
             } else {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');

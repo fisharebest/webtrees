@@ -26,9 +26,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
-use League\Flysystem\FilesystemException;
-use League\Flysystem\UnableToReadFile;
-use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -89,7 +86,7 @@ class SynchronizeTrees implements RequestHandlerInterface
 
                 if ($tree->getPreference('filemtime') !== $filemtime) {
                     $resource = $data_filesystem->readStream($gedcom_file);
-                    $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                    $stream   = Registry::streamFactory()->createStreamFromResource($resource);
                     $this->tree_service->importGedcomFile($tree, $stream, $gedcom_file);
                     $stream->close();
                     $tree->setPreference('filemtime', $filemtime);
