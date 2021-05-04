@@ -51,8 +51,10 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use RuntimeException;
 
 use function app;
@@ -388,10 +390,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $zip_filesystem->writeStream('clippings.ged', $stream);
 
         // Use a stream, so that we do not have to load the entire file into memory.
-        $stream = Registry::streamFactory()->createStreamFromFile($temp_zip_file);
+        $stream = app(StreamFactoryInterface::class)->createStreamFromFile($temp_zip_file);
 
-        return Registry::responseFactory()
-            ->createResponse()
+        /** @var ResponseFactoryInterface $response_factory */
+        $response_factory = app(ResponseFactoryInterface::class);
+
+        return $response_factory->createResponse()
             ->withBody($stream)
             ->withHeader('Content-Type', 'application/zip')
             ->withHeader('Content-Disposition', 'attachment; filename="clippings.zip');

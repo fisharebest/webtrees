@@ -36,42 +36,45 @@ use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
 use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\ServerRequestFactoryInterface;
-use Psr\Http\Message\StreamFactoryInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
-use Psr\Http\Message\UriFactoryInterface;
 
 /**
  * Provide access to factory objects and those that represent external entities (filesystems, caches)
  */
 class Registry
 {
-    // Factories for webtrees objects
     private static CacheFactoryInterface $cache_factory;
-    private static ElementFactoryInterface $element_factory;
-    private static FamilyFactoryInterface $family_factory;
-    private static FilesystemFactoryInterface $filesystem_factory;
-    private static GedcomRecordFactoryInterface $gedcom_record_factory;
-    private static HeaderFactoryInterface $header_factory;
-    private static ImageFactoryInterface $image_factory;
-    private static IndividualFactoryInterface $individual_factory;
-    private static LocationFactoryInterface $location_factory;
-    private static MediaFactoryInterface $media_factory;
-    private static NoteFactoryInterface $note_factory;
-    private static RepositoryFactoryInterface $repository_factory;
-    private static SlugFactoryInterface $slug_factory;
-    private static SourceFactoryInterface $source_factory;
-    private static SubmissionFactoryInterface $submission_factory;
-    private static SubmitterFactoryInterface $submitter_factory;
-    private static XrefFactoryInterface $xref_factory;
 
-    // Factories for PSR7 /PSR17 messages
-    private static ResponseFactoryInterface $response_factory;
-    private static ServerRequestFactoryInterface $server_request_factory;
-    private static StreamFactoryInterface $stream_factory;
-    private static UploadedFileFactoryInterface $uploaded_file_factory;
-    private static UriFactoryInterface $uri_factory;
+    private static ElementFactoryInterface $element_factory;
+
+    private static FamilyFactoryInterface $family_factory;
+
+    private static FilesystemFactoryInterface $filesystem_factory;
+
+    private static GedcomRecordFactoryInterface $gedcom_record_factory;
+
+    private static HeaderFactoryInterface $header_factory;
+
+    private static ImageFactoryInterface $image_factory;
+
+    private static IndividualFactoryInterface $individual_factory;
+
+    private static LocationFactoryInterface $location_factory;
+
+    private static MediaFactoryInterface $media_factory;
+
+    private static NoteFactoryInterface $note_factory;
+
+    private static RepositoryFactoryInterface $repository_factory;
+
+    private static SlugFactoryInterface $slug_factory;
+
+    private static SourceFactoryInterface $source_factory;
+
+    private static SubmissionFactoryInterface $submission_factory;
+
+    private static SubmitterFactoryInterface $submitter_factory;
+
+    private static XrefFactoryInterface $xref_factory;
 
     /**
      * Store or retrieve a factory object.
@@ -268,22 +271,6 @@ class Registry
     /**
      * Store or retrieve a factory object.
      *
-     * @param ResponseFactoryInterface|null $factory
-     *
-     * @return ResponseFactoryInterface
-     */
-    public static function responseFactory(ResponseFactoryInterface $factory = null): ResponseFactoryInterface
-    {
-        if ($factory instanceof ResponseFactoryInterface) {
-            self::$response_factory = $factory;
-        }
-
-        return self::$response_factory;
-    }
-
-    /**
-     * Store or retrieve a factory object.
-     *
      * @param SlugFactoryInterface|null $factory
      *
      * @return SlugFactoryInterface
@@ -300,22 +287,6 @@ class Registry
     /**
      * Store or retrieve a factory object.
      *
-     * @param ServerRequestFactoryInterface|null $factory
-     *
-     * @return ServerRequestFactoryInterface
-     */
-    public static function serverRequestFactory(ServerRequestFactoryInterface $factory = null): ServerRequestFactoryInterface
-    {
-        if ($factory instanceof ServerRequestFactoryInterface) {
-            self::$server_request_factory = $factory;
-        }
-
-        return self::$server_request_factory;
-    }
-
-    /**
-     * Store or retrieve a factory object.
-     *
      * @param SourceFactoryInterface|null $factory
      *
      * @return SourceFactoryInterface
@@ -327,22 +298,6 @@ class Registry
         }
 
         return self::$source_factory;
-    }
-
-    /**
-     * Store or retrieve a factory object.
-     *
-     * @param StreamFactoryInterface|null $factory
-     *
-     * @return StreamFactoryInterface
-     */
-    public static function streamFactory(StreamFactoryInterface $factory = null): StreamFactoryInterface
-    {
-        if ($factory instanceof StreamFactoryInterface) {
-            self::$stream_factory = $factory;
-        }
-
-        return self::$stream_factory;
     }
 
     /**
@@ -375,38 +330,6 @@ class Registry
         }
 
         return self::$submitter_factory;
-    }
-
-    /**
-     * Store or retrieve a factory object.
-     *
-     * @param UploadedFileFactoryInterface|null $factory
-     *
-     * @return UploadedFileFactoryInterface
-     */
-    public static function uploadedFileFactory(UploadedFileFactoryInterface $factory = null): UploadedFileFactoryInterface
-    {
-        if ($factory instanceof UploadedFileFactoryInterface) {
-            self::$uploaded_file_factory = $factory;
-        }
-
-        return self::$uploaded_file_factory;
-    }
-
-    /**
-     * Store or retrieve a factory object.
-     *
-     * @param UriFactoryInterface|null $factory
-     *
-     * @return UriFactoryInterface
-     */
-    public static function uriFactory(UriFactoryInterface $factory = null): UriFactoryInterface
-    {
-        if ($factory instanceof UriFactoryInterface) {
-            self::$uri_factory = $factory;
-        }
-
-        return self::$uri_factory;
     }
 
     /**

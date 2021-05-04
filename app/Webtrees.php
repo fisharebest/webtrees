@@ -21,23 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use ErrorException;
-use Fisharebest\Webtrees\Factories\CacheFactory;
-use Fisharebest\Webtrees\Factories\ElementFactory;
-use Fisharebest\Webtrees\Factories\FamilyFactory;
-use Fisharebest\Webtrees\Factories\FilesystemFactory;
-use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
-use Fisharebest\Webtrees\Factories\HeaderFactory;
-use Fisharebest\Webtrees\Factories\ImageFactory;
-use Fisharebest\Webtrees\Factories\IndividualFactory;
-use Fisharebest\Webtrees\Factories\LocationFactory;
-use Fisharebest\Webtrees\Factories\MediaFactory;
-use Fisharebest\Webtrees\Factories\NoteFactory;
-use Fisharebest\Webtrees\Factories\RepositoryFactory;
-use Fisharebest\Webtrees\Factories\SlugFactory;
-use Fisharebest\Webtrees\Factories\SourceFactory;
-use Fisharebest\Webtrees\Factories\SubmissionFactory;
-use Fisharebest\Webtrees\Factories\SubmitterFactory;
-use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
@@ -50,6 +33,7 @@ use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
+use Fisharebest\Webtrees\Http\Middleware\RegisterFactories;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
@@ -61,7 +45,13 @@ use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 
+use function app;
 use function error_reporting;
 use function set_error_handler;
 
@@ -128,6 +118,7 @@ class Webtrees
         BaseUrl::class,
         HandleExceptions::class,
         ClientIp::class,
+        RegisterFactories::class,
         CompressResponse::class,
         BadBotBlocker::class,
         UseDatabase::class,
@@ -146,9 +137,11 @@ class Webtrees
     ];
 
     /**
+     * Initialise the application.
+     *
      * @return void
      */
-    public function registerErrorHandler(): void
+    public function bootstrap(): void
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
@@ -174,33 +167,17 @@ class Webtrees
     }
 
     /**
+     * We can use any PSR-7 / PSR-17 compatible message factory.
+     *
      * @return void
      */
-    public function registerFactories(): void
+    public function selectMessageFactory(): void
     {
-        Registry::cache(new CacheFactory());
-        Registry::familyFactory(new FamilyFactory());
-        Registry::filesystem(new FilesystemFactory());
-        Registry::elementFactory(new ElementFactory());
-        Registry::gedcomRecordFactory(new GedcomRecordFactory());
-        Registry::headerFactory(new HeaderFactory());
-        Registry::imageFactory(new ImageFactory());
-        Registry::individualFactory(new IndividualFactory());
-        Registry::locationFactory(new LocationFactory());
-        Registry::mediaFactory(new MediaFactory());
-        Registry::noteFactory(new NoteFactory());
-        Registry::repositoryFactory(new RepositoryFactory());
-        Registry::slugFactory(new SlugFactory());
-        Registry::sourceFactory(new SourceFactory());
-        Registry::submissionFactory(new SubmissionFactory());
-        Registry::submitterFactory(new SubmitterFactory());
-        Registry::xrefFactory(new XrefFactory());
-
-        Registry::serverRequestFactory(new Psr17Factory());
-        Registry::streamFactory(new Psr17Factory());
-        Registry::responseFactory(new Psr17Factory());
-        Registry::uploadedFileFactory(new Psr17Factory());
-        Registry::uriFactory(new Psr17Factory());
+        app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
+        app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
+        app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
+        app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
+        app()->bind(UriFactoryInterface::class, Psr17Factory::class);
     }
 
     /**

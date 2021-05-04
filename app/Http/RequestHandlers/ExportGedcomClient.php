@@ -30,12 +30,15 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
 
 use function addcslashes;
+use function app;
 use function assert;
 use function fclose;
 use function fopen;
@@ -148,11 +151,16 @@ class ExportGedcomClient implements RequestHandlerInterface
             }
 
             // Use a stream, so that we do not have to load the entire file into memory.
-            $http_stream = Registry::streamFactory()->createStreamFromFile($temp_zip_file);
-            $filename    = addcslashes($download_filename, '"') . '.zip';
+            $stream_factory = app(StreamFactoryInterface::class);
+            assert($stream_factory instanceof StreamFactoryInterface);
 
-            return Registry::responseFactory()
-                ->createResponse()
+            $http_stream   = $stream_factory->createStreamFromFile($temp_zip_file);
+            $filename = addcslashes($download_filename, '"') . '.zip';
+
+            /** @var ResponseFactoryInterface $response_factory */
+            $response_factory = app(ResponseFactoryInterface::class);
+
+            return $response_factory->createResponse()
                 ->withBody($http_stream)
                 ->withHeader('Content-Type', 'application/zip')
                 ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
@@ -169,10 +177,15 @@ class ExportGedcomClient implements RequestHandlerInterface
 
         $charset = $convert ? 'ISO-8859-1' : 'UTF-8';
 
-        $http_stream = Registry::streamFactory()->createStreamFromResource($resource);
+        $stream_factory = app(StreamFactoryInterface::class);
+        assert($stream_factory instanceof StreamFactoryInterface);
 
-        return Registry::responseFactory()
-            ->createResponse()
+        $http_stream = $stream_factory->createStreamFromResource($resource);
+
+        /** @var ResponseFactoryInterface $response_factory */
+        $response_factory = app(ResponseFactoryInterface::class);
+
+        return $response_factory->createResponse()
             ->withBody($http_stream)
             ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $charset)
             ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');

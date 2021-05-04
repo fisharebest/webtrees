@@ -30,7 +30,7 @@ use function set_error_handler;
 class WebtreesTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Webtrees::registerErrorHandler
+     * @covers \Fisharebest\Webtrees\Webtrees::bootstrap
      * @return void
      */
     public function testInit(): void
@@ -39,7 +39,7 @@ class WebtreesTest extends TestCase
         set_error_handler(null);
 
         $webtrees = new Webtrees();
-        $webtrees->registerErrorHandler();
+        $webtrees->bootstrap();
 
         // webtrees sets the error reporting level.
         self::assertNotSame(0, error_reporting());

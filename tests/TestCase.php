@@ -22,6 +22,22 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Factories\CacheFactory;
+use Fisharebest\Webtrees\Factories\FamilyFactory;
+use Fisharebest\Webtrees\Factories\FilesystemFactory;
+use Fisharebest\Webtrees\Factories\ElementFactory;
+use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
+use Fisharebest\Webtrees\Factories\HeaderFactory;
+use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Factories\LocationFactory;
+use Fisharebest\Webtrees\Factories\MediaFactory;
+use Fisharebest\Webtrees\Factories\NoteFactory;
+use Fisharebest\Webtrees\Factories\RepositoryFactory;
+use Fisharebest\Webtrees\Factories\SlugFactory;
+use Fisharebest\Webtrees\Factories\SourceFactory;
+use Fisharebest\Webtrees\Factories\SubmissionFactory;
+use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -31,10 +47,14 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Message\UriFactoryInterface;
 
 use function app;
 use function basename;
@@ -61,8 +81,30 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUpBeforeClass();
 
-        $webtrees = new Webtrees();
-        $webtrees->registerFactories();
+        // Use nyholm as our PSR7 factory
+        app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
+        app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
+        app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
+        app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
+        app()->bind(UriFactoryInterface::class, Psr17Factory::class);
+
+        // Register the factories
+        Registry::cache(new CacheFactory());
+        Registry::familyFactory(new FamilyFactory());
+        Registry::filesystem(new FilesystemFactory());
+        Registry::elementFactory(new ElementFactory());
+        Registry::gedcomRecordFactory(new GedcomRecordFactory());
+        Registry::headerFactory(new HeaderFactory());
+        Registry::individualFactory(new IndividualFactory());
+        Registry::locationFactory(new LocationFactory());
+        Registry::mediaFactory(new MediaFactory());
+        Registry::noteFactory(new NoteFactory());
+        Registry::repositoryFactory(new RepositoryFactory());
+        Registry::slugFactory(new SlugFactory());
+        Registry::sourceFactory(new SourceFactory());
+        Registry::submissionFactory(new SubmissionFactory());
+        Registry::submitterFactory(new SubmitterFactory());
+        Registry::xrefFactory(new XrefFactory());
 
         app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
 
@@ -135,9 +177,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
         array $files = [],
         array $attributes = []
     ): ServerRequestInterface {
+        /** @var ServerRequestFactoryInterface */
+        $server_request_factory = app(ServerRequestFactoryInterface::class);
+
         $uri = 'https://webtrees.test/index.php?' . http_build_query($query);
 
-        $request = Registry::serverRequestFactory()
+        /** @var ServerRequestInterface $request */
+        $request = $server_request_factory
             ->createServerRequest($method, $uri)
             ->withQueryParams($query)
             ->withParsedBody($params)
@@ -197,7 +243,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $tree_service = new TreeService();
         $tree         = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
-        $stream       = Registry::streamFactory()->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
+        $stream       = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file);
 
@@ -224,12 +270,17 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function createUploadedFile(string $filename, string $mime_type): UploadedFileInterface
     {
-        $stream      = Registry::streamFactory()->createStreamFromFile($filename);
+        /** @var StreamFactoryInterface */
+        $stream_factory = app(StreamFactoryInterface::class);
+
+        /** @var UploadedFileFactoryInterface */
+        $uploaded_file_factory = app(UploadedFileFactoryInterface::class);
+
+        $stream      = $stream_factory->createStreamFromFile($filename);
         $size        = filesize($filename);
         $status      = UPLOAD_ERR_OK;
         $client_name = basename($filename);
 
-        return Registry::uploadedFileFactory()
-            ->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
+        return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
     }
 }
