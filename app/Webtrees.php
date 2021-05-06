@@ -21,6 +21,23 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use ErrorException;
+use Fisharebest\Webtrees\Factories\CacheFactory;
+use Fisharebest\Webtrees\Factories\ElementFactory;
+use Fisharebest\Webtrees\Factories\FamilyFactory;
+use Fisharebest\Webtrees\Factories\FilesystemFactory;
+use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
+use Fisharebest\Webtrees\Factories\HeaderFactory;
+use Fisharebest\Webtrees\Factories\ImageFactory;
+use Fisharebest\Webtrees\Factories\IndividualFactory;
+use Fisharebest\Webtrees\Factories\LocationFactory;
+use Fisharebest\Webtrees\Factories\MediaFactory;
+use Fisharebest\Webtrees\Factories\NoteFactory;
+use Fisharebest\Webtrees\Factories\RepositoryFactory;
+use Fisharebest\Webtrees\Factories\SlugFactory;
+use Fisharebest\Webtrees\Factories\SourceFactory;
+use Fisharebest\Webtrees\Factories\SubmissionFactory;
+use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
@@ -31,9 +48,7 @@ use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
-use Fisharebest\Webtrees\Http\Middleware\PhpEnvironment;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
-use Fisharebest\Webtrees\Http\Middleware\RegisterFactories;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
@@ -44,15 +59,24 @@ use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
+use Illuminate\Container\Container;
+use Middleland\Dispatcher;
 use Nyholm\Psr7\Factory\Psr17Factory;
+use Nyholm\Psr7Server\ServerRequestCreator;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
+use Psr\Http\Server\MiddlewareInterface;
 
-use function app;
+use function date_default_timezone_set;
 use function error_reporting;
+use function is_string;
+use function mb_internal_encoding;
 use function set_error_handler;
 
 use const E_ALL;
@@ -111,14 +135,12 @@ class Webtrees
     public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-551.pdf';
 
     private const MIDDLEWARE = [
-        PhpEnvironment::class,
         EmitResponse::class,
         SecurityHeaders::class,
         ReadConfigIni::class,
         BaseUrl::class,
         HandleExceptions::class,
         ClientIp::class,
-        RegisterFactories::class,
         CompressResponse::class,
         BadBotBlocker::class,
         UseDatabase::class,
@@ -145,8 +167,74 @@ class Webtrees
     {
         // Show all errors and warnings in development, fewer in production.
         error_reporting(self::ERROR_REPORTING);
-
         set_error_handler($this->phpErrorHandler());
+
+        // All modern software uses UTF-8 encoding.
+        mb_internal_encoding('UTF-8');
+
+        // Use UTC internally and convert to local time when displaying datetimes.
+        date_default_timezone_set('UTC');
+
+        // Factory objects
+        Registry::cache(new CacheFactory());
+        Registry::familyFactory(new FamilyFactory());
+        Registry::filesystem(new FilesystemFactory());
+        Registry::elementFactory(new ElementFactory());
+        Registry::gedcomRecordFactory(new GedcomRecordFactory());
+        Registry::headerFactory(new HeaderFactory());
+        Registry::imageFactory(new ImageFactory());
+        Registry::individualFactory(new IndividualFactory());
+        Registry::locationFactory(new LocationFactory());
+        Registry::mediaFactory(new MediaFactory());
+        Registry::noteFactory(new NoteFactory());
+        Registry::repositoryFactory(new RepositoryFactory());
+        Registry::slugFactory(new SlugFactory());
+        Registry::sourceFactory(new SourceFactory());
+        Registry::submissionFactory(new SubmissionFactory());
+        Registry::submitterFactory(new SubmitterFactory());
+        Registry::xrefFactory(new XrefFactory());
+    }
+
+    /**
+     * Respond to a CLI request.
+     *
+     * @return void
+     */
+    public function cliRequest(): void
+    {
+        // CLI handler will go here.
+    }
+
+    /**
+     * Response to an HTTP request.
+     *
+     * @return ResponseInterface
+     */
+    public function httpRequest(): ResponseInterface
+    {
+        // PSR7 messages and PSR17 message-factories
+        self::set(ResponseFactoryInterface::class, Psr17Factory::class);
+        self::set(ServerRequestFactoryInterface::class, Psr17Factory::class);
+        self::set(StreamFactoryInterface::class, Psr17Factory::class);
+        self::set(UploadedFileFactoryInterface::class, Psr17Factory::class);
+        self::set(UriFactoryInterface::class, Psr17Factory::class);
+
+        $request = $this->captureRequest();
+
+        return self::dispatch($request, self::MIDDLEWARE);
+    }
+
+    /**
+     * @param ServerRequestInterface            $request
+     * @param array<string|MiddlewareInterface> $middleware
+     *
+     * @return ResponseInterface
+     */
+    public static function dispatch(ServerRequestInterface $request, array $middleware): ResponseInterface
+    {
+        $dispatcher = new Dispatcher($middleware, self::container());
+
+        return $dispatcher->dispatch($request);
     }
 
     /**
@@ -167,26 +255,47 @@ class Webtrees
     }
 
     /**
-     * We can use any PSR-7 / PSR-17 compatible message factory.
+     * Build the request from the PHP super-globals.
      *
-     * @return void
+     * @return ServerRequestInterface
      */
-    public function selectMessageFactory(): void
+    private function captureRequest(): ServerRequestInterface
     {
-        app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
-        app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
-        app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
-        app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
-        app()->bind(UriFactoryInterface::class, Psr17Factory::class);
+        return self::make(ServerRequestCreator::class)->fromGlobals();
     }
 
     /**
-     * The webtrees application is built from middleware.
-     *
-     * @return array<string>
+     * @return ContainerInterface
      */
-    public function middleware(): array
+    public static function container(): ContainerInterface
     {
-        return self::MIDDLEWARE;
+        return Container::getInstance();
+    }
+
+    /**
+     * Make an object, using dependency injection.
+     *
+     * @param string $class
+     *
+     * @return mixed
+     */
+    public static function make(string $class)
+    {
+        return Container::getInstance()->make($class);
+    }
+
+    /**
+     * Write a value into the container.
+     *
+     * @param string        $abstract
+     * @param string|object $concrete
+     */
+    public static function set(string $abstract, $concrete): void
+    {
+        if (is_string($concrete)) {
+            Container::getInstance()->bind($abstract, $concrete);
+        } else {
+            Container::getInstance()->instance($abstract, $concrete);
+        }
     }
 }

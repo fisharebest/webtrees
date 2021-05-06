@@ -81,37 +81,23 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUpBeforeClass();
 
-        // Use nyholm as our PSR7 factory
-        app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
-        app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
-        app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
-        app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
-        app()->bind(UriFactoryInterface::class, Psr17Factory::class);
+        $webtrees = new Webtrees();
+        $webtrees->bootstrap();
 
-        // Register the factories
-        Registry::cache(new CacheFactory());
-        Registry::familyFactory(new FamilyFactory());
-        Registry::filesystem(new FilesystemFactory());
-        Registry::elementFactory(new ElementFactory());
-        Registry::gedcomRecordFactory(new GedcomRecordFactory());
-        Registry::headerFactory(new HeaderFactory());
-        Registry::individualFactory(new IndividualFactory());
-        Registry::locationFactory(new LocationFactory());
-        Registry::mediaFactory(new MediaFactory());
-        Registry::noteFactory(new NoteFactory());
-        Registry::repositoryFactory(new RepositoryFactory());
-        Registry::slugFactory(new SlugFactory());
-        Registry::sourceFactory(new SourceFactory());
-        Registry::submissionFactory(new SubmissionFactory());
-        Registry::submitterFactory(new SubmitterFactory());
-        Registry::xrefFactory(new XrefFactory());
+        // PSR7 messages and PSR17 message-factories
+        Webtrees::set(ResponseFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(ServerRequestFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(StreamFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(UploadedFileFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(UriFactoryInterface::class, Psr17Factory::class);
 
-        app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
+        // This is normally set in middleware.
+        Webtrees::set(ModuleThemeInterface::class, WebtreesTheme::class);
 
         // Need the routing table, to generate URLs.
         $router_container = new RouterContainer('/');
         (new WebRoutes())->load($router_container->getMap());
-        app()->instance(RouterContainer::class, $router_container);
+        Webtrees::set(RouterContainer::class, $router_container);
 
         I18N::init('en-US', true);
 

@@ -19,10 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Middleland\Dispatcher;
-use Nyholm\Psr7Server\ServerRequestCreator;
-
-use function app;
 use function is_file;
 use function is_string;
 use function parse_url;
@@ -39,19 +35,11 @@ if (PHP_SAPI === 'cli-server') {
     }
 }
 
-// Create the application.
-$application = new Webtrees();
-$application->bootstrap();
+$webtrees = new Webtrees();
+$webtrees->bootstrap();
 
-// Select a PSR message factory.
-$application->selectMessageFactory();
-
-// The application is defined by a stack of middleware and a PSR-11 container.
-$middleware = $application->middleware();
-$container  = app();
-$dispatcher = new Dispatcher($middleware, $container);
-
-// Build the request from the PHP super-globals.
-$request = app(ServerRequestCreator::class)->fromGlobals();
-
-$dispatcher->dispatch($request);
+if (PHP_SAPI === 'cli') {
+    $webtrees->cliRequest();
+} else {
+    $webtrees->httpRequest();
+}
