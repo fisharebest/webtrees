@@ -73,7 +73,7 @@ $count_notes = DB::table('other')
     class="table table-bordered table-sm wt-table-source datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
-        null,
+        ['type' => 'html'],
         null,
         null,
         null,
