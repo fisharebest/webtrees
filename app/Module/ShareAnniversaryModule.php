@@ -113,7 +113,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             ->filter(fn (Fact $fact): bool => $fact->date()->isOK())
             ->filter(fn (Fact $fact): bool => $fact->date()->qual1 === '')
             ->filter(fn (Fact $fact): bool => $fact->date()->minimumDate() instanceof GregorianDate)
-            ->filter(fn (Fact $fact): bool => $fact->date()->minimumDate() === $fact->date()->maximumDate())
+            ->filter(fn (Fact $fact): bool => $fact->date()->minimumJulianDay() === $fact->date()->maximumJulianDay())
             ->mapWithKeys(fn (Fact $fact): array => [
                 route(static::class, ['tree' => $record->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()]) =>
                     $fact->label() . ' — ' . $fact->date()->display(false, null, false),
