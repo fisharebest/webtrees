@@ -466,23 +466,23 @@ class FunctionsPrintFacts
             return '';
         }
 
-        preg_match_all('/^1 ASSO @(' . Gedcom::REGEX_XREF . ')@((\n[2-9].*)*)/', $event->gedcom(), $amatches1, PREG_SET_ORDER);
-        preg_match_all('/\n2 _?ASSO @(' . Gedcom::REGEX_XREF . ')@((\n[3-9].*)*)/', $event->gedcom(), $amatches2, PREG_SET_ORDER);
+        preg_match_all('/^1 (ASSO) @(' . Gedcom::REGEX_XREF . ')@((\n[2-9].*)*)/', $event->gedcom(), $amatches1, PREG_SET_ORDER);
+        preg_match_all('/\n2 (_?ASSO) @(' . Gedcom::REGEX_XREF . ')@((\n[3-9].*)*)/', $event->gedcom(), $amatches2, PREG_SET_ORDER);
 
         $html = '';
         // For each ASSO record
         foreach (array_merge($amatches1, $amatches2) as $amatch) {
-            $person = Registry::individualFactory()->make($amatch[1], $event->record()->tree());
+            $person = Registry::individualFactory()->make($amatch[2], $event->record()->tree());
             if ($person && $person->canShowName()) {
                 // Is there a "RELA" tag
-                if (preg_match('/\n([23]) RELA (.+)/', $amatch[2], $rmatch)) {
+                if (preg_match('/\n([23]) RELA (.+)/', $amatch[3], $rmatch)) {
                     if ($rmatch[1] === '2') {
-                        $base_tag = $event->record()->tag();
+                        $rela_tag = $event->record()->tag() . ':' . $amatch[1] . ':RELA';
                     } else {
-                        $base_tag = $event->tag();
+                        $rela_tag = $event->tag() . ':' . $amatch[1] . ':RELA';
                     }
                     // Use the supplied relationship as a label
-                    $label = Registry::elementFactory()->make($base_tag . ':_ASSO:RELA')->value($rmatch[2], $parent->tree());
+                    $label = Registry::elementFactory()->make($rela_tag)->value($rmatch[2], $parent->tree());
                 } elseif (preg_match('/^1 _?ASSO/', $event->gedcom())) {
                     // Use a default label
                     $label = Registry::elementFactory()->make($event->tag())->label();

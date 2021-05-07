@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
+use function uasort;
+
 /**
  * RELATION_IS_DESCRIPTOR := {Size=1:25}
  * A word or phrase that states object 1's relation is object 2. For example
@@ -153,6 +155,10 @@ class RelationIsDescriptor extends AbstractElement
             ],
         ];
 
-        return $values[$sex] ?? $values['U'];
+        $tmp = $values[$sex] ?? $values['U'];
+
+        uasort($tmp, I18N::comparator());
+
+        return $tmp;
     }
 }
