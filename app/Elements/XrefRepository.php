@@ -35,6 +35,10 @@ use function view;
  */
 class XrefRepository extends AbstractXrefElement
 {
+    protected const SUBTAGS = [
+        'CALN' => '0:1'
+    ];
+
     /**
      * An edit control for this data.
      *
