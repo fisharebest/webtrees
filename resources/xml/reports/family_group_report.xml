@@ -176,7 +176,7 @@
 						</if>
 					</TextBox>
 
-					<if condition="$blanks==1 or @BIRT:DATE!='' or @BIRT:PLAC!=''">
+					<if condition="$blanks==='on' or @BIRT:DATE!='' or @BIRT:PLAC!=''">
 						<!-- print Birth -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Birth')" />  </Text>
@@ -200,7 +200,7 @@
 							<Text color="$tcolor" style="text"><GedcomValue tag="BIRT:PLAC" /></Text>
 						</TextBox>
 					</if>
-					<if condition="$blanks==1 or @CHR:DATE!='' or @CHR:PLAC!=''">
+					<if condition="$blanks==='on' or @CHR:DATE!='' or @CHR:PLAC!=''">
 						<!-- print Christening -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Christening')" />  </Text>
@@ -283,7 +283,7 @@
 						</if>
 					</Facts>
 
-					<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
+					<if condition="$blanks==='on' or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 						<!-- print Death -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Death')" />  </Text>
@@ -309,7 +309,7 @@
 					</if>
 					<!-- indicates that a Level 1 CREM record is not present -->
 					<SetVar name="level1CREM" value="0" />
-					<if condition="$blanks==1 or @CREM:DATE!='' or @CREM:PLAC!=''">
+					<if condition="$blanks==='on' or @CREM:DATE!='' or @CREM:PLAC!=''">
 						<!-- print Cremation -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Cremation')" />  </Text>
@@ -335,7 +335,7 @@
 						<!-- indicates that a Level 1 CREM record is present -->
 						<SetVar name="level1CREM" value="1" />
 					</if>
-					<if condition="$blanks==1 or @BURI:CREM!='' or @BURI:DATE!='' or @BURI:PLAC!=''">
+					<if condition="$blanks==='on' or @BURI:CREM!='' or @BURI:DATE!='' or @BURI:PLAC!=''">
 						<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 						<if condition="@BURI:CREM!='' and $level1CREM!=1">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
@@ -371,7 +371,7 @@
 					</if>
 
 					<Gedcom id="$famid">
-						<if condition="$blanks==1 or @MARR:DATE!='' or @MARR:PLAC!=''">
+						<if condition="$blanks==='on' or @MARR:DATE!='' or @MARR:PLAC!=''">
 							<!-- print Marriage -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 								<Text color="$tcolor" style="fact"><var var="I18N::translate('Marriage')" />  </Text>
@@ -530,7 +530,7 @@
 						</if>
 					</TextBox>
 
-					<if condition="$blanks==1 or @BIRT:DATE!='' or @BIRT:PLAC!=''">
+					<if condition="$blanks==='on' or @BIRT:DATE!='' or @BIRT:PLAC!=''">
 						<!-- print Birth -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Birth')" />  </Text>
@@ -554,7 +554,7 @@
 							<Text color="$tcolor" style="text"><GedcomValue tag="BIRT:PLAC" /></Text>
 						</TextBox>
 					</if>
-					<if condition="$blanks==1 or @CHR:DATE!='' or @CHR:PLAC!=''">
+					<if condition="$blanks==='on' or @CHR:DATE!='' or @CHR:PLAC!=''">
 						<!-- print Christening -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Christening')" />  </Text>
@@ -637,7 +637,7 @@
 						</if>
 					</Facts>
 
-					<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
+					<if condition="$blanks==='on' or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 						<!-- print Death -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Death')" />  </Text>
@@ -663,7 +663,7 @@
 					</if>
 					<!-- indicates that a Level 1 CREM record is not present -->
 					<SetVar name="level1CREM" value="0" />
-					<if condition="$blanks==1 or @CREM:DATE!='' or @CREM:PLAC!=''">
+					<if condition="$blanks==='on' or @CREM:DATE!='' or @CREM:PLAC!=''">
 						<!-- print Cremation -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 							<Text color="$tcolor" style="fact"><var var="I18N::translate('Cremation')" />  </Text>
@@ -689,7 +689,7 @@
 						<!-- indicates that a Level 1 CREM record is present -->
 						<SetVar name="level1CREM" value="1" />
 					</if>
-					<if condition="$blanks==1 or @BURI:CREM!='' or @BURI:DATE!='' or @BURI:PLAC!=''">
+					<if condition="$blanks==='on' or @BURI:CREM!='' or @BURI:DATE!='' or @BURI:PLAC!=''">
 						<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 						<if condition="@BURI:CREM!='' and $level1CREM!=1">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
@@ -874,7 +874,7 @@
 							</TextBox>
 						</if>
 
-						<if condition="$blanks==1 or @BIRT:DATE!='' or @BIRT:PLAC!=''">
+						<if condition="$blanks==='on' or @BIRT:DATE!='' or @BIRT:PLAC!=''">
 							<!-- print Birth -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 								<Text color="$tcolor" style="fact"><var var="I18N::translate('Birth')" />  </Text>
@@ -898,7 +898,7 @@
 								<Text color="$tcolor" style="text"><GedcomValue tag="BIRT:PLAC" /></Text>
 							</TextBox>
 						</if>
-						<if condition="$blanks==1 or @CHR:DATE!='' or @CHR:PLAC!=''">
+						<if condition="$blanks==='on' or @CHR:DATE!='' or @CHR:PLAC!=''">
 							<!-- print Christening -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 								<Text color="$tcolor" style="fact"><var var="I18N::translate('Christening')" />  </Text>
@@ -981,7 +981,7 @@
 							</if>
 						</Facts>
 
-						<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
+						<if condition="$blanks==='on' or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 							<!-- print Death -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 								<Text color="$tcolor" style="fact"><var var="I18N::translate('Death')" />  </Text>
@@ -1007,7 +1007,7 @@
 						</if>
 						<!-- indicates that a Level 1 CREM record is not present -->
 						<SetVar name="level1CREM" value="0" />
-						<if condition="$blanks==1 or @CREM:DATE!='' or @CREM:PLAC!=''">
+						<if condition="$blanks==='on' or @CREM:DATE!='' or @CREM:PLAC!=''">
 							<!-- print Cremation -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
 								<Text color="$tcolor" style="fact"><var var="I18N::translate('Cremation')" />  </Text>
@@ -1033,7 +1033,7 @@
 							<!-- indicates that a Level 1 CREM record is present -->
 							<SetVar name="level1CREM" value="1" />
 						</if>
-						<if condition="$blanks==1 or @BURI:CREM!='' or @BURI:DATE!='' or @BURI:PLAC!=''">
+						<if condition="$blanks==='on' or @BURI:CREM!='' or @BURI:DATE!='' or @BURI:PLAC!=''">
 							<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 							<if condition="@BURI:CREM!='' and $level1CREM!=1">
 								<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
