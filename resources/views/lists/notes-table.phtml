@@ -72,7 +72,7 @@ $count_sources = DB::table('sources')
     class="table table-bordered table-sm wt-table-note datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
-        null,
+        ['type' => 'html'],
         ['visible' => array_sum($count_individuals) > 0],
         ['visible' => array_sum($count_families) > 0],
         ['visible' => array_sum($count_media) > 0],
