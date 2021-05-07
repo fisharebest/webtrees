@@ -1342,9 +1342,12 @@ class ElementFactory implements ElementFactoryInterface
 
             // Roots Magic extensions
             $this->register([
-                'INDI:_DNA'  => new CustomElement(I18N::translate('DNA markers')),
-                'SOUR:_BIBL' => new CustomElement(I18N::translate('Bibliography')),
-                'SOUR:_SUBQ' => new CustomElement(I18N::translate('Abbreviation')),
+                'INDI:_DNA'         => new CustomElement(I18N::translate('DNA markers')),
+                'INDI:_WEBTAG'      => new CustomElement(I18N::translate('External link')),
+                'INDI:_WEBTAG:NAME' => new CustomElement(I18N::translate('Text')),
+                'INDI:_WEBTAG:URL'  => new AddressWebPage(I18N::translate('URL')),
+                'SOUR:_BIBL'        => new CustomElement(I18N::translate('Bibliography')),
+                'SOUR:_SUBQ'        => new CustomElement(I18N::translate('Abbreviation')),
             ]);
 
             // webtrees extensions

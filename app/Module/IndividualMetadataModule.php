@@ -43,6 +43,7 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
         'RIN',
         'SSN',
         '_UID',
+        '_WEBTAG',
     ];
 
     /**
