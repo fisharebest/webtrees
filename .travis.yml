@@ -1,9 +1,5 @@
 language: php
 
-cache:
-  directories:
-    - ~/.composer/cache
-
 sudo: false
 
 matrix:
@@ -24,8 +20,9 @@ matrix:
 
 before_script:
   - phpenv config-rm xdebug.ini
+  - travis_retry composer self-update --1
   - travis_retry composer config github-oauth.github.com "${GITHUB_OAUTH_TOKEN}"
-  - COMPOSER_MEMORY_LIMIT=-1 composer update --no-interaction
+  - COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction
 
 script:
   - vendor/bin/phpunit
