@@ -53,16 +53,22 @@ use Illuminate\Support\Collection;
                 <tr>
                     <th scope="col">
                         <input type="hidden" name="order[]" value="<?= e($module->name()) ?>">
-                        <span title="<?= e($module->description()) ?>">
+                        <span title="<?= e(strip_tags($module->description())) ?>">
                             <?= $module->title() ?>
                         </span>
-                        <?php if ($module instanceof ModuleConfigInterface && $module->isEnabled()) : ?>
-                            <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
-                                <?= view('icons/preferences') ?>
-                                <span class="sr-only">
-                                    <?= I18N::translate('Preferences') ?>
+                        <?php if ($module instanceof ModuleConfigInterface) : ?>
+                            <?php if ($module->isEnabled()) : ?>
+                                <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
+                                    <?= view('icons/preferences') ?>
+                                    <span class="sr-only">
+                                        <?= I18N::translate('Preferences') ?>
+                                    </span>
+                                </a>
+                            <?php else : ?>
+                                <span class="text-muted">
+                                    <?= view('icons/preferences') ?>
                                 </span>
-                            </a>
+                            <?php endif ?>
                         <?php endif ?>
                         <?php if ($module instanceof ModuleCustomInterface) : ?>
                             <?= view('admin/custom-module-info', ['module' => $module]) ?>
