@@ -27,7 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function redirect;
-use function view;
 
 /**
  * Class MapLocationGeonames - use geonames to find locations
