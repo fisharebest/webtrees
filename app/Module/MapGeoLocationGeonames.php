@@ -19,8 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 
+use Fisharebest\Webtrees\Site;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function redirect;
 use function view;
 
 /**
@@ -39,5 +45,48 @@ class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInter
     public function title(): string
     {
         return /* I18N: https://www.geonames.org */ I18N::translate('GeoNames');
+    }
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @return ResponseInterface
+     */
+    public function getAdminAction(): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+
+        // This was a global setting before it became a module setting...
+        $default  = Site::getPreference('geonames');
+        $username = $this->getPreference('username', $default);
+
+        return $this->viewResponse('modules/geonames/config', [
+            'username' => $username,
+            'title'    => $this->title(),
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $params = (array) $request->getParsedBody();
+
+        $this->setPreference('username', $params['username' ?? '']);
+
+        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
+
+        return redirect($this->getConfigLink());
     }
 }

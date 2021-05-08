@@ -19,8 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 
+use Fisharebest\Webtrees\Site;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function redirect;
 use function view;
 
 /**
@@ -39,5 +45,44 @@ class MapGeoLocationOpenRouteService extends AbstractModule implements ModuleCon
     public function title(): string
     {
         return /* I18N: https://openrouteservice.org */ I18N::translate('OpenRouteService');
+    }
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @return ResponseInterface
+     */
+    public function getAdminAction(): ResponseInterface
+    {
+        $this->layout = 'layouts/administration';
+
+        return $this->viewResponse('modules/openrouteservice/config', [
+            'api_key' => $this->getPreference('api_key'),
+            'title'   => $this->title(),
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $params = (array) $request->getParsedBody();
+
+        $this->setPreference('api_key', $params['api_key' ?? '']);
+
+        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
+
+        return redirect($this->getConfigLink());
     }
 }

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class MapLocationNominatim - use geonames to find locations
  */
-class MapGeoLocationNominatim extends AbstractModule implements ModuleConfigInterface, ModuleMapGeoLocationInterface
+class MapGeoLocationNominatim extends AbstractModule implements ModuleMapGeoLocationInterface
 {
     use ModuleConfigTrait;
     use ModuleMapGeoLocationTrait;
@@ -37,5 +37,15 @@ class MapGeoLocationNominatim extends AbstractModule implements ModuleConfigInte
     public function title(): string
     {
         return /* I18N: https://nominatim.org */ I18N::translate('Nominatim');
+    }
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
     }
 }
