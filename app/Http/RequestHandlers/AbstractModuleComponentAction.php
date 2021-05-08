@@ -34,11 +34,9 @@ use function array_flip;
  */
 abstract class AbstractModuleComponentAction implements RequestHandlerInterface
 {
-    /** @var ModuleService */
-    protected $module_service;
+    protected ModuleService $module_service;
 
-    /** @var TreeService */
-    protected $tree_service;
+    protected TreeService $tree_service;
 
     /**
      * @param ModuleService $module_service

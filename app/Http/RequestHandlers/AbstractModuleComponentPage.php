@@ -34,11 +34,9 @@ abstract class AbstractModuleComponentPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * @param ModuleService $module_service

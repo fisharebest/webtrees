@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
-
 use Fisharebest\Webtrees\Site;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
