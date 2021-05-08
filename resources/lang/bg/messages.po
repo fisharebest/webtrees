@@ -2655,7 +2655,7 @@ msgid "Binary data object"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7174,7 +7174,7 @@ msgid "Godson"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr ""
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21706,8 +21706,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Покажи индивиди/семейства, свързани чрез неродословна връзка"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Покажи локациите на места и събития чрез Google Maps™."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Покажи локациите на места и събития чрез Google™ maps."
 
 #~ msgid "Signed-in as "
 #~ msgstr "Здравейте, "

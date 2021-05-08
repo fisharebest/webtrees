@@ -2642,7 +2642,7 @@ msgid "Binary data object"
 msgstr "Objek Data Binari"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "Peta Bing™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7160,7 +7160,7 @@ msgid "Godson"
 msgstr "Anak baptis lelaki"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr "Peta Google™"
 
 #: app/Module/GoogleAnalyticsModule.php:44

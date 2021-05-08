@@ -2660,7 +2660,7 @@ msgid "Binary data object"
 msgstr "Binaarne andmeobjekt"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "Bing Kaardid™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7179,8 +7179,8 @@ msgid "Godson"
 msgstr "Ristipoeg"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21702,8 +21702,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Annab kasutajatele võimaluse valida enda teema."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™ eelistused"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps eelistused"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Tänavavaade™"
@@ -22289,8 +22289,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Näita seotud isikuid/perekondi"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Näita kohtade ja sündmuste asupaika kasutades Google Maps™ kaardistamisteenust."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Näita kohtade ja sündmuste asupaika kasutades Google™ maps kaardistamisteenust."
 
 #~ msgid "Sicily"
 #~ msgstr "Sitsiilia"
@@ -22671,8 +22671,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Lae geograafilised andmed üles"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Kasuta kohanimede hierarhiaks Google Maps™"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Kasuta kohanimede hierarhiaks Google™ maps"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Kasuta PHP posti sõnumite saatmiseks"

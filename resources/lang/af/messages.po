@@ -2655,8 +2655,8 @@ msgid "Binary data object"
 msgstr "Binêre data voorwerp"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7174,8 +7174,8 @@ msgid "Godson"
 msgstr "Peetseun"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21696,8 +21696,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Maak dit moontlik vir gebruikers om hulle eie tema te kies."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™ voorkeure"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps voorkeure"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -22295,8 +22295,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Vertoon verwante persone/gesinne"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Vertoon die ligging van die plekke en gebeurtenisse wat gebruik maak van die Google Maps™ karteringsdiens."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Vertoon die ligging van die plekke en gebeurtenisse wat gebruik maak van die Google™ maps karteringsdiens."
 
 #~ msgid "Sicily"
 #~ msgstr "Sisilië"
@@ -22676,8 +22676,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Laai geografiese gegewens op"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Gebruik Google Maps™ vir die plekhiërargie"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Gebruik Google™ maps vir die plekhiërargie"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Maak gebruik van 'PHP mail' om boodskappe te stuur"

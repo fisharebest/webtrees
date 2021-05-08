@@ -2664,7 +2664,7 @@ msgid "Binary data object"
 msgstr "Tvíunda Dagsetningar Hlutur"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7186,8 +7186,8 @@ msgid "Godson"
 msgstr "Guðsonur"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21616,8 +21616,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Gefa notendum kost á valmöguleikanum að velja þeirra eigin þema."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™ valkostir"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps valkostir"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -22121,8 +22121,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Sýna tengdar persónur/fjölskyldur"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Sýnið staðsetningu staða og atburða með því að nota Google Maps™ landakortaþjónustu."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Sýnið staðsetningu staða og atburða með því að nota Google™ maps landakortaþjónustu."
 
 #~ msgid "Sicily"
 #~ msgstr "Sikiley"
@@ -22389,8 +22389,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Hlaða inn landfræðigögnum"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Nota Google Maps™ fyrir staðar stigveldi"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Nota Google™ maps fyrir staðar stigveldi"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Nota PHP tölvupóst til að senda skilaboð"

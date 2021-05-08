@@ -2658,7 +2658,7 @@ msgid "Binary data object"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7179,8 +7179,8 @@ msgid "Godson"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21286,8 +21286,8 @@ msgstr ""
 #~ msgid "Gender icon on charts"
 #~ msgstr "Icona de xénero nos gráficos"
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Preferencias de Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Preferencias de Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -21548,8 +21548,8 @@ msgstr ""
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Amosar xerarquía de lugares"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Mostrar a localización de lugares e eventos empregando o servizo de mapas de Google Maps™."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Mostrar a localización de lugares e eventos empregando o servizo de mapas de Google™ maps."
 
 #~ msgid "Signed-in as "
 #~ msgstr "Conectado como "
@@ -21650,8 +21650,8 @@ msgstr ""
 #~ msgid "Upload"
 #~ msgstr "Subir"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Usar Google Maps™ pra a xerarquía de lugares"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Usar Google™ maps pra a xerarquía de lugares"
 
 #~ msgid "Use RIN number instead of GEDCOM ID"
 #~ msgstr "Usar número RIN no canto do ID do GEDCOM"

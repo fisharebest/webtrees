@@ -2643,7 +2643,7 @@ msgid "Binary data object"
 msgstr "İkili veri nesnesi"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "Bing Haritalar™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7162,7 +7162,7 @@ msgid "Godson"
 msgstr "Vaftiz oğlu"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr "Google Haritalar™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21684,7 +21684,7 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Kullanıcıya kendi temasını seçme seçeneği sunar."
 
-#~ msgid "Google Maps™ preferences"
+#~ msgid "Google™ maps preferences"
 #~ msgstr "Google Harıtalar™ tercihleri"
 
 #~ msgid "Google Street View™"
@@ -22280,8 +22280,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "İlişkili kişileri/aileleri göster"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Google Maps™ harita hizmeti kullanılarak yer ve olaylar yerini göster."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Google™ maps harita hizmeti kullanılarak yer ve olaylar yerini göster."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicilya"
@@ -22649,7 +22649,7 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Coğrafi verileri yükle"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
+#~ msgid "Use Google™ maps for the place hierarchy"
 #~ msgstr "Hiyerarşi yer için Google Hatıraları™ kullan"
 
 #~ msgid "Use PHP mail to send messages"

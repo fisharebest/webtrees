@@ -79,7 +79,7 @@ class BingMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
      */
     public function title(): string
     {
-        return I18N::translate('Bing Maps™');
+        return I18N::translate('Bing™ maps');
     }
 
     /**

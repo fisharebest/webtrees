@@ -79,7 +79,7 @@ class GoogleMaps extends AbstractModule implements ModuleConfigInterface, Module
      */
     public function title(): string
     {
-        return I18N::translate('Google Maps™');
+        return I18N::translate('Google™ maps');
     }
 
     /**

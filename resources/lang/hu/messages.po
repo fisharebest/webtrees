@@ -2643,8 +2643,8 @@ msgid "Binary data object"
 msgstr "Bináris adatobjektumok"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7162,8 +7162,8 @@ msgid "Godson"
 msgstr "Keresztfiú"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21685,8 +21685,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Lehetővé teszi, hogy a felhasználók saját témát válasszanak."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™-beállítások"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps-beállítások"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™ (utcakép)"
@@ -22281,8 +22281,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Mutasd a kapcsolódó személyeket/családokat"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "A helyek és események helyszíne a Google Maps™-térképszolgáltatás segítségével."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "A helyek és események helyszíne a Google™ maps-térképszolgáltatás segítségével."
 
 #~ msgid "Sicily"
 #~ msgstr "Szicília"
@@ -22669,8 +22669,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Földrajzi adatok feltöltése"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Google Maps™ használata a helyrangsorhoz"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Google™ maps használata a helyrangsorhoz"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "PHP mail funkció használata levélküldéshez"

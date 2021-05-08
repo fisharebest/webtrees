@@ -2625,8 +2625,8 @@ msgid "Binary data object"
 msgstr "Đối tượng nhị phân"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7143,8 +7143,8 @@ msgid "Godson"
 msgstr "Con đỡ đầu"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21660,8 +21660,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Cho người dùng tùy chọn chọn kiểu trình bày riêng."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Các tùy thích cho Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Các tùy thích cho Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Chế độ xem đường của Google"
@@ -22229,7 +22229,7 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Hiển thị các người/ gia đình liên quan"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
 #~ msgstr "Hiển thị vị trí của địa điểm hay sự kiện bằng cách dùng dịch vụ của Google Map."
 
 #~ msgid "Sicily"
@@ -22589,7 +22589,7 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Tải dữ liệu địa lý lên"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
+#~ msgid "Use Google™ maps for the place hierarchy"
 #~ msgstr "Dùng Google Maps cho thức cấp địa điểm"
 
 #~ msgid "Use PHP mail to send messages"

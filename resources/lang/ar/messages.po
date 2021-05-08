@@ -2732,7 +2732,7 @@ msgid "Binary data object"
 msgstr "كائن بيانات ثنائي"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "خرائط Bing"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7255,7 +7255,7 @@ msgid "Godson"
 msgstr "مكفول"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr "خرائط ™Google"
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21875,7 +21875,7 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "يتيح للمستخدم إختيار مظهر خاص للموقع."
 
-#~ msgid "Google Maps™ preferences"
+#~ msgid "Google™ maps preferences"
 #~ msgstr "تفضيلات خرائط Google"
 
 #~ msgid "Google Street View™"
@@ -22457,7 +22457,7 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "إظهار أفراد وأسر ذات علاقة"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
 #~ msgstr "إظهار مواقع الأماكن والأحداث بإستخدام خدمة خرائط Google™."
 
 #~ msgid "Sicily"
@@ -22830,7 +22830,7 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "تحميل البيانات الجغرافية"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
+#~ msgid "Use Google™ maps for the place hierarchy"
 #~ msgstr "إستخدام خرائط Google عند التدرج الهرمي للأماكن"
 
 #~ msgid "Use PHP mail to send messages"

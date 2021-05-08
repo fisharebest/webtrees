@@ -9469,11 +9469,11 @@ msgid "(aged %s)"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:459 app/Functions/FunctionsPrint.php:461

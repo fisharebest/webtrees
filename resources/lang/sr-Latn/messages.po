@@ -2661,8 +2661,8 @@ msgid "Binary data object"
 msgstr "Binarni data objekat"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7181,7 +7181,7 @@ msgid "Godson"
 msgstr "Kumče"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr "Google Mape™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21490,8 +21490,8 @@ msgstr ""
 #~ msgid "Get an API key from Google."
 #~ msgstr "Uzmite API ključ od Google-a."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Podešavanja za Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Podešavanja za Google™ maps"
 
 #~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
 #~ msgstr "Google dnevno dozvoljava mali broj anonimnih zahteva za mapama. Ako vam je potrebno više od toga, biće vam potreban Google nalog i API ključ."
@@ -21812,8 +21812,8 @@ msgstr ""
 #~ msgid "Show related individuals/families"
 #~ msgstr "Prikaži povezane osobe/porodice"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Prikazuje lokaciju mesta i događaja koristeći Google Maps™ servis."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Prikazuje lokaciju mesta i događaja koristeći Google™ maps servis."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicília"
@@ -21891,8 +21891,8 @@ msgstr ""
 #~ msgid "Unable to connect using this username and password. Your server gave the following error."
 #~ msgstr "Ne mogu se konektovati koristeči ovo korisničko ime i lozinku. Vaš server je dao sleceću grešku."
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Koristi Google Maps™ za hijerarhiju mesta"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Koristi Google™ maps za hijerarhiju mesta"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Koristi PHP mail za slanje e-pošte"

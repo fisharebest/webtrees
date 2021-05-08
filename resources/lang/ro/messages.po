@@ -2679,7 +2679,7 @@ msgid "Binary data object"
 msgstr "Obiect date binare"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7200,8 +7200,8 @@ msgid "Godson"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21342,8 +21342,8 @@ msgstr "…"
 #~ msgid "File containing places (CSV)"
 #~ msgstr "Fişier conţinând locuri (CSV)"
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Preferințe Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Preferințe Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -21631,8 +21631,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Arată persoanele/familiile înrudite"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Afișează locurile și evenimentele utilizând serviciul cartografic Google Maps™."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Afișează locurile și evenimentele utilizând serviciul cartografic Google™ maps."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicilia"
@@ -21746,8 +21746,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Încarcă date geografice"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Foloseşte oogle Maps™ pentru ierarhia locurilor geografice"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Foloseşte oogle™ maps pentru ierarhia locurilor geografice"
 
 #~ msgid "Use this value"
 #~ msgstr "Foloseşte această valoare"

@@ -2643,7 +2643,7 @@ msgid "Binary data object"
 msgstr "Binært dataobjekt"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "Bing Kart™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7162,8 +7162,8 @@ msgid "Godson"
 msgstr "Gudsønn"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21679,8 +21679,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Gir brukere mulighet til å velge deres egen stil."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Innstillinger for Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Innstillinger for Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -22278,8 +22278,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Vis beslektede personer/familier"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Vis kart over steder og hendelser med Google Maps™-tjenesten."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Vis kart over steder og hendelser med Google™ maps-tjenesten."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicilia"
@@ -22657,8 +22657,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Last opp geografiske data"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Bruk Google Maps™ for stedshierarkiet"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Bruk Google™ maps for stedshierarkiet"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Bruk PHP mail til å sende meldinger"

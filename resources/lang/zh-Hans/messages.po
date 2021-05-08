@@ -2861,8 +2861,8 @@ msgid "Binary data object"
 msgstr "数码资料"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7695,7 +7695,7 @@ msgid "Godson"
 msgstr "教子"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr "谷歌地图™"
 
 #: app/Module/GoogleAnalyticsModule.php:44

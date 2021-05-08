@@ -2677,7 +2677,7 @@ msgid "Binary data object"
 msgstr "Binarni podatkovni objekt"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7197,7 +7197,7 @@ msgid "Godson"
 msgstr "Kumče"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr ""
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21696,8 +21696,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Korisnicima pruža mogućnost odabira svoje teme."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™ postavke"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps postavke"
 
 #~ msgid "Grandparents"
 #~ msgstr "Bake/Djedovi"
@@ -22247,8 +22247,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Prikaži povezane osobe/obitelji"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Prikazuje lokaciju mjesta i događaja koristeći Google Maps™ servis."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Prikazuje lokaciju mjesta i događaja koristeći Google™ maps servis."
 
 #~ msgid "Sign-in URL"
 #~ msgstr "URL za prijavu"
@@ -22608,8 +22608,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Učitaj zemljopisne podatke"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Koristi Google Maps™ za hijerarhiju mjesta"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Koristi Google™ maps za hijerarhiju mjesta"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Koristi PHP mail za slanje e-pošte"

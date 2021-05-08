@@ -2655,8 +2655,8 @@ msgid "Binary data object"
 msgstr "Екілік деректер нысаны"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7174,8 +7174,8 @@ msgid "Godson"
 msgstr "Кіндік ұлы"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21434,8 +21434,8 @@ msgstr "…"
 #~ msgid "Get an API key from Google."
 #~ msgstr "Google-дан API кілтін алыңыз."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™ теңшелімдері"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps теңшелімдері"
 
 #~ msgid "Google allows a small number of anonymous map requests per day. If you need more than this, you will need a Google account and an API key."
 #~ msgstr "Google тәулік бойына анонимді карта сұрауларының аз санына рұқсат береді. Егер сізге осыдан көбірек қажет болса, сізге Google есептік жазбасы және API кілті қажет болады."
@@ -21778,8 +21778,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Байланысты тұлғаларды/отбасыларды көрсету"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Google Maps™ салыстыру қызметін пайдаланып, орындар мен оқиғалардың орналасқан жерін көрсетіңіз."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Google™ maps салыстыру қызметін пайдаланып, орындар мен оқиғалардың орналасқан жерін көрсетіңіз."
 
 #~ msgid "Sign-in URL"
 #~ msgstr "Кіру URL-і"
@@ -21977,8 +21977,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Географиялық деректерді жүктеу"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Орын иерархиясы үшін Google Maps™ қолданбасын пайдаланыңыз"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Орын иерархиясы үшін Google™ maps қолданбасын пайдаланыңыз"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Хабарларды жіберу үшін PHP поштасын пайдаланыңыз"

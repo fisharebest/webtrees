@@ -2661,8 +2661,8 @@ msgid "Binary data object"
 msgstr "Binarni objekt podataka"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7181,8 +7181,8 @@ msgid "Godson"
 msgstr "Kumče"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21515,8 +21515,8 @@ msgstr "…"
 #~ msgid "Find an individual"
 #~ msgstr "Pronađi pojedinca"
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Postavke za Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Postavke za Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -21874,8 +21874,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "prikaži povezane osobe/porodice"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Prilaži lokaciju mjesta i događaja koristeći Google Maps™servis za mapiranje."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Prilaži lokaciju mjesta i događaja koristeći Google™ mapsservis za mapiranje."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicilija"
@@ -21989,8 +21989,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Pošalji gografske podatke"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Koristi Google Maps™ za hijerarhiju mjesta"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Koristi Google™ maps za hijerarhiju mjesta"
 
 #~ msgid "Use this value"
 #~ msgstr "Koristi vrijednost"

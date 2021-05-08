@@ -2643,7 +2643,7 @@ msgid "Binary data object"
 msgstr "Δυαδικό αντικείμενο δεδομένων"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "Χάρτες Bing ™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7163,8 +7163,8 @@ msgid "Godson"
 msgstr "Βαφτισιμιός"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21476,8 +21476,8 @@ msgstr "…"
 #~ msgid "Gender icon on charts"
 #~ msgstr "Εικονίδιο φύλου στα διαγράμματα"
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Προτιμήσεις Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Προτιμήσεις Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -22118,8 +22118,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Ανέβασμα γεωγραφικών δεδομένων"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Χρήση Google Maps™ για ιεραρχία τοποθεσιών"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Χρήση Google™ maps για ιεραρχία τοποθεσιών"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Χρήση PHP mail για αποστολή μηνυμάτων"

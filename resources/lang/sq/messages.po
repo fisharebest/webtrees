@@ -2879,8 +2879,8 @@ msgid "Binary data object"
 msgstr "Objekt i të dhënave binare"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7716,10 +7716,10 @@ msgstr ""
 msgid "Godson"
 msgstr "Famulli"
 
-# I18N: The name of a module. Google Maps™ is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps
+# I18N: The name of a module. Google™ maps is a trademark. Do not translate it? http://en.wikipedia.org/wiki/Google_maps
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -23046,8 +23046,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "U jep përdoruesve mundësinë e zgjedhjes së temës vetanake."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Preferencat e Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Preferencat e Google™ maps"
 
 # I18N: http://en.wikipedia.org/wiki/Google_street_view
 #~ msgid "Google Street View™"
@@ -23604,9 +23604,9 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Shfaq personat/familjet e lidhura"
 
-# I18N: Description of the “Google Maps™” module
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Shfaq lokacionet e vendeve dhe ngjarjet duke përdorur shërbimin e hartave të Google Maps™."
+# I18N: Description of the “Google™ maps” module
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Shfaq lokacionet e vendeve dhe ngjarjet duke përdorur shërbimin e hartave të Google™ maps."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicilia"
@@ -23971,8 +23971,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Ngarko shënimet gjeografike"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Përdor Google Maps™ për hierarki të vendeve"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Përdor Google™ maps për hierarki të vendeve"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Përdor postën PHP për të dërguar mesazhe"

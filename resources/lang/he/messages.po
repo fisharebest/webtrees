@@ -2643,7 +2643,7 @@ msgid "Binary data object"
 msgstr "אובייקט נתונים בינארי"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "בינג מפות™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7162,7 +7162,7 @@ msgid "Godson"
 msgstr "בן-סנדקאות‬"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr "מפות ™Google"
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21687,7 +21687,7 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "מאפשר למשתמשים לבחור עיצוב משלהם."
 
-#~ msgid "Google Maps™ preferences"
+#~ msgid "Google™ maps preferences"
 #~ msgstr "העדפות של מפות ™Google"
 
 #~ msgid "Google Street View™"
@@ -22283,7 +22283,7 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "הראה אנשים קרובים/משפחות קרובות"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
 #~ msgstr "מיקום האירועים והמקומות בעזרת מיפוי מפות ™Google."
 
 #~ msgid "Sicily"
@@ -22664,7 +22664,7 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "העלאת נתונים גיאוגרפיים"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
+#~ msgid "Use Google™ maps for the place hierarchy"
 #~ msgstr "השתמש במפות ™Google עבור היררכית המקומות"
 
 #~ msgid "Use PHP mail to send messages"

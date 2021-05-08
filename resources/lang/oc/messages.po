@@ -2692,8 +2692,8 @@ msgstr "Objècte binari"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
 #, fuzzy
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7267,8 +7267,8 @@ msgstr ""
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
 #, fuzzy
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21657,8 +21657,8 @@ msgstr "…"
 #~ msgid "Gender icon on charts"
 #~ msgstr "Icòna de sèxe suul grafics"
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Preferéncias Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Preferéncias Google™ maps"
 
 #, fuzzy
 #~ msgid "Google Street View™"
@@ -21887,8 +21887,8 @@ msgstr "…"
 #~ msgid "Show places in hierarchy"
 #~ msgstr "Afichar los luòcs per nivèls"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Afichar la mapa dels luòcs e eveniments en utilizant lo servici de mapas Google Maps™."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Afichar la mapa dels luòcs e eveniments en utilizant lo servici de mapas Google™ maps."
 
 #~ msgid "Spouse census place"
 #~ msgstr "Luòc de recensament del conjunt"
@@ -21949,8 +21949,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Cargar las donadas geograficas"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Utilizar Google Maps™ per la ierarquia de luòcs"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Utilizar Google™ maps per la ierarquia de luòcs"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Utilizar PHP per enviar messatges"

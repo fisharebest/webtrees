@@ -2669,8 +2669,8 @@ msgid "Binary data object"
 msgstr "elɔ́kɔ ya epɛ́sɛli \"Binary\""
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7215,8 +7215,8 @@ msgid "Godson"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21664,8 +21664,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Kolakisa bato/mabótá na mikangano"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Kolakisa bisíká mpé milúlú na bosáleli Google Maps™ mapping service."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Kolakisa bisíká mpé milúlú na bosáleli Google™ maps mapping service."
 
 #~ msgid "Sign-in URL"
 #~ msgstr "URL ya koyíngela"
@@ -21763,8 +21763,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Kotómba epɛ́sɛli ya mambí ma mabelé"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Kosálela Google Maps™ mpɔ̂ na molɔngɔ́ nwa bisíká"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Kosálela Google™ maps mpɔ̂ na molɔngɔ́ nwa bisíká"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "kosálela PHP mail mpɔ̂ na kotínda mikandá"

@@ -2639,7 +2639,7 @@ msgid "Binary data object"
 msgstr "Бинарный объект данных"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7158,7 +7158,7 @@ msgid "Godson"
 msgstr "Крёстный Сын"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr ""
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21561,8 +21561,8 @@ msgstr ""
 #~ msgid "Show related individuals/families"
 #~ msgstr "Бәйләнешле шәхесләрне / гаиләләрне күрсәтергә"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Географик урыннарны һәм вакыйгалар булган урыннырны Google Maps™ картасында күрсәтү."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Географик урыннарны һәм вакыйгалар булган урыннырны Google™ maps картасында күрсәтү."
 
 #~ msgid "Signed-in as "
 #~ msgstr "Сезнең Системадагы кулланучы исемегез "

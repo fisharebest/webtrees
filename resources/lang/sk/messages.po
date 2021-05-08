@@ -2671,8 +2671,8 @@ msgid "Binary data object"
 msgstr "Binárny datový objekt"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7191,8 +7191,8 @@ msgid "Godson"
 msgstr "Krstný syn"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21663,8 +21663,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Umožniť uživateľom vybrať si vlastný motív."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™ predvoľby"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps predvoľby"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -22203,8 +22203,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Zobraziť príbuzné osoby / rodiny"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Zobrazenie polohy miest a udalostí pomocou služby Google Maps™."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Zobrazenie polohy miest a udalostí pomocou služby Google™ maps."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicília"
@@ -22498,8 +22498,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Uplodovať geografické údaje"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Použiť Google Maps™ pre hierarchiu miest"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Použiť Google™ maps pre hierarchiu miest"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Použiť PHP mail k odosielaní správ"

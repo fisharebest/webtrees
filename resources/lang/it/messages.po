@@ -2661,7 +2661,7 @@ msgid "Binary data object"
 msgstr "Dati binari di un oggetto"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr "Bing Mappe™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7180,8 +7180,8 @@ msgid "Godson"
 msgstr "Figlioccio"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21679,8 +21679,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Permette agli utenti di selezionare il proprio tema."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Opzioni di Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Opzioni di Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"

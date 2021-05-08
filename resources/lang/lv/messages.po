@@ -2673,7 +2673,7 @@ msgid "Binary data object"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
+msgid "Bing™ maps"
 msgstr ""
 
 #: app/Module/BingWebmasterToolsModule.php:41
@@ -7194,8 +7194,8 @@ msgid "Godson"
 msgstr ""
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21229,8 +21229,8 @@ msgstr ""
 #~ msgid "Find a fact or event"
 #~ msgstr "Atrast faktu vai notikumu"
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Google Maps™ uzstādījumi"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Google™ maps uzstādījumi"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"

@@ -2678,8 +2678,8 @@ msgid "Binary data object"
 msgstr "Obiekt binarny"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7198,7 +7198,7 @@ msgid "Godson"
 msgstr "Chrześniak"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
+msgid "Google™ maps"
 msgstr "Mapy Google"
 
 #: app/Module/GoogleAnalyticsModule.php:44
@@ -21746,8 +21746,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Umożliwia użytkownikom wybranie własnego motywu."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Ustawienia Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Ustawienia Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -22343,8 +22343,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Pokaż powiązane osoby/rodziny"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Pokazuje lokalizację miejsc i zdarzeń za pomocą usługi Google Maps™."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Pokazuje lokalizację miejsc i zdarzeń za pomocą usługi Google™ maps."
 
 #~ msgid "Sicily"
 #~ msgstr "Sycylia"
@@ -22725,7 +22725,7 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Wgraj dane geograficzne"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
+#~ msgid "Use Google™ maps for the place hierarchy"
 #~ msgstr "Użyj Map Google do wyświetlania hierarchii miejsc"
 
 #~ msgid "Use PHP mail to send messages"

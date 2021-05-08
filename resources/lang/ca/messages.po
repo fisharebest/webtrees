@@ -2659,8 +2659,8 @@ msgid "Binary data object"
 msgstr "Objecte de dades binàries"
 
 #: app/Functions/FunctionsPrint.php:454 app/Functions/FunctionsPrint.php:456
-msgid "Bing Maps™"
-msgstr "Bing Maps™"
+msgid "Bing™ maps"
+msgstr "Bing™ maps"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -7178,8 +7178,8 @@ msgid "Godson"
 msgstr "Fillol"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
-msgid "Google Maps™"
-msgstr "Google Maps™"
+msgid "Google™ maps"
+msgstr "Google™ maps"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
@@ -21695,8 +21695,8 @@ msgstr "…"
 #~ msgid "Gives users the option of selecting their own theme."
 #~ msgstr "Dóna als usuaris l’opció de seleccionar la presentació que més els plagui."
 
-#~ msgid "Google Maps™ preferences"
-#~ msgstr "Preferències Google Maps™"
+#~ msgid "Google™ maps preferences"
+#~ msgstr "Preferències Google™ maps"
 
 #~ msgid "Google Street View™"
 #~ msgstr "Google Street View™"
@@ -22291,8 +22291,8 @@ msgstr "…"
 #~ msgid "Show related individuals/families"
 #~ msgstr "Mostra persones/famílies relacionades"
 
-#~ msgid "Show the location of places and events using the Google Maps™ mapping service."
-#~ msgstr "Mostra la ubicació de llocs i esdeveniments utilitzant el servei de mapes Google Maps™."
+#~ msgid "Show the location of places and events using the Google™ maps mapping service."
+#~ msgstr "Mostra la ubicació de llocs i esdeveniments utilitzant el servei de mapes Google™ maps."
 
 #~ msgid "Sicily"
 #~ msgstr "Sicília"
@@ -22670,8 +22670,8 @@ msgstr "…"
 #~ msgid "Upload geographic data"
 #~ msgstr "Carrega les dades geogràfiques"
 
-#~ msgid "Use Google Maps™ for the place hierarchy"
-#~ msgstr "Empra Google Maps™ per a la jerarquia d’indrets"
+#~ msgid "Use Google™ maps for the place hierarchy"
+#~ msgstr "Empra Google™ maps per a la jerarquia d’indrets"
 
 #~ msgid "Use PHP mail to send messages"
 #~ msgstr "Fes servir el correu PHP per enviar missatges"
