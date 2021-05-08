@@ -45,6 +45,6 @@ class ModulesReportsAction extends AbstractModuleComponentAction
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
-        return redirect(route(ControlPanel::class));
+        return redirect(route(ModulesReportsPage::class));
     }
 }
