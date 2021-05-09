@@ -58,6 +58,7 @@ class BadBotBlocker implements MiddlewareInterface
         'AhrefsBot',
         'AspiegelBot',
         'Barkrowler',
+        'BLEXBot',
         'DotBot',
         'Grapeshot',
         'ia_archiver',
@@ -69,7 +70,7 @@ class BadBotBlocker implements MiddlewareInterface
         'SemrushBot',
         'Turnitin',
         'XoviBot',
-        'zoominfobot',
+        'ZoominfoBot',
     ];
 
     /**
