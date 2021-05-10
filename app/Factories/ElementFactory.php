@@ -218,7 +218,7 @@ use function strpos;
 class ElementFactory implements ElementFactoryInterface
 {
     /** @var array<string,ElementInterface> */
-    private $elements = [];
+    private array $elements = [];
 
     /**
      * Create a GEDCOM element that corresponds to a GEDCOM tag.

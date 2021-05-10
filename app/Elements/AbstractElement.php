@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Tree;
 
 use function array_key_exists;
 use function array_map;
+use function array_search;
 use function e;
 use function is_numeric;
 use function preg_match;
@@ -206,6 +207,38 @@ abstract class AbstractElement implements ElementInterface
         $html  = I18N::translate(/* I18N: e.g. "Occupation: farmer" */ '%1$s: %2$s', $label, $value);
 
         return '<div>' . $html . '</div>';
+    }
+
+    /**
+     * Set, remove or replace a subtag.
+     *
+     * @param string $subtag
+     * @param string $repeat
+     * @param string $after
+     *
+     * @return void
+     */
+    public function subtag(string $subtag, string $repeat = '', string $after = ''): void
+    {
+        if ($repeat === '') {
+            unset($this->subtags[$subtag]);
+        } elseif ($after === '' || ($this->subtags[$subtag] ?? null) === null) {
+            $this->subtags[$subtag] = $repeat;
+        } else {
+            $tmp = [];
+
+            foreach ($this->subtags as $key => $value) {
+                $tmp[$key] = $value;
+
+                if ($key === $after) {
+                    $tmp[] = $repeat;
+                }
+            }
+
+            $this->subtags = $tmp;
+        }
+
+
     }
 
     /**
