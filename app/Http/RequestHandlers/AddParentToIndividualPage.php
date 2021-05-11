@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -29,6 +30,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
+use function route;
 
 /**
  * Add a new parent to an individual, creating a one-parent family.
@@ -47,30 +50,40 @@ class AddParentToIndividualPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $sex = $request->getAttribute('sex');
+        assert(is_string($xref));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $gender = $request->getQueryParams()['gender'];
+        // Create a dummy individual, so that we can create new/empty facts.
+        $element = Registry::elementFactory()->make('INDI:NAME');
+        $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $facts   = [
+            'i' => [
+                new Fact('1 SEX ' . $sex, $dummy, ''),
+                new Fact('1 NAME ' . $element->default($tree), $dummy, ''),
+                new Fact('1 BIRT', $dummy, ''),
+                new Fact('1 DEAT', $dummy, ''),
+            ],
+        ];
 
-        if ($gender === 'F') {
-            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a mother');
-            $famtag = 'WIFE';
+        if ($sex === 'F') {
+            $title = I18N::translate('Add a mother');
         } else {
-            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a father');
-            $famtag = 'HUSB';
+            $title = I18N::translate('Add a father');
         }
 
         return $this->viewResponse('edit/new-individual', [
-            'next_action' => AddParentToIndividualAction::class,
-            'tree'        => $tree,
-            'title'       => $title,
-            'individual'  => $individual,
-            'family'      => null,
-            'name_fact'   => null,
-            'famtag'      => $famtag,
-            'gender'      => $gender,
+            'cancel_url' => $individual->url(),
+            'facts'      => $facts,
+            'post_url'   => route(AddParentToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
+            'title'      => $individual->fullName() . ' - ' . $title,
+            'tree'       => $tree,
+            'url'        => $request->getQueryParams()['url'] ?? $individual->url(),
         ]);
     }
 }

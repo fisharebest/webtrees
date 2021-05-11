@@ -218,7 +218,7 @@ abstract class AbstractElement implements ElementInterface
      *
      * @return void
      */
-    public function subtag(string $subtag, string $repeat, string $before): void
+    public function subtag(string $subtag, string $repeat = '0:1', string $before = ''): void
     {
         if ($repeat === '') {
             unset($this->subtags[$subtag]);
@@ -229,7 +229,7 @@ abstract class AbstractElement implements ElementInterface
 
             foreach ($this->subtags as $key => $value) {
                 if ($key === $before) {
-                    $tmp[$key] = $repeat;
+                    $tmp[$subtag] = $repeat;
                 }
                 $tmp[$key] = $value;
             }

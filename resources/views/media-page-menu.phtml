@@ -1,8 +1,7 @@
 <?php
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRecordPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToFamilyModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToIndividualModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\LinkMediaToSourceModal;
@@ -22,6 +21,11 @@ use Fisharebest\Webtrees\Media;
     </button>
 
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
+        <a class="dropdown-item" href="<?= route(EditRecordPage::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()]) ?>">
+            <?= view('icons/edit') ?>
+            <?= I18N::translate('Edit') ?>
+        </a>
+
         <a class="dropdown-item" href="#" data-href="<?= e(route(LinkMediaToIndividualModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to an individual') ?>
@@ -43,12 +47,5 @@ use Fisharebest\Webtrees\Media;
             <?= view('icons/delete') ?>
             <?= I18N::translate('Delete') ?>
         </a>
-
-        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
-            <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
-                <?= view('icons/edit') ?>
-                <?= I18N::translate('Edit the raw GEDCOM') ?>
-            </a>
-        <?php endif ?>
     </div>
 </div>

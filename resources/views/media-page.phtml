@@ -1,10 +1,9 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
@@ -12,25 +11,22 @@ use Fisharebest\Webtrees\Http\RequestHandlers\EditMediaFileModal;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\FilesystemOperator;
 
 /**
- * @var Collection<Fact>       $clipboard_facts
- * @var FilesystemInterface    $data_filesystem
- * @var Collection<Fact>       $facts
- * @var Collection<Family>     $families
- * @var Collection<Individual> $individuals
- * @var Media                  $media
- * @var Collection<Note>       $notes
- * @var Collection<Source>     $sources
- * @var Tree                   $tree
+ * @var Collection         $clipboard_facts
+ * @var FilesystemOperator $data_filesystem
+ * @var Collection         $facts
+ * @var Collection         $families
+ * @var Collection         $individuals
+ * @var Media              $media
+ * @var Collection         $notes
+ * @var Collection         $sources
+ * @var Tree               $tree
  */
 ?>
 
@@ -98,7 +94,7 @@ use League\Flysystem\FilesystemInterface;
         <div class="tab-pane active fade show" role="tabpanel" id="details">
             <table class="table wt-facts-table">
                 <?php foreach ($media->mediaFiles() as $media_file) : ?>
-                    <tr class="<?= $media_file->isPendingAddition() ? 'wt-new' : '' ?> <?= $media_file->isPendingDeletion() ? 'wt-old' : '' ?>">
+                    <tr class="<?= $media_file->isPendingAddition() ? 'wt-new' : '' ?><?= $media_file->isPendingDeletion() ? 'wt-old' : '' ?>">
                         <th scope="row">
                             <?= I18N::translate('Media file') ?>
                             <?php if ($media->canEdit()) : ?>

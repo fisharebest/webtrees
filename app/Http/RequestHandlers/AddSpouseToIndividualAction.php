@@ -28,7 +28,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function preg_match_all;
+use function is_string;
 use function redirect;
 
 /**
@@ -59,63 +59,33 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $params = (array) $request->getParsedBody();
 
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $params = (array) $request->getParsedBody();
-
-        $sex = $params['SEX'];
-
-        $this->gedcom_edit_service->glevels = $params['glevels'] ?? [];
-        $this->gedcom_edit_service->tag     = $params['tag'] ?? [];
-        $this->gedcom_edit_service->text    = $params['text'] ?? [];
-        $this->gedcom_edit_service->islink  = $params['islink'] ?? [];
-
-        $this->gedcom_edit_service->splitSource();
-        $indi_gedcom = '0 @@ INDI';
-        $indi_gedcom .= $this->gedcom_edit_service->addNewName($request, $tree);
-        $indi_gedcom .= $this->gedcom_edit_service->addNewSex($request);
-        if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-            foreach ($matches[1] as $match) {
-                $indi_gedcom .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
-            }
-        }
-        if ($params['SOUR_INDI'] ?? false) {
-            $indi_gedcom = $this->gedcom_edit_service->handleUpdates($indi_gedcom);
-        } else {
-            $indi_gedcom = $this->gedcom_edit_service->updateRest($indi_gedcom);
-        }
-
-        $fam_gedcom = '';
-        if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
-            foreach ($matches[1] as $match) {
-                $fam_gedcom .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
-            }
-        }
-        if ($params['SOUR_FAM'] ?? false) {
-            $fam_gedcom = $this->gedcom_edit_service->handleUpdates($fam_gedcom);
-        } else {
-            $fam_gedcom = $this->gedcom_edit_service->updateRest($fam_gedcom);
-        }
+        $levels = $params['ilevels'] ?? [];
+        $tags   = $params['itags'] ?? [];
+        $values = $params['ivalues'] ?? [];
 
         // Create the new spouse
-        $spouse = $tree->createIndividual($indi_gedcom);
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
+        $spouse = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
+
         // Create a new family
-        if ($sex === 'F') {
-            $family = $tree->createFamily("0 @@ FAM\n1 WIFE @" . $spouse->xref() . "@\n1 HUSB @" . $individual->xref() . '@' . $fam_gedcom);
-        } else {
-            $family = $tree->createFamily("0 @@ FAM\n1 HUSB @" . $spouse->xref() . "@\n1 WIFE @" . $individual->xref() . '@' . $fam_gedcom);
-        }
-        // Link the spouses to the family
-        $spouse->createFact('1 FAMS @' . $family->xref() . '@', true);
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', true);
+        $i_link   = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
+        $s_link   = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
+        $family = $tree->createFamily("0 @@ FAM\n" . $i_link . $s_link);
 
-        if (($params['goto'] ?? '') === 'new') {
-            return redirect($spouse->url());
-        }
+        // Link the individual to the family
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
 
-        return redirect($individual->url());
+        // Link the spouse to the family
+        $spouse->createFact('1 FAMS @' . $family->xref() . '@', false);
+
+        return redirect($params['url'] ?? $spouse->url());
     }
 }

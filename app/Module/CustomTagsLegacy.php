@@ -31,6 +31,16 @@ class CustomTagsLegacy extends AbstractModule implements ModuleConfigInterface, 
     use ModuleCustomTagsTrait;
 
     /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
      * @see http://support.legacyfamilytree.com/article/AA-00520/0/GEDCOM-Files-custom-tags-in-Legacy.html
      *
      * @return array<string,ElementInterface>

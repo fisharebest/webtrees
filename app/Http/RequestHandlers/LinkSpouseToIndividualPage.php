@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -29,6 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 
 /**
  * Link an existing individual as a new spouse.
@@ -47,10 +49,19 @@ class LinkSpouseToIndividualPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
+
+        // Create a dummy family record, so we can create new/empty facts.
+        $dummy = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
+        $facts = [
+            'f' => [
+                new Fact('1 MARR', $dummy, ''),
+            ],
+        ];
 
         if ($individual->sex() === 'F') {
             $title = $individual->fullName() . ' - ' . I18N::translate('Add a husband using an existing individual');
@@ -61,9 +72,11 @@ class LinkSpouseToIndividualPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('edit/link-spouse-to-individual', [
-            'individual' => $individual,
+            'post_url'   => route(LinkSpouseToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
+            'cancel_url' => $individual->url(),
             'label'      => $label,
             'title'      => $title,
+            'facts'      => $facts,
             'tree'       => $tree,
             'xref'       => $xref,
         ]);

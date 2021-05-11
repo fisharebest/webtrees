@@ -30,7 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function preg_match_all;
+use function is_string;
 use function redirect;
 
 /**
@@ -61,78 +61,25 @@ class AddChildToFamilyAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $params = (array) $request->getParsedBody();
 
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
-        $params = (array) $request->getParsedBody();
-
-        $PEDI      = $params['PEDI'];
-        $keep_chan = (bool) ($params['keep_chan'] ?? false);
-
-        $this->gedcom_edit_service->glevels = $params['glevels'] ?? [];
-        $this->gedcom_edit_service->tag     = $params['tag'] ?? [];
-        $this->gedcom_edit_service->text    = $params['text'] ?? [];
-        $this->gedcom_edit_service->islink  = $params['islink'] ?? [];
-
-        $this->gedcom_edit_service->splitSource();
-        $gedrec = '0 @@ INDI';
-        $gedrec .= $this->gedcom_edit_service->addNewName($request, $tree);
-        $gedrec .= $this->gedcom_edit_service->addNewSex($request);
-        if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-            foreach ($matches[1] as $match) {
-                $gedrec .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
-            }
-        }
-
-        switch ($PEDI) {
-            case '':
-                $gedrec .= "\n1 FAMC @$xref@";
-                break;
-            case 'adopted':
-                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$xref@\n3 ADOP BOTH";
-                break;
-            case 'sealing':
-                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$xref@";
-                break;
-            case 'foster':
-                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
-                break;
-            default:
-                $gedrec .= "\n1 FAMC @$xref@\n2 PEDI $PEDI";
-                break;
-        }
-
-        if ($params['SOUR_INDI'] ?? false) {
-            $gedrec = $this->gedcom_edit_service->handleUpdates($gedrec);
-        } else {
-            $gedrec = $this->gedcom_edit_service->updateRest($gedrec);
-        }
+        $levels = $params['ilevels'] ?? [];
+        $tags   = $params['itags'] ?? [];
+        $values = $params['ivalues'] ?? [];
 
         // Create the new child
-        $new_child = $tree->createIndividual($gedrec);
+        $gedcom = "0 @@ INDI\n1 FAMC @" . $xref . "@\n" . $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
+        $child  = $tree->createIndividual($gedcom);
 
-        // Insert new child at the right place
-        $done = false;
-        foreach ($family->facts(['CHIL']) as $fact) {
-            $old_child = $fact->target();
-            if ($old_child instanceof Individual && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
-                // Insert before this child
-                $family->updateFact($fact->id(), '1 CHIL @' . $new_child->xref() . "@\n" . $fact->gedcom(), !$keep_chan);
-                $done = true;
-                break;
-            }
-        }
-        if (!$done) {
-            // Append child at end
-            $family->createFact('1 CHIL @' . $new_child->xref() . '@', !$keep_chan);
-        }
+        // Link the child to the family
+        $family->createFact('1 CHIL @' . $child->xref() . '@', false);
 
-        if (($params['goto'] ?? '') === 'new') {
-            return redirect($new_child->url());
-        }
-
-        return redirect($family->url());
+        return redirect($params['url'] ?? $child->url());
     }
 }

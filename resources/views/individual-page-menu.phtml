@@ -1,7 +1,6 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddName;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
@@ -36,7 +35,7 @@ use Illuminate\Support\Collection;
             <hr>
         <?php endif ?>
 
-        <a class="dropdown-item" href="<?= e(route(AddName::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+        <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'NAME'])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a name') ?>
         </a>

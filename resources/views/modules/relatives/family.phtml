@@ -59,7 +59,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             <tr>
                 <th scope="row"></th>
                 <td>
-                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= I18N::translate('Add a husband') ?>
                     </a>
                 </td>
@@ -96,7 +96,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             <tr>
                 <th scope="row"></th>
                 <td>
-                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                    <a href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= I18N::translate('Add a wife') ?>
                     </a>
                 </td>
@@ -216,15 +216,15 @@ use Fisharebest\Webtrees\Services\RelationshipService;
                 </th>
 
                 <td>
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['gender' => 'M', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= $type === 'FAMS' ? I18N::translate('Add a son') : I18N::translate('Add a brother') ?>
                     </a>
                     |
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['gender' => 'F', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= $type === 'FAMS' ? I18N::translate('Add a daughter') : I18N::translate('Add a sister') ?>
                     </a>
                     |
-                    <a href="<?= e(route(AddChildToFamilyPage::class, ['gender' => 'U', 'tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                    <a href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'U', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= $type === 'FAMS' ? I18N::translate('Add a child') : I18N::translate('Add a sibling') ?>
                     </a>
 

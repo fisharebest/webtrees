@@ -38,33 +38,11 @@ trait ModuleCustomTagsTrait
         $element_factory = Registry::elementFactory();
         $element_factory->register($this->customTags());
 
-        foreach ($this->customSubTags() as $subtags) {
-            [$tag, $subtag, $repeat, $before] = $subtags;
-
-            $element_factory->make($tag)->subtag($subtag, $repeat, $before);
+        foreach ($this->customSubTags() as $tag => $children) {
+            foreach ($children as $child) {
+                $element_factory->make($tag)->subtag(...$child);
+            }
         }
-    }
-
-    /**
-     * How should this module be identified in the control panel, etc.?
-     *
-     * @return string
-     */
-    public function title(): string
-    {
-        /* I18N: Name of a module */
-        return I18N::translate('Custom tags') . ' — ' . $this->customTagApplication();
-    }
-
-    /**
-     * A sentence describing what this module does.
-     *
-     * @return string
-     */
-    public function description(): string
-    {
-        /* I18N: Description of the “Custom tags” module */
-        return I18N::translate('Support for non-standard GEDCOM tags.') . ' — ' . $this->customTagApplication();
     }
 
     /**
@@ -78,11 +56,22 @@ trait ModuleCustomTagsTrait
     }
 
     /**
-     * @return array<array<string>>
+     * @return array<string,array<string>>
      */
     public function customSubTags(): array
     {
         return [];
+    }
+
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: Description of the “Custom GEDCOM tags” module */
+        return I18N::translate('Support for non-standard GEDCOM tags.') . ' — ' . $this->customTagApplication();
     }
 
     /**
@@ -95,7 +84,6 @@ trait ModuleCustomTagsTrait
         return '';
     }
 
-
     /**
      * @param ServerRequestInterface $request
      *
@@ -106,8 +94,21 @@ trait ModuleCustomTagsTrait
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('modules/custom-tags/config', [
-            'tags'  => $this->customTags(),
-            'title' => $this->title(),
+            'element_factory' => Registry::elementFactory(),
+            'subtags'         => $this->customSubTags(),
+            'tags'            => $this->customTags(),
+            'title'           => $this->title(),
         ]);
+    }
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        /* I18N: Name of a module */
+        return I18N::translate('Custom GEDCOM tags') . ' — ' . $this->customTagApplication();
     }
 }

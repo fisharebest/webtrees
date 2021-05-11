@@ -19,14 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function route;
 
 /**
  * Create a new unlinked individual.
@@ -45,15 +48,25 @@ class AddUnlinkedPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        // Create a dummy individual, so that we can create new/empty facts.
+        $element = Registry::elementFactory()->make('INDI:NAME');
+        $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $facts   = [
+            'i' => [
+                new Fact('1 SEX', $dummy, ''),
+                new Fact('1 NAME ' . $element->default($tree), $dummy, ''),
+                new Fact('1 BIRT', $dummy, ''),
+                new Fact('1 DEAT', $dummy, ''),
+            ],
+        ];
+
         return $this->viewResponse('edit/new-individual', [
-            'next_action' => AddUnlinkedAction::class,
-            'tree'        => $tree,
-            'title'       => I18N::translate('Create an individual'),
-            'individual'  => null,
-            'family'      => null,
-            'name_fact'   => null,
-            'famtag'      => '',
-            'gender'      => 'U',
+            'cancel_url' => route('manage-trees', ['tree' => $tree->name()]),
+            'facts'      => $facts,
+            'post_url'   => route(AddUnlinkedAction::class, ['tree' => $tree->name()]),
+            'tree'       => $tree,
+            'title'      => I18N::translate('Create an individual'),
+            'url'        => $request->getQueryParams()['url'] ?? route('manage-trees', ['tree' => $tree->name()]),
         ]);
     }
 }

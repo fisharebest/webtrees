@@ -153,7 +153,7 @@ class GedcomService
         '_MILITARY_SERVICE' => '_MILT',
     ];
 
-    // Custom tags used by other applications, with direct synonyms
+    // Custom GEDCOM tags used by other applications, with direct synonyms
     private const TAG_SYNONYMS = [
         // Convert PhpGedView tag to webtrees
         '_PGVU'     => '_WT_USER',

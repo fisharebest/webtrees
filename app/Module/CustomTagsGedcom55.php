@@ -32,6 +32,16 @@ class CustomTagsGedcom55 extends AbstractModule implements ModuleConfigInterface
     use ModuleCustomTagsTrait;
 
     /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
+
+    /**
      * @return array<string,ElementInterface>
      */
     public function customTags(): array

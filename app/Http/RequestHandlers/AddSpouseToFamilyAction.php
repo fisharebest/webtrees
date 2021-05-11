@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
@@ -29,9 +28,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function preg_match_all;
+use function is_string;
 use function redirect;
-use function trim;
 
 /**
  * Add a new spouse to a family.
@@ -61,60 +59,42 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
-        $family = Registry::familyFactory()->make($xref, $tree);
-        $family = Auth::checkFamilyAccess($family, true);
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
         $params = (array) $request->getParsedBody();
 
-        $this->gedcom_edit_service->glevels = $params['glevels'] ?? [];
-        $this->gedcom_edit_service->tag     = $params['tag'] ?? [];
-        $this->gedcom_edit_service->text    = $params['text'] ?? [];
-        $this->gedcom_edit_service->islink  = $params['islink'] ?? [];
+        $family = Registry::familyFactory()->make($xref, $tree);
+        $family = Auth::checkFamilyAccess($family, true);
+
+        $levels = $params['ilevels'] ?? [];
+        $tags   = $params['itags'] ?? [];
+        $values = $params['ivalues'] ?? [];
 
         // Create the new spouse
-        $this->gedcom_edit_service->splitSource(); // separate SOUR record from the rest
+        $gedcom = "0 @@ INDI\n1 FAMS @" . $family->xref() . "@\n" . $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
+        $spouse = $tree->createIndividual($gedcom);
 
-        $gedrec = '0 @@ INDI';
-        $gedrec .= $this->gedcom_edit_service->addNewName($request, $tree);
-        $gedrec .= $this->gedcom_edit_service->addNewSex($request);
-        if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-            foreach ($matches[1] as $match) {
-                $gedrec .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
-            }
-        }
+        // Link the spouse to the family
+        $husb = $family->facts(['HUSB'], false, null, true)->first();
+        $wife = $family->facts(['WIFE'], false, null, true)->first();
 
-        if ($params['SOUR_INDI'] ?? false) {
-            $gedrec = $this->gedcom_edit_service->handleUpdates($gedrec);
+        if ($husb === null && $spouse->sex() === 'M') {
+            $link = 'HUSB';
+        } elseif ($wife === null && $spouse->sex() === 'F') {
+            $link = 'WIFE';
+        } elseif ($husb === null) {
+            $link = 'HUSB';
+        } elseif ($wife === null) {
+            $link = 'WIFE';
         } else {
-            $gedrec = $this->gedcom_edit_service->updateRest($gedrec);
-        }
-        $gedrec .= "\n1 FAMS @" . $family->xref() . '@';
-        $spouse = $tree->createIndividual($gedrec);
-
-        // Update the existing family - add marriage, etc
-        if ($family->facts(['HUSB'])->first() instanceof Fact) {
-            $family->createFact('1 WIFE @' . $spouse->xref() . '@', true);
-        } else {
-            $family->createFact('1 HUSB @' . $spouse->xref() . '@', true);
-        }
-        $famrec = '';
-        if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
-            foreach ($matches[1] as $match) {
-                $famrec .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
-            }
-        }
-        if ($params['SOUR_FAM'] ?? false) {
-            $famrec = $this->gedcom_edit_service->handleUpdates($famrec);
-        } else {
-            $famrec = $this->gedcom_edit_service->updateRest($famrec);
-        }
-        $family->createFact(trim($famrec), true); // trim leading \n
-
-        if (($params['goto'] ?? '') === 'new') {
-            return redirect($spouse->url());
+            // Family already has husband and wife
+            return redirect($family->url());
         }
 
-        return redirect($family->url());
+        // Link the spouse to the family
+        $family->createFact('1 ' . $link . ' @' . $spouse->xref() . '@', false);
+
+        return redirect($params['url'] ?? $spouse->url());
     }
 }

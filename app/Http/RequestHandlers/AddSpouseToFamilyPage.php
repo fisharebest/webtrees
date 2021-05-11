@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -29,6 +30,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
+use function route;
 
 /**
  * Add a new spouse to a family.
@@ -47,28 +50,44 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref   = $request->getQueryParams()['xref'];
-        $famtag = $request->getQueryParams()['famtag'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $sex = $request->getAttribute('sex');
+        assert(is_string($sex));
+
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
-        if ($famtag === 'WIFE') {
-            $title  = I18N::translate('Add a wife');
-            $gender = 'F';
+        // Create a dummy individual, so that we can create new/empty facts.
+        $element = Registry::elementFactory()->make('INDI:NAME');
+        $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $dummyf  = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
+        $facts   = [
+            'i' => [
+                new Fact('1 SEX ' . $sex, $dummyi, ''),
+                new Fact('1 NAME ' . $element->default($tree), $dummyi, ''),
+                new Fact('1 BIRT', $dummyi, ''),
+                new Fact('1 DEAT', $dummyi, ''),
+            ],
+            'f' => [
+                new Fact('1 MARR', $dummyf, ''),
+            ],
+        ];
+
+        if ($sex === 'F') {
+            $title = I18N::translate('Add a wife');
         } else {
-            $title  = I18N::translate('Add a husband');
-            $gender = 'M';
+            $title = I18N::translate('Add a husband');
         }
 
         return $this->viewResponse('edit/new-individual', [
-            'next_action' => AddSpouseToFamilyAction::class,
-            'tree'       => $tree,
+            'cancel_url' => $family->url(),
+            'facts'      => $facts,
+            'post_url'   => route(AddSpouseToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
             'title'      => $title,
-            'individual' => null,
-            'family'     => $family,
-            'name_fact'  => null,
-            'famtag'     => $famtag,
-            'gender'     => $gender,
+            'tree'       => $tree,
+            'url'        => $request->getQueryParams()['url'] ?? $family->url(),
         ]);
     }
 }

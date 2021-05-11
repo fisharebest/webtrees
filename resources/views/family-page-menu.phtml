@@ -29,20 +29,20 @@ use Fisharebest\Webtrees\I18N;
         </a>
 
         <?php if ($record->husband() === null) : ?>
-            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'HUSB'])) ?>">
+            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'M'])) ?>">
                 <?= view('icons/add') ?>
                 <?= I18N::translate('Add a husband') ?>
             </a>
         <?php endif ?>
 
         <?php if ($record->wife() === null) : ?>
-            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'famtag' => 'WIFE'])) ?>">
+            <a class="dropdown-item" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'F'])) ?>">
                 <?= view('icons/add') ?>
                 <?= I18N::translate('Add a wife') ?>
             </a>
         <?php endif ?>
 
-        <a class="dropdown-item" href="<?= e(route(AddChildToFamilyPage::class, ['gender' => 'U', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+        <a class="dropdown-item" href="<?= e(route(AddChildToFamilyPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'sex' => 'U'])) ?>">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a child') ?>
         </a>

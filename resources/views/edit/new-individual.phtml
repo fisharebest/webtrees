@@ -11,344 +11,57 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddParentToIndividualAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToIndividualAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
-use Illuminate\Support\Collection;
 
 /**
- * @var Family|null     $family
- * @var string          $famtag
- * @var string          $gender
- * @var Individual|null $individual
- * @var Fact|null       $name_fact
- * @var string          $next_action
- * @var string          $title
- * @var Tree            $tree
+ * @var string $cancel_url
+ * @var string $post_url
+ * @var string $title
+ * @var Tree   $tree
+ * @var string $url
  */
 
 ?>
 
-<?php
-if ($individual instanceof Individual) {
-    $xref       = $individual->xref();
-    $cancel_url = $individual->url();
-} elseif ($family !== null) {
-    $xref       = $family->xref();
-    $cancel_url = $family->url();
-} else {
-    $cancel_url = route(ManageTrees::class, ['tree' => $tree->name()]);
-    $xref       = 'new';
-}
-
-// Different cultures do surnames differently
-$surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
-
-if ($name_fact instanceof Fact) {
-    // Editing an existing name
-    $name_fact_id = $name_fact->id();
-    $namerec      = $name_fact->gedcom();
-    $name_fields  = [
-        'NAME' => $name_fact->value(),
-        'TYPE' => $name_fact->attribute('TYPE'),
-        'NPFX' => $name_fact->attribute('NPFX'),
-        'GIVN' => $name_fact->attribute('GIVN'),
-        'NICK' => $name_fact->attribute('NICK'),
-        'SPFX' => $name_fact->attribute('SPFX'),
-        'SURN' => $name_fact->attribute('SURN'),
-        'NSFX' => $name_fact->attribute('NSFX'),
-    ];
-} else {
-    // Creating a new name
-    $name_fact_id = '';
-    $namerec      = '';
-    $name_fields  = [
-        'NAME' => '',
-        'TYPE' => '',
-        'NPFX' => '',
-        'GIVN' => '',
-        'NICK' => '',
-        'SPFX' => '',
-        'SURN' => '',
-        'NSFX' => '',
-    ];
-
-    // Inherit surname from parents, spouse or child
-    if ($family) {
-        $father = $family->husband();
-        if ($father instanceof Individual && $father->facts(['NAME'])->isNotEmpty()) {
-            $father_name = $father->facts(['NAME'])->first()->value();
-        } else {
-            $father_name = '';
-        }
-        $mother = $family->wife();
-        if ($mother instanceof Individual && $mother->facts(['NAME'])->isNotEmpty()) {
-            $mother_name = $mother->facts(['NAME'])->first()->value();
-        } else {
-            $mother_name = '';
-        }
-    } else {
-        $father      = null;
-        $mother      = null;
-        $father_name = '';
-        $mother_name = '';
-    }
-    if ($individual && $individual->facts(['NAME'])->isNotEmpty()) {
-        $indi_name = $individual->facts(['NAME'])->first()->value();
-    } else {
-        $indi_name = '';
-    }
-
-    switch ($next_action) {
-        case AddChildToFamilyAction::class:
-            $name_fields = array_merge($name_fields, $surname_tradition->newChildNames($father_name, $mother_name, $gender));
-            break;
-        case AddChildToIndividualAction::class:
-            if ($individual->sex() === 'F') {
-                $name_fields = array_merge($name_fields, $surname_tradition->newChildNames('', $indi_name, $gender));
-            } else {
-                $name_fields = array_merge($name_fields, $surname_tradition->newChildNames($indi_name, '', $gender));
-            }
-            break;
-        case AddParentToIndividualAction::class:
-            $name_fields = array_merge($name_fields, $surname_tradition->newParentNames($indi_name, $gender));
-            break;
-        case AddSpouseToFamilyAction::class:
-            if ($father) {
-                $name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($father_name, $gender));
-            } else {
-                $name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($mother_name, $gender));
-            }
-            break;
-        case AddSpouseToIndividualAction::class:
-            $name_fields = array_merge($name_fields, $surname_tradition->newSpouseNames($indi_name, $gender));
-            break;
-        case AddUnlinkedAction::class:
-        case EditFactAction::class:
-            if ($surname_tradition->hasSurnames()) {
-                $name_fields['NAME'] = '//';
-            }
-            break;
-    }
-}
-
-$bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
-
-?>
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route($next_action, ['tree' => $tree->name(), 'xref' => $xref, 'fact_id' => $name_fact ? $name_fact->id() : null])) ?>" onsubmit="return checkform();">
-    <input type="hidden" name="fact_id" value="<?= e($name_fact_id) ?>">
-    <input type="hidden" name="famtag" value="<?= e($famtag) ?>">
-    <input type="hidden" name="gender" value="<?= $gender ?>">
+<form method="post" action="<?= e($post_url) ?>">
     <?= csrf_field() ?>
 
-    <?php if ($next_action === AddChildToFamilyAction::class || $next_action === AddChildToIndividualAction::class) : ?>
-        <?= FunctionsEdit::addSimpleTag($tree, '0 PEDI') ?>
-    <?php endif ?>
+    <?php foreach ($facts ?? [] as $prefix => $prefix_facts) : ?>
+        <?php foreach ($prefix_facts as $fact) : ?>
+            <div class="card mb-2">
+                <div class="card-header">
+                    <?= $fact->label() ?>
+                </div>
+                <div class="card-body pb-1">
+                    <?= view('edit/edit-gedcom-fields', ['gedcom' => $fact->insertMissingSubtags(), 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => $prefix]) ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    <?php endforeach ?>
 
-    <?php
-    // If we are adding a new individual, choose the sex.
-    if ($next_action !== EditFactAction::class) {
-        if ($famtag === 'HUSB' || $gender === 'M') {
-            echo FunctionsEdit::addSimpleTag($tree, '0 SEX M');
-        } elseif ($famtag === 'WIFE' || $gender === 'F') {
-            echo FunctionsEdit::addSimpleTag($tree, '0 SEX F');
-        } else {
-            echo FunctionsEdit::addSimpleTag($tree, '0 SEX');
-        }
-    }
-    ?>
-
-    <?php
-    // First - standard name fields
-    foreach ($name_fields as $tag => $value) {
-        if (substr_compare($tag, '_', 0, 1) !== 0) {
-            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag . ' ' . $value, '', '');
-        }
-    }
-
-    // Second - advanced name fields
-    if ($surname_tradition->hasMarriedNames() || preg_match('/\n2 _MARNM /', $namerec)) {
-        $adv_name_fields = ['_MARNM' => ''];
-    } else {
-        $adv_name_fields = [];
-    }
-    if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
-        foreach ($match[1] as $tag) {
-            // Ignore advanced facts that duplicate standard facts
-            if (!in_array($tag, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'])) {
-                $adv_name_fields[$tag] = '';
-            }
-        }
-    }
-
-    foreach (array_keys($adv_name_fields) as $tag) {
-        // Edit existing tags, grouped together
-        if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
-            foreach ($match[1] as $value) {
-                $label = Registry::elementFactory()->make('INDI:NAME:' . $tag)->label();
-                echo FunctionsEdit::addSimpleTag($tree, '2 ' . $tag . ' ' . $value, '', $label);
-                if ($tag === '_MARNM') {
-                    preg_match_all('/\/([^\/]*)\//', $value, $matches);
-                    echo FunctionsEdit::addSimpleTag($tree, '2 _MARNM_SURN ' . implode(',', $matches[1]));
-                }
-            }
-        }
-        // Allow a new tag to be entered
-        if (!array_key_exists($tag, $name_fields)) {
-            $label = Registry::elementFactory()->make('INDI:NAME:' . $tag)->label();
-            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag, '', $label);
-            if ($tag === '_MARNM') {
-                echo FunctionsEdit::addSimpleTag($tree, '0 _MARNM_SURN');
-            }
-        }
-    }
-
-    // Third - new/existing custom name fields
-    foreach ($name_fields as $tag => $value) {
-        if (substr_compare($tag, '_', 0, 1) === 0) {
-            echo FunctionsEdit::addSimpleTag($tree, '0 ' . $tag . ' ' . $value);
-            if ($tag === '_MARNM') {
-                preg_match_all('/\/([^\/]*)\//', $value, $matches);
-                echo FunctionsEdit::addSimpleTag($tree, '2 _MARNM_SURN ' . implode(',', $matches[1]));
-            }
-        }
-    }
-
-    // Fourth - SOUR, NOTE, _CUSTOM, etc.
-    if ($namerec !== '') {
-        $gedlines = explode("\n", $namerec); // -- find the number of lines in the record
-        $fields   = explode(' ', $gedlines[0]);
-        $glevel   = $fields[0];
-        $level    = $glevel;
-        $type     = $fields[1];
-        $tags     = [];
-        $i        = 0;
-        do {
-            if ($type !== 'TYPE' && !array_key_exists($type, $name_fields) && !array_key_exists($type, $adv_name_fields)) {
-                $text = '';
-                for ($j = 2; $j < count($fields); $j++) {
-                    if ($j > 2) {
-                        $text .= ' ';
-                    }
-                    $text .= $fields[$j];
-                }
-                while (($i + 1 < count($gedlines)) && (preg_match('/' . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
-                    $text .= "\n" . $cmatch[1];
-                    $i++;
-                }
-                echo FunctionsEdit::addSimpleTag($tree, $level . ' ' . $type . ' ' . $text);
-            }
-            $tags[] = $type;
-            $i++;
-            if (isset($gedlines[$i])) {
-                $fields = explode(' ', $gedlines[$i]);
-                $level  = $fields[0];
-                if (isset($fields[1])) {
-                    $type = $fields[1];
-                }
-            }
-        } while (($level > $glevel) && ($i < count($gedlines)));
-    }
-
-    // If we are adding a new individual, add the basic details
-    if ($next_action !== EditFactAction::class) {
-        $bdm = 'BD';
-        $tags = new Collection();
-        preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches);
-        $tags = $tags->merge($matches[1]);
-
-        // If adding a spouse add the option to add a marriage fact to the new family
-        if ($next_action === AddSpouseToIndividualAction::class || $next_action === AddSpouseToFamilyAction::class) {
-            $bdm .= 'M';
-            preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches);
-            $tags = $tags->merge($matches[1]);
-        }
-
-        foreach (Fact::sortFactTags($tags) as $tag) {
-            echo view('cards/add-fact', [
-                'tag'  => $tag,
-                'tree' => $tree,
-            ]);
-        }
-    }
-
-    if ($next_action === EditFactAction::class ) {
-        // GEDCOM 5.5.1 spec says NAME doesn’t get a OBJE
-        echo view('cards/add-source-citation', [
-            'level'          => 2,
-            'full_citations' => $tree->getPreference('FULL_SOURCES'),
-            'tree'           => $tree,
-        ]);
-        echo view('cards/add-note', [
-            'level' => 2,
-            'tree'  => $tree,
-        ]);
-        echo view('cards/add-shared-note', [
-            'level' => 2,
-            'tree'  => $tree,
-        ]);
-        echo view('cards/add-restriction', [
-            'level' => 2,
-            'tree'  => $tree,
-        ]);
-    } else {
-        echo view('cards/add-source-citation', [
-            'bdm'                     => $bdm,
-            'level'                   => 1,
-            'full_citations'          => (bool) $tree->getPreference('FULL_SOURCES'),
-            'prefer_level2_sources'   => $tree->getPreference('PREFER_LEVEL2_SOURCES'),
-            'quick_required_facts'    => $tree->getPreference('QUICK_REQUIRED_FACTS'),
-            'quick_required_famfacts' => $tree->getPreference('QUICK_REQUIRED_FAMFACTS'),
-            'tree'                    => $tree,
-        ]);
-        echo view('cards/add-note', [
-            'level' => 1,
-            'tree'  => $tree,
-        ]);
-        echo view('cards/add-shared-note', [
-            'level' => 1,
-            'tree'  => $tree,
-        ]);
-        echo view('cards/add-restriction', [
-            'level' => 1,
-            'tree'  => $tree,
-        ]);
-    }
-
-    ?>
     <div class="row form-group">
         <div class="col-sm-9 offset-sm-3">
-            <button class="btn btn-primary" type="submit">
+            <button class="btn btn-primary" type="submit" name="url" value="<?= e($url) ?>">
                 <?= view('icons/save') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('save') ?>
             </button>
-            <?php if ($next_action !== EditFactAction::class) : ?>
-                <button class="btn btn-primary" type="submit" name="goto" value="new">
-                    <?= view('icons/save') ?>
-                    <?= /* I18N: A button label. */
-                    I18N::translate('go to new individual') ?>
-                </button>
-            <?php endif ?>
+            <button class="btn btn-primary" type="submit">
+                <?= view('icons/save') ?>
+                <?= /* I18N: A button label. */
+                I18N::translate('go to new individual') ?>
+            </button>
             <a class="btn btn-secondary" href="<?= e($cancel_url) ?>">
                 <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('cancel') ?>
             </a>
-
-            <?php if ($name_fact instanceof Fact && (Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD'))) : ?>
-                <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $xref, 'fact_id' => $name_fact->id(), 'tree' => $tree->name()])) ?>">
-                    <?= I18N::translate('Edit the raw GEDCOM') ?>
-                </a>
-            <?php endif ?>
         </div>
     </div>
 </form>
@@ -356,160 +69,3 @@ $bdm = ''; // used to copy '1 SOUR' to '2 SOUR' for BIRT DEAT MARR
 <?= view('modals/on-screen-keyboard') ?>
 <?= view('modals/ajax') ?>
 <?= view('edit/initialize-calendar-popup') ?>
-
-<?php View::push('javascript') ?>
-<script>
-    var SURNAME_TRADITION = <?= json_encode($tree->getPreference('SURNAME_TRADITION')) ?>;
-
-    var NAME = $("[name=NAME]");
-
-    // Generate a full name from the name components
-    function generate_name() {
-        var npfx      = document.querySelector("[name=NPFX]").value;
-        var givn      = document.querySelector("[name=GIVN]").value;
-        var spfx      = document.querySelector("[name=SPFX]").value;
-        var surn      = document.querySelector("[name=SURN]").value;
-        var nsfx      = document.querySelector("[name=NSFX]").value;
-        var sex_input = document.querySelector("[name=SEX]:checked");
-        var sex       = sex_input ? sex_input.value : "U";
-
-        return webtrees.buildNameFromParts(npfx, givn, spfx, surn, nsfx, sex);
-    }
-
-    // Update the NAME and _MARNM fields from the name components
-    // and also display the value in read-only "gedcom" format.
-    function updatewholename() {
-        // Don’t update the name if the user manually changed it
-        if (manualChange) {
-            return;
-        }
-
-        var npfx = document.querySelector("[name=NPFX]").value;
-        var givn = document.querySelector("[name=GIVN]").value;
-        var spfx = document.querySelector("[name=SPFX]").value;
-        var surn = document.querySelector("[name=SURN]").value;
-        var nsfx = document.querySelector("[name=NSFX]").value;
-        var name = generate_name();
-
-        var display_id = NAME.attr("id") + "_display";
-
-        NAME.val(name);
-        $("#" + display_id).text(name);
-
-        // Married names inherit some NSFX values, but not these
-        nsfx = nsfx.replace(/^(I|II|III|IV|V|VI|Junior|Jr\.?|Senior|Sr\.?)$/i, "");
-
-        // Update _MARNM field from _MARNM_SURN field and display it
-        var ip       = document.getElementsByTagName("input");
-        var marnm_id = "";
-        var romn     = "";
-        var heb      = "";
-        var i;
-
-        for (i = 0; i < ip.length; i++) {
-            if (ip[i].id.indexOf("_HEB") === 0) {
-                // Remember this field - we might need it later
-                heb = val;
-            }
-            if (ip[i].id.indexOf("ROMN") === 0) {
-                // Remember this field - we might need it later
-                romn = val;
-            }
-        }
-
-        for (i = 0; i < ip.length; i++) {
-            var val = ip[i].value;
-
-            if (ip[i].id.indexOf("_MARNM") === 0) {
-                if (ip[i].id.indexOf("_MARNM_SURN") === 0) {
-                    var msurn = "";
-                    if (val !== "") {
-                        if (surn === "" || webtrees.detectScript(val) === webtrees.detectScript(surn)) {
-                            // Same script as NAME field?
-                            msurn = name.replace(/\/.*\//, "/" + val + "/");
-                        } else if (heb !== "" && webtrees.detectScript(val) === webtrees.detectScript(heb)) {
-                            // Same script as _HEB field?
-                            msurn = heb.replace(/\/.*\//, "/" + val + "/");
-                        } else if (romn !== "" && webtrees.detectScript(val) === webtrees.detectScript(romn)) {
-                            //. Same script as ROMN field
-                            msurn = romn.replace(/\/.*\//, "/" + val + "/");
-                        }
-                    }
-                    document.getElementById(marnm_id).value                  = msurn;
-                    document.getElementById(marnm_id + "_display").innerHTML = msurn;
-                } else {
-                    marnm_id = ip[i].id;
-                }
-            }
-        }
-    }
-
-    // Toggle the name editor fields between
-    // <input type="hidden"> <span style="display:inline">
-    // <input type="text">   <span style="display:none">
-
-    var oldName = "";
-
-    // Calls to generate_name() trigger an update - hence need to
-    // set the manual change to true first. We are probably
-    // listening to the wrong events on the input fields...
-    var manualChange = generate_name() !== NAME.val();
-
-    function convertHidden(eid) {
-        var input1 = $("#" + eid);
-        var input2 = $("#" + eid + "_display");
-
-        if (input1.attr("type") === "hidden") {
-            input1.attr("type", "text");
-            input2.hide();
-        } else {
-            input1.attr("type", "hidden");
-            input2.show();
-        }
-    }
-
-    /**
-     * if the user manually changed the NAME field, then update the textual
-     * HTML representation of it
-     * If the value changed set manualChange to true so that changing
-     * the other fields doesn’t change the NAME line
-     */
-    function updateTextName(eid) {
-        var element = document.getElementById(eid);
-        if (element) {
-            if (element.value !== oldName) {
-                manualChange = true;
-            }
-            var delement = document.getElementById(eid + "_display");
-            if (delement) {
-                delement.innerHTML = element.value;
-            }
-        }
-    }
-
-    function checkform() {
-        var ip = document.getElementsByTagName("input");
-        for (var i = 0; i < ip.length; i++) {
-            // ADD slashes to _HEB and _AKA names
-            if (ip[i].id.indexOf("_AKA") === 0 || ip[i].id.indexOf("_HEB") === 0 || ip[i].id.indexOf("ROMN") === 0)
-                if (ip[i].value.indexOf("/") < 0 && ip[i].value !== "")
-                    ip[i].value = ip[i].value.replace(/([^\s]+)\s*$/, "/$1/");
-            // Blank out temporary _MARNM_SURN
-            if (ip[i].id.indexOf("_MARNM_SURN") === 0)
-                ip[i].value = "";
-            // Convert "xxx yyy" and "xxx y yyy" surnames to "xxx,yyy"
-            if ((SURNAME_TRADITION === "spanish" || "SURNAME_TRADITION" === "portuguese") && ip[i].id.indexOf("SURN") === 0) {
-                ip[i].value = document.forms[0].SURN.value.replace(/^\s*([^\s,]{2,})\s+([iIyY] +)?([^\s,]{2,})\s*$/, "$1,$3");
-            }
-        }
-        return true;
-    }
-
-    // If the name isn’t initially formed from the components in a standard way,
-    // then don’t automatically update it.
-    if (NAME.val() !== generate_name() && NAME.val() !== "//") {
-        convertHidden(NAME.attr("id"));
-    }
-</script>
-<?php View::endpush() ?>
-

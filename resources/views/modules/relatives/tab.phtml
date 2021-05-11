@@ -45,14 +45,14 @@ use Illuminate\Support\Collection;
         <tbody>
             <tr>
                 <td>
-                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'M'])) ?>">
+                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= I18N::translate('Add a father') ?>
                     </a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'F'])) ?>">
+                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?= I18N::translate('Add a mother') ?>
                     </a>
                 </td>
@@ -129,7 +129,7 @@ use Illuminate\Support\Collection;
 
             <tr>
                 <td>
-                    <a href="<?= e(route(AddSpouseToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">
+                    <a href="<?= e(route(AddSpouseToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'url' => $individual->url() . '#tab-relatives'])) ?>">
                         <?php if ($individual->sex() !== 'F') : ?>
                             <?= I18N::translate('Add a wife') ?>
                         <?php else : ?>
@@ -153,7 +153,7 @@ use Illuminate\Support\Collection;
 
             <tr>
                 <td>
-                    <a href="<?= e(route(AddChildToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'U'])) ?>">
+                    <a href="<?= e(route(AddChildToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'U'])) ?>">
                         <?= I18N::translate('Add a child to create a one-parent family') ?>
                     </a>
                 </td>

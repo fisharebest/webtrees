@@ -28,7 +28,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function preg_match_all;
+use function is_string;
 use function redirect;
 
 /**
@@ -59,77 +59,33 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
+
+        $params = (array) $request->getParsedBody();
 
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $params = (array) $request->getParsedBody();
+        $levels = $params['ilevels'] ?? [];
+        $tags   = $params['itags'] ?? [];
+        $values = $params['ivalues'] ?? [];
 
-        $PEDI = $params['PEDI'];
+        // Create the new child
+        $gedcom = "0 @@ INDI\n" . $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
+        $child  = $tree->createIndividual($gedcom);
 
-        $this->gedcom_edit_service->glevels = $params['glevels'] ?? [];
-        $this->gedcom_edit_service->tag     = $params['tag'] ?? [];
-        $this->gedcom_edit_service->text    = $params['text'] ?? [];
-        $this->gedcom_edit_service->islink  = $params['islink'] ?? [];
-
-        // Create a family
-        if ($individual->sex() === 'F') {
-            $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . '@';
-        } else {
-            $gedcom = "0 @@ FAM\n1 HUSB @" . $individual->xref() . '@';
-        }
+        // Create a new family
+        $link   = $child->sex() === 'F' ? 'WIFE' : 'HUSB';
+        $gedcom = "0 @@ FAM\n1 " . $link . " @" . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
         $family = $tree->createFamily($gedcom);
 
-        // Link the parent to the family
-        $individual->createFact('1 FAMS @' . $family->xref() . '@', true);
+        // Link the individual to the family
+        $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
 
-        // Create a child
-        $this->gedcom_edit_service->splitSource(); // separate SOUR record from the rest
+        // Link the child to the family
+        $child->createFact('1 FAMC @' . $family->xref() . '@', false);
 
-        $gedcom = '0 @@ INDI';
-        $gedcom .= $this->gedcom_edit_service->addNewName($request, $tree);
-        $gedcom .= $this->gedcom_edit_service->addNewSex($request);
-
-        $fam_xref = $family->xref();
-        switch ($PEDI) {
-            case '':
-                $gedcom .= "\n1 FAMC @$fam_xref@";
-                break;
-            case 'adopted':
-                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$fam_xref@\n3 ADOP BOTH";
-                break;
-            case 'sealing':
-                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$fam_xref@";
-                break;
-            case 'foster':
-                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
-                break;
-            default:
-                $gedcom .= "\n1 FAMC @$fam_xref@\n2 PEDI $PEDI";
-                break;
-        }
-
-        if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-            foreach ($matches[1] as $match) {
-                $gedcom .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
-            }
-        }
-        if ($params['SOUR_INDI'] ?? false) {
-            $gedcom = $this->gedcom_edit_service->handleUpdates($gedcom);
-        } else {
-            $gedcom = $this->gedcom_edit_service->updateRest($gedcom);
-        }
-
-        $child = $tree->createIndividual($gedcom);
-
-        // Link the family to the child
-        $family->createFact('1 CHIL @' . $child->xref() . '@', true);
-
-        if (($params['goto'] ?? '') === 'new') {
-            return redirect($child->url());
-        }
-
-        return redirect($individual->url());
+        return redirect($params['url'] ?? $child->url());
     }
 }

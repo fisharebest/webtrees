@@ -26,9 +26,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function preg_match_all;
 use function redirect;
-use function route;
 
 /**
  * Create a new unlinked individual.
@@ -60,32 +58,14 @@ class AddUnlinkedAction implements RequestHandlerInterface
 
         $params = (array) $request->getParsedBody();
 
-        $this->gedcom_edit_service->glevels = $params['glevels'] ?? [];
-        $this->gedcom_edit_service->tag     = $params['tag'] ?? [];
-        $this->gedcom_edit_service->text    = $params['text'] ?? [];
-        $this->gedcom_edit_service->islink  = $params['islink'] ?? [];
+        $levels = $params['ilevels'] ?? [];
+        $tags   = $params['itags'] ?? [];
+        $values = $params['ivalues'] ?? [];
 
-        $this->gedcom_edit_service->splitSource();
-        $gedrec = '0 @@ INDI';
-        $gedrec .= $this->gedcom_edit_service->addNewName($request, $tree);
-        $gedrec .= $this->gedcom_edit_service->addNewSex($request);
-        if (preg_match_all('/([A-Z0-9_]+)/', $tree->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
-            foreach ($matches[1] as $match) {
-                $gedrec .= $this->gedcom_edit_service->addNewFact($request, $tree, $match);
-            }
-        }
-        if ($params['SOUR_INDI'] ?? false) {
-            $gedrec = $this->gedcom_edit_service->handleUpdates($gedrec);
-        } else {
-            $gedrec = $this->gedcom_edit_service->updateRest($gedrec);
-        }
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
 
-        $new_indi = $tree->createIndividual($gedrec);
+        $individual = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
 
-        if (($params['goto'] ?? '') === 'new') {
-            return redirect($new_indi->url());
-        }
-
-        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
+        return redirect($params['url'] ?? $individual->url());
     }
 }

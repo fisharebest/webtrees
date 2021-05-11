@@ -1630,11 +1630,6 @@ parameters:
 			path: app/Services/RelationshipService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:legacyNameAlgorithm\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Services/RelationshipService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:matchRelationships\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Relationship\\> but returns array\\<array\\<string\\>\\|Fisharebest\\\\Webtrees\\\\Relationship\\>\\.$#"
 			count: 1
 			path: app/Services/RelationshipService.php

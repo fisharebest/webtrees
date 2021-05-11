@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Elements\NamePersonal;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Custom tags created by FamilyTreeMaker (DOS, Windows, ancestry.com)
+ * Custom GEDCOM tags created by FamilyTreeMaker (DOS, Windows, ancestry.com)
  *
  * Class CustomTagsFamilyTreeMaker
  */
@@ -33,6 +33,16 @@ class CustomTagsFamilyTreeMaker extends AbstractModule implements ModuleConfigIn
 {
     use ModuleConfigTrait;
     use ModuleCustomTagsTrait;
+
+    /**
+     * Should this module be enabled when it is first installed?
+     *
+     * @return bool
+     */
+    public function isEnabledByDefault(): bool
+    {
+        return false;
+    }
 
     /**
      * @return array<string,ElementInterface>

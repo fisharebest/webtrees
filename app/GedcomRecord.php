@@ -41,6 +41,7 @@ use function e;
 use function explode;
 use function implode;
 use function in_array;
+use function max;
 use function md5;
 use function preg_match;
 use function preg_match_all;
@@ -1352,7 +1353,11 @@ class GedcomRecord
                 if ($default !== '') {
                     $gedcom .= ' ' . $default;
                 }
-                $return .= "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $gedcom);
+
+                $number_to_add = max(1, $min - $count);
+                $gedcom_to_add = "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $gedcom);
+
+                $return .= \str_repeat($gedcom_to_add, $number_to_add);
             }
         }
 

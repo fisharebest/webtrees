@@ -30,15 +30,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function array_merge;
-use function array_unique;
 use function assert;
 use function explode;
-use function in_array;
 use function is_string;
-use function preg_match_all;
 use function redirect;
-use function trim;
 
 /**
  * Save an updated GEDCOM fact.
@@ -84,78 +79,38 @@ class EditFactAction implements RequestHandlerInterface
 
         $params    = (array) $request->getParsedBody();
         $keep_chan = (bool) ($params['keep_chan'] ?? false);
+        $levels    = $params['levels'];
+        $tags      = $params['tags'];
+        $values    = $params['values'];
 
-        $this->gedcom_edit_service->glevels = $params['glevels'];
-        $this->gedcom_edit_service->tag     = $params['tag'];
-        $this->gedcom_edit_service->text    = $params['text'];
-        $this->gedcom_edit_service->islink  = $params['islink'];
-
-        // If the fact has a DATE or PLAC, then delete any value of Y
-        if ($this->gedcom_edit_service->text[0] === 'Y') {
-            foreach ($this->gedcom_edit_service->tag as $n => $value) {
-                if ($this->gedcom_edit_service->glevels[$n] == 2 && ($value === 'DATE' || $value === 'PLAC') && $this->gedcom_edit_service->text[$n] !== '') {
-                    $this->gedcom_edit_service->text[0] = '';
-                    break;
-                }
-            }
-        }
-
-        $newged = '';
-
-        $NAME = $params['NAME'] ?? '';
-
-        if ($NAME !== '') {
-            $newged     .= "\n1 NAME " . $NAME;
-            $name_facts = [
-                'TYPE',
-                'NPFX',
-                'GIVN',
-                'NICK',
-                'SPFX',
-                'SURN',
-                'NSFX',
-            ];
-            foreach ($name_facts as $name_fact) {
-                $NAME_FACT = $params[$name_fact] ?? '';
-                if ($NAME_FACT !== '') {
-                    $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
-                }
-            }
-        }
-
-        $newged = $this->gedcom_edit_service->handleUpdates($newged);
-
-        // Add new names after existing names
-        if ($NAME !== '') {
-            preg_match_all('/[_0-9A-Z]+/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match);
-            $name_facts = array_unique(array_merge(['_MARNM'], $match[0]));
-            foreach ($name_facts as $name_fact) {
-                $NAME_FACT = $params[$name_fact] ?? '';
-                // Ignore advanced facts that duplicate standard facts.
-                if ($NAME_FACT !== '' && !in_array($name_fact, ['TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX'], true)) {
-                    $newged .= "\n2 " . $name_fact . ' ' . $NAME_FACT;
-                }
-            }
-        }
-
-        $newged = trim($newged); // Remove leading newline
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values);
 
         $census_assistant = $this->module_service->findByInterface(CensusAssistantModule::class)->first();
+
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {
-            $newged = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $newged, $keep_chan);
+            $gedcom = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $gedcom, $keep_chan);
+            $pid_array = $params['pid_array'] ?? '';
+            if ($pid_array !== '') {
+                foreach (explode(',', $pid_array) as $pid) {
+                    if ($pid !== $xref) {
+                        $individual = Registry::individualFactory()->make($pid, $tree);
+                        if ($individual instanceof Individual && $individual->canEdit()) {
+                            $individual->updateFact('', $gedcom, !$keep_chan);
+                        }
+                    }
+                }
+            }
         }
 
-        $record->updateFact($fact_id, $newged, !$keep_chan);
-
-        // For the GEDFact_assistant module
-        $pid_array = $params['pid_array'] ?? '';
-        if ($pid_array !== '') {
-            foreach (explode(',', $pid_array) as $pid) {
-                if ($pid !== $xref) {
-                    $indi = Registry::individualFactory()->make($pid, $tree);
-                    if ($indi && $indi->canEdit()) {
-                        $indi->updateFact($fact_id, $newged, !$keep_chan);
-                    }
+        if ($fact_id === 'new') {
+            // Add a new fact
+            $record->updateFact('', $gedcom, !$keep_chan);
+        } else {
+            // Update (only the first copy of) an existing fact
+            foreach ($record->facts([], false, null, true) as $fact) {
+                if ($fact->id() === $fact_id && $fact->canEdit()) {
+                    $record->updateFact($fact_id, $gedcom, !$keep_chan);
+                    break;
                 }
             }
         }

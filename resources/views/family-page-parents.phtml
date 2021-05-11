@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php else : ?>
                 <div class="wt-chart-box">
                     <?php if ($family->canEdit()) : ?>
-                        <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                        <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'M'])) ?>">
                             <?= I18N::translate('Add a husband')?>
                         </a>
                     <?php endif ?>
@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php endif ?>
             </div>
 
-            <?= view('family-page-grandparents', ['family' => $family->husband() ? $family->husband()->childFamilies()->first() : null, 'individual' => $family->husband()]) ?>
+            <?= view('family-page-grandparents', ['family' => $family, 'parent_family' => $family->husband() ? $family->husband()->childFamilies()->first() : null, 'individual' => $family->husband()]) ?>
         </div>
 
         <div class="d-flex">
@@ -45,7 +45,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php else : ?>
                     <div class="wt-chart-box">
                         <?php if ($family->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'sex' => 'F'])) ?>">
                                 <?= I18N::translate('Add a wife')?>
                             </a>
                         <?php endif ?>
@@ -53,7 +53,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php endif ?>
             </div>
 
-            <?= view('family-page-grandparents', ['family' => $family->wife() ? $family->wife()->childFamilies()->first() : null, 'individual' => $family->wife()]) ?>
+            <?= view('family-page-grandparents', ['family' => $family, 'parent_family' => $family->wife() ? $family->wife()->childFamilies()->first() : null, 'individual' => $family->wife()]) ?>
         </div>
     </div>
 </div>

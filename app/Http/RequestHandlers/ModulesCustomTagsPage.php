@@ -40,7 +40,7 @@ class ModulesCustomTagsPage extends AbstractModuleComponentPage
     {
         return $this->listComponents(
             ModuleCustomTagsInterface::class,
-            view('icons/chart') . I18N::translate('Custom tags'),
+            view('icons/chart') . ' ' . I18N::translate('Custom GEDCOM tags'),
             ''
         );
     }

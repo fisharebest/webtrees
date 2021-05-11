@@ -6,7 +6,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\CopyFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditName;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -43,7 +43,7 @@ if ($fact->isPendingDeletion()) {
             <?= $fake_individual->fullName() ?>
             <?php if ($fact->attribute('TYPE') !== '') : ?>
                 —
-                <?= Registry::elementFactory()->make('INDI:NAME:TYPE')->value($fact->attribute('TYPE'), $tree) ?>
+                <?= Registry::elementFactory()->make($fact->tag() . ':TYPE')->value($fact->attribute('TYPE'), $tree) ?>
             <?php endif ?>
         </a>
     </div>
@@ -56,16 +56,13 @@ if ($fact->isPendingDeletion()) {
             <?php preg_match_all('/\n2 (\w+) (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
             <?php foreach ($matches as $key => $match) : ?>
                 <?php [, $tag, $value] = $match ?>
+                <?php $element = Registry::elementFactory()->make($fact->tag() . ':' . $tag) ?>
                 <?php if ($tag !== 'SOUR' && $tag !== 'NOTE') : ?>
                     <dt class="col-md-4 col-lg-3">
-                        <?= Registry::elementFactory()->make($fact->tag() . ':' . $tag)->label() ?>
+                        <?= $element->label() ?>
                     </dt>
                     <dd class="col-md-8 col-lg-9">
-                        <?php if ($tag === 'TYPE') : ?>
-                            <?= Registry::elementFactory()->make('INDI:NAME:TYPE')->value($value, $tree) ?>
-                        <?php else: ?>
-                            <span dir="auto"><?= e($value) ?></span>
-                        <?php endif ?>
+                        <?= $element->value($value, $fact->record()->tree()) ?>
                     </dd>
                 <?php endif ?>
             <?php endforeach ?>
@@ -76,7 +73,7 @@ if ($fact->isPendingDeletion()) {
 
         <?php if ($fact->canEdit()) : ?>
             <div class="d-flex">
-                <a class="btn btn-link ml-auto" href="<?= e(route(EditName::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Edit the name') ?>">
+                <a class="btn btn-link ml-auto" href="<?= e(route(EditFactPage::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Edit the name') ?>">
                     <?= view('icons/edit') ?>
                     <span class="sr-only"><?= I18N::translate('Edit the name') ?></span>
                 </a>

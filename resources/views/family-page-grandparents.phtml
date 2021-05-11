@@ -7,8 +7,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
- * @var Individual|null $individual
- * @var Family|null     $family
+ * @var Family      $family
+ * @var Individual  $individual
+ * @var Family|null $parent_family
  */
 
 ?>
@@ -26,24 +27,24 @@ use Fisharebest\Webtrees\Individual;
             <div class="align-self-center">
                 <?php if ($individual === null) : ?>
                     <?= view('chart-box', ['individual' => null]) ?>
-                <?php elseif ($family === null) : ?>
+                <?php elseif ($parent_family === null) : ?>
                     <div class="wt-chart-box">
                         <?php if ($individual->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'M'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
                     </div>
-                <?php elseif ($family->husband() === null) : ?>
+                <?php elseif ($parent_family->husband() === null) : ?>
                     <div class="wt-chart-box">
-                        <?php if ($family->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'HUSB'])) ?>">
+                        <?php if ($parent_family->canEdit()) : ?>
+                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a father') ?>
                             </a>
                         <?php endif ?>
                     </div>
                 <?php else : ?>
-                    <?= view('chart-box', ['individual' => $family ? $family->husband() : null]) ?>
+                    <?= view('chart-box', ['individual' => $parent_family ? $parent_family->husband() : null]) ?>
                 <?php endif ?>
             </div>
         </div>
@@ -56,31 +57,31 @@ use Fisharebest\Webtrees\Individual;
             <div class="align-self-center">
                 <?php if ($individual === null) : ?>
                     <?= view('chart-box', ['individual' => null]) ?>
-                <?php elseif ($family === null) : ?>
+                <?php elseif ($parent_family === null) : ?>
                     <div class="wt-chart-box">
                         <?php if ($individual->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'gender' => 'F'])) ?>">
+                            <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>
                     </div>
-                <?php elseif ($family->wife() === null) : ?>
+                <?php elseif ($parent_family->wife() === null) : ?>
                     <div class="wt-chart-box">
-                        <?php if ($family->canEdit()) : ?>
-                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'famtag' => 'WIFE'])) ?>">
+                        <?php if ($parent_family->canEdit()) : ?>
+                            <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
                             </a>
                         <?php endif ?>
                     </div>
                 <?php else : ?>
-                    <?= view('chart-box', ['individual' => $family ? $family->wife() : null]) ?>
+                    <?= view('chart-box', ['individual' => $parent_family ? $parent_family->wife() : null]) ?>
                 <?php endif ?>
             </div>
         </div>
     </div>
-    <?php if ($family !== null) : ?>
+    <?php if ($parent_family !== null) : ?>
         <div class="align-self-center">
-            <a class="btn btn-text" href="<?= e($family->url()) ?>" title="<?= strip_tags($family->fullName()) ?>">
+            <a class="btn btn-text" href="<?= e($parent_family->url()) ?>" title="<?= strip_tags($parent_family->fullName()) ?>">
                 <?= view('icons/arrow-right') ?>
             </a>
         </div>

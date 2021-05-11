@@ -29,6 +29,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
 
 /**
  * Link an existing individual as child in an existing family.
@@ -47,17 +48,17 @@ class LinkChildToFamilyPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
-
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $title = $individual->fullName() . ' - ' . I18N::translate('Link this individual to an existing family as a child');
+        $title = I18N::translate('Link this individual to an existing family as a child');
 
         return $this->viewResponse('edit/link-child-to-family', [
             'individual' => $individual,
-            'title'      => $title,
+            'title'      => $individual->fullName() . ' - ' . $title,
             'tree'       => $tree,
             'xref'       => $xref,
         ]);

@@ -1,14 +1,10 @@
 <?php
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @var bool   $can_edit_raw
@@ -26,84 +22,7 @@ use Ramsey\Uuid\Uuid;
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
-    <?php FunctionsEdit::createEditForm($fact) ?>
-
-    <?php
-    $level1type = $fact->getTag();
-    switch ($fact->record()->tag()) {
-        case 'SOUR':
-            if ($level1type === 'DATA') {
-                // SOUR:DATA facts may take a NOTE (but the SOUR record may not).
-                echo view('cards/add-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-                echo view('cards/add-shared-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-                // SOUR:DATA facts may also take multiple EVEN.
-                echo view('cards/add-sour-data-even', [
-                    'tree' => $tree,
-                ]);
-            }
-            break;
-        case 'FAM':
-        case 'INDI':
-            // FAM and INDI records have real facts. They can take NOTE/SOUR/OBJE/etc.
-            if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
-                if ($level1type !== 'SOUR') {
-                    echo view('cards/add-source-citation', [
-                        'level'          => 2,
-                        'full_citations' => $tree->getPreference('FULL_SOURCES'),
-                        'tree'           => $tree,
-                    ]);
-                }
-                if ($level1type !== 'OBJE') {
-                    if ($tree->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($tree)) {
-                        echo view('cards/add-media-object', [
-                            'level' => 2,
-                            'tree'  => $tree,
-                        ]);
-                    }
-                }
-                echo view('cards/add-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-                echo view('cards/add-shared-note', [
-                    'level' => 2,
-                    'tree' => $tree,
-                ]);
-                if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
-                    echo view('cards/add-associate', [
-                        'id'    => Uuid::uuid4()->toString(),
-                        'level' => 2,
-                        'tree' => $tree,
-                    ]);
-                }
-                // allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-                if (in_array($level1type, Config::twoAssociates(), true)) {
-                    echo view('cards/add-associate', [
-                        'id'    => Uuid::uuid4()->toString(),
-                        'level' => 2,
-                        'tree' => $tree,
-                    ]);
-                }
-                if ($level1type !== 'SOUR') {
-                    echo view('cards/add-restriction', [
-                        'level' => 2,
-                        'tree' => $tree,
-                    ]);
-                }
-            }
-            break;
-        default:
-            // Other types of record do not have these lower-level records
-            break;
-    }
-
-    ?>
+    <?= view('edit/edit-gedcom-fields', ['gedcom' => $fact->insertMissingSubtags(), 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => '']) ?>
 
     <div class="form-group row">
         <div class="col-sm-3 wt-page-options-label">

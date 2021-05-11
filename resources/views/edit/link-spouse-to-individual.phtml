@@ -1,36 +1,44 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsEdit;
-use Fisharebest\Webtrees\Http\RequestHandlers\LinkSpouseToIndividualAction;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var Individual $individual
- * @var string     $label
- * @var string     $title
- * @var Tree       $tree
- * @var string     $xref
+ * @var string $title
+ * @var string $label
+ * @var string $cancel_url
+ * @var string $post_url
+ * @var Tree   $tree
  */
 
 ?>
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(LinkSpouseToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref])) ?>" class="wt-page-content">
+<form method="post" action="<?= e($post_url) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
-    <div class="form-group row">
-        <label class="col-sm-3 col-form-label" for="spouse">
+    <div class="card mb-2">
+        <div class="card-header">
             <?= $label ?>
-        </label>
-        <div class="col-sm-9">
+        </div>
+        <div class="card-body pb-1">
             <?= view('components/select-individual', ['name' => 'spid', 'id' => 'spouse', 'tree' => $tree]) ?>
         </div>
     </div>
 
-    <?= FunctionsEdit::addSimpleTags($tree, 'MARR') ?>
+    <?php foreach ($facts ?? [] as $prefix => $prefix_facts) : ?>
+        <?php foreach ($prefix_facts as $fact) : ?>
+            <div class="card mb-2">
+                <div class="card-header">
+                    <?= $fact->label() ?>
+                </div>
+                <div class="card-body pb-1">
+                    <?= view('edit/edit-gedcom-fields', ['gedcom' => $fact->insertMissingSubtags(), 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => $prefix]) ?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    <?php endforeach ?>
 
     <div class="row form-group">
         <div class="col-sm-9 offset-sm-3">
@@ -39,7 +47,7 @@ use Fisharebest\Webtrees\Tree;
                 <?= /* I18N: A button label. */
                 I18N::translate('save') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e($individual->url()) ?>">
+            <a class="btn btn-secondary" href="<?= e($cancel_url) ?>">
                 <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('cancel') ?>
@@ -47,5 +55,3 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 </form>
-
-<?= view('modals/ajax') ?>

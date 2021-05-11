@@ -96,19 +96,27 @@ class CustomTagsWebtrees extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @return array<array<string>>
+     * @return array<string,array<string>>
      */
-
     public function customSubTags(): array
     {
         return [
-            ['FAM:CHAN', '_WT_USER', '0:1', ''],
-            ['INDI:CHAN', '_WT_USER', '0:1', ''],
-            ['NOTE:CHAN', '_WT_USER', '0:1', ''],
-            ['OBJE:CHAN', '_WT_USER', '0:1', ''],
-            ['REPO:CHAN', '_WT_USER', '0:1', ''],
-            ['SOUR:CHAN', '_WT_USER', '0:1', ''],
-            ['SUBM:CHAN', '_WT_USER', '0:1', ''],
+            'FAM:CHAN'       => [['_WT_USER']],
+            'FAM:MARR'       => [['_ASSO', '0:M', 'NOTE']],
+            'FAM:SOUR:DATA'  => [['TEXT']],
+            'INDI:BIRT'      => [['FAMC']],
+            'INDI:CHAN'      => [['_WT_USER']],
+            'INDI:SOUR:DATA' => [['TEXT']],
+            'NOTE'           => [['RESN', '0:1', 'CHAN']],
+            'NOTE:CHAN'      => [['_WT_USER']],
+            'OBJE'           => [['RESN', '0:1', 'CHAN']],
+            'OBJE:CHAN'      => [['_WT_USER']],
+            'REPO'           => [['RESN', '0:1', 'CHAN']],
+            'REPO:CHAN'      => [['_WT_USER']],
+            'SOUR'           => [['RESN', '0:1', 'CHAN']],
+            'SOUR:CHAN'      => [['_WT_USER']],
+            'SUBM'           => [['RESN', '0:1', 'CHAN']],
+            'SUBM:CHAN'      => [['_WT_USER']],
         ];
     }
 

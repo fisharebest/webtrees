@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -29,6 +30,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function is_string;
+use function route;
 
 /**
  * Add a new spouse to an individual, creating a new family.
@@ -36,6 +39,12 @@ use function assert;
 class AddSpouseToIndividualPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    // Create mixed-sex couples by default
+    private const OPPOSITE_SEX = [
+        'F' => 'M',
+        'M' => 'F',
+    ];
 
     /**
      * @param ServerRequestInterface $request
@@ -47,30 +56,44 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
+        $xref = $request->getAttribute('xref');
+        assert(is_string($xref));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        if ($individual->sex() === 'F') {
-            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a husband');
-            $famtag = 'HUSB';
-            $gender = 'M';
-        } else {
-            $title  = $individual->fullName() . ' - ' . I18N::translate('Add a wife');
-            $famtag = 'WIFE';
-            $gender = 'F';
-        }
+        // Create a dummy individual, so that we can create new/empty facts.
+        $sex     = self::OPPOSITE_SEX[$individual->sex()] ?? 'U';
+        $element = Registry::elementFactory()->make('INDI:NAME');
+        $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $dummyf  = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
+        $facts   = [
+            'i' => [
+                new Fact('1 SEX ' . $sex, $dummyi, ''),
+                new Fact('1 NAME ' . $element->default($tree), $dummyi, ''),
+                new Fact('1 BIRT', $dummyi, ''),
+                new Fact('1 DEAT', $dummyi, ''),
+            ],
+            'f' => [
+                new Fact('1 MARR', $dummyf, ''),
+            ],
+        ];
+
+        $titles = [
+            'F' => I18N::translate('Add a wife'),
+            'H' => I18N::translate('Add a husband'),
+            'U' => I18N::translate('Add a spouse'),
+        ];
+
+        $title = $titles[$sex] ?? $titles['U'];
 
         return $this->viewResponse('edit/new-individual', [
-            'next_action' => AddSpouseToIndividualAction::class,
-            'tree'        => $tree,
-            'title'       => $title,
-            'individual'  => $individual,
-            'family'      => null,
-            'name_fact'   => null,
-            'famtag'      => $famtag,
-            'gender'      => $gender,
+            'cancel_url' => $individual->url(),
+            'facts'      => $facts,
+            'post_url'   => route(AddSpouseToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
+            'title'      => $individual->fullName() . ' - ' . $title,
+            'tree'       => $tree,
+            'url'        => $request->getQueryParams()['url'] ?? $individual->url(),
         ]);
     }
 }

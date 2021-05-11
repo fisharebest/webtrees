@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -29,6 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
+use function trim;
 
 /**
  * Add a new fact.
@@ -50,20 +52,19 @@ class AddNewFact implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $fact = $request->getAttribute('fact');
+        $subtag  = $request->getAttribute('fact');
+        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record  = Auth::checkRecordAccess($record, true);
+        $element = Registry::elementFactory()->make($record->tag() . ':' . $subtag);
+        $title   = $record->fullName() . ' - ' . $element->label();
+        $fact    = new Fact(trim('1 ' . $subtag . ' ' . $element->default($tree)), $record, 'new');
 
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
-
-        $element = Registry::elementFactory()->make($record->tag() . ':' . $fact);
-
-        $title = $record->fullName() . ' - ' . $element->label();
-
-        return $this->viewResponse('edit/add-fact', [
-            'fact'   => $fact,
-            'record' => $record,
-            'title'  => $title,
-            'tree'   => $tree,
+        return $this->viewResponse('edit/edit-fact', [
+            'can_edit_raw' => false,
+            'fact'         => $fact,
+            'title'        => $title,
+            'tree'         => $tree,
+            'url'          => $record->url(),
         ]);
     }
 }
