@@ -26,11 +26,11 @@ use Fisharebest\Webtrees\Tree;
 
 use function array_key_exists;
 use function array_map;
-use function array_search;
 use function e;
 use function is_numeric;
 use function preg_match;
-use function strpos;
+use function str_contains;
+use function strip_tags;
 use function trim;
 use function view;
 
@@ -48,11 +48,11 @@ abstract class AbstractElement implements ElementInterface
     // Which child elements can appear under this element.
     protected const SUBTAGS = [];
 
-    /** @var string A label to describe this element */
-    private $label;
+    // A label to describe this element
+    private string $label;
 
-    /** @var array<string,string> */
-    private $subtags;
+    /** @var array<string,string> Subtags of this element */
+    private array $subtags;
 
     /**
      * AbstractGedcomElement constructor.
@@ -77,7 +77,7 @@ abstract class AbstractElement implements ElementInterface
     {
         $value = strtr($value, ["\t" => ' ', "\r" => ' ', "\n" => ' ']);
 
-        while (strpos($value, '  ') !== false) {
+        while (str_contains($value, '  ')) {
             $value = strtr($value, ['  ' => ' ']);
         }
 
@@ -119,7 +119,7 @@ abstract class AbstractElement implements ElementInterface
             }
 
             // We may use markup to display values, but not when editing them.
-            $values = array_map('strip_tags', $values);
+            $values = array_map(fn(string $x): string => strip_tags($x), $values);
 
             return view('components/select', [
                 'id'       => $id,
@@ -214,25 +214,24 @@ abstract class AbstractElement implements ElementInterface
      *
      * @param string $subtag
      * @param string $repeat
-     * @param string $after
+     * @param string $before
      *
      * @return void
      */
-    public function subtag(string $subtag, string $repeat = '', string $after = ''): void
+    public function subtag(string $subtag, string $repeat, string $before): void
     {
         if ($repeat === '') {
             unset($this->subtags[$subtag]);
-        } elseif ($after === '' || ($this->subtags[$subtag] ?? null) === null) {
+        } elseif ($before === '' || ($this->subtags[$before] ?? null) === null) {
             $this->subtags[$subtag] = $repeat;
         } else {
             $tmp = [];
 
             foreach ($this->subtags as $key => $value) {
-                $tmp[$key] = $value;
-
-                if ($key === $after) {
-                    $tmp[] = $repeat;
+                if ($key === $before) {
+                    $tmp[$key] = $repeat;
                 }
+                $tmp[$key] = $value;
             }
 
             $this->subtags = $tmp;

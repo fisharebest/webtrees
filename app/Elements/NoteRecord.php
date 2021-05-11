@@ -29,5 +29,6 @@ class NoteRecord extends AbstractElement
         'REFN'  => '0:1',
         'RIN'   => '0:1',
         'SOUR'  => '0:M',
+        'CHAN'  => '0:1',
     ];
 }

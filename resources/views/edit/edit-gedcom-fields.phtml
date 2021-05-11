@@ -12,6 +12,7 @@ use Ramsey\Uuid\Uuid;
  */
 
 $gedcom = preg_replace('/\n\d CONT ?/', "\r", $gedcom);
+
 ?>
 
 <?php foreach (explode("\n", $gedcom) as $line) : ?>
@@ -26,6 +27,7 @@ $gedcom = preg_replace('/\n\d CONT ?/', "\r", $gedcom);
 
     <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="<?= e($id) ?>">
+            <?= str_repeat('&nbsp;', max(0, $level -1)) ?>
             <?= $element->label() ?>
         </label>
 

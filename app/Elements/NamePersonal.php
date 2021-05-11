@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
+use function in_array;
 use function view;
 
 /**
@@ -61,6 +62,27 @@ class NamePersonal extends AbstractElement
         'SURN' => '0:1',
         'NSFX' => '0:1',
         'NICK' => '0:1',
+        'NOTE' => '0:M',
+        'SOUR' => '0:M',
+        'FONE' => '0:M',
+        'ROMN' => '0:M',
+    ];
+
+    // For some languages, we want to show the surname field first.
+    protected const SURNAME_FIRST_LANGUAGES = ['hu', 'jp', 'ko', 'zh-Hans', 'zh-Hant'];
+
+    protected const SUBTAGS_SURNAME_FIRST = [
+        'TYPE' => '0:1',
+        'NPFX' => '0:1',
+        'SPFX' => '0:1',
+        'SURN' => '0:1',
+        'GIVN' => '0:1',
+        'NSFX' => '0:1',
+        'NICK' => '0:1',
+        'NOTE' => '0:M',
+        'SOUR' => '0:M',
+        'FONE' => '0:M',
+        'ROMN' => '0:M',
     ];
 
     /**
@@ -107,37 +129,10 @@ class NamePersonal extends AbstractElement
      */
     public function subtags(): array
     {
-        $language = I18N::languageTag();
-
-        switch ($language) {
-            case 'hu':
-            case 'jp':
-            case 'ko':
-            case 'zh-Hans':
-            case 'zh-Hant':
-                $subtags = [
-                    'TYPE' => '0:1',
-                    'NPFX' => '0:1',
-                    'SPFX' => '0:1',
-                    'SURN' => '0:1',
-                    'GIVN' => '0:1',
-                    'NSFX' => '0:1',
-                    'NICK' => '0:1',
-                ];
-                break;
-            default:
-                $subtags = [
-                    'TYPE' => '0:1',
-                    'NPFX' => '0:1',
-                    'GIVN' => '0:1',
-                    'SPFX' => '0:1',
-                    'SURN' => '0:1',
-                    'NSFX' => '0:1',
-                    'NICK' => '0:1',
-                ];
-                break;
+        if (in_array(I18N::languageTag(), static::SURNAME_FIRST_LANGUAGES, true)) {
+            return static::SUBTAGS_SURNAME_FIRST;
         }
 
-        return $subtags;
+        return static::SUBTAGS;
     }
 }

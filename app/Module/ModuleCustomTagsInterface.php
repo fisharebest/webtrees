@@ -17,22 +17,29 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Elements;
+namespace Fisharebest\Webtrees\Module;
+
+use Fisharebest\Webtrees\Contracts\ElementInterface;
 
 /**
- * A level 0 repository record
+ * Interface ModuleCustomTagsInterface
  */
-class RepositoryRecord extends AbstractElement
+interface ModuleCustomTagsInterface extends ModuleInterface
 {
-    protected const SUBTAGS = [
-        'NAME'  => '0:1',
-        'ADDR'  => '0:1',
-        'PHON'  => '0:1',
-        'EMAIL' => '0:1',
-        'WWW'   => '0:1',
-        'NOTE'  => '0:M',
-        'REFN'  => '0:1',
-        'RIN'   => '0:1',
-        'CHAN'  => '0:1',
-    ];
+    /**
+     * @return array<string,ElementInterface>
+     */
+    public function customTags(): array;
+
+    /**
+     * @return array<array<string>>
+     */
+    public function customSubTags(): array;
+
+    /**
+     * The application for which we are supporting custom tags.
+     *
+     * @return string
+     */
+    public function customTagApplication(): string;
 }

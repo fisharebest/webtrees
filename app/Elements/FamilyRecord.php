@@ -26,6 +26,7 @@ class FamilyRecord extends AbstractElement
 {
     protected const SUBTAGS = [
         'MARR' => '0:1',
+        'RESN' => '0:1',
         'CHAN' => '0:1',
     ];
 }

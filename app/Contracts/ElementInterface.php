@@ -87,11 +87,11 @@ interface ElementInterface
      *
      * @param string $subtag
      * @param string $repeat
-     * @param string $after
+     * @param string $before
      *
      * @return void
      */
-    public function subtag(string $subtag, string $repeat = '', string $after = ''): void;
+    public function subtag(string $subtag, string $repeat, string $before): void;
 
     /**
      * @return array<string,string>

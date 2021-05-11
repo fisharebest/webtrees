@@ -1,0 +1,42 @@
+<?php
+
+use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var array<string,ElementInterface> $tags
+ * @var string                         $title
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), route(ModulesAllPage::class) => I18N::translate('Modules'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<table class="table table-bordered">
+    <caption class="sr-only"><?= I18N::translate('Custom tags') ?></caption>
+    <thead>
+        <tr>
+            <th><?= I18N::translate('Custom tag') ?></th>
+            <th><?= I18N::translate('Label') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($tags as $tag => $element) : ?>
+            <tr>
+                <td><code><?= $tag ?></code></td>
+                <td><?= $element->label() ?></td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+
+<p>
+    <a href="<?= e(route(ControlPanel::class)) ?>" class="btn btn-primary">
+        <?= view('icons/save') ?>
+        <?= I18N::translate('continue') ?>
+    </a>
+</p>

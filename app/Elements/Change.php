@@ -24,4 +24,8 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class Change extends EmptyElement
 {
+    protected const SUBTAGS = [
+        'DATE' => '1:1',
+        'NOTE' => '0:M',
+    ];
 }

@@ -17,22 +17,31 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Elements;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleCustomTagsInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+use function view;
 
 /**
- * A level 0 repository record
+ * Show a list of modules.
  */
-class RepositoryRecord extends AbstractElement
+class ModulesCustomTagsPage extends AbstractModuleComponentPage
 {
-    protected const SUBTAGS = [
-        'NAME'  => '0:1',
-        'ADDR'  => '0:1',
-        'PHON'  => '0:1',
-        'EMAIL' => '0:1',
-        'WWW'   => '0:1',
-        'NOTE'  => '0:M',
-        'REFN'  => '0:1',
-        'RIN'   => '0:1',
-        'CHAN'  => '0:1',
-    ];
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function handle(ServerRequestInterface $request): ResponseInterface
+    {
+        return $this->listComponents(
+            ModuleCustomTagsInterface::class,
+            view('icons/chart') . I18N::translate('Custom tags'),
+            ''
+        );
+    }
 }

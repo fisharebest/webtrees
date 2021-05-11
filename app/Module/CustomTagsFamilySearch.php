@@ -17,36 +17,37 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Elements;
+namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId;
+use Fisharebest\Webtrees\I18N;
 
 /**
- * CHANGE_DATE := {Size=10:11}
- * <DATE_EXACT>
- * The date that this data was changed.
+ * Class CustomTagsFamilySearch
  */
-class ChangeDate extends AbstractElement
+class CustomTagsFamilySearch extends AbstractModule implements ModuleConfigInterface, ModuleCustomTagsInterface
 {
-    protected const SUBTAGS = [
-        'TIME' => '1:1',
-    ];
+    use ModuleConfigTrait;
+    use ModuleCustomTagsTrait;
 
     /**
-     * Display the value of this type of element.
-     *
-     * @param string $value
-     * @param Tree   $tree
+     * @return array<string,ElementInterface>
+     */
+    public function customTags(): array
+    {
+        return [
+            'INDI:_FSFTID' => /* I18N: familysearch.org */ new FamilySearchFamilyTreeId(I18N::translate('FamilySearch ID')),
+        ];
+    }
+
+    /**
+     * The application for which we are supporting custom tags.
      *
      * @return string
      */
-    public function value(string $value, Tree $tree): string
+    public function customTagApplication(): string
     {
-        $canonical = $this->canonical($value);
-
-        $date = new Date($canonical);
-
-        return $date->display(false);
+        return 'FamilySearch';
     }
 }

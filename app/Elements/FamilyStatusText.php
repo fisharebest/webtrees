@@ -33,6 +33,13 @@ use function strtoupper;
  */
 class FamilyStatusText extends AbstractElement
 {
+    protected const SUBTAGS = [
+        'DATE' => '0:1',
+        'PLAC' => '0:1',
+        'NOTE' => '0:M',
+        'SOUR' => '0:M',
+    ];
+
     /**
      * Convert a value to a canonical form.
      *

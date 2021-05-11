@@ -23,27 +23,16 @@ use Fisharebest\Webtrees\Tree;
 
     <?= view('edit/edit-gedcom-fields', ['gedcom' => $record->insertMissingSubtags(), 'hierarchy' => [$record->tag()], 'tree' => $tree, 'prefix' => '']) ?>
 
-    <?php if ($has_chan): ?>
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label" for="keep_chan">
-                <?= I18N::translate('Last change') ?>
-            </label>
-            <div class="col-sm-9">
-                <?= view('components/checkbox-inline', ['label' => I18N::translate('Keep the existing “last change” information'), 'name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
-                <div>
-                    <?= I18N::translate('%1$s: %2$s', I18N::translate('Timestamp'), view('components/datetime', ['timestamp' => $record->lastChangeTimestamp()])) ?>
-                </div>
-                <div>
-                    <?= I18N::translate('%1$s: %2$s', I18N::translate('Author of last change'), e($record->lastChangeUser())) ?>
-                </div>
-            </div>
-        </div>
-    <?php endif ?>
-
     <div class="form-group row">
         <div class="col-sm-3 wt-page-options-label">
         </div>
         <div class="col-sm-9 wt-page-options-value">
+            <?php if ($has_chan): ?>
+                <div class="form-group">
+                    <?= view('components/checkbox', ['label' => I18N::translate('Keep the existing “last change” information'), 'name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
+                </div>
+            <?php endif ?>
+
             <button class="btn btn-primary" type="submit">
                 <?= view('icons/save') ?>
                 <?= /* I18N: A button label. */

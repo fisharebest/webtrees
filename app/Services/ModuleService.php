@@ -49,6 +49,19 @@ use Fisharebest\Webtrees\Module\ColorsTheme;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
+use Fisharebest\Webtrees\Module\CustomTagsAldfaer;
+use Fisharebest\Webtrees\Module\CustomTagsBrothersKeeper;
+use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeBuilder;
+use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeMaker;
+use Fisharebest\Webtrees\Module\CustomTagsGedcom53;
+use Fisharebest\Webtrees\Module\CustomTagsGedcom55;
+use Fisharebest\Webtrees\Module\CustomTagsGedcomL;
+use Fisharebest\Webtrees\Module\CustomTagsLegacy;
+use Fisharebest\Webtrees\Module\CustomTagsPersonalAncestralFile;
+use Fisharebest\Webtrees\Module\CustomTagsPhpGedView;
+use Fisharebest\Webtrees\Module\CustomTagsReunion;
+use Fisharebest\Webtrees\Module\CustomTagsRootsMagic;
+use Fisharebest\Webtrees\Module\CustomTagsWebtrees;
 use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
@@ -188,6 +201,7 @@ use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleCustomTagsInterface;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
@@ -273,6 +287,7 @@ class ModuleService
         ModuleAnalyticsInterface::class,
         ModuleBlockInterface::class,
         ModuleChartInterface::class,
+        ModuleCustomTagsInterface::class,
         ModuleDataFixInterface::class,
         ModuleFooterInterface::class,
         ModuleHistoricEventsInterface::class,
@@ -337,6 +352,19 @@ class ModuleService
         'contact-links'           => ContactsFooterModule::class,
         'czech-leaders'           => CzechMonarchsAndPresidents::class,
         'custom-css-js'           => CustomCssJsModule::class,
+        'custom-tags-aldfaer'     => CustomTagsAldfaer::class,
+        'custom-tags-bk'          => CustomTagsBrothersKeeper::class,
+        'custom-tags-gedcom-53'   => CustomTagsGedcom53::class,
+        'custom-tags-gedcom-55'   => CustomTagsGedcom55::class,
+        'custom-tags-gedcom-l'    => CustomTagsGedcomL::class,
+        'custom-tags-legacy'      => CustomTagsLegacy::class,
+        'custom-tags-ftb'         => CustomTagsFamilyTreeBuilder::class,
+        'custom-tags-ftm'         => CustomTagsFamilyTreeMaker::class,
+        'custom-tags-paf'         => CustomTagsPersonalAncestralFile::class,
+        'custom-tags-phpgedview'  => CustomTagsPhpGedView::class,
+        'custom-tags-reunion'     => CustomTagsReunion::class,
+        'custom-tags-roots-magic' => CustomTagsRootsMagic::class,
+        'custom-tags-webtrees'    => CustomTagsWebtrees::class,
         'death_report'            => DeathReportModule::class,
         'descendancy'             => DescendancyModule::class,
         'descendancy_chart'       => DescendancyChartModule::class,

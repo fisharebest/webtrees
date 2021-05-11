@@ -36,5 +36,6 @@ class SourceRecord extends AbstractElement
         'DATA' => '0:1',
         'REFN' => '0:1',
         'RIN'  => '0:1',
+        'CHAN' => '0:1',
     ];
 }
