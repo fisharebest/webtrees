@@ -9,7 +9,7 @@
     "@mjhenkes/postcss-rtl": "^2.0.0",
     "cross-env": "^7.0.3",
     "laravel-mix": "^6.0.13",
-    "postcss": "^8.2.7",
+    "postcss": "^8.2.10",
     "postcss-custom-properties": "^11.0.0",
     "postcss-image-inliner": "^4.0.4",
     "postcss-import": "^14.0.0",
