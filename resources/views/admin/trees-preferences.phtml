@@ -67,29 +67,31 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- TREE URL / FILENAME -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="gedcom">
-            <?= I18N::translate('URL') ?>
-        </label>
-        <div class="col-sm-9">
-            <div class="input-group" dir="ltr">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
-                    </span>
+    <?php if (Auth::isAdmin()) : ?>
+        <div class="row form-group">
+            <label class="col-sm-3 col-form-label" for="gedcom">
+                <?= I18N::translate('URL') ?>
+            </label>
+            <div class="col-sm-9">
+                <div class="input-group" dir="ltr">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" dir="ltr">
+                            <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
+                        </span>
+                    </div>
+                    <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required="required" type="text" value="<?= e($tree->name()) ?>">
+                    <div class="input-group-append">
+                        <span class="input-group-text" dir="ltr">
+                            <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
+                        </span>
+                    </div>
                 </div>
-                <input class="form-control" dir="ltr" id="gedcom" maxlength="255" name="gedcom" required="required" type="text" value="<?= e($tree->name()) ?>">
-                <div class="input-group-append">
-                    <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
-                    </span>
-                </div>
+                <p class="small text-muted">
+                    <?= /* I18N: help text for family tree / GEDCOM file names */ I18N::translate('Avoid spaces and punctuation. A family name might be a good choice.') ?>
+                </p>
             </div>
-            <p class="small text-muted">
-                <?= /* I18N: help text for family tree / GEDCOM file names */ I18N::translate('Avoid spaces and punctuation. A family name might be a good choice.') ?>
-            </p>
         </div>
-    </div>
+    <?php endif ?>
 
     <!-- PEDIGREE_ROOT_ID -->
     <div class="row form-group">
@@ -237,29 +239,31 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <h3><?= I18N::translate('Media folders') ?></h3>
+    <?php if (Auth::isAdmin()) : ?>
+        <h3><?= I18N::translate('Media folders') ?></h3>
 
-    <!-- MEDIA_DIRECTORY -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="MEDIA_DIRECTORY">
-            <?= /* I18N: A configuration setting */ I18N::translate('Media folder') ?>
-        </label>
-        <div class="col-sm-9">
-            <div class="input-group" dir="ltr">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" dir="ltr">
-                        <?= e($data_folder) ?>
-                    </span>
+        <!-- MEDIA_DIRECTORY -->
+        <div class="row form-group">
+            <label class="col-sm-3 col-form-label" for="MEDIA_DIRECTORY">
+                <?= /* I18N: A configuration setting */ I18N::translate('Media folder') ?>
+            </label>
+            <div class="col-sm-9">
+                <div class="input-group" dir="ltr">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" dir="ltr">
+                            <?= e($data_folder) ?>
+                        </span>
+                    </div>
+                    <input class="form-control" dir="ltr" id="MEDIA_DIRECTORY" maxlength="255" name="MEDIA_DIRECTORY" type="text" value="<?= e($tree->getPreference('MEDIA_DIRECTORY')) ?>">
                 </div>
-                <input class="form-control" dir="ltr" id="MEDIA_DIRECTORY" maxlength="255" name="MEDIA_DIRECTORY" type="text" value="<?= e($tree->getPreference('MEDIA_DIRECTORY')) ?>">
+                <p class="small text-muted">
+                    <?= /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('This folder will be used to store the media files for this family tree.') ?>
+                    <?= /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('If you select a different folder, you must also move any media files from the existing folder to the new one.') ?>
+                    <?= /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate.') ?>
+                </p>
             </div>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('This folder will be used to store the media files for this family tree.') ?>
-                <?= /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('If you select a different folder, you must also move any media files from the existing folder to the new one.') ?>
-                <?= /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate.') ?>
-            </p>
         </div>
-    </div>
+    <?php endif ?>
 
     <h3><?= I18N::translate('Media files') ?></h3>
 
