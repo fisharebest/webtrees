@@ -237,8 +237,6 @@ abstract class AbstractElement implements ElementInterface
 
             $this->subtags = $tmp;
         }
-
-
     }
 
     /**
