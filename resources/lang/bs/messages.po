@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-04-15 14:53+0000\nLast-Translator: ELVEDIN ZLATARAC <elvedin@zlatarac.name>\nLanguage-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/webtrees/bs/>\nLanguage: bs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-02-27 08:59+0000\nPO-Revision-Date: 2021-05-16 14:55+0000\nLast-Translator: ELVEDIN ZLATARAC <elvedin@zlatarac.name>\nLanguage-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/webtrees/bs/>\nLanguage: bs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -10377,7 +10377,6 @@ msgid "No signed-in and no anonymous users"
 msgstr "Nema prijavljenih ni anonimnih korisnika"
 
 #: app/Elements/TempleCode.php:211
-#, fuzzy
 msgid "No temple - living ordinance"
 msgstr "Nema hrama - living ordinance"
 
@@ -17440,7 +17439,7 @@ msgstr ""
 #: resources/views/source-page-menu.phtml:18
 #: resources/views/submitter-page-menu.phtml:17
 msgid "edit"
-msgstr ""
+msgstr "uredi"
 
 #: app/Functions/Functions.php:481
 msgid "eighth cousin"
@@ -19460,7 +19459,7 @@ msgstr "polusestra"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:191
 msgid "herself"
-msgstr ""
+msgstr "ona"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:562
@@ -19480,7 +19479,7 @@ msgstr "sakrij"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:188
 msgid "himself"
-msgstr ""
+msgstr "on"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
