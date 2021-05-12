@@ -487,7 +487,11 @@ class GedcomEditService
                 if ($values[$i] === '') {
                     $gedcom_lines[] = $levels[$i] . ' ' . $tags[$i];
                 } else {
-                    $next_level = 1 + (int) $levels[$i];
+                    if ($tags[$i] === 'CONC') {
+                        $next_level = (int) $levels[$i];
+                    } else {
+                        $next_level = 1 + (int) $levels[$i];
+                    }
 
                     $gedcom_lines[] = $levels[$i] . ' ' . $tags[$i] . ' ' . str_replace("\n", "\n" . $next_level . ' CONT ', $values[$i]);
                 }

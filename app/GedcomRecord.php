@@ -1295,6 +1295,11 @@ class GedcomRecord
     {
         $gedcom = $this->insertMissingLevels($this->tag(), $this->gedcom());
 
+        // NOTE records have data at level 0.  Move it to 1 CONC.
+        if (static::RECORD_TYPE === 'NOTE') {
+            return preg_replace('/^0 @[^@]+@ NOTE/', '1 CONC', $gedcom);
+        }
+
         return preg_replace('/^0.*\n/', '', $gedcom);
     }
 
@@ -1310,7 +1315,13 @@ class GedcomRecord
         $factory    = Registry::elementFactory();
         $subtags    = $factory->make($tag)->subtags();
 
-        // The first part is level N (includes CONT records).  The remainder are level N+1.
+        // Merge CONT records onto their parent line.
+        $gedcom = strtr($gedcom, [
+            "\n" . $next_level . ' CONT ' => "\r",
+            "\n" . $next_level . ' CONT' => "\r",
+        ]);
+
+        // The first part is level N.  The remainder are level N+1.
         $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
         $return = array_shift($parts);
 

@@ -11,8 +11,6 @@ use Ramsey\Uuid\Uuid;
  * @var Tree          $tree
  */
 
-$gedcom = preg_replace('/\n\d CONT ?/', "\r", $gedcom);
-
 ?>
 
 <?php foreach (explode("\n", $gedcom) as $line) : ?>

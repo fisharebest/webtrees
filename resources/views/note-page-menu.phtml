@@ -1,8 +1,7 @@
 <?php
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditRecordPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 
@@ -19,16 +18,14 @@ use Fisharebest\Webtrees\Note;
     </button>
 
     <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
+        <a class="dropdown-item" href="<?= route(EditRecordPage::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()]) ?>">
+            <?= view('icons/edit') ?>
+            <?= I18N::translate('Edit') ?>
+        </a>
+
         <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->fullName())) ?>" data-post-url="<?= e(route(DeleteRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
             <?= view('icons/delete') ?>
             <?= I18N::translate('Delete') ?>
         </a>
-
-        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
-            <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
-                <?= view('icons/edit') ?>
-                <?= I18N::translate('Edit the raw GEDCOM') ?>
-            </a>
-        <?php endif ?>
     </div>
 </div>
