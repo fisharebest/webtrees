@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-15 14:52+0000\n"
+"PO-Revision-Date: 2021-05-16 14:55+0000\n"
 "Last-Translator: ELVEDIN ZLATARAC <elvedin@zlatarac.name>\n"
 "Language-Team: Bosnian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/bs/>\n"
@@ -10102,7 +10102,6 @@ msgid "No signed-in and no anonymous users"
 msgstr "Nema prijavljenih ni anonimnih korisnika"
 
 #: app/Functions/FunctionsEdit.php:634
-#, fuzzy
 msgid "No temple - living ordinance"
 msgstr "Nema hrama - living ordinance"
 
@@ -16998,7 +16997,7 @@ msgstr "istok"
 #: admin_trees_config.php:2077
 #: app/Module/FrequentlyAskedQuestionsModule.php:365
 msgid "edit"
-msgstr ""
+msgstr "uredi"
 
 #: app/Functions/Functions.php:569
 msgid "eighth cousin"
@@ -18994,7 +18993,7 @@ msgstr ""
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:279
 msgid "herself"
-msgstr ""
+msgstr "ona"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:762
@@ -19008,7 +19007,7 @@ msgstr "sakrij"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:277
 msgid "himself"
-msgstr ""
+msgstr "on"
 
 #: app/Functions/Functions.php:709 edit_interface.php:1908
 #: edit_interface.php:1943
