@@ -70,9 +70,9 @@ class RelationshipService
      * @param Individual $individual1
      * @param Individual $individual2
      *
-     * @return string
+     * @return null|string
      */
-    public function getCloseRelationshipName(Individual $individual1, Individual $individual2): string
+    public function getCloseRelationshipName(Individual $individual1, Individual $individual2): ?string
     {
         $language = app(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, true)
@@ -195,9 +195,9 @@ class RelationshipService
      * @param array<Individual|Family> $nodes
      * @param ModuleLanguageInterface  $language
      *
-     * @return string
+     * @return null|string
      */
-    public function nameFromPath(array $nodes, ModuleLanguageInterface $language): string
+    public function nameFromPath(array $nodes, ModuleLanguageInterface $language): ?string
     {
         // The relationship matching algorithm could be used for this, but it is more efficient to check it here.
         if (count($nodes) === 1) {
@@ -317,11 +317,11 @@ class RelationshipService
 
     /**
      *
-     * @return string
+     * @return null|string
      *
      * @deprecated This code was originally Functions::getRelationshipNameFromPath
      */
-    public function legacyNameAlgorithm(string $path, Individual $person1 = null, Individual $person2 = null): string
+    public function legacyNameAlgorithm(string $path, Individual $person1 = null, Individual $person2 = null): ?string
     {
         // The path does not include the starting person. In some languages, the
         // translation for a man’s (relative) is different from a woman’s (relative),
