@@ -156,7 +156,7 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:insertMissingSubtags\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
+			count: 2
 			path: app/GedcomRecord.php
 
 		-
@@ -1428,6 +1428,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
+
+		-
+			message: "#^Comparison operation \"\\<\\=\" between \\(array\\|float\\|int\\) and float results in an error\\.$#"
+			count: 1
+			path: app/Report/ReportPdfText.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"

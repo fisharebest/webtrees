@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -65,6 +66,9 @@ class UseSession implements MiddlewareInterface
                 $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) Carbon::now()->unix());
             }
         }
+
+        // Allow request handlers, modules, etc. to have a dependency on the current user.
+        Webtrees::set(UserInterface::class, $user);
 
         $request = $request->withAttribute('user', $user);
 
