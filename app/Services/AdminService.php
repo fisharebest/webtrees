@@ -234,8 +234,8 @@ class AdminService
                 ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
                 ->select(['o_id AS xref']));
 
-        return DB::table(new Expression('(' . $subquery1->toSql() . ') AS sub1'))
-            ->mergeBindings($subquery1)
+        return DB::query()
+            ->fromSub($subquery1, 'sub1')
             ->joinSub($subquery2, 'sub2', 'other_xref', '=', 'xref')
             ->pluck('type', 'xref')
             ->all();
