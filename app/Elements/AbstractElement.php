@@ -119,7 +119,7 @@ abstract class AbstractElement implements ElementInterface
             }
 
             // We may use markup to display values, but not when editing them.
-            $values = array_map(fn(string $x): string => strip_tags($x), $values);
+            $values = array_map(fn (string $x): string => strip_tags($x), $values);
 
             return view('components/select', [
                 'id'       => $id,
