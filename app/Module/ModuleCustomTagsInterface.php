@@ -32,7 +32,7 @@ interface ModuleCustomTagsInterface extends ModuleInterface
     public function customTags(): array;
 
     /**
-     * @return array<array<string>>
+     * @return array<string,array<int,array<int,string>>>
      */
     public function customSubTags(): array;
 

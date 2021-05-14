@@ -1328,6 +1328,9 @@ class GedcomRecord
 
         foreach ($subtags as $subtag => $occurrences) {
             [$min, $max] = explode(':', $occurrences);
+
+            $min = (int) $min;
+
             if ($max === 'M') {
                 $max = PHP_INT_MAX;
             } else {

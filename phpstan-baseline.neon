@@ -1516,7 +1516,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$table of static method Illuminate\\\\Database\\\\Capsule\\\\Manager\\:\\:table\\(\\) expects Closure\\|Illuminate\\\\Database\\\\Query\\\\Builder\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 2
+			count: 1
 			path: app/Services/AdminService.php
 
 		-

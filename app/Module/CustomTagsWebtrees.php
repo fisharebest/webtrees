@@ -96,7 +96,7 @@ class CustomTagsWebtrees extends AbstractModule implements ModuleConfigInterface
     }
 
     /**
-     * @return array<string,array<string>>
+     * @return array<string,array<int,array<int,string>>>
      */
     public function customSubTags(): array
     {

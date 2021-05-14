@@ -3,6 +3,7 @@ includes:
 
 parameters:
     ignoreErrors:
+        - '#^Call to an undefined static method Illuminate\\Database\\Capsule\\Manager::query\(\)\.$#'
         - '#^Call to an undefined method Aura\\Router\\Map::extras\(\)\.$#'
         - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::[a-zA-Z]+\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
         - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::[a-zA-Z]+\(\) expects array\|Closure\|string, Illuminate\\Database\\Query\\Expression given\.$#'
