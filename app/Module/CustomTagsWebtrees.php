@@ -101,15 +101,19 @@ class CustomTagsWebtrees extends AbstractModule implements ModuleConfigInterface
     public function customSubTags(): array
     {
         return [
+            'FAM:*:SOUR'     => [['NOTE', '0:0']],
             'FAM:CHAN'       => [['_WT_USER']],
             'FAM:MARR'       => [['_ASSO', '0:M', 'NOTE']],
             'FAM:SOUR:DATA'  => [['TEXT']],
-            'INDI:BIRT'      => [['FAMC']],
+            'INDI:*:SOUR'    => [['NOTE', '0:0']],
+            'INDI:BIRT'      => [['FAMC', '0:0']],
             'INDI:CHAN'      => [['_WT_USER']],
             'INDI:SOUR:DATA' => [['TEXT']],
             'NOTE'           => [['RESN', '0:1', 'CHAN']],
+            'NOTE:*:SOUR'    => [['NOTE', '0:0']],
             'NOTE:CHAN'      => [['_WT_USER']],
             'OBJE'           => [['RESN', '0:1', 'CHAN']],
+            'OBJE:*:SOUR'    => [['NOTE', '0:0']],
             'OBJE:CHAN'      => [['_WT_USER']],
             'REPO'           => [['RESN', '0:1', 'CHAN']],
             'REPO:CHAN'      => [['_WT_USER']],
