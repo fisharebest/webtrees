@@ -35,6 +35,14 @@ use function route;
  */
 class PlaceName extends AbstractElement
 {
+    protected const SUBTAGS = [
+        'FORM' => '0:1',
+        'MAP' => '0:1',
+        'FONE' => '0:1',
+        'ROMN' => '0:1',
+        'NOTE' => '0:M',
+    ];
+
     /**
      * Convert a value to a canonical form.
      *

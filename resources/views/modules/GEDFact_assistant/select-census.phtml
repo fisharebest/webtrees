@@ -10,23 +10,13 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<script>
-  function selectCensus(el) {
-    var option = $(":selected", el);
-
-    $("input[id^=DATE]", $(el).closest("form")).val(option.val());
-    $("input[id^=PLAC]", $(el).closest("form")).val(option.data("place"));
-    $("input.census-class", $(el).closest("form")).val(option.data("census"));
-  }
-</script>
-
-<select id="census-selector" class="form-control" onchange="selectCensus(this)">
+<select class="form-control census-selector" aria-label="<?= I18N::translate('Census date and place') ?>">
     <option value="" disabled selected hidden><?= I18N::translate('Census date') ?></option>
 
     <?php foreach ($census_places as $census_place) : ?>
         <optgroup label="<?= $census_place->censusPlace() ?>">
           <?php foreach ($census_place->allCensusDates() as $census) : ?>
-              <option value="<?= $census->censusDate() ?>" data-place="<?= $census->censusPlace() ?>" data-census="<?= get_class($census) ?>">
+              <option data-date="<?= $census->censusDate() ?>" data-place="<?= $census->censusPlace() ?>" data-census="<?= get_class($census) ?>">
                   <?= (new Date($census->censusDate()))->minimumDate()->format('%Y') ?>
                   —
                   <?= $census->censusPlace() ?>
@@ -35,3 +25,16 @@ use Fisharebest\Webtrees\I18N;
         </optgroup>
     <?php endforeach ?>
 </select>
+
+<script>
+  document.querySelectorAll('.census-selector').forEach(function (el) {
+    el.addEventListener('change', function (el) {
+      const select = el.target;
+      const option = select.options[select.selectedIndex];
+      const form = select.closest('form');
+
+      form.querySelector('[id$=CENS\\3a DATE]').value = option.dataset.date;
+      form.querySelector('[id$=CENS\\3a PLAC]').value = option.dataset.place;
+    });
+  });
+</script>
