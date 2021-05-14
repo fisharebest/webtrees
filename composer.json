@@ -56,7 +56,7 @@
         "intervention/image": "^2.5",
         "io-developer/php-whois": "~4.0",
         "league/commonmark": "~1.6",
-        "league/flysystem": "~2.0",
+        "league/flysystem": "^2.0.7",
         "league/flysystem-ziparchive": "~2.0",
         "middlewares/client-ip": "~2.0",
         "mlocati/ip-lib": "~1.14",
