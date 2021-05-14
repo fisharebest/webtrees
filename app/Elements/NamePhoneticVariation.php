@@ -32,7 +32,7 @@ class NamePhoneticVariation extends AbstractElement
     protected const MAXIMUM_LENGTH = 120;
 
     protected const SUBTAGS = [
-        'TYPE' => '0:1',
+        'TYPE' => '1:1',
         'NPFX' => '0:1',
         'GIVN' => '0:1',
         'SPFX' => '0:1',

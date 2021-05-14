@@ -141,6 +141,8 @@ class CustomTagsWebtrees extends AbstractModule implements ModuleConfigInterface
             'INDI:GRAD'        => [['_ASSO', '0:M', 'NOTE']],
             'INDI:IMMI'        => [['_ASSO', '0:M', 'NOTE']],
             'INDI:NATU'        => [['_ASSO', '0:M', 'NOTE']],
+            'INDI:NAME:FONE'   => [['NPFX', '0:0'], ['GIVN', '0:0'], ['SPFX', '0:0'], ['SURN', '0:0'], ['NSFX', '0:0'], ['NICK', '0:0']],
+            'INDI:NAME:ROMN'   => [['NPFX', '0:0'], ['GIVN', '0:0'], ['SPFX', '0:0'], ['SURN', '0:0'], ['NSFX', '0:0'], ['NICK', '0:0']],
             'INDI:OCCU'        => [['_ASSO', '0:M', 'NOTE']],
             'INDI:ORDN'        => [['_ASSO', '0:M', 'NOTE']],
             'INDI:PROB'        => [['_ASSO', '0:M', 'NOTE']],
