@@ -2124,17 +2124,17 @@ class RelationshipService
             return $relationshipsCache[$path];
         }
 
-        $relationship = null;
+        $relationship = '';
         $path1        = substr($path, 0, 3);
         $path2        = substr($path, 3);
-        while ($path2) {
+        while ($path2 !== '') {
             // I18N: A complex relationship, such as “third-cousin’s great-uncle”
             $tmp = I18N::translate(
                 '%1$s’s %2$s',
                 $this->legacyNameAlgorithm($path1),
                 $this->legacyNameAlgorithm($path2)
             );
-            if (!$relationship || strlen($tmp) < strlen($relationship)) {
+            if ($relationship === '' || strlen($tmp) < strlen($relationship)) {
                 $relationship = $tmp;
             }
             $path1 .= substr($path2, 0, 3);
