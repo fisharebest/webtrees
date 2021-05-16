@@ -83,7 +83,6 @@ use Fisharebest\Webtrees\Module\FanChartModule;
 use Fisharebest\Webtrees\Module\FixCemeteryTag;
 use Fisharebest\Webtrees\Module\FixDuplicateLinks;
 use Fisharebest\Webtrees\Module\FixMissingDeaths;
-use Fisharebest\Webtrees\Module\FixMissingMarriedNames;
 use Fisharebest\Webtrees\Module\FixNameSlashesAndSpaces;
 use Fisharebest\Webtrees\Module\FixNameTags;
 use Fisharebest\Webtrees\Module\FixPlaceNames;
@@ -383,7 +382,6 @@ class ModuleService
         'faq'                     => FrequentlyAskedQuestionsModule::class,
         'french-history'          => FrenchHistory::class,
         'fix-add-death'           => FixMissingDeaths::class,
-        'fix-add-marr-names'      => FixMissingMarriedNames::class,
         'fix-ceme-tag'            => FixCemeteryTag::class,
         'fix-duplicate-links'     => FixDuplicateLinks::class,
         'fix-name-slashes-spaces' => FixNameSlashesAndSpaces::class,
