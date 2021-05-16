@@ -55,11 +55,13 @@ class Census extends AbstractElement
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
-        $html = $this->editHidden($id, $name, $value) . view('modules/GEDFact_assistant/select-census', [
+        $html = $this->editHidden($id, $name, $value);
+
+        $html .= view('modules/GEDFact_assistant/select-census', [
             'census_places' => Censuses::censusPlaces(I18N::languageTag()),
         ]);
 
-        $xref=app(ServerRequestInterface::class)->getAttribute('xref', '');
+        $xref = app(ServerRequestInterface::class)->getAttribute('xref', '');
 
         $census_assistant = app(ModuleService::class)->findByInterface(CensusAssistantModule::class)->first();
         $record           = Registry::individualFactory()->make($xref, $tree);
