@@ -140,28 +140,24 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
      */
     protected function parsePlaceNameSearchResponse(ResponseInterface $response): array
     {
-        $body   = $response->getBody()->getContents();
-        $places = [];
+        $body    = $response->getBody()->getContents();
+        $places  = [];
+        $results = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
 
-        try {
-            $results = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
-
-            foreach ($results->geonames as $result) {
-                if (($result->countryName ?? null) === 'United Kingdom') {
-                    // adminName1 will be England, Scotland, etc.
-                    $result->countryName = null;
-                }
-
-                $parts = [
-                    $result->name,
-                    $result->adminName2 ?? null,
-                    $result->adminName1 ?? null,
-                    $result->countryName ?? null,
-                ];
-
-                $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts));
+        foreach ($results->geonames as $result) {
+            if (($result->countryName ?? null) === 'United Kingdom') {
+                // adminName1 will be England, Scotland, etc.
+                $result->countryName = null;
             }
-        } catch (JsonException $ex) {
+
+            $parts = [
+                $result->name,
+                $result->adminName2 ?? null,
+                $result->adminName1 ?? null,
+                $result->countryName ?? null,
+            ];
+
+            $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts));
         }
 
         usort($places, I18N::comparator());
