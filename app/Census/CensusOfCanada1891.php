@@ -46,7 +46,7 @@ class CensusOfCanada1891 extends CensusOfCanada implements CensusInterface
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday'),
             new CensusColumnConditionUs($this, 'M/W', 'Married or Widowed'),
-	    new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family'),
+            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family'),
             new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Country or Province of Birth'),
             new CensusColumnNull($this, 'French', 'French Canadians'),
             new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father'),

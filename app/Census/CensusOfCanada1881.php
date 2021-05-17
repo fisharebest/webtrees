@@ -56,17 +56,6 @@ class CensusOfCanada1881 extends CensusOfCanada implements CensusInterface
             new CensusColumnNull($this, 'Blind', 'Infirmities - Blind'),
             new CensusColumnNull($this, 'Unsound', 'Infirmities - Unsound Mind'),
             new CensusColumnNull($this, 'Date', 'Dates of Operations and Remarks'),
-
-            /**
-	     * new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship of each person to the head of the family'),
-             * new CensusColumnBirthMonth($this, 'Month', 'Month of birth'),
-             * new CensusColumnBirthYear($this, 'Year', 'Year of birth'),
-             * new CensusColumnYearsMarried($this, 'Marr', 'Number of years married'),
-             * new CensusColumnChildrenBornAlive($this, 'Chil', 'Mother of how many children'),
-             * new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
-             * new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
-             * new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
-	     */
         ];
     }
 }

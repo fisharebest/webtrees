@@ -45,7 +45,7 @@ class CensusOfCanada1901 extends CensusOfCanada implements CensusInterface
             new CensusColumnFullName($this, 'Name', 'Name'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnNull($this, 'Color', 'Colour'),
-	    new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family'),
+            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family'),
             new CensusColumnConditionUs($this, 'S/M/W/D', 'Single, married, widowed or divorced'),
             new CensusColumnBirthMonthDay($this, 'M/D', 'Month and date of birth'),
             new CensusColumnBirthYear($this, 'Year', 'Year of birth'),
