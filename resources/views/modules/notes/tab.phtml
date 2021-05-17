@@ -56,16 +56,6 @@ use Illuminate\Support\Collection;
                     </a>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">
-                    <?= I18N::translate('Shared note') ?>
-                </th>
-                <td>
-                    <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
-                        <?= I18N::translate('Add a shared note') ?>
-                    </a>
-                </td>
-            </tr>
         <?php endif ?>
     </table>
 </div>

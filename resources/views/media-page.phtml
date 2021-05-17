@@ -179,16 +179,6 @@ use League\Flysystem\FilesystemOperator;
                     </tr>
                     <tr>
                         <th scope="row">
-                            <?= I18N::translate('Shared note') ?>
-                        </th>
-                        <td>
-                            <a href="<?= e(route(AddNewFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
-                                <?= I18N::translate('Add a shared note') ?>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
                             <?= I18N::translate('Restriction') ?>
                         </th>
                         <td>

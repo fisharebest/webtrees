@@ -795,11 +795,11 @@ class FunctionsPrintFacts
                 if ($level < 2) {
                     if ($note instanceof Note) {
                         echo '<a href="' . e($note->url()) . '">';
-                        echo GedcomTag::getLabel('SHARED_NOTE');
+                        echo I18N::translate('Shared note');
                         echo view('icons/note');
                         echo '</a>';
                     } else {
-                        echo GedcomTag::getLabel('NOTE');
+                        echo I18N::translate('Note');
                     }
                     echo '<div class="editfacts nowrap">';
                     echo view('edit/icon-fact-edit', ['fact' => $fact]);
@@ -810,9 +810,9 @@ class FunctionsPrintFacts
             } else {
                 if ($level < 2) {
                     if ($note) {
-                        echo GedcomTag::getLabel('SHARED_NOTE');
+                        echo I18N::translate('Shared note');
                     } else {
-                        echo GedcomTag::getLabel('NOTE');
+                        echo I18N::translate('Note');
                     }
                 }
                 $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
@@ -848,33 +848,6 @@ class FunctionsPrintFacts
 
             echo '<td class="', $styleadd, ' wrap">';
             echo $text;
-
-            // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
-            if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
-                foreach ($rmatches[1] as $rmatch) {
-                    echo '<br><span class="label">', GedcomTag::getLabel('RESN'), ':</span> <span class="field">';
-                    switch ($rmatch) {
-                        case 'none':
-                            // Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
-                            // However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-                            echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
-                            break;
-                        case 'privacy':
-                            echo '<i class="icon-resn-privacy"></i> ', I18N::translate('Show to members');
-                            break;
-                        case 'confidential':
-                            echo '<i class="icon-resn-confidential"></i> ', I18N::translate('Show to managers');
-                            break;
-                        case 'locked':
-                            echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
-                            break;
-                        default:
-                            echo $rmatch;
-                            break;
-                    }
-                    echo '</span>';
-                }
-            }
             echo '</td></tr>';
         }
     }
