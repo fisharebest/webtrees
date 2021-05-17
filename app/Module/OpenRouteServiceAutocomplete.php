@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use GuzzleHttp\Psr7\Request;
-use JsonException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -134,28 +133,25 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
      */
     protected function parsePlaceNameSearchResponse(ResponseInterface $response): array
     {
-        $body   = $response->getBody()->getContents();
-        $places = [];
+        $body    = $response->getBody()->getContents();
+        $places  = [];
+        $results = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
 
-        try {
-            $results = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
-            foreach ($results->features as $result) {
-                if ($result->properties->country === 'United Kingdom') {
-                    // macroregion will contain England, Scotland, etc.
-                    $result->properties->country = null;
-                }
-
-                $parts = [
-                    $result->properties->name ?? null,
-                    $result->properties->county ?? null,
-                    $result->properties->region ?? null,
-                    $result->properties->macroregion ?? null,
-                    $result->properties->country ?? null,
-                ];
-
-                $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts)) ?: $result->properties->label;
+        foreach ($results->features as $result) {
+            if ($result->properties->country === 'United Kingdom') {
+                // macroregion will contain England, Scotland, etc.
+                $result->properties->country = null;
             }
-        } catch (JsonException $ex) {
+
+            $parts = [
+                $result->properties->name ?? null,
+                $result->properties->county ?? null,
+                $result->properties->region ?? null,
+                $result->properties->macroregion ?? null,
+                $result->properties->country ?? null,
+            ];
+
+            $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts)) ?: $result->properties->label;
         }
 
         usort($places, I18N::comparator());

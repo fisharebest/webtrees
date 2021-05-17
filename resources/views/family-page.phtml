@@ -77,17 +77,6 @@ use Illuminate\Support\Collection;
                 </td>
             </tr>
 
-            <tr>
-                <th scope="row">
-                    <?= I18N::translate('Shared note') ?>
-                </th>
-                <td>
-                    <a href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'SHARED_NOTE'])) ?>">
-                        <?= I18N::translate('Add a shared note') ?>
-                    </a>
-                </td>
-            </tr>
-
             <?php if ($record->tree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($record->tree())) : ?>
                 <tr>
                     <th scope="row">

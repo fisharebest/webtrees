@@ -93,7 +93,7 @@ class SeedGedcomSettingTable implements SeedInterface
         'SHOW_PRIVATE_RELATIONSHIPS'   => '1',
         'SHOW_RELATIVES_EVENTS'        => '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU',
         'SOURCE_ID_PREFIX'             => 'S',
-        'SOUR_FACTS_ADD'               => 'NOTE,REPO,SHARED_NOTE,RESN',
+        'SOUR_FACTS_ADD'               => 'NOTE,REPO,RESN',
         'SOUR_FACTS_QUICK'             => 'TEXT,NOTE,REPO',
         'SOUR_FACTS_UNIQUE'            => 'AUTH,ABBR,TITL,PUBL,TEXT',
         'SUBLIST_TRIGGER_I'            => '200',

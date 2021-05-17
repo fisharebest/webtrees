@@ -90,9 +90,11 @@ class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface,
     {
         return [
             'FAM:*:ADDR:_NAME'               => new CustomElement('Name of addressee'),
+            // I18N: http://gov.genealogy.net
             'FAM:*:PLAC:_GOV'                => new GovIdentifier(I18N::translate('GOV identifier')),
             'FAM:*:PLAC:_LOC'                => new XrefLocation(I18N::translate('Location')),
-            'FAM:*:PLAC:_MAIDENHEAD'         => new MaidenheadLocator('Maidenhead locator'),
+            // I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
+            'FAM:*:PLAC:_MAIDENHEAD'         => new MaidenheadLocator(I18N::translate('Maidenhead location code')),
             'FAM:*:PLAC:_POST'               => new AddressPostalCode('Postal code'),
             'FAM:*:PLAC:_POST:DATE'          => new DateValue(I18N::translate('Date')),
             'FAM:*:_ASSO'                    => new XrefAssociate(I18N::translate('Associate')),
@@ -137,9 +139,11 @@ class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface,
             'HEAD:_SCHEMA:*:*:*:_DEFN'       => new EmptyElement(I18N::translate('Definition')),
             'HEAD:_SCHEMA:*:*:_DEFN'         => new EmptyElement(I18N::translate('Definition')),
             'INDI:*:ADDR:_NAME'              => new CustomElement('Name of addressee'),
+            // I18N: http://gov.genealogy.net
             'INDI:*:PLAC:_GOV'               => new GovIdentifier(I18N::translate('GOV identifier')),
             'INDI:*:PLAC:_LOC'               => new XrefLocation(I18N::translate('Location')),
-            'INDI:*:PLAC:_MAIDENHEAD'        => new MaidenheadLocator('Maidenhead locator'),
+            // I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
+            'INDI:*:PLAC:_MAIDENHEAD'        => new MaidenheadLocator(I18N::translate('Maidenhead location code')),
             'INDI:*:PLAC:_POST'              => new AddressPostalCode('Postal code'),
             'INDI:*:PLAC:_POST:DATE'         => new DateValue(I18N::translate('Date')),
             'INDI:*:_ASSO'                   => new XrefAssociate(I18N::translate('Associate')),
@@ -224,12 +228,14 @@ class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface,
             '_LOC:_DMGD:DATE'                => new DateValue(I18N::translate('Date')),
             '_LOC:_DMGD:SOUR'                => new XrefSource(I18N::translate('Source')),
             '_LOC:_DMGD:TYPE'                => new CustomElement(I18N::translate('Type of demographic data')),
+            // I18N: http://gov.genealogy.net
             '_LOC:_GOV'                      => new GovIdentifier(I18N::translate('GOV identifier')),
             '_LOC:_LOC'                      => new XrefLocation(I18N::translate('Parent'), ['DATE' => '0:1', 'SOUR' => '0:M', 'TYPE' => '0:1']),
             '_LOC:_LOC:DATE'                 => new DateValue(I18N::translate('Date')),
             '_LOC:_LOC:SOUR'                 => new XrefSource(I18N::translate('Source')),
             '_LOC:_LOC:TYPE'                 => new HierarchicalRelationship(I18N::translate('Hierarchical relationship')),
-            '_LOC:_MAIDENHEAD'               => new MaidenheadLocator('Maidenhead locator'),
+            // I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
+            '_LOC:_MAIDENHEAD'               => new MaidenheadLocator(I18N::translate('Maidenhead location code')),
             '_LOC:_POST'                     => new AddressPostalCode(I18N::translate('Postal code')),
             '_LOC:_POST:DATE'                => new DateValue(I18N::translate('Date')),
             '_LOC:_POST:SOUR'                => new XrefSource(I18N::translate('Source')),

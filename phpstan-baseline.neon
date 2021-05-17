@@ -780,16 +780,6 @@ parameters:
 			path: app/Module/FixMissingDeaths.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingMarriedNames\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
-			count: 1
-			path: app/Module/FixMissingMarriedNames.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingMarriedNames\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Module/FixMissingMarriedNames.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixNameSlashesAndSpaces.php

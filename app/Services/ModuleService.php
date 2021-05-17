@@ -56,6 +56,7 @@ use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeMaker;
 use Fisharebest\Webtrees\Module\CustomTagsGedcom53;
 use Fisharebest\Webtrees\Module\CustomTagsGedcom55;
 use Fisharebest\Webtrees\Module\CustomTagsGedcomL;
+use Fisharebest\Webtrees\Module\CustomTagsGenPluswin;
 use Fisharebest\Webtrees\Module\CustomTagsLegacy;
 use Fisharebest\Webtrees\Module\CustomTagsPersonalAncestralFile;
 use Fisharebest\Webtrees\Module\CustomTagsPhpGedView;
@@ -83,7 +84,6 @@ use Fisharebest\Webtrees\Module\FanChartModule;
 use Fisharebest\Webtrees\Module\FixCemeteryTag;
 use Fisharebest\Webtrees\Module\FixDuplicateLinks;
 use Fisharebest\Webtrees\Module\FixMissingDeaths;
-use Fisharebest\Webtrees\Module\FixMissingMarriedNames;
 use Fisharebest\Webtrees\Module\FixNameSlashesAndSpaces;
 use Fisharebest\Webtrees\Module\FixNameTags;
 use Fisharebest\Webtrees\Module\FixPlaceNames;
@@ -357,6 +357,7 @@ class ModuleService
         'custom-tags-gedcom-53'   => CustomTagsGedcom53::class,
         'custom-tags-gedcom-55'   => CustomTagsGedcom55::class,
         'custom-tags-gedcom-l'    => CustomTagsGedcomL::class,
+        'custom-tags-gedpluswin'  => CustomTagsGenPluswin::class,
         'custom-tags-legacy'      => CustomTagsLegacy::class,
         'custom-tags-ftb'         => CustomTagsFamilyTreeBuilder::class,
         'custom-tags-ftm'         => CustomTagsFamilyTreeMaker::class,
@@ -383,7 +384,6 @@ class ModuleService
         'faq'                     => FrequentlyAskedQuestionsModule::class,
         'french-history'          => FrenchHistory::class,
         'fix-add-death'           => FixMissingDeaths::class,
-        'fix-add-marr-names'      => FixMissingMarriedNames::class,
         'fix-ceme-tag'            => FixCemeteryTag::class,
         'fix-duplicate-links'     => FixDuplicateLinks::class,
         'fix-name-slashes-spaces' => FixNameSlashesAndSpaces::class,
