@@ -151,12 +151,12 @@ class Census
                     new CensusOfEngland(),
                     new CensusOfScotland(),
                     new CensusOfWales(),
-                    new CensusOfCanada(),
                     new CensusOfDeutschland(),
                     new CensusOfFrance(),
                     new CensusOfCzechRepublic(),
                     new CensusOfSlovakia(),
                     new CensusOfDenmark(),
+                    new CensusOfCanada(),
                 ];
         }
     }

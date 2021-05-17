@@ -36,6 +36,6 @@ class CensusColumnBirthMonthDay extends AbstractCensusColumn implements CensusCo
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        return $individual->getEstimatedBirthDate()->minimumDate()->format('%j %M');
+        return $individual->getEstimatedBirthDate()->minimumDate()->format('%M %j');
     }
 }
