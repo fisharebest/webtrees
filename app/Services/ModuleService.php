@@ -56,6 +56,7 @@ use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeMaker;
 use Fisharebest\Webtrees\Module\CustomTagsGedcom53;
 use Fisharebest\Webtrees\Module\CustomTagsGedcom55;
 use Fisharebest\Webtrees\Module\CustomTagsGedcomL;
+use Fisharebest\Webtrees\Module\CustomTagsGenPluswin;
 use Fisharebest\Webtrees\Module\CustomTagsLegacy;
 use Fisharebest\Webtrees\Module\CustomTagsPersonalAncestralFile;
 use Fisharebest\Webtrees\Module\CustomTagsPhpGedView;
@@ -356,6 +357,7 @@ class ModuleService
         'custom-tags-gedcom-53'   => CustomTagsGedcom53::class,
         'custom-tags-gedcom-55'   => CustomTagsGedcom55::class,
         'custom-tags-gedcom-l'    => CustomTagsGedcomL::class,
+        'custom-tags-gedpluswin'  => CustomTagsGenPluswin::class,
         'custom-tags-legacy'      => CustomTagsLegacy::class,
         'custom-tags-ftb'         => CustomTagsFamilyTreeBuilder::class,
         'custom-tags-ftm'         => CustomTagsFamilyTreeMaker::class,
