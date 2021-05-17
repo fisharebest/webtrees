@@ -59,19 +59,9 @@ class CensusOfCanada1891 extends CensusOfCanada implements CensusInterface
             new CensusColumnNull($this, 'AvgEmp', 'Employer to state average number of hands employed during year'),
             new CensusColumnNull($this, 'Read', 'Instruction - Read'),
             new CensusColumnNull($this, 'Write', 'Instruction - Write'),
-            new CensusColumnNull($this, 'Deaf', 'Infirmites - Deaf and Dumb'),
+            new CensusColumnNull($this, 'Deaf', 'Infirmities - Deaf and Dumb'),
             new CensusColumnNull($this, 'Blind', 'Infirmities - Blind'),
             new CensusColumnNull($this, 'Unsound', 'Infirmities - Unsound Mind'),
-
-            /**
-             * new CensusColumnBirthMonth($this, 'Month', 'Month of birth'),
-             * new CensusColumnBirthYear($this, 'Year', 'Year of birth'),
-             * new CensusColumnYearsMarried($this, 'Marr', 'Number of years married'),
-             * new CensusColumnChildrenBornAlive($this, 'Chil', 'Mother of how many children'),
-             * new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
-             * new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
-             * new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
-	     */
         ];
     }
 }

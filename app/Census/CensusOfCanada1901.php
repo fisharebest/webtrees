@@ -50,11 +50,11 @@ class CensusOfCanada1901 extends CensusOfCanada implements CensusInterface
             new CensusColumnBirthMonthDay($this, 'M/D', 'Month and date of birth'),
             new CensusColumnBirthYear($this, 'Year', 'Year of birth'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday'),
-            new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Country or Place of Birth, plus Rurual or Urban'),
-            new CensusColumnNull($this, 'Origin', 'Racial of Tribal origin'),
+            new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Country or Place of Birth, plus Rural or Urban'),
+            new CensusColumnNull($this, 'Origin', 'Racial or Tribal origin'),
             new CensusColumnNationality($this, 'Nationality', 'Nationality'),
             new CensusColumnNull($this, 'Religion', 'Religion'),
-            new CensusColumnOccupation($this, 'Occupation', 'Profession, Occupation, or Trade'),
+            new CensusColumnOccupation($this, 'Occupation', 'Profession, Occupation or Trade'),
 
             new CensusColumnNull($this, 'Retired', 'Living on own means'),
             new CensusColumnNull($this, 'Employer', 'Employer'),
@@ -72,11 +72,11 @@ class CensusOfCanada1901 extends CensusOfCanada implements CensusInterface
             new CensusColumnNull($this, 'Edu Month', 'Months at school in year'),
             new CensusColumnNull($this, 'Read', 'Can Read'),
             new CensusColumnNull($this, 'Write', 'Can Write'),
-            new CensusColumnNull($this, 'English', 'Speak English'),
-            new CensusColumnNull($this, 'French', 'Speak French'),
-            new CensusColumnNull($this, 'Mother Tounge', 'Monther toungue'),
+            new CensusColumnNull($this, 'English', 'Speaks English'),
+            new CensusColumnNull($this, 'French', 'Speaks French'),
+            new CensusColumnNull($this, 'Mother toungue', 'Mother toungue'),
 
-            new CensusColumnNull($this, 'Infirmities', 'Infirmites - a. Deaf and dumb, b. Blind, c. Unsound mind'),
+            new CensusColumnNull($this, 'Infirmities', 'Infirmities - a. Deaf and dumb, b. Blind, c. Unsound mind'),
 
             /**
 

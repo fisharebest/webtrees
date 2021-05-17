@@ -104,10 +104,23 @@ class Census
                 ];
 
             case 'fr':
-            case 'fr-CA':
                 return [
                     new CensusOfFrance(),
                     new CensusOfCanada(),
+                    new CensusOfCzechRepublic(),
+                    new CensusOfDenmark(),
+                    new CensusOfDeutschland(),
+                    new CensusOfEngland(),
+                    new CensusOfScotland(),
+                    new CensusOfSlovakia(),
+                    new CensusOfUnitedStates(),
+                    new CensusOfWales(),
+                ];
+
+            case 'fr-CA':
+                return [
+                    new CensusOfCanada(),
+                    new CensusOfFrance(),
                     new CensusOfCzechRepublic(),
                     new CensusOfDenmark(),
                     new CensusOfDeutschland(),

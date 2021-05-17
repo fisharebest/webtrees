@@ -52,7 +52,7 @@ class CensusOfCanada1881 extends CensusOfCanada implements CensusInterface
             new CensusColumnOccupation($this, 'Occupation', 'Profession, Occupation, or Trade'),
             new CensusColumnConditionUs($this, 'M/W', 'Married or Widowed'),
             new CensusColumnNull($this, 'School', 'Instruction - Going to School'),
-            new CensusColumnNull($this, 'Deaf', 'Infirmites - Deaf and Dumb'),
+            new CensusColumnNull($this, 'Deaf', 'Infirmities - Deaf and Dumb'),
             new CensusColumnNull($this, 'Blind', 'Infirmities - Blind'),
             new CensusColumnNull($this, 'Unsound', 'Infirmities - Unsound Mind'),
             new CensusColumnNull($this, 'Date', 'Dates of Operations and Remarks'),
