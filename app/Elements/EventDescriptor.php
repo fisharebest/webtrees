@@ -34,13 +34,14 @@ use Fisharebest\Webtrees\Tree;
  * 2 PLAC Cove, Cache, Utah
  * 2 AGNC Cove City Redevelopment
  */
-class EventDescriptor extends AbstractElement
+class EventDescriptor extends AbstractEventElement
 {
     protected const MAXIMUM_LENGTH = 90;
 
     protected const SUBTAGS = [
         'DATE' => '0:1',
         'PLAC' => '0:1',
+        'ADDR' => '0:1',
         'NOTE' => '0:M',
         'OBJE' => '0:M',
         'SOUR' => '0:M',
