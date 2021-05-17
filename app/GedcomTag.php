@@ -37,23 +37,4 @@ class GedcomTag
     {
         return Registry::elementFactory()->make($tag)->label();
     }
-
-    /**
-     * Translate a label/value pair, such as “Occupation: Farmer”
-     *
-     * @param string            $tag
-     * @param string            $value
-     * @param GedcomRecord|null $record
-     * @param string|null       $element
-     *
-     * @return string
-     */
-    public static function getLabelValue(string $tag, string $value, GedcomRecord $record = null, $element = 'div'): string
-    {
-        return
-            '<' . $element . ' class="fact_' . $tag . '">' .
-            /* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
-            I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag), $value) .
-            '</' . $element . '>';
-    }
 }

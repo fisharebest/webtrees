@@ -203,7 +203,7 @@ class FunctionsPrintFacts
         if ($type !== '' && $tag !== 'EVEN' && $tag !== 'FACT') {
             // Allow (custom) translations for other types
             $type = I18N::translate($type);
-            echo GedcomTag::getLabelValue('TYPE', e($type));
+            echo Registry::elementFactory()->make($fact->tag() . ':TYPE')->labelValue($type, $tree);
         }
 
         // Print the date of this fact/event
@@ -221,7 +221,7 @@ class FunctionsPrintFacts
                 $addr = '<span class="d-block" style="white-space: pre-wrap">' . $addr . '</span';
             }
 
-            echo GedcomTag::getLabelValue($fact->tag() . ':ADDR', $addr);
+            echo Registry::elementFactory()->make($fact->tag() . ':ADDR')->labelValue($addr, $tree);
         }
 
         // Print the associates of this fact/event
@@ -389,7 +389,7 @@ class FunctionsPrintFacts
                     foreach ($associates as $associate) {
                         $relationship_name = app(RelationshipService::class)->getCloseRelationshipName($associate, $person);
                         if ($relationship_name === '') {
-                            $relationship_name = GedcomTag::getLabel('RELA');
+                            $relationship_name = I18N::translate('Relationship');
                         }
 
                         if ($parent instanceof Family) {
@@ -401,11 +401,10 @@ class FunctionsPrintFacts
                     }
                 }
                 $value = implode(' — ', $values);
-
-                // Use same markup as GedcomTag::getLabelValue()
-                $asso = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
+                $asso  = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
             } elseif (!$person && Auth::isEditor($event->record()->tree())) {
-                $asso = GedcomTag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
+                $value = '<span class="error">' . $amatch[2] . '</span>';
+                $asso  = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Associate'), $value);
             } else {
                 $asso = '';
             }
@@ -466,9 +465,9 @@ class FunctionsPrintFacts
                         $data .= view('icons/collapse');
                         $data .= '</a>';
                     }
-                    $data .= GedcomTag::getLabelValue('SOUR', '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>', null, 'span');
+                    $value = '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>';
+                    $data .= I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Source'), $value);
                     $data .= '</div>';
-
                     $data .= '<div id="' . e($id) . '" class="collapse ' . ($expanded ? 'show' : '') . '">';
                     $data .= self::printSourceStructure($tree, self::getSourceStructure($srec));
                     $data .= '<div class="indent">';
@@ -480,7 +479,8 @@ class FunctionsPrintFacts
                     $data .= '</div>';
                 }
             } else {
-                $data .= GedcomTag::getLabelValue('SOUR', '<span class="error">' . $sid . '</span>');
+                $value = '<span class="error">' . $sid . '</span>';
+                $data .= I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Source'), $value);
             }
         }
 
