@@ -123,8 +123,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         'TITL',
     ];
 
-    /** @var SearchService */
-    private $search_service;
+    private SearchService $search_service;
 
     /**
      * SearchController constructor.

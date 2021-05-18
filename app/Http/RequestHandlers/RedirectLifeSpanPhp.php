@@ -37,11 +37,9 @@ use function redirect;
  */
 class RedirectLifeSpanPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
-    /** @var LifespansChartModule */
-    private $chart;
+    private LifespansChartModule $chart;
 
     /**
      * @param LifespansChartModule $chart

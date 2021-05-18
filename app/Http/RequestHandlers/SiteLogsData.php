@@ -34,11 +34,9 @@ use function e;
  */
 class SiteLogsData implements RequestHandlerInterface
 {
-    /** @var DatatablesService */
-    private $datatables_service;
+    private DatatablesService $datatables_service;
 
-    /** @var SiteLogsService */
-    private $site_logs_service;
+    private SiteLogsService $site_logs_service;
 
     /**
      * @param DatatablesService $datatables_service

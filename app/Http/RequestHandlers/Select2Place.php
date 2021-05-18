@@ -29,8 +29,7 @@ use Illuminate\Support\Collection;
  */
 class Select2Place extends AbstractSelect2Handler
 {
-    /** @var SearchService */
-    protected $search_service;
+    protected SearchService $search_service;
 
     /**
      * @param SearchService $search_service

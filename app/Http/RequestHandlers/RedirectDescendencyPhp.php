@@ -45,11 +45,9 @@ class RedirectDescendencyPhp implements RequestHandlerInterface
         3 => 'families',
     ];
 
-    /** @var TreeService */
-    private $tree_service;
+    private DescendancyChartModule $chart;
 
-    /** @var DescendancyChartModule */
-    private $chart;
+    private TreeService $tree_service;
 
     /**
      * @param DescendancyChartModule $chart

@@ -60,8 +60,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
         '_SLDN'  => 'aka', // Soldier name
     ];
 
-    /** @var DataFixService */
-    private $data_fix_service;
+    private DataFixService $data_fix_service;
 
     /**
      * FixMissingDeaths constructor.

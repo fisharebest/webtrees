@@ -62,8 +62,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
     protected const ROUTE_URL = '/tree/{tree}/individual-list';
 
-    /** @var LocalizationService */
-    private $localization_service;
+    private LocalizationService $localization_service;
 
     /**
      * IndividualListModule constructor.

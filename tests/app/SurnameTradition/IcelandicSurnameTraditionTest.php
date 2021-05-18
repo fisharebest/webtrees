@@ -22,12 +22,11 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class SpanishSurnameTradition
+ * Test harness for the class IcelandicSurnameTradition
  */
 class IcelandicSurnameTraditionTest extends TestCase
 {
-    /** @var SurnameTraditionInterface */
-    private $surname_tradition;
+    private SurnameTraditionInterface $surname_tradition;
 
     /**
      * Prepare the environment for these tests

@@ -39,8 +39,7 @@ class UploadMediaPage implements RequestHandlerInterface
     // How many files to upload on one form.
     private const MAX_UPLOAD_FILES = 10;
 
-    /** @var MediaFileService */
-    private $media_file_service;
+    private MediaFileService $media_file_service;
 
     /**
      * MediaController constructor.

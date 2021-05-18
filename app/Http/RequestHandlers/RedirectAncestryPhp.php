@@ -45,11 +45,9 @@ class RedirectAncestryPhp implements RequestHandlerInterface
         3 => 'families',
     ];
 
-    /** @var TreeService */
-    private $tree_service;
+    private AncestorsChartModule $chart;
 
-    /** @var AncestorsChartModule */
-    private $chart;
+    private TreeService $tree_service;
 
     /**
      * @param AncestorsChartModule $chart

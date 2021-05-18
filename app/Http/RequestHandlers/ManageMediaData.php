@@ -57,14 +57,11 @@ use function view;
  */
 class ManageMediaData implements RequestHandlerInterface
 {
-    /** @var DatatablesService */
-    private $datatables_service;
+    private DatatablesService $datatables_service;
 
-    /** @var MediaFileService */
-    private $media_file_service;
+    private MediaFileService $media_file_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * MediaController constructor.

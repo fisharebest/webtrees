@@ -37,8 +37,7 @@ use function app;
  */
 class UseTheme implements MiddlewareInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * UseTheme constructor.

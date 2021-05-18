@@ -39,8 +39,7 @@ class MessagePage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * MessagePage constructor.

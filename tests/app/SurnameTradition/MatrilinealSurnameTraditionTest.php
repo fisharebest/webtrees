@@ -22,12 +22,11 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class PatrilinenalSurnameTradition
+ * Test harness for the class MatrilinenalSurnameTradition
  */
 class MatrilinealSurnameTraditionTest extends TestCase
 {
-    /** @var SurnameTraditionInterface */
-    private $surname_tradition;
+    private SurnameTraditionInterface $surname_tradition;
 
     /**
      * Prepare the environment for these tests

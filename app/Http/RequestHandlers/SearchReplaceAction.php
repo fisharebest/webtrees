@@ -38,8 +38,7 @@ class SearchReplaceAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var SearchService */
-    private $search_service;
+    private SearchService $search_service;
 
     /**
      * SearchController constructor.

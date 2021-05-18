@@ -54,8 +54,7 @@ use function view;
  */
 class CalendarEvents implements RequestHandlerInterface
 {
-    /** @var CalendarService */
-    private $calendar_service;
+    private CalendarService $calendar_service;
 
     /**
      * CalendarPage constructor.

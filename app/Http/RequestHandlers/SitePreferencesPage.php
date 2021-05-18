@@ -34,8 +34,7 @@ class SitePreferencesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * AdminSiteController constructor.

@@ -34,11 +34,9 @@ class MergeTreesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var AdminService */
-    private $admin_service;
+    private AdminService $admin_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * AdminTreesController constructor.

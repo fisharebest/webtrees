@@ -39,8 +39,7 @@ use function is_numeric;
  */
 class HomePageService
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * HomePageController constructor.

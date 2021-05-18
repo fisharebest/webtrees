@@ -51,8 +51,7 @@ class CompressResponse implements MiddlewareInterface
         'image/svg+xml',
     ];
 
-    /** @var StreamFactoryInterface */
-    protected $stream_factory;
+    protected StreamFactoryInterface $stream_factory;
 
     /**
      * CompressResponse constructor.

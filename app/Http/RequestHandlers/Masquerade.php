@@ -35,8 +35,7 @@ use function response;
  */
 class Masquerade implements RequestHandlerInterface
 {
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * @param UserService $user_service

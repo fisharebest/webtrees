@@ -36,8 +36,7 @@ use function route;
  */
 class UserAddAction implements RequestHandlerInterface
 {
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * UserAddAction constructor.

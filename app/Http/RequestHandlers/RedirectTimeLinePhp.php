@@ -38,20 +38,18 @@ use function redirect;
  */
 class RedirectTimeLinePhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
-    /** @var TimelineChartModule */
-    private $chart;
+    private TimelineChartModule $timeline_chart_module;
 
     /**
-     * @param TimelineChartModule $chart
+     * @param TimelineChartModule $timeline_chart_module
      * @param TreeService         $tree_service
      */
-    public function __construct(TimelineChartModule $chart, TreeService $tree_service)
+    public function __construct(TimelineChartModule $timeline_chart_module, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->timeline_chart_module = $timeline_chart_module;
+        $this->tree_service          = $tree_service;
     }
 
     /**
@@ -70,7 +68,7 @@ class RedirectTimeLinePhp implements RequestHandlerInterface
         if ($tree instanceof Tree) {
             $individual = Registry::individualFactory()->make($pids[0] ?? '', $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->chart->chartUrl($individual, [
+            $url = $this->timeline_chart_module->chartUrl($individual, [
                 'xrefs' => $pids,
             ]);
 

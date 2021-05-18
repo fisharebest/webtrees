@@ -40,14 +40,11 @@ use function e;
  */
 class UserListData implements RequestHandlerInterface
 {
-    /** @var DatatablesService */
-    private $datatables_service;
+    private DatatablesService $datatables_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * UserListData constructor.

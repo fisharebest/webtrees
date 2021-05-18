@@ -35,8 +35,7 @@ use function redirect;
  */
 class RedirectCalendarPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * @param TreeService $tree_service

@@ -38,11 +38,9 @@ use function redirect;
  */
 class RedirectFanChartPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private FanChartModule $chart;
 
-    /** @var FanChartModule */
-    private $chart;
+    private TreeService $tree_service;
 
     /**
      * @param FanChartModule $chart

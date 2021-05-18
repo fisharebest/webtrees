@@ -35,8 +35,7 @@ use function route;
  */
 class ModulesAllAction implements RequestHandlerInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * @param ModuleService $module_service

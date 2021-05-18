@@ -55,11 +55,9 @@ class GedcomLoad implements RequestHandlerInterface
     use ViewResponseTrait;
     use DetectsConcurrencyErrors;
 
-    /** @var TimeoutService */
-    private $timeout_service;
+    private TimeoutService $timeout_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * GedcomLoad constructor.

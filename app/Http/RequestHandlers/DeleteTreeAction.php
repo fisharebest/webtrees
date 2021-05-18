@@ -36,8 +36,7 @@ use function response;
  */
 class DeleteTreeAction implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * CreateTreePage constructor.

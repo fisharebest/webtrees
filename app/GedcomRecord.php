@@ -89,6 +89,7 @@ class GedcomRecord
 
     /** @var int|null Cached result */
     protected $getPrimaryName;
+
     /** @var int|null Cached result */
     protected $getSecondaryName;
 

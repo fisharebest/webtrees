@@ -29,24 +29,27 @@ use stdClass;
  */
 class SessionDatabaseHandler implements SessionHandlerInterface
 {
-    /** @var ServerRequestInterface */
-    private $request;
+    private ServerRequestInterface $request;
 
-    /** @var stdClass|null The row from the session table */
-    private $row;
+    private ?stdClass $row;
 
+    /**
+     * SessionDatabaseHandler constructor.
+     *
+     * @param ServerRequestInterface $request
+     */
     public function __construct(ServerRequestInterface $request)
     {
         $this->request = $request;
     }
 
     /**
-     * @param string $save_path
+     * @param string $path
      * @param string $name
      *
      * @return bool
      */
-    public function open($save_path, $name): bool
+    public function open($path, $name): bool
     {
         return true;
     }
@@ -60,14 +63,14 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param string $session_id
+     * @param string $id
      *
      * @return string
      */
-    public function read($session_id): string
+    public function read($id): string
     {
         $this->row = DB::table('session')
-            ->where('session_id', '=', $session_id)
+            ->where('session_id', '=', $id)
             ->first();
 
 
@@ -75,12 +78,12 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param string $session_id
-     * @param string $session_data
+     * @param string $id
+     * @param string $data
      *
      * @return bool
      */
-    public function write($session_id, $session_data): bool
+    public function write($id, $data): bool
     {
         $ip_address   = $this->request->getAttribute('client-ip');
         $session_time = Carbon::now();
@@ -88,11 +91,11 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
         if ($this->row === null) {
             DB::table('session')->insert([
-                'session_id'   => $session_id,
+                'session_id'   => $id,
                 'session_time' => $session_time,
                 'user_id'      => $user_id,
                 'ip_address'   => $ip_address,
-                'session_data' => $session_data,
+                'session_data' => $data,
             ]);
         } else {
             $updates = [];
@@ -106,8 +109,8 @@ class SessionDatabaseHandler implements SessionHandlerInterface
                 $updates['ip_address'] = $ip_address;
             }
 
-            if ($this->row->session_data !== $session_data) {
-                $updates['session_data'] = $session_data;
+            if ($this->row->session_data !== $data) {
+                $updates['session_data'] = $data;
             }
 
             if ($session_time->subMinute()->gt($this->row->session_time)) {
@@ -116,7 +119,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 
             if ($updates !== []) {
                 DB::table('session')
-                    ->where('session_id', '=', $session_id)
+                    ->where('session_id', '=', $id)
                     ->update($updates);
             }
         }
@@ -125,28 +128,28 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     }
 
     /**
-     * @param string $session_id
+     * @param string $id
      *
      * @return bool
      */
-    public function destroy($session_id): bool
+    public function destroy($id): bool
     {
         DB::table('session')
-            ->where('session_id', '=', $session_id)
+            ->where('session_id', '=', $id)
             ->delete();
 
         return true;
     }
 
     /**
-     * @param int $maxlifetime
+     * @param int $max_lifetime
      *
      * @return bool
      */
-    public function gc($maxlifetime): bool
+    public function gc($max_lifetime): bool
     {
         DB::table('session')
-            ->where('session_time', '<', Carbon::now()->subSeconds($maxlifetime))
+            ->where('session_time', '<', Carbon::now()->subSeconds($max_lifetime))
             ->delete();
 
         return true;

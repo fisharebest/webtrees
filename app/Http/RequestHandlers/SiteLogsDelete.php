@@ -31,8 +31,7 @@ use function response;
  */
 class SiteLogsDelete implements RequestHandlerInterface
 {
-    /** @var SiteLogsService */
-    private $site_logs_service;
+    private SiteLogsService $site_logs_service;
 
     /**
      * @param SiteLogsService $site_logs_service

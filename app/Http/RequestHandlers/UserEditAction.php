@@ -40,14 +40,11 @@ use function route;
  */
 class UserEditAction implements RequestHandlerInterface
 {
-    /** @var EmailService */
-    private $email_service;
+    private EmailService $email_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * UserEditAction constructor.

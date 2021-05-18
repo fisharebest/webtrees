@@ -32,8 +32,7 @@ use function view;
  */
 class Select2Repository extends AbstractSelect2Handler
 {
-    /** @var SearchService */
-    protected $search_service;
+    protected SearchService $search_service;
 
     /**
      * Select2Repository constructor.

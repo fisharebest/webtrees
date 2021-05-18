@@ -44,11 +44,9 @@ use function view;
  */
 class FixLevel0MediaData implements RequestHandlerInterface
 {
-    /** @var DatatablesService */
-    private $datatables_service;
+    private DatatablesService $datatables_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * FixLevel0MediaController constructor.

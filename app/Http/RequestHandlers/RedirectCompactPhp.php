@@ -38,11 +38,9 @@ use function redirect;
  */
 class RedirectCompactPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private CompactTreeChartModule $chart;
 
-    /** @var CompactTreeChartModule */
-    private $chart;
+    private TreeService $tree_service;
 
     /**
      * @param CompactTreeChartModule $chart

@@ -35,8 +35,7 @@ class RegisterPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var CaptchaService */
-    private $captcha_service;
+    private CaptchaService $captcha_service;
 
     /**
      * RegisterPage constructor.

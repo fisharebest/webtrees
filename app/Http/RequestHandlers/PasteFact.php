@@ -36,8 +36,7 @@ use function redirect;
  */
 class PasteFact implements RequestHandlerInterface
 {
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * PasteFact constructor.

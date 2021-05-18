@@ -40,11 +40,9 @@ use function redirect;
  */
 class RedirectFamListPhp implements RequestHandlerInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * @param ModuleService $module_service

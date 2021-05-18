@@ -38,19 +38,17 @@ use function redirect;
  */
 class RedirectHourGlassPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private HourglassChartModule $chart;
 
-    /** @var HourglassChartModule */
-    private $chart;
+    private TreeService $tree_service;
 
     /**
-     * @param HourglassChartModule $ancestors_chart
+     * @param HourglassChartModule $chart
      * @param TreeService          $tree_service
      */
-    public function __construct(HourglassChartModule $ancestors_chart, TreeService $tree_service)
+    public function __construct(HourglassChartModule $chart, TreeService $tree_service)
     {
-        $this->chart        = $ancestors_chart;
+        $this->chart        = $chart;
         $this->tree_service = $tree_service;
     }
 

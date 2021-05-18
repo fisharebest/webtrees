@@ -164,8 +164,7 @@ class HelpText implements RequestHandlerInterface
         ],
     ];
 
-    /** @var LocalizationService */
-    private $localisation_service;
+    private LocalizationService $localisation_service;
 
     /**
      * HelpText constructor.

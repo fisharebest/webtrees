@@ -40,11 +40,9 @@ class VerifyEmail implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var EmailService */
-    private $email_service;
+    private EmailService $email_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * MessageController constructor.

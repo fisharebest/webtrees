@@ -82,14 +82,11 @@ class UpgradeWizardStep implements RequestHandlerInterface
         'vendor',
     ];
 
-    /** @var GedcomExportService */
-    private $gedcom_export_service;
+    private GedcomExportService $gedcom_export_service;
 
-    /** @var UpgradeService */
-    private $upgrade_service;
+    private UpgradeService $upgrade_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * UpgradeController constructor.

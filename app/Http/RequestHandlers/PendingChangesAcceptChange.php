@@ -36,8 +36,7 @@ use function response;
  */
 class PendingChangesAcceptChange implements RequestHandlerInterface
 {
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    private PendingChangesService $pending_changes_service;
 
     /**
      * @param PendingChangesService $pending_changes_service

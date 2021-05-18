@@ -46,8 +46,7 @@ use const UPLOAD_ERR_OK;
  */
 class ImportGedcomAction implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     public function __construct(TreeService $tree_service)
     {

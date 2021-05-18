@@ -31,11 +31,9 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class BootModules implements MiddlewareInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var ModuleThemeInterface */
-    private $theme;
+    private ModuleThemeInterface $theme;
 
     /**
      * BootModules constructor.

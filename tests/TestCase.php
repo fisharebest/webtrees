@@ -22,22 +22,6 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\Factories\CacheFactory;
-use Fisharebest\Webtrees\Factories\FamilyFactory;
-use Fisharebest\Webtrees\Factories\FilesystemFactory;
-use Fisharebest\Webtrees\Factories\ElementFactory;
-use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
-use Fisharebest\Webtrees\Factories\HeaderFactory;
-use Fisharebest\Webtrees\Factories\IndividualFactory;
-use Fisharebest\Webtrees\Factories\LocationFactory;
-use Fisharebest\Webtrees\Factories\MediaFactory;
-use Fisharebest\Webtrees\Factories\NoteFactory;
-use Fisharebest\Webtrees\Factories\RepositoryFactory;
-use Fisharebest\Webtrees\Factories\SlugFactory;
-use Fisharebest\Webtrees\Factories\SourceFactory;
-use Fisharebest\Webtrees\Factories\SubmissionFactory;
-use Fisharebest\Webtrees\Factories\SubmitterFactory;
-use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -60,7 +44,6 @@ use function app;
 use function basename;
 use function filesize;
 use function http_build_query;
-use function microtime;
 
 use const UPLOAD_ERR_OK;
 
@@ -233,7 +216,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file);
 
-        $timeout_service = new TimeoutService(microtime(true));
+        $timeout_service = new TimeoutService();
         $controller      = new GedcomLoad($timeout_service, $tree_service);
         $request         = self::createRequest()->withAttribute('tree', $tree);
 

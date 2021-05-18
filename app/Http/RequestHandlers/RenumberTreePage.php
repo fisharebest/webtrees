@@ -37,8 +37,7 @@ class RenumberTreePage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var AdminService */
-    private $admin_service;
+    private AdminService $admin_service;
 
     /**
      * @param AdminService $admin_service

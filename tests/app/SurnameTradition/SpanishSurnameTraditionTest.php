@@ -26,8 +26,7 @@ use Fisharebest\Webtrees\TestCase;
  */
 class SpanishSurnameTraditionTest extends TestCase
 {
-    /** @var SurnameTraditionInterface */
-    private $surname_tradition;
+    private SurnameTraditionInterface $surname_tradition;
 
     /**
      * Prepare the environment for these tests

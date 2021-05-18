@@ -81,14 +81,11 @@ class TreePreferencesPage implements RequestHandlerInterface
         'CHAN', 'NOTE', 'OBJE', 'RESN',
     ];
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     public function __construct(
         ModuleService $module_service,

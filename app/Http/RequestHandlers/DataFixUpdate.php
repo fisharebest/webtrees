@@ -36,8 +36,7 @@ use function response;
  */
 class DataFixUpdate implements RequestHandlerInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * DataFix constructor.

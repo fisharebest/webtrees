@@ -31,8 +31,7 @@ use function response;
  */
 class Ping implements RequestHandlerInterface
 {
-    /** @var ServerCheckService */
-    private $server_check_service;
+    private ServerCheckService $server_check_service;
 
     /**
      * @param ServerCheckService $server_check_service

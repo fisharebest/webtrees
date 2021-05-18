@@ -38,11 +38,9 @@ use function redirect;
  */
 class RedirectModulePhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
-    /** @var PedigreeMapModule */
-    private $pedigree_map_module;
+    private PedigreeMapModule $pedigree_map_module;
 
     /**
      * @param PedigreeMapModule $pedigree_map_module

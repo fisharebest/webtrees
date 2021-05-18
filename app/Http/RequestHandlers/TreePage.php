@@ -41,8 +41,7 @@ class TreePage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var HomePageService */
-    private $home_page_service;
+    private HomePageService $home_page_service;
 
     /**
      * @param HomePageService $home_page_service

@@ -33,8 +33,7 @@ use function assert;
  */
 class CreateMediaObjectModal implements RequestHandlerInterface
 {
-    /** @var MediaFileService */
-    private $media_file_service;
+    private MediaFileService $media_file_service;
 
     /**
      * CreateMediaObjectModal constructor.

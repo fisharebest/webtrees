@@ -41,14 +41,11 @@ use function view;
  */
 class DataFixData implements RequestHandlerInterface
 {
-    /** @var DataFixService */
-    private $data_fix_service;
+    private DataFixService $data_fix_service;
 
-    /** @var DatatablesService */
-    private $datatables_service;
+    private DatatablesService $datatables_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * DataFix constructor.

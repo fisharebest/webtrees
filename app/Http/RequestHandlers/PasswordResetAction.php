@@ -36,8 +36,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterface
 {
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * PasswordRequestForm constructor.

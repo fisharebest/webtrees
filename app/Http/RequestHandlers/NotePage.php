@@ -44,8 +44,7 @@ class NotePage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * NotePage constructor.

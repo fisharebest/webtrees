@@ -43,8 +43,7 @@ class EmailPreferencesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var EmailService */
-    private $email_service;
+    private EmailService $email_service;
 
     /**
      * AdminSiteController constructor.

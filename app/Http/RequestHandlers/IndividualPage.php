@@ -62,14 +62,11 @@ class IndividualPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * IndividualPage constructor.

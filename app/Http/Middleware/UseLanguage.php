@@ -38,8 +38,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class UseLanguage implements MiddlewareInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * UseTheme constructor.

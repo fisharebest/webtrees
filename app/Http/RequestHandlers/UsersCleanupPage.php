@@ -34,8 +34,7 @@ class UsersCleanupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * @param UserService $user_service

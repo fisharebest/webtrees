@@ -38,8 +38,7 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
     // Tell the browser to cache the results
     protected const CACHE_LIFE = 1200;
 
-    /** @var SearchService */
-    protected $search_service;
+    protected SearchService $search_service;
 
     /**
      * @param SearchService $search_service

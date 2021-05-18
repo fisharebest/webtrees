@@ -31,8 +31,7 @@ use function assert;
  */
 class UnconnectedAction implements RequestHandlerInterface
 {
-    /** @var string */
-    protected $layout = 'layouts/administration';
+    protected string $layout = 'layouts/administration';
 
     /**
      * @param ServerRequestInterface $request

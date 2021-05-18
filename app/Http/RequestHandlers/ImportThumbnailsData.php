@@ -62,8 +62,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
 {
     private const FINGERPRINT_PIXELS = 10;
 
-    /** @var SearchService */
-    private $search_service;
+    private SearchService $search_service;
 
     /**
      * ImportThumbnailsData constructor.
