@@ -55,41 +55,23 @@ class CensusOfCanada1901 extends CensusOfCanada implements CensusInterface
             new CensusColumnNationality($this, 'Nationality', 'Nationality'),
             new CensusColumnNull($this, 'Religion', 'Religion'),
             new CensusColumnOccupation($this, 'Occupation', 'Profession, Occupation or Trade'),
-
             new CensusColumnNull($this, 'Retired', 'Living on own means'),
             new CensusColumnNull($this, 'Employer', 'Employer'),
             new CensusColumnNull($this, 'Employee', 'Employee'),
             new CensusColumnNull($this, 'Work on own', 'Working on own account'),
-
             new CensusColumnNull($this, 'Trade', 'Working at trade in factory or home'),
             new CensusColumnNull($this, 'Ms Fac', 'Months employed at trade in factory'),
             new CensusColumnNull($this, 'Ms Home', 'Months employed at trade in home'),
-
             new CensusColumnNull($this, 'Ms Other', 'Months employed in other than trade in factory or home'),
             new CensusColumnNull($this, 'Earnings', 'Earnings from occupation or trade $'),
             new CensusColumnNull($this, 'Extra Earn', 'Extra earnings (from other than occupation or trade) $'),
-
             new CensusColumnNull($this, 'Edu Month', 'Months at school in year'),
             new CensusColumnNull($this, 'Read', 'Can Read'),
             new CensusColumnNull($this, 'Write', 'Can Write'),
             new CensusColumnNull($this, 'English', 'Speaks English'),
             new CensusColumnNull($this, 'French', 'Speaks French'),
             new CensusColumnNull($this, 'Mother toungue', 'Mother toungue'),
-
             new CensusColumnNull($this, 'Infirmities', 'Infirmities - a. Deaf and dumb, b. Blind, c. Unsound mind'),
-
-            /**
-
-             * new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father'),
-             * new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother'),
-             * new CensusColumnBirthMonth($this, 'Month', 'Month of birth'),
-             * new CensusColumnBirthYear($this, 'Year', 'Year of birth'),
-             * new CensusColumnYearsMarried($this, 'Marr', 'Number of years married'),
-             * new CensusColumnChildrenBornAlive($this, 'Chil', 'Mother of how many children'),
-             * new CensusColumnChildrenLiving($this, 'Chil', 'Number of these children living'),
-             * new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
-             * new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
-	     */
         ];
     }
 }
