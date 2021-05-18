@@ -42,7 +42,7 @@ class CensusColumnConditionUs extends CensusColumnConditionEnglish
     // Text to display for female children
     protected const GIRL = 'S';
 
-    /** @var string Text to display for divorced individuals */
+    // Text to display for divorced individuals
     protected const DIVORCE = 'D';
 
     // Text to display for divorced females
