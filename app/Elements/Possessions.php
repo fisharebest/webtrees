@@ -28,6 +28,7 @@ class Possessions extends AbstractElement
     protected const SUBTAGS = [
         'DATE' => '0:1',
         'PLAC' => '0:1',
+        'ADDR' => '0:1',
         'NOTE' => '0:M',
         'OBJE' => '0:M',
         'SOUR' => '0:M',

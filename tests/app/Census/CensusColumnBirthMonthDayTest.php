@@ -19,34 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 
 /**
- * The individual's sex.
+ * Test harness for the class CensusColumnBirthDayMonthSlashYearTest
  */
-class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInterface
+class CensusColumnBirthMonthDayTest extends TestCase
 {
-    protected const MALE = 'M';
-
-    protected const FEMALE = 'F';
-
     /**
-     * Generate the likely value of this census column, based on available information.
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnBirthMonthDay
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
+     * @return void
      */
-    public function generate(Individual $individual, Individual $head): string
+    public function testGenerateColumn(): void
     {
-        switch ($individual->sex()) {
-            case 'M':
-                return static::MALE;
-            case 'F':
-                return static::FEMALE;
-            default:
-                return '';
-        }
+        $individual = self::createMock(Individual::class);
+        $individual->method('getEstimatedBirthDate')->willReturn(new Date('02 MAR 1800'));
+
+        $census = self::createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('30 JUN 1832');
+
+        $column = new CensusColumnBirthMonthDay($census, '', '');
+
+        self::assertSame('Mar 2', $column->generate($individual, $individual));
     }
 }

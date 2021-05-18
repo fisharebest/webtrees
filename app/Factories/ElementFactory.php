@@ -42,6 +42,7 @@ use Fisharebest\Webtrees\Elements\ApprovedSystemId;
 use Fisharebest\Webtrees\Elements\AttributeDescriptor;
 use Fisharebest\Webtrees\Elements\AutomatedRecordId;
 use Fisharebest\Webtrees\Elements\Baptism;
+use Fisharebest\Webtrees\Elements\BarMitzvah;
 use Fisharebest\Webtrees\Elements\BasMitzvah;
 use Fisharebest\Webtrees\Elements\Birth;
 use Fisharebest\Webtrees\Elements\Blessing;
@@ -462,7 +463,7 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:BAPM'                => new Baptism(I18N::translate('Baptism')),
             'INDI:BAPM:DATE'           => new DateValue(I18N::translate('Date of baptism')),
             'INDI:BAPM:PLAC'           => new PlaceName(I18N::translate('Place of baptism')),
-            'INDI:BARM'                => new PlaceName(I18N::translate('Bar mitzvah')),
+            'INDI:BARM'                => new BarMitzvah(I18N::translate('Bar mitzvah')),
             'INDI:BARM:DATE'           => new DateValue(I18N::translate('Date of bar mitzvah')),
             'INDI:BARM:PLAC'           => new PlaceName(I18N::translate('Place of bar mitzvah')),
             'INDI:BASM'                => new BasMitzvah(I18N::translate('Bat mitzvah')),
@@ -500,8 +501,8 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:CONL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
             'INDI:CONL:TEMP'           => new TempleCode(I18N::translate('Temple')),
             'INDI:CREM'                => new Cremation(I18N::translate('Cremation')),
-            'INDI:CREM:DATE'           => new Cremation(I18N::translate('Date of cremation')),
-            'INDI:CREM:PLAC'           => new Cremation(I18N::translate('Place of cremation')),
+            'INDI:CREM:DATE'           => new DateValue(I18N::translate('Date of cremation')),
+            'INDI:CREM:PLAC'           => new PlaceName(I18N::translate('Place of cremation')),
             'INDI:DEAT'                => new Death(I18N::translate('Death')),
             'INDI:DEAT:CAUS'           => new CauseOfEvent(I18N::translate('Cause of death')),
             'INDI:DEAT:DATE'           => new DateValue(I18N::translate('Date of death')),
