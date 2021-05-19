@@ -51,6 +51,7 @@ use function preg_split;
 use function route;
 use function str_contains;
 use function str_pad;
+use function str_repeat;
 use function str_starts_with;
 use function strtoupper;
 use function substr_count;
@@ -1361,7 +1362,7 @@ class GedcomRecord
                 $number_to_add = max(1, $min - $count);
                 $gedcom_to_add = "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $gedcom);
 
-                $return .= \str_repeat($gedcom_to_add, $number_to_add);
+                $return .= str_repeat($gedcom_to_add, $number_to_add);
             }
         }
 
