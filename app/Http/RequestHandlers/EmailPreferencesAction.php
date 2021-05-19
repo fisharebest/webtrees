@@ -38,8 +38,7 @@ use function route;
  */
 class EmailPreferencesAction implements RequestHandlerInterface
 {
-    /** @var EmailService */
-    private $email_service;
+    private EmailService $email_service;
 
     /**
      * AdminSiteController constructor.

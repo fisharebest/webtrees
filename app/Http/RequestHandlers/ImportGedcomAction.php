@@ -33,7 +33,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function assert;
 use function basename;
 use function redirect;
@@ -46,12 +45,14 @@ use const UPLOAD_ERR_OK;
  */
 class ImportGedcomAction implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private StreamFactoryInterface $stream_factory;
 
-    public function __construct(TreeService $tree_service)
+    private TreeService $tree_service;
+
+    public function __construct(StreamFactoryInterface $stream_factory, TreeService $tree_service)
     {
-        $this->tree_service = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->stream_factory = $stream_factory;
     }
 
     /**
@@ -98,7 +99,7 @@ class ImportGedcomAction implements RequestHandlerInterface
 
             if ($basename) {
                 $resource = $data_filesystem->readStream($basename);
-                $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                $stream   = $this->stream_factory->createStreamFromResource($resource);
                 $this->tree_service->importGedcomFile($tree, $stream, $basename);
             } else {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');

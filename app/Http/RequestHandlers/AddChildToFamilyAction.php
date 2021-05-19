@@ -38,8 +38,7 @@ use function redirect;
  */
 class AddChildToFamilyAction implements RequestHandlerInterface
 {
-    /** @var GedcomEditService */
-    private $gedcom_edit_service;
+    private GedcomEditService $gedcom_edit_service;
 
     /**
      * AddChildToFamilyAction constructor.

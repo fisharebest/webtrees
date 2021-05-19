@@ -30,8 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
-
 /**
  * Show the manager options for trees.
  */
@@ -39,11 +37,9 @@ class ManageTrees implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var AdminService */
-    private $admin_service;
+    private AdminService $admin_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * @param AdminService $admin_service
@@ -89,11 +85,8 @@ class ManageTrees implements RequestHandlerInterface
 
         $title = I18N::translate('Manage family trees');
 
-        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
-
         return $this->viewResponse('admin/trees', [
             'all_trees' => $all_trees,
-            'base_url'  => $base_url,
             'title'     => $title,
             'tree'      => $tree,
         ]);

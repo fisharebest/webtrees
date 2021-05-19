@@ -32,8 +32,7 @@ use function response;
  */
 class FixLevel0MediaAction implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * FixLevel0MediaController constructor.

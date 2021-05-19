@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 
 use function view;
@@ -49,11 +50,11 @@ class MapLinkOpenStreetMap extends AbstractModule implements ModuleMapLinkInterf
     }
 
     /**
-     * @param \Fisharebest\Webtrees\Fact $fact
+     * @param Fact $fact
      *
      * @return string
      */
-    protected function mapUrl(\Fisharebest\Webtrees\Fact $fact): string
+    protected function mapUrl(Fact $fact): string
     {
         $latitude  = $fact->latitude();
         $longitude = $fact->longitude();

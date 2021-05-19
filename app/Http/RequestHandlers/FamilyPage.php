@@ -46,8 +46,7 @@ class FamilyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * FamilyPage constructor.

@@ -38,8 +38,7 @@ use function strtolower;
  */
 class ModuleAction implements RequestHandlerInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * @param ModuleService $module_service

@@ -45,11 +45,9 @@ class DataFixUpdateAll implements RequestHandlerInterface
     // Process this number of records in each HTTP request
     private const CHUNK_SIZE = 250;
 
-    /** @var DataFixService */
-    private $data_fix_service;
+    private DataFixService $data_fix_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * DataFix constructor.

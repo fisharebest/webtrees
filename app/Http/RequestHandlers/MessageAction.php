@@ -43,11 +43,9 @@ class MessageAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MessageService */
-    private $message_service;
+    private MessageService $message_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * MessagePage constructor.

@@ -37,8 +37,7 @@ use function route;
  */
 class TreePageUpdate implements RequestHandlerInterface
 {
-    /** @var HomePageService */
-    private $home_page_service;
+    private HomePageService $home_page_service;
 
     /**
      * @param HomePageService $home_page_service

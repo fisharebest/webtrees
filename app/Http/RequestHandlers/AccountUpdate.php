@@ -38,8 +38,7 @@ use function route;
  */
 class AccountUpdate implements RequestHandlerInterface
 {
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * AccountController constructor.

@@ -45,11 +45,9 @@ class ReportSetupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var LocalizationService */
-    private $localization_service;
+    private LocalizationService $localization_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * ReportEngineController constructor.

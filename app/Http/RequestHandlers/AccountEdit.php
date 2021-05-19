@@ -43,11 +43,9 @@ class AccountEdit implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MessageService */
-    private $message_service;
+    private MessageService $message_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * AccountEdit constructor.

@@ -31,8 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class UpdateDatabaseSchema implements MiddlewareInterface
 {
-    /** @var MigrationService */
-    private $migration_service;
+    private MigrationService $migration_service;
 
     /**
      * @param MigrationService $migration_service

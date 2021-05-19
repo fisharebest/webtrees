@@ -33,8 +33,7 @@ class BroadcastPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MessageService */
-    private $message_service;
+    private MessageService $message_service;
 
     /**
      * MessagePage constructor.

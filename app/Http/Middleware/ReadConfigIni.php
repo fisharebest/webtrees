@@ -34,8 +34,7 @@ use function parse_ini_file;
  */
 class ReadConfigIni implements MiddlewareInterface
 {
-    /** @var SetupWizard */
-    private $setup_wizard;
+    private SetupWizard $setup_wizard;
 
     /**
      * @param SetupWizard $setup_wizard

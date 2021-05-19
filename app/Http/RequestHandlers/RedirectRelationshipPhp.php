@@ -38,20 +38,18 @@ use function redirect;
  */
 class RedirectRelationshipPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
-    /** @var RelationshipsChartModule */
-    private $chart;
+    private RelationshipsChartModule $relationships_chart_module;
 
     /**
-     * @param RelationshipsChartModule $chart
+     * @param RelationshipsChartModule $relationships_chart_module
      * @param TreeService              $tree_service
      */
-    public function __construct(RelationshipsChartModule $chart, TreeService $tree_service)
+    public function __construct(RelationshipsChartModule $relationships_chart_module, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->relationships_chart_module = $relationships_chart_module;
+        $this->tree_service               = $tree_service;
     }
 
     /**
@@ -73,7 +71,7 @@ class RedirectRelationshipPhp implements RequestHandlerInterface
         if ($tree instanceof Tree) {
             $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->chart->chartUrl($individual, [
+            $url = $this->relationships_chart_module->chartUrl($individual, [
                 'xref2'     => $pid2,
                 'ancestors' => $ancestors,
                 'recursion' => $recursion,

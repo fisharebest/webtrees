@@ -51,8 +51,7 @@ class ExportGedcomServer implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var GedcomExportService */
-    private $gedcom_export_service;
+    private GedcomExportService $gedcom_export_service;
 
     /**
      * ExportGedcomServer constructor.

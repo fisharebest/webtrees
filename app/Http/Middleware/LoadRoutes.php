@@ -37,11 +37,9 @@ use const PHP_URL_PATH;
  */
 class LoadRoutes implements MiddlewareInterface
 {
-    /** @var ApiRoutes */
-    private $api_routes;
+    private ApiRoutes $api_routes;
 
-    /** @var WebRoutes */
-    private $web_routes;
+    private WebRoutes $web_routes;
 
     /**
      * @param ApiRoutes $api_routes

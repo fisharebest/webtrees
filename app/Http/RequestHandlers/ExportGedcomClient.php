@@ -38,7 +38,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
 
 use function addcslashes;
-use function app;
 use function assert;
 use function fclose;
 use function fopen;
@@ -56,17 +55,27 @@ class ExportGedcomClient implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var GedcomExportService */
-    private $gedcom_export_service;
+    private GedcomExportService $gedcom_export_service;
+
+    private ResponseFactoryInterface $response_factory;
+
+    private StreamFactoryInterface $stream_factory;
 
     /**
      * ExportGedcomServer constructor.
      *
-     * @param GedcomExportService $gedcom_export_service
+     * @param GedcomExportService      $gedcom_export_service
+     * @param ResponseFactoryInterface $response_factory
+     * @param StreamFactoryInterface   $stream_factory
      */
-    public function __construct(GedcomExportService $gedcom_export_service)
-    {
+    public function __construct(
+        GedcomExportService $gedcom_export_service,
+        ResponseFactoryInterface $response_factory,
+        StreamFactoryInterface  $stream_factory
+    ) {
         $this->gedcom_export_service = $gedcom_export_service;
+        $this->response_factory = $response_factory;
+        $this->stream_factory = $stream_factory;
     }
 
     /**
@@ -150,18 +159,11 @@ class ExportGedcomClient implements RequestHandlerInterface
                 }
             }
 
-            // Use a stream, so that we do not have to load the entire file into memory.
-            $stream_factory = app(StreamFactoryInterface::class);
-            assert($stream_factory instanceof StreamFactoryInterface);
-
-            $http_stream   = $stream_factory->createStreamFromFile($temp_zip_file);
+            $stream   = $this->stream_factory->createStreamFromFile($temp_zip_file);
             $filename = addcslashes($download_filename, '"') . '.zip';
 
-            /** @var ResponseFactoryInterface $response_factory */
-            $response_factory = app(ResponseFactoryInterface::class);
-
-            return $response_factory->createResponse()
-                ->withBody($http_stream)
+            return $this->response_factory->createResponse()
+                ->withBody($stream)
                 ->withHeader('Content-Type', 'application/zip')
                 ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
         }
@@ -176,17 +178,10 @@ class ExportGedcomClient implements RequestHandlerInterface
         rewind($resource);
 
         $charset = $convert ? 'ISO-8859-1' : 'UTF-8';
+        $stream  = $this->stream_factory->createStreamFromResource($resource);
 
-        $stream_factory = app(StreamFactoryInterface::class);
-        assert($stream_factory instanceof StreamFactoryInterface);
-
-        $http_stream = $stream_factory->createStreamFromResource($resource);
-
-        /** @var ResponseFactoryInterface $response_factory */
-        $response_factory = app(ResponseFactoryInterface::class);
-
-        return $response_factory->createResponse()
-            ->withBody($http_stream)
+        return $this->response_factory->createResponse()
+            ->withBody($stream)
             ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $charset)
             ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
     }

@@ -203,7 +203,7 @@ abstract class AbstractElement implements ElementInterface
     public function labelValue(string $value, Tree $tree): string
     {
         $label = '<span class="label">' . $this->label() . '</span>';
-        $value = '<span class="value">' . $this->value($value, $tree) . '</span>';
+        $value = '<span class="value align-top">' . $this->value($value, $tree) . '</span>';
         $html  = I18N::translate(/* I18N: e.g. "Occupation: farmer" */ '%1$s: %2$s', $label, $value);
 
         return '<div>' . $html . '</div>';

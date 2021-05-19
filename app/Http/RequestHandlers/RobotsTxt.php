@@ -45,8 +45,7 @@ class RobotsTxt implements RequestHandlerInterface
         'account',
     ];
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * @param ModuleService $module_service

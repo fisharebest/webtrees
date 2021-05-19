@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Tree;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToMoveFile;
 use League\Flysystem\UnableToRetrieveMetadata;
-use League\Flysystem\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -48,11 +47,9 @@ use function trim;
  */
 class EditMediaFileAction implements RequestHandlerInterface
 {
-    /** @var MediaFileService */
-    private $media_file_service;
+    private MediaFileService $media_file_service;
 
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    private PendingChangesService $pending_changes_service;
 
     /**
      * EditMediaFileAction constructor.

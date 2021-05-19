@@ -43,14 +43,11 @@ use function route;
  */
 class SynchronizeTrees implements RequestHandlerInterface
 {
-    /** @var AdminService */
-    private $admin_service;
+    private AdminService $admin_service;
 
-    /** @var TimeoutService */
-    private $timeout_service;
+    private TimeoutService $timeout_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * AdminTreesController constructor.

@@ -39,11 +39,9 @@ class CacheFactory implements CacheFactoryInterface
     private const FILES_TTL = 8640000;
     private const FILES_DIR = Webtrees::DATA_DIR . 'cache/';
 
-    /** @var ArrayAdapter */
-    private $array_adapter;
+    private ArrayAdapter $array_adapter;
 
-    /** @var FilesystemAdapter */
-    private $filesystem_adapter;
+    private FilesystemAdapter $filesystem_adapter;
 
     /**
      * CacheFactory constructor.

@@ -49,11 +49,9 @@ class UpgradeWizardPage implements RequestHandlerInterface
     private const STEP_UNZIP    = 'Unzip';
     private const STEP_COPY     = 'Copy';
 
-    /** @var UpgradeService */
-    private $upgrade_service;
+    private TreeService $tree_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private UpgradeService $upgrade_service;
 
     /**
      * UpgradeController constructor.

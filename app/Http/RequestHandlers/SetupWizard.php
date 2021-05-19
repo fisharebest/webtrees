@@ -87,17 +87,13 @@ class SetupWizard implements RequestHandlerInterface
         'sqlsvr' => '1433',
     ];
 
-    /** @var MigrationService */
-    private $migration_service;
+    private MigrationService $migration_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var ServerCheckService */
-    private $server_check_service;
+    private ServerCheckService $server_check_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * SetupWizard constructor.

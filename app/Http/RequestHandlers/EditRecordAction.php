@@ -37,8 +37,7 @@ use function redirect;
  */
 class EditRecordAction implements RequestHandlerInterface
 {
-    /** @var GedcomEditService */
-    private $gedcom_edit_service;
+    private GedcomEditService $gedcom_edit_service;
 
     /**
      * EditFactAction constructor.

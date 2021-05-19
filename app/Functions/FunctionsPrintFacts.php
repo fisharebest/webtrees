@@ -216,11 +216,6 @@ class FunctionsPrintFacts
 
         $addr = $fact->attribute('ADDR');
         if ($addr !== '') {
-            $addr = e($addr);
-            if (str_contains($addr, "\n")) {
-                $addr = '<span class="d-block" style="white-space: pre-wrap">' . $addr . '</span';
-            }
-
             echo Registry::elementFactory()->make($fact->tag() . ':ADDR')->labelValue($addr, $tree);
         }
 

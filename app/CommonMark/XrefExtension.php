@@ -28,13 +28,12 @@ use League\CommonMark\Extension\ExtensionInterface;
  */
 class XrefExtension implements ExtensionInterface
 {
-    /** @var Tree - match XREFs in this tree */
-    private $tree;
+    private Tree $tree;
 
     /**
      * MarkdownXrefParser constructor.
      *
-     * @param Tree $tree
+     * @param Tree $tree Match XREFs in this tree
      */
     public function __construct(Tree $tree)
     {

@@ -40,8 +40,7 @@ use function response;
  */
 class MapDataExportGeoJson implements RequestHandlerInterface
 {
-    /** @var MapDataService */
-    private $map_data_service;
+    private MapDataService $map_data_service;
 
     /**
      * Dependency injection.

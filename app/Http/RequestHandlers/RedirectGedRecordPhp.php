@@ -37,8 +37,7 @@ use function redirect;
  */
 class RedirectGedRecordPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * @param TreeService $tree_service

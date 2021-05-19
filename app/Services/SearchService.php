@@ -66,8 +66,7 @@ class SearchService
     // Do not attempt to show search results larger than this/
     protected const MAX_SEARCH_RESULTS = 5000;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * SearchService constructor.

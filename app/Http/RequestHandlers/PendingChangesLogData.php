@@ -42,14 +42,11 @@ use function preg_replace_callback;
  */
 class PendingChangesLogData implements RequestHandlerInterface
 {
-    /** @var DatatablesService */
-    private $datatables_service;
+    private DatatablesService $datatables_service;
 
-    /** @var MyersDiff */
-    private $myers_diff;
+    private MyersDiff $myers_diff;
 
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    private PendingChangesService $pending_changes_service;
 
     /**
      * @param DatatablesService     $datatables_service

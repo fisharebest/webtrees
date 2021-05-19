@@ -49,14 +49,11 @@ class RegisterAction implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var CaptchaService */
-    private $captcha_service;
+    private CaptchaService $captcha_service;
 
-    /** @var EmailService */
-    private $email_service;
+    private EmailService $email_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * RegisterController constructor.

@@ -33,8 +33,7 @@ use function view;
  */
 class Select2Family extends AbstractSelect2Handler
 {
-    /** @var SearchService */
-    protected $search_service;
+    protected SearchService $search_service;
 
     /**
      * Select2Family constructor.

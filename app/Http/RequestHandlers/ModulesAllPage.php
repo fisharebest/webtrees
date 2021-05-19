@@ -33,8 +33,7 @@ class ModulesAllPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * @param ModuleService $module_service

@@ -38,8 +38,7 @@ use function response;
  */
 class CopyFact implements RequestHandlerInterface
 {
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * CopyFact constructor.

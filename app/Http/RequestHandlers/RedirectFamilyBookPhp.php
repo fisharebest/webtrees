@@ -38,11 +38,9 @@ use function redirect;
  */
 class RedirectFamilyBookPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private FamilyBookChartModule $chart;
 
-    /** @var FamilyBookChartModule */
-    private $chart;
+    private TreeService $tree_service;
 
     /**
      * @param FamilyBookChartModule $chart

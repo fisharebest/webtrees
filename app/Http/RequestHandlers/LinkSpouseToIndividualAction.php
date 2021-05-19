@@ -36,8 +36,7 @@ use function redirect;
  */
 class LinkSpouseToIndividualAction implements RequestHandlerInterface
 {
-    /** @var GedcomEditService */
-    private $gedcom_edit_service;
+    private GedcomEditService $gedcom_edit_service;
 
     /**
      * AddChildToFamilyAction constructor.

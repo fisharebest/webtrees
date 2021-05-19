@@ -39,11 +39,9 @@ class SearchPhoneticPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var SearchService */
-    private $search_service;
+    private SearchService $search_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * SearchController constructor.

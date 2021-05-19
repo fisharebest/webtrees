@@ -41,14 +41,11 @@ class ContactPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var CaptchaService */
-    private $captcha_service;
+    private CaptchaService $captcha_service;
 
-    /** @var MessageService */
-    private $message_service;
+    private MessageService $message_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * MessagePage constructor.

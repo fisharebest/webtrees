@@ -38,11 +38,9 @@ class CalendarPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var CalendarService */
-    private $calendar_service;
+    private CalendarService $calendar_service;
 
-    /** @var LocalizationService */
-    private $localization_service;
+    private LocalizationService $localization_service;
 
     /**
      * CalendarPage constructor.

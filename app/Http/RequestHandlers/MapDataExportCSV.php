@@ -49,8 +49,7 @@ use function stream_get_contents;
  */
 class MapDataExportCSV implements RequestHandlerInterface
 {
-    /** @var MapDataService */
-    private $map_data_service;
+    private MapDataService $map_data_service;
 
     /**
      * Dependency injection.

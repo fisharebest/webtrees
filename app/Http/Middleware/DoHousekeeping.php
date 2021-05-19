@@ -50,8 +50,7 @@ class DoHousekeeping implements MiddlewareInterface
     // Run the cleanup every N requests.
     private const PROBABILITY = 250;
 
-    /** @var HousekeepingService */
-    private $housekeeping_service;
+    private HousekeepingService $housekeeping_service;
 
     /**
      * Housekeeping constructor.

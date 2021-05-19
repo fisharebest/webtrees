@@ -59,8 +59,7 @@ class RepositoryPage implements RequestHandlerInterface
         'REPO:RESN',
     ];
 
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * RepositoryPage constructor.

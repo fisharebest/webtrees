@@ -37,20 +37,18 @@ use function redirect;
  */
 class RedirectStatisticsPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
-    /** @var StatisticsChartModule */
-    private $chart;
+    private StatisticsChartModule $statistics_chart_module;
 
     /**
-     * @param StatisticsChartModule $chart
+     * @param StatisticsChartModule $statistics_chart_module
      * @param TreeService           $tree_service
      */
-    public function __construct(StatisticsChartModule $chart, TreeService $tree_service)
+    public function __construct(StatisticsChartModule $statistics_chart_module, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->statistics_chart_module = $statistics_chart_module;
+        $this->tree_service            = $tree_service;
     }
 
     /**
@@ -69,7 +67,7 @@ class RedirectStatisticsPhp implements RequestHandlerInterface
             $individual = $tree->significantIndividual(Auth::user());
 
             // This chart stored a list of individuals in the session, which we won't have.
-            $url = $this->chart->chartUrl($individual, []);
+            $url = $this->statistics_chart_module->chartUrl($individual, []);
 
             return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }

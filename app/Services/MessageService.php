@@ -38,11 +38,9 @@ use function view;
  */
 class MessageService
 {
-    /** @var UserService */
-    private $user_service;
+    private EmailService $email_service;
 
-    /** @var EmailService */
-    private $email_service;
+    private UserService $user_service;
 
     /**
      * MessageService constructor.

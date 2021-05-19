@@ -48,11 +48,9 @@ use function route;
  */
 class RenumberTreeAction implements RequestHandlerInterface
 {
-    /** @var AdminService */
-    private $admin_service;
+    private AdminService $admin_service;
 
-    /** @var TimeoutService */
-    private $timeout_service;
+    private TimeoutService $timeout_service;
 
     /**
      * @param AdminService   $admin_service

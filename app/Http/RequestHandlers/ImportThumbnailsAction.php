@@ -43,11 +43,9 @@ use function substr;
  */
 class ImportThumbnailsAction implements RequestHandlerInterface
 {
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    private PendingChangesService $pending_changes_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * ImportThumbnailsController constructor.

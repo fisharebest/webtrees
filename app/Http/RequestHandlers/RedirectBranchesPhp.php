@@ -36,11 +36,9 @@ use function redirect;
  */
 class RedirectBranchesPhp implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private BranchesListModule $module;
 
-    /** @var BranchesListModule */
-    private $module;
+    private TreeService $tree_service;
 
     /**
      * @param BranchesListModule $module

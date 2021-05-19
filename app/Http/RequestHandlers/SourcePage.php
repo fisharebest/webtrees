@@ -64,8 +64,7 @@ class SourcePage implements RequestHandlerInterface
         'SOUR:RESN',
     ];
 
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * SourcePage constructor.

@@ -45,11 +45,9 @@ class RedirectPedigreePhp implements RequestHandlerInterface
         3 => 'bottom',
     ];
 
-    /** @var TreeService */
-    private $tree_service;
+    private PedigreeChartModule $chart;
 
-    /** @var PedigreeChartModule */
-    private $chart;
+    private TreeService $tree_service;
 
     /**
      * @param PedigreeChartModule $chart

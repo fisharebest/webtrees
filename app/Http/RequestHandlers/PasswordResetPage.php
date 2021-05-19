@@ -39,8 +39,7 @@ class PasswordResetPage implements RequestHandlerInterface, StatusCodeInterface
 {
     use ViewResponseTrait;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * PasswordResetForm constructor.

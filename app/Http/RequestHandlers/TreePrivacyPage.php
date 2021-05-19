@@ -45,8 +45,7 @@ class TreePrivacyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     public function __construct(TreeService $tree_service)
     {

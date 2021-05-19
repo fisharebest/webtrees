@@ -29,8 +29,7 @@ use Symfony\Contracts\Cache\ItemInterface;
  */
 class Cache
 {
-    /** @var CacheInterface */
-    private $cache;
+    private CacheInterface $cache;
 
     /**
      * Cache constructor.

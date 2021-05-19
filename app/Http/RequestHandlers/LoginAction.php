@@ -41,11 +41,9 @@ use function route;
  */
 class LoginAction implements RequestHandlerInterface
 {
-    /** @var UpgradeService */
-    private $upgrade_service;
+    private UpgradeService $upgrade_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * LoginController constructor.

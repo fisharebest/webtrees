@@ -42,14 +42,11 @@ class MapDataList implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MapDataService */
-    private $map_data_service;
+    private MapDataService $map_data_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * Dependency injection.

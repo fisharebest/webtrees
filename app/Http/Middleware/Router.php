@@ -41,14 +41,11 @@ use function str_contains;
  */
 class Router implements MiddlewareInterface
 {
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var RouterContainer */
-    private $router_container;
+    private RouterContainer $router_container;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * Router constructor.
@@ -57,8 +54,11 @@ class Router implements MiddlewareInterface
      * @param RouterContainer $router_container
      * @param TreeService     $tree_service
      */
-    public function __construct(ModuleService $module_service, RouterContainer $router_container, TreeService $tree_service)
-    {
+    public function __construct(
+        ModuleService $module_service,
+        RouterContainer $router_container,
+        TreeService $tree_service
+    ) {
         $this->module_service   = $module_service;
         $this->router_container = $router_container;
         $this->tree_service     = $tree_service;

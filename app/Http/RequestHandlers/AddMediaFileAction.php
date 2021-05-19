@@ -39,11 +39,9 @@ use function route;
  */
 class AddMediaFileAction implements RequestHandlerInterface
 {
-    /** @var MediaFileService */
-    private $media_file_service;
+    private MediaFileService $media_file_service;
 
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    private PendingChangesService $pending_changes_service;
 
     /**
      * AddMediaFileAction constructor.

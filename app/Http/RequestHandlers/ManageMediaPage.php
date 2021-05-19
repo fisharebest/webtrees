@@ -34,8 +34,7 @@ class ManageMediaPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MediaFileService */
-    private $media_file_service;
+    private MediaFileService $media_file_service;
 
     /**
      * MediaController constructor.

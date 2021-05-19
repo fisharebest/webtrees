@@ -40,8 +40,7 @@ use function view;
  */
 class EditMediaFileModal implements RequestHandlerInterface
 {
-    /** @var MediaFileService */
-    private $media_file_service;
+    private MediaFileService $media_file_service;
 
     /**
      * EditMediaFileModal constructor.

@@ -36,8 +36,7 @@ use function route;
  */
 class CreateTreeAction implements RequestHandlerInterface
 {
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * CreateTreePage constructor.

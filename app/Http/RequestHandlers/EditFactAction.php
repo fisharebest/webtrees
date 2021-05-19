@@ -40,11 +40,9 @@ use function redirect;
  */
 class EditFactAction implements RequestHandlerInterface
 {
-    /** @var GedcomEditService */
-    private $gedcom_edit_service;
+    private GedcomEditService $gedcom_edit_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * EditFactAction constructor.

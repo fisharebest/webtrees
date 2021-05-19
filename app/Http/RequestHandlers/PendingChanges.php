@@ -40,8 +40,7 @@ class PendingChanges implements RequestHandlerInterface
     // Some servers may not have enough resources to show all the changes.
     private const MAX_CHANGES = 1000;
 
-    /** @var PendingChangesService */
-    private $pending_changes_service;
+    private PendingChangesService $pending_changes_service;
 
     /**
      * PendingChanges constructor.

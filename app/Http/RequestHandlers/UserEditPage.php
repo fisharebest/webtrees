@@ -40,17 +40,13 @@ class UserEditPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var MessageService */
-    private $message_service;
+    private MessageService $message_service;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * UserEditPage constructor.

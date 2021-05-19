@@ -46,11 +46,9 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
 {
     private const TOKEN_LENGTH = 40;
 
-    /** @var EmailService */
-    private $email_service;
+    private EmailService $email_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * PasswordRequestForm constructor.

@@ -43,8 +43,7 @@ class MediaPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * MediaPage constructor.
