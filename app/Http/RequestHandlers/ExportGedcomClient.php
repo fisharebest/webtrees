@@ -71,7 +71,7 @@ class ExportGedcomClient implements RequestHandlerInterface
     public function __construct(
         GedcomExportService $gedcom_export_service,
         ResponseFactoryInterface $response_factory,
-        StreamFactoryInterface  $stream_factory
+        StreamFactoryInterface $stream_factory
     ) {
         $this->gedcom_export_service = $gedcom_export_service;
         $this->response_factory = $response_factory;
