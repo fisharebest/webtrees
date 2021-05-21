@@ -687,7 +687,7 @@ class ElementFactory implements ElementFactoryInterface
             'SOUR:DATA:AGNC'           => new ResponsibleAgency(I18N::translate('Agency')),
             'SOUR:DATA:EVEN'           => new EventsRecorded(I18N::translate('Events')),
             'SOUR:DATA:EVEN:DATE'      => new DateValue(I18N::translate('Date range')),
-            'SOUR:DATA:EVEN:PLAC'      => new SourceJurisdictionPlace(I18N::translate('Place')),
+            'SOUR:DATA:EVEN:PLAC'      => new SourceJurisdictionPlace(I18N::translate('Place'), []),
             'SOUR:DATA:NOTE'           => new NoteStructure(I18N::translate('Note')),
             'SOUR:NOTE'                => new NoteStructure(I18N::translate('Note')),
             'SOUR:OBJE'                => new XrefMedia(I18N::translate('Media object')),

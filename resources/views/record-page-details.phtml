@@ -1,0 +1,16 @@
+<?php
+
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\GedcomRecord;
+
+/**
+ * @var GedcomRecord $record
+ */
+
+?>
+
+<table class="table wt-facts-table">
+    <?php foreach ($record->facts([], true) as $fact) : ?>
+        <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+    <?php endforeach ?>
+</table>

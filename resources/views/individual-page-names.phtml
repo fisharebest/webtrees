@@ -1,0 +1,21 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact> $name_records
+ * @var Collection<Fact> $sex_records
+ */
+?>
+
+<!-- Name accordion -->
+<div class="col-sm accordion" id="individual-names">
+    <?php foreach ($name_records as $name_record) : ?>
+        <?= $name_record ?>
+    <?php endforeach ?>
+
+    <?php foreach ($sex_records as $sex_record) : ?>
+        <?= $sex_record ?>
+    <?php endforeach ?>
+</div>

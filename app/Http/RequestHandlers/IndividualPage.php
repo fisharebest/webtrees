@@ -141,11 +141,11 @@ class IndividualPage implements RequestHandlerInterface
         return $this->viewResponse('individual-page', [
             'age'              => $this->ageString($individual),
             'clipboard_facts'  => $this->clipboard_service->pastableFacts($individual),
-            'individual'       => $individual,
             'individual_media' => $individual_media,
             'meta_description' => $this->metaDescription($individual),
             'meta_robots'      => 'index,follow',
             'name_records'     => $name_records,
+            'record'           => $individual,
             'sex_records'      => $sex_records,
             'shares'           => $shares,
             'sidebars'         => $this->getSidebars($individual),

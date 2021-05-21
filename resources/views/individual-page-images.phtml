@@ -1,0 +1,64 @@
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var string                             $age
+ * @var Collection<Media>                  $individual_media
+ * @var Collection<Fact>                   $name_records
+ * @var Individual                         $record
+ * @var Collection<Fact>                   $sex_records
+ * @var Collection<string>                 $shares
+ * @var Collection<ModuleSidebarInterface> $sidebars
+ * @var Collection<ModuleTabInterface>     $tabs
+ * @var Tree                               $tree
+ * @var string                             $user_link
+ */
+?>
+
+<?php if ($individual_media->isNotEmpty() || $tree->getPreference('USE_SILHOUETTE') === '1') : ?>
+    <div class="col-sm-3">
+        <?php if ($individual_media->isEmpty()) : ?>
+            <div class="img-thumbnail">
+                <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($record->sex()) ?>"></i>
+            </div>
+        <?php elseif ($individual_media->count() === 1) : ?>
+            <?= $individual_media->first()->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
+        <?php else : ?>
+            <div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div class="carousel-inner">
+                    <?php foreach ($individual_media as $n => $media_file) : ?>
+                        <div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
+                            <?= $media_file->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+                <a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only"><?= I18N::translate('previous') ?></span>
+                </a>
+                <a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only"><?= I18N::translate('next') ?></span>
+                </a>
+            </div>
+        <?php endif ?>
+
+        <?php if (Auth::isEditor($record->tree())) : ?>
+            <div class="text-center">
+                <a href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE'])) ?>">
+                    <?= I18N::translate('Add a media object') ?>
+                </a>
+            </div>
+        <?php endif ?>
+    </div>
+<?php endif ?>

@@ -1,18 +1,6 @@
 <?php
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
-use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddMediaFileModal;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditMediaFileModal;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\FilesystemOperator;
@@ -20,203 +8,37 @@ use League\Flysystem\FilesystemOperator;
 /**
  * @var Collection         $clipboard_facts
  * @var FilesystemOperator $data_filesystem
- * @var Collection         $facts
- * @var Collection         $families
- * @var Collection         $individuals
- * @var Media              $media
- * @var Collection         $notes
- * @var Collection         $sources
+ * @var Collection         $linked_families
+ * @var Collection         $linked_individuals
+ * @var Collection         $linked_notes
+ * @var Collection         $linked_sources
+ * @var Media              $record
  * @var Tree               $tree
  */
+
 ?>
 
-<?php if ($media->isPendingDeletion()) : ?>
-    <?php if (Auth::isModerator($media->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This media object has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
-    <?php elseif (Auth::isEditor($media->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This media object has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
-    <?php endif ?>
-<?php elseif ($media->isPendingAddition()) : ?>
-    <?php if (Auth::isModerator($media->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */ I18N::translate('This media object has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
-    <?php elseif (Auth::isEditor($media->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This media object has been edited. The changes need to be reviewed by a moderator.') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
-    <?php endif ?>
-<?php endif ?>
+<?= view('media-page-pending', ['record' => $record]) ?>
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $media->fullName() ?>
+        <?= $record->fullName() ?>
     </h2>
-    <?php if ($media->canEdit()) : ?>
-        <?= view('media-page-menu', ['record' => $media]) ?>
+    <?php if ($record->canEdit()) : ?>
+        <?= view('media-page-menu', ['clipboard_facts' => $clipboard_facts, 'record' => $record]) ?>
     <?php endif ?>
 </div>
 
 <div class="wt-page-content">
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" data-toggle="tab" role="tab" href="#details">
-                <?= I18N::translate('Details') ?>
-            </a>
-        </li>
-
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $individuals->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
-                <?= I18N::translate('Individuals') ?>
-                <?= view('components/badge', ['count' => $individuals->count()]) ?>
-            </a>
-        </li>
-
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $families->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
-                <?= I18N::translate('Families') ?>
-                <?= view('components/badge', ['count' => $families->count()]) ?>
-            </a>
-        </li>
-
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $sources->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#sources">
-                <?= I18N::translate('Sources') ?>
-                <?= view('components/badge', ['count' => $sources->count()]) ?>
-            </a>
-        </li>
-
-        <li class="nav-item" role="presentation">
-            <a class="nav-link<?= $notes->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#notes">
-                <?= I18N::translate('Notes') ?>
-                <?= view('components/badge', ['count' => $notes->count()]) ?>
-            </a>
-        </li>
-    </ul>
-
-    <div class="tab-content mt-4">
-        <div class="tab-pane active fade show" role="tabpanel" id="details">
-            <table class="table wt-facts-table">
-                <?php foreach ($media->mediaFiles() as $media_file) : ?>
-                    <tr class="<?= $media_file->isPendingAddition() ? 'wt-new' : '' ?><?= $media_file->isPendingDeletion() ? 'wt-old' : '' ?>">
-                        <th scope="row">
-                            <?= I18N::translate('Media file') ?>
-                            <?php if ($media->canEdit()) : ?>
-                                <div class="editfacts nowrap">
-                                    <a class="btn btn-link" href="#" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="<?= route(EditMediaFileModal::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
-                                        <?= view('icons/edit') ?>
-                                        <span class="sr-only">
-                                        <?= I18N::translate('Edit') ?>
-                                    </span>
-                                    </a>
-
-                                    <?php if (count($media->mediaFiles()) > 1) : ?>
-                                        <a class="btn btn-link" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>" data-post-url="<?= e(route(DeleteFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact_id' => $media_file->factId()])) ?>" title="<?= I18N::translate('Delete') ?>">
-                                            <?= view('icons/delete') ?>
-                                            <span class="sr-only">
-                                        <?= I18N::translate('Delete') ?>
-                                    </span>
-                                        </a>
-
-                                    <?php endif ?>
-                                </div>
-                            <?php endif ?>
-                        </th>
-                        <td class="d-flex justify-content-between">
-                            <div>
-                                <?php if ($media_file->isExternal()) : ?>
-                                    <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media->tree()) ?>
-                                <?php elseif (Auth::isEditor($media->tree())) :?>
-                                    <?php if (!$media_file->fileExists($data_filesystem)) : ?>
-                                        <p class="alert alert-danger">
-                                            <?= I18N::translate('The file “%s” does not exist.', e($media_file->filename())) ?>
-                                        </p>
-                                    <?php endif ?>
-                                    <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media->tree()) ?>
-                                <?php endif ?>
-
-                                <?= Registry::elementFactory()->make('OBJE:FILE:TITL')->labelValue($media_file->title(), $media->tree()) ?>
-                                <?= Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->labelValue($media_file->type(), $media->tree()) ?>
-                                <?= Registry::elementFactory()->make('OBJE:FILE:FORM')->labelValue($media_file->format(), $media->tree()) ?>
-                            </div>
-
-                            <div>
-                                <?php if (!$media_file->isExternal()) : ?>
-                                    <?php if (explode('/', $media_file->mimeType())[0] === 'audio') : ?>
-                                    <audio controls>
-                                        <source src="<?= e($media_file->downloadUrl('inline')) ?>" type="<?= $media_file->mimeType() ?>">
-                                    </audio>
-                                    <?php elseif (explode('/', $media_file->mimeType())[0] === 'video') : ?>
-                                        <video controls width="300">
-                                            <source src="<?= e($media_file->downloadUrl('inline')) ?>" type="<?= $media_file->mimeType() ?>">
-                                        </video>
-                                    <?php else : ?>
-                                        <?= $media_file->displayImage(200, 150, 'contain', []) ?>
-                                    <?php endif ?>
-                                    <?php if ($media->tree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($media->tree()) && $media_file->fileExists($data_filesystem)) : ?>
-                                        <br>
-                                        <a href="<?= e($media_file->downloadUrl('attachment')) ?>">
-                                            <?= I18N::translate('Download file') ?>
-                                        </a>
-                                    <?php endif ?>
-                                <?php endif ?>
-                            </div>
-                        </td>
-                    </tr>
-                <?php endforeach ?>
-                <?php foreach ($facts as $fact) : ?>
-                    <?php FunctionsPrintFacts::printFact($fact, $media) ?>
-                <?php endforeach ?>
-                <?php if ($media->canEdit()) : ?>
-                    <?= view('edit/paste-fact-row', ['record' => $media, 'facts' => $clipboard_facts]) ?>
-
-                    <?php FunctionsPrint::printAddNewFact($media, $facts, Media::RECORD_TYPE) ?>
-                    <tr>
-                        <th>
-                            <?= I18N::translate('Source') ?>
-                        </th>
-                        <td>
-                            <a href="<?= e(route(AddNewFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'SOUR'])) ?>">
-                                <?= I18N::translate('Add a source citation') ?>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?= I18N::translate('Restriction') ?>
-                        </th>
-                        <td>
-                            <a href="<?= e(route(AddNewFact::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref(), 'fact' => 'RESN'])) ?>">
-                                <?= I18N::translate('Add a restriction') ?>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <?= I18N::translate('Media file') ?>
-                        </th>
-                        <td>
-                            <a href="#" data-href="<?= e(route(AddMediaFileModal::class, ['tree' => $media->tree()->name(), 'xref' => $media->xref()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
-                                <?= I18N::translate('Add a media file') ?>
-                            </a>
-                        </td>
-                    </tr>
-                <?php endif ?>
-            </table>
-        </div>
-
-        <div class="tab-pane fade" role="tabpanel" id="individuals">
-            <?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
-        </div>
-
-        <div class="tab-pane fade" role="tabpanel" id="families">
-            <?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
-        </div>
-
-        <div class="tab-pane fade" role="tabpanel" id="sources">
-            <?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
-        </div>
-
-        <div class="tab-pane fade" role="tabpanel" id="notes">
-            <?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
-        </div>
-    </div>
+        <?= view('record-page-links', [
+            'details'              => view('media-page-details', ['clipboard_facts' => $clipboard_facts, 'data_filesystem' => $data_filesystem, 'record' => $record]),
+            'linked_families'      => $linked_families,
+            'linked_individuals'   => $linked_individuals,
+            'linked_media_objects' => null,
+            'linked_notes'         => $linked_notes,
+            'linked_sources'       => $linked_sources,
+            'tree'                 => $tree,
+        ]) ?>
 </div>
 
 <?= view('modals/ajax') ?>

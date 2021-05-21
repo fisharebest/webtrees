@@ -1,0 +1,69 @@
+<?php
+
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\View;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Individual                     $record
+ * @var Collection<ModuleTabInterface> $tabs
+ */
+?>
+
+<div class="wt-tabs-individual" id="individual-tabs">
+    <ul class="nav nav-tabs flex-wrap" role="tablist">
+        <?php foreach ($tabs as $tab) : ?>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
+                    <?= $tab->tabTitle() ?>
+                </a>
+            </li>
+        <?php endforeach ?>
+    </ul>
+
+    <div class="tab-content">
+        <?php foreach ($tabs as $tab) : ?>
+            <div id="<?= $tab->name() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) :
+                    ?><?= $tab->getTabContent($record) ?><?php
+                endif ?></div>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<?php View::push('javascript') ?>
+<script>
+  "use strict";
+
+  // Bootstrap tabs - load content dynamically using AJAX
+  $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
+    let target = $(this.hash + ':empty');
+    if (target.length > 0) {
+      // Start the download immediately...
+      let download = fetch(this.dataset.href);
+
+      // ...but don't insert it until the tab is ready.
+      $(this).one('shown.bs.tab', () => {
+        download
+          .then(data => data.text())
+          .then(data => target.html(data));
+      });
+    }
+  });
+
+  // If the URL contains a fragment, then activate the corresponding tab.
+  // Use a prefix on the fragment, to prevent scrolling to the element.
+  let target = window.location.hash.replace("tab-", "");
+  let tab = $("#individual-tabs .nav-link[href='" + target + "']");
+  // If not, then activate the first tab.
+  if (tab.length === 0) {
+    tab = $("#individual-tabs .nav-link:first");
+  }
+  tab.tab("show");
+
+  // If the user selects a tab, update the URL to reflect this
+  $('#individual-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    window.location.hash = "tab-" + e.target.href.substring(e.target.href.indexOf('#') + 1);
+  });
+</script>
+<?php View::endpush() ?>

@@ -1,0 +1,97 @@
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditMediaFileModal;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+use League\Flysystem\FilesystemOperator;
+
+/**
+ * @var Collection           $clipboard_facts
+ * @var FilesystemOperator   $data_filesystem
+ * @var Media                $record
+ * @var Tree                 $tree
+ */
+
+?>
+
+<table class="table wt-facts-table">
+    <?php foreach ($record->mediaFiles() as $media_file) : ?>
+        <tr class="<?= $media_file->isPendingAddition() ? 'wt-new' : '' ?><?= $media_file->isPendingDeletion() ? 'wt-old' : '' ?>">
+            <th scope="row">
+                <?= I18N::translate('Media file') ?>
+                <?php if ($record->canEdit()) : ?>
+                    <div class="editfacts nowrap">
+                        <a class="btn btn-link" href="#" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="<?= route(EditMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
+                            <?= view('icons/edit') ?>
+                            <span class="sr-only">
+                            <?= I18N::translate('Edit') ?>
+                        </span>
+                        </a>
+
+                        <?php if (count($record->mediaFiles()) > 1) : ?>
+                            <a class="btn btn-link" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>" data-post-url="<?= e(route(DeleteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()])) ?>" title="<?= I18N::translate('Delete') ?>">
+                                <?= view('icons/delete') ?>
+                                <span class="sr-only">
+                            <?= I18N::translate('Delete') ?>
+                        </span>
+                            </a>
+
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
+            </th>
+            <td class="d-flex justify-content-between">
+                <div>
+                    <?php if ($media_file->isExternal()) : ?>
+                        <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $record->tree()) ?>
+                    <?php elseif (Auth::isEditor($record->tree())) :?>
+                        <?php if (!$media_file->fileExists($data_filesystem)) : ?>
+                            <p class="alert alert-danger">
+                                <?= I18N::translate('The file “%s” does not exist.', e($media_file->filename())) ?>
+                            </p>
+                        <?php endif ?>
+                        <?= Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $record->tree()) ?>
+                    <?php endif ?>
+
+                    <?= Registry::elementFactory()->make('OBJE:FILE:TITL')->labelValue($media_file->title(), $record->tree()) ?>
+                    <?= Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->labelValue($media_file->type(), $record->tree()) ?>
+                    <?= Registry::elementFactory()->make('OBJE:FILE:FORM')->labelValue($media_file->format(), $record->tree()) ?>
+                </div>
+
+                <div>
+                    <?php if (!$media_file->isExternal()) : ?>
+                        <?php if (explode('/', $media_file->mimeType())[0] === 'audio') : ?>
+                        <audio controls>
+                            <source src="<?= e($media_file->downloadUrl('inline')) ?>" type="<?= $media_file->mimeType() ?>">
+                        </audio>
+                        <?php elseif (explode('/', $media_file->mimeType())[0] === 'video') : ?>
+                            <video controls width="300">
+                                <source src="<?= e($media_file->downloadUrl('inline')) ?>" type="<?= $media_file->mimeType() ?>">
+                            </video>
+                        <?php else : ?>
+                            <?= $media_file->displayImage(200, 150, 'contain', []) ?>
+                        <?php endif ?>
+                        <?php if ($record->tree()->getPreference('SHOW_MEDIA_DOWNLOAD') >= Auth::accessLevel($record->tree()) && $media_file->fileExists($data_filesystem)) : ?>
+                            <br>
+                            <a href="<?= e($media_file->downloadUrl('attachment')) ?>">
+                                <?= I18N::translate('Download file') ?>
+                            </a>
+                        <?php endif ?>
+                    <?php endif ?>
+                </div>
+            </td>
+        </tr>
+    <?php endforeach ?>
+
+    <?php foreach ($record->facts() as $fact) : ?>
+        <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+    <?php endforeach ?>
+</table>

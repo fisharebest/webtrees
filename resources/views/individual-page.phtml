@@ -1,197 +1,56 @@
 <?php
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesAcceptRecord;
-use Fisharebest\Webtrees\Http\RequestHandlers\PendingChangesRejectRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
  * @var string                             $age
- * @var Individual                         $individual
- * @var string                             $user_link
- * @var Collection<ModuleSidebarInterface> $sidebars
+ * @var Collection<Fact>                   $clipboard_facts
  * @var Collection<Media>                  $individual_media
  * @var Collection<Fact>                   $name_records
+ * @var Individual                         $record
  * @var Collection<Fact>                   $sex_records
  * @var Collection<string>                 $shares
+ * @var Collection<ModuleSidebarInterface> $sidebars
  * @var Collection<ModuleTabInterface>     $tabs
  * @var Tree                               $tree
+ * @var string                             $user_link
  */
 ?>
 
-<?php if ($individual->isPendingDeletion()) : ?>
-    <?php if (Auth::isModerator($individual->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', [
-            'alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */
-                I18N::translate('This individual has been deleted. You should review the deletion and then %1$s or %2$s it.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) . '">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>') . ' ' . view('help/link', ['topic' => 'pending_changes']),
-        ]) ?>
-    <?php elseif (Auth::isEditor($individual->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This individual has been deleted. The deletion will need to be reviewed by a moderator.') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
-    <?php endif ?>
-<?php elseif ($individual->isPendingAddition()) : ?>
-    <?php if (Auth::isModerator($individual->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', [
-            'alert' => /* I18N: %1$s is “accept”, %2$s is “reject”. These are links. */
-                I18N::translate('This individual has been edited. You should review the changes and then %1$s or %2$s them.', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesAcceptRecord::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>', '<a href="#" class="alert-link" data-post-url="' . e(route(PendingChangesRejectRecord::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) . '">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>') . ' ' . view('help/link', ['topic' => 'pending_changes']),
-        ]) ?>
-    <?php elseif (Auth::isEditor($individual->tree())) : ?>
-        <?= view('components/alert-warning-dismissible', ['alert' => I18N::translate('This individual has been edited. The changes need to be reviewed by a moderator.') . ' ' . view('help/link', ['topic' => 'pending_changes'])]) ?>
-    <?php endif ?>
-<?php endif ?>
+<?= view('individual-page-pending', ['record' => $record]) ?>
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $individual->fullName() ?><?= $user_link ?>, <?= $individual->lifespan() ?> <?= $age ?>
+        <?= $record->fullName() ?><?= $user_link ?>, <?= $record->lifespan() ?> <?= $age ?>
     </h2>
-    <?php if ($individual->canEdit()) : ?>
-        <?= view('individual-page-menu', ['record' => $individual, 'shares' => $shares]) ?>
+
+    <?php if ($record->canEdit()) : ?>
+        <?= view('individual-page-menu', ['clipboard_facts' => $clipboard_facts, 'record' => $record, 'shares' => $shares]) ?>
     <?php endif ?>
 </div>
 
 <div class="row">
-    <div class="<?= $sidebars->isEmpty() ? 'col-sm-12' : 'col-sm-8' ?>">
+    <div class="col">
         <div class="row mb-4">
-            <!-- Individual images -->
-            <?php if ($individual_media->isNotEmpty() || $tree->getPreference('USE_SILHOUETTE') === '1') : ?>
-                <div class="col-sm-3">
-                    <?php if ($individual_media->isEmpty()) : ?>
-                        <div class="img-thumbnail">
-                            <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($individual->sex()) ?>"></i>
-                        </div>
-                    <?php elseif ($individual_media->count() === 1) : ?>
-                        <?= $individual_media->first()->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
-                    <?php else : ?>
-                        <div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
-                            <div class="carousel-inner">
-                                <?php foreach ($individual_media as $n => $media_file) : ?>
-                                    <div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
-                                        <?= $media_file->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                            <a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only"><?= I18N::translate('previous') ?></span>
-                            </a>
-                            <a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only"><?= I18N::translate('next') ?></span>
-                            </a>
-                        </div>
-                    <?php endif ?>
+            <?= view('individual-page-images', ['individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
 
-                    <?php if (Auth::isEditor($individual->tree())) : ?>
-                        <div class="text-center">
-                            <a href="<?= e(route(AddNewFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact' => 'OBJE'])) ?>">
-                                <?= I18N::translate('Add a media object') ?>
-                            </a>
-                        </div>
-                    <?php endif ?>
-                </div>
-            <?php endif ?>
-
-            <!-- Name accordion -->
-            <div class="col-sm accordion" id="individual-names">
-                <?php foreach ($name_records as $name_record) : ?>
-                    <?= $name_record ?>
-                <?php endforeach ?>
-
-                <?php foreach ($sex_records as $sex_record) : ?>
-                    <?= $sex_record ?>
-                <?php endforeach ?>
-            </div>
+            <?= view('individual-page-names', ['name_records' => $name_records, 'sex_records' => $sex_records]) ?>
         </div>
 
-        <div class="wt-tabs-individual" id="individual-tabs">
-            <ul class="nav nav-tabs flex-wrap" role="tablist">
-                <?php foreach ($tabs as $tab) : ?>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link<?= $tab->isGrayedOut($individual) ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" data-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" href="#<?= $tab->name() ?>">
-                            <?= $tab->tabTitle() ?>
-                        </a>
-                    </li>
-                <?php endforeach ?>
-            </ul>
-
-            <div class="tab-content">
-                <?php foreach ($tabs as $tab) : ?>
-                    <div id="<?= $tab->name() ?>" class="tab-pane fade wt-ajax-load" role="tabpanel"><?php if (!$tab->canLoadAjax()) :
-                        ?><?= $tab->getTabContent($individual) ?><?php
-                             endif ?></div>
-                <?php endforeach ?>
-            </div>
-        </div>
+        <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>
     </div>
+
     <?php if ($sidebars->isNotEmpty()) : ?>
-    <div class="col-sm-4 accordion" id="sidebar">
-        <?php foreach ($sidebars as $sidebar) : ?>
-            <div class="card">
-                <div class="card-header" role="tab" id="sidebar-header-<?= $sidebar->name() ?>">
-                    <div class="card-title mb-0">
-                        <a data-toggle="collapse" href="#sidebar-content-<?= $sidebar->name() ?>" aria-expanded="<?= $sidebar->name() === 'family_nav' ? 'true' : 'false' ?>" aria-controls="sidebar-content-<?= $sidebar->name() ?>">
-                            <?= view('icons/expand') ?>
-                            <?= view('icons/collapse') ?>
-                            <?= $sidebar->sidebarTitle() ?>
-                        </a>
-                    </div>
-                </div>
-
-                <div id="sidebar-content-<?= $sidebar->name() ?>" class="collapse<?= $sidebar->name() === 'family_nav' ? ' show' : '' ?>" data-parent="#sidebar" aria-labelledby="sidebar-header-<?= $sidebar->name() ?>">
-                    <div class="card-body">
-                        <?= $sidebar->getSidebarContent($individual) ?>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach ?>
-    </div>
+        <?= view('individual-page-sidebars', ['record' => $record, 'sidebars' => $sidebars]) ?>
     <?php endif ?>
 </div>
 
-<?php View::push('javascript') ?>
-<script>
-  "use strict";
-
-  // Bootstrap tabs - load content dynamically using AJAX
-  $('a[data-toggle="tab"][data-href]').on('show.bs.tab', function () {
-      let target = $(this.hash + ':empty');
-      if (target.length > 0) {
-          // Start the download immediately...
-          let download = fetch(this.dataset.href);
-
-          // ...but don't insert it until the tab is ready.
-          $(this).one('shown.bs.tab', () => {
-              download
-                  .then(data => data.text())
-                  .then(data => target.html(data));
-          });
-      }
-  });
-
-  // If the URL contains a fragment, then activate the corresponding tab.
-  // Use a prefix on the fragment, to prevent scrolling to the element.
-  let target = window.location.hash.replace("tab-", "");
-  let tab = $("#individual-tabs .nav-link[href='" + target + "']");
-  // If not, then activate the first tab.
-  if (tab.length === 0) {
-    tab = $("#individual-tabs .nav-link:first");
-  }
-  tab.tab("show");
-
-  // If the user selects a tab, update the URL to reflect this
-  $('#individual-tabs a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    window.location.hash = "tab-" + e.target.href.substring(e.target.href.indexOf('#') + 1);
-  });
-</script>
-<?php View::endpush() ?>
-
 <?= view('modals/ajax') ?>
-<?= view('modals/shares', ['shares' => $shares, 'title' => I18N::translate('Share') . ' — ' . $individual->fullName()]) ?>
+<?= view('modals/shares', ['shares' => $shares, 'title' => I18N::translate('Share') . ' — ' . $record->fullName()]) ?>

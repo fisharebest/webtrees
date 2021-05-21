@@ -21,8 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -31,12 +29,9 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function array_search;
 use function assert;
 use function is_string;
 use function redirect;
-
-use const PHP_INT_MAX;
 
 /**
  * Show a header's page.
@@ -44,22 +39,6 @@ use const PHP_INT_MAX;
 class HeaderPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
-
-    // Show the header's facts in this order:
-    private const FACT_ORDER = [
-        1 => 'HEAD:SOUR',
-        'HEAD:DEST',
-        'HEAD:DATE',
-        'HEAD:SUBM',
-        'HEAD:SUBN',
-        'HEAD:FILE',
-        'HEAD:COPR',
-        'HEAD:GEDC',
-        'HEAD:CHAR',
-        'HEAD:LANG',
-        'HEAD:PLAC',
-        'HEAD:NOTE',
-    ];
 
     /**
      * @param ServerRequestInterface $request
@@ -84,34 +63,18 @@ class HeaderPage implements RequestHandlerInterface
             return redirect($header->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        return $this->viewResponse('gedcom-record-page', [
-            'facts'            => $this->facts($header),
-            'record'           => $header,
-            'families'         => new Collection(),
-            'individuals'      => new Collection(),
-            'media_objects'    => new Collection(),
-            'meta_description' => '',
-            'meta_robots'      => 'index,follow',
-            'notes'            => new Collection(),
-            'sources'          => new Collection(),
-            'title'            => $header->fullName(),
-            'tree'             => $tree,
+        return $this->viewResponse('record-page', [
+            'clipboard_facts'      => new Collection(),
+            'linked_families'      => null,
+            'linked_individuals'   => null,
+            'linked_media_objects' => null,
+            'linked_notes'         => null,
+            'linked_sources'       => null,
+            'meta_description'     => '',
+            'meta_robots'          => 'index,follow',
+            'record'               => $header,
+            'title'                => $header->fullName(),
+            'tree'                 => $tree,
         ]);
-    }
-
-    /**
-     * @param Header $record
-     *
-     * @return Collection<Fact>
-     */
-    private function facts(Header $record): Collection
-    {
-        return $record->facts()
-            ->sort(static function (Fact $x, Fact $y): int {
-                $sort_x = array_search($x->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-                $sort_y = array_search($y->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-
-                return $sort_x <=> $sort_y;
-            });
     }
 }

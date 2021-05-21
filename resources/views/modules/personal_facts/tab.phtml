@@ -61,9 +61,7 @@ use Illuminate\Support\Collection;
             <?php endif ?>
 
             <?php if ($individual->canEdit()) : ?>
-                <?= view('edit/paste-fact-row', ['record' => $individual, 'facts' => $clipboard_facts]) ?>
-
-                <?php FunctionsPrint::printAddNewFact($individual, $facts, Individual::RECORD_TYPE) ?>
+                <?php FunctionsPrint::printAddNewFact($individual) ?>
             <?php endif ?>
         </tbody>
     </table>

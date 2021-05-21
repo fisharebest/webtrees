@@ -19,46 +19,45 @@ use Fisharebest\Webtrees\Registry;
 <tr>
     <th scope="row">
         <label for="add-fact">
-            <?= I18N::translate('Fact or event') ?>
+            <?= I18N::translate('Add a fact') ?>
         </label>
     </th>
     <td>
-        <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
-            <?= csrf_field() ?>
+        <?php if ($add_facts !== []) : ?>
+            <form method="post" action="<?= e(route(SelectNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" onsubmit="if ($('#add-fact').val() === null) {event.preventDefault();}">
+                <?= csrf_field() ?>
 
-            <div class="input-group">
-                <select class="custom-select" id="add-fact" name="fact">
-                    <option value="" disabled selected>
-                        <?= I18N::translate('&lt;select&gt;') ?>
-                    </option>
-                    <?php foreach ($add_facts as $fact => $fact_name) : ?>
-                        <option value="<?= $fact ?>"><?= $fact_name ?></option>
-                    <?php endforeach ?>
-                    <?php if ($record->tag() === Individual::RECORD_TYPE || $record->tag() === Family::RECORD_TYPE) : ?>
-                        <option value="FACT">
-                        <?= I18N::translate('Custom fact') ?>
+                <div class="input-group">
+                    <select class="custom-select" id="add-fact" name="fact">
+                        <option value="" disabled selected>
+                            <?= I18N::translate('&lt;select&gt;') ?>
                         </option>
-                    <option value="EVEN">
-                        <?= I18N::translate('Custom event') ?>
-                    </option>
-                    <?php endif ?>
-                </select>
-                <div class="input-group-append">
-                    <button class="btn btn-light" type="submit">
-                        <?= /* I18N: A button label. */ I18N::translate('add') ?>
-                    </button>
+                        <?php foreach ($add_facts as $fact => $label) : ?>
+                            <option value="<?= $fact ?>"><?= $label ?></option>
+                        <?php endforeach ?>
+                        <?php if ($record->tag() === Individual::RECORD_TYPE || $record->tag() === Family::RECORD_TYPE) : ?>
+                            <option value="FACT"><?= I18N::translate('Custom fact') ?></option>
+                            <option value="EVEN"><?= I18N::translate('Custom event') ?></option>
+                        <?php endif ?>
+                    </select>
+
+                    <div class="input-group-append">
+                        <button class="btn btn-light" type="submit">
+                            <?= /* I18N: A button label. */ I18N::translate('add') ?>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        <?php endif ?>
 
         <div class="wt-quick-facts">
-            <?php foreach ($quick_facts as $fact) : ?>
-                <a class="btn btn-link btn-sm wt-quick-fact" href="<?= e(route(AddNewFact::class, [
+            <?php foreach ($quick_facts as $fact => $label) : ?>
+                <a class="btn btn-link wt-quick-fact" href="<?= e(route(AddNewFact::class, [
                     'fact' => $fact,
                     'xref' => $record->xref(),
                     'tree' => $record->tree()->name(),
                 ])) ?>">
-                    <?= Registry::elementFactory()->make($record->tag() . ':' . $fact)->label() ?>
+                    <?= $label ?>
                 </a>
             <?php endforeach ?>
         </div>

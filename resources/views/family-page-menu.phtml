@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
@@ -9,9 +10,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawRecordPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
 use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
 
 /**
- * @var Family $record
+ * @var Collection<Fact> $clipboard_facts
+ * @var Family           $record
  */
 
 ?>
@@ -52,6 +55,12 @@ use Fisharebest\Webtrees\I18N;
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order children') ?>
             </a>
+        <?php endif ?>
+
+        <?php if ($clipboard_facts->isNotEmpty()) : ?>
+            <div class="dropdown-divider"></div>
+
+            <?= view('record-page-menu-clipboard', ['clipboard_facts' => $clipboard_facts, 'record' => $record]) ?>
         <?php endif ?>
 
         <div class="dropdown-divider"></div>

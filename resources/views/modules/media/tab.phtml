@@ -30,9 +30,5 @@ use Illuminate\Support\Collection;
                 </td>
             </tr>
         <?php endif ?>
-
-        <?php if ($can_edit) : ?>
-            <?= view('edit/paste-fact-row', ['record' => $individual, 'facts' => $clipboard_facts]) ?>
-        <?php endif ?>
     </table>
 </div>

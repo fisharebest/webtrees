@@ -85,9 +85,6 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('PREFER_LEVEL2_SOURCES', $params['PREFER_LEVEL2_SOURCES'] ?? '');
         $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $params['QUICK_REQUIRED_FACTS'] ?? []));
         $tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $params['QUICK_REQUIRED_FAMFACTS'] ?? []));
-        $tree->setPreference('REPO_FACTS_ADD', implode(',', $params['REPO_FACTS_ADD'] ?? []));
-        $tree->setPreference('REPO_FACTS_QUICK', implode(',', $params['REPO_FACTS_QUICK'] ?? []));
-        $tree->setPreference('REPO_FACTS_UNIQUE', implode(',', $params['REPO_FACTS_UNIQUE'] ?? []));
         $tree->setPreference('SHOW_COUNTER', $params['SHOW_COUNTER'] ?? '');
         $tree->setPreference('SHOW_EST_LIST_DATES', $params['SHOW_EST_LIST_DATES'] ?? '');
         $tree->setPreference('SHOW_FACT_ICONS', $params['SHOW_FACT_ICONS'] ?? '');
@@ -100,9 +97,6 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('SHOW_PEDIGREE_PLACES', $params['SHOW_PEDIGREE_PLACES'] ?? '');
         $tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', $params['SHOW_PEDIGREE_PLACES_SUFFIX'] ?? '');
         $tree->setPreference('SHOW_RELATIVES_EVENTS', implode(',', $params['SHOW_RELATIVES_EVENTS'] ?? []));
-        $tree->setPreference('SOUR_FACTS_ADD', implode(',', $params['SOUR_FACTS_ADD'] ?? []));
-        $tree->setPreference('SOUR_FACTS_QUICK', implode(',', $params['SOUR_FACTS_QUICK'] ?? []));
-        $tree->setPreference('SOUR_FACTS_UNIQUE', implode(',', $params['SOUR_FACTS_UNIQUE'] ?? []));
         $tree->setPreference('SUBLIST_TRIGGER_I', $params['SUBLIST_TRIGGER_I'] ?? '200');
         $tree->setPreference('SURNAME_LIST_STYLE', $params['SURNAME_LIST_STYLE'] ?? '');
         $tree->setPreference('SURNAME_TRADITION', $params['SURNAME_TRADITION'] ?? '');

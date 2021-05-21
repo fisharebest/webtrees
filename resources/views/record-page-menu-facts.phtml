@@ -1,0 +1,26 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var GedcomRecord $record
+ */
+
+?>
+
+<span class="dropdown-header">
+                <?= I18N::translate('Add a fact') ?>
+            </span>
+
+<?php foreach ($record->missingFacts() as $fact => $label) : ?>
+    <a class="dropdown-item" href="<?= e(route(AddNewFact::class, [
+        'fact' => $fact,
+        'xref' => $record->xref(),
+        'tree' => $record->tree()->name(),
+    ])) ?>">
+        <?= view('icons/add') ?>
+        <?= $label ?>
+    </a>
+<?php endforeach ?>
