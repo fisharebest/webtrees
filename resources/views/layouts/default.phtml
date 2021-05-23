@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
@@ -47,7 +48,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <!--IE11/Edge-->
         <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
 
-        <link rel="manifest" href="<?= e(asset('site.webmanifest')) ?>">
+        <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>">
 
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
         <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>

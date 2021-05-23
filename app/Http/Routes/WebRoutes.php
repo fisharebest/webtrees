@@ -318,6 +318,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserPageUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
+use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 
 /**
  * Routing table for web requests
@@ -709,6 +710,7 @@ class WebRoutes
             // Some URL rewrite configurations will pass everything not in /public to index.php
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png');
             $router->get(FaviconIco::class, '/favicon.ico');
+            $router->get(WebmanifestJson::class, '/webmanifest.json');
         });
     }
 }
