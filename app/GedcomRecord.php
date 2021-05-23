@@ -839,7 +839,7 @@ class GedcomRecord
             [, $max] = explode(':', $repeat);
             $max = $max === 'M' ? PHP_INT_MAX : (int) $max;
 
-            if ($this->facts([$subtag])->count() < $max) {
+            if ($this->facts([$subtag], false, null, true)->count() < $max) {
                 $missing_facts[$subtag] = $subtag;
                 $missing_facts[$subtag] = Registry::elementFactory()->make($this->tag() . ':' . $subtag)->label();
             }
