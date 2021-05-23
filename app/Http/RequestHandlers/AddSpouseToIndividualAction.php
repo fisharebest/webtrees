@@ -66,18 +66,21 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
+        // Create the new spouse
         $levels = $params['ilevels'] ?? [];
         $tags   = $params['itags'] ?? [];
         $values = $params['ivalues'] ?? [];
-
-        // Create the new spouse
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
         $spouse = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
 
-        // Create a new family
-        $i_link   = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
-        $s_link   = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
-        $family = $tree->createFamily("0 @@ FAM\n" . $i_link . $s_link);
+        // Create the new family
+        $levels = $params['flevels'] ?? [];
+        $tags   = $params['ftags'] ?? [];
+        $values = $params['fvalues'] ?? [];
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom('FAM', $levels, $tags, $values);
+        $i_link = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
+        $s_link = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
+        $family = $tree->createFamily("0 @@ FAM\n" . $gedcom . $i_link . $s_link);
 
         // Link the individual to the family
         $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
