@@ -2,6 +2,8 @@
 
 use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
+use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchQuickAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 use Fisharebest\Webtrees\I18N;
@@ -41,12 +43,12 @@ use Psr\Http\Message\ServerRequestInterface;
         </title>
 
         <!--iOS-->
-        <link rel="apple-touch-icon" sizes="180x180" href="<?= e(asset('apple-touch-icon.png')) ?>">
+        <link rel="apple-touch-icon" sizes="180x180" href="<?= e(route(AppleTouchIconPng::class)) ?>">
         <!--Generic favicons-->
         <link rel="icon" sizes="32x32" href="<?= e(asset('favicon-32.png')) ?>">
         <link rel="icon" sizes="192x192" href="<?= e(asset('favicon-192.png')) ?>">
         <!--IE11/Edge-->
-        <meta name="msapplication-config" content="<?= e(asset('browserconfig.xml')) ?>">
+        <meta name="msapplication-config" content="<?= e(route(BrowserconfigXml::class)) ?>">
 
         <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>">
 
