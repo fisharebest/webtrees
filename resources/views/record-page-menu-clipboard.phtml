@@ -1,0 +1,40 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\PasteFact;
+use Fisharebest\Webtrees\I18N;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact> $clipboard_facts
+ * @var GedcomRecord     $record
+ */
+
+?>
+
+<div class="dropdown-header">
+    <?= I18N::translate('Add from clipboard') ?>
+</div>
+
+<?php foreach ($clipboard_facts as $fact) : ?>
+    <form method="post" class="form-inline dropdown-item" action="<?= route(PasteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
+        <?= view('icons/copy') ?>
+        <input type="hidden" name="fact_id" value="<?= e($fact->id()) ?>">
+        <button type="submit" class="btn btn-text p-0" style="max-width:10rem">
+            <?= csrf_field() ?>
+            <?= $fact->label() ?>
+            <?php if ($fact->target() !== null) : ?>
+                – <?= strip_tags($fact->target()->fullName()) ?>
+            <?php elseif ($fact->value() !== '') : ?>
+                – <?= e($fact->value()) ?>
+            <?php endif ?>
+            <?php if ($fact->date()->isOK()) : ?>
+                – <?= $fact->date()->minimumDate()->format('%Y') ?>
+            <?php endif ?>
+            <?php if ($fact->place()->gedcomName() !== '') : ?>
+                – <?= $fact->place()->shortName() ?>
+            <?php endif ?>
+        </button>
+    </form>
+<?php endforeach ?>

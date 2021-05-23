@@ -1,0 +1,53 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Collection<Fact>       $clipboard_facts
+ * @var Collection<Family>     $linked_families
+ * @var Collection<Individual> $linked_individuals
+ * @var Collection<Media>      $linked_media_objects
+ * @var Collection<Note>       $linked_notes
+ * @var Collection<Source>     $linked_sources
+ * @var GedcomRecord           $record
+ * @var Tree                   $tree
+ */
+
+?>
+
+<?= view('record-page-pending', ['record' => $record]) ?>
+
+<div class="d-flex mb-4">
+    <h2 class="wt-page-title mx-auto">
+        <?= $record->fullName() ?>
+    </h2>
+    <?php if ($record->canEdit()) : ?>
+        <?= view('record-page-menu', ['clipboard_facts' => $clipboard_facts, 'record' => $record]) ?>
+    <?php endif ?>
+</div>
+
+<div class="wt-page-content">
+    <?php if ($linked_families instanceof Collection || $linked_individuals instanceof Collection || $linked_media_objects instanceof Collection || $linked_notes instanceof Collection || $linked_sources instanceof Collection) : ?>
+        <?= view('record-page-links', [
+            'details'              => view('record-page-details', ['record' => $record]),
+            'linked_families'      => $linked_families,
+            'linked_individuals'   => $linked_individuals,
+            'linked_media_objects' => $linked_media_objects,
+            'linked_notes'         => $linked_notes,
+            'linked_sources'       => $linked_sources,
+            'tree'                 => $tree,
+        ]) ?>
+    <?php else : ?>
+        <?= view('record-page-details', ['clipboard_facts' => $clipboard_facts, 'record' => $record]) ?>
+    <?php endif ?>
+</div>
+
+<?= view('modals/ajax') ?>

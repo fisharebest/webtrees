@@ -21,22 +21,17 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function array_search;
 use function assert;
 use function is_string;
 use function redirect;
-
-use const PHP_INT_MAX;
 
 /**
  * Show a submitter's page.
@@ -44,21 +39,6 @@ use const PHP_INT_MAX;
 class SubmitterPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
-
-    // Show the submitter's facts in this order:
-    private const FACT_ORDER = [
-        1 => 'SUBM:NAME',
-        'SUBM:ADDR',
-        'SUBM:PHON',
-        'SUBM:EMAIL',
-        'SUBM:WWW',
-        'SUBM:LANG',
-        'SUBM:OBJE',
-        'SUBM:RFN',
-        'SUBM:RIN',
-        'SUBM:NOTE',
-        'SUBM:CHAN',
-    ];
 
     /**
      * @param ServerRequestInterface $request
@@ -73,41 +53,28 @@ class SubmitterPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $submitter = Registry::submitterFactory()->make($xref, $tree);
-        $submitter = Auth::checkSubmitterAccess($submitter, false);
+        $record = Registry::submitterFactory()->make($xref, $tree);
+        $record = Auth::checkSubmitterAccess($record, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($submitter);
+        $slug = Registry::slugFactory()->make($record);
 
-        if ($submitter->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
-            return redirect($submitter->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        return $this->viewResponse('submitter-page', [
-            'facts'            => $this->facts($submitter),
-            'submitter'        => $submitter,
-            'families'         => $submitter->linkedFamilies('SUBM'),
-            'individuals'      => $submitter->linkedIndividuals('SUBM'),
-            'meta_description' => '',
-            'meta_robots'      => 'index,follow',
-            'title'            => $submitter->fullName(),
-            'tree'             => $tree,
+        return $this->viewResponse('record-page', [
+            'clipboard_facts'      => new Collection(),
+            'linked_families'      => $record->linkedFamilies('SUBM'),
+            'linked_individuals'   => $record->linkedIndividuals('SUBM'),
+            'linked_media_objects' => null,
+            'linked_notes'         => null,
+            'linked_sources'       => null,
+            'meta_description'     => '',
+            'meta_robots'          => 'index,follow',
+            'record'               => $record,
+            'title'                => $record->fullName(),
+            'tree'                 => $tree,
         ]);
-    }
-
-    /**
-     * @param Submitter $record
-     *
-     * @return Collection<Fact>
-     */
-    private function facts(Submitter $record): Collection
-    {
-        return $record->facts()
-            ->sort(static function (Fact $x, Fact $y): int {
-                $sort_x = array_search($x->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-                $sort_y = array_search($y->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-
-                return $sort_x <=> $sort_y;
-            });
     }
 }

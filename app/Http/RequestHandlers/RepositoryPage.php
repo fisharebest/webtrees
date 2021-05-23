@@ -21,23 +21,17 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function array_search;
 use function assert;
 use function is_string;
 use function redirect;
-
-use const PHP_INT_MAX;
 
 /**
  * Show a repository's page.
@@ -84,41 +78,28 @@ class RepositoryPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $repository = Registry::repositoryFactory()->make($xref, $tree);
-        $repository = Auth::checkRepositoryAccess($repository, false);
+        $record = Registry::repositoryFactory()->make($xref, $tree);
+        $record = Auth::checkRepositoryAccess($record, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($repository);
+        $slug = Registry::slugFactory()->make($record);
 
-        if ($repository->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
-            return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
-        return $this->viewResponse('repository-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($repository),
-            'facts'            => $this->facts($repository),
-            'meta_description' => '',
-            'meta_robots'      => 'index,follow',
-            'repository'       => $repository,
-            'sources'          => $repository->linkedSources('REPO'),
-            'title'            => $repository->fullName(),
-            'tree'             => $tree,
+        return $this->viewResponse('record-page', [
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($record),
+            'linked_families'      => null,
+            'linked_individuals'   => null,
+            'linked_media_objects' => null,
+            'linked_notes'         => null,
+            'linked_sources'       => $record->linkedSources('REPO'),
+            'meta_description'     => '',
+            'meta_robots'          => 'index,follow',
+            'record'               => $record,
+            'title'                => $record->fullName(),
+            'tree'                 => $tree,
         ]);
-    }
-
-    /**
-     * @param Repository $record
-     *
-     * @return Collection<Fact>
-     */
-    private function facts(Repository $record): Collection
-    {
-        return $record->facts()
-            ->sort(static function (Fact $x, Fact $y): int {
-                $sort_x = array_search($x->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-                $sort_y = array_search($y->tag(), self::FACT_ORDER, true) ?: PHP_INT_MAX;
-
-                return $sort_x <=> $sort_y;
-            });
     }
 }

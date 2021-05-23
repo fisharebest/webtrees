@@ -1,0 +1,41 @@
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Http\RequestHandlers\EditNotePage;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Note;
+use Illuminate\Support\Collection;
+
+/**
+ * @var Note             $record
+ * @var Collection<Fact> $clipboard_facts
+ * @var string           $text
+ */
+
+?>
+
+<table class="table wt-facts-table">
+    <tr>
+        <th scope="row">
+            <?= I18N::translate('Shared note') ?>
+            <?php if (Auth::isEditor($record->tree())) : ?>
+                <div class="editfacts nowrap">
+                    <a class="btn btn-link" href="<?= e(route(EditNotePage::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
+                        <?= view('icons/edit') ?>
+                        <span class="sr-only">
+                            <?= I18N::translate('Edit') ?>
+                        </span>
+                    </a>
+                </div>
+            <?php endif ?>
+        </th>
+        <td><?= Filter::formatText($record->getNote(), $record->tree()) ?></td>
+    </tr>
+
+    <?php foreach ($record->facts() as $fact) : ?>
+        <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+    <?php endforeach ?>
+</table>

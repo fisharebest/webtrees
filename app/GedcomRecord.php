@@ -33,6 +33,10 @@ use Illuminate\Support\Collection;
 
 use function addcslashes;
 use function app;
+use function array_combine;
+use function array_keys;
+use function array_map;
+use function array_search;
 use function array_shift;
 use function assert;
 use function count;
@@ -48,6 +52,7 @@ use function preg_match_all;
 use function preg_replace;
 use function preg_replace_callback;
 use function preg_split;
+use function range;
 use function route;
 use function str_contains;
 use function str_pad;
@@ -792,7 +797,26 @@ class GedcomRecord
         }
 
         if ($sort) {
-            $facts = Fact::sortFacts($facts);
+            switch ($this->tag()) {
+                case Family::RECORD_TYPE:
+                case Individual::RECORD_TYPE:
+                    $facts = Fact::sortFacts($facts);
+                    break;
+
+                default:
+                    $subtags = Registry::elementFactory()->make($this->tag())->subtags();
+                    $subtags = array_map(fn (string $tag): string => $this->tag() . ':' . $tag, array_keys($subtags));
+                    $subtags = array_combine(range(1, count($subtags)), $subtags);
+
+                    $facts = $facts
+                        ->sort(static function (Fact $x, Fact $y) use ($subtags): int {
+                            $sort_x = array_search($x->tag(), $subtags, true) ?: PHP_INT_MAX;
+                            $sort_y = array_search($y->tag(), $subtags, true) ?: PHP_INT_MAX;
+
+                            return $sort_x <=> $sort_y;
+                        });
+                    break;
+            }
         }
 
         if ($ignore_deleted) {
@@ -802,6 +826,35 @@ class GedcomRecord
         }
 
         return new Collection($facts);
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    public function missingFacts(): array
+    {
+        $missing_facts = [];
+
+        foreach (Registry::elementFactory()->make($this->tag())->subtags() as $subtag => $repeat) {
+            [, $max] = explode(':', $repeat);
+            $max = $max === 'M' ? PHP_INT_MAX : (int) $max;
+
+            if ($this->facts([$subtag], false, null, true)->count() < $max) {
+                $missing_facts[$subtag] = $subtag;
+                $missing_facts[$subtag] = Registry::elementFactory()->make($this->tag() . ':' . $subtag)->label();
+            }
+        }
+
+        uasort($missing_facts, I18N::comparator());
+
+        if ($this->tree->getPreference('MEDIA_UPLOAD') < Auth::accessLevel($this->tree)) {
+            unset($missing_facts['OBJE']);
+        }
+
+        // We have special code for this.
+        unset($missing_facts['FILE']);
+
+        return $missing_facts;
     }
 
     /**

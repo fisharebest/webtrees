@@ -21,13 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -70,42 +67,28 @@ class MediaPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $media = Registry::mediaFactory()->make($xref, $tree);
-        $media = Auth::checkMediaAccess($media);
+        $record = Registry::mediaFactory()->make($xref, $tree);
+        $record = Auth::checkMediaAccess($record);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($media);
+        $slug = Registry::slugFactory()->make($record);
 
-        if ($media->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
-            return redirect($media->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('media-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($media),
-            'data_filesystem'  => $data_filesystem,
-            'families'         => $media->linkedFamilies('OBJE'),
-            'facts'            => $this->facts($media),
-            'individuals'      => $media->linkedIndividuals('OBJE'),
-            'media'            => $media,
-            'meta_description' => '',
-            'meta_robots'      => 'index,follow',
-            'notes'            => $media->linkedNotes('OBJE'),
-            'sources'          => $media->linkedSources('OBJE'),
-            'title'            => $media->fullName(),
-            'tree'             => $tree,
+            'clipboard_facts'    => $this->clipboard_service->pastableFacts($record),
+            'data_filesystem'    => $data_filesystem,
+            'linked_families'    => $record->linkedFamilies('OBJE'),
+            'linked_individuals' => $record->linkedIndividuals('OBJE'),
+            'linked_notes'       => $record->linkedNotes('OBJE'),
+            'linked_sources'     => $record->linkedSources('OBJE'),
+            'meta_description'   => '',
+            'meta_robots'        => 'index,follow',
+            'record'             => $record,
+            'title'              => $record->fullName(),
+            'tree'               => $tree,
         ]);
-    }
-
-    /**
-     * @param Media $record
-     *
-     * @return Collection<Fact>
-     */
-    private function facts(Media $record): Collection
-    {
-        return $record->facts()
-            ->filter(static function (Fact $fact): bool {
-                return $fact->tag() !== 'OBJE:FILE';
-            });
     }
 }

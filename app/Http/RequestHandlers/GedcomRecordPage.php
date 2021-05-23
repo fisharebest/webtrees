@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -85,18 +86,16 @@ class GedcomRecordPage implements RequestHandlerInterface
             return redirect($record->url());
         }
 
-        $record_type = $record->tag();
-
-        return $this->viewResponse('gedcom-record-page', [
-            'facts'         => $record->facts(),
-            'families'      => $record->linkedFamilies($record_type),
-            'individuals'   => $record->linkedIndividuals($record_type),
-            'notes'         => $record->linkedNotes($record_type),
-            'media_objects' => $record->linkedMedia($record_type),
-            'record'        => $record,
-            'sources'       => $record->linkedSources($record_type),
-            'title'         => $record->fullName(),
-            'tree'          => $tree,
+        return $this->viewResponse('record-page', [
+            'clipboard_facts'      => new Collection(),
+            'linked_families'      => $record->linkedFamilies($record->tag()),
+            'linked_individuals'   => $record->linkedIndividuals($record->tag()),
+            'linked_media_objects' => $record->linkedMedia($record->tag()),
+            'linked_notes'         => $record->linkedNotes($record->tag()),
+            'linked_sources'       => $record->linkedSources($record->tag()),
+            'record'               => $record,
+            'title'                => $record->fullName(),
+            'tree'                 => $tree,
         ]);
     }
 }

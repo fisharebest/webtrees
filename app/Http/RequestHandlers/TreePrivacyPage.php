@@ -142,12 +142,6 @@ class TreePrivacyPage implements RequestHandlerInterface
             explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')),
             explode(',', $tree->getPreference('FAM_FACTS_ADD')),
             explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('NOTE_FACTS_ADD')),
-            explode(',', $tree->getPreference('NOTE_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('SOUR_FACTS_ADD')),
-            explode(',', $tree->getPreference('SOUR_FACTS_UNIQUE')),
-            explode(',', $tree->getPreference('REPO_FACTS_ADD')),
-            explode(',', $tree->getPreference('REPO_FACTS_UNIQUE')),
             [
                 'SOUR',
                 'REPO',

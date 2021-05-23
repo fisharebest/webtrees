@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -28,14 +29,11 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -497,18 +495,16 @@ class FunctionsPrint
     /**
      * Print a new fact box on details pages
      *
-     * @param GedcomRecord     $record    the person, family, source etc the fact will be added to
-     * @param Collection<Fact> $usedfacts an array of facts already used in this record
-     * @param string           $type      the type of record INDI, FAM, SOUR etc
+     * @param GedcomRecord $record the person, family, source etc the fact will be added to
      *
      * @return void
      */
-    public static function printAddNewFact(GedcomRecord $record, Collection $usedfacts, string $type): void
+    public static function printAddNewFact(GedcomRecord $record): void
     {
         $tree = $record->tree();
 
-        // -- Add from pick list
-        switch ($type) {
+        // Add from pick list
+        switch ($record->tag()) {
             case Individual::RECORD_TYPE:
                 $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
                 $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
@@ -521,43 +517,26 @@ class FunctionsPrint
                 $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
                 break;
 
-            case Source::RECORD_TYPE:
-                $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-                $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-                $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-                break;
-
-            case Note::RECORD_TYPE:
-                $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-                $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-                $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-                break;
-
-            case Repository::RECORD_TYPE:
-                $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-                $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-                $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
-                break;
-
-            case Media::RECORD_TYPE:
-                $addfacts    = ['NOTE'];
-                $uniquefacts = [];
-                $quickfacts  = [];
-                break;
             default:
                 return;
         }
-        $addfacts            = array_merge(self::checkFactUnique($uniquefacts, $usedfacts), $addfacts);
-        $quickfacts          = array_intersect($quickfacts, $addfacts);
-        $translated_addfacts = [];
 
-        foreach ($addfacts as $addfact) {
-            $translated_addfacts[$addfact] = Registry::elementFactory()->make($record->tag() . ':' . $addfact)->label();
+        // Create a label for a subtag
+        $fn = fn ($subtag) => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();
+
+        $addfacts   = array_merge(self::checkFactUnique($uniquefacts, $record->facts()), $addfacts);
+        $quickfacts = array_intersect($quickfacts, $addfacts);
+        $quickfacts = array_combine($quickfacts, array_map($fn, $quickfacts));
+        $addfacts = array_combine($addfacts, array_map($fn, $addfacts));
+
+        uasort($addfacts, I18N::comparator());
+
+        if ($record->tree()->getPreference('MEDIA_UPLOAD') < Auth::accessLevel($record->tree())) {
+            unset($addfacts['OBJE'], $quickfacts['OBJE']);
         }
-        uasort($translated_addfacts, I18N::comparator());
 
         echo view('edit/add-fact-row', [
-            'add_facts'   => $translated_addfacts,
+            'add_facts'   => $addfacts,
             'quick_facts' => $quickfacts,
             'record'      => $record,
             'tree'        => $tree,
