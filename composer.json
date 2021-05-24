@@ -38,7 +38,6 @@
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-session": "*",
-        "ext-simplexml": "*",
         "ext-xml": "*",
         "ext-zip": "*",
         "aura/router": "~3.1",
