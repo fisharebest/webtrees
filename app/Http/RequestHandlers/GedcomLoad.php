@@ -129,7 +129,7 @@ class GedcomLoad implements RequestHandlerInterface
                 $n = DB::table('gedcom_chunk')
                     ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
                     ->where('imported', '=', '0')
-                    ->update(['imported' => 1]);
+                    ->update(['imported' => '1']);
 
                 // Another process has already imported this data?
                 if ($n === 0) {
