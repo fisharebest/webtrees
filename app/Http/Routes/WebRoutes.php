@@ -704,14 +704,14 @@ class WebRoutes
             $router->post(Logout::class, '/logout');
             $router->get(Ping::class, '/ping', Ping::class)
                 ->allows(RequestMethodInterface::METHOD_HEAD);
-            $router->get(RobotsTxt::class, '/robots.txt');
             $router->post(SelectTheme::class, '/theme/{theme}');
             $router->get(HomePage::class, '/');
 
-            // Special files
+            // Special files, either dynamic or need to be in the root folder.
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png');
             $router->get(BrowserconfigXml::class, '/browserconfig.xml');
             $router->get(FaviconIco::class, '/favicon.ico');
+            $router->get(RobotsTxt::class, '/robots.txt');
             $router->get(WebmanifestJson::class, '/webmanifest.json');
         });
     }
