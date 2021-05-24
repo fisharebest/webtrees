@@ -1081,7 +1081,7 @@ class Individual extends GedcomRecord
         }, $full);
 
         // A suffix of “*” indicates a preferred name
-        $full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
+        $full = preg_replace('/([^ >\x{200C}]*)\*/u', '<span class="starredname">\\1</span>', $full);
 
         // Remove prefered-name indicater - they don’t go in the database
         $GIVN   = str_replace('*', '', $GIVN);
