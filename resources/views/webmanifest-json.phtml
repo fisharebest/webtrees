@@ -1,0 +1,15 @@
+<?= json_encode((object) [
+    'name'             => 'webtrees',
+    'short_name'       => 'webtrees',
+    'description'      => 'webtrees online genealogy',
+    'scope'            => '/',
+    'start_url'        => '/',
+    'background_color' => '#fff',
+    'theme_color'      => '#2694e8',
+    'display'          => 'standalone',
+    'icons'            => [(object) [
+        'src'   => asset('favicon-192.png'),
+        'sizes' => '192x192',
+        'type'  => 'image/png',
+    ]],
+], JSON_THROW_ON_ERROR) ?>

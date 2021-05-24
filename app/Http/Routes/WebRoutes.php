@@ -53,6 +53,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompletePlace;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteSurname;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\BroadcastPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarEvents;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
@@ -318,6 +319,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserPageUpdate;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UsersCleanupPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\VerifyEmail;
+use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 
 /**
  * Routing table for web requests
@@ -702,13 +704,15 @@ class WebRoutes
             $router->post(Logout::class, '/logout');
             $router->get(Ping::class, '/ping', Ping::class)
                 ->allows(RequestMethodInterface::METHOD_HEAD);
-            $router->get(RobotsTxt::class, '/robots.txt');
             $router->post(SelectTheme::class, '/theme/{theme}');
             $router->get(HomePage::class, '/');
 
-            // Some URL rewrite configurations will pass everything not in /public to index.php
+            // Special files, either dynamic or need to be in the root folder.
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png');
+            $router->get(BrowserconfigXml::class, '/browserconfig.xml');
             $router->get(FaviconIco::class, '/favicon.ico');
+            $router->get(RobotsTxt::class, '/robots.txt');
+            $router->get(WebmanifestJson::class, '/webmanifest.json');
         });
     }
 }

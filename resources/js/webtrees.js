@@ -761,6 +761,7 @@ $(function () {
     if ($('.wt-osk-pin-button').hasClass('active') === false) {
       $('.wt-osk').hide();
     }
+    osk_focus_element.dispatchEvent(new Event('input'));
   });
 
   $('.wt-osk-close').on('click', function () {

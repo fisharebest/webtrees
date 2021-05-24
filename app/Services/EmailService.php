@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\SiteUser;
 use Psr\Http\Message\ServerRequestInterface;
 use Swift_Mailer;
 use Swift_Message;
@@ -65,36 +64,11 @@ class EmailService
      */
     public function send(UserInterface $from, UserInterface $to, UserInterface $reply_to, string $subject, string $message_text, string $message_html): bool
     {
-        // Mail needs MS-DOS line endings
-        $message_text = str_replace("\n", "\r\n", $message_text);
-        $message_html = str_replace("\n", "\r\n", $message_html);
+        $message   = $this->message($from, $to, $reply_to, $subject, $message_text, $message_html);
+        $transport = $this->transport();
+        $mailer    = new Swift_Mailer($transport);
 
         try {
-            $message = (new Swift_Message())
-                ->setSubject($subject)
-                ->setFrom($from->email(), $from->realName())
-                ->setTo($to->email(), $to->realName())
-                ->setReplyTo($reply_to->email(), $reply_to->realName())
-                ->setBody($message_html, 'text/html');
-
-            $dkim_domain   = Site::getPreference('DKIM_DOMAIN');
-            $dkim_selector = Site::getPreference('DKIM_SELECTOR');
-            $dkim_key      = Site::getPreference('DKIM_KEY');
-
-            if ($dkim_domain !== '' && $dkim_selector !== '' && $dkim_key !== '') {
-                $signer = new Swift_Signers_DKIMSigner($dkim_key, $dkim_domain, $dkim_selector);
-                $signer
-                    ->setHeaderCanon('relaxed')
-                    ->setBodyCanon('relaxed');
-
-                $message->attachSigner($signer);
-            } else {
-                // DKIM body hashes don't work with multipart/alternative content.
-                $message->addPart($message_text, 'text/plain');
-            }
-
-            $mailer = new Swift_Mailer($this->transport());
-
             $mailer->send($message);
         } catch (Exception $ex) {
             Log::addErrorLog('MailService: ' . $ex->getMessage());
@@ -103,6 +77,50 @@ class EmailService
         }
 
         return true;
+    }
+
+    /**
+     * Create a message
+     *
+     * @param UserInterface $from
+     * @param UserInterface $to
+     * @param UserInterface $reply_to
+     * @param string        $subject
+     * @param string        $message_text
+     * @param string        $message_html
+     *
+     * @return Swift_Message
+     */
+    protected function message(UserInterface $from, UserInterface $to, UserInterface $reply_to, string $subject, string $message_text, string $message_html): Swift_Message
+    {
+        // Mail needs MS-DOS line endings
+        $message_text = str_replace("\n", "\r\n", $message_text);
+        $message_html = str_replace("\n", "\r\n", $message_html);
+
+        $message = (new Swift_Message())
+            ->setSubject($subject)
+            ->setFrom($from->email(), $from->realName())
+            ->setTo($to->email(), $to->realName())
+            ->setReplyTo($reply_to->email(), $reply_to->realName())
+            ->setBody($message_html, 'text/html');
+
+        $dkim_domain   = Site::getPreference('DKIM_DOMAIN');
+        $dkim_selector = Site::getPreference('DKIM_SELECTOR');
+        $dkim_key      = Site::getPreference('DKIM_KEY');
+
+        if ($dkim_domain !== '' && $dkim_selector !== '' && $dkim_key !== '') {
+            $signer = new Swift_Signers_DKIMSigner($dkim_key, $dkim_domain, $dkim_selector);
+            $signer
+                ->setHeaderCanon('relaxed')
+                ->setBodyCanon('relaxed');
+
+            $message->attachSigner($signer);
+        } else {
+            // DKIM body hashes don't work with multipart/alternative content.
+            $message->addPart($message_text, 'text/plain');
+        }
+
+        return $message;
     }
 
     /**

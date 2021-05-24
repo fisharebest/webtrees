@@ -101,7 +101,7 @@ class MergeFactsAction implements RequestHandlerInterface
                 ), 'info');
                 $gedcom = str_replace('@' . $xref2 . '@', '@' . $xref1 . '@', $record->gedcom());
                 $gedcom = preg_replace(
-                    '/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+                    '/(\n1.*@.+@.*(?:\n[2-9].*)*)((?:\n1.*(?:\n[2-9].*)*)*\1)/',
                     '$2',
                     $gedcom
                 );
@@ -115,6 +115,12 @@ class MergeFactsAction implements RequestHandlerInterface
             ->whereIn('setting_name', [UserInterface::PREF_TREE_ACCOUNT_XREF, UserInterface::PREF_TREE_DEFAULT_XREF])
             ->where('setting_value', '=', $xref2)
             ->update(['setting_value' => $xref1]);
+
+        // Merge stories, etc.
+        DB::table('block')
+            ->where('gedcom_id', '=', $tree->id())
+            ->where('xref', '=', $xref2)
+            ->update(['xref' => $xref1]);
 
         // Merge hit counters
         $hits = DB::table('hit_counter')
