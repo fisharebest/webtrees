@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-05 08:25+0000\n"
+"PO-Revision-Date: 2021-05-26 09:08+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -16641,7 +16641,7 @@ msgstr "kinderen"
 #: edit_interface.php:2568 find.php:760 inverselink.php:161 message.php:137
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:554
 msgid "close"
-msgstr "sluit"
+msgstr "sluiten"
 
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:180
