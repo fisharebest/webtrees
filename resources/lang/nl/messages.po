@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-05 08:25+0000\n"
+"PO-Revision-Date: 2021-05-26 09:08+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -17278,7 +17278,7 @@ msgstr "inwoner"
 #: resources/views/modals/header.phtml:15
 #: resources/views/modules/privacy-policy/footer.phtml:23
 msgid "close"
-msgstr "sluit"
+msgstr "sluiten"
 
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
