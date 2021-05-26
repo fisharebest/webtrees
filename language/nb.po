@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-18 13:37+0000\n"
-"Last-Translator: Eyolf Østrem <eyolf@oestrem.com>\n"
+"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
 "Language: nb\n"
@@ -11077,7 +11077,9 @@ msgstr "Personvernsrestriksjoner"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Personvernsrestriksjoner - disse påvirker poster og fakta som ikke inneholder en GEDCOM RESN tag"
+msgstr ""
+"Personvernsrestriksjoner - disse påvirker poster og fakta som ikke "
+"inneholder en GEDCOM RESN-kode"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -14270,7 +14272,12 @@ msgstr "Her kan du endre kalenderåret. Skriv inn et år i feltet og trykk <b>En
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2053
 msgid "This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets."
-msgstr "Dette er en kommaseparert liste med GEDCOMfakta som blir vist på skjermbildet for å legge til eller å endre navn. Hvis du bruker ikkelatinsk alfabet slik som hebraisk, gresk, kyrillisk eller arabisk, vil du kanskje legge til fakta slik som _HEB, ROMN, FONE, etc. for å tillate lagring av navn i ulike alfabet."
+msgstr ""
+"Dette er en kommaseparert liste med GEDCOM-fakta som blir vist på "
+"skjermbildet for å legge til eller å endre navn. Hvis du bruker ikkelatinsk "
+"alfabet slik som hebraisk, gresk, kyrillisk eller arabisk, vil du kanskje "
+"legge til fakta slik som _HEB, ROMN, FONE, etc. for å tillate lagring av "
+"navn i ulike alfabet."
 
 #. I18N: Help text for the “Facts for new families” configuration setting
 #: admin_trees_config.php:1815
