@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-05-26 10:27+0100\n"
-"PO-Revision-Date: 2021-03-27 16:00+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-27 11:11+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1480,7 +1468,7 @@ msgstr "Journal-/Nachrichteneintrag hinzufügen oder bearbeiten"
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Zusatztext"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:386
 #: app/Factories/ElementFactory.php:406 app/Factories/ElementFactory.php:658
@@ -1867,7 +1855,7 @@ msgstr "Auch bekannt als"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Alternativer Ortsname"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2082,7 +2070,7 @@ msgstr "Aquamarin"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie den Link zu \"%s\" löschen möchten?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:40
@@ -2183,7 +2171,7 @@ msgstr "Ereignisse mit dieser Quelle verbinden"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Verbundene Ereignisse"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
