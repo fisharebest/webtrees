@@ -78,7 +78,6 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
      */
     public function title(): string
     {
-        // I18N: openrouteservice.org
         return I18N::translate('OpenRouteService');
     }
 

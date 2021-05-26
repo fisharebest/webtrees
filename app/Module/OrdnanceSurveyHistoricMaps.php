@@ -35,6 +35,7 @@ class OrdnanceSurveyHistoricMaps extends AbstractModule implements ModuleMapProv
      */
     public function title(): string
     {
+        // I18N: Ordnance Survey is the UK government mapping service.
         return I18N::translate('Ordnance Survey historic maps');
     }
 

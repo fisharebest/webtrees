@@ -619,28 +619,28 @@ use Illuminate\Support\Collection;
                     <li>
                         <span class="fa-li"><?= view('icons/search') ?></span>
                         <a href="<?= e(route(ModulesMapAutocompletePage::class)) ?>">
-                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Autocomplete') ?>
+                            <?= /* I18N: plural noun - things that can be shared */ I18N::translate('Autocomplete') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_autocomplete_modules_enabled->count(), 'total' => $map_autocomplete_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/search-location') ?></span>
                         <a href="<?= e(route(ModulesMapGeoLocationsPage::class)) ?>">
-                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Geolocation') ?>
+                            <?= /* I18N: find latitude/longitude for a place */ I18N::translate('Geolocation') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_search_modules_enabled->count(), 'total' => $map_search_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/location') ?></span>
                         <a href="<?= e(route(ModulesMapLinksPage::class)) ?>">
-                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Map links') ?>
+                            <?= /* I18N: plural noun - things that can be shared */ I18N::translate('Map links') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_link_modules_enabled->count(), 'total' => $map_link_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                     <li>
                         <span class="fa-li"><?= view('icons/map') ?></span>
                         <a href="<?= e(route(ModulesMapProvidersPage::class)) ?>">
-                            <?= /* I18N: plural noun - things that can be shared */  I18N::translate('Map providers') ?>
+                            <?= I18N::translate('Map providers') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_provider_modules_enabled->count(), 'total' => $map_provider_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>

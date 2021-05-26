@@ -79,7 +79,7 @@ class HereMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
      */
     public function title(): string
     {
-        return I18N::translate('Here maps');
+        return /* I18N: https://wego.here.com */ I18N::translate('Here maps');
     }
 
     /**

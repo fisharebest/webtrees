@@ -107,7 +107,7 @@ class CustomTagsGenPluswin extends AbstractModule implements ModuleConfigInterfa
             'INDI:*:SOUR:_ZUS'        => new CustomElement(I18N::translate('Additional information')),
             'INDI:*:SOUR:PAGE:_ZUS'   => new CustomElement(I18N::translate('Additional information')),
             'INDI:*:_ASSO'            => new XrefAssociate(I18N::translate('Associate')),
-            'INDI:*:_CERT'            => new CustomElement(I18N::translate('Certificate/registration number')),
+            'INDI:*:_CERT'            => new CustomElement(I18N::translate('Certificate number')),
             'INDI:*:_COM'             => new CustomElement(I18N::translate('Comment')),
             'INDI:*:_SITE'            => new CustomElement(I18N::translate('Extra information')),
             'INDI:*:_WITN'            => new CustomElement(I18N::translate('Witness')),
