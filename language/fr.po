@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-15 14:53+0000\n"
-"Last-Translator: Vincent Denis <vincent.denis06@gmail.com>\n"
+"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
 "Language: fr\n"
@@ -1297,7 +1297,7 @@ msgstr "Ajouter un enfant à cette famille"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr "Ajouter un évènement"
+msgstr "Ajouter un événement"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
@@ -1841,7 +1841,7 @@ msgstr "Tous les utilisateurs existants PhpGedView doivent avoir des adresses é
 
 #: admin_trees_config.php:563
 msgid "All facts and events"
-msgstr "Tous les faits et évènements"
+msgstr "Tous les faits et événements"
 
 #: admin_trees_config.php:1736
 msgid "All family facts"
@@ -2238,7 +2238,7 @@ msgstr "Personne associée"
 
 #: edit_interface.php:1221 help_text.php:292
 msgid "Associate events with this source"
-msgstr "Évènements associés à cette source"
+msgstr "Événements associés à cette source"
 
 #: search.php:107 search.php:266
 msgid "Associates"
@@ -3458,7 +3458,7 @@ msgstr "République centrafricaine"
 #. I18N: Type of media object
 #: app/GedcomTag.php:1916
 msgid "Certificate"
-msgstr "Certificat"
+msgstr "Acte"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6893
@@ -4499,7 +4499,7 @@ msgstr "Date d’entrée dans le document original"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr "Date de l’évènement"
+msgstr "Date de l’événement"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
@@ -4550,7 +4550,9 @@ msgstr "Période"
 
 #: help_text.php:146
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Les plages de dates sont utilisées pour indiquer qu’un évènement, comme une naissance, est arrivé à une date inconnue mais dans une plage possible."
+msgstr ""
+"Les plages de dates sont utilisées pour indiquer qu’un événement, comme une "
+"naissance, est arrivé à une date inconnue mais dans une plage possible."
 
 #: admin_users.php:850
 msgid "Date registered"
@@ -5230,7 +5232,14 @@ msgstr "Différences"
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:706
 msgid "Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars."
-msgstr "Différents systèmes de calendriers sont utilisés dans le monde, et beaucoup d’autres ont été utilisés par le passé. Dans la mesure du possible, vous devez entrer les dates en utilisant le calendrier utilisé à l’époque de l’évènement correspondant. Vous pourrez par la suite définir une conversion des dates dans un système plus familier. Si vous utilisez fréquemment deux types de calendriers, vous pouvez spécifier deux conversions et les dates seront converties dans ces deux calendriers."
+msgstr ""
+"Différents systèmes de calendriers sont utilisés dans le monde, et beaucoup "
+"d’autres ont été utilisés par le passé. Dans la mesure du possible, vous "
+"devez entrer les dates en utilisant le calendrier utilisé à l’époque de l’"
+"événement correspondant. Vous pourrez par la suite définir une conversion "
+"des dates dans un système plus familier. Si vous utilisez fréquemment deux "
+"types de calendriers, vous pouvez spécifier deux conversions et les dates "
+"seront converties dans ces deux calendriers."
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -5361,18 +5370,18 @@ msgstr "Utilisateur déjà existant. Un utilisateur existe déjà sous ce nom. V
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
-"Chaque source enregistre des évènements spécifiques, généralement pour un "
+"Chaque source enregistre des événements spécifiques, généralement pour un "
 "intervalle de dates données et pour un endroit de juridiction. Par exemple, "
-"un recensement enregistre des évènements de recensement et les registres "
-"religieux enregistrent des évènements de naissance, mariage, et "
+"un recensement enregistre des événements de recensement et les registres "
+"religieux enregistrent des événements de naissance, mariage, et "
 "décès.<br><br>Sélectionnez les événements enregistrés par cette source dans "
-"la liste des évènements fournis. La date doit être spécifiée selon un format "
+"la liste des événements fournis. La date doit être spécifiée selon un format "
 "d’intervalle tel que <i>FROM 1900 TO 1910</i>. L’endroit de juridiction est "
 "le nom de la plus petite juridiction qui renferme tous les endroits de plus "
 "bas niveau nommés dans cette source. Par exemple, « Oneida, Idaho, USA » "
-"sera utilisé en tant que lieu de juridiction source pour les évènements "
+"sera utilisé en tant que lieu de juridiction source pour les événements "
 "survenus dans les différentes villes du comté d’Oneida. « Idaho, USA » sera "
-"l’endroit de juridiction source si les évènements enregistrés ont eu lieu "
+"l’endroit de juridiction source si les événements enregistrés ont eu lieu "
 "non seulement dans le comté d’Oneida mais aussi dans les autres comtés de "
 "l’Idaho."
 
@@ -5772,15 +5781,15 @@ msgstr "Europe"
 #: modules_v3/fact_sources/report.xml:157
 #: modules_v3/missing_facts_report/report.xml:55
 msgid "Event"
-msgstr "Évènement"
+msgstr "Événement"
 
 #: app/Module/GoogleMapsModule.php:2080 statistics.php:110 statistics.php:212
 msgid "Events"
-msgstr "Évènements"
+msgstr "Événements"
 
 #: statistics.php:420
 msgid "Events in countries"
-msgstr "Évènements par pays"
+msgstr "Événements par pays"
 
 #: app/Module/IndividualFactsTabModule.php:134
 msgid "Events of close relatives"
@@ -6404,7 +6413,7 @@ msgstr "Première communion"
 
 #: statistics.php:370
 msgid "First event"
-msgstr "Premier évènement"
+msgstr "Premier événement"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:357
@@ -7366,9 +7375,9 @@ msgstr ""
 #: admin_trees_config.php:415
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
-"Si cet individu a des évènements autres que décès, inhumation ou crémation "
+"Si cet individu a des événements autres que décès, inhumation ou crémation "
 "plus récents que ce nombre d’années, il est considéré comme « vivant ». Les "
-"dates de naissance des enfants sont considérées comme des évènements récents "
+"dates de naissance des enfants sont considérées comme des événements récents "
 "pour l’individu."
 
 #. I18N: Help text for the “Media folder” configuration setting
@@ -7516,7 +7525,11 @@ msgstr ""
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
 msgid "In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "Pour certains calendriers, le jour commence à minuit. Pour d’autres, le jour commence au coucher du soleil. La conversion ne tient pas compte de l’heure, donc pour un évènement qui eut lieu entre le coucher du soleil et minuit, la conversion pourra être décalée d’un jour."
+msgstr ""
+"Pour certains calendriers, le jour commence à minuit. Pour d’autres, le jour "
+"commence au coucher du soleil. La conversion ne tient pas compte de l’heure, "
+"donc pour un événement qui eut lieu entre le coucher du soleil et minuit, la "
+"conversion pourra être décalée d’un jour."
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:455
@@ -8173,7 +8186,7 @@ msgstr "Dernière alerte courriel envoyée le "
 
 #: statistics.php:371
 msgid "Last event"
-msgstr "Dernier évènement"
+msgstr "Dernier événement"
 
 #: admin_users.php:852
 msgid "Last signed in"
@@ -9899,12 +9912,12 @@ msgstr[1] "Aucun événement dans les %s prochains jours."
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
 msgid "No events exist for today."
-msgstr "Aucun évènement pour aujourd’hui."
+msgstr "Aucun événement pour aujourd’hui."
 
 #: app/Functions/FunctionsPrintLists.php:1718
 #: app/Functions/FunctionsPrintLists.php:1829
 msgid "No events exist for tomorrow."
-msgstr "Aucun évènement pour demain."
+msgstr "Aucun événement pour demain."
 
 #: app/Functions/FunctionsPrintLists.php:1712
 #: app/Functions/FunctionsPrintLists.php:1821
@@ -9927,7 +9940,7 @@ msgstr[1] "Aucun événement de personnes vivantes existe pour les prochains %s 
 
 #: app/Controller/FamilyController.php:140
 msgid "No facts exist for this family."
-msgstr "Aucun évènement pour cette famille."
+msgstr "Aucun événement pour cette famille."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:79
@@ -10434,7 +10447,7 @@ msgstr "Autres"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
-msgstr "Autres évènements à afficher dans les diagrammes"
+msgstr "Autres événements à afficher dans les diagrammes"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
@@ -10899,7 +10912,7 @@ msgstr "Lieu des fiançailles"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr "Lieu de l’évènement"
+msgstr "Lieu de l’événement"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
@@ -11153,7 +11166,7 @@ msgstr "Primidi"
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank"
-msgstr "Imprimer les évènements de base même vides"
+msgstr "Imprimer les événements de base même vides"
 
 #: admin_trees_config.php:310 admin_trees_manage.php:398
 msgid "Privacy"
@@ -11406,7 +11419,7 @@ msgstr "Modifications récentes"
 
 #: calendar.php:234
 msgid "Recent years (&lt; 100 yrs)"
-msgstr "Évènements récents (- 100 ans)"
+msgstr "Événements récents (- 100 ans)"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:311
@@ -12770,7 +12783,7 @@ msgstr "Afficher la date et l’heure de mise à jour"
 
 #: admin_trees_config.php:1368
 msgid "Show the events of close relatives on the individual page"
-msgstr "Affiche les évènements de la famille proche à la page individuelle"
+msgstr "Affiche les événements de la famille proche à la page individuelle"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
@@ -13158,7 +13171,7 @@ msgstr "Sources"
 
 #: modules_v3/missing_facts_report/report.xml:14
 msgid "Sources to the events"
-msgstr "Sources des évènements"
+msgstr "Sources des événements"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6924
@@ -15413,7 +15426,7 @@ msgstr "Décompresse %s vers un dossier temporaire…"
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
 msgid "Upcoming events"
-msgstr "Prochains évènements"
+msgstr "Prochains événements"
 
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:78
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:83
