@@ -3,16 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2017-07-02 08:11+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
+"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-17/cy/>\n"
 "Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
 "(n==3) ? 3 :(n==6) ? 4 : 5;\n"
-"X-Generator: Weblate 2.10\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: modules_v3/ahnentafel_report/report.xml:160
 #: modules_v3/ahnentafel_report/report.xml:188
@@ -269,12 +270,12 @@ msgstr[5] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s diwrnodau"
+msgstr[1] "%s diwrnod"
+msgstr[2] "%s ddiwrnod"
+msgstr[3] "%s diwrnod"
+msgstr[4] "%s niwrnod"
+msgstr[5] "%s diwrnod"
 
 #: app/I18N.php:802
 #, php-format
@@ -431,12 +432,12 @@ msgstr[5] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s misoedd"
+msgstr[1] "%s mis"
+msgstr[2] "%s fis"
+msgstr[3] "%s mis"
+msgstr[4] "%s mis"
+msgstr[5] "%s mis"
 
 #: app/I18N.php:798
 #, php-format
@@ -552,12 +553,12 @@ msgstr[5] ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s blynyddoedd"
+msgstr[1] "%s blwyddyn"
+msgstr[2] "%s flynedd"
+msgstr[3] "%s blynedd"
+msgstr[4] "%s mlynedd"
+msgstr[5] "%s blynedd"
 
 #: app/I18N.php:794
 #, php-format
@@ -2207,27 +2208,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:324
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Ebr"
 
 #: app/Date/CalendarDate.php:224
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #: app/Date/CalendarDate.php:292
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #: app/Date/CalendarDate.php:258
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #: app/Date/CalendarDate.php:190 app/Functions/FunctionsPrint.php:648
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
@@ -2387,27 +2388,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:328
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Aws"
 
 #: app/Date/CalendarDate.php:228
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #: app/Date/CalendarDate.php:296
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #: app/Date/CalendarDate.php:262
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #: app/Date/CalendarDate.php:194 app/Functions/FunctionsPrint.php:652
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6685
@@ -3173,7 +3174,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:89
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
@@ -3191,7 +3192,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:56
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6706
@@ -4978,7 +4979,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "Rha"
 
 #: app/Functions/FunctionsPrintLists.php:494
 #: app/Functions/FunctionsPrintLists.php:968
@@ -4996,22 +4997,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #: app/Date/CalendarDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #: app/Date/CalendarDate.php:266
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #: app/Date/CalendarDate.php:198 app/Functions/FunctionsPrint.php:656
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:206
@@ -6310,27 +6311,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:322
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "Chw"
 
 #: app/Date/CalendarDate.php:222
 msgctxt "GENITIVE"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Date/CalendarDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Date/CalendarDate.php:256
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Date/CalendarDate.php:188 app/Functions/FunctionsPrint.php:646
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Controller/IndividualController.php:247
 #: app/Controller/IndividualController.php:250
@@ -6505,7 +6506,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:95
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "Floreal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:161
@@ -6523,7 +6524,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:62
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "Floreal"
 
 #: medialist.php:91
 msgid "Folder"
@@ -6649,7 +6650,7 @@ msgstr ""
 #. I18N: The French calendar
 #: app/Date.php:200 help_text.php:198
 msgid "French"
-msgstr ""
+msgstr "Ffrengig"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6767
@@ -6681,11 +6682,11 @@ msgstr ""
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:380 app/Functions/FunctionsPrint.php:664
 msgid "Fri"
-msgstr ""
+msgstr "Gwe"
 
 #: app/Date/CalendarDate.php:355
 msgid "Friday"
-msgstr ""
+msgstr "Dydd Gwener"
 
 #: app/GedcomCode/GedcomCodeRela.php:134
 msgid "Friend"
@@ -6705,7 +6706,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:90
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:156
@@ -6723,7 +6724,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:57
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:301 admin_site_logs.php:248
@@ -6752,7 +6753,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:66
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:171
@@ -6879,7 +6880,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:94
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:160
@@ -6897,7 +6898,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:61
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:313
@@ -7018,7 +7019,7 @@ msgstr ""
 #. I18N: The gregorian calendar
 #: app/Date.php:198 app/Module/YahrzeitModule.php:284
 msgid "Gregorian"
-msgstr ""
+msgstr "Gregoraidd"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6764
@@ -7261,7 +7262,7 @@ msgstr ""
 #: admin_trees_config.php:492 admin_trees_config.php:1021
 #: app/Functions/FunctionsEdit.php:208
 msgid "Hide from everyone"
-msgstr ""
+msgstr "Cuddio rhag pawb"
 
 #: app/Stats.php:1737
 msgid "Highest population"
@@ -7276,7 +7277,7 @@ msgstr ""
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:202 help_text.php:186
 msgid "Hijri"
-msgstr ""
+msgstr "Hijri"
 
 #: modules_v3/ahnentafel_report/report.xml:195
 msgid "His occupation was"
@@ -7765,7 +7766,7 @@ msgstr ""
 
 #: app/Date.php:328
 msgid "Invalid date"
-msgstr ""
+msgstr "Dyddiad annilys"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6781
@@ -7828,7 +7829,7 @@ msgstr ""
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:203
 msgid "Jalali"
-msgstr ""
+msgstr "Jalali"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6786
@@ -7838,27 +7839,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:321
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr ""
+msgstr "Ion"
 
 #: app/Date/CalendarDate.php:221
 msgctxt "GENITIVE"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #: app/Date/CalendarDate.php:289
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #: app/Date/CalendarDate.php:255
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #: app/Date/CalendarDate.php:187 app/Functions/FunctionsPrint.php:645
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6789
@@ -7868,7 +7869,7 @@ msgstr ""
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:201 app/Module/YahrzeitModule.php:283 help_text.php:172
 msgid "Jewish"
-msgstr ""
+msgstr "Iddewig"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:203
@@ -7898,32 +7899,32 @@ msgstr ""
 #: app/Date/CalendarDate.php:327
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "Gor"
 
 #. I18N: The julian calendar
 #: app/Date.php:199 help_text.php:167
 msgid "Julian"
-msgstr ""
+msgstr "Juliaidd"
 
 #: app/Date/CalendarDate.php:227
 msgctxt "GENITIVE"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #: app/Date/CalendarDate.php:295
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #: app/Date/CalendarDate.php:261
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #: app/Date/CalendarDate.php:193 app/Functions/FunctionsPrint.php:651
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:94
@@ -7976,27 +7977,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:326
 msgctxt "Abbreviation for June"
 msgid "Jun"
-msgstr ""
+msgstr "Meh"
 
 #: app/Date/CalendarDate.php:226
 msgctxt "GENITIVE"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #: app/Date/CalendarDate.php:294
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #: app/Date/CalendarDate.php:260
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #: app/Date/CalendarDate.php:192 app/Functions/FunctionsPrint.php:650
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
@@ -8682,27 +8683,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:323
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "Maw"
 
 #: app/Date/CalendarDate.php:223
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #: app/Date/CalendarDate.php:291
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #: app/Date/CalendarDate.php:257
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #: app/Date/CalendarDate.php:189 app/Functions/FunctionsPrint.php:647
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1565
@@ -9004,27 +9005,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:325
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/CalendarDate.php:225
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/CalendarDate.php:293
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/CalendarDate.php:259
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/CalendarDate.php:191 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6832
@@ -9233,7 +9234,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:97
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:163
@@ -9251,7 +9252,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:64
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Negesydd"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6816
@@ -9353,7 +9354,7 @@ msgstr ""
 #. I18N: abbreviation for Monday
 #: app/Date/CalendarDate.php:376 app/Functions/FunctionsPrint.php:660
 msgid "Mon"
-msgstr ""
+msgstr "Llu"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6812
@@ -9362,7 +9363,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:351
 msgid "Monday"
-msgstr ""
+msgstr "Dydd Llun"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6822
@@ -9861,7 +9862,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:91
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "Nivose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
@@ -9879,7 +9880,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:58
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "Nivose"
 
 #: admin_users.php:639 app/Functions/FunctionsPrintFacts.php:308
 msgid "No"
@@ -10172,27 +10173,27 @@ msgstr ""
 #: app/Date/CalendarDate.php:331
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Tac"
 
 #: app/Date/CalendarDate.php:231
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #: app/Date/CalendarDate.php:299
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #: app/Date/CalendarDate.php:265
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #: app/Date/CalendarDate.php:197 app/Functions/FunctionsPrint.php:655
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:265
@@ -10291,7 +10292,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:330
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Hyd"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:204
@@ -10301,22 +10302,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:230
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #: app/Date/CalendarDate.php:298
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #: app/Date/CalendarDate.php:264
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #: app/Date/CalendarDate.php:196 app/Functions/FunctionsPrint.php:654
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:275
@@ -11032,7 +11033,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:92
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:158
@@ -11050,7 +11051,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:59
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6854
@@ -11102,7 +11103,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:96
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:162
@@ -11120,7 +11121,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:63
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #: admin_site_config.php:129
 msgid "Predefined text that states admin will decide on each request for a user account"
@@ -11968,7 +11969,7 @@ msgstr ""
 #. I18N: abbreviation for Saturday
 #: app/Date/CalendarDate.php:381 app/Functions/FunctionsPrint.php:665
 msgid "Sat"
-msgstr ""
+msgstr "Sad"
 
 #: app/Module/GoogleMapsModule.php:327
 msgid "Satellite"
@@ -11976,7 +11977,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:356
 msgid "Saturday"
-msgstr ""
+msgstr "Dydd Sadwrn"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6866
@@ -12228,7 +12229,7 @@ msgstr ""
 #: app/Date/CalendarDate.php:329
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Med"
 
 #. I18N: gedcom tag _SEPR
 #: app/GedcomTag.php:1727
@@ -12238,22 +12239,22 @@ msgstr ""
 #: app/Date/CalendarDate.php:229
 msgctxt "GENITIVE"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #: app/Date/CalendarDate.php:297
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #: app/Date/CalendarDate.php:263
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #: app/Date/CalendarDate.php:195 app/Functions/FunctionsPrint.php:653
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:203
@@ -12845,7 +12846,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:836
 #: app/Functions/FunctionsPrintFacts.php:1102
 msgid "Show to managers"
-msgstr ""
+msgstr "Dangos i reolwyr"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -12856,7 +12857,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:833
 #: app/Functions/FunctionsPrintFacts.php:1099
 msgid "Show to members"
-msgstr ""
+msgstr "Dangos i aelodau"
 
 #: admin_trees_config.php:79 admin_trees_config.php:86
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -12867,7 +12868,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:830
 #: app/Functions/FunctionsPrintFacts.php:1096
 msgid "Show to visitors"
-msgstr ""
+msgstr "Dangos i ymwelwyr"
 
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
@@ -13403,11 +13404,11 @@ msgstr ""
 #. I18N: abbreviation for Sunday
 #: app/Date/CalendarDate.php:382 app/Functions/FunctionsPrint.php:659
 msgid "Sun"
-msgstr ""
+msgstr "Sul"
 
 #: app/Date/CalendarDate.php:357
 msgid "Sunday"
-msgstr ""
+msgstr "Dydd Sul"
 
 #. I18N: %s is a URL/link to the project website
 #: admin.php:617
@@ -14239,7 +14240,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:65
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #: admin_trees_unconnected.php:80
 #, php-format
@@ -14812,7 +14813,7 @@ msgstr ""
 #. I18N: abbreviation for Thursday
 #: app/Date/CalendarDate.php:379 app/Functions/FunctionsPrint.php:663
 msgid "Thu"
-msgstr ""
+msgstr "Iau"
 
 #: addmedia.php:139 admin_media_upload.php:103
 msgid "Thumbnail files must contain images."
@@ -14828,7 +14829,7 @@ msgstr ""
 
 #: app/Date/CalendarDate.php:354
 msgid "Thursday"
-msgstr ""
+msgstr "Dydd Iau"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:369
@@ -15202,11 +15203,11 @@ msgstr ""
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
 msgid "Tue"
-msgstr ""
+msgstr "Maw"
 
 #: app/Date/CalendarDate.php:352
 msgid "Tuesday"
-msgstr ""
+msgstr "Dydd Mawrth"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6902
@@ -15638,7 +15639,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:88
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:154
@@ -15656,7 +15657,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:55
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6915
@@ -15667,7 +15668,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:93
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
@@ -15685,7 +15686,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:60
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:381
@@ -15874,11 +15875,11 @@ msgstr ""
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:378 app/Functions/FunctionsPrint.php:662
 msgid "Wed"
-msgstr ""
+msgstr "Mer"
 
 #: app/Date/CalendarDate.php:353
 msgid "Wednesday"
-msgstr ""
+msgstr "Dydd Mercher"
 
 #. I18N: gedcom tag _WEIG
 #: app/GedcomTag.php:1759
@@ -16397,7 +16398,7 @@ msgstr ""
 #: app/Date.php:298
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "tua %s"
 
 #: family.php:50 gedrecord.php:63 individual.php:64 mediaviewer.php:51
 #: note.php:52 repo.php:51 source.php:51
@@ -16454,7 +16455,7 @@ msgstr ""
 #: app/Date.php:313
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "ar ôl %s"
 
 #: app/Functions/FunctionsPrint.php:375
 msgid "after death"
@@ -16561,13 +16562,13 @@ msgstr ""
 #: app/Date.php:310
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "cyn %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:322
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "rhwng %s a %s"
 
 #: app/Stats.php:2910
 msgid "birth"
@@ -16686,7 +16687,7 @@ msgstr ""
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "cyfrifwyd %s"
 
 #. I18N: A button label.
 #: app/Module/ClippingsCartModule.php:809
@@ -16939,7 +16940,7 @@ msgstr ""
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "amcangyfrifwyd %s"
 
 #: app/Functions/Functions.php:703
 msgid "ex-husband"
@@ -17333,13 +17334,13 @@ msgstr[5] ""
 #: app/Date.php:316
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "o %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:325
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "o %s hyd %s"
 
 #. I18N: layout option for the fan chart
 #: app/Controller/FanchartController.php:69
@@ -18920,7 +18921,7 @@ msgstr ""
 #: app/Date.php:307
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "dehonglwyd %s (%s)"
 
 #: statistics.php:586 statistics.php:589 statistics.php:592 statistics.php:604
 #: statistics.php:607
@@ -18968,7 +18969,7 @@ msgstr ""
 #: app/Date/FrenchDate.php:67
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: A button label, last page
 #: admin_trees_config.php:1508 app/I18N.php:223
@@ -20091,7 +20092,7 @@ msgstr ""
 #: app/Date.php:319
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "hyd %s"
 
 #: app/Functions/Functions.php:577
 msgid "twelfth cousin"
@@ -20346,7 +20347,7 @@ msgstr ""
 #: indilist.php:230
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Family.php:353 app/Family.php:369 app/Individual.php:1213
 #: app/Individual.php:1303 app/Module/FamiliesSidebarModule.php:153
@@ -20355,4 +20356,4 @@ msgstr ""
 #: famlist.php:140 indilist.php:83 indilist.php:108 indilist.php:140
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
