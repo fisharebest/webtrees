@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
+"Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/cy/>\n"
 "Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
 "(n==3) ? 3 :(n==6) ? 4 : 5;\n"
+"X-Generator: Weblate 3.9.1\n"
 
 #: app/Age.php:112 app/Functions/FunctionsDate.php:66
 #: app/Functions/FunctionsPrint.php:261
@@ -28,12 +30,12 @@ msgstr ""
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s blynyddoedd"
+msgstr[1] "%s blwyddyn"
+msgstr[2] "%s flynedd"
+msgstr[3] "%s blynedd"
+msgstr[4] "%s mlynedd"
+msgstr[5] "%s blynedd"
 
 #: app/Age.php:116 app/Functions/FunctionsDate.php:68
 #: app/Functions/FunctionsPrint.php:263
@@ -43,12 +45,12 @@ msgstr[5] ""
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s misoedd"
+msgstr[1] "%s mis"
+msgstr[2] "%s fis"
+msgstr[3] "%s mis"
+msgstr[4] "%s mis"
+msgstr[5] "%s mis"
 
 #: app/Age.php:120 app/Functions/FunctionsDate.php:72
 #: app/Functions/FunctionsPrint.php:267
@@ -57,12 +59,12 @@ msgstr[5] ""
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s diwrnodau"
+msgstr[1] "%s diwrnod"
+msgstr[2] "%s ddiwrnod"
+msgstr[3] "%s diwrnod"
+msgstr[4] "%s niwrnod"
+msgstr[5] "%s diwrnod"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
@@ -98,7 +100,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:164
 #: resources/views/modals/restriction-fields.phtml:15
 msgid "Show to visitors"
-msgstr ""
+msgstr "Dangos i ymwelwyr"
 
 #: app/Auth.php:532 app/Auth.php:545 app/Elements/RestrictionNotice.php:76
 #: app/Functions/FunctionsEdit.php:220
@@ -111,7 +113,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:103
 #: resources/views/modals/restriction-fields.phtml:18
 msgid "Show to members"
-msgstr ""
+msgstr "Dangos i aelodau"
 
 #: app/Auth.php:533 app/Auth.php:546 app/Elements/RestrictionNotice.php:77
 #: app/Functions/FunctionsEdit.php:221
@@ -122,14 +124,14 @@ msgstr ""
 #: app/Http/RequestHandlers/TreePrivacyPage.php:93
 #: resources/views/modals/restriction-fields.phtml:21
 msgid "Show to managers"
-msgstr ""
+msgstr "Dangos i reolwyr"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:128
 #: app/Http/RequestHandlers/TreePrivacyPage.php:94
 #: resources/views/admin/trees-privacy.phtml:164
 msgid "Hide from everyone"
-msgstr ""
+msgstr "Cuddio rhag pawb"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:395
 #: app/Family.php:413 app/Individual.php:1137
@@ -138,7 +140,7 @@ msgstr ""
 #: app/Module/IndividualListModule.php:508
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:395
 #: app/Family.php:413 app/Individual.php:1138
@@ -146,635 +148,635 @@ msgstr ""
 #: app/Module/IndividualListModule.php:492
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #. I18N: The gregorian calendar
 #: app/Date.php:232 app/Module/YahrzeitModule.php:264
 msgid "Gregorian"
-msgstr ""
+msgstr "Gregoraidd"
 
 #. I18N: The julian calendar
 #: app/Date.php:234 resources/views/help/date.phtml:152
 msgid "Julian"
-msgstr ""
+msgstr "Juliaidd"
 
 #. I18N: The French calendar
 #: app/Date.php:236 resources/views/help/date.phtml:200
 msgid "French"
-msgstr ""
+msgstr "Ffrengig"
 
 #. I18N: The Hebrew/Jewish calendar
 #: app/Date.php:238 app/Module/YahrzeitModule.php:263
 #: resources/views/help/date.phtml:168
 msgid "Jewish"
-msgstr ""
+msgstr "Iddewig"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date.php:240 resources/views/help/date.phtml:184
 msgid "Hijri"
-msgstr ""
+msgstr "Hijri"
 
 #. I18N: The Persian/Jalali calendar
 #: app/Date.php:242
 msgid "Jalali"
-msgstr ""
+msgstr "Jalali"
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:342
 #, php-format
 msgid "about %s"
-msgstr ""
+msgstr "tua %s"
 
 #. I18N: Gedcom CAL dates
 #: app/Date.php:346
 #, php-format
 msgid "calculated %s"
-msgstr ""
+msgstr "cyfrifwyd %s"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:350
 #, php-format
 msgid "estimated %s"
-msgstr ""
+msgstr "amcangyfrifwyd %s"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr ""
+msgstr "dehonglwyd %s (%s)"
 
 #. I18N: Gedcom BEF dates
 #: app/Date.php:358
 #, php-format
 msgid "before %s"
-msgstr ""
+msgstr "cyn %s"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:362
 #, php-format
 msgid "after %s"
-msgstr ""
+msgstr "ar ôl %s"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:366
 #, php-format
 msgid "from %s"
-msgstr ""
+msgstr "o %s"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:370
 #, php-format
 msgid "to %s"
-msgstr ""
+msgstr "hyd %s"
 
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:374
 #, php-format
 msgid "between %s and %s"
-msgstr ""
+msgstr "rhwng %s a %s"
 
 #. I18N: Gedcom FROM-TO dates
 #: app/Date.php:378
 #, php-format
 msgid "from %s to %s"
-msgstr ""
+msgstr "o %s hyd %s"
 
 #: app/Date.php:381
 msgid "Invalid date"
-msgstr ""
+msgstr "Dyddiad annilys"
 
 #: app/Date/AbstractCalendarDate.php:258
 msgid "Monday"
-msgstr ""
+msgstr "Dydd Llun"
 
 #: app/Date/AbstractCalendarDate.php:259
 msgid "Tuesday"
-msgstr ""
+msgstr "Dydd Mawrth"
 
 #: app/Date/AbstractCalendarDate.php:260
 msgid "Wednesday"
-msgstr ""
+msgstr "Dydd Mercher"
 
 #: app/Date/AbstractCalendarDate.php:261
 msgid "Thursday"
-msgstr ""
+msgstr "Dydd Iau"
 
 #: app/Date/AbstractCalendarDate.php:262
 msgid "Friday"
-msgstr ""
+msgstr "Dydd Gwener"
 
 #: app/Date/AbstractCalendarDate.php:263
 msgid "Saturday"
-msgstr ""
+msgstr "Dydd Sadwrn"
 
 #: app/Date/AbstractCalendarDate.php:264
 msgid "Sunday"
-msgstr ""
+msgstr "Dydd Sul"
 
 #. I18N: abbreviation for Monday
 #: app/Date/AbstractCalendarDate.php:285
 #: resources/views/edit/initialize-calendar-popup.phtml:24
 msgid "Mon"
-msgstr ""
+msgstr "Llu"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:287
 #: resources/views/edit/initialize-calendar-popup.phtml:25
 msgid "Tue"
-msgstr ""
+msgstr "Maw"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:289
 #: resources/views/edit/initialize-calendar-popup.phtml:26
 msgid "Wed"
-msgstr ""
+msgstr "Mer"
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:291
 #: resources/views/edit/initialize-calendar-popup.phtml:27
 msgid "Thu"
-msgstr ""
+msgstr "Iau"
 
 #. I18N: abbreviation for Friday
 #: app/Date/AbstractCalendarDate.php:293
 #: resources/views/edit/initialize-calendar-popup.phtml:28
 msgid "Fri"
-msgstr ""
+msgstr "Gwe"
 
 #. I18N: abbreviation for Saturday
 #: app/Date/AbstractCalendarDate.php:295
 #: resources/views/edit/initialize-calendar-popup.phtml:29
 msgid "Sat"
-msgstr ""
+msgstr "Sad"
 
 #. I18N: abbreviation for Sunday
 #: app/Date/AbstractCalendarDate.php:297
 #: resources/views/edit/initialize-calendar-popup.phtml:23
 msgid "Sun"
-msgstr ""
+msgstr "Sul"
 
 #: app/Date/AbstractGregorianJulianDate.php:63
 #: app/Module/StatisticsChartModule.php:794
 #: resources/views/edit/initialize-calendar-popup.phtml:11
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #: app/Date/AbstractGregorianJulianDate.php:64
 #: app/Module/StatisticsChartModule.php:795
 #: resources/views/edit/initialize-calendar-popup.phtml:12
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Date/AbstractGregorianJulianDate.php:65
 #: app/Module/StatisticsChartModule.php:796
 #: resources/views/edit/initialize-calendar-popup.phtml:13
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #: app/Date/AbstractGregorianJulianDate.php:66
 #: app/Module/StatisticsChartModule.php:797
 #: resources/views/edit/initialize-calendar-popup.phtml:14
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #: app/Date/AbstractGregorianJulianDate.php:67
 #: app/Module/StatisticsChartModule.php:798
 #: resources/views/edit/initialize-calendar-popup.phtml:15
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/AbstractGregorianJulianDate.php:68
 #: app/Module/StatisticsChartModule.php:799
 #: resources/views/edit/initialize-calendar-popup.phtml:16
 msgctxt "NOMINATIVE"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #: app/Date/AbstractGregorianJulianDate.php:69
 #: app/Module/StatisticsChartModule.php:800
 #: resources/views/edit/initialize-calendar-popup.phtml:17
 msgctxt "NOMINATIVE"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #: app/Date/AbstractGregorianJulianDate.php:70
 #: app/Module/StatisticsChartModule.php:801
 #: resources/views/edit/initialize-calendar-popup.phtml:18
 msgctxt "NOMINATIVE"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #: app/Date/AbstractGregorianJulianDate.php:71
 #: app/Module/StatisticsChartModule.php:802
 #: resources/views/edit/initialize-calendar-popup.phtml:19
 msgctxt "NOMINATIVE"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #: app/Date/AbstractGregorianJulianDate.php:72
 #: app/Module/StatisticsChartModule.php:803
 #: resources/views/edit/initialize-calendar-popup.phtml:20
 msgctxt "NOMINATIVE"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #: app/Date/AbstractGregorianJulianDate.php:73
 #: app/Module/StatisticsChartModule.php:804
 #: resources/views/edit/initialize-calendar-popup.phtml:21
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #: app/Date/AbstractGregorianJulianDate.php:74
 #: app/Module/StatisticsChartModule.php:805
 #: resources/views/edit/initialize-calendar-popup.phtml:22
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #: app/Date/AbstractGregorianJulianDate.php:98
 msgctxt "GENITIVE"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #: app/Date/AbstractGregorianJulianDate.php:99
 msgctxt "GENITIVE"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Date/AbstractGregorianJulianDate.php:100
 msgctxt "GENITIVE"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #: app/Date/AbstractGregorianJulianDate.php:101
 msgctxt "GENITIVE"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #: app/Date/AbstractGregorianJulianDate.php:102
 msgctxt "GENITIVE"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/AbstractGregorianJulianDate.php:103
 msgctxt "GENITIVE"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #: app/Date/AbstractGregorianJulianDate.php:104
 msgctxt "GENITIVE"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #: app/Date/AbstractGregorianJulianDate.php:105
 msgctxt "GENITIVE"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #: app/Date/AbstractGregorianJulianDate.php:107
 msgctxt "GENITIVE"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #: app/Date/AbstractGregorianJulianDate.php:108
 msgctxt "GENITIVE"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #: app/Date/AbstractGregorianJulianDate.php:109
 msgctxt "GENITIVE"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #: app/Date/AbstractGregorianJulianDate.php:133
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #: app/Date/AbstractGregorianJulianDate.php:134
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Date/AbstractGregorianJulianDate.php:135
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #: app/Date/AbstractGregorianJulianDate.php:136
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #: app/Date/AbstractGregorianJulianDate.php:137
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/AbstractGregorianJulianDate.php:138
 msgctxt "LOCATIVE"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #: app/Date/AbstractGregorianJulianDate.php:139
 msgctxt "LOCATIVE"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #: app/Date/AbstractGregorianJulianDate.php:140
 msgctxt "LOCATIVE"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #: app/Date/AbstractGregorianJulianDate.php:141
 msgctxt "LOCATIVE"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #: app/Date/AbstractGregorianJulianDate.php:142
 msgctxt "LOCATIVE"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #: app/Date/AbstractGregorianJulianDate.php:143
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #: app/Date/AbstractGregorianJulianDate.php:144
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #: app/Date/AbstractGregorianJulianDate.php:168
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr ""
+msgstr "Ionawr"
 
 #: app/Date/AbstractGregorianJulianDate.php:169
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr ""
+msgstr "Chwefror"
 
 #: app/Date/AbstractGregorianJulianDate.php:170
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr ""
+msgstr "Mawrth"
 
 #: app/Date/AbstractGregorianJulianDate.php:171
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr ""
+msgstr "Ebrill"
 
 #: app/Date/AbstractGregorianJulianDate.php:172
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/AbstractGregorianJulianDate.php:173
 msgctxt "INSTRUMENTAL"
 msgid "June"
-msgstr ""
+msgstr "Mehefin"
 
 #: app/Date/AbstractGregorianJulianDate.php:174
 msgctxt "INSTRUMENTAL"
 msgid "July"
-msgstr ""
+msgstr "Gorffennaf"
 
 #: app/Date/AbstractGregorianJulianDate.php:175
 msgctxt "INSTRUMENTAL"
 msgid "August"
-msgstr ""
+msgstr "Awst"
 
 #: app/Date/AbstractGregorianJulianDate.php:176
 msgctxt "INSTRUMENTAL"
 msgid "September"
-msgstr ""
+msgstr "Medi"
 
 #: app/Date/AbstractGregorianJulianDate.php:177
 msgctxt "INSTRUMENTAL"
 msgid "October"
-msgstr ""
+msgstr "Hydref"
 
 #: app/Date/AbstractGregorianJulianDate.php:178
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr ""
+msgstr "Tachwedd"
 
 #: app/Date/AbstractGregorianJulianDate.php:179
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr ""
+msgstr "Rhagfyr"
 
 #: app/Date/AbstractGregorianJulianDate.php:201
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr ""
+msgstr "Ion"
 
 #: app/Date/AbstractGregorianJulianDate.php:202
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr ""
+msgstr "Chw"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr ""
+msgstr "Maw"
 
 #: app/Date/AbstractGregorianJulianDate.php:204
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr ""
+msgstr "Ebr"
 
 #: app/Date/AbstractGregorianJulianDate.php:205
 msgctxt "Abbreviation for May"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: app/Date/AbstractGregorianJulianDate.php:206
 msgctxt "Abbreviation for June"
 msgid "Jun"
-msgstr ""
+msgstr "Meh"
 
 #: app/Date/AbstractGregorianJulianDate.php:207
 msgctxt "Abbreviation for July"
 msgid "Jul"
-msgstr ""
+msgstr "Gor"
 
 #: app/Date/AbstractGregorianJulianDate.php:208
 msgctxt "Abbreviation for August"
 msgid "Aug"
-msgstr ""
+msgstr "Aws"
 
 #: app/Date/AbstractGregorianJulianDate.php:209
 msgctxt "Abbreviation for September"
 msgid "Sep"
-msgstr ""
+msgstr "Med"
 
 #: app/Date/AbstractGregorianJulianDate.php:210
 msgctxt "Abbreviation for October"
 msgid "Oct"
-msgstr ""
+msgstr "Hyd"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr ""
+msgstr "Tac"
 
 #: app/Date/AbstractGregorianJulianDate.php:212
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr ""
+msgstr "Rha"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
 msgctxt "NOMINATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:91
 msgctxt "NOMINATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:93
 msgctxt "NOMINATIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "Nivose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
 msgctxt "NOMINATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "Floreal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:104
 msgctxt "NOMINATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:106
 msgctxt "NOMINATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Negesydd"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:108
 msgctxt "NOMINATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:110
 msgctxt "NOMINATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:112
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:135
 msgctxt "GENITIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:137
 msgctxt "GENITIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:139
 msgctxt "GENITIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:141
 msgctxt "GENITIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "Nivose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:143
 msgctxt "GENITIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:145
 msgctxt "GENITIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:147
 msgctxt "GENITIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:149
 msgctxt "GENITIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "Floreal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:151
 msgctxt "GENITIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:153
 msgctxt "GENITIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:155
