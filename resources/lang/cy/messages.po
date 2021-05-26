@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2021-05-26 17:15+0000\n"
-"Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cy/>\n"
 "Language: cy\n"
@@ -13221,7 +13221,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "None"
-msgstr ""
+msgstr "Dim"
 
 #: app/Module/IndividualListModule.php:352
 #, php-format
