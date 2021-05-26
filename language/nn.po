@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-09 06:51+0000\n"
+"PO-Revision-Date: 2021-05-26 17:15+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -11083,7 +11083,9 @@ msgstr "Personvernrestriksjonar"
 
 #: admin_trees_config.php:521
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Personvernrestriksjonar - desse påverkar postar og fakta som ikkje inneheld ein GEDCOM RESN tag"
+msgstr ""
+"Personvernrestriksjonar - desse påverkar postar og fakta som ikkje inneheld "
+"ein GEDCOM RESN-kode"
 
 #: app/Controller/GedcomRecordController.php:92 app/GedcomRecord.php:531
 #: app/GedcomRecord.php:609 app/GedcomRecord.php:734 app/Individual.php:1309
@@ -19846,7 +19848,7 @@ msgstr "tabell"
 #. I18N: Layout option for lists of names
 #: admin_trees_config.php:49 app/Module/TopSurnamesModule.php:165
 msgid "tag cloud"
-msgstr "«Tag cloud»"
+msgstr "«tag cloud»"
 
 #: app/Functions/Functions.php:573
 msgid "tenth cousin"
