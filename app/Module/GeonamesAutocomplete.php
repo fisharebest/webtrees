@@ -53,7 +53,7 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
      */
     public function title(): string
     {
-        // I18N: geonames.org
+        // I18N: https://www.geonames.org
         return I18N::translate('GeoNames');
     }
 

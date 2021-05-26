@@ -619,7 +619,7 @@ use Illuminate\Support\Collection;
                     <li>
                         <span class="fa-li"><?= view('icons/search') ?></span>
                         <a href="<?= e(route(ModulesMapAutocompletePage::class)) ?>">
-                            <?= /* I18N: plural noun - things that can be shared */ I18N::translate('Autocomplete') ?>
+                            <?= /* I18N: Automatic suggestions when you type */ I18N::translate('Autocomplete') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_autocomplete_modules_enabled->count(), 'total' => $map_autocomplete_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
@@ -633,7 +633,7 @@ use Illuminate\Support\Collection;
                     <li>
                         <span class="fa-li"><?= view('icons/location') ?></span>
                         <a href="<?= e(route(ModulesMapLinksPage::class)) ?>">
-                            <?= /* I18N: plural noun - things that can be shared */ I18N::translate('Map links') ?>
+                            <?= /* I18N: Links to maps */ I18N::translate('Map links') ?>
                         </a>
                         <?= view('components/badge', ['count' => $map_link_modules_enabled->count(), 'total' => $map_link_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
