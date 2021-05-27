@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-27 11:11+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-06-01 11:33+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -634,7 +634,7 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: URL = web address
 #: resources/views/modals/media-file-fields.phtml:33
 msgid "A URL"
-msgstr "Eine URL"
+msgstr "Eine Internetadresse (URL)"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:117
@@ -649,12 +649,12 @@ msgstr "Ein Diagramm der Vorfahren und Nachkommen einer Person als Familienbuch.
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:96
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Eine kompakte Ahnentafel der Vorfahren einer Person."
+msgstr "Ein kompaktes Diagramm der Vorfahren einer Person."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Ein Diagramm der Vorfahren einer Person als Baum angeordnet."
+msgstr "Ein Baumdiagramm der Vorfahren einer Person."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:119
@@ -859,13 +859,13 @@ msgstr "Ein zukünftiger Benutzer hat sich für webtrees auf %s registriert."
 #: app/Module/PedigreeReportModule.php:52
 #: resources/xml/reports/pedigree_report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Ein als Baum gestalteter Bericht über Vorfahren einer Person."
+msgstr "Ein als Baum gestalteter Bericht der Vorfahren einer Person."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Ein als Erzählung aufbereiteter Bericht über einen einzelnen Vorfahren."
+msgstr "Ein Bericht im Erzählstil der Vorfahren einer Person."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
@@ -892,7 +892,7 @@ msgstr "Ein Bericht über Familienmitglieder und ihre Detaildaten."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:52 resources/xml/reports/death_report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Ein Bericht Bericht über Personen, die zu einem bestimmten Zeitpunkt oder an einem bestimmten Ort gestorben sind."
+msgstr "Ein Bericht über Personen, die zu einem bestimmten Zeitpunkt oder an einem bestimmten Ort gestorben sind."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:56
@@ -921,7 +921,7 @@ msgstr "Ein Bericht über Personen, die zu einem bestimmten Zeitpunkt oder an ei
 #: app/Module/ChangeReportModule.php:56
 #: resources/xml/reports/change_report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Bericht über neueste und ausstehende Änderungen."
+msgstr "Ein Bericht über aktuelle und ausstehende Änderungen."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:56
@@ -959,7 +959,7 @@ msgstr "Eine Rolle ist definiert durch einen Satz an Zugriffsrechten, nach denen
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:51
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "Eine Seitenleiste zum Anzeigen der engsten Familien und Verwandten einer Person."
+msgstr "Eine Seitenleiste, die die engsten Familien und Verwandten einer Person zeigt."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/IndividualMetadataModule.php:68
@@ -969,17 +969,17 @@ msgstr "Eine Seitenleiste mit nicht genealogischen Informationen einer Person."
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:73
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Eine Seitenleiste, die die Nachkommen einer Person anzeigt."
+msgstr "Eine Seitenleiste, die die Nachkommen einer Person zeigt."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:53
 msgid "A tab showing the close relatives of an individual."
-msgstr "Ein Reiter zur Anzeige von nahen Verwandten einer Person."
+msgstr "Ein Reiter, er die nahen Verwandten einer Person zeigt."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:76
 msgid "A tab showing the facts and events of an individual."
-msgstr "Ein Reiter zur Anzeige der Tatsachen und Ereignisse einer Person."
+msgstr "Ein Reiter, der Tatsachen und Ereignisse einer Person zeigt."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
@@ -989,7 +989,7 @@ msgstr "Ein Reiter, der die mit einer Person verknüpften Medienobjekte zeigt."
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
 msgid "A tab showing the notes attached to an individual."
-msgstr "Ein Reiter zum Anzeigen von Notizen zu einer Person."
+msgstr "Ein Reiter, der Notizen zu einer Person zeigt."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:70
@@ -1640,11 +1640,11 @@ msgstr "Erweiterte Einstellungen für Tatsachen"
 
 #: resources/views/admin/trees-preferences.phtml:793
 msgid "Advanced name facts"
-msgstr "Erweiterte Namensfakten"
+msgstr "Erweiterte Namentatsachen"
 
 #: resources/views/admin/trees-preferences.phtml:806
 msgid "Advanced place name facts"
-msgstr "Erweiterte Ortsnamenfakten"
+msgstr "Erweiterte Ortsnamentatsachen"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:167
 #: app/Module/SearchMenuModule.php:125
@@ -1723,7 +1723,7 @@ msgstr "Alters-Zeitspanne"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:415
 msgid "Age of parents next to child’s birthdate"
-msgstr "Alter der Eltern bei den Geburtsdaten anzeigen"
+msgstr "Alter der Eltern neben dem Geburtsdatum des Kindes zeigen"
 
 #: resources/views/lists/individuals-table.phtml:490
 #: resources/views/lists/individuals-table.phtml:532
@@ -1929,7 +1929,7 @@ msgstr "Vorfahren"
 
 #: app/Factories/ElementFactory.php:454
 msgid "Ancestors interest"
-msgstr "Ahnenforscher"
+msgstr "Interessent an Vorfahren"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
@@ -2283,7 +2283,7 @@ msgstr "Autor der letzten Änderung"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:622
 msgid "Autocomplete"
-msgstr ""
+msgstr "Automatisch vervollständigen"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -3381,7 +3381,7 @@ msgstr "Volkszählungsdatum"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Volkszählungsdatum und -ort"
 
 #: app/Factories/ElementFactory.php:485
 msgid "Census place"
@@ -3426,7 +3426,7 @@ msgstr "Urkunde"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Urkundennummer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3802,7 +3802,7 @@ msgstr "Kaffee und Sahne"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Lebensgemeinschaft"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4057,7 +4057,7 @@ msgstr "Kopiere Dateien…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Kopiert die Internetadresse (URL) des Datensatzes in die Zwischenablage"
 
 #: app/Factories/ElementFactory.php:372 app/Factories/ElementFactory.php:399
 msgid "Copyright"
@@ -4178,7 +4178,7 @@ msgstr "Eine Person erstellen"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Karten mit %s erstellen."
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4351,11 +4351,11 @@ msgstr "Personalisiert"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "Benutzerdefiniertes GEDCOM-Unterkennzeichen"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "Benutzerdefiniertes GEDCOM-Kennzeichen"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4363,7 +4363,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:694
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Benutzerdefinierte GEDCOM-Kennzeichen"
 
 #: resources/views/calendar-page.phtml:203
 #: resources/views/edit/add-fact-row.phtml:40
@@ -5391,16 +5391,16 @@ msgstr "Zeige %s"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:62
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Anzeigen und Verwalten der Favoritenseiten eines Stammbaums."
+msgstr "Anzeige und Verwaltung der Favoritenseiten eines Stammbaums."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:63
 msgid "Display and manage a user’s favorite pages."
-msgstr "Anzeigen und Verwalten der Favoritenseiten eines Benutzers."
+msgstr "Anzeige und Verwaltung der Favoritenseiten eines Benutzers."
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "Benutzerdefinierte GEDCOM-Kennzeichen zeigen"
 
 #: app/Factories/ElementFactory.php:325 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5463,7 +5463,7 @@ msgstr "Lade %s…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "ICS-Datei herunterladen, die einen Jahrestag enthält"
 
 #: resources/views/media-page-details.phtml:85
 msgid "Download file"
@@ -5824,7 +5824,7 @@ msgstr "Esfand"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
@@ -5943,11 +5943,11 @@ msgstr "Externe Dateien"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "Externer Link"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
-msgstr "Externe Mediendateien haben eine Internetadresse anstelle eines lokalen Dateinamens."
+msgstr "Externe Mediendateien haben eine Internetadresse (URL) anstelle eines Dateinamens."
 
 #. I18N: Name of a module/sidebar
 #: app/Module/CustomTagsGenPluswin.php:80
@@ -5981,7 +5981,7 @@ msgstr "FAQ sind Listen von Antworten auf oft gestellte Fragen, welche dazu dien
 #: app/Module/CustomTagsGenPluswin.php:96
 #: app/Module/CustomTagsGenPluswin.php:98
 msgid "FOKO country"
-msgstr ""
+msgstr "Staatskennzeichen/Territorium für FoKo"
 
 #: app/Factories/ElementFactory.php:527
 msgid "Fact"
@@ -6290,7 +6290,7 @@ msgstr "Familie mit Ehefrau"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6653,7 +6653,7 @@ msgstr "Bei genealogischen Fragen wenden Sie sich bitte an %s."
 #: resources/views/modules/openstreetmap/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Für weitere Informationen siehe %s."
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
@@ -6878,11 +6878,11 @@ msgstr "GEDCOM-Datei"
 
 #: resources/views/modules/custom-tags/config.phtml:53
 msgid "GEDCOM sub-tag"
-msgstr ""
+msgstr "GEDCOM-Unterkennzeichen"
 
 #: resources/views/modules/custom-tags/config.phtml:51
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "GEDCOM-Kennzeichen"
 
 #. I18N: http://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -6982,7 +6982,7 @@ msgstr "Generationen der Nachkommen"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:45
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7002,7 +7002,7 @@ msgstr "Geografische Daten"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:629
 msgid "Geolocation"
-msgstr ""
+msgstr "Geolokalisierung"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
@@ -7372,7 +7372,7 @@ msgstr "Sie war von Beruf"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
 msgid "Here maps"
-msgstr ""
+msgstr "Here maps"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -7416,7 +7416,7 @@ msgstr "Ungenutzte Orte ausblenden"
 
 #: resources/views/modules/custom-tags/config.phtml:44
 msgid "Hide/show GEDCOM tags in the edit forms"
-msgstr ""
+msgstr "GEDCOM-Kennzeichen in den Bearbeitungsformularen aus-/einblenden"
 
 #: app/Module/CustomTagsGedcomL.php:236
 msgid "Hierarchical relationship"
@@ -7499,7 +7499,7 @@ msgstr "Sanduhrdiagramm von %s"
 #: app/Module/CustomTagsGenPluswin.php:58
 #: app/Module/CustomTagsGenPluswin.php:90
 msgid "House number"
-msgstr ""
+msgstr "Hausnummer"
 
 #: resources/views/modules/census-assistant.phtml:117
 msgid "Household"
@@ -8103,7 +8103,7 @@ msgstr "Karl /MUSTERMANN/"
 
 #: app/Module/CustomTagsGenPluswin.php:88
 msgid "Joint family name"
-msgstr ""
+msgstr "Gemeinsamer Familienname"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
@@ -8784,7 +8784,7 @@ msgstr "Zeitschrift"
 #: app/Module/CustomTagsGedcomL.php:238 app/Module/CustomTagsGenPluswin.php:70
 #: app/Module/CustomTagsGenPluswin.php:102
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "Maidenhead Locator-Code"
 
 #: app/Module/CustomTagsPersonalAncestralFile.php:60
 msgid "Mailing name"
@@ -8918,23 +8918,23 @@ msgstr "Landkarte"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "Kartenlink"
 
 #. I18N: plural noun - things that can be shared
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:636
 msgid "Map links"
-msgstr ""
+msgstr "Kartenlinks"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: resources/views/admin/control-panel.phtml:643
 msgid "Map providers"
-msgstr ""
+msgstr "Kartenanbieter"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:82
 msgid "Mapbox"
-msgstr ""
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
@@ -10254,7 +10254,7 @@ msgstr "Kein vordefinierter Text"
 #: resources/views/lists/datatables-attributes.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:33
 msgid "No records to display"
-msgstr "Keine Einträge zum Anzeigen"
+msgstr "Keine Datensätze zum Anzeigen"
 
 #: resources/views/modules/place-hierarchy/events.phtml:34
 #: resources/views/modules/place-hierarchy/events.phtml:46
@@ -10286,7 +10286,7 @@ msgstr "Nacht"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Nominatim"
 
 #: app/Module/IndividualListModule.php:295
 #: app/Module/IndividualListModule.php:511
@@ -10657,7 +10657,7 @@ msgstr "Uups! webtrees konnte in diesem Verzeichnis keine Dateien erstellen."
 #: app/Module/MapGeoLocationOpenRouteService.php:44
 #: app/Module/OpenRouteServiceAutocomplete.php:81
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:57
 msgid "OpenStreetMap™"
@@ -10708,7 +10708,7 @@ msgstr "Ordination"
 #. I18N: Ordnance Survey is the UK government mapping service.
 #: app/Module/OrdnanceSurveyHistoricMaps.php:39
 msgid "Ordnance Survey historic maps"
-msgstr ""
+msgstr "Historische Karten von Ordnance Survey"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -10720,7 +10720,7 @@ msgstr "Richtung"
 #: app/Module/CustomTagsGenPluswin.php:106
 #: app/Module/CustomTagsGenPluswin.php:117
 msgid "Original text"
-msgstr ""
+msgstr "Originaltext"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -11165,7 +11165,7 @@ msgstr "Kindstaufort"
 #. I18N: German Bürgerort
 #: app/Module/CustomTagsGenPluswin.php:124
 msgid "Place of citizenship"
-msgstr ""
+msgstr "Heimat- oder Bürgerort"
 
 #: app/Factories/ElementFactory.php:496
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -11495,7 +11495,7 @@ msgstr "Provo, Utah, Vereinigte Staaten"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Stellvertreter"
 
 #: app/Factories/ElementFactory.php:694
 #: resources/views/lists/sources-table.phtml:96
@@ -11889,7 +11889,7 @@ msgstr "Beziehungen zwischen %1$s und %2$s"
 #: app/Module/CustomTagsGenPluswin.php:72
 #: app/Module/CustomTagsGenPluswin.php:104
 msgid "Reliability of the information"
-msgstr ""
+msgstr "Sicherheit der Ortsangabe"
 
 #: app/Factories/ElementFactory.php:303 app/Factories/ElementFactory.php:433
 #: app/Factories/ElementFactory.php:584
@@ -12073,7 +12073,7 @@ msgstr "Forschungsaufgaben"
 
 #: resources/views/modules/todo/config.phtml:14
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem Stammbaum hinzugefügt werden können, um die Notwendigkeit weitergehender Forschungen zu beschreiben. Man kann sie als Erinnerung nutzen, um Fakten gegen zuverlässigere Quellen zu überprüfen, um Dokumente oder Fotos zu erhalten oder um widersprüchliche Informationen aufzulösen."
+msgstr "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem Stammbaum hinzugefügt werden können, um die Notwendigkeit weitergehender Forschungen zu beschreiben. Man kann sie als Erinnerung nutzen, um Tatsachen gegen zuverlässigere Quellen zu überprüfen, um Dokumente oder Fotos zu erhalten oder um widersprüchliche Informationen aufzulösen."
 
 #: resources/views/modules/todo/config.phtml:16
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
@@ -12409,17 +12409,17 @@ msgstr "Suchen nach"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "Suche nach Orten in einer externen Datenbank."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "Suche nach Ortsnamen in einer externen Datenbank."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:56
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Suche nach Ortsnamen mit %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12554,7 +12554,7 @@ msgstr "Erinnerungs-E-Mails versenden"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:72
 msgid "Sender email"
-msgstr ""
+msgstr "E-Mail des Absenders"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:58
@@ -12740,15 +12740,15 @@ msgstr "Shahrivar"
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/individual-page.phtml:56
 msgid "Share"
-msgstr ""
+msgstr "Teilen"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Internetadresse (URL) teilen"
 
 #: app/Module/ShareAnniversaryModule.php:79
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Den Jahrestag eines Ereignisses teilen"
 
 #: app/Functions/FunctionsPrint.php:94
 #: app/Functions/FunctionsPrintFacts.php:793
@@ -12770,7 +12770,7 @@ msgstr "Gemeinsame Notizen"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:729
 msgid "Shares"
-msgstr ""
+msgstr "Geteiltes"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -12898,29 +12898,29 @@ msgstr "Zeigen"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:287
 msgid "Show a download link in the media viewer"
-msgstr "Einen Download-Link im Medienbetrachter anzeigen"
+msgstr "Einen Download-Link im Medienbetrachter zeigen"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr "Datenschutzerklärung anzeigen."
+msgstr "Zeigt eine Datenschutzerklärung."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:69
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Nutzungsbedingungen auf der Seite \"Neues Benutzerkonto anfragen\" anzeigen"
+msgstr "Nutzungsbedingungen auf der Seite \"Neues Benutzerkonto anfragen\" zeigen"
 
 #: resources/views/modules/notes/tab.phtml:26
 msgid "Show all notes"
-msgstr "Zeige alle Notizen"
+msgstr "Alle Notizen zeigen"
 
 #: app/Module/PlaceHierarchyListModule.php:223
 msgid "Show all places in a list"
-msgstr "Alle Orte in einer Liste anzeigen"
+msgstr "Alle Orte in einer Liste zeigen"
 
 #: resources/views/modules/sources_tab/tab.phtml:26
 msgid "Show all sources"
-msgstr "Zeige alle Quellen"
+msgstr "Alle Quellen zeigen"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:81
@@ -12933,7 +12933,7 @@ msgstr "Kinder von Vorfahren zeigen"
 
 #: resources/views/lists/families-table.phtml:205
 msgid "Show couples where either partner married more than once."
-msgstr "Zeige Paare, von denen ein Partner mehr als einmal heiratete."
+msgstr "Paare zeigen, von denen ein Partner mehr als einmal heiratete."
 
 #: resources/views/lists/families-table.phtml:163
 msgid "Show couples where only the female partner is dead."
@@ -12953,77 +12953,77 @@ msgstr "Paare zeigen, die innerhalb der letzten 100 Jahren heirateten."
 
 #: resources/views/lists/families-table.phtml:189
 msgid "Show couples with an unknown marriage date."
-msgstr "Paare mit unbekanntem Heiratsdatum anzeigen."
+msgstr "Paare mit unbekanntem Heiratsdatum zeigen."
 
 #. I18N: label for yes/no option
 #: resources/views/modules/gedcom_stats/config.phtml:35
 msgid "Show date of last update"
-msgstr "Datum der letzten Aktualisierung anzeigen"
+msgstr "Datum der letzten Aktualisierung zeigen"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:52
 msgid "Show dead individuals"
-msgstr "Zeige verstorbene Personen"
+msgstr "Verstorbene Personen zeigen"
 
 #: resources/views/lists/families-table.phtml:201
 msgid "Show divorced couples."
-msgstr "Zeige geschiedene Paare."
+msgstr "Geschiedene Paare zeigen."
 
 #: resources/views/lists/individuals-table.phtml:208
 msgid "Show individuals born more than 100 years ago."
-msgstr "Zeige Personen, die vor mehr als 100 Jahren geboren wurden."
+msgstr "Personen zeigen, die vor mehr als 100 Jahren geboren wurden."
 
 #: resources/views/lists/individuals-table.phtml:212
 msgid "Show individuals born within the last 100 years."
-msgstr "Zeige Personen, die in den letzten 100 Jahren geboren wurden."
+msgstr "Personen zeigen, die in den letzten 100 Jahren geboren wurden."
 
 #: resources/views/lists/individuals-table.phtml:189
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Zeige Personen oder Paare, bei denen beide Partner noch leben."
+msgstr "Personen oder Paare zeigen, bei denen beide Partner noch leben."
 
 #: resources/views/lists/families-table.phtml:171
 #: resources/views/lists/individuals-table.phtml:193
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Zeige Verstorbene oder Paare, bei denen beide Partner verstorben sind."
+msgstr "Verstorbene oder Paare zeigen, bei denen beide Partner verstorben sind."
 
 #: resources/views/lists/individuals-table.phtml:197
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Zeige Personen, die vor mehr als 100 Jahren starben."
+msgstr "Personen zeigen, die vor mehr als 100 Jahren starben."
 
 #: resources/views/lists/individuals-table.phtml:201
 msgid "Show individuals who died within the last 100 years."
-msgstr "Zeige Personen, die in den letzten 100 Jahren starben."
+msgstr "Personen zeigen, die in den letzten 100 Jahren starben."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
 msgid "Show list of family trees"
-msgstr "Liste der Stammbäume anzeigen"
+msgstr "Liste der Stammbäume zeigen"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:95
 msgid "Show living individuals"
-msgstr "Zeige lebende Personen"
+msgstr "Lebende Personen zeigen"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:136
 msgid "Show names of private individuals"
-msgstr "Zeige Namen vertraulicher Personen"
+msgstr "Namen vertraulicher Personen zeigen"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Notizen anzeigen"
+msgstr "Notizen zeigen"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Berufe anzeigen"
+msgstr "Berufe zeigen"
 
 #: resources/views/modules/todays_events/config.phtml:19
 #: resources/views/modules/upcoming_events/config.phtml:31
 msgid "Show only events of living individuals"
-msgstr "Nur Ereignisse lebender Personen anzeigen"
+msgstr "Nur Ereignisse lebender Personen zeigen"
 
 #: resources/views/lists/individuals-table.phtml:178
 msgid "Show only females."
@@ -13035,7 +13035,7 @@ msgstr "Nur Personen unbekannten Geschlechts zeigen."
 
 #: resources/views/modules/random_media/config.phtml:17
 msgid "Show only individuals, events, or all"
-msgstr "Personen, Ereignisse oder alle Medien anzeigen"
+msgstr "Nur Personen, Ereignisse oder alle zeigen"
 
 #: resources/views/lists/individuals-table.phtml:174
 msgid "Show only males."
@@ -13054,36 +13054,36 @@ msgstr "Ausstehende Änderungen zeigen"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "Fotos anzeigen"
+msgstr "Fotos zeigen"
 
 #: app/Module/PlaceHierarchyListModule.php:217
 msgid "Show place hierarchy"
-msgstr "Zeige die Hierarchie der Orte"
+msgstr "Hierarchie der Orte zeigen"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:156
 msgid "Show private relationships"
-msgstr "Zeige vertrauliche Beziehungen"
+msgstr "Vertrauliche Beziehungen zeigen"
 
 #: resources/views/modules/todo/config.phtml:21
 msgid "Show research tasks that are assigned to other users"
-msgstr "Forschungsaufgaben anzeigen, die anderen Benutzern zugeordnet sind"
+msgstr "Forschungsaufgaben zeigen, die anderen Benutzern zugeordnet sind"
 
 #: resources/views/modules/todo/config.phtml:31
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Forschungsaufgaben anzeigen, die keinem anderen Benutzer zugeordnet sind"
+msgstr "Forschungsaufgaben zeigen, die keinem anderen Benutzer zugeordnet sind"
 
 #: resources/views/modules/todo/config.phtml:40
 msgid "Show research tasks that have a date in the future"
-msgstr "Forschungsaufgaben anzeigen, die ein Datum in der Zukunft haben"
+msgstr "Forschungsaufgaben zeigen, die ein Datum in der Zukunft haben"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Wohnsitze anzeigen"
+msgstr "Wohnsitze zeigen"
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
-msgstr "Steuerungselemente der Diaschau anzeigen"
+msgstr "Steuerungselemente der Diaschau zeigen"
 
 #: resources/xml/reports/ahnentafel_report.xml:8
 #: resources/xml/reports/descendancy_report.xml:7
@@ -13091,7 +13091,7 @@ msgstr "Steuerungselemente der Diaschau anzeigen"
 #: resources/xml/reports/individual_ext_report.xml:9
 #: resources/xml/reports/individual_report.xml:6
 msgid "Show sources"
-msgstr "Quellen anzeigen"
+msgstr "Quellen zeigen"
 
 #: resources/views/modules/family-book-chart/page.phtml:61
 #: resources/views/modules/hourglass-chart/page.phtml:51
@@ -13108,64 +13108,64 @@ msgstr "Statistikdiagramme zeigen"
 #: resources/views/admin/trees-preferences.phtml:600
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Zeige die %1$s %2$s Teile des Ortsnamens."
+msgstr "Die %1$s %2$s Teile des Ortsnamens zeigen."
 
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:138
 msgid "Show the birthplace of ancestors on a map."
-msgstr "Zeige die Geburtsorte der Vorfahren in einer Landkarte."
+msgstr "Zeigt die Geburtsorte der Vorfahren in einer Landkarte."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr "Datum und Zeit anzeigen"
+msgstr "Datum und Zeit zeigen"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
-msgstr "Datum und Zeit der Aktualisierung anzeigen"
+msgstr "Datum und Zeit der Aktualisierung zeigen"
 
 #: resources/views/admin/trees-preferences.phtml:447
 msgid "Show the events of close relatives on the individual page"
-msgstr "Ereignisse naher Verwandter, die auf der Personen-Seite angezeigt werden"
+msgstr "Ereignisse naher Verwandter, die auf der Personen-Seite gezeigt werden"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Show the family tree"
-msgstr "Zeige den Stammbaum"
+msgstr "Den Stammbaum zeigen"
 
 #: app/Module/IndividualListModule.php:366
 msgid "Show the list of individuals"
-msgstr "Zeige die Personenliste"
+msgstr "Die Personenliste zeigen"
 
 #: app/Module/IndividualListModule.php:372
 msgid "Show the list of surnames"
-msgstr "Zeige Liste der Nachnamen"
+msgstr "Liste der Nachnamen zeigen"
 
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Den Ereignisort auf einer externen Karte zeigen."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:95
 msgid "Show the location of events on a map."
-msgstr "Zeige den Ort von Ereignissen auf einer Landkarte."
+msgstr "Zeigt den Ort von Ereignissen auf einer Landkarte."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:58
 msgid "Show the user who made the change"
-msgstr "Den Benutzer anzeigen, der die Änderung machte"
+msgstr "Den Benutzer zeigen, der die Änderung machte"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.phtml:53
 #: resources/views/modules/html/config.phtml:63
 #: resources/views/modules/stories/edit.phtml:60
 msgid "Show this block for which languages"
-msgstr "Diesen Block für welche Sprachen anzeigen"
+msgstr "Diesen Block für welche Sprachen zeigen"
 
 #: resources/views/admin/trees-preferences.phtml:309
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Zeige Vorschaubilder in Diagrammen und Familienbögen."
+msgstr "Vorschaubilder in Diagrammen und Familienbögen zeigen."
 
 #: app/Auth.php:533 app/Auth.php:546 app/Elements/RestrictionNotice.php:77
 #: app/Functions/FunctionsPrintFacts.php:623
@@ -13198,12 +13198,12 @@ msgstr "sichtbar für Besucher"
 #: resources/views/lists/families-table.phtml:182
 #: resources/views/lists/individuals-table.phtml:223
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "«Blätter» zeigen. «Blätter» sind lebend aber nachfolgerlos."
+msgstr "\"Blätter\"-Paare oder -Personen zeigen. Dies sind lebende Personen, für die keine Kinder in der Datenbank erfasst sind."
 
 #: resources/views/lists/families-table.phtml:178
 #: resources/views/lists/individuals-table.phtml:219
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "„Wurzeln“ zeigen. „Wurzeln“ können auch „Patriarch“ gennant werden. Sie sind elternlos in der Datenbank eingetragen."
+msgstr "\"Wurzel\"-Paare oder -Personen zeigen. Diese Personen können auch als \"Patriarchen\" bezeichnet werden. Es handelt sich um Personen, für die keine Eltern in der Datenbank erfassten sind."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml:24
@@ -13398,12 +13398,12 @@ msgstr "Einige Genealogie-Anwendungen speichern alle Namen in einem einzigen Nam
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
 msgid "Some pages can display the number of times that they have been visited."
-msgstr "Einige Seiten können die Anzahl ihrer Besuche anzeigen."
+msgstr "Einige Seiten können anzeigen, wie oft sie besucht wurden."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:545
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Einige Designs können Symbole auf dem Reiter „Tatsachen und Ereignisse“ anzeigen."
+msgstr "Einige Themen können Symbole auf dem Reiter \"Tatsachen und Ereignisse\" anzeigen."
 
 #: resources/views/edit/change-family-members.phtml:63
 #: resources/xml/reports/family_group_report.xml:774
@@ -13626,7 +13626,7 @@ msgstr "St. Paul, Minnesota, Vereinigte Staaten"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
-msgstr "Starten der Diaschau beim Seitenaufruf"
+msgstr "Diaschau beim Seitenaufruf starten"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
@@ -13712,7 +13712,7 @@ msgstr "Titel der Geschichte"
 #: app/Module/CustomTagsGenPluswin.php:59
 #: app/Module/CustomTagsGenPluswin.php:91
 msgid "Street name"
-msgstr ""
+msgstr "Straßenangabe"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -13787,7 +13787,7 @@ msgstr "Die Unterstützung für SQL Server ist experimentell."
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
 msgid "Support for non-standard GEDCOM tags."
-msgstr ""
+msgstr "Unterstützung für nicht standardisierte GEDCOM-Kennzeichen."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14092,7 +14092,7 @@ msgstr "Die PHP.INI-Einstellung “%1$s” ist aktiviert."
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "Die Internetadresse (URL) wurde in die Zwischenablage kopiert"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -14265,7 +14265,7 @@ msgstr "Die folgenden Tatsachen und Ereignisse wurden nur im Datensatz von %s ge
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
-msgstr "Die folgende Liste zeigt typische Voraussetzungen."
+msgstr "Die folgende Liste zeigt typische Anforderungen."
 
 #: app/Http/RequestHandlers/HelpText.php:289
 msgid "The help text has not been written for this item."
@@ -14973,7 +14973,7 @@ msgstr "Dieses Medienobjekt wurde geändert. Sie sollten die Änderung prüfen u
 #: resources/views/emails/message-user-html.phtml:34
 #: resources/views/emails/message-user-text.phtml:24
 msgid "This message was sent while viewing the following URL: "
-msgstr "Diese Nachricht wurde gesendet, während die folgende Internetadresse angezeigt wurde: "
+msgstr "Diese Nachricht wurde gesendet, während die folgende Internetadresse (URL) angezeigt wurde: "
 
 #: resources/views/setup/step-5-administrator.phtml:83
 msgid "This must be at least six characters long. It is case-sensitive."
@@ -15376,11 +15376,11 @@ msgstr "Um Suchmaschinen über das Vorhandensein von Sitemaps zu informieren, k�
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Um diesen Dienst zu nutzen, benötigen Sie einen API-Key."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Um diesen Dienst zu nutzen, benötigen Sie ein Benutzerkonto."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15816,7 +15816,7 @@ msgstr "Unbekannt"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Verknüpfung aufheben"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15895,7 +15895,7 @@ msgstr "„?“ ist einem einzelnen beliebigen Zeichen gleich; „*“ ist keine
 
 #: app/Module/ModuleMapGeoLocationTrait.php:48
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Verwenden Sie einen externen Dienst, um Orte zu finden."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -15932,7 +15932,7 @@ msgstr "Verwenden Sie die Buchstaben A-Z, a-z, die Ziffern 0-9 oder Unterstriche
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Karten in webtrees verwenden."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -16159,7 +16159,7 @@ msgstr "Diese Familie ansehen"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Diesen Ort mit %s ansehen"
 
 #: resources/views/calendar-page.phtml:219
 msgid "View this month"
@@ -19210,7 +19210,7 @@ msgstr "Datei importieren"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "Inline-Notiz"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20062,7 +20062,7 @@ msgstr "Cousin 7. Grades"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "Gemeinsame Notiz"
 
 #: resources/views/admin/trees-preferences.phtml:307
 #: resources/views/admin/trees-preferences.phtml:387
@@ -20079,12 +20079,12 @@ msgstr "zeigen"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr "In webtrees gemachte Änderungen anzeigen"
+msgstr "In webtrees gemachte Änderungen zeigen"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr "In den genealogischen Daten gespeicherte Änderungen anzeigen"
+msgstr "In den genealogischen Daten gespeicherte Änderungen zeigen"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
