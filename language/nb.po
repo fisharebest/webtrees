@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"PO-Revision-Date: 2021-06-01 11:33+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nb_NO/>\n"
@@ -3758,7 +3758,7 @@ msgstr "Omskjærer"
 #: modules_v3/fact_sources/report.xml:277
 #: modules_v3/fact_sources/report.xml:323
 msgid "Citation details"
-msgstr "Side"
+msgstr "Kildehenvisning"
 
 #. I18N: gedcom tag CITN
 #: app/GedcomTag.php:290
@@ -6474,7 +6474,7 @@ msgstr "Glemt passord?"
 #: app/GedcomTag.php:496 help_text.php:136 help_text.php:148 help_text.php:159
 #: help_text.php:166
 msgid "Format"
-msgstr "Formatering"
+msgstr "Format"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1557
