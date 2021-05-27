@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
 "PO-Revision-Date: 2021-06-01 11:33+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
 "Language: cy\n"
@@ -116,12 +116,12 @@ msgstr ""
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[1] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[2] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[3] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[4] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[5] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
 
 #: app/Module/GoogleMapsModule.php:838
 #, php-format
@@ -199,7 +199,7 @@ msgstr ""
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:160
 msgid "%j %F %Y"
-msgstr ""
+msgstr "% j %F% Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6940
@@ -1221,7 +1221,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "Aba, Nigeria"
 
 #: app/Date/JalaliDate.php:190
 msgctxt "Abbreviation for Persian month: Aban"
@@ -3035,7 +3035,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:109
 msgid "Bogota, Colombia"
-msgstr ""
+msgstr "Bogota, Colombia"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
@@ -3614,12 +3614,12 @@ msgstr "Newidiadau"
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[1] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[2] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[3] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[4] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[5] "Newidiadau yn y %s diwrnod diwethaf"
 
 #: admin_trees_manage.php:529
 msgid "Changes log"
@@ -3672,7 +3672,7 @@ msgstr ""
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:94
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Gwirio am newidiadau sydd ar ddod…"
 
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 msgid "Check the access rights on this folder."
@@ -4130,12 +4130,12 @@ msgstr "Copïo"
 #: admin_trees_merge.php:195
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Copïo'r holl gofnodion o '%1$s' i '%2$s."
 
 #. I18N: The system is about to…
 #: admin_site_upgrade.php:369
 msgid "Copy files…"
-msgstr ""
+msgstr "Copïo ffeiliau…"
 
 #: admin_site_upgrade.php:339
 #, php-format
@@ -4169,7 +4169,7 @@ msgstr "Costa Rica"
 #. I18N: Name of a country or state
 #: app/Stats.php:6716
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "Cote d’Ivoire"
 
 #: login.php:619
 msgid "Could not verify the information you entered. Please try again or contact the site administrator for more information."
@@ -5427,7 +5427,7 @@ msgstr "Llwytho i lawr"
 #: admin_site_upgrade.php:243
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Llwytho %s i Lawr…"
 
 #: mediaviewer.php:143
 msgid "Download file"
@@ -6364,7 +6364,7 @@ msgstr "Maint ffeil"
 
 #: app/Functions/Functions.php:69
 msgid "File successfully uploaded"
-msgstr ""
+msgstr "Llwythwyd y ffeil yn llwyddiannus"
 
 #. I18N: gedcom tag FILE
 #: admin_media.php:481 app/GedcomTag.php:488
@@ -7108,7 +7108,7 @@ msgstr "Haiti"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:185
 msgid "Halifax, Nova Scotia, Canada"
-msgstr ""
+msgstr "Halifax, Nova Scotia, Canada"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:269
@@ -7167,7 +7167,7 @@ msgstr "Pennyn"
 #. I18N: Name of a country or state
 #: app/Stats.php:6771
 msgid "Heard Island and McDonald Islands"
-msgstr "Ynysoedd Heard a McDonald"
+msgstr "Heard Island a McDonald Islands"
 
 #. I18N: gedcom tag _HEB
 #: app/GedcomTag.php:1521
@@ -7187,7 +7187,7 @@ msgstr "Uchder"
 #: login.php:256 login.php:337
 #, php-format
 msgid "Hello %s…"
-msgstr ""
+msgstr "Helo %s…"
 
 #: login.php:389
 #, php-format
@@ -7196,7 +7196,7 @@ msgstr ""
 
 #: login.php:320 login.php:558
 msgid "Hello administrator…"
-msgstr ""
+msgstr "Helo weinyddwr…"
 
 #: help_text.php:320
 msgid "Help"
@@ -7570,7 +7570,7 @@ msgstr ""
 
 #: calendar.php:128
 msgid "In this year…"
-msgstr ""
+msgstr "Eleni…"
 
 #: app/Module/GoogleMapsModule.php:1358
 msgid "Include fully matched places"
@@ -8209,7 +8209,7 @@ msgstr ""
 
 #: app/Module/ReviewChangesModule.php:114
 msgid "Last email reminder was sent "
-msgstr ""
+msgstr "Anfonwyd yr e-bost nodyn atgoffa olaf "
 
 #: statistics.php:371
 msgid "Last event"
@@ -8651,7 +8651,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
 msgid "Manila, Philippines"
-msgstr ""
+msgstr "Manila, Philippines"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:235
@@ -9000,7 +9000,7 @@ msgstr ""
 
 #: admin_media_upload.php:188
 msgid "Maximum upload size: "
-msgstr ""
+msgstr "Uchafswm maint llwytho i fyny: "
 
 #: app/Date/CalendarDate.php:325
 msgctxt "Abbreviation for May"
@@ -9267,7 +9267,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/GedcomTag.php:1924
 msgid "Microfiche"
-msgstr ""
+msgstr "Microfiche"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1926
@@ -9421,7 +9421,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:253
 msgid "Montreal, Quebec, Canada"
-msgstr ""
+msgstr "Montreal, Quebec, Canada"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6827
@@ -9933,12 +9933,12 @@ msgstr ""
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[1] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[2] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[3] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[4] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[5] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
 
 #: app/Functions/FunctionsPrintLists.php:1710
 #: app/Functions/FunctionsPrintLists.php:1819
@@ -11301,7 +11301,7 @@ msgstr ""
 
 #: app/GedcomCode/GedcomCodeRela.php:219
 msgid "Rabbi"
-msgstr ""
+msgstr "Rabbi"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:92
@@ -11788,7 +11788,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Stats.php:6862
 msgid "Reunion"
-msgstr "Réunion"
+msgstr "Reunion"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
@@ -12915,7 +12915,7 @@ msgstr "Sierra Leone"
 #: app/Module/LoginBlockModule.php:29 app/Module/LoginBlockModule.php:69
 #: app/Theme/AbstractTheme.php:1561 login.php:151
 msgid "Sign in"
-msgstr "Meewngofnodi"
+msgstr "Mewngofnodi"
 
 #: app/Module/LoginBlockModule.php:62 app/Theme/AbstractTheme.php:1572
 msgid "Sign out"
@@ -13336,7 +13336,7 @@ msgstr "Marw-anedig: eithriedig"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:353
 msgid "Stockholm, Sweden"
-msgstr ""
+msgstr "Stockholm, Sweden"
 
 #: app/Module/SlideShowModule.php:139 app/Theme/CloudsTheme.php:99
 #: app/Theme/FabTheme.php:115 app/Theme/MinimalTheme.php:112
@@ -14553,7 +14553,7 @@ msgstr ""
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "Anfonwyd y neges hon wrth edrych ar yr URL canlynol: "
 
 #: message.php:113
 #, php-format
@@ -15008,24 +15008,24 @@ msgstr "Tonga"
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s enw mwyaf poblogaidd"
+msgstr[1] "%s enw mwyaf poblogaidd"
+msgstr[2] "%s enw mwyaf poblogaidd"
+msgstr[3] "%s enw mwyaf poblogaidd"
+msgstr[4] "%s enw mwyaf poblogaidd"
+msgstr[5] "%s enw mwyaf poblogaidd"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:97
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s cyfenw mwyaf poblogaidd"
+msgstr[1] "%s cyfenw mwyaf poblogaidd"
+msgstr[2] "%s cyfenw mwyaf poblogaidd"
+msgstr[3] "%s cyfenw mwyaf poblogaidd"
+msgstr[4] "%s cyfenw mwyaf poblogaidd"
+msgstr[5] "%s cyfenw mwyaf poblogaidd"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:71
@@ -15228,7 +15228,7 @@ msgstr "Tyrcmentistan"
 #. I18N: Name of a country or state
 #: app/Stats.php:6892
 msgid "Turks and Caicos Islands"
-msgstr "Ynysoedd Turks a Caicos"
+msgstr "Turks a Caicos Islands"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6904
@@ -15409,7 +15409,7 @@ msgstr ""
 #: admin_site_upgrade.php:273
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Dadsipio %s i ffolder dros dro…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:35
@@ -15488,12 +15488,12 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Defnyddiwch o leiaf %s nod."
+msgstr[1] "Defnyddiwch o leiaf %s nod."
+msgstr[2] "Defnyddiwch o leiaf %s nod."
+msgstr[3] "Defnyddiwch o leiaf %s nod."
+msgstr[4] "Defnyddiwch o leiaf %s nod."
+msgstr[5] "Defnyddiwch o leiaf %s nod."
 
 #: modules_v3/family_group_report/report.xml:12
 #: modules_v3/individual_ext_report/report.xml:13
@@ -15605,7 +15605,7 @@ msgstr ""
 
 #: admin_users.php:711
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Mae cyfrif defnyddiwr wedi bod yn anweithredol yn rhy hir: "
 
 #: app/Module/GoogleMapsModule.php:599
 msgid "Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country."
@@ -19315,17 +19315,17 @@ msgstr "rhiant"
 
 #: app/Functions/Functions.php:736
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:718
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
