@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-27 11:11+0000\nLast-Translator: Rhoslyn Prys <rprys@posteo.net>\nLanguage-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\nLanguage: cy\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-27 11:11+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\nLanguage: cy\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\nX-Generator: Weblate 3.9.1\n"
 
 #: app/Age.php:98 app/Functions/FunctionsPrint.php:261
 #: app/Statistics/Repository/FamilyRepository.php:351
@@ -745,7 +745,7 @@ msgstr "Fructidor"
 #: app/Date/FrenchDate.php:159
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr "jours compleaires"
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:182
@@ -805,7 +805,7 @@ msgstr "Prairial"
 #: app/Date/FrenchDate.php:200
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr "Negesydd"
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:202
@@ -823,7 +823,7 @@ msgstr "Fructidor"
 #: app/Date/FrenchDate.php:206
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr "jours compleaires"
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:229
@@ -901,7 +901,7 @@ msgstr "Fructidor"
 #: app/Date/FrenchDate.php:253
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr "jours compleaires"
+msgstr "jours complementaires"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:287
@@ -3794,7 +3794,7 @@ msgstr ""
 #: resources/xml/reports/marriage_report.xml:46
 #: resources/xml/reports/occupation_report.xml:57
 msgid "Date"
-msgstr "~Dyddiad"
+msgstr "Dyddiad"
 
 #: app/Factories/ElementFactory.php:286 app/Factories/ElementFactory.php:394
 #: app/Factories/ElementFactory.php:418 app/Factories/ElementFactory.php:670
@@ -5194,7 +5194,7 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:43
 #: resources/xml/reports/relative_ext_report.xml:57
 msgid "Name"
-msgstr "Enw "
+msgstr "Enw"
 
 #: app/Factories/ElementFactory.php:543
 msgid "Phonetic name"
@@ -6010,7 +6010,7 @@ msgstr "Rhagolwg"
 #: app/Http/RequestHandlers/DataFixData.php:105
 #: resources/views/modules/batch_update/admin.phtml:78
 msgid "Update"
-msgstr "Diweddariad "
+msgstr "Diweddariad"
 
 #: app/Http/RequestHandlers/DeletePath.php:58
 #, php-format
@@ -6288,7 +6288,7 @@ msgstr ""
 #: app/Http/RequestHandlers/LoginPage.php:79 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:286
 msgid "Sign in"
-msgstr "Meewngofnodi "
+msgstr "Meewngofnodi"
 
 #: app/Http/RequestHandlers/LoginPage.php:84
 msgid "Anyone with a user account can access this website."
@@ -6312,7 +6312,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:246
 msgid "Create"
-msgstr "Creu "
+msgstr "Creu"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:250
 #: resources/views/admin/clean-data.phtml:41
@@ -14935,7 +14935,7 @@ msgstr "Guyana"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:237
 msgid "Heard Island and McDonald Islands"
-msgstr "Heard Island and McDonald Islands"
+msgstr "Ynysoedd Heard a McDonald"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:239
@@ -15380,7 +15380,7 @@ msgstr "Qatar"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
 msgid "Reunion"
-msgstr "Reunion"
+msgstr "Réunion"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:419
@@ -15445,7 +15445,7 @@ msgstr "Saint Helena"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
 msgid "Svalbard and Jan Mayen"
-msgstr "Svalbard and Jan Mayen"
+msgstr "Svalbard a Jan Mayen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:445
@@ -15475,7 +15475,7 @@ msgstr "Somalia"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:455
 msgid "Saint Pierre and Miquelon"
-msgstr "Saint Pierre and Miquelon"
+msgstr "Saint Pierre a Miquelon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:457
@@ -15525,7 +15525,7 @@ msgstr "Syria"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
 msgid "Turks and Caicos Islands"
-msgstr "Turks and Caicos Islands"
+msgstr "Ynysoedd Turks a Caicos"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -16600,7 +16600,7 @@ msgstr "Dewisydd"
 
 #: resources/views/admin/site-mail.phtml:222
 msgid "Private key"
-msgstr "Allwedd Breifat:"
+msgstr "Allwedd Breifat"
 
 #: resources/views/admin/site-mail.phtml:236
 msgid "Send a test email using these settings"
@@ -17604,7 +17604,7 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/register-page.phtml:36
 msgid "Real name"
-msgstr "Enw go iawn "
+msgstr "Enw go iawn"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:47
