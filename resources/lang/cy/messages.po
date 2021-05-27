@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2021-06-01 11:33+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cy/>\n"
 "Language: cy\n"
@@ -2614,7 +2614,7 @@ msgstr ""
 #: app/Elements/RelationIsDescriptor.php:146
 #: app/GedcomCode/GedcomCodeRela.php:291
 msgid "Rabbi"
-msgstr ""
+msgstr "Rabbi"
 
 #: app/Elements/RelationIsDescriptor.php:77
 #: app/GedcomCode/GedcomCodeRela.php:295
@@ -2932,7 +2932,7 @@ msgstr "Electroneg"
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:67
 msgid "Microfiche"
-msgstr ""
+msgstr "Microfiche"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:68 app/Factories/ElementFactory.php:1004
@@ -2989,7 +2989,7 @@ msgstr "Fideo"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53 app/GedcomCode/GedcomCodeTemp.php:225
 msgid "Aba, Nigeria"
-msgstr ""
+msgstr "Aba, Nigeria"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:54 app/GedcomCode/GedcomCodeTemp.php:228
@@ -3059,7 +3059,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:67 app/GedcomCode/GedcomCodeTemp.php:267
 msgid "Bogota, Colombia"
-msgstr ""
+msgstr "Bogota, Colombia"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:68 app/GedcomCode/GedcomCodeTemp.php:270
@@ -3249,7 +3249,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:105 app/GedcomCode/GedcomCodeTemp.php:381
 msgid "Halifax, Nova Scotia, Canada"
-msgstr ""
+msgstr "Halifax, Nova Scotia, Canada"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:106 app/GedcomCode/GedcomCodeTemp.php:384
@@ -3371,7 +3371,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:129 app/GedcomCode/GedcomCodeTemp.php:453
 msgid "Manila, Philippines"
-msgstr ""
+msgstr "Manila, Philippines"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:130 app/GedcomCode/GedcomCodeTemp.php:456
@@ -3421,7 +3421,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:139 app/GedcomCode/GedcomCodeTemp.php:483
 msgid "Montreal, Quebec, Canada"
-msgstr ""
+msgstr "Montreal, Quebec, Canada"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:140 app/GedcomCode/GedcomCodeTemp.php:486
@@ -3672,7 +3672,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:189 app/GedcomCode/GedcomCodeTemp.php:633
 msgid "Stockholm, Sweden"
-msgstr ""
+msgstr "Stockholm, Sweden"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:190 app/GedcomCode/GedcomCodeTemp.php:636
@@ -6181,7 +6181,7 @@ msgstr "Diffiniad"
 
 #: app/Factories/ElementFactory.php:1106
 msgid "Rufname"
-msgstr ""
+msgstr "Rufname"
 
 #: app/Factories/ElementFactory.php:1146
 msgid "Type of abbreviation"
@@ -6341,7 +6341,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:45
 msgid "File successfully uploaded"
-msgstr ""
+msgstr "Llwythwyd y ffeil yn llwyddiannus"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:49
@@ -6783,7 +6783,7 @@ msgstr ""
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:660
 msgid "ex-wife"
@@ -6800,7 +6800,7 @@ msgstr ""
 #: app/Functions/Functions.php:671
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:683
 msgid "ex-spouse"
@@ -6816,7 +6816,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:694
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:697
 msgid "son"
@@ -9932,7 +9932,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CalendarPage.php:132
 msgid "In this year…"
-msgstr ""
+msgstr "Eleni…"
 
 #: app/Http/RequestHandlers/ChangeFamilyMembersPage.php:54
 #: resources/views/family-page-menu.phtml:28
@@ -10401,7 +10401,7 @@ msgstr ""
 #: app/Http/RequestHandlers/LoginPage.php:80 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:286
 msgid "Sign in"
-msgstr "Meewngofnodi"
+msgstr "Mewngofnodi"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
@@ -11166,25 +11166,25 @@ msgstr ""
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:122
 msgid "Create a temporary folder…"
-msgstr ""
+msgstr "Creu ffolder dros dro…"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:123
 msgid "Check for pending changes…"
-msgstr ""
+msgstr "Gwirio am newidiadau sydd ar ddod…"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:125
 #, php-format
 msgid "Download %s…"
-msgstr ""
+msgstr "Llwytho %s i Lawr…"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:126
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Dadsipio %s i ffolder dros dro…"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:127
 msgid "Copy files…"
-msgstr ""
+msgstr "Copïo ffeiliau…"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:171
 #: resources/views/admin/control-panel.phtml:160
@@ -11222,12 +11222,12 @@ msgstr ""
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[1] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[2] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[3] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[4] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
+msgstr[5] "Tynnwyd %1$s ffeil mewn %2$s eiliad."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:322
 msgid "The upgrade is complete."
@@ -11289,7 +11289,7 @@ msgstr ""
 #: app/Http/RequestHandlers/UserEditAction.php:99
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "Nid yw %1$s yn bodoli"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/UserEditAction.php:113
@@ -11390,7 +11390,7 @@ msgstr ""
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:257
 msgid "%j %F %Y"
-msgstr ""
+msgstr "% j %F% Y"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:324
@@ -13621,12 +13621,12 @@ msgstr[5] ""
 #, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[1] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[2] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[3] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[4] "Newidiadau yn y %s diwrnod diwethaf"
+msgstr[5] "Newidiadau yn y %s diwrnod diwethaf"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
@@ -13736,7 +13736,7 @@ msgstr ""
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:84
 msgid "A list of repositories."
-msgstr ""
+msgstr "Rhestr o'r storfannau sydd ar gael."
 
 #: app/Module/ResearchTaskModule.php:60 app/Module/ResearchTaskModule.php:63
 #: resources/views/admin/changes-log.phtml:85
@@ -13773,7 +13773,7 @@ msgstr ""
 
 #: app/Module/ReviewChangesModule.php:161
 msgid "Last email reminder was sent "
-msgstr ""
+msgstr "Anfonwyd yr e-bost nodyn atgoffa olaf "
 
 #: app/Module/ReviewChangesModule.php:162
 msgid "Next email reminder will be sent after "
@@ -13830,7 +13830,7 @@ msgstr ""
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:99
@@ -14039,12 +14039,12 @@ msgstr ""
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s enw mwyaf poblogaidd"
+msgstr[1] "%s enw mwyaf poblogaidd"
+msgstr[2] "%s enw mwyaf poblogaidd"
+msgstr[3] "%s enw mwyaf poblogaidd"
+msgstr[4] "%s enw mwyaf poblogaidd"
+msgstr[5] "%s enw mwyaf poblogaidd"
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:47
@@ -14077,12 +14077,12 @@ msgstr ""
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s cyfenw mwyaf poblogaidd"
+msgstr[1] "%s cyfenw mwyaf poblogaidd"
+msgstr[2] "%s cyfenw mwyaf poblogaidd"
+msgstr[3] "%s cyfenw mwyaf poblogaidd"
+msgstr[4] "%s cyfenw mwyaf poblogaidd"
+msgstr[5] "%s cyfenw mwyaf poblogaidd"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:243
@@ -14142,12 +14142,12 @@ msgstr ""
 #, php-format
 msgid "No events exist for the next %s day."
 msgid_plural "No events exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[1] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[2] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[3] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[4] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
+msgstr[5] "Nid oes digwyddiadau yn bodoli ar gyfer y %s diwrnod nesaf."
 
 #. I18N: An option in a list-box
 #: app/Module/UpcomingAnniversariesModule.php:283
@@ -14964,7 +14964,7 @@ msgstr "Tsieina"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:128
 msgid "Cote d’Ivoire"
-msgstr ""
+msgstr "Cote d’Ivoire"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:130
@@ -15229,7 +15229,7 @@ msgstr "Guyana"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:237
 msgid "Heard Island and McDonald Islands"
-msgstr "Ynysoedd Heard a McDonald"
+msgstr "Heard Island a McDonald Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:239
@@ -15674,7 +15674,7 @@ msgstr "Qatar"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
 msgid "Reunion"
-msgstr "Réunion"
+msgstr "Reunion"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:419
@@ -15819,7 +15819,7 @@ msgstr "Syria"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
 msgid "Turks and Caicos Islands"
-msgstr "Ynysoedd Turks a Caicos"
+msgstr "Turks a Caicos Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -16581,7 +16581,7 @@ msgstr ""
 #: resources/views/admin/media-upload.phtml:24
 #: resources/views/modals/media-file-fields.phtml:46
 msgid "Maximum upload size: "
-msgstr ""
+msgstr "Uchafswm maint llwytho i fyny: "
 
 #: resources/views/admin/media-upload.phtml:31
 #: resources/views/admin/media.phtml:100
@@ -16904,7 +16904,7 @@ msgstr "Dewisydd"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Private key"
-msgstr "Allwedd Breifat"
+msgstr "Allwedd breifat"
 
 #: resources/views/admin/site-mail.phtml:221
 msgid "Send a test email using these settings"
@@ -17165,7 +17165,7 @@ msgstr ""
 #: resources/views/admin/trees-merge.phtml:49
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr ""
+msgstr "Copïo'r holl gofnodion o '%1$s' i '%2$s."
 
 #: resources/views/admin/trees-preferences.phtml:48
 #: resources/views/admin/trees-preferences.phtml:627
@@ -17947,7 +17947,7 @@ msgstr ""
 
 #: resources/views/admin/users-cleanup.phtml:45
 msgid "User’s account has been inactive too long: "
-msgstr ""
+msgstr "Mae cyfrif defnyddiwr wedi bod yn anweithredol yn rhy hir: "
 
 #: resources/views/admin/users-cleanup.phtml:64
 msgid "User didn’t verify within 7 days."
@@ -17993,12 +17993,12 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Defnyddiwch o leiaf %s nod."
+msgstr[1] "Defnyddiwch o leiaf %s nod."
+msgstr[2] "Defnyddiwch o leiaf %s nod."
+msgstr[3] "Defnyddiwch o leiaf %s nod."
+msgstr[4] "Defnyddiwch o leiaf %s nod."
+msgstr[5] "Defnyddiwch o leiaf %s nod."
 
 #: resources/views/admin/users-create.phtml:63
 #: resources/views/admin/users-edit.phtml:73
@@ -18436,7 +18436,7 @@ msgstr ""
 #: resources/views/emails/register-user-text.phtml:14
 #, php-format
 msgid "Hello %s…"
-msgstr ""
+msgstr "Helo %s…"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -18454,7 +18454,7 @@ msgstr ""
 #: resources/views/emails/message-user-html.phtml:34
 #: resources/views/emails/message-user-text.phtml:24
 msgid "This message was sent while viewing the following URL: "
-msgstr ""
+msgstr "Anfonwyd y neges hon wrth edrych ar yr URL canlynol: "
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:21
@@ -18478,7 +18478,7 @@ msgstr ""
 #: resources/views/emails/verify-notify-html.phtml:14
 #: resources/views/emails/verify-notify-text.phtml:12
 msgid "Hello administrator…"
-msgstr ""
+msgstr "Helo weinyddwr…"
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:22
