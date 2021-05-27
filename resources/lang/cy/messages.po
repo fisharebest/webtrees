@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-26 17:15+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\nLanguage: cy\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-27 11:11+0000\nLast-Translator: Rhoslyn Prys <rprys@posteo.net>\nLanguage-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\nLanguage: cy\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\nX-Generator: Weblate 3.9.1\n"
 
 #: app/Age.php:98 app/Functions/FunctionsPrint.php:261
 #: app/Statistics/Repository/FamilyRepository.php:351
@@ -2126,47 +2126,47 @@ msgstr "Priodas sifil"
 #: app/Elements/MarriageType.php:61 app/Module/CustomTagsAldfaer.php:52
 #: resources/xml/reports/fact_sources.xml:205
 msgid "Registered partnership"
-msgstr ""
+msgstr "Partneriaeth gofrestredig"
 
 #: app/Elements/MarriageType.php:62 app/Module/CustomTagsAldfaer.php:51
 #: resources/xml/reports/fact_sources.xml:199
 msgid "Religious marriage"
-msgstr ""
+msgstr "Priodas grefyddol"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:47
 msgid "adopted name"
-msgstr ""
+msgstr "enw mabwysiedig"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:49
 msgid "also known as"
-msgstr ""
+msgstr "hefyd yn hysbys fel"
 
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php:51
 msgid "birth name"
-msgstr ""
+msgstr "enw geni"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53
 msgid "change of name"
-msgstr ""
+msgstr "newid enw"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:55
 msgid "estate name"
-msgstr ""
+msgstr "enw ystad"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:57
 msgid "immigration name"
-msgstr ""
+msgstr "enw mewnfudo"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:59
 msgid "maiden name"
-msgstr ""
+msgstr "enw morwynol"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:61
