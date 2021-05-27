@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"PO-Revision-Date: 2021-05-27 11:09+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fr/>\n"
@@ -5536,7 +5536,7 @@ msgstr "République dominicaine"
 #: app/Module/ClippingsCartModule.php:189
 #: app/Module/ClippingsCartModule.php:234
 msgid "Download"
-msgstr "Télécharger (Download)"
+msgstr "Télécharger"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:125
 #, php-format
