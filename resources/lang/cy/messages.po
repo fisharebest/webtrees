@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
 "PO-Revision-Date: 2021-05-27 11:10+0000\n"
-"Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cy/>\n"
 "Language: cy\n"
@@ -70,7 +70,7 @@ msgstr[5] "%s diwrnod"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(oed %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:358
@@ -78,16 +78,16 @@ msgstr ""
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(yn %s oed)"
 
 #: app/Age.php:213 app/Functions/FunctionsPrint.php:371
 msgid "(on the date of death)"
-msgstr ""
+msgstr "(ar ddyddiad y farwolaeth)"
 
 #: app/Age.php:219 app/Functions/FunctionsPrint.php:375
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s ar ôl marwolaeth)"
 
 #: app/Auth.php:531 app/Auth.php:544 app/Elements/RestrictionNotice.php:75
 #: app/Functions/FunctionsEdit.php:219
@@ -782,1209 +782,1209 @@ msgstr "Messidor"
 #: app/Date/FrenchDate.php:155
 msgctxt "GENITIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:157
 msgctxt "GENITIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:182
 msgctxt "LOCATIVE"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:184
 msgctxt "LOCATIVE"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:186
 msgctxt "LOCATIVE"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:188
 msgctxt "LOCATIVE"
 msgid "Nivose"
-msgstr ""
+msgstr "Nivose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:190
 msgctxt "LOCATIVE"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:192
 msgctxt "LOCATIVE"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:194
 msgctxt "LOCATIVE"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:196
 msgctxt "LOCATIVE"
 msgid "Floreal"
-msgstr ""
+msgstr "Floreal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:198
 msgctxt "LOCATIVE"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:200
 msgctxt "LOCATIVE"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:202
 msgctxt "LOCATIVE"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:204
 msgctxt "LOCATIVE"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:229
 msgctxt "INSTRUMENTAL"
 msgid "Vendemiaire"
-msgstr ""
+msgstr "Vendemiaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:231
 msgctxt "INSTRUMENTAL"
 msgid "Brumaire"
-msgstr ""
+msgstr "Brumaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:233
 msgctxt "INSTRUMENTAL"
 msgid "Frimaire"
-msgstr ""
+msgstr "Frimaire"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:235
 msgctxt "INSTRUMENTAL"
 msgid "Nivose"
-msgstr ""
+msgstr "Nivose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:237
 msgctxt "INSTRUMENTAL"
 msgid "Pluviose"
-msgstr ""
+msgstr "Pluviose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:239
 msgctxt "INSTRUMENTAL"
 msgid "Ventose"
-msgstr ""
+msgstr "Ventose"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:241
 msgctxt "INSTRUMENTAL"
 msgid "Germinal"
-msgstr ""
+msgstr "Germinal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:243
 msgctxt "INSTRUMENTAL"
 msgid "Floreal"
-msgstr ""
+msgstr "Floreal"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:245
 msgctxt "INSTRUMENTAL"
 msgid "Prairial"
-msgstr ""
+msgstr "Prairial"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:247
 msgctxt "INSTRUMENTAL"
 msgid "Messidor"
-msgstr ""
+msgstr "Messidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:249
 msgctxt "INSTRUMENTAL"
 msgid "Thermidor"
-msgstr ""
+msgstr "Thermidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:251
 msgctxt "INSTRUMENTAL"
 msgid "Fructidor"
-msgstr ""
+msgstr "Fructidor"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:253
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: The first day in the French republican calendar
 #: app/Date/FrenchDate.php:287
 msgid "Primidi"
-msgstr ""
+msgstr "Primidi"
 
 #. I18N: The second day in the French republican calendar
 #: app/Date/FrenchDate.php:289
 msgid "Duodi"
-msgstr ""
+msgstr "Duodi"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
 msgid "Tridi"
-msgstr ""
+msgstr "Tridi"
 
 #. I18N: The fourth day in the French republican calendar
 #: app/Date/FrenchDate.php:293
 msgid "Quartidi"
-msgstr ""
+msgstr "Quartidi"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:295
 msgid "Quintidi"
-msgstr ""
+msgstr "Quintidi"
 
 #. I18N: The sixth day in the French republican calendar
 #: app/Date/FrenchDate.php:297
 msgid "Sextidi"
-msgstr ""
+msgstr "Sextidi"
 
 #. I18N: The seventh day in the French republican calendar
 #: app/Date/FrenchDate.php:299
 msgid "Septidi"
-msgstr ""
+msgstr "Septidi"
 
 #. I18N: The eighth day in the French republican calendar
 #: app/Date/FrenchDate.php:301
 msgid "Octidi"
-msgstr ""
+msgstr "Octidi"
 
 #. I18N: The ninth day in the French republican calendar
 #: app/Date/FrenchDate.php:303
 msgid "Nonidi"
-msgstr ""
+msgstr "Nonidi"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:305
 msgid "Decidi"
-msgstr ""
+msgstr "Decidi"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:83
 msgctxt "NOMINATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:85
 msgctxt "NOMINATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi ’al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:89
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi ’al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:91
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:95
 msgctxt "NOMINATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:99
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:128
 msgctxt "GENITIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:130
 msgctxt "GENITIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:132
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi ’al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:134
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi ’al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:136
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:138
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
 msgctxt "GENITIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:142
 msgctxt "GENITIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:144
 msgctxt "GENITIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
 msgctxt "GENITIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:148
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:150
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:173
 msgctxt "LOCATIVE"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:175
 msgctxt "LOCATIVE"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:177
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi ’al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:179
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:181
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:183
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:185
 msgctxt "LOCATIVE"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:187
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:189
 msgctxt "LOCATIVE"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:191
 msgctxt "LOCATIVE"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:193
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:195
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: http://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
-msgstr ""
+msgstr "Muharram"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
-msgstr ""
+msgstr "Safar"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
-msgstr ""
+msgstr "Rabi’ al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
-msgstr ""
+msgstr "Rabi’ al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:226
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
-msgstr ""
+msgstr "Jumada al-awwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:228
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
-msgstr ""
+msgstr "Jumada al-thani"
 
 #. I18N: http://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:230
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
-msgstr ""
+msgstr "Rajab"
 
 #. I18N: http://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:232
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
-msgstr ""
+msgstr "Sha’aban"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:234
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
-msgstr ""
+msgstr "Ramadan"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:236
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
-msgstr ""
+msgstr "Shawwal"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:238
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
-msgstr ""
+msgstr "Dhu al-Qi’dah"
 
 #. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:240
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
-msgstr ""
+msgstr "Dhu al-Hijjah"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:80
 msgctxt "NOMINATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:82
 msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:84
 msgctxt "NOMINATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:86
 msgctxt "NOMINATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:88
 msgctxt "NOMINATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:90
 msgctxt "NOMINATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:92
 msgctxt "NOMINATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:94
 msgctxt "NOMINATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:96
 msgctxt "NOMINATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:98
 msgctxt "NOMINATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:100
 msgctxt "NOMINATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:102
 msgctxt "NOMINATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:125
 msgctxt "GENITIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:127
 msgctxt "GENITIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:129
 msgctxt "GENITIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:131
 msgctxt "GENITIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:133
 msgctxt "GENITIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:135
 msgctxt "GENITIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:137
 msgctxt "GENITIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:139
 msgctxt "GENITIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:141
 msgctxt "GENITIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:143
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:145
 msgctxt "GENITIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:147
 msgctxt "GENITIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:170
 msgctxt "LOCATIVE"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:172
 msgctxt "LOCATIVE"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:174
 msgctxt "LOCATIVE"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:176
 msgctxt "LOCATIVE"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:178
 msgctxt "LOCATIVE"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:180
 msgctxt "LOCATIVE"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:182
 msgctxt "LOCATIVE"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:184
 msgctxt "LOCATIVE"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:186
 msgctxt "LOCATIVE"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:188
 msgctxt "LOCATIVE"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:190
 msgctxt "LOCATIVE"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:192
 msgctxt "LOCATIVE"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #. I18N: 1st month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:215
 msgctxt "INSTRUMENTAL"
 msgid "Farvardin"
-msgstr ""
+msgstr "Farvardin"
 
 #. I18N: 2nd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:217
 msgctxt "INSTRUMENTAL"
 msgid "Ordibehesht"
-msgstr ""
+msgstr "Ordibehesht"
 
 #. I18N: 3rd month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:219
 msgctxt "INSTRUMENTAL"
 msgid "Khordad"
-msgstr ""
+msgstr "Khordad"
 
 #. I18N: 4th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:221
 msgctxt "INSTRUMENTAL"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #. I18N: 5th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:223
 msgctxt "INSTRUMENTAL"
 msgid "Mordad"
-msgstr ""
+msgstr "Mordad"
 
 #. I18N: 6th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:225
 msgctxt "INSTRUMENTAL"
 msgid "Shahrivar"
-msgstr ""
+msgstr "Shahrivar"
 
 #. I18N: 7th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:227
 msgctxt "INSTRUMENTAL"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #. I18N: 8th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:229
 msgctxt "INSTRUMENTAL"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #. I18N: 9th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:231
 msgctxt "INSTRUMENTAL"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:233
 msgctxt "INSTRUMENTAL"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #. I18N: 11th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:235
 msgctxt "INSTRUMENTAL"
 msgid "Bahman"
-msgstr ""
+msgstr "Bahman"
 
 #. I18N: 12th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:237
 msgctxt "INSTRUMENTAL"
 msgid "Esfand"
-msgstr ""
+msgstr "Esfand"
 
 #: app/Date/JalaliDate.php:259
 msgctxt "Abbreviation for Persian month: Farvardin"
 msgid "Far"
-msgstr ""
+msgstr "Far"
 
 #: app/Date/JalaliDate.php:260
 msgctxt "Abbreviation for Persian month: Ordibehesht"
 msgid "Ord"
-msgstr ""
+msgstr "Ord"
 
 #: app/Date/JalaliDate.php:261
 msgctxt "Abbreviation for Persian month: Khordad"
 msgid "Khor"
-msgstr ""
+msgstr "Khor"
 
 #: app/Date/JalaliDate.php:262
 msgctxt "Abbreviation for Persian month: Tir"
 msgid "Tir"
-msgstr ""
+msgstr "Tir"
 
 #: app/Date/JalaliDate.php:263
 msgctxt "Abbreviation for Persian month: Mordad"
 msgid "Mor"
-msgstr ""
+msgstr "Mor"
 
 #: app/Date/JalaliDate.php:264
 msgctxt "Abbreviation for Persian month: Shahrivar"
 msgid "Shah"
-msgstr ""
+msgstr "Shah"
 
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Mehr"
 msgid "Mehr"
-msgstr ""
+msgstr "Mehr"
 
 #: app/Date/JalaliDate.php:266
 msgctxt "Abbreviation for Persian month: Aban"
 msgid "Aban"
-msgstr ""
+msgstr "Aban"
 
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
-msgstr ""
+msgstr "Azar"
 
 #: app/Date/JalaliDate.php:268
 msgctxt "Abbreviation for Persian month: Dey"
 msgid "Dey"
-msgstr ""
+msgstr "Dey"
 
 #: app/Date/JalaliDate.php:269
 msgctxt "Abbreviation for Persian month: Bahman"
 msgid "Bah"
-msgstr ""
+msgstr "Bah"
 
 #: app/Date/JalaliDate.php:270
 msgctxt "Abbreviation for Persian month: Esfand"
 msgid "Esf"
-msgstr ""
+msgstr "Esf"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:126
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:128
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:130
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:132
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:134
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:136
 msgctxt "NOMINATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:138
 msgctxt "NOMINATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:142
 msgctxt "NOMINATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:144
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:146
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:148
 msgctxt "NOMINATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:150
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:156
 msgctxt "NOMINATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:178
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:180
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:182
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:184
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:186
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:188
 msgctxt "GENITIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:190
 msgctxt "GENITIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:192
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:194
 msgctxt "GENITIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:196
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:198
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:200
 msgctxt "GENITIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:202
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:208
 msgctxt "GENITIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:230
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:232
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:234
 msgctxt "LOCATIVE"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:236
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:238
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:240
 msgctxt "LOCATIVE"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:242
 msgctxt "LOCATIVE"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:244
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:246
 msgctxt "LOCATIVE"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:248
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:250
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:252
 msgctxt "LOCATIVE"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:254
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:260
 msgctxt "LOCATIVE"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:282
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr ""
+msgstr "Tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:284
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:286
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:288
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr ""
+msgstr "Tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr ""
+msgstr "Shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:292
 msgctxt "INSTRUMENTAL"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:294
 msgctxt "INSTRUMENTAL"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:296
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr ""
+msgstr "Nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:298
 msgctxt "INSTRUMENTAL"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:302
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:304
 msgctxt "INSTRUMENTAL"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:306
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:312
 msgctxt "INSTRUMENTAL"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr ""
+msgstr "%s&nbsp;BCE"
 
 #. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr ""
+msgstr "%s&nbsp;CE"
 
 #. I18N: e.g. "Occupation: farmer"
 #: app/Elements/AbstractElement.php:217
@@ -1994,88 +1994,88 @@ msgstr ""
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Digwyddodd y digwyddiad hwn, ond nid yw'r manylion yn hysbys."
 
 #: app/Elements/AdoptedByWhichParent.php:57
 #: app/GedcomCode/GedcomCodeAdop.php:49
 msgid "Adopted by both parents"
-msgstr ""
+msgstr "Mabwysiadwyd gan y ddau riant"
 
 #. I18N: gedcom tag _ADPF
 #: app/Elements/AdoptedByWhichParent.php:58
 #: app/Factories/ElementFactory.php:775 app/GedcomCode/GedcomCodeAdop.php:50
 #: app/GedcomTag.php:1027
 msgid "Adopted by father"
-msgstr ""
+msgstr "Mabwysiadwyd gan y tad"
 
 #. I18N: gedcom tag _ADPM
 #: app/Elements/AdoptedByWhichParent.php:59
 #: app/Factories/ElementFactory.php:776 app/GedcomCode/GedcomCodeAdop.php:51
 #: app/GedcomTag.php:1031
 msgid "Adopted by mother"
-msgstr ""
+msgstr "Mabwysiadwyd gan y fam"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/Elements/CertaintyAssessment.php:49 app/GedcomCode/GedcomCodeQuay.php:58
 msgid "unreliable evidence"
-msgstr ""
+msgstr "tystiolaeth annibynadwy"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
 msgid "questionable evidence"
-msgstr ""
+msgstr "tystiolaeth amheus"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php:51 app/GedcomCode/GedcomCodeQuay.php:52
 msgid "secondary evidence"
-msgstr ""
+msgstr "tystiolaeth eilaidd"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52 app/GedcomCode/GedcomCodeQuay.php:49
 msgid "primary evidence"
-msgstr ""
+msgstr "tystiolaeth sylfaenol"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "heriwyd"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "gwrthbrofwyd"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "profwyd"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "aelwyd"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "dinesydd"
 
 #. I18N: gedcom tag _NMR
 #: app/Elements/FamilyStatusText.php:64 app/Factories/ElementFactory.php:749
 #: app/GedcomTag.php:1196 app/Module/BranchesListModule.php:448
 #: resources/views/lists/families-table.phtml:191
 msgid "Not married"
-msgstr ""
+msgstr "Heb briod"
 
 #. I18N: gedcom tag _NMAR
 #: app/Elements/FamilyStatusText.php:65 app/Factories/ElementFactory.php:789
 #: app/GedcomTag.php:1192
 msgid "Never married"
-msgstr ""
+msgstr "Byth wedi priodi"
 
 #. I18N: Name of a country or state
 #: app/Elements/FamilyStatusText.php:66 app/Factories/ElementFactory.php:900
@@ -2083,27 +2083,27 @@ msgstr ""
 #: app/GedcomRecord.php:907 app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
-msgstr ""
+msgstr "Anhysbys"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "gwleidyddol"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "crefyddol"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "daearyddol"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "diwylliannol"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -2111,7 +2111,7 @@ msgstr ""
 #: app/Elements/LdsEndowmentDateStatus.php:66
 #: app/GedcomCode/GedcomCodeStat.php:111
 msgid "Died as a child: exempt"
-msgstr ""
+msgstr "Bu farw fel plentyn: wedi'i eithrio"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -2120,7 +2120,7 @@ msgstr ""
 #: app/Elements/LdsSpouseSealingDateStatus.php:65
 #: app/GedcomCode/GedcomCodeStat.php:118
 msgid "Completed; date unknown"
-msgstr ""
+msgstr "Wedi'i gwblhau; dyddiad anhysbys"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -2130,7 +2130,7 @@ msgstr ""
 #: app/Elements/LdsSpouseSealingDateStatus.php:71
 #: app/GedcomCode/GedcomCodeStat.php:127
 msgid "Excluded from this submission"
-msgstr ""
+msgstr "Wedi'i eithrio o'r cyflwyniad hwn"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -2140,7 +2140,7 @@ msgstr ""
 #: app/Elements/LdsSpouseSealingDateStatus.php:73
 #: app/GedcomCode/GedcomCodeStat.php:133
 msgid "Completed before 1970; date not available"
-msgstr ""
+msgstr "Cwblhawyd cyn 1970; dyddiad ddim ar gael"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -2149,7 +2149,7 @@ msgstr ""
 #: app/Elements/LdsEndowmentDateStatus.php:74
 #: app/GedcomCode/GedcomCodeStat.php:136
 msgid "Stillborn: exempt"
-msgstr ""
+msgstr "Marw-anedig: eithriedig"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -2159,7 +2159,7 @@ msgstr ""
 #: app/Elements/LdsSpouseSealingDateStatus.php:75
 #: app/GedcomCode/GedcomCodeStat.php:139
 msgid "Submitted but not yet cleared"
-msgstr ""
+msgstr "Wedi'i gyflwyno ond heb ei glirio eto"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -2169,41 +2169,41 @@ msgstr ""
 #: app/Elements/LdsSpouseSealingDateStatus.php:77
 #: app/GedcomCode/GedcomCodeStat.php:142
 msgid "Uncleared: insufficient data"
-msgstr ""
+msgstr "Heb ei glirio: data annigonol"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Elements/LdsChildSealingDateStatus.php:60
 #: app/GedcomCode/GedcomCodeStat.php:105
 msgid "Born in the covenant"
-msgstr ""
+msgstr "Ganed yn y cyfamod"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Elements/LdsSpouseSealingDateStatus.php:63
 #: app/GedcomCode/GedcomCodeStat.php:108
 msgid "Sealing canceled (divorce)"
-msgstr ""
+msgstr "Selio wedi'i ddiddymu (ysgariad)"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Elements/LdsSpouseSealingDateStatus.php:67
 #: app/GedcomCode/GedcomCodeStat.php:121
 msgid "Do not seal: unauthorized"
-msgstr ""
+msgstr "Peidio â selio: heb awdurdod"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Elements/LdsSpouseSealingDateStatus.php:69
 #: app/GedcomCode/GedcomCodeStat.php:124
 msgid "Do not seal, previous sealing canceled"
-msgstr ""
+msgstr "Peidio â selio, selio blaenorol wedi'i ddiddymu"
 
 #: app/Elements/MarriageType.php:60 app/Factories/ElementFactory.php:729
 #: app/Functions/FunctionsEdit.php:595 app/GedcomTag.php:792
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
-msgstr ""
+msgstr "Priodas sifil"
 
 #: app/Elements/MarriageType.php:61 app/Factories/ElementFactory.php:731
 #: app/Functions/FunctionsEdit.php:597 app/GedcomTag.php:794
@@ -2311,7 +2311,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:190
 #: resources/xml/reports/individual_report.xml:178
 msgid "no"
-msgstr ""
+msgstr "na"
 
 #: app/Elements/OrdinanceProcessFlag.php:56 app/Functions/FunctionsEdit.php:153
 #: app/Functions/FunctionsEdit.php:187
@@ -2351,7 +2351,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:187
 #: resources/xml/reports/individual_report.xml:175
 msgid "yes"
-msgstr ""
+msgstr "iawn"
 
 #: app/Elements/PedigreeLinkageType.php:50 app/GedcomCode/GedcomCodePedi.php:59
 msgctxt "Male pedigree"
@@ -2520,7 +2520,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodeRela.php:179
 msgctxt "MALE"
 msgid "Friend"
-msgstr ""
+msgstr "Ffrind"
 
 #: app/Elements/RelationIsDescriptor.php:63
 #: app/Elements/RelationIsDescriptor.php:98
@@ -2600,7 +2600,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodeRela.php:276
 msgctxt "MALE"
 msgid "Owner"
-msgstr ""
+msgstr "Perchennog"
 
 #: app/Elements/RelationIsDescriptor.php:75
 #: app/Elements/RelationIsDescriptor.php:110
@@ -2694,7 +2694,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodeRela.php:183
 msgctxt "FEMALE"
 msgid "Friend"
-msgstr ""
+msgstr "Ffrind"
 
 #: app/Elements/RelationIsDescriptor.php:104
 #: app/GedcomCode/GedcomCodeRela.php:232
@@ -2724,7 +2724,7 @@ msgstr ""
 #: app/GedcomCode/GedcomCodeRela.php:280
 msgctxt "FEMALE"
 msgid "Owner"
-msgstr ""
+msgstr "Perchennog"
 
 #: app/Elements/RelationIsDescriptor.php:112
 #: app/GedcomCode/GedcomCodeRela.php:299
@@ -2791,7 +2791,7 @@ msgstr ""
 #: app/Elements/RelationIsDescriptor.php:132
 #: app/GedcomCode/GedcomCodeRela.php:186
 msgid "Friend"
-msgstr ""
+msgstr "Ffrind"
 
 #: app/Elements/RelationIsDescriptor.php:139
 #: app/GedcomCode/GedcomCodeRela.php:235
@@ -2816,7 +2816,7 @@ msgstr ""
 #: app/Elements/RelationIsDescriptor.php:144
 #: app/GedcomCode/GedcomCodeRela.php:283
 msgid "Owner"
-msgstr ""
+msgstr "Perchennog"
 
 #: app/Elements/RelationIsDescriptor.php:147
 #: app/GedcomCode/GedcomCodeRela.php:302
@@ -2845,7 +2845,7 @@ msgstr ""
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Ymchwil"
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
@@ -2859,7 +2859,7 @@ msgstr ""
 #: app/Statistics/Google/ChartCommonSurname.php:150
 #: resources/views/admin/control-panel.phtml:667
 msgid "Other"
-msgstr ""
+msgstr "Arall"
 
 #: app/Elements/RestrictionNotice.php:78 app/Functions/FunctionsEdit.php:222
 #: app/Functions/FunctionsPrintFacts.php:404
@@ -2873,13 +2873,13 @@ msgstr ""
 #: app/Module/StatisticsChartModule.php:781
 #: resources/views/individual-sex.phtml:33
 msgid "Male"
-msgstr ""
+msgstr "Gwryw"
 
 #: app/Elements/SexValue.php:74 app/Functions/FunctionsEdit.php:543
 #: app/Module/StatisticsChartModule.php:782
 #: resources/views/individual-sex.phtml:36
 msgid "Female"
-msgstr ""
+msgstr "Benyw"
 
 #: app/Elements/SexValue.php:75 app/Functions/FunctionsEdit.php:543
 #: resources/views/individual-sex.phtml:39
@@ -2890,19 +2890,19 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:602
 msgctxt "unknown gender"
 msgid "Unknown"
-msgstr ""
+msgstr "Anhysbys"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Factories/ElementFactory.php:912
 #: app/Factories/ElementFactory.php:952 app/Factories/ElementFactory.php:978
 #: app/Factories/ElementFactory.php:993
 msgid "Audio"
-msgstr ""
+msgstr "Sain"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:61
 msgid "Book"
-msgstr ""
+msgstr "Llyfr"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:62
@@ -2912,7 +2912,7 @@ msgstr ""
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:63
 msgid "Certificate"
-msgstr ""
+msgstr "Tystysgrif"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:64
@@ -2922,12 +2922,12 @@ msgstr ""
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:65
 msgid "Document"
-msgstr ""
+msgstr "Dogfen"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:66
 msgid "Electronic"
-msgstr ""
+msgstr "Electroneg"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:67
@@ -2954,7 +2954,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:747
 #: resources/views/modules/statistics-chart/custom.phtml:60
 msgid "Map"
-msgstr ""
+msgstr "Map"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:72
@@ -2967,7 +2967,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:954 app/Factories/ElementFactory.php:984
 #: app/Factories/ElementFactory.php:1013 app/GedcomTag.php:1200
 msgid "Photo"
-msgstr ""
+msgstr "Llun"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:75
@@ -2984,7 +2984,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:955 app/Factories/ElementFactory.php:986
 #: app/Factories/ElementFactory.php:1041
 msgid "Video"
-msgstr ""
+msgstr "Fideo"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53 app/GedcomCode/GedcomCodeTemp.php:225
@@ -3276,7 +3276,7 @@ msgstr ""
 #: app/Elements/TempleCode.php:110 app/GedcomCode/GedcomCodeTemp.php:396
 #: app/Statistics/Service/CountryService.php:235
 msgid "Hong Kong"
-msgstr ""
+msgstr "Hong Kong"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:111 app/GedcomCode/GedcomCodeTemp.php:399
@@ -3892,7 +3892,7 @@ msgstr ""
 #: resources/xml/reports/family_group_report.xml:88
 #: resources/xml/reports/family_group_report.xml:96
 msgid "Family"
-msgstr ""
+msgstr "Teulu"
 
 #. I18N: gedcom tag ADDR
 #: app/Factories/ElementFactory.php:247 app/Factories/ElementFactory.php:360
@@ -3901,21 +3901,21 @@ msgstr ""
 #: app/Module/FixCemeteryTag.php:85
 #: resources/views/modals/submitter-fields.phtml:33
 msgid "Address"
-msgstr ""
+msgstr "Cyfeiriad"
 
 #. I18N: gedcom tag ADR1
 #: app/Factories/ElementFactory.php:248 app/Factories/ElementFactory.php:361
 #: app/Factories/ElementFactory.php:381 app/Factories/ElementFactory.php:643
 #: app/Factories/ElementFactory.php:690 app/GedcomTag.php:430
 msgid "Address line 1"
-msgstr ""
+msgstr "Cyfeiriad llinell 1"
 
 #. I18N: gedcom tag ADR2
 #: app/Factories/ElementFactory.php:249 app/Factories/ElementFactory.php:362
 #: app/Factories/ElementFactory.php:382 app/Factories/ElementFactory.php:644
 #: app/Factories/ElementFactory.php:691 app/GedcomTag.php:433
 msgid "Address line 2"
-msgstr ""
+msgstr "Cyfeiriad llinell 2"
 
 #. I18N: gedcom tag ADR3
 #: app/Factories/ElementFactory.php:250 app/Factories/ElementFactory.php:363
@@ -3929,7 +3929,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:384 app/Factories/ElementFactory.php:646
 #: app/Factories/ElementFactory.php:693 app/GedcomTag.php:575
 msgid "City"
-msgstr ""
+msgstr "Dinas"
 
 #. I18N: gedcom tag CTRY
 #: app/Factories/ElementFactory.php:252 app/Factories/ElementFactory.php:365
@@ -3937,7 +3937,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:694 app/GedcomTag.php:610
 #: app/Statistics/Google/ChartDistribution.php:127
 msgid "Country"
-msgstr ""
+msgstr "Gwlad"
 
 #. I18N: gedcom tag POST
 #: app/Factories/ElementFactory.php:253 app/Factories/ElementFactory.php:366
@@ -3945,14 +3945,14 @@ msgstr ""
 #: app/Factories/ElementFactory.php:695 app/Factories/ElementFactory.php:1181
 #: app/GedcomTag.php:881
 msgid "Postal code"
-msgstr ""
+msgstr "Cod Post"
 
 #. I18N: gedcom tag STAE
 #: app/Factories/ElementFactory.php:254 app/Factories/ElementFactory.php:367
 #: app/Factories/ElementFactory.php:387 app/Factories/ElementFactory.php:649
 #: app/Factories/ElementFactory.php:696 app/GedcomTag.php:970
 msgid "State"
-msgstr ""
+msgstr "Sir/Talaith"
 
 #. I18N: gedcom tag AGNC
 #: app/Factories/ElementFactory.php:255 app/Factories/ElementFactory.php:389
@@ -3991,7 +3991,7 @@ msgstr ""
 #: resources/xml/reports/marriage_report.xml:46
 #: resources/xml/reports/occupation_report.xml:57
 msgid "Date"
-msgstr ""
+msgstr "Dyddiad"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -4010,14 +4010,14 @@ msgstr ""
 #: resources/views/register-page.phtml:48
 #: resources/views/setup/step-5-administrator.phtml:90
 msgid "Email address"
-msgstr ""
+msgstr "Cyfeiriad e-bost"
 
 #. I18N: gedcom tag FAX
 #: app/Factories/ElementFactory.php:259 app/Factories/ElementFactory.php:369
 #: app/Factories/ElementFactory.php:393 app/Factories/ElementFactory.php:655
 #: app/Factories/ElementFactory.php:702 app/GedcomTag.php:708
 msgid "Fax"
-msgstr ""
+msgstr "Ffacs"
 
 #. I18N: gedcom tag HUSB
 #: app/Factories/ElementFactory.php:260 app/Factories/ElementFactory.php:305
@@ -4083,7 +4083,7 @@ msgstr ""
 #: resources/xml/reports/family_group_report.xml:1101
 #: resources/xml/reports/occupation_report.xml:64
 msgid "Note"
-msgstr ""
+msgstr "Nodyn"
 
 #. I18N: gedcom tag OBJE
 #: app/Factories/ElementFactory.php:263 app/Factories/ElementFactory.php:284
@@ -4104,7 +4104,7 @@ msgstr ""
 #: resources/views/modules/favorites/favorites.phtml:94
 #: resources/views/source-page.phtml:107
 msgid "Media object"
-msgstr ""
+msgstr "Gwrthrych cyfrwng"
 
 #. I18N: gedcom tag PHON
 #: app/Factories/ElementFactory.php:264 app/Factories/ElementFactory.php:370
@@ -4112,7 +4112,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:707 app/GedcomTag.php:868
 #: resources/views/modals/submitter-fields.phtml:25
 msgid "Phone"
-msgstr ""
+msgstr "Ffôn"
 
 #. I18N: gedcom tag PLAC
 #: app/Factories/ElementFactory.php:265 app/Factories/ElementFactory.php:327
@@ -4139,7 +4139,7 @@ msgstr ""
 #: resources/xml/reports/marriage_report.xml:50
 #: resources/xml/reports/occupation_report.xml:60
 msgid "Place"
-msgstr ""
+msgstr "Lle"
 
 #: app/Factories/ElementFactory.php:266 app/Factories/ElementFactory.php:398
 #: app/GedcomTag.php:874
@@ -4165,7 +4165,7 @@ msgstr ""
 #: resources/views/modules/random_media/config.phtml:27
 #: resources/views/modules/recent_changes/changes-table.phtml:39
 msgid "Type"
-msgstr ""
+msgstr "Teip"
 
 #. I18N: gedcom tag FORM
 #: app/Factories/ElementFactory.php:268 app/Factories/ElementFactory.php:352
@@ -4175,13 +4175,13 @@ msgstr ""
 #: resources/views/help/date.phtml:107 resources/views/help/date.phtml:145
 #: resources/views/report-setup-page.phtml:54
 msgid "Format"
-msgstr ""
+msgstr "Fformatio"
 
 #. I18N: gedcom tag MAP
 #: app/Factories/ElementFactory.php:269 app/Factories/ElementFactory.php:401
 #: app/Factories/ElementFactory.php:1141 app/GedcomTag.php:770
 msgid "Coordinates"
-msgstr ""
+msgstr "Cyfesurynnau"
 
 #. I18N: gedcom tag LATI
 #: app/Factories/ElementFactory.php:270 app/Factories/ElementFactory.php:402
@@ -4192,7 +4192,7 @@ msgstr ""
 #: resources/views/edit/input-addon-coordinates.phtml:16
 #: resources/views/modules/place-hierarchy/popup.phtml:23
 msgid "Latitude"
-msgstr ""
+msgstr "Lledred"
 
 #. I18N: gedcom tag LONG
 #: app/Factories/ElementFactory.php:271 app/Factories/ElementFactory.php:403
@@ -4203,7 +4203,7 @@ msgstr ""
 #: resources/views/edit/input-addon-coordinates.phtml:16
 #: resources/views/modules/place-hierarchy/popup.phtml:27
 msgid "Longitude"
-msgstr ""
+msgstr "Hydred"
 
 #: app/Factories/ElementFactory.php:273 app/Factories/ElementFactory.php:405
 #: app/GedcomTag.php:876
@@ -4216,7 +4216,7 @@ msgstr ""
 #: resources/xml/reports/missing_facts_report.xml:26
 #: resources/xml/reports/missing_facts_report.xml:587
 msgid "Religion"
-msgstr ""
+msgstr "Crefydd"
 
 #. I18N: gedcom tag RESN
 #: app/Factories/ElementFactory.php:276 app/Factories/ElementFactory.php:322
@@ -4273,7 +4273,7 @@ msgstr ""
 #: resources/xml/reports/missing_facts_report.xml:529
 #: resources/xml/reports/missing_facts_report.xml:570
 msgid "Source"
-msgstr ""
+msgstr "Ffynhonnell"
 
 #. I18N: gedcom tag DATA
 #: app/Factories/ElementFactory.php:278 app/Factories/ElementFactory.php:332
@@ -4282,7 +4282,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:670 app/Factories/ElementFactory.php:1154
 #: app/GedcomTag.php:613 resources/views/admin/changes-log.phtml:137
 msgid "Data"
-msgstr ""
+msgstr "Data"
 
 #: app/Factories/ElementFactory.php:279 app/Factories/ElementFactory.php:333
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:586
@@ -4314,7 +4314,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
 msgid "Event"
-msgstr ""
+msgstr "Digwyddiad"
 
 #. I18N: gedcom tag ROLE
 #: app/Factories/ElementFactory.php:282 app/Factories/ElementFactory.php:336
@@ -4323,7 +4323,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1158 app/GedcomTag.php:935
 #: resources/views/admin/users-edit.phtml:288
 msgid "Role"
-msgstr ""
+msgstr "Rôl"
 
 #. I18N: gedcom tag PAGE
 #: app/Factories/ElementFactory.php:285 app/Factories/ElementFactory.php:339
@@ -4389,7 +4389,7 @@ msgstr ""
 #: resources/views/modules/matomo-analytics/form.phtml:18
 #: resources/views/modules/sitemap/config.phtml:46
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #. I18N: gedcom tag ANUL
 #: app/Factories/ElementFactory.php:291 app/GedcomTag.php:464
@@ -4443,7 +4443,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:715 app/Factories/ElementFactory.php:1137
 #: app/GedcomTag.php:993
 msgid "Time"
-msgstr ""
+msgstr "Amser"
 
 #. I18N: gedcom tag CHIL
 #: app/Factories/ElementFactory.php:297 app/Functions/FunctionsDate.php:51
@@ -4452,7 +4452,7 @@ msgstr ""
 #: resources/views/edit/change-family-members.phtml:78
 #: resources/views/modules/pedigree-chart/previous.phtml:40
 msgid "Child"
-msgstr ""
+msgstr "Plentyn"
 
 #. I18N: gedcom tag DIV
 #: app/Factories/ElementFactory.php:298 app/GedcomTag.php:640
@@ -4640,7 +4640,7 @@ msgstr ""
 #: app/GedcomTag.php:973 resources/views/admin/changes-log.phtml:55
 #: resources/views/admin/changes-log.phtml:135
 msgid "Status"
-msgstr ""
+msgstr "Statws"
 
 #: app/Factories/ElementFactory.php:329 app/Factories/ElementFactory.php:438
 #: app/Factories/ElementFactory.php:480 app/Factories/ElementFactory.php:501
@@ -4671,36 +4671,36 @@ msgstr ""
 #: app/Factories/ElementFactory.php:343 app/GedcomTag.php:736 app/Header.php:75
 #: app/Header.php:76 app/Header.php:77
 msgid "Header"
-msgstr ""
+msgstr "Pennyn"
 
 #. I18N: gedcom tag CHAR
 #: app/Factories/ElementFactory.php:344 app/GedcomTag.php:556
 msgid "Character set"
-msgstr ""
+msgstr "Set nod"
 
 #. I18N: gedcom tag VERS
 #: app/Factories/ElementFactory.php:345 app/Factories/ElementFactory.php:353
 #: app/Factories/ElementFactory.php:376 app/GedcomTag.php:1014
 msgid "Version"
-msgstr ""
+msgstr "Fersiwn"
 
 #. I18N: gedcom tag COPR
 #: app/Factories/ElementFactory.php:346 app/Factories/ElementFactory.php:373
 #: app/GedcomTag.php:597
 msgid "Copyright"
-msgstr ""
+msgstr "Hawlfraint"
 
 #. I18N: gedcom tag DEST
 #: app/Factories/ElementFactory.php:349 app/GedcomTag.php:637
 msgid "Destination"
-msgstr ""
+msgstr "Cyrchfan"
 
 #. I18N: gedcom tag FILE
 #: app/Factories/ElementFactory.php:350 app/Factories/ElementFactory.php:623
 #: app/GedcomTag.php:718 app/Http/RequestHandlers/ManageMediaData.php:305
 #: resources/views/modals/media-file-fields.phtml:72
 msgid "Filename"
-msgstr ""
+msgstr "Enw ffeil"
 
 #: app/Factories/ElementFactory.php:351
 msgid "GEDCOM"
@@ -4720,7 +4720,7 @@ msgstr ""
 #: resources/views/layouts/administration.phtml:57
 #: resources/views/setup/step-1-language.phtml:42
 msgid "Language"
-msgstr ""
+msgstr "Iaith"
 
 #. I18N: Name of a module/list
 #: app/Factories/ElementFactory.php:356
@@ -4740,7 +4740,7 @@ msgstr ""
 #: app/GedcomTag.php:981 app/Submission.php:95 app/Submission.php:96
 #: app/Submission.php:97
 msgid "Submission"
-msgstr ""
+msgstr "Cyflwyniad"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -4781,7 +4781,7 @@ msgstr ""
 #: resources/xml/reports/pedigree_report.xml:5
 #: resources/xml/reports/relative_ext_report.xml:5
 msgid "Individual"
-msgstr ""
+msgstr "Unigolyn"
 
 #. I18N: gedcom tag AGE
 #: app/Factories/ElementFactory.php:388 app/Functions/FunctionsPrint.php:390
@@ -4795,7 +4795,7 @@ msgstr ""
 #: resources/views/lists/individuals-table.phtml:252
 #: resources/views/modules/timeline-chart/chart.phtml:414
 msgid "Age"
-msgstr ""
+msgstr "Oed"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
@@ -4823,7 +4823,7 @@ msgstr ""
 #. I18N: gedcom tag ALIA
 #: app/Factories/ElementFactory.php:427 app/GedcomTag.php:455
 msgid "Alias"
-msgstr ""
+msgstr "Enw Arall"
 
 #. I18N: gedcom tag ANCI
 #: app/Factories/ElementFactory.php:428 app/GedcomTag.php:461
@@ -4847,7 +4847,7 @@ msgstr ""
 #: app/GedcomTag.php:899 app/Module/BranchesListModule.php:399
 #: app/Module/BranchesListModule.php:437
 msgid "Relationship"
-msgstr ""
+msgstr "Perthynas"
 
 #: app/Factories/ElementFactory.php:432 app/Factories/ElementFactory.php:1061
 #: app/Factories/ElementFactory.php:1066 app/Factories/ElementFactory.php:1102
@@ -5054,7 +5054,7 @@ msgstr ""
 #: resources/xml/reports/missing_facts_report.xml:81
 #: resources/xml/reports/occupation_report.xml:49
 msgid "Date of birth"
-msgstr ""
+msgstr "Dyddiad geni"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Birth parents"
@@ -5145,7 +5145,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:472 app/GedcomTag.php:587
 #: resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr ""
+msgstr "Cadarnhad"
 
 #: app/Factories/ElementFactory.php:473 app/GedcomTag.php:589
 #: resources/xml/reports/missing_facts_report.xml:294
@@ -5330,7 +5330,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:274
 #: resources/xml/reports/missing_facts_report.xml:505
 msgid "Date of death"
-msgstr ""
+msgstr "Dyddiad marwolaeth"
 
 #: app/Factories/ElementFactory.php:488 app/GedcomTag.php:628
 #: resources/xml/reports/fact_sources.xml:275
@@ -5349,12 +5349,12 @@ msgstr ""
 #: resources/views/admin/modules.phtml:72
 #: resources/views/report-setup-page.phtml:25
 msgid "Description"
-msgstr ""
+msgstr "Disgrifiad"
 
 #. I18N: gedcom tag EDUC
 #: app/Factories/ElementFactory.php:491 app/GedcomTag.php:649
 msgid "Education"
-msgstr ""
+msgstr "Addysg"
 
 #: app/Factories/ElementFactory.php:492 app/Factories/ElementFactory.php:518
 #: app/GedcomTag.php:651
@@ -5491,7 +5491,7 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:43
 #: resources/xml/reports/relative_ext_report.xml:57
 msgid "Name"
-msgstr ""
+msgstr "Enw"
 
 #: app/Factories/ElementFactory.php:524 app/GedcomTag.php:809
 msgid "Phonetic name"
@@ -5513,7 +5513,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:526 app/Factories/ElementFactory.php:533
 #: app/Factories/ElementFactory.php:539 app/GedcomTag.php:827
 msgid "Nickname"
-msgstr ""
+msgstr "Llys Enw"
 
 #. I18N: gedcom tag NPFX
 #: app/Factories/ElementFactory.php:527 app/Factories/ElementFactory.php:535
@@ -5568,7 +5568,7 @@ msgstr ""
 #. I18N: gedcom tag NATI
 #: app/Factories/ElementFactory.php:548 app/GedcomTag.php:814
 msgid "Nationality"
-msgstr ""
+msgstr "Cenedl"
 
 #. I18N: gedcom tag NATU
 #: app/Factories/ElementFactory.php:549 app/GedcomTag.php:817
@@ -5620,7 +5620,7 @@ msgstr ""
 #. I18N: gedcom tag PROP
 #: app/Factories/ElementFactory.php:563 app/GedcomTag.php:887
 msgid "Property"
-msgstr ""
+msgstr "Eiddo"
 
 #: app/Factories/ElementFactory.php:568 app/GedcomTag.php:912
 msgid "Date of residence"
@@ -5650,7 +5650,7 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:388
 #: resources/xml/reports/individual_report.xml:602
 msgid "Gender"
-msgstr ""
+msgstr "Rhyw"
 
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:576 app/GedcomTag.php:949
@@ -5696,7 +5696,7 @@ msgstr ""
 #: resources/views/modules/html/config.phtml:18
 #: resources/views/modules/user_blog/edit.phtml:25
 msgid "Title"
-msgstr ""
+msgstr "Teitl"
 
 #. I18N: gedcom tag WILL
 #: app/Factories/ElementFactory.php:597 app/GedcomTag.php:1020
@@ -5726,13 +5726,13 @@ msgstr ""
 #: resources/views/modules/favorites/favorites.phtml:122
 #: resources/views/modules/recent_changes/changes-table.phtml:77
 msgid "Repository"
-msgstr ""
+msgstr "Storfan"
 
 #: app/Factories/ElementFactory.php:656 app/GedcomTag.php:907
 #: resources/views/modals/repository-fields.phtml:9
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "Enw"
 
 #. I18N: gedcom tag ABBR
 #: app/Factories/ElementFactory.php:664 app/Factories/ElementFactory.php:1145
@@ -5740,14 +5740,14 @@ msgstr ""
 #: resources/views/lists/sources-table.phtml:94
 #: resources/views/modals/source-fields.phtml:22
 msgid "Abbreviation"
-msgstr ""
+msgstr "Byrfodd"
 
 #. I18N: gedcom tag AUTH
 #: app/Factories/ElementFactory.php:665 app/GedcomTag.php:470
 #: resources/views/lists/sources-table.phtml:95
 #: resources/views/modals/source-fields.phtml:30
 msgid "Author"
-msgstr ""
+msgstr "Awdur"
 
 #: app/Factories/ElementFactory.php:672 resources/views/calendar-page.phtml:174
 #: resources/views/modules/gedcom_stats/statistics.phtml:135
@@ -5756,7 +5756,7 @@ msgstr ""
 #: resources/views/modules/upcoming_events/config.phtml:40
 #: resources/views/statistics/individuals/total-events.phtml:12
 msgid "Events"
-msgstr ""
+msgstr "Digwyddiadau"
 
 #: app/Factories/ElementFactory.php:673 resources/views/help/date.phtml:66
 #: resources/views/modules/statistics-chart/custom.phtml:96
@@ -5798,7 +5798,7 @@ msgstr ""
 #. I18N: gedcom tag TRLR
 #: app/Factories/ElementFactory.php:724 app/GedcomTag.php:1005
 msgid "Trailer"
-msgstr ""
+msgstr "Hysbysiad"
 
 #: app/Factories/ElementFactory.php:732 app/GedcomTag.php:798
 msgid "Marriage type unknown"
@@ -5899,7 +5899,7 @@ msgstr ""
 #. I18N: gedcom tag _HEIG
 #: app/Factories/ElementFactory.php:784 app/GedcomTag.php:1130
 msgid "Height"
-msgstr ""
+msgstr "Uchder"
 
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:785 app/GedcomTag.php:1140
@@ -5910,7 +5910,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:786 app/Factories/ElementFactory.php:1324
 #: app/GedcomTag.php:1162
 msgid "Medical"
-msgstr ""
+msgstr "Meddygaeth"
 
 #. I18N: gedcom tag _MILT
 #: app/Factories/ElementFactory.php:787 app/Factories/ElementFactory.php:896
@@ -5926,7 +5926,7 @@ msgstr ""
 #. I18N: gedcom tag _WEIG
 #: app/Factories/ElementFactory.php:792 app/GedcomTag.php:1238
 msgid "Weight"
-msgstr ""
+msgstr "Pwysau"
 
 #. I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
 #: app/Factories/ElementFactory.php:793 app/GedcomTag.php:1247
@@ -5939,12 +5939,12 @@ msgstr ""
 #: app/Factories/ElementFactory.php:804 app/GedcomTag.php:1041
 #: app/Module/AlbumModule.php:42
 msgid "Album"
-msgstr ""
+msgstr "Albwm"
 
 #: app/Factories/ElementFactory.php:806 app/GedcomTag.php:1251
 #: app/Http/RequestHandlers/ManageMediaData.php:313
 msgid "File size"
-msgstr ""
+msgstr "Maint ffeil"
 
 #. I18N: gedcom tag _PRIM
 #: app/Factories/ElementFactory.php:810 app/Factories/ElementFactory.php:1107
@@ -5989,7 +5989,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:836 app/Factories/ElementFactory.php:850
 #: app/Factories/ElementFactory.php:854 app/Factories/ElementFactory.php:869
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: app/Factories/ElementFactory.php:837 app/Factories/ElementFactory.php:855
 #: app/GedcomTag.php:1082
@@ -6069,7 +6069,7 @@ msgstr ""
 #. I18N: gedcom tag _DEG
 #: app/Factories/ElementFactory.php:877 app/GedcomTag.php:1068
 msgid "Degree"
-msgstr ""
+msgstr "Gradd"
 
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/Factories/ElementFactory.php:878 app/Factories/ElementFactory.php:1331
@@ -6086,7 +6086,7 @@ msgstr ""
 #. I18N: gedcom tag CEME
 #: app/Factories/ElementFactory.php:979 app/GedcomTag.php:536
 msgid "Cemetery"
-msgstr ""
+msgstr "Mynwent"
 
 #: app/Factories/ElementFactory.php:982 app/GedcomTag.php:1207
 msgid "Religious name"
@@ -6108,7 +6108,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1131 app/GedcomTag.php:1144
 #: resources/views/lists/locations-table.phtml:63
 msgid "Location"
-msgstr ""
+msgstr "Lleoliad"
 
 #: app/Factories/ElementFactory.php:1062
 msgid "Family status"
@@ -6120,7 +6120,7 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:1069 app/Factories/ElementFactory.php:1111
 msgid "Creation date"
-msgstr ""
+msgstr "Dyddiad creu"
 
 #: app/Factories/ElementFactory.php:1071 app/Factories/ElementFactory.php:1113
 msgid "The problem"
@@ -6132,15 +6132,15 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:1075 app/Factories/ElementFactory.php:1117
 msgid "Category"
-msgstr ""
+msgstr "Categori"
 
 #: app/Factories/ElementFactory.php:1076 app/Factories/ElementFactory.php:1118
 msgid "Completion date"
-msgstr ""
+msgstr "Dyddiad cwblhau"
 
 #: app/Factories/ElementFactory.php:1077 app/Factories/ElementFactory.php:1119
 msgid "Priority"
-msgstr ""
+msgstr "Blaenoriaeth"
 
 #: app/Factories/ElementFactory.php:1078 app/Factories/ElementFactory.php:1120
 msgid "Reminder date"
@@ -6177,7 +6177,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1090 app/Factories/ElementFactory.php:1091
 #: app/Factories/ElementFactory.php:1092
 msgid "Definition"
-msgstr ""
+msgstr "Diffiniad"
 
 #: app/Factories/ElementFactory.php:1106
 msgid "Rufname"
@@ -6196,7 +6196,7 @@ msgstr ""
 #: resources/views/lists/media-table.phtml:77
 #: resources/views/modules/recent_changes/changes-table.phtml:65
 msgid "Media"
-msgstr ""
+msgstr "Cyfryngau"
 
 #: app/Factories/ElementFactory.php:1163
 msgid "Type of location"
@@ -6212,7 +6212,7 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:1176
 msgid "Parent"
-msgstr ""
+msgstr "Rhiant"
 
 #: app/Factories/ElementFactory.php:1179
 msgid "Hierarchical relationship"
@@ -6222,7 +6222,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1283 app/GedcomTag.php:1127
 #: app/Http/RequestHandlers/HelpText.php:252
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebraeg"
 
 #. I18N: gedcom tag _NAME
 #: app/Factories/ElementFactory.php:1284 app/GedcomTag.php:1183
@@ -6239,7 +6239,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1286 app/GedcomTag.php:1217
 #: app/Module/SlideShowModule.php:189
 msgid "Slide show"
-msgstr ""
+msgstr "Sioe sleidiau"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/Factories/ElementFactory.php:1293 app/Factories/ElementFactory.php:1295
@@ -6258,7 +6258,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1296
 #: app/GedcomTag.php:578
 msgid "Comment"
-msgstr ""
+msgstr "Sylw"
 
 #: app/Factories/ElementFactory.php:1297 app/GedcomTag.php:811
 msgid "Name in Hebrew"
@@ -6272,7 +6272,7 @@ msgstr ""
 #. I18N: gedcom tag _MILI
 #: app/Factories/ElementFactory.php:1301 app/GedcomTag.php:1171
 msgid "Military"
-msgstr ""
+msgstr "Milwrol"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/Factories/ElementFactory.php:1302 app/Factories/ElementFactory.php:1349
@@ -6296,7 +6296,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1312
 #: resources/views/edit-blocks-block.phtml:22
 msgid "Block"
-msgstr ""
+msgstr "Rhwystro"
 
 #: app/Factories/ElementFactory.php:1313
 #: resources/views/setup/step-4-database-mysql.phtml:109
@@ -6304,14 +6304,14 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:52
 #: resources/views/setup/step-4-database-sqlsvr.phtml:95
 msgid "Database name"
-msgstr ""
+msgstr "Enw cronfa ddata"
 
 #: app/Factories/ElementFactory.php:1314
 #: resources/views/setup/step-4-database-mysql.phtml:95
 #: resources/views/setup/step-4-database-pgsql.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:83
 msgid "Database password"
-msgstr ""
+msgstr "Cyfrinair cronfa ddata"
 
 #: app/Factories/ElementFactory.php:1316
 #: resources/views/setup/step-4-database-mysql.phtml:81
@@ -6333,7 +6333,7 @@ msgstr ""
 #. I18N: gedcom tag _BIBL
 #: app/Factories/ElementFactory.php:1332 app/GedcomTag.php:1048
 msgid "Bibliography"
-msgstr ""
+msgstr "Llyfryddiaeth"
 
 #: app/Factories/ElementFactory.php:1344 app/GedcomTag.php:878
 msgid "Place in Hebrew"
@@ -6352,6 +6352,7 @@ msgstr ""
 #: app/Functions/Functions.php:52
 msgid "The file was only partially uploaded. Please try again."
 msgstr ""
+"Dim ond yn rhannol y mae'r ffeil wedi'i llwytho. Rhowch gynnig arall arni."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:55
@@ -6753,7 +6754,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:617
 msgid "self"
-msgstr ""
+msgstr "hunan"
 
 #: app/Functions/Functions.php:620
 msgid "mother"
@@ -6765,7 +6766,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:624
 msgid "parent"
-msgstr ""
+msgstr "rhiant"
 
 #: app/Functions/Functions.php:636
 msgid "ex-husband"
@@ -6807,7 +6808,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:685
 msgid "spouse"
-msgstr ""
+msgstr "priod"
 
 #: app/Functions/Functions.php:687
 msgid "fiancé(e)"
@@ -6827,7 +6828,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:701
 msgid "child"
-msgstr ""
+msgstr "plentyn"
 
 #: app/Functions/Functions.php:709
 msgid "twin brother"
@@ -6875,7 +6876,7 @@ msgstr ""
 
 #: app/Functions/Functions.php:764
 msgid "sibling"
-msgstr ""
+msgstr "brawd neu chwaer"
 
 #: app/Functions/Functions.php:768
 msgctxt "brother’s child"
@@ -9353,12 +9354,12 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s wythnosau"
+msgstr[1] "%s wythnos"
+msgstr[2] "%s wythnos"
+msgstr[3] "%s wythnos"
+msgstr[4] "%s wythnos"
+msgstr[5] "%s wythnos"
 
 #: app/Functions/FunctionsEdit.php:131
 #: resources/views/admin/trees-preferences.phtml:122
@@ -9391,7 +9392,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:46
 msgid "All"
-msgstr ""
+msgstr "Y Cyfan"
 
 #: app/Functions/FunctionsEdit.php:454
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -9475,7 +9476,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(yn %s oed)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:354
@@ -9484,7 +9485,7 @@ msgstr ""
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(yn %s oed)"
 
 #: app/Functions/FunctionsPrint.php:449 app/Functions/FunctionsPrint.php:451
 msgid "Google Maps™"
@@ -9509,7 +9510,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:265
 #: resources/views/admin/users-edit.phtml:335
 msgid "No"
-msgstr ""
+msgstr "Na"
 
 #: app/Functions/FunctionsPrintFacts.php:268
 msgid "Yes"
@@ -9535,16 +9536,16 @@ msgstr ""
 #: resources/views/note-page.phtml:101 resources/views/note-page.phtml:104
 #: resources/views/submitter-page-menu.phtml:23
 msgid "Edit"
-msgstr ""
+msgstr "Golygu"
 
 #: app/Functions/FunctionsPrintFacts.php:953
 msgid "View"
-msgstr ""
+msgstr "Dangos"
 
 #: app/Functions/FunctionsPrintLists.php:70
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:64
@@ -9686,7 +9687,7 @@ msgstr ""
 #: app/Report/ReportParserGenerate.php:967
 #: app/Statistics/Repository/EventRepository.php:417
 msgid "Private"
-msgstr ""
+msgstr "Preifat"
 
 #. I18N: gedcom tag CONC
 #: app/GedcomTag.php:581
@@ -9770,7 +9771,7 @@ msgstr ""
 
 #: app/GedcomTag.php:1254 app/Http/RequestHandlers/ManageMediaData.php:320
 msgid "Image dimensions"
-msgstr ""
+msgstr "Dimensiynau delwedd"
 
 #: app/Http/Middleware/CheckCsrf.php:68
 msgid "This form has expired. Try again."
@@ -9793,7 +9794,7 @@ msgstr ""
 #: app/Http/RequestHandlers/AccountEdit.php:94
 #: app/Module/ModuleThemeTrait.php:319 app/Module/UserWelcomeModule.php:115
 msgid "My account"
-msgstr ""
+msgstr "Fy Nghyfrif"
 
 #: app/Http/RequestHandlers/AccountUpdate.php:87
 #: app/Http/RequestHandlers/RegisterAction.php:242
@@ -9988,11 +9989,11 @@ msgstr ""
 #: app/Http/RequestHandlers/PasswordResetPage.php:77
 #: app/Http/RequestHandlers/RegisterAction.php:101
 msgid "Please try again."
-msgstr ""
+msgstr "Ceisiwch eto."
 
 #: app/Http/RequestHandlers/ContactAction.php:120
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "Rhowch gyfeiriad e-bost dilys."
 
 #: app/Http/RequestHandlers/ContactAction.php:127
 #: app/Http/RequestHandlers/RegisterAction.php:254
@@ -10012,7 +10013,7 @@ msgstr ""
 #: resources/views/modules/user-messages/user-messages.phtml:30
 #: resources/views/pending-changes-page.phtml:78
 msgid "Send a message"
-msgstr ""
+msgstr "Anfon neges"
 
 #: app/Http/RequestHandlers/ControlPanel.php:146
 #: app/Http/RequestHandlers/MapDataAdd.php:89
@@ -10133,11 +10134,11 @@ msgstr ""
 #: app/Http/RequestHandlers/DataFixPreview.php:85
 #: resources/views/admin/analytics-edit.phtml:27
 msgid "Preview"
-msgstr ""
+msgstr "Rhagolwg"
 
 #: app/Http/RequestHandlers/DataFixData.php:108
 msgid "Update"
-msgstr ""
+msgstr "Diweddariad"
 
 #: app/Http/RequestHandlers/DeletePath.php:59
 #, php-format
@@ -10307,7 +10308,7 @@ msgstr ""
 #: app/Http/RequestHandlers/HelpText.php:289 resources/views/help/link.phtml:11
 #: resources/views/help/link.phtml:13
 msgid "Help"
-msgstr ""
+msgstr "Cymorth"
 
 #: app/Http/RequestHandlers/HelpText.php:290
 msgid "The help text has not been written for this item."
@@ -10335,7 +10336,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:210
 #: resources/xml/reports/individual_ext_report.xml:227
 msgid "Spouse"
-msgstr ""
+msgstr "Priod"
 
 #: app/Http/RequestHandlers/IndividualPage.php:238
 #: app/Module/StatisticsChartModule.php:427
@@ -10347,7 +10348,7 @@ msgstr ""
 #: resources/xml/reports/family_group_report.xml:761
 #: resources/xml/reports/relative_ext_report.xml:122
 msgid "Children"
-msgstr ""
+msgstr "Plentyn"
 
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:56
 #: resources/views/modules/relatives/tab.phtml:125
@@ -10400,7 +10401,7 @@ msgstr ""
 #: app/Http/RequestHandlers/LoginPage.php:80 app/Module/LoginBlockModule.php:43
 #: app/Module/LoginBlockModule.php:75 app/Module/ModuleThemeTrait.php:286
 msgid "Sign in"
-msgstr ""
+msgstr "Meewngofnodi"
 
 #: app/Http/RequestHandlers/LoginPage.php:85
 msgid "Anyone with a user account can access this website."
@@ -10424,7 +10425,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/ManageMediaData.php:227
 msgid "Create"
-msgstr ""
+msgstr "Creu"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:231
 #: resources/views/admin/clean-data.phtml:41
@@ -10471,7 +10472,7 @@ msgstr ""
 #: resources/views/source-page-menu.phtml:24
 #: resources/views/submitter-page-menu.phtml:28
 msgid "Delete"
-msgstr ""
+msgstr "Dileu"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:288
 msgid "There are no links to this media object."
@@ -10482,7 +10483,7 @@ msgstr ""
 #: app/Services/MediaFileService.php:89
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. I18N: image dimensions, width × height
 #: app/Http/RequestHandlers/ManageMediaData.php:322 app/MediaFile.php:333
@@ -10521,7 +10522,7 @@ msgstr ""
 #: app/Http/RequestHandlers/MapDataAdd.php:76
 #: app/Http/RequestHandlers/MapDataAdd.php:79
 msgid "Add"
-msgstr ""
+msgstr "Ychwanegu"
 
 #: app/Http/RequestHandlers/MapDataAdd.php:88
 #: app/Http/RequestHandlers/MapDataEdit.php:82
@@ -10603,7 +10604,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:90
 #: resources/views/admin/modules.phtml:92
 msgid "Blocks"
-msgstr ""
+msgstr "Blociau"
 
 #. I18N: Name of a module/block
 #. I18N: Name of a module
@@ -10615,14 +10616,14 @@ msgstr ""
 #: resources/views/admin/modules.phtml:96
 #: resources/views/admin/trees-preferences.phtml:405
 msgid "Charts"
-msgstr ""
+msgstr "Siartiau"
 
 #: app/Http/RequestHandlers/ModulesFootersPage.php:43
 #: resources/views/admin/control-panel.phtml:589
 #: resources/views/admin/modules.phtml:106
 #: resources/views/admin/modules.phtml:108
 msgid "Footers"
-msgstr ""
+msgstr "Troedynnau"
 
 #: app/Http/RequestHandlers/ModulesHistoricEventsPage.php:43
 #: resources/views/admin/control-panel.phtml:656
@@ -10639,7 +10640,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:122
 #: resources/views/admin/modules.phtml:124
 msgid "Languages"
-msgstr ""
+msgstr "Ieithoedd"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesListsPage.php:43
@@ -10649,14 +10650,14 @@ msgstr ""
 #: resources/views/admin/modules.phtml:100
 #: resources/views/admin/trees-preferences.phtml:341
 msgid "Lists"
-msgstr ""
+msgstr "Rhestrau"
 
 #: app/Http/RequestHandlers/ModulesMenusPage.php:43
 #: resources/views/admin/control-panel.phtml:547
 #: resources/views/admin/modules.phtml:78
 #: resources/views/admin/modules.phtml:80
 msgid "Menus"
-msgstr ""
+msgstr "Dewislenni"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -10665,28 +10666,28 @@ msgstr ""
 #: resources/views/admin/modules.phtml:102
 #: resources/views/admin/modules.phtml:104
 msgid "Reports"
-msgstr ""
+msgstr "Adroddiadau"
 
 #: app/Http/RequestHandlers/ModulesSidebarsPage.php:43
 #: resources/views/admin/control-panel.phtml:649
 #: resources/views/admin/modules.phtml:86
 #: resources/views/admin/modules.phtml:88
 msgid "Sidebars"
-msgstr ""
+msgstr "Barau Ochr"
 
 #: app/Http/RequestHandlers/ModulesTabsPage.php:43
 #: resources/views/admin/control-panel.phtml:642
 #: resources/views/admin/modules.phtml:82
 #: resources/views/admin/modules.phtml:84
 msgid "Tabs"
-msgstr ""
+msgstr "Tabiau"
 
 #: app/Http/RequestHandlers/ModulesThemesPage.php:43
 #: resources/views/admin/control-panel.phtml:603
 #: resources/views/admin/modules.phtml:118
 #: resources/views/admin/modules.phtml:120
 msgid "Themes"
-msgstr ""
+msgstr "Themâu"
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:96
 #: app/Http/RequestHandlers/PasswordRequestPage.php:55
@@ -10710,7 +10711,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:77
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Mae eich cyfrinair wedi'i ddiweddaru."
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:84
 #: app/Http/RequestHandlers/PasswordResetPage.php:76
@@ -10742,17 +10743,17 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:122
 msgid "accepted"
-msgstr ""
+msgstr "derbyniwyd"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:124
 msgid "rejected"
-msgstr ""
+msgstr "gwrthodwyd"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:126
 msgid "pending"
-msgstr ""
+msgstr "o dan ystyriaeth"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesRejectRecord.php:68
@@ -10825,7 +10826,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:227
 #: resources/views/report-select-page.phtml:22
 msgid "Report"
-msgstr ""
+msgstr "Adroddiad"
 
 #: app/Http/RequestHandlers/ReportListPage.php:74
 msgid "Choose a report to run"
@@ -10834,7 +10835,7 @@ msgstr ""
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:168
 #: app/Module/SearchMenuModule.php:125
 msgid "Advanced search"
-msgstr ""
+msgstr "Chwiliad manwl"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:222
 msgid "Date of divorce"
@@ -10877,11 +10878,11 @@ msgstr ""
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:261
 msgid "Begins with"
-msgstr ""
+msgstr "Cychwyn gyda"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:262
 msgid "Contains"
-msgstr ""
+msgstr "Yn cynnwys"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:263
 msgid "Sounds like"
@@ -11042,7 +11043,7 @@ msgstr ""
 #: resources/views/modules/block-template.phtml:18
 #: resources/views/modules/block-template.phtml:20
 msgid "Preferences"
-msgstr ""
+msgstr "Dewisiadau"
 
 #: app/Http/RequestHandlers/TreePageDefaultEdit.php:70
 #: resources/views/admin/control-panel.phtml:260
@@ -11077,7 +11078,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:274
 #: app/Module/YahrzeitModule.php:257
 msgid "list"
-msgstr ""
+msgstr "rhestr"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -11087,7 +11088,7 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:276
 #: app/Module/YahrzeitModule.php:259
 msgid "table"
-msgstr ""
+msgstr "tabl"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -11101,14 +11102,14 @@ msgstr ""
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Portrait"
-msgstr ""
+msgstr "Darlun"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:104
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Landscape"
-msgstr ""
+msgstr "Tirlun"
 
 #. I18N: None of the other options
 #: app/Http/RequestHandlers/TreePreferencesPage.php:109
@@ -11117,7 +11118,7 @@ msgstr ""
 #: app/Services/EmailService.php:234
 #: resources/views/modules/statistics-chart/custom.phtml:83
 msgid "none"
-msgstr ""
+msgstr "dim"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:111
@@ -11132,7 +11133,7 @@ msgstr ""
 #: app/Http/RequestHandlers/TreePreferencesPage.php:117
 #: resources/xml/reports/fact_sources.xml:6
 msgid "records"
-msgstr ""
+msgstr "cofnodion"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:123
 #: app/Http/RequestHandlers/UserEditPage.php:114
@@ -11142,7 +11143,7 @@ msgstr ""
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
 msgid "Privacy"
-msgstr ""
+msgstr "Preifatrwydd"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:176
 #: resources/views/admin/trees-privacy.phtml:272
@@ -11253,7 +11254,7 @@ msgstr ""
 #: resources/views/register-page.phtml:101
 #: resources/views/report-select-page.phtml:39
 msgid "continue"
-msgstr ""
+msgstr "parhau"
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:107
 #, php-format
@@ -11304,7 +11305,7 @@ msgstr ""
 #: resources/views/modules/clippings/download.phtml:48
 #: resources/views/modules/clippings/download.phtml:68
 msgid "Visitor"
-msgstr ""
+msgstr "Ymwelydd"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:102
@@ -11313,7 +11314,7 @@ msgstr ""
 #: resources/views/modules/clippings/download.phtml:42
 #: resources/views/modules/clippings/download.phtml:62
 msgid "Member"
-msgstr ""
+msgstr "Aelod"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:104
@@ -11321,13 +11322,13 @@ msgstr ""
 #: resources/views/modules/recent_changes/changes-table.phtml:49
 #: resources/views/pending-changes-page.phtml:49
 msgid "Editor"
-msgstr ""
+msgstr "Golygydd"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:106
 #: resources/views/admin/users-edit.phtml:259
 msgid "Moderator"
-msgstr ""
+msgstr "Cymedrolwr"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:108
@@ -11335,7 +11336,7 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:267
 #: resources/views/modules/clippings/download.phtml:36
 msgid "Manager"
-msgstr ""
+msgstr "Rheolwr"
 
 #: app/Http/RequestHandlers/UserEditPage.php:123
 msgid "Edit the user"
@@ -11344,7 +11345,7 @@ msgstr ""
 #: app/Http/RequestHandlers/UserListData.php:142
 #: resources/views/components/datetime.phtml:11
 msgid "Never"
-msgstr ""
+msgstr "Byth"
 
 #: app/Http/RequestHandlers/UserListPage.php:51
 #: resources/views/admin/control-panel.phtml:468
@@ -11394,7 +11395,7 @@ msgstr ""
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:324
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:600
@@ -11441,7 +11442,7 @@ msgstr ""
 #: app/Module/AncestorsChartModule.php:108
 #: resources/xml/reports/ahnentafel_report.xml:4
 msgid "Ancestors"
-msgstr ""
+msgstr "Hynafiaid"
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
@@ -11470,7 +11471,7 @@ msgstr ""
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:28
 msgid "Tree"
-msgstr ""
+msgstr "Coeden"
 
 #. I18N: Name of a module/list
 #: app/Module/AncestorsChartModule.php:277
@@ -11581,7 +11582,7 @@ msgstr ""
 #. I18N: Branches of a family tree
 #: app/Module/BranchesListModule.php:104 app/Module/BranchesListModule.php:229
 msgid "Branches"
-msgstr ""
+msgstr "Canghennau"
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:115
@@ -11602,7 +11603,7 @@ msgstr ""
 #: app/Module/CalendarMenuModule.php:42 app/Module/CalendarMenuModule.php:81
 #: resources/views/modules/yahrzeit/config.phtml:39
 msgid "Calendar"
-msgstr ""
+msgstr "Calendr"
 
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
@@ -11611,7 +11612,7 @@ msgstr ""
 
 #: app/Module/CalendarMenuModule.php:91 resources/views/calendar-page.phtml:40
 msgid "Day"
-msgstr ""
+msgstr "Diwrnod"
 
 #: app/Module/CalendarMenuModule.php:104
 #: app/Module/StatisticsChartModule.php:282
@@ -11621,11 +11622,11 @@ msgstr ""
 #: app/Module/StatisticsChartModule.php:471
 #: resources/views/calendar-page.phtml:56
 msgid "Month"
-msgstr ""
+msgstr "Mis"
 
 #: app/Module/CalendarMenuModule.php:117 resources/views/calendar-page.phtml:75
 msgid "Year"
-msgstr ""
+msgstr "Blwyddyn"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:40
@@ -11656,7 +11657,7 @@ msgstr ""
 #: resources/views/modules/clippings/show.phtml:47
 #: resources/views/modules/favorites/favorites.phtml:36
 msgid "Remove"
-msgstr ""
+msgstr "Tynnu"
 
 #. I18N: Name of a module/report
 #: app/Module/ChangeReportModule.php:44
@@ -11666,7 +11667,7 @@ msgstr ""
 #: resources/xml/reports/change_report.xml:3
 #: resources/xml/reports/change_report.xml:44
 msgid "Changes"
-msgstr ""
+msgstr "Newidiadau"
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
@@ -11746,7 +11747,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:189
 #: app/Module/ClippingsCartModule.php:234
 msgid "Download"
-msgstr ""
+msgstr "Llwytho i lawr"
 
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:207
@@ -11860,7 +11861,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:155
 msgid "Ash"
-msgstr ""
+msgstr "Lludw"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:157
@@ -11900,7 +11901,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:171
 msgid "Mercury"
-msgstr ""
+msgstr "Arian byw"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:173
@@ -11952,7 +11953,7 @@ msgstr ""
 #: app/Module/ContactsFooterModule.php:57
 #: resources/views/admin/trees-preferences.phtml:156
 msgid "Contact information"
-msgstr ""
+msgstr "Manylion cyswllt"
 
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
@@ -12081,7 +12082,7 @@ msgstr ""
 #: app/Module/FamilyTreeFavoritesModule.php:51
 #: app/Module/UserFavoritesModule.php:52
 msgid "Favorites"
-msgstr ""
+msgstr "Ffefrynnau"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:62
@@ -12096,7 +12097,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:119
 msgid "News"
-msgstr ""
+msgstr "Newyddion"
 
 #: app/Module/FamilyTreeNewsModule.php:182 app/Module/UserJournalModule.php:182
 msgid "Add/edit a journal/news entry"
@@ -12110,7 +12111,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.phtml:40
 #: resources/views/modules/gedcom_stats/statistics.phtml:160
 msgid "Statistics"
-msgstr ""
+msgstr "Ystadegau"
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:63
@@ -12146,7 +12147,7 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:587
 msgid "full circle"
-msgstr ""
+msgstr "cylch llawn"
 
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
@@ -12256,7 +12257,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:105
 msgid "Regular expression"
-msgstr ""
+msgstr "Mynegiad rheolaidd"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:111 app/Module/MediaListModule.php:82
@@ -12275,7 +12276,7 @@ msgstr ""
 #: resources/views/statistics/other/chart-objects.phtml:12
 #: resources/views/statistics/other/total-records.phtml:21
 msgid "Media objects"
-msgstr ""
+msgstr "Gwrthrychau cyfrwng"
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:112 app/Module/NoteListModule.php:164
@@ -12289,7 +12290,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:237
 #: resources/xml/reports/individual_report.xml:226
 msgid "Notes"
-msgstr ""
+msgstr "Nodiadau"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:113
@@ -12335,7 +12336,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:651
 #: resources/xml/reports/individual_report.xml:647
 msgid "Sources"
-msgstr ""
+msgstr "Ffynonellau"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:115 app/Module/SubmitterListModule.php:73
@@ -12349,7 +12350,7 @@ msgstr ""
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:73
 msgid "FAQ"
-msgstr ""
+msgstr "Cwestiynau Cyffredin"
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:84
@@ -12417,7 +12418,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/HtmlBlockModule.php:58
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:69
@@ -12426,7 +12427,7 @@ msgstr ""
 
 #: app/Module/HtmlBlockModule.php:191 app/Module/StatisticsChartModule.php:161
 msgid "Custom"
-msgstr ""
+msgstr "Cyfaddasu"
 
 #: app/Module/HtmlBlockModule.php:192
 msgid "Keyword examples"
@@ -13265,7 +13266,7 @@ msgstr ""
 #: app/Module/InteractiveTree/TreeView.php:353
 msgctxt "unknown family"
 msgid "unknown"
-msgstr ""
+msgstr "anhysbys"
 
 #. I18N: e.g. “Son of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:358
@@ -13322,7 +13323,7 @@ msgstr ""
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "Lleoliadau"
 
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
@@ -13347,7 +13348,7 @@ msgstr ""
 #: app/Module/LoginBlockModule.php:70 app/Module/ModuleThemeTrait.php:302
 #: resources/views/layouts/administration.phtml:66
 msgid "Sign out"
-msgstr ""
+msgstr "Allgofnodi"
 
 #. I18N: Name of a module/report
 #: app/Module/MarriageReportModule.php:40
@@ -13404,7 +13405,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:259
 #: resources/views/admin/users-edit.phtml:199
 msgid "Theme"
-msgstr ""
+msgstr "Thema"
 
 #: app/Module/ModuleThemeTrait.php:173 resources/views/chart-box.phtml:35
 msgid "Family with spouse"
@@ -13506,24 +13507,24 @@ msgstr ""
 #: app/Module/PedigreeChartModule.php:387
 #: app/Module/PedigreeChartModule.php:395
 msgid "left"
-msgstr ""
+msgstr "chwith"
 
 #: app/Module/PedigreeChartModule.php:388
 #: app/Module/PedigreeChartModule.php:396
 msgid "right"
-msgstr ""
+msgstr "de"
 
 #: app/Module/PedigreeChartModule.php:389
 #: app/Module/PedigreeChartModule.php:397
 #: resources/views/edit/reorder-card-header.phtml:26
 msgid "up"
-msgstr ""
+msgstr "i fyny"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
 #: resources/views/edit/reorder-card-header.phtml:30
 msgid "down"
-msgstr ""
+msgstr "i lawr"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:123
@@ -13566,7 +13567,7 @@ msgstr ""
 #: resources/views/search-replace-page.phtml:47
 #: resources/views/statistics/other/places.phtml:12
 msgid "Places"
-msgstr ""
+msgstr "Mannau"
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:78
@@ -13587,7 +13588,7 @@ msgstr ""
 #: app/Module/PrivacyPolicy.php:67 app/Module/PrivacyPolicy.php:128
 #: resources/views/modules/privacy-policy/footer.phtml:16
 msgid "Privacy policy"
-msgstr ""
+msgstr "Polisi preifatrwydd"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
@@ -13675,7 +13676,7 @@ msgstr ""
 #: resources/views/lists/individuals-table.phtml:283
 #: resources/views/modules/relationships-chart/config.phtml:34
 msgid "Relationships"
-msgstr ""
+msgstr "Perthnasau"
 
 #. I18N: %s are individual’s names
 #: app/Module/RelationshipsChartModule.php:247
@@ -13707,7 +13708,7 @@ msgstr ""
 
 #: app/Module/RelationshipsChartModule.php:458
 msgid "unlimited"
-msgstr ""
+msgstr "diderfyn"
 
 #: app/Module/RelationshipsChartModule.php:713
 msgid "Find all possible relationships"
@@ -13743,7 +13744,7 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:76
 #: resources/views/admin/site-logs.phtml:126
 msgid "User"
-msgstr ""
+msgstr "Defnyddwyr"
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:75
@@ -13791,7 +13792,7 @@ msgstr ""
 #: resources/views/modules/fix-place-names/options.phtml:11
 #: resources/views/search-replace-page.phtml:44
 msgid "Search"
-msgstr ""
+msgstr "Chwilio"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
@@ -13909,7 +13910,7 @@ msgstr ""
 #: resources/views/lists/chart-by-age.phtml:29
 #: resources/views/lists/chart-by-decade.phtml:21
 msgid "Total"
-msgstr ""
+msgstr "Cyfanswm"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:867
@@ -13979,7 +13980,7 @@ msgstr ""
 #: app/Module/StoriesModule.php:208
 #: resources/views/modules/stories/edit.phtml:22
 msgid "Stories"
-msgstr ""
+msgstr "Straeon"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/config.phtml:38
@@ -14010,7 +14011,7 @@ msgstr ""
 #. I18N: Name of a module/chart
 #: app/Module/TimelineChartModule.php:97
 msgid "Timeline"
-msgstr ""
+msgstr "Llinell amser"
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:108
@@ -14086,7 +14087,7 @@ msgstr[5] ""
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:243
 msgid "bullet list"
-msgstr ""
+msgstr "rhestr bwled"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:245
@@ -14125,7 +14126,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:105
 msgid "Upcoming events"
-msgstr ""
+msgstr "Digwyddiadau i ddod"
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:116
@@ -14167,14 +14168,14 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:119
 msgid "Journal"
-msgstr ""
+msgstr "Dyddlyfr"
 
 #. I18N: Name of a module
 #. I18N: A configuration setting
 #: app/Module/UserMessagesModule.php:76
 #: resources/views/admin/site-mail.phtml:43
 msgid "Messages"
-msgstr ""
+msgstr "Negeseuon"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:87
@@ -14217,7 +14218,7 @@ msgstr ""
 #: resources/views/admin/modules.phtml:197
 #: resources/views/admin/modules.phtml:201 resources/views/admin/trees.phtml:90
 msgid "Home page"
-msgstr ""
+msgstr "Tudalen gartref"
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:71
@@ -14248,7 +14249,7 @@ msgstr ""
 
 #: app/Place.php:246
 msgid "unknown"
-msgstr ""
+msgstr "anhysbys"
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/AbstractRenderer.php:295
@@ -14537,7 +14538,7 @@ msgstr ""
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:120
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr ""
+msgstr "Anhysbys"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:125
 #: resources/views/statistics/families/children.phtml:32
@@ -14581,7 +14582,7 @@ msgstr ""
 
 #: app/Statistics/Repository/EventRepository.php:327
 msgid "marriage"
-msgstr ""
+msgstr "priodas"
 
 #: app/Statistics/Repository/EventRepository.php:328
 msgid "adoption"
@@ -14607,7 +14608,7 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:433
 #: resources/xml/reports/descendancy_report.xml:486
 msgid "and"
-msgstr ""
+msgstr "a"
 
 #: app/Statistics/Repository/UserRepository.php:84
 msgid "No signed-in and no anonymous users"
@@ -14643,127 +14644,127 @@ msgstr ""
 #: app/Statistics/Service/CenturyService.php:45
 msgctxt "CENTURY"
 msgid "21st"
-msgstr ""
+msgstr "21ain"
 
 #: app/Statistics/Service/CenturyService.php:47
 msgctxt "CENTURY"
 msgid "20th"
-msgstr ""
+msgstr "20fed"
 
 #: app/Statistics/Service/CenturyService.php:49
 msgctxt "CENTURY"
 msgid "19th"
-msgstr ""
+msgstr "19eg"
 
 #: app/Statistics/Service/CenturyService.php:51
 msgctxt "CENTURY"
 msgid "18th"
-msgstr ""
+msgstr "18fed"
 
 #: app/Statistics/Service/CenturyService.php:53
 msgctxt "CENTURY"
 msgid "17th"
-msgstr ""
+msgstr "17eg"
 
 #: app/Statistics/Service/CenturyService.php:55
 msgctxt "CENTURY"
 msgid "16th"
-msgstr ""
+msgstr "16eg"
 
 #: app/Statistics/Service/CenturyService.php:57
 msgctxt "CENTURY"
 msgid "15th"
-msgstr ""
+msgstr "15fed"
 
 #: app/Statistics/Service/CenturyService.php:59
 msgctxt "CENTURY"
 msgid "14th"
-msgstr ""
+msgstr "14eg"
 
 #: app/Statistics/Service/CenturyService.php:61
 msgctxt "CENTURY"
 msgid "13th"
-msgstr ""
+msgstr "13eg"
 
 #: app/Statistics/Service/CenturyService.php:63
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "12fed"
 
 #: app/Statistics/Service/CenturyService.php:65
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "11eg"
 
 #: app/Statistics/Service/CenturyService.php:67
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "10fed"
 
 #: app/Statistics/Service/CenturyService.php:69
 msgctxt "CENTURY"
 msgid "9th"
-msgstr ""
+msgstr "9fed"
 
 #: app/Statistics/Service/CenturyService.php:71
 msgctxt "CENTURY"
 msgid "8th"
-msgstr ""
+msgstr "8fed"
 
 #: app/Statistics/Service/CenturyService.php:73
 msgctxt "CENTURY"
 msgid "7th"
-msgstr ""
+msgstr "7fed"
 
 #: app/Statistics/Service/CenturyService.php:75
 msgctxt "CENTURY"
 msgid "6th"
-msgstr ""
+msgstr "6ed"
 
 #: app/Statistics/Service/CenturyService.php:77
 msgctxt "CENTURY"
 msgid "5th"
-msgstr ""
+msgstr "5ed"
 
 #: app/Statistics/Service/CenturyService.php:79
 msgctxt "CENTURY"
 msgid "4th"
-msgstr ""
+msgstr "4ydd"
 
 #: app/Statistics/Service/CenturyService.php:81
 msgctxt "CENTURY"
 msgid "3rd"
-msgstr ""
+msgstr "3ydd"
 
 #: app/Statistics/Service/CenturyService.php:83
 msgctxt "CENTURY"
 msgid "2nd"
-msgstr ""
+msgstr "2il"
 
 #: app/Statistics/Service/CenturyService.php:85
 msgctxt "CENTURY"
 msgid "1st"
-msgstr ""
+msgstr "1af"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:40
 msgid "Aruba"
-msgstr ""
+msgstr "Aruba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
 msgid "Afghanistan"
-msgstr ""
+msgstr "Affganistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:44
 msgid "Angola"
-msgstr ""
+msgstr "Angola"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:46
 msgid "Anguilla"
-msgstr ""
+msgstr "Anguilla"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:48
@@ -14773,192 +14774,192 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:50
 msgid "Albania"
-msgstr ""
+msgstr "Albania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:52
 msgid "Andorra"
-msgstr ""
+msgstr "Andorra"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "Yr Emiraethau Arabaidd Unedig"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
 msgid "Argentina"
-msgstr ""
+msgstr "Yr Ariannin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:58
 msgid "Armenia"
-msgstr ""
+msgstr "Armenia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
 msgid "American Samoa"
-msgstr ""
+msgstr "Samoa Americanaidd"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:62
 msgid "Antarctica"
-msgstr ""
+msgstr "Antarctica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:64
 msgid "French Southern Territories"
-msgstr ""
+msgstr "Tiroedd Deheuol Ffrainc"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:66
 msgid "Antigua and Barbuda"
-msgstr ""
+msgstr "Antigua a Barbuda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:68
 msgid "Australia"
-msgstr ""
+msgstr "Awstralia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:70
 msgid "Austria"
-msgstr ""
+msgstr "Awstria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:72
 msgid "Azerbaijan"
-msgstr ""
+msgstr "Azerbaijan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:74
 msgid "Azores"
-msgstr ""
+msgstr "Azores"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:76
 msgid "Burundi"
-msgstr ""
+msgstr "Bwrwndi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:78
 msgid "Belgium"
-msgstr ""
+msgstr "Gwlad Belg"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:80
 msgid "Benin"
-msgstr ""
+msgstr "Benin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:83
 msgid "Burkina Faso"
-msgstr ""
+msgstr "Bwrcina Ffaso"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:85
 msgid "Bangladesh"
-msgstr ""
+msgstr "Bangladesh"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:87
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bwlgaria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:89
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahrain"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:91
 msgid "Bahamas"
-msgstr ""
+msgstr "Bahamas"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:93
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosnia a Herzegovina"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:96
 msgid "Belarus"
-msgstr ""
+msgstr "Belarws"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:98
 msgid "Belize"
-msgstr ""
+msgstr "Belize"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:100
 msgid "Bermuda"
-msgstr ""
+msgstr "Bermuda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:102
 msgid "Bolivia"
-msgstr ""
+msgstr "Bolifia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:104
 msgid "Brazil"
-msgstr ""
+msgstr "Brasil"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:106
 msgid "Barbados"
-msgstr ""
+msgstr "Barbados"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:108
 msgid "Brunei Darussalam"
-msgstr ""
+msgstr "Brunei Darussalam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:110
 msgid "Bhutan"
-msgstr ""
+msgstr "Bhutan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:112
 msgid "Bouvet Island"
-msgstr ""
+msgstr "Bouvet Island"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:114
 msgid "Botswana"
-msgstr ""
+msgstr "Botswana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:116
 msgid "Central African Republic"
-msgstr ""
+msgstr "Gweriniaeth Canolbarth Affrica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:118
 msgid "Canada"
-msgstr ""
+msgstr "Canada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:120
 msgid "Cocos (Keeling) Islands"
-msgstr ""
+msgstr "Cocos (Keeling) Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:122
 msgid "Switzerland"
-msgstr ""
+msgstr "Y Swistir"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:124
 msgid "Chile"
-msgstr ""
+msgstr "Chile"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:126
 msgid "China"
-msgstr ""
+msgstr "Tsieina"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:128
@@ -14968,7 +14969,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:130
 msgid "Cameroon"
-msgstr ""
+msgstr "Camerŵn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -14983,92 +14984,92 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:136
 msgid "Cook Islands"
-msgstr ""
+msgstr "Ynysoedd Cook"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:138
 msgid "Colombia"
-msgstr ""
+msgstr "Colombia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:140
 msgid "Comoros"
-msgstr ""
+msgstr "Comoros"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:142
 msgid "Cape Verde"
-msgstr ""
+msgstr "Cape Verde"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
 msgid "Costa Rica"
-msgstr ""
+msgstr "Costa Rica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:146
 msgid "Cuba"
-msgstr ""
+msgstr "Ciwba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:149
 msgid "Christmas Island"
-msgstr ""
+msgstr "Christmas Island"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:151
 msgid "Cayman Islands"
-msgstr ""
+msgstr "Ynysoedd Cayman"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:153
 msgid "Cyprus"
-msgstr ""
+msgstr "Cyprus"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:155
 msgid "Czech Republic"
-msgstr ""
+msgstr "Gweriniaeth Tsiec"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:157
 msgid "Germany"
-msgstr ""
+msgstr "Yr Almaen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:159
 msgid "Djibouti"
-msgstr ""
+msgstr "Djibouti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
 msgid "Dominica"
-msgstr ""
+msgstr "Dominica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
 msgid "Denmark"
-msgstr ""
+msgstr "Denmarc"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:165
 msgid "Dominican Republic"
-msgstr ""
+msgstr "Y Weriniaeth Ddominicaidd"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:167
 msgid "Algeria"
-msgstr ""
+msgstr "Algeria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:169
 msgid "Ecuador"
-msgstr ""
+msgstr "Ecwador"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:171
 msgid "Egypt"
-msgstr ""
+msgstr "Yr Aifft"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:173
@@ -15078,37 +15079,37 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:175
 msgid "Eritrea"
-msgstr ""
+msgstr "Eritrea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
 msgid "Western Sahara"
-msgstr ""
+msgstr "Gorllewin Sahara"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:179
 msgid "Spain"
-msgstr ""
+msgstr "Sbaen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:181
 msgid "Estonia"
-msgstr ""
+msgstr "Estonia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:183
 msgid "Ethiopia"
-msgstr ""
+msgstr "Ethiopia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:185
 msgid "Finland"
-msgstr ""
+msgstr "Y Ffindir"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
 msgid "Fiji"
-msgstr ""
+msgstr "Ffiji"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:189
@@ -15118,337 +15119,337 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:191
 msgid "Falkland Islands"
-msgstr ""
+msgstr "Ynysoedd y Falklands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:193
 msgid "France"
-msgstr ""
+msgstr "Ffrainc"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:195
 msgid "Faroe Islands"
-msgstr ""
+msgstr "Ynysoedd Ffaro"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:197
 msgid "Micronesia"
-msgstr ""
+msgstr "Micronesia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
 msgid "Gabon"
-msgstr ""
+msgstr "Gabon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:201
 msgid "United Kingdom"
-msgstr ""
+msgstr "Y Deyrnas Gyfunol"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
 msgid "Georgia"
-msgstr ""
+msgstr "Georgia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:205
 msgid "Guernsey"
-msgstr ""
+msgstr "Guernsey"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:207
 msgid "Ghana"
-msgstr ""
+msgstr "Ghana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:209
 msgid "Gibraltar"
-msgstr ""
+msgstr "Gibraltar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:211
 msgid "Guinea"
-msgstr ""
+msgstr "Gini"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:213
 msgid "Guadeloupe"
-msgstr ""
+msgstr "Guadeloupe"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:215
 msgid "Gambia"
-msgstr ""
+msgstr "Gambia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:217
 msgid "Guinea-Bissau"
-msgstr ""
+msgstr "Gini Bisaw"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:219
 msgid "Equatorial Guinea"
-msgstr ""
+msgstr "Gini Gyhydeddol"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:221
 msgid "Greece"
-msgstr ""
+msgstr "Groeg"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:223
 msgid "Grenada"
-msgstr ""
+msgstr "Grenada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:225
 msgid "Greenland"
-msgstr ""
+msgstr "Yr Ynys Las"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:227
 msgid "Guatemala"
-msgstr ""
+msgstr "Guatemala"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:229
 msgid "French Guiana"
-msgstr ""
+msgstr "Guyane"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:231
 msgid "Guam"
-msgstr ""
+msgstr "Guam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:233
 msgid "Guyana"
-msgstr ""
+msgstr "Guyana"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:237
 msgid "Heard Island and McDonald Islands"
-msgstr ""
+msgstr "Ynysoedd Heard a McDonald"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:239
 msgid "Honduras"
-msgstr ""
+msgstr "Hondwras"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:241
 msgid "Croatia"
-msgstr ""
+msgstr "Croatia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:243
 msgid "Haiti"
-msgstr ""
+msgstr "Haiti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:245
 msgid "Hungary"
-msgstr ""
+msgstr "Hwngari"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:247
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonesia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
 msgid "India"
-msgstr ""
+msgstr "India"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:251
 msgid "Isle of Man"
-msgstr ""
+msgstr "Ynys Manaw"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:253
 msgid "British Indian Ocean Territory"
-msgstr ""
+msgstr "British Indian Ocean Territory"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:255
 msgid "Ireland"
-msgstr ""
+msgstr "Iwerddon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:257
 msgid "Iran"
-msgstr ""
+msgstr "Iran"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:259
 msgid "Iraq"
-msgstr ""
+msgstr "Irac"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:261
 msgid "Iceland"
-msgstr ""
+msgstr "Gwlad yr Iâ"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:263
 msgid "Israel"
-msgstr ""
+msgstr "Israel"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
 msgid "Italy"
-msgstr ""
+msgstr "Yr Eidal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:267
 msgid "Jamaica"
-msgstr ""
+msgstr "Jamaica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
 msgid "Jordan"
-msgstr ""
+msgstr "Jordan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:272
 msgid "Japan"
-msgstr ""
+msgstr "Japan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:274
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazakhstan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
 msgid "Kenya"
-msgstr ""
+msgstr "Kenya"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:278
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Cirgistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
 msgid "Cambodia"
-msgstr ""
+msgstr "Cambodia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:282
 msgid "Kiribati"
-msgstr ""
+msgstr "Kiribati"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:284
 msgid "Saint Kitts and Nevis"
-msgstr ""
+msgstr "Saint Kitts a Nevis"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:286
 msgid "Korea"
-msgstr ""
+msgstr "Corea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:288
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuwait"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:290
 msgid "Laos"
-msgstr ""
+msgstr "Laos"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:292
 msgid "Lebanon"
-msgstr ""
+msgstr "Libanus"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:294
 msgid "Liberia"
-msgstr ""
+msgstr "Liberia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:296
 msgid "Libya"
-msgstr ""
+msgstr "Libya"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:298
 msgid "Saint Lucia"
-msgstr ""
+msgstr "Saint Lucia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:300
 msgid "Liechtenstein"
-msgstr ""
+msgstr "Liechtenstein"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:302
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Sri Lanka"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:304
 msgid "Lesotho"
-msgstr ""
+msgstr "Lesotho"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:306
 msgid "Lithuania"
-msgstr ""
+msgstr "Lithiwania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:308
 msgid "Luxembourg"
-msgstr ""
+msgstr "Lwcsembwrg"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:310
 msgid "Latvia"
-msgstr ""
+msgstr "Latfia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:312
 msgid "Macau"
-msgstr ""
+msgstr "Macau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:315
 msgid "Morocco"
-msgstr ""
+msgstr "Moroco"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:317
 msgid "Monaco"
-msgstr ""
+msgstr "Monaco"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:319
 msgid "Moldova"
-msgstr ""
+msgstr "Moldova"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:321
 msgid "Madagascar"
-msgstr ""
+msgstr "Madagascar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:323
 msgid "Maldives"
-msgstr ""
+msgstr "Maldives"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:325
 msgid "Mexico"
-msgstr ""
+msgstr "Mecsico"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:327
 msgid "Marshall Islands"
-msgstr ""
+msgstr "Ynysoedd Marshall"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:329
@@ -15458,102 +15459,102 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:331
 msgid "Mali"
-msgstr ""
+msgstr "Mali"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:333
 msgid "Malta"
-msgstr ""
+msgstr "Malta"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:335
 msgid "Myanmar"
-msgstr ""
+msgstr "Myanmar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:337
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:339
 msgid "Northern Mariana Islands"
-msgstr ""
+msgstr "Northern Mariana Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:341
 msgid "Montenegro"
-msgstr ""
+msgstr "Montenegro"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:343
 msgid "Mozambique"
-msgstr ""
+msgstr "Mozambique"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
 msgid "Mauritania"
-msgstr ""
+msgstr "Mauritania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:347
 msgid "Montserrat"
-msgstr ""
+msgstr "Montserrat"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:349
 msgid "Martinique"
-msgstr ""
+msgstr "Martinique"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:351
 msgid "Mauritius"
-msgstr ""
+msgstr "Mauritius"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:353
 msgid "Malawi"
-msgstr ""
+msgstr "Malawi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:355
 msgid "Malaysia"
-msgstr ""
+msgstr "Malaysia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:357
 msgid "Mayotte"
-msgstr ""
+msgstr "Mayotte"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:359
 msgid "Namibia"
-msgstr ""
+msgstr "Namibia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:361
 msgid "New Caledonia"
-msgstr ""
+msgstr "New Caledonia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:363
 msgid "Niger"
-msgstr ""
+msgstr "Niger"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:365
 msgid "Norfolk Island"
-msgstr ""
+msgstr "Norfolk Island"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:367
 msgid "Nigeria"
-msgstr ""
+msgstr "Nigeria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
 msgid "Nicaragua"
-msgstr ""
+msgstr "Nicaragwa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
@@ -15563,97 +15564,97 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:373
 msgid "Niue"
-msgstr ""
+msgstr "Niue"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:375
 msgid "Netherlands"
-msgstr ""
+msgstr "Yr Iseldiroedd"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:377
 msgid "Norway"
-msgstr ""
+msgstr "Norwy"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:379
 msgid "Nepal"
-msgstr ""
+msgstr "Nepal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:381
 msgid "Nauru"
-msgstr ""
+msgstr "Nauru"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
 msgid "New Zealand"
-msgstr ""
+msgstr "Seland Newydd"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:385
 msgid "Oman"
-msgstr ""
+msgstr "Oman"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:387
 msgid "Pakistan"
-msgstr ""
+msgstr "Pacistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:389
 msgid "Panama"
-msgstr ""
+msgstr "Panama"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:391
 msgid "Pitcairn"
-msgstr ""
+msgstr "Pitcairn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:393
 msgid "Peru"
-msgstr ""
+msgstr "Periw"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:395
 msgid "Philippines"
-msgstr ""
+msgstr "Ynysoedd Philippines"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:397
 msgid "Palau"
-msgstr ""
+msgstr "Palau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:399
 msgid "Papua New Guinea"
-msgstr ""
+msgstr "Papwa Gini Newydd"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:401
 msgid "Poland"
-msgstr ""
+msgstr "Gwlad Pwyl"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:403
 msgid "Puerto Rico"
-msgstr ""
+msgstr "Puerto Rico"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:405
 msgid "North Korea"
-msgstr ""
+msgstr "Gogledd Korea"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:407
 msgid "Portugal"
-msgstr ""
+msgstr "Portiwgal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:409
 msgid "Paraguay"
-msgstr ""
+msgstr "Paraguay"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:411
@@ -15663,37 +15664,37 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:413
 msgid "French Polynesia"
-msgstr ""
+msgstr "French Polynesia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:415
 msgid "Qatar"
-msgstr ""
+msgstr "Qatar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:417
 msgid "Reunion"
-msgstr ""
+msgstr "Réunion"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:419
 msgid "Romania"
-msgstr ""
+msgstr "Romania"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:421
 msgid "Russia"
-msgstr ""
+msgstr "Rwsia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:423
 msgid "Rwanda"
-msgstr ""
+msgstr "Rwanda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:425
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Sawdi-Arabia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:427
@@ -15703,7 +15704,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
 msgid "Sudan"
-msgstr ""
+msgstr "Swdan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:431
@@ -15713,17 +15714,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:433
 msgid "Senegal"
-msgstr ""
+msgstr "Senegal"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:435
 msgid "Serbia"
-msgstr ""
+msgstr "Serbia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:437
 msgid "Singapore"
-msgstr ""
+msgstr "Singapôr"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:439
@@ -15733,47 +15734,47 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:441
 msgid "Saint Helena"
-msgstr ""
+msgstr "Saint Helena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
 msgid "Svalbard and Jan Mayen"
-msgstr ""
+msgstr "Svalbard a Jan Mayen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:445
 msgid "Solomon Islands"
-msgstr ""
+msgstr "Ynysoedd Solomon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
 msgid "Sierra Leone"
-msgstr ""
+msgstr "Sierra Leone"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:449
 msgid "El Salvador"
-msgstr ""
+msgstr "El Salvador"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:451
 msgid "San Marino"
-msgstr ""
+msgstr "San Marino"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:453
 msgid "Somalia"
-msgstr ""
+msgstr "Somalia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:455
 msgid "Saint Pierre and Miquelon"
-msgstr ""
+msgstr "Saint Pierre a Miquelon"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:457
 msgid "South Sudan"
-msgstr ""
+msgstr "De Swdan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:459
@@ -15783,122 +15784,122 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
 msgid "Suriname"
-msgstr ""
+msgstr "Swrinam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:463
 msgid "Slovakia"
-msgstr ""
+msgstr "Slofacia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:465
 msgid "Slovenia"
-msgstr ""
+msgstr "Slofenia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:467
 msgid "Sweden"
-msgstr ""
+msgstr "Sweden"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:469
 msgid "Swaziland"
-msgstr ""
+msgstr "Gwlad Swasi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:472
 msgid "Seychelles"
-msgstr ""
+msgstr "Seychelles"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:474
 msgid "Syria"
-msgstr ""
+msgstr "Syria"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
 msgid "Turks and Caicos Islands"
-msgstr ""
+msgstr "Ynysoedd Turks a Caicos"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
 msgid "Chad"
-msgstr ""
+msgstr "Tsiad"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
 msgid "Togo"
-msgstr ""
+msgstr "Togo"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
 msgid "Thailand"
-msgstr ""
+msgstr "Gwlad Thai"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:484
 msgid "Tajikistan"
-msgstr ""
+msgstr "Tajicistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:486
 msgid "Tokelau"
-msgstr ""
+msgstr "Tokelau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:488
 msgid "Turkmenistan"
-msgstr ""
+msgstr "Tyrcmentistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:490
 msgid "Timor-Leste"
-msgstr ""
+msgstr "Timor-Leste"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:492
 msgid "Tonga"
-msgstr ""
+msgstr "Tonga"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
 msgid "Trinidad and Tobago"
-msgstr ""
+msgstr "Trinidad a Tobago"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:496
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:498
 msgid "Turkey"
-msgstr ""
+msgstr "Twrci"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:500
 msgid "Tuvalu"
-msgstr ""
+msgstr "Tuvalu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:502
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:504
 msgid "Tanzania"
-msgstr ""
+msgstr "Tansanïa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:506
 msgid "Uganda"
-msgstr ""
+msgstr "Uganda"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:508
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukrain"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:510
@@ -15908,17 +15909,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
 msgid "Uruguay"
-msgstr ""
+msgstr "Uruguay"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:514
 msgid "United States"
-msgstr ""
+msgstr "Unol Daleithiau"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:516
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
@@ -15928,17 +15929,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:520
 msgid "Saint Vincent and the Grenadines"
-msgstr ""
+msgstr "Saint Vincent a'r Grenadines"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:522
 msgid "Venezuela"
-msgstr ""
+msgstr "Venezuela"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:524
 msgid "British Virgin Islands"
-msgstr ""
+msgstr "Ynysoedd Virgin Prydeinig"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:526
@@ -15948,17 +15949,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:528
 msgid "Vietnam"
-msgstr ""
+msgstr "Fiet-nam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:530
 msgid "Vanuatu"
-msgstr ""
+msgstr "Vanuatu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:532
 msgid "Wallis and Futuna"
-msgstr ""
+msgstr "Wallis a Futuna"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:534
@@ -15968,27 +15969,27 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:536
 msgid "Samoa"
-msgstr ""
+msgstr "Samoa"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:538
 msgid "Yemen"
-msgstr ""
+msgstr "Yemen"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:540
 msgid "South Africa"
-msgstr ""
+msgstr "De Affrica"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
 msgid "Zambia"
-msgstr ""
+msgstr "Zambia"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:544
 msgid "Zimbabwe"
-msgstr ""
+msgstr "Zimbabwe"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
@@ -16030,7 +16031,7 @@ msgstr ""
 #: app/SurnameTradition.php:91
 msgctxt "Surname tradition"
 msgid "Spanish"
-msgstr ""
+msgstr "Sbaeneg"
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:93
@@ -16040,7 +16041,7 @@ msgstr ""
 #: app/SurnameTradition.php:94
 msgctxt "Surname tradition"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portiwgaleg"
 
 #. I18N: In the Portuguese surname tradition, ...
 #: app/SurnameTradition.php:96
@@ -16050,7 +16051,7 @@ msgstr ""
 #: app/SurnameTradition.php:97
 msgctxt "Surname tradition"
 msgid "Icelandic"
-msgstr ""
+msgstr "Eislandeg"
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:99
@@ -16060,7 +16061,7 @@ msgstr ""
 #: app/SurnameTradition.php:100
 msgctxt "Surname tradition"
 msgid "Polish"
-msgstr ""
+msgstr "Pwyleg"
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:106
@@ -16070,7 +16071,7 @@ msgstr ""
 #: app/SurnameTradition.php:107
 msgctxt "Surname tradition"
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lithwaneg"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:113
@@ -16080,7 +16081,7 @@ msgstr ""
 #: app/SurnameTradition.php:114
 msgctxt "Surname tradition"
 msgid "none"
-msgstr ""
+msgstr "dim"
 
 #: resources/views/admin/analytics-edit.phtml:17
 #: resources/views/admin/control-panel.phtml:521
@@ -16091,7 +16092,7 @@ msgstr ""
 #: resources/views/modules/stories/config.phtml:18
 #: resources/views/modules/stories/edit.phtml:22
 msgid "Modules"
-msgstr ""
+msgstr "Modiwlau"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:40
@@ -16135,7 +16136,7 @@ msgstr ""
 #: resources/views/modules/stories/edit.phtml:71
 #: resources/views/modules/user_blog/edit.phtml:50
 msgid "save"
-msgstr ""
+msgstr "cadw"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:45
@@ -16184,21 +16185,21 @@ msgstr ""
 #: resources/views/message-page.phtml:29
 msgctxt "Email sender"
 msgid "From"
-msgstr ""
+msgstr "Oddiwrth"
 
 #: resources/views/admin/broadcast.phtml:39
 #: resources/views/admin/email-page.phtml:41
 #: resources/views/contact-page.phtml:32 resources/views/message-page.phtml:38
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "At"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
 #: resources/views/contact-page.phtml:59 resources/views/message-page.phtml:48
 #: resources/views/modules/user-messages/user-messages.phtml:70
 msgid "Subject"
-msgstr ""
+msgstr "Pwnc"
 
 #: resources/views/admin/broadcast.phtml:58
 #: resources/views/admin/email-page.phtml:59
@@ -16206,26 +16207,26 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:124
 #: resources/views/contact-page.phtml:68 resources/views/message-page.phtml:57
 msgid "Message"
-msgstr ""
+msgstr "Neges"
 
 #: resources/views/admin/broadcast.phtml:69
 #: resources/views/admin/email-page.phtml:70
 #: resources/views/contact-page.phtml:79 resources/views/message-page.phtml:68
 #: resources/views/modules/user-messages/user-messages.phtml:42
 msgid "Send"
-msgstr ""
+msgstr "Anfon"
 
 #: resources/views/admin/changes-log.phtml:41
 #: resources/views/admin/site-logs.phtml:39
 msgctxt "Start of date range"
 msgid "From"
-msgstr ""
+msgstr "Oddiwrth"
 
 #: resources/views/admin/changes-log.phtml:48
 #: resources/views/admin/site-logs.phtml:46
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "At"
 
 #: resources/views/admin/changes-log.phtml:62
 #: resources/views/admin/changes-log.phtml:136
@@ -16236,7 +16237,7 @@ msgstr ""
 #: resources/views/modules/recent_changes/changes-table.phtml:43
 #: resources/views/modules/todo/research-tasks.phtml:30
 msgid "Record"
-msgstr ""
+msgstr "Recordio"
 
 #: resources/views/admin/changes-log.phtml:71
 msgid "Old data"
@@ -16263,7 +16264,7 @@ msgstr ""
 #: resources/views/modules/media-list/page.phtml:89
 #: resources/views/modules/timeline-chart/page.phtml:44
 msgid "reset"
-msgstr ""
+msgstr "ailosod"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -16272,7 +16273,7 @@ msgstr ""
 #: resources/views/report-setup-page.phtml:83
 #: resources/views/report-setup-page.phtml:96
 msgid "download"
-msgstr ""
+msgstr "llwytho i lawr"
 
 #: resources/views/admin/changes-log.phtml:113
 #: resources/views/admin/site-logs.phtml:105
@@ -16286,14 +16287,14 @@ msgstr ""
 #: resources/views/admin/users-cleanup.phtml:78
 #: resources/views/admin/webtrees1-thumbnails-form.phtml:33
 msgid "delete"
-msgstr ""
+msgstr "dileu"
 
 #: resources/views/admin/changes-log.phtml:134
 #: resources/views/admin/site-logs.phtml:122
 #: resources/views/edit/edit-fact.phtml:115
 #: resources/views/edit/edit-record.phtml:34
 msgid "Timestamp"
-msgstr ""
+msgstr "Stamp amser"
 
 #: resources/views/admin/clean-data.phtml:20
 #, php-format
@@ -16303,13 +16304,13 @@ msgstr ""
 #: resources/views/admin/components.phtml:39
 #: resources/views/admin/modules.phtml:66
 msgid "Module"
-msgstr ""
+msgstr "Modiwl"
 
 #: resources/views/admin/components.phtml:40
 #: resources/views/admin/components.phtml:80
 #: resources/views/admin/modules.phtml:69
 msgid "Enabled"
-msgstr ""
+msgstr "Galluogwyd"
 
 #: resources/views/admin/components.phtml:42
 #: resources/views/admin/components.phtml:99
@@ -16321,13 +16322,13 @@ msgstr ""
 #: resources/views/admin/components.phtml:140
 #: resources/views/modules/faq/config.phtml:56
 msgid "Move up"
-msgstr ""
+msgstr "Symud i fyny"
 
 #: resources/views/admin/components.phtml:46
 #: resources/views/admin/components.phtml:146
 #: resources/views/modules/faq/config.phtml:57
 msgid "Move down"
-msgstr ""
+msgstr "Symud i lawr"
 
 #: resources/views/admin/components.phtml:133
 #: resources/views/family-page-menu.phtml:22
@@ -16339,13 +16340,13 @@ msgstr ""
 #: resources/views/source-page-menu.phtml:18
 #: resources/views/submitter-page-menu.phtml:17
 msgid "edit"
-msgstr ""
+msgstr "golygu"
 
 #: resources/views/admin/control-panel.phtml:139
 #: resources/views/admin/control-panel.phtml:582
 #: resources/views/admin/trees-preferences.phtml:198
 msgid "Website"
-msgstr ""
+msgstr "Gwefan"
 
 #. I18N: %s is a URL/link to the project website
 #: resources/views/admin/control-panel.phtml:156
@@ -16366,19 +16367,19 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.phtml:146
 #: resources/views/modules/html/template-statistics.phtml:60
 msgid "Users"
-msgstr ""
+msgstr "Defnyddwyr"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Administrators"
-msgstr ""
+msgstr "Gweinyddwyr"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Managers"
-msgstr ""
+msgstr "Rheolwyr"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Moderators"
-msgstr ""
+msgstr "Cymedrolwyr"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Not verified by the user"
@@ -16410,7 +16411,7 @@ msgstr ""
 
 #: resources/views/admin/data-fix-page.phtml:47
 msgid "Update all"
-msgstr ""
+msgstr "Diweddaru'r cyfan"
 
 #: resources/views/admin/data-fix-page.phtml:70
 #: resources/views/admin/data-fix-select.phtml:29
@@ -16442,7 +16443,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:119
 #: resources/views/setup/step-5-administrator.phtml:104
 msgid "next"
-msgstr ""
+msgstr "nesaf"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:17
 msgid "Move the media object?"
@@ -16455,7 +16456,7 @@ msgstr ""
 #: resources/views/admin/location-edit.phtml:52
 #: resources/views/admin/location-edit.phtml:63
 msgid "degrees"
-msgstr ""
+msgstr "graddau"
 
 #: resources/views/admin/location-edit.phtml:130
 msgid "Reset to initial map state"
@@ -16467,7 +16468,7 @@ msgstr ""
 #: resources/views/modules/places/tab.phtml:78
 #: resources/views/modules/timeline-chart/page.phtml:52
 msgid "Zoom in"
-msgstr ""
+msgstr "Chwyddo i fewn"
 
 #: resources/views/admin/location-edit.phtml:146
 #: resources/views/modules/pedigree-map/chart.phtml:83
@@ -16475,11 +16476,11 @@ msgstr ""
 #: resources/views/modules/places/tab.phtml:79
 #: resources/views/modules/timeline-chart/page.phtml:55
 msgid "Zoom out"
-msgstr ""
+msgstr "Chwyddo allan"
 
 #: resources/views/admin/location-edit.phtml:156
 msgid "Nothing found."
-msgstr ""
+msgstr "Heb ganfod dim."
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -16487,7 +16488,7 @@ msgstr ""
 
 #: resources/views/admin/locations.phtml:46
 msgid "Flag"
-msgstr ""
+msgstr "Baner"
 
 #: resources/views/admin/locations.phtml:109
 #, php-format
@@ -16502,7 +16503,7 @@ msgstr[5] ""
 
 #: resources/views/admin/locations.phtml:128
 msgid "Remove this location?"
-msgstr ""
+msgstr "Tynnu'r lleoliad hwn?"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:144
@@ -16542,7 +16543,7 @@ msgstr ""
 #: resources/views/admin/map-import-form.phtml:74
 #: resources/views/admin/trees.phtml:287
 msgid "Import"
-msgstr ""
+msgstr "Mewnforio"
 
 #: resources/views/admin/map-import-form.phtml:77
 msgid "Only update existing records"
@@ -16589,7 +16590,7 @@ msgstr ""
 #: resources/views/modals/create-media-from-file.phtml:27
 #: resources/views/modals/media-file-fields.phtml:20
 msgid "Media file"
-msgstr ""
+msgstr "Ffeil cyfrwng"
 
 #: resources/views/admin/media-upload.phtml:35
 msgid "Media file to upload"
@@ -16611,7 +16612,7 @@ msgstr ""
 #. I18N: A button label.
 #: resources/views/admin/media-upload.phtml:74
 msgid "upload"
-msgstr ""
+msgstr "llwytho i fyny"
 
 #: resources/views/admin/media.phtml:31
 #: resources/views/admin/trees-preferences.phtml:264
@@ -16663,7 +16664,7 @@ msgstr ""
 
 #: resources/views/admin/merge-records-step-1.phtml:64
 msgid "First record"
-msgstr ""
+msgstr "Cofnod cyntaf"
 
 #: resources/views/admin/merge-records-step-1.phtml:98
 msgid "Second record"
@@ -16681,7 +16682,7 @@ msgstr ""
 #: resources/views/admin/merge-records-step-2.phtml:95
 #: resources/views/admin/merge-records-step-2.phtml:141
 msgid "Select"
-msgstr ""
+msgstr "Dewis"
 
 #: resources/views/admin/merge-records-step-2.phtml:51
 #: resources/views/admin/merge-records-step-2.phtml:98
@@ -16692,7 +16693,7 @@ msgstr ""
 #: resources/views/note-page.phtml:60 resources/views/repository-page.phtml:52
 #: resources/views/source-page.phtml:59 resources/views/submitter-page.phtml:52
 msgid "Details"
-msgstr ""
+msgstr "Manylion"
 
 #: resources/views/admin/merge-records-step-2.phtml:75
 #: resources/views/admin/merge-records-step-2.phtml:122
@@ -16723,32 +16724,32 @@ msgstr ""
 #: resources/views/admin/modules.phtml:161
 #: resources/views/admin/modules.phtml:164
 msgid "Menu"
-msgstr ""
+msgstr "Dewislen"
 
 #: resources/views/admin/modules.phtml:169
 #: resources/views/admin/modules.phtml:172
 msgid "Tab"
-msgstr ""
+msgstr "Tab"
 
 #: resources/views/admin/modules.phtml:177
 #: resources/views/admin/modules.phtml:180
 msgid "Sidebar"
-msgstr ""
+msgstr "Bar Ochr"
 
 #: resources/views/admin/modules.phtml:208
 #: resources/views/admin/modules.phtml:211
 msgid "Chart"
-msgstr ""
+msgstr "Siart"
 
 #: resources/views/admin/modules.phtml:216
 #: resources/views/admin/modules.phtml:219
 msgid "List"
-msgstr ""
+msgstr "Rhestr"
 
 #: resources/views/admin/modules.phtml:232
 #: resources/views/admin/modules.phtml:235
 msgid "Footer"
-msgstr ""
+msgstr "Troedyn"
 
 #: resources/views/admin/server-information.phtml:18
 msgid "PHP information"
@@ -16757,7 +16758,7 @@ msgstr ""
 #: resources/views/admin/site-logs.phtml:60
 #: resources/views/admin/site-logs.phtml:125
 msgid "IP address"
-msgstr ""
+msgstr "Cyfeiriad IP"
 
 #: resources/views/admin/site-mail.phtml:34
 #: resources/views/modules/fix-search-and-replace/options.phtml:45
@@ -16794,7 +16795,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-pgsql.phtml:47
 #: resources/views/setup/step-4-database-sqlsvr.phtml:47
 msgid "Server name"
-msgstr ""
+msgstr "Enw gweinydd"
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:85
@@ -16839,7 +16840,7 @@ msgstr ""
 #: resources/views/register-page.phtml:60
 #: resources/views/setup/step-5-administrator.phtml:66
 msgid "Username"
-msgstr ""
+msgstr "Enw defnyddiwr"
 
 #. I18N: Help text for the "Username" site configuration setting
 #: resources/views/admin/site-mail.phtml:129
@@ -16857,7 +16858,7 @@ msgstr ""
 #: resources/views/register-page.phtml:72
 #: resources/views/setup/step-5-administrator.phtml:78
 msgid "Password"
-msgstr ""
+msgstr "Cyfrinair"
 
 #. I18N: Help text for the "Password" site configuration setting
 #: resources/views/admin/site-mail.phtml:143
@@ -16867,7 +16868,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:151
 msgid "Secure connection"
-msgstr ""
+msgstr "Cysylltiad diogel"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:157
@@ -16899,11 +16900,11 @@ msgstr ""
 
 #: resources/views/admin/site-mail.phtml:198
 msgid "Selector"
-msgstr ""
+msgstr "Dewisydd"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Private key"
-msgstr ""
+msgstr "Allwedd Breifat"
 
 #: resources/views/admin/site-mail.phtml:221
 msgid "Send a test email using these settings"
@@ -16912,7 +16913,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
 msgid "Data folder"
-msgstr ""
+msgstr "Ffolder data"
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -16937,7 +16938,7 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:136
 #: resources/views/edit-account-page.phtml:112
 msgid "Time zone"
-msgstr ""
+msgstr "Cylchfa amser"
 
 #: resources/views/admin/site-preferences.phtml:55
 #: resources/views/admin/users-edit.phtml:141
@@ -16948,7 +16949,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:64
 msgid "Default theme"
-msgstr ""
+msgstr "Thema ragosodedig"
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
@@ -17045,7 +17046,7 @@ msgstr ""
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:58
 msgid "create"
-msgstr ""
+msgstr "creu"
 
 #: resources/views/admin/trees-create.phtml:61
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
@@ -17053,7 +17054,7 @@ msgstr ""
 
 #: resources/views/admin/trees-duplicates.phtml:39
 msgid "Merge"
-msgstr ""
+msgstr "Cyfuno"
 
 #: resources/views/admin/trees-duplicates.phtml:46
 msgid "No duplicates have been found."
@@ -17169,7 +17170,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:48
 #: resources/views/admin/trees-preferences.phtml:627
 msgid "General"
-msgstr ""
+msgstr "Cyffredinol"
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml:102
@@ -17298,7 +17299,7 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:651
 #: resources/views/admin/trees-preferences.phtml:666
 msgid "hide"
-msgstr ""
+msgstr "cuddio"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
@@ -17310,7 +17311,7 @@ msgstr ""
 #: resources/views/modules/faq/config.phtml:38
 #: resources/views/modules/stories/config.phtml:31
 msgid "show"
-msgstr ""
+msgstr "dangos"
 
 #: resources/views/admin/trees-preferences.phtml:305
 msgid "Show thumbnail images in charts and family groups."
@@ -17437,7 +17438,7 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:14
 #: resources/views/modules/media-list/pagination.phtml:25
 msgid "first"
-msgstr ""
+msgstr "cyntaf"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:588
@@ -17445,17 +17446,17 @@ msgstr ""
 #: resources/views/lists/datatables-attributes.phtml:16
 #: resources/views/modules/media-list/pagination.phtml:53
 msgid "last"
-msgstr ""
+msgstr "olaf"
 
 #: resources/views/admin/trees-preferences.phtml:597
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "first"
-msgstr ""
+msgstr "cyntaf"
 
 #: resources/views/admin/trees-preferences.phtml:597
 msgctxt "Show the [first/last] [N] parts of a place name."
 msgid "last"
-msgstr ""
+msgstr "olaf"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:596
@@ -17839,7 +17840,7 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:179
 #: resources/views/admin/trees-privacy.phtml:265
 msgid "All records"
-msgstr ""
+msgstr "Pob cofnod"
 
 #: resources/views/admin/trees-privacy.phtml:232
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
@@ -17909,7 +17910,7 @@ msgstr ""
 #: resources/views/admin/trees.phtml:71
 #: resources/views/lists/datatables-attributes.phtml:31
 msgid "Calculating…"
-msgstr ""
+msgstr "Cyfrifo…"
 
 #: resources/views/admin/trees.phtml:126
 msgid "Default family tree"
@@ -17917,7 +17918,7 @@ msgstr ""
 
 #: resources/views/admin/trees.phtml:129 resources/views/admin/trees.phtml:136
 msgid "Set as default"
-msgstr ""
+msgstr "Gosod fel rhagosodiad"
 
 #. I18N: Individuals, sources, dates, places, etc.
 #: resources/views/admin/trees.phtml:158
@@ -17934,7 +17935,7 @@ msgstr ""
 
 #: resources/views/admin/trees.phtml:279
 msgid "Export"
-msgstr ""
+msgstr "Allforio"
 
 #: resources/views/admin/upgrade/steps.phtml:19
 msgid "It can take several minutes to download and install the upgrade. Be patient."
@@ -17968,7 +17969,7 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/register-page.phtml:36
 msgid "Real name"
-msgstr ""
+msgstr "Enw go iawn"
 
 #: resources/views/admin/users-create.phtml:37
 #: resources/views/admin/users-edit.phtml:47
@@ -18021,7 +18022,7 @@ msgstr ""
 
 #: resources/views/admin/users-edit.phtml:101
 msgid "Email verified"
-msgstr ""
+msgstr "E-bost wedi'i wirio"
 
 #: resources/views/admin/users-edit.phtml:105
 msgid "Approved by administrator"
@@ -18086,7 +18087,7 @@ msgstr ""
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
 msgid "Administrator"
-msgstr ""
+msgstr "Gweinyddwr"
 
 #: resources/views/admin/users-edit.phtml:230
 msgid "Access to family trees"
@@ -18147,11 +18148,11 @@ msgstr ""
 
 #: resources/views/admin/users.phtml:34
 msgid "Verified"
-msgstr ""
+msgstr "Gwiriwyd"
 
 #: resources/views/admin/users.phtml:35
 msgid "Approved"
-msgstr ""
+msgstr "Cymeradwywyd"
 
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
@@ -18172,11 +18173,11 @@ msgstr ""
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:42
 msgid "Comparison"
-msgstr ""
+msgstr "Cymhariaeth"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:43
 msgid "Action"
-msgstr ""
+msgstr "Symudiad"
 
 #. I18N: A button label.
 #: resources/views/branches-page.phtml:53
@@ -18208,12 +18209,12 @@ msgstr[5] ""
 
 #: resources/views/calendar-page.phtml:105
 msgid "Show"
-msgstr ""
+msgstr "Dangos"
 
 #: resources/views/calendar-page.phtml:119
 #: resources/views/lists/datatables-attributes.phtml:32
 msgid "Filter"
-msgstr ""
+msgstr "Hidlo"
 
 #: resources/views/calendar-page.phtml:121
 #: resources/views/calendar-page.phtml:133
@@ -18260,7 +18261,7 @@ msgstr ""
 #: resources/views/chart-box.phtml:112 resources/views/chart-box.phtml:124
 #: resources/views/chart-box.phtml:125
 msgid "Links"
-msgstr ""
+msgstr "Cysylltiadau"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -18271,17 +18272,17 @@ msgstr ""
 #: resources/views/modals/header.phtml:15
 #: resources/views/modules/privacy-policy/footer.phtml:23
 msgid "close"
-msgstr ""
+msgstr "cau"
 
 #: resources/views/contact-page.phtml:42
 #: resources/views/setup/step-5-administrator.phtml:54
 msgid "Your name"
-msgstr ""
+msgstr "Eich enw"
 
 #: resources/views/edit-account-page.phtml:65
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr ""
+msgstr "Anhysbys"
 
 #: resources/views/edit-account-page.phtml:69
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
@@ -18335,7 +18336,7 @@ msgstr ""
 #: resources/views/individual-name.phtml:86
 #: resources/views/individual-name.phtml:88
 msgid "Copy"
-msgstr ""
+msgstr "Copïo"
 
 #: resources/views/edit/icon-fact-delete.phtml:13
 #: resources/views/individual-name.phtml:92
@@ -18346,7 +18347,7 @@ msgstr ""
 #: resources/views/edit/input-addon-calendar.phtml:13
 #: resources/views/edit/input-addon-calendar.phtml:16
 msgid "Select a date"
-msgstr ""
+msgstr "Dewis dyddiad"
 
 #: resources/views/edit/input-addon-keyboard.phtml:13
 #: resources/views/edit/input-addon-keyboard.phtml:16
@@ -18491,7 +18492,7 @@ msgstr ""
 #: resources/views/modules/census-assistant.phtml:84
 #: resources/views/register-page.phtml:85
 msgid "Comments"
-msgstr ""
+msgstr "Nodiadau"
 
 #: resources/views/emails/register-notify-html.phtml:39
 #: resources/views/emails/register-notify-text.phtml:30
@@ -18680,7 +18681,7 @@ msgstr ""
 #: resources/views/forgot-password-page.phtml:22
 #: resources/views/modules/login_block/sign-in.phtml:58
 msgid "Username or email address"
-msgstr ""
+msgstr "Enw defnyddiwr neu gyfeiriad e-bost"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/gedcom-record-page.phtml:33
@@ -18725,7 +18726,7 @@ msgstr ""
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
 #: resources/views/help/date.phtml:110
 msgid "Shortcut"
-msgstr ""
+msgstr "Llwybr Byr"
 
 #: resources/views/help/date.phtml:59
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
@@ -18894,25 +18895,25 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlsvr.phtml:123
 #: resources/views/setup/step-5-administrator.phtml:108
 msgid "previous"
-msgstr ""
+msgstr "blaenorol"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml:47
 #: resources/views/layouts/default.phtml:78
 msgid "Skip to content"
-msgstr ""
+msgstr "Mynd i'r cynnwys"
 
 #: resources/views/layouts/default.phtml:165
 #: resources/views/modules/random_media/slide-show.phtml:24
 #: resources/views/modules/random_media/slide-show.phtml:26
 msgid "Play"
-msgstr ""
+msgstr "Chwarae"
 
 #: resources/views/layouts/default.phtml:166
 #: resources/views/modules/random_media/slide-show.phtml:28
 #: resources/views/modules/random_media/slide-show.phtml:30
 msgid "Stop"
-msgstr ""
+msgstr "Atal"
 
 #: resources/views/layouts/error.phtml:17
 #: resources/views/layouts/error.phtml:34
@@ -18944,7 +18945,7 @@ msgstr ""
 #: resources/views/lists/individuals-table.phtml:248
 #: resources/views/modules/yahrzeit/table.phtml:29
 msgid "Anniversary"
-msgstr ""
+msgstr "Dathliad"
 
 #: resources/views/lists/datatables-attributes.phtml:22
 #: resources/views/lists/datatables-attributes.phtml:33
@@ -18973,7 +18974,7 @@ msgstr ""
 
 #: resources/views/lists/datatables-attributes.phtml:30
 msgid "Loading…"
-msgstr ""
+msgstr "Llwytho…"
 
 #: resources/views/lists/families-table.phtml:161
 msgid "Both alive"
@@ -19073,7 +19074,7 @@ msgstr ""
 #: resources/views/lists/given-names-table.phtml:26
 #: resources/views/search-phonetic-page.phtml:32
 msgid "Given name"
-msgstr ""
+msgstr "Enw"
 
 #: resources/views/lists/individual-table-parents.phtml:19
 #, php-format
@@ -19159,12 +19160,12 @@ msgstr ""
 #: resources/views/login-page.phtml:57
 #: resources/views/modules/login_block/sign-in.phtml:38
 msgid "sign in"
-msgstr ""
+msgstr "mewngofnodi"
 
 #: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:42
 msgid "Forgot password?"
-msgstr ""
+msgstr "Anghofio cyfrinair?"
 
 #: resources/views/media-page-menu.phtml:27
 #: resources/views/modals/link-media-to-individual.phtml:18
@@ -19210,7 +19211,7 @@ msgstr ""
 
 #: resources/views/media-page.phtml:159
 msgid "Download file"
-msgstr ""
+msgstr "Llwytho Ffeil i Lawr"
 
 #: resources/views/media-page.phtml:200
 msgid "Add a restriction"
@@ -19224,7 +19225,7 @@ msgstr ""
 #: resources/views/modals/media-file-fields.phtml:63
 #: resources/views/modules/media-list/page.phtml:45
 msgid "Folder"
-msgstr ""
+msgstr "Ffolder"
 
 #: resources/views/modals/media-file-fields.phtml:72
 msgid "Same as uploaded file"
@@ -19255,7 +19256,7 @@ msgstr ""
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "E-bost"
 
 #: resources/views/modules/ancestors-chart/page.phtml:39
 #: resources/views/modules/descendancy_chart/page.phtml:39
@@ -19277,7 +19278,7 @@ msgstr ""
 #: resources/views/modules/hourglass-chart/page.phtml:48
 #: resources/views/modules/pedigree-chart/page.phtml:48
 msgid "Layout"
-msgstr ""
+msgstr "Gosodiad"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
@@ -19300,7 +19301,7 @@ msgstr ""
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
-msgstr ""
+msgstr "Dyfyniad"
 
 #: resources/views/modules/census-assistant.phtml:111
 msgid "Census transcript"
@@ -19362,7 +19363,7 @@ msgstr ""
 
 #: resources/views/modules/fanchart/page.phtml:60
 msgid "Zoom"
-msgstr ""
+msgstr "Chwyddo"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:26
@@ -19390,16 +19391,16 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "Cyfeiriad trefnu"
 
 #: resources/views/modules/faq/config.phtml:55
 #: resources/views/modules/faq/edit.phtml:31
 msgid "Question"
-msgstr ""
+msgstr "Cwestiwn"
 
 #: resources/views/modules/faq/edit.phtml:42
 msgid "Answer"
-msgstr ""
+msgstr "Ateb"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.phtml:53
@@ -19441,7 +19442,7 @@ msgstr ""
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
-msgstr ""
+msgstr "Amnewid"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:18
 msgid "Search text/pattern"
@@ -19472,13 +19473,13 @@ msgstr ""
 #: resources/views/search-general-page.phtml:48
 #: resources/views/statistics/other/total-records.phtml:12
 msgid "Records"
-msgstr ""
+msgstr "Cofnodion"
 
 #: resources/views/modules/gedcom_news/edit.phtml:37
 #: resources/views/modules/html/config.phtml:39
 #: resources/views/modules/user_blog/edit.phtml:37
 msgid "Content"
-msgstr ""
+msgstr "Cynnwys"
 
 #: resources/views/modules/gedcom_news/list.phtml:18
 #: resources/views/modules/user_blog/list.phtml:18
@@ -19577,7 +19578,7 @@ msgstr ""
 
 #: resources/views/modules/html/config.phtml:27
 msgid "Templates"
-msgstr ""
+msgstr "Templedi"
 
 #: resources/views/modules/html/config.phtml:32
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -19693,7 +19694,7 @@ msgstr ""
 #: resources/views/search-general-page.phtml:148
 #: resources/views/search-phonetic-page.phtml:129
 msgid "No results found."
-msgstr ""
+msgstr "Heb ganfod unrhyw ganlyniadau."
 
 #: resources/views/modules/place-hierarchy/list.phtml:14
 msgid "Place list"
@@ -19714,7 +19715,7 @@ msgstr ""
 
 #: resources/views/modules/privacy-policy/page.phtml:18
 msgid "Personal data"
-msgstr ""
+msgstr "Data personol"
 
 #: resources/views/modules/privacy-policy/page.phtml:22
 msgid "This website processes personal data for the purpose of historical and genealogical research."
@@ -19726,7 +19727,7 @@ msgstr ""
 
 #: resources/views/modules/privacy-policy/page.phtml:29
 msgid "Cookies"
-msgstr ""
+msgstr "Cwcis"
 
 #: resources/views/modules/privacy-policy/page.phtml:33
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
@@ -19918,11 +19919,11 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:79
 msgid "Categories"
-msgstr ""
+msgstr "Categorïau"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "gender"
-msgstr ""
+msgstr "rhyw"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -19947,7 +19948,7 @@ msgstr[5] ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:122
 msgid "Results"
-msgstr ""
+msgstr "Canlyniadau"
 
 #: resources/views/modules/statistics-chart/custom.phtml:126
 msgid "numbers"
@@ -19974,7 +19975,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:182
 msgid "Europe"
-msgstr ""
+msgstr "Ewrop"
 
 #: resources/views/modules/statistics-chart/custom.phtml:185
 msgid "Northern America"
@@ -19982,11 +19983,11 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:188
 msgid "South America"
-msgstr ""
+msgstr "De America"
 
 #: resources/views/modules/statistics-chart/custom.phtml:191
 msgid "Asia"
-msgstr ""
+msgstr "Asia"
 
 #: resources/views/modules/statistics-chart/custom.phtml:194
 msgid "Middle East"
@@ -19994,7 +19995,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/custom.phtml:197
 msgid "Africa"
-msgstr ""
+msgstr "Affrica"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
@@ -20008,28 +20009,28 @@ msgstr ""
 
 #: resources/views/modules/stories/edit.phtml:51
 msgid "Story"
-msgstr ""
+msgstr "Stori"
 
 #: resources/views/modules/timeline-chart/chart.phtml:139
 #: resources/views/modules/timeline-chart/chart.phtml:141
 #: resources/views/modules/timeline-chart/chart.phtml:143
 msgid "Month:"
-msgstr ""
+msgstr "Mis:"
 
 #: resources/views/modules/timeline-chart/chart.phtml:139
 #: resources/views/modules/timeline-chart/chart.phtml:141
 #: resources/views/modules/timeline-chart/chart.phtml:143
 msgid "Day:"
-msgstr ""
+msgstr "Diwrnod:"
 
 #: resources/views/modules/timeline-chart/chart.phtml:141
 msgid "years"
-msgstr ""
+msgstr "blynedd"
 
 #: resources/views/modules/timeline-chart/chart.phtml:143
 #: resources/views/modules/timeline-chart/chart.phtml:408
 msgid "Year:"
-msgstr ""
+msgstr "Blwyddyn:"
 
 #: resources/views/modules/timeline-chart/page.phtml:74
 msgid "Remove individual"
@@ -20081,7 +20082,7 @@ msgstr ""
 #. I18N: ... to show in a list
 #: resources/views/modules/top10_pageviews/config.phtml:13
 msgid "Number of pages"
-msgstr ""
+msgstr "Nifer o dudalennau"
 
 #: resources/views/modules/user-messages/user-messages.phtml:51
 #: resources/views/modules/user-messages/user-messages.phtml:136
@@ -20090,7 +20091,7 @@ msgstr ""
 
 #: resources/views/modules/user-messages/user-messages.phtml:71
 msgid "Date sent"
-msgstr ""
+msgstr "Dyddiad anfon"
 
 #. I18N: When replying to an email, the subject becomes “RE: subject”
 #: resources/views/modules/user-messages/user-messages.phtml:116
@@ -20101,7 +20102,7 @@ msgstr ""
 #: resources/views/modules/user-messages/user-messages.phtml:131
 #: resources/views/modules/user-messages/user-messages.phtml:132
 msgid "Reply"
-msgstr ""
+msgstr "Ateb"
 
 #: resources/views/modules/user-messages/user-messages.phtml:147
 msgid "Delete selected messages"
@@ -20134,12 +20135,12 @@ msgstr ""
 #: resources/views/pending-changes-page.phtml:47
 #: resources/views/pending-changes-page.phtml:59
 msgid "Accept"
-msgstr ""
+msgstr "Derbyn"
 
 #: resources/views/pending-changes-page.phtml:51
 #: resources/views/pending-changes-page.phtml:89
 msgid "Reject"
-msgstr ""
+msgstr "Gwrthod"
 
 #: resources/views/pending-changes-page.phtml:101
 msgid "Accept all changes"
@@ -20208,7 +20209,7 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:240
 #: resources/xml/reports/relative_ext_report.xml:71
 msgid "Father"
-msgstr ""
+msgstr "Tad"
 
 #: resources/views/search-advanced-page.phtml:74
 #: resources/xml/reports/bdm_report.xml:120
@@ -20218,7 +20219,7 @@ msgstr ""
 #: resources/xml/reports/individual_report.xml:276
 #: resources/xml/reports/relative_ext_report.xml:72
 msgid "Mother"
-msgstr ""
+msgstr "Mam"
 
 #: resources/views/search-general-page.phtml:36
 #: resources/views/search-replace-page.phtml:26
@@ -20229,13 +20230,13 @@ msgstr ""
 #: resources/views/search-general-page.phtml:118
 #: resources/views/search-phonetic-page.phtml:105
 msgid "select all"
-msgstr ""
+msgstr "dewis y cyfan"
 
 #. I18N: select none (of the family trees)
 #: resources/views/search-general-page.phtml:122
 #: resources/views/search-phonetic-page.phtml:106
 msgid "select none"
-msgstr ""
+msgstr "dewis dim"
 
 #: resources/views/search-general-page.phtml:125
 #: resources/views/search-phonetic-page.phtml:108
@@ -20248,7 +20249,7 @@ msgstr ""
 
 #: resources/views/search-replace-page.phtml:35
 msgid "Replace with"
-msgstr ""
+msgstr "Amnewid gyda"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -20259,7 +20260,7 @@ msgstr ""
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Names"
-msgstr ""
+msgstr "Enwau"
 
 #. I18N: A button label.
 #: resources/views/search-replace-page.phtml:53
@@ -20354,7 +20355,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-sqlite.phtml:76
 #: resources/views/setup/step-4-database-sqlsvr.phtml:104
 msgid "Table prefix"
-msgstr ""
+msgstr "Rhagddodiad tabl"
 
 #: resources/views/setup/step-4-database-mysql.phtml:124
 #: resources/views/setup/step-4-database-pgsql.phtml:109
@@ -20631,7 +20632,7 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr ""
+msgstr "Dangos nodiadau"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
@@ -20683,7 +20684,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -20703,7 +20704,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr ""
+msgstr "Llythyr"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -20722,7 +20723,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Tabloid"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -20820,7 +20821,7 @@ msgstr ""
 #: resources/xml/reports/pedigree_report.xml:10
 #: resources/xml/reports/relative_ext_report.xml:10
 msgid "Font"
-msgstr ""
+msgstr "Ffont"
 
 #: resources/xml/reports/ahnentafel_report.xml:55
 msgid "Ancestors of "
@@ -20842,7 +20843,7 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:38
 #: resources/xml/reports/relative_ext_report.xml:51
 msgid "Page"
-msgstr ""
+msgstr "Tudalen"
 
 #: resources/xml/reports/ahnentafel_report.xml:56
 #: resources/xml/reports/bdm_report.xml:42
@@ -20858,7 +20859,7 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:38
 #: resources/xml/reports/relative_ext_report.xml:51
 msgid "of"
-msgstr ""
+msgstr "o"
 
 #: resources/xml/reports/ahnentafel_report.xml:78
 #: resources/xml/reports/descendancy_report.xml:55
@@ -21021,11 +21022,11 @@ msgstr ""
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Orientation"
-msgstr ""
+msgstr "Cyfeiriadaeth"
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
-msgstr ""
+msgstr "Gwahaniaethau"
 
 #: resources/xml/reports/change_report.xml:87
 msgid "Total pending changes: "
@@ -21154,12 +21155,12 @@ msgstr ""
 #: resources/xml/reports/individual_ext_report.xml:327
 #: resources/xml/reports/individual_report.xml:316
 msgid "Brother"
-msgstr ""
+msgstr "Brawd"
 
 #: resources/xml/reports/individual_ext_report.xml:363
 #: resources/xml/reports/individual_report.xml:352
 msgid "Sister"
-msgstr ""
+msgstr "Chwaer"
 
 #: resources/xml/reports/individual_ext_report.xml:443
 #: resources/xml/reports/individual_report.xml:486
