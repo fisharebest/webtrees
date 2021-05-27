@@ -13542,7 +13542,7 @@ msgstr "Nogle slægtsprogrammer opretter GEDCOM filer som indeholder medie filna
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
 
 #. I18N: Help text for the “Hit counters” configuration setting

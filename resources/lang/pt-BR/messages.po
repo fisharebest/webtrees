@@ -13542,7 +13542,7 @@ msgstr "Alguns programas de computador de genealogia criam arquivos GEDCOM que c
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
 "Alguns programas de genealogia armazenam todos os nomes em um único registro "
 "de nome, usando tags customizadas como _MARNM e _AKA. Uma alternativa é "

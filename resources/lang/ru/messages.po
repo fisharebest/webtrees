@@ -13581,7 +13581,7 @@ msgstr "Некоторое генеалогическое программное
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
 "Некоторые генеалогические программы хранят все имена в одной записи  с "
 "использованием настраиваемых тегов, таких как _MARNM и _AKA. Альтернативой "

@@ -13538,7 +13538,7 @@ msgstr "Bazı şecere yazılımları, tam yollara sahip medya dosya adlarını i
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
-msgid "Some genelealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
+msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr ""
 "Bazı şecere uygulamaları, _MARNM ve _AKA gibi özel etiketler kullanarak tüm "
 "adları tek bir ad kaydında saklar. Alternatif olarak her isim için yeni bir "
