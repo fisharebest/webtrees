@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-26 17:15+0000\nLast-Translator: Jonathan Jaubart <dev@jaubart.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-05-27 11:11+0000\nLast-Translator: Jonathan Jaubart <dev@jaubart.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -5454,7 +5454,7 @@ msgstr "République dominicaine"
 #: app/Module/ClippingsCartModule.php:256
 #: resources/views/modules/share-anniversary/share.phtml:25
 msgid "Download"
-msgstr "Télécharger (Download)"
+msgstr "Télécharger"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:123
 #, php-format
