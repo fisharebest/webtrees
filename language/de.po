@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-03-27 16:00+0000\n"
+"PO-Revision-Date: 2021-06-01 11:33+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -746,12 +746,12 @@ msgstr "Ein Diagramm der Vorfahren und Nachkommen einer Person als Familienbuch.
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Eine kompakte Ahnentafel der Vorfahren einer Person."
+msgstr "Ein kompaktes Diagramm der Vorfahren einer Person."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Ein Diagramm der Vorfahren einer Person als Baum angeordnet."
+msgstr "Ein Baumdiagramm der Vorfahren einer Person."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
@@ -902,13 +902,13 @@ msgstr "Ein zukünftiger Benutzer hat sich für webtrees auf %s registriert."
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Ein als Baum gestalteter Bericht über Vorfahren einer Person."
+msgstr "Ein als Baum gestalteter Bericht der Vorfahren einer Person."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Ein als Erzählung aufbereiteter Bericht über einen einzelnen Vorfahren."
+msgstr "Ein Bericht im Erzählstil der Vorfahren einer Person."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
@@ -936,7 +936,9 @@ msgstr "Ein Bericht über Familienmitglieder und ihre Detaildaten."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Ein Bericht Bericht über Personen, die zu einem bestimmten Zeitpunkt oder an einem bestimmten Ort gestorben sind."
+msgstr ""
+"Ein Bericht über Personen, die zu einem bestimmten Zeitpunkt oder an einem "
+"bestimmten Ort gestorben sind."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
@@ -964,7 +966,7 @@ msgstr "Ein Bericht über Personen, die zu einem bestimmten Zeitpunkt oder an ei
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Bericht über neueste und ausstehende Änderungen."
+msgstr "Ein Bericht über aktuelle und ausstehende Änderungen."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
@@ -1012,7 +1014,9 @@ msgstr "Eine Seitenleiste zur Anzeige einer alphabetischen Liste aller Personen 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "Eine Seitenleiste zum Anzeigen der engsten Familien und Verwandten einer Person."
+msgstr ""
+"Eine Seitenleiste, die die engsten Familien und Verwandten einer Person "
+"zeigt."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
@@ -1022,17 +1026,17 @@ msgstr "Eine Seitenleiste mit nicht genealogischen Informationen einer Person."
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Eine Seitenleiste, die die Nachkommen einer Person anzeigt."
+msgstr "Eine Seitenleiste, die die Nachkommen einer Person zeigt."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr "Ein Reiter zur Anzeige von nahen Verwandten einer Person."
+msgstr "Ein Reiter, er die nahen Verwandten einer Person zeigt."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr "Ein Reiter zur Anzeige der Tatsachen und Ereignisse einer Person."
+msgstr "Ein Reiter, der Tatsachen und Ereignisse einer Person zeigt."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
@@ -1042,7 +1046,7 @@ msgstr "Ein Reiter, der die mit einer Person verknüpften Medienobjekte zeigt."
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr "Ein Reiter zum Anzeigen von Notizen zu einer Person."
+msgstr "Ein Reiter, der Notizen zu einer Person zeigt."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
@@ -1686,11 +1690,11 @@ msgstr "Erweiterte Einstellungen für Tatsachen"
 
 #: admin_trees_config.php:2032
 msgid "Advanced name facts"
-msgstr "Erweiterte Namensfakten"
+msgstr "Erweiterte Namentatsachen"
 
 #: admin_trees_config.php:2061
 msgid "Advanced place name facts"
-msgstr "Erweiterte Ortsnamenfakten"
+msgstr "Erweiterte Ortsnamentatsachen"
 
 #: app/Controller/AdvancedSearchController.php:45
 #: app/Theme/AbstractTheme.php:1742
@@ -1759,7 +1763,7 @@ msgstr "Alter im Jahr der Eheschließung"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1311
 msgid "Age of parents next to child’s birthdate"
-msgstr "Alter der Eltern bei den Geburtsdaten anzeigen"
+msgstr "Alter der Eltern neben dem Geburtsdatum des Kindes zeigen"
 
 #: statistics.php:535 statisticsplot.php:1132
 msgid "Age related to birth year"
@@ -1996,7 +2000,7 @@ msgstr "Vorfahren"
 #. I18N: gedcom tag ANCI
 #: app/GedcomTag.php:158
 msgid "Ancestors interest"
-msgstr "Ahnenforscher"
+msgstr "Interessent an Vorfahren"
 
 #: modules_v3/ahnentafel_report/report.xml:55
 msgid "Ancestors of "
@@ -5253,12 +5257,12 @@ msgstr "Zeige %s"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Anzeigen und Verwalten der Favoritenseiten eines Stammbaums."
+msgstr "Anzeige und Verwaltung der Favoritenseiten eines Stammbaums."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:34
 msgid "Display and manage a user’s favorite pages."
-msgstr "Anzeigen und Verwalten der Favoritenseiten eines Benutzers."
+msgstr "Anzeige und Verwaltung der Favoritenseiten eines Benutzers."
 
 #. I18N: gedcom tag DIV
 #: app/GedcomTag.php:374
@@ -5822,7 +5826,9 @@ msgstr "Externe Dateien"
 
 #: admin_media.php:676
 msgid "External media files have a URL instead of a filename."
-msgstr "Externe Mediendateien haben eine Internetadresse anstelle eines lokalen Dateinamens."
+msgstr ""
+"Externe Mediendateien haben eine Internetadresse (URL) anstelle eines "
+"Dateinamens."
 
 #. I18N: Name of a module/sidebar
 #: app/Module/ExtraInformationModule.php:29
@@ -9909,7 +9915,7 @@ msgstr "Kein vordefinierter Text"
 
 #: app/I18N.php:227 app/I18N.php:237
 msgid "No records to display"
-msgstr "Keine Einträge zum Anzeigen"
+msgstr "Keine Datensätze zum Anzeigen"
 
 #: app/Controller/AdvancedSearchController.php:664
 #: app/Controller/SearchController.php:546
@@ -11637,7 +11643,7 @@ msgid "Research tasks are special events, added to individuals in your family tr
 msgstr ""
 "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem "
 "Stammbaum hinzugefügt werden können, um die Notwendigkeit weitergehender "
-"Forschungen zu beschreiben. Man kann sie als Erinnerung nutzen, um Fakten "
+"Forschungen zu beschreiben. Man kann sie als Erinnerung nutzen, um Tatsachen "
 "gegen zuverlässigere Quellen zu überprüfen, um Dokumente oder Fotos zu "
 "erhalten oder um widersprüchliche Informationen aufzulösen."
 
@@ -12446,24 +12452,25 @@ msgstr "Zeigen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1031
 msgid "Show a download link in the media viewer"
-msgstr "Einen Download-Link im Medienbetrachter anzeigen"
+msgstr "Einen Download-Link im Medienbetrachter zeigen"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:506
 msgid "Show acceptable use agreement on “Request a new user account” page"
-msgstr "Nutzungsbedingungen auf der Seite \"Neues Benutzerkonto anfragen\" anzeigen"
+msgstr ""
+"Nutzungsbedingungen auf der Seite \"Neues Benutzerkonto anfragen\" zeigen"
 
 #: app/Module/NotesTabModule.php:74
 msgid "Show all notes"
-msgstr "Zeige alle Notizen"
+msgstr "Alle Notizen zeigen"
 
 #: placelist.php:212
 msgid "Show all places in a list"
-msgstr "Alle Orte in einer Liste anzeigen"
+msgstr "Alle Orte in einer Liste zeigen"
 
 #: app/Module/SourcesTabModule.php:70
 msgid "Show all sources"
-msgstr "Zeige alle Quellen"
+msgstr "Alle Quellen zeigen"
 
 #: app/Module/InteractiveTree/TreeView.php:62
 msgid "Show all spouses and ancestors"
@@ -12494,7 +12501,7 @@ msgstr "Anzahl vor oder hinter den Namen zeigen"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
-msgstr "Zeige Paare, von denen ein Partner mehr als einmal heiratete."
+msgstr "Paare zeigen, von denen ein Partner mehr als einmal heiratete."
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
@@ -12514,7 +12521,7 @@ msgstr "Paare zeigen, die innerhalb der letzten 100 Jahren heirateten."
 
 #: app/Functions/FunctionsPrintLists.php:675
 msgid "Show couples with an unknown marriage date."
-msgstr "Paare mit unbekanntem Heiratsdatum anzeigen."
+msgstr "Paare mit unbekanntem Heiratsdatum zeigen."
 
 #: ancestry.php:75
 msgid "Show cousins"
@@ -12523,12 +12530,12 @@ msgstr "Cousins und Cousinen zeigen"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:296
 msgid "Show date of last update"
-msgstr "Datum der letzten Aktualisierung anzeigen"
+msgstr "Datum der letzten Aktualisierung zeigen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:384
 msgid "Show dead individuals"
-msgstr "Zeige verstorbene Personen"
+msgstr "Verstorbene Personen zeigen"
 
 #: ancestry.php:115 app/Module/ChartsBlockModule.php:206 descendancy.php:84
 #: familybook.php:55 hourglass.php:56 pedigree.php:166 relationship.php:83
@@ -12537,7 +12544,7 @@ msgstr "Einzelheiten zeigen"
 
 #: app/Functions/FunctionsPrintLists.php:702
 msgid "Show divorced couples."
-msgstr "Zeige geschiedene Paare."
+msgstr "Geschiedene Paare zeigen."
 
 #: compact.php:60
 msgid "Show images"
@@ -12549,55 +12556,55 @@ msgstr "Nicht verwendete Orte anzeigen"
 
 #: app/Functions/FunctionsPrintLists.php:244
 msgid "Show individuals born more than 100 years ago."
-msgstr "Zeige Personen, die vor mehr als 100 Jahren geboren wurden."
+msgstr "Personen zeigen, die vor mehr als 100 Jahren geboren wurden."
 
 #: app/Functions/FunctionsPrintLists.php:253
 msgid "Show individuals born within the last 100 years."
-msgstr "Zeige Personen, die in den letzten 100 Jahren geboren wurden."
+msgstr "Personen zeigen, die in den letzten 100 Jahren geboren wurden."
 
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Zeige Personen oder Paare, bei denen beide Partner noch leben."
+msgstr "Personen oder Paare zeigen, bei denen beide Partner noch leben."
 
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Zeige Verstorbene oder Paare, bei denen beide Partner verstorben sind."
+msgstr "Verstorbene oder Paare zeigen, bei denen beide Partner verstorben sind."
 
 #: app/Functions/FunctionsPrintLists.php:224
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Zeige Personen, die vor mehr als 100 Jahren starben."
+msgstr "Personen zeigen, die vor mehr als 100 Jahren starben."
 
 #: app/Functions/FunctionsPrintLists.php:233
 msgid "Show individuals who died within the last 100 years."
-msgstr "Zeige Personen, die in den letzten 100 Jahren starben."
+msgstr "Personen zeigen, die in den letzten 100 Jahren starben."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:278
 msgid "Show list of family trees"
-msgstr "Liste der Stammbäume anzeigen"
+msgstr "Liste der Stammbäume zeigen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
 msgid "Show living individuals"
-msgstr "Zeige lebende Personen"
+msgstr "Lebende Personen zeigen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr "Zeige Namen vertraulicher Personen"
+msgstr "Namen vertraulicher Personen zeigen"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
 #: modules_v3/individual_ext_report/report.xml:10
 #: modules_v3/individual_report/report.xml:7
 msgid "Show notes"
-msgstr "Notizen anzeigen"
+msgstr "Notizen zeigen"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 msgid "Show occupations"
-msgstr "Berufe anzeigen"
+msgstr "Berufe zeigen"
 
 #: app/Module/UpcomingAnniversariesModule.php:160
 msgid "Show only births, deaths, and marriages"
@@ -12607,7 +12614,7 @@ msgstr "Nur Geburten, Tode, und Heiraten anzeigen"
 #: app/Module/OnThisDayModule.php:136
 #: app/Module/UpcomingAnniversariesModule.php:154
 msgid "Show only events of living individuals"
-msgstr "Nur Ereignisse lebender Personen anzeigen"
+msgstr "Nur Ereignisse lebender Personen zeigen"
 
 #: app/Functions/FunctionsPrintLists.php:186
 msgid "Show only females."
@@ -12620,7 +12627,7 @@ msgstr "Nur Personen unbekannten Geschlechts zeigen."
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Personen, Ereignisse oder alle Medien anzeigen"
+msgstr "Nur Personen, Ereignisse oder alle zeigen"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12643,7 +12650,7 @@ msgstr "Ausstehende Änderungen zeigen"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Fotos anzeigen"
+msgstr "Fotos zeigen"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
@@ -12652,7 +12659,7 @@ msgstr "Ortshierarchie anzeigen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:484
 msgid "Show private relationships"
-msgstr "Zeige vertrauliche Beziehungen"
+msgstr "Vertrauliche Beziehungen zeigen"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
@@ -12660,25 +12667,24 @@ msgstr "Verbundene Personen/Familien anzeigen"
 
 #: app/Module/ResearchTaskModule.php:209
 msgid "Show research tasks that are assigned to other users"
-msgstr "Forschungsaufgaben anzeigen, die anderen Benutzern zugeordnet sind"
+msgstr "Forschungsaufgaben zeigen, die anderen Benutzern zugeordnet sind"
 
 #: app/Module/ResearchTaskModule.php:215
 msgid "Show research tasks that are not assigned to any user"
-msgstr ""
-"Forschungsaufgaben anzeigen, die keinem anderen Benutzer zugeordnet sind"
+msgstr "Forschungsaufgaben zeigen, die keinem anderen Benutzer zugeordnet sind"
 
 #: app/Module/ResearchTaskModule.php:221
 msgid "Show research tasks that have a date in the future"
-msgstr "Forschungsaufgaben anzeigen, die ein Datum in der Zukunft haben"
+msgstr "Forschungsaufgaben zeigen, die ein Datum in der Zukunft haben"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences"
-msgstr "Wohnsitze anzeigen"
+msgstr "Wohnsitze zeigen"
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:409
 msgid "Show slide show controls"
-msgstr "Steuerungselemente der Diaschau anzeigen"
+msgstr "Steuerungselemente der Diaschau zeigen"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12686,7 +12692,7 @@ msgstr "Steuerungselemente der Diaschau anzeigen"
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources"
-msgstr "Quellen anzeigen"
+msgstr "Quellen zeigen"
 
 #: familybook.php:82 hourglass.php:73
 msgid "Show spouses"
@@ -12701,28 +12707,28 @@ msgstr "Statistikdiagramme zeigen"
 #: admin_trees_config.php:1516
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Zeige die %1$s %2$s Teile des Ortsnamens."
+msgstr "Die %1$s %2$s Teile des Ortsnamens zeigen."
 
 #: app/Module/HtmlBlockModule.php:325
 msgid "Show the date and time of update"
-msgstr "Datum und Zeit der Aktualisierung anzeigen"
+msgstr "Datum und Zeit der Aktualisierung zeigen"
 
 #: admin_trees_config.php:1368
 msgid "Show the events of close relatives on the individual page"
-msgstr "Ereignisse naher Verwandter, die auf der Personen-Seite angezeigt werden"
+msgstr "Ereignisse naher Verwandter, die auf der Personen-Seite gezeigt werden"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
 msgid "Show the family tree"
-msgstr "Zeige den Stammbaum"
+msgstr "Den Stammbaum zeigen"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
-msgstr "Zeige die Personenliste"
+msgstr "Die Personenliste zeigen"
 
 #: famlist.php:185 indilist.php:185
 msgid "Show the list of surnames"
-msgstr "Zeige Liste der Nachnamen"
+msgstr "Liste der Nachnamen zeigen"
 
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:77
@@ -12732,17 +12738,17 @@ msgstr "Anzeige der Lage von Orten und Ereignissen mithilfe von Google Maps ™.
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr "Den Benutzer anzeigen, der die Änderung machte"
+msgstr "Den Benutzer zeigen, der die Änderung machte"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
 #: app/Module/HtmlBlockModule.php:332 app/Module/StoriesModule.php:259
 msgid "Show this block for which languages"
-msgstr "Diesen Block für welche Sprachen anzeigen"
+msgstr "Diesen Block für welche Sprachen zeigen"
 
 #: admin_trees_config.php:1051
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Zeige Vorschaubilder in Diagrammen und Familienbögen."
+msgstr "Vorschaubilder in Diagrammen und Familienbögen zeigen."
 
 #: admin_trees_config.php:81 admin_trees_config.php:88
 #: admin_trees_config.php:1021 app/Functions/FunctionsEdit.php:207
@@ -12779,12 +12785,17 @@ msgstr "sichtbar für Besucher"
 #: app/Functions/FunctionsPrintLists.php:273
 #: app/Functions/FunctionsPrintLists.php:664
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "«Blätter» zeigen. «Blätter» sind lebend aber nachfolgerlos."
+msgstr ""
+"\"Blätter\"-Paare oder -Personen zeigen. Dies sind lebende Personen, für die "
+"keine Kinder in der Datenbank erfasst sind."
 
 #: app/Functions/FunctionsPrintLists.php:264
 #: app/Functions/FunctionsPrintLists.php:655
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "„Wurzeln“ zeigen. „Wurzeln“ können auch „Patriarch“ gennant werden. Sie sind elternlos in der Datenbank eingetragen."
+msgstr ""
+"\"Wurzel\"-Paare oder -Personen zeigen. Diese Personen können auch als \""
+"Patriarchen\" bezeichnet werden. Es handelt sich um Personen, für die keine "
+"Eltern in der Datenbank erfassten sind."
 
 #. I18N: %s are placeholders for numbers
 #: app/I18N.php:228 app/I18N.php:229
@@ -12977,7 +12988,7 @@ msgstr "Manche Genealogie-Software erstellt GEDCOM-Dateien, die Medien-Dateiname
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr "Einige Seiten können die Anzahl ihrer Besuche anzeigen."
+msgstr "Einige Seiten können anzeigen, wie oft sie besucht wurden."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -12986,7 +12997,9 @@ msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sei
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr "Einige Designs können Symbole auf dem Reiter „Tatsachen und Ereignisse“ anzeigen."
+msgstr ""
+"Einige Themen können Symbole auf dem Reiter \"Tatsachen und Ereignisse\" "
+"anzeigen."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13191,7 +13204,7 @@ msgstr "Bei den Eltern beginnen"
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:415
 msgid "Start slide show on page load"
-msgstr "Starten der Diaschau beim Seitenaufruf"
+msgstr "Diaschau beim Seitenaufruf starten"
 
 #. I18N: The earliest year in a range
 #: lifespan.php:69
@@ -13737,7 +13750,7 @@ msgstr ""
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
-msgstr "Die folgende Liste zeigt typische Voraussetzungen."
+msgstr "Die folgende Liste zeigt typische Anforderungen."
 
 #: admin_trees_places.php:115
 msgid "The following places have been changed:"
@@ -14520,7 +14533,9 @@ msgstr "Dieses Medienobjekt ist mit keinem Datensatz verknüpft."
 
 #: message.php:239 message.php:280
 msgid "This message was sent while viewing the following URL: "
-msgstr "Diese Nachricht wurde gesendet, während die folgende Internetadresse angezeigt wurde: "
+msgstr ""
+"Diese Nachricht wurde gesendet, während die folgende Internetadresse (URL) "
+"angezeigt wurde: "
 
 #: message.php:113
 #, php-format
