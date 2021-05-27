@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"PO-Revision-Date: 2021-05-27 11:10+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/fr/>\n"
@@ -5333,7 +5333,7 @@ msgstr "République dominicaine"
 #: app/Module/ClippingsCartModule.php:732
 #: app/Module/ClippingsCartModule.php:767
 msgid "Download"
-msgstr "Télécharger (Download)"
+msgstr "Télécharger"
 
 #. I18N: The system is about to…; %s is a URL.
 #: admin_site_upgrade.php:243
