@@ -79,7 +79,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
      */
     public function title(): string
     {
-        return I18N::translate('Mapbox');
+        return /* I18N: mapbox.com */ I18N::translate('Mapbox');
     }
 
     /**

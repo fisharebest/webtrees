@@ -60,13 +60,15 @@ class AddUnlinkedPage implements RequestHandlerInterface
             ],
         ];
 
+        $cancel_url = route(ManageTrees::class, ['tree' => $tree->name()]);
+
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url' => route('manage-trees', ['tree' => $tree->name()]),
+            'cancel_url' => $cancel_url,
             'facts'      => $facts,
             'post_url'   => route(AddUnlinkedAction::class, ['tree' => $tree->name()]),
             'tree'       => $tree,
             'title'      => I18N::translate('Create an individual'),
-            'url'        => $request->getQueryParams()['url'] ?? route('manage-trees', ['tree' => $tree->name()]),
+            'url'        => $request->getQueryParams()['url'] ?? $cancel_url,
         ]);
     }
 }

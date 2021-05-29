@@ -172,6 +172,7 @@ use Fisharebest\Webtrees\Module\LanguageTurkish;
 use Fisharebest\Webtrees\Module\LanguageUkranian;
 use Fisharebest\Webtrees\Module\LanguageUrdu;
 use Fisharebest\Webtrees\Module\LanguageVietnamese;
+use Fisharebest\Webtrees\Module\LanguageWelsh;
 use Fisharebest\Webtrees\Module\LanguageYiddish;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
 use Fisharebest\Webtrees\Module\ListsMenuModule;
@@ -412,6 +413,7 @@ class ModuleService
         'language-bs'             => LanguageBosnian::class,
         'language-ca'             => LanguageCatalan::class,
         'language-cs'             => LanguageCzech::class,
+        'language-cy'             => LanguageWelsh::class,
         'language-da'             => LanguageDanish::class,
         'language-de'             => LanguageGerman::class,
         'language-dv'             => LanguageDivehi::class,

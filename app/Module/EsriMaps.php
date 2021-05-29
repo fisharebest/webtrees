@@ -35,7 +35,7 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
      */
     public function title(): string
     {
-        return I18N::translate('Esri/ArcGIS');
+        return /* I18N: Name of a mapping organisation */ I18N::translate('Esri/ArcGIS');
     }
 
     /**
