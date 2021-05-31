@@ -605,7 +605,7 @@
                   row_group = row_group.previousElementSibling;
                 }
                 const element = row_group.querySelector('select');
-                const extra   = element.options[element.selectedIndex].value;
+                const extra   = element.options[element.selectedIndex].value.replace(/@/g, '');
                 const symbol  = (url.indexOf("?") > 0) ? '&' : '?';
                 return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery) + symbol + 'extra=' + encodeURIComponent(extra);
               }

@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Tree;
 
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="PEDI">
-            <?= I18N::translate('Pedigree') ?>
+            <?= Registry::elementFactory()->make('INDI:FAMC:PEDI')->label() ?>
         </label>
         <div class="col-sm-9">
             <?= Registry::elementFactory()->make('INDI:FAMC:PEDI')->edit('PEDI', 'PEDI', '', $tree) ?>
