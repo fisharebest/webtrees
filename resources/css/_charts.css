@@ -27,7 +27,7 @@
 @import "_chart-timeline.css";
 
 /* Lines for "vertical" charts, such as the ancestors and descendants chart. */
-.wt-chart-vertical-indent {
+.wt-chart-horizontal-indent {
     width: 3rem;
 }
 
