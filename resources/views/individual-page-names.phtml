@@ -1,21 +1,19 @@
 <?php
 
-use Fisharebest\Webtrees\Fact;
-use Illuminate\Support\Collection;
+use Fisharebest\Webtrees\Individual;
 
 /**
- * @var Collection<Fact> $name_records
- * @var Collection<Fact> $sex_records
+ * @var Individual $record
  */
 ?>
 
 <!-- Name accordion -->
 <div class="col-sm accordion" id="individual-names">
-    <?php foreach ($name_records as $name_record) : ?>
-        <?= $name_record ?>
+    <?php foreach ($record->facts(['NAME']) as $fact) : ?>
+        <?= view('individual-name', ['fact' => $fact]) ?>
     <?php endforeach ?>
 
-    <?php foreach ($sex_records as $sex_record) : ?>
-        <?= $sex_record ?>
+    <?php foreach ($record->facts(['SEX']) as $fact) : ?>
+        <?= view('individual-sex', ['fact' => $fact]) ?>
     <?php endforeach ?>
 </div>

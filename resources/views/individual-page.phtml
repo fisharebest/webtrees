@@ -1,26 +1,26 @@
 <?php
 
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 
 /**
  * @var string                             $age
  * @var Collection<Fact>                   $clipboard_facts
  * @var Collection<Media>                  $individual_media
- * @var Collection<Fact>                   $name_records
  * @var Individual                         $record
- * @var Collection<Fact>                   $sex_records
  * @var Collection<string>                 $shares
  * @var Collection<ModuleSidebarInterface> $sidebars
  * @var Collection<ModuleTabInterface>     $tabs
  * @var Tree                               $tree
- * @var string                             $user_link
+ * @var Collection<User>                   $users
  */
 ?>
 
@@ -28,7 +28,12 @@ use Illuminate\Support\Collection;
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $record->fullName() ?><?= $user_link ?>, <?= $record->lifespan() ?> <?= $age ?>
+        <?= $record->fullName() ?>, <?= $record->lifespan() ?> <?= $age ?>
+        <?php foreach ($users as $user) : ?>
+            — <a href="<?= e(route(UserListPage::class, ['filter' => $user->email()])) ?>">
+                <?= e($user->userName()) ?>
+            </a>
+        <?php endforeach ?>
     </h2>
 
     <?php if ($record->canEdit()) : ?>
@@ -41,7 +46,7 @@ use Illuminate\Support\Collection;
         <div class="row mb-4">
             <?= view('individual-page-images', ['individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
 
-            <?= view('individual-page-names', ['name_records' => $name_records, 'sex_records' => $sex_records]) ?>
+            <?= view('individual-page-names', ['record' => $record]) ?>
         </div>
 
         <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>

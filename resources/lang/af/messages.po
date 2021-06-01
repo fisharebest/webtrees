@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-05-26 10:27+0100\n"
-"PO-Revision-Date: 2021-02-26 19:22+0000\n"
-"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
-"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
-"Language: af\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-05-26 10:27+0100\nPO-Revision-Date: 2021-06-01 11:33+0000\nLast-Translator: Chris Theron <tronsmit@gmail.com>\nLanguage-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\nLanguage: af\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1480,7 +1468,7 @@ msgstr "Wysig/voeg ’n joernaalinskrywing/nuusberig by"
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Bykomende inligting"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:386
 #: app/Factories/ElementFactory.php:406 app/Factories/ElementFactory.php:658
@@ -1867,7 +1855,7 @@ msgstr "Ook bekend as"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Alternatiewe pleknaam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2082,7 +2070,7 @@ msgstr "Akwamaryn"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Is jy seker dat jy die skakel na “%s” wil verwyder?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:40
@@ -2183,7 +2171,7 @@ msgstr "Koppel gebeurtenisse met hierdie bron"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Verwante gebeurtenisse"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2295,7 +2283,7 @@ msgstr "Outeur van die laaste inskrywing"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:622
 msgid "Autocomplete"
-msgstr ""
+msgstr "Outovoltooi"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -2633,7 +2621,7 @@ msgstr "Binêre data voorwerp"
 
 #: app/Module/BingMaps.php:82 app/Module/MapLinkBing.php:42
 msgid "Bing™ maps"
-msgstr "Bing™ maps"
+msgstr "Bing™ kaarte"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -3393,7 +3381,7 @@ msgstr "Sensus datum"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Sensus datum en plek"
 
 #: app/Factories/ElementFactory.php:485
 msgid "Census place"
@@ -3438,7 +3426,7 @@ msgstr "Sertifikaat"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Sertifikaat nommer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3814,7 +3802,7 @@ msgstr "Koffie en Room"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Saamwoon"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4069,7 +4057,7 @@ msgstr "Kopieer lêers…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Kopieer die URL van die rekord na die knipbord"
 
 #: app/Factories/ElementFactory.php:372 app/Factories/ElementFactory.php:399
 msgid "Copyright"
@@ -4190,7 +4178,7 @@ msgstr "Skep 'n persoon"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Skep kaarte met behulp van %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4363,11 +4351,11 @@ msgstr "Aangepas"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "Aangepaste GEDCOM-subetikette"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "Aangepaste GEDCOM-etiket"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4375,7 +4363,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:694
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Aangepaste GEDCOM-etikette"
 
 #: resources/views/calendar-page.phtml:203
 #: resources/views/edit/add-fact-row.phtml:40
@@ -5412,7 +5400,7 @@ msgstr "Vertoon en bestuur 'n gebruiker se gunstelingbladsye."
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "Vertoon aangepaste GEDCOM-etikette"
 
 #: app/Factories/ElementFactory.php:325 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5475,7 +5463,7 @@ msgstr "Laai %s af…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Laai 'n .ICS-lêer af wat 'n herdenking bevat"
 
 #: resources/views/media-page-details.phtml:85
 msgid "Download file"
@@ -5836,7 +5824,7 @@ msgstr "Esfand"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
@@ -5955,7 +5943,7 @@ msgstr "Eksterne lêers"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "Eksterne skakel"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
@@ -5993,7 +5981,7 @@ msgstr "FAQ = Frequently asked question = Vrae wat gereeld gestel word<br>FAQs i
 #: app/Module/CustomTagsGenPluswin.php:96
 #: app/Module/CustomTagsGenPluswin.php:98
 msgid "FOKO country"
-msgstr ""
+msgstr "FOKO-land"
 
 #: app/Factories/ElementFactory.php:527
 msgid "Fact"
@@ -6302,7 +6290,7 @@ msgstr "Gesin met vrou"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6665,7 +6653,7 @@ msgstr "Vir hulp met genealogiese navrae kontak %s."
 #: resources/views/modules/openstreetmap/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Vir meer inligting, sien %s."
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
@@ -6890,11 +6878,11 @@ msgstr "GEDCOM-lêer"
 
 #: resources/views/modules/custom-tags/config.phtml:53
 msgid "GEDCOM sub-tag"
-msgstr ""
+msgstr "GEDCOM-subetiket"
 
 #: resources/views/modules/custom-tags/config.phtml:51
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "GEDCOM-etiket"
 
 #. I18N: http://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -6994,7 +6982,7 @@ msgstr "Geslagte afstammelinge"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:45
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7014,7 +7002,7 @@ msgstr "Geografiese data"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:629
 msgid "Geolocation"
-msgstr ""
+msgstr "Geoligging"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
@@ -7126,7 +7114,7 @@ msgstr "Google™ analytics"
 
 #: app/Module/GoogleMaps.php:82 app/Module/MapLinkGoogle.php:41
 msgid "Google™ maps"
-msgstr "Google™ maps"
+msgstr "Google™ kaarte"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
@@ -7384,7 +7372,7 @@ msgstr "Haar beroep was"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
 msgid "Here maps"
-msgstr ""
+msgstr "Here kaarte"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -7428,7 +7416,7 @@ msgstr "Versteek ongebruikte liggings"
 
 #: resources/views/modules/custom-tags/config.phtml:44
 msgid "Hide/show GEDCOM tags in the edit forms"
-msgstr ""
+msgstr "Verberg/vertoon GEDCOM-etikette in die wysigingsvorms"
 
 #: app/Module/CustomTagsGedcomL.php:236
 msgid "Hierarchical relationship"
@@ -7511,7 +7499,7 @@ msgstr "Uurglasdiagram van %s"
 #: app/Module/CustomTagsGenPluswin.php:58
 #: app/Module/CustomTagsGenPluswin.php:90
 msgid "House number"
-msgstr ""
+msgstr "Huis nommer"
 
 #: resources/views/modules/census-assistant.phtml:117
 msgid "Household"
@@ -8115,7 +8103,7 @@ msgstr "Jan /NIEMAND/"
 
 #: app/Module/CustomTagsGenPluswin.php:88
 msgid "Joint family name"
-msgstr ""
+msgstr "Gesamentlike familienaam"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
@@ -8796,7 +8784,7 @@ msgstr "Tydskrif"
 #: app/Module/CustomTagsGedcomL.php:238 app/Module/CustomTagsGenPluswin.php:70
 #: app/Module/CustomTagsGenPluswin.php:102
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "Maidenhead ligging-kode"
 
 #: app/Module/CustomTagsPersonalAncestralFile.php:60
 msgid "Mailing name"
@@ -8930,23 +8918,23 @@ msgstr "Kaart"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "Kaart skakel"
 
 #. I18N: plural noun - things that can be shared
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:636
 msgid "Map links"
-msgstr ""
+msgstr "Kaart skakels"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: resources/views/admin/control-panel.phtml:643
 msgid "Map providers"
-msgstr ""
+msgstr "Kaart verskaffers"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:82
 msgid "Mapbox"
-msgstr ""
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
@@ -10298,7 +10286,7 @@ msgstr "Nagtelike"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Nominatim"
 
 #: app/Module/IndividualListModule.php:295
 #: app/Module/IndividualListModule.php:511
@@ -10669,7 +10657,7 @@ msgstr "Oeps! webtrees kon nie lêers in hierdie lêergids skep nie."
 #: app/Module/MapGeoLocationOpenRouteService.php:44
 #: app/Module/OpenRouteServiceAutocomplete.php:81
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:57
 msgid "OpenStreetMap™"
@@ -10720,7 +10708,7 @@ msgstr "Inwyding"
 #. I18N: Ordnance Survey is the UK government mapping service.
 #: app/Module/OrdnanceSurveyHistoricMaps.php:39
 msgid "Ordnance Survey historic maps"
-msgstr ""
+msgstr "Ordnance Survey historiese kaarte"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -10732,7 +10720,7 @@ msgstr "Orientasie"
 #: app/Module/CustomTagsGenPluswin.php:106
 #: app/Module/CustomTagsGenPluswin.php:117
 msgid "Original text"
-msgstr ""
+msgstr "Oorspronklike teks"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -11177,7 +11165,7 @@ msgstr "Doopplek"
 #. I18N: German Bürgerort
 #: app/Module/CustomTagsGenPluswin.php:124
 msgid "Place of citizenship"
-msgstr ""
+msgstr "Plek van burgerskap"
 
 #: app/Factories/ElementFactory.php:496
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -11507,7 +11495,7 @@ msgstr "Provo, Utah, Verenigde State"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Volmag"
 
 #: app/Factories/ElementFactory.php:694
 #: resources/views/lists/sources-table.phtml:96
@@ -11901,7 +11889,7 @@ msgstr "Verwantskappe tussen %1$s en %2$s"
 #: app/Module/CustomTagsGenPluswin.php:72
 #: app/Module/CustomTagsGenPluswin.php:104
 msgid "Reliability of the information"
-msgstr ""
+msgstr "Betroubaarheid van die inligting"
 
 #: app/Factories/ElementFactory.php:303 app/Factories/ElementFactory.php:433
 #: app/Factories/ElementFactory.php:584
@@ -12421,17 +12409,17 @@ msgstr "Soek vir"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "Soek na plekke in 'n eksterne databasis."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "Soek na plekname in 'n eksterne databasis."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:56
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Soek na plekname met behulp van %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12566,7 +12554,7 @@ msgstr "Stuur epos-herinneringe"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:72
 msgid "Sender email"
-msgstr ""
+msgstr "E-pos van afsender"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:58
@@ -12752,15 +12740,15 @@ msgstr "Shahrivar"
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/individual-page.phtml:56
 msgid "Share"
-msgstr ""
+msgstr "Deel"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Deel die URL"
 
 #: app/Module/ShareAnniversaryModule.php:79
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Deel die herdenking van 'n gebeurtenis"
 
 #: app/Functions/FunctionsPrint.php:94
 #: app/Functions/FunctionsPrintFacts.php:793
@@ -12782,7 +12770,7 @@ msgstr "Gedeelde notas"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:729
 msgid "Shares"
-msgstr ""
+msgstr "Deelbare items"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -13156,7 +13144,7 @@ msgstr "Vertoon die lys van vanne"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Vertoon die ligging van 'n gebeurtenis op 'n eksterne kaart."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:95
@@ -13724,7 +13712,7 @@ msgstr "Titel van die verhaal"
 #: app/Module/CustomTagsGenPluswin.php:59
 #: app/Module/CustomTagsGenPluswin.php:91
 msgid "Street name"
-msgstr ""
+msgstr "Straat naam"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -13799,7 +13787,7 @@ msgstr "Ondersteuning vir SQL Server is eksperimenteel."
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
 msgid "Support for non-standard GEDCOM tags."
-msgstr ""
+msgstr "Ondersteuning vir nie-standaard GEDCOM-etikette."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14104,7 +14092,7 @@ msgstr "Die PHP.INI instelling “%1$s” is aktief."
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "Die URL is na die knipbord gekopieer"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -15388,11 +15376,11 @@ msgstr "Om soekenjins in te lig dat werfkaarte beskikbaar is, kan jy die volgend
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Om hierdie diens te gebruik, benodig jy 'n API-sleutel."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Om hierdie diens te gebruik, benodig jy 'n rekening."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15828,7 +15816,7 @@ msgstr "Onbekende"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Ontkoppel"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15907,7 +15895,7 @@ msgstr "Gebruik 'n “?” om 'n enkele karakter te pas, gebruik “*” om nul 
 
 #: app/Module/ModuleMapGeoLocationTrait.php:48
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Gebruik 'n eksterne diens om plekke te vind."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -15944,7 +15932,7 @@ msgstr "Gebruik letters A-Z, a-z, getalle 0-9, of onderstrepe"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Gebruik kaarte in webtrees."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -16171,7 +16159,7 @@ msgstr "Vertoon hierdie gesin"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Vertoon hierdie plek met behulp van %s"
 
 #: resources/views/calendar-page.phtml:219
 msgid "View this month"
@@ -19222,7 +19210,7 @@ msgstr "voer lêer in"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "inlyn nota"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20074,7 +20062,7 @@ msgstr "agter(x5)kleinneef"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "gedeelde nota"
 
 #: resources/views/admin/trees-preferences.phtml:307
 #: resources/views/admin/trees-preferences.phtml:387
