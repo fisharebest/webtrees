@@ -588,7 +588,7 @@ class ModuleService
      *
      * @return Collection<ModuleInterface>
      */
-    public function findByInterface(string $interface, $include_disabled = false, $sort = false): Collection
+    public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
         $modules = $this->all($include_disabled)
             ->filter($this->interfaceFilter($interface));
@@ -741,9 +741,9 @@ class ModuleService
      *
      * @param string $filename
      *
-     * @return mixed
+     * @return ModuleInterface|null
      */
-    private static function load(string $filename)
+    private static function load(string $filename): ?ModuleInterface
     {
         try {
             return include $filename;
