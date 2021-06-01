@@ -18,7 +18,7 @@ use Illuminate\Support\Collection;
                     <a data-toggle="collapse" href="#sidebar-content-<?= $sidebar->name() ?>" aria-expanded="<?= $sidebar->name() === 'family_nav' ? 'true' : 'false' ?>" aria-controls="sidebar-content-<?= $sidebar->name() ?>">
                         <?= view('icons/expand') ?>
                         <?= view('icons/collapse') ?>
-                        <?= $sidebar->sidebarTitle() ?>
+                        <?= $sidebar->sidebarTitle($record) ?>
                     </a>
                 </div>
             </div>

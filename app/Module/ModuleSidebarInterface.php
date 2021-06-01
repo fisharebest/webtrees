@@ -30,9 +30,11 @@ interface ModuleSidebarInterface extends ModuleInterface
     /**
      * The text that appears on the sidebar's title.
      *
+     * @param Individual $individual
+     *
      * @return string
      */
-    public function sidebarTitle(): string;
+    public function sidebarTitle(Individual $individual): string;
 
     /**
      * Users change change the order of sidebars using the control panel.
