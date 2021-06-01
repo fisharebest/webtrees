@@ -73,8 +73,11 @@ class IndividualPage implements RequestHandlerInterface
      * @param ModuleService    $module_service
      * @param UserService      $user_service
      */
-    public function __construct(ClipboardService $clipboard_service, ModuleService $module_service, UserService $user_service)
-    {
+    public function __construct(
+        ClipboardService $clipboard_service,
+        ModuleService $module_service, 
+        UserService $user_service
+    ) {
         $this->clipboard_service = $clipboard_service;
         $this->module_service    = $module_service;
         $this->user_service      = $user_service;
@@ -116,15 +119,14 @@ class IndividualPage implements RequestHandlerInterface
         }
 
         // If this individual is linked to a user account, show the link
-        $user_link = '';
         if (Auth::isAdmin()) {
             $users = $this->user_service->findByIndividual($individual);
-            foreach ($users as $user) {
-                $user_link = ' —  <a href="' . e(route(UserListPage::class, ['filter' => $user->email()])) . '">' . e($user->userName()) . '</a>';
-            }
+        } else {
+            $users = new Collection();
         }
 
-        $shares = $this->module_service->findByInterface(ModuleShareInterface::class)
+        $shares = $this->module_service
+            ->findByInterface(ModuleShareInterface::class)
             ->map(fn (ModuleShareInterface $module) => $module->share($individual))
             ->filter();
 
@@ -141,7 +143,7 @@ class IndividualPage implements RequestHandlerInterface
             'significant'      => $this->significant($individual),
             'title'            => $individual->fullName() . ' ' . $individual->lifespan(),
             'tree'             => $tree,
-            'user_link'        => $user_link,
+            'users'            => $users,
         ]);
     }
 
@@ -248,7 +250,8 @@ class IndividualPage implements RequestHandlerInterface
      */
     public function getSidebars(Individual $individual): Collection
     {
-        return $this->module_service->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
+        return $this->module_service
+            ->findByComponent(ModuleSidebarInterface::class, $individual->tree(), Auth::user())
             ->filter(static function (ModuleSidebarInterface $sidebar) use ($individual): bool {
                 return $sidebar->hasSidebarContent($individual);
             });
@@ -264,7 +267,8 @@ class IndividualPage implements RequestHandlerInterface
      */
     public function getTabs(Individual $individual): Collection
     {
-        return $this->module_service->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
+        return $this->module_service
+            ->findByComponent(ModuleTabInterface::class, $individual->tree(), Auth::user())
             ->filter(static function (ModuleTabInterface $tab) use ($individual): bool {
                 return $tab->hasTabContent($individual);
             });
