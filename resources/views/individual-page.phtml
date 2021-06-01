@@ -13,9 +13,7 @@ use Illuminate\Support\Collection;
  * @var string                             $age
  * @var Collection<Fact>                   $clipboard_facts
  * @var Collection<Media>                  $individual_media
- * @var Collection<Fact>                   $name_records
  * @var Individual                         $record
- * @var Collection<Fact>                   $sex_records
  * @var Collection<string>                 $shares
  * @var Collection<ModuleSidebarInterface> $sidebars
  * @var Collection<ModuleTabInterface>     $tabs
@@ -41,7 +39,7 @@ use Illuminate\Support\Collection;
         <div class="row mb-4">
             <?= view('individual-page-images', ['individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
 
-            <?= view('individual-page-names', ['name_records' => $name_records, 'sex_records' => $sex_records]) ?>
+            <?= view('individual-page-names', ['record' => $record]) ?>
         </div>
 
         <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>

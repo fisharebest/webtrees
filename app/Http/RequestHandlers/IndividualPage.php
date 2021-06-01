@@ -117,14 +117,6 @@ class IndividualPage implements RequestHandlerInterface
             }
         }
 
-        $name_records = $individual->facts(['NAME'])->map(static function (Fact $fact): string {
-            return view('individual-name', ['fact' => $fact]);
-        });
-
-        $sex_records = $individual->facts(['SEX'])->map(static function (Fact $fact): string {
-            return view('individual-sex', ['fact' => $fact]);
-        });
-
         // If this individual is linked to a user account, show the link
         $user_link = '';
         if (Auth::isAdmin()) {
@@ -144,9 +136,7 @@ class IndividualPage implements RequestHandlerInterface
             'individual_media' => $individual_media,
             'meta_description' => $this->metaDescription($individual),
             'meta_robots'      => 'index,follow',
-            'name_records'     => $name_records,
             'record'           => $individual,
-            'sex_records'      => $sex_records,
             'shares'           => $shares,
             'sidebars'         => $this->getSidebars($individual),
             'tabs'             => $this->getTabs($individual),
