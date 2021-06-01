@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\Individual;
 
 <?php if ($generations > 1 && $parents instanceof Family) : ?>
     <div class="d-flex">
+        <span class="wt-chart-horizontal-spacer d-inline-block"></span>
         <button class="btn btn-link px-0 py-1 wt-chart-expansion-control" data-toggle="collapse" data-target="#fam-<?= e($parents->xref()) ?>" aria-controls="fam-<?= e($parents->xref()) ?>" aria-expanded="true">
             <span class="chart-expand">
                 <?= view('icons/expand') ?>
@@ -29,20 +30,22 @@ use Fisharebest\Webtrees\Individual;
             <span class="chart-collapse">
                 <?= view('icons/collapse') ?>
             </span>
+            <?= I18N::translate('Parents') ?>
             <?php foreach ($parents->facts(['MARR', 'DIV', '_NMR'], true) as $fact) : ?>
+                —
                 <?= $fact->label() ?>
                 <?php if ($fact->date()->isOK()) : ?>
                     <?= strip_tags($fact->date()->display()) ?>
                 <?php endif ?>
-                —
             <?php endforeach ?>
+            —
             <?= I18N::plural('%s child', '%s children', $parents->children()->count(), I18N::number($parents->children()->count())) ?>
         </button>
     </div>
     <div id="fam-<?= e($parents->xref()) ?>" class="collapse show mb-4">
         <?php foreach ($parents->spouses() as $n => $spouse) : ?>
             <div class="d-flex">
-                <div class="wt-chart-vertical-indent position-relative">
+                <div class="wt-chart-horizontal-indent position-relative">
                     <?php if ($n + 1 === $parents->spouses()->count()) : ?>
                         <div class="wt-chart-vertical-last-child-line position-absolute"></div>
                     <?php else : ?>
