@@ -75,7 +75,7 @@ class IndividualPage implements RequestHandlerInterface
      */
     public function __construct(
         ClipboardService $clipboard_service,
-        ModuleService $module_service, 
+        ModuleService $module_service,
         UserService $user_service
     ) {
         $this->clipboard_service = $clipboard_service;
