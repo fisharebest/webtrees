@@ -23,7 +23,6 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -53,7 +52,6 @@ use function is_string;
 use function redirect;
 use function route;
 use function strtoupper;
-use function view;
 
 /**
  * Show an individual's page.
