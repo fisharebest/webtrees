@@ -63,6 +63,6 @@ class MapLinkBing extends AbstractModule implements ModuleMapLinkInterface
         $label     = strip_tags($fact->record()->fullName()) . ' — ' . $fact->label();
         $pointer   = $latitude . '_' . $longitude . '_' . rawurlencode($label);
 
-        return 'http://www.bing.com/maps/?v=2&cp=' . $center . '&lvl=10&dir=0&sty=o&sp=point.' . $pointer;
+        return 'https://www.bing.com/maps/?v=2&cp=' . $center . '&lvl=10&dir=0&sty=o&sp=point.' . $pointer;
     }
 }

@@ -418,15 +418,15 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "隔 %s 代的堂（表）兄妹"
 
-# I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
+# I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
 msgstr "%s&nbsp;紀元前"
 
-# I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
-#. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
+# I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
@@ -3173,7 +3173,7 @@ msgstr "玻利維亞"
 msgid "Book"
 msgstr "書"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsChildSealingDateStatus.php:60
 msgid "Born in the covenant"
@@ -4195,7 +4195,7 @@ msgstr "%s 的緊湊樹"
 msgid "Comparison"
 msgstr "對比"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:71
 #: app/Elements/LdsChildSealingDateStatus.php:64
@@ -4204,7 +4204,7 @@ msgstr "對比"
 msgid "Completed before 1970; date not available"
 msgstr "在1970年之前完成,日期不可用"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:67
 #: app/Elements/LdsEndowmentDateStatus.php:68
@@ -4747,8 +4747,8 @@ msgstr "DKIM數位簽名"
 msgid "DNA markers"
 msgstr "DNA標記"
 
-# I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
-#. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
+# I18N: https://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
+#. I18N: https://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:43
 #: resources/views/search-phonetic-page.phtml:78
 msgid "Daitch-Mokotoff"
@@ -5679,63 +5679,63 @@ msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "第十月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:150
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
 msgstr "第十二月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:240
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
 msgstr "第十二月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:195
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "第十二月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "第十二月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:148
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "第十一月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:238
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
 msgstr "第十一月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:193
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "第十一月"
 
-# I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+# I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "第十一月"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:65
 #: app/Elements/LdsEndowmentDateStatus.php:66
@@ -5813,13 +5813,13 @@ msgstr "按世紀統計離婚"
 msgid "Djibouti"
 msgstr "吉布提"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsSpouseSealingDateStatus.php:69
 msgid "Do not seal, previous sealing canceled"
 msgstr "不密封,先前的密封取消"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsSpouseSealingDateStatus.php:67
 msgid "Do not seal: unauthorized"
@@ -6170,8 +6170,8 @@ msgstr "結束年"
 msgid "Ending range of change dates"
 msgstr "變更日期範圍的結束"
 
-# I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
-#. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
+# I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
+#. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
 msgid "Endowment House"
 msgstr "養老的房子"
@@ -6331,7 +6331,7 @@ msgstr "排除婚姻名為' %s '的個人"
 msgid "Exclude subfolders"
 msgstr "排除子文件夾"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:69
 #: app/Elements/LdsChildSealingDateStatus.php:62
@@ -6755,8 +6755,8 @@ msgstr ""
 msgid "Fan chart"
 msgstr "扇形圖"
 
-# I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
-#. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
+# I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
+#. I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
@@ -8768,57 +8768,57 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "七月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:136
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
 msgstr "第五月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:226
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
 msgstr "第五月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:181
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
 msgstr "第五月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:91
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
 msgstr "第五月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:138
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
 msgstr "第六月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:228
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
 msgstr "第六月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:183
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
 msgstr "第六月"
 
-# I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+# I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
@@ -10629,29 +10629,29 @@ msgstr "上移"
 msgid "Mozambique"
 msgstr "莫桑比克"
 
-# I18N: http://en.wikipedia.org/wiki/Muharram
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:128
 msgctxt "GENITIVE"
 msgid "Muharram"
 msgstr "第一月"
 
-# I18N: http://en.wikipedia.org/wiki/Muharram
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
 msgstr "第一月"
 
-# I18N: http://en.wikipedia.org/wiki/Muharram
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:173
 msgctxt "LOCATIVE"
 msgid "Muharram"
 msgstr "第一月"
 
-# I18N: http://en.wikipedia.org/wiki/Muharram
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+# I18N: https://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:83
 msgctxt "NOMINATIVE"
 msgid "Muharram"
@@ -12316,8 +12316,8 @@ msgstr "首選聯系方式"
 msgid "Presentation style"
 msgstr "表現風格"
 
-# I18N: I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
-#. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
+# I18N: I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/President_of_the_Church
+#. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/President_of_the_Church
 #: app/Elements/TempleCode.php:161
 msgid "President’s Office"
 msgstr "總統辦公室"
@@ -12488,57 +12488,57 @@ msgstr "回復: "
 msgid "Rabbi"
 msgstr "先生"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:132
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
 msgstr "第三月"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
 msgstr "第三月"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:177
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
 msgstr "第三月"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
 msgstr "第三月"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:134
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
 msgstr "第四月"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
 msgstr "第四月"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:179
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
 msgstr "第四月"
 
-# I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+# I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:89
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
@@ -12562,29 +12562,29 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr ""
 
-# I18N: http://en.wikipedia.org/wiki/Rajab
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+# I18N: https://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "第七月"
 
-# I18N: http://en.wikipedia.org/wiki/Rajab
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+# I18N: https://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:230
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "第七月"
 
-# I18N: http://en.wikipedia.org/wiki/Rajab
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+# I18N: https://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:185
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "第七月"
 
-# I18N: http://en.wikipedia.org/wiki/Rajab
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+# I18N: https://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:95
 msgctxt "NOMINATIVE"
 msgid "Rajab"
@@ -12596,29 +12596,29 @@ msgstr "第七月"
 msgid "Raleigh, North Carolina, United States"
 msgstr "北卡羅來納州的羅利"
 
-# I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+# I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:144
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "第九月"
 
-# I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+# I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:234
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "第九月"
 
-# I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+# I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:189
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "第九月"
 
-# I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+# I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:99
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
@@ -12762,12 +12762,12 @@ msgctxt "MALE"
 msgid "Registry officer"
 msgstr "男登記官"
 
-#. I18N: http://en.wikipedia.org/wiki/Regular_expression
+#. I18N: https://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:106
 msgid "Regular expression"
 msgstr "正則表達式"
 
-# I18N: http://en.wikipedia.org/wiki/Regular_expression
+# I18N: https://en.wikipedia.org/wiki/Regular_expression
 #: resources/views/modules/fix-search-and-replace/options.phtml:44
 msgid "Regular expressions are an advanced pattern matching technique."
 msgstr "正則表達式是一種先進的模式匹配技術。"
@@ -13144,8 +13144,8 @@ msgstr "未錄入父母的"
 msgid "Rufname"
 msgstr ""
 
-# I18N: http://en.wikipedia.org/wiki/Soundex
-#. I18N: http://en.wikipedia.org/wiki/Soundex
+# I18N: https://en.wikipedia.org/wiki/Soundex
+#. I18N: https://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
 #: resources/views/search-phonetic-page.phtml:72
 msgid "Russell"
@@ -13182,29 +13182,29 @@ msgstr "已安裝SQLite版本%s。 但需要SQLite版本%s或更高版本。"
 msgid "Sacramento, California, United States"
 msgstr "薩克拉門托，加利福尼亞"
 
-# I18N: http://en.wikipedia.org/wiki/Safar
-#. I18N: http://en.wikipedia.org/wiki/Safar
+# I18N: https://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:130
 msgctxt "GENITIVE"
 msgid "Safar"
 msgstr "第二月"
 
-# I18N: http://en.wikipedia.org/wiki/Safar
-#. I18N: http://en.wikipedia.org/wiki/Safar
+# I18N: https://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
 msgstr "第二月"
 
-# I18N: http://en.wikipedia.org/wiki/Safar
-#. I18N: http://en.wikipedia.org/wiki/Safar
+# I18N: https://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:175
 msgctxt "LOCATIVE"
 msgid "Safar"
 msgstr "第二月"
 
-# I18N: http://en.wikipedia.org/wiki/Safar
-#. I18N: http://en.wikipedia.org/wiki/Safar
+# I18N: https://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:85
 msgctxt "NOMINATIVE"
 msgid "Safar"
@@ -13372,7 +13372,7 @@ msgctxt "Pedigree"
 msgid "Sealing"
 msgstr "密封"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsSpouseSealingDateStatus.php:63
 msgid "Sealing canceled (divorce)"
@@ -13810,57 +13810,57 @@ msgstr "共享記錄"
 msgid "Shares"
 msgstr ""
 
-# I18N: http://en.wikipedia.org/wiki/Shawwal
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+# I18N: https://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "第十月"
 
-# I18N: http://en.wikipedia.org/wiki/Shawwal
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+# I18N: https://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:236
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "第十月"
 
-# I18N: http://en.wikipedia.org/wiki/Shawwal
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+# I18N: https://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:191
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "第十月"
 
-# I18N: http://en.wikipedia.org/wiki/Shawwal
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+# I18N: https://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "第十月"
 
-# I18N: http://en.wikipedia.org/wiki/Sha%27aban
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:142
 msgctxt "GENITIVE"
 msgid "Sha’aban"
 msgstr "第八月"
 
-# I18N: http://en.wikipedia.org/wiki/Sha%27aban
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:232
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
 msgstr "第八月"
 
-# I18N: http://en.wikipedia.org/wiki/Sha%27aban
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:187
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
 msgstr "第八月"
 
-# I18N: http://en.wikipedia.org/wiki/Sha%27aban
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+# I18N: https://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
@@ -14365,17 +14365,17 @@ msgstr "網站驗証碼"
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr "webtrees 安裝在子文件夾中時網站驗証碼不能工作。"
 
-# I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
-#. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
+# I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
+#. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:163
 msgid "Sitemaps"
 msgstr "網站地圖"
 
-# I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
+# I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
+#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:23
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "網站地圖是站長告訴搜索引擎對這個網站可以抓取網頁的方式。所有主要搜索引擎支持網站地圖。更多信息，見 <a href=\"http://www.sitemaps.org/en_GB/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgstr "網站地圖是站長告訴搜索引擎對這個網站可以抓取網頁的方式。所有主要搜索引擎支持網站地圖。更多信息，見 <a href=\"https://www.sitemaps.org/en_GB/\">www.sitemaps.org</a>."
 
 # I18N: a month in the Jewish calendar
 #. I18N: a month in the Jewish calendar
@@ -14788,7 +14788,7 @@ msgstr "狀態更改日期"
 msgid "Stillborn"
 msgstr "未出生"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:73
 #: app/Elements/LdsChildSealingDateStatus.php:66
@@ -14843,7 +14843,7 @@ msgstr "主題"
 msgid "Submission"
 msgstr "提交"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:75
 #: app/Elements/LdsChildSealingDateStatus.php:68
@@ -16998,7 +16998,7 @@ msgstr "烏干達"
 msgid "Ukraine"
 msgstr "烏克蘭"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsBaptismDateStatus.php:77
 #: app/Elements/LdsChildSealingDateStatus.php:70
@@ -22406,7 +22406,7 @@ msgstr "…"
 #~ msgid "Choose: "
 #~ msgstr "選擇: "
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #~ msgid "Cleared but not yet completed"
 #~ msgstr "清除，但尚未完成的"
 
@@ -22431,7 +22431,7 @@ msgstr "…"
 #~ msgid "Delete old files…"
 #~ msgstr "刪除舊文件…"
 
-# I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
+# I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #~ msgid "Died as an infant: exempt"
 #~ msgstr "去世的嬰兒：免除"
 
@@ -22690,7 +22690,7 @@ msgstr "…"
 #~ msgid "The most common source facts are listed separately, so that they can be added more easily."
 #~ msgstr "單獨羅列最常見的來源事實，這樣就可以快速添加。"
 
-# I18N: http://en.wikipedia.org/wiki/Regular_expression
+# I18N: https://en.wikipedia.org/wiki/Regular_expression
 #~ msgid "The regular expression appears to contain an error. It can’t be used."
 #~ msgstr "正則表達式似乎包含錯誤。無法使用。"
 

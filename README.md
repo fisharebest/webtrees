@@ -40,7 +40,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
+along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ## Coding styles and standards
 
@@ -114,7 +114,7 @@ To install **webtrees**, you need:
 1. Download the .ZIP file for latest stable version from [github.com](https://github.com/fisharebest/webtrees/releases/latest)
 2. Unzip the files and then upload them to an empty folder on your web server.
 3. Open your web browser and type the URL for your **webtrees** site (for example,
-   ``http://www.yourserver.com/webtrees`` into the address bar.
+   ``https://www.yourserver.com/webtrees`` into the address bar.
 4. The **webtrees** setup wizard will start automatically.
 
 Your first task will be to create a family tree.
@@ -164,7 +164,7 @@ the Macintosh Finder or other similar tool to perform step 3, it will **replace*
 your configuration, media and other directories with the empty/default ones from
 the installation. This would be very bad (but you did take a backup in step 1,
 didn't you!). Further details and recommendations for suitable tools can be found
-by searching [google.com](http://google.com).
+by searching [google.com](https://google.com).
 
 
 ## Building and developing
@@ -300,7 +300,7 @@ To make a backup of **webtrees**, you need to make a copy of the following
 1. The files in the *webtrees/data* folder.
 2. The files in the *webtrees/media* folder.
 3. The tables in the database. Freely available tools such as
-   [phpMyAdmin](http://www.phpmyadmin.net) allow you to do this in one click.
+   [phpMyAdmin](https://www.phpmyadmin.net) allow you to do this in one click.
 
 Remember that most web hosting services do NOT backup your data, and this is
 your responsibility.

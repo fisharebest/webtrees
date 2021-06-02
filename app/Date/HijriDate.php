@@ -79,29 +79,29 @@ class HijriDate extends AbstractCalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                /* I18N: http://en.wikipedia.org/wiki/Muharram */
+                /* I18N: https://en.wikipedia.org/wiki/Muharram */
                 1  => I18N::translateContext('NOMINATIVE', 'Muharram'),
-                /* I18N: http://en.wikipedia.org/wiki/Safar */
+                /* I18N: https://en.wikipedia.org/wiki/Safar */
                 2  => I18N::translateContext('NOMINATIVE', 'Safar'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal */
                 3  => I18N::translateContext('NOMINATIVE', 'Rabi’ al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani */
                 4  => I18N::translateContext('NOMINATIVE', 'Rabi’ al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal */
                 5  => I18N::translateContext('NOMINATIVE', 'Jumada al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-thani */
                 6  => I18N::translateContext('NOMINATIVE', 'Jumada al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Rajab */
+                /* I18N: https://en.wikipedia.org/wiki/Rajab */
                 7  => I18N::translateContext('NOMINATIVE', 'Rajab'),
-                /* I18N: http://en.wikipedia.org/wiki/Sha%27aban */
+                /* I18N: https://en.wikipedia.org/wiki/Sha%27aban */
                 8  => I18N::translateContext('NOMINATIVE', 'Sha’aban'),
-                /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
+                /* I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
                 9  => I18N::translateContext('NOMINATIVE', 'Ramadan'),
-                /* I18N: http://en.wikipedia.org/wiki/Shawwal */
+                /* I18N: https://en.wikipedia.org/wiki/Shawwal */
                 10 => I18N::translateContext('NOMINATIVE', 'Shawwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
                 11 => I18N::translateContext('NOMINATIVE', 'Dhu al-Qi’dah'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah */
                 12 => I18N::translateContext('NOMINATIVE', 'Dhu al-Hijjah'),
             ];
         }
@@ -124,29 +124,29 @@ class HijriDate extends AbstractCalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                /* I18N: http://en.wikipedia.org/wiki/Muharram */
+                /* I18N: https://en.wikipedia.org/wiki/Muharram */
                 1  => I18N::translateContext('GENITIVE', 'Muharram'),
-                /* I18N: http://en.wikipedia.org/wiki/Safar */
+                /* I18N: https://en.wikipedia.org/wiki/Safar */
                 2  => I18N::translateContext('GENITIVE', 'Safar'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal */
                 3  => I18N::translateContext('GENITIVE', 'Rabi’ al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani */
                 4  => I18N::translateContext('GENITIVE', 'Rabi’ al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal */
                 5  => I18N::translateContext('GENITIVE', 'Jumada al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-thani */
                 6  => I18N::translateContext('GENITIVE', 'Jumada al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Rajab */
+                /* I18N: https://en.wikipedia.org/wiki/Rajab */
                 7  => I18N::translateContext('GENITIVE', 'Rajab'),
-                /* I18N: http://en.wikipedia.org/wiki/Sha%27aban */
+                /* I18N: https://en.wikipedia.org/wiki/Sha%27aban */
                 8  => I18N::translateContext('GENITIVE', 'Sha’aban'),
-                /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
+                /* I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
                 9  => I18N::translateContext('GENITIVE', 'Ramadan'),
-                /* I18N: http://en.wikipedia.org/wiki/Shawwal */
+                /* I18N: https://en.wikipedia.org/wiki/Shawwal */
                 10 => I18N::translateContext('GENITIVE', 'Shawwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
                 11 => I18N::translateContext('GENITIVE', 'Dhu al-Qi’dah'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah */
                 12 => I18N::translateContext('GENITIVE', 'Dhu al-Hijjah'),
             ];
         }
@@ -169,29 +169,29 @@ class HijriDate extends AbstractCalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                /* I18N: http://en.wikipedia.org/wiki/Muharram */
+                /* I18N: https://en.wikipedia.org/wiki/Muharram */
                 1  => I18N::translateContext('LOCATIVE', 'Muharram'),
-                /* I18N: http://en.wikipedia.org/wiki/Safar */
+                /* I18N: https://en.wikipedia.org/wiki/Safar */
                 2  => I18N::translateContext('LOCATIVE', 'Safar'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal */
                 3  => I18N::translateContext('LOCATIVE', 'Rabi’ al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani */
                 4  => I18N::translateContext('LOCATIVE', 'Rabi’ al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal */
                 5  => I18N::translateContext('LOCATIVE', 'Jumada al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-thani */
                 6  => I18N::translateContext('LOCATIVE', 'Jumada al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Rajab */
+                /* I18N: https://en.wikipedia.org/wiki/Rajab */
                 7  => I18N::translateContext('LOCATIVE', 'Rajab'),
-                /* I18N: http://en.wikipedia.org/wiki/Sha%27aban */
+                /* I18N: https://en.wikipedia.org/wiki/Sha%27aban */
                 8  => I18N::translateContext('LOCATIVE', 'Sha’aban'),
-                /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
+                /* I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
                 9  => I18N::translateContext('LOCATIVE', 'Ramadan'),
-                /* I18N: http://en.wikipedia.org/wiki/Shawwal */
+                /* I18N: https://en.wikipedia.org/wiki/Shawwal */
                 10 => I18N::translateContext('LOCATIVE', 'Shawwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
                 11 => I18N::translateContext('LOCATIVE', 'Dhu al-Qi’dah'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah */
                 12 => I18N::translateContext('LOCATIVE', 'Dhu al-Hijjah'),
             ];
         }
@@ -214,29 +214,29 @@ class HijriDate extends AbstractCalendarDate
         if ($translated_month_names === null) {
             $translated_month_names = [
                 0  => '',
-                /* I18N: http://en.wikipedia.org/wiki/Muharram */
+                /* I18N: https://en.wikipedia.org/wiki/Muharram */
                 1  => I18N::translateContext('INSTRUMENTAL', 'Muharram'),
-                /* I18N: http://en.wikipedia.org/wiki/Safar */
+                /* I18N: https://en.wikipedia.org/wiki/Safar */
                 2  => I18N::translateContext('INSTRUMENTAL', 'Safar'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal */
                 3  => I18N::translateContext('INSTRUMENTAL', 'Rabi’ al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani */
                 4  => I18N::translateContext('INSTRUMENTAL', 'Rabi’ al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal */
                 5  => I18N::translateContext('INSTRUMENTAL', 'Jumada al-awwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Jumada_al-thani */
+                /* I18N: https://en.wikipedia.org/wiki/Jumada_al-thani */
                 6  => I18N::translateContext('INSTRUMENTAL', 'Jumada al-thani'),
-                /* I18N: http://en.wikipedia.org/wiki/Rajab */
+                /* I18N: https://en.wikipedia.org/wiki/Rajab */
                 7  => I18N::translateContext('INSTRUMENTAL', 'Rajab'),
-                /* I18N: http://en.wikipedia.org/wiki/Sha%27aban */
+                /* I18N: https://en.wikipedia.org/wiki/Sha%27aban */
                 8  => I18N::translateContext('INSTRUMENTAL', 'Sha’aban'),
-                /* I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
+                /* I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29 */
                 9  => I18N::translateContext('INSTRUMENTAL', 'Ramadan'),
-                /* I18N: http://en.wikipedia.org/wiki/Shawwal */
+                /* I18N: https://en.wikipedia.org/wiki/Shawwal */
                 10 => I18N::translateContext('INSTRUMENTAL', 'Shawwal'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah */
                 11 => I18N::translateContext('INSTRUMENTAL', 'Dhu al-Qi’dah'),
-                /* I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah */
+                /* I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah */
                 12 => I18N::translateContext('INSTRUMENTAL', 'Dhu al-Hijjah'),
             ];
         }

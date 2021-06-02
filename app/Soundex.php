@@ -3487,9 +3487,9 @@ class Soundex
     public static function getAlgorithms(): array
     {
         return [
-            /* I18N: http://en.wikipedia.org/wiki/Soundex */
+            /* I18N: https://en.wikipedia.org/wiki/Soundex */
             'std' => I18N::translate('Russell'),
-            /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
+            /* I18N: https://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
             'dm'  => I18N::translate('Daitch-Mokotoff'),
         ];
     }

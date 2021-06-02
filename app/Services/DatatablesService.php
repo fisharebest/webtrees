@@ -32,7 +32,7 @@ use function strtr;
 /**
  * Paginate and search queries for datatables.
  *
- * @link http://www.datatables.net/usage/server-side
+ * @link https://www.datatables.net/usage/server-side
  */
 class DatatablesService
 {

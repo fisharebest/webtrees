@@ -2048,7 +2048,6 @@ class RelationshipService
                     // https://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
                     return self::legacyCousinName($up + $down - 3, $sex2);
                 case 'es':
-                    // Source: Wes Groleau. See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html
                     if ($down === $up) {
                         return self::legacyCousinName($cousin, $sex2);
                     }
@@ -2067,7 +2066,7 @@ class RelationshipService
 
                     return self::legacyCousinName2($cousin + 1, $sex2, $this->legacyNameAlgorithm('sib' . $descent));
 
-                case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
+                case 'en_AU': // See: https://en.wikipedia.org/wiki/File:CousinTree.svg
                 case 'en_GB':
                 case 'en_US':
                 default:
@@ -2076,11 +2075,11 @@ class RelationshipService
                             return self::legacyCousinName($cousin, $sex2);
                         case 1:
                             if ($up > $down) {
-                                /* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+                                /* I18N: %s=“fifth cousin”, etc. */
                                 return I18N::translate('%s once removed ascending', self::legacyCousinName($cousin, $sex2));
                             }
 
-                            /* I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
+                            /* I18N: %s=“fifth cousin”, etc. */
 
                             return I18N::translate('%s once removed descending', self::legacyCousinName($cousin, $sex2));
                         case 2:

@@ -105,7 +105,7 @@ class BadBotBlocker implements MiddlewareInterface
     /**
      * Some search engines operate from designated IP addresses.
      *
-     * @see http://www.apple.com/go/applebot
+     * @see https://www.apple.com/go/applebot
      * @see https://help.duckduckgo.com/duckduckgo-help-pages/results/duckduckbot
      */
     private const ROBOT_IPS = [
