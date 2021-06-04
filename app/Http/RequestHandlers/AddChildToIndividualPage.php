@@ -24,11 +24,13 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_map;
 use function assert;
 use function is_string;
 use function route;
@@ -57,12 +59,31 @@ class AddChildToIndividualPage implements RequestHandlerInterface
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Create a dummy individual, so that we can create new/empty facts.
-        $element = Registry::elementFactory()->make('INDI:NAME');
-        $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
-        $facts   = [
+        $dummy = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+
+        // Default names facts.
+        $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
+
+        switch ($individual->sex()) {
+            case 'M':
+                $names = $surname_tradition->newChildNames($individual, null, 'U');
+                break;
+
+            case 'F':
+                $names = $surname_tradition->newChildNames(null, $individual, 'U');
+                break;
+
+            default:
+                $names = $surname_tradition->newChildNames(null, null, 'U');
+                break;
+        }
+
+        $name_facts = array_map(fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
+
+        $facts = [
             'i' => [
                 new Fact('1 SEX ', $dummy, ''),
-                new Fact('1 NAME ' . $element->default($tree), $dummy, ''),
+                ...$name_facts,
                 new Fact('1 BIRT', $dummy, ''),
                 new Fact('1 DEAT', $dummy, ''),
             ],

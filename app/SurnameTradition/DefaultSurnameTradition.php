@@ -19,6 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
+
+use function array_filter;
+use function array_keys;
+use function array_map;
+use function implode;
+use function in_array;
+
 /**
  * All family members keep their original surname
  */
@@ -57,48 +66,95 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What names are given to a new child
+     * What name is given to a new child
      *
-     * @param string $father_name A GEDCOM NAME
-     * @param string $mother_name A GEDCOM NAME
-     * @param string $child_sex   M, F or U
+     * @param Individual|null $father
+     * @param Individual|null $mother
+     * @param string          $sex
      *
-     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string>
      */
-    public function newChildNames(string $father_name, string $mother_name, string $child_sex): array
+    public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
         return [
-            'NAME' => '//',
+            $this->buildName('//', ['TYPE' => 'birth']),
         ];
     }
 
     /**
-     * What names are given to a new parent
+     * What name is given to a new parent
      *
-     * @param string $child_name A GEDCOM NAME
-     * @param string $parent_sex M, F or U
+     * @param Individual $child
+     * @param string     $sex
      *
-     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string>
      */
-    public function newParentNames(string $child_name, string $parent_sex): array
+    public function newParentNames(Individual $child, string $sex): array
     {
         return [
-            'NAME' => '//',
+            $this->buildName('//', ['TYPE' => 'birth']),
         ];
     }
 
     /**
      * What names are given to a new spouse
      *
-     * @param string $spouse_name A GEDCOM NAME
-     * @param string $spouse_sex  M, F or U
+     * @param Individual $spouse
+     * @param string     $sex
      *
-     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string>
      */
-    public function newSpouseNames(string $spouse_name, string $spouse_sex): array
+    public function newSpouseNames(Individual $spouse, string $sex): array
     {
         return [
-            'NAME' => '//',
+            $this->buildName('//', ['TYPE' => 'birth']),
         ];
+    }
+
+    /**
+     * Build a GEDCOM name record
+     *
+     * @param string               $name
+     * @param array<string,string> $parts
+     *
+     * @return string
+     */
+    protected function buildName(string $name, array $parts): string
+    {
+        $parts = array_filter($parts);
+
+        $parts = array_map(
+            fn (string $tag, string $value): string => "\n2 " . $tag . ' ' . $value,
+            array_keys($parts),
+            $parts
+        );
+
+        if ($name === '') {
+            return '1 NAME' . implode($parts);
+        }
+
+        return '1 NAME ' . $name . implode($parts);
+    }
+
+    /**
+     * Extract an individual's name.
+     *
+     * @param Individual|null $individual
+     *
+     * @return string
+     */
+    protected function extractName(?Individual $individual): string
+    {
+        if ($individual instanceof Individual) {
+            $fact = $individual
+                ->facts(['NAME'])
+                ->first(fn (Fact $fact): bool => in_array($fact->attribute('TYPE'), ['', 'birth', 'change'], true));
+
+            if ($fact instanceof Fact) {
+                return $fact->value();
+            }
+        }
+
+        return '';
     }
 }

@@ -19,7 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class DefaultSurnameTradition
@@ -27,18 +30,6 @@ use Fisharebest\Webtrees\TestCase;
 class DefaultSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
-
-    /**
-     * Prepare the environment for these tests
-     *
-     * @return void
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->surname_tradition = new DefaultSurnameTradition();
-    }
 
     /**
      * Test whether married surnames are used
@@ -65,36 +56,6 @@ class DefaultSurnameTraditionTest extends TestCase
     }
 
     /**
-     * Test new son names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewSonNames(): void
-    {
-        self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'M')
-        );
-    }
-
-    /**
-     * Test new daughter names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewDaughterNames(): void
-    {
-        self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'F')
-        );
-    }
-
-    /**
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
@@ -103,39 +64,31 @@ class DefaultSurnameTraditionTest extends TestCase
      */
     public function testNewChildNames(): void
     {
-        self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newChildNames('John /White/', 'Mary /Black/', 'U')
-        );
-    }
+        $father_fact = $this->createStub(Fact::class);
+        $father_fact->expects(self::any())->method('value')->willReturn('Chris /White/');
 
-    /**
-     * Test new father names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewFatherNames(): void
-    {
-        self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newParentNames('John /White/', 'M')
-        );
-    }
+        $father = $this->createStub(Individual::class);
+        $father->expects(self::any())->method('facts')->willReturn(new Collection([$father]));
 
-    /**
-     * Test new mother names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewMotherNames(): void
-    {
+        $mother_fact = $this->createStub(Fact::class);
+        $mother_fact->expects(self::any())->method('value')->willReturn('Chris /White/');
+
+        $mother = $this->createStub(Individual::class);
+        $mother->expects(self::any())->method('facts')->willReturn(new Collection([$mother_fact]));
+
         self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newParentNames('John /White/', 'F')
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newChildNames($father, $mother, 'M')
+        );
+
+        self::assertSame(
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newChildNames($father, $mother, 'F')
+        );
+
+        self::assertSame(
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newChildNames($father, $mother, 'U')
         );
     }
 
@@ -148,39 +101,25 @@ class DefaultSurnameTraditionTest extends TestCase
      */
     public function testNewParentNames(): void
     {
-        self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newParentNames('John /White/', 'U')
-        );
-    }
+        $fact = $this->createStub(Fact::class);
+        $fact->expects(self::any())->method('value')->willReturn('Chris /White/');
 
-    /**
-     * Test new husband names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewHusbandNames(): void
-    {
-        self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newSpouseNames('Mary /Black/', 'M')
-        );
-    }
+        $individual = $this->createStub(Individual::class);
+        $individual->expects(self::any())->method('facts')->willReturn(new Collection([$fact]));
 
-    /**
-     * Test new wife names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewWifeNames(): void
-    {
         self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newSpouseNames('John /White/', 'F')
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newParentNames($individual, 'M')
+        );
+
+        self::assertSame(
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newParentNames($individual, 'F')
+        );
+
+        self::assertSame(
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newParentNames($individual, 'U')
         );
     }
 
@@ -193,9 +132,37 @@ class DefaultSurnameTraditionTest extends TestCase
      */
     public function testNewSpouseNames(): void
     {
+        $fact = $this->createStub(Fact::class);
+        $fact->expects(self::any())->method('value')->willReturn('Chris /White/');
+
+        $individual = $this->createStub(Individual::class);
+        $individual->expects(self::any())->method('facts')->willReturn(new Collection([$fact]));
+
         self::assertSame(
-            ['NAME' => '//'],
-            $this->surname_tradition->newSpouseNames('Chris /Green/', 'U')
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newSpouseNames($individual, 'M')
         );
+
+        self::assertSame(
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newSpouseNames($individual, 'F')
+        );
+
+        self::assertSame(
+            ["1 NAME //\n2 TYPE birth"],
+            $this->surname_tradition->newSpouseNames($individual, 'U')
+        );
+    }
+
+    /**
+     * Prepare the environment for these tests
+     *
+     * @return void
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->surname_tradition = new DefaultSurnameTradition();
     }
 }

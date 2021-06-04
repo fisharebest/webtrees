@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Individual;
+
 /**
  * Children take one surname from the mother and one surname from the father.
  *
@@ -29,76 +31,83 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 class PortugueseSurnameTradition extends DefaultSurnameTradition
 {
     /**
-     * What names are given to a new child
+     * What name is given to a new child
      *
-     * @param string $father_name A GEDCOM NAME
-     * @param string $mother_name A GEDCOM NAME
-     * @param string $child_sex   M, F or U
+     * @param Individual|null $father
+     * @param Individual|null $mother
+     * @param string          $sex
      *
-     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string>
      */
-    public function newChildNames(string $father_name, string $mother_name, string $child_sex): array
+    public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
-        if (preg_match(self::REGEX_SURNS, $father_name, $match_father)) {
+        if (preg_match(self::REGEX_SURNS, $this->extractName($father), $match_father)) {
             $father_surname = $match_father['SURN2'];
         } else {
             $father_surname = '';
         }
 
-        if (preg_match(self::REGEX_SURNS, $mother_name, $match_mother)) {
+        if (preg_match(self::REGEX_SURNS, $this->extractName($mother), $match_mother)) {
             $mother_surname = $match_mother['SURN2'];
         } else {
             $mother_surname = '';
         }
 
         return [
-            'NAME' => '/' . $father_surname . '/ /' . $mother_surname . '/',
-            'SURN' => trim($father_surname . ',' . $mother_surname, ','),
+            $this->buildName('/' . $father_surname . '/ /' . $mother_surname . '/', [
+                'TYPE' => 'birth',
+                'SURN' => trim($father_surname . ',' . $mother_surname, ','),
+            ]),
         ];
     }
 
     /**
-     * What names are given to a new parent
+     * What name is given to a new parent
      *
-     * @param string $child_name A GEDCOM NAME
-     * @param string $parent_sex M, F or U
+     * @param Individual $child
+     * @param string     $sex
      *
-     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string>
      */
-    public function newParentNames(string $child_name, string $parent_sex): array
+    public function newParentNames(Individual $child, string $sex): array
     {
-        if (preg_match(self::REGEX_SURNS, $child_name, $match)) {
-            switch ($parent_sex) {
+        if (preg_match(self::REGEX_SURNS, $this->extractName($child), $match)) {
+            switch ($sex) {
                 case 'M':
                     return [
-                        'NAME' => '// /' . $match['SURN1'] . '/',
-                        'SURN' => $match['SURN1'],
+                        $this->buildName('// /' . $match['SURN1'] . '/', [
+                            'TYPE' => 'birth',
+                            'SURN' => $match['SURN1'],
+                        ]),
                     ];
+
                 case 'F':
                     return [
-                        'NAME' => '// /' . $match['SURN2'] . '/',
-                        'SURN' => $match['SURN2'],
+                        $this->buildName('// /' . $match['SURN2'] . '/', [
+                            'TYPE' => 'birth',
+                            'SURN' => $match['SURN2'],
+                        ]),
                     ];
             }
         }
 
         return [
-            'NAME' => '// //',
+            $this->buildName('// //', ['TYPE' => 'birth']),
         ];
     }
 
     /**
      * What names are given to a new spouse
      *
-     * @param string $spouse_name A GEDCOM NAME
-     * @param string $spouse_sex  M, F or U
+     * @param Individual $spouse
+     * @param string     $sex
      *
-     * @return array<string,string> Associative array of GEDCOM name parts (SURN, _MARNM, etc.)
+     * @return array<string>
      */
-    public function newSpouseNames(string $spouse_name, string $spouse_sex): array
+    public function newSpouseNames(Individual $spouse, string $sex): array
     {
         return [
-            'NAME' => '// //',
+            $this->buildName('// //', ['TYPE' => 'birth']),
         ];
     }
 }
