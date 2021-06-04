@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Elements\AddressLine;
+use Fisharebest\Webtrees\Elements\AddressWebPage;
+use Fisharebest\Webtrees\Elements\NameOfRepository;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -43,8 +47,15 @@ class CreateRepositoryModal implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
+        $elements = [
+            'name'    => new NameOfRepository(I18N::translateContext('Repository', 'Name')),
+            'address' => new AddressLine(I18N::translate('Address')),
+            'url'     => new AddressWebPage(I18N::translate('URL')),
+        ];
+
         return response(view('modals/create-repository', [
-            'tree' => $tree,
+            'elements' => $elements,
+            'tree'     => $tree,
         ]));
     }
 }

@@ -1,11 +1,13 @@
 <?php
 
+use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateRepositoryAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var Tree $tree
+ * @var array<string,ElementInterface> $elements
+ * @var Tree                           $tree
  */
 
 ?>
@@ -16,7 +18,7 @@ use Fisharebest\Webtrees\Tree;
     <?= view('modals/header', ['title' => I18N::translate('Create a repository')]) ?>
 
     <div class="modal-body">
-        <?= view('modals/repository-fields') ?>
+        <?= view('modals/repository-fields', ['elements' => $elements, 'tree' => $tree]) ?>
     </div>
 
     <?= view('modals/footer-save-cancel') ?>

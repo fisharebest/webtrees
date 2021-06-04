@@ -49,7 +49,9 @@ class CreateRepositoryAction implements RequestHandlerInterface
         assert($tree instanceof Tree);
 
         $params              = (array) $request->getParsedBody();
-        $name                = $params['repository-name'];
+        $name                = $params['name'];
+        $address             = $params['address'];
+        $url                 = $params['url'];
         $privacy_restriction = $params['privacy-restriction'];
         $edit_restriction    = $params['edit-restriction'];
 
@@ -57,6 +59,14 @@ class CreateRepositoryAction implements RequestHandlerInterface
         $name = trim(preg_replace('/\s+/', ' ', $name));
 
         $gedcom = "0 @@ REPO\n1 NAME " . $name;
+
+        if ($address !== '') {
+            $gedcom .= "\n1 ADDR " . strtr($address, ["\r\n" => "\n2 CONT "]);
+        }
+
+        if ($url !== '') {
+            $gedcom .= "\n1 WWW " . $url;
+        }
 
         if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
             $gedcom .= "\n1 RESN " . $privacy_restriction;
