@@ -60,11 +60,11 @@ class CustomTagsGenPluswin extends AbstractModule implements ModuleConfigInterfa
             'FAM:*:DATE:_ZUS'         => new CustomElement(I18N::translate('Additional information')),
             'FAM:*:OBJE:_PRIM'        => new CustomElement(I18N::translate('Highlighted image')),
             'FAM:*:PLAC:_AON'         => new CustomElement(I18N::translate('Alternative place name')),
-            // I18N: http://foko.genealogy.net
+            // I18N: https://foko.genealogy.net
             'FAM:*:PLAC:_FCTRY'       => new CustomElement(I18N::translate('FOKO country')),
-            // I18N: http://foko.genealogy.net
+            // I18N: https://foko.genealogy.net
             'FAM:*:PLAC:_FSTAE'       => new CustomElement(I18N::translate('FOKO country')),
-            // I18N: http://gov.genealogy.net
+            // I18N: https://gov.genealogy.net
             'FAM:*:PLAC:_GOV'         => new GovIdentifier(I18N::translate('GOV identifier')),
             // I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
             'FAM:*:PLAC:_MAIDENHEAD'  => new MaidenheadLocator(I18N::translate('Maidenhead location code')),
@@ -92,11 +92,11 @@ class CustomTagsGenPluswin extends AbstractModule implements ModuleConfigInterfa
             'INDI:*:DATE:_ZUS'        => new CustomElement(I18N::translate('Additional information')),
             'INDI:*:OBJE:_PRIM'       => new CustomElement(I18N::translate('Highlighted image')),
             'INDI:*:PLAC:_AON'        => new CustomElement(I18N::translate('Alternative place name')),
-            // I18N: http://foko.genealogy.net
+            // I18N: https://foko.genealogy.net
             'INDI:*:PLAC:_FCTRY'      => new CustomElement(I18N::translate('FOKO country')),
-            // I18N: http://foko.genealogy.net
+            // I18N: https://foko.genealogy.net
             'INDI:*:PLAC:_FSTAE'      => new CustomElement(I18N::translate('FOKO country')),
-            // I18N: http://gov.genealogy.net
+            // I18N: https://gov.genealogy.net
             'INDI:*:PLAC:_GOV'        => new GovIdentifier(I18N::translate('GOV identifier')),
             // I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
             'INDI:*:PLAC:_MAIDENHEAD' => new MaidenheadLocator(I18N::translate('Maidenhead location code')),

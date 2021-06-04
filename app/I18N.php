@@ -259,7 +259,7 @@ class I18N
      */
     public static function dateFormat(): string
     {
-        /* I18N: This is the format string for full dates. See http://php.net/date for codes */
+        /* I18N: This is the format string for full dates. See https://php.net/date for codes */
         return self::$translator->translate('%j %F %Y');
     }
 
@@ -619,7 +619,7 @@ class I18N
      */
     public static function timeFormat(): string
     {
-        /* I18N: This is the format string for the time-of-day. See http://php.net/date for codes */
+        /* I18N: This is the format string for the time-of-day. See https://php.net/date for codes */
         return self::$translator->translate('%H:%i:%s');
     }
 

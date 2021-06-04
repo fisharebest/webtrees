@@ -953,289 +953,289 @@ msgstr "Nonidi"
 msgid "Decidi"
 msgstr "Decidi"
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:83
 msgctxt "NOMINATIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:85
 msgctxt "NOMINATIVE"
 msgid "Safar"
 msgstr "Safar"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi ’al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:89
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-thani"
 msgstr "Rabi ’al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:91
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:93
 msgctxt "NOMINATIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:95
 msgctxt "NOMINATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 msgctxt "NOMINATIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:99
 msgctxt "NOMINATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:101
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:103
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:128
 msgctxt "GENITIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:130
 msgctxt "GENITIVE"
 msgid "Safar"
 msgstr "Safar"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:132
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi ’al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:134
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
 msgstr "Rabi ’al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:136
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:138
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:142
 msgctxt "GENITIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:144
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:148
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:150
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:173
 msgctxt "LOCATIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:175
 msgctxt "LOCATIVE"
 msgid "Safar"
 msgstr "Safar"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:177
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi ’al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:179
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:181
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:183
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:185
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:187
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:189
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:191
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:193
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:195
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu al-Hijjah"
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:218
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
 msgstr "Muharram"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
 msgstr "Safar"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi’ al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:224
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
 msgstr "Rabi’ al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:226
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
 msgstr "Jumada al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:228
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
 msgstr "Jumada al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:230
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:232
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:234
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:236
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:238
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu al-Qi’dah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:240
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
@@ -1925,13 +1925,13 @@ msgctxt "INSTRUMENTAL"
 msgid "Adar II"
 msgstr "Adar II"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
 msgstr "%s&nbsp;BCE"
 
-#. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
@@ -2999,7 +2999,7 @@ msgstr "Draper, Utah, Unol Daleithiau"
 msgid "Edmonton, Alberta, Canada"
 msgstr "Edmonton, Alberta, Canada"
 
-#. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
+#. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
 msgid "Endowment House"
 msgstr "Tŷ Gwaddol"
@@ -3341,7 +3341,7 @@ msgstr "Perth, Awstralia"
 msgid "Phoenix, Arizona, United States"
 msgstr "Phoenix, Arizona, Unol Daleithiau"
 
-#. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
+#. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/President_of_the_Church
 #: app/Elements/TempleCode.php:161
 msgid "President’s Office"
 msgstr "Swyddfa'r Llywydd"
@@ -5862,7 +5862,7 @@ msgstr "Rhowch gyfeiriad e-bost dilys."
 msgid "You are not allowed to send messages that contain external links."
 msgstr "Nid oes gennych ganiatâd i anfon negeseuon sy'n cynnwys dolenni allanol."
 
-#. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
+#. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:124
 #: app/Http/RequestHandlers/RegisterAction.php:251
 #, php-format
@@ -7336,7 +7336,7 @@ msgstr "Dileu defnyddwyr anweithredol"
 msgid "User verification"
 msgstr "Gwirio defnyddiwr"
 
-#. I18N: This is the format string for full dates. See http://php.net/date for codes
+#. I18N: This is the format string for full dates. See https://php.net/date for codes
 #: app/I18N.php:263
 msgid "%j %F %Y"
 msgstr "% j %F% Y"
@@ -7346,7 +7346,7 @@ msgstr "% j %F% Y"
 msgid ", "
 msgstr ", "
 
-#. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
+#. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:623
 msgid "%H:%i:%s"
 msgstr "Y-m-d H:i:s"
@@ -7733,7 +7733,7 @@ msgstr "Rhaid i chi ddewis unigolyn a'r math o siart yn y dewisiadau bloc"
 msgid "The charts menu."
 msgstr "Y ddewislen siartiau."
 
-#. I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com
+#. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
 #: app/Module/CkeditorModule.php:43
 msgid "CKEditor™"
 msgstr "CKEditor ™"
@@ -8286,7 +8286,7 @@ msgstr "Enw crefyddol"
 msgid "Binary data object"
 msgstr "Gwrthrych data deuaidd"
 
-#. I18N: http://gov.genealogy.net
+#. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
 #: app/Module/CustomTagsGedcomL.php:232 app/Module/CustomTagsGenPluswin.php:68
 #: app/Module/CustomTagsGenPluswin.php:100
@@ -8455,7 +8455,7 @@ msgstr "Gwybodaeth ychwanegol"
 msgid "Alternative place name"
 msgstr "Enw lle amgen"
 
-#. I18N: http://foko.genealogy.net
+#. I18N: https://foko.genealogy.net
 #: app/Module/CustomTagsGenPluswin.php:64
 #: app/Module/CustomTagsGenPluswin.php:66
 #: app/Module/CustomTagsGenPluswin.php:96
@@ -8744,7 +8744,7 @@ msgstr "Siart ffan"
 msgid "A fan chart of an individual’s ancestors."
 msgstr "Siart ffan o hynafiaid unigolyn."
 
-#. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
+#. I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
@@ -8852,7 +8852,7 @@ msgstr "Cydweddu'r union destun, oni bai ei fod yn digwydd yng nghanol gair."
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
 msgstr "Defnyddio “?” i gydweddu â nod sengl, defnyddio “*” i gydweddu â sero neu fwy o nodau."
 
-#. I18N: http://en.wikipedia.org/wiki/Regular_expression
+#. I18N: https://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:106
 msgid "Regular expression"
 msgstr "Mynegiad rheolaidd"
@@ -10503,7 +10503,7 @@ msgstr "Copïo URL y cofnod i'r clipfwrdd"
 msgid "Generate sitemap files for search engines."
 msgstr "Cynhyrchu ffeiliau map safle ar gyfer peiriannau chwilio."
 
-#. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
+#. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:163
 msgid "Sitemaps"
 msgstr "Mapiau safle"
@@ -14084,13 +14084,13 @@ msgstr "Golygwch yr unigolyn hwn a rhoi eich manylion chi yn lle eu manylion."
 msgid "This website is being upgraded. Try again in a few minutes."
 msgstr "Mae'r wefan hon yn cael ei huwchraddio. Rhowch gynnig arall arni mewn ychydig funudau."
 
-#. I18N: http://en.wikipedia.org/wiki/Soundex
+#. I18N: https://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
 #: resources/views/search-phonetic-page.phtml:72
 msgid "Russell"
 msgstr "Russell"
 
-#. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
+#. I18N: https://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:43
 #: resources/views/search-phonetic-page.phtml:78
 msgid "Daitch-Mokotoff"
@@ -19598,9 +19598,9 @@ msgstr ""
 msgid "The URL was copied to the clipboard"
 msgstr ""
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
+#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:23
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
 
 #. I18N: Label for a configuration option

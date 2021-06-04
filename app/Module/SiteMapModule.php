@@ -159,7 +159,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     public function title(): string
     {
-        /* I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps */
+        /* I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps */
         return I18N::translate('Sitemaps');
     }
 

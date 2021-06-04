@@ -110,7 +110,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
         return [
             (object) [
                 'accessToken' => $api_key,
-                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
+                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="https://www.openstreetmap.org/copyrightt">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
                 'default'     => false,
                 'id'          => 'dark-v10',
                 'label'       => 'Dark',
@@ -123,7 +123,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
             ],
             (object) [
                 'accessToken' => $api_key,
-                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
+                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="https://www.openstreetmap.org/copyrightt">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
                 'default'     => true,
                 'id'          => 'light-v10',
                 'label'       => 'Light',
@@ -136,7 +136,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
             ],
             (object) [
                 'accessToken' => $api_key,
-                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
+                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="https://www.openstreetmap.org/copyrightt">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
                 'default'     => false,
                 'id'          => 'outdoors-v11',
                 'label'       => 'Outdoors',
@@ -149,7 +149,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
             ],
             (object) [
                 'accessToken' => $api_key,
-                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
+                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="https://www.openstreetmap.org/copyrightt">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
                 'default'     => false,
                 'id'          => 'satellite-v9',
                 'label'       => 'Satellite',
@@ -162,7 +162,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
             ],
             (object) [
                 'accessToken' => $api_key,
-                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
+                'attribution' => '©<a href="https://www.mapbox.com/about/maps">Mapbox</a> ©<a href="https://www.openstreetmap.org/copyrightt">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback">Improve this map</a></strong>',
                 'default'     => false,
                 'id'          => 'streets-v11',
                 'label'       => 'Streets',

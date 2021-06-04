@@ -23,12 +23,15 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_map;
 use function assert;
 use function is_string;
 use function route;
@@ -63,10 +66,18 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         $element = Registry::elementFactory()->make('INDI:NAME');
         $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
         $dummyf  = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
-        $facts   = [
+
+        // Default names facts.
+        $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
+        $spouse            = $family->spouses()->first();
+        assert($spouse instanceof Individual);
+        $names      = $surname_tradition->newSpouseNames($spouse, $sex);
+        $name_facts = array_map(fn (string $gedcom): Fact => new Fact($gedcom, $dummyi, ''), $names);
+
+        $facts = [
             'i' => [
                 new Fact('1 SEX ' . $sex, $dummyi, ''),
-                new Fact('1 NAME ' . $element->default($tree), $dummyi, ''),
+                ...$name_facts,
                 new Fact('1 BIRT', $dummyi, ''),
                 new Fact('1 DEAT', $dummyi, ''),
             ],

@@ -279,7 +279,7 @@ class UpgradeService
      * Fetching the remote file can be slow, so check infrequently, and cache the result.
      * Pass the current versions of webtrees, PHP and MySQL, as the response
      * may be different for each. The server logs are used to generate
-     * installation statistics which can be found at http://dev.webtrees.net/statistics.html
+     * installation statistics which can be found at https://dev.webtrees.net/statistics.html
      *
      * @return string
      */

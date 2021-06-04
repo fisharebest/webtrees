@@ -161,7 +161,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      */
     public function chartTitle(Individual $individual): string
     {
-        /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
+        /* I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name */
         return I18N::translate('Fan chart of %s', $individual->fullName());
     }
 

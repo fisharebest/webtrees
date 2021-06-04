@@ -19,7 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Support\Collection;
 
 /**
  * Test harness for the class SpanishSurnameTradition
@@ -27,18 +30,6 @@ use Fisharebest\Webtrees\TestCase;
 class SpanishSurnameTraditionTest extends TestCase
 {
     private SurnameTraditionInterface $surname_tradition;
-
-    /**
-     * Prepare the environment for these tests
-     *
-     * @return void
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->surname_tradition = new SpanishSurnameTradition();
-    }
 
     /**
      * Test whether married surnames are used
@@ -65,42 +56,6 @@ class SpanishSurnameTraditionTest extends TestCase
     }
 
     /**
-     * Test new son names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewSonNames(): void
-    {
-        self::assertSame(
-            [
-                'NAME' => '/Garcia/ /Ruiz/',
-                'SURN' => 'Garcia,Ruiz',
-            ],
-            $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
-        );
-    }
-
-    /**
-     * Test new daughter names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewDaughterNames(): void
-    {
-        self::assertSame(
-            [
-                'NAME' => '/Garcia/ /Ruiz/',
-                'SURN' => 'Garcia,Ruiz',
-            ],
-            $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
-        );
-    }
-
-    /**
      * Test new child names
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
@@ -109,12 +64,31 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewChildNames(): void
     {
+        $father_fact = $this->createStub(Fact::class);
+        $father_fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
+
+        $father = $this->createStub(Individual::class);
+        $father->expects(self::any())->method('facts')->willReturn(new Collection([$father_fact]));
+
+        $mother_fact = $this->createStub(Fact::class);
+        $mother_fact->expects(self::any())->method('value')->willReturn('Gabriel /Ruiz/ /Lorca/');
+
+        $mother = $this->createStub(Individual::class);
+        $mother->expects(self::any())->method('facts')->willReturn(new Collection([$mother_fact]));
+
         self::assertSame(
-            [
-                'NAME' => '/Garcia/ /Ruiz/',
-                'SURN' => 'Garcia,Ruiz',
-            ],
-            $this->surname_tradition->newChildNames('Gabriel /Garcia/ /Iglesias/', 'Maria /Ruiz/ /Lorca/', 'M')
+            ["1 NAME /Garcia/ /Ruiz/\n2 TYPE birth\n2 SURN Garcia,Ruiz"],
+            $this->surname_tradition->newChildNames($father, $mother, 'M')
+        );
+
+        self::assertSame(
+            ["1 NAME /Garcia/ /Ruiz/\n2 TYPE birth\n2 SURN Garcia,Ruiz"],
+            $this->surname_tradition->newChildNames($father, $mother, 'F')
+        );
+
+        self::assertSame(
+            ["1 NAME /Garcia/ /Ruiz/\n2 TYPE birth\n2 SURN Garcia,Ruiz"],
+            $this->surname_tradition->newChildNames($father, $mother, 'U')
         );
     }
 
@@ -128,11 +102,8 @@ class SpanishSurnameTraditionTest extends TestCase
     public function testNewChildNamesWithNoParentsNames(): void
     {
         self::assertSame(
-            [
-                'NAME' => '// //',
-                'SURN' => '',
-            ],
-            $this->surname_tradition->newChildNames('', '', 'U')
+            ["1 NAME // //\n2 TYPE birth"],
+            $this->surname_tradition->newChildNames(null, null, 'U')
         );
     }
 
@@ -143,57 +114,23 @@ class SpanishSurnameTraditionTest extends TestCase
      *
      * @return void
      */
-    public function testNewChildNamesCompunds(): void
+    public function testNewChildNamesCompound(): void
     {
-        self::assertSame(
-            [
-                'NAME' => '/Garcia/ /Ruiz/',
-                'SURN' => 'Garcia,Ruiz',
-            ],
-            $this->surname_tradition->newChildNames('Gabriel /Garcia Iglesias/', 'Maria /Ruiz Lorca/', 'M')
-        );
-        self::assertSame(
-            [
-                'NAME' => '/Garcia/ /Ruiz/',
-                'SURN' => 'Garcia,Ruiz',
-            ],
-            $this->surname_tradition->newChildNames('Gabriel /Garcia y Iglesias/', 'Maria /Ruiz y Lorca/', 'M')
-        );
-    }
+        $father_fact = $this->createStub(Fact::class);
+        $father_fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ y /Iglesias/');
 
-    /**
-     * Test new father names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewFatherNames(): void
-    {
-        self::assertSame(
-            [
-                'NAME' => '/Garcia/ //',
-                'SURN' => 'Garcia',
-            ],
-            $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'M')
-        );
-    }
+        $father = $this->createStub(Individual::class);
+        $father->expects(self::any())->method('facts')->willReturn(new Collection([$father_fact]));
 
-    /**
-     * Test new mother names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewMotherNames(): void
-    {
+        $mother_fact = $this->createStub(Fact::class);
+        $mother_fact->expects(self::any())->method('value')->willReturn('Gabriel /Ruiz/ y /Lorca/');
+
+        $mother = $this->createStub(Individual::class);
+        $mother->expects(self::any())->method('facts')->willReturn(new Collection([$mother_fact]));
+
         self::assertSame(
-            [
-                'NAME' => '/Iglesias/ //',
-                'SURN' => 'Iglesias',
-            ],
-            $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'F')
+            ["1 NAME /Garcia/ /Ruiz/\n2 TYPE birth\n2 SURN Garcia,Ruiz"],
+            $this->surname_tradition->newChildNames($father, $mother, 'M')
         );
     }
 
@@ -206,39 +143,25 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewParentNames(): void
     {
-        self::assertSame(
-            ['NAME' => '// //'],
-            $this->surname_tradition->newParentNames('Gabriel /Garcia/ /Iglesias/', 'U')
-        );
-    }
+        $fact = $this->createStub(Fact::class);
+        $fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
 
-    /**
-     * Test new husband names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewHusbandNames(): void
-    {
-        self::assertSame(
-            ['NAME' => '// //'],
-            $this->surname_tradition->newSpouseNames('Maria /Ruiz/ /Lorca/', 'M')
-        );
-    }
+        $individual = $this->createStub(Individual::class);
+        $individual->expects(self::any())->method('facts')->willReturn(new Collection([$fact]));
 
-    /**
-     * Test new wife names
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition
-     *
-     * @return void
-     */
-    public function testNewWifeNames(): void
-    {
         self::assertSame(
-            ['NAME' => '// //'],
-            $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'F')
+            ["1 NAME /Garcia/ //\n2 TYPE birth\n2 SURN Garcia"],
+            $this->surname_tradition->newParentNames($individual, 'M')
+        );
+
+        self::assertSame(
+            ["1 NAME /Iglesias/ //\n2 TYPE birth\n2 SURN Iglesias"],
+            $this->surname_tradition->newParentNames($individual, 'F')
+        );
+
+        self::assertSame(
+            ["1 NAME // //\n2 TYPE birth"],
+            $this->surname_tradition->newParentNames($individual, 'U')
         );
     }
 
@@ -251,9 +174,37 @@ class SpanishSurnameTraditionTest extends TestCase
      */
     public function testNewSpouseNames(): void
     {
+        $fact = $this->createStub(Fact::class);
+        $fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
+
+        $individual = $this->createStub(Individual::class);
+        $individual->expects(self::any())->method('facts')->willReturn(new Collection([$fact]));
+
         self::assertSame(
-            ['NAME' => '// //'],
-            $this->surname_tradition->newSpouseNames('Gabriel /Garcia/ /Iglesias/', 'U')
+            ["1 NAME // //\n2 TYPE birth"],
+            $this->surname_tradition->newSpouseNames($individual, 'M')
         );
+
+        self::assertSame(
+            ["1 NAME // //\n2 TYPE birth"],
+            $this->surname_tradition->newSpouseNames($individual, 'F')
+        );
+
+        self::assertSame(
+            ["1 NAME // //\n2 TYPE birth"],
+            $this->surname_tradition->newSpouseNames($individual, 'U')
+        );
+    }
+
+    /**
+     * Prepare the environment for these tests
+     *
+     * @return void
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->surname_tradition = new SpanishSurnameTradition();
     }
 }

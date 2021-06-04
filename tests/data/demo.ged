@@ -22,7 +22,7 @@
 2 DATE 21 APR 1926
 2 PLAC Mayfair, London, England
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Elizabeth_II
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
 2 SOUR @X1103@
 3 PAGE District: St George Hanover Square, Year: 1926, Quarter: 2, Volume: 1a, Page: 583
 3 DATA
@@ -50,7 +50,7 @@
 2 PLAC City of Westminster, London, England
 2 ADDR The chapel at Buckingham Palace
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Elizabeth_II
+3 PAGE https://en.wikipedia.org/wiki/Elizabeth_II
 2 OBJE @X1148@
 2 ASSO @X1095@
 3 RELA godfather
@@ -88,7 +88,7 @@
 2 PLAC Sandringham, Norfolk, England
 2 ADDR York Cottage, Sandringham Estate
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Mary,_Princess_Royal_and_Countess_of_Harewood
+3 PAGE https://en.wikipedia.org/wiki/Mary,_Princess_Royal_and_Countess_of_Harewood
 2 OBJE @X1131@
 1 OBJE @X1108@
 1 FAMC @f2@
@@ -248,7 +248,7 @@
 2 DATE 10 JUN 1921
 2 PLAC Mon Repos, Corfu, Greece
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Prince_Philip,_Duke_of_Edinburgh
+3 PAGE https://en.wikipedia.org/wiki/Prince_Philip,_Duke_of_Edinburgh
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 22:15:22
@@ -371,7 +371,7 @@
 2 PLAC Oxford, Oxfordshire, England
 2 ADDR Radcliffe Infirmary
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Sophie,_Countess_of_Wessex
+3 PAGE https://en.wikipedia.org/wiki/Sophie,_Countess_of_Wessex
 1 NAME Sophie, Countess of Wessex
 2 TYPE married
 2 GIVN Sophie
@@ -390,7 +390,7 @@
 2 PLAC Frimley, Surrey, England
 2 ADDR Frimley Park Hospital
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Lady_Louise_Windsor
+3 PAGE https://en.wikipedia.org/wiki/Lady_Louise_Windsor
 0 @X1051@ INDI
 1 NAME James, Viscount Severn
 2 GIVN James Alexander Philip Theo
@@ -406,7 +406,7 @@
 2 PLAC Frimley, Surrey, England
 2 ADDR Frimley Park Hospital
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/James,_Viscount_Severn
+3 PAGE https://en.wikipedia.org/wiki/James,_Viscount_Severn
 0 @X1052@ INDI
 1 NAME Charles, Prince of Wales
 2 GIVN Charles Philip Arthur George
@@ -417,7 +417,7 @@
 2 PLAC City of Westminster, London, England
 2 ADDR Buckingham Palace
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Charles,_Prince_of_Wales
+3 PAGE https://en.wikipedia.org/wiki/Charles,_Prince_of_Wales
 2 OBJE @X1148@
 1 FAMC @f1@
 1 CHAN
@@ -630,7 +630,7 @@
 2 DATE 15 AUG 1950
 2 PLAC City of Westminster, London, England
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Anne,_Princess_Royal
+3 PAGE https://en.wikipedia.org/wiki/Anne,_Princess_Royal
 2 ADDR Clarence House, The Mall
 2 OBJE @X1162@
 1 FAMC @f1@
@@ -854,7 +854,7 @@
 2 DATE 19 FEB 1960
 2 PLAC City of Westminster, London, England
 2 SOUR @X1102@
-3 PAGE http://en.wikipedia.org/wiki/Prince_Andrew,_Duke_of_York
+3 PAGE https://en.wikipedia.org/wiki/Prince_Andrew,_Duke_of_York
 2 ADDR Buckingham Palace
 2 OBJE @X1148@
 1 FAMC @f1@
@@ -1883,7 +1883,7 @@
 0 @X1104@ OBJE
 1 FILE Elizabeth_II_greets_NASA_GSFC_employees,_May_8,_2007_edit.jpg
 2 TITL Queen Elizabeth II
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 21:22:49
@@ -1891,7 +1891,7 @@
 0 @X1105@ OBJE
 1 FILE Queen_Elizabeth_II_1929.jpg
 2 TITL Princess Elizabeth aged 3, 1929
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
 1 CHAN
 2 DATE 03 FEB 2013
 3 TIME 17:33:36
@@ -1899,7 +1899,7 @@
 0 @X1106@ OBJE
 1 FILE Philip_Alexius_de_Laszlo-Princess_Elizabeth_of_York,_Currently_Queen_Elizabeth_II_of_England,1933.jpg
 2 TITL Princess Elizabeth aged 7, 1933 Painting by Philip de László
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
 1 CHAN
 2 DATE 03 FEB 2013
 3 TIME 17:33:29
@@ -1907,7 +1907,7 @@
 0 @X1107@ OBJE
 1 FILE Elizabeth_and_Philip_1953.jpg
 2 TITL Coronation portrait of Queen Elizabeth II and the Duke of Edinburgh, June 1953
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Elizabeth_II on 24th May 2012
 1 CHAN
 2 DATE 03 FEB 2013
 3 TIME 17:34:23
@@ -1915,7 +1915,7 @@
 0 @X1108@ OBJE
 1 FILE Mary,_Princess_Royal_and_Countess_of_Harewood.jpg
 2 TITL Princess Mary, c. 1926
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Mary,_Princess_Royal_and_Countess_of_Harewood on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Mary,_Princess_Royal_and_Countess_of_Harewood on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 22:33:37
@@ -1938,7 +1938,7 @@
 0 @X1111@ OBJE
 1 FILE Camilla_Parker_Bowles_before_wedding_of_Prince_William.jpg
 2 TITL Camilla Parker Bowles before wedding of Prince William
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Camilla,_Duchess_of_Cornwall on 25th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Camilla,_Duchess_of_Cornwall on 25th May 2012
 1 CHAN
 2 DATE 25 MAY 2012
 3 TIME 08:22:36
@@ -1946,7 +1946,7 @@
 0 @X1112@ OBJE
 1 FILE Prince_William_of_Wales_RAF.jpg
 2 TITL Prince William in his flight lieutenant’s uniform on 12 June 2010
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_William,_Duke_of_Cambridge on 25th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Prince_William,_Duke_of_Cambridge on 25th May 2012
 1 CHAN
 2 DATE 25 MAY 2012
 3 TIME 08:34:01
@@ -1954,7 +1954,7 @@
 0 @X1113@ OBJE
 1 FILE Prince_Harry's_Speech.jpg
 2 TITL Prince Harry at the Official Press Launch for Walking With The Wounded, 1 March 2010
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_Harry_of_Wales on 25th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Prince_Harry_of_Wales on 25th May 2012
 1 CHAN
 2 DATE 25 MAY 2012
 3 TIME 08:35:02
@@ -1962,7 +1962,7 @@
 0 @X1114@ OBJE
 1 FILE Kate_in_Ottawa_for_Canada_Day_2011.jpg
 2 TITL Catherine at Canada Day celebrations in Ottawa, 2011
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Catherine,_Duchess_of_Cambridge on 25th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Catherine,_Duchess_of_Cambridge on 25th May 2012
 1 CHAN
 2 DATE 25 MAY 2012
 3 TIME 08:38:04
@@ -1970,7 +1970,7 @@
 0 @X1115@ OBJE
 1 FILE West_Side_of_Westminster_Abbey,_London_-_geograph.org.uk_-_1406999.jpg
 2 TITL Westminster Abbey
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Westminster_abbey on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Westminster_abbey on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 21:30:07
@@ -1978,7 +1978,7 @@
 0 @X1116@ OBJE
 1 FILE HRH_Sophie,_Countess_of_Wessex.jpg
 2 TITL HRH Sophie, Countess of Wessex
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Sophie,_Countess_of_Wessex on 25th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Sophie,_Countess_of_Wessex on 25th May 2012
 1 CHAN
 2 DATE 25 MAY 2012
 3 TIME 12:38:08
@@ -2145,7 +2145,7 @@
 0 @X1137@ OBJE
 1 FILE Carlos_de_Gales_(2011).jpg
 2 TITL Charles, Prince of Wales
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Charles,_Prince_of_Wales on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Charles,_Prince_of_Wales on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 21:41:23
@@ -2234,7 +2234,7 @@
 0 @X1148@ OBJE
 1 FILE Buckingham_Palace,_London_-_April_2009.jpg
 2 TITL Buckingham Palace
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Buckingham_Palace on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Buckingham_Palace on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 21:47:35
@@ -2287,7 +2287,7 @@
 3 TIME 09:08:52
 2 _WT_USER greg
 0 @X1155@ OBJE
-1 FILE http://www.youtube.com/embed/9P4VItL3Iek
+1 FILE https://www.youtube.com/embed/9P4VItL3Iek
 2 TITL The first portrait of The Duchess of Cambridge is unveiled (YouTube)
 1 CHAN
 2 DATE 03 FEB 2013
@@ -2306,7 +2306,7 @@
 1 NOTE Quarterly, First and Fourth Gules three lions passant guardant in pale Or armed and langued Azure (for England), Second quarter Or a lion rampant within a double tressure flory counter-flory Gules (for Scotland), Third quarter Azure a harp Or str
 2 CONC inged Argent (for Ireland), the whole surrounded by the Garter; for a Crest, the imperial crown Proper; for Supporters, dexter a lion rampant guardant Or crowned as the Crest, sinister a unicorn Argent armed, crined and unguled Proper, gorged wit
 2 CONC h a coronet Or composed of crosses patée and fleurs de lys a chain affixed thereto passing between the forelegs and reflexed over the back also Or; Motto 'Dieu et mon Droit’ below the shield.
-1 NOTE Downloaded from http://en.wikipedia.org/wiki/File:Royal_Coat_of_Arms_of_the_United_Kingdom_%28HM_Government%29.svg on 3rd February 2013
+1 NOTE Downloaded from https://en.wikipedia.org/wiki/File:Royal_Coat_of_Arms_of_the_United_Kingdom_%28HM_Government%29.svg on 3rd February 2013
 1 CHAN
 2 DATE 03 FEB 2013
 3 TIME 17:20:26
@@ -2321,7 +2321,7 @@
 0 @X1159@ OBJE
 1 FILE Princesa_Ana_do_Reino_Unido.jpg
 2 TITL Anne, Princess Royal
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Anne,_Princess_Royal on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Anne,_Princess_Royal on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 21:55:35
@@ -2342,7 +2342,7 @@
 0 @X1162@ OBJE
 1 FILE Clarence_house.jpg
 2 TITL Clarence House
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Clarence_House on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Clarence_House on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 21:57:16
@@ -2350,7 +2350,7 @@
 0 @X1163@ OBJE
 1 FILE Príncipe_André_do_Reino_Unido.jpg
 2 TITL Prince Andrew, Duke of York
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_Andrew,_Duke_of_York on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Prince_Andrew,_Duke_of_York on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 22:00:44
@@ -2358,7 +2358,7 @@
 0 @X1164@ OBJE
 1 FILE Royal_Wedding_Stockholm_2010-Konserthuset-Prince_Edward,_Earl_of_Wessex.jpg
 2 TITL Prince Andrew, Duke of York
-1 NOTE Image downloaded from http://en.wikipedia.org/wiki/Prince_Edward,_Earl_of_Wessex on 24th May 2012
+1 NOTE Image downloaded from https://en.wikipedia.org/wiki/Prince_Edward,_Earl_of_Wessex on 24th May 2012
 1 CHAN
 2 DATE 24 MAY 2012
 3 TIME 22:02:59

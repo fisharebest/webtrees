@@ -94,7 +94,7 @@ class JulianDate extends AbstractGregorianJulianDate
     protected function formatLongYear(): string
     {
         if ($this->year < 0) {
-            return /*  I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era */
+            return /*  I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era */
                 I18N::translate('%s&nbsp;BCE', I18N::digits(-$this->year));
         }
 
@@ -102,7 +102,7 @@ class JulianDate extends AbstractGregorianJulianDate
             return I18N::translate('%s&nbsp;CE', I18N::digits(sprintf('%d/%02d', $this->year - 1, $this->year % 100)));
         }
 
-        /* I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era */
+        /* I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era */
         return I18N::translate('%s&nbsp;CE', I18N::digits($this->year));
     }
 

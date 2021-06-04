@@ -102,7 +102,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
             'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
             'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
             'wildcards' => I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
-            /* I18N: http://en.wikipedia.org/wiki/Regular_expression */
+            /* I18N: https://en.wikipedia.org/wiki/Regular_expression */
             'regex'     => I18N::translate('Regular expression'),
         ];
 

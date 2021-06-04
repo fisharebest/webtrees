@@ -460,7 +460,7 @@ abstract class AbstractCalendarDate
     /**
      * Format a date, using similar codes to the PHP date() function.
      *
-     * @param string $format    See http://php.net/date
+     * @param string $format    See https://php.net/date
      * @param string $qualifier GEDCOM qualifier, so we can choose the right case for the month name.
      *
      * @return string

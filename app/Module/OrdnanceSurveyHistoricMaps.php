@@ -71,14 +71,14 @@ class OrdnanceSurveyHistoricMaps extends AbstractModule implements ModuleMapProv
     {
         return [
             (object) [
-                'attribution' => 'Historical Maps Layer, 1919-1947 from the <a href="http://maps.nls.uk/projects/api">NLS Maps API</a>',
+                'attribution' => 'Historical Maps Layer, 1919-1947 from the <a href="https://maps.nls.uk/projects/api">NLS Maps API</a>',
                 'bounds'      => [[49.852539, -7.793077], [60.894042, 1.790425]],
                 'default'     => true,
                 'label'       => 'Historic map of Great Britain',
                 'maxZoom'     => 17,
                 'minZoom'     => 2,
                 'subdomains'  => ['0', '1', '2', '3'],
-                'url'         => 'http://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
+                'url'         => 'https://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
             ],
         ];
     }

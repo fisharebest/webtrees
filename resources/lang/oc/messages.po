@@ -403,13 +403,13 @@ msgctxt "MALE"
 msgid "%s × cousin"
 msgstr "cusin au (%s+1)<sup>au</sup> degrà"
 
-#. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
+#. I18N: BCE=Before the Common Era, for Julian years < 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:98
 #, php-format
 msgid "%s&nbsp;BCE"
 msgstr "%s&nbsp;BC"
 
-#. I18N: CE=Common Era, for Julian years > 0. See http://en.wikipedia.org/wiki/Common_Era
+#. I18N: CE=Common Era, for Julian years > 0. See https://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:102 app/Date/JulianDate.php:106
 #, php-format
 msgid "%s&nbsp;CE"
@@ -4462,7 +4462,7 @@ msgstr ""
 msgid "DNA markers"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
+#. I18N: https://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:3493 resources/views/branches-page.phtml:43
 #: resources/views/search-phonetic-page.phtml:78
 msgid "Daitch-Mokotoff"
@@ -5365,55 +5365,55 @@ msgctxt "NOMINATIVE"
 msgid "Dey"
 msgstr "Dey"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:150
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu-al-Hijjah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:240
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu-al-Hijjah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:195
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu-al-Hijjah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Hijjah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Hijjah
 #: app/Date/HijriDate.php:105
 #, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
 msgstr "Dhu-al-Hijjah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:148
 msgctxt "GENITIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu-al-Qi’dah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:238
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu-al-Qi’dah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:193
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Dhu al-Qi’dah"
 msgstr "Dhu-al-Qi’dah"
 
-#. I18N: http://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
+#. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:103
 #, fuzzy
 msgctxt "NOMINATIVE"
@@ -5830,7 +5830,7 @@ msgstr "Anada finala"
 msgid "Ending range of change dates"
 msgstr ""
 
-#. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/Endowment_house
+#. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
 msgid "Endowment House"
 msgstr ""
@@ -6378,7 +6378,7 @@ msgstr ""
 msgid "Fan chart"
 msgstr "Grafic circular"
 
-#. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
+#. I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
@@ -8265,54 +8265,54 @@ msgctxt "NOMINATIVE"
 msgid "July"
 msgstr "julhet"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:136
 msgctxt "GENITIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumad-al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:226
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-awwal"
 msgstr "Jumada-al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:181
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada-al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-awwal
 #: app/Date/HijriDate.php:91
 #, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Jumada al-awwal"
 msgstr "Jumada-al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:138
 msgctxt "GENITIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada-al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:228
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Jumada al-thani"
 msgstr "Jumada-al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:183
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Jumada al-thani"
 msgstr "Jumada-al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Jumada_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Jumada_al-thani
 #: app/Date/HijriDate.php:93
 #, fuzzy
 msgctxt "NOMINATIVE"
@@ -9996,28 +9996,28 @@ msgstr "Desplaçar cap amont"
 msgid "Mozambique"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:128
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:218
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Muharram"
 msgstr "Muharram"
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:173
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Muharram"
 msgstr "Muharram"
 
-#. I18N: http://en.wikipedia.org/wiki/Muharram
+#. I18N: https://en.wikipedia.org/wiki/Muharram
 #: app/Date/HijriDate.php:83
 msgctxt "NOMINATIVE"
 msgid "Muharram"
@@ -11580,7 +11580,7 @@ msgstr ""
 msgid "Presentation style"
 msgstr ""
 
-#. I18N: Location of an historic LDS church temple - http://en.wikipedia.org/wiki/President_of_the_Church
+#. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/President_of_the_Church
 #: app/Elements/TempleCode.php:161
 msgid "President’s Office"
 msgstr ""
@@ -11738,55 +11738,55 @@ msgstr "RE: "
 msgid "Rabbi"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:132
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi’al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:222
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi’al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:177
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi’al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:87
 msgctxt "NOMINATIVE"
 msgid "Rabi’ al-awwal"
 msgstr "Rabi’al-awwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:134
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Rabi’ al-thani"
 msgstr "Rabi’al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:224
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Rabi’ al-thani"
 msgstr "Rabi’al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:179
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Rabi’ al-thani"
 msgstr "Rabi’al-thani"
 
-#. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-thani
+#. I18N: https://en.wikipedia.org/wiki/Rabi%27_al-thani
 #: app/Date/HijriDate.php:89
 #, fuzzy
 msgctxt "NOMINATIVE"
@@ -11811,28 +11811,28 @@ msgctxt "Pedigree"
 msgid "Rada"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:230
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:185
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Rajab"
 msgstr "Rajab"
 
-#. I18N: http://en.wikipedia.org/wiki/Rajab
+#. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:95
 #, fuzzy
 msgctxt "NOMINATIVE"
@@ -11844,27 +11844,27 @@ msgstr "Rajab"
 msgid "Raleigh, North Carolina, United States"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:144
 msgctxt "GENITIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:234
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:189
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Ramadan"
 msgstr "Ramadan"
 
-#. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
+#. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:99
 #, fuzzy
 msgctxt "NOMINATIVE"
@@ -12000,7 +12000,7 @@ msgctxt "MALE"
 msgid "Registry officer"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Regular_expression
+#. I18N: https://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:106
 msgid "Regular expression"
 msgstr ""
@@ -12358,7 +12358,7 @@ msgstr "Rasics"
 msgid "Rufname"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Soundex
+#. I18N: https://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
 #: resources/views/search-phonetic-page.phtml:72
 #, fuzzy
@@ -12394,28 +12394,28 @@ msgstr ""
 msgid "Sacramento, California, United States"
 msgstr "Sacramento, Califòrnia"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:130
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Safar"
 msgstr "Safar"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:220
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Safar"
 msgstr "Safar"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:175
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Safar"
 msgstr "Safar"
 
-#. I18N: http://en.wikipedia.org/wiki/Safar
+#. I18N: https://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:85
 #, fuzzy
 msgctxt "NOMINATIVE"
@@ -12981,56 +12981,56 @@ msgstr "Nòtas comunas"
 msgid "Shares"
 msgstr ""
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:236
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:191
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Shawwal
+#. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:101
 #, fuzzy
 msgctxt "NOMINATIVE"
 msgid "Shawwal"
 msgstr "Shawwal"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:142
 #, fuzzy
 msgctxt "GENITIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:232
 #, fuzzy
 msgctxt "INSTRUMENTAL"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:187
 #, fuzzy
 msgctxt "LOCATIVE"
 msgid "Sha’aban"
 msgstr "Sha’aban"
 
-#. I18N: http://en.wikipedia.org/wiki/Sha%27aban
+#. I18N: https://en.wikipedia.org/wiki/Sha%27aban
 #: app/Date/HijriDate.php:97
 #, fuzzy
 msgctxt "NOMINATIVE"
@@ -13515,14 +13515,14 @@ msgstr ""
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
 
-#. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
+#. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:163
 msgid "Sitemaps"
 msgstr ""
 
-#. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
+#. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:23
-msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
 msgstr ""
 
 #. I18N: a month in the Jewish calendar

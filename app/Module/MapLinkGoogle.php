@@ -59,6 +59,6 @@ class MapLinkGoogle extends AbstractModule implements ModuleMapLinkInterface
         // This URL allows us to add a pin at the location.
         // Other URLs allow us to set the zoom.
         // Is there one that does both?
-        return 'http://maps.google.com/maps?q=loc:' . $fact->latitude() . '+' . $fact->longitude();
+        return 'https://maps.google.com/maps?q=loc:' . $fact->latitude() . '+' . $fact->longitude();
     }
 }

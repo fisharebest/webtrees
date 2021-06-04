@@ -46,7 +46,7 @@ class CustomTagsPersonalAncestralFile extends AbstractModule implements ModuleCo
     /**
      * @return array<string,ElementInterface>
      *
-     * @see http://wiki-de.genealogy.net/GEDCOM/_Nutzerdef-Tag
+     * @see https://wiki-de.genealogy.net/GEDCOM/_Nutzerdef-Tag
      */
     public function customTags(): array
     {
