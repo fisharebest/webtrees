@@ -1097,7 +1097,7 @@ msgstr "A4"
 #: resources/views/modules/openrouteservice/config.phtml:23
 #: resources/views/modules/openstreetmap/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "kľúč API"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
@@ -1513,7 +1513,7 @@ msgstr "Pridať/upraviť denník/novinky"
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Dodatočné informácie"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:386
 #: app/Factories/ElementFactory.php:406 app/Factories/ElementFactory.php:658
@@ -3902,7 +3902,7 @@ msgstr "Poznámky"
 
 #: app/Module/CustomTagsBrothersKeeper.php:63
 msgid "Common law marriage"
-msgstr "Civilný sobáš"
+msgstr "Faktické manželstvo"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:81
@@ -15501,7 +15501,7 @@ msgstr "Pre oznámenie vyhľadávačom, že existujú mapy webu, môžete použi
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Aby ste mohli používať túto službu, potrebujete kľúč API."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
