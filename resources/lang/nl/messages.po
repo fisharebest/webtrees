@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-05-26 09:08+0000\n"
+"PO-Revision-Date: 2021-06-14 14:31+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -2110,7 +2110,7 @@ msgstr "Aquamarijn"
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
 msgid "Are you sure you want to delete this fact?"
-msgstr "Moet dit feit echt verwijderd worden?"
+msgstr "Weet u zeker dat u dit feit wilt verwijderen?"
 
 #: resources/views/modules/user-messages/user-messages.phtml:51
 #: resources/views/modules/user-messages/user-messages.phtml:136
@@ -11269,7 +11269,7 @@ msgstr "Plaats van Brit milah"
 #: app/Factories/ElementFactory.php:458 app/GedcomTag.php:524
 #: resources/xml/reports/missing_facts_report.xml:557
 msgid "Place of burial"
-msgstr "Plaats van de begrafenis"
+msgstr "Plaats van begrafenis"
 
 #: app/Factories/ElementFactory.php:470 app/GedcomTag.php:566
 #: resources/xml/reports/missing_facts_report.xml:181
@@ -15365,7 +15365,7 @@ msgstr "Dit gebruikersaccount heeft geen toegang tot een stamboom."
 
 #: app/Http/RequestHandlers/SetupWizard.php:183
 msgid "This usually means that you need to change the folder permissions to 777."
-msgstr "Dit betekent normalerwijze dat u de permissies voor de map moet veranderen naar 777."
+msgstr "Dit betekent meestal dat u de mapmachtigingen moet wijzigen in 777."
 
 #: app/Services/UpgradeService.php:254
 msgid "This website is being upgraded. Try again in a few minutes."
