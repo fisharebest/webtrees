@@ -295,6 +295,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePreferencesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePrivacyPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardConfirm;
@@ -433,6 +435,8 @@ class WebRoutes
                 $router->post(SitePreferencesAction::class, '/site-preferences');
                 $router->get(SiteRegistrationPage::class, '/site-registration');
                 $router->post(SiteRegistrationAction::class, '/site-registration');
+                $router->get(SiteTagsPage::class, '/tags');
+                $router->post(SiteTagsAction::class, '/tags');
                 $router->get(TreePageDefaultEdit::class, '/trees/default-blocks');
                 $router->post(TreePageDefaultUpdate::class, '/trees/default-blocks');
                 $router->get(MergeTreesPage::class, '/trees/merge');

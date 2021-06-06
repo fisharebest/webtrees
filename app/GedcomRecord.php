@@ -34,10 +34,13 @@ use Illuminate\Support\Collection;
 use function addcslashes;
 use function app;
 use function array_combine;
+use function array_filter;
 use function array_keys;
 use function array_map;
+use function array_merge;
 use function array_search;
 use function array_shift;
+use function array_values;
 use function assert;
 use function count;
 use function date;
@@ -62,6 +65,7 @@ use function strtoupper;
 use function substr_count;
 use function trim;
 
+use const ARRAY_FILTER_USE_KEY;
 use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
 use const STR_PAD_LEFT;
@@ -1382,6 +1386,10 @@ class GedcomRecord
         $return = array_shift($parts);
 
         foreach ($subtags as $subtag => $occurrences) {
+            if ($this->isHiddenTag($tag . ':' . $subtag)) {
+                continue;
+            }
+
             [$min, $max] = explode(':', $occurrences);
 
             $min = (int) $min;
@@ -1425,5 +1433,27 @@ class GedcomRecord
         }
 
         return $return;
+    }
+
+    /**
+     * List of tags to exclude when creating new data.
+     *
+     * @param string $tag
+     *
+     * @return bool
+     */
+    private function isHiddenTag(string $tag): bool
+    {
+        $preferences = array_filter(Gedcom::HIDDEN_TAGS, fn (string $x): bool => (bool) Site::getPreference('HIDE_' . $x), ARRAY_FILTER_USE_KEY);
+        $preferences = array_values($preferences);
+        $hidden_tags = array_merge(...$preferences);
+
+        foreach ($hidden_tags as $hidden_tag) {
+            if (str_contains($tag, $hidden_tag)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

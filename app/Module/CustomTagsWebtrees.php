@@ -51,8 +51,6 @@ class CustomTagsWebtrees extends AbstractModule implements ModuleConfigInterface
     {
         return [
             'FAM:CHAN:_WT_USER'           => new WebtreesUser(I18N::translate('Author of last change')),
-            'FAM:_ASSO'                   => new XrefAssociate(I18N::translate('Associate')),
-            'FAM:_ASSO:RELA'              => new RelationIsDescriptor(I18N::translate('Relationship')),
             'FAM:*:_ASSO'                 => new XrefAssociate(I18N::translate('Associate')),
             'FAM:*:_ASSO:NOTE'            => new NoteStructure(I18N::translate('Note')),
             'FAM:*:_ASSO:RELA'            => new RelationIsDescriptor(I18N::translate('Relationship')),
