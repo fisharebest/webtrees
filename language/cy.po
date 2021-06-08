@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-06-01 11:33+0000\n"
+"PO-Revision-Date: 2021-06-14 14:31+0000\n"
 "Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
@@ -11292,7 +11292,7 @@ msgstr "Quintidi"
 #. I18N: When replying to an email, the subject becomes “RE: <subject>”
 #: app/Module/UserMessagesModule.php:133 app/Module/UserMessagesModule.php:134
 msgid "RE: "
-msgstr ""
+msgstr "Ynghylch: "
 
 #. I18N: Menu entry
 #: admin_site_readme.php:28 app/Theme/AdministrationTheme.php:104
@@ -12457,7 +12457,7 @@ msgstr "Sha’aban"
 
 #: modules_v3/descendancy_report/report.xml:358
 msgid "She "
-msgstr ""
+msgstr "Fe "
 
 #: modules_v3/ahnentafel_report/report.xml:290
 msgid "She died"
