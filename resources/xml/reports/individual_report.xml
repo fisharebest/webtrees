@@ -177,12 +177,20 @@
 								<if condition="@desc=='N'">
 									<var var="I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 								</if>
-								<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
-									<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
+								<if condition="@fact=='OCCU' and @fact!='ASSO' and @desc!='Y' and @desc!='N'">
+									<if condition="@PLAC==''">
+										<GedcomValue tag="@desc"/></if>
+										<if condition="@PLAC!=''">
+											<GedcomValue tag="@desc"/>:  <GedcomValue tag="@fact:PLAC"/></if>
+										<RepeatTag tag="@fact:SOUR">
+											<if condition="@PAGE!=''"><GedcomValue tag="SOUR:PAGE" />: </if>
+											<GedcomValue tag="SOUR:DATA:TEXT" />
+										</RepeatTag> 
 								</if>
-								<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
-									<GedcomValue tag="@desc"/>
-								</if>
+								<if condition="@fact!='OCCU' and @fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
+									<GedcomValue tag="@desc"/></if>
+								<if condition="@fact!='OCCU' and @fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
+									<GedcomValue tag="@desc"/>:  <GedcomValue tag="@fact:PLAC"/></if>
 							</Text>
 							<Gedcom id="@ASSO">
 								 <GetPersonName id=""/>
