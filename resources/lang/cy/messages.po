@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-06-01 11:33+0000\n"
+"PO-Revision-Date: 2021-06-14 14:31+0000\n"
 "Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cy/>\n"
@@ -19328,19 +19328,19 @@ msgstr ""
 
 #: resources/views/modules/custom-css-js/edit.phtml:22
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr ""
+msgstr "Ychwanegu cynnwys at ddiwedd yr elfen <code>&lt;head&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:27
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "Cynhwyswch y tagiau <code>&lt;style&gt;&lt;/style&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:34
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr ""
+msgstr "Ychwanegwch gynnwys at ddiwedd yr elfen <code>&lt;body&gt;</code>."
 
 #: resources/views/modules/custom-css-js/edit.phtml:39
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "Cynhwyswch y tagiau <code>&lt;script&gt;&lt;/script&gt;</code>."
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
@@ -20097,7 +20097,7 @@ msgstr "Dyddiad anfon"
 #: resources/views/modules/user-messages/user-messages.phtml:116
 #: resources/views/modules/user-messages/user-messages.phtml:117
 msgid "RE: "
-msgstr ""
+msgstr "Ynghylch: "
 
 #: resources/views/modules/user-messages/user-messages.phtml:131
 #: resources/views/modules/user-messages/user-messages.phtml:132
@@ -21080,7 +21080,7 @@ msgstr ""
 
 #: resources/xml/reports/descendancy_report.xml:358
 msgid "She "
-msgstr ""
+msgstr "Fe "
 
 #: resources/xml/reports/descendancy_report.xml:401
 msgid "He was born"
