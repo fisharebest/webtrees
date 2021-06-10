@@ -69,7 +69,7 @@ msgstr "%1$s KB voru hlaðin niður á %2$s sekúndum."
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s finnst ekki"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225
