@@ -72,11 +72,8 @@ class TreeTest extends TestCase
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
 
-        $pref = $tree->getPreference('foo', 'default');
-        self::assertSame('default', $pref);
-
         $tree->setPreference('foo', 'bar');
-        $pref = $tree->getPreference('foo', 'default');
+        $pref = $tree->getPreference('foo');
         self::assertSame('bar', $pref);
     }
 

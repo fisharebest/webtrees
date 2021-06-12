@@ -129,7 +129,7 @@ class ExportGedcomClient implements RequestHandlerInterface
 
             rewind($tmp_stream);
 
-            $path = $tree->getPreference('MEDIA_DIRECTORY', 'media/');
+            $path = $tree->getPreference('MEDIA_DIRECTORY');
 
             // Create a new/empty .ZIP file
             $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];

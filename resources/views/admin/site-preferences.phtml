@@ -50,7 +50,7 @@ use Fisharebest\Webtrees\Site;
             <?= I18N::translate('Time zone') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'TIMEZONE', 'selected' => Site::getPreference('TIMEZONE', 'UTC'), 'options' => array_combine(DateTimeZone::listIdentifiers(), DateTimeZone::listIdentifiers())]) ?>
+            <?= view('components/select', ['name' => 'TIMEZONE', 'selected' => Site::getPreference('TIMEZONE'), 'options' => array_combine(DateTimeZone::listIdentifiers(), DateTimeZone::listIdentifiers())]) ?>
             <p class="small text-muted">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
             </p>
@@ -64,7 +64,7 @@ use Fisharebest\Webtrees\Site;
             I18N::translate('Default theme') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'THEME_DIR', 'selected' => Site::getPreference('THEME_DIR', 'webtrees'), 'options' => $all_themes]) ?>
+            <?= view('components/select', ['name' => 'THEME_DIR', 'selected' => Site::getPreference('THEME_DIR'), 'options' => $all_themes]) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the "Default theme" site configuration setting */
                 I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
