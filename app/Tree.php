@@ -70,7 +70,7 @@ class Tree
         'LANGUAGE'                     => 'en-US',
         'MAX_ALIVE_AGE'                => '120',
         'MEDIA_DIRECTORY'              => 'media/',
-        'MEDIA_UPLOAD'                 => Auth::PRIV_USER,
+        'MEDIA_UPLOAD'                 => '1', // Auth::PRIV_USER
         'META_DESCRIPTION'             => '',
         'META_TITLE'                   => Webtrees::NAME,
         'NO_UPDATE_CHAN'               => '0',
@@ -82,15 +82,15 @@ class Tree
         'SAVE_WATERMARK_IMAGE'         => '0',
         'SHOW_AGE_DIFF'                => '0',
         'SHOW_COUNTER'                 => '1',
-        'SHOW_DEAD_PEOPLE'             => Auth::PRIV_PRIVATE,
+        'SHOW_DEAD_PEOPLE'             => '2', // Auth::PRIV_PRIVATE
         'SHOW_EST_LIST_DATES'          => '0',
         'SHOW_FACT_ICONS'              => '1',
         'SHOW_GEDCOM_RECORD'           => '0',
         'SHOW_HIGHLIGHT_IMAGES'        => '1',
         'SHOW_LEVEL2_NOTES'            => '1',
-        'SHOW_LIVING_NAMES'            => Auth::PRIV_USER,
+        'SHOW_LIVING_NAMES'            => '1', // Auth::PRIV_USER
         'SHOW_MEDIA_DOWNLOAD'          => '0',
-        'SHOW_NO_WATERMARK'            => Auth::PRIV_USER,
+        'SHOW_NO_WATERMARK'            => '1', // Auth::PRIV_USER
         'SHOW_PARENTS_AGE'             => '1',
         'SHOW_PEDIGREE_PLACES'         => '9',
         'SHOW_PEDIGREE_PLACES_SUFFIX'  => '0',
@@ -206,11 +206,12 @@ class Tree
     /**
      * Get the tree’s configuration settings.
      *
-     * @param string $setting_name
+     * @param string      $setting_name
+     * @param string|null $default
      *
      * @return string
      */
-    public function getPreference(string $setting_name): string
+    public function getPreference(string $setting_name, string $default = null): string
     {
         if ($this->preferences === []) {
             $this->preferences = DB::table('gedcom_setting')
@@ -219,7 +220,7 @@ class Tree
                 ->all();
         }
 
-        return $this->preferences[$setting_name] ?? self::DEFAULT_PREFERENCES[$setting_name] ?? '';
+        return $this->preferences[$setting_name] ?? $default ?? self::DEFAULT_PREFERENCES[$setting_name] ?? '';
     }
 
     /**
