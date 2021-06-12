@@ -49,9 +49,6 @@ use function preg_match;
  */
 class AdminService
 {
-    // Show a reduced page when there are more than a certain number of trees
-    private const MULTIPLE_TREE_THRESHOLD = '500';
-
     /**
      * Count of XREFs used by two trees at the same time.
      *
@@ -284,6 +281,6 @@ class AdminService
      */
     public function multipleTreeThreshold(): int
     {
-        return (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD', self::MULTIPLE_TREE_THRESHOLD);
+        return (int) Site::getPreference('MULTIPLE_TREE_THRESHOLD');
     }
 }

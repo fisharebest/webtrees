@@ -207,7 +207,7 @@ class GedcomEditService
      *
      * @return string The updated gedcom record
      */
-    public function handleUpdates(string $newged, $levelOverride = 'no'): string
+    public function handleUpdates(string $newged, string $levelOverride = 'no'): string
     {
         if ($levelOverride === 'no') {
             $levelAdjust = 0;

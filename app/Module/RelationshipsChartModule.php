@@ -26,7 +26,6 @@ use Fisharebest\Algorithm\Dijkstra;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;

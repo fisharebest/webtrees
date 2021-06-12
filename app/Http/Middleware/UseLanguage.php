@@ -90,7 +90,7 @@ class UseLanguage implements MiddlewareInterface
                 return $module->locale();
             });
 
-        $default = Locale::create(Site::getPreference('LANGUAGE', 'en-US'));
+        $default = Locale::create(Site::getPreference('LANGUAGE'));
         $locale  = Locale::httpAcceptLanguage($request->getServerParams(), $locales->all(), $default);
 
         yield $languages->get('language-' . $locale->languageTag());

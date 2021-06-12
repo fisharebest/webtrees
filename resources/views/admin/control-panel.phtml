@@ -37,6 +37,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SitePreferencesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SiteRegistrationPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageDefaultEdit;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UpgradeWizardPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UploadMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserAddPage;
@@ -93,8 +94,8 @@ use Illuminate\Support\Collection;
  * @var Collection<ModuleChartInterface>           $chart_modules_disabled
  * @var Collection<ModuleChartInterface>           $chart_modules_enabled
  * @var Collection<ModuleCustomInterface>          $custom_updates
-* @var Collection<ModuleCustomTagsInterface>     $custom_tags_modules_disabled
- * @var Collection<ModuleCustomTagsInterface>     $custom_tags_modules_enabled
+ * @var Collection<ModuleCustomTagsInterface>      $custom_tags_modules_disabled
+ * @var Collection<ModuleCustomTagsInterface>      $custom_tags_modules_enabled
  * @var Collection<ModuleDataFixInterface>         $data_fix_modules_disabled
  * @var Collection<ModuleDataFixInterface>         $data_fix_modules_enabled
  * @var Collection<string,int>                     $families
@@ -207,7 +208,7 @@ use Illuminate\Support\Collection;
         <?php endforeach ?>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm">
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
@@ -229,7 +230,7 @@ use Illuminate\Support\Collection;
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm">
                 <ul class="fa-ul">
                     <li>
                         <span class="fa-li"><?= view('icons/list') ?></span>
@@ -247,6 +248,16 @@ use Illuminate\Support\Collection;
                         <span class="fa-li"><?= view('icons/help') ?></span>
                         <a href="<?= e(route(PhpInformation::class)) ?>">
                             <?= I18N::translate('Server information') ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <ul class="fa-ul">
+                    <li>
+                        <span class="fa-li"><?= view('icons/tag') ?></span>
+                        <a href="<?= e(route(SiteTagsPage::class)) ?>">
+                            <?= I18N::translate('GEDCOM tags') ?>
                         </a>
                     </li>
                 </ul>

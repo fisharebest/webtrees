@@ -35,7 +35,7 @@ class ServerRepository implements ServerRepositoryInterface
     public function serverDate(): string
     {
         $format   = strtr(I18N::dateFormat(), ['%' => '']);
-        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+        $timezone = Site::getPreference('TIMEZONE');
 
         return Carbon::now()->local()->timezone($timezone)->format($format);
     }
@@ -46,7 +46,7 @@ class ServerRepository implements ServerRepositoryInterface
     public function serverTime(): string
     {
         $format   = strtr(I18N::timeFormat(), ['%' => '']);
-        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+        $timezone = Site::getPreference('TIMEZONE');
 
         return Carbon::now()->local()->timezone($timezone)->format($format);
     }
@@ -56,7 +56,7 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTime24(): string
     {
-        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+        $timezone = Site::getPreference('TIMEZONE');
 
         return Carbon::now()->local()->timezone($timezone)->format('G:i');
     }
@@ -66,7 +66,7 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTimezone(): string
     {
-        $timezone = Site::getPreference('TIMEZONE', 'UTC');
+        $timezone = Site::getPreference('TIMEZONE');
 
         return Carbon::now()->local()->timezone($timezone)->format('T');
     }

@@ -1,0 +1,960 @@
+<?php
+
+use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
+use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
+use Fisharebest\Webtrees\Http\RequestHandlers\SiteTagsAction;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
+
+/**
+ * @var ElementFactoryInterface $element_factory
+ * @var string                  $title
+ */
+
+?>
+
+<?= view('components/breadcrumbs', ['links' => [route(ControlPanel::class) => I18N::translate('Control panel'), $title]]) ?>
+
+<h1><?= $title ?></h1>
+
+<form method="post" action="<?= e(route(SiteTagsAction::class)) ?>" class="form">
+    <?= csrf_field() ?>
+
+    <p>
+        <?= I18N::translate('The GEDCOM standard provides a large number of data-entry fields, called tags.') ?>
+        <br>
+        <?= I18N::translate('Some of these GEDCOM tags are used infrequently or never used.') ?>
+        <br>
+        <?= I18N::translate('You can simplify the edit forms by hiding GEDCOM tags that you do not use.') ?>
+    </p>
+
+    <h2><?= I18N::translate('Names') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:NPFX')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">NAME:NPFX</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_NPFX', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_NPFX')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:SPFX')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">NAME:SPFX</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_SPFX', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_SPFX')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:NSFX')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">NAME:NSFX</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_NSFX', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_NSFX')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:NICK')->label() ?>
+                </td>
+                <td>
+                    <code dir="ltr">NAME:NICK</code>
+                </td>
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_NICK', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_NICK')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:FONE')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">NAME:FONE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_FONE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_FONE')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:ROMN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">NAME:ROMN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_ROMN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_ROMN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:NOTE')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">NAME:NOTE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_NOTE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_NOTE')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:NAME:SOUR')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">NAME:SOUR</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_NAME_SOUR', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_NAME_SOUR')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('Places') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:*:PLAC:MAP')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">PLAC:MAP</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_MAP', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_MAP')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:*:PLAC:FONE')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">PLAC:FONE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_FONE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_FONE')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:*:PLAC:ROMN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">PLAC:ROMN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_ROMN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_ROMN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:*:PLAC:NOTE')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">PLAC:NOTE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_NOTE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_NOTE')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('Addresses') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:RESI:FAX')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAX</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_FAX', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ADDR_FAX')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:RESI:PHON')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">PHON</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_PHON', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ADDR_PHON')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:RESI:WWW')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">WWW</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_WWW', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ADDR_WWW')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('Source citations') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SOUR:EVEN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">SOUR:EVEN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_EVEN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_EVEN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SOUR:DATA:DATE')->label() ?>
+                </td>
+                <td>
+                    <code dir="ltr">SOUR:DATA:DATE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_DATE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_DATE')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SOUR:NOTE')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">SOUR:NOTE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_NOTE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_NOTE')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SOUR:QUAY')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">SOUR:QUAY</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_QUAY', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_QUAY')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('Sources') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('SOUR:DATA')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">SOUR:DATA:EVEN</code>
+                    <br>
+                    <code dir="ltr">SOUR:DATA:AGNC</code>
+                    <br>
+                    <code dir="ltr">SOUR:DATA:NOTE</code>
+                    <br>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_DATA', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_EVEN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SOUR:DATA:DATE')->label() ?>
+                </td>
+                <td>
+                    <code dir="ltr">SOUR:DATA:DATE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_DATE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_DATE')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SOUR:NOTE')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">SOUR:NOTE</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_NOTE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_NOTE')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SOUR:QUAY')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">SOUR:QUAY</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_QUAY', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_QUAY')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('Facts and events') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:BIRT:FAMC')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:BIRT:FAMC</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_BIRT_FAMC', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_BIRT_FAMC')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:RELI')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:RELI</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_RELI', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_RELI')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:BAPM')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:BAPM</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_BAPM', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_BAPM')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:CHR')->label() ?>
+                    <br>
+                    <?= $element_factory->make('INDI:CHRA')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:CHR</code>
+                    <br>
+                    <code dir="ltr">INDI:CHRA</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_CHR', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_CHR')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:FCOM')->label() ?>
+                    <br>
+                    <?= $element_factory->make('INDI:CONF')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:FCOM</code>
+                    <br>
+                    <code dir="ltr">INDI:CONF</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_FCOM', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_FCOM')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:ORDN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:ORDN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ORDN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ORDN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:BARM')->label() ?>
+                    <br>
+                    <?= $element_factory->make('INDI:BASM')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:BARM</code>
+                    <br>
+                    <code dir="ltr">INDI:BASM</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_BARM', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_BARM')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:ALIA')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:ALIA</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ALIA', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ALIA')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:ASSO')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:ASSO</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ASSO', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ASSO')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:ENGA')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:ENGA</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ENGA', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_EGA')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:MARB')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:MARB</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_MARB', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_MARB')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:MARC')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:MARC</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_MARC', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_MARC')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:MARL')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:MARL</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_MARL', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_MARL')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:MARS')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:MARS</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_MARS', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_MARS')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:ANUL')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:ANUL</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ANUL', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ANUL')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:DIVF')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:DIVF</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_DIVF', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_DIVF')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:RESI')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:RESI</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_FAM_RESI', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_FAM_RESI')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('FAM:CENS')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">FAM:CENS</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_FAM_CENS', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_FAM_CENS')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('LDS church') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:BAPL')->label() ?>
+                    <br>
+                    <?= $element_factory->make('INDI:CONL')->label() ?>
+                    <br>
+                    <?= $element_factory->make('INDI:ENDL')->label() ?>
+                    <br>
+                    <?= $element_factory->make('INDI:SLGC')->label() ?>
+                    <br>
+                    <?= $element_factory->make('FAM:SLGS')->label() ?>
+                    <br>
+                    <?= $element_factory->make('HEAD:SUBN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:BAPL</code>
+                    <br>
+                    <code dir="ltr">INDI:CONL</code>
+                    <br>
+                    <code dir="ltr">INDI:ENDL</code>
+                    <br>
+                    <code dir="ltr">INDI:SLGC</code>
+                    <br>
+                    <code dir="ltr">FAM:SLGS</code>
+                    <br>
+                    <code dir="ltr">HEAD:SUBN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_LDS', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_LDS')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('Identifiers') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:AFN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:AFN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_AFN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_AFN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:IDNO')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:IDNO</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_IDNO', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_IDNO')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SSN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:SSN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SSN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SSN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:RFN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:RFN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_RFN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_RFN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:REFN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">*:REFN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_REFN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_REFN')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:RIN')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">*:RIN</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_RIN', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_RIN')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><?= I18N::translate('Submitters') ?></h2>
+
+    <table class="table table-bordered">
+        <colgroup>
+            <col class="w-25">
+            <col class="w-25">
+            <col class="w-25">
+        </colgroup>
+
+        <thead class="d-none">
+            <tr>
+                <th><?= I18N::translate('Description') ?></th>
+                <th><?= I18N::translate('GEDCOM tag') ?></th>
+                <th><?= I18N::translate('Hide tags') ?></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:SUBM')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:SUBM</code>
+                    <br>
+                    <code dir="ltr">FAM:SUBM</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SUBM', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SUBM')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:ANCI')->label() ?>
+                    <br>
+                    <?= $element_factory->make('INDI:DESI')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">INDI:ANCI</code>
+                    <br>
+                    <code dir="ltr">INDI:DESI</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ANCI', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ANCI')]) ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">
+            <?= view('icons/save') ?>
+            <?= I18N::translate('save') ?>
+        </button>
+        <a class="btn btn-secondary" href="<?= e(route(ControlPanel::class)) ?>">
+            <?= view('icons/cancel') ?>
+            <?= I18N::translate('cancel') ?>
+        </a>
+    </div>
+</form>

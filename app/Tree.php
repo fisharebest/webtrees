@@ -48,6 +48,62 @@ class Tree
         'hidden'       => Auth::PRIV_HIDE,
     ];
 
+
+    // Default values for some tree preferences.
+    protected const DEFAULT_PREFERENCES = [
+        'ADVANCED_NAME_FACTS'          => 'NICK',
+        'ADVANCED_PLAC_FACTS'          => '',
+        'CALENDAR_FORMAT'              => 'gregorian',
+        'CHART_BOX_TAGS'               => '',
+        'EXPAND_SOURCES'               => '0',
+        'FORMAT_TEXT'                  => 'markdown',
+        'FULL_SOURCES'                 => '0',
+        'GEDCOM_MEDIA_PATH'            => '',
+        'GENERATE_UIDS'                => '0',
+        'HIDE_GEDCOM_ERRORS'           => '1',
+        'HIDE_LIVE_PEOPLE'             => '1',
+        'INDI_FACTS_ADD'               => 'AFN,BIRT,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,ASSO,RESN',
+        'INDI_FACTS_QUICK'             => 'BIRT,BURI,BAPM,CENS,DEAT,OCCU,RESI',
+        'INDI_FACTS_UNIQUE'            => '',
+        'KEEP_ALIVE_YEARS_BIRTH'       => '',
+        'KEEP_ALIVE_YEARS_DEATH'       => '',
+        'LANGUAGE'                     => 'en-US',
+        'MAX_ALIVE_AGE'                => '120',
+        'MEDIA_DIRECTORY'              => 'media/',
+        'MEDIA_UPLOAD'                 => '1', // Auth::PRIV_USER
+        'META_DESCRIPTION'             => '',
+        'META_TITLE'                   => Webtrees::NAME,
+        'NO_UPDATE_CHAN'               => '0',
+        'PEDIGREE_ROOT_ID'             => '',
+        'PREFER_LEVEL2_SOURCES'        => '1',
+        'QUICK_REQUIRED_FACTS'         => 'BIRT,DEAT',
+        'QUICK_REQUIRED_FAMFACTS'      => 'MARR',
+        'REQUIRE_AUTHENTICATION'       => '0',
+        'SAVE_WATERMARK_IMAGE'         => '0',
+        'SHOW_AGE_DIFF'                => '0',
+        'SHOW_COUNTER'                 => '1',
+        'SHOW_DEAD_PEOPLE'             => '2', // Auth::PRIV_PRIVATE
+        'SHOW_EST_LIST_DATES'          => '0',
+        'SHOW_FACT_ICONS'              => '1',
+        'SHOW_GEDCOM_RECORD'           => '0',
+        'SHOW_HIGHLIGHT_IMAGES'        => '1',
+        'SHOW_LEVEL2_NOTES'            => '1',
+        'SHOW_LIVING_NAMES'            => '1', // Auth::PRIV_USER
+        'SHOW_MEDIA_DOWNLOAD'          => '0',
+        'SHOW_NO_WATERMARK'            => '1', // Auth::PRIV_USER
+        'SHOW_PARENTS_AGE'             => '1',
+        'SHOW_PEDIGREE_PLACES'         => '9',
+        'SHOW_PEDIGREE_PLACES_SUFFIX'  => '0',
+        'SHOW_PRIVATE_RELATIONSHIPS'   => '1',
+        'SHOW_RELATIVES_EVENTS'        => '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU',
+        'SUBLIST_TRIGGER_I'            => '200',
+        'SURNAME_LIST_STYLE'           => 'style2',
+        'SURNAME_TRADITION'            => 'paternal',
+        'THUMBNAIL_WIDTH'              => '100',
+        'USE_SILHOUETTE'               => '1',
+        'WORD_WRAPPED_NOTES'           => '0',
+    ];
+
     /** @var int The tree's ID number */
     private $id;
 
@@ -150,12 +206,12 @@ class Tree
     /**
      * Get the tree’s configuration settings.
      *
-     * @param string $setting_name
-     * @param string $default
+     * @param string      $setting_name
+     * @param string|null $default
      *
      * @return string
      */
-    public function getPreference(string $setting_name, string $default = ''): string
+    public function getPreference(string $setting_name, string $default = null): string
     {
         if ($this->preferences === []) {
             $this->preferences = DB::table('gedcom_setting')
@@ -164,7 +220,7 @@ class Tree
                 ->all();
         }
 
-        return $this->preferences[$setting_name] ?? $default;
+        return $this->preferences[$setting_name] ?? $default ?? self::DEFAULT_PREFERENCES[$setting_name] ?? '';
     }
 
     /**
@@ -537,7 +593,7 @@ class Tree
      */
     public function mediaFilesystem(FilesystemOperator $data_filesystem): FilesystemOperator
     {
-        $media_dir = $this->getPreference('MEDIA_DIRECTORY', 'media/');
+        $media_dir = $this->getPreference('MEDIA_DIRECTORY');
         $adapter   = new ChrootAdapter($data_filesystem, $media_dir);
 
         return new Filesystem($adapter);

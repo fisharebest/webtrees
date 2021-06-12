@@ -73,4 +73,65 @@ class Gedcom
         Source::RECORD_TYPE,
         Submitter::RECORD_TYPE,
     ];
+
+    // These preferences control multiple tag definitions
+    public const HIDDEN_TAGS = [
+        // Individual names
+        'NAME_NPFX' => ['INDI:NAME:NPFX', 'INDI:NAME:FONE:NPFX', 'INDI:NAME:ROMN:NPFX'],
+        'NAME_SPFX' => ['INDI:NAME:SPFX', 'INDI:NAME:FONE:SPFX', 'INDI:NAME:ROMN:SPFX'],
+        'NAME_NSFX' => ['INDI:NAME:NSFX', 'INDI:NAME:FONE:NSFX', 'INDI:NAME:ROMN:NSFX'],
+        'NAME_NICK' => ['INDI:NAME:NICK', 'INDI:NAME:FONE:NICK', 'INDI:NAME:ROMN:NICK'],
+        'NAME_FONE' => ['INDI:NAME:FONE'],
+        'NAME_ROMN' => ['INDI:NAME:ROMN'],
+        'NAME_NOTE' => ['INDI:NAME:NOTE'],
+        'NAME_SOUR' => ['INDI:NAME:SOUR'],
+        // Places
+        'PLAC_MAP'  => ['PLAC:MAP'],
+        'PLAC_FONE' => ['PLAC:FONE'],
+        'PLAC_ROMN' => ['PLAC:ROMN'],
+        'PLAC_NOTE' => ['PLAC:NOTE'],
+        // Addresses
+        'ADDR_FAX'  => ['FAX'],
+        'ADDR_PHON' => ['PHON'],
+        'ADDR_WWW'  => ['WWW'],
+        // Source citations
+        'SOUR_EVEN' => [':SOUR:EVEN'],
+        'SOUR_DATE' => [':SOUR:DATA:DATE'],
+        'SOUR_NOTE' => [':SOUR:NOTE'],
+        'SOUR_QUAY' => [':SOUR:QUAY'],
+        // Sources
+        'SOUR_DATA' => ['SOUR:DATA'],
+        // Individuals
+        'BIRT_FAMC' => ['INDI:BIRT:FAMC'],
+        'RELI'      => ['INDI:RELI'],
+        'BAPM'      => ['INDI:BAPM'],
+        'CHR'       => ['INDI:CHR', 'INDI:CHRA'],
+        'FCOM'      => ['INDI:FCOM', 'INDI:CONF'],
+        'ORDN'      => ['INDI:ORDN'],
+        'BARM'      => ['INDI:BARM', 'INDI:BASM'],
+        'ALIA'      => ['INDI:ALIA'],
+        'ASSO'      => ['INDI:ASSO'],
+        // Families
+        'ENGA'      => ['FAM:ENGA'],
+        'MARB'      => ['FAM:MARB'],
+        'MARC'      => ['FAM:MARC'],
+        'MARL'      => ['FAM:MARL'],
+        'MARS'      => ['FAM:MARS'],
+        'ANUL'      => ['FAM:ANUL'],
+        'DIVF'      => ['FAM:DIVF'],
+        'FAM_RESI'  => ['FAM:RESI'],
+        'FAM_CENS'  => ['FAM:CENS'],
+        // LDS church
+        'LDS'       => ['INDI:BAPL', 'INDI:CONL', 'INDI:ENDL', 'INDI:SLGC', 'FAM:SLGS', 'HEAD:SUBN'],
+        // Identifiers
+        'AFN'       => ['INDI:AFN'],
+        'IDNO'      => ['INDI:IDNO'],
+        'SSN'       => ['INDI:SSN'],
+        'RFN'       => ['RFN'],
+        'REFN'      => ['REFN'],
+        'RIN'       => ['RIN'],
+        // Submitters
+        'SUBM'      => ['INDI:SUBM', 'FAM:SUBM'],
+        'ANCI'      => ['INDI:ANCI', 'INDI:DESI'],
+    ];
 }

@@ -1545,11 +1545,6 @@ parameters:
 			path: app/Services/GedcomExportService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomService\\:\\:readPlace\\(\\) should return array\\<string\\> but returns array\\<int, string\\>\\|false\\.$#"
-			count: 1
-			path: app/Services/GedcomService.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:availableTreeBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Services/HomePageService.php

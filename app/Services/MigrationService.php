@@ -21,9 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use Fisharebest\Webtrees\Schema\SeedDefaultResnTable;
-use Fisharebest\Webtrees\Schema\SeedGedcomSettingTable;
 use Fisharebest\Webtrees\Schema\SeedGedcomTable;
-use Fisharebest\Webtrees\Schema\SeedSiteSettingTable;
 use Fisharebest\Webtrees\Schema\SeedUserTable;
 use Fisharebest\Webtrees\Site;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -116,10 +114,8 @@ class MigrationService
      */
     public function seedDatabase(): void
     {
-        (new SeedSiteSettingTable())->run();
         (new SeedUserTable())->run();
         (new SeedGedcomTable())->run();
-        (new SeedGedcomSettingTable())->run();
         (new SeedDefaultResnTable())->run();
     }
 }

@@ -46,6 +46,7 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
     private const OPPOSITE_SEX = [
         'F' => 'M',
         'M' => 'F',
+        'U' => 'U',
     ];
 
     /**
@@ -65,7 +66,7 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Create a dummy individual, so that we can create new/empty facts.
-        $sex     = self::OPPOSITE_SEX[$individual->sex()] ?? 'U';
+        $sex     = self::OPPOSITE_SEX[$individual->sex()];
         $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
         $dummyf  = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
 
@@ -88,7 +89,7 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
 
         $titles = [
             'F' => I18N::translate('Add a wife'),
-            'H' => I18N::translate('Add a husband'),
+            'M' => I18N::translate('Add a husband'),
             'U' => I18N::translate('Add a spouse'),
         ];
 

@@ -56,7 +56,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                 <div class="card-header" role="tab" id="card-tree-header-<?= $managed_tree->id() ?>">
                     <h2 class="mb-0">
                         <?= view('icons/tree') ?>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->id() ?>" <?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->id() ?>" <?= $managed_tree === $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
                             <?= e($managed_tree->name()) ?> — <?= e($managed_tree->title()) ?>
                         </a>
                     </h2>

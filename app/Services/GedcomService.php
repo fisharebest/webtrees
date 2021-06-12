@@ -26,15 +26,13 @@ use Fisharebest\Webtrees\Gedcom;
  */
 class GedcomService
 {
-    // User defined tags begin with an underscore
-    private const USER_DEFINED_TAG_PREFIX = '_';
-
     // Some applications, such as FTM, use GEDCOM tag names instead of the tags.
     private const TAG_NAMES = [
         'ABBREVIATION'      => 'ABBR',
         'ADDRESS'           => 'ADDR',
         'ADDRESS1'          => 'ADR1',
         'ADDRESS2'          => 'ADR2',
+        'ADDRESS3'          => 'ADR3',
         'ADOPTION'          => 'ADOP',
         'AGENCY'            => 'AGNC',
         'ALIAS'             => 'ALIA',
@@ -160,11 +158,6 @@ class GedcomService
         '_PGV_OBJS' => '_WT_OBJE_SORT',
     ];
 
-    // SEX tags
-    private const SEX_FEMALE  = 'F';
-    private const SEX_MALE    = 'M';
-    private const SEX_UNKNOWN = 'U';
-
     /**
      * Convert a GEDCOM tag to a canonical form.
      *
@@ -179,16 +172,6 @@ class GedcomService
         $tag = self::TAG_NAMES[$tag] ?? self::TAG_SYNONYMS[$tag] ?? $tag;
 
         return $tag;
-    }
-
-    /**
-     * @param string $tag
-     *
-     * @return bool
-     */
-    public function isUserDefinedTag(string $tag): bool
-    {
-        return substr_compare($tag, self::USER_DEFINED_TAG_PREFIX, 0, 1) === 0;
     }
 
     /**
@@ -245,49 +228,5 @@ class GedcomService
 
         // Can't match anything.
         return null;
-    }
-
-    /**
-     * Although empty placenames are valid "Town, , Country", it is only meaningful
-     * when structured places are used (PLAC:FORM town, county, country), and
-     * structured places are discouraged.
-     *
-     * @param string $text
-     *
-     * @return array<string>
-     */
-    public function readPlace(string $text): array
-    {
-        $text = trim($text);
-
-        return preg_split(Gedcom::PLACE_SEPARATOR_REGEX, $text);
-    }
-
-    /**
-     * @param string[] $place
-     *
-     * @return string
-     */
-    public function writePlace(array $place): string
-    {
-        return implode(Gedcom::PLACE_SEPARATOR, $place);
-    }
-
-    /**
-     * Some applications use non-standard values for unknown.
-     *
-     * @param string $text
-     *
-     * @return string
-     */
-    public function readSex(string $text): string
-    {
-        $text = strtoupper($text);
-
-        if ($text !== self::SEX_MALE && $text !== self::SEX_FEMALE) {
-            $text = self::SEX_UNKNOWN;
-        }
-
-        return $text;
     }
 }
