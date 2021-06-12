@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Support\Collection;
 use stdClass;
 
 /**
@@ -30,20 +29,15 @@ use stdClass;
  */
 class User implements UserInterface
 {
-    /** @var  int The primary key of this user. */
-    private $user_id;
+    private int $user_id;
 
-    /** @var  string The login name of this user. */
-    private $user_name;
+    private string $user_name;
 
-    /** @var  string The real (display) name of this user. */
-    private $real_name;
+    private string $real_name;
 
-    /** @var  string The email address of this user. */
-    private $email;
+    private string $email;
 
-    /** @var string[] Cached copy of the wt_user_setting table. */
-    private $preferences = [];
+    private array $preferences;
 
     /**
      * User constructor.
@@ -59,6 +53,11 @@ class User implements UserInterface
         $this->user_name = $user_name;
         $this->real_name = $real_name;
         $this->email     = $email;
+
+        $this->preferences = DB::table('user_setting')
+            ->where('user_id', '=', $this->user_id)
+            ->pluck('setting_value', 'setting_name')
+            ->all();
     }
 
     /**
@@ -169,7 +168,7 @@ class User implements UserInterface
 
     /**
      * Fetch a user option/setting from the wt_user_setting table.
-     * Since we'll fetch several settings for each user, and since there aren’t
+     * Since we'll fetch several settings for each user, and since there aren't
      * that many of them, fetch them all in one database query
      *
      * @param string $setting_name
@@ -179,17 +178,7 @@ class User implements UserInterface
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
-        $preferences = Registry::cache()->array()->remember('user-prefs-' . $this->user_id, function (): Collection {
-            if ($this->user_id) {
-                return DB::table('user_setting')
-                    ->where('user_id', '=', $this->user_id)
-                    ->pluck('setting_value', 'setting_name');
-            }
-
-            return new Collection();
-        });
-
-        return $preferences->get($setting_name, $default);
+        return $this->preferences[$setting_name] ?? $default;
     }
 
     /**
@@ -202,7 +191,7 @@ class User implements UserInterface
      */
     public function setPreference(string $setting_name, string $setting_value): void
     {
-        if ($this->user_id !== 0 && $this->getPreference($setting_name) !== $setting_value) {
+        if ($this->getPreference($setting_name) !== $setting_value) {
             DB::table('user_setting')->updateOrInsert([
                 'user_id'      => $this->user_id,
                 'setting_name' => $setting_name,
