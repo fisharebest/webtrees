@@ -487,7 +487,7 @@ class ModuleService
         'location_list'           => LocationListModule::class,
         'logged_in'               => LoggedInUsersModule::class,
         'login_block'             => LoginBlockModule::class,
-        'low_countries_rulers'    => HistoryLowCountriesRulers:class,
+        'low_countries_rulers'    => HistoryLowCountriesRulers::class,
         'map-link-bing'           => MapLinkBing::class,
         'map-link-google'         => MapLinkGoogle::class,
         'map-link-openstreetmap'  => MapLinkOpenStreetMap::class,
