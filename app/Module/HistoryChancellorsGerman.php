@@ -35,7 +35,7 @@ class HistoryChancellorsGerman extends AbstractModule implements ModuleHistoricE
      */
     public function title(): string
     {
-        return 'Deutsche Kanzlerschaften ab 1871 DE';
+        return 'Deutsche Kanzlerschaften ab 1871 🇩🇪';
     }
 
     /**
