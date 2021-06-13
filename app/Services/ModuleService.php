@@ -27,15 +27,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AhnentafelReportModule;
 use Fisharebest\Webtrees\Module\AlbumModule;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
-use Fisharebest\Webtrees\Module\AustrianHistoricEvents;
-use Fisharebest\Webtrees\Module\AustrianPresidents;
+use Fisharebest\Webtrees\Module\BingMaps;
 use Fisharebest\Webtrees\Module\BingWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule;
 use Fisharebest\Webtrees\Module\BirthReportModule;
 use Fisharebest\Webtrees\Module\BranchesListModule;
-use Fisharebest\Webtrees\Module\BritishMonarchs;
-use Fisharebest\Webtrees\Module\BritishPrimeMinisters;
-use Fisharebest\Webtrees\Module\BritishSocialHistory;
 use Fisharebest\Webtrees\Module\CalendarMenuModule;
 use Fisharebest\Webtrees\Module\CemeteryReportModule;
 use Fisharebest\Webtrees\Module\CensusAssistantModule;
@@ -63,13 +59,10 @@ use Fisharebest\Webtrees\Module\CustomTagsPhpGedView;
 use Fisharebest\Webtrees\Module\CustomTagsReunion;
 use Fisharebest\Webtrees\Module\CustomTagsRootsMagic;
 use Fisharebest\Webtrees\Module\CustomTagsWebtrees;
-use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
 use Fisharebest\Webtrees\Module\DescendancyReportModule;
-use Fisharebest\Webtrees\Module\DutchMonarchs;
-use Fisharebest\Webtrees\Module\DutchPrimeMinisters;
 use Fisharebest\Webtrees\Module\EsriMaps;
 use Fisharebest\Webtrees\Module\FabTheme;
 use Fisharebest\Webtrees\Module\FactSourcesReportModule;
@@ -89,12 +82,24 @@ use Fisharebest\Webtrees\Module\FixNameTags;
 use Fisharebest\Webtrees\Module\FixPlaceNames;
 use Fisharebest\Webtrees\Module\FixPrimaryTag;
 use Fisharebest\Webtrees\Module\FixSearchAndReplace;
-use Fisharebest\Webtrees\Module\FrenchHistory;
 use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
 use Fisharebest\Webtrees\Module\GeonamesAutocomplete;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
+use Fisharebest\Webtrees\Module\GoogleMaps;
 use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\HereMaps;
+use Fisharebest\Webtrees\Module\HistoryChancellorsGerman;
+use Fisharebest\Webtrees\Module\HistoryFactsAustrian;
+use Fisharebest\Webtrees\Module\HistoryFactsBritish;
+use Fisharebest\Webtrees\Module\HistoryMonarchsBritish;
+use Fisharebest\Webtrees\Module\HistoryMonarchsDutch;
+use Fisharebest\Webtrees\Module\HistoryMonarchsFrench;
+use Fisharebest\Webtrees\Module\HistoryPresidentsAustrian;
+use Fisharebest\Webtrees\Module\HistoryPresidentsFrench;
+use Fisharebest\Webtrees\Module\HistoryPresidentsUS;
+use Fisharebest\Webtrees\Module\HistoryPrimeMinistersBritish;
+use Fisharebest\Webtrees\Module\HistoryPrimeMinistersDutch;
+use Fisharebest\Webtrees\Module\HistoryRulersLowCountriesDutch;
 use Fisharebest\Webtrees\Module\HitCountFooterModule;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Module\HtmlBlockModule;
@@ -179,7 +184,6 @@ use Fisharebest\Webtrees\Module\ListsMenuModule;
 use Fisharebest\Webtrees\Module\LocationListModule;
 use Fisharebest\Webtrees\Module\LoggedInUsersModule;
 use Fisharebest\Webtrees\Module\LoginBlockModule;
-use Fisharebest\Webtrees\Module\LowCountriesRulers;
 use Fisharebest\Webtrees\Module\MapBox;
 use Fisharebest\Webtrees\Module\MapLinkBing;
 use Fisharebest\Webtrees\Module\MapLinkGoogle;
@@ -187,11 +191,6 @@ use Fisharebest\Webtrees\Module\MapLinkOpenStreetMap;
 use Fisharebest\Webtrees\Module\MapGeoLocationGeonames;
 use Fisharebest\Webtrees\Module\MapGeoLocationNominatim;
 use Fisharebest\Webtrees\Module\MapGeoLocationOpenRouteService;
-use Fisharebest\Webtrees\Module\BingMaps;
-use Fisharebest\Webtrees\Module\GoogleMaps;
-use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
-use Fisharebest\Webtrees\Module\OpenRouteServiceAutocomplete;
-use Fisharebest\Webtrees\Module\OpenStreetMap;
 use Fisharebest\Webtrees\Module\MarriageReportModule;
 use Fisharebest\Webtrees\Module\MatomoAnalyticsModule;
 use Fisharebest\Webtrees\Module\MediaListModule;
@@ -209,6 +208,7 @@ use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
 use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Module\ModuleMapGeoLocationInterface;
 use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
@@ -222,6 +222,8 @@ use Fisharebest\Webtrees\Module\NoteListModule;
 use Fisharebest\Webtrees\Module\NotesTabModule;
 use Fisharebest\Webtrees\Module\OccupationReportModule;
 use Fisharebest\Webtrees\Module\OnThisDayModule;
+use Fisharebest\Webtrees\Module\OpenRouteServiceAutocomplete;
+use Fisharebest\Webtrees\Module\OpenStreetMap;
 use Fisharebest\Webtrees\Module\OrdnanceSurveyHistoricMaps;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
@@ -261,7 +263,6 @@ use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Module\UserJournalModule;
 use Fisharebest\Webtrees\Module\UserMessagesModule;
 use Fisharebest\Webtrees\Module\UserWelcomeModule;
-use Fisharebest\Webtrees\Module\USPresidents;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
 use Fisharebest\Webtrees\Module\WelcomeBlockModule;
 use Fisharebest\Webtrees\Module\XeneaTheme;
@@ -330,16 +331,16 @@ class ModuleService
         'GEDFact_assistant'       => CensusAssistantModule::class,
         'ahnentafel_report'       => AhnentafelReportModule::class,
         'ancestors_chart'         => AncestorsChartModule::class,
-        'austrian-history'        => AustrianHistoricEvents::class,
-        'austrian-presidents'     => AustrianPresidents::class,
+        'austrian-history'        => HistoryFactsAustrian::class,
+        'austrian-presidents'     => HistoryPresidentsAustrian::class,
         'bdm_report'              => BirthDeathMarriageReportModule::class,
         'bing-maps'               => BingMaps::class,
         'bing-webmaster-tools'    => BingWebmasterToolsModule::class,
         'birth_report'            => BirthReportModule::class,
         'branches_list'           => BranchesListModule::class,
-        'british-monarchs'        => BritishMonarchs::class,
-        'british-prime-ministers' => BritishPrimeMinisters::class,
-        'british-social-history'  => BritishSocialHistory::class,
+        'british-monarchs'        => HistoryMonarchsBritish::class,
+        'british-prime-ministers' => HistoryPrimeMinistersBritish::class,
+        'british-social-history'  => HistoryFactsBritish::class,
         'calendar-menu'           => CalendarMenuModule::class,
         'cemetery_report'         => CemeteryReportModule::class,
         'change_report'           => ChangeReportModule::class,
@@ -351,7 +352,7 @@ class ModuleService
         'colors'                  => ColorsTheme::class,
         'compact-chart'           => CompactTreeChartModule::class,
         'contact-links'           => ContactsFooterModule::class,
-        'czech-leaders'           => CzechMonarchsAndPresidents::class,
+        'czech-leaders'           => HistoryRulesCzech::class,
         'custom-css-js'           => CustomCssJsModule::class,
         'custom-tags-aldfaer'     => CustomTagsAldfaer::class,
         'custom-tags-bk'          => CustomTagsBrothersKeeper::class,
@@ -371,8 +372,8 @@ class ModuleService
         'descendancy'             => DescendancyModule::class,
         'descendancy_chart'       => DescendancyChartModule::class,
         'descendancy_report'      => DescendancyReportModule::class,
-        'dutch_monarchs'          => DutchMonarchs::class,
-        'dutch_prime_ministers'   => DutchPrimeMinisters::class,
+        'dutch_monarchs'          => HistoryMonarchsDutch::class,
+        'dutch_prime_ministers'   => HistoryPrimeMinistersDutch::class,
         'esri-maps'               => EsriMaps::class,
         'extra_info'              => IndividualMetadataModule::class,
         'fab'                     => FabTheme::class,
@@ -383,7 +384,6 @@ class ModuleService
         'family_nav'              => FamilyNavigatorModule::class,
         'fan_chart'               => FanChartModule::class,
         'faq'                     => FrequentlyAskedQuestionsModule::class,
-        'french-history'          => FrenchHistory::class,
         'fix-add-death'           => FixMissingDeaths::class,
         'fix-ceme-tag'            => FixCemeteryTag::class,
         'fix-duplicate-links'     => FixDuplicateLinks::class,
@@ -392,11 +392,14 @@ class ModuleService
         'fix-place-names'         => FixPlaceNames::class,
         'fix-prim-tag'            => FixPrimaryTag::class,
         'fix-search-and-replace'  => FixSearchAndReplace::class,
+        'french_monarchs'         => HistoryMonarchsFrench::class,
+        'french_presidents'       => HistoryPresidentsFrench::class,
         'gedcom_block'            => WelcomeBlockModule::class,
         'gedcom_favorites'        => FamilyTreeFavoritesModule::class,
         'gedcom_news'             => FamilyTreeNewsModule::class,
         'gedcom_stats'            => FamilyTreeStatisticsModule::class,
         'geonames'                => GeonamesAutocomplete::class,
+        'german_chancellors'      => HistoryChancellorsGerman::class,
         'google-analytics'        => GoogleAnalyticsModule::class,
         'google-maps'             => GoogleMaps::class,
         'google-webmaster-tools'  => GoogleWebmasterToolsModule::class,
@@ -484,7 +487,7 @@ class ModuleService
         'location_list'           => LocationListModule::class,
         'logged_in'               => LoggedInUsersModule::class,
         'login_block'             => LoginBlockModule::class,
-        'low_countries_rulers'    => LowCountriesRulers::class,
+        'low_countries_rulers'    => HistoryLowCountriesRulers:class,
         'map-link-bing'           => MapLinkBing::class,
         'map-link-google'         => MapLinkGoogle::class,
         'map-link-openstreetmap'  => MapLinkOpenStreetMap::class,
@@ -540,7 +543,7 @@ class ModuleService
         'tree'                    => InteractiveTreeModule::class,
         'trees-menu'              => TreesMenuModule::class,
         'upcoming_events'         => UpcomingAnniversariesModule::class,
-        'us-presidents'           => USPresidents::class,
+        'us-presidents'           => HistoryPresidentsUS::class,
         'user_blog'               => UserJournalModule::class,
         'user_favorites'          => UserFavoritesModule::class,
         'user_messages'           => UserMessagesModule::class,
