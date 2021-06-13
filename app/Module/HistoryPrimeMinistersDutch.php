@@ -127,6 +127,5 @@ class HistoryPrimeMinistersDutch extends AbstractModule implements ModuleHistori
             "1 EVEN Mark Rutte (* 1967), Volkspartij voor Vrijheid en Democratie\n2 TYPE Minister-President\n2 DATE FROM 05 NOV 2012 TO 26 OCT 2017\n2 kabinet-Rutte II\n2 SOUR [Wikipedia: Lijst van premiers van Nederland](https://nl.wikipedia.org/wiki/Mark_Rutte)",
             "1 EVEN Mark Rutte (* 1967), Volkspartij voor Vrijheid en Democratie\n2 TYPE Minister-President\n2 DATE FROM 26 OCT 2017\n2 kabinet-Rutte III\n2 SOUR [Wikipedia: Lijst van premiers van Nederland](https://nl.wikipedia.org/wiki/Mark_Rutte)",
         ]);
-        ]);
     }
 }
