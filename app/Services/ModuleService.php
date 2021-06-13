@@ -100,6 +100,7 @@ use Fisharebest\Webtrees\Module\HistoryPresidentsUS;
 use Fisharebest\Webtrees\Module\HistoryPrimeMinistersBritish;
 use Fisharebest\Webtrees\Module\HistoryPrimeMinistersDutch;
 use Fisharebest\Webtrees\Module\HistoryRulersLowCountriesDutch;
+use Fisharebest\Webtrees\Module\HistoryRulersCzech;
 use Fisharebest\Webtrees\Module\HitCountFooterModule;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Module\HtmlBlockModule;
