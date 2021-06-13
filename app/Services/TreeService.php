@@ -83,18 +83,18 @@ class TreeService
                     ->join('gedcom_setting AS gs2', static function (JoinClause $join): void {
                         $join
                             ->on('gs2.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->on('gs2.setting_name', '=', 'imported');
+                            ->where('gs2.setting_name', '=', 'imported');
                     })
                     ->join('gedcom_setting AS gs3', static function (JoinClause $join): void {
                         $join
                             ->on('gs3.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->on('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
+                            ->where('gs3.setting_name', '=', 'REQUIRE_AUTHENTICATION');
                     })
                     ->leftJoin('user_gedcom_setting', static function (JoinClause $join): void {
                         $join
                             ->on('user_gedcom_setting.gedcom_id', '=', 'gedcom.gedcom_id')
-                            ->on('user_gedcom_setting.user_id', '=', Auth::id())
-                            ->on('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE);
+                            ->where('user_gedcom_setting.user_id', '=', Auth::id())
+                            ->where('user_gedcom_setting.setting_name', '=', UserInterface::PREF_TREE_ROLE);
                     })
                     ->where(static function (Builder $query): void {
                         $query
