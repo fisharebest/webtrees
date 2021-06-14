@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-07 19:59+0000\n"
+"PO-Revision-Date: 2021-06-14 14:31+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -3948,7 +3948,7 @@ msgstr "Poznámky"
 #. I18N: gedcom tag _COML
 #: app/Factories/ElementFactory.php:746 app/GedcomTag.php:1060
 msgid "Common law marriage"
-msgstr "Civilný sobáš"
+msgstr "Faktické manželstvo"
 
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:87
