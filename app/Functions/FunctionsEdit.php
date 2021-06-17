@@ -388,26 +388,28 @@ class FunctionsEdit
         // value
         $html .= '<div class="col-sm-9">';
 
-        // Show names for spouses in MARR/HUSB/AGE and MARR/WIFE/AGE
-        if ($fact === 'HUSB' || $fact === 'WIFE') {
-            $family = Registry::familyFactory()->make($xref, $tree);
-            if ($family instanceof Family) {
-                $spouse_link = $family->facts([$fact])->first();
-                if ($spouse_link instanceof Fact) {
-                    $spouse = $spouse_link->target();
-                    if ($spouse instanceof Individual) {
-                        $html .= $spouse->fullName();
-                    }
-                }
-            }
-        }
-
         if (in_array($fact, Config::emptyFacts(), true) && ($value === '' || $value === 'Y' || $value === 'y')) {
             $html .= '<input type="hidden" id="' . $id . '" name="' . $name . '" value="' . $value . '">';
 
-            $checked = $value === '' ? '' : 'checked';
-            $onchange = 'this.previousSibling.value=this.checked ? this.value : &quot;&quot;';
-            $html .= '<input type="checkbox" value="Y" ' . $checked . ' onchange="' . $onchange . '">';
+            if (($fact === 'HUSB' || $fact === 'WIFE') && $upperlevel === 'FAM') {
+                // Show names for spouses in MARR/HUSB/AGE and MARR/WIFE/AGE
+                if ($fact === 'HUSB' || $fact === 'WIFE') {
+                    $family = Registry::familyFactory()->make($xref, $tree);
+                    if ($family instanceof Family) {
+                        $spouse_link = $family->facts([$fact])->first();
+                        if ($spouse_link instanceof Fact) {
+                            $spouse = $spouse_link->target();
+                            if ($spouse instanceof Individual) {
+                                $html .= $spouse->fullName();
+                            }
+                        }
+                    }
+                }
+            } else {
+                $checked = $value === '' ? '' : 'checked';
+                $onchange = 'this.previousSibling.value=this.checked ? this.value : &quot;&quot;';
+                $html .= '<input type="checkbox" value="Y" ' . $checked . ' onchange="' . $onchange . '">';
+            }
 
             if ($fact === 'CENS' && $value === 'Y') {
                 $html .= view('modules/GEDFact_assistant/select-census', [
