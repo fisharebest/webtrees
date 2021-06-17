@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-27 01:06+0000\n"
+"PO-Revision-Date: 2021-06-19 11:44+0000\n"
 "Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/pt_BR/>\n"
@@ -504,7 +504,7 @@ msgstr "(idade de %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s anos de idade)"
+msgstr "(%s de idade)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -513,7 +513,7 @@ msgstr "(%s anos de idade)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s anos de idade)"
+msgstr "(%s de idade)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
