@@ -497,7 +497,7 @@ msgstr "(idade de %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s anos de idade)"
+msgstr "(%s de idade)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -506,7 +506,7 @@ msgstr "(%s anos de idade)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s anos de idade)"
+msgstr "(%s de idade)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -1484,7 +1484,7 @@ msgstr "Adicionar/Editar Notícias ou Diário"
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Informação adicional"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:386
 #: app/Factories/ElementFactory.php:406 app/Factories/ElementFactory.php:658
@@ -1876,7 +1876,7 @@ msgstr "Também conhecido como"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Nome alternativo de lugar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2091,7 +2091,7 @@ msgstr "Aqua Marinho"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Tem certeza que quer excluir a ligação para “%s”? "
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:40
@@ -2192,7 +2192,7 @@ msgstr "Associar eventos a esta fonte"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Eventos associados"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2304,7 +2304,7 @@ msgstr "Autor da última alteração"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:633
 msgid "Autocomplete"
-msgstr ""
+msgstr "Auto completar"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -3403,7 +3403,7 @@ msgstr "Data do censo"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Data e local do censo"
 
 #: app/Factories/ElementFactory.php:485
 msgid "Census place"
@@ -3448,7 +3448,7 @@ msgstr "Certificado"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Número do certificado"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3824,7 +3824,7 @@ msgstr "Café e Creme"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Coabitação"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4081,7 +4081,7 @@ msgstr "Copiar arquivos…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Copiar a URL do registro para a memória"
 
 #: app/Factories/ElementFactory.php:372 app/Factories/ElementFactory.php:399
 msgid "Copyright"
@@ -4202,7 +4202,7 @@ msgstr "Criar uma nova pessoa"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Criar mapas usando %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4375,11 +4375,11 @@ msgstr "Personalizado"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "Sub tags GEDCOM customizadas"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "Tag GEDCOM customizada"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4387,7 +4387,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:705
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Tags GEDCOM customizadas"
 
 #: resources/views/calendar-page.phtml:203
 #: resources/views/edit/add-fact-row.phtml:40
@@ -5430,7 +5430,7 @@ msgstr "Apresentar e gerenciar as páginas favoritas de um usuário."
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "Exibir tags GEDCOM customizadas"
 
 #: app/Factories/ElementFactory.php:325 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5493,7 +5493,7 @@ msgstr "Baixando %s…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Baixar o arquivo. ICS contendo um aniversário"
 
 #: resources/views/media-page-details.phtml:85
 msgid "Download file"
