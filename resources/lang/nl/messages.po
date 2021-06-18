@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-06-14 14:31+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2021-06-19 11:44+0000\n"
+"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
 "Language: nl\n"
@@ -14030,7 +14030,7 @@ msgstr "Zweden"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:122
 msgid "Switzerland"
-msgstr "Zwitzerland"
+msgstr "Zwitserland"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:192 app/GedcomCode/GedcomCodeTemp.php:642
