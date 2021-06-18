@@ -13960,7 +13960,7 @@ msgstr "Zweden"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:122
 msgid "Switzerland"
-msgstr "Zwitzerland"
+msgstr "Zwitserland"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:192
