@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.0.2
+
+### Fixed
+
+- `ServerRequestCreator::createStreamFromFile()` should first look if there was an upload error
+- Dont crash on numeric header names
+
+## 1.0.1
+
+## Fixed
+
+- PHP8 support
+
 ## 1.0.0
 
 - Changed signature of `ServerRequestCreatorInterface::fromArrays()` to allow null values for $post

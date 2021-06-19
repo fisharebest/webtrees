@@ -51,6 +51,33 @@ abstract class AbstractRange implements RangeInterface
     /**
      * {@inheritdoc}
      *
+     * @see \IPLib\Range\RangeInterface::getAddressAtOffset()
+     */
+    public function getAddressAtOffset($n)
+    {
+        if (!is_int($n)) {
+            return null;
+        }
+
+        $address = null;
+        if ($n >= 0) {
+            $start = Factory::addressFromString($this->getComparableStartString());
+            $address = $start->getAddressAtOffset($n);
+        } else {
+            $end = Factory::addressFromString($this->getComparableEndString());
+            $address = $end->getAddressAtOffset($n + 1);
+        }
+
+        if ($address === null) {
+            return null;
+        }
+
+        return $this->contains($address) ? $address : null;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
      * @see \IPLib\Range\RangeInterface::contains()
      */
     public function contains(AddressInterface $address)

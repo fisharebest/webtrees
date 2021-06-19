@@ -506,26 +506,42 @@ class IPv6 implements AddressInterface
     /**
      * {@inheritdoc}
      *
+     * @see \IPLib\Address\AddressInterface::getAddressAtOffset()
+     */
+    public function getAddressAtOffset($n)
+    {
+        if (!is_int($n)) {
+            return null;
+        }
+
+        $boundary = 0x10000;
+        $mod = $n;
+        $words = $this->getWords();
+        for ($i = count($words) - 1; $i >= 0; $i--) {
+            $tmp = ($words[$i] + $mod) % $boundary;
+            $mod = (int) floor(($words[$i] + $mod) / $boundary);
+            if ($tmp < 0) {
+                $tmp += $boundary;
+            }
+
+            $words[$i] = $tmp;
+        }
+
+        if ($mod !== 0) {
+            return null;
+        }
+
+        return static::fromWords($words);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
      * @see \IPLib\Address\AddressInterface::getNextAddress()
      */
     public function getNextAddress()
     {
-        $overflow = false;
-        $words = $this->getWords();
-        for ($i = count($words) - 1; $i >= 0; $i--) {
-            if ($words[$i] === 0xffff) {
-                if ($i === 0) {
-                    $overflow = true;
-                    break;
-                }
-                $words[$i] = 0;
-            } else {
-                $words[$i]++;
-                break;
-            }
-        }
-
-        return $overflow ? null : static::fromWords($words);
+        return $this->getAddressAtOffset(1);
     }
 
     /**
@@ -535,22 +551,7 @@ class IPv6 implements AddressInterface
      */
     public function getPreviousAddress()
     {
-        $overflow = false;
-        $words = $this->getWords();
-        for ($i = count($words) - 1; $i >= 0; $i--) {
-            if ($words[$i] === 0) {
-                if ($i === 0) {
-                    $overflow = true;
-                    break;
-                }
-                $words[$i] = 0xffff;
-            } else {
-                $words[$i]--;
-                break;
-            }
-        }
-
-        return $overflow ? null : static::fromWords($words);
+        return $this->getAddressAtOffset(-1);
     }
 
     /**

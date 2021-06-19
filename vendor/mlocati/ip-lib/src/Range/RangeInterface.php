@@ -42,6 +42,19 @@ interface RangeInterface
     public function getRangeType();
 
     /**
+     * Get the address at a certain offset of this range.
+     *
+     * @param int $n the offset of the address (support negative offset)
+     *
+     * @return \IPLib\Address\AddressInterface|null return NULL if $n is not an integer or if the offset out of range
+     *
+     * @example: passing 256 to the range 127.0.0.0/16 will result in 127.0.1.0
+     * @example: passing -1 to the range 127.0.1.0/16 will result in 127.0.255.255
+     * @example: passing 256 to the range 127.0.0.0/24 will result in NULL
+     */
+    public function getAddressAtOffset($n);
+
+    /**
      * Check if this range contains an IP address.
      *
      * @param \IPLib\Address\AddressInterface $address
@@ -117,4 +130,11 @@ interface RangeInterface
      * @example for IPv6 it returns something like array('x.x.x.x..x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.ip6.arpa', 'x.x.x.x..x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.ip6.arpa') (where the number of 'x.' ranges from 1 to 32)
      */
     public function getReverseDNSLookupName();
+
+    /**
+     * Get the count of addresses this IP range contains.
+     *
+     * @return int|float Return float as for huge IPv6 networks, int is not enough
+     */
+    public function getSize();
 }

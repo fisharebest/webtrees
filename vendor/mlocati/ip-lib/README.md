@@ -1,6 +1,4 @@
-[![TravisCI Build Status](https://api.travis-ci.org/mlocati/ip-lib.svg?branch=master)](https://travis-ci.org/mlocati/ip-lib)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/mlocati/ip-lib?branch=master&svg=true)](https://ci.appveyor.com/project/mlocati/ip-lib)
-[![Coding Style checks status](https://github.com/mlocati/ip-lib/workflows/coding%20style/badge.svg)](https://github.com/mlocati/ip-lib/actions?query=workflow%3A%22coding+style%22)
+[![Tests](https://github.com/mlocati/ip-lib/workflows/tests/badge.svg)](https://github.com/mlocati/ip-lib/actions?query=workflow%3A%22tests%22)
 [![Coverage Status](https://coveralls.io/repos/github/mlocati/ip-lib/badge.svg?branch=master)](https://coveralls.io/github/mlocati/ip-lib?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mlocati/ip-lib/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mlocati/ip-lib/?branch=master)
 ![Packagist Downloads](https://img.shields.io/packagist/dm/mlocati/ip-lib)
@@ -78,6 +76,62 @@ echo (string) $address->getPreviousAddress();
 
 // This will print ::2
 echo (string) $address->getNextAddress();
+```
+
+### Get the addresses at a specified offset
+
+For addresses:
+
+```php
+$address = \IPLib\Factory::addressFromString('::1');
+
+// This will print ::1
+echo (string) $address->getAddressAtOffset(0);
+
+// This will print ::2
+echo (string) $address->getAddressAtOffset(1);
+
+// This will print ::3
+echo (string) $address->getAddressAtOffset(2);
+
+// This will print ::3e9
+echo (string) $address->getAddressAtOffset(1000);
+
+// This will print ::
+echo (string) $address->getAddressAtOffset(-1);
+
+// This will print NULL
+echo var_dump($address->getAddressAtOffset(-2));
+```
+
+For ranges:
+
+```php
+$range = \IPLib\Factory::rangeFromString('::ff00/120');
+
+// This will print ::ff00
+echo (string) $range->getAddressAtOffset(0);
+
+// This will print ::ff10
+echo (string) $range->getAddressAtOffset(16);
+
+// This will print ::ff64
+echo (string) $range->getAddressAtOffset(100);
+
+// This will print NULL because the address ::1:0 is out of the range
+var_dump($range->getAddressAtOffset(256));
+
+// This will print ::ffff
+echo (string) $range->getAddressAtOffset(-1);
+
+// This will print ::fff0
+echo (string) $range->getAddressAtOffset(-16);
+
+// This will print ::ff00
+echo (string) $range->getAddressAtOffset(-256);
+
+// This will print NULL because the address ::feff is out of the range
+var_dump($range->getAddressAtOffset(-257));
 ```
 
 ### Parse an IP address range
@@ -325,6 +379,21 @@ echo \IPLib\Factory::rangeFromString('192.168.0.*')->getSubnetMask()->toString()
 
 // This will print 255.255.255.252
 echo \IPLib\Factory::rangeFromString('192.168.0.12/30')->getSubnetMask()->toString();
+```
+
+### Getting the range size
+
+You can use the `getSize()` to get the count of addresses this IP range contains:
+
+```php
+// This will print 256
+echo \IPLib\Factory::rangeFromString('192.168.0.*')->getSize();
+
+// This will print 4
+echo \IPLib\Factory::rangeFromString('192.168.0.12/30')->getSize();
+
+// This will print 1
+echo \IPLib\Factory::rangeFromString('192.168.0.1')->getSize();
 ```
 
 ### Getting the reverse DNS lookup address

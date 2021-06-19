@@ -403,26 +403,42 @@ class IPv4 implements AddressInterface
     /**
      * {@inheritdoc}
      *
+     * @see \IPLib\Address\AddressInterface::getAddressAtOffset()
+     */
+    public function getAddressAtOffset($n)
+    {
+        if (!is_int($n)) {
+            return null;
+        }
+
+        $boundary = 256;
+        $mod = $n;
+        $bytes = $this->getBytes();
+        for ($i = count($bytes) - 1; $i >= 0; $i--) {
+            $tmp = ($bytes[$i] + $mod) % $boundary;
+            $mod = (int) floor(($bytes[$i] + $mod) / $boundary);
+            if ($tmp < 0) {
+                $tmp += $boundary;
+            }
+
+            $bytes[$i] = $tmp;
+        }
+
+        if ($mod !== 0) {
+            return null;
+        }
+
+        return static::fromBytes($bytes);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
      * @see \IPLib\Address\AddressInterface::getNextAddress()
      */
     public function getNextAddress()
     {
-        $overflow = false;
-        $bytes = $this->getBytes();
-        for ($i = count($bytes) - 1; $i >= 0; $i--) {
-            if ($bytes[$i] === 255) {
-                if ($i === 0) {
-                    $overflow = true;
-                    break;
-                }
-                $bytes[$i] = 0;
-            } else {
-                $bytes[$i]++;
-                break;
-            }
-        }
-
-        return $overflow ? null : static::fromBytes($bytes);
+        return $this->getAddressAtOffset(1);
     }
 
     /**
@@ -432,22 +448,7 @@ class IPv4 implements AddressInterface
      */
     public function getPreviousAddress()
     {
-        $overflow = false;
-        $bytes = $this->getBytes();
-        for ($i = count($bytes) - 1; $i >= 0; $i--) {
-            if ($bytes[$i] === 0) {
-                if ($i === 0) {
-                    $overflow = true;
-                    break;
-                }
-                $bytes[$i] = 255;
-            } else {
-                $bytes[$i]--;
-                break;
-            }
-        }
-
-        return $overflow ? null : static::fromBytes($bytes);
+        return $this->getAddressAtOffset(-1);
     }
 
     /**

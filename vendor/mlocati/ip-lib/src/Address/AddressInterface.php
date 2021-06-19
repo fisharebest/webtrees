@@ -100,9 +100,24 @@ interface AddressInterface
     public function matches(RangeInterface $range);
 
     /**
+     * Get the address at a certain distance from this address.
+     *
+     * @param int $n the distance of the address (can be negative)
+     *
+     * @return \IPLib\Address\AddressInterface|null return NULL if $n is not an integer or if the final address would be invalid
+     *
+     * @example: passing 1 to the address 127.0.0.1 will result in 127.0.0.2
+     * @example: passing -1 to the address 127.0.0.1 will result in 127.0.0.0
+     * @example: passing -1 to the address 0.0.0.0 will result in NULL
+     */
+    public function getAddressAtOffset($n);
+
+    /**
      * Get the address right after this IP address (if available).
      *
      * @return \IPLib\Address\AddressInterface|null
+     *
+     * @see \IPLib\Address\AddressInterface::getAddressAtOffset()
      */
     public function getNextAddress();
 
@@ -110,6 +125,8 @@ interface AddressInterface
      * Get the address right before this IP address (if available).
      *
      * @return \IPLib\Address\AddressInterface|null
+     *
+     * @see \IPLib\Address\AddressInterface::getAddressAtOffset()
      */
     public function getPreviousAddress();
 

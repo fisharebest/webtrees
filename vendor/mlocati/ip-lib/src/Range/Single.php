@@ -223,4 +223,14 @@ class Single extends AbstractRange
     {
         return array($this->getStartAddress()->getReverseDNSLookupName());
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @see \IPLib\Range\RangeInterface::getSize()
+     */
+    public function getSize()
+    {
+        return 1;
+    }
 }

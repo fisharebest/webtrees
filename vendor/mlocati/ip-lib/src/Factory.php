@@ -4,7 +4,7 @@ namespace IPLib;
 
 use IPLib\Address\AddressInterface;
 use IPLib\Range\Subnet;
-use IPLib\Service\RangesFromBounradyCalculator;
+use IPLib\Service\RangesFromBoundaryCalculator;
 
 /**
  * Factory methods to build class instances.
@@ -118,7 +118,7 @@ class Factory
         if ($to->getNumberOfBits() !== $numberOfBits) {
             return null;
         }
-        $calculator = new RangesFromBounradyCalculator($numberOfBits);
+        $calculator = new RangesFromBoundaryCalculator($numberOfBits);
 
         return $calculator->getRanges($from, $to);
     }
