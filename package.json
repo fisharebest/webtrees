@@ -8,7 +8,7 @@
   "devDependencies": {
     "@mjhenkes/postcss-rtl": "2.0.0",
     "cross-env": "7.0.3",
-    "laravel-mix": "6.0.22",
+    "laravel-mix": "6.0.23",
     "postcss": "8.3.5",
     "postcss-custom-properties": "11.0.0",
     "postcss-image-inliner": "5.0.0",
