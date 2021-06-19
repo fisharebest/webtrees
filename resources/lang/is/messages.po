@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-06-19 11:44+0000\n"
+"PO-Revision-Date: 2021-06-20 09:53+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -7710,24 +7710,31 @@ msgstr ""
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 msgstr ""
+"Ef einstaklingur var þekktur undir gælunafni sem er ekki hluti af formlegu "
+"nafni hans, ætti það að vera með gæsalöppum. Til dæmis, <%s>John "
+"&quot;Nobby&quot; /Clark/<%s>."
 
 #: resources/views/help/name.phtml:25
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
+"Ef einstaklingur var ekki þekktur undir fyrsta eiginnafni, ætti að gefa til "
+"kynna aðalnafnið með stjörnu: <%s>John Paul* /Smith/<%s>"
 
 #: resources/views/help/name.phtml:16
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr ""
+msgstr "Ef eftirnafnið er óþekkt, notaðu tóm skrástrik: <%s>Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
+msgstr "Ef smámyndin er sérsniðin mynd ættirðu að bæta henni við gagnasafnið."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
 msgstr ""
+"Ef smámyndin er sú sama og upphaflega myndin, þá er þess ekki lengur þörf og "
+"þú ættir að eyða henni."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
@@ -7738,6 +7745,8 @@ msgstr "Ef þessi persóna hefur einhverja atburði aðra en Andlát, Jarðaför
 #: resources/views/admin/trees-preferences.phtml:259
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
 msgstr ""
+"Ef tvö ættartré nota sömu gagnamöppuna, þá geta þau deilt gagnaskrám. Ef þau "
+"nota mismunandi gagnamöppur þá verður gagnaskrám þeirra haldið aðskildum."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:274
@@ -7755,10 +7764,15 @@ msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óska
 #: resources/views/setup/step-4-database-mysql.phtml:59
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
 msgstr ""
+"Ef þú tengist gagnagrunninum með því að nota UNIX innstungu, sláðu þá inn "
+"slóðina hér og láttu tenginúmerið vera tómt."
 
 #: resources/views/admin/trees-import.phtml:103
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"Ef þú bjóst til þessa GEDCOM skrá með ættfræðihugbúnaði sem sleppir bilum "
+"þegar þú skiptir löngum línum skaltu velja þennan valkost til að setja aftur "
+"bilin inn sem vantar."
 
 #: resources/views/emails/password-request-html.phtml:26
 #: resources/views/emails/password-request-text.phtml:18
@@ -7783,6 +7797,8 @@ msgstr "Ef þú hefur stofnað miðilshluta í webtrees og hefur breytt þínum 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
+"Ef þú velur aðra möppu verður þú einnig að færa allar skrár (nema "
+"config.ini.php, index.php og .htaccess) úr núverandi möppu í nýju möppuna."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:258
@@ -7795,6 +7811,9 @@ msgstr ""
 #: resources/views/admin/trees-privacy.phtml:105
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr ""
+"Ef þú sýnir gestum lifandi einstaklinga eru allar aðrar takmarkanir á "
+"persónuvernd hunsaðar. Gerðu þetta aðeins ef öll gögn í ættartrénu þínu eru "
+"opinber."
 
 #: resources/views/setup/step-2-server-checks.phtml:80
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7803,6 +7822,8 @@ msgstr "Ef þú reynir að fara fram úr þessum takmörkunum, þá gætir þú 
 #: app/Http/RequestHandlers/ModulesAnalyticsPage.php:42
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Ef þú notar einhverja af eftirfarandi þjónustum fyrir mælingar og greiningar "
+"þá getur webtrees bætt við rakningakóðunum sjálfkrafa."
 
 #: app/GedcomTag.php:1254 app/Http/RequestHandlers/ManageMediaData.php:320
 msgid "Image dimensions"
@@ -7810,7 +7831,7 @@ msgstr "Myndastærð"
 
 #: resources/views/admin/trees-preferences.phtml:331
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Myndir án vatnsmerkja"
 
 #. I18N: gedcom tag IMMI
 #: app/Factories/ElementFactory.php:520 app/GedcomTag.php:745
@@ -7824,33 +7845,55 @@ msgstr "Flytja inn"
 
 #: app/Http/RequestHandlers/ImportGedcomPage.php:71
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Flytja inn GEDCOM skrá"
 
 #: app/Http/RequestHandlers/ImportThumbnailsPage.php:47
 #: resources/views/admin/control-panel.phtml:736
 msgid "Import custom thumbnails from webtrees version 1"
-msgstr ""
+msgstr "Flytja inn sérsniðnar smámyndir frá webtrees útgáfu 1"
 
 #: app/Http/RequestHandlers/MapDataImportPage.php:65
 msgid "Import geographic data"
-msgstr ""
+msgstr "Flytja inn landfræðileg gögn"
 
 #: resources/views/admin/trees-import.phtml:88
 msgid "Import preferences"
-msgstr ""
+msgstr "Flytja inn stillingar"
 
 #: resources/views/admin/trees-merge.phtml:25
 #: resources/views/admin/trees-renumber.phtml:22
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
+"Í ættartré hefur hver skrá innri tilvísunarnúmer (kallað „XREF“) eins og "
+"„F123“ eða „R14“."
 
 #: resources/views/help/romanized.phtml:8
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með "
+"hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri "
+"stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem "
+"ensku. <br> <br> Ef þú vilt frekar nota stafróf sem ekki er latneskt, svo "
+"sem hebreska, gríska, rússneska, kínverska eða arabíska til að slá inn "
+"nafnið í reitina fyrir venjulegt heiti, þá geturðu notað þennan reit til að "
+"slá inn sama nafn með latneska stafrófinu. Báðar útgáfur nafnsins birtast í "
+"listum og töflum. <br> <br> Þó að þessi reitur sé merktur „Romanized“ er "
+"hann ekki takmarkaður við að innihalda aðeins stafi sem byggja á latneska "
+"stafrófinu. Þetta gæti verið gagnlegt með japönskum nöfnum, þar sem þrjú "
+"mismunandi stafróf geta komið fyrir."
 
 #: resources/views/help/hebrew.phtml:8
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
+"Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með "
+"hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri "
+"stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem "
+"ensku. <br> <br> Ef þú vilt frekar nota latneska stafrófið til að slá inn "
+"nafnið í reitina fyrir venjulegt heiti, þá getur þú notað þennan reit til að "
+"slá inn sama nafn í stafrófinu sem ekki er latneskt, svo sem gríska, "
+"hebreska, rússneska, arabíska eða kínverska. Báðar útgáfur nafnsins birtast "
+"í listum og töflum. <br> <br> Þó að þessi reitur sé merktur „hebreskur“ er "
+"hann ekki takmarkaður við að innihalda aðeins hebreska stafi."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:135
@@ -7874,18 +7917,22 @@ msgstr "Á þessu ári …"
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
 msgstr ""
+"Í webtrees útgáfu 1, gastu bætt sérsniðnum smámyndum við gagnasafnið með því "
+"að búa til skrár í „thumbs“ möppunum."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
 msgstr ""
+"Í webtrees útgáfu 2 eru sérsniðnar smámyndir geymdar sem önnur gagnaskrá í "
+"sama gagnasafni."
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr ""
+msgstr "Hafa tökuheiti með"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
-msgstr ""
+msgstr "Láttu félaga fylgja með"
 
 #: app/Module/IndividualListModule.php:358
 #, php-format
@@ -7900,15 +7947,15 @@ msgstr "Innifela miðla (þjappar sjálfvirkt skrár)"
 #: resources/views/admin/media.phtml:70
 #: resources/views/modules/media-list/page.phtml:49
 msgid "Include subfolders"
-msgstr ""
+msgstr "Hafa undirmöppur með"
 
 #: resources/views/modules/custom-css-js/edit.phtml:39
 msgid "Include the <code>&lt;script&gt;&lt;/script&gt;</code> tags."
-msgstr ""
+msgstr "Hafa með <code>&lt;script&gt;&lt;/script&gt;</code> merki."
 
 #: resources/views/modules/custom-css-js/edit.phtml:27
 msgid "Include the <code>&lt;style&gt;&lt;/style&gt;</code> tags."
-msgstr ""
+msgstr "Hafa með <code>&lt;style&gt;&lt;/style&gt;</code> merki."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
@@ -7923,7 +7970,7 @@ msgstr "Indland"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:113 app/GedcomCode/GedcomCodeTemp.php:405
 msgid "Indianapolis, Indiana, United States"
-msgstr ""
+msgstr "Indianapolis, Indiana, Bandaríkin"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -7980,7 +8027,7 @@ msgstr "Einstaklings dreifingargraf"
 
 #: resources/views/admin/control-panel.phtml:635
 msgid "Individual page"
-msgstr ""
+msgstr "Einstaklingssíða"
 
 #: resources/views/admin/trees-preferences.phtml:437
 msgid "Individual pages"
@@ -8093,7 +8140,7 @@ msgstr "Gagnvirkt tré fyrir %s"
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:785 app/GedcomTag.php:1140
 msgid "Interment"
-msgstr ""
+msgstr "Greftrun"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
@@ -8109,7 +8156,7 @@ msgstr "Ógild GEDCOM skrá - engin hausfærsla fannst."
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr ""
+msgstr "Ógild GEDCOM færsla"
 
 #: app/Date.php:381
 msgid "Invalid date"
@@ -8143,6 +8190,8 @@ msgstr "Ísrael"
 #: resources/views/admin/upgrade/steps.phtml:19
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr ""
+"Það getur tekið nokkrar mínútur að hlaða niður og setja upp uppfærsluna. "
+"Vertu þolinmóð/ur."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8356,7 +8405,7 @@ msgstr "Júní"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:116 app/GedcomCode/GedcomCodeTemp.php:414
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "Kansas City, Missouri, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:274
@@ -8366,11 +8415,11 @@ msgstr "Kasakstan"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-import.phtml:93
 msgid "Keep media objects"
-msgstr ""
+msgstr "Halda gagnahlutum"
 
 #: resources/views/modals/on-screen-keyboard.phtml:51
 msgid "Keep open"
-msgstr ""
+msgstr "Haltu opnum"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:945
@@ -8378,7 +8427,7 @@ msgstr ""
 #: resources/views/edit/edit-fact.phtml:113
 #: resources/views/edit/edit-record.phtml:32
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Haltu núverandi „síðustu breytingar“ upplýsingum"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -8500,7 +8549,7 @@ msgstr "LDS makastaðfesting"
 #: app/Factories/ElementFactory.php:836 app/Factories/ElementFactory.php:850
 #: app/Factories/ElementFactory.php:854 app/Factories/ElementFactory.php:869
 msgid "Label"
-msgstr ""
+msgstr "Merkja"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107 app/GedcomCode/GedcomCodeTemp.php:387
@@ -8535,7 +8584,7 @@ msgstr "Tungumál"
 #: resources/views/admin/modules.phtml:122
 #: resources/views/admin/modules.phtml:124
 msgid "Languages"
-msgstr ""
+msgstr "Tungumál"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:290
@@ -8648,7 +8697,7 @@ msgstr "Skildu lykilorð eftir autt ef þú vilt halda núverandi lykilorði."
 
 #: resources/views/admin/media-upload.phtml:51
 msgid "Leave this entry blank to keep the original filename"
-msgstr ""
+msgstr "Láttu þessa færslu vera auða til að halda upprunalegu skráarnafninu"
 
 #: resources/views/lists/families-table.phtml:184
 #: resources/views/lists/individuals-table.phtml:225
@@ -8663,7 +8712,7 @@ msgstr "Líbanon"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:120
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Eldri vefslóðir"
 
 #. I18N: gedcom tag LEGA
 #: app/Factories/ElementFactory.php:1323 app/GedcomTag.php:764
@@ -8731,13 +8780,13 @@ msgstr "Lima, Perú"
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:730
 msgid "Link media objects to facts and events"
-msgstr ""
+msgstr "Tengdu gagnahluti við staðreyndir og atburði"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
 #: resources/views/emails/verify-notify-text.phtml:27
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Tengdu notandareikninginn við einstakling."
 
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:56
 #: resources/views/modules/relatives/tab.phtml:125
@@ -8747,21 +8796,21 @@ msgstr "Tengja þessa persónu við núverandi fjölskyldu sem barni"
 #: resources/views/media-page-menu.phtml:32
 #: resources/views/modals/link-media-to-family.phtml:18
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Tengdu þennan gagnahlut við fjölskyldu"
 
 #: resources/views/media-page-menu.phtml:37
 #: resources/views/modals/link-media-to-source.phtml:18
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Tengdu þennan gagnahlut við heimild"
 
 #: resources/views/media-page-menu.phtml:27
 #: resources/views/modals/link-media-to-individual.phtml:18
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Tengdu þennan gagnahlut við einstakling"
 
 #: resources/views/admin/users-edit.phtml:305
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Tengdu þennan notanda við einstakling í ættartrénu."
 
 #. I18N: gedcom tag _DBID
 #: app/GedcomTag.php:1064
@@ -8813,20 +8862,20 @@ msgstr "Hleð inn…"
 #. I18N: “Local files” are stored on this computer
 #: resources/views/admin/media.phtml:40
 msgid "Local files"
-msgstr ""
+msgstr "Staðbundnar skrár"
 
 #. I18N: gedcom tag _LOC
 #: app/Factories/ElementFactory.php:1054 app/Factories/ElementFactory.php:1095
 #: app/Factories/ElementFactory.php:1131 app/GedcomTag.php:1144
 #: resources/views/lists/locations-table.phtml:63
 msgid "Location"
-msgstr ""
+msgstr "Staðsetning"
 
 #. I18N: Name of a module/list
 #: app/Module/LocationListModule.php:73 app/Module/LocationListModule.php:167
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "Staðsetningar"
 
 #: app/Elements/RelationIsDescriptor.php:141
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -8993,7 +9042,7 @@ msgstr "Malta"
 #: resources/views/admin/trees-preferences.phtml:41
 #: resources/views/admin/trees-privacy.phtml:22
 msgid "Manage family trees"
-msgstr ""
+msgstr "Hafa umsjón með ættartrjám"
 
 #: resources/views/admin/trees-renumber.phtml:17
 #: resources/views/admin/trees-unconnected.phtml:21
@@ -9004,7 +9053,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:718
 #: resources/views/admin/media-upload.phtml:18
 msgid "Manage media"
-msgstr ""
+msgstr "Stjórna gögnum"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:108
@@ -9021,12 +9070,12 @@ msgstr "Stjórnendur"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:127 app/GedcomCode/GedcomCodeTemp.php:447
 msgid "Manaus, Brazil"
-msgstr ""
+msgstr "Manaus, Brasilía"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:128 app/GedcomCode/GedcomCodeTemp.php:450
 msgid "Manhattan, New York, United States"
-msgstr ""
+msgstr "Manhattan, New York, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:129 app/GedcomCode/GedcomCodeTemp.php:453
@@ -9092,6 +9141,9 @@ msgstr "Mars"
 #: resources/views/admin/trees-preferences.phtml:621
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown er einfalt sniðkerfi, notað á vefsíðum eins og Wikipedia. Það notar "
+"lítt áberandi greinarmerki til að búa til fyrirsagnir og undirfyrirsagnir, "
+"feitletraðan og skáletraðan texta, lista, töflur o.s.frv."
 
 #. I18N: gedcom tag MARR
 #: app/Factories/ElementFactory.php:311 app/GedcomTag.php:786
@@ -9354,7 +9406,7 @@ msgstr "Martiník"
 
 #: resources/views/admin/users-table-options.phtml:37
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Dulbúast sem þessi notandi"
 
 #. I18N: Help text for "Case insensitive" searches
 #: resources/views/modules/fix-search-and-replace/options.phtml:58
@@ -9371,7 +9423,7 @@ msgstr "Finnið nákvæma samsvörun textans, nema að það eigi sér stað í 
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ greiningar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -9458,23 +9510,23 @@ msgstr "Miðilsskrá til að flytja inn"
 #: resources/views/admin/trees-export.phtml:87
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Forskeyti skráarheita gagna verður %s."
 
 #: resources/views/admin/media.phtml:31
 #: resources/views/admin/trees-preferences.phtml:264
 msgid "Media files"
-msgstr ""
+msgstr "Gagnaskrár"
 
 #. I18N: A configuration setting
 #: resources/views/admin/media.phtml:63
 #: resources/views/admin/trees-preferences.phtml:245
 msgid "Media folder"
-msgstr ""
+msgstr "Gagnamappa"
 
 #: resources/views/admin/media.phtml:32
 #: resources/views/admin/trees-preferences.phtml:240
 msgid "Media folders"
-msgstr ""
+msgstr "Gagnamöppur"
 
 #. I18N: gedcom tag OBJE
 #: app/Factories/ElementFactory.php:263 app/Factories/ElementFactory.php:284
@@ -9621,12 +9673,12 @@ msgstr "Mercury"
 
 #: resources/views/admin/trees-duplicates.phtml:39
 msgid "Merge"
-msgstr ""
+msgstr "Sameina"
 
 #: app/Http/RequestHandlers/MergeTreesPage.php:77
 #: resources/views/admin/control-panel.phtml:267
 msgid "Merge family trees"
-msgstr ""
+msgstr "Sameina ættartré"
 
 #: app/Http/RequestHandlers/MergeFactsPage.php:57
 #: app/Http/RequestHandlers/MergeRecordsPage.php:67
@@ -9738,7 +9790,7 @@ msgstr "Stjórnandi"
 
 #: resources/views/admin/control-panel.phtml:442
 msgid "Moderators"
-msgstr ""
+msgstr "Fundarstjórar"
 
 #: resources/views/admin/components.phtml:39
 #: resources/views/admin/modules.phtml:66
@@ -9903,16 +9955,18 @@ msgstr "Algengustu eftirnöfnin"
 
 #: resources/views/admin/site-mail.phtml:176
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Flestir póstþjónar þurfa gilt lén."
 
 #: resources/views/admin/site-mail.phtml:68
 msgid "Most mail servers require a valid email address."
-msgstr ""
+msgstr "Flestir póstþjónar þurfa gilt netfang."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:171
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
+"Flestir póstþjónar krefjast þess að sendiþjónninn auðkenni sig rétt með því "
+"að nota gilt lén."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:157
@@ -9927,7 +9981,7 @@ msgstr "Flestar vefsíður eru uppsettar til að nota localhost. Þetta þýðir
 
 #: resources/views/setup/step-4-database-sqlsvr.phtml:64
 msgid "Most sites are configured to use the default value of 1433."
-msgstr ""
+msgstr "Flestar vefsíður eru stilltar til að nota sjálfgefið gildi 1433."
 
 #: resources/views/setup/step-4-database-mysql.phtml:74
 msgid "Most sites are configured to use the default value of 3306."
@@ -9935,7 +9989,7 @@ msgstr "Flestar vefsíður eru uppsettar þannig að þær noti sjálfgefna gild
 
 #: resources/views/setup/step-4-database-pgsql.phtml:64
 msgid "Most sites are configured to use the default value of 5432."
-msgstr ""
+msgstr "Flestar vefsíður eru stilltar til að nota sjálfgefið gildi 5432."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:47
