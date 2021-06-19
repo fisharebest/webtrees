@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-06-19 11:45+0000\n"
+"PO-Revision-Date: 2021-06-20 09:53+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -7345,16 +7345,21 @@ msgstr ""
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
 msgstr ""
+"Ef einstaklingur var þekktur undir gælunafni sem er ekki hluti af formlegu "
+"nafni hans, ætti það að vera með gæsalöppum. Til dæmis, <%s>John "
+"&quot;Nobby&quot; /Clark/<%s>."
 
 #: help_text.php:230
 #, php-format
 msgid "If an individual was not known by their first given name, the preferred name should be indicated with an asterisk: <%s>John Paul* /Smith/<%s>"
 msgstr ""
+"Ef einstaklingur var ekki þekktur undir fyrsta eiginnafni, ætti að gefa til "
+"kynna aðalnafnið með stjörnu: <%s>John Paul* /Smith/<%s>"
 
 #: help_text.php:224
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr ""
+msgstr "Ef eftirnafnið er óþekkt, notaðu tóm skrástrik: <%s>Mary //<%s>"
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: admin_trees_config.php:415
@@ -7365,6 +7370,8 @@ msgstr "Ef þessi persóna hefur einhverja atburði aðra en Andlát, Jarðaför
 #: admin_trees_config.php:1008
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
 msgstr ""
+"Ef tvö ættartré nota sömu gagnamöppuna, þá geta þau deilt gagnaskrám. Ef þau "
+"nota mismunandi gagnamöppur þá verður gagnaskrám þeirra haldið aðskildum."
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -7386,6 +7393,9 @@ msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óska
 #: admin_trees_manage.php:285
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"Ef þú bjóst til þessa GEDCOM skrá með ættfræðihugbúnaði sem sleppir bilum "
+"þegar þú skiptir löngum línum skaltu velja þennan valkost til að setja aftur "
+"bilin inn sem vantar."
 
 #: login.php:349
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7412,6 +7422,8 @@ msgstr "Ef þú felur tómt box, þá getur þú ekki geta breytt stillingu þes
 #: admin_site_config.php:192
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
 msgstr ""
+"Ef þú velur aðra möppu verður þú einnig að færa allar skrár (nema "
+"config.ini.php, index.php og .htaccess) úr núverandi möppu í nýju möppuna."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
@@ -7424,6 +7436,9 @@ msgstr ""
 #: admin_trees_config.php:434
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public."
 msgstr ""
+"Ef þú sýnir gestum lifandi einstaklinga eru allar aðrar takmarkanir á "
+"persónuvernd hunsaðar. Gerðu þetta aðeins ef öll gögn í ættartrénu þínu eru "
+"opinber."
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7432,6 +7447,8 @@ msgstr "Ef þú reynir að fara fram úr þessum takmörkunum, þá gætir þú 
 #: admin_site_config.php:519
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Ef þú notar einhverja af eftirfarandi þjónustum fyrir mælingar og greiningar "
+"þá getur webtrees bætt við rakningakóðunum sjálfkrafa."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page. Otherwise, you will need to contact your server’s administrator."
@@ -7448,7 +7465,7 @@ msgstr "Myndastærð"
 
 #: admin_trees_config.php:1136
 msgid "Images without watermarks"
-msgstr ""
+msgstr "Myndir án vatnsmerkja"
 
 #. I18N: gedcom tag IMMI
 #: app/GedcomTag.php:524
@@ -7461,7 +7478,7 @@ msgstr "Flytja inn"
 
 #: admin_trees_manage.php:178
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Flytja inn GEDCOM skrá"
 
 #: app/Module/GoogleMapsModule.php:4036
 msgid "Import all places from a family tree"
@@ -7469,20 +7486,42 @@ msgstr "Flygja inn alla staði úr fjölskyldutré"
 
 #: admin_trees_manage.php:270
 msgid "Import preferences"
-msgstr ""
+msgstr "Flytja inn stillingar"
 
 #: admin_trees_config.php:841 admin_trees_merge.php:86
 #: admin_trees_renumber.php:265
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
 msgstr ""
+"Í ættartré hefur hver skrá innri tilvísunarnúmer (kallað „XREF“) eins og "
+"„F123“ eða „R14“."
 
 #: help_text.php:266
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet. This might be of use with Japanese names, where three different alphabets may occur."
 msgstr ""
+"Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með "
+"hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri "
+"stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem "
+"ensku. <br> <br> Ef þú vilt frekar nota stafróf sem ekki er latneskt, svo "
+"sem hebreska, gríska, rússneska, kínverska eða arabíska til að slá inn "
+"nafnið í reitina fyrir venjulegt heiti, þá geturðu notað þennan reit til að "
+"slá inn sama nafn með latneska stafrófinu. Báðar útgáfur nafnsins birtast í "
+"listum og töflum. <br> <br> Þó að þessi reitur sé merktur „Romanized“ er "
+"hann ekki takmarkaður við að innihalda aðeins stafi sem byggja á latneska "
+"stafrófinu. Þetta gæti verið gagnlegt með japönskum nöfnum, þar sem þrjú "
+"mismunandi stafróf geta komið fyrir."
 
 #: help_text.php:271
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese. Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
 msgstr ""
+"Í mörgum menningarheimum er venja að hafa hefðbundið nafn stafsett með "
+"hefðbundnum stöfum og einnig romaniseraða útgáfu af nafninu eins og það væri "
+"stafsett eða borið fram á tungumálum byggt á latneska stafrófinu, svo sem "
+"ensku. <br> <br> Ef þú vilt frekar nota latneska stafrófið til að slá inn "
+"nafnið í reitina fyrir venjulegt heiti, þá getur þú notað þennan reit til að "
+"slá inn sama nafn í stafrófinu sem ekki er latneskt, svo sem gríska, "
+"hebreska, rússneska, arabíska eða kínverska. Báðar útgáfur nafnsins birtast "
+"í listum og töflum. <br> <br> Þó að þessi reitur sé merktur „hebreskur“ er "
+"hann ekki takmarkaður við að innihalda aðeins hebreska stafi."
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:712
@@ -7519,7 +7558,7 @@ msgstr "Innifela miðla (þjappar sjálfvirkt skrár)"
 #. I18N: Label for check-box
 #: admin_media.php:666 medialist.php:121
 msgid "Include subfolders"
-msgstr ""
+msgstr "Hafa undirmöppur með"
 
 #. I18N: Label for a configuration option
 #: lifespan.php:86
@@ -7534,7 +7573,7 @@ msgstr "Indland"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Indianapolis, Indiana, United States"
-msgstr ""
+msgstr "Indianapolis, Indiana, Bandaríkin"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -7726,6 +7765,8 @@ msgstr "Ísrael"
 #: admin_site_upgrade.php:77 admin_site_upgrade.php:81
 msgid "It can take several minutes to download and install the upgrade. Be patient."
 msgstr ""
+"Það getur tekið nokkrar mínútur að hlaða niður og setja upp uppfærsluna. "
+"Vertu þolinmóð/ur."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6785
@@ -7932,7 +7973,7 @@ msgstr "Júní"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "Kansas City, Missouri, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
@@ -7950,14 +7991,14 @@ msgstr "Halda krækju í lista"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:275
 msgid "Keep media objects"
-msgstr ""
+msgstr "Halda gagnahlutum"
 
 #. I18N: A configuration setting
 #: addmedia.php:705 admin_trees_config.php:2131
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:62 edit_interface.php:2256
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:545
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Haltu núverandi „síðustu breytingar“ upplýsingum"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6791
@@ -8107,7 +8148,7 @@ msgstr "Tungumál"
 #. I18N: Menu entry
 #: admin_site_config.php:153 app/Theme/AdministrationTheme.php:98
 msgid "Languages"
-msgstr ""
+msgstr "Tungumál"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6798
@@ -8299,7 +8340,7 @@ msgstr "Lima, Perú"
 #. I18N: You need to:
 #: login.php:575
 msgid "Link the user account to an individual."
-msgstr ""
+msgstr "Tengdu notandareikninginn við einstakling."
 
 #: app/Module/RelativesTabModule.php:369 edit_interface.php:963
 #: edit_interface.php:1023
@@ -8309,21 +8350,21 @@ msgstr "Tengja þessa persónu við núverandi fjölskyldu sem barni"
 #: admin_media.php:531 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:127 app/Module/AlbumModule.php:178
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Tengdu þennan gagnahlut við fjölskyldu"
 
 #: admin_media.php:532 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:130 app/Module/AlbumModule.php:184
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Tengdu þennan gagnahlut við heimild"
 
 #: admin_media.php:530 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:124 app/Module/AlbumModule.php:172
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Tengdu þennan gagnahlut við einstakling"
 
 #: admin_users.php:594
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Tengdu þennan notanda við einstakling í ættartrénu."
 
 #: app/Controller/FamilyController.php:165 app/Module/AlbumModule.php:103
 #: app/Module/AlbumModule.php:104 app/Module/CensusAssistantModule.php:234
@@ -8375,12 +8416,12 @@ msgstr "Hleð inn…"
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:632
 msgid "Local files"
-msgstr ""
+msgstr "Staðbundnar skrár"
 
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:1552
 msgid "Location"
-msgstr ""
+msgstr "Staðsetning"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
@@ -8545,12 +8586,12 @@ msgstr "Malta"
 #: admin_trees_places.php:91 admin_trees_unconnected.php:74
 #: app/Theme/AdministrationTheme.php:127
 msgid "Manage family trees"
-msgstr ""
+msgstr "Hafa umsjón með ættartrjám"
 
 #. I18N: Menu entry
 #: admin_media.php:588 app/Theme/AdministrationTheme.php:178
 msgid "Manage media"
-msgstr ""
+msgstr "Stjórna gögnum"
 
 #: admin_media.php:535 app/Controller/MediaController.php:49
 #: app/Controller/MediaController.php:121 app/Module/AlbumModule.php:166
@@ -8571,12 +8612,12 @@ msgstr "Stjórnendur"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Manaus, Brazil"
-msgstr ""
+msgstr "Manaus, Brasilía"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Manhattan, New York, United States"
-msgstr ""
+msgstr "Manhattan, New York, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
@@ -8639,6 +8680,9 @@ msgstr "Mars"
 #: admin_trees_config.php:1565
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr ""
+"Markdown er einfalt sniðkerfi, notað á vefsíðum eins og Wikipedia. Það notar "
+"lítt áberandi greinarmerki til að búa til fyrirsagnir og undirfyrirsagnir, "
+"feitletraðan og skáletraðan texta, lista, töflur o.s.frv."
 
 #. I18N: gedcom tag MARR
 #: app/GedcomTag.php:576 modules_v3/ahnentafel_report/report.xml:449
@@ -8884,7 +8928,7 @@ msgstr "Martiník"
 #. I18N: Pretend to be another user, by logging in as them
 #: admin_users.php:210
 msgid "Masquerade as this user"
-msgstr ""
+msgstr "Dulbúast sem þessi notandi"
 
 #. I18N: Help text for "Case insensitive" searches
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:173
@@ -8993,20 +9037,20 @@ msgstr "Miðilsskrá til að flytja inn"
 #: admin_trees_download.php:163
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Forskeyti skráarheita gagna verður %s."
 
 #: admin_media.php:623 admin_trees_config.php:1013
 msgid "Media files"
-msgstr ""
+msgstr "Gagnaskrár"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:988
 msgid "Media folder"
-msgstr ""
+msgstr "Gagnamappa"
 
 #: admin_media.php:624 admin_trees_config.php:983
 msgid "Media folders"
-msgstr ""
+msgstr "Gagnamöppur"
 
 #. I18N: gedcom tag OBJE
 #: admin_media.php:693 admin_trees_config.php:809 admin_trees_manage.php:577
@@ -9129,12 +9173,12 @@ msgstr "Mercury"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "Sameina"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:137
 msgid "Merge family trees"
-msgstr ""
+msgstr "Sameina ættartré"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:479
 msgid "Merge records"
@@ -9250,7 +9294,7 @@ msgstr "Stjórnandi"
 
 #: admin.php:692
 msgid "Moderators"
-msgstr ""
+msgstr "Fundarstjórar"
 
 #: admin_modules.php:157
 msgid "Module"
