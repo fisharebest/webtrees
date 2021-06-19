@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<<?php /* Beware short open tags in PHP <8.0 */ ?>?xml version="1.0" encoding="utf-8"?>
 <browserconfig>
     <msapplication>
         <tile>
