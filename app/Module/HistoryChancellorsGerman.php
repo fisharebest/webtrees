@@ -56,9 +56,9 @@ class HistoryChancellorsGerman extends AbstractModule implements ModuleHistoricE
      */
     public function title(): string
     {
-        $partTitle = I18N::translate('German chancellorships since 1867');
+        $partTitle = I18N::translate('German chancellorships since');
 
-        return "{$partTitle}{ 🇩🇪}";
+        return "{$partTitle}{ 1867 🇩🇪}";
     }
 
     /**
