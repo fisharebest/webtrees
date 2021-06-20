@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-06-01 11:33+0000\n"
+"PO-Revision-Date: 2021-06-21 10:49+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -665,17 +665,17 @@ msgstr "Ein Diagramm der Vorfahren und Nachkommen einer Person als Familienbuch.
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:96
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Ein kompaktes Diagramm der Vorfahren einer Person."
+msgstr "Eine kompakte Tafel der Vorfahren einer Person."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Ein Baumdiagramm der Vorfahren einer Person."
+msgstr "Eine Tafel der Vorfahren einer Person."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:119
 msgid "A chart of an individual’s ancestors."
-msgstr "Ein Diagramm der Vorfahren einer Person."
+msgstr "Eine Tafel der Vorfahren einer Person."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:119
@@ -875,7 +875,7 @@ msgstr "Ein zukünftiger Benutzer hat sich für webtrees auf %s registriert."
 #: app/Module/PedigreeReportModule.php:52
 #: resources/xml/reports/pedigree_report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Ein als Baum gestalteter Bericht der Vorfahren einer Person."
+msgstr "Ein als Tafel gestalteter Bericht der Vorfahren einer Person."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:52
@@ -3929,13 +3929,13 @@ msgstr "Komoren"
 #. I18N: Name of a module/chart
 #: app/Module/CompactTreeChartModule.php:85
 msgid "Compact tree"
-msgstr "Kompakte Ahnentafel"
+msgstr "Kompakte Vorfahrentafel"
 
 #. I18N: %s is an individual’s name
 #: app/Module/CompactTreeChartModule.php:131
 #, php-format
 msgid "Compact tree of %s"
-msgstr "Kompakte Ahnentafel von %s"
+msgstr "Kompakte Vorfahrentafel von %s"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:42
 msgid "Comparison"
@@ -6364,13 +6364,13 @@ msgstr "Familie mit Ehefrau"
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
 msgid "Fan chart"
-msgstr "Fächerdiagramm"
+msgstr "Vorfahrenfächer"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Fächerdiagramm von %s"
+msgstr "Vorfahrenfächer von %s"
 
 #: app/Date/JalaliDate.php:259
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -8993,7 +8993,11 @@ msgstr "Manuskript"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:653
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Viele Ahnenforschungsprogramme erzeugen GEDCOM-Dateien mit programmspezifischen Kennzeichen, die webtrees in den meisten Fällen kennt und korrekt interpretiert. Wenn unbekannte Kennzeichen gefunden werden, erlaubt diese Option, diese zu ignorieren oder eine Warnmeldung auszugeben."
+msgstr ""
+"Viele Genealogieprogramme erzeugen GEDCOM-Dateien mit programmspezifischen "
+"Kennzeichen, die webtrees in den meisten Fällen kennt und korrekt "
+"interpretiert. Wenn unbekannte Kennzeichen gefunden werden, erlaubt diese "
+"Option, diese zu ignorieren oder eine Warnmeldung auszugeben."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:71
@@ -11024,28 +11028,28 @@ msgstr "Payson, Utah, Vereinigte Staaten"
 #: resources/xml/reports/pedigree_report.xml:3
 #: resources/xml/reports/pedigree_report.xml:48
 msgid "Pedigree"
-msgstr "Ahnentafel"
+msgstr "Vorfahrentafel"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Stammbaum"
+msgstr "Vorfahrentafel"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:123
 msgid "Pedigree map"
-msgstr "Stammbaumkarte"
+msgstr "Vorfahrenkarte"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeMapModule.php:169 app/Module/PedigreeMapModule.php:233
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "Stammbaumkarte von %s"
+msgstr "Vorfahrenkarte von %s"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeChartModule.php:164
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Stammbaum von %s"
+msgstr "Vorfahrentafel von %s"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:267
@@ -14218,7 +14222,11 @@ msgstr "Thailand"
 
 #: resources/views/help/name.phtml:8
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "Das Feld <b>Name</b> enthält den vollen Namen der Person, so wie er geschrieben bzw. niedergeschrieben wurde. Genau so wird er am Bildschirm dargestellt. Üblicherweise werden in der Ahnenforschung Standard Trennzeichen benutzt, um die unterschiedlichen Namensbestandteile zu trennen."
+msgstr ""
+"Das Feld <b>Name</b> enthält den vollen Namen der Person, so wie er "
+"geschrieben bzw. niedergeschrieben wurde. Genau so wird er am Bildschirm "
+"dargestellt. Üblicherweise werden in der Familienforschung Standard-"
+"Kennzeichen benutzt, um die unterschiedlichen Namensbestandteile zu trennen."
 
 #: resources/views/help/surname.phtml:8
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
@@ -15226,7 +15234,11 @@ msgstr "Im Medienbetrachter kann ein Link zum Herunterladen der aktuellen Medien
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:166
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Diese Einstellung erhält familiäre Verknüpfungen in vertraulichen Datensätzen. Das bedeutet, dass Sie leere „Vertraulich“-Boxen auf der Ahnentafel und auf anderen Diagrammen für als vertraulich eingestufte Personen (i.S.v. nicht öffentlich) sehen werden."
+msgstr ""
+"Diese Einstellung erhält familiäre Verknüpfungen in vertraulichen "
+"Datensätzen. Das bedeutet, dass Sie leere „Vertraulich“-Boxen auf der "
+"Vorfahrentafel und auf anderen Diagrammen für als vertraulich eingestufte "
+"Personen (i.S.v. nicht öffentlich) sehen werden."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
@@ -20974,7 +20986,11 @@ msgstr "webtrees sendet E-Mails ohne sie zu speichern"
 
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "webtrees verwendet UTF-8 Kodierung für Umlaute, Sonderzeichen und nicht lateinische Schriften. Wenn Sie diese GEDCOM-Datei mit einer Ahnenforschungssoftware verwenden möchten, welche kein UTF-8 unterstützt, können Sie stattdessen auch eine Datei mit ISO-8859-1 Kodierung erstellen."
+msgstr ""
+"webtrees verwendet UTF-8 Kodierung für Umlaute, Sonderzeichen und nicht "
+"lateinische Schriften. Wenn Sie diese GEDCOM-Datei mit einer "
+"Genealogiesoftware verwenden möchten, welche kein UTF-8 unterstützt, können "
+"Sie stattdessen auch eine Datei mit ISO-8859-1 Kodierung erstellen."
 
 #: app/Functions/Functions.php:662
 msgid "wife"
