@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -39,6 +40,18 @@ class AddNewFact implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * AddNewFact constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -53,6 +66,9 @@ class AddNewFact implements RequestHandlerInterface
         assert(is_string($xref));
 
         $subtag  = $request->getAttribute('fact');
+
+        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
+
         $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record  = Auth::checkRecordAccess($record, true);
         $element = Registry::elementFactory()->make($record->tag() . ':' . $subtag);
@@ -62,6 +78,7 @@ class AddNewFact implements RequestHandlerInterface
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => false,
             'fact'         => $fact,
+            'gedcom'       => $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden),
             'title'        => $title,
             'tree'         => $tree,
             'url'          => $record->url(),

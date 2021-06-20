@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -499,5 +500,18 @@ class GedcomEditService
         }
 
         return implode("\n", $gedcom_lines);
+    }
+
+    /**
+     * Add blank lines, to allow a user to add/edit new values.
+     *
+     * @param Fact $fact
+     * @param bool $include_hidden
+     *
+     * @return string
+     */
+    public function insertMissingSubtags(Fact $fact, bool $include_hidden): string
+    {
+        return $fact->record()->insertMissingLevels($fact->tag(), $fact->gedcom(), $include_hidden);
     }
 }
