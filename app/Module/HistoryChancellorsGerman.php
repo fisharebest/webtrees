@@ -14,22 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
- 
+
 /**
  * Events provided by this module (description in English and original language):
  * Historical facts (in German): Chancellors of Germany (since 1949) and their historical Predecessors (1867 - 1949)
  * Historische Daten (in deutsch): ".$eventTypeDm." der BRD und Staatratsvorsitzenden der DDR (seit 1949) sowie deren historischen Vorgänger (1867 - 1949)
- * 
+ *
  * @Author Lars van Ravenzwaaij
  * @Author Hermann Hartenthaler
- * 
+ *
  * Each line is a GEDCOM style record to describe an event (EVEN), including newline chars (\n)
  *   1 EVEN <description>
  *   2 TYPE <description>
  *   2 DATE <date period>
  *   2 NOTE <remark> to EVEN
  *   2 SOUR [Wikipedia: <title>](<link> )
- * 
+ *
  * As Markdown is used for NOTE, Markdown should be enabled for your tree (see Control panel / Manage family trees / Preferences
  * and then scroll down to "Text" and mark the option "markdown"). If markdown is disabled the links are still working
  * (blank at the end is necessary), but the formatting isn't so nice
