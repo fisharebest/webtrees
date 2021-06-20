@@ -18,7 +18,7 @@
 /**
  * Events provided by this module (description in English and original language):
  * Historical facts (in German): Chancellors of Germany (since 1949) and their historical Predecessors (1867 - 1949)
- * Historische Daten (in deutsch): ".$eventTypeDm." der BRD und Staatratsvorsitzenden der DDR (seit 1949) sowie deren historischen Vorgänger (1867 - 1949)
+ * Historische Daten (in deutsch): Bundeskanzler der BRD und Staatratsvorsitzenden der DDR (seit 1949) sowie deren historischen Vorgänger (1867 - 1949)
  *
  * @Author Lars van Ravenzwaaij
  * @Author Hermann Hartenthaler
