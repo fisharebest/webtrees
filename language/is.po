@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-06-20 09:53+0000\n"
+"PO-Revision-Date: 2021-06-21 10:49+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -448,8 +448,8 @@ msgstr[1] "%s vikur"
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
-msgstr[0] "%s ár"
-msgstr[1] "%s ár"
+msgstr[0] "%s árs"
+msgstr[1] "%s ára"
 
 #: app/I18N.php:794
 #, php-format
@@ -557,7 +557,7 @@ msgstr "&lt;velja&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(aldur %s)"
+msgstr "(%s ára)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -1752,7 +1752,7 @@ msgstr "Aldursmunur"
 
 #: statistics.php:550 statisticsplot.php:1282
 msgid "Age in year of first marriage"
-msgstr "Aldur á ári fyrstu giftingar"
+msgstr "Aldur við fyrstu giftingu"
 
 #: app/Functions/FunctionsPrintLists.php:972 statistics.php:260
 #: statistics.php:545 statisticsplot.php:1232
@@ -5657,7 +5657,7 @@ msgstr "Enda IP tölu"
 #. I18N: The latest year in a range
 #: lifespan.php:77
 msgid "End year"
-msgstr "Enda ár"
+msgstr "Lokaár"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
@@ -9492,12 +9492,12 @@ msgstr "Aldur móður"
 #: app/Individual.php:1012
 #, php-format
 msgid "Mother’s family with %s"
-msgstr ""
+msgstr "Móðurfjölskylda með %s"
 
 #. I18N: A step-family.
 #: app/Individual.php:1016
 msgid "Mother’s family with an unknown individual"
-msgstr ""
+msgstr "Móðurfjölskylda með óþekktum einstaklingi"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:255
@@ -9563,7 +9563,7 @@ msgstr "Minn reikningur"
 #. I18N: Default name for a new tree
 #: admin_trees_manage.php:165
 msgid "My family tree"
-msgstr ""
+msgstr "Mitt ættartré"
 
 #: app/Module/UserWelcomeModule.php:61 app/Theme/AbstractTheme.php:1614
 msgid "My individual record"
@@ -9577,7 +9577,7 @@ msgstr "Mín síða"
 
 #: app/Theme/AbstractTheme.php:1636
 msgid "My pages"
-msgstr ""
+msgstr "Mínar síður"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
@@ -9746,7 +9746,7 @@ msgstr "Nýja Sjáland"
 
 #: admin_site_change.php:344
 msgid "New data"
-msgstr ""
+msgstr "Ný gögn"
 
 #. I18N: %s is a server name/URL
 #: login.php:330
@@ -9862,11 +9862,11 @@ msgstr "Nei"
 
 #: admin_trees_manage.php:104 admin_trees_manage.php:125
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Ekkert GEDCOM skjal móttekið."
 
 #: admin_trees_manage.php:256
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Engar GEDCOM skrár fundust."
 
 #: app/Module/GoogleMapsModule.php:849
 msgid "No ancestors in the database."
@@ -9895,7 +9895,7 @@ msgstr ""
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Engin afrit hafa fundist."
 
 #: admin_trees_check.php:211
 msgid "No errors have been found."
@@ -10003,7 +10003,7 @@ msgstr "Ekkert musteri - Lifandi tilskipun"
 
 #: admin.php:622 admin_site_upgrade.php:61
 msgid "No upgrade information is available."
-msgstr ""
+msgstr "Engar uppfærsluupplýsingar liggja fyrir."
 
 #: app/Stats.php:1739
 msgid "Nobody at all"
@@ -10194,7 +10194,7 @@ msgstr "Fjöldi kynslóða"
 #. I18N: ... to show in a list
 #: app/Module/TopGivenNamesModule.php:146
 msgid "Number of given names"
-msgstr ""
+msgstr "Fjöldi eiginnafna"
 
 #. I18N: gedcom tag NMR
 #: app/GedcomTag.php:634
@@ -10208,13 +10208,13 @@ msgstr "Fjöldi mánaða frá síðustu innskráningu þar til að notandareikni
 #. I18N: ... to show in a list
 #: app/Module/TopPageViewsModule.php:159
 msgid "Number of pages"
-msgstr ""
+msgstr "Fjöldi síðna"
 
 #. I18N: ... to show in a list
 #: app/Module/FamilyTreeStatisticsModule.php:439
 #: app/Module/TopSurnamesModule.php:157
 msgid "Number of surnames"
-msgstr ""
+msgstr "Fjöldi eftirnafna"
 
 #: app/GedcomCode/GedcomCodeRela.php:203
 msgid "Nurse"
@@ -10300,7 +10300,7 @@ msgstr "Oklahoma City, Oklahoma, United States"
 
 #: admin_site_change.php:337
 msgid "Old data"
-msgstr ""
+msgstr "Gömul gögn"
 
 #: admin.php:886
 msgid "Old files found"
@@ -10371,7 +10371,7 @@ msgstr "Því miður webtrees gat ekki stofnað skrár í þessari möppu."
 
 #: app/Functions/FunctionsPrint.php:471
 msgid "OpenStreetMap™"
-msgstr ""
+msgstr "OpenStreetMap™"
 
 #: app/Module/GoogleMapsModule.php:373
 msgid "Optional prefixes and suffixes"
@@ -10380,7 +10380,7 @@ msgstr "Valkvæð forskeyti og viðskeyti"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
+msgstr "Oquirrh Mountain, Utah, Bandaríkin"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10419,7 +10419,7 @@ msgstr "Ordibehesht"
 #. I18N: gedcom tag ORDI
 #: app/GedcomTag.php:660
 msgid "Ordinance"
-msgstr "Reglugerð"
+msgstr "Hefð"
 
 #. I18N: gedcom tag ORDN
 #: app/GedcomTag.php:664
@@ -10429,12 +10429,12 @@ msgstr "Prestvígsla"
 #: modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6
 msgid "Orientation"
-msgstr "Lega"
+msgstr "Stefnumörkun"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:281
 msgid "Orlando, Florida, United States"
-msgstr "Orlando, Florída"
+msgstr "Orlando, Flórída, Bandaríkin"
 
 #. I18N: Type of media object
 #: app/GedcomTag.php:1944 app/Stats.php:5453 app/Stats.php:5872
@@ -10443,7 +10443,7 @@ msgstr "Annað"
 
 #: admin_trees_config.php:1337
 msgid "Other facts to show in charts"
-msgstr "Aðrar staðreyndir til að sýna á grafi"
+msgstr "Aðrar staðreyndir til að birta í grafi"
 
 #: addmedia.php:524 admin_media_upload.php:242
 msgid "Other folder… please type in"
@@ -10487,7 +10487,7 @@ msgstr "P.M."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:88
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP útilokaði skrá eftir endingu hennar."
+msgstr "PHP útilokaði skrána vegna endingar hennar."
 
 #: setup.php:140
 #, php-format
@@ -10502,7 +10502,7 @@ msgstr "PHP viðauki „%s“ er óvirkur. Þú getur ekki sett upp webtrees fyr
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:85
 msgid "PHP failed to write to disk."
-msgstr "PHP tókst ekki að skrifa á disk."
+msgstr "PHP mistókst að skrifa á disk."
 
 #: admin_site_info.php:51
 msgid "PHP information"
@@ -10569,7 +10569,7 @@ msgstr "Pakistan"
 #. I18N: Name of a country or state
 #: app/Stats.php:6852
 msgid "Palau"
-msgstr "Palá"
+msgstr "Palau"
 
 #. I18N: A colour scheme
 #: app/Theme/ColorsTheme.php:149
@@ -10579,7 +10579,7 @@ msgstr "Litaspjald"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:285
 msgid "Palmyra, New York, United States"
-msgstr "Palmyra, New York, United States"
+msgstr "Palmyra, New York, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6848
@@ -10589,7 +10589,7 @@ msgstr "Panama"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr ""
+msgstr "Panama City, Panama"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -10604,7 +10604,7 @@ msgstr "Papúa Nýja-Gínea"
 #. I18N: Name of a country or state
 #: app/Stats.php:6858
 msgid "Paraguay"
-msgstr "Paragvæ"
+msgstr "Paraguay"
 
 #: app/Controller/HourglassController.php:340
 #: app/Module/FamilyNavigatorModule.php:204 family.php:82
@@ -10639,7 +10639,7 @@ msgstr "Lykilorðin verða að innihalda að lágmarki 6 stafi."
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Payson, Utah, United States"
-msgstr ""
+msgstr "Payson, Utah, Bandaríkin"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10649,21 +10649,21 @@ msgstr ""
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "Ættartala"
+msgstr "Ættbók"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Manntalsgraf"
+msgstr "Ættbókargraf"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
-msgstr "Ættartölukort"
+msgstr "Ættbókarkort"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:708
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "Ættartölukort fyrir %s"
+msgstr "Ættbókarkort fyrir %s"
 
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
@@ -10674,7 +10674,7 @@ msgstr "Ættartala fyrir %s"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Ættartölutré fyrir %s"
+msgstr "Ættbókartré fyrir %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -10682,11 +10682,15 @@ msgstr "Ættartölutré fyrir %s"
 #: app/Theme/AbstractTheme.php:1678 edit_changes.php:35 edit_changes.php:49
 #: help_text.php:302 modules_v3/change_report/report.xml:52
 msgid "Pending changes"
-msgstr "Fyrirhugaðar breytingar"
+msgstr "Breytingar í bið"
 
 #: help_text.php:309
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Fyrirhugaðar breytingar eru aðeins sýndar þegar reikningur þinn hefur réttindi til að breyta. Þegar þú skráir þig út, þá sérðu þær ekki lengur. Að auki, þá eru fyrirhugaðar breytingar aðeins sýndar á vissum síðum. Sem dæmi, þær eru ekki sýndar á listum, skýrslum eða leitarniðurstöðum."
+msgstr ""
+"Breytingar í bið eru aðeins sýndar þegar reikningurinn þinn hefur heimild "
+"til að breyta. Þegar þú skráir þig út muntu ekki lengur sjá þær. Einnig eru "
+"breytingar í bið aðeins sýndar á ákveðnum síðum. Til dæmis eru þær ekki "
+"sýndar í listum, skýrslum eða leitarniðurstöðum."
 
 #. I18N: gedcom tag _PRMN
 #: app/GedcomTag.php:1719
@@ -10715,7 +10719,7 @@ msgstr "Filippseyjar"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "Phoenix, Arizona, United States"
-msgstr ""
+msgstr "Phoenix, Arizona, Bandaríkin"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
@@ -10729,7 +10733,7 @@ msgstr "Hljóðritun"
 
 #: search.php:253
 msgid "Phonetic algorithm"
-msgstr "Hljóðritunar algrím"
+msgstr "Hljóðfræðileg reiknirit"
 
 #: app/GedcomTag.php:608
 msgid "Phonetic name"
@@ -10737,13 +10741,13 @@ msgstr "Hljóðritunarnafn"
 
 #: app/GedcomTag.php:688
 msgid "Phonetic place"
-msgstr "Hljóðritunar staðsetning"
+msgstr "Hljóðritunarstaðsetning"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1733
 #: branches.php:51
 msgid "Phonetic search"
-msgstr "Hljóðritunar leit"
+msgstr "Hljóðritunarleit"
 
 #: app/GedcomTag.php:836
 msgid "Phonetic title"
@@ -10775,12 +10779,12 @@ msgstr "PhpGedView yfir í webtrees flutningsálfur"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:88
 msgid "Pink Plastic"
-msgstr "Pink Plastic"
+msgstr "Bleikt plast"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6849
 msgid "Pitcairn"
-msgstr "Pitkairn-eyja"
+msgstr "Pitkairn"
 
 #. I18N: gedcom tag PLAC
 #: app/GedcomTag.php:686 app/Module/GoogleMapsModule.php:1431
@@ -10817,7 +10821,7 @@ msgstr "Staðar stigveldi"
 
 #: app/GedcomTag.php:692
 msgid "Place in Hebrew"
-msgstr "Staðsetning í Hebresku"
+msgstr "Staðsetning á Hebresku"
 
 #: placelist.php:46 placelist.php:68
 msgid "Place list"
@@ -10826,7 +10830,10 @@ msgstr "Staðarlisti"
 #. I18N: Help text for the “Abbreviate place names” configuration setting
 #: admin_trees_config.php:1526
 msgid "Place names are frequently too long to fit on charts, lists, etc. They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>."
-msgstr "Staðarheiti eru oft of löng til að passa í gröf, lista o.s.frv. Hægt er að stytta þau með því að birta eingöngu nokkra fyrstu hlutina af heitinu, t.d. <i>bær, sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
+msgstr ""
+"Staðarheiti eru oft of löng til að passa í gröf, lista o.s.frv. Hægt er að "
+"stytta þau með því að birta eingöngu fyrstu hlutina af heitinu, t.d. <i>bær, "
+"sveitarfélag</i>, eða nokkra síðustu hlutina í því, t.d. <i>svæði, land</i>."
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:178
@@ -10836,17 +10843,17 @@ msgstr "Staður LDS skírnar"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:780
 msgid "Place of LDS child sealing"
-msgstr "Staðsetning á LDS barnastaðfestingu"
+msgstr "Staðsetning á LDS barnainnsiglun"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:416
 msgid "Place of LDS endowment"
-msgstr "Staðsetning á LDS heimanmundi"
+msgstr "Staður LDS heimanmundar"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:472
 msgid "Place of LDS spouse sealing"
-msgstr "Staðsetning á LDS makastaðfestingu"
+msgstr "Staður LDS makainnsiglunar"
 
 #: app/GedcomTag.php:134
 msgid "Place of adoption"
@@ -10854,49 +10861,49 @@ msgstr "Staður ættleiðingar"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
-msgstr "Staðsetning skírnar"
+msgstr "Staður skírnar"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
-msgstr "Staðsetning bar mitzvah"
+msgstr "Staður bar mitzvah"
 
 #: app/GedcomTag.php:202 modules_v3/missing_facts_report/report.xml:264
 msgid "Place of bat mitzvah"
-msgstr "Staðsetning bar mitzvah"
+msgstr "Staður bar mitzvah"
 
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
 msgid "Place of birth"
-msgstr "Fæðingarstaður"
+msgstr "Staður fæðingar"
 
 #: app/GedcomTag.php:218
 msgid "Place of blessing"
-msgstr "Staðsetning blessunar"
+msgstr "Staður blessunar"
 
 #: app/GedcomTag.php:1092
 msgid "Place of brit milah"
-msgstr "Staðsetning umskurðar"
+msgstr "Staður umskurðar"
 
 #: app/GedcomTag.php:230 modules_v3/missing_facts_report/report.xml:557
 msgid "Place of burial"
-msgstr "Staðsetning jarðarfarar"
+msgstr "Staður jarðarfarar"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr "Staðsetning skírnarathafnar"
+msgstr "Staður skírnarathafnar"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
-msgstr "Staður staðfestingar"
+msgstr "Staður fermingar"
 
 #: app/GedcomTag.php:334
 msgid "Place of cremation"
-msgstr "Staðsetning líkbrennslu"
+msgstr "Staður líkbrennslu"
 
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr "Staðsetning andláts"
+msgstr "Staður andláts"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
@@ -10904,41 +10911,41 @@ msgstr "Staður fólksflutnings"
 
 #: app/GedcomTag.php:424 modules_v3/missing_facts_report/report.xml:347
 msgid "Place of engagement"
-msgstr "Staðsetning trúlofunar"
+msgstr "Staður trúlofunar"
 
 #: app/GedcomTag.php:432
 msgid "Place of event"
-msgstr "Staðsetning atburðar"
+msgstr "Staður atburðar"
 
 #: app/GedcomTag.php:484 modules_v3/missing_facts_report/report.xml:389
 msgid "Place of first communion"
-msgstr "Staðsetning fyrstu altarisgöngu"
+msgstr "Staður fyrstu altarisgöngu"
 
 #: app/GedcomTag.php:528
 msgid "Place of immigration"
-msgstr "Staðsetning fólksinnflutnings"
+msgstr "Staður fólksinnflutnings"
 
 #: app/GedcomTag.php:466 app/GedcomTag.php:580
 #: modules_v3/fact_sources/report.xml:321
 #: modules_v3/missing_facts_report/report.xml:474
 msgid "Place of marriage"
-msgstr "Staðsetning giftingar"
+msgstr "Staður giftingar"
 
 #: app/GedcomTag.php:564 modules_v3/missing_facts_report/report.xml:431
 msgid "Place of marriage banns"
-msgstr "Staðsetning hjúskaparbanns"
+msgstr "Staður hjónabands"
 
 #: app/GedcomTag.php:622
 msgid "Place of naturalization"
-msgstr "Staðsetning á veitingu þegnréttar"
+msgstr "Staður veitingar þegnréttar"
 
 #: app/GedcomTag.php:670
 msgid "Place of ordination"
-msgstr "Staðsetning reglugerðar"
+msgstr "Staður vígslu"
 
 #: app/GedcomTag.php:736
 msgid "Place of residence"
-msgstr "Staðsetning bústaðar"
+msgstr "Staður búsetu"
 
 #: admin_site_upgrade.php:354
 #, php-format
@@ -11040,7 +11047,7 @@ msgstr "Tenginúmer"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:299
 msgid "Portland, Oregon, United States"
-msgstr "Portland, Oregon, United States"
+msgstr "Portland, Oregon, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:283
@@ -11115,12 +11122,13 @@ msgstr "Fyrirfram skilgreindur texti sem staðhæfir að eingöngu fjölskyldume
 #: app/Module/UpcomingAnniversariesModule.php:78
 #: app/Module/YahrzeitModule.php:74 block_edit.php:64
 msgid "Preferences"
-msgstr ""
+msgstr "Stillingar"
 
 #: admin_modules.php:98
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
 msgstr ""
+"Stillingar eru fyrir eininguna “%s”, en þessi eining er ekki lengur til."
 
 #. I18N: A configuration setting
 #: admin_users.php:471
@@ -11196,7 +11204,7 @@ msgstr "Fasteign"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "Provo City Center, Utah, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
@@ -11235,7 +11243,7 @@ msgstr "Spurning"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "Quetzaltenango, Guatemala"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
@@ -11487,7 +11495,7 @@ msgstr "Regluleg framsetning"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr ""
+msgstr "Venjuleg tjáning er háþróuð mynstursaðferðartækni."
 
 #: edit_changes.php:186 edit_changes.php:206
 msgid "Reject"
@@ -11533,7 +11541,7 @@ msgstr "Skyldleiki við móður"
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:678
 msgid "Relationship to parents"
-msgstr ""
+msgstr "Samband við foreldra"
 
 #: relationship.php:166
 #, php-format
@@ -11611,7 +11619,7 @@ msgstr "Fjarlægja krækju úr lista"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:288
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Fjarlægja GEDCOM gagnaslóða frá skráarheiti"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
@@ -11624,13 +11632,13 @@ msgstr "Reno, Nevada, United States"
 
 #: admin_trees_manage.php:519
 msgid "Renumber"
-msgstr ""
+msgstr "Endurnúmera"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:100 admin_trees_merge.php:105
 #: admin_trees_renumber.php:33
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Endurnúmera ættartré"
 
 #: admin_trees_places.php:105 search.php:162
 msgid "Replace with"
@@ -11725,7 +11733,7 @@ msgstr "Bústaður"
 
 #: index_edit.php:371
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Endurheimtu sjálfgefið útlit blokkar"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:351
@@ -11766,7 +11774,7 @@ msgstr "Réunion"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "Rexburg, Idaho, Bandaríkin"
 
 #: index_edit.php:304
 msgid "Right section blocks"
@@ -17320,8 +17328,8 @@ msgstr "fjórði frændi"
 #, php-format
 msgid "from %1$s interval %2$s year"
 msgid_plural "from %1$s interval %2$s years"
-msgstr[0] "frá %1$s millibil %2$s ár"
-msgstr[1] "frá %1$s millibil %2$s ár"
+msgstr[0] "frá %1$s millibil %2$s árs"
+msgstr[1] "frá %1$s millibil %2$s ára"
 
 #. I18N: Gedcom FROM dates
 #: app/Date.php:316
@@ -20301,7 +20309,7 @@ msgstr "yngri systir"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s ár"
-msgstr[1] "±%s ár"
+msgstr[1] "±%s ára"
 
 #: app/Individual.php:1218
 #, php-format
