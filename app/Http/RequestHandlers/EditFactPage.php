@@ -74,10 +74,7 @@ class EditFactPage implements RequestHandlerInterface
         $record = Auth::checkRecordAccess($record, true);
 
         // Find the fact to edit
-        $fact = $record->facts()
-            ->first(static function (Fact $fact) use ($fact_id): bool {
-                return $fact->id() === $fact_id && $fact->canEdit();
-            });
+        $fact = $record->facts()->first(fn (Fact $fact): bool => $fact->id() === $fact_id && $fact->canEdit());
 
         if ($fact === null) {
             return redirect($record->url());
@@ -85,20 +82,32 @@ class EditFactPage implements RequestHandlerInterface
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
-        $tmp1 = $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden);
-        $tmp2 = $this->gedcom_edit_service->insertMissingSubtags($fact, true);
+        $gedcom = $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden);
+        $hidden = $this->gedcom_edit_service->insertMissingSubtags($fact, true);
+        $url = $request->getQueryParams()['url'] ?? $record->url();
 
-        $allow_include_hidden = $tmp1 !== $tmp2;
+        if ($gedcom === $hidden) {
+            $hidden_url = '';
+        } else {
+            $hidden_url = route(self::class, [
+                'fact_id' => $fact_id,
+                'include_hidden'  => true,
+                'tree'    => $tree->name(),
+                'url'     => $url,
+                'xref'    => $xref,
+            ]);
+        }
 
-        $title = $record->fullName() . ' - ' . $fact->label();
+        $title  = $record->fullName() . ' - ' . $fact->label();
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,
             'fact'         => $fact,
-            'gedcom'       => $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden),
+            'gedcom'       => $gedcom,
+            'hidden_url'   => $hidden_url,
             'title'        => $title,
             'tree'         => $tree,
-            'url'          => $request->getQueryParams()['url'] ?? $record->url(),
+            'url'          => $url,
         ]);
     }
 }
