@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-06-21 10:49+0000\n"
+"PO-Revision-Date: 2021-07-01 08:23+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -2141,7 +2141,7 @@ msgstr "Apríl"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:76
 msgid "Aqua Marine"
-msgstr "Aqua Marine"
+msgstr "Sægrænn"
 
 #: app/Controller/IndividualController.php:167
 #: app/Functions/FunctionsPrintFacts.php:201
@@ -2591,7 +2591,7 @@ msgstr "Bunka uppfærsla"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:121
 msgid "Baton Rouge, Louisiana, United States"
-msgstr "Baton Rouge, Louisiana, United States"
+msgstr "Baton Rouge, Louisiana, Bandaríkin"
 
 #. I18N: Compass bearing (in degrees), for street-view mapping
 #: app/Module/GoogleMapsModule.php:2340
@@ -2611,7 +2611,7 @@ msgstr "Hvíta-rússland"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:78
 msgid "Belgian Chocolate"
-msgstr "Belgian Chocolate"
+msgstr "Belgískt súkkulaði"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6690
@@ -2655,7 +2655,7 @@ msgstr "Heimildaskrá"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:103
 msgid "Billings, Montana, United States"
-msgstr "Billings, Montana, United States"
+msgstr "Billings, Montana, Bandaríkin"
 
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
@@ -2669,7 +2669,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:105
 msgid "Birmingham, Alabama, United States"
-msgstr "Birmingham, Alabama, United States"
+msgstr "Birmingham, Alabama, Bandaríkin"
 
 #. I18N: gedcom tag BIRT
 #: app/GedcomTag.php:206 modules_v3/ahnentafel_report/report.xml:441
@@ -2910,7 +2910,7 @@ msgstr "Fæðingar eftir öldum"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:107
 msgid "Bismarck, North Dakota, United States"
-msgstr "Bismarck, North Dakota, United States"
+msgstr "Bismarck, North Dakota, Bandaríkin"
 
 #. I18N: gedcom tag BLES
 #: app/GedcomTag.php:214
@@ -2930,12 +2930,12 @@ msgstr "Kassar"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:79
 msgid "Blue Lagoon"
-msgstr "Blue Lagoon"
+msgstr "Bláa lónið"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:80
 msgid "Blue Marine"
-msgstr "Blue Marine"
+msgstr "Sjávarblátt"
 
 #: message.php:127
 msgid "Body"
@@ -2949,7 +2949,7 @@ msgstr "Bogota, Kólombía"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:111
 msgid "Boise, Idaho, United States"
-msgstr "Boise, Idaho, United States"
+msgstr "Boise, Idaho, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6703
@@ -2978,7 +2978,7 @@ msgstr "Bosnía og Herzegóvína"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:113
 msgid "Boston, Massachusetts, United States"
-msgstr "Boston, Massachusetts, United States"
+msgstr "Boston, Massachusetts, Bandaríkin"
 
 #: app/Functions/FunctionsPrintLists.php:619
 msgid "Both alive"
@@ -2996,7 +2996,7 @@ msgstr "Botsvana"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:115
 msgid "Bountiful, Utah, United States"
-msgstr "Bountiful, Utah, United States"
+msgstr "Bountiful, Utah, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6708
@@ -3594,7 +3594,7 @@ msgstr "Er að athuga uppsetningu"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:131
 msgid "Chicago, Illinois, United States"
-msgstr "Chicago, Illinois, United States"
+msgstr "Chicago, Illinois, Bandaríkin"
 
 #. I18N: gedcom tag CHIL
 #: app/Functions/FunctionsDate.php:35 app/GedcomTag.php:274
@@ -3849,12 +3849,12 @@ msgstr "Kókoseyjar (Keeling-eyjar)"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:81
 msgid "Coffee and Cream"
-msgstr "Coffee and Cream"
+msgstr "Kaffi og krem"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:82
 msgid "Cold Day"
-msgstr "Cold Day"
+msgstr "Kaldur dagur"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6721
@@ -3869,17 +3869,17 @@ msgstr "Colonia Juarez, Mexikó"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:147
 msgid "Columbia River, Washington, United States"
-msgstr "Columbia River, Washington, United States"
+msgstr "Columbia River, Washington, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:139
 msgid "Columbia, South Carolina, United States"
-msgstr "Columbia, South Carolina, United States"
+msgstr "Columbia, South Carolina, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:141
 msgid "Columbus, Ohio, United States"
-msgstr "Columbus, Ohio, United States"
+msgstr "Columbus, Ohio, Bandaríkin"
 
 #: medialist.php:164
 msgid "Columns per page"
@@ -4357,7 +4357,7 @@ msgstr "Daitch-Mokotoff"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:151
 msgid "Dallas, Texas, United States"
-msgstr "Dallas, Texas, United States"
+msgstr "Dallas, Texas, Bandaríkin"
 
 #. I18N: A summary of the system status
 #: admin.php:482
@@ -5057,7 +5057,7 @@ msgstr "Danmörk"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:153
 msgid "Denver, Colorado, United States"
-msgstr "Denver, Colorado, United States"
+msgstr "Denver, Colorado, Bandaríkin"
 
 #: admin_site_upgrade.php:80
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
@@ -5135,7 +5135,7 @@ msgstr ""
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:155
 msgid "Detroit, Michigan, United States"
-msgstr "Detroit, Michigan, United States"
+msgstr "Detroit, Michigan, Bandaríkin"
 
 #: app/Date/JalaliDate.php:192
 msgctxt "Abbreviation for Persian month: Dey"
@@ -6415,7 +6415,7 @@ msgstr "Fáni"
 #. I18N: Name of a country or state
 #: app/Stats.php:6747
 msgid "Flanders"
-msgstr "Flanders"
+msgstr "Flæmingjaland"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:95
@@ -6528,12 +6528,12 @@ msgstr "Fort Lauderdale, Flórída, Bandaríkin"
 #: app/GedcomCode/GedcomCodePedi.php:68
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "Fóstur"
+msgstr "Fóstra"
 
 #: app/GedcomCode/GedcomCodePedi.php:66
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "Fóstur"
+msgstr "Fóstri"
 
 #: app/GedcomCode/GedcomCodePedi.php:70
 msgctxt "Pedigree"
@@ -10649,21 +10649,21 @@ msgstr "Payson, Utah, Bandaríkin"
 #: modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:43
 msgid "Pedigree"
-msgstr "Ættbók"
+msgstr "Ættartala"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Ættbókargraf"
+msgstr "Ættartölugraf"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
-msgstr "Ættbókarkort"
+msgstr "Ættartölukort"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:708
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "Ættbókarkort fyrir %s"
+msgstr "Ættartölukort fyrir %s"
 
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
@@ -10674,7 +10674,7 @@ msgstr "Ættartala fyrir %s"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Ættbókartré fyrir %s"
+msgstr "Ættartölutré fyrir %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -11925,7 +11925,7 @@ msgstr "San Marínó"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "San Salvador, El Salvador"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
@@ -12023,6 +12023,7 @@ msgstr "Leita og skipta út"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:59
 msgid "Search and replace text, using simple searches or advanced pattern matching."
 msgstr ""
+"Leitaðu og skiptu um texta með einfaldri leit eða ítarlegri mynstursamsvörun."
 
 #: includes/session.php:491
 msgid "Search engine"
@@ -12046,7 +12047,7 @@ msgstr "Leita staðbundið"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:159
 msgid "Search method"
-msgstr "Leitar aðferð"
+msgstr "Leitaraðferð"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:147
 msgid "Search text/pattern"
@@ -12055,16 +12056,18 @@ msgstr "Leita að texta/mynstri"
 #: app/Module/RelationshipsChartModule.php:171
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
 msgstr ""
+"Að leita að öllum mögulegum samböndum getur tekið mikinn tíma í flóknum "
+"trjám."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:333
 msgid "Seattle, Washington, United States"
-msgstr "Seattle, Washington, United States"
+msgstr "Seattle, Washington, Bandaríkin"
 
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:374
 msgid "Second record"
-msgstr ""
+msgstr "Önnur færsla"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:415
@@ -12074,22 +12077,22 @@ msgstr "Örugg tenging"
 #. I18N: A configuration setting
 #: admin_site_config.php:620
 msgid "Security code"
-msgstr ""
+msgstr "Öryggiskóði"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 #, php-format
 msgid "See %s for more information."
-msgstr ""
+msgstr "Sjá %s fyrir nánari upplýsingar."
 
 #: admin_site_merge.php:214 admin_site_merge.php:261 admin_site_merge.php:307
 msgid "Select"
-msgstr ""
+msgstr "Velja"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:208
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Velja GEDCOM skrá til að flytja inn"
 
 #: index_edit.php:284 index_edit.php:367
 #, fuzzy
@@ -12098,7 +12101,7 @@ msgstr "Áherslumerkið kassaheiti og smellið síðan á eina af örvartáknunu
 
 #: app/Functions/FunctionsEdit.php:405 reportengine.php:244
 msgid "Select a date"
-msgstr "Velja dagsetningu"
+msgstr "Veldu dagsetningu"
 
 #: edit_interface.php:1225
 msgid "Select events"
@@ -12110,16 +12113,16 @@ msgstr "Velja fána"
 
 #: lifespan.php:41
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Veldu einstaklinga eftir stað eða dagsetningu"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:44
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Veldu færslur úr þínu ættartréi og vistaður þær sem GEDCOM skrá."
+msgstr "Veldu færslur úr þínu ættartréi og vistaðu þær sem GEDCOM skrá."
 
 #: statistics.php:581 statistics.php:599 statistics.php:614
 msgid "Select the desired age interval"
-msgstr "Veljið æskilegt aldurs millibil"
+msgstr "Veldu æskilegt aldursbil"
 
 #: statistics.php:635
 msgid "Select the desired count interval"
@@ -12127,7 +12130,7 @@ msgstr "Veljið æskilegt talnings millibil"
 
 #: admin_site_merge.php:200
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Veldu staðreyndir og atburði sem á að halda frá báðum skrám."
 
 #: admin_site_config.php:634
 msgid "Select the languages that will be shown in menus."
@@ -12136,21 +12139,21 @@ msgstr ""
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:352
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Veldu tvær færslur til að sameina."
 
 #: app/GedcomCode/GedcomCodeRela.php:236
 msgid "Seller"
-msgstr "Sölumaður/-kona"
+msgstr "Seljandi"
 
 #: app/GedcomCode/GedcomCodeRela.php:234
 msgctxt "FEMALE"
 msgid "Seller"
-msgstr "Sölukona"
+msgstr "Seljandi"
 
 #: app/GedcomCode/GedcomCodeRela.php:232
 msgctxt "MALE"
 msgid "Seller"
-msgstr "Sölumaður"
+msgstr "Seljandi"
 
 #: app/Module/UserMessagesModule.php:107 login.php:538 message.php:128
 msgid "Send"
@@ -12181,22 +12184,22 @@ msgstr "Senda útsendingar skilaboð"
 #. I18N: Label for a configuration option
 #: app/Module/ReviewChangesModule.php:185
 msgid "Send out reminder emails"
-msgstr "Senda út tölvupóst áminningar"
+msgstr "Senda út áminningar með tölvupósti"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:335
 msgid "Sender name"
-msgstr ""
+msgstr "Nafn sendanda"
 
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:96
 msgid "Sending email"
-msgstr ""
+msgstr "Sendi tölvupóst"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:428
 msgid "Sending server name"
-msgstr ""
+msgstr "Póstþjónn fyrir póstsendingar"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6870
