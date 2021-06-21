@@ -9,6 +9,8 @@ use Fisharebest\Webtrees\Tree;
 /**
  * @var bool   $can_edit_raw
  * @var Fact   $fact
+ * @var string $gedcom
+ * @var string $hidden_url
  * @var string $title
  * @var Tree   $tree
  * @var string $url
@@ -22,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
-    <?= view('edit/edit-gedcom-fields', ['gedcom' => $fact->insertMissingSubtags(), 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => '']) ?>
+    <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom, 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => '']) ?>
 
     <div class="form-group row">
         <div class="col-sm-3 wt-page-options-label">
@@ -37,11 +39,19 @@ use Fisharebest\Webtrees\Tree;
                 <?= /* I18N: A button label. */
                 I18N::translate('save') ?>
             </button>
+
             <a class="btn btn-secondary" href="<?= e($url) ?>">
                 <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('cancel') ?>
             </a>
+
+            <?php if ($hidden_url !== '') : ?>
+                <a class="btn btn-link" href="<?= e($hidden_url) ?>">
+                    <?= I18N::translate('Edit with all GEDCOM tags') ?>
+                </a>
+            <?php endif; ?>
+
             <?php if ($can_edit_raw) : ?>
                 <a class="btn btn-link" href="<?= e(route(EditRawFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $tree->name(), 'url' => $url])) ?>">
                     <?= I18N::translate('Edit the raw GEDCOM') ?>

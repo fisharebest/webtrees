@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,6 +39,18 @@ use function redirect;
 class EditFactPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * AddNewFact constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -55,14 +68,13 @@ class EditFactPage implements RequestHandlerInterface
         $fact_id = $request->getAttribute('fact_id');
         assert(is_string($fact_id));
 
+        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
+
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
         // Find the fact to edit
-        $fact = $record->facts()
-            ->first(static function (Fact $fact) use ($fact_id): bool {
-                return $fact->id() === $fact_id && $fact->canEdit();
-            });
+        $fact = $record->facts()->first(fn (Fact $fact): bool => $fact->id() === $fact_id && $fact->canEdit());
 
         if ($fact === null) {
             return redirect($record->url());
@@ -70,14 +82,32 @@ class EditFactPage implements RequestHandlerInterface
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
-        $title = $record->fullName() . ' - ' . $fact->label();
+        $gedcom = $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden);
+        $hidden = $this->gedcom_edit_service->insertMissingSubtags($fact, true);
+        $url = $request->getQueryParams()['url'] ?? $record->url();
+
+        if ($gedcom === $hidden) {
+            $hidden_url = '';
+        } else {
+            $hidden_url = route(self::class, [
+                'fact_id' => $fact_id,
+                'include_hidden'  => true,
+                'tree'    => $tree->name(),
+                'url'     => $url,
+                'xref'    => $xref,
+            ]);
+        }
+
+        $title  = $record->fullName() . ' - ' . $fact->label();
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,
             'fact'         => $fact,
+            'gedcom'       => $gedcom,
+            'hidden_url'   => $hidden_url,
             'title'        => $title,
             'tree'         => $tree,
-            'url'          => $request->getQueryParams()['url'] ?? $record->url(),
+            'url'          => $url,
         ]);
     }
 }
