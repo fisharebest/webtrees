@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,6 +39,18 @@ use function redirect;
 class EditFactPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * AddNewFact constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -55,6 +68,8 @@ class EditFactPage implements RequestHandlerInterface
         $fact_id = $request->getAttribute('fact_id');
         assert(is_string($fact_id));
 
+        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
+
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
@@ -70,11 +85,17 @@ class EditFactPage implements RequestHandlerInterface
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
+        $tmp1 = $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden);
+        $tmp2 = $this->gedcom_edit_service->insertMissingSubtags($fact, true);
+
+        $allow_include_hidden = $tmp1 !== $tmp2;
+
         $title = $record->fullName() . ' - ' . $fact->label();
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,
             'fact'         => $fact,
+            'gedcom'       => $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden),
             'title'        => $title,
             'tree'         => $tree,
             'url'          => $request->getQueryParams()['url'] ?? $record->url(),

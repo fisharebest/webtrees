@@ -59,12 +59,12 @@ use Fisharebest\Webtrees\I18N;
                     );
                 }
             }
-            NPFX.addEventListener('input', fn);
-            GIVN.addEventListener('input', fn);
-            SPFX.addEventListener('input', fn);
-            SURN.addEventListener('input', fn);
-            SURN.addEventListener('blur', fn); // For autocompleted entries
-            NSFX.addEventListener('input', fn);
+            NPFX && NPFX.addEventListener('input', fn);
+            GIVN && GIVN.addEventListener('input', fn);
+            SPFX && SPFX.addEventListener('input', fn);
+            SURN && SURN.addEventListener('input', fn);
+            SURN && SURN.addEventListener('blur', fn); // For autocompleted entries
+            NSFX && NSFX.addEventListener('input', fn);
         }
     });
 </script>

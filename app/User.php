@@ -37,6 +37,7 @@ class User implements UserInterface
 
     private string $email;
 
+    /** @var array<string,string> */
     private array $preferences;
 
     /**

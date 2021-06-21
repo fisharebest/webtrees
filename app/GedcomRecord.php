@@ -1366,10 +1366,11 @@ class GedcomRecord
     /**
      * @param string $tag
      * @param string $gedcom
+     * @param bool   $include_hidden
      *
      * @return string
      */
-    public function insertMissingLevels(string $tag, string $gedcom): string
+    public function insertMissingLevels(string $tag, string $gedcom, bool $include_hidden): string
     {
         $next_level = substr_count($tag, ':') + 1;
         $factory    = Registry::elementFactory();
@@ -1386,7 +1387,7 @@ class GedcomRecord
         $return = array_shift($parts);
 
         foreach ($subtags as $subtag => $occurrences) {
-            if ($this->isHiddenTag($tag . ':' . $subtag)) {
+            if (!$include_hidden && $this->isHiddenTag($tag . ':' . $subtag)) {
                 continue;
             }
 
@@ -1405,7 +1406,7 @@ class GedcomRecord
             // Add expected subtags in our preferred order.
             foreach ($parts as $n => $part) {
                 if (str_starts_with($part, $next_level . ' ' . $subtag)) {
-                    $return .= "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $part);
+                    $return .= "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $part, $include_hidden);
                     $count++;
                     unset($parts[$n]);
                 }
@@ -1421,7 +1422,7 @@ class GedcomRecord
                 }
 
                 $number_to_add = max(1, $min - $count);
-                $gedcom_to_add = "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $gedcom);
+                $gedcom_to_add = "\n" . $this->insertMissingLevels($tag . ':' . $subtag, $gedcom, $include_hidden);
 
                 $return .= str_repeat($gedcom_to_add, $number_to_add);
             }
