@@ -19,18 +19,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_filter;
 use function array_merge;
+use function array_shift;
 use function array_unique;
+use function array_values;
 use function assert;
 use function count;
+use function explode;
+use function implode;
+use function max;
 use function preg_match_all;
+use function preg_replace;
+use function preg_split;
+use function str_repeat;
 use function str_replace;
+use function substr_count;
 use function trim;
+
+use const ARRAY_FILTER_USE_KEY;
+use const PHP_INT_MAX;
 
 /**
  * Utilities to edit/save GEDCOM data.
@@ -499,5 +515,134 @@ class GedcomEditService
         }
 
         return implode("\n", $gedcom_lines);
+    }
+
+    /**
+     * Add blank lines, to allow a user to add/edit new values.
+     *
+     * @param Fact $fact
+     * @param bool $include_hidden
+     *
+     * @return string
+     */
+    public function insertMissingSubtags(Fact $fact, bool $include_hidden): string
+    {
+        return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $fact->gedcom(), $include_hidden);
+    }
+
+    /**
+     * Add blank lines, to allow a user to add/edit new values.
+     *
+     * @param GedcomRecord $record
+     * @param bool         $include_hidden
+     *
+     * @return string
+     */
+    public function insertMissingRecordSubtags(GedcomRecord $record, bool $include_hidden): string
+    {
+        $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $record->gedcom(), $include_hidden);
+
+        // NOTE records have data at level 0.  Move it to 1 CONC.
+        if ($record->tag() === 'NOTE') {
+            return preg_replace('/^0 @[^@]+@ NOTE/', '1 CONC', $gedcom);
+        }
+
+        return preg_replace('/^0.*\n/', '', $gedcom);
+    }
+
+    /**
+     * @param Tree   $tree
+     * @param string $tag
+     * @param string $gedcom
+     * @param bool   $include_hidden
+     *
+     * @return string
+     */
+    protected function insertMissingLevels(Tree $tree, string $tag, string $gedcom, bool $include_hidden): string
+    {
+        $next_level = substr_count($tag, ':') + 1;
+        $factory    = Registry::elementFactory();
+        $subtags    = $factory->make($tag)->subtags();
+
+        // Merge CONT records onto their parent line.
+        $gedcom = strtr($gedcom, [
+            "\n" . $next_level . ' CONT ' => "\r",
+            "\n" . $next_level . ' CONT' => "\r",
+        ]);
+
+        // The first part is level N.  The remainder are level N+1.
+        $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
+        $return = array_shift($parts);
+
+        foreach ($subtags as $subtag => $occurrences) {
+            if (!$include_hidden && $this->isHiddenTag($tag . ':' . $subtag)) {
+                continue;
+            }
+
+            [$min, $max] = explode(':', $occurrences);
+
+            $min = (int) $min;
+
+            if ($max === 'M') {
+                $max = PHP_INT_MAX;
+            } else {
+                $max = (int) $max;
+            }
+
+            $count = 0;
+
+            // Add expected subtags in our preferred order.
+            foreach ($parts as $n => $part) {
+                if (str_starts_with($part, $next_level . ' ' . $subtag)) {
+                    $return .= "\n" . $this->insertMissingLevels($tree, $tag . ':' . $subtag, $part, $include_hidden);
+                    $count++;
+                    unset($parts[$n]);
+                }
+            }
+
+            // Allowed to have more of this subtag?
+            if ($count < $max) {
+                // Create a new one.
+                $gedcom  = $next_level . ' ' . $subtag;
+                $default = $factory->make($tag . ':' . $subtag)->default($tree);
+                if ($default !== '') {
+                    $gedcom .= ' ' . $default;
+                }
+
+                $number_to_add = max(1, $min - $count);
+                $gedcom_to_add = "\n" . $this->insertMissingLevels($tree, $tag . ':' . $subtag, $gedcom, $include_hidden);
+
+                $return .= str_repeat($gedcom_to_add, $number_to_add);
+            }
+        }
+
+        // Now add any unexpected/existing data.
+        if ($parts !== []) {
+            $return .= "\n" . implode("\n", $parts);
+        }
+
+        return $return;
+    }
+
+    /**
+     * List of tags to exclude when creating new data.
+     *
+     * @param string $tag
+     *
+     * @return bool
+     */
+    private function isHiddenTag(string $tag): bool
+    {
+        $preferences = array_filter(Gedcom::HIDDEN_TAGS, fn (string $x): bool => (bool) Site::getPreference('HIDE_' . $x), ARRAY_FILTER_USE_KEY);
+        $preferences = array_values($preferences);
+        $hidden_tags = array_merge(...$preferences);
+
+        foreach ($hidden_tags as $hidden_tag) {
+            if (str_contains($tag, $hidden_tag)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -89,6 +89,7 @@ class Gedcom
         'PLAC_MAP'  => ['PLAC:MAP'],
         'PLAC_FONE' => ['PLAC:FONE'],
         'PLAC_ROMN' => ['PLAC:ROMN'],
+        'PLAC_FORM' => ['PLAC:FORM', 'HEAD:PLAC'],
         'PLAC_NOTE' => ['PLAC:NOTE'],
         // Addresses
         'ADDR_FAX'  => ['FAX'],
