@@ -231,6 +231,22 @@ use Fisharebest\Webtrees\Site;
                     <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_NOTE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_NOTE')]) ?>
                 </td>
             </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:*:PLAC:FORM')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">PLAC:NOTE</code>
+                    <br>
+                    <code dir="ltr">HEAD:PLAC</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_FORM', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_FORM')]) ?>
+                </td>
+            </tr>
         </tbody>
     </table>
 

@@ -70,6 +70,7 @@ class Site
         'HIDE_NAME_SOUR'          => '1',
         'HIDE_ORDN'               => '1',
         'HIDE_PLAC_FONE'          => '1',
+        'HIDE_PLAC_FORM'          => '1',
         'HIDE_PLAC_MAP'           => '1',
         'HIDE_PLAC_NOTE'          => '1',
         'HIDE_PLAC_ROMN'          => '1',
