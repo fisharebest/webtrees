@@ -1351,9 +1351,9 @@ class GedcomRecord
      *
      * @return string
      */
-    public function insertMissingSubtags(): string
+    public function insertMissingSubtags(bool $include_hidden): string
     {
-        $gedcom = $this->insertMissingLevels($this->tag(), $this->gedcom());
+        $gedcom = $this->insertMissingLevels($this->tag(), $this->gedcom(), $include_hidden);
 
         // NOTE records have data at level 0.  Move it to 1 CONC.
         if (static::RECORD_TYPE === 'NOTE') {
