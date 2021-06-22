@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-06-14 14:31+0000\n"
+"PO-Revision-Date: 2021-07-01 08:23+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -278,9 +278,9 @@ msgstr[2] "%s rodokmeňov"
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "%s pradieťa"
-msgstr[1] "%s pradeti"
-msgstr[2] "%s pradetí"
+msgstr[0] "%s vnúča"
+msgstr[1] "%s vnúčatá"
+msgstr[2] "%s vnúčat"
 
 #: app/Module/LifespansChartModule.php:276
 #: resources/views/admin/trees-unconnected.phtml:38
