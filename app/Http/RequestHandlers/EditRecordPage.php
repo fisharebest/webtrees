@@ -73,8 +73,8 @@ class EditRecordPage implements RequestHandlerInterface
 
         $subtags = Registry::elementFactory()->make($record->tag())->subtags();
 
-        $gedcom = $this->gedcom_edit_service->insertMissingRecordSubtags($record,$include_hidden);
-        $hidden = $this->gedcom_edit_service->insertMissingRecordSubtags($record,true);
+        $gedcom = $this->gedcom_edit_service->insertMissingRecordSubtags($record, $include_hidden);
+        $hidden = $this->gedcom_edit_service->insertMissingRecordSubtags($record, true);
 
         if ($gedcom === $hidden) {
             $hidden_url = '';

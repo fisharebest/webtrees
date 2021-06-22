@@ -506,7 +506,7 @@ class FunctionsImport
     }
 
     /**
-     * Legacy Family Tree software generates _PLAC_DEFN records containing LAT/LONG values
+     * Legacy Family Tree software generates _PLAC records containing LAT/LONG values
      *
      * @param string $gedcom
      */
