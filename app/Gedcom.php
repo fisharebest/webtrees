@@ -101,7 +101,7 @@ class Gedcom
         'SOUR_NOTE' => [':SOUR:NOTE'],
         'SOUR_QUAY' => [':SOUR:QUAY'],
         // Sources
-        'SOUR_DATA' => ['SOUR:DATA'],
+        'SOUR_DATA' => ['SOUR:DATA:EVEN', 'SOUR:DATA:AGNC', 'SOUR:DATA:NOTE'],
         // Individuals
         'BIRT_FAMC' => ['INDI:BIRT:FAMC'],
         'RELI'      => ['INDI:RELI'],

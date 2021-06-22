@@ -633,7 +633,10 @@ class GedcomEditService
      */
     private function isHiddenTag(string $tag): bool
     {
-        $preferences = array_filter(Gedcom::HIDDEN_TAGS, fn (string $x): bool => (bool) Site::getPreference('HIDE_' . $x), ARRAY_FILTER_USE_KEY);
+        // Function to filter hidden tags.
+        $fn_hide = fn (string $x): bool => (bool) Site::getPreference('HIDE_' . $x);
+
+        $preferences = array_filter(Gedcom::HIDDEN_TAGS, $fn_hide, ARRAY_FILTER_USE_KEY);
         $preferences = array_values($preferences);
         $hidden_tags = array_merge(...$preferences);
 
