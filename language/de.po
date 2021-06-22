@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-06-21 10:49+0000\n"
+"PO-Revision-Date: 2021-07-01 08:23+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -908,7 +908,7 @@ msgstr "Ein als Tafel gestalteter Bericht der Vorfahren einer Person."
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Ein Bericht im Erzählstil der Vorfahren einer Person."
+msgstr "Ein erzählerischer Bericht der Vorfahren einer Person."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
@@ -6127,13 +6127,13 @@ msgstr "Familie mit Ehefrau"
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
 msgid "Fan chart"
-msgstr "Vorfahrenfächer"
+msgstr "Fächerdiagramm"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Controller/FanchartController.php:53
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Vorfahrenfächer von %s"
+msgstr "Fächerdiagramm von %s"
 
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -9514,7 +9514,7 @@ msgstr "Meine Seiten"
 
 #: app/Module/UserWelcomeModule.php:59 app/Theme/AbstractTheme.php:1662
 msgid "My pedigree"
-msgstr "Mein Stammbaum"
+msgstr "Meine Abstammung"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:113
@@ -14741,8 +14741,8 @@ msgstr "Das Speicherlimt des Servers liegt bei %sMB und das CPU-Zeitlimit bei %s
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
 msgstr ""
 "Dies sollte eine durch Komma oder Leerzeichen getrennte Liste von "
-"Ereignissen sein, zusätzlich zu Geburt und Tod, die in Diagrammen wie dem "
-"Stammbaumdiagramm erscheinen sollen. Für diese Liste müssen Sie Ereignis-"
+"Ereignissen sein, zusätzlich zu Geburt und Tod, die in Diagrammen wie der "
+"Vorfahrentafel erscheinen sollen. Für diese Liste müssen Sie Ereignis-"
 "Kennzeichen verwenden, wie sie im GEDCOM 5.5.1-Standard definiert sind. Wenn "
 "Sie z. B. möchten, dass der Beruf im Diagramm erscheint, sollten Sie „OCCU“ "
 "zu diesem Feld hinzufügen."
