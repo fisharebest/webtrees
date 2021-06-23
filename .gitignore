@@ -1,5 +1,6 @@
-/modules_v4/*
-!/modules_v4/example*
+/modules_v4/
+
+/node_modules/
 
 /public/mix-manifest.json
 /public/css/*.map
@@ -7,8 +8,6 @@
 /public/js/*.map
 /public/js/*.js.LICENSE.txt
 /public/robots.txt
-
-/node_modules/
 
 /resources/lang/webtees.pot
 /resources/lang/*/messages.php

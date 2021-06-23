@@ -231,6 +231,22 @@ use Fisharebest\Webtrees\Site;
                     <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_NOTE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_NOTE')]) ?>
                 </td>
             </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:*:PLAC:FORM')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">PLAC:FORM</code>
+                    <br>
+                    <code dir="ltr">HEAD:PLAC</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_PLAC_FORM', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_PLAC_FORM')]) ?>
+                </td>
+            </tr>
         </tbody>
     </table>
 
@@ -405,47 +421,6 @@ use Fisharebest\Webtrees\Site;
 
                 <td>
                     <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_DATA', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_EVEN')]) ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <?= $element_factory->make('INDI:SOUR:DATA:DATE')->label() ?>
-                </td>
-                <td>
-                    <code dir="ltr">SOUR:DATA:DATE</code>
-                </td>
-
-                <td>
-                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_DATE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_DATE')]) ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <?= $element_factory->make('INDI:SOUR:NOTE')->label() ?>
-                </td>
-
-                <td>
-                    <code dir="ltr">SOUR:NOTE</code>
-                </td>
-
-                <td>
-                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_NOTE', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_NOTE')]) ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <?= $element_factory->make('INDI:SOUR:QUAY')->label() ?>
-                </td>
-
-                <td>
-                    <code dir="ltr">SOUR:QUAY</code>
-                </td>
-
-                <td>
-                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_QUAY', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_QUAY')]) ?>
                 </td>
             </tr>
         </tbody>
