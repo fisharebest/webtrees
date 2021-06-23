@@ -31,6 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
+use function route;
 use function trim;
 
 /**
@@ -65,7 +66,7 @@ class AddNewFact implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $subtag  = $request->getAttribute('fact');
+        $subtag = $request->getAttribute('fact');
 
         $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
 
@@ -74,14 +75,29 @@ class AddNewFact implements RequestHandlerInterface
         $element = Registry::elementFactory()->make($record->tag() . ':' . $subtag);
         $title   = $record->fullName() . ' - ' . $element->label();
         $fact    = new Fact(trim('1 ' . $subtag . ' ' . $element->default($tree)), $record, 'new');
+        $gedcom  = $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden);
+        $hidden  = $this->gedcom_edit_service->insertMissingSubtags($fact, true);
+        $url     = $record->url();
+
+        if ($gedcom === $hidden) {
+            $hidden_url = '';
+        } else {
+            $hidden_url = route(self::class, [
+                'fact'           => $subtag,
+                'include_hidden' => true,
+                'tree'           => $tree->name(),
+                'xref'           => $xref,
+            ]);
+        }
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => false,
             'fact'         => $fact,
-            'gedcom'       => $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden),
+            'gedcom'       => $gedcom,
+            'hidden_url'   => $hidden_url,
             'title'        => $title,
             'tree'         => $tree,
-            'url'          => $record->url(),
+            'url'          => $url,
         ]);
     }
 }

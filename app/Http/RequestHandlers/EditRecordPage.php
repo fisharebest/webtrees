@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -29,6 +30,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
+use function route;
 
 /**
  * Edit a record.
@@ -36,6 +38,18 @@ use function is_string;
 class EditRecordPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * AddNewFact constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -53,13 +67,30 @@ class EditRecordPage implements RequestHandlerInterface
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
+        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
+
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
         $subtags = Registry::elementFactory()->make($record->tag())->subtags();
 
+        $gedcom = $this->gedcom_edit_service->insertMissingRecordSubtags($record, $include_hidden);
+        $hidden = $this->gedcom_edit_service->insertMissingRecordSubtags($record, true);
+
+        if ($gedcom === $hidden) {
+            $hidden_url = '';
+        } else {
+            $hidden_url = route(self::class, [
+                'include_hidden'  => true,
+                'tree'    => $tree->name(),
+                'xref'    => $xref,
+            ]);
+        }
+
         return $this->viewResponse('edit/edit-record', [
             'can_edit_raw' => $can_edit_raw,
+            'gedcom'       => $gedcom,
             'has_chan'     => array_key_exists('CHAN', $subtags),
+            'hidden_url'   => $hidden_url,
             'record'       => $record,
             'title'        => $record->fullName(),
             'tree'         => $tree,
