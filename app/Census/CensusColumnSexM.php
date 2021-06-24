@@ -45,7 +45,7 @@ class CensusColumnSexM extends AbstractCensusColumn implements CensusColumnInter
         switch ($individual->sex()) {
             case 'M':
                 return static::X;
-	    default:
+            default:
                 return '';
         }
     }
