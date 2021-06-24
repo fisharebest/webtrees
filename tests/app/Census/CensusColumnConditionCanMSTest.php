@@ -32,7 +32,7 @@ use Illuminate\Support\Collection;
 class CensusColumnConditionCanMSTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionMSCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanMS
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
