@@ -28,13 +28,13 @@ class CensusOfCanada1851 extends CensusOfCanada implements CensusInterface
      * When did this census occur.
      *
      * Officially, this census was the "1851 Census" but data collection
-     * began January 12, 1852.
+     * began January 12, 1852. Using that data breaks stuff.
      *
      * @return string
      */
     public function censusDate(): string
     {
-        return '12 JAN 1852';
+        return '31 DEC 1851';
     }
 
     /**

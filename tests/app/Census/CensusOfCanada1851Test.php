@@ -38,7 +38,7 @@ class CensusOfCanada1851Test extends TestCase
         $census = new CensusOfCanada1851();
 
         self::assertSame('Canada', $census->censusPlace());
-        self::assertSame('12 JAN 1852', $census->censusDate());
+        self::assertSame('31 DEC 1851', $census->censusDate());
     }
 
     /**
