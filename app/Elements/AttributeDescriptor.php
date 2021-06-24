@@ -32,6 +32,7 @@ namespace Fisharebest\Webtrees\Elements;
 class AttributeDescriptor extends AbstractElement
 {
     protected const SUBTAGS = [
+        'TYPE' => '0:1',
         'DATE' => '0:1',
         'PLAC' => '0:1',
         'NOTE' => '0:M',
