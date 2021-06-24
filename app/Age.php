@@ -140,6 +140,27 @@ class Age
     }
 
     /**
+     * What is expected age at next birthday?
+     * Simply +1 of normal years value, except when already negative.
+     * 0 is OK result for reversed dates within one year.
+     * Return -1 for invalid dates or reversed dates.
+     *
+     * @return int
+     */
+    public function ageNextBDayYears(): int
+    {
+        if ($this->years < -1) {
+           return -1;
+        }
+
+        if ($this->is_valid) {
+            return $this->years + 1;
+        }
+
+        return -1;
+    }
+
+    /**
      * How many years between two events?
      * If either date is invalid return -1.
      *
