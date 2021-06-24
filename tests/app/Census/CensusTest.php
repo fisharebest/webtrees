@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusColumnAgeFemale5Years
+ * Test harness for the class Census
  */
 class CensusTest extends TestCase
 {
