@@ -415,18 +415,6 @@ class Fact
     }
 
     /**
-     * What is the tag (type) of this fact, such as BIRT, MARR or DEAT.
-     *
-     * @return string
-     *
-     * @deprecated since 2.0.5.  Will be removed in 2.1.0
-     */
-    public function getTag(): string
-    {
-        return $this->tag;
-    }
-
-    /**
      * The Person/Family record where this Fact came from
      *
      * @return Individual|Family|Source|Repository|Media|Note|Submitter|Submission|Location|Header|GedcomRecord

@@ -39,6 +39,7 @@ class EventDescriptor extends AbstractEventElement
     protected const MAXIMUM_LENGTH = 90;
 
     protected const SUBTAGS = [
+        'TYPE' => '0:1',
         'DATE' => '0:1',
         'PLAC' => '0:1',
         'ADDR' => '0:1',
