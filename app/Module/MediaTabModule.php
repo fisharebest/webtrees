@@ -166,6 +166,6 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function supportedFacts(): Collection
     {
-        return new Collection(['OBJE']);
+        return new Collection(['INDI:OBJE', 'FAM:OBJE']);
     }
 }

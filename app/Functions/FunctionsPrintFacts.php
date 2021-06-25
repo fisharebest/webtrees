@@ -86,13 +86,13 @@ class FunctionsPrintFacts
      */
     public static function printFact(Fact $fact, GedcomRecord $record): void
     {
-        $parent = $fact->record();
-        $tree   = $parent->tree();
-        $tag    = $fact->getTag();
-        $label  = $fact->label();
-        $value  = $fact->value();
-        $type   = $fact->attribute('TYPE');
-        $id     = $fact->id();
+        $parent  = $fact->record();
+        $tree    = $parent->tree();
+        [, $tag] = explode(':', $fact->tag());
+        $label   = $fact->label();
+        $value   = $fact->value();
+        $type    = $fact->attribute('TYPE');
+        $id      = $fact->id();
 
         $element = Registry::elementFactory()->make($fact->tag());
 
