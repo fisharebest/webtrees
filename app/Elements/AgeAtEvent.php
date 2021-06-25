@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+use function preg_replace_callback_array;
 use function strtolower;
 use function strtoupper;
 
@@ -56,5 +60,28 @@ class AgeAtEvent extends AbstractElement
         }
 
         return strtolower($value);
+    }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        $canonical = $this->canonical($value);
+
+        return preg_replace_callback_array([
+            '/CHILD/'     => fn () => I18N::translate('Child'),
+            '/INFANT/'    => fn () => I18N::translate('Infant'),
+            '/STILLBORN/' => fn () => I18N::translate('Stillborn'),
+            '/\b(\d+)y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) ($match[1]), I18N::number((float) $match[1])),
+            '/\b(\d+)m\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) ($match[1]), I18N::number((float) $match[1])),
+            '/\b(\d+)w\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) ($match[1]), I18N::number((float) $match[1])),
+            '/\b(\d+)d\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) ($match[1]), I18N::number((float) $match[1])),
+        ], e($canonical));
     }
 }
