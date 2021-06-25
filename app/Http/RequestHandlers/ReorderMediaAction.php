@@ -67,7 +67,7 @@ class ReorderMediaAction implements RequestHandlerInterface
 
         // Split facts into OBJE and other
         foreach ($individual->facts() as $fact) {
-            if ($fact->getTag() === 'OBJE') {
+            if ($fact->tag() === 'INDI:OBJE') {
                 $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
                 $keep_facts[] = $fact->gedcom();

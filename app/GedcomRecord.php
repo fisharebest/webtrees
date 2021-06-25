@@ -53,6 +53,7 @@ use function preg_split;
 use function range;
 use function route;
 use function str_contains;
+use function str_ends_with;
 use function str_pad;
 use function strtoupper;
 use function trim;
@@ -782,10 +783,13 @@ class GedcomRecord
     ): Collection {
         $access_level = $access_level ?? Auth::accessLevel($this->tree);
 
+        // Convert BIRT into INDI:BIRT, etc.
+        $filter = array_map(fn(string $tag): string => $this->tag() . ':' . $tag, $filter);
+
         $facts = new Collection();
         if ($this->canShow($access_level)) {
             foreach ($this->facts as $fact) {
-                if (($filter === [] || in_array($fact->getTag(), $filter, true)) && $fact->canShow($access_level)) {
+                if (($filter === [] || in_array($fact->tag(), $filter, true)) && $fact->canShow($access_level)) {
                     $facts->push($fact);
                 }
             }
@@ -970,7 +974,7 @@ class GedcomRecord
                     $new_gedcom .= "\n" . $gedcom;
                 }
                 $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
-            } elseif ($fact->getTag() !== 'CHAN' || !$update_chan) {
+            } elseif (!str_ends_with($fact->tag(), ':CHAN') || !$update_chan) {
                 $new_gedcom .= "\n" . $fact->gedcom();
             }
         }
