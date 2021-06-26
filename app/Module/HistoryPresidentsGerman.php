@@ -24,9 +24,9 @@ use Illuminate\Support\Collection;
 
 /**
  * Events provided by this module.
- * [EN] Historical facts in German language: 
+ * [EN] Historical facts in German language:
  *      The Presidents of Germany (since 1949) and their historical Predecessors (1848-1949)
- * [DE] Historische Daten in deutscher Sprache: 
+ * [DE] Historische Daten in deutscher Sprache:
  *      Die deutsche Bundespräsidenten (seit 1949) und ihre historische Vorgänger (1848-1949)
  *
  * @Author Lars van Ravenzwaaij
