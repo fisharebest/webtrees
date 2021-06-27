@@ -784,7 +784,7 @@ class GedcomRecord
         $access_level = $access_level ?? Auth::accessLevel($this->tree);
 
         // Convert BIRT into INDI:BIRT, etc.
-        $filter = array_map(fn(string $tag): string => $this->tag() . ':' . $tag, $filter);
+        $filter = array_map(fn (string $tag): string => $this->tag() . ':' . $tag, $filter);
 
         $facts = new Collection();
         if ($this->canShow($access_level)) {
