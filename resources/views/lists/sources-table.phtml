@@ -1,6 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -124,7 +125,7 @@ $count_notes = DB::table('other')
 
                 <!-- Publisher -->
                 <td class="d-none d-md-table-cell">
-                    <?= e($source->facts(['PUBL'])->isNotEmpty() ? $source->facts(['PUBL'])->first()->value() : '') ?>
+                    <?= Registry::elementFactory()->make('SOUR:PUBL')->value($source->facts(['PUBL'])->isNotEmpty() ? $source->facts(['PUBL'])->first()->value() : '', $tree) ?>
                 </td>
 
                 <!-- Count of linked individuals -->
