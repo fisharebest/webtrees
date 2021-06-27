@@ -191,17 +191,17 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $SHOW_RELATIVES_EVENTS = $individual->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
         $death_of_a_spouse = [
-            'DEAT' => [
+            'INDI:DEAT' => [
                 'M' => I18N::translate('Death of a husband'),
                 'F' => I18N::translate('Death of a wife'),
                 'U' => I18N::translate('Death of a spouse'),
             ],
-            'BURI' => [
+            'INDI:BURI' => [
                 'M' => I18N::translate('Burial of a husband'),
                 'F' => I18N::translate('Burial of a wife'),
                 'U' => I18N::translate('Burial of a spouse'),
             ],
-            'CREM' => [
+            'INDI:CREM' => [
                 'M' => I18N::translate('Cremation of a husband'),
                 'F' => I18N::translate('Cremation of a wife'),
                 'U' => I18N::translate('Cremation of a spouse'),
