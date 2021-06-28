@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -37,7 +36,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use LogicException;
 use Ramsey\Uuid\Uuid;
 
 use function app;
@@ -50,13 +48,11 @@ use function explode;
 use function in_array;
 use function preg_match;
 use function preg_match_all;
-use function preg_replace_callback;
 use function preg_split;
 use function str_contains;
 use function strip_tags;
 use function strlen;
 use function strpos;
-use function strtoupper;
 use function substr;
 use function uasort;
 use function view;
@@ -92,14 +88,14 @@ class FunctionsPrint
             assert($note instanceof Note);
 
             $label      = I18N::translate('Shared note');
-            $html       = Filter::formatText($note->getNote(), $tree);
+            $html       = Registry::markdownFactory()->markdown($tree)->convertToHtml($note->getNote());
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
 
             $one_line_only = strip_tags($note->fullName()) === strip_tags($note->getNote());
         } else {
             // Inline note.
             $label = I18N::translate('Note');
-            $html  = Filter::formatText($text, $tree);
+            $html  = Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
 
             [$first_line] = explode("\n", strip_tags($text));
             // Use same logic as note objects

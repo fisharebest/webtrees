@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -1046,11 +1045,14 @@ class ReportParserGenerate extends ReportParserBase
                 }
                 $tmp = explode(':', $tag);
                 if (in_array(end($tmp), ['NOTE', 'TEXT'], true)) {
-                    $value = Filter::formatText($value, $this->tree); // We'll strip HTML in addText()
+                    if ($this->tree->getPreference('FORMAT_TEXT') === 'markdown') {
+                        $value = strip_tags(Registry::markdownFactory()->markdown($this->tree)->convertToHtml($value));
+                    } else {
+                        $value = strip_tags(Registry::markdownFactory()->autolink($this->tree)->convertToHtml($value));
+                    }
                 }
 
                 if (!empty($attrs['truncate'])) {
-                    $value = strip_tags($value);
                     $value = Str::limit($value, (int) $attrs['truncate'], I18N::translate('…'));
                 }
                 $this->current_element->addText($value);

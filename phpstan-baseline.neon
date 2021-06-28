@@ -51,11 +51,6 @@ parameters:
 			path: app/Factories/SlugFactory.php
 
 		-
-			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Filter.php
-
-		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsImport.php
