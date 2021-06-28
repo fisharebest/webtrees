@@ -22,10 +22,14 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -79,9 +83,29 @@ class SearchGeneralPage implements RequestHandlerInterface
         // What type of records to search?
         $search_individuals  = (bool) ($params['search_individuals'] ?? false);
         $search_families     = (bool) ($params['search_families'] ?? false);
+        $search_locations    = (bool) ($params['search_locations'] ?? false);
         $search_repositories = (bool) ($params['search_repositories'] ?? false);
         $search_sources      = (bool) ($params['search_sources'] ?? false);
         $search_notes        = (bool) ($params['search_notes'] ?? false);
+
+        $exist_notes = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', Note::RECORD_TYPE)
+            ->exists();
+
+        $exist_locations = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', Location::RECORD_TYPE)
+            ->exists();
+
+        $exist_repositories = DB::table('other')
+            ->where('o_file', '=', $tree->id())
+            ->where('o_type', '=', Repository::RECORD_TYPE)
+            ->exists();
+
+        $exist_sources = DB::table('sources')
+            ->where('s_file', '=', $tree->id())
+            ->exists();
 
         // Default to families and individuals only
         if (!$search_individuals && !$search_families && !$search_repositories && !$search_sources && !$search_notes) {
@@ -113,6 +137,7 @@ class SearchGeneralPage implements RequestHandlerInterface
         // Do the search
         $individuals  = new Collection();
         $families     = new Collection();
+        $locations    = new Collection();
         $repositories = new Collection();
         $sources      = new Collection();
         $notes        = new Collection();
@@ -142,36 +167,50 @@ class SearchGeneralPage implements RequestHandlerInterface
             if ($search_notes) {
                 $notes = $this->search_service->searchNotes($search_trees->all(), $search_terms);
             }
+
+            if ($search_locations) {
+                $locations = $this->search_service->searchLocations($search_trees->all(), $search_terms);
+            }
         }
 
         // If only 1 item is returned, automatically forward to that item
-        if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty()) {
+        if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
             return redirect($individuals->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty()) {
+        if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
             return redirect($families->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty()) {
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty() && $locations->isEmpty()) {
             return redirect($sources->first()->url());
         }
 
-        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1) {
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1 && $locations->isEmpty()) {
             return redirect($notes->first()->url());
+        }
+
+        if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->count() === 1) {
+            return redirect($locations->first()->url());
         }
 
         $title = I18N::translate('General search');
 
         return $this->viewResponse('search-general-page', [
             'all_trees'           => $all_trees,
+            'exist_locations'     => $exist_locations,
+            'exist_notes'         => $exist_notes,
+            'exist_repositories'  => $exist_repositories,
+            'exist_sources'       => $exist_sources,
             'families'            => $families,
             'individuals'         => $individuals,
+            'locations'           => $locations,
             'notes'               => $notes,
             'query'               => $query,
             'repositories'        => $repositories,
             'search_families'     => $search_families,
             'search_individuals'  => $search_individuals,
+            'search_locations'    => $search_locations,
             'search_notes'        => $search_notes,
             'search_repositories' => $search_repositories,
             'search_sources'      => $search_sources,

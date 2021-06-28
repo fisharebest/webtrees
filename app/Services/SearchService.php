@@ -245,7 +245,7 @@ class SearchService
     public function searchLocations(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('other')
-            ->where('o_type', '=', '_LOC');
+            ->where('o_type', '=', Location::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
@@ -286,7 +286,7 @@ class SearchService
     public function searchNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('other')
-            ->where('o_type', '=', 'NOTE');
+            ->where('o_type', '=', Note::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
@@ -307,7 +307,7 @@ class SearchService
     public function searchRepositories(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('other')
-            ->where('o_type', '=', 'REPO');
+            ->where('o_type', '=', Repository::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
@@ -394,7 +394,7 @@ class SearchService
     public function searchSubmissions(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('other')
-            ->where('o_type', '=', 'SUBN');
+            ->where('o_type', '=', Submission::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
@@ -415,7 +415,7 @@ class SearchService
     public function searchSubmitters(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
     {
         $query = DB::table('other')
-            ->where('o_type', '=', 'SUBM');
+            ->where('o_type', '=', Submitter::RECORD_TYPE);
 
         $this->whereTrees($query, 'o_file', $trees);
         $this->whereSearch($query, 'o_gedcom', $search);
