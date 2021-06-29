@@ -47,9 +47,7 @@ class HistoryPresidentsGerman extends AbstractModule implements ModuleHistoricEv
      */
     public function title(): string
     {
-        $part_title = I18N::translate('Presidents of Germany since');
-
-        return $part_title . " 1848 🇩🇪";
+        return I18N::translate('Presidents of Germany since') . " 1848 🇩🇪";
     }
 
     /**
