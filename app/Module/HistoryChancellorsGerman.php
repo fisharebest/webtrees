@@ -47,9 +47,7 @@ class HistoryChancellorsGerman extends AbstractModule implements ModuleHistoricE
      */
     public function title(): string
     {
-        $part_title = I18N::translate('German chancellorships since');
-
-        return $part_title . " 1867 🇩🇪";
+        return I18N::translate('German chancellorships since') . " 1867 🇩🇪";
     }
 
     /**
@@ -88,8 +86,8 @@ class HistoryChancellorsGerman extends AbstractModule implements ModuleHistoricE
         $event_type_02 = I18N::translate('Chairman of the Revolutionary Council of Peoples Deputies');    // "Vorsitzenden des revolutionären Rats der Volksbeauftragten"
         $event_type_03 = I18N::translate('Leader and Imperial chancellor');                               // "Führer und Reichskanzler"
         $event_type_04 = I18N::translate('Occupation Force');                                             // "Besatzungsmacht"
-        $event_type_05 = I18N::translate('Chancellor');                                                   // "Bundeskanzler"
-        $event_type_06 = I18N::translate('Chancellor');                                                   // "Bundeskanzlerin"
+        $event_type_05 = I18N::translate('Federal Chancellor');                                                   // "Bundeskanzler"
+        $event_type_06 = I18N::translate('Federal Chancellor');                                                   // "Bundeskanzlerin"
         $event_type_07 = I18N::translate('Acting Chancellor');                                            // "Geschäftsführender Bundeskanzler"
         $event_type_08 = I18N::translate('President of the Republic');                                    // "Präsident der Republik"
         $event_type_09 = I18N::translate('Chairman of the Council of State');                             // "Vorsitzender des Staatsrats"
