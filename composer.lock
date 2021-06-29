@@ -1921,16 +1921,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a025209072f2d3a50b7bfd683a67fa0a2e6d2721"
+                "reference": "a3c694de9f7e844b76f9d1b61296ebf6e8d89d74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a025209072f2d3a50b7bfd683a67fa0a2e6d2721",
-                "reference": "a025209072f2d3a50b7bfd683a67fa0a2e6d2721",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a3c694de9f7e844b76f9d1b61296ebf6e8d89d74",
+                "reference": "a3c694de9f7e844b76f9d1b61296ebf6e8d89d74",
                 "shasum": ""
             },
             "require": {
@@ -1986,7 +1986,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/2.1.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/2.1.1"
             },
             "funding": [
                 {
@@ -2002,7 +2002,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-25T18:28:31+00:00"
+            "time": "2021-06-23T22:07:10+00:00"
         },
         {
             "name": "league/flysystem-ziparchive",
@@ -8812,5 +8812,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
