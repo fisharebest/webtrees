@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2020-09-21 00:16+0000\n"
+"PO-Revision-Date: 2021-07-01 08:23+0000\n"
 "Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pl/>\n"
@@ -1541,7 +1541,7 @@ msgstr "2 linia adresu"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:85
 msgid "Adelaide, Australia"
-msgstr "Adelaide, Australia"
+msgstr "Adelajda, Australia"
 
 #: admin_users.php:514 admin_users.php:563
 msgid "Administrator"
@@ -15144,11 +15144,11 @@ msgstr "Typ"
 
 #: app/GedcomTag.php:434
 msgid "Type of event"
-msgstr "Typ wydarzenia"
+msgstr "Rodzaj wydarzenia"
 
 #: app/GedcomTag.php:440
 msgid "Type of fact"
-msgstr "Typ faktu"
+msgstr "Rodzaj faktu"
 
 #: app/Module/GoogleMapsModule.php:452
 msgid "Type of place markers in the place hierarchy"
@@ -19564,7 +19564,7 @@ msgstr "kuzyn siódmego stopnia"
 #: admin_trees_config.php:43 app/Module/FrequentlyAskedQuestionsModule.php:456
 #: app/Module/GoogleMapsModule.php:342 app/Module/StoriesModule.php:361
 msgid "show"
-msgstr "Pokaż"
+msgstr "pokaż"
 
 #: statistics.php:765
 msgid "show the chart"
