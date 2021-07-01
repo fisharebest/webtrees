@@ -211,7 +211,10 @@ class FunctionsPrintFacts
         // Print the place of this fact/event
         echo '<div class="place">', FunctionsPrint::formatFactPlace($fact, true, true, true), '</div>';
         // A blank line between the primary attributes (value, date, place) and the secondary ones
-        echo '<br>';
+
+        if ($value !== '' || $fact->attribute('PLAC') !== '' || $fact->attribute('DATE') !== '') {
+            echo '<br>';
+        }
 
         $addr = $fact->attribute('ADDR');
         if ($addr !== '') {
