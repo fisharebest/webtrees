@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-27 01:06+0000\n"
-"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
+"PO-Revision-Date: 2021-07-01 09:21+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/el/>\n"
 "Language: el\n"
@@ -7460,7 +7460,7 @@ msgstr "Χάρτφορντ, Κονέκτικατ, Ηνωμένες Πολιτε�
 
 #: resources/xml/reports/descendancy_report.xml:428
 msgid "He "
-msgstr "Αυτός"
+msgstr "Αυτός "
 
 #: resources/xml/reports/ahnentafel_report.xml:288
 msgid "He died"
