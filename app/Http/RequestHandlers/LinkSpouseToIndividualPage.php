@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,6 +39,18 @@ use function is_string;
 class LinkSpouseToIndividualPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * LinkSpouseToIndividualPage constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -72,13 +85,14 @@ class LinkSpouseToIndividualPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('edit/link-spouse-to-individual', [
-            'post_url'   => route(LinkSpouseToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
-            'cancel_url' => $individual->url(),
-            'label'      => $label,
-            'title'      => $title,
-            'facts'      => $facts,
-            'tree'       => $tree,
-            'xref'       => $xref,
+            'cancel_url'          => $individual->url(),
+            'facts'               => $facts,
+            'gedcom_edit_service' => $this->gedcom_edit_service,
+            'label'               => $label,
+            'post_url'            => route(LinkSpouseToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
+            'title'               => $title,
+            'tree'                => $tree,
+            'xref'                => $xref,
         ]);
     }
 }

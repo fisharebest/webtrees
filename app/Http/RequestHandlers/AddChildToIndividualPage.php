@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -41,6 +42,18 @@ use function route;
 class AddChildToIndividualPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * LinkSpouseToIndividualPage constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -92,12 +105,13 @@ class AddChildToIndividualPage implements RequestHandlerInterface
         $title = I18N::translate('Add a child to create a one-parent family');
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url' => $individual->url(),
-            'facts'      => $facts,
-            'post_url'   => route(AddChildToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
-            'title'      => $individual->fullName() . ' - ' . $title,
-            'tree'       => $tree,
-            'url'        => $request->getQueryParams()['url'] ?? $individual->url(),
+            'cancel_url'          => $individual->url(),
+            'facts'               => $facts,
+            'gedcom_edit_service' => $this->gedcom_edit_service,
+            'post_url'            => route(AddChildToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
+            'title'               => $individual->fullName() . ' - ' . $title,
+            'tree'                => $tree,
+            'url'                 => $request->getQueryParams()['url'] ?? $individual->url(),
         ]);
     }
 }
