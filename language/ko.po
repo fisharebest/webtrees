@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-01 13:27+0000\n"
+"PO-Revision-Date: 2021-07-01 09:22+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/ko/>\n"
@@ -16269,7 +16269,7 @@ msgstr ""
 
 #: app/Module/BatchUpdateModule.php:228
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr ""
+msgstr "사용자 계정에 “자동으로 변경 내용 수락”이 활성화되어 있지 않습니다. 한 번에 하나의 레코드 만 변경할 수 있습니다."
 
 #: admin.php:571
 #, php-format
