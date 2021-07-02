@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use League\Flysystem\Filesystem;
@@ -336,14 +335,11 @@ class MediaFileService
     public function allMediaFolders(FilesystemOperator $data_filesystem): Collection
     {
         $db_folders = DB::table('media_file')
-            ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
-                $join
-                    ->on('gedcom_setting.gedcom_id', '=', 'media.m_file')
-                    ->where('setting_name', '=', 'MEDIA_DIRECTORY');
-            })
+            ->join('gedcom_setting', 'gedcom_id', '=', 'm_file')
+            ->where('setting_name', '=', 'MEDIA_DIRECTORY')
             ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
             ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
-            ->select(new Expression("COALESCE(setting_value, 'media/') || multimedia_file_refn AS path"))
+            ->select(new Expression('setting_value || multimedia_file_refn AS path'))
             ->pluck('path')
             ->map(static function (string $path): string {
                 return dirname($path) . '/';
