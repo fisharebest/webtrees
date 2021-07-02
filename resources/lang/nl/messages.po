@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-07-01 08:23+0000\n"
+"PO-Revision-Date: 2021-07-19 07:49+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -7193,7 +7193,7 @@ msgstr "Google™ hulpprogramma's voor webmasters"
 #. I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:517 app/GedcomTag.php:733
 msgid "Graduation"
-msgstr "diploma /afstuderen"
+msgstr "Diploma/afstuderen"
 
 #: resources/views/statistics/individuals/greatest-age.phtml:12
 msgid "Greatest age at death"
@@ -13148,7 +13148,7 @@ msgstr "Toon levende personen"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:136
 msgid "Show names of private individuals"
-msgstr "Toon namen van privé personen"
+msgstr "Toon namen van privépersonen"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
@@ -13204,7 +13204,7 @@ msgstr "Toon hiërarchie van plaatsen"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:156
 msgid "Show private relationships"
-msgstr "Toon privé relaties"
+msgstr "Toon privérelaties"
 
 #: resources/views/modules/todo/config.phtml:21
 msgid "Show research tasks that are assigned to other users"
@@ -14925,7 +14925,10 @@ msgstr "Deze stamboom werd het laatst gewijzigd op %s."
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Deze map wordt door webtrees gebruikt om mediabestanden, GEDCOM bestanden, tijdelijke bestanden enz. in op te slaan. Deze bestanden kunnen privé data bevatten, en mogen niet beschikbaar worden gemaakt over het internet."
+msgstr ""
+"Deze map wordt door webtrees gebruikt om mediabestanden, GEDCOM-bestanden, "
+"tijdelijke bestanden enz. in op te slaan. Deze bestanden kunnen privédata "
+"bevatten, en mogen niet beschikbaar worden gemaakt over het internet."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:257
@@ -15214,7 +15217,11 @@ msgstr "Deze optie bepaalt de zichtbaarheid van records met privérelaties. Dit 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Deze optie toont de namen (maar geen andere details) van privé personen. Personen zijn privé als ze nog leven of als er een privé-restrictie aan hun persoonsrecord is toegevoegd. Om een bepaalde naam niet te tonen, moet een privé-restrictie op het naamrecord worden gezet."
+msgstr ""
+"Deze optie toont de namen (maar geen andere details) van privépersonen. "
+"Personen zijn privé als ze nog leven of als er een privérestrictie aan hun "
+"persoonsrecord is toegevoegd. Om een bepaalde naam niet te tonen, moet een "
+"privérestrictie op het naamrecord worden gezet."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:24
 #: resources/views/edit/raw-gedcom-record.phtml:25
@@ -15571,7 +15578,12 @@ msgstr "Om compatibiliteit met andere genealogische programma’s te garanderen,
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Om deze privé data te beschermen, gebruikt webtrees een Apache configuratie bestand (.htaccess) dat alle toegang tot deze map blokkeert. Als uw webserver geen .htaccess bestanden ondersteunt, en u kan geen restricties instellen voor deze map, kan u een andere map selecteren, die buiten uw web documenten staat."
+msgstr ""
+"Om deze privédata te beschermen, gebruikt webtrees een Apache-configuratie "
+"bestand (.htaccess) dat alle toegang tot deze map blokkeert. Als uw "
+"webserver geen .htaccess-bestanden ondersteunt, en u kunt geen restricties "
+"instellen voor deze map, dan kunt u een andere map selecteren, die buiten uw "
+"webdocumenten staat."
 
 #: resources/views/help/zip-gedcom.phtml:8
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
