@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-04-10 21:28+0000\n"
+"PO-Revision-Date: 2021-07-19 07:49+0000\n"
 "Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
@@ -7721,7 +7721,9 @@ msgstr "Om du inte begärde ett konto kan du radera meddelandet."
 
 #: resources/views/modals/media-file-fields.phtml:76
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "Om du har ett stort antal media filer, kan du ordna dem i mappar och undermappar."
+msgstr ""
+"Om du har ett stort antal mediefiler, kan du ordna dem i mappar och "
+"undermappar."
 
 #: resources/views/admin/trees-import.phtml:96
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -9393,22 +9395,22 @@ msgstr "Media"
 #: resources/views/modals/create-media-from-file.phtml:27
 #: resources/views/modals/media-file-fields.phtml:20
 msgid "Media file"
-msgstr "Media fil"
+msgstr "Mediefil"
 
 #: resources/views/admin/media-upload.phtml:35
 msgid "Media file to upload"
-msgstr "Mediafil att ladda upp"
+msgstr "Mediefil att ladda upp"
 
 #. I18N: %s is the name of a folder.
 #: resources/views/admin/trees-export.phtml:87
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr "Namnet på mediafilen föregås av %s."
+msgstr "Namnet på mediefilen föregås av %s."
 
 #: resources/views/admin/media.phtml:31
 #: resources/views/admin/trees-preferences.phtml:264
 msgid "Media files"
-msgstr "Media filer"
+msgstr "Mediefiler"
 
 #. I18N: A configuration setting
 #: resources/views/admin/media.phtml:63
@@ -9477,7 +9479,7 @@ msgstr "Mediaobjekt per sida"
 #: resources/views/modals/create-media-from-file.phtml:43
 #: resources/views/modals/media-file-fields.phtml:118
 msgid "Media type"
-msgstr "Mediatyp"
+msgstr "Medietyp"
 
 #. I18N: gedcom tag _MDCL
 #: app/Factories/ElementFactory.php:786 app/Factories/ElementFactory.php:1324
@@ -13902,11 +13904,11 @@ msgstr "Lämnat in, men inte ännu klargjorts"
 #: resources/views/modals/submission-fields.phtml:14
 #: resources/views/modules/recent_changes/changes-table.phtml:74
 msgid "Submitter"
-msgstr "Sändare"
+msgstr "Avsändare"
 
 #: resources/views/lists/submitters-table.phtml:67
 msgid "Submitter name"
-msgstr "Sändarens namn"
+msgstr "Avsändarens namn"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:115 app/Module/SubmitterListModule.php:73
@@ -13915,7 +13917,7 @@ msgstr "Sändarens namn"
 #: resources/views/admin/merge-records-step-1.phtml:57
 #: resources/views/lists/submitters-table.phtml:62
 msgid "Submitters"
-msgstr "Sändare"
+msgstr "Avsändare"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
