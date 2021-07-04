@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 08:24+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-16 14:45+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1527,7 +1527,7 @@ msgstr "3. riadok adresy"
 
 #: resources/views/admin/tags.phtml:237
 msgid "Addresses"
-msgstr ""
+msgstr "Adresy"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1888,7 +1888,7 @@ msgstr "Tiež známy(a) ako"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Alternatívny názov miesta"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2103,7 +2103,7 @@ msgstr "Akvamarín"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Ste si istý, že chcete zmazať prepojenie k „%s“?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:40
@@ -2204,7 +2204,7 @@ msgstr "Asociuj udalosť s týmto zdrojom"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Pridružené udalosti"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2316,7 +2316,7 @@ msgstr "Autor poslednej zmeny"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:633
 msgid "Autocomplete"
-msgstr ""
+msgstr "Automatické dopĺňanie"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -3415,7 +3415,7 @@ msgstr "Dátum sčítania"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Dátum a miesto sčítania"
 
 #: app/Factories/ElementFactory.php:485
 msgid "Census place"
@@ -3460,7 +3460,7 @@ msgstr "Certifikát"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Číslo dokladu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
