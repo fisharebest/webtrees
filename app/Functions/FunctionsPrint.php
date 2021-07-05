@@ -97,7 +97,7 @@ class FunctionsPrint
             $label = I18N::translate('Note');
             $html  = Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
 
-            [$first_line] = explode("\n", strip_tags($text));
+            [$first_line] = explode("\n", strip_tags($html));
             // Use same logic as note objects
             $first_line = Str::limit($first_line, 100, I18N::translate('…'));
 
