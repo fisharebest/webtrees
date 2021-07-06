@@ -515,11 +515,6 @@ parameters:
 			path: app/Http/RequestHandlers/SiteLogsData.php
 
 		-
-			message: "#^Cannot cast array\\|string\\|false to int\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SitePreferencesPage.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Routes\\\\ApiRoutes\\:\\:load\\(\\) has parameter \\$router with no value type specified in iterable type Aura\\\\Router\\\\Map\\.$#"
 			count: 1
 			path: app/Http/Routes/ApiRoutes.php
