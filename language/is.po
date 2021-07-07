@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-01 08:23+0000\n"
+"PO-Revision-Date: 2021-07-19 07:49+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -12268,7 +12268,7 @@ msgstr "Þjónn"
 #. I18N: Menu entry
 #: admin.php:589 admin_site_info.php:26 app/Theme/AdministrationTheme.php:103
 msgid "Server information"
-msgstr ""
+msgstr "Netþjóns upplýsingar"
 
 #. I18N: A configuration setting
 #: admin_site_config.php:350 setup.php:280
@@ -12282,12 +12282,12 @@ msgstr "Setu vinnslufrestur"
 
 #: admin_trees_manage.php:441 admin_trees_manage.php:452
 msgid "Set as default"
-msgstr ""
+msgstr "Setja sem sjálfgefið"
 
 #. I18N: You need to:
 #: login.php:573
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Stilltu aðgangsstig fyrir hvert tré."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:150 index_edit.php:47
@@ -12322,7 +12322,7 @@ msgstr "Stilla friðhelgis aðgangsstig fyrir allt látið fólk."
 #. I18N: You need to:
 #: login.php:571
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Stilltu stöðuna á „samþykkt“."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1580
@@ -12656,17 +12656,17 @@ msgstr "Sýna fólk sem dó innan síðustu 100 ára."
 #. I18N: A configuration setting
 #: admin_site_config.php:278
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Sýna lista yfir ættartré"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
 msgid "Show living individuals"
-msgstr ""
+msgstr "Sýna lifandi einstaklinga"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Sýnið nöfn einkaaðila"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12793,7 +12793,7 @@ msgstr "Sýna atburði hjá nánum ættingjum á einstaklingssíðu"
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
 msgid "Show the family tree"
-msgstr ""
+msgstr "Birta ættartréð"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
@@ -12811,7 +12811,7 @@ msgstr "Sýnið staðsetningu staða og atburða með því að nota Google Maps
 #. I18N: label for a yes/no option
 #: app/Module/RecentChangesModule.php:169
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Birta notandann sem gerði breytinguna"
 
 #. I18N: Label for a configuration option
 #: app/Module/FrequentlyAskedQuestionsModule.php:197
@@ -12889,7 +12889,7 @@ msgstr "Hliðarslá"
 #: admin_module_sidebar.php:28 admin_modules.php:161
 #: app/Theme/AdministrationTheme.php:194
 msgid "Sidebars"
-msgstr ""
+msgstr "Hliðarstikur"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6877
@@ -12915,7 +12915,7 @@ msgstr "Innskráningar veffang"
 #. I18N: Menu entry
 #: admin_site_config.php:147 app/Theme/AdministrationTheme.php:97
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Innskráning og nýskráning"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -12935,22 +12935,25 @@ msgstr "Systir"
 #: admin_site_config.php:569 admin_site_config.php:585
 #: admin_site_config.php:610
 msgid "Site identification code"
-msgstr ""
+msgstr "Auðkenni vefsíðunnar"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:477 edituser.php:300
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Meðlimir vefsvæðisins geta sent hvor öðrum skilaboð. Þú getur valið hvernig "
+"þessi skilaboð verða send til þín, eða valið að taka alls ekki á móti þeim."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:527 admin_site_config.php:548
 msgid "Site verification code"
-msgstr ""
+msgstr "Staðfestingarkóði vefsvæðis"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:538 admin_site_config.php:559
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Staðfestingarkóðar vefsvæða virka ekki þegar veftré er sett upp í undirmöppu."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:39
@@ -12993,7 +12996,7 @@ msgstr "Stærð landakorts (í pixlum)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr ""
+msgstr "Fara yfir í innihald"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
@@ -13053,11 +13056,15 @@ msgstr "Sómalía"
 #: admin_trees_manage.php:300
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"Sum ættfræðiforrit útbúa GEDCOM skrár sem innihalda skráarheiti gagna með "
+"fullum slóðum. Þessar slóðir verða ekki til staðar á vefþjóninum. Til að "
+"leyfa Webtrees forritinu að finna skrána verður að fjarlægja fyrsta hluta "
+"slóðarinnar."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Sumar síður geta sýnt hversu oft þær hafa verið heimsóttar."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -13066,7 +13073,7 @@ msgstr ""
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Sum þemu geta birt tákn á flipanum „Staðreyndir og atburðir“."
 
 #: modules_v3/family_group_report/report.xml:774
 #: modules_v3/individual_ext_report/report.xml:526
@@ -13436,12 +13443,12 @@ msgstr "Eftirnafna venja"
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:98
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Eftirnöfn eru beygð til að gefa til kynna kyn og hjúskaparstöðu."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:93
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Eftirnöfn eru beygð til að gefa til kynna kyn einstaklings."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:355
@@ -13456,7 +13463,7 @@ msgstr "Svalbarði og Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:100
 msgid "Swap individuals"
-msgstr ""
+msgstr "Víxla einstaklingum"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6888
@@ -13480,7 +13487,7 @@ msgstr "Sydney, Ástralía"
 
 #: admin_trees_manage.php:750
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Samstilltu ættartré við GEDCOM skrár"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6891
@@ -13567,7 +13574,7 @@ msgstr "Fá tæknilega aðstoð"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "Tegucigalpa, Hondúras"
 
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
@@ -13619,15 +13626,26 @@ msgstr "Taíland"
 #: help_text.php:219
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
+"Reiturinn <b> nafn </b> inniheldur fullt nafn einstaklingsins, eins og þeir "
+"hefðu stafsett það eða eins og það var skráð. Svona verður það birt á "
+"skjánum. Það notar staðlaðar ættfræðiskýringar til að bera kennsl á "
+"mismunandi hluta nafnsins."
 
 #: help_text.php:239
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
 msgstr ""
+"Reiturinn <b> eftirnafn </b> inniheldur nafn sem er notað til að raða og "
+"flokka. Það getur verið frábrugðið raunverulegu eftirnafni einstaklingsins "
+"sem er alltaf tekið úr reitnum <b> nafn </b>. Hægt er að nota þennan reit "
+"til að raða eftirnöfnum með eða án forskeytis (Gogh / van Gogh) og til að "
+"flokka stafsetningarafbrigði eða beygingu (Kowalski / Kowalska). Ef "
+"einstaklingur þarf að vera skráður undir fleiri en einu ættarnafni ætti "
+"hvert nafn að vera aðgreint með kommu."
 
 #: admin_trees_manage.php:148
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM skráin ”%s” hefur verið flutt inn."
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:183
@@ -13667,6 +13685,8 @@ msgstr "Breytingarnar við „%s“ hefur verið hafnað."
 #: app/Module/ClippingsCartModule.php:324
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
 msgstr ""
+"Úrklippuvagninn gerir þér kleift að taka útdrætti úr þessu ættartré og hlaða "
+"þeim niður sem GEDCOM skrá."
 
 #: site-unavailable.php:52
 msgid "The database reported the following error message:"
@@ -13674,7 +13694,7 @@ msgstr "Gagnagrunnurinn upplýsti um eftirfarandi villuskilaboð:"
 
 #: admin_trees_config.php:1197
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "Dagsetning og tími síðustu uppfærslu"
 
 #: family.php:111
 msgid "The details of this family are private."
@@ -13694,29 +13714,30 @@ msgstr "Ættartré útflutt í %s."
 #: admin_trees_manage.php:77
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Ættartréð “%s” er þegar til."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:80
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Ættartréð “%s” hefur verið útbúið."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:57 admin_trees_manage.php:154
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Ættartrénu “%s” hefur verið eytt."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:66
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"Ættartréð “%s” verður birt gestum þegar þeir koma fyrst á þessa vefsíðu."
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Ættartrén hafa verið sameinuð með góðum árangri."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:144
@@ -13734,13 +13755,13 @@ msgstr "Skráin %s er þegar til staðar. Notið annað skráarheiti."
 #: app/Module/ClippingsCart/ClippingsCartController.php:320
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Skrána %s var ekki hægt að stofna."
 
 #: admin_media.php:63 admin_media.php:72 admin_site_clean.php:38
 #: admin_site_upgrade.php:415 admin_site_upgrade.php:436
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Skrána %s var ekki hægt að eyða."
 
 #: admin_site_upgrade.php:335
 #, php-format
@@ -13756,12 +13777,12 @@ msgstr ""
 #: admin_site_upgrade.php:413 admin_site_upgrade.php:434
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "Skránni %s hefur verið eytt."
 
 #: admin_media_upload.php:141 admin_media_upload.php:159
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "Skránni %s hefur verið hlaðið inn."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:76
@@ -13777,7 +13798,7 @@ msgstr "Skráin „%s“ er ekki til."
 #: admin_site_clean.php:36 admin_site_upgrade.php:430
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Möppunni %s var ekki hægt að eyða."
 
 #: addmedia.php:102 addmedia.php:113 addmedia.php:125 addmedia.php:259
 #: addmedia.php:270 addmedia.php:282 admin_media_upload.php:66
@@ -13797,21 +13818,24 @@ msgstr "Mappan %s var stofnuð."
 #: admin_site_clean.php:30 admin_site_upgrade.php:428
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Möppunni %s hefur verið eytt."
 
 #: admin_site_config.php:195
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
 msgstr ""
+"Hægt er að tilgreina möppuna að fullu (t.d. / home / user_name / "
+"webtrees_data /) eða miðað við uppsetningarmöppuna (t.d. ../../webtrees_data/"
+")."
 
 #: admin_site_merge.php:205
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Eftirfarandi staðreyndir og atburðir fundust í báðum skrám."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:252 admin_site_merge.php:298
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Eftirfarandi staðreyndir og atburði var einungis að finna í skránni %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13854,7 +13878,7 @@ msgstr "Krækjan frá „%1$s“ til „%2$s“ hefur verið eytt."
 #: admin_site_merge.php:113
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Krækjan frá “%1$s” til “%2$s” hefur verið uppfærð."
 
 #: addmedia.php:313 addmedia.php:344
 #, php-format
@@ -13897,12 +13921,12 @@ msgstr "Það tókst að senda skilaboðin á %s."
 #: admin_modules.php:54
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Einingin “%s” hefur verið óvirkjuð."
 
 #: admin_modules.php:56
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Einingin “%s” hefur verið virkjuð."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
@@ -13938,6 +13962,8 @@ msgstr ""
 #: admin_site_config.php:496
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Nýi notandinn verður beðinn um að staðfesta netfang sitt áður en "
+"reikningurinn er stofnaður."
 
 #: help_text.php:298
 msgid "The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used."
@@ -13958,11 +13984,11 @@ msgstr "Lykilorðin stemma ekki saman."
 
 #: admin_trees_config.php:190
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Valkostir allra ættartrjáa hafa verið uppfærðir."
 
 #: admin_trees_config.php:193
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Valkostir nýrra ættartrjáa hafa verið uppfærðir."
 
 #: app/Module/RelationshipsChartModule.php:218
 #, php-format
@@ -13972,17 +13998,17 @@ msgstr ""
 #: admin_trees_config.php:178 admin_trees_config.php:301
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Valkostirnir fyrir ættartrén “%s” hafa verið uppfærðir."
 
 #: admin_modules.php:86
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Valkostina fyrir eininguna “%s” hefur verið eytt út."
 
 #: app/Module/GoogleMapsModule.php:266
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Valkostirnir fyrir eininguna “%s” hafa verið uppfærðir."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
