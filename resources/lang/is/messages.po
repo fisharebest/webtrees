@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 08:24+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-16 14:45+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -12701,7 +12701,7 @@ msgstr "Þjónn"
 #: app/Http/RequestHandlers/PhpInformation.php:60
 #: resources/views/admin/control-panel.phtml:250
 msgid "Server information"
-msgstr ""
+msgstr "Netþjóns upplýsingar"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:94
@@ -12713,17 +12713,17 @@ msgstr "Vefþjónsheiti"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:63
 msgid "Set a new password"
-msgstr ""
+msgstr "Skrá nýtt lykilorð"
 
 #: resources/views/admin/trees.phtml:129 resources/views/admin/trees.phtml:136
 msgid "Set as default"
-msgstr ""
+msgstr "Setja sem sjálfgefið"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:39
 #: resources/views/emails/verify-notify-text.phtml:26
 msgid "Set the access level for each tree."
-msgstr ""
+msgstr "Stilltu aðgangsstig fyrir hvert tré."
 
 #: app/Http/RequestHandlers/TreePageDefaultEdit.php:69
 #: resources/views/admin/control-panel.phtml:297
@@ -12744,7 +12744,7 @@ msgstr "Stilla friðhelgis aðgangsstig fyrir allt látið fólk."
 #: resources/views/emails/verify-notify-html.phtml:37
 #: resources/views/emails/verify-notify-text.phtml:25
 msgid "Set the status to “approved”."
-msgstr ""
+msgstr "Stilltu stöðuna á „samþykkt“."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:642
@@ -12798,15 +12798,15 @@ msgstr "Shahrivar"
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/individual-page.phtml:61
 msgid "Share"
-msgstr ""
+msgstr "Deila"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Deila vefslóðinni"
 
 #: app/Module/ShareAnniversaryModule.php:79
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Deildu afmælisdegi viðburðar"
 
 #: app/Functions/FunctionsPrint.php:94
 #: app/Functions/FunctionsPrintFacts.php:793
@@ -12828,7 +12828,7 @@ msgstr "Sameiginlegar glósur"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:740
 msgid "Shares"
-msgstr ""
+msgstr "Deilingar"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -12961,7 +12961,7 @@ msgstr "Sýna niðurhalskrækju í miðils skoðara"
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Sýndu friðhelgisstefnu."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:69
@@ -13055,17 +13055,17 @@ msgstr "Sýna fólk sem dó innan síðustu 100 ára."
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
 msgid "Show list of family trees"
-msgstr ""
+msgstr "Sýna lista yfir ættartré"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:95
 msgid "Show living individuals"
-msgstr ""
+msgstr "Sýna lifandi einstaklinga"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:136
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Sýnið nöfn einkaaðila"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
@@ -13116,7 +13116,7 @@ msgstr "Sýna myndir"
 
 #: app/Module/PlaceHierarchyListModule.php:217
 msgid "Show place hierarchy"
-msgstr ""
+msgstr "Sýna staðarstigveldi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:156
@@ -13171,12 +13171,12 @@ msgstr "Sýna %1$s %2$s hlutina af staðarheiti."
 #. I18N: Description of the “Pedigree map” module
 #: app/Module/PedigreeMapModule.php:138
 msgid "Show the birthplace of ancestors on a map."
-msgstr ""
+msgstr "Sýnið fæðingarstað forfeðra á korti."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Sýnið dagsetningu og tíma"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -13189,7 +13189,7 @@ msgstr "Sýna atburði hjá nánum ættingjum á einstaklingssíðu"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Show the family tree"
-msgstr ""
+msgstr "Birta ættartréð"
 
 #: app/Module/IndividualListModule.php:366
 msgid "Show the list of individuals"
@@ -13202,17 +13202,17 @@ msgstr "Sýna lista yfir eftirnöfn"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Sýnið staðsetningu viðburðar á ytra korti."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:95
 msgid "Show the location of events on a map."
-msgstr ""
+msgstr "Sýnið staðsetningu atburða á korti."
 
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:58
 msgid "Show the user who made the change"
-msgstr ""
+msgstr "Birta notandann sem gerði breytinguna"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/edit.phtml:53
@@ -13289,7 +13289,7 @@ msgstr "Hliðarslá"
 #: resources/views/admin/modules.phtml:86
 #: resources/views/admin/modules.phtml:88
 msgid "Sidebars"
-msgstr ""
+msgstr "Hliðarstikur"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:447
@@ -13310,7 +13310,7 @@ msgstr "Útskrá"
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:44
 #: resources/views/admin/control-panel.phtml:228
 msgid "Sign-in and registration"
-msgstr ""
+msgstr "Innskráning og nýskráning"
 
 #: resources/views/help/date.phtml:135
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13331,24 +13331,24 @@ msgstr "Systir"
 #: resources/views/modules/matomo-analytics/form.phtml:9
 #: resources/views/modules/statcounter/form.phtml:9
 msgid "Site identification code"
-msgstr ""
+msgstr "Auðkenni vefsíðunnar"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: resources/views/admin/users-edit.phtml:191
 #: resources/views/edit-account-page.phtml:141
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Meðlimir vefsvæðisins geta sent hvor öðrum skilaboð. Þú getur valið hvernig þessi skilaboð verða send til þín, eða valið að taka alls ekki á móti þeim."
 
 #. I18N: A configuration setting
 #: resources/views/modules/bing-webmaster-tools/form.phtml:9
 #: resources/views/modules/google-webmaster-tools/form.phtml:9
 msgid "Site verification code"
-msgstr ""
+msgstr "Staðfestingarkóði vefsvæðis"
 
 #: resources/views/modules/bing-webmaster-tools/form.phtml:18
 #: resources/views/modules/google-webmaster-tools/form.phtml:18
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Staðfestingarkóðar vefsvæða virka ekki þegar veftré er sett upp í undirmöppu."
 
 #. I18N: Name of a module - see https://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:163
@@ -13388,7 +13388,7 @@ msgstr "Sivan"
 #: resources/views/layouts/administration.phtml:47
 #: resources/views/layouts/default.phtml:76
 msgid "Skip to content"
-msgstr ""
+msgstr "Fara yfir í innihald"
 
 #: app/Elements/RelationIsDescriptor.php:125
 msgid "Slave"
@@ -13446,26 +13446,26 @@ msgstr "Sómalía"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr ""
+msgstr "Sum ættfræðiforrit útbúa GEDCOM skrár sem innihalda skráarheiti gagna með fullum slóðum. Þessar slóðir verða ekki til staðar á vefþjóninum. Til að leyfa Webtrees forritinu að finna skrána verður að fjarlægja fyrsta hluta slóðarinnar."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:94
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr ""
+msgstr "Sum ættfræðiforrit geyma öll nöfn í einni nafnaskrá og notar sérsniðin merki eins og _MARNM og _AKA. Annar kostur er að búa til nýja nafnaskrá fyrir hvert nafn."
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Sum þessara GEDCOM merkja eru sjaldan eða aldrei notuð."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
 msgid "Some pages can display the number of times that they have been visited."
-msgstr ""
+msgstr "Sumar síður geta sýnt hversu oft þær hafa verið heimsóttar."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:545
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Sum þemu geta birt tákn á flipanum „Staðreyndir og atburðir“."
 
 #: resources/views/edit/change-family-members.phtml:63
 #: resources/xml/reports/family_group_report.xml:774
@@ -13506,7 +13506,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Sosa-Stradonitz tala"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:262
 msgid "Sounds like"
@@ -13558,11 +13558,11 @@ msgstr "Heimild"
 #: app/Module/CustomTagsGedcomL.php:103 app/Module/CustomTagsGedcomL.php:152
 #: app/Module/CustomTagsWebtrees.php:57 app/Module/CustomTagsWebtrees.php:71
 msgid "Source citation"
-msgstr ""
+msgstr "Tilvitnun heimildar"
 
 #: resources/views/admin/tags.phtml:299
 msgid "Source citations"
-msgstr ""
+msgstr "Tilvitnanir heimilda"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:842
@@ -13704,8 +13704,9 @@ msgid "Starting range of change dates"
 msgstr "Byrjunarsvið á breytingar dagsetningum"
 
 #: app/Module/StatcounterModule.php:41
+#, fuzzy
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #: app/Factories/ElementFactory.php:282 app/Factories/ElementFactory.php:393
 #: app/Factories/ElementFactory.php:413 app/Factories/ElementFactory.php:665
@@ -13780,7 +13781,7 @@ msgstr "Söguheiti"
 #: app/Module/CustomTagsGenPluswin.php:59
 #: app/Module/CustomTagsGenPluswin.php:91
 msgid "Street name"
-msgstr ""
+msgstr "Götuheiti"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -13812,7 +13813,7 @@ msgstr "Sendandi"
 
 #: resources/views/lists/submitters-table.phtml:67
 msgid "Submitter name"
-msgstr ""
+msgstr "Nafn sendanda"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:117 app/Module/SubmitterListModule.php:73
@@ -13822,7 +13823,7 @@ msgstr ""
 #: resources/views/admin/tags.phtml:896
 #: resources/views/lists/submitters-table.phtml:62
 msgid "Submitters"
-msgstr ""
+msgstr "Sendendur"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13847,16 +13848,16 @@ msgstr "Þjónustu og skjalasafn er að finna á %s."
 
 #: app/Services/ServerCheckService.php:330
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Stuðningur við PostgreSQL er til reynslu."
 
 #: app/Services/ServerCheckService.php:335
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Stuðningur við SQL Server er til reynslu."
 
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
 msgid "Support for non-standard GEDCOM tags."
-msgstr ""
+msgstr "Stuðningur við óstöðluð GEDCOM merki."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -13904,17 +13905,17 @@ msgstr "Eftirnafna venja"
 #: resources/views/modules/gedcom_stats/statistics.phtml:79
 #: resources/views/modules/statistics-chart/custom.phtml:163
 msgid "Surnames"
-msgstr ""
+msgstr "Eftirnafn"
 
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:113
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Eftirnöfn eru beygð til að gefa til kynna kyn og hjúskaparstöðu."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:106
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Eftirnöfn eru beygð til að gefa til kynna kyn einstaklings."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:190
@@ -13929,7 +13930,7 @@ msgstr "Svalbarði og Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: resources/views/modules/relationships-chart/page.phtml:88
 msgid "Swap individuals"
-msgstr ""
+msgstr "Víxla einstaklingum"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:469
@@ -13953,7 +13954,7 @@ msgstr "Sydney, Ástralía"
 
 #: resources/views/admin/synchronize-trees.phtml:12
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Samstilltu ættartré við GEDCOM skrár"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:474
@@ -13989,7 +13990,7 @@ msgstr "Töflu forskeyti"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Æsifréttablað"
 
 #: app/Http/RequestHandlers/ModulesTabsPage.php:43
 #: resources/views/admin/control-panel.phtml:719
@@ -14060,7 +14061,7 @@ msgstr "Fá tæknilega aðstoð"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:195
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "Tegucigalpa, Hondúras"
 
 #: resources/views/modules/html/config.phtml:27
 msgid "Templates"
@@ -14118,20 +14119,20 @@ msgstr "Taíland"
 
 #: resources/views/help/name.phtml:8
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr ""
+msgstr "Reiturinn <b> nafn </b> inniheldur fullt nafn einstaklingsins, eins og þeir hefðu stafsett það eða eins og það var skráð. Svona verður það birt á skjánum. Það notar staðlaðar ættfræðiskýringar til að bera kennsl á mismunandi hluta nafnsins."
 
 #: resources/views/help/surname.phtml:8
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
+msgstr "Reiturinn <b> eftirnafn </b> inniheldur nafn sem er notað til að raða og flokka. Það getur verið frábrugðið raunverulegu eftirnafni einstaklingsins sem er alltaf tekið úr reitnum <b> nafn </b>. Hægt er að nota þennan reit til að raða eftirnöfnum með eða án forskeytis (Gogh / van Gogh) og til að flokka stafsetningarafbrigði eða beygingu (Kowalski / Kowalska). Ef einstaklingur þarf að vera skráður undir fleiri en einu ættarnafni ætti hvert nafn að vera aðgreint með kommu."
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:94
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM skráin ”%s” hefur verið flutt inn."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "GEDCOM staðallinn býður upp á mikinn fjölda gagnafærslu reita, kallaðir merki."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14141,12 +14142,12 @@ msgstr "The Hague, Holland"
 #: app/Services/ServerCheckService.php:124
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "PHP viðbótin ”%s” er ekki uppsett."
 
 #: app/Services/ServerCheckService.php:182
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "PHP virknin “%1$s” er óvirk."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:56
@@ -14156,16 +14157,16 @@ msgstr "Vantar PHP tímabundið skráarsafn."
 #: app/Services/ServerCheckService.php:143
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "PHP.INI stillingin “%1$s” er óvirk."
 
 #: app/Services/ServerCheckService.php:147
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "PHP.INI stillingin “%1$s” er virk."
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "Vefslóðin var afrituð á klippiborðið"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -14180,7 +14181,7 @@ msgstr "Kerfisstjórinn hefur verið upplýstur. Um leið og hann gefur þér he
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
 msgid "The calendar menu."
-msgstr ""
+msgstr "Dagatalsvalmyndin."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:68
@@ -14199,21 +14200,21 @@ msgstr "Breytingarnar við „%s“ hefur verið hafnað."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:70
 msgid "The charts menu."
-msgstr ""
+msgstr "Valmynd grafa."
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr ""
+msgstr "Úrklippuvagninn gerir þér kleift að taka útdrætti úr þessu ættartré og hlaða þeim niður sem GEDCOM skrá."
 
 #: resources/views/admin/trees-preferences.phtml:399
 msgid "The date and time of the last update"
-msgstr ""
+msgstr "Dagsetning og tími síðustu uppfærslu"
 
 #: app/Http/RequestHandlers/AccountUpdate.php:113
 #: app/Http/RequestHandlers/MapDataSave.php:101
 #, php-format
 msgid "The details for “%s” have been updated."
-msgstr ""
+msgstr "Upplýsingar fyrir “%s” hafa verið uppfærðar."
 
 #. I18N: %s is a filename
 #: app/Http/RequestHandlers/ExportGedcomServer.php:100
@@ -14225,34 +14226,34 @@ msgstr "Ættartré útflutt í %s."
 #: app/Http/RequestHandlers/CreateTreeAction.php:63
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Ættartréð “%s” er þegar til."
 
 #: app/Http/RequestHandlers/CreateTreeAction.php:70
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Ættartréð “%s” hefur verið útbúið."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/DeleteTreeAction.php:64
 #: app/Http/RequestHandlers/SynchronizeTrees.php:108
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Ættartrénu “%s” hefur verið eytt."
 
 #. I18N: %s is the name of a family tree
 #: app/Http/RequestHandlers/SelectDefaultTree.php:54
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "Ættartréð “%s” verður birt gestum þegar þeir koma fyrst á þessa vefsíðu."
 
 #: app/Http/RequestHandlers/MergeTreesAction.php:249
 msgid "The family trees have been merged successfully."
-msgstr ""
+msgstr "Ættartrén hafa verið sameinuð með góðum árangri."
 
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:71
 msgid "The family trees menu."
-msgstr ""
+msgstr "Ættartré-valmynd."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:75
@@ -14268,22 +14269,22 @@ msgstr "Skráin %s er þegar til staðar. Notið annað skráarheiti."
 #: app/Http/RequestHandlers/ExportGedcomServer.php:103
 #, php-format
 msgid "The file %s could not be created."
-msgstr ""
+msgstr "Skrána %s var ekki hægt að stofna."
 
 #: app/Http/RequestHandlers/DeletePath.php:67
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr ""
+msgstr "Skrána %s var ekki hægt að eyða."
 
 #: app/Http/RequestHandlers/DeletePath.php:65
 #, php-format
 msgid "The file %s has been deleted."
-msgstr ""
+msgstr "Skránni %s hefur verið eytt."
 
 #: app/Http/RequestHandlers/UploadMediaAction.php:134
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr ""
+msgstr "Skránni %s hefur verið hlaðið inn."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:50
@@ -14299,12 +14300,12 @@ msgstr "Skráin „%s“ er ekki til."
 
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "Fyrsta fjölskyldan á listanum verður notuð í töflur, lista, skýrslur o.s.frv."
 
 #: app/Http/RequestHandlers/DeletePath.php:60
 #, php-format
 msgid "The folder %s could not be deleted."
-msgstr ""
+msgstr "Möppunni %s var ekki hægt að eyða."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:197
 #, php-format
@@ -14314,27 +14315,27 @@ msgstr "Mappan %s var stofnuð."
 #: app/Http/RequestHandlers/DeletePath.php:58
 #, php-format
 msgid "The folder %s has been deleted."
-msgstr ""
+msgstr "Möppunni %s hefur verið eytt."
 
 #: resources/views/admin/site-preferences.phtml:42
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr ""
+msgstr "Hægt er að tilgreina möppuna að fullu (t.d. / home / user_name / webtrees_data /) eða miðað við uppsetningarmöppuna (t.d. ../../webtrees_data/)."
 
 #: app/Http/RequestHandlers/SitePreferencesAction.php:55
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Mappan “%s” er ekki til."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Eftirfarandi staðreyndir og atburðir fundust í báðum skrám."
 
 #. I18N: the name of an individual, source, etc.
 #: resources/views/admin/merge-records-step-2.phtml:86
 #: resources/views/admin/merge-records-step-2.phtml:132
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Eftirfarandi staðreyndir og atburði var einungis að finna í skránni %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
@@ -14364,21 +14365,21 @@ msgstr "Krækjan frá „%1$s“ til „%2$s“ hefur verið eytt."
 #: app/Http/RequestHandlers/MergeFactsAction.php:98
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Krækjan frá “%1$s” til “%2$s” hefur verið uppfærð."
 
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "Lista-valmyndin."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "Staðsetningin hefur verið útbúin"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:33
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Ekki er vitað um staðsetningu þessa staðar."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:149
 #, php-format
@@ -14392,7 +14393,7 @@ msgstr "Miðilsskrá %1$s var giftusamlega endurnefnd í %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:106
 msgid "The media object has been created"
-msgstr ""
+msgstr "Gagnaskráin hefur verið útbúin"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14419,13 +14420,13 @@ msgstr "Það tókst að senda skilaboðin á %s."
 #: app/Module/ChartsBlockModule.php:166 app/Module/ChartsBlockModule.php:180
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Einingin “%s” hefur verið óvirkjuð."
 
 #: app/Http/RequestHandlers/AbstractModuleComponentAction.php:74
 #: app/Http/RequestHandlers/ModulesAllAction.php:69
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Einingin “%s” hefur verið virkjuð."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:783
@@ -14439,16 +14440,16 @@ msgstr "Algengustu staðreyndir og atburðir fjölskyldna eru taldar upp sérsta
 
 #: resources/views/admin/site-registration.phtml:57
 msgid "The new user will be asked to confirm their email address before the account is created."
-msgstr ""
+msgstr "Nýi notandinn verður beðinn um að staðfesta netfang sitt áður en reikningurinn er stofnaður."
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:75
 msgid "The note has been created"
-msgstr ""
+msgstr "Glósan hefur verið útbúin"
 
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Færibreytuna “%s” vantar."
 
 #: app/Http/RequestHandlers/SetupWizard.php:383
 msgid "The password needs to be at least six characters long."
@@ -14462,33 +14463,33 @@ msgstr "Lykilorðið sem nauðsynlegt er til staðfestingar hjá SMTP póstþjó
 #: app/Http/RequestHandlers/PasswordResetAction.php:83
 #: app/Http/RequestHandlers/PasswordResetPage.php:75
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Krækjan til að endurstilla lykilorðið er útrunnin."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:119
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Staðarstigveldið."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:144
 #: app/Http/RequestHandlers/TreePrivacyAction.php:118
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Valkostir allra ættartrjáa hafa verið uppfærðir."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:148
 #: app/Http/RequestHandlers/TreePrivacyAction.php:121
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Valkostir nýrra ættartrjáa hafa verið uppfærðir."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:137
 #: app/Http/RequestHandlers/TreePrivacyAction.php:111
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Valkostirnir fyrir ættartrén “%s” hafa verið uppfærðir."
 
 #: app/Http/RequestHandlers/ModuleDeleteSettings.php:73
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Valkostina fyrir eininguna “%s” hefur verið eytt út."
 
 #: app/Module/BingMaps.php:96 app/Module/CustomCssJsModule.php:99
 #: app/Module/GeonamesAutocomplete.php:110 app/Module/GoogleMaps.php:96
@@ -14500,7 +14501,7 @@ msgstr ""
 #: app/Module/SiteMapModule.php:180
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Valkostirnir fyrir eininguna “%s” hafa verið uppfærðir."
 
 #: resources/views/setup/step-4-database-mysql.phtml:124
 #: resources/views/setup/step-4-database-pgsql.phtml:109
