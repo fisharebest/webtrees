@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePageBlockEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPageBlockEdit;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function route;
@@ -128,5 +129,16 @@ trait ModuleBlockTrait
     public function editBlockConfiguration(Tree $tree, int $block_id): string
     {
         return '';
+    }
+
+    /**
+     * Title of the module's content
+     *
+     * @param int $block_id
+     * @return string
+     */
+    public function blockContentTitle(int $block_id): string
+    {
+        return Str::limit($this->getBlockSetting($block_id, 'title'), 32);
     }
 }

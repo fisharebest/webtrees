@@ -21,6 +21,9 @@ use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 
             <span title="<?= I18N::translate('Block') ?> <?= e($block_id) ?>">
                 <?= $block->title() ?>
+                <?php if($block->name() === 'html') : ?>
+                  - <?= $block->blockContentTitle((int)$block_id) ?>
+                <?php endif ?>
             </span>
         </div>
 
