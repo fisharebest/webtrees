@@ -223,7 +223,7 @@ class RelationshipService
         // Reduce the genitive-nominative chain to a single string.
         return array_reduce($relationships, static function (array $carry, array $item): array {
             return [sprintf($carry[1], $item[0]), sprintf($carry[1], $item[1])];
-        }, [1 => '%s'])[0];
+        }, [0 => '', 1 => '%s'])[0];
     }
 
     /**
