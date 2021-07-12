@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -37,7 +36,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use LogicException;
 use Ramsey\Uuid\Uuid;
 
 use function app;
@@ -50,13 +48,11 @@ use function explode;
 use function in_array;
 use function preg_match;
 use function preg_match_all;
-use function preg_replace_callback;
 use function preg_split;
 use function str_contains;
 use function strip_tags;
 use function strlen;
 use function strpos;
-use function strtoupper;
 use function substr;
 use function uasort;
 use function view;
@@ -92,16 +88,16 @@ class FunctionsPrint
             assert($note instanceof Note);
 
             $label      = I18N::translate('Shared note');
-            $html       = Filter::formatText($note->getNote(), $tree);
+            $html       = Registry::markdownFactory()->markdown($tree)->convertToHtml($note->getNote());
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
 
             $one_line_only = strip_tags($note->fullName()) === strip_tags($note->getNote());
         } else {
             // Inline note.
             $label = I18N::translate('Note');
-            $html  = Filter::formatText($text, $tree);
+            $html  = Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
 
-            [$first_line] = explode("\n", strip_tags($text));
+            [$first_line] = explode("\n", strip_tags($html));
             // Use same logic as note objects
             $first_line = Str::limit($first_line, 100, I18N::translate('…'));
 
@@ -233,48 +229,6 @@ class FunctionsPrint
     }
 
     /**
-     * Convert a GEDCOM age string to localized text.
-     *
-     * @param string $age_string
-     *
-     * @return string
-     */
-    public static function formatGedcomAge(string $age_string): string
-    {
-        switch (strtoupper($age_string)) {
-            case 'CHILD':
-                return I18N::translate('Child');
-            case 'INFANT':
-                return I18N::translate('Infant');
-            case 'STILLBORN':
-                return I18N::translate('Stillborn');
-            default:
-                return (string) preg_replace_callback(
-                    [
-                        '/(\d+)([ymwd])/',
-                    ],
-                    static function (array $match): string {
-                        $num = (int) $match[1];
-
-                        switch ($match[2]) {
-                            case 'y':
-                                return I18N::plural('%s year', '%s years', $num, I18N::number($num));
-                            case 'm':
-                                return I18N::plural('%s month', '%s months', $num, I18N::number($num));
-                            case 'w':
-                                return I18N::plural('%s week', '%s weeks', $num, I18N::number($num));
-                            case 'd':
-                                return I18N::plural('%s day', '%s days', $num, I18N::number($num));
-                            default:
-                                throw new LogicException('Should never get here');
-                        }
-                    },
-                    $age_string
-                ) ;
-        }
-    }
-
-    /**
      * Print fact DATE/TIME
      *
      * @param Fact         $event  event containing the date/age
@@ -286,27 +240,30 @@ class FunctionsPrint
      */
     public static function formatFactDate(Fact $event, GedcomRecord $record, bool $anchor, bool $time): string
     {
+        $element_factory = Registry::elementFactory();
+
         $factrec = $event->gedcom();
         $html    = '';
         // Recorded age
         if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
-            $fact_age = self::formatGedcomAge($match[1]);
+            $fact_age = $element_factory->make($event->tag() . ':AGE')->value($match[1], $record->tree());
         } else {
             $fact_age = '';
         }
         if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match)) {
-            $husb_age = self::formatGedcomAge($match[1]);
+            $husb_age = $element_factory->make($event->tag() . ':HUSB:AGE')->value($match[1], $record->tree());
         } else {
             $husb_age = '';
         }
         if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
-            $wife_age = self::formatGedcomAge($match[1]);
+            $wife_age = $element_factory->make($event->tag() . ':WIFE:AGE')->value($match[1], $record->tree());
         } else {
             $wife_age = '';
         }
 
         // Calculated age
-        $fact = $event->getTag();
+        [, $fact] = explode(':', $event->tag());
+
         if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
             $date = new Date($match[1]);
             $html .= ' ' . $date->display($anchor);
@@ -481,9 +438,9 @@ class FunctionsPrint
     public static function checkFactUnique(array $uniquefacts, Collection $recfacts): array
     {
         foreach ($recfacts as $factarray) {
-            $fact = $factarray->getTag();
+            $fact = explode(':', $factarray->tag())[1];
+            $key  = array_search($fact, $uniquefacts, true);
 
-            $key = array_search($fact, $uniquefacts, true);
             if ($key !== false) {
                 unset($uniquefacts[$key]);
             }
@@ -539,7 +496,6 @@ class FunctionsPrint
             'add_facts'   => $addfacts,
             'quick_facts' => $quickfacts,
             'record'      => $record,
-            'tree'        => $tree,
         ]);
     }
 }

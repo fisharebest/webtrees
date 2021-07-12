@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-06-19 12:43+0100\n"
-"PO-Revision-Date: 2021-05-26 09:08+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 08:24+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1515,7 +1499,7 @@ msgstr "Adresregel 3"
 
 #: resources/views/admin/tags.phtml:237
 msgid "Addresses"
-msgstr ""
+msgstr "Adressen"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -6203,21 +6187,21 @@ msgstr "Gezinsleden van ega"
 #. I18N: Name of a module/chart
 #: app/Module/FamilyBookChartModule.php:92
 msgid "Family book"
-msgstr "Familie boek"
+msgstr "Familieboek"
 
 #. I18N: %s is an individual’s name
 #: app/Module/FamilyBookChartModule.php:138
 #, php-format
 msgid "Family book of %s"
-msgstr "Familie boek van %s"
+msgstr "Familieboek van %s"
 
 #: app/Factories/ElementFactory.php:320
 msgid "Family census"
-msgstr ""
+msgstr "Gezinstelling"
 
 #: app/Factories/ElementFactory.php:734
 msgid "Family file"
-msgstr "Familie bestand"
+msgstr "Familiebestand"
 
 #. I18N: Name of a module/sidebar
 #: app/Module/FamilyNavigatorModule.php:40
@@ -6236,7 +6220,7 @@ msgstr "Gezin van %s"
 
 #: app/Factories/ElementFactory.php:348
 msgid "Family residence"
-msgstr ""
+msgstr "Gezinswoning"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6931,7 +6915,7 @@ msgstr "GEDCOM-label"
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:260
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM-labels"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -7457,7 +7441,7 @@ msgstr "Heshvan"
 #: resources/views/admin/tags.phtml:751 resources/views/admin/tags.phtml:805
 #: resources/views/admin/tags.phtml:909
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Verberg GEDCOM-labels"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:155
@@ -7626,7 +7610,7 @@ msgstr "Identificatienummer"
 
 #: resources/views/admin/tags.phtml:792
 msgid "Identifiers"
-msgstr ""
+msgstr "Identificaties"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -8407,7 +8391,7 @@ msgstr "Kirgizië"
 
 #: app/Factories/ElementFactory.php:457
 msgid "LDS baptism"
-msgstr "LDS doop"
+msgstr "LDS-doop"
 
 #: app/Factories/ElementFactory.php:594
 msgid "LDS child sealing"
@@ -8415,15 +8399,15 @@ msgstr "LDS kind verzegeling"
 
 #: resources/views/admin/tags.phtml:738
 msgid "LDS church"
-msgstr ""
+msgstr "LDS-kerk"
 
 #: app/Factories/ElementFactory.php:497
 msgid "LDS confirmation"
-msgstr "LDS bevestiging"
+msgstr "LDS-bevestiging"
 
 #: app/Factories/ElementFactory.php:517
 msgid "LDS endowment"
-msgstr "LDS gave"
+msgstr "LDS-gave"
 
 #: app/Factories/ElementFactory.php:351
 msgid "LDS spouse sealing"
@@ -13471,7 +13455,7 @@ msgstr "Sommige genelealogietoepassingen slaan alle namen op in één naamrecord
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Sommige van deze GEDCOM-labels worden weinig of nooit gebruikt."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
@@ -13578,7 +13562,7 @@ msgstr "Bronvermelding"
 
 #: resources/views/admin/tags.phtml:299
 msgid "Source citations"
-msgstr ""
+msgstr "Bronvermeldingen"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:842
@@ -14147,7 +14131,7 @@ msgstr "Het GEDCOM bestand “%s” is geïmporteerd."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "De GEDCOM-standaard biedt een groot aantal gegevensinvoervelden, genaamd labels."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -16592,7 +16576,7 @@ msgstr "U kunt de toegang voor een specifiek record, feit of een specifieke gebe
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "U kunt de bewerkingsformulieren vereenvoudigen door GEDCOM-labels die u niet gebruikt te verbergen."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69

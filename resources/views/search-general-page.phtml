@@ -1,26 +1,38 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\SearchGeneralAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Tree> $all_trees
- * @var Collection       $families
- * @var Collection       $individuals
- * @var Collection       $notes
- * @var string           $query
- * @var Collection       $repositories
- * @var Collection       $sources
- * @var bool             $search_families
- * @var bool             $search_individuals
- * @var bool             $search_notes
- * @var bool             $search_repositories
- * @var bool             $search_sources
- * @var Collection<Tree> $search_trees
- * @var string           $title
- * @var Tree             $tree
+ * @var Collection<Tree>       $all_trees
+ * @var bool                   $exist_locations
+ * @var bool                   $exist_notes
+ * @var bool                   $exist_repositories
+ * @var bool                   $exist_sources
+ * @var Collection<Family>     $families
+ * @var Collection<Individual> $individuals
+ * @var Collection<Location>   $locations
+ * @var Collection<Note>       $notes
+ * @var string                 $query
+ * @var Collection<Repository> $repositories
+ * @var Collection<Source>     $sources
+ * @var bool                   $search_families
+ * @var bool                   $search_individuals
+ * @var bool                   $search_locations
+ * @var bool                   $search_notes
+ * @var bool                   $search_repositories
+ * @var bool                   $search_sources
+ * @var Collection<Tree>       $search_trees
+ * @var string                 $title
+ * @var Tree                   $tree
  */
 
 ?>
@@ -65,29 +77,45 @@ use Illuminate\Support\Collection;
                     </label>
                 </div>
 
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_sources ? 'checked' : '' ?> name="search_sources"
-                               type="checkbox">
-                        <?= I18N::translate('Sources') ?>
-                    </label>
-                </div>
+                <?php if ($exist_sources) : ?>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" <?= $search_sources ? 'checked' : '' ?> name="search_sources"
+                                   type="checkbox">
+                            <?= I18N::translate('Sources') ?>
+                        </label>
+                    </div>
+                <?php endif ?>
 
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_repositories ? 'checked' : '' ?>
-                               name="search_repositories" type="checkbox">
-                        <?= I18N::translate('Repositories') ?>
-                    </label>
-                </div>
+                <?php if ($exist_repositories) : ?>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" <?= $search_repositories ? 'checked' : '' ?>
+                                   name="search_repositories" type="checkbox">
+                            <?= I18N::translate('Repositories') ?>
+                        </label>
+                    </div>
+                <?php endif ?>
 
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_notes ? 'checked' : '' ?> name="search_notes"
-                               type="checkbox">
-                        <?= I18N::translate('Shared notes') ?>
-                    </label>
-                </div>
+                <?php if ($exist_notes) : ?>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" <?= $search_notes ? 'checked' : '' ?> name="search_notes"
+                                   type="checkbox">
+                            <?= I18N::translate('Shared notes') ?>
+                        </label>
+                    </div>
+                <?php endif ?>
+
+                <?php if ($exist_locations) : ?>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input class="form-check-input" <?= $search_locations ? 'checked' : '' ?> name="search_locations"
+                                   type="checkbox">
+                            <?= I18N::translate('Locations') ?>
+                        </label>
+                    </div>
+                <?php endif ?>
             </div>
         </div>
     </fieldset>
@@ -104,12 +132,12 @@ use Illuminate\Support\Collection;
 </form>
 
 <?php if ($query !== '') : ?>
-    <?php if ($individuals->isEmpty() && $families->isEmpty() && $repositories->isEmpty() && $sources->isEmpty() && $notes->isEmpty()) : ?>
+    <?php if ($individuals->isEmpty() && $families->isEmpty() && $locations->isEmpty() && $repositories->isEmpty() && $sources->isEmpty() && $notes->isEmpty()) : ?>
         <div class="alert alert-info row">
             <?= I18N::translate('No results found.') ?>
         </div>
     <?php else : ?>
-        <?= view('search-results', ['families' => $families, 'individuals' => $individuals, 'notes' => $notes, 'repositories' => $repositories, 'sources' => $sources, 'search_families' => $search_families, 'search_individuals' => $search_individuals, 'search_notes' => $search_notes, 'search_repositories' => $search_repositories, 'search_sources' => $search_sources, 'tree' => $tree]) ?>
+        <?= view('search-results', ['families' => $families, 'individuals' => $individuals, 'locations' => $locations, 'notes' => $notes, 'repositories' => $repositories, 'sources' => $sources, 'search_families' => $search_families, 'search_individuals' => $search_individuals, 'search_locations' => $search_locations, 'search_notes' => $search_notes, 'search_repositories' => $search_repositories, 'search_sources' => $search_sources, 'tree' => $tree]) ?>
     <?php endif ?>
 <?php endif ?>
 

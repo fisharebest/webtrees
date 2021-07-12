@@ -20,8 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -525,7 +528,7 @@ class GedcomEditService
      *
      * @return string
      */
-    public function insertMissingSubtags(Fact $fact, bool $include_hidden): string
+    public function insertMissingFactSubtags(Fact $fact, bool $include_hidden): string
     {
         return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $fact->gedcom(), $include_hidden);
     }
@@ -543,11 +546,31 @@ class GedcomEditService
         $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $record->gedcom(), $include_hidden);
 
         // NOTE records have data at level 0.  Move it to 1 CONC.
-        if ($record->tag() === 'NOTE') {
+        if ($record instanceof Note) {
             return preg_replace('/^0 @[^@]+@ NOTE/', '1 CONC', $gedcom);
         }
 
         return preg_replace('/^0.*\n/', '', $gedcom);
+    }
+
+    /**
+     * List of facts/events to add to families and individuals.
+     *
+     * @param Family|Individual $record
+     * @param bool              $include_hidden
+     *
+     * @return array<string>
+     */
+    public function factsToAdd(GedcomRecord $record, bool $include_hidden): array
+    {
+        $subtags = Registry::elementFactory()->make($record->tag())->subtags();
+
+        if (!$include_hidden) {
+            $fn_hidden = fn (string $t): bool => !$this->isHiddenTag($record->tag() . ':' . $t);
+            $subtags   = array_filter($subtags, $fn_hidden);
+        }
+
+        return $subtags;
     }
 
     /**

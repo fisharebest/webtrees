@@ -66,7 +66,7 @@ class ReorderChildrenAction implements RequestHandlerInterface
 
         // Split facts into FAMS and other
         foreach ($family->facts() as $fact) {
-            if ($fact->getTag() === 'CHIL') {
+            if ($fact->tag() === 'FAM:CHIL') {
                 $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
                 $keep_facts[] = $fact->gedcom();

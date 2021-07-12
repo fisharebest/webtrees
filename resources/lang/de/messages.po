@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-06-21 10:49+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 08:24+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -865,7 +865,7 @@ msgstr "Ein als Tafel gestalteter Bericht der Vorfahren einer Person."
 #: app/Module/AhnentafelReportModule.php:52
 #: resources/xml/reports/ahnentafel_report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Ein Bericht im Erzählstil der Vorfahren einer Person."
+msgstr "Ein erzählerischer Bericht der Vorfahren einer Person."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:52
@@ -6318,13 +6318,13 @@ msgstr "FamilySearch ID"
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
 msgid "Fan chart"
-msgstr "Vorfahrenfächer"
+msgstr "Fächerdiagramm"
 
 #. I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Vorfahrenfächer von %s"
+msgstr "Fächerdiagramm von %s"
 
 #: app/Date/JalaliDate.php:259
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -9954,7 +9954,7 @@ msgstr "Meine Seiten"
 
 #: app/Module/ModuleThemeTrait.php:397
 msgid "My pedigree"
-msgstr "Mein Stammbaum"
+msgstr "Meine Abstammung"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:335
@@ -15201,7 +15201,7 @@ msgstr "Das Speicherlimt des Servers liegt bei %sMB und das CPU-Zeitlimit bei %s
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:436
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Dies sollte eine durch Komma oder Leerzeichen getrennte Liste von Ereignissen sein, zusätzlich zu Geburt und Tod, die in Diagrammen wie dem Stammbaumdiagramm erscheinen sollen. Für diese Liste müssen Sie Ereignis-Kennzeichen verwenden, wie sie im GEDCOM 5.5.1-Standard definiert sind. Wenn Sie z. B. möchten, dass der Beruf im Diagramm erscheint, sollten Sie „OCCU“ zu diesem Feld hinzufügen."
+msgstr "Dies sollte eine durch Komma oder Leerzeichen getrennte Liste von Ereignissen sein, zusätzlich zu Geburt und Tod, die in Diagrammen wie der Vorfahrentafel erscheinen sollen. Für diese Liste müssen Sie Ereignis-Kennzeichen verwenden, wie sie im GEDCOM 5.5.1-Standard definiert sind. Wenn Sie z. B. möchten, dass der Beruf im Diagramm erscheint, sollten Sie „OCCU“ zu diesem Feld hinzufügen."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35

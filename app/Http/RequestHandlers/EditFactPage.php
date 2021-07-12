@@ -82,8 +82,8 @@ class EditFactPage implements RequestHandlerInterface
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
 
-        $gedcom = $this->gedcom_edit_service->insertMissingSubtags($fact, $include_hidden);
-        $hidden = $this->gedcom_edit_service->insertMissingSubtags($fact, true);
+        $gedcom = $this->gedcom_edit_service->insertMissingFactSubtags($fact, $include_hidden);
+        $hidden = $this->gedcom_edit_service->insertMissingFactSubtags($fact, true);
         $url = $request->getQueryParams()['url'] ?? $record->url();
 
         if ($gedcom === $hidden) {

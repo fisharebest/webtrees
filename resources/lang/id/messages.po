@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-06-19 12:43+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Indonesian <http://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
-"Language: id\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Indonesian\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 09:22+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Indonesian <https://translate.webtrees.net/projects/webtrees/webtrees/id/>\nLanguage: id\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Indonesian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1051,7 +1034,7 @@ msgstr "A4"
 #: resources/views/modules/openrouteservice/config.phtml:23
 #: resources/views/modules/openstreetmap/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "Kode API"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
@@ -1333,7 +1316,7 @@ msgstr "Tambahkan kutipan sumber"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:93
 msgid "Add a spouse"
-msgstr ""
+msgstr "Tambahkan pasangan"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/config.phtml:38

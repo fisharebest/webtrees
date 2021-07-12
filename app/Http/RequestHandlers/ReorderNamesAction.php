@@ -66,7 +66,7 @@ class ReorderNamesAction implements RequestHandlerInterface
 
         // Split facts into NAME and other
         foreach ($individual->facts() as $fact) {
-            if ($fact->getTag() === 'NAME') {
+            if ($fact->tag() === 'INDI:NAME') {
                 $sort_facts[$fact->id()] = $fact->gedcom();
             } else {
                 $keep_facts[] = $fact->gedcom();

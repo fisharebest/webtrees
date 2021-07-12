@@ -34,16 +34,16 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
 
     // A list of facts that are handled by this module.
     protected const HANDLED_FACTS = [
-        'AFN',
-        'CHAN',
-        'IDNO',
-        'REFN',
-        'RESN',
-        'RFN',
-        'RIN',
-        'SSN',
-        '_UID',
-        '_WEBTAG',
+        'INDI:AFN',
+        'INDI:CHAN',
+        'INDI:IDNO',
+        'INDI:REFN',
+        'INDI:RESN',
+        'INDI:RFN',
+        'INDI:RIN',
+        'INDI:SSN',
+        'INDI:_UID',
+        'INDI:_WEBTAG',
     ];
 
     /**

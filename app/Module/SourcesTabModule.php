@@ -173,6 +173,6 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function supportedFacts(): Collection
     {
-        return new Collection(['SOUR']);
+        return new Collection(['INDI:SOUR', 'FACT:SOUR']);
     }
 }

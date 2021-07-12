@@ -47,11 +47,12 @@ class SearchGeneralAction implements RequestHandlerInterface
 
         return redirect(route(SearchGeneralPage::class, [
             'query'               => $params['query'] ?? '',
-            'search_individuals'  => (bool) ($params['search_individuals'] ?? false),
             'search_families'     => (bool) ($params['search_families'] ?? false),
+            'search_individuals'  => (bool) ($params['search_individuals'] ?? false),
+            'search_locations'    => (bool) ($params['search_locations'] ?? false),
+            'search_notes'        => (bool) ($params['search_notes'] ?? false),
             'search_repositories' => (bool) ($params['search_repositories'] ?? false),
             'search_sources'      => (bool) ($params['search_sources'] ?? false),
-            'search_notes'        => (bool) ($params['search_notes'] ?? false),
             'search_trees'        => $params['search_trees'] ?? [],
             'tree'                => $tree->name(),
         ]));

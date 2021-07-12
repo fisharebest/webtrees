@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-06-19 12:43+0100\n"
-"PO-Revision-Date: 2020-09-16 21:40+0000\n"
-"Last-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\n"
-"Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
-"Language: ca\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 09:22+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1350,7 +1334,7 @@ msgstr "Afegiu una ressenya de font"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:93
 msgid "Add a spouse"
-msgstr "Afegeix un/a nou/nova cònjuge"
+msgstr "Afegiu un/a cònjuge"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/config.phtml:38

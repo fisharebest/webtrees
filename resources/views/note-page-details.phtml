@@ -2,11 +2,11 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditNotePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Illuminate\Support\Collection;
 
 /**
@@ -32,10 +32,22 @@ use Illuminate\Support\Collection;
                 </div>
             <?php endif ?>
         </th>
-        <td><?= Filter::formatText($record->getNote(), $record->tree()) ?></td>
+        <td>
+            <?php if ($record->tree()->getPreference('FORMAT_TEXT') === 'markdown') : ?>
+                <div class="markdown" dir="auto">
+                    <?= Registry::markdownFactory()->markdown($record->tree())->convertToHtml($record->getNote()) ?>
+                </div>
+            <?php else : ?>
+                <div class="markdown" dir="auto" style="white-space: pre-wrap;">
+                    <?= Registry::markdownFactory()->autolink($record->tree())->convertToHtml($record->getNote()) ?>
+                </div>
+            <?php endif ?>
+        </td>
     </tr>
 
     <?php foreach ($record->facts() as $fact) : ?>
-        <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+        <?php if ($fact->tag() !== 'NOTE:CONT') : ?>
+           <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+    <?php endif ?>
     <?php endforeach ?>
 </table>

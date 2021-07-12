@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -86,13 +85,13 @@ class FunctionsPrintFacts
      */
     public static function printFact(Fact $fact, GedcomRecord $record): void
     {
-        $parent = $fact->record();
-        $tree   = $parent->tree();
-        $tag    = $fact->getTag();
-        $label  = $fact->label();
-        $value  = $fact->value();
-        $type   = $fact->attribute('TYPE');
-        $id     = $fact->id();
+        $parent  = $fact->record();
+        $tree    = $parent->tree();
+        [, $tag] = explode(':', $fact->tag());
+        $label   = $fact->label();
+        $value   = $fact->value();
+        $type    = $fact->attribute('TYPE');
+        $id      = $fact->id();
 
         $element = Registry::elementFactory()->make($fact->tag());
 
@@ -212,7 +211,10 @@ class FunctionsPrintFacts
         // Print the place of this fact/event
         echo '<div class="place">', FunctionsPrint::formatFactPlace($fact, true, true, true), '</div>';
         // A blank line between the primary attributes (value, date, place) and the secondary ones
-        echo '<br>';
+
+        if ($value !== '' || $fact->attribute('PLAC') !== '' || $fact->attribute('DATE') !== '') {
+            echo '<br>';
+        }
 
         $addr = $fact->attribute('ADDR');
         if ($addr !== '') {
@@ -433,7 +435,19 @@ class FunctionsPrintFacts
         for ($j = 0; $j < $ct; $j++) {
             if (!str_contains($match[$j][1], '@')) {
                 $source = e($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
-                $data   .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">' . Filter::formatText($source, $tree) . '</span></div>';
+                $data   .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">';
+
+                if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
+                    $data .= '<div class="markdown" dir="auto">' ;
+                    $data .= Registry::markdownFactory()->markdown($tree)->convertToHtml($source);
+                    $data .= '</div>';
+                } else {
+                    $data .= '<div class="markdown" dir="auto" style="white-space: pre-wrap;">';
+                    $data .= Registry::markdownFactory()->autolink($tree)->convertToHtml($source);
+                    $data .= '</div>';
+                }
+
+                $data   .= '</span></div>';
             }
         }
         // Find source for each fact
@@ -833,16 +847,25 @@ class FunctionsPrintFacts
             echo '</th>';
             if ($note) {
                 // Note objects
-                $text = Filter::formatText($note->getNote(), $tree);
+                $text = $note->getNote();
             } else {
                 // Inline notes
                 $nrec = Functions::getSubRecord($level, "$level NOTE", $factrec, $j + 1);
                 $text = $match[$j][1] . Functions::getCont($level + 1, $nrec);
-                $text = Filter::formatText($text, $tree);
+            }
+
+            if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
+                $formatted_text = '<div class="markdown" dir="auto">' ;
+                $formatted_text .= Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
+                $formatted_text .= '</div>';
+            } else {
+                $formatted_text = '<div class="markdown" dir="auto" style="white-space: pre-wrap;">';
+                $formatted_text .= Registry::markdownFactory()->autolink($tree)->convertToHtml($text);
+                $formatted_text .= '</div>';
             }
 
             echo '<td class="', $styleadd, ' wrap">';
-            echo $text;
+            echo $formatted_text;
             echo '</td></tr>';
         }
     }
