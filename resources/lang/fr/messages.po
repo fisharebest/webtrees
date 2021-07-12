@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-06-19 12:43+0100\n"
-"PO-Revision-Date: 2021-05-27 11:11+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-16 14:45+0000\nLast-Translator: Jonathan Jaubart <dev@jaubart.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1515,7 +1499,7 @@ msgstr "Adresse ligne 3"
 
 #: resources/views/admin/tags.phtml:237
 msgid "Addresses"
-msgstr ""
+msgstr "Adresses"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -6213,7 +6197,7 @@ msgstr "Livret de famille de %s"
 
 #: app/Factories/ElementFactory.php:320
 msgid "Family census"
-msgstr ""
+msgstr "Recensement familial"
 
 #: app/Factories/ElementFactory.php:734
 msgid "Family file"
@@ -6236,7 +6220,7 @@ msgstr "Famille de %s"
 
 #: app/Factories/ElementFactory.php:348
 msgid "Family residence"
-msgstr ""
+msgstr "Résidence familiale"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6931,7 +6915,7 @@ msgstr "Balise GEDCOM"
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:260
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "Balises GEDCOM"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -7457,7 +7441,7 @@ msgstr "Heshvan"
 #: resources/views/admin/tags.phtml:751 resources/views/admin/tags.phtml:805
 #: resources/views/admin/tags.phtml:909
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Masquer les balises GEDCOM"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:155
@@ -7626,7 +7610,7 @@ msgstr "Numéro d’identification"
 
 #: resources/views/admin/tags.phtml:792
 msgid "Identifiers"
-msgstr ""
+msgstr "Identifiants"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -8415,7 +8399,7 @@ msgstr "SDJ : scellement d’un enfant"
 
 #: resources/views/admin/tags.phtml:738
 msgid "LDS church"
-msgstr ""
+msgstr "Église des saints des derniers jours"
 
 #: app/Factories/ElementFactory.php:497
 msgid "LDS confirmation"
@@ -13471,7 +13455,7 @@ msgstr "Certains logiciels de généalogie créent un seul enregistrement de nom
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Certaines de ces balises GEDCOM ne sont jamais ou rarement utilisées."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
@@ -13578,7 +13562,7 @@ msgstr "Citation de source"
 
 #: resources/views/admin/tags.phtml:299
 msgid "Source citations"
-msgstr ""
+msgstr "Citations de source"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:842
@@ -14147,7 +14131,7 @@ msgstr "Le fichier GEDCOM « %s » a été importé."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "La norme GEDCOM pré-définit un certain nombre de champs de données, appelés balises."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -16592,7 +16576,7 @@ msgstr "Vous pouvez fixer le niveau d’accès pour un enregistrement particulie
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "L'édition des données peut être simplifiée en masquant les balises GEDCOM rarement utilisées."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
