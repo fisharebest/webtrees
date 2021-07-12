@@ -49,7 +49,7 @@ class CensusOfDenmark1940 extends CensusOfDenmark implements CensusInterface
             new CensusColumnBirthDaySlashMonth($this, 'Fødselsdag', ''),
             new CensusColumnBirthYear($this, 'Fødselsaar', ''),
             new CensusColumnBirthPlace($this, 'Fødested', ''),
-            new CensusColumnNull($this, 'Statsbergerferhold', ''),
+            new CensusColumnNull($this, 'Statsborgerforhold', ''),
             new CensusColumnConditionDanish($this, 'Civilstand', 'Ægteskabelig Stillinge. Ugift (U), Gift (G), Enkemand eller Enke (E), Separeret (S), Fraskilt (F).'),
             new CensusColumnNull($this, 'Indgaaelse', 'Date for det nuværende Ægteskabs Indgaaelse. NB." RUbrikken udfyldes ikke al Enkemaend, Enker, Separerede eller Fraskilte.'),
             new CensusColumnRelationToHead($this, 'Stilling i familien', ''),

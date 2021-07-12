@@ -83,7 +83,7 @@ class CensusOfDenmark1930Test extends TestCase
         self::assertSame('Fødselsdag', $columns[6]->abbreviation());
         self::assertSame('Fødselsaar', $columns[7]->abbreviation());
         self::assertSame('Fødested', $columns[8]->abbreviation());
-        self::assertSame('Statsbergerferhold', $columns[9]->abbreviation());
+        self::assertSame('Statsborgerforhold', $columns[9]->abbreviation());
         self::assertSame('Civilstand', $columns[10]->abbreviation());
         self::assertSame('Stilling i familien', $columns[11]->abbreviation());
         self::assertSame('Erhverv', $columns[12]->abbreviation());
