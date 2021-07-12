@@ -30,7 +30,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -44,7 +43,6 @@ class AgeTest extends TestCase
 
         self::assertSame(0, $age->ageDays());
         self::assertSame(0, $age->ageYears());
-        self::assertSame(1, $age->ageNextBDayYears());
         self::assertSame('0', $age->ageYearsString());
         self::assertSame('0 days', (string) $age);
     }
@@ -53,8 +51,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
-     * @covers \Fisharebest\Webtrees\Age::ageYearsString
+      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
@@ -67,7 +64,6 @@ class AgeTest extends TestCase
 
         self::assertSame(0, $age->ageDays());
         self::assertSame(0, $age->ageYears());
-        self::assertSame(1, $age->ageNextBDayYears());
         self::assertSame('0', $age->ageYearsString());
         self::assertSame('0', (string) $age);
     }
@@ -76,7 +72,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -90,7 +85,6 @@ class AgeTest extends TestCase
 
         self::assertSame(0, $age->ageDays());
         self::assertSame(0, $age->ageYears());
-        self::assertSame(1, $age->ageNextBDayYears());
         self::assertSame('0', $age->ageYearsString());
         self::assertSame('0', (string) $age);
     }
@@ -99,7 +93,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -113,7 +106,6 @@ class AgeTest extends TestCase
 
         self::assertSame(-37, $age->ageDays());
         self::assertSame(-1, $age->ageYears());
-        self::assertSame(0, $age->ageNextBDayYears());
         self::assertSame(view('icons/warning'), $age->ageYearsString());
         self::assertSame(view('icons/warning'), (string) $age);
     }
@@ -122,7 +114,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -136,7 +127,6 @@ class AgeTest extends TestCase
 
         self::assertSame(-1, $age->ageDays());
         self::assertSame(-1, $age->ageYears());
-        self::assertSame(-1, $age->ageNextBDayYears());
         self::assertSame('', $age->ageYearsString());
         self::assertSame('', (string) $age);
     }
@@ -145,7 +135,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -159,7 +148,6 @@ class AgeTest extends TestCase
 
         self::assertSame(-1, $age->ageDays());
         self::assertSame(-1, $age->ageYears());
-        self::assertSame(-1, $age->ageNextBDayYears());
         self::assertSame('', $age->ageYearsString());
         self::assertSame('', (string) $age);
     }
@@ -168,7 +156,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -182,7 +169,6 @@ class AgeTest extends TestCase
 
         self::assertSame(-6, $age->ageDays());
         self::assertSame(0, $age->ageYears());
-        self::assertSame(1, $age->ageNextBDayYears());
         self::assertSame('0', $age->ageYearsString());
         self::assertSame('0', (string) $age);
     }
@@ -191,7 +177,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -205,7 +190,6 @@ class AgeTest extends TestCase
 
         self::assertSame(6, $age->ageDays());
         self::assertSame(0, $age->ageYears());
-        self::assertSame(1, $age->ageNextBDayYears());
         self::assertSame('0', $age->ageYearsString());
         self::assertSame('0', (string) $age);
     }
@@ -214,7 +198,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -228,7 +211,6 @@ class AgeTest extends TestCase
 
         self::assertSame(14, $age->ageDays());
         self::assertSame(0, $age->ageYears());
-        self::assertSame(1, $age->ageNextBDayYears());
         self::assertSame('0', $age->ageYearsString());
         self::assertSame('14 days', (string) $age);
     }
@@ -237,7 +219,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -251,7 +232,6 @@ class AgeTest extends TestCase
 
         self::assertSame(75, $age->ageDays());
         self::assertSame(0, $age->ageYears());
-        self::assertSame(1, $age->ageNextBDayYears());
         self::assertSame('0', $age->ageYearsString());
         self::assertSame('2 months', (string) $age);
     }
@@ -260,7 +240,6 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-     * @covers \Fisharebest\Webtrees\Age::ageNextBDayYears
      * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
@@ -274,7 +253,6 @@ class AgeTest extends TestCase
 
         self::assertSame(2631, $age->ageDays());
         self::assertSame(7, $age->ageYears());
-        self::assertSame(8, $age->ageNextBDayYears());
         self::assertSame('7', $age->ageYearsString());
         self::assertSame('7 years', (string) $age);
     }
