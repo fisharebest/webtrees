@@ -45,7 +45,7 @@ class CensusOfCanadaPraries1926 extends CensusOfCanada implements CensusInterfac
             new CensusColumnFullName($this, 'Name', 'Name of each person in family, household or institution'),
             new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family or household'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
-            new CensusColumnConditionCan($this, 'S/M/W/D/L', 'Single, Married, Widowed, Divorced or Legally Separated'),
+            new CensusColumnConditionCanada($this, 'S/M/W/D/L', 'Single, Married, Widowed, Divorced or Legally Separated'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday - on June 1, 1926'),
             new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Place of birth of person'),
             new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father'),

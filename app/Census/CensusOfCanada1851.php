@@ -49,13 +49,13 @@ class CensusOfCanada1851 extends CensusOfCanada implements CensusInterface
             new CensusColumnOccupation($this, 'Occupation', 'Profession, trade or occupation'),
             new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Place of birth. F indicates that the person was born of Canadian parents.'),
             new CensusColumnNull($this, 'Religion', 'Religion'),
-            new CensusColumnAgeNextBDay($this, 'Next BDay age', 'Age at NEXT birthday'),
+            new CensusColumnAgeNextBirthDay($this, 'Next BDay age', 'Age at NEXT birthday'),
             new CensusColumnSexM($this, 'Sex: male', 'Sex: male'),
             new CensusColumnSexF($this, 'Sex: female', 'Sex: female'),
             new CensusColumnNull($this, 'Born', 'Born within last twelve months'),
             new CensusColumnNationality($this, 'Origin', 'Origin'),
-            new CensusColumnConditionCanMS($this, 'M/S', 'Married or single'),
-            new CensusColumnConditionCanW($this, 'Widow(er)s', 'Widowers or Widows'),
+            new CensusColumnConditionCanadaMarriedSingle($this, 'M/S', 'Married or single'),
+            new CensusColumnConditionCanadaWidowed($this, 'Widowed', 'Widowers or Widows'),
         ];
     }
 }

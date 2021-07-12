@@ -27,13 +27,12 @@ use Fisharebest\Webtrees\TestCase;
 use Illuminate\Support\Collection;
 
 /**
- * Test harness for the class CensusColumnConditionCan
- * Copied from CensusColumnConditionUs
+ * Test harness for the class CensusColumnConditionCanadaMarriedWidowed
  */
-class CensusColumnConditionCanTest extends TestCase
+class CensusColumnConditionCanadaMarriedWidowedTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -48,13 +47,13 @@ class CensusColumnConditionCanTest extends TestCase
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -69,13 +68,13 @@ class CensusColumnConditionCanTest extends TestCase
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -93,14 +92,14 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -118,14 +117,14 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -157,14 +156,14 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         self::assertSame('W', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -197,14 +196,14 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         self::assertSame('W', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -223,13 +222,13 @@ class CensusColumnConditionCanTest extends TestCase
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -248,13 +247,13 @@ class CensusColumnConditionCanTest extends TestCase
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -273,13 +272,13 @@ class CensusColumnConditionCanTest extends TestCase
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -298,13 +297,13 @@ class CensusColumnConditionCanTest extends TestCase
         $census = self::createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
 
-        self::assertSame('S', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -332,14 +331,14 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        self::assertSame('D', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -367,14 +366,14 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
-        self::assertSame('D', $column->generate($individual, $individual));
+        self::assertSame('', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -402,14 +401,14 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         self::assertSame('M', $column->generate($individual, $individual));
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCan
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnConditionCanadaMarriedWidowed
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumnCondition
      *
      * @return void
@@ -437,7 +436,7 @@ class CensusColumnConditionCanTest extends TestCase
 
         $census = self::createMock(CensusInterface::class);
 
-        $column = new CensusColumnConditionCan($census, '', '');
+        $column = new CensusColumnConditionCanadaMarriedWidowed($census, '', '');
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         self::assertSame('M', $column->generate($individual, $individual));

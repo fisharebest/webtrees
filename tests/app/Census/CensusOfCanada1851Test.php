@@ -59,13 +59,13 @@ class CensusOfCanada1851Test extends TestCase
         self::assertInstanceOf(CensusColumnOccupation::class, $columns[1]);
         self::assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[2]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
-        self::assertInstanceOf(CensusColumnAgeNextBDay::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnAgeNextBirthDay::class, $columns[4]);
         self::assertInstanceOf(CensusColumnSexM::class, $columns[5]);
         self::assertInstanceOf(CensusColumnSexF::class, $columns[6]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[7]);
         self::assertInstanceOf(CensusColumnNationality::class, $columns[8]);
-        self::assertInstanceOf(CensusColumnConditionCanMS::class, $columns[9]);
-        self::assertInstanceOf(CensusColumnConditionCanW::class, $columns[10]);
+        self::assertInstanceOf(CensusColumnConditionCanadaMarriedSingle::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnConditionCanadaWidowed::class, $columns[10]);
 
         self::assertSame('Name', $columns[0]->abbreviation());
         self::assertSame('Occupation', $columns[1]->abbreviation());
@@ -77,7 +77,7 @@ class CensusOfCanada1851Test extends TestCase
         self::assertSame('Born', $columns[7]->abbreviation());
         self::assertSame('Origin', $columns[8]->abbreviation());
         self::assertSame('M/S', $columns[9]->abbreviation());
-        self::assertSame('Widow(er)s', $columns[10]->abbreviation());
+        self::assertSame('Widowed', $columns[10]->abbreviation());
 
         self::assertSame('Name of inmates', $columns[0]->title());
         self::assertSame('Profession, trade or occupation', $columns[1]->title());

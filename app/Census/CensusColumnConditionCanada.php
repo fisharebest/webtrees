@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Marital status.
  */
-class CensusColumnConditionCanMW extends CensusColumnConditionCan
+class CensusColumnConditionCanada extends AbstractCensusColumnCondition
 {
     // Text to display for married males
     protected const HUSBAND = 'M';
@@ -31,22 +31,22 @@ class CensusColumnConditionCanMW extends CensusColumnConditionCan
     protected const WIFE = 'M';
 
     // Text to display for married unmarried males
-    protected const BACHELOR = '';
+    protected const BACHELOR = 'S';
 
     // Text to display for married unmarried females
-    protected const SPINSTER = '';
+    protected const SPINSTER = 'S';
 
     // Text to display for male children
-    protected const BOY = '';
+    protected const BOY = 'S';
 
     // Text to display for female children
-    protected const GIRL = '';
+    protected const GIRL = 'S';
 
     // Text to display for divorced individuals
-    protected const DIVORCE = '';
+    protected const DIVORCE = 'D';
 
     // Text to display for divorced females
-    protected const DIVORCEE = '';
+    protected const DIVORCEE = 'D';
 
     // Text to display for widowed males
     protected const WIDOWER = 'W';

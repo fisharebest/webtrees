@@ -19,27 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Census;
 
-use Fisharebest\Webtrees\Age;
-use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\TestCase;
 
 /**
- * The individual's age at their NEXT BirthDay.
+ * Test harness for the class CensusColumnAgeNextBirthDay
  */
-class CensusColumnAgeNextBDay extends AbstractCensusColumn implements CensusColumnInterface
+class CensusColumnAgeNextBirthDayTest extends TestCase
 {
     /**
-     * Generate the likely value of this census column, based on available information.
+     * @covers \Fisharebest\Webtrees\Census\CensusColumnAgeNextBirthDay
+     * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      *
-     * @param Individual $individual
-     * @param Individual $head
-     *
-     * @return string
+     * @return void
      */
-    public function generate(Individual $individual, Individual $head): string
+    public function testGenerateColumn(): void
     {
-        $age = new Age($individual->getEstimatedBirthDate(), $this->date());
+        $individual = self::createMock(Individual::class);
+        $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        return I18N::number($age->ageNextBDayYears());
+        $census = self::createMock(CensusInterface::class);
+        $census->method('censusDate')->willReturn('30 JUN 1832');
+
+        $column = new CensusColumnAgeNextBirthDay($census, '', '');
+
+        self::assertSame('33', $column->generate($individual, $individual));
     }
 }

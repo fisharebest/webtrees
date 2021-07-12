@@ -63,7 +63,7 @@ class CensusOfCanada1871Test extends TestCase
         self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
         self::assertInstanceOf(CensusColumnNationality::class, $columns[6]);
         self::assertInstanceOf(CensusColumnOccupation::class, $columns[7]);
-        self::assertInstanceOf(CensusColumnConditionCanMW::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnConditionCanadaMarriedWidowed::class, $columns[8]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[9]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[10]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[11]);

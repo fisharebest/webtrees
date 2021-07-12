@@ -50,7 +50,7 @@ class CensusOfCanada1871 extends CensusOfCanada implements CensusInterface
             new CensusColumnNull($this, 'Religion', 'Religion'),
             new CensusColumnNationality($this, 'Origin', 'Origin'),
             new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
-            new CensusColumnConditionCanMW($this, 'M/W', 'Married or Widowed'),
+            new CensusColumnConditionCanadaMarriedWidowed($this, 'M/W', 'Married or Widowed'),
             new CensusColumnNull($this, 'Recent Married', 'Married within the last twelve months'),
             new CensusColumnNull($this, 'School', 'Instruction - Going to school'),
             new CensusColumnNull($this, 'Read', 'Instruction - Over 20, unable to read'),

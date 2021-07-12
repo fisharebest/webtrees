@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Marital status.
  */
-class CensusColumnConditionCanW extends CensusColumnConditionCan
+class CensusColumnConditionCanadaWidowed extends AbstractCensusColumnCondition
 {
     // Text to display for married males
     protected const HUSBAND = '';
