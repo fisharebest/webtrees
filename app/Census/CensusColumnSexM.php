@@ -34,6 +34,8 @@ class CensusColumnSexM extends AbstractCensusColumn implements CensusColumnInter
 
     /**
      * Generate the likely value of this census column, based on available information.
+     * X is the value returned for this column as it is a selection of F column or M
+     * column.
      *
      * @param Individual $individual
      * @param Individual $head

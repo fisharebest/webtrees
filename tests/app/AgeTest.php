@@ -51,7 +51,7 @@ class AgeTest extends TestCase
      * @covers \Fisharebest\Webtrees\Age::__construct
      * @covers \Fisharebest\Webtrees\Age::ageDays
      * @covers \Fisharebest\Webtrees\Age::ageYears
-      * @covers \Fisharebest\Webtrees\Age::ageYearsString
+     * @covers \Fisharebest\Webtrees\Age::ageYearsString
      * @covers \Fisharebest\Webtrees\Age::__toString
      *
      * @return void
