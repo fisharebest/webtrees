@@ -80,9 +80,15 @@ class Note extends GedcomRecord
      */
     public function extractNames(): void
     {
-        $text = trim($this->getNote());
+        if ($this->tree->getPreference('FORMAT_TEXT') === 'markdown') {
+            $text = Registry::markdownFactory()->markdown()->convertToHtml($this->getNote());
+        } else {
+            $text = Registry::markdownFactory()->autolink()->convertToHtml($this->getNote());
+        }
 
-        [$text] = explode("\n", $text);
+
+        // Take the first line
+        [$text] = explode("\n", strip_tags(trim($text)));
 
         if ($text !== '') {
             $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());

@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -37,6 +38,18 @@ use function route;
 class AddUnlinkedPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * LinkSpouseToIndividualPage constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -63,12 +76,13 @@ class AddUnlinkedPage implements RequestHandlerInterface
         $cancel_url = route(ManageTrees::class, ['tree' => $tree->name()]);
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url' => $cancel_url,
-            'facts'      => $facts,
-            'post_url'   => route(AddUnlinkedAction::class, ['tree' => $tree->name()]),
-            'tree'       => $tree,
-            'title'      => I18N::translate('Create an individual'),
-            'url'        => $request->getQueryParams()['url'] ?? $cancel_url,
+            'cancel_url'          => $cancel_url,
+            'facts'               => $facts,
+            'gedcom_edit_service' => $this->gedcom_edit_service,
+            'post_url'            => route(AddUnlinkedAction::class, ['tree' => $tree->name()]),
+            'tree'                => $tree,
+            'title'               => I18N::translate('Create an individual'),
+            'url'                 => $request->getQueryParams()['url'] ?? $cancel_url,
         ]);
     }
 }

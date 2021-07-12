@@ -16,6 +16,11 @@ parameters:
 			path: app/Date/AbstractCalendarDate.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AgeAtEvent\\:\\:value\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Elements/AgeAtEvent.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\DateValue\\:\\:escape\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Elements/DateValue.php
@@ -44,11 +49,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Factories/SlugFactory.php
-
-		-
-			message: "#^Parameter \\#1 \\$commonMark of method League\\\\CommonMark\\\\Converter\\:\\:convertToHtml\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Filter.php
 
 		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|null given\\.$#"
@@ -513,11 +513,6 @@ parameters:
 			message: "#^Cannot call method local\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SiteLogsData.php
-
-		-
-			message: "#^Cannot cast array\\|string\\|false to int\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SitePreferencesPage.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Routes\\\\ApiRoutes\\:\\:load\\(\\) has parameter \\$router with no value type specified in iterable type Aura\\\\Router\\\\Map\\.$#"
@@ -2043,3 +2038,4 @@ parameters:
 			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
+

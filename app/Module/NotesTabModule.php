@@ -172,6 +172,6 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function supportedFacts(): Collection
     {
-        return new Collection(['NOTE']);
+        return new Collection(['INDI:NOTE', 'FAM:NOTE']);
     }
 }

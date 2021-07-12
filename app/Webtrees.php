@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Factories\HeaderFactory;
 use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Factories\IndividualFactory;
 use Fisharebest\Webtrees\Factories\LocationFactory;
+use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Factories\MediaFactory;
 use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Factories\RepositoryFactory;
@@ -185,6 +186,7 @@ class Webtrees
         Registry::imageFactory(new ImageFactory());
         Registry::individualFactory(new IndividualFactory());
         Registry::locationFactory(new LocationFactory());
+        Registry::markdownFactory(new MarkdownFactory());
         Registry::mediaFactory(new MediaFactory());
         Registry::noteFactory(new NoteFactory());
         Registry::repositoryFactory(new RepositoryFactory());

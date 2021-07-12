@@ -38,21 +38,22 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     use ModuleTabTrait;
 
     protected const ICONS = [
-        'BIRT' => ['color' => 'pink', 'name' => 'baby-carriage fas'],
-        'BAPM' => ['color' => 'pink', 'name' => 'water fas'],
-        'BARM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
-        'BASM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
-        'CHR'  => ['color' => 'pink', 'name' => 'water fas'],
-        'CHRA' => ['color' => 'pink', 'name' => 'water fas'],
-        'MARR' => ['color' => 'green', 'name' => 'infinity fas'],
-        'DEAT' => ['color' => 'black', 'name' => 'times fas'],
-        'BURI' => ['color' => 'purple', 'name' => 'times fas'],
-        'CREM' => ['color' => 'black', 'name' => 'times fas'],
-        'CENS' => ['color' => 'cyan', 'name' => 'list fas'],
-        'RESI' => ['color' => 'cyan', 'name' => 'home fas'],
-        'OCCU' => ['color' => 'cyan', 'name' => 'industry fas'],
-        'GRAD' => ['color' => 'violet', 'name' => 'university fas'],
-        'EDUC' => ['color' => 'violet', 'name' => 'university fas'],
+        'FAM:CENS'  => ['color' => 'cyan', 'name' => 'list fas'],
+        'FAM:MARR'  => ['color' => 'green', 'name' => 'infinity fas'],
+        'INDI:BAPM' => ['color' => 'pink', 'name' => 'water fas'],
+        'INDI:BARM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
+        'INDI:BASM' => ['color' => 'pink', 'name' => 'star-of-david fas'],
+        'INDI:BIRT' => ['color' => 'pink', 'name' => 'baby-carriage fas'],
+        'INDI:BURI' => ['color' => 'purple', 'name' => 'times fas'],
+        'INDI:CENS' => ['color' => 'cyan', 'name' => 'list fas'],
+        'INDI:CHR'  => ['color' => 'pink', 'name' => 'water fas'],
+        'INDI:CHRA' => ['color' => 'pink', 'name' => 'water fas'],
+        'INDI:CREM' => ['color' => 'black', 'name' => 'times fas'],
+        'INDI:DEAT' => ['color' => 'black', 'name' => 'times fas'],
+        'INDI:EDUC' => ['color' => 'violet', 'name' => 'university fas'],
+        'INDI:GRAD' => ['color' => 'violet', 'name' => 'university fas'],
+        'INDI:OCCU' => ['color' => 'cyan', 'name' => 'industry fas'],
+        'INDI:RESI' => ['color' => 'cyan', 'name' => 'home fas'],
     ];
 
     protected const DEFAULT_ICON = ['color' => 'gold', 'name' => 'bullseye fas'];
@@ -155,7 +156,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
                         'coordinates' => [$longitude, $latitude],
                     ],
                     'properties' => [
-                        'icon'    => static::ICONS[$fact->getTag()] ?? static::DEFAULT_ICON,
+                        'icon'    => static::ICONS[$fact->tag()] ?? static::DEFAULT_ICON,
                         'tooltip' => $fact->place()->gedcomName(),
                         'summary' => view('modules/places/event-sidebar', $this->summaryData($indi, $fact)),
                     ],

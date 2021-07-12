@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -42,6 +43,18 @@ use function route;
 class AddSpouseToFamilyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private GedcomEditService $gedcom_edit_service;
+
+    /**
+     * LinkSpouseToIndividualPage constructor.
+     *
+     * @param GedcomEditService $gedcom_edit_service
+     */
+    public function __construct(GedcomEditService $gedcom_edit_service)
+    {
+        $this->gedcom_edit_service = $gedcom_edit_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -93,12 +106,13 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url' => $family->url(),
-            'facts'      => $facts,
-            'post_url'   => route(AddSpouseToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
-            'title'      => $title,
-            'tree'       => $tree,
-            'url'        => $request->getQueryParams()['url'] ?? $family->url(),
+            'cancel_url'          => $family->url(),
+            'facts'               => $facts,
+            'gedcom_edit_service' => $this->gedcom_edit_service,
+            'post_url'            => route(AddSpouseToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
+            'title'               => $title,
+            'tree'                => $tree,
+            'url'                 => $request->getQueryParams()['url'] ?? $family->url(),
         ]);
     }
 }

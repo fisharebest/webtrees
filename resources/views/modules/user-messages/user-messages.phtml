@@ -1,11 +1,11 @@
 <?php
 
-use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessageSelect;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -107,7 +107,7 @@ use Illuminate\Support\Collection;
                         <td class="list_value_wrap" colspan="4">
                             <div id="message<?= $message->message_id ?>" class="collapse">
                                 <div dir="auto" style="white-space: pre-wrap;">
-                                    <?= Filter::expandUrls($message->body, $tree) ?>
+                                    <?= Registry::markdownFactory()->autolink()->convertToHtml($message->body) ?>
                                 </div>
                                 <br>
 

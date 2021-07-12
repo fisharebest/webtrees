@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -71,6 +71,6 @@ class TextFromSource extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return Filter::formatText($value, $tree);
+        return Registry::markdownFactory()->autolink()->convertToHtml($value);
     }
 }

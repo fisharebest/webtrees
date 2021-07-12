@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
@@ -13,11 +14,13 @@ use Illuminate\Support\Collection;
 /**
  * @var Collection<Family>     $families
  * @var Collection<Individual> $individuals
+ * @var Collection<Location>   $locations
  * @var Collection<Note>       $notes
  * @var Collection<Repository> $repositories
  * @var Collection<Source>     $sources
  * @var bool                   $search_families
  * @var bool                   $search_individuals
+ * @var bool                   $search_locations
  * @var bool                   $search_notes
  * @var bool                   $search_repositories
  * @var bool                   $search_sources
@@ -82,6 +85,17 @@ use Illuminate\Support\Collection;
                 </a>
             </li>
         <?php endif ?>
+
+        <?php if ($search_locations) : ?>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" id="locations-tab" data-toggle="tab" href="#locations" role="tab" aria-controls="locations">
+                    <?= I18N::translate('Locations') ?>
+                    <span class="badge badge-secondary">
+                        <?= I18N::number(count($locations)) ?>
+                    </span>
+                </a>
+            </li>
+        <?php endif ?>
     </ul>
 
     <div class="tab-content wt-search-results-content">
@@ -112,6 +126,12 @@ use Illuminate\Support\Collection;
         <?php if ($search_notes) : ?>
             <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
                 <?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
+            </div>
+        <?php endif ?>
+
+        <?php if ($search_locations) : ?>
+            <div class="tab-pane fade" id="locations" role="tabpanel" aria-labelledby="locations-tab">
+                <?= view('lists/locations-table', ['locations' => $locations, 'tree' => $tree]) ?>
             </div>
         <?php endif ?>
     </div>

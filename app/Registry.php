@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Contracts\HeaderFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ImageFactoryInterface;
 use Fisharebest\Webtrees\Contracts\IndividualFactoryInterface;
 use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
+use Fisharebest\Webtrees\Contracts\MarkdownFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
@@ -59,6 +60,8 @@ class Registry
     private static IndividualFactoryInterface $individual_factory;
 
     private static LocationFactoryInterface $location_factory;
+
+    private static MarkdownFactoryInterface $markdown_factory;
 
     private static MediaFactoryInterface $media_factory;
 
@@ -218,6 +221,22 @@ class Registry
         }
 
         return self::$location_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param MarkdownFactoryInterface|null $factory
+     *
+     * @return MarkdownFactoryInterface
+     */
+    public static function markdownFactory(MarkdownFactoryInterface $factory = null): MarkdownFactoryInterface
+    {
+        if ($factory instanceof MarkdownFactoryInterface) {
+            self::$markdown_factory = $factory;
+        }
+
+        return self::$markdown_factory;
     }
 
     /**

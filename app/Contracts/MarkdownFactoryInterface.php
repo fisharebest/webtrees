@@ -17,22 +17,27 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Contracts;
+
+use Fisharebest\Webtrees\Tree;
+use League\CommonMark\CommonMarkConverter;
 
 /**
- * Test harness for the class Filter
- *
- * @covers \Fisharebest\Webtrees\Filter
+ * Create a markdown converter.
  */
-class FilterTest extends TestCase
+interface MarkdownFactoryInterface
 {
     /**
-     * Test that the class exists
+     * @param Tree|null $tree
      *
-     * @return void
+     * @return CommonMarkConverter
      */
-    public function testClassExists(): void
-    {
-        self::assertTrue(class_exists(Filter::class));
-    }
+    public function autolink(Tree $tree = null): CommonMarkConverter;
+
+    /**
+     * @param Tree|null $tree
+     *
+     * @return CommonMarkConverter
+     */
+    public function markdown(Tree $tree = null): CommonMarkConverter;
 }

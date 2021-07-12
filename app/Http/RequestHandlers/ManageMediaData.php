@@ -159,15 +159,18 @@ class ManageMediaData implements RequestHandlerInterface
                             ->on('media.m_file', '=', 'media_file.m_file')
                             ->on('media.m_id', '=', 'media_file.m_id');
                     })
-                    ->join('gedcom_setting', 'gedcom_id', '=', 'media.m_file')
-                    ->where('setting_name', '=', 'MEDIA_DIRECTORY')
+                    ->leftJoin('gedcom_setting', static function (JoinClause $join): void {
+                        $join
+                            ->on('gedcom_setting.gedcom_id', '=', 'media.m_file')
+                            ->where('setting_name', '=', 'MEDIA_DIRECTORY');
+                    })
                     ->where('multimedia_file_refn', 'NOT LIKE', 'http://%')
                     ->where('multimedia_file_refn', 'NOT LIKE', 'https://%')
                     ->select([
                         'media.*',
                         'multimedia_file_refn',
                         'descriptive_title',
-                        'setting_value AS media_folder',
+                        new Expression("COALESCE(setting_value, 'media/') AS media_folder"),
                     ]);
 
                 $query->where(new Expression('setting_value || multimedia_file_refn'), 'LIKE', $media_folder . '%');

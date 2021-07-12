@@ -132,6 +132,6 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface
      */
     public function supportedFacts(): Collection
     {
-        return new Collection(['FAMC', 'FAMS', 'HUSB', 'WIFE', 'CHIL']);
+        return new Collection(['INDI:FAMC', 'INDI:FAMS', 'FAM:HUSB', 'FAM:WIFE', 'FAM:CHIL']);
     }
 }

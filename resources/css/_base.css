@@ -27,6 +27,7 @@
 @import "_on-screen-keyboard.css";
 @import "_pages.css";
 @import "_sortable.css";
+@import "_tab-album.css";
 @import "_tab-relatives.css";
 
 /* Some icons need to be reversed on right-to-left pages */
