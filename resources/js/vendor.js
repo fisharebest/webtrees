@@ -28,8 +28,9 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import {
   // For resources/views/icons/*
-  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faAngleLeft, faAngleDoubleLeft, faAngleRight, faAngleDoubleRight, faArrowDown, faArrowLeft,
+  faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars, faCalendar, faCaretDown, faCaretUp,
+  faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
   faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
   faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
   faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchLocation, faSearchMinus, faSearchPlus, faShareAlt,
@@ -130,8 +131,9 @@ library.add(
 );
 library.add(
   // For resources/views/icons/*
-  faArrowDown, faArrowLeft, faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars,
-  faCalendar, faCaretDown, faCaretUp, faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
+  faAngleLeft, faAngleDoubleLeft, faAngleRight, faAngleDoubleRight, faArrowDown, faArrowLeft,
+  faArrowRight, faArrowUp, faArrowsAltV, faBan, faBars, faCalendar, faCaretDown, faCaretUp,
+  faCheck, faCodeBranch, faDownload, faExclamationTriangle, faGenderless,
   faGripHorizontal, faGripLines, faHistory, faInfoCircle, faLanguage, faLink, faList,
   faLock, faMagic, faMap, faMapMarkerAlt, faMars, faMedkit, faPaintBrush, faPause, faPencilAlt,
   faPlay, faPlus, faPuzzlePiece, faQuestionCircle, faRedo, faSearch, faSearchLocation, faSearchMinus, faSearchPlus, faShareAlt,
