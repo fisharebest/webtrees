@@ -22,16 +22,19 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfCanada1881 extends CensusOfCanada implements CensusInterface
+class CensusOfCanada1851 extends CensusOfCanada implements CensusInterface
 {
     /**
      * When did this census occur.
+     *
+     * Officially, this census was the "1851 Census" but data collection
+     * began January 12, 1852. Using that data breaks stuff.
      *
      * @return string
      */
     public function censusDate(): string
     {
-        return '04 APR 1881';
+        return '31 DEC 1851';
     }
 
     /**
@@ -42,20 +45,17 @@ class CensusOfCanada1881 extends CensusOfCanada implements CensusInterface
     public function columns(): array
     {
         return [
-            new CensusColumnFullName($this, 'Name', 'Name'),
-            new CensusColumnSexMF($this, 'Sex', 'Sex'),
-            new CensusColumnAge($this, 'Age', 'Age at last birthday'),
-            new CensusColumnNull($this, 'Born', 'Born within last twelve months'),
-            new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Country or Province of Birth'),
+            new CensusColumnFullName($this, 'Name', 'Name of inmates'),
+            new CensusColumnOccupation($this, 'Occupation', 'Profession, trade or occupation'),
+            new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Place of birth. F indicates that the person was born of Canadian parents.'),
             new CensusColumnNull($this, 'Religion', 'Religion'),
+            new CensusColumnAgeNextBirthDay($this, 'Next BDay age', 'Age at NEXT birthday'),
+            new CensusColumnSexM($this, 'Sex: male', 'Sex: male'),
+            new CensusColumnSexF($this, 'Sex: female', 'Sex: female'),
+            new CensusColumnNull($this, 'Born', 'Born within last twelve months'),
             new CensusColumnNationality($this, 'Origin', 'Origin'),
-            new CensusColumnOccupation($this, 'Occupation', 'Profession, Occupation, or Trade'),
-            new CensusColumnConditionCanadaMarriedWidowed($this, 'M/W', 'Married or Widowed'),
-            new CensusColumnNull($this, 'School', 'Instruction - Going to School'),
-            new CensusColumnNull($this, 'Deaf', 'Infirmities - Deaf and Dumb'),
-            new CensusColumnNull($this, 'Blind', 'Infirmities - Blind'),
-            new CensusColumnNull($this, 'Unsound', 'Infirmities - Unsound Mind'),
-            new CensusColumnNull($this, 'Date', 'Dates of Operations and Remarks'),
+            new CensusColumnConditionCanadaMarriedSingle($this, 'M/S', 'Married or single'),
+            new CensusColumnConditionCanadaWidowed($this, 'Widowed', 'Widowers or Widows'),
         ];
     }
 }

@@ -46,7 +46,7 @@ class CensusOfCanada1911 extends CensusOfCanada implements CensusInterface
             new CensusColumnNull($this, 'Address', 'Place of Habitation'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family or household'),
-            new CensusColumnConditionCan($this, 'S/M/W/D/L', 'Single, Married, Widowed, Divorced or Legally Separated'),
+            new CensusColumnConditionCanada($this, 'S/M/W/D/L', 'Single, Married, Widowed, Divorced or Legally Separated'),
             new CensusColumnBirthMonth($this, 'Month', 'Month of birth'),
             new CensusColumnBirthYear($this, 'Year', 'Year of birth'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday - on June 1, 1911'),

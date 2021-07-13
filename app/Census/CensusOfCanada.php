@@ -32,11 +32,16 @@ class CensusOfCanada extends Census implements CensusPlaceInterface
     public function allCensusDates(): array
     {
         return [
+            new CensusOfCanada1851(),
+            new CensusOfCanada1861(),
+            new CensusOfCanada1871(),
             new CensusOfCanada1881(),
             new CensusOfCanada1891(),
             new CensusOfCanada1901(),
             new CensusOfCanada1911(),
+            new CensusOfCanadaPraries1916(),
             new CensusOfCanada1921(),
+            new CensusOfCanadaPraries1926(),
         ];
     }
 
