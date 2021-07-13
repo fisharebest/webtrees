@@ -108,7 +108,7 @@ parameters:
 		-
 			message:
 				"""
-					#^Binary operation "\\." between array\\|string and '
+					#^Binary operation "\\." between array\\|non\\-empty\\-string and '
 					' results in an error\\.$#
 				"""
 			count: 2
@@ -1195,21 +1195,6 @@ parameters:
 			path: app/Report/ReportHtmlTextbox.php
 
 		-
-			message: "#^Cannot call method addText\\(\\) on array\\|Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseText\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
-			message: "#^Cannot call method getStyleName\\(\\) on array\\|Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseText\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseTextbox\\:\\:\\$elements \\(array\\<Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\|string\\>\\) does not accept array\\<int, array\\|Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\|string\\>\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), string\\) given\\.$#"
 			count: 2
 			path: app/Report/ReportParserBase.php
@@ -1226,11 +1211,6 @@ parameters:
 
 		-
 			message: "#^Array \\(array\\<string\\>\\) does not accept array\\<int, string\\>\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Binary operation \"\\+\" between string and 1 results in an error\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -1326,7 +1306,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$level of static method Fisharebest\\\\Webtrees\\\\Functions\\\\Functions\\:\\:getSubRecord\\(\\) expects int, float\\|int given\\.$#"
-			count: 1
+			count: 4
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -1435,22 +1415,7 @@ parameters:
 			path: app/Report/ReportPdfTextBox.php
 
 		-
-			message: "#^Cannot call method addText\\(\\) on array\\|Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseText\\|string\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Cannot call method getStyleName\\(\\) on array\\|Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseText\\|string\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
 			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote will always evaluate to false\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseTextbox\\:\\:\\$elements \\(array\\<Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\|string\\>\\) does not accept array\\<int, array\\|Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\|string\\>\\.$#"
 			count: 1
 			path: app/Report/ReportPdfTextBox.php
 
