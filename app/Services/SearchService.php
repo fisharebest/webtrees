@@ -56,6 +56,9 @@ use function preg_match;
 use function preg_quote;
 use function preg_replace;
 
+use function str_ends_with;
+use function str_starts_with;
+
 use const PHP_INT_MAX;
 
 /**
@@ -513,33 +516,25 @@ class SearchService
 
         foreach ($fields as $field_name => $field_value) {
             if ($field_value !== '') {
-                // Fields can have up to 4 parts, but we only need the first 3 to identify
-                // which tables to select
-                $field_parts = explode(':', $field_name . '::');
-
-                if ($field_parts[0] === 'FAMC') {
-                    // Parent name - FAMC:[HUSB|WIFE]:NAME:[GIVN|SURN]
-                    if ($field_parts[1] === 'HUSB') {
-                        $father_name = true;
-                    } else {
-                        $mother_name = true;
-                    }
-                } elseif ($field_parts[0] === 'NAME') {
-                    // Individual name - NAME:[GIVN|SURN]
+                if (str_starts_with($field_name, 'FATHER:NAME')) {
+                    $father_name = true;
+                } elseif (str_starts_with($field_name, 'MOTHER:NAME')) {
+                    $mother_name = true;
+                } elseif (str_starts_with($field_name, 'INDI:NAME:GIVN')) {
                     $indi_name = true;
-                } elseif ($field_parts[0] === 'FAMS') {
-                    // Family facts - FAMS:NOTE or FAMS:[FACT]:[DATE|PLAC]
+                } elseif (str_starts_with($field_name, 'INDI:NAME:SURN')) {
+                    $indi_name = true;
+                } elseif (str_starts_with($field_name, 'FAM:')) {
                     $spouse_family = true;
-                    if ($field_parts[2] === 'DATE') {
-                        $fam_dates[] = $field_parts[1];
-                    } elseif ($field_parts[2] === 'PLAC') {
+                    if (str_ends_with($field_name, ':DATE')) {
+                        $fam_dates[] = explode(':', $field_name)[1];
+                    } elseif (str_ends_with($field_name, ':PLAC')) {
                         $fam_plac = true;
                     }
-                } else {
-                    // Individual facts - [FACT] or [FACT]:[DATE|PLAC]
-                    if ($field_parts[1] === 'DATE') {
-                        $indi_dates[] = $field_parts[0];
-                    } elseif ($field_parts[1] === 'PLAC') {
+                } elseif (str_starts_with($field_name, 'INDI:')) {
+                    if (str_ends_with($field_name, ':DATE')) {
+                        $indi_dates[] = explode(':', $field_name)[1];
+                    } elseif (str_ends_with($field_name, ':PLAC')) {
                         $indi_plac = true;
                     }
                 }
@@ -649,10 +644,9 @@ class SearchService
 
         foreach ($fields as $field_name => $field_value) {
             $parts = explode(':', $field_name . ':::');
-            if ($parts[0] === 'NAME') {
-                // NAME:*
-                switch ($parts[1]) {
-                    case 'GIVN':
+            if (str_starts_with($field_name, 'INDI:NAME:')) {
+                switch ($field_name) {
+                    case 'INDI:NAME:GIVN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
                                 $query->where('individual_name.n_givn', '=', $field_value);
@@ -685,7 +679,7 @@ class SearchService
                         }
                         unset($fields[$field_name]);
                         break;
-                    case 'SURN':
+                    case 'INDI:NAME:SURN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
                                 $query->where(function (Builder $query) use ($field_value): void {
@@ -738,27 +732,25 @@ class SearchService
                         }
                         unset($fields[$field_name]);
                         break;
-                    case 'NICK':
-                    case '_MARNM':
-                    case '_HEB':
-                    case '_AKA':
-                        $like = "%\n1 " . $parts[0] . "%\n2 " . $parts[1] . ' %' . preg_quote($field_value, '/') . '%';
+                    case 'INDI:NAME:NICK':
+                    case 'INDI:NAME:_MARNM':
+                    case 'INDI:NAME:_HEB':
+                    case 'INDI:NAME:_AKA':
+                        $like = "%\n1 NAME%\n2 " . $parts[2] . ' %' . preg_quote($field_value, '/') . '%';
                         $query->where('individuals.i_gedcom', 'LIKE', $like);
                         break;
                 }
-            } elseif ($parts[1] === 'DATE') {
-                // *:DATE
+            } elseif (str_starts_with($field_name, 'INDI:')  && str_ends_with($field_name, ':DATE')) {
                 $date = new Date($field_value);
                 if ($date->isOK()) {
                     $delta = 365 * ($modifiers[$field_name] ?? 0);
                     $query
-                        ->where('date_' . $parts[0] . '.d_fact', '=', $parts[0])
-                        ->where('date_' . $parts[0] . '.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
-                        ->where('date_' . $parts[0] . '.d_julianday2', '<=', $date->maximumJulianDay() + $delta);
+                        ->where('date_' . $parts[1] . '.d_fact', '=', $parts[1])
+                        ->where('date_' . $parts[1] . '.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
+                        ->where('date_' . $parts[1] . '.d_julianday2', '<=', $date->maximumJulianDay() + $delta);
                 }
                 unset($fields[$field_name]);
-            } elseif ($parts[0] === 'FAMS' && $parts[2] === 'DATE') {
-                // FAMS:*:DATE
+            } elseif (str_starts_with($field_name, 'FAM:')  && str_ends_with($field_name, ':DATE')) {
                 $date = new Date($field_value);
                 if ($date->isOK()) {
                     $delta = 365 * $modifiers[$field_name];
@@ -768,18 +760,15 @@ class SearchService
                         ->where('date_' . $parts[1] . '.d_julianday2', '<=', $date->maximumJulianDay() + $delta);
                 }
                 unset($fields[$field_name]);
-            } elseif ($parts[1] === 'PLAC') {
-                // *:PLAC
+            } elseif (str_starts_with($field_name, 'INDI:')  && str_ends_with($field_name, ':PLAC')) {
                 // SQL can only link a place to a person/family, not to an event.
                 $query->where('individual_places.p_place', 'LIKE', '%' . $field_value . '%');
-            } elseif ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
-                // FAMS:*:PLAC
+            } elseif (str_starts_with($field_name, 'FAM:')  && str_ends_with($field_name, ':PLAC')) {
                 // SQL can only link a place to a person/family, not to an event.
                 $query->where('family_places.p_place', 'LIKE', '%' . $field_value . '%');
-            } elseif ($parts[0] === 'FAMC' && $parts[2] === 'NAME') {
-                $table = $parts[1] === 'HUSB' ? 'father_name' : 'mother_name';
-                // NAME:*
-                switch ($parts[3]) {
+            } elseif (str_starts_with($field_name, 'MOTHER:NAME:') || str_starts_with($field_name, 'FATHER:NAME:')) {
+                $table = str_starts_with($field_name, 'FATHER:NAME:') ? 'father_name' : 'mother_name';
+                switch ($parts[2]) {
                     case 'GIVN':
                         switch ($modifiers[$field_name]) {
                             case 'EXACT':
@@ -846,18 +835,17 @@ class SearchService
                         break;
                 }
                 unset($fields[$field_name]);
-            } elseif ($parts[0] === 'FAMS') {
+            } elseif (str_starts_with($field_name, 'FAM:')) {
                 // e.g. searches for occupation, religion, note, etc.
                 // Initial matching only.  Need PHP to apply filter.
                 $query->where('spouse_families.f_gedcom', 'LIKE', "%\n1 " . $parts[1] . ' %' . $field_value . '%');
-            } elseif ($parts[1] === 'TYPE') {
-                // e.g. FACT:TYPE or EVEN:TYPE
+            } elseif (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':TYPE')) {
                 // Initial matching only.  Need PHP to apply filter.
-                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . "%\n2 TYPE %" . $field_value . '%');
-            } else {
+                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[1] . "%\n2 TYPE %" . $field_value . '%');
+            } elseif (str_starts_with($field_name, 'INDI:')) {
                 // e.g. searches for occupation, religion, note, etc.
                 // Initial matching only.  Need PHP to apply filter.
-                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[0] . '%' . $parts[1] . '%' . $field_value . '%');
+                $query->where('individuals.i_gedcom', 'LIKE', "%\n1 " . $parts[1] . '%' . $parts[2] . '%' . $field_value . '%');
             }
         }
 
@@ -871,9 +859,8 @@ class SearchService
                 foreach ($fields as $field_name => $field_value) {
                     $parts = explode(':', $field_name . '::::');
 
-                    // NAME:*
-                    if ($parts[0] === 'NAME') {
-                        $regex = '/\n1 NAME.*(?:\n2.*)*\n2 ' . $parts[1] . ' .*' . preg_quote($field_value, '/') . '/i';
+                    if (str_starts_with($field_name, 'INDI:NAME:') && $field_name !== 'INDI:NAME:GIVN' && $field_name !== 'INDI:NAME:SURN') {
+                        $regex = '/\n1 NAME.*(?:\n2.*)*\n2 ' . $parts[2] . ' .*' . preg_quote($field_value, '/') . '/i';
 
                         if (preg_match($regex, $individual->gedcom())) {
                             continue;
@@ -884,9 +871,8 @@ class SearchService
 
                     $regex = '/' . preg_quote($field_value, '/') . '/i';
 
-                    // *:PLAC
-                    if ($parts[1] === 'PLAC') {
-                        foreach ($individual->facts([$parts[0]]) as $fact) {
+                    if (str_starts_with($field_name, 'INDI:')  && str_ends_with($field_name, ':PLAC')) {
+                        foreach ($individual->facts([$parts[1]]) as $fact) {
                             if (preg_match($regex, $fact->place()->gedcomName())) {
                                 continue 2;
                             }
@@ -894,8 +880,7 @@ class SearchService
                         return false;
                     }
 
-                    // FAMS:*:PLAC
-                    if ($parts[0] === 'FAMS' && $parts[2] === 'PLAC') {
+                    if (str_starts_with($field_name, 'FAM:')  && str_ends_with($field_name, ':PLAC')) {
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->place()->gedcomName())) {
@@ -906,8 +891,27 @@ class SearchService
                         return false;
                     }
 
-                    // e.g. searches for occupation, religion, note, etc.
-                    if ($parts[0] === 'FAMS') {
+                    if ($field_name === 'INDI:FACT:TYPE' || $field_name === 'INDI:EVEN:TYPE' || $field_name === 'INDI:CHAN:_WT_USER') {
+                        foreach ($individual->facts([$parts[1]]) as $fact) {
+                            if (preg_match($regex, $fact->attribute($parts[2]))) {
+                                continue 2;
+                            }
+                        }
+
+                        return false;
+                    }
+
+                    if (str_starts_with($field_name, 'INDI:')) {
+                        foreach ($individual->facts([$parts[1]]) as $fact) {
+                            if (preg_match($regex, $fact->value())) {
+                                continue 2;
+                            }
+                        }
+
+                        return false;
+                    }
+
+                    if (str_starts_with($field_name, 'FAM:')) {
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->value())) {
@@ -915,17 +919,6 @@ class SearchService
                                 }
                             }
                         }
-                        return false;
-                    }
-
-                    // e.g. FACT:TYPE or EVEN:TYPE
-                    if ($parts[1] === 'TYPE' || $parts[1] === '_WT_USER') {
-                        foreach ($individual->facts([$parts[0]]) as $fact) {
-                            if (preg_match($regex, $fact->attribute($parts[1]))) {
-                                continue 2;
-                            }
-                        }
-
                         return false;
                     }
                 }

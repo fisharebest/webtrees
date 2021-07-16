@@ -64,7 +64,7 @@ use Illuminate\Support\Collection;
         </div>
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
-            <?php if (str_starts_with($field_name, 'FAMC:HUSB:')) : ?>
+            <?php if (str_starts_with($field_name, 'FATHER:')) : ?>
                 <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
             <?php endif ?>
         <?php endforeach ?>
@@ -76,7 +76,7 @@ use Illuminate\Support\Collection;
         </div>
 
         <?php foreach ($fields as $field_name => $field_value) : ?>
-            <?php if (str_starts_with($field_name, 'FAMC:WIFE:')) : ?>
+            <?php if (str_starts_with($field_name, 'MOTHER:')) : ?>
                 <?= view('search-advanced-field', ['field_label' => $field_labels[$field_name], 'field_name' => $field_name, 'field_value' => $field_value, 'modifier' => $modifiers[$field_name] ?? '', 'date_options' => $date_options, 'name_options' => $name_options]) ?>
             <?php endif ?>
         <?php endforeach ?>
