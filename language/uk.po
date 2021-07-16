@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-01 13:27+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2021-07-19 07:49+0000\n"
+"Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/uk/>\n"
 "Language: uk\n"
@@ -1693,7 +1693,7 @@ msgstr "Усиновлення"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr "Хрещення в дорослому віці"
+msgstr "Хрещення в дорослому віці (церемонія)"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -2504,75 +2504,75 @@ msgstr "Бангладеш"
 #. I18N: gedcom tag BAPM
 #: app/GedcomTag.php:182 modules_v3/missing_facts_report/report.xml:16
 msgid "Baptism"
-msgstr "Хрещення"
+msgstr "Хрещення (таїнство)"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a brother"
-msgstr "Хрещення брата"
+msgstr "Хрещення брата (таїнство)"
 
 #: app/GedcomTag.php:980
 msgid "Baptism of a child"
-msgstr "Хрещення дитини"
+msgstr "Хрещення дитини (таїнство)"
 
 #: app/GedcomTag.php:978
 msgid "Baptism of a daughter"
-msgstr "Хрещення дочки"
+msgstr "Хрещення дочки (таїнство)"
 
 #: app/GedcomTag.php:989 app/GedcomTag.php:998 app/GedcomTag.php:1007
 msgid "Baptism of a grandchild"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (таїнство)"
 
 #: app/GedcomTag.php:987
 msgid "Baptism of a granddaughter"
-msgstr "Хрещення внучки"
+msgstr "Хрещення внучки (таїнство)"
 
 #: app/GedcomTag.php:996
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Хрещення внучки"
+msgstr "Хрещення внучки (таїнство)"
 
 #: app/GedcomTag.php:1005
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "Хрещення внучки"
+msgstr "Хрещення внучки (таїнство)"
 
 #: app/GedcomTag.php:985
 msgid "Baptism of a grandson"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (таїнство)"
 
 #: app/GedcomTag.php:994
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (таїнство)"
 
 #: app/GedcomTag.php:1003
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (таїнство)"
 
 #: app/GedcomTag.php:1012
 msgid "Baptism of a half-brother"
-msgstr "Хрещення неполнородного брата"
+msgstr "Хрещення зведеного брата (таїнство)"
 
 #: app/GedcomTag.php:1016
 msgid "Baptism of a half-sibling"
-msgstr "Хрещення єдинокр./утроб. брати/сестри"
+msgstr "Хрещення зведеного брата або сестри (таїнство)"
 
 #: app/GedcomTag.php:1014
 msgid "Baptism of a half-sister"
-msgstr "Хрещення неполнородной сестри"
+msgstr "Хрещення зведеної сестри (таїнство)"
 
 #: app/GedcomTag.php:1025
 msgid "Baptism of a sibling"
-msgstr "Хрещення брата / сестри"
+msgstr "Хрещення брата або сестри (таїнство)"
 
 #: app/GedcomTag.php:1023
 msgid "Baptism of a sister"
-msgstr "Хрещення сестри"
+msgstr "Хрещення сестри (таїнство)"
 
 #: app/GedcomTag.php:976
 msgid "Baptism of a son"
-msgstr "Хрещення сина"
+msgstr "Хрещення сина (таїнство)"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:17
@@ -3704,75 +3704,75 @@ msgstr "Виберіть: "
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr "Хрещення"
+msgstr "Хрещення (церемонія)"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
-msgstr "Хрещення брата"
+msgstr "Хрещення брата (церемонія)"
 
 #: app/GedcomTag.php:1199
 msgid "Christening of a child"
-msgstr "Хрещення дитини"
+msgstr "Хрещення дитини (церемонія)"
 
 #: app/GedcomTag.php:1197
 msgid "Christening of a daughter"
-msgstr "Хрещення дочки"
+msgstr "Хрещення дочки (церемонія)"
 
 #: app/GedcomTag.php:1208 app/GedcomTag.php:1217 app/GedcomTag.php:1226
 msgid "Christening of a grandchild"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (церемонія)"
 
 #: app/GedcomTag.php:1206
 msgid "Christening of a granddaughter"
-msgstr "Хрещення внучки"
+msgstr "Хрещення внучки (церемонія)"
 
 #: app/GedcomTag.php:1215
 msgctxt "daughter’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Хрещення внучки"
+msgstr "Хрещення внучки (церемонія)"
 
 #: app/GedcomTag.php:1224
 msgctxt "son’s daughter"
 msgid "Christening of a granddaughter"
-msgstr "Хрещення внучки"
+msgstr "Хрещення внучки (церемонія)"
 
 #: app/GedcomTag.php:1204
 msgid "Christening of a grandson"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (церемонія)"
 
 #: app/GedcomTag.php:1213
 msgctxt "daughter’s son"
 msgid "Christening of a grandson"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (церемонія)"
 
 #: app/GedcomTag.php:1222
 msgctxt "son’s son"
 msgid "Christening of a grandson"
-msgstr "Хрещення онука"
+msgstr "Хрещення онука (церемонія)"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-brother"
-msgstr "Хрещення неполнорiдного брата"
+msgstr "Хрещення зведеного брата (церемонія)"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
-msgstr "Хрещення єдинокровного / утробного брата / сестри"
+msgstr "Хрещення зведеного брата або сестри  (церемонія)"
 
 #: app/GedcomTag.php:1233
 msgid "Christening of a half-sister"
-msgstr "Хрещення неполнородной сестри"
+msgstr "Хрещення зведеної сестри (церемонія)"
 
 #: app/GedcomTag.php:1244
 msgid "Christening of a sibling"
-msgstr "Хрещення брати/сестри"
+msgstr "Хрещення брата або сестри (церемонія)"
 
 #: app/GedcomTag.php:1242
 msgid "Christening of a sister"
-msgstr "Хрещення сестри"
+msgstr "Хрещення сестри (церемонія)"
 
 #: app/GedcomTag.php:1195
 msgid "Christening of a son"
-msgstr "Хрещення сина"
+msgstr "Хрещення сина (церемонія)"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6727
@@ -4443,7 +4443,7 @@ msgstr "Дата усиновлення"
 
 #: app/GedcomTag.php:184 modules_v3/missing_facts_report/report.xml:129
 msgid "Date of baptism"
-msgstr "Дата хрещення"
+msgstr "Дата хрещення (таїнства)"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:212
 msgid "Date of bar mitzvah"
@@ -4474,7 +4474,7 @@ msgstr "Дата похорону"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
-msgstr "Дата хрещення"
+msgstr "Дата хрещення (церемонії)"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
@@ -6828,12 +6828,12 @@ msgstr "Гібралтар"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:173
 msgid "Gila Valley, Arizona, United States"
-msgstr ""
+msgstr "Долина Гіла, Арізона, США"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:175
 msgid "Gilbert, Arizona, United States"
-msgstr ""
+msgstr "Гілберт, Арізона, США"
 
 #: search.php:230
 msgid "Given name"
@@ -7516,7 +7516,7 @@ msgstr "Індія"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:201
 msgid "Indianapolis, Indiana, United States"
-msgstr ""
+msgstr "Індіанаполіс, штат Індіана, США"
 
 #. I18N: gedcom tag INDI
 #. I18N: Name of a module/report
@@ -7914,7 +7914,7 @@ msgstr "Червень"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:207
 msgid "Kansas City, Missouri, United States"
-msgstr ""
+msgstr "Канзас-Сіті, штат Міссурі, США"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6790
@@ -8362,7 +8362,7 @@ msgstr "Локальні файли"
 #. I18N: gedcom tag _LOC
 #: app/GedcomTag.php:1552
 msgid "Location"
-msgstr "Розташування"
+msgstr "Локація"
 
 #: app/Module/GoogleMapsModule.php:3896
 msgid "Location not removed: this location contains sub-locations"
@@ -8553,12 +8553,12 @@ msgstr "Менеджери"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:229
 msgid "Manaus, Brazil"
-msgstr ""
+msgstr "Манаус, Бразилія"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:231
 msgid "Manhattan, New York, United States"
-msgstr ""
+msgstr "Манхеттен, Нью-Йорк, США"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:233
@@ -10318,7 +10318,7 @@ msgstr "Додаткові префікси і суфікси"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:279
 msgid "Oquirrh Mountain, Utah, United States"
-msgstr ""
+msgstr "Гора Окір, штат Юта, США"
 
 #: app/Date/JalaliDate.php:184
 msgctxt "Abbreviation for Persian month: Ordibehesht"
@@ -10527,7 +10527,7 @@ msgstr "Панама"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:287
 msgid "Panama City, Panama"
-msgstr ""
+msgstr "Панама-Сіті, Панама"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:289
@@ -10577,7 +10577,7 @@ msgstr "Пароль повинен бути мінімум 6 символів."
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:291
 msgid "Payson, Utah, United States"
-msgstr ""
+msgstr "Пейсон, штат Юта, США"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a report
@@ -10653,7 +10653,7 @@ msgstr "Філіппіни"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:295
 msgid "Phoenix, Arizona, United States"
-msgstr ""
+msgstr "Фенікс, Арізона, США"
 
 #. I18N: gedcom tag PHON
 #: app/GedcomTag.php:682
@@ -10792,7 +10792,7 @@ msgstr "Місце усиновлення"
 
 #: app/GedcomTag.php:186 modules_v3/missing_facts_report/report.xml:140
 msgid "Place of baptism"
-msgstr "Місце хрещення"
+msgstr "Місце хрещення (таїнства)"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
@@ -10821,7 +10821,7 @@ msgstr "Місце похорону"
 
 #: app/GedcomTag.php:282 modules_v3/missing_facts_report/report.xml:181
 msgid "Place of christening"
-msgstr "Місце хрещення"
+msgstr "Місце хрещення (церемонії)"
 
 #: app/GedcomTag.php:314 modules_v3/missing_facts_report/report.xml:305
 msgid "Place of confirmation"
@@ -10890,7 +10890,7 @@ msgstr "Відкрити сайт у мережі, видаливши файл %
 
 #: admin_trees_config.php:1500 search.php:204 statistics.php:408
 msgid "Places"
-msgstr "Географічних назв"
+msgstr "Місця"
 
 #: find.php:665
 msgid "Places found"
@@ -11134,7 +11134,7 @@ msgstr "Власність"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:303
 msgid "Provo City Center, Utah, United States"
-msgstr ""
+msgstr "Центр міста Прово, штат Юта, США"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:305
@@ -11173,7 +11173,7 @@ msgstr "Питання"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:307
 msgid "Quetzaltenango, Guatemala"
-msgstr ""
+msgstr "Кетцальтенанго, Гватемала"
 
 #: admin_trees_config.php:1823
 msgid "Quick family facts"
@@ -11553,7 +11553,7 @@ msgstr "Видалити медіа шлях GEDCOM з імен файлів"
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Remove this location?"
-msgstr "Видалити це місце розташування?"
+msgstr "Видалити цю локацію?"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:317
@@ -11700,7 +11700,7 @@ msgstr "Реюньйон"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:319
 msgid "Rexburg, Idaho, United States"
-msgstr ""
+msgstr "Рексбург, штат Айдахо, США"
 
 #: index_edit.php:304
 msgid "Right section blocks"
@@ -11851,7 +11851,7 @@ msgstr "Сан-Маріно"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:323
 msgid "San Salvador, El Salvador"
-msgstr ""
+msgstr "Сан-Сальвадор, Сальвадор"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:325
