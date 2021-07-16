@@ -66,7 +66,7 @@ class MapBox extends AbstractModule implements ModuleConfigInterface, ModuleMapP
 
         $api_key = $this->getPreference('api_key');
 
-        return $this->viewResponse('modules/mapbox/config', [
+        return $this->viewResponse('modules/map-box/config', [
             'api_key' => $api_key,
             'title'   => $this->title(),
         ]);
