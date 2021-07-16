@@ -52,7 +52,7 @@ class CensusOfCanada1921 extends CensusOfCanada implements CensusInterface
             new CensusColumnNull($this, 'Rooms', 'Rooms occupied by this family'),
             new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to Head of Family or household'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
-            new CensusColumnConditionCan($this, 'S/M/W/D/L', 'Single, Married, Widowed, Divorced or Legally Separated'),
+            new CensusColumnConditionCanada($this, 'S/M/W/D/L', 'Single, Married, Widowed, Divorced or Legally Separated'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday - on June 1, 1921'),
             new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Place of birth of person'),
             new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father'),

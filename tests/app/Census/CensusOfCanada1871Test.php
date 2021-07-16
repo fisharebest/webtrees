@@ -22,36 +22,36 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\TestCase;
 
 /**
- * Test harness for the class CensusOfCanada1881
+ * Test harness for the class CensusOfCanada1871
  */
-class CensusOfCanada1881Test extends TestCase
+class CensusOfCanada1871Test extends TestCase
 {
     /**
      * Test the census place and date
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada1881
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada1871
      *
      * @return void
      */
     public function testPlaceAndDate(): void
     {
-        $census = new CensusOfCanada1881();
+        $census = new CensusOfCanada1871();
 
         self::assertSame('Canada', $census->censusPlace());
-        self::assertSame('04 APR 1881', $census->censusDate());
+        self::assertSame('02 APR 1871', $census->censusDate());
     }
 
     /**
      * Test the census columns
      *
-     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada1881
+     * @covers \Fisharebest\Webtrees\Census\CensusOfCanada1871
      * @covers \Fisharebest\Webtrees\Census\AbstractCensusColumn
      *
      * @return void
      */
     public function testColumns(): void
     {
-        $census  = new CensusOfCanada1881();
+        $census  = new CensusOfCanada1871();
         $columns = $census->columns();
 
         self::assertCount(14, $columns);
@@ -79,25 +79,25 @@ class CensusOfCanada1881Test extends TestCase
         self::assertSame('Origin', $columns[6]->abbreviation());
         self::assertSame('Occupation', $columns[7]->abbreviation());
         self::assertSame('M/W', $columns[8]->abbreviation());
-        self::assertSame('School', $columns[9]->abbreviation());
-        self::assertSame('Deaf', $columns[10]->abbreviation());
-        self::assertSame('Blind', $columns[11]->abbreviation());
-        self::assertSame('Unsound', $columns[12]->abbreviation());
+        self::assertSame('Recent Married', $columns[9]->abbreviation());
+        self::assertSame('School', $columns[10]->abbreviation());
+        self::assertSame('Read', $columns[11]->abbreviation());
+        self::assertSame('Write', $columns[12]->abbreviation());
         self::assertSame('Date', $columns[13]->abbreviation());
 
         self::assertSame('Name', $columns[0]->title());
         self::assertSame('Sex', $columns[1]->title());
         self::assertSame('Age at last birthday', $columns[2]->title());
         self::assertSame('Born within last twelve months', $columns[3]->title());
-        self::assertSame('Country or Province of Birth', $columns[4]->title());
+        self::assertSame('Country or province of birth', $columns[4]->title());
         self::assertSame('Religion', $columns[5]->title());
         self::assertSame('Origin', $columns[6]->title());
-        self::assertSame('Profession, Occupation, or Trade', $columns[7]->title());
+        self::assertSame('Profession, occupation, or trade', $columns[7]->title());
         self::assertSame('Married or Widowed', $columns[8]->title());
-        self::assertSame('Instruction - Going to School', $columns[9]->title());
-        self::assertSame('Infirmities - Deaf and Dumb', $columns[10]->title());
-        self::assertSame('Infirmities - Blind', $columns[11]->title());
-        self::assertSame('Infirmities - Unsound Mind', $columns[12]->title());
+        self::assertSame('Married within the last twelve months', $columns[9]->title());
+        self::assertSame('Instruction - Going to school', $columns[10]->title());
+        self::assertSame('Instruction - Over 20, unable to read', $columns[11]->title());
+        self::assertSame('Instruction - Over 20, unable to write', $columns[12]->title());
         self::assertSame('Dates of Operations and Remarks', $columns[13]->title());
     }
 }

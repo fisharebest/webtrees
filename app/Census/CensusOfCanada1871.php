@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfCanada1881 extends CensusOfCanada implements CensusInterface
+class CensusOfCanada1871 extends CensusOfCanada implements CensusInterface
 {
     /**
      * When did this census occur.
@@ -31,7 +31,7 @@ class CensusOfCanada1881 extends CensusOfCanada implements CensusInterface
      */
     public function censusDate(): string
     {
-        return '04 APR 1881';
+        return '02 APR 1871';
     }
 
     /**
@@ -46,15 +46,15 @@ class CensusOfCanada1881 extends CensusOfCanada implements CensusInterface
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday'),
             new CensusColumnNull($this, 'Born', 'Born within last twelve months'),
-            new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Country or Province of Birth'),
+            new CensusColumnBirthPlaceSimple($this, 'Birth Loc', 'Country or province of birth'),
             new CensusColumnNull($this, 'Religion', 'Religion'),
             new CensusColumnNationality($this, 'Origin', 'Origin'),
-            new CensusColumnOccupation($this, 'Occupation', 'Profession, Occupation, or Trade'),
+            new CensusColumnOccupation($this, 'Occupation', 'Profession, occupation, or trade'),
             new CensusColumnConditionCanadaMarriedWidowed($this, 'M/W', 'Married or Widowed'),
-            new CensusColumnNull($this, 'School', 'Instruction - Going to School'),
-            new CensusColumnNull($this, 'Deaf', 'Infirmities - Deaf and Dumb'),
-            new CensusColumnNull($this, 'Blind', 'Infirmities - Blind'),
-            new CensusColumnNull($this, 'Unsound', 'Infirmities - Unsound Mind'),
+            new CensusColumnNull($this, 'Recent Married', 'Married within the last twelve months'),
+            new CensusColumnNull($this, 'School', 'Instruction - Going to school'),
+            new CensusColumnNull($this, 'Read', 'Instruction - Over 20, unable to read'),
+            new CensusColumnNull($this, 'Write', 'Instruction - Over 20, unable to write'),
             new CensusColumnNull($this, 'Date', 'Dates of Operations and Remarks'),
         ];
     }
