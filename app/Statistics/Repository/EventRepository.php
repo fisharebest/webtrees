@@ -20,11 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
@@ -50,9 +52,6 @@ class EventRepository implements EventRepositoryInterface
     private const EVENT_DEATH    = 'DEAT';
     private const EVENT_MARRIAGE = 'MARR';
     private const EVENT_DIVORCE  = 'DIV';
-    private const EVENT_ADOPTION = 'ADOP';
-    private const EVENT_BURIAL   = 'BURI';
-    private const EVENT_CENSUS   = 'CENS';
 
     /**
      * @var Tree
@@ -320,20 +319,19 @@ class EventRepository implements EventRepositoryInterface
     {
         $row = $this->eventQuery($direction);
 
-        if ($row) {
-            $event_types = [
-                self::EVENT_BIRTH    => I18N::translate('birth'),
-                self::EVENT_DEATH    => I18N::translate('death'),
-                self::EVENT_MARRIAGE => I18N::translate('marriage'),
-                self::EVENT_ADOPTION => I18N::translate('adoption'),
-                self::EVENT_BURIAL   => I18N::translate('burial'),
-                self::EVENT_CENSUS   => I18N::translate('census added'),
-            ];
-
-            return $event_types[$row->fact] ?? GedcomTag::getLabel($row->fact);
+        if ($row === null) {
+            return '';
         }
 
-        return '';
+        foreach ([Individual::RECORD_TYPE, Family::RECORD_TYPE] as $record_type) {
+            $element = Registry::elementFactory()->make($record_type . ':' . $row->fact);
+
+            if (!$element instanceof UnknownElement) {
+                return $element->label();
+            }
+        }
+
+        return $row->fact;
     }
 
     /**

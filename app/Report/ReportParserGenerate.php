@@ -23,11 +23,11 @@ use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Log;
@@ -1242,18 +1242,23 @@ class ReportParserGenerate extends ReportParserBase
             $var = $this->vars[$var]['id'];
         } else {
             $tfact = $this->fact;
-            if (($this->fact === 'EVEN' || $this->fact === 'FACT') && $this->type !== ' ') {
+            if (($this->fact === 'EVEN' || $this->fact === 'FACT') && $this->type !== '') {
                 // Use :
                 // n TYPE This text if string
                 $tfact = $this->type;
+            } else {
+                foreach ([Individual::RECORD_TYPE, Family::RECORD_TYPE] as $record_type) {
+                    $element = Registry::elementFactory()->make($record_type . ':' . $this->fact);
+
+                    if (!$element instanceof UnknownElement) {
+                        $tfact = $element->label();
+                        break;
+                    }
+                }
             }
-            $var = str_replace([
-                '@fact',
-                '@desc',
-            ], [
-                GedcomTag::getLabel($tfact),
-                $this->desc,
-            ], $var);
+
+            $var = strtr($var, ['@desc' => $this->desc, '@fact' => $tfact]);
+
             if (preg_match('/^I18N::number\((.+)\)$/', $var, $match)) {
                 $var = I18N::number((int) $match[1]);
             } elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $var, $match)) {

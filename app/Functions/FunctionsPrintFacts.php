@@ -26,8 +26,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
@@ -52,7 +50,6 @@ use function ob_start;
 use function preg_match;
 use function preg_match_all;
 use function preg_replace;
-use function route;
 use function str_contains;
 use function strip_tags;
 use function strlen;
@@ -582,28 +579,11 @@ class FunctionsPrintFacts
                 }
                 echo '<th class="';
                 if ($level > 1) {
-                    echo ' rela';
+                    echo 'rela ';
                 }
-                echo ' ', $styleadd, '">';
-                $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
-                $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
-                $factname  = $factwords[1]; // BIRT
-                if ($factname === 'EVEN' || $factname === 'FACT') {
-                    // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
-                    $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
-                    if ($ct > 0) {
-                        $factname = trim($ematch[1]);
-                        echo $factname;
-                    } else {
-                        echo GedcomTag::getLabel($factname);
-                    }
-                } elseif ($can_edit) {
-                    echo '<a href="' . e(route(EditFactPage::class, [
-                            'xref'    => $parent->xref(),
-                            'fact_id' => $fact->id(),
-                            'tree'    => $tree->name(),
-                        ])) . '" title="', I18N::translate('Edit'), '">';
-                    echo GedcomTag::getLabel($factname), '</a>';
+                echo $styleadd, '">';
+                echo $fact->label();
+                if ($can_edit) {
                     echo '<div class="editfacts nowrap">';
                     if (preg_match('/^@.+@$/', $sid)) {
                         // Inline sources can't be edited. Attempting to save one will convert it
@@ -613,8 +593,6 @@ class FunctionsPrintFacts
                         echo view('edit/icon-fact-copy', ['fact' => $fact]);
                     }
                     echo view('edit/icon-fact-delete', ['fact' => $fact]);
-                } else {
-                    echo GedcomTag::getLabel($factname);
                 }
                 echo '</th>';
                 echo '<td class="', $styleadd, '">';
@@ -622,8 +600,9 @@ class FunctionsPrintFacts
                     echo '<a href="', e($source->url()), '">', $source->fullName(), '</a>';
                     // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
                     if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
+                        $label = Registry::elementFactory()->make($fact->tag() . ':RESN')->label();
                         foreach ($rmatches[1] as $rmatch) {
-                            echo '<br><span class="label">', GedcomTag::getLabel('RESN'), ':</span> <span class="field">';
+                            echo '<br><span class="label">', $label, ':</span> <span class="field">';
                             switch ($rmatch) {
                                 case 'none':
                                     // Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
@@ -644,14 +623,6 @@ class FunctionsPrintFacts
                                     break;
                             }
                             echo '</span>';
-                        }
-                    }
-                    $cs = preg_match("/$nlevel EVEN (.*)/", $srec, $cmatch);
-                    if ($cs > 0) {
-                        echo '<br><span class="label">', GedcomTag::getLabel('EVEN'), ' </span><span class="field">', $cmatch[1], '</span>';
-                        $cs = preg_match('/' . ($nlevel + 1) . ' ROLE (.*)/', $srec, $cmatch);
-                        if ($cs > 0) {
-                            echo '<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">', GedcomTag::getLabel('ROLE'), ' </span><span class="field">', $cmatch[1], '</span>';
                         }
                     }
                     echo self::printSourceStructure($tree, self::getSourceStructure($srec));
@@ -800,56 +771,27 @@ class FunctionsPrintFacts
             } else {
                 echo '<tr><th scope="row" class="', $styleadd, '">';
             }
-            if ($can_edit) {
-                if ($level < 2) {
-                    if ($note instanceof Note) {
-                        echo '<a href="' . e($note->url()) . '">';
-                        echo I18N::translate('Shared note');
-                        echo view('icons/note');
-                        echo '</a>';
-                    } else {
-                        echo I18N::translate('Note');
-                    }
-                    echo '<div class="editfacts nowrap">';
-                    echo view('edit/icon-fact-edit', ['fact' => $fact]);
-                    echo view('edit/icon-fact-copy', ['fact' => $fact]);
-                    echo view('edit/icon-fact-delete', ['fact' => $fact]);
-                    echo '</div>';
-                }
+
+            if ($note instanceof Note) {
+                echo '<a href="' . e($note->url()) . '">';
+                echo I18N::translate('Shared note');
+                echo view('icons/note');
+                echo '</a>';
             } else {
-                if ($level < 2) {
-                    if ($note) {
-                        echo I18N::translate('Shared note');
-                    } else {
-                        echo I18N::translate('Note');
-                    }
-                }
-                $factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
-                $factwords = explode(' ', $factlines[0]); // 1 BIRT Y
-                $factname  = $factwords[1]; // BIRT
-                if ($factname === 'EVEN' || $factname === 'FACT') {
-                    // Add ' EVEN' to provide sensible output for an event with an empty TYPE record
-                    $ct = preg_match('/2 TYPE (.*)/', $factrec, $ematch);
-                    if ($ct > 0) {
-                        $factname = trim($ematch[1]);
-                        echo $factname;
-                    } else {
-                        echo GedcomTag::getLabel($factname);
-                    }
-                } elseif ($factname !== 'NOTE') {
-                    // Note is already printed
-                    echo GedcomTag::getLabel($factname);
-                    if ($note) {
-                        echo '<a class="btn btn-link" href="' . e($note->url()) . '" title="' . I18N::translate('View') . '"><span class="sr-only">' . I18N::translate('View') . '</span></a>';
-                    }
-                }
+                echo I18N::translate('Note');
+            }
+
+            if ($can_edit) {
+                echo '<div class="editfacts nowrap">';
+                echo view('edit/icon-fact-edit', ['fact' => $fact]);
+                echo view('edit/icon-fact-copy', ['fact' => $fact]);
+                echo view('edit/icon-fact-delete', ['fact' => $fact]);
+                echo '</div>';
             }
             echo '</th>';
-            if ($note) {
-                // Note objects
+            if ($note instanceof Note) {
                 $text = $note->getNote();
             } else {
-                // Inline notes
                 $nrec = Functions::getSubRecord($level, "$level NOTE", $factrec, $j + 1);
                 $text = $match[$j][1] . Functions::getCont($level + 1, $nrec);
             }
