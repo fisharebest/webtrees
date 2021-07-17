@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -33,8 +32,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_fill_keys;
 use function array_filter;
 use function array_key_exists;
+use function array_merge;
 use function assert;
-use function ord;
+use function strtr;
 
 /**
  * Search for genealogy data
@@ -167,7 +167,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         return $this->viewResponse('search-advanced-page', [
             'date_options' => $date_options,
             'fields'       => $fields,
-            'field_labels' => $this->customFieldLabels(),
+            'field_labels' => $this->fieldLabels(),
             'individuals'  => $individuals,
             'modifiers'    => $modifiers,
             'name_options' => $name_options,
@@ -200,7 +200,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
         return $default_facts
             ->reject(fn (string $field): bool => array_key_exists($field, $fields))
             ->sort($comparator)
-            ->mapWithKeys(fn (string $fact): array => [$fact => GedcomTag::getLabel($fact)])
+            ->mapWithKeys(fn (string $fact): array => [$fact => Registry::elementFactory()->make($fact)->label()])
             ->all();
     }
 
@@ -210,14 +210,18 @@ class SearchAdvancedPage implements RequestHandlerInterface
      *
      * @return array<string,string>
      */
-    private function customFieldLabels(): array
+    private function fieldLabels(): array
     {
-        return [
-            'FATHER:NAME:GIVN' => I18N::translate('Given names'),
-            'FATHER:NAME:SURN' => I18N::translate('Surname'),
-            'MOTHER:NAME:GIVN' => I18N::translate('Given names'),
-            'MOTHER:NAME:SURN' => I18N::translate('Surname'),
-        ];
+
+        $return = [];
+
+        foreach (array_merge(self::OTHER_ADVANCED_FIELDS, self::DEFAULT_ADVANCED_FIELDS) as $field) {
+            $tmp = strtr($field, ['MOTHER:' => 'INDI:', 'FATHER:' => 'INDI:']);
+            $return[$field] = Registry::elementFactory()->make($tmp)->label();
+        }
+
+
+        return $return;
     }
 
     /**
