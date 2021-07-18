@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 09:22+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-19 07:49+0000\nLast-Translator: Klimis Panagiotis <klimis.p@gmail.com>\nLanguage-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -20296,7 +20296,7 @@ msgstr "γιος του"
 #: app/Services/RelationshipService.php:506
 msgctxt "child’s husband"
 msgid "son-in-law"
-msgstr "νύφη"
+msgstr "γαμπρός"
 
 #: app/Services/RelationshipService.php:518
 msgctxt "daughter’s husband"
