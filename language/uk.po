@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-19 07:49+0000\n"
+"PO-Revision-Date: 2021-07-20 08:26+0000\n"
 "Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/uk/>\n"
@@ -13490,7 +13490,7 @@ msgstr "Контакт для технічної допомоги"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:365
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "Тегусігальпа, Гондурас"
 
 #: app/Module/HtmlBlockModule.php:276
 msgid "Templates"
