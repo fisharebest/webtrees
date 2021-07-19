@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-19 07:49+0000\nLast-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-20 08:26+0000\nLast-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -12675,7 +12675,7 @@ msgstr "У розлученні"
 
 #: app/Module/CustomTagsFamilyTreeMaker.php:73
 msgid "Separation"
-msgstr ""
+msgstr "Розлучення"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -12738,7 +12738,7 @@ msgstr "Iм'я сервера"
 
 #: app/Http/RequestHandlers/PasswordResetPage.php:63
 msgid "Set a new password"
-msgstr ""
+msgstr "Встановити новий пароль"
 
 #: resources/views/admin/trees.phtml:129 resources/views/admin/trees.phtml:136
 msgid "Set as default"
@@ -12986,7 +12986,7 @@ msgstr "Показати посилання на скачування в мед�
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
 msgid "Show a privacy policy."
-msgstr ""
+msgstr "Показати політику конфіденційності."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-registration.phtml:69
@@ -13201,7 +13201,7 @@ msgstr "Покажіть місце народження предків на к�
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Показувати дату і час"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -13531,7 +13531,7 @@ msgstr "Sosa"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Число Соса-Страдоніца"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:262
 msgid "Sounds like"
@@ -13583,7 +13583,7 @@ msgstr "Джерело"
 #: app/Module/CustomTagsGedcomL.php:103 app/Module/CustomTagsGedcomL.php:152
 #: app/Module/CustomTagsWebtrees.php:57 app/Module/CustomTagsWebtrees.php:71
 msgid "Source citation"
-msgstr ""
+msgstr "Цитування джерела"
 
 #: resources/views/admin/tags.phtml:299
 msgid "Source citations"
@@ -13730,7 +13730,7 @@ msgstr "Початок діапазону дат зміни"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #: app/Factories/ElementFactory.php:282 app/Factories/ElementFactory.php:393
 #: app/Factories/ElementFactory.php:413 app/Factories/ElementFactory.php:665
@@ -13837,7 +13837,7 @@ msgstr "Заявник"
 
 #: resources/views/lists/submitters-table.phtml:67
 msgid "Submitter name"
-msgstr ""
+msgstr "Ім’я відправника"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:117 app/Module/SubmitterListModule.php:73
@@ -13847,7 +13847,7 @@ msgstr ""
 #: resources/views/admin/tags.phtml:896
 #: resources/views/lists/submitters-table.phtml:62
 msgid "Submitters"
-msgstr ""
+msgstr "Відправники"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:429
@@ -13872,11 +13872,11 @@ msgstr "Підтримка і документація може бути зна�
 
 #: app/Services/ServerCheckService.php:330
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Підтримка PostgreSQL є експериментальною."
 
 #: app/Services/ServerCheckService.php:335
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Підтримка SQL Server є експериментальною."
 
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
@@ -14014,7 +14014,7 @@ msgstr "Префікс таблиці"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Таблоїд (279.4 x 431.8mm)"
 
 #: app/Http/RequestHandlers/ModulesTabsPage.php:43
 #: resources/views/admin/control-panel.phtml:719
@@ -14085,7 +14085,7 @@ msgstr "Контакт для технічної допомоги"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:195
 msgid "Tegucigalpa, Honduras"
-msgstr ""
+msgstr "Тегусігальпа, Гондурас"
 
 #: resources/views/modules/html/config.phtml:27
 msgid "Templates"
@@ -14168,12 +14168,12 @@ msgstr "Гаага, Нідерланди"
 #: app/Services/ServerCheckService.php:124
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "Розширення PHP “%s” не встановлене."
 
 #: app/Services/ServerCheckService.php:182
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "Функція PHP \"%1$s\" вимкнена."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:56
@@ -14183,12 +14183,12 @@ msgstr "Відсутня папка для тимчасових файлів PHP
 #: app/Services/ServerCheckService.php:143
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "Параметр PHP.INI “%1$s” вимкнено."
 
 #: app/Services/ServerCheckService.php:147
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "Параметр PHP.INI “%1$s” увімкнено."
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
@@ -14207,7 +14207,7 @@ msgstr "Адміністратора було проінформовано. Що
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
 msgid "The calendar menu."
-msgstr ""
+msgstr "Меню календаря."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:68
@@ -14226,7 +14226,7 @@ msgstr "Зміни для «%s» відхилені."
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsMenuModule.php:70
 msgid "The charts menu."
-msgstr ""
+msgstr "Меню діаграм."
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
@@ -14279,7 +14279,7 @@ msgstr "Генеалогічні дерева були успішно поєдн
 #. I18N: Description of the “Family trees” module
 #: app/Module/TreesMenuModule.php:71
 msgid "The family trees menu."
-msgstr ""
+msgstr "Меню сімейних дерев."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: app/Http/RequestHandlers/DeleteRecord.php:75
@@ -14326,7 +14326,7 @@ msgstr "Файл «%s» не існує."
 
 #: resources/views/edit/reorder-families.phtml:77
 msgid "The first family in the list will be used in charts, lists, reports, etc."
-msgstr ""
+msgstr "Перша сім’я у списку буде використана в діаграмах, списках, звітах тощо."
 
 #: app/Http/RequestHandlers/DeletePath.php:60
 #, php-format
@@ -14350,7 +14350,7 @@ msgstr "Папка може бути вказана в повному обсяз
 #: app/Http/RequestHandlers/SitePreferencesAction.php:55
 #, php-format
 msgid "The folder “%s” does not exist."
-msgstr ""
+msgstr "Тека “%s” не існує."
 
 #: resources/views/admin/merge-records-step-2.phtml:39
 msgid "The following facts and events were found in both records."
@@ -14396,7 +14396,7 @@ msgstr "Посилання з \"%1$s\" до \"%2$s\" було оновлено."
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "Меню списків."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
@@ -14477,7 +14477,7 @@ msgstr "Нотатка була створена"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Бракує параметру “%s”."
 
 #: app/Http/RequestHandlers/SetupWizard.php:383
 msgid "The password needs to be at least six characters long."
@@ -14491,12 +14491,12 @@ msgstr "Пароль, необхідний для аутентифікації �
 #: app/Http/RequestHandlers/PasswordResetAction.php:83
 #: app/Http/RequestHandlers/PasswordResetPage.php:75
 msgid "The password reset link has expired."
-msgstr ""
+msgstr "Термін дії посилання для скидання пароля минув."
 
 #. I18N: Description of the “Place hierarchy” module
 #: app/Module/PlaceHierarchyListModule.php:119
 msgid "The place hierarchy."
-msgstr ""
+msgstr "Ієрархія місць."
 
 #: app/Http/RequestHandlers/TreePreferencesAction.php:144
 #: app/Http/RequestHandlers/TreePrivacyAction.php:118
@@ -14536,11 +14536,11 @@ msgstr "Налаштування для модуля \"%s\" були оновл�
 #: resources/views/setup/step-4-database-sqlite.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "Префікс необов’язковий, але рекомендується. Надавши іменам таблиць унікальний префікс, ви можете дозволити декільком різним програмам використовувати спільну базу даних."
 
 #: app/Module/CustomTagsGedcomL.php:119 app/Module/CustomTagsGedcomL.php:172
 msgid "The problem"
-msgstr ""
+msgstr "Проблема"
 
 #: app/Http/RequestHandlers/CopyFact.php:76
 msgid "The record has been copied to the clipboard."
@@ -14554,7 +14554,7 @@ msgstr "Записи \"%1$s\" і \"%2$s\" було об'єднано."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:72
 msgid "The reports menu."
-msgstr ""
+msgstr "Меню звітів."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:90
 msgid "The repository has been created"
@@ -14563,11 +14563,11 @@ msgstr "Репозиторій був створений"
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Меню пошуку."
 
 #: app/Services/SearchService.php:1170
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Пошук дав занадто багато результатів."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
