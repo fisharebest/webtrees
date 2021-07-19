@@ -481,7 +481,7 @@ msgstr ""
 #: app/Http/RequestHandlers/IndividualPage.php:187
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(edad %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:358
