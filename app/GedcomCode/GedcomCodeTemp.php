@@ -417,7 +417,7 @@ class GedcomCodeTemp
                 return I18N::translate('Kona, Hawaii, United States');
             case 'KYIV':
                 /* I18N: Location of an LDS church temple */
-                return I18N::translate('Kiev, Ukraine');
+                return I18N::translate('Kyiv, Ukraine');
             case 'LANGE':
                 /* I18N: Location of an LDS church temple */
                 return I18N::translate('Los Angeles, California, United States');
