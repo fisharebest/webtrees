@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-20 08:26+0000\n"
+"PO-Revision-Date: 2021-07-23 08:16+0000\n"
 "Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/uk/>\n"
@@ -103,7 +103,7 @@ msgstr "%1$s не існує."
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr "%1$s . Ви мали на увазі %2$s?"
+msgstr "%1$s не існує. Ви мали на увазі %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
@@ -141,7 +141,7 @@ msgstr[2] "У %1$s персон відсутня інформація про м�
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s є %2$s а повинен бути %3$s."
+msgstr "%1$s є %2$s, а повинен бути %3$s."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
@@ -273,22 +273,22 @@ msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s сім'я була оновлена."
 msgstr[1] "%s сім'ї були оновлені."
-msgstr[2] "%s сімей були оновлені."
+msgstr[2] "%s сімей було оновлено."
 
 #: admin.php:853
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
 msgstr[0] "%s генеалогічне дерево"
-msgstr[1] "%s генеалогічні дерева"
-msgstr[2] "%s генеалогічні дерева"
+msgstr[1] "%s генеалогічних дерева"
+msgstr[2] "%s генеалогічних дерев"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
 msgstr[0] "%s онук/онука"
-msgstr[1] "%s онука/онучки"
+msgstr[1] "%s онука/онуки"
 msgstr[2] "%s онуків/онучок"
 
 #: app/I18N.php:806
@@ -313,7 +313,7 @@ msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s особа була оновлена."
 msgstr[1] "%s особи були оновлені."
-msgstr[2] "%s осіб були оновлені."
+msgstr[2] "%s осіб було оновлено."
 
 #: app/Module/GoogleMapsModule.php:845
 #, php-format
@@ -393,7 +393,7 @@ msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
 msgstr[0] "%s нотатка буде оновлена."
 msgstr[1] "%s нотатки будуть оновлені."
-msgstr[2] "%s нотаток будуть оновлені."
+msgstr[2] "%s нотаток буде оновлено."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -7312,9 +7312,10 @@ msgid "If a visitor to the website has not selected a preferred language in thei
 msgstr "Якщо користувач не вказав бажану мову в налаштуваннях браузеру, чи вказав мову, яка не підтримується, тоді ця мова буде використана. Зазвичай цей параметр застосовується для пошукових систем."
 
 #: admin_users.php:391
-#, fuzzy
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Якщо адміністратор створює сам обліковий запис, то лист для перевірки адреси електронної пошти не надсилається новому користувачеві. Адміністратор повинен переконатися, що адреса вірна і вказати це у налаштуваннях."
+msgstr ""
+"Якщо адміністратор сам створює обліковий запис, то лист для перевірки адреси "
+"електронної пошти не надсилається, а адреса підтверджується вручну."
 
 #: help_text.php:228
 #, php-format
@@ -7393,9 +7394,10 @@ msgid "If you hide an empty block, you will not be able to change its configurat
 msgstr "Якщо блок не буде видно, Ви не зможете змінити настройки."
 
 #: admin_site_config.php:192
-#, fuzzy
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
-msgstr "Якщо Ви виберете іншу папку, необхідно також перемістити всі файли (крім config.ini.php, index.php і .htaccess) з існуючої папки в нову папку."
+msgstr ""
+"Після вибору іншої теки, необхідно також перемістити всі файли (крім "
+"config.ini.php, index.php і .htaccess) з теперішньої теки в нову."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1007
@@ -9982,9 +9984,11 @@ msgid "Norfolk Island"
 msgstr "Острів Норфолк"
 
 #: admin_users.php:444
-#, fuzzy
 msgid "Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator."
-msgstr "Зазвичай, будь-які зміни, зроблені в генеалогічному дереві, мають бути схвалені модератором. Цей параметр дозволяє користувачу робити зміни без схвалення модератора."
+msgstr ""
+"Зазвичай, будь-які зміни, зроблені в генеалогічному дереві, мають бути "
+"схвалені модератором. Цей параметр дозволяє користувачу робити зміни без "
+"модерації."
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6856
@@ -11791,7 +11795,7 @@ msgstr "Сафар"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:89
 msgid "Sage"
-msgstr "Sage"
+msgstr "Шавлія"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6874
@@ -13023,7 +13027,7 @@ msgstr "Порядок сортування"
 #: app/Controller/BranchesController.php:250
 #: app/Functions/FunctionsPrintLists.php:285
 msgid "Sosa"
-msgstr "Sosa"
+msgstr "Номер Соса"
 
 #: search_advanced.php:160 search_advanced.php:222 search_advanced.php:237
 #: search_advanced.php:258 search_advanced.php:273
@@ -13829,27 +13833,31 @@ msgstr "Модуль \"%s\" було включено."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1844
-#, fuzzy
 msgid "The most common family facts and events are listed separately, so that they can be added more easily."
-msgstr "Це короткий перелік фактів GEDCOM, який з'являється поряд з повним переліком і може бути доданий за допомогою одного кліка."
+msgstr ""
+"Найпоширеніші сімейні факти та події перераховані окремо, щоб їх було легше "
+"додати."
 
 #. I18N: Help text for the “Quick individual facts” configuration setting
 #: admin_trees_config.php:1726
-#, fuzzy
 msgid "The most common individual facts and events are listed separately, so that they can be added more easily."
-msgstr "Це короткий перелік персональних фактів GEDCOM, який з'являється поряд з повним переліком і вони можуть бути внесені до нього за допомогою одного кліка."
+msgstr ""
+"Найпоширеніші окремі факти та події перераховані окремо, щоб їх було легше "
+"додати."
 
 #. I18N: Help text for the “Quick repository facts” configuration setting
 #: admin_trees_config.php:2022
-#, fuzzy
 msgid "The most common repository facts are listed separately, so that they can be added more easily."
-msgstr "Це короткий список фактів архіву GEDCOM, який відображається поруч з повним списком і може додаватися за допомогою одного кліка."
+msgstr ""
+"Найпоширеніші факти репозиторію перераховані окремо, щоб їх було легше "
+"додати."
 
 #. I18N: Help text for the “Quick source facts” configuration setting
 #: admin_trees_config.php:1933
-#, fuzzy
 msgid "The most common source facts are listed separately, so that they can be added more easily."
-msgstr "Це короткий список джерел фактів, які відображаються поряд з повним списком, і можуть бути швидко додані одним клацанням миші."
+msgstr ""
+"Найпоширеніші джерела фактів перераховані окремо, щоб їх можна було легше "
+"додати."
 
 #: admin_site_upgrade.php:338
 #, php-format
@@ -14175,9 +14183,11 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Цей обліковий запис не було перевірено. Будь-ласка, перевірте надходження перевірки на вашу електронну пошту."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Цей блок показуе редакторам список записів з очікуваними змінами, які мають бути схвалені модератором. Він також генерує щоденні електронні листи модераторам, коли очікувані зміни існують."
+msgstr ""
+"Цей блок показує редакторам список записів з новими змінами, які потрібно "
+"переглянути модератору. Він також створює щоденні електронні листи "
+"модераторам за наявності нових змін."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14531,9 +14541,8 @@ msgstr "Цей параметр вказує, чи слід створити д�
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: admin_trees_config.php:1036
-#, fuzzy
 msgid "This option will make it easier for users to download images."
-msgstr "Медіа перегляд може відображати посилання. Ви можете натиснути на посилання, щоб завантажити мультимедійний файл на локальний комп'ютер.<br><br>З міркувань безпеки, Ви можете приховати посилання."
+msgstr "Цей параметр полегшить користувачам завантаження зображень."
 
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: admin_trees_config.php:494
@@ -14739,7 +14748,7 @@ msgstr "Четвер"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:369
 msgid "Tijuana, Mexico"
-msgstr ""
+msgstr "Тіхуана, Мексика"
 
 #. I18N: gedcom tag TIME
 #: app/GedcomTag.php:830
@@ -15097,7 +15106,7 @@ msgstr "Тринідад і Тобаго"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:375
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "Трухільо, Перу"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/CalendarDate.php:377 app/Functions/FunctionsPrint.php:661
@@ -15141,7 +15150,7 @@ msgstr "Тустла-Гутьєррес, Мексика"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:377
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "Водоспад Твін, Айдахо, США"
 
 #. I18N: gedcom tag TYPE
 #: admin_site_logs.php:268 admin_site_logs.php:328
@@ -15514,7 +15523,7 @@ msgstr "Узбекістан"
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:379
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Ванкувер, Британська Колумбія, Канада"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6919
@@ -15808,9 +15817,12 @@ msgid "When a record is edited, the user and timestamp are recorded. Sometimes i
 msgstr "Коли запис редагується, реєструються користувач, що вносить зміни, і час та дата змін. Інколи бажано зберегти інформацію про \"останні зміни\", наприклад, коли робляться малі зміни до даних, внесених іншим користувачем. Цей параметр контролює, чи ця функция увімкнена за замовчуванням."
 
 #: admin_users.php:388
-#, fuzzy
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Коли відвідувач робать запит на створення облікового запису, на його адресу електронної пошти відправляється лист із посиланням для перевірки. Коли користувач переходить по посиланню, стає відомо, що адреса електронної пошти правильна, і прапорець \"електронна пошта підтверджена\" встановлюється автоматично."
+msgstr ""
+"Коли відвідувач робить запит на створення облікового запису, на його адресу "
+"електронної пошти надсилається лист із посиланням для перевірки. Після "
+"переходу по посиланню, стає відомо, що адреса електронної пошти правильна, і "
+"прапорець \"електронна пошта підтверджена\" встановлюється автоматично."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:46
 msgid "When adding a link, the ID field cannot be empty."
@@ -16007,9 +16019,10 @@ msgid "You can choose the prefix that will be used whenever new XREFs are create
 msgstr "Вы можете вибрати префікс для нових XREF-записів."
 
 #: admin_users.php:462 edituser.php:312
-#, fuzzy
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr "Цей прапорець контролює вашу видимість іншими користувачам, коли ви знаходитесь на сайті. Він також контролює вашу можливість бачити інших користувачів, присутніх на сайті, якщо вони дозволили себе бачити.<br><br>Коли цей прапорець знято, ви будете повністю невидимі для інших, і ви також не зможете бачити, чи інші користувачі присутні на сайті. Коли цей прапорець встановлено, ви будете видимі для інших і зможете бачити інших користувачів, які дозволили себе бачити."
+msgstr ""
+"Ви можете вибрати, чи показуватися у списку користувачів, які наразі ввійшли "
+"в систему."
 
 #. I18N: %s is a URL
 #: help_text.php:288
@@ -20157,7 +20170,7 @@ msgstr "дружина"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:149
 msgid "xenea"
-msgstr "xenea"
+msgstr "Xenea"
 
 #: timeline.php:130
 msgid "years"
