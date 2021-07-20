@@ -212,7 +212,6 @@ class SearchAdvancedPage implements RequestHandlerInterface
      */
     private function fieldLabels(): array
     {
-
         $return = [];
 
         foreach (array_merge(self::OTHER_ADVANCED_FIELDS, self::DEFAULT_ADVANCED_FIELDS) as $field) {
