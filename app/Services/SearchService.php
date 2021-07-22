@@ -55,7 +55,6 @@ use function mb_stripos;
 use function preg_match;
 use function preg_quote;
 use function preg_replace;
-
 use function str_ends_with;
 use function str_starts_with;
 
