@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-23 08:16+0000\nLast-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-24 21:09+0000\nLast-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -787,7 +787,7 @@ msgstr "Список сховищ."
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr "Список спільних нотаток."
+msgstr "Список Загальних Нотаток."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
@@ -1486,7 +1486,7 @@ msgstr "Додати/редагувати запис у Щоденнику/Но�
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Додаткова інформація"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:386
 #: app/Factories/ElementFactory.php:406 app/Factories/ElementFactory.php:658
@@ -1517,7 +1517,7 @@ msgstr "Рядок адреси 3"
 
 #: resources/views/admin/tags.phtml:237
 msgid "Addresses"
-msgstr ""
+msgstr "Адреси"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1878,7 +1878,7 @@ msgstr "Інакше"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Альтернативна назва місця"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1970,7 +1970,7 @@ msgstr "Номер в потомственим файлі"
 
 #: app/Module/CustomTagsAncestry.php:51
 msgid "Ancestry PID"
-msgstr ""
+msgstr "PID предка"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -2093,7 +2093,7 @@ msgstr "Аквамарин"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Ви впевнені що хочете видалити посилання на %s?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:40
@@ -2194,7 +2194,7 @@ msgstr "Зв'язати факти з цим джерелом"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Асоційовані події"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2306,7 +2306,7 @@ msgstr "Автор останньої зміни"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:633
 msgid "Autocomplete"
-msgstr ""
+msgstr "Автозаповнення"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -3405,7 +3405,7 @@ msgstr "Дата перепису"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Дата та місце перепису населення"
 
 #: app/Factories/ElementFactory.php:485
 msgid "Census place"
@@ -3450,7 +3450,7 @@ msgstr "Посвідчення"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Номер свідоцтва"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3827,7 +3827,7 @@ msgstr "Кава та вершки"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Спільне проживання"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4084,7 +4084,7 @@ msgstr "Копіювання файлів…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Копіювати URL-адресу запису в буфер обміну"
 
 #: app/Factories/ElementFactory.php:372 app/Factories/ElementFactory.php:399
 msgid "Copyright"
@@ -4166,11 +4166,11 @@ msgstr "Створити архів"
 #: app/Elements/XrefNote.php:61
 #: resources/views/modals/create-note-object.phtml:16
 msgid "Create a shared note"
-msgstr "Створити нову Загальну Примітку"
+msgstr "Створити нову Загальну Нотатку"
 
 #: resources/views/modules/census-assistant.phtml:15
 msgid "Create a shared note using the census assistant"
-msgstr "Створити нову Загальну Примітку з використанням Майстра"
+msgstr "Створити нову Загальну Нотатку з використанням Майстра"
 
 #: app/Elements/XrefSource.php:70 resources/views/modals/create-source.phtml:16
 msgid "Create a source"
@@ -4205,7 +4205,7 @@ msgstr "Створити нову персону"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Створити карти за допомогою %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4378,11 +4378,11 @@ msgstr "Довільний"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "Нестандартні підтеги GEDCOM"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "Нестандартні теги GEDCOM"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4390,7 +4390,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:705
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Нестандартні теги GEDCOM"
 
 #: resources/views/calendar-page.phtml:203
 #: resources/views/edit/add-fact-row.phtml:40
@@ -5433,7 +5433,7 @@ msgstr "Відображення та керування обраних стор
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "Показувати нестандартні теги GEDCOM"
 
 #: app/Factories/ElementFactory.php:325 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5496,7 +5496,7 @@ msgstr "Завантаження %s…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Завантажити .ICS-файл, що містить річницю"
 
 #: resources/views/media-page-details.phtml:85
 msgid "Download file"
@@ -5628,7 +5628,7 @@ msgstr "Редагувати запис в GEDCOM форматі"
 
 #: app/Http/RequestHandlers/EditNotePage.php:59
 msgid "Edit the shared note"
-msgstr "Редагувати Загальну Примітку"
+msgstr "Редагувати Загальну Нотатку"
 
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
@@ -5858,7 +5858,7 @@ msgstr "Есфанд"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
@@ -5977,7 +5977,7 @@ msgstr "Зовнішні файли"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "Зовнішнє посилання"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
@@ -6015,7 +6015,7 @@ msgstr "Часті питання (ЧаПи) - це списки питань і
 #: app/Module/CustomTagsGenPluswin.php:96
 #: app/Module/CustomTagsGenPluswin.php:98
 msgid "FOKO country"
-msgstr ""
+msgstr "Країна FOKO"
 
 #: app/Factories/ElementFactory.php:527
 msgid "Fact"
@@ -6216,7 +6216,7 @@ msgstr "Сімейна книга для %s"
 
 #: app/Factories/ElementFactory.php:320
 msgid "Family census"
-msgstr ""
+msgstr "Родинний перепис"
 
 #: app/Factories/ElementFactory.php:734
 msgid "Family file"
@@ -6239,7 +6239,7 @@ msgstr "Сім'я %s"
 
 #: app/Factories/ElementFactory.php:348
 msgid "Family residence"
-msgstr ""
+msgstr "Домівка родини"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6332,7 +6332,7 @@ msgstr "Сім'я з дружиною"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "Ідентифікатор FamilySearch"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6695,7 +6695,7 @@ msgstr "З питаннями по генеалогії (база даних) з
 #: resources/views/modules/openstreetmap/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Для більш докладної інформації дивіться %s."
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
@@ -6920,7 +6920,7 @@ msgstr "Файл GEDCOM"
 
 #: resources/views/modules/custom-tags/config.phtml:53
 msgid "GEDCOM sub-tag"
-msgstr ""
+msgstr "Підтег GEDCOM"
 
 #: resources/views/admin/tags.phtml:43 resources/views/admin/tags.phtml:173
 #: resources/views/admin/tags.phtml:249 resources/views/admin/tags.phtml:311
@@ -6929,12 +6929,12 @@ msgstr ""
 #: resources/views/admin/tags.phtml:908
 #: resources/views/modules/custom-tags/config.phtml:51
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "Тег GEDCOM"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:260
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "Теги GEDCOM"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -7033,7 +7033,7 @@ msgstr "Покоління нащадків"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:45
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7053,7 +7053,7 @@ msgstr "Географічні дані"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:640
 msgid "Geolocation"
-msgstr ""
+msgstr "Геолокація"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
@@ -7423,7 +7423,7 @@ msgstr "Її рід занять було"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
 msgid "Here maps"
-msgstr ""
+msgstr "Мапи Here"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -7460,7 +7460,7 @@ msgstr "Хешван"
 #: resources/views/admin/tags.phtml:751 resources/views/admin/tags.phtml:805
 #: resources/views/admin/tags.phtml:909
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Приховати теги GEDCOM"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:155
@@ -7475,7 +7475,7 @@ msgstr "Приховати невикористані локації"
 
 #: resources/views/modules/custom-tags/config.phtml:44
 msgid "Hide/show GEDCOM tags in the edit forms"
-msgstr ""
+msgstr "Приховати/показати теги GEDCOM у формах редагування"
 
 #: app/Module/CustomTagsGedcomL.php:236
 msgid "Hierarchical relationship"
@@ -7558,7 +7558,7 @@ msgstr "Графік «Пісочний годинник» для %s"
 #: app/Module/CustomTagsGenPluswin.php:58
 #: app/Module/CustomTagsGenPluswin.php:90
 msgid "House number"
-msgstr ""
+msgstr "Номер будинку"
 
 #: resources/views/modules/census-assistant.phtml:117
 msgid "Household"
@@ -7629,7 +7629,7 @@ msgstr "Ідентифікаційний номер"
 
 #: resources/views/admin/tags.phtml:792
 msgid "Identifiers"
-msgstr ""
+msgstr "Ідентифікатори"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -7685,7 +7685,7 @@ msgstr "Якщо з особою пов'язані будь-які події о
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:262
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Якщо два генеологічні дерева розділяють одну і ту саму папку медіа, то вони можуть розділяти одні і ті ж самі мультимедіа файли. Якщо вони використвують різні папки медіа, то їх медіа дані будуть зберігатися окремо."
+msgstr "Якщо два генеологічних дерева розділяють одну теку media, вони можуть розділяти ті ж самі файли. Якщо вони використовують різні теки, то їх медіа дані будуть зберігатися окремо."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:278
@@ -8166,7 +8166,7 @@ msgstr "Іван /Іванов/"
 
 #: app/Module/CustomTagsGenPluswin.php:88
 msgid "Joint family name"
-msgstr ""
+msgstr "Спільне прізвище"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
@@ -8418,7 +8418,7 @@ msgstr "Запечатування дитини (мормони)"
 
 #: resources/views/admin/tags.phtml:738
 msgid "LDS church"
-msgstr ""
+msgstr "Церква мормонів"
 
 #: app/Factories/ElementFactory.php:497
 msgid "LDS confirmation"
@@ -8851,7 +8851,7 @@ msgstr "Журнал"
 #: app/Module/CustomTagsGedcomL.php:238 app/Module/CustomTagsGenPluswin.php:70
 #: app/Module/CustomTagsGenPluswin.php:102
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "QTH-код місцезнаходження"
 
 #: app/Module/CustomTagsPersonalAncestralFile.php:60
 msgid "Mailing name"
@@ -8985,23 +8985,23 @@ msgstr "Карта"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "Посилання на карту"
 
 #. I18N: Links to maps
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:647
 msgid "Map links"
-msgstr ""
+msgstr "Посилання на карти"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: resources/views/admin/control-panel.phtml:654
 msgid "Map providers"
-msgstr ""
+msgstr "Картографічні провайдери"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:82
 msgid "Mapbox"
-msgstr ""
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
@@ -10355,7 +10355,7 @@ msgstr "Нічний"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Nominatim"
 
 #: app/Module/IndividualListModule.php:295
 #: app/Module/IndividualListModule.php:511
@@ -10726,7 +10726,7 @@ msgstr "Клепка! webtrees не вдалося створити файли �
 #: app/Module/MapGeoLocationOpenRouteService.php:44
 #: app/Module/OpenRouteServiceAutocomplete.php:81
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:57
 msgid "OpenStreetMap™"
@@ -10777,7 +10777,7 @@ msgstr "Посвячення у сан"
 #. I18N: Ordnance Survey is the UK government mapping service.
 #: app/Module/OrdnanceSurveyHistoricMaps.php:39
 msgid "Ordnance Survey historic maps"
-msgstr ""
+msgstr "Історичні карти Ordnance Survey"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -10789,7 +10789,7 @@ msgstr "Орієнтація"
 #: app/Module/CustomTagsGenPluswin.php:106
 #: app/Module/CustomTagsGenPluswin.php:117
 msgid "Original text"
-msgstr ""
+msgstr "Оригінальний текст"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -11235,7 +11235,7 @@ msgstr "Місце хрещення (церемонії)"
 #. I18N: German Bürgerort
 #: app/Module/CustomTagsGenPluswin.php:124
 msgid "Place of citizenship"
-msgstr ""
+msgstr "Місце громадянства"
 
 #: app/Factories/ElementFactory.php:496
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -11568,7 +11568,7 @@ msgstr "Прово, Юта"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Уповноважений"
 
 #: app/Factories/ElementFactory.php:694
 #: resources/views/lists/sources-table.phtml:96
@@ -11964,7 +11964,7 @@ msgstr "Родинний зв'язок між %1$s та %2$s"
 #: app/Module/CustomTagsGenPluswin.php:72
 #: app/Module/CustomTagsGenPluswin.php:104
 msgid "Reliability of the information"
-msgstr ""
+msgstr "Достовірність інформації"
 
 #: app/Factories/ElementFactory.php:303 app/Factories/ElementFactory.php:433
 #: app/Factories/ElementFactory.php:584
@@ -12487,17 +12487,17 @@ msgstr "Пошук по"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "Пошук місць у зовнішній базі даних."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "Пошук назв місць у зовнішній базі даних."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:56
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Шукати назви місць за допомогою %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12632,7 +12632,7 @@ msgstr "Надсилати нагадування електронною пош�
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:72
 msgid "Sender email"
-msgstr ""
+msgstr "Відправник електронного листа"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:58
@@ -12818,15 +12818,15 @@ msgstr "Шахрівар"
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/individual-page.phtml:61
 msgid "Share"
-msgstr ""
+msgstr "Поширити"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Поширити посилання"
 
 #: app/Module/ShareAnniversaryModule.php:79
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Поширити роковини події"
 
 #: app/Functions/FunctionsPrint.php:94
 #: app/Functions/FunctionsPrintFacts.php:793
@@ -12835,20 +12835,20 @@ msgstr ""
 #: resources/views/edit/shared-note.phtml:23
 #: resources/views/note-page-details.phtml:23
 msgid "Shared note"
-msgstr "Загальна примітка"
+msgstr "Загальна Нотатка"
 
 #. I18N: Name of a module/list
 #: app/Module/NoteListModule.php:70
 #: resources/views/lists/sources-table.phtml:100
 #: resources/views/search-general-page.phtml:88
 msgid "Shared notes"
-msgstr "Загальні примітки"
+msgstr "Загальні Нотатки"
 
 #. I18N: plural noun - things that can be shared
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:740
 msgid "Shares"
-msgstr ""
+msgstr "Поширення"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -13222,7 +13222,7 @@ msgstr "Показати список прізвищ"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Показати місце події на зовнішній карті."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:95
@@ -13471,11 +13471,11 @@ msgstr "Деякі генеалогічні програми створюють 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:94
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr ""
+msgstr "Деякі генеалогічні програми зберігають всі імена в одному записі імен, використовуючи власні теги, такі як _MARNM та _AKA. Альтернативою є створення нового запису імен для кожного імені."
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Деякі з цих тегів GEDCOM використовуються рідко або взагалі не використовуються."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
@@ -13582,7 +13582,7 @@ msgstr "Цитування джерела"
 
 #: resources/views/admin/tags.phtml:299
 msgid "Source citations"
-msgstr ""
+msgstr "Цитати джерел"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:842
@@ -13800,7 +13800,7 @@ msgstr "Заголовок історії"
 #: app/Module/CustomTagsGenPluswin.php:59
 #: app/Module/CustomTagsGenPluswin.php:91
 msgid "Street name"
-msgstr ""
+msgstr "Назва вулиці"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -13876,7 +13876,7 @@ msgstr "Підтримка SQL Server є експериментальною."
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
 msgid "Support for non-standard GEDCOM tags."
-msgstr ""
+msgstr "Підтримка нестандартних тегів GEDCOM."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14153,7 +14153,7 @@ msgstr "GEDCOM файл \"%s\" було імпортовано."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "Стандарт GEDCOM забезпечує велику кількість полів для введення даних, які називаються тегами."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14187,7 +14187,7 @@ msgstr "Параметр PHP.INI “%1$s” увімкнено."
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "URL-адресу скопійовано в буфер обміну"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -15476,11 +15476,11 @@ msgstr "Щоб сказати пошуковим системам про кар�
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Для використання цього сервісу Вам потрібен ключ API."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Для використання цього сервісу Вам потрібен обліковий запис."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15920,7 +15920,7 @@ msgstr "Невідомо"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Від’єднати"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15999,7 +15999,7 @@ msgstr "Використовуйте &laquo;?&raquo; для пошуку нул�
 
 #: app/Module/ModuleMapGeoLocationTrait.php:48
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Скористатись зовнішнім сервісом для пошуку локацій."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -16037,7 +16037,7 @@ msgstr "Використовуйте літери A-Z, a-z, цифри 0-9 аб�
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Використовувати карти на сайті."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -16267,7 +16267,7 @@ msgstr "Дивитися відомості про сім'ю"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Продивитись цю локацію за допомогою %s"
 
 #: resources/views/calendar-page.phtml:219
 msgid "View this month"
@@ -16605,7 +16605,7 @@ msgstr "Ви можете встановити доступ до певної з
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "Ви можете спростити редагування форм, приховуючи теги GEDCOM, які ви не використовуєте."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -19349,7 +19349,7 @@ msgstr "імпортувати файл"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "вбудована примітка"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20203,7 +20203,7 @@ msgstr "двоюрідний брат (7-го коліна)"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "загальна нотатка"
 
 #: resources/views/admin/trees-preferences.phtml:307
 #: resources/views/admin/trees-preferences.phtml:387
