@@ -115,7 +115,7 @@ class TempleCode extends AbstractElement
             'JRIVE' => /* I18N: Location of an LDS church temple */ I18N::translate('Jordan River, Utah, United States'),
             'KANSA' => /* I18N: Location of an LDS church temple */ I18N::translate('Kansas City, Missouri, United States'),
             'KONA'  => /* I18N: Location of an LDS church temple */ I18N::translate('Kona, Hawaii, United States'),
-            'KYIV'  => /* I18N: Location of an LDS church temple */ I18N::translate('Kiev, Ukraine'),
+            'KYIV'  => /* I18N: Location of an LDS church temple */ I18N::translate('Kyiv, Ukraine'),
             'LANGE' => /* I18N: Location of an LDS church temple */ I18N::translate('Los Angeles, California, United States'),
             'LIMA'  => /* I18N: Location of an LDS church temple */ I18N::translate('Lima, Peru'),
             'LOGAN' => /* I18N: Location of an LDS church temple */ I18N::translate('Logan, Utah, United States'),

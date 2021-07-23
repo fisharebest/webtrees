@@ -751,7 +751,7 @@ msgstr "Halifax, Nova Scotia, Canada"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:118,
 #: app/GedcomCode/GedcomCodeTemp.php:420
-msgid "Kiev, Ukraine"
+msgid "Kyiv, Ukraine"
 msgstr ""
 
 #. I18N: Location of an LDS church temple

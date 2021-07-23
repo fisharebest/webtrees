@@ -8354,7 +8354,7 @@ msgstr "Khordad"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:118
-msgid "Kiev, Ukraine"
+msgid "Kyiv, Ukraine"
 msgstr "Kiiev, Ukraina"
 
 #. I18N: Name of a country or state
