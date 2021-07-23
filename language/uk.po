@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-23 08:16+0000\n"
+"PO-Revision-Date: 2021-07-24 21:09+0000\n"
 "Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/uk/>\n"
@@ -4131,13 +4131,13 @@ msgstr "Створити архів"
 #: app/Functions/FunctionsEdit.php:439 edit_interface.php:1328
 #: edit_interface.php:1364
 msgid "Create a shared note"
-msgstr "Створити нову Загальну Примітку"
+msgstr "Створити нову Загальну Нотатку"
 
 #: app/Functions/FunctionsEdit.php:628
 #: modules_v3/GEDFact_assistant/census/census-edit.php:44
 #: modules_v3/GEDFact_assistant/census/census-save.php:44
 msgid "Create a shared note using the census assistant"
-msgstr "Створити нову Загальну Примітку з використанням Майстра"
+msgstr "Створити нову Загальну Нотатку з використанням Майстра"
 
 #: app/Functions/FunctionsEdit.php:461 edit_interface.php:1176
 #: edit_interface.php:1259
@@ -5494,7 +5494,7 @@ msgstr "Редагувати архів"
 #: app/Functions/FunctionsEdit.php:450 edit_interface.php:1424
 #: edit_interface.php:1470
 msgid "Edit the shared note"
-msgstr "Редагувати Загальну Примітку"
+msgstr "Редагувати Загальну Нотатку"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
@@ -7350,7 +7350,10 @@ msgstr "Якщо з особою пов'язані будь-які події о
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1008
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Якщо два генеологічні дерева розділяють одну і ту саму папку медіа, то вони можуть розділяти одні і ті ж самі мультимедіа файли. Якщо вони використвують різні папки медіа, то їх медіа дані будуть зберігатися окремо."
+msgstr ""
+"Якщо два генеологічних дерева розділяють одну теку media, вони можуть "
+"розділяти ті ж самі файли. Якщо вони використовують різні теки, то їх медіа "
+"дані будуть зберігатися окремо."
 
 #: admin_trees_config.php:374
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account. You will need to add their account manually."
@@ -12022,9 +12025,8 @@ msgid "Select a GEDCOM file to import"
 msgstr "Виберіть файл GEDCOM для імпорту"
 
 #: index_edit.php:284 index_edit.php:367
-#, fuzzy
 msgid "Select a block and use the arrows to move it."
-msgstr "Виділіть ім'я блоку, а потім натисніть на одну із іконок зі стрілками, щоб перемістити цей виділений блок у вказаному напрямку."
+msgstr "Виберіть блок та перемістіть його за допомогою стрілок."
 
 #: app/Functions/FunctionsEdit.php:405 reportengine.php:244
 msgid "Select a date"
@@ -12303,7 +12305,7 @@ msgstr "Шахрівар"
 #: app/GedcomTag.php:772 edit_interface.php:1344 edit_interface.php:1437
 #: inverselink.php:141 note.php:152 note.php:162
 msgid "Shared note"
-msgstr "Загальна примітка"
+msgstr "Загальна Нотатка"
 
 #. I18N: Label for search field
 #: find.php:239
@@ -12313,7 +12315,7 @@ msgstr "Загальна примітка містить"
 #: app/Functions/FunctionsPrintLists.php:1045 app/Theme/AbstractTheme.php:1522
 #: notelist.php:33 notelist.php:37 search.php:103
 msgid "Shared notes"
-msgstr "Загальні примітки"
+msgstr "Загальні Нотатки"
 
 #: find.php:709
 msgid "Shared notes found"
@@ -12986,9 +12988,14 @@ msgid "Some pages can display the number of times that they have been visited."
 msgstr "Деякі сторінки можуть відображати лічильник відвідування."
 
 #: app/Module/GoogleMapsModule.php:410
-#, fuzzy
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Деякі назви місць можуть писатися з необов'язковими префіксами і суфіксами. Наприклад, \"Orange\" і \"Orange County\". Якщо генеалогічне дерево містить повні назви місць, а географічна база містить коротні назви місць, то ви повинні вказати список префіксів і суфіксів, якими можна знехтувати. Декілька варіантів повинні бути розділені крапкою з комою. Наприклад, \"County;County of\" or \"Township;Twp;Twp.\"."
+msgstr ""
+"Деякі назви місць можуть писатися з необов'язковими префіксами і "
+"постфіксами. Наприклад, \"Orange\" і \"Orange County\". Якщо генеалогічне "
+"дерево містить повні назви місць, а географічна база містить короткі назви "
+"місць, то ви повинні вказати список префіксів і постфіксів, якими можна "
+"знехтувати. Декілька варіантів можна розділити крапкою з комою. Наприклад, \""
+"County;County of\" або \"Township;Twp;Twp.\"."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1465
