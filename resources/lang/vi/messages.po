@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-01 09:22+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-06-19 12:43+0100\nPO-Revision-Date: 2021-07-23 08:16+0000\nLast-Translator: Ngô Hữu Thuận <ngohuuthuan@gmail.com>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -440,7 +440,7 @@ msgstr "&lt;chọn&gt;"
 #: app/Functions/FunctionsPrint.php:375
 #, php-format
 msgid "(%s after death)"
-msgstr "(%s sau khi chết)"
+msgstr "(%s sau khi mất)"
 
 #. I18N: The current age of a living individual
 #: app/Http/RequestHandlers/IndividualPage.php:187
