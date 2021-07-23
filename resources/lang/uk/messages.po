@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-07-23 08:16+0000\n"
+"PO-Revision-Date: 2021-07-24 21:09+0000\n"
 "Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/uk/>\n"
@@ -804,7 +804,7 @@ msgstr "Список сховищ."
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr "Список спільних нотаток."
+msgstr "Список Загальних Нотаток."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
@@ -2001,7 +2001,7 @@ msgstr "Номер в потомственим файлі"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Ancestry PID"
-msgstr ""
+msgstr "PID предка"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -4226,11 +4226,11 @@ msgstr "Створити архів"
 #: app/Elements/XrefNote.php:61 app/Functions/FunctionsEdit.php:483
 #: resources/views/modals/create-note-object.phtml:16
 msgid "Create a shared note"
-msgstr "Створити нову Загальну Примітку"
+msgstr "Створити нову Загальну Нотатку"
 
 #: resources/views/modules/census-assistant.phtml:15
 msgid "Create a shared note using the census assistant"
-msgstr "Створити нову Загальну Примітку з використанням Майстра"
+msgstr "Створити нову Загальну Нотатку з використанням Майстра"
 
 #: app/Elements/XrefSource.php:70 app/Functions/FunctionsEdit.php:547
 #: resources/views/modals/create-source.phtml:16
@@ -5686,7 +5686,7 @@ msgstr "Редагувати запис в GEDCOM форматі"
 
 #: app/Http/RequestHandlers/EditNotePage.php:59
 msgid "Edit the shared note"
-msgstr "Редагувати Загальну Примітку"
+msgstr "Редагувати Загальну Нотатку"
 
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
@@ -7714,7 +7714,10 @@ msgstr "Якщо з особою пов'язані будь-які події о
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:259
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Якщо два генеологічні дерева розділяють одну і ту саму папку медіа, то вони можуть розділяти одні і ті ж самі мультимедіа файли. Якщо вони використвують різні папки медіа, то їх медіа дані будуть зберігатися окремо."
+msgstr ""
+"Якщо два генеологічних дерева розділяють одну теку media, вони можуть "
+"розділяти ті ж самі файли. Якщо вони використовують різні теки, то їх медіа "
+"дані будуть зберігатися окремо."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:274
@@ -12947,14 +12950,14 @@ msgstr "Шахрівар"
 #: resources/views/modules/notes/tab.phtml:61
 #: resources/views/note-page.phtml:98
 msgid "Shared note"
-msgstr "Загальна примітка"
+msgstr "Загальна Нотатка"
 
 #. I18N: Name of a module/list
 #: app/Module/NoteListModule.php:70
 #: resources/views/lists/sources-table.phtml:100
 #: resources/views/search-general-page.phtml:87
 msgid "Shared notes"
-msgstr "Загальні примітки"
+msgstr "Загальні Нотатки"
 
 #. I18N: http://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
