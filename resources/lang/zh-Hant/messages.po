@@ -8984,7 +8984,7 @@ msgstr "第三月"
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:118 app/GedcomCode/GedcomCodeTemp.php:420
-msgid "Kiev, Ukraine"
+msgid "Kyiv, Ukraine"
 msgstr "前南斯拉夫的馬其頓共和國、烏克蘭基輔"
 
 # I18N: Name of a country or state
