@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-07-19 07:49+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2021-07-24 21:09+0000\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
 "Language: nl\n"
@@ -7925,7 +7925,7 @@ msgstr "Verdeling per persoon"
 
 #: resources/views/admin/control-panel.phtml:635
 msgid "Individual page"
-msgstr "Persoonlijke pagina"
+msgstr "Persoonspagina"
 
 #: resources/views/admin/trees-preferences.phtml:437
 msgid "Individual pages"
