@@ -63,6 +63,8 @@ use Fisharebest\Webtrees\Elements\CopyrightSourceData;
 use Fisharebest\Webtrees\Elements\CountOfChildren;
 use Fisharebest\Webtrees\Elements\CountOfMarriages;
 use Fisharebest\Webtrees\Elements\Cremation;
+use Fisharebest\Webtrees\Elements\CustomEvent;
+use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\Elements\DateLdsOrd;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\Death;
@@ -300,7 +302,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:*:PLAC:NOTE'          => new NoteStructure(I18N::translate('Note')),
             'FAM:*:PLAC:ROMN'          => new PlaceRomanizedVariation(I18N::translate('Romanized place')),
             'FAM:*:PLAC:ROMN:TYPE'     => new RomanizedType(I18N::translate('Type')),
-            'FAM:*:RELI'               => new ReligiousAffiliation(I18N::translate('Religion')),
+            'FAM:*:RELI'               => new ReligiousAffiliation(I18N::translate('Religion'), []),
             'FAM:*:RESN'               => new RestrictionNotice(I18N::translate('Restriction')),
             'FAM:*:SOUR'               => new XrefSource(I18N::translate('Source citation')),
             'FAM:*:SOUR:DATA'          => new SourceData(I18N::translate('Data')),
@@ -431,7 +433,7 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:*:PLAC:NOTE'         => new NoteStructure(I18N::translate('Note')),
             'INDI:*:PLAC:ROMN'         => new PlaceRomanizedVariation(I18N::translate('Romanized place')),
             'INDI:*:PLAC:ROMN:TYPE'    => new RomanizedType(I18N::translate('Type')),
-            'INDI:*:RELI'              => new ReligiousAffiliation(I18N::translate('Religion')),
+            'INDI:*:RELI'              => new ReligiousAffiliation(I18N::translate('Religion'), []),
             'INDI:*:RESN'              => new RestrictionNotice(I18N::translate('Restriction')),
             'INDI:*:SOUR'              => new XrefSource(I18N::translate('Source citation')),
             'INDI:*:SOUR:DATA'         => new SourceData(I18N::translate('Data')),
@@ -521,11 +523,11 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:ENDL:STAT'           => new LdsEndowmentDateStatus(I18N::translate('Status')),
             'INDI:ENDL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
             'INDI:ENDL:TEMP'           => new TempleCode(I18N::translate('Temple')),
-            'INDI:EVEN'                => new EventDescriptor(I18N::translate('Event')),
+            'INDI:EVEN'                => new CustomEvent(I18N::translate('Event')),
             'INDI:EVEN:DATE'           => new DateValue(I18N::translate('Date of event')),
             'INDI:EVEN:PLAC'           => new PlaceName(I18N::translate('Place of event')),
             'INDI:EVEN:TYPE'           => new EventAttributeType(I18N::translate('Type of event')),
-            'INDI:FACT'                => new AttributeDescriptor(I18N::translate('Fact')),
+            'INDI:FACT'                => new CustomFact(I18N::translate('Fact')),
             'INDI:FACT:TYPE'           => new EventAttributeType(I18N::translate('Type of fact')),
             'INDI:FAMC'                => new XrefFamily(I18N::translate('Family as a child'), ['NOTE' => '0:1', 'PEDI' => '0:1', 'STAT' => '0:1']),
             'INDI:FAMC:PEDI'           => new PedigreeLinkageType(I18N::translate('Relationship to parents')),
