@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-01 08:23+0000\n"
+"PO-Revision-Date: 2021-07-27 16:31+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/de/>\n"
@@ -3741,7 +3741,7 @@ msgstr "Kindstaufe eines Enkelsohns"
 
 #: app/GedcomTag.php:1231
 msgid "Christening of a half-brother"
-msgstr "Kinfstaufe eines Halbbruders"
+msgstr "Kindstaufe eines Halbbruders"
 
 #: app/GedcomTag.php:1235
 msgid "Christening of a half-sibling"
