@@ -131,6 +131,7 @@ abstract class AbstractElement implements ElementInterface
 
         $attributes = [
             'class'     => 'form-control',
+            'dir'       => 'auto',
             'type'      => 'text',
             'id'        => $id,
             'name'      => $name,
