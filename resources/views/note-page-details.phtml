@@ -35,11 +35,11 @@ use Illuminate\Support\Collection;
         <td>
             <?php if ($record->tree()->getPreference('FORMAT_TEXT') === 'markdown') : ?>
                 <div class="markdown" dir="auto">
-                    <?= Registry::markdownFactory()->markdown($record->tree())->convertToHtml($record->getNote()) ?>
+                    <?= Registry::markdownFactory()->markdown($record->tree())->convertToHtml($record->getNote())->getContent() ?>
                 </div>
             <?php else : ?>
                 <div class="markdown" dir="auto" style="white-space: pre-wrap;">
-                    <?= Registry::markdownFactory()->autolink($record->tree())->convertToHtml($record->getNote()) ?>
+                    <?= Registry::markdownFactory()->autolink($record->tree())->convertToHtml($record->getNote())->getContent() ?>
                 </div>
             <?php endif ?>
         </td>

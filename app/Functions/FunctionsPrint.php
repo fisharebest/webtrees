@@ -88,14 +88,14 @@ class FunctionsPrint
             assert($note instanceof Note);
 
             $label      = I18N::translate('Shared note');
-            $html       = Registry::markdownFactory()->markdown($tree)->convertToHtml($note->getNote());
+            $html       = Registry::markdownFactory()->markdown($tree)->convertToHtml($note->getNote())->getContent();
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
 
             $one_line_only = strip_tags($note->fullName()) === strip_tags($note->getNote());
         } else {
             // Inline note.
             $label = I18N::translate('Note');
-            $html  = Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
+            $html  = Registry::markdownFactory()->markdown($tree)->convertToHtml($text)->getContent();
 
             [$first_line] = explode("\n", strip_tags($html));
             // Use same logic as note objects

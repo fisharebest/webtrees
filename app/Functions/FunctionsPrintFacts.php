@@ -436,11 +436,11 @@ class FunctionsPrintFacts
 
                 if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
                     $data .= '<div class="markdown" dir="auto">' ;
-                    $data .= Registry::markdownFactory()->markdown($tree)->convertToHtml($source);
+                    $data .= Registry::markdownFactory()->markdown($tree)->convertToHtml($source)->getContent();
                     $data .= '</div>';
                 } else {
                     $data .= '<div class="markdown" dir="auto" style="white-space: pre-wrap;">';
-                    $data .= Registry::markdownFactory()->autolink($tree)->convertToHtml($source);
+                    $data .= Registry::markdownFactory()->autolink($tree)->convertToHtml($source)->getContent();
                     $data .= '</div>';
                 }
 
@@ -798,11 +798,11 @@ class FunctionsPrintFacts
 
             if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
                 $formatted_text = '<div class="markdown" dir="auto">' ;
-                $formatted_text .= Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
+                $formatted_text .= Registry::markdownFactory()->markdown($tree)->convertToHtml($text)->getContent();
                 $formatted_text .= '</div>';
             } else {
                 $formatted_text = '<div class="markdown" dir="auto" style="white-space: pre-wrap;">';
-                $formatted_text .= Registry::markdownFactory()->autolink($tree)->convertToHtml($text);
+                $formatted_text .= Registry::markdownFactory()->autolink($tree)->convertToHtml($text)->getContent();
                 $formatted_text .= '</div>';
             }
 

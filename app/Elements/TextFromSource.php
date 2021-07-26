@@ -71,6 +71,6 @@ class TextFromSource extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return Registry::markdownFactory()->autolink()->convertToHtml($value);
+        return Registry::markdownFactory()->autolink()->convertToHtml($value)->getContent();
     }
 }

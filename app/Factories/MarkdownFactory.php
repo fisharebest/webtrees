@@ -24,17 +24,19 @@ use Fisharebest\Webtrees\CommonMark\ResponsiveTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
 use Fisharebest\Webtrees\Contracts\MarkdownFactoryInterface;
 use Fisharebest\Webtrees\Tree;
-use League\CommonMark\Block\Element\Document;
-use League\CommonMark\Block\Element\Paragraph;
-use League\CommonMark\Block\Renderer\DocumentRenderer;
-use League\CommonMark\Block\Renderer\ParagraphRenderer;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
+use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Autolink\AutolinkExtension;
-use League\CommonMark\Inline\Element\Link;
-use League\CommonMark\Inline\Element\Text;
-use League\CommonMark\Inline\Renderer\LinkRenderer;
-use League\CommonMark\Inline\Renderer\TextRenderer;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+use League\CommonMark\Extension\CommonMark\Renderer\Inline\LinkRenderer;
+use League\CommonMark\MarkdownConverter;
+use League\CommonMark\Node\Block\Document;
+use League\CommonMark\Node\Block\Paragraph;
+use League\CommonMark\Node\Inline\Text;
+use League\CommonMark\Renderer\Block\DocumentRenderer;
+use League\CommonMark\Renderer\Block\ParagraphRenderer;
+use League\CommonMark\Renderer\Inline\TextRenderer;
+use League\CommonMark\Util\HtmlFilter;
 
 /**
  * Create a markdown converter.
@@ -43,22 +45,22 @@ class MarkdownFactory implements MarkdownFactoryInterface
 {
     protected const CONFIG = [
         'allow_unsafe_links' => false,
-        'html_input'         => Environment::HTML_INPUT_ESCAPE,
+        'html_input'         => HtmlFilter::ESCAPE,
     ];
 
     /**
      * @param Tree|null $tree
      *
-     * @return CommonMarkConverter
+     * @return MarkdownConverter
      */
-    public function autolink(Tree $tree = null): CommonMarkConverter
+    public function autolink(Tree $tree = null): MarkdownConverter
     {
         // Create a minimal commonmark processor - just add support for auto-links.
-        $environment = new Environment();
-        $environment->addBlockRenderer(Document::class, new DocumentRenderer());
-        $environment->addBlockRenderer(Paragraph::class, new ParagraphRenderer());
-        $environment->addInlineRenderer(Text::class, new TextRenderer());
-        $environment->addInlineRenderer(Link::class, new LinkRenderer());
+        $environment = new Environment(static::CONFIG);
+        $environment->addRenderer(Document::class, new DocumentRenderer());
+        $environment->addRenderer(Paragraph::class, new ParagraphRenderer());
+        $environment->addRenderer(Text::class, new TextRenderer());
+        $environment->addRenderer(Link::class, new LinkRenderer());
         $environment->addExtension(new AutolinkExtension());
 
         // Optionally create links to other records.
@@ -66,19 +68,19 @@ class MarkdownFactory implements MarkdownFactoryInterface
             $environment->addExtension(new XrefExtension($tree));
         }
 
-        return new CommonMarkConverter(static::CONFIG, $environment);
+        return new MarkdownConverter($environment);
     }
 
     /**
      * @param Tree|null $tree
      *
-     * @return CommonMarkConverter
+     * @return MarkdownConverter
      */
-    public function markdown(Tree $tree = null): CommonMarkConverter
+    public function markdown(Tree $tree = null): MarkdownConverter
     {
-        $environment = Environment::createCommonMarkEnvironment();
+        $environment = $this->commonMarkEnvironment();
 
-        // Wrap tables so support horizontal scrolling with bootstrap.
+        // Wrap tables to support horizontal scrolling with bootstrap.
         $environment->addExtension(new ResponsiveTableExtension());
 
         // Convert webtrees 1.x style census tables to commonmark format.
@@ -89,6 +91,17 @@ class MarkdownFactory implements MarkdownFactoryInterface
             $environment->addExtension(new XrefExtension($tree));
         }
 
-        return new CommonMarkConverter(static::CONFIG, $environment);
+        return new MarkdownConverter($environment);
+    }
+
+    /**
+     * @return Environment
+     */
+    protected function commonMarkEnvironment(): Environment
+    {
+        $environment = new Environment(static::CONFIG);
+        $environment->addExtension(new CommonMarkCoreExtension());
+
+        return $environment;
     }
 }
