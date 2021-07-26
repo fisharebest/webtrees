@@ -342,11 +342,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                     }
                 }
 
-                if ($object instanceof Individual || $object instanceof Family) {
-                    $records->add($record . "\n1 SOUR @WEBTREES@\n2 PAGE " . $object->url());
-                } elseif ($object instanceof Source) {
-                    $records->add($record . "\n1 NOTE " . $object->url());
-                } elseif ($object instanceof Media) {
+                $records->add($record);
+
+                if ($object instanceof Media) {
                     // Add the media files to the archive
                     foreach ($object->mediaFiles() as $media_file) {
                         $from = $media_file->filename();
@@ -355,22 +353,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                             $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                         }
                     }
-                    $records->add($record);
-                } else {
-                    $records->add($record);
                 }
             }
         }
-
-        $base_url = $request->getAttribute('base_url');
-
-        // Create a source, to indicate the source of the data.
-        $record = "0 @WEBTREES@ SOUR\n1 TITL " . $base_url;
-        $author = $this->user_service->find((int) $tree->getPreference('CONTACT_USER_ID'));
-        if ($author !== null) {
-            $record .= "\n1 AUTH " . $author->realName();
-        }
-        $records->add($record);
 
         $stream = fopen('php://temp', 'wb+');
 
