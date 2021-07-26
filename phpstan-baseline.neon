@@ -1380,7 +1380,7 @@ parameters:
 			path: app/Report/ReportParserSetup.php
 
 		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\:\\:\\$lastCellHeight \\(float\\) does not accept last\\.$#"
+			message: "#^Parameter \\#6 \\$fill of method TCPDF\\:\\:MultiCell\\(\\) expects bool, int given\\.$#"
 			count: 1
 			path: app/Report/ReportPdfCell.php
 
@@ -1390,9 +1390,14 @@ parameters:
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Comparison operation \"\\<\\=\" between \\(array\\|float\\|int\\) and float results in an error\\.$#"
+			message: "#^Parameter \\#1 \\$link of method TCPDF\\:\\:SetLink\\(\\) expects int, string given\\.$#"
 			count: 1
-			path: app/Report/ReportPdfText.php
+			path: app/Report/ReportPdfFootnote.php
+
+		-
+			message: "#^Parameter \\#1 \\$num of function ceil expects float\\|int, array\\<float\\>\\|float given\\.$#"
+			count: 3
+			path: app/Report/ReportPdfFootnote.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -1423,11 +1428,6 @@ parameters:
 			message: "#^Result of \\|\\| is always true\\.$#"
 			count: 1
 			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Return type \\(float\\) of method Fisharebest\\\\Webtrees\\\\Report\\\\TcpdfWrapper\\:\\:getRemainingWidth\\(\\) should be compatible with return type \\(int\\) of method TCPDF\\:\\:getRemainingWidth\\(\\)$#"
-			count: 1
-			path: app/Report/TcpdfWrapper.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$max\\.$#"
