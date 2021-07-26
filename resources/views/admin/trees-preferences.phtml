@@ -712,9 +712,6 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'QUICK_REQUIRED_FACTS[]', 'id' => 'QUICK_REQUIRED_FACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Facts for new individuals” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new individual. For example, if BIRT is in the list, fields for birth date and birth place will be shown on the form.') ?>
-            </p>
         </div>
     </div>
 
@@ -766,9 +763,6 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'QUICK_REQUIRED_FAMFACTS[]', 'id' => 'QUICK_REQUIRED_FAMFACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Facts for new families” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when adding a new family. For example, if MARR is in the list, then fields for marriage date and marriage place will be shown on the form.') ?>
-            </p>
         </div>
     </div>
 
@@ -781,34 +775,6 @@ use Illuminate\Support\Collection;
             <?= view('components/select', ['name' => 'FAM_FACTS_QUICK[]', 'id' => 'FAM_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_QUICK')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
             <p class="small text-muted">
                 <?= /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('The most common family facts and events are listed separately, so that they can be added more easily.') ?>
-            </p>
-        </div>
-    </div>
-
-    <h3><?= I18N::translate('Advanced fact preferences') ?></h3>
-
-    <!-- ADVANCED_NAME_FACTS -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="ADVANCED_NAME_FACTS">
-            <?= I18N::translate('Advanced name facts') ?>
-        </label>
-        <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'ADVANCED_NAME_FACTS[]', 'id' => 'ADVANCED_NAME_FACTS', 'selected' => explode(',', $tree->getPreference('ADVANCED_NAME_FACTS')), 'options' => $all_name_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Advanced name facts” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown on the add/edit name form. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store names in several different alphabets.') ?>
-            </p>
-        </div>
-    </div>
-
-    <!-- ADVANCED_PLAC_FACTS -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="ADVANCED_PLAC_FACTS">
-            <?= I18N::translate('Advanced place name facts') ?>
-        </label>
-        <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'ADVANCED_PLAC_FACTS[]', 'id' => 'ADVANCED_PLAC_FACTS', 'selected' => explode(',', $tree->getPreference('ADVANCED_PLAC_FACTS')), 'options' => $all_plac_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Advanced place name facts” configuration setting */ I18N::translate('This is a comma separated list of GEDCOM fact tags that will be shown when you add or edit place names. If you use non-Latin alphabets such as Hebrew, Greek, Cyrillic, or Arabic, you may want to add tags such as _HEB, ROMN, FONE, etc. to allow you to store place names in several different alphabets.') ?>
             </p>
         </div>
     </div>

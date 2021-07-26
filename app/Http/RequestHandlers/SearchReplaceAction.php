@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
@@ -91,17 +92,9 @@ class SearchReplaceAction implements RequestHandlerInterface
                 break;
 
             case 'name':
-                $adv_name_tags = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
-                $name_tags     = array_unique(array_merge([
-                    'NAME',
-                    'NPFX',
-                    'GIVN',
-                    'SPFX',
-                    'SURN',
-                    'NSFX',
-                    '_MARNM',
-                    '_AKA',
-                ], $adv_name_tags));
+                $name_tags = Registry::elementFactory()->make('INDI:NAME')->subtags();
+                $name_tags = array_map(fn (string $tag): string => '2 ' . $tag, $name_tags);
+                $name_tags[] = '1 NAME';
 
                 $records = $this->search_service->searchIndividuals([$tree], [$search]);
                 $count   = $this->replaceIndividualNames($records, $search, $replace, $name_tags);
@@ -164,7 +157,7 @@ class SearchReplaceAction implements RequestHandlerInterface
      */
     private function replaceIndividualNames(Collection $records, string $search, string $replace, array $name_tags): int
     {
-        $pattern     = '/(\n\d (?:' . implode('|', $name_tags) . ') (?:.*))' . preg_quote($search, '/') . '/i';
+        $pattern     = '/(\n(?:' . implode('|', $name_tags) . ') (?:.*))' . preg_quote($search, '/') . '/i';
         $replacement = '$1' . $replace;
         $count       = 0;
 

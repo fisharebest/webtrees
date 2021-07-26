@@ -51,8 +51,6 @@ class Tree
 
     // Default values for some tree preferences.
     protected const DEFAULT_PREFERENCES = [
-        'ADVANCED_NAME_FACTS'          => 'NICK',
-        'ADVANCED_PLAC_FACTS'          => '',
         'CALENDAR_FORMAT'              => 'gregorian',
         'CHART_BOX_TAGS'               => '',
         'EXPAND_SOURCES'               => '0',

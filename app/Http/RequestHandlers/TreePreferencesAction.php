@@ -55,8 +55,6 @@ class TreePreferencesAction implements RequestHandlerInterface
 
         $params = (array) $request->getParsedBody();
 
-        $tree->setPreference('ADVANCED_NAME_FACTS', implode(',', $params['ADVANCED_NAME_FACTS'] ?? []));
-        $tree->setPreference('ADVANCED_PLAC_FACTS', implode(',', $params['ADVANCED_PLAC_FACTS'] ?? []));
         // For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
         // e.g. "gregorian_and_jewish"
         $tree->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique([

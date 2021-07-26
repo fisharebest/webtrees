@@ -295,67 +295,6 @@ class GedcomEditService
     }
 
     /**
-     * Create a form to add a new fact.
-     *
-     * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     * @param string                 $fact
-     *
-     * @return string
-     */
-    public function addNewFact(ServerRequestInterface $request, Tree $tree, string $fact): string
-    {
-        $params = (array) $request->getParsedBody();
-
-        $FACT = $params[$fact];
-        $DATE = $params[$fact . '_DATE'] ?? '';
-        $PLAC = $params[$fact . '_PLAC'] ?? '';
-
-        if ($DATE !== '' || $PLAC !== '' || $FACT !== '' && $FACT !== 'Y') {
-            if ($FACT !== '' && $FACT !== 'Y') {
-                $gedrec = "\n1 " . $fact . ' ' . $FACT;
-            } else {
-                $gedrec = "\n1 " . $fact;
-            }
-            if ($DATE !== '') {
-                $gedrec .= "\n2 DATE " . $DATE;
-            }
-            if ($PLAC !== '') {
-                $gedrec .= "\n2 PLAC " . $PLAC;
-
-                if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
-                    foreach ($match[1] as $tag) {
-                        $TAG = $params[$fact . '_' . $tag];
-                        if ($TAG !== '') {
-                            $gedrec .= "\n3 " . $tag . ' ' . $TAG;
-                        }
-                    }
-                }
-                $LATI = $params[$fact . '_LATI'] ?? '';
-                $LONG = $params[$fact . '_LONG'] ?? '';
-                if ($LATI !== '' || $LONG !== '') {
-                    $gedrec .= "\n3 MAP\n4 LATI " . $LATI . "\n4 LONG " . $LONG;
-                }
-            }
-            if ((bool) ($params['SOUR_' . $fact] ?? false)) {
-                return $this->updateSource($gedrec, 'yes');
-            }
-
-            return $gedrec;
-        }
-
-        if ($FACT === 'Y') {
-            if ((bool) ($params['SOUR_' . $fact] ?? false)) {
-                return $this->updateSource("\n1 " . $fact . ' Y', 'yes');
-            }
-
-            return "\n1 " . $fact . ' Y';
-        }
-
-        return '';
-    }
-
-    /**
      * Add new GEDCOM lines from the $xxxSOUR interface update arrays, which
      * were produced by the splitSOUR() function.
      * See the FunctionsEdit::handle_updatesges() function for details.
@@ -391,70 +330,6 @@ class GedcomEditService
         $this->text    = $textSave;
 
         return $myRecord;
-    }
-
-    /**
-     * Create a form to add a sex record.
-     *
-     * @param ServerRequestInterface $request
-     *
-     * @return string
-     */
-    public function addNewSex(ServerRequestInterface $request): string
-    {
-        $params = (array) $request->getParsedBody();
-
-        switch ($params['SEX']) {
-            case 'M':
-                return "\n1 SEX M";
-            case 'F':
-                return "\n1 SEX F";
-            default:
-                return "\n1 SEX U";
-        }
-    }
-
-    /**
-     * Assemble the pieces of a newly created record into gedcom
-     *
-     * @param ServerRequestInterface $request
-     * @param Tree                   $tree
-     *
-     * @return string
-     */
-    public function addNewName(ServerRequestInterface $request, Tree $tree): string
-    {
-        $params = (array) $request->getParsedBody();
-        $gedrec = "\n1 NAME " . $params['NAME'];
-
-        $tags = [
-            'NPFX',
-            'GIVN',
-            'SPFX',
-            'SURN',
-            'NSFX',
-            'NICK',
-        ];
-
-        if (preg_match_all('/(' . Gedcom::REGEX_TAG . ')/', $tree->getPreference('ADVANCED_NAME_FACTS'), $match)) {
-            $tags = array_merge($tags, $match[1]);
-        }
-
-        // Paternal and Polish and Lithuanian surname traditions can also create a _MARNM
-        $SURNAME_TRADITION = $tree->getPreference('SURNAME_TRADITION');
-        if ($SURNAME_TRADITION === 'paternal' || $SURNAME_TRADITION === 'polish' || $SURNAME_TRADITION === 'lithuanian') {
-            $tags[] = '_MARNM';
-        }
-
-        foreach (array_unique($tags) as $tag) {
-            $TAG = $params[$tag];
-
-            if ($TAG !== '') {
-                $gedrec .= "\n2 " . $tag . ' ' . $TAG;
-            }
-        }
-
-        return $gedrec;
     }
 
     /**
