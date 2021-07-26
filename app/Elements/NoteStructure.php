@@ -60,7 +60,7 @@ class NoteStructure extends AbstractElement
         $xref_note      = new XrefNote('');
 
         // Existing shared note.
-        if (preg_match('/@' . Gedcom::REGEX_XREF . '@/', $value)) {
+        if (preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $value)) {
             return $xref_note->edit($id, $name, $value, $tree);
         }
 
