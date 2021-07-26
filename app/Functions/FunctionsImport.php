@@ -792,7 +792,7 @@ class FunctionsImport
             ->where('multimedia_file_refn', '=', mb_substr($file, 0, 248))
             ->value('m_id');
 
-        if ($xref === null && $file !== '') {
+        if ($xref === null) {
             $xref = Registry::xrefFactory()->make(Media::RECORD_TYPE);
 
             // convert to a media-object
