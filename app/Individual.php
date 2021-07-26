@@ -75,28 +75,6 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Sometimes, we'll know in advance that we need to load a set of records.
-     * Typically when we load families and their members.
-     *
-     * @param Tree     $tree
-     * @param string[] $xrefs
-     *
-     * @return void
-     */
-    public static function load(Tree $tree, array $xrefs): void
-    {
-        $rows = DB::table('individuals')
-            ->where('i_file', '=', $tree->id())
-            ->whereIn('i_id', array_unique($xrefs))
-            ->select(['i_id AS xref', 'i_gedcom AS gedcom'])
-            ->get();
-
-        foreach ($rows as $row) {
-            Registry::individualFactory()->make($row->xref, $tree, $row->gedcom);
-        }
-    }
-
-    /**
      * Can the name of this record be shown?
      *
      * @param int|null $access_level
