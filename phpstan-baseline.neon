@@ -1145,6 +1145,11 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
+			message: "#^Parameter \\#1 \\$font of method TCPDF\\:\\:setHeaderFont\\(\\) expects array\\<int, string\\>, array\\<int, float\\|string\\> given\\.$#"
+			count: 1
+			path: app/Report/PdfRenderer.php
+
+		-
 			message: "#^Parameter \\#1 \\$hm of method TCPDF\\:\\:setHeaderMargin\\(\\) expects int, float given\\.$#"
 			count: 1
 			path: app/Report/PdfRenderer.php
