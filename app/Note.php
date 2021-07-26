@@ -81,9 +81,9 @@ class Note extends GedcomRecord
     public function extractNames(): void
     {
         if ($this->tree->getPreference('FORMAT_TEXT') === 'markdown') {
-            $text = Registry::markdownFactory()->markdown()->convertToHtml($this->getNote())->getContent();
+            $text = Registry::markdownFactory()->markdown()->convertToHtml($this->getNote());
         } else {
-            $text = Registry::markdownFactory()->autolink()->convertToHtml($this->getNote())->getContent();
+            $text = Registry::markdownFactory()->autolink()->convertToHtml($this->getNote());
         }
 
 
