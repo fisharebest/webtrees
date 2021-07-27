@@ -424,7 +424,7 @@ class FunctionsPrint
     /**
      * Print a new fact box on details pages
      *
-     * @param GedcomRecord $record the person, family, source etc the fact will be added to
+     * @param Individual|Family $record
      *
      * @return void
      */

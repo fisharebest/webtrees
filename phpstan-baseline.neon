@@ -66,22 +66,7 @@ parameters:
 			path: app/Functions/FunctionsImport.php
 
 		-
-			message: "#^Parameter \\#1 \\$array of function array_intersect expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Parameter \\#1 \\$uniquefacts of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrint\\:\\:checkFactUnique\\(\\) expects array\\<string\\>, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
 			message: "#^Parameter \\#2 \\$offset of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$arrays of function array_merge expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php
 
@@ -486,11 +471,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\SearchReplaceAction\\:\\:replaceRecords\\(\\) has parameter \\$records with no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SearchReplaceAction.php
-
-		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$arrays of function array_merge expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SearchReplaceAction.php
 
