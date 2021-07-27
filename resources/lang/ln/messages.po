@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-07-27 17:32+0100\n"
+"POT-Creation-Date: 2021-07-27 18:34+0100\n"
 "PO-Revision-Date: 2021-07-01 09:22+0000\n"
 "Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: Lingala <https://translate.webtrees.net/projects/webtrees/webtrees/ln/>\n"
@@ -7462,21 +7462,6 @@ msgctxt "NOMINATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#: resources/views/admin/site-mail.phtml:155
-#: resources/views/admin/users-create.phtml:61
-#: resources/views/admin/users-edit.phtml:71
-#: resources/views/edit-account-page.phtml:92
-#: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
-#: resources/views/password-reset-page.phtml:38
-#: resources/views/register-page.phtml:75
-#: resources/views/setup/step-4-database-mysql.phtml:99
-#: resources/views/setup/step-4-database-pgsql.phtml:86
-#: resources/views/setup/step-4-database-sqlsvr.phtml:86
-#: resources/views/setup/step-5-administrator.phtml:81
-msgid "Hide"
-msgstr ""
-
 #: resources/views/admin/tags.phtml:44 resources/views/admin/tags.phtml:174
 #: resources/views/admin/tags.phtml:266 resources/views/admin/tags.phtml:328
 #: resources/views/admin/tags.phtml:403 resources/views/admin/tags.phtml:442
@@ -13047,19 +13032,7 @@ msgstr ""
 msgid "Shortest marriage"
 msgstr "Boúmeli bwa libála lya mokúsé"
 
-#: resources/views/admin/site-mail.phtml:155
-#: resources/views/admin/users-create.phtml:61
-#: resources/views/admin/users-edit.phtml:71
 #: resources/views/calendar-page.phtml:105
-#: resources/views/edit-account-page.phtml:92
-#: resources/views/login-page.phtml:47
-#: resources/views/modules/login_block/sign-in.phtml:33
-#: resources/views/password-reset-page.phtml:38
-#: resources/views/register-page.phtml:75
-#: resources/views/setup/step-4-database-mysql.phtml:99
-#: resources/views/setup/step-4-database-pgsql.phtml:86
-#: resources/views/setup/step-4-database-sqlsvr.phtml:86
-#: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show"
 msgstr "Kolakisa"
 
@@ -19329,6 +19302,7 @@ msgstr "ndeko-ikɛ́ mwǎsí"
 msgid "herself"
 msgstr "yě mɔ̌kɔ́"
 
+#: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/tags.phtml:59 resources/views/admin/tags.phtml:73
 #: resources/views/admin/tags.phtml:87 resources/views/admin/tags.phtml:99
 #: resources/views/admin/tags.phtml:113 resources/views/admin/tags.phtml:127
@@ -19360,6 +19334,17 @@ msgstr "yě mɔ̌kɔ́"
 #: resources/views/admin/trees-preferences.phtml:543
 #: resources/views/admin/trees-preferences.phtml:655
 #: resources/views/admin/trees-preferences.phtml:670
+#: resources/views/admin/users-create.phtml:61
+#: resources/views/admin/users-edit.phtml:71
+#: resources/views/edit-account-page.phtml:92
+#: resources/views/login-page.phtml:47
+#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/password-reset-page.phtml:38
+#: resources/views/register-page.phtml:75
+#: resources/views/setup/step-4-database-mysql.phtml:99
+#: resources/views/setup/step-4-database-pgsql.phtml:86
+#: resources/views/setup/step-4-database-sqlsvr.phtml:86
+#: resources/views/setup/step-5-administrator.phtml:81
 msgid "hide"
 msgstr "kobómba"
 
@@ -20240,6 +20225,7 @@ msgstr "mwǎna-nɔ́kɔ́ wa nsambo"
 msgid "shared note"
 msgstr ""
 
+#: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/trees-preferences.phtml:307
 #: resources/views/admin/trees-preferences.phtml:387
 #: resources/views/admin/trees-preferences.phtml:402
@@ -20247,8 +20233,19 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:543
 #: resources/views/admin/trees-preferences.phtml:655
 #: resources/views/admin/trees-preferences.phtml:670
+#: resources/views/admin/users-create.phtml:61
+#: resources/views/admin/users-edit.phtml:71
+#: resources/views/edit-account-page.phtml:92
+#: resources/views/login-page.phtml:47
 #: resources/views/modules/faq/config.phtml:38
+#: resources/views/modules/login_block/sign-in.phtml:33
 #: resources/views/modules/stories/config.phtml:31
+#: resources/views/password-reset-page.phtml:38
+#: resources/views/register-page.phtml:75
+#: resources/views/setup/step-4-database-mysql.phtml:99
+#: resources/views/setup/step-4-database-pgsql.phtml:86
+#: resources/views/setup/step-4-database-sqlsvr.phtml:86
+#: resources/views/setup/step-5-administrator.phtml:81
 msgid "show"
 msgstr "lakísá"
 

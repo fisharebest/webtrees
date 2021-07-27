@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-07-27 17:32+0100\n"
+"POT-Creation-Date: 2021-07-27 18:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16501,19 +16501,27 @@ msgid "Password"
 msgstr ""
 
 #: resources/views/admin/site-mail.phtml:155
+#: resources/views/admin/trees-preferences.phtml:307
+#: resources/views/admin/trees-preferences.phtml:387
+#: resources/views/admin/trees-preferences.phtml:402
+#: resources/views/admin/trees-preferences.phtml:418
+#: resources/views/admin/trees-preferences.phtml:543
+#: resources/views/admin/trees-preferences.phtml:655
+#: resources/views/admin/trees-preferences.phtml:670
 #: resources/views/admin/users-create.phtml:61
 #: resources/views/admin/users-edit.phtml:71
-#: resources/views/calendar-page.phtml:105
 #: resources/views/edit-account-page.phtml:92
 #: resources/views/login-page.phtml:47
+#: resources/views/modules/faq/config.phtml:38
 #: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/modules/stories/config.phtml:31
 #: resources/views/password-reset-page.phtml:38
 #: resources/views/register-page.phtml:75
 #: resources/views/setup/step-4-database-mysql.phtml:99
 #: resources/views/setup/step-4-database-pgsql.phtml:86
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
-msgid "Show"
+msgid "show"
 msgstr ""
 
 #: resources/views/admin/site-mail.phtml:155
@@ -16532,6 +16540,37 @@ msgid "Show password"
 msgstr ""
 
 #: resources/views/admin/site-mail.phtml:155
+#: resources/views/admin/tags.phtml:59 resources/views/admin/tags.phtml:73
+#: resources/views/admin/tags.phtml:87 resources/views/admin/tags.phtml:99
+#: resources/views/admin/tags.phtml:113 resources/views/admin/tags.phtml:127
+#: resources/views/admin/tags.phtml:141 resources/views/admin/tags.phtml:155
+#: resources/views/admin/tags.phtml:189 resources/views/admin/tags.phtml:203
+#: resources/views/admin/tags.phtml:217 resources/views/admin/tags.phtml:231
+#: resources/views/admin/tags.phtml:247 resources/views/admin/tags.phtml:281
+#: resources/views/admin/tags.phtml:295 resources/views/admin/tags.phtml:309
+#: resources/views/admin/tags.phtml:343 resources/views/admin/tags.phtml:356
+#: resources/views/admin/tags.phtml:370 resources/views/admin/tags.phtml:384
+#: resources/views/admin/tags.phtml:423 resources/views/admin/tags.phtml:457
+#: resources/views/admin/tags.phtml:471 resources/views/admin/tags.phtml:485
+#: resources/views/admin/tags.phtml:503 resources/views/admin/tags.phtml:521
+#: resources/views/admin/tags.phtml:535 resources/views/admin/tags.phtml:553
+#: resources/views/admin/tags.phtml:567 resources/views/admin/tags.phtml:581
+#: resources/views/admin/tags.phtml:595 resources/views/admin/tags.phtml:609
+#: resources/views/admin/tags.phtml:623 resources/views/admin/tags.phtml:637
+#: resources/views/admin/tags.phtml:651 resources/views/admin/tags.phtml:665
+#: resources/views/admin/tags.phtml:679 resources/views/admin/tags.phtml:693
+#: resources/views/admin/tags.phtml:707 resources/views/admin/tags.phtml:761
+#: resources/views/admin/tags.phtml:795 resources/views/admin/tags.phtml:809
+#: resources/views/admin/tags.phtml:823 resources/views/admin/tags.phtml:837
+#: resources/views/admin/tags.phtml:851 resources/views/admin/tags.phtml:865
+#: resources/views/admin/tags.phtml:901 resources/views/admin/tags.phtml:919
+#: resources/views/admin/trees-preferences.phtml:307
+#: resources/views/admin/trees-preferences.phtml:387
+#: resources/views/admin/trees-preferences.phtml:402
+#: resources/views/admin/trees-preferences.phtml:418
+#: resources/views/admin/trees-preferences.phtml:543
+#: resources/views/admin/trees-preferences.phtml:655
+#: resources/views/admin/trees-preferences.phtml:670
 #: resources/views/admin/users-create.phtml:61
 #: resources/views/admin/users-edit.phtml:71
 #: resources/views/edit-account-page.phtml:92
@@ -16543,7 +16582,7 @@ msgstr ""
 #: resources/views/setup/step-4-database-pgsql.phtml:86
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
-msgid "Hide"
+msgid "hide"
 msgstr ""
 
 #: resources/views/admin/site-mail.phtml:155
@@ -16758,40 +16797,6 @@ msgstr ""
 #: resources/views/admin/tags.phtml:726 resources/views/admin/tags.phtml:780
 #: resources/views/admin/tags.phtml:884
 msgid "Hide GEDCOM tags"
-msgstr ""
-
-#: resources/views/admin/tags.phtml:59 resources/views/admin/tags.phtml:73
-#: resources/views/admin/tags.phtml:87 resources/views/admin/tags.phtml:99
-#: resources/views/admin/tags.phtml:113 resources/views/admin/tags.phtml:127
-#: resources/views/admin/tags.phtml:141 resources/views/admin/tags.phtml:155
-#: resources/views/admin/tags.phtml:189 resources/views/admin/tags.phtml:203
-#: resources/views/admin/tags.phtml:217 resources/views/admin/tags.phtml:231
-#: resources/views/admin/tags.phtml:247 resources/views/admin/tags.phtml:281
-#: resources/views/admin/tags.phtml:295 resources/views/admin/tags.phtml:309
-#: resources/views/admin/tags.phtml:343 resources/views/admin/tags.phtml:356
-#: resources/views/admin/tags.phtml:370 resources/views/admin/tags.phtml:384
-#: resources/views/admin/tags.phtml:423 resources/views/admin/tags.phtml:457
-#: resources/views/admin/tags.phtml:471 resources/views/admin/tags.phtml:485
-#: resources/views/admin/tags.phtml:503 resources/views/admin/tags.phtml:521
-#: resources/views/admin/tags.phtml:535 resources/views/admin/tags.phtml:553
-#: resources/views/admin/tags.phtml:567 resources/views/admin/tags.phtml:581
-#: resources/views/admin/tags.phtml:595 resources/views/admin/tags.phtml:609
-#: resources/views/admin/tags.phtml:623 resources/views/admin/tags.phtml:637
-#: resources/views/admin/tags.phtml:651 resources/views/admin/tags.phtml:665
-#: resources/views/admin/tags.phtml:679 resources/views/admin/tags.phtml:693
-#: resources/views/admin/tags.phtml:707 resources/views/admin/tags.phtml:761
-#: resources/views/admin/tags.phtml:795 resources/views/admin/tags.phtml:809
-#: resources/views/admin/tags.phtml:823 resources/views/admin/tags.phtml:837
-#: resources/views/admin/tags.phtml:851 resources/views/admin/tags.phtml:865
-#: resources/views/admin/tags.phtml:901 resources/views/admin/tags.phtml:919
-#: resources/views/admin/trees-preferences.phtml:307
-#: resources/views/admin/trees-preferences.phtml:387
-#: resources/views/admin/trees-preferences.phtml:402
-#: resources/views/admin/trees-preferences.phtml:418
-#: resources/views/admin/trees-preferences.phtml:543
-#: resources/views/admin/trees-preferences.phtml:655
-#: resources/views/admin/trees-preferences.phtml:670
-msgid "hide"
 msgstr ""
 
 #: resources/views/admin/tags.phtml:253
@@ -17078,18 +17083,6 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:298
 #: resources/views/admin/trees-preferences.phtml:304
 msgid "Thumbnail images"
-msgstr ""
-
-#: resources/views/admin/trees-preferences.phtml:307
-#: resources/views/admin/trees-preferences.phtml:387
-#: resources/views/admin/trees-preferences.phtml:402
-#: resources/views/admin/trees-preferences.phtml:418
-#: resources/views/admin/trees-preferences.phtml:543
-#: resources/views/admin/trees-preferences.phtml:655
-#: resources/views/admin/trees-preferences.phtml:670
-#: resources/views/modules/faq/config.phtml:38
-#: resources/views/modules/stories/config.phtml:31
-msgid "show"
 msgstr ""
 
 #: resources/views/admin/trees-preferences.phtml:309
@@ -17839,6 +17832,10 @@ msgid "%s family"
 msgid_plural "%s families"
 msgstr[0] ""
 msgstr[1] ""
+
+#: resources/views/calendar-page.phtml:105
+msgid "Show"
+msgstr ""
 
 #: resources/views/calendar-page.phtml:119
 #: resources/views/lists/datatables-attributes.phtml:32
