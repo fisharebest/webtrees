@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
+use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
@@ -48,6 +49,15 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
         $media_filesystem = Registry::filesystem()->media($tree);
 
         try {
+            $folders = $media_filesystem->listContents('', Filesystem::LIST_DEEP)
+                ->filter(fn (StorageAttributes $attributes): bool => $attributes->isDir())
+                ->filter(fn (StorageAttributes $attributes): bool => str_contains($attributes->path(), $query))
+                ->filter(fn (StorageAttributes $attributes): bool => !in_array('thumbs', explode('/', $attributes->path()), true))
+                ->filter(fn (StorageAttributes $attributes): bool => !in_array('watermarks', explode('/', $attributes->path()), true))
+                ->map(fn (StorageAttributes $attributes): string => $attributes->path());
+
+            return new Collection($folders);
+
             $contents = new Collection($media_filesystem->listContents('', Filesystem::LIST_DEEP));
 
             return $contents
