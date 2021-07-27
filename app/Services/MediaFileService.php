@@ -340,7 +340,7 @@ class MediaFileService
      *
      * @param Tree $tree
      *
-     * @return Collection
+     * @return Collection<string>
      * @throws FilesystemException
      */
     public function mediaFolders(Tree $tree): Collection
