@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\View;
         <label for="password">
             <?= I18N::translate('Password') ?>
         </label>
-        <input type="password" id="password" name="password" class="form-control" autocomplete="current-password">
+        <input type="password" id="password" name="password" class="form-control" autocomplete="current-password" data-show-text="<?= e(I18N::translate('Show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('Hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
     </div>
 
     <div>
@@ -66,10 +66,3 @@ use Fisharebest\Webtrees\View;
         </div>
     </form>
 </div>
-
-<?php View::push('javascript') ?>
-<script>
-    $('#password').hideShowPassword('infer', true);
-</script>
-<?php View::endpush() ?>
-

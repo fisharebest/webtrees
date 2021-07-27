@@ -766,6 +766,32 @@ $(function () {
   $('.wt-osk-close').on('click', function () {
     $('.wt-osk').hide();
   });
+
+  // Hide/Show password fields
+  $('input[type=password]').each(function () {
+    $(this).hideShowPassword('infer', true, {
+      states: {
+        shown: {
+          toggle: {
+            content: this.dataset.hideText,
+            attr: {
+              title: this.dataset.hideTitle,
+              'aria-label': this.dataset.hideTitle,
+            }
+          }
+        },
+        hidden: {
+          toggle: {
+            content: this.dataset.showText,
+            attr: {
+              title: this.dataset.showTitle,
+              'aria-label': this.dataset.showTitle,
+            }
+          }
+        }
+      }
+    });
+  });
 });
 
 // Prevent form re-submission via accidental double-click.
