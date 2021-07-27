@@ -28,19 +28,16 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use Psr\Http\Message\ServerRequestInterface;
 
 use function array_filter;
 use function array_merge;
 use function array_shift;
-use function array_unique;
 use function array_values;
 use function assert;
 use function count;
 use function explode;
 use function implode;
 use function max;
-use function preg_match_all;
 use function preg_replace;
 use function preg_split;
 use function str_repeat;
@@ -48,6 +45,7 @@ use function str_replace;
 use function substr_count;
 use function trim;
 
+use const ARRAY_FILTER_USE_BOTH;
 use const ARRAY_FILTER_USE_KEY;
 use const PHP_INT_MAX;
 
@@ -440,10 +438,16 @@ class GedcomEditService
     {
         $subtags = Registry::elementFactory()->make($record->tag())->subtags();
 
+        $subtags = array_filter($subtags, fn (string $v, string $k) => !str_ends_with($v, ':1') || $record->facts([$k])->isEmpty(), ARRAY_FILTER_USE_BOTH);
+
+        $subtags = array_keys($subtags);
+
         if (!$include_hidden) {
             $fn_hidden = fn (string $t): bool => !$this->isHiddenTag($record->tag() . ':' . $t);
             $subtags   = array_filter($subtags, $fn_hidden);
         }
+
+        $subtags = array_diff($subtags, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS', 'CHAN']);
 
         return $subtags;
     }

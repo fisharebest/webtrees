@@ -25,6 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
 class CustomEvent extends AbstractEventElement
 {
     protected const SUBTAGS = [
+        'TYPE' => '0:1',
         'DATE' => '0:1',
         'AGE'  => '0:1',
         'PLAC' => '0:1',

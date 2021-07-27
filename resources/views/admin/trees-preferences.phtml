@@ -679,32 +679,6 @@ use Illuminate\Support\Collection;
 
     <h3><?= I18N::translate('Facts for individual records') ?></h3>
 
-    <!-- INDI_FACTS_ADD -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="INDI_FACTS_ADD">
-            <?= I18N::translate('All individual facts') ?>
-        </label>
-        <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_ADD[]', 'id' => 'INDI_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_ADD')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “All individual facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list.') ?>
-            </p>
-        </div>
-    </div>
-
-    <!-- INDI_FACTS_UNIQUE -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="INDI_FACTS_UNIQUE">
-            <?= I18N::translate('Unique individual facts') ?>
-        </label>
-        <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_UNIQUE[]', 'id' => 'INDI_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_UNIQUE')), 'options' => $all_indi_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Unique individual facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can only add once to individuals. For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual. Fact names that appear in this list must not also appear in the “All individual facts” list.') ?>
-            </p>
-        </div>
-    </div>
-
     <!-- QUICK_REQUIRED_FACTS -->
     <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="QUICK_REQUIRED_FACTS">
@@ -729,32 +703,6 @@ use Illuminate\Support\Collection;
     </div>
 
     <h3><?= I18N::translate('Facts for family records') ?></h3>
-
-    <!-- FAM_FACTS_ADD -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="FAM_FACTS_ADD">
-            <?= I18N::translate('All family facts') ?>
-        </label>
-        <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'FAM_FACTS_ADD[]', 'id' => 'FAM_FACTS_ADD', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_ADD')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “All family facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can add to families. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique family facts” list.') ?>
-            </p>
-        </div>
-    </div>
-
-    <!-- FAM_FACTS_UNIQUE -->
-    <div class="row form-group">
-        <label class="col-sm-3 col-form-label" for="FAM_FACTS_UNIQUE">
-            <?= I18N::translate('Unique family facts') ?>
-        </label>
-        <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'FAM_FACTS_UNIQUE[]', 'id' => 'FAM_FACTS_UNIQUE', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_UNIQUE')), 'options' => $all_fam_facts, 'class' => 'select2']) ?>
-            <p class="small text-muted">
-                <?= /* I18N: Help text for the “Unique family facts” configuration setting */ I18N::translate('This is the list of GEDCOM facts that your users can only add once to families. For example, if MARR is in this list, users will not be able to add more than one MARR record to a family. Fact names that appear in this list must not also appear in the “All family facts” list.') ?>
-            </p>
-        </div>
-    </div>
 
     <!-- QUICK_REQUIRED_FAMFACTS -->
     <div class="row form-group">

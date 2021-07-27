@@ -35,10 +35,6 @@ use Fisharebest\Webtrees\Registry;
                         <?php foreach ($add_facts as $fact => $label) : ?>
                             <option value="<?= $fact ?>"><?= $label ?></option>
                         <?php endforeach ?>
-                        <?php if ($record->tag() === Individual::RECORD_TYPE || $record->tag() === Family::RECORD_TYPE) : ?>
-                            <option value="FACT"><?= I18N::translate('Custom fact') ?></option>
-                            <option value="EVEN"><?= I18N::translate('Custom event') ?></option>
-                        <?php endif ?>
                     </select>
 
                     <div class="input-group-append">

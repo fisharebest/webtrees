@@ -65,16 +65,12 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('CONTACT_USER_ID', $params['CONTACT_USER_ID'] ?? '');
         $tree->setPreference('EXPAND_NOTES', $params['EXPAND_NOTES'] ?? '');
         $tree->setPreference('EXPAND_SOURCES', $params['EXPAND_SOURCES'] ?? '');
-        $tree->setPreference('FAM_FACTS_ADD', implode(',', $params['FAM_FACTS_ADD'] ?? []));
         $tree->setPreference('FAM_FACTS_QUICK', implode(',', $params['FAM_FACTS_QUICK'] ?? []));
-        $tree->setPreference('FAM_FACTS_UNIQUE', implode(',', $params['FAM_FACTS_UNIQUE'] ?? []));
         $tree->setPreference('FULL_SOURCES', $params['FULL_SOURCES'] ?? '');
         $tree->setPreference('FORMAT_TEXT', $params['FORMAT_TEXT'] ?? '');
         $tree->setPreference('GENERATE_UIDS', $params['GENERATE_UIDS'] ?? '');
         $tree->setPreference('HIDE_GEDCOM_ERRORS', $params['HIDE_GEDCOM_ERRORS'] ?? '');
-        $tree->setPreference('INDI_FACTS_ADD', implode(',', $params['INDI_FACTS_ADD'] ?? []));
         $tree->setPreference('INDI_FACTS_QUICK', implode(',', $params['INDI_FACTS_QUICK'] ?? []));
-        $tree->setPreference('INDI_FACTS_UNIQUE', implode(',', $params['INDI_FACTS_UNIQUE'] ?? []));
         $tree->setPreference('MEDIA_UPLOAD', $params['MEDIA_UPLOAD'] ?? '');
         $tree->setPreference('META_DESCRIPTION', $params['META_DESCRIPTION'] ?? '');
         $tree->setPreference('META_TITLE', $params['META_TITLE'] ?? '');

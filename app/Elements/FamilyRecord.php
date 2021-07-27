@@ -25,8 +25,30 @@ namespace Fisharebest\Webtrees\Elements;
 class FamilyRecord extends AbstractElement
 {
     protected const SUBTAGS = [
-        'MARR' => '0:1',
-        'RESN' => '0:1',
+        'ANUL' => '0:M',
+        'CENS' => '0:M',
         'CHAN' => '0:1',
+        'CHIL' => '0:M',
+        'DIV'  => '0:M',
+        'DIVF' => '0:M',
+        'ENGA' => '0:M',
+        'EVEN' => '0:M',
+        'HUSB' => '0:1',
+        'MARB' => '0:M',
+        'MARC' => '0:M',
+        'MARL' => '0:M',
+        'MARR' => '0:M',
+        'MARS' => '0:M',
+        'NCHI' => '0:1',
+        'NOTE' => '0:M',
+        'OBJE' => '0:M',
+        'REFN' => '0:M',
+        'RESI' => '0:M',
+        'RESN' => '0:1',
+        'RIN'  => '0:1',
+        'SLGS' => '0:M',
+        'SOUR' => '0:M',
+        'SUBM' => '0:M',
+        'WIFE' => '0:1',
     ];
 }

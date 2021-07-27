@@ -32,23 +32,19 @@ use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 use function app;
 use function array_filter;
-use function array_intersect;
-use function array_merge;
-use function array_search;
 use function e;
 use function explode;
 use function in_array;
 use function preg_match;
 use function preg_match_all;
-use function preg_split;
 use function str_contains;
 use function strip_tags;
 use function strlen;
@@ -58,7 +54,6 @@ use function uasort;
 use function view;
 
 use const PREG_SET_ORDER;
-use const PREG_SPLIT_NO_EMPTY;
 
 /**
  * Class FunctionsPrint - common functions
@@ -427,29 +422,6 @@ class FunctionsPrint
     }
 
     /**
-     * Check for facts that may exist only once for a certain record type.
-     * If the fact already exists in the second array, delete it from the first one.
-     *
-     * @param array<string>    $uniquefacts
-     * @param Collection<Fact> $recfacts
-     *
-     * @return array<string>
-     */
-    public static function checkFactUnique(array $uniquefacts, Collection $recfacts): array
-    {
-        foreach ($recfacts as $factarray) {
-            $fact = explode(':', $factarray->tag())[1];
-            $key  = array_search($fact, $uniquefacts, true);
-
-            if ($key !== false) {
-                unset($uniquefacts[$key]);
-            }
-        }
-
-        return $uniquefacts;
-    }
-
-    /**
      * Print a new fact box on details pages
      *
      * @param GedcomRecord $record the person, family, source etc the fact will be added to
@@ -460,41 +432,86 @@ class FunctionsPrint
     {
         $tree = $record->tree();
 
+        $add_facts = (new GedcomEditService())->factsToAdd($record, false);
+
         // Add from pick list
         switch ($record->tag()) {
             case Individual::RECORD_TYPE:
-                $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-                $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-                $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+                $quick_facts  = explode(',', $tree->getPreference('INDI_FACTS_QUICK'));
+                $unique_facts = [
+                    'ADOP',
+                    'AFN' ,
+                    'BAPL',
+                    'BAPM',
+                    'BARM',
+                    'BASM',
+                    'BIRT',
+                    'BURI',
+                    'CAST',
+                    'CHAN',
+                    'CHR' ,
+                    'CHRA',
+                    'CONF',
+                    'CONL',
+                    'CREM',
+                    'DEAT',
+                    'ENDL',
+                    'FCOM',
+                    'GRAD',
+                    'NCHI',
+                    'NMR' ,
+                    'ORDN',
+                    'PROB',
+                    'REFN',
+                    'RELI',
+                    'RESN',
+                    'RETI',
+                    'RFN' ,
+                    'RIN' ,
+                    'SEX' ,
+                    'SLGC',
+                    'SSN' ,
+                    'WILL',
+                ];
                 break;
 
             case Family::RECORD_TYPE:
-                $addfacts    = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
-                $uniquefacts = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-                $quickfacts  = preg_split('/[, ;:]+/', $tree->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+                $quick_facts  = explode(',', $tree->getPreference('FAM_FACTS_QUICK'));
+                $unique_facts = [
+                    'DIV',
+                    'DIVF',
+                    'ENGA',
+                    'MARR',
+                ];
                 break;
 
             default:
-                return;
+                $quick_facts  = [];
+                $unique_facts = [];
+                break;
         }
 
+        // Filter existing tags
+        $filter_fn = fn ($tag): bool => !in_array($tag, $unique_facts, true) || $record->facts([$tag])->isEmpty();
+
+        $quick_facts = array_filter($quick_facts, $filter_fn);
+
+
         // Create a label for a subtag
-        $fn = fn ($subtag) => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();
+        $label_fn = fn ($subtag): string => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();
 
-        $addfacts   = array_merge(self::checkFactUnique($uniquefacts, $record->facts()), $addfacts);
-        $quickfacts = array_intersect($quickfacts, $addfacts);
-        $quickfacts = array_combine($quickfacts, array_map($fn, $quickfacts));
-        $addfacts = array_combine($addfacts, array_map($fn, $addfacts));
+        $quick_facts = array_combine($quick_facts, array_map($label_fn, $quick_facts));
+        $add_facts   = array_combine($add_facts, array_map($label_fn, $add_facts));
 
-        uasort($addfacts, I18N::comparator());
+        uasort($add_facts, I18N::comparator());
 
         if ($record->tree()->getPreference('MEDIA_UPLOAD') < Auth::accessLevel($record->tree())) {
-            unset($addfacts['OBJE'], $quickfacts['OBJE']);
+            unset($add_facts['OBJE'], $quick_facts['OBJE']);
         }
 
         echo view('edit/add-fact-row', [
-            'add_facts'   => $addfacts,
-            'quick_facts' => $quickfacts,
+            'add_facts'   => $add_facts,
+            'quick_facts' => $quick_facts,
             'record'      => $record,
         ]);
     }
