@@ -73,7 +73,7 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $query = $request->getAttribute('query');
+        $query = $request->getQueryParams()['query'] ?? '';
 
         $data = $this->search_service
             ->searchPlaces($tree, $query, 0, static::LIMIT)

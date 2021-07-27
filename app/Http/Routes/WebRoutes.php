@@ -528,10 +528,10 @@ class WebRoutes
                     ],
                 ]);
 
-                $router->get(AutoCompleteCitation::class, '/autocomplete/citation/{query}');
-                $router->get(AutoCompleteFolder::class, '/autocomplete/folder/{query}');
-                $router->get(AutoCompletePlace::class, '/autocomplete/place/{query}');
-                $router->get(AutoCompleteSurname::class, '/autocomplete/surname/{query}');
+                $router->get(AutoCompleteCitation::class, '/autocomplete/citation');
+                $router->get(AutoCompleteFolder::class, '/autocomplete/folder');
+                $router->get(AutoCompletePlace::class, '/autocomplete/place');
+                $router->get(AutoCompleteSurname::class, '/autocomplete/surname');
                 $router->get(AddChildToFamilyPage::class, '/add-child-to-family/{xref}/{sex}');
                 $router->post(AddChildToFamilyAction::class, '/add-child-to-family/{xref}');
                 $router->get(AddNewFact::class, '/add-fact/{xref}/{fact}');

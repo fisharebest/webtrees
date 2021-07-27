@@ -599,6 +599,7 @@
           remote: {
             url: this.dataset.autocompleteUrl,
             replace: function (url, uriEncodedQuery) {
+              const symbol = (url.indexOf("?") > 0) ? '&' : '?';
               if (that.dataset.autocompleteExtra === 'SOUR') {
                 let row_group = that.closest('.form-group').previousElementSibling;
                 while (row_group.querySelector('select') === null) {
@@ -606,12 +607,10 @@
                 }
                 const element = row_group.querySelector('select');
                 const extra   = element.options[element.selectedIndex].value.replace(/@/g, '');
-                const symbol  = (url.indexOf("?") > 0) ? '&' : '?';
-                return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery) + symbol + 'extra=' + encodeURIComponent(extra);
+                return url + symbol + "query=" + uriEncodedQuery + '&extra=' + encodeURIComponent(extra);
               }
-              return url.replace(/(%7B|{)query(%7D|})/, uriEncodedQuery);
-            },
-            wildcard: '{query}'
+              return url + symbol + "query=" + uriEncodedQuery
+            }
           }
         })
       });

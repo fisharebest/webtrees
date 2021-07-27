@@ -42,7 +42,7 @@ class AutoCompleteCitation extends AbstractAutocompleteHandler
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $query  = $request->getAttribute('query');
+        $query  = $request->getQueryParams()['query'] ?? '';
         $xref   = $request->getQueryParams()['extra'] ?? '';
         $source = Registry::sourceFactory()->make($xref, $tree);
         $source = Auth::checkSourceAccess($source);

@@ -38,8 +38,10 @@ use RuntimeException;
 
 use function array_combine;
 use function array_diff;
+use function array_intersect;
 use function assert;
 use function dirname;
+use function explode;
 use function ini_get;
 use function intdiv;
 use function min;
@@ -48,8 +50,6 @@ use function preg_replace;
 use function sha1;
 use function sort;
 use function str_contains;
-use function str_ends_with;
-use function str_starts_with;
 use function strtolower;
 use function strtr;
 use function substr;
@@ -295,13 +295,11 @@ class MediaFileService
     public function allFilesOnDisk(FilesystemOperator $filesystem, string $folder, bool $subfolders): Collection
     {
         try {
-            $files = $filesystem->listContents($folder, $subfolders)
-                ->filter(function (StorageAttributes $attributes): bool {
-                    return $attributes->isFile() && !$this->ignorePath($attributes->path());
-                })
-                ->map(static function (StorageAttributes $attributes): string {
-                    return $attributes->path();
-                })
+            $files = $filesystem
+                ->listContents($folder, $subfolders)
+                ->filter(fn (StorageAttributes $attributes): bool => $attributes->isFile())
+                ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
+                ->map(fn (StorageAttributes $attributes): string => $attributes->path())
                 ->toArray();
         } catch (FilesystemException $ex) {
             $files = [];
@@ -335,6 +333,26 @@ class MediaFileService
         }
 
         return $query->pluck('path');
+    }
+
+    /**
+     * Generate a list of all folders used by a tree.
+     *
+     * @param Tree $tree
+     *
+     * @return Collection
+     * @throws FilesystemException
+     */
+    public function mediaFolders(Tree $tree): Collection
+    {
+        $folders = Registry::filesystem()->media($tree)
+            ->listContents('', Filesystem::LIST_DEEP)
+            ->filter(fn (StorageAttributes $attributes): bool => $attributes->isDir())
+            ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
+            ->map(fn (StorageAttributes $attributes): string => $attributes->path())
+            ->toArray();
+
+        return new Collection($folders);
     }
 
     /**
@@ -374,13 +392,11 @@ class MediaFileService
         $disk_folders = new Collection($media_roots);
 
         foreach ($media_roots as $media_folder) {
-            $tmp = $data_filesystem->listContents($media_folder, Filesystem::LIST_DEEP)
-                ->filter(function (StorageAttributes $attributes): bool {
-                    return $attributes->isDir() && !$this->ignorePath($attributes->path());
-                })
-                ->map(static function (StorageAttributes $attributes): string {
-                    return $attributes->path() . '/';
-                })
+            $tmp = $data_filesystem
+                ->listContents($media_folder, Filesystem::LIST_DEEP)
+                ->filter(fn (StorageAttributes $attributes): bool => $attributes->isDir())
+                ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
+                ->map(fn (StorageAttributes $attributes): string => $attributes->path() . '/')
                 ->toArray();
 
             $disk_folders = $disk_folders->concat($tmp);
@@ -394,7 +410,7 @@ class MediaFileService
     }
 
     /**
-     * Ignore certain media folders.
+     * Ignore special media folders.
      *
      * @param string $path
      *
@@ -402,12 +418,6 @@ class MediaFileService
      */
     private function ignorePath(string $path): bool
     {
-        foreach (explode('/', $path) as $part) {
-            if (in_array($part, self::IGNORE_FOLDERS, true)) {
-                return true;
-            }
-        }
-
-        return false;
+        return array_intersect(static::IGNORE_FOLDERS, explode('/', $path)) !== [];
     }
 }
