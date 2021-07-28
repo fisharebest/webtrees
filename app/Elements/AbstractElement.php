@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 use function array_key_exists;
@@ -295,8 +296,10 @@ abstract class AbstractElement implements ElementInterface
     {
         $canonical = $this->canonical($value);
 
-        if (preg_match(static::REGEX_URL, $canonical)) {
-            return '<a href="' . e($canonical) . '" rel="no-follow">' . e($canonical) . '</a>';
+        if (str_contains($canonical, 'http://') || str_contains($canonical, 'https://')) {
+            $html = Registry::markdownFactory()->autolink()->convertToHtml($canonical);
+
+            return strip_tags($html, ['a']);
         }
 
         return e($canonical);

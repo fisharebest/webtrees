@@ -64,7 +64,6 @@ class WhereWithinSource extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return strip_tags(Registry::markdownFactory()->autolink()->convertToHtml($value), ['a']);
         return $this->valueAutoLink($value);
     }
 }
