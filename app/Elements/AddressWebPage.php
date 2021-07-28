@@ -43,8 +43,6 @@ class AddressWebPage extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        $canonical = $this->canonical($value);
-
-        return '<a dir="auto" href="' . e($canonical) . '">' . e($canonical) . '</a>';
+        return $this->valueLink($value);
     }
 }
