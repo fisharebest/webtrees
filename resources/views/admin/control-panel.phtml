@@ -204,6 +204,10 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('An upgrade is available.') ?>
             <br>
             <?= $module->title() ?> — <?= e($module->customModuleVersion()) ?> — <?= e($module->customModuleLatestVersion()) ?>
+            <?php if ($module->customModuleSupportUrl() !== '') : ?>
+                <br>
+                <?= I18N::translate('For more information, see %s.', '<a href="' . e($module->customModuleSupportUrl()) . '">' . e($module->customModuleSupportUrl()) . '</a>') ?>
+            <?php endif ?>
         </div>
         <?php endforeach ?>
 
