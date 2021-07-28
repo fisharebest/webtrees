@@ -8,13 +8,13 @@
   "devDependencies": {
     "@mjhenkes/postcss-rtl": "2.0.0",
     "cross-env": "7.0.3",
-    "laravel-mix": "6.0.25",
-    "postcss": "8.3.5",
+    "laravel-mix": "6.0.27",
+    "postcss": "8.3.6",
     "postcss-custom-properties": "11.0.0",
     "postcss-image-inliner": "5.0.0",
     "postcss-import": "14.0.2",
     "resolve-url-loader": "4.0.0",
-    "sass": "1.35.1",
+    "sass": "1.36.0",
     "sass-loader": "12.1.0",
     "vue-template-compiler": "2.6.14"
   },
@@ -39,7 +39,7 @@
     "pinch-zoom-element": "1.1.1",
     "popper.js": "1.16.1",
     "select2": "4.0.13",
-    "sortablejs": "1.13.0",
+    "sortablejs": "1.14.0",
     "typeahead.js-bootstrap4-css": "1.0.0"
   },
   "browserslist": [
