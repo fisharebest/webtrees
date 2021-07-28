@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function array_filter;
+use function explode;
 use function view;
 
 /**
@@ -58,13 +60,19 @@ class Select2Source extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
+        $search = array_filter(explode(' ', $query));
+
+        if ($search === []) {
+            return new Collection();
+        }
+
         // Search by XREF
         $source = Registry::sourceFactory()->make($query, $tree);
 
         if ($source instanceof Source) {
             $results = new Collection([$source]);
         } else {
-            $results = $this->search_service->searchSourcesByName([$tree], [$query], $offset, $limit);
+            $results = $this->search_service->searchSourcesByName([$tree], $search, $offset, $limit);
         }
 
         return $results->map(static function (Source $source) use ($at): array {

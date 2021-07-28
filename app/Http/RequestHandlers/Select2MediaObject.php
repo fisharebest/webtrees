@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function array_filter;
+use function explode;
 use function view;
 
 /**
@@ -58,13 +60,19 @@ class Select2MediaObject extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
+        $search = array_filter(explode(' ', $query));
+
+        if ($search === []) {
+            return new Collection();
+        }
+
         // Search by XREF
         $media = Registry::mediaFactory()->make($query, $tree);
 
         if ($media instanceof Media) {
             $results = new Collection([$media]);
         } else {
-            $results = $this->search_service->searchMedia([$tree], [$query], $offset, $limit);
+            $results = $this->search_service->searchMedia([$tree], $search, $offset, $limit);
         }
 
         return $results->map(static function (Media $media) use ($at): array {
