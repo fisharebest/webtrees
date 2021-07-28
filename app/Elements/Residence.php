@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 /**
  * Residence
  */
-class Residence extends AbstractElement
+class Residence extends EmptyElement
 {
     protected const SUBTAGS = [
         'DATE' => '0:1',
