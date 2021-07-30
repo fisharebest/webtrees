@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-07-27 18:34+0100\n"
-"PO-Revision-Date: 2021-07-01 08:24+0000\n"
-"Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
-"Language: pl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-07-27 17:32+0100\nPO-Revision-Date: 2021-08-02 09:27+0000\nLast-Translator: Łukasz <wilenskipl@wp.pl>\nLanguage-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\nLanguage: pl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Polish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -5632,7 +5615,7 @@ msgstr "Edytuj tę osobę i zastąp jej dane swoimi."
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Edytuj ze wszystkimi wpisami GEDCOM"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -7443,6 +7426,21 @@ msgctxt "NOMINATIVE"
 msgid "Heshvan"
 msgstr "cheszwan"
 
+#: resources/views/admin/site-mail.phtml:155
+#: resources/views/admin/users-create.phtml:61
+#: resources/views/admin/users-edit.phtml:71
+#: resources/views/edit-account-page.phtml:92
+#: resources/views/login-page.phtml:47
+#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/password-reset-page.phtml:38
+#: resources/views/register-page.phtml:75
+#: resources/views/setup/step-4-database-mysql.phtml:99
+#: resources/views/setup/step-4-database-pgsql.phtml:86
+#: resources/views/setup/step-4-database-sqlsvr.phtml:86
+#: resources/views/setup/step-5-administrator.phtml:81
+msgid "Hide"
+msgstr "Ukryj"
+
 #: resources/views/admin/tags.phtml:44 resources/views/admin/tags.phtml:174
 #: resources/views/admin/tags.phtml:266 resources/views/admin/tags.phtml:328
 #: resources/views/admin/tags.phtml:403 resources/views/admin/tags.phtml:442
@@ -7471,7 +7469,7 @@ msgstr "Ukryj przed wszystkimi"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Ukryj hasło"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -13138,7 +13136,7 @@ msgstr "Pokaż rodziców"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "Pokaż hasło"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -15296,7 +15294,7 @@ msgstr "Czas"
 #: app/Factories/ElementFactory.php:672 app/Factories/ElementFactory.php:688
 #: app/Factories/ElementFactory.php:719 app/Factories/ElementFactory.php:735
 msgid "Time of last change"
-msgstr ""
+msgstr "Czas ostatniej zmiany"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15752,7 +15750,7 @@ msgstr "Rodzaj faktu"
 
 #: app/Factories/ElementFactory.php:542
 msgid "Type of identification number"
-msgstr ""
+msgstr "Rodzaj numeru identyfikacyjnego"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15770,7 +15768,7 @@ msgstr "Rodzaj imienia i nazwiska"
 #: app/Factories/ElementFactory.php:626 app/Factories/ElementFactory.php:649
 #: app/Factories/ElementFactory.php:680 app/Factories/ElementFactory.php:700
 msgid "Type of reference number"
-msgstr ""
+msgstr "Rodzaj numeru referencyjnego"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
