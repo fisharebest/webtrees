@@ -25,12 +25,16 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\FilesystemOperator;
 
+use function array_map;
 use function ceil;
 use function count;
 use function explode;
+use function implode;
 use function preg_match;
 use function str_replace;
 use function stripos;
+use function strrpos;
+use function substr;
 use function substr_count;
 
 /**
@@ -718,24 +722,53 @@ class HtmlRenderer extends AbstractRenderer
      */
     public function textWrap(string $str, float $width): string
     {
-        // Calculate the line width
-        $lw = (int) ($width / ($this->getCurrentStyleHeight() / 2));
-        // Wordwrap each line
+        $line_width = (int) ($width / ($this->getCurrentStyleHeight() / 2));
+
         $lines = explode("\n", $str);
-        // Line Feed counter
-        $lfct     = count($lines);
-        $wraptext = '';
-        foreach ($lines as $line) {
-            $wtext = FunctionsRtl::utf8WordWrap($line, $lw, "\n", true);
-            $wraptext .= $wtext;
-            // Add a new line as long as it’s not the last line
-            if ($lfct > 1) {
-                $wraptext .= "\n";
+
+        $lines = array_map(fn (string $string): string => self::utf8WordWrap($string, $line_width), $lines);
+
+        return implode("\n", $lines);
+    }
+
+    /**
+     * Wrap text, similar to the PHP wordwrap() function.
+     *
+     * @param string $string
+     * @param int    $width
+     *
+     * @return string
+     */
+    private function utf8WordWrap(string $string, int $width): string
+    {
+        $out = '';
+        while ($string) {
+            if (mb_strlen($string) <= $width) {
+                // Do not wrap any text that is less than the output area.
+                $out .= $string;
+                $string = '';
+            } else {
+                $sub1 = mb_substr($string, 0, $width + 1);
+                if (mb_substr($string, mb_strlen($sub1) - 1, 1) === ' ') {
+                    // include words that end by a space immediately after the area.
+                    $sub = $sub1;
+                } else {
+                    $sub = mb_substr($string, 0, $width);
+                }
+                $spacepos = strrpos($sub, ' ');
+                if ($spacepos === false) {
+                    // No space on line?
+                    $out .= $sub . "\n";
+                    $string = mb_substr($string, mb_strlen($sub));
+                } else {
+                    // Split at space;
+                    $out .= substr($string, 0, $spacepos) . "\n";
+                    $string = substr($string, $spacepos + 1);
+                }
             }
-            $lfct--;
         }
 
-        return $wraptext;
+        return $out;
     }
 
     /**
