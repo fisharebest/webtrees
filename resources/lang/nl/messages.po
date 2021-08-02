@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-07-27 18:34+0100\n"
-"PO-Revision-Date: 2021-07-24 21:09+0000\n"
-"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-07-27 17:32+0100\nPO-Revision-Date: 2021-08-10 04:31+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -5612,7 +5596,7 @@ msgstr "Wijzig deze persoon en vervang de details door uw eigen gegevens."
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Wijzigen met alle GEDCOM-labels"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -7423,6 +7407,21 @@ msgctxt "NOMINATIVE"
 msgid "Heshvan"
 msgstr "Heshvan"
 
+#: resources/views/admin/site-mail.phtml:155
+#: resources/views/admin/users-create.phtml:61
+#: resources/views/admin/users-edit.phtml:71
+#: resources/views/edit-account-page.phtml:92
+#: resources/views/login-page.phtml:47
+#: resources/views/modules/login_block/sign-in.phtml:33
+#: resources/views/password-reset-page.phtml:38
+#: resources/views/register-page.phtml:75
+#: resources/views/setup/step-4-database-mysql.phtml:99
+#: resources/views/setup/step-4-database-pgsql.phtml:86
+#: resources/views/setup/step-4-database-sqlsvr.phtml:86
+#: resources/views/setup/step-5-administrator.phtml:81
+msgid "Hide"
+msgstr "Verbergen"
+
 #: resources/views/admin/tags.phtml:44 resources/views/admin/tags.phtml:174
 #: resources/views/admin/tags.phtml:266 resources/views/admin/tags.phtml:328
 #: resources/views/admin/tags.phtml:403 resources/views/admin/tags.phtml:442
@@ -7451,7 +7450,7 @@ msgstr "Verberg voor iedereen"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Verberg wachtwoord"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -13117,7 +13116,7 @@ msgstr "Toon ouders"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "Toon wachtwoord"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13127,7 +13126,7 @@ msgstr "Toon uitstaande wijzigingen"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "Foto's weergeven"
+msgstr "Toon foto's"
 
 #: app/Module/PlaceHierarchyListModule.php:217
 msgid "Show place hierarchy"
@@ -15271,7 +15270,7 @@ msgstr "Tijd"
 #: app/Factories/ElementFactory.php:672 app/Factories/ElementFactory.php:688
 #: app/Factories/ElementFactory.php:719 app/Factories/ElementFactory.php:735
 msgid "Time of last change"
-msgstr ""
+msgstr "Tijdstip van laatste wijziging"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15725,7 +15724,7 @@ msgstr "Soort feit"
 
 #: app/Factories/ElementFactory.php:542
 msgid "Type of identification number"
-msgstr ""
+msgstr "Soort identificatienummer"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15743,7 +15742,7 @@ msgstr "Soort naam"
 #: app/Factories/ElementFactory.php:626 app/Factories/ElementFactory.php:649
 #: app/Factories/ElementFactory.php:680 app/Factories/ElementFactory.php:700
 msgid "Type of reference number"
-msgstr ""
+msgstr "Soort referentienummer"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
