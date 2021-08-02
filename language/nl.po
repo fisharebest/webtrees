@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-19 07:49+0000\n"
+"PO-Revision-Date: 2021-08-10 04:30+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -12630,7 +12630,7 @@ msgstr "Toon uitstaande wijzigingen"
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Show photos"
-msgstr "Foto's weergeven"
+msgstr "Toon foto's"
 
 #: placelist.php:81
 msgid "Show places in hierarchy"
