@@ -44,6 +44,7 @@ use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
 use Fisharebest\Webtrees\Http\Middleware\CompressResponse;
+use Fisharebest\Webtrees\Http\Middleware\ContentLength;
 use Fisharebest\Webtrees\Http\Middleware\DoHousekeeping;
 use Fisharebest\Webtrees\Http\Middleware\EmitResponse;
 use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
@@ -142,6 +143,7 @@ class Webtrees
         BaseUrl::class,
         HandleExceptions::class,
         ClientIp::class,
+        ContentLength::class,
         CompressResponse::class,
         BadBotBlocker::class,
         UseDatabase::class,

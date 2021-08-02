@@ -97,8 +97,7 @@ class ImageFactory implements ImageFactoryInterface
             }
 
             $headers = [
-                'Content-Type'   => $content_type,
-                'Content-Length' => (string) strlen($data),
+                'Content-Type' => $content_type,
             ];
 
             if ($download) {
@@ -352,8 +351,7 @@ class ImageFactory implements ImageFactoryInterface
     protected function imageResponse(string $data, string $mime_type, string $filename): ResponseInterface
     {
         $headers = [
-            'Content-Type'   => $mime_type,
-            'Content-Length' => (string) strlen($data),
+            'Content-Type' => $mime_type,
         ];
 
         if ($filename !== '') {

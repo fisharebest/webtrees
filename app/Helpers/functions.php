@@ -121,14 +121,12 @@ function response($content = '', int $code = StatusCodeInterface::STATUS_OK, arr
     if ($headers === []) {
         if (is_string($content)) {
             $headers = [
-                'Content-Type'   => 'text/html; charset=UTF-8',
-                'Content-Length' => (string) strlen($content),
+                'Content-Type' => 'text/html; charset=UTF-8',
             ];
         } else {
             $content = json_encode($content, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
             $headers = [
-                'Content-Type'   => 'application/json',
-                'Content-Length' => (string) strlen($content),
+                'Content-Type' => 'application/json',
             ];
         }
     }

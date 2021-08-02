@@ -180,7 +180,6 @@ trait ModuleCustomTrait
 
         return response($content, StatusCodeInterface::STATUS_OK, [
             'Cache-Control'  => 'public,max-age=31536000',
-            'Content-Length' => (string) strlen($content),
             'Content-Type'   => $mime_type,
         ]);
     }
