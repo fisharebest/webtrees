@@ -221,7 +221,7 @@ class HtmlRenderer extends AbstractRenderer
     public function run(): void
     {
         // Setting up the styles
-        echo '<style type="text/css">';
+        echo '<style>';
         echo '#bodydiv { font: 10px sans-serif;}';
         foreach ($this->styles as $class => $style) {
             echo '.', $class, ' { ';
