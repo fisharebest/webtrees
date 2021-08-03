@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-04-06 13:50+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"PO-Revision-Date: 2021-08-10 04:30+0000\n"
+"Last-Translator: Ngô Hữu Thuận <ngohuuthuan@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/vi/>\n"
 "Language: vi\n"
@@ -705,41 +705,47 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr "A chart displaying relationships between two individuals.biểu đố hiển thị mối quan hệ giũa hai người."
+msgstr "Biểu đố hiển thị mối quan hệ giũa hai người."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "A chart of an individual’s ancestors and descendants, as a family book.Biểu đồ của tổ tiên và hậu duệ của một cá nhân xem như một gia đình."
+msgstr ""
+"Biểu đồ về tổ tiên và con cháu của một cá nhân, như một cuốn sổ gia đình."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "A chart of an individual’s ancestors, as a compact tree. Biểu đồ tổ tiên của một cá nhân."
+msgstr "Biểu đồ về tổ tiên của một cá nhân, dưới dạng một cây nhỏ gọn."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "A chart of an individual’s ancestors, formatted as a tree. Biểu đồ tổ tiên dưới dạng cây."
+msgstr ""
+"Biểu đồ về tổ tiên của một cá nhân, được định dạng dưới dạng cây gia đình."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr "A chart of an individual’s ancestors. Biểu đồ tổ tiên của một cá nhân."
+msgstr "Biểu đồ về tổ tiên của một cá nhân."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr "A chart of an individual’s descendants. Biểu đồ con cháu của một cá nhân."
+msgstr "Biểu đồ về con cháu của một cá nhân."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr "A chart of individuals’ lifespans. Biểu đồ tuổi thọ của một cá nhân."
+msgstr "Biểu đồ về tuổi thọ của các cá nhân."
 
 #: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Con có thể có nhiều hơn cặp cha mẹ. Quan hệ giữa con và cha mẹ có thể là quan hệ sinh học, pháp lý, hoặc dựa trên văn hóa và truyền thống địa phương. Nếu không có tộc hệ nào được nêu, thì ta giả định đó là quan hệ sinh học."
+msgstr ""
+"Một người con có thể có nhiều hơn một cặp cha mẹ. Quan hệ giữa con và cha mẹ "
+"có thể là quan hệ sinh học, pháp lý, hoặc dựa trên văn hóa và truyền thống "
+"địa phương. Nếu không có tộc hệ nào được nêu, thì ta giả định đó là quan hệ "
+"sinh học."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
@@ -752,7 +758,7 @@ msgstr "Máy chủ CSDL có thể lưu trữ nhiề CSDL riêng biệt. Bạn c�
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr "A fan chart of an individual’s ancestors. Biểu đồ đơn giản của một cá nhân."
+msgstr "Biểu đồ về tổ tiên của một cá nhân."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
@@ -827,7 +833,7 @@ msgstr "Danh sách các trang được xem với số lần nhiều nhất."
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr "Một danh sách người dùng và k hách đang xem."
+msgstr "Danh sách người dùng và khách truy cập hiện đang trực tuyến."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -1400,7 +1406,7 @@ msgstr "Thêm chi tiết kết hôn"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
-msgstr "Thêm bản ghi người chết bị thiếu"
+msgstr "Thêm bản ghi người mất bị thiếu"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
@@ -1640,7 +1646,7 @@ msgstr "Nhận con nuôi"
 #. I18N: gedcom tag CHRA
 #: app/GedcomTag.php:286
 msgid "Adult christening"
-msgstr "Lể Rửa Tội Cho Người Lớn"
+msgstr "Lễ rửa tội cho người lớn"
 
 #: admin_trees_config.php:2027
 msgid "Advanced fact preferences"
@@ -1691,7 +1697,7 @@ msgstr "Tuổi khi sinh con"
 
 #: admin_trees_config.php:403
 msgid "Age at which to assume an individual is dead"
-msgstr "Tuổi được cho là một người đã chết"
+msgstr "Tuổi được cho là một người đã mất"
 
 #: statistics.php:338
 msgid "Age between husband and wife"
@@ -2286,7 +2292,7 @@ msgstr "Áo"
 #. I18N: gedcom tag AUTH
 #: app/GedcomTag.php:170
 msgid "Author"
-msgstr "Tác Gỉa"
+msgstr "Tác giả"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/GedcomTag.php:266
@@ -2343,7 +2349,7 @@ msgstr "Tuổi trung bình"
 #: app/Module/FamilyTreeStatisticsModule.php:390
 #: app/Module/HtmlBlockModule.php:241 app/Stats.php:2599 statistics.php:149
 msgid "Average age at death"
-msgstr "Tuổi trung bình lúc chết"
+msgstr "Tuổi trung bình lúc mất"
 
 #: app/Stats.php:3930 app/Stats.php:3931 app/Stats.php:3935 app/Stats.php:3939
 #: app/Stats.php:3942
@@ -2352,7 +2358,7 @@ msgstr "Tuổi kết hôn trung bình theo thế kỷ"
 
 #: app/Stats.php:2586 app/Stats.php:2599
 msgid "Average age related to death century"
-msgstr "Tuổi trung bình liên quan đến chết theo thế kỷ"
+msgstr "Tuổi trung bình liên quan đến mất theo thế kỷ"
 
 #: app/Module/FamilyTreeStatisticsModule.php:193
 #: app/Module/FamilyTreeStatisticsModule.php:418
@@ -3031,7 +3037,7 @@ msgstr "British Virgin Islands"
 #: modules_v3/individual_ext_report/report.xml:319
 #: modules_v3/individual_report/report.xml:316
 msgid "Brother"
-msgstr "Anh (Em) Trai"
+msgstr "Anh (Em) trai"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
@@ -3078,7 +3084,7 @@ msgstr "Bulgaria"
 #: modules_v3/family_group_report/report.xml:1049
 #: modules_v3/missing_facts_report/report.xml:25
 msgid "Burial"
-msgstr "Lể An Táng"
+msgstr "Lễ an táng"
 
 #: app/GedcomTag.php:1177
 msgid "Burial of a brother"
@@ -3347,7 +3353,7 @@ msgstr "Lý do"
 
 #: app/GedcomTag.php:354
 msgid "Cause of death"
-msgstr "Lý do chết"
+msgstr "Lý do mất"
 
 #: admin_trees_manage.php:767 admin_trees_renumber.php:286
 msgid "Caution! This may take a long time. Be patient."
@@ -3647,7 +3653,7 @@ msgstr "Chọn: "
 #: modules_v3/family_group_report/report.xml:904
 #: modules_v3/missing_facts_report/report.xml:16
 msgid "Christening"
-msgstr "Lể Rửa Tội"
+msgstr "Lễ rửa tội"
 
 #: app/GedcomTag.php:1240
 msgid "Christening of a brother"
@@ -4175,7 +4181,7 @@ msgstr "Hỏa táng cháu"
 
 #: app/GedcomTag.php:1316
 msgid "Cremation of a half-brother"
-msgstr "Hảo táng anh/ em cùng cha hay mẹ"
+msgstr "Hỏa táng anh/ em cùng cha hay mẹ"
 
 #: app/GedcomTag.php:1320
 msgid "Cremation of a half-sibling"
@@ -4431,7 +4437,7 @@ msgstr "Ngày hỏa táng"
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:505
 msgid "Date of death"
-msgstr "Ngày tháng chết"
+msgstr "Ngày tháng mất"
 
 #: app/GedcomTag.php:462
 msgid "Date of divorce"
@@ -4549,7 +4555,7 @@ msgstr "Ngày:"
 #: app/Functions/FunctionsPrintLists.php:218 app/Stats.php:1069
 #: app/Stats.php:1071
 msgid "Dead"
-msgstr "Tổng số chết"
+msgstr "Tổng số mất"
 
 #. I18N: gedcom tag DEAT
 #: app/GedcomTag.php:352 modules_v3/ahnentafel_report/report.xml:457
@@ -4672,11 +4678,11 @@ msgstr "Tổng số chết"
 #: modules_v3/pedigree_report/report.xml:1370
 #: modules_v3/relative_ext_report/report.xml:62
 msgid "Death"
-msgstr "Chết"
+msgstr "Mất"
 
 #: app/Stats.php:1674 statistics.php:575
 msgid "Death by country"
-msgstr "Chết theo nước"
+msgstr "Mất theo nước"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
@@ -4684,23 +4690,23 @@ msgstr "Mất khoảng thời gian kết thúc"
 
 #: modules_v3/bdm_report/report.xml:9 modules_v3/death_report/report.xml:7
 msgid "Death date range start"
-msgstr "Chết ở khoản thời gian băt đầu"
+msgstr "Mất ở khoảng thời gian băt đầu"
 
 #: app/GedcomTag.php:1437
 msgid "Death of a brother"
-msgstr "Chết của anh /em trai"
+msgstr "Mất của anh /em trai"
 
 #: app/GedcomTag.php:1360
 msgid "Death of a child"
-msgstr "Chết của con"
+msgstr "Mất của con"
 
 #: app/GedcomTag.php:1358
 msgid "Death of a daughter"
-msgstr "Chết của con gái"
+msgstr "Mất của con gái"
 
 #: app/GedcomTag.php:1428
 msgid "Death of a father"
-msgstr "Tữ của bố"
+msgstr "Mất của bố"
 
 #: app/GedcomTag.php:1396 app/GedcomTag.php:1405 app/GedcomTag.php:1414
 msgid "Death of a grand-parent"
@@ -4708,25 +4714,25 @@ msgstr "Chết của ông bà"
 
 #: app/GedcomTag.php:1369 app/GedcomTag.php:1378 app/GedcomTag.php:1387
 msgid "Death of a grandchild"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/GedcomTag.php:1367
 msgid "Death of a granddaughter"
-msgstr "Chết của cháu gái"
+msgstr "Mất của cháu gái"
 
 #: app/GedcomTag.php:1376
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Chết của cháu gái"
+msgstr "Mất của cháu gái"
 
 #: app/GedcomTag.php:1385
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Chết của cháu gái"
+msgstr "Mất của cháu gái"
 
 #: app/GedcomTag.php:1392
 msgid "Death of a grandfather"
-msgstr "Chết của ông"
+msgstr "Mất của ông"
 
 #: app/GedcomTag.php:1394
 msgid "Death of a grandmother"
@@ -4734,41 +4740,41 @@ msgstr "Chế của bà"
 
 #: app/GedcomTag.php:1365
 msgid "Death of a grandson"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/GedcomTag.php:1374
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/GedcomTag.php:1383
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/GedcomTag.php:1419
 msgid "Death of a half-brother"
-msgstr "Chết của anh/ em cùng cha hay cùng mẹ"
+msgstr "Mất của anh/ em cùng cha hay cùng mẹ"
 
 #: app/GedcomTag.php:1423
 msgid "Death of a half-sibling"
-msgstr "Chết của anh (chị, em) chung cha, mẹ"
+msgstr "Mất của anh (chị, em) chung cha, mẹ"
 
 #: app/GedcomTag.php:1421
 msgid "Death of a half-sister"
-msgstr "Chết của chị, em cùng cha hay mẹ"
+msgstr "Mất của chị, em cùng cha hay mẹ"
 
 #: app/GedcomTag.php:1446
 msgid "Death of a husband"
-msgstr "Chết của chồng"
+msgstr "Mất của chồng"
 
 #: app/GedcomTag.php:1410
 msgid "Death of a maternal grandfather"
-msgstr "Chết của ông ngoại"
+msgstr "Mất của ông ngoại"
 
 #: app/GedcomTag.php:1412
 msgid "Death of a maternal grandmother"
-msgstr "Chết của bà ngoại"
+msgstr "Mất của bà ngoại"
 
 #: app/GedcomTag.php:1430
 msgid "Death of a mother"
@@ -4776,15 +4782,15 @@ msgstr "Tữ của mẹ"
 
 #: app/GedcomTag.php:1432
 msgid "Death of a parent"
-msgstr "Chết của cha/mẹ"
+msgstr "Mất của cha/mẹ"
 
 #: app/GedcomTag.php:1401
 msgid "Death of a paternal grandfather"
-msgstr "Chết của ông nội"
+msgstr "Mất của ông nội"
 
 #: app/GedcomTag.php:1403
 msgid "Death of a paternal grandmother"
-msgstr "Chết của bà nội"
+msgstr "Mất của bà nội"
 
 #: app/GedcomTag.php:1441
 msgid "Death of a sibling"
@@ -4792,11 +4798,11 @@ msgstr "Tữ của anh (chị, em)"
 
 #: app/GedcomTag.php:1439
 msgid "Death of a sister"
-msgstr "Chết của chị"
+msgstr "Mất của chị"
 
 #: app/GedcomTag.php:1356
 msgid "Death of a son"
-msgstr "Chết của con"
+msgstr "Mất của con"
 
 #: app/GedcomTag.php:1450
 msgid "Death of a spouse"
@@ -4804,12 +4810,12 @@ msgstr "Tữ của người chồng/vợ"
 
 #: app/GedcomTag.php:1448
 msgid "Death of a wife"
-msgstr "Chết của vợ"
+msgstr "Mất của vợ"
 
 #. I18N: gedcom tag _DETS
 #: app/GedcomTag.php:1459
 msgid "Death of one spouse"
-msgstr "Chết của một bạn đời"
+msgstr "Mất của một bạn đời"
 
 #: modules_v3/death_report/report.xml:6
 msgid "Death place contains"
@@ -4827,7 +4833,7 @@ msgstr "Mất"
 
 #: app/Stats.php:2046 statistics.php:122
 msgid "Deaths by century"
-msgstr "Số chết theo thế kỷ"
+msgstr "Số mất theo thế kỷ"
 
 #: app/Date/CalendarDate.php:332
 msgctxt "Abbreviation for December"
@@ -4841,7 +4847,7 @@ msgstr "Thập niên sinh"
 
 #: app/Functions/FunctionsPrintLists.php:497
 msgid "Decade of death"
-msgstr "Thập niên chết"
+msgstr "Thập niên mất"
 
 #: app/Functions/FunctionsPrintLists.php:969
 msgid "Decade of marriage"
@@ -5310,7 +5316,18 @@ msgstr "Trùng lắp tên người dùng. Đã có một thành viên với tên
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Mỗi nguồn ghi sự kiện cụ thể, nhìn chung cho một phạm vi ngày đã cho và cho thầm quyền địa điểm. Ví dụ một bản ghi sự kiện điều tra dân số và bản ghi năm sinh, kết hôn, chết của nhà thờ.<br><br>Chọn những sự kiện được ghi lại theo nguồn này từ danh sách các sự kiện được cung cấp. Các ngày cần được quy định trong một định dạng nhiều như <i>FROM 1900 TO 1910</i>. Thẩm quyền ra là tên của các thẩm quyền thấp nhất mà bao gồm tất cả những nơi cấp dưới có tên trong mã nguồn này. Ví dụ, “Oneida, Idaho, Hoa Kỳ” sẽ được sử dụng như là một nơi thẩm quyền mã nguồn cho các sự kiện xảy ra trong các thị trấn khác nhau trong Oneida County. “Idaho, Hoa Kỳ” sẽ là nguồn thẩm quyền ra nếu các sự kiện ghi lại diễn ra không chỉ ở Oneida County mà còn ở các quận khác ở Idaho."
+msgstr ""
+"Mỗi nguồn ghi sự kiện cụ thể, nhìn chung cho một phạm vi ngày đã cho và cho "
+"thầm quyền địa điểm. Ví dụ một bản ghi sự kiện điều tra dân số và bản ghi "
+"năm sinh, kết hôn, mất của nhà thờ.<br><br>Chọn những sự kiện được ghi lại "
+"theo nguồn này từ danh sách các sự kiện được cung cấp. Các ngày cần được quy "
+"định trong một định dạng nhiều như <i>FROM 1900 TO 1910</i>. Thẩm quyền ra "
+"là tên của các thẩm quyền thấp nhất mà bao gồm tất cả những nơi cấp dưới có "
+"tên trong mã nguồn này. Ví dụ, “Oneida, Idaho, Hoa Kỳ” sẽ được sử dụng như "
+"là một nơi thẩm quyền mã nguồn cho các sự kiện xảy ra trong các thị trấn "
+"khác nhau trong Oneida County. “Idaho, Hoa Kỳ” sẽ là nguồn thẩm quyền ra nếu "
+"các sự kiện ghi lại diễn ra không chỉ ở Oneida County mà còn ở các quận khác "
+"ở Idaho."
 
 #: help_text.php:314
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5328,7 +5345,7 @@ msgstr "Năm Sanh Xa Vời Nhất"
 
 #: statistics.php:130
 msgid "Earliest death"
-msgstr "Chết xưa nhất"
+msgstr "Mất xưa nhất"
 
 #: app/Module/FamilyTreeStatisticsModule.php:156
 #: app/Module/FamilyTreeStatisticsModule.php:348
@@ -5469,7 +5486,7 @@ msgstr "Edmonton, Alberta, Canada"
 #. I18N: gedcom tag EDUC
 #: app/GedcomTag.php:386
 msgid "Education"
-msgstr "Học Vấn"
+msgstr "Học vấn"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6738
@@ -5771,7 +5788,7 @@ msgstr "Các tùy chọn xuất"
 #. I18N: A configuration setting. …who were born in the last XX years or died in the last YY years
 #: admin_trees_config.php:443
 msgid "Extend privacy to dead individuals"
-msgstr "Đặt chế độ riêng tư cho cả người chết"
+msgstr "Đặt chế độ riêng tư cho cả người mất"
 
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:637
@@ -5903,7 +5920,7 @@ msgstr "Sự kiện cho người mới"
 
 #: admin_trees_config.php:1938
 msgid "Facts for repository records"
-msgstr "Sự kiện cho bản ghi kho"
+msgstr "Sự kiện về hồ sơ kho lưu trữ"
 
 #: admin_trees_config.php:1849
 msgid "Facts for source records"
@@ -6852,7 +6869,7 @@ msgstr "Ông bà"
 
 #: statistics.php:163
 msgid "Greatest age at death"
-msgstr "Lớn tuổi nhất khi chết"
+msgstr "Lớn tuổi nhất khi mất"
 
 #: statistics.php:331
 msgid "Greatest age between siblings"
@@ -7424,7 +7441,11 @@ msgstr "Trong một vài lịch, ngày bắt đầu vào giữa đêm. Ở một
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:455
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr "Ở một số nước, luật riêng tư áp dụng không chỉ cho những người sống, mà còn cho những người đã qua đời gần đây. Tuỳ chọn này sẽ cho phép bạn mở rộng các quy tắc bảo mật người còn sống đối với những người được sinh hay chết trong một số năm. Bỏ trống giá trị trường này để vô hiệu hóa tính năng này."
+msgstr ""
+"Ở một số nước, luật riêng tư áp dụng không chỉ cho những người sống, mà còn "
+"cho những người đã qua đời gần đây. Tuỳ chọn này sẽ cho phép bạn mở rộng các "
+"quy tắc bảo mật người còn sống đối với những người được sinh hay mất trong "
+"một số năm. Bỏ trống giá trị trường này để vô hiệu hóa tính năng này."
 
 #: calendar.php:125
 msgid "In this month…"
@@ -8093,7 +8114,7 @@ msgstr "Năm Sanh Gần Đây Nhất"
 
 #: statistics.php:138
 msgid "Latest death"
-msgstr "Chết gần đây nhất"
+msgstr "Mất gần đây nhất"
 
 #: app/Module/FamilyTreeStatisticsModule.php:163
 #: app/Module/FamilyTreeStatisticsModule.php:362
@@ -8872,22 +8893,22 @@ msgstr "TH5"
 #: app/Date/CalendarDate.php:225
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #: app/Date/CalendarDate.php:293
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #: app/Date/CalendarDate.php:259
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #: app/Date/CalendarDate.php:191 app/Functions/FunctionsPrint.php:649
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6832
@@ -10539,7 +10560,7 @@ msgstr "Phả hệ"
 
 #: modules_v3/pedigree_report/report.xml:739
 msgid "Pedigree chart"
-msgstr "Đồ Thị Dòng Giống"
+msgstr "Biểu đồ phả hệ"
 
 #: app/Module/GoogleMapsModule.php:210
 msgid "Pedigree map"
@@ -10560,7 +10581,7 @@ msgstr "Phả đồ của %s"
 #: app/Controller/PedigreeController.php:85
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Cây phả hệ cua %s"
+msgstr "Cây phả hệ của %s"
 
 #. I18N: Name of a module
 #: admin.php:767 admin.php:789 admin_site_upgrade.php:100
@@ -10615,7 +10636,7 @@ msgstr "Phiên âm"
 
 #: search.php:253
 msgid "Phonetic algorithm"
-msgstr "giải thuận ngữ âm"
+msgstr "Thuật toán phiên âm"
 
 #: app/GedcomTag.php:608
 msgid "Phonetic name"
@@ -10682,7 +10703,7 @@ msgstr "Pitcairn"
 #: modules_v3/marriage_report/report.xml:50
 #: modules_v3/occupation_report/report.xml:60 search.php:242
 msgid "Place"
-msgstr "Nơi"
+msgstr "Địa điểm"
 
 #: app/Module/GoogleMapsModule.php:176 app/Module/GoogleMapsModule.php:294
 #: app/Module/GoogleMapsModule.php:827 app/Module/GoogleMapsModule.php:1314
@@ -10703,7 +10724,7 @@ msgstr "Thứ cấp địa điểm"
 
 #: app/GedcomTag.php:692
 msgid "Place in Hebrew"
-msgstr "Nơi tại Do Thái"
+msgstr "Đặt bằng tiếng Do Thái"
 
 #: placelist.php:46 placelist.php:68
 msgid "Place list"
@@ -10782,7 +10803,7 @@ msgstr "Nơi hỏa táng"
 #: app/GedcomTag.php:358 modules_v3/fact_sources/report.xml:275
 #: modules_v3/missing_facts_report/report.xml:516
 msgid "Place of death"
-msgstr "Nơi chết"
+msgstr "Nơi mất"
 
 #: app/GedcomTag.php:408
 msgid "Place of emigration"
@@ -10937,7 +10958,7 @@ msgstr "Porto Alegre, Brazil"
 #: admin_trees_config.php:53 modules_v3/change_report/report.xml:10
 #: modules_v3/pedigree_report/report.xml:6 pedigree.php:182
 msgid "Portrait"
-msgstr "Chân Dung"
+msgstr "Chân dung"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6857
@@ -11560,7 +11581,7 @@ msgstr "Các kho lưu trữ tìm thấy"
 #: admin_trees_config.php:792 admin_trees_manage.php:567 app/GedcomTag.php:728
 #: inverselink.php:130
 msgid "Repository"
-msgstr "Nơi Tàng Trữ"
+msgstr "Nơi lưu trữ"
 
 #. I18N: Label for search field
 #: find.php:220
@@ -11624,7 +11645,7 @@ msgstr "Hạn chế trong gia đình"
 #. I18N: gedcom tag RESN
 #: app/GedcomTag.php:740
 msgid "Restriction"
-msgstr "Hạn Chế"
+msgstr "Hạn chế"
 
 #: help_text.php:259
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -12520,15 +12541,15 @@ msgstr "Hiện người sống hay cặp vợ chồng khi cả hai còn sống."
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Hiện người chết hay cặp vợ chồng khi cả hai chết."
+msgstr "Hiện người mất hay cặp vợ chồng khi cả hai đều mất."
 
 #: app/Functions/FunctionsPrintLists.php:224
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Hiện những người chết hơn 100 năm."
+msgstr "Hiện những người mất hơn 100 năm."
 
 #: app/Functions/FunctionsPrintLists.php:233
 msgid "Show individuals who died within the last 100 years."
-msgstr "Hiện những người chết trong 100 năm."
+msgstr "Hiện những người mất trong 100 năm."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:278
@@ -13193,7 +13214,7 @@ msgstr "Ngày thay đổi tình trạng"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
-msgstr "Chết lúc đẻ"
+msgstr "Mất lúc đẻ"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
@@ -13224,7 +13245,7 @@ msgstr "Lưu hình nhỏ có hình chìm trên máy chủ"
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr "Stories"
+msgstr "Những câu chuyện"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
@@ -14013,12 +14034,12 @@ msgstr "Ký tự “%” là từ đại diện, và sẽ khớp với không ha
 #: admin_modules.php:251 admin_users.php:485 app/Theme/AbstractTheme.php:1778
 #: edituser.php:272
 msgid "Theme"
-msgstr "Kiểu trình bày"
+msgstr "Chủ đề"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:27
 msgid "Theme change"
-msgstr "Kiểu trình bày thay đổi"
+msgstr "Thay đổi chủ đề"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:960
@@ -14028,7 +14049,7 @@ msgstr "Bộ chọn sổ xuống để chọn thay đổi kiểu trình bày"
 
 #: admin_modules.php:165
 msgid "Themes"
-msgstr "Kiểu trình bày"
+msgstr "Chủ đề"
 
 #: admin_site_config.php:258
 msgid "Themes can be selected at three levels: user, family tree, and website. User preferences take priority over family tree preferences, which in turn take priority over the website preferences. Selecting “default theme” at one level will use the theme at the next level."
@@ -14036,9 +14057,8 @@ msgstr "Kiểu trình bày có thể được chọn ở 3 cấp độ: người
 
 #: app/Module/ExtraInformationModule.php:65
 #: app/Module/IndividualFactsTabModule.php:148
-#, fuzzy
 msgid "There are no facts for this individual."
-msgstr "Không có sự kiện nào cho người này."
+msgstr "Không có dữ kiện nào cho cá nhân này."
 
 #: app/Module/MediaTabModule.php:76
 msgid "There are no media objects for this individual."
@@ -14046,7 +14066,7 @@ msgstr "Không có tin đa phương tiện nào cho người này."
 
 #: app/Module/NotesTabModule.php:90
 msgid "There are no notes for this individual."
-msgstr "Không có Lời Ghi nào cho người này."
+msgstr "Không có ghi chú cho cá nhân này."
 
 #: admin_site_upgrade.php:105
 msgid "There are no pending changes."
@@ -14128,9 +14148,11 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Tài khoản này đã chưa được xác minh. Xin kiểm tra email xem thông báo xác minh."
 
 #: app/Module/ReviewChangesModule.php:179
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Block này hiện cho người người biên danh sách bản ghi đang chờ thay đổi cần phải được chấp thuận bởi người sửa bài. Nó cũng tạo ra email hàng ngày cho người sửa bài cho các thay đổi đang chờ."
+msgstr ""
+"Block này sẽ hiển thị cho người chỉnh sửa danh sách các bản ghi có các thay "
+"đổi đang chờ xử lý cần được người kiểm duyệt xem xét. Nó cũng tạo email hàng "
+"ngày cho người kiểm duyệt bất cứ khi nào có các thay đổi đang chờ xử lý."
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application. If you have an existing PhpGedView system, you should create a new webtrees system. You can import your PhpGedView data and settings later."
@@ -14921,11 +14943,11 @@ msgstr "Tổng số sinh"
 
 #: statistics.php:96
 msgid "Total dead"
-msgstr "Tổng số đã chết"
+msgstr "Tổng số đã mất"
 
 #: statistics.php:114
 msgid "Total deaths"
-msgstr "Tổng số chết"
+msgstr "Tổng số mất"
 
 #: statistics.php:216
 msgid "Total divorces"
@@ -15592,9 +15614,8 @@ msgid "View the notes"
 msgstr "Xem ghi chú"
 
 #: calendar.php:292
-#, fuzzy
 msgid "View this day"
-msgstr "Coi Ngày"
+msgstr "Xem ngày này"
 
 #: app/Controller/AncestryController.php:91
 #: app/Controller/DescendancyController.php:169
@@ -15613,9 +15634,8 @@ msgid "View this individual"
 msgstr "Xem cá nhân này"
 
 #: calendar.php:296
-#, fuzzy
 msgid "View this month"
-msgstr "Coi Tháng"
+msgstr "Xem tháng này"
 
 #: app/Module/SlideShowModule.php:183 medialist.php:316
 #, fuzzy
@@ -15623,9 +15643,8 @@ msgid "View this source"
 msgstr "Xem nguồn"
 
 #: calendar.php:300
-#, fuzzy
 msgid "View this year"
-msgstr "Coi Năm"
+msgstr "Xem năm này"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:385
@@ -15758,7 +15777,7 @@ msgstr "Lời chào ở trang đăng nhập"
 
 #: login.php:166
 msgid "Welcome to this genealogy website"
-msgstr "Kính chào vào cái website gia phả này"
+msgstr "Chào mừng đến với trang web phả hệ này"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6741
@@ -15818,7 +15837,7 @@ msgstr "Ai có thể tải tập tin đa phương tiện"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:32
 msgid "Who is online"
-msgstr "Ai đang xem"
+msgstr "Ai đang online"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:163 search.php:210
 msgid "Whole words only"
@@ -16012,7 +16031,10 @@ msgstr "Bạn có thể đặt quyền truy cập cho một bản ghi, sự ki�
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:40
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm bản ghi người chết cho cá nhân chết từ ngày khác, nhưng thiếu bản ghi về cái chết, an táng hay hỏa thiêu v.v."
+msgstr ""
+"Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm bản ghi người đã mất "
+"cho cá nhân mất từ ngày khác, nhưng thiếu bản ghi về sự qua đời, an táng hay "
+"hỏa thiêu v.v."
 
 #: admin_site_access.php:66
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
@@ -16372,7 +16394,7 @@ msgstr "và"
 #: app/Functions/Functions.php:1092
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "dì/cô"
+msgstr "cô/dì"
 
 #: app/Functions/Functions.php:848
 msgctxt "father’s sister"
@@ -16459,7 +16481,7 @@ msgstr "tên khi sinh"
 #: admin_trees_config.php:450
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "sinh trong %1$s hay chết trong %2$s năm rồi"
+msgstr "sinh trong %1$s hay mất trong %2$s năm rồi"
 
 #: app/Functions/Functions.php:768
 msgid "brother"
@@ -16654,7 +16676,7 @@ msgstr "thời kỳ. Lựa đơn vị cho thời kỳ trên trục z"
 #: app/Functions/Functions.php:749 app/Functions/FunctionsCharts.php:312
 #: edit_interface.php:1980
 msgid "daughter"
-msgstr "con gái"
+msgstr "Con gái"
 
 #: modules_v3/descendancy_report/report.xml:226
 msgid "daughter of"
@@ -18197,15 +18219,15 @@ msgstr "cháu gái 2 đời"
 
 #: app/Functions/Functions.php:1852
 msgid "great-great-grandfather"
-msgstr "ông sơ"
+msgstr "ông sơ (Cao tổ phụ)"
 
 #: app/Functions/Functions.php:1854
 msgid "great-great-grandmother"
-msgstr "bà sơ"
+msgstr "bà sơ (Cao tổ mẫu)"
 
 #: app/Functions/Functions.php:1856
 msgid "great-great-grandparent"
-msgstr "ông bà sơ"
+msgstr "ông bà sơ (Cao tổ phụ mẫu)"
 
 #: app/Functions/Functions.php:1970
 msgid "great-great-grandson"
