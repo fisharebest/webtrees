@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-07-23 08:16+0000\n"
+"PO-Revision-Date: 2021-08-10 04:30+0000\n"
 "Last-Translator: Ngô Hữu Thuận <ngohuuthuan@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/vi/>\n"
@@ -142,7 +142,7 @@ msgstr "%1$s × %2$s pixels"
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:549 app/Module/StatisticsChartModule.php:862
@@ -641,41 +641,47 @@ msgstr "Địa chỉ Web"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:110
 msgid "A chart displaying relationships between two individuals."
-msgstr "A chart displaying relationships between two individuals.biểu đố hiển thị mối quan hệ giũa hai người."
+msgstr "Biểu đố hiển thị mối quan hệ giũa hai người."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "A chart of an individual’s ancestors and descendants, as a family book.Biểu đồ của tổ tiên và hậu duệ của một cá nhân xem như một gia đình."
+msgstr ""
+"Biểu đồ về tổ tiên và con cháu của một cá nhân, như một cuốn sổ gia đình."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:96
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "A chart of an individual’s ancestors, as a compact tree. Biểu đồ tổ tiên của một cá nhân."
+msgstr "Biểu đồ về tổ tiên của một cá nhân, dưới dạng một cây nhỏ gọn."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "A chart of an individual’s ancestors, formatted as a tree. Biểu đồ tổ tiên dưới dạng cây."
+msgstr ""
+"Biểu đồ về tổ tiên của một cá nhân, được định dạng dưới dạng cây gia đình."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:119
 msgid "A chart of an individual’s ancestors."
-msgstr "A chart of an individual’s ancestors. Biểu đồ tổ tiên của một cá nhân."
+msgstr "Biểu đồ về tổ tiên của một cá nhân."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:119
 msgid "A chart of an individual’s descendants."
-msgstr "A chart of an individual’s descendants. Biểu đồ con cháu của một cá nhân."
+msgstr "Biểu đồ về con cháu của một cá nhân."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:121
 msgid "A chart of individuals’ lifespans."
-msgstr "A chart of individuals’ lifespans. Biểu đồ tuổi thọ của một cá nhân."
+msgstr "Biểu đồ về tuổi thọ của các cá nhân."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Con có thể có nhiều hơn cặp cha mẹ. Quan hệ giữa con và cha mẹ có thể là quan hệ sinh học, pháp lý, hoặc dựa trên văn hóa và truyền thống địa phương. Nếu không có tộc hệ nào được nêu, thì ta giả định đó là quan hệ sinh học."
+msgstr ""
+"Một người con có thể có nhiều hơn một cặp cha mẹ. Quan hệ giữa con và cha mẹ "
+"có thể là quan hệ sinh học, pháp lý, hoặc dựa trên văn hóa và truyền thống "
+"địa phương. Nếu không có tộc hệ nào được nêu, thì ta giả định đó là quan hệ "
+"sinh học."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:70
@@ -685,7 +691,7 @@ msgstr "Một lỗi thông thường là một liên kết đến cùng hồ sơ
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
 msgid "A fan chart of an individual’s ancestors."
-msgstr "A fan chart of an individual’s ancestors. Biểu đồ đơn giản của một cá nhân."
+msgstr "Biểu đồ về tổ tiên của một cá nhân."
 
 #: resources/views/admin/map-import-form.phtml:27
 #: resources/views/admin/trees-export.phtml:25
@@ -821,7 +827,7 @@ msgstr "Danh sách các trang được xem với số lần nhiều nhất."
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
 msgid "A list of users and visitors who are currently online."
-msgstr "Một danh sách người dùng và k hách đang xem."
+msgstr "Danh sách người dùng và khách truy cập hiện đang trực tuyến."
 
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -1403,7 +1409,7 @@ msgstr "Thêm tên kết hôn"
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:58
 msgid "Add missing death records"
-msgstr "Thêm bản ghi người chết bị thiếu"
+msgstr "Thêm bản ghi người mất bị thiếu"
 
 #: resources/views/edit-blocks-page.phtml:46
 msgid "Add more blocks from the following list."
@@ -1429,7 +1435,7 @@ msgstr "Thêm khoảng cách nơi dòng dài bị ngắt cuốn"
 #. I18N: Description of the “CSS and JS” module.
 #: app/Module/CustomCssJsModule.php:43
 msgid "Add styling and scripts to every page."
-msgstr "Thêm kiểu và trình con cho mỗi trang."
+msgstr "Thêm kiểu trình bày và tập lệnh vào mọi trang."
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:83
@@ -1632,12 +1638,12 @@ msgstr "Nhận con nuôi"
 
 #: app/Factories/ElementFactory.php:423
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Cha mẹ nuôi"
 
 #. I18N: gedcom tag CHRA
 #: app/Factories/ElementFactory.php:471 app/GedcomTag.php:569
 msgid "Adult christening"
-msgstr "Lể Rửa Tội Cho Người Lớn"
+msgstr "Lễ rửa tội cho người lớn"
 
 #: resources/views/admin/trees-preferences.phtml:866
 msgid "Advanced fact preferences"
@@ -1689,7 +1695,7 @@ msgstr "Tuổi khi sinh con"
 
 #: resources/views/admin/trees-privacy.phtml:71
 msgid "Age at which to assume an individual is dead"
-msgstr "Tuổi được cho là một người đã chết"
+msgstr "Tuổi được cho là một người đã mất"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
@@ -2287,7 +2293,7 @@ msgstr "Áo"
 #: resources/views/lists/sources-table.phtml:95
 #: resources/views/modals/source-fields.phtml:30
 msgid "Author"
-msgstr "Tác Gỉa"
+msgstr "Tác giả"
 
 #. I18N: gedcom tag CHAN:_WT_USER
 #: app/Factories/ElementFactory.php:1293 app/Factories/ElementFactory.php:1295
@@ -2355,7 +2361,7 @@ msgstr "Tuổi trung bình"
 #: resources/views/modules/statistics-chart/custom.phtml:38
 #: resources/views/statistics/individuals/lifespan.phtml:20
 msgid "Average age at death"
-msgstr "Tuổi trung bình lúc chết"
+msgstr "Tuổi trung bình lúc mất"
 
 #: app/Statistics/Google/ChartMarriageAge.php:162
 msgid "Average age at marriage"
@@ -2367,7 +2373,7 @@ msgstr "Tuổi kết hôn trung bình theo thế kỷ"
 
 #: app/Statistics/Google/ChartAge.php:136
 msgid "Average age related to death century"
-msgstr "Tuổi trung bình liên quan đến chết theo thế kỷ"
+msgstr "Tuổi trung bình liên quan đến mất theo thế kỷ"
 
 #: app/Statistics/Google/ChartChildren.php:95
 msgid "Average number"
@@ -3059,7 +3065,7 @@ msgstr "British Virgin Islands"
 #: resources/xml/reports/individual_ext_report.xml:327
 #: resources/xml/reports/individual_report.xml:316
 msgid "Brother"
-msgstr "Anh (Em) Trai"
+msgstr "Anh (Em) trai"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:137
@@ -3108,7 +3114,7 @@ msgstr "Bulgaria"
 #: resources/xml/reports/family_group_report.xml:1049
 #: resources/xml/reports/missing_facts_report.xml:25
 msgid "Burial"
-msgstr "Lể An Táng"
+msgstr "Lễ an táng"
 
 #: app/Module/IndividualFactsTabModule.php:466
 msgid "Burial of a brother"
@@ -3382,7 +3388,7 @@ msgstr "Lý do"
 #: app/Factories/ElementFactory.php:486 app/Factories/ElementFactory.php:876
 #: app/GedcomTag.php:624
 msgid "Cause of death"
-msgstr "Lý do chết"
+msgstr "Lý do mất"
 
 #: resources/views/admin/synchronize-trees.phtml:28
 #: resources/views/admin/trees-merge.phtml:60
@@ -3674,7 +3680,7 @@ msgstr "Chọn lời chào người dùng xác định ghi bên dưới"
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Christening"
-msgstr "Lể Rửa Tội"
+msgstr "Lễ rửa tội"
 
 #: app/Module/IndividualFactsTabModule.php:333
 msgid "Christening of a brother"
@@ -4149,7 +4155,7 @@ msgstr "Không kiểm lại được những gì bạn nhập. Vui lòng nhập 
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:86
 msgid "Count the visits to each page"
-msgstr "Đếm khách viếng từng trang"
+msgstr "Đếm khách truy cập từng trang"
 
 #. I18N: gedcom tag CTRY
 #: app/Factories/ElementFactory.php:252 app/Factories/ElementFactory.php:365
@@ -4311,7 +4317,7 @@ msgstr "Hỏa táng cháu"
 
 #: app/Module/IndividualFactsTabModule.php:489
 msgid "Cremation of a half-brother"
-msgstr "Hảo táng anh/ em cùng cha hay mẹ"
+msgstr "Hỏa táng anh/ em cùng cha hay mẹ"
 
 #: app/Module/IndividualFactsTabModule.php:491
 msgid "Cremation of a half-sibling"
@@ -4625,7 +4631,7 @@ msgstr "Ngày hỏa táng"
 #: resources/xml/reports/fact_sources.xml:274
 #: resources/xml/reports/missing_facts_report.xml:505
 msgid "Date of death"
-msgstr "Ngày tháng chết"
+msgstr "Ngày tháng mất"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:222
 msgid "Date of divorce"
@@ -4759,7 +4765,7 @@ msgstr "Ngày:"
 #: app/Statistics/Google/ChartMortality.php:78
 #: resources/views/lists/individuals-table.phtml:195
 msgid "Dead"
-msgstr "Tổng số chết"
+msgstr "Tổng số mất"
 
 #. I18N: gedcom tag DEAT
 #: app/Factories/ElementFactory.php:485 app/GedcomTag.php:622
@@ -4890,11 +4896,11 @@ msgstr "Tổng số chết"
 #: resources/xml/reports/pedigree_report.xml:1381
 #: resources/xml/reports/relative_ext_report.xml:69
 msgid "Death"
-msgstr "Chết"
+msgstr "Mất"
 
 #: app/Statistics/Google/ChartDistribution.php:343
 msgid "Death by country"
-msgstr "Chết theo nước"
+msgstr "Mất theo nước"
 
 #: resources/xml/reports/bdm_report.xml:10
 #: resources/xml/reports/death_report.xml:8
@@ -4904,50 +4910,50 @@ msgstr "Mất khoảng thời gian kết thúc"
 #: resources/xml/reports/bdm_report.xml:9
 #: resources/xml/reports/death_report.xml:7
 msgid "Death date range start"
-msgstr "Chết ở khoản thời gian băt đầu"
+msgstr "Mất ở khoảng thời gian băt đầu"
 
 #: app/Module/IndividualFactsTabModule.php:461
 msgid "Death of a brother"
-msgstr "Chết của anh /em trai"
+msgstr "Mất của anh /em trai"
 
 #: app/Module/IndividualFactsTabModule.php:445
 #: resources/views/admin/trees-preferences.phtml:501
 msgid "Death of a child"
-msgstr "Chết của con"
+msgstr "Mất của con"
 
 #: app/Module/IndividualFactsTabModule.php:444
 msgid "Death of a daughter"
-msgstr "Chết của con gái"
+msgstr "Mất của con gái"
 
 #: app/Functions/FunctionsPrint.php:216
 #: app/Module/IndividualFactsTabModule.php:739
 msgid "Death of a father"
-msgstr "Tữ của bố"
+msgstr "Mất của bố"
 
 #: app/Module/IndividualFactsTabModule.php:499
 #: app/Module/IndividualFactsTabModule.php:517
 #: app/Module/IndividualFactsTabModule.php:535
 #: resources/views/admin/trees-preferences.phtml:495
 msgid "Death of a grandchild"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/Module/IndividualFactsTabModule.php:498
 msgid "Death of a granddaughter"
-msgstr "Chết của cháu gái"
+msgstr "Mất của cháu gái"
 
 #: app/Module/IndividualFactsTabModule.php:516
 msgctxt "daughter’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Chết của cháu gái"
+msgstr "Mất của cháu gái"
 
 #: app/Module/IndividualFactsTabModule.php:534
 msgctxt "son’s daughter"
 msgid "Death of a granddaughter"
-msgstr "Chết của cháu gái"
+msgstr "Mất của cháu gái"
 
 #: app/Module/IndividualFactsTabModule.php:757
 msgid "Death of a grandfather"
-msgstr "Chết của ông"
+msgstr "Mất của ông"
 
 #: app/Module/IndividualFactsTabModule.php:758
 msgid "Death of a grandmother"
@@ -4958,45 +4964,45 @@ msgstr "Chế của bà"
 #: app/Module/IndividualFactsTabModule.php:795
 #: resources/views/admin/trees-preferences.phtml:525
 msgid "Death of a grandparent"
-msgstr "Chết của ông bà"
+msgstr "Mất của ông bà"
 
 #: app/Module/IndividualFactsTabModule.php:497
 msgid "Death of a grandson"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/Module/IndividualFactsTabModule.php:515
 msgctxt "daughter’s son"
 msgid "Death of a grandson"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/Module/IndividualFactsTabModule.php:533
 msgctxt "son’s son"
 msgid "Death of a grandson"
-msgstr "Chết của cháu"
+msgstr "Mất của cháu"
 
 #: app/Module/IndividualFactsTabModule.php:479
 msgid "Death of a half-brother"
-msgstr "Chết của anh/ em cùng cha hay cùng mẹ"
+msgstr "Mất của anh/ em cùng cha hay cùng mẹ"
 
 #: app/Module/IndividualFactsTabModule.php:481
 msgid "Death of a half-sibling"
-msgstr "Chết của anh (chị, em) chung cha, mẹ"
+msgstr "Mất của anh (chị, em) chung cha, mẹ"
 
 #: app/Module/IndividualFactsTabModule.php:480
 msgid "Death of a half-sister"
-msgstr "Chết của chị, em cùng cha hay mẹ"
+msgstr "Mất của chị, em cùng cha hay mẹ"
 
 #: app/Module/IndividualFactsTabModule.php:258
 msgid "Death of a husband"
-msgstr "Chết của chồng"
+msgstr "Mất của chồng"
 
 #: app/Module/IndividualFactsTabModule.php:775
 msgid "Death of a maternal grandfather"
-msgstr "Chết của ông ngoại"
+msgstr "Mất của ông ngoại"
 
 #: app/Module/IndividualFactsTabModule.php:776
 msgid "Death of a maternal grandmother"
-msgstr "Chết của bà ngoại"
+msgstr "Mất của bà ngoại"
 
 #: app/Functions/FunctionsPrint.php:208
 #: app/Module/IndividualFactsTabModule.php:740
@@ -5006,15 +5012,15 @@ msgstr "Tữ của mẹ"
 #: app/Module/IndividualFactsTabModule.php:741
 #: resources/views/admin/trees-preferences.phtml:513
 msgid "Death of a parent"
-msgstr "Chết của cha/mẹ"
+msgstr "Mất của cha/mẹ"
 
 #: app/Module/IndividualFactsTabModule.php:793
 msgid "Death of a paternal grandfather"
-msgstr "Chết của ông nội"
+msgstr "Mất của ông nội"
 
 #: app/Module/IndividualFactsTabModule.php:794
 msgid "Death of a paternal grandmother"
-msgstr "Chết của bà nội"
+msgstr "Mất của bà nội"
 
 #: app/Module/IndividualFactsTabModule.php:463
 #: resources/views/admin/trees-preferences.phtml:507
@@ -5023,11 +5029,11 @@ msgstr "Tữ của anh (chị, em)"
 
 #: app/Module/IndividualFactsTabModule.php:462
 msgid "Death of a sister"
-msgstr "Chết của chị"
+msgstr "Mất của chị"
 
 #: app/Module/IndividualFactsTabModule.php:443
 msgid "Death of a son"
-msgstr "Chết của con"
+msgstr "Mất của con"
 
 #: app/Module/IndividualFactsTabModule.php:260
 #: resources/views/admin/trees-preferences.phtml:519
@@ -5036,12 +5042,12 @@ msgstr "Tữ của người chồng/vợ"
 
 #: app/Module/IndividualFactsTabModule.php:259
 msgid "Death of a wife"
-msgstr "Chết của vợ"
+msgstr "Mất của vợ"
 
 #. I18N: gedcom tag _DETS
 #: app/Factories/ElementFactory.php:817 app/GedcomTag.php:1071
 msgid "Death of one spouse"
-msgstr "Chết của một bạn đời"
+msgstr "Mất của một bạn đời"
 
 #: resources/xml/reports/death_report.xml:6
 msgid "Death place contains"
@@ -5062,7 +5068,7 @@ msgstr "Mất"
 #: app/Statistics/Google/ChartDeath.php:129
 #: resources/views/statistics/individuals/total-events.phtml:79
 msgid "Deaths by century"
-msgstr "Số chết theo thế kỷ"
+msgstr "Số mất theo thế kỷ"
 
 #: app/Date/AbstractGregorianJulianDate.php:212
 msgctxt "Abbreviation for December"
@@ -5079,7 +5085,7 @@ msgstr "Thập niên sinh"
 #: resources/views/lists/individuals-table.phtml:464
 #: resources/views/lists/individuals-table.phtml:481
 msgid "Decade of death"
-msgstr "Thập niên chết"
+msgstr "Thập niên mất"
 
 #: resources/views/lists/families-table.phtml:457
 #: resources/views/lists/families-table.phtml:473
@@ -5549,7 +5555,18 @@ msgstr "Trùng lắp tên người dùng. Đã có một thành viên với tên
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Mỗi nguồn ghi sự kiện cụ thể, nhìn chung cho một phạm vi ngày đã cho và cho thầm quyền địa điểm. Ví dụ một bản ghi sự kiện điều tra dân số và bản ghi năm sinh, kết hôn, chết của nhà thờ.<br><br>Chọn những sự kiện được ghi lại theo nguồn này từ danh sách các sự kiện được cung cấp. Các ngày cần được quy định trong một định dạng nhiều như <i>FROM 1900 TO 1910</i>. Thẩm quyền ra là tên của các thẩm quyền thấp nhất mà bao gồm tất cả những nơi cấp dưới có tên trong mã nguồn này. Ví dụ, “Oneida, Idaho, Hoa Kỳ” sẽ được sử dụng như là một nơi thẩm quyền mã nguồn cho các sự kiện xảy ra trong các thị trấn khác nhau trong Oneida County. “Idaho, Hoa Kỳ” sẽ là nguồn thẩm quyền ra nếu các sự kiện ghi lại diễn ra không chỉ ở Oneida County mà còn ở các quận khác ở Idaho."
+msgstr ""
+"Mỗi nguồn ghi sự kiện cụ thể, nhìn chung cho một phạm vi ngày đã cho và cho "
+"thầm quyền địa điểm. Ví dụ một bản ghi sự kiện điều tra dân số và bản ghi "
+"năm sinh, kết hôn, mất của nhà thờ.<br><br>Chọn những sự kiện được ghi lại "
+"theo nguồn này từ danh sách các sự kiện được cung cấp. Các ngày cần được quy "
+"định trong một định dạng nhiều như <i>FROM 1900 TO 1910</i>. Thẩm quyền ra "
+"là tên của các thẩm quyền thấp nhất mà bao gồm tất cả những nơi cấp dưới có "
+"tên trong mã nguồn này. Ví dụ, “Oneida, Idaho, Hoa Kỳ” sẽ được sử dụng như "
+"là một nơi thẩm quyền mã nguồn cho các sự kiện xảy ra trong các thị trấn "
+"khác nhau trong Oneida County. “Idaho, Hoa Kỳ” sẽ là nguồn thẩm quyền ra nếu "
+"các sự kiện ghi lại diễn ra không chỉ ở Oneida County mà còn ở các quận khác "
+"ở Idaho."
 
 #: resources/views/help/pending-changes.phtml:25
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -5567,7 +5584,7 @@ msgstr "Sinh sớm nhất"
 #: resources/views/modules/html/template-statistics.phtml:77
 #: resources/views/statistics/individuals/total-events.phtml:92
 msgid "Earliest death"
-msgstr "Chết xưa nhất"
+msgstr "Mất xưa nhất"
 
 #: resources/views/statistics/families/total-records.phtml:94
 msgid "Earliest divorce"
@@ -5685,7 +5702,7 @@ msgstr "Edmonton, Alberta, Canada"
 #. I18N: gedcom tag EDUC
 #: app/Factories/ElementFactory.php:491 app/GedcomTag.php:649
 msgid "Education"
-msgstr "Học Vấn"
+msgstr "Học vấn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:171
@@ -5995,7 +6012,7 @@ msgstr "Các tùy chọn xuất"
 #. I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years
 #: resources/views/admin/trees-privacy.phtml:115
 msgid "Extend privacy to dead individuals"
-msgstr "Đặt chế độ riêng tư cho cả người chết"
+msgstr "Đặt chế độ riêng tư cho cả người mất"
 
 #. I18N: “External files” are stored on other computers
 #: resources/views/admin/media.phtml:45
@@ -6140,7 +6157,7 @@ msgstr "Sự kiện cho người mới"
 
 #: resources/views/admin/trees-preferences.phtml:825
 msgid "Facts for repository records"
-msgstr "Sự kiện cho bản ghi kho"
+msgstr "Sự kiện về hồ sơ kho lưu trữ"
 
 #: resources/views/admin/trees-preferences.phtml:784
 msgid "Facts for source records"
@@ -6688,7 +6705,9 @@ msgstr "Thí dụ như nếu bạn nêu cụ thế một đường dẫn dài 2,
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
-msgstr "Ví dụ, chúng ta có thể tìm nhanh cá nhân không có sự kiện chết, nhưng việc này sẽ chậm hơn để tính toán nếu cá nhân đó đã chết."
+msgstr ""
+"Ví dụ, chúng ta có thể tìm nhanh cá nhân không có sự kiện mất, nhưng việc "
+"này sẽ chậm hơn để tính toán nếu cá nhân đó đã mất."
 
 #: app/Module/ContactsFooterModule.php:149
 #, php-format
@@ -7178,7 +7197,7 @@ msgstr "Tốt nghiệp"
 
 #: resources/views/statistics/individuals/greatest-age.phtml:12
 msgid "Greatest age at death"
-msgstr "Lớn tuổi nhất khi chết"
+msgstr "Lớn tuổi nhất khi mất"
 
 #: resources/views/statistics/families/age-difference.phtml:29
 msgid "Greatest age between siblings"
@@ -7788,7 +7807,11 @@ msgstr "Trong một vài lịch, ngày bắt đầu vào giữa đêm. Ở một
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:126
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr "Ở một số nước, luật riêng tư áp dụng không chỉ cho những người sống, mà còn cho những người đã qua đời gần đây. Tuỳ chọn này sẽ cho phép bạn mở rộng các quy tắc bảo mật người còn sống đối với những người được sinh hay chết trong một số năm. Bỏ trống giá trị trường này để vô hiệu hóa tính năng này."
+msgstr ""
+"Ở một số nước, luật riêng tư áp dụng không chỉ cho những người sống, mà còn "
+"cho những người đã qua đời gần đây. Tuỳ chọn này sẽ cho phép bạn mở rộng các "
+"quy tắc bảo mật người còn sống đối với những người được sinh hay mất trong "
+"một số năm. Bỏ trống giá trị trường này để vô hiệu hóa tính năng này."
 
 #: app/Http/RequestHandlers/CalendarPage.php:129
 msgid "In this month…"
@@ -8536,7 +8559,7 @@ msgstr "Sinh gần đây nhất"
 #: resources/views/modules/html/template-statistics.phtml:81
 #: resources/views/statistics/individuals/total-events.phtml:103
 msgid "Latest death"
-msgstr "Chết gần đây nhất"
+msgstr "Mất gần đây nhất"
 
 #: resources/views/statistics/families/total-records.phtml:105
 msgid "Latest divorce"
@@ -9329,24 +9352,24 @@ msgstr "TH5"
 #: app/Date/AbstractGregorianJulianDate.php:102
 msgctxt "GENITIVE"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #: app/Date/AbstractGregorianJulianDate.php:172
 msgctxt "INSTRUMENTAL"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #: app/Date/AbstractGregorianJulianDate.php:137
 msgctxt "LOCATIVE"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #: app/Date/AbstractGregorianJulianDate.php:67
 #: app/Module/StatisticsChartModule.php:798
 #: resources/views/edit/initialize-calendar-popup.phtml:15
 msgctxt "NOMINATIVE"
 msgid "May"
-msgstr "Tháng Nam"
+msgstr "Tháng Năm"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:357
@@ -11008,7 +11031,7 @@ msgstr "Phả hệ"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Đồ Thị Dòng Giống"
+msgstr "Biểu đồ phả hệ"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:123
@@ -11025,7 +11048,7 @@ msgstr "Biểu đồ tộc hệ của %s"
 #: app/Module/PedigreeChartModule.php:164
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "Cây phả hệ cua %s"
+msgstr "Cây phả hệ của %s"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:267
@@ -11093,7 +11116,7 @@ msgstr "Phiên âm"
 
 #: resources/views/search-phonetic-page.phtml:66
 msgid "Phonetic algorithm"
-msgstr "giải thuận ngữ âm"
+msgstr "Thuật toán phiên âm"
 
 #: app/Factories/ElementFactory.php:524 app/GedcomTag.php:809
 msgid "Phonetic name"
@@ -11116,7 +11139,7 @@ msgstr "Tiêu đề phiên âm"
 
 #: app/Factories/ElementFactory.php:531
 msgid "Phonetic type"
-msgstr ""
+msgstr "Kiểu ngữ âm"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:74 app/Factories/ElementFactory.php:807
@@ -11161,7 +11184,7 @@ msgstr "Pitcairn"
 #: resources/xml/reports/marriage_report.xml:50
 #: resources/xml/reports/occupation_report.xml:60
 msgid "Place"
-msgstr "Nơi"
+msgstr "Địa điểm"
 
 #. I18N: Name of a module/list
 #: app/Factories/ElementFactory.php:356
@@ -11173,7 +11196,7 @@ msgstr "Thứ cấp địa điểm"
 
 #: app/Factories/ElementFactory.php:1344 app/GedcomTag.php:878
 msgid "Place in Hebrew"
-msgstr "Nơi tại Do Thái"
+msgstr "Đặt bằng tiếng Do Thái"
 
 #: resources/views/modules/place-hierarchy/list.phtml:14
 msgid "Place list"
@@ -11204,7 +11227,7 @@ msgstr "Nơi ràng buộc con LDS"
 
 #: app/Factories/ElementFactory.php:478
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "Nơi xác nhận LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:499 app/GedcomTag.php:672
@@ -11271,7 +11294,7 @@ msgstr "Nơi hỏa táng"
 #: resources/xml/reports/fact_sources.xml:275
 #: resources/xml/reports/missing_facts_report.xml:516
 msgid "Place of death"
-msgstr "Nơi chết"
+msgstr "Nơi mất"
 
 #: app/Factories/ElementFactory.php:495 app/GedcomTag.php:663
 msgid "Place of emigration"
@@ -11401,7 +11424,7 @@ msgstr "Porto Alegre, Brazil"
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Portrait"
-msgstr "Chân Dung"
+msgstr "Chân dung"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:407
@@ -11532,7 +11555,7 @@ msgstr "In các sự kiện chính khi khộng có gì"
 
 #: app/Factories/ElementFactory.php:1077 app/Factories/ElementFactory.php:1119
 msgid "Priority"
-msgstr ""
+msgstr "Ưu tiên"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
@@ -12158,7 +12181,7 @@ msgstr "Kho lưu trữ"
 #: resources/views/modules/favorites/favorites.phtml:122
 #: resources/views/modules/recent_changes/changes-table.phtml:77
 msgid "Repository"
-msgstr "Nơi Tàng Trữ"
+msgstr "Nơi lưu trữ"
 
 #: resources/views/lists/repositories-table.phtml:50
 msgid "Repository name"
@@ -12239,7 +12262,7 @@ msgstr "Hạn chế trong gia đình"
 #: resources/views/cards/add-restriction.phtml:16
 #: resources/views/media-page.phtml:196
 msgid "Restriction"
-msgstr "Hạn Chế"
+msgstr "Hạn chế"
 
 #: resources/views/help/restriction.phtml:8
 msgid "Restrictions can be added to records and/or facts. They restrict who can view the data and who can edit it."
@@ -13114,15 +13137,15 @@ msgstr "Hiện người sống hay cặp vợ chồng khi cả hai còn sống."
 #: resources/views/lists/families-table.phtml:171
 #: resources/views/lists/individuals-table.phtml:193
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Hiện người chết hay cặp vợ chồng khi cả hai chết."
+msgstr "Hiện người mất hay cặp vợ chồng khi cả hai đều mất."
 
 #: resources/views/lists/individuals-table.phtml:197
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Hiện những người chết hơn 100 năm."
+msgstr "Hiện những người mất hơn 100 năm."
 
 #: resources/views/lists/individuals-table.phtml:201
 msgid "Show individuals who died within the last 100 years."
-msgstr "Hiện những người chết trong 100 năm."
+msgstr "Hiện những người mất trong 100 năm."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
@@ -13821,7 +13844,7 @@ msgstr "Ngày thay đổi tình trạng"
 
 #: app/Functions/FunctionsDate.php:55 app/Functions/FunctionsPrint.php:250
 msgid "Stillborn"
-msgstr "Chết lúc đẻ"
+msgstr "Mất lúc đẻ"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -13847,7 +13870,7 @@ msgstr "Ngưng"
 #: app/Module/StoriesModule.php:208
 #: resources/views/modules/stories/edit.phtml:22
 msgid "Stories"
-msgstr "Stories"
+msgstr "Những câu chuyện"
 
 #: resources/views/modules/stories/edit.phtml:51
 msgid "Story"
@@ -14442,15 +14465,15 @@ msgstr "Liên kết từ “%1$s” đến “%2$s” đã được cập nhật
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "Menu danh sách."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 msgid "The location has been created"
-msgstr ""
+msgstr "Vị trí đã được tạo"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
-msgstr ""
+msgstr "Vị trí của nơi này không được biết."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:151
 #, php-format
@@ -14464,7 +14487,7 @@ msgstr "File nghe nhìn %1$s đã đổi tên thành công thành %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:108
 msgid "The media object has been created"
-msgstr ""
+msgstr "Đối tượng phương tiện đã được tạo"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14584,10 +14607,13 @@ msgstr "Các tùy chọn cho mô đun “%s” đã được cập nhật."
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"Tiền tố là tùy chọn, nhưng được khuyến nghị. Bằng cách đặt tên bảng một tiền "
+"tố duy nhất, bạn có thể cho phép một số ứng dụng khác nhau chia sẻ cùng một "
+"cơ sở dữ liệu."
 
 #: app/Factories/ElementFactory.php:1071 app/Factories/ElementFactory.php:1113
 msgid "The problem"
-msgstr ""
+msgstr "Vấn đề"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -14601,20 +14627,20 @@ msgstr "Các bản ghi “%1$s” và “%2$s” đã được nhập một."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:72
 msgid "The reports menu."
-msgstr ""
+msgstr "Menu báo cáo."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:80
 msgid "The repository has been created"
-msgstr ""
+msgstr "Kho lưu trữ đã được tạo"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Menu tìm kiếm."
 
 #: app/Services/SearchService.php:1171
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Tìm kiếm trả về quá nhiều kết quả."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
@@ -14622,11 +14648,11 @@ msgstr "Cấu hình máy phục vụ OK."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Máy chủ không thể hiểu yêu cầu này."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Không thể truy cập thư mục tạm thời của máy chủ."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:556
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
@@ -14640,19 +14666,19 @@ msgstr "Kích cỡ của cây gia đình, các sự kiện xưa nhất đến m�
 
 #: app/Factories/ElementFactory.php:1068 app/Factories/ElementFactory.php:1110
 msgid "The solution"
-msgstr ""
+msgstr "Giải pháp"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
-msgstr ""
+msgstr "Nguồn đã được tạo"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Hồ sơ đã được tạo"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Người gửi đã được tạo"
 
 #: resources/views/help/name.phtml:13
 #, php-format
@@ -14735,28 +14761,27 @@ msgstr "Những người phát triển webtrees rất quan tâm biết lỗi nà
 #: resources/views/admin/modules.phtml:259
 #: resources/views/admin/users-edit.phtml:199
 msgid "Theme"
-msgstr "Kiểu trình bày"
+msgstr "Chủ đề"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:45
 msgid "Theme change"
-msgstr "Kiểu trình bày thay đổi"
+msgstr "Thay đổi chủ đề"
 
 #: app/Http/RequestHandlers/ModulesThemesPage.php:43
 #: resources/views/admin/control-panel.phtml:603
 #: resources/views/admin/modules.phtml:118
 #: resources/views/admin/modules.phtml:120
 msgid "Themes"
-msgstr "Kiểu trình bày"
+msgstr "Chủ đề"
 
 #: resources/views/modules/personal_facts/tab.phtml:46
-#, fuzzy
 msgid "There are no facts for this individual."
-msgstr "Không có sự kiện nào cho người này."
+msgstr "Không có dữ kiện nào cho cá nhân này."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:288
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Không có liên kết đến đối tượng phương tiện này."
 
 #: resources/views/modules/media/tab.phtml:29
 msgid "There are no media objects for this individual."
@@ -14764,7 +14789,7 @@ msgstr "Không có tin đa phương tiện nào cho người này."
 
 #: resources/views/modules/notes/tab.phtml:41
 msgid "There are no notes for this individual."
-msgstr "Không có Lời Ghi nào cho người này."
+msgstr "Không có ghi chú cho cá nhân này."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:216
 #: resources/views/pending-changes-page.phtml:30
@@ -14794,7 +14819,7 @@ msgstr[0] "Không có thay đổi nay trong vòng %s ngày qua."
 #: app/Http/RequestHandlers/PasswordRequestAction.php:107
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Không có tài khoản người dùng nào có email “%s”."
 
 #: app/Http/RequestHandlers/AddMediaFileAction.php:88
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:81
@@ -14829,7 +14854,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Những cookie này là \"cần thiết\" và không cần sự đồng ý."
 
 #: resources/views/admin/trees-unconnected.phtml:35
 #, php-format
@@ -14838,7 +14863,7 @@ msgstr "Những nhóm cá nhân này không liên quan đến %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Các dịch vụ này có thể sử dụng cookie hoặc công nghệ theo dõi khác."
 
 #: app/Http/RequestHandlers/LoginAction.php:137
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14849,14 +14874,16 @@ msgid "This account has not been verified. Please check your email for a verific
 msgstr "Tài khoản này đã chưa được xác minh. Xin kiểm tra email xem thông báo xác minh."
 
 #: resources/views/modules/review_changes/config.phtml:13
-#, fuzzy
 msgid "This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist."
-msgstr "Block này hiện cho người người biên danh sách bản ghi đang chờ thay đổi cần phải được chấp thuận bởi người sửa bài. Nó cũng tạo ra email hàng ngày cho người sửa bài cho các thay đổi đang chờ."
+msgstr ""
+"Block này sẽ hiển thị cho người chỉnh sửa danh sách các bản ghi có các thay "
+"đổi đang chờ xử lý cần được người kiểm duyệt xem xét. Nó cũng tạo email hàng "
+"ngày cho người kiểm duyệt bất cứ khi nào có các thay đổi đang chờ xử lý."
 
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Điều này có thể do lỗi tại %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -14868,7 +14895,7 @@ msgstr "Địa chỉ email này được dùng để gửi cho bạn lời nhắ
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Sự kiện này đã xảy ra, nhưng không rõ chi tiết."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15235,7 +15262,7 @@ msgstr "Bản ghi này không tồn tại hoặc bạn không có quyền xem n�
 
 #: resources/views/admin/trees-privacy.phtml:261
 msgid "This record does not exist."
-msgstr ""
+msgstr "Bản ghi này không tồn tại."
 
 #: resources/views/gedcom-record-page.phtml:35
 #: resources/views/submitter-page.phtml:29
@@ -15687,11 +15714,11 @@ msgstr "Tổng số sinh"
 
 #: resources/views/statistics/individuals/total-records.phtml:61
 msgid "Total dead"
-msgstr "Tổng số đã chết"
+msgstr "Tổng số đã mất"
 
 #: resources/views/statistics/individuals/total-events.phtml:70
 msgid "Total deaths"
-msgstr "Tổng số chết"
+msgstr "Tổng số mất"
 
 #: resources/views/statistics/families/total-records.phtml:72
 msgid "Total divorces"
@@ -16361,9 +16388,8 @@ msgid "View table of events occurring in %s"
 msgstr ""
 
 #: resources/views/calendar-page.phtml:215
-#, fuzzy
 msgid "View this day"
-msgstr "Coi Ngày"
+msgstr "Xem ngày này"
 
 #: app/Functions/FunctionsPrintFacts.php:198
 #: app/Statistics/Repository/FamilyRepository.php:470
@@ -16374,14 +16400,12 @@ msgid "View this family"
 msgstr "Xem gia đình này"
 
 #: resources/views/calendar-page.phtml:219
-#, fuzzy
 msgid "View this month"
-msgstr "Coi Tháng"
+msgstr "Xem tháng này"
 
 #: resources/views/calendar-page.phtml:223
-#, fuzzy
 msgid "View this year"
-msgstr "Coi Năm"
+msgstr "Xem năm này"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:205 app/GedcomCode/GedcomCodeTemp.php:681
@@ -16507,7 +16531,7 @@ msgstr "Lời chào ở trang đăng nhập"
 
 #: resources/views/login-page.phtml:22
 msgid "Welcome to this genealogy website"
-msgstr "Kính chào vào cái website gia phả này"
+msgstr "Chào mừng đến với trang web phả hệ này"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
@@ -16559,7 +16583,7 @@ msgstr "Ai có thể tải tập tin đa phương tiện"
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr "Ai đang xem"
+msgstr "Ai đang online"
 
 #: resources/views/admin/data-fix-page.phtml:82
 msgid "Why does this list include records that do not need to be updated?"
@@ -16723,6 +16747,8 @@ msgstr "Bạn có thể tìm phụ nữ đã kết hôn dễ dàng hơn bằng c
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
 msgstr ""
+"Bạn có thể chọn không theo dõi bằng cách đặt tiêu đề \"Không theo dõi\" "
+"trong tùy chọn trình duyệt của mình."
 
 #: resources/views/admin/trees-renumber.phtml:26
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
@@ -16740,7 +16766,10 @@ msgstr "Bạn có thể đặt quyền truy cập cho một bản ghi, sự ki�
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm bản ghi người chết cho cá nhân chết từ ngày khác, nhưng thiếu bản ghi về cái chết, an táng hay hỏa thiêu v.v."
+msgstr ""
+"Bạn có thể tính toán tính riêng tư nhanh bằng cách thêm bản ghi người đã mất "
+"cho cá nhân mất từ ngày khác, nhưng thiếu bản ghi về sự qua đời, an táng hay "
+"hỏa thiêu v.v."
 
 #: app/Http/RequestHandlers/LoginAction.php:115
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -17022,7 +17051,7 @@ msgstr "và"
 #: app/Functions/Functions.php:1052
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "dì/cô"
+msgstr "cô/dì"
 
 #: app/Functions/Functions.php:810
 msgctxt "father’s sister"
@@ -17105,7 +17134,7 @@ msgstr "tên khi sinh"
 #: resources/views/admin/trees-privacy.phtml:121
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "sinh trong %1$s hay chết trong %2$s năm rồi"
+msgstr "sinh trong %1$s hay mất trong %2$s năm rồi"
 
 #: app/Functions/Functions.php:722
 msgid "brother"
@@ -17343,7 +17372,7 @@ msgstr "thời kỳ. Lựa đơn vị cho thời kỳ trên trục z"
 
 #: app/Functions/Functions.php:699
 msgid "daughter"
-msgstr "con gái"
+msgstr "Con gái"
 
 #: resources/xml/reports/descendancy_report.xml:226
 msgid "daughter of"
@@ -18923,15 +18952,15 @@ msgstr "cháu gái 2 đời"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
-msgstr "ông sơ"
+msgstr "ông sơ (Cao tổ phụ)"
 
 #: app/Functions/Functions.php:2042
 msgid "great-great-grandmother"
-msgstr "bà sơ"
+msgstr "bà sơ (Cao tổ mẫu)"
 
 #: app/Functions/Functions.php:2045
 msgid "great-great-grandparent"
-msgstr "ông bà sơ"
+msgstr "ông bà sơ (Cao tổ phụ mẫu)"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
