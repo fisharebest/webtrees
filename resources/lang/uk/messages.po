@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-07-27 18:34+0100\n"
-"PO-Revision-Date: 2021-07-24 21:09+0000\n"
-"Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
-"Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
-"Language: uk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-07-27 17:32+0100\nPO-Revision-Date: 2021-08-10 04:31+0000\nLast-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -184,7 +172,7 @@ msgstr "%s і його предки"
 #: app/Module/ClippingsCartModule.php:947
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s та фізичні особи, які посилаються на це."
+msgstr "%s та особи, що посилаються на нього."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:511
@@ -278,9 +266,9 @@ msgstr[2] "%s персон"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s особа була оновлена."
-msgstr[1] "%s особи були оновлені."
-msgstr[2] "%s осіб було оновлено."
+msgstr[0] "%s персона була оновлена."
+msgstr[1] "%s персони були оновлені."
+msgstr[2] "%s персон було оновлено."
 
 #: app/Module/UserMessagesModule.php:164
 #, php-format
@@ -669,32 +657,32 @@ msgstr "URL-адреса"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:116
 msgid "A chart displaying relationships between two individuals."
-msgstr "Діаграма, що відображає відносини між двома особами."
+msgstr "Діаграма, що відображає відносини між двома персонами."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Діаграма предків і нащадків особи, як у сімейній книзі."
+msgstr "Діаграма предків і нащадків персони як у сімейній книзі."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:96
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Діаграма предків особи у вигляді компактного дерева."
+msgstr "Діаграма предків персони у вигляді компактного дерева."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr "Діаграма предків особи у вигляді дерева."
+msgstr "Діаграма предків персони у вигляді дерева."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:119
 msgid "A chart of an individual’s ancestors."
-msgstr "Діаграма предків особи."
+msgstr "Діаграма предків персони."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:119
 msgid "A chart of an individual’s descendants."
-msgstr "Діаграма нащадків особи."
+msgstr "Діаграма нащадків персони."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:121
@@ -713,7 +701,7 @@ msgstr "Є поширеною помилкою, щоб на той самий з
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
 msgid "A fan chart of an individual’s ancestors."
-msgstr "Віялова діаграма предків особи."
+msgstr "Віялова діаграма предків персони."
 
 #: resources/views/admin/map-import-form.phtml:27
 #: resources/views/admin/trees-export.phtml:26
@@ -933,7 +921,7 @@ msgstr "Звіт по персонам з даною професією."
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Звіт про осіб, які народилися в даний час або в даному місці."
+msgstr "Звіт про осіб, які народилися в цей час або в даному місці."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:52
@@ -945,7 +933,7 @@ msgstr "Звіт про людей, похованих в заданому мі�
 #: app/Module/MarriageReportModule.php:52
 #: resources/xml/reports/marriage_report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Звіт про людей уклали шлюб в заданий час або місце."
+msgstr "Звіт про людей, що уклали шлюб в цей час або місце."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:56
@@ -1009,7 +997,7 @@ msgstr "Закладка з найближчими родичами персон
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:81
 msgid "A tab showing the facts and events of an individual."
-msgstr "Вкладка показує факти і події, що стосуються даної особи."
+msgstr "Вкладка показує факти й події, що стосуються даної персони."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
@@ -1408,7 +1396,7 @@ msgstr "Додати з буфера обміну"
 
 #: app/Module/ModuleHistoricEventsTrait.php:40
 msgid "Add historic events to an individual’s page."
-msgstr "Додати історичні події на сторінку особи."
+msgstr "Додати історичні події на сторінку персони."
 
 #: resources/views/modules/lifespans-chart/page.phtml:29
 msgid "Add individuals"
@@ -1434,7 +1422,7 @@ msgstr "Додати ще полів"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:78
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Додати історію про персону з древа."
+msgstr "Додати історію про персону з родоводу."
 
 #: resources/views/admin/map-import-form.phtml:77
 msgid "Add new, and update existing records"
@@ -1826,7 +1814,7 @@ msgstr "Всі поля мають бути заповнені."
 #: resources/views/calendar-page.phtml:121
 #: resources/views/calendar-page.phtml:133
 msgid "All individuals"
-msgstr "Всі особи"
+msgstr "Всі персони"
 
 #: app/Http/RequestHandlers/ModulesAllPage.php:58
 #: resources/views/admin/components.phtml:28
@@ -1911,7 +1899,7 @@ msgstr "Альтернативний спосіб для входу і вихо�
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:101
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Діаграма - пісочний кодинник предків та нащадків особи."
+msgstr "Діаграма - пісочний годинник предків та нащадків персони."
 
 #: resources/views/edit/reorder-families.phtml:75
 msgid "An individual can have more than one set of parents.  For example, birth and adopted."
@@ -2117,7 +2105,7 @@ msgstr "Ви впевнені, що хочете скасувати всі зм�
 
 #: resources/views/modules/favorites/favorites.phtml:35
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "Ви впевнені що хочете видалити цю особу зі своїх фаворитів?"
+msgstr "Ви впевнені що хочете видалити цю персону зі своїх фаворитів?"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:56
@@ -7646,17 +7634,17 @@ msgstr "Якщо адміністратор сам створює обліков
 #: resources/views/help/name.phtml:22
 #, php-format
 msgid "If an individual does not have a surname, no slashes are needed: <%s>Jón Einarsson<%s>"
-msgstr "Якщо особа не має фамілії, косі риски не потрібні: <%s>Jón Einarsson<%s>"
+msgstr "Якщо персона не має прізвища, косі риски не потрібні: <%s>Jón Einarsson<%s>"
 
 #: resources/views/help/name.phtml:19
 #, php-format
 msgid "If an individual has two separate surnames, both should be enclosed by slashes: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
-msgstr "Якщо особа має дві окремі фамілії, обидві повинні бути поміщені в косі риски: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
+msgstr "Якщо персона має дві окремі фамілії, обидві повинні бути поміщені в косі риски: <%s>José Antonio /Gómez/ /Iglesias/<%s>"
 
 #: resources/views/help/name.phtml:28
 #, php-format
 msgid "If an individual was known by a nickname which is not part of their formal name, it should be enclosed by quotation marks. For example, <%s>John &quot;Nobby&quot; /Clark/<%s>."
-msgstr "Якщо особа була відома під прізвиськом, яке не є частиною її офіційного імені, воно має бути взяте в лапки. Наприклад, <%s>Іван &quot;Куля&quot; /Петренко/<%s>."
+msgstr "Якщо людина була відома під прізвиськом, яке не є частиною її офіційного імені, воно має бути взяте в лапки. Наприклад, <%s>Іван &quot;Куля&quot; /Петренко/<%s>."
 
 #: resources/views/help/name.phtml:25
 #, php-format
@@ -7679,7 +7667,7 @@ msgstr "Якщо ескіз збігається з оригінальним з�
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Якщо з особою пов'язані будь-які події окрім смерті, похорон чи кремації, що трапилися після цієї кількості років, вона буде вважатися \"живою\". Народження дитини теж вважається такою подією у даному випадку."
+msgstr "Якщо з людиною пов'язані будь-які події окрім смерті, похорон чи кремації, що трапилися після цієї кількості років, вона буде вважатися \"живою\". Народження дитини теж вважається такою подією у такому випадку."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:262
@@ -7802,7 +7790,7 @@ msgstr "В деяких календарях дні починаються о п
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:126
 msgid "In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature."
-msgstr "В деяких країнах, закони про конфіденційність застосовуються не тільки до живих людей, а й до тих, хто нещодавно помер. Цей параметр дозволить вам поширити політику конфіденційності для живих людей на тих, хто народився чи помер в межах вказаної кількості років. Залиште ці значеня порожніми, щоб відключити даний функціонал."
+msgstr "В деяких країнах, закони про конфіденційність застосовуються не тільки до живих людей, а й до тих, хто нещодавно помер. Цей параметр дозволить вам поширити політику конфіденційності для живих людей на тих, хто народився чи помер в межах вказаної кількості років. Залиште ці значення порожніми, щоб відключити даний функціонал."
 
 #: app/Http/RequestHandlers/CalendarPage.php:127
 msgid "In this month…"
@@ -7855,7 +7843,7 @@ msgstr "Включіть теги <code>&lt;style&gt;&lt;/style&gt;</code>."
 #. I18N: Label for a configuration option
 #: resources/views/modules/lifespans-chart/page.phtml:33
 msgid "Include the individual’s immediate family"
-msgstr "Включаючи найближчих родичів особи"
+msgstr "Включаючи найближчих родичів людини"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:249
@@ -7909,11 +7897,11 @@ msgstr "Персона"
 
 #: resources/views/modules/relationships-chart/page.phtml:33
 msgid "Individual 1"
-msgstr "Особа 1"
+msgstr "Персона 1"
 
 #: resources/views/modules/relationships-chart/page.phtml:42
 msgid "Individual 2"
-msgstr "Особа 2"
+msgstr "Персона 2"
 
 #: app/Statistics/Google/ChartDistribution.php:354
 msgid "Individual distribution chart"
@@ -7974,7 +7962,7 @@ msgstr "Довгожитель"
 #: resources/xml/reports/fact_sources.xml:54
 #: resources/xml/reports/fact_sources.xml:258
 msgid "Individuals"
-msgstr "Особи"
+msgstr "Персони"
 
 #: app/Statistics/Google/ChartIndividualWithSources.php:96
 #: resources/views/statistics/other/chart-sources.phtml:20
@@ -8669,7 +8657,7 @@ msgstr "Пов'язати медіаоб'єкти з фактами та под�
 #: resources/views/emails/verify-notify-html.phtml:41
 #: resources/views/emails/verify-notify-text.phtml:27
 msgid "Link the user account to an individual."
-msgstr "Пов'язати обіковий запис із особою."
+msgstr "Пов'язати обліковий запис із людиною."
 
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:57
 #: resources/views/modules/relatives/tab.phtml:125
@@ -8689,11 +8677,11 @@ msgstr "Пов'язати цей медіа-об'єкт із джерелом"
 #: resources/views/media-page-menu.phtml:58
 #: resources/views/modals/link-media-to-individual.phtml:18
 msgid "Link this media object to an individual"
-msgstr "Пов'язати цей медіа-об'єкт із особою"
+msgstr "Пов'язати цей медіаоб'єкт із людиною"
 
 #: resources/views/admin/users-edit.phtml:305
 msgid "Link this user to an individual in the family tree."
-msgstr "Пов'язати цього користувача із особою в генеалогічному дереві."
+msgstr "Пов'язати цього користувача з людиною в генеалогічному дереві."
 
 #: resources/views/chart-box.phtml:113 resources/views/chart-box.phtml:125
 #: resources/views/chart-box.phtml:126
@@ -8731,7 +8719,7 @@ msgstr "Живи"
 
 #: resources/views/calendar-page.phtml:124
 msgid "Living individuals"
-msgstr "Особи, що живуть нині"
+msgstr "Живі понині персони"
 
 #: resources/views/lists/datatables-attributes.phtml:30
 msgid "Loading…"
@@ -8786,7 +8774,7 @@ msgstr "Лондон, Англія"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:375
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Довгі списки осіб із однаковою фамілією можуть бути розбиті на менші списки у відповідності до першої літери у імені особи.<br><br>Цей параметр визначає, коли буде відбуватись розбивка на менші списки. Щоб відключити розбивку, встановіть значення цього параметру в нуль."
+msgstr "Довгі списки людей з однаковим прізвищем можуть бути розбиті на менші списки відповідно до першої літери в імені особи.<br><br>Цей параметр визначає, коли буде відбуватись розбивка на менші списки. Щоб відключити розбивку, встановіть значення цього параметру в нуль."
 
 #: resources/views/statistics/families/marriage-length.phtml:22
 msgid "Longest marriage"
@@ -10303,7 +10291,7 @@ msgstr "Файл не завантажився. Спробуйте заново.
 
 #: app/Module/RelationshipsChartModule.php:410
 msgid "No link between the two individuals could be found."
-msgstr "Спорідненість між двома персонами не знайдено."
+msgstr "Спорідненості між двома персонами не знайдено."
 
 #: resources/views/admin/merge-records-step-2.phtml:75
 #: resources/views/admin/merge-records-step-2.phtml:122
@@ -12147,7 +12135,7 @@ msgstr "Дослідницькі завдання"
 
 #: resources/views/modules/todo/config.phtml:14
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
-msgstr "Завдання дослідження - це спеціальні події, до додаються до осіб у вашому генеалогічному дереві, які ідентифікують потребу у подальших дослідженнях. Ви можете використовувати їх як нагадування, щоб перевірити факти у більш надійних джерелах, отримати документи чи фотографії, розібратися зі спірною інформацією і т. п."
+msgstr "Завдання дослідження - це спеціальні події, що додаються до осіб у вашому генеалогічному дереві, які ідентифікують потребу у подальших дослідженнях. Ви можете використовувати їх як нагадування, щоб перевірити факти у більш надійних джерелах, отримати документи чи фотографії, розібратися зі спірною інформацією і т. п."
 
 #: resources/views/modules/todo/config.phtml:16
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
@@ -12755,7 +12743,7 @@ msgstr "Встановити блоки за замовчуванням для �
 #. I18N: Help text for the “Show dead individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:62
 msgid "Set the privacy access level for all dead individuals."
-msgstr "Встановити рівень доступу до всіх мертвим людям."
+msgstr "Встановити рівень доступу до всіх мертвих людей."
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:37
@@ -12766,7 +12754,7 @@ msgstr "Встановити статус \"схвалений\"."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:642
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Якщо встановлено <b>Так</b>, то нa сторінках персон, джерел та сімей будуть відображатися посилання, з якими користувачі зможуть відкрити нове вікно, що містить дані у файлі GEDCOM."
+msgstr "Якщо встановлено <b>Так</b>, то на сторінках персон, джерел та сімей будуть відображатися посилання, з якими користувачі зможуть відкрити нове вікно, що містить дані у файлі GEDCOM."
 
 #: resources/views/layouts/setup.phtml:16
 #: resources/views/layouts/setup.phtml:24
@@ -13058,7 +13046,7 @@ msgstr "Показати тільки живих персон або сім'ї, 
 #: resources/views/lists/families-table.phtml:171
 #: resources/views/lists/individuals-table.phtml:193
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Показати тільки скончавшихся персон або сім'ї, де обоє з подружжя померли."
+msgstr "Показати тільки померлих персон або сім'ї, де обоє з подружжя померли."
 
 #: resources/views/lists/individuals-table.phtml:197
 msgid "Show individuals who died more than 100 years ago."
@@ -13105,11 +13093,11 @@ msgstr "Показати тільки персон жіночої статі."
 
 #: resources/views/lists/individuals-table.phtml:182
 msgid "Show only individuals for whom the gender is not known."
-msgstr "Показати тільки персон, чию стать невідомий."
+msgstr "Показати тільки персон, чия стать невідома."
 
 #: resources/views/modules/random_media/config.phtml:17
 msgid "Show only individuals, events, or all"
-msgstr "Показати тільки особи, події, чи всі"
+msgstr "Показати тільки персон, події, чи все"
 
 #: resources/views/lists/individuals-table.phtml:174
 msgid "Show only males."
@@ -13287,12 +13275,12 @@ msgstr "Показувати відвідувачам"
 #: resources/views/lists/families-table.phtml:182
 #: resources/views/lists/individuals-table.phtml:223
 msgid "Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database."
-msgstr "Показати \"листки\" із пар чи осіб. Це живі особи, що не мають дітей, зареєстрованих у базі даних."
+msgstr "Показати \"листки\" із пар чи осіб. Це живі люди, що не мають дітей, зареєстрованих у базі даних."
 
 #: resources/views/lists/families-table.phtml:178
 #: resources/views/lists/individuals-table.phtml:219
 msgid "Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database."
-msgstr "Показати \"кореневі\" пари чи особи. Цих осіб ще можна назвати \"родоначальниками.\" Це особи, у яких немає батьків, зареєстрованих у базі даних."
+msgstr "Показати \"кореневі\" пари чи осіб. Цих персон ще можна назвати \"родоначальниками, патріархами\". Це люди, у яких немає батьків, зареєстрованих у базі даних."
 
 #. I18N: %s are placeholders for numbers
 #: resources/views/lists/datatables-attributes.phtml:24
@@ -13934,7 +13922,7 @@ msgstr "Прізвище"
 #. I18N: In the Lithuanian surname tradition, ...
 #: app/SurnameTradition.php:113
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr "Прізвища схиляються вказуючи стать і сімейний стан особи."
+msgstr "Прізвища схиляються вказуючи стать і сімейний стан людини."
 
 #. I18N: In the Polish surname tradition, ...
 #: app/SurnameTradition.php:106
@@ -14143,13 +14131,11 @@ msgstr "Таїланд"
 
 #: resources/views/help/name.phtml:8
 msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded. This is how it will be displayed on screen. It uses standard genealogy annotations to identify different parts of the name."
-msgstr "Поле <b>ім'я</b> містиь повне ім'я особи, як воно пишеться або як воно було зафіксовано. Так воно буде відображатися на екрані. Для відокремдення різних частин імені використовуються стандартні генеалогічні анотації."
+msgstr "Поле <b>ім'я</b> містить повне ім'я особи, як воно пишеться або як воно було зафіксовано. Так воно буде відображатися на екрані. Для відокремлення різних частин імені використовуються стандартні генеалогічні анотації."
 
 #: resources/views/help/surname.phtml:8
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping. It can be different to the individual’s actual surname which is always taken from the <b>name</b> field. This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska). If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr ""
-"Поле <b>фамілія</b> містить ім'я, яке використовується для сортування і групування. Воно може відрізнятися від справжньої фамілії особи, яка завжди береться із поля <b>ім'я</b>. Це поле може бути використано для сортування фамілій з чи без префіксу (Gogh / van Gogh) і для групування різних варіантів написання чи флексії (Kowalski / Kowalska). Якщо особа має відображатися більше ніж під однією фамілією, кожна фамілія має бути відокремлена \n"
-"комою."
+msgstr "Поле <b>Прізвище</b> містить ім'я, яке використовується для сортування і групування. Воно може відрізнятися від справжнього прізвища людини, яке завжди береться із поля <b>ім'я</b>. Це поле може бути використаним для сортування прізвищ з префіксом чи без (Gogh / van Gogh) і для групування різних варіантів написання чи флексії (Kowalski / Kowalska). Якщо особа має відображатися більше ніж під одним прізвищем, кожне прізвище має бути відокремлене комою."
 
 #: app/Http/RequestHandlers/SynchronizeTrees.php:94
 #, php-format
@@ -14423,7 +14409,7 @@ msgstr "Медіа-об'єкт створено"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
-msgstr "Вимоги до процесора та пам'яті залежать від кількості людей у ??вашому генеалогічному дереві."
+msgstr "Вимоги до процесора та пам'яті залежать від кількості людей у Вашому генеалогічному дереві."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:88
 #: app/Http/RequestHandlers/ContactAction.php:150
@@ -14877,7 +14863,7 @@ msgstr "Це генеалогічне дерево востаннє було о�
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Ця папка буде використовуватись webtrees для зберігання файлів медіа, файлів GEDCOM, тимчасових файлів тощо. Ці файли можуть містити особисті дані, і тому не мають бути доступні через Інтернет."
+msgstr "Ця тека буде використовуватись webtrees для зберігання файлів медіа, файлів GEDCOM, тимчасових файлів тощо. Ці файли можуть містити особисті дані, і тому не мають бути доступні через Інтернет."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:260
@@ -14895,23 +14881,23 @@ msgstr "Даних про запитувану персону немає або 
 
 #: resources/views/individual-page-pending.phtml:21
 msgid "This individual has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Цю особу було видалено. Видалення має бути переглянуто модератором."
+msgstr "Цю персону було видалено. Видалення має бути переглянуто модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page-pending.phtml:18
 #, php-format
 msgid "This individual has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Цю особу було видалено. Ви маєте переглянути видалення, а потім %1$s чи %2$s його."
+msgstr "Цю персону було видалено. Ви маєте переглянути видалення, а потім %1$s чи %2$s його."
 
 #: resources/views/individual-page-pending.phtml:30
 msgid "This individual has been edited. The changes need to be reviewed by a moderator."
-msgstr "Цю особу було відредаговано. Зміни мають бути переглянуті модератором."
+msgstr "Цю персону було відредаговано. Зміни мають бути переглянуті модератором."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/individual-page-pending.phtml:27
 #, php-format
 msgid "This individual has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Цю особу було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
+msgstr "Цю персону було відредаговано. Ви маєте переглянути зміни, а потім %1$s чи %2$s їх."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: resources/views/admin/trees-preferences.phtml:104
@@ -14969,7 +14955,7 @@ msgstr "Детальні відомості про цю персону є осо
 
 #: resources/views/edit-account-page.phtml:69
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr "Це - посилання на ваш власний запис у генеалогічному дереві. Якщо це неправильна особа, зверніться до адміністратора."
+msgstr "Це - посилання на ваш власний запис у генеалогічному дереві. Якщо це неправильна людина, зверніться до адміністратора."
 
 #: resources/views/setup/step-4-database-mysql.phtml:88
 #: resources/views/setup/step-4-database-mysql.phtml:102
@@ -15227,7 +15213,7 @@ msgstr "Сайт закритдо для технічного обслугову
 
 #: resources/views/modules/privacy-policy/page.phtml:70
 msgid "This website is operated by the following individuals."
-msgstr "Цей вебсайт керується наступними особами."
+msgstr "Цей вебсайт керується наступними людьми."
 
 #: resources/views/layouts/error.phtml:17
 #: resources/views/layouts/error.phtml:34
@@ -15417,7 +15403,7 @@ msgstr "Для забезпечення сумісності з іншими г�
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Щоб захистити особисті дані, webtrees використовує конфігураційний файл Apache (.htaccess), який блокує весь доступ до цієї папки. Якщо ваш веб сервер не підтримує файли .htaccess, і ви не можете обмежити доступ до цієї папки, то ви можете вибрати іншу папку, що знаходиться окремо від веб-документів."
+msgstr "Щоб захистити особисті дані, webtrees використовує конфігураційний файл Apache (.htaccess), який блокує весь доступ до цієї теки. Якщо ваш вебсервер не підтримує файли .htaccess, і ви не можете обмежити доступ до цієї теки, то ви можете вибрати іншу папку, що знаходиться окремо від вебдокументів."
 
 #: resources/views/help/zip-gedcom.phtml:8
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
@@ -15598,7 +15584,7 @@ msgstr "Всього імен та по батькові"
 #: resources/xml/reports/occupation_report.xml:94
 #: resources/xml/reports/relative_ext_report.xml:147
 msgid "Total individuals"
-msgstr "Всього персон"
+msgstr "Всього людей"
 
 #: resources/views/statistics/individuals/total-records.phtml:53
 msgid "Total living"
@@ -16019,7 +16005,7 @@ msgstr "Надіслати повідомлення за допомогою send
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:324
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr "Використовувати зображення силуету, якщо для особи не вибрано виділеного зображення. Зображення силуету відповідає статі особи."
+msgstr "Використовувати зображення силуету, якщо для персони не вибрано виділеного зображення. Зображення силуету відповідає статі людини."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:319
@@ -16379,11 +16365,11 @@ msgstr "Коли відвідувач робить запит на створе�
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:771
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "При додаванні нових близьких родичів ви можете додати цитати з джерел до записів (особи чи сім'ї) або до фактів і подій (народження, шлюб та смерть). Цей параметр контролює, чи будуть записи або факти вибрані за замовчуванням."
+msgstr "При додаванні нових близьких родичів ви можете додати цитати з джерел до записів (людини чи сім'ї) або до фактів і подій (народження, шлюб та смерть). Цей параметр контролює, чи будуть записи або факти вибрані за замовчуванням."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr "Коли у фізичної особи є більше одного з подружжя, вам слід відсортувати сім'ї в порядку дати."
+msgstr "Коли у людини було більше одного шлюбу, Вам слід відсортувати родини в хронологічному порядку."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:741
@@ -16396,7 +16382,7 @@ msgstr "Коли ви додаєте, змінюєте чи видаляєте �
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
-msgstr "Якщо користувач пов'язаний з записом особи в генеалогічному дереві і має роль учасника, редактора чи модератора, ви можете заборонити йому доступ до далеких живих родичів. Ви можете сказати кількість кроків рідства, які дозволено бачити користувачу."
+msgstr "Якщо користувач пов'язаний з записом особи в генеалогічному дереві та має роль учасника, редактора чи модератора, ви можете заборонити йому доступ до далеких живих родичів. Ви можете вказати кількість кроків рідства, які дозволено бачити користувачу."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/sitemap/config.phtml:27
@@ -16573,7 +16559,7 @@ msgstr "Ви можете спростити редагування форм, п
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Ви можете прискорити обчислення рівня конфіденційності додавши запис про смерть до особистої запису людини, чия смерть виходить з інших даних, але у якого немає ніяких записів про смерть, поховання, кремації і тд."
+msgstr "Ви можете прискорити обчислення рівня конфіденційності додавши запис про смерть до особистого запису людини, чия смерть виходить з інших даних, але у якого немає ніяких записів про смерть, поховання, кремації і т.д.."
 
 #: app/Http/RequestHandlers/LoginAction.php:113
 msgid "You cannot sign in because your browser does not accept cookies."
@@ -16610,7 +16596,7 @@ msgstr "Ви маєте перенумерувати записи в одном�
 
 #: app/Module/ChartsBlockModule.php:186
 msgid "You must select an individual and a chart type in the block preferences"
-msgstr "Ви повинні вибрати особу і тип діаграми в налаштуваннях блоку"
+msgstr "Ви повинні вибрати персону і тип діаграми в налаштуваннях блоку"
 
 #: resources/views/admin/users-edit.phtml:363
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
@@ -20840,7 +20826,7 @@ msgstr "\"%s\" було видалено."
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:59
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr "Теги “Виділене зображення” (_PRIM) використовуються деякими генеалогічними програмами для позначення бажаного зображення для конкретної особи. Альтернативою є повторне упорядкування зображень таким чином, щоб пріоритетне було вказане першим."
+msgstr "Теги “Виділене зображення” (_PRIM) використовуються деякими генеалогічними програмами для позначення бажаного зображення для конкретної персони. Альтернативою є повторне упорядкування зображень таким чином, щоб пріоритетне було вказане першим."
 
 #: app/Functions/FunctionsPrint.php:97 app/Note.php:94
 #: app/Report/ReportParserGenerate.php:971
