@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-08-10 04:30+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2021-08-11 23:01+0000\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
 "Language: nl\n"
@@ -1982,7 +1982,7 @@ msgstr "Voorouders van %s"
 #. I18N: gedcom tag AFN
 #: app/Factories/ElementFactory.php:426 app/GedcomTag.php:446
 msgid "Ancestral file number"
-msgstr "Voorouderlijkdossiernummer (AFN)"
+msgstr "Voorouderlijk dossiernummer (AFN)"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Ancestry PID"
