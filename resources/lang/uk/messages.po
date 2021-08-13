@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-08-10 04:30+0000\n"
+"PO-Revision-Date: 2021-08-15 08:31+0000\n"
 "Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/uk/>\n"
@@ -8794,7 +8794,7 @@ msgstr "Литовська"
 
 #: app/Statistics/Google/ChartMortality.php:73
 msgid "Living"
-msgstr "Живи"
+msgstr "Живі"
 
 #: resources/views/calendar-page.phtml:124
 msgid "Living individuals"
