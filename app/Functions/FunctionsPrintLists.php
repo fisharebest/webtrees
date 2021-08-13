@@ -23,6 +23,15 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Tree;
 
+use function array_keys;
+use function array_map;
+use function ceil;
+use function count;
+use function e;
+use function implode;
+use function max;
+use function min;
+
 /**
  * Class FunctionsPrintLists - create sortable lists using datatables.net
  */
@@ -31,51 +40,44 @@ class FunctionsPrintLists
     /**
      * Print a tagcloud of surnames.
      *
-     * @param int[][]                  $surnames array (of SURN, of array of SPFX_SURN, of counts)
-     * @param ModuleListInterface|null $module
-     * @param bool                     $totals   show totals after each name
-     * @param Tree                     $tree     generate links to this tree
+     * @param array<string,array<string,int>> $surnames array (of SURN, of array of SPFX_SURN, of counts)
+     * @param ModuleListInterface|null        $module
+     * @param bool                            $totals   show totals after each name
+     * @param Tree                            $tree     generate links to this tree
      *
      * @return string
      */
     public static function surnameTagCloud(array $surnames, ?ModuleListInterface $module, bool $totals, Tree $tree): string
     {
-        $minimum = PHP_INT_MAX;
-        $maximum = 1;
-        foreach ($surnames as $surn => $surns) {
-            foreach ($surns as $spfxsurn => $count) {
-                $maximum = max($maximum, $count);
-                $minimum = min($minimum, $count);
-            }
-        }
+        $maximum = max(array_map(static fn(array $x): int => max($x), $surnames));
+        $minimum = min(array_map(static fn(array $x): int => min($x), $surnames));
 
-        $html = '';
+        $tag_cloud = '';
+
         foreach ($surnames as $surn => $surns) {
             foreach ($surns as $spfxsurn => $count) {
-                if ($maximum === $minimum) {
-                    // All surnames occur the same number of times
-                    $size = 150.0;
-                } else {
-                    $size = 75.0 + 125.0 * ($count - $minimum) / ($maximum - $minimum);
+                $size = 1.0;
+
+                if ($maximum !== $minimum) {
+                    $size += 1.5 * ($count - $minimum) / ($maximum - $minimum);
                 }
 
-                $tag = $module instanceof ModuleListInterface ? 'a' : 'span';
-                $html .= '<' . $tag . ' style="font-size:' . $size . '%"';
+                if ($totals) {
+                    $tag_item = I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number($count));
+                } else {
+                    $tag_item = $spfxsurn;
+                }
+
                 if ($module instanceof ModuleListInterface) {
                     $url = $module->listUrl($tree, ['surname' => $surn]);
-                    $html .= ' href="' . e($url) . '"';
-                }
-                $html .= '>';
-                if ($totals) {
-                    $html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number($count));
+                    $tag_cloud .= '<a style="font-size:' . $size . 'rem" href="' . e($url) . '">' . $tag_item . '</a> ';
                 } else {
-                    $html .= $spfxsurn;
+                    $tag_cloud .= '<span class="text-nowrap" style="font-size:' . $size . 'rem" dir="auto">' . $tag_item . '</span> ';
                 }
-                $html .= '</' . $tag . '> ';
             }
         }
 
-        return '<div class="tag_cloud">' . $html . '</div>';
+        return '<div class="tag_cloud">' . $tag_cloud . '</div>';
     }
 
     /**
