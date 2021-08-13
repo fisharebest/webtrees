@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-08-10 04:30+0000\n"
+"PO-Revision-Date: 2021-08-15 08:31+0000\n"
 "Last-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/uk/>\n"
@@ -8363,7 +8363,7 @@ msgstr "Литовська"
 
 #: app/Stats.php:1068 app/Stats.php:1070
 msgid "Living"
-msgstr "Живи"
+msgstr "Живі"
 
 #: calendar.php:231
 msgid "Living individuals"
