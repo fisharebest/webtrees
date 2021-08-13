@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-07-27 17:32+0100\nPO-Revision-Date: 2021-08-10 04:31+0000\nLast-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-07-27 17:32+0100\nPO-Revision-Date: 2021-08-15 08:31+0000\nLast-Translator: Юрий Захарченко <zaharchenko.yurij@gmail.com>\nLanguage-Team: Ukrainian <https://translate.webtrees.net/projects/webtrees/webtrees/uk/>\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -8715,7 +8715,7 @@ msgstr "Литовська"
 
 #: app/Statistics/Google/ChartMortality.php:73
 msgid "Living"
-msgstr "Живи"
+msgstr "Живі"
 
 #: resources/views/calendar-page.phtml:124
 msgid "Living individuals"
