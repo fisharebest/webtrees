@@ -671,24 +671,24 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                                 case '_GCHI':
                                     switch ($relation) {
                                         case 'dau':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild1['F']);
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild1[$child->sex()]);
                                             break;
                                         case 'son':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild2['M']);
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild2[$child->sex()]);
                                             break;
                                         case 'chi':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild['U']);
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild[$child->sex()]);
                                             break;
                                     }
                                     break;
                                 case '_SIBL':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_sibling['U']);
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_sibling[$child->sex()]);
                                     break;
                                 case '_HSIB':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_half_sibling['U']);
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_half_sibling[$child->sex()]);
                                     break;
                                 case '_CHIL':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_child['U']);
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_child[$child->sex()]);
                                     break;
                             }
                         }
