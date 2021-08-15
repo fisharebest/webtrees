@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-05-27 11:09+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
+"PO-Revision-Date: 2021-08-15 08:31+0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fr/>\n"
 "Language: fr\n"
@@ -20793,18 +20793,18 @@ msgstr "troisième %s"
 
 #: app/Functions/Functions.php:471
 msgid "third cousin"
-msgstr "petit(e)-cousin(e)"
+msgstr "arrière-petit(e)-cousin(e)"
 
 #: app/Functions/Functions.php:435
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr "petite-cousine"
+msgstr "arrière-petite-cousine"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:385
 msgctxt "MALE"
 msgid "third cousin"
-msgstr "petit-cousin"
+msgstr "arrière-petit-cousin"
 
 #: app/Functions/Functions.php:491
 msgid "thirteenth cousin"
