@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Elements\CertaintyAssessment;
 use Fisharebest\Webtrees\Elements\Change;
 use Fisharebest\Webtrees\Elements\ChangeDate;
 use Fisharebest\Webtrees\Elements\CustomElement;
+use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Elements\EntryRecordingDate;
 use Fisharebest\Webtrees\Elements\EventAttributeType;
-use Fisharebest\Webtrees\Elements\EventDescriptor;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
 use Fisharebest\Webtrees\Elements\FamilyStatusText;
 use Fisharebest\Webtrees\Elements\GovIdentifier;
@@ -192,7 +192,7 @@ class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface,
             '_LOC:CHAN:DATE'                 => new ChangeDate(I18N::translate('Date of last change')),
             '_LOC:CHAN:DATE:TIME'            => new TimeValue(I18N::translate('Time')),
             '_LOC:CHAN:NOTE'                 => new NoteStructure(I18N::translate('Note')),
-            '_LOC:EVEN'                      => new EventDescriptor(I18N::translate('Event'), ['TYPE' => '0:1']),
+            '_LOC:EVEN'                      => new CustomEvent(I18N::translate('Event')),
             '_LOC:EVEN:TYPE'                 => new EventAttributeType(I18N::translate('Type of event')),
             '_LOC:MAP'                       => new EmptyElement(I18N::translate('Coordinates')),
             '_LOC:MAP:LATI'                  => new PlaceLatitude(I18N::translate('Latitude')),

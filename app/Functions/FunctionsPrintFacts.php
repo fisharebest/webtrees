@@ -137,6 +137,7 @@ class FunctionsPrintFacts
 
         // Event of close relative
         if ($tag === 'EVEN' && $value === 'CLOSE_RELATIVE') {
+            $value = '';
             $styles[] = 'wt-relation-fact collapse';
         }
 

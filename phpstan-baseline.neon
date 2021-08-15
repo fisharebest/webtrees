@@ -91,6 +91,11 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
+			message: "#^Anonymous function should return int but returns int\\|false\\.$#"
+			count: 2
+			path: app/Functions/FunctionsPrintLists.php
+
+		-
 			message:
 				"""
 					#^Binary operation "\\." between array\\|non\\-empty\\-string and '
@@ -993,6 +998,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\TimelineChartModule\\:\\:chart\\(\\) has parameter \\$xrefs with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/TimelineChartModule.php
+
+		-
+			message: "#^Parameter \\#1 \\$surnames of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintLists\\:\\:surnameTagCloud\\(\\) expects array\\<string, array\\<string, int\\>\\>, array\\<int\\|string, array\\> given\\.$#"
+			count: 1
+			path: app/Module/TopSurnamesModule.php
 
 		-
 			message: "#^Cannot access property \\$body on object\\|null\\.$#"

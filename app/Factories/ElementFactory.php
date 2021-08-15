@@ -76,7 +76,6 @@ use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Elements\Engagement;
 use Fisharebest\Webtrees\Elements\EntryRecordingDate;
 use Fisharebest\Webtrees\Elements\EventAttributeType;
-use Fisharebest\Webtrees\Elements\EventDescriptor;
 use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
@@ -330,7 +329,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:ENGA'                 => new Engagement(I18N::translate('Engagement')),
             'FAM:ENGA:DATE'            => new DateValue(I18N::translate('Date of engagement')),
             'FAM:ENGA:PLACE'           => new PlaceName(I18N::translate('Place of engagement')),
-            'FAM:EVEN'                 => new EventDescriptor(I18N::translate('Event')),
+            'FAM:EVEN'                 => new CustomEvent(I18N::translate('Event')),
             'FAM:EVEN:TYPE'            => new EventAttributeType(I18N::translate('Type of event')),
             'FAM:HUSB'                 => new XrefIndividual(I18N::translate('Husband')),
             'FAM:MARB'                 => new MarriageBanns(I18N::translate('Marriage banns')),
