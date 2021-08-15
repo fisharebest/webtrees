@@ -1160,51 +1160,6 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseCell\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/ReportBaseCell.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/ReportBaseElement.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseImage\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/ReportBaseImage.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseLine\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/ReportBaseLine.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlFootnote\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlFootnote.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportHtmlText\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlText.php
-
-		-
-			message: "#^Cannot access offset 0 on array\\|float\\.$#"
-			count: 3
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
-			message: "#^Cannot access offset 1 on array\\|float\\.$#"
-			count: 2
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
-			message: "#^Cannot access offset 2 on array\\|float\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), non\\-empty\\-string\\) given\\.$#"
 			count: 2
 			path: app/Report/ReportParserBase.php
@@ -1395,7 +1350,7 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(0\\|array\\<float\\>\\|float, 1, int\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
 
@@ -1410,24 +1365,9 @@ parameters:
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(array\\<float\\>\\|float, 0\\|2, int\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfText.php
-
-		-
-			message: "#^Cannot access offset 0 on array\\|float\\.$#"
-			count: 3
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Cannot access offset 1 on array\\|float\\.$#"
-			count: 2
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Cannot access offset 2 on array\\|float\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
 
 		-
 			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement and Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote will always evaluate to false\\.$#"

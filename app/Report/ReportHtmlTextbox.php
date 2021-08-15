@@ -176,9 +176,9 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                 $lw = $this->elements[$i]->getWidth($renderer);
                 // Text is already gets the # LF
                 $cHT += $lw[2];
-                if ($lw[1] == 1) {
+                if ($lw[1] === 1) {
                     $w = $lw[0];
-                } elseif ($lw[1] == 2) {
+                } elseif ($lw[1] === 2) {
                     $w = 0;
                 } else {
                     $w += $lw[0];

@@ -197,10 +197,10 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
-     * @return float|array
+     * @return array{0:float,1:int,2:float|int}
      */
-    public function getWidth($renderer)
+    public function getWidth($renderer): array
     {
-        return $this->width;
+        return [$this->width, 1, $this->height];
     }
 }
