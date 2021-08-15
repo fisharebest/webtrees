@@ -125,9 +125,7 @@ use Fisharebest\Webtrees\Tree;
 <script>
     webtrees.autocomplete('#folder');
     document.getElementById('file-location').addEventListener('change', function () {
-        document.querySelectorAll('.file-location').forEach(function (element) {
-            element.classList.add('d-none');
-        });
-        document.querySelector('.file-location-' + this.value).classList.remove('d-none');
+        document.querySelectorAll('.file-location').forEach((e) => e.classList.add('d-none'));
+        document.querySelectorAll('.file-location-' + this.value).forEach((e) => e.classList.remove('d-none'));
     });
 </script>
