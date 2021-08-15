@@ -49,8 +49,8 @@ class FunctionsPrintLists
      */
     public static function surnameTagCloud(array $surnames, ?ModuleListInterface $module, bool $totals, Tree $tree): string
     {
-        $maximum = max(array_map(static fn(array $x): int => max($x), $surnames));
-        $minimum = min(array_map(static fn(array $x): int => min($x), $surnames));
+        $maximum = max(array_map(static fn (array $x): int => max($x), $surnames));
+        $minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
 
         $tag_cloud = '';
 
