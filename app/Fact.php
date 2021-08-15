@@ -615,6 +615,39 @@ class Fact
     }
 
     /**
+     * A one-line summary of the fact - for the clipboard, etc.
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        $items  = [$this->label()];
+        $target = $this->target();
+
+        if ($target instanceof GedcomRecord) {
+            $items[] = '<span dir="auto">' . $target->fullName() . '</span>';
+        } else {
+            // Fact value
+            $value = $this->value();
+            if ($value !== '' && $value !== 'Y') {
+                $items[] = '<span dir="auto">' . e($value) . '</span>';
+            }
+
+            // Fact date
+            if ($this->date()->isOK()) {
+                $items[] = $this->date()->minimumDate()->format('%Y');
+            }
+
+            // Fact place
+            if ($this->place()->gedcomName() !== '') {
+                $items[] = $this->place()->shortName();
+            }
+        }
+
+        return implode(' — ', $items);
+    }
+
+    /**
      * Helper functions to sort facts
      *
      * @return Closure

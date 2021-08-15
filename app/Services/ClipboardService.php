@@ -80,6 +80,16 @@ class ClipboardService
     }
 
     /**
+     * Empty the clipboard
+     *
+     * @return void
+     */
+    public function emptyClipboard(): void
+    {
+        Session::put('clipboard', []);
+    }
+
+    /**
      * Create a list of facts that can be pasted into a given record
      *
      * @param GedcomRecord $record

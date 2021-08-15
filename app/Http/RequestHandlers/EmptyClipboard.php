@@ -20,8 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
@@ -31,17 +29,17 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
-use function response;
+use function redirect;
 
 /**
- * Copy a fact to the clipboard.
+ * Empty the clipboard.
  */
-class CopyFact implements RequestHandlerInterface
+class EmptyClipboard implements RequestHandlerInterface
 {
     private ClipboardService $clipboard_service;
 
     /**
-     * CopyFact constructor.
+     * PasteFact constructor.
      *
      * @param ClipboardService $clipboard_service
      */
@@ -51,7 +49,7 @@ class CopyFact implements RequestHandlerInterface
     }
 
     /**
-     * Copy a fact to the clipboard.
+     * Paste a fact from the clipboard into a record.
      *
      * @param ServerRequestInterface $request
      *
@@ -59,30 +57,12 @@ class CopyFact implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $params = (array) $request->getParsedBody();
 
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
+        $url = $params['url'] ?? $request->getHeaderLine('Referer');
 
-        $fact_id = $request->getAttribute('fact_id');
-        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record  = Auth::checkRecordAccess($record, true);
+        $this->clipboard_service->emptyClipboard();
 
-        foreach ($record->facts() as $fact) {
-            if ($fact->id() === $fact_id) {
-                $this->clipboard_service->copyFact($fact);
-
-                $message =
-                    I18N::translate('“%s“ has been copied to the clipboard.', $fact->name()) .
-                    '<br>' .
-                    I18N::translate('Use the “edit“ menu to paste this into another record.');
-
-                FlashMessages::addMessage($message);
-                break;
-            }
-        }
-
-        return response();
+        return redirect($url);
     }
 }

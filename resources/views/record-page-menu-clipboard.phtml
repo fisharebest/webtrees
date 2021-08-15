@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\RequestHandlers\EmptyClipboard;
 use Fisharebest\Webtrees\Http\RequestHandlers\PasteFact;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
@@ -21,20 +22,17 @@ use Illuminate\Support\Collection;
     <form method="post" class="form-inline dropdown-item" action="<?= route(PasteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
         <?= view('icons/copy') ?>
         <input type="hidden" name="fact_id" value="<?= e($fact->id()) ?>">
-        <button type="submit" class="btn btn-text p-0" style="max-width:10rem">
-            <?= csrf_field() ?>
-            <?= $fact->label() ?>
-            <?php if ($fact->target() !== null) : ?>
-                – <?= strip_tags($fact->target()->fullName()) ?>
-            <?php elseif ($fact->value() !== '') : ?>
-                – <?= e($fact->value()) ?>
-            <?php endif ?>
-            <?php if ($fact->date()->isOK()) : ?>
-                – <?= $fact->date()->minimumDate()->format('%Y') ?>
-            <?php endif ?>
-            <?php if ($fact->place()->gedcomName() !== '') : ?>
-                – <?= $fact->place()->shortName() ?>
-            <?php endif ?>
+        <button type="submit" class="btn btn-text p-0 text-truncate" style="max-width: 12rem;" title="<?= strip_tags($fact->name()) ?>">
+            <?= $fact->name() ?>
         </button>
     </form>
 <?php endforeach ?>
+
+<form method="post" class="form-inline dropdown-item" action="<?= route(EmptyClipboard::class) ?>">
+    <?= csrf_field() ?>
+    <input type="hidden" value="<?= e($record->url()) ?>">
+    <?= view('icons/delete') ?>
+    <button type="submit" class="btn btn-text p-0">
+        <?= I18N::translate('Empty the clipboard') ?>
+    </button>
+</form>
