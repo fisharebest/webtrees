@@ -1,19 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-07-27 18:34+0100\n"
-"PO-Revision-Date: 2020-05-30 07:30+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
-"Language-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr_CA/>\n"
-"Language: fr-CA\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Country: CANADA\n"
-"X-Poedit-Language: French\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-07-27 17:32+0100\nPO-Revision-Date: 2021-08-15 08:31+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: French (Canada) <https://translate.webtrees.net/projects/webtrees/webtrees/fr_CA/>\nLanguage: fr-CA\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Country: CANADA\nX-Poedit-Language: French\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -20525,18 +20511,18 @@ msgstr "troisième %s"
 
 #: app/Services/RelationshipService.php:2256
 msgid "third cousin"
-msgstr "petit(e)-cousin(e)"
+msgstr "arrière-petit(e)-cousin(e)"
 
 #: app/Services/RelationshipService.php:2220
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr "petite-cousine"
+msgstr "arrière-petite-cousine"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2170
 msgctxt "MALE"
 msgid "third cousin"
-msgstr "petit cousin"
+msgstr "arrière-petit-cousin"
 
 #: app/Services/RelationshipService.php:2276
 msgid "thirteenth cousin"
