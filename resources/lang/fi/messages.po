@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-07-27 18:34+0100\n"
-"PO-Revision-Date: 2021-03-18 13:37+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
-"Language: fi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-07-27 18:34+0100\nPO-Revision-Date: 2021-08-18 09:13+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1477,7 +1465,7 @@ msgstr "Lisää/muokkaa päiväkirja/uutisartikkeli"
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Lisätieto"
 
 #: app/Factories/ElementFactory.php:277 app/Factories/ElementFactory.php:389
 #: app/Factories/ElementFactory.php:409 app/Factories/ElementFactory.php:662
@@ -1508,7 +1496,7 @@ msgstr "Osoiterivi 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
-msgstr ""
+msgstr "Osoitteet"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1849,7 +1837,7 @@ msgstr "Toiselta nimeltä"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Vaihtoehtoinen paikannimi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2064,7 +2052,7 @@ msgstr "akvamariini"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa linkin kohteeseen \"%s\"?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:41
@@ -2165,7 +2153,7 @@ msgstr "Kytke tapahtumat tähän lähteeseen"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Liittyvät tapahtumat"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2277,7 +2265,7 @@ msgstr "Viimeisimmän muutoksen tekijä"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:633
 msgid "Autocomplete"
-msgstr ""
+msgstr "Automaattinen täydennys"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -3376,7 +3364,7 @@ msgstr "Väestönlaskennan päivämäärä"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Väestönlaskennan päivämäärä ja paikka"
 
 #: app/Factories/ElementFactory.php:488
 msgid "Census place"
@@ -3421,7 +3409,7 @@ msgstr "Sertifikaatti"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Sertifikaatin numero"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3797,7 +3785,7 @@ msgstr "maitokahvi"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Avoliitto"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4054,7 +4042,7 @@ msgstr "Kopioi tiedostot…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Kopioi tietueen URL -osoite leikepöydälle"
 
 #: app/Factories/ElementFactory.php:375 app/Factories/ElementFactory.php:402
 msgid "Copyright"
@@ -4175,7 +4163,7 @@ msgstr "Luo henkilö"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Luo karttoja käyttämällä %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4348,11 +4336,11 @@ msgstr "Omat asetukset"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "Muokatut GEDCOM-alitunnisteet"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "Mukautettu GEDCOM-tunniste"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4360,7 +4348,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:705
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Mukautetut GEDCOM-tunnisteet"
 
 #: resources/views/calendar-page.phtml:203
 msgid "Custom event"
@@ -5396,7 +5384,7 @@ msgstr "Näytä ja hallitse käyttäjän suosikkisivuja."
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "Näytä mukautetut GEDCOM-tunnisteet"
 
 #: app/Factories/ElementFactory.php:327 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5459,7 +5447,7 @@ msgstr "Lataa %s…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Lataa vuosipäivää sisältävä .ICS-tiedosto"
 
 #: resources/views/media-page-details.phtml:86
 msgid "Download file"
@@ -5608,7 +5596,7 @@ msgstr "Muokkaa henkilötiedot, korvaa sinun tiedoilla."
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Muokkaa kaikilla GEDCOM-tunnisteilla"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -5825,7 +5813,7 @@ msgstr "Esfand"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
@@ -5944,7 +5932,7 @@ msgstr "Ulkoiset tiedostot"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "Ulkoinen linkki"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
@@ -5982,7 +5970,7 @@ msgstr "UKK (Usein kysytyt kysymykset) ovat lista kysymyksiä vastauksineen, jos
 #: app/Module/CustomTagsGenPluswin.php:96
 #: app/Module/CustomTagsGenPluswin.php:98
 msgid "FOKO country"
-msgstr ""
+msgstr "FOKO maa"
 
 #: app/Factories/ElementFactory.php:530
 msgid "Fact"
@@ -6183,7 +6171,7 @@ msgstr "Sukukirja - %s"
 
 #: app/Factories/ElementFactory.php:322
 msgid "Family census"
-msgstr ""
+msgstr "Perheen väestönlaskenta"
 
 #: app/Factories/ElementFactory.php:738
 msgid "Family file"
@@ -6206,7 +6194,7 @@ msgstr "Perhe - %s"
 
 #: app/Factories/ElementFactory.php:351
 msgid "Family residence"
-msgstr ""
+msgstr "Perheasunto"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6299,7 +6287,7 @@ msgstr "Perhe vaimon kanssa"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch-tunnus"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6662,7 +6650,7 @@ msgstr "Sukuasioissa ota yhteys henkilöön %s."
 #: resources/views/modules/openstreetmap/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Lisätietoja on osoitteessa %s."
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
@@ -6887,7 +6875,7 @@ msgstr "GEDCOM-tiedosto"
 
 #: resources/views/modules/custom-tags/config.phtml:53
 msgid "GEDCOM sub-tag"
-msgstr ""
+msgstr "GEDCOM-alitunniste"
 
 #: resources/views/admin/tags.phtml:43 resources/views/admin/tags.phtml:173
 #: resources/views/admin/tags.phtml:265 resources/views/admin/tags.phtml:327
@@ -6896,12 +6884,12 @@ msgstr ""
 #: resources/views/admin/tags.phtml:883
 #: resources/views/modules/custom-tags/config.phtml:51
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "GEDCOM-tunniste"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:260
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM-tunnisteet"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -7000,7 +6988,7 @@ msgstr "Jälkeläisten sukupolvet"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:45
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7020,7 +7008,7 @@ msgstr "Maantieteelliset tiedot"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:640
 msgid "Geolocation"
-msgstr ""
+msgstr "Maantieteellinen sijainti"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
@@ -7388,7 +7376,7 @@ msgstr "Hänen ammattinsa oli"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
 msgid "Here maps"
-msgstr ""
+msgstr "Tässä (Here) karttoja"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -7425,7 +7413,7 @@ msgstr "heshvan-kuu"
 #: resources/views/admin/tags.phtml:726 resources/views/admin/tags.phtml:780
 #: resources/views/admin/tags.phtml:884
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Piilota GEDCOM-tunnisteet"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:155
@@ -7447,7 +7435,7 @@ msgstr "Piilota kaikilta"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Piilota salasana"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7455,7 +7443,7 @@ msgstr "Piilota käyttämättömät sijainnit"
 
 #: resources/views/modules/custom-tags/config.phtml:44
 msgid "Hide/show GEDCOM tags in the edit forms"
-msgstr ""
+msgstr "Piilota/näytä GEDCOM-tunnisteet muokkauslomakkeissa"
 
 #: app/Module/CustomTagsGedcomL.php:236
 msgid "Hierarchical relationship"
@@ -7538,7 +7526,7 @@ msgstr "Tiimalasikaavio - %s"
 #: app/Module/CustomTagsGenPluswin.php:58
 #: app/Module/CustomTagsGenPluswin.php:90
 msgid "House number"
-msgstr ""
+msgstr "Talonumero"
 
 #: resources/views/modules/census-assistant.phtml:117
 msgid "Household"
@@ -7609,7 +7597,7 @@ msgstr "Henkilötunnus"
 
 #: resources/views/admin/tags.phtml:767
 msgid "Identifiers"
-msgstr ""
+msgstr "Tunnisteet"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -8146,7 +8134,7 @@ msgstr "Matti /Meikäläinen/"
 
 #: app/Module/CustomTagsGenPluswin.php:88
 msgid "Joint family name"
-msgstr ""
+msgstr "Yhteinen sukunimi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
@@ -8398,7 +8386,7 @@ msgstr "MAP-lapsen sinetöinti"
 
 #: resources/views/admin/tags.phtml:713
 msgid "LDS church"
-msgstr ""
+msgstr "MAP kirkko"
 
 #: app/Factories/ElementFactory.php:500
 msgid "LDS confirmation"
@@ -8833,7 +8821,7 @@ msgstr "Aikakauslehti"
 #: app/Module/CustomTagsGedcomL.php:238 app/Module/CustomTagsGenPluswin.php:70
 #: app/Module/CustomTagsGenPluswin.php:102
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "QTH-lokaattorin sijaintikoodi"
 
 #: app/Module/CustomTagsPersonalAncestralFile.php:60
 msgid "Mailing name"
@@ -8967,23 +8955,23 @@ msgstr "Kartta"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "Kartan linkki"
 
 #. I18N: Links to maps
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:647
 msgid "Map links"
-msgstr ""
+msgstr "Kartan linkit"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: resources/views/admin/control-panel.phtml:654
 msgid "Map providers"
-msgstr ""
+msgstr "Kartan tarjoajat"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:82
 msgid "Mapbox"
-msgstr ""
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
@@ -10335,7 +10323,7 @@ msgstr "öinen"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Nominatim"
 
 #: app/Module/IndividualListModule.php:295
 #: app/Module/IndividualListModule.php:511
@@ -10704,7 +10692,7 @@ msgstr "Oho! webtrees ei voinut luoda tiedostoja tähän kansioon."
 #: app/Module/MapGeoLocationOpenRouteService.php:44
 #: app/Module/OpenRouteServiceAutocomplete.php:81
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:57
 msgid "OpenStreetMap™"
@@ -10755,7 +10743,7 @@ msgstr "Papiksivihkiminen"
 #. I18N: Ordnance Survey is the UK government mapping service.
 #: app/Module/OrdnanceSurveyHistoricMaps.php:39
 msgid "Ordnance Survey historic maps"
-msgstr ""
+msgstr "Ordnance Survey historialliset kartat"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -10767,7 +10755,7 @@ msgstr "Sivun asento"
 #: app/Module/CustomTagsGenPluswin.php:106
 #: app/Module/CustomTagsGenPluswin.php:117
 msgid "Original text"
-msgstr ""
+msgstr "Alkuperäinen teksti"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -11213,7 +11201,7 @@ msgstr "Kasteen paikkakunta"
 #. I18N: German Bürgerort
 #: app/Module/CustomTagsGenPluswin.php:124
 msgid "Place of citizenship"
-msgstr ""
+msgstr "Kansalaisuuden paikka"
 
 #: app/Factories/ElementFactory.php:499
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -11545,7 +11533,7 @@ msgstr "Provo, Utah, Yhdysvallat"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Edustaja"
 
 #: app/Factories/ElementFactory.php:698
 #: resources/views/lists/sources-table.phtml:97
@@ -11941,7 +11929,7 @@ msgstr "Sukulaisuus - %1$s ja %2$s"
 #: app/Module/CustomTagsGenPluswin.php:72
 #: app/Module/CustomTagsGenPluswin.php:104
 msgid "Reliability of the information"
-msgstr ""
+msgstr "Tietojen luotettavuus"
 
 #: app/Factories/ElementFactory.php:305 app/Factories/ElementFactory.php:436
 #: app/Factories/ElementFactory.php:588
@@ -12464,17 +12452,17 @@ msgstr "Etsi"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "Etsi paikkoja ulkoisesta tietokannasta."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "Etsi paikannimiä ulkoisesta tietokannasta."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:56
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Hae paikannimiä käyttämällä %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12609,7 +12597,7 @@ msgstr "Lähetä muistutusviestit"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:72
 msgid "Sender email"
-msgstr ""
+msgstr "Lähettäjän sähköposti"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:58
@@ -12795,15 +12783,15 @@ msgstr "Shahrivar"
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/individual-page.phtml:61
 msgid "Share"
-msgstr ""
+msgstr "Jaa"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Jaa URL-osoite"
 
 #: app/Module/ShareAnniversaryModule.php:79
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Jaa tapahtuman vuosipäivä"
 
 #: app/Functions/FunctionsPrint.php:85
 #: app/Functions/FunctionsPrintFacts.php:777
@@ -12824,7 +12812,7 @@ msgstr "Jaetut lisätiedot"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:740
 msgid "Shares"
-msgstr ""
+msgstr "Jakaumat"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -13113,7 +13101,7 @@ msgstr "Näytä vanhemmat"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "Näytä salasana"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13213,7 +13201,7 @@ msgstr "Näytä sukunimiluettelo"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Näytä tapahtuman sijainti ulkoisella kartalla."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
@@ -13466,7 +13454,7 @@ msgstr "Jotkut sukututkimussovellukset tallentavat kaikki nimet yhteen nimitietu
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Joitakin näistä GEDCOM-tunnisteista käytetään harvoin tai ei koskaan."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
@@ -13573,7 +13561,7 @@ msgstr "Lähdetietoviite"
 
 #: resources/views/admin/tags.phtml:315
 msgid "Source citations"
-msgstr ""
+msgstr "Lähdeviittaukset"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:756
@@ -13787,7 +13775,7 @@ msgstr "Tarinan otsikko"
 #: app/Module/CustomTagsGenPluswin.php:59
 #: app/Module/CustomTagsGenPluswin.php:91
 msgid "Street name"
-msgstr ""
+msgstr "Kadun nimi"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -13863,7 +13851,7 @@ msgstr "SQL Serverin tuki on kokeellinen."
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
 msgid "Support for non-standard GEDCOM tags."
-msgstr ""
+msgstr "Tuki ei-standardisille GEDCOM-tunnisteille."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14136,7 +14124,7 @@ msgstr "GEDCOM tiedosto ”%s” on tuotu palvelimelle."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "GEDCOM-standardi tarjoaa suuren määrän tietojen syöttökenttiä, joita kutsutaan tunnisteiksi."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14170,7 +14158,7 @@ msgstr "PHP.INI-asetus ”%1$s” on käytöstä."
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "URL-osoite kopioitiin leikepöydälle"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -15267,7 +15255,7 @@ msgstr "Aika"
 #: app/Factories/ElementFactory.php:672 app/Factories/ElementFactory.php:688
 #: app/Factories/ElementFactory.php:719 app/Factories/ElementFactory.php:735
 msgid "Time of last change"
-msgstr ""
+msgstr "Viimeisen muutoksen aika"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15418,11 +15406,11 @@ msgstr "Kertoaksesi hakukoneille, että sivukartat ovat käytettävissä, voit k
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Jotta voit käyttää tätä palvelua, tarvitset API-avaimen."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Tämän palvelun käyttäminen edellyttää tiliä."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15721,7 +15709,7 @@ msgstr "Faktatyyppi"
 
 #: app/Factories/ElementFactory.php:542
 msgid "Type of identification number"
-msgstr ""
+msgstr "Tunnistenumeron tyyppi"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15739,7 +15727,7 @@ msgstr "Nimen tyyppi"
 #: app/Factories/ElementFactory.php:626 app/Factories/ElementFactory.php:649
 #: app/Factories/ElementFactory.php:680 app/Factories/ElementFactory.php:700
 msgid "Type of reference number"
-msgstr ""
+msgstr "Viitenumeron tyyppi"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
@@ -15859,7 +15847,7 @@ msgstr "Henkilö ei tiedossa"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Poista linkitys"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15938,7 +15926,7 @@ msgstr "Käytä ”?” täsmätäksesi yhden erillisen merkin, käytä ”*” 
 
 #: app/Module/ModuleMapGeoLocationTrait.php:48
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Etsi sijainteja ulkoisen palvelun avulla."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -15975,7 +15963,7 @@ msgstr "Käytä kirjaimia A-Z, a-z, numeroita 0-9 tai alaviivoja"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Käytä karttoja webtreessä."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -16201,7 +16189,7 @@ msgstr "Katso tätä perhettä"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Näytä tämä sijainti käyttämällä %s"
 
 #: resources/views/calendar-page.phtml:219
 msgid "View this month"
@@ -16539,7 +16527,7 @@ msgstr "Voit asettaa pääsyn tietylle tietueelle, faktalle, tai tapahtumalle li
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "Voit yksinkertaistaa muokkauslomakkeita piilottamalla GEDCOM-tunnisteet joita et käytä."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -19273,7 +19261,7 @@ msgstr "tuo tietue"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "upotettu lisätieto"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20122,7 +20110,7 @@ msgstr "7. serkku"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "jaettu lisätieto"
 
 #: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/trees-preferences.phtml:307
