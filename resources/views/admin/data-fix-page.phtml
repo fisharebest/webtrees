@@ -77,7 +77,7 @@ use Fisharebest\Webtrees\View;
 
     <hr>
 
-    <a href="#" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="<?= e(route(HelpText::class, ['topic' => 'data-fixes'])) ?>">
+    <a href="#" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-href="<?= e(route(HelpText::class, ['topic' => 'data-fixes'])) ?>">
         <?= view('icons/help') ?>
         <?= I18N::translate('Why does this list include records that do not need to be updated?') ?>
     </a>

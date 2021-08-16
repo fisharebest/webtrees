@@ -33,7 +33,7 @@ use Illuminate\Support\Collection;
     <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
         <?php if ($search_individuals) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
+                <a class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" id="individuals-tab" data-bs-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
                     <?= I18N::translate('Individuals') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($individuals)) ?>
@@ -44,7 +44,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_families) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" id="families-tab" data-toggle="tab" href="#families" role="tab" aria-controls="families">
+                <a class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" id="families-tab" data-bs-toggle="tab" href="#families" role="tab" aria-controls="families">
                     <?= I18N::translate('Families') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($families)) ?>
@@ -55,7 +55,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_sources) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" id="sources-tab" data-toggle="tab" href="#sources" role="tab" aria-controls="sources">
+                <a class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" id="sources-tab" data-bs-toggle="tab" href="#sources" role="tab" aria-controls="sources">
                     <?= I18N::translate('Sources') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($sources)) ?>
@@ -66,7 +66,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_repositories) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" id="repositories-tab" data-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
+                <a class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" id="repositories-tab" data-bs-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
                     <?= I18N::translate('Repositories') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($repositories)) ?>
@@ -77,7 +77,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_notes) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes">
+                <a class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" id="notes-tab" data-bs-toggle="tab" href="#notes" role="tab" aria-controls="notes">
                     <?= I18N::translate('Notes') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($notes)) ?>
@@ -88,7 +88,7 @@ use Illuminate\Support\Collection;
 
         <?php if ($search_locations) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" id="locations-tab" data-toggle="tab" href="#locations" role="tab" aria-controls="locations">
+                <a class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" id="locations-tab" data-bs-toggle="tab" href="#locations" role="tab" aria-controls="locations">
                     <?= I18N::translate('Locations') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($locations)) ?>

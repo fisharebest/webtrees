@@ -36,7 +36,7 @@ if ($fact->isPendingDeletion()) {
 ?>
 <div class="card <?= $container_class ?>">
     <div class="card-header" role="tab" id="name-header-<?= $fact->id() ?>">
-        <a data-toggle="collapse" href="#name-content-<?= $fact->id() ?>" aria-expanded="false" aria-controls="name-content-<?= $fact->id() ?>">
+        <a data-bs-toggle="collapse" href="#name-content-<?= $fact->id() ?>" aria-expanded="false" aria-controls="name-content-<?= $fact->id() ?>">
             <?= view('icons/expand') ?>
             <?= view('icons/collapse') ?>
             <span class="label"><?= I18N::translate('Name') ?></span>
@@ -51,7 +51,7 @@ if ($fact->isPendingDeletion()) {
     <div id="name-content-<?= $fact->id() ?>" class="card-body collapse" data-parent="#individual-names" aria-labelledby="name-header-<?= $fact->id() ?>">
         <dl class="row mb-0">
             <dt class="col-md-4 col-lg-3"><?= I18N::translate('Name') ?></dt>
-            <dd class="col-md-8 col-lg-9"><span dir="auto"><?= e($fact->value()) ?></span></dd>
+            <dd class="col-md-8 col-lg-9"><bdi><?= e($fact->value()) ?></bdi></dd>
 
             <?php preg_match_all('/\n2 (\w+) (.+)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
             <?php foreach ($matches as $key => $match) : ?>
@@ -73,14 +73,14 @@ if ($fact->isPendingDeletion()) {
 
         <?php if ($fact->canEdit()) : ?>
             <div class="d-flex">
-                <a class="btn btn-link ml-auto" href="<?= e(route(EditFactPage::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Edit the name') ?>">
+                <a class="btn btn-link ms-auto" href="<?= e(route(EditFactPage::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Edit the name') ?>">
                     <?= view('icons/edit') ?>
-                    <span class="sr-only"><?= I18N::translate('Edit the name') ?></span>
+                    <span class="visually-hidden"><?= I18N::translate('Edit the name') ?></span>
                 </a>
 
                 <a class="btn btn-link" href="#" data-post-url="<?= e(route(CopyFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Copy') ?>">
                     <?= view('icons/copy') ?>
-                    <span class="sr-only"><?= I18N::translate('Copy') ?></span>
+                    <span class="visually-hidden"><?= I18N::translate('Copy') ?></span>
                 </a>
 
                 <a class="btn btn-link" href="#"
@@ -88,7 +88,7 @@ if ($fact->isPendingDeletion()) {
                    data-post-url="<?= e(route(DeleteFact::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'fact_id' => $fact->id()])) ?>"
                    title="<?= I18N::translate('Delete this name') ?>">
                     <?= view('icons/delete') ?>
-                    <span class="sr-only"><?= I18N::translate('Delete this name') ?></span>
+                    <span class="visually-hidden"><?= I18N::translate('Delete this name') ?></span>
                 </a>
             </div>
         <?php endif ?>

@@ -64,10 +64,10 @@ class SiteLogsData implements RequestHandlerInterface
                 $row->log_id,
                 Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),
                 $row->log_type,
-                '<span dir="auto">' . e($row->log_message) . '</span>',
-                '<span dir="auto">' . e($row->ip_address) . '</span>',
-                '<span dir="auto">' . e($row->user_name) . '</span>',
-                '<span dir="auto">' . e($row->gedcom_name) . '</span>',
+                '<bdi>' . e($row->log_message) . '</bdi>',
+                '<bdi>' . e($row->ip_address) . '</bdi>',
+                '<bdi>' . e($row->user_name) . '</bdi>',
+                '<bdi>' . e($row->gedcom_name) . '</bdi>',
             ];
         });
     }

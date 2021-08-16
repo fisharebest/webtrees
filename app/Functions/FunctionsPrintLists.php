@@ -63,7 +63,7 @@ class FunctionsPrintLists
                 }
 
                 if ($totals) {
-                    $tag_item = I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number($count));
+                    $tag_item = I18N::translate('%1$s (%2$s)', '<bdi>' . $spfxsurn . '</bdi>', I18N::number($count));
                 } else {
                     $tag_item = $spfxsurn;
                 }

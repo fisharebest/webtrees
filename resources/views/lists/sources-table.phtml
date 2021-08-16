@@ -85,7 +85,7 @@ $count_notes = DB::table('other')
         ['visible' => (bool) $tree->getPreference('SHOW_LAST_CHANGE'), 'searchable' => false],
     ])) ?>"
 >
-    <caption class="sr-only">
+    <caption class="visually-hidden">
         <?= $caption ?? I18N::translate('Sources') ?>
     </caption>
 

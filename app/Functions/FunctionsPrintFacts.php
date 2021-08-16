@@ -467,7 +467,7 @@ class FunctionsPrintFacts
                     $id       = 'collapse-' . Uuid::uuid4()->toString();
                     $expanded = (bool) $tree->getPreference('EXPAND_SOURCES');
                     if ($lt > 0) {
-                        $data .= '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">';
+                        $data .= '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">';
                         $data .= view('icons/expand');
                         $data .= view('icons/collapse');
                         $data .= '</a>';

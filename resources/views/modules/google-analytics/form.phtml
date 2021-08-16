@@ -7,7 +7,7 @@ use Fisharebest\Webtrees\I18N;
 <div class="row form-group">
     <label for="GOOGLE_ANALYTICS_ID" class="col-sm-3 col-form-label">
         <?= /* I18N: A configuration setting */ I18N::translate('Site identification code') ?>
-        <span class="sr-only">Google Analytics</span>
+        <span class="visually-hidden">Google Analytics</span>
     </label>
     <div class="col-sm-9">
         <input type="text" class="form-control" id="GOOGLE_ANALYTICS_ID" name="GOOGLE_ANALYTICS_ID" value="<?= e($GOOGLE_ANALYTICS_ID ?? '') ?>" placeholder="UA-12345-6" maxlength="255" pattern="UA-[0-9]+-[0-9]+">

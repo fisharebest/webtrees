@@ -34,9 +34,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <input type="text" class="form-control" id="user-name" name="user_name" value="<?= e($user->userName()) ?>" dir="auto" aria-describedby="username-description" required="required">
-            <p class="small text-muted" id="username-description">
+            <div class="form-text" id="username-description">
                 <?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -46,9 +46,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <input type="text" class="form-control" id="real-name" name="real_name" value="<?= e($user->realName()) ?>" dir="auto" aria-describedby="real-name-description" required="required">
-            <p class="small text-muted" id="real-name-description">
+            <div class="form-text" id="real-name-description">
                 <?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -65,9 +65,9 @@ use Fisharebest\Webtrees\View;
                         <option value=""><?= I18N::translateContext('unknown people', 'Unknown') ?></option>
                     <?php endif ?>
                 </select>
-                <p class="small text-muted" id="gedcom-id-description">
+                <div class="form-text" id="gedcom-id-description">
                     <?= I18N::translate('This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator.') ?>
-                </p>
+                </div>
             </div>
         </div>
 
@@ -77,9 +77,9 @@ use Fisharebest\Webtrees\View;
             </label>
             <div class="col-sm-9 wt-page-options-value">
                 <?= view('components/select-individual', ['name' => 'default-xref', 'id' => 'default-xref', 'individual' => $default_individual, 'tree' => $tree]) ?>
-                <p class="small text-muted" id="default-xref-description">
+                <div class="form-text" id="default-xref-description">
                     <?= I18N::translate('This individual will be selected by default when viewing charts and reports.') ?>
-                </p>
+                </div>
             </div>
         </div>
     <?php endif ?>
@@ -90,11 +90,11 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <input class="form-control" type="password" id="password" name="password" aria-describedby="password-description" autocomplete="new-password" data-show-text="<?= e(I18N::translate('show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
-            <p class="small text-muted" id="password-description">
+            <div class="form-text" id="password-description">
                 <?= I18N::translate('Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
                 <br>
                 <?= I18N::translate('Leave the password blank if you want to keep the current password.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -113,9 +113,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'), 'options' => $timezones]) ?>
-            <p class="small text-muted" id="timezone-description">
+            <div class="form-text" id="timezone-description">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -125,9 +125,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <input class="form-control" type="email" id="email" name="email" value="<?= e($user->email()) ?>" aria-describedby="email-description">
-            <p class="small text-muted" id="email-description">
+            <div class="form-text" id="email-description">
                 <?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -137,22 +137,20 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9 wt-page-options-value">
             <?= view('components/select', ['name' => 'contact-method', 'id' => 'contact-method', 'selected' => $user->getPreference(UserInterface::PREF_CONTACT_METHOD), 'options' => $contact_methods]) ?>
-            <p class="small text-muted" id="contact-method-description">
+            <div class="form-text" id="contact-method-description">
             <?= I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-sm-3 col-form-label wt-page-options-label">
-                <?= I18N::translate('Visible online') ?>
-            </legend>
-            <div class="col-sm-9 wt-page-options-value">
-                <?= view('components/checkbox', ['label' => I18N::translate('Visible to other users when online'), 'name' => 'visible-online', 'checked' => (bool) $user->getPreference(UserInterface::PREF_IS_VISIBLE_ONLINE)]) ?>
-                <p class="small text-muted" id="visible-online-description">
-                    <?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
-                </p>
+    <fieldset class="row form-group">
+        <legend class="col-sm-3 col-form-label wt-page-options-label">
+            <?= I18N::translate('Visible online') ?>
+        </legend>
+        <div class="col-sm-9 wt-page-options-value">
+            <?= view('components/checkbox', ['label' => I18N::translate('Visible to other users when online'), 'name' => 'visible-online', 'checked' => (bool) $user->getPreference(UserInterface::PREF_IS_VISIBLE_ONLINE)]) ?>
+            <div class="form-text" id="visible-online-description">
+                <?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
             </div>
         </div>
     </fieldset>

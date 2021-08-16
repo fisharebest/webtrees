@@ -42,7 +42,7 @@ use Fisharebest\Webtrees\View;
     <body class="container-lg wt-global wt-control-panel">
         <header>
             <div class="wt-accessibility-links position-fixed">
-                <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
+                <a class="visually-hidden visually-hidden-focusable btn btn-info btn-sm" href="#content">
                     <?= /* I18N: Skip over the headers and menus, to the main content of the page */
                     I18N::translate('Skip to content') ?>
                 </a>
@@ -53,7 +53,7 @@ use Fisharebest\Webtrees\View;
                     <a class="nav-link active" href="<?= e(route(HomePage::class)) ?>"><?= I18N::translate('My page') ?></a>
                 </li>
                 <li class="nav-item dropdown menu-language">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <?= I18N::translate('Language') ?>
                     </a>
                     <div class="dropdown-menu">
@@ -72,8 +72,7 @@ use Fisharebest\Webtrees\View;
 
         <?php foreach (FlashMessages::getMessages() as $message) : ?>
             <div class="alert alert-<?= $message->status ?> alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
                 </button>
                 <?= $message->text ?>
             </div>

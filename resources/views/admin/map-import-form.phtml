@@ -28,11 +28,10 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-8">
             <div class="input-group" dir="ltr">
-                <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <?= e($folder) ?>
-                            </span>
-                </div>
+                <span class="input-group-text">
+                    <?= e($folder) ?>
+                </span>
+
                 <select id="serverfile" name="serverfile" class="form-control">
                     <option selected value=""></option>
                     <?php foreach ($files as $file) : ?>
@@ -56,26 +55,22 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- CLEAR DATABASE -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-4">
-                <?= I18N::translate('Delete all existing geographic data before importing the file.') ?>
-            </legend>
-            <div class="col-sm-8">
-                <?= view('components/radios-inline', ['name' => 'cleardatabase', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => 0]) ?>
-            </div>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-4">
+            <?= I18N::translate('Delete all existing geographic data before importing the file.') ?>
+        </legend>
+        <div class="col-sm-8">
+            <?= view('components/radios-inline', ['name' => 'cleardatabase', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => 0]) ?>
         </div>
     </fieldset>
 
     <!-- Import options -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-4" for="import-options">
-                <?= I18N::translate('Import') ?>
-            </legend>
-            <div class="col-sm-8">
-                <?= view('components/select', ['name' => 'import-options', 'selected' => '', 'options' => ['update' => I18N::translate('Only update existing records'), 'add' => I18N::translate('Only add new records'), 'addupdate' => I18N::translate('Add new, and update existing records')]]) ?>
-            </div>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-4">
+            <?= I18N::translate('Import') ?>
+        </legend>
+        <div class="col-sm-8">
+            <?= view('components/select', ['name' => 'import-options', 'selected' => '', 'options' => ['update' => I18N::translate('Only update existing records'), 'add' => I18N::translate('Only add new records'), 'addupdate' => I18N::translate('Add new, and update existing records')]]) ?>
         </div>
     </fieldset>
 

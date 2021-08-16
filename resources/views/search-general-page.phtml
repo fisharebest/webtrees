@@ -55,68 +55,67 @@ use Illuminate\Support\Collection;
             </div>
         </div>
     </div>
-    <fieldset class="form-group">
-        <div class="row">
-            <label class="col-sm-3 col-form-label wt-page-options-label">
-                <?= I18N::translate('Records') ?>
-            </label>
-            <div class="col-sm-9 wt-page-options-value">
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_individuals ? 'checked' : '' ?>
-                               name="search_individuals" type="checkbox">
-                        <?= I18N::translate('Individuals') ?>
-                    </label>
-                </div>
 
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" <?= $search_families ? 'checked' : '' ?> name="search_families"
-                               type="checkbox">
-                        <?= I18N::translate('Families') ?>
-                    </label>
-                </div>
-
-                <?php if ($exist_sources) : ?>
-                    <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                            <input class="form-check-input" <?= $search_sources ? 'checked' : '' ?> name="search_sources"
-                                   type="checkbox">
-                            <?= I18N::translate('Sources') ?>
-                        </label>
-                    </div>
-                <?php endif ?>
-
-                <?php if ($exist_repositories) : ?>
-                    <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                            <input class="form-check-input" <?= $search_repositories ? 'checked' : '' ?>
-                                   name="search_repositories" type="checkbox">
-                            <?= I18N::translate('Repositories') ?>
-                        </label>
-                    </div>
-                <?php endif ?>
-
-                <?php if ($exist_notes) : ?>
-                    <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                            <input class="form-check-input" <?= $search_notes ? 'checked' : '' ?> name="search_notes"
-                                   type="checkbox">
-                            <?= I18N::translate('Shared notes') ?>
-                        </label>
-                    </div>
-                <?php endif ?>
-
-                <?php if ($exist_locations) : ?>
-                    <div class="form-check form-check-inline">
-                        <label class="form-check-label">
-                            <input class="form-check-input" <?= $search_locations ? 'checked' : '' ?> name="search_locations"
-                                   type="checkbox">
-                            <?= I18N::translate('Locations') ?>
-                        </label>
-                    </div>
-                <?php endif ?>
+    <fieldset class="row form-group">
+        <label class="col-sm-3 col-form-label wt-page-options-label">
+            <?= I18N::translate('Records') ?>
+        </label>
+        <div class="col-sm-9 wt-page-options-value">
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" <?= $search_individuals ? 'checked' : '' ?>
+                           name="search_individuals" type="checkbox">
+                    <?= I18N::translate('Individuals') ?>
+                </label>
             </div>
+
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input class="form-check-input" <?= $search_families ? 'checked' : '' ?> name="search_families"
+                           type="checkbox">
+                    <?= I18N::translate('Families') ?>
+                </label>
+            </div>
+
+            <?php if ($exist_sources) : ?>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" <?= $search_sources ? 'checked' : '' ?> name="search_sources"
+                               type="checkbox">
+                        <?= I18N::translate('Sources') ?>
+                    </label>
+                </div>
+            <?php endif ?>
+
+            <?php if ($exist_repositories) : ?>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" <?= $search_repositories ? 'checked' : '' ?>
+                               name="search_repositories" type="checkbox">
+                        <?= I18N::translate('Repositories') ?>
+                    </label>
+                </div>
+            <?php endif ?>
+
+            <?php if ($exist_notes) : ?>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" <?= $search_notes ? 'checked' : '' ?> name="search_notes"
+                               type="checkbox">
+                        <?= I18N::translate('Shared notes') ?>
+                    </label>
+                </div>
+            <?php endif ?>
+
+            <?php if ($exist_locations) : ?>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input class="form-check-input" <?= $search_locations ? 'checked' : '' ?> name="search_locations"
+                               type="checkbox">
+                        <?= I18N::translate('Locations') ?>
+                    </label>
+                </div>
+            <?php endif ?>
         </div>
     </fieldset>
 
@@ -133,7 +132,7 @@ use Illuminate\Support\Collection;
 
 <?php if ($query !== '') : ?>
     <?php if ($individuals->isEmpty() && $families->isEmpty() && $locations->isEmpty() && $repositories->isEmpty() && $sources->isEmpty() && $notes->isEmpty()) : ?>
-        <div class="alert alert-info row">
+        <div class="alert alert-info">
             <?= I18N::translate('No results found.') ?>
         </div>
     <?php else : ?>

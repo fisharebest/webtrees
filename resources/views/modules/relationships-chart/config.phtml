@@ -38,15 +38,13 @@ use Illuminate\Support\Collection;
             </div>
         </div>
 
-        <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-label col-sm-3">
-                    <?= /* I18N: Configuration option */
-                    I18N::translate('How much recursion to use when searching for relationships') ?>
-                </legend>
-                <div class="col-sm-9">
-                    <?= view('components/radios-inline', ['name' => 'relationship-recursion-' . $tree->id(), 'options' => $recursion_options, 'selected' => (int) $tree->getPreference('RELATIONSHIP_RECURSION', $default_recursion)]) ?>
-                </div>
+        <fieldset class="row form-group">
+            <legend class="col-form-label col-sm-3">
+                <?= /* I18N: Configuration option */
+                I18N::translate('How much recursion to use when searching for relationships') ?>
+            </legend>
+            <div class="col-sm-9">
+                <?= view('components/radios-inline', ['name' => 'relationship-recursion-' . $tree->id(), 'options' => $recursion_options, 'selected' => (int) $tree->getPreference('RELATIONSHIP_RECURSION', $default_recursion)]) ?>
             </div>
         </fieldset>
     <?php endforeach ?>

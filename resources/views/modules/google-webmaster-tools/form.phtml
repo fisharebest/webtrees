@@ -7,7 +7,7 @@ use Fisharebest\Webtrees\I18N;
 <div class="row form-group">
     <label for="GOOGLE_WEBMASTER_ID" class="col-sm-3 col-form-label">
         <?= /* I18N: A configuration setting */ I18N::translate('Site verification code') ?>
-        <span class="sr-only">Google Webmaster Tools</span>
+        <span class="visually-hidden">Google Webmaster Tools</span>
     </label>
     <div class="col-sm-9">
         <input type="text" class="form-control" id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" value="<?= e($GOOGLE_WEBMASTER_ID ?? '') ?>" maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*">

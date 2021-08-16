@@ -62,6 +62,6 @@ class NamePieceGiven extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return '<span dir="auto">' . preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', e($value)) . '</span>';
+        return '<bdi>' . preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', e($value)) . '</bdi>';
     }
 }

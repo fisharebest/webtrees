@@ -301,7 +301,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
             'generations' => $generations,
         ]);
 
-        return '<a class="px-2" href="' . e($url) . '" title="' . strip_tags($title) . '">' . $icon . '<span class="sr-only">' . $title . '</span></a>';
+        return '<a class="px-2" href="' . e($url) . '" title="' . strip_tags($title) . '">' . $icon . '<span class="visually-hidden">' . $title . '</span></a>';
     }
 
     /**

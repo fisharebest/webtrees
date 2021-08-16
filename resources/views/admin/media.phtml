@@ -53,16 +53,14 @@ use Illuminate\Support\Collection;
                 <td>
                     <?php if ($files === 'local' || $files === 'unused') : ?>
                         <div class="input-group mb-2" dir="ltr">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><?= e($data_folder) ?></div>
-                            </div>
-                                <?php if ($media_folders->count() > 1) : ?>
-                                    <?= view('components/select', ['name' => 'media_folder', 'selected' => $media_folder, 'options' => $media_folders]) ?>
+                            <div class="input-group-text"><?= e($data_folder) ?></div>
 
-                                <?php else : ?>
-                                    <input aria-label="<?= I18N::translate('Media folder') ?>"
-                                           type="text" class="form-control" name="media_folder" value="<?= e($media_folder) ?>" readonly>
-                                <?php endif ?>
+                            <?php if ($media_folders->count() > 1) : ?>
+                                <?= view('components/select', ['name' => 'media_folder', 'selected' => $media_folder, 'options' => $media_folders]) ?>
+                            <?php else : ?>
+                                <input aria-label="<?= I18N::translate('Media folder') ?>"
+                                       type="text" class="form-control" name="media_folder" value="<?= e($media_folder) ?>" readonly>
+                            <?php endif ?>
                         </div>
 
                         <label>

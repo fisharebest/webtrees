@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<div class="form-group row">
+<div class="row form-group">
     <div class="col-sm-12">
         <div id="osm-map" class="wt-ajax-load col-sm-12 osm-admin-map" dir="ltr"></div>
     </div>
@@ -35,7 +35,7 @@ use Fisharebest\Webtrees\View;
     <input type="hidden" name="parent_id" value="<?= e($parent->id()) ?>">
     <input type="hidden" name="place_id" value="<?= e($location->id()) ?>">
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-form-label col-sm-1" for="new_place_name">
             <?= I18N::translate('Place') ?>
         </label>
@@ -44,7 +44,7 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-form-label col-sm-1" for="new_place_lati">
             <?= I18N::translate('Latitude') ?>
         </label>
@@ -55,7 +55,7 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-form-label col-sm-1" for="new_place_long">
             <?= I18N::translate('Longitude') ?>
         </label>
@@ -66,7 +66,7 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <div class="col-sm-10 offset-sm-1">
             <button class="btn btn-primary" type="submit">
                 <?= /* I18N: A button label. */

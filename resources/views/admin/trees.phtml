@@ -56,11 +56,12 @@ use Illuminate\Database\Capsule\Manager as DB;
                 <div class="card-header" role="tab" id="card-tree-header-<?= $managed_tree->id() ?>">
                     <h2 class="mb-0">
                         <?= view('icons/tree') ?>
-                        <a data-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->id() ?>" <?= $managed_tree === $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
+                        <a data-bs-toggle="collapse" data-parent="#accordion" href="#card-tree-content-<?= $managed_tree->id() ?>" <?= $managed_tree === $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
                             <?= e($managed_tree->name()) ?> — <?= e($managed_tree->title()) ?>
                         </a>
                     </h2>
                 </div>
+
                 <div id="card-tree-content-<?= $managed_tree->id() ?>" class="collapse<?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
                     <div class="card-body">
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
@@ -83,7 +84,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                 <h3>
                                     <?= I18N::translate('Family tree') ?>
                                 </h3>
-                                <ul class="fa-ul">
+                                <ul class="fa-ul mx-0">
                                     <li>
                                         <span class="fa-li"><?= view('icons/tree') ?></span>
                                         <a href="<?= e(route(TreePage::class, ['tree' => $managed_tree->name()])) ?>">
@@ -91,13 +92,13 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         </a>
                                     </li>
                                 </ul>
-                                <ul class="fa-ul">
+                                <ul class="fa-ul mx-0">
                                     <!-- PREFERENCES -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/preferences') ?></span>
                                         <a href="<?= e(route(TreePreferencesPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Preferences') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- PRIVACY -->
@@ -105,7 +106,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/lock') ?></span>
                                         <a href="<?= e(route(TreePrivacyPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Privacy') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- DELETE -->
@@ -127,12 +128,12 @@ use Illuminate\Database\Capsule\Manager as DB;
                                             <?php else : ?>
                                                 <a href="#" onclick="document.defaultform<?= $managed_tree->id() ?>.submit();">
                                                     <?= I18N::translate('Set as default') ?>
-                                                    <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                                    <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                                 </a>
                                                 <form method="post" action="<?= route(SelectDefaultTree::class, ['tree' => $managed_tree->name()]) ?>" name="defaultform<?= $managed_tree->id() ?>">
                                                     <?= csrf_field() ?>
                                                     <!-- A11Y - forms need submit buttons, but they look ugly here -->
-                                                    <button class="sr-only" type="submit">
+                                                    <button class="visually-hidden" type="submit">
                                                         <?= I18N::translate('Set as default') ?>
                                                     </button>
                                                 </form>
@@ -141,13 +142,13 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <?php endif ?>
                                 </ul>
 
-                                <ul class="fa-ul">
+                                <ul class="fa-ul mx-0">
                                     <!-- DATA FIXES -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/data-fix') ?></span>
                                         <a href="<?= e(route(DataFixChoose::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Data fixes') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                 </ul>
@@ -157,13 +158,13 @@ use Illuminate\Database\Capsule\Manager as DB;
                                     <?= /* I18N: Individuals, sources, dates, places, etc. */
                                     I18N::translate('Genealogy data') ?>
                                 </h3>
-                                <ul class="fa-ul">
+                                <ul class="fa-ul mx-0">
                                     <!-- FIND DUPLICATES -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/copy') ?></span>
                                         <a href="<?= e(route(FindDuplicateRecords::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Find duplicates') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- MERGE -->
@@ -171,7 +172,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/merge') ?></span>
                                         <a href="<?= e(route(MergeRecordsPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Merge records') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- CHECK FOR ERRORS -->
@@ -179,7 +180,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/warning') ?></span>
                                         <a href="<?= e(route(CheckTree::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Check for errors') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- UNCONNECTED INDIVIDUALS -->
@@ -187,7 +188,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/unlink') ?></span>
                                         <a href="<?= e(route(UnconnectedPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Find unrelated individuals') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- RENUMBER -->
@@ -195,7 +196,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/sort') ?></span>
                                         <a href="<?= e(route(RenumberTreePage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Renumber') ?>
-                                            <span class="sr-only">
+                                            <span class="visually-hidden">
                                         <?= e($managed_tree->title()) ?>
                                     </span>
                                         </a>
@@ -205,64 +206,63 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/edit') ?></span>
                                         <a href="<?= route(PendingChangesLogPage::class, ['tree' => $managed_tree->name()]) ?>">
                                             <?= I18N::translate('Changes log') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="clearfix visible-sm-block"></div>
                             <div class="col-sm-6 col-md-3">
                                 <h3>
                                     <?= I18N::translate('Add unlinked records') ?>
                                 </h3>
-                                <ul class="fa-ul">
+                                <ul class="fa-ul mx-0">
                                     <!-- UNLINKED INDIVIDUAL -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/individual') ?></span>
                                         <a href="<?= e(route(AddUnlinkedPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Individual') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- UNLINKED SOURCE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/source') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateSourceModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
+                                        <a href="#" data-href="<?= e(route(CreateSourceModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
                                             <?= I18N::translate('Source') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- UNLINKED REPOSITORY -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/repository') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateRepositoryModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
+                                        <a href="#" data-href="<?= e(route(CreateRepositoryModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
                                             <?= I18N::translate('Repository') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- UNLINKED MEDIA OBJECT -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/media') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateMediaObjectModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
+                                        <a href="#" data-href="<?= e(route(CreateMediaObjectModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
 
                                             <?= I18N::translate('Media object') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- UNLINKED NOTE -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/note') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateNoteModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
+                                        <a href="#" data-href="<?= e(route(CreateNoteModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
                                             <?= I18N::translate('Shared note') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- UNLINKED SUBMITTER -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/submitter') ?></span>
-                                        <a href="#" data-href="<?= e(route(CreateSubmitterModal::class, ['tree' => $managed_tree->name()])) ?>" data-target="#wt-ajax-modal" data-toggle="modal" data-backdrop="static">
+                                        <a href="#" data-href="<?= e(route(CreateSubmitterModal::class, ['tree' => $managed_tree->name()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
                                             <?= I18N::translate('Submitter') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                 </ul>
@@ -271,13 +271,13 @@ use Illuminate\Database\Capsule\Manager as DB;
                                 <h3>
                                     <?= I18N::translate('GEDCOM file') ?>
                                 </h3>
-                                <ul class="fa-ul">
+                                <ul class="fa-ul mx-0">
                                     <!-- DOWNLOAD/Export -->
                                     <li>
                                         <span class="fa-li"><?= view('icons/download') ?></span>
                                         <a href="<?= e(route(ExportGedcomPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Export') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                     <!-- UPLOAD/IMPORT -->
@@ -285,7 +285,7 @@ use Illuminate\Database\Capsule\Manager as DB;
                                         <span class="fa-li"><?= view('icons/upload') ?></span>
                                         <a href="<?= e(route(ImportGedcomPage::class, ['tree' => $managed_tree->name()])) ?>">
                                             <?= I18N::translate('Import') ?>
-                                            <span class="sr-only"><?= e($managed_tree->title()) ?></span>
+                                            <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                         </a>
                                     </li>
                                 </ul>

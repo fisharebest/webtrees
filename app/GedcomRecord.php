@@ -1200,7 +1200,7 @@ class GedcomRecord
             'sort'   => preg_replace_callback('/(\d+)/', static function (array $matches): string {
                 return str_pad($matches[0], 10, '0', STR_PAD_LEFT);
             }, $value),
-            'full'   => '<span dir="auto">' . e($value) . '</span>',
+            'full'   => '<bdi>' . e($value) . '</bdi>',
             // This is used for display
             'fullNN' => $value,
             // This goes into the database

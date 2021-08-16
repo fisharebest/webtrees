@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Individual;
 <?php if ($generations > 1 && $parents instanceof Family) : ?>
     <div class="d-flex">
         <span class="wt-chart-horizontal-spacer d-inline-block"></span>
-        <button class="btn btn-link px-0 py-1 wt-chart-expansion-control" data-toggle="collapse" data-target="#fam-<?= e($parents->xref()) ?>" aria-controls="fam-<?= e($parents->xref()) ?>" aria-expanded="true">
+        <button class="btn btn-link px-0 py-1 wt-chart-expansion-control" data-bs-toggle="collapse" data-bs-target="#fam-<?= e($parents->xref()) ?>" aria-controls="fam-<?= e($parents->xref()) ?>" aria-expanded="true">
             <span class="chart-expand">
                 <?= view('icons/expand') ?>
             </span>

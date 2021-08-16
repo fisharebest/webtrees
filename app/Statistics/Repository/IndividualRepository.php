@@ -156,9 +156,9 @@ class IndividualRepository implements IndividualRepositoryInterface
             default:
                 array_walk($nameList, static function (string &$value, string $key) use ($show_tot): void {
                     if ($show_tot) {
-                        $value = '<span dir="auto">' . e($key) . '</span> (' . I18N::number((int) $value) . ')';
+                        $value = '<bdi>' . e($key) . '</bdi> (' . I18N::number((int) $value) . ')';
                     } else {
-                        $value = '<span dir="auto">' . e($key) . '</span>';
+                        $value = '<bdi>' . e($key) . '</bdi>';
                     }
                 });
 

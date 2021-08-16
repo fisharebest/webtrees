@@ -20,12 +20,12 @@ use Illuminate\Support\Collection;
 ?>
 
 <div class="dropdown wt-page-menu">
-    <button class="btn btn-primary dropdown-toggle wt-page-menu-button" type="button" id="page-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-primary dropdown-toggle wt-page-menu-button" type="button" id="page-menu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?= view('icons/menu') ?>
         <?= I18N::translate('edit') ?>
     </button>
 
-    <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
+    <div class="dropdown-menu dropdown-menu-end wt-page-menu-items" aria-labelledby="page-menu">
         <a class="dropdown-item" href="<?= e(route(ChangeFamilyMembersPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
             <?= view('icons/family') ?>
             <?= I18N::translate('Change family members') ?>

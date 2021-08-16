@@ -15,7 +15,7 @@
 
 import $ from 'jquery';
 
-import 'popper.js';
+import '@popperjs/core';
 import 'bootstrap';
 import 'datatables.net';
 
@@ -147,13 +147,3 @@ window.Bloodhound = require('corejs-typeahead/dist/bloodhound.min.js');
 // See https://github.com/RubaXa/Sortable/issues/1229
 // window.Sortable = require('sortablejs');
 window.Sortable = Sortable;
-
-// Add RTL support for dropdown menu - see https://github.com/fisharebest/webtrees/issues/3332
-$('html[dir=rtl] .dropdown').on('shown.bs.dropdown', function (event) {
-  const menu = event.target.querySelector('.dropdown-menu');
-  // Bootstrap sets these *after* the event has fired, so wait before updating them.
-  setTimeout(() => {
-    menu.style.right = '0';
-    menu.style.left = '';
-  }, 1);
-});

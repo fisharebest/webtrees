@@ -45,10 +45,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'SMTP_ACTIVE', 'selected' => $SMTP_ACTIVE, 'options' => $mail_transport_options]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Messages” site configuration setting */
                 I18N::translate('webtrees needs to send emails, such as password reminders and website notifications.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -59,10 +59,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="SMTP_DISP_NAME" name="SMTP_DISP_NAME" value="<?= e($SMTP_DISP_NAME) ?>" maxlength="255" required="required">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Sender name” site configuration setting */
                 I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -73,10 +73,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <input type="email" class="form-control" id="SMTP_FROM_NAME" name="SMTP_FROM_NAME" value="<?= e($SMTP_FROM_NAME) ?>" maxlength="255" required="required">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Sender name” site configuration setting */
                 I18N::translate('This name is used in the “From” field, when sending automatic emails from this server.') ?>
-            </p>
+            </div>
 
             <?php if (!$smtp_from_name_valid) : ?>
                 <p class="alert alert-warning">
@@ -95,10 +95,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?= e($SMTP_HOST) ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Server name” site configuration setting */
                 I18N::translate('This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -109,25 +109,23 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="SMTP_PORT" name="SMTP_PORT" value="<?= e($SMTP_PORT) ?>" pattern="[0-9]*" placeholder="25" maxlength="5">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the "Port number" site configuration setting */
                 I18N::translate('By default, SMTP works on port 25.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3">
-                <?= /* I18N: A configuration setting */
-                I18N::translate('Use password') ?>
-            </legend>
-            <div class="col-sm-9">
-                <?= view('components/radios-inline', ['name' => 'SMTP_AUTH', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $SMTP_AUTH]) ?>
-                <p class="small text-muted">
-                    <?= /* I18N: Help text for the “Use password” site configuration setting */
-                    I18N::translate('Most SMTP servers require a password.') ?>
-                </p>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-3">
+            <?= /* I18N: A configuration setting */
+            I18N::translate('Use password') ?>
+        </legend>
+        <div class="col-sm-9">
+            <?= view('components/radios-inline', ['name' => 'SMTP_AUTH', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $SMTP_AUTH]) ?>
+            <div class="form-text">
+                <?= /* I18N: Help text for the “Use password” site configuration setting */
+                I18N::translate('Most SMTP servers require a password.') ?>
             </div>
         </div>
     </fieldset>
@@ -139,10 +137,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="SMTP_AUTH_USER" name="SMTP_AUTH_USER" value="<?= e($SMTP_AUTH_USER) ?>" maxlength="255">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the "Username" site configuration setting */
                 I18N::translate('The username required for authentication with the SMTP server.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -153,10 +151,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="" autocomplete="new-password" data-show-text="<?= e(I18N::translate('show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the "Password" site configuration setting */
                 I18N::translate('The password required for authentication with the SMTP server.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -167,10 +165,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'SMTP_SSL', 'selected' => $SMTP_SSL, 'options' => $mail_ssl_options]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Secure connection” site configuration setting */
                 I18N::translate('Most servers do not use secure connections.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -181,10 +179,10 @@ use Fisharebest\Webtrees\Webtrees;
         </label>
         <div class="col-sm-9">
             <input type="text" class="form-control" id="SMTP_HELO" name="SMTP_HELO" value="<?= e($SMTP_HELO) ?>" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the "Sending server name" site configuration setting */
                 I18N::translate('Most mail servers require that the sending server identifies itself correctly, using a valid domain name.') ?>
-            </p>
+            </div>
 
             <?php if (!$smtp_helo_valid) : ?>
                 <p class="alert alert-warning">

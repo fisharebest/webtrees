@@ -39,9 +39,9 @@ use Fisharebest\Webtrees\View;
         </div>
         <div class="col-sm-8">
             <?= view('components/select', ['name' => 'REQUIRE_AUTHENTICATION', 'selected' => $tree->getPreference('REQUIRE_AUTHENTICATION'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Family tree” configuration setting */ I18N::translate('Enabling this option will force all visitors to sign in before they can view any data on the website.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -58,9 +58,9 @@ use Fisharebest\Webtrees\View;
         </div>
         <div class="col-sm-8">
             <?= view('components/select', ['name' => 'SHOW_DEAD_PEOPLE', 'selected' => $tree->getPreference('SHOW_DEAD_PEOPLE'), 'options' => array_slice(Auth::accessLevelNames(), 0, 2, true)]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Show dead individuals” configuration setting */ I18N::translate('Set the privacy access level for all dead individuals.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -71,60 +71,46 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Age at which to assume an individual is dead') ?>
         </label>
         <div class="col-sm-8">
-            <input
-                class="form-control"
-                id="MAX_ALIVE_AGE"
-                min="1"
-                max="9999"
-                name="MAX_ALIVE_AGE"
-                required
-                type="number"
-                value="<?= e($tree->getPreference('MAX_ALIVE_AGE')) ?>"
-            >
-            <p class="small text-muted">
+            <input class="form-control" id="MAX_ALIVE_AGE" min="1" max="9999" name="MAX_ALIVE_AGE" required type="number" value="<?= e($tree->getPreference('MAX_ALIVE_AGE')) ?>">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Age at which to assume an individual is dead” configuration setting */ I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
     <!-- HIDE_LIVE_PEOPLE -->
-    <fieldset class="form-group">
-        <div class="row">
-            <div class="col-sm-4">
-                <legend class="col-form-label">
-                    <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
-                    <div class="hidden-xs">
-                        <span class="badge visitors"><?= I18N::translate('visitors') ?></span>
-                        <span class="badge members"><?= I18N::translate('members') ?></span>
-                    </div>
-                </legend>
+    <fieldset class="row form-group">
+        <legend class="col-sm-4 col-form-label">
+            <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
+            <div class="hidden-xs">
+                <span class="badge visitors"><?= I18N::translate('visitors') ?></span>
+                <span class="badge members"><?= I18N::translate('members') ?></span>
             </div>
-            <div class="col-sm-8">
-                <?= view('components/select', ['name' => 'HIDE_LIVE_PEOPLE', 'selected' => $tree->getPreference('HIDE_LIVE_PEOPLE'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
-                <p class="small text-muted">
-                    <?= /* I18N: Help text for the “Show living individuals” configuration setting */ I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public.') ?>
-                </p>
+        </legend>
+
+        <div class="col-sm-8">
+            <?= view('components/select', ['name' => 'HIDE_LIVE_PEOPLE', 'selected' => $tree->getPreference('HIDE_LIVE_PEOPLE'), 'options' => ['0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')]]) ?>
+            <div class="form-text">
+                <?= /* I18N: Help text for the “Show living individuals” configuration setting */ I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored. Do this only if all the data in your tree is public.') ?>
             </div>
         </div>
     </fieldset>
 
     <!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-4">
-                <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
-            </legend>
-            <div class="col-sm-8">
-                <?php
-                echo
-                    /* I18N: Extend privacy to dead individuals who were… */ I18N::translate(
-                        'born in the last %1$s years or died in the last %2$s years',
-                        '<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="' . $tree->getPreference('KEEP_ALIVE_YEARS_BIRTH') . '" size="5" maxlength="3">',
-                        '<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="' . $tree->getPreference('KEEP_ALIVE_YEARS_DEATH') . '" size="5" maxlength="3">'
-                    ) ?>
-                <p class="small text-muted">
-                    <?= /* I18N: Help text for the “Extend privacy to dead individuals” configuration setting */ I18N::translate('In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature.') ?>
-                </p>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-4">
+            <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
+        </legend>
+        <div class="col-sm-8">
+            <?php
+            echo
+                /* I18N: Extend privacy to dead individuals who were… */ I18N::translate(
+                    'born in the last %1$s years or died in the last %2$s years',
+                    '<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="' . $tree->getPreference('KEEP_ALIVE_YEARS_BIRTH') . '" size="5" maxlength="3">',
+                    '<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="' . $tree->getPreference('KEEP_ALIVE_YEARS_DEATH') . '" size="5" maxlength="3">'
+                ) ?>
+            <div class="form-text">
+                <?= /* I18N: Help text for the “Extend privacy to dead individuals” configuration setting */ I18N::translate('In some countries, privacy laws apply not only to living individuals, but also to those who have died recently. This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years. Leave these values empty to disable this feature.') ?>
             </div>
         </div>
     </fieldset>
@@ -143,9 +129,9 @@ use Fisharebest\Webtrees\View;
         </div>
         <div class="col-sm-8">
             <?= view('components/select', ['name' => 'SHOW_LIVING_NAMES', 'selected' => $tree->getPreference('SHOW_LIVING_NAMES'), 'options' => array_slice(Auth::accessLevelNames(), 0, 3, true)]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Show names of private individuals” configuration setting */ I18N::translate('This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -162,9 +148,9 @@ use Fisharebest\Webtrees\View;
         </div>
         <div class="col-sm-8">
             <?= view('components/select', ['name' => 'SHOW_PRIVATE_RELATIONSHIPS', 'selected' => $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'options' => ['0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to visitors')]]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Show private relationships” configuration setting */ I18N::translate('This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.') ?>
-            </p>
+            </div>
         </div>
     </div>
     <h2><?= /* I18N: Privacy restrictions are set by RESN tags in GEDCOM. */ I18N::translate('Privacy restrictions') ?></h2>
@@ -228,7 +214,7 @@ use Fisharebest\Webtrees\View;
     </script>
 
     <table class="table table-bordered table-sm table-hover" id="default-resn">
-        <caption class="sr-only">
+        <caption class="visually-hidden">
             <?= I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag') ?>
         </caption>
         <thead>
@@ -336,10 +322,10 @@ use Fisharebest\Webtrees\View;
         var formGroup = $(sel).closest(".form-group");
 
         if (access) {
-            $("." + who, formGroup).addClass("badge-success").removeClass("badge-secondary");
+            $("." + who, formGroup).addClass("bg-success").removeClass("bg-secondary");
             $("." + who + " i", formGroup).addClass("fa-check").removeClass("fa-times");
         } else {
-            $("." + who, formGroup).addClass("badge-secondary").removeClass("badge-success");
+            $("." + who, formGroup).addClass("bg-secondary").removeClass("bg-success");
             $("." + who + " i", formGroup).addClass("fa-times").removeClass("fa-check");
         }
     }

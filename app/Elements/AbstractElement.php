@@ -264,15 +264,15 @@ abstract class AbstractElement implements ElementInterface
 
         if ($values === []) {
             if (str_contains($value, "\n")) {
-                return '<span dir="auto" class="d-inline-block" style="white-space: pre-wrap;">' . e($value) . '</span>';
+                return '<bdi class="d-inline-block" style="white-space: pre-wrap;">' . e($value) . '</bdi>';
             }
 
-            return '<span dir="auto">' . e($value) . '</span>';
+            return '<bdi>' . e($value) . '</bdi>';
         }
 
         $canonical = $this->canonical($value);
 
-        return $values[$canonical] ?? '<span dir="auto">' . e($value) . '</span>';
+        return $values[$canonical] ?? '<bdi>' . e($value) . '</bdi>';
     }
 
     /**

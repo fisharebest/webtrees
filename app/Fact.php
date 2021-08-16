@@ -583,7 +583,7 @@ class Fact
             // Fact value
             $value = $this->value();
             if ($value !== '' && $value !== 'Y') {
-                $attributes[] = '<span dir="auto">' . e($value) . '</span>';
+                $attributes[] = '<bdi>' . e($value) . '</bdi>';
             }
             // Fact date
             $date = $this->date();
@@ -625,12 +625,12 @@ class Fact
         $target = $this->target();
 
         if ($target instanceof GedcomRecord) {
-            $items[] = '<span dir="auto">' . $target->fullName() . '</span>';
+            $items[] = '<bdi>' . $target->fullName() . '</bdi>';
         } else {
             // Fact value
             $value = $this->value();
             if ($value !== '' && $value !== 'Y') {
-                $items[] = '<span dir="auto">' . e($value) . '</span>';
+                $items[] = '<bdi>' . e($value) . '</bdi>';
             }
 
             // Fact date

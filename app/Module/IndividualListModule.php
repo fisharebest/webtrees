@@ -314,7 +314,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             ];
             $show     = 'none'; // Don't show lists until something is chosen
         }
-        $legend = '<span dir="auto">' . $legend . '</span>';
+        $legend = '<bdi>' . $legend . '</bdi>';
 
         if ($families) {
             $title = I18N::translate('Families') . ' — ' . $legend;

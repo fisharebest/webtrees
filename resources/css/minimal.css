@@ -424,20 +424,6 @@ table {
     border: solid #000 1px;
 }
 
-a {
-    color: #333;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #333;
-    text-decoration: underline;
-}
-
-a:hover {
-    text-decoration: underline!important;
-}
-
 .parentdeath {
     padding: 1px;
 }

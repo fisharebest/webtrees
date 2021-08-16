@@ -20,11 +20,10 @@ use Fisharebest\Webtrees\View;
     <input type="hidden" name="ca_census" class="census-assistant-class">
     <div class="form-group">
         <div class="input-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="census-assistant-title">
-                    <?= I18N::translate('Title') ?>
-                </label>
-            </div>
+            <label class="input-group-text" for="census-assistant-title">
+                <?= I18N::translate('Title') ?>
+            </label>
+
             <input class="form-control" id="census-assistant-title" name="ca_title" value="">
         </div>
     </div>
@@ -32,22 +31,20 @@ use Fisharebest\Webtrees\View;
     <div class="row">
         <div class="form-group col-sm-6">
             <div class="input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="census-assistant-citation">
-                        <?= I18N::translate('Citation') ?>
-                    </label>
-                </div>
+                <label class="input-group-text" for="census-assistant-citation">
+                    <?= I18N::translate('Citation') ?>
+                </label>
+
                 <input class="form-control" id="census-assistant-citation" name="ca_citation">
             </div>
         </div>
 
         <div class="form-group col-sm-6">
             <div class="input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="census-assistant-place">
-                        <?= I18N::translate('Place') ?>
-                    </label>
-                </div>
+                <label class="input-group-text" for="census-assistant-place">
+                    <?= I18N::translate('Place') ?>
+                </label>
+
                 <input class="form-control" id="census-assistant-place" name="ca_place">
             </div>
         </div>
@@ -55,17 +52,15 @@ use Fisharebest\Webtrees\View;
 
     <div class="form-group">
         <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <?= I18N::translate('Individuals') ?>
-                </span>
-            </div>
+            <span class="input-group-text">
+                <?= I18N::translate('Individuals') ?>
+            </span>
+
             <?= view('components/select-individual', ['name' => 'census-assistant-individual', 'individual' => $individual, 'tree' => $individual->tree()]) ?>
-            <div class="input-group-append">
-                <button type="button" class="btn btn-primary census-assistant-add" title="<?= I18N::translate('add') ?>">
-                    <?= view('icons/add') ?>
-                </button>
-            </div>
+
+            <button type="button" class="btn btn-primary census-assistant-add" title="<?= I18N::translate('add') ?>">
+                <?= view('icons/add') ?>
+            </button>
         </div>
     </div>
 
@@ -79,11 +74,10 @@ use Fisharebest\Webtrees\View;
 
     <div class="form-group">
         <div class="input-group">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="census-assistant-notes">
-                    <?= I18N::translate('Comments') ?>
-                </label>
-            </div>
+            <label class="input-group-text" for="census-assistant-notes">
+                <?= I18N::translate('Comments') ?>
+            </label>
+
             <textarea class="form-control" id="census-assistant-notes" name="ca_notes" rows="3"></textarea>
         </div>
     </div>

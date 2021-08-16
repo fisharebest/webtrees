@@ -547,12 +547,12 @@ table {
 
 /* ====== Round Corners ======== */
 
-a {
+a, .nav-link {
     color: #00f;
     text-decoration: none;
 }
 
-a:hover {
+a:hover, .nav-link:hover {
     color: #f00;
     text-decoration: none;
 }

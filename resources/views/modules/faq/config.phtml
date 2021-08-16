@@ -27,17 +27,16 @@ use Illuminate\Support\Collection;
     <?= I18N::translate('You may use HTML to format the answer and to add links to other websites.') ?>
 </p>
 
-<p>
-<form method="post" class="form form-inline">
+<form method="post" class="row">
     <?= csrf_field() ?>
 
-    <label for="tree" class="sr-only">
-        <?= I18N::translate('Family tree') ?>
-    </label>
-    <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
-    <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
+    <div class="col-auto">
+        <div class="input-group">
+            <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names, 'aria_label' => I18N::translate('Family tree')]) ?>
+            <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
+        </div>
+    </div>
 </form>
-</p>
 
 <p>
     <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'tree' => $tree->name()])) ?>" class="btn btn-link">
@@ -48,6 +47,10 @@ use Illuminate\Support\Collection;
 </p>
 
 <table class="table table-bordered">
+    <caption>
+        <?= I18N::translate('Frequently asked questions') ?>
+    </caption>
+
     <thead>
         <tr>
             <th><?= I18N::translate('Sort order') ?></th>
@@ -59,6 +62,7 @@ use Illuminate\Support\Collection;
             <th><?= I18N::translate('Delete') ?></th>
         </tr>
     </thead>
+
     <tbody>
         <?php foreach ($faqs as $faq) : ?>
             <tr class="faq_edit_pos">
@@ -90,12 +94,12 @@ use Illuminate\Support\Collection;
                     <?php endif ?>
                 </td>
                 <td>
-                    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>" class="btn btn-primary">
+                    <a href="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminEdit', 'block_id' => $faq->block_id, 'tree' => $tree->name()])) ?>" aria-label="<?= I18N::translate('Edit') ?>" class="btn btn-primary">
                         <?= view('icons/edit') ?>
                     </a>
                 </td>
                 <td>
-                    <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>" class="btn btn-danger">
+                    <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>" aria-label="<?= I18N::translate('Delete') ?>" class="btn btn-danger">
                         <?= view('icons/delete') ?>
                     </a>
                 </td>

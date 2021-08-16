@@ -8,16 +8,15 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<div class="input-group-prepend">
-    <span class="input-group-text">
-        <a id="<?= e($id) ?>-edit" href="#" title="<?= I18N::translate('Edit the name') ?>">
-            <?= view('icons/edit') ?>
-            <span class="sr-only">
-                <?= I18N::translate('Edit the name') ?>
-            </span>
-        </a>
-    </span>
-</div>
+<span class="input-group-text">
+    <a id="<?= e($id) ?>-edit" href="#" title="<?= I18N::translate('Edit the name') ?>">
+        <?= view('icons/edit') ?>
+        <span class="visually-hidden">
+            <?= I18N::translate('Edit the name') ?>
+        </span>
+    </a>
+</span>
+
 <script>
     document.getElementById('<?= e($id) ?>-edit').addEventListener('click', function (event) {
         event.preventDefault();

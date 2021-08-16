@@ -58,7 +58,7 @@ use Fisharebest\Webtrees\I18N;
             <div class="text-center">
                 <label for="HTML" title="HTML">
                     <?= view('icons/mime', ['type' => 'text/html']) ?>
-                    <span class="sr-only">HTML</span>
+                    <span class="visually-hidden">HTML</span>
                 </label>
                 <br>
                 <input type="radio" name="format" id="HTML" value="HTML" <?= $format === 'HTML' ? 'checked' : '' ?>>
@@ -66,7 +66,7 @@ use Fisharebest\Webtrees\I18N;
             <div class="text-center">
                 <label for="PDF" title="PDF">
                     <?= view('icons/mime', ['type' => 'application/pdf']) ?>
-                    <span class="sr-only">PDF</span>
+                    <span class="visually-hidden">PDF</span>
                 </label>
                 <br>
                 <input type="radio" name="format" value="PDF" id="PDF" <?= $format === 'PDF' ? 'checked' : '' ?>>

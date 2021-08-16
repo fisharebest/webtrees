@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
 </div>
 
 <?php foreach ($clipboard_facts as $fact) : ?>
-    <form method="post" class="form-inline dropdown-item" action="<?= route(PasteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
+    <form method="post" class="dropdown-item" action="<?= route(PasteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
         <?= view('icons/copy') ?>
         <input type="hidden" name="fact_id" value="<?= e($fact->id()) ?>">
         <button type="submit" class="btn btn-text p-0 text-truncate" style="max-width: 12rem;" title="<?= strip_tags($fact->name()) ?>">
@@ -28,7 +28,7 @@ use Illuminate\Support\Collection;
     </form>
 <?php endforeach ?>
 
-<form method="post" class="form-inline dropdown-item" action="<?= route(EmptyClipboard::class) ?>">
+<form method="post" class="dropdown-item" action="<?= route(EmptyClipboard::class) ?>">
     <?= csrf_field() ?>
     <input type="hidden" value="<?= e($record->url()) ?>">
     <?= view('icons/delete') ?>

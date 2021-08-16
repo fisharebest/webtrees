@@ -722,7 +722,7 @@ $(function () {
   });
 
   // Save button state between pages
-  document.querySelectorAll('[data-toggle=button][data-persist]').forEach((element) => {
+  document.querySelectorAll('[data-bs-toggle=button][data-persist]').forEach((element) => {
     // Previously selected?
     if (localStorage.getItem('state-of-' + element.dataset.persist) === 'T') {
       element.click();

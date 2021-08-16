@@ -245,7 +245,7 @@ class Place
     {
         $place_name = $this->parts->first() ?? I18N::translate('unknown');
 
-        return '<span dir="auto">' . e($place_name) . '</span>';
+        return '<bdi>' . e($place_name) . '</bdi>';
     }
 
     /**
@@ -267,7 +267,7 @@ class Place
             return '<a dir="auto" href="' . e($this->url()) . '">' . e($full_name) . '</a>';
         }
 
-        return '<span dir="auto">' . e($full_name) . '</span>';
+        return '<bdi>' . e($full_name) . '</bdi>';
     }
 
     /**
@@ -297,6 +297,6 @@ class Place
             return '<a dir="auto" href="' . e($this->url()) . '" title="' . $title . '">' . e($short_name) . '</a>';
         }
 
-        return '<span dir="auto">' . e($short_name) . '</span>';
+        return '<bdi>' . e($short_name) . '</bdi>';
     }
 }

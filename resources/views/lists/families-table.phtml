@@ -155,7 +155,7 @@ $marriageAgeData = [
             <tr>
                 <th colspan="14">
                     <div class="btn-toolbar d-flex justify-content-between mb-2">
-                        <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
+                        <div class="btn-group btn-group-toggle btn-group-sm" data-bs-toggle="buttons">
                             <label class="btn btn-outline-secondary btn-sm" title="' . I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
                                 <input type="checkbox" data-filter-column="12" data-filter-value="N" autocomplete="off">
                                 <?= I18N::translate('Both alive') ?>
@@ -174,7 +174,7 @@ $marriageAgeData = [
                             </label>
                         </div>
 
-                        <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
+                        <div class="btn-group btn-group-toggle btn-group-sm" data-bs-toggle="buttons">
                             <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
                                 <input type="checkbox" data-filter-column="13" data-filter-value="R" autocomplete="off">
                                 <?= I18N::translate('Roots') ?>
@@ -185,7 +185,7 @@ $marriageAgeData = [
                             </label>
                         </div>
 
-                        <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
+                        <div class="btn-group btn-group-toggle btn-group-sm" data-bs-toggle="buttons">
                             <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show couples with an unknown marriage date.') ?>">
                                 <input type="checkbox" data-filter-column="11" data-filter-value="U" autocomplete="off">
                                 <?= I18N::translate('Not married') ?>
@@ -410,10 +410,10 @@ $marriageAgeData = [
             <tr>
                 <th colspan="14">
                     <div class="btn-group btn-group-sm">
-                        <button id="btn-toggle-parents" class="btn btn-outline-secondary" data-toggle="button" data-persist="show-parents">
+                        <button id="btn-toggle-parents" class="btn btn-outline-secondary" data-bs-toggle="button" data-persist="show-parents">
                             <?= I18N::translate('Show parents') ?>
                         </button>
-                        <button id="btn-toggle-statistics" class="btn btn-outline-secondary" data-toggle="button" data-persist="show-statistics">
+                        <button id="btn-toggle-statistics" class="btn btn-outline-secondary" data-bs-toggle="button" data-persist="show-statistics">
                             <?= I18N::translate('Show statistics charts') ?>
                         </button>
                     </div>

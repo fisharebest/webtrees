@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\View;
     <form method="post" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
         <?= csrf_field() ?>
 
-        <div class="form-group row">
+        <div class="row form-group">
             <div class="col-sm-2 wt-page-options-label">
                 <?= I18N::translate('Chart type') ?>
             </div>
@@ -92,7 +92,7 @@ use Fisharebest\Webtrees\View;
                         <input type="radio" id="z_time" name="z-as" value="<?= $module::Z_AXIS_TIME ?>" checked onclick="statusEnable('z-axis-boundaries-periods');">
                         <?= I18N::translate('date periods') ?>
                     </label>
-                    <label for="z-axis-boundaries-periods" class="sr-only">
+                    <label for="z-axis-boundaries-periods" class="visually-hidden">
                         <?= I18N::translate('Date range') ?>
                     </label>
                     <select id="z-axis-boundaries-periods" class="form-control" name="z-axis-boundaries-periods">
@@ -135,7 +135,7 @@ use Fisharebest\Webtrees\View;
                 <fieldset id="x_years" style="display:none;">
                     <legend><?= I18N::translate('Age interval') ?></legend>
 
-                    <label for="x-axis-boundaries-ages" class="sr-only">
+                    <label for="x-axis-boundaries-ages" class="visually-hidden">
                         <?= I18N::translate('Age interval') ?>
                     </label>
                     <?= view('components/select', ['name' => 'x-axis-boundaries-ages', 'selected' => '1,5,10,20,30,40,50,60,70,80,90,100', 'options' => ['1,5,10,20,30,40,50,60,70,80,90,100' => I18N::plural('%s year', '%s years', 10, I18N::number(10)), '5,20,40,60,75,80,85,90' => I18N::plural('%s year', '%s years', 20, I18N::number(20)), '10,25,50,75,100' => I18N::plural('%s year', '%s years', 25, I18N::number(25))]]) ?>
@@ -144,7 +144,7 @@ use Fisharebest\Webtrees\View;
                 <fieldset id="x_years_m" style="display:none;">
                     <legend><?= I18N::translate('Age interval') ?></legend>
 
-                    <label for="x-axis-boundaries-ages_m" class="sr-only">
+                    <label for="x-axis-boundaries-ages_m" class="visually-hidden">
                         <?= I18N::translate('Select the desired age interval') ?>
                     </label>
                     <?= view('components/select', ['name' => 'x-axis-boundaries-ages_m', 'selected' => '16,18,20,22,24,26,28,30,32,35,40,50', 'options' => ['16,18,20,22,24,26,28,30,32,35,40,50' => I18N::plural('%s year', '%s years', 2, I18N::number(2)), '20,25,30,35,40,45,50' => I18N::plural('%s year', '%s years', 5, I18N::number(5))]]) ?>
@@ -154,7 +154,7 @@ use Fisharebest\Webtrees\View;
                     <fieldset id="chart_type">
                         <legend><?= I18N::translate('Chart type') ?></legend>
 
-                        <label for="chart_type" class="sr-only"><?= I18N::translate('Chart type') ?></label>
+                        <label for="chart_type" class="visually-hidden"><?= I18N::translate('Chart type') ?></label>
                         <select name="chart_type" class="form-control" onchange="statusShowSurname(this);">
                             <option value="indi_distribution_chart" selected>
                                 <?= I18N::translate('Individuals') ?>
@@ -173,7 +173,7 @@ use Fisharebest\Webtrees\View;
                     <fieldset>
                         <legend id="label-area"><?= I18N::translate('Geographic area') ?></legend>
 
-                        <label for="chart_shows" class="sr-only"><?= I18N::translate('Geographic area') ?></label>
+                        <label for="chart_shows" class="visually-hidden"><?= I18N::translate('Geographic area') ?></label>
                         <select id="chart_shows" class="form-control" name="chart_shows">
                             <option value="world" selected>
                                 <?= I18N::translate('World') ?>

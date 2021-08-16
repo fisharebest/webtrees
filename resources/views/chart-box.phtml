@@ -99,21 +99,21 @@ $id = Uuid::uuid4()->toString();
 
 <div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
     <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) : ?>
-        <div class="wt-chart-box-thumbnail float-left mr-1">
+        <div class="wt-chart-box-thumbnail float-start me-1">
             <?= $individual->displayImage(40, 50, 'crop', ['class' => 'wt-chart-box-thumbnail']) ?>
         </div>
     <?php endif ?>
 
     <?php if ($individual->canShow()) : ?>
-        <div class="wt-chart-box-extra d-print-none float-right ml-1">
+        <div class="wt-chart-box-extra d-print-none float-end ms-1">
             <div class="dropdown position-static wt-chart-box-zoom">
-                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-zoom-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div ><?= view('icons/zoom-in') ?></div>
                     <div class="d-none"><?= view('icons/zoom-out') ?></div>
-                    <span class="sr-only"><?= I18N::translate('Links') ?></span>
+                    <span class="visually-hidden"><?= I18N::translate('Links') ?></span>
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
+                <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-zoom-dropdown" style="position: inherit" aria-labelledby="#chart-box-zoom-<?= $id ?>">
                     <?php foreach ($all_facts as $fact) : ?>
                         <?= $fact->summary() ?>
                     <?php endforeach ?>
@@ -121,12 +121,12 @@ $id = Uuid::uuid4()->toString();
             </div>
 
             <div class="dropdown position-static wt-chart-box-links">
-                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="wt-chart-box-icon" href="#" role="button" id="chart-box-menu-<?= $id ?>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="icon-pedigree" title="<?= I18N::translate('Links') ?>"></i>
-                    <span class="sr-only"><?= I18N::translate('Links') ?></span>
+                    <span class="visually-hidden"><?= I18N::translate('Links') ?></span>
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-right wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">
+                <div class="dropdown-menu dropdown-menu-end wt-chart-box-dropdown wt-chart-box-links-dropdown" style="position: inherit" aria-labelledby="#chart-box-menu-<?= $id ?>">
                     <?php foreach ($menus as $menu) : ?>
                         <a class="dropdown-item p-1 <?= e($menu->getClass()) ?>" href="<?= e($menu->getLink()) ?>">
                             <?= $menu->getLabel() ?>

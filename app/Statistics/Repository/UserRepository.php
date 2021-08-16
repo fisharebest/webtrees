@@ -233,7 +233,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function userFullName(): string
     {
-        return Auth::check() ? '<span dir="auto">' . e(Auth::user()->realName()) . '</span>' : '';
+        return Auth::check() ? '<bdi>' . e(Auth::user()->realName()) . '</bdi>' : '';
     }
 
     /**

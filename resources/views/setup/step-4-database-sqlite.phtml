@@ -54,20 +54,16 @@ use Illuminate\Support\Collection;
 
         <div class="col-sm-9">
             <div class="input-group" dir="ltr">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><?=e((string) realpath(Webtrees::ROOT_DIR)) ?>/data/</span>
-                </div>
+                <span class="input-group-text"><?=e((string) realpath(Webtrees::ROOT_DIR)) ?>/data/</span>
 
                 <input class="form-control" id="dbname" name="dbname" pattern="[a-zA-Z0-9_]{1,63}" type="text" value="<?= e($dbname) ?>">
 
-                <div class="input-group-append">
-                    <span class="input-group-text">.sqlite</span>
-                </div>
+                <span class="input-group-text">.sqlite</span>
             </div>
 
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('Use letters A-Z, a-z, digits 0-9, or underscores') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -79,10 +75,10 @@ use Illuminate\Support\Collection;
         <div class="col-sm-9">
             <input class="form-control" dir="ltr" id="tblpfx" maxlength="15" name="tblpfx" pattern="[a-zA-Z0-9_]+" type="text" value="<?= e($tblpfx) ?>">
 
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database.') ?>
                 <?= I18N::translate('Use letters A-Z, a-z, digits 0-9, or underscores') ?>
-            </p>
+            </div>
         </div>
     </div>
 

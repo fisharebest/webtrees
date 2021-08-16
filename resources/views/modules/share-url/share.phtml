@@ -7,15 +7,14 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text"><?= I18N::translate('URL') ?></span>
-    </div>
+    <span class="input-group-text"><?= I18N::translate('URL') ?></span>
 
     <input type="text" class="form-control" aria-label="" value="<?= e($record->url()) ?>" readonly="readonly" id="share-url-input">
 
-    <div class="input-group-append">
-        <button class="btn btn-primary" type="button" id="share-url-button"><?= view('icons/copy') ?><?= I18N::translate('Copy') ?></button>
-    </div>
+    <button class="btn btn-primary" type="button" id="share-url-button">
+        <?= view('icons/copy') ?>
+        <?= I18N::translate('Copy') ?>
+    </button>
 </div>
 
 <script>

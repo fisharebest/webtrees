@@ -22,14 +22,14 @@ use Illuminate\Support\Collection;
 ?>
 
 <div class="dropdown wt-page-menu">
-    <button class="btn btn-primary dropdown-toggle wt-page-menu-button" type="button" id="page-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-primary dropdown-toggle wt-page-menu-button" type="button" id="page-menu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?= view('icons/menu') ?>
         <?= I18N::translate('edit') ?>
     </button>
 
-    <div class="dropdown-menu dropdown-menu-right wt-page-menu-items" aria-labelledby="page-menu">
+    <div class="dropdown-menu dropdown-menu-end wt-page-menu-items" aria-labelledby="page-menu">
         <?php if ($shares->isNotEmpty()): ?>
-            <button class="dropdown-item"  data-toggle="modal" data-target="#wt-shares-modal">
+            <button class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#wt-shares-modal">
                 <?= view('icons/share') ?>
                 <?= I18N::translate('Share') ?>
             </button>

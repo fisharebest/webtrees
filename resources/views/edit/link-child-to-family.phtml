@@ -35,9 +35,9 @@ use Fisharebest\Webtrees\Tree;
         </label>
         <div class="col-sm-9">
             <?= Registry::elementFactory()->make('INDI:FAMC:PEDI')->edit('PEDI', 'PEDI', '', $tree) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed.') ?>
-            </p>
+            </div>
         </div>
     </div>
 

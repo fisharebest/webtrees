@@ -27,20 +27,20 @@ use Fisharebest\Webtrees\Site;
         </label>
         <div class="col-sm-9">
             <input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?= e(Site::getPreference('INDEX_DIRECTORY')) ?>" maxlength="255" placeholder="data/" required="required">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the "Data folder" site configuration setting */
                 I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet.') ?>
-            </p>
-            <p class="small text-muted">
+            </div>
+            <div class="form-text">
                 <?= /* I18N: “Apache” is a software program. */
                 I18N::translate('To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents.') ?>
-            </p>
-            <p class="small text-muted">
+            </div>
+            <div class="form-text">
                 <?= I18N::translate('If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder.') ?>
-            </p>
-            <p class="small text-muted">
+            </div>
+            <div class="form-text">
                 <?= I18N::translate('The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/).') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -51,9 +51,9 @@ use Fisharebest\Webtrees\Site;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'TIMEZONE', 'selected' => Site::getPreference('TIMEZONE'), 'options' => array_combine(DateTimeZone::listIdentifiers(), DateTimeZone::listIdentifiers())]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -65,10 +65,10 @@ use Fisharebest\Webtrees\Site;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'THEME_DIR', 'selected' => Site::getPreference('THEME_DIR'), 'options' => $all_themes]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the "Default theme" site configuration setting */
                 I18N::translate('You can change the appearance of webtrees using “themes”. Each theme has a different style, layout, color scheme, etc.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -85,25 +85,23 @@ use Fisharebest\Webtrees\Site;
                     </option>
                 <?php endforeach ?>
             </select>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not selected a preferred language in their browser preferences, or they have selected an unsupported language, then this language will be used. Typically this applies to search engines.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
     <!-- ALLOW_CHANGE_GEDCOM -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3">
-                <?= /* I18N: A configuration setting */
-                I18N::translate('Show list of family trees') ?>
-            </legend>
-            <div class="col-sm-9">
-                <?= view('components/radios-inline', ['name' => 'ALLOW_CHANGE_GEDCOM', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('ALLOW_CHANGE_GEDCOM')]) ?>
-                <p class="small text-muted">
-                    <?= /* I18N: Help text for the “Show list of family trees” site configuration setting */
-                    I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.') ?>
-                </p>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-3">
+            <?= /* I18N: A configuration setting */
+            I18N::translate('Show list of family trees') ?>
+        </legend>
+        <div class="col-sm-9">
+            <?= view('components/radios-inline', ['name' => 'ALLOW_CHANGE_GEDCOM', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('ALLOW_CHANGE_GEDCOM')]) ?>
+            <div class="form-text">
+                <?= /* I18N: Help text for the “Show list of family trees” site configuration setting */
+                I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.') ?>
             </div>
         </div>
     </fieldset>

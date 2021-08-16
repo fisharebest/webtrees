@@ -17,12 +17,11 @@ use Fisharebest\Webtrees\I18N;
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title"><?= I18N::translate('Create a media object') ?></h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= I18N::translate('close') ?>">
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group row">
+                    <div class="row form-group">
                         <label class="col-form-label col-sm-2" for="file">
                             <?= I18N::translate('Media file') ?>
                         </label>
@@ -30,7 +29,7 @@ use Fisharebest\Webtrees\I18N;
                             <input type="text" class="form-control" id="file" name="file" value="" readonly>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="row form-group">
                         <label class="col-form-label col-sm-2" for="title">
                             <?= I18N::translate('Title') ?>
                         </label>
@@ -38,7 +37,7 @@ use Fisharebest\Webtrees\I18N;
                             <input type="text" class="form-control" name="title" id="title">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="row form-group">
                         <label class="col-form-label col-sm-2" for="type">
                             <?= I18N::translate('Media type') ?>
                         </label>
@@ -46,7 +45,7 @@ use Fisharebest\Webtrees\I18N;
                             <?= view('components/select', ['name' => 'type', 'selected' => '', 'options' => $media_types]) ?>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="row form-group">
                         <label class="col-form-label col-sm-2" for="note">
                             <?= I18N::translate('Note') ?>
                         </label>
@@ -60,7 +59,7 @@ use Fisharebest\Webtrees\I18N;
                         <?= view('icons/save') ?>
                         <?= I18N::translate('save') ?>
                     </button>
-                    <button type="button" class="btn btn-text" data-dismiss="modal">
+                    <button type="button" class="btn btn-text" data-bs-dismiss="modal">
                         <?= view('icons/cancel') ?>
                         <?= I18N::translate('cancel') ?>
                     </button>

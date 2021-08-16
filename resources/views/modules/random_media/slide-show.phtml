@@ -23,15 +23,15 @@ use Fisharebest\Webtrees\Tree;
         <div class="wt-slide-show-controls text-center">
             <a href="#" title="<?= I18N::translate('Play') ?>" <?= $start_automatically ? 'hidden' : '' ?>>
                 <?= view('icons/media-play') ?>
-                <span class="sr-only"><?= I18N::translate('Play') ?></span>
+                <span class="visually-hidden"><?= I18N::translate('Play') ?></span>
             </a>
             <a href="#" title="<?= I18N::translate('Stop') ?>" <?= $start_automatically ? '' : 'hidden' ?>>
                 <?= view('icons/media-stop') ?>
-                <span class="sr-only"><?= I18N::translate('Stop') ?></span>
+                <span class="visually-hidden"><?= I18N::translate('Stop') ?></span>
             </a>
             <a href="#" title="<?= I18N::translate('Next image') ?>">
                 <?= view('icons/media-next') ?>
-                <span class="sr-only"><?= I18N::translate('Next image') ?></span>
+                <span class="visually-hidden"><?= I18N::translate('Next image') ?></span>
             </a>
         </div>
     <?php endif ?>

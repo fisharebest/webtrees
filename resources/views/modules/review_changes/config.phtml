@@ -13,18 +13,16 @@ use Fisharebest\Webtrees\I18N;
     <?= I18N::translate('This block will show editors a list of records with pending changes that need to be reviewed by a moderator. It also generates daily emails to moderators whenever pending changes exist.') ?>
 </p>
 
-<fieldset class="form-group">
-    <div class="row">
-        <legend class="col-form-label col-sm-3">
-            <?= /* I18N: Label for a configuration option */ I18N::translate('Send out reminder emails') ?>
-        </legend>
-        <div class="col-sm-9">
-            <?= view('components/radios-inline', ['name' => 'sendmail', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $sendmail]) ?>
-        </div>
+<fieldset class="row form-group">
+    <legend class="col-form-label col-sm-3">
+        <?= /* I18N: Label for a configuration option */ I18N::translate('Send out reminder emails') ?>
+    </legend>
+    <div class="col-sm-9">
+        <?= view('components/radios-inline', ['name' => 'sendmail', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $sendmail]) ?>
     </div>
 </fieldset>
 
-<div class="form-group row">
+<div class="row form-group">
     <label class="col-sm-3 col-form-label" for="days">
         <?= I18N::translate('Reminder email frequency (days)') ?>
     </label>

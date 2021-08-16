@@ -26,7 +26,7 @@ use Illuminate\Support\Collection;
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($family->xref()) ?>">
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="HUSB">
             <?php if ($father instanceof Individual && $father->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
@@ -41,7 +41,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="WIFE">
             <?php if ($mother  instanceof Individual && $mother->sex() === 'M') : ?>
                 <?= I18N::translate('Husband') ?>
@@ -57,7 +57,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <?php foreach ($children as $n => $child) : ?>
-        <div class="form-group row">
+        <div class="row form-group">
             <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= e($n) ?>">
                 <?php if ($child !== null && $child->sex() === 'M') : ?>
                     <?= I18N::translate('Son') ?>
@@ -73,7 +73,7 @@ use Illuminate\Support\Collection;
         </div>
     <?php endforeach ?>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="CHIL<?= e(count($children) + 1) ?>">
             <?= I18N::translate('Child') ?>
         </label>
@@ -82,7 +82,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <div class="col-sm-3 wt-page-options-label">
         </div>
         <div class="col-sm-9 wt-page-options-value">

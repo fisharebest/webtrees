@@ -30,33 +30,33 @@ use Illuminate\Support\Collection;
     <?php for ($i = 1; $i <= $max_upload_files; $i++) : ?>
         <h2><?= I18N::translate('Media file') ?> <?= I18N::number($i) ?></h2>
 
-        <div class="form-group row">
+        <div class="row form-group">
             <label class="form-control-label col-sm-3" for="mediafile<?= e($i) ?>">
                 <?= I18N::translate('Media file to upload') ?>
-                <span class="sr-only"><?= e($i) ?></span>
+                <span class="visually-hidden"><?= e($i) ?></span>
             </label>
             <div class="col-sm-9">
                 <input class="form-control-file" id="mediafile<?= e($i) ?>" name="mediafile<?= e($i) ?>" type="file">
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="row form-group">
             <label class="form-control-label col-sm-3" for="filename<?= e($i) ?>">
                 <?= I18N::translate('Filename on server') ?>
-                <span class="sr-only"><?= e($i) ?></span>
+                <span class="visually-hidden"><?= e($i) ?></span>
             </label>
             <div class="col-sm-9">
                 <input class="form-control" id="filename<?= e($i) ?>" name="filename<?= e($i) ?>" type="text">
-                <p class="small text-muted">
+                <div class="form-text">
                     <?= I18N::translate('Leave this entry blank to keep the original filename') ?>
-                </p>
+                </div>
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="row form-group">
             <label class="form-control-label col-sm-3" for="folder_list<?= e($i) ?>">
                 <?= I18N::translate('Folder name on server') ?>
-                <span class="sr-only"><?= e($i) ?></span>
+                <span class="visually-hidden"><?= e($i) ?></span>
             </label>
             <div class="col-sm-9">
                 <select class="form-control" id="folder_list<?= e($i) ?>" name="folder<?= e($i) ?>">

@@ -33,9 +33,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="text" id="real_name" name="real_name" required="required" maxlength="64" value="<?= e($real_name) ?>" dir="auto">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -46,9 +46,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="text" id="username" name="username" required="required" maxlength="32" value="<?= e($username) ?>" dir="auto">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -59,9 +59,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="password" id="password" name="password" pattern = ".{8,}" placeholder="<?= I18N::plural('Use at least %s character.', 'Use at least %s characters.', 8, I18N::number(8)) ?>" required="required" autocomplete="new-password" data-show-text="<?= e(I18N::translate('show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -72,9 +72,9 @@ use Fisharebest\Webtrees\View;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="email" id="email" name="email" required="required" maxlength="64" value="<?= e($email) ?>">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
-            </p>
+            </div>
         </div>
     </div>
 

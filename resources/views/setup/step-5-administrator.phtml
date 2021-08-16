@@ -55,9 +55,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" dir="ltr" id="wtname" name="wtname" type="text" value="<?= e($wtname) ?>" autocomplete="name">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -67,9 +67,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" dir="ltr" id="wtuser" name="wtuser" type="text" value="<?= e($wtuser) ?>" autocomplete="username">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('You will use this to sign in to webtrees.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -79,9 +79,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" dir="ltr" id="wtpass" name="wtpass" pattern=".{6,}" type="password" value="<?= e($wtpass) ?>" autocomplete="current-password" data-show-text="<?= e(I18N::translate('show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This must be at least six characters long. It is case-sensitive.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -91,9 +91,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" dir="ltr" id="wtemail" name="wtemail" type="email" value="<?= e($wtemail) ?>" autocomplete="email">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
-            </p>
+            </div>
         </div>
     </div>
 

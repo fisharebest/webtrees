@@ -57,11 +57,9 @@ class XrefSubmitter extends AbstractXrefElement
 
         return
             '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
-            '<button class="btn btn-secondary" type="button" data-toggle="modal" data-backdrop="static" data-target="#wt-ajax-modal" data-href="' . e(route(CreateSubmitterModal::class, ['tree' => $tree->name()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' .
+            '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-href="' . e(route(CreateSubmitterModal::class, ['tree' => $tree->name()])) . '" data-select-id="' . $id . '" title="' . I18N::translate('Create a submitter') . '">' .
             view('icons/add') .
             '</button>' .
-            '</div>' .
             $select .
             '</div>';
     }

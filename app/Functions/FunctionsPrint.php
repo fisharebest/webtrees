@@ -115,7 +115,7 @@ class FunctionsPrint
 
         return
             '<div class="fact_NOTE">' .
-            '<a href="#' . e($id) . '" role="button" data-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+            '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
             view('icons/expand') .
             view('icons/collapse') .
             '</a>' .

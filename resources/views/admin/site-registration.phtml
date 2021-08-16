@@ -27,8 +27,8 @@ use Fisharebest\Webtrees\Site;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'WELCOME_TEXT_AUTH_MODE', 'selected' => Site::getPreference('WELCOME_TEXT_AUTH_MODE'), 'options' => $registration_text_options]) ?>
-            <p class="small text-muted">
-            </p>
+            <div class="form-text">
+            </div>
         </div>
     </div>
 
@@ -39,39 +39,35 @@ use Fisharebest\Webtrees\Site;
         </label>
         <div class="col-sm-9">
             <textarea class="form-control" id="WELCOME_TEXT_AUTH_MODE_4" name="WELCOME_TEXT_AUTH_MODE_4" rows="5" dir="auto" maxlength="2000"><?= e(Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . $language_tag)) ?></textarea>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the "Custom welcome text" site configuration setting */ I18N::translate('To set this text for other languages, you must switch to that language, and visit this page again.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
     <!-- USE_REGISTRATION_MODULE -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3">
-                <?= /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
-            </legend>
-            <div class="col-sm-9">
-                <?= view('components/radios-inline', ['name' => 'USE_REGISTRATION_MODULE', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('USE_REGISTRATION_MODULE')]) ?>
-                <p class="small text-muted">
-                    <?= I18N::translate('The new user will be asked to confirm their email address before the account is created.') ?>
-                    <?= I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.') ?>
-                    <?= I18N::translate('An administrator must approve the new user account and select an access level before the user can sign in.') ?>
-                </p>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-3">
+            <?= /* I18N: A configuration setting */ I18N::translate('Allow visitors to request a new user account') ?>
+        </legend>
+        <div class="col-sm-9">
+            <?= view('components/radios-inline', ['name' => 'USE_REGISTRATION_MODULE', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('USE_REGISTRATION_MODULE')]) ?>
+            <div class="form-text">
+                <?= I18N::translate('The new user will be asked to confirm their email address before the account is created.') ?>
+                <?= I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.') ?>
+                <?= I18N::translate('An administrator must approve the new user account and select an access level before the user can sign in.') ?>
             </div>
         </div>
     </fieldset>
 
     <!-- SHOW_REGISTER_CAUTION -->
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3">
-                <?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
-            </legend>
-            <div class="col-sm-9">
-                <?= view('components/radios-inline', ['name' => 'SHOW_REGISTER_CAUTION', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('SHOW_REGISTER_CAUTION')]) ?>
-                <p class="small text-muted">
-                </p>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-3">
+            <?= /* I18N: A configuration setting */ I18N::translate('Show acceptable use agreement on “Request a new user account” page') ?>
+        </legend>
+        <div class="col-sm-9">
+            <?= view('components/radios-inline', ['name' => 'SHOW_REGISTER_CAUTION', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('SHOW_REGISTER_CAUTION')]) ?>
+            <div class="form-text">
             </div>
         </div>
     </fieldset>

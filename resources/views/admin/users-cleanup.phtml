@@ -38,7 +38,7 @@ use Illuminate\Support\Collection;
                     <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>">
                         <?= e($user->userName()) ?>
                         —
-                        <span dir="auto"><?= e($user->realName()) ?></span>
+                        <bdi><?= e($user->realName()) ?></bdi>
                     </a>
                 </td>
                 <td>
@@ -57,7 +57,7 @@ use Illuminate\Support\Collection;
                     <a href="<?= e(route(UserEditPage::class, ['user_id' => $user->id()])) ?>">
                         <?= e($user->userName()) ?>
                         —
-                        <span dir="auto"><?= e($user->realName()) ?></span>
+                        <bdi><?= e($user->realName()) ?></bdi>
                     </a>
                 </td>
                 <td>

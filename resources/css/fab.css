@@ -362,13 +362,12 @@ table {
     border-radius: 4px;
 }
 
-a {
+a, .nav-link {
     text-decoration: none;
     color: #369;
 }
 
-a:hover,
-a:active {
+a:hover {
     text-decoration: underline;
 }
 

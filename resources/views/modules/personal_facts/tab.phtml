@@ -27,21 +27,21 @@ use Illuminate\Support\Collection;
                 <td colspan="2">
                     <?php if ($has_associate_facts) : ?>
                         <label>
-                            <input id="show-associate-facts" type="checkbox" data-toggle="collapse" data-target=".wt-associate-fact">
+                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact">
                             <?= I18N::translate('Associated events') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_relative_facts) : ?>
                         <label>
-                            <input id="show-relatives-facts" type="checkbox" data-toggle="collapse" data-target=".wt-relation-fact">
+                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact">
                             <?= I18N::translate('Events of close relatives') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_historic_facts) : ?>
                         <label>
-                            <input id="show-historical-facts" type="checkbox" data-toggle="collapse" data-target=".wt-historic-fact">
+                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact">
                             <?= I18N::translate('Historic events') ?>
                         </label>
                     <?php endif ?>

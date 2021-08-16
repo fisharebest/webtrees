@@ -19,12 +19,12 @@ use Fisharebest\Webtrees\Webtrees;
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 
-    <p class="text-muted small">
+    <div class="form-text">
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
-    </p>
-    <p class="text-muted small">
+    </div>
+    <div class="form-text">
         <?= /* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="' . e(Webtrees::GEDCOM_PDF) . '">' . e(Webtrees::GEDCOM_PDF) . '</a>') ?>
-    </p>
+    </div>
 
     <div class="card my-2">
         <label class="card-header py-1 px-2 d-flex" for="gedcom">

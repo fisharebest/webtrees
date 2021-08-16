@@ -24,7 +24,7 @@ use Ramsey\Uuid\Uuid;
     $id                = Uuid::uuid4()->toString() . '-' . $full_tag;
     ?>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="<?= e($id) ?>">
             <?= str_repeat('&nbsp;', max(0, $level - 1)) ?>
             <?= $element->label() ?>

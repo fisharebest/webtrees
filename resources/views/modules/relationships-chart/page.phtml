@@ -46,33 +46,29 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3 wt-page-options-label">
-            </legend>
-            <div class="col-sm-9 wt-page-options-value">
-                <?php if ($ancestors_only) : ?>
-                    <input type="hidden" name="ancestors" value="1">
-                    <?= I18N::translate('Find relationships via ancestors') ?>
-                <?php else : ?>
-                    <?= view('components/radios', ['name' => 'ancestors', 'options' => $ancestors_options, 'selected' => $ancestors]) ?>
-                <?php endif ?>
-            </div>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        </legend>
+        <div class="col-sm-9 wt-page-options-value">
+            <?php if ($ancestors_only) : ?>
+                <input type="hidden" name="ancestors" value="1">
+                <?= I18N::translate('Find relationships via ancestors') ?>
+            <?php else : ?>
+                <?= view('components/radios', ['name' => 'ancestors', 'options' => $ancestors_options, 'selected' => $ancestors]) ?>
+            <?php endif ?>
         </div>
     </fieldset>
 
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col-sm-3 wt-page-options-label">
-            </legend>
-            <div class="col-sm-9 wt-page-options-value">
-                <?php if ($max_recursion === 0) : ?>
-                    <?= I18N::translate('Find the closest relationships') ?>
-                    <input type="hidden" name="recursion" value="0">
-                <?php else : ?>
-                    <?= view('components/radios', ['name' => 'recursion', 'options' => $recursion_options, 'selected' => $recursion]) ?>
-                <?php endif ?>
-            </div>
+    <fieldset class="row form-group">
+        <legend class="col-form-label col-sm-3 wt-page-options-label">
+        </legend>
+        <div class="col-sm-9 wt-page-options-value">
+            <?php if ($max_recursion === 0) : ?>
+                <?= I18N::translate('Find the closest relationships') ?>
+                <input type="hidden" name="recursion" value="0">
+            <?php else : ?>
+                <?= view('components/radios', ['name' => 'recursion', 'options' => $recursion_options, 'selected' => $recursion]) ?>
+            <?php endif ?>
         </div>
     </fieldset>
 

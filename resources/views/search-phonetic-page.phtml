@@ -60,24 +60,22 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <fieldset class="form-group">
-        <div class="row">
+    <fieldset class="row form-group">
             <label class="col-sm-3 col-form-label wt-page-options-label">
-                <?= I18N::translate('Phonetic algorithm') ?>
-            </label>
-            <div class="col-sm-9 wt-page-options-value">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="soundex" value="Russell" <?= $soundex === 'Russell' ? 'checked' : '' ?> id="russell">
-                    <label class="form-check-label" for="russell">
-                        <?= I18N::translate('Russell') ?>
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="soundex" value="DaitchM" <?= $soundex === 'DaitchM' ? 'checked' : '' ?> id="d-m">
-                    <label class="form-check-label" for="d-m">
-                        <?= I18N::translate('Daitch-Mokotoff') ?>
-                    </label>
-                </div>
+            <?= I18N::translate('Phonetic algorithm') ?>
+        </label>
+        <div class="col-sm-9 wt-page-options-value">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="soundex" value="Russell" <?= $soundex === 'Russell' ? 'checked' : '' ?> id="russell">
+                <label class="form-check-label" for="russell">
+                    <?= I18N::translate('Russell') ?>
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="soundex" value="DaitchM" <?= $soundex === 'DaitchM' ? 'checked' : '' ?> id="d-m">
+                <label class="form-check-label" for="d-m">
+                    <?= I18N::translate('Daitch-Mokotoff') ?>
+                </label>
             </div>
         </div>
     </fieldset>

@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Tree;
     data-searching="false"
     data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>"
 >
-    <caption class="sr-only">
+    <caption class="visually-hidden">
         <?= I18N::translate('Surnames') ?>
     </caption>
     <thead>
@@ -63,10 +63,10 @@ use Fisharebest\Webtrees\Tree;
                             <?php endif ?>
                         <?php else : ?>
                             <?php if ($spfxsurn) : ?>
-                                <span dir="auto"><?= e($spfxsurn) ?></span>
+                                <bdi><?= e($spfxsurn) ?></bdi>
                             <?php else : ?>
                                 <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
-                                <span dir="auto"><?= e($surn) ?></span>
+                                <bdi><?= e($surn) ?></bdi>
                             <?php endif ?>    
                         <?php endif ?>
                         <br>

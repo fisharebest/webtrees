@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
     <input type="hidden" value="admin-clean-data">
     <?= csrf_field() ?>
 
-    <ul class="fa-ul">
+    <ul class="fa-ul mx-0">
         <?php foreach ($entries as $entry) : ?>
             <li>
                 <?php if (substr_compare($entry, '/', -1) === 0) : ?>

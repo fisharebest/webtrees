@@ -13,17 +13,17 @@ use Illuminate\Support\Collection;
 
 ?>
 <div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text" dir="ltr">iCalendar</span>
-    </div>
+    <span class="input-group-text" dir="ltr">iCalendar</span>
+
     <select class="custom-select" id="share-anniversary-select" aria-label=" <?= I18N::translate('Anniversary') ?>" name="fact_id">
         <?php foreach ($facts as $url => $label): ?>
             <option value="<?= e($url) ?>"><?= $label ?></option>
         <?php endforeach ?>
     </select>
-    <div class="input-group-append">
-        <button class="btn btn-primary" type="button" id="share-anniversary-button"><?= view('icons/download') ?><?= I18N::translate('Download') ?></button>
-    </div>
+    <button class="btn btn-primary" type="button" id="share-anniversary-button">
+        <?= view('icons/download') ?>
+        <?= I18N::translate('Download') ?>
+    </button>
 </div>
 <form id="share-anniversary-form"></form>
 <script>

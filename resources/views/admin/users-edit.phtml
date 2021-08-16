@@ -43,9 +43,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="text" id="real_name" name="real_name" required="required" maxlength="64" value="<?= e($user->realName()) ?>" dir="auto">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This is your real name, as you would like it displayed on screen.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -56,9 +56,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="text" id="username" name="username" required="required" maxlength="32" value="<?= e($user->userName()) ?>" dir="auto">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -69,9 +69,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="password" id="password" name="password" pattern = ".{8,}" placeholder="<?= I18N::plural('Use at least %s character.', 'Use at least %s characters.', 8, I18N::number(8)) ?>" <?= $user->id() ? '' : 'required' ?> autocomplete="new-password" data-show-text="<?= e(I18N::translate('show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -82,9 +82,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <input class="form-control" type="email" id="email" name="email" required="required" maxlength="64" value="<?= e($user->email()) ?>">
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -104,18 +104,18 @@ use Illuminate\Support\Collection;
                     <input type="checkbox" name="approved" value="1" <?= $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' ? 'checked' : '' ?>>
                     <?= I18N::translate('Approved by administrator') ?>
                 </label>
-                <p class="small text-muted">
+                <div class="form-text">
                     <?= I18N::translate('When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically.') ?>
-                </p>
-                <p class="small text-muted">
+                </div>
+                <div class="form-text">
                     <?= I18N::translate('If an administrator creates a user account, the verification email is not sent, and the email must be verified manually.') ?>
-                </p>
-                <p class="small text-muted">
+                </div>
+                <div class="form-text">
                     <?= I18N::translate('You should not approve an account unless you know that the email address is correct.') ?>
-                </p>
-                <p class="small text-muted">
+                </div>
+                <div class="form-text">
                     <?= I18N::translate('A user will not be able to sign in until both “email verified” and “approved by administrator” are selected.') ?>
-                </p>
+                </div>
             </div>
         </div>
     </div>
@@ -137,9 +137,9 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'timezone', 'selected' => $user->getPreference(UserInterface::PREF_TIME_ZONE, 'UTC'), 'options' => array_combine(DateTimeZone::listIdentifiers(), DateTimeZone::listIdentifiers())]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('The time zone is required for date calculations, such as knowing today’s date.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -154,9 +154,9 @@ use Illuminate\Support\Collection;
                     <input type="checkbox" name="auto_accept" value="1" <?= $user->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1' ? 'checked' : '' ?>>
                     <?= I18N::translate('Automatically accept changes made by this user') ?>
                 </label>
-                <p class="small text-muted">
+                <div class="form-text">
                     <?= I18N::translate('Normally, any changes made to a family tree need to be reviewed by a moderator. This option allows a user to make changes without needing a moderator.') ?>
-                </p>
+                </div>
             </div>
         </div>
     </div>
@@ -172,9 +172,9 @@ use Illuminate\Support\Collection;
                     <input type="checkbox" id="visible-online" name="visible-online" value="1" <?= $user->getPreference(UserInterface::PREF_IS_VISIBLE_ONLINE) === '1' ? 'checked' : '' ?>>
                     <?= /* I18N: A configuration setting */ I18N::translate('Visible to other users when online') ?>
                 </label>
-                <p class="small text-muted">
+                <div class="form-text">
                     <?= I18N::translate('You can choose whether to appear in the list of users who are currently signed-in.') ?>
-                </p>
+                </div>
             </div>
         </div>
     </div>
@@ -186,10 +186,10 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <?= view('components/select', ['id' => 'contact-method', 'name' => 'contact-method', 'selected' => $user->getPreference(UserInterface::PREF_CONTACT_METHOD), 'options' => $contact_methods]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: Help text for the “Preferred contact method” configuration setting */
                 I18N::translate('Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -238,43 +238,43 @@ use Illuminate\Support\Collection;
             <h4>
                 <?= I18N::translate('Visitor') ?>
             </h4>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('Everybody has this role, including visitors to the website and search engines.') ?>
-            </p>
+            </div>
             <h4>
                 <?= I18N::translate('Member') ?>
             </h4>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.') ?>
-            </p>
+            </div>
         </div>
         <div class="col-sm-4">
             <h4>
                 <?= I18N::translate('Editor') ?>
             </h4>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data. Any changes will need to be reviewed by a moderator, unless the user has the “automatically accept changes” option enabled.') ?>
-            </p>
+            </div>
             <h4>
                 <?= I18N::translate('Moderator') ?>
             </h4>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users.') ?>
-            </p>
+            </div>
         </div>
         <div class="col-sm-4">
             <h4>
                 <?= I18N::translate('Manager') ?>
             </h4>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.') ?>
-            </p>
+            </div>
             <h4>
                 <?= I18N::translate('Administrator') ?>
             </h4>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules.') ?>
-            </p>
+            </div>
         </div>
     </div>
 
@@ -301,9 +301,9 @@ use Illuminate\Support\Collection;
                 <td>
                 </td>
                 <td>
-                    <p class="small text-muted">
+                    <div class="form-text">
                         <?= I18N::translate('Link this user to an individual in the family tree.') ?>
-                    </p>
+                    </div>
                 </td>
                 <td>
                 </td>

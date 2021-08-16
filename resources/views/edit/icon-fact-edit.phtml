@@ -12,5 +12,5 @@ use Fisharebest\Webtrees\I18N;
 
 <a class="btn btn-link btn-sm" href="<?= e(route(EditFactPage::class, ['xref' => $fact->record()->xref(), 'fact_id' => $fact->id(), 'tree' => $fact->record()->tree()->name(), 'url' => $url ?? $fact->record()->url()])) ?>" title="<?= I18N::translate('Edit') ?>">
     <?= view('icons/edit') ?>
-    <span class="sr-only"><?= I18N::translate('Edit') ?></span>
+    <span class="visually-hidden"><?= I18N::translate('Edit') ?></span>
 </a>

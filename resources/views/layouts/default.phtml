@@ -71,7 +71,7 @@ use Psr\Http\Message\ServerRequestInterface;
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
                     <div class="wt-accessibility-links position-fixed">
-                        <a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">
+                        <a class="visually-hidden visually-hidden-focusable btn btn-info btn-sm" href="#content">
                             <?= /* I18N: Skip over the headers and menus, to the main content of the page */
                             I18N::translate('Skip to content') ?>
                         </a>
@@ -87,14 +87,12 @@ use Psr\Http\Message\ServerRequestInterface;
                                   class="wt-header-search-form" role="search">
                                 <?= csrf_field() ?>
                                 <div class="input-group">
-                                    <label class="sr-only" for="quick-search"><?= I18N::translate('Search') ?></label>
+                                    <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
                                     <input type="search" class="form-control wt-header-search-field" id="quick-search"
                                            name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary wt-header-search-button">
-                                            <?= view('icons/search') ?>
-                                        </button>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary wt-header-search-button">
+                                        <?= view('icons/search') ?>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -126,9 +124,7 @@ use Psr\Http\Message\ServerRequestInterface;
                 <div class="flash-messages">
                     <?php foreach (FlashMessages::getMessages() as $message) : ?>
                         <div class="alert alert-<?= e($message->status) ?> alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert"
-                                    aria-label="<?= I18N::translate('close') ?>">
-                                <span aria-hidden="true">&times;</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
                             </button>
                             <?= $message->text ?>
                         </div>

@@ -8,13 +8,11 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<div class="input-group-append">
-    <span class="input-group-text">
-        <a data-toggle="collapse" data-target=".child_of_<?= e($id) ?>" href="#" title="<?= I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude') ?>">
-            <?= view('icons/coordinates') ?>
-            <span class="sr-only">
-                <?= I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude') ?>
-            </span>
-        </a>
-    </span>
-</div>
+<span class="input-group-text">
+    <a data-bs-toggle="collapse" data-bs-target=".child_of_<?= e($id) ?>" href="#" title="<?= I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude') ?>">
+        <?= view('icons/coordinates') ?>
+        <span class="visually-hidden">
+            <?= I18N::translate('Latitude') . ' / ' . I18N::translate('Longitude') ?>
+        </span>
+    </a>
+</span>

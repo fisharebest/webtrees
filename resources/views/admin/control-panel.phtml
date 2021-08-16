@@ -213,7 +213,7 @@ use Illuminate\Support\Collection;
 
         <div class="row">
             <div class="col-sm">
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
                         <a href="<?= e(route(SitePreferencesPage::class)) ?>">
@@ -235,7 +235,7 @@ use Illuminate\Support\Collection;
                 </ul>
             </div>
             <div class="col-sm">
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/list') ?></span>
                         <a href="<?= e(route(SiteLogsPage::class)) ?>">
@@ -257,7 +257,7 @@ use Illuminate\Support\Collection;
                 </ul>
             </div>
             <div class="col-sm">
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/tag') ?></span>
                         <a href="<?= e(route(SiteTagsPage::class)) ?>">
@@ -288,7 +288,7 @@ use Illuminate\Support\Collection;
             </p>
         <?php endif ?>
 
-        <ul class="fa-ul">
+        <ul class="fa-ul mx-0">
             <li>
                 <span class="fa-li"><?= view('icons/add') ?></span>
                 <a href="<?= e(route(CreateTreePage::class)) ?>">
@@ -312,7 +312,7 @@ use Illuminate\Support\Collection;
         </ul>
 
         <table class="table table-sm">
-            <caption class="sr-only">
+            <caption class="visually-hidden">
                 <?= I18N::translate('Family trees') ?>
             </caption>
 
@@ -345,7 +345,7 @@ use Illuminate\Support\Collection;
                             <?php if ($changes[$tree->id()]) : ?>
                                 <a href="<?= e(route(PendingChanges::class, ['tree' => $tree->name(), 'url' => route(ControlPanel::class)])) ?>">
                                     <?= I18N::number($changes[$tree->id()]) ?>
-                                    <span class="sr-only"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>
+                                    <span class="visually-hidden"><?= I18N::translate('Pending changes') ?> <?= e($tree->title()) ?></span>
                                 </a>
                             <?php else : ?>
                                 -
@@ -505,7 +505,7 @@ use Illuminate\Support\Collection;
 
         <div class="row">
             <div class="col-sm-6">
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/preferences') ?></span>
                         <a href="<?= e(route(UserListPage::class)) ?>">
@@ -533,7 +533,7 @@ use Illuminate\Support\Collection;
                 </ul>
             </div>
             <div class="col-sm-6">
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
                         <a href="<?= e(route(BroadcastPage::class, ['to' => 'all'])) ?>">
@@ -568,7 +568,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <div class="card-body">
-        <ul class="fa-ul">
+        <ul class="fa-ul mx-0">
             <li>
                 <span class="fa-li"><?= view('icons/module') ?></span>
                 <a href="<?= e(route(ModulesAllPage::class)) ?>">
@@ -584,7 +584,7 @@ use Illuminate\Support\Collection;
                     <?= I18N::translate('Website') ?>
                 </h3>
 
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/footer') ?></span>
                         <a href="<?= e(route(ModulesFootersPage::class)) ?>">
@@ -619,7 +619,7 @@ use Illuminate\Support\Collection;
                     <?= I18N::translate('Home page') ?>
                 </h3>
 
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/block') ?></span>
                         <a href="<?= e(route(ModulesBlocksPage::class)) ?>">
@@ -633,7 +633,7 @@ use Illuminate\Support\Collection;
                     <?= I18N::translate('Geographic data') ?>
                 </h3>
 
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/search') ?></span>
                         <a href="<?= e(route(ModulesMapAutocompletePage::class)) ?>">
@@ -670,7 +670,7 @@ use Illuminate\Support\Collection;
                     <?= I18N::translate('Genealogy') ?>
                 </h3>
 
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/menu') ?></span>
                         <a href="<?= e(route(ModulesMenusPage::class)) ?>">
@@ -719,7 +719,7 @@ use Illuminate\Support\Collection;
                     <?= I18N::translate('Individual page') ?>
                 </h3>
 
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/tab') ?></span>
                         <a href="<?= e(route(ModulesTabsPage::class)) ?>">
@@ -757,7 +757,7 @@ use Illuminate\Support\Collection;
                     <?= I18N::translate('Other') ?>
                 </h3>
 
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <?php foreach ($other_modules as $module) : ?>
                         <li>
                             <?php if ($module->isEnabled()) : ?>
@@ -777,7 +777,6 @@ use Illuminate\Support\Collection;
                                     <?php if ($module instanceof ModuleConfigInterface) : ?>
                                         <?= view('icons/preferences') ?>
                                     <?php endif ?>
-                                    </span>
                                 </span>
                             <?php endif ?>
 
@@ -800,7 +799,7 @@ use Illuminate\Support\Collection;
         </h2>
     </div>
     <div class="card-body">
-        <ul class="fa-ul">
+        <ul class="fa-ul mx-0">
             <li>
                 <span class="fa-li"><?= view('icons/preferences') ?></span>
                 <a href="<?= e(route(ManageMediaPage::class)) ?>">
@@ -839,7 +838,7 @@ use Illuminate\Support\Collection;
     <div class="card-body">
         <div class="row">
             <div class="col-sm-12">
-                <ul class="fa-ul">
+                <ul class="fa-ul mx-0">
                     <li>
                         <span class="fa-li"><?= view('icons/location') ?></span>
                         <a href="<?= e(route(MapDataList::class)) ?>">

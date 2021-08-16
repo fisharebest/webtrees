@@ -66,7 +66,7 @@ class DateValue extends AbstractElement
             view('edit/input-addon-help', ['fact' => 'DATE']) .
             '</div>' .
             '<div id="caldiv' . $id . '" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>' .
-            '<p class="text-muted">' . (new Date($value))->display() . '</p>';
+            '<div class="form-text">' . (new Date($value))->display() . '</div>';
     }
 
     /**

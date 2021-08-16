@@ -13,11 +13,11 @@ use Fisharebest\Webtrees\I18N;
 <?php if ($fact->target() === null): ?>
     <a class="btn btn-link btn-sm" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($fact->summary())) ?>" data-post-url="<?= e(route(DeleteFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Delete') ?>">
         <?= view('icons/delete') ?>
-        <span class="sr-only"><?= I18N::translate('Delete') ?></span>
+        <span class="visually-hidden"><?= I18N::translate('Delete') ?></span>
     </a>
 <?php else: ?>
     <a class="btn btn-link btn-sm" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete the link to “%s”?', strip_tags($fact->target()->fullName())) ?>" data-post-url="<?= e(route(DeleteFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Unlink') ?>">
         <?= view('icons/delete') ?>
-        <span class="sr-only"><?= I18N::translate('Unlink') ?></span>
+        <span class="visually-hidden"><?= I18N::translate('Unlink') ?></span>
     </a>
 <?php endif ?>

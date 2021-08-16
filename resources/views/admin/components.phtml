@@ -60,7 +60,7 @@ use Illuminate\Support\Collection;
                             <?php if ($module->isEnabled()) : ?>
                                 <a href="<?= e($module->getConfigLink()) ?>" title="<?= I18N::translate('Preferences') ?>">
                                     <?= view('icons/preferences') ?>
-                                    <span class="sr-only">
+                                    <span class="visually-hidden">
                                         <?= I18N::translate('Preferences') ?>
                                     </span>
                                 </a>
@@ -82,7 +82,7 @@ use Illuminate\Support\Collection;
                         <label class="d-block">
                             <input type="checkbox" name="status-<?= e($module->name()) ?>"
                                    id="status-<?= e($module->name()) ?>" <?= $module->isEnabled() ? 'checked' : '' ?>>
-                            <span class="sr-only">
+                            <span class="visually-hidden">
                                 <?= I18N::translate('Enabled') ?>
                             </span>
                         </label>
@@ -104,8 +104,7 @@ use Illuminate\Support\Collection;
                                             <h2 class="modal-title">
                                                 <?= e($module->title()) ?> – <?= I18N::translate('Access level') ?>
                                             </h2>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= I18N::translate('close') ?>"">
                                             </button>
                                         </div>
                                         <div class="modal-body">
@@ -124,7 +123,7 @@ use Illuminate\Support\Collection;
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close
                                             </button>
                                         </div>
                                     </div>
@@ -133,10 +132,10 @@ use Illuminate\Support\Collection;
                         </td>
 
                         <td>
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-backdrop="static"
-                                    data-target="#access-level-<?= $module->name() ?>">
+                            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-backdrop="static"
+                                    data-bs-target="#access-level-<?= $module->name() ?>">
                                 <?= view('icons/edit') ?>
-                                <span class="sr-only"><?= I18N::translate('edit') ?></span>
+                                <span class="visually-hidden"><?= I18N::translate('edit') ?></span>
                             </button>
                         </td>
                     <?php endif ?>

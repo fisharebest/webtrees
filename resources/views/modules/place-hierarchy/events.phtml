@@ -16,13 +16,13 @@ use Illuminate\Support\Collection;
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active<?= $indilist->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#individuals">
+        <a class="nav-link active<?= $indilist->isEmpty() ? ' text-muted' : '' ?>" data-bs-toggle="tab" role="tab" href="#individuals">
             <?= I18N::translate('Individuals') ?>
             <?= view('components/badge', ['count' => count($indilist)]) ?>
         </a>
     </li>
     <li class="nav-item" role="presentation">
-        <a class="nav-link<?= $famlist->isEmpty() ? ' text-muted' : '' ?>" data-toggle="tab" role="tab" href="#families">
+        <a class="nav-link<?= $famlist->isEmpty() ? ' text-muted' : '' ?>" data-bs-toggle="tab" role="tab" href="#families">
             <?= I18N::translate('Families') ?>
             <?= view('components/badge', ['count' => count($famlist)]) ?>
         </a>

@@ -25,7 +25,7 @@ use Illuminate\Support\Collection;
 <form method="post" action="<?= e(route(BroadcastAction::class)) ?>">
     <?= csrf_field() ?>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="from">
             <?= I18N::translateContext('Email sender', 'From') ?>
         </label>
@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="to">
             <?= I18N::translateContext('Email recipient', 'To') ?>
         </label>
@@ -44,7 +44,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="subject">
             <?= I18N::translate('Subject') ?>
         </label>
@@ -53,7 +53,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label" for="body">
             <?= I18N::translate('Message') ?>
         </label>
@@ -62,7 +62,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row form-group">
         <div class="col-sm-3 col-form-label"></div>
         <div class="col-sm-9">
             <button type="submit" class="btn btn-primary">

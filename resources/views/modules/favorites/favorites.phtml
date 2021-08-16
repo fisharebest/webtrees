@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
 <?php endforeach ?>
 
 <?php if ($can_edit) : ?>
-    <button type="button" class="btn btn-link" data-toggle="modal" data-backdrop="static" data-target="#favorite-form-<?= e($block_id) ?>">
+    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#favorite-form-<?= e($block_id) ?>">
         <?= I18N::translate('Add a favorite') ?>
     </button>
 
@@ -53,12 +53,11 @@ use Illuminate\Support\Collection;
                         <h5 class="modal-title" id="favorite-form-<?= e($block_id) ?>-label">
                             <?= I18N::translate('Add a favorite') ?>
                         </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= I18N::translate('close') ?>"">
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group row">
+                        <div class="row form-group">
                             <div class="col-sm-4 col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="type" value="indi" id="fav-indi-<?= e($block_id) ?>" checked>
@@ -72,7 +71,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row form-group">
                             <div class="col-sm-4 col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="type" value="fam" id="fav-fam-<?= e($block_id) ?>">
@@ -86,7 +85,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row form-group">
                             <div class="col-sm-4 col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="type" value="obje" id="fav-obje-<?= e($block_id) ?>">
@@ -100,7 +99,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row form-group">
                             <div class="col-sm-4 col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="type" value="sour" id="fav-sour-<?= e($block_id) ?>">
@@ -114,7 +113,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row form-group">
                             <div class="col-sm-4 col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="type" value="repo" id="fav-repo-<?= e($block_id) ?>">
@@ -128,7 +127,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row form-group">
                             <div class="col-sm-4 col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="type" value="url" id="fav-url-<?= e($block_id) ?>">
@@ -139,13 +138,13 @@ use Illuminate\Support\Collection;
                             </div>
                             <div class="col-sm-8 col-md-9">
                                 <label>
-                                    <span class="sr-only">
+                                    <span class="visually-hidden">
                                         <?= I18N::translate('URL') ?>
                                     </span>
                                     <input type="text" class="form-control" name="url" id="url" value="" placeholder="<?= I18N::translate('URL') ?>">
                                 </label>
                                 <label>
-                                    <span class="sr-only">
+                                    <span class="visually-hidden">
                                         <?= I18N::translate('Title') ?>
                                     </span>
                                     <input type="text" class="form-control" name="title" id="title" value="" placeholder="<?= I18N::translate('Title') ?>">
@@ -153,7 +152,7 @@ use Illuminate\Support\Collection;
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="row form-group">
                             <div class="col-sm-4 col-md-3">
                                 <label for="fav-note-<?= e($block_id) ?>">
                                     <?= I18N::translate('Note') ?>
@@ -166,7 +165,7 @@ use Illuminate\Support\Collection;
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             <?= view('icons/cancel') ?>
                             <?= I18N::translate('cancel') ?>
                         </button>

@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(UnconnectedAction::class, ['tree' => $tree->name()])) ?>" class="form-inline">
+<form method="post" action="<?= e(route(UnconnectedAction::class, ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
 
     <?= view('components/checkbox-inline', ['label' => I18N::translate('Include associates'), 'checked' => $associates, 'name' => 'associates']) ?>

@@ -23,14 +23,14 @@ use Illuminate\Support\Collection;
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active" data-toggle="tab" role="tab" href="#details">
+        <a class="nav-link active" data-bs-toggle="tab" role="tab" href="#details">
             <?= I18N::translate('Details') ?>
         </a>
     </li>
 
     <?php if ($linked_individuals instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-toggle="tab" role="tab" href="#individuals">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#individuals">
                 <?= I18N::translate('Individuals') ?>
                 <?= view('components/badge', ['count' => $linked_individuals->count()]) ?>
             </a>
@@ -39,7 +39,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_families instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-toggle="tab" role="tab" href="#families">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#families">
                 <?= I18N::translate('Families') ?>
                 <?= view('components/badge', ['count' => $linked_families->count()]) ?>
             </a>
@@ -48,7 +48,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_media_objects instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-toggle="tab" role="tab" href="#media">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#media">
                 <?= I18N::translate('Media objects') ?>
                 <?= view('components/badge', ['count' => $linked_media_objects->count()]) ?>
             </a>
@@ -57,7 +57,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_sources instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-toggle="tab" role="tab" href="#sources">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#sources">
                 <?= I18N::translate('Sources') ?>
                 <?= view('components/badge', ['count' => $linked_sources->count()]) ?>
             </a>
@@ -66,7 +66,7 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_notes instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-toggle="tab" role="tab" href="#notes">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#notes">
                 <?= I18N::translate('Notes') ?>
                 <?= view('components/badge', ['count' => $linked_notes->count()]) ?>
             </a>

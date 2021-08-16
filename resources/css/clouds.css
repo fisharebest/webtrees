@@ -600,12 +600,12 @@ footer,
     border-radius: 3px;
 }
 
-a {
+a, .nav-link {
     color: #039;
     text-decoration: none;
 }
 
-a:hover {
+a:hover, .nav-link:hover {
     color: #f00;
     text-decoration: none;
 }

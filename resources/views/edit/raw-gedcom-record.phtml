@@ -21,12 +21,11 @@ use Fisharebest\Webtrees\Webtrees;
 <form method="post" action="<?= e(route(EditRawRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
-    <p class="text-muted small">
+    <div class="form-text">
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
-    </p>
-    <p class="text-muted small">
+        <br>
         <?= /* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="' . e(Webtrees::GEDCOM_PDF) . '">' . e(Webtrees::GEDCOM_PDF) . '</a>') ?>
-    </p>
+    </div>
 
     <div class="card">
         <label class="card-header py-1 px-2" for="fact0">
@@ -42,7 +41,7 @@ use Fisharebest\Webtrees\Webtrees;
                 <div class="card-header">
                     <?= view('edit/reorder-card-header', ['title' => $fact->summary()]) ?>
                 </div>
-                <label class="sr-only" for="fact-<?= e($fact->id()) ?>"><?= $fact->summary() ?></label>
+                <label class="visually-hidden" for="fact-<?= e($fact->id()) ?>"><?= $fact->summary() ?></label>
 
                 <textarea class="card-body form-control py-1 px-2" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
             </div>

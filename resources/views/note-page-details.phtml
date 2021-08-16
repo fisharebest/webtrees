@@ -25,7 +25,7 @@ use Illuminate\Support\Collection;
                 <div class="editfacts nowrap">
                     <a class="btn btn-link" href="<?= e(route(EditNotePage::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
                         <?= view('icons/edit') ?>
-                        <span class="sr-only">
+                        <span class="visually-hidden">
                             <?= I18N::translate('Edit') ?>
                         </span>
                     </a>

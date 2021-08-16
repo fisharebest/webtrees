@@ -12,7 +12,7 @@ use Fisharebest\Webtrees\I18N;
 <ul>
     <?php foreach ($given_names as $given_name => $count) : ?>
         <li>
-            <span dir="auto"><?= e($given_name) ?></span>
+            <bdi><?= e($given_name) ?></bdi>
             <?php if ($show_totals) : ?>
              (<?= I18N::number($count) ?>)
             <?php endif ?>

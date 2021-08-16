@@ -36,59 +36,10 @@
     transform: scale(-1, 1);
 }
 
-/* Bootstrap 4.5.1 toggle buttons don't work when labels have additional markup */
-[data-toggle=buttons] > label > .wt-icon-sex {
-    pointer-events: none;
-}
-
-/* Remove border-radius for left-to-right input groups on right-to-left pages */
-[dir=rtl] .input-group[dir=ltr] [dir=ltr] {
-    border-radius: 0;
-}
-
 /* rtl:ignore */
 td.align-digits,
 th.align-digits {
     text-align: right;
-}
-
-/* Allows twitter typeahead to work with bootstrap input groups */
-.input-group > .twitter-typeahead {
-    flex: 1 1;
-}
-
-/* Allows select2 to work with bootstrap input groups */
-.input-group > .select2-container {
-    flex: 1 1;
-}
-
-/* Workaround for dropdown menu position on RTL with popper.js */
-/* See also https://github.com/FezVrasta/popper.js/issues/695 */
-[dir=rtl] .wt-genealogy-menu .dropdown-menu {
-    right: 0;
-    left: auto !important;
-}
-
-/*
- * https://github.com/fisharebest/webtrees/issues/2291
- * Chrome 72 has problems with all cards in the control panel.
- * Chrome 73 has problems with the family-tree card in the control panel.
- * Chrome 76 seems OK.
- * https://github.com/fisharebest/webtrees/issues/2813
- * Safari 13 has the same issue.
- */
-.wt-control-panel .card {
-    display: block;
-}
-
-/*
- * Flexbox fixes for IE11
- */
-@media (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    /* Move the body down below the mangled header */
-    div.wt-main-container {
-        padding-top: 4rem;
-    }
 }
 
 /* Keep the page as tall as the window, so the footer can remain at the bottom. */
@@ -100,6 +51,15 @@ th.align-digits {
 
 .wt-main-container {
     flex: 1;
+}
+
+/* Bootstrap 5 underlines links by default */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* Scrollbars */
@@ -117,8 +77,8 @@ th.align-digits {
 }
 
 /* Expand/collapse icons on accordions, etc. */
-[data-toggle=collapse][aria-expanded=true] > .wt-icon-expand {
+[data-bs-toggle=collapse][aria-expanded=true] > .wt-icon-expand {
     display: none;
-}[data-toggle=collapse][aria-expanded=false] > .wt-icon-collapse {
+}[data-bs-toggle=collapse][aria-expanded=false] > .wt-icon-collapse {
     display: none;
 }

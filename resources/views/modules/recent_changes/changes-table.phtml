@@ -35,7 +35,7 @@ use Illuminate\Support\Collection;
         <thead>
             <tr>
                 <th class="wt-side-block-optional">
-                <span class="sr-only">
+                <span class="visually-hidden">
                     <?= I18N::translate('Type') ?>
                 </span>
                 </th>
@@ -56,25 +56,25 @@ use Illuminate\Support\Collection;
                     <td data-sort="<?= $row->record->tag() ?>" class="text-centre wt-side-block-optional">
                         <?php if ($row->record->tag() === Individual::RECORD_TYPE) : ?>
                             <?= view('icons/individual') ?>
-                            <span class="sr-only"><?= I18N::translate('Individual') ?></span>
+                            <span class="visually-hidden"><?= I18N::translate('Individual') ?></span>
                         <?php elseif ($row->record->tag() === Family::RECORD_TYPE) : ?>
                             <?= view('icons/family') ?>
-                            <span class="sr-only"><?= I18N::translate('Family') ?></span>
+                            <span class="visually-hidden"><?= I18N::translate('Family') ?></span>
                         <?php elseif ($row->record->tag() === Media::RECORD_TYPE) : ?>
                             <?= view('icons/media') ?>
-                            <span class="sr-only"><?= I18N::translate('Media') ?></span>
+                            <span class="visually-hidden"><?= I18N::translate('Media') ?></span>
                         <?php elseif ($row->record->tag() === Note::RECORD_TYPE) : ?>
                             <?= view('icons/note') ?>
-                            <span class="sr-only"><?= I18N::translate('Note') ?></span>
+                            <span class="visually-hidden"><?= I18N::translate('Note') ?></span>
                         <?php elseif ($row->record->tag() === Source::RECORD_TYPE) : ?>
                             <?= view('icons/source') ?>
-                            <span class="sr-only"><?= I18N::translate('Source') ?></span>
+                            <span class="visually-hidden"><?= I18N::translate('Source') ?></span>
                         <?php elseif ($row->record->tag() === Submitter::RECORD_TYPE) : ?>
                             <?= view('icons/submitter') ?>
-                            <span class="sr-only"><?= I18N::translate('Submitter') ?></span>
+                            <span class="visually-hidden"><?= I18N::translate('Submitter') ?></span>
                         <?php elseif ($row->record->tag() === Repository::RECORD_TYPE) : ?>
                             <?= view('icons/repository') ?>
-                            <span class="sr-only"><?= I18N::translate('Repository') ?></span>
+                            <span class="visually-hidden"><?= I18N::translate('Repository') ?></span>
                         <?php endif ?>
                     </td>
 

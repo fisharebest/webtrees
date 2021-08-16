@@ -75,10 +75,10 @@ use Fisharebest\Webtrees\I18N;
 
         <div class="col-sm-9">
             <?= view('components/select', ['name' => 'gedcom_id', 'selected' => $gedcom_id, 'options' => $gedcom_ids]) ?>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= /* I18N: FAQ = “Frequently Asked Question” */
                 I18N::translate('An FAQ can be displayed on just one of the family trees, or on all the family trees.') ?>
-            </p>
+            </div>
         </div>
     </div>
 

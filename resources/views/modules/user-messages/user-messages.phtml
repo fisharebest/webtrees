@@ -79,7 +79,7 @@ use Illuminate\Support\Collection;
                         </td>
 
                         <td class="list_value_wrap">
-                            <a href="#message<?= $message->message_id ?>" data-toggle="collapse" role="button"
+                            <a href="#message<?= $message->message_id ?>" data-bs-toggle="collapse" role="button"
                                aria-expanded="false" aria-controls="message<?= $message->message_id ?>">
                                 <?= view('icons/expand') ?>
                                 <?= view('icons/collapse') ?>
@@ -95,8 +95,7 @@ use Illuminate\Support\Collection;
                             <?php $user = $user_service->findByIdentifier($message->sender) ?>
 
                             <?php if ($user instanceof User): ?>
-                                <span dir="auto"><?= e($user->realName()) ?></span> - <span
-                                        dir="auto"><?= $user->email() ?></span>
+                                <bdi><?= e($user->realName()) ?></bdi> - <bdi><?= $user->email() ?></bdi>
                             <?php else: ?>
                                 <a href="mailto:<?= e($message->sender) ?>"><?= e($message->sender) ?></a>
                             <?php endif ?>

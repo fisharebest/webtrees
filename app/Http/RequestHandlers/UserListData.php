@@ -129,8 +129,8 @@ class UserListData implements RequestHandlerInterface
             $datum = [
                 view('admin/users-table-options', ['row' => $row, 'self' => $user, 'user' => $row_user]),
                 $row->user_id,
-                '<span dir="auto">' . e($row->user_name) . '</span>',
-                '<span dir="auto">' . e($row->real_name) . '</span>',
+                '<bdi>' . e($row->user_name) . '</bdi>',
+                '<bdi>' . e($row->real_name) . '</bdi>',
                 '<a href="mailto:' . e($row->email) . '">' . e($row->email) . '</a>',
                 $languages->get($row->language, $row->language),
                 $row->registered_at,

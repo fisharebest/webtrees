@@ -33,21 +33,19 @@ use Fisharebest\Webtrees\I18N;
         </label>
         <div class="col-sm-10">
             <div class="input-group" dir="ltr">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
-                    </span>
-                </div>
+                <span class="input-group-text" dir="ltr">
+                    <?= e(explode('{tree}', rawurldecode(route('example')))[0]) ?>
+                </span>
+
                 <input class="form-control" id="name" maxlength="31" name="name" pattern="[^&lt;&gt;&quot;*?{}():/\\$%|]*" required="required" type="text" value="<?= e($tree_name) ?>" dir="ltr">
-                <div class="input-group-append">
-                    <span class="input-group-text" dir="ltr">
-                        <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
-                    </span>
-                </div>
+
+                <span class="input-group-text" dir="ltr">
+                    <?= e(explode('{tree}', rawurldecode(route('example')))[1]) ?>
+                </span>
             </div>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('Avoid spaces and punctuation. A family name might be a good choice.') ?>
-            </p>
+            </div>
         </div>
     </div>
     <div class="row form-group">
@@ -57,9 +55,9 @@ use Fisharebest\Webtrees\I18N;
                 <?= /* I18N: A button label. */
                 I18N::translate('create') ?>
             </button>
-            <p class="small text-muted">
+            <div class="form-text">
                 <?= I18N::translate('After creating the family tree, you will be able to import data from a GEDCOM file.') ?>
-            </p>
+            </div>
         </div>
     </div>
 </form>

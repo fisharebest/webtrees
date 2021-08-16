@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Gedcom;
 
 <div class="wt-lifespans-individuals position-relative" style="height: <?= (5 + $max_rows) * 1.5 ?>rem; width: <?= ($end_year - $start_year) * 7 ?>px;">
     <?php foreach ($lifespans as $lifespan) : ?>
-    <a href="#" data-toggle="collapse" data-target="#<?= e($lifespan->id) ?>" aria-expanded="false" aria-controls="<?= e($lifespan->id) ?>">
+    <a href="#" data-bs-toggle="collapse" data-bs-target="#<?= e($lifespan->id) ?>" aria-expanded="false" aria-controls="<?= e($lifespan->id) ?>">
         <div class="wt-lifespans-individual position-absolute text-nowrap text-truncate" dir="auto" style="background: <?= $lifespan->background ?>; <?= $dir === 'ltr' ? 'left' : 'right' ?>:<?= ($lifespan->birth_year - $start_year) * 7 ?>px; top:<?= $lifespan->row * 1.5 ?>rem; width:<?= ($lifespan->death_year - $lifespan->birth_year) * 7 + 5 ?>px;">
             <?= $lifespan->individual->fullName() ?>
             <?= strip_tags($lifespan->individual->lifespan()) ?>

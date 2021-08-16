@@ -19,17 +19,15 @@ use Illuminate\Support\Collection;
 
 <h1><?= $title ?></h1>
 
-<form method="post" class="form-inline mb-4">
+<form method="post" class="row">
     <?= csrf_field() ?>
 
-    <label for="tree" class="sr-only">
-        <?= I18N::translate('Family tree') ?>
-    </label>
-
-    <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names]) ?>
-    <button type="submit" class="btn btn-primary">
-        <?= I18N::translate('show') ?>
-    </button>
+    <div class="col-auto">
+        <div class="input-group">
+            <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names, 'aria_label' => I18N::translate('Family tree')]) ?>
+            <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
+        </div>
+    </div>
 </form>
 
 <p>
@@ -43,12 +41,16 @@ use Illuminate\Support\Collection;
     class="table table-bordered table-sm datatables d-none"
     <?= view('lists/datatables-attributes') ?>
     data-columns="<?= e(json_encode([
-       null,
-       null,
-       ['sortable' => false],
-       ['sortable' => false],
-    ])) ?>"
+        null,
+        null,
+        ['sortable' => false],
+        ['sortable' => false],
+    ], JSON_THROW_ON_ERROR)) ?>"
 >
+    <caption>
+        <?= I18N::translate('Stories') ?>
+    </caption>
+
     <thead>
         <tr>
             <th><?= I18N::translate('Individual') ?></th>
@@ -57,6 +59,7 @@ use Illuminate\Support\Collection;
             <th><?= I18N::translate('Delete') ?></th>
         </tr>
     </thead>
+
     <tbody>
         <?php foreach ($stories as $story) : ?>
             <tr>
@@ -73,7 +76,7 @@ use Illuminate\Support\Collection;
                     <?= e($story->title) ?>
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
+                    <a class="btn btn-primary" href="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminEdit', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>" aria-label="<?= I18N::translate('Edit') ?>">
                         <?= view('icons/edit') ?>
                         <?= I18N::translate('Edit') ?>
                     </a>
@@ -81,7 +84,7 @@ use Illuminate\Support\Collection;
                 <td>
                     <form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
                         <?= csrf_field() ?>
-                        <button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);">
+                        <button type="submit" class="btn btn-danger" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);" aria-label="<?= I18N::translate('Delete') ?>">
                             <?= view('icons/delete') ?>
                             <?= I18N::translate('Delete') ?>
                         </button>
