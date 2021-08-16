@@ -120,10 +120,10 @@ use Illuminate\Support\Collection;
             </legend>
             <div class="col-sm-9">
                 <div class="row">
-                    <div class="col-sm-6" style="padding-left: 0;">
+                    <div class="col-sm-6">
                         <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
                     </div>
-                    <div class="col-sm-6" style="padding-right: 0;">
+                    <div class="col-sm-6">
                         <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
                     </div>
                 </div>
