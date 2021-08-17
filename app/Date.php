@@ -249,7 +249,7 @@ class Date
      *
      * @return string
      */
-    public function display($url = false, $date_format = null, $convert_calendars = true): string
+    public function display(bool $url = false, string $date_format = null, bool $convert_calendars = true): string
     {
         // Do we need a new DateFormatterService class?
         if (app()->has(Tree::class)) {

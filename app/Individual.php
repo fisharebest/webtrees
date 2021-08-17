@@ -467,9 +467,10 @@ class Individual extends GedcomRecord
         $birth_place = strip_tags($this->getBirthPlace()->shortName());
         $death_place = strip_tags($this->getDeathPlace()->shortName());
 
-        // Remove markup from dates.
-        $birth_date = strip_tags($this->getBirthDate()->display());
-        $death_date = strip_tags($this->getDeathDate()->display());
+        // Remove markup from dates.  Use UTF_FSI / UTF_PDI instead of <bdi></bdi>, as
+        // we cannot use HTML markup in title attributes.
+        $birth_date = "\u{2068}" . strip_tags($this->getBirthDate()->display()) . "\u{2069}";
+        $death_date = "\u{2068}" . strip_tags($this->getDeathDate()->display()) . "\u{2069}";
 
         // Use minimum and maximum dates - to agree with the age calculations.
         $birth_year = $this->getBirthDate()->minimumDate()->format('%Y');
