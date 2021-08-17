@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-08-11 23:01+0000\n"
-"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
+"PO-Revision-Date: 2021-08-18 09:13+0000\n"
+"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
 "Language: nl\n"
@@ -13222,12 +13222,12 @@ msgstr "Status van wijzigingsdatum"
 
 #: app/Functions/FunctionsDate.php:39
 msgid "Stillborn"
-msgstr "Doodgeboren"
+msgstr "Levenloos geboren"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:104
 msgid "Stillborn: exempt"
-msgstr "Doodgeboren: vrijgesteld"
+msgstr "Levenloos geboren: vrijgesteld"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:353
