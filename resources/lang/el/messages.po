@@ -20937,9 +20937,6 @@ msgstr "…"
 #~ msgid "(stillborn)"
 #~ msgstr "(θνησιγενές)"
 
-#~ msgid "<p>Notice: By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-#~ msgstr "<div class = \"largeError\"> Σημείωση: </div> <div class = \"error\"> Συμπληρώνοντας και υποβάλλοντας αυτήν τη φόρμα, συμφωνείτε: <ul> <li> για την προστασία του απορρήτου των ζωντανών ατόμων που αναφέρονται στον ιστότοπό μας. </li> <li> και στο παρακάτω πλαίσιο κειμένου, για να εξηγήσετε σε ποιον συσχετίζεστε ή να μας παράσχετε πληροφορίες σχετικά με κάποιον που πρέπει να αναφέρεται στον ιστότοπό μας. </li> </ul> </div>"
-
 #~ msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
 #~ msgstr "Ένας διακομιστής βάσης δεδομένων μπορεί να αποθηκεύσει πολλές ξεχωριστές βάσεις δεδομένων. Πρέπει να επιλέξετε μια υπάρχουσα βάση δεδομένων (που δημιουργήθηκε από το διαχειριστή του διακομιστή σας) ή να δημιουργήσετε μια νέα (εάν ο λογαριασμός χρήστη σας στην βάση δεδομένων σας έχει επαρκή δικαιώματα)."
 

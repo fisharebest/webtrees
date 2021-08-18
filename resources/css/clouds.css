@@ -578,7 +578,6 @@ table {
 /* ====== Round Corners ======== */
 input,
 fieldset,
-.border1,
 .block,
 .list_label,
 .list_label_wrap,
@@ -634,13 +633,6 @@ img.block {
     border: 0;
     height: 25px;
     vertical-align: middle;
-}
-
-.topbottombar {
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px;
-    text-align: center;
 }
 
 .button {
@@ -759,42 +751,13 @@ a:hover .name1, a:hover .name2 {
     font-weight: bold;
 }
 
-.largeError {
-    color: #d00;
-    font-size: large;
-    font-weight: bold;
-}
-
-.warning {
-    color: #f00;
-    font-weight: bold;
-}
-
 .indent {
     padding-left: 7px;
-}
-
-.thumbnail {
-    height: auto;
-    padding: 3px;
-}
-
-.icon {
-    border: 0;
-    padding: 0 5px;
 }
 
 .parentdeath {
     border: thin solid #888;
     padding: 1px;
-}
-
-.selected-option {
-    background-color: #cef;
-}
-
-.border1 {
-    border: solid #000 1px;
 }
 
 .journal_box {
@@ -1300,8 +1263,6 @@ div.faq_body {
 
 /* Tbl hdrs and Light Text */
 .descriptionbox,
-.topbottombar,
-.topbottombar a,
 .list_label,
 .list_label a {
     background-color: #95b8e0;

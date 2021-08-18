@@ -210,7 +210,7 @@ use Fisharebest\Webtrees\Tree;
 
 <table class="w-100">
     <tr>
-        <td class="topbottombar text-center">
+        <td class="wt-page-options-value text-center">
             <a class="<?= $view === 'day' ? 'error' : '' ?>" href="<?= e(route(CalendarPage::class, ['cal' => $cal, 'day' => $cal_date->day(), 'month' => $cal_month, 'year' => $cal_date->year(), 'filterev' => $filterev, 'filterof' => $filterof, 'filtersx' => $filtersx, 'view' => 'day', 'tree' => $tree->name()])) ?>" rel="nofollow">
                 <?= I18N::translate('View this day') ?>
             </a>
@@ -223,7 +223,7 @@ use Fisharebest\Webtrees\Tree;
                 <?= I18N::translate('View this year') ?>
             </a>
         </td>
-        <td class="topbottombar text-center">
+        <td class="wt-page-options-value text-center">
             <?php
                 $n = 0;
             foreach (Date::calendarNames() as $newcal => $cal_name) {

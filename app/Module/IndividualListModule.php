@@ -440,7 +440,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                             if (Session::has('initiated')) {
                                 echo '<li class="wt-initials-list-item d-flex">';
                                 if ($show_all_firstnames === 'yes') {
-                                    echo '<span class="wt-initial px-1 warning">' . I18N::translate('All') . '</span>';
+                                    echo '<span class="wt-initial px-1 active">' . I18N::translate('All') . '</span>';
                                 } else {
                                     echo '<a class="wt-initial px-1" href="' . e($this->listUrl($tree, ['show_all_firstnames' => 'yes'] + $params)) . '" title="' . I18N::number($count) . '">' . I18N::translate('All') . '</a>';
                                 }

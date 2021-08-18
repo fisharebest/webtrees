@@ -405,10 +405,6 @@
     color: #555555;
 }
 
-.topbottombar {
-    color: #fff;
-}
-
 .btn-primary.focus, .btn-primary:focus {
     box-shadow:none;
     border: 0;
@@ -439,10 +435,6 @@ table.center {
 
 .date {
     color: #333;
-}
-
-.selected-option {
-    background-color: #edf7fd;
 }
 
 .rtl_cal_day {

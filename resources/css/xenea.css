@@ -572,15 +572,6 @@ img.block {
     vertical-align: middle;
 }
 
-.topbottombar {
-    background-color: #c3dfff;
-    color: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px;
-    text-align: center;
-}
-
 .button {
     width: 60px;
 }
@@ -697,42 +688,13 @@ a:hover .name1, a:hover .name2 {
     font-weight: bold;
 }
 
-.largeError {
-    color: #d00;
-    font-size: large;
-    font-weight: bold;
-}
-
-.warning {
-    color: #f00;
-    font-weight: bold;
-}
-
 .indent {
     padding-left: 20px;
-}
-
-.thumbnail {
-    height: auto;
-    padding: 3px;
-}
-
-.icon {
-    border: 0;
-    padding: 0 5px;
 }
 
 .parentdeath {
     border: thin solid #888;
     padding: 1px;
-}
-
-.selected-option {
-    background-color: #edf7fd;
-}
-
-.border1 {
-    border: solid #000 1px;
 }
 
 .journal_box {

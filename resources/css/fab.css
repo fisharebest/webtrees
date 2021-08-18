@@ -340,7 +340,6 @@ table {
 }
 
 /* ====== Round Corners ======== */
-.border1,
 .block,
 .descriptionbox,
 .list_label,
@@ -357,8 +356,7 @@ table {
 .person4,
 .person5,
 #indi_main_blocks,
-#tabs,
-.topbottombar {
+#tabs {
     margin: 4px;
     padding: 4px;
     border-radius: 4px;
@@ -494,40 +492,12 @@ a:hover, a:hover .name1, a:hover .name2 {
     font-weight: bold;
 }
 
-.largeError {
-    color: #f00;
-    font-weight: bold;
-}
-
-.warning {
-    color: #f00;
-    font-weight: bold;
-}
-
 .indent {
     padding-left: 7px;
 }
 
-.thumbnail {
-    height: auto;
-    padding: 3px;
-}
-
-.icon {
-    border: 0;
-    padding: 0 5px;
-}
-
 .parentdeath {
     padding: 1px;
-}
-
-.selected-option {
-    background-color: #d6e0ea;
-}
-
-.border1 {
-    border: 0;
 }
 
 .journal_box {
@@ -630,7 +600,6 @@ a:hover, a:hover .name1, a:hover .name2 {
     background-color: #ff0;
 }
 
-.topbottombar,
 .descriptionbox {
     font-weight: bold;
     background-color: #ccc;
