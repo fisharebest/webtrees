@@ -35,7 +35,6 @@ use Fisharebest\Webtrees\I18N;
         const config = <?= json_encode($leaflet_config) ?>;
 
         let map       = null;
-        let zoom      = null;
         let sidebar   = $('.osm-sidebar');
 
         // Map components
@@ -50,11 +49,7 @@ use Fisharebest\Webtrees\I18N;
             onAdd: function(map) {
                 let container = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-custom");
                 container.onclick = function() {
-                    if (zoom) {
-                        map.flyTo(markers.getBounds().getCenter(), zoom);
-                    } else {
-                        map.flyToBounds(markers.getBounds().pad(0.2));
-                    }
+                    map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
                     sidebar.scrollTo(sidebar.children(":first"));
 
                     return false;
@@ -93,10 +88,6 @@ use Fisharebest\Webtrees\I18N;
                 map.fitWorld();
                 sidebar_content += '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show')) ?> + '</div>';
             } else {
-                if (data.features.length === 1) {
-                    //fudge factor - maps zooms to maximum permitted otherwise
-                    zoom = data.features[0].properties.zoom;
-                }
                 let geoJsonLayer = L.geoJson(data, {
                     pointToLayer: function(feature, latlng) {
                         return new L.Marker(latlng, {
@@ -128,11 +119,7 @@ use Fisharebest\Webtrees\I18N;
                 });
                 markers.addLayer(geoJsonLayer);
                 map.addLayer(markers);
-                if (zoom) {
-                    map.setView(markers.getBounds().getCenter(), zoom);
-                } else {
-                    map.fitBounds(markers.getBounds(), {padding: [50, 30]});
-                }
+                map.fitBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
             }
             sidebar.append(sidebar_content);
         };
