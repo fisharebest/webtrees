@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
         <?php elseif ($individual_media->count() === 1) : ?>
             <?= $individual_media->first()->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
         <?php else : ?>
-            <div id="individual-images" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div id="individual-images" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
                 <div class="carousel-inner">
                     <?php foreach ($individual_media as $n => $media_file) : ?>
                         <div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
@@ -42,14 +42,14 @@ use Illuminate\Support\Collection;
                         </div>
                     <?php endforeach ?>
                 </div>
-                <a class="carousel-control-prev" href="#individual-images" role="button" data-slide="prev">
+                <button type="button" class="carousel-control-prev" data-bs-target="#individual-images" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden"><?= I18N::translate('previous') ?></span>
-                </a>
-                <a class="carousel-control-next" href="#individual-images" role="button" data-slide="next">
+                </button>
+                <button type="button" class="carousel-control-next" data-bs-target="#individual-images" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden"><?= I18N::translate('next') ?></span>
-                </a>
+                </button>
             </div>
         <?php endif ?>
 
