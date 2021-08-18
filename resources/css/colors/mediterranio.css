@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2019 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -15,52 +15,11 @@
 
 /* Mediterranio Palette */
 
-/* Header */
-.wt-header-wrapper, .btn-primary {
-    background: #a30f42;
-    border: 0;
-    color: #fff;
-}
-
-.wt-genealogy-menu, .btn-primary:hover {
-    background: #fc6d1d;
-}
-
-/* Tbls and menus  */
-.wt-page-options-label,
-.wt-facts-table th, .wt-facts-table .dropdown-toggle,
-.descriptionbox, .descriptionbox a,
-.topbottombar, .topbottombar a,
-.list_label, .list_label a {
-    background-color: #d23014;
-    color: #fff;
-}
-
-.ui-state-active, .ui-widget-content .ui-state-active {
-    background: none repeat scroll 0 0 #d23014;
-}
-
-/* Base */
-.wt-page-options-value,
-.wt-block-content,
-.wt-facts-table td,
-.ui-widget-header,
-.optionbox, .ui-state-active a:link,
-.list_value, .list_value_wrap, .list_value_wrap a,
-#login-form, #new_passwd_form, #register-form  {
-    background: #fef9dc;
-}
-
-/* Alerts */
-.error, .warning, .red {
-    color: #f00;
-}
-
-/* Light Text */
-.user-menu li a {
-    color: #fff;
-}
-
-.subheaders {
-    color: #494949;
+:root {
+    --color-1: #a30f42;
+    --color-2: #fc6d1d;
+    --color-3: #d23014;
+    --color-4: #fef9dc;
+    --color-5: #ffffff;
+    --color-6: #ffffff;
 }

@@ -728,13 +728,6 @@ a:hover .name1, a:hover .name2 {
     padding: 0 5px;
 }
 
-.subheaders {
-    font-weight: bold;
-    font-size: 15px;
-    margin-top: 15px;
-    vertical-align: bottom;
-}
-
 .parentdeath {
     border: thin solid #888;
     padding: 1px;

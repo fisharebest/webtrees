@@ -100,8 +100,18 @@
     color: #333;
 }
 
-.wt-header-wrapper {
-    background: #acf none;
+.wt-header-wrapper, .btn-primary {
+    background: var(--color-1);
+    border: 0;
+    color: var(--color-5);
+}
+
+.btn-primary {
+    background: var(--color-1);
+}
+
+.btn-primary:hover {
+    background: var(--color-2);
 }
 
 .wt-site-title {
@@ -126,6 +136,7 @@
 }
 
 .wt-genealogy-menu {
+    background: var(--color-2);
     /* Extend to full page width */
     flex: 0 1 100vw;
     /* Recalculate margins for content */
@@ -148,6 +159,26 @@
     width: 40px;
     height: 40px;
 }
+
+.wt-page-options-label,
+.wt-facts-table th, .wt-facts-table .dropdown-toggle,
+.descriptionbox, .descriptionbox a,
+.topbottombar, .topbottombar a,
+.list_label, .list_label a {
+    background-color: var(--color-3);
+    color: var(--color-6);
+}
+
+.wt-page-options-value,
+.wt-block-content,
+.wt-facts-table td,
+.ui-widget-header,
+.optionbox, .ui-state-active a:link,
+.list_value, .list_value_wrap, .list_value_wrap a,
+#login-form, #new_passwd_form, #register-form  {
+    background: var(--color-4);
+}
+
 
 .menu-tree .nav-link::before {
     content: url(colors/menu/tree.png);
@@ -372,11 +403,6 @@
 
 .wt-chart-box-name {
     color: #555555;
-}
-
-/* ios on click workaround */
-a {
-    color: #333;
 }
 
 .topbottombar {
