@@ -22,10 +22,10 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
@@ -34,16 +34,44 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function array_filter;
 use function array_keys;
+use function array_map;
 use function assert;
+use function cos;
+use function deg2rad;
+use function e;
+use function gd_info;
+use function hexdec;
+use function imagecolorallocate;
+use function imagecolortransparent;
+use function imagecreate;
+use function imagedestroy;
+use function imagefilledarc;
+use function imagefilledrectangle;
+use function imagepng;
+use function imagettfbbox;
+use function imagettftext;
 use function implode;
 use function intdiv;
 use function is_string;
 use function max;
+use function mb_substr;
 use function min;
+use function ob_get_clean;
+use function ob_start;
 use function redirect;
+use function response;
+use function round;
 use function route;
-use function str_contains;
+use function rtrim;
+use function sin;
+use function sqrt;
+use function strip_tags;
+use function substr;
+use function view;
+
+use const IMG_ARC_PIE;
 
 /**
  * Class FanChartModule
@@ -75,8 +103,14 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     private const MINIMUM_WIDTH       = 50;
     private const MAXIMUM_WIDTH       = 500;
 
-    /** @var ChartService */
-    private $chart_service;
+    // Chart layout parameters
+    private const FONT               = Webtrees::ROOT_DIR . 'resources/fonts/DejaVuSans.ttf';
+    private const CHART_WIDTH_PIXELS = 800;
+    private const TEXT_SIZE_POINTS   = self::CHART_WIDTH_PIXELS / 120.0;
+    private const TEXT_SIZE_PIXELS   = self::TEXT_SIZE_POINTS / 0.75;
+    private const GAP_BETWEEN_RINGS  = 2;
+
+    private ChartService $chart_service;
 
     /**
      * FanChartModule constructor.
@@ -168,8 +202,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * A form to request the chart parameters.
      *
-     * @param Individual $individual
-     * @param mixed[]    $parameters
+     * @param Individual               $individual
+     * @param array<string,int|string> $parameters
      *
      * @return string
      */
@@ -267,131 +301,145 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     {
         $ancestors = $this->chart_service->sosaStradonitzAncestors($individual, $generations);
 
-        $gen  = $generations - 1;
-        $sosa = 2 ** $generations - 1;
+        $width = intdiv(self::CHART_WIDTH_PIXELS * $width, 100);
 
-        // fan size
-        $fanw = intdiv(640 * $width, 100);
-        $cx   = $fanw / 2 - 1; // center x
-        $cy   = $cx; // center y
-        $rx   = $fanw - 1;
-        $rw   = $fanw / ($gen + 1);
-        $fanh = $fanw; // fan height
-        if ($style === self::STYLE_HALF_CIRCLE) {
-            $fanh = intdiv($fanh * ($gen + 1), $gen * 2);
+        switch ($style) {
+            case self::STYLE_HALF_CIRCLE:
+                $chart_start_angle = 180;
+                $chart_end_angle   = 360;
+                $height            = intdiv($width, 2);
+                break;
+
+            case self::STYLE_THREE_QUARTER_CIRCLE;
+                $chart_start_angle = 135;
+                $chart_end_angle   = 405;
+                $height            = intdiv($width * 86, 100);
+                break;
+
+            case self::STYLE_FULL_CIRCLE;
+            default:
+                $chart_start_angle = 90;
+                $chart_end_angle   = 450;
+                $height            = $width;
+                break;
         }
-        if ($style === self::STYLE_THREE_QUARTER_CIRCLE) {
-            $fanh = intdiv($fanw * 86, 100);
-        }
-        $scale = $fanw / 640;
 
-        // Create the image
-        $image = imagecreate($fanw, $fanh);
-
-        // Create colors
+        // Start with a transparent image.
+        $image       = imagecreate($width, $height);
         $transparent = imagecolorallocate($image, 0, 0, 0);
         imagecolortransparent($image, $transparent);
+        imagefilledrectangle($image, 0, 0, $width, $height, $transparent);
 
+        // Use theme-specified colors.
         /** @var ModuleThemeInterface $theme */
-        $theme = app(ModuleThemeInterface::class);
-
-        $foreground = $this->imageColor($image, $theme->parameter('chart-font-color'));
-
+        $theme       = app(ModuleThemeInterface::class);
+        $text_color  = $this->imageColor($image, $theme->parameter('chart-font-color'));
         $backgrounds = [
             'M' => $this->imageColor($image, $theme->parameter('chart-background-m')),
             'F' => $this->imageColor($image, $theme->parameter('chart-background-f')),
             'U' => $this->imageColor($image, $theme->parameter('chart-background-u')),
         ];
 
-        imagefilledrectangle($image, 0, 0, $fanw, $fanh, $transparent);
+        // Co-ordinates are measured from the top-left corner.
+        $center_x  = intdiv($width, 2);
+        $center_y  = $center_x;
+        $arc_width = $width / $generations / 2.0;
 
-        $fandeg = 90 * $style;
-
-        // Popup menus for each ancestor
+        // Popup menus for each ancestor.
         $html = '';
 
-        // Areas for the imagemap
+        // Areas for the image map.
         $areas = '';
 
-        // loop to create fan cells
-        while ($gen >= 0) {
-            // clean current generation area
-            $deg2 = 360 + ($fandeg - 180) / 2;
-            $deg1 = $deg2 - $fandeg;
+        for ($generation = $generations; $generation >= 1; $generation--) {
+            // Which ancestors to include in this ring. 1, 2-3, 4-7, 8-15, 16-31, etc.
+            // The end of the range is also the number of ancestors in the ring.
+            $sosa_start = 2 ** $generation - 1;
+            $sosa_end   = 2 ** ($generation - 1);
 
-            // The arc size must be an even number of pixels: https://bugs.php.net/bug.php?id=79763
-            $even_rx = 2 * intdiv(1 + (int) $rx, 2);
-            imagefilledarc($image, (int) $cx, (int) $cy, $even_rx, $even_rx, (int) $deg1, (int) $deg2, $backgrounds['U'], IMG_ARC_PIE);
-            $rx -= 3;
+            $arc_diameter = intdiv($width * $generation, $generations);
+            $arc_radius = $arc_diameter / 2;
 
-            // calculate new angle
-            $p2    = 2 ** $gen;
-            $angle = $fandeg / $p2;
-            $deg2  = 360 + ($fandeg - 180) / 2;
-            $deg1  = $deg2 - $angle;
-            // special case for rootid cell
-            if ($gen == 0) {
-                $deg1 = 90;
-                $deg2 = 360 + $deg1;
-            }
+            // Draw an empty background, for missing ancestors.
+            imagefilledarc(
+                $image,
+                $center_x,
+                $center_y,
+                $arc_diameter,
+                $arc_diameter,
+                $chart_start_angle,
+                $chart_end_angle,
+                $backgrounds['U'],
+                IMG_ARC_PIE
+            );
 
-            // draw each cell
-            while ($sosa >= $p2) {
+            $arc_diameter -= 2* self::GAP_BETWEEN_RINGS;
+
+            for ($sosa = $sosa_start; $sosa >= $sosa_end; $sosa--) {
                 if ($ancestors->has($sosa)) {
-                    $person  = $ancestors->get($sosa);
-                    $name    = $person->fullName();
-                    $addname = $person->alternateName();
+                    $individual = $ancestors->get($sosa);
 
-                    $text = I18N::reverseText($name);
-                    if ($addname) {
-                        $text .= "\n" . I18N::reverseText($addname);
+                    $chart_angle = $chart_end_angle - $chart_start_angle;
+                    $start_angle = $chart_start_angle + intdiv($chart_angle * ($sosa - $sosa_end), $sosa_end);
+                    $end_angle   = $chart_start_angle + intdiv($chart_angle * ($sosa - $sosa_end + 1), $sosa_end);
+                    $angle       = $end_angle - $start_angle;
+
+                    imagefilledarc(
+                        $image,
+                        $center_x,
+                        $center_y,
+                        $arc_diameter,
+                        $arc_diameter,
+                        $start_angle,
+                        $end_angle,
+                        $backgrounds[$individual->sex()],
+                        IMG_ARC_PIE
+                    );
+
+                    // Text is written at a tangent to the arc.
+                    $text_angle = 270.0 - ($start_angle + $end_angle) / 2.0;
+
+                    $text_radius = $arc_diameter / 2.0 - $arc_width * 0.25;
+
+                    // Don't draw text right up to the edge of the arc.
+                    if ($angle === 360) {
+                        $delta = 90;
+                    } elseif ($angle === 180) {
+                        if ($generation === 1) {
+                            $delta = 20;
+                        } else {
+                            $delta = 60;
+                        }
+                    } elseif ($angle > 120) {
+                        $delta = 45;
+                    } elseif ($angle > 60) {
+                        $delta = 15;
+                    } else {
+                        $delta = 1;
                     }
 
-                    $text .= "\n" . I18N::reverseText($person->lifespan());
+                    $tx_start = $center_x + $text_radius * cos(deg2rad($start_angle + $delta));
+                    $ty_start = $center_y + $text_radius * sin(deg2rad($start_angle + $delta));
+                    $tx_end   = $center_x + $text_radius * cos(deg2rad($end_angle - $delta));
+                    $ty_end   = $center_y + $text_radius * sin(deg2rad($end_angle - $delta));
 
-                    $background = $backgrounds[$person->sex()];
+                    $max_text_length = (int) sqrt(($tx_end - $tx_start) ** 2 + ($ty_end - $ty_start) ** 2);
 
-                    // The arc size must be an even number of pixels: https://bugs.php.net/bug.php?id=79763
-                    $even_rx = 2 * intdiv(1 + (int) $rx, 2);
-                    imagefilledarc($image, (int) $cx, (int) $cy, $even_rx, $even_rx, (int) $deg1, (int) $deg2, $background, IMG_ARC_PIE);
+                    $text_lines = array_filter([
+                        I18N::reverseText($individual->fullName()),
+                        I18N::reverseText($individual->alternateName() ?? ''),
+                        I18N::reverseText($individual->lifespan()),
+                    ]);
 
-                    // split and center text by lines
-                    $wmax = (int) ($angle * 7 / 7 * $scale);
-                    $wmax = min($wmax, 35 * $scale);
-                    if ($gen === 0) {
-                        $wmax = min($wmax, 17 * $scale);
-                    }
-                    $text = $this->splitAlignText($text, (int) $wmax);
+                    $text_lines = array_map(
+                        fn (string $line): string => $this->fitTextToPixelWidth($line, $max_text_length),
+                        $text_lines
+                    );
 
-                    // text angle
-                    $tangle = 270 - ($deg1 + $angle / 2);
-                    if ($gen === 0) {
-                        $tangle = 0;
-                    }
+                    $text = implode("\n", $text_lines);
 
-                    // calculate text position
-                    $deg = $deg1 + 0.44;
-                    if ($deg2 - $deg1 > 40) {
-                        $deg = $deg1 + ($deg2 - $deg1) / 11;
-                    }
-                    if ($deg2 - $deg1 > 80) {
-                        $deg = $deg1 + ($deg2 - $deg1) / 7;
-                    }
-                    if ($deg2 - $deg1 > 140) {
-                        $deg = $deg1 + ($deg2 - $deg1) / 4;
-                    }
-                    if ($gen === 0) {
-                        $deg = 180;
-                    }
-                    $rad = deg2rad($deg);
-                    $mr  = ($rx - $rw / 4) / 2;
-                    if ($gen > 0 && $deg2 - $deg1 > 80) {
-                        $mr = $rx / 2;
-                    }
-                    $tx = $cx + $mr * cos($rad);
-                    $ty = $cy + $mr * sin($rad);
-                    if ($sosa === 1) {
-                        $ty -= $mr / 2;
+                    if ($generation === 1) {
+                        $ty_start -= $text_radius / 2;
                     }
 
                     // If PHP is compiled with --enable-gd-jis-conv, then the function
@@ -401,66 +449,54 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $text = mb_convert_encoding($text, 'EUC-JP', 'UTF-8');
                     }
 
-                    // print text
                     imagettftext(
                         $image,
-                        7,
-                        $tangle,
-                        (int) $tx,
-                        (int) $ty,
-                        $foreground,
-                        Webtrees::ROOT_DIR . 'resources/fonts/DejaVuSans.ttf',
+                        self::TEXT_SIZE_POINTS,
+                        $text_angle,
+                        (int) $tx_start,
+                        (int) $ty_start,
+                        $text_color,
+                        static::FONT,
                         $text
                     );
+                    // Debug text positions by underlining first line of text
+                    //imageline($image, (int) $tx_start, (int) $ty_start, (int) $tx_end, (int) $ty_end, $backgrounds['U']);
 
                     $areas .= '<area shape="poly" coords="';
-                    // plot upper points
-                    $mr  = $rx / 2;
-                    $deg = $deg1;
-                    while ($deg <= $deg2) {
-                        $rad   = deg2rad($deg);
-                        $tx    = round($cx + $mr * cos($rad));
-                        $ty    = round($cy + $mr * sin($rad));
-                        $areas .= "$tx,$ty,";
-                        $deg   += ($deg2 - $deg1) / 6;
+                    for ($deg = $start_angle; $deg <= $end_angle; $deg++) {
+                        $rad = deg2rad($deg);
+                        $areas .= round($center_x + $arc_radius * cos(deg2rad($rad)), 1) . ',';
+                        $areas .= round($center_y + $arc_radius * sin(deg2rad($rad)), 1) . ',';
                     }
-                    // plot lower points
-                    $mr  = ($rx - $rw) / 2;
-                    $deg = $deg2;
-                    while ($deg >= $deg1) {
-                        $rad   = deg2rad($deg);
-                        $tx    = round($cx + $mr * cos($rad));
-                        $ty    = round($cy + $mr * sin($rad));
-                        $areas .= "$tx,$ty,";
-                        $deg   -= ($deg2 - $deg1) / 6;
+                    for ($deg = $end_angle; $deg >= $start_angle; $deg--) {
+                        $rad = deg2rad($deg);
+                        $areas .= round($center_x + ($arc_radius - $arc_width) * cos($rad), 1) . ',';
+                        $areas .= round($center_y + ($arc_radius - $arc_width) * sin($rad), 1) . ',';
                     }
-                    // join first point
-                    $mr    = $rx / 2;
-                    $deg   = $deg1;
-                    $rad   = deg2rad($deg);
-                    $tx    = round($cx + $mr * cos($rad));
-                    $ty    = round($cy + $mr * sin($rad));
-                    $areas .= "$tx,$ty";
-                    // add action url
-                    $areas .= '" href="#' . $person->xref() . '"';
-                    $html  .= '<div id="' . $person->xref() . '" class="fan_chart_menu">';
-                    $html  .= '<div class="person_box"><div class="small">';
-                    $html  .= '<div class="charts">';
-                    $html  .= '<a href="' . e($person->url()) . '" class="dropdown-item">' . $name . '</a>';
-                    foreach ($theme->individualBoxMenu($person) as $menu) {
-                        $html .= '<a href="' . e($menu->getLink()) . '" class="dropdown-item p-1 ' . e($menu->getClass()) . '">' . $menu->getLabel() . '</a>';
+                    $rad = deg2rad($start_angle);
+                    $areas .= round($center_x + $arc_radius * cos($rad), 1) . ',';
+                    $areas .= round($center_y + $arc_radius * sin($rad), 1) . '"';
+
+                    $areas .= ' href="#' . e($individual->xref()) . '"';
+                    $areas .= ' alt="' . strip_tags($individual->fullName()) . '"';
+                    $areas .= ' title="' . strip_tags($individual->fullName()) . '">';
+
+                    $html  .= '<div id="' . $individual->xref() . '" class="fan_chart_menu">';
+                    $html  .= '<a href="' . e($individual->url()) . '" class="dropdown-item p-1">';
+                    $html  .= $individual->fullName();
+                    $html  .= '</a>';
+
+                    foreach ($theme->individualBoxMenu($individual) as $menu) {
+                        $link  = $menu->getLink();
+                        $class =  $menu->getClass();
+                        $html .= '<a href="' . e($link) . '" class="dropdown-item p-1 ' . e($class) . '">';
+                        $html .= $menu->getLabel();
+                        $html .= '</a>';
                     }
+
                     $html  .= '</div>';
-                    $html  .= '</div></div>';
-                    $html  .= '</div>';
-                    $areas .= ' alt="' . strip_tags($person->fullName()) . '" title="' . strip_tags($person->fullName()) . '">';
                 }
-                $deg1 -= $angle;
-                $deg2 -= $angle;
-                $sosa--;
             }
-            $rx -= $rw;
-            $gen--;
         }
 
         ob_start();
@@ -469,88 +505,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $png = ob_get_clean();
 
         return response(view('modules/fanchart/chart', [
-            'fanh'  => $fanh,
-            'fanw'  => $fanw,
+            'fanh'  => $height,
+            'fanw'  => $width,
             'html'  => $html,
             'areas' => $areas,
             'png'   => $png,
             'title' => $this->chartTitle($individual),
         ]));
-    }
-
-    /**
-     * split and center text by lines
-     *
-     * @param string $data   input string
-     * @param int    $maxlen max length of each line
-     *
-     * @return string $text output string
-     */
-    protected function splitAlignText(string $data, int $maxlen): string
-    {
-        $RTLOrd = [
-            215,
-            216,
-            217,
-            218,
-            219,
-        ];
-
-        $lines = explode("\n", $data);
-        // more than 1 line : recursive calls
-        if (count($lines) > 1) {
-            $text = '';
-            foreach ($lines as $line) {
-                $text .= $this->splitAlignText($line, $maxlen) . "\n";
-            }
-
-            return $text;
-        }
-        // process current line word by word
-        $split = explode(' ', $data);
-        $text  = '';
-        $line  = '';
-
-        // do not split hebrew line
-        $found = false;
-        foreach ($RTLOrd as $ord) {
-            if (str_contains($data, chr($ord))) {
-                $found = true;
-            }
-        }
-        if ($found) {
-            $line = $data;
-        } else {
-            foreach ($split as $word) {
-                $len  = strlen($line);
-                $wlen = strlen($word);
-                if (($len + $wlen) < $maxlen) {
-                    if ($line !== '') {
-                        $line .= ' ';
-                    }
-                    $line .= $word;
-                } else {
-                    $p = max(0, (int) (($maxlen - $len) / 2));
-                    if ($line !== '') {
-                        $line = str_repeat(' ', $p) . $line; // center alignment using spaces
-                        $text .= $line . "\n";
-                    }
-                    $line = $word;
-                }
-            }
-        }
-        // last line
-        if ($line !== '') {
-            $len = strlen($line);
-            if (in_array(ord($line[0]), $RTLOrd, true)) {
-                $len /= 2;
-            }
-            $p    = max(0, (int) (($maxlen - $len) / 2));
-            $line = str_repeat(' ', $p) . $line; // center alignment using spaces
-            $text .= $line;
-        }
-
-        return $text;
     }
 
     /**
@@ -586,5 +547,40 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             /* I18N: layout option for the fan chart */
             self::STYLE_FULL_CIRCLE          => I18N::translate('full circle'),
         ];
+    }
+
+    /**
+     * Fit text to a given number of pixels by either cropping to fit,
+     * or adding spaces to center.
+     *
+     * @param string $text
+     * @param int    $pixels
+     *
+     * @return string
+     */
+    protected function fitTextToPixelWidth(string $text, int $pixels): string
+    {
+        while ($this->textWidthInPixels($text) > $pixels) {
+            $text = mb_substr($text, 0, -1);
+        }
+
+        while ($this->textWidthInPixels(' ' . $text . ' ') < $pixels) {
+            $text = ' ' . $text . ' ';
+        }
+
+        // We only need the leading spaces.
+        return rtrim($text);
+    }
+
+    /**
+     * @param string $text
+     *
+     * @return int
+     */
+    protected function textWidthInPixels(string $text): int
+    {
+        $bounding_box = imagettfbbox(self::TEXT_SIZE_POINTS, 0, self::FONT, $text);
+
+        return $bounding_box[4] - $bounding_box[0];
     }
 }
