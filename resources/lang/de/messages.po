@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-29 09:57+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-08-21 05:04+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -631,7 +619,7 @@ msgstr "<Standardthema>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Hinweis: Mit dem Ausfüllen und Absenden dieses Formulars erklären Sie sich damit einverstanden</p><ul><li>den Datenschutz von auf unserer Website aufgeführten lebenden Personen zu beachten;</li><li>und im Textfeld \"Bemerkungen\" Ihr Verwandtschaftsverhältnis zu Personen dieser Website zu beschreiben oder uns Informationen über Personen zukommen zu lassen, die auf unserer Website aufgeführt werden sollten.</li></ul>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -5734,7 +5722,7 @@ msgstr "Arbeitgeber"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Zwischenablage leeren"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -10453,7 +10441,7 @@ msgstr "Bitte beachten: Wenn ein Benutzerkonto mit einem Datensatz verknüpft is
 
 #: resources/views/help/relationship-privacy.phtml:16
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "Anmerkung: längere Pfade benötigen viel Rechenleistung, was die Antwortzeit der Site für die Benutzer verlängern kann."
+msgstr "Hinweis: Längere Pfade benötigen viele Berechnungen, was dazu führen kann, dass Ihre Website für diese Nutzer langsam läuft."
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:114 app/Module/NoteListModule.php:164
@@ -16000,7 +15988,7 @@ msgstr "Silhouetten verwenden"
 
 #: app/Http/RequestHandlers/CopyFact.php:79
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Verwenden Sie das Menü \"Bearbeiten\", um dies zu einem anderen Datensatz hinzuzufügen."
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -20807,7 +20795,7 @@ msgstr[1] "±%s Jahre"
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s“ wurde in die Zwischenablage kopiert."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
