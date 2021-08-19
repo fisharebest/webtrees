@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-08-18 09:13+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-08-21 05:04+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -635,7 +619,7 @@ msgstr "<standaard thema>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Let op: Door dit formulier in te vullen en te verzenden, gaat u ermee akkoord:</p><ul><li>de privacy te beschermen van levende personen die op onze website zijn vermeld;</li><li>en in het onderstaande tekstvak uit te leggen met wie u verwant bent, of ons informatie te verstrekken over iemand die op onze website zou moeten worden vermeld.</li></ul>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -5590,11 +5574,11 @@ msgstr "Wijzig naam"
 #: resources/views/family-page-menu.phtml:76
 #: resources/views/individual-page-menu.phtml:124
 msgid "Edit the raw GEDCOM"
-msgstr "Wijzig onbewerkte GEDCOM-record"
+msgstr "Wijzig onbewerkt GEDCOM-record"
 
 #: app/Http/RequestHandlers/EditNotePage.php:59
 msgid "Edit the shared note"
-msgstr "Wijzig een gedeelde notitie"
+msgstr "Wijzig gedeelde notitie"
 
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
@@ -5738,7 +5722,7 @@ msgstr "Werkgever"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Klembord leegmaken"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -5757,7 +5741,7 @@ msgstr "Door deze optie in te schakelen worden alle bezoekers gedwongen aan te m
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
-msgstr "Eind Jaar"
+msgstr "Eindjaar"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
@@ -7713,7 +7697,7 @@ msgstr "Als u een groot aantal mediabestanden heeft, kunt u ze organiseren in ma
 
 #: resources/views/admin/trees-import.phtml:96
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM bestand."
+msgstr "Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM-bestand."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -13713,7 +13697,7 @@ msgstr "Diavoorstelling beginnen als pagina geladen is"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
-msgstr "Begin Jaar"
+msgstr "Beginjaar"
 
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
@@ -16004,7 +15988,7 @@ msgstr "Gebruik silhouetten"
 
 #: app/Http/RequestHandlers/CopyFact.php:79
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Gebruik het \"wijzig\"-menu om dit in een ander record te plakken."
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -20811,7 +20795,7 @@ msgstr[1] "±%s jaar"
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "\"%s\" is naar het klembord gekopieerd."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
