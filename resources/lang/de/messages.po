@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-07-27 16:31+0000\n"
+"PO-Revision-Date: 2021-08-21 05:04+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -10510,7 +10510,9 @@ msgstr "Bitte beachten: Wenn ein Benutzerkonto mit einem Datensatz verknüpft is
 
 #: resources/views/help/relationship-privacy.phtml:16
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "Anmerkung: längere Pfade benötigen viel Rechenleistung, was die Antwortzeit der Site für die Benutzer verlängern kann."
+msgstr ""
+"Hinweis: Längere Pfade benötigen viele Berechnungen, was dazu führen kann, "
+"dass Ihre Website für diese Nutzer langsam läuft."
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:112 app/Module/NoteListModule.php:164
