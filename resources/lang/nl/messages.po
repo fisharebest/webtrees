@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-08-18 09:13+0000\n"
+"PO-Revision-Date: 2021-08-21 05:04+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -5664,11 +5664,11 @@ msgstr "Wijzig naam"
 #: resources/views/repository-page-menu.phtml:30
 #: resources/views/source-page-menu.phtml:30
 msgid "Edit the raw GEDCOM"
-msgstr "Wijzig onbewerkte GEDCOM-record"
+msgstr "Wijzig onbewerkt GEDCOM-record"
 
 #: app/Http/RequestHandlers/EditNotePage.php:59
 msgid "Edit the shared note"
-msgstr "Wijzig een gedeelde notitie"
+msgstr "Wijzig gedeelde notitie"
 
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
@@ -5832,7 +5832,7 @@ msgstr "Door deze optie in te schakelen worden alle bezoekers gedwongen aan te m
 
 #: resources/views/modules/lifespans-chart/page.phtml:63
 msgid "End year"
-msgstr "Eind Jaar"
+msgstr "Eindjaar"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
@@ -7725,7 +7725,11 @@ msgstr "Als u een groot aantal mediabestanden heeft, kunt u ze organiseren in ma
 
 #: resources/views/admin/trees-import.phtml:96
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM bestand."
+msgstr ""
+"Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line "
+"gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit "
+"vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM-"
+"bestand."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -13783,7 +13787,7 @@ msgstr "Diavoorstelling beginnen als pagina geladen is"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
-msgstr "Begin Jaar"
+msgstr "Beginjaar"
 
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
