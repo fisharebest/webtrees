@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-08-18 09:13+0000\n"
+"PO-Revision-Date: 2021-08-21 05:04+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -5457,7 +5457,7 @@ msgstr "Bewerk notitie"
 #: edit_interface.php:112 edit_interface.php:162 edit_interface.php:224
 #: edit_interface.php:319 edit_interface.php:2559 help_text.php:284
 msgid "Edit the raw GEDCOM"
-msgstr "Wijzig onbewerkte GEDCOM-record"
+msgstr "Wijzig onbewerkt GEDCOM-record"
 
 #: app/Controller/RepositoryController.php:43
 #: app/Controller/RepositoryController.php:48
@@ -5467,7 +5467,7 @@ msgstr "Wijzig opslagplaats"
 #: app/Functions/FunctionsEdit.php:450 edit_interface.php:1424
 #: edit_interface.php:1470
 msgid "Edit the shared note"
-msgstr "Wijzig een gedeelde notitie"
+msgstr "Wijzig gedeelde notitie"
 
 #: app/Controller/SourceController.php:42
 #: app/Controller/SourceController.php:47
@@ -5625,7 +5625,7 @@ msgstr "Eind IP-adres"
 #. I18N: The latest year in a range
 #: lifespan.php:77
 msgid "End year"
-msgstr "Eind Jaar"
+msgstr "Eindjaar"
 
 #: modules_v3/change_report/report.xml:6
 msgid "Ending range of change dates"
@@ -7367,7 +7367,11 @@ msgstr "Als u een groot aantal mediabestanden heeft, kunt u ze organiseren in ma
 
 #: admin_trees_manage.php:278
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM bestand."
+msgstr ""
+"Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line "
+"gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit "
+"vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM-"
+"bestand."
 
 #: app/Module/RecentChangesModule.php:186
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
@@ -13186,7 +13190,7 @@ msgstr "Diavoorstelling beginnen als pagina geladen is"
 #. I18N: The earliest year in a range
 #: lifespan.php:69
 msgid "Start year"
-msgstr "Begin Jaar"
+msgstr "Beginjaar"
 
 #: modules_v3/change_report/report.xml:5
 msgid "Starting range of change dates"
