@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
 /**
@@ -40,144 +39,138 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-    "use strict";
+  'use strict';
 
-    window.WT_OSM = (function () {
-        const config = <?= json_encode($leaflet_config) ?>;
+  window.WT_OSM = (function () {
+    const config = <?= json_encode($leaflet_config) ?>;
 
-        let map      = null;
-        let zoom     = null;
-        let sidebar  = $('.osm-sidebar');
+    let map = null;
+    let sidebar = $('.osm-sidebar');
 
-        // Map components
-        let markers = L.markerClusterGroup({
-            showCoverageOnHover: false,
-        });
+    // Map components
+    let markers = L.markerClusterGroup({
+      showCoverageOnHover: false,
+    });
 
-        let resetControl = L.Control.extend({
-            options: {
-                position: "topleft",
-            },
+    let resetControl = L.Control.extend({
+      options: {
+        position: 'topleft',
+      },
 
-            onAdd: function (map) {
-                let container = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-custom");
-                container.onclick = function () {
-                    if (zoom) {
-                        map.flyTo(markers.getBounds().getCenter(), zoom);
-                    } else {
-                        map.flyToBounds(markers.getBounds().pad(0.2));
-                    }
-                    sidebar.scrollTo(sidebar.children(":first"));
-
-                    return false;
-                };
-                let anchor   = L.DomUtil.create("a", "leaflet-control-reset", container);
-                let reset    = config.i18n.reset;
-                anchor.setAttribute('aria-label', reset);
-                anchor.href  = "#";
-                anchor.title = reset;
-                anchor.role  = "button";
-                let image    = L.DomUtil.create("i", "fas fa-redo", anchor);
-                image.alt    = reset;
-
-                return container;
-            },
-        });
-
-       /**
-        * @private
-        */
-        let _drawMap = function() {
-            map = webtrees.buildLeafletJsMap('osm-map', config)
-            .addControl(new resetControl());
+      onAdd: function (map) {
+        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        container.onclick = function () {
+          map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
+          sidebar.scrollTo(sidebar.children(':first'));
+          return false;
         };
+        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+        let reset = config.i18n.reset;
+        anchor.setAttribute('aria-label', reset);
+        anchor.href = '#';
+        anchor.title = reset;
+        anchor.role = 'button';
+        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
+        image.alt = reset;
 
-        /**
-        * @private
-        */
-        let _buildMapData = function () {
-            let data = <?= json_encode($data['markers']) ?>;
+        return container;
+      },
+    });
 
-            let geoJsonLayer = L.geoJson(data, {
-                pointToLayer: function (feature, latlng) {
-                    return new L.Marker(latlng, {
-                        icon:  L.BeautifyIcon.icon({
-                            icon           : 'bullseye fas',
-                            borderColor    : "transparent",
-                            backgroundColor: '#1e90ff',
-                            iconShape      : "marker",
-                            textColor      : "white",
-                        }),
-                        title: feature.properties.tooltip,
-                        alt  : feature.properties.tooltip,
-                        id   : feature.id,
-                    })
-                        .on("popupopen", function (e) {
-                            let item = sidebar.children(".mapped[data-id=" + e.target.feature.id + "]");
-                            item.addClass("messagebox");
-                            sidebar.scrollTo(item);
-                        })
-                        .on("popupclose", function () {
-                            sidebar.children(".mapped")
-                                .removeClass("messagebox");
-                        });
-                },
-                onEachFeature: function (feature, layer) {
-                    layer.bindPopup(feature.properties.popup);
-                },
+    /**
+     * @private
+     */
+    let _drawMap = function () {
+      map = webtrees.buildLeafletJsMap('osm-map', config)
+        .addControl(new resetControl());
+    };
+
+    /**
+     * @private
+     */
+    let _buildMapData = function () {
+      let data = <?= json_encode($data['markers']) ?>;
+
+      let geoJsonLayer = L.geoJson(data, {
+        pointToLayer: function (feature, latlng) {
+          return new L.Marker(latlng, {
+            icon: L.BeautifyIcon.icon({
+              icon: 'bullseye fas',
+              borderColor: 'transparent',
+              backgroundColor: '#1e90ff',
+              iconShape: 'marker',
+              textColor: 'white',
+            }),
+            title: feature.properties.tooltip,
+            alt: feature.properties.tooltip,
+            id: feature.id,
+          })
+            .on('popupopen', function (e) {
+              let item = sidebar.children('.mapped[data-id=' + e.target.feature.id + ']');
+              item.addClass('messagebox');
+              sidebar.scrollTo(item);
+            })
+            .on('popupclose', function () {
+              sidebar.children('.mapped')
+                .removeClass('messagebox');
             });
+        },
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup(feature.properties.popup);
+        },
+      });
 
-            if (data.features.length > 0) {
-                markers.addLayer(geoJsonLayer);
-                map.addLayer(markers)
-            }
+      if (data.features.length > 0) {
+        markers.addLayer(geoJsonLayer);
+        map.addLayer(markers);
+      }
 
-            map.fitBounds(<?= json_encode($data['bounds']) ?>, {padding: [50, 30]});
-            sidebar.append(<?= json_encode($data['sidebar']) ?>);
-        };
+      map.fitBounds(<?= json_encode($data['bounds']) ?>, { padding: [50, 30] });
+      sidebar.append(<?= json_encode($data['sidebar']) ?>);
+    };
 
-        /**
-         * @param   elem
-         * @returns {$}
-         */
-        $.fn.scrollTo = function (elem) {
-            let _this = $(this);
-            _this.animate({
-                scrollTop: elem.offset().top - _this.offset().top + _this.scrollTop(),
-            });
-            return this;
-        };
+    /**
+     * @param   elem
+     * @returns {$}
+     */
+    $.fn.scrollTo = function (elem) {
+      let _this = $(this);
+      _this.animate({
+        scrollTop: elem.offset().top - _this.offset().top + _this.scrollTop(),
+      });
+      return this;
+    };
 
-        // Activate marker popup when sidebar entry clicked
-        $(function () {
-            sidebar
-            // open marker popup if sidebar event is clicked
-                .on("click", ".mapped", function (e) {
-                    // first close any existing
-                    map.closePopup();
-                    let eventId = $(this).data("id");
-                    //find the marker corresponding to the clicked event
-                    let mkrLayer = markers.getLayers().filter(function (v) {
-                        return typeof (v.feature) !== "undefined" && v.feature.id === eventId;
-                    });
-                    let mkr = mkrLayer.pop();
-                    // Unfortunately zoomToShowLayer zooms to maxZoom
-                    // when all marker in a cluster have exactly the
-                    // same co-ordinates
-                    markers.zoomToShowLayer(mkr, function (e) {
-                        mkr.openPopup();
-                    });
-                    return false;
-                })
-                .on("click", "a", function (e) { // stop click on a person also opening the popup
-                    e.stopPropagation();
-                });
+    // Activate marker popup when sidebar entry clicked
+    $(function () {
+      sidebar
+        // open marker popup if sidebar event is clicked
+        .on('click', '.mapped', function (e) {
+          // first close any existing
+          map.closePopup();
+          let eventId = $(this).data('id');
+          //find the marker corresponding to the clicked event
+          let mkrLayer = markers.getLayers().filter(function (v) {
+            return typeof (v.feature) !== 'undefined' && v.feature.id === eventId;
+          });
+          let mkr = mkrLayer.pop();
+          // Unfortunately zoomToShowLayer zooms to maxZoom
+          // when all marker in a cluster have exactly the
+          // same co-ordinates
+          markers.zoomToShowLayer(mkr, function (e) {
+            mkr.openPopup();
+          });
+          return false;
+        })
+        .on('click', 'a', function (e) { // stop click on a person also opening the popup
+          e.stopPropagation();
         });
+    });
 
-        _drawMap();
-        _buildMapData();
+    _drawMap();
+    _buildMapData();
 
-    return "Leaflet map interface for webtrees-2";
-    })();
+    return 'Leaflet map interface for webtrees-2';
+  })();
 </script>
 <?php View::endpush() ?>

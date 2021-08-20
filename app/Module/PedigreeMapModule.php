@@ -307,7 +307,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                             'relationship' => ucfirst($this->getSosaName($sosa)),
                             'sosa'         => $sosa,
                         ]),
-                        'zoom'      => self::DEFAULT_ZOOM,
                     ],
                 ];
             }
