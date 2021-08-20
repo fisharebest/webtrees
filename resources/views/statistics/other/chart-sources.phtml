@@ -18,7 +18,7 @@ use Fisharebest\Webtrees\Statistics;
             <div class="card m-0">
                 <h5 class="card-header">
                     <?= I18N::translate('Individuals with sources') ?>
-                    <span class="badge badge-secondary badge-pill float-end"><?= $stats->totalIndisWithSources() ?></span>
+                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalIndisWithSources() ?></span>
                 </h5>
                 <div class="card-body">
                     <?= $stats->chartIndisWithSources() ?>
@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Statistics;
             <div class="card m-0">
                 <h5 class="card-header">
                     <?= I18N::translate('Families with sources') ?>
-                    <span class="badge badge-secondary badge-pill float-end"><?= $stats->totalFamsWithSources() ?></span>
+                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalFamsWithSources() ?></span>
                 </h5>
                 <div class="card-body">
                     <?= $stats->chartFamsWithSources() ?>

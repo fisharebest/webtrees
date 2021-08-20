@@ -35,7 +35,7 @@ use Illuminate\Support\Collection;
             <li class="nav-item" role="presentation">
                 <button class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#individuals" data-bs-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
                     <?= I18N::translate('Individuals') ?>
-                    <span class="badge badge-secondary">
+                    <span class="badge bg-secondary">
                         <?= I18N::number(count($individuals)) ?>
                     </span>
                 </button>
@@ -46,7 +46,7 @@ use Illuminate\Support\Collection;
             <li class="nav-item" role="presentation">
                 <button class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#families" data-bs-toggle="tab" href="#families" role="tab" aria-controls="families">
                     <?= I18N::translate('Families') ?>
-                    <span class="badge badge-secondary">
+                    <span class="badge bg-secondary">
                         <?= I18N::number(count($families)) ?>
                     </span>
                 </button>
@@ -57,7 +57,7 @@ use Illuminate\Support\Collection;
             <li class="nav-item" role="presentation">
                 <button class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#sources" data-bs-toggle="tab" href="#sources" role="tab" aria-controls="sources">
                     <?= I18N::translate('Sources') ?>
-                    <span class="badge badge-secondary">
+                    <span class="badge bg-secondary">
                         <?= I18N::number(count($sources)) ?>
                     </span>
                 </button>
@@ -68,7 +68,7 @@ use Illuminate\Support\Collection;
             <li class="nav-item" role="presentation">
                 <button class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#repositories" data-bs-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
                     <?= I18N::translate('Repositories') ?>
-                    <span class="badge badge-secondary">
+                    <span class="badge bg-secondary">
                         <?= I18N::number(count($repositories)) ?>
                     </span>
                 </button>
@@ -79,7 +79,7 @@ use Illuminate\Support\Collection;
             <li class="nav-item" role="presentation">
                 <button class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#notes" data-bs-toggle="tab" href="#notes" role="tab" aria-controls="notes">
                     <?= I18N::translate('Notes') ?>
-                    <span class="badge badge-secondary">
+                    <span class="badge bg-secondary">
                         <?= I18N::number(count($notes)) ?>
                     </span>
                 </button>
@@ -90,7 +90,7 @@ use Illuminate\Support\Collection;
             <li class="nav-item" role="presentation">
                 <button class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#locations" data-bs-toggle="tab" href="#locations" role="tab" aria-controls="locations">
                     <?= I18N::translate('Locations') ?>
-                    <span class="badge badge-secondary">
+                    <span class="badge bg-secondary">
                         <?= I18N::number(count($locations)) ?>
                     </span>
                 </button>

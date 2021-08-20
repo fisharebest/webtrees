@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<span class="badge badge-<?= $context ?? 'secondary' ?>">
+<span class="badge bg-<?= $context ?? 'secondary' ?>">
         <?= I18N::number($count) ?>
     <?php if (($total ?? $count) > $count) : ?>
         / <?= I18N::number($total) ?>
