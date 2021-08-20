@@ -1295,11 +1295,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$parser of function xml_get_current_line_number expects XMLParser, resource given\\.$#"
-			count: 6
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Parameter \\#1 \\$string of function addslashes expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -1326,16 +1321,6 @@ parameters:
 
 		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$parser \\(resource\\) does not accept XMLParser\\.$#"
-			count: 4
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$parser \\(resource\\) does not accept resource\\|XMLParser\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 

@@ -46,6 +46,7 @@ use LogicException;
 use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+use XMLParser;
 
 use function addcslashes;
 use function addslashes;
@@ -129,17 +130,17 @@ class ReportParserGenerate extends ReportParserBase
     /** @var AbstractRenderer[] Nested repeating data */
     private $wt_report_stack = [];
 
-    /** @var resource Nested repeating data */
+    /** @var XMLParser (resource before PHP 8.0) Nested repeating data */
     private $parser;
 
-    /** @var resource[] Nested repeating data */
-    private $parser_stack = [];
+    /** @var XMLParser[] (resource[] before PHP 8.0) Nested repeating data */
+    private array $parser_stack = [];
 
     /** @var string The current GEDCOM record */
     private $gedrec = '';
 
     /** @var string[] Nested GEDCOM records */
-    private $gedrec_stack = [];
+    private array $gedrec_stack = [];
 
     /** @var ReportBaseElement The currently processed element */
     private $current_element;
@@ -160,7 +161,7 @@ class ReportParserGenerate extends ReportParserBase
     private $generation = 1;
 
     /** @var array Source data for processing lists */
-    private $list = [];
+    private array $list = [];
 
     /** @var int Number of items in lists */
     private $list_total = 0;
@@ -178,13 +179,11 @@ class ReportParserGenerate extends ReportParserBase
     private $wt_report;
 
     /** @var string[][] Variables defined in the report at run-time */
-    private $vars;
+    private array $vars;
 
-    /** @var Tree The current tree */
-    private $tree;
+    private Tree $tree;
 
-    /** @var FilesystemOperator */
-    private $data_filesystem;
+    private FilesystemOperator $data_filesystem;
 
     /**
      * Create a parser for a report
