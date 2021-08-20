@@ -161,7 +161,7 @@ class BadBotBlocker implements MiddlewareInterface
     {
         $ua      = $request->getServerParams()['HTTP_USER_AGENT'] ?? '';
         $ip      = $request->getAttribute('client-ip');
-        $address = IPFactory::addressFromString($ip);
+        $address = IPFactory::parseAddressString($ip);
         assert($address instanceof AddressInterface);
 
         foreach (self::BAD_ROBOTS as $robot) {
@@ -185,7 +185,7 @@ class BadBotBlocker implements MiddlewareInterface
         foreach (self::ROBOT_IPS as $robot => $valid_ips) {
             if (str_contains($ua, $robot)) {
                 foreach ($valid_ips as $ip) {
-                    $range = IPFactory::rangeFromString($ip);
+                    $range = IPFactory::parseRangeString($ip);
 
                     if ($range instanceof RangeInterface && $range->contains($address)) {
                         continue 2;
@@ -259,7 +259,7 @@ class BadBotBlocker implements MiddlewareInterface
     private function fetchIpRangesForAsn(string $asn): array
     {
         return Registry::cache()->file()->remember('whois-asn-' . $asn, static function () use ($asn): array {
-            $mapper = fn (AsnRouteInfo $route_info): ?RangeInterface => IPFactory::parseRangeString($route_info->route ?: $route_info->route6);
+            $mapper = static fn (AsnRouteInfo $route_info): ?RangeInterface => IPFactory::parseRangeString($route_info->route ?: $route_info->route6);
 
             try {
                 $loader = new CurlLoader(self::WHOIS_TIMEOUT);
