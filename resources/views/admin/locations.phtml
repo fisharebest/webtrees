@@ -58,14 +58,14 @@ use Illuminate\Support\Collection;
                 <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->id])) ?>">
                     <bdi><?= e($place->place) ?></bdi>
                     <?php if ($place->no_coord > 0): ?>
-                        <span class="badge badge-pill badge-secondary">
+                        <span class="badge badge-pill bg-secondary">
                             <?= view('icons/warning') ?>
                             <?= I18N::number($place->no_coord) ?>
                             /
                             <?= I18N::number($place->child_count) ?>
                         </span>
                     <?php elseif ($place->child_count > 0): ?>
-                        <span class="badge badge-pill badge-secondary">
+                        <span class="badge badge-pill bg-secondary">
                             <?= I18N::number($place->child_count) ?>
                         </span>
                     <?php endif ?>
