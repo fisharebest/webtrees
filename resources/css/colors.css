@@ -23,7 +23,7 @@
     color: #000;
 }
 
-.btn-link {
+a, .btn-link, .nav-link {
     color: #333;
 }
 
