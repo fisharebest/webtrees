@@ -42,7 +42,7 @@ use Fisharebest\Webtrees\View;
     let map = null;
     let sidebar = $('.osm-sidebar');
 
-// Map components
+    // Map components
     let markers = L.markerClusterGroup({
       showCoverageOnHover: false,
     });
@@ -125,7 +125,7 @@ use Fisharebest\Webtrees\View;
         });
         markers.addLayer(geoJsonLayer);
         map.addLayer(markers);
-        map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
+        map.fitBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
       }
       sidebar.append(sidebar_content);
     };
