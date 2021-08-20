@@ -40,7 +40,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import 'corejs-typeahead';
 
-import 'datatables.net-bs4';
+import 'datatables.net-bs5';
 
 import Sortable from 'sortablejs';
 
