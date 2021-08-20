@@ -57,9 +57,9 @@ use Illuminate\Support\Collection;
 
     <?php if ($messages->isNotEmpty()): ?>
         <div class="table-responsive">
-            <table class="table table-sm w-100">
+            <table class="table-sm w-100">
                 <tr>
-                    <th class="list_label">
+                    <th class="wt-page-options-label">
                         <?= I18N::translate('Delete') ?>
                         <br>
                         <a href="#"
@@ -67,18 +67,18 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('All') ?>
                         </a>
                     </th>
-                    <th class="list_label"><?= I18N::translate('Subject') ?></th>
-                    <th class="list_label"><?= I18N::translate('Date sent') ?></th>
-                    <th class="list_label"><?= I18N::translate('Email address') ?></th>
+                    <th class="wt-page-options-label"><?= I18N::translate('Subject') ?></th>
+                    <th class="wt-page-options-label"><?= I18N::translate('Date sent') ?></th>
+                    <th class="wt-page-options-label"><?= I18N::translate('Email address') ?></th>
                 </tr>
 
                 <?php foreach ($messages as $message): ?>
                     <tr>
-                        <td class="list_value_wrap center">
+                        <td class="wt-page-options-value center">
                             <input type="checkbox" name="message_id[]" value="<?= $message->message_id ?>" id="cb_message<?= $message->message_id ?>">
                         </td>
 
-                        <td class="list_value_wrap">
+                        <td class="wt-page-options-value">
                             <a href="#message<?= $message->message_id ?>" data-bs-toggle="collapse" role="button"
                                aria-expanded="false" aria-controls="message<?= $message->message_id ?>">
                                 <?= view('icons/expand') ?>
@@ -87,11 +87,11 @@ use Illuminate\Support\Collection;
                             </a>
                         </td>
 
-                        <td class="list_value_wrap">
+                        <td class="wt-page-options-value">
                             <?= view('components/datetime', ['timestamp' => $message->created]) ?>
                         </td>
 
-                        <td class="list_value_wrap">
+                        <td class="wt-page-options-value">
                             <?php $user = $user_service->findByIdentifier($message->sender) ?>
 
                             <?php if ($user instanceof User): ?>
@@ -103,7 +103,7 @@ use Illuminate\Support\Collection;
                     </tr>
 
                     <tr>
-                        <td class="list_value_wrap" colspan="4">
+                        <td class="wt-page-options-value" colspan="4">
                             <div id="message<?= $message->message_id ?>" class="collapse">
                                 <div dir="auto" style="white-space: pre-wrap;">
                                     <?= Registry::markdownFactory()->autolink()->convertToHtml($message->body) ?>

@@ -10,13 +10,13 @@ use Fisharebest\Webtrees\Place;
 ?>
 
 <div class="row">
-    <span class="col list_label me-1">
+    <span class="col wt-page-options-label me-1">
         <?= I18N::translate('Place list') ?>
     </span>
 </div>
 <div class="row">
     <?php foreach ($columns as $column) : ?>
-        <ul class="col list_value_wrap me-1 list-unstyled">
+        <ul class="col wt-page-options-value me-1 list-unstyled">
             <?php foreach ($column as $place) : ?>
                 <li>
                     <a href="<?= e($place->url()) ?>"><?= $place->fullName() ?></a>
