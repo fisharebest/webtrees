@@ -726,7 +726,7 @@ class HtmlRenderer extends AbstractRenderer
 
         $lines = explode("\n", $str);
 
-        $lines = array_map(fn (string $string): string => self::utf8WordWrap($string, $line_width), $lines);
+        $lines = array_map(fn (string $string): string => $this->utf8WordWrap($string, $line_width), $lines);
 
         return implode("\n", $lines);
     }
