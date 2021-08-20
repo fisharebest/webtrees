@@ -310,13 +310,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                 $height            = intdiv($width, 2);
                 break;
 
-            case self::STYLE_THREE_QUARTER_CIRCLE;
+            case self::STYLE_THREE_QUARTER_CIRCLE:
                 $chart_start_angle = 135;
                 $chart_end_angle   = 405;
                 $height            = intdiv($width * 86, 100);
                 break;
 
-            case self::STYLE_FULL_CIRCLE;
+            case self::STYLE_FULL_CIRCLE:
             default:
                 $chart_start_angle = 90;
                 $chart_end_angle   = 450;
@@ -373,7 +373,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                 IMG_ARC_PIE
             );
 
-            $arc_diameter -= 2* self::GAP_BETWEEN_RINGS;
+            $arc_diameter -= 2 * self::GAP_BETWEEN_RINGS;
 
             for ($sosa = $sosa_start; $sosa >= $sosa_end; $sosa--) {
                 if ($ancestors->has($sosa)) {
