@@ -33,104 +33,104 @@ use Illuminate\Support\Collection;
     <ul class="nav nav-tabs wt-search-results-tabs" role="tablist">
         <?php if ($search_individuals) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" id="individuals-tab" data-bs-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
+                <button class="nav-link <?= $individuals->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#individuals" data-bs-toggle="tab" href="#individuals" role="tab" aria-controls="individuals">
                     <?= I18N::translate('Individuals') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($individuals)) ?>
                     </span>
-                </a>
+                </button>
             </li>
         <?php endif ?>
 
         <?php if ($search_families) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" id="families-tab" data-bs-toggle="tab" href="#families" role="tab" aria-controls="families">
+                <button class="nav-link <?= $families->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#families" data-bs-toggle="tab" href="#families" role="tab" aria-controls="families">
                     <?= I18N::translate('Families') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($families)) ?>
                     </span>
-                </a>
+                </button>
             </li>
         <?php endif ?>
 
         <?php if ($search_sources) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" id="sources-tab" data-bs-toggle="tab" href="#sources" role="tab" aria-controls="sources">
+                <button class="nav-link <?= $sources->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#sources" data-bs-toggle="tab" href="#sources" role="tab" aria-controls="sources">
                     <?= I18N::translate('Sources') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($sources)) ?>
                     </span>
-                </a>
+                </button>
             </li>
         <?php endif ?>
 
         <?php if ($search_repositories) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" id="repositories-tab" data-bs-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
+                <button class="nav-link <?= $repositories->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#repositories" data-bs-toggle="tab" href="#repositories" role="tab" aria-controls="repositories">
                     <?= I18N::translate('Repositories') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($repositories)) ?>
                     </span>
-                </a>
+                </button>
             </li>
         <?php endif ?>
 
         <?php if ($search_notes) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" id="notes-tab" data-bs-toggle="tab" href="#notes" role="tab" aria-controls="notes">
+                <button class="nav-link <?= $notes->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#notes" data-bs-toggle="tab" href="#notes" role="tab" aria-controls="notes">
                     <?= I18N::translate('Notes') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($notes)) ?>
                     </span>
-                </a>
+                </button>
             </li>
         <?php endif ?>
 
         <?php if ($search_locations) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" id="locations-tab" data-bs-toggle="tab" href="#locations" role="tab" aria-controls="locations">
+                <button class="nav-link <?= $locations->isEmpty() ? 'text-muted' : '' ?>" data-bs-target="#locations" data-bs-toggle="tab" href="#locations" role="tab" aria-controls="locations">
                     <?= I18N::translate('Locations') ?>
                     <span class="badge badge-secondary">
                         <?= I18N::number(count($locations)) ?>
                     </span>
-                </a>
+                </button>
             </li>
         <?php endif ?>
     </ul>
 
     <div class="tab-content wt-search-results-content">
         <?php if ($search_individuals) : ?>
-            <div class="tab-pane fade" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">
+            <div class="tab-pane" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">
                 <?= view('lists/individuals-table', ['individuals' => $individuals, 'sosa' => false, 'tree' => $tree]) ?>
             </div>
         <?php endif ?>
 
         <?php if ($search_families) : ?>
-            <div class="tab-pane fade" id="families" role="tabpanel" aria-labelledby="families-tab">
+            <div class="tab-pane" id="families" role="tabpanel" aria-labelledby="families-tab">
                 <?= view('lists/families-table', ['families' => $families, 'tree' => $tree]) ?>
             </div>
         <?php endif ?>
 
         <?php if ($search_sources) : ?>
-            <div class="tab-pane fade" id="sources" role="tabpanel" aria-labelledby="sources-tab">
+            <div class="tab-pane" id="sources" role="tabpanel" aria-labelledby="sources-tab">
                 <?= view('lists/sources-table', ['sources' => $sources, 'tree' => $tree]) ?>
             </div>
         <?php endif ?>
 
         <?php if ($search_repositories) : ?>
-            <div class="tab-pane fade" id="repositories" role="tabpanel" aria-labelledby="repositories-tab">
+            <div class="tab-pane" id="repositories" role="tabpanel" aria-labelledby="repositories-tab">
                 <?= view('lists/repositories-table', ['repositories' => $repositories, 'tree' => $tree]) ?>
             </div>
         <?php endif ?>
 
         <?php if ($search_notes) : ?>
-            <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+            <div class="tab-pane" id="notes" role="tabpanel" aria-labelledby="notes-tab">
                 <?= view('lists/notes-table', ['notes' => $notes, 'tree' => $tree]) ?>
             </div>
         <?php endif ?>
 
         <?php if ($search_locations) : ?>
-            <div class="tab-pane fade" id="locations" role="tabpanel" aria-labelledby="locations-tab">
+            <div class="tab-pane" id="locations" role="tabpanel" aria-labelledby="locations-tab">
                 <?= view('lists/locations-table', ['locations' => $locations, 'tree' => $tree]) ?>
             </div>
         <?php endif ?>
@@ -139,6 +139,6 @@ use Illuminate\Support\Collection;
 
 <?php View::push('javascript') ?>
 <script>
-  $('.wt-search-results-tabs li:first-child a').tab('show');
+  document.querySelector('.wt-search-results-tabs li button').click();
 </script>
 <?php View::endpush() ?>
