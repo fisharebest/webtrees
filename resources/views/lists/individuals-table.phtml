@@ -85,11 +85,10 @@ $("#<?= e($table_id) ?>")
     /* Filter buttons in table header */
     .on("click", "input[data-filter-column]", function() {
         let checkbox = $(this);
-        let siblings = checkbox.parent().siblings();
 
         // Deselect other options
-        siblings.children().prop("checked", false).removeAttr("checked");
-        siblings.removeClass('active');
+        let siblings = checkbox.siblings("input[type='checkbox']");
+        siblings.prop("checked", false).removeAttr("checked");
 
         // Apply (or clear) this filter
         let checked = checkbox.prop("checked");
@@ -170,58 +169,68 @@ $deathAgeData = [
             <tr>
                 <th colspan="16">
                     <div class="btn-toolbar d-flex justify-content-between mb-2" role="toolbar">
-                        <div class="btn-group btn-group-toggle btn-group-sm" data-bs-toggle="buttons">
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show only males.') ?>">
-                                <input type="checkbox" data-filter-column="12" data-filter-value="M" autocomplete="off">
+                        <div class="btn-group btn-group-sm" role="group">
+                            <input id="<?= e($table_id) ?>-bg-sex-M" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="M" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-sex-M" class="btn btn-outline-secondary" title="<?= I18N::translate('Show only males.') ?>">
                                 <?= view('icons/sex', ['sex' => 'M']) ?>
                             </label>
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show only females.') ?>">
-                                <input type="checkbox" data-filter-column="12" data-filter-value="F" autocomplete="off">
+
+                            <input id="<?= e($table_id) ?>-bg-sex-F" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="F" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-sex-F" class="btn btn-outline-secondary" title="<?= I18N::translate('Show only females.') ?>">
                                 <?= view('icons/sex', ['sex' => 'F']) ?>
                             </label>
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show only individuals for whom the gender is not known.') ?>">
-                                <input type="checkbox" data-filter-column="12" data-filter-value="U" autocomplete="off">
+
+                            <input id="<?= e($table_id) ?>-bg-sex-U" class="btn-check" type="checkbox" data-filter-column="12" data-filter-value="U" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-sex-U" class="btn btn-outline-secondary" title="<?= I18N::translate('Show only individuals for whom the gender is not known.') ?>">
                                 <?= view('icons/sex', ['sex' => 'U']) ?>
                             </label>
                         </div>
 
-                        <div class="btn-group btn-group-toggle btn-group-sm" data-bs-toggle="buttons">
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
-                                <input type="checkbox" data-filter-column="14" data-filter-value="N" autocomplete="off">
+                        <div class="btn-group btn-group-sm" role="group">
+                            <input id="<?= e($table_id) ?>-bg-dead-N" class="btn-check" type="checkbox" data-filter-column="14" data-filter-value="N" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-dead-N" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are alive or couples where both partners are alive.') ?>">
                                 <?= I18N::translate('Alive') ?>
                             </label>
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
-                                <input type="checkbox" data-filter-column="14" data-filter-value="Y" autocomplete="off">
+
+                            <input id="<?= e($table_id) ?>-bg-dead-Y" class="btn-check" type="checkbox" data-filter-column="14" data-filter-value="Y" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-dead-Y" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who are dead or couples where both partners are dead.') ?>">
                                 <?= I18N::translate('Dead') ?>
                             </label>
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who died more than 100 years ago.') ?>">
-                                <input type="checkbox" data-filter-column="14" data-filter-value="YES" autocomplete="off">
+
+                            <input id="<?= e($table_id) ?>-bg-dead-YES" class="btn-check" type="checkbox" data-filter-column="14" data-filter-value="YES" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-dead-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who died more than 100 years ago.') ?>">
                                 <?= I18N::translate('Death') ?>&gt;100
                             </label>
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who died within the last 100 years.') ?>">
-                                <input type="checkbox" data-filter-column="14" data-filter-value="Y100" autocomplete="off">
+
+                            <input id="<?= e($table_id) ?>-bg-alive-Y100" class="btn-check" type="checkbox" data-filter-column="14" data-filter-value="Y100" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-alive-Y100" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals who died within the last 100 years.') ?>">
                                 <?= I18N::translate('Death') ?>&lt;=100
                             </label>
                         </div>
 
-                        <div class="btn-group btn-group-toggle btn-group-sm" data-bs-toggle="buttons">
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals born more than 100 years ago.') ?>">
-                                <input type="checkbox" data-filter-column="13" data-filter-value="YES" autocomplete="off">
+                        <div class="btn-group btn-group-sm" role="group">
+                        
+                            <input id="<?= e($table_id) ?>-bg-born-YES" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="YES" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-born-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals born more than 100 years ago.') ?>">
+                                <input class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="YES" autocomplete="off">
                                 <?= I18N::translate('Birth') ?>&gt;100
                             </label>
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals born within the last 100 years.') ?>">
-                                <input type="checkbox" data-filter-column="13" data-filter-value="Y100" autocomplete="off">
+
+                            <input id="<?= e($table_id) ?>-bg-born-Y100" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="Y100" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-born-Y100" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals born within the last 100 years.') ?>">
                                 <?= I18N::translate('Birth') ?>&lt;=100
                             </label>
                         </div>
 
-                        <div class="btn-group btn-group-toggle btn-group-sm" data-bs-toggle="buttons">
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
-                                <input type="checkbox" data-filter-column="15" data-filter-value="R" autocomplete="off">
+                        <div class="btn-group btn-group-sm" role="group">
+
+                            <input id="<?= e($table_id) ?>-bg-roots-R" class="btn-check" type="checkbox" data-filter-column="15" data-filter-value="R" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-roots-R" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “roots” couples or individuals. These individuals may also be called “patriarchs”. They are individuals who have no parents recorded in the database.') ?>">
                                 <?= I18N::translate('Roots') ?>
                             </label>
-                            <label class="btn btn-outline-secondary" title="<?= I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
-                                <input type="checkbox" data-filter-column="15" data-filter-value="L" autocomplete="off">
+
+                            <input id="<?= e($table_id) ?>-bg-roots-L" class="btn-check" type="checkbox" data-filter-column="15" data-filter-value="L" autocomplete="off">
+                            <label for="<?= e($table_id) ?>-bg-roots-L" class="btn btn-outline-secondary" title="<?= I18N::translate('Show “leaves” couples or individuals. These are individuals who are alive but have no children recorded in the database.') ?>">
                                 <?= I18N::translate('Leaves') ?>
                             </label>
                         </div>
