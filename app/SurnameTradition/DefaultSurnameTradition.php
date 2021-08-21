@@ -72,7 +72,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      * @param Individual|null $mother
      * @param string          $sex
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
@@ -87,7 +87,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      * @param Individual $child
      * @param string     $sex
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     public function newParentNames(Individual $child, string $sex): array
     {
@@ -102,7 +102,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
      * @param Individual $spouse
      * @param string     $sex
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {

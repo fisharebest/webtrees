@@ -42,7 +42,7 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
      * @param Individual $child
      * @param string                           $sex
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     public function newParentNames(Individual $child, string $sex): array
     {
@@ -66,7 +66,7 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
      * @param Individual $spouse
      * @param string                           $sex
      *
-     * @return array<string>
+     * @return array<int,string>
      */
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
