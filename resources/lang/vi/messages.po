@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-08-10 04:30+0000\n"
+"PO-Revision-Date: 2021-08-21 05:04+0000\n"
 "Last-Translator: Ngô Hữu Thuận <ngohuuthuan@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/vi/>\n"
@@ -6041,7 +6041,7 @@ msgstr "F.A.B."
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:73
 msgid "FAQ"
-msgstr "Câu hỏi thông thường"
+msgstr "Trợ giúp"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:26
