@@ -20,8 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -40,6 +42,7 @@ use function app;
 use function assert;
 use function e;
 use function explode;
+use function in_array;
 
 /**
  * Edit the tree preferences.
@@ -167,40 +170,22 @@ class TreePreferencesPage implements RequestHandlerInterface
             return Auth::isMember($tree, $user);
         });
 
-        $all_fam_facts = Collection::make(self::ALL_FAM_FACTS)
-            ->mapWithKeys(static function (string $tag): array {
-                return [$tag => Registry::elementFactory()->make('FAM:' . $tag)->label()];
-            })
+        $ignore_facts = ['CHAN', 'CHIL', 'FAMC', 'FAMS', 'HUSB', 'NOTE', 'OBJE', 'SOUR', 'SUBM', 'WIFE'];
+
+        $all_family_facts = Collection::make(Registry::elementFactory()->make('FAM')->subtags())
+            ->filter(static fn (string $value, string $key): bool => !in_array($key, $ignore_facts, true))
+            ->mapWithKeys(static fn (string $value, string $key): array => [$key => 'FAM:' . $key])
+            ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))
+            ->filter(static fn (ElementInterface $element): bool => !$element instanceof UnknownElement)
+            ->map(static fn (ElementInterface $element): string => $element->label())
             ->sort(I18N::comparator());
 
-        $all_indi_facts = Collection::make(self::ALL_INDI_FACTS)
-            ->mapWithKeys(static function (string $tag): array {
-                return [$tag => Registry::elementFactory()->make('INDI:' . $tag)->label()];
-            })
-            ->sort(I18N::comparator());
-
-        $all_name_facts = Collection::make(self::ALL_NAME_FACTS)
-            ->mapWithKeys(static function (string $tag): array {
-                return [$tag => Registry::elementFactory()->make('INDI:NAME:' . $tag)->label()];
-            })
-            ->sort(I18N::comparator());
-
-        $all_plac_facts = Collection::make(self::ALL_PLAC_FACTS)
-            ->mapWithKeys(static function (string $tag): array {
-                return [$tag => Registry::elementFactory()->make('INDI:FACT:PLAC:' . $tag)->label()];
-            })
-            ->sort(I18N::comparator());
-
-        $all_repo_facts = Collection::make(self::ALL_REPO_FACTS)
-            ->mapWithKeys(static function (string $tag): array {
-                return [$tag => Registry::elementFactory()->make('REPO:' . $tag)->label()];
-            })
-            ->sort(I18N::comparator());
-
-        $all_sour_facts = Collection::make(self::ALL_SOUR_FACTS)
-            ->mapWithKeys(static function (string $tag): array {
-                return [$tag => Registry::elementFactory()->make('SOUR:' . $tag)->label()];
-            })
+        $all_individual_facts = Collection::make(Registry::elementFactory()->make('INDI')->subtags())
+            ->filter(static fn (string $value, string $key): bool => !in_array($key, $ignore_facts, true))
+            ->mapWithKeys(static fn (string $value, string $key): array => [$key => 'INDI:' . $key])
+            ->map(static fn (string $tag): ElementInterface => Registry::elementFactory()->make($tag))
+            ->filter(static fn (ElementInterface $element): bool => !$element instanceof UnknownElement)
+            ->map(static fn (ElementInterface $element): string => $element->label())
             ->sort(I18N::comparator());
 
         $all_surname_traditions = SurnameTradition::allDescriptions();
@@ -212,12 +197,8 @@ class TreePreferencesPage implements RequestHandlerInterface
         $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
 
         return $this->viewResponse('admin/trees-preferences', [
-            'all_fam_facts'            => $all_fam_facts,
-            'all_indi_facts'           => $all_indi_facts,
-            'all_name_facts'           => $all_name_facts,
-            'all_plac_facts'           => $all_plac_facts,
-            'all_repo_facts'           => $all_repo_facts,
-            'all_sour_facts'           => $all_sour_facts,
+            'all_family_facts'         => $all_family_facts,
+            'all_individual_facts'     => $all_individual_facts,
             'all_surname_traditions'   => $all_surname_traditions,
             'base_url'                 => $base_url,
             'calendar_formats'         => $calendar_formats,
