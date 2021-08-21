@@ -729,8 +729,8 @@ $(function () {
     }
     // Save state on change
     element.addEventListener('click', (event) => {
-      // Event occurs *before* the state changes, so reverse T/F.
-      localStorage.setItem('state-of-' + event.target.dataset.persist, event.target.classList.contains('active') ? 'F' : 'T');
+      // Event occurs *after* the state changes.
+      localStorage.setItem('state-of-' + event.target.dataset.persist, event.target.classList.contains('active') ? 'T' : 'F');
     });
   });
 
