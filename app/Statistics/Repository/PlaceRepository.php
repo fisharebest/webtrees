@@ -68,32 +68,25 @@ class PlaceRepository implements PlaceRepositoryInterface
      * @param string $what
      * @param bool   $country
      *
-     * @return int[]
+     * @return array<string,int>
      */
     private function queryFactPlaces(string $fact, string $what = 'ALL', bool $country = false): array
     {
         $rows = [];
 
         if ($what === 'INDI') {
-            $rows = DB::table('individuals')->select(['i_gedcom as tree'])->where(
-                'i_file',
-                '=',
-                $this->tree->id()
-            )->where(
-                'i_gedcom',
-                'LIKE',
-                "%\n2 PLAC %"
-            )->get()->all();
+            $rows = DB::table('individuals')
+                ->select(['i_gedcom as tree'])
+                ->where('i_file', '=', $this->tree->id())
+                ->where('i_gedcom', 'LIKE', "%\n2 PLAC %")
+                ->get()
+                ->all();
         } elseif ($what === 'FAM') {
-            $rows = DB::table('families')->select(['f_gedcom as tree'])->where(
-                'f_file',
-                '=',
-                $this->tree->id()
-            )->where(
-                'f_gedcom',
-                'LIKE',
-                "%\n2 PLAC %"
-            )->get()->all();
+            $rows = DB::table('families')->select(['f_gedcom as tree'])
+                ->where('f_file', '=', $this->tree->id())
+                ->where('f_gedcom', 'LIKE', "%\n2 PLAC %")
+                ->get()
+                ->all();
         }
 
         $placelist = [];
@@ -107,11 +100,7 @@ class PlaceRepository implements PlaceRepositoryInterface
                     $place = $match[1];
                 }
 
-                if (isset($placelist[$place])) {
-                    ++$placelist[$place];
-                } else {
-                    $placelist[$place] = 1;
-                }
+                $placelist[$place] = ($placelist[$place] ?? 0) + 1;
             }
         }
 
