@@ -654,12 +654,12 @@ div.fact_SHARED_NOTE {
 }
 
 .wt-facts-table .wt-gender-M td {
-    background-color: #edf7fd;
+    background-color: var(--sex-m-bg);
     border-color: #81a9cb;
 }
 
 .wt-facts-table .wt-gender-F td {
-    background-color: #e9daf1;
+    background-color: var(--sex-f-bg);
     border-color: #ff2080;
 }
 
