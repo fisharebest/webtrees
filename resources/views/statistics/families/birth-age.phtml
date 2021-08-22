@@ -12,87 +12,83 @@ use Fisharebest\Webtrees\Statistics;
     <?= I18N::translate('Age at birth of child') ?>
 </h4>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $age    = $stats->youngestFatherAge('1') ?>
-                <?php $result = $stats->youngestFather() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('Youngest father') ?>
-                    <?php if ($age) :
-                        ?><?= ' - ', $age ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?php if ($result) : ?>
-                        <?= $result ?>
-                    <?php else : ?>
-                        <?= I18N::translate('This information is not available.') ?>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $age    = $stats->youngestMotherAge('1') ?>
-                <?php $result = $stats->youngestMother() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('Youngest mother') ?>
-                    <?php if ($age) :
-                        ?><?= ' - ', $age ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?php if ($result) : ?>
-                        <?= $result ?>
-                    <?php else : ?>
-                        <?= I18N::translate('This information is not available.') ?>
-                    <?php endif; ?>
-                </div>
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <?php $age    = $stats->youngestFatherAge('1') ?>
+            <?php $result = $stats->youngestFather() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('Youngest father') ?>
+                <?php if ($age) :
+                    ?><?= ' - ', $age ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?php if ($result) : ?>
+                    <?= $result ?>
+                <?php else : ?>
+                    <?= I18N::translate('This information is not available.') ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $age    = $stats->oldestFatherAge('1') ?>
-                <?php $result = $stats->oldestFather() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('Oldest father') ?>
-                    <?php if ($age) :
-                        ?><?= ' - ', $age ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?php if ($result) : ?>
-                        <?= $result ?>
-                    <?php else : ?>
-                        <?= I18N::translate('This information is not available.') ?>
-                    <?php endif; ?>
-                </div>
+    <div class="col">
+        <div class="card">
+            <?php $age    = $stats->youngestMotherAge('1') ?>
+            <?php $result = $stats->youngestMother() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('Youngest mother') ?>
+                <?php if ($age) :
+                    ?><?= ' - ', $age ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?php if ($result) : ?>
+                    <?= $result ?>
+                <?php else : ?>
+                    <?= I18N::translate('This information is not available.') ?>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $age    = $stats->oldestMotherAge('1') ?>
-                <?php $result = $stats->oldestMother() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('Oldest mother') ?>
-                    <?php if ($age) :
-                        ?><?= ' - ', $age ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?php if ($result) : ?>
-                        <?= $result ?>
-                    <?php else : ?>
-                        <?= I18N::translate('This information is not available.') ?>
-                    <?php endif; ?>
-                </div>
+    <div class="col">
+        <div class="card">
+            <?php $age    = $stats->oldestFatherAge('1') ?>
+            <?php $result = $stats->oldestFather() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('Oldest father') ?>
+                <?php if ($age) :
+                    ?><?= ' - ', $age ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?php if ($result) : ?>
+                    <?= $result ?>
+                <?php else : ?>
+                    <?= I18N::translate('This information is not available.') ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <?php $age    = $stats->oldestMotherAge('1') ?>
+            <?php $result = $stats->oldestMother() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('Oldest mother') ?>
+                <?php if ($age) :
+                    ?><?= ' - ', $age ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?php if ($result) : ?>
+                    <?= $result ?>
+                <?php else : ?>
+                    <?= I18N::translate('This information is not available.') ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

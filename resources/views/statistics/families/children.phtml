@@ -12,50 +12,46 @@ use Fisharebest\Webtrees\Statistics;
     <?= I18N::translate('Children in family') ?>
 </h4>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Average number of children per family') ?>
-                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->averageChildren() ?></span>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->statsChildren() ?>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Number of families without children') ?>
-                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->noChildrenFamilies() ?></span>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->chartNoChildrenFamilies() ?>
-                </div>
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Average number of children per family') ?>
+                <span class="badge bg-secondary rounded-pill float-end"><?= $stats->averageChildren() ?></span>
+            </h5>
+            <div class="card-body">
+                <?= $stats->statsChildren() ?>
             </div>
         </div>
     </div>
 
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Largest families') ?>
-                </h5>
-                <?= $stats->topTenLargestFamilyList() ?>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Number of families without children') ?>
+                <span class="badge bg-secondary rounded-pill float-end"><?= $stats->noChildrenFamilies() ?></span>
+            </h5>
+            <div class="card-body">
+                <?= $stats->chartNoChildrenFamilies() ?>
             </div>
         </div>
+    </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Largest number of grandchildren') ?>
-                </h5>
-                <?= $stats->topTenLargestGrandFamilyList() ?>
-            </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Largest families') ?>
+            </h5>
+            <?= $stats->topTenLargestFamilyList() ?>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Largest number of grandchildren') ?>
+            </h5>
+            <?= $stats->topTenLargestGrandFamilyList() ?>
         </div>
     </div>
 </div>

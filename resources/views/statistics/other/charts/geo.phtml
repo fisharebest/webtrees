@@ -20,17 +20,13 @@ $name = 'callback_' . bin2hex(random_bytes(12));
 <?php if (count($data) === 1) : ?>
     <?= I18N::translate('This information is not available.') ?>
 <?php else : ?>
-    <div class="mb-3">
-        <div class="card-deck">
-            <div class="col-12 mb-3">
-                <div class="card m-0">
-                    <div class="card-header">
-                        <?= $chart_title ?>
-                    </div>
-                    <div class="card-body">
-                        <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
-                    </div>
-                </div>
+    <div class="d-grid mb-3">
+        <div class="card">
+            <div class="card-header">
+                <?= $chart_title ?>
+            </div>
+            <div class="card-body">
+                <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
             </div>
         </div>
     </div>

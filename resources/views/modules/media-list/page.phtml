@@ -97,10 +97,10 @@ use League\Flysystem\FilesystemOperator;
 
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
-        <div class="card-deck row mb-4 mt-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
             <?php foreach ($media_objects as $n => $media_object) : ?>
-                <div class="col-12 col-sm-6 col-lg-4 d-flex">
-                    <div class="card mb-4">
+                <div class="col">
+                    <div class="card h-100">
                         <div class="card-header">
                             <h4 class="card-title">
                                 <a href="<?= e($media_object->url()) ?>"><?= $media_object->fullName() ?></a>

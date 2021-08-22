@@ -12,45 +12,43 @@ use Fisharebest\Webtrees\Statistics;
     <?= I18N::translate('Length of marriage') ?>
 </h4>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $age    = $stats->topAgeOfMarriage() ?>
-                <?php $result = $stats->topAgeOfMarriageFamily() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('Longest marriage') ?>
-                    <?php if ($age) :
-                        ?><?= ' - ', $age ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?php if ($result) : ?>
-                        <?= $result ?>
-                    <?php else : ?>
-                        <?= I18N::translate('This information is not available.') ?>
-                    <?php endif; ?>
-                </div>
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <?php $age    = $stats->topAgeOfMarriage() ?>
+            <?php $result = $stats->topAgeOfMarriageFamily() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('Longest marriage') ?>
+                <?php if ($age) :
+                    ?><?= ' - ', $age ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?php if ($result) : ?>
+                    <?= $result ?>
+                <?php else : ?>
+                    <?= I18N::translate('This information is not available.') ?>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $age    = $stats->minAgeOfMarriage() ?>
-                <?php $result = $stats->minAgeOfMarriageFamily() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('Shortest marriage') ?>
-                    <?php if ($age) :
-                        ?><?= ' - ', $age ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?php if ($result) : ?>
-                        <?= $result ?>
-                    <?php else : ?>
-                        <?= I18N::translate('This information is not available.') ?>
-                    <?php endif; ?>
-                </div>
+    <div class="col">
+        <div class="card">
+            <?php $age    = $stats->minAgeOfMarriage() ?>
+            <?php $result = $stats->minAgeOfMarriageFamily() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('Shortest marriage') ?>
+                <?php if ($age) :
+                    ?><?= ' - ', $age ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?php if ($result) : ?>
+                    <?= $result ?>
+                <?php else : ?>
+                    <?= I18N::translate('This information is not available.') ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

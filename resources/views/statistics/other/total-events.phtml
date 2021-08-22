@@ -13,37 +13,35 @@ use Fisharebest\Webtrees\Statistics;
     <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalEvents() ?></span>
 </h4>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $type   = $stats->firstEventType() ?>
-                <?php $result = $stats->firstEvent() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('First event') ?>
-                    <?php if ($type) :
-                        ?><?= ' - ', $type ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?= $result ?>
-                </div>
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <?php $type   = $stats->firstEventType() ?>
+            <?php $result = $stats->firstEvent() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('First event') ?>
+                <?php if ($type) :
+                    ?><?= ' - ', $type ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?= $result ?>
             </div>
         </div>
+    </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <?php $type   = $stats->lastEventType() ?>
-                <?php $result = $stats->lastEvent() ?>
-                <h5 class="card-header">
-                    <?= I18N::translate('Last event') ?>
-                    <?php if ($type) :
-                        ?><?= ' - ', $type ?><?php
-                    endif; ?>
-                </h5>
-                <div class="card-body">
-                    <?= $result ?>
-                </div>
+    <div class="col">
+        <div class="card">
+            <?php $type   = $stats->lastEventType() ?>
+            <?php $result = $stats->lastEvent() ?>
+            <h5 class="card-header">
+                <?= I18N::translate('Last event') ?>
+                <?php if ($type) :
+                    ?><?= ' - ', $type ?><?php
+                endif; ?>
+            </h5>
+            <div class="card-body">
+                <?= $result ?>
             </div>
         </div>
     </div>

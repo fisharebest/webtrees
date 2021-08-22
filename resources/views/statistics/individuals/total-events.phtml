@@ -12,34 +12,28 @@ use Fisharebest\Webtrees\Statistics;
     <?= I18N::translate('Events') ?>
 </h4>
 
-<div class="mb-3">
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="card-deck">
-                <div class="mb-3 col-12">
-                    <div class="card m-0">
-                        <h5 class="card-header border-bottom-0">
-                            <?= I18N::translate('Total births') ?>
-                            <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalBirths() ?></span>
-                        </h5>
-                    </div>
-                </div>
-
-                <div class="mb-3 col-12">
-                    <div class="card m-0">
-                        <h5 class="card-header">
-                            <?= I18N::translate('Births by century') ?>
-                        </h5>
-                        <div class="card-body">
-                            <?= $stats->statsBirth() ?>
-                        </div>
-                    </div>
+<div class="row mb-3 row-cols-1 row-cols-lg-2 g-3">
+    <div class="col">
+        <div class="d-grid gap-3">
+            <div class="card">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Total births') ?>
+                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalBirths() ?></span>
+                </h5>
+            </div>
+            
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Births by century') ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->statsBirth() ?>
                 </div>
             </div>
-
-            <div class="card-deck">
-                <div class="mb-3 col-lg-12 col-md-6">
-                    <div class="card m-0">
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 g-3">
+                <div class="col">
+                    <div class="card">
                         <h5 class="card-header">
                             <?= I18N::translate('Earliest birth') ?>
                         </h5>
@@ -48,9 +42,9 @@ use Fisharebest\Webtrees\Statistics;
                         </div>
                     </div>
                 </div>
-
-                <div class="mb-3 col-lg-12 col-md-6">
-                    <div class="card m-0">
+                
+                <div class="col">
+                    <div class="card">
                         <h5 class="card-header">
                             <?= I18N::translate('Latest birth') ?>
                         </h5>
@@ -61,33 +55,29 @@ use Fisharebest\Webtrees\Statistics;
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-12 col-lg-6">
-            <div class="card-deck">
-                <div class="mb-3 col-12">
-                    <div class="card m-0">
-                        <h5 class="card-header border-bottom-0">
-                            <?= I18N::translate('Total deaths') ?>
-                            <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalDeaths() ?></span>
-                        </h5>
-                    </div>
-                </div>
-
-                <div class="mb-3 col-12">
-                    <div class="card m-0">
-                        <h5 class="card-header">
-                            <?= I18N::translate('Deaths by century') ?>
-                        </h5>
-                        <div class="card-body">
-                            <?= $stats->statsDeath() ?>
-                        </div>
-                    </div>
+    <div class="col">
+        <div class="d-grid gap-3">
+            <div class="card">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Total deaths') ?>
+                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalDeaths() ?></span>
+                </h5>
+            </div>
+            
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Deaths by century') ?>
+                </h5>
+                <div class="card-body">
+                    <?= $stats->statsDeath() ?>
                 </div>
             </div>
 
-            <div class="card-deck">
-                <div class="mb-3 col-lg-12 col-md-6">
-                    <div class="card m-0">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 g-3">
+                <div class="col">
+                    <div class="card">
                         <h5 class="card-header">
                             <?= I18N::translate('Earliest death') ?>
                         </h5>
@@ -96,9 +86,9 @@ use Fisharebest\Webtrees\Statistics;
                         </div>
                     </div>
                 </div>
-
-                <div class="mb-3 col-lg-12 col-md-6">
-                    <div class="card m-0">
+    
+                <div class="col">
+                    <div class="card">
                         <h5 class="card-header">
                             <?= I18N::translate('Latest death') ?>
                         </h5>

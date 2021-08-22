@@ -12,13 +12,11 @@ use Fisharebest\Webtrees\Statistics;
     <?= I18N::translate('Media objects') ?>
 </h4>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <div class="card-body">
-                    <?= $stats->chartMedia() ?>
-                </div>
+<div class="row row-cols-1 row-cols-lg-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <?= $stats->chartMedia() ?>
             </div>
         </div>
     </div>

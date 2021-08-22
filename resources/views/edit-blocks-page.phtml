@@ -25,19 +25,23 @@ use Illuminate\Support\Collection;
 
 <form method="post" action="<?= e($url_save) ?>" id="edit-blocks">
     <?= csrf_field() ?>
-    <div class="card-deck" id="current-blocks">
-        <div class="card">
-            <div class="card-body" id="main-blocks">
-                <?php foreach ($main_blocks as $block_id => $block) : ?>
-                    <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
-                <?php endforeach ?>
+    <div class="row row-cols-1 row-cols-sm-2 g-3" id="current-blocks">
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body" id="main-blocks">
+                    <?php foreach ($main_blocks as $block_id => $block) : ?>
+                        <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
+                    <?php endforeach ?>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body" id="side-blocks">
-                <?php foreach ($side_blocks as $block_id => $block) : ?>
-                    <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
-                <?php endforeach ?>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body" id="side-blocks">
+                    <?php foreach ($side_blocks as $block_id => $block) : ?>
+                        <?= view('edit-blocks-block', ['block_id' => $block_id, 'block' => $block]) ?>
+                    <?php endforeach ?>
+                </div>
             </div>
         </div>
     </div>
