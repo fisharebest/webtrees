@@ -327,6 +327,7 @@ table {
     padding: 2px;
     line-height: 1.1;
     border: none;
+    border-radius: 4px;
 }
 
 .wt-chart-box-f,
@@ -348,7 +349,6 @@ table {
 .list_value_wrap,
 .messagebox,
 .optionbox,
-.wt-chart-box,
 .person0,
 .person1,
 .person2,
