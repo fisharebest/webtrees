@@ -12,7 +12,7 @@
 ?>
 
 <select
-    class="form-control <?= $class ?? '' ?>"
+    class="form-select <?= $class ?? '' ?>"
     name="<?= e($name) ?>"
     id="<?= e($id ?? $name) ?>"
     <?= is_array($selected) ? 'multiple' : '' ?>

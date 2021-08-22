@@ -12,46 +12,42 @@ use Fisharebest\Webtrees\Statistics;
     <?= I18N::translate('Age difference') ?>
 </h4>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Age between siblings') ?>
-                </h5>
-                <?= $stats->topAgeBetweenSiblingsList() ?>
-            </div>
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Age between siblings') ?>
+            </h5>
+            <?= $stats->topAgeBetweenSiblingsList() ?>
         </div>
+    </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Greatest age between siblings') ?>
-                </h5>
-                <div class="card-body">
-                    <?= $stats->topAgeBetweenSiblingsFullName() ?>
-                </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Greatest age between siblings') ?>
+            </h5>
+            <div class="card-body">
+                <?= $stats->topAgeBetweenSiblingsFullName() ?>
             </div>
         </div>
     </div>
 
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Age between husband and wife') ?>
-                </h5>
-                <?= $stats->ageBetweenSpousesMFList() ?>
-            </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Age between husband and wife') ?>
+            </h5>
+            <?= $stats->ageBetweenSpousesMFList() ?>
         </div>
+    </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Age between wife and husband') ?>
-                </h5>
-                <?= $stats->ageBetweenSpousesFMList() ?>
-            </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Age between wife and husband') ?>
+            </h5>
+            <?= $stats->ageBetweenSpousesFMList() ?>
         </div>
     </div>
 </div>

@@ -12,24 +12,22 @@ use Fisharebest\Webtrees\Statistics;
     <?= I18N::translate('Oldest living individuals') ?>
 </h4>
 
-<div class="mb-3">
-    <div class="card-deck">
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Males') ?>
-                </h5>
-                <?= $stats->topTenOldestMaleListAlive() ?>
-            </div>
+<div class="row row-cols-1 row-cols-md-2 mb-3 g-3">
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Males') ?>
+            </h5>
+            <?= $stats->topTenOldestMaleListAlive() ?>
         </div>
+    </div>
 
-        <div class="col-12 col-md-6 mb-3">
-            <div class="card m-0">
-                <h5 class="card-header">
-                    <?= I18N::translate('Females') ?>
-                </h5>
-                <?= $stats->topTenOldestFemaleListAlive() ?>
-            </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Females') ?>
+            </h5>
+            <?= $stats->topTenOldestFemaleListAlive() ?>
         </div>
     </div>
 </div>
