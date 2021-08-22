@@ -424,12 +424,14 @@ $deathAgeData = [
             <tr>
                 <th colspan="16">
                     <div class="btn-group btn-group-sm">
-                        <button id="btn-toggle-parents" class="btn btn-outline-secondary" data-bs-toggle="button" data-persist="show-parents">
+                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" autocomplete="off" data-wt-persist="individuals-parents">
+                        <label class="btn btn-secondary" for="btn-toggle-parents">
                             <?= I18N::translate('Show parents') ?>
-                        </button>
-                        <button id="btn-toggle-statistics" class="btn btn-outline-secondary" data-bs-toggle="button" data-persist="show-statistics">
+                        </label>
+                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" autocomplete="off" data-wt-persist="individuals-statistics">
+                        <label class="btn btn-secondary" for="btn-toggle-statistics">
                             <?= I18N::translate('Show statistics charts') ?>
-                        </button>
+                        </label>
                     </div>
                 </th>
             </tr>

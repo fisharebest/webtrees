@@ -31,7 +31,7 @@ use Illuminate\Support\Collection;
 
 <p>
     <label>
-        <input id="hide-unused-locations" type="checkbox" data-bs-toggle="collapse" data-bs-target=".unused-location">
+        <input id="hide-unused-locations" type="checkbox" data-bs-toggle="collapse" data-bs-target=".unused-location" data-wt-persist="hide-unused-locations">
         <?= I18N::translate('Hide unused locations') ?>
     </label>
 </p>
@@ -167,10 +167,3 @@ use Illuminate\Support\Collection;
     </tfoot>
 </table>
 
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  webtrees.persistentToggle("hide-unused-locations");
-</script>
-<?php View::endpush() ?>

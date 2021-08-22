@@ -27,21 +27,21 @@ use Illuminate\Support\Collection;
                 <td colspan="2">
                     <?php if ($has_associate_facts) : ?>
                         <label>
-                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact">
+                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates">
                             <?= I18N::translate('Associated events') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_relative_facts) : ?>
                         <label>
-                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact">
+                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives">
                             <?= I18N::translate('Events of close relatives') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_historic_facts) : ?>
                         <label>
-                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact">
+                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts">
                             <?= I18N::translate('Historic events') ?>
                         </label>
                     <?php endif ?>
@@ -66,13 +66,3 @@ use Illuminate\Support\Collection;
         </tbody>
     </table>
 </div>
-
-<?php View::push('javascript') ?>
-<script>
-  'use strict';
-
-  webtrees.persistentToggle('show-associate-facts');
-  webtrees.persistentToggle('show-relatives-facts');
-  webtrees.persistentToggle('show-historical-facts');
-</script>
-<?php View::endpush() ?>

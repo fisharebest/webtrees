@@ -505,22 +505,21 @@
 
   /**
    * Persistent checkbox options to hide/show extra data.
-   * @param {string} element_id
+   * @param {HTMLInputElement} element
    */
-  webtrees.persistentToggle = function (element_id) {
-    const element = document.getElementById(element_id);
-    const key = 'state-of-' + element_id;
-    const state = localStorage.getItem(key);
-
+  webtrees.persistentToggle = function (element) {
     if (element instanceof HTMLInputElement && element.type === 'checkbox') {
-      // Previously selected?
+      const key = 'state-of-' + element.dataset.wtPersist;
+      const state = localStorage.getItem(key);
+
+      // Previously selected? Select again now.
       if (state === 'true') {
         element.click();
       }
 
       // Remember state for the next page load.
       element.addEventListener('change', function () {
-        localStorage.setItem(key, element.checked);
+        localStorage.setItem(key, element.checked.toString());
       });
     }
   };
@@ -721,18 +720,9 @@ $(function () {
     $(this).removeClass('d-none');
   });
 
-  // Save button state between pages
-  document.querySelectorAll('[data-bs-toggle=button][data-persist]').forEach((element) => {
-    // Previously selected?
-    if (localStorage.getItem('state-of-' + element.dataset.persist) === 'T') {
-      element.click();
-    }
-    // Save state on change
-    element.addEventListener('click', (event) => {
-      // Event occurs *before* the state changes, so reverse T/F.
-      localStorage.setItem('state-of-' + event.target.dataset.persist, event.target.classList.contains('active') ? 'F' : 'T');
-    });
-  });
+  // Save button/checkbox state between pages
+  document.querySelectorAll('[data-wt-persist]')
+    .forEach((element) => webtrees.persistentToggle(element));
 
   // Activate the on-screen keyboard
   let osk_focus_element;
