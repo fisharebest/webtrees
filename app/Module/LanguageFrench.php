@@ -45,14 +45,14 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
 
     protected const ASYMMETRIC_COUSINS = [
         1 => [
-            'F' => ['down', 'petite-', 'cousine', 'de la ', 'de la '],
-            'M' => ['down', 'petit-', 'cousin', 'du ', 'du '],
-            'U' => ['down', 'petit-', 'cousin', 'du ', 'du ']
+            'F' => ['down', 'petite-cousine', 'de la '],
+            'M' => ['down', 'petit-cousin', 'du '],
+            'U' => ['down', 'petit-cousin', 'du ']
         ],
         -1 => [
-            'F' => ['up', 'grand-', 'cousine', 'de la ', 'de la '],
-            'M' => ['up', 'grand-', 'cousin', 'du ', 'du '],
-            'U' => ['up', 'grand-', 'cousin', 'du ', 'du ']
+            'F' => ['up', 'grand-cousine', 'de la '],
+            'M' => ['up', 'grand-cousin', 'du '],
+            'U' => ['up', 'grand-cousin', 'du ']
         ],
     ];
 
@@ -66,69 +66,81 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
 
     /**
      * Pour les traducteurs français, certaines configurations peuvent avoir plusieurs traduction françaises possibles,
-     * ou aucune. Voici les choix qui ont été faits (mais complètement ouvert à discussion):
+     * ou aucune. Voici les choix qui ont été faits (mais complètement ouverts à discussion):
      *
      * - je n'ai aucune intention de rentrer dans le débat de l'écriture inclusive, mais malheureusement un choix doit
      *   être fait: lorsque nécessaire dans les choix des articles ou accords, je m'en suis tenu à la recommandation de
      *   l'Académie Française d'utiliser la forme non marquée (et donc le masculin) pour le genre neutre.
-     * - dans le cas de frère/sœur jumeau, j'évite le problème en utiliseant le substantif `jumeau` lorsque le sexe
-     *   n'est pas connu, alors que j'utilise la structure `frère jumeau`/`sœur jum elle` lorsque le sexe est connu.
+     * - dans le cas de frères/sœurs jumeaux, j'évite le problème en utiliseant le substantif `jumeau` lorsque le sexe
+     *   n'est pas connu, alors que j'utilise la structure `frère jumeau`/`sœur jumelle` lorsque le sexe est connu.
      * - `conjoint` a été choisi pour un couple non marié (`époux`/`épouse` lorsque les conjoints sont mariés).
      *   Une alternative est `partenaire`, mais `conjoint` est le terme déjà utilisé dans les traductions françaises.
      * - la notion de `foster` (qui peut traduire plusieurs réalités différentes en français) a été traduite dans le
      *   cadre de la `famille d'accueil`. Les suggestions sont les bienvenues.
-     * - La situation des enfants dans les familles recomposées a été traduites:
-     * - `frère`/`sœur` pour les enfants dont les deux parents sont les mêmes
-     * - `demi-frère`/`demi-sœur` pour les enfants qui ont un parent en commun
-     * - `quasi-frère`/`quasi-sœur` pour les enfants qui ne partagent aucun parent en commun, mais dont les parents
-     *   sont en couple
-     * - la notion d'âge entre frères/sœurs a été traduite par `grand frère`/`petit frère`, plutôt que des variants sur
+     * - La situation des enfants dans les familles recomposées a été traduite:
+     *      - `frère`/`sœur` pour les enfants dont les deux parents sont les mêmes
+     *      - `demi-frère`/`demi-sœur` pour les enfants qui ont un parent en commun
+     *      - `quasi-frère`/`quasi-sœur` pour les enfants qui ne partagent aucun parent en commun, mais dont les parents
+     *      sont en couple
+     * - la notion d'âge entre frères/sœurs a été traduite par `grand frère`/`petit frère`, plutôt que des variantes sur
      *   `frère aîné`/`frère cadet` ou `frère plus âgé`/`frère plus jeune`
-     * - De manière arbitraire, au delà de deux `arrière-`, la forme est raccourcie par `arrière-(xN)-` avec N décrivant
-     *   le nombre de degré. Techniquement, en français, il n'existe pas de forme raccourcie, mais je ne pense pas que
-     *   ce soit une bonne idée de multiplier les `arrière-`. On pourrait utiliser les termes `quadrisaïeul` /
-     *   `quinquisaïeul`  /`sextaïeul` / `septaïeul` /... mais ils me semblent assez peu usités.
+     * - Lorsqu'il est nécessaire d'aller au-delà d'un `arrière-`{substantif} (par exemple, pour décrire le case de
+     *   l'enfant d'un arrière-petit-enfant), la forme `{substantif} au Ne degré` est choisie, avec pour convention
+     *   N = 1 pour le niveau du substantif racine, on utilisera donc par exemple:
+     *      - `petit-enfant` (= petit-enfant au 1er degré)
+     *      - `arrière-petit-enfant` (= petit-enfant au 2e degré)
+     *      - `petit-enfant au 3e degré` et ainsi de suite pour les degrés supérieurs
+     * - Un exception à la règle précédente sont les grand-parents au 3e degré, qui ont la description de `trisaïeux`.
      * - Pour les cousins, c'est la description selon le droit canon qui a été choisie (principalement car elle donne
      *   une meilleure visibilité de la distance à l'ancêtre commun que la description en droit civil), donc:
-     * - l'enfant d'un oncle/tante est un `cousin germain`/`cousine germaine` (= cousins au 1er degré)
-     * - les enfants de cousins germains sont des `cousins issus de germain` (= cousins au 2e degré)
-     * - pour les enfants des cousins issus de germains, et ainsi de suite, la relation est décrite suivant le nombre
-     *   de degré séparant les cousins de l'ancêtre commun:
-     * - en cas de symétrie des chemins, ils sont dits `cousins au N-ème degré`
-     * - en cas d'asymétrie des chemins, ils sont dit  `cousins du N-ème au M-ème degré`
-     * - de plus, les notions de `grand-cousin` et `petit-cousin` ont été implémentées comme suit:
-     * - un `(arrière-)grand-cousin` est l'enfant d'un `(arrière-)grand-oncle`/`grand-tante` (= cousin du 1er au N-ème degré)
-     * - un `(arrière-)petit-cousin` est un `(arrière-)petit-neveu`/`petite-nièce` d'un parent (= cousin du Ner au 1er degré)
+     *      - l'enfant d'un oncle/tante est un `cousin germain`/`cousine germaine` (= cousins au 1er degré)
+     *      - les enfants de cousins germains sont des `cousins issus de germain` (= cousins au 2e degré)
+     *      - pour les enfants des cousins issus de germains, et ainsi de suite, la relation est décrite suivant le
+     *      nombre de degré séparant les cousins de l'ancêtre commun:
+     *      - en cas de symétrie des chemins, ils sont dits `cousins au N-ème degré`
+     *      - en cas d'asymétrie des chemins, ils sont dit  `cousins du N-ème au M-ème degré`
+     *      - de plus, les notions de `grand-cousin` et `petit-cousin` ont été implémentées comme suit:
+     *          - un `(arrière-)grand-cousin` est l'enfant d'un `(arrière-)grand-oncle`/`grand-tante`
+     *              (= cousin du 1er au N-ème degré)
+     *          - un `(arrière-)petit-cousin` est un `(arrière-)petit-neveu`/`petite-nièce` d'un parent
+     *              (= cousin du Ner au 1er degré)
      *
      * @return array<Relationship>
      */
     public function relationships(): array
     {
+        // Construct the genitive form in French
         $genitive = fn (string $s, string $genitive_link): array => [$s, '%s ' . $genitive_link . $s];
 
-        $great = fn (int $n, string $suffix, string $genitive_link): array => $genitive(
-            ($n > 2 ? 'arrière-(x' . $n . ')-' : str_repeat('arrière-', max($n, 0))) . $suffix,
-            $n === 0 ? $genitive_link : 'de l’'
-        );
+        // Functions to coumpound the name that can be indefinitely repeated
+        $degree = fn (int $n, string $suffix, string $genitive_link): array =>
+                $genitive("$suffix au {$n}<sup>e</sup> degré", $genitive_link);
 
-        $compoundgreat =
+        $great = fn (int $n, string $suffix, string $genitive_link): array =>
+                $n <= 1 ? $genitive('arrière-' . $suffix, 'de l’') : $degree($n + 1, $suffix, $genitive_link);
+
+        $firstCompound = fn (int $n, string $suffix, string $genitive_link): array =>
+                $n <= 1 ? $genitive($suffix, $genitive_link) : $great($n - 1, $suffix, $genitive_link);
+
+        $compound =
             fn (int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array =>
-                $great($n - 1, ($n > 0 ? $first_level : '') . $suffix, $n === 0 ? $genitive_none : $genitive_first);
+                $n <= 1 ? $genitive($suffix, $genitive_none) : $firstCompound($n - 1, $first_level . $suffix, $genitive_first);
 
+        // Functions to translate cousins' degree of relationship
         $symmetricCousin = fn (int $n, string $sex): array => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
             $sex === 'F' ? 'cousine au ' . $n . '<sup>e</sup> degré' : 'cousin au ' . $n . '<sup>e</sup> degré',
             $sex === 'F'  ? 'de la ' : 'du '
         );
 
-        $asymmetricCousin =
-            static function (int $up, int $down, string $sex) use ($symmetricCousin, $compoundgreat, $genitive): array {
+        $cousin =
+            static function (int $up, int $down, string $sex) use ($symmetricCousin, $firstCompound, $genitive): array {
                 if ($up === $down) {
                     return $symmetricCousin($up, $sex);
                 }
                 $fixed = self::ASYMMETRIC_COUSINS[$up][$sex] ?? self::ASYMMETRIC_COUSINS[-$down][$sex] ?? null;
                 if ($fixed !== null) {
                     $fixed[0] = $fixed[0] === 'up' ? $up - 1 : $down - 1;
-                    return $compoundgreat(...$fixed);
+                    return $firstCompound(...$fixed);
                 }
                 return $genitive(
                     $sex === 'F' ?
@@ -143,16 +155,28 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('mère adoptive', '%s de la mère adoptive')->adoptive()->mother(),
             Relationship::fixed('père adoptif', '%s du père adoptif')->adoptive()->father(),
             Relationship::fixed('parent adoptif', '%s du parent adoptif')->adoptive()->parent(),
+            Relationship::fixed('sœur adoptive', '%s de la sœur adoptive')->adoptive()->sister(),
+            Relationship::fixed('frère adoptif', '%s du frère adoptif')->adoptive()->brother(),
+            Relationship::fixed('frère/sœur adoptif', '%s du frère/sœur adoptif')->adoptive()->sibling(),
             Relationship::fixed('fille adoptive', '%s de la fille adoptive')->adopted()->daughter(),
             Relationship::fixed('fils adoptif', '%s du fils adoptif')->adopted()->son(),
             Relationship::fixed('enfant adoptif', '%s de l’enfant adoptif')->adopted()->child(),
+            Relationship::fixed('sœur adoptive', '%s de la sœur adoptive')->adopted()->sister(),
+            Relationship::fixed('frère adoptif', '%s du frère adoptif')->adopted()->brother(),
+            Relationship::fixed('frère/sœur adoptif', '%s du frère/sœur adoptif')->adopted()->sibling(),
             // Fostered
             Relationship::fixed('mère d’accueil', '%s de la mère d’acceuil')->fostering()->mother(),
             Relationship::fixed('père d’accueil', '%s du père d’acceuil')->fostering()->father(),
             Relationship::fixed('parent d’accueil', '%s du parent d’acceuil')->fostering()->parent(),
+            Relationship::fixed('sœur d’accueil', '%s de la sœur d’accueil')->fostering()->sister(),
+            Relationship::fixed('frère d’accueil', '%s du frère d’accueil')->fostering()->brother(),
+            Relationship::fixed('frère/sœur d’accueil', '%s du frère/sœur d’accueil')->fostering()->sibling(),
             Relationship::fixed('fille accueillie', '%s de la fille accueillie')->fostered()->daughter(),
             Relationship::fixed('fils accueilli', '%s du fils accueilli')->fostered()->son(),
             Relationship::fixed('enfant accueilli', '%s de l’enfant accueilli')->fostered()->child(),
+            Relationship::fixed('sœur accueillie', '%s de la sœur accueillie')->fostered()->sister(),
+            Relationship::fixed('frère accueilli', '%s du frère accueilli')->fostered()->brother(),
+            Relationship::fixed('frère/sœur accueilli', '%s du frère/sœur accueilli')->fostered()->sibling(),
             // Parents
             Relationship::fixed('mère', '%s de la mère')->mother(),
             Relationship::fixed('père', '%s du père')->father(),
@@ -191,20 +215,24 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             // Partners
             Relationship::fixed('ex-épouse', '%s de l’ex-épouse')->divorced()->partner()->female(),
             Relationship::fixed('ex-époux', '%s de l’ex-époux')->divorced()->partner()->male(),
+            Relationship::fixed('ex-époux', '%s de l’ex-époux')->divorced()->partner(),
+            Relationship::fixed('ex-conjointe', '%s de l’ex-conjoint')->divorced()->partner()->female(),
+            Relationship::fixed('ex-conjoint', '%s de l’ex-conjoint')->divorced()->partner()->male(),
             Relationship::fixed('ex-conjoint', '%s de l’ex-conjoint')->divorced()->partner(),
             Relationship::fixed('fiancée', '%s de la fiancée')->engaged()->partner()->female(),
             Relationship::fixed('fiancé', '%s du fiancé')->engaged()->partner()->male(),
             Relationship::fixed('épouse', '%s de l’épouse')->wife(),
             Relationship::fixed('époux', '%s de l’époux')->husband(),
             Relationship::fixed('époux', '%s de l’époux')->spouse(),
+            Relationship::fixed('conjointe', '%s du conjoint')->partner()->female(),
+            Relationship::fixed('conjoint', '%s du conjoint')->partner()->male(),
             Relationship::fixed('conjoint', '%s du conjoint')->partner(),
             // In-laws
             Relationship::fixed('belle-mère', '%s de la belle-mère')->married()->spouse()->mother(),
             Relationship::fixed('beau-père', '%s du beau-père')->married()->spouse()->father(),
             Relationship::fixed('beau-parent', '%s du beau-parent')->married()->spouse()->parent(),
-            Relationship::fixed('belle-fille', '%s de la belle-fille')->child()->wife(),
-            Relationship::fixed('beau-fils', '%s du beau-fils')->child()->husband(),
-            Relationship::fixed('beau-fils/belle-fille', '%s du beau-fils/belle-fille')->child()->married()->spouse(),
+            Relationship::fixed('bru', '%s de la bru')->child()->wife(),
+            Relationship::fixed('gendre', '%s du gendre')->child()->husband(),
             Relationship::fixed('belle-sœur', '%s de la belle-sœur')->spouse()->sister(),
             Relationship::fixed('beau-frère', '%s du beau-frère')->spouse()->brother(),
             Relationship::fixed('beau-frère/belle-sœur', '%s du beau-frère/belle-sœur')->spouse()->sibling(),
@@ -212,31 +240,38 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('beau-frère', '%s du beau-frère')->sibling()->husband(),
             Relationship::fixed('beau-frère/belle-sœur', '%s du beau-frère/belle-sœur')->sibling()->spouse(),
             // Grandparents and above
-            Relationship::dynamic(fn (int $n) => $great($n - 1, 'grand-mère maternelle', 'de la '))->mother()->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, 'grand-père maternel', 'du '))->mother()->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, 'grand-mère paternelle', 'de la '))->father()->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, 'grand-père paternel', 'du '))->father()->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, 'grand-mère', 'de la '))->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, 'grand-père', 'du '))->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, 'grand-parent', 'du '))->ancestor(),
+            //"Trisaïeux" are an exception to the dynamic rule
+            Relationship::fixed('trisaïeule maternelle', '% de la trisaïeule maternelle')->mother()->parent()->parent()->mother(),
+            Relationship::fixed('trisaïeul maternel', '% du trisaïeul maternel')->mother()->parent()->parent()->father(),
+            Relationship::fixed('trisaïeule paternelle', '% de la trisaïeule paternelle')->father()->parent()->parent()->mother(),
+            Relationship::fixed('trisaïeul paternel', '% du trisaïeul paternel')->father()->parent()->parent()->father(),
+            Relationship::fixed('trisaïeule', '% de la trisaïeule')->parent()->parent()->parent()->mother(),
+            Relationship::fixed('trisaïeul', '% du trisaïeul')->parent()->parent()->parent()->father(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-mère maternelle', 'de la '))->mother()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-père maternel', 'du '))->mother()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-parent maternel', 'du '))->mother()->ancestor(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-mère paternelle', 'de la '))->father()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-père paternel', 'du '))->father()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-parent paternel', 'du '))->father()->ancestor(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-mère', 'de la '))->parent()->ancestor()->female(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-père', 'du '))->parent()->ancestor()->male(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-parent', 'du '))->parent()->ancestor(),
             // Grandchildren and below
-            Relationship::dynamic(fn (int $n) => $great($n - 2, 'petite-fille', 'de la '))->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, 'petit-fils', 'du '))->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, 'petit-enfant', 'du'))->descendant(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'petite-fille', 'de la '))->child()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'petit-fils', 'du '))->child()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'petit-enfant', 'du '))->child()->descendant(),
             // Collateral relatives
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'grand-', 'tante', 'de la ', 'de la '))->ancestor()->sister(),
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'grand-', 'tante par alliance', 'de la ', 'de la '))->ancestor()->sibling()->wife(),
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'grand-', 'oncle', 'de l’', 'du '))->ancestor()->brother(),
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'grand-', 'oncle par alliance', 'de l’', 'du '))->ancestor()->sibling()->husband(),
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'petite-', 'nièce', 'de la ', 'de la '))->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'petite-', 'nièce par alliance', 'de la ', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'petit-', 'neveu', 'du ', 'du '))->sibling()->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $compoundgreat($n - 1, 'petit-', 'neveu par alliance', 'du ', 'du '))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'tante', 'de la ', 'de la '))->ancestor()->sister(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'tante par alliance', 'de la ', 'de la '))->ancestor()->sibling()->wife(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'oncle', 'de l’', 'du '))->ancestor()->brother(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'oncle par alliance', 'de l’', 'du '))->ancestor()->sibling()->husband(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'petite-', 'nièce', 'de la ', 'de la '))->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'petite-', 'nièce par alliance', 'de la ', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'petit-', 'neveu', 'du ', 'du '))->sibling()->descendant()->male(),
+            Relationship::dynamic(fn (int $n) => $compound($n, 'petit-', 'neveu par alliance', 'du ', 'du '))->married()->spouse()->sibling()->descendant()->male(),
             // Cousins (based on canon law)
-            Relationship::dynamic(fn (int $n) => $symmetricCousin($n, 'F'))->symmetricCousin()->female(),
-            Relationship::dynamic(fn (int $n) => $symmetricCousin($n, 'M'))->symmetricCousin()->male(),
-            Relationship::dynamic(fn (int $up, int $down) => $asymmetricCousin($up, $down, 'F'))->cousin()->female(),
-            Relationship::dynamic(fn (int $up, int $down) => $asymmetricCousin($up, $down, 'M'))->cousin()->male(),
+            Relationship::dynamic(fn (int $up, int $down) => $cousin($up, $down, 'F'))->cousin()->female(),
+            Relationship::dynamic(fn (int $up, int $down) => $cousin($up, $down, 'M'))->cousin()->male(),
 
         ];
     }
