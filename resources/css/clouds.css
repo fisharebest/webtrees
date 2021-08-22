@@ -712,11 +712,11 @@ div.fact_SHARED_NOTE {
 }
 
 .wt-facts-table .wt-gender-M td {
-    background-color: #ddf;
+    background-color: var(--sex-m-bg);
 }
 
 .wt-facts-table .wt-gender-F td {
-    background-color: #fdd;
+    background-color: var(--sex-f-bg);
 }
 
 .name1 {
