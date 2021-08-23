@@ -24,6 +24,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
+use function array_map;
+
 /**
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
@@ -34,16 +36,16 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
 
     // A list of facts that are handled by this module.
     protected const HANDLED_FACTS = [
-        'INDI:AFN',
-        'INDI:CHAN',
-        'INDI:IDNO',
-        'INDI:REFN',
-        'INDI:RESN',
-        'INDI:RFN',
-        'INDI:RIN',
-        'INDI:SSN',
-        'INDI:_UID',
-        'INDI:_WEBTAG',
+        'AFN',
+        'CHAN',
+        'IDNO',
+        'REFN',
+        'RESN',
+        'RFN',
+        'RIN',
+        'SSN',
+        '_UID',
+        '_WEBTAG',
     ];
 
     /**
@@ -115,6 +117,6 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
      */
     public function supportedFacts(): Collection
     {
-        return new Collection(static::HANDLED_FACTS);
+        return new Collection(array_map(fn (string $tag): string => 'INDI:' . $tag, static::HANDLED_FACTS));
     }
 }
