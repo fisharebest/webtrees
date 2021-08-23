@@ -881,7 +881,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     {
         $facts = [];
 
-        /** @var Individual[] $associates */
         $asso1 = $person->linkedIndividuals('ASSO');
         $asso2 = $person->linkedIndividuals('_ASSO');
         $asso3 = $person->linkedFamilies('ASSO');

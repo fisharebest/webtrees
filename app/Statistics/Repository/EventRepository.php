@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 /**
  * A repository providing methods for event related statistics.
@@ -217,9 +216,9 @@ class EventRepository implements EventRepositoryInterface
      *
      * @param string $direction The sorting direction of the query (To return first or last record)
      *
-     * @return stdClass|null
+     * @return object|null
      */
-    private function eventQuery(string $direction): ?stdClass
+    private function eventQuery(string $direction): ?object
     {
         return DB::table('dates')
             ->select(['d_gid as id', 'd_year as year', 'd_fact AS fact', 'd_type AS type'])

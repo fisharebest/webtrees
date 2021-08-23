@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
-use stdClass;
 
 use function max;
 use function min;
@@ -139,9 +138,9 @@ class PlaceLocation
     }
 
     /**
-     * @return stdClass
+     * @return object
      */
-    private function details(): stdClass
+    private function details(): object
     {
         return Registry::cache()->array()->remember('location-details-' . $this->id(), function () {
             // The "top-level" location won't exist in the database.

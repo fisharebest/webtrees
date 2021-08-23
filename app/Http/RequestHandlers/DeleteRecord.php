@@ -62,7 +62,7 @@ class DeleteRecord implements RequestHandlerInterface
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
 
-        if ($record && Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
+        if (Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
             // Delete links to this record
             foreach ($record->linkingRecords() as $linker) {
                 $old_gedcom = $linker->gedcom();

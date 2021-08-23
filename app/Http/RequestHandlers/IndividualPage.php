@@ -40,7 +40,6 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function array_map;
 use function assert;
@@ -280,9 +279,9 @@ class IndividualPage implements RequestHandlerInterface
      *
      * @param Individual $individual
      *
-     * @return stdClass
+     * @return object
      */
-    private function significant(Individual $individual): stdClass
+    private function significant(Individual $individual): object
     {
         [$surname] = explode(',', $individual->sortName());
 

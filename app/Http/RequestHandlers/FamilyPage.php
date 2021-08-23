@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function assert;
 use function explode;
@@ -106,9 +105,9 @@ class FamilyPage implements RequestHandlerInterface
      *
      * @param Family $family
      *
-     * @return stdClass
+     * @return object
      */
-    private function significant(Family $family): stdClass
+    private function significant(Family $family): object
     {
         $significant = (object) [
             'family'     => $family,

@@ -243,9 +243,9 @@ class Date
     /**
      * Convert a date to the preferred format and calendar(s) display.
      *
-     * @param bool|null   $url               Wrap the date in a link to calendar.php
+     * @param bool        $url               Wrap the date in a link to calendar.php
      * @param string|null $date_format       Override the default date format
-     * @param bool|null   $convert_calendars Convert the date into other calendars
+     * @param bool        $convert_calendars Convert the date into other calendars
      *
      * @return string
      */

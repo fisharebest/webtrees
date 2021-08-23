@@ -25,10 +25,10 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
@@ -243,8 +243,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Tree  $tree
-     * @param array $xrefs
+     * @param Tree          $tree
+     * @param array<string> $xrefs
      *
      * @return ResponseInterface
      */
@@ -290,7 +290,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * Find the latest event year for individuals
      *
-     * @param array $individuals
+     * @param array<Individual> $individuals
      *
      * @return int
      */
@@ -309,7 +309,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * Find the earliest event year for individuals
      *
-     * @param array $individuals
+     * @param array<Individual> $individuals
      *
      * @return int
      */

@@ -68,7 +68,7 @@ class PlaceRepository implements PlaceRepositoryInterface
      * @param string $what
      * @param bool   $country
      *
-     * @return array<string,int>
+     * @return array<int|string,int>
      */
     private function queryFactPlaces(string $fact, string $what = 'ALL', bool $country = false): array
     {
@@ -177,7 +177,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Get the top 10 places list.
      *
-     * @param array<string,int> $places
+     * @param array<int|string,int> $places
      *
      * @return array<array<string,mixed>>
      */
@@ -189,7 +189,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         arsort($places);
 
         foreach ($places as $place => $count) {
-            $tmp     = new Place($place, $this->tree);
+            $tmp     = new Place((string) $place, $this->tree);
             $top10[] = [
                 'place' => $tmp,
                 'count' => $count,
@@ -208,7 +208,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Renders the top 10 places list.
      *
-     * @param array<string,int> $places
+     * @param array<int|string,int> $places
      *
      * @return string
      */

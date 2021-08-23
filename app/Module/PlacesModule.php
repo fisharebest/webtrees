@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * Class PlacesMapModule
@@ -123,9 +122,9 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /**
      * @param Individual $indi
      *
-     * @return stdClass
+     * @return object
      */
-    private function getMapData(Individual $indi): stdClass
+    private function getMapData(Individual $indi): object
     {
         $facts = $this->getPersonalFacts($indi);
 

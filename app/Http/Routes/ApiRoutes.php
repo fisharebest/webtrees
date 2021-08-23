@@ -26,6 +26,11 @@ use Aura\Router\Map;
  */
 class ApiRoutes
 {
+    /**
+     * @param Map $router
+     *
+     * @return void
+     */
     public function load(Map $router): void
     {
     }

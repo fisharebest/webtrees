@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -123,9 +124,9 @@ class SearchReplaceAction implements RequestHandlerInterface
     }
 
     /**
-     * @param Collection $records
-     * @param string     $search
-     * @param string     $replace
+     * @param Collection<GedcomRecord> $records
+     * @param string                   $search
+     * @param string                   $replace
      *
      * @return int
      */
@@ -148,10 +149,10 @@ class SearchReplaceAction implements RequestHandlerInterface
     }
 
     /**
-     * @param Collection $records
-     * @param string     $search
-     * @param string     $replace
-     * @param string[]   $name_tags
+     * @param Collection<GedcomRecord> $records
+     * @param string                   $search
+     * @param string                   $replace
+     * @param string[]                 $name_tags
      *
      * @return int
      */
@@ -175,9 +176,9 @@ class SearchReplaceAction implements RequestHandlerInterface
     }
 
     /**
-     * @param Collection $records
-     * @param string     $search
-     * @param string     $replace
+     * @param Collection<GedcomRecord> $records
+     * @param string                   $search
+     * @param string                   $replace
      *
      * @return int
      */

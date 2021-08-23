@@ -215,11 +215,10 @@ class I18N
     /**
      * The preferred locales for this site, or a default list if no preference.
      *
-     * @return LocaleInterface[]
+     * @return array<LocaleInterface>
      */
     public static function activeLocales(): array
     {
-        /** @var Collection $locales */
         $locales = app(ModuleService::class)
             ->findByInterface(ModuleLanguageInterface::class, false, true)
             ->map(static function (ModuleLanguageInterface $module): LocaleInterface {

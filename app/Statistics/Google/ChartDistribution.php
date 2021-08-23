@@ -116,7 +116,7 @@ class ChartDistribution
     /**
      * Returns the data structure required by google geochart.
      *
-     * @param array $places
+     * @param array<int|string,int> $places
      *
      * @return array
      */
@@ -129,7 +129,7 @@ class ChartDistribution
             ],
         ];
 
-        // webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+        // webtrees uses 3-letter country codes and localised country names, but google uses 2 letter codes.
         foreach ($places as $country => $count) {
             $data[] = [
                 [

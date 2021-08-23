@@ -329,6 +329,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
  */
 class WebRoutes
 {
+    /**
+     * @param Map $router
+     *
+     * @return void
+     */
     public function load(Map $router): void
     {
         $router->attach('', '', static function (Map $router) {

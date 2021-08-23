@@ -110,7 +110,7 @@ class PendingChangesLogPage implements RequestHandlerInterface
     /**
      * Labels for the various statuses.
      *
-     * @return array
+     * @return array<string,string>
      */
     private function changeStatuses(): array
     {
