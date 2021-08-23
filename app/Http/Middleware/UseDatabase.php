@@ -113,15 +113,6 @@ class UseDatabase implements MiddlewareInterface
 
         $capsule->setAsGlobal();
 
-        Builder::macro('whereContains', function ($column, string $search, string $boolean = 'and'): Builder {
-            // Assertion helps static analysis tools understand where we will be using this closure.
-            assert($this instanceof Builder);
-
-            trigger_error('Builder::whereContains() is deprecated. Use LIKE.', E_USER_DEPRECATED);
-
-            return $this->where($column, 'LIKE', '%' . addcslashes($search, '\\%_') . '%', $boolean);
-        });
-
         try {
             // Eager-load the connection, to prevent database credentials appearing in error logs.
             DB::connection()->getPdo();
