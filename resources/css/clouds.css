@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -16,16 +16,19 @@
 /* The clouds theme */
 @import "_base.css";
 
-/* Colors for chart boxes, etc. */
 :root {
-  --sex-f-fg: #aaaaaa;
-  --sex-m-fg: #aaaaaa;
-  --sex-u-fg: #aaaaaa;
-  --sex-f-bg: #ffdddd;
-  --sex-m-bg: #ddddff;
-  --sex-u-bg: #ffffff;
-    --chart-line: solid gray thin;
     --chart-line-radius: 1rem;
+    --chart-line: solid gray thin;
+    --link-color-hover: #f00;
+    --link-color: #039;
+    --link-decoration-hover: none;
+    --link-decoration: none;
+    --sex-f-bg: #ffdddd;
+    --sex-f-fg: #aaaaaa;
+    --sex-m-bg: #ddddff;
+    --sex-m-fg: #aaaaaa;
+    --sex-u-bg: #ffffff;
+    --sex-u-fg: #aaaaaa;
 }
 
 /* Override Bootstrap formatting */
@@ -600,16 +603,6 @@ footer,
     border-radius: 3px;
 }
 
-a, .nav-link {
-    color: #039;
-    text-decoration: none;
-}
-
-a:hover, .nav-link:hover {
-    color: #f00;
-    text-decoration: none;
-}
-
 :focus {
     outline-style: none;
 }
@@ -719,21 +712,6 @@ div.fact_SHARED_NOTE {
     background-color: var(--sex-f-bg);
 }
 
-.name1 {
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.name2 {
-    font-size: 16px;
-    }
-
-a:hover .name1, a:hover .name2 {
-    color: #f00;
-    font-weight: bold;
-    font-size: 12px;
-}
-
 .details_label {
     font-weight: bold;
 }
@@ -810,11 +788,6 @@ a:hover .name1, a:hover .name2 {
 .layout3 #childbox {
     top: auto;
     bottom: 20px;
-}
-
-#childbox a.name1 {
-    display: block;
-    margin-left: 5px;
 }
 
 .person0 {

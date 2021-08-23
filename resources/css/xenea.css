@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -16,16 +16,19 @@
 /* The xenea theme */
 @import "_base.css";
 
-/* Colors for chart boxes, etc. */
 :root {
-  --sex-f-fg: #ff2080;
-  --sex-m-fg: #84beff;
-  --sex-u-fg: #008080;
-  --sex-f-bg: #fff0f0;
-  --sex-m-bg: #f0f9ff;
-  --sex-u-bg: #ffffff;
-    --chart-line: solid gray thin;
     --chart-line-radius: 1rem;
+    --chart-line: solid gray thin;
+    --link-color-hover: #f00;
+    --link-color: #00f;
+    --link-decoration-hover: none;
+    --link-decoration: none;
+    --sex-f-bg: #fff0f0;
+    --sex-f-fg: #ff2080;
+    --sex-m-bg: #f0f9ff;
+    --sex-m-fg: #84beff;
+    --sex-u-bg: #ffffff;
+    --sex-u-fg: #008080;
 }
 
 /* Override Bootstrap formatting */
@@ -547,16 +550,6 @@ table {
 
 /* ====== Round Corners ======== */
 
-a, .nav-link {
-    color: #00f;
-    text-decoration: none;
-}
-
-a:hover, .nav-link:hover {
-    color: #f00;
-    text-decoration: none;
-}
-
 :focus {
     outline-style: none;
 }
@@ -656,21 +649,6 @@ div.fact_SHARED_NOTE {
     border-color: #ff2080;
 }
 
-.name1 {
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.name2 {
-    font-size: 16px;
-    }
-
-a:hover .name1, a:hover .name2 {
-    color: #f00;
-    font-weight: bold;
-    font-size: 12px;
-}
-
 .details_label {
     font-weight: bold;
 }
@@ -752,11 +730,6 @@ a:hover .name1, a:hover .name2 {
 .layout3 #childbox {
     top: auto;
     bottom: 20px;
-}
-
-#childbox a.name1 {
-    display: block;
-    margin-left: 5px;
 }
 
 .person0 {

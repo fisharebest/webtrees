@@ -16,15 +16,15 @@
 /* The colors theme is based on the clouds theme */
 @import "clouds.css";
 
+:root {
+    --link-color: #333;
+}
+
 /* Override Bootstrap formatting */
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background-color: #eee;
     color: #000;
-}
-
-a, .btn-link, .nav-link {
-    color: #333;
 }
 
 .card-header h4 {

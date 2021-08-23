@@ -35,7 +35,7 @@ use Illuminate\Support\Collection;
     <?php endif ?>
 
     <div class="<?= $n >= $limit_low && $yahrzeits->count() > $limit_high ? 'd-none' : '' ?>">
-        <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item name2">
+        <a href="<?= e($yahrzeit->individual->url()) ?>" class="list_item">
             <?= $yahrzeit->individual->fullName() ?>
         </a>
         <small><?= view('icons/sex', ['sex' => $yahrzeit->individual->sex()]) ?></small>

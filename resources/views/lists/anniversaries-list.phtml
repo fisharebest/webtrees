@@ -39,7 +39,7 @@ use Illuminate\Support\Collection;
 
     <div class="<?= $n >= $limit_low && $facts->count() > $limit_high ? 'd-none' : '' ?>">
         <?php $record = $fact->record(); ?>
-        <a href="<?= e($record->url()) ?>" class="list_item name2">
+        <a href="<?= e($record->url()) ?>" class="list_item">
             <?= $record->fullName() ?>
         </a>
         <?php if ($record instanceof Individual) : ?>

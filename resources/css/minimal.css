@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -16,16 +16,19 @@
 /* The minimal theme */
 @import "_base.css";
 
-/* Colors for chart boxes, etc. */
 :root {
-  --sex-f-fg: #888888;
-  --sex-m-fg: #888888;
-  --sex-u-fg: #888888;
-  --sex-f-bg: #ffffff;
-  --sex-m-bg: #ffffff;
-  --sex-u-bg: #ffffff;
-    --chart-line: solid gray thin;
     --chart-line-radius: 1rem;
+    --chart-line: solid gray thin;
+    --link-color-hover: #0a58ca;
+    --link-color: #0d6efd;
+    --link-decoration-hover: underline;
+    --link-decoration: underline;
+    --sex-f-bg: #ffffff;
+    --sex-f-fg: #888888;
+    --sex-m-bg: #ffffff;
+    --sex-m-fg: #888888;
+    --sex-u-bg: #ffffff;
+    --sex-u-fg: #888888;
 }
 
 /* Override Bootstrap formatting */
@@ -675,11 +678,6 @@ div.faq_body {
 .layout3 #childbox {
     top: auto;
     bottom: 20px;
-}
-
-#childbox a.name1 {
-    display: block;
-    margin-left: 5px;
 }
 
 .person0, .person1, .person2, .person3, .person4, .person5 {

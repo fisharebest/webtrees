@@ -82,3 +82,14 @@ a:hover {
 }[data-bs-toggle=collapse][aria-expanded=false] > .wt-icon-collapse {
     display: none;
 }
+
+/* Link styling */
+a, .btn-link, .nav-link {
+    color: var(--link-color);
+    text-decoration: var(--link-decoration);
+}
+
+a:hover, .btn-link:hover, .nav-link:hover {
+    color: var(--link-color-hover);
+    text-decoration: var(--link-decoration-hover);
+}
