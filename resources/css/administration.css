@@ -18,6 +18,13 @@
 
 @import "_mime-type-icons.css";
 
+:root {
+    --link-color-hover: #0a58ca;
+    --link-color: #0d6efd;
+    --link-decoration-hover: underline;
+    --link-decoration: none;
+}
+
 /* Heading sizes */
 h1 {
     font-size: 2rem;
