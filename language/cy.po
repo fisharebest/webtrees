@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-06-14 14:31+0000\n"
+"PO-Revision-Date: 2021-09-08 22:08+0000\n"
 "Last-Translator: Rhoslyn Prys <rprys@posteo.net>\n"
 "Language-Team: Welsh <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/cy/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr ""
+msgstr " ond nid yw'r manylion yn hysbys"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
@@ -39,7 +39,7 @@ msgstr ""
 #: modules_v3/descendancy_report/report.xml:423
 #: modules_v3/descendancy_report/report.xml:454
 msgid " in "
-msgstr ""
+msgstr " yn "
 
 #: statisticsplot.php:903 statisticsplot.php:953 statisticsplot.php:1007
 #: statisticsplot.php:1057 statisticsplot.php:1111 statisticsplot.php:1161
@@ -67,7 +67,7 @@ msgstr ""
 #: admin_trees_check.php:228
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "Mae gan %1$s %2$s ddolen %3$s i %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2132
@@ -91,25 +91,25 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:255
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr ""
+msgstr "Llwythwyd %1$s KB i lawr mewn %2$s eiliad."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:47 admin_site_merge.php:51 admin_trees_check.php:171
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "Nid yw %1$s yn bodoli."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:164
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "Nid yw %1$s yn bodoli. Oeddech chi'n golygu %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: admin_trees_check.php:204
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "Nid oes gan %1$s ddolen yn ôl i %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:312 admin_site_upgrade.php:396
@@ -150,13 +150,13 @@ msgstr[5] ""
 #: admin_trees_check.php:192
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "Mae %1$s yn %2$s ond mae disgwyl %3$s."
 
 #. I18N: A Spanish relationship name, such as 7th great-nephew
 #: app/Functions/Functions.php:645
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:630
@@ -176,14 +176,14 @@ msgstr ""
 #: admin_media.php:497 app/Media.php:387
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s picsel"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #. I18N: A range of numbers
 #: app/Individual.php:550 statisticsplot.php:806
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: app/Functions/Functions.php:2154
@@ -193,19 +193,20 @@ msgstr ""
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:822
+#, fuzzy
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:160
 msgid "%j %F %Y"
-msgstr "% j %F% Y"
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0. See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6940
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: admin_media.php:489 app/Media.php:277
@@ -217,53 +218,53 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:216
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s a'i hynafiaid"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:219
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s a'i hynafiaid"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:305
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s a'r unigolion sy'n cyfeirio ato."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:134
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s a'u plant"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:141
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s a'u disgynyddion"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
 msgid "%s anonymous signed-in user"
 msgid_plural "%s anonymous signed-in users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s defnyddwyr anhysbys wedi'u mewngofnodi"
+msgstr[1] "%s defnyddiwr anhysbys wedi'i fewngofnodi"
+msgstr[2] "%s ddefnyddiwr anhysbys wedi'u mewngofnodi"
+msgstr[3] "%s defnyddiwr anhysbys wedi'u mewngofnodi"
+msgstr[4] "%s defnyddiwr anhysbys wedi'u mewngofnodi"
+msgstr[5] "%s defnyddiwr anhysbys wedi'u mewngofnodi"
 
 #: app/Functions/FunctionsCharts.php:304 app/Stats.php:4454 app/Stats.php:4458
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s plant"
+msgstr[1] "%s plentyn"
+msgstr[2] "%s blentyn"
+msgstr[3] "%s phlentyn"
+msgstr[4] "%s phlentyn"
+msgstr[5] "%s plentyn"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
 #: app/Functions/FunctionsDate.php:54 app/I18N.php:314
@@ -292,34 +293,34 @@ msgstr[5] ""
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Mae %s teuluoedd wedi'u diweddaru."
+msgstr[1] "Mae %s teulu wedi'i ddiweddaru."
+msgstr[2] "Mae %s teulu wedi'u diweddaru."
+msgstr[3] "Mae %s teulu wedi'u diweddaru."
+msgstr[4] "Mae %s teulu wedi'u diweddaru."
+msgstr[5] "Mae %s teulu wedi'u diweddaru."
 
 #: admin.php:853
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s cartiau achau"
+msgstr[1] "%s cart achau"
+msgstr[2] "%s gart achau"
+msgstr[3] "%s cart achau"
+msgstr[4] "%s cart achau"
+msgstr[5] "%s cart achau"
 
 #: app/Stats.php:5254 app/Stats.php:5258
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s o wyrion"
+msgstr[1] "%s wyr/wyres"
+msgstr[2] "%s wyr/wyres"
+msgstr[3] "%s wyr/wyres"
+msgstr[4] "%s wyr/wyres"
+msgstr[5] "%s wyr/wyres"
 
 #: app/I18N.php:806
 #, php-format
@@ -336,23 +337,23 @@ msgstr[5] ""
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s unigolion"
+msgstr[1] "%s unigolyn"
+msgstr[2] "%s unigolyn"
+msgstr[3] "%s unigolyn"
+msgstr[4] "%s unigolyn"
+msgstr[5] "%s unigolyn"
 
 #: app/Controller/SearchController.php:349
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Mae %s unigolion wedi'u diweddaru."
+msgstr[1] "Mae %s unigolyn wedi'i ddiweddaru."
+msgstr[2] "Mae %s unigolyn wedi'u diweddaru."
+msgstr[3] "Mae %s unigolyn wedi'u diweddaru."
+msgstr[4] "Mae %s unigolyn wedi'u diweddaru."
+msgstr[5] "Mae %s unigolyn wedi'u diweddaru."
 
 #: app/Module/GoogleMapsModule.php:845
 #, php-format
@@ -408,12 +409,12 @@ msgstr ""
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s negeseuon"
+msgstr[1] "%s neges"
+msgstr[2] "%s neges"
+msgstr[3] "%s neges"
+msgstr[4] "%s neges"
+msgstr[5] "%s neges"
 
 #: app/I18N.php:810
 #, php-format
@@ -454,12 +455,12 @@ msgstr[5] ""
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Mae %s nodiadau wedi'u diweddaru."
+msgstr[1] "Mae %s nodyn wedi'i ddiweddaru."
+msgstr[2] "Mae %s nodyn wedi'u diweddaru."
+msgstr[3] "Mae %s nodyn wedi'u diweddaru."
+msgstr[4] "Mae %s nodyn wedi'u diweddaru."
+msgstr[5] "Mae %s nodyn wedi'u diweddaru."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2108
@@ -488,29 +489,29 @@ msgstr[5] ""
 #: message.php:300 message.php:303 message.php:305
 #, php-format
 msgid "%s sent you the following message."
-msgstr ""
+msgstr "Anfonodd %s y neges ganlynol atoch."
 
 #: app/Module/LoggedInUsersModule.php:74 app/Stats.php:5914
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "%s defnyddwyr wedi'u mewngofnodi"
+msgstr[1] "%s defnyddiwr wedi'i fewngofnodi"
+msgstr[2] "%s ddefnyddiwr wedi'u mewngofnodi"
+msgstr[3] "%s defnyddiwr wedi'u mewngofnodi"
+msgstr[4] "%s defnyddiwr wedi'u mewngofnodi"
+msgstr[5] "%s defnyddiwr wedi'u mewngofnodi"
 
 #: app/Controller/SearchController.php:411
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "Mae %s ffynonnellau wedi'u diweddaru."
+msgstr[1] "Mae %s ffynhonnell wedi'i ddiweddaru."
+msgstr[2] "Mae %s ffynhonnell wedi'u diweddaru."
+msgstr[3] "Mae %s ffynhonnell wedi'u diweddaru."
+msgstr[4] "Mae %s ffynhonnell wedi'u diweddaru."
+msgstr[5] "Mae %s ffynhonnell wedi'u diweddaru."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Functions/Functions.php:2124
@@ -575,7 +576,7 @@ msgstr[5] ""
 #: calendar.php:601
 #, php-format
 msgid "%s year anniversary"
-msgstr ""
+msgstr "Dathliad blwyddyn %s"
 
 #: app/Functions/Functions.php:585
 #, php-format
@@ -611,60 +612,60 @@ msgstr "%s&nbsp;CE"
 #: statisticsplot.php:788
 #, php-format
 msgid "%s+"
-msgstr ""
+msgstr "%s +"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:235
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, ei chyndeidiau a'u teuluoedd"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:184
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, ei rhieni a'i brodyr a'i chwiorydd"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:200
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, ei phriod a'i phlant"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, ei phriod a'i disgynyddion"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:238
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, ei hynafiaid a'u teuluoedd"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:187
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, ei rieni a'i frodyr a'i chwiorydd"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:203
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, ei briod a'i blant"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:257
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, ei briod a'i ddisgynyddion"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
 msgid "&lt;select&gt;"
-msgstr ""
+msgstr "&lt;dewis&gt;"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged 43 years)
 #: app/I18N.php:329 app/I18N.php:333
@@ -688,7 +689,7 @@ msgstr ""
 #: app/I18N.php:230
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(wedi'i hidlo o gyfanswm o %s cofnod)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:294
@@ -826,7 +827,7 @@ msgstr ""
 #. I18N: default option in list of themes
 #: admin_trees_config.php:976 admin_users.php:488 edituser.php:278
 msgid "<default theme>"
-msgstr ""
+msgstr "<default theme>"
 
 #: login.php:409
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
@@ -838,49 +839,57 @@ msgstr ""
 #, php-format
 msgid "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2$s</span>"
 msgstr ""
+"<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\""
+">%2$s</span>"
 
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr ""
+msgstr "Siart sy'n dangos y berthynas rhwng dau unigolyn."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr ""
+msgstr "Siart o hynafiaid a disgynyddion unigolyn, fel llyfr y teulu."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr ""
+msgstr "Siart o hynafiaid unigolyn, fel cart cryno."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:42
 msgid "A chart of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Siart o hynafiaid unigolyn, wedi'i fformatio fel coeden."
 
 #. I18N: Description of the “AncestorsChart” module
 #: app/Module/AncestorsChartModule.php:42
 msgid "A chart of an individual’s ancestors."
-msgstr ""
+msgstr "Siart o hynafiaid unigolyn."
 
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr ""
+msgstr "Siart o ddisgynyddion unigolyn."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
 msgid "A chart of individuals’ lifespans."
-msgstr ""
+msgstr "Siart o hyd bywyd unigolion."
 
 #: edit_interface.php:991
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
 msgstr ""
+"Gall fod gan blentyn fwy nag un set o rieni. Gall y berthynas rhwng y "
+"plentyn a'r rhieni fod yn fiolegol, yn gyfreithiol, neu'n seiliedig ar "
+"ddiwylliant a thraddodiad lleol. Os nad oes tras yn cael ei nodi, yna "
+"rhagdybir perthynas fiolegol."
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:39
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
 msgstr ""
+"Gwall cyffredin yw cael sawl cysylltiad i'r un cofnod, er enghraifft "
+"rhestru'r un plentyn fwy nag unwaith mewn cofnod teulu."
 
 #: setup.php:372
 msgid "A database server can store many separate databases. You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -889,86 +898,94 @@ msgstr ""
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr ""
+msgstr "Siart ffan o hynafiaid unigolyn."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
 msgid "A file on the server"
-msgstr ""
+msgstr "Ffeil ar y gweinydd"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 #: app/Module/GoogleMapsModule.php:3639
 msgid "A file on your computer"
-msgstr ""
+msgstr "Ffeil ar eich cyfrifiadur"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr ""
+msgstr "Neges gyfarch a dolenni defnyddiol i ddefnyddiwr."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
 msgid "A greeting message for site visitors."
-msgstr ""
+msgstr "Neges gyfarch i ymwelwyr a'r wefan."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
 msgid "A list of changes that need to be reviewed by a moderator, and email notifications."
 msgstr ""
+"Rhestr o newidiadau y mae angen i gymedrolwr eu hadolygu, a hysbysiadau "
+"e-bost."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:39
 msgid "A list of frequently asked questions and answers."
-msgstr ""
+msgstr "Rhestr o gwestiynau ac atebion cyffredin."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:49
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "Rhestr o gofnodion sydd wedi'u diweddaru yn ddiweddar."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:44
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr ""
+msgstr "Rhestr o dasgau a gweithgareddau sy'n gysylltiedig â'r cart achau."
 
 #. I18N: Description of the “Yahrzeiten” module. A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:42
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
 msgstr ""
+"Rhestr o'r dathliadau marwolaeth Hebraeg a fydd yn digwydd yn y dyfodol agos."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:36
 msgid "A list of the anniversaries that occur today."
-msgstr ""
+msgstr "Rhestr o'r dathliadau sy'n digwydd heddiw."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:44
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr ""
+msgstr "Rhestr o'r dathliadau a fydd yn digwydd yn y dyfodol agos."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:36
 msgid "A list of the most popular given names."
-msgstr ""
+msgstr "Rhestr o'r enwau cyntaf mwyaf poblogaidd."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:46
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Rhestr o'r cyfenwau mwyaf poblogaidd."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:45
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr ""
+msgstr "Rhestr o'r tudalennau poblogaidd."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:37
 msgid "A list of users and visitors who are currently online."
-msgstr ""
+msgstr "Rhestr o ddefnyddwyr ac ymwelwyr sydd ar-lein ar hyn o bryd."
 
 #: help_text.php:247
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"Mae gwrthrych cyfryngau yn gofnod yn y goeden deulu sy'n cynnwys gwybodaeth "
+"am ffeil cyfryngau. Gall y wybodaeth hon gynnwys teitl, hysbysiad "
+"hawlfraint, trawsgrifiad, cyfyngiadau preifatrwydd, ac ati. Mae modd "
+"storio'r ffeil gyfryngau, fel y llun neu'r fideo, yn lleol (ar y gweinydd "
+"gwe hwn) neu'n bell (ar weinydd gwe wahanol)."
 
 #: login.php:264
 #, php-format
@@ -984,121 +1001,127 @@ msgstr ""
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
+"Mae defnyddiwr newydd (%1$s) wedi gofyn am gyfrif (%2$s) ac wedi gwirio "
+"cyfeiriad e-bost (%3$s)."
 
 #: admin.php:624 admin_site_upgrade.php:79 login.php:116
 msgid "A new version of webtrees is available."
-msgstr ""
+msgstr "Mae fersiwn newydd o webtrees ar gael."
 
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56
 msgid "A private area to record notes or keep a journal."
-msgstr ""
+msgstr "Ardal breifat i recordio nodiadau neu gadw dyddiadur."
 
 #. I18N: %s is a server name/URL
 #: login.php:322
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "Mae darpar ddefnyddiwr wedi cofrestru gyda webtrees yn %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr ""
+msgstr "Adroddiad am hynafiaid unigolyn, wedi'i fformatio fel coeden."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:43
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr ""
+msgstr "Adroddiad am hynafiaid unigolyn, mewn arddull naratif."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:35
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr ""
+msgstr "Adroddiad am ddisgynyddion unigolyn, mewn ddull naratif."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "Adroddiad am fanylion unigolyn."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr ""
+msgstr "Adroddiad am ffeithiau sy'n cael eu cefnogi gan ffynonellau penodol."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:35
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr ""
+msgstr "Adroddiad am aelodau'r teulu a'u manylion."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:35 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "Adroddiad am unigolion a fu farw mewn amser neu le penodol."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:35
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr ""
+msgstr "Adroddiad am unigolion a oedd â galwedigaeth benodol."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:35 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr ""
+msgstr "Adroddiad am unigolion a aned ar adegau neu lefydd penodol."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:35
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr ""
+msgstr "Adroddiad am unigolion a gladdwyd mewn mannau penodol."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:35
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "Adroddiad am unigolion a oedd yn briod ar adeegau neu lefydd penodol."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:35 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr ""
+msgstr "Adroddiad am newidiadau diweddar ac arfaethedig."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:35
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "Adroddiad am y teuluoedd sydd â chysylltiad agos ag unigolyn."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:35
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr ""
+msgstr "Adroddiad am yr unigolion sy'n perthyn yn agos i unigolyn."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "Adroddiad o'r wybodaeth sy'n cael ei ddarparu gan ffynhonnell."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr ""
+msgstr "Adroddiad am y wybodaeth sydd ar goll am unigolion a'u perthnasau."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr ""
+msgstr "Adroddiad am gofnodion hanfodol dyddiadau neu lefydd penodol."
 
 #: admin_users.php:523
 msgid "A role is a set of access rights, which give permission to view data, change preferences, etc. Access rights are assigned to roles, and roles are granted to users. Each family tree can assign different access to each role, and users can have a different role in each family tree."
 msgstr ""
+"Mae rôl yn set o hawliau mynediad, sy'n rhoi caniatâd i weld data, newid "
+"dewisiadau, ac ati. Mae hawliau mynediad yn cael eu rhoi i rolau, a rolau i "
+"ddefnyddwyr. Gall pob cart achau neilltuo mynediad gwahanol i bob rôl, a "
+"gall defnyddwyr gael rôl wahanol ym mhob cart achau."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarModule.php:37
@@ -1113,51 +1136,53 @@ msgstr ""
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:39
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr ""
+msgstr "Bar ochr yn dangos teuluoedd agos a pherthnasau unigolyn."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:34
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr ""
+msgstr "Bar ochr yn dangos gwybodaeth cyffredinol am unigolyn."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:38
 msgid "A sidebar showing the descendants of an individual."
-msgstr ""
+msgstr "Bar ochr yn dangos disgynyddion unigolyn."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:46
 msgid "A tab showing the close relatives of an individual."
-msgstr ""
+msgstr "Tab yn dangos perthnasau agos unigolyn."
 
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:41
 msgid "A tab showing the facts and events of an individual."
-msgstr ""
+msgstr "Tab yn dangos ffeithiau a digwyddiadau bywyd unigolyn."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:40
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "Tab yn dangos y gwrthrychau cyfryngau sy'n gysylltiedig ag unigolyn."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "Tab yn dangos y nodiadau sydd ynghlwm wrth unigolyn."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "Tab yn dangos y ffynonellau sy'n gysylltiedig ag unigolyn."
 
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr ""
+msgstr "Llinell amser yn dangos digwyddiadau unigol."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
 msgstr ""
+"Ni fydd defnyddiwr yn gallu mewngofnodi nes bod “gwirio e-bost” a “"
+"chymeradwy gan weinyddwr” yn cael eu dewis."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1105
@@ -1216,7 +1241,7 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "Allwedd API"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -1256,7 +1281,7 @@ msgstr "Aban"
 #: admin_trees_config.php:1505 admin_trees_config.php:1507
 #: admin_trees_config.php:1511
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "Talfyrru enwau lleoedd"
 
 #. I18N: gedcom tag ABBR
 #: app/GedcomTag.php:118
@@ -1269,27 +1294,27 @@ msgstr "Derbyn"
 
 #: edit_changes.php:214 edit_changes.php:225
 msgid "Accept all changes"
-msgstr ""
+msgstr "Derbyn pob newid"
 
 #: admin_module_blocks.php:75 admin_module_charts.php:68
 #: admin_module_menus.php:90 admin_module_reports.php:68
 #: admin_module_sidebar.php:90 admin_module_tabs.php:90
 #: admin_trees_config.php:532
 msgid "Access level"
-msgstr ""
+msgstr "Lefel mynediad"
 
 #: admin_users.php:520
 msgid "Access to family trees"
-msgstr ""
+msgstr "Mynediad i gartiau achau"
 
 #: admin_users.php:375
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "Cymeradwyo cyfrif a gwirio e-bost"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:83
 msgid "Accra, Ghana"
-msgstr ""
+msgstr "Accra, Ghana"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:141
@@ -1371,7 +1396,7 @@ msgstr "Ychwanegu"
 #: app/Module/ClippingsCartModule.php:737
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr ""
+msgstr "Ychwanegu %s at y drol toriadau"
 
 #: modules_v3/GEDFact_assistant/census/census-edit.php:120
 msgid "Add a blank row"
@@ -1383,11 +1408,11 @@ msgstr ""
 
 #: edit_interface.php:496
 msgid "Add a child"
-msgstr ""
+msgstr "Ychwanegu plentyn"
 
 #: app/Module/RelativesTabModule.php:398 edit_interface.php:575
 msgid "Add a child to create a one-parent family"
-msgstr ""
+msgstr "Ychwanegu plentyn i greu teulu un rhiant"
 
 #: app/Controller/FamilyController.php:82 app/Functions/FunctionsCharts.php:310
 msgid "Add a child to this family"
@@ -1395,15 +1420,15 @@ msgstr ""
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr ""
+msgstr "Ychwanegu ffaith"
 
 #: app/Module/RelativesTabModule.php:326 edit_interface.php:655 family.php:92
 msgid "Add a father"
-msgstr ""
+msgstr "Ychwanegu tad"
 
 #: app/Module/FamilyTreeFavoritesModule.php:203
 msgid "Add a favorite"
-msgstr ""
+msgstr "Ychwanegu ffefryn"
 
 #: app/Module/GoogleMapsModule.php:4016
 msgid "Add a geographic location"
