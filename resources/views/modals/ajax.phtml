@@ -14,12 +14,12 @@
                 let modal_content = this.querySelector(".modal-content");
 
                 // If we need to paste the result into a select2 control
-                modal_content.dataset.selectId = event.relatedTarget.dataset.selectId;
+                modal_content.dataset.wtSelectId = event.relatedTarget.dataset.wtSelectId;
 
                 // Clear existing content (to prevent FOUC) and load new content.
                 $(modal_content)
                     .empty()
-                    .load(event.relatedTarget.dataset.href, function () {
+                    .load(event.relatedTarget.dataset.wtHref, function () {
                         // Activate autocomplete fields
                         $(".select2", $(this)).select2({
                             dropdownParent: $(this),

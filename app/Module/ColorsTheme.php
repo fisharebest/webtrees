@@ -133,7 +133,7 @@ class ColorsTheme extends CloudsTheme
                 '#',
                 'menu-color-' . $palette_id . ($palette === $palette_id ? ' active' : ''),
                 [
-                    'data-post-url' => $url,
+                    'data-wt-post-url' => $url,
                 ]
             );
 

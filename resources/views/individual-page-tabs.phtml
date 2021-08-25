@@ -15,7 +15,7 @@ use Illuminate\Support\Collection;
     <ul class="nav nav-tabs flex-wrap" role="tablist">
         <?php foreach ($tabs as $tab) : ?>
             <li class="nav-item" role="presentation">
-                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" data-bs-toggle="tab" role="tab" data-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
+                <a class="nav-link<?= $tab->isGrayedOut($record) ? ' text-muted' : '' ?>" data-bs-toggle="tab" role="tab" data-wt-href="<?= e(route('module', ['module' => $tab->name(), 'action' => 'Tab', 'tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" href="#<?= $tab->name() ?>">
                     <?= $tab->tabTitle() ?>
                 </a>
             </li>
@@ -36,11 +36,11 @@ use Illuminate\Support\Collection;
   "use strict";
 
   // Bootstrap tabs - load content dynamically using AJAX
-  $('a[data-bs-toggle="tab"][data-href]').on('show.bs.tab', function () {
+  $('a[data-bs-toggle="tab"][data-wt-href]').on('show.bs.tab', function () {
     let target = $(this.hash + ':empty');
     if (target.length > 0) {
       // Start the download immediately...
-      let download = fetch(this.dataset.href);
+      let download = fetch(this.dataset.wtHref);
 
       // ...but don't insert it until the tab is ready.
       $(this).one('shown.bs.tab', () => {

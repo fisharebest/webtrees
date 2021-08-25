@@ -30,7 +30,7 @@ use League\Flysystem\FilesystemOperator;
                 <?= I18N::translate('Media file') ?>
                 <?php if ($record->canEdit()) : ?>
                     <div class="editfacts nowrap">
-                        <a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-href="<?= route(EditMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
+                        <a class="btn btn-link" href="#" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-wt-href="<?= route(EditMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()]) ?>" title="<?= I18N::translate('Edit') ?>">
                             <?= view('icons/edit') ?>
                             <span class="visually-hidden">
                             <?= I18N::translate('Edit') ?>
@@ -38,7 +38,7 @@ use League\Flysystem\FilesystemOperator;
                         </a>
 
                         <?php if (count($record->mediaFiles()) > 1) : ?>
-                            <a class="btn btn-link" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>" data-post-url="<?= e(route(DeleteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()])) ?>" title="<?= I18N::translate('Delete') ?>">
+                            <a class="btn btn-link" href="#" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this fact?') ?>" data-wt-post-url="<?= e(route(DeleteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact_id' => $media_file->factId()])) ?>" title="<?= I18N::translate('Delete') ?>">
                                 <?= view('icons/delete') ?>
                                 <span class="visually-hidden">
                             <?= I18N::translate('Delete') ?>

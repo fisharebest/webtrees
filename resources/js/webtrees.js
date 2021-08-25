@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2020 webtrees development team
+ * Copyright (C) 2021 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -596,10 +596,10 @@
           datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
           queryTokenizer: Bloodhound.tokenizers.whitespace,
           remote: {
-            url: this.dataset.autocompleteUrl,
+            url: this.dataset.wtAutocompleteUrl,
             replace: function (url, uriEncodedQuery) {
               const symbol = (url.indexOf("?") > 0) ? '&' : '?';
-              if (that.dataset.autocompleteExtra === 'SOUR') {
+              if (that.dataset.wtAutocompleteExtra === 'SOUR') {
                 let row_group = that.closest('.form-group').previousElementSibling;
                 while (row_group.querySelector('select') === null) {
                   row_group = row_group.previousElementSibling;
@@ -676,12 +676,12 @@ $.ajaxSetup({
 $(function () {
   // Page elements that load automatically via AJAX.
   // This prevents bad robots from crawling resource-intensive pages.
-  $('[data-ajax-url]').each(function () {
-    $(this).load($(this).data('ajaxUrl'));
+  $('[data-wt-ajax-url]').each(function () {
+    $(this).load(this.dataset.wtAjaxUrl);
   });
 
   // Autocomplete
-  webtrees.autocomplete('input[data-autocomplete-url]');
+  webtrees.autocomplete('input[data-wt-autocomplete-url]');
 
   // Select2 - activate autocomplete fields
   const lang = document.documentElement.lang;
@@ -728,13 +728,13 @@ $(function () {
   let osk_focus_element;
   $('.wt-osk-trigger').click(function () {
     // When a user clicks the icon, set focus to the corresponding input
-    osk_focus_element = document.getElementById($(this).data('id'));
+    osk_focus_element = document.getElementById(this.dataset.wtId);
     osk_focus_element.focus();
     $('.wt-osk').show();
   });
   $('.wt-osk-script-button').change(function () {
     $('.wt-osk-script').prop('hidden', true);
-    $('.wt-osk-script-' + $(this).data('script')).prop('hidden', false);
+    $('.wt-osk-script-' + this.dataset.wtOskScript).prop('hidden', false);
   });
   $('.wt-osk-shift-button').click(function () {
     document.querySelector('.wt-osk-keys').classList.toggle('shifted');
@@ -763,19 +763,19 @@ $(function () {
       states: {
         shown: {
           toggle: {
-            content: this.dataset.hideText,
+            content: this.dataset.wtHidePasswordText,
             attr: {
-              title: this.dataset.hideTitle,
-              'aria-label': this.dataset.hideTitle,
+              title: this.dataset.wtHidePasswordTitle,
+              'aria-label': this.dataset.wtHidePasswordTitle,
             }
           }
         },
         hidden: {
           toggle: {
-            content: this.dataset.showText,
+            content: this.dataset.wtShowPasswordText,
             attr: {
-              title: this.dataset.showTitle,
-              'aria-label': this.dataset.showTitle,
+              title: this.dataset.wtShowPasswordTitle,
+              'aria-label': this.dataset.wtShowPasswordTitle,
             }
           }
         }
@@ -799,7 +799,7 @@ document.addEventListener('submit', function (event) {
   }
 });
 
-// Convert data-confirm and data-post-url attributes into useful behavior.
+// Convert data-wt-confirm and data-wt-post-url/data-wt-reload-url attributes into useful behavior.
 document.addEventListener('click', (event) => {
   const target = event.target.closest('a,button');
 
@@ -807,24 +807,23 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  if ('confirm' in target.dataset && !confirm(target.dataset.confirm)) {
+  if ('wtConfirm' in target.dataset && !confirm(target.dataset.wtConfirm)) {
     event.preventDefault();
-    return;
   }
 
-  if ('postUrl' in target.dataset) {
+  if ('wtPostUrl' in target.dataset) {
     const token = document.querySelector('meta[name=csrf]').content;
 
-    fetch(target.dataset.postUrl, {
+    fetch(target.dataset.wtPostUrl, {
       method: 'POST',
       headers: {
         'X-CSRF-TOKEN': token,
         'X-Requested-with': 'XMLHttpRequest',
       },
     }).then(() => {
-      if ('reloadUrl' in target.dataset) {
-        // Go somewhere else.  e.g. home page after logout.
-        document.location = target.dataset.reloadUrl;
+      if ('wtReloadUrl' in target.dataset) {
+        // Go somewhere else. e.g. the home page after logout.
+        document.location = target.dataset.wtReloadUrl;
       } else {
         // Reload the current page. e.g. change language.
         document.location.reload();

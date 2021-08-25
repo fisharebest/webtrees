@@ -46,10 +46,10 @@ use Fisharebest\Webtrees\View;
     if(state.hasClass("icon-plus")) {
       if (jQuery.trim(target.html())) {
         target.show("fast"); // already got content so just show it
-      } else if (this.dataset.href !== "#") {
+      } else if (this.dataset.wtHref !== "#") {
         target
           .hide()
-          .load(this.dataset.href, function(response, status, xhr) {
+          .load(this.dataset.wtHref, function(response, status, xhr) {
             if(status === "success" && response !== "") {
               target.show("fast");
             }

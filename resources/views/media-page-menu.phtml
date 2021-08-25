@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
         </a>
         -->
 
-        <a class="dropdown-item" href="#" data-href="<?= e(route(AddMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(AddMediaFileModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
             <?= view('icons/add') ?>
             <?= I18N::translate('Add a media file') ?>
         </a>
@@ -53,24 +53,24 @@ use Illuminate\Support\Collection;
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="#" data-href="<?= e(route(LinkMediaToIndividualModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToIndividualModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to an individual') ?>
         </a>
 
-        <a class="dropdown-item" href="#" data-href="<?= e(route(LinkMediaToFamilyModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToFamilyModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to a family') ?>
         </a>
 
-        <a class="dropdown-item" href="#" data-href="<?= e(route(LinkMediaToSourceModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
+        <a class="dropdown-item" href="#" data-wt-href="<?= e(route(LinkMediaToSourceModal::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>" data-bs-target="#wt-ajax-modal" data-bs-toggle="modal" data-bs-backdrop="static">
             <?= view('icons/link') ?>
             <?= I18N::translate('Link this media object to a source') ?>
         </a>
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->fullName())) ?>" data-post-url="<?= e(route(DeleteRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+        <a class="dropdown-item" href="#" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->fullName())) ?>" data-wt-post-url="<?= e(route(DeleteRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
             <?= view('icons/delete') ?>
             <?= I18N::translate('Delete') ?>
         </a>

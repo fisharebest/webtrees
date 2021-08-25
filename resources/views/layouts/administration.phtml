@@ -58,12 +58,12 @@ use Fisharebest\Webtrees\View;
                     </a>
                     <div class="dropdown-menu">
                         <?php foreach (I18N::activeLocales() as $locale) : ?>
-                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= I18N::languageTag() === $locale->languageTag() ? ' active' : '' ?>" href="#" data-post-url="<?= e(route(SelectLanguage::class, ['language' => $locale->languageTag()])) ?>"><?= $locale->endonym() ?></a>
+                            <a class="dropdown-item menu-language-<?= $locale->languageTag() ?> <?= I18N::languageTag() === $locale->languageTag() ? ' active' : '' ?>" href="#" data-wt-post-url="<?= e(route(SelectLanguage::class, ['language' => $locale->languageTag()])) ?>"><?= $locale->endonym() ?></a>
                         <?php endforeach ?>
                     </div>
                 </li>
                 <li class="nav-item menu-logout">
-                    <a class="nav-link" href="#" data-post-url="<?= e(route(Logout::class)) ?>" data-reload-url="<?= e(route(HomePage::class)) ?>"><?= I18N::translate('Sign out') ?></a>
+                    <a class="nav-link" href="#" data-wt-post-url="<?= e(route(Logout::class)) ?>" data-wt-reload-url="<?= e(route(HomePage::class)) ?>"><?= I18N::translate('Sign out') ?></a>
                 </li>
             </ul>
         </header>

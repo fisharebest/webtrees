@@ -45,7 +45,7 @@ use Illuminate\Support\Collection;
 
         <div class="wt-sortable-list wt-sortable-list-fams">
             <?php foreach ($fams_facts as $fact) : ?>
-                <div class="card mb-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
+                <div class="card mb-2 wt-sortable-item" data-wt-sort-by-date="<?= $fact->target()->getMarriageDate()->julianDay() ?>">
                     <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                     <div class="card-header">
                         <?= view('edit/reorder-card-header', ['title' => $fact->target()->fullName()]) ?>
@@ -124,7 +124,7 @@ use Illuminate\Support\Collection;
 
         $("#btn-default-order").on("click", function () {
             $(".wt-sortable-list-fams .wt-sortable-item").sort(function (x, y) {
-                return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
+                return Math.sign(x.dataset.wtSortByDate - y.dataset.wtSortByDate);
             }).appendTo(".wt-sortable-list-fams");
         });
     }

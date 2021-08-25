@@ -81,14 +81,14 @@ use Illuminate\Support\Collection;
                 </td>
                 <td>
                     <?php if ($faq->block_order !== $min_block_order) : ?>
-                        <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
+                        <a href="#" data-wt-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveUp', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
                             <?= view('icons/arrow-up') ?>
                         </a>
                     <?php endif ?>
                 </td>
                 <td>
                     <?php if ($faq->block_order !== $max_block_order) : ?>
-                        <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
+                        <a href="#" data-wt-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminMoveDown', 'block_id' => $faq->block_id])) ?>" class="btn btn-secondary">
                         <?= view('icons/arrow-down') ?>
                         </a>
                     <?php endif ?>
@@ -99,7 +99,7 @@ use Illuminate\Support\Collection;
                     </a>
                 </td>
                 <td>
-                    <a href="#" data-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>" aria-label="<?= I18N::translate('Delete') ?>" class="btn btn-danger">
+                    <a href="#" data-wt-post-url="<?= e(route('module', ['module' => 'faq', 'action' => 'AdminDelete', 'block_id' => $faq->block_id])) ?>" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($faq->header)) ?>" aria-label="<?= I18N::translate('Delete') ?>" class="btn btn-danger">
                         <?= view('icons/delete') ?>
                     </a>
                 </td>

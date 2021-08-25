@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\I18N;
             </button>
         </form>
     <?php endif ?>
-    <a href="#" data-post-url="<?= e(route(DeletePath::class, ['path' => $thumbnail])) ?>" class="btn <?= $difference >= 99 ? 'btn-primary' : 'btn-secondary' ?>">
+    <a href="#" data-wt-post-url="<?= e(route(DeletePath::class, ['path' => $thumbnail])) ?>" class="btn <?= $difference >= 99 ? 'btn-primary' : 'btn-secondary' ?>">
         <?= view('icons/delete') ?>
         <?= I18N::translate('delete') ?>
     </a>

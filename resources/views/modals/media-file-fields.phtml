@@ -60,7 +60,7 @@ use Fisharebest\Webtrees\Tree;
                     <label class="form-check-label">
                         <span class="input-group">
                             <input class="form-check-input" type="radio" name="auto" value="0" checked>
-                            <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file instanceof MediaFile ? $media_file->filename() : '') === '.' ? '' : dirname($media_file instanceof MediaFile ? $media_file->filename() : '')) ?>" data-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
+                            <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file instanceof MediaFile ? $media_file->filename() : '') === '.' ? '' : dirname($media_file instanceof MediaFile ? $media_file->filename() : '')) ?>" data-wt-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
                             <span class="input-group-text">/</span>
                         </span>
                     </label>

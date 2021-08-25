@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -44,6 +45,16 @@ use function app;
 use function basename;
 use function filesize;
 use function http_build_query;
+use function implode;
+use function preg_match;
+use function str_contains;
+use function str_starts_with;
+use function strcspn;
+use function strlen;
+use function strpos;
+use function substr;
+
+use function var_dump;
 
 use const UPLOAD_ERR_OK;
 
@@ -251,5 +262,78 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $client_name = basename($filename);
 
         return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
+    }
+
+    /**
+     * Assert that a response contains valid HTML - either a full page or a fragment.
+     *
+     * @param ResponseInterface $response
+     */
+    protected function validateHtmlResponse(ResponseInterface $response): void
+    {
+        $this->assertEquals('text/html; charsert=utf8', $response->getHeaderLine('content-type'));
+
+        $html = $response->getBody()->getContents();
+
+        $this->assertStringStartsWith('<DOCTYPE html>', $html);
+
+        $this->validateHtml(substr($html, strlen('<DOCTYPE html>')));
+
+    }
+
+    /**
+     * Assert that a response contains valid HTML - either a full page or a fragment.
+     *
+     * @param string $html
+     */
+    protected function validateHtml(string $html): void
+    {
+        $stack = [];
+
+        do {
+            $html = substr($html, 0, strcspn($html, '<>'));
+
+            if (str_starts_with($html, '>')) {
+                $this->fail('Unescaped > found in HTML');
+            }
+
+            if (str_starts_with($html, '<')) {
+                if (preg_match('~^</([a-z]+)>~', $html, $match)) {
+                    if ($match[1] !== array_pop($stack)) {
+                        $this->fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
+                    }
+                    $html = substr($html, strlen($match[0]));
+                } elseif (preg_match('~^<([a-z]+)(?:\s*="[^">]*")*\s*(/)?>~', $html, $match)) {
+                    $tag = $match[1];
+                    $self_closing = $match[2] === '/';
+
+                    $message = 'Tag ' . $tag . ' is not allowed at ' . implode(':', $stack) . '.';
+
+                    switch ($tag) {
+                        case 'html':
+                            $this->assertSame([], $stack);
+                            break;
+                        case 'head':
+                        case 'body':
+                            $this->assertSame(['head'], $stack);
+                            break;
+                        case 'div':
+                            $this->assertNotContains('span', $stack, $message);
+                            break;
+                    }
+
+                    if (!$self_closing) {
+                        $stack[] = $tag;
+                    }
+
+                    $html = substr($html, strlen($match[0]));
+                } else {
+                    $this->fail('Unrecognised tag: ' . substr($html, 0, 40));
+                }
+            }
+        } while ($html !== '');
+
+        $this->assertSame([], $stack);
+
     }
 }

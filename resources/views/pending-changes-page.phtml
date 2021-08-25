@@ -55,7 +55,7 @@ use Fisharebest\Webtrees\Tree;
             <?php foreach ($change as $record_change) : ?>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-primary" data-post-url="<?= e(route(PendingChangesAcceptChange::class, ['tree' => $tree->name(), 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
+                        <button type="button" class="btn btn-primary" data-wt-post-url="<?= e(route(PendingChangesAcceptChange::class, ['tree' => $tree->name(), 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
                             <?= I18N::translate('Accept') ?>
                         </button>
                     </td>
@@ -85,7 +85,7 @@ use Fisharebest\Webtrees\Tree;
                     </td>
 
                     <td>
-                        <button type="button" class="btn btn-secondary" data-post-url="<?= e(route(PendingChangesRejectChange::class, ['tree' => $tree->name(), 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
+                        <button type="button" class="btn btn-secondary" data-wt-post-url="<?= e(route(PendingChangesRejectChange::class, ['tree' => $tree->name(), 'xref' => $record_change->xref, 'change' => $record_change->change_id])) ?>">
                             <?= I18N::translate('Reject') ?>
                         </button>
                     </td>
@@ -97,11 +97,11 @@ use Fisharebest\Webtrees\Tree;
 
 <?php if ($changes !== []) : ?>
     <div class="d-flex justify-content-between">
-        <button type="button" class="btn btn-primary" data-post-url="<?= e(route(PendingChangesAcceptTree::class, ['tree' => $tree->name(), 'n' => count($changes)])) ?>">
+        <button type="button" class="btn btn-primary" data-wt-post-url="<?= e(route(PendingChangesAcceptTree::class, ['tree' => $tree->name(), 'n' => count($changes)])) ?>">
             <?= I18N::translate('Accept all changes') ?>
         </button>
 
-        <button type="button" class="btn btn-secondary" data-post-url="<?= e(route(PendingChangesRejectTree::class, ['tree' => $tree->name()])) ?>" data-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>">
+        <button type="button" class="btn btn-secondary" data-wt-post-url="<?= e(route(PendingChangesRejectTree::class, ['tree' => $tree->name()])) ?>" data-wt-confirm="<?= I18N::translate('Are you sure you want to reject all the changes to this family tree?') ?>">
             <?= I18N::translate('Reject all changes') ?>
         </button>
     </div>

@@ -150,7 +150,7 @@ use Fisharebest\Webtrees\Webtrees;
             I18N::translate('Password') ?>
         </label>
         <div class="col-sm-9">
-            <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="" autocomplete="new-password" data-show-text="<?= e(I18N::translate('show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
+            <input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="" autocomplete="new-password" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
             <div class="form-text">
                 <?= /* I18N: Help text for the "Password" site configuration setting */
                 I18N::translate('The password required for authentication with the SMTP server.') ?>

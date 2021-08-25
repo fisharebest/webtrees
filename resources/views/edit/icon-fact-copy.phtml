@@ -10,7 +10,7 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<a class="btn btn-link btn-sm" href="#" data-post-url="<?= e(route(CopyFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Copy') ?>">
+<a class="btn btn-link btn-sm" href="#" data-wt-post-url="<?= e(route(CopyFact::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" title="<?= I18N::translate('Copy') ?>">
     <?= view('icons/copy') ?>
     <span class="visually-hidden"><?= I18N::translate('Copy') ?></span>
 </a>

@@ -244,7 +244,7 @@ trait ModuleThemeTrait
             $language_tag = $active_locale->languageTag();
             $class        = 'menu-language-' . $language_tag . (I18N::languageTag() === $language_tag ? ' active' : '');
             $menu->addSubmenu(new Menu($active_locale->endonym(), '#', $class, [
-                'data-post-url' => route(SelectLanguage::class, ['language' => $language_tag]),
+                'data-wt-post-url' => route(SelectLanguage::class, ['language' => $language_tag]),
             ]));
         }
 
@@ -295,8 +295,8 @@ trait ModuleThemeTrait
     {
         if (Auth::check()) {
             $parameters = [
-                'data-post-url'   => route(Logout::class),
-                'data-reload-url' => route(HomePage::class)
+                'data-wt-post-url'   => route(Logout::class),
+                'data-wt-reload-url' => route(HomePage::class)
             ];
 
             return new Menu(I18N::translate('Sign out'), '#', 'menu-logout', $parameters);
@@ -444,7 +444,7 @@ trait ModuleThemeTrait
                 $class      = 'menu-theme-' . $theme->name() . ($active ? ' active' : '');
 
                 return new Menu($theme->title(), '#', $class, [
-                    'data-post-url' => route(SelectTheme::class, ['theme' => $theme->name()]),
+                    'data-wt-post-url' => route(SelectTheme::class, ['theme' => $theme->name()]),
                 ]);
             });
 

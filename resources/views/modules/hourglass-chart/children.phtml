@@ -22,7 +22,7 @@ use Illuminate\Support\Collection;
                     <?= view('modules/hourglass-chart/children', ['children' => $grandchildren, 'generations' => $generations - 1, 'spouses' => $spouses]) ?>
                 <?php else : ?>
                     <div class="d-flex align-self-center">
-                        <div class="hourglass-arrow" data-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'tree' => $child->tree()->name(), 'spouses' => $spouses]) ?>">
+                        <div class="hourglass-arrow" data-wt-chart-xref="<?= route('module', ['module' => 'hourglass_chart', 'action' => 'Descendants', 'xref' => $child->xref(), 'tree' => $child->tree()->name(), 'spouses' => $spouses]) ?>">
                             <?= view('icons/arrow-left') ?>
                         </div>
                     </div>

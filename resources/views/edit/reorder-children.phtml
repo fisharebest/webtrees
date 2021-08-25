@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\View;
 
     <div class="wt-sortable-list">
         <?php foreach ($family->facts(['CHIL']) as $fact) : ?>
-            <div class="card my-2 wt-sortable-item" data-sortbydate="<?= $fact->target()->getBirthDate()->julianDay() ?>">
+            <div class="card my-2 wt-sortable-item" data-wt-sort-by-date="<?= $fact->target()->getBirthDate()->julianDay() ?>">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <div class="card-header">
                     <?= view('edit/reorder-card-header', ['title' => $fact->target()->fullName()]) ?>
@@ -60,7 +60,7 @@ use Fisharebest\Webtrees\View;
 
     $("#btn-default-order").on("click", function () {
         $(".wt-sortable-list .wt-sortable-item").sort(function (x, y) {
-            return Math.sign(x.dataset.sortbydate - y.dataset.sortbydate);
+            return Math.sign(x.dataset.wtSortByDate - y.dataset.wtSortByDate);
         }).appendTo(".wt-sortable-list");
     });
 </script>

@@ -89,7 +89,7 @@ use Fisharebest\Webtrees\Tree;
     function slideShowReload() {
         var block = $("#block-<?= $block_id ?>").parent();
         clearTimeout(timeout);
-        block.load(block.data("ajaxUrl") + "&start=" + (play ? "1" : "0"));
+        block.load(block.data("wtAjaxUrl") + "&start=" + (play ? "1" : "0"));
 
         return false;
     }

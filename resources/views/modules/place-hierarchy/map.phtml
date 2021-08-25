@@ -106,7 +106,7 @@ use Fisharebest\Webtrees\View;
             id: feature.id,
           })
             .on('popupopen', function (e) {
-              let item = sidebar.children('.mapped[data-id=' + e.target.feature.id + ']');
+              let item = sidebar.children('.mapped[data-wt-feature-id=' + e.target.feature.id + ']');
               item.addClass('messagebox');
               sidebar.scrollTo(item);
             })

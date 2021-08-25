@@ -38,8 +38,8 @@ use Fisharebest\Webtrees\I18N;
                 <?php else : ?>
                     <a
                         href="#"
-                        data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($entry)) ?>"
-                        data-post-url="<?= e(route(DeletePath::class, ['path' => $entry])) ?>"
+                        data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($entry)) ?>"
+                        data-wt-post-url="<?= e(route(DeletePath::class, ['path' => $entry])) ?>"
                         class="btn btn-sm btn-link"
                     >
                         <?= view('icons/delete') ?>

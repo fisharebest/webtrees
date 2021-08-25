@@ -13,7 +13,7 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <?php if ($block->loadAjax()) : ?>
-    <div class="wt-ajax-load" data-ajax-url="<?= e(route(UserPageBlock::class, ['tree' => $tree->name(), 'block_id' => $block_id])) ?>"></div>
+    <div class="wt-ajax-load" data-wt-ajax-url="<?= e(route(UserPageBlock::class, ['tree' => $tree->name(), 'block_id' => $block_id])) ?>"></div>
 <?php else : ?>
     <?= $block->getBlock($tree, $block_id, ModuleBlockInterface::CONTEXT_USER_PAGE) ?>
 <?php endif ?>

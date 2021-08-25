@@ -166,7 +166,7 @@ use Fisharebest\Webtrees\View;
 
                         <div id="surname_opt" class="form-group" style="display:none;">
                             <label for="SURN"><?= I18N::translate('Surname') ?></label>
-                            <input data-autocomplete-url="<?= e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) ?>" autocomplete="off" class="form-control" type="text" id="SURN" name="SURN">
+                            <input data-wt-autocomplete-url="<?= e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) ?>" autocomplete="off" class="form-control" type="text" id="SURN" name="SURN">
                         </div>
                     </fieldset>
 

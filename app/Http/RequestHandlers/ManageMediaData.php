@@ -250,7 +250,7 @@ class ManageMediaData implements RequestHandlerInterface
                         }
                     }
 
-                    $delete_link = '<p><a data-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row[0])) . '" data-post-url="' . e(route(DeletePath::class, [
+                    $delete_link = '<p><a data-wt-confirm="' . I18N::translate('Are you sure you want to delete “%s”?', e($row[0])) . '" data-wt-post-url="' . e(route(DeletePath::class, [
                             'path' => $row[0],
                         ])) . '" href="#">' . I18N::translate('Delete') . '</a></p>';
 

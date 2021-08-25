@@ -102,7 +102,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A button label. */ I18N::translate('download') ?>
         </a>
 
-        <a href="#" class="btn btn-danger" data-confirm="<?= I18N::translate('Permanently delete these records?') ?>" data-post-url="<?= e(route(SiteLogsDelete::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>">
+        <a href="#" class="btn btn-danger" data-wt-confirm="<?= I18N::translate('Permanently delete these records?') ?>" data-wt-post-url="<?= e(route(SiteLogsDelete::class, ['from' => $from, 'to' => $to, 'type' => $type, 'text' => $text, 'ip' => $ip, 'username' => $username, 'tree' => $tree])) ?>">
         <?= view('icons/delete') ?>
             <?= /* I18N: A button label. */ I18N::translate('delete') ?>
         </a>

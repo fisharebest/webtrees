@@ -97,7 +97,7 @@ $all_facts = Fact::sortFacts($all_facts);
 $id = Uuid::uuid4()->toString();
 ?>
 
-<div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
+<div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-wt-chart-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">
     <?php if ($individual->canShow() && $individual->tree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) : ?>
         <div class="wt-chart-box-thumbnail float-start me-1">
             <?= $individual->displayImage(40, 50, 'crop', ['class' => 'wt-chart-box-thumbnail']) ?>

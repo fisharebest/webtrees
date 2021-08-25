@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Tree;
         <div class="col-sm-9 wt-page-options-value">
             <textarea class="form-control" name="NOTE" id="NOTE" rows="10" dir="auto"><?= e($note->getNote()) ?></textarea>
 
-            <a class="wt-osk-trigger" data-id="NOTE" href="#" title="<?= I18N::translate('Find a special character') ?>">
+            <a class="wt-osk-trigger" data-wt-id="NOTE" href="#" title="<?= I18N::translate('Find a special character') ?>">
                 <?= view('icons/keyboard') ?>
                 <span class="visually-hidden"><?= I18N::translate('Find a special character') ?></span>
             </a>

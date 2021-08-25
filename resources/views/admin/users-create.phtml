@@ -58,7 +58,7 @@ use Fisharebest\Webtrees\View;
             <?= I18N::translate('Password') ?>
         </label>
         <div class="col-sm-9">
-            <input class="form-control" type="password" id="password" name="password" pattern = ".{8,}" placeholder="<?= I18N::plural('Use at least %s character.', 'Use at least %s characters.', 8, I18N::number(8)) ?>" required="required" autocomplete="new-password" data-show-text="<?= e(I18N::translate('show')) ?>" data-show-title="<?= e(I18N::translate('Show password')) ?>" data-hide-text="<?= e(I18N::translate('hide')) ?>" data-hide-title="<?= e(I18N::translate('Hide password')) ?>">
+            <input class="form-control" type="password" id="password" name="password" pattern = ".{8,}" placeholder="<?= I18N::plural('Use at least %s character.', 'Use at least %s characters.', 8, I18N::number(8)) ?>" required="required" autocomplete="new-password" data-wt-show-password-text="<?= e(I18N::translate('show')) ?>" data-wt-show-password-title="<?= e(I18N::translate('Show password')) ?>" data-wt-hide-password-text="<?= e(I18N::translate('hide')) ?>" data-wt-hide-password-title="<?= e(I18N::translate('Hide password')) ?>">
             <div class="form-text">
                 <?= I18N::translate('Passwords must be at least 8 characters long and are case-sensitive, so that “secret” is different from “SECRET”.') ?>
             </div>

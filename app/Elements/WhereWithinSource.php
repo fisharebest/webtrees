@@ -51,7 +51,7 @@ class WhereWithinSource extends AbstractElement
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
-        return '<input data-autocomplete-url="' . e(route(AutoCompleteCitation::class, ['tree' => $tree->name()])) . '" data-autocomplete-extra="SOUR" autocomplete="off" class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
+        return '<input data-wt-autocomplete-url="' . e(route(AutoCompleteCitation::class, ['tree' => $tree->name()])) . '" data-wt-autocomplete-extra="SOUR" autocomplete="off" class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
     }
 
     /**

@@ -42,7 +42,7 @@ use Illuminate\Support\Collection;
         <?php if (!$record instanceof HeaderRecord) : ?>
             <div class="dropdown-divider"></div>
 
-            <a class="dropdown-item" href="#" data-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->fullName())) ?>" data-post-url="<?= e(route(DeleteRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
+            <a class="dropdown-item" href="#" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', strip_tags($record->fullName())) ?>" data-wt-post-url="<?= e(route(DeleteRecord::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/delete') ?>
                 <?= I18N::translate('Delete') ?>
             </a>

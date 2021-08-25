@@ -91,14 +91,14 @@ use Fisharebest\Webtrees\View;
     const option = select.options[select.selectedIndex];
     const form = select.closest('form');
 
-    form.querySelector('.census-assistant-class').value = option.dataset.census;
+    form.querySelector('.census-assistant-class').value = option.dataset.wtCensus;
 
     var censusAssistantLink = document.querySelector('.census-assistant-link');
     var censusAssistant     = document.querySelector('#census-assistant');
     var censusOption        = this.options[this.selectedIndex];
-    var census              = censusOption.dataset.census;
-    var censusPlace         = censusOption.dataset.place;
-    var censusYear          = censusOption.dataset.date.substr(-4);
+    var census              = censusOption.dataset.wtCensus;
+    var censusPlace         = censusOption.dataset.wtPlace;
+    var censusYear          = censusOption.dataset.wtDate.substr(-4);
 
     if (censusOption.value !== '') {
       censusAssistantLink.removeAttribute('hidden');
@@ -140,7 +140,7 @@ use Fisharebest\Webtrees\View;
   // Add the currently selected individual to the census
   function censusAssistantAdd() {
     var censusSelector = document.querySelector('.census-selector');
-    var census         = censusSelector.options[censusSelector.selectedIndex].dataset.census;
+    var census         = censusSelector.options[censusSelector.selectedIndex].dataset.wtCensus;
     var indi_selector  = document.querySelector('#census-assistant-individual');
     var xref           = indi_selector.options[indi_selector.selectedIndex].value;
     var headInput      = document.querySelector('#census-assistant-table td input');

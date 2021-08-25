@@ -48,7 +48,7 @@ use Illuminate\Support\Collection;
 <form
     method="post"
     action="<?= e(route('module', ['action' => 'DeleteMessage', 'module' => $module->name(), 'context' => $context, 'tree' => $tree->name()])) ?>"
-    data-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
+    data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
     onsubmit="return confirm(this.dataset.confirm);"
     id="messageform"
     name="messageform"
@@ -132,7 +132,7 @@ use Illuminate\Support\Collection;
                                     </a>
                                 <?php } ?>
                                 <button type="button" class="btn btn-danger"
-                                        data-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
+                                        data-wt-confirm="<?= I18N::translate('Are you sure you want to delete this message? It cannot be retrieved later.') ?>"
                                         onclick="if (confirm(this.dataset.confirm)) {$('#messageform :checkbox').prop('checked', false); $('#cb_message<?= $message->message_id ?>').prop('checked', true); document.messageform.submit();}">
                                     <?= I18N::translate('Delete') ?>
                                 </button>

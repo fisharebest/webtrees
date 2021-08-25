@@ -34,8 +34,8 @@ $children = $individual->spouseFamilies()->map(static function (Family $family):
 
 <?php View::push('javascript') ?>
 <script>
-    $(".wt-chart-hourglass").on("click", ".hourglass-arrow[data-xref]", function () {
-        $(this.parentNode).load(this.dataset.xref);
+    $(".wt-chart-hourglass").on("click", ".hourglass-arrow[data-wt-chart-xref]", function () {
+        $(this.parentNode).load(this.dataset.wtChartXref);
 
         return false;
     });
