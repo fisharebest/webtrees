@@ -23,7 +23,7 @@ use Illuminate\Support\Collection;
                 </div>
             </div>
 
-            <div id="sidebar-content-<?= $sidebar->name() ?>" class="collapse<?= $sidebar->name() === 'family_nav' ? ' show' : '' ?>" data-parent="#sidebar" aria-labelledby="sidebar-header-<?= $sidebar->name() ?>">
+            <div id="sidebar-content-<?= $sidebar->name() ?>" class="collapse<?= $sidebar->name() === 'family_nav' ? ' show' : '' ?>" data-bs-parent="#sidebar" aria-labelledby="sidebar-header-<?= $sidebar->name() ?>">
                 <div class="card-body">
                     <?= $sidebar->getSidebarContent($record) ?>
                 </div>

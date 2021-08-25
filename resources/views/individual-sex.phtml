@@ -42,7 +42,7 @@ if ($fact->isPendingDeletion()) {
             ?>
         </a>
     </div>
-    <div id="name-content-<?= $fact->id() ?>" class="card-body collapse" data-parent="#individual-names" aria-labelledby="name-header-<?= $fact->id() ?>">
+    <div id="name-content-<?= $fact->id() ?>" class="card-body collapse" data-bs-parent="#individual-names" aria-labelledby="name-header-<?= $fact->id() ?>">
         <?= FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2) ?>
         <?= FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2) ?>
 
