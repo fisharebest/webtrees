@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"PO-Revision-Date: 2021-09-08 22:07+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nn/>\n"
@@ -5625,7 +5625,7 @@ msgstr "Ecuador"
 #: resources/views/note-page.phtml:101 resources/views/note-page.phtml:104
 #: resources/views/submitter-page-menu.phtml:23
 msgid "Edit"
-msgstr "Endre"
+msgstr "Redigere"
 
 #: app/Http/RequestHandlers/EditMediaFileModal.php:82
 #: resources/views/modals/edit-media-file.phtml:22
