@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-05-26 17:15+0000\n"
+"PO-Revision-Date: 2021-09-08 22:08+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/nn/>\n"
@@ -5412,7 +5412,7 @@ msgstr "Ecuador"
 #: edit_interface.php:261 edit_interface.php:418 note.php:151 note.php:156
 #: note.php:157
 msgid "Edit"
-msgstr "Endre"
+msgstr "Redigere"
 
 #: admin_site_access.php:216
 msgid "Edit a website access rule"
