@@ -68,9 +68,9 @@
         "psr/http-server-middleware": "1.0.1",
         "ramsey/uuid": "4.2.1",
         "sabre/vobject": "4.3.5",
-        "swiftmailer/swiftmailer": "6.2.7",
         "symfony/cache": "5.3.7",
         "symfony/expression-language": "5.3.7",
+        "symfony/mailer": "5.3.4",
         "symfony/polyfill-mbstring": "1.23.1",
         "symfony/polyfill-php80": "1.23.1",
         "tecnickcom/tcpdf": "6.4.2"
