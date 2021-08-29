@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-01 09:22+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\n"
-"Language: ca\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-08 22:08+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -139,7 +123,7 @@ msgstr "%1$s × %2$s pixels"
 #: resources/views/modules/media-list/page.phtml:138
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:481 app/Module/StatisticsChartModule.php:860
@@ -497,7 +481,7 @@ msgstr "(%s d'edat)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(edat %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:302
@@ -506,7 +490,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(edat %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -765,7 +749,7 @@ msgstr "Llistat de persones."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Un llistat d'indrets."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -1508,7 +1492,7 @@ msgstr "Adreça línia 2"
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:664
 #: app/Factories/ElementFactory.php:711
 msgid "Address line 3"
-msgstr ""
+msgstr "Línia d’adreça 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
@@ -1568,7 +1552,7 @@ msgstr "Adoptat/da per la mare"
 #: app/Module/CustomTagsBrothersKeeper.php:71
 #: app/Module/CustomTagsPersonalAncestralFile.php:54
 msgid "Adopted name"
-msgstr ""
+msgstr "Nom adoptat"
 
 #: app/Factories/ElementFactory.php:449 app/Factories/ElementFactory.php:452
 msgid "Adoption"
@@ -1646,7 +1630,7 @@ msgstr "Adopció d’un fill"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Pares adoptius"
 
 #: app/Factories/ElementFactory.php:495
 msgid "Adult christening"
@@ -1945,7 +1929,7 @@ msgstr "Número d’Ancestral File"
 
 #: app/Module/CustomTagsAncestry.php:51
 msgid "Ancestry PID"
-msgstr ""
+msgstr "PID Ancestry"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -2540,7 +2524,7 @@ msgstr "Barbados"
 
 #: app/Module/CustomTagsGedcomL.php:130
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Etiqueta base GEDCOM"
 
 #: app/Factories/ElementFactory.php:471
 #: resources/xml/reports/missing_facts_report.xml:18
@@ -2790,7 +2774,7 @@ msgstr "Inici del lapse de dates de naixement"
 
 #: app/Module/CustomTagsBrothersKeeper.php:73
 msgid "Birth name"
-msgstr ""
+msgstr "Nom de naixement"
 
 #: app/Module/IndividualFactsTabModule.php:308
 msgid "Birth of a brother"
@@ -2867,7 +2851,7 @@ msgstr "Naixement d’un fill"
 
 #: app/Factories/ElementFactory.php:476
 msgid "Birth parents"
-msgstr ""
+msgstr "Pares de naixement"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3333,7 +3317,7 @@ msgstr "Categories"
 #: app/Module/CustomTagsGedcomL.php:123 app/Module/CustomTagsGedcomL.php:176
 #: app/Module/CustomTagsLegacy.php:121
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
 #: app/Factories/ElementFactory.php:285 app/Factories/ElementFactory.php:418
 msgid "Cause"
@@ -3449,7 +3433,7 @@ msgstr "Canvia els blocs de \"la Meva Pàgina\""
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Canviat per %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
@@ -3894,7 +3878,7 @@ msgstr "Completat; data desconeguda"
 #: app/Module/CustomTagsGedcomL.php:124 app/Module/CustomTagsGedcomL.php:177
 #: app/Module/CustomTagsLegacy.php:122
 msgid "Completion date"
-msgstr ""
+msgstr "Data de finalització"
 
 #: app/Http/RequestHandlers/HelpText.php:283
 #: resources/views/admin/trees-export.phtml:64
@@ -4001,7 +3985,7 @@ msgstr "Converteix etiquetes CEME a GEDCOM 5.5.1"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:83
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Converteix etiquetes NAME:_XXX a GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
@@ -4031,7 +4015,7 @@ msgstr "Galetes"
 #: app/Factories/ElementFactory.php:298 app/Factories/ElementFactory.php:429
 #: app/Module/CustomTagsGedcomL.php:197
 msgid "Coordinates"
-msgstr ""
+msgstr "Coordenades"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:84
@@ -4080,7 +4064,7 @@ msgstr "Corregir els registres NAME del tipus «John/DOE/» o «John /DOE» prod
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "Correspondència"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:144
@@ -4124,7 +4108,7 @@ msgstr "Crea un nou arbre genealògic"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "Creeu una ubicació"
 
 #: app/Elements/XrefMedia.php:61
 #: resources/views/modals/create-media-from-file.phtml:19
@@ -4153,7 +4137,7 @@ msgstr "Crea una nova font"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "Creeu una presentació"
 
 #: app/Elements/XrefSubmitter.php:61
 #: resources/views/modals/create-submitter.phtml:16
@@ -4197,7 +4181,7 @@ msgstr "Crear, actualitzar i eliminar un arbre genealògic per a cada fitxer GED
 #: app/Module/CustomTagsGenPluswin.php:130
 #: app/Module/CustomTagsGenPluswin.php:132
 msgid "Creation date"
-msgstr ""
+msgstr "Data de creació"
 
 #: app/Factories/ElementFactory.php:505
 #: resources/xml/reports/family_group_report.xml:315
@@ -4526,7 +4510,7 @@ msgstr "Data del segellament mormó del fill"
 
 #: app/Factories/ElementFactory.php:500
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Data de confirmació mormona"
 
 #: app/Factories/ElementFactory.php:520
 msgid "Date of LDS endowment"
@@ -5104,7 +5088,7 @@ msgstr "Presentació per defecte"
 #: app/Module/CustomTagsGedcomL.php:138 app/Module/CustomTagsGedcomL.php:139
 #: app/Module/CustomTagsGedcomL.php:140
 msgid "Definition"
-msgstr ""
+msgstr "Definició"
 
 #: app/Module/CustomTagsFamilyTreeMaker.php:117
 msgid "Degree"
@@ -5837,7 +5821,7 @@ msgstr ""
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
-msgstr ""
+msgstr "Nom de la finca"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:384
@@ -6218,7 +6202,7 @@ msgstr ""
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
-msgstr ""
+msgstr "Estat familiar"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
@@ -6882,7 +6866,7 @@ msgstr "Funeral"
 
 #: app/Factories/ElementFactory.php:379
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:23
@@ -6917,7 +6901,7 @@ msgstr ""
 #: app/Module/CustomTagsGedcomL.php:232 app/Module/CustomTagsGenPluswin.php:68
 #: app/Module/CustomTagsGenPluswin.php:100
 msgid "GOV identifier"
-msgstr ""
+msgstr "Identificador GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7003,7 +6987,7 @@ msgstr "Generacions d’ascendents"
 
 #: app/Factories/ElementFactory.php:736
 msgid "Generations of descendants"
-msgstr ""
+msgstr "Generacions de descendents"
 
 #. I18N: https://www.geonames.org
 #: app/Module/GeonamesAutocomplete.php:57
@@ -7126,7 +7110,7 @@ msgstr "Padrí/na"
 
 #: app/Factories/ElementFactory.php:493
 msgid "Godparents"
-msgstr ""
+msgstr "Padrins"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
@@ -7460,7 +7444,7 @@ msgstr ""
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
-msgstr ""
+msgstr "Amaga els indrets no utilitzats"
 
 #: resources/views/modules/custom-tags/config.phtml:44
 msgid "Hide/show GEDCOM tags in the edit forms"
@@ -7468,7 +7452,7 @@ msgstr ""
 
 #: app/Module/CustomTagsGedcomL.php:236
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "Relació jeràrquica"
 
 #: app/Module/CustomTagsFamilyTreeBuilder.php:61
 #: app/Module/CustomTagsGedcomL.php:166 app/Module/CustomTagsGedcomL.php:182
@@ -8015,7 +7999,7 @@ msgstr "Arbre interactiu de %s"
 
 #: app/Module/CustomTagsBrothersKeeper.php:102
 msgid "Interment"
-msgstr ""
+msgstr "Enterrament"
 
 #: app/Services/MessageService.php:224
 msgid "Internal messaging"
@@ -8429,7 +8413,7 @@ msgstr "Segellament mormó del cònjuge"
 #: resources/views/modules/custom-tags/config.phtml:52
 #: resources/views/modules/custom-tags/config.phtml:54
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8747,7 +8731,7 @@ msgstr "Ubicació"
 #: resources/views/search-general-page.phtml:115
 #: resources/views/search-results.phtml:92
 msgid "Locations"
-msgstr ""
+msgstr "Ubicacions"
 
 #: app/Elements/RelationIsDescriptor.php:115
 msgid "Lodger"
@@ -10104,7 +10088,7 @@ msgstr "Nova Caledònia"
 #: app/Module/CustomTagsGedcomL.php:133 app/Module/CustomTagsGedcomL.php:134
 #: app/Module/CustomTagsGedcomL.php:135
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "Nova etiqueta GEDCOM"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146
@@ -10923,7 +10907,7 @@ msgstr "Paraguai"
 
 #: app/Module/CustomTagsGedcomL.php:233
 msgid "Parent"
-msgstr ""
+msgstr "Pare"
 
 #: app/Factories/ElementFactory.php:599
 #: app/Http/RequestHandlers/IndividualPage.php:218
@@ -11079,7 +11063,7 @@ msgstr "Recerca fonètica"
 
 #: app/Factories/ElementFactory.php:553
 msgid "Phonetic type"
-msgstr ""
+msgstr "Tipus fonètic"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:74
@@ -11166,7 +11150,7 @@ msgstr "Indret del segellament mormó del fill"
 
 #: app/Factories/ElementFactory.php:501
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "Indret de confirmació mormona"
 
 #: app/Factories/ElementFactory.php:521
 msgid "Place of LDS endowment"
@@ -11494,7 +11478,7 @@ msgstr "Imprimir esdeveniments bàsics malgrat que estiguin en blanc"
 #: app/Module/CustomTagsGedcomL.php:125 app/Module/CustomTagsGedcomL.php:178
 #: app/Module/CustomTagsLegacy.php:120
 msgid "Priority"
-msgstr ""
+msgstr "Prioritat"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
@@ -11674,19 +11658,19 @@ msgstr "Rabí al-àkhir"
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Rada"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
@@ -11979,7 +11963,7 @@ msgstr "Torna a carregar el mapa"
 #: app/Module/CustomTagsGedcomL.php:126 app/Module/CustomTagsGedcomL.php:179
 #: app/Module/CustomTagsLegacy.php:124
 msgid "Reminder date"
-msgstr ""
+msgstr "Data de recordatori"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
@@ -12118,7 +12102,7 @@ msgstr "Sol·liciteu un compte d'usuari"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Recerca"
 
 #: app/Module/CustomTagsBrothersKeeper.php:69
 #: app/Module/CustomTagsBrothersKeeper.php:108
@@ -12209,7 +12193,7 @@ msgstr "Llatinitzat"
 
 #: app/Factories/ElementFactory.php:558
 msgid "Romanized name"
-msgstr ""
+msgstr "Nom romanitzat"
 
 #: app/Factories/ElementFactory.php:302 app/Factories/ElementFactory.php:433
 msgid "Romanized place"
@@ -12217,7 +12201,7 @@ msgstr "Indret llatinitzat"
 
 #: app/Factories/ElementFactory.php:565
 msgid "Romanized type"
-msgstr ""
+msgstr "Tipus romanitzat"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:221
@@ -12392,7 +12376,7 @@ msgstr "Aràbia Saudita"
 
 #: app/Module/CustomTagsGedcomL.php:129
 msgid "Schema"
-msgstr ""
+msgstr "Esquema"
 
 #: app/Factories/ElementFactory.php:515 app/Factories/ElementFactory.php:539
 msgid "School or college"
@@ -12656,7 +12640,7 @@ msgstr "Separat"
 
 #: app/Module/CustomTagsFamilyTreeMaker.php:73
 msgid "Separation"
-msgstr ""
+msgstr "Separació"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -13196,7 +13180,7 @@ msgstr "Mostra al mapa el lloc de naixement dels avantpassats."
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "Mostra data i hora"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -13578,7 +13562,7 @@ msgstr "Font"
 #: app/Module/CustomTagsGedcomL.php:103 app/Module/CustomTagsGedcomL.php:152
 #: app/Module/CustomTagsWebtrees.php:57 app/Module/CustomTagsWebtrees.php:71
 msgid "Source citation"
-msgstr ""
+msgstr "Citació de la font"
 
 #: resources/views/admin/tags.phtml:315
 msgid "Source citations"
@@ -14388,7 +14372,7 @@ msgstr "Menú de llistats."
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "La ubicació s'ha creat"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:33
 msgid "The location of this place is not known."
@@ -14462,7 +14446,7 @@ msgstr "S'ha creat la nota"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "Falta el paràmetre “%s”."
 
 #: app/Http/RequestHandlers/SetupWizard.php:383
 msgid "The password needs to be at least six characters long."
@@ -14525,7 +14509,7 @@ msgstr "El prefix és opcional, però recomanable. Al donar als noms de la taula
 
 #: app/Module/CustomTagsGedcomL.php:119 app/Module/CustomTagsGedcomL.php:172
 msgid "The problem"
-msgstr ""
+msgstr "El problema"
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:169
 #, php-format
@@ -14556,7 +14540,7 @@ msgstr "La configuració del servidor és correcta."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "El servidor no ha pogut entendre aquesta sol·licitud."
 
 #: app/Services/ServerCheckService.php:247
 msgid "The server’s temporary folder cannot be accessed."
@@ -14574,7 +14558,7 @@ msgstr "Mida de l’arbre genealògic, primers i últims esdeveniments, noms com
 
 #: app/Module/CustomTagsGedcomL.php:116 app/Module/CustomTagsGedcomL.php:169
 msgid "The solution"
-msgstr ""
+msgstr "La solució"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -14582,7 +14566,7 @@ msgstr "S'ha creat la font"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "S'ha creat la presentació"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -14793,7 +14777,7 @@ msgstr "Aquest bloc mostra als editors una llista de registres amb canvis penden
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Això podria ser causat per un error a %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -14805,7 +14789,7 @@ msgstr "Aquesta adreça de correu electrònic serà utilitzada per enviar el rec
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Aquest esdeveniment es va produir, però se'n desconeixen els detalls."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15705,15 +15689,15 @@ msgstr "Tipus"
 
 #: app/Module/CustomTagsGedcomL.php:202
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Tipus d’abreviatura"
 
 #: app/Module/CustomTagsGedcomL.php:226
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Tipus d'ID administratiu"
 
 #: app/Module/CustomTagsGedcomL.php:230
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Tipus de dades demogràfiques"
 
 #: app/Factories/ElementFactory.php:333 app/Factories/ElementFactory.php:528
 #: app/Module/CustomTagsGedcomL.php:196
@@ -15730,15 +15714,15 @@ msgstr ""
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
-msgstr ""
+msgstr "Tipus d'ubicació"
 
 #: app/Factories/ElementFactory.php:343
 msgid "Type of marriage"
-msgstr ""
+msgstr "Tipus de casament"
 
 #: app/Factories/ElementFactory.php:568
 msgid "Type of name"
-msgstr ""
+msgstr "Tipus de nom"
 
 #: app/Factories/ElementFactory.php:349 app/Factories/ElementFactory.php:586
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
@@ -15748,7 +15732,7 @@ msgstr ""
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
-msgstr ""
+msgstr "Tipus de tasca de recerca"
 
 #. I18N: A configuration setting
 #: app/Factories/ElementFactory.php:319 app/Factories/ElementFactory.php:399
@@ -17005,7 +16989,7 @@ msgstr "cancel·la"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "impugnat"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53
@@ -17019,7 +17003,7 @@ msgstr "fill/a"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "ciutadà"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17079,7 +17063,7 @@ msgstr "crea"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "cultural"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17147,7 +17131,7 @@ msgstr "difunt el"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "refutat"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -17647,7 +17631,7 @@ msgstr "homes/dones"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geogràfic"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:46
@@ -19264,7 +19248,7 @@ msgstr "ell mateix"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "llar"
 
 #: app/Services/RelationshipService.php:364
 msgid "husband"
@@ -19774,7 +19758,7 @@ msgstr "percentatge"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "política"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page-images.phtml:47
@@ -19801,7 +19785,7 @@ msgstr "proves primàries"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "provat"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50
@@ -19839,7 +19823,7 @@ msgstr "rebutjat"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "religiosa"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63
@@ -20160,12 +20144,12 @@ msgstr "mostra"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "mostra els canvis fets a webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "mostra els canvis registrats a les dades genealògiques"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
