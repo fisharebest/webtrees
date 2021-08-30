@@ -83,6 +83,17 @@ a:hover {
     display: none;
 }
 
+/* Accordions */
+.accordion-button,
+.accordion-button:not(.collapsed) {
+    background-color: rgba(0,0,0,.03);
+    color: currentcolor;
+}
+
+.accordion-button:after {
+    display: none;
+}
+
 /* Link styling */
 a, .btn-link, .nav-link {
     color: var(--link-color);

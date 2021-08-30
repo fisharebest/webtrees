@@ -1042,3 +1042,13 @@ a > .wt-icon-arrow-up:hover {
 .col-form-label {
     font-weight: bold;
 }
+
+/* Accordions */
+.accordion .wt-icon-expand,
+.accordion .wt-icon-collapse {
+    display: none;
+}
+
+.accordion-button:after {
+    display: block;
+}

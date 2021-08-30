@@ -49,21 +49,21 @@ use Illuminate\Database\Capsule\Manager as DB;
     </div>
 <?php endif ?>
 
-<div id="accordion" role="tablist" aria-multiselectable="true">
+<div id="accordion" aria-multiselectable="true">
     <?php foreach ($all_trees as $managed_tree) : ?>
         <?php if (Auth::isManager($managed_tree)) : ?>
-            <div class="card">
-                <div class="card-header" role="tab" id="card-tree-header-<?= $managed_tree->id() ?>">
-                    <h2 class="mb-0">
-                        <?= view('icons/tree') ?>
-                        <a data-bs-toggle="collapse" data-bs-parent="#accordion" href="#card-tree-content-<?= $managed_tree->id() ?>" <?= $managed_tree === $tree || $managed_tree->getPreference('imported') === '0' ? 'aria-expanded="true"' : '' ?> aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
+            <div class="accordion-item">
+                <div class="accordion-header" id="card-tree-header-<?= $managed_tree->id() ?>">
+                    <button class="accordion-button <?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' ' : ' collapsed' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#card-tree-content-<?= $managed_tree->id() ?>" aria-expanded="<?= $managed_tree === $tree || $managed_tree->getPreference('imported') === '0' ? 'true' : 'false' ?>" aria-controls="card-tree-content-<?= $managed_tree->id() ?>">
+                        <h2>
+                            <?= view('icons/tree') ?>
                             <?= e($managed_tree->name()) ?> — <?= e($managed_tree->title()) ?>
-                        </a>
-                    </h2>
+                        </h2>
+                    </button>
                 </div>
 
-                <div id="card-tree-content-<?= $managed_tree->id() ?>" class="collapse<?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" role="tabpanel" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
-                    <div class="card-body">
+                <div id="card-tree-content-<?= $managed_tree->id() ?>" class="accordion-collapse collapse<?= $managed_tree == $tree || $managed_tree->getPreference('imported') === '0' ? ' show' : '' ?>" aria-labelledby="panel-tree-header-<?= $managed_tree->id() ?>">
+                    <div class="accordion-body">
                         <?php $importing = DB::table('gedcom_chunk')->where('gedcom_id', '=', $managed_tree->id())->where('imported', '=', 0)->exists() ?>
                         <?php if ($importing) : ?>
                             <div id="import<?= $managed_tree->id() ?>" class="col-12">
