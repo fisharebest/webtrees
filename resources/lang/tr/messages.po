@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-16 14:45+0000\n"
-"Last-Translator: Osman Öz <osmanoz05@hotmail.com>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
-"Language: tr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-08 22:08+0000\nLast-Translator: Suleyman <hsarslan@yahoo.com>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -631,7 +619,7 @@ msgstr "<varsayılan tema>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Uyarı: Bu formu doldurup  göndererek:</p><ul><li>sitemizde listelenen bireylerin gizliliğini korumayı;</li><li>aşağıdaki metin kutusunu kullanarak, kiminle akraba olduğunuzu açıklamayı veya listelenmesi gereken biri hakkında bize bilgi vermeyi;</li></ul><p><ul>Kabul etmiş olursunuz</ul></p>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -1015,7 +1003,7 @@ msgstr "Bireysel olayları gösteren bir zaman çizelgesi."
 
 #: resources/views/admin/users-edit.phtml:117
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Bir kullanıcı, hem \"e-posta doğrulandı\" hem de \"yönetici tarafından onaylandı\" seçilinceye kadar oturum açamaz."
+msgstr "Bir kullanıcı hem \"e-posta doğrulandı\" hem de \"yönetici tarafından onaylandı\" seçilinceye kadar oturum açamaz."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -5608,7 +5596,7 @@ msgstr "Bu kişiyi düzenleyin ve ayrıntılarını kendi ayrıntılarınızla d
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Tüm GEDCOM etiketleriyle düzenle"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -5734,7 +5722,7 @@ msgstr "İşveren"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Panoyu boşalt"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -7452,7 +7440,7 @@ msgstr "Herkesten gizle"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Şifreyi gizle"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -13118,7 +13106,7 @@ msgstr "Ebeveynleri göster"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "Şifreyi göster"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -15268,7 +15256,7 @@ msgstr "Zaman"
 #: app/Factories/ElementFactory.php:671 app/Factories/ElementFactory.php:687
 #: app/Factories/ElementFactory.php:718 app/Factories/ElementFactory.php:734
 msgid "Time of last change"
-msgstr ""
+msgstr "Son değişiklik zamanı"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15722,7 +15710,7 @@ msgstr "Gerçek türü"
 
 #: app/Factories/ElementFactory.php:541
 msgid "Type of identification number"
-msgstr ""
+msgstr "Kimlik numarası türü"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15740,7 +15728,7 @@ msgstr "İsim türü"
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
 #: app/Factories/ElementFactory.php:679 app/Factories/ElementFactory.php:699
 msgid "Type of reference number"
-msgstr ""
+msgstr "Referans numarası türü"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
@@ -16000,7 +15988,7 @@ msgstr "Siluetleri kullanın"
 
 #: app/Http/RequestHandlers/CopyFact.php:79
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Bunu başka bir kayda yapıştırmak için “düzenle” menüsünü kullanın."
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -20807,7 +20795,7 @@ msgstr[1] "±%s yıllar"
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s“ panoya kopyalandı."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
