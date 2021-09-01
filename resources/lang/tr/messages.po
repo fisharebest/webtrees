@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-07-19 07:49+0000\n"
-"Last-Translator: Osman Öz <osmanoz05@hotmail.com>\n"
+"PO-Revision-Date: 2021-09-08 22:07+0000\n"
+"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/tr/>\n"
 "Language: tr\n"
@@ -1019,7 +1019,9 @@ msgstr "Bireysel olayları gösteren bir zaman çizelgesi."
 
 #: resources/views/admin/users-edit.phtml:117
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
-msgstr "Bir kullanıcı, hem \"e-posta doğrulandı\" hem de \"yönetici tarafından onaylandı\" seçilinceye kadar oturum açamaz."
+msgstr ""
+"Bir kullanıcı hem \"e-posta doğrulandı\" hem de \"yönetici tarafından "
+"onaylandı\" seçilinceye kadar oturum açamaz."
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
