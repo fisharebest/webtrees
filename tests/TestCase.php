@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -47,7 +48,6 @@ use function filesize;
 use function http_build_query;
 use function implode;
 use function preg_match;
-use function str_contains;
 use function str_starts_with;
 use function strcspn;
 use function strlen;
@@ -269,11 +269,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function validateHtmlResponse(ResponseInterface $response): void
     {
-        $this->assertEquals('text/html; charsert=utf8', $response->getHeaderLine('content-type'));
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        self::assertEquals('text/html; charset=UTF-8', $response->getHeaderLine('content-type'));
 
         $html = $response->getBody()->getContents();
 
-        $this->assertStringStartsWith('<DOCTYPE html>', $html);
+        self::assertStringStartsWith('<DOCTYPE html>', $html);
 
         $this->validateHtml(substr($html, strlen('<DOCTYPE html>')));
     }
