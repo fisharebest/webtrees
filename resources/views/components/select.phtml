@@ -15,7 +15,7 @@
     class="form-select <?= $class ?? '' ?>"
     name="<?= e($name) ?>"
     id="<?= e($id ?? $name) ?>"
-    <?= is_array($selected) ? 'multiple' : '' ?>
+    <?= is_array($selected) ? 'multiple="multiple"' : '' ?>
     aria-label="<?= e($aria_label ?? '') ?>"
 
 >
