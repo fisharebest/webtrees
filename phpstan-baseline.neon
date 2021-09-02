@@ -1300,7 +1300,7 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(0\\|array\\<float\\>\\|float, 1, int\\)\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
 
@@ -1315,7 +1315,7 @@ parameters:
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(array\\<float\\>\\|float, 0\\|2, int\\)\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfText.php
 
@@ -1503,11 +1503,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$person2 of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:legacyNameAlgorithm\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual\\|null, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
 			count: 1
 			path: app/Services/RelationshipService.php
-
-		-
-			message: "#^Binary operation \"\\*\" between 365 and 0\\|string results in an error\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
 
 		-
 			message: "#^Binary operation \"\\*\" between 365 and string results in an error\\.$#"
