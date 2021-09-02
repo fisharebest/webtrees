@@ -54,8 +54,6 @@ use function strlen;
 use function strpos;
 use function substr;
 
-use function var_dump;
-
 use const UPLOAD_ERR_OK;
 
 /**
@@ -278,7 +276,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $this->assertStringStartsWith('<DOCTYPE html>', $html);
 
         $this->validateHtml(substr($html, strlen('<DOCTYPE html>')));
-
     }
 
     /**
@@ -291,7 +288,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $stack = [];
 
         do {
-            $html = substr($html, 0, strcspn($html, '<>'));
+            $html = substr($html, strcspn($html, '<>'));
 
             if (str_starts_with($html, '>')) {
                 $this->fail('Unescaped > found in HTML');
@@ -303,9 +300,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         $this->fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
-                } elseif (preg_match('~^<([a-z]+)(?:\s*="[^">]*")*\s*(/)?>~', $html, $match)) {
+                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+(?:="[^">]*")?)*\s*(/)?>~', $html, $match)) {
                     $tag = $match[1];
-                    $self_closing = $match[2] === '/';
+                    $self_closing = isset($match[2]);
 
                     $message = 'Tag ' . $tag . ' is not allowed at ' . implode(':', $stack) . '.';
 
@@ -326,7 +323,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         $stack[] = $tag;
                     }
 
-                    $html = substr($html, strlen($match[0]));
+                    if ($tag === 'script' && !$self_closing) {
+                        $html = substr($html, strpos($html, '</script>'));
+                    } else {
+                        $html = substr($html, strlen($match[0]));
+                    }
                 } else {
                     $this->fail('Unrecognised tag: ' . substr($html, 0, 40));
                 }
@@ -334,6 +335,5 @@ class TestCase extends \PHPUnit\Framework\TestCase
         } while ($html !== '');
 
         $this->assertSame([], $stack);
-
     }
 }
