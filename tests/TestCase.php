@@ -300,9 +300,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         $this->fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
-                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+(?:="[^">]*")?)*\s*(/)?>~', $html, $match)) {
+                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match)) {
                     $tag = $match[1];
-                    $self_closing = isset($match[2]);
+                    $self_closing = $match[2] === '/';
 
                     $message = 'Tag ' . $tag . ' is not allowed at ' . implode(':', $stack) . '.';
 
