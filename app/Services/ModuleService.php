@@ -62,6 +62,7 @@ use Fisharebest\Webtrees\Module\CustomTagsPersonalAncestralFile;
 use Fisharebest\Webtrees\Module\CustomTagsPhpGedView;
 use Fisharebest\Webtrees\Module\CustomTagsReunion;
 use Fisharebest\Webtrees\Module\CustomTagsRootsMagic;
+use Fisharebest\Webtrees\Module\CustomTagsTheMasterGenealogist;
 use Fisharebest\Webtrees\Module\CustomTagsWebtrees;
 use Fisharebest\Webtrees\Module\CzechMonarchsAndPresidents;
 use Fisharebest\Webtrees\Module\DeathReportModule;
@@ -366,6 +367,7 @@ class ModuleService
         'custom-tags-phpgedview'  => CustomTagsPhpGedView::class,
         'custom-tags-reunion'     => CustomTagsReunion::class,
         'custom-tags-roots-magic' => CustomTagsRootsMagic::class,
+        'custom-tags-tmg'         => CustomTagsTheMasterGenealogist::class,
         'custom-tags-webtrees'    => CustomTagsWebtrees::class,
         'death_report'            => DeathReportModule::class,
         'descendancy'             => DescendancyModule::class,
