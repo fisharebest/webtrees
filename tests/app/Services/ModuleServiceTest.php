@@ -41,7 +41,7 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class ModuleServiceTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\Services\ModuleService::all

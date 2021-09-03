@@ -39,7 +39,7 @@ use Illuminate\Support\Collection;
  */
 class UpgradeWizardStepTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @return void

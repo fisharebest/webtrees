@@ -32,17 +32,17 @@ use Fisharebest\Webtrees\User;
  */
 class DeleteUserTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @return void
      */
     public function testDeleteUser(): void
     {
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);
 
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service->expects(self::once())->method('find')->willReturn($user);
 
         $request  = self::createRequest()
@@ -61,7 +61,7 @@ class DeleteUserTest extends TestCase
         $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('User ID 98765 not found');
 
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service->expects(self::once())->method('find')->willReturn(null);
 
         $request  = self::createRequest()
@@ -78,11 +78,11 @@ class DeleteUserTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('Cannot delete an administrator');
 
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);
         $user->expects(self::once())->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service->expects(self::once())->method('find')->willReturn($user);
 
         $request  = self::createRequest()

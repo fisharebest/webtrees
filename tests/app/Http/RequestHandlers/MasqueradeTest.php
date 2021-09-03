@@ -37,13 +37,13 @@ class MasqueradeTest extends TestCase
      */
     public function testMasqueradeAsUser(): void
     {
-        $user1 = self::createMock(User::class);
+        $user1 = $this->createMock(User::class);
         $user1->method('id')->willReturn(1);
 
-        $user2 = self::createMock(User::class);
+        $user2 = $this->createMock(User::class);
         $user2->method('id')->willReturn(2);
 
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service->expects(self::once())->method('find')->willReturn($user2);
 
         $request = self::createRequest()
@@ -63,10 +63,10 @@ class MasqueradeTest extends TestCase
      */
     public function testCannotMasqueradeAsSelf(): void
     {
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);
 
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service->expects(self::once())->method('find')->willReturn($user);
 
         $request = self::createRequest()
@@ -88,10 +88,10 @@ class MasqueradeTest extends TestCase
         $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('User ID 2 not found');
 
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('id')->willReturn(1);
 
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service->expects(self::once())->method('find')->willReturn(null);
 
         $request = self::createRequest()

@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Services\TreeService;
  */
 class TreeUserTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\TreeUser::__construct

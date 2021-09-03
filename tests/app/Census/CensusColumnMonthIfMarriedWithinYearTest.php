@@ -39,16 +39,16 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
      */
     public function testMarriedWithinYear(): void
     {
-        $fact = self::createMock(Fact::class);
+        $fact = $this->createMock(Fact::class);
         $fact->method('date')->willReturn(new Date('01 DEC 1859'));
 
-        $family = self::createMock(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
@@ -64,16 +64,16 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
      */
     public function testMarriedOverYearBeforeTheCensus(): void
     {
-        $fact = self::createMock(Fact::class);
+        $fact = $this->createMock(Fact::class);
         $fact->method('date')->willReturn(new Date('01 JAN 1859'));
 
-        $family = self::createMock(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
@@ -89,16 +89,16 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
      */
     public function testMarriedAfterTheCensus(): void
     {
-        $fact = self::createMock(Fact::class);
+        $fact = $this->createMock(Fact::class);
         $fact->method('date')->willReturn(new Date('02 JUN 1860'));
 
-        $family = self::createMock(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection([$fact]));
 
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
@@ -114,13 +114,13 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
      */
     public function testNoMarriage(): void
     {
-        $family = self::createMock(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('facts')->with(['MARR'])->willReturn(new Collection());
 
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');
@@ -136,10 +136,10 @@ class CensusColumnMonthIfMarriedWithinYearTest extends TestCase
      */
     public function testNoSpouseFamily(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('spouseFamilies')->willReturn(new Collection());
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('01 JUN 1860');
 
         $column = new CensusColumnMonthIfMarriedWithinYear($census, '', '');

@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\TestCase;
  */
 class UserAddActionTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @return void

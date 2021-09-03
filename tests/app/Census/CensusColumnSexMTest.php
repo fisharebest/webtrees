@@ -38,10 +38,10 @@ class CensusColumnSexMTest extends TestCase
      */
     public function testMale(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnSexM($census, '', '');
 
@@ -56,10 +56,10 @@ class CensusColumnSexMTest extends TestCase
      */
     public function testFeale(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnSexM($census, '', '');
 
@@ -74,10 +74,10 @@ class CensusColumnSexMTest extends TestCase
      */
     public function testUnknownSex(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('U');
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnSexM($census, '', '');
 

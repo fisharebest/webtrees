@@ -31,7 +31,7 @@ use Fisharebest\Webtrees\Services\LocalizationService;
  */
 class IndividualListTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\Module\IndividualListModule

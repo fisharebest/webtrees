@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Services\TreeService;
  */
 class DataFixDataTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * Test request handler

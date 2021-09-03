@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
  */
 class SiteUserTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\SiteUser::id

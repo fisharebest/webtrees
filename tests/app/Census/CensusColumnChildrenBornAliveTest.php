@@ -38,11 +38,11 @@ class CensusColumnChildrenBornAliveTest extends TestCase
      */
     public function testMale(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('spouseFamilies')->willReturn(new Collection([]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnChildrenBornAlive($census, '', '');
 
@@ -58,26 +58,26 @@ class CensusColumnChildrenBornAliveTest extends TestCase
     public function testCountChildren(): void
     {
         // Stillborn
-        $child1 = self::createMock(Individual::class);
+        $child1 = $this->createMock(Individual::class);
         $child1->method('getBirthDate')->willReturn(new Date('01 FEB 1904'));
         $child1->method('getDeathDate')->willReturn(new Date('01 FEB 1904'));
 
         // Died after census
-        $child2 = self::createMock(Individual::class);
+        $child2 = $this->createMock(Individual::class);
         $child2->method('getBirthDate')->willReturn(new Date('02 FEB 1904'));
         $child2->method('getDeathDate')->willReturn(new Date('20 DEC 1912'));
 
         // Died before census
-        $child3 = self::createMock(Individual::class);
+        $child3 = $this->createMock(Individual::class);
         $child3->method('getBirthDate')->willReturn(new Date('02 FEB 1904'));
         $child3->method('getDeathDate')->willReturn(new Date('20 DEC 1910'));
 
         // Still living
-        $child4 = self::createMock(Individual::class);
+        $child4 = $this->createMock(Individual::class);
         $child4->method('getBirthDate')->willReturn(new Date('01 FEB 1904'));
         $child4->method('getDeathDate')->willReturn(new Date(''));
 
-        $family = self::createMock(Family::class);
+        $family = $this->createMock(Family::class);
         $family->method('children')->willReturn(new Collection([
             $child1,
             $child2,
@@ -85,11 +85,11 @@ class CensusColumnChildrenBornAliveTest extends TestCase
             $child4,
         ]));
 
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('spouseFamilies')->willReturn(new Collection([$family]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 MAR 1911');
 
         $column = new CensusColumnChildrenBornAlive($census, '', '');

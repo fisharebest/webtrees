@@ -26,7 +26,7 @@ use function str_repeat;
  */
 class SiteTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\Site

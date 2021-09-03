@@ -35,13 +35,13 @@ use function stream_get_contents;
  */
 class TreeTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $cache_factory = self::createMock(CacheFactoryInterface::class);
+        $cache_factory = $this->createMock(CacheFactoryInterface::class);
         $cache_factory->method('array')->willReturn(new Cache(new NullAdapter()));
         Registry::cache($cache_factory);
     }

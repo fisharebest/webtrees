@@ -36,10 +36,10 @@ class CensusColumnBirthDaySlashMonthYearTest extends TestCase
      */
     public function testGenerateColumn(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('02 MAR 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnBirthDaySlashMonthYear($census, '', '');

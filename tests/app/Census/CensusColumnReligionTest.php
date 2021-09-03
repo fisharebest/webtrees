@@ -36,14 +36,14 @@ class CensusColumnReligionTest extends TestCase
      */
     public function testNoReligion(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual
             ->expects(self::exactly(2))
             ->method('facts')
             ->withConsecutive([['RELI']], [])
             ->willReturnOnConsecutiveCalls(new Collection(), new Collection());
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -57,12 +57,12 @@ class CensusColumnReligionTest extends TestCase
      */
     public function testRecordReligion(): void
     {
-        $individual = self::createMock(Individual::class);
-        $fact       = self::createMock(Fact::class);
+        $individual = $this->createMock(Individual::class);
+        $fact       = $this->createMock(Fact::class);
         $fact->method('value')->willReturn('Jedi');
         $individual->method('facts')->with(['RELI'])->willReturn(new Collection([$fact]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 
@@ -76,8 +76,8 @@ class CensusColumnReligionTest extends TestCase
      */
     public function testEventReligion(): void
     {
-        $individual = self::createMock(Individual::class);
-        $fact       = self::createMock(Fact::class);
+        $individual = $this->createMock(Individual::class);
+        $fact       = $this->createMock(Fact::class);
         $fact->method('attribute')->with('RELI')->willReturn('Jedi');
         $individual
             ->expects(self::exactly(2))
@@ -91,7 +91,7 @@ class CensusColumnReligionTest extends TestCase
                 new Collection([$fact])
             );
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnReligion($census, '', '');
 

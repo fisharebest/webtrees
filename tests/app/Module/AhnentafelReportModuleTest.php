@@ -39,7 +39,7 @@ use function ob_start;
  */
 class AhnentafelReportModuleTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait

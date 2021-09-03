@@ -35,9 +35,9 @@ class CensusColumnRelationToHeadTest extends TestCase
      */
     public function testNull(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnRelationToHead($census, '', '');
 

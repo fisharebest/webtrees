@@ -41,10 +41,10 @@ class BootModulesTest extends TestCase
     {
         $theme = new WebtreesTheme();
 
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('It works!'));
 
-        $module_service = self::createMock(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects(self::once())
             ->method('bootModules')

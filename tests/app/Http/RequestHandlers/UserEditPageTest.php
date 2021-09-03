@@ -35,7 +35,7 @@ use Fisharebest\Webtrees\TestCase;
  */
 class UserEditPageTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @return void

@@ -38,7 +38,7 @@ class DoHousekeepingTest extends TestCase
      */
     public function testMiddleware(): void
     {
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response());
 
         $request    = self::createRequest();

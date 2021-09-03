@@ -61,10 +61,9 @@ use const UPLOAD_ERR_OK;
  */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    /** @var object */
-    public static $mock_functions;
-    /** @var bool */
-    protected static $uses_database = false;
+    public static ?object $mock_functions = null;
+
+    protected static bool $uses_database = false;
 
     /**
      * Things to run once, before all the tests.

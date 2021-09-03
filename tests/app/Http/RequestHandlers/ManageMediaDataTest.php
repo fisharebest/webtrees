@@ -34,7 +34,7 @@ use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
  */
 class ManageMediaDataTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @return void

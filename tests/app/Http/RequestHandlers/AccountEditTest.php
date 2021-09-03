@@ -35,14 +35,14 @@ use Fisharebest\Webtrees\User;
  */
 class AccountEditTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @return void
      */
     public function testHandler(): void
     {
-        $user     = self::createMock(User::class);
+        $user     = $this->createMock(User::class);
         $handler  = new AccountEdit(new MessageService(new EmailService(), new UserService()), new ModuleService());
         $request  = self::createRequest()
             ->withAttribute('user', $user);

@@ -38,7 +38,7 @@ use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
  */
 class PedigreeReportModuleTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @covers \Fisharebest\Webtrees\Module\ModuleReportTrait

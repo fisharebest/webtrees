@@ -35,7 +35,7 @@ use Illuminate\Support\Collection;
  */
 class FixDuplicateLinksTest extends TestCase
 {
-    protected static $uses_database = true;
+    protected static bool $uses_database = true;
 
     /**
      * @var FixDuplicateLinks $fixDuplicateLinks

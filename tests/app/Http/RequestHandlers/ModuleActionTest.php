@@ -41,7 +41,7 @@ class ModuleActionTest extends TestCase
      */
     public function testModuleAction(): void
     {
-        $module_service = self::createMock(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects(self::once())
             ->method('findByName')
@@ -68,7 +68,7 @@ class ModuleActionTest extends TestCase
         $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('Method getTestingAction() not found in test');
 
-        $module_service = self::createMock(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects(self::once())
             ->method('findByName')
@@ -92,7 +92,7 @@ class ModuleActionTest extends TestCase
         $this->expectException(HttpNotFoundException::class);
         $this->expectExceptionMessage('Module test does not exist');
 
-        $module_service = self::createMock(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects(self::once())
             ->method('findByName')
@@ -116,7 +116,7 @@ class ModuleActionTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('Admin only action');
 
-        $module_service = self::createMock(ModuleService::class);
+        $module_service = $this->createMock(ModuleService::class);
         $module_service
             ->expects(self::once())
             ->method('findByName')

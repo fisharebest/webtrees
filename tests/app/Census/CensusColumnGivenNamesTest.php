@@ -35,10 +35,10 @@ class CensusColumnGivenNamesTest extends TestCase
      */
     public function testGivenNames(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([['givn' => 'Joe']]);
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 
@@ -53,10 +53,10 @@ class CensusColumnGivenNamesTest extends TestCase
      */
     public function testNoName(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('getAllNames')->willReturn([]);
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnGivenNames($census, '', '');
 
