@@ -313,10 +313,10 @@ class FunctionsPrint
                             }
                         }
                     }
-                    if ($fact !== 'DEAT' && $death_date->isOK() && Date::compare($death_date, $date) < 0) {
+                    if ($fact !== 'DEAT' && $death_date->isOK() && Date::compare($death_date, $date) <= 0) {
                         $death_day = $death_date->minimumDate()->day();
                         $event_day = $date->minimumDate()->day();
-                        if ($death_day !== 0 && $event_day !== 0 && $death_day === $event_day) {
+                        if ($death_day !== 0 && $event_day !== 0 && Date::compare($death_date, $date) === 0) {
                             // On the exact date of death?
                             // NOTE: this path is never reached.  Keep the code (translation) in case
                             // we decide to re-introduce it.
