@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\I18N;
  * @var array<string,string> $date_shortcuts
  * @var array<string,string> $french_dates
  * @var array<string,string> $hijri_dates
+ * @var array<string,string> $jalali_dates
  * @var array<string,string> $jewish_dates
  * @var array<string,string> $julian_dates
  */
@@ -185,6 +186,22 @@ use Fisharebest\Webtrees\I18N;
             </th>
         </tr>
         <?php foreach ($hijri_dates as $code => $date) : ?>
+            <tr>
+                <td>
+                    <?= $date ?>
+                </td>
+                <td>
+                    <kbd dir="ltr" lang="en"><?= $code ?></kbd>
+                </td>
+            </tr>
+        <?php endforeach ?>
+
+        <tr>
+            <th colspan="2">
+                <?= I18N::translate('Jalali') ?>
+            </th>
+        </tr>
+        <?php foreach ($jalali_dates as $code => $date) : ?>
             <tr>
                 <td>
                     <?= $date ?>

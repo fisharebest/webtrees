@@ -66,6 +66,20 @@ class HelpText implements RequestHandlerInterface
         '@#DHIJRI@ 03 DHUAH 1497',
     ];
 
+    private const JALALI_DATES = [
+        '@#DJALALI@ 1497',
+        '@#DJALALI@ FARVA 1497',
+        'ABT @#DJALALI@ ORDIB 1497',
+        'BET @#DJALALI@ KHORD 1497 AND @#DHIJRI@ TIR 1497',
+        'FROM @#DJALALI@ MORDA 1497 TO @#DHIJRI@ SHAHR 1497',
+        'AFT @#DJALALI@ MEHR 1497',
+        'BEF @#DJALALI@ ABAN 1497',
+        'ABT @#DJALALI@ AZAR 1497',
+        'FROM @#DJALALI@ DEY 1497',
+        'TO @#DJALALI@ BAHMA 1497',
+        '@#DJALALI@ 03 XXXXX 1497',
+    ];
+
     private const JEWISH_DATES = [
         '@#DHEBREW@ 5481',
         '@#DHEBREW@ TSH 5481',
@@ -212,6 +226,7 @@ class HelpText implements RequestHandlerInterface
                     'date_range_shortcuts'  => self::DATE_RANGE_SHORTCUTS,
                     'french_dates'          => $this->formatDates(self::FRENCH_DATES),
                     'hijri_dates'           => $this->formatDates(self::HIJRI_DATES),
+                    'jalali_dates'          => $this->formatDates(self::JALALI_DATES),
                     'jewish_dates'          => $this->formatDates(self::JEWISH_DATES),
                     'julian_dates'          => $this->formatDates(self::JULIAN_DATES),
                 ]);
