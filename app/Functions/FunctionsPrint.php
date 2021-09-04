@@ -291,10 +291,10 @@ class FunctionsPrint
                         // Only show calculated age if it differs from recorded age
                         if ($age !== '') {
                             if (
-                                $fact_age !== '' && $fact_age !== $age ||
+                                $fact_age !== '' && !str_starts_with($fact_age, $age) ||
                                 $fact_age === '' && $husb_age === '' && $wife_age === '' ||
-                                $husb_age !== '' && $husb_age !== $age && $record->sex() === 'M' ||
-                                $wife_age !== '' && $wife_age !== $age && $record->sex() === 'F'
+                                $husb_age !== '' && !str_starts_with($husb_age, $age) && $record->sex() === 'M' ||
+                                $wife_age !== '' && !str_starts_with($wife_age, $age) && $record->sex() === 'F'
                             ) {
                                 switch ($record->sex()) {
                                     case 'M':
