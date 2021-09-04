@@ -1485,11 +1485,6 @@ parameters:
 			path: app/Services/RelationshipService.php
 
 		-
-			message: "#^Offset 0 does not exist on array\\(\\?0 \\=\\> string, 1 \\=\\> string\\)\\.$#"
-			count: 1
-			path: app/Services/RelationshipService.php
-
-		-
 			message: "#^Parameter \\#1 \\$individual of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:reflexivePronoun\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual given\\.$#"
 			count: 1
 			path: app/Services/RelationshipService.php
