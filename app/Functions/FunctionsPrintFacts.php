@@ -471,6 +471,8 @@ class FunctionsPrintFacts
                         $data .= view('icons/expand');
                         $data .= view('icons/collapse');
                         $data .= '</a>';
+                    } elseif ($ct > 1) {
+                        $data .= view('icons/spacer');
                     }
                     $value = '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>';
                     $data .= I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Source'), $value);
