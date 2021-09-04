@@ -49,14 +49,11 @@ use Fisharebest\Webtrees\I18N;
 
 <div class="row form-group">
     <label class="col-sm-3 col-form-label" for="case">
-        <?= I18N::translate('Case insensitive') ?>
+        <?= I18N::translate('Match both upper and lower case letters.') ?>
     </label>
 
     <div class="col-sm-9">
         <?= view('components/radios-inline', ['name' => 'case', 'selected' => '', 'options' => [''  => I18N::translate('no'), 'i' => I18N::translate('yes')]]) ?>
-        <div class="form-text">
-            <?= /* I18N: Help text for "Case insensitive" searches */ I18N::translate('Match both upper and lower case letters.') ?>
-        </div>
     </div>
 </div>
 
