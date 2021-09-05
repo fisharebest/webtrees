@@ -69,8 +69,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         'INDI:_TODO',
     ];
 
-    // Box height
-    protected const BHEIGHT = 30;
+    protected const BOX_HEIGHT = 30;
 
     /**
      * Initialization.
@@ -122,8 +121,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * The URL for this chart.
      *
-     * @param Individual $individual
-     * @param mixed[]    $parameters
+     * @param Individual        $individual
+     * @param array<int|string> $parameters
      *
      * @return string
      */
@@ -222,13 +221,13 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         ]);
 
         $zoom_in_url = route(static::class, [
-            'scale' => min(self::MAXIMUM_SCALE, $scale + (int) ($scale * 0.2 + 1)),
+            'scale' => min(self::MAXIMUM_SCALE, $scale + (int) ($scale * 0.4 + 1)),
             'tree'  => $tree->name(),
             'xrefs' => $xrefs,
         ]);
 
         $zoom_out_url = route(static::class, [
-            'scale' => max(self::MINIMUM_SCALE, $scale - (int) ($scale * 0.2 + 1)),
+            'scale' => max(self::MINIMUM_SCALE, $scale - (int) ($scale * 0.4 + 1)),
             'tree'  => $tree->name(),
             'xrefs' => $xrefs,
         ]);
@@ -336,7 +335,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 
         $html = view('modules/timeline-chart/chart', [
             'baseyear'    => $baseyear,
-            'bheight'     => self::BHEIGHT,
+            'bheight'     => self::BOX_HEIGHT,
             'birthdays'   => $birthdays,
             'birthmonths' => $birthmonths,
             'birthyears'  => $birthyears,
