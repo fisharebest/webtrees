@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CaptchaService;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -57,10 +58,10 @@ class RegisterPage implements RequestHandlerInterface
         $this->checkRegistrationAllowed();
 
         $tree     = $request->getAttribute('tree');
-        $comments = $request->getQueryParams()['comments'] ?? '';
-        $email    = $request->getQueryParams()['email'] ?? '';
-        $realname = $request->getQueryParams()['realname'] ?? '';
-        $username = $request->getQueryParams()['username'] ?? '';
+        $comments = Session::get('register_comments', '');
+        $email    = Session::get('register_email', '');
+        $realname = Session::get('register_realname', '');
+        $username = Session::get('register_username', '');
 
         $show_caution = Site::getPreference('SHOW_REGISTER_CAUTION') === '1';
 
