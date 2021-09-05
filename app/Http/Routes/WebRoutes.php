@@ -147,6 +147,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ManageMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDeleteUnused;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson;
@@ -380,6 +381,7 @@ class WebRoutes
                 $router->post(UsersCleanupAction::class, '/users-cleanup');
                 $router->get(MapDataAdd::class, '/map-data-add{/parent_id}');
                 $router->post(MapDataDelete::class, '/map-data-delete/{place_id}');
+                $router->post(MapDataDeleteUnused::class, '/map-data-delete-unused');
                 $router->get(MapDataEdit::class, '/map-data-edit/{place_id}');
                 $router->get(MapDataExportCSV::class, '/map-data-csv{/parent_id}');
                 $router->get(MapDataExportGeoJson::class, '/map-data-geojson{/parent_id}');

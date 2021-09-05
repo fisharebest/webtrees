@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -28,9 +29,9 @@ use function redirect;
 use function route;
 
 /**
- * Delete a location from the control panel.
+ * Delete unused locations from the control panel.
  */
-class MapDataDelete implements RequestHandlerInterface
+class MapDataDeleteUnused implements RequestHandlerInterface
 {
     private MapDataService $map_data_service;
 
@@ -51,13 +52,9 @@ class MapDataDelete implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $place_id = (int) $request->getAttribute('place_id');
+        $this->map_data_service->deleteUnusedLocations(null, [0]);
 
-        $place = $this->map_data_service->findById($place_id);
-
-        $this->map_data_service->deleteRecursively($place_id);
-
-        $url = route(MapDataList::class, ['parent_id' => $place->parent()->id()]);
+        $url = route(MapDataList::class);
 
         return redirect($url);
     }

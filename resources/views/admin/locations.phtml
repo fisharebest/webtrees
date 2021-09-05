@@ -2,6 +2,7 @@
 
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataAdd;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDelete;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataDeleteUnused;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportCSV;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson;
@@ -137,7 +138,7 @@ use Illuminate\Support\Collection;
 
     <tfoot>
         <tr>
-            <td colspan="7">
+            <td colspan="4">
                 <a class="btn btn-primary" href="<?= e(route(MapDataAdd::class, ['parent_id' => $parent_id])) ?>">
                     <?= view('icons/add') ?>
                     <?= /* I18N: A button label. */
@@ -162,6 +163,17 @@ use Illuminate\Support\Collection;
                     <?= /* I18N: A button label. */
                     I18N::translate('import file') ?>
                 </a>
+            </td>
+            <td colspan="2">
+                <?php if (count($active) !== count($placelist)) : ?>
+                    <form class="form-inline d-inline" method="post" action="<?= route(MapDataDeleteUnused::class) ?>">
+                        <?= csrf_field() ?>
+                        <button type="submit" class="btn btn-danger">
+                            <?= view('icons/delete') ?>
+                            <?= I18N::translate('Delete unused locations') ?>
+                        </button>
+                    </form>
+                <?php endif ?>
             </td>
         </tr>
     </tfoot>

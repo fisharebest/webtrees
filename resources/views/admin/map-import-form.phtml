@@ -54,16 +54,6 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
-    <!-- CLEAR DATABASE -->
-    <fieldset class="row form-group">
-        <legend class="col-form-label col-sm-4">
-            <?= I18N::translate('Delete all existing geographic data before importing the file.') ?>
-        </legend>
-        <div class="col-sm-8">
-            <?= view('components/radios-inline', ['name' => 'cleardatabase', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => 0]) ?>
-        </div>
-    </fieldset>
-
     <!-- Import options -->
     <fieldset class="row form-group">
         <legend class="col-form-label col-sm-4">
@@ -88,18 +78,3 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 </form>
-
-<?php View::push('javascript') ?>
-    <script>
-        $('#upload_form').on('submit', function(e) {
-            let self = this;
-            e.preventDefault();
-            if($('input[name="cleardatabase"]:checked').val() === '1') {
-                if (!confirm('<?= I18N::translate('Really delete all geographic data?') ?> ')) {
-                    return false;
-                }
-            }
-            self.submit();
-        });
-    </script>
-<?php View::endpush() ?>

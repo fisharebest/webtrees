@@ -1430,13 +1430,33 @@ parameters:
 			path: app/Services/HomePageService.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$child_count\\.$#"
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$key\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$no_coord\\.$#"
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$p_id\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
 			message: "#^Access to an undefined property object\\:\\:\\$parent_id\\.$#"
 			count: 1
 			path: app/Services/MapDataService.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$place\\.$#"
-			count: 1
+			count: 2
 			path: app/Services/MapDataService.php
 
 		-

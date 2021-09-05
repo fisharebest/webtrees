@@ -88,7 +88,6 @@ class MapDataImportAction implements RequestHandlerInterface
 
         $serverfile     = $params['serverfile'] ?? '';
         $options        = $params['import-options'] ?? '';
-        $clear_database = (bool) ($params['cleardatabase'] ?? false);
         $local_file     = $request->getUploadedFiles()['localfile'] ?? null;
 
         $places = [];
@@ -154,16 +153,6 @@ class MapDataImportAction implements RequestHandlerInterface
         }
 
         fclose($fp);
-
-        if ($clear_database) {
-            // Child places are deleted via on-delete-cascade...
-            DB::table('place_location')
-                ->whereNull('parent_id')
-                ->delete();
-
-            // Automatically import any new/missing places.
-            $this->map_data_service->importMissingLocations();
-        }
 
         $added   = 0;
         $updated = 0;
