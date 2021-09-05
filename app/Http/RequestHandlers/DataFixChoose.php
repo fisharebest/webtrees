@@ -65,7 +65,7 @@ class DataFixChoose implements RequestHandlerInterface
 
         $this->layout = 'layouts/administration';
 
-        $title = view('icons/data-fix') . I18N::translate('Data fixes') . ' — ' . e($tree->title());
+        $title = I18N::translate('Data fixes') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/data-fix-select', [
             'title'      => $title,

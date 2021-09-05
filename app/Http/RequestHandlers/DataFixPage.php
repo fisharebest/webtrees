@@ -87,7 +87,7 @@ class DataFixPage implements RequestHandlerInterface
             ]);
         }
 
-        $title = view('icons/data-fix') . I18N::translate('Data fixes') . ' — ' . e($tree->title());
+        $title = I18N::translate('Data fixes') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/data-fix-select', [
             'title'      => $title,
