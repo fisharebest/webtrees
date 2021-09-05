@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
@@ -87,7 +88,7 @@ class RegisterAction implements RequestHandlerInterface
 
         $params = (array) $request->getParsedBody();
 
-        $comment  = $params['comment'] ?? '';
+        $comments = $params['comments'] ?? '';
         $email    = $params['email'] ?? '';
         $password = $params['password'] ?? '';
         $realname = $params['realname'] ?? '';
@@ -98,16 +99,21 @@ class RegisterAction implements RequestHandlerInterface
                 throw new Exception(I18N::translate('Please try again.'));
             }
 
-            $this->doValidateRegistration($request, $username, $email, $realname, $comment, $password);
+            $this->doValidateRegistration($request, $username, $email, $realname, $comments, $password);
+
+            Session::forget('register_comments');
+            Session::forget('register_email');
+            Session::forget('register_realname');
+            Session::forget('register_username');
         } catch (Exception $ex) {
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
-            return redirect(route(RegisterPage::class, [
-                'comment'  => $comment,
-                'email'    => $email,
-                'realname' => $realname,
-                'username' => $username,
-            ]));
+            Session::put('register_comments', $comments);
+            Session::put('register_email', $email);
+            Session::put('register_realname', $realname);
+            Session::put('register_username', $username);
+
+            return redirect(route(RegisterPage::class));
         }
 
         Log::addAuthenticationLog('User registration requested for: ' . $username);
@@ -122,7 +128,7 @@ class RegisterAction implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_TIMESTAMP_REGISTERED, date('U'));
         $user->setPreference(UserInterface::PREF_VERIFICATION_TOKEN, $token);
         $user->setPreference(UserInterface::PREF_CONTACT_METHOD, 'messaging2');
-        $user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comment);
+        $user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comments);
         $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
         $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '');
@@ -157,14 +163,14 @@ class RegisterAction implements RequestHandlerInterface
 
             $body_text = view('emails/register-notify-text', [
                 'user'     => $user,
-                'comments' => $comment,
+                'comments' => $comments,
                 'base_url' => $base_url,
                 'tree'     => $tree,
             ]);
 
             $body_html = view('emails/register-notify-html', [
                 'user'     => $user,
-                'comments' => $comment,
+                'comments' => $comments,
                 'base_url' => $base_url,
                 'tree'     => $tree,
             ]);
