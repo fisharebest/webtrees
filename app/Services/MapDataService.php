@@ -202,7 +202,7 @@ class MapDataService
                     ->where('id', '=', $location->id)
                     ->delete();
             } else {
-                $place_ids = $places->map(static fn(object $place): int => (int) $place->p_id)->all();
+                $place_ids = $places->map(static fn (object $place): int => (int) $place->p_id)->all();
                 $this->deleteUnusedLocations((int) $location->id, $place_ids);
             }
         }
