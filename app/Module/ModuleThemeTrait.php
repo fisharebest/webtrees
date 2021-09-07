@@ -23,7 +23,6 @@ use Aura\Router\Route;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
@@ -41,6 +40,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserPageEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
@@ -385,22 +385,23 @@ trait ModuleThemeTrait
      */
     public function menuMyPedigree(Tree $tree): ?Menu
     {
-        $gedcomid = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
+        $my_xref = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
 
         $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->filter(static function (ModuleInterface $module): bool {
+            ->first(static function (ModuleInterface $module): bool {
                 return $module instanceof PedigreeChartModule;
             });
 
-        if ($gedcomid !== '' && $pedigree_chart instanceof PedigreeChartModule) {
-            return new Menu(
-                I18N::translate('My pedigree'),
-                route('pedigree', [
-                    'xref' => $gedcomid,
-                    'tree'  => $tree->name(),
-                ]),
-                'menu-mypedigree'
-            );
+        if ($my_xref !== '' && $pedigree_chart instanceof PedigreeChartModule) {
+            $individual = Registry::individualFactory()->make($my_xref, $tree);
+
+            if ($individual instanceof Individual) {
+                return new Menu(
+                    I18N::translate('My pedigree'),
+                    $pedigree_chart->chartUrl($individual),
+                    'menu-mypedigree'
+                );
+            }
         }
 
         return null;
