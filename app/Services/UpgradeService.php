@@ -37,7 +37,19 @@ use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
 use ZipArchive;
 
+use function explode;
+use function fclose;
+use function file_exists;
+use function file_put_contents;
+use function fopen;
+use function ftell;
+use function fwrite;
 use function rewind;
+use function unlink;
+use function version_compare;
+
+use const DIRECTORY_SEPARATOR;
+use const PHP_VERSION;
 
 /**
  * Automatic upgrades.
@@ -149,13 +161,12 @@ class UpgradeService
             fwrite($tmp, $stream->read(self::READ_BLOCK_SIZE));
 
             if ($this->timeout_service->isTimeNearlyUp()) {
+                $stream->close();
                 throw new HttpServerErrorException(I18N::translate('The server’s time limit has been reached.'));
             }
         }
 
-        if (is_resource($stream)) {
-            fclose($stream);
-        }
+        $stream->close();
 
         // Copy from temporary storage to the file.
         $bytes = ftell($tmp);
