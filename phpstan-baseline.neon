@@ -1600,11 +1600,6 @@ parameters:
 			path: app/SessionDatabaseHandler.php
 
 		-
-			message: "#^Call to an undefined method ReflectionType\\:\\:getName\\(\\)\\.$#"
-			count: 1
-			path: app/Statistics.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsAgeQuery\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Statistics.php

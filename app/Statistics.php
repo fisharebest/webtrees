@@ -59,7 +59,7 @@ use Illuminate\Support\Collection;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
-use ReflectionType;
+use ReflectionNamedType;
 use stdClass;
 
 use function call_user_func;
@@ -231,7 +231,7 @@ class Statistics implements
                 ->filter(static function (ReflectionMethod $method): bool {
                     $type = $method->getReturnType();
 
-                    return $type instanceof ReflectionType && $type->getName() === 'string';
+                    return $type instanceof ReflectionNamedType && $type->getName() === 'string';
                 })
                 ->sort(static function (ReflectionMethod $x, ReflectionMethod $y): int {
                     return $x->getName() <=> $y->getName();
