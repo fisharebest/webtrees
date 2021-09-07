@@ -34,12 +34,12 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
         1 => [
             'F' => ['cousine germaine', '%s de la cousine germaine'],
             'M' => ['cousin germain', '%s du cousin germain'],
-            'U' => ['cousin germain', '%s du cousin germain' ]
+            'U' => ['cousin germain', '%s du cousin germain']
         ],
         2 => [
             'F' => ['cousine issue de germain', '%s de la cousine issue de germain'],
             'M' => ['cousin issu de germain', '%s du cousin issu de germain'],
-            'U' => ['cousin issu de germain', '%s du cousin issu de germain' ]
+            'U' => ['cousin issu de germain', '%s du cousin issu de germain']
         ]
     ];
 
