@@ -32,13 +32,13 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
 
     protected const SYMMETRIC_COUSINS = [
         1 => [
-            'F' => ['cousine germaine', '$s de la cousine germaine'],
-            'M' => ['cousin germain', '$s du cousin germain'],
+            'F' => ['cousine germaine', '%s de la cousine germaine'],
+            'M' => ['cousin germain', '%s du cousin germain'],
             'U' => ['cousin germain', '%s du cousin germain' ]
         ],
         2 => [
-            'F' => ['cousine issue de germain', '$s de la cousine issue de germain'],
-            'M' => ['cousin issu de germain', '$s du cousin issu de germain'],
+            'F' => ['cousine issue de germain', '%s de la cousine issue de germain'],
+            'M' => ['cousin issu de germain', '%s du cousin issu de germain'],
             'U' => ['cousin issu de germain', '%s du cousin issu de germain' ]
         ]
     ];
@@ -241,12 +241,12 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('beau-frère/belle-sœur', '%s du beau-frère/belle-sœur')->sibling()->spouse(),
             // Grandparents and above
             //"Trisaïeux" are an exception to the dynamic rule
-            Relationship::fixed('trisaïeule maternelle', '% de la trisaïeule maternelle')->mother()->parent()->parent()->mother(),
-            Relationship::fixed('trisaïeul maternel', '% du trisaïeul maternel')->mother()->parent()->parent()->father(),
-            Relationship::fixed('trisaïeule paternelle', '% de la trisaïeule paternelle')->father()->parent()->parent()->mother(),
-            Relationship::fixed('trisaïeul paternel', '% du trisaïeul paternel')->father()->parent()->parent()->father(),
-            Relationship::fixed('trisaïeule', '% de la trisaïeule')->parent()->parent()->parent()->mother(),
-            Relationship::fixed('trisaïeul', '% du trisaïeul')->parent()->parent()->parent()->father(),
+            Relationship::fixed('trisaïeule maternelle', '%s de la trisaïeule maternelle')->mother()->parent()->parent()->mother(),
+            Relationship::fixed('trisaïeul maternel', '%s du trisaïeul maternel')->mother()->parent()->parent()->father(),
+            Relationship::fixed('trisaïeule paternelle', '%s de la trisaïeule paternelle')->father()->parent()->parent()->mother(),
+            Relationship::fixed('trisaïeul paternel', '%s du trisaïeul paternel')->father()->parent()->parent()->father(),
+            Relationship::fixed('trisaïeule', '%s de la trisaïeule')->parent()->parent()->parent()->mother(),
+            Relationship::fixed('trisaïeul', '%s du trisaïeul')->parent()->parent()->parent()->father(),
             Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-mère maternelle', 'de la '))->mother()->ancestor()->female(),
             Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-père maternel', 'du '))->mother()->ancestor()->male(),
             Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-parent maternel', 'du '))->mother()->ancestor(),
