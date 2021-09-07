@@ -321,6 +321,7 @@ class RelationshipNamesTest extends TestCase
             self::assertRelationship('épouse de l’arrière-petit-neveu', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i11m, $f4m, $i12f], $fr);
             self::assertRelationship('conjoint de la petite-nièce', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i17f, $f7, $i16m], $fr);
             self::assertRelationship('conjointe du neveu', [$i24m, $f10, $i21f, $f9, $i18m, $f8, $i19f], $fr);
+            self::assertRelationships('cousine germaine du conjoint', 'conjointe du cousin germain', [$i19f, $f8, $i18m, $f9, $i21f, $f10, $i24m, $f11m, $i26f], $fr);
         }
 
         ///////////////////////////////////////////////////////////////////////
