@@ -41,6 +41,86 @@ parameters:
 			path: app/Fact.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_gedcom\\.$#"
+			count: 1
+			path: app/Factories/FamilyFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_id\\.$#"
+			count: 1
+			path: app/Factories/FamilyFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/GedcomRecordFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/GedcomRecordFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/HeaderFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/HeaderFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$i_gedcom\\.$#"
+			count: 1
+			path: app/Factories/IndividualFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$i_id\\.$#"
+			count: 1
+			path: app/Factories/IndividualFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/LocationFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/LocationFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_gedcom\\.$#"
+			count: 1
+			path: app/Factories/MediaFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$m_id\\.$#"
+			count: 1
+			path: app/Factories/MediaFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/NoteFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/NoteFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/RepositoryFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/RepositoryFactory.php
+
+		-
 			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Factories/SlugFactory.php
@@ -49,6 +129,36 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Factories/SlugFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$s_gedcom\\.$#"
+			count: 1
+			path: app/Factories/SourceFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$s_id\\.$#"
+			count: 1
+			path: app/Factories/SourceFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/SubmissionFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/SubmissionFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_gedcom\\.$#"
+			count: 1
+			path: app/Factories/SubmitterFactory.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$o_id\\.$#"
+			count: 1
+			path: app/Factories/SubmitterFactory.php
 
 		-
 			message: "#^Parameter \\#2 \\$subject of function preg_match_all expects string, string\\|null given\\.$#"
