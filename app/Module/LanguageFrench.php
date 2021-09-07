@@ -129,7 +129,7 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
         // Functions to translate cousins' degree of relationship
         $symmetricCousin = fn (int $n, string $sex): array => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
             $sex === 'F' ? 'cousine au ' . $n . '<sup>e</sup> degré' : 'cousin au ' . $n . '<sup>e</sup> degré',
-            $sex === 'F'  ? 'de la ' : 'du '
+            $sex === 'F' ? 'de la ' : 'du '
         );
 
         $cousin =
@@ -146,7 +146,7 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
                     $sex === 'F' ?
                         'cousine du ' . $down . '<sup>e</sup> au ' . $up . '<sup>e</sup> degré' :
                         'cousin du ' . $down . '<sup>e</sup> au ' . $up . '<sup>e</sup> degré',
-                    $sex === 'F'  ? 'de la ' : 'du '
+                    $sex === 'F' ? 'de la ' : 'du '
                 );
             };
 
