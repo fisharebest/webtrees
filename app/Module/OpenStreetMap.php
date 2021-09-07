@@ -19,19 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-
-use function redirect;
 
 /**
  * Class OpenStreetMap - use maps within webtrees
  */
-class OpenStreetMap extends AbstractModule implements ModuleConfigInterface, ModuleMapProviderInterface
+class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
 {
-    use ModuleConfigTrait;
     use ModuleMapProviderTrait;
 
     /**
@@ -67,20 +62,6 @@ class OpenStreetMap extends AbstractModule implements ModuleConfigInterface, Mod
         return $this->viewResponse('modules/openstreetmap/config', [
             'title'   => $this->title(),
         ]);
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function postAdminAction(ServerRequestInterface $request): ResponseInterface
-    {
-        $params = (array) $request->getParsedBody();
-
-        FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
-
-        return redirect($this->getConfigLink());
     }
 
     /**
