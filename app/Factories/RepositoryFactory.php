@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 use function assert;
 use function preg_match;
@@ -71,7 +70,7 @@ class RepositoryFactory extends AbstractGedcomRecordFactory implements Repositor
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (stdClass $row) use ($tree): Repository {
+        return function (object $row) use ($tree): Repository {
             $repository = $this->make($row->o_id, $tree, $row->o_gedcom);
             assert($repository instanceof Repository);
 

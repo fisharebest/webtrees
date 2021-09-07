@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 use function assert;
 use function preg_match;
@@ -71,7 +70,7 @@ class NoteFactory extends AbstractGedcomRecordFactory implements NoteFactoryInte
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (stdClass $row) use ($tree): Note {
+        return function (object $row) use ($tree): Note {
             $note = $this->make($row->o_id, $tree, $row->o_gedcom);
             assert($note instanceof Note);
 

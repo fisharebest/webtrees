@@ -37,7 +37,6 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
-use stdClass;
 
 use function assert;
 
@@ -136,7 +135,7 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (stdClass $row) use ($tree): GedcomRecord {
+        return function (object $row) use ($tree): GedcomRecord {
             $record = $this->make($row->o_id, $tree, $row->o_gedcom);
             assert($record instanceof GedcomRecord);
 

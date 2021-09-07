@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 use function assert;
 use function preg_match;
@@ -71,7 +70,7 @@ class LocationFactory extends AbstractGedcomRecordFactory implements LocationFac
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (stdClass $row) use ($tree): Location {
+        return function (object $row) use ($tree): Location {
             $location = $this->make($row->o_id, $tree, $row->o_gedcom);
             assert($location instanceof Location);
 

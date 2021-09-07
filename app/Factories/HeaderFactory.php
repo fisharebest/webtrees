@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 use function assert;
 use function preg_match;
@@ -71,7 +70,7 @@ class HeaderFactory extends AbstractGedcomRecordFactory implements HeaderFactory
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (stdClass $row) use ($tree): Header {
+        return function (object $row) use ($tree): Header {
             $submitter = $this->make($row->o_id, $tree, $row->o_gedcom);
             assert($submitter instanceof Header);
 

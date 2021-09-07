@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * Make a GedcomRecord object.
@@ -34,7 +33,7 @@ abstract class AbstractGedcomRecordFactory
     /**
      * @param Tree $tree
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     protected function pendingChanges(Tree $tree): Collection
     {

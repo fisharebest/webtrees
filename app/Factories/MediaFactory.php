@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 use function assert;
 use function preg_match;
@@ -71,7 +70,7 @@ class MediaFactory extends AbstractGedcomRecordFactory implements MediaFactoryIn
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (stdClass $row) use ($tree): Media {
+        return function (object $row) use ($tree): Media {
             $media = $this->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);
 
