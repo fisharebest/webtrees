@@ -76,9 +76,8 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         $family = Auth::checkFamilyAccess($family, true);
 
         // Create a dummy individual, so that we can create new/empty facts.
-        $element = Registry::elementFactory()->make('INDI:NAME');
-        $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
-        $dummyf  = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
+        $dummyi = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $dummyf = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
 
         // Default names facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
