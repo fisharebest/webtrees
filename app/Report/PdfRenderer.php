@@ -51,42 +51,22 @@ class PdfRenderer extends AbstractRenderer
      */
     private const UNICODE = true;
 
-    /**
-     * false means that the full font is embedded, true means only the used chars
-     * in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
-     *
-     * @var bool const
-     */
+    // Font sub-setting in TCPDF is slow.
     private const SUBSETTING = false;
 
-    /**
-     * @var TcpdfWrapper
-     */
-    public $tcpdf;
+    public TcpdfWrapper $tcpdf;
 
-    /** @var ReportBaseElement[] Array of elements in the header */
-    public $headerElements = [];
-
-    /** @var ReportBaseElement[] Array of elements in the footer */
-    public $footerElements = [];
-
-    /** @var ReportBaseElement[] Array of elements in the body */
-    public $bodyElements = [];
-
-    /** @var ReportPdfFootnote[] Array of elements in the footer notes */
-    public $printedfootnotes = [];
-
-    /** @var string Currently used style name */
-    public $currentStyle = '';
+    /** @var array<ReportPdfFootnote> Array of elements in the footer notes */
+    public array $printedfootnotes = [];
 
     /** @var float The last cell height */
-    public $lastCellHeight = 0;
+    public float $lastCellHeight = 0.0;
 
     /** @var float The largest font size within a TextBox to calculate the height */
-    public $largestFontHeight = 0;
+    public float $largestFontHeight = 0.0;
 
     /** @var int The last pictures page number */
-    public $lastpicpage = 0;
+    public int $lastpicpage = 0;
 
     /** @var PdfRenderer The current report. */
     public $wt_report;
@@ -165,42 +145,6 @@ class PdfRenderer extends AbstractRenderer
                 $this->newPage();
             }
         }
-    }
-
-    /**
-     * Add an element to the Header -PDF
-     *
-     * @param ReportBaseElement|string $element
-     *
-     * @return void
-     */
-    public function addHeader($element): void
-    {
-        $this->headerElements[] = $element;
-    }
-
-    /**
-     * Add an element to the Body -PDF
-     *
-     * @param ReportBaseElement|string $element
-     *
-     * @return void
-     */
-    public function addBody($element): void
-    {
-        $this->bodyElements[] = $element;
-    }
-
-    /**
-     * Add an element to the Footer -PDF
-     *
-     * @param ReportBaseElement|string $element
-     *
-     * @return void
-     */
-    public function addFooter($element): void
-    {
-        $this->footerElements[] = $element;
     }
 
     /**
@@ -444,25 +388,22 @@ class PdfRenderer extends AbstractRenderer
     {
         parent::setup();
 
-        // Setup the PDF class with custom size pages because WT supports more page sizes. If WT sends an unknown size name then the default would be A4
-        $this->tcpdf = new TcpdfWrapper($this->orientation, parent::UNITS, [
-            $this->page_width,
-            $this->page_height,
-        ], self::UNICODE, 'UTF-8', self::DISK_CACHE);
+        $this->tcpdf = new TcpdfWrapper(
+            $this->orientation,
+            self::UNITS,
+            [$this->page_width, $this->page_height],
+            self::UNICODE,
+            'UTF-8',
+            self::DISK_CACHE
+        );
 
-        // Setup the PDF margins
         $this->tcpdf->SetMargins($this->left_margin, $this->top_margin, $this->right_margin);
         $this->tcpdf->setHeaderMargin($this->header_margin);
         $this->tcpdf->setFooterMargin($this->footer_margin);
-        //Set auto page breaks
         $this->tcpdf->SetAutoPageBreak(true, $this->bottom_margin);
-        // Set font subsetting
         $this->tcpdf->setFontSubsetting(self::SUBSETTING);
-        // Setup PDF compression
         $this->tcpdf->SetCompression(self::COMPRESSION);
-        // Setup RTL support
         $this->tcpdf->setRTL($this->rtl);
-        // Set the document information
         $this->tcpdf->SetCreator(Webtrees::NAME . ' ' . Webtrees::VERSION);
         $this->tcpdf->SetAuthor($this->rauthor);
         $this->tcpdf->SetTitle($this->title);
@@ -478,35 +419,7 @@ class PdfRenderer extends AbstractRenderer
             $element = new ReportPdfCell(0, 10, 0, 'C', '', 'genby', 1, ReportBaseElement::CURRENT_POSITION, ReportBaseElement::CURRENT_POSITION, 0, 0, '', '', true);
             $element->addText($this->generated_by);
             $element->setUrl(Webtrees::URL);
-            $this->addFooter($element);
-        }
-    }
-
-    /**
-     * Add an element.
-     *
-     * @param ReportBaseElement|string $element
-     *
-     * @return void
-     */
-    public function addElement($element): void
-    {
-        if ($this->processing === 'B') {
-            $this->addBody($element);
-
-            return;
-        }
-
-        if ($this->processing === 'H') {
-            $this->addHeader($element);
-
-            return;
-        }
-
-        if ($this->processing === 'F') {
-            $this->addFooter($element);
-
-            return;
+            $this->addElementToFooter($element);
         }
     }
 

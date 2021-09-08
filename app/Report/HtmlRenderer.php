@@ -70,13 +70,6 @@ class HtmlRenderer extends AbstractRenderer
     public $Y = 0.0;
 
     /**
-     * Currently used style name
-     *
-     * @var string
-     */
-    public $currentStyle = '';
-
-    /**
      * Page number counter
      *
      * @var int
@@ -133,15 +126,6 @@ class HtmlRenderer extends AbstractRenderer
      */
     public $maxY = 0;
 
-    /** @var ReportBaseElement[] Array of elements in the header */
-    public $headerElements = [];
-
-    /** @var ReportBaseElement[] Array of elements in the footer */
-    public $footerElements = [];
-
-    /** @var ReportBaseElement[] Array of elements in the body */
-    public $bodyElements = [];
-
     /** @var ReportHtmlFootnote[] Array of elements in the footer notes */
     public $printedfootnotes = [];
 
@@ -175,24 +159,6 @@ class HtmlRenderer extends AbstractRenderer
             $element = new ReportHtmlCell(0, 10, 0, 'C', '', 'genby', 1, ReportBaseElement::CURRENT_POSITION, ReportBaseElement::CURRENT_POSITION, 0, 0, '', '', true);
             $element->addText($this->generated_by);
             $element->setUrl(Webtrees::URL);
-            $this->footerElements[] = $element;
-        }
-    }
-
-    /**
-     * Add an element.
-     *
-     * @param ReportBaseElement|string $element
-     *
-     * @return void
-     */
-    public function addElement($element): void
-    {
-        if ($this->processing === 'B') {
-            $this->bodyElements[] = $element;
-        } elseif ($this->processing === 'H') {
-            $this->headerElements[] = $element;
-        } elseif ($this->processing === 'F') {
             $this->footerElements[] = $element;
         }
     }
