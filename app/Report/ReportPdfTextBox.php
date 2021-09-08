@@ -80,7 +80,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
                     }
                     // Save the Footnote with it’s link number as key for sorting later
                     $footnote_element[$element->num] = $element;
-                } elseif (!($element instanceof ReportPdfFootnote) || trim($element->getValue()) != '') {
+                } elseif (!$element instanceof ReportPdfFootnote || trim($element->getValue()) != '') {
                     // Do not keep empty footnotes
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);
@@ -155,7 +155,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
         if (is_array($cM['cell'])) {
             $cWT = $cW - ($cM['padding_left'] + $cM['padding_right']);
         } else {
-            $cWT = $cW - ($cM['cell'] * 2);
+            $cWT = $cW - $cM['cell'] * 2;
         }
         // Element height (exept text)
         $eH = 0;
@@ -209,9 +209,9 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 // Add cell padding
                 if ($this->padding) {
                     if (is_array($cM['cell'])) {
-                        $cHT += ($cM['padding_bottom'] + $cM['padding_top']);
+                        $cHT += $cM['padding_bottom'] + $cM['padding_top'];
                     } else {
-                        $cHT += ($cM['cell'] * 2);
+                        $cHT += $cM['cell'] * 2;
                     }
                 }
                 if ($cH < $cHT) {

@@ -150,7 +150,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         }
 
         // For padding, we have to use less wrap width
-        $cW = $this->width - ($cP * 2);
+        $cW = $this->width - $cP * 2;
 
         //-- calculate the text box height
         // Number of lines, will be converted to height
@@ -242,9 +242,9 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // Border setup
         if ($this->border) {
             echo ' border:solid black 1pt;';
-            echo 'width:', ($this->width - 1 - ($cP * 2)), 'pt;height:', $cH - 1, 'pt;';
+            echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:', $cH - 1, 'pt;';
         } else {
-            echo 'width:', ($this->width - ($cP * 2)), 'pt;height:', $cH, 'pt;';
+            echo 'width:', $this->width - $cP * 2, 'pt;height:', $cH, 'pt;';
         }
         echo '">';
 
@@ -279,7 +279,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
             $renderer->setXy($cX + $this->width, $this->top);
             $renderer->lastCellHeight = $cH;
         } else {
-            $renderer->setXy(0, $this->top + $cH + ($cP * 2));
+            $renderer->setXy(0, $this->top + $cH + $cP * 2);
             $renderer->lastCellHeight = 0;
         }
     }

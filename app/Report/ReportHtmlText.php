@@ -103,7 +103,7 @@ class ReportHtmlText extends ReportBaseText
         }
         $style = $renderer->getStyle($this->styleName);
 
-        return ($style['size'] * $ct) * $renderer->cellHeightRatio;
+        return $style['size'] * $ct * $renderer->cellHeightRatio;
     }
 
     /**

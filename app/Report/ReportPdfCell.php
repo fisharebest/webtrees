@@ -122,9 +122,9 @@ class ReportPdfCell extends ReportBaseCell
             $cM  = $renderer->tcpdf->getMargins();
             // Add padding
             if (is_array($cM['cell'])) {
-                $cHT += ($cM['padding_bottom'] + $cM['padding_top']);
+                $cHT += $cM['padding_bottom'] + $cM['padding_top'];
             } else {
-                $cHT += ($cM['cell'] * 2);
+                $cHT += $cM['cell'] * 2;
             }
             // Add a new page if needed
             if ($renderer->checkPageBreakPDF($cHT)) {

@@ -137,7 +137,7 @@ class PdfRenderer extends AbstractRenderer
     public function footnotes(): void
     {
         foreach ($this->printedfootnotes as $element) {
-            if (($this->tcpdf->GetY() + $element->getFootnoteHeight($this)) > $this->tcpdf->getPageHeight()) {
+            if ($this->tcpdf->GetY() + $element->getFootnoteHeight($this) > $this->tcpdf->getPageHeight()) {
                 $this->tcpdf->AddPage();
             }
 
@@ -334,10 +334,10 @@ class PdfRenderer extends AbstractRenderer
     {
         $m = $this->tcpdf->getMargins();
         if ($this->tcpdf->getRTL()) {
-            return ($this->tcpdf->getRemainingWidth() + $m['right']);
+            return $this->tcpdf->getRemainingWidth() + $m['right'];
         }
 
-        return ($this->tcpdf->getRemainingWidth() + $m['left']);
+        return $this->tcpdf->getRemainingWidth() + $m['left'];
     }
 
     /**

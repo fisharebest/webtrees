@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Functions\FunctionsRtl;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
@@ -622,7 +621,7 @@ class HtmlRenderer extends AbstractRenderer
         $nl = $this->countLines($str);
 
         // Calculate the cell height
-        return ceil(($this->getCurrentStyleHeight() * $this->cellHeightRatio) * $nl);
+        return ceil($this->getCurrentStyleHeight() * $this->cellHeightRatio * $nl);
     }
 
     /**

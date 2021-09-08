@@ -146,7 +146,7 @@ class ReportHtmlCell extends ReportBaseCell
             $this->width = $renderer->getRemainingWidth();
         }
         // We have to calculate a different width for the padding, counting on both side
-        $cW = $this->width - ($cP * 2);
+        $cW = $this->width - $cP * 2;
 
         // If there is any text
         if (!empty($temptext)) {
@@ -202,12 +202,12 @@ class ReportHtmlCell extends ReportBaseCell
             $renderer->lastCellHeight = $this->height;
         } elseif ($this->newline === 1) {
             // -> On a new line at the margin - Default
-            $renderer->setXy(0, $renderer->getY() + $this->height + ($cP * 2));
+            $renderer->setXy(0, $renderer->getY() + $this->height + $cP * 2);
             // Reset the last cell height for the next line
             $renderer->lastCellHeight = 0;
         } elseif ($this->newline === 2) {
             // -> On a new line at the end of this cell
-            $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + ($cP * 2));
+            $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $cP * 2);
             // Reset the last cell height for the next line
             $renderer->lastCellHeight = 0;
         }

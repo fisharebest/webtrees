@@ -96,7 +96,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
         $ct         = substr_count($this->text, "\n");
         $fsize      = $html->getCurrentStyleHeight();
 
-        return ($fsize * $ct) * $html->cellHeightRatio;
+        return $fsize * $ct * $html->cellHeightRatio;
     }
 
     /**
