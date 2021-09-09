@@ -35,6 +35,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
+use function random_int;
 use function redirect;
 use function route;
 use function view;
@@ -97,14 +98,16 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
             );
 
             Log::addAuthenticationLog('Password request for user: ' . $user->userName());
-
-            $message1 = I18N::translate('A password reset link has been sent to “%s”.', e($email));
-            $message2 = I18N::translate('This link is valid for one hour.');
-            FlashMessages::addMessage($message1 . '<br>' . $message2, 'success');
         } else {
-            $message = I18N::translate('There is no user account with the email “%s”.', e($email));
-            FlashMessages::addMessage($message, 'danger');
+            // Email takes a few seconds to send.  An instant response would allow
+            // an attacker to use the speed of the response to infer whether an account exists.
+            usleep(random_int(500000, 2000000));
         }
+
+        // For security, send a success message even when we fail.
+        $message1 = I18N::translate('A password reset link has been sent to “%s”.', e($email));
+        $message2 = I18N::translate('This link is valid for one hour.');
+        FlashMessages::addMessage($message1 . '<br>' . $message2, 'success');
 
         return redirect(route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }
