@@ -1435,7 +1435,7 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(0\\|array\\<float\\>\\|float, 1, int\\)\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
 
@@ -1450,7 +1450,7 @@ parameters:
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(array\\<float\\>\\|float, 0\\|2, int\\)\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfText.php
 
@@ -1633,11 +1633,6 @@ parameters:
 			message: "#^Cannot call method addDay\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
 			path: app/Services/PendingChangesService.php
-
-		-
-			message: "#^Binary operation \"\\*\" between 365 and 0\\|string results in an error\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
 
 		-
 			message: "#^Binary operation \"\\*\" between 365 and string results in an error\\.$#"
@@ -2053,34 +2048,4 @@ parameters:
 			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-footer.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
 
