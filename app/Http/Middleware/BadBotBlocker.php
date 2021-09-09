@@ -260,7 +260,7 @@ class BadBotBlocker implements MiddlewareInterface
     {
         return Registry::cache()->file()->remember('whois-asn-' . $asn, static function () use ($asn): array {
             $mapper = static function (AsnRouteInfo $route_info): ?RangeInterface {
-               return IPFactory::parseRangeString($route_info->getRoute() ?: $route_info->getRoute6());
+                return IPFactory::parseRangeString($route_info->getRoute() ?: $route_info->getRoute6());
             };
 
             try {
