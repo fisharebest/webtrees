@@ -24,30 +24,37 @@ namespace Fisharebest\Webtrees\Report;
  */
 class ReportBaseCell extends ReportBaseElement
 {
-    /**
-     * Allows to center or align the text. Possible values are:<ul><li>left or empty string: left align</li><li>center: center align</li><li>right: right align</li><li>justify: justification (default value when $ishtml=false)</li></ul>
-     *
-     * @var string
-     */
-    public $align = '';
-    /**
-     * Whether or not a border should be printed around this box. 0 = no border, 1 = border. Default is 0.
-     * Or a string containing some or all of the following characters (in any order):<ul><li>L: left</li><li>T: top</li><li>R: right</li><li>B: bottom</li></ul>
-     *
-     * @var mixed
-     */
+    // Center or align the text. Possible values are:
+    // left or empty string: left align
+    // center: center align
+    // right: right align
+    // justify: justification (default value when $ishtml=false)
+    public string $align = '';
+
+    // Whether a border should be printed around this box.
+    // 0 = no border (default)
+    // 1 = border
+    // a string containing some or all of the following characters (in any order):
+    // L: left
+    // T: top
+    // R: right
+    // B: bottom
+    /** @var int|string */
     public $border;
+
     /**
      * Border color in HTML code
      *
      * @var string
      */
+
     public $bocolor;
     /**
      * The HTML color code to fill the background of this cell.
      *
      * @var string
      */
+
     public $bgcolor;
     /**
      * Indicates if the cell background must be painted (1) or transparent (0). Default value: 1.
@@ -55,6 +62,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @var int
      */
+
     public $fill;
     /**
      * Cell height DEFAULT 0 (expressed in points)
@@ -63,47 +71,55 @@ class ReportBaseCell extends ReportBaseElement
      * @var float
      */
     public $height;
+
     /**
      * Left position in user units (X-position). Default is the current position
      *
      * @var mixed
      */
+
     public $left;
     /**
      * Indicates where the current position should go after the call. Possible values are:<ul><li>0: to the right [DEFAULT]</li><li>1: to the beginning of the next line</li><li>2: below</li></ul>
      *
      * @var int
      */
+
     public $newline;
     /**
      * The name of the Style that should be used to render the text.
      *
      * @var string
      */
+
     public $styleName;
     /**
      * Stretch carachter mode: <ul><li>0 = disabled (default)</li><li>1 = horizontal scaling only if necessary</li><li>2 = forced horizontal scaling</li><li>3 = character spacing only if necessary</li><li>4 = forced character spacing</li></ul>
      *
      * @var int
      */
+
     public $stretch;
     /**
      * Text color in HTML code
      *
      * @var string
      */
+
     public $tcolor;
     /**
      * Top position in user units (Y-position). Default is the current position
      *
      * @var mixed
      */
+
     public $top;
     /**
      * URL address
      *
      * @var string
      */
+
     public $url;
     /**
      * Cell width DEFAULT 0 (expressed in points)
@@ -111,6 +127,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @var float
      */
+
     public $width;
 
     /** @var bool */

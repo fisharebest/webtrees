@@ -1195,6 +1195,11 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
+			message: "#^Parameter \\#1 \\$haystack of function stripos expects string, int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
+			count: 4
+			path: app/Report/ReportHtmlCell.php
+
+		-
 			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), non\\-empty\\-string\\) given\\.$#"
 			count: 2
 			path: app/Report/ReportParserBase.php

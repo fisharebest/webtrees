@@ -41,93 +41,49 @@ use function substr_count;
  */
 class HtmlRenderer extends AbstractRenderer
 {
-    /**
-     * Cell padding
-     *
-     * @var float
-     */
-    public $cPadding = 2;
+    // Cell padding
+    public float $cPadding = 2;
+
+    // Cell height ratio
+    public float $cellHeightRatio = 1.8;
+
+    // Current horizontal position
+    public float $X = 0.0;
+
+    // Current vertical position
+    public float $Y = 0.0;
+
+    // Page number counter
+    public int $pageN = 1;
+
+    // Store the page width without left and right margins
+    // Only needed for PDF reports
+    public float $noMarginWidth = 0.0;
+
+    // Last cell height
+    public float $lastCellHeight = 0.0;
+
+    // LTR or RTL alignement; "left" on LTR, "right" on RTL
+    // Used in <div>
+    public string $alignRTL = 'left';
+
+    // LTR or RTL entity
+    public string $entityRTL = '&lrm;';
+
+    // Largest Font Height is used by TextBox etc.
+    //
+    // Use this to calculate a the text height.
+    // This makes sure that the text fits into the cell/box when different font sizes are used
+    public float $largestFontHeight = 0;
+
+    // Keep track of the highest Y position
+    // Used with Header div / Body div / Footer div / "addpage" / The bottom of the last image etc.
+    public float $maxY = 0;
 
     /**
-     * Cell height ratio
-     *
-     * @var float
+     * @var ReportHtmlFootnote[] Array of elements in the footer notes
      */
-    public $cellHeightRatio = 1.8;
-
-    /**
-     * Current horizontal position
-     *
-     * @var float
-     */
-    public $X = 0.0;
-
-    /**
-     * Current vertical position
-     *
-     * @var float
-     */
-    public $Y = 0.0;
-
-    /**
-     * Page number counter
-     *
-     * @var int
-     */
-    public $pageN = 1;
-
-    /**
-     * Store the page width without left and right margins
-     *
-     * In HTML, we don't need this
-     *
-     * @var float
-     */
-    public $noMarginWidth = 0.0;
-
-    /**
-     * Last cell height
-     *
-     * @var float
-     */
-    public $lastCellHeight = 0.0;
-
-    /**
-     * LTR or RTL alignement; "left" on LTR, "right" on RTL
-     * Used in <div>
-     *
-     * @var string
-     */
-    public $alignRTL = 'left';
-
-    /**
-     * LTR or RTL entity
-     *
-     * @var string
-     */
-    public $entityRTL = '&lrm;';
-
-    /**
-     * Largest Font Height is used by TextBox etc.
-     *
-     * Use this to calculate a the text height.
-     * This makes sure that the text fits into the cell/box when different font sizes are used
-     *
-     * @var float
-     */
-    public $largestFontHeight = 0;
-
-    /**
-     * Keep track of the highest Y position
-     *
-     * Used with Header div / Body div / Footer div / "addpage" / The bottom of the last image etc.
-     *
-     * @var float
-     */
-    public $maxY = 0;
-
-    /** @var ReportHtmlFootnote[] Array of elements in the footer notes */
-    public $printedfootnotes = [];
+    public array $printedfootnotes = [];
 
     /**
      * HTML Setup - ReportHtml

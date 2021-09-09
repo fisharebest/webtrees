@@ -59,17 +59,14 @@ class PdfRenderer extends AbstractRenderer
     /** @var array<ReportPdfFootnote> Array of elements in the footer notes */
     public array $printedfootnotes = [];
 
-    /** @var float The last cell height */
+    // The last cell height
     public float $lastCellHeight = 0.0;
 
-    /** @var float The largest font size within a TextBox to calculate the height */
+    // The largest font size within a TextBox to calculate the height
     public float $largestFontHeight = 0.0;
 
-    /** @var int The last pictures page number */
+    // The last pictures page number
     public int $lastpicpage = 0;
-
-    /** @var PdfRenderer The current report. */
-    public $wt_report;
 
     /**
      * PDF Header -PDF
