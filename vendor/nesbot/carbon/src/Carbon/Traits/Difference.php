@@ -125,6 +125,8 @@ trait Difference
 
         // Can be removed if https://github.com/derickr/timelib/pull/110
         // is merged
+        // https://bugs.php.net/bug.php?id=80998 was announced fixed in PHP 8.1.0beta3
+        // but created a reverse-regression when using UTC, so we still need this hack
         // @codeCoverageIgnoreStart
         if (version_compare(PHP_VERSION, '8.1.0-dev', '>=') && $other->tz !== $this->tz) {
             $other = $other->avoidMutation()->tz($this->tz);
@@ -815,7 +817,7 @@ trait Difference
             $syntax['syntax'] = $syntax['syntax'] ?? null;
             $intSyntax = &$syntax['syntax'];
         }
-        $intSyntax = (int) ($intSyntax === null ? static::DIFF_RELATIVE_AUTO : $intSyntax);
+        $intSyntax = (int) ($intSyntax ?? static::DIFF_RELATIVE_AUTO);
         $intSyntax = $intSyntax === static::DIFF_RELATIVE_AUTO && $other === null ? static::DIFF_RELATIVE_TO_NOW : $intSyntax;
 
         $parts = min(7, max(1, (int) $parts));

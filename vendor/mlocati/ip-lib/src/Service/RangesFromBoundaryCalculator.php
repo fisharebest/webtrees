@@ -8,6 +8,8 @@ use IPLib\Range\Subnet;
 
 /**
  * Helper class to calculate the subnets describing all (and only all) the addresses between two boundaries.
+ *
+ * @internal
  */
 class RangesFromBoundaryCalculator
 {

@@ -1,0 +1,24 @@
+name: Unit tests
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: ['5.3', '5.4', '5.5', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0']
+
+    name: Testing PHP ${{ matrix.php-version }}
+
+    steps:
+      - uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - uses: actions/checkout@v2
+
+      - run: composer validate --strict
+      - run: composer install --no-interaction
+      - run: vendor/bin/phpunit

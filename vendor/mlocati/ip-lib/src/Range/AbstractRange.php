@@ -8,6 +8,9 @@ use IPLib\Address\IPv6;
 use IPLib\Address\Type as AddressType;
 use IPLib\Factory;
 
+/**
+ * Base class for range classes.
+ */
 abstract class AbstractRange implements RangeInterface
 {
     /**
@@ -20,7 +23,7 @@ abstract class AbstractRange implements RangeInterface
         if ($this->rangeType === null) {
             $addressType = $this->getAddressType();
             if ($addressType === AddressType::T_IPv6 && Subnet::get6to4()->containsRange($this)) {
-                $this->rangeType = Factory::rangeFromBoundaries($this->fromAddress->toIPv4(), $this->toAddress->toIPv4())->getRangeType();
+                $this->rangeType = Factory::getRangeFromBoundaries($this->fromAddress->toIPv4(), $this->toAddress->toIPv4())->getRangeType();
             } else {
                 switch ($addressType) {
                     case AddressType::T_IPv4:
@@ -61,10 +64,10 @@ abstract class AbstractRange implements RangeInterface
 
         $address = null;
         if ($n >= 0) {
-            $start = Factory::addressFromString($this->getComparableStartString());
+            $start = Factory::parseAddressString($this->getComparableStartString());
             $address = $start->getAddressAtOffset($n);
         } else {
-            $end = Factory::addressFromString($this->getComparableEndString());
+            $end = Factory::parseAddressString($this->getComparableEndString());
             $address = $end->getAddressAtOffset($n + 1);
         }
 

@@ -1,4 +1,4 @@
-[![Tests](https://github.com/mlocati/ip-lib/workflows/tests/badge.svg)](https://github.com/mlocati/ip-lib/actions?query=workflow%3A%22tests%22)
+[![Tests](https://github.com/mlocati/ip-lib/actions/workflows/tests.yml/badge.svg)](https://github.com/mlocati/ip-lib/actions?query=workflow%3A%22tests%22)
 [![Coverage Status](https://coveralls.io/repos/github/mlocati/ip-lib/badge.svg?branch=master)](https://coveralls.io/github/mlocati/ip-lib?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mlocati/ip-lib/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mlocati/ip-lib/?branch=master)
 ![Packagist Downloads](https://img.shields.io/packagist/dm/mlocati/ip-lib)
@@ -50,26 +50,26 @@ or add these lines to your `composer.json` file:
 To parse an IPv4 address:
 
 ```php
-$address = \IPLib\Address\IPv4::fromString('127.0.0.1');
+$address = \IPLib\Address\IPv4::parseString('127.0.0.1');
 ```
 
 To parse an IPv6 address:
 
 ```php
-$address = \IPLib\Address\IPv6::fromString('::1');
+$address = \IPLib\Address\IPv6::parseString('::1');
 ```
 
 To parse an address in any format (IPv4 or IPv6):
 
 ```php
-$address = \IPLib\Factory::addressFromString('::1');
-$address = \IPLib\Factory::addressFromString('127.0.0.1');
+$address = \IPLib\Factory::parseAddressString('::1');
+$address = \IPLib\Factory::parseAddressString('127.0.0.1');
 ```
 
 ### Get the next/previous addresses
 
 ```php
-$address = \IPLib\Factory::addressFromString('::1');
+$address = \IPLib\Factory::parseAddressString('::1');
 
 // This will print ::
 echo (string) $address->getPreviousAddress();
@@ -83,7 +83,7 @@ echo (string) $address->getNextAddress();
 For addresses:
 
 ```php
-$address = \IPLib\Factory::addressFromString('::1');
+$address = \IPLib\Factory::parseAddressString('::1');
 
 // This will print ::1
 echo (string) $address->getAddressAtOffset(0);
@@ -107,7 +107,7 @@ echo var_dump($address->getAddressAtOffset(-2));
 For ranges:
 
 ```php
-$range = \IPLib\Factory::rangeFromString('::ff00/120');
+$range = \IPLib\Factory::parseRangeString('::ff00/120');
 
 // This will print ::ff00
 echo (string) $range->getAddressAtOffset(0);
@@ -139,30 +139,30 @@ var_dump($range->getAddressAtOffset(-257));
 To parse a subnet (CIDR) range:
 
 ```php
-$range = \IPLib\Range\Subnet::fromString('127.0.0.1/24');
-$range = \IPLib\Range\Subnet::fromString('::1/128');
+$range = \IPLib\Range\Subnet::parseString('127.0.0.1/24');
+$range = \IPLib\Range\Subnet::parseString('::1/128');
 ```
 
 To parse a pattern (asterisk notation) range:
 
 ```php
-$range = \IPLib\Range\Pattern::fromString('127.0.0.*');
-$range = \IPLib\Range\Pattern::fromString('::*');
+$range = \IPLib\Range\Pattern::parseString('127.0.0.*');
+$range = \IPLib\Range\Pattern::parseString('::*');
 ```
 
 To parse an andress as a range:
 
 ```php
-$range = \IPLib\Range\Single::fromString('127.0.0.1');
-$range = \IPLib\Range\Single::fromString('::1');
+$range = \IPLib\Range\Single::parseString('127.0.0.1');
+$range = \IPLib\Range\Single::parseString('::1');
 ```
 
 To parse a range in any format:
 
 ```php
-$range = \IPLib\Factory::rangeFromString('127.0.0.*');
-$range = \IPLib\Factory::rangeFromString('::1/128');
-$range = \IPLib\Factory::rangeFromString('::');
+$range = \IPLib\Factory::parseRangeString('127.0.0.*');
+$range = \IPLib\Factory::parseRangeString('::1/128');
+$range = \IPLib\Factory::parseRangeString('::');
 ```
 
 ### Retrieve a range from its boundaries
@@ -170,7 +170,7 @@ $range = \IPLib\Factory::rangeFromString('::');
 You can calculate the smallest range that comprises two addresses:
 
 ```php
-$range = \IPLib\Factory::rangeFromBoundaries('192.168.0.1', '192.168.255.255');
+$range = \IPLib\Factory::getRangeFromBoundaries('192.168.0.1', '192.168.255.255');
 
 // This will print 192.168.0.0/16
 echo (string) $range;
@@ -179,7 +179,7 @@ echo (string) $range;
 You can also calculate a list of ranges that exactly describes all the addresses between two addresses:
 
 ```php
-$ranges = \IPLib\Factory::rangesFromBoundaries('192.168.0.0', '192.168.0.5');
+$ranges = \IPLib\Factory::getRangesFromBoundaries('192.168.0.0', '192.168.0.5');
 
 // This will print 192.168.0.0/30 192.168.0.4/31
 echo implode(' ', $ranges);
@@ -188,7 +188,7 @@ echo implode(' ', $ranges);
 ### Retrieve the boundaries of a range
 
 ```php
-$range = \IPLib\Factory::rangeFromString('127.0.0.*');
+$range = \IPLib\Factory::parseRangeString('127.0.0.*');
 
 // This will print 127.0.0.0
 echo (string) $range->getStartAddress();
@@ -203,48 +203,48 @@ Both IP addresses and ranges have a `toString` method that you can use to retrie
 
 ```php
 // This will print 127.0.0.1
-echo \IPLib\Factory::addressFromString('127.0.0.1')->toString();
+echo \IPLib\Factory::parseAddressString('127.0.0.1')->toString();
 
 // This will print 127.0.0.1
-echo \IPLib\Factory::addressFromString('127.000.000.001')->toString();
+echo \IPLib\Factory::parseAddressString('127.000.000.001')->toString();
 
 // This will print ::1
-echo \IPLib\Factory::addressFromString('::1')->toString();
+echo \IPLib\Factory::parseAddressString('::1')->toString();
 
 // This will print ::1
-echo \IPLib\Factory::addressFromString('0:0::1')->toString();
+echo \IPLib\Factory::parseAddressString('0:0::1')->toString();
 
 // This will print ::1/64
-echo \IPLib\Factory::rangeFromString('0:0::1/64')->toString();
+echo \IPLib\Factory::parseRangeString('0:0::1/64')->toString();
 ```
 
 When working with IPv6, you may want the full (expanded) representation of the addresses. In this case, simply use a `true` parameter for the `toString` method:
 
 ```php
 // This will print 0000:0000:0000:0000:0000:0000:0000:0000
-echo \IPLib\Factory::addressFromString('::')->toString(true);
+echo \IPLib\Factory::parseAddressString('::')->toString(true);
 
 // This will print 0000:0000:0000:0000:0000:0000:0000:0001
-echo \IPLib\Factory::addressFromString('::1')->toString(true);
+echo \IPLib\Factory::parseAddressString('::1')->toString(true);
 
 // This will print 0fff:0000:0000:0000:0000:0000:0000:0000
-echo \IPLib\Factory::addressFromString('fff::')->toString(true);
+echo \IPLib\Factory::parseAddressString('fff::')->toString(true);
 
 // This will print 0000:0000:0000:0000:0000:0000:0000:0000
-echo \IPLib\Factory::addressFromString('::0:0')->toString(true);
+echo \IPLib\Factory::parseAddressString('::0:0')->toString(true);
 
 // This will print 0001:0002:0003:0004:0005:0006:0007:0008
-echo \IPLib\Factory::addressFromString('1:2:3:4:5:6:7:8')->toString(true);
+echo \IPLib\Factory::parseAddressString('1:2:3:4:5:6:7:8')->toString(true);
 
 // This will print 0000:0000:0000:0000:0000:0000:0000:0001/64
-echo \IPLib\Factory::rangeFromString('0:0::1/64')->toString();
+echo \IPLib\Factory::parseRangeString('0:0::1/64')->toString();
 ```
 
 The address and range objects implements the `__toString()` method, which call the `toString()` method.
 So, if you want the string (short) representation of an object, you can do any of the following:
 
 ```php
-$address = \IPLib\Address\IPv6::fromString('::1');
+$address = \IPLib\Address\IPv6::parseString('::1');
 
 // All these will print ::1
 echo $address->toString();
@@ -257,8 +257,8 @@ echo (string) $address;
 All the range types offer a `contains` method, and all the IP address types offer a `matches` method: you can call them to check if an address is contained in a range:
 
 ```php
-$address = \IPLib\Factory::addressFromString('1:2:3:4:5:6:7:8');
-$range = \IPLib\Factory::rangeFromString('0:0::1/64');
+$address = \IPLib\Factory::parseAddressString('1:2:3:4:5:6:7:8');
+$range = \IPLib\Factory::parseRangeString('0:0::1/64');
 
 $contained = $address->matches($range);
 // that's equivalent to
@@ -272,8 +272,8 @@ Please remark that if the address is IPv4 and the range is IPv6 (or vice-versa),
 All the range types offer a `containsRange` method: you can call them to check if an address range fully contains another range:
 
 ```php
-$range1 = \IPLib\Factory::rangeFromString('0:0::1/64');
-$range2 = \IPLib\Factory::rangeFromString('0:0::1/65');
+$range1 = \IPLib\Factory::parseRangeString('0:0::1/64');
+$range2 = \IPLib\Factory::parseRangeString('0:0::1/65');
 
 $contained = $range1->containsRange($range2);
 ```
@@ -283,7 +283,7 @@ $contained = $range1->containsRange($range2);
 If you want to know if an address is within a private network, or if it's a public IP, or whatever you want, you can use the `getRangeType` method:
 
 ```php
-$address = \IPLib\Factory::addressFromString('::');
+$address = \IPLib\Factory::parseAddressString('::');
 
 $type = $address->getRangeType();
 
@@ -302,7 +302,7 @@ The most notable values of the range type are:
 If you want to know the type of an address range, you can use the `getRangeType` method:
 
 ```php
-$range = \IPLib\Factory::rangeFromString('2000:0::1/64');
+$range = \IPLib\Factory::parseRangeString('2000:0::1/64');
 
 // $type will contain the value of \IPLib\Range\Type::T_PUBLIC
 $type = $range->getRangeType();
@@ -314,7 +314,7 @@ echo \IPLib\Range\Type::getName($type);
 Please note that if a range spans across multiple range types, you'll get NULL as the range type:
 
 ```php
-$range = \IPLib\Factory::rangeFromString('::/127');
+$range = \IPLib\Factory::parseRangeString('::/127');
 
 // $type will contain null
 $type = $range->getRangeType();
@@ -328,7 +328,7 @@ echo \IPLib\Range\Type::getName($type);
 This library supports converting IPv4 to/from IPv6 addresses using the [6to4 notation](https://tools.ietf.org/html/rfc3056) or the [IPv4-mapped notation](https://tools.ietf.org/html/rfc4291#section-2.5.5.2):
 
 ```php
-$ipv4 = \IPLib\Factory::addressFromString('1.2.3.4');
+$ipv4 = \IPLib\Factory::parseAddressString('1.2.3.4');
 
 // 6to4 notation
 $ipv6 = $ipv4->toIPv6();
@@ -355,16 +355,16 @@ This library supports IPv4/IPv6 ranges in pattern format (eg. `192.168.*.*`) and
 
 ```php
 // This will print ::*:*:*:*
-echo \IPLib\Factory::rangeFromString('::/64')->asPattern()->toString();
+echo \IPLib\Factory::parseRangeString('::/64')->asPattern()->toString();
 
 // This will print 1:2::/96
-echo \IPLib\Factory::rangeFromString('1:2::*:*')->asSubnet()->toString();
+echo \IPLib\Factory::parseRangeString('1:2::*:*')->asSubnet()->toString();
 
 // This will print 192.168.0.0/24
-echo \IPLib\Factory::rangeFromString('192.168.0.*')->asSubnet()->toString();
+echo \IPLib\Factory::parseRangeString('192.168.0.*')->asSubnet()->toString();
 
 // This will print 10.*.*.*
-echo \IPLib\Factory::rangeFromString('10.0.0.0/8')->asPattern()->toString();
+echo \IPLib\Factory::parseRangeString('10.0.0.0/8')->asPattern()->toString();
 ```
 
 Please remark that all the range types implement the `asPattern()` and `asSubnet()` methods.
@@ -375,10 +375,10 @@ You can use the `getSubnetMask()` to get the subnet mask for IPv4 ranges:
 
 ```php
 // This will print 255.255.255.0
-echo \IPLib\Factory::rangeFromString('192.168.0.*')->getSubnetMask()->toString();
+echo \IPLib\Factory::parseRangeString('192.168.0.*')->getSubnetMask()->toString();
 
 // This will print 255.255.255.252
-echo \IPLib\Factory::rangeFromString('192.168.0.12/30')->getSubnetMask()->toString();
+echo \IPLib\Factory::parseRangeString('192.168.0.12/30')->getSubnetMask()->toString();
 ```
 
 ### Getting the range size
@@ -387,13 +387,13 @@ You can use the `getSize()` to get the count of addresses this IP range contains
 
 ```php
 // This will print 256
-echo \IPLib\Factory::rangeFromString('192.168.0.*')->getSize();
+echo \IPLib\Factory::parseRangeString('192.168.0.*')->getSize();
 
 // This will print 4
-echo \IPLib\Factory::rangeFromString('192.168.0.12/30')->getSize();
+echo \IPLib\Factory::parseRangeString('192.168.0.12/30')->getSize();
 
 // This will print 1
-echo \IPLib\Factory::rangeFromString('192.168.0.1')->getSize();
+echo \IPLib\Factory::parseRangeString('192.168.0.1')->getSize();
 ```
 
 ### Getting the reverse DNS lookup address
@@ -403,8 +403,8 @@ To perform reverse DNS queries, you need to use a special format of the IP addre
 You can use the `getReverseDNSLookupName()` method of the IP address instances to retrieve it easily:
 
 ```php
-$ipv4 = \IPLib\Factory::addressFromString('1.2.3.255');
-$ipv6 = \IPLib\Factory::addressFromString('1234:abcd::cafe:babe');
+$ipv4 = \IPLib\Factory::parseAddressString('1.2.3.255');
+$ipv6 = \IPLib\Factory::parseAddressString('1234:abcd::cafe:babe');
 
 // This will print 255.3.2.1.in-addr.arpa
 echo $ipv4->getReverseDNSLookupName();
@@ -417,7 +417,7 @@ You can also use `getReverseDNSLookupName()` for IP ranges.
 In this case, the result is an array of strings:
 
 ```php
-$range = \IPLib\Factory::rangeFromString('10.155.16.0/22');
+$range = \IPLib\Factory::parseRangeString('10.155.16.0/22');
 
 /*
  * This will print:
@@ -485,11 +485,50 @@ $rows = $searchQuery->fetchAll();
 $searchQuery->closeCursor();
 ```
 
-## Non-decimal notation
+## Handling non-standard address and range strings
+
+### Accepting ports
+
+If you want to accept addresses that may include ports, you can specify the `IPLib\ParseStringFlag::MAY_INCLUDE_PORT` flag:
+
+```php
+use IPLib\Factory;
+use IPLib\ParseStringFlag;
+
+require_once __DIR__ . '/../ip-lib.php';
+
+// These will print NULL
+var_export(Factory::parseAddressString('127.0.0.1:80'));
+var_export(Factory::parseAddressString('[::]:80'));
+
+// This will print 127.0.0.1
+echo (string) Factory::parseAddressString('127.0.0.1:80', ParseStringFlag::MAY_INCLUDE_PORT);
+// This will print ::
+echo (string) Factory::parseAddressString('[::]:80', ParseStringFlag::MAY_INCLUDE_PORT);
+```
+
+### Accepting IPv6 zone IDs
+
+If you want to accept IPv6 addresses that may include a zone ID, you can specify the `IPLib\ParseStringFlag::MAY_INCLUDE_ZONEID` flag:
+
+```php
+use IPLib\Factory;
+use IPLib\ParseStringFlag;
+
+// This will print NULL
+var_export(Factory::parseAddressString('::%11'));
+
+// This will print ::
+echo (string) Factory::parseAddressString('::%11', ParseStringFlag::MAY_INCLUDE_ZONEID);
+```
+
+### Accepting non-decimal IPv4 addresses
 
 IPv4 addresses are usually expressed in decimal notation, for example as `192.168.0.1`.
 
-By the way, for historical reasons, widely used libraries (and browsers) accept IPv4 addresses with numbers in octal and/or hexadecimal format.
+By the way, the GNU (used in many Linux distros), BSD (used in Mac) and Windows implementations of `inet_aton` and `inet_addr` accept IPv4 addresses with numbers in octal and/or hexadecimal format.
+Please remark that this does not apply to the `inet_pton` and `ip2long` functions, as well as to the Musl implementation (used in Alpine Linux) of `inet_aton` and `inet_addr`.
+
 So, for example, these addresses are all equivalent to `192.168.0.1`:
 
 - `0xC0.0xA8.0x0.0x01` (only hexadecimal)
@@ -498,26 +537,97 @@ So, for example, these addresses are all equivalent to `192.168.0.1`:
 
 (try it: if you browse to [`http://0177.0.0.0x1`](http://0177.0.0.0x1), your browser will try to browse `http://127.0.0.1`).
 
-This library optionally accepts those alternative syntaxes:
+If you want to accept this non-decimal syntax, you may use the `IPLib\ParseStringFlag::IPV4_MAYBE_NON_DECIMAL` flag:
 
 ```php
-// This will print NULL since by default the library doesn't accept non-decimal addresses
-var_export(\IPLib\Factory::addressFromString('0177.0.0.0x1'));
+use IPLib\Factory;
+use IPLib\ParseStringFlag;
 
-// This will print NULL since the fourth argument is false
-var_export(\IPLib\Factory::addressFromString('0177.0.0.0x1', true, true, false));
+// This will print NULL
+var_export(Factory::parseAddressString('0177.0.0.0x1'));
 
-// This will print '127.0.0.1' since the fourth argument is true
-var_export((string) \IPLib\Factory::addressFromString('0177.0.0.0x1', true, true, true));
+// This will print 127.0.0.1
+var_export((string) Factory::parseAddressString('0177.0.0.0x1', ParseStringFlag::IPV4_MAYBE_NON_DECIMAL));
 
-// This will print NULL since by default the library doesn't accept non-decimal addresses
-var_export(\IPLib\Factory::rangeFromString('0177.0.0.0x1/32'));
+// This will print NULL
+var_export(Factory::parseRangeString('0177.0.0.0x1/32'));
 
-// This will print NULL since the second argument is false
-var_export(\IPLib\Factory::rangeFromString('0177.0.0.0x1/32', false));
+// This will print 127.0.0.1/32
+var_export((string) Factory::parseRangeString('0177.0.0.0x1/32', ParseStringFlag::IPV4_MAYBE_NON_DECIMAL));
+```
 
-// This will print '127.0.0.1/32' since the second argument is true
-var_export((string) \IPLib\Factory::rangeFromString('0177.0.0.0x1/32', true));
+Please be aware that the `IPV4_MAYBE_NON_DECIMAL` flag may also affect parsing decimal numbers:
+
+```php
+use IPLib\Factory;
+use IPLib\ParseStringFlag;
+
+// This will print 127.0.0.10 since the last digit is assumed to be decimal
+var_export((string) Factory::parseAddressString('127.0.0.010'));
+
+// This will print 127.0.0.8 since the last digit is assumed to be octal
+var_export((string) Factory::parseAddressString('127.0.0.010', ParseStringFlag::IPV4_MAYBE_NON_DECIMAL));
+```
+
+### Accepting IPv4 addresses in nod-quad-dotted notation
+
+IPv4 addresses are usually expressed with 4 numbers, for example as `192.168.0.1`.
+
+By the way, the GNU (used in many Linux distros), BSD (used in Mac) and Windows implementations of `inet_aton` and `inet_addr` [accept IPv4 addresses with 1 to 4 numbers](https://man7.org/linux/man-pages/man3/inet_addr.3.html#DESCRIPTION).
+
+Please remark that this does not apply to the `inet_pton` and `ip2long` functions, as well as to the Musl implementation (used in Alpine Linux) of `inet_aton` and `inet_addr`.
+
+If you want to accept this non-decimal syntax, you may use the `IPLib\ParseStringFlag::IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED` flag:
+
+```php
+use IPLib\Factory;
+use IPLib\ParseStringFlag;
+
+// This will print NULL
+var_export(Factory::parseAddressString('1.2.500'));
+
+// This will print 0.0.0.0
+var_export((string) Factory::parseAddressString('0', ParseStringFlag::IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED));
+
+// This will print 0.0.0.1
+var_export((string) Factory::parseAddressString('1', ParseStringFlag::IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED));
+
+// This will print 0.0.1.244
+var_export((string) Factory::parseAddressString('0.0.500', ParseStringFlag::IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED));
+
+// This will print 255.255.255.255
+var_export((string) Factory::parseAddressString('4294967295', ParseStringFlag::IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED));
+```
+
+### Accepting compact IPv4 subnet notation
+
+Even if there isn't an RFC that describe it, IPv4 subnet notation may also be written in a compact form, omitting extra digits (for example, `127.0.0.0/24` may be written as `127/24`).
+If you want to accept such format, you can specify the `IPLib\ParseStringFlag::IPV4SUBNET_MAYBE_COMPACT` flag:
+
+```php
+use IPLib\Factory;
+use IPLib\ParseStringFlag;
+
+// This will print NULL
+var_export(Factory::parseRangeString('127/24'));
+
+// This will print 127.0.0.0/24
+echo (string) Factory::parseRangeString('127/24', ParseStringFlag::IPV4SUBNET_MAYBE_COMPACT);
+```
+
+### Combining multiple flags
+
+Of course, you may use more than one `IPLib\ParseStringFlag` flag at once:
+
+```php
+use IPLib\Factory;
+use IPLib\ParseStringFlag;
+
+// This will print 127.0.0.255
+var_export((string) Factory::parseAddressString('127.0.0.0xff:80', ParseStringFlag::MAY_INCLUDE_PORT | ParseStringFlag::IPV4_MAYBE_NON_DECIMAL));
+
+// This will print ::
+var_export((string) Factory::parseAddressString('[::%11]:80', ParseStringFlag::MAY_INCLUDE_PORT | ParseStringFlag::MAY_INCLUDE_ZONEID));
 ```
 
 ## Do you really want to say thank you?

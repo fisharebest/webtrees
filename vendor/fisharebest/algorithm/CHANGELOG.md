@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+## 1.6.0 (2021-09-03)
+ - Allow a user-defined comparison function for Myers-Diff.
+ - Add PHP 7.4 and 8.0 to the test matrix.
+
 ## 1.5.1 (2018-12-24)
  - Workaround for each() sometimes fails on PHP7.3
 

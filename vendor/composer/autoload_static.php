@@ -12,6 +12,7 @@ class ComposerStaticInit919f273f6cb9099e3b8d4da41df99126
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
@@ -30,6 +31,7 @@ class ComposerStaticInit919f273f6cb9099e3b8d4da41df99126
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
+            'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
@@ -97,6 +99,7 @@ class ComposerStaticInit919f273f6cb9099e3b8d4da41df99126
         'F' => 
         array (
             'Fisharebest\\Webtrees\\' => 21,
+            'Fisharebest\\Tests\\Algorithm\\' => 28,
             'Fisharebest\\Localization\\' => 25,
             'Fisharebest\\Flysystem\\Adapter\\' => 30,
             'Fisharebest\\ExtCalendar\\' => 24,
@@ -131,6 +134,10 @@ class ComposerStaticInit919f273f6cb9099e3b8d4da41df99126
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
+        'Symfony\\Polyfill\\Php73\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
         ),
         'Symfony\\Polyfill\\Php72\\' => 
         array (
@@ -294,6 +301,10 @@ class ComposerStaticInit919f273f6cb9099e3b8d4da41df99126
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Fisharebest\\Tests\\Algorithm\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fisharebest/algorithm/tests',
+        ),
         'Fisharebest\\Localization\\' => 
         array (
             0 => __DIR__ . '/..' . '/fisharebest/localization/src',
@@ -370,6 +381,7 @@ class ComposerStaticInit919f273f6cb9099e3b8d4da41df99126
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
+        'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'QRcode' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/qrcode.php',

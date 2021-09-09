@@ -36,7 +36,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "IPLib\\Test\\": "test/tests/"
+            "IPLib\\Test\\": "test/tests/",
+			"IPLib\\Test\\Helpers\\": "test/helpers/"
         }
     },
     "require-dev": {
