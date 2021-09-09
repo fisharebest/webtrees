@@ -33,10 +33,13 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
+use function array_filter;
 use function array_map;
 use function assert;
 use function gethostbyaddr;
 use function gethostbyname;
+use function preg_match_all;
+use function random_int;
 use function response;
 use function str_contains;
 use function str_ends_with;
