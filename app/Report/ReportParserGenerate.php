@@ -462,85 +462,52 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <cell>
      *
-     * @param string[] $attrs
+     * @param array<string,string> $attrs
      *
      * @return void
      */
     protected function cellStartHandler(array $attrs): void
     {
         // string The text alignment of the text in this box.
-        $align = '';
-        if (!empty($attrs['align'])) {
-            $align = $attrs['align'];
-            // RTL supported left/right alignment
-            if ($align === 'rightrtl') {
-                if ($this->wt_report->rtl) {
-                    $align = 'left';
-                } else {
-                    $align = 'right';
-                }
-            } elseif ($align === 'leftrtl') {
-                if ($this->wt_report->rtl) {
-                    $align = 'right';
-                } else {
-                    $align = 'left';
-                }
+        $align = $attrs['align'] ?? '';
+        // RTL supported left/right alignment
+        if ($align === 'rightrtl') {
+            if ($this->wt_report->rtl) {
+                $align = 'left';
+            } else {
+                $align = 'right';
+            }
+        } elseif ($align === 'leftrtl') {
+            if ($this->wt_report->rtl) {
+                $align = 'right';
+            } else {
+                $align = 'left';
             }
         }
 
-        // string The color to fill the background of this cell
-        $bgcolor = '';
-        if (!empty($attrs['bgcolor'])) {
-            $bgcolor = $attrs['bgcolor'];
-        }
+        // The color to fill the background of this cell
+        $bgcolor = $attrs['bgcolor'] ?? '';
 
-        // int Whether or not the background should be painted
-        $fill = 1;
-        if (isset($attrs['fill'])) {
-            if ($attrs['fill'] === '0') {
-                $fill = 0;
-            } elseif ($attrs['fill'] === '1') {
-                $fill = 1;
-            }
-        }
+        // Whether the background should be painted
+        $fill = (int) ($attrs['fill'] ?? '0');
 
-        $reseth = true;
-        // boolean   if true reset the last cell height (default true)
-        if (isset($attrs['reseth'])) {
-            if ($attrs['reseth'] === '0') {
-                $reseth = false;
-            } elseif ($attrs['reseth'] === '1') {
-                $reseth = true;
-            }
-        }
+        // If true reset the last cell height
+        $reseth = (bool) ($attrs['reseth'] ?? '1');
 
-        // mixed Whether or not a border should be printed around this box
-        $border = 0;
-        if (!empty($attrs['border'])) {
-            $border = $attrs['border'];
-        }
+        // Whether a border should be printed around this box
+        $border = $attrs['border'] ?? '';
+
         // string Border color in HTML code
-        $bocolor = '';
-        if (!empty($attrs['bocolor'])) {
-            $bocolor = $attrs['bocolor'];
-        }
+        $bocolor = $attrs['bocolor'] ?? '';
 
-        // int Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
-        $height = 0;
-        if (!empty($attrs['height'])) {
-            $height = $attrs['height'];
-        }
+        // Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
+        $height = (int) ($attrs['height'] ?? '0');
+
         // int Cell width (expressed in points) Setting the width to 0 will make it the width from the current location to the right margin.
-        $width = 0;
-        if (!empty($attrs['width'])) {
-            $width = $attrs['width'];
-        }
+        $width = (int) ($attrs['width'] ?? '0');
 
-        // int Stretch carachter mode
-        $stretch = 0;
-        if (!empty($attrs['stretch'])) {
-            $stretch = (int) $attrs['stretch'];
-        }
+        // Stretch character mode
+        $stretch = (int) ($attrs['stretch'] ?? '0');
 
         // mixed Position the left corner of this box on the page. The default is the current position.
         $left = ReportBaseElement::CURRENT_POSITION;
@@ -565,17 +532,11 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-        // string The name of the Style that should be used to render the text.
-        $style = '';
-        if (!empty($attrs['style'])) {
-            $style = $attrs['style'];
-        }
+        // The name of the Style that should be used to render the text.
+        $style = $attrs['style'] ?? '';
 
         // string Text color in html code
-        $tcolor = '';
-        if (!empty($attrs['tcolor'])) {
-            $tcolor = $attrs['tcolor'];
-        }
+        $tcolor = $attrs['tcolor'] ?? '';
 
         // int Indicates where the current position should go after the call.
         $ln = 0;

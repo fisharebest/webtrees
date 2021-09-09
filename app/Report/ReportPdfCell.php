@@ -38,7 +38,7 @@ class ReportPdfCell extends ReportBaseCell
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // underline «title» part of Source item
@@ -101,7 +101,7 @@ class ReportPdfCell extends ReportBaseCell
         }
 
         // Check the width if set to page wide OR set by xml to larger then page wide
-        if ($this->width == 0 || $this->width > $renderer->getRemainingWidthPDF()) {
+        if ($this->width === 0.0 || $this->width > $renderer->getRemainingWidthPDF()) {
             $this->width = $renderer->getRemainingWidthPDF();
         }
         // For current position

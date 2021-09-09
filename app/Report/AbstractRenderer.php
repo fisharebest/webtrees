@@ -112,7 +112,7 @@ abstract class AbstractRenderer
     public array $headerElements = [];
 
     /** @var array<ReportBaseElement|string> */
-    public $footerElements = [];
+    public array $footerElements = [];
 
     /** @var array<ReportBaseElement|string> */
     public array $bodyElements = [];
@@ -183,9 +183,9 @@ abstract class AbstractRenderer
     /**
      * Create a new Cell object.
      *
-     * @param int    $width   cell width (expressed in points)
-     * @param int    $height  cell height (expressed in points)
-     * @param mixed  $border  Border style
+     * @param float  $width   cell width (expressed in points)
+     * @param float  $height  cell height (expressed in points)
+     * @param string $border  Border style
      * @param string $align   Text alignement
      * @param string $bgcolor Background color code
      * @param string $style   The name of the text style
@@ -201,9 +201,9 @@ abstract class AbstractRenderer
      * @return ReportBaseCell
      */
     abstract public function createCell(
-        int $width,
-        int $height,
-        $border,
+        float $width,
+        float $height,
+        string $border,
         string $align,
         string $bgcolor,
         string $style,

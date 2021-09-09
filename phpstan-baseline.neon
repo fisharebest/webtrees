@@ -1195,11 +1195,6 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
-			message: "#^Parameter \\#1 \\$haystack of function stripos expects string, int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
-			count: 4
-			path: app/Report/ReportHtmlCell.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), non\\-empty\\-string\\) given\\.$#"
 			count: 2
 			path: app/Report/ReportParserBase.php
@@ -1375,7 +1370,7 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\)\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfFootnote\\:\\:getWidth\\(\\) should return array\\(float, int, float\\) but returns array\\(0\\|array\\<float\\>\\|float, 1, int\\<0, max\\>\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
 
@@ -1390,7 +1385,7 @@ parameters:
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\(float, int, float\\|int\\) but returns array\\(array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\)\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\(float, int, float\\) but returns array\\(array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\)\\.$#"
 			count: 1
 			path: app/Report/ReportPdfText.php
 

@@ -26,53 +26,33 @@ use function str_contains;
  */
 class ReportBaseFootnote extends ReportBaseElement
 {
-    /**
-     * The name of the style for this element
-     *
-     * @var string
-     */
-    public $styleName = '';
+    // The name of the style for this element
+    public string $styleName = '';
+
+    // Numbers for the links
+    public int $num;
+
+    // The text that will be printed with the number
+    public string $numText = '';
+
+    // Remaining width of a cell
+    public float $wrapWidthRemaining;
+
+    // Original width of a cell (points)
+    public float $wrapWidthCell;
+
+    // A link
+    public string $addlink;
 
     /**
-     * Numbers for the links
-     *
-     * @var int
-     */
-    public $num;
-
-    /**
-     * The text that will be printed with the number
-     *
-     * @var string
-     */
-    public $numText = '';
-
-    /**
-     * Remaining width of a cell
-     *
-     * @var float User unit (points)
-     */
-    public $wrapWidthRemaining;
-
-    /**
-     * Original width of a cell
-     *
-     * @var float User unit (points)
-     */
-    public $wrapWidthCell;
-
-    /** @var string A link */
-    public $addlink;
-
-    /**
-     * Createa an element.
+     * Create an element.
      *
      * @param string $style
      */
-    public function __construct($style = '')
+    public function __construct(string $style = '')
     {
         $this->text = '';
-        if (!empty($style)) {
+        if ($style !== '') {
             $this->styleName = $style;
         } else {
             $this->styleName = 'footnote';
@@ -119,7 +99,7 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @return void
      */
-    public function setAddlink(string $a)
+    public function setAddlink(string $a): void
     {
         $this->addlink = $a;
     }

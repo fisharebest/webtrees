@@ -51,7 +51,7 @@ class ReportParserBase
     protected $xml_parser;
 
     /** @var string Text contents of tags */
-    protected $text = '';
+    protected string $text = '';
 
     /**
      * Create a parser for a report

@@ -27,87 +27,49 @@ class ReportBaseTextbox extends ReportBaseElement
     /**
      * Array of elements in the TextBox
      *
-     * @var ReportBaseElement[]|string[]
+     * @var array<ReportBaseElement|string>
      */
-    public $elements = [];
+    public array $elements = [];
 
-    /**
-     *  Background color in HTML code
-     *
-     * @var string
-     */
-    public $bgcolor;
-    /**
-     * Whether or not paint the background
-     *
-     * @var bool
-     */
-    public $fill;
+    //  Background color in HTML code
+    public string $bgcolor;
 
-    /**
-     * Position the left corner of this box on the page(expressed in points). The default is the current position.
-     *
-     * @var float
-     */
-    public $left;
-    /**
-     * Position the top corner of this box on the page(expressed in points). the default is the current position
-     *
-     * @var float
-     */
-    public $top;
-    /**
-     * After this box is finished rendering, should the next section of text start immediately after the this box or should it start on a new line under this box. 0 = no new line, 1 = force new line. Default is 0
-     *
-     * @var bool
-     */
-    public $newline;
+    // Whether to paint the background
+    public bool $fill;
 
-    /** @var bool Unused? */
-    public $pagecheck;
+    // Position the left corner of this box on the page(expressed in points). The default is the current position.
+    public float $left;
 
-    /** @var bool Whether to print a border */
-    public $border;
+    // Position the top corner of this box on the page(expressed in points). the default is the current position
+    public float $top;
 
-    /**
-     * Style of rendering
-     *
-     * <ul>
-     * <li>D or empty string: Draw (default).</li>
-     * <li>F: Fill.</li>
-     * <li>DF or FD: Draw and fill.</li>
-     * <li>CNZ: Clipping mode (using the even-odd rule to determine which regions lie inside the clipping path).</li>
-     *<li>CEO: Clipping mode (using the nonzero winding number rule to determine which regions lie inside the clipping path).</li>
-     * </ul>
-     *
-     * @var string
-     */
-    public $style;
+    // After this box is finished rendering, should the next section of text start immediately after
+    // this box or should it start on a new line under this box. 0 = no new line, 1 = force new line.
+    public bool $newline;
 
-    /**
-     * The starting height of this cell. If the text wraps the height will automatically be adjusted
-     *
-     * @var float
-     */
-    public $height;
-    /**
-     * Setting the width to 0 will make it the width from the current location to the right margin
-     *
-     * @var float
-     */
-    public $width;
-    /**
-     * Use cell padding or not
-     *
-     * @var bool
-     */
-    public $padding;
-    /**
-     * Resets this box last height after it’s done
-     *
-     * @var bool
-     */
-    public $reseth;
+    public bool $pagecheck;
+
+    public bool $border;
+
+    // Style of rendering
+    // D or empty string: Draw (default).
+    // F: Fill.
+    // DF or FD: Draw and fill.
+    // CEO: Clipping mode (using the even-odd rule to determine which regions lie inside the clipping path).
+    // CNZ: Clipping mode (using the nonzero winding number rule to determine which regions lie inside the clipping path).
+    public string $style;
+
+    // The starting height of this cell. If the text wraps the height will automatically be adjusted
+    public float $height;
+
+    // Setting the width to 0 will make it the width from the current location to the right margin
+    public float $width;
+
+    // Use cell padding or not
+    public bool $padding;
+
+    // Resets this box last height after it’s done
+    public bool $reseth;
 
     /**
      * TextBox - Element - Base

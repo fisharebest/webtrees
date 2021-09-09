@@ -24,26 +24,26 @@ namespace Fisharebest\Webtrees\Report;
  */
 class ReportBaseImage extends ReportBaseElement
 {
-    /** @var string Filename of the image */
-    public $file;
+    // Filename of the image
+    public string $file;
 
-    /** @var float Height of the image */
-    public $height;
+    // Height of the image
+    public float $height;
 
-    /** @var float Width of the image */
-    public $width;
+    // Width of the image
+    public float $width;
 
-    /** @var float X-position (left) of the image */
-    public $x;
+    // X-position (left) of the image
+    public float $x;
 
-    /** @var float Y-position (top) of the image */
-    public $y;
+    // Y-position (top) of the image
+    public float $y;
 
-    /** @var string Placement fo the image. L: left, C:center, R:right (or empty for x/y) */
-    public $align;
+    // Placement of the image. L: left, C:center, R:right (or empty for x/y)
+    public string $align;
 
-    /** @var string T:same line, N:next line */
-    public $line;
+    // T:same line, N:next line
+    public string $line;
 
     /**
      * Image class function - Base
@@ -84,7 +84,7 @@ class ReportBaseImage extends ReportBaseElement
      *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {

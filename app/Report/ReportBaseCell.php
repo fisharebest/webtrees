@@ -32,45 +32,28 @@ class ReportBaseCell extends ReportBaseElement
     public string $align = '';
 
     // Whether a border should be printed around this box.
-    // 0 = no border (default)
-    // 1 = border
+    // ''  = no border (default)
+    // '1' = border
     // a string containing some or all of the following characters (in any order):
     // L: left
     // T: top
     // R: right
     // B: bottom
-    /** @var int|string */
-    public $border;
+    public string $border;
 
-    /**
-     * Border color in HTML code
-     *
-     * @var string
-     */
+    // Border color in HTML code
+    public string $bocolor;
 
-    public $bocolor;
-    /**
-     * The HTML color code to fill the background of this cell.
-     *
-     * @var string
-     */
+    // The HTML color code to fill the background of this cell.
+    public string $bgcolor;
 
-    public $bgcolor;
-    /**
-     * Indicates if the cell background must be painted (1) or transparent (0). Default value: 1.
-     * If no background color is set then it will not be painted
-     *
-     * @var int
-     */
+    // Indicates if the cell background must be painted (1) or transparent (0). Default value: 1.
+    // If no background color is set then it will not be painted
+    public int $fill;
 
-    public $fill;
-    /**
-     * Cell height DEFAULT 0 (expressed in points)
-     * The starting height of this cell. If the text wraps the height will automatically be adjusted.
-     *
-     * @var float
-     */
-    public $height;
+    // Cell height DEFAULT 0 (expressed in points)
+    // The starting height of this cell. If the text wraps the height will automatically be adjusted.
+    public float $height;
 
     /**
      * Left position in user units (X-position). Default is the current position
@@ -79,34 +62,27 @@ class ReportBaseCell extends ReportBaseElement
      */
 
     public $left;
-    /**
-     * Indicates where the current position should go after the call. Possible values are:<ul><li>0: to the right [DEFAULT]</li><li>1: to the beginning of the next line</li><li>2: below</li></ul>
-     *
-     * @var int
-     */
 
-    public $newline;
-    /**
-     * The name of the Style that should be used to render the text.
-     *
-     * @var string
-     */
+    // Indicates where the current position should go after the call. Possible values are:
+    // 0: to the right [DEFAULT]
+    // 1: to the beginning of the next line
+    // 2: below
+    public int $newline;
 
-    public $styleName;
-    /**
-     * Stretch carachter mode: <ul><li>0 = disabled (default)</li><li>1 = horizontal scaling only if necessary</li><li>2 = forced horizontal scaling</li><li>3 = character spacing only if necessary</li><li>4 = forced character spacing</li></ul>
-     *
-     * @var int
-     */
+    // The name of the Style that should be used to render the text.
+    public string $styleName;
 
-    public $stretch;
-    /**
-     * Text color in HTML code
-     *
-     * @var string
-     */
+    // Stretch character mode:
+    // 0 = disabled (default)
+    // 1 = horizontal scaling only if necessary
+    // 2 = forced horizontal scaling
+    // 3 = character spacing only if necessary
+    // 4 = forced character spacing
+    public int $stretch;
 
-    public $tcolor;
+    // Text color in HTML code
+    public string $tcolor;
+
     /**
      * Top position in user units (Y-position). Default is the current position
      *
@@ -114,47 +90,38 @@ class ReportBaseCell extends ReportBaseElement
      */
 
     public $top;
-    /**
-     * URL address
-     *
-     * @var string
-     */
 
-    public $url;
-    /**
-     * Cell width DEFAULT 0 (expressed in points)
-     * Setting the width to 0 will make it the width from the current location to the right margin.
-     *
-     * @var float
-     */
+    // URL address
+    public string $url = '';
 
-    public $width;
+    // Cell width DEFAULT 0 (expressed in points)
+    // Setting the width to 0 will make it the width from the current location to the right margin.
+    public float $width;
 
-    /** @var bool */
-    public $reseth;
+    public bool $reseth;
 
     /**
      * CELL - Element
      *
-     * @param int    $width   cell width (expressed in points)
-     * @param int    $height  cell height (expressed in points)
-     * @param mixed  $border  Border style
-     * @param string $align   Text alignement
+     * @param float  $width   cell width (expressed in points)
+     * @param float  $height  cell height (expressed in points)
+     * @param string $border  Border style
+     * @param string $align   Text alignment
      * @param string $bgcolor Background color code
      * @param string $style   The name of the text style
      * @param int    $ln      Indicates where the current position should go after the call
      * @param mixed  $top     Y-position
      * @param mixed  $left    X-position
-     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
+     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0).
      * @param int    $stretch Stretch carachter mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
      * @param bool   $reseth
      */
     public function __construct(
-        int $width,
-        int $height,
-        $border,
+        float $width,
+        float $height,
+        string $border,
         string $align,
         string $bgcolor,
         string $style,
@@ -176,10 +143,8 @@ class ReportBaseCell extends ReportBaseElement
         $this->left      = $left;
         $this->newline   = $ln;
         $this->styleName = $style;
-        $this->text      = '';
         $this->tcolor    = $tcolor;
         $this->top       = $top;
-        $this->url       = '';
         $this->stretch   = $stretch;
         $this->width     = $width;
         $this->reseth    = $reseth;
@@ -204,7 +169,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @return void
      */
-    public function setUrl($url): void
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
@@ -214,7 +179,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {

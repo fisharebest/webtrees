@@ -37,7 +37,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         $renderer->setCurrentStyle('footnotenum');
         $renderer->tcpdf->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
@@ -84,7 +84,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
      *
      * @return float $h
      */
-    public function getFootnoteHeight($renderer): float
+    public function getFootnoteHeight(PdfRenderer $renderer): float
     {
         return 0;
     }
@@ -95,7 +95,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
      *
      * @param PdfRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {

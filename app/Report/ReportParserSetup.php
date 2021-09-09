@@ -31,10 +31,10 @@ use function strtoupper;
 class ReportParserSetup extends ReportParserBase
 {
     /** @var array An array of report options/parameters */
-    private $data = [];
+    private array $data = [];
 
-    /** @var string[] An array of input attributes */
-    private $input;
+    /** @var array<string> An array of input attributes */
+    private array $input;
 
     /**
      * Return the parsed data.

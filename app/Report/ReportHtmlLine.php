@@ -31,7 +31,7 @@ class ReportHtmlLine extends ReportBaseLine
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         if ($this->x1 === ReportBaseElement::CURRENT_POSITION) {
             $this->x1 = $renderer->getX();
@@ -46,11 +46,11 @@ class ReportHtmlLine extends ReportBaseLine
             $this->y2 = $renderer->getY();
         }
         // Vertical line
-        if ($this->x1 == $this->x2) {
+        if ($this->x1 === $this->x2) {
             echo '<div style="position:absolute;overflow:hidden;border-', $renderer->alignRTL, ':solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:1pt;height:', $this->y2 - $this->y1, "pt;\"> </div>\n";
         }
         // Horizontal line
-        if ($this->y1 == $this->y2) {
+        if ($this->y1 === $this->y2) {
             echo '<div style="position:absolute;overflow:hidden;border-top:solid black 1pt;', $renderer->alignRTL, ':', $this->x1, 'pt;top:', $this->y1 + 1, 'pt;width:', $this->x2 - $this->x1, "pt;height:1pt;\"> </div>\n";
         }
         // Keep max Y updated

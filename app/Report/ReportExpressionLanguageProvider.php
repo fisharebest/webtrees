@@ -28,7 +28,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 class ReportExpressionLanguageProvider implements ExpressionFunctionProviderInterface
 {
     /**
-     * @return ExpressionFunction[]
+     * @return array<ExpressionFunction>
      */
     public function getFunctions(): array
     {

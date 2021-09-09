@@ -26,30 +26,17 @@ use function str_contains;
  */
 class ReportBaseText extends ReportBaseElement
 {
-    /**
-     * Text color in HTML code
-     *
-     * @var string
-     */
-    public $color;
-    /**
-     * Style name
-     *
-     * @var string
-     */
-    public $styleName;
-    /**
-     * Remaining width of a cel
-     *
-     * @var float User unit (points)
-     */
-    public $wrapWidthRemaining;
-    /**
-     * Original width of a cell
-     *
-     * @var float User unit (points)
-     */
-    public $wrapWidthCell;
+    // Text color in HTML code
+    public string $color;
+
+    // Style name
+    public string $styleName;
+
+    // Remaining width of a cell (points)
+    public float $wrapWidthRemaining;
+
+    // Original width of a cell  (points)
+    public float $wrapWidthCell;
 
     /**
      * Create a Text class - Base
@@ -61,7 +48,7 @@ class ReportBaseText extends ReportBaseElement
     {
         $this->text               = '';
         $this->color              = $color;
-        $this->wrapWidthRemaining = 0;
+        $this->wrapWidthRemaining = 0.0;
         $this->styleName          = $style;
     }
 

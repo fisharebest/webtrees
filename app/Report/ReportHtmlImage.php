@@ -31,7 +31,7 @@ class ReportHtmlImage extends ReportBaseImage
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
