@@ -44,13 +44,6 @@ use const JSON_THROW_ON_ERROR;
  */
 class AutoCompletePlace extends AbstractAutocompleteHandler
 {
-    // Options for fetching files using GuzzleHTTP
-    private const GUZZLE_OPTIONS = [
-        'connect_timeout' => 3,
-        'read_timeout'    => 3,
-        'timeout'         => 3,
-    ];
-
     private ModuleService $module_service;
 
     /**

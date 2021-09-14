@@ -40,19 +40,6 @@ class RepositoryPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    // Show the repository's facts in this order:
-    private const FACT_ORDER = [
-        1 => 'REPO:NAME',
-        'REPO:ADDR',
-        'REPO:NOTE',
-        'REPO:WWW',
-        'REPO:REFN',
-        'REPO:RIN',
-        'REPO:_UID',
-        'REPO:CHAN',
-        'REPO:RESN',
-    ];
-
     private ClipboardService $clipboard_service;
 
     /**

@@ -51,39 +51,6 @@ class TreePreferencesPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private const ALL_FAM_FACTS = [
-        'RESN', 'ANUL', 'CENS', 'DIV', 'DIVF', 'ENGA', 'MARB', 'MARC', 'MARR', 'MARL', 'MARS', 'RESI', 'EVEN',
-        'NCHI', 'SUBM', 'SLGS', 'REFN', 'RIN', 'CHAN', 'NOTE', 'SOUR', 'OBJE',
-        '_NMR', '_COML', '_MBON', '_MARI', '_SEPR', '_TODO',
-    ];
-
-    private const ALL_INDI_FACTS = [
-        'RESN', 'NAME', 'SEX', 'BIRT', 'CHR', 'DEAT', 'BURI', 'CREM', 'ADOP', 'BAPM', 'BARM', 'BASM',
-        'BLES', 'CHRA', 'CONF', 'FCOM', 'ORDN', 'NATU', 'EMIG', 'IMMI', 'CENS', 'PROB', 'WILL',
-        'GRAD', 'RETI', 'EVEN', 'CAST', 'DSCR', 'EDUC', 'IDNO', 'NATI', 'NCHI', 'NMR', 'OCCU', 'PROP',
-        'RELI', 'RESI', 'SSN', 'TITL', 'FACT', 'BAPL', 'CONL', 'ENDL', 'SLGC', 'SUBM', 'ASSO',
-        'ALIA', 'ANCI', 'DESI', 'RFN', 'AFN', 'REFN', 'RIN', 'CHAN', 'NOTE', 'SOUR', 'OBJE',
-        '_BRTM', '_DEG', '_DNA', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL', '_INTE', '_MDCL',
-        '_MEDC', '_MILI', '_MILT', '_NAME', '_NAMS', '_NLIV', '_NMAR', '_PRMN', '_TODO', '_UID', '_WEIG', '_YART',
-    ];
-
-    private const ALL_NAME_FACTS = [
-        'FONE', 'ROMN', '_HEB', '_AKA', '_MARNM',
-    ];
-
-    private const ALL_PLAC_FACTS = [
-        'FONE', 'ROMN', '_GOV', '_HEB',
-    ];
-
-    private const ALL_REPO_FACTS = [
-        'NAME', 'ADDR', 'PHON', 'EMAIL', 'FAX', 'WWW', 'NOTE', 'REFN', 'RIN', 'CHAN', 'RESN',
-    ];
-
-    private const ALL_SOUR_FACTS = [
-        'DATA', 'AUTH', 'TITL', 'ABBR', 'PUBL', 'TEXT', 'REPO', 'REFN', 'RIN',
-        'CHAN', 'NOTE', 'OBJE', 'RESN',
-    ];
-
     private ModuleService $module_service;
 
     private TreeService $tree_service;

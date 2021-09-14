@@ -107,7 +107,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     private const FONT               = Webtrees::ROOT_DIR . 'resources/fonts/DejaVuSans.ttf';
     private const CHART_WIDTH_PIXELS = 800;
     private const TEXT_SIZE_POINTS   = self::CHART_WIDTH_PIXELS / 120.0;
-    private const TEXT_SIZE_PIXELS   = self::TEXT_SIZE_POINTS / 0.75;
     private const GAP_BETWEEN_RINGS  = 2;
 
     private ChartService $chart_service;

@@ -45,21 +45,6 @@ class LocationPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    // Show the repository's facts in this order:
-    private const FACT_ORDER = [
-        1 => '_LOC:NAME',
-        '_LOC:TYPE',
-        '_LOC:_POST',
-        '_LOC:_GOV',
-        '_LOC:MAP',
-        '_LOC:_MAIDENHEAD',
-        '_LOC:RELI',
-        '_LOC:EVEN',
-        '_LOC:_LOC',
-        '_LOC:_DMGD',
-        '_LOC:_AIDN',
-    ];
-
     /**
      * @param ServerRequestInterface $request
      *
