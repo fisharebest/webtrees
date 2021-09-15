@@ -108,7 +108,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
-                'title'      => $title,
+                'title'      => e($title),
                 'content'    => $content,
             ]);
         }
