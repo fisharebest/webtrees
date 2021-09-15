@@ -123,7 +123,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => $individual->tree()->title(),
+                'title'      => e($individual->tree()->title()),
                 'content'    => $content,
             ]);
         }
