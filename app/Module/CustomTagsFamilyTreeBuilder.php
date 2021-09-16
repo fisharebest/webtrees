@@ -55,7 +55,7 @@ class CustomTagsFamilyTreeBuilder extends AbstractModule implements ModuleConfig
             'OBJE:_ALBUM'         => new CustomElement(I18N::translate('Album')), // XREF to an album
             'OBJE:_DATE'          => new DateValue(I18N::translate('Date')),
             'OBJE:_FILESIZE'      => new CustomElement(I18N::translate('File size')),
-            'OBJE:_PHOTO_RIN'     => new CustomElement(I18N::translate('Photo')),
+            'OBJE:_PHOTO_RIN'     => new CustomElement(I18N::translate('Record ID number')),
             'OBJE:_PLACE'         => new PlaceName(I18N::translate('Place')),
             '_ALBUM:_PHOTO'       => new CustomElement(I18N::translate('Photo')),
             '_ALBUM:_PHOTO:_PRIN' => new CustomElement(I18N::translate('Highlighted image')),
