@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
