@@ -22,14 +22,14 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use League\Flysystem\Util;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
-use function assert;
 use function e;
-use function is_string;
+use function in_array;
 use function response;
 
 /**
@@ -37,6 +37,12 @@ use function response;
  */
 class DeletePath implements RequestHandlerInterface
 {
+    private const PROTECTED_PATHS = [
+        'config.ini.php',
+        'index.php',
+        '.htaccess',
+    ];
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -46,16 +52,23 @@ class DeletePath implements RequestHandlerInterface
     {
         $data_filesystem = Registry::filesystem()->data();
 
-        $path = $request->getQueryParams()['path'];
-        assert(is_string($path));
+        $path = $request->getQueryParams()['path'] ?? '';
 
-        if ($data_filesystem->has($path)) {
-            $metadata = $data_filesystem->getMetadata($path);
+        $normalized_path = Util::normalizePath($path);
+
+        if (in_array($normalized_path, self::PROTECTED_PATHS, true)) {
+            FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
+
+            return response();
+        }
+
+        if ($data_filesystem->has($normalized_path)) {
+            $metadata = $data_filesystem->getMetadata($normalized_path);
 
             switch ($metadata['type']) {
                 case 'file':
                     try {
-                        $data_filesystem->delete($path);
+                        $data_filesystem->delete($normalized_path);
                         FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', e($path)), 'success');
                     } catch (Throwable $ex) {
                         FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
@@ -64,7 +77,7 @@ class DeletePath implements RequestHandlerInterface
 
                 case 'dir':
                     try {
-                        $data_filesystem->deleteDir($path);
+                        $data_filesystem->deleteDir($normalized_path);
                         FlashMessages::addMessage(I18N::translate('The folder %s has been deleted.', e($path)), 'success');
                     } catch (Throwable $ex) {
                         FlashMessages::addMessage(I18N::translate('The folder %s could not be deleted.', e($path)), 'danger');
