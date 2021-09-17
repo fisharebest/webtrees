@@ -68,7 +68,7 @@ use Illuminate\Support\Collection;
                                     </option>
                                 <?php endforeach ?>
                                 <?php if ($gedcom_files->isEmpty()) : ?>
-                                    <option disabled selected>
+                                    <option disabled="disabled" selected="selected">
                                         <?= I18N::translate('No GEDCOM files found.') ?>
                                     </option>
                                 <?php endif ?>
