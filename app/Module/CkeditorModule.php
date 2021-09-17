@@ -39,7 +39,7 @@ class CkeditorModule extends AbstractModule implements ModuleExternalUrlInterfac
      */
     public function title(): string
     {
-        /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? http://ckeditor.com */
+        /* I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com */
         return I18N::translate('CKEditor™');
     }
 

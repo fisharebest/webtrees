@@ -131,7 +131,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      *
      * @param Tree $tree
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     public function getFavorites(Tree $tree): array
     {

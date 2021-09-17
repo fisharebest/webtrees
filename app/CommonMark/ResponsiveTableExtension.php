@@ -32,8 +32,6 @@ use League\CommonMark\Extension\Table\TableSectionRenderer;
 
 /**
  * Class ResponsiveTableExtension - wrap markdown tables in a responsive DIV element.
- *
- * @package Fisharebest\Webtrees\CommonMark
  */
 class ResponsiveTableExtension implements ExtensionInterface
 {

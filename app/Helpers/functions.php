@@ -156,8 +156,8 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
 /**
  * Generate a URL for a named route.
  *
- * @param string  $route_name
- * @param mixed[] $parameters
+ * @param string       $route_name
+ * @param array<mixed> $parameters
  *
  * @return string
  */
@@ -191,10 +191,10 @@ function route(string $route_name, array $parameters = []): string
 }
 
 /**
- * Cerate and render a view in a single operation.
+ * Create and render a view in a single operation.
  *
- * @param string  $name
- * @param mixed[] $data
+ * @param string       $name
+ * @param array<mixed> $data
  *
  * @return string
  */

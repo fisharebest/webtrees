@@ -173,9 +173,9 @@ class TreeView
     /**
      * Draw the children for some families
      *
-     * @param Collection $familyList array of families to draw the children for
-     * @param int        $gen        number of generations to draw
-     * @param bool       $ajax       true for an ajax call
+     * @param Collection<Family> $familyList array of families to draw the children for
+     * @param int                $gen        number of generations to draw
+     * @param bool               $ajax       true for an ajax call
      *
      * @return string
      */

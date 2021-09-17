@@ -30,6 +30,11 @@ class XrefNode extends AbstractStringContainer
     /** @var GedcomRecord */
     private $record;
 
+    /**
+     * XrefNode constructor.
+     *
+     * @param GedcomRecord $record
+     */
     public function __construct(GedcomRecord $record)
     {
         parent::__construct();

@@ -56,8 +56,7 @@ class CzechMonarchsAndPresidents extends AbstractModule implements ModuleHistori
     public function historicEventsAll(): Collection
     {
         return new Collection([
-            // Source: https://cs.wikipedia.org/wiki/Seznam_představitelů_českého_státu
-            // Panovníci:
+            /** @link https://cs.wikipedia.org/wiki/Seznam_představitelů_českého_státu */
             "1 EVEN Mojmír I.\n2 TYPE Kníže velkomoravský\n2 DATE FROM 830 TO 846\n2 NOTE První historicky známý moravský vládce, zakladatel dynastie Mojmírovců.",
             "1 EVEN Rostislav\n2 TYPE Kníže velkomoravský\n2 DATE FROM 846 TO 870\n2 NOTE Synovec Mojmíra I. V roce 846, pravděpodobně po Mojmírově smrti, byl na velkomoravský stolec dosazen Ludvíkem Němcem, panovníkem východofranské říše.",
             "1 EVEN Svatopluk I.\n2 TYPE Kníže velkomoravský\n2 DATE FROM 870 TO 871\n2 NOTE Synovec Rostislava. Třetí a nejvýznamnější panovník Velkomoravské říše (ve středověku označován za krále).",

@@ -168,8 +168,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * A form to request the chart parameters.
      *
-     * @param Individual $individual
-     * @param mixed[]    $parameters
+     * @param Individual               $individual
+     * @param array<string,int|string> $parameters
      *
      * @return string
      */
@@ -401,7 +401,6 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $text = mb_convert_encoding($text, 'EUC-JP', 'UTF-8');
                     }
 
-                    // print text
                     imagettftext(
                         $image,
                         7,
