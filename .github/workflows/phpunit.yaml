@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest]
+        operating-system: [ubuntu-20.04]
         php-version: ['7.1', '7.2', '7.3', '7.4']
 
     name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
