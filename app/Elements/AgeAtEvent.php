@@ -75,13 +75,27 @@ class AgeAtEvent extends AbstractElement
         $canonical = $this->canonical($value);
 
         return preg_replace_callback_array([
-            '/CHILD/'     => fn () => I18N::translate('Child'),
-            '/INFANT/'    => fn () => I18N::translate('Infant'),
-            '/STILLBORN/' => fn () => I18N::translate('Stillborn'),
-            '/\b(\d+)y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) ($match[1]), I18N::number((float) $match[1])),
-            '/\b(\d+)m\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) ($match[1]), I18N::number((float) $match[1])),
-            '/\b(\d+)w\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) ($match[1]), I18N::number((float) $match[1])),
-            '/\b(\d+)d\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) ($match[1]), I18N::number((float) $match[1])),
+            '/CHILD/'      => function () {
+                return I18N::translate('Child');
+            },
+            '/INFANT/'     => function () {
+                return I18N::translate('Infant');
+            },
+            '/STILLBORN/'  => function () {
+                return I18N::translate('Stillborn');
+            },
+            '/\b(\d+)y\b/' => function (array $match) {
+                return I18N::plural('%s year', '%s years', (int) ($match[1]), I18N::number((float) $match[1]));
+            },
+            '/\b(\d+)m\b/' => function (array $match) {
+                I18N::plural('%s month', '%s months', (int) $match[1], I18N::number((float) $match[1]));
+            },
+            '/\b(\d+)w\b/' => function (array $match) {
+                I18N::plural('%s week', '%s weeks', (int) $match[1], I18N::number((float) $match[1]));
+            },
+            '/\b(\d+)d\b/' => function (array $match) {
+                I18N::plural('%s day', '%s days', (int) $match[1], I18N::number((float) $match[1]));
+            },
         ], e($canonical));
     }
 }
