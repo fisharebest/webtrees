@@ -40,7 +40,7 @@ class CensusColumnNationalityTest extends TestCase
      */
     private function getPlaceMock(string $place): Place
     {
-        $placeMock = self::createMock(Place::class);
+        $placeMock = $this->createMock(Place::class);
         $placeMock->method('gedcomName')->willReturn($place);
 
         return $placeMock;
@@ -54,11 +54,11 @@ class CensusColumnNationalityTest extends TestCase
      */
     public function testNoBirthPlace(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock(''));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection());
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('Deutschland');
 
         $column = new CensusColumnNationality($census, '', '');
@@ -74,11 +74,11 @@ class CensusColumnNationalityTest extends TestCase
      */
     public function testPlaceCountry(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('Australia'));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection());
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnNationality($census, '', '');
@@ -94,11 +94,11 @@ class CensusColumnNationalityTest extends TestCase
      */
     public function testBritish(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('London, England'));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection());
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
 
         $column = new CensusColumnNationality($census, '', '');
@@ -114,28 +114,28 @@ class CensusColumnNationalityTest extends TestCase
      */
     public function testEmigrated(): void
     {
-        $place1 = self::createMock(Place::class);
+        $place1 = $this->createMock(Place::class);
         $place1->method('gedcomName')->willReturn('United States');
 
-        $fact1 = self::createMock(Fact::class);
+        $fact1 = $this->createMock(Fact::class);
         $fact1->method('place')->willReturn($place1);
         $fact1->method('date')->willReturn(new Date('1855'));
 
-        $place2 = self::createMock(Place::class);
+        $place2 = $this->createMock(Place::class);
         $place2->method('gedcomName')->willReturn('Australia');
 
-        $fact2 = self::createMock(Fact::class);
+        $fact2 = $this->createMock(Fact::class);
         $fact2->method('place')->willReturn($place2);
         $fact2->method('date')->willReturn(new Date('1865'));
 
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('getBirthPlace')->willReturn($this->getPlaceMock('London, England'));
         $individual->method('facts')->with(['IMMI', 'EMIG', 'NATU'], true)->willReturn(new Collection([
             $fact1,
             $fact2,
         ]));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusPlace')->willReturn('England');
         $census->method('censusDate')->willReturn('01 JUN 1860');
 

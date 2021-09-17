@@ -36,11 +36,11 @@ class CensusColumnAgeMale5YearsTest extends TestCase
      */
     public function testMale(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnAgeMale5Years($census, '', '');
@@ -56,10 +56,10 @@ class CensusColumnAgeMale5YearsTest extends TestCase
      */
     public function testFemale(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnAgeMale5Years($census, '', '');
 
@@ -74,11 +74,11 @@ class CensusColumnAgeMale5YearsTest extends TestCase
      */
     public function testUnknownSex(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('U');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1830');
 
         $column = new CensusColumnAgeMale5Years($census, '', '');
@@ -94,11 +94,11 @@ class CensusColumnAgeMale5YearsTest extends TestCase
      */
     public function testLessThanOneYear(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1800');
 
         $column = new CensusColumnAgeMale5Years($census, '', '');
@@ -114,11 +114,11 @@ class CensusColumnAgeMale5YearsTest extends TestCase
      */
     public function testLessThanFifteenYears(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1814');
 
         $column = new CensusColumnAgeMale5Years($census, '', '');
@@ -134,11 +134,11 @@ class CensusColumnAgeMale5YearsTest extends TestCase
      */
     public function testRoundedDownToFiveYears(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1844');
 
         $column = new CensusColumnAgeMale5Years($census, '', '');

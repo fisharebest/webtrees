@@ -27,8 +27,7 @@ use Fisharebest\Webtrees\Individual;
  */
 class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /** @var string */
-    protected $head_of_household = '-';
+    protected const HEAD_OF_HOUSEHOLD = '-';
 
     /**
      * Generate the likely value of this census column, based on available information.
@@ -41,7 +40,7 @@ class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusC
     public function generate(Individual $individual, Individual $head): string
     {
         if ($individual === $head) {
-            return $this->head_of_household;
+            return static::HEAD_OF_HOUSEHOLD;
         }
 
         return Functions::getCloseRelationshipName($head, $individual);

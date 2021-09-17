@@ -26,11 +26,9 @@ use Fisharebest\Webtrees\Individual;
  */
 class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInterface
 {
-    /** @var string Text to display for male individuals */
-    protected $male = 'M';
+    protected const MALE = 'M';
 
-    /** @var string Text to display for female individuals */
-    protected $female = 'F';
+    protected const FEMALE = 'F';
 
     /**
      * Generate the likely value of this census column, based on available information.
@@ -44,9 +42,9 @@ class CensusColumnSexMF extends AbstractCensusColumn implements CensusColumnInte
     {
         switch ($individual->sex()) {
             case 'M':
-                return $this->male;
+                return static::MALE;
             case 'F':
-                return $this->female;
+                return static::FEMALE;
             default:
                 return '';
         }

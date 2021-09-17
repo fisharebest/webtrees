@@ -42,20 +42,26 @@ class CensusOfCzechRepublic1921 extends CensusOfCzechRepublic implements CensusI
     public function columns(): array
     {
         return [
-            new CensusColumnFullName($this, 'Jméno', ''),
+            new CensusColumnNull($this, 'Ř.č.', 'Řadové číslo'),
+            new CensusColumnSurname($this, 'Příjmení', 'jméno rodinné'),
+            new CensusColumnGivenNames($this, 'Jméno', 'Jméno (křestni)'),
             new CensusColumnRelationToHead($this, 'Vztah', ''),
             new CensusColumnSexMZ($this, 'Pohlaví', ''),
             new CensusColumnNull($this, 'Stav', 'Rodinný stav'),
-            new CensusColumnBirthDaySlashMonthYear($this, 'Narození', 'Datum narození'),
-            new CensusColumnBirthPlace($this, 'Místo', 'Místo narození'),
+            new CensusColumnBirthDayDotMonthYear($this, 'Narození', 'Datum narození'),
+            new CensusColumnBirthPlace($this, 'Rodiště', 'Rodná obec, Soudní okres, Země'),
+            new CensusColumnNull($this, 'Bydlí od', 'Od kdy bydlí zapsána osoba v obci?'),
             new CensusColumnNull($this, 'Přísluší', 'Domovské právo'),
             new CensusColumnNull($this, 'Národnost', 'Mateřský jazyk'),
             new CensusColumnReligion($this, 'Vyznání', ''),
             new CensusColumnNull($this, 'Gramotnost', 'Znalost čtení a psaní'),
-            new CensusColumnOccupation($this, 'Povolání', ''),
+            new CensusColumnOccupation($this, 'Povolání', 'Druh povolání'),
             new CensusColumnNull($this, 'Postavení', 'Postavení v zaměstnání'),
             new CensusColumnNull($this, 'Podnik', ''),
-            new CensusColumnNull($this, '', ''),
+            new CensusColumnNull($this, 'Měl povolání 1914', ''),
+            new CensusColumnNull($this, 'Povolání 1914', 'Druh povolání dne 16. července 1914'),
+            new CensusColumnNull($this, 'Postavení 1914', 'Postavení v zaměstnání dne 16. července 1914'),
+            new CensusColumnNull($this, 'Poznámka', ''),
         ];
     }
 }

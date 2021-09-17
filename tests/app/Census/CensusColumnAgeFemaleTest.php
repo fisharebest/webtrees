@@ -36,10 +36,10 @@ class CensusColumnAgeFemaleTest extends TestCase
      */
     public function testMale(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('M');
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
 
         $column = new CensusColumnAgeFemale($census, '', '');
 
@@ -54,11 +54,11 @@ class CensusColumnAgeFemaleTest extends TestCase
      */
     public function testFemale(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnAgeFemale($census, '', '');
@@ -74,11 +74,11 @@ class CensusColumnAgeFemaleTest extends TestCase
      */
     public function testUnknownSex(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('U');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1832');
 
         $column = new CensusColumnAgeFemale($census, '', '');
@@ -94,11 +94,11 @@ class CensusColumnAgeFemaleTest extends TestCase
      */
     public function testLessThanOneYear(): void
     {
-        $individual = self::createMock(Individual::class);
+        $individual = $this->createMock(Individual::class);
         $individual->method('sex')->willReturn('F');
         $individual->method('getEstimatedBirthDate')->willReturn(new Date('01 JAN 1800'));
 
-        $census = self::createMock(CensusInterface::class);
+        $census = $this->createMock(CensusInterface::class);
         $census->method('censusDate')->willReturn('30 JUN 1800');
 
         $column = new CensusColumnAgeFemale($census, '', '');
