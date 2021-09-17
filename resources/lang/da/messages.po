@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-01 09:22+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
-"Language: da\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-26 07:38+0000\nLast-Translator: Jens Friismose <jelo2007@gmail.com>\nLanguage-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\nLanguage: da\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -474,13 +458,13 @@ msgstr "&lt;vælg&gt;"
 #: app/Functions/FunctionsPrint.php:327
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s efter dødsfald)"
 
 #. I18N: The current age of a living individual
 #: app/Http/RequestHandlers/IndividualPage.php:187
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(%s gammel)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:310
@@ -488,7 +472,7 @@ msgstr ""
 #: app/Http/RequestHandlers/IndividualPage.php:174
 #, php-format
 msgid "(aged %s)"
-msgstr "(alder %s)"
+msgstr "(%s gammel)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:306
@@ -497,7 +481,7 @@ msgstr "(alder %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s gammel)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:302
@@ -506,7 +490,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s gammel)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -1481,7 +1465,7 @@ msgstr "Tilføj/rediger journal/nyhed"
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Ekstra information"
 
 #: app/Factories/ElementFactory.php:276 app/Factories/ElementFactory.php:388
 #: app/Factories/ElementFactory.php:408 app/Factories/ElementFactory.php:661
@@ -1508,11 +1492,11 @@ msgstr "Adresse linie 2"
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:664
 #: app/Factories/ElementFactory.php:711
 msgid "Address line 3"
-msgstr ""
+msgstr "Adresse linie 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
-msgstr ""
+msgstr "Adresser"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1568,7 +1552,7 @@ msgstr "Adopteret af moderen"
 #: app/Module/CustomTagsBrothersKeeper.php:71
 #: app/Module/CustomTagsPersonalAncestralFile.php:54
 msgid "Adopted name"
-msgstr ""
+msgstr "Adopteret navn"
 
 #: app/Factories/ElementFactory.php:449 app/Factories/ElementFactory.php:452
 msgid "Adoption"
@@ -1646,7 +1630,7 @@ msgstr "Adoption af søn"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Adoptivforældre"
 
 #: app/Factories/ElementFactory.php:495
 msgid "Adult christening"
@@ -1853,7 +1837,7 @@ msgstr "Også kendt som"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Alternativt stednavn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1915,7 +1899,7 @@ msgstr "Der opstod en uforudset databasefejl."
 
 #: resources/views/admin/control-panel.phtml:204
 msgid "An upgrade is available."
-msgstr ""
+msgstr "En opdatering er tilgængelig."
 
 #. I18N: Name of a module/report
 #. I18N: Name of a module/chart
@@ -2068,7 +2052,7 @@ msgstr "Havblå"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker at slette linket til “%s”?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:41
@@ -2169,7 +2153,7 @@ msgstr "Tilknyt hændelser med denne kilde"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Tilknyttede hændelser"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2790,7 +2774,7 @@ msgstr "Interval for fødselsdato start"
 
 #: app/Module/CustomTagsBrothersKeeper.php:73
 msgid "Birth name"
-msgstr ""
+msgstr "Fødselsnavn"
 
 #: app/Module/IndividualFactsTabModule.php:308
 msgid "Birth of a brother"
@@ -2867,7 +2851,7 @@ msgstr "Søns fødsel"
 
 #: app/Factories/ElementFactory.php:476
 msgid "Birth parents"
-msgstr ""
+msgstr "Forældre"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3333,7 +3317,7 @@ msgstr "Kategorier"
 #: app/Module/CustomTagsGedcomL.php:123 app/Module/CustomTagsGedcomL.php:176
 #: app/Module/CustomTagsLegacy.php:121
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
 #: app/Factories/ElementFactory.php:285 app/Factories/ElementFactory.php:418
 msgid "Cause"
@@ -3380,7 +3364,7 @@ msgstr "Dato for folketælling"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Folketælling dato og sted"
 
 #: app/Factories/ElementFactory.php:487
 msgid "Census place"
@@ -3425,7 +3409,7 @@ msgstr "Certifikat"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Certifikat nummer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3449,7 +3433,7 @@ msgstr "Omforme blokkene på “Min side”"
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Ændret af %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
@@ -3801,7 +3785,7 @@ msgstr "Kaffe og fløde"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Samliv"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -3894,7 +3878,7 @@ msgstr "Gennemført: ukendt dato"
 #: app/Module/CustomTagsGedcomL.php:124 app/Module/CustomTagsGedcomL.php:177
 #: app/Module/CustomTagsLegacy.php:122
 msgid "Completion date"
-msgstr ""
+msgstr "Afslutningsdato"
 
 #: app/Http/RequestHandlers/HelpText.php:283
 #: resources/views/admin/trees-export.phtml:64
@@ -4058,7 +4042,7 @@ msgstr "Kopier filer…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Kopier webadressen til udklipsholderen"
 
 #: app/Factories/ElementFactory.php:374 app/Factories/ElementFactory.php:401
 msgid "Copyright"
@@ -4526,7 +4510,7 @@ msgstr "Dato for barns besegling (mormon)"
 
 #: app/Factories/ElementFactory.php:500
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Dato for LDS -bekræftelse "
 
 #: app/Factories/ElementFactory.php:520
 msgid "Date of LDS endowment"
@@ -5952,7 +5936,7 @@ msgstr "Eksterne filer"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "Ekstern link"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
