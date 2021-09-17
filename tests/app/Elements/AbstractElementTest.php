@@ -100,8 +100,8 @@ abstract class AbstractElementTest extends TestCase
     {
         $tree = $this->createMock(Tree::class);
         $html = static::$element->value(self::TEST_VALUE, $tree);
-        $doc  = new DOMDocument();
-        self::assertTrue($doc->loadHTML($html), 'HTML=' . $html);
+
+        $this->validateHtml($html);
     }
 
     /**
@@ -111,7 +111,7 @@ abstract class AbstractElementTest extends TestCase
     {
         $tree = $this->createMock(Tree::class);
         $html = static::$element->edit('id', 'name', self::TEST_VALUE, $tree);
-        $doc  = new DOMDocument();
-        self::assertTrue($doc->loadHTML($html), 'HTML=' . $html);
+
+        $this->validateHtml($html);
     }
 }
