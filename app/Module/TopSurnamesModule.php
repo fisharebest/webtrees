@@ -266,6 +266,6 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
      */
     private function surnameCountSort(array $a, array $b): int
     {
-        return array_sum($a) <=> array_sum($b);
+        return array_sum($b) <=> array_sum($a);
     }
 }
