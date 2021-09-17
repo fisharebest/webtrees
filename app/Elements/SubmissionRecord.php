@@ -33,6 +33,5 @@ class SubmissionRecord extends AbstractElement
         'ORDI' => '0:1',
         'RIN'  => '0:1',
         'NOTE' => '0:1',
-        'CHAN' => '0:1',
     ];
 }

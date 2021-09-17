@@ -281,4 +281,81 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         return $uploaded_file_factory->createUploadedFile($stream, $size, $status, $client_name, $mime_type);
     }
+
+    /**
+     * Assert that a response contains valid HTML - either a full page or a fragment.
+     *
+     * @param ResponseInterface $response
+     */
+    protected function validateHtmlResponse(ResponseInterface $response): void
+    {
+        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+
+        self::assertEquals('text/html; charset=UTF-8', $response->getHeaderLine('content-type'));
+
+        $html = $response->getBody()->getContents();
+
+        self::assertStringStartsWith('<DOCTYPE html>', $html);
+
+        $this->validateHtml(substr($html, strlen('<DOCTYPE html>')));
+    }
+
+    /**
+     * Assert that a response contains valid HTML - either a full page or a fragment.
+     *
+     * @param string $html
+     */
+    protected function validateHtml(string $html): void
+    {
+        $stack = [];
+
+        do {
+            $html = substr($html, strcspn($html, '<>'));
+
+            if (str_starts_with($html, '>')) {
+                $this->fail('Unescaped > found in HTML');
+            }
+
+            if (str_starts_with($html, '<')) {
+                if (preg_match('~^</([a-z]+)>~', $html, $match)) {
+                    if ($match[1] !== array_pop($stack)) {
+                        $this->fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
+                    }
+                    $html = substr($html, strlen($match[0]));
+                } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match)) {
+                    $tag = $match[1];
+                    $self_closing = $match[2] === '/';
+
+                    $message = 'Tag ' . $tag . ' is not allowed at ' . implode(':', $stack) . '.';
+
+                    switch ($tag) {
+                        case 'html':
+                            $this->assertSame([], $stack);
+                            break;
+                        case 'head':
+                        case 'body':
+                            $this->assertSame(['head'], $stack);
+                            break;
+                        case 'div':
+                            $this->assertNotContains('span', $stack, $message);
+                            break;
+                    }
+
+                    if (!$self_closing) {
+                        $stack[] = $tag;
+                    }
+
+                    if ($tag === 'script' && !$self_closing) {
+                        $html = substr($html, strpos($html, '</script>'));
+                    } else {
+                        $html = substr($html, strlen($match[0]));
+                    }
+                } else {
+                    $this->fail('Unrecognised tag: ' . substr($html, 0, 40));
+                }
+            }
+        } while ($html !== '');
+
+        $this->assertSame([], $stack);
+    }
 }

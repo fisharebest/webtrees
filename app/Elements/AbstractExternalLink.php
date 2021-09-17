@@ -25,7 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use function e;
 
 /**
- * Events which can take "Y" to indicate that they occurred, but date/place are unknown.
+ * Events which can be linked to content at another website.
  */
 class AbstractExternalLink extends AbstractElement
 {

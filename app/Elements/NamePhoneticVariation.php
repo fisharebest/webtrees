@@ -29,7 +29,15 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NamePhoneticVariation extends AbstractElement
 {
-    protected const SUBTAGS = ['NPFX', 'GIVN', 'SPFX','SURN', 'NSFX', 'NICK', 'TYPE'];
-
     protected const MAXIMUM_LENGTH = 120;
+
+    protected const SUBTAGS = [
+        'TYPE' => '1:1',
+        'NPFX' => '0:1',
+        'GIVN' => '0:1',
+        'SPFX' => '0:1',
+        'SURN' => '0:1',
+        'NSFX' => '0:1',
+        'NICK' => '0:1',
+    ];
 }

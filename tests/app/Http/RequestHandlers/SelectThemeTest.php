@@ -34,7 +34,7 @@ class SelectThemeTest extends TestCase
      */
     public function testSelectThemeForGuest(): void
     {
-        $user = self::createMock(GuestUser::class);
+        $user = $this->createMock(GuestUser::class);
         $user->expects(self::once())->method('setPreference')->with('theme', 'FOO');
 
         $request = self::createRequest()
@@ -52,7 +52,7 @@ class SelectThemeTest extends TestCase
      */
     public function testSelectThemeForUser(): void
     {
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->expects(self::once())->method('setPreference')->with('theme', 'FOO');
 
         $request = self::createRequest()

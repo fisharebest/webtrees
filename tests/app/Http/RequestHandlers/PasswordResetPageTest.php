@@ -35,9 +35,9 @@ class PasswordResetPageTest extends TestCase
      */
     public function testPasswordResetPageWithValidToken(): void
     {
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
 
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service
             ->expects(self::once())
             ->method('findByToken')
@@ -57,7 +57,7 @@ class PasswordResetPageTest extends TestCase
      */
     public function testPasswordResetPageWithoutValidToken(): void
     {
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $user_service
             ->expects(self::once())
             ->method('findByToken')

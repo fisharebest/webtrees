@@ -48,7 +48,7 @@ class NamePieceSurname extends AbstractElement
     {
         return
             '<div class="input-group">' .
-            '<input data-autocomplete-url="' . e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) . '" autocomplete="off" class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
+            '<input data-autocomplete-url="' . e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) . '" autocomplete="off" class="form-control" dir="auto" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
             view('edit/input-addon-keyboard', ['id' => $id]) .
             view('edit/input-addon-help', ['fact' => 'SURN']) .
             '</div>';

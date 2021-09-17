@@ -19,21 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-/**
- * Test harness for the class EventDescriptor
- *
- * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\EventDescriptor
- */
-class EventDescriptorTest extends AbstractElementTest
-{
-    /**
-     * Standard tests for all elements.
-     */
-    public static function setupBeforeClass(): void
-    {
-        parent::setUpBeforeClass();
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 
-        self::$element = new EventDescriptor('label');
-    }
+use function view;
+
+/**
+ * XREF:INDI := {Size=1:22}
+ * A pointer to, or a cross-reference identifier of, an individual record.
+ */
+class XrefAssociate extends XrefIndividual
+{
+    protected const SUBTAGS = [
+        'RELA' => '0:1',
+        'NOTE' => '0:M',
+        'SOUR' => '0:M',
+    ];
 }

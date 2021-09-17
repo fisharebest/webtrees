@@ -83,6 +83,17 @@ interface ElementInterface
     public function labelValue(string $value, Tree $tree): string;
 
     /**
+     * Set, remove or replace a subtag.
+     *
+     * @param string $subtag
+     * @param string $repeat
+     * @param string $before
+     *
+     * @return void
+     */
+    public function subtag(string $subtag, string $repeat = '0:1', string $before = ''): void;
+
+    /**
      * @return array<string,string>
      */
     public function subtags(): array;

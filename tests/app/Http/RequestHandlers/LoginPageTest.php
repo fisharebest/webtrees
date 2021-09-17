@@ -48,7 +48,7 @@ class LoginPageTest extends TestCase
     public function testLoginPageAlreadyLoggedIn(): void
     {
         $tree_service = new TreeService();
-        $user     = self::createMock(User::class);
+        $user     = $this->createMock(User::class);
         $request  = self::createRequest()->withAttribute('user', $user);
         $handler  = new LoginPage($tree_service);
         $response = $handler->handle($request);

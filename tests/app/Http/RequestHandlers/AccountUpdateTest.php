@@ -39,9 +39,9 @@ class AccountUpdateTest extends TestCase
      */
     public function testHandler(): void
     {
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
 
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->expects(self::once())->method('setEmail')->with('b');
         $user->expects(self::once())->method('setPassword')->with('e');
         $user->expects(self::once())->method('setRealName')->with('d');
@@ -55,7 +55,7 @@ class AccountUpdateTest extends TestCase
                 [UserInterface::PREF_IS_VISIBLE_ONLINE, 'i']
             );
 
-        $tree = self::createMock(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree->expects(self::once())->method('setUserPreference')->with($user, UserInterface::PREF_TREE_DEFAULT_XREF, 'f');
 
         $handler  = new AccountUpdate($user_service);

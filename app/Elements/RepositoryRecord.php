@@ -33,5 +33,6 @@ class RepositoryRecord extends AbstractElement
         'NOTE'  => '0:M',
         'REFN'  => '0:1',
         'RIN'   => '0:1',
+        'CHAN'  => '0:1',
     ];
 }

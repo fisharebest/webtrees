@@ -41,10 +41,10 @@ class AuthAdministratorTest extends TestCase
      */
     public function testAllowed(): void
     {
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('1');
 
         $request    = self::createRequest()->withAttribute('user', $user);
@@ -63,10 +63,10 @@ class AuthAdministratorTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
         $request    = self::createRequest()->withAttribute('user', $user);
@@ -80,7 +80,7 @@ class AuthAdministratorTest extends TestCase
      */
     public function testNotLoggedIn(): void
     {
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
         $request    = self::createRequest()->withAttribute('user', new GuestUser());

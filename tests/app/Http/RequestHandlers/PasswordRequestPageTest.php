@@ -45,7 +45,7 @@ class PasswordRequestPageTest extends TestCase
      */
     public function testPasswordRequestPageAlreadyLoggedIn(): void
     {
-        $user     = self::createMock(User::class);
+        $user     = $this->createMock(User::class);
         $request  = self::createRequest()->withAttribute('user', $user);
         $handler  = new PasswordRequestPage();
         $response = $handler->handle($request);

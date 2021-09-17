@@ -36,7 +36,7 @@ class AccountDeleteTest extends TestCase
      */
     public function testHandler(): void
     {
-        $user_service = self::createMock(UserService::class);
+        $user_service = $this->createMock(UserService::class);
         $handler      = new AccountDelete($user_service);
         $request      = self::createRequest();
         $response     = $handler->handle($request);

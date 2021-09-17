@@ -42,7 +42,7 @@ class AccountEditTest extends TestCase
      */
     public function testHandler(): void
     {
-        $user     = self::createMock(User::class);
+        $user     = $this->createMock(User::class);
         $handler  = new AccountEdit(new MessageService(new EmailService(), new UserService()), new ModuleService());
         $request  = self::createRequest()
             ->withAttribute('user', $user);

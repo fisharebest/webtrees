@@ -30,7 +30,7 @@ class MediaRecord extends AbstractElement
         'RIN'  => '0:1',
         'NOTE' => '0:M',
         'SOUR' => '0:M',
+        'RESN' => '0:1',
         'CHAN' => '0:1',
-        'RESN' => '0:1', /* *** webtrees extension */
     ];
 }

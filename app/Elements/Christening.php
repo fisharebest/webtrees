@@ -22,12 +22,13 @@ namespace Fisharebest\Webtrees\Elements;
 /**
  * Christening
  */
-class Christening extends AbstractElement
+class Christening extends AbstractEventElement
 {
     protected const SUBTAGS = [
         'DATE' => '0:1',
         'AGE'  => '0:1',
         'PLAC' => '0:1',
+        'ADDR' => '0:1',
         'FAMC' => '0:1',
         'NOTE' => '0:M',
         'OBJE' => '0:M',

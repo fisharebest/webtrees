@@ -22,6 +22,17 @@ namespace Fisharebest\Webtrees\Elements;
 /**
  * Marriage Settlement
  */
-class MarriageSettlement extends AbstractElement
+class MarriageSettlement extends AbstractEventElement
 {
+    protected const SUBTAGS = [
+        'TYPE' => '0:1',
+        'DATE' => '0:1',
+        'HUSB' => '0:1',
+        'WIFE' => '0:1',
+        'PLAC' => '0:1',
+        'NOTE' => '0:M',
+        'OBJE' => '0:M',
+        'SOUR' => '0:M',
+        'RESN' => '0:1',
+    ];
 }

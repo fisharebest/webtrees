@@ -29,7 +29,10 @@ use function array_map;
 use function e;
 use function is_numeric;
 use function preg_match;
-use function strpos;
+use function str_contains;
+use function str_starts_with;
+use function stream_copy_to_stream;
+use function strip_tags;
 use function trim;
 use function view;
 
@@ -50,7 +53,7 @@ abstract class AbstractElement implements ElementInterface
     /** @var string A label to describe this element */
     private $label;
 
-    /** @var array<string,string> */
+    /** @var array<string,string> Subtags of this element */
     private $subtags;
 
     /**
@@ -76,7 +79,7 @@ abstract class AbstractElement implements ElementInterface
     {
         $value = strtr($value, ["\t" => ' ', "\r" => ' ', "\n" => ' ']);
 
-        while (strpos($value, '  ') !== false) {
+        while (str_contains($value, '  ')) {
             $value = strtr($value, ['  ' => ' ']);
         }
 
@@ -118,7 +121,7 @@ abstract class AbstractElement implements ElementInterface
             }
 
             // We may use markup to display values, but not when editing them.
-            $values = array_map('strip_tags', $values);
+            $values = array_map(function (string $x): string { return strip_tags($x); }, $values);
 
             return view('components/select', [
                 'id'       => $id,
@@ -130,6 +133,7 @@ abstract class AbstractElement implements ElementInterface
 
         $attributes = [
             'class'     => 'form-control',
+            'dir'       => 'auto',
             'type'      => 'text',
             'id'        => $id,
             'name'      => $name,
@@ -202,10 +206,39 @@ abstract class AbstractElement implements ElementInterface
     public function labelValue(string $value, Tree $tree): string
     {
         $label = '<span class="label">' . $this->label() . '</span>';
-        $value = '<span class="value">' . $this->value($value, $tree) . '</span>';
+        $value = '<span class="value align-top">' . $this->value($value, $tree) . '</span>';
         $html  = I18N::translate(/* I18N: e.g. "Occupation: farmer" */ '%1$s: %2$s', $label, $value);
 
         return '<div>' . $html . '</div>';
+    }
+
+    /**
+     * Set, remove or replace a subtag.
+     *
+     * @param string $subtag
+     * @param string $repeat
+     * @param string $before
+     *
+     * @return void
+     */
+    public function subtag(string $subtag, string $repeat = '0:1', string $before = ''): void
+    {
+        if ($repeat === '') {
+            unset($this->subtags[$subtag]);
+        } elseif ($before === '' || ($this->subtags[$before] ?? null) === null) {
+            $this->subtags[$subtag] = $repeat;
+        } else {
+            $tmp = [];
+
+            foreach ($this->subtags as $key => $value) {
+                if ($key === $before) {
+                    $tmp[$subtag] = $repeat;
+                }
+                $tmp[$key] = $value;
+            }
+
+            $this->subtags = $tmp;
+        }
     }
 
     /**
@@ -230,15 +263,15 @@ abstract class AbstractElement implements ElementInterface
 
         if ($values === []) {
             if (str_contains($value, "\n")) {
-                return '<span dir="auto" class="d-inline-block" style="white-space: pre-wrap;">' . e($value) . '</span>';
+                return '<bdi class="d-inline-block" style="white-space: pre-wrap;">' . e($value) . '</bdi>';
             }
 
-            return '<span dir="auto">' . e($value) . '</span>';
+            return '<bdi>' . e($value) . '</bdi>';
         }
 
         $canonical = $this->canonical($value);
 
-        return $values[$canonical] ?? '<span dir="auto">' . e($value) . '</span>';
+        return $values[$canonical] ?? '<bdi>' . e($value) . '</bdi>';
     }
 
     /**
@@ -252,7 +285,7 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
-     * Display the value of this type of element - convert URLs to links
+     * Display the value of this type of element - convert URLs to links.
      *
      * @param string $value
      *
@@ -267,6 +300,24 @@ abstract class AbstractElement implements ElementInterface
         }
 
         return e($canonical);
+    }
+
+    /**
+     * Display the value of this type of element - convert to URL.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function valueLink(string $value): string
+    {
+        $canonical = $this->canonical($value);
+
+        if (str_starts_with($canonical, 'https://') || str_starts_with($canonical, 'http://')) {
+            return '<a dir="auto" href="' . e($canonical) . '">' . e($value) . '</a>';
+        }
+
+        return e($value);
     }
 
     /**

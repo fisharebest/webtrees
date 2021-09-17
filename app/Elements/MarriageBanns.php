@@ -22,6 +22,18 @@ namespace Fisharebest\Webtrees\Elements;
 /**
  * Marriage Banns
  */
-class MarriageBanns extends AbstractElement
+class MarriageBanns extends AbstractEventElement
 {
+    protected const SUBTAGS = [
+        'TYPE' => '0:1',
+        'DATE' => '0:1',
+        'HUSB' => '0:1',
+        'WIFE' => '0:1',
+        'PLAC' => '0:1',
+        'ADDR' => '0:1',
+        'NOTE' => '0:M',
+        'OBJE' => '0:M',
+        'SOUR' => '0:M',
+        'RESN' => '0:1',
+    ];
 }

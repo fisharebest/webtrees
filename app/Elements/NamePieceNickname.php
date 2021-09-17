@@ -47,7 +47,7 @@ class NamePieceNickname extends AbstractElement
     {
         return
             '<div class="input-group">' .
-            '<input class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
+            parent::edit($id, $name, $value, $tree) .
             view('edit/input-addon-keyboard', ['id' => $id]) .
             '</div>';
     }

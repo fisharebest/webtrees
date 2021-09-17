@@ -29,6 +29,10 @@ use Fisharebest\Webtrees\Tree;
  */
 class ChangeDate extends AbstractElement
 {
+    protected const SUBTAGS = [
+        'TIME' => '1:1',
+    ];
+
     /**
      * Display the value of this type of element.
      *

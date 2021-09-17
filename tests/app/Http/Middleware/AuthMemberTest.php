@@ -42,13 +42,13 @@ class AuthMemberTest extends TestCase
      */
     public function testAllowed(): void
     {
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
-        $tree = self::createMock(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn(UserInterface::ROLE_MEMBER);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
@@ -67,13 +67,13 @@ class AuthMemberTest extends TestCase
         $this->expectException(HttpAccessDeniedException::class);
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $user = self::createMock(User::class);
+        $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
 
-        $tree = self::createMock(Tree::class);
+        $tree = $this->createMock(Tree::class);
         $tree->method('getUserPreference')->with($user, UserInterface::PREF_TREE_ROLE)->willReturn('');
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', $user);
@@ -87,10 +87,10 @@ class AuthMemberTest extends TestCase
      */
     public function testNotLoggedIn(): void
     {
-        $handler = self::createMock(RequestHandlerInterface::class);
+        $handler = $this->createMock(RequestHandlerInterface::class);
         $handler->method('handle')->willReturn(response('lorem ipsum'));
 
-        $tree = self::createMock(Tree::class);
+        $tree = $this->createMock(Tree::class);
 
         $request    = self::createRequest()->withAttribute('tree', $tree)->withAttribute('user', new GuestUser());
         $middleware = new AuthMember();

@@ -23,11 +23,12 @@ namespace Fisharebest\Webtrees\Elements;
  * SCHOLASTIC_ACHIEVEMENT := {Size=1:248}
  * A description of a scholastic or educational achievement or pursuit.
  */
-class ScholasticAchievement extends AbstractElement
+class ScholasticAchievement extends AbstractEventElement
 {
     protected const SUBTAGS = [
         'DATE' => '0:1',
         'PLAC' => '0:1',
+        'ADDR' => '0:1',
         'AGNC' => '0:1',
         'NOTE' => '0:M',
         'OBJE' => '0:M',
