@@ -31,6 +31,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
+use RuntimeException;
 
 use function date;
 use function explode;
@@ -39,6 +40,7 @@ use function mb_convert_encoding;
 use function pathinfo;
 use function str_contains;
 use function str_starts_with;
+use function strlen;
 use function strpos;
 use function strtolower;
 use function strtoupper;
@@ -128,7 +130,11 @@ class GedcomExportService
                 $gedcom = $this->wrapLongLines($gedcom, Gedcom::LINE_LENGTH) . Gedcom::EOL;
                 $gedcom = $this->convertEncoding($encoding, $gedcom);
 
-                fwrite($stream, $gedcom);
+                $bytes_written  = fwrite($stream, $gedcom);
+
+                if ($bytes_written !== strlen($gedcom)) {
+                    throw new RuntimeException('Unable to write to stream.  Perhaps the disk is full?');
+                }
             }
         }
     }

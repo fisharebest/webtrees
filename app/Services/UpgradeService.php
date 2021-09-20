@@ -35,6 +35,7 @@ use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use RuntimeException;
 use ZipArchive;
 
 use function explode;
@@ -45,6 +46,7 @@ use function fopen;
 use function ftell;
 use function fwrite;
 use function rewind;
+use function strlen;
 use function unlink;
 use function version_compare;
 
@@ -158,7 +160,13 @@ class UpgradeService
 
         // Download the file to temporary storage.
         while (!$stream->eof()) {
-            fwrite($tmp, $stream->read(self::READ_BLOCK_SIZE));
+            $data = $stream->read(self::READ_BLOCK_SIZE);
+
+            $bytes_written  = fwrite($tmp, $data);
+
+            if ($bytes_written !== strlen($data)) {
+                throw new RuntimeException('Unable to write to stream.  Perhaps the disk is full?');
+            }
 
             if ($this->timeout_service->isTimeNearlyUp()) {
                 $stream->close();
