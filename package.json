@@ -10,11 +10,11 @@
     "cross-env": "7.0.3",
     "laravel-mix": "6.0.31",
     "postcss": "8.3.6",
-    "postcss-custom-properties": "11.0.0",
+    "postcss-custom-properties": "12.0.0",
     "postcss-image-inliner": "5.0.0",
     "postcss-import": "14.0.2",
     "resolve-url-loader": "4.0.0",
-    "sass": "1.41.1",
+    "sass": "1.42.0",
     "sass-loader": "12.1.0",
     "vue-template-compiler": "2.6.14"
   },
