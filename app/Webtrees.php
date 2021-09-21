@@ -108,7 +108,7 @@ class Webtrees
     public const URL_FAQ_EMAIL = 'https://webtrees.net/faq/email';
 
     // Project website.
-    public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-551.pdf';
+    public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-5-5-1.pdf';
 
     private const MIDDLEWARE = [
         PhpEnvironment::class,
