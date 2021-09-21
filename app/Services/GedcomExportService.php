@@ -130,7 +130,7 @@ class GedcomExportService
                 $gedcom = $this->wrapLongLines($gedcom, Gedcom::LINE_LENGTH) . Gedcom::EOL;
                 $gedcom = $this->convertEncoding($encoding, $gedcom);
 
-                $bytes_written  = fwrite($stream, $gedcom);
+                $bytes_written = fwrite($stream, $gedcom);
 
                 if ($bytes_written !== strlen($gedcom)) {
                     throw new RuntimeException('Unable to write to stream.  Perhaps the disk is full?');

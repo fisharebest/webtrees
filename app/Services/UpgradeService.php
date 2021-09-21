@@ -162,7 +162,7 @@ class UpgradeService
         while (!$stream->eof()) {
             $data = $stream->read(self::READ_BLOCK_SIZE);
 
-            $bytes_written  = fwrite($tmp, $data);
+            $bytes_written = fwrite($tmp, $data);
 
             if ($bytes_written !== strlen($data)) {
                 throw new RuntimeException('Unable to write to stream.  Perhaps the disk is full?');
