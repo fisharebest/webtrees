@@ -1,4 +1,4 @@
-![Latest version)](https://img.shields.io/github/v/release/fisharebest/webtrees?sort=semver)
+![Latest version](https://img.shields.io/github/v/release/fisharebest/webtrees?sort=semver)
 ![Licence](https://img.shields.io/github/license/fisharebest/webtrees)
 [![Unit tests](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml/badge.svg)](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml)
 [![Coverage Status](https://coveralls.io/repos/github/fisharebest/webtrees/badge.svg?branch=main)](https://coveralls.io/github/fisharebest/webtrees?branch=main)
