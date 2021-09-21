@@ -139,11 +139,11 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
                 $content = FunctionsPrintLists::surnameTagCloud($all_surnames, $module, true, $tree);
                 break;
             case 'list':
-                uasort($all_surnames, fn(array $a, array $b): int => array_sum($b) <=> array_sum($a));
+                uasort($all_surnames, fn (array $a, array $b): int => array_sum($b) <=> array_sum($a));
                 $content = FunctionsPrintLists::surnameList($all_surnames, 1, true, $module, $tree);
                 break;
             case 'array':
-                uasort($all_surnames, fn(array $a, array $b): int => array_sum($b) <=> array_sum($a));
+                uasort($all_surnames, fn (array $a, array $b): int => array_sum($b) <=> array_sum($a));
                 $content = FunctionsPrintLists::surnameList($all_surnames, 2, true, $module, $tree);
                 break;
             case 'table':
