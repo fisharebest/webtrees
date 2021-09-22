@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-08-21 05:04+0000\nLast-Translator: Ngô Hữu Thuận <ngohuuthuan@gmail.com>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees vietnamese Version 1.5.3\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-26 07:38+0000\nLast-Translator: nguyen duc toan <mmductoan@gmail.com>\nLanguage-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/webtrees/vi/>\nLanguage: vi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -446,7 +446,7 @@ msgstr "(%s sau khi mất)"
 #: app/Http/RequestHandlers/IndividualPage.php:187
 #, php-format
 msgid "(age %s)"
-msgstr "(tuổi %s)"
+msgstr "(%s tuổi )"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:310
@@ -454,7 +454,7 @@ msgstr "(tuổi %s)"
 #: app/Http/RequestHandlers/IndividualPage.php:174
 #, php-format
 msgid "(aged %s)"
-msgstr "(tuổi %s)"
+msgstr "(%s tuổi)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:306
@@ -463,7 +463,7 @@ msgstr "(tuổi %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s tuổi)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:302
@@ -472,7 +472,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s tuổi)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -731,7 +731,7 @@ msgstr "Danh sách các cá nhân."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Một danh sách địa điểm."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -1474,7 +1474,7 @@ msgstr "Địa chỉ dòng 2"
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:664
 #: app/Factories/ElementFactory.php:711
 msgid "Address line 3"
-msgstr ""
+msgstr "Địa chỉ dòng 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
@@ -1534,11 +1534,11 @@ msgstr "Được Mẹ Nhận Làm Con Nuôi"
 #: app/Module/CustomTagsBrothersKeeper.php:71
 #: app/Module/CustomTagsPersonalAncestralFile.php:54
 msgid "Adopted name"
-msgstr ""
+msgstr "Tên được đặt khi nhận nuôi"
 
 #: app/Factories/ElementFactory.php:449 app/Factories/ElementFactory.php:452
 msgid "Adoption"
-msgstr "Nhận là con nuôi"
+msgstr "Nhận con nuôi"
 
 #: app/Module/IndividualFactsTabModule.php:323
 msgid "Adoption of a brother"
@@ -2756,7 +2756,7 @@ msgstr "Sinh khoảng thời gian từ"
 
 #: app/Module/CustomTagsBrothersKeeper.php:73
 msgid "Birth name"
-msgstr ""
+msgstr "Tên khai sinh"
 
 #: app/Module/IndividualFactsTabModule.php:308
 msgid "Birth of a brother"
