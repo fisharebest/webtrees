@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-08-21 05:04+0000\n"
-"Last-Translator: Ngô Hữu Thuận <ngohuuthuan@gmail.com>\n"
+"PO-Revision-Date: 2021-09-26 07:38+0000\n"
+"Last-Translator: nguyen duc toan <mmductoan@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/vi/>\n"
 "Language: vi\n"
@@ -533,7 +533,7 @@ msgstr "&lt;chọn&gt;"
 #: app/I18N.php:329 app/I18N.php:333
 #, php-format
 msgid "(aged %s)"
-msgstr "(tuổi %s)"
+msgstr "(%s tuổi)"
 
 #. I18N: Description of an individual’s age at an event. For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:323
@@ -1573,7 +1573,7 @@ msgstr "Nhận làm con nuôi bởi mẹ"
 #. I18N: gedcom tag ADOP
 #: app/GedcomTag.php:130
 msgid "Adoption"
-msgstr "Nhận là con nuôi"
+msgstr "Nhận con nuôi"
 
 #: app/GedcomTag.php:917
 msgid "Adoption of a brother"
