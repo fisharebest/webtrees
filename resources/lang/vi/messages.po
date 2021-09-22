@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees vietnamese Version 1.5.3\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-08-21 05:04+0000\n"
-"Last-Translator: Ngô Hữu Thuận <ngohuuthuan@gmail.com>\n"
+"PO-Revision-Date: 2021-09-26 07:38+0000\n"
+"Last-Translator: nguyen duc toan <mmductoan@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/vi/>\n"
 "Language: vi\n"
@@ -469,7 +469,7 @@ msgstr "(%s sau khi mất)"
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
 #, php-format
 msgid "(age %s)"
-msgstr "(tuổi %s)"
+msgstr "(%s tuổi )"
 
 #. I18N: The age of an individual at a given date
 #: app/Age.php:196 app/Functions/FunctionsPrint.php:358
@@ -477,7 +477,7 @@ msgstr "(tuổi %s)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(tuổi %s)"
+msgstr "(%s tuổi)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:354
@@ -486,7 +486,7 @@ msgstr "(tuổi %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s tuổi)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:350
@@ -495,7 +495,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s tuổi)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -757,7 +757,7 @@ msgstr "Danh sách các cá nhân."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Một danh sách địa điểm."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -1498,7 +1498,7 @@ msgstr "Địa chỉ dòng 2"
 #: app/Factories/ElementFactory.php:383 app/Factories/ElementFactory.php:645
 #: app/Factories/ElementFactory.php:692 app/GedcomTag.php:436
 msgid "Address line 3"
-msgstr ""
+msgstr "Địa chỉ dòng 3"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55 app/GedcomCode/GedcomCodeTemp.php:231
@@ -1558,13 +1558,13 @@ msgstr "Được Mẹ Nhận Làm Con Nuôi"
 
 #: app/Factories/ElementFactory.php:754 app/Factories/ElementFactory.php:1278
 msgid "Adopted name"
-msgstr ""
+msgstr "Tên được đặt khi nhận nuôi"
 
 #. I18N: gedcom tag ADOP
 #: app/Factories/ElementFactory.php:421 app/Factories/ElementFactory.php:424
 #: app/GedcomTag.php:439
 msgid "Adoption"
-msgstr "Nhận là con nuôi"
+msgstr "Nhận con nuôi"
 
 #: app/Module/IndividualFactsTabModule.php:343
 msgid "Adoption of a brother"
@@ -2821,7 +2821,7 @@ msgstr "Sinh khoảng thời gian từ"
 
 #: app/Factories/ElementFactory.php:756
 msgid "Birth name"
-msgstr ""
+msgstr "Tên khai sinh"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
