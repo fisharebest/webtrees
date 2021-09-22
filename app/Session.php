@@ -39,7 +39,6 @@ use const PHP_SESSION_ACTIVE;
 use const PHP_URL_HOST;
 use const PHP_URL_PATH;
 use const PHP_URL_SCHEME;
-use const PHP_VERSION_ID;
 
 /**
  * Session handling
@@ -72,19 +71,14 @@ class Session
 
         session_name($secure ? self::SECURE_SESSION_NAME : self::SESSION_NAME);
         session_register_shutdown();
-        // Since PHP 7.3, we can set "SameSite: Lax" to help protect against CSRF attacks.
-        if (PHP_VERSION_ID > 70300) {
-            session_set_cookie_params([
-                'lifetime' => 0,
-                'path'     => $path . '/',
-                'domain'   => $domain,
-                'secure'   => $secure,
-                'httponly' => true,
-                'samesite' => 'Lax',
-            ]);
-        } else {
-            session_set_cookie_params(0, $path . '/', $domain, $secure, true);
-        }
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path'     => $path . '/',
+            'domain'   => $domain,
+            'secure'   => $secure,
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
         session_start();
 
         // A new session? Prevent session fixation attacks by choosing a new session ID.
