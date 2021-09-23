@@ -44,7 +44,6 @@ use function date;
 use function e;
 use function fclose;
 use function fopen;
-use function fseek;
 use function intdiv;
 use function microtime;
 use function response;
@@ -225,7 +224,7 @@ class UpgradeWizardStep implements RequestHandlerInterface
     private function wizardStepExport(Tree $tree, FilesystemOperator $data_filesystem): ResponseInterface
     {
         // We store the data in PHP temporary storage.
-        $stream = fopen('php://temp', 'wb+');
+        $stream = fopen('php://memory', 'wb+');
 
         if ($stream === false) {
             throw new RuntimeException('Failed to create temporary stream');
@@ -233,9 +232,8 @@ class UpgradeWizardStep implements RequestHandlerInterface
 
         $filename = $tree->name() . date('-Y-m-d') . '.ged';
 
-        $this->gedcom_export_service->export($tree, $stream);
+        $stream = $this->gedcom_export_service->export($tree);
 
-        fseek($stream, 0);
         $data_filesystem->writeStream($tree->name() . date('-Y-m-d') . '.ged', $stream);
         fclose($stream);
 

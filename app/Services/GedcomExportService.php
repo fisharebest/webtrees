@@ -35,9 +35,11 @@ use RuntimeException;
 
 use function date;
 use function explode;
+use function fopen;
 use function fwrite;
 use function mb_convert_encoding;
 use function pathinfo;
+use function rewind;
 use function str_contains;
 use function str_starts_with;
 use function strlen;
@@ -57,22 +59,28 @@ class GedcomExportService
      * Write GEDCOM data to a stream.
      *
      * @param Tree                    $tree         - Export data from this tree
-     * @param resource                $stream       - Write to this stream
      * @param bool                    $sort_by_xref - Write GEDCOM records in XREF order
      * @param string                  $encoding     - Convert from UTF-8 to other encoding
      * @param int                     $access_level - Apply privacy filtering
      * @param string                  $media_path   - Prepend path to media filenames
      * @param Collection<string>|null $records      - Just export these records
+     *
+     * @return resource
      */
     public function export(
         Tree $tree,
-        $stream,
         bool $sort_by_xref = false,
         string $encoding = 'UTF-8',
         int $access_level = Auth::PRIV_HIDE,
         string $media_path = '',
         Collection $records = null
-    ): void {
+    ) {
+        $stream = fopen('php://memory', 'wb+');
+
+        if ($stream === false) {
+            throw new RuntimeException('Failed to create temporary stream');
+        }
+
         if ($records instanceof Collection) {
             // Export just these records - e.g. from clippings cart.
             $data = [
@@ -137,6 +145,12 @@ class GedcomExportService
                 }
             }
         }
+
+        if (rewind($stream) === false) {
+            throw new RuntimeException('Cannot rewind temporary stream');
+        }
+
+        return $stream;
     }
 
     /**

@@ -151,7 +151,7 @@ class UpgradeService
     public function downloadFile(string $url, FilesystemOperator $filesystem, string $path): int
     {
         // We store the data in PHP temporary storage.
-        $tmp = fopen('php://temp', 'wb+');
+        $tmp = fopen('php://memory', 'wb+');
 
         // Read from the URL
         $client   = new Client();

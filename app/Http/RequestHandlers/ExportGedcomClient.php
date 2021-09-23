@@ -40,9 +40,7 @@ use RuntimeException;
 use function addcslashes;
 use function assert;
 use function fclose;
-use function fopen;
 use function pathinfo;
-use function rewind;
 use function strtolower;
 use function tmpfile;
 
@@ -118,16 +116,7 @@ class ExportGedcomClient implements RequestHandlerInterface
         }
 
         if ($zip || $media) {
-            // Export the GEDCOM to an in-memory stream.
-            $tmp_stream = fopen('php://temp', 'wb+');
-
-            if ($tmp_stream === false) {
-                throw new RuntimeException('Failed to create temporary stream');
-            }
-
-            $this->gedcom_export_service->export($tree, $tmp_stream, true, $encoding, $access_level, $media_path);
-
-            rewind($tmp_stream);
+            $resource = $this->gedcom_export_service->export($tree, true, $encoding, $access_level, $media_path);
 
             $path = $tree->getPreference('MEDIA_DIRECTORY');
 
@@ -136,8 +125,8 @@ class ExportGedcomClient implements RequestHandlerInterface
             $zip_provider   = new FilesystemZipArchiveProvider($temp_zip_file, 0755);
             $zip_adapter    = new ZipArchiveAdapter($zip_provider);
             $zip_filesystem = new Filesystem($zip_adapter);
-            $zip_filesystem->writeStream($download_filename, $tmp_stream);
-            fclose($tmp_stream);
+            $zip_filesystem->writeStream($download_filename, $resource);
+            fclose($resource);
 
             if ($media) {
                 $media_filesystem = $tree->mediaFilesystem($data_filesystem);
@@ -168,14 +157,7 @@ class ExportGedcomClient implements RequestHandlerInterface
                 ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
         }
 
-        $resource = fopen('php://temp', 'wb+');
-
-        if ($resource === false) {
-            throw new RuntimeException('Failed to create temporary stream');
-        }
-
-        $this->gedcom_export_service->export($tree, $resource, true, $encoding, $access_level, $media_path);
-        rewind($resource);
+        $resource = $this->gedcom_export_service->export($tree, true, $encoding, $access_level, $media_path);
 
         $charset = $convert ? 'ISO-8859-1' : 'UTF-8';
         $stream  = $this->stream_factory->createStreamFromResource($resource);

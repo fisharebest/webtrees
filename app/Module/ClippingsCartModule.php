@@ -63,12 +63,11 @@ use function array_keys;
 use function array_map;
 use function array_search;
 use function assert;
-use function fopen;
+use function fclose;
 use function in_array;
 use function is_string;
 use function preg_match_all;
 use function redirect;
-use function rewind;
 use function route;
 use function str_replace;
 use function stream_get_meta_data;
@@ -371,24 +370,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             }
         }
 
-        $stream = fopen('php://temp', 'wb+');
-
-        if ($stream === false) {
-            throw new RuntimeException('Failed to create temporary stream');
-        }
-
         // We have already applied privacy filtering, so do not do it again.
-        $this->gedcom_export_service->export($tree, $stream, false, $encoding, Auth::PRIV_HIDE, $path, $records);
-        rewind($stream);
+        $resource = $this->gedcom_export_service->export($tree, false, $encoding, Auth::PRIV_HIDE, $path, $records);
 
         // Finally add the GEDCOM file to the .ZIP file.
-        $zip_filesystem->writeStream('clippings.ged', $stream);
+        $zip_filesystem->writeStream('clippings.ged', $resource);
+        fclose($resource);
 
         // Use a stream, so that we do not have to load the entire file into memory.
-        $stream = $this->stream_factory->createStreamFromFile($temp_zip_file);
+        $resource = $this->stream_factory->createStreamFromFile($temp_zip_file);
 
         return $this->response_factory->createResponse()
-            ->withBody($stream)
+            ->withBody($resource)
             ->withHeader('Content-Type', 'application/zip')
             ->withHeader('Content-Disposition', 'attachment; filename="clippings.zip');
     }

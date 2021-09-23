@@ -157,7 +157,7 @@ class MapDataExportCSV implements RequestHandlerInterface
         $header[] = 'Zoom';
         $header[] = 'Icon';
 
-        $resource = fopen('php://temp', 'wb+');
+        $resource = fopen('php://memory', 'wb+');
 
         if ($resource === false) {
             throw new RuntimeException('Failed to create temporary stream');

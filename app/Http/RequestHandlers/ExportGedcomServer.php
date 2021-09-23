@@ -35,10 +35,8 @@ use RuntimeException;
 
 use function assert;
 use function fclose;
-use function fopen;
 use function pathinfo;
 use function redirect;
-use function rewind;
 use function route;
 use function strtolower;
 
@@ -85,16 +83,9 @@ class ExportGedcomServer implements RequestHandlerInterface
         }
 
         try {
-            $stream = fopen('php://temp', 'wb+');
-
-            if ($stream === false) {
-                throw new RuntimeException('Failed to create temporary stream');
-            }
-
-            $this->gedcom_export_service->export($tree, $stream, true);
-            rewind($stream);
-            $data_filesystem->writeStream($filename, $stream);
-            fclose($stream);
+            $resource = $this->gedcom_export_service->export($tree, true);
+            $data_filesystem->writeStream($filename, $resource);
+            fclose($resource);
 
             /* I18N: %s is a filename */
             FlashMessages::addMessage(I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');

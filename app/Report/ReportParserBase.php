@@ -27,7 +27,6 @@ use XMLParser;
 use function call_user_func;
 use function fclose;
 use function feof;
-use function fopen;
 use function fread;
 use function method_exists;
 use function sprintf;
