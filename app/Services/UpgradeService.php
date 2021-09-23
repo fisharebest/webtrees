@@ -26,7 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
@@ -146,6 +146,7 @@ class UpgradeService
      * @param string             $path
      *
      * @return int The number of bytes downloaded
+     * @throws GuzzleException
      * @throws FilesystemException
      */
     public function downloadFile(string $url, FilesystemOperator $filesystem, string $path): int
@@ -322,7 +323,7 @@ class UpgradeService
                     Site::setPreference('LATEST_WT_VERSION', $response->getBody()->getContents());
                     Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', (string) $current_timestamp);
                 }
-            } catch (RequestException $ex) {
+            } catch (GuzzleException $ex) {
                 // Can't connect to the server?
                 // Use the existing information about latest versions.
             }

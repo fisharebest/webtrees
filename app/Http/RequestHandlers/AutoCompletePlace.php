@@ -19,25 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Collection;
-use Iodev\Whois\Modules\Module;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
-use function is_array;
-use function json_decode;
-use function rawurlencode;
-
-use const JSON_THROW_ON_ERROR;
 
 /**
  * Autocomplete handler for places

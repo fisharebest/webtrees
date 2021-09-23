@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Registry;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -63,7 +63,7 @@ trait ModuleMapAutocompleteTrait
 
                 return [];
             }, $ttl);
-        } catch (RequestException $ex) {
+        } catch (GuzzleException $ex) {
             // Service down?  Quota exceeded?
             // Don't try for another hour.
             $cache->remember($key, fn () => [], 3600);
