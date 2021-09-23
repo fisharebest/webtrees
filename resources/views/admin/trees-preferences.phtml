@@ -41,7 +41,7 @@ use Illuminate\Support\Collection;
 <form method="post" action="<?= e(route(TreePreferencesAction::class, ['tree' => $tree->name()])) ?>" class="form-horizontal">
     <?= csrf_field() ?>
 
-    <h3><?= I18N::translate('General') ?></h3>
+    <h2><?= I18N::translate('General') ?></h2>
 
     <!-- TREE TITLE -->
     <div class="row form-group">
@@ -146,7 +146,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= I18N::translate('Contact information') ?></h3>
+    <h2><?= I18N::translate('Contact information') ?></h2>
 
     <!-- CONTACT_USER_ID -->
     <div class="row form-group">
@@ -188,7 +188,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <h3><?= I18N::translate('Website') ?></h3>
+    <h2><?= I18N::translate('Website') ?></h2>
 
     <!-- META_TITLE -->
     <div class="row form-group">
@@ -231,7 +231,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <?php if (Auth::isAdmin()) : ?>
-        <h3><?= I18N::translate('Media folders') ?></h3>
+        <h2><?= I18N::translate('Media folders') ?></h2>
 
         <!-- MEDIA_DIRECTORY -->
         <div class="row form-group">
@@ -256,7 +256,7 @@ use Illuminate\Support\Collection;
         </div>
     <?php endif ?>
 
-    <h3><?= I18N::translate('Media files') ?></h3>
+    <h2><?= I18N::translate('Media files') ?></h2>
 
     <!-- MEDIA_UPLOAD -->
     <div class="row form-group">
@@ -284,7 +284,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= I18N::translate('Thumbnail images') ?></h3>
+    <h2><?= I18N::translate('Thumbnail images') ?></h2>
 
     <!-- SHOW_HIGHLIGHT_IMAGES -->
     <fieldset class="row form-group">
@@ -312,7 +312,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= I18N::translate('Watermarks') ?></h3>
+    <h2><?= I18N::translate('Watermarks') ?></h2>
 
     <!-- SHOW_NO_WATERMARK -->
     <div class="row form-group">
@@ -327,7 +327,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <h3><?= I18N::translate('Lists') ?></h3>
+    <h2><?= I18N::translate('Lists') ?></h2>
 
     <!-- SURNAME_LIST_STYLE -->
     <div class="row form-group">
@@ -387,7 +387,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= I18N::translate('Charts') ?></h3>
+    <h2><?= I18N::translate('Charts') ?></h2>
 
     <!-- SHOW_PARENTS_AGE -->
     <fieldset class="row form-group">
@@ -417,7 +417,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <h3><?= I18N::translate('Individual pages') ?></h3>
+    <h2><?= I18N::translate('Individual pages') ?></h2>
 
     <!-- SHOW_RELATIVES_EVENTS -->
     <fieldset class="row form-group">
@@ -551,7 +551,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= I18N::translate('Places') ?></h3>
+    <h2><?= I18N::translate('Places') ?></h2>
 
     <!-- SHOW_PEDIGREE_PLACES -->
     <fieldset class="row form-group">
@@ -577,7 +577,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= I18N::translate('Text') ?></h3>
+    <h2><?= I18N::translate('Text') ?></h2>
 
     <!-- FORMAT_TEXT -->
     <fieldset class="row form-group">
@@ -594,7 +594,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= I18N::translate('General') ?></h3>
+    <h2><?= I18N::translate('General') ?></h2>
 
     <!-- SHOW_GEDCOM_RECORD -->
     <fieldset class="row form-group">
@@ -635,9 +635,9 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <h3><?= /* I18N: Options for editing */ I18N::translate('Edit preferences') ?></h3>
+    <h2><?= /* I18N: Options for editing */ I18N::translate('Edit preferences') ?></h2>
 
-    <h3><?= I18N::translate('Facts for individual records') ?></h3>
+    <h2><?= I18N::translate('Facts for individual records') ?></h2>
 
     <!-- QUICK_REQUIRED_FACTS -->
     <div class="row form-group">
@@ -662,7 +662,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <h3><?= I18N::translate('Facts for family records') ?></h3>
+    <h2><?= I18N::translate('Facts for family records') ?></h2>
 
     <!-- QUICK_REQUIRED_FAMFACTS -->
     <div class="row form-group">
@@ -687,7 +687,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <h3><?= I18N::translate('Other preferences') ?></h3>
+    <h2><?= I18N::translate('Other preferences') ?></h2>
 
     <!-- SURNAME_TRADITION -->
     <fieldset class="row form-group">
