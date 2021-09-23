@@ -246,6 +246,6 @@ abstract class AbstractModule implements ModuleInterface
      */
     public function resourcesFolder(): string
     {
-        return Webtrees::ROOT_DIR . 'resources/';
+        return 'resources/';
     }
 }

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Report;
 
 use DomainException;
 use Exception;
+use Fisharebest\Webtrees\Registry;
 use XMLParser;
 
 use function call_user_func;
@@ -83,11 +84,7 @@ class ReportParserBase
             }
         );
 
-        $fp = fopen($report, 'rb');
-
-        if ($fp === false) {
-            throw new Exception('Cannot open ' . $report);
-        }
+        $fp = Registry::filesystem()->root()->readStream($report);
 
         while ($data = fread($fp, 4096)) {
             if (!xml_parse($this->xml_parser, $data, feof($fp))) {
