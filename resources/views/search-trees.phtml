@@ -30,12 +30,12 @@ use Illuminate\Support\Collection;
                         <?php endif ?>
                         <div>
                             <?php foreach ($search_trees as $n => $tree) : ?>
-                                <?= view('components/checkbox', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => $tree->name(), 'label' => $tree->title()]) ?>
+                                <?= view('components/checkbox', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => e($tree->name()), 'label' => e($tree->title())]) ?>
                             <?php endforeach ?>
                             <div id="more-trees" class="<?= $all_trees->count() > $search_trees->count() ? 'collapse' : '' ?>">
                                 <?php foreach ($all_trees as $n => $tree) : ?>
                                     <?php if (!$search_trees->containsStrict($tree)): ?>
-                                        <?= view('components/checkbox', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => $tree->name(), 'label' => $tree->title()]) ?>
+                                        <?= view('components/checkbox', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => e($tree->name()), 'label' => e($tree->title())]) ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
                             </div>
@@ -56,7 +56,7 @@ use Illuminate\Support\Collection;
                 </div>
                 <?php else: ?>
                     <?php foreach ($all_trees as $n => $tree) : ?>
-                        <?= view('components/checkbox-inline', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => $tree->name(), 'label' => $tree->title()]) ?>
+                        <?= view('components/checkbox-inline', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => e($tree->name()), 'label' => e($tree->title())]) ?>
                     <?php endforeach ?>
                 <?php endif ?>
             </div>
