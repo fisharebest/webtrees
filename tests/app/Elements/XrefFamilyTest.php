@@ -65,7 +65,7 @@ class XrefFamilyTest extends TestCase
         self::assertEquals(1, count($select_nodes));
 
         $option_nodes = $select_nodes[0]->getElementsByTagName('option');
-        self::assertEquals(1, $option_nodes->count());
+        self::assertEquals(1, count($option_nodes));
     }
 
     /**
