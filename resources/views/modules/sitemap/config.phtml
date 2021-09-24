@@ -31,7 +31,7 @@ use Illuminate\Support\Collection;
     <?= csrf_field() ?>
 
     <?php foreach ($all_trees as $tree) : ?>
-        <?= view('components/checkbox', ['label' => $tree->title(), 'name' => 'sitemap' . $tree->id(), 'checked' => (bool) $tree->getPreference('include_in_sitemap')]) ?>
+        <?= view('components/checkbox', ['label' => e($tree->title()), 'name' => 'sitemap' . $tree->id(), 'checked' => (bool) $tree->getPreference('include_in_sitemap')]) ?>
     <?php endforeach ?>
 
 <button type="submit" class="btn btn-primary">
