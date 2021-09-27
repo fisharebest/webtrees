@@ -213,9 +213,11 @@ class FunctionsPrintFacts
 
         // Secondary attributes
         echo '<div class="mb-2">';
-        preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') ?(.*)((\n[3-9].*)*)/', $fact->gedcom(), $l2_matches, PREG_SET_ORDER);
+        preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') ?(.*(?:\n3 CONT.*)*)((\n[3-9].*)*)/', $fact->gedcom(), $l2_matches, PREG_SET_ORDER);
 
         foreach ($l2_matches as $l2_match) {
+            $value = preg_replace('/\n3 CONT ?/', "\n", $l2_match[2]);
+
             switch ($l2_match[1]) {
                 case 'DATE':
                 case 'TIME':
@@ -248,7 +250,7 @@ class FunctionsPrintFacts
                         break;
                     }
 
-                    echo $element->labelValue($l2_match[2], $tree);
+                    echo $element->labelValue($value, $tree);
 
                     preg_match_all('/\n3 (' . Gedcom::REGEX_TAG . ') ?(.*)((\n[4-9].*)*)/', $l2_match[3], $l3_matches, PREG_SET_ORDER);
 
