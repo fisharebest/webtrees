@@ -23,6 +23,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 
+use function explode;
+use function htmlspecialchars_decode;
+use function preg_match;
+use function preg_replace;
+use function strip_tags;
+use function trim;
+
+use const ENT_QUOTES;
+
 /**
  * A GEDCOM note (NOTE) object.
  */
@@ -90,7 +99,9 @@ class Note extends GedcomRecord
         // Take the first line
         [$text] = explode("\n", strip_tags(trim($text)));
 
+
         if ($text !== '') {
+            $text = htmlspecialchars_decode($text, ENT_QUOTES);
             $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());
         }
     }
