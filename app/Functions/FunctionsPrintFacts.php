@@ -176,6 +176,9 @@ class FunctionsPrintFacts
         echo '</th>';
         echo '<td>';
 
+        // Primary attributes (value/type/date/place)
+        echo '<div class=mb-2>';
+
         // Event from another record?
         if ($parent !== $record) {
             if ($parent instanceof Family) {
@@ -203,28 +206,13 @@ class FunctionsPrintFacts
             echo Registry::elementFactory()->make($fact->tag() . ':TYPE')->labelValue($type, $tree);
         }
 
-        // Print the date of this fact/event
         echo FunctionsPrint::formatFactDate($fact, $record, true, true);
 
-        // Print the place of this fact/event
         echo '<div class="place">', FunctionsPrint::formatFactPlace($fact, true, true, true), '</div>';
-        // A blank line between the primary attributes (value, date, place) and the secondary ones
+        echo '</div>';
 
-        if ($value !== '' || $fact->attribute('PLAC') !== '' || $fact->attribute('DATE') !== '') {
-            echo '<br>';
-        }
-
-        $addr = $fact->attribute('ADDR');
-        if ($addr !== '') {
-            echo Registry::elementFactory()->make($fact->tag() . ':ADDR')->labelValue($addr, $tree);
-        }
-
-        // Print the associates of this fact/event
-        if ($id !== 'asso') {
-            echo self::formatAssociateRelationship($fact);
-        }
-
-        // Print any other "2 XXXX" attributes, in the order in which they appear.
+        // Secondary attributes
+        echo '<div class="mb-2">';
         preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') ?(.*)((\n[3-9].*)*)/', $fact->gedcom(), $l2_matches, PREG_SET_ORDER);
 
         foreach ($l2_matches as $l2_match) {
@@ -235,7 +223,6 @@ class FunctionsPrintFacts
                 case 'HUSB':
                 case 'WIFE':
                 case 'PLAC':
-                case 'ADDR':
                 case 'ALIA':
                 case 'ASSO':
                 case '_ASSO':
@@ -304,6 +291,15 @@ class FunctionsPrintFacts
                     break;
             }
         }
+        echo '</div>';
+
+        // Print the associates of this fact/event
+        if ($id !== 'asso') {
+            echo '<div class="mb-2">';
+            echo self::formatAssociateRelationship($fact);
+            echo '</div>';
+        }
+
         echo self::printFactSources($tree, $fact->gedcom(), 2);
         echo FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2);
         self::printMediaLinks($tree, $fact->gedcom(), 2);
