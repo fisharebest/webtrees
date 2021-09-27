@@ -84,7 +84,7 @@ class NoteStructure extends AbstractElement
             $submitter_text->edit($id, $name, $value, $tree) .
             '</div>' .
             '<div id="' . e($id) . '-shared" class="d-none">' .
-            $xref_note->edit($id, $name, $value, $tree) .
+            $xref_note->edit($id . '-select', $name, $value, $tree) .
             '</div>' .
             '</div>' .
             '<script>' .
