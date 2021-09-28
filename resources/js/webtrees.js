@@ -94,7 +94,9 @@
     surn = inflectSurname(trim(surn.replace(/,/g, separator)), sex);
     nsfx = trim(nsfx);
 
-    const surname = trim(spfx + separator + surn);
+    const surname_separator = spfx.endsWith('\'') || spfx.endsWith('‘') ? '' : ' ';
+
+    const surname = trim(spfx + surname_separator + surn);
 
     const name = surnameFirst ? slash + surname + slash + separator + givn : givn + separator + slash + surname + slash;
 
