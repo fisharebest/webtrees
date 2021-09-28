@@ -212,16 +212,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * Can this block be shown on the user’s home page?
-     *
-     * @return bool
-     */
-    public function isUserBlock(): bool
-    {
-        return true;
-    }
-
-    /**
      * Can this block be shown on the tree’s home page?
      *
      * @return bool
