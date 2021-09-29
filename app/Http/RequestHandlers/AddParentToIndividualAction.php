@@ -85,6 +85,9 @@ class AddParentToIndividualAction implements RequestHandlerInterface
         // Link the parent to the family
         $parent->createFact('1 FAMS @' . $family->xref() . '@', false);
 
-        return redirect($params['url'] ?? $parent->url());
+        $base_url = $request->getAttribute('base_url');
+        $url      = str_starts_with($params['url'], $base_url) ? $params['url'] : $parent->url();
+
+        return redirect($url);
     }
 }

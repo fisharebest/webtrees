@@ -59,9 +59,10 @@ class EmptyClipboard implements RequestHandlerInterface
     {
         $params = (array) $request->getParsedBody();
 
-        $url = $params['url'] ?? $request->getHeaderLine('Referer');
-
         $this->clipboard_service->emptyClipboard();
+
+        $base_url = $request->getAttribute('base_url');
+        $url      = str_starts_with($params['url'], $base_url) ? $params['url'] : $request->getHeaderLine('Referer');
 
         return redirect($url);
     }

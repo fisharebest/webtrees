@@ -82,7 +82,8 @@ class LoginAction implements RequestHandlerInterface
             }
 
             // Redirect to the target URL
-            $url = $url ?: route(HomePage::class);
+            $base_url = $request->getAttribute('base_url');
+            $url      = str_starts_with($url, $base_url) ? $url : route(HomePage::class);
 
             return redirect($url);
         } catch (Exception $ex) {

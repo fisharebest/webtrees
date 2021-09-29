@@ -65,6 +65,9 @@ class AddUnlinkedAction implements RequestHandlerInterface
 
         $individual = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
 
-        return redirect($params['url'] ?? $individual->url());
+        $base_url = $request->getAttribute('base_url');
+        $url      = str_starts_with($params['url'], $base_url) ? $params['url'] : $individual->url();
+
+        return redirect($url);
     }
 }
