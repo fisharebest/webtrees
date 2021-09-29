@@ -146,7 +146,8 @@ class ContactAction implements RequestHandlerInterface
         if ($this->message_service->deliverMessage($sender, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
-            $url = $url ?: route(TreePage::class, ['tree' => $tree->name()]);
+            $base_url = $request->getAttribute('base_url');
+            $url      = str_starts_with($url, $base_url) ? $url : route(TreePage::class, ['tree' => $tree->name()]);
 
             return redirect($url);
         }
