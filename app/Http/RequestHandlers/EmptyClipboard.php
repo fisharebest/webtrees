@@ -19,16 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -57,12 +53,11 @@ class EmptyClipboard implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         $this->clipboard_service->emptyClipboard();
 
-        $base_url = $request->getAttribute('base_url');
-        $url      = str_starts_with($params['url'], $base_url) ? $params['url'] : $request->getHeaderLine('Referer');
+        $base_url    = $request->getAttribute('base_url');
+        $default_url = $request->getHeaderLine('Referer');
+        $url         = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $default_url;
 
         return redirect($url);
     }
