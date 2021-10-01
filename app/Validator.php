@@ -138,7 +138,7 @@ class Validator
             $value = [];
         }
 
-        return array_reduce($this->rules, static fn($rule) => $rule($value), $value);
+        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
     }
 
     /**
@@ -156,7 +156,7 @@ class Validator
             $value = null;
         }
 
-        return array_reduce($this->rules, static fn($rule) => $rule($value), $value);
+        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
     }
 
     /**
@@ -172,6 +172,6 @@ class Validator
             $value = null;
         }
 
-        return array_reduce($this->rules, static fn($value, $rule) => $rule($value), $value);
+        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
     }
 }
