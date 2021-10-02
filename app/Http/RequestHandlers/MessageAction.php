@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -71,14 +72,15 @@ class MessageAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user    = $request->getAttribute('user');
-        $params  = (array) $request->getParsedBody();
-        $body    = $params['body'];
-        $subject = $params['subject'];
-        $to      = $params['to'];
-        $url     = $params['url'];
-        $to_user = $this->user_service->findByUserName($to);
-        $ip      = $request->getAttribute('client-ip');
+        $user     = $request->getAttribute('user');
+        $params   = (array) $request->getParsedBody();
+        $body     = $params['body'];
+        $subject  = $params['subject'];
+        $to       = $params['to'];
+        $to_user  = $this->user_service->findByUserName($to);
+        $ip       = $request->getAttribute('client-ip');
+        $base_url = $request->getAttribute('base_url');
+        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $base_url;
 
         if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'none') {
             throw new HttpAccessDeniedException('Invalid contact user id');
@@ -96,9 +98,6 @@ class MessageAction implements RequestHandlerInterface
 
         if ($this->message_service->deliverMessage($user, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
-
-            $base_url = $request->getAttribute('base_url');
-            $url      = str_starts_with($url, $base_url) ? $url : route(TreePage::class, ['tree' => $tree->name()]);
 
             return redirect($url);
         }

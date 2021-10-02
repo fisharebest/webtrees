@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -68,13 +69,11 @@ class LoginAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-
-        $params = (array) $request->getParsedBody();
-
-        $username = $params['username'];
-        $password = $params['password'];
-        $url      = $params['url'];
+        $tree     = $request->getAttribute('tree');
+        $base_url = $request->getAttribute('base_url');
+        $username = Validator::parsedBody($request)->string('username') ?? '';
+        $password = Validator::parsedBody($request)->string('password') ?? '';
+        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $base_url;
 
         try {
             $this->doLogin($username, $password);
@@ -84,9 +83,6 @@ class LoginAction implements RequestHandlerInterface
             }
 
             // Redirect to the target URL
-            $base_url = $request->getAttribute('base_url');
-            $url      = str_starts_with($url, $base_url) ? $url : route(HomePage::class);
-
             return redirect($url);
         } catch (Exception $ex) {
             // Failed to log in.
