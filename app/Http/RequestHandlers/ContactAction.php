@@ -94,7 +94,7 @@ class ContactAction implements RequestHandlerInterface
         $from_name  = Validator::parsedBody($request)->string('from_name') ?? '';
         $subject    = Validator::parsedBody($request)->string('subject') ?? '';
         $to         = Validator::parsedBody($request)->string('to') ?? '';
-        $url        = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? '';
+        $url        = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $base_url;
         $ip         = $request->getAttribute('client-ip');
         $to_user    = $this->user_service->findByUserName($to);
 
@@ -140,8 +140,6 @@ class ContactAction implements RequestHandlerInterface
 
         if ($this->message_service->deliverMessage($sender, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
-
-            $url = str_starts_with($url, $base_url) ? $url : route(TreePage::class, ['tree' => $tree->name()]);
 
             return redirect($url);
         }

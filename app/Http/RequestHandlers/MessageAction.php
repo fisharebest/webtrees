@@ -70,16 +70,15 @@ class MessageAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user        = $request->getAttribute('user');
-        $params      = (array) $request->getParsedBody();
-        $body        = $params['body'];
-        $subject     = $params['subject'];
-        $to          = $params['to'];
-        $to_user     = $this->user_service->findByUserName($to);
-        $ip          = $request->getAttribute('client-ip');
-        $base_url    = $request->getAttribute('base_url');
-        $default_url = route(TreePage::class, ['tree' => $tree->name()]);
-        $url         = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $default_url;
+        $user     = $request->getAttribute('user');
+        $params   = (array) $request->getParsedBody();
+        $body     = $params['body'];
+        $subject  = $params['subject'];
+        $to       = $params['to'];
+        $to_user  = $this->user_service->findByUserName($to);
+        $ip       = $request->getAttribute('client-ip');
+        $base_url = $request->getAttribute('base_url');
+        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $base_url;
 
         if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'none') {
             throw new HttpAccessDeniedException('Invalid contact user id');
