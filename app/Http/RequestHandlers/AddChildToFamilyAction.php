@@ -79,7 +79,7 @@ class AddChildToFamilyAction implements RequestHandlerInterface
         $family->createFact('1 CHIL @' . $child->xref() . '@', false);
 
         $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $child->url();
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $child->url();
 
         return redirect($url);
     }

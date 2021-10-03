@@ -17,22 +17,22 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Exceptions;
+namespace Fisharebest\Webtrees\Http\Exceptions;
 
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Exception thrown when a family does not exist.
+ * Application level exceptions.
  */
-class FamilyNotFoundException extends HttpNotFoundException
+class HttpAccessDeniedException extends HttpException
 {
     /**
-     * FamilyNotFoundException constructor.
+     * @param string|null $message
      */
-    public function __construct()
+    public function __construct(string $message = null)
     {
-        parent::__construct(I18N::translate(
-            'This family does not exist or you do not have permission to view it.'
-        ));
+        $message ??= I18N::translate('You do not have permission to view this page.');
+
+        parent::__construct($message, self::STATUS_FORBIDDEN);
     }
 }

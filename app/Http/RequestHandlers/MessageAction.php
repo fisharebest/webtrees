@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
@@ -78,7 +78,7 @@ class MessageAction implements RequestHandlerInterface
         $to_user  = $this->user_service->findByUserName($to);
         $ip       = $request->getAttribute('client-ip');
         $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $base_url;
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $base_url;
 
         if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'none') {
             throw new HttpAccessDeniedException('Invalid contact user id');

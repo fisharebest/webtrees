@@ -20,12 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -51,13 +52,13 @@ class RedirectMediaViewerPhp implements RequestHandlerInterface
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
+     * @throws HttpNotFoundException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $mid   = $query['mid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+        $ged  = Validator::queryParams($request)->requiredString('ged');
+        $mid  = Validator::queryParams($request)->isXref()->requiredString('mid');
+        $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
             $media = Registry::mediaFactory()->make($mid, $tree);
@@ -67,6 +68,8 @@ class RedirectMediaViewerPhp implements RequestHandlerInterface
             }
         }
 
-        throw new MediaNotFoundException();
+        $message = I18N::translate('This media object does not exist or you do not have permission to view it.');
+
+        throw new HttpNotFoundException($message);
     }
 }

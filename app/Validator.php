@@ -20,15 +20,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use LogicException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;
 use function ctype_digit;
+use function gettype;
 use function is_array;
 use function is_int;
 use function is_string;
 use function parse_url;
+use function preg_match;
 use function str_starts_with;
 
 /**
@@ -80,20 +83,29 @@ class Validator
     {
         $this->rules[] = static function ($value) use ($minimum, $maximum): ?int {
             if (is_int($value)) {
-                if ($value < $minimum || $value > $maximum) {
-                    return null;
+                if ($value >= $minimum && $value <= $maximum) {
+                    return $value;
                 }
 
-                return $value;
+                return null;
             }
 
-            throw new LogicException('Validator::isBetween() can only be used for integers');
+            if ($value === null) {
+                return null;
+            }
+
+            throw new LogicException(__METHOD__ . ' does not accept ' . gettype($value));
         };
 
         return $this;
     }
 
-    public function localUrl(string $base_url): self
+    /**
+     * @param string $base_url
+     *
+     * @return $this
+     */
+    public function isLocalUrl(string $base_url): self
     {
         $this->rules[] = static function ($value) use ($base_url): ?string {
             if (is_string($value)) {
@@ -119,7 +131,45 @@ class Validator
                 return null;
             }
 
-            throw new LogicException(__METHOD__ . ' can only be used for strings');
+            if ($value === null) {
+                return null;
+            }
+
+            throw new LogicException(__METHOD__ . ' does not accept ' . gettype($value));
+        };
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function isXref(): self
+    {
+        $this->rules[] = static function ($value) {
+            if (is_string($value)) {
+                if (preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value)) {
+                    return $value;
+                }
+
+                return null;
+            }
+
+            if (is_array($value)) {
+                foreach ($value as $item) {
+                    if (!preg_match('/^' . Gedcom::REGEX_XREF . '$/', $item)) {
+                        return null;
+                    }
+                }
+
+                return $value;
+            }
+
+            if ($value === null) {
+                return null;
+            }
+
+            throw new LogicException(__METHOD__ . ' does not accept ' . gettype($value));
         };
 
         return $this;
@@ -135,7 +185,7 @@ class Validator
         $value = $this->parameters[$parameter] ?? null;
 
         if (!is_array($value)) {
-            $value = [];
+            $value = null;
         }
 
         return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
@@ -173,5 +223,53 @@ class Validator
         }
 
         return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
+    }
+
+    /**
+     * @param string $parameter
+     *
+     * @return array<string>
+     */
+    public function requiredArray(string $parameter): array
+    {
+        $value = $this->array($parameter);
+
+        if (is_array($value)) {
+            return $value;
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+    }
+
+    /**
+     * @param string $parameter
+     *
+     * @return int
+     */
+    public function requiredInteger(string $parameter): int
+    {
+        $value = $this->integer($parameter);
+
+        if (is_int($value)) {
+            return $value;
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+    }
+
+    /**
+     * @param string $parameter
+     *
+     * @return string
+     */
+    public function requiredString(string $parameter): string
+    {
+        $value = $this->string($parameter);
+
+        if (is_string($value)) {
+            return $value;
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
     }
 }

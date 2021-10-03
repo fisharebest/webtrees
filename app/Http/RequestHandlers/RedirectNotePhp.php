@@ -20,12 +20,13 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -51,13 +52,13 @@ class RedirectNotePhp implements RequestHandlerInterface
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
+     * @throws HttpNotFoundException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $nid   = $query['nid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+        $ged  = Validator::queryParams($request)->requiredString('ged');
+        $nid  = Validator::queryParams($request)->isXref()->requiredString('nid');
+        $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
             $note = Registry::noteFactory()->make($nid, $tree);
@@ -67,6 +68,8 @@ class RedirectNotePhp implements RequestHandlerInterface
             }
         }
 
-        throw new NoteNotFoundException();
+        $message = I18N::translate('This note does not exist or you do not have permission to view it.');
+
+        throw new HttpNotFoundException($message);
     }
 }

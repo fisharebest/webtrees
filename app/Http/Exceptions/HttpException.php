@@ -17,22 +17,24 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Exceptions;
+namespace Fisharebest\Webtrees\Http\Exceptions;
 
-use Fisharebest\Webtrees\I18N;
+use Fig\Http\Message\StatusCodeInterface;
+use RuntimeException;
+use Throwable;
 
 /**
- * Exception thrown when a repository does not exist.
+ * Application level exceptions.
  */
-class RepositoryNotFoundException extends HttpNotFoundException
+class HttpException extends RuntimeException implements StatusCodeInterface
 {
     /**
-     * RepositoryNotFoundException constructor.
+     * @param string         $message
+     * @param int            $status_code
+     * @param Throwable|null $previous
      */
-    public function __construct()
+    public function __construct(string $message, int $status_code, Throwable $previous = null)
     {
-        parent::__construct(I18N::translate(
-            'This repository does not exist or you do not have permission to view it.'
-        ));
+        parent::__construct($message, $status_code, $previous);
     }
 }

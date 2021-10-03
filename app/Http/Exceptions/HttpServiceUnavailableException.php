@@ -17,32 +17,20 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Exceptions;
+namespace Fisharebest\Webtrees\Http\Exceptions;
 
-use Fisharebest\Webtrees\I18N;
-use Psr\Http\Message\ServerRequestInterface;
+use Fig\Http\Message\StatusCodeInterface;
 
 /**
- * Application level exceptions.
+ * Exception thrown when the server is overloaded.
  */
-class MissingParameterException extends HttpBadRequestException
+class HttpServiceUnavailableException extends HttpException
 {
     /**
-     * @param ServerRequestInterface $request
-     * @param string                 $parameter
+     * @param string $message
      */
-    public function __construct(ServerRequestInterface $request, string $parameter)
+    public function __construct(string $message)
     {
-        $message = I18N::translate('The parameter “%s” is missing.', $parameter);
-
-        $referer = $request->getHeaderLine('Referer');
-
-        if ($referer !== '') {
-            $message .= ' ';
-            /* I18N: %s is a URL */
-            $message .= I18N::translate('This could be caused by an error at %s', $referer);
-        }
-
-        parent::__construct($message);
+        parent::__construct($message, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
     }
 }

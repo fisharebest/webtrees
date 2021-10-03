@@ -72,7 +72,7 @@ class LoginAction implements RequestHandlerInterface
         $default_url = route(HomePage::class);
         $username    = Validator::parsedBody($request)->string('username') ?? '';
         $password    = Validator::parsedBody($request)->string('password') ?? '';
-        $url         = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $default_url;
+        $url         = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $default_url;
 
         try {
             $this->doLogin($username, $password);

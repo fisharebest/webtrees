@@ -17,22 +17,22 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Exceptions;
+namespace Fisharebest\Webtrees\Http\Exceptions;
 
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Exception thrown when a media cannot be accessed due to privacy rules.
+ * Application level exceptions.
  */
-class MediaAccessDeniedException extends HttpAccessDeniedException
+class HttpNotFoundException extends HttpException
 {
     /**
-     * MediaNotFoundException constructor.
+     * @param string|null $message
      */
-    public function __construct()
+    public function __construct(string $message = null)
     {
-        parent::__construct(I18N::translate(
-            'This media object does not exist or you do not have permission to view it.'
-        ));
+        $message ??= I18N::translate('You do not have permission to view this page.');
+
+        parent::__construct($message, self::STATUS_NOT_FOUND);
     }
 }

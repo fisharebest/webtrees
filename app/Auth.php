@@ -20,21 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Exceptions\FamilyAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\FamilyNotFoundException;
-use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\IndividualAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\IndividualNotFoundException;
-use Fisharebest\Webtrees\Exceptions\MediaAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\MediaNotFoundException;
-use Fisharebest\Webtrees\Exceptions\NoteAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\NoteNotFoundException;
-use Fisharebest\Webtrees\Exceptions\RecordAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\RecordNotFoundException;
-use Fisharebest\Webtrees\Exceptions\RepositoryAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\RepositoryNotFoundException;
-use Fisharebest\Webtrees\Exceptions\SourceAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\SourceNotFoundException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
@@ -191,7 +178,7 @@ class Auth
      */
     public static function login(UserInterface $user): void
     {
-        Session::regenerate(false);
+        Session::regenerate();
         Session::put('wt_user', $user->id());
     }
 
@@ -225,13 +212,15 @@ class Auth
      * @param bool        $edit
      *
      * @return Family
-     * @throws FamilyNotFoundException
-     * @throws FamilyAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkFamilyAccess(?Family $family, bool $edit = false): Family
     {
+        $message = I18N::translate('This family does not exist or you do not have permission to view it.');
+
         if ($family === null) {
-            throw new FamilyNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $family->canEdit()) {
@@ -244,7 +233,7 @@ class Auth
             return $family;
         }
 
-        throw new FamilyAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
@@ -252,13 +241,15 @@ class Auth
      * @param bool        $edit
      *
      * @return Header
-     * @throws RecordNotFoundException
-     * @throws RecordAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkHeaderAccess(?Header $header, bool $edit = false): Header
     {
+        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
+
         if ($header === null) {
-            throw new RecordNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $header->canEdit()) {
@@ -271,22 +262,24 @@ class Auth
             return $header;
         }
 
-        throw new RecordAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
      * @param Individual|null $individual
      * @param bool            $edit
-     * @param bool            $chart      For some charts, we can show private records
+     * @param bool            $chart For some charts, we can show private records
      *
      * @return Individual
-     * @throws IndividualNotFoundException
-     * @throws IndividualAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
-    public static function checkIndividualAccess(?Individual $individual, bool $edit = false, $chart = false): Individual
+    public static function checkIndividualAccess(?Individual $individual, bool $edit = false, bool $chart = false): Individual
     {
+        $message = I18N::translate('This individual does not exist or you do not have permission to view it.');
+
         if ($individual === null) {
-            throw new IndividualNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $individual->canEdit()) {
@@ -303,21 +296,23 @@ class Auth
             return $individual;
         }
 
-        throw new IndividualAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
      * @param Location|null $location
-     * @param bool       $edit
+     * @param bool          $edit
      *
      * @return Location
-     * @throws RecordNotFoundException
-     * @throws RecordAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkLocationAccess(?Location $location, bool $edit = false): Location
     {
+        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
+
         if ($location === null) {
-            throw new RecordNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $location->canEdit()) {
@@ -330,7 +325,7 @@ class Auth
             return $location;
         }
 
-        throw new RecordAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
@@ -338,13 +333,15 @@ class Auth
      * @param bool       $edit
      *
      * @return Media
-     * @throws MediaNotFoundException
-     * @throws MediaAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkMediaAccess(?Media $media, bool $edit = false): Media
     {
+        $message = I18N::translate('This media object does not exist or you do not have permission to view it.');
+
         if ($media === null) {
-            throw new MediaNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $media->canEdit()) {
@@ -357,7 +354,7 @@ class Auth
             return $media;
         }
 
-        throw new MediaAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
@@ -365,13 +362,15 @@ class Auth
      * @param bool      $edit
      *
      * @return Note
-     * @throws NoteNotFoundException
-     * @throws NoteAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkNoteAccess(?Note $note, bool $edit = false): Note
     {
+        $message = I18N::translate('This note does not exist or you do not have permission to view it.');
+
         if ($note === null) {
-            throw new NoteNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $note->canEdit()) {
@@ -384,7 +383,7 @@ class Auth
             return $note;
         }
 
-        throw new NoteAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
@@ -392,13 +391,15 @@ class Auth
      * @param bool              $edit
      *
      * @return GedcomRecord
-     * @throws RecordNotFoundException
-     * @throws RecordAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkRecordAccess(?GedcomRecord $record, bool $edit = false): GedcomRecord
     {
+        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
+
         if ($record === null) {
-            throw new RecordNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $record->canEdit()) {
@@ -411,7 +412,7 @@ class Auth
             return $record;
         }
 
-        throw new RecordAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
@@ -419,13 +420,15 @@ class Auth
      * @param bool            $edit
      *
      * @return Repository
-     * @throws RepositoryNotFoundException
-     * @throws RepositoryAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkRepositoryAccess(?Repository $repository, bool $edit = false): Repository
     {
+        $message = I18N::translate('This repository does not exist or you do not have permission to view it.');
+
         if ($repository === null) {
-            throw new RepositoryNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $repository->canEdit()) {
@@ -438,7 +441,7 @@ class Auth
             return $repository;
         }
 
-        throw new RepositoryAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**
@@ -446,13 +449,15 @@ class Auth
      * @param bool        $edit
      *
      * @return Source
-     * @throws SourceNotFoundException
-     * @throws SourceAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkSourceAccess(?Source $source, bool $edit = false): Source
     {
+        $message = I18N::translate('This source does not exist or you do not have permission to view it.');
+
         if ($source === null) {
-            throw new SourceNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $source->canEdit()) {
@@ -465,7 +470,7 @@ class Auth
             return $source;
         }
 
-        throw new SourceAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /*
@@ -473,13 +478,15 @@ class Auth
      * @param bool           $edit
      *
      * @return Submitter
-     * @throws RecordNotFoundException
-     * @throws RecordAccessDeniedException
+     * @throws HttpFoundException
+     * @throws HttpDeniedException
      */
     public static function checkSubmitterAccess(?Submitter $submitter, bool $edit = false): Submitter
     {
+        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
+
         if ($submitter === null) {
-            throw new RecordNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $submitter->canEdit()) {
@@ -492,7 +499,7 @@ class Auth
             return $submitter;
         }
 
-        throw new RecordAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /*
@@ -500,13 +507,15 @@ class Auth
      * @param bool            $edit
      *
      * @return Submission
-     * @throws RecordNotFoundException
-     * @throws RecordAccessDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkSubmissionAccess(?Submission $submission, bool $edit = false): Submission
     {
+        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
+
         if ($submission === null) {
-            throw new RecordNotFoundException();
+            throw new HttpNotFoundException($message);
         }
 
         if ($edit && $submission->canEdit()) {
@@ -519,7 +528,7 @@ class Auth
             return $submission;
         }
 
-        throw new RecordAccessDeniedException();
+        throw new HttpAccessDeniedException($message);
     }
 
     /**

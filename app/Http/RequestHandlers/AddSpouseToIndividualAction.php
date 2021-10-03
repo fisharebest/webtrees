@@ -90,7 +90,7 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $spouse->createFact('1 FAMS @' . $family->xref() . '@', false);
 
         $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $spouse->url();
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $spouse->url();
 
         return redirect($url);
     }

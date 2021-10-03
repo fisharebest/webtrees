@@ -17,22 +17,20 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Exceptions;
+namespace Fisharebest\Webtrees\Http\Exceptions;
 
-use Fisharebest\Webtrees\I18N;
+use Fig\Http\Message\StatusCodeInterface;
 
 /**
- * Exception thrown when a source cannot be accessed due to privacy rules.
+ * Exception thrown when we have some sort of fatal error.
  */
-class SourceAccessDeniedException extends HttpAccessDeniedException
+class HttpServerErrorException extends HttpException
 {
     /**
-     * SourceNotFoundException constructor.
+     * @param string $message
      */
-    public function __construct()
+    public function __construct(string $message)
     {
-        parent::__construct(I18N::translate(
-            'This source does not exist or you do not have permission to view it.'
-        ));
+        parent::__construct($message, StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 }

@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Exceptions\HttpAccessDeniedException;
-use Fisharebest\Webtrees\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\GuestUser;
+use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CaptchaService;
@@ -94,7 +94,7 @@ class ContactAction implements RequestHandlerInterface
         $from_name  = Validator::parsedBody($request)->string('from_name') ?? '';
         $subject    = Validator::parsedBody($request)->string('subject') ?? '';
         $to         = Validator::parsedBody($request)->string('to') ?? '';
-        $url        = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $base_url;
+        $url        = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $base_url;
         $ip         = $request->getAttribute('client-ip');
         $to_user    = $this->user_service->findByUserName($to);
 

@@ -87,7 +87,7 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         $child->createFact('1 FAMC @' . $family->xref() . '@', false);
 
         $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $child->url();
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $child->url();
 
         return redirect($url);
     }

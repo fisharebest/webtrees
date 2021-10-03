@@ -20,8 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Exceptions\RecordNotFoundException;
 use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
@@ -51,6 +52,7 @@ class RedirectGedRecordPhp implements RequestHandlerInterface
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
+     * @throws HttpNotFoundException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -67,6 +69,9 @@ class RedirectGedRecordPhp implements RequestHandlerInterface
             }
         }
 
-        throw new RecordNotFoundException();
+        $message = I18N::translate('This record does not exist or you do not have permission to view it.');
+
+
+        throw new HttpNotFoundException($message);
     }
 }

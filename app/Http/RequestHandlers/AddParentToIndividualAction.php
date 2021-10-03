@@ -87,7 +87,7 @@ class AddParentToIndividualAction implements RequestHandlerInterface
         $parent->createFact('1 FAMS @' . $family->xref() . '@', false);
 
         $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->localUrl($base_url)->string('url') ?? $parent->url();
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $parent->url();
 
         return redirect($url);
     }
