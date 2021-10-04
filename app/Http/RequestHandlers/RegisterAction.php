@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
@@ -56,24 +57,30 @@ class RegisterAction implements RequestHandlerInterface
     /** @var EmailService */
     private $email_service;
 
+    /** @var RateLimitService */
+    private $rate_limit_service;
+
     /** @var UserService */
     private $user_service;
 
     /**
      * RegisterController constructor.
      *
-     * @param CaptchaService $captcha_service
-     * @param EmailService   $email_service
-     * @param UserService    $user_service
+     * @param CaptchaService   $captcha_service
+     * @param EmailService     $email_service
+     * @param RateLimitService $rate_limit_service
+     * @param UserService      $user_service
      */
     public function __construct(
         CaptchaService $captcha_service,
         EmailService $email_service,
+        RateLimitService $rate_limit_service,
         UserService $user_service
     ) {
-        $this->captcha_service = $captcha_service;
-        $this->email_service   = $email_service;
-        $this->user_service    = $user_service;
+        $this->captcha_service    = $captcha_service;
+        $this->email_service      = $email_service;
+        $this->rate_limit_service = $rate_limit_service;
+        $this->user_service       = $user_service;
     }
 
     /**
@@ -118,6 +125,8 @@ class RegisterAction implements RequestHandlerInterface
 
             return redirect(route(RegisterPage::class));
         }
+
+        $this->rate_limit_service->limitRateForSite(5, 300, 'rate-limit-registration');
 
         Log::addAuthenticationLog('User registration requested for: ' . $username);
 

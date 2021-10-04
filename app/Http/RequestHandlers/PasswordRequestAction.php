@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
@@ -50,19 +51,27 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
     /** @var EmailService */
     private $email_service;
 
+    /** @var RateLimitService */
+    private $rate_limit_service;
+
     /** @var UserService */
     private $user_service;
 
     /**
-     * PasswordRequestForm constructor.
+     * PasswordRequestAction constructor.
      *
-     * @param EmailService $email_service
-     * @param UserService  $user_service
+     * @param EmailService     $email_service
+     * @param RateLimitService $rate_limit_service
+     * @param UserService      $user_service
      */
-    public function __construct(EmailService $email_service, UserService $user_service)
-    {
-        $this->user_service  = $user_service;
-        $this->email_service = $email_service;
+    public function __construct(
+        EmailService $email_service,
+        RateLimitService $rate_limit_service,
+        UserService $user_service
+    ) {
+        $this->user_service       = $user_service;
+        $this->rate_limit_service = $rate_limit_service;
+        $this->email_service      = $email_service;
     }
 
     /**
@@ -80,6 +89,8 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
         $user  = $this->user_service->findByEmail($email);
 
         if ($user instanceof User) {
+            $this->rate_limit_service->limitRateForUser($user, 5, 300, 'rate-limit-pw-reset');
+
             $token  = Str::random(self::TOKEN_LENGTH);
             $expire = (string) Carbon::now()->addHour()->getTimestamp();
             $url    = route(PasswordResetPage::class, [
