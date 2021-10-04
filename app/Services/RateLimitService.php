@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Http\Exceptions\HttpTooManyRequestsException;
+use Fisharebest\Webtrees\Exceptions\HttpTooManyRequestsException;
 use Fisharebest\Webtrees\Site;
 use LogicException;
 
