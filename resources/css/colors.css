@@ -106,7 +106,8 @@
     color: var(--color-5);
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:focus {
     background: var(--color-1);
 }
 
