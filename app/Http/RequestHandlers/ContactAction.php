@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\MessageService;
+use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -56,26 +57,31 @@ class ContactAction implements RequestHandlerInterface
 
     private MessageService $message_service;
 
+    private RateLimitService $rate_limit_service;
+
     private UserService $user_service;
 
     /**
      * MessagePage constructor.
      *
-     * @param CaptchaService $captcha_service
-     * @param EmailService   $email_service
-     * @param MessageService $message_service
-     * @param UserService    $user_service
+     * @param CaptchaService   $captcha_service
+     * @param EmailService     $email_service
+     * @param MessageService   $message_service
+     * @param RateLimitService $rate_limit_service
+     * @param UserService      $user_service
      */
     public function __construct(
         CaptchaService $captcha_service,
         EmailService $email_service,
         MessageService $message_service,
+        RateLimitService $rate_limit_service,
         UserService $user_service
     ) {
-        $this->captcha_service = $captcha_service;
-        $this->email_service   = $email_service;
-        $this->user_service    = $user_service;
-        $this->message_service = $message_service;
+        $this->captcha_service    = $captcha_service;
+        $this->email_service      = $email_service;
+        $this->user_service       = $user_service;
+        $this->rate_limit_service = $rate_limit_service;
+        $this->message_service    = $message_service;
     }
 
     /**
@@ -137,6 +143,8 @@ class ContactAction implements RequestHandlerInterface
         }
 
         $sender = new GuestUser($from_email, $from_name);
+
+        $this->rate_limit_service->limitRateForUser($to_user, 20, 1200, 'rate-limit-contact');
 
         if ($this->message_service->deliverMessage($sender, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
