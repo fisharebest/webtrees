@@ -986,7 +986,7 @@ class ReportParserGenerate extends ReportParserBase
                 switch (end($tags)) {
                     case 'DATE':
                         $tmp   = new Date($value);
-                        $value = $tmp->display();
+                        $value = strip_tags($tmp->display());
                         break;
                     case 'PLAC':
                         $tmp   = new Place($value, $this->tree);
