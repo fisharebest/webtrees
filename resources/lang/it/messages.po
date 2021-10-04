@@ -1,23 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-01 09:22+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
-"Language: it\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Language: it_IT\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-Language: Italian\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-06 17:12+0000\nLast-Translator: Luca Bighi <luca74@email.it>\nLanguage-Team: Italian <https://translate.webtrees.net/projects/webtrees/webtrees/it/>\nLanguage: it\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Language: it_IT\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: .\nX-Poedit-Language: Italian\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -141,7 +123,7 @@ msgstr "%1$s × %2$s pixel"
 #: resources/views/modules/media-list/page.phtml:138
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s : %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:481 app/Module/StatisticsChartModule.php:860
@@ -499,7 +481,7 @@ msgstr "(all’età di %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s anni)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:302
@@ -508,7 +490,7 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s anni)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -767,7 +749,7 @@ msgstr "Elenco delle persone."
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "Lista di luoghi."
 
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
@@ -1510,7 +1492,7 @@ msgstr "Indirizzo - Linea 2"
 #: app/Factories/ElementFactory.php:411 app/Factories/ElementFactory.php:664
 #: app/Factories/ElementFactory.php:711
 msgid "Address line 3"
-msgstr ""
+msgstr "Indirizzo - Linea 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
@@ -1570,7 +1552,7 @@ msgstr "Adottato dalla madre"
 #: app/Module/CustomTagsBrothersKeeper.php:71
 #: app/Module/CustomTagsPersonalAncestralFile.php:54
 msgid "Adopted name"
-msgstr ""
+msgstr "Nome di adozione"
 
 #: app/Factories/ElementFactory.php:449 app/Factories/ElementFactory.php:452
 msgid "Adoption"
@@ -1648,7 +1630,7 @@ msgstr "Adozione di un figlio"
 
 #: app/Factories/ElementFactory.php:451
 msgid "Adoptive parents"
-msgstr ""
+msgstr "Genitori adottivi"
 
 #: app/Factories/ElementFactory.php:495
 msgid "Adult christening"
@@ -1947,7 +1929,7 @@ msgstr "Numero in Ancestral File"
 
 #: app/Module/CustomTagsAncestry.php:51
 msgid "Ancestry PID"
-msgstr ""
+msgstr "Identificativo Ancestry®"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
