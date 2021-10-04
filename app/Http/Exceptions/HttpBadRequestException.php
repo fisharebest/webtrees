@@ -29,7 +29,7 @@ class HttpBadRequestException extends HttpException
     /**
      * @param string|null $message
      */
-    public function __construct(string $message)
+    public function __construct(string $message = null)
     {
         $message ??= I18N::translate('The server could not understand this request.');
 
