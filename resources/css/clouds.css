@@ -487,6 +487,7 @@ table {
     background: url(clouds/images/block-header-background.png);
     background-size: auto 100%;
     padding: 0.25rem 0.75rem;
+    border-bottom: 0;
 }
 
 .wt-block-header::before {
