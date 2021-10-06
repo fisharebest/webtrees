@@ -22,7 +22,7 @@
 * [Gedcom (family tree) files](#gedcom-family-tree-files)
 * [Security](#security)
 * [Backup](#backup)
-* [Restore from Backup](#restore-backup)
+* [Restore from Backup](#restore-from-backup)
 
 ## License
 
@@ -94,10 +94,10 @@ the project even stronger and better.
 To install **webtrees**, you need:
 
 * A webserver. Apache, NGINX and IIS are the most common types. To use “Pretty URLs”, you will need to configure URL rewriting"
-* A database.  MySQL is recommended, although PostgreSQL, SQL-Server and SQLite can be used.  Some features rely on MySQL for collation.  Other database might not sort names according to local rules.  **webtrees** uses a prefix for its table names, so you can install several instances of webtrees in the same database.
+* A database. MySQL is recommended, although PostgreSQL, SQL-Server and SQLite can be used. Some features rely on MySQL for collation.  Other database might not sort names according to local rules.  **webtrees** uses a prefix for its table names, so you can install several instances of webtrees in the same database.
 * Approximately 100MB of disk space for the application files, plus whatever is
   needed for your media files, GEDCOM files and database.
-* PHP 7.1 - 7.4.  Servers with PHP 5.3 - 7.0 can use **webtrees** 1.7.
+* PHP 7.1 - 7.4. Servers with PHP 5.3 - 7.0 can use **webtrees** 1.7.
    * PHP should be configured to allow sufficient server resources (memory and
      execution time) for the size of your system. Typical requirements are:
       * Small systems (500 individuals): 16–32 MB, 10–20 seconds
@@ -111,7 +111,7 @@ To install **webtrees**, you need:
 
 ## Installation
 
-1. Download the .ZIP file for latest stable version from [github.com](https://github.com/fisharebest/webtrees/releases/latest)
+1. Download the .ZIP file for latest stable version from [github.com](https://github.com/fisharebest/webtrees/releases/latest).
 2. Unzip the files and then upload them to an empty folder on your web server.
 3. Open your web browser and type the URL for your **webtrees** site (for example,
    ``https://www.yourserver.com/webtrees`` into the address bar.
@@ -119,7 +119,7 @@ To install **webtrees**, you need:
 
 Your first task will be to create a family tree.
 
-If you have a GEDCOM file, you can import it into the tree.  If not, just start
+If you have a GEDCOM file, you can import it into the tree. If not, just start
 entering your family tree. 
 
 There are lots of configuration options. You'll probably want to review the
@@ -148,12 +148,12 @@ then a manual upgrade should be performed.
   2. Download the latest version of **webtrees** available from
    [webtrees.net](https://webtrees.net/)
   3. While you are in the middle of uploading the new files,
-   a visitor to your site would encounter a mixture of new and old files.  This
-   could cause unpredictable behavior or errors.  To prevent this, create the
-   file **data/offline.txt**.  While this file exists, visitors will see a
+   a visitor to your site would encounter a mixture of new and old files. This
+   could cause unpredictable behavior or errors. To prevent this, create the
+   file **data/offline.txt**. While this file exists, visitors will see a
    “site unavailable - come back later” message.
   4. Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.
-  5. Delete the file **data/offline.txt**
+  5. Delete the file **data/offline.txt**.
 
 
 ### Note for Macintosh users
