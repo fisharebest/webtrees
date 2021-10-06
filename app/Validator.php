@@ -37,10 +37,10 @@ use function str_starts_with;
 class Validator
 {
     /** @var array<string|array> */
-    private array $parameters;
+    private $parameters;
 
     /** @var array<Closure> */
-    private array $rules = [];
+    private $rules = [];
 
     /**
      * @param array<string|array> $parameters
@@ -138,7 +138,9 @@ class Validator
             $value = [];
         }
 
-        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
+        return array_reduce($this->rules, static function ($value, $rule) {
+            return $rule($value);
+        }, $value);
     }
 
     /**
@@ -156,7 +158,9 @@ class Validator
             $value = null;
         }
 
-        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
+        return array_reduce($this->rules, static function ($value, $rule) {
+            return $rule($value);
+        }, $value);
     }
 
     /**
@@ -172,6 +176,8 @@ class Validator
             $value = null;
         }
 
-        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
+        return array_reduce($this->rules, static function ($value, $rule) {
+            return $rule($value);
+        }, $value);
     }
 }

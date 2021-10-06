@@ -31,7 +31,7 @@ class HttpTooManyRequestsException extends HttpException
      */
     public function __construct(string $message = null)
     {
-        $message ??= I18N::translate('Too many requests. Try again later.');
+        $message = $message ?? I18N::translate('Too many requests. Try again later.');
 
         parent::__construct($message, self::STATUS_TOO_MANY_REQUESTS);
     }

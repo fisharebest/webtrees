@@ -35,7 +35,8 @@ use function time;
  */
 class RateLimitService
 {
-    private int $now;
+    /** @var int */
+    private $now;
 
     /**
      *
@@ -106,7 +107,9 @@ class RateLimitService
         $timestamps = array_filter(explode(',', $history));
 
         // Filter events within our time window.
-        $filter    = fn(string $x): bool => (int) $x >= $this->now - $seconds && (int) $x <= $this->now;
+        $filter    = function (string $x) use ($seconds): bool {
+            return (int) $x >= $this->now - $seconds && (int) $x <= $this->now;
+        };
         $in_window = array_filter($timestamps, $filter);
 
         if (count($in_window) >= $num) {
