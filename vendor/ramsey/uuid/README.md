@@ -1,15 +1,17 @@
 # ramsey/uuid
 
+*IMPORTANT: This is the 3.x series. Please upgrade to the 4.x series.*
+
 *NOTICE: Formerly known as `rhumsaa/uuid`, The package and namespace names have
 changed to `ramsey/uuid` and `Ramsey\Uuid`, respectively.*
 
 [![Source Code][badge-source]][source]
-[![Latest Version][badge-release]][release]
-[![Software License][badge-license]][license]
+[![Series][badge-series]][series]
+[![Upgrade][badge-upgrade]][upgrade]
 [![PHP Version][badge-php]][php]
+[![Software License][badge-license]][license]
 [![Build Status][badge-build]][build]
 [![Coverage Status][badge-coverage]][coverage]
-[![Total Downloads][badge-downloads]][downloads]
 
 ramsey/uuid is a PHP 5.4+ library for generating and working with
 [RFC 4122][rfc4122] version 1, 3, 4, and 5 universally unique identifiers
@@ -169,17 +171,17 @@ information.
 [contributing.md]: https://github.com/ramsey/uuid/blob/master/.github/CONTRIBUTING.md
 
 [badge-source]: https://img.shields.io/badge/source-ramsey/uuid-blue.svg?style=flat-square
-[badge-release]: https://img.shields.io/packagist/v/ramsey/uuid.svg?style=flat-square&label=release
-[badge-license]: https://img.shields.io/packagist/l/ramsey/uuid.svg?style=flat-square
-[badge-php]: https://img.shields.io/packagist/php-v/ramsey/uuid.svg?style=flat-square
-[badge-build]: https://img.shields.io/travis/ramsey/uuid/master.svg?style=flat-square
-[badge-coverage]: https://img.shields.io/coveralls/github/ramsey/uuid/master.svg?style=flat-square
-[badge-downloads]: https://img.shields.io/packagist/dt/ramsey/uuid.svg?style=flat-square&colorB=mediumvioletred
+[badge-series]: https://img.shields.io/badge/series-3.x-darkcyan.svg?style=flat-square
+[badge-upgrade]: https://img.shields.io/packagist/v/ramsey/uuid.svg?style=flat-square&label=upgrade&colorB=darkred
+[badge-license]: https://img.shields.io/packagist/l/ramsey/uuid.svg?style=flat-square&colorB=darkcyan
+[badge-php]: https://img.shields.io/packagist/php-v/ramsey/uuid/3.x-dev.svg?style=flat-square&colorB=%238892BF
+[badge-build]: https://img.shields.io/github/workflow/status/ramsey/uuid/build/3.x.svg?logo=github&style=flat-square
+[badge-coverage]: https://img.shields.io/codecov/c/gh/ramsey/uuid/3.x.svg?style=flat-square&logo=codecov
 
-[source]: https://github.com/ramsey/uuid
-[release]: https://packagist.org/packages/ramsey/uuid
+[source]: https://github.com/ramsey/uuid/tree/3.x
+[series]: https://packagist.org/packages/ramsey/uuid
+[upgrade]: https://packagist.org/packages/ramsey/uuid
 [license]: https://github.com/ramsey/uuid/blob/master/LICENSE
 [php]: https://php.net
-[build]: https://travis-ci.org/ramsey/uuid
-[coverage]: https://coveralls.io/github/ramsey/uuid?branch=master
-[downloads]: https://packagist.org/packages/ramsey/uuid
+[build]: https://github.com/ramsey/uuid/actions/workflows/continuous-integration.yml?query=branch%3A3.x
+[coverage]: https://app.codecov.io/gh/ramsey/uuid/branch/3.x
