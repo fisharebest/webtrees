@@ -108,6 +108,10 @@ class Validator
     public function isLocalUrl(string $base_url): self
     {
         $this->rules[] = static function ($value) use ($base_url): ?string {
+            if ($value === null) {
+                return null;
+            }
+
             if (is_string($value)) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
