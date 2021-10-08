@@ -9,7 +9,11 @@ jobs:
 
     strategy:
       matrix:
+<<<<<<< HEAD
         operating-system: [ubuntu-20.04]
+=======
+        operating-system: ['ubuntu-20.04']
+>>>>>>> 08069b2ffa (wip)
         php-version: ['7.1', '7.2', '7.3', '7.4']
 
     name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
