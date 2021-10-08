@@ -41,9 +41,11 @@ use Throwable;
 use function addcslashes;
 use function basename;
 use function extension_loaded;
+use function get_class;
+use function implode;
 use function pathinfo;
 use function response;
-use function strlen;
+use function str_contains;
 use function view;
 
 use const PATHINFO_EXTENSION;
@@ -84,18 +86,11 @@ class ImageFactory implements ImageFactoryInterface
     public function fileResponse(FilesystemInterface $filesystem, string $path, bool $download): ResponseInterface
     {
         try {
-            $data = $filesystem->read($path);
+            $mime_type = $filesystem->getMimetype($path);
 
-            $headers = [
-                'Content-Type'   => $filesystem->getMimetype($path),
-                'Content-Length' => (string) strlen($data),
-            ];
+            $filename = $download ? addcslashes(basename($path), '"') : '';
 
-            if ($download) {
-                $headers['Content-Disposition'] = 'attachment; filename="' . addcslashes(basename($path), '"');
-            }
-
-            return response($data, StatusCodeInterface::STATUS_OK, $headers);
+            return $this->imageResponse($filesystem->read($path), $mime_type, $filename);
         } catch (FileNotFoundException $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         }
@@ -131,12 +126,13 @@ class ImageFactory implements ImageFactoryInterface
 
             return $this->imageResponse($data, $image->mime(), '');
         } catch (NotReadableException $ex) {
-            return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION));
+            return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
+                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FileNotFoundException $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', $ex->getMessage());
+                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -152,29 +148,25 @@ class ImageFactory implements ImageFactoryInterface
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
         $filesystem = Registry::filesystem()->media($media_file->media()->tree());
-        $filename   = $media_file->filename();
+        $path   = $media_file->filename();
 
         if (!$add_watermark || !$media_file->isImage()) {
-            return $this->fileResponse($filesystem, $filename, $download);
+            return $this->fileResponse($filesystem, $path, $download);
         }
 
         try {
-            $image = $this->imageManager()->make($filesystem->readStream($filename));
-            $image = $this->autorotateImage($image);
+            $image     = $this->imageManager()->make($filesystem->readStream($path));
+            $image     = $this->autorotateImage($image);
+            $watermark = $this->createWatermark($image->width(), $image->height(), $media_file);
+            $image     = $this->addWatermark($image, $watermark);
+            $filename  = $download ? basename($path) : '';
+            $format    = static::INTERVENTION_FORMATS[$image->mime()] ?? 'jpg';
+            $quality   = $this->extractImageQuality($image, static::GD_DEFAULT_IMAGE_QUALITY);
+            $data      = (string) $image->encode($format, $quality);
 
-            $watermark_image = $this->createWatermark($image->width(), $image->height(), $media_file);
-
-            $image = $this->addWatermark($image, $watermark_image);
-
-            $download_filename = $download ? basename($filename) : '';
-
-            $format  = static::INTERVENTION_FORMATS[$image->mime()] ?? 'jpg';
-            $quality = $this->extractImageQuality($image, static::GD_DEFAULT_IMAGE_QUALITY);
-            $data    = (string) $image->encode($format, $quality);
-
-            return $this->imageResponse($data, $image->mime(), $download_filename);
+            return $this->imageResponse($data, $image->mime(), $filename);
         } catch (NotReadableException $ex) {
-            return $this->replacementImageResponse(pathinfo($filename, PATHINFO_EXTENSION))
+            return $this->replacementImageResponse(pathinfo($path, PATHINFO_EXTENSION))
                 ->withHeader('X-Image-Exception', $ex->getMessage());
         } catch (FileNotFoundException $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
@@ -243,12 +235,13 @@ class ImageFactory implements ImageFactoryInterface
 
             return $this->imageResponse($data, $mime_type, '');
         } catch (NotReadableException $ex) {
-            return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION));
+            return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
+                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FileNotFoundException $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', $ex->getMessage());
+                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -325,7 +318,7 @@ class ImageFactory implements ImageFactoryInterface
 
         // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
         return response($svg, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'image/svg+xml',
+            'content-type' => 'image/svg+xml',
         ]);
     }
 
@@ -338,16 +331,20 @@ class ImageFactory implements ImageFactoryInterface
      */
     protected function imageResponse(string $data, string $mime_type, string $filename): ResponseInterface
     {
-        $headers = [
-            'Content-Type'   => $mime_type,
-            'Content-Length' => (string) strlen($data),
-        ];
-
-        if ($filename !== '') {
-            $headers['Content-Disposition'] = 'attachment; filename="' . addcslashes(basename($filename), '"');
+        if ($mime_type === 'image/svg+xml' && str_contains($data, '<script')) {
+            return $this->replacementImageResponse('XSS')
+                ->withHeader('X-Image-Exception', 'SVG image blocked due to XSS.');
         }
 
-        return response($data, StatusCodeInterface::STATUS_OK, $headers);
+        $response = response($data)
+            ->withHeader('content-type', $mime_type);
+
+        if ($filename === '') {
+            return $response;
+        }
+
+        return $response
+            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes(basename($filename), '"'));
     }
 
     /**

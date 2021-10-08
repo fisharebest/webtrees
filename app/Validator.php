@@ -25,6 +25,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;
 use function ctype_digit;
+use function gettype;
 use function is_array;
 use function is_int;
 use function is_string;
@@ -96,6 +97,10 @@ class Validator
     public function localUrl(string $base_url): self
     {
         $this->rules[] = static function ($value) use ($base_url): ?string {
+            if ($value === null) {
+                return null;
+            }
+
             if (is_string($value)) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
