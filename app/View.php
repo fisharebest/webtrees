@@ -188,7 +188,7 @@ class View
             // Do not use require, so we can catch errors for missing files
             include $this->getFilenameForView($this->name);
 
-            return ob_get_clean();
+            return (string) ob_get_clean();
         } catch (Throwable $ex) {
             while (ob_get_level() > 0) {
                 ob_end_clean();

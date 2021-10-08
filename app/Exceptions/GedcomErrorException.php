@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Exceptions;
 use Exception;
 use Fisharebest\Webtrees\I18N;
 
+use function e;
+
 /**
  * Exception thrown when importing invalid GEDCOM data.
  */

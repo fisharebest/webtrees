@@ -58,7 +58,7 @@ class ChartNoChildrenFamilies
      * @param int $year1
      * @param int $year2
      *
-     * @return stdClass[]
+     * @return array<stdClass>
      */
     private function queryRecords(int $year1, int $year2): array
     {

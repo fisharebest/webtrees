@@ -548,7 +548,7 @@ class CountryService
     /**
      * ISO3166 3 letter codes, with their 2 letter equivalent.
      * NOTE: this is not 1:1. ENG/SCO/WAL/NIR => GB
-     * NOTE: this also includes champman codes and others. Should it?
+     * NOTE: this also includes chapman codes and others. Should it?
      *
      * @return array<string>
      */
