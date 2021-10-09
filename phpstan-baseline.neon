@@ -101,7 +101,7 @@ parameters:
 			path: app/Functions/FunctionsImport.php
 
 		-
-			message: "#^Parameter \\#1 \\$arr1 of function array_intersect expects array, array\\<int, string\\>\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$array of function array_intersect expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php
 
@@ -111,12 +111,12 @@ parameters:
 			path: app/Functions/FunctionsPrint.php
 
 		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$offset of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function array_merge expects array, array\\<int, string\\>\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\.\\.\\.\\$arrays of function array_merge expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrint.php
 
@@ -136,7 +136,7 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$offset of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsPrintFacts.php
 
@@ -170,12 +170,12 @@ parameters:
 			path: app/Functions/FunctionsRtl.php
 
 		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$offset of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsRtl.php
 
 		-
-			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			message: "#^Parameter \\#3 \\$length of function substr expects int\\|null, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Functions/FunctionsRtl.php
 
@@ -210,12 +210,12 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Parameter \\#1 \\$stack of function array_shift expects array, array\\<int, string\\>\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$array of function array_shift expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 3
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
 			count: 3
 			path: app/GedcomRecord.php
 
@@ -300,7 +300,7 @@ parameters:
 			path: app/Http/Middleware/UseTransaction.php
 
 		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(mixed, string\\) given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(mixed, string\\) given\\.$#"
 			count: 1
 			path: app/Http/Middleware/WrapHandler.php
 
@@ -355,12 +355,12 @@ parameters:
 			path: app/Http/RequestHandlers/EditNoteAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditRawRecordAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
@@ -465,7 +465,7 @@ parameters:
 			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function sha1 expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function sha1 expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportThumbnailsAction.php
 
@@ -500,27 +500,7 @@ parameters:
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
-			message: "#^Offset 0 does not exist on array\\|null\\.$#"
-			count: 2
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: "#^Offset int\\<\\-3, max\\> does not exist on array\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: "#^Offset int\\<\\-4, max\\> does not exist on array\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string\\|null, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$input of function array_slice expects array, array\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
@@ -530,17 +510,12 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, array\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MergeFactsAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, non\\-empty\\-string\\) given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, non\\-empty\\-string\\) given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ModuleAction.php
 
@@ -580,7 +555,7 @@ parameters:
 			path: app/Http/RequestHandlers/SearchReplaceAction.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$args of function array_merge expects array, array\\<int, string\\>\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\.\\.\\.\\$arrays of function array_merge expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SearchReplaceAction.php
 
@@ -665,7 +640,7 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Parameter \\#1 \\$numerator of function intdiv expects int, float\\|int given\\.$#"
+			message: "#^Parameter \\#1 \\$num1 of function intdiv expects int, float\\|int given\\.$#"
 			count: 1
 			path: app/Individual.php
 
@@ -715,7 +690,7 @@ parameters:
 			path: app/Module/CensusAssistantModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
 
@@ -795,47 +770,52 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagecolorallocate expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagecolorallocate expects GdImage, GdImage\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagecolortransparent expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagecolorallocate expects GdImage, resource given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagedestroy expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagecolortransparent expects GdImage, GdImage\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagefilledarc expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagedestroy expects GdImage, GdImage\\|false given\\.$#"
+			count: 1
+			path: app/Module/FanChartModule.php
+
+		-
+			message: "#^Parameter \\#1 \\$image of function imagefilledarc expects GdImage, GdImage\\|false given\\.$#"
 			count: 2
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagefilledrectangle expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagefilledrectangle expects GdImage, GdImage\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagepng expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagepng expects GdImage, GdImage\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagettftext expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagettftext expects GdImage, GdImage\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$image of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) expects resource, GdImage\\|false given\\.$#"
 			count: 4
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#2 \\$col of function imagecolortransparent expects int, int\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$color of function imagecolortransparent expects int\\|null, int\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
@@ -850,7 +830,7 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#6 \\$col of function imagefilledrectangle expects int, int\\|false given\\.$#"
+			message: "#^Parameter \\#6 \\$color of function imagefilledrectangle expects int, int\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
 
@@ -965,7 +945,7 @@ parameters:
 			path: app/Module/IndividualListModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function strip_tags expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Module/IndividualMetadataModule.php
 
@@ -1265,8 +1245,18 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), non\\-empty\\-string\\) given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), non\\-empty\\-string\\) given\\.$#"
 			count: 2
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Parameter \\#3 \\$value of function xml_parser_set_option expects int\\|string, false given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\:\\:\\$xml_parser \\(resource\\) does not accept XMLParser\\.$#"
+			count: 1
 			path: app/Report/ReportParserBase.php
 
 		-
@@ -1345,22 +1335,22 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$array_arg of function end expects array\\|object, array\\<int, string\\>\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$array of function end expects array\\|object, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), non\\-empty\\-string\\) given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), non\\-empty\\-string\\) given\\.$#"
 			count: 2
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagesx expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagesx expects GdImage, GdImage\\|false given\\.$#"
 			count: 2
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$im of function imagesy expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of function imagesy expects GdImage, GdImage\\|false given\\.$#"
 			count: 2
 			path: app/Report/ReportParserGenerate.php
 
@@ -1375,7 +1365,12 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function addslashes expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$parser of function xml_get_current_line_number expects XMLParser, resource given\\.$#"
+			count: 6
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function addslashes expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -1390,6 +1385,11 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^Parameter \\#3 \\$value of function xml_parser_set_option expects int\\|string, false given\\.$#"
+			count: 4
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$current_element \\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportBaseElement\\) does not accept Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -1397,6 +1397,11 @@ parameters:
 		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list type has no value type specified in iterable type array\\.$#"
 			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$parser \\(resource\\) does not accept XMLParser\\.$#"
+			count: 4
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -1440,7 +1445,7 @@ parameters:
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Parameter \\#1 \\$number of function ceil expects float, array\\<float\\>\\|float given\\.$#"
+			message: "#^Parameter \\#1 \\$num of function ceil expects float\\|int, array\\<float\\>\\|float given\\.$#"
 			count: 3
 			path: app/Report/ReportPdfFootnote.php
 
@@ -1495,12 +1500,12 @@ parameters:
 			path: app/Services/AdminService.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function fclose expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/AdminService.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function fread expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function fread expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/AdminService.php
 
@@ -1610,7 +1615,7 @@ parameters:
 			path: app/Services/MediaFileService.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
 			count: 2
 			path: app/Services/MediaFileService.php
 
@@ -1650,13 +1655,23 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
+			message: "#^Comparison operation \"\\<\\=\" between 1 and 0 is always false\\.$#"
+			count: 1
+			path: app/Services/ServerCheckService.php
+
+		-
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
 
 		-
-			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$string of function explode expects string, string\\|false given\\.$#"
 			count: 2
+			path: app/Services/ServerCheckService.php
+
+		-
+			message: "#^Result of && is always false\\.$#"
+			count: 1
 			path: app/Services/ServerCheckService.php
 
 		-
@@ -1675,22 +1690,22 @@ parameters:
 			path: app/Services/UpgradeService.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function fclose expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/UpgradeService.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function ftell expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function ftell expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/UpgradeService.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function fwrite expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function fwrite expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/UpgradeService.php
 
 		-
-			message: "#^Parameter \\#1 \\$fp of function rewind expects resource, resource\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$stream of function rewind expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/UpgradeService.php
 
@@ -1745,7 +1760,7 @@ parameters:
 			path: app/Statistics.php
 
 		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Statistics\\), string\\) given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\(\\$this\\(Fisharebest\\\\Webtrees\\\\Statistics\\), string\\) given\\.$#"
 			count: 2
 			path: app/Statistics.php
 
@@ -2033,34 +2048,4 @@ parameters:
 			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-footer.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-middleware.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-report.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-server-configuration.disable/ExampleServerConfigurationModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example-theme.disable/module.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: modules_v4/example.disable/module.php
 
