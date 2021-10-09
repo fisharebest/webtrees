@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Imagick;
 use Intervention\Image\Constraint;
 use Intervention\Image\Exception\NotReadableException;
@@ -98,7 +99,7 @@ class ImageFactory implements ImageFactoryInterface
             $filename = $download ? addcslashes(basename($path), '"') : '';
 
             return $this->imageResponse($filesystem->read($path), $mime_type, $filename);
-        } catch (FileNotFoundException $ex) {
+        } catch (UnableToReadFile | FilesystemException $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         }
     }
@@ -343,8 +344,10 @@ class ImageFactory implements ImageFactoryInterface
                 ->withHeader('X-Image-Exception', 'SVG image blocked due to XSS.');
         }
 
+        // HTML files may contain javascript, so use content-security-policy to disable it.
         $response = response($data)
-            ->withHeader('content-type', $mime_type);
+            ->withHeader('content-type', $mime_type)
+            ->withHeader('content-security-policy', 'script-src none');
 
         if ($filename === '') {
             return $response;
