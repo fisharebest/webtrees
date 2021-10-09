@@ -53,7 +53,6 @@ class Mime
         'png'  => 'image/png',
         'rar'  => 'application/x-rar-compressed',
         'svg'  => 'image/svg+xml',
-        'swf'  => 'application/x-shockwave-flash',
         'tif'  => 'image/tiff',
         'tiff' => 'image/tiff',
         'txt'  => 'text/plain',
