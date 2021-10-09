@@ -71,6 +71,11 @@ parameters:
 			path: app/Factories/HeaderFactory.php
 
 		-
+			message: "#^Caught class Fisharebest\\\\Webtrees\\\\Factories\\\\FileNotFoundException not found\\.$#"
+			count: 1
+			path: app/Factories/ImageFactory.php
+
+		-
 			message: "#^Access to an undefined property object\\:\\:\\$i_gedcom\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
@@ -1660,6 +1665,11 @@ parameters:
 			path: app/SessionDatabaseHandler.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\SessionDatabaseHandler\\:\\:gc\\(\\) should return int\\|false but returns true\\.$#"
+			count: 1
+			path: app/SessionDatabaseHandler.php
+
+		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\SessionDatabaseHandler\\:\\:\\$row \\(stdClass\\|null\\) does not accept object\\|null\\.$#"
 			count: 1
 			path: app/SessionDatabaseHandler.php
@@ -1998,6 +2008,16 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between mixed and null will always evaluate to false\\.$#"
+			count: 1
+			path: app/Validator.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: app/Validator.php
 
 		-
 			message: "#^Ternary operator condition is always true\\.$#"

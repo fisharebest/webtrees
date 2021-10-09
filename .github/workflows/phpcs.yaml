@@ -5,8 +5,13 @@ on: [push, pull_request]
 jobs:
   run:
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
     name: PHP/PHTML/CSS
+
+    strategy:
+      matrix:
+        operating-system: ['ubuntu-latest']
+        php-version: ['8.0']
 
     steps:
       - uses: actions/checkout@v2
