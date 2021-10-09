@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The latest versions of the 1.7 and 2.0 branches are supported for security issues.
+The latest versions of the `main` and `2.0` branches are supported for security issues.
 
 ## Reporting a Vulnerability
 
