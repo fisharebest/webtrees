@@ -71,11 +71,6 @@ parameters:
 			path: app/Factories/HeaderFactory.php
 
 		-
-			message: "#^Caught class Fisharebest\\\\Webtrees\\\\Factories\\\\FileNotFoundException not found\\.$#"
-			count: 1
-			path: app/Factories/ImageFactory.php
-
-		-
 			message: "#^Access to an undefined property object\\:\\:\\$i_gedcom\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
