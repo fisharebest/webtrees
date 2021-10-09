@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-01-03 13:32+0000\n"
+"PO-Revision-Date: 2021-10-09 15:52+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
+"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
+"webtrees/webtrees-20/zh_Hans/>\n"
 "Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1873,7 +1874,7 @@ msgstr "去世年龄"
 #: app/Factories/ElementFactory.php:255 app/Factories/ElementFactory.php:389
 #: app/Factories/ElementFactory.php:671 app/GedcomTag.php:452
 msgid "Agency"
-msgstr "办理机构"
+msgstr "机构名称"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -6100,7 +6101,7 @@ msgstr "埃德蒙顿,加拿大阿尔伯塔省"
 #. I18N: gedcom tag EDUC
 #: app/Factories/ElementFactory.php:491 app/GedcomTag.php:649
 msgid "Education"
-msgstr "文化程度"
+msgstr "教育经历"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -7710,7 +7711,7 @@ msgstr ""
 #. I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:517 app/GedcomTag.php:733
 msgid "Graduation"
-msgstr "毕业信息"
+msgstr "学历信息"
 
 #: resources/views/statistics/individuals/greatest-age.phtml:12
 msgid "Greatest age at death"
