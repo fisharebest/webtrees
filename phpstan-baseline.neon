@@ -41,18 +41,13 @@ parameters:
 			path: app/Fact.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$data of method Fisharebest\\\\Webtrees\\\\Factories\\\\ImageFactory\\:\\:imageResponse\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Factories/ImageFactory.php
 
 		-
 			message: "#^Parameter \\#2 \\$mime_type of method Fisharebest\\\\Webtrees\\\\Factories\\\\ImageFactory\\:\\:imageResponse\\(\\) expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Factories/ImageFactory.php
-
-		-
-			message: "#^Parameter \\#3 \\$headers of function response expects array\\<string\\>, array\\<string, string\\|false\\> given\\.$#"
-			count: 1
+			count: 2
 			path: app/Factories/ImageFactory.php
 
 		-
@@ -1653,11 +1648,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
-
-		-
-			message: "#^Comparison operation \"\\<\\=\" between \\-1\\|0 and 0 is always true\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
 
 		-
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string, string\\|false given\\.$#"

@@ -6,13 +6,12 @@ jobs:
   run:
     if: ${{ !startsWith(github.event.head_commit.message, 'Translation:') }}
     runs-on: ${{ matrix.operating-system }}
+    name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
 
     strategy:
       matrix:
         operating-system: ['ubuntu-20.04']
         php-version: ['7.1', '7.2', '7.3', '7.4']
-
-    name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
 
     steps:
       - uses: shivammathur/setup-php@master
