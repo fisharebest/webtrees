@@ -135,10 +135,6 @@ class Validator
                 return null;
             }
 
-            if ($value === null) {
-                return null;
-            }
-
             throw new LogicException(__METHOD__ . ' does not accept ' . gettype($value));
         };
 
@@ -152,7 +148,7 @@ class Validator
     {
         $this->rules[] = static function ($value) {
             if (is_string($value)) {
-                if (preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value)) {
+                if (preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
                     return $value;
                 }
 
@@ -161,7 +157,7 @@ class Validator
 
             if (is_array($value)) {
                 foreach ($value as $item) {
-                    if (!preg_match('/^' . Gedcom::REGEX_XREF . '$/', $item)) {
+                    if (preg_match('/^' . Gedcom::REGEX_XREF . '$/', $item) !== 1) {
                         return null;
                     }
                 }
@@ -182,9 +178,9 @@ class Validator
     /**
      * @param string $parameter
      *
-     * @return array<string>
+     * @return array<string>|null
      */
-    public function array(string $parameter): array
+    public function array(string $parameter): ?array
     {
         $value = $this->parameters[$parameter] ?? null;
 
