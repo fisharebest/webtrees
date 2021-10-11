@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-08-21 05:04+0000\n"
+"PO-Revision-Date: 2021-10-12 09:16+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -232,7 +232,7 @@ msgstr "%s en hun kinderen"
 #: app/Module/ClippingsCartModule.php:141
 #, php-format
 msgid "%s and their descendants"
-msgstr "%s en hun nakomelingen"
+msgstr "%s en hun afstammelingen"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5904
 #, php-format
@@ -526,7 +526,7 @@ msgstr "%s, haar huwelijkspartners en kinderen"
 #: app/Module/ClippingsCartModule.php:254
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr "%s, haar huwelijkspartners en nakomelingen"
+msgstr "%s, haar huwelijkspartners en afstammelingen"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:238
@@ -550,7 +550,7 @@ msgstr "%s, zijn huwelijkspartners en kinderen"
 #: app/Module/ClippingsCartModule.php:257
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr "%s, zijn huwelijkspartners en nakomelingen"
+msgstr "%s, zijn huwelijkspartners en afstammelingen"
 
 #: admin_media_upload.php:240 app/Functions/FunctionsPrint.php:619
 #: app/Module/UserMessagesModule.php:102
@@ -738,7 +738,9 @@ msgstr "Een diagram dat de verwantschap tussen twee personen weergeeft."
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
 msgid "A chart of an individual’s ancestors and descendants, as a family book."
-msgstr "Een diagram dat de voorouders en nakomelingen van een persoon toont in de vorm van een familieboek."
+msgstr ""
+"Een diagram dat de voorouders en afstammelingen van een persoon toont in de "
+"vorm van een familieboek."
 
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:42
@@ -758,7 +760,7 @@ msgstr "Een diagram met de voorouders van een persoon."
 #. I18N: Description of the “DescendancyChart” module
 #: app/Module/DescendancyChartModule.php:42
 msgid "A chart of an individual’s descendants."
-msgstr "Een diagram met de nakomelingen van een persoon."
+msgstr "Een diagram met de afstammelingen van een persoon."
 
 #. I18N: Description of the “LifespansChart” module
 #: app/Module/LifespansChartModule.php:42
@@ -1961,7 +1963,8 @@ msgstr "Er heeft zich een fout voorgedaan tijdens het uitpakken van het bestand.
 #. I18N: Description of the “HourglassChart” module
 #: app/Module/HourglassChartModule.php:42
 msgid "An hourglass chart of an individual’s ancestors and descendants."
-msgstr "Een zandloper diagram met de voorouders en nakomelingen van een persoon."
+msgstr ""
+"Een zandloper diagram met de voorouders en afstammelingen van een persoon."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:38
@@ -2642,7 +2645,7 @@ msgstr "Billings, Montana, Verenigde Staten"
 #. I18N: gedcom tag BLOB
 #: app/GedcomTag.php:222
 msgid "Binary data object"
-msgstr "Binair data object"
+msgstr "Binair gegevensobject"
 
 #: app/Functions/FunctionsPrint.php:470
 msgid "Bing Maps™"
@@ -4328,7 +4331,7 @@ msgstr "Tsjechië"
 #. I18N: gedcom tag _DNA (from FTM 2010)
 #: app/GedcomTag.php:1463
 msgid "DNA markers"
-msgstr "DNA markers"
+msgstr "DNA-markers"
 
 #. I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex
 #: app/Soundex.php:30 branches.php:57 search.php:262
@@ -4393,17 +4396,17 @@ msgstr "Datum verschillen"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
-msgstr "Datum LDS doop"
+msgstr "Datum van LDS-doop"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:778
 msgid "Date of LDS child sealing"
-msgstr "Datum van de LDS-kindverzegeling"
+msgstr "Datum van LDS-kindverzegeling"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:414
 msgid "Date of LDS endowment"
-msgstr "Datum van de LDS-schenking"
+msgstr "Datum van LDS-schenking"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:470
@@ -4420,11 +4423,11 @@ msgstr "Doopdatum"
 
 #: app/GedcomTag.php:192 modules_v3/missing_facts_report/report.xml:212
 msgid "Date of bar mitzvah"
-msgstr "Bar mitswa datum"
+msgstr "Bar mitswa-datum"
 
 #: app/GedcomTag.php:200 modules_v3/missing_facts_report/report.xml:253
 msgid "Date of bat mitzvah"
-msgstr "Datum van de bat mitswa"
+msgstr "Bat mitswa-datum"
 
 #: app/GedcomTag.php:208 modules_v3/fact_sources/report.xml:68
 #: modules_v3/fact_sources/report.xml:272
@@ -4439,11 +4442,11 @@ msgstr "Datum zegening"
 
 #: app/GedcomTag.php:1090
 msgid "Date of brit milah"
-msgstr "Datum van brit milah"
+msgstr "Brit milah-datum"
 
 #: app/GedcomTag.php:228 modules_v3/missing_facts_report/report.xml:546
 msgid "Date of burial"
-msgstr "Datum van begrafenis"
+msgstr "Begrafenisdatum"
 
 #: app/GedcomTag.php:280 modules_v3/missing_facts_report/report.xml:170
 msgid "Date of christening"
@@ -4451,25 +4454,25 @@ msgstr "Doopdatum"
 
 #: app/GedcomTag.php:312 modules_v3/missing_facts_report/report.xml:294
 msgid "Date of confirmation"
-msgstr "Datum vormsel/confirmatie"
+msgstr "Datum van vormsel/confirmatie"
 
 #: app/GedcomTag.php:332
 msgid "Date of cremation"
-msgstr "Datum crematie"
+msgstr "Crematiedatum"
 
 #: app/GedcomTag.php:356 modules_v3/cemetery_report/report.xml:47
 #: modules_v3/fact_sources/report.xml:274
 #: modules_v3/missing_facts_report/report.xml:505
 msgid "Date of death"
-msgstr "Datum van overlijden"
+msgstr "Overlijdensdatum"
 
 #: app/GedcomTag.php:462
 msgid "Date of divorce"
-msgstr "Datum van echtscheiding"
+msgstr "Echtscheidingsdatum"
 
 #: app/GedcomTag.php:406
 msgid "Date of emigration"
-msgstr "Emigratie datum"
+msgstr "Emigratiedatum"
 
 #: app/GedcomTag.php:422 modules_v3/missing_facts_report/report.xml:336
 msgid "Date of engagement"
@@ -4481,7 +4484,7 @@ msgstr "Inschrijfdatum in originele bron"
 
 #: app/GedcomTag.php:430
 msgid "Date of event"
-msgstr "Datum van gebeurtenis"
+msgstr "Gebeurtenisdatum"
 
 #: app/GedcomTag.php:482 modules_v3/missing_facts_report/report.xml:378
 msgid "Date of first communion"
@@ -4489,7 +4492,7 @@ msgstr "Datum eerste communie"
 
 #: app/GedcomTag.php:526
 msgid "Date of immigration"
-msgstr "Datum van immigratie"
+msgstr "Immigratiedatum"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/GedcomTag.php:262
@@ -4508,7 +4511,7 @@ msgstr "Ondertrouwdatum"
 
 #: app/GedcomTag.php:620
 msgid "Date of naturalization"
-msgstr "Datum naturalisatie"
+msgstr "Naturalisatiedatum"
 
 #: app/GedcomTag.php:668
 msgid "Date of ordination"
@@ -5066,7 +5069,7 @@ msgstr "Afstammelingen"
 #. I18N: gedcom tag DESI
 #: app/GedcomTag.php:366
 msgid "Descendants interest"
-msgstr "Interesse in nakomelingen"
+msgstr "Interesse in afstammelingen"
 
 #: modules_v3/descendancy_report/report.xml:42
 msgid "Descendants of "
@@ -5820,7 +5823,7 @@ msgstr "Extra informatie"
 #. I18N: gedcom tag _EYEC
 #: app/GedcomTag.php:1471
 msgid "Eye color"
-msgstr "Kleur ogen"
+msgstr "Oogkleur"
 
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:172
@@ -6981,7 +6984,7 @@ msgstr "HTML"
 #. I18N: gedcom tag _HAIR
 #: app/GedcomTag.php:1517
 msgid "Hair color"
-msgstr "Kleur haar"
+msgstr "Haarkleur"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6774
@@ -8025,7 +8028,7 @@ msgstr "LDS-doop"
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:776
 msgid "LDS child sealing"
-msgstr "LDS kind verzegeling"
+msgstr "LDS-kindverzegeling"
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:318
@@ -8035,7 +8038,7 @@ msgstr "LDS-bevestiging"
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/GedcomTag.php:412
 msgid "LDS endowment"
-msgstr "LDS-gave"
+msgstr "LDS-schenking"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1324
@@ -8818,7 +8821,7 @@ msgstr "Huwelijkse staat"
 
 #: app/GedcomTag.php:588
 msgid "Marriage type unknown"
-msgstr "Onbekend type huwelijk"
+msgstr "Onbekend soort huwelijk"
 
 #. I18N: Name of a module/report
 #: app/Module/MarriageReportModule.php:29
@@ -10660,7 +10663,7 @@ msgstr "Fonetische naam"
 
 #: app/GedcomTag.php:688
 msgid "Phonetic place"
-msgstr "Plaatsnaam fonetisch"
+msgstr "Fonetische plaatsnaam"
 
 #. I18N: search using “sounds like”, rather than exact spelling
 #: app/Controller/SearchController.php:198 app/Theme/AbstractTheme.php:1733
@@ -10740,7 +10743,7 @@ msgstr "Hiërarchie van plaatsen"
 
 #: app/GedcomTag.php:692
 msgid "Place in Hebrew"
-msgstr "Plaatsnaam in Hebreeuws"
+msgstr "Plaatsnaam in het Hebreeuws"
 
 #: placelist.php:46 placelist.php:68
 msgid "Place list"
@@ -10781,11 +10784,11 @@ msgstr "Doopplaats"
 
 #: app/GedcomTag.php:194 modules_v3/missing_facts_report/report.xml:223
 msgid "Place of bar mitzvah"
-msgstr "Plaats van de bar mitswa"
+msgstr "Plaats van bar mitswa"
 
 #: app/GedcomTag.php:202 modules_v3/missing_facts_report/report.xml:264
 msgid "Place of bat mitzvah"
-msgstr "Plaats van de bat mitswa"
+msgstr "Plaats van bat mitswa"
 
 #: app/GedcomTag.php:210 modules_v3/fact_sources/report.xml:273
 #: modules_v3/missing_facts_report/report.xml:93
@@ -11362,7 +11365,7 @@ msgstr "Record-ID-nummer"
 #. I18N: gedcom tag RFN
 #: app/GedcomTag.php:750
 msgid "Record file number"
-msgstr "Record bestandsnummer"
+msgstr "Recordbestandsnummer"
 
 #: search.php:83 statistics.php:350
 msgid "Records"
@@ -11439,26 +11442,26 @@ msgstr "Verwante personen"
 #. I18N: gedcom tag RELA
 #: app/GedcomTag.php:720
 msgid "Relationship"
-msgstr "Relatie"
+msgstr "Verwantschap"
 
 #. I18N: gedcom tag _FREL
 #: app/GedcomTag.php:1505
 msgid "Relationship to father"
-msgstr "Relatie met vader"
+msgstr "Verwantschap met vader"
 
 #: app/Module/RelationshipsChartModule.php:83
 msgid "Relationship to me"
-msgstr "Relatie met mij"
+msgstr "Verwantschap met mij"
 
 #. I18N: gedcom tag _MREL
 #: app/GedcomTag.php:1667
 msgid "Relationship to mother"
-msgstr "Relatie met moeder"
+msgstr "Verwantschap met moeder"
 
 #. I18N: gedcom tag PEDI
 #: app/GedcomTag.php:678
 msgid "Relationship to parents"
-msgstr "Verwantschap met de ouders"
+msgstr "Verwantschap met ouders"
 
 #: relationship.php:166
 #, php-format
@@ -11478,7 +11481,7 @@ msgstr "Verwantschap"
 #: relationship.php:54
 #, php-format
 msgid "Relationships between %1$s and %2$s"
-msgstr "Relaties tussen %1$s en %2$s"
+msgstr "Verwantschappen tussen %1$s en %2$s"
 
 #. I18N: gedcom tag RELI
 #: app/GedcomTag.php:724 modules_v3/missing_facts_report/report.xml:26
@@ -12742,7 +12745,7 @@ msgstr "Toon miniatuurafbeeldingen in diagrammen en overzichten."
 #: app/Functions/FunctionsPrintFacts.php:836
 #: app/Functions/FunctionsPrintFacts.php:1102
 msgid "Show to managers"
-msgstr "Toon aan de managers"
+msgstr "Toon aan managers"
 
 #: admin_trees_config.php:80 admin_trees_config.php:87
 #: admin_trees_config.php:368 admin_trees_config.php:432
@@ -12903,7 +12906,7 @@ msgstr "Afmeting van de kaart (in pixels)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/AbstractTheme.php:84
 msgid "Skip to content"
-msgstr "Spring naar de inhoud"
+msgstr "Spring naar inhoud"
 
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgid "Slave"
@@ -13290,7 +13293,7 @@ msgstr "Ingediend, maar nog niet vrijgegeven"
 #. I18N: gedcom tag SUBM
 #: app/GedcomTag.php:810
 msgid "Submitter"
-msgstr "Inzender"
+msgstr "Indiener"
 
 #. I18N: Name of a country or state
 #: app/Stats.php:6868
