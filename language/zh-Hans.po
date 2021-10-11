@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2021-10-09 15:52+0000\n"
+"PO-Revision-Date: 2021-10-12 09:16+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -464,7 +464,7 @@ msgstr[0] "%s 個月前"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s 项备注已更新。"
+msgstr[0] "%s 项注释说明已更新。"
 
 # I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
@@ -508,7 +508,7 @@ msgstr[0] "%s 登录的用户"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "来源%s已被更新。"
+msgstr[0] "来源信息%s已被更新。"
 
 # I18N: %s=“fifth cousin”, etc.
 #. I18N: %s=“fifth cousin”, etc.
@@ -956,7 +956,7 @@ msgstr "一种以扇形样式显示个人祖先的图表。"
 #: resources/views/admin/trees-import.phtml:37,
 #: resources/views/modals/media-file-fields.phtml:15,
 msgid "A file on the server"
-msgstr "文件位于服务器"
+msgstr "文件在服务器上"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 #: app/Module/GoogleMapsModule.php:3639
@@ -970,7 +970,7 @@ msgstr "文件位于服务器"
 #: resources/views/admin/trees-import.phtml:26,
 #: resources/views/modals/media-file-fields.phtml:11,
 msgid "A file on your computer"
-msgstr "文件位于您的计算机"
+msgstr "文件在我的设备上"
 
 # I18N: Description of the “My page” module
 #. I18N: Description of the “My page” module
@@ -1089,7 +1089,7 @@ msgstr "webtrees有新的可用版本。"
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:56 app/Module/UserJournalModule.php:60
 msgid "A private area to record notes or keep a journal."
-msgstr "记录或日记仅本人可浏览。"
+msgstr "一个可以记录笔记或写日记的私人区域。"
 
 # I18N: %s is a server name/URL
 #. I18N: %s is a server name/URL
@@ -1143,7 +1143,7 @@ msgstr "个人的详细报告。"
 #: modules_v3/fact_sources/report.xml:4
 #: resources/xml/reports/fact_sources.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "由一个给定的来源的事实报告。"
+msgstr "对有特定信息来源支持的事实的报告。"
 
 # I18N: Description of the “Family” module
 #. I18N: Description of the “Family” module
@@ -1235,7 +1235,7 @@ msgstr "与个人密切相关的个人报告。"
 #: app/Module/FactSourcesReportModule.php:35
 #: app/Module/FactSourcesReportModule.php:54
 msgid "A report of the information provided by a source."
-msgstr "来源信息报告。"
+msgstr "信息来源报告。"
 
 # I18N: Description of the “Missing data”
 #. I18N: Description of the “Missing data”
@@ -1314,13 +1314,13 @@ msgstr "这个标签显示连接到个人的多媒体文件。"
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:39 app/Module/NotesTabModule.php:68
 msgid "A tab showing the notes attached to an individual."
-msgstr "标签显示个人的备注。"
+msgstr "标签显示个人的注释说明。"
 
 # I18N: Description of the “Sources” module
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:39 app/Module/SourcesTabModule.php:68
 msgid "A tab showing the sources linked to an individual."
-msgstr "显示链接到一个人的来源的标签。"
+msgstr "显示链接到一个人信息来源的标签。"
 
 # I18N: Description of the “TimelineChart” module
 #. I18N: Description of the “TimelineChart” module
@@ -1827,7 +1827,7 @@ msgstr "添加一个儿子或女儿"
 #: resources/views/cards/add-source-citation.phtml:9,
 #: resources/views/family-page.phtml:107, resources/views/media-page.phtml:153,
 msgid "Add a source citation"
-msgstr "添加来源中源文"
+msgstr "添加信息来源中的源文"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
@@ -2059,7 +2059,7 @@ msgstr "过继"
 
 #: app/GedcomCode/GedcomCodeAdop.php:52 app/GedcomCode/GedcomCodeAdop.php:62
 msgid "Adopted by both parents"
-msgstr "由养父母收养"
+msgstr "被父母双方收养"
 
 #: app/GedcomCode/GedcomCodeAdop.php:50 app/GedcomCode/GedcomCodeAdop.php:59
 msgctxt "FEMALE"
@@ -2077,7 +2077,7 @@ msgstr "由养父母收养"
 #: app/GedcomCode/GedcomCodeAdop.php:73 app/GedcomTag.php:1159
 #: app/GedcomCode/GedcomCodeAdop.php:73,
 msgid "Adopted by father"
-msgstr "由父亲过继"
+msgstr "被父亲收养"
 
 # I18N: gedcom tag _ADPF
 #. I18N: gedcom tag _ADPF
@@ -2103,7 +2103,7 @@ msgstr "由父亲收养"
 #: app/GedcomCode/GedcomCodeAdop.php:84 app/GedcomTag.php:1173
 #: app/GedcomCode/GedcomCodeAdop.php:84,
 msgid "Adopted by mother"
-msgstr "由母亲收养"
+msgstr "被母亲收养"
 
 # I18N: gedcom tag _ADPM
 #. I18N: gedcom tag _ADPM
@@ -2511,7 +2511,7 @@ msgstr "所有的库事件"
 #: admin_trees_config.php:1854
 #: resources/views/admin/trees-preferences.phtml:787
 msgid "All source facts"
-msgstr "所有的来源事件"
+msgstr "所有的信息来源"
 
 # I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
 #. I18N: Description of the “CKEditor” module. WYSIWYG = “what you see is what you get”
@@ -3017,7 +3017,7 @@ msgstr "与其有关人员"
 #: edit_interface.php:1221 help_text.php:292
 #: app/Http/Controllers/HelpTextController.php:235
 msgid "Associate events with this source"
-msgstr "关联事务到此来源"
+msgstr "关联事务到此信息来源"
 
 #: search.php:107 search.php:266
 msgid "Associates"
@@ -3141,14 +3141,14 @@ msgstr "自动批准该用户所做的更改"
 #: admin_trees_config.php:1474
 #: resources/views/admin/trees-preferences.phtml:550
 msgid "Automatically expand notes"
-msgstr "自动扩展的记录"
+msgstr "自动扩展的注释说明"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
 #: admin_trees_config.php:1489
 #: resources/views/admin/trees-preferences.phtml:566
 msgid "Automatically expand sources"
-msgstr "自动扩展来源"
+msgstr "自动扩展信息来源"
 
 # I18N: a month in the Jewish calendar
 #. I18N: a month in the Jewish calendar
@@ -5727,7 +5727,7 @@ msgstr "使用助理创建新的共享记录"
 #: resources/views/modals/create-source.phtml:7
 #: app/Functions/FunctionsEdit.php:535,
 msgid "Create a source"
-msgstr "创建新的来源记录"
+msgstr "创建新的信息来源记录"
 
 #: admin_site_access.php:218
 msgid "Create a website access rule"
@@ -7606,7 +7606,11 @@ msgstr "用户名重复。该用户名已经被另一个用户使用。请更换
 
 #: help_text.php:293 resources/views/help/source-events.phtml:4
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "每个来源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和去世事件。<br><br>选择事件,记录采用这种来源的事件清单中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作来源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
+msgstr ""
+"每个信息来源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和去世事件。<br><br>选择事件,"
+"记录采用这种来源的事件清单中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别"
+"的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作来源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如"
+"果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
 
 #: help_text.php:314 resources/views/help/pending-changes.phtml:17
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -8415,7 +8419,7 @@ msgstr "库事件"
 #: admin_trees_config.php:1849
 #: resources/views/admin/trees-preferences.phtml:782
 msgid "Facts for source records"
-msgstr "来源事件"
+msgstr "信息来源事件"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -8503,7 +8507,7 @@ msgstr "家庭信息"
 #: resources/views/statistics/other/chart-sources.phtml:30
 #: app/Statistics/Google/ChartFamilyWithSources.php:94,
 msgid "Families with sources"
-msgstr "家庭来源"
+msgstr "家庭来源信息"
 
 # I18N: gedcom tag FAM
 # I18N: Name of a module/report
@@ -8702,7 +8706,7 @@ msgstr "养父母家庭"
 
 #: app/GedcomCode/GedcomCodePedi.php:131 app/GedcomCode/GedcomCodePedi.php:147
 msgid "Family with foster parents"
-msgstr "寄养父母家庭"
+msgstr "养父母的家庭"
 
 #: modules_v3/individual_ext_report/report.xml:441
 #: modules_v3/individual_report/report.xml:446
@@ -9048,7 +9052,7 @@ msgstr "添加一個新的共享記錄"
 #: modules_v3/fact_sources/report.xml:5
 #: resources/xml/reports/fact_sources.xml:5
 msgid "Find a source"
-msgstr "找一个来源"
+msgstr "寻找来源信息"
 
 #: app/Functions/FunctionsPrint.php:720 find.php:72
 #: resources/views/edit/input-addon-keyboard.phtml:5
@@ -9300,7 +9304,7 @@ msgstr "格式"
 #: admin_trees_config.php:1557
 #: resources/views/admin/trees-preferences.phtml:611
 msgid "Format text and notes"
-msgstr "设置文本格式和注意事项"
+msgstr "文本和注释的格式"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -10917,7 +10921,7 @@ msgstr "族人信息"
 #: resources/views/statistics/other/chart-sources.phtml:18
 #: app/Statistics/Google/ChartIndividualWithSources.php:94,
 msgid "Individuals with sources"
-msgstr "个人来源"
+msgstr "个人信息来源"
 
 #: famlist.php:255 indilist.php:255 app/Http/Controllers/ListController.php:334
 #, php-format
@@ -14505,7 +14509,7 @@ msgstr "注意:长路径长度需要大量的计算,这些用户可能使你的�
 #: resources/views/statistics/other/total-records.phtml:37,
 #: resources/xml/reports/individual_ext_report.xml:229,
 msgid "Notes"
-msgstr "记录"
+msgstr "注释说明"
 
 #: admin_users.php:774 resources/views/admin/users-cleanup.phtml:72
 msgid "Nothing found to cleanup"
@@ -16060,7 +16064,7 @@ msgstr "快速添加的库事件"
 #: admin_trees_config.php:1912
 #: resources/views/admin/trees-preferences.phtml:813
 msgid "Quick source facts"
-msgstr "快速添加的来源事件"
+msgstr "快速添加来源信息"
 
 # I18N: The fifth day in the French republican calendar
 #. I18N: The fifth day in the French republican calendar
@@ -17603,7 +17607,7 @@ msgstr "共享记录"
 #: app/Module/NoteListModule.php:45,
 #: resources/views/lists/sources-table.phtml:87,
 msgid "Shared notes"
-msgstr "共享记录"
+msgstr "共享笔记"
 
 #: find.php:709
 msgid "Shared notes found"
@@ -17783,7 +17787,7 @@ msgstr "在《请求新的用户账户》页面显示使用协议"
 
 #: app/Module/NotesTabModule.php:74 resources/views/modules/notes/tab.phtml:11
 msgid "Show all notes"
-msgstr "显示所有记录"
+msgstr "显示所有注释说明"
 
 msgid "Show all notes and source references on notes and sources tabs"
 msgstr "在记事和资源标签显示所有记事和资源"
@@ -17957,7 +17961,7 @@ msgstr "显示个人姓名"
 #: resources/xml/reports/family_group_report.xml:8,
 #: resources/xml/reports/individual_ext_report.xml:10,
 msgid "Show notes"
-msgstr "显示记录"
+msgstr "显示注释说明"
 
 #: modules_v3/ahnentafel_report/report.xml:10
 #: resources/xml/reports/ahnentafel_report.xml:10
@@ -18081,7 +18085,7 @@ msgstr "显示幻灯片控制"
 #: resources/xml/reports/family_group_report.xml:7,
 #: resources/xml/reports/individual_ext_report.xml:9,
 msgid "Show sources"
-msgstr "显示来源"
+msgstr "显示信息来源"
 
 #: familybook.php:82 hourglass.php:73
 #: resources/views/modules/family-book-chart/page.phtml:47
@@ -18720,7 +18724,7 @@ msgstr "听起来像"
 #: resources/xml/reports/missing_facts_report.xml:487,
 #: resources/xml/reports/missing_facts_report.xml:529,
 msgid "Source"
-msgstr "来源"
+msgstr "信息来源"
 
 # I18N: Help text for the “Use full source citations” configuration setting
 #. I18N: Help text for the “Use full source citations” configuration setting
@@ -18741,7 +18745,7 @@ msgstr "埋葬的地點包含"
 #: resources/xml/reports/fact_sources.xml:6
 #: resources/views/admin/trees-preferences.phtml:928,
 msgid "Source type"
-msgstr "来源类型"
+msgstr "来源信息类型"
 
 # I18N: Name of a module/list
 # I18N: Name of a module
@@ -18816,12 +18820,12 @@ msgstr "来源类型"
 #: resources/xml/reports/family_group_report.xml:1118,
 #: resources/xml/reports/individual_ext_report.xml:644,
 msgid "Sources"
-msgstr "来源统计"
+msgstr "来源信息统计"
 
 #: modules_v3/missing_facts_report/report.xml:14
 #: resources/xml/reports/missing_facts_report.xml:14
 msgid "Sources to the events"
-msgstr "为事件添加来源"
+msgstr "为事件添加来源信息"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -20107,7 +20111,7 @@ msgstr "这个人没有多媒体文件。"
 
 #: app/Module/NotesTabModule.php:90 resources/views/modules/notes/tab.phtml:26
 msgid "There are no notes for this individual."
-msgstr "这有个人没有记录。"
+msgstr "这有个人没有注释说明。"
 
 #: admin_site_upgrade.php:105
 #: app/Http/Controllers/Admin/UpgradeController.php:248
@@ -20123,7 +20127,7 @@ msgstr "这个家庭里没有考证任务。"
 #: app/Module/SourcesTabModule.php:83
 #: resources/views/modules/sources_tab/tab.phtml:24
 msgid "There are no source citations for this individual."
-msgstr "这个人没有来源引用。"
+msgstr "这个人没有任何来源的引证。"
 
 #: app/Module/ReviewChangesModule.php:87 app/Module/ReviewChangesModule.php:111
 #: app/Theme/AbstractTheme.php:1961 app/Module/ReviewChangesModule.php:144
@@ -20497,8 +20501,8 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:792
 msgid "This is the list of GEDCOM facts that your users can add to sources. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique source facts” list."
 msgstr ""
-"用户可以添加到来源中的GEDCOM事件清单。你可以通过删除或添加此清单上的事件名称，甚至可以自定义。在这个清单中的事件，不能同时出现在来源事件<i>唯一事"
-"件</i> 列表。"
+"这是你的用户可以添加到来源的GEDCOM事实的列表。你可以在必要时通过删除或添加事实名称，甚至是自定义名称来修改这个列表。"
+"出现在这个列表中的事实名称不能同时出现在 \"独特来源事实 \"列表中。"
 
 # I18N: Help text for the “Unique family facts” configuration setting
 #. I18N: Help text for the “Unique family facts” configuration setting
@@ -20683,7 +20687,7 @@ msgstr "这个选项控制是否在个人页面上自动显示<i>记录</i>的�
 #: admin_trees_config.php:1495
 #: resources/views/admin/trees-preferences.phtml:572
 msgid "This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page."
-msgstr "这个选项控制是否在个人页面自动显示<i>来源</i>的内容。"
+msgstr "这个选项控制是否在个人页面自动显示<i>信息来源</i>的内容。"
 
 # I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
@@ -20848,29 +20852,29 @@ msgstr "这应该是一个逗号或空格分隔的事实清单,你想要生和�
 #: app/Exceptions/SourceNotFoundException.php:33
 #: app/Exceptions/SourceAccessDeniedException.php:33,
 msgid "This source does not exist or you do not have permission to view it."
-msgstr "这个来源不存在或您无权查看它。"
+msgstr "这条来源信息不存在或您无权查看它。"
 
 #: source.php:45 resources/views/source-page.phtml:10
 msgid "This source has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "这个来源已被删除。删除需要主编审批后，方可生效。"
+msgstr "这条来源信息已被删除。删除需要主编审批后，方可生效。"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:40 resources/views/source-page.phtml:8
 #, php-format
 msgid "This source has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "这个来源已被删除。你应该检查此操作，然后决定是 %1$s 或 %2$s。"
+msgstr "这条来源信息已被删除。你应该检查此操作，然后决定是 %1$s 或 %2$s。"
 
 #: source.php:55 resources/views/source-page.phtml:16
 msgid "This source has been edited. The changes need to be reviewed by a moderator."
-msgstr "这个来源已被被编辑。更改需要主编审批后，方可生效。"
+msgstr "这条来源信息已被被编辑。更改需要主编审批后，方可生效。"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: source.php:50 resources/views/source-page.phtml:14
 #, php-format
 msgid "This source has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "这个来源已被编辑。你应该检查更改，然后决定是 %1$s 或 %2$s。"
+msgstr "这条来源信息已被编辑。你应该检查更改，然后决定是 %1$s 或 %2$s。"
 
 msgid "This specifies the precision of the different levels when entering new geographic locations. For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
 msgstr "不同地理位置指定的精度不同级别。例如一个国家将指定精度0(= 0数字小数点后),而一个城市需要3或4位数。"
@@ -21729,7 +21733,7 @@ msgstr "独特的库事件"
 #: admin_trees_config.php:1883
 #: resources/views/admin/trees-preferences.phtml:800
 msgid "Unique source facts"
-msgstr "独特的来源事件"
+msgstr "独特的信息来源事件"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -21950,7 +21954,7 @@ msgstr "使用紧凑的布局"
 #: admin_trees_config.php:2105
 #: resources/views/admin/trees-preferences.phtml:913
 msgid "Use full source citations"
-msgstr "使用完整的来源引用"
+msgstr "使用完整的信息来源引用"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -22523,7 +22527,8 @@ msgstr "添加一个链接的时候，ID字段不能为空。"
 #: admin_trees_config.php:2123
 #: resources/views/admin/trees-preferences.phtml:933
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "当添加新的近亲属，你可以添加来源引用到记录 (个人和家庭) 或事实和事件 (出生、 婚姻和去世)。 此选项控制是否在默认情况下，将选定记录或事实。"
+msgstr ""
+"当添加新的近亲属，你可以添加信息来源引用到记录 (个人和家庭) 或事实和事件 (出生、 婚姻和去世)。 此选项控制是否在默认情况下，将选定记录或事实。"
 
 msgid "When new records are created, they are given an internal ID number. You can specify the prefix used for each type of record."
 msgstr "当创建新记录时，他们给出了一个内部的 ID 编号。 您可以指定用于记录每个类型的前缀。"
