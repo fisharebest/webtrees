@@ -59,7 +59,7 @@ class MessageService
      *
      * @param Tree $tree
      *
-     * @return UserInterface[]
+     * @return array<UserInterface>
      */
     public function validContacts(Tree $tree): array
     {

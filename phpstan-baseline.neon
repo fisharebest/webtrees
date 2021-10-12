@@ -950,11 +950,6 @@ parameters:
 			path: app/Module/MinimalTheme.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\:\\:getBlock\\(\\) has parameter \\$config with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/ModuleBlockInterface.php
-
-		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Module\\\\NotesTabModule\\:\\:\\$facts type has no value type specified in iterable type Illuminate\\\\Support\\\\Collection\\.$#"
 			count: 1
 			path: app/Module/NotesTabModule.php
@@ -1058,11 +1053,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\StatisticsChartModule\\:\\:fillYData\\(\\) has parameter \\$z_axis with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Module/StatisticsChartModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\TimelineChartModule\\:\\:chart\\(\\) has parameter \\$xrefs with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/TimelineChartModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$surnames of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintLists\\:\\:surnameTagCloud\\(\\) expects array\\<string, array\\<string, int\\>\\>, array\\<int\\|string, array\\> given\\.$#"
@@ -1215,11 +1205,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Cannot access offset \\(float\\|int\\) on array\\<int, string\\>\\|false\\.$#"
-			count: 14
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Cannot access offset 0 on array\\|false\\.$#"
 			count: 3
 			path: app/Report/ReportParserGenerate.php
@@ -1227,6 +1212,11 @@ parameters:
 		-
 			message: "#^Cannot access offset 1 on array\\|false\\.$#"
 			count: 3
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Cannot access offset float\\|int on array\\<int, string\\>\\|false\\.$#"
+			count: 14
 			path: app/Report/ReportParserGenerate.php
 
 		-

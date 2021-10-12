@@ -58,7 +58,7 @@ class ColorsTheme extends CloudsTheme
      *
      * @param Tree|null $tree
      *
-     * @return Menu[]
+     * @return array<Menu>
      */
     public function userMenu(?Tree $tree): array
     {

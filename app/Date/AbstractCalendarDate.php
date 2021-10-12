@@ -349,7 +349,7 @@ abstract class AbstractCalendarDate
      *
      * @param AbstractCalendarDate $date
      *
-     * @return int[] Age in years/months/days
+     * @return array<int> Age in years/months/days
      */
     public function ageDifference(AbstractCalendarDate $date): array
     {
@@ -833,7 +833,7 @@ abstract class AbstractCalendarDate
     /**
      * Which months follows this one? Calendars with leap-months should provide their own implementation.
      *
-     * @return int[]
+     * @return array<int>
      */
     protected function nextMonth(): array
     {
@@ -846,7 +846,7 @@ abstract class AbstractCalendarDate
     /**
      * Get today’s date in the current calendar.
      *
-     * @return int[]
+     * @return array<int>
      */
     public function todayYmd(): array
     {

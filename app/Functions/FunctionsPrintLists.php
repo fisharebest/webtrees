@@ -83,7 +83,7 @@ class FunctionsPrintLists
     /**
      * Print a list of surnames.
      *
-     * @param int[][]                  $surnames counts of surname by variant
+     * @param array<array<int>>        $surnames counts of surname by variant
      * @param int                      $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
      * @param bool                     $totals   show totals after each name
      * @param ModuleListInterface|null $module

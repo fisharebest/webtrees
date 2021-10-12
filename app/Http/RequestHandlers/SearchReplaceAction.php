@@ -152,7 +152,7 @@ class SearchReplaceAction implements RequestHandlerInterface
      * @param Collection<GedcomRecord> $records
      * @param string                   $search
      * @param string                   $replace
-     * @param string[]                 $name_tags
+     * @param array<string>            $name_tags
      *
      * @return int
      */

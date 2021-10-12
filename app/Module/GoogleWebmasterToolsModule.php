@@ -96,7 +96,7 @@ class GoogleWebmasterToolsModule extends AbstractModule implements ModuleAnalyti
     /**
      * Embed placeholders in the snippet.
      *
-     * @param string[] $parameters
+     * @param array<string> $parameters
      *
      * @return string
      */

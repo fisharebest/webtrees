@@ -63,6 +63,6 @@ class AuthEditor implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['tree' => $tree->name(), 'url' => $request->getUri()]));
+        return redirect(route(LoginPage::class, ['tree' => $tree->name(), 'url' => (string) $request->getUri()]));
     }
 }

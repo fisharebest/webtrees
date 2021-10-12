@@ -33,20 +33,20 @@ class Menu
     /** @var string The CSS class used to style this menu item */
     private $class;
 
-    /** @var string[] A list of optional HTML attributes, such as onclick or data-xxx */
+    /** @var array<string> A list of optional HTML attributes, such as onclick or data-xxx */
     private $attrs;
 
-    /** @var Menu[] An optional list of sub-menus. */
+    /** @var array<Menu> An optional list of sub-menus. */
     private $submenus;
 
     /**
      * Constructor for the menu class
      *
-     * @param string   $label    The label for the menu item
-     * @param string   $link     The target URL
-     * @param string   $class    A CSS class
-     * @param string[] $attrs    Optional attributes, such as onclick or data-xxx
-     * @param Menu[]   $submenus Any submenus
+     * @param string        $label    The label for the menu item
+     * @param string        $link     The target URL
+     * @param string        $class    A CSS class
+     * @param array<string> $attrs    Optional attributes, such as onclick or data-xxx
+     * @param array<Menu>   $submenus Any submenus
      */
     public function __construct(
         string $label,
@@ -76,7 +76,7 @@ class Menu
     /**
      * Set the optional attributes.
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return $this
      */
@@ -176,7 +176,7 @@ class Menu
     /**
      * Get the sub-menus.
      *
-     * @return Menu[]
+     * @return array<Menu>
      */
     public function getSubmenus(): array
     {
@@ -186,7 +186,7 @@ class Menu
     /**
      * Set the sub-menus.
      *
-     * @param Menu[] $submenus
+     * @param array<Menu> $submenus
      *
      * @return $this
      */

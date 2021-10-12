@@ -27,7 +27,7 @@ class Census
     /**
      * @param string $locale
      *
-     * @return CensusPlaceInterface[]
+     * @return array<CensusPlaceInterface>
      */
     public static function censusPlaces(string $locale): array
     {

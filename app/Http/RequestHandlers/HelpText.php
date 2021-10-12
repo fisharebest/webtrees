@@ -316,7 +316,7 @@ class HelpText implements RequestHandlerInterface
     /**
      * Format GEDCOM dates in the local language.
      *
-     * @param string[]|int[] $gedcom_dates
+     * @param array<string>|array<int> $gedcom_dates
      *
      * @return array<string>
      */

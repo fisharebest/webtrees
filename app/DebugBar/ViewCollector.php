@@ -28,8 +28,8 @@ use DebugBar\DataCollector\Renderable;
  */
 class ViewCollector extends DataCollector implements Renderable
 {
-    /** @var string[] */
-    protected $views = [];
+    /** @var array<string> */
+    protected array $views = [];
 
     /**
      * Add details about a view

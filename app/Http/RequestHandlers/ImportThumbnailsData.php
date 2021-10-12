@@ -243,7 +243,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
      * @param FilesystemOperator $filesystem
      * @param string             $path
      *
-     * @return int[][]
+     * @return array<array<int>>
      */
     private function scaledImagePixels(FilesystemOperator $filesystem, string $path): array
     {

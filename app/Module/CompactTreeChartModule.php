@@ -134,8 +134,8 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual $individual
-     * @param mixed[]    $parameters
+     * @param Individual                        $individual
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */

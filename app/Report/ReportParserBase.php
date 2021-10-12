@@ -103,9 +103,9 @@ class ReportParserBase
     /**
      * XML handler for an opening (or self-closing) tag.
      *
-     * @param resource $parser The resource handler for the xml parser
-     * @param string   $name   The name of the xml element parsed
-     * @param string[] $attrs  An array of key value pairs for the attributes
+     * @param resource      $parser The resource handler for the xml parser
+     * @param string        $name   The name of the xml element parsed
+     * @param array<string> $attrs  An array of key value pairs for the attributes
      *
      * @return void
      */

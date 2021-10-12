@@ -139,8 +139,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual $individual
-     * @param mixed[]    $parameters
+     * @param Individual                        $individual
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */

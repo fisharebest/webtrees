@@ -21,10 +21,10 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
-use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -650,8 +650,8 @@ class FunctionsPrintFacts
      *  This function prints the input array of SOUR sub-records built by the
      *  getSourceStructure() function.
      *
-     * @param Tree                $tree
-     * @param string[]|string[][] $textSOUR
+     * @param Tree                        $tree
+     * @param array<string|array<string>> $textSOUR
      *
      * @return string
      */

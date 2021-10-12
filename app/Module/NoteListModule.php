@@ -92,8 +92,8 @@ class NoteListModule extends AbstractModule implements ModuleListInterface, Requ
     }
 
     /**
-     * @param Tree    $tree
-     * @param mixed[] $parameters
+     * @param Tree                              $tree
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */

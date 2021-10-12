@@ -457,7 +457,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      *
      * @param Tree $tree
      *
-     * @return GedcomRecord[]
+     * @return array<GedcomRecord>
      */
     private function allRecordsInCart(Tree $tree): array
     {

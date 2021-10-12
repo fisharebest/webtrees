@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Census\CensusInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -164,12 +164,12 @@ class CensusAssistantModule extends AbstractModule
     }
 
     /**
-     * @param CensusInterface $census
-     * @param string          $ca_title
-     * @param string          $ca_place
-     * @param string          $ca_citation
-     * @param string[][]      $ca_individuals
-     * @param string          $ca_notes
+     * @param CensusInterface      $census
+     * @param string               $ca_title
+     * @param string               $ca_place
+     * @param string               $ca_citation
+     * @param array<array<string>> $ca_individuals
+     * @param string               $ca_notes
      *
      * @return string
      */

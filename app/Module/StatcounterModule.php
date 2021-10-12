@@ -87,7 +87,7 @@ class StatcounterModule extends AbstractModule implements ModuleAnalyticsInterfa
     /**
      * Embed placeholders in the snippet.
      *
-     * @param string[] $parameters
+     * @param array<string> $parameters
      *
      * @return string
      */

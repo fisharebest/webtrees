@@ -64,9 +64,9 @@ class ChartDistribution
     private $placeRepository;
 
     /**
-     * @var string[]
+     * @var array<string>
      */
-    private $country_to_iso3166;
+    private array $country_to_iso3166;
 
     /**
      * Constructor.
@@ -264,7 +264,6 @@ class ChartDistribution
         $records        = $this->queryRecords($surname);
 
         foreach ($records as $row) {
-            /** @var string[][] $matches */
             if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $row->i_gedcom, $matches)) {
                 // webtrees uses 3 letter country codes and localised country names,
                 // but google uses 2 letter codes.

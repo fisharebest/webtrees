@@ -70,7 +70,7 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
      *
      * @param Tree|null $tree
      *
-     * @return Menu[]
+     * @return array<Menu>
      */
     public function genealogyMenu(?Tree $tree): array
     {

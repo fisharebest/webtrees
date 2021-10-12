@@ -186,8 +186,8 @@ class DebugBar
     /**
      * Log an exception/throwable
      *
-     * @param string  $view
-     * @param mixed[] $data
+     * @param string       $view
+     * @param array<mixed> $data
      *
      * @return void
      */

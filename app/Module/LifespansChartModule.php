@@ -134,8 +134,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for this chart.
      *
-     * @param Individual $individual
-     * @param mixed[]    $parameters
+     * @param Individual                        $individual
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */
@@ -427,7 +427,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     }
 
     /**
-     * @param Individual[] $individuals
+     * @param array<Individual> $individuals
      *
      * @return array<stdClass>
      */

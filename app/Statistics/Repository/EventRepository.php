@@ -105,7 +105,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @param string[] $events
+     * @param array<string> $events
      *
      * @return string
      */

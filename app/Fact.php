@@ -526,7 +526,7 @@ class Fact
     /**
      * Notes (inline and objects) linked to this fact
      *
-     * @return string[]|Note[]
+     * @return array<string|Note>
      */
     public function getNotes(): array
     {
@@ -552,7 +552,7 @@ class Fact
     /**
      * Media objects linked to this fact
      *
-     * @return Media[]
+     * @return array<Media>
      */
     public function getMedia(): array
     {

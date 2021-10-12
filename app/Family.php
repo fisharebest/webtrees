@@ -308,7 +308,7 @@ class Family extends GedcomRecord
     /**
      * Get a list of all marriage dates - for the family lists.
      *
-     * @return Date[]
+     * @return array<Date>
      */
     public function getAllMarriageDates(): array
     {
@@ -326,7 +326,7 @@ class Family extends GedcomRecord
     /**
      * Get a list of all marriage places - for the family lists.
      *
-     * @return Place[]
+     * @return array<Place>
      */
     public function getAllMarriagePlaces(): array
     {

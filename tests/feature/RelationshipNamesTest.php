@@ -379,9 +379,9 @@ class RelationshipNamesTest extends TestCase
     }
 
     /**
-     * @param string                  $expected
-     * @param array                   $nodes
-     * @param ModuleLanguageInterface $language
+     * @param string                   $expected
+     * @param array<Individual|Family> $nodes
+     * @param ModuleLanguageInterface  $language
      */
     private static function assertRelationship(string $expected, array $nodes, ModuleLanguageInterface $language): void
     {
@@ -397,10 +397,10 @@ class RelationshipNamesTest extends TestCase
     /**
      * Test a relationship name in both directions
      *
-     * @param string                  $fwd
-     * @param string                  $rev
-     * @param array                   $nodes
-     * @param ModuleLanguageInterface $language
+     * @param string                   $fwd
+     * @param string                   $rev
+     * @param array<Individual|Family> $nodes
+     * @param ModuleLanguageInterface  $language
      */
     private static function assertRelationships(string $fwd, string $rev, array $nodes, ModuleLanguageInterface $language): void
     {

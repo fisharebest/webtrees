@@ -83,10 +83,10 @@ class GedcomRecord
     /** @var string|null  GEDCOM data (after any pending edits) */
     protected $pending;
 
-    /** @var Fact[] facts extracted from $gedcom/$pending */
+    /** @var array<Fact> facts extracted from $gedcom/$pending */
     protected $facts;
 
-    /** @var string[][] All the names of this individual */
+    /** @var array<array<string>> All the names of this individual */
     protected $getAllNames;
 
     /** @var int|null Cached result */
@@ -523,8 +523,8 @@ class GedcomRecord
     /**
      * Extract/format the first fact from a list of facts.
      *
-     * @param string[] $facts
-     * @param int      $style
+     * @param array<string> $facts
+     * @param int           $style
      *
      * @return string
      */
@@ -728,9 +728,9 @@ class GedcomRecord
      * calendars, place-names in both latin and hebrew character sets, etc.
      * It also allows us to combine dates/places from different events in the summaries.
      *
-     * @param string[] $events
+     * @param array<string> $events
      *
-     * @return Date[]
+     * @return array<Date>
      */
     public function getAllEventDates(array $events): array
     {
@@ -747,9 +747,9 @@ class GedcomRecord
     /**
      * Get all the places for a particular type of event
      *
-     * @param string[] $events
+     * @param array<string> $events
      *
-     * @return Place[]
+     * @return array<Place>
      */
     public function getAllEventPlaces(array $events): array
     {
@@ -768,10 +768,10 @@ class GedcomRecord
     /**
      * The facts and events for this record.
      *
-     * @param string[] $filter
-     * @param bool     $sort
-     * @param int|null $access_level
-     * @param bool     $ignore_deleted
+     * @param array<string> $filter
+     * @param bool          $sort
+     * @param int|null      $access_level
+     * @param bool          $ignore_deleted
      *
      * @return Collection<Fact>
      */
@@ -1117,7 +1117,7 @@ class GedcomRecord
      * Fetch XREFs of all records linked to a record - when deleting an object, we must
      * also delete all links to it.
      *
-     * @return GedcomRecord[]
+     * @return array<GedcomRecord>
      */
     public function linkingRecords(): array
     {

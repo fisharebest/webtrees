@@ -111,8 +111,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * The URL for this chart.
      *
-     * @param Individual $individual
-     * @param mixed[]    $parameters
+     * @param Individual                        $individual
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */
@@ -870,12 +870,12 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * Calculate the Y axis.
      *
-     * @param int|string $x
-     * @param int|string $z
-     * @param int|string $value
-     * @param array      $x_axis
-     * @param array      $z_axis
-     * @param int[][]    $ydata
+     * @param int|string        $x
+     * @param int|string        $z
+     * @param int|string        $value
+     * @param array             $x_axis
+     * @param array             $z_axis
+     * @param array<array<int>> $ydata
      *
      * @return void
      */
@@ -903,7 +903,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * Others need to find the appropriate range.
      *
      * @param int|float|string $value
-     * @param string[]         $axis
+     * @param array<string>    $axis
      *
      * @return int|string
      */
@@ -928,13 +928,13 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * Plot the data.
      *
-     * @param string   $chart_title
-     * @param string[] $x_axis
-     * @param string   $x_axis_title
-     * @param int[][]  $ydata
-     * @param string   $y_axis_title
-     * @param string[] $z_axis
-     * @param int      $y_axis_type
+     * @param string            $chart_title
+     * @param array<string>     $x_axis
+     * @param string            $x_axis_title
+     * @param array<array<int>> $ydata
+     * @param string            $y_axis_title
+     * @param array<string>     $z_axis
+     * @param int               $y_axis_type
      *
      * @return string
      */

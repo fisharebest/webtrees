@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -198,7 +199,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
      * @param Individual $individual
      * @param Fact       $fact
      *
-     * @return mixed[]
+     * @return array<string|Place>
      */
     private function summaryData(Individual $individual, Fact $fact): array
     {

@@ -268,12 +268,12 @@ class CheckTree implements RequestHandlerInterface
     }
 
     /**
-     * @param string     $type
-     * @param string[][] $links
-     * @param string     $xref1
-     * @param string     $xref2
-     * @param string     $link
-     * @param string[]   $reciprocal
+     * @param string               $type
+     * @param array<array<string>> $links
+     * @param string               $xref1
+     * @param string               $xref2
+     * @param string               $link
+     * @param array<string>        $reciprocal
      *
      * @return bool
      */

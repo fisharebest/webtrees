@@ -37,7 +37,7 @@ class CensusOfEngland1911 extends CensusOfEngland implements CensusInterface
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

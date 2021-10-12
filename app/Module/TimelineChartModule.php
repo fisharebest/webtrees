@@ -24,10 +24,10 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -254,9 +254,9 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     }
 
     /**
-     * @param Tree  $tree
-     * @param array $xrefs
-     * @param int   $scale
+     * @param Tree          $tree
+     * @param array<string> $xrefs
+     * @param int           $scale
      *
      * @return ResponseInterface
      */

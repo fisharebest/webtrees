@@ -80,7 +80,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int    $threshold
      * @param int    $maxtoshow
      *
-     * @return string|int[]
+     * @return string|array<int>
      */
     private function commonGivenQuery(string $sex, string $type, bool $show_tot, int $threshold, int $maxtoshow)
     {
@@ -429,7 +429,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Count the number of distinct given names (or the number of occurences of specific given names).
      *
-     * @param string[] ...$params
+     * @param array<string> ...$params
      *
      * @return string
      */
@@ -457,7 +457,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Count the number of distinct surnames (or the number of occurrences of specific surnames).
      *
-     * @param string[] ...$params
+     * @param array<string> ...$params
      *
      * @return string
      */
@@ -484,7 +484,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int $number_of_surnames
      * @param int $threshold
      *
-     * @return int[][]
+     * @return array<array<int>>
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {

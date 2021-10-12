@@ -66,8 +66,6 @@ class MediaRepository implements MediaRepositoryInterface
 
     /**
      * List of GEDCOM media types.
-     *
-     * @var string[]
      */
     private const MEDIA_TYPES = [
         self::MEDIA_TYPE_AUDIO,

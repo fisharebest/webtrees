@@ -180,7 +180,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
     /**
      * Extra search fields to add to the advanced search
      *
-     * @param string[] $fields
+     * @param array<string> $fields
      *
      * @return array<string,string>
      */

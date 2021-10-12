@@ -40,7 +40,7 @@ class CensusOfCanada1851 extends CensusOfCanada implements CensusInterface
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

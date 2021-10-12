@@ -274,10 +274,10 @@ class CalendarEvents implements RequestHandlerInterface
     /**
      * Format a list of facts for display
      *
-     * @param string[] $list
-     * @param string   $tag1
-     * @param string   $tag2
-     * @param Tree     $tree
+     * @param array<string> $list
+     * @param string        $tag1
+     * @param string        $tag2
+     * @param Tree          $tree
      *
      * @return string
      */

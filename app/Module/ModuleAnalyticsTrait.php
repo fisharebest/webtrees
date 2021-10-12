@@ -109,7 +109,7 @@ trait ModuleAnalyticsTrait
     /**
      * Embed placeholders in the snippet.
      *
-     * @param string[] $parameters
+     * @param array<string> $parameters
      *
      * @return string
      */

@@ -54,41 +54,41 @@ use const PHP_INT_MAX;
  */
 class GedcomEditService
 {
-    /** @var string[] */
-    public $glevels = [];
+    /** @var array<string> */
+    public array $glevels = [];
 
-    /** @var string[] */
-    public $tag = [];
+    /** @var array<string> */
+    public array $tag = [];
 
-    /** @var string[] */
-    public $islink = [];
+    /** @var array<string> */
+    public array $islink = [];
 
-    /** @var string[] */
-    public $text = [];
+    /** @var array<string> */
+    public array $text = [];
 
-    /** @var string[] */
-    protected $glevelsSOUR = [];
+    /** @var array<string> */
+    protected array $glevelsSOUR = [];
 
-    /** @var string[] */
-    protected $tagSOUR = [];
+    /** @var array<string> */
+    protected array $tagSOUR = [];
 
-    /** @var string[] */
-    protected $islinkSOUR = [];
+    /** @var array<string> */
+    protected array $islinkSOUR = [];
 
-    /** @var string[] */
-    protected $textSOUR = [];
+    /** @var array<string> */
+    protected array $textSOUR = [];
 
-    /** @var string[] */
-    protected $glevelsRest = [];
+    /** @var array<string> */
+    protected array $glevelsRest = [];
 
-    /** @var string[] */
-    protected $tagRest = [];
+    /** @var array<string> */
+    protected array $tagRest = [];
 
-    /** @var string[] */
-    protected $islinkRest = [];
+    /** @var array<string> */
+    protected array $islinkRest = [];
 
-    /** @var string[] */
-    protected $textRest = [];
+    /** @var array<string> */
+    protected array $textRest = [];
 
     /**
      * This function splits the $glevels, $tag, $islink, and $text arrays so that the

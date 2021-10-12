@@ -39,14 +39,14 @@ use function str_starts_with;
  */
 class Validator
 {
-    /** @var array<string|array> */
+    /** @var array<string|array<string>> */
     private array $parameters;
 
     /** @var array<Closure> */
     private array $rules = [];
 
     /**
-     * @param array<string|array> $parameters
+     * @param array<string|array<string>> $parameters
      */
     public function __construct(array $parameters)
     {

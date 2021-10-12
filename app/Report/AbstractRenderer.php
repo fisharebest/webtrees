@@ -380,7 +380,7 @@ abstract class AbstractRenderer
     /**
      * Add Style to Styles array
      *
-     * @param string[] $style
+     * @param array<string> $style
      *
      * @return void
      */

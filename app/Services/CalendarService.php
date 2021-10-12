@@ -101,7 +101,7 @@ class CalendarService
      * @param string $filterof filter by living/recent
      * @param string $filtersx filter by sex
      *
-     * @return Fact[]
+     * @return array<Fact>
      */
     public function getCalendarEvents(int $jd1, int $jd2, string $facts, Tree $tree, string $filterof = '', string $filtersx = ''): array
     {
@@ -267,7 +267,7 @@ class CalendarService
      * @param string $filterof filter by living/recent
      * @param string $filtersx filter by sex
      *
-     * @return Fact[]
+     * @return array<Fact>
      */
     public function getAnniversaryEvents(int $jd, string $facts, Tree $tree, string $filterof = '', string $filtersx = ''): array
     {

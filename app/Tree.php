@@ -118,10 +118,10 @@ class Tree
     /** @var integer[][] Default access rules for individual facts in this tree */
     private $individual_fact_privacy;
 
-    /** @var string[] Cached copy of the wt_gedcom_setting table. */
+    /** @var array<string> Cached copy of the wt_gedcom_setting table. */
     private $preferences = [];
 
-    /** @var string[][] Cached copy of the wt_user_gedcom_setting table. */
+    /** @var array<array<string>> Cached copy of the wt_user_gedcom_setting table. */
     private $user_preferences = [];
 
     /**
@@ -242,7 +242,7 @@ class Tree
     /**
      * The fact-level privacy for this tree.
      *
-     * @return int[]
+     * @return array<int>
      */
     public function getFactPrivacy(): array
     {
@@ -252,7 +252,7 @@ class Tree
     /**
      * The individual-level privacy for this tree.
      *
-     * @return int[]
+     * @return array<int>
      */
     public function getIndividualPrivacy(): array
     {
@@ -262,7 +262,7 @@ class Tree
     /**
      * The individual-fact-level privacy for this tree.
      *
-     * @return int[][]
+     * @return array<array<int>>
      */
     public function getIndividualFactPrivacy(): array
     {

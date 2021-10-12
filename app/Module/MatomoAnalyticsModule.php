@@ -88,7 +88,7 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
     /**
      * Embed placeholders in the snippet.
      *
-     * @param string[] $parameters
+     * @param array<string> $parameters
      *
      * @return string
      */

@@ -49,7 +49,7 @@ class ReportParserSetup extends ReportParserBase
     /**
      * Handle <var var="" />
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -103,7 +103,7 @@ class ReportParserSetup extends ReportParserBase
     /**
      * Handle <input>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */

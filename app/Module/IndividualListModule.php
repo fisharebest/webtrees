@@ -23,12 +23,12 @@ use Aura\Router\RouterContainer;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
@@ -121,8 +121,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Tree    $tree
-     * @param mixed[] $parameters
+     * @param Tree                              $tree
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */
@@ -553,7 +553,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * @param bool            $fams  if set, only consider individuals with FAMS records
      * @param LocaleInterface $locale
      *
-     * @return int[]
+     * @return array<int>
      */
     public function surnameAlpha(Tree $tree, bool $marnm, bool $fams, LocaleInterface $locale): array
     {
@@ -617,7 +617,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * @param bool            $fams   if set, only consider individuals with FAMS records
      * @param LocaleInterface $locale
      *
-     * @return int[]
+     * @return array<int>
      */
     public function givenAlpha(Tree $tree, string $surn, string $salpha, bool $marnm, bool $fams, LocaleInterface $locale): array
     {
@@ -684,7 +684,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * @param bool            $fams   if set, only consider individuals with FAMS records
      * @param LocaleInterface $locale
      *
-     * @return int[][]
+     * @return array<array<int>>
      */
     public function surnames(
         Tree $tree,
@@ -746,7 +746,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * @param bool            $fams   if set, only fetch individuals with FAMS records
      * @param LocaleInterface $locale
      *
-     * @return Individual[]
+     * @return array<Individual>
      */
     public function individuals(
         Tree $tree,
@@ -832,7 +832,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * @param bool            $marnm  if set, include married names
      * @param LocaleInterface $locale
      *
-     * @return Family[]
+     * @return array<Family>
      */
     public function families(Tree $tree, string $surn, string $salpha, string $galpha, bool $marnm, LocaleInterface $locale): array
     {

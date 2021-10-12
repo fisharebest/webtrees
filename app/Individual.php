@@ -371,10 +371,10 @@ class Individual extends GedcomRecord
      * Display the prefered image for this individual.
      * Use an icon if no image is available.
      *
-     * @param int      $width      Pixels
-     * @param int      $height     Pixels
-     * @param string   $fit        "crop" or "contain"
-     * @param string[] $attributes Additional HTML attributes
+     * @param int           $width      Pixels
+     * @param int           $height     Pixels
+     * @param string        $fit        "crop" or "contain"
+     * @param array<string> $attributes Additional HTML attributes
      *
      * @return string
      */
@@ -487,7 +487,7 @@ class Individual extends GedcomRecord
     /**
      * Get all the birth dates - for the individual lists.
      *
-     * @return Date[]
+     * @return array<Date>
      */
     public function getAllBirthDates(): array
     {
@@ -505,7 +505,7 @@ class Individual extends GedcomRecord
     /**
      * Gat all the birth places - for the individual lists.
      *
-     * @return Place[]
+     * @return array<Place>
      */
     public function getAllBirthPlaces(): array
     {
@@ -523,7 +523,7 @@ class Individual extends GedcomRecord
     /**
      * Get all the death dates - for the individual lists.
      *
-     * @return Date[]
+     * @return array<Date>
      */
     public function getAllDeathDates(): array
     {
@@ -541,7 +541,7 @@ class Individual extends GedcomRecord
     /**
      * Get all the death places - for the individual lists.
      *
-     * @return Place[]
+     * @return array<Place>
      */
     public function getAllDeathPlaces(): array
     {

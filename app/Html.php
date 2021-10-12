@@ -59,8 +59,8 @@ class Html
     /**
      * Encode a URL.
      *
-     * @param string       $path
-     * @param array<mixed> $data
+     * @param string                            $path
+     * @param array<bool|int|string|array|null> $data
      *
      * @return string
      */

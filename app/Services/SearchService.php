@@ -82,8 +82,8 @@ class SearchService
     }
 
     /**
-     * @param Tree[]   $trees
-     * @param string[] $search
+     * @param array<Tree>   $trees
+     * @param array<string> $search
      *
      * @return Collection<Family>
      */
@@ -105,10 +105,10 @@ class SearchService
     /**
      * Search for families by name.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Family>
      */
@@ -165,8 +165,8 @@ class SearchService
     }
 
     /**
-     * @param Tree[]   $trees
-     * @param string[] $search
+     * @param array<Tree>   $trees
+     * @param array<string> $search
      *
      * @return Collection<Individual>
      */
@@ -188,10 +188,10 @@ class SearchService
     /**
      * Search for individuals by name.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Individual>
      */
@@ -237,10 +237,10 @@ class SearchService
     /**
      * Search for submissions.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Location>
      */
@@ -258,10 +258,10 @@ class SearchService
     /**
      * Search for media objects.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Media>
      */
@@ -278,10 +278,10 @@ class SearchService
     /**
      * Search for notes.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Note>
      */
@@ -299,10 +299,10 @@ class SearchService
     /**
      * Search for repositories.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Repository>
      */
@@ -320,8 +320,8 @@ class SearchService
     /**
      * Search for sources.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
+     * @param array<Tree>   $trees
+     * @param array<string> $search
      * @param int      $offset
      * @param int      $limit
      *
@@ -340,10 +340,10 @@ class SearchService
     /**
      * Search for sources by name.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Source>
      */
@@ -361,10 +361,10 @@ class SearchService
     /**
      * Search for sources.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<string>
      */
@@ -386,10 +386,10 @@ class SearchService
     /**
      * Search for submissions.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Submission>
      */
@@ -407,10 +407,10 @@ class SearchService
     /**
      * Search for submitters.
      *
-     * @param Tree[]   $trees
-     * @param string[] $search
-     * @param int      $offset
-     * @param int      $limit
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
      *
      * @return Collection<Submitter>
      */
@@ -487,9 +487,9 @@ class SearchService
     }
 
     /**
-     * @param Tree[]   $trees
-     * @param string[] $fields
-     * @param string[] $modifiers
+     * @param array<Tree>   $trees
+     * @param array<string> $fields
+     * @param array<string> $modifiers
      *
      * @return Collection<Individual>
      */
@@ -927,11 +927,11 @@ class SearchService
     }
 
     /**
-     * @param string $soundex
-     * @param string $lastname
-     * @param string $firstname
-     * @param string $place
-     * @param Tree[] $search_trees
+     * @param string      $soundex
+     * @param string      $lastname
+     * @param string      $firstname
+     * @param string      $place
+     * @param array<Tree> $search_trees
      *
      * @return Collection<Individual>
      */
@@ -1050,7 +1050,7 @@ class SearchService
      *
      * @param Builder           $query
      * @param Expression|string $field
-     * @param string[]          $search_terms
+     * @param array<string>     $search_terms
      */
     private function whereSearch(Builder $query, $field, array $search_terms): void
     {
@@ -1082,9 +1082,9 @@ class SearchService
     }
 
     /**
-     * @param Builder $query
-     * @param string  $tree_id_field
-     * @param Tree[]  $trees
+     * @param Builder     $query
+     * @param string      $tree_id_field
+     * @param array<Tree> $trees
      */
     private function whereTrees(Builder $query, string $tree_id_field, array $trees): void
     {
@@ -1100,7 +1100,7 @@ class SearchService
      *
      * @param string $file
      *
-     * @return Media[]
+     * @return array<Media>
      */
     public function findMediaObjectsForMediaFile(string $file): array
     {

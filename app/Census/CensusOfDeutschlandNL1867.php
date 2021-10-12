@@ -47,7 +47,7 @@ class CensusOfDeutschlandNL1867 extends CensusOfDeutschland implements CensusInt
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

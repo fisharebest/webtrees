@@ -139,11 +139,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Create a request and bind it into the container.
      *
-     * @param string                  $method
-     * @param string[]                $query
-     * @param string[]                $params
-     * @param UploadedFileInterface[] $files
-     * @param string[]                $attributes
+     * @param string                       $method
+     * @param array<string>                $query
+     * @param array<string>                $params
+     * @param array<UploadedFileInterface> $files
+     * @param array<string>                $attributes
      *
      * @return ServerRequestInterface
      */

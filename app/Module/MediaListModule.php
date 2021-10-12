@@ -104,8 +104,8 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
     }
 
     /**
-     * @param Tree    $tree
-     * @param mixed[] $parameters
+     * @param Tree                              $tree
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */

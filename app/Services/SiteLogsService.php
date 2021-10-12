@@ -34,7 +34,7 @@ class SiteLogsService
     /**
      * Generate a query for filtering the changes log.
      *
-     * @param string[] $params
+     * @param array<string> $params
      *
      * @return Builder
      */

@@ -62,14 +62,14 @@ class View
     private $data;
 
     /**
-     * @var string[] Where do the templates live, for each namespace.
+     * @var array<string> Where do the templates live, for each namespace.
      */
     private static $namespaces = [
         '' => Webtrees::ROOT_DIR . 'resources/views/',
     ];
 
     /**
-     * @var string[] Modules can replace core views with their own.
+     * @var array<string> Modules can replace core views with their own.
      */
     private static $replacements = [];
 
@@ -272,8 +272,8 @@ class View
     /**
      * Create and render a view in a single operation.
      *
-     * @param string  $name
-     * @param mixed[] $data
+     * @param string       $name
+     * @param array<mixed> $data
      *
      * @return string
      */

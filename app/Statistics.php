@@ -459,7 +459,7 @@ class Statistics implements
     }
 
     /**
-     * @param string[] ...$params
+     * @param array<string> ...$params
      *
      * @return string
      */
@@ -469,7 +469,7 @@ class Statistics implements
     }
 
     /**
-     * @param string[] ...$params
+     * @param array<string> ...$params
      *
      * @return string
      */
@@ -479,7 +479,7 @@ class Statistics implements
     }
 
     /**
-     * @param string[] $events
+     * @param array<string> $events
      *
      * @return string
      */
