@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-12 09:16+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-12 18:33+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -814,7 +814,7 @@ msgstr "Een lijst met de meest populaire achternamen."
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:58
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Een lijst van pagina's die het vaakst bekeken werden."
+msgstr "Een lijst van de meest bekeken pagina's."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:53
@@ -984,7 +984,7 @@ msgstr "Een tabblad dat de feiten en gebeurtenissen van een persoon toont."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Een tabblad dat de media objecten toont die gekoppeld zijn aan een persoon."
+msgstr "Een tabblad dat de mediaobjecten toont die gekoppeld zijn aan een persoon."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
@@ -1285,7 +1285,7 @@ msgstr "Voeg een nieuw logboek toe"
 #: resources/views/media-page-menu.phtml:39
 #: resources/views/modals/add-media-file.phtml:21
 msgid "Add a media file"
-msgstr "Voeg een media bestand toe"
+msgstr "Voeg een mediabestand toe"
 
 #: resources/views/individual-page-images.phtml:59
 #: resources/views/individual-page-menu.phtml:93
@@ -1422,7 +1422,7 @@ msgstr "Voeg stijl (CSS) en scripts (JS) toe aan elke pagina."
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: resources/views/admin/trees-export.phtml:90
 msgid "Add the GEDCOM media path to filenames"
-msgstr "Voeg het GEDCOM media pad toe aan bestandsnamen"
+msgstr "Voeg het GEDCOM-mediapad toe aan bestandsnamen"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:205
@@ -1856,7 +1856,7 @@ msgstr "Een beheerder moet een nieuw gebruikersaccount goedkeuren en een toegang
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Een alternatief voor het Mediatabblad met een geavanceerde image viewer."
+msgstr "Een alternatief voor het Media-tabblad, en een geavanceerde afbeeldingsviewer."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:80
@@ -2524,7 +2524,7 @@ msgstr "Barbados"
 
 #: app/Module/CustomTagsGedcomL.php:130
 msgid "Base GEDCOM tag"
-msgstr "Standaard GEDCOM-labeld"
+msgstr "Standaard GEDCOM-label"
 
 #: app/Factories/ElementFactory.php:471
 #: resources/xml/reports/missing_facts_report.xml:18
@@ -3883,7 +3883,7 @@ msgstr "Voltooiingsdatum"
 #: app/Http/RequestHandlers/HelpText.php:283
 #: resources/views/admin/trees-export.phtml:64
 msgid "Compress the GEDCOM file"
-msgstr "Comprimeer het GEDCOM bestand"
+msgstr "Comprimeer het GEDCOM-bestand"
 
 #: app/Factories/ElementFactory.php:496
 #: resources/xml/reports/missing_facts_report.xml:19
@@ -4114,7 +4114,7 @@ msgstr "Maak een locatie aan"
 #: resources/views/modals/create-media-from-file.phtml:19
 #: resources/views/modals/create-media-object.phtml:19
 msgid "Create a media object"
-msgstr "Maak een nieuw media object aan"
+msgstr "Maak een nieuw mediaobject aan"
 
 #: app/Elements/XrefRepository.php:66
 #: resources/views/modals/create-repository.phtml:18
@@ -4171,7 +4171,7 @@ msgstr "Stel uw eigen diagram samen"
 
 #: resources/views/admin/synchronize-trees.phtml:18
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr "Stamboom aanmaken, bijwerken of verwijderen voor elk GEDCOM bestand in de data map."
+msgstr "Stamboom aanmaken, bijwerken of verwijderen voor elk GEDCOM-bestand in de data-map."
 
 #: app/Module/CustomTagsGedcomL.php:117 app/Module/CustomTagsGedcomL.php:170
 #: app/Module/CustomTagsGenPluswin.php:86
@@ -5542,7 +5542,7 @@ msgstr "Wijzig"
 #: app/Http/RequestHandlers/EditMediaFileModal.php:81
 #: resources/views/modals/edit-media-file.phtml:22
 msgid "Edit a media file"
-msgstr "Media bestand wijzigen"
+msgstr "Mediabestand wijzigen"
 
 #. I18N: Options for editing
 #: resources/views/admin/trees-preferences.phtml:678
@@ -5783,7 +5783,7 @@ msgstr "Eritrea"
 #: app/Http/RequestHandlers/GedcomLoad.php:219
 #, php-format
 msgid "Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported."
-msgstr "Fout: het converteren van Gedcom bestanden met %s codering naar UTF-8 codering wordt momenteel niet ondersteund."
+msgstr "Fout: het converteren van GEDCOM-bestanden met %s codering naar UTF-8 codering wordt momenteel niet ondersteund."
 
 #: app/Date/JalaliDate.php:270
 msgctxt "Abbreviation for Persian month: Esfand"
@@ -5914,11 +5914,11 @@ msgstr "Exporteer"
 
 #: app/Http/RequestHandlers/ExportGedcomPage.php:53
 msgid "Export a GEDCOM file"
-msgstr "Exporteer een GEDCOM bestand"
+msgstr "Exporteer een GEDCOM-bestand"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:115
 msgid "Export all the family trees to GEDCOM files…"
-msgstr "Exporteer alle stambomen naar GEDCOM bestanden…"
+msgstr "Exporteer alle stambomen naar GEDCOM-bestanden…"
 
 #: resources/views/admin/trees-export.phtml:58
 msgid "Export preferences"
@@ -5940,7 +5940,7 @@ msgstr "Externe koppeling"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
-msgstr "Externe media bestanden hebben een URL i.p.v. een bestandsnaam."
+msgstr "Externe mediabestanden hebben een URL in plaats van een bestandsnaam."
 
 #. I18N: Name of a module/sidebar
 #: app/Module/CustomTagsGenPluswin.php:80
@@ -6630,7 +6630,7 @@ msgstr "Voetteksten"
 #: resources/views/admin/trees-import.phtml:119
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "Als het GEDCOM bestand bijvoorbeeld %1$s bevat maar webtrees verwacht %2$s in the media map te vinden, dan moet u %3$s verwijderen."
+msgstr "Als het GEDCOM-bestand bijvoorbeeld %1$s bevat maar webtrees verwacht %2$s in the mediamap te vinden, dan moet u %3$s verwijderen."
 
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7606,7 +7606,7 @@ msgstr "Identificaties"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
-msgstr "Als een media-object aan een persoon is gekoppeld, terwijl het aan een feit of gebeurtenis gekoppeld had moeten zijn, kun je het naar de juiste locatie verplaatsen."
+msgstr "Als een mediaobject aan een persoon is gekoppeld, terwijl het aan een feit of gebeurtenis gekoppeld had moeten zijn, kunt u het naar de juiste locatie verplaatsen."
 
 #. I18N: Help text for the “Language” configuration setting
 #: resources/views/admin/site-preferences.phtml:89
@@ -7644,7 +7644,7 @@ msgstr "Als de achternaam onbekend is, gebruik dan lege schuine strepen: <%s>Mar
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr "Wanneer de miniatuurafbeelding een eigen aangepaste afbeelding is, moet u deze aan het media-object toevoegen."
+msgstr "Wanneer de miniatuurafbeelding een eigen aangepaste afbeelding is, moet u deze aan het mediaobject toevoegen."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
@@ -7658,7 +7658,7 @@ msgstr "Als deze persoon andere gebeurtenissen heeft dan overlijden, begrafenis 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:262
 msgid "If two family trees use the same media folder, then they will be able to share media files. If they use different media folders, then their media files will be kept separate."
-msgstr "Als twee stambomen gebruik maken van dezelfde media map, kunnen zij dezelfde mediabestanden gebruiken. Als er verschillende mappen worden gebruikt, zijn de media bestanden gescheiden."
+msgstr "Als twee stambomen gebruik maken van dezelfde mediamap, kunnen zij dezelfde mediabestanden gebruiken. Als er verschillende mappen worden gebruikt, zijn de mediabestanden gescheiden."
 
 #. I18N: Help text for the “Who can upload new media files” configuration setting
 #: resources/views/admin/trees-preferences.phtml:278
@@ -7679,7 +7679,7 @@ msgstr "Wanneer je met een UNIX-poort verbinding maakt met de database, vul dan 
 
 #: resources/views/admin/trees-import.phtml:103
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr "Als u dit GEDCOM bestand hebt aangemaakt met genealogie software dat spaties weglaat bij het splitsen van lange regels, selecteer dan deze optie om de ontbrekende spaties weer toe te voegen."
+msgstr "Als u dit GEDCOM-bestand hebt aangemaakt met genealogiesoftware dat spaties weglaat bij het splitsen van lange regels, selecteer dan deze optie om de ontbrekende spaties weer toe te voegen."
 
 #: resources/views/emails/password-request-html.phtml:26
 #: resources/views/emails/password-request-text.phtml:18
@@ -7697,7 +7697,7 @@ msgstr "Als u een groot aantal mediabestanden heeft, kunt u ze organiseren in ma
 
 #: resources/views/admin/trees-import.phtml:96
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM-bestand."
+msgstr "Als u mediaobjecten hebt aangemaakt in webtrees, en vervolgens dit GEDCOM-bestand hebt bewerkt met genealogiesoftware die mediaobjecten verwijdert, selecteer dan deze optie om de huidige mediaobjecten samen te voegen met het nieuwe GEDCOM-bestand."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7740,7 +7740,7 @@ msgstr "Importeer"
 
 #: app/Http/RequestHandlers/ImportGedcomPage.php:70
 msgid "Import a GEDCOM file"
-msgstr "Een GEDCOM bestand importeren"
+msgstr "Een GEDCOM-bestand importeren"
 
 #: app/Http/RequestHandlers/ImportThumbnailsPage.php:47
 #: resources/views/admin/control-panel.phtml:825
@@ -7789,11 +7789,11 @@ msgstr "In dit jaar…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "In webtrees versie 1 kon je aangepaste thumbnails aan het media object toevoegen door bestanden aan te maken in de “thumbs” folders."
+msgstr "In webtrees versie 1 kon u aangepaste miniatuurafbeeldingen toevoegen aan het mediaobject door bestanden aan te maken in de “thumbs”-mappen."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
-msgstr "In webtrees versie 2, worden aangepaste miniatuurafbeeldingen opgeslagen als tweede media bestand in hetzelfde media object."
+msgstr "In webtrees versie 2 worden aangepaste miniatuurafbeeldingen opgeslagen als tweede mediabestand in hetzelfde mediaobject."
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
@@ -7810,7 +7810,7 @@ msgstr "Neem personen met ‘%s’ als huwelijksnaam mee"
 
 #: resources/views/admin/trees-export.phtml:72
 msgid "Include media (automatically zips files)"
-msgstr "Met inbegrip van media (er wordt automatisch een zip-bestand gemaakt)"
+msgstr "Inclusief media (er wordt automatisch een zip-bestand gemaakt)"
 
 #. I18N: Label for check-box
 #: resources/views/admin/media.phtml:70
@@ -8015,7 +8015,7 @@ msgstr "Ongeldig GEDCOM-bestand - geen headerrecord gevonden."
 
 #: app/Exceptions/GedcomErrorException.php:37
 msgid "Invalid GEDCOM record"
-msgstr "Ongeldig GEDCOM record"
+msgstr "Ongeldig GEDCOM-record"
 
 #: app/Date.php:378
 msgid "Invalid date"
@@ -8276,7 +8276,7 @@ msgstr "Kazachstan"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-import.phtml:93
 msgid "Keep media objects"
-msgstr "Media objects behouden"
+msgstr "Mediaobjecten behouden"
 
 #: resources/views/modals/on-screen-keyboard.phtml:51
 msgid "Keep open"
@@ -8637,7 +8637,7 @@ msgstr "Lima, Peru"
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:819
 msgid "Link media objects to facts and events"
-msgstr "Koppel media objects aan feiten en gebeurtenissen"
+msgstr "Koppel mediaobjecten aan feiten en gebeurtenissen"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
@@ -8653,17 +8653,17 @@ msgstr "Koppel deze persoon als kind aan een bestaand gezin"
 #: resources/views/media-page-menu.phtml:63
 #: resources/views/modals/link-media-to-family.phtml:18
 msgid "Link this media object to a family"
-msgstr "Koppel dit media object aan een gezin"
+msgstr "Koppel dit mediaobject aan een gezin"
 
 #: resources/views/media-page-menu.phtml:68
 #: resources/views/modals/link-media-to-source.phtml:18
 msgid "Link this media object to a source"
-msgstr "Koppel dit media object aan een bron"
+msgstr "Koppel dit mediaobject aan een bron"
 
 #: resources/views/media-page-menu.phtml:58
 #: resources/views/modals/link-media-to-individual.phtml:18
 msgid "Link this media object to an individual"
-msgstr "Koppel dit media object aan een persoon"
+msgstr "Koppel dit mediaobject aan een persoon"
 
 #: resources/views/admin/users-edit.phtml:305
 msgid "Link this user to an individual in the family tree."
@@ -9355,7 +9355,7 @@ msgstr "Mediabestand om te uploaden"
 #: resources/views/admin/trees-export.phtml:94
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr "Aan het begin van media bestandsnamen wordt %s toegevoegd."
+msgstr "Aan het begin van mediabestandsnamen wordt %s toegevoegd."
 
 #: resources/views/admin/media.phtml:31
 #: resources/views/admin/trees-preferences.phtml:268
@@ -9366,12 +9366,12 @@ msgstr "Mediabestanden"
 #: resources/views/admin/media.phtml:63
 #: resources/views/admin/trees-preferences.phtml:248
 msgid "Media folder"
-msgstr "Media map"
+msgstr "Mediamap"
 
 #: resources/views/admin/media.phtml:32
 #: resources/views/admin/trees-preferences.phtml:243
 msgid "Media folders"
-msgstr "Media mappen"
+msgstr "Mediamappen"
 
 #: app/Factories/ElementFactory.php:292 app/Factories/ElementFactory.php:313
 #: app/Factories/ElementFactory.php:347 app/Factories/ElementFactory.php:366
@@ -9417,7 +9417,7 @@ msgstr "Mediaobjecten gevonden"
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Media objects per page"
-msgstr "media objecten per pagina"
+msgstr "Mediaobjecten per pagina"
 
 #: app/Factories/ElementFactory.php:644 app/Factories/ElementFactory.php:702
 #: app/Module/CustomTagsGedcom53.php:138
@@ -9879,7 +9879,7 @@ msgstr "Verplaats omlaag"
 
 #: resources/views/admin/fix-level-0-media-action.phtml:17
 msgid "Move the media object?"
-msgstr "Media object verplaatsen?"
+msgstr "Mediaobject verplaatsen?"
 
 #: resources/views/admin/components.phtml:45
 #: resources/views/admin/components.phtml:146
@@ -10221,11 +10221,11 @@ msgstr "Nee"
 #: app/Http/RequestHandlers/ImportGedcomAction.php:93
 #: app/Http/RequestHandlers/ImportGedcomAction.php:105
 msgid "No GEDCOM file was received."
-msgstr "Er is geen GEDCOM bestand ontvangen."
+msgstr "Er is geen GEDCOM-bestand ontvangen."
 
 #: resources/views/admin/trees-import.phtml:72
 msgid "No GEDCOM files found."
-msgstr "Geen GEDCOM bestanden gevonden."
+msgstr "Geen GEDCOM-bestanden gevonden."
 
 #: resources/views/admin/trees-preferences.phtml:124
 #: resources/views/admin/trees-preferences.phtml:127
@@ -11993,7 +11993,7 @@ msgstr "Verwijder persoon"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: resources/views/admin/trees-import.phtml:106
 msgid "Remove the GEDCOM media path from filenames"
-msgstr "Verwijder het GEDCOM media pad uit de bestandsnamen"
+msgstr "Verwijder het GEDCOM-mediapad uit de bestandsnamen"
 
 #: resources/views/admin/locations.phtml:128
 msgid "Remove this location?"
@@ -12514,7 +12514,7 @@ msgstr "Selecteer"
 
 #: resources/views/admin/trees-import.phtml:37
 msgid "Select a GEDCOM file to import"
-msgstr "Selecteer een GEDCOM bestand om te importeren"
+msgstr "Selecteer een GEDCOM-bestand om te importeren"
 
 #: resources/views/edit/input-addon-calendar.phtml:13
 #: resources/views/edit/input-addon-calendar.phtml:16
@@ -12945,7 +12945,7 @@ msgstr "Toon"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:287
 msgid "Show a download link in the media viewer"
-msgstr "Toon download-knop in media viewer"
+msgstr "Toon een downloadlink in de mediaviewer"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
@@ -13450,7 +13450,7 @@ msgstr "Somalië"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: resources/views/admin/trees-import.phtml:118
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Sommige genealogieprogramma's maken GEDCOM-bestanden die mediabestandsnamen bevatten met volledige padnamen. Deze paden bestaan niet op de web-server. Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste deel van het pad worden verwijderd."
+msgstr "Sommige genealogieprogramma's maken GEDCOM-bestanden die mediabestandsnamen bevatten met volledige padnamen. Deze paden bestaan niet op de webserver. Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste deel van het pad worden verwijderd."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:94
@@ -13951,7 +13951,7 @@ msgstr "Sydney, Australië"
 
 #: resources/views/admin/synchronize-trees.phtml:12
 msgid "Synchronize family trees with GEDCOM files"
-msgstr "Synchroniseer stambomen met GEDCOM bestanden"
+msgstr "Synchroniseer stambomen met GEDCOM-bestanden"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:474
@@ -14125,7 +14125,7 @@ msgstr "Het <b>achternaam</b> veld bevat een naam die gebruikt wordt voor het so
 #: app/Http/RequestHandlers/SynchronizeTrees.php:94
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr "Het GEDCOM bestand “%s” is geïmporteerd."
+msgstr "Het GEDCOM-bestand “%s” is geïmporteerd."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
@@ -14201,7 +14201,7 @@ msgstr "Het diagrammen menu."
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "U kunt uittreksels (knipsels) van deze stamboom bundelen en downloaden als GEDCOM bestand."
+msgstr "U kunt uittreksels (knipsels) van deze stamboom bundelen en downloaden als GEDCOM-bestand."
 
 #: resources/views/admin/trees-preferences.phtml:399
 msgid "The date and time of the last update"
@@ -14386,11 +14386,11 @@ msgstr "Het mediabestand %1$s kon niet worden hernoemd in %2$s."
 #: app/Http/RequestHandlers/EditMediaFileAction.php:146
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr "Het mediabestand %1$s is met succes hernoemd in %2$s."
+msgstr "Het mediabestand %1$s is hernoemd naar %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:106
 msgid "The media object has been created"
-msgstr "Het media object is aangemaakt"
+msgstr "Het mediaobject is aangemaakt"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14676,7 +14676,7 @@ msgstr "Er zijn geen feiten voor deze persoon."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:310
 msgid "There are no links to this media object."
-msgstr "Er bestaan geen koppelingen naar dit media object."
+msgstr "Er bestaan geen koppelingen naar dit mediaobject."
 
 #: resources/views/modules/media/tab.phtml:29
 msgid "There are no media objects for this individual."
@@ -14841,7 +14841,7 @@ msgstr "Deze stamboom werd het laatst gewijzigd op %s."
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr "Deze map wordt door webtrees gebruikt om mediabestanden, GEDCOM-bestanden, tijdelijke bestanden enz. in op te slaan. Deze bestanden kunnen privédata bevatten, en mogen niet beschikbaar worden gemaakt over het internet."
+msgstr "Deze map wordt door webtrees gebruikt om mediabestanden, GEDCOM-bestanden, tijdelijke bestanden enz. in op te slaan. Deze bestanden kunnen privégegevens bevatten, en mogen niet beschikbaar worden gemaakt over het internet."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:260
@@ -14974,7 +14974,7 @@ msgstr "Deze lijst is gemaakt met een eenvoudige (maar snelle) zoekopdracht en b
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Dit mediaobject bestaat niet of u heeft geen permissie om dit te zien."
+msgstr "Dit mediaobject bestaat niet of u heeft geen toestemming om het te bekijken."
 
 #: resources/views/media-page-pending.phtml:18
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
@@ -15056,7 +15056,7 @@ msgstr "Hiermee wordt het tonen van de leeftijd van de ouders bij de geboorte va
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:389
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Deze optie beheert het wel of niet tonen van geschatte data voor geboorte en overlijden, i.p.v. lege datavelden op persoonslijsten en diagrammen voor personen wiens data niet bekend zijn."
+msgstr "Deze optie beheert het wel of niet tonen van geschatte datums voor geboorte en overlijden, in plaats van lege datumvelden op persoonslijsten en diagrammen voor personen van wie de datums niet bekend zijn."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:292
@@ -15218,7 +15218,7 @@ msgstr "Deze website maakt gebruik van diensten van derden om bezoekersgedrag te
 #: resources/views/admin/trees-import.phtml:27
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Hiermee worden alle genealogische gegevens van “%s” verwijderd en vervangen door de gegevens van een GEDCOM bestand."
+msgstr "Hiermee worden alle genealogische gegevens van “%s” verwijderd en vervangen door de gegevens van een GEDCOM-bestand."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:286
@@ -16279,7 +16279,7 @@ msgstr "Een watermerk is optioneel en wordt normaalgesproken alleen getoond aan 
 #: resources/views/register-success-page.phtml:23
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. Volg de instructies in de e-mail op om uw account aanvraag te verifiëren. Doet u dit niet binnen zeven dagen, dan wordt uw aanvraag automatisch verwijderd. U moet dan opnieuw een aanvraag indienen.<br><br>Nadat u de instructies in de e-mailbevestiging hebt opgevolgd zal de beheerder uw aanvraag nog moeten goedkeuren voordat u gebruik kunt maken van uw account.<br><br>Om u aan te melden op deze site heeft u uw gebruikersnaam en wachtwoord nodig."
+msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. Volg de instructies in de e-mail op om uw account aanvraag te verifiëren. Doet u dit niet binnen zeven dagen, dan wordt uw aanvraag automatisch verwijderd. U moet dan opnieuw een aanvraag indienen.<br><br>Nadat u de instructies in de bevestigingsmail hebt opgevolgd zal de beheerder uw aanvraag nog moeten goedkeuren voordat u gebruik kunt maken van uw account.<br><br>Om u aan te melden op deze site heeft u uw gebruikersnaam en wachtwoord nodig."
 
 #: resources/views/admin/control-panel.phtml:163
 #: resources/views/admin/control-panel.phtml:584
@@ -16356,7 +16356,7 @@ msgstr "Bij het toevoegen van een nieuw familielid kan een vooraf ingestelde ach
 
 #: resources/views/help/pending-changes.phtml:12
 msgid "When you add, edit, or delete information, the changes are not saved immediately. Instead, they are kept in a “pending” area. These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Wanneer u informatie toevoegt, bewerkt of verwijderd, worden de wijzigingen niet onmiddellijk opgeslagen. In plaats daarvan worden ze bewaard in een \"uitstaand\" gebied. Deze uitstaande veranderingen moeten eerst door een moderator nagekeken worden voordat ze worden geaccepteerd."
+msgstr "Wanneer u informatie toevoegt, bewerkt of verwijderd, worden de wijzigingen niet onmiddellijk opgeslagen. In plaats daarvan worden ze bewaard in een wachtrij van uitstaande wijzigingen. Deze uitstaande wijzigingen moeten eerst door een moderator nagekeken worden voordat ze worden geaccepteerd."
 
 #: resources/views/help/relationship-privacy.phtml:8
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations. You specify the number of relationship steps that the user is allowed to see."
@@ -16511,7 +16511,7 @@ msgstr "Hier kunt u aangeven of u zichtbaar wilt zijn in de lijst met ingelogde 
 #: resources/views/edit/raw-gedcom-record.phtml:28
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr "U kunt een kopie van de Gedcom specificatie downloaden van %s."
+msgstr "U kunt een kopie van de GEDCOM-specificatie downloaden van %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
@@ -16554,7 +16554,7 @@ msgstr "U heeft uw aanvraag, om een geregistreerde gebruiker te worden, bevestig
 
 #: resources/views/admin/trees-import.phtml:30
 msgid "You have selected a GEDCOM file with a different name. Is this correct?"
-msgstr "U heeft een GEDCOM bestand gekozen met een andere naam. Is dat correct?"
+msgstr "U heeft een GEDCOM-bestand gekozen met een andere naam. Is dat correct?"
 
 #: app/Http/RequestHandlers/Logout.php:51
 msgid "You have signed out."
@@ -16578,7 +16578,7 @@ msgstr "U moet een persoon en een diagramtype selecteren in de blok configuratie
 
 #: resources/views/admin/users-edit.phtml:363
 msgid "You must specify an individual record before you can restrict the user to their immediate family."
-msgstr "U moet een persoonsrecord aangeven voordat u de gebruiker kan beperken tot zijn naaste familie."
+msgstr "U moet een persoonsrecord opgeven voordat u de gebruiker kunt beperken tot zijn naaste familie."
 
 #: app/Http/RequestHandlers/LoginPage.php:90
 msgid "You need to be a family member to access this website."
@@ -20710,7 +20710,7 @@ msgstr "webtrees stuurt e-mails zonder ze te bewaren"
 
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "webtrees gebruikt UTF-8 codering voor geaccentueerde letters, speciale karakters en niet-latijns schrift. Als u dit GEDCOM bestand wilt gebruiken met genealogie software dat geen UTF-8 ondersteunt, kunt u het aanmaken met ISO-8859-1 codering."
+msgstr "webtrees gebruikt UTF-8 codering voor geaccentueerde letters, speciale karakters en niet-latijns schrift. Als u dit GEDCOM-bestand wilt gebruiken met genealogiesoftware dat geen UTF-8 ondersteunt, kunt u het aanmaken met ISO-8859-1-codering."
 
 #: app/Services/RelationshipService.php:388
 msgid "wife"
