@@ -29,6 +29,7 @@
     },
     "require": {
         "php": "7.4 - 8.1",
+        "ext-ctype": "*",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
