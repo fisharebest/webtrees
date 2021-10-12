@@ -32,7 +32,7 @@ class Mime
         'css'  => 'text/css',
         'doc'  => 'application/msword',
         'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'ged'  => 'text/x-gedcom',
+        'ged'  => 'text/vnd.familysearch.gedcom',
         'gif'  => 'image/gif',
         'flac' => 'audio/flac',
         'htm'  => 'text/html',
