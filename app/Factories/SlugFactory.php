@@ -57,6 +57,10 @@ class SlugFactory implements SlugFactoryInterface
 
         if ($this->transliterator instanceof Transliterator) {
             $slug = $this->transliterator->transliterate($slug);
+
+            if ($slug === false) {
+                return null;
+            }
         }
 
         $slug = preg_replace('/[^A-Za-z0-9]+/', '-', $slug);

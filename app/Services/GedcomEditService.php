@@ -474,7 +474,7 @@ class GedcomEditService
 
         // The first part is level N.  The remainder are level N+1.
         $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
-        $return = array_shift($parts);
+        $return = array_shift($parts) ?? '';
 
         foreach ($subtags as $subtag => $occurrences) {
             if (!$include_hidden && $this->isHiddenTag($tag . ':' . $subtag)) {

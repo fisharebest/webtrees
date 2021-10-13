@@ -126,11 +126,6 @@ parameters:
 			path: app/Factories/SlugFactory.php
 
 		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|false given\\.$#"
-			count: 1
-			path: app/Factories/SlugFactory.php
-
-		-
 			message: "#^Access to an undefined property object\\:\\:\\$s_gedcom\\.$#"
 			count: 1
 			path: app/Factories/SourceFactory.php
@@ -802,11 +797,6 @@ parameters:
 		-
 			message: "#^Parameter \\#2 \\$color of function imagecolortransparent expects int\\|null, int\\|false given\\.$#"
 			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$css_color of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) expects string, float\\|int\\|string given\\.$#"
-			count: 4
 			path: app/Module/FanChartModule.php
 
 		-
