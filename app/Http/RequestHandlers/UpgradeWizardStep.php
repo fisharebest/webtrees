@@ -223,13 +223,6 @@ class UpgradeWizardStep implements RequestHandlerInterface
      */
     private function wizardStepExport(Tree $tree, FilesystemOperator $data_filesystem): ResponseInterface
     {
-        // We store the data in PHP temporary storage.
-        $stream = fopen('php://memory', 'wb+');
-
-        if ($stream === false) {
-            throw new RuntimeException('Failed to create temporary stream');
-        }
-
         $filename = $tree->name() . date('-Y-m-d') . '.ged';
 
         $stream = $this->gedcom_export_service->export($tree);
