@@ -30,7 +30,6 @@ use Fisharebest\Localization\Translator;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Illuminate\Support\Collection;
 
 use function array_merge;
 use function class_exists;

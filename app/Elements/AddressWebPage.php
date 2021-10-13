@@ -21,8 +21,6 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Tree;
 
-use function e;
-
 /**
  * ADDRESS_WEB_PAGE := {Size=5:120}
  * The world wide web page address.

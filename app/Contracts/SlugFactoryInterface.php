@@ -19,14 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
-use Fisharebest\Webtrees\Cache;
-use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\GedcomRecord;
-use Fisharebest\Webtrees\Webtrees;
-use Symfony\Component\Cache\Adapter\ArrayAdapter;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-
-use function random_int;
 
 /**
  * Make a slug to be used in the URL of a GedcomRecord.

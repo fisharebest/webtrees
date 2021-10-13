@@ -49,7 +49,6 @@ use function explode;
 use function implode;
 use function is_string;
 use function redirect;
-use function route;
 use function strtoupper;
 
 /**

@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
-use League\Flysystem\InMemory\InMemoryFilesystemAdapter;
 
 /**
  * Test ManageMediaData class.

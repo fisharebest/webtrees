@@ -39,7 +39,6 @@ use Fisharebest\Webtrees\Elements\AgeAtEvent;
 use Fisharebest\Webtrees\Elements\AncestralFileNumber;
 use Fisharebest\Webtrees\Elements\Annulment;
 use Fisharebest\Webtrees\Elements\ApprovedSystemId;
-use Fisharebest\Webtrees\Elements\AttributeDescriptor;
 use Fisharebest\Webtrees\Elements\AutomatedRecordId;
 use Fisharebest\Webtrees\Elements\Baptism;
 use Fisharebest\Webtrees\Elements\BarMitzvah;

@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Imagick;
 use Intervention\Image\Constraint;
 use Intervention\Image\Exception\NotReadableException;

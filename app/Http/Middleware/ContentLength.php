@@ -19,22 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function extension_loaded;
-use function gzdeflate;
-use function gzencode;
-use function in_array;
-use function str_contains;
-use function strlen;
-use function strstr;
-use function strtolower;
-use function strtr;
 
 /**
  * Middleware to add a "Content-Length" header to a response.

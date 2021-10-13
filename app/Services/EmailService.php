@@ -38,14 +38,10 @@ use Symfony\Component\Mime\Message;
 
 use function assert;
 use function checkdnsrr;
-use function filter_var;
 use function function_exists;
 use function str_replace;
 use function strrchr;
 use function substr;
-
-use const FILTER_VALIDATE_DOMAIN;
-use const FILTER_VALIDATE_EMAIL;
 
 /**
  * Send emails.

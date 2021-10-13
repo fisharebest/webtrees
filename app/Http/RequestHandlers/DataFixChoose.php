@@ -30,7 +30,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function e;
-use function view;
 
 /**
  * Run a data-fix.

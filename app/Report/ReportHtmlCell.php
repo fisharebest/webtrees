@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 use function str_replace;
-use function stripos;
 
 /**
  * Class ReportHtmlCell

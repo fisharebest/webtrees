@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
 use PDO;
 use PDOException;
 use Psr\Http\Message\ResponseInterface;
@@ -29,11 +28,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
-
-use function addcslashes;
-use function trigger_error;
-
-use const E_USER_DEPRECATED;
 
 /**
  * Middleware to connect to the database.

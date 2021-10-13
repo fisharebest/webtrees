@@ -32,7 +32,6 @@ use function assert;
 use function e;
 use function redirect;
 use function route;
-use function view;
 
 /**
  * Run a data-fix.

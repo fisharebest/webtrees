@@ -25,7 +25,6 @@ use Ramsey\Uuid\Uuid;
 
 use function dechex;
 use function hexdec;
-use function str_repeat;
 use function strtoupper;
 use function strtr;
 use function substr;

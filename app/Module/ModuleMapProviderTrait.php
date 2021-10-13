@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\I18N;
-
 /**
  * Trait ModuleMapProviderTrait - default implementation of ModuleMapProviderInterface
  */
