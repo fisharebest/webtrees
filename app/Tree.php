@@ -538,7 +538,7 @@ class Tree
      *
      * @return Individual
      */
-    public function significantIndividual(UserInterface $user, $xref = ''): Individual
+    public function significantIndividual(UserInterface $user, string $xref = ''): Individual
     {
         if ($xref === '') {
             $individual = null;

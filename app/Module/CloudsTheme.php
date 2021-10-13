@@ -48,9 +48,9 @@ class CloudsTheme extends AbstractModule implements ModuleThemeInterface
      *
      * @param string $parameter_name
      *
-     * @return string|int|float
+     * @return string
      */
-    public function parameter($parameter_name)
+    public function parameter($parameter_name): string
     {
         $parameters = [
             'chart-background-f'             => 'e9daf1',

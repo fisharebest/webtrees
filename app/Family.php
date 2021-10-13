@@ -108,7 +108,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function husband($access_level = null): ?Individual
+    public function husband(int $access_level = null): ?Individual
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
             $access_level = Auth::PRIV_HIDE;
@@ -128,7 +128,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function wife($access_level = null): ?Individual
+    public function wife(int $access_level = null): ?Individual
     {
         if ($this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS') === '1') {
             $access_level = Auth::PRIV_HIDE;
@@ -184,7 +184,7 @@ class Family extends GedcomRecord
      *
      * @return Individual|null
      */
-    public function spouse(Individual $person, $access_level = null): ?Individual
+    public function spouse(Individual $person, int $access_level = null): ?Individual
     {
         if ($person === $this->wife) {
             return $this->husband($access_level);
@@ -200,7 +200,7 @@ class Family extends GedcomRecord
      *
      * @return Collection<Individual>
      */
-    public function spouses($access_level = null): Collection
+    public function spouses(int $access_level = null): Collection
     {
         $spouses = new Collection([
             $this->husband($access_level),
@@ -217,7 +217,7 @@ class Family extends GedcomRecord
      *
      * @return Collection<Individual>
      */
-    public function children($access_level = null): Collection
+    public function children(int $access_level = null): Collection
     {
         $access_level = $access_level ?? Auth::accessLevel($this->tree);
 

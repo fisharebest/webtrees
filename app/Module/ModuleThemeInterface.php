@@ -49,9 +49,9 @@ interface ModuleThemeInterface extends ModuleInterface
      *
      * @param string $parameter_name
      *
-     * @return string|int|float
+     * @return string
      */
-    public function parameter($parameter_name);
+    public function parameter(string $parameter_name): string;
 
     /**
      * Generate a list of items for the main menu.

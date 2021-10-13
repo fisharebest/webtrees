@@ -89,7 +89,7 @@ class View
      * @param string       $name
      * @param array<mixed> $data
      */
-    public function __construct(string $name, $data = [])
+    public function __construct(string $name, array $data = [])
     {
         $this->name = $name;
         $this->data = $data;

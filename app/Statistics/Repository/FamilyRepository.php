@@ -235,7 +235,7 @@ class FamilyRepository
      *
      * @return string
      */
-    public function noChildrenFamiliesList($type = 'list'): string
+    public function noChildrenFamiliesList(string $type = 'list'): string
     {
         $families = DB::table('families')
             ->where('f_file', '=', $this->tree->id())

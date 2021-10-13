@@ -361,7 +361,7 @@ class FunctionsPrint
      *
      * @return string HTML
      */
-    public static function formatFactPlace(Fact $event, $anchor = false, $sub_records = false, $lds = false): string
+    public static function formatFactPlace(Fact $event, bool $anchor, bool $sub_records, bool $lds): string
     {
         $tree = $event->record()->tree();
 

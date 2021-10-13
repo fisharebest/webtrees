@@ -1289,7 +1289,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function averageLifespan($show_years = false): string
+    public function averageLifespan(bool $show_years): string
     {
         return $this->averageLifespanQuery('BOTH', $show_years);
     }
@@ -1301,7 +1301,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function averageLifespanFemale($show_years = false): string
+    public function averageLifespanFemale(bool $show_years): string
     {
         return $this->averageLifespanQuery('F', $show_years);
     }
@@ -1313,7 +1313,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function averageLifespanMale($show_years = false): string
+    public function averageLifespanMale(bool $show_years): string
     {
         return $this->averageLifespanQuery('M', $show_years);
     }

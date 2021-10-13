@@ -66,7 +66,7 @@ class ServerCheckService
      *
      * @return Collection<string>
      */
-    public function serverErrors($driver = ''): Collection
+    public function serverErrors(string $driver = ''): Collection
     {
         $errors = Collection::make([
             $this->databaseDriverErrors($driver),
@@ -90,7 +90,7 @@ class ServerCheckService
      *
      * @return Collection<string>
      */
-    public function serverWarnings($driver = ''): Collection
+    public function serverWarnings(string $driver = ''): Collection
     {
         $warnings = Collection::make([
             $this->databaseDriverWarnings($driver),

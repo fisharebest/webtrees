@@ -679,7 +679,7 @@ abstract class AbstractCalendarDate
      *
      * @return string
      */
-    protected function formatLongMonth($case = 'NOMINATIVE'): string
+    protected function formatLongMonth(string $case = 'NOMINATIVE'): string
     {
         switch ($case) {
             case 'GENITIVE':

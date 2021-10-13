@@ -694,7 +694,7 @@ class Individual extends GedcomRecord
      *
      * @return Collection<Family>
      */
-    public function spouseFamilies($access_level = null): Collection
+    public function spouseFamilies(int $access_level = null): Collection
     {
         $access_level = $access_level ?? Auth::accessLevel($this->tree);
 
@@ -760,7 +760,7 @@ class Individual extends GedcomRecord
      *
      * @return Collection<Family>
      */
-    public function childFamilies($access_level = null): Collection
+    public function childFamilies(int $access_level = null): Collection
     {
         $access_level = $access_level ?? Auth::accessLevel($this->tree);
 

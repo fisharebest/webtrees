@@ -540,9 +540,9 @@ class GedcomRecord
             if ($event->date()->isOK() || $event->place()->gedcomName() !== '') {
                 switch ($style) {
                     case 1:
-                        return '<br><em>' . $event->label() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</em>';
+                        return '<br><em>' . $event->label() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event, false, false, false) . '</em>';
                     case 2:
-                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event) . '</dd></dl>';
+                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event, false, false, false) . '</dd></dl>';
                 }
             }
         }

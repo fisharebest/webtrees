@@ -316,6 +316,9 @@ class RelationshipService
     }
 
     /**
+     * @param string          $path
+     * @param Individual|null $person1
+     * @param Individual|null $person2
      *
      * @return string
      *

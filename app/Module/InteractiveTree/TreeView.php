@@ -234,7 +234,7 @@ class TreeView
      *
      * @return string
      */
-    private function drawPerson(Individual $person, int $gen, int $state, Family $pfamily = null, string $line = '', $isRoot = false): string
+    private function drawPerson(Individual $person, int $gen, int $state, ?Family $pfamily, string $line, bool $isRoot): string
     {
         if ($gen < 0) {
             return '';
