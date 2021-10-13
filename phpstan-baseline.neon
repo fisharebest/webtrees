@@ -646,7 +646,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
-			count: 2
+			count: 5
 			path: app/Individual.php
 
 		-
@@ -825,6 +825,11 @@ parameters:
 			path: app/Module/FixDuplicateLinks.php
 
 		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 2
+			path: app/Module/FixDuplicateLinks.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<stdClass\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixMissingDeaths.php
@@ -836,6 +841,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:updateGedcom\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Module/FixNameSlashesAndSpaces.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/Module/FixNameSlashesAndSpaces.php
 

@@ -35,8 +35,7 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
 {
     use ModuleDataFixTrait;
 
-    /** @var DataFixService */
-    private $data_fix_service;
+    private DataFixService $data_fix_service;
 
     /**
      * FixMissingDeaths constructor.
@@ -139,12 +138,9 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
      */
     private function updateGedcom(GedcomRecord $record): string
     {
-        return preg_replace([
-            '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
-            '/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
-        ], [
-            '$1/',
-            '$1 $2',
-        ], $record->gedcom());
+        $gedcom = $record->gedcom();
+        $gedcom = preg_replace('/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m', '$1/', $gedcom);
+
+        return preg_replace('/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m', '$1 $2', $gedcom);
     }
 }

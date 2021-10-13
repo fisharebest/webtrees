@@ -235,10 +235,10 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      */
     private function updateGedcom(GedcomRecord $record): string
     {
-        return preg_replace([
-            '/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
-            '/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
-            '/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/',
-        ], '$2', $record->gedcom());
+        $gedcom = $record->gedcom();
+        $gedcom = preg_replace('/(\n1.*@.+@.*(?:\n[2-9].*)*)((?:\n1.*(?:\n[2-9].*)*)*\1)/', '$2', $gedcom);
+        $gedcom = preg_replace('/(\n2.*@.+@.*(?:\n[3-9].*)*)((?:\n2.*(?:\n[3-9].*)*)*\1)/', '$2', $gedcom);
+
+        return preg_replace('/(\n3.*@.+@.*(?:\n[4-9].*)*)((?:\n3.*(?:\n[4-9].*)*)*\1)/', '$2', $gedcom);
     }
 }

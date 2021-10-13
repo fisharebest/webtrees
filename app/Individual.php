@@ -1016,25 +1016,14 @@ class Individual extends GedcomRecord
 
         // If we don’t have a GIVN record, extract it from the NAME
         if (!$GIVN) {
-            $GIVN = preg_replace(
-                [
-                    '/ ?\/.*\/ ?/',
-                    // remove surname
-                    '/ ?".+"/',
-                    // remove nickname
-                    '/ {2,}/',
-                    // multiple spaces, caused by the above
-                    '/^ | $/',
-                    // leading/trailing spaces, caused by the above
-                ],
-                [
-                    ' ',
-                    ' ',
-                    ' ',
-                    '',
-                ],
-                $full
-            );
+            // remove surname
+            $GIVN = preg_replace('/ ?\/.*\/ ?/', ' ', $full);
+            // remove nickname
+            $GIVN = preg_replace('/ ?".+"/', ' ', $GIVN);
+            // multiple spaces, caused by the above
+            $GIVN = preg_replace('/ {2,}/', ' ', $GIVN);
+            // leading/trailing spaces, caused by the above
+            $GIVN = preg_replace('/^ | $/', '', $GIVN);
         }
 
         // Add placeholder for unknown given name
