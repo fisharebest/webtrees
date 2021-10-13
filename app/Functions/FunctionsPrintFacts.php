@@ -549,7 +549,6 @@ class FunctionsPrintFacts
     public static function printMainSources(Fact $fact, int $level): void
     {
         $factrec = $fact->gedcom();
-        $parent  = $fact->record();
         $tree    = $fact->record()->tree();
 
         $nlevel = $level + 1;
@@ -741,8 +740,7 @@ class FunctionsPrintFacts
     public static function printMainNotes(Fact $fact, int $level): void
     {
         $factrec = $fact->gedcom();
-        $parent  = $fact->record();
-        $tree    = $parent->tree();
+        $tree    = $fact->record()->tree();
 
         if ($fact->isPendingAddition()) {
             $styleadd = 'wt-new ';

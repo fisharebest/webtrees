@@ -580,7 +580,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         // Now fetch initial letters that are not in our alphabet,
         // including "@" (for "@N.N.") and "" for no surname.
-        foreach ($this->localization_service->alphabet($locale) as $n => $letter) {
+        foreach ($this->localization_service->alphabet($locale) as $letter) {
             $query->where($n_surn, 'NOT LIKE', $letter . '%');
         }
 

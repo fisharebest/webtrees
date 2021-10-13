@@ -131,7 +131,7 @@ class ChartCommonSurname
         $color_to     = $color_to   ?? $chart_color2;
 
         $tot = 0;
-        foreach ($all_surnames as $surn => $surnames) {
+        foreach ($all_surnames as $surnames) {
             $tot += array_sum($surnames);
         }
 

@@ -107,11 +107,7 @@ trait ModuleMapGeoLocationTrait
         $body = $response->getBody()->getContents();
 
         try {
-            $results = json_decode($body, false, JSON_THROW_ON_ERROR);
-
-            $results = array_map(fn () => '', $results);
-
-            return [];
+            return json_decode($body, false, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $ex) {
             return [];
         }

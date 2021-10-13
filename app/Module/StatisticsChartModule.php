@@ -989,11 +989,11 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         ];
 
         $intermediate = [];
-        foreach ($ydata as $century => $months) {
+        foreach ($ydata as $months) {
             foreach ($months as $month => $value) {
                 $intermediate[$month][] = [
                     'v' => $value,
-                    'f' => ($y_axis_type === self::Y_AXIS_PERCENT) ? sprintf('%.1f%%', $value) : $value,
+                    'f' => $y_axis_type === self::Y_AXIS_PERCENT ? sprintf('%.1f%%', $value) : $value,
                 ];
             }
         }
