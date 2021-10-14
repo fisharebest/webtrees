@@ -2572,10 +2572,10 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Create a list of all descendants.
      *
-     * @param array<string> $list
-     * @param string        $pid
-     * @param bool          $parents
-     * @param int           $generations
+     * @param array<Individual> $list
+     * @param string            $pid
+     * @param bool              $parents
+     * @param int               $generations
      *
      * @return void
      */
@@ -2637,10 +2637,10 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Create a list of all ancestors.
      *
-     * @param array<stdClass> $list
-     * @param string          $pid
-     * @param bool            $children
-     * @param int             $generations
+     * @param array<Individual> $list
+     * @param string            $pid
+     * @param bool              $children
+     * @param int               $generations
      *
      * @return void
      */
