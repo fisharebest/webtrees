@@ -37,21 +37,23 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
+use function arsort;
+use function asort;
+use function e;
+use function floor;
+use function implode;
 use function in_array;
+use function str_replace;
+use function view;
 
 /**
- *
+ * A repository providing methods for family related statistics.
  */
 class FamilyRepository
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
@@ -740,13 +742,13 @@ class FamilyRepository
     public function monthFirstChildBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->monthFirstChildQuery($year1, $year2)
-                ->join('individuals', static function (JoinClause $join): void {
-                    $join
-                        ->on('i_file', '=', 'l_file')
-                        ->on('i_id', '=', 'l_to');
-                })
-                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
-                ->groupBy(['d_month', 'i_sex']);
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('i_file', '=', 'l_file')
+                    ->on('i_id', '=', 'l_to');
+            })
+            ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
+            ->groupBy(['d_month', 'i_sex']);
     }
 
     /**

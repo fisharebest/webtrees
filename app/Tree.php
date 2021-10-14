@@ -100,29 +100,26 @@ class Tree
         'WORD_WRAPPED_NOTES'           => '0',
     ];
 
-    /** @var int The tree's ID number */
-    private $id;
+    private int $id;
 
-    /** @var string The tree's name */
-    private $name;
+    private string $name;
 
-    /** @var string The tree's title */
-    private $title;
+    private string $title;
 
-    /** @var int[] Default access rules for facts in this tree */
-    private $fact_privacy;
+    /** @var array<int> Default access rules for facts in this tree */
+    private array $fact_privacy;
 
-    /** @var int[] Default access rules for individuals in this tree */
-    private $individual_privacy;
+    /** @var array<int> Default access rules for individuals in this tree */
+    private array $individual_privacy;
 
-    /** @var integer[][] Default access rules for individual facts in this tree */
-    private $individual_fact_privacy;
+    /** @var array<array<int>> Default access rules for individual facts in this tree */
+    private array $individual_fact_privacy;
 
     /** @var array<string> Cached copy of the wt_gedcom_setting table. */
     private $preferences = [];
 
     /** @var array<array<string>> Cached copy of the wt_user_gedcom_setting table. */
-    private $user_preferences = [];
+    private array $user_preferences = [];
 
     /**
      * Create a tree object.

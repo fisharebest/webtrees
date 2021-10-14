@@ -33,6 +33,12 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\EventRepositoryInterfa
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
+use function array_map;
+use function array_merge;
+use function e;
+use function strncmp;
+use function substr;
+
 /**
  * A repository providing methods for event related statistics.
  */
@@ -52,14 +58,9 @@ class EventRepository implements EventRepositoryInterface
     private const EVENT_MARRIAGE = 'MARR';
     private const EVENT_DIVORCE  = 'DIV';
 
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)

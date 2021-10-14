@@ -104,8 +104,8 @@ class ChartDeath
      */
     public function chartDeath(string $color_from = null, string $color_to = null): string
     {
-        $chart_color1 = (string) $this->theme->parameter('distribution-chart-no-values');
-        $chart_color2 = (string) $this->theme->parameter('distribution-chart-high-values');
+        $chart_color1 = $this->theme->parameter('distribution-chart-no-values');
+        $chart_color2 = $this->theme->parameter('distribution-chart-high-values');
         $color_from   = $color_from ?? $chart_color1;
         $color_to     = $color_to   ?? $chart_color2;
 

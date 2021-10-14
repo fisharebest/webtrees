@@ -492,13 +492,13 @@ class FunctionsPrint
         }
 
         // Filter existing tags
-        $filter_fn = fn ($tag): bool => !in_array($tag, $unique_facts, true) || $record->facts([$tag])->isEmpty();
+        $filter_fn = fn (string $tag): bool => !in_array($tag, $unique_facts, true) || $record->facts([$tag])->isEmpty();
 
         $quick_facts = array_filter($quick_facts, $filter_fn);
 
 
         // Create a label for a subtag
-        $label_fn = fn ($subtag): string => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();
+        $label_fn = fn (string $subtag): string => Registry::elementFactory()->make($record->tag() . ':' . $subtag)->label();
 
         $quick_facts = array_combine($quick_facts, array_map($label_fn, $quick_facts));
         $add_facts   = array_combine($add_facts, array_map($label_fn, $add_facts));

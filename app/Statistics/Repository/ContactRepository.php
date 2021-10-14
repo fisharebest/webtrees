@@ -32,18 +32,11 @@ use function app;
  */
 class ContactRepository implements ContactRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
-    /**
-     * @var UserService
-     */
-    private $user_service;
+    private Tree $tree;
+
+    private UserService $user_service;
 
     /**
-     * Constructor.
-     *
      * @param Tree        $tree
      * @param UserService $user_service
      */

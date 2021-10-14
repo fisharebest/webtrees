@@ -30,14 +30,9 @@ use Illuminate\Database\Capsule\Manager as DB;
  */
 class NewsRepository implements NewsRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)

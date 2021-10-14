@@ -48,25 +48,29 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
+use function app;
 use function array_key_exists;
 use function array_keys;
+use function array_reverse;
 use function array_shift;
 use function array_slice;
+use function array_walk;
+use function arsort;
+use function e;
+use function explode;
 use function implode;
+use function preg_match;
+use function uksort;
+use function view;
 
 /**
- *
+ * A repository providing methods for individual related statistics.
  */
 class IndividualRepository implements IndividualRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
@@ -685,13 +689,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsBirthBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->statsBirthQuery($year1, $year2)
-                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
-                ->join('individuals', static function (JoinClause $join): void {
-                    $join
-                        ->on('i_id', '=', 'd_gid')
-                        ->on('i_file', '=', 'd_file');
-                })
-                ->groupBy(['i_sex']);
+            ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('i_id', '=', 'd_gid')
+                    ->on('i_file', '=', 'd_file');
+            })
+            ->groupBy(['i_sex']);
     }
 
     /**
@@ -743,13 +747,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsDeathBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->statsDeathQuery($year1, $year2)
-                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
-                ->join('individuals', static function (JoinClause $join): void {
-                    $join
-                        ->on('i_id', '=', 'd_gid')
-                        ->on('i_file', '=', 'd_file');
-                })
-                ->groupBy(['i_sex']);
+            ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('i_id', '=', 'd_gid')
+                    ->on('i_file', '=', 'd_file');
+            })
+            ->groupBy(['i_sex']);
     }
 
     /**

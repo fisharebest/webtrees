@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics;
+use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -297,7 +298,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 ];
             }
 
-            $statistics = new Statistics(app(ModuleService::class), $tree, app(UserService::class));
+            $statistics = new Statistics(app(CountryService::class), app(ModuleService::class), $tree, app(UserService::class));
 
             //Stats
             $stats = [];

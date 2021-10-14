@@ -974,9 +974,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             array_walk($ydata, static function (array &$x) {
                 $sum = array_sum($x);
                 if ($sum > 0) {
-                    $x = array_map(static function ($y) use ($sum) {
-                        return $y * 100.0 / $sum;
-                    }, $x);
+                    $x = array_map(static fn (float $y): float => $y * 100.0 / $sum, $x);
                 }
             });
         }

@@ -28,21 +28,19 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\GedcomRepositoryInterf
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
+use function e;
 use function str_contains;
+use function strpos;
+use function substr;
 
 /**
  * A repository providing methods for GEDCOM related statistics.
  */
 class GedcomRepository implements GedcomRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)

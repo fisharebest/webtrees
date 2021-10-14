@@ -54,6 +54,7 @@ use Fisharebest\Webtrees\Statistics\Repository\NewsRepository;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
+use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use ReflectionClass;
@@ -183,11 +184,13 @@ class Statistics implements
     /**
      * Create the statistics for a tree.
      *
-     * @param ModuleService $module_service
-     * @param Tree          $tree Generate statistics for this tree
-     * @param UserService   $user_service
+     * @param CountryService $country_service
+     * @param ModuleService  $module_service
+     * @param Tree           $tree Generate statistics for this tree
+     * @param UserService    $user_service
      */
     public function __construct(
+        CountryService $country_service,
         ModuleService $module_service,
         Tree $tree,
         UserService $user_service
@@ -208,7 +211,7 @@ class Statistics implements
         $this->newsRepository        = new NewsRepository($tree);
         $this->messageRepository     = new MessageRepository();
         $this->contactRepository     = new ContactRepository($tree, $user_service);
-        $this->placeRepository       = new PlaceRepository($tree);
+        $this->placeRepository       = new PlaceRepository($tree, $country_service);
         $this->module_service        = $module_service;
     }
 

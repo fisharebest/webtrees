@@ -71,15 +71,16 @@ class ChartDistribution
     /**
      * Constructor.
      *
-     * @param Tree $tree
+     * @param Tree           $tree
+     * @param CountryService $country_service
      */
-    public function __construct(Tree $tree)
+    public function __construct(Tree $tree, CountryService $country_service)
     {
         $this->tree                 = $tree;
         $this->theme                = app(ModuleThemeInterface::class);
         $this->country_service      = new CountryService();
         $this->individualRepository = new IndividualRepository($tree);
-        $this->placeRepository      = new PlaceRepository($tree);
+        $this->placeRepository      = new PlaceRepository($tree, $country_service);
 
         // Get the country names for each language
         $this->country_to_iso3166 = $this->getIso3166Countries();

@@ -35,19 +35,11 @@ use function count;
  */
 class FavoritesRepository implements FavoritesRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
+    private Tree $tree;
 
-    private $tree;
-    /**
-     * @var ModuleService
-     */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
-     * Constructor.
-     *
      * @param Tree          $tree
      * @param ModuleService $module_service
      */

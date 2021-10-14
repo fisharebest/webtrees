@@ -268,9 +268,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         $lifespans = $this->layoutIndividuals($individuals);
 
-        $max_rows = array_reduce($lifespans, static function ($carry, stdClass $item) {
-            return max($carry, $item->row);
-        }, 0);
+        $callback = static fn (int $carry, stdClass $item): int => max($carry, $item->row);
+        $max_rows = array_reduce($lifespans, $callback, 0);
 
         $count    = count($xrefs);
         $subtitle = I18N::plural('%s individual', '%s individuals', $count, I18N::number($count));
@@ -296,7 +295,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function maxYear(array $individuals): int
     {
-        $jd = array_reduce($individuals, static function ($carry, Individual $item) {
+        $jd = array_reduce($individuals, static function (int $carry, Individual $item): int {
             if ($item->getEstimatedDeathDate()->isOK()) {
                 return max($carry, $item->getEstimatedDeathDate()->maximumJulianDay());
             }
@@ -319,7 +318,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     protected function minYear(array $individuals): int
     {
-        $jd = array_reduce($individuals, static function ($carry, Individual $item) {
+        $jd = array_reduce($individuals, static function (int $carry, Individual $item): int {
             if ($item->getEstimatedBirthDate()->isOK()) {
                 return min($carry, $item->getEstimatedBirthDate()->minimumJulianDay());
             }

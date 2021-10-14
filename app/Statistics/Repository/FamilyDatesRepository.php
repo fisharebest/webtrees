@@ -29,6 +29,9 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
+use function abs;
+use function e;
+
 /**
  * A repository providing methods for family dates related statistics (birth, death, marriage, divorce).
  */
@@ -48,14 +51,9 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
     private const EVENT_MARRIAGE = 'MARR';
     private const EVENT_DIVORCE  = 'DIV';
 
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)

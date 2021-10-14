@@ -34,31 +34,30 @@ use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
 use function array_key_exists;
+use function arsort;
+use function end;
+use function explode;
+use function preg_match;
+use function trim;
+use function view;
 
 /**
  * A repository providing methods for place related statistics.
  */
 class PlaceRepository implements PlaceRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
+
+    private CountryService $country_service;
 
     /**
-     * @var CountryService
+     * @param Tree           $tree
+     * @param CountryService $country_service
      */
-    private $country_service;
-
-    /**
-     * BirthPlaces constructor.
-     *
-     * @param Tree $tree
-     */
-    public function __construct(Tree $tree)
+    public function __construct(Tree $tree, CountryService $country_service)
     {
-        $this->tree          = $tree;
-        $this->country_service = new CountryService();
+        $this->tree            = $tree;
+        $this->country_service = $country_service;
     }
 
     /**
@@ -160,7 +159,7 @@ class PlaceRepository implements PlaceRepositoryInterface
                 $join->on('pl_file', '=', 'o_file')
                     ->on('pl_gid', '=', 'o_id');
             })
-            ->where('o_type', '=', Location::RECORD_TYPE);
+                ->where('o_type', '=', Location::RECORD_TYPE);
         }
 
         return $query
@@ -362,7 +361,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         string $chart_type = '',
         string $surname = ''
     ): string {
-        return (new ChartDistribution($this->tree))
+        return (new ChartDistribution($this->tree, $this->country_service))
             ->chartDistribution($chart_shows, $chart_type, $surname);
     }
 }

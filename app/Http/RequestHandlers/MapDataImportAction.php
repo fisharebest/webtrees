@@ -158,9 +158,9 @@ class MapDataImportAction implements RequestHandlerInterface
         $updated = 0;
 
         // Remove places with 0,0 coordinates at lower levels.
-        $places = array_filter($places, static function ($place) {
-            return !str_contains($place['name'], ',') || $place['longitude'] !== 0.0 || $place['latitude'] !== 0.0;
-        });
+        $callback = static fn (array $place): bool => !str_contains($place['name'], ',') || $place['longitude'] !== 0.0 || $place['latitude'] !== 0.0;
+
+        $places = array_filter($places, $callback);
 
         foreach ($places as $place) {
             $location = new PlaceLocation($place['name']);

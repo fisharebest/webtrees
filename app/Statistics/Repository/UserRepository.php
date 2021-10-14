@@ -30,24 +30,20 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterfac
 use Fisharebest\Webtrees\Tree;
 
 use function count;
+use function e;
+use function route;
+use function view;
 
 /**
  * A repository providing methods for user related statistics.
  */
 class UserRepository implements UserRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
-    /**
-     * @var UserService
-     */
-    private $user_service;
+    private Tree $tree;
+
+    private UserService $user_service;
 
     /**
-     * Constructor.
-     *
      * @param Tree        $tree
      * @param UserService $user_service
      */

@@ -27,6 +27,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
 use function array_slice;
+use function arsort;
+use function asort;
 use function count;
 use function in_array;
 
@@ -35,10 +37,7 @@ use function in_array;
  */
 class MediaRepository implements MediaRepositoryInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
      * Available media types.
@@ -89,8 +88,6 @@ class MediaRepository implements MediaRepositoryInterface
     ];
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
