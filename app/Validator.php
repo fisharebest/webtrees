@@ -26,7 +26,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;
 use function ctype_digit;
-use function gettype;
 use function is_array;
 use function is_int;
 use function is_string;
@@ -81,20 +80,12 @@ class Validator
      */
     public function isBetween(int $minimum, int $maximum): self
     {
-        $this->rules[] = static function ($value) use ($minimum, $maximum): ?int {
-            if (is_int($value)) {
-                if ($value >= $minimum && $value <= $maximum) {
-                    return $value;
-                }
-
-                return null;
+        $this->rules[] = static function (?int $value) use ($minimum, $maximum): ?int {
+            if (is_int($value) && $value >= $minimum && $value <= $maximum) {
+                return $value;
             }
 
-            if ($value === null) {
-                return null;
-            }
-
-            throw new LogicException(__METHOD__ . ' does not accept ' . gettype($value));
+            return null;
         };
 
         return $this;
@@ -107,11 +98,7 @@ class Validator
      */
     public function isLocalUrl(string $base_url): self
     {
-        $this->rules[] = static function ($value) use ($base_url): ?string {
-            if ($value === null) {
-                return null;
-            }
-
+        $this->rules[] = static function (?string $value) use ($base_url): ?string {
             if (is_string($value)) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
@@ -131,11 +118,9 @@ class Validator
                         return $value;
                     }
                 }
-
-                return null;
             }
 
-            throw new LogicException(__METHOD__ . ' does not accept ' . gettype($value));
+            return null;
         };
 
         return $this;
@@ -146,30 +131,12 @@ class Validator
      */
     public function isXref(): self
     {
-        $this->rules[] = static function ($value) {
-            if (is_string($value)) {
-                if (preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
-                    return $value;
-                }
-
-                return null;
-            }
-
-            if (is_array($value)) {
-                foreach ($value as $item) {
-                    if (preg_match('/^' . Gedcom::REGEX_XREF . '$/', $item) !== 1) {
-                        return null;
-                    }
-                }
-
+        $this->rules[] = static function (?string $value): ?string {
+            if (is_string($value) && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
                 return $value;
             }
 
-            if ($value === null) {
-                return null;
-            }
-
-            throw new LogicException(__METHOD__ . ' does not accept ' . gettype($value));
+            return null;
         };
 
         return $this;
@@ -188,7 +155,9 @@ class Validator
             $value = null;
         }
 
-        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
+        $callback = static fn (?array $value, Closure $rule): ?array => $rule($value);
+
+        return array_reduce($this->rules, $callback, $value);
     }
 
     /**
@@ -206,7 +175,9 @@ class Validator
             $value = null;
         }
 
-        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
+        $callback = static fn (?int $value, Closure $rule): ?int => $rule($value);
+
+        return array_reduce($this->rules, $callback, $value);
     }
 
     /**
@@ -222,7 +193,9 @@ class Validator
             $value = null;
         }
 
-        return array_reduce($this->rules, static fn ($value, $rule) => $rule($value), $value);
+        $callback = static fn (?string $value, Closure $rule): ?string => $rule($value);
+
+        return array_reduce($this->rules, $callback, $value);
     }
 
     /**
@@ -234,11 +207,11 @@ class Validator
     {
         $value = $this->array($parameter);
 
-        if (is_array($value)) {
-            return $value;
+        if ($value === null) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        return $value;
     }
 
     /**
@@ -250,11 +223,11 @@ class Validator
     {
         $value = $this->integer($parameter);
 
-        if (is_int($value)) {
-            return $value;
+        if ($value === null) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        return $value;
     }
 
     /**
@@ -266,10 +239,10 @@ class Validator
     {
         $value = $this->string($parameter);
 
-        if (is_string($value)) {
-            return $value;
+        if ($value === null) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
         }
 
-        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        return $value;
     }
 }

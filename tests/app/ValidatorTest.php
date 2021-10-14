@@ -114,15 +114,16 @@ class ValidatorTest extends TestCase
      */
     public function testIsBetweenParameter(): void
     {
-        $parameters = ['param' => '42', 'invalid' => '10', 'wrongtype' => 'not_integer'];
+        $parameters = [
+            'param'     => '42',
+            'invalid'   => '10',
+            'wrongtype' => 'not_integer',
+        ];
         $validator = (new Validator($parameters))->isBetween(40, 45);
 
         self::assertSame(42, $validator->integer('param'));
         self::assertNull($validator->integer('invalid'));
         self::assertNull($validator->integer('wrongtype'));
-
-        $this->expectException(LogicException::class);
-        $validator->string('wrongtype');
     }
 
     /**
@@ -132,21 +133,12 @@ class ValidatorTest extends TestCase
     {
         $parameters = [
             'param' => 'X1',
-            'param2' => ['X2', 'X3'],
             'invalid' => '@X1@',
-            'invalid2' => ['X2', '#X4!'],
-            'wrongtype' => '42'
         ];
         $validator = (new Validator($parameters))->isXref();
 
         self::assertSame('X1', $validator->string('param'));
-        self::assertSame(['X2', 'X3'], $validator->array('param2'));
-        self::assertNull($validator->string('param2'));
         self::assertNull($validator->string('invalid'));
-        self::assertNull($validator->array('invalid2'));
-
-        $this->expectException(LogicException::class);
-        $validator->integer('wrongtype');
     }
 
     /**
@@ -155,11 +147,11 @@ class ValidatorTest extends TestCase
     public function testIsLocalUrlParameter(): void
     {
         $parameters = [
-            'param' => 'http://example.local/wt/page',
-            'noscheme' => '//example.local/wt/page',
-            'https' => 'https://example.local/wt/page',
-            'invalid' => 'http://example.com/wt/page',
-            'wrongtype' => '42'
+            'param'     => 'http://example.local/wt/page',
+            'noscheme'  => '//example.local/wt/page',
+            'https'     => 'https://example.local/wt/page',
+            'invalid'   => 'http://example.com/wt/page',
+            'wrongtype' => ['42']
         ];
         $validator = (new Validator($parameters))->isLocalUrl('http://example.local/wt');
 
@@ -167,10 +159,7 @@ class ValidatorTest extends TestCase
         self::assertSame('//example.local/wt/page', $validator->string('noscheme'));
         self::assertNull($validator->string('https'));
         self::assertNull($validator->string('invalid'));
-        self::assertNull($validator->integer('param'));
-
-        $this->expectException(LogicException::class);
-        $validator->integer('wrongtype');
+        self::assertNull($validator->string('wrongtype'));
     }
 
     /**
