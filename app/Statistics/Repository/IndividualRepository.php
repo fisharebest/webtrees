@@ -49,7 +49,10 @@ use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
 use function array_key_exists;
+use function array_keys;
+use function array_shift;
 use function array_slice;
+use function implode;
 
 /**
  *
@@ -530,9 +533,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $top_surname = $this->topSurnames(1, 0);
 
-        return $top_surname
-            ? implode(', ', array_keys(array_shift($top_surname)) ?? [])
-            : '';
+        return implode(', ', array_keys(array_shift($top_surname) ?? []));
     }
 
     /**
