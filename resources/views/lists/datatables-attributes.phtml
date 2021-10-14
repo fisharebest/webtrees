@@ -1,23 +1,19 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
-
 ?>
 
 data-auto-width="false"
-data-dom="<&quot;d-flex justify-content-between&quot;pf><t><&quot;d-flex justify-content-between&quot;irl>"
+data-dom="<&quot;d-flex justify-content-between&quot;pfl><t><&quot;d-flex justify-content-between&quot;pilr>"
 data-state-save="true"
 data-length-menu="<?= e(json_encode([[10, 20, 50, 100, 500, 1000, -1], [I18N::number(10), I18N::number(20), I18N::number(50), I18N::number(100), I18N::number(500), I18N::number(1000), I18N::translate('All')]])) ?>"
+data-paging-type="full_numbers"
 data-language="<?= e(json_encode([
     'paginate'       => [
-        /* I18N: A button label, first page */
-        'first'    => I18N::translate('first'),
-        /* I18N: A button label, last page */
-        'last'     => I18N::translate('last'),
-        /* I18N: A button label, next page */
-        'next'     => I18N::translate('next'),
-        /* I18N: A button label, previous page */
-        'previous' => I18N::translate('previous'),
+        'first'    => view('icons/first'),
+        'last'     => view('icons/last'),
+        'next'     => view('icons/next'),
+        'previous' => view('icons/previous'),
     ],
     'emptyTable'     => I18N::translate('No records to display'),
     /* I18N: %s are placeholders for numbers */
