@@ -80,11 +80,7 @@ class EmailPreferencesPage implements RequestHandlerInterface
         $DKIM_SELECTOR  = Site::getPreference('DKIM_SELECTOR');
         $DKIM_KEY       = Site::getPreference('DKIM_KEY');
 
-        try {
-            $hostname = gethostbyaddr(gethostbyname(gethostname()));
-        } catch (Throwable $ex) {
-            $hostname = 'localhost';
-        }
+        $hostname = gethostbyaddr(gethostbyname(gethostname() ?: 'localhost'));
 
         // Defaults
         $SMTP_PORT      = $SMTP_PORT ?: '25';
