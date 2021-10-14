@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-17 08:20+0000\n"
-"PO-Revision-Date: 2021-10-12 09:16+0000\n"
+"PO-Revision-Date: 2021-10-16 13:56+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-17/zh_Hans/>\n"
@@ -2350,7 +2350,7 @@ msgstr "去世年龄"
 #. I18N: gedcom tag AGNC
 #: app/GedcomTag.php:146 app/GedcomTag.php:478
 msgid "Agency"
-msgstr "机构名称"
+msgstr "办理机构"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9833,7 +9833,7 @@ msgstr ""
 #. I18N: gedcom tag GRAD
 #: app/GedcomTag.php:508 app/GedcomTag.php:783
 msgid "Graduation"
-msgstr "学历信息"
+msgstr "教育经历"
 
 #: family.php:83
 msgid "Grandparents"
