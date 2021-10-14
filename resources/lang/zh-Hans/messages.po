@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-12 09:17+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-16 13:57+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1839,7 +1839,7 @@ msgstr "去世年龄"
 #: app/Factories/ElementFactory.php:284 app/Factories/ElementFactory.php:417
 #: app/Factories/ElementFactory.php:690
 msgid "Agency"
-msgstr "机构名称"
+msgstr "办理机构"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -7646,7 +7646,7 @@ msgstr ""
 # I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:538
 msgid "Graduation"
-msgstr "学历信息"
+msgstr "教育经历"
 
 #: resources/views/statistics/individuals/greatest-age.phtml:12
 msgid "Greatest age at death"
