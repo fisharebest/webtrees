@@ -71,29 +71,27 @@ class GedcomRecord
 
     protected const ROUTE_NAME = GedcomRecordPage::class;
 
-    /** @var string The record identifier */
-    protected $xref;
+    protected string $xref;
 
-    /** @var Tree  The family tree to which this record belongs */
-    protected $tree;
+    protected Tree $tree;
 
-    /** @var string  GEDCOM data (before any pending edits) */
-    protected $gedcom;
+    // GEDCOM data (before any pending edits)
+    protected string $gedcom;
 
-    /** @var string|null  GEDCOM data (after any pending edits) */
-    protected $pending;
+    // GEDCOM data (after any pending edits)
+    protected ?string $pending;
 
-    /** @var array<Fact> facts extracted from $gedcom/$pending */
-    protected $facts;
+    /** @var array<Fact> Facts extracted from $gedcom/$pending */
+    protected array $facts;
 
     /** @var array<array<string>> All the names of this individual */
-    protected $getAllNames;
+    protected array $getAllNames = [];
 
     /** @var int|null Cached result */
-    protected $getPrimaryName;
+    private ?int $getPrimaryName = null;
 
     /** @var int|null Cached result */
-    protected $getSecondaryName;
+    private ?int $getSecondaryName = null;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
@@ -110,8 +108,7 @@ class GedcomRecord
         $this->gedcom  = $gedcom;
         $this->pending = $pending;
         $this->tree    = $tree;
-
-        $this->parseFacts();
+        $this->facts   = $this->parseFacts();
     }
 
     /**
@@ -346,8 +343,7 @@ class GedcomRecord
      */
     public function getAllNames(): array
     {
-        if ($this->getAllNames === null) {
-            $this->getAllNames = [];
+        if ($this->getAllNames === []) {
             if ($this->canShowName()) {
                 // Ask the record to extract its names
                 $this->extractNames();
@@ -1008,7 +1004,8 @@ class GedcomRecord
                 $this->pending = null;
             }
         }
-        $this->parseFacts();
+
+        $this->facts = $this->parseFacts();
     }
 
     /**
@@ -1055,7 +1052,7 @@ class GedcomRecord
             $this->pending = null;
         }
 
-        $this->parseFacts();
+        $this->facts = $this->parseFacts();
 
         Log::addEditLog('Update: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
     }
@@ -1248,9 +1245,9 @@ class GedcomRecord
     /**
      * Split the record into facts
      *
-     * @return void
+     * @return array<Fact>
      */
-    private function parseFacts(): void
+    private function parseFacts(): array
     {
         // Split the record into facts
         if ($this->gedcom) {
@@ -1266,22 +1263,24 @@ class GedcomRecord
             $pending_facts = [];
         }
 
-        $this->facts = [];
+        $facts = [];
 
         foreach ($gedcom_facts as $gedcom_fact) {
             $fact = new Fact($gedcom_fact, $this, md5($gedcom_fact));
             if ($this->pending !== null && !in_array($gedcom_fact, $pending_facts, true)) {
                 $fact->setPendingDeletion();
             }
-            $this->facts[] = $fact;
+            $facts[] = $fact;
         }
         foreach ($pending_facts as $pending_fact) {
             if (!in_array($pending_fact, $gedcom_facts, true)) {
                 $fact = new Fact($pending_fact, $this, md5($pending_fact));
                 $fact->setPendingAddition();
-                $this->facts[] = $fact;
+                $facts[] = $fact;
             }
         }
+
+        return $facts;
     }
 
     /**

@@ -347,7 +347,7 @@ class Family extends GedcomRecord
      */
     public function getAllNames(): array
     {
-        if ($this->getAllNames === null) {
+        if ($this->getAllNames === []) {
             // Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
             $husb_names = [];
             if ($this->husb) {
