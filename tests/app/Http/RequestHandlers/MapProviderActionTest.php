@@ -38,7 +38,7 @@ class MapProviderActionTest extends TestCase
     public function testMapProviderAction(): void
     {
         $handler  = new MapProviderAction();
-        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '']);
+        $request  = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['provider' => '', 'geonames' => '', 'searchplaceloc' => '']);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());

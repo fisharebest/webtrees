@@ -40,6 +40,7 @@ class MapProviderAction implements RequestHandlerInterface
 
         Site::setPreference('map-provider', $settings['provider']);
         Site::setPreference('geonames', $settings['geonames']);
+        Site::setPreference('searchplaceloc', $settings['searchplaceloc']);
 
         return redirect(route(ControlPanel::class));
     }

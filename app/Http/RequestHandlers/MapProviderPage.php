@@ -46,6 +46,7 @@ class MapProviderPage implements RequestHandlerInterface
             'title'    => I18N::translate('Map provider'),
             'provider' => Site::getPreference('map-provider'),
             'geonames' => Site::getPreference('geonames'),
+            'searchplaceloc' => Site::getPreference('searchplaceloc'),
         ]);
     }
 }

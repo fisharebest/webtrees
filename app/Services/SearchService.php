@@ -431,10 +431,11 @@ class SearchService
      * @param string $search
      * @param int    $offset
      * @param int    $limit
+     * @param bool   $searchplaceloc
      *
      * @return Collection<Place>
      */
-    public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
+    public function searchPlaces(Tree $tree, string $search, int $offset = 0, int $limit = PHP_INT_MAX,bool $searchplaceloc = false): Collection
     {
         $query = DB::table('places AS p0')
             ->where('p0.p_file', '=', $tree->id())
@@ -470,6 +471,42 @@ class SearchService
         // Filter each level of the hierarchy.
         foreach (explode(',', $search, 9) as $level => $string) {
             $query->where('p' . $level . '.p_place', 'LIKE', '%' . addcslashes($string, '\\%_') . '%');
+        }
+        if($searchplaceloc){
+            $geonamesquery = DB::table('place_location AS p0')
+            ->leftJoin('place_location AS p1', 'p1.id', '=', 'p0.parent_id')
+            ->leftJoin('place_location AS p2', 'p2.id', '=', 'p1.parent_id')
+            ->leftJoin('place_location AS p3', 'p3.id', '=', 'p2.parent_id')
+            ->leftJoin('place_location AS p4', 'p4.id', '=', 'p3.parent_id')
+            ->leftJoin('place_location AS p5', 'p5.id', '=', 'p4.parent_id')
+            ->leftJoin('place_location AS p6', 'p6.id', '=', 'p5.parent_id')
+            ->leftJoin('place_location AS p7', 'p7.id', '=', 'p6.parent_id')
+            ->leftJoin('place_location AS p8', 'p8.id', '=', 'p7.parent_id')
+            ->orderBy('p0.place')
+            ->orderBy('p1.place')
+            ->orderBy('p2.place')
+            ->orderBy('p3.place')
+            ->orderBy('p4.place')
+            ->orderBy('p5.place')
+            ->orderBy('p6.place')
+            ->orderBy('p7.place')
+            ->orderBy('p8.place')
+            ->select([
+                'p0.place AS place0',
+                'p1.place AS place1',
+                'p2.place AS place2',
+                'p3.place AS place3',
+                'p4.place AS place4',
+                'p5.place AS place5',
+                'p6.place AS place6',
+                'p7.place AS place7',
+                'p8.place AS place8',
+            ]);
+            // Filter each level of the hierarchy.
+            foreach (explode(',', $search, 9) as $level => $string) {
+                $geonamesquery->where('p' . $level . '.place', 'LIKE', '%' . addcslashes($string, '\\%_') . '%');
+            }
+            $query->union($geonamesquery);
         }
 
         $row_mapper = static function (stdClass $row) use ($tree): Place {

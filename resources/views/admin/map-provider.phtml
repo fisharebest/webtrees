@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapProviderAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
 
 /**
  * @var string $geonames
@@ -52,6 +53,24 @@ use Fisharebest\Webtrees\I18N;
             </p>
         </div>
     </div>
+
+    <!-- ALLOW_AUTOCOMPLETE_SEARCH_IN_PLACELOC -->
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-3">
+                <?= /* I18N: A configuration setting */
+                I18N::translate('Use GeographicData table for autocomplete on places') ?>
+            </legend>
+            <div class="col-sm-9">
+                <?= view('components/radios-inline', ['name' => 'searchplaceloc', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) Site::getPreference('searchplaceloc')]) ?>
+                <p class="small text-muted">
+                    <?= /* I18N: Help text for the “Show list of family trees” site configuration setting */
+                    I18N::translate('If you want to use the geographic data in your webtrees installation for proposals when entering new places.') ?>
+                </p>
+            </div>
+        </div>
+    </fieldset>
+
 
     <hr>
 
