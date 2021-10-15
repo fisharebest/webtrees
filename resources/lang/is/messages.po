@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-16 14:45+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-16 13:57+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -631,7 +619,7 @@ msgstr "<sjálfgefið þema>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Athugið: Með því að fylla út og senda þetta eyðublað samþykkir þú:</p><ul><li>að vernda friðhelgi einkalífs lifandi einstaklinga sem skráðir eru á vefsíðu okkar;</li><li>og í textareitnum hér að neðan, að útskýra hverjum þú ert skyldur, eða til að veita okkur upplýsingar um einhvern sem ætti að vera skráður á vefsíðu okkar.</li></ul>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -4126,7 +4114,7 @@ msgstr "Útbúa staðsetningu"
 #: resources/views/modals/create-media-from-file.phtml:19
 #: resources/views/modals/create-media-object.phtml:19
 msgid "Create a media object"
-msgstr "Stofna nýjan miðilshlut"
+msgstr "Stofna nýjan gagnahlut"
 
 #: app/Elements/XrefRepository.php:66
 #: resources/views/modals/create-repository.phtml:18
@@ -5608,7 +5596,7 @@ msgstr "Breyta þessum einstaklingi og skipta út þeirra upplýsingum með þí
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Breyta með öllum GEDCOM merkjum"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -5734,7 +5722,7 @@ msgstr "Vinnuveitandi"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Tæmdu klippiborðið"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -7161,7 +7149,7 @@ msgstr "Grikkland"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:167
 msgid "Green Beam"
-msgstr "Green Beam"
+msgstr "Grænn geisli"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:225
@@ -7269,7 +7257,7 @@ msgstr "Hamilton, Nýja Sjáland"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:106
 msgid "Hartford, Connecticut, United States"
-msgstr "Hartford, Connecticut, United States"
+msgstr "Hartford, Connecticut, Bandaríkin"
 
 #: resources/xml/reports/descendancy_report.xml:428
 msgid "He "
@@ -7452,7 +7440,7 @@ msgstr "Fela fyrir öllum"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Fela lykilorð"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7552,7 +7540,7 @@ msgstr "Í heimili"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:111
 msgid "Houston, Texas, United States"
-msgstr "Houston, Texas, United States"
+msgstr "Houston, Texas, Bandaríkin"
 
 #. I18N: Configuration option
 #: resources/views/modules/relationships-chart/config.phtml:45
@@ -7606,7 +7594,7 @@ msgstr "Íslenska"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:112
 msgid "Idaho Falls, Idaho, United States"
-msgstr "Idaho Falls, Idaho, United States"
+msgstr "Idaho Falls, Idaho, Bandaríkin"
 
 #: app/Factories/ElementFactory.php:540
 msgid "Identification number"
@@ -7709,7 +7697,7 @@ msgstr "Ef þú ert með mikinn fjölda gagnaskráa geturðu raðað þeim í m�
 
 #: resources/views/admin/trees-import.phtml:96
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
-msgstr "Ef þú hefur stofnað miðilshluta í webtrees og hefur breytt þínum gedcom fyrir utan vefinn með öðru forriti sem eyðir miðilshlutum, hakaðu þá við þennan kassa til að steypa saman núverandi miðilshlutum við nýtt GEDCOM."
+msgstr "Ef þú hefur stofnað gagnaskrá í webtrees og hefur í kjölfarið breytt þessari GEDCOM skrá með notkun á ættfræðiforriti sem eyðir gagnaskrám, hakaðu þá við þennan kassa til að steypa saman núverandi gagnaskrám við nýtt GEDCOM."
 
 #: resources/views/admin/site-preferences.phtml:39
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8161,7 +8149,7 @@ msgstr "Jórdanía"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:115
 msgid "Jordan River, Utah, United States"
-msgstr "Jordan River, Utah, United States"
+msgstr "Jordan River, Utah, Bandaríkin"
 
 #. I18N: Name of a module
 #: app/Module/UserJournalModule.php:119
@@ -8371,7 +8359,7 @@ msgstr "Kislev"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:117
 msgid "Kona, Hawaii, United States"
-msgstr "Kona, Hawaii, United States"
+msgstr "Kona, Hawaii, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:286
@@ -8430,7 +8418,7 @@ msgstr "Merkja"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
 msgid "Laie, Hawaii, United States"
-msgstr "Laie, Hawaii, United States"
+msgstr "Laie, Hawaii, Bandaríkin"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:131
@@ -8481,7 +8469,7 @@ msgstr "Mesti fjöldi barnabarna"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:125
 msgid "Las Vegas, Nevada, United States"
-msgstr "Las Vegas, Nevada, United States"
+msgstr "Las Vegas, Nevada, Bandaríkin"
 
 #: app/Factories/ElementFactory.php:322 app/Factories/ElementFactory.php:488
 #: app/Factories/ElementFactory.php:619 app/Factories/ElementFactory.php:638
@@ -8615,7 +8603,7 @@ msgstr "Lesótó"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Letter"
-msgstr "Letter"
+msgstr "Bréf"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:294
@@ -8762,7 +8750,7 @@ msgstr "Leigjandi"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:121
 msgid "Logan, Utah, United States"
-msgstr "Logan, Utah, United States"
+msgstr "Logan, Utah, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:122
@@ -8796,12 +8784,12 @@ msgstr "Los Angeles, Kalifornía"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:123
 msgid "Louisville, Kentucky, United States"
-msgstr "Louisville, Kentucky, United States"
+msgstr "Louisville, Kentucky, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:124
 msgid "Lubbock, Texas, United States"
-msgstr "Lubbock, Texas, United States"
+msgstr "Lubbock, Texas, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:308
@@ -8951,7 +8939,7 @@ msgstr "Manila, Filippseyjar"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:130
 msgid "Manti, Utah, United States"
-msgstr "Manti, Utah, United States"
+msgstr "Manti, Utah, Bandaríkin"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:70
@@ -9337,7 +9325,7 @@ msgstr "Mayott"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:131
 msgid "Medford, Oregon, United States"
-msgstr "Medford, Oregon, United States"
+msgstr "Medford, Oregon, Bandaríkin"
 
 #. I18N: Name of a module
 #: app/Module/CustomTagsGedcomL.php:207 app/Module/MediaListModule.php:219
@@ -9348,7 +9336,7 @@ msgstr "Medford, Oregon, United States"
 #: resources/views/lists/media-table.phtml:77
 #: resources/views/modules/recent_changes/changes-table.phtml:65
 msgid "Media"
-msgstr "Miðill"
+msgstr "Gögn"
 
 #: resources/views/admin/media-upload.phtml:31
 #: resources/views/admin/media.phtml:100
@@ -9357,11 +9345,11 @@ msgstr "Miðill"
 #: resources/views/modals/create-media-from-file.phtml:27
 #: resources/views/modals/media-file-fields.phtml:20
 msgid "Media file"
-msgstr "Miðilsskrá"
+msgstr "Gagnaskrá"
 
 #: resources/views/admin/media-upload.phtml:35
 msgid "Media file to upload"
-msgstr "Miðilsskrá til að flytja inn"
+msgstr "Gagnaskrá til að flytja inn"
 
 #. I18N: %s is the name of a folder.
 #: resources/views/admin/trees-export.phtml:94
@@ -9403,7 +9391,7 @@ msgstr "Gagnamöppur"
 #: resources/views/admin/webtrees1-thumbnails.phtml:41
 #: resources/views/modules/favorites/favorites.phtml:94
 msgid "Media object"
-msgstr "Miðilshlutur"
+msgstr "Gagnaskrá"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:113 app/Module/MediaListModule.php:82
@@ -9421,15 +9409,15 @@ msgstr "Miðilshlutur"
 #: resources/views/statistics/other/chart-objects.phtml:12
 #: resources/views/statistics/other/total-records.phtml:21
 msgid "Media objects"
-msgstr "Miðilshlutur"
+msgstr "Gagnaskrá"
 
 #: resources/views/modules/media-list/page.phtml:95
 msgid "Media objects found"
-msgstr "Miðilshlutir fundnir"
+msgstr "Gagnaskrár fundnar"
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Media objects per page"
-msgstr "Miðilshlutir á síðu"
+msgstr "Gagnaskrár á síðu"
 
 #: app/Factories/ElementFactory.php:644 app/Factories/ElementFactory.php:702
 #: app/Module/CustomTagsGedcom53.php:138
@@ -9437,7 +9425,7 @@ msgstr "Miðilshlutir á síðu"
 #: resources/views/modals/create-media-from-file.phtml:43
 #: resources/views/modals/media-file-fields.phtml:118
 msgid "Media type"
-msgstr "Miðilsgerð"
+msgstr "Gagnagerð"
 
 #: app/Module/CustomTagsBrothersKeeper.php:103
 #: app/Module/CustomTagsReunion.php:54
@@ -9499,7 +9487,7 @@ msgstr "Meðlimur"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:133
 msgid "Memphis, Tennessee, United States"
-msgstr "Memphis, Tennessee, United States"
+msgstr "Memphis, Tennessee, Bandaríkin"
 
 #: resources/views/admin/modules.phtml:161
 #: resources/views/admin/modules.phtml:164
@@ -9516,7 +9504,7 @@ msgstr "Valmyndir"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:171
 msgid "Mercury"
-msgstr "Mercury"
+msgstr "Kvikasilfur"
 
 #: resources/views/admin/trees-duplicates.phtml:39
 msgid "Merge"
@@ -9541,7 +9529,7 @@ msgstr "Merida, Mexikó"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:60
 msgid "Mesa, Arizona, United States"
-msgstr "Mesa, Arizona, United States"
+msgstr "Mesa, Arizona, Bandaríkin"
 
 #: resources/views/admin/broadcast.phtml:58
 #: resources/views/admin/email-page.phtml:59
@@ -9750,7 +9738,7 @@ msgstr "Mánuður:"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:138
 msgid "Monticello, Utah, United States"
-msgstr "Monticello, Utah, United States"
+msgstr "Monticello, Utah, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:139
@@ -9881,7 +9869,7 @@ msgstr "Móðurfjölskylda með óþekktum einstaklingi"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:140
 msgid "Mount Timpanogos, Utah, United States"
-msgstr "Mount Timpanogos, Utah, United States"
+msgstr "Mount Timpanogos, Utah, Bandaríkin"
 
 #: resources/views/admin/components.phtml:46
 #: resources/views/admin/components.phtml:152
@@ -10046,7 +10034,7 @@ msgstr "Frásagnarlýsing"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:141
 msgid "Nashville, Tennessee, United States"
-msgstr "Nashville, Tennessee, United States"
+msgstr "Nashville, Tennessee, Bandaríkin"
 
 #: app/Factories/ElementFactory.php:569
 msgid "Nationality"
@@ -10064,12 +10052,12 @@ msgstr "Nárú"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:142
 msgid "Nauvoo (new), Illinois, United States"
-msgstr "Nauvoo (new), Illinois, United States"
+msgstr "Nauvoo (new), Illinois, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:143
 msgid "Nauvoo (original), Illinois, United States"
-msgstr "Nauvoo (original), Illinois, United States"
+msgstr "Nauvoo (original), Illinois, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:379
@@ -10105,7 +10093,7 @@ msgstr "Nýtt GEDCOM merki"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146
 msgid "New York, New York, United States"
-msgstr "New York, New York, United States"
+msgstr "New York, New York, Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:383
@@ -10335,7 +10323,7 @@ msgstr "Engar uppfærsluupplýsingar liggja fyrir."
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:173
 msgid "Nocturnal"
-msgstr "Nocturnal"
+msgstr "Næturlag"
 
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
@@ -10480,7 +10468,7 @@ msgstr "Ekkert fannst."
 #: resources/views/modules/pedigree-map/chart.phtml:97
 #: resources/views/modules/places/tab.phtml:94
 msgid "Nothing to show"
-msgstr "Ekkert að sýna"
+msgstr "Ekkert að birta"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -10525,7 +10513,7 @@ msgstr "Fjöldi barna"
 #: resources/views/modules/upcoming_events/config.phtml:21
 #: resources/views/modules/yahrzeit/config.phtml:18
 msgid "Number of days to show"
-msgstr "Fjöldi daga að sýna"
+msgstr "Fjöldi daga að birta"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:125
 #: resources/views/statistics/families/children.phtml:32
@@ -10629,12 +10617,12 @@ msgstr "Október"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:150
 msgid "Ogden, Utah, United States"
-msgstr "Ogden, Utah, United States"
+msgstr "Ogden, Utah, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:151
 msgid "Oklahoma City, Oklahoma, United States"
-msgstr "Oklahoma City, Oklahoma, United States"
+msgstr "Oklahoma City, Oklahoma, Bandaríkin"
 
 #: resources/views/admin/changes-log.phtml:71
 msgid "Old data"
@@ -10667,7 +10655,7 @@ msgstr "Elsta móðir"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:175
 msgid "Olivia"
-msgstr "Olivia"
+msgstr "Ólivía"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:385
@@ -10905,7 +10893,7 @@ msgstr "Panama City, Panama"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:157
 msgid "Papeete, Tahiti"
-msgstr "Papeete, Tahiti"
+msgstr "Papeete, Tahítí"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:399
@@ -11545,7 +11533,7 @@ msgstr "Provo City Center, Utah, Bandaríkin"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:165
 msgid "Provo, Utah, United States"
-msgstr "Provo, Utah, United States"
+msgstr "Provo, Utah, Bandaríkin"
 
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
@@ -11711,7 +11699,7 @@ msgstr "Rajab"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:167
 msgid "Raleigh, North Carolina, United States"
-msgstr "Raleigh, North Carolina, United States"
+msgstr "Raleigh, North Carolina, Bandaríkin"
 
 #. I18N: https://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:144
@@ -12014,7 +12002,7 @@ msgstr "Fjarlægja þessa staðsetningu?"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:171
 msgid "Reno, Nevada, United States"
-msgstr "Reno, Nevada, United States"
+msgstr "Reno, Nevada, Bandaríkin"
 
 #: resources/views/admin/trees.phtml:197
 msgid "Renumber"
@@ -12285,7 +12273,7 @@ msgstr "Safar"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:179
 msgid "Sage"
-msgstr "Sage"
+msgstr "Salvía"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:441
@@ -12315,7 +12303,7 @@ msgstr "Sankti Vincent og Grenadineeyjar"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:183
 msgid "Salt Lake City, Utah, United States"
-msgstr "Salt Lake City, Utah, United States"
+msgstr "Salt Lake City, Utah, Bandaríkin"
 
 #: resources/views/modals/media-file-fields.phtml:72
 msgid "Same as uploaded file"
@@ -12329,7 +12317,7 @@ msgstr "Samóa"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:176
 msgid "San Antonio, Texas, United States"
-msgstr "San Antonio, Texas, United States"
+msgstr "San Antonio, Texas, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:177
@@ -12939,7 +12927,7 @@ msgstr "Shevat"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:181
 msgid "Shiny Tomato"
-msgstr "Shiny Tomato"
+msgstr "Glansandi tómatur"
 
 #: resources/views/help/date.phtml:34 resources/views/help/date.phtml:72
 #: resources/views/help/date.phtml:110
@@ -12957,7 +12945,7 @@ msgstr "Sýna"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:287
 msgid "Show a download link in the media viewer"
-msgstr "Sýna niðurhalskrækju í miðils skoðara"
+msgstr "Sýna niðurhalskrækju í gagnaskoðara"
 
 #. I18N: Description of the “Cookie warning” module
 #: app/Module/PrivacyPolicy.php:78
@@ -13118,7 +13106,7 @@ msgstr "Sýna foreldra"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "Sýna lykilorð"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13443,7 +13431,7 @@ msgstr "Lítil kerfi (500 einstaklingar): 16-32MB, 10-20 sekúndur"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:185
 msgid "Snowflake, Arizona, United States"
-msgstr "Snowflake, Arizona, United States"
+msgstr "Snowflake, Arizona, Bandaríkin"
 
 #: app/Factories/ElementFactory.php:614
 msgid "Social security number"
@@ -13656,7 +13644,7 @@ msgstr "Spænska"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:188
 msgid "Spokane, Washington, United States"
-msgstr "Spokane, Washington, United States"
+msgstr "Spokane, Washington, Bandaríkin"
 
 #: app/Http/RequestHandlers/IndividualPage.php:224
 #: resources/views/edit/change-family-members.phtml:36
@@ -13691,17 +13679,17 @@ msgstr "Srí Lanka"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:181
 msgid "St. George, Utah, United States"
-msgstr "St. George, Utah, United States"
+msgstr "St. George, Utah, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:184
 msgid "St. Louis, Missouri, United States"
-msgstr "St. Louis, Missouri, United States"
+msgstr "St. Louis, Missouri, Bandaríkin"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:187
 msgid "St. Paul, Minnesota, United States"
-msgstr "St. Paul, Minnesota, United States"
+msgstr "St. Paul, Minnesota, Bandaríkin"
 
 #: resources/views/modules/random_media/config.phtml:48
 msgid "Start slide show on page load"
@@ -13716,7 +13704,6 @@ msgid "Starting range of change dates"
 msgstr "Byrjunarsvið á breytingar dagsetningum"
 
 #: app/Module/StatcounterModule.php:41
-#, fuzzy
 msgid "Statcounter™"
 msgstr "Statcounter™"
 
@@ -13930,7 +13917,7 @@ msgstr "Eftirnöfn eru beygð til að gefa til kynna kyn einstaklings."
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:190
 msgid "Suva, Fiji"
-msgstr "Suva, Fiji"
+msgstr "Suva, Fídjieyjar"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:443
@@ -14394,12 +14381,12 @@ msgstr "Ekki er vitað um staðsetningu þessa staðar."
 #: app/Http/RequestHandlers/EditMediaFileAction.php:149
 #, php-format
 msgid "The media file %1$s could not be renamed to %2$s."
-msgstr "Miðilsskrá %1$s var ekki hægt að endurnefna í %2$s."
+msgstr "Gagnaskrá %1$s var ekki hægt að endurnefna í %2$s."
 
 #: app/Http/RequestHandlers/EditMediaFileAction.php:146
 #, php-format
 msgid "The media file %1$s has been renamed to %2$s."
-msgstr "Miðilsskrá %1$s var giftusamlega endurnefnd í %2$s."
+msgstr "Gagnaskrá %1$s var giftusamlega endurnefnd í %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:106
 msgid "The media object has been created"
@@ -14518,34 +14505,34 @@ msgstr "Valkostirnir fyrir eininguna “%s” hafa verið uppfærðir."
 #: resources/views/setup/step-4-database-sqlite.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr ""
+msgstr "Forskeytið er valfrjálst, en mælt með því. Með því að gefa töfluheitunum einstakt forskeyti geturðu látið nokkur mismunandi forrit deila sama gagnagrunninum."
 
 #: app/Module/CustomTagsGedcomL.php:119 app/Module/CustomTagsGedcomL.php:172
 msgid "The problem"
-msgstr ""
+msgstr "Vandamálið"
 
 #: app/Http/RequestHandlers/MergeFactsAction.php:169
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Skrárnar “%1$s” og “%2$s” hafa verið sameinaðar."
 
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:72
 msgid "The reports menu."
-msgstr ""
+msgstr "Skýrsluvalmyndin."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:90
 msgid "The repository has been created"
-msgstr ""
+msgstr "Geymslan hefur verið búin til"
 
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Leitarvalmyndin."
 
 #: app/Services/SearchService.php:1162
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Leitin skilaði of mörgum niðurstöðum."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
@@ -14553,16 +14540,16 @@ msgstr "Uppsetningar vefþjónsins eru í lagi."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Netþjónninn skildi ekki þessa beiðni."
 
 #: app/Services/ServerCheckService.php:247
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Ekki er hægt að nálgast tímabundna möppu netþjónsins."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:554
 #: app/Services/UpgradeService.php:152 app/Services/UpgradeService.php:186
 msgid "The server’s time limit has been reached."
-msgstr ""
+msgstr "Tímamörkum netþjóns er náð."
 
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:63
@@ -14571,42 +14558,42 @@ msgstr "Stærð ættartrés, fyrstu og nýjustu atburða, algeng nöfn o.s.frv."
 
 #: app/Module/CustomTagsGedcomL.php:116 app/Module/CustomTagsGedcomL.php:169
 msgid "The solution"
-msgstr ""
+msgstr "Lausnin"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
-msgstr ""
+msgstr "Heimildin hefur verið búin til"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "Innleggið hefur verið útbúið"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
-msgstr ""
+msgstr "Sendandi hefur verið búinn til"
 
 #: resources/views/help/name.phtml:13
 #, php-format
 msgid "The surname is enclosed by slashes: <%s>John Paul /Smith/<%s>"
-msgstr ""
+msgstr "Eftirnafnið er umlukið af skástrikum: <%s>John Paul /Smith/<%s>"
 
 #: resources/views/admin/site-preferences.phtml:55
 #: resources/views/admin/users-edit.phtml:141
 #: resources/views/edit-account-page.phtml:117
 msgid "The time zone is required for date calculations, such as knowing today’s date."
-msgstr ""
+msgstr "Tímabeltið er nauðsynlegt til að reikna út dagsetningar, svo sem að vita dagsetningu dagsins í dag."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:28
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tvö ættartréin hafa %1$s færslu sem notar sama “XREF”."
+msgstr[1] "Tvö ættartréin hafa %1$s færslur sem notar sama “XREF”."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:321
 msgid "The upgrade is complete."
-msgstr ""
+msgstr "Uppfærslunni er lokið."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:47
@@ -14616,7 +14603,7 @@ msgstr "Innhlaðin skrá yfir leyfilegri stærð."
 #: app/Http/RequestHandlers/UsersCleanupAction.php:68
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Notandanum %s hefur verið eytt."
 
 #: resources/views/emails/register-notify-html.phtml:39
 #: resources/views/emails/register-notify-text.phtml:30
@@ -14657,7 +14644,7 @@ msgstr "Notandanafnið sem nauðsynlegt er til staðfestingar hjá SMTP póstþj
 #: app/Http/RequestHandlers/SiteRegistrationAction.php:51
 #: app/Http/RequestHandlers/SiteTagsAction.php:53
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Stillingar vefsíðunnar hafa verið uppfærðar."
 
 #: resources/views/errors/database-error.phtml:20
 #: resources/views/setup/step-6-failed.phtml:20
@@ -14681,7 +14668,7 @@ msgstr "Þemu breyting"
 #: resources/views/admin/modules.phtml:118
 #: resources/views/admin/modules.phtml:120
 msgid "Themes"
-msgstr ""
+msgstr "Þemu"
 
 #: resources/views/modules/personal_facts/tab.phtml:58
 msgid "There are no facts for this individual."
@@ -14689,7 +14676,7 @@ msgstr "Það eru engar staðreyndir fyrir þennan einstakling."
 
 #: app/Http/RequestHandlers/ManageMediaData.php:310
 msgid "There are no links to this media object."
-msgstr ""
+msgstr "Það eru engir tenglar á þennan gagnahlut."
 
 #: resources/views/modules/media/tab.phtml:29
 msgid "There are no media objects for this individual."
@@ -14702,7 +14689,7 @@ msgstr "Það eru engar glósur fyrir þennan einstakling."
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:215
 #: resources/views/pending-changes-page.phtml:30
 msgid "There are no pending changes."
-msgstr ""
+msgstr "Það eru engar breytingar í bið."
 
 #: app/Module/ResearchTaskModule.php:121
 msgid "There are no research tasks in this family tree."
@@ -14722,13 +14709,13 @@ msgstr "Það eru bíða breytingar eftir þér til að fundarstýra."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Engar breytingar hafa orðið síðasta %s dag."
+msgstr[1] "Engar breytingar hafa orðið síðastu %s daga."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:105
 #, php-format
 msgid "There is no user account with the email “%s”."
-msgstr ""
+msgstr "Það er enginn notandareikningur með netfangið “%s”."
 
 #: app/Http/RequestHandlers/AddMediaFileAction.php:86
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:79
@@ -14763,16 +14750,16 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "These cookies are “essential”, and do not require consent."
-msgstr ""
+msgstr "Þessar vefkökur eru „nauðsynlegar“ og þurfa ekki samþykki."
 
 #: resources/views/admin/trees-unconnected.phtml:35
 #, php-format
 msgid "These groups of individuals are not related to %s."
-msgstr ""
+msgstr "Þessir hópar einstaklinga eru ekki skyldir %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:57
 msgid "These services may use cookies or other tracking technology."
-msgstr ""
+msgstr "Þessa þjónustur gætu notað vefkökur eða aðra rakningatækni."
 
 #: app/Http/RequestHandlers/LoginAction.php:135
 msgid "This account has not been approved. Please wait for an administrator to approve it."
@@ -14790,7 +14777,7 @@ msgstr "Þessi blokk mun sýna ritstjórum lista yfir færslur með breytingum s
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Þetta gæti stafað af villu í %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -14802,7 +14789,7 @@ msgstr "Þetta netfang verður notað til að senda þér lykilorða upprifjun, 
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "Þessi atburður átti sér stað, en nánari upplýsingar eru óþekktar."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -14833,8 +14820,8 @@ msgstr "Þessari fjölskyldu hefur verið breytt. Þú ættir að endurskoða br
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Þetta ættartré hefur %s færslu sem notar sama “XREF” og annað ættartré."
+msgstr[1] "Þetta ættartré hefur %s færslur sem notar sama “XREF” og annað ættartré."
 
 #: app/Module/SlideShowModule.php:164
 msgid "This family tree has no images to display."
@@ -14854,16 +14841,16 @@ msgstr "Þetta ættartré var síðast uppfært þann %s."
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc. These files may contain private data, and should not be made available over the internet."
-msgstr ""
+msgstr "Þessa möppu mun webtrees nota til að geyma gagnaskrár, GEDCOM skrár, tímabundnar skrár, o.s.frv. Þessar skrár kunna að innihalda einkagögn og ættu ekki að vera aðgengilegar á netinu."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:260
 msgid "This folder will be used to store the media files for this family tree."
-msgstr ""
+msgstr "Þessi mappa verður notuð til að geyma gagnaskrár fyrir þetta ættartré."
 
 #: app/Http/Middleware/CheckCsrf.php:68
 msgid "This form has expired. Try again."
-msgstr ""
+msgstr "Þetta eyðublað er útrunnið. Reyndu aftur."
 
 #: app/Exceptions/IndividualAccessDeniedException.php:35
 #: app/Exceptions/IndividualNotFoundException.php:35
@@ -14894,7 +14881,7 @@ msgstr "Þessum einstaklingi hefur verið breytt. Þú ættir að endurskoða br
 #: resources/views/admin/trees-preferences.phtml:104
 #: resources/views/edit-account-page.phtml:81
 msgid "This individual will be selected by default when viewing charts and reports."
-msgstr ""
+msgstr "Þessi einstaklingur verður sjálfgefið valinn þegar töflur og skýrslur eru skoðaðar."
 
 #: app/Module/StatisticsChartModule.php:951
 #: app/Statistics/Repository/EventRepository.php:245
@@ -14925,7 +14912,7 @@ msgstr ""
 #: resources/views/statistics/other/places.phtml:55
 #: resources/views/statistics/other/top10-list.phtml:26
 msgid "This information is not available."
-msgstr ""
+msgstr "Þessar upplýsingar liggja ekki fyrir."
 
 #: app/Statistics/Repository/EventRepository.php:253
 #: app/Statistics/Repository/FamilyDatesRepository.php:110
@@ -14961,7 +14948,7 @@ msgstr "Þetta er stafstaða næmt."
 #: resources/views/admin/control-panel.phtml:197
 #: resources/views/admin/upgrade/wizard.phtml:25
 msgid "This is the latest version of webtrees. No upgrade is available."
-msgstr ""
+msgstr "Þetta er nýjasta útgáfan af webtrees. Engin uppfærsla er í boði."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: resources/views/admin/site-mail.phtml:100
@@ -14978,16 +14965,16 @@ msgstr "Þetta er þitt raunverulega nafn, eins og þú vilt að það sé birt 
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:102
 msgid "This link is valid for one hour."
-msgstr ""
+msgstr "Þessi hlekkur gildir í eina klukkustund."
 
 #: resources/views/help/data-fixes.phtml:16
 msgid "This list is created using a simple (but fast) search, and therefore includes records that will not be updated."
-msgstr ""
+msgstr "Þessi listi er búinn til með einfaldri (en fljótlegri) leit og inniheldur því færslur sem verða ekki uppfærðar."
 
 #: app/Exceptions/MediaAccessDeniedException.php:35
 #: app/Exceptions/MediaNotFoundException.php:35
 msgid "This media object does not exist or you do not have permission to view it."
-msgstr "Þessi miðilshlutur er ekki til eða þú hefur ekki réttindi til að skoða hann."
+msgstr "Þessi gagnaskrá er ekki til eða þú hefur ekki réttindi til að skoða hana."
 
 #: resources/views/media-page-pending.phtml:18
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
@@ -14997,17 +14984,17 @@ msgstr "Þessum fljölmiðlahlut hefur verið eytt. Eyðingin þarf að endursko
 #: resources/views/media-page-pending.phtml:16
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Þessum miðilshlut hefur verið eytt. Þú ættir að endurskoða eyðinguna og síðan %1$s eða %2$s henni."
+msgstr "Þessari gagnaskrá hefur verið eytt. Þú ættir að endurskoða eyðinguna og síðan %1$s eða %2$s henni."
 
 #: resources/views/media-page-pending.phtml:24
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
-msgstr "Þessi miðilshlutur hefur verið breyttur. Breytingarnar þurfa að endurskoðast af stjórnanda."
+msgstr "Þessari gagnaskrá hefur verið breytt. Breytingarnar þurfa að endurskoðast af stjórnanda."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page-pending.phtml:22
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Þessi miðilshlutur hefur verið breyttur. Þú ættir að endurskoða breytinguna og síðan %1$s eða %2$s henni."
+msgstr "Þessari gagnaskrá hefur verið breytt. Þú ættir að endurskoða breytinguna og síðan %1$s eða %2$s henni."
 
 #: resources/views/emails/message-copy-html.phtml:33
 #: resources/views/emails/message-copy-text.phtml:23
@@ -15024,7 +15011,7 @@ msgstr "Þetta verður að vera að lágmarki sex stafir. Það er stafstaða n�
 #: resources/views/admin/site-mail.phtml:64
 #: resources/views/admin/site-mail.phtml:78
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr ""
+msgstr "Þetta nafn er notað í reitnum „Frá“ þegar þú sendir sjálfvirkan tölvupóst frá þessum netþjóni."
 
 #: app/Exceptions/NoteAccessDeniedException.php:35
 #: app/Exceptions/NoteNotFoundException.php:35
@@ -15095,8 +15082,8 @@ msgstr "Þessi síða gerir þér kleift að fara fram hjá venjulegu eyðublö�
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Þessi síða hefur verið skoðuð %s sinni."
+msgstr[1] "Þessi síða hefur verið skoðuð %s sinnum."
 
 #: resources/views/help/pending-changes.phtml:16
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
@@ -15105,31 +15092,31 @@ msgstr "Þetta ferli gerir vefsíðu eiganda kleift að tryggja að nýjar uppl�
 #: app/Exceptions/RecordAccessDeniedException.php:35
 #: app/Exceptions/RecordNotFoundException.php:35
 msgid "This record does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Þessi færsla er ekki til eða þú hefur ekki leyfi til að skoða hana."
 
 #: resources/views/admin/trees-privacy.phtml:261
 msgid "This record does not exist."
-msgstr ""
+msgstr "Þessi færsla er ekki til."
 
 #: resources/views/record-page-pending.phtml:19
 msgid "This record has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr ""
+msgstr "Þessari færslu hefur verið eytt. Stjórnandi þarf að yfirfara eyðinguna."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/record-page-pending.phtml:17
 #, php-format
 msgid "This record has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr ""
+msgstr "Þessari færslu hefur verið eytt. Þú ættir að yfirfara eyðinguna og síðan %1$s eða %2$s henni."
 
 #: resources/views/record-page-pending.phtml:25
 msgid "This record has been edited. The changes need to be reviewed by a moderator."
-msgstr ""
+msgstr "Þessari færslu hefur verið breytt. Stjórnandi þarf að yfirfara breytingarnar."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/record-page-pending.phtml:23
 #, php-format
 msgid "This record has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr ""
+msgstr "Þessari færslu hefur verið breytt. Þú ættir að yfirfara breytingarnar og síðan %1$s eða %2$s þeim."
 
 #: app/Exceptions/RepositoryAccessDeniedException.php:35
 #: app/Exceptions/RepositoryNotFoundException.php:35
@@ -15138,7 +15125,7 @@ msgstr "Þessi geymsla er ekki til eða þú hefur ekki réttindi til að skoða
 
 #: resources/views/modules/privacy-policy/page.phtml:25
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Þessi rannsókn er „lögmætur áhugi“ samkvæmt 6. gr.(f) í almennri gagnaverndarreglugerð ESB."
 
 #: resources/views/admin/users-edit.phtml:262
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15187,7 +15174,7 @@ msgstr "Þessi gerð af krækju er ekki leyfð hér."
 
 #: resources/views/errors/no-tree-access.phtml:8
 msgid "This user account does not have access to any tree."
-msgstr ""
+msgstr "Þessi notendareikningur hefur ekki aðgang að neinu ættartré."
 
 #: app/Http/RequestHandlers/SetupWizard.php:176
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -15195,7 +15182,7 @@ msgstr "Þetta þýðir venjulega að þú þarft að breyta möppu réttindum �
 
 #: app/Services/UpgradeService.php:265
 msgid "This website is being upgraded. Try again in a few minutes."
-msgstr ""
+msgstr "Verið er að uppfæra þessa vefsíðu. Reyndu aftur eftir nokkrar mínútur."
 
 #: resources/views/layouts/offline.phtml:70
 msgid "This website is down for maintenance. You should <a href=\"index.php\">try again</a> in a few minutes."
@@ -15203,7 +15190,7 @@ msgstr "Vefsíðan er niðri vegna viðhalds. Þú ættir að <a href=\"index.ph
 
 #: resources/views/modules/privacy-policy/page.phtml:70
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Þessi vefsíða er rekin af eftirfarandi einstaklingum."
 
 #: resources/views/layouts/error.phtml:17
 #: resources/views/layouts/error.phtml:34
@@ -15213,19 +15200,19 @@ msgstr "Þessi vefsíða er tímabundið óaðgengileg"
 
 #: resources/views/modules/privacy-policy/page.phtml:22
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Þessi vefsíða vinnur með persónuupplýsingar vegna sögulegra- og ættfræðirannsókna."
 
 #: resources/views/modules/privacy-policy/page.phtml:33
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
-msgstr ""
+msgstr "Þessi vefsíða notar vefkökur til að virkja innskráningartíma og til að muna óskir eins og tungumálið sem þú valdir."
 
 #: resources/views/modules/privacy-policy/footer.phtml:21
 msgid "This website uses cookies to learn about visitor behavior."
-msgstr ""
+msgstr "Þessi vefsíða notar vefkökur til að læra um hegðun gesta."
 
 #: resources/views/modules/privacy-policy/page.phtml:45
 msgid "This website uses third-party services to learn about visitor behavior."
-msgstr ""
+msgstr "Þessi vefsíða notar þjónustu þriðja aðila til að læra um hegðun gesta."
 
 #. I18N: %s is the name of a family tree
 #: resources/views/admin/trees-import.phtml:27
@@ -15242,12 +15229,12 @@ msgstr "Fim"
 #: app/Module/CustomTagsPhpGedView.php:72
 #: resources/views/admin/webtrees1-thumbnails.phtml:39
 msgid "Thumbnail image"
-msgstr ""
+msgstr "Smámynd"
 
 #: resources/views/admin/trees-preferences.phtml:298
 #: resources/views/admin/trees-preferences.phtml:304
 msgid "Thumbnail images"
-msgstr ""
+msgstr "Smámyndir"
 
 #: app/Date/AbstractCalendarDate.php:256
 msgid "Thursday"
@@ -15256,7 +15243,7 @@ msgstr "Fimmtudagur"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:197
 msgid "Tijuana, Mexico"
-msgstr ""
+msgstr "Tijuana, Mexikó"
 
 #: app/Factories/ElementFactory.php:376 app/Module/CustomTagsGedcomL.php:193
 #: app/Module/CustomTagsPhpGedView.php:58
@@ -15269,14 +15256,14 @@ msgstr "Tími"
 #: app/Factories/ElementFactory.php:671 app/Factories/ElementFactory.php:687
 #: app/Factories/ElementFactory.php:718 app/Factories/ElementFactory.php:734
 msgid "Time of last change"
-msgstr ""
+msgstr "Tími síðustu breytinga"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
 #: resources/views/admin/users-edit.phtml:136
 #: resources/views/edit-account-page.phtml:112
 msgid "Time zone"
-msgstr ""
+msgstr "Tímabelti"
 
 #. I18N: Name of a module/chart
 #: app/Module/TimelineChartModule.php:98
@@ -15369,13 +15356,13 @@ msgstr "Heiti"
 #: resources/views/contact-page.phtml:32 resources/views/message-page.phtml:38
 msgctxt "Email recipient"
 msgid "To"
-msgstr ""
+msgstr "Til"
 
 #: resources/views/admin/changes-log.phtml:48
 #: resources/views/admin/site-logs.phtml:46
 msgctxt "End of date range"
 msgid "To"
-msgstr ""
+msgstr "Til"
 
 #: resources/views/modules/html/config.phtml:32
 msgid "To assist you in getting started with this block, we have created several standard templates. When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -15388,26 +15375,26 @@ msgstr "Til að stofna nýtt rannsóknarverkefni, þá verður þú fyrst að b�
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:622
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr ""
+msgstr "Til að tryggja samhæfni við önnur ættfræðiforrit ættu skýringar, texti og afrit að vera skráð í einfaldan, ósniðinn texta. Hins vegar er snið oft æskilegt til að auðvelda framsetningu, skilning o.s.frv."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr ""
+msgstr "Til að vernda þessi einkagögn notar webtrees Apache stillingarskrá (.htaccess) sem hindrar allan aðgang að þessari möppu. Ef vefþjóninn þinn styður ekki .htaccess skrár og þú getur ekki takmarkað aðgang að þessari möppu, þá geturðu valið aðra möppu, fjarri vefskjölunum þínum."
 
 #: resources/views/help/zip-gedcom.phtml:8
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file. You will need to uncompress the .ZIP file before you can use it."
-msgstr ""
+msgstr "Til að minnka niðurhalið geturðu þjappað gögnunum saman í .ZIP skrá. Þú þarft að afþjappa .ZIP skrána áður en þú getur notað hana."
 
 #: resources/views/emails/password-request-html.phtml:18
 #: resources/views/emails/password-request-text.phtml:14
 msgid "To set a new password, follow this link."
-msgstr ""
+msgstr "Til að velja nýtt lykilorð skaltu fylgja þessari krækju."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:43
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Til að setja þennan texta yfir á önnur tungumál, verður þú að skipta yfir á það tungumál og heimsækja þessa síðu aftur."
 
 #: resources/views/modules/sitemap/config.phtml:50
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15420,11 +15407,11 @@ msgstr "Til að láta leitarvélar vita um að staðarkort séu aðgengileg, á 
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Til að nota þessa þjónustu, þarftu API lykil."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Til að nota þessa þjónustu þarftu aðgang."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15513,7 +15500,7 @@ msgstr "Toronto, Ontario, Kanada"
 #: resources/views/lists/chart-by-age.phtml:29
 #: resources/views/lists/chart-by-decade.phtml:21
 msgid "Total"
-msgstr ""
+msgstr "Samtals"
 
 #: resources/xml/reports/change_report.xml:127
 msgid "Total accepted changes: "
@@ -15610,7 +15597,7 @@ msgstr "Samtals notendur"
 #: resources/views/admin/modules.phtml:243
 #: resources/views/modules/privacy-policy/page.phtml:41
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Rakning og greining"
 
 #: app/Factories/ElementFactory.php:743
 msgid "Trailer"
@@ -15621,7 +15608,7 @@ msgstr "Sýnishorn"
 #: resources/views/emails/register-notify-html.phtml:34
 #: resources/views/emails/register-notify-text.phtml:28
 msgid "Tree"
-msgstr ""
+msgstr "Tré"
 
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
@@ -15636,7 +15623,7 @@ msgstr "Trínidad og Tóbagó"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200
 msgid "Trujillo, Peru"
-msgstr ""
+msgstr "Trujillo, Perú"
 
 #. I18N: abbreviation for Tuesday
 #: app/Date/AbstractCalendarDate.php:282
@@ -15681,7 +15668,7 @@ msgstr "Tuxtla Gutierrez, Mexikó"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:201
 msgid "Twin Falls, Idaho, United States"
-msgstr ""
+msgstr "Twin Falls, Idaho, Bandaríkin"
 
 #: app/Factories/ElementFactory.php:296 app/Factories/ElementFactory.php:303
 #: app/Factories/ElementFactory.php:316 app/Factories/ElementFactory.php:427
@@ -15702,50 +15689,50 @@ msgstr "Tegund"
 
 #: app/Module/CustomTagsGedcomL.php:202
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "Tegund skammstöfunar"
 
 #: app/Module/CustomTagsGedcomL.php:226
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Tegund stjórnunarauðkennis"
 
 #: app/Module/CustomTagsGedcomL.php:230
 msgid "Type of demographic data"
-msgstr ""
+msgstr "Tegund lýðfræðilegra gagna"
 
 #: app/Factories/ElementFactory.php:333 app/Factories/ElementFactory.php:528
 #: app/Module/CustomTagsGedcomL.php:196
 msgid "Type of event"
-msgstr ""
+msgstr "Tegund atburðar"
 
 #: app/Factories/ElementFactory.php:530
 msgid "Type of fact"
-msgstr ""
+msgstr "Tegund staðreyndar"
 
 #: app/Factories/ElementFactory.php:541
 msgid "Type of identification number"
-msgstr ""
+msgstr "Tegund auðkennisnúmers"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
-msgstr ""
+msgstr "Tegund staðsetningar"
 
 #: app/Factories/ElementFactory.php:343
 msgid "Type of marriage"
-msgstr ""
+msgstr "Tegund hjúskapar"
 
 #: app/Factories/ElementFactory.php:568
 msgid "Type of name"
-msgstr ""
+msgstr "Tegund nafns"
 
 #: app/Factories/ElementFactory.php:349 app/Factories/ElementFactory.php:586
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
 #: app/Factories/ElementFactory.php:679 app/Factories/ElementFactory.php:699
 msgid "Type of reference number"
-msgstr ""
+msgstr "Tegund tilvísunarnúmers"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
-msgstr ""
+msgstr "Tegund rannsóknarverkefnis"
 
 #. I18N: A configuration setting
 #: app/Factories/ElementFactory.php:319 app/Factories/ElementFactory.php:399
@@ -15767,7 +15754,7 @@ msgstr ""
 #: resources/views/modules/share-url/share.phtml:11
 #: resources/views/modules/sitemap/config.phtml:46
 msgid "URL"
-msgstr ""
+msgstr "Slóð"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:510
@@ -15813,7 +15800,7 @@ msgstr "Einstakt auðkenni"
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:152
 msgid "Unique identifiers allow the same record to be found in different family trees and in different systems. They will be added whenever records are created or updated. If you do not want unique identifiers to be displayed, you can hide them using the privacy rules."
-msgstr ""
+msgstr "Einstakt auðkenni gerir kleift að finna sömu skrá í mismunandi ættartrjám og í mismunandi kerfum. Þeim verður bætt við þegar færslur verða til eða uppfærðar. Ef þú vilt ekki að einstök auðkenni birtist geturðu falið þau með því að nota persónuverndarreglurnar."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:54
@@ -15828,7 +15815,7 @@ msgstr "Bretland"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:514
 msgid "United States"
-msgstr ""
+msgstr "Bandaríkin"
 
 #. I18N: Name of a country or state
 #: app/Elements/FamilyStatusText.php:73 app/GedcomRecord.php:898
@@ -15861,7 +15848,7 @@ msgstr "Óþekkt"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Aftengja"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15869,12 +15856,12 @@ msgstr "Óþekktur GEDCOM kóði"
 
 #: resources/views/admin/media.phtml:50
 msgid "Unused files"
-msgstr ""
+msgstr "Ónotaðar skrár"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:124
 #, php-format
 msgid "Unzip %s to a temporary folder…"
-msgstr ""
+msgstr "Afþjappa %s í tímabundna möppu…"
 
 #. I18N: Name of a module
 #: app/Module/UpcomingAnniversariesModule.php:105
@@ -15895,12 +15882,12 @@ msgstr "Uppfæra allt"
 #. I18N: Name of a module
 #: app/Module/FixPlaceNames.php:61
 msgid "Update place names"
-msgstr ""
+msgstr "Uppfæra örnefni"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPlaceNames.php:72
 msgid "Update the higher-level parts of place names, while keeping the lower-level parts."
-msgstr ""
+msgstr "Uppfærðu hluta af örnefnum á hærra stigi en haltu hlutunum á lægra stigi."
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15914,7 +15901,7 @@ msgstr "Uppfæra í webtrees %s."
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:79
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:119
 msgid "Upgrade wizard"
-msgstr ""
+msgstr "Uppfærsluálfur"
 
 #: app/Http/RequestHandlers/UploadMediaPage.php:69
 #: resources/views/admin/control-panel.phtml:813
@@ -15923,7 +15910,7 @@ msgstr "Flytja inn miðlunarskrár"
 
 #: resources/views/admin/media-upload.phtml:23
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Flytjið inn eina eða fleiri miðilsskrár frá staðbundinni tölvu þinni. Miðilsskrár geta verið myndir, myndbönd, hljóð eða önnur snið."
+msgstr "Flytjið inn eina eða fleiri gagnaskrár frá staðbundinni tölvu þinni. Gagnaskrár geta verið myndir, myndbönd, hljóð eða önnur skráarsnið."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
@@ -15940,7 +15927,7 @@ msgstr "Notið „?“ til að finna samsvörun við einn bókstaf, notið use &
 
 #: app/Module/ModuleMapGeoLocationTrait.php:48
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Notaðu utanaðkomandi þjónustu til að finna staði."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -15973,11 +15960,11 @@ msgstr "Notið fulla heimildar tilvísanir"
 #: resources/views/setup/step-4-database-sqlite.phtml:84
 #: resources/views/setup/step-4-database-sqlsvr.phtml:110
 msgid "Use letters A-Z, a-z, digits 0-9, or underscores"
-msgstr ""
+msgstr "Notaðu bókstafina A-Ö, a-ö, tölustafina 0-9 eða undirstrik"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Notaðu kort í webtrees."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -15987,12 +15974,12 @@ msgstr "Nota lykilorð"
 #. I18N: "sendmail" is the name of some mail software
 #: app/Services/EmailService.php:228
 msgid "Use sendmail to send messages"
-msgstr ""
+msgstr "Notaðu sendmail til að senda skilaboð"
 
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:324
 msgid "Use silhouette images when no highlighted image for that individual has been specified. The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Notaðu skuggamyndir þegar engin auðkennd mynd fyrir þennan einstakling hefur verið tilgreind. Myndirnar sem notaðar eru eru sértækar fyrir kyn viðkomandi einstaklings."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:319
@@ -16001,7 +15988,7 @@ msgstr "Nota skuggamyndir"
 
 #: app/Http/RequestHandlers/CopyFact.php:79
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Notaðu valmyndina „breyta“ til að líma þetta í aðra færslu."
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16084,7 +16071,7 @@ msgstr "Úsbekistan"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:202
 msgid "Vancouver, British Columbia, Canada"
-msgstr ""
+msgstr "Vancouver, British Columbia, Kanada"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:530
@@ -16094,7 +16081,7 @@ msgstr "Vanuatú"
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:98
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Ýmsar tölfræðitöflur."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
@@ -16169,7 +16156,7 @@ msgstr "Staðfest"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:204
 msgid "Vernal, Utah, United States"
-msgstr "Vernal, Utah, United States"
+msgstr "Vernal, Utah, Bandaríkin"
 
 #: app/Factories/ElementFactory.php:373 app/Factories/ElementFactory.php:381
 #: app/Factories/ElementFactory.php:404
@@ -16191,7 +16178,7 @@ msgstr "Víetnam"
 #: resources/views/modules/place-hierarchy/page.phtml:49
 #, php-format
 msgid "View table of events occurring in %s"
-msgstr ""
+msgstr "Skoða töflu yfir atburði sem eiga sér stað í %s"
 
 #: resources/views/calendar-page.phtml:215
 msgid "View this day"
@@ -16207,7 +16194,7 @@ msgstr "Skoða þessa fjölskyldu"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Skoðaðu þessa staðsetningu með %s"
 
 #: resources/views/calendar-page.phtml:219
 msgid "View this month"
@@ -16278,16 +16265,16 @@ msgstr "Vörður"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:206
 msgid "Washington, District of Columbia, United States"
-msgstr "Washington, District of Columbia, United States"
+msgstr "Washington, District of Columbia, Bandaríkin"
 
 #: resources/views/admin/trees-preferences.phtml:330
 msgid "Watermarks"
-msgstr ""
+msgstr "Vatnsmerki"
 
 #. I18N: Help text for the “Images without watermarks” configuration setting
 #: resources/views/admin/trees-preferences.phtml:340
 msgid "Watermarks are optional and normally shown just to visitors."
-msgstr ""
+msgstr "Vatnsmerki eru valfrjáls og venjulega sýnd bara gestum."
 
 #: resources/views/register-success-page.phtml:23
 #, php-format
@@ -16298,17 +16285,17 @@ msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b
 #: resources/views/admin/control-panel.phtml:584
 #: resources/views/admin/trees-preferences.phtml:200
 msgid "Website"
-msgstr ""
+msgstr "Vefsíða"
 
 #: app/Http/RequestHandlers/SiteLogsPage.php:100
 #: resources/views/admin/control-panel.phtml:242
 msgid "Website logs"
-msgstr ""
+msgstr "Vefsíðuskrár"
 
 #: app/Http/RequestHandlers/SitePreferencesPage.php:64
 #: resources/views/admin/control-panel.phtml:220
 msgid "Website preferences"
-msgstr ""
+msgstr "Vefsíðustillingar"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/AbstractCalendarDate.php:284
@@ -16347,7 +16334,7 @@ msgstr "Vestur-Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:786
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr ""
+msgstr "Þegar færslu er breytt er notandi og tímamerki skráð. Stundum er æskilegt að geyma núverandi „síðustu breytingu“ upplýsingar, til dæmis þegar gerðar eru smávægilegar leiðréttingar á gögnum einhvers annars. Þessi valkostur stjórnar því hvort þessi eiginleiki er sjálfgefið valinn."
 
 #: resources/views/admin/users-edit.phtml:108
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -16356,11 +16343,11 @@ msgstr "Þegar notandi skráir sig fyrir reikningi, þá er tölvupóstur sendur
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:771
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr ""
+msgstr "Þegar þú bætir við nýjum nákomnum ættingjum geturðu bætt heimildum í færslurnar (einstaklingur og fjölskylda) eða staðreyndum og atburðum (fæðingu, hjónabandi og dauða). Þessi valkostur stýrir því hvort færslur eða staðreyndir verða valdar sjálfgefið."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
-msgstr ""
+msgstr "Þegar einstaklingur á fleiri en einn maka ættir þú að raða fjölskyldunum í dagsetningaröð."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: resources/views/admin/trees-preferences.phtml:741
@@ -16383,7 +16370,7 @@ msgstr "Hvaða ættartré ætti að innifela i staðarkortinu"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:273
 msgid "Who can upload new media files"
-msgstr "Hver getur flutt inn nýjar miðilsskrár"
+msgstr "Hver getur flutt inn nýjar gagnaskrár"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
@@ -16392,7 +16379,7 @@ msgstr "Hver er beinlínutengdur"
 
 #: resources/views/admin/data-fix-page.phtml:82
 msgid "Why does this list include records that do not need to be updated?"
-msgstr ""
+msgstr "Hvers vegna inniheldur þessi listi færslur sem ekki þarf að uppfæra?"
 
 #: resources/views/lists/families-table.phtml:169
 msgid "Widow"
@@ -16431,7 +16418,7 @@ msgstr "Erfðaskrá"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:207
 msgid "Winter Quarters, Nebraska, United States"
-msgstr "Winter Quarters, Nebraska, United States"
+msgstr "Winter Quarters, Nebraska, Bandaríkin"
 
 #: app/Statistics/Google/ChartFamilyWithSources.php:88
 #: app/Statistics/Google/ChartIndividualWithSources.php:88
@@ -16455,7 +16442,7 @@ msgstr "Vitni"
 #: app/SurnameTradition.php:81 app/SurnameTradition.php:104
 #: app/SurnameTradition.php:111
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Konur taka eftirnafn eiginmanns síns."
 
 #: app/Http/RequestHandlers/MapDataAdd.php:75
 #: resources/views/modules/place-hierarchy/page.phtml:28
@@ -16503,11 +16490,11 @@ msgstr "Þú hefur ekki heimild til að senda skilaboð sem innihalda ytri kræk
 #: resources/views/modules/login_block/sign-out.phtml:15
 #, php-format
 msgid "You are signed in as %s."
-msgstr ""
+msgstr "Þú ert skráður inn sem %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:98
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Þú getur sótt um notandareikning með því að nota krækjuna hér að neðan."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
@@ -16517,7 +16504,7 @@ msgstr "Þú getur breytt útlitinu á webtrees með því að nota „þemu“.
 #: resources/views/admin/users-edit.phtml:176
 #: resources/views/edit-account-page.phtml:154
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
-msgstr ""
+msgstr "Þú getur valið hvort þú vilt birtast á listanum yfir notendur sem eru skráðir inn núna."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:26
@@ -16528,24 +16515,24 @@ msgstr "Þú getur hlaðið niður afriti af GEDCOM skilgreiningum frá %s."
 
 #: resources/views/modules/privacy-policy/page.phtml:61
 msgid "You can opt out of tracking by setting the “Do Not Track” header in your browser preferences."
-msgstr ""
+msgstr "Þú getur afþakkað rakningu með því að stilla hausinn „Ekki rekja“ í stillingum vafrans."
 
 #: resources/views/admin/trees-renumber.phtml:26
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr ""
+msgstr "Þú getur endurnúmerað færslur í ættartré, þannig að þessar innri tilvísunarnúmer séu ekki tvöfölduð í öðru ættartré."
 
 #: resources/views/admin/trees-renumber.phtml:35
 msgid "You can renumber this family tree."
-msgstr ""
+msgstr "Þú getur endurnúmerað þetta ættartré."
 
 #. I18N: Privacy restrictions are RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:172
 msgid "You can set the access for a specific record, fact, or event by adding a restriction to it. If a record, fact, or event does not have a restriction, the following default restrictions will be used."
-msgstr ""
+msgstr "Þú getur stillt aðganginn fyrir tiltekna færslu, staðreynd eða atburð með því að bæta takmörkun við hana. Ef færsla, staðreynd eða atburður er ekki með takmörkun, verða eftirfarandi sjálfgefnar takmarkanir notaðar."
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "Þú getur einfaldað breytingarformin með því að fela GEDCOM merki sem þú notar ekki."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -16554,7 +16541,7 @@ msgstr "Þú getur flýtt fyrir friðhelgis útreikningum með því að bæta v
 
 #: app/Http/RequestHandlers/LoginAction.php:113
 msgid "You cannot sign in because your browser does not accept cookies."
-msgstr ""
+msgstr "Þú getur ekki skráð þig inn því vafrinn þinn samþykkir ekki vefkökur."
 
 #: app/Exceptions/HttpAccessDeniedException.php:34
 #: app/Exceptions/HttpNotFoundException.php:34
@@ -16571,7 +16558,7 @@ msgstr "Þú hefur valið GEDCOM með öðru heiti. Er þetta rétt?"
 
 #: app/Http/RequestHandlers/Logout.php:51
 msgid "You have signed out."
-msgstr ""
+msgstr "Þú hefur skráð þig út."
 
 #: resources/views/modules/faq/config.phtml:27
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -16583,7 +16570,7 @@ msgstr "Þú verður að slá inn í alla reiti kerfisstjóra reikningsins."
 
 #: resources/views/admin/trees-merge.phtml:31
 msgid "You must renumber the records in one of the trees before you can merge them."
-msgstr ""
+msgstr "Þú verður að endurnúmera færslurnar í einu af ættartrjánum áður en þú getur sameinað þau."
 
 #: app/Module/ChartsBlockModule.php:186
 msgid "You must select an individual and a chart type in the block preferences"
@@ -16595,21 +16582,21 @@ msgstr "Þú verður að tilgreina einstaklingsfærslu áður en þú getur takm
 
 #: app/Http/RequestHandlers/LoginPage.php:90
 msgid "You need to be a family member to access this website."
-msgstr ""
+msgstr "Þú þarft að vera fjölskyldumeðlimur til að fá aðgang að þessari vefsíðu."
 
 #: app/Http/RequestHandlers/LoginPage.php:87
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Þú þarft að vera samþykktur notandi til að fá aðgang að þessari vefsíðu."
 
 #: resources/views/admin/control-panel.phtml:287
 #: resources/views/admin/trees.phtml:48
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Þú þarft að búa til ættartré."
 
 #: resources/views/emails/verify-notify-html.phtml:28
 #: resources/views/emails/verify-notify-text.phtml:21
 msgid "You need to review the account details."
-msgstr ""
+msgstr "Þú þarft að yfirfara upplýsingarnar í notandareikningnum."
 
 #: resources/views/setup/step-5-administrator.phtml:49
 msgid "You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password."
@@ -16622,7 +16609,7 @@ msgstr "Þú sendir eftirfarandi skilaboð til webtrees notanda:"
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:210
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr ""
+msgstr "Þú ættir að samþykkja eða hafna öllum breytingum sem bíða áður en þú uppfærir."
 
 #. I18N: e.g. ‘You should delete the “https://” from “https://www.example.com” and try again.’
 #: app/Http/RequestHandlers/ContactAction.php:124
@@ -16671,7 +16658,7 @@ msgstr "Nafnið þitt"
 
 #: app/Http/RequestHandlers/PasswordResetAction.php:76
 msgid "Your password has been updated."
-msgstr ""
+msgstr "Lykilorðið þitt hefur verið uppfært."
 
 #: app/Http/RequestHandlers/RegisterAction.php:146
 #, php-format
@@ -16685,7 +16672,7 @@ msgstr "Þinn notendareikningur er ekki með aðgerðina „samþykkja sjálfvir
 #: app/Services/ServerCheckService.php:197
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates. You should upgrade to a later version as soon as possible."
-msgstr ""
+msgstr "Vefþjóninn þinn notar PHP útgáfu %s sem fær ekki lengur öryggisuppfærslur. Þú ættir að uppfæra í nýrri útgáfu eins fljótt og auðið er."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16740,7 +16727,7 @@ msgstr "samþykkja"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:120
 msgid "accepted"
-msgstr ""
+msgstr "samþykkt"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-privacy.phtml:248
@@ -16755,7 +16742,7 @@ msgstr "bæta við"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:144
 msgid "add place"
-msgstr ""
+msgstr "bæta við stað"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:47
@@ -17002,7 +16989,7 @@ msgstr "Hætta við"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "skorað á"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53
@@ -17016,7 +17003,7 @@ msgstr "barn"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "borgari"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -17032,12 +17019,12 @@ msgstr "lok"
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
 msgid "clouds"
-msgstr ""
+msgstr "ský"
 
 #. I18N: Name of a theme.
 #: app/Module/ColorsTheme.php:53
 msgid "colors"
-msgstr ""
+msgstr "litir"
 
 #. I18N: An option in a list-box
 #: app/Module/TopSurnamesModule.php:245
@@ -17071,12 +17058,12 @@ msgstr "halda áfram"
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:58
 msgid "create"
-msgstr ""
+msgstr "stofna"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "menningarlegt"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17103,17 +17090,17 @@ msgstr "tengdadóttir"
 #: app/Services/RelationshipService.php:1064
 msgctxt "son’s wife’s father"
 msgid "daughter-in-law’s father"
-msgstr ""
+msgstr "faðir tengdadóttur"
 
 #: app/Services/RelationshipService.php:1066
 msgctxt "son’s wife’s mother"
 msgid "daughter-in-law’s mother"
-msgstr ""
+msgstr "móðir tengdadóttur"
 
 #: app/Services/RelationshipService.php:1068
 msgctxt "son’s wife’s parent"
 msgid "daughter-in-law’s parent"
-msgstr ""
+msgstr "foreldrar tengdadóttur"
 
 #: resources/views/admin/location-edit.phtml:53
 #: resources/views/admin/location-edit.phtml:64
@@ -17127,7 +17114,7 @@ msgstr "gráður"
 #: resources/views/admin/users-cleanup.phtml:78
 #: resources/views/admin/webtrees1-thumbnails-form.phtml:33
 msgid "delete"
-msgstr ""
+msgstr "eyða"
 
 #: resources/xml/reports/descendancy_report.xml:137
 #: resources/xml/reports/descendancy_report.xml:365
@@ -17144,13 +17131,13 @@ msgstr "dó"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "afsannað"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
 #: resources/views/edit/reorder-card-header.phtml:30
 msgid "down"
-msgstr ""
+msgstr "niður"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:110
@@ -17163,7 +17150,7 @@ msgstr "hlaða niður"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "d’Aboville númer"
 
 #: resources/views/admin/components.phtml:139
 #: resources/views/family-page-menu.phtml:25
@@ -17171,7 +17158,7 @@ msgstr ""
 #: resources/views/media-page-menu.phtml:26
 #: resources/views/record-page-menu.phtml:21
 msgid "edit"
-msgstr ""
+msgstr "breyta"
 
 #: app/Services/RelationshipService.php:2266
 msgid "eighth cousin"
@@ -17218,7 +17205,7 @@ msgstr "ellefti frændi"
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:55
 msgid "estate name"
-msgstr ""
+msgstr "búnafn"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:347
@@ -17241,7 +17228,7 @@ msgstr "fyrrverandi eiginkona"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:150
 msgid "export file"
-msgstr ""
+msgstr "flytja út skrá"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:143
 #: resources/xml/reports/fact_sources.xml:6
@@ -17269,15 +17256,15 @@ msgstr "tengdafaðir"
 
 #: app/Services/RelationshipService.php:366
 msgid "fiancé"
-msgstr ""
+msgstr "unnusta"
 
 #: app/Services/RelationshipService.php:413
 msgid "fiancé(e)"
-msgstr ""
+msgstr "unnusti(a)"
 
 #: app/Services/RelationshipService.php:390
 msgid "fiancée"
-msgstr ""
+msgstr "unnusta"
 
 #: app/Services/RelationshipService.php:2280
 msgid "fifteenth cousin"
@@ -17369,73 +17356,73 @@ msgstr "fyrstu frændsystkini"
 #: app/Services/RelationshipService.php:2216
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr "fyrsta frænka"
+msgstr "frænka"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2164
 msgctxt "MALE"
 msgid "first cousin"
-msgstr "fyrsti frændi"
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:772
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "fyrsti frændi"
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:774
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr "fyrsti frændi"
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:776
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr "fyrsti frændi"
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:816
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:818
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:822
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:852
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:854
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:856
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:902
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:904
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:908
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "frændi"
 
 #: app/Services/RelationshipService.php:1152
 msgctxt "father’s father’s brother’s child"
@@ -17644,12 +17631,12 @@ msgstr "kyn"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "landfræðileg"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:46
 msgid "go to new individual"
-msgstr ""
+msgstr "fara til nýs einstaklings"
 
 #: app/Services/RelationshipService.php:502
 msgctxt "child’s child"
@@ -19205,7 +19192,7 @@ msgstr "hálfsystir"
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php:244
 msgid "herself"
-msgstr ""
+msgstr "hún sjálf"
 
 #: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/tags.phtml:59 resources/views/admin/tags.phtml:73
@@ -19256,12 +19243,12 @@ msgstr "fela"
 #. I18N: reflexive pronoun
 #: app/Services/RelationshipService.php:241
 msgid "himself"
-msgstr ""
+msgstr "hann sjálfur"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "heimilishald"
 
 #: app/Services/RelationshipService.php:364
 msgid "husband"
@@ -19275,11 +19262,11 @@ msgstr "innflutningsnafn"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:163
 msgid "import file"
-msgstr ""
+msgstr "flytja inn skrá"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "Innsett athugasemd"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -19332,7 +19319,7 @@ msgstr "síðasta"
 #: app/Module/PedigreeChartModule.php:387
 #: app/Module/PedigreeChartModule.php:395
 msgid "left"
-msgstr ""
+msgstr "vinstri"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19342,26 +19329,26 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:274
 #: app/Module/YahrzeitModule.php:257
 msgid "list"
-msgstr "lista upp"
+msgstr "lista"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:203
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "staðsetningar uppfærðar: %s, staðsetningum bætt við: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:59
 msgid "maiden name"
-msgstr "jómfrúarnafn"
+msgstr "ættarnafn"
 
 #: resources/views/admin/trees-privacy.phtml:141
 msgid "managers"
-msgstr ""
+msgstr "stjórnendur"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:138
 msgid "markdown"
-msgstr ""
+msgstr "niðursetning"
 
 #: resources/xml/reports/descendancy_report.xml:245
 msgctxt "FEMALE"
@@ -19396,7 +19383,7 @@ msgstr "móðurafi og -amma"
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:88
 msgid "matrilineal"
-msgstr ""
+msgstr "kvenleggur"
 
 #: resources/views/modules/recent_changes/config.phtml:25
 #: resources/views/modules/upcoming_events/config.phtml:25
@@ -19413,12 +19400,12 @@ msgstr[1] "hámark %s dagar"
 #: resources/views/admin/trees-privacy.phtml:140
 #: resources/views/admin/trees-privacy.phtml:160
 msgid "members"
-msgstr ""
+msgstr "meðlimir"
 
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr ""
+msgstr "lágmarks"
 
 #: app/Services/RelationshipService.php:346
 msgid "mother"
@@ -19442,52 +19429,52 @@ msgstr "tengdamóðir"
 #: app/Services/RelationshipService.php:636
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr "móðir/tengdafaðir"
+msgstr "tengdafaðir/-móðir"
 
 #: app/Services/RelationshipService.php:498
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr "frændi"
+msgstr "bróðursonur"
 
 #: app/Services/RelationshipService.php:850
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "sonur mágs"
 
 #: app/Services/RelationshipService.php:846
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "sonur mágs/mágkonu"
 
 #: app/Services/RelationshipService.php:848
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "sonur mágkonu"
 
 #: app/Services/RelationshipService.php:602
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr "frændi"
+msgstr "systkinasonur"
 
 #: app/Services/RelationshipService.php:612
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr "frændi"
+msgstr "systursonur"
 
 #: app/Services/RelationshipService.php:1090
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "sonur mágs"
 
 #: app/Services/RelationshipService.php:1086
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "sonur mágs/mágkonu"
 
 #: app/Services/RelationshipService.php:1088
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "sonur mágkonu"
 
 #: app/Services/RelationshipService.php:688
 msgctxt "brother’s daughter’s husband"
@@ -19762,7 +19749,7 @@ msgstr ""
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:124
 msgid "pending"
-msgstr ""
+msgstr "í bið"
 
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
@@ -19771,7 +19758,7 @@ msgstr "prósenta"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "pólitísk"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page-images.phtml:47
@@ -19793,17 +19780,17 @@ msgstr "fyrri"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52
 msgid "primary evidence"
-msgstr ""
+msgstr "aðal sönnunargögn"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "sannað"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50
 msgid "questionable evidence"
-msgstr ""
+msgstr "vafasamar sannanir"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:144
 #: resources/xml/reports/fact_sources.xml:6
@@ -19831,12 +19818,12 @@ msgstr "hafna"
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:122
 msgid "rejected"
-msgstr ""
+msgstr "hafnað"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "trúarleg"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63
@@ -19846,7 +19833,7 @@ msgstr "trúarnafn"
 #. I18N: A button label.
 #: resources/views/search-replace-page.phtml:53
 msgid "replace"
-msgstr ""
+msgstr "skipta út"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:106
@@ -19860,7 +19847,7 @@ msgstr "endursetja"
 #: app/Module/PedigreeChartModule.php:388
 #: app/Module/PedigreeChartModule.php:396
 msgid "right"
-msgstr ""
+msgstr "hægri"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:40
@@ -20678,7 +20665,7 @@ msgstr "hlaða upp"
 #: resources/views/report-setup-page.phtml:87
 #: resources/views/report-setup-page.phtml:92
 msgid "view"
-msgstr "sýn"
+msgstr "sýna"
 
 #: resources/views/admin/trees-privacy.phtml:36
 #: resources/views/admin/trees-privacy.phtml:55
