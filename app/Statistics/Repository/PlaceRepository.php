@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
-use stdClass;
 
 use function array_key_exists;
 use function arsort;
@@ -114,7 +113,7 @@ class PlaceRepository implements PlaceRepositoryInterface
      * @param int    $parent
      * @param bool   $country
      *
-     * @return array<int|stdClass>
+     * @return array<int|object>
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {
@@ -164,7 +163,7 @@ class PlaceRepository implements PlaceRepositoryInterface
 
         return $query
             ->get()
-            ->map(static function (stdClass $entry) {
+            ->map(static function (object $entry) {
                 // Map total value to integer
                 $entry->tot = (int) $entry->tot;
 

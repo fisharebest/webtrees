@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
 
 use function app;
 use function count;
@@ -72,7 +71,7 @@ class ChartBirth
     /**
      * Returns the related database records.
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     private function queryRecords(): Collection
     {
@@ -86,7 +85,7 @@ class ChartBirth
             ->groupBy(['century'])
             ->orderBy('century')
             ->get()
-            ->map(static function (stdClass $row): stdClass {
+            ->map(static function (object $row): object {
                 return (object) [
                     'century' => (int) $row->century,
                     'total'   => (float) $row->total,

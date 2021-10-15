@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 use function app;
 use function count;
@@ -67,7 +66,7 @@ class ChartFamilyLargest
      *
      * @param int $total
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     private function queryRecords(int $total): array
     {

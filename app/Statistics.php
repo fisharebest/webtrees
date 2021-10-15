@@ -61,7 +61,6 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionNamedType;
-use stdClass;
 
 use function call_user_func;
 use function count;
@@ -846,7 +845,7 @@ class Statistics implements
      * @param int    $parent
      * @param bool   $country
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
     {

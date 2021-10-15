@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * Interface ModuleDataFixInterface - Classes and libraries for module system
@@ -44,7 +43,7 @@ interface ModuleDataFixInterface extends ModuleInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     public function recordsToFix(Tree $tree, array $params): Collection;
 

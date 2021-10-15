@@ -26,7 +26,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * A chart showing the marriage ages by century.
@@ -57,7 +56,7 @@ class ChartMarriageAge
     /**
      * Returns the related database records.
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     private function queryRecords(): Collection
     {
@@ -112,7 +111,7 @@ class ChartMarriageAge
         return $male->unionAll($female)
             ->orderBy('century')
             ->get()
-            ->map(static function (stdClass $row): stdClass {
+            ->map(static function (object $row): object {
                 return (object) [
                     'age'     => (float) $row->age,
                     'century' => (int) $row->century,

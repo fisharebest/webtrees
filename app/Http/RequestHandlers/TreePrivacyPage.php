@@ -31,7 +31,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function array_merge;
 use function assert;
@@ -107,7 +106,7 @@ class TreePrivacyPage implements RequestHandlerInterface
         return DB::table('default_resn')
             ->where('gedcom_id', '=', $tree->id())
             ->get()
-            ->map(static function (stdClass $row) use ($tree): stdClass {
+            ->map(static function (object $row) use ($tree): object {
                 $row->record = null;
                 $row->label  = '';
 
@@ -132,7 +131,7 @@ class TreePrivacyPage implements RequestHandlerInterface
 
                 return $row;
             })
-            ->sort(static function (stdClass $x, stdClass $y): int {
+            ->sort(static function (object $x, object $y): int {
                 return I18N::comparator()($x->tag_label, $y->tag_label);
             })
             ->all();

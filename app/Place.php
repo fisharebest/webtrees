@@ -26,8 +26,12 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
-use stdClass;
 
+use function app;
+use function e;
+use function is_object;
+use function preg_split;
+use function strip_tags;
 use function trim;
 
 use const PREG_SPLIT_NO_EMPTY;
@@ -82,7 +86,7 @@ class Place
                 ->where('p_id', '=', $id)
                 ->first();
 
-            if ($row instanceof stdClass) {
+            if (is_object($row)) {
                 $id = (int) $row->p_parent_id;
                 $parts->add($row->p_place);
             } else {

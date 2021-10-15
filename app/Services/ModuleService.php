@@ -272,10 +272,10 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
 use Throwable;
 
 use function app;
+use function is_object;
 use function str_contains;
 use function strlen;
 
@@ -631,7 +631,7 @@ class ModuleService
             // We can override these from database settings.
             $module_info = DB::table('module')
                 ->get()
-                ->mapWithKeys(static function (stdClass $row): array {
+                ->mapWithKeys(static function (object $row): array {
                     return [$row->module_name => $row];
                 });
 
@@ -640,7 +640,7 @@ class ModuleService
                 ->map(static function (ModuleInterface $module) use ($module_info): ModuleInterface {
                     $info = $module_info->get($module->name());
 
-                    if ($info instanceof stdClass) {
+                    if (is_object($info)) {
                         $module->setEnabled($info->status === 'enabled');
 
                         if ($module instanceof ModuleFooterInterface && $info->footer_order !== null) {

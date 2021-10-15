@@ -39,7 +39,6 @@ use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 use Throwable;
 
 use function assert;
@@ -105,7 +104,7 @@ class ManageMediaData implements RequestHandlerInterface
         ];
 
         // Convert a row from the database into a row for datatables
-        $callback = function (stdClass $row): array {
+        $callback = function (object $row): array {
             $tree  = $this->tree_service->find((int) $row->m_file);
             $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
             assert($media instanceof Media);

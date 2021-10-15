@@ -29,7 +29,6 @@ use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function array_key_exists;
 use function assert;
@@ -93,7 +92,7 @@ class CheckTree implements RequestHandlerInterface
             ->unionAll($q5)
             ->unionAll($q6)
             ->get()
-            ->map(static function (stdClass $row): stdClass {
+            ->map(static function (object $row): object {
                 // Extract type for pending record
                 if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match)) {
                     $row->type = $match[1];

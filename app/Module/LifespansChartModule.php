@@ -35,7 +35,6 @@ use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function app;
 use function array_filter;
@@ -268,7 +267,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         $lifespans = $this->layoutIndividuals($individuals);
 
-        $callback = static fn (int $carry, stdClass $item): int => max($carry, $item->row);
+        $callback = static fn (int $carry, object $item): int => max($carry, $item->row);
         $max_rows = array_reduce($lifespans, $callback, 0);
 
         $count    = count($xrefs);
@@ -428,7 +427,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * @param array<Individual> $individuals
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     private function layoutIndividuals(array $individuals): array
     {

@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
 
 use function assert;
 use function redirect;
@@ -118,7 +117,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     /**
      * @param Individual $individual
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     private function getStoriesForIndividual(Individual $individual): array
     {
@@ -420,7 +419,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             ->where('module_name', '=', $this->name())
             ->where('gedcom_id', '=', $tree->id())
             ->get()
-            ->map(function (stdClass $story) use ($tree): stdClass {
+            ->map(function (object $story) use ($tree): object {
                 $block_id = (int) $story->block_id;
                 $xref     = (string) $story->xref;
 
@@ -429,10 +428,10 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 $story->languages  = $this->getBlockSetting($block_id, 'languages');
 
                 return $story;
-            })->filter(static function (stdClass $story): bool {
+            })->filter(static function (object $story): bool {
                 // Filter non-existent and private individuals.
                 return $story->individual instanceof Individual && $story->individual->canShow();
-            })->filter(static function (stdClass $story): bool {
+            })->filter(static function (object $story): bool {
                 // Filter foreign languages.
                 return $story->languages === '' || in_array(I18N::languageTag(), explode(',', $story->languages), true);
             });

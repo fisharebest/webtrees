@@ -34,7 +34,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
 
 use function extract;
 use function view;
@@ -126,14 +125,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
+                $rows  = $rows->sort(static function (object $x, object $y): int {
                     return GedcomRecord::nameComparator()($x->record, $y->record);
                 });
                 $order = [[1, 'asc']];
                 break;
 
             case 'date_asc':
-                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
+                $rows  = $rows->sort(static function (object $x, object $y): int {
                     return $x->time <=> $y->time;
                 });
                 $order = [[2, 'asc']];
@@ -141,7 +140,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
             default:
             case 'date_desc':
-                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
+                $rows  = $rows->sort(static function (object $x, object $y): int {
                     return $y->time <=> $x->time;
                 });
                 $order = [[2, 'desc']];
@@ -295,7 +294,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<stdClass> List of records with changes
+     * @return Collection<object> List of records with changes
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
@@ -313,14 +312,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         return $query
             ->get()
-            ->map(function (stdClass $row) use ($tree): stdClass {
+            ->map(function (object $row) use ($tree): object {
                 return (object) [
                     'record' => Registry::gedcomRecordFactory()->make($row->xref, $tree, $row->new_gedcom),
                     'time'   => Carbon::create($row->change_time)->local(),
                     'user'   => $this->user_service->find((int) $row->user_id),
                 ];
             })
-            ->filter(static function (stdClass $row): bool {
+            ->filter(static function (object $row): bool {
                 return $row->record instanceof GedcomRecord && $row->record->canShow();
             });
     }
@@ -331,7 +330,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<stdClass> List of records with changes
+     * @return Collection<object> List of records with changes
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {
@@ -366,7 +365,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->filter(Family::accessFilter());
 
         return $individuals->merge($families)
-            ->map(function (GedcomRecord $record): stdClass {
+            ->map(function (GedcomRecord $record): object {
                 $user = $this->user_service->findByUserName($record->lastChangeUser());
 
                 return (object) [

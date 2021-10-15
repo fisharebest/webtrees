@@ -35,7 +35,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
-use stdClass;
 
 use function arsort;
 use function asort;
@@ -134,7 +133,7 @@ class FamilyRepository
      *
      * @param int $total
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     private function topTenGrandFamilyQuery(int $total): array
     {
@@ -292,7 +291,7 @@ class FamilyRepository
      *
      * @param int $total The total number of records to query
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     private function ageBetweenSiblingsQuery(int $total): array
     {
@@ -547,7 +546,7 @@ class FamilyRepository
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
@@ -1383,7 +1382,7 @@ class FamilyRepository
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
@@ -1415,7 +1414,7 @@ class FamilyRepository
 
         return $query
             ->get()
-            ->map(static function (stdClass $row): stdClass {
+            ->map(static function (object $row): object {
                 $row->age = (int) $row->age;
 
                 return $row;

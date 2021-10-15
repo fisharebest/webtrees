@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * Trait ModuleDataFixTrait - default implementation of ModuleDataFixTrait
@@ -58,7 +57,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     public function recordsToFix(Tree $tree, array $params): Collection
     {
@@ -107,7 +106,7 @@ trait ModuleDataFixTrait
 
         return $records
             ->unique()
-            ->sort(static function (stdClass $x, stdClass $y) {
+            ->sort(static function (object $x, object $y) {
                 return $x->xref <=> $y->xref;
             });
     }
@@ -409,7 +408,7 @@ trait ModuleDataFixTrait
      * @param Tree               $tree
      * @param string             $type
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {
@@ -425,7 +424,7 @@ trait ModuleDataFixTrait
 
         return $records
             ->concat($pending)
-            ->map(static function (string $xref) use ($type): stdClass {
+            ->map(static function (string $xref) use ($type): object {
                 return (object) ['xref' => $xref, 'type' => $type];
             });
     }

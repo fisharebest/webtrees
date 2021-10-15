@@ -30,7 +30,6 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function e;
 use function explode;
@@ -78,7 +77,7 @@ class PendingChangesLogData implements RequestHandlerInterface
 
         $query = $this->pending_changes_service->changesQuery($params);
 
-        $callback = function (stdClass $row) use ($tree): array {
+        $callback = function (object $row) use ($tree): array {
             $old_lines = $row->old_gedcom === '' ? [] : explode("\n", $row->old_gedcom);
             $new_lines = $row->new_gedcom === '' ? [] : explode("\n", $row->new_gedcom);
 

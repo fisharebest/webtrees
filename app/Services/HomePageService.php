@@ -28,10 +28,10 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
 
 use function assert;
 use function is_numeric;
+use function is_object;
 
 /**
  * Logic and content for the home-page blocks.
@@ -70,7 +70,7 @@ class HomePageService
             ->whereNull('user_id')
             ->first();
 
-        if ($block instanceof stdClass) {
+        if (is_object($block)) {
             $module = $this->module_service->findByName($block->module_name);
 
             if ($module instanceof ModuleBlockInterface) {
@@ -99,7 +99,7 @@ class HomePageService
             ->whereNull('gedcom_id')
             ->first();
 
-        if ($block instanceof stdClass) {
+        if (is_object($block)) {
             $module = $this->module_service->findByName($block->module_name);
 
             if ($module instanceof ModuleBlockInterface) {

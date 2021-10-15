@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function assert;
 use function e;
@@ -81,7 +80,7 @@ class DataFixData implements RequestHandlerInterface
         $params  = $request->getQueryParams();
         $records = $module->recordsToFix($tree, $params);
 
-        $callback = function (stdClass $row) use ($module, $params, $tree): array {
+        $callback = function (object $row) use ($module, $params, $tree): array {
             $record = $this->data_fix_service->getRecordByType($row->xref, $tree, $row->type);
             assert($record instanceof GedcomRecord);
 

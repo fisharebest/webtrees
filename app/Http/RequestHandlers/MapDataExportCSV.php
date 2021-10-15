@@ -26,7 +26,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use RuntimeException;
-use stdClass;
 
 use function addcslashes;
 use function array_map;
@@ -128,7 +127,7 @@ class MapDataExportCSV implements RequestHandlerInterface
             $max_level = max($max_level, count($place->hierarchy));
         }
 
-        $places = array_map(function (stdClass $place) use ($max_level): array {
+        $places = array_map(function (object $place) use ($max_level): array {
             return array_merge(
                 [
                     count($place->hierarchy) - 1,

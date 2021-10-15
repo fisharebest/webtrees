@@ -30,7 +30,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use stdClass;
 
 use function assert;
 use function redirect;
@@ -396,7 +395,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
-            ->filter(static function (stdClass $faq): bool {
+            ->filter(static function (object $faq): bool {
                 return $faq->languages === '' || in_array(I18N::languageTag(), explode(',', $faq->languages), true);
             });
 
@@ -410,7 +409,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     private function faqsForTree(Tree $tree): Collection
     {
@@ -451,7 +450,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
             })
             ->select(['setting_value AS languages'])
             ->get()
-            ->filter(static function (stdClass $faq) use ($language): bool {
+            ->filter(static function (object $faq) use ($language): bool {
                 return $faq->languages === '' || in_array($language, explode(',', $faq->languages), true);
             })
             ->isNotEmpty();

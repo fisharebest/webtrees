@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
-use stdClass;
 
 use function app;
 use function array_key_exists;
@@ -231,7 +230,7 @@ class ChartDistribution
      *
      * @param string $surname
      *
-     * @return array<stdClass>
+     * @return array<object>
      */
     private function queryRecords(string $surname): array
     {

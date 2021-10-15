@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * Class AbstractModule - common functions for blocks
@@ -231,7 +230,7 @@ abstract class AbstractModule implements ModuleInterface
                     ->get();
             });
 
-        $row = $access_levels->first(function (stdClass $row) use ($interface): bool {
+        $row = $access_levels->first(function (object $row) use ($interface): bool {
             return $row->interface === $interface && $row->module_name === $this->name();
         });
 

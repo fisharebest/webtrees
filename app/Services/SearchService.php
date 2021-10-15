@@ -43,7 +43,6 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use stdClass;
 
 use function addcslashes;
 use function array_filter;
@@ -473,7 +472,7 @@ class SearchService
             $query->where('p' . $level . '.p_place', 'LIKE', '%' . addcslashes($string, '\\%_') . '%');
         }
 
-        $row_mapper = static function (stdClass $row) use ($tree): Place {
+        $row_mapper = static function (object $row) use ($tree): Place {
             $place = implode(', ', array_filter((array) $row));
 
             return new Place($place, $tree);
@@ -1173,7 +1172,7 @@ class SearchService
      */
     private function familyRowMapper(): Closure
     {
-        return function (stdClass $row): Family {
+        return function (object $row): Family {
             $tree = $this->tree_service->find((int) $row->f_file);
 
             return Registry::familyFactory()->mapper($tree)($row);
@@ -1187,7 +1186,7 @@ class SearchService
      */
     private function individualRowMapper(): Closure
     {
-        return function (stdClass $row): Individual {
+        return function (object $row): Individual {
             $tree = $this->tree_service->find((int) $row->i_file);
 
             return Registry::individualFactory()->mapper($tree)($row);
@@ -1201,7 +1200,7 @@ class SearchService
      */
     private function locationRowMapper(): Closure
     {
-        return function (stdClass $row): Location {
+        return function (object $row): Location {
             $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::locationFactory()->mapper($tree)($row);
@@ -1215,7 +1214,7 @@ class SearchService
      */
     private function mediaRowMapper(): Closure
     {
-        return function (stdClass $row): Media {
+        return function (object $row): Media {
             $tree = $this->tree_service->find((int) $row->m_file);
 
             return Registry::mediaFactory()->mapper($tree)($row);
@@ -1229,7 +1228,7 @@ class SearchService
      */
     private function noteRowMapper(): Closure
     {
-        return function (stdClass $row): Note {
+        return function (object $row): Note {
             $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::noteFactory()->mapper($tree)($row);
@@ -1243,7 +1242,7 @@ class SearchService
      */
     private function repositoryRowMapper(): Closure
     {
-        return function (stdClass $row): Repository {
+        return function (object $row): Repository {
             $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::repositoryFactory()->mapper($tree)($row);
@@ -1257,7 +1256,7 @@ class SearchService
      */
     private function sourceRowMapper(): Closure
     {
-        return function (stdClass $row): Source {
+        return function (object $row): Source {
             $tree = $this->tree_service->find((int) $row->s_file);
 
             return Registry::sourceFactory()->mapper($tree)($row);
@@ -1271,7 +1270,7 @@ class SearchService
      */
     private function submissionRowMapper(): Closure
     {
-        return function (stdClass $row): Submission {
+        return function (object $row): Submission {
             $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::submissionFactory()->mapper($tree)($row);
@@ -1285,7 +1284,7 @@ class SearchService
      */
     private function submitterRowMapper(): Closure
     {
-        return function (stdClass $row): Submitter {
+        return function (object $row): Submitter {
             $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::submitterFactory()->mapper($tree)($row);

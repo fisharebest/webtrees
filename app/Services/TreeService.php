@@ -33,7 +33,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
-use stdClass;
 
 use function assert;
 use function strlen;
@@ -118,7 +117,7 @@ class TreeService
 
             return $query
                 ->get()
-                ->mapWithKeys(static function (stdClass $row): array {
+                ->mapWithKeys(static function (object $row): array {
                     return [$row->tree_name => Tree::rowMapper()($row)];
                 });
         });

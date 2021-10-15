@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function e;
 
@@ -59,7 +58,7 @@ class SiteLogsData implements RequestHandlerInterface
     {
         $query = $this->site_logs_service->logsQuery($request->getQueryParams());
 
-        return $this->datatables_service->handleQuery($request, $query, [], [], static function (stdClass $row): array {
+        return $this->datatables_service->handleQuery($request, $query, [], [], static function (object $row): array {
             return [
                 $row->log_id,
                 Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),

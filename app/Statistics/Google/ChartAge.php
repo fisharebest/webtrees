@@ -26,7 +26,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * A chart showing the average age of individuals related to the death century.
@@ -57,7 +56,7 @@ class ChartAge
     /**
      * Returns the related database records.
      *
-     * @return Collection<stdClass>
+     * @return Collection<object>
      */
     private function queryRecords(): Collection
     {
@@ -90,7 +89,7 @@ class ChartAge
             ->orderBy('century')
             ->orderBy('sex')
             ->get()
-            ->map(static function (stdClass $row): stdClass {
+            ->map(static function (object $row): object {
                 return (object) [
                     'age'     => (float) $row->age,
                     'century' => (int) $row->century,

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ServerRequestInterface;
 use SessionHandlerInterface;
-use stdClass;
 
 /**
  * Session handling - stores sessions in the database.
@@ -31,7 +30,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
 {
     private ServerRequestInterface $request;
 
-    private ?stdClass $row;
+    private ?object $row;
 
     /**
      * SessionDatabaseHandler constructor.

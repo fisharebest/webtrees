@@ -27,7 +27,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
-use stdClass;
 
 use function app;
 use function array_key_exists;
@@ -165,7 +164,7 @@ class Tree
      */
     public static function rowMapper(): Closure
     {
-        return static function (stdClass $row): Tree {
+        return static function (object $row): Tree {
             return new Tree((int) $row->tree_id, $row->tree_name, $row->tree_title);
         };
     }

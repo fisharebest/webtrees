@@ -43,7 +43,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Str;
 use League\Flysystem\FilesystemOperator;
 use LogicException;
-use stdClass;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use XMLParser;
@@ -2421,8 +2420,7 @@ class ReportParserGenerate extends ReportParserBase
                     foreach ($this->list as $key => $value) {
                         $this->generation = $value->generation;
                         if ($this->generation == $genCounter) {
-                            $newarray[$key]             = new stdClass();
-                            $newarray[$key]->generation = $this->generation;
+                            $newarray[$key] = (object) ['generation' => $this->generation];
                         }
                     }
                     $genCounter++;

@@ -40,7 +40,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
-use stdClass;
 
 use function addcslashes;
 use function preg_match;
@@ -71,7 +70,7 @@ class PendingChangesService
      * @param Tree $tree
      * @param int  $n
      *
-     * @return array<array<stdClass>>
+     * @return array<array<object>>
      */
     public function pendingChanges(Tree $tree, int $n): array
     {

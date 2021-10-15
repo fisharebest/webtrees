@@ -31,7 +31,6 @@ use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use stdClass;
 
 use function e;
 
@@ -124,7 +123,7 @@ class UserListData implements RequestHandlerInterface
         $search_columns = ['user_name', 'real_name', 'email'];
         $sort_columns   = [];
 
-        $callback = function (stdClass $row) use ($languages, $user): array {
+        $callback = function (object $row) use ($languages, $user): array {
             $row_user = $this->user_service->find((int) $row->user_id);
             $datum = [
                 view('admin/users-table-options', ['row' => $row, 'self' => $user, 'user' => $row_user]),

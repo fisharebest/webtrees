@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Illuminate\Database\Capsule\Manager as DB;
-use stdClass;
 
 /**
  * Provide an interface to the wt_user table.
@@ -254,7 +253,7 @@ class User implements UserInterface
      */
     public static function rowMapper(): Closure
     {
-        return static function (stdClass $row): User {
+        return static function (object $row): User {
             return new self((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
         };
     }
