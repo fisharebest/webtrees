@@ -1215,11 +1215,6 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Cannot access property \\$generation on Fisharebest\\\\Webtrees\\\\Individual\\|string\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
-
-		-
 			message: "#^Cannot call method addElement\\(\\) on Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\|null\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -1641,11 +1636,6 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$session_data\\.$#"
-			count: 1
-			path: app/SessionDatabaseHandler.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\SessionDatabaseHandler\\:\\:gc\\(\\) should return int\\|false but returns true\\.$#"
 			count: 1
 			path: app/SessionDatabaseHandler.php
 
