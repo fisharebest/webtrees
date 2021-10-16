@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-16 13:57+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-16 21:22+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -639,7 +639,7 @@ msgstr "Veffang"
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:116
 msgid "A chart displaying relationships between two individuals."
-msgstr "Graf sem sýnir tengsl milli tveggja einstaklinga."
+msgstr "Graf sem birtir tengsl milli tveggja einstaklinga."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:103
@@ -999,7 +999,7 @@ msgstr "Flipi sem sýnir uppruna sem eru tengdir við einstakling."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:109
 msgid "A timeline displaying individual events."
-msgstr "Tímalína sem sýnir einstaka atburði."
+msgstr "Tímalína sem birtir einstaka atburði."
 
 #: resources/views/admin/users-edit.phtml:117
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
@@ -1752,7 +1752,7 @@ msgstr "Alsír"
 
 #: app/Factories/ElementFactory.php:455
 msgid "Alias"
-msgstr "Samheiti"
+msgstr "Dulnefni"
 
 #: resources/views/lists/individuals-table.phtml:191
 msgid "Alive"
@@ -5370,7 +5370,7 @@ msgstr "Forfeður og fjölskyldur þeirra í beinan legg"
 #: resources/views/lists/datatables-attributes.phtml:29
 #, php-format
 msgid "Display %s"
-msgstr "Sýna %s"
+msgstr "Birta %s"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:62
@@ -13464,7 +13464,7 @@ msgstr "Sum þessara GEDCOM merkja eru sjaldan eða aldrei notuð."
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
 msgid "Some pages can display the number of times that they have been visited."
-msgstr "Sumar síður geta sýnt hversu oft þær hafa verið heimsóttar."
+msgstr "Sumar síður geta birt hversu oft þær hafa verið heimsóttar."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: resources/views/admin/trees-preferences.phtml:545
@@ -14825,7 +14825,7 @@ msgstr[1] "Þetta ættartré hefur %s færslur sem notar sama “XREF” og anna
 
 #: app/Module/SlideShowModule.php:164
 msgid "This family tree has no images to display."
-msgstr "Þetta ættartré hefur engar myndir til að birta."
+msgstr "Þetta ættartré hefur engar myndir að birta."
 
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
@@ -14978,7 +14978,7 @@ msgstr "Þessi gagnaskrá er ekki til eða þú hefur ekki réttindi til að sko
 
 #: resources/views/media-page-pending.phtml:18
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Þessum fljölmiðlahlut hefur verið eytt. Eyðingin þarf að endurskoðast af stjórnanda."
+msgstr "Þessari gagnaskrá hefur verið eytt. Eyðingin þarf að endurskoðast af stjórnanda."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/media-page-pending.phtml:16
@@ -15026,7 +15026,7 @@ msgstr "Þessari glósu hefur verið eytt. Eyðingin þarf að endurskoðast af 
 #: resources/views/note-page-pending.phtml:17
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Þessari glósu hefur verið eytt. Þú ættir að endurskoða eyðinguna og síðan %1$s eða %2$s það."
+msgstr "Þessari glósu hefur verið eytt. Þú ættir að yfirfara eyðinguna og síðan %1$s eða %2$s henni."
 
 #: resources/views/note-page-pending.phtml:25
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
@@ -15036,7 +15036,7 @@ msgstr "Þessari glósu hefur verið breytt. Breytingarnar þurfa að endurskoð
 #: resources/views/note-page-pending.phtml:23
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Þessari glósu hefur verið eytt. Þú ættir að endurskoða breytingarnar og síðan %1$s eða %2$s þær."
+msgstr "Þessari glósu hefur verið eytt. Þú ættir að yfirfara breytingarnar og síðan %1$s eða %2$s þær."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:561
@@ -20665,7 +20665,7 @@ msgstr "hlaða upp"
 #: resources/views/report-setup-page.phtml:87
 #: resources/views/report-setup-page.phtml:92
 msgid "view"
-msgstr "sýna"
+msgstr "skoða"
 
 #: resources/views/admin/trees-privacy.phtml:36
 #: resources/views/admin/trees-privacy.phtml:55
