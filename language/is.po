@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-10-16 13:56+0000\n"
+"PO-Revision-Date: 2021-10-16 21:22+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -731,7 +731,7 @@ msgstr ""
 #. I18N: Description of the “RelationshipsChart” module
 #: app/Module/RelationshipsChartModule.php:56
 msgid "A chart displaying relationships between two individuals."
-msgstr "Graf sem sýnir tengsl milli tveggja einstaklinga."
+msgstr "Graf sem birtir tengsl milli tveggja einstaklinga."
 
 #. I18N: Description of the “FamilyBookChart” module
 #: app/Module/FamilyBookChartModule.php:42
@@ -1054,7 +1054,7 @@ msgstr "Flipi sem sýnir uppruna sem eru tengdir við einstakling."
 #. I18N: Description of the “TimelineChart” module
 #: app/Module/TimelineChartModule.php:42
 msgid "A timeline displaying individual events."
-msgstr "Tímalína sem sýnir einstaka atburði."
+msgstr "Tímalína sem birtir einstaka atburði."
 
 #: admin_users.php:397
 msgid "A user will not be able to sign in until both “email verified” and “approved by administrator” are selected."
@@ -1806,7 +1806,7 @@ msgstr "Alsír"
 #. I18N: gedcom tag ALIA
 #: app/GedcomTag.php:150
 msgid "Alias"
-msgstr "Samheiti"
+msgstr "Dulnefni"
 
 #: app/Functions/FunctionsPrintLists.php:209
 msgid "Alive"
@@ -5261,7 +5261,7 @@ msgstr ""
 #: app/I18N.php:183
 #, php-format
 msgid "Display %s"
-msgstr "Sýna %s"
+msgstr "Birta %s"
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:71
@@ -13071,7 +13071,7 @@ msgstr ""
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1606
 msgid "Some pages can display the number of times that they have been visited."
-msgstr "Sumar síður geta sýnt hversu oft þær hafa verið heimsóttar."
+msgstr "Sumar síður geta birt hversu oft þær hafa verið heimsóttar."
 
 #: app/Module/GoogleMapsModule.php:410
 msgid "Some place names may be written with optional prefixes and suffixes. For example “Orange” versus “Orange County”. If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded. Multiple values should be separated with semicolons. For example “County;County of” or “Township;Twp;Twp.”."
@@ -14356,7 +14356,7 @@ msgstr[1] ""
 
 #: app/Module/SlideShowModule.php:192
 msgid "This family tree has no images to display."
-msgstr "Þetta ættartré hefur engar myndir til að birta."
+msgstr "Þetta ættartré hefur engar myndir að birta."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:160
@@ -14572,7 +14572,9 @@ msgstr ""
 
 #: mediaviewer.php:45
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Þessum fljölmiðlahlut hefur verið eytt. Eyðingin þarf að endurskoðast af stjórnanda."
+msgstr ""
+"Þessari gagnaskrá hefur verið eytt. Eyðingin þarf að endurskoðast af "
+"stjórnanda."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: mediaviewer.php:40
@@ -14632,7 +14634,9 @@ msgstr "Þessari glósu hefur verið eytt. Eyðingin þarf að endurskoðast af 
 #: note.php:41
 #, php-format
 msgid "This note has been deleted. You should review the deletion and then %1$s or %2$s it."
-msgstr "Þessari glósu hefur verið eytt. Þú ættir að endurskoða eyðinguna og síðan %1$s eða %2$s það."
+msgstr ""
+"Þessari glósu hefur verið eytt. Þú ættir að yfirfara eyðinguna og síðan %1$s "
+"eða %2$s henni."
 
 #: note.php:56
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
@@ -14642,7 +14646,9 @@ msgstr "Þessari glósu hefur verið breytt. Breytingarnar þurfa að endurskoð
 #: note.php:51
 #, php-format
 msgid "This note has been edited. You should review the changes and then %1$s or %2$s them."
-msgstr "Þessari glósu hefur verið eytt. Þú ættir að endurskoða breytingarnar og síðan %1$s eða %2$s þær."
+msgstr ""
+"Þessari glósu hefur verið eytt. Þú ættir að yfirfara breytingarnar og síðan "
+"%1$s eða %2$s þær."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1480
@@ -20293,7 +20299,7 @@ msgstr "hlaða upp"
 #: compact.php:54 descendancy.php:71 familybook.php:61 fanchart.php:95
 #: hourglass.php:62 lifespan.php:110 pedigree.php:169 relationship.php:87
 msgid "view"
-msgstr "sýna"
+msgstr "skoða"
 
 #: admin_trees_config.php:363 admin_trees_config.php:387
 #: admin_trees_config.php:427 admin_trees_config.php:467
