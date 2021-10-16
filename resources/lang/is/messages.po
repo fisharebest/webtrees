@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-10-16 21:22+0000\n"
+"PO-Revision-Date: 2021-10-17 09:43+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees-20/is/>\n"
 "Language: is\n"
@@ -7836,7 +7836,7 @@ msgstr "Í webtrees útgáfu 2 eru sérsniðnar smámyndir geymdar sem önnur ga
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr "Hafa tökuheiti með"
+msgstr "Hafa dulnefni með"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
@@ -15598,7 +15598,7 @@ msgstr "Tishrei"
 #: resources/views/modules/html/config.phtml:18
 #: resources/views/modules/user_blog/edit.phtml:25
 msgid "Title"
-msgstr "Heiti"
+msgstr "Titill"
 
 #: app/GedcomTag.php:1002
 msgid "Title in Hebrew"
