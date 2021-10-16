@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-10-16 21:22+0000\n"
+"PO-Revision-Date: 2021-10-17 09:15+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -14990,7 +14990,7 @@ msgstr "Tishrei"
 #: app/GedcomTag.php:834 app/Module/FamilyTreeFavoritesModule.php:224
 #: editnews.php:68 modules_v3/GEDFact_assistant/census/census-edit.php:139
 msgid "Title"
-msgstr "Heiti"
+msgstr "Titill"
 
 #: app/GedcomTag.php:840
 msgid "Title in Hebrew"
