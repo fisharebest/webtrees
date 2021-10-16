@@ -1,7 +1,7 @@
 ![Latest version](https://img.shields.io/github/v/release/fisharebest/webtrees?sort=semver)
 ![Licence](https://img.shields.io/github/license/fisharebest/webtrees)
 [![Unit tests](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml/badge.svg)](https://github.com/fisharebest/webtrees/actions/workflows/phpunit.yaml)
-[![Coverage Status](https://coveralls.io/repos/github/fisharebest/webtrees/badge.svg?branch=2.0)](https://coveralls.io/github/fisharebest/webtrees?branch=2.0)
+[![codecov](https://codecov.io/gh/fisharebest/webtrees/branch/2.0/graph/badge.svg?token=zREQBP4GBs)](https://codecov.io/gh/fisharebest/webtrees)
 [![Translation status](https://weblate.iet.open.ac.uk/widgets/webtrees/-/svg-badge.svg)](https://weblate.iet.open.ac.uk/projects/webtrees/webtrees/)
 [![SymfonyInsight](https://insight.symfony.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de/mini.svg)](https://insight.symfony.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=2.0)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=2.0)
