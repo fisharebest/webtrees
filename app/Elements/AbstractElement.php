@@ -31,7 +31,6 @@ use function is_numeric;
 use function preg_match;
 use function str_contains;
 use function str_starts_with;
-use function stream_copy_to_stream;
 use function strip_tags;
 use function trim;
 use function view;
