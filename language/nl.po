@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-10-16 13:56+0000\n"
+"PO-Revision-Date: 2021-10-17 09:15+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/nl/>\n"
@@ -7612,7 +7612,7 @@ msgstr "Indonesië"
 #. I18N: gedcom tag INFL
 #: app/Functions/FunctionsDate.php:37 app/GedcomTag.php:536
 msgid "Infant"
-msgstr "Baby"
+msgstr "Minder dan 1 jaar oud"
 
 #: app/GedcomCode/GedcomCodeRela.php:182
 msgid "Informant"
