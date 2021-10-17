@@ -80,6 +80,7 @@ use Fisharebest\Webtrees\Elements\EventAttributeType;
 use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
+use Fisharebest\Webtrees\Elements\FamilyCensus;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
 use Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId;
 use Fisharebest\Webtrees\Elements\FamilyStatusText;
@@ -987,7 +988,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:*:WIFE:AGE'           => new AgeAtEvent(I18N::translate('Wife’s age')),
             'FAM:*:WWW'                => new AddressWebPage(I18N::translate('URL')),
             'FAM:ANUL'                 => new Annulment(I18N::translate('Annulment')),
-            'FAM:CENS'                 => new Census(I18N::translate('Family census')),
+            'FAM:CENS'                 => new FamilyCensus(I18N::translate('Family census')),
             'FAM:CHAN'                 => new Change(I18N::translate('Last change')),
             'FAM:CHAN:DATE'            => new ChangeDate(I18N::translate('Date of last change')),
             'FAM:CHAN:DATE:TIME'       => new TimeValue(I18N::translate('Time of last change')),
