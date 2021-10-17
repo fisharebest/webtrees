@@ -8029,7 +8029,7 @@ msgstr "Indonesië"
 #: app/Elements/AgeAtEvent.php:82 app/Functions/FunctionsDate.php:53
 #: app/Functions/FunctionsPrint.php:253 app/GedcomTag.php:755
 msgid "Infant"
-msgstr "Baby"
+msgstr "Minder dan 1 jaar oud"
 
 #: app/Elements/RelationIsDescriptor.php:114
 #: app/GedcomCode/GedcomCodeRela.php:246
