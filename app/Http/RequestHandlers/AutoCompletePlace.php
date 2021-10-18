@@ -55,7 +55,7 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
         $searchplaceloc = (Site::getPreference('searchplaceloc')==='1');
 
         $data = $this->search_service
-            ->searchPlaces($tree, $query, 0, static::LIMIT,$searchplaceloc)
+            ->searchPlaces($tree, $query, 0, static::LIMIT, $searchplaceloc)
             ->map(static function (Place $place): string {
                 return $place->gedcomName();
             });
