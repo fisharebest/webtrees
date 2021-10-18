@@ -472,7 +472,7 @@ class SearchService
         foreach (explode(',', $search, 9) as $level => $string) {
             $query->where('p' . $level . '.p_place', 'LIKE', '%' . addcslashes($string, '\\%_') . '%');
         }
-        if ($searchplaceloc){
+        if ($searchplaceloc) {
             $geonamesquery = DB::table('place_location AS p0')
             ->leftJoin('place_location AS p1', 'p1.id', '=', 'p0.parent_id')
             ->leftJoin('place_location AS p2', 'p2.id', '=', 'p1.parent_id')
