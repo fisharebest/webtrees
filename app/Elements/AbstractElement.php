@@ -40,8 +40,6 @@ use function view;
  */
 abstract class AbstractElement implements ElementInterface
 {
-    protected const REGEX_URL = '~((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?~';
-
     // HTML attributes for an <input>
     protected const MAXIMUM_LENGTH = false;
     protected const PATTERN        = false;
