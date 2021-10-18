@@ -54,9 +54,9 @@ class ColorService
 
         for ($x = 1; $x < $steps; ++$x) {
             $colors[] = $this->rgbToHex(
-                (int) round($s[0] + ($factorR * $x)),
-                (int) round($s[1] + ($factorG * $x)),
-                (int) round($s[2] + ($factorB * $x))
+                (int) round($s[0] + $factorR * $x),
+                (int) round($s[1] + $factorG * $x),
+                (int) round($s[2] + $factorB * $x)
             );
         }
 

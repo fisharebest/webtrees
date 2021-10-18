@@ -40,14 +40,13 @@ class ChartFamilyLargest
     private ColorService $color_service;
 
     /**
-     * Constructor.
-     *
-     * @param Tree $tree
+     * @param ColorService $color_service
+     * @param Tree         $tree
      */
-    public function __construct(Tree $tree)
+    public function __construct(ColorService $color_service, Tree $tree)
     {
         $this->tree          = $tree;
-        $this->color_service = new ColorService();
+        $this->color_service = $color_service;
     }
 
     /**

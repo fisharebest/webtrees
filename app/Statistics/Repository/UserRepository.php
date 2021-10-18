@@ -60,7 +60,7 @@ class UserRepository implements UserRepositoryInterface
      *
      * @return string
      */
-    private function usersLoggedInQuery(string $type = 'nolist'): string
+    private function usersLoggedInQuery(string $type): string
     {
         $content   = '';
         $anonymous = 0;

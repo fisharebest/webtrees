@@ -36,14 +36,13 @@ class ChartChildren
     private CenturyService $century_service;
 
     /**
-     * Constructor.
-     *
-     * @param Tree $tree
+     * @param CenturyService $century_service
+     * @param Tree           $tree
      */
-    public function __construct(Tree $tree)
+    public function __construct(CenturyService $century_service, Tree $tree)
     {
+        $this->century_service = $century_service;
         $this->tree            = $tree;
-        $this->century_service = new CenturyService();
     }
 
     /**

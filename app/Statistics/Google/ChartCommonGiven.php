@@ -33,11 +33,11 @@ class ChartCommonGiven
     private ColorService $color_service;
 
     /**
-     * Constructor.
+     * @param ColorService $color_service
      */
-    public function __construct()
+    public function __construct(ColorService $color_service)
     {
-        $this->color_service = new ColorService();
+        $this->color_service = $color_service;
     }
 
     /**

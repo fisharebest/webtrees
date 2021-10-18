@@ -41,15 +41,15 @@ class ChartBirth
     private ColorService $color_service;
 
     /**
-     * Constructor.
-     *
-     * @param Tree $tree
+     * @param CenturyService $century_service
+     * @param ColorService   $color_service
+     * @param Tree           $tree
      */
-    public function __construct(Tree $tree)
+    public function __construct(CenturyService $century_service, ColorService $color_service, Tree $tree)
     {
+        $this->century_service = $century_service;
+        $this->color_service   = $color_service;
         $this->tree            = $tree;
-        $this->century_service = new CenturyService();
-        $this->color_service   = new ColorService();
     }
 
     /**

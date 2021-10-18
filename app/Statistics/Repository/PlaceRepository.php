@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Statistics\Google\ChartDistribution;
+use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
@@ -49,14 +50,21 @@ class PlaceRepository implements PlaceRepositoryInterface
 
     private CountryService $country_service;
 
+    private IndividualRepositoryInterface $individual_repository;
+
     /**
-     * @param Tree           $tree
-     * @param CountryService $country_service
+     * @param Tree                          $tree
+     * @param CountryService                $country_service
+     * @param IndividualRepositoryInterface $individual_repository
      */
-    public function __construct(Tree $tree, CountryService $country_service)
-    {
-        $this->tree            = $tree;
-        $this->country_service = $country_service;
+    public function __construct(
+        Tree $tree,
+        CountryService $country_service,
+        IndividualRepositoryInterface $individual_repository
+    ) {
+        $this->tree                  = $tree;
+        $this->country_service       = $country_service;
+        $this->individual_repository = $individual_repository;
     }
 
     /**
@@ -175,9 +183,9 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Get the top 10 places list.
      *
-     * @param array<int|string,int> $places
+     * @param array<int> $places
      *
-     * @return array<array<string,mixed>>
+     * @return array<array<string,int|Place>>
      */
     private function getTop10Places(array $places): array
     {
@@ -360,7 +368,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         string $chart_type = '',
         string $surname = ''
     ): string {
-        return (new ChartDistribution($this->tree, $this->country_service))
+        return (new ChartDistribution($this->tree, $this->country_service, $this->individual_repository, $this))
             ->chartDistribution($chart_shows, $chart_type, $surname);
     }
 }

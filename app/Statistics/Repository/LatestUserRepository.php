@@ -88,9 +88,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
             $user_id = (int) $user_id;
         }
 
-        $user = $this->user_service->find($user_id) ?? Auth::user();
-
-        return $user;
+        return $this->user_service->find($user_id) ?? Auth::user();
     }
 
     /**

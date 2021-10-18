@@ -1530,18 +1530,13 @@ parameters:
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
-			message: "#^Cannot call method canShow\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 8
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
 			message: "#^Cannot call method formatList\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
 			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 4
+			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -1556,21 +1551,16 @@ parameters:
 
 		-
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
-			count: 2
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
-			count: 3
-			path: app/Statistics/Repository/FamilyRepository.php
-
-		-
-			message: "#^Cannot call method wife\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:ageBetweenSiblingsList\\(\\) should return array\\<string, array\\> but returns array\\<int, array\\<string, Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\|string\\|null\\>\\>\\.$#"
+			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: "#^Cannot call method wife\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
@@ -1708,3 +1698,8 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: app/Webtrees.php

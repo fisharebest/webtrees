@@ -21,7 +21,8 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition;
+use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 
 use function array_sum;
 use function count;
@@ -33,19 +34,18 @@ use function view;
  */
 class ChartCommonSurname
 {
-    private string $surname_tradition;
-
     private ColorService $color_service;
 
+    private SurnameTraditionInterface $surname_tradition;
+
     /**
-     * Constructor.
-     *
-     * @param Tree $tree
+     * @param ColorService              $color_service
+     * @param SurnameTraditionInterface $surname_tradition
      */
-    public function __construct(Tree $tree)
+    public function __construct(ColorService $color_service, SurnameTraditionInterface $surname_tradition)
     {
-        $this->surname_tradition = $tree->getPreference('SURNAME_TRADITION');
-        $this->color_service     = new ColorService();
+        $this->surname_tradition = $surname_tradition;
+        $this->color_service     = $color_service;
     }
 
     /**
@@ -73,7 +73,7 @@ class ChartCommonSurname
             }
         }
 
-        if ($this->surname_tradition === 'polish') {
+        if ($this->surname_tradition instanceof PolishSurnameTradition) {
             // Most common surname should be in male variant (Kowalski, not Kowalska)
             $top_name = preg_replace(
                 [

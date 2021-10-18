@@ -33,6 +33,8 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics;
+use Fisharebest\Webtrees\Statistics\Service\CenturyService;
+use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -40,6 +42,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function app;
 use function array_chunk;
 use function array_pop;
 use function array_reverse;
@@ -298,7 +301,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 ];
             }
 
-            $statistics = new Statistics(app(CountryService::class), app(ModuleService::class), $tree, app(UserService::class));
+            $statistics = app(Statistics::class);
 
             //Stats
             $stats = [];

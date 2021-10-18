@@ -158,6 +158,13 @@ interface IndividualRepositoryInterface
     public function totalSexUnknownPercentage(): string;
 
     /**
+     * Find common surnames.
+     *
+     * @return string
+     */
+    public function getCommonSurname(): string;
+
+    /**
      * Generate a chart showing sex distribution.
      *
      * @param string|null $color_female
