@@ -31,15 +31,9 @@ use Illuminate\Support\Collection;
  */
 class ChartChildren
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
-    /**
-     * @var CenturyService
-     */
-    private $century_service;
+    private CenturyService $century_service;
 
     /**
      * Constructor.

@@ -25,20 +25,16 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 
+use function view;
+
 /**
  * A chart showing the number of families with no children by century.
  */
 class ChartNoChildrenFamilies
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
-    /**
-     * @var CenturyService
-     */
-    private $century_service;
+    private CenturyService $century_service;
 
     /**
      * Constructor.

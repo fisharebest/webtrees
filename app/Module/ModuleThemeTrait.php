@@ -456,18 +456,6 @@ trait ModuleThemeTrait
     }
 
     /**
-     * Miscellaneous dimensions, fonts, styles, etc.
-     *
-     * @param string $parameter_name
-     *
-     * @return string
-     */
-    public function parameter($parameter_name): string
-    {
-        return '';
-    }
-
-    /**
      * Generate a list of items for the main menu.
      *
      * @param Tree|null $tree

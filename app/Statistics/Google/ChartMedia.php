@@ -20,34 +20,24 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 
-use function app;
 use function count;
+use function view;
 
 /**
  * A chart showing the top used media types.
  */
 class ChartMedia
 {
-    /**
-     * @var ModuleThemeInterface
-     */
-    private $theme;
-
-    /**
-     * @var ColorService
-     */
-    private $color_service;
+    private ColorService $color_service;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->theme         = app(ModuleThemeInterface::class);
         $this->color_service = new ColorService();
     }
 
@@ -65,10 +55,8 @@ class ChartMedia
         string $color_from = null,
         string $color_to = null
     ): string {
-        $chart_color1 = $this->theme->parameter('distribution-chart-no-values');
-        $chart_color2 = $this->theme->parameter('distribution-chart-high-values');
-        $color_from   = $color_from ?? $chart_color1;
-        $color_to     = $color_to   ?? $chart_color2;
+        $color_from = $color_from ?? 'ffffff';
+        $color_to   = $color_to ?? '84beff';
 
         $data = [
             [

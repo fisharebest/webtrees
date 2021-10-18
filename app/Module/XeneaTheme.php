@@ -40,28 +40,6 @@ class XeneaTheme extends AbstractModule implements ModuleThemeInterface
     }
 
     /**
-     * Miscellaneous dimensions, fonts, styles, etc.
-     *
-     * @param string $parameter_name
-     *
-     * @return string
-     */
-    public function parameter($parameter_name): string
-    {
-        $parameters = [
-            'chart-background-f'             => 'e9daf1',
-            'chart-background-m'             => 'b1cff0',
-            'chart-background-u'             => 'eeeeee',
-            'chart-font-color'               => '000000',
-            'distribution-chart-high-values' => '84beff',
-            'distribution-chart-low-values'  => 'c3dfff',
-            'distribution-chart-no-values'   => 'ffffff',
-        ];
-
-        return $parameters[$parameter_name];
-    }
-
-    /**
      * A list of CSS files to include for this page.
      *
      * @return array<string>

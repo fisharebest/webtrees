@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Statistics\Repository\IndividualRepository;
 use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
@@ -29,38 +28,22 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 
-use function app;
 use function array_key_exists;
+use function preg_match_all;
+use function view;
 
 /**
  * A chart showing the distribution of different events on a map.
  */
 class ChartDistribution
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
-    /**
-     * @var ModuleThemeInterface
-     */
-    private $theme;
+    private CountryService $country_service;
 
-    /**
-     * @var CountryService
-     */
-    private $country_service;
+    private IndividualRepository $individualRepository;
 
-    /**
-     * @var IndividualRepository
-     */
-    private $individualRepository;
-
-    /**
-     * @var PlaceRepository
-     */
-    private $placeRepository;
+    private PlaceRepository $placeRepository;
 
     /**
      * @var array<string>
@@ -76,7 +59,6 @@ class ChartDistribution
     public function __construct(Tree $tree, CountryService $country_service)
     {
         $this->tree                 = $tree;
-        $this->theme                = app(ModuleThemeInterface::class);
         $this->country_service      = new CountryService();
         $this->individualRepository = new IndividualRepository($tree);
         $this->placeRepository      = new PlaceRepository($tree, $country_service);
@@ -355,13 +337,10 @@ class ChartDistribution
                 break;
         }
 
-        $chart_color2 = $this->theme->parameter('distribution-chart-high-values');
-        $chart_color3 = $this->theme->parameter('distribution-chart-low-values');
-
         return view('statistics/other/charts/geo', [
             'chart_title'  => $chart_title,
-            'chart_color2' => $chart_color2,
-            'chart_color3' => $chart_color3,
+            'chart_color2' => '84beff',
+            'chart_color3' => 'c3dfff',
             'region'       => $chart_shows,
             'data'         => $data,
             'language'     => I18N::languageTag(),

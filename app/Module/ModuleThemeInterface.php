@@ -45,15 +45,6 @@ interface ModuleThemeInterface extends ModuleInterface
     public function menuThemes(): ?Menu;
 
     /**
-     * Miscellaneous dimensions, fonts, styles, etc.
-     *
-     * @param string $parameter_name
-     *
-     * @return string
-     */
-    public function parameter(string $parameter_name): string;
-
-    /**
      * Generate a list of items for the main menu.
      *
      * @param Tree|null $tree

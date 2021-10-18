@@ -27,20 +27,17 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
+use function round;
+use function view;
+
 /**
  * A chart showing the marriage ages by century.
  */
 class ChartMarriageAge
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
-    /**
-     * @var CenturyService
-     */
-    private $century_service;
+    private CenturyService $century_service;
 
     /**
      * Constructor.

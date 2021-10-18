@@ -23,16 +23,14 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 
 use function count;
+use function view;
 
 /**
  * A chart showing the mortality.
  */
 class ChartMortality
 {
-    /**
-     * @var ColorService
-     */
-    private $color_service;
+    private ColorService $color_service;
 
     /**
      * Constructor.
