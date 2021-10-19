@@ -31,7 +31,7 @@ class Gedcom
     public const LINE_LENGTH = 253;
 
     // Gedcom tags which indicate the start of life.
-    public const BIRTH_EVENTS = ['BIRT', 'CHR', 'BAPM', 'ADOP'];
+    public const BIRTH_EVENTS = ['BIRT', 'CHR', 'BAPM'];
 
     // Gedcom tags which indicate the end of life.
     public const DEATH_EVENTS = ['DEAT', 'BURI', 'CREM'];
