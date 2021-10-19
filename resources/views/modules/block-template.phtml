@@ -13,7 +13,7 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <div class="card mb-4 wt-block wt-block-<?= e($block) ?>" id="block-<?= e($id) ?>">
-    <div class="card-header wt-block-header wt-block-header-<?= e($block) ?>" dir="auto">
+    <div class="card-header wt-block-header wt-block-header-<?= e($block) ?>">
         <?php if ($config_url !== '') : ?>
             <a class="btn btn-link" href="<?= e($config_url) ?>" title="<?= I18N::translate('Preferences') ?>">
                 <?= view('icons/preferences') ?>
