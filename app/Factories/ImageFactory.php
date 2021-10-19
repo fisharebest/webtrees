@@ -336,10 +336,10 @@ class ImageFactory implements ImageFactoryInterface
                 ->withHeader('X-Image-Exception', 'SVG image blocked due to XSS.');
         }
 
-        // HTML files may contain javascript, so use content-security-policy to disable it.
+        // HTML files may contain javascript and iframes, so use content-security-policy to disable them.
         $response = response($data)
             ->withHeader('content-type', $mime_type)
-            ->withHeader('content-security-policy', 'script-src none');
+            ->withHeader('content-security-policy', 'script-src none;frame-src none');
 
         if ($filename === '') {
             return $response;
