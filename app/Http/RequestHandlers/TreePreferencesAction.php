@@ -19,12 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Exception;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
+use PDOException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -123,7 +123,7 @@ class TreePreferencesAction implements RequestHandlerInterface
                     ->update(['setting_value' => $gedcom]);
 
                 $url = route(ManageTrees::class, ['tree' => $gedcom]);
-            } catch (Exception $ex) {
+            } catch (PDOException $ex) {
                 // Probably a duplicate name.
             }
         }

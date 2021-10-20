@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Exception;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
@@ -76,7 +77,7 @@ class EditMediaFileModal implements RequestHandlerInterface
 
         try {
             $media = Auth::checkMediaAccess($media);
-        } catch (Exception $ex) {
+        } catch (HttpNotFoundException | HttpAccessDeniedException $ex) {
             return response(view('modals/error', [
                 'title' => I18N::translate('Edit a media file'),
                 'error' => $ex->getMessage(),
