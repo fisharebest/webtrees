@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-17 09:43+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-20 13:58+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -683,7 +683,7 @@ msgstr "Algeng villa er að hafa fjölmargar krækjur í sömu færsluna, t.d. m
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
 msgid "A fan chart of an individual’s ancestors."
-msgstr "Vinsældargraf af forfeðrum einstaklings."
+msgstr "Skífa af forfeðrum einstaklings."
 
 #: resources/views/admin/map-import-form.phtml:27
 #: resources/views/admin/trees-export.phtml:26
@@ -699,17 +699,17 @@ msgstr "Skrá á netþjóni"
 #: resources/views/modals/media-file-fields.phtml:25
 #: resources/views/modals/media-file-fields.phtml:41
 msgid "A file on your computer"
-msgstr "Skrá á tölvu"
+msgstr "Skrá á þinni tölvu"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:73
 msgid "A greeting message and useful links for a user."
-msgstr "Kveðju skilaboð og gagnlegar krækjur fyrir notanda."
+msgstr "Kveðjuskilaboð og gagnlegar krækjur fyrir notanda."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:71
 msgid "A greeting message for site visitors."
-msgstr "Kveðju skilaboð til gesta vefsíðunnar."
+msgstr "Kveðjuskilaboð til gesta vefsíðunnar."
 
 #. I18N: Description of the “Contact information” module
 #: app/Module/ContactsFooterModule.php:68
@@ -719,12 +719,12 @@ msgstr "Krækja í tengiliði vefsíðunnar."
 #. I18N: Description of the “webtrees” module
 #: app/Module/PoweredByWebtreesModule.php:52
 msgid "A link to the webtrees home page."
-msgstr "Krækja í forsíðu webtrees."
+msgstr "Krækja í heimasíðu webtrees."
 
 #. I18N: Description of the “Branches” module
 #: app/Module/BranchesListModule.php:115
 msgid "A list of branches of a family."
-msgstr "Listi yfir greinar fjölskyldu."
+msgstr "Listi yfir fjölskyldugreinar."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:91
@@ -6296,13 +6296,13 @@ msgstr "Fjölskylduleitar auðkenni"
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
 msgid "Fan chart"
-msgstr "Aðdáandagraf"
+msgstr "Forfeðraskífa"
 
 #. I18N: https://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Aðdáandagraf fyrir %s"
+msgstr "Forfeðraskífa fyrir %s"
 
 #: app/Date/JalaliDate.php:259
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -12980,15 +12980,15 @@ msgstr "Sýna börn forfeðra"
 
 #: resources/views/lists/families-table.phtml:205
 msgid "Show couples where either partner married more than once."
-msgstr "Sýna pör þar sem annar sambýlisaðilinn giftist oftar en einu sinni."
+msgstr "Sýna pör þar sem annar makinn giftist oftar en einu sinni."
 
 #: resources/views/lists/families-table.phtml:163
 msgid "Show couples where only the female partner is dead."
-msgstr "Sýna pör þar sem aðeins sambýliskonan er látin."
+msgstr "Sýna pör þar sem aðeins kvenkyns maki er látinn."
 
 #: resources/views/lists/families-table.phtml:167
 msgid "Show couples where only the male partner is dead."
-msgstr "Sýna pör þar sem aðeins sambýlismaður er látinn."
+msgstr "Sýna pör þar sem aðeins karlkyns maki er látinn."
 
 #: resources/views/lists/families-table.phtml:193
 msgid "Show couples who married more than 100 years ago."
@@ -13018,28 +13018,28 @@ msgstr "Sýna skilin pör."
 
 #: resources/views/lists/individuals-table.phtml:208
 msgid "Show individuals born more than 100 years ago."
-msgstr "Sýna persónur sem fæddar voru fyrir meira en 100 árum síðan."
+msgstr "Sýna einstaklinga sem fæddar voru fyrir meira en 100 árum síðan."
 
 #: resources/views/lists/individuals-table.phtml:212
 msgid "Show individuals born within the last 100 years."
-msgstr "Sýna persónur sem fæddar voru innan síðustu 100 ára."
+msgstr "Sýna einstaklinga sem fæddar voru innan síðustu 100 ára."
 
 #: resources/views/lists/individuals-table.phtml:189
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Sýna fólk sem eru á lífi eða par þar sem baðir sambýlisaðilar eru á lífi."
+msgstr "Sýna einstaklinga sem eru á lífi eða par þar sem báðir makar eru á lífi."
 
 #: resources/views/lists/families-table.phtml:171
 #: resources/views/lists/individuals-table.phtml:193
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Sýna fólk sem er dáið eða par þar sem báðir sambýlisaðilar eru látnir."
+msgstr "Sýna einstaklinga sem er dáið eða par þar sem báðir makar eru látnir."
 
 #: resources/views/lists/individuals-table.phtml:197
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Sýna fólk sem dó fyrir meira en 100 árum síðan."
+msgstr "Sýna einstaklinga sem dó fyrir meira en 100 árum síðan."
 
 #: resources/views/lists/individuals-table.phtml:201
 msgid "Show individuals who died within the last 100 years."
-msgstr "Sýna fólk sem dó innan síðustu 100 ára."
+msgstr "Sýna einstaklinga sem dó innan síðustu 100 ára."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
@@ -13054,7 +13054,7 @@ msgstr "Sýna lifandi einstaklinga"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:136
 msgid "Show names of private individuals"
-msgstr "Sýnið nöfn einkaaðila"
+msgstr "Sýna nöfn einkaaðila"
 
 #: resources/xml/reports/ahnentafel_report.xml:9
 #: resources/xml/reports/family_group_report.xml:8
@@ -13078,11 +13078,11 @@ msgstr "Sýna aðeins kvenmenn."
 
 #: resources/views/lists/individuals-table.phtml:182
 msgid "Show only individuals for whom the gender is not known."
-msgstr "Sýna aðeins persónur þar sem kyn er óþekkt."
+msgstr "Sýna aðeins einstaklinga þar sem kyn er óþekkt."
 
 #: resources/views/modules/random_media/config.phtml:17
 msgid "Show only individuals, events, or all"
-msgstr "Sýna aðeins persónur, atburði eða allt"
+msgstr "Sýna aðeins einstaklinga, atburði eða allt"
 
 #: resources/views/lists/individuals-table.phtml:174
 msgid "Show only males."
@@ -13125,7 +13125,7 @@ msgstr "Sýna staðarstigveldi"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:156
 msgid "Show private relationships"
-msgstr "Sýna einkamála samband"
+msgstr "Sýna einkasambönd"
 
 #: resources/views/modules/todo/config.phtml:21
 msgid "Show research tasks that are assigned to other users"
@@ -13193,7 +13193,7 @@ msgstr "Sýna atburði hjá nánum ættingjum á einstaklingssíðu"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-privacy.phtml:33
 msgid "Show the family tree"
-msgstr "Birta ættartréð"
+msgstr "Sýna ættartréð"
 
 #: app/Module/IndividualListModule.php:366
 msgid "Show the list of individuals"
@@ -19709,22 +19709,22 @@ msgstr "foreldri"
 
 #: app/Services/RelationshipService.php:420
 msgid "partner"
-msgstr "sambýlismaki"
+msgstr "maki"
 
 #: app/Services/RelationshipService.php:397
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "sambýliskona"
+msgstr "maki"
 
 #: app/Services/RelationshipService.php:373
 msgctxt "MALE"
 msgid "partner"
-msgstr "sambýlismaður"
+msgstr "maki"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "föðurætt"
+msgstr "eftir nafni föðurs"
 
 #: app/Services/RelationshipService.php:528
 msgctxt "father’s father"
@@ -19744,7 +19744,7 @@ msgstr "föðurafi og -amma"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:84
 msgid "patrilineal"
-msgstr ""
+msgstr "karlleggur"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:124
