@@ -13,6 +13,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @var string                             $age
+ * @var bool                               $can_upload_media
  * @var Collection<Fact>                   $clipboard_facts
  * @var Collection<Media>                  $individual_media
  * @var Individual                         $record
@@ -37,14 +38,14 @@ use Illuminate\Support\Collection;
     </h2>
 
     <?php if ($record->canEdit()) : ?>
-        <?= view('individual-page-menu', ['clipboard_facts' => $clipboard_facts, 'record' => $record, 'shares' => $shares]) ?>
+        <?= view('individual-page-menu', ['can_upload_media' => $can_upload_media, 'clipboard_facts' => $clipboard_facts, 'record' => $record, 'shares' => $shares]) ?>
     <?php endif ?>
 </div>
 
 <div class="row">
     <div class="col">
         <div class="row mb-4">
-            <?= view('individual-page-images', ['individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
+            <?= view('individual-page-images', ['can_upload_media' => $can_upload_media, 'individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
 
             <?= view('individual-page-names', ['record' => $record]) ?>
         </div>

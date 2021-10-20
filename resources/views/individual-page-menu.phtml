@@ -14,6 +14,7 @@ use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
+ * @var bool               $can_upload_media
  * @var Collection<Fact>   $clipboard_facts
  * @var Individual         $record
  * @var Collection<string> $shares
@@ -88,10 +89,12 @@ use Illuminate\Support\Collection;
 
         <div class="dropdown-divider"></div>
 
-        <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE'])) ?>">
-            <?= view('icons/add') ?>
-            <?= I18N::translate('Add a media object') ?>
-        </a>
+        <?php if ($can_upload_media) : ?>
+            <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE'])) ?>">
+                <?= view('icons/add') ?>
+                <?= I18N::translate('Add a media object') ?>
+            </a>
+        <?php endif ?>
 
         <?php if ($record->facts(['OBJE'], false, null, true)->count() > 1) : ?>
             <a class="dropdown-item" href="<?= e(route(ReorderMediaPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
