@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
@@ -90,15 +91,11 @@ class EditMediaFileAction implements RequestHandlerInterface
         $title    = $params['title'] ?? '';
         $type     = $params['type'] ?? '';
         $media    = Registry::mediaFactory()->make($xref, $tree);
+        $media    = Auth::checkMediaAccess($media, true);
 
         // Tidy non-printing characters
         $type  = trim(preg_replace('/\s+/', ' ', $type));
         $title = trim(preg_replace('/\s+/', ' ', $title));
-
-        // Media object oes not exist?  Media object is read-only?
-        if ($media === null || $media->isPendingDeletion() || !$media->canEdit()) {
-            return redirect(route(TreePage::class, ['tree' => $tree->name()]));
-        }
 
         // Find the fact to edit
         $media_file = $media->mediaFiles()
