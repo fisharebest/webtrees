@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-10-17 09:15+0000\n"
+"PO-Revision-Date: 2021-10-20 13:58+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/is/>\n"
@@ -778,7 +778,7 @@ msgstr "Gagnagrunnsþjónn getur vistað marga aðgreinda gagnagrunni. Þú þar
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:42
 msgid "A fan chart of an individual’s ancestors."
-msgstr "Vinsældargraf af forfeðrum einstaklings."
+msgstr "Skífa af forfeðrum einstaklings."
 
 #: admin_trees_download.php:115 admin_trees_manage.php:225
 #: app/Module/GoogleMapsModule.php:3651
@@ -788,17 +788,17 @@ msgstr "Skrá á netþjóni"
 #: admin_trees_download.php:200 admin_trees_manage.php:214
 #: app/Module/GoogleMapsModule.php:3639
 msgid "A file on your computer"
-msgstr "Skrá á tölvu"
+msgstr "Skrá á þinni tölvu"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:34
 msgid "A greeting message and useful links for a user."
-msgstr "Kveðju skilaboð og gagnlegar krækjur fyrir notanda."
+msgstr "Kveðjuskilaboð og gagnlegar krækjur fyrir notanda."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:35
 msgid "A greeting message for site visitors."
-msgstr "Kveðju skilaboð til gesta vefsíðunnar."
+msgstr "Kveðjuskilaboð til gesta vefsíðunnar."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:42
@@ -6145,13 +6145,13 @@ msgstr "Fjölskylda með eiginkonu"
 #. I18N: Name of a module/chart
 #: app/Controller/FanchartController.php:56 app/Module/FanChartModule.php:33
 msgid "Fan chart"
-msgstr "Aðdáandagraf"
+msgstr "Forfeðraskífa"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Controller/FanchartController.php:53
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Aðdáandagraf fyrir %s"
+msgstr "Forfeðraskífa fyrir %s"
 
 #: app/Date/JalaliDate.php:183
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -12581,15 +12581,15 @@ msgstr "Staðsetja talningu framan eða aftan við nafn"
 
 #: app/Functions/FunctionsPrintLists.php:711
 msgid "Show couples where either partner married more than once."
-msgstr "Sýna pör þar sem annar sambýlisaðilinn giftist oftar en einu sinni."
+msgstr "Sýna pör þar sem annar makinn giftist oftar en einu sinni."
 
 #: app/Functions/FunctionsPrintLists.php:626
 msgid "Show couples where only the female partner is dead."
-msgstr "Sýna pör þar sem aðeins sambýliskonan er látin."
+msgstr "Sýna pör þar sem aðeins kvenkyns maki er látinn."
 
 #: app/Functions/FunctionsPrintLists.php:635
 msgid "Show couples where only the male partner is dead."
-msgstr "Sýna pör þar sem aðeins sambýlismaður er látinn."
+msgstr "Sýna pör þar sem aðeins karlkyns maki er látinn."
 
 #: app/Functions/FunctionsPrintLists.php:684
 msgid "Show couples who married more than 100 years ago."
@@ -12636,29 +12636,30 @@ msgstr "Sýna óvirka staði"
 
 #: app/Functions/FunctionsPrintLists.php:244
 msgid "Show individuals born more than 100 years ago."
-msgstr "Sýna persónur sem fæddar voru fyrir meira en 100 árum síðan."
+msgstr "Sýna einstaklinga sem fæddar voru fyrir meira en 100 árum síðan."
 
 #: app/Functions/FunctionsPrintLists.php:253
 msgid "Show individuals born within the last 100 years."
-msgstr "Sýna persónur sem fæddar voru innan síðustu 100 ára."
+msgstr "Sýna einstaklinga sem fæddar voru innan síðustu 100 ára."
 
 #: app/Functions/FunctionsPrintLists.php:206
 #: app/Functions/FunctionsPrintLists.php:617
 msgid "Show individuals who are alive or couples where both partners are alive."
-msgstr "Sýna fólk sem eru á lífi eða par þar sem baðir sambýlisaðilar eru á lífi."
+msgstr ""
+"Sýna einstaklinga sem eru á lífi eða par þar sem báðir makar eru á lífi."
 
 #: app/Functions/FunctionsPrintLists.php:215
 #: app/Functions/FunctionsPrintLists.php:644
 msgid "Show individuals who are dead or couples where both partners are dead."
-msgstr "Sýna fólk sem er dáið eða par þar sem báðir sambýlisaðilar eru látnir."
+msgstr "Sýna einstaklinga sem er dáið eða par þar sem báðir makar eru látnir."
 
 #: app/Functions/FunctionsPrintLists.php:224
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Sýna fólk sem dó fyrir meira en 100 árum síðan."
+msgstr "Sýna einstaklinga sem dó fyrir meira en 100 árum síðan."
 
 #: app/Functions/FunctionsPrintLists.php:233
 msgid "Show individuals who died within the last 100 years."
-msgstr "Sýna fólk sem dó innan síðustu 100 ára."
+msgstr "Sýna einstaklinga sem dó innan síðustu 100 ára."
 
 #. I18N: A configuration setting
 #: admin_site_config.php:278
@@ -12673,7 +12674,7 @@ msgstr "Sýna lifandi einstaklinga"
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show names of private individuals"
-msgstr "Sýnið nöfn einkaaðila"
+msgstr "Sýna nöfn einkaaðila"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12702,12 +12703,12 @@ msgstr "Sýna aðeins kvenmenn."
 
 #: app/Functions/FunctionsPrintLists.php:195
 msgid "Show only individuals for whom the gender is not known."
-msgstr "Sýna aðeins persónur þar sem kyn er óþekkt."
+msgstr "Sýna aðeins einstaklinga þar sem kyn er óþekkt."
 
 #. I18N: Label for a configuration option
 #: app/Module/SlideShowModule.php:262
 msgid "Show only individuals, events, or all"
-msgstr "Sýna aðeins persónur, atburði eða allt"
+msgstr "Sýna aðeins einstaklinga, atburði eða allt"
 
 #: app/Functions/FunctionsPrintLists.php:177
 msgid "Show only males."
@@ -12739,7 +12740,7 @@ msgstr "Sýna staði í stigveldi"
 #. I18N: A configuration setting
 #: admin_trees_config.php:484
 msgid "Show private relationships"
-msgstr "Sýna einkamála samband"
+msgstr "Sýna einkasambönd"
 
 #: search.php:112 search.php:270
 msgid "Show related individuals/families"
@@ -12800,7 +12801,7 @@ msgstr "Sýna atburði hjá nánum ættingjum á einstaklingssíðu"
 #. I18N: A configuration setting
 #: admin_trees_config.php:360
 msgid "Show the family tree"
-msgstr "Birta ættartréð"
+msgstr "Sýna ættartréð"
 
 #: famlist.php:183 indilist.php:183
 msgid "Show the list of individuals"
@@ -19422,22 +19423,22 @@ msgstr "foreldri"
 
 #: app/Functions/Functions.php:736
 msgid "partner"
-msgstr "sambýlismaki"
+msgstr "maki"
 
 #: app/Functions/Functions.php:718
 msgctxt "FEMALE"
 msgid "partner"
-msgstr "sambýliskona"
+msgstr "maki"
 
 #: app/Functions/Functions.php:700
 msgctxt "MALE"
 msgid "partner"
-msgstr "sambýlismaður"
+msgstr "maki"
 
 #: app/SurnameTradition.php:71
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr "föðurætt"
+msgstr "eftir nafni föðurs"
 
 #: app/Functions/Functions.php:840
 msgctxt "father’s father"
@@ -19457,7 +19458,7 @@ msgstr "föðurafi og -amma"
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:75
 msgid "patrilineal"
-msgstr ""
+msgstr "karlleggur"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:56
