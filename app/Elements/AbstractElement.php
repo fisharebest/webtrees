@@ -29,6 +29,7 @@ use function array_key_exists;
 use function array_map;
 use function e;
 use function is_numeric;
+use function preg_replace;
 use function str_contains;
 use function str_starts_with;
 use function strip_tags;
@@ -81,6 +82,25 @@ abstract class AbstractElement implements ElementInterface
         }
 
         return trim($value);
+    }
+
+    /**
+     * Convert a multi-line value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function canonicalText(string $value): string
+    {
+        // Browsers use MS-DOS line endings in multi-line data.
+        $value = strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
+
+        // Remove trailing spaces at the end of lines.
+        $value = preg_replace('/ +\n/', "\n", $value);
+
+        // Remove leading/trailing empty lines.
+        return trim($value, "\n");
     }
 
     /**
