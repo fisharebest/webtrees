@@ -137,17 +137,23 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
         $results = json_decode($body, false, 512, JSON_THROW_ON_ERROR);
 
         foreach ($results->features as $result) {
+            $result->properties->name ??= null;
+            $result->properties->county ??= null;
+            $result->properties->region ??= null;
+            $result->properties->macroregion ??= null;
+            $result->properties->country ??= null;
+
             if ($result->properties->country === 'United Kingdom') {
                 // macroregion will contain England, Scotland, etc.
                 $result->properties->country = null;
             }
 
             $parts = [
-                $result->properties->name ?? null,
-                $result->properties->county ?? null,
-                $result->properties->region ?? null,
-                $result->properties->macroregion ?? null,
-                $result->properties->country ?? null,
+                $result->properties->name,
+                $result->properties->county,
+                $result->properties->region,
+                $result->properties->macroregion,
+                $result->properties->country,
             ];
 
             $places[] = implode(Gedcom::PLACE_SEPARATOR, array_filter($parts)) ?: $result->properties->label;
