@@ -96,11 +96,10 @@ abstract class AbstractElement implements ElementInterface
         // Browsers use MS-DOS line endings in multi-line data.
         $value = strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
 
-        // Remove trailing spaces at the end of lines.
-        $value = preg_replace('/ +\n/', "\n", $value);
+        // Remove blank lines at start/end
+        $value = preg_replace('/^( *\n)+/', '', $value);
 
-        // Remove leading/trailing empty lines.
-        return trim($value, "\n");
+        return preg_replace('/(\n *)+$/', '', $value);
     }
 
     /**

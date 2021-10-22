@@ -44,6 +44,6 @@ class NoteStructureTest extends AbstractElementTest
     {
         self::assertSame('Foo  bAr  baZ', self::$element->canonical("Foo  bAr  baZ"));
         self::assertSame('  Foo  bAr  baZ  ', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
-        self::assertSame("\nFoo \n\n bAr \n baZ\n", self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
+        self::assertSame("Foo \n\n bAr \n baZ", self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
     }
 }

@@ -16,6 +16,16 @@ parameters:
 			path: app/Date/AbstractCalendarDate.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AbstractElement\\:\\:canonicalText\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Elements/AbstractElement.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/Elements/AbstractElement.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AgeAtEvent\\:\\:value\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Elements/AgeAtEvent.php
@@ -1703,3 +1713,4 @@ parameters:
 			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
+
