@@ -19,11 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
-
-use function view;
-
 /**
  * XREF:INDI := {Size=1:22}
  * A pointer to, or a cross-reference identifier of, an individual record.

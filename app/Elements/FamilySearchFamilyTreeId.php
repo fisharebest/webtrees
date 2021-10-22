@@ -19,10 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Tree;
-
-use function e;
-use function rawurlencode;
 use function strtoupper;
 
 /**

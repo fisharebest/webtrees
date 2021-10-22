@@ -86,6 +86,24 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
+     * Convert a multi-line value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function canonicalText(string $value): string
+    {
+        // Browsers use MS-DOS line endings in multi-line data.
+        $value = strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
+
+        // Remove blank lines at start/end
+        $value = preg_replace('/^( *\n)+/', '', $value);
+
+        return preg_replace('/(\n *)+$/', '', $value);
+    }
+
+    /**
      * Create a default value for this element.
      *
      * @param Tree $tree

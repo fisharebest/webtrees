@@ -28,6 +28,10 @@ use Fisharebest\Webtrees\Tree;
  */
 class SourceCallNumber extends AbstractElement
 {
+    protected const SUBTAGS = [
+        'MEDI' => '0:1',
+    ];
+
     protected const MAXIMUM_LENGTH = 120;
     /**
      * Display the value of this type of element.
