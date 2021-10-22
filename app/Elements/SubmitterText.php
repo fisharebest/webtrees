@@ -53,4 +53,17 @@ class SubmitterText extends AbstractElement
     {
         return $this->editTextArea($id, $name, $value);
     }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        return $this->valueFormatted($value, $tree);
+    }
 }

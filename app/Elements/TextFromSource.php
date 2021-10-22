@@ -59,6 +59,7 @@ class TextFromSource extends AbstractElement
         return $this->editTextArea($id, $name, $value);
     }
 
+
     /**
      * Display the value of this type of element.
      *
@@ -69,6 +70,6 @@ class TextFromSource extends AbstractElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return $this->valueAutoLink($value);
+        return $this->valueFormatted($value, $tree);
     }
 }

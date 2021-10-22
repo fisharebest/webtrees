@@ -29,6 +29,7 @@ use function array_key_exists;
 use function array_map;
 use function e;
 use function is_numeric;
+use function nl2br;
 use function preg_replace;
 use function str_contains;
 use function str_starts_with;
@@ -85,24 +86,6 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
-     * Convert a multi-line value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    protected function canonicalText(string $value): string
-    {
-        // Browsers use MS-DOS line endings in multi-line data.
-        $value = strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
-
-        // Remove blank lines at start/end
-        $value = preg_replace('/^( *\n)+/', '', $value);
-
-        return preg_replace('/(\n *)+$/', '', $value);
-    }
-
-    /**
      * Create a default value for this element.
      *
      * @param Tree $tree
@@ -137,7 +120,7 @@ abstract class AbstractElement implements ElementInterface
             }
 
             // We may use markup to display values, but not when editing them.
-            $values = array_map(fn (string $x): string => strip_tags($x), $values);
+            $values = array_map(fn(string $x): string => strip_tags($x), $values);
 
             return view('components/select', [
                 'id'       => $id,
@@ -279,7 +262,7 @@ abstract class AbstractElement implements ElementInterface
 
         if ($values === []) {
             if (str_contains($value, "\n")) {
-                return '<bdi class="d-inline-block" style="white-space: pre-wrap;">' . e($value) . '</bdi>';
+                return '<bdi class="d-inline-block">' . nl2br(e($value)) . '</bdi>';
             }
 
             return '<bdi>' . e($value) . '</bdi>';
@@ -298,6 +281,42 @@ abstract class AbstractElement implements ElementInterface
     public function values(): array
     {
         return [];
+    }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function valueNumeric(string $value): string
+    {
+        $canonical = $this->canonical($value);
+
+        if (is_numeric($canonical)) {
+            return I18N::number((int) $canonical);
+        }
+
+        return e($value);
+    }
+
+    /**
+     * Convert a multi-line value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function canonicalText(string $value): string
+    {
+        // Browsers use MS-DOS line endings in multi-line data.
+        $value = strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
+
+        // Remove blank lines at start/end
+        $value = preg_replace('/^( *\n)+/', '', $value);
+
+        return preg_replace('/(\n *)+$/', '', $value);
     }
 
     /**
@@ -321,6 +340,29 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
+     * Display the value of this type of element - multi-line text with/without markdown.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function valueFormatted(string $value, Tree $tree): string
+    {
+        $canonical = $this->canonical($value);
+
+        $format = $tree->getPreference('FORMAT_TEXT');
+
+        if ($format === 'markdown') {
+            $html = Registry::markdownFactory()->markdown($tree)->convertToHtml($canonical);
+        } else {
+            $html = Registry::markdownFactory()->autolink($tree)->convertToHtml($canonical);
+            $html = nl2br($html);
+        }
+
+        return '<div class="markdown" dir="auto">' . $html . '</div>';
+    }
+
+    /**
      * Display the value of this type of element - convert to URL.
      *
      * @param string $value
@@ -333,24 +375,6 @@ abstract class AbstractElement implements ElementInterface
 
         if (str_starts_with($canonical, 'https://') || str_starts_with($canonical, 'http://')) {
             return '<a dir="auto" href="' . e($canonical) . '">' . e($value) . '</a>';
-        }
-
-        return e($value);
-    }
-
-    /**
-     * Display the value of this type of element.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    public function valueNumeric(string $value): string
-    {
-        $canonical = $this->canonical($value);
-
-        if (is_numeric($canonical)) {
-            return I18N::number((int) $canonical);
         }
 
         return e($value);
