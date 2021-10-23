@@ -20,9 +20,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\AddressCity;
+use Fisharebest\Webtrees\Elements\AddressCountry;
 use Fisharebest\Webtrees\Elements\AddressEmail;
+use Fisharebest\Webtrees\Elements\AddressFax;
+use Fisharebest\Webtrees\Elements\AddressLine;
+use Fisharebest\Webtrees\Elements\AddressLine1;
+use Fisharebest\Webtrees\Elements\AddressLine2;
+use Fisharebest\Webtrees\Elements\AddressPostalCode;
+use Fisharebest\Webtrees\Elements\AddressState;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\NamePersonal;
+use Fisharebest\Webtrees\Elements\PhoneNumber;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -45,8 +54,6 @@ class CustomTagsPersonalAncestralFile extends AbstractModule implements ModuleCo
 
     /**
      * @return array<string,ElementInterface>
-     *
-     * @see https://wiki-de.genealogy.net/GEDCOM/_Nutzerdef-Tag
      */
     public function customTags(): array
     {
@@ -54,14 +61,18 @@ class CustomTagsPersonalAncestralFile extends AbstractModule implements ModuleCo
             'INDI:NAME:_ADPN' => new NamePersonal(I18N::translate('Adopted name'), []),
             'INDI:NAME:_AKA'  => new NamePersonal(I18N::translate('Also known as'), []),
             'INDI:NAME:_AKAN' => new NamePersonal(I18N::translate('Also known as'), []),
-            'INDI:_EMAIL'     => new AddressEmail(I18N::translate('Email address')),
-            'URL'             => new CustomElement(I18N::translate('URL')),
-            '_HEB'            => new CustomElement(I18N::translate('Hebrew')),
-            '_NAME'           => new CustomElement(I18N::translate('Mailing name')),
-            '_SCBK'           => new CustomElement(I18N::translate('Scrapbook')),
-            '_SSHOW'          => new CustomElement(I18N::translate('Slide show')),
-            '_TYPE'           => new CustomElement(I18N::translate('Media type')),
-            '_URL'            => new CustomElement(I18N::translate('URL')),
+            'INDI:ADDR'       => new AddressLine(I18N::translate('Address')),
+            'INDI:ADDR:ADR1'  => new AddressLine1(I18N::translate('Address line 1')),
+            'INDI:ADDR:ADR2'  => new AddressLine2(I18N::translate('Address line 2')),
+            'INDI:ADDR:CITY'  => new AddressCity(I18N::translate('City')),
+            'INDI:ADDR:CTRY'  => new AddressCountry(I18N::translate('Country')),
+            'INDI:ADDR:POST'  => new AddressPostalCode(I18N::translate('Postal code')),
+            'INDI:ADDR:STAE'  => new AddressState(I18N::translate('State')),
+            'INDI:ADDR:_NAME' => new CustomElement(I18N::translate('Mailing name')),
+            'INDI:EMAIL'      => new AddressEmail(I18N::translate('Email address')),
+            'INDI:FAX'        => new AddressFax(I18N::translate('Fax')),
+            'INDI:PHON'       => new PhoneNumber(I18N::translate('Phone')),
+            'INDI:URL'        => new CustomElement(I18N::translate('URL')),
         ];
     }
 
