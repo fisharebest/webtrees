@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Exception;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Exception\RandomSourceException;
 use Ramsey\Uuid\Uuid;
 
 use function dechex;
@@ -47,7 +47,7 @@ class PafUid extends AbstractElement
     {
         try {
             $uid = strtr(Uuid::uuid4()->toString(), ['-' => '']);
-        } catch (RandomSourceException $ex) {
+        } catch (Exception $ex) {
             // uuid4() can fail if there is insufficient entropy in the system.
             return '';
         }
