@@ -13566,11 +13566,6 @@ msgstr "Sommige genealogieprogramma's maken GEDCOM-bestanden die mediabestandsna
 msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
 msgstr "Sommige genelealogietoepassingen slaan alle namen op in één naamrecord, met behulp van aangepaste labels zoals _MARNM en _AKA. Een alternatief is het maken van een nieuwe naamrecord voor elke naam."
 
-#. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
-#: resources/views/admin/trees-import.phtml:118
-msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths. These paths will not exist on the web-server. To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "Sommige genealogieprogramma's maken GEDCOM-bestanden die mediabestandsnamen bevatten met volledige padnamen. Deze paden bestaan niet op de web-server. Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste deel van het pad worden verwijderd."
-
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:668
 msgid "Some pages can display the number of times that they have been visited."
