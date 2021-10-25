@@ -194,6 +194,7 @@ use Fisharebest\Webtrees\Elements\XrefSubmission;
 use Fisharebest\Webtrees\Elements\XrefSubmitter;
 use Fisharebest\Webtrees\I18N;
 
+use function array_merge;
 use function preg_match;
 use function strpos;
 
