@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-02-26 19:22+0000\n"
+"PO-Revision-Date: 2021-10-29 15:57+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/hi/>\n"
@@ -1158,7 +1158,7 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/API_key
 #: app/Module/GoogleMapsModule.php:307
 msgid "API key"
-msgstr ""
+msgstr "ए.पी.आई. की"
 
 #. I18N: Location of an LDS church temple
 #: app/GedcomCode/GedcomCodeTemp.php:81
@@ -1421,12 +1421,12 @@ msgstr "एक स्रोत प्रमाण जोड़ें"
 
 #: edit_interface.php:817
 msgid "Add a spouse"
-msgstr ""
+msgstr "एक जीवनसाथी जोड़ें"
 
 #: app/Module/StoriesModule.php:113 app/Module/StoriesModule.php:195
 #: app/Module/StoriesModule.php:367
 msgid "Add a story"
-msgstr "एक कहानी जोड़ें"
+msgstr "एक जीवनी जोड़ें"
 
 #. I18N: Menu entry
 #: admin_users.php:264 app/Theme/AdministrationTheme.php:164
@@ -1492,7 +1492,7 @@ msgstr "अधिक फ़ील्ड जोड़ें"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:41
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "व्यक्तियों के लिए वंश वृक्ष में कथा कहानियां जोड़ें।"
+msgstr "व्यक्तियों के लिए वंश वृक्ष में कथा जीवनियाँ जोड़ें।"
 
 #: admin_trees_manage.php:282
 msgid "Add spaces where long lines were wrapped"
@@ -4020,7 +4020,7 @@ msgstr "संपर्क विधि"
 #: search_advanced.php:159 search_advanced.php:221 search_advanced.php:236
 #: search_advanced.php:257 search_advanced.php:272
 msgid "Contains"
-msgstr "शामिल"
+msgstr "सम्मिलित"
 
 #: app/Module/HtmlBlockModule.php:314 editnews.php:70
 msgid "Content"
@@ -4137,7 +4137,7 @@ msgstr ""
 
 #: app/Stats.php:5579
 msgid "Count"
-msgstr ""
+msgstr "गिनती"
 
 #: app/Module/GoogleMapsModule.php:610
 msgid "Countries"
@@ -5593,7 +5593,7 @@ msgstr ""
 
 #: app/Module/StoriesModule.php:106 app/Module/StoriesModule.php:188
 msgid "Edit the story"
-msgstr "कहानी एडिट करें"
+msgstr "जीवनी एडिट करें"
 
 #: admin_users.php:272
 msgid "Edit the user"
@@ -13539,16 +13539,16 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/StoriesModule.php:36 app/Module/StoriesModule.php:454
 msgid "Stories"
-msgstr "कहानियां"
+msgstr "जीवनियाँ"
 
 #: app/Module/StoriesModule.php:237
 msgid "Story"
-msgstr "कहानी"
+msgstr "जीवनी"
 
 #: app/Module/StoriesModule.php:228 app/Module/StoriesModule.php:374
 #: app/Module/StoriesModule.php:458
 msgid "Story title"
-msgstr "कहानी का टाइटल"
+msgstr "जीवनी का टाइटल"
 
 #. I18N: Part of a country, state/region/county
 #: app/Module/GoogleMapsModule.php:654 app/Module/GoogleMapsModule.php:1344
@@ -17594,7 +17594,7 @@ msgstr "चचेरे-भाई/ममेरे-भाई/मौसेरे-�
 #: app/Functions/Functions.php:1086
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "चचा ज़ाद"
+msgstr "चचेरे"
 
 #: app/Functions/Functions.php:1088
 msgctxt "father’s brother’s daughter"
@@ -17609,32 +17609,32 @@ msgstr "चचेरे भाई"
 #: app/Functions/Functions.php:1130
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "बुआ ज़ाद"
+msgstr "फूफेरे"
 
 #: app/Functions/Functions.php:1132
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr "बुआ ज़ाद बहन"
+msgstr "फूफेरी  बहन"
 
 #: app/Functions/Functions.php:1136
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr "बुआ ज़ाद भाई"
+msgstr "फूफेरे  भाई"
 
 #: app/Functions/Functions.php:1148
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr "मामू-ज़ाद"
+msgstr "ममेरे"
 
 #: app/Functions/Functions.php:1150
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr "मामू-ज़ाद बहन"
+msgstr "ममेरी बहन"
 
 #: app/Functions/Functions.php:1152
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr "मामू-ज़ाद भाई"
+msgstr "ममेरे भाई"
 
 #: app/Functions/Functions.php:1198
 msgctxt "mother’s sister’s child"
