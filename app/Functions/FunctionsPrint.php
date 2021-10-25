@@ -99,32 +99,17 @@ class FunctionsPrint
             $one_line_only = !str_contains($text, "\n") && mb_strlen($text) <= 100;
         }
 
-        if ($one_line_only) {
-            return
-                '<div class="fact_NOTE">' .
-                I18N::translate(
-                    '<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>',
-                    $label,
-                    $first_line
-                ) .
-                '</div>';
-        }
-
         $id       = 'collapse-' . Uuid::uuid4()->toString();
         $expanded = (bool) $tree->getPreference('EXPAND_NOTES');
 
-        return
-            '<div class="fact_NOTE">' .
-            '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
-            view('icons/expand') .
-            view('icons/collapse') .
-            '</a>' .
-            '<span class="label">' . $label . ':</span> ' .
-            $first_line .
-            '</div>' .
-            '<div id="' . e($id) . '" class="collapse ' . ($expanded ? 'show' : '') . '">' .
-            $html .
-            '</div>';
+        return view('note', [
+            'label'         => $label,
+            'first_line'    => $first_line,
+            'one_line_only' => $one_line_only,
+            'id'            => $id,
+            'expanded'      => $expanded,
+            'html'          => $html,
+        ]);
     }
 
     /**
