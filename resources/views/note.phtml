@@ -1,0 +1,36 @@
+<?php
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
+?>
+
+<?php if ($one_line_only): ?>
+  <div class="fact_NOTE">
+    <span class="label">
+      <?= I18N::translate($label) ?>
+    </span>
+    <span class="field" dir="auto">
+      <?= $first_line ?>
+    </span>
+  </div>
+<?php else: ?>
+  <div class="fact_NOTE">
+    <a
+      href="#<?= e($id) ?>"
+      role="button"
+      data-bs-toggle="collapse"
+      aria-controls="<?= e($id) ?>"
+      aria-expanded="<?= ($expanded ? 'true' : 'false') ?>">
+      <?= view('icons/expand') ?>
+      <?= view('icons/collapse') ?>
+    </a>
+    <span class="label">
+      <?= $label ?>:
+    </span>
+    <span data-id="<?= e($id) ?>">
+      <?= $first_line ?>
+    </span>
+  </div>
+  <div id="<?= e($id) ?>" class="note_toggle collapse <?= ($expanded ? 'show' : '')  ?>">
+    <?= $html ?>
+  </div>
+<?php endif; ?>

@@ -835,3 +835,16 @@ document.addEventListener('click', (event) => {
     });
   }
 });
+
+// Hide Note title link when collapsible element is expanded
+const note_toggles = document.querySelectorAll(".note_toggle");
+note_toggles.forEach((element, index) => {
+  const collapsible = document.getElementById(element.id);
+  const first_line = document.querySelector(`span[data-id="${element.id}"]`);
+  collapsible.addEventListener('hidden.bs.collapse', () => {
+    first_line.classList.remove('d-none');
+  });
+  collapsible.addEventListener('show.bs.collapse', () => {
+    first_line.classList.add('d-none');
+  });
+});
