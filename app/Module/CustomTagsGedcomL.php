@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressPostalCode;
+use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\CertaintyAssessment;
 use Fisharebest\Webtrees\Elements\Change;
 use Fisharebest\Webtrees\Elements\ChangeDate;
@@ -55,6 +56,7 @@ use Fisharebest\Webtrees\Elements\SourceData;
 use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Elements\TextFromSource;
 use Fisharebest\Webtrees\Elements\TimeValue;
+use Fisharebest\Webtrees\Elements\VersionNumber;
 use Fisharebest\Webtrees\Elements\WhereWithinSource;
 use Fisharebest\Webtrees\Elements\XrefAssociate;
 use Fisharebest\Webtrees\Elements\XrefLocation;
@@ -66,7 +68,7 @@ use Fisharebest\Webtrees\I18N;
 /**
  * Class CustomTagsGedcomL
  *
- * @see https://genealogy.net/GEDCOM/GEDCOM551%20GEDCOM-L%20Addendum-R1.pdf
+ * @see https://genealogy.net/GEDCOM/GEDCOM551%20GEDCOM-L%20Addendum-R2.pdf
  */
 class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface, ModuleCustomTagsInterface
 {
@@ -125,6 +127,9 @@ class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface,
             'FAM:_TODO:_PRTY'                => new ResearchTaskPriority(I18N::translate('Priority')),
             'FAM:_TODO:_RDATE'               => new DateValue(I18N::translate('Reminder date')),
             'FAM:_UID'                       => new PafUid(I18N::translate('Unique identifier')),
+            'HEAD:GEDC:VERS:_ADDENDUM'       => new EmptyElement('GEDCOM-L'),
+            'HEAD:GEDC:VERS:_ADDENDUM:VERS'  => new VersionNumber(I18N::translate('Version')),
+            'HEAD:GEDC:VERS:_ADDENDUM:WWW'   => new AddressWebPage(I18N::translate('URL')),
             'HEAD:SOUR:CORP:ADDR:_NAME'      => new CustomElement('Name of addressee'),
             'HEAD:_SCHEMA'                   => new EmptyElement(I18N::translate('Schema')),
             'HEAD:_SCHEMA:*'                 => new EmptyElement(I18N::translate('Base GEDCOM tag')),
