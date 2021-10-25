@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-02-26 19:23+0000\n"
+"PO-Revision-Date: 2021-10-29 15:57+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
+"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/hi/>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1358,7 +1359,7 @@ msgstr "एक स्रोत प्रमाण जोड़ें"
 #: resources/views/modules/stories/config.phtml:38
 #: resources/views/modules/stories/tab.phtml:36
 msgid "Add a story"
-msgstr "एक कहानी जोड़ें"
+msgstr "एक जीवनी जोड़ें"
 
 #: app/Http/RequestHandlers/UserAddPage.php:48
 #: resources/views/admin/control-panel.phtml:474
@@ -1434,7 +1435,7 @@ msgstr "अधिक फ़ील्ड जोड़ें"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:78
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "व्यक्तियों के लिए वंश वृक्ष में कथा कहानियां जोड़ें।"
+msgstr "व्यक्तियों के लिए वंश वृक्ष में कथा जीवनियाँ जोड़ें।"
 
 #: resources/views/admin/map-import-form.phtml:77
 msgid "Add new, and update existing records"
@@ -2109,7 +2110,7 @@ msgstr "एक्वा मरीन"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "क्या आप वाकई “%s” का लिंक हटाना चाहते हैं?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -3998,7 +3999,7 @@ msgstr "संपर्क विधि"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:262
 msgid "Contains"
-msgstr "शामिल"
+msgstr "सम्मिलित"
 
 #: resources/views/modules/gedcom_news/edit.phtml:37
 #: resources/views/modules/html/config.phtml:39
@@ -5674,7 +5675,7 @@ msgstr "आम नोट एडिट करें"
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
 msgid "Edit the story"
-msgstr "कहानी एडिट करें"
+msgstr "जीवनी एडिट करें"
 
 #: app/Http/RequestHandlers/UserEditPage.php:123
 msgid "Edit the user"
@@ -6256,7 +6257,7 @@ msgstr "%s की पारिवारिक पुस्तक"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "परिवार की जनगणना"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6280,7 +6281,7 @@ msgstr "%s का परिवार"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "पारिवारिक निवास स्थान"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6374,7 +6375,7 @@ msgstr "पत्नी के साथ परिवार"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch आईडी"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -11607,7 +11608,7 @@ msgstr "प्रोवो, यूटा, संयुक्त राज्य 
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "प्रतिनिधि"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -13852,17 +13853,17 @@ msgstr "रोकें"
 #: app/Module/StoriesModule.php:208
 #: resources/views/modules/stories/edit.phtml:22
 msgid "Stories"
-msgstr "कहानियां"
+msgstr "जीवनियाँ"
 
 #: resources/views/modules/stories/edit.phtml:51
 msgid "Story"
-msgstr "कहानी"
+msgstr "जीवनी"
 
 #: resources/views/modules/stories/config.phtml:55
 #: resources/views/modules/stories/edit.phtml:42
 #: resources/views/modules/stories/list.phtml:18
 msgid "Story title"
-msgstr "कहानी का टाइटल"
+msgstr "जीवनी का टाइटल"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -15441,7 +15442,7 @@ msgstr "समय"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "अंतिम परिवर्तन का समय"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15619,7 +15620,7 @@ msgstr "टोंगा"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "बहुत अधिक अनुरोध।  बाद में पुन: प्रयास करें।"
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15895,7 +15896,7 @@ msgstr "तथ्य का प्रकार"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "पहचान संख्या का प्रकार"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15913,7 +15914,7 @@ msgstr "नाम का प्रकार"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "संदर्भ संख्या का प्रकार"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -16050,7 +16051,7 @@ msgstr "अज्ञात"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "अनलिंक"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -17672,7 +17673,7 @@ msgstr "चचेरे-भाई/ममेरे-भाई/मौसेरे-�
 #: app/Functions/Functions.php:1046
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "चचा ज़ाद"
+msgstr "चचेरे"
 
 #: app/Functions/Functions.php:1048
 msgctxt "father’s brother’s daughter"
@@ -17687,32 +17688,32 @@ msgstr "चचेरे भाई"
 #: app/Functions/Functions.php:1090
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "बुआ ज़ाद"
+msgstr "फूफेरे"
 
 #: app/Functions/Functions.php:1092
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr "बुआ ज़ाद बहन"
+msgstr "फूफेरी  बहन"
 
 #: app/Functions/Functions.php:1096
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr "बुआ ज़ाद भाई"
+msgstr "फूफेरे  भाई"
 
 #: app/Functions/Functions.php:1126
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr "मामू-ज़ाद"
+msgstr "ममेरे"
 
 #: app/Functions/Functions.php:1128
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr "मामू-ज़ाद बहन"
+msgstr "ममेरी बहन"
 
 #: app/Functions/Functions.php:1130
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr "मामू-ज़ाद भाई"
+msgstr "ममेरे भाई"
 
 #: app/Functions/Functions.php:1176
 msgctxt "mother’s sister’s child"
@@ -19525,7 +19526,7 @@ msgstr "फ़ाइल आयात करें"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "इनलाइन नोट"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20401,7 +20402,7 @@ msgstr "सातवें कज़िन"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "साझा नोट"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
