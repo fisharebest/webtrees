@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-02-26 19:23+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
-"Language: hi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-29 15:57+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -636,7 +624,7 @@ msgstr "<डिफॉल्ट थीम>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>सूचना: इस फ़ॉर्म को भरकर सबमिट करने के साथ, आप सहमत हैं:</p><ul><li>हमारी साइट पर सूचीबद्ध जीवित व्यक्तियों की गोपनीयता की रक्षा करने के लिए;</li><li>और नीचे दिए टेक्स्ट बॉक्स में यह समझाने के लिए कि आप किससे संबंधित हैं, या हमें किसी ऐसे व्यक्ति के बारे में जानकारी प्रदान करने के लिए जिसे हमारी वेबसाइट पर सूचीबद्ध किया जाना चाहिए।</li></ul>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -1069,7 +1057,7 @@ msgstr "ए4"
 #: resources/views/modules/openrouteservice/config.phtml:23
 #: resources/views/modules/openstreetmap/config.phtml:23
 msgid "API key"
-msgstr ""
+msgstr "ए.पी.आई. की"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:53
@@ -1348,13 +1336,13 @@ msgstr "एक स्रोत प्रमाण जोड़ें"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:106
 msgid "Add a spouse"
-msgstr ""
+msgstr "एक जीवनसाथी जोड़ें"
 
 #: app/Module/StoriesModule.php:299
 #: resources/views/modules/stories/config.phtml:38
 #: resources/views/modules/stories/tab.phtml:36
 msgid "Add a story"
-msgstr "एक कहानी जोड़ें"
+msgstr "एक जीवनी जोड़ें"
 
 #: app/Http/RequestHandlers/UserAddPage.php:48
 #: resources/views/admin/control-panel.phtml:518
@@ -1421,7 +1409,7 @@ msgstr "अधिक फ़ील्ड जोड़ें"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:78
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "व्यक्तियों के लिए वंश वृक्ष में कथा कहानियां जोड़ें।"
+msgstr "व्यक्तियों के लिए वंश वृक्ष में कथा जीवनियाँ जोड़ें।"
 
 #: resources/views/admin/map-import-form.phtml:77
 msgid "Add new, and update existing records"
@@ -1482,7 +1470,7 @@ msgstr "कोई पत्रिका/समाचार एंट्री �
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "अतिरिक्त जानकारी"
 
 #: app/Factories/ElementFactory.php:276 app/Factories/ElementFactory.php:388
 #: app/Factories/ElementFactory.php:408 app/Factories/ElementFactory.php:661
@@ -1513,7 +1501,7 @@ msgstr "पता पंक्ति 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
-msgstr ""
+msgstr "पते"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1854,7 +1842,7 @@ msgstr "उर्फ़"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "वैकल्पिक स्थान का नाम"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2069,7 +2057,7 @@ msgstr "एक्वा मरीन"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "क्या आप वाकई “%s” का लिंक हटाना चाहते हैं?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:41
@@ -2170,7 +2158,7 @@ msgstr "इस स्रोत के साथ घटनाओं को सं
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "संबद्ध घटनाएं"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2282,7 +2270,7 @@ msgstr "अंतिम परिवर्तन के लेखक"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:640
 msgid "Autocomplete"
-msgstr ""
+msgstr "स्वत: पूर्ण"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -2620,7 +2608,7 @@ msgstr "बाइनरी डेटा ऑब्जेक्ट"
 
 #: app/Module/BingMaps.php:82 app/Module/MapLinkBing.php:42
 msgid "Bing™ maps"
-msgstr "Bing™ maps"
+msgstr "Bing™ मानचित्र"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
@@ -3381,7 +3369,7 @@ msgstr "जनगणना दिनांक"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "जनगणना तिथि और स्थान"
 
 #: app/Factories/ElementFactory.php:487
 msgid "Census place"
@@ -3426,7 +3414,7 @@ msgstr "प्रमाणपत्र"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "सर्टिफिकेट नंबर"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3802,7 +3790,7 @@ msgstr "कॉफी और क्रीम"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "सहवास"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -3923,7 +3911,7 @@ msgstr "संपर्क विधि"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:253
 msgid "Contains"
-msgstr "शामिल"
+msgstr "सम्मिलित"
 
 #: resources/views/modules/gedcom_news/edit.phtml:37
 #: resources/views/modules/html/config.phtml:39
@@ -4059,7 +4047,7 @@ msgstr "फ़ाइलें कॉपी करें…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "रिकॉर्ड के URL को क्लिपबोर्ड पर कॉपी करें"
 
 #: app/Factories/ElementFactory.php:374 app/Factories/ElementFactory.php:401
 msgid "Copyright"
@@ -4099,7 +4087,7 @@ msgstr "आपके द्वारा दर्ज की गई जानक�
 
 #: resources/views/modules/custom-tags/config.phtml:55
 msgid "Count"
-msgstr ""
+msgstr "गिनती"
 
 #. I18N: Description of the “Hit counters” module
 #: app/Module/HitCountFooterModule.php:86
@@ -4180,7 +4168,7 @@ msgstr "नया व्यक्ती जोड़ें"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "%s का उपयोग करके मानचित्र बनाएं।"
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4353,11 +4341,11 @@ msgstr "कस्टम"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "कस्टम GEDCOM उप-टैग"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "कस्टम GEDCOM टैग"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4365,7 +4353,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:712
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "कस्टम GEDCOM टैग"
 
 #: resources/views/calendar-page.phtml:203
 msgid "Custom event"
@@ -5401,7 +5389,7 @@ msgstr "उपयोगकर्ता के पसंदीदा पेजो
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "कस्टम GEDCOM टैग प्रदर्शित करें"
 
 #: app/Factories/ElementFactory.php:326 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5464,7 +5452,7 @@ msgstr "डाउनलोड %s…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "एक वर्षगांठ वाली .ICS फ़ाइल डाउनलोड करें"
 
 #: resources/views/media-page-details.phtml:86
 msgid "Download file"
@@ -5600,7 +5588,7 @@ msgstr "आम नोट एडिट करें"
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
 msgid "Edit the story"
-msgstr "कहानी एडिट करें"
+msgstr "जीवनी एडिट करें"
 
 #: app/Http/RequestHandlers/UserEditPage.php:119
 msgid "Edit the user"
@@ -5613,7 +5601,7 @@ msgstr "इस व्यक्ति को एडिट करें और उ
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "सभी GEDCOM टैग के साथ संपादित करें"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -5739,7 +5727,7 @@ msgstr "मालिक"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "क्लिपबोर्ड खाली करें"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -5834,7 +5822,7 @@ msgstr "इसफंद"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
@@ -5953,7 +5941,7 @@ msgstr "बाहरी फाइलें"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "बाहरी लिंक"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
@@ -5991,7 +5979,7 @@ msgstr "FAQs बार बार पूछे गए प्रश्नों �
 #: app/Module/CustomTagsGenPluswin.php:96
 #: app/Module/CustomTagsGenPluswin.php:98
 msgid "FOKO country"
-msgstr ""
+msgstr "FOKO देश"
 
 #: app/Factories/ElementFactory.php:529
 msgid "Fact"
@@ -6192,7 +6180,7 @@ msgstr "%s की पारिवारिक पुस्तक"
 
 #: app/Factories/ElementFactory.php:321
 msgid "Family census"
-msgstr ""
+msgstr "परिवार की जनगणना"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Family file"
@@ -6215,7 +6203,7 @@ msgstr "%s का परिवार"
 
 #: app/Factories/ElementFactory.php:350
 msgid "Family residence"
-msgstr ""
+msgstr "पारिवारिक निवास स्थान"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6308,7 +6296,7 @@ msgstr "पत्नी के साथ परिवार"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch आईडी"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6672,7 +6660,7 @@ msgstr "वंशावली से संबंधित प्रश्नो
 #: resources/views/modules/openstreetmap/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "अधिक जानकारी के लिए %s देखें।"
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
@@ -6897,7 +6885,7 @@ msgstr "GEDCOM फाइल"
 
 #: resources/views/modules/custom-tags/config.phtml:53
 msgid "GEDCOM sub-tag"
-msgstr ""
+msgstr "GEDCOM उप-टैग"
 
 #: resources/views/admin/tags.phtml:43 resources/views/admin/tags.phtml:173
 #: resources/views/admin/tags.phtml:265 resources/views/admin/tags.phtml:327
@@ -6906,12 +6894,12 @@ msgstr ""
 #: resources/views/admin/tags.phtml:883
 #: resources/views/modules/custom-tags/config.phtml:51
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "GEDCOM टैग"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:264
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM टैग"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -7010,7 +6998,7 @@ msgstr "वंशजों की पीढ़ी"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:45
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7030,7 +7018,7 @@ msgstr "भौगोलिक डेटा"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:647
 msgid "Geolocation"
-msgstr ""
+msgstr "भौगोलिकस्थान"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
@@ -7140,7 +7128,7 @@ msgstr "Google™ एनालिटिक्स"
 
 #: app/Module/GoogleMaps.php:82 app/Module/MapLinkGoogle.php:41
 msgid "Google™ maps"
-msgstr "Google™ maps"
+msgstr "Google™ मानचित्र"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
@@ -7398,7 +7386,7 @@ msgstr "उनका पेशा था"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
 msgid "Here maps"
-msgstr ""
+msgstr "Here मानचित्र"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -7435,7 +7423,7 @@ msgstr "चेशवन"
 #: resources/views/admin/tags.phtml:726 resources/views/admin/tags.phtml:780
 #: resources/views/admin/tags.phtml:884
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM टैग छुपाएं"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:155
@@ -7457,7 +7445,7 @@ msgstr "सभी से छुपाएं"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "पासवर्ड छिपाएं"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7465,7 +7453,7 @@ msgstr "अप्रयुक्त स्थानों को छिपाए
 
 #: resources/views/modules/custom-tags/config.phtml:44
 msgid "Hide/show GEDCOM tags in the edit forms"
-msgstr ""
+msgstr "संपादन प्रपत्रों में GEDCOM टैग छिपाएँ/दिखाएँ"
 
 #: app/Module/CustomTagsGedcomL.php:236
 msgid "Hierarchical relationship"
@@ -7548,7 +7536,7 @@ msgstr "%s का रेतघड़ी चार्ट"
 #: app/Module/CustomTagsGenPluswin.php:58
 #: app/Module/CustomTagsGenPluswin.php:90
 msgid "House number"
-msgstr ""
+msgstr "घर नंबर"
 
 #: resources/views/modules/census-assistant.phtml:117
 msgid "Household"
@@ -7619,7 +7607,7 @@ msgstr "पहचान नंबर"
 
 #: resources/views/admin/tags.phtml:767
 msgid "Identifiers"
-msgstr ""
+msgstr "पहचानकर्ता"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -8156,7 +8144,7 @@ msgstr "John /DOE/"
 
 #: app/Module/CustomTagsGenPluswin.php:88
 msgid "Joint family name"
-msgstr ""
+msgstr "संयुक्त परिवार का नाम"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
@@ -8408,7 +8396,7 @@ msgstr "LDS चाइल्ड सीलिंग"
 
 #: resources/views/admin/tags.phtml:713
 msgid "LDS church"
-msgstr ""
+msgstr "एलडीएस चर्च"
 
 #: app/Factories/ElementFactory.php:499
 msgid "LDS confirmation"
@@ -8843,7 +8831,7 @@ msgstr "मैगजीन"
 #: app/Module/CustomTagsGedcomL.php:238 app/Module/CustomTagsGenPluswin.php:70
 #: app/Module/CustomTagsGenPluswin.php:102
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "मेडेनहेड स्थान कोड"
 
 #: app/Module/CustomTagsPersonalAncestralFile.php:60
 msgid "Mailing name"
@@ -8977,23 +8965,23 @@ msgstr "नक्शा"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "नक्शा लिंक"
 
 #. I18N: Links to maps
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:654
 msgid "Map links"
-msgstr ""
+msgstr "नक्शा लिंक"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: resources/views/admin/control-panel.phtml:661
 msgid "Map providers"
-msgstr ""
+msgstr "मानचित्र प्रदाता"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:82
 msgid "Mapbox"
-msgstr ""
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
@@ -10345,7 +10333,7 @@ msgstr "नोक्टर्नल"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "नॉमिनाटिम"
 
 #: app/Module/IndividualListModule.php:295
 #: app/Module/IndividualListModule.php:511
@@ -10714,7 +10702,7 @@ msgstr "उफ़! webtrees इस फ़ोल्डर में फाइल 
 #: app/Module/MapGeoLocationOpenRouteService.php:44
 #: app/Module/OpenRouteServiceAutocomplete.php:81
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:57
 msgid "OpenStreetMap™"
@@ -10765,7 +10753,7 @@ msgstr "दीक्षा"
 #. I18N: Ordnance Survey is the UK government mapping service.
 #: app/Module/OrdnanceSurveyHistoricMaps.php:39
 msgid "Ordnance Survey historic maps"
-msgstr ""
+msgstr "आयुध सर्वेक्षण ऐतिहासिक मानचित्र"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -10777,7 +10765,7 @@ msgstr "अभिविन्यास"
 #: app/Module/CustomTagsGenPluswin.php:106
 #: app/Module/CustomTagsGenPluswin.php:117
 msgid "Original text"
-msgstr ""
+msgstr "मूल लेख"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -11223,7 +11211,7 @@ msgstr "नामकरण की जगह"
 #. I18N: German Bürgerort
 #: app/Module/CustomTagsGenPluswin.php:124
 msgid "Place of citizenship"
-msgstr ""
+msgstr "नागरिकता का स्थान"
 
 #: app/Factories/ElementFactory.php:498
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -11555,7 +11543,7 @@ msgstr "प्रोवो, यूटा, संयुक्त राज्य 
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "प्रतिनिधि"
 
 #: app/Factories/ElementFactory.php:697
 #: resources/views/lists/sources-table.phtml:97
@@ -11951,7 +11939,7 @@ msgstr "%1$s और %2$s के बीच संबंध"
 #: app/Module/CustomTagsGenPluswin.php:72
 #: app/Module/CustomTagsGenPluswin.php:104
 msgid "Reliability of the information"
-msgstr ""
+msgstr "जानकारी की विश्वसनीयता"
 
 #: app/Factories/ElementFactory.php:304 app/Factories/ElementFactory.php:435
 #: app/Factories/ElementFactory.php:587
@@ -12474,17 +12462,17 @@ msgstr "खोज"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "बाहरी डेटाबेस में स्थानों की खोज करें।"
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "बाहरी डेटाबेस में स्थान के नाम खोजें।"
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:56
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "%s का प्रयोग कर स्थान के नाम खोजें।"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12619,7 +12607,7 @@ msgstr "रिमाइंडर ईमेल भेजें"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:72
 msgid "Sender email"
-msgstr ""
+msgstr "प्रेषक ईमेल"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:58
@@ -12805,15 +12793,15 @@ msgstr "शहरीवर"
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/individual-page.phtml:61
 msgid "Share"
-msgstr ""
+msgstr "साझा करें"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "यूआरएल साझा करें"
 
 #: app/Module/ShareAnniversaryModule.php:79
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "किसी घटना की सालगिरह साझा करें"
 
 #: app/Functions/FunctionsPrint.php:85
 #: app/Functions/FunctionsPrintFacts.php:778
@@ -12834,7 +12822,7 @@ msgstr "आम नोट"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:747
 msgid "Shares"
-msgstr ""
+msgstr "साझा"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -13123,7 +13111,7 @@ msgstr "माता-पिता को दिखाएं"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "पासवर्ड दिखाएं"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13223,7 +13211,7 @@ msgstr "कुलनामों की सूची दिखाएं"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "किसी बाहरी मानचित्र पर किसी ईवेंट का स्थान दिखाएं।"
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
@@ -13476,7 +13464,7 @@ msgstr "कुछ वंशावली अनुप्रयोग सभी �
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "इनमें से कुछ GEDCOM टैग का उपयोग बहुत कम या कभी नहीं किया जाता है।"
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
@@ -13583,7 +13571,7 @@ msgstr "स्रोत उद्धरण"
 
 #: resources/views/admin/tags.phtml:315
 msgid "Source citations"
-msgstr ""
+msgstr "स्रोत उद्धरण"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:756
@@ -13782,22 +13770,22 @@ msgstr "रोकें"
 #: app/Module/StoriesModule.php:208
 #: resources/views/modules/stories/edit.phtml:22
 msgid "Stories"
-msgstr "कहानियां"
+msgstr "जीवनियाँ"
 
 #: resources/views/modules/stories/edit.phtml:51
 msgid "Story"
-msgstr "कहानी"
+msgstr "जीवनी"
 
 #: resources/views/modules/stories/config.phtml:55
 #: resources/views/modules/stories/edit.phtml:42
 #: resources/views/modules/stories/list.phtml:18
 msgid "Story title"
-msgstr "कहानी का टाइटल"
+msgstr "जीवनी का टाइटल"
 
 #: app/Module/CustomTagsGenPluswin.php:59
 #: app/Module/CustomTagsGenPluswin.php:91
 msgid "Street name"
-msgstr ""
+msgstr "सड़क का नाम"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -13873,7 +13861,7 @@ msgstr "SQL सर्वर के लिए सपोर्ट आज़मा�
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
 msgid "Support for non-standard GEDCOM tags."
-msgstr ""
+msgstr "गैर-मानक GEDCOM टैग के लिए सहायता।"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14146,7 +14134,7 @@ msgstr "GEDCOM फ़ाइल “%s” आयात कर ली गई।"
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "GEDCOM मानक बड़ी संख्या में डेटा-एंट्री फ़ील्ड प्रदान करता है, जिन्हें टैग कहा जाता है।"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14180,7 +14168,7 @@ msgstr "PHP.INI सेटिंग “%1$s” चालू है।"
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "URL को क्लिपबोर्ड पर कॉपी किया गया था"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -15273,7 +15261,7 @@ msgstr "समय"
 #: app/Factories/ElementFactory.php:671 app/Factories/ElementFactory.php:687
 #: app/Factories/ElementFactory.php:718 app/Factories/ElementFactory.php:734
 msgid "Time of last change"
-msgstr ""
+msgstr "अंतिम परिवर्तन का समय"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15424,11 +15412,11 @@ msgstr "खोज इंजन को बताने के लिए कि �
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "इस सेवा का उपयोग करने के लिए, आपको एक एपीआई कुंजी की आवश्यकता है।"
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "इस सेवा का उपयोग करने के लिए, आपको एक खाते की आवश्यकता है।"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15727,7 +15715,7 @@ msgstr "तथ्य का प्रकार"
 
 #: app/Factories/ElementFactory.php:541
 msgid "Type of identification number"
-msgstr ""
+msgstr "पहचान संख्या का प्रकार"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15745,7 +15733,7 @@ msgstr "नाम का प्रकार"
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
 #: app/Factories/ElementFactory.php:679 app/Factories/ElementFactory.php:699
 msgid "Type of reference number"
-msgstr ""
+msgstr "संदर्भ संख्या का प्रकार"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
@@ -15865,7 +15853,7 @@ msgstr "अज्ञात"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "अनलिंक"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15944,7 +15932,7 @@ msgstr "किसी एक अक्षर से मिलान करने 
 
 #: app/Module/ModuleMapGeoLocationTrait.php:48
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "स्थान खोजने के लिए बाहरी सेवा का उपयोग करें।"
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -15981,7 +15969,7 @@ msgstr "अक्षर A-Z, a-z, अंक 0-9 या अंडरस्को�
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "वेबट्री में मानचित्रों का प्रयोग करें।"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -16005,7 +15993,7 @@ msgstr "छाया-आकृति इस्तेमाल करें"
 
 #: app/Http/RequestHandlers/CopyFact.php:79
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "इसे दूसरे रिकॉर्ड में चिपकाने के लिए \"संपादन\" मेनू का उपयोग करें।"
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16211,7 +16199,7 @@ msgstr "यह परिवार देखें"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "%s  का प्रयोग करके इस स्थान को देखें"
 
 #: resources/views/calendar-page.phtml:219
 msgid "View this month"
@@ -16549,7 +16537,7 @@ msgstr "आप इसमें किसी प्रतिबंध को ज�
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "आप जिन GEDCOM टैग्स का उपयोग नहीं करते हैं, उन्हें छिपाकर आप संपादन प्रपत्रों को सरल बना सकते हैं।"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -17384,7 +17372,7 @@ msgstr "चचेरे-भाई/ममेरे-भाई/मौसेरे-�
 #: app/Services/RelationshipService.php:772
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "चचा ज़ाद"
+msgstr "चचेरे"
 
 #: app/Services/RelationshipService.php:774
 msgctxt "father’s brother’s daughter"
@@ -17399,32 +17387,32 @@ msgstr "चचेरे भाई"
 #: app/Services/RelationshipService.php:816
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "बुआ ज़ाद"
+msgstr "फूफेरे"
 
 #: app/Services/RelationshipService.php:818
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr "बुआ ज़ाद बहन"
+msgstr "फूफेरी  बहन"
 
 #: app/Services/RelationshipService.php:822
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr "बुआ ज़ाद भाई"
+msgstr "फूफेरे  भाई"
 
 #: app/Services/RelationshipService.php:852
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr "मामू-ज़ाद"
+msgstr "ममेरे"
 
 #: app/Services/RelationshipService.php:854
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr "मामू-ज़ाद बहन"
+msgstr "ममेरी बहन"
 
 #: app/Services/RelationshipService.php:856
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr "मामू-ज़ाद भाई"
+msgstr "ममेरे भाई"
 
 #: app/Services/RelationshipService.php:902
 msgctxt "mother’s sister’s child"
@@ -19283,7 +19271,7 @@ msgstr "फ़ाइल आयात करें"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "इनलाइन नोट"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20132,7 +20120,7 @@ msgstr "सातवें कज़िन"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "साझा नोट"
 
 #: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/trees-preferences.phtml:307
@@ -20812,7 +20800,7 @@ msgstr[1] "±%s साल"
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s” को क्लिपबोर्ड पर कॉपी कर लिया गया है।"
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
