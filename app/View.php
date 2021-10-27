@@ -257,7 +257,7 @@ class View
         [$namespace, $view_name] = explode(self::NAMESPACE_SEPARATOR, $view_name, 2);
 
         if ((self::$namespaces[$namespace] ?? null) === null) {
-            throw new RuntimeException('Namespace "' . e($namespace) .  '" not found.');
+            throw new RuntimeException('Namespace "' . e($namespace) . '" not found.');
         }
 
         $view_file = self::$namespaces[$namespace] . $view_name . self::TEMPLATE_EXTENSION;

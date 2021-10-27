@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Tree;
  */
 interface ModuleListInterface extends ModuleInterface
 {
-
     /**
      * A main menu item for this list, or null if the list is empty.
      *

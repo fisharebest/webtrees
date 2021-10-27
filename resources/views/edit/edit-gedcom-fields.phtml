@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Elements\AbstractXrefElement;
 use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -28,6 +29,13 @@ foreach ($keys as $key) {
 
 ?>
 <?php foreach ($keys as $key) : ?>
+    <?php if ($key > 0 && $levels[$key] > $levels[$key - 1] && $elements[$key] instanceof AbstractXrefElement) : ?>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11">XXX</div>
+        </div>
+    <?php endif ?>
+
     <?php if ($elements[$key] instanceof EmptyElement && $values[$key] === '') : ?>
         <input type="hidden" name="<?= e($prefix) ?>levels[]" value="<?= $levels[$key] ?>">
         <input type="hidden" name="<?= e($prefix) ?>tags[]" value="<?= e($tags[$key]) ?>">
