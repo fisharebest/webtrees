@@ -344,23 +344,6 @@ table {
 }
 
 /* ======== Block styles ===== */
-#index_main_blocks {
-    clear: none;
-    width: 60%;
-    float: left;
-}
-
-#index_small_blocks {
-    clear: none;
-    width: 40%;
-    float: right;
-}
-
-#index_full_blocks {
-    clear: none;
-    width: 100%;
-}
-
 .block {
     background-color: #fff;
     color: #555;
