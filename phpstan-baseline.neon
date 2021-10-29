@@ -465,11 +465,6 @@ parameters:
 			path: app/Http/Routes/WebRoutes.php
 
 		-
-			message: "#^Cannot call method compare\\(\\) on Collator\\|null\\.$#"
-			count: 1
-			path: app/I18N.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\I18N\\:\\:language\\(\\) should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface but returns Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\|null\\.$#"
 			count: 1
 			path: app/I18N.php
