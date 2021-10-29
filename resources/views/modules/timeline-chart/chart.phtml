@@ -386,7 +386,7 @@ use Fisharebest\Webtrees\Individual;
         ?>
 
         <!-- diagonal line -->
-        <div id="dbox<?= $factcount ?>" style="position:absolute; <?= (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) ?>px; top:<?= ($dyoffset) ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= e($img) ?>'); background-position: 0% <?= $ypos ?>;">
+        <div id="dbox<?= $factcount ?>" style="position:absolute; <?= (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) ?>px; top:<?= ($dyoffset) ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= e($img) ?>'); background-position: 0 <?= $ypos ?>;">
         </div>
     <?php endforeach ?>
 
