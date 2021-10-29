@@ -45,7 +45,7 @@ foreach ($keys as $key) {
 ?>
 <?php foreach ($keys as $key) : ?>
     <?php if ($collapse[$key - 1] ?? false) : ?>
-        <div id="collapse-<?= $key ?>" class="collapse ms-4 ps-4 border-start">
+        <div id="collapse-<?= $key ?>" class="collapse ms-4 ps-4 border-start border-4">
     <?php endif ?>
 
     <?php if ($elements[$key] instanceof EmptyElement && $values[$key] === '') : ?>
