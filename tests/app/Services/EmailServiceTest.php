@@ -55,7 +55,7 @@ class EmailServiceTest extends TestCase
 
         Site::setPreference('SMTP_ACTIVE', 'internal');
 
-        self::assertSame(true, $email_service->send($user_from, $user_to, $user_reply_to, 'Test No DKIM', 'Test Plain Message', '<p>Test Html Message</p>'));
+        self::assertTrue($email_service->send($user_from, $user_to, $user_reply_to, 'Test No DKIM', 'Test Plain Message', '<p>Test Html Message</p>'));
 
         Site::setPreference('DKIM_DOMAIN', 'example.com');
         Site::setPreference('DKIM_SELECTOR', 'sel');
@@ -73,7 +73,7 @@ U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ
 37sJ5QsW+sJyoNde3xH8vdXhzU7eT82D6X/scw9RZz+/6rCJ4p0=
 -----END RSA PRIVATE KEY-----');
 
-        self::assertSame(true, $email_service->send($user_from, $user_to, $user_reply_to, 'Test DKIM', 'Test Plain Message', '<p>Test Html Message</p>'));
+        self::assertTrue($email_service->send($user_from, $user_to, $user_reply_to, 'Test DKIM', 'Test Plain Message', '<p>Test Html Message</p>'));
     }
 
     /**

@@ -77,16 +77,16 @@ class PortugueseSurnameTraditionTest extends TestCase
     public function testNewChildNames(): void
     {
         $father_fact = $this->createStub(Fact::class);
-        $father_fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
+        $father_fact->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
 
         $father = $this->createStub(Individual::class);
-        $father->expects(self::any())->method('facts')->willReturn(new Collection([$father_fact]));
+        $father->method('facts')->willReturn(new Collection([$father_fact]));
 
         $mother_fact = $this->createStub(Fact::class);
-        $mother_fact->expects(self::any())->method('value')->willReturn('Maria /Ruiz/ /Lorca/');
+        $mother_fact->method('value')->willReturn('Maria /Ruiz/ /Lorca/');
 
         $mother = $this->createStub(Individual::class);
-        $mother->expects(self::any())->method('facts')->willReturn(new Collection([$mother_fact]));
+        $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
             ["1 NAME /Iglesias/ /Lorca/\n2 TYPE birth\n2 SURN Iglesias,Lorca"],
@@ -129,16 +129,16 @@ class PortugueseSurnameTraditionTest extends TestCase
     public function testNewChildNamesCompunds(): void
     {
         $father_fact = $this->createStub(Fact::class);
-        $father_fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ y /Iglesias/');
+        $father_fact->method('value')->willReturn('Gabriel /Garcia/ y /Iglesias/');
 
         $father = $this->createStub(Individual::class);
-        $father->expects(self::any())->method('facts')->willReturn(new Collection([$father_fact]));
+        $father->method('facts')->willReturn(new Collection([$father_fact]));
 
         $mother_fact = $this->createStub(Fact::class);
-        $mother_fact->expects(self::any())->method('value')->willReturn('Maria /Ruiz/ y /Lorca/');
+        $mother_fact->method('value')->willReturn('Maria /Ruiz/ y /Lorca/');
 
         $mother = $this->createStub(Individual::class);
-        $mother->expects(self::any())->method('facts')->willReturn(new Collection([$mother_fact]));
+        $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
             ["1 NAME /Iglesias/ /Lorca/\n2 TYPE birth\n2 SURN Iglesias,Lorca"],
@@ -156,10 +156,10 @@ class PortugueseSurnameTraditionTest extends TestCase
     public function testNewParentNames(): void
     {
         $fact = $this->createStub(Fact::class);
-        $fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
+        $fact->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
 
         $individual = $this->createStub(Individual::class);
-        $individual->expects(self::any())->method('facts')->willReturn(new Collection([$fact]));
+        $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
             ["1 NAME // /Garcia/\n2 TYPE birth\n2 SURN Garcia"],
@@ -186,10 +186,10 @@ class PortugueseSurnameTraditionTest extends TestCase
     public function testNewSpouseNames(): void
     {
         $fact = $this->createStub(Fact::class);
-        $fact->expects(self::any())->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
+        $fact->method('value')->willReturn('Gabriel /Garcia/ /Iglesias/');
 
         $individual = $this->createStub(Individual::class);
-        $individual->expects(self::any())->method('facts')->willReturn(new Collection([$fact]));
+        $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
             ["1 NAME // //\n2 TYPE birth"],
