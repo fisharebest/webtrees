@@ -14,7 +14,7 @@
 * [Coding styles and standards](#coding-styles-and-standards)
 * [Introduction](#introduction)
 * [System requirements](#system-requirements)
-* [Internet browser compatibility](#internet-browser-compatibility)
+* [Internet browser compatibility](#browser-compatibility)
 * [Installation](#installation)
 * [Upgrading](#upgrading)
 * [Building and developing](#building-and-developing)

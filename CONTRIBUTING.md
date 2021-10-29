@@ -15,7 +15,7 @@ If you want to submit a patch or feature, please create a pull request on Github
 Before submitting a pull request make sure you have [tested the code](#how-to-test) 
 and [followed the coding conventions](#coding-conventions).
 
-Please read more about [setting up your environment](#how-to-setup-the-environment) for development.
+Please read more about [setting up your environment](#how-to-setup-a-development-environment) for development.
 
 ## How to start
 
