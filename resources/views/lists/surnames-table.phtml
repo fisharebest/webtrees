@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Tree;
     data-info="false"
     data-paging="false"
     data-searching="false"
-    data-order="<?= e(json_encode($order ?? [[1, 'desc']])) ?>"
+    data-order="<?= e(json_encode($order ?? [[1, 'desc']], JSON_THROW_ON_ERROR)) ?>"
 >
     <caption class="visually-hidden">
         <?= I18N::translate('Surnames') ?>

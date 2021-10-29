@@ -11,5 +11,5 @@
 <input type="text" name="<?= e($y) ?>" class="d-none" aria-label="field2" value="<?= e($z) ?>">
 
 <script>
-    document.getElementsByName(<?= json_encode($x) ?>)[0].value = document.getElementsByName(<?= json_encode($y) ?>)[0].value;
+    document.getElementsByName(<?= json_encode($x, JSON_THROW_ON_ERROR) ?>)[0].value = document.getElementsByName(<?= json_encode($y, JSON_THROW_ON_ERROR) ?>)[0].value;
 </script>

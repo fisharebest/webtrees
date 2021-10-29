@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\View;
   function dsearchQ() {
     var query = $("#sb_desc_name").val();
     if (query.length>1) {
-      $("#sb_desc_content").load(<?= json_encode(route('module', ['module' => 'descendancy', 'action' => 'Search', 'tree' => $tree->name(), 'search' => ''])) ?> + encodeURIComponent(query));
+      $("#sb_desc_content").load(<?= json_encode(route('module', ['module' => 'descendancy', 'action' => 'Search', 'tree' => $tree->name(), 'search' => '']), JSON_THROW_ON_ERROR) ?> + encodeURIComponent(query));
     }
   }
 

@@ -52,7 +52,7 @@ $count_families = DB::table('families')
         ['visible' => array_sum($count_individuals) > 0],
         ['visible' => array_sum($count_families) > 0],
         ['visible' => (bool) $tree->getPreference('SHOW_LAST_CHANGE'), 'searchable' => false],
-    ])) ?>"
+    ], JSON_THROW_ON_ERROR)) ?>"
 >
     <caption class="visually-hidden">
         <?= $caption ?? I18N::translate('Locations') ?>

@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
         data-info="false"
         data-length-change="false"
         data-page-length="<?= e($limit_low) ?>"
-        data-order="<?= e(json_encode($order ?? [])) ?>"
+        data-order="<?= e(json_encode($order ?? [], JSON_THROW_ON_ERROR)) ?>"
     >
         <thead>
             <tr>

@@ -83,7 +83,7 @@ $count_notes = DB::table('other')
         ['visible' => array_sum($count_media) > 0],
         ['visible' => array_sum($count_notes) > 0],
         ['visible' => (bool) $tree->getPreference('SHOW_LAST_CHANGE'), 'searchable' => false],
-    ])) ?>"
+    ], JSON_THROW_ON_ERROR)) ?>"
 >
     <caption class="visually-hidden">
         <?= $caption ?? I18N::translate('Sources') ?>

@@ -43,7 +43,7 @@ $("#<?= e($table_id) ?> > .wt-table-family").dataTable({
         /* Anniversary       */ { type: "num" },
         /* Marriage place    */ { type: "text" },
         /* Children          */ { type: "num" },
-        /* Last change       */ { visible: <?= json_encode((bool) $tree->getPreference('SHOW_LAST_CHANGE')) ?> },
+        /* Last change       */ { visible: <?= json_encode((bool) $tree->getPreference('SHOW_LAST_CHANGE'), JSON_THROW_ON_ERROR) ?> },
         /* Filter marriage   */ { sortable: false },
         /* Filter alive/dead */ { sortable: false },
         /* Filter tree       */ { sortable: false }

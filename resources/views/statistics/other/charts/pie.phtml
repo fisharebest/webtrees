@@ -23,18 +23,18 @@ $name = 'callback_' . bin2hex(random_bytes(12));
 
     let <?= $name ?> = function () {
         statistics.drawPieChart(
-            <?= json_encode($id) ?>,
-            <?= json_encode($data) ?>,
+            <?= json_encode($id, JSON_THROW_ON_ERROR) ?>,
+            <?= json_encode($data, JSON_THROW_ON_ERROR) ?>,
             {
-                title: <?= json_encode($title) ?>,
+                title: <?= json_encode($title, JSON_THROW_ON_ERROR) ?>,
 
                 // Note: "legend" needs to be defined completely as Object.assign does only a shallow merge
                 legend: {
                     alignment: 'center',
-                    labeledValueText: <?= json_encode($labeledValueText ?? 'value') ?>,
+                    labeledValueText: <?= json_encode($labeledValueText ?? 'value', JSON_THROW_ON_ERROR) ?>,
                     position: 'labeled'
                 },
-                colors: <?= json_encode($colors) ?>
+                colors: <?= json_encode($colors, JSON_THROW_ON_ERROR) ?>
             }
         );
     };
@@ -42,11 +42,11 @@ $name = 'callback_' . bin2hex(random_bytes(12));
     if (document.readyState === "complete"
         || (document.readyState !== "loading" && !document.documentElement.doScroll)
     ) {
-        statistics.init(<?= json_encode($language) ?>);
+        statistics.init(<?= json_encode($language, JSON_THROW_ON_ERROR) ?>);
         statistics.addCallback(<?= $name ?>);
     } else {
         document.addEventListener("DOMContentLoaded", function () {
-            statistics.init(<?= json_encode($language) ?>);
+            statistics.init(<?= json_encode($language, JSON_THROW_ON_ERROR) ?>);
             statistics.addCallback(<?= $name ?>);
         });
     }

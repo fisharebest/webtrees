@@ -42,7 +42,7 @@ use Fisharebest\Webtrees\View;
   'use strict';
 
   window.WT_OSM = (function () {
-    const config = <?= json_encode($leaflet_config) ?>;
+    const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
 
     let map = null;
     let sidebar = $('.osm-sidebar');
@@ -89,7 +89,7 @@ use Fisharebest\Webtrees\View;
      * @private
      */
     let _buildMapData = function () {
-      let data = <?= json_encode($data['markers']) ?>;
+      let data = <?= json_encode($data['markers'], JSON_THROW_ON_ERROR) ?>;
 
       let geoJsonLayer = L.geoJson(data, {
         pointToLayer: function (feature, latlng) {
@@ -125,8 +125,8 @@ use Fisharebest\Webtrees\View;
         map.addLayer(markers);
       }
 
-      map.fitBounds(<?= json_encode($data['bounds']) ?>, { padding: [50, 30] });
-      sidebar.append(<?= json_encode($data['sidebar']) ?>);
+      map.fitBounds(<?= json_encode($data['bounds'], JSON_THROW_ON_ERROR) ?>, { padding: [50, 30] });
+      sidebar.append(<?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>);
     };
 
     /**

@@ -7,21 +7,21 @@
 
 ?>
 <script>
-  const CKEDITOR_BASEPATH = <?= json_encode($ckeditor_path) ?>;
+  const CKEDITOR_BASEPATH = <?= json_encode($ckeditor_path, JSON_THROW_ON_ERROR) ?>;
 
   (function () {
     let elements = document.querySelectorAll('textarea.html-edit');
 
     if (elements.length !== 0) {
       let script = document.createElement('script');
-      script.src = <?= json_encode($ckeditor_path . 'ckeditor.js') ?>;
+      script.src = <?= json_encode($ckeditor_path . 'ckeditor.js', JSON_THROW_ON_ERROR) ?>;
       script.type = 'text/javascript';
       script.onload = function () {
         // Enable for all browsers
         CKEDITOR.env.isCompatible = true;
 
         // Disable toolbars
-        CKEDITOR.config.language = <?= json_encode(strtolower($language)) ?>;
+        CKEDITOR.config.language = <?= json_encode(strtolower($language), JSON_THROW_ON_ERROR) ?>;
         CKEDITOR.config.removePlugins = 'forms,newpage,preview,print,save,templates,flash,iframe';
         CKEDITOR.config.extraAllowedContent = 'area[shape,coords,href,target,alt,title];map[name];img[usemap];*[class,style]';
 

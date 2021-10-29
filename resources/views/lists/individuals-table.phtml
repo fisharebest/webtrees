@@ -50,7 +50,7 @@ $("#<?= e($table_id) ?> > .wt-table-individual").dataTable({
     columns: [
         /* Given names  */ { type: "text" },
         /* Surnames     */ { type: "text" },
-        /* SOSA number  */ { type: "num", visible: <?= json_encode($sosa) ?> },
+        /* SOSA number  */ { type: "num", visible: <?= json_encode($sosa, JSON_THROW_ON_ERROR) ?> },
         /* Birth date   */ { type: "num" },
         /* Anniversary  */ { type: "num" },
         /* Birthplace   */ { type: "text" },
@@ -59,13 +59,13 @@ $("#<?= e($table_id) ?> > .wt-table-individual").dataTable({
         /* Anniversary  */ { type: "num" },
         /* Age          */ { type: "num" },
         /* Death place  */ { type: "text" },
-        /* Last change  */ { visible: <?= json_encode($tree->getPreference('SHOW_LAST_CHANGE')) ?> },
+        /* Last change  */ { visible: <?= json_encode($tree->getPreference('SHOW_LAST_CHANGE'), JSON_THROW_ON_ERROR) ?> },
         /* Filter sex   */ { sortable: false },
         /* Filter birth */ { sortable: false },
         /* Filter death */ { sortable: false },
         /* Filter tree  */ { sortable: false }
     ],
-    sorting: <?= json_encode($sosa ? [[4, 'asc']] : [[1, 'asc']]) ?>
+    sorting: <?= json_encode($sosa ? [[4, 'asc']] : [[1, 'asc']], JSON_THROW_ON_ERROR) ?>
 });
 
 $("#<?= e($table_id) ?>")

@@ -158,7 +158,7 @@ use Fisharebest\Webtrees\View;
             } else {
                 $(table).DataTable({
                     'ajax': {
-                        'url': <?= json_encode(route(DataFixData::class, ['tree' => $tree->name(), 'data_fix' => $data_fix->name()])) ?>,
+                        'url': <?= json_encode(route(DataFixData::class, ['tree' => $tree->name(), 'data_fix' => $data_fix->name()]), JSON_THROW_ON_ERROR) ?>,
                         'data': function (data) {
                             $.extend(data, getParams());
                         }
@@ -178,7 +178,7 @@ use Fisharebest\Webtrees\View;
             container.classList.add('d-none');
             progress.classList.remove('d-none');
 
-            let url = addParamsToUrl(<?= json_encode(route(DataFixUpdateAll::class, ['tree' => $tree->name(), 'data_fix' => $data_fix->name()])) ?>);
+            let url = addParamsToUrl(<?= json_encode(route(DataFixUpdateAll::class, ['tree' => $tree->name(), 'data_fix' => $data_fix->name()]), JSON_THROW_ON_ERROR) ?>);
 
             fetch(url, {
                 headers: new Headers({

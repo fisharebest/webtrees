@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\I18N;
     "use strict";
 
     window.WT_OSM = (function() {
-        const config = <?= json_encode($leaflet_config) ?>;
+        const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
 
         let map       = null;
         let sidebar   = $('.osm-sidebar');
@@ -82,11 +82,11 @@ use Fisharebest\Webtrees\I18N;
          */
         let _buildMapData = function() {
             let sidebar_content = "";
-            let data            = <?= json_encode($data) ?>;
+            let data            = <?= json_encode($data, JSON_THROW_ON_ERROR) ?>;
 
             if (data.features.length === 0) {
                 map.fitWorld();
-                sidebar_content += '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show')) ?> + '</div>';
+                sidebar_content += '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show'), JSON_THROW_ON_ERROR) ?> + '</div>';
             } else {
                 let geoJsonLayer = L.geoJson(data, {
                     pointToLayer: function(feature, latlng) {

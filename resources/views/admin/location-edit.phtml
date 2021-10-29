@@ -94,14 +94,14 @@ use Fisharebest\Webtrees\View;
     'use strict';
 
     window.WT_OSM_ADMIN = (function () {
-        const config = <?= json_encode($leaflet_config) ?>;
-        const add_place = <?= json_encode($location->id() === null) ?>;
+        const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
+        const add_place = <?= json_encode($location->id() === null, JSON_THROW_ON_ERROR) ?>;
 
         // postcss_image_inliner breaks the autodetection of image paths.
-        L.Icon.Default.imagePath = <?= json_encode(asset('css/images/')) ?>;
+        L.Icon.Default.imagePath = <?= json_encode(asset('css/images/'), JSON_THROW_ON_ERROR) ?>;
 
         // draggable marker
-        let marker = L.marker(<?= json_encode($marker_position) ?>, {
+        let marker = L.marker(<?= json_encode($marker_position, JSON_THROW_ON_ERROR) ?>, {
             draggable: true,
         })
             .on('dragend', function () {
@@ -119,8 +119,8 @@ use Fisharebest\Webtrees\View;
             onAdd: function (map) {
                 let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
                 container.onclick = function () {
-                    map.fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]});
-                    marker.setLatLng(<?= json_encode([$location->latitude(), $location->longitude()]) ?>);
+                    map.fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]});
+                    marker.setLatLng(<?= json_encode([$location->latitude(), $location->longitude()], JSON_THROW_ON_ERROR) ?>);
                     $('form').trigger('reset');
                     return false;
                 };
@@ -143,10 +143,10 @@ use Fisharebest\Webtrees\View;
             defaultMarkGeocode: false,
             expand: 'click',
             showResultIcons: true,
-            query: <?= json_encode($location->locationName()) ?>,
-            placeholder: <?= json_encode(I18N::translate('Place')) ?>,
-            errorMessage: <?= json_encode(I18N::translate('Nothing found.')) ?>,
-            iconLabel: <?= json_encode(I18N::translate('Search')) ?>
+            query: <?= json_encode($location->locationName(), JSON_THROW_ON_ERROR) ?>,
+            placeholder: <?= json_encode(I18N::translate('Place'), JSON_THROW_ON_ERROR) ?>,
+            errorMessage: <?= json_encode(I18N::translate('Nothing found.'), JSON_THROW_ON_ERROR) ?>,
+            iconLabel: <?= json_encode(I18N::translate('Search'), JSON_THROW_ON_ERROR) ?>
         })
             .on('markgeocode', function (result) {
                 let coords = result.geocode.center;
@@ -166,7 +166,7 @@ use Fisharebest\Webtrees\View;
         $(function () {
             // geocoder button tooltip
             $('.leaflet-control-geocoder-icon')
-                .attr('title', <?= json_encode(I18N::translate('Search')) ?>);
+                .attr('title', <?= json_encode(I18N::translate('Search'), JSON_THROW_ON_ERROR) ?>);
 
             $('.editable').on('change', function () {
                 let lat = $('#new_place_lati').val();
@@ -180,7 +180,7 @@ use Fisharebest\Webtrees\View;
             .addControl(new resetControl())
             .addControl(geocoder)
             .addLayer(marker)
-            .fitBounds(<?= json_encode($map_bounds) ?>, {padding: [50, 30]})
+            .fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]})
             .on('zoomend', function () {
               if (!map.getBounds().contains(marker.getLatLng())) {
                 map.panTo(marker.getLatLng());

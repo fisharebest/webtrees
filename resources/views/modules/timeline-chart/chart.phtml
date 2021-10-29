@@ -19,23 +19,23 @@ use Fisharebest\Webtrees\Individual;
 ?>
 
 <script>
-    let bottomy = <?= json_encode(($topyear - $baseyear) * $scale - 5) ?>;
+    let bottomy = <?= json_encode(($topyear - $baseyear) * $scale - 5, JSON_THROW_ON_ERROR) ?>;
     let topy = 0;
     let baseyear = <?= $baseyear - 25 / $scale ?>;
     let birthyears = [];
     let birthmonths = [];
     let birthdays = [];
     <?php foreach ($individuals as $c => $indi) : ?>
-    birthyears [<?= json_encode($c) ?>] = <?= json_encode($birthyears[$indi->xref()] ?? null) ?>;
-    birthmonths[<?= json_encode($c) ?>] = <?= json_encode($birthmonths[$indi->xref()] ?? null) ?>;
-    birthdays  [<?= json_encode($c) ?>] = <?= json_encode($birthdays[$indi->xref()] ?? null) ?>;
+    birthyears [<?= json_encode($c, JSON_THROW_ON_ERROR) ?>] = <?= json_encode($birthyears[$indi->xref()] ?? null, JSON_THROW_ON_ERROR) ?>;
+    birthmonths[<?= json_encode($c, JSON_THROW_ON_ERROR) ?>] = <?= json_encode($birthmonths[$indi->xref()] ?? null, JSON_THROW_ON_ERROR) ?>;
+    birthdays  [<?= json_encode($c, JSON_THROW_ON_ERROR) ?>] = <?= json_encode($birthdays[$indi->xref()] ?? null, JSON_THROW_ON_ERROR) ?>;
     <?php endforeach ?>
 
-    let bheight = <?= json_encode($bheight) ?>;
-    let scale = <?= json_encode($scale) ?>;
+    let bheight = <?= json_encode($bheight, JSON_THROW_ON_ERROR) ?>;
+    let scale = <?= json_encode($scale, JSON_THROW_ON_ERROR) ?>;
 
     timeline_chart_div = document.getElementById("timeline_chart");
-    timeline_chart_div.style.height = '<?= json_encode(0 + ($topyear - $baseyear) * $scale * 1.1) ?>px';
+    timeline_chart_div.style.height = '<?= json_encode(0 + ($topyear - $baseyear) * $scale * 1.1, JSON_THROW_ON_ERROR) ?>px';
 
     /**
      * Find the position of an event, relative to an element.

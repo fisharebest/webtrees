@@ -26,6 +26,6 @@ use Fisharebest\Webtrees\I18N;
             input.select();
             document.execCommand("copy");
         }
-        alert(<?= json_encode(I18N::translate('The URL was copied to the clipboard')) ?>);
+        alert(<?= json_encode(I18N::translate('The URL was copied to the clipboard'), JSON_THROW_ON_ERROR) ?>);
     });
 </script>

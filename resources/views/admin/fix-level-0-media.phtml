@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\I18N;
 <table
     class="table table-bordered table-sm table-hover wt-fix-table datatables d-none"
     <?= view('lists/datatables-attributes') ?>
-    data-ajax="<?= e(json_encode(['url' => route(FixLevel0MediaData::class)])) ?>"
+    data-ajax="<?= e(json_encode(['url' => route(FixLevel0MediaData::class)], JSON_THROW_ON_ERROR)) ?>"
     data-server-side="true"
 >
     <caption class="visually-hidden">
@@ -58,7 +58,7 @@ use Fisharebest\Webtrees\I18N;
             "tree_id":   element.dataset.treeId
           },
           method: "POST",
-          url: <?= json_encode(route(FixLevel0MediaAction::class)) ?>
+          url: <?= json_encode(route(FixLevel0MediaAction::class), JSON_THROW_ON_ERROR) ?>
         }).done(function () {
           $(".wt-fix-table").DataTable().ajax.reload(null, false);
         });

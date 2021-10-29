@@ -80,10 +80,10 @@ use Fisharebest\Webtrees\Tree;
 </div>
 
 <script>
-    var play = <?= json_encode($start_automatically) ?>;
+    var play = <?= json_encode($start_automatically, JSON_THROW_ON_ERROR) ?>;
 
     if (play) {
-        var timeout = setTimeout(slideShowReload, <?= json_encode($delay * 1000) ?>);
+        var timeout = setTimeout(slideShowReload, <?= json_encode($delay * 1000, JSON_THROW_ON_ERROR) ?>);
     }
 
     function slideShowReload() {

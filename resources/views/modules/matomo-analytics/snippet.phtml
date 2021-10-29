@@ -12,10 +12,10 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     (function() {
-        var u=<?= json_encode($MATOMO_URL ?? '') ?>;
+        var u=<?= json_encode($MATOMO_URL ?? '', JSON_THROW_ON_ERROR) ?>;
         _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', <?= json_encode($MATOMO_SITE_ID ?? '') ?>]);
-        _paq.push(['setUserId', <?= json_encode($user->username()) ?>]);
+        _paq.push(['setSiteId', <?= json_encode($MATOMO_SITE_ID ?? '', JSON_THROW_ON_ERROR) ?>]);
+        _paq.push(['setUserId', <?= json_encode($user->username(), JSON_THROW_ON_ERROR) ?>]);
         var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
         g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
     })();
