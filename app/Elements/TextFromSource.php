@@ -59,7 +59,6 @@ class TextFromSource extends AbstractElement
         return $this->editTextArea($id, $name, $value);
     }
 
-
     /**
      * Display the value of this type of element.
      *

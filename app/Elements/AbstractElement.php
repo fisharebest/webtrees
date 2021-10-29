@@ -86,6 +86,34 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
+     * Convert a multi-line value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    protected function canonicalText(string $value): string
+    {
+        // Browsers use MS-DOS line endings in multi-line data.
+        $value = strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
+
+        // Remove blank lines at start/end
+        $value = preg_replace('/^( *\n)+/', '', $value);
+
+        return preg_replace('/(\n *)+$/', '', $value);
+    }
+
+    /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return false;
+    }
+
+    /**
      * Create a default value for this element.
      *
      * @param Tree $tree
@@ -169,7 +197,7 @@ abstract class AbstractElement implements ElementInterface
      */
     public function editTextArea(string $id, string $name, string $value): string
     {
-        return '<textarea class="form-control" id="' . e($id) . '" name="' . e($name) . '" rows="5" dir="auto">' . e($value) . '</textarea>';
+        return '<textarea class="form-control" id="' . e($id) . '" name="' . e($name) . '" rows="3" dir="auto">' . e($value) . '</textarea>';
     }
 
     /**
@@ -284,42 +312,6 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
-     * Display the value of this type of element.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    public function valueNumeric(string $value): string
-    {
-        $canonical = $this->canonical($value);
-
-        if (is_numeric($canonical)) {
-            return I18N::number((int) $canonical);
-        }
-
-        return e($value);
-    }
-
-    /**
-     * Convert a multi-line value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    protected function canonicalText(string $value): string
-    {
-        // Browsers use MS-DOS line endings in multi-line data.
-        $value = strtr($value, ["\t" => ' ', "\r\n" => "\n", "\r" => "\n"]);
-
-        // Remove blank lines at start/end
-        $value = preg_replace('/^( *\n)+/', '', $value);
-
-        return preg_replace('/(\n *)+$/', '', $value);
-    }
-
-    /**
      * Display the value of this type of element - convert URLs to links.
      *
      * @param string $value
@@ -375,6 +367,24 @@ abstract class AbstractElement implements ElementInterface
 
         if (str_starts_with($canonical, 'https://') || str_starts_with($canonical, 'http://')) {
             return '<a dir="auto" href="' . e($canonical) . '">' . e($value) . '</a>';
+        }
+
+        return e($value);
+    }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function valueNumeric(string $value): string
+    {
+        $canonical = $this->canonical($value);
+
+        if (is_numeric($canonical)) {
+            return I18N::number((int) $canonical);
         }
 
         return e($value);

@@ -19,21 +19,33 @@ $levels   = array_map(static fn(string $x): int => (int) $x, $levels);
 $keys     = array_keys($levels);
 $elements = [];
 $ids      = [];
+$collapse = [];
 
 foreach ($keys as $key) {
     $hierarchy[$levels[$key]] = $tags[$key];
     $full_tag                 = implode(':', array_slice($hierarchy, 0, 1 + $levels[$key]));
     $elements[$key]           = Registry::elementFactory()->make($full_tag);
     $ids[$key]                = Uuid::uuid4()->toString() . '-' . $full_tag;
+
+    // Does this element have any children?
+    $has_subtags = ($levels[$key + 1] ?? 0) > $levels[$key];
+
+    // Do these children have values?
+    $has_subtags_with_values = false;
+    for ($n = $key + 1; $n < count($keys) && $levels[$n] > $levels[$key]; ++$n) {
+        if ($values[$n] !== '') {
+            $has_subtags_with_values = true;
+            break;
+        }
+    }
+
+    $collapse[$key] = $elements[$key]->collapseChildren() && $has_subtags && !$has_subtags_with_values;
 }
 
 ?>
 <?php foreach ($keys as $key) : ?>
-    <?php if ($key > 0 && $levels[$key] > $levels[$key - 1] && $elements[$key] instanceof AbstractXrefElement) : ?>
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-11">XXX</div>
-        </div>
+    <?php if ($collapse[$key - 1] ?? false) : ?>
+        <div id="collapse-<?= $key ?>" class="collapse ms-4 ps-4 border-start">
     <?php endif ?>
 
     <?php if ($elements[$key] instanceof EmptyElement && $values[$key] === '') : ?>
@@ -44,13 +56,28 @@ foreach ($keys as $key) {
         <div class="row form-group mb-3">
             <label class="col-sm-3 col-form-label" for="<?= e($ids[$key]) ?>">
                 <?= $elements[$key]->label() ?>
+                <?php if ($collapse[$key]) : ?>
+                    <button class="btn btn-link" data-bs-target="#collapse-<?= $key + 1 ?>" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapse-<?= $key + 1 ?>" type="button">
+                        <?= view('icons/expand') ?>
+                        <?= view('icons/collapse') ?>
+                    </button>
+                <?php endif ?>
             </label>
 
-            <div class="col-sm-9">
+            <div class="col-sm">
                 <input type="hidden" name="<?= e($prefix) ?>levels[]" value="<?= $levels[$key] ?>">
                 <input type="hidden" name="<?= e($prefix) ?>tags[]" value="<?= e($tags[$key]) ?>">
                 <?= $elements[$key]->edit($ids[$key], $prefix . 'values[]', strtr($values[$key], ["\r" => "\n"]), $tree) ?>
             </div>
         </div>
     <?php endif ?>
+
+    <?php for ($n = $key; $levels[$n] >= ($levels[$key + 1] ?? PHP_INT_MAX); $n--) : ?>
+        <?php if ( $collapse[$n] ) : ?>
+            </div>
+        <?php endif ?>
+        <?php if ( $levels[$n] === ($levels[$key + 1] ?? PHP_INT_MAX)) : ?>
+            <?php break; ?>
+        <?php endif ?>
+    <?php endfor ?>
 <?php endforeach ?>
