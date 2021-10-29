@@ -110,8 +110,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     private GedcomExportService $gedcom_export_service;
 
-    private UserService $user_service;
-
     private ResponseFactoryInterface $response_factory;
 
     private StreamFactoryInterface $stream_factory;
@@ -122,18 +120,15 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param GedcomExportService      $gedcom_export_service
      * @param ResponseFactoryInterface $response_factory
      * @param StreamFactoryInterface   $stream_factory
-     * @param UserService              $user_service
      */
     public function __construct(
         GedcomExportService $gedcom_export_service,
         ResponseFactoryInterface $response_factory,
-        StreamFactoryInterface $stream_factory,
-        UserService $user_service
+        StreamFactoryInterface $stream_factory
     ) {
         $this->gedcom_export_service = $gedcom_export_service;
         $this->response_factory      = $response_factory;
         $this->stream_factory        = $stream_factory;
-        $this->user_service          = $user_service;
     }
 
     /**
