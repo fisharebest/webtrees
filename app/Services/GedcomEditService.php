@@ -442,6 +442,9 @@ class GedcomEditService
 
         $subtags = array_keys($subtags);
 
+        // Don't include facts/events that we hidden in the control panel.
+        $subtags = array_filter($subtags, fn (string $subtag): bool => !$this->isHiddenTag($record->tag() . ':' . $subtag));
+
         if (!$include_hidden) {
             $fn_hidden = fn (string $t): bool => !$this->isHiddenTag($record->tag() . ':' . $t);
             $subtags   = array_filter($subtags, $fn_hidden);
