@@ -51,8 +51,10 @@ class ChartDistribution
     private array $country_to_iso3166;
 
     /**
-     * @param Tree           $tree
-     * @param CountryService $country_service
+     * @param Tree                          $tree
+     * @param CountryService                $country_service
+     * @param IndividualRepositoryInterface $individual_repository
+     * @param PlaceRepositoryInterface      $place_repository
      */
     public function __construct(
         Tree $tree,

@@ -335,6 +335,7 @@ abstract class AbstractElement implements ElementInterface
      * Display the value of this type of element - multi-line text with/without markdown.
      *
      * @param string $value
+     * @param Tree   $tree
      *
      * @return string
      */
