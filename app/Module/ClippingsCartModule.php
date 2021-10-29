@@ -41,7 +41,6 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\GedcomExportService;
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;

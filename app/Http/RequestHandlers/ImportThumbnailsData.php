@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\FilesystemReader;

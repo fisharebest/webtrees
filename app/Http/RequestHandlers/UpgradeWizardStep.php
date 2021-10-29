@@ -36,14 +36,12 @@ use League\Flysystem\FilesystemOperator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use RuntimeException;
 use Throwable;
 
 use function assert;
 use function date;
 use function e;
 use function fclose;
-use function fopen;
 use function intdiv;
 use function microtime;
 use function response;

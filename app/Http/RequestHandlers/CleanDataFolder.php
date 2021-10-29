@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemReader;
 use League\Flysystem\StorageAttributes;

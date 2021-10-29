@@ -28,7 +28,6 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\FilesystemReader;

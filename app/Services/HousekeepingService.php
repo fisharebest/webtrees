@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
-use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\FilesystemReader;
