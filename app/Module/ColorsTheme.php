@@ -194,7 +194,7 @@ class ColorsTheme extends CloudsTheme
     private function palette(): string
     {
         // If we are logged in, use our preference
-        $palette = Auth::user()->getPreference('themecolor', '');
+        $palette = Auth::user()->getPreference('themecolor');
 
         // If not logged in or no preference, use one we selected earlier in the session.
         if ($palette === '') {

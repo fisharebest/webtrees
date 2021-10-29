@@ -219,7 +219,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $swap_block = DB::table('block')
             ->where('module_name', '=', $this->name())
             ->where('block_order', '>', $block_order)
-            ->orderBy('block_order', 'asc')
+            ->orderBy('block_order')
             ->first();
 
         if ($block_order !== null && $swap_block !== null) {

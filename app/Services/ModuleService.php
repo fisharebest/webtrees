@@ -275,9 +275,14 @@ use Illuminate\Support\Collection;
 use Throwable;
 
 use function app;
+use function basename;
+use function dirname;
+use function glob;
 use function is_object;
 use function str_contains;
 use function strlen;
+
+use const GLOB_NOSORT;
 
 /**
  * Functions for managing and maintaining modules.
@@ -714,23 +719,15 @@ class ModuleService
                 return strlen($module_name) <= 30;
             })
             ->map(static function (string $filename): ?ModuleCustomInterface {
-                try {
-                    $module = self::load($filename);
+                $module = self::load($filename);
 
-                    if ($module instanceof ModuleCustomInterface) {
-                        $module_name = '_' . basename(dirname($filename)) . '_';
-
-                        $module->setName($module_name);
-                    } else {
-                        return null;
-                    }
+                if ($module instanceof ModuleCustomInterface) {
+                    $module->setName('_' . basename(dirname($filename)) . '_');
 
                     return $module;
-                } catch (Throwable $ex) {
-                    // It would be nice to show this error in a flash-message or similar, but the framework
-                    // has not yet been initialised so we have no themes, languages, sessions, etc.
-                    throw $ex;
                 }
+
+                return null;
             })
             ->filter()
             ->mapWithKeys(static function (ModuleCustomInterface $module): array {

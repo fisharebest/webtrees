@@ -1122,7 +1122,7 @@ class FunctionsRtl
                     }
                 } else {
                     $newLength = strlen($textSpan) + $countTrailingSpaces;
-                    $textSpan  = str_pad($textSpan, $newLength, ' ');
+                    $textSpan  = str_pad($textSpan, $newLength);
                 }
             }
 

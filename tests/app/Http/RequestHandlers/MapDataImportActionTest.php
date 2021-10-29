@@ -40,9 +40,8 @@ class MapDataImportActionTest extends TestCase
      */
     public function testImportAction(): void
     {
-        $map_data_service = new MapDataService();
         $csv              = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
-        $handler          = new MapDataImportAction($map_data_service);
+        $handler          = new MapDataImportAction();
         $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['serverfile' => $csv]);
         $response         = $handler->handle($request);
 

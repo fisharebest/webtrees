@@ -185,7 +185,7 @@ class EmailService
         // Some web hosts disable checkdnsrr.
         if (function_exists('checkdnsrr')) {
             $domain = substr(strrchr($address->getAddress(), '@') ?: '@', 1);
-            return checkdnsrr($domain, 'MX');
+            return checkdnsrr($domain);
         }
 
         return true;
