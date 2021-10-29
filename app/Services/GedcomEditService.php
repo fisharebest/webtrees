@@ -29,9 +29,12 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 
+use function array_diff;
 use function array_filter;
+use function array_keys;
 use function array_merge;
 use function array_shift;
+use function array_slice;
 use function array_values;
 use function assert;
 use function count;
@@ -43,7 +46,6 @@ use function preg_split;
 use function str_repeat;
 use function str_replace;
 use function substr_count;
-use function trim;
 
 use const ARRAY_FILTER_USE_BOTH;
 use const ARRAY_FILTER_USE_KEY;
@@ -54,282 +56,6 @@ use const PHP_INT_MAX;
  */
 class GedcomEditService
 {
-    /** @var array<string> */
-    public array $glevels = [];
-
-    /** @var array<string> */
-    public array $tag = [];
-
-    /** @var array<string> */
-    public array $islink = [];
-
-    /** @var array<string> */
-    public array $text = [];
-
-    /** @var array<string> */
-    protected array $glevelsSOUR = [];
-
-    /** @var array<string> */
-    protected array $tagSOUR = [];
-
-    /** @var array<string> */
-    protected array $islinkSOUR = [];
-
-    /** @var array<string> */
-    protected array $textSOUR = [];
-
-    /** @var array<string> */
-    protected array $glevelsRest = [];
-
-    /** @var array<string> */
-    protected array $tagRest = [];
-
-    /** @var array<string> */
-    protected array $islinkRest = [];
-
-    /** @var array<string> */
-    protected array $textRest = [];
-
-    /**
-     * This function splits the $glevels, $tag, $islink, and $text arrays so that the
-     * entries associated with a SOUR record are separate from everything else.
-     *
-     * Input arrays:
-     * - $glevels[] - an array of the gedcom level for each line that was edited
-     * - $tag[] - an array of the tags for each gedcom line that was edited
-     * - $islink[] - an array of 1 or 0 values to indicate when the text is a link element
-     * - $text[] - an array of the text data for each line
-     *
-     * Output arrays:
-     * ** For the SOUR record:
-     * - $glevelsSOUR[] - an array of the gedcom level for each line that was edited
-     * - $tagSOUR[] - an array of the tags for each gedcom line that was edited
-     * - $islinkSOUR[] - an array of 1 or 0 values to indicate when the text is a link element
-     * - $textSOUR[] - an array of the text data for each line
-     * ** For the remaining records:
-     * - $glevelsRest[] - an array of the gedcom level for each line that was edited
-     * - $tagRest[] - an array of the tags for each gedcom line that was edited
-     * - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
-     * - $textRest[] - an array of the text data for each line
-     *
-     * @return void
-     */
-    public function splitSource(): void
-    {
-        $this->glevelsSOUR = [];
-        $this->tagSOUR     = [];
-        $this->islinkSOUR  = [];
-        $this->textSOUR    = [];
-
-        $this->glevelsRest = [];
-        $this->tagRest     = [];
-        $this->islinkRest  = [];
-        $this->textRest    = [];
-
-        $inSOUR    = false;
-        $levelSOUR = 0;
-
-        // Assume all arrays are the same size.
-        $count = count($this->glevels);
-
-        for ($i = 0; $i < $count; $i++) {
-            if ($inSOUR) {
-                if ($levelSOUR < $this->glevels[$i]) {
-                    $dest = 'S';
-                } else {
-                    $inSOUR = false;
-                    $dest   = 'R';
-                }
-            } elseif ($this->tag[$i] === 'SOUR') {
-                $inSOUR    = true;
-                $levelSOUR = $this->glevels[$i];
-                $dest      = 'S';
-            } else {
-                $dest = 'R';
-            }
-
-            if ($dest === 'S') {
-                $this->glevelsSOUR[] = $this->glevels[$i];
-                $this->tagSOUR[]     = $this->tag[$i];
-                $this->islinkSOUR[]  = $this->islink[$i];
-                $this->textSOUR[]    = $this->text[$i];
-            } else {
-                $this->glevelsRest[] = $this->glevels[$i];
-                $this->tagRest[]     = $this->tag[$i];
-                $this->islinkRest[]  = $this->islink[$i];
-                $this->textRest[]    = $this->text[$i];
-            }
-        }
-    }
-
-    /**
-     * Add new GEDCOM lines from the $xxxRest interface update arrays, which
-     * were produced by the splitSOUR() function.
-     * See the FunctionsEdit::handle_updatesges() function for details.
-     *
-     * @param string $inputRec
-     *
-     * @return string
-     */
-    public function updateRest(string $inputRec): string
-    {
-        if (count($this->tagRest) === 0) {
-            return $inputRec; // No update required
-        }
-
-        // Save original interface update arrays before replacing them with the xxxRest ones
-        $glevelsSave = $this->glevels;
-        $tagSave     = $this->tag;
-        $islinkSave  = $this->islink;
-        $textSave    = $this->text;
-
-        $this->glevels = $this->glevelsRest;
-        $this->tag     = $this->tagRest;
-        $this->islink  = $this->islinkRest;
-        $this->text    = $this->textRest;
-
-        $myRecord = $this->handleUpdates($inputRec, 'no'); // Now do the update
-
-        // Restore the original interface update arrays (just in case ...)
-        $this->glevels = $glevelsSave;
-        $this->tag     = $tagSave;
-        $this->islink  = $islinkSave;
-        $this->text    = $textSave;
-
-        return $myRecord;
-    }
-
-    /**
-     * Add new gedcom lines from interface update arrays
-     * The edit_interface and FunctionsEdit::add_simple_tag function produce the following
-     * arrays incoming from the $_POST form
-     * - $glevels[] - an array of the gedcom level for each line that was edited
-     * - $tag[] - an array of the tags for each gedcom line that was edited
-     * - $islink[] - an array of 1 or 0 values to tell whether the text is a link element and should be surrounded by @@
-     * - $text[] - an array of the text data for each line
-     * With these arrays you can recreate the gedcom lines like this
-     * <code>$glevel[0].' '.$tag[0].' '.$text[0]</code>
-     * There will be an index in each of these arrays for each line of the gedcom
-     * fact that is being edited.
-     * If the $text[] array is empty for the given line, then it means that the
-     * user removed that line during editing or that the line is supposed to be
-     * empty (1 DEAT, 1 BIRT) for example. To know if the line should be removed
-     * there is a section of code that looks ahead to the next lines to see if there
-     * are sub lines. For example we don't want to remove the 1 DEAT line if it has
-     * a 2 PLAC or 2 DATE line following it. If there are no sub lines, then the line
-     * can be safely removed.
-     *
-     * @param string $newged        the new gedcom record to add the lines to
-     * @param string $levelOverride Override GEDCOM level specified in $glevels[0]
-     *
-     * @return string The updated gedcom record
-     */
-    public function handleUpdates(string $newged, string $levelOverride = 'no'): string
-    {
-        if ($levelOverride === 'no') {
-            $levelAdjust = 0;
-        } else {
-            $levelAdjust = 1;
-        }
-
-        // Assert all arrays are the same size.
-        assert(count($this->glevels) === count($this->tag));
-        assert(count($this->glevels) === count($this->text));
-        assert(count($this->glevels) === count($this->islink));
-
-        $count = count($this->glevels);
-
-        for ($j = 0; $j < $count; $j++) {
-            // Look for empty SOUR reference with non-empty sub-records.
-            // This can happen when the SOUR entry is deleted but its sub-records
-            // were incorrectly left intact.
-            // The sub-records should be deleted.
-            if ($this->tag[$j] === 'SOUR' && ($this->text[$j] === '@@' || $this->text[$j] === '')) {
-                $this->text[$j] = '';
-                $k              = $j + 1;
-                while ($k < $count && $this->glevels[$k] > $this->glevels[$j]) {
-                    $this->text[$k] = '';
-                    $k++;
-                }
-            }
-
-            if (trim($this->text[$j]) !== '') {
-                $pass = true;
-            } else {
-                //-- for facts with empty values they must have sub records
-                //-- this section checks if they have subrecords
-                $k    = $j + 1;
-                $pass = false;
-                while ($k < $count && $this->glevels[$k] > $this->glevels[$j]) {
-                    if ($this->text[$k] !== '') {
-                        if ($this->tag[$j] !== 'OBJE' || $this->tag[$k] === 'FILE') {
-                            $pass = true;
-                            break;
-                        }
-                    }
-                    $k++;
-                }
-            }
-
-            //-- if the value is not empty or it has sub lines
-            //--- then write the line to the gedcom record
-            //-- we have to let some emtpy text lines pass through... (DEAT, BIRT, etc)
-            if ($pass) {
-                $newline = (int) $this->glevels[$j] + $levelAdjust . ' ' . $this->tag[$j];
-                if ($this->text[$j] !== '') {
-                    if ($this->islink[$j]) {
-                        $newline .= ' @' . trim($this->text[$j], '@') . '@';
-                    } else {
-                        $newline .= ' ' . $this->text[$j];
-                    }
-                }
-                $next_level = 1 + (int) $this->glevels[$j] + $levelAdjust;
-
-                $newged .= "\n" . str_replace("\n", "\n" . $next_level . ' CONT ', $newline);
-            }
-        }
-
-        return $newged;
-    }
-
-    /**
-     * Add new GEDCOM lines from the $xxxSOUR interface update arrays, which
-     * were produced by the splitSOUR() function.
-     * See the FunctionsEdit::handle_updatesges() function for details.
-     *
-     * @param string $inputRec
-     * @param string $levelOverride
-     *
-     * @return string
-     */
-    public function updateSource(string $inputRec, string $levelOverride = 'no'): string
-    {
-        if (count($this->tagSOUR) === 0) {
-            return $inputRec; // No update required
-        }
-
-        // Save original interface update arrays before replacing them with the xxxSOUR ones
-        $glevelsSave = $this->glevels;
-        $tagSave     = $this->tag;
-        $islinkSave  = $this->islink;
-        $textSave    = $this->text;
-
-        $this->glevels = $this->glevelsSOUR;
-        $this->tag     = $this->tagSOUR;
-        $this->islink  = $this->islinkSOUR;
-        $this->text    = $this->textSOUR;
-
-        $myRecord = $this->handleUpdates($inputRec, $levelOverride); // Now do the update
-
-        // Restore the original interface update arrays (just in case ...)
-        $this->glevels = $glevelsSave;
-        $this->tag     = $tagSave;
-        $this->islink  = $islinkSave;
-        $this->text    = $textSave;
-
-        return $myRecord;
-    }
-
     /**
      * Reassemble edited GEDCOM fields into a GEDCOM fact/event string.
      *
@@ -450,9 +176,7 @@ class GedcomEditService
             $subtags   = array_filter($subtags, $fn_hidden);
         }
 
-        $subtags = array_diff($subtags, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS', 'CHAN']);
-
-        return $subtags;
+        return array_diff($subtags, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS', 'CHAN']);
     }
 
     /**
