@@ -31,6 +31,7 @@ use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\FilesystemReader;
 use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
@@ -126,7 +127,7 @@ class UpgradeService
         $zip_adapter    = new ZipArchiveAdapter($zip_provider, 'webtrees');
         $zip_filesystem = new Filesystem($zip_adapter);
 
-        $files = $zip_filesystem->listContents('', Filesystem::LIST_DEEP)
+        $files = $zip_filesystem->listContents('', FilesystemReader::LIST_DEEP)
             ->filter(static function (StorageAttributes $attributes): bool {
                 return $attributes->isFile();
             })
@@ -197,7 +198,7 @@ class UpgradeService
      */
     public function moveFiles(FilesystemOperator $source, FilesystemOperator $destination): void
     {
-        foreach ($source->listContents('', Filesystem::LIST_DEEP) as $attributes) {
+        foreach ($source->listContents('', FilesystemReader::LIST_DEEP) as $attributes) {
             if ($attributes->isFile()) {
                 $destination->write($attributes->path(), $source->read($attributes->path()));
                 $source->delete($attributes->path());
@@ -222,7 +223,7 @@ class UpgradeService
     {
         foreach ($folders_to_clean as $folder_to_clean) {
             try {
-                foreach ($filesystem->listContents($folder_to_clean, Filesystem::LIST_DEEP) as $path) {
+                foreach ($filesystem->listContents($folder_to_clean, FilesystemReader::LIST_DEEP) as $path) {
                     if ($path['type'] === 'file' && !$files_to_keep->contains($path['path'])) {
                         try {
                             $filesystem->delete($path['path']);

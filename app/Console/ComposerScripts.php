@@ -24,6 +24,7 @@ use Fisharebest\Localization\Translation;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
+use League\Flysystem\FilesystemReader;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 
 use function basename;
@@ -83,7 +84,7 @@ class ComposerScripts
 
         $filesystem = new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
 
-        $scripts = Collection::make($filesystem->listContents('app', Filesystem::LIST_DEEP))
+        $scripts = Collection::make($filesystem->listContents('app', FilesystemReader::LIST_DEEP))
             ->filter(static function (array $file): bool {
                 return $file['type'] !== 'dir';
             })

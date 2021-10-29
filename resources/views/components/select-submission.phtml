@@ -1,5 +1,6 @@
 <?php
 
+use Fisharebest\Webtrees\Http\RequestHandlers\AbstractSelect2Handler;
 use Fisharebest\Webtrees\Http\RequestHandlers\Select2Submission;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Tree;
@@ -20,8 +21,8 @@ $at = $at ?? '';
 <select
     autocomplete="off"
     class="form-select select2 <?= $class ?? '' ?>"
-    data-ajax--delay="<?= e(Select2Submission::AJAX_DELAY) ?>"
-    data-minimum-input-length="<?= e(Select2Submission::MINIMUM_INPUT_LENGTH) ?>"
+    data-ajax--delay="<?= e(AbstractSelect2Handler::AJAX_DELAY) ?>"
+    data-minimum-input-length="<?= e(AbstractSelect2Handler::MINIMUM_INPUT_LENGTH) ?>"
     data-ajax--type="POST"
     data-ajax--url="<?= e(route(Select2Submission::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
     data-allow-clear="true"

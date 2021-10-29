@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
+use League\Flysystem\FilesystemReader;
 use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -83,7 +84,7 @@ class CleanDataFolder implements RequestHandlerInterface
 
         // List the top-level contents of the data folder
         try {
-            $entries = $data_filesystem->listContents('', Filesystem::LIST_SHALLOW)
+            $entries = $data_filesystem->listContents('', FilesystemReader::LIST_SHALLOW)
                 ->map(static function (StorageAttributes $attributes): string {
                     if ($attributes->isDir()) {
                         return $attributes->path() . '/';

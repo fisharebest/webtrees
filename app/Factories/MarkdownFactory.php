@@ -30,6 +30,7 @@ use League\CommonMark\Block\Renderer\DocumentRenderer;
 use League\CommonMark\Block\Renderer\ParagraphRenderer;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
+use League\CommonMark\EnvironmentInterface;
 use League\CommonMark\Extension\Autolink\AutolinkExtension;
 use League\CommonMark\Inline\Element\Link;
 use League\CommonMark\Inline\Element\Text;
@@ -43,7 +44,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
 {
     protected const CONFIG = [
         'allow_unsafe_links' => false,
-        'html_input'         => Environment::HTML_INPUT_ESCAPE,
+        'html_input'         => EnvironmentInterface::HTML_INPUT_ESCAPE,
     ];
 
     /**

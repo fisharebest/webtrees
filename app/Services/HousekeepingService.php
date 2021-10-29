@@ -24,6 +24,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\FilesystemReader;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
 
@@ -258,7 +259,7 @@ class HousekeepingService
     {
         $threshold = Carbon::now()->unix() - $max_age;
 
-        $list = $filesystem->listContents($path, Filesystem::LIST_DEEP);
+        $list = $filesystem->listContents($path, FilesystemReader::LIST_DEEP);
 
         foreach ($list as $metadata) {
             // The timestamp can be absent or false.

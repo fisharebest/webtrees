@@ -31,6 +31,7 @@ use InvalidArgumentException;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\FilesystemReader;
 use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
@@ -148,7 +149,7 @@ class MediaFileService
             ->all();
 
         $media_filesystem = $tree->mediaFilesystem($data_filesystem);
-        $disk_files       = $this->allFilesOnDisk($media_filesystem, '', Filesystem::LIST_DEEP)->all();
+        $disk_files       = $this->allFilesOnDisk($media_filesystem, '', FilesystemReader::LIST_DEEP)->all();
         $unused_files     = array_diff($disk_files, $used_files);
 
         sort($unused_files);
@@ -346,7 +347,7 @@ class MediaFileService
     public function mediaFolders(Tree $tree): Collection
     {
         $folders = Registry::filesystem()->media($tree)
-            ->listContents('', Filesystem::LIST_DEEP)
+            ->listContents('', FilesystemReader::LIST_DEEP)
             ->filter(fn (StorageAttributes $attributes): bool => $attributes->isDir())
             ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
             ->map(fn (StorageAttributes $attributes): string => $attributes->path())
@@ -393,7 +394,7 @@ class MediaFileService
 
         foreach ($media_roots as $media_folder) {
             $tmp = $data_filesystem
-                ->listContents($media_folder, Filesystem::LIST_DEEP)
+                ->listContents($media_folder, FilesystemReader::LIST_DEEP)
                 ->filter(fn (StorageAttributes $attributes): bool => $attributes->isDir())
                 ->filter(fn (StorageAttributes $attributes): bool => !$this->ignorePath($attributes->path()))
                 ->map(fn (StorageAttributes $attributes): string => $attributes->path() . '/')

@@ -29,6 +29,7 @@ use Intervention\Image\ImageManager;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
+use League\Flysystem\FilesystemReader;
 use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToRetrieveMetadata;
 use Psr\Http\Message\ResponseInterface;
@@ -91,7 +92,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
 
         // Fetch all thumbnails
         try {
-            $thumbnails = Collection::make($data_filesystem->listContents('', Filesystem::LIST_DEEP))
+            $thumbnails = Collection::make($data_filesystem->listContents('', FilesystemReader::LIST_DEEP))
                 ->filter(static function (StorageAttributes $attributes): bool {
                     return $attributes->isFile() && str_contains($attributes->path(), '/thumbs/');
                 })
