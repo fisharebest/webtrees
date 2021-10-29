@@ -180,7 +180,7 @@ class CalendarService
 
                 foreach ($record->facts([$row->d_fact]) as $fact) {
                     // For date ranges, we need a match on either the start/end.
-                    if (($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay())) {
+                    if ($fact->date()->minimumJulianDay() === $anniv_date->minimumJulianDay() || $fact->date()->maximumJulianDay() === $anniv_date->maximumJulianDay()) {
                         $fact->anniv   = 0;
                         $found_facts[] = $fact;
                     }

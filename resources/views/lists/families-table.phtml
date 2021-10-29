@@ -440,7 +440,7 @@ $marriageAgeData = [
             </div><div class="card-body">
                 <?php
                 foreach ($birt_by_decade as $century => $values) {
-                    if (($values['M'] + $values['F']) > 0) {
+                    if ($values['M'] + $values['F'] > 0) {
                         $birthData[] = [
                             [
                                 'v' => 'Date(' . $century . ', 0, 1)',
@@ -461,7 +461,7 @@ $marriageAgeData = [
             </div><div class="card-body">
                 <?php
                 foreach ($marr_by_decade as $century => $values) {
-                    if (($values['M'] + $values['F']) > 0) {
+                    if ($values['M'] + $values['F'] > 0) {
                         $marriageData[] = [
                             [
                                 'v' => 'Date(' . $century . ', 0, 1)',
@@ -487,8 +487,8 @@ $marriageAgeData = [
                     $max      = 0;
 
                 foreach ($marr_by_age as $age => $values) {
-                    if (($values['M'] + $values['F']) > 0) {
-                        if (($values['M'] + $values['F']) > $max) {
+                    if ($values['M'] + $values['F'] > 0) {
+                        if ($values['M'] + $values['F'] > $max) {
                             $max = $values['M'] + $values['F'];
                         }
 

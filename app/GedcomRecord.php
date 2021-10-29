@@ -1224,7 +1224,7 @@ class GedcomRecord
         $sublevel    = $level + 1;
         $subsublevel = $sublevel + 1;
         foreach ($facts as $fact) {
-            if (preg_match_all('/^' . $level . ' (' .$fact_type . ') (.+)((\n[' . $sublevel . '-9].+)*)/m', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
+            if (preg_match_all('/^' . $level . ' (' . $fact_type . ') (.+)((\n[' . $sublevel . '-9].+)*)/m', $fact->gedcom(), $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     // Treat 1 NAME / 2 TYPE married the same as _MARNM
                     if ($match[1] === 'NAME' && str_contains($match[3], "\n2 TYPE married")) {

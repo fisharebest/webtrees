@@ -268,7 +268,7 @@ use Fisharebest\Webtrees\Individual;
     }
     for ($i = $baseyear + 1; $i < $topyear; $i++) {
         if ($i % $mod === 0) {
-            echo '<div id="scale' . $i . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left:0;' : 'right:0;') . ' top:' . ((($i - $baseyear) * $scale) - $scale / 2) . 'px; font-size: 7pt; text-align:' . (I18N::direction() === 'ltr' ? 'left' : 'right') . ';">';
+            echo '<div id="scale' . $i . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left:0;' : 'right:0;') . ' top:' . (($i - $baseyear) * $scale - $scale / 2) . 'px; font-size: 7pt; text-align:' . (I18N::direction() === 'ltr' ? 'left' : 'right') . ';">';
             echo $i;
             echo '</div>';
         }
@@ -372,7 +372,7 @@ use Fisharebest\Webtrees\Individual;
             $img  = asset('css/images/dline.png');
             $ypos = '100%';
         }
-        $dyoffset = ($yoffset - $tyoffset) + $bheight / 3;
+        $dyoffset = $yoffset - $tyoffset + $bheight / 3;
         if ($tyoffset < 0) {
             $dyoffset = $yoffset + $bheight / 3;
             if (I18N::direction() === 'ltr') {
@@ -386,13 +386,13 @@ use Fisharebest\Webtrees\Individual;
         ?>
 
         <!-- diagonal line -->
-        <div id="dbox<?= $factcount ?>" style="position:absolute; <?= (I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25)) ?>px; top:<?= ($dyoffset) ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= e($img) ?>'); background-position: 0 <?= $ypos ?>;">
+        <div id="dbox<?= $factcount ?>" style="position:absolute; <?= I18N::direction() === 'ltr' ? 'left: ' . (0 + 25) : 'right: ' . (0 + 25) ?>px; top:<?= $dyoffset ?>px; font-size: 8pt; height: <?= abs($tyoffset) ?>px; width: <?= abs($tyoffset) ?>px; background-image: url('<?= e($img) ?>'); background-position: 0 <?= $ypos ?>;">
         </div>
     <?php endforeach ?>
 
     <!-- age cursors -->
     <?php foreach ($individuals as $p => $indi) : ?>
-        <?php $ageyoffset = 0 + ($bheight * $p); ?>
+        <?php $ageyoffset = 0 + $bheight * $p; ?>
         <div id="agebox<?= $p ?>" style="cursor:move; position:absolute; <?= I18N::direction() === 'ltr' ? 'left:20px;' : 'right:20px;' ?> top:<?= $ageyoffset ?>px; height:<?= $bheight ?>px; display:none;" onmousedown="ageCursorMouseDown(this, <?= $p ?>);">
             <table cellspacing="0" cellpadding="0">
                 <tr>
@@ -401,7 +401,7 @@ use Fisharebest\Webtrees\Individual;
                     </td>
                     <td>
                         <?php if (!empty($birthyears[$indi->xref()])) : ?>
-                            <?php $tyear = round(($ageyoffset + ($bheight / 2)) / $scale) + $baseyear; ?>
+                            <?php $tyear = round(($ageyoffset + $bheight / 2) / $scale) + $baseyear; ?>
                             <table class="person<?= $p % 6 ?>" style="cursor: grab;">
                                 <tr>
                                     <td>

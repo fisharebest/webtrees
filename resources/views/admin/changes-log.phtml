@@ -105,12 +105,12 @@ use Fisharebest\Webtrees\Tree;
             <?= view('icons/cancel') ?>
             <?= /* I18N: A button label. */ I18N::translate('reset') ?>
         </a>
-        <a class="btn btn-secondary" href="<?= (route(PendingChangesLogDownload::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username])) ?>">
+        <a class="btn btn-secondary" href="<?= route(PendingChangesLogDownload::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username]) ?>">
             <?= view('icons/download') ?>
             <?= /* I18N: A button label. */ I18N::translate('download') ?>
         </a>
 
-        <a href="#" class="btn btn-danger" data-wt-confirm="<?= I18N::translate('Permanently delete these records?') ?>" data-wt-post-url="<?= (route(PendingChangesLogDelete::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username])) ?>">
+        <a href="#" class="btn btn-danger" data-wt-confirm="<?= I18N::translate('Permanently delete these records?') ?>" data-wt-post-url="<?= route(PendingChangesLogDelete::class, ['from' => $from, 'to' => $to, 'type' => $type, 'xref' => $xref, 'oldged' => $oldged, 'newged' => $newged, 'tree' => $tree->name(), 'username' => $username]) ?>">
         <?= view('icons/delete') ?>
             <?= I18N::translate('delete') ?>
         </a>

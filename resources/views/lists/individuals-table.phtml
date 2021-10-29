@@ -448,7 +448,7 @@ $deathAgeData = [
             <div class="card-body">
                 <?php
                 foreach ($birt_by_decade as $century => $values) {
-                    if (($values['M'] + $values['F']) > 0) {
+                    if ($values['M'] + $values['F'] > 0) {
                         $birthData[] = [
                             [
                                 'v' => 'Date(' . $century . ', 0, 1)',
@@ -470,7 +470,7 @@ $deathAgeData = [
             <div class="card-body">
                 <?php
                 foreach ($deat_by_decade as $century => $values) {
-                    if (($values['M'] + $values['F']) > 0) {
+                    if ($values['M'] + $values['F'] > 0) {
                         $deathData[] = [
                             [
                                 'v' => 'Date(' . $century . ', 0, 1)',
@@ -496,8 +496,8 @@ $deathAgeData = [
                     $max      = 0;
 
                 foreach ($deat_by_age as $age => $values) {
-                    if (($values['M'] + $values['F']) > 0) {
-                        if (($values['M'] + $values['F']) > $max) {
+                    if ($values['M'] + $values['F'] > 0) {
+                        if ($values['M'] + $values['F'] > $max) {
                             $max = $values['M'] + $values['F'];
                         }
 

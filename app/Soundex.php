@@ -3586,7 +3586,7 @@ class Soundex
 
         // Initialize
         $name_script = I18N::textScript($name);
-        $noVowels    = ($name_script === 'Hebr' || $name_script === 'Arab');
+        $noVowels    = $name_script === 'Hebr' || $name_script === 'Arab';
 
         $lastPos         = strlen($name) - 1;
         $currPos         = 0;

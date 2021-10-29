@@ -283,7 +283,7 @@ class FunctionsRtl
                             $newState      = 'LTR';
                             break;
                         }
-                        if (($currentLen !== 1) || ($currentLetter >= 'A' && $currentLetter <= 'Z') || ($currentLetter >= 'a' && $currentLetter <= 'z')) {
+                        if ($currentLen !== 1 || $currentLetter >= 'A' && $currentLetter <= 'Z' || $currentLetter >= 'a' && $currentLetter <= 'z') {
                             // Since it’s neither Hebrew nor Arabic, this UTF-8 character or ASCII letter must be LTR
                             $newState = 'LTR';
                             break;
@@ -1111,7 +1111,7 @@ class FunctionsRtl
 
             if ($countLeadingSpaces !== 0) {
                 $newLength = strlen($textSpan) + $countLeadingSpaces;
-                $textSpan  = str_pad($textSpan, $newLength, ' ', (I18N::direction() === 'rtl' ? STR_PAD_LEFT : STR_PAD_RIGHT));
+                $textSpan  = str_pad($textSpan, $newLength, ' ', I18N::direction() === 'rtl' ? STR_PAD_LEFT : STR_PAD_RIGHT);
             }
             if ($countTrailingSpaces !== 0) {
                 if (I18N::direction() === 'ltr') {

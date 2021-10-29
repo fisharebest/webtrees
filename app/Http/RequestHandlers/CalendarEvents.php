@@ -184,9 +184,9 @@ class CalendarEvents implements RequestHandlerInterface
         for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
             $day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
             if ($week_day === $weekend_start || $week_day === $weekend_end) {
-                echo '<th class="wt-page-options-label weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
+                echo '<th class="wt-page-options-label weekend" width="', 100 / $days_in_week, '%">', $day_name, '</th>';
             } else {
-                echo '<th class="wt-page-options-label" width="' . (100 / $days_in_week) . '%">', $day_name, '</th>';
+                echo '<th class="wt-page-options-label" width="', 100 / $days_in_week, '%">', $day_name, '</th>';
             }
         }
         echo '</tr>';

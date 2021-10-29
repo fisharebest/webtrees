@@ -78,10 +78,10 @@ class AgeAtEvent extends AbstractElement
             '/CHILD/'     => fn () => I18N::translate('Child'),
             '/INFANT/'    => fn () => I18N::translate('Infant'),
             '/STILLBORN/' => fn () => I18N::translate('Stillborn'),
-            '/\b(\d+)y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) ($match[1]), I18N::number((float) $match[1])),
-            '/\b(\d+)m\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) ($match[1]), I18N::number((float) $match[1])),
-            '/\b(\d+)w\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) ($match[1]), I18N::number((float) $match[1])),
-            '/\b(\d+)d\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) ($match[1]), I18N::number((float) $match[1])),
+            '/\b(\d+)y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)m\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)w\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)d\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) $match[1], I18N::number((float) $match[1])),
         ], e($canonical));
     }
 }
