@@ -124,7 +124,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
         $parts = array_filter($parts);
 
         $parts = array_map(
-            fn (string $tag, string $value): string => "\n2 " . $tag . ' ' . $value,
+            static fn (string $tag, string $value): string => "\n2 " . $tag . ' ' . $value,
             array_keys($parts),
             $parts
         );

@@ -94,7 +94,7 @@ class SearchReplaceAction implements RequestHandlerInterface
 
             case 'name':
                 $name_tags = Registry::elementFactory()->make('INDI:NAME')->subtags();
-                $name_tags = array_map(fn (string $tag): string => '2 ' . $tag, $name_tags);
+                $name_tags = array_map(static fn (string $tag): string => '2 ' . $tag, $name_tags);
                 $name_tags[] = '1 NAME';
 
                 $records = $this->search_service->searchIndividuals([$tree], [$search]);

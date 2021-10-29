@@ -86,12 +86,12 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
      */
     public function relationships(): array
     {
-        $pra = fn (int $n, string $nominative, string $genitive): array => [
+        $pra = static fn (int $n, string $nominative, string $genitive): array => [
             ($n > 3 ? 'pra ×' . $n . ' ' : str_repeat('pra-', $n)) . $nominative,
             ($n > 3 ? 'pra ×' . $n . ' ' : str_repeat('pra-', $n)) . $genitive,
         ];
 
-        $cousin = fn (int $n, array $cousins, string $nominative, string $genitive): array => $cousins[$n] ?? [
+        $cousin = static fn (int $n, array $cousins, string $nominative, string $genitive): array => $cousins[$n] ?? [
             $nominative . ' z ' . $n . '. kolena',
             $genitive . '%s z ' . $n . '. kolena',
         ];

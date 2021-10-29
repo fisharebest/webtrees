@@ -438,7 +438,7 @@ class GedcomEditService
     {
         $subtags = Registry::elementFactory()->make($record->tag())->subtags();
 
-        $subtags = array_filter($subtags, fn (string $v, string $k) => !str_ends_with($v, ':1') || $record->facts([$k])->isEmpty(), ARRAY_FILTER_USE_BOTH);
+        $subtags = array_filter($subtags, static fn (string $v, string $k) => !str_ends_with($v, ':1') || $record->facts([$k])->isEmpty(), ARRAY_FILTER_USE_BOTH);
 
         $subtags = array_keys($subtags);
 
@@ -539,7 +539,7 @@ class GedcomEditService
     private function isHiddenTag(string $tag): bool
     {
         // Function to filter hidden tags.
-        $fn_hide = fn (string $x): bool => (bool) Site::getPreference('HIDE_' . $x);
+        $fn_hide = static fn (string $x): bool => (bool) Site::getPreference('HIDE_' . $x);
 
         $preferences = array_filter(Gedcom::HIDDEN_TAGS, $fn_hide, ARRAY_FILTER_USE_KEY);
         $preferences = array_values($preferences);

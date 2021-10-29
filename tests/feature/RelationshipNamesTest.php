@@ -387,7 +387,7 @@ class RelationshipNamesTest extends TestCase
     {
         $service = new RelationshipService();
         $actual  = $service->nameFromPath($nodes, $language);
-        $path    = implode('-', array_map(fn (GedcomRecord $record): string => $record->xref(), $nodes));
+        $path    = implode('-', array_map(static fn (GedcomRecord $record): string => $record->xref(), $nodes));
         $english = $service->nameFromPath($nodes, new LanguageEnglishUnitedStates());
         $message = 'Language: ' . $language->title() . PHP_EOL . 'Path: ' . $path . ' (' . $english . ')';
 

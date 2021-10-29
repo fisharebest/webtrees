@@ -80,7 +80,7 @@ class AddParentToIndividualPage implements RequestHandlerInterface
         // Default names facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newParentNames($individual, $sex);
-        $name_facts        = array_map(fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
+        $name_facts        = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
 
         $facts = [
             'i' => [

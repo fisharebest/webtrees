@@ -81,8 +81,7 @@ class FixDuplicateLinksTest extends TestCase
             Session::forget('wt_user');
         }
 
-        unset($this->fixDuplicateLinks);
-        unset($this->tree);
+        unset($this->fixDuplicateLinks, $this->tree);
     }
 
     /**

@@ -118,7 +118,7 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
     public function relationships(): array
     {
         // Genitive forms in English are simple/regular, as no relationship name ends in "s".
-        $genitive = fn (string $s): array => [$s, $s . '’s %s'];
+        $genitive = static fn (string $s): array => [$s, $s . '’s %s'];
 
         $cousin = fn (int $up, int $down): array => $genitive(
             (static::COUSIN[min($up, $down)] ?? 'distant cousin') .
@@ -126,7 +126,7 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
             static::DIRECTION[$up <=> $down]
         );
 
-        $great = fn (int $n, string $prefix, string $suffix): array => $genitive(
+        $great = static fn (int $n, string $prefix, string $suffix): array => $genitive(
             $prefix . ($n > 3 ? 'great ×' . $n . ' ' : str_repeat('great-', $n)) . $suffix
         );
 

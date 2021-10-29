@@ -68,7 +68,7 @@ class Session
         $path   = (string) parse_url($url, PHP_URL_PATH);
 
         // Paths containing UTF-8 characters need special handling.
-        $path = implode('/', array_map(fn (string $x): string => rawurlencode($x), explode('/', $path)));
+        $path = implode('/', array_map(static fn (string $x): string => rawurlencode($x), explode('/', $path)));
 
         session_name($secure ? self::SECURE_SESSION_NAME : self::SESSION_NAME);
         session_register_shutdown();

@@ -110,24 +110,24 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
     public function relationships(): array
     {
         // Construct the genitive form in French
-        $genitive = fn (string $s, string $genitive_link): array => [$s, '%s ' . $genitive_link . $s];
+        $genitive = static fn (string $s, string $genitive_link): array => [$s, '%s ' . $genitive_link . $s];
 
         // Functions to coumpound the name that can be indefinitely repeated
-        $degree = fn (int $n, string $suffix, string $genitive_link): array =>
+        $degree = static fn (int $n, string $suffix, string $genitive_link): array =>
                 $genitive("$suffix au {$n}<sup>e</sup> degré", $genitive_link);
 
-        $great = fn (int $n, string $suffix, string $genitive_link): array =>
+        $great = static fn (int $n, string $suffix, string $genitive_link): array =>
                 $n <= 1 ? $genitive('arrière-' . $suffix, 'de l’') : $degree($n + 1, $suffix, $genitive_link);
 
-        $firstCompound = fn (int $n, string $suffix, string $genitive_link): array =>
+        $firstCompound = static fn (int $n, string $suffix, string $genitive_link): array =>
                 $n <= 1 ? $genitive($suffix, $genitive_link) : $great($n - 1, $suffix, $genitive_link);
 
         $compound =
-            fn (int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array =>
+            static fn (int $n, string $first_level, string $suffix, string $genitive_none, string $genitive_first): array =>
                 $n <= 1 ? $genitive($suffix, $genitive_none) : $firstCompound($n - 1, $first_level . $suffix, $genitive_first);
 
         // Functions to translate cousins' degree of relationship
-        $symmetricCousin = fn (int $n, string $sex): array => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
+        $symmetricCousin = static fn (int $n, string $sex): array => self::SYMMETRIC_COUSINS[$n][$sex] ?? $genitive(
             $sex === 'F' ? 'cousine au ' . $n . '<sup>e</sup> degré' : 'cousin au ' . $n . '<sup>e</sup> degré',
             $sex === 'F' ? 'de la ' : 'du '
         );

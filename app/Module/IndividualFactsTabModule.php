@@ -565,31 +565,29 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         $facts = new Collection();
 
         // Deal with recursion.
-        switch ($option) {
-            case '_CHIL':
-                // Add grandchildren
-                foreach ($family->children() as $child) {
-                    foreach ($child->spouseFamilies() as $cfamily) {
-                        switch ($child->sex()) {
-                            case 'M':
-                                foreach ($this->childFacts($person, $cfamily, '_GCHI', 'son', $min_date, $max_date) as $fact) {
-                                    $facts[] = $fact;
-                                }
-                                break;
-                            case 'F':
-                                foreach ($this->childFacts($person, $cfamily, '_GCHI', 'dau', $min_date, $max_date) as $fact) {
-                                    $facts[] = $fact;
-                                }
-                                break;
-                            default:
-                                foreach ($this->childFacts($person, $cfamily, '_GCHI', 'chi', $min_date, $max_date) as $fact) {
-                                    $facts[] = $fact;
-                                }
-                                break;
-                        }
+        if ($option === '_CHIL') {
+            // Add grandchildren
+            foreach ($family->children() as $child) {
+                foreach ($child->spouseFamilies() as $cfamily) {
+                    switch ($child->sex()) {
+                        case 'M':
+                            foreach ($this->childFacts($person, $cfamily, '_GCHI', 'son', $min_date, $max_date) as $fact) {
+                                $facts[] = $fact;
+                            }
+                            break;
+                        case 'F':
+                            foreach ($this->childFacts($person, $cfamily, '_GCHI', 'dau', $min_date, $max_date) as $fact) {
+                                $facts[] = $fact;
+                            }
+                            break;
+                        default:
+                            foreach ($this->childFacts($person, $cfamily, '_GCHI', 'chi', $min_date, $max_date) as $fact) {
+                                $facts[] = $fact;
+                            }
+                            break;
                     }
                 }
-                break;
+            }
         }
 
         // For each child in the family

@@ -91,7 +91,7 @@ class AddChildToIndividualPage implements RequestHandlerInterface
                 break;
         }
 
-        $name_facts = array_map(fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
+        $name_facts = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
 
         $facts = [
             'i' => [

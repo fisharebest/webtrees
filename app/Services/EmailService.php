@@ -114,10 +114,10 @@ class EmailService
                 ->bodyCanon('relaxed');
 
             return $signer->sign($message, $options->toArray());
-        } else {
-            // DKIM body hashes don't work with multipart/alternative content.
-            $message->text($message_text);
         }
+
+        // DKIM body hashes don't work with multipart/alternative content.
+        $message->text($message_text);
 
         return $message;
     }

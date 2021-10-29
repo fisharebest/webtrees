@@ -117,6 +117,6 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
      */
     public function supportedFacts(): Collection
     {
-        return new Collection(array_map(fn (string $tag): string => 'INDI:' . $tag, static::HANDLED_FACTS));
+        return new Collection(array_map(static fn (string $tag): string => 'INDI:' . $tag, static::HANDLED_FACTS));
     }
 }

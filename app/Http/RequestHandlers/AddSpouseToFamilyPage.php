@@ -84,7 +84,7 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         $spouse            = $family->spouses()->first();
         assert($spouse instanceof Individual);
         $names      = $surname_tradition->newSpouseNames($spouse, $sex);
-        $name_facts = array_map(fn (string $gedcom): Fact => new Fact($gedcom, $dummyi, ''), $names);
+        $name_facts = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummyi, ''), $names);
 
         $facts = [
             'i' => [
