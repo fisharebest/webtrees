@@ -34,10 +34,7 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
-    /**
-     * @var ModuleService
-     */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * WelcomeBlockModule constructor.

@@ -75,8 +75,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
         self::STYLE_RIGHT => self::STYLE_LEFT,
     ];
 
-    /** @var ChartService */
-    private $chart_service;
+    private ChartService $chart_service;
 
     /**
      * PedigreeChartModule constructor.

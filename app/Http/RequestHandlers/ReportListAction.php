@@ -37,10 +37,7 @@ use function route;
  */
 class ReportListAction implements RequestHandlerInterface
 {
-    /**
-     * @var ModuleService
-     */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * ReportEngineController constructor.

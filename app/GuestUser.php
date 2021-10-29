@@ -26,15 +26,9 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
  */
 class GuestUser implements UserInterface
 {
-    /**
-     * @var string
-     */
-    private $email;
+    private string $email;
 
-    /**
-     * @var string
-     */
-    private $real_name;
+    private string $real_name;
 
     /**
      * GuestUser constructor.

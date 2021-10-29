@@ -24,20 +24,17 @@ namespace Fisharebest\Webtrees;
  */
 class Menu
 {
-    /** @var string The text to be displayed in the menu */
-    private $label;
+    private string $label;
 
-    /** @var string The target URL or href */
-    private $link;
+    private string $link;
 
-    /** @var string The CSS class used to style this menu item */
-    private $class;
+    private string $class;
 
     /** @var array<string> A list of optional HTML attributes, such as onclick or data-xxx */
-    private $attrs;
+    private array $attrs;
 
     /** @var array<Menu> An optional list of sub-menus. */
-    private $submenus;
+    private array $submenus;
 
     /**
      * Constructor for the menu class

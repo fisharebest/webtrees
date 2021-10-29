@@ -54,8 +54,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
     // A regular expression that never matches.
     private const INVALID_REGEX = '/(?!)/';
 
-    /** @var DataFixService */
-    private $data_fix_service;
+    private DataFixService $data_fix_service;
 
     /**
      * FixMissingDeaths constructor.

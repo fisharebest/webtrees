@@ -41,8 +41,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 {
     use ModuleBlockTrait;
 
-    /** @var HtmlService */
-    private $html_service;
+    private HtmlService $html_service;
 
     /**
      * HtmlBlockModule constructor.

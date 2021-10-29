@@ -65,8 +65,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
     protected const ROUTE_URL = '/tree/{tree}/branches{/surname}';
 
-    /** @var ModuleService */
-    protected $module_service;
+    private ModuleService $module_service;
 
     /**
      * BranchesListModule constructor.

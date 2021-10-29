@@ -33,10 +33,7 @@ class ChartsMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 
-    /**
-     * @var ModuleService
-     */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * ChartsMenuModule constructor.

@@ -65,8 +65,7 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
     protected const MINIMUM_GENERATIONS = 2;
     protected const MAXIMUM_GENERATIONS = 10;
 
-    /** @var ChartService */
-    private $chart_service;
+    private ChartService $chart_service;
 
     /**
      * DescendancyChartModule constructor.

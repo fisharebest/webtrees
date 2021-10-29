@@ -38,11 +38,9 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
 {
     use ModuleFooterTrait;
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * Dependency injection.

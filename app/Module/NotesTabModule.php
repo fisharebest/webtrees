@@ -35,8 +35,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /** @var Collection A list facts for this note. */
     private $facts;
 
-    /** @var ClipboardService */
-    private $clipboard_service;
+    private ClipboardService $clipboard_service;
 
     /**
      * NotesTabModule constructor.

@@ -73,8 +73,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         Submitter::RECORD_TYPE  => 0.3,
     ];
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * TreesMenuModule constructor.

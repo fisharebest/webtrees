@@ -91,96 +91,41 @@ class Statistics implements
     FamilyDatesRepositoryInterface,
     PlaceRepositoryInterface
 {
-    /**
-     * Generate statistics for a specified tree.
-     *
-     * @var Tree
-     */
-    private $tree;
-    /**
-     * @var GedcomRepository
-     */
-    private $gedcom_repository;
+    private Tree $tree;
 
-    /**
-     * @var IndividualRepository
-     */
-    private $individual_repository;
+    private GedcomRepository $gedcom_repository;
 
-    /**
-     * @var FamilyRepository
-     */
-    private $family_repository;
+    private IndividualRepository $individual_repository;
 
-    /**
-     * @var MediaRepository
-     */
-    private $media_repository;
+    private FamilyRepository $family_repository;
 
-    /**
-     * @var EventRepository
-     */
-    private $event_repository;
+    private MediaRepository $media_repository;
 
-    /**
-     * @var UserRepository
-     */
-    private $user_repository;
+    private EventRepository $event_repository;
 
-    /**
-     * @var ServerRepository
-     */
-    private $server_repository;
+    private UserRepository $user_repository;
 
-    /**
-     * @var BrowserRepository
-     */
-    private $browser_repository;
+    private ServerRepository $server_repository;
 
-    /**
-     * @var HitCountRepository
-     */
-    private $hit_count_repository;
+    private BrowserRepository $browser_repository;
 
-    /**
-     * @var LatestUserRepository
-     */
-    private $latest_user_repository;
+    private HitCountRepository $hit_count_repository;
 
-    /**
-     * @var FavoritesRepository
-     */
-    private $favorites_repository;
+    private LatestUserRepository $latest_user_repository;
 
-    /**
-     * @var NewsRepository
-     */
-    private $news_repository;
+    private FavoritesRepository $favorites_repository;
 
-    /**
-     * @var MessageRepository
-     */
-    private $message_repository;
+    private NewsRepository $news_repository;
 
-    /**
-     * @var ContactRepository
-     */
-    private $contact_repository;
+    private MessageRepository $message_repository;
 
-    /**
-     * @var FamilyDatesRepository
-     */
-    private $family_dates_repository;
+    private ContactRepository $contact_repository;
 
-    /**
-     * @var PlaceRepository
-     */
-    private $place_repository;
+    private FamilyDatesRepository $family_dates_repository;
 
-    /**
-     * @var ModuleService
-     */
-    private $module_service;
+    private PlaceRepository $place_repository;
+
+    private ModuleService $module_service;
 
     /**
      * Create the statistics for a tree.

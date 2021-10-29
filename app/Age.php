@@ -26,23 +26,17 @@ use function view;
  */
 class Age
 {
-    /** @var int */
-    private $years;
+    private int $years;
 
-    /** @var int */
-    private $months;
+    private int $months;
 
-    /** @var int */
-    private $days;
+    private int $days;
 
-    /** @var int */
-    private $total_days;
+    private int $total_days;
 
-    /** @var bool */
-    private $is_exact;
+    private bool $is_exact;
 
-    /** @var bool */
-    private $is_valid;
+    private bool $is_valid;
 
     /**
      * Age constructor.

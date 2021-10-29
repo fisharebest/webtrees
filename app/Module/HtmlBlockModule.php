@@ -34,8 +34,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
-    /** @var HtmlService */
-    private $html_service;
+    private HtmlService $html_service;
 
     /**
      * HtmlBlockModule bootstrap.

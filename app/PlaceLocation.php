@@ -35,11 +35,11 @@ use const PREG_SPLIT_NO_EMPTY;
  */
 class PlaceLocation
 {
-    /** @var string e.g. "Westminster, London, England" */
-    private $location_name;
+    // e.g. "Westminster, London, England"
+    private string $location_name;
 
     /** @var Collection<string> The parts of a location name, e.g. ["Westminster", "London", "England"] */
-    private $parts;
+    private Collection $parts;
 
     /**
      * Create a place-location.

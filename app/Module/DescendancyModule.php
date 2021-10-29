@@ -38,8 +38,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 {
     use ModuleSidebarTrait;
 
-    /** @var SearchService */
-    private $search_service;
+    private SearchService $search_service;
 
     /**
      * DescendancyModule constructor.

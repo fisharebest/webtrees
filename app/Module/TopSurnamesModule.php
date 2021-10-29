@@ -43,8 +43,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_NUMBER = '10';
     private const DEFAULT_STYLE  = 'table';
 
-    /** @var ModuleService */
-    private $module_service;
+    private ModuleService $module_service;
 
     /**
      * TopSurnamesModule constructor.

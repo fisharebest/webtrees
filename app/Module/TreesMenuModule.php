@@ -36,8 +36,7 @@ class TreesMenuModule extends AbstractModule implements ModuleMenuInterface
 {
     use ModuleMenuTrait;
 
-    /** @var TreeService */
-    private $tree_service;
+    private TreeService $tree_service;
 
     /**
      * TreesMenuModule constructor.

@@ -37,8 +37,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;
 
-    /** @var DataFixService */
-    private $data_fix_service;
+    private DataFixService $data_fix_service;
 
     /**
      * FixMissingDeaths constructor.

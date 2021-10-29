@@ -48,18 +48,12 @@ class View
 {
     public const NAMESPACE_SEPARATOR = '::';
 
-    // File extension for our template files.
     private const TEMPLATE_EXTENSION = '.phtml';
 
-    /**
-     * @var string The (file) name of the view.
-     */
-    private $name;
+    private string $name;
 
-    /**
-     * @var mixed[] Data to be inserted into the view.
-     */
-    private $data;
+    /** @var array<mixed> */
+    private array $data;
 
     /**
      * @var array<string> Where do the templates live, for each namespace.

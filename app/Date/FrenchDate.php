@@ -49,8 +49,7 @@ class FrenchDate extends AbstractCalendarDate
         'COMP' => 13,
     ];
 
-    /** @var RomanNumeralsService */
-    private $roman_numerals_service;
+    private RomanNumeralsService $roman_numerals_service;
 
     /**
      * Create a date from either:

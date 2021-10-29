@@ -41,14 +41,13 @@ use const PREG_SPLIT_NO_EMPTY;
  */
 class Place
 {
-    /** @var string e.g. "Westminster, London, England" */
-    private $place_name;
+    // "Westminster, London, England"
+    private string $place_name;
 
     /** @var Collection<string> The parts of a place name, e.g. ["Westminster", "London", "England"] */
-    private $parts;
+    private Collection $parts;
 
-    /** @var Tree We may have the same place name in different trees. */
-    private $tree;
+    private Tree $tree;
 
     /**
      * Create a place.

@@ -31,10 +31,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
 {
     use ModuleFooterTrait;
 
-    /**
-     * @var UserService
-     */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * Dependency injection.

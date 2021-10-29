@@ -63,8 +63,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     private const LIMIT_LOW  = 10;
     private const LIMIT_HIGH = 20;
 
-    /** @var UserService */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * RecentChangesModule constructor.

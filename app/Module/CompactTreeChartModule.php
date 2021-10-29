@@ -46,8 +46,7 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 
     protected const ROUTE_URL = '/tree/{tree}/compact/{xref}';
 
-    /** @var ChartService */
-    private $chart_service;
+    private ChartService $chart_service;
 
     /**
      * CompactTreeChartModule constructor.

@@ -27,10 +27,7 @@ use Fisharebest\Webtrees\Services\UserService;
  */
 class TreeUser implements UserInterface
 {
-    /**
-     * @var Tree
-     */
-    private $tree;
+    private Tree $tree;
 
     /**
      * TreeUser constructor.

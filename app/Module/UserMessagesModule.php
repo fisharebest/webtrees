@@ -43,10 +43,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
 {
     use ModuleBlockTrait;
 
-    /**
-     * @var UserService
-     */
-    private $user_service;
+    private UserService $user_service;
 
     /**
      * UserMessagesModule constructor.
