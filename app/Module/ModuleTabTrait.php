@@ -36,8 +36,8 @@ use function view;
  */
 trait ModuleTabTrait
 {
-    /** @var int The default position for this tab.  It can be changed in the control panel. */
-    protected $tab_order;
+    // The default position for this tab.  It can be changed in the control panel.
+    protected int $tab_order;
 
     /**
      * The text that appears on the tab.

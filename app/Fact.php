@@ -141,32 +141,28 @@ class Fact
         '_TODO',
     ];
 
-    /** @var string Unique identifier for this fact (currently implemented as a hash of the raw data). */
-    private $id;
+    // Unique identifier for this fact (currently implemented as a hash of the raw data).
+    private string $id;
 
-    /** @var GedcomRecord The GEDCOM record from which this fact is taken */
-    private $record;
+    // The GEDCOM record from which this fact is taken
+    private GedcomRecord $record;
 
-    /** @var string The raw GEDCOM data for this fact */
-    private $gedcom;
+    // The raw GEDCOM data for this fact
+    private string $gedcom;
 
-    /** @var string The GEDCOM tag for this record */
-    private $tag;
+    // The GEDCOM tag for this record
+    private string $tag;
 
-    /** @var bool Is this a recently deleted fact, pending approval? */
-    private $pending_deletion = false;
+    private bool $pending_deletion = false;
 
-    /** @var bool Is this a recently added fact, pending approval? */
-    private $pending_addition = false;
+    private bool $pending_addition = false;
 
-    /** @var Date The date of this fact, from the “2 DATE …” attribute */
-    private $date;
+    private Date $date;
 
-    /** @var Place The place of this fact, from the “2 PLAC …” attribute */
-    private $place;
+    private Place $place;
 
-    /** @var int Used by Functions::sortFacts() */
-    private $sortOrder;
+    // Used by Functions::sortFacts()
+    public int $sortOrder;
 
     /**
      * Create an event object from a gedcom fragment.

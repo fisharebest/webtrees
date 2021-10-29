@@ -31,8 +31,7 @@ abstract class AbstractElementTest extends TestCase
     private const EVIL_VALUE = '<script>evil()</script>';
     private const TEST_VALUE = '01 JAN 1970';
 
-    /** @var ElementInterface */
-    protected static $element;
+    protected static ElementInterface $element;
 
     /**
      * @return void

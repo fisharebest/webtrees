@@ -26,11 +26,11 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 trait ModuleFooterTrait
 {
-    /** @var int The default position for this footer.  It can be changed in the control panel. */
-    protected $footer_order;
+    // The default position for this footer.  It can be changed in the control panel.
+    protected int $footer_order;
 
     /**
-     * Users change change the order of footers using the control panel.
+     * Users can change the order of footers using the control panel.
      *
      * @param int $footer_order
      *
@@ -42,7 +42,7 @@ trait ModuleFooterTrait
     }
 
     /**
-     * Users change change the order of footers using the control panel.
+     * Users can change the order of footers using the control panel.
      *
      * @return int
      */

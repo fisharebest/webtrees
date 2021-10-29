@@ -70,12 +70,12 @@ class View
     /**
      * @var string Implementation of Blade "stacks".
      */
-    private static $stack;
+    private static string $stack;
 
     /**
-     * @var array[] Implementation of Blade "stacks".
+     * @var array<array<string>> Implementation of Blade "stacks".
      */
-    private static $stacks = [];
+    private static array $stacks = [];
 
     /**
      * Create a view from a template name and optional data.

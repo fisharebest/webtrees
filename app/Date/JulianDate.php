@@ -30,8 +30,8 @@ class JulianDate extends AbstractGregorianJulianDate
     // GEDCOM calendar escape
     public const ESCAPE = '@#DJULIAN@';
 
-    /** @var bool True for dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44 */
-    private $new_old_style = false;
+    // For dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44
+    private bool $new_old_style = false;
 
     /**
      * Create a date from either:

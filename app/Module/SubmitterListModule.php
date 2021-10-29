@@ -46,7 +46,7 @@ class SubmitterListModule extends AbstractModule implements ModuleListInterface,
     protected const ROUTE_URL = '/tree/{tree}/submitter-list';
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected $access_level = Auth::PRIV_NONE;
+    protected int $access_level = Auth::PRIV_NONE;
 
     /**
      * Initialization.

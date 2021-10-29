@@ -61,8 +61,8 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
         UserPage::class       => 'index.php',
     ];
 
-    /** @var int Count of visits to the current page */
-    protected $page_hits = 0;
+    // Count of visits to the current page
+    protected int $page_hits = 0;
 
     /**
      * How should this module be labelled on tabs, footers, etc.?

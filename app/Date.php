@@ -45,20 +45,20 @@ use function app;
  */
 class Date
 {
-    /** @var string Optional qualifier, such as BEF, FROM, ABT */
-    public $qual1 = '';
+    // Optional qualifier, such as BEF, FROM, ABT
+    public string $qual1 = '';
 
-    /** @var AbstractCalendarDate  The first (or only) date */
-    private $date1;
+    // The first (or only) date
+    private AbstractCalendarDate $date1;
 
-    /** @var string  Optional qualifier, such as TO, AND */
-    public $qual2 = '';
+    // Optional qualifier, such as TO, AND
+    public string $qual2 = '';
 
-    /** @var AbstractCalendarDate|null Optional second date */
-    private $date2;
+    // Optional second date
+    private ?AbstractCalendarDate $date2 = null;
 
-    /** @var string Optional text, as included with an INTerpreted date */
-    private $text = '';
+    // Optional text, as included with an INTerpreted date
+    private string $text = '';
 
     /**
      * Create a date, from GEDCOM data.

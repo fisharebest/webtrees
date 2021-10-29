@@ -61,23 +61,17 @@ abstract class AbstractCalendarDate
     // Convert GEDCOM month names to month numbers.
     protected const MONTH_ABBREVIATIONS = [];
 
-    /** @var CalendarInterface The calendar system used to represent this date */
-    protected $calendar;
+    protected CalendarInterface $calendar;
 
-    /** @var int Year number */
-    public $year;
+    public int $year;
 
-    /** @var int Month number */
-    public $month;
+    public int $month;
 
-    /** @var int Day number */
-    public $day;
+    public int $day;
 
-    /** @var int Earliest Julian day number (start of month/year for imprecise dates) */
-    private $minimum_julian_day;
+    private int $minimum_julian_day;
 
-    /** @var int Latest Julian day number (end of month/year for imprecise dates) */
-    private $maximum_julian_day;
+    private int $maximum_julian_day;
 
     /**
      * Create a date from either:

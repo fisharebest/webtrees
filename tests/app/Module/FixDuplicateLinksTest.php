@@ -37,20 +37,11 @@ class FixDuplicateLinksTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    /**
-     * @var FixDuplicateLinks $fixDuplicateLinks
-     */
-    protected $fixDuplicateLinks;
+    protected FixDuplicateLinks $fixDuplicateLinks;
 
-    /**
-     * @var Tree $tree
-     */
-    protected $tree;
+    protected Tree $tree;
 
-    /**
-     * @var bool $restore_session_user
-     */
-    protected $restore_session_user = false;
+    protected bool $restore_session_user = false;
 
     /**
      * {@inheritdoc}

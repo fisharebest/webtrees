@@ -34,8 +34,8 @@ use const JSON_THROW_ON_ERROR;
  */
 class TreeView
 {
-    /** @var string HTML element name */
-    private $name;
+    // HTML element name
+    private string $name;
 
     /**
      * Treeview Constructor

@@ -62,7 +62,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     }
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected $access_level = Auth::PRIV_HIDE;
+    protected int $access_level = Auth::PRIV_HIDE;
 
     /**
      * A sentence describing what this module does.

@@ -106,7 +106,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
     ];
 
     /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected $access_level = Auth::PRIV_USER;
+    protected int $access_level = Auth::PRIV_USER;
 
     private GedcomExportService $gedcom_export_service;
 

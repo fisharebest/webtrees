@@ -33,20 +33,14 @@ abstract class AbstractModule implements ModuleInterface
 {
     use ViewResponseTrait;
 
-    /** @var string A unique internal name for this module (based on the installation folder). */
-    private $name = '';
+    // A unique internal name for this module (based on the installation folder).
+    private string $name = '';
 
-    /** @var int The default access level for this module.  It can be changed in the control panel. */
-    protected $access_level = Auth::PRIV_PRIVATE;
+    // The default access level for this module.  It can be changed in the control panel.
+    protected int $access_level = Auth::PRIV_PRIVATE;
 
-    /** @var bool The default status for this module.  It can be changed in the control panel. */
-    private $enabled = true;
-
-    /** @var string For custom modules - optional (recommended) version number */
-    public const CUSTOM_VERSION = '';
-
-    /** @var string For custom modules - link for support, upgrades, etc. */
-    public const CUSTOM_WEBSITE = '';
+    // The default status for this module.  It can be changed in the control panel.
+    private bool $enabled = true;
 
     /**
      * Called for all *enabled* modules.

@@ -33,11 +33,11 @@ class Family extends GedcomRecord
 
     protected const ROUTE_NAME = FamilyPage::class;
 
-    /** @var Individual|null The husband (or first spouse for same-sex couples) */
-    private $husb;
+    // The husband (or first spouse for same-sex couples)
+    private ?Individual $husb;
 
-    /** @var Individual|null The wife (or second spouse for same-sex couples) */
-    private $wife;
+    // The wife (or second spouse for same-sex couples)
+    private ?Individual $wife;
 
     /**
      * Create a GedcomRecord object from raw GEDCOM data.
