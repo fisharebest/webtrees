@@ -1535,8 +1535,18 @@ parameters:
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
+			message: "#^Cannot call method canShow\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
+			count: 1
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
 			message: "#^Cannot call method formatList\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 1
+			path: app/Statistics/Repository/FamilyRepository.php
+
+		-
+			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
+			count: 2
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -1556,7 +1566,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
-			count: 1
+			count: 3
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
