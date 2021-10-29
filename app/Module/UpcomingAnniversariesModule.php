@@ -144,7 +144,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         // If we are only showing living individuals, then we don't need to search for DEAT events.
         if ($filter) {
-            $event_array  = array_diff($event_array, Gedcom::DEATH_EVENTS);
+            $event_array = array_diff($event_array, Gedcom::DEATH_EVENTS);
         }
 
         $events_filter = implode('|', $event_array);

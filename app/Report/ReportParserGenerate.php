@@ -840,7 +840,7 @@ class ReportParserGenerate extends ReportParserBase
         // Until this can be re-designed, we need this assertion to help static analysis tools.
         assert($this->current_element instanceof ReportBaseElement, new LogicException());
 
-        $this->wt_report       = array_pop($this->wt_report_stack);
+        $this->wt_report = array_pop($this->wt_report_stack);
         $this->wt_report->addElement($this->current_element);
     }
 

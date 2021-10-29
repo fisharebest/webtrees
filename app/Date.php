@@ -160,7 +160,7 @@ class Date
         // Ambiguous dates - don't override calendar escape
         if ($cal === '') {
             if (preg_match('/^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$/', $m)) {
-                $cal =  GregorianDate::ESCAPE;
+                $cal = GregorianDate::ESCAPE;
             } elseif (preg_match('/^[345]\d\d\d$/', $y)) {
                 // Year 3000-5999
                 $cal = JewishDate::ESCAPE;

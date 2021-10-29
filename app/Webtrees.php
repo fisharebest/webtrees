@@ -97,7 +97,7 @@ class Webtrees
     // The system files are always in this location.
     // It is also the default location of user data, such as media and GEDCOM files.
     // The user files could be anywhere supported by Flysystem.
-    public const DATA_DIR  = self::ROOT_DIR . 'data/';
+    public const DATA_DIR = self::ROOT_DIR . 'data/';
 
     // Location of the file containing the database connection details.
     public const CONFIG_FILE = self::DATA_DIR . 'config.ini.php';

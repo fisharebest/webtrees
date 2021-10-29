@@ -738,7 +738,7 @@ class SearchService
                         $query->where('individuals.i_gedcom', 'LIKE', $like);
                         break;
                 }
-            } elseif (str_starts_with($field_name, 'INDI:')  && str_ends_with($field_name, ':DATE')) {
+            } elseif (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':DATE')) {
                 $date = new Date($field_value);
                 if ($date->isOK()) {
                     $delta = 365 * ($modifiers[$field_name] ?? 0);
@@ -748,7 +748,7 @@ class SearchService
                         ->where('date_' . $parts[1] . '.d_julianday2', '<=', $date->maximumJulianDay() + $delta);
                 }
                 unset($fields[$field_name]);
-            } elseif (str_starts_with($field_name, 'FAM:')  && str_ends_with($field_name, ':DATE')) {
+            } elseif (str_starts_with($field_name, 'FAM:') && str_ends_with($field_name, ':DATE')) {
                 $date = new Date($field_value);
                 if ($date->isOK()) {
                     $delta = 365 * $modifiers[$field_name];
@@ -758,10 +758,10 @@ class SearchService
                         ->where('date_' . $parts[1] . '.d_julianday2', '<=', $date->maximumJulianDay() + $delta);
                 }
                 unset($fields[$field_name]);
-            } elseif (str_starts_with($field_name, 'INDI:')  && str_ends_with($field_name, ':PLAC')) {
+            } elseif (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':PLAC')) {
                 // SQL can only link a place to a person/family, not to an event.
                 $query->where('individual_places.p_place', 'LIKE', '%' . $field_value . '%');
-            } elseif (str_starts_with($field_name, 'FAM:')  && str_ends_with($field_name, ':PLAC')) {
+            } elseif (str_starts_with($field_name, 'FAM:') && str_ends_with($field_name, ':PLAC')) {
                 // SQL can only link a place to a person/family, not to an event.
                 $query->where('family_places.p_place', 'LIKE', '%' . $field_value . '%');
             } elseif (str_starts_with($field_name, 'MOTHER:NAME:') || str_starts_with($field_name, 'FATHER:NAME:')) {
@@ -869,7 +869,7 @@ class SearchService
 
                     $regex = '/' . preg_quote($field_value, '/') . '/i';
 
-                    if (str_starts_with($field_name, 'INDI:')  && str_ends_with($field_name, ':PLAC')) {
+                    if (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':PLAC')) {
                         foreach ($individual->facts([$parts[1]]) as $fact) {
                             if (preg_match($regex, $fact->place()->gedcomName())) {
                                 continue 2;
@@ -878,7 +878,7 @@ class SearchService
                         return false;
                     }
 
-                    if (str_starts_with($field_name, 'FAM:')  && str_ends_with($field_name, ':PLAC')) {
+                    if (str_starts_with($field_name, 'FAM:') && str_ends_with($field_name, ':PLAC')) {
                         foreach ($individual->spouseFamilies() as $family) {
                             foreach ($family->facts([$parts[1]]) as $fact) {
                                 if (preg_match($regex, $fact->place()->gedcomName())) {

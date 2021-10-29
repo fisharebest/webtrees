@@ -46,7 +46,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/timeline-{scale}';
+    protected const ROUTE_URL = '/tree/{tree}/timeline-{scale}';
 
     // Defaults
     protected const DEFAULT_SCALE      = 10;

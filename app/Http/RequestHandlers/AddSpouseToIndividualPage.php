@@ -88,7 +88,7 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
         $names             = $surname_tradition->newSpouseNames($individual, $sex);
         $name_facts        = array_map(fn (string $gedcom): Fact => new Fact($gedcom, $dummyi, ''), $names);
 
-        $facts   = [
+        $facts = [
             'i' => [
                 new Fact('1 SEX ' . $sex, $dummyi, ''),
                 ...$name_facts,

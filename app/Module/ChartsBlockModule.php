@@ -252,7 +252,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
         $default_xref     = $gedcomid ?: $PEDIGREE_ROOT_ID;
 
         $type = $this->getBlockSetting($block_id, 'type', 'pedigree');
-        $xref  = $this->getBlockSetting($block_id, 'pid', $default_xref);
+        $xref = $this->getBlockSetting($block_id, 'pid', $default_xref);
 
         $charts = [
             'pedigree'    => I18N::translate('Pedigree'),

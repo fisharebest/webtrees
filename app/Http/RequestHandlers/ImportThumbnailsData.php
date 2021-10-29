@@ -194,7 +194,7 @@ class ImportThumbnailsData implements RequestHandlerInterface
         // The original filename was generated from the thumbnail filename.
         // It may not actually exist.
         try {
-            $file_exists =  $data_filesystem->fileExists($original);
+            $file_exists = $data_filesystem->fileExists($original);
         } catch (FilesystemException | UnableToRetrieveMetadata $ex) {
             $file_exists = false;
         }

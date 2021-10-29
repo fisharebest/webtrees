@@ -47,7 +47,7 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
 {
     use ModuleChartTrait;
 
-    protected const ROUTE_URL  = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
+    protected const ROUTE_URL = '/tree/{tree}/pedigree-{style}-{generations}/{xref}';
 
     // Chart styles
     public const STYLE_LEFT  = 'left';

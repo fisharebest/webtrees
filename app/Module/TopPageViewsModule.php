@@ -36,6 +36,8 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
     private const DEFAULT_NUMBER_TO_SHOW = '10';
 
+    private const PAGES = ['individual.php', 'family.php', 'source.php', 'repo.php', 'note.php', 'mediaviewer.php'];
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -76,7 +78,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
 
         $query = DB::table('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
-            ->whereIn('page_name', ['individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php'])
+            ->whereIn('page_name', self::PAGES)
             ->orderByDesc('page_count');
 
         $results = [];

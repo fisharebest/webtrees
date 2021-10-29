@@ -98,7 +98,7 @@ class EditFactPage implements RequestHandlerInterface
             ]);
         }
 
-        $title  = $record->fullName() . ' - ' . $fact->label();
+        $title = $record->fullName() . ' - ' . $fact->label();
 
         return $this->viewResponse('edit/edit-fact', [
             'can_edit_raw' => $can_edit_raw,

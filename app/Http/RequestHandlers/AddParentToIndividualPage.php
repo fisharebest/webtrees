@@ -75,14 +75,14 @@ class AddParentToIndividualPage implements RequestHandlerInterface
         $individual = Auth::checkIndividualAccess($individual, true);
 
         // Create a dummy individual, so that we can create new/empty facts.
-        $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $dummy = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
 
         // Default names facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newParentNames($individual, $sex);
         $name_facts        = array_map(fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
 
-        $facts   = [
+        $facts = [
             'i' => [
                 new Fact('1 SEX ' . $sex, $dummy, ''),
                 ...$name_facts,

@@ -72,7 +72,7 @@ class ChartMortality
                 $tot_l
             ];
 
-            $data[] =  [
+            $data[] = [
                 I18N::translate('Dead'),
                 $tot_d
             ];

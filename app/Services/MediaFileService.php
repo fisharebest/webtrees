@@ -96,10 +96,10 @@ class MediaFileService
      */
     public function maxUploadFilesize(): string
     {
-        $sizePostMax = $this->parseIniFileSize(ini_get('post_max_size'));
+        $sizePostMax   = $this->parseIniFileSize(ini_get('post_max_size'));
         $sizeUploadMax = $this->parseIniFileSize(ini_get('upload_max_filesize'));
 
-        $bytes =  min($sizePostMax, $sizeUploadMax);
+        $bytes = min($sizePostMax, $sizeUploadMax);
         $kb    = intdiv($bytes + 1023, 1024);
 
         return I18N::translate('%s KB', I18N::number($kb));

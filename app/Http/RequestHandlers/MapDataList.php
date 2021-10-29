@@ -82,7 +82,7 @@ class MapDataList implements RequestHandlerInterface
         }
 
         // Request for a non-existent location?
-        if ($parent_id !== null &&  $parent->id() === null) {
+        if ($parent_id !== null && $parent->id() === null) {
             return redirect(route(__CLASS__));
         }
 

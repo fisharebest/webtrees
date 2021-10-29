@@ -155,7 +155,7 @@ class ImageFactory implements ImageFactoryInterface
     public function mediaFileResponse(MediaFile $media_file, bool $add_watermark, bool $download): ResponseInterface
     {
         $filesystem = Registry::filesystem()->media($media_file->media()->tree());
-        $path   = $media_file->filename();
+        $path       = $media_file->filename();
 
         if (!$add_watermark || !$media_file->isImage()) {
             return $this->fileResponse($filesystem, $path, $download);

@@ -82,7 +82,8 @@ class TreeView
     public function getIndividuals(Tree $tree, string $request): string
     {
         $json_requests = explode(';', $request);
-        $r    = [];
+        $r             = [];
+
         foreach ($json_requests as $json_request) {
             $firstLetter = substr($json_request, 0, 1);
             $json_request = substr($json_request, 1);

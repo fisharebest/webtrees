@@ -72,7 +72,7 @@ class ChartCommonGiven
         ];
 
         foreach ($given as $name => $count) {
-            $data[] = [ $name, $count ];
+            $data[] = [$name, $count];
         }
 
         $data[] = [

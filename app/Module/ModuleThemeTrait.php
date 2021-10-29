@@ -281,7 +281,7 @@ trait ModuleThemeTrait
         }
 
         // Stay on the same tree page
-        $url  = route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null, 'url' => $redirect]);
+        $url = route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null, 'url' => $redirect]);
 
         return new Menu(I18N::translate('Sign in'), $url, 'menu-login', ['rel' => 'nofollow']);
     }
