@@ -149,7 +149,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface
                     break;
 
                 case 'hourglass':
-                    $module    = $this->module_service->findByInterface(HourglassChartModule::class)->first();
+                    $module = $this->module_service->findByInterface(HourglassChartModule::class)->first();
 
                     if ($module instanceof HourglassChartModule) {
                         $title     = $module->chartTitle($individual);

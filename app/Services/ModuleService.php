@@ -751,8 +751,7 @@ class ModuleService
             return include $filename;
         } catch (Throwable $exception) {
             $module_name = basename(dirname($filename));
-            $message     = 'Fatal error in module: ' . $module_name;
-            $message     .= '<br>' . $exception;
+            $message     = 'Fatal error in module: ' . $module_name . '<br>' . $exception;
             FlashMessages::addMessage($message, 'danger');
         }
 

@@ -218,14 +218,14 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             default:
                 $alt_link = I18N::translate('Show place hierarchy');
                 $alt_url  = $this->listUrl($tree, ['action2' => 'hierarchy', 'place_id' => $place_id]);
-                $content  .= view('modules/place-hierarchy/list', ['columns' => $this->getList($tree)]);
+                $content .= view('modules/place-hierarchy/list', ['columns' => $this->getList($tree)]);
                 break;
             case 'hierarchy':
             case 'hierarchy-e':
                 $alt_link = I18N::translate('Show all places in a list');
                 $alt_url  = $this->listUrl($tree, ['action2' => 'list', 'place_id' => 0]);
                 $data     = $this->getHierarchy($place);
-                $content  .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
+                $content .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
                 if (null === $data || $action2 === 'hierarchy-e') {
                     $content .= view('modules/place-hierarchy/events', [
                         'indilist' => $this->search_service->searchIndividualsInPlace($place),

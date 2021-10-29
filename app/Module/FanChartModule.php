@@ -493,7 +493,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $html .= '</a>';
                     }
 
-                    $html  .= '</div>';
+                    $html .= '</div>';
                 }
             }
         }

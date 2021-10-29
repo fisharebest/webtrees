@@ -64,7 +64,8 @@ class Log
         } else {
             $ip_address = '127.0.0.1';
         }
-        $tree_id    = $tree ? $tree->id() : null;
+
+        $tree_id = $tree ? $tree->id() : null;
 
         DB::table('log')->insert([
             'log_type'    => $log_type,

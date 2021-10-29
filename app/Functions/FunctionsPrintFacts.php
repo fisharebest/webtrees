@@ -431,10 +431,10 @@ class FunctionsPrintFacts
         for ($j = 0; $j < $ct; $j++) {
             if (!str_contains($match[$j][1], '@')) {
                 $source = e($match[$j][1] . preg_replace('/\n\d CONT ?/', "\n", $match[$j][2]));
-                $data   .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">';
+                $data .= '<div class="fact_SOUR"><span class="label">' . I18N::translate('Source') . ':</span> <span class="field" dir="auto">';
 
                 if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
-                    $data .= '<div class="markdown" dir="auto">' ;
+                    $data .= '<div class="markdown" dir="auto">';
                     $data .= Registry::markdownFactory()->markdown($tree)->convertToHtml($source);
                     $data .= '</div>';
                 } else {
@@ -443,7 +443,7 @@ class FunctionsPrintFacts
                     $data .= '</div>';
                 }
 
-                $data   .= '</span></div>';
+                $data .= '</span></div>';
             }
         }
         // Find source for each fact
@@ -459,11 +459,13 @@ class FunctionsPrintFacts
                     if (!$spos2) {
                         $spos2 = strlen($factrec);
                     }
-                    $srec     = substr($factrec, $spos1, $spos2 - $spos1);
-                    $lt       = preg_match_all("/$nlevel \w+/", $srec, $matches);
-                    $data     .= '<div class="fact_SOUR">';
+
+                    $srec = substr($factrec, $spos1, $spos2 - $spos1);
+                    $lt   = preg_match_all("/$nlevel \w+/", $srec, $matches);
+                    $data .= '<div class="fact_SOUR">';
                     $id       = 'collapse-' . Uuid::uuid4()->toString();
                     $expanded = (bool) $tree->getPreference('EXPAND_SOURCES');
+
                     if ($lt > 0) {
                         $data .= '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">';
                         $data .= view('icons/expand');
@@ -472,6 +474,7 @@ class FunctionsPrintFacts
                     } elseif ($ct > 1) {
                         $data .= view('icons/spacer');
                     }
+
                     $value = '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>';
                     $data .= I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Source'), $value);
                     $data .= '</div>';
@@ -796,7 +799,7 @@ class FunctionsPrintFacts
             }
 
             if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
-                $formatted_text = '<div class="markdown" dir="auto">' ;
+                $formatted_text = '<div class="markdown" dir="auto">';
                 $formatted_text .= Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
                 $formatted_text .= '</div>';
             } else {
