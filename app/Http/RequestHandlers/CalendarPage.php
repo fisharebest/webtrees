@@ -84,7 +84,7 @@ class CalendarPage implements RequestHandlerInterface
         if (str_starts_with($year, '-')) {
             $year = substr($year, 1) . ' B.C.';
         }
-        $ged_date = new Date("{$cal} {$day} {$month} {$year}");
+        $ged_date = new Date($cal . ' ' . $day . ' ' . $month . ' ' . $year);
         // need negative year for year entry field.
         $year     = $ged_date->minimumDate()->year;
         $cal_date = $ged_date->minimumDate();

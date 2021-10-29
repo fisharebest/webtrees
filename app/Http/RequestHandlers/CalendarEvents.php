@@ -215,7 +215,7 @@ class CalendarEvents implements RequestHandlerInterface
                 }
             } else {
                 // Format the day number using the calendar
-                $tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
+                $tmp   = new Date($cal_date->format('%@ ' . $d . ' %O %E'));
                 $d_fmt = $tmp->minimumDate()->format('%j');
                 echo '<div class="d-flex d-flex justify-content-between">';
                 if ($d === $today->day && $cal_date->month === $today->month) {
