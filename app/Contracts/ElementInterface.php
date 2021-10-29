@@ -36,6 +36,13 @@ interface ElementInterface
     public function canonical(string $value): string;
 
     /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool;
+
+    /**
      * Create a default value for this element.
      *
      * @param Tree $tree

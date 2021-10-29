@@ -28,7 +28,8 @@ use function array_key_exists;
 use function array_map;
 use function e;
 use function is_numeric;
-use function preg_match;
+use function nl2br;
+use function preg_replace;
 use function str_contains;
 use function str_starts_with;
 use function strip_tags;
@@ -104,6 +105,16 @@ abstract class AbstractElement implements ElementInterface
     }
 
     /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return false;
+    }
+
+    /**
      * Create a default value for this element.
      *
      * @param Tree $tree
@@ -138,7 +149,7 @@ abstract class AbstractElement implements ElementInterface
             }
 
             // We may use markup to display values, but not when editing them.
-            $values = array_map(function (string $x): string {
+            $values = array_map(static function (string $x): string {
                 return strip_tags($x);
             }, $values);
 
@@ -189,7 +200,7 @@ abstract class AbstractElement implements ElementInterface
      */
     public function editTextArea(string $id, string $name, string $value): string
     {
-        return '<textarea class="form-control" id="' . e($id) . '" name="' . e($name) . '" rows="5" dir="auto">' . e($value) . '</textarea>';
+        return '<textarea class="form-control" id="' . e($id) . '" name="' . e($name) . '" rows="3" dir="auto">' . e($value) . '</textarea>';
     }
 
     /**
@@ -282,7 +293,7 @@ abstract class AbstractElement implements ElementInterface
 
         if ($values === []) {
             if (str_contains($value, "\n")) {
-                return '<bdi class="d-inline-block" style="white-space: pre-wrap;">' . e($value) . '</bdi>';
+                return '<bdi class="d-inline-block">' . nl2br(e($value)) . '</bdi>';
             }
 
             return '<bdi>' . e($value) . '</bdi>';
