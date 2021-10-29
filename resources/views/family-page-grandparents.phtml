@@ -44,7 +44,7 @@ use Fisharebest\Webtrees\Individual;
                         <?php endif ?>
                     </div>
                 <?php else : ?>
-                    <?= view('chart-box', ['individual' => $parent_family ? $parent_family->husband() : null]) ?>
+                    <?= view('chart-box', ['individual' => $parent_family->husband()]) ?>
                 <?php endif ?>
             </div>
         </div>
@@ -74,7 +74,7 @@ use Fisharebest\Webtrees\Individual;
                         <?php endif ?>
                     </div>
                 <?php else : ?>
-                    <?= view('chart-box', ['individual' => $parent_family ? $parent_family->wife() : null]) ?>
+                    <?= view('chart-box', ['individual' => $parent_family->wife()]) ?>
                 <?php endif ?>
             </div>
         </div>

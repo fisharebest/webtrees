@@ -69,7 +69,7 @@ class AddParentToIndividualPage implements RequestHandlerInterface
         assert(is_string($xref));
 
         $sex = $request->getAttribute('sex');
-        assert(is_string($xref));
+        assert(is_string($sex));
 
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);

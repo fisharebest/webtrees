@@ -1128,7 +1128,7 @@ class FamilyRepository
             $wife = $family->wife();
 
             if ($husb && ($husb->getAllDeathDates() || !$husb->isDead()) && $wife && ($wife->getAllDeathDates() || !$wife->isDead())) {
-                if ($family !== null && $family->canShow()) {
+                if ($family->canShow()) {
                     if ($type === 'list') {
                         $top10[] = '<li><a href="' . e($family->url()) . '">' . $family->fullName() . '</a> (' . $age . ')' . '</li>';
                     } else {
