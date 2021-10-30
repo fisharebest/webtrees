@@ -494,6 +494,7 @@ div.fact_SHARED_NOTE {
 .news_box {
     background-color: #ccc;
     border-top: none;
+    padding: 0.25rem;
 }
 
 .news_title {
