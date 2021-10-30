@@ -32,6 +32,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
+use function strtolower;
 
 /**
  * Find groups of unrelated individuals.
@@ -96,7 +97,10 @@ class UnconnectedPage implements RequestHandlerInterface
         $individual_groups = [];
 
         foreach ($components as $component) {
-            if (!in_array($xref, $component, true)) {
+            // Allow for upper/lower-case mismatches, and all-numeric XREFs
+            $component = array_map(static fn ($x): string => strtolower((string) $x), $component);
+
+            if (!in_array(strtolower($xref), $component, true)) {
                 $individual_groups[] = DB::table('individuals')
                     ->where('i_file', '=', $tree->id())
                     ->whereIn('i_id', $component)
