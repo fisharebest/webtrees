@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\TestCase;
 
 use function dirname;
