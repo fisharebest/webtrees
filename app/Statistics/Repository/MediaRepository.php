@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Google\ChartMedia;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterface;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -38,8 +37,6 @@ use function in_array;
  */
 class MediaRepository implements MediaRepositoryInterface
 {
-    private ColorService $color_service;
-
     private Tree $tree;
 
     /**
@@ -91,13 +88,11 @@ class MediaRepository implements MediaRepositoryInterface
     ];
 
     /**
-     * @param ColorService $color_service
      * @param Tree         $tree
      */
-    public function __construct(ColorService $color_service, Tree $tree)
+    public function __construct(Tree $tree)
     {
-        $this->color_service = $color_service;
-        $this->tree          = $tree;
+        $this->tree = $tree;
     }
 
     /**
@@ -365,7 +360,7 @@ class MediaRepository implements MediaRepositoryInterface
         $tot   = $this->totalMediaTypeQuery(self::MEDIA_TYPE_ALL);
         $media = $this->getSortedMediaTypeList($tot);
 
-        return (new ChartMedia($this->color_service))
+        return (new ChartMedia())
             ->chartMedia($media, $color_from, $color_to);
     }
 }

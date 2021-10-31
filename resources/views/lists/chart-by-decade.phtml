@@ -29,10 +29,15 @@ $chart_options = [
     ],
     'isStacked' => true,
 ];
+$chart_colors = [
+    ['--sex-m-chart', '#84beff'],
+    ['--sex-f-chart', '#ffd1dc']
+];
 
 echo view('statistics/other/charts/column', [
     'data'          => $data,
     'chart_options' => $chart_options,
+    'chart_colors'  => $chart_colors,
     'chart_title'   => $title,
     'language'      => I18N::languageTag(),
 ]);

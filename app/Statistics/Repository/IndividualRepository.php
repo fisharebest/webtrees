@@ -42,7 +42,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartMortality;
 use Fisharebest\Webtrees\Statistics\Google\ChartSex;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -72,19 +71,15 @@ class IndividualRepository implements IndividualRepositoryInterface
 {
     private CenturyService $century_service;
 
-    private ColorService $color_service;
-
     private Tree $tree;
 
     /**
      * @param CenturyService $century_service
-     * @param ColorService $color_service
      * @param Tree         $tree
      */
-    public function __construct(CenturyService $century_service, ColorService $color_service, Tree $tree)
+    public function __construct(CenturyService $century_service, Tree $tree)
     {
         $this->century_service = $century_service;
-        $this->color_service   = $color_service;
         $this->tree            = $tree;
     }
 
@@ -718,7 +713,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function statsBirth(string $color_from = null, string $color_to = null): string
     {
-        return (new ChartBirth($this->century_service, $this->color_service, $this->tree))
+        return (new ChartBirth($this->century_service, $this->tree))
             ->chartBirth($color_from, $color_to);
     }
 
@@ -776,7 +771,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function statsDeath(string $color_from = null, string $color_to = null): string
     {
-        return (new ChartDeath($this->century_service, $this->color_service, $this->tree))
+        return (new ChartDeath($this->century_service, $this->tree))
             ->chartDeath($color_from, $color_to);
     }
 
@@ -1787,7 +1782,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             return I18N::translate('This information is not available.');
         }
 
-        return (new ChartCommonGiven($this->color_service))
+        return (new ChartCommonGiven())
             ->chartCommonGiven($tot_indi, $given, $color_from, $color_to);
     }
 
@@ -1814,7 +1809,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         $surname_tradition = SurnameTradition::create($this->tree->getPreference('SURNAME_TRADITION'));
 
-        return (new ChartCommonSurname($this->color_service, $surname_tradition))
+        return (new ChartCommonSurname($surname_tradition))
             ->chartCommonSurnames($tot_indi, $all_surnames, $color_from, $color_to);
     }
 
@@ -1831,7 +1826,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_l = $this->totalLivingQuery();
         $tot_d = $this->totalDeceasedQuery();
 
-        return (new ChartMortality($this->color_service))
+        return (new ChartMortality())
             ->chartMortality($tot_l, $tot_d, $color_living, $color_dead);
     }
 
@@ -1850,7 +1845,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_indi        = $this->totalIndividualsQuery();
         $tot_indi_source = $this->totalIndisWithSourcesQuery();
 
-        return (new ChartIndividualWithSources($this->color_service))
+        return (new ChartIndividualWithSources())
             ->chartIndisWithSources($tot_indi, $tot_indi_source, $color_from, $color_to);
     }
 
@@ -1869,7 +1864,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         $tot_fam        = $this->totalFamiliesQuery();
         $tot_fam_source = $this->totalFamsWithSourcesQuery();
 
-        return (new ChartFamilyWithSources($this->color_service))
+        return (new ChartFamilyWithSources())
             ->chartFamsWithSources($tot_fam, $tot_fam_source, $color_from, $color_to);
     }
 

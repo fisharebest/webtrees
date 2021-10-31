@@ -108,14 +108,12 @@ class ChartChildren
             'hAxis' => [
                 'title' => I18N::translate('Century'),
             ],
-            'colors' => [
-                '#84beff'
-            ],
         ];
 
         return view('statistics/other/charts/column', [
             'data'          => $data,
             'chart_options' => $chart_options,
+            'chart_colors'  => [ ['--chart-values-default', '#84beff'] ],
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
         ]);

@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\I18N;
 
 /**
  * @var array<mixed> $chart_options
+ * @var array<mixed> $chart_colors
  * @var string       $chart_title
  * @var array<array> $data
  * @var string       $language
@@ -20,12 +21,14 @@ $name = 'callback_' . bin2hex(random_bytes(12));
 <?php else : ?>
     <div id="<?= $id ?>" title="<?= $chart_title ?>"></div>
     <script>
-
     let <?= $name ?> = function () {
+        let chartOptions = <?= json_encode($chart_options) ?>;
+        chartOptions.colors = webtrees.colors.fromCss(<?= json_encode($chart_colors) ?>);
+        
         statistics.drawColumnChart(
             <?= json_encode($id) ?>,
             <?= json_encode($data) ?>,
-            <?= json_encode($chart_options) ?>
+            chartOptions
         );
     };
 

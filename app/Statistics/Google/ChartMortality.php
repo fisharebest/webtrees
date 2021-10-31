@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 
 use function count;
 use function view;
@@ -30,16 +29,6 @@ use function view;
  */
 class ChartMortality
 {
-    private ColorService $color_service;
-
-    /**
-     * @param ColorService $color_service
-     */
-    public function __construct(ColorService $color_service)
-    {
-        $this->color_service = $color_service;
-    }
-
     /**
      * Create a chart showing mortality.
      *
@@ -56,8 +45,8 @@ class ChartMortality
         string $color_living = null,
         string $color_dead = null
     ): string {
-        $color_living = $color_living ?? '#ffffff';
-        $color_dead   = $color_dead   ?? '#cccccc';
+        $color_living = $color_living ?? ['--chart-values-low', '#ffffff'];
+        $color_dead   = $color_dead   ?? ['--chart-values-high', '#84beff'];
 
         $data = [
             [
@@ -78,12 +67,11 @@ class ChartMortality
             ];
         }
 
-        $colors = $this->color_service->interpolateRgb($color_living, $color_dead, count($data) - 1);
-
         return view('statistics/other/charts/pie', [
             'title'            => null,
             'data'             => $data,
-            'colors'           => $colors,
+            'colors'           => [$color_living, $color_dead],
+            'steps'            => count($data) - 1,
             'labeledValueText' => 'percentage',
             'language'         => I18N::languageTag(),
         ]);

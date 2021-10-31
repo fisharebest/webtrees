@@ -19,6 +19,9 @@
 :root {
     --chart-line-radius: 1rem;
     --chart-line: solid gray thin;
+    --chart-values-low: #ffffff;
+    --chart-values-default: #e5e6ef;
+    --chart-values-high: #9ca3d4;
     --link-color-hover: #f00;
     --link-color: #369;
     --link-decoration-hover: underline;

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
@@ -37,16 +36,12 @@ class ChartFamilyLargest
 {
     private Tree $tree;
 
-    private ColorService $color_service;
-
     /**
-     * @param ColorService $color_service
      * @param Tree         $tree
      */
-    public function __construct(ColorService $color_service, Tree $tree)
+    public function __construct(Tree $tree)
     {
         $this->tree          = $tree;
-        $this->color_service = $color_service;
     }
 
     /**
@@ -81,8 +76,8 @@ class ChartFamilyLargest
         string $color_to = null,
         int $total = 10
     ): string {
-        $color_from = $color_from ?? 'ffffff';
-        $color_to   = $color_to ?? '84beff';
+        $color_from = $color_from ?? ['--chart-values-low', '#ffffff'];
+        $color_to   = $color_to ??  ['--chart-values-high', '#84beff'];
 
         $data = [
             [
@@ -102,12 +97,11 @@ class ChartFamilyLargest
             }
         }
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
-
         return view('statistics/other/charts/pie', [
             'title'    => I18N::translate('Largest families'),
             'data'     => $data,
-            'colors'   => $colors,
+            'colors'   => [$color_from, $color_to],
+            'steps'    => count($data) - 1,
             'language' => I18N::languageTag(),
         ]);
     }

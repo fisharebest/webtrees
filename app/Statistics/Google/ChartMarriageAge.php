@@ -160,17 +160,18 @@ class ChartMarriageAge
             ],
             'hAxis' => [
                 'title' => I18N::translate('Century'),
-            ],
-            'colors' => [
-                '#84beff',
-                '#ffd1dc',
-                '#ff0000',
-            ],
+            ]
+        ];
+        $chart_colors = [
+            ['--sex-m-chart', '#84beff'],
+            ['--sex-f-chart', '#ffd1dc'],
+            ['--chart-values-avg', '#ff0000']
         ];
 
         return view('statistics/other/charts/combo', [
             'data'          => $data,
             'chart_options' => $chart_options,
+            'chart_colors'  => $chart_colors,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
         ]);

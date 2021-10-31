@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 
 use function count;
 use function view;
@@ -31,16 +30,6 @@ use function view;
  */
 class ChartMedia
 {
-    private ColorService $color_service;
-
-    /**
-     * @param ColorService $color_service
-     */
-    public function __construct(ColorService $color_service)
-    {
-        $this->color_service = $color_service;
-    }
-
     /**
      * Create a chart of media types.
      *
@@ -55,8 +44,8 @@ class ChartMedia
         string $color_from = null,
         string $color_to = null
     ): string {
-        $color_from = $color_from ?? 'ffffff';
-        $color_to   = $color_to ?? '84beff';
+        $color_from = $color_from ?? ['--chart-values-low', '#ffffff'];
+        $color_to   = $color_to ??  ['--chart-values-high', '#84beff'];
 
         $data = [
             [
@@ -74,12 +63,11 @@ class ChartMedia
             ];
         }
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
-
         return view('statistics/other/charts/pie', [
             'title'    => null,
             'data'     => $data,
-            'colors'   => $colors,
+            'colors'   => [$color_from, $color_to],
+            'steps'    => count($data) - 1,
             'language' => I18N::languageTag(),
         ]);
     }
