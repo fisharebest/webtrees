@@ -62,6 +62,7 @@ class CustomTagsLegacy extends AbstractModule implements ModuleConfigInterface, 
             'FAM:MARR:_STAT'               => new CustomElement(I18N::translate('Status')),
             'FAM:SOUR:_VERI'               => new CustomElement(I18N::translate('Verified')),
             'FAM:_NONE'                    => new CustomElement(I18N::translate('No children')),
+            'FAM:_UID'                     => new PafUid(I18N::translate('Unique identifier')),
             'HEAD:_EVENT_DEFN'             => new CustomElement('Event definition'),
             'HEAD:_EVENT_DEFN:_CONF_FLAG'  => new CustomElement(I18N::translate('Private')),
             'HEAD:_EVENT_DEFN:_DATE_TYPE'  => new CustomElement(I18N::translate('Date')),
@@ -129,6 +130,8 @@ class CustomTagsLegacy extends AbstractModule implements ModuleConfigInterface, 
             'OBJE:_SCBK'                   => new CustomElement(I18N::translate('Scrapbook')),
             'OBJE:_SOUND'                  => new CustomElement(I18N::translate('Audio')),
             'OBJE:_TYPE'                   => new CustomElement(I18N::translate('Type')),
+            'OBJE:_UID'                    => new PafUid(I18N::translate('Unique identifier')),
+            'REPO:_UID'                    => new PafUid(I18N::translate('Unique identifier')),
             'SOUR:_ITALIC'                 => new CustomElement('The source title should be printed in italic on reports'),
             'SOUR:_PAREN'                  => new CustomElement('The source title should be printed within parentheses on reports'),
             'SOUR:_QUOTED'                 => new CustomElement('The source title should be printed within quotes on reports'),
@@ -136,6 +139,21 @@ class CustomTagsLegacy extends AbstractModule implements ModuleConfigInterface, 
             'SOUR:_TAG2'                   => new CustomElement('Exclude the source citation on reports'),
             'SOUR:_TAG3'                   => new CustomElement('Include the source citation detail text on reports'),
             'SOUR:_TAG4'                   => new CustomElement('Include the source citation detail notes on reports'),
+            'SOUR:_UID'                    => new PafUid(I18N::translate('Unique identifier')),
+        ];
+    }
+
+    /**
+     * @return array<string,array<int,array<int,string>>>
+     */
+    public function customSubTags(): array
+    {
+        return [
+            'FAM'  => [['_UID', '0:M']],
+            'INDI' => [['_UID', '0:M']],
+            'OBJE' => [['_UID', '0:M']],
+            'REPO' => [['_UID', '0:M']],
+            'SOUR' => [['_UID', '0:M']],
         ];
     }
 

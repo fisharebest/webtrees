@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Elements\AddressPostalCode;
 use Fisharebest\Webtrees\Elements\AddressState;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\NamePersonal;
+use Fisharebest\Webtrees\Elements\PafUid;
 use Fisharebest\Webtrees\Elements\PhoneNumber;
 use Fisharebest\Webtrees\I18N;
 
@@ -58,6 +59,7 @@ class CustomTagsPersonalAncestralFile extends AbstractModule implements ModuleCo
     public function customTags(): array
     {
         return [
+            'FAM:_UID'        => new PafUid(I18N::translate('Unique identifier')),
             'INDI:NAME:_ADPN' => new NamePersonal(I18N::translate('Adopted name'), []),
             'INDI:NAME:_AKA'  => new NamePersonal(I18N::translate('Also known as'), []),
             'INDI:NAME:_AKAN' => new NamePersonal(I18N::translate('Also known as'), []),
@@ -73,6 +75,24 @@ class CustomTagsPersonalAncestralFile extends AbstractModule implements ModuleCo
             'INDI:FAX'        => new AddressFax(I18N::translate('Fax')),
             'INDI:PHON'       => new PhoneNumber(I18N::translate('Phone')),
             'INDI:URL'        => new CustomElement(I18N::translate('URL')),
+            'INDI:_UID'       => new PafUid(I18N::translate('Unique identifier')),
+            'OBJE:_UID'       => new PafUid(I18N::translate('Unique identifier')),
+            'REPO:_UID'       => new PafUid(I18N::translate('Unique identifier')),
+            'SOUR:_UID'       => new PafUid(I18N::translate('Unique identifier')),
+        ];
+    }
+
+    /**
+     * @return array<string,array<int,array<int,string>>>
+     */
+    public function customSubTags(): array
+    {
+        return [
+            'FAM'  => [['_UID', '0:M']],
+            'INDI' => [['_UID', '0:M']],
+            'OBJE' => [['_UID', '0:M']],
+            'REPO' => [['_UID', '0:M']],
+            'SOUR' => [['_UID', '0:M']],
         ];
     }
 
