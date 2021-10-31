@@ -18,6 +18,7 @@ $levels   = array_map(static fn(string $x): int => (int) $x, $levels);
 $keys     = array_keys($levels);
 $elements = [];
 $ids      = [];
+$indent   = [];
 $collapse = [];
 
 foreach ($keys as $key) {
@@ -38,13 +39,19 @@ foreach ($keys as $key) {
         }
     }
 
-    $collapse[$key] = $elements[$key]->collapseChildren() && $has_subtags && !$has_subtags_with_values;
+    $indent[$key] = $elements[$key]->collapseChildren() && $has_subtags;
+
+    $collapse[$key] = $indent[$key] && !$has_subtags_with_values;
 }
 
 ?>
 <?php foreach ($keys as $key) : ?>
-    <?php if ($collapse[$key - 1] ?? false) : ?>
-        <div id="collapse-<?= $key ?>" class="collapse ms-4 ps-4 border-start border-4">
+    <?php if ($indent[$key - 1] ?? false) : ?>
+        <?php if ($collapse[$key - 1] ?? false) : ?>
+            <div id="collapse-<?= $key ?>" class="collapse ms-4 ps-4 border-start border-4">
+        <?php else : ?>
+                <div class="ms-4 ps-4 border-start border-4">
+        <?php endif ?>
     <?php endif ?>
 
     <?php if ($elements[$key] instanceof EmptyElement && $values[$key] === '') : ?>
@@ -72,7 +79,7 @@ foreach ($keys as $key) {
     <?php endif ?>
 
     <?php for ($n = $key; $levels[$n] >= ($levels[$key + 1] ?? PHP_INT_MAX); $n--) : ?>
-        <?php if ( $collapse[$n] ) : ?>
+        <?php if ( $indent[$n] ) : ?>
             </div>
         <?php endif ?>
         <?php if ( $levels[$n] === ($levels[$key + 1] ?? PHP_INT_MAX)) : ?>
