@@ -62,6 +62,7 @@ use Fisharebest\Webtrees\Elements\CopyrightSourceData;
 use Fisharebest\Webtrees\Elements\CountOfChildren;
 use Fisharebest\Webtrees\Elements\CountOfMarriages;
 use Fisharebest\Webtrees\Elements\Cremation;
+use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\Elements\DateLdsOrd;
@@ -636,6 +637,7 @@ class ElementFactory implements ElementFactoryInterface
             'NOTE:SOUR:PAGE'           => new WhereWithinSource(I18N::translate('Citation details')),
             'NOTE:SOUR:QUAY'           => new CertaintyAssessment(I18N::translate('Quality of data')),
             'OBJE'                     => new MediaRecord(I18N::translate('Media object')),
+            'OBJE:BLOB'                => new CustomElement(I18N::translate('Binary data object')),
             'OBJE:CHAN'                => new Change(I18N::translate('Last change')),
             'OBJE:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
             'OBJE:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time of last change')),

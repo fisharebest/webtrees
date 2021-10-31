@@ -98,7 +98,7 @@ interface ElementInterface
      *
      * @return void
      */
-    public function subtag(string $subtag, string $repeat = '0:1', string $before = ''): void;
+    public function subtag(string $subtag, string $repeat, string $before = ''): void;
 
     /**
      * @return array<string,string>
