@@ -80,6 +80,7 @@ foreach ($keys as $key) {
 
     <?php for ($n = $key; $levels[$n] >= ($levels[$key + 1] ?? PHP_INT_MAX); $n--) : ?>
         <?php if ( $indent[$n] ) : ?>
+            <?php $indent[$n] = false ?>
             </div>
         <?php endif ?>
         <?php if ( $levels[$n] === ($levels[$key + 1] ?? PHP_INT_MAX)) : ?>
