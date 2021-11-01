@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7a53d2e44da3b15ea6df0fbecb784aa8ba802270',
+        'reference' => '5bc463beb8cc5dc26a796decca3a4109a53c4083',
         'name' => 'fisharebest/webtrees',
         'dev' => false,
     ),
@@ -142,7 +142,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7a53d2e44da3b15ea6df0fbecb784aa8ba802270',
+            'reference' => '5bc463beb8cc5dc26a796decca3a4109a53c4083',
             'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(
@@ -464,12 +464,12 @@
             'dev_requirement' => false,
         ),
         'symfony/cache' => array(
-            'pretty_version' => 'v4.4.31',
-            'version' => '4.4.31.0',
+            'pretty_version' => 'v4.4.33',
+            'version' => '4.4.33.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/cache',
             'aliases' => array(),
-            'reference' => '4d9074f2777dfde2b78c5c60affa66c5e7518117',
+            'reference' => '7342bf4f6f433cc1ee7fc6ec0a627951da5d92f5',
             'dev_requirement' => false,
         ),
         'symfony/cache-contracts' => array(
