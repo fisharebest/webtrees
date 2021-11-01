@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Tree;
  */
 interface SourceFactoryInterface
 {
-
     /**
      * Create a source.
      *

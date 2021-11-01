@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Tree;
  */
 interface ModuleListInterface extends ModuleInterface
 {
-
     /**
      * A main menu item for this list, or null if the list is empty.
      *
@@ -54,8 +53,8 @@ interface ModuleListInterface extends ModuleInterface
     /**
      * The URL for a page showing list options.
      *
-     * @param Tree    $tree
-     * @param mixed[] $parameters
+     * @param Tree                              $tree
+     * @param array<bool|int|string|array|null> $parameters
      *
      * @return string
      */

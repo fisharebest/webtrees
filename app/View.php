@@ -48,28 +48,23 @@ class View
 {
     public const NAMESPACE_SEPARATOR = '::';
 
-    // File extension for our template files.
     private const TEMPLATE_EXTENSION = '.phtml';
 
-    /**
-     * @var string The (file) name of the view.
-     */
+    /** @var string The (file) name of the view. */
     private $name;
 
-    /**
-     * @var mixed[] Data to be inserted into the view.
-     */
+    /** @var array<mixed> */
     private $data;
 
     /**
-     * @var string[] Where do the templates live, for each namespace.
+     * @var array<string> Where do the templates live, for each namespace.
      */
     private static $namespaces = [
         '' => Webtrees::ROOT_DIR . 'resources/views/',
     ];
 
     /**
-     * @var string[] Modules can replace core views with their own.
+     * @var array<string> Modules can replace core views with their own.
      */
     private static $replacements = [];
 
@@ -79,7 +74,7 @@ class View
     private static $stack;
 
     /**
-     * @var array[] Implementation of Blade "stacks".
+     * @var array<array<string>> Implementation of Blade "stacks".
      */
     private static $stacks = [];
 
@@ -89,7 +84,7 @@ class View
      * @param string       $name
      * @param array<mixed> $data
      */
-    public function __construct(string $name, $data = [])
+    public function __construct(string $name, array $data = [])
     {
         $this->name = $name;
         $this->data = $data;
@@ -257,7 +252,7 @@ class View
         [$namespace, $view_name] = explode(self::NAMESPACE_SEPARATOR, $view_name, 2);
 
         if ((self::$namespaces[$namespace] ?? null) === null) {
-            throw new RuntimeException('Namespace "' . e($namespace) .  '" not found.');
+            throw new RuntimeException('Namespace "' . e($namespace) . '" not found.');
         }
 
         $view_file = self::$namespaces[$namespace] . $view_name . self::TEMPLATE_EXTENSION;
@@ -272,8 +267,8 @@ class View
     /**
      * Create and render a view in a single operation.
      *
-     * @param string  $name
-     * @param mixed[] $data
+     * @param string       $name
+     * @param array<mixed> $data
      *
      * @return string
      */
