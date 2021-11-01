@@ -555,6 +555,7 @@ class CountryService
     public function iso3166(): array
     {
         return [
+            'GBR' => 'GB', // Must come before ENG, NIR, SCT and WLS
             'ABW' => 'AW',
             'AFG' => 'AF',
             'AGO' => 'AO',
@@ -632,7 +633,6 @@ class CountryService
             'FRO' => 'FO',
             'FSM' => 'FM',
             'GAB' => 'GA',
-            'GBR' => 'GB',
             'GEO' => 'GE',
             'GHA' => 'GH',
             'GIB' => 'GI',
