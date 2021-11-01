@@ -34,23 +34,6 @@ class Submission extends GedcomRecord
     protected const ROUTE_NAME = SubmissionPage::class;
 
     /**
-     * Fetch data from the database
-     *
-     * @param string $xref
-     * @param int    $tree_id
-     *
-     * @return string|null
-     */
-    protected static function fetchGedcomRecord(string $xref, int $tree_id): ?string
-    {
-        return DB::table('other')
-            ->where('o_id', '=', $xref)
-            ->where('o_file', '=', $tree_id)
-            ->where('o_type', '=', static::RECORD_TYPE)
-            ->value('o_gedcom');
-    }
-
-    /**
      * Extract names from the GEDCOM record.
      *
      * @return void
