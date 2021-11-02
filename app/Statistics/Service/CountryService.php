@@ -665,7 +665,7 @@ class CountryService
             'ITA' => 'IT',
             'JAM' => 'JM',
             'JOR' => 'JO',
-            'JPN' => 'JA',
+            'JPN' => 'JP',
             'KAZ' => 'KZ',
             'KEN' => 'KE',
             'KGZ' => 'KG',
