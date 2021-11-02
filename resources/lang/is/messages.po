@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-20 13:58+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-11-07 16:52+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -2052,7 +2052,7 @@ msgstr "Sægrænn"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Ertu viss um að þú viljir eyða krækjunni í “%s”?"
+msgstr "Ertu viss um að þú viljir eyða hlekknum á “%s”?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:41
@@ -5189,7 +5189,7 @@ msgstr "Þú gætir uppfært sjálfkrafa, sem veltur á stillingum á netþjóni
 
 #: resources/views/modules/family-book-chart/page.phtml:48
 msgid "Descendant generations"
-msgstr "Afkomenda kynslóðir"
+msgstr "Afkomendur kynslóða"
 
 #. I18N: Name of a module/chart
 #. I18N: Name of a module/sidebar
@@ -6198,7 +6198,7 @@ msgstr "Fjölskylda %s"
 
 #: app/Factories/ElementFactory.php:350
 msgid "Family residence"
-msgstr "Fjölskyldu bústaður"
+msgstr "Búseta fjölskyldu"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6291,7 +6291,7 @@ msgstr "Fjölskylda með eiginkonu"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr "Fjölskylduleitar auðkenni"
+msgstr "FamilySearch (ID) auðkenni"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -12804,7 +12804,7 @@ msgstr "Deildu afmælisdegi viðburðar"
 #: resources/views/edit/shared-note.phtml:23
 #: resources/views/note-page-details.phtml:23
 msgid "Shared note"
-msgstr "Sameiginlega glósa"
+msgstr "Sameiginleg glósa"
 
 #. I18N: Name of a module/list
 #: app/Module/NoteListModule.php:70
@@ -15710,7 +15710,7 @@ msgstr "Tegund staðreyndar"
 
 #: app/Factories/ElementFactory.php:541
 msgid "Type of identification number"
-msgstr "Tegund auðkennisnúmers"
+msgstr "Tegund kenninúmers"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -16667,7 +16667,7 @@ msgstr "Þín skráning á %s"
 
 #: resources/views/modules/batch_update/admin.phtml:86
 msgid "Your user account does not have “automatically accept changes” enabled. You will only be able to change one record at a time."
-msgstr "Þinn notendareikningur er ekki með aðgerðina „samþykkja sjálfvirkt breytingar“ virkjaða. Þú getur aðeins breytt einni færslu í einu."
+msgstr "Þinn notendareikningur er ekki með aðgerðina \"samþykkja sjálfvirkt breytingar“ virkjaða. Þú getur aðeins breytt einni færslu í einu."
 
 #: app/Services/ServerCheckService.php:197
 #, php-format
@@ -17427,122 +17427,122 @@ msgstr "frændi"
 #: app/Services/RelationshipService.php:1152
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurbarn afa"
 
 #: app/Services/RelationshipService.php:1148
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurdóttir afa"
 
 #: app/Services/RelationshipService.php:1150
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðursonur afa"
 
 #: app/Services/RelationshipService.php:1158
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurbarn afa"
 
 #: app/Services/RelationshipService.php:1154
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurdóttir afa"
 
 #: app/Services/RelationshipService.php:1156
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systursonur afa"
 
 #: app/Services/RelationshipService.php:1164
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurbarn ömmu"
 
 #: app/Services/RelationshipService.php:1160
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurdóttir ömmu"
 
 #: app/Services/RelationshipService.php:1162
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðursonur ömmu"
 
 #: app/Services/RelationshipService.php:1170
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurbarn ömmu"
 
 #: app/Services/RelationshipService.php:1166
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurdóttir ömmu"
 
 #: app/Services/RelationshipService.php:1168
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systursonur ömmu"
 
 #: app/Services/RelationshipService.php:1176
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurbarn afa"
 
 #: app/Services/RelationshipService.php:1172
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurdóttir afa"
 
 #: app/Services/RelationshipService.php:1174
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðursonur afa"
 
 #: app/Services/RelationshipService.php:1182
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurbarn afa"
 
 #: app/Services/RelationshipService.php:1178
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurdóttir afa"
 
 #: app/Services/RelationshipService.php:1180
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systursonur afa"
 
 #: app/Services/RelationshipService.php:1188
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurbarn ömmu"
 
 #: app/Services/RelationshipService.php:1184
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðurdóttir ömmu"
 
 #: app/Services/RelationshipService.php:1186
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bróðursonur ömmu"
 
 #: app/Services/RelationshipService.php:1194
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurbarn ömmu"
 
 #: app/Services/RelationshipService.php:1190
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systurdóttir ömmu"
 
 #: app/Services/RelationshipService.php:1192
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "systursonur ömmu"
 
 #: app/Services/RelationshipService.php:2278
 msgid "fourteenth cousin"
@@ -17671,17 +17671,17 @@ msgstr "sonardóttir"
 #: app/Services/RelationshipService.php:732
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "eiginmaður barnabarns"
 
 #: app/Services/RelationshipService.php:754
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "eignmaður dótturdóttur"
 
 #: app/Services/RelationshipService.php:1052
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "eiginmaður sonardóttur"
 
 #: app/Services/RelationshipService.php:584
 msgctxt "parent’s father"
@@ -17716,17 +17716,17 @@ msgstr "sonarsonur"
 #: app/Services/RelationshipService.php:742
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "eiginkona barnabarns"
 
 #: app/Services/RelationshipService.php:770
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "eiginkona dóttursonar"
 
 #: app/Services/RelationshipService.php:1062
 msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "eiginkona sonarsonar"
 
 #: app/Services/RelationshipService.php:1438
 #: app/Services/RelationshipService.php:1457
@@ -17735,7 +17735,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1496
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "×%s. kynslóð frænku"
 
 #: app/Services/RelationshipService.php:1441
 #: app/Services/RelationshipService.php:1460
@@ -17744,7 +17744,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1499
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "×%s. kynslóð frænku/frænda"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1994
@@ -17752,7 +17752,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2026
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "barnabarn ×%s kynslóðar framættar"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1991
@@ -17760,7 +17760,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2022
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr ""
+msgstr "dótturbarn ×%s kynslóðar framættar"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1839
@@ -17770,7 +17770,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1894
 #, php-format
 msgid "great ×%s grandfather"
-msgstr ""
+msgstr "langafi %s kynslóðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1843
@@ -17780,7 +17780,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1899
 #, php-format
 msgid "great ×%s grandmother"
-msgstr ""
+msgstr "langamma ×%s kynslóðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1846
@@ -17790,7 +17790,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:1903
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "langafi/-amma ×%s kynslóðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1987
@@ -17798,7 +17798,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2017
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "langafa sonur ×%s kynslóðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1722
@@ -17806,84 +17806,84 @@ msgstr ""
 #: app/Services/RelationshipService.php:1750
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "×%s. kynslóðar frændi"
 
 #: app/Services/RelationshipService.php:1657
 #: app/Services/RelationshipService.php:1693
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s. kynslóðar bróðursonur"
 
 #: app/Services/RelationshipService.php:1661
 #: app/Services/RelationshipService.php:1696
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s. kynslóðar systursonur"
 
 #: app/Services/RelationshipService.php:1664
 #: app/Services/RelationshipService.php:1699
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "%s. kynslóðar systkinasonur"
 
 #: app/Services/RelationshipService.php:1729
 #: app/Services/RelationshipService.php:1741
 #: app/Services/RelationshipService.php:1757
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s. kynslóðar frændi/frænka"
 
 #: app/Services/RelationshipService.php:1680
 #: app/Services/RelationshipService.php:1712
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s. kynslóðar bróðurbarn"
 
 #: app/Services/RelationshipService.php:1684
 #: app/Services/RelationshipService.php:1715
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s. kynslóðar systurbarn"
 
 #: app/Services/RelationshipService.php:1687
 #: app/Services/RelationshipService.php:1718
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s. kynslóðar systkinabarn"
 
 #: app/Services/RelationshipService.php:1726
 #: app/Services/RelationshipService.php:1738
 #: app/Services/RelationshipService.php:1754
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s. kynslóðar frænka"
 
 #: app/Services/RelationshipService.php:1669
 #: app/Services/RelationshipService.php:1703
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s. kynslóðar bróðurdóttir"
 
 #: app/Services/RelationshipService.php:1673
 #: app/Services/RelationshipService.php:1706
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s. kynslóðar systurdóttir"
 
 #: app/Services/RelationshipService.php:1676
 #: app/Services/RelationshipService.php:1709
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "%s. kynslóðar systkinadóttir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1434
@@ -17892,41 +17892,41 @@ msgstr ""
 #: app/Services/RelationshipService.php:1492
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s. kynslóðar frændi"
 
 #: app/Services/RelationshipService.php:1446
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s. kynslóðar föðurbróðir"
 
 #: app/Services/RelationshipService.php:1450
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s. kynslóðar móðurbróðir"
 
 #: app/Services/RelationshipService.php:1453
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "%s. kynslóðar frændi"
 
 #: app/Services/RelationshipService.php:1364
 msgid "great ×4 aunt"
-msgstr ""
+msgstr "4. kynslóðar frænka"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt/uncle"
-msgstr ""
+msgstr "4. kynslóðar frænka/frændi"
 
 #: app/Services/RelationshipService.php:1942
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "barnbarn 4 ættliðar áfram"
 
 #: app/Services/RelationshipService.php:1939
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "dótturbarn 4 ættliðar áfram"
 
 #: app/Services/RelationshipService.php:1789
 msgid "great ×4 grandfather"
@@ -19266,7 +19266,7 @@ msgstr "flytja inn skrá"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr "Innsett athugasemd"
+msgstr "innbyggð glósa"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20082,7 +20082,7 @@ msgstr ""
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php:51
 msgid "secondary evidence"
-msgstr ""
+msgstr "auka sönnunargögn"
 
 #. I18N: select all (of a list of options)
 #: resources/views/search-trees.phtml:46
@@ -20115,7 +20115,7 @@ msgstr "sjöundi frændi"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "deild glósa"
 
 #: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/trees-preferences.phtml:307
@@ -20144,12 +20144,12 @@ msgstr "sýna"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "sýna breytingar sem gerðar eru á webtrees"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "sýna breytingar sem skráðar eru í ættfræðigögnum"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
@@ -20158,7 +20158,7 @@ msgstr ""
 #: resources/views/modules/user_blog/list.phtml:26
 #: resources/views/modules/yahrzeit/list.phtml:21
 msgid "show more"
-msgstr ""
+msgstr "sýna meira"
 
 #: resources/views/modules/statistics-chart/custom.phtml:208
 msgid "show the chart"
@@ -20259,17 +20259,17 @@ msgstr "tengdasonur"
 #: app/Services/RelationshipService.php:758
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "faðir tengdasonar"
 
 #: app/Services/RelationshipService.php:760
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "móðir tengdasonar"
 
 #: app/Services/RelationshipService.php:762
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "foreldrar tengdasonar"
 
 #: app/Services/RelationshipService.php:510
 msgctxt "child’s spouse"
@@ -20492,7 +20492,7 @@ msgstr "mappan „/data“ og skráin „/data/config.ini.php“ eru með aðgan
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Services/RelationshipService.php:247
 msgid "themself"
-msgstr ""
+msgstr "þau sjálf"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2355
@@ -20628,18 +20628,18 @@ msgstr "óþekkt"
 
 #: app/Module/RelationshipsChartModule.php:484
 msgid "unlimited"
-msgstr ""
+msgstr "ótakmarkað"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/Elements/CertaintyAssessment.php:49
 msgid "unreliable evidence"
-msgstr ""
+msgstr "óáreiðanlegar sannanir"
 
 #: app/Module/PedigreeChartModule.php:389
 #: app/Module/PedigreeChartModule.php:397
 #: resources/views/edit/reorder-card-header.phtml:26
 msgid "up"
-msgstr ""
+msgstr "upp"
 
 #: resources/views/admin/trees-unconnected.phtml:31
 msgid "update"
@@ -20673,7 +20673,7 @@ msgstr "skoða"
 #: resources/views/admin/trees-privacy.phtml:139
 #: resources/views/admin/trees-privacy.phtml:159
 msgid "visitors"
-msgstr ""
+msgstr "gestir"
 
 #: resources/xml/reports/ahnentafel_report.xml:142
 #: resources/xml/reports/descendancy_report.xml:105
@@ -20689,7 +20689,7 @@ msgstr "var fæddur"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: app/Services/MessageService.php:125
 msgid "webtrees message"
@@ -20697,12 +20697,12 @@ msgstr "webtrees skilaboð"
 
 #: resources/views/setup/step-3-database-type.phtml:47
 msgid "webtrees needs a database to store your genealogy data."
-msgstr ""
+msgstr "webtrees þarf gagnagrunn til að geyma ættfræðigögnin þín."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:50
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr ""
+msgstr "webtrees þarf að senda tölvupóst, svo sem áminningar um lykilorð og tilkynningar um vefsíður."
 
 #: app/Services/MessageService.php:226
 msgid "webtrees sends emails with no storage"
@@ -20710,7 +20710,7 @@ msgstr "webtrees sendir tölvupósta með engri geymslu"
 
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees notar UTF-8 kóðun fyrir áherslustafi, sérstafi og ekki latneska skrift. Ef þú vilt nota þessa GEDCOM skrá með ættfræðihugbúnaði sem styður ekki UTF-8, þá geturðu búið hana til með ISO-8859-1 kóðun."
 
 #: app/Services/RelationshipService.php:388
 msgid "wife"
@@ -20719,7 +20719,7 @@ msgstr "eiginkona"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr ""
+msgstr "xenía"
 
 #: resources/views/modules/timeline-chart/chart.phtml:141
 msgid "years"
@@ -20795,18 +20795,18 @@ msgstr[1] "±%s ára"
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s“ hefur verið afritað á klippiborðið."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
 #, php-format
 msgid "“%s” has been deleted."
-msgstr ""
+msgstr "“%s” hefur verið eytt."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixPrimaryTag.php:59
 msgid "“Highlighted image” (_PRIM) tags are used by some genealogy applications to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "„Auðkennd mynd“ (_PRIM) merki eru notuð af sumum ættfræðiforritum til að gefa til kynna ákjósanlega mynd fyrir einstakling. Annar valkostur er að raða myndunum upp á nýtt þannig að sú ákjósanlegasta sé birt fyrst."
 
 #: app/Functions/FunctionsPrint.php:97 app/Note.php:94
 #: app/Report/ReportParserGenerate.php:971
