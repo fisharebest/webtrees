@@ -22,4 +22,4 @@ jobs:
 
       - run: composer install --no-progress
 
-      - run: ~/.composer/vendor/bin/phpstan analyze --no-progress --level=max app modules_v4 index.php
+      - run: ~/.composer/vendor/bin/phpstan analyze --no-progress --level=max index.php app
