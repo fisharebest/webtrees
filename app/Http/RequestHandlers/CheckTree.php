@@ -171,6 +171,7 @@ class CheckTree implements RequestHandlerInterface
                 'OBJE',
                 'REPO',
                 'AUTH',
+                '_LOC',
             ],
             'REPO' => ['NOTE'],
             'OBJE' => ['NOTE'],
