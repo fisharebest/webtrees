@@ -264,7 +264,7 @@ class ImageFactory implements ImageFactoryInterface
     {
         $tree = $media_file->media()->tree();
 
-        return Auth::accessLevel($tree, $user) > $tree->getPreference('SHOW_NO_WATERMARK');
+        return Auth::accessLevel($tree, $user) > (int) $tree->getPreference('SHOW_NO_WATERMARK');
     }
 
     /**

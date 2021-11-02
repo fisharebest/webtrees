@@ -842,7 +842,7 @@ class GedcomRecord
 
         uasort($missing_facts, I18N::comparator());
 
-        if ($this->tree->getPreference('MEDIA_UPLOAD') < Auth::accessLevel($this->tree)) {
+        if ((int) $this->tree->getPreference('MEDIA_UPLOAD') < Auth::accessLevel($this->tree)) {
             unset($missing_facts['OBJE']);
         }
 

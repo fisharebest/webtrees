@@ -85,7 +85,7 @@ class Individual extends GedcomRecord
     {
         $access_level = $access_level ?? Auth::accessLevel($this->tree);
 
-        return $this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level || $this->canShow($access_level);
+        return (int) $this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level || $this->canShow($access_level);
     }
 
     /**
@@ -98,7 +98,7 @@ class Individual extends GedcomRecord
     protected function canShowByType(int $access_level): bool
     {
         // Dead people...
-        if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
+        if ((int) $this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
             $keep_alive             = false;
             $KEEP_ALIVE_YEARS_BIRTH = (int) $this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
             if ($KEEP_ALIVE_YEARS_BIRTH) {
@@ -226,7 +226,7 @@ class Individual extends GedcomRecord
         $SHOW_PRIVATE_RELATIONSHIPS = (bool) $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
         $rec = '0 @' . $this->xref . '@ INDI';
-        if ($this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {
+        if ((int) $this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {
             // Show all the NAME tags, including subtags
             foreach ($this->facts(['NAME']) as $fact) {
                 $rec .= "\n" . $fact->gedcom();
