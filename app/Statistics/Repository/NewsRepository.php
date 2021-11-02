@@ -36,8 +36,6 @@ class NewsRepository implements NewsRepositoryInterface
     private $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)

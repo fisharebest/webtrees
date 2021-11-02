@@ -30,6 +30,9 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\UserRepositoryInterfac
 use Fisharebest\Webtrees\Tree;
 
 use function count;
+use function e;
+use function route;
+use function view;
 
 /**
  * A repository providing methods for user related statistics.
@@ -40,14 +43,13 @@ class UserRepository implements UserRepositoryInterface
      * @var Tree
      */
     private $tree;
+
     /**
      * @var UserService
      */
     private $user_service;
 
     /**
-     * Constructor.
-     *
      * @param Tree        $tree
      * @param UserService $user_service
      */
@@ -64,7 +66,7 @@ class UserRepository implements UserRepositoryInterface
      *
      * @return string
      */
-    private function usersLoggedInQuery($type = 'nolist'): string
+    private function usersLoggedInQuery(string $type): string
     {
         $content   = '';
         $anonymous = 0;
@@ -233,7 +235,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function userFullName(): string
     {
-        return Auth::check() ? '<span dir="auto">' . e(Auth::user()->realName()) . '</span>' : '';
+        return Auth::check() ? '<bdi>' . e(Auth::user()->realName()) . '</bdi>' : '';
     }
 
     /**

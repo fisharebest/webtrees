@@ -29,7 +29,7 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 class PortugueseSurnameTradition extends DefaultSurnameTradition
 {
     /**
-     * What names are given to a new child
+     * What name is given to a new child
      *
      * @param string $father_name A GEDCOM NAME
      * @param string $mother_name A GEDCOM NAME
@@ -58,7 +58,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
     }
 
     /**
-     * What names are given to a new parent
+     * What name is given to a new parent
      *
      * @param string $child_name A GEDCOM NAME
      * @param string $parent_sex M, F or U
@@ -74,6 +74,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition
                         'NAME' => '// /' . $match['SURN1'] . '/',
                         'SURN' => $match['SURN1'],
                     ];
+
                 case 'F':
                     return [
                         'NAME' => '// /' . $match['SURN2'] . '/',

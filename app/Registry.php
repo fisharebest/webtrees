@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
+use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
@@ -76,6 +77,9 @@ class Registry
 
     /** @var RepositoryFactoryInterface */
     private static $repository_factory;
+
+    /** @var SlugFactoryInterface */
+    private static $slug_factory;
 
     /** @var SourceFactoryInterface */
     private static $source_factory;
@@ -279,6 +283,22 @@ class Registry
         }
 
         return self::$repository_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param SlugFactoryInterface|null $factory
+     *
+     * @return SlugFactoryInterface
+     */
+    public static function slugFactory(SlugFactoryInterface $factory = null): SlugFactoryInterface
+    {
+        if ($factory instanceof SlugFactoryInterface) {
+            self::$slug_factory = $factory;
+        }
+
+        return self::$slug_factory;
     }
 
     /**

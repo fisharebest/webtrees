@@ -135,7 +135,7 @@ class EmailService
             case 'external':
                 // SMTP
                 $smtp_host = Site::getPreference('SMTP_HOST');
-                $smtp_port = (int) Site::getPreference('SMTP_PORT', '25');
+                $smtp_port = (int) Site::getPreference('SMTP_PORT');
                 $smtp_auth = (bool) Site::getPreference('SMTP_AUTH');
                 $smtp_user = Site::getPreference('SMTP_AUTH_USER');
                 $smtp_pass = Site::getPreference('SMTP_AUTH_PASS');

@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\HitCountRepositoryInte
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
+use function view;
+
 /**
  * A repository providing methods for hit count related statistics.
  */
@@ -34,14 +36,13 @@ class HitCountRepository implements HitCountRepositoryInterface
      * @var Tree
      */
     private $tree;
+
     /**
      * @var UserService
      */
     private $user_service;
 
     /**
-     * Constructor.
-     *
      * @param Tree        $tree
      * @param UserService $user_service
      */

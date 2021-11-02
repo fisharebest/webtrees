@@ -37,7 +37,7 @@ class CensusOfWales1881 extends CensusOfWales implements CensusInterface
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

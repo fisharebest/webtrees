@@ -26,6 +26,7 @@ use function array_map;
 use function explode;
 use function implode;
 use function parse_url;
+use function rawurlencode;
 use function session_name;
 use function session_regenerate_id;
 use function session_register_shutdown;
@@ -68,7 +69,9 @@ class Session
         $path   = (string) parse_url($url, PHP_URL_PATH);
 
         // Paths containing UTF-8 characters need special handling.
-        $path = implode('/', array_map('rawurlencode', explode('/', $path)));
+        $path = implode('/', array_map(static function (string $x): string {
+            return rawurlencode($x);
+        }, explode('/', $path)));
 
         session_name($secure ? self::SECURE_SESSION_NAME : self::SESSION_NAME);
         session_register_shutdown();

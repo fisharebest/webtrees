@@ -37,7 +37,7 @@ class CensusOfUnitedStates1830 extends CensusOfUnitedStates implements CensusInt
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

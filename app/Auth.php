@@ -191,7 +191,7 @@ class Auth
      */
     public static function login(UserInterface $user): void
     {
-        Session::regenerate(false);
+        Session::regenerate();
         Session::put('wt_user', $user->id());
     }
 

@@ -73,22 +73,24 @@ class SubmitterPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $submitter = Registry::submitterFactory()->make($xref, $tree);
-        $submitter = Auth::checkSubmitterAccess($submitter, false);
+        $record = Registry::submitterFactory()->make($xref, $tree);
+        $record = Auth::checkSubmitterAccess($record, false);
 
         // Redirect to correct xref/slug
-        if ($submitter->xref() !== $xref || $request->getAttribute('slug') !== $submitter->slug()) {
-            return redirect($submitter->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        $slug = Registry::slugFactory()->make($record);
+
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('submitter-page', [
-            'facts'            => $this->facts($submitter),
-            'submitter'        => $submitter,
-            'families'         => $submitter->linkedFamilies('SUBM'),
-            'individuals'      => $submitter->linkedIndividuals('SUBM'),
+            'facts'            => $this->facts($record),
+            'submitter'        => $record,
+            'families'         => $record->linkedFamilies('SUBM'),
+            'individuals'      => $record->linkedIndividuals('SUBM'),
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
-            'title'            => $submitter->fullName(),
+            'title'            => $record->fullName(),
             'tree'             => $tree,
         ]);
     }

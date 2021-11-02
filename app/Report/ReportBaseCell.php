@@ -68,6 +68,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @var mixed
      */
+
     public $left;
     /**
      * Indicates where the current position should go after the call. Possible values are:<ul><li>0: to the right [DEFAULT]</li><li>1: to the beginning of the next line</li><li>2: below</li></ul>
@@ -98,6 +99,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @var mixed
      */
+
     public $top;
     /**
      * URL address
@@ -119,25 +121,25 @@ class ReportBaseCell extends ReportBaseElement
     /**
      * CELL - Element
      *
-     * @param int    $width   cell width (expressed in points)
-     * @param int    $height  cell height (expressed in points)
-     * @param mixed  $border  Border style
-     * @param string $align   Text alignement
+     * @param float  $width   cell width (expressed in points)
+     * @param float  $height  cell height (expressed in points)
+     * @param string $border  Border style
+     * @param string $align   Text alignment
      * @param string $bgcolor Background color code
      * @param string $style   The name of the text style
      * @param int    $ln      Indicates where the current position should go after the call
      * @param mixed  $top     Y-position
      * @param mixed  $left    X-position
-     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
+     * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0).
      * @param int    $stretch Stretch carachter mode
      * @param string $bocolor Border color
      * @param string $tcolor  Text color
      * @param bool   $reseth
      */
     public function __construct(
-        int $width,
-        int $height,
-        $border,
+        float $width,
+        float $height,
+        string $border,
         string $align,
         string $bgcolor,
         string $style,
@@ -187,7 +189,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @return void
      */
-    public function setUrl($url): void
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
@@ -197,7 +199,7 @@ class ReportBaseCell extends ReportBaseElement
      *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {

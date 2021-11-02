@@ -37,7 +37,7 @@ class RegisterOfScotland1939 extends CensusOfScotland implements CensusInterface
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

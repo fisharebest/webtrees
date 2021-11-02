@@ -27,7 +27,7 @@ interface EventRepositoryInterface
     /**
      * Count the number of events (with dates).
      *
-     * @param string[] $events
+     * @param array<string> $events
      *
      * @return string
      */

@@ -64,7 +64,8 @@ class Log
         } else {
             $ip_address = '127.0.0.1';
         }
-        $tree_id    = $tree ? $tree->id() : null;
+
+        $tree_id = $tree ? $tree->id() : null;
 
         DB::table('log')->insert([
             'log_type'    => $log_type,
@@ -130,8 +131,8 @@ class Log
      * Unlike most webtrees activity, search is not restricted to a single tree,
      * so we need to record which trees were searched.
      *
-     * @param string $message
-     * @param Tree[] $trees Which trees were searched
+     * @param string      $message
+     * @param array<Tree> $trees Which trees were searched
      *
      * @return void
      */

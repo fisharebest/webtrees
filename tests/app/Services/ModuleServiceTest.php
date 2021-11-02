@@ -113,7 +113,7 @@ class ModuleServiceTest extends TestCase
 
         $module_service = new ModuleService();
 
-        self::assertSame(3, $module_service->otherModules()->count());
+        self::assertSame(3, count($module_service->otherModules()));
     }
 
     /**
@@ -126,7 +126,7 @@ class ModuleServiceTest extends TestCase
 
         $module_service = new ModuleService();
 
-        self::assertSame(1, $module_service->deletedModules()->count());
+        self::assertSame(1, count($module_service->deletedModules()));
         self::assertSame('not-a-module', $module_service->deletedModules()->first());
     }
 }

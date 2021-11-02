@@ -27,6 +27,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 
 use function array_slice;
+use function arsort;
+use function asort;
 use function count;
 use function in_array;
 
@@ -66,8 +68,6 @@ class MediaRepository implements MediaRepositoryInterface
 
     /**
      * List of GEDCOM media types.
-     *
-     * @var string[]
      */
     private const MEDIA_TYPES = [
         self::MEDIA_TYPE_AUDIO,
@@ -91,8 +91,6 @@ class MediaRepository implements MediaRepositoryInterface
     ];
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
@@ -333,7 +331,7 @@ class MediaRepository implements MediaRepositoryInterface
             }
         }
 
-        if (count($media) > 10 && ($max / $tot) > 0.6) {
+        if (count($media) > 10 && $max / $tot > 0.6) {
             arsort($media);
             $media = array_slice($media, 0, 10);
             $c     = $tot;

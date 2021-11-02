@@ -44,11 +44,10 @@ class CensusColumnSexM extends AbstractCensusColumn implements CensusColumnInter
      */
     public function generate(Individual $individual, Individual $head): string
     {
-        switch ($individual->sex()) {
-            case 'M':
-                return static::X;
-            default:
-                return '';
+        if ($individual->sex() === 'M') {
+            return static::X;
         }
+
+        return '';
     }
 }

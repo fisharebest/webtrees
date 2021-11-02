@@ -35,7 +35,7 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
     }
 
     /**
-     * What names are given to a new parent
+     * What name is given to a new parent
      *
      * @param string $child_name A GEDCOM NAME
      * @param string $parent_sex M, F or U

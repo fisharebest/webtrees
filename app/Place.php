@@ -26,8 +26,12 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
-use stdClass;
 
+use function app;
+use function e;
+use function is_object;
+use function preg_split;
+use function strip_tags;
 use function trim;
 
 use const PREG_SPLIT_NO_EMPTY;
@@ -82,7 +86,7 @@ class Place
                 ->where('p_id', '=', $id)
                 ->first();
 
-            if ($row instanceof stdClass) {
+            if (is_object($row)) {
                 $id = (int) $row->p_parent_id;
                 $parts->add($row->p_place);
             } else {
@@ -245,7 +249,7 @@ class Place
     {
         $place_name = $this->parts->first() ?? I18N::translate('unknown');
 
-        return '<span dir="auto">' . e($place_name) . '</span>';
+        return '<bdi>' . e($place_name) . '</bdi>';
     }
 
     /**
@@ -267,7 +271,7 @@ class Place
             return '<a dir="auto" href="' . e($this->url()) . '">' . e($full_name) . '</a>';
         }
 
-        return '<span dir="auto">' . e($full_name) . '</span>';
+        return '<bdi>' . e($full_name) . '</bdi>';
     }
 
     /**
@@ -297,6 +301,6 @@ class Place
             return '<a dir="auto" href="' . e($this->url()) . '" title="' . $title . '">' . e($short_name) . '</a>';
         }
 
-        return '<span dir="auto">' . e($short_name) . '</span>';
+        return '<bdi>' . e($short_name) . '</bdi>';
     }
 }

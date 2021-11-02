@@ -72,17 +72,19 @@ class SubmissionPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $submission = Registry::submissionFactory()->make($xref, $tree);
-        $submission = Auth::checkSubmissionAccess($submission, false);
+        $record = Registry::submissionFactory()->make($xref, $tree);
+        $record = Auth::checkSubmissionAccess($record, false);
 
         // Redirect to correct xref/slug
-        if ($submission->xref() !== $xref || $request->getAttribute('slug') !== $submission->slug()) {
-            return redirect($submission->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        $slug = Registry::slugFactory()->make($record);
+
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('gedcom-record-page', [
-            'facts'            => $this->facts($submission),
-            'record'           => $submission,
+            'facts'            => $this->facts($record),
+            'record'           => $record,
             'families'         => new Collection(),
             'individuals'      => new Collection(),
             'media_objects'    => new Collection(),
@@ -90,7 +92,7 @@ class SubmissionPage implements RequestHandlerInterface
             'meta_robots'      => 'index,follow',
             'notes'            => new Collection(),
             'sources'          => new Collection(),
-            'title'            => $submission->fullName(),
+            'title'            => $record->fullName(),
             'tree'             => $tree,
         ]);
     }

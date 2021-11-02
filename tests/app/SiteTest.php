@@ -35,8 +35,8 @@ class SiteTest extends TestCase
      */
     public function testDefault(): void
     {
-        self::assertSame('foo', Site::getPreference('no-such-setting', 'foo'));
-        self::assertSame('bar', Site::getPreference('no-such-setting', 'bar'));
+        self::assertSame('', Site::getPreference('no-such-setting'));
+        self::assertSame('UTC', Site::getPreference('TIMEZONE'));
     }
 
     /**

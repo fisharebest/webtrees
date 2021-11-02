@@ -46,7 +46,7 @@ class FilesystemFactory implements FilesystemFactoryInterface
      */
     public function data(): FilesystemInterface
     {
-        $data_dir = Site::getPreference('INDEX_DIRECTORY', Webtrees::DATA_DIR);
+        $data_dir = Site::getPreference('INDEX_DIRECTORY');
 
         return new Filesystem(new CachedAdapter(new Local($data_dir), new Memory()));
     }
@@ -58,7 +58,7 @@ class FilesystemFactory implements FilesystemFactoryInterface
      */
     public function dataName(): string
     {
-        return Site::getPreference('INDEX_DIRECTORY', Webtrees::DATA_DIR);
+        return Site::getPreference('INDEX_DIRECTORY');
     }
 
     /**

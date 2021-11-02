@@ -62,8 +62,6 @@ class IndividualRepository implements IndividualRepositoryInterface
     private $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
@@ -80,7 +78,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int    $threshold
      * @param int    $maxtoshow
      *
-     * @return string|int[]
+     * @return string|array<int>
      */
     private function commonGivenQuery(string $sex, string $type, bool $show_tot, int $threshold, int $maxtoshow)
     {
@@ -156,9 +154,9 @@ class IndividualRepository implements IndividualRepositoryInterface
             default:
                 array_walk($nameList, static function (string &$value, string $key) use ($show_tot): void {
                     if ($show_tot) {
-                        $value = '<span dir="auto">' . e($key) . '</span> (' . I18N::number((int) $value) . ')';
+                        $value = '<bdi>' . e($key) . '</bdi> (' . I18N::number((int) $value) . ')';
                     } else {
-                        $value = '<span dir="auto">' . e($key) . '</span>';
+                        $value = '<bdi>' . e($key) . '</bdi>';
                     }
                 });
 
@@ -429,7 +427,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Count the number of distinct given names (or the number of occurences of specific given names).
      *
-     * @param string[] ...$params
+     * @param array<string> ...$params
      *
      * @return string
      */
@@ -457,7 +455,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * Count the number of distinct surnames (or the number of occurrences of specific surnames).
      *
-     * @param string[] ...$params
+     * @param array<string> ...$params
      *
      * @return string
      */
@@ -484,7 +482,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int $number_of_surnames
      * @param int $threshold
      *
-     * @return int[][]
+     * @return array<array<int>>
      */
     private function topSurnames(int $number_of_surnames, int $threshold): array
     {
@@ -530,9 +528,7 @@ class IndividualRepository implements IndividualRepositoryInterface
     {
         $top_surname = $this->topSurnames(1, 0);
 
-        return $top_surname
-            ? implode(', ', array_keys(array_shift($top_surname)) ?? [])
-            : '';
+        return implode(', ', array_keys(array_shift($top_surname) ?? []));
     }
 
     /**
@@ -574,7 +570,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         return FunctionsPrintLists::surnameList(
             $surnames,
-            ($type === 'list' ? 1 : 2),
+            $type === 'list' ? 1 : 2,
             $show_tot,
             $module,
             $this->tree
@@ -684,13 +680,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsBirthBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->statsBirthQuery($year1, $year2)
-                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
-                ->join('individuals', static function (JoinClause $join): void {
-                    $join
-                        ->on('i_id', '=', 'd_gid')
-                        ->on('i_file', '=', 'd_file');
-                })
-                ->groupBy(['i_sex']);
+            ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('i_id', '=', 'd_gid')
+                    ->on('i_file', '=', 'd_file');
+            })
+            ->groupBy(['i_sex']);
     }
 
     /**
@@ -742,13 +738,13 @@ class IndividualRepository implements IndividualRepositoryInterface
     public function statsDeathBySexQuery(int $year1 = -1, int $year2 = -1): Builder
     {
         return $this->statsDeathQuery($year1, $year2)
-                ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
-                ->join('individuals', static function (JoinClause $join): void {
-                    $join
-                        ->on('i_id', '=', 'd_gid')
-                        ->on('i_file', '=', 'd_file');
-                })
-                ->groupBy(['i_sex']);
+            ->select(['d_month', 'i_sex', new Expression('COUNT(*) AS total')])
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('i_id', '=', 'd_gid')
+                    ->on('i_file', '=', 'd_file');
+            })
+            ->groupBy(['i_sex']);
     }
 
     /**
@@ -1289,7 +1285,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function averageLifespan($show_years = false): string
+    public function averageLifespan(bool $show_years): string
     {
         return $this->averageLifespanQuery('BOTH', $show_years);
     }
@@ -1301,7 +1297,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function averageLifespanFemale($show_years = false): string
+    public function averageLifespanFemale(bool $show_years): string
     {
         return $this->averageLifespanQuery('F', $show_years);
     }
@@ -1313,7 +1309,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      *
      * @return string
      */
-    public function averageLifespanMale($show_years = false): string
+    public function averageLifespanMale(bool $show_years): string
     {
         return $this->averageLifespanQuery('M', $show_years);
     }
@@ -1328,7 +1324,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function getPercentage(int $count, int $total): string
     {
-        return ($total !== 0) ? I18N::percentage($count / $total, 1) : '';
+        return $total !== 0 ? I18N::percentage($count / $total, 1) : '';
     }
 
     /**

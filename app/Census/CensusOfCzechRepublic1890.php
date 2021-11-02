@@ -37,7 +37,7 @@ class CensusOfCzechRepublic1890 extends CensusOfCzechRepublic implements CensusI
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

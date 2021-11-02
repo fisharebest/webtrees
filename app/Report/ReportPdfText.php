@@ -40,7 +40,7 @@ class ReportPdfText extends ReportBaseText
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         // Set up the style
         if ($renderer->getCurrentStyle() !== $this->styleName) {
@@ -112,7 +112,7 @@ class ReportPdfText extends ReportBaseText
      *
      * @param PdfRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {

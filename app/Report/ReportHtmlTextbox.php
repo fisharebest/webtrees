@@ -38,7 +38,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         // checkFootnote
         $newelements      = [];
@@ -141,7 +141,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         }
 
         // Check the width if set to page wide OR set by xml to larger then page width (margin)
-        if ($this->width == 0 || $this->width > $renderer->getRemainingWidth()) {
+        if ($this->width === 0.0 || $this->width > $renderer->getRemainingWidth()) {
             $this->width = $renderer->getRemainingWidth();
         }
         // Setup the CellPadding
@@ -150,13 +150,13 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         }
 
         // For padding, we have to use less wrap width
-        $cW = $this->width - ($cP * 2);
+        $cW = $this->width - $cP * 2.0;
 
         //-- calculate the text box height
         // Number of lines, will be converted to height
         $cHT = 0;
-        // Element height (exept text)
-        $eH = 0;
+        // Element height (except text)
+        $eH = 0.0;
         // Footnote height (in points)
         $fH = 0;
         $w  = 0;
@@ -170,7 +170,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         for ($i = 0; $i < $cE; $i++) {
             if (is_object($this->elements[$i])) {
                 $ew = $this->elements[$i]->setWrapWidth($cW - $w - 2, $cW);
-                if ($ew == $cW) {
+                if ($ew === $cW) {
                     $w = 0;
                 }
                 $lw = $this->elements[$i]->getWidth($renderer);
@@ -198,7 +198,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // If any element exist
         if ($cE > 0) {
             // Check if this is text or some other element, like images
-            if ($eH == 0) {
+            if ($eH === 0.0) {
                 // Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->cellHeightRatio;
                 // Calculate the cell hight with the largest font size used
@@ -242,9 +242,9 @@ class ReportHtmlTextbox extends ReportBaseTextbox
         // Border setup
         if ($this->border) {
             echo ' border:solid black 1pt;';
-            echo 'width:', ($this->width - 1 - ($cP * 2)), 'pt;height:', $cH - 1, 'pt;';
+            echo 'width:', $this->width - 1 - $cP * 2, 'pt;height:', $cH - 1, 'pt;';
         } else {
-            echo 'width:', ($this->width - ($cP * 2)), 'pt;height:', $cH, 'pt;';
+            echo 'width:', $this->width - $cP * 2, 'pt;height:', $cH, 'pt;';
         }
         echo '">';
 
@@ -279,7 +279,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox
             $renderer->setXy($cX + $this->width, $this->top);
             $renderer->lastCellHeight = $cH;
         } else {
-            $renderer->setXy(0, $this->top + $cH + ($cP * 2));
+            $renderer->setXy(0, $this->top + $cH + $cP * 2);
             $renderer->lastCellHeight = 0;
         }
     }

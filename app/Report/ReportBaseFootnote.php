@@ -65,14 +65,14 @@ class ReportBaseFootnote extends ReportBaseElement
     public $addlink;
 
     /**
-     * Createa an element.
+     * Create an element.
      *
      * @param string $style
      */
-    public function __construct($style = '')
+    public function __construct(string $style = '')
     {
         $this->text = '';
-        if (!empty($style)) {
+        if ($style !== '') {
             $this->styleName = $style;
         } else {
             $this->styleName = 'footnote';
@@ -119,7 +119,7 @@ class ReportBaseFootnote extends ReportBaseElement
      *
      * @return void
      */
-    public function setAddlink(string $a)
+    public function setAddlink(string $a): void
     {
         $this->addlink = $a;
     }

@@ -70,26 +70,28 @@ class NotePage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $note = Registry::noteFactory()->make($xref, $tree);
-        $note = Auth::checkNoteAccess($note, false);
+        $record = Registry::noteFactory()->make($xref, $tree);
+        $record = Auth::checkNoteAccess($record, false);
 
         // Redirect to correct xref/slug
-        if ($note->xref() !== $xref || $request->getAttribute('slug') !== $note->slug()) {
-            return redirect($note->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        $slug = Registry::slugFactory()->make($record);
+
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('note-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($note, new Collection()),
-            'facts'            => $this->facts($note),
-            'families'         => $note->linkedFamilies('NOTE'),
-            'individuals'      => $note->linkedIndividuals('NOTE'),
-            'note'             => $note,
-            'media_objects'    => $note->linkedMedia('NOTE'),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($record, new Collection()),
+            'facts'            => $this->facts($record),
+            'families'         => $record->linkedFamilies('NOTE'),
+            'individuals'      => $record->linkedIndividuals('NOTE'),
+            'note'             => $record,
+            'media_objects'    => $record->linkedMedia('NOTE'),
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
-            'sources'          => $note->linkedSources('NOTE'),
-            'text'             => Filter::formatText($note->getNote(), $tree),
-            'title'            => $note->fullName(),
+            'sources'          => $record->linkedSources('NOTE'),
+            'text'             => Filter::formatText($record->getNote(), $tree),
+            'title'            => $record->fullName(),
             'tree'             => $tree,
         ]);
     }

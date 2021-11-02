@@ -27,7 +27,7 @@ class ReportBaseTextbox extends ReportBaseElement
     /**
      * Array of elements in the TextBox
      *
-     * @var ReportBaseElement[]|string[]
+     * @var array<ReportBaseElement|string>
      */
     public $elements = [];
 

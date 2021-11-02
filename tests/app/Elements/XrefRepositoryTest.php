@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
-use function count;
 
 /**
  * Test harness for the class XrefRepository

@@ -25,7 +25,7 @@ class CensusOfSlovakia extends Census implements CensusPlaceInterface
     /**
      * All available censuses for this census place.
      *
-     * @return CensusInterface[]
+     * @return array<CensusInterface>
      */
     public function allCensusDates(): array
     {

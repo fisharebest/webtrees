@@ -134,7 +134,7 @@ class RegisterAction implements RequestHandlerInterface
         $token = Str::random(32);
 
         $user->setPreference(UserInterface::PREF_LANGUAGE, I18N::languageTag());
-        $user->setPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
+        $user->setPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
         $user->setPreference(UserInterface::PREF_IS_EMAIL_VERIFIED, '');
         $user->setPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED, '');
         $user->setPreference(UserInterface::PREF_TIMESTAMP_REGISTERED, date('U'));

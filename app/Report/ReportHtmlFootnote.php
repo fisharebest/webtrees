@@ -36,7 +36,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         $renderer->setCurrentStyle('footnotenum');
         echo '<a href="#footnote', $this->num, '"><sup>';
@@ -77,26 +77,26 @@ class ReportHtmlFootnote extends ReportBaseFootnote
     /**
      * Calculates the Footnotes height
      *
-     * @param HtmlRenderer $html
+     * @param HtmlRenderer $renderer
      * @param float        $cellWidth The width of the cell to use it for text wraping
      *
      * @return float     Footnote height in points
      */
-    public function getFootnoteHeight($html, float $cellWidth = 0): float
+    public function getFootnoteHeight(HtmlRenderer $renderer, float $cellWidth = 0): float
     {
-        if ($html->getCurrentStyle() !== $this->styleName) {
-            $html->setCurrentStyle($this->styleName);
+        if ($renderer->getCurrentStyle() !== $this->styleName) {
+            $renderer->setCurrentStyle($this->styleName);
         }
 
         if ($cellWidth > 0) {
-            $this->text = $html->textWrap($this->text, $cellWidth);
+            $this->text = $renderer->textWrap($this->text, $cellWidth);
         }
 
         $this->text .= "\n\n";
         $ct         = substr_count($this->text, "\n");
-        $fsize      = $html->getCurrentStyleHeight();
+        $fsize      = $renderer->getCurrentStyleHeight();
 
-        return ($fsize * $ct) * $html->cellHeightRatio;
+        return $fsize * $ct * $renderer->cellHeightRatio;
     }
 
     /**
@@ -105,7 +105,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote
      *
      * @param HtmlRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {

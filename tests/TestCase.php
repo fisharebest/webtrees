@@ -22,21 +22,7 @@ namespace Fisharebest\Webtrees;
 use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\Factories\CacheFactory;
-use Fisharebest\Webtrees\Factories\FamilyFactory;
-use Fisharebest\Webtrees\Factories\FilesystemFactory;
-use Fisharebest\Webtrees\Factories\ElementFactory;
-use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
-use Fisharebest\Webtrees\Factories\HeaderFactory;
-use Fisharebest\Webtrees\Factories\IndividualFactory;
-use Fisharebest\Webtrees\Factories\LocationFactory;
-use Fisharebest\Webtrees\Factories\MediaFactory;
-use Fisharebest\Webtrees\Factories\NoteFactory;
-use Fisharebest\Webtrees\Factories\RepositoryFactory;
-use Fisharebest\Webtrees\Factories\SourceFactory;
-use Fisharebest\Webtrees\Factories\SubmissionFactory;
-use Fisharebest\Webtrees\Factories\SubmitterFactory;
-use Fisharebest\Webtrees\Factories\XrefFactory;
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
@@ -48,6 +34,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -59,7 +46,13 @@ use function app;
 use function basename;
 use function filesize;
 use function http_build_query;
-use function microtime;
+use function implode;
+use function preg_match;
+use function str_starts_with;
+use function strcspn;
+use function strlen;
+use function strpos;
+use function substr;
 
 use const UPLOAD_ERR_OK;
 
@@ -70,6 +63,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     /** @var object */
     public static $mock_functions;
+
     /** @var bool */
     protected static $uses_database = false;
 
@@ -80,36 +74,23 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::setUpBeforeClass();
 
-        // Use nyholm as our PSR7 factory
-        app()->bind(ResponseFactoryInterface::class, Psr17Factory::class);
-        app()->bind(ServerRequestFactoryInterface::class, Psr17Factory::class);
-        app()->bind(StreamFactoryInterface::class, Psr17Factory::class);
-        app()->bind(UploadedFileFactoryInterface::class, Psr17Factory::class);
-        app()->bind(UriFactoryInterface::class, Psr17Factory::class);
+        $webtrees = new Webtrees();
+        $webtrees->bootstrap();
 
-        // Register the factories
-        Registry::cache(new CacheFactory());
-        Registry::familyFactory(new FamilyFactory());
-        Registry::filesystem(new FilesystemFactory());
-        Registry::elementFactory(new ElementFactory());
-        Registry::gedcomRecordFactory(new GedcomRecordFactory());
-        Registry::headerFactory(new HeaderFactory());
-        Registry::individualFactory(new IndividualFactory());
-        Registry::locationFactory(new LocationFactory());
-        Registry::mediaFactory(new MediaFactory());
-        Registry::noteFactory(new NoteFactory());
-        Registry::repositoryFactory(new RepositoryFactory());
-        Registry::sourceFactory(new SourceFactory());
-        Registry::submissionFactory(new SubmissionFactory());
-        Registry::submitterFactory(new SubmitterFactory());
-        Registry::xrefFactory(new XrefFactory());
+        // PSR7 messages and PSR17 message-factories
+        Webtrees::set(ResponseFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(ServerRequestFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(StreamFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(UploadedFileFactoryInterface::class, Psr17Factory::class);
+        Webtrees::set(UriFactoryInterface::class, Psr17Factory::class);
 
-        app()->bind(ModuleThemeInterface::class, WebtreesTheme::class);
+        // This is normally set in middleware.
+        Webtrees::set(ModuleThemeInterface::class, WebtreesTheme::class);
 
         // Need the routing table, to generate URLs.
         $router_container = new RouterContainer('/');
         (new WebRoutes())->load($router_container->getMap());
-        app()->instance(RouterContainer::class, $router_container);
+        Webtrees::set(RouterContainer::class, $router_container);
 
         I18N::init('en-US', true);
 
@@ -160,11 +141,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Create a request and bind it into the container.
      *
-     * @param string                  $method
-     * @param string[]                $query
-     * @param string[]                $params
-     * @param UploadedFileInterface[] $files
-     * @param string[]                $attributes
+     * @param string                       $method
+     * @param array<string>                $query
+     * @param array<string>                $params
+     * @param array<UploadedFileInterface> $files
+     * @param array<string>                $attributes
      *
      * @return ServerRequestInterface
      */
@@ -245,7 +226,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file);
 
-        $timeout_service = new TimeoutService(microtime(true));
+        $timeout_service = new TimeoutService();
         $controller      = new GedcomLoad($timeout_service, $tree_service);
         $request         = self::createRequest()->withAttribute('tree', $tree);
 

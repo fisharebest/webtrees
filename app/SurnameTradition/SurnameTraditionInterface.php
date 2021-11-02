@@ -40,7 +40,7 @@ interface SurnameTraditionInterface
     public function hasSurnames(): bool;
 
     /**
-     * What names are given to a new child
+     * What name is given to a new child
      *
      * @param string $father_name A GEDCOM NAME
      * @param string $mother_name A GEDCOM NAME
@@ -51,7 +51,7 @@ interface SurnameTraditionInterface
     public function newChildNames(string $father_name, string $mother_name, string $child_sex): array;
 
     /**
-     * What names are given to a new parent
+     * What name is given to a new parent
      *
      * @param string $child_name A GEDCOM NAME
      * @param string $parent_sex M, F or U

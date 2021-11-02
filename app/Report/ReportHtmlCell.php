@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use function str_contains;
 use function str_replace;
-use function stripos;
 
 /**
  * Class ReportHtmlCell
@@ -35,7 +34,7 @@ class ReportHtmlCell extends ReportBaseCell
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         if (str_contains($this->text, '{{:ptp:}}')) {
             return;
@@ -88,65 +87,35 @@ class ReportHtmlCell extends ReportBaseCell
         $bpixY = 0;
         if (!empty($this->border)) {
             // Border all around
-            if ($this->border == 1) {
-                echo ' border:solid ';
-                if (!empty($this->bocolor)) {
-                    echo $this->bocolor;
-                } else {
-                    echo 'black';
-                }
-                echo ' 1pt;';
+            if ($this->border === '1') {
+                echo ' border:solid ', $this->bocolor ?: 'black', ' 1pt;';
                 $bpixX = 1;
                 $bpixY = 1;
             } else {
-                if (stripos($this->border, 'T') !== false) {
-                    echo ' border-top:solid ';
-                    if (!empty($this->bocolor)) {
-                        echo $this->bocolor;
-                    } else {
-                        echo 'black';
-                    }
-                    echo ' 1pt;';
+                if (str_contains($this->border, 'T')) {
+                    echo ' border-top:solid ', $this->bocolor ?: 'black', ' 1pt;';
                     $bpixY = 1;
                 }
-                if (stripos($this->border, 'B') !== false) {
-                    echo ' border-bottom:solid ';
-                    if (!empty($this->bocolor)) {
-                        echo $this->bocolor;
-                    } else {
-                        echo 'black';
-                    }
-                    echo ' 1pt;';
+                if (str_contains($this->border, 'B')) {
+                    echo ' border-bottom:solid ', $this->bocolor ?: 'black', ' 1pt;';
                     $bpixY = 1;
                 }
-                if (stripos($this->border, 'R') !== false) {
-                    echo ' border-right:solid ';
-                    if (!empty($this->bocolor)) {
-                        echo $this->bocolor;
-                    } else {
-                        echo 'black';
-                    }
-                    echo ' 1pt;';
+                if (str_contains($this->border, 'R')) {
+                    echo ' border-right:solid ', $this->bocolor ?: 'black', ' 1pt;';
                     $bpixX = 1;
                 }
-                if (stripos($this->border, 'L') !== false) {
-                    echo ' border-left:solid ';
-                    if (!empty($this->bocolor)) {
-                        echo $this->bocolor;
-                    } else {
-                        echo 'black';
-                    }
-                    echo ' 1pt;';
+                if (str_contains($this->border, 'L')) {
+                    echo ' border-left:solid ', $this->bocolor ?: 'black', ' 1pt;';
                     $bpixX = 1;
                 }
             }
         }
         // Check the width if set to page wide OR set by xml to larger then page wide
-        if ($this->width == 0 || $this->width > $renderer->getRemainingWidth()) {
+        if ($this->width === 0.0 || $this->width > $renderer->getRemainingWidth()) {
             $this->width = $renderer->getRemainingWidth();
         }
         // We have to calculate a different width for the padding, counting on both side
-        $cW = $this->width - ($cP * 2);
+        $cW = $this->width - $cP * 2.0;
 
         // If there is any text
         if (!empty($temptext)) {
@@ -202,12 +171,12 @@ class ReportHtmlCell extends ReportBaseCell
             $renderer->lastCellHeight = $this->height;
         } elseif ($this->newline === 1) {
             // -> On a new line at the margin - Default
-            $renderer->setXy(0, $renderer->getY() + $this->height + ($cP * 2));
+            $renderer->setXy(0, $renderer->getY() + $this->height + $cP * 2);
             // Reset the last cell height for the next line
             $renderer->lastCellHeight = 0;
         } elseif ($this->newline === 2) {
             // -> On a new line at the end of this cell
-            $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + ($cP * 2));
+            $renderer->setXy($renderer->getX() + $this->width, $renderer->getY() + $this->height + $cP * 2);
             // Reset the last cell height for the next line
             $renderer->lastCellHeight = 0;
         }

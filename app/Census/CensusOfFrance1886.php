@@ -37,7 +37,7 @@ class CensusOfFrance1886 extends CensusOfFrance implements CensusInterface
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

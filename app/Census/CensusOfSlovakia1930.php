@@ -35,7 +35,7 @@ class CensusOfSlovakia1930 extends CensusOfSlovakia implements CensusInterface
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

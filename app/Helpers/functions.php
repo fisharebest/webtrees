@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Application;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Session as WebtreesSession;
 use Fisharebest\Webtrees\View as WebtreesView;
@@ -39,10 +38,10 @@ use Psr\Http\Message\StreamFactoryInterface;
 function app(string $abstract = null)
 {
     if ($abstract === null) {
-        return Application::getInstance();
+        return Webtrees::container();
     }
 
-    return Application::getInstance()->make($abstract);
+    return Webtrees::make($abstract);
 }
 
 /**
@@ -94,7 +93,7 @@ function csrf_token(): string
  *
  * @return ResponseInterface
  */
-function redirect(string $url, $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
+function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): ResponseInterface
 {
     /** @var ResponseFactoryInterface $response_factory */
     $response_factory = app(ResponseFactoryInterface::class);
@@ -107,13 +106,13 @@ function redirect(string $url, $code = StatusCodeInterface::STATUS_FOUND): Respo
 /**
  * Create a response.
  *
- * @param mixed    $content
- * @param int      $code
- * @param string[] $headers
+ * @param mixed         $content
+ * @param int           $code
+ * @param array<string> $headers
  *
  * @return ResponseInterface
  */
-function response($content = '', $code = StatusCodeInterface::STATUS_OK, $headers = []): ResponseInterface
+function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
 {
     if ($content === '' && $code === StatusCodeInterface::STATUS_OK) {
         $code = StatusCodeInterface::STATUS_NO_CONTENT;
@@ -122,14 +121,12 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
     if ($headers === []) {
         if (is_string($content)) {
             $headers = [
-                'Content-Type'   => 'text/html; charset=UTF-8',
-                'Content-Length' => (string) strlen($content),
+                'Content-Type' => 'text/html; charset=UTF-8',
             ];
         } else {
             $content = json_encode($content, JSON_UNESCAPED_UNICODE);
             $headers = [
-                'Content-Type'   => 'application/json',
-                'Content-Length' => (string) strlen($content),
+                'Content-Type' => 'application/json',
             ];
         }
     }
@@ -156,8 +153,8 @@ function response($content = '', $code = StatusCodeInterface::STATUS_OK, $header
 /**
  * Generate a URL for a named route.
  *
- * @param string       $route_name
- * @param array<mixed> $parameters
+ * @param string                            $route_name
+ * @param array<bool|int|string|array|null> $parameters
  *
  * @return string
  */

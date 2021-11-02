@@ -49,7 +49,7 @@ class Carbon extends CarbonImmutable
      */
     public function local(): Carbon
     {
-        $timezone = Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE', 'UTC'));
+        $timezone = Auth::user()->getPreference(UserInterface::PREF_TIME_ZONE, Site::getPreference('TIMEZONE'));
 
         // Changing locale does not create a new immutable object.
         $this->locale(I18N::locale()->code());

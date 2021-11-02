@@ -19,6 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use function array_filter;
+use function array_keys;
+use function array_map;
+use function implode;
+use function in_array;
+
 /**
  * All family members keep their original surname
  */
@@ -57,7 +63,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What names are given to a new child
+     * What name is given to a new child
      *
      * @param string $father_name A GEDCOM NAME
      * @param string $mother_name A GEDCOM NAME
@@ -73,7 +79,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     }
 
     /**
-     * What names are given to a new parent
+     * What name is given to a new parent
      *
      * @param string $child_name A GEDCOM NAME
      * @param string $parent_sex M, F or U

@@ -40,7 +40,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         $newelements      = [];
         $lastelement      = '';
@@ -52,18 +52,16 @@ class ReportPdfTextBox extends ReportBaseTextbox
             $element = $this->elements[$i];
             if ($element instanceof ReportBaseElement) {
                 if ($element instanceof ReportBaseText) {
-                    if (!empty($footnote_element)) {
-                        ksort($footnote_element);
-                        foreach ($footnote_element as $links) {
-                            $newelements[] = $links;
-                        }
-                        $footnote_element = [];
+                    ksort($footnote_element);
+                    foreach ($footnote_element as $links) {
+                        $newelements[] = $links;
                     }
+                    $footnote_element = [];
                     if (empty($lastelement)) {
                         $lastelement = $element;
                     } else {
                         // Checking if the Text has the same style
-                        if ($element->getStyleName() == $lastelement->getStyleName()) {
+                        if ($element->getStyleName() === $lastelement->getStyleName()) {
                             $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
                         } elseif (!empty($lastelement)) {
                             $newelements[] = $lastelement;
@@ -80,7 +78,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
                     }
                     // Save the Footnote with it’s link number as key for sorting later
                     $footnote_element[$element->num] = $element;
-                } elseif (!($element instanceof ReportPdfFootnote) || trim($element->getValue()) != '') {
+                } elseif (!$element instanceof ReportPdfFootnote || trim($element->getValue()) !== '') {
                     // Do not keep empty footnotes
                     if (!empty($footnote_element)) {
                         ksort($footnote_element);
@@ -142,7 +140,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
         }
 
         // Check the width if set to page wide OR set by xml to larger then page width (margin)
-        if ($this->width == 0 || $this->width > $renderer->getRemainingWidthPDF()) {
+        if ($this->width === 0.0 || $this->width > $renderer->getRemainingWidthPDF()) {
             $cW = $renderer->getRemainingWidthPDF();
         } else {
             $cW = $this->width;
@@ -155,10 +153,10 @@ class ReportPdfTextBox extends ReportBaseTextbox
         if (is_array($cM['cell'])) {
             $cWT = $cW - ($cM['padding_left'] + $cM['padding_right']);
         } else {
-            $cWT = $cW - ($cM['cell'] * 2);
+            $cWT = $cW - $cM['cell'] * 2;
         }
-        // Element height (exept text)
-        $eH = 0;
+        // Element height (except text)
+        $eH = 0.0;
         $w  = 0;
         // Temp Height
         $cHT = 0;
@@ -173,7 +171,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
         for ($i = 0; $i < $cE; $i++) {
             if (is_object($this->elements[$i])) {
                 $ew = $this->elements[$i]->setWrapWidth($cWT - $w, $cWT);
-                if ($ew == $cWT) {
+                if ($ew === $cWT) {
                     $w = 0;
                 }
                 $lw = $this->elements[$i]->getWidth($renderer);
@@ -201,7 +199,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
         // If any element exist
         if ($cE > 0) {
             // Check if this is text or some other element, like images
-            if ($eH == 0) {
+            if ($eH === 0.0) {
                 // This is text elements. Number of LF but at least one line
                 $cHT = ($cHT + 1) * $renderer->tcpdf->getCellHeightRatio();
                 // Calculate the cell hight with the largest font size used within this Box
@@ -209,9 +207,9 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 // Add cell padding
                 if ($this->padding) {
                     if (is_array($cM['cell'])) {
-                        $cHT += ($cM['padding_bottom'] + $cM['padding_top']);
+                        $cHT += $cM['padding_bottom'] + $cM['padding_top'];
                     } else {
-                        $cHT += ($cM['cell'] * 2);
+                        $cHT += $cM['cell'] * 2;
                     }
                 }
                 if ($cH < $cHT) {
@@ -319,7 +317,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
         if ($this->reseth) {
             $cH = 0;
             // This can only happen with multiple images and with pagebreak
-            if ($cPN != $renderer->tcpdf->getPage()) {
+            if ($cPN !== $renderer->tcpdf->getPage()) {
                 $renderer->tcpdf->setPage($cPN);
             }
         }

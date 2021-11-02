@@ -23,7 +23,6 @@ use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -36,6 +35,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -121,13 +121,13 @@ class ReportParserGenerate extends ReportParserBase
     /** @var int Quantity of data to repeat during loops */
     private $repeat_bytes = 0;
 
-    /** @var string[] Repeated data when iterating over loops */
+    /** @var array<string> Repeated data when iterating over loops */
     private $repeats = [];
 
-    /** @var array[] Nested repeating data */
+    /** @var array<int,array<int,array<string>|int>> Nested repeating data */
     private $repeats_stack = [];
 
-    /** @var AbstractRenderer[] Nested repeating data */
+    /** @var array<AbstractRenderer> Nested repeating data */
     private $wt_report_stack = [];
 
     /** @var resource Nested repeating data */
@@ -139,7 +139,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var string The current GEDCOM record */
     private $gedrec = '';
 
-    /** @var string[] Nested GEDCOM records */
+    /** @var array<string> Nested GEDCOM records */
     private $gedrec_stack = [];
 
     /** @var ReportBaseElement The currently processed element */
@@ -178,7 +178,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var AbstractRenderer Nested report elements */
     private $wt_report;
 
-    /** @var string[][] Variables defined in the report at run-time */
+    /** @var array<array<string>> Variables defined in the report at run-time */
     private $vars;
 
     /** @var Tree The current tree */
@@ -190,11 +190,11 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Create a parser for a report
      *
-     * @param string              $report The XML filename
-     * @param AbstractRenderer    $report_root
-     * @param string[][]          $vars
-     * @param Tree                $tree
-     * @param FilesystemInterface $data_filesystem
+     * @param string               $report The XML filename
+     * @param AbstractRenderer     $report_root
+     * @param array<array<string>> $vars
+     * @param Tree                 $tree
+     * @param FilesystemInterface  $data_filesystem
      */
     public function __construct(
         string $report,
@@ -219,9 +219,9 @@ class ReportParserGenerate extends ReportParserBase
      * This function is called whenever a starting element is reached
      * The element handler will be called if found, otherwise it must be HTML
      *
-     * @param resource $parser the resource handler for the XML parser
-     * @param string   $name   the name of the XML element parsed
-     * @param string[] $attrs  an array of key value pairs for the attributes
+     * @param resource      $parser the resource handler for the XML parser
+     * @param string        $name   the name of the XML element parsed
+     * @param array<string> $attrs  an array of key value pairs for the attributes
      *
      * @return void
      */
@@ -286,7 +286,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <style>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -328,7 +328,7 @@ class ReportParserGenerate extends ReportParserBase
      * Handle <doc>
      * Sets up the basics of the document proparties
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -490,13 +490,13 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-        // string The color to fill the background of this cell
+        // The color to fill the background of this cell
         $bgcolor = '';
         if (!empty($attrs['bgcolor'])) {
             $bgcolor = $attrs['bgcolor'];
         }
 
-        // int Whether or not the background should be painted
+        // Whether the background should be painted
         $fill = 1;
         if (isset($attrs['fill'])) {
             if ($attrs['fill'] === '0') {
@@ -507,7 +507,7 @@ class ReportParserGenerate extends ReportParserBase
         }
 
         $reseth = true;
-        // boolean   if true reset the last cell height (default true)
+        // If true reset the last cell height
         if (isset($attrs['reseth'])) {
             if ($attrs['reseth'] === '0') {
                 $reseth = false;
@@ -516,8 +516,8 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-        // mixed Whether or not a border should be printed around this box
-        $border = 0;
+        // Whether a border should be printed around this box
+        $border = '';
         if (!empty($attrs['border'])) {
             $border = $attrs['border'];
         }
@@ -527,7 +527,7 @@ class ReportParserGenerate extends ReportParserBase
             $bocolor = $attrs['bocolor'];
         }
 
-        // int Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
+        // Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
         $height = 0;
         if (!empty($attrs['height'])) {
             $height = $attrs['height'];
@@ -538,7 +538,7 @@ class ReportParserGenerate extends ReportParserBase
             $width = $attrs['width'];
         }
 
-        // int Stretch carachter mode
+        // Stretch character mode
         $stretch = 0;
         if (!empty($attrs['stretch'])) {
             $stretch = (int) $attrs['stretch'];
@@ -567,7 +567,7 @@ class ReportParserGenerate extends ReportParserBase
             }
         }
 
-        // string The name of the Style that should be used to render the text.
+        // The name of the Style that should be used to render the text.
         $style = '';
         if (!empty($attrs['style'])) {
             $style = $attrs['style'];
@@ -664,7 +664,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Called at the start of an element.
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param array<string> $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
@@ -743,7 +743,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <textBox>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -882,14 +882,14 @@ class ReportParserGenerate extends ReportParserBase
         // Until this can be re-designed, we need this assertion to help static analysis tools.
         assert($this->current_element instanceof ReportBaseElement, new LogicException());
 
-        $this->wt_report       = array_pop($this->wt_report_stack);
+        $this->wt_report = array_pop($this->wt_report_stack);
         $this->wt_report->addElement($this->current_element);
     }
 
     /**
      * XLM <Text>.
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param array<string> $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
@@ -930,7 +930,7 @@ class ReportParserGenerate extends ReportParserBase
      * 1. id is empty - current GEDCOM record
      * 2. id is set with a record id
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param array<string> $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
@@ -985,7 +985,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <gedcomValue />
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1027,7 +1027,7 @@ class ReportParserGenerate extends ReportParserBase
                 switch (end($tags)) {
                     case 'DATE':
                         $tmp   = new Date($value);
-                        $value = $tmp->display();
+                        $value = strip_tags($tmp->display());
                         break;
                     case 'PLAC':
                         $tmp   = new Place($value, $this->tree);
@@ -1061,7 +1061,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <repeatTag>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1224,7 +1224,7 @@ class ReportParserGenerate extends ReportParserBase
      * $ I18N::translate('....')
      * $ language_settings[]
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param array<string> $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
@@ -1240,7 +1240,7 @@ class ReportParserGenerate extends ReportParserBase
             $var = $this->vars[$var]['id'];
         } else {
             $tfact = $this->fact;
-            if (($this->fact === 'EVEN' || $this->fact === 'FACT') && $this->type !== ' ') {
+            if (($this->fact === 'EVEN' || $this->fact === 'FACT') && $this->type !== '') {
                 // Use :
                 // n TYPE This text if string
                 $tfact = $this->type;
@@ -1274,7 +1274,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <facts>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1421,7 +1421,7 @@ class ReportParserGenerate extends ReportParserBase
      * Setting upp or changing variables in the XML
      * The XML variable name and value is stored in $this->vars
      *
-     * @param string[] $attrs an array of key value pairs for the attributes
+     * @param array<string> $attrs an array of key value pairs for the attributes
      *
      * @return void
      */
@@ -1488,7 +1488,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <if>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1573,7 +1573,7 @@ class ReportParserGenerate extends ReportParserBase
      * Collect the Footnote links
      * GEDCOM Records that are protected by Privacy setting will be ignored
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1658,7 +1658,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <highlightedImage />
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1710,7 +1710,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <image/>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1780,7 +1780,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <line>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -1838,7 +1838,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <list>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -2352,7 +2352,7 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Handle <relatives>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -2452,8 +2452,7 @@ class ReportParserGenerate extends ReportParserBase
                     foreach ($this->list as $key => $value) {
                         $this->generation = $value->generation;
                         if ($this->generation == $genCounter) {
-                            $newarray[$key]             = new stdClass();
-                            $newarray[$key]->generation = $this->generation;
+                            $newarray[$key] = (object) ['generation' => $this->generation];
                         }
                     }
                     $genCounter++;
@@ -2603,10 +2602,10 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Create a list of all descendants.
      *
-     * @param string[] $list
-     * @param string   $pid
-     * @param bool     $parents
-     * @param int      $generations
+     * @param array<Individual> $list
+     * @param string            $pid
+     * @param bool              $parents
+     * @param int               $generations
      *
      * @return void
      */
@@ -2668,10 +2667,10 @@ class ReportParserGenerate extends ReportParserBase
     /**
      * Create a list of all ancestors.
      *
-     * @param stdClass[] $list
-     * @param string     $pid
-     * @param bool       $children
-     * @param int        $generations
+     * @param array<Individual> $list
+     * @param string            $pid
+     * @param bool              $children
+     * @param int               $generations
      *
      * @return void
      */

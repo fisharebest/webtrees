@@ -58,6 +58,6 @@ class AuthAdministrator implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => $request->getUri()]));
+        return redirect(route(LoginPage::class, ['url' => (string) $request->getUri()]));
     }
 }

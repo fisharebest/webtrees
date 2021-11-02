@@ -90,25 +90,27 @@ class SourcePage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $source = Registry::sourceFactory()->make($xref, $tree);
-        $source = Auth::checkSourceAccess($source, false);
+        $record = Registry::sourceFactory()->make($xref, $tree);
+        $record = Auth::checkSourceAccess($record, false);
 
         // Redirect to correct xref/slug
-        if ($source->xref() !== $xref || $request->getAttribute('slug') !== $source->slug()) {
-            return redirect($source->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        $slug = Registry::slugFactory()->make($record);
+
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('source-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($source, new Collection()),
-            'facts'            => $this->facts($source),
-            'families'         => $source->linkedFamilies('SOUR'),
-            'individuals'      => $source->linkedIndividuals('SOUR'),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($record, new Collection()),
+            'facts'            => $this->facts($record),
+            'families'         => $record->linkedFamilies('SOUR'),
+            'individuals'      => $record->linkedIndividuals('SOUR'),
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
-            'notes'            => $source->linkedNotes('SOUR'),
-            'media_objects'    => $source->linkedMedia('SOUR'),
-            'source'           => $source,
-            'title'            => $source->fullName(),
+            'notes'            => $record->linkedNotes('SOUR'),
+            'media_objects'    => $record->linkedMedia('SOUR'),
+            'source'           => $record,
+            'title'            => $record->fullName(),
             'tree'             => $tree,
         ]);
     }

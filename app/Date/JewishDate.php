@@ -331,7 +331,7 @@ class JewishDate extends AbstractCalendarDate
     /**
      * Which months follows this one? Calendars with leap-months should provide their own implementation.
      *
-     * @return int[]
+     * @return array<int>
      */
     protected function nextMonth(): array
     {

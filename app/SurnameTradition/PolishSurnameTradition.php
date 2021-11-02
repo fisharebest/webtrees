@@ -41,7 +41,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     ];
 
     /**
-     * What names are given to a new child
+     * What name is given to a new child
      *
      * @param string $father_name A GEDCOM NAME
      * @param string $mother_name A GEDCOM NAME
@@ -71,7 +71,7 @@ class PolishSurnameTradition extends PaternalSurnameTradition
     }
 
     /**
-     * What names are given to a new parent
+     * What name is given to a new parent
      *
      * @param string $child_name A GEDCOM NAME
      * @param string $parent_sex M, F or U

@@ -17,31 +17,19 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Census;
+namespace Fisharebest\Webtrees\Contracts;
+
+use Fisharebest\Webtrees\GedcomRecord;
 
 /**
- * Definitions for a census
+ * Make a slug to be used in the URL of a GedcomRecord.
  */
-interface CensusPlaceInterface
+interface SlugFactoryInterface
 {
     /**
-     * All available censuses for this census place.
+     * @param GedcomRecord $record
      *
-     * @return array<CensusInterface>
+     * @return string|null
      */
-    public function allCensusDates(): array;
-
-    /**
-     * Where did this census occur, in GEDCOM format.
-     *
-     * @return string
-     */
-    public function censusPlace(): string;
-
-    /**
-     * In which language was this census written.
-     *
-     * @return string
-     */
-    public function censusLanguage(): string;
+    public function make(GedcomRecord $record): ?string;
 }

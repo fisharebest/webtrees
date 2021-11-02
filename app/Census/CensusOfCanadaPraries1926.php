@@ -37,7 +37,7 @@ class CensusOfCanadaPraries1926 extends CensusOfCanada implements CensusInterfac
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

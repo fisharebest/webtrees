@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use function str_replace;
 use function strip_tags;
 use function trim;
 
@@ -41,7 +40,7 @@ class ReportBaseElement
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         //-- to be implemented in inherited classes
     }
@@ -63,7 +62,7 @@ class ReportBaseElement
      *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {
@@ -79,16 +78,10 @@ class ReportBaseElement
      */
     public function addText(string $t): void
     {
-        $t          = trim($t, "\r\n\t");
-        $t          = str_replace([
-            '<br>',
-            '&nbsp;',
-        ], [
-            "\n",
-            ' ',
-        ], $t);
-        $t          = strip_tags($t);
-        $this->text .= $t;
+        $t = trim($t, "\r\n\t");
+        $t = strtr($t, ['<br>' => "\n", '&nbsp;' => ' ']);
+
+        $this->text .= strip_tags($t);
     }
 
     /**

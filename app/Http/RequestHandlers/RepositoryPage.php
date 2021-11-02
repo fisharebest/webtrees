@@ -85,22 +85,24 @@ class RepositoryPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $repository = Registry::repositoryFactory()->make($xref, $tree);
-        $repository = Auth::checkRepositoryAccess($repository, false);
+        $record = Registry::repositoryFactory()->make($xref, $tree);
+        $record = Auth::checkRepositoryAccess($record, false);
 
         // Redirect to correct xref/slug
-        if ($repository->xref() !== $xref || $request->getAttribute('slug') !== $repository->slug()) {
-            return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        $slug = Registry::slugFactory()->make($record);
+
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('repository-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($repository, new Collection()),
-            'facts'            => $this->facts($repository),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($record, new Collection()),
+            'facts'            => $this->facts($record),
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
-            'repository'       => $repository,
-            'sources'          => $repository->linkedSources('REPO'),
-            'title'            => $repository->fullName(),
+            'repository'       => $record,
+            'sources'          => $record->linkedSources('REPO'),
+            'title'            => $record->fullName(),
             'tree'             => $tree,
         ]);
     }

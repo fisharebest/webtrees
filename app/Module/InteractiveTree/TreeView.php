@@ -80,7 +80,8 @@ class TreeView
     public function getIndividuals(Tree $tree, string $request): string
     {
         $json_requests = explode(';', $request);
-        $r    = [];
+        $r             = [];
+
         foreach ($json_requests as $json_request) {
             $firstLetter = substr($json_request, 0, 1);
             $json_request = substr($json_request, 1);
@@ -232,7 +233,7 @@ class TreeView
      *
      * @return string
      */
-    private function drawPerson(Individual $person, int $gen, int $state, Family $pfamily = null, string $line = '', $isRoot = false): string
+    private function drawPerson(Individual $person, int $gen, int $state, Family $pfamily = null, string $line = '', bool $isRoot = false): string
     {
         if ($gen < 0) {
             return '';

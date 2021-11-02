@@ -42,8 +42,6 @@ class ContactRepository implements ContactRepositoryInterface
     private $user_service;
 
     /**
-     * Constructor.
-     *
      * @param Tree        $tree
      * @param UserService $user_service
      */

@@ -24,13 +24,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function date_default_timezone_set;
-use function mb_internal_encoding;
-
 /**
- * Middleware to set the PHP environment.
+ * Middleware to add a "Content-Length" header to a response.
  */
-class PhpEnvironment implements MiddlewareInterface
+class ContentLength implements MiddlewareInterface
 {
     /**
      * @param ServerRequestInterface  $request
@@ -40,12 +37,19 @@ class PhpEnvironment implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // All modern software uses UTF-8 encoding.
-        mb_internal_encoding('UTF-8');
+        $response = $handler->handle($request);
 
-        // We use UTC internally and convert to local time when displaying datetimes.
-        date_default_timezone_set('UTC');
+        if ($response->hasHeader('content-length')) {
+            return $response;
+        }
 
-        return $handler->handle($request);
+        $content_length = $response->getBody()->getSize();
+
+        if ($content_length === null) {
+            return $response;
+        }
+
+        return $response
+            ->withHeader('content-length', (string) $content_length);
     }
 }

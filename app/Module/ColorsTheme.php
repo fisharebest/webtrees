@@ -58,7 +58,7 @@ class ColorsTheme extends CloudsTheme
      *
      * @param Tree|null $tree
      *
-     * @return Menu[]
+     * @return array<Menu>
      */
     public function userMenu(?Tree $tree): array
     {
@@ -194,7 +194,7 @@ class ColorsTheme extends CloudsTheme
     private function palette(): string
     {
         // If we are logged in, use our preference
-        $palette = Auth::user()->getPreference('themecolor', '');
+        $palette = Auth::user()->getPreference('themecolor');
 
         // If not logged in or no preference, use one we selected earlier in the session.
         if ($palette === '') {
@@ -203,7 +203,11 @@ class ColorsTheme extends CloudsTheme
 
         // We haven't selected one this session? Use the site default
         if ($palette === '') {
-            $palette = Site::getPreference('DEFAULT_COLOR_PALETTE', self::DEFAULT_PALETTE);
+            $palette = Site::getPreference('DEFAULT_COLOR_PALETTE');
+        }
+
+        if ($palette === '') {
+            $palette = self::DEFAULT_PALETTE;
         }
 
         return $palette;

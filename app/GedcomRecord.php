@@ -262,22 +262,12 @@ class GedcomRecord
      * Generate a "slug" to use in pretty URLs.
      *
      * @return string
+     *
+     * @deprecated since 2.0.18.  Use the slug factory directly.
      */
     public function slug(): string
     {
-        $slug = strip_tags($this->fullName());
-
-        try {
-            $transliterator = Transliterator::create('Any-Latin;Latin-ASCII');
-            $slug           = $transliterator->transliterate($slug);
-        } catch (Throwable $ex) {
-            // ext-intl not installed?
-            // Transliteration algorithms not present in lib-icu?
-        }
-
-        $slug = preg_replace('/[^A-Za-z0-9]+/', '-', $slug);
-
-        return trim($slug, '-') ?: '-';
+        return Registry::slugFactory()->make($this);
     }
 
     /**
@@ -290,7 +280,7 @@ class GedcomRecord
         return route(static::ROUTE_NAME, [
             'xref' => $this->xref(),
             'tree' => $this->tree->name(),
-            'slug' => $this->slug(),
+            'slug' => Registry::slugFactory()->make($this),
         ]);
     }
 

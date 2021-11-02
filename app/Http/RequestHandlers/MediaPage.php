@@ -71,26 +71,28 @@ class MediaPage implements RequestHandlerInterface
         $xref = $request->getAttribute('xref');
         assert(is_string($xref));
 
-        $media = Registry::mediaFactory()->make($xref, $tree);
-        $media = Auth::checkMediaAccess($media);
+        $record = Registry::mediaFactory()->make($xref, $tree);
+        $record = Auth::checkMediaAccess($record);
 
         // Redirect to correct xref/slug
-        if ($media->xref() !== $xref || $request->getAttribute('slug') !== $media->slug()) {
-            return redirect($media->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        $slug = Registry::slugFactory()->make($record);
+
+        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('media-page', [
-            'clipboard_facts'  => $this->clipboard_service->pastableFacts($media, new Collection()),
+            'clipboard_facts'  => $this->clipboard_service->pastableFacts($record, new Collection()),
             'data_filesystem'  => $data_filesystem,
-            'families'         => $media->linkedFamilies('OBJE'),
-            'facts'            => $this->facts($media),
-            'individuals'      => $media->linkedIndividuals('OBJE'),
-            'media'            => $media,
+            'families'         => $record->linkedFamilies('OBJE'),
+            'facts'            => $this->facts($record),
+            'individuals'      => $record->linkedIndividuals('OBJE'),
+            'media'            => $record,
             'meta_description' => '',
             'meta_robots'      => 'index,follow',
-            'notes'            => $media->linkedNotes('OBJE'),
-            'sources'          => $media->linkedSources('OBJE'),
-            'title'            => $media->fullName(),
+            'notes'            => $record->linkedNotes('OBJE'),
+            'sources'          => $record->linkedSources('OBJE'),
+            'title'            => $record->fullName(),
             'tree'             => $tree,
         ]);
     }

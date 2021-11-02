@@ -54,12 +54,12 @@ class ReportBaseLine extends ReportBaseElement
     /**
      * Create a line class - Base
      *
-     * @param mixed $x1
-     * @param mixed $y1
-     * @param mixed $x2
-     * @param mixed $y2
+     * @param float $x1
+     * @param float $y1
+     * @param float $x2
+     * @param float $y2
      */
-    public function __construct($x1, $y1, $x2, $y2)
+    public function __construct(float $x1, float $y1, float $x2, float $y2)
     {
         $this->x1 = $x1;
         $this->y1 = $y1;
@@ -84,7 +84,7 @@ class ReportBaseLine extends ReportBaseElement
      *
      * @param HtmlRenderer|PdfRenderer $renderer
      *
-     * @return array{0:float,1:int,2:float|int}
+     * @return array{0:float,1:int,2:float}
      */
     public function getWidth($renderer): array
     {

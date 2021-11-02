@@ -31,7 +31,7 @@ class ReportHtmlImage extends ReportBaseImage
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         static $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
@@ -42,7 +42,7 @@ class ReportHtmlImage extends ReportBaseImage
         if ($this->y === ReportBaseElement::CURRENT_POSITION) {
             //-- first check for a collision with the last picture
             if ($lastpicbottom !== null && $renderer->pageNo() === $lastpicpage && $lastpicbottom >= $renderer->getY() && $this->x >= $lastpicleft && $this->x <= $lastpicright) {
-                $renderer->setY($lastpicbottom + ($renderer->cPadding * 2));
+                $renderer->setY($lastpicbottom + $renderer->cPadding * 2);
             }
             $this->y = $renderer->getY();
         }
@@ -88,6 +88,6 @@ class ReportHtmlImage extends ReportBaseImage
      */
     public function getHeight($renderer): float
     {
-        return $this->height + ($renderer->cPadding * 2);
+        return $this->height + $renderer->cPadding * 2;
     }
 }

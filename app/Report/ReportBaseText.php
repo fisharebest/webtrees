@@ -61,7 +61,7 @@ class ReportBaseText extends ReportBaseElement
     {
         $this->text               = '';
         $this->color              = $color;
-        $this->wrapWidthRemaining = 0;
+        $this->wrapWidthRemaining = 0.0;
         $this->styleName          = $style;
     }
 

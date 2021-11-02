@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * Test the user functions
@@ -73,18 +74,27 @@ class EmbeddedVariablesTest extends TestCase
      */
     public function testAllEmbeddedVariables(): void
     {
-        $tree       = $this->importTree('demo.ged');
-        $statistics = new Statistics(new ModuleService(), $tree, new UserService());
+        $user_service = new UserService();
 
-        // As visitor
-        $text = $statistics->embedTags('#getAllTagsTable#');
-        self::assertNotEquals('#getAllTagsTable#', $text);
-
-        // As member
-        $user = (new UserService())->create('user', 'User', 'user@example.com', 'secret');
+        $user = $user_service->create('user', 'User', 'user@example.com', 'secret');
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '1');
         Auth::login($user);
 
+        $tree       = $this->importTree('demo.ged');
+        $request    = self::createRequest()->withAttribute('tree', $tree);
+        Webtrees::set(ServerRequestInterface::class, $request);
+
+        $statistics = new Statistics(
+            new ModuleService(),
+            $tree,
+            $user_service
+        );
+
+        // As member
+        $text = $statistics->embedTags('#getAllTagsTable#');
+        self::assertNotEquals('#getAllTagsTable#', $text);
+
+        // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');
         self::assertNotEquals('#getAllTagsTable#', $text);
     }
@@ -96,7 +106,11 @@ class EmbeddedVariablesTest extends TestCase
     {
         $tree_service = new TreeService();
         $tree         = $tree_service->create('name', 'title');
-        $statistics   = new Statistics(new ModuleService(), $tree, new UserService());
+        $statistics   = new Statistics(
+            new ModuleService(),
+            $tree,
+            new UserService()
+        );
 
         // As visitor
         $text = $statistics->embedTags('#getAllTagsTable#');

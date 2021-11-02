@@ -37,7 +37,7 @@ class CensusOfDenmark1930 extends CensusOfDenmark implements CensusInterface
     /**
      * The columns of the census.
      *
-     * @return CensusColumnInterface[]
+     * @return array<CensusColumnInterface>
      */
     public function columns(): array
     {

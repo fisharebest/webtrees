@@ -60,8 +60,6 @@ class EventRepository implements EventRepositoryInterface
     private $tree;
 
     /**
-     * Constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
@@ -107,7 +105,7 @@ class EventRepository implements EventRepositoryInterface
     }
 
     /**
-     * @param string[] $events
+     * @param array<string> $events
      *
      * @return string
      */

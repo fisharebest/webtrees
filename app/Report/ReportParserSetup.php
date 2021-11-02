@@ -33,7 +33,7 @@ class ReportParserSetup extends ReportParserBase
     /** @var array An array of report options/parameters */
     private $data = [];
 
-    /** @var string[] An array of input attributes */
+    /** @var array<string> An array of input attributes */
     private $input;
 
     /**
@@ -49,7 +49,7 @@ class ReportParserSetup extends ReportParserBase
     /**
      * Handle <var var="" />
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */
@@ -103,7 +103,7 @@ class ReportParserSetup extends ReportParserBase
     /**
      * Handle <input>
      *
-     * @param string[] $attrs
+     * @param array<string> $attrs
      *
      * @return void
      */

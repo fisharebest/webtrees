@@ -29,7 +29,7 @@ abstract class MockGlobalFunctions
      *
      * @param bool $get_as_float
      *
-     * @return float|int[]
+     * @return float|array<int>
      */
     abstract public function microtime(bool $get_as_float);
 

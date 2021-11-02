@@ -46,8 +46,6 @@ class FavoritesRepository implements FavoritesRepositoryInterface
     private $module_service;
 
     /**
-     * Constructor.
-     *
      * @param Tree          $tree
      * @param ModuleService $module_service
      */

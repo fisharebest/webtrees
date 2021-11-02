@@ -31,7 +31,7 @@ class ReportPdfLine extends ReportBaseLine
      *
      * @return void
      */
-    public function render($renderer)
+    public function render($renderer): void
     {
         if ($this->x1 === ReportBaseElement::CURRENT_POSITION) {
             $this->x1 = $renderer->tcpdf->GetX();

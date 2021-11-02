@@ -19,8 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Statistics\Google\ChartDistribution;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\PlaceRepositoryInterface;
@@ -31,6 +34,12 @@ use Illuminate\Database\Query\JoinClause;
 use stdClass;
 
 use function array_key_exists;
+use function arsort;
+use function end;
+use function explode;
+use function preg_match;
+use function trim;
+use function view;
 
 /**
  * A repository providing methods for place related statistics.
@@ -48,8 +57,6 @@ class PlaceRepository implements PlaceRepositoryInterface
     private $country_service;
 
     /**
-     * BirthPlaces constructor.
-     *
      * @param Tree $tree
      */
     public function __construct(Tree $tree)
@@ -65,32 +72,25 @@ class PlaceRepository implements PlaceRepositoryInterface
      * @param string $what
      * @param bool   $country
      *
-     * @return int[]
+     * @return array<int|string,int>
      */
     private function queryFactPlaces(string $fact, string $what = 'ALL', bool $country = false): array
     {
         $rows = [];
 
         if ($what === 'INDI') {
-            $rows = DB::table('individuals')->select(['i_gedcom as tree'])->where(
-                'i_file',
-                '=',
-                $this->tree->id()
-            )->where(
-                'i_gedcom',
-                'LIKE',
-                "%\n2 PLAC %"
-            )->get()->all();
+            $rows = DB::table('individuals')
+                ->select(['i_gedcom as tree'])
+                ->where('i_file', '=', $this->tree->id())
+                ->where('i_gedcom', 'LIKE', "%\n2 PLAC %")
+                ->get()
+                ->all();
         } elseif ($what === 'FAM') {
-            $rows = DB::table('families')->select(['f_gedcom as tree'])->where(
-                'f_file',
-                '=',
-                $this->tree->id()
-            )->where(
-                'f_gedcom',
-                'LIKE',
-                "%\n2 PLAC %"
-            )->get()->all();
+            $rows = DB::table('families')->select(['f_gedcom as tree'])
+                ->where('f_file', '=', $this->tree->id())
+                ->where('f_gedcom', 'LIKE', "%\n2 PLAC %")
+                ->get()
+                ->all();
         }
 
         $placelist = [];
@@ -153,16 +153,22 @@ class PlaceRepository implements PlaceRepositoryInterface
                 ->orderBy('country');
         }
 
-        if ($what === 'INDI') {
+        if ($what === Individual::RECORD_TYPE) {
             $query->join('individuals', static function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'i_file')
                     ->on('pl_gid', '=', 'i_id');
             });
-        } elseif ($what === 'FAM') {
+        } elseif ($what === Family::RECORD_TYPE) {
             $query->join('families', static function (JoinClause $join): void {
                 $join->on('pl_file', '=', 'f_file')
                     ->on('pl_gid', '=', 'f_id');
             });
+        } elseif ($what === Location::RECORD_TYPE) {
+            $query->join('other', static function (JoinClause $join): void {
+                $join->on('pl_file', '=', 'o_file')
+                    ->on('pl_gid', '=', 'o_id');
+            })
+                ->where('o_type', '=', Location::RECORD_TYPE);
         }
 
         return $query
@@ -170,6 +176,7 @@ class PlaceRepository implements PlaceRepositoryInterface
             ->map(static function (stdClass $entry) {
                 // Map total value to integer
                 $entry->tot = (int) $entry->tot;
+
                 return $entry;
             })
             ->all();
@@ -178,9 +185,9 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Get the top 10 places list.
      *
-     * @param array<string,int> $places
+     * @param array<int> $places
      *
-     * @return array<array<string,mixed>>
+     * @return array<array<string,int|Place>>
      */
     private function getTop10Places(array $places): array
     {
@@ -190,7 +197,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         arsort($places);
 
         foreach ($places as $place => $count) {
-            $tmp     = new Place($place, $this->tree);
+            $tmp     = new Place((string) $place, $this->tree);
             $top10[] = [
                 'place' => $tmp,
                 'count' => $count,
@@ -209,7 +216,7 @@ class PlaceRepository implements PlaceRepositoryInterface
     /**
      * Renders the top 10 places list.
      *
-     * @param array<string,int> $places
+     * @param array<int|string,int> $places
      *
      * @return string
      */
