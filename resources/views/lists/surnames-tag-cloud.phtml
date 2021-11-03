@@ -1,0 +1,38 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\IndividualListModule;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var IndividualListModule|null          $module
+ * @var array<string,array<string,string>> $surnames
+ * @var bool                               $totals
+ * @var Tree                               $tree
+ */
+
+$maximum = max(array_map(static fn (array $x): int => max($x), $surnames));
+$minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
+
+?>
+
+<div class="wt-surnames-tag-cloud">
+    <?php foreach ($surnames as $surn => $surns) : ?>
+        <?php foreach ($surns as $spfxsurn => $count) : ?>
+            <?php
+                $size = $maximum === $minimum ? 1.0 : 1.0 + 1.5 * ($count - $minimum) / ($maximum - $minimum);
+                $tag_item = $totals ? I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count)) : e($spfxsurn);
+            ?>
+            <?php if ($module instanceof ModuleListInterface) : ?>
+                <a style="font-size:<?= $size ?>rem" href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>">
+                    <?= $tag_item ?>
+                </a>
+            <?php else : ?>
+                <span class="text-nowrap" style="font-size:<?= $size ?>rem" dir="auto">
+                    <?= $tag_item ?>
+                </span>
+            <?php endif ?>
+        <?php endforeach ?>
+    <?php endforeach ?>
+</div>

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -587,13 +586,21 @@ class IndividualRepository implements IndividualRepositoryInterface
             return $module instanceof IndividualListModule;
         });
 
-        return FunctionsPrintLists::surnameList(
-            $surnames,
-            $type === 'list' ? 1 : 2,
-            $show_tot,
-            $module,
-            $this->tree
-        );
+        if ($type === 'list') {
+            return view('lists/surnames-bullet-list', [
+                'surnames' => $surnames,
+                'module'   => $this,
+                'totals'   => $show_tot,
+                'tree'     => $this->tree,
+            ]);
+        }
+
+        return view('lists/surnames-compact-list', [
+            'surnames' => $surnames,
+            'module'   => $this,
+            'totals'   => $show_tot,
+            'tree'     => $this->tree,
+        ]);
     }
 
     /**

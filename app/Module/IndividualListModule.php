@@ -24,7 +24,6 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -386,17 +385,27 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     // Show the surname list
                     switch ($tree->getPreference('SURNAME_LIST_STYLE')) {
                         case 'style1':
-                            echo FunctionsPrintLists::surnameList($surns, 3, true, $this, $tree);
+                            echo view('lists/surnames-column-list', [
+                                'module'   => $this,
+                                'surnames' => $surns,
+                                'totals'   => true,
+                                'tree'     => $tree,
+                            ]);
                             break;
                         case 'style3':
-                            echo FunctionsPrintLists::surnameTagCloud($surns, $this, true, $tree);
+                            echo view('lists/surnames-tag-cloud', [
+                                'module'   => $this,
+                                'surnames' => $surns,
+                                'totals'   => true,
+                                'tree'     => $tree,
+                            ]);
                             break;
                         case 'style2':
                         default:
                             echo view('lists/surnames-table', [
-                                'surnames' => $surns,
                                 'families' => $families,
                                 'module'   => $this,
+                                'surnames' => $surns,
                                 'tree'     => $tree,
                             ]);
                             break;

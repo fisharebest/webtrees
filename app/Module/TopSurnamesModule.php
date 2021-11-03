@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -31,6 +30,13 @@ use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_sum;
+use function count;
+use function extract;
+use function uasort;
+use function uksort;
+use function view;
+
+use const EXTR_OVERWRITE;
 
 /**
  * Class TopSurnamesModule
@@ -132,16 +138,34 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
         switch ($infoStyle) {
             case 'tagcloud':
                 uksort($all_surnames, I18N::comparator());
-                $content = FunctionsPrintLists::surnameTagCloud($all_surnames, $module, true, $tree);
+                $content = view('lists/surnames-tag-cloud', [
+                    'module'   => $module,
+                    'surnames' => $all_surnames,
+                    'totals'   => true,
+                    'tree'     => $tree,
+                ]);
                 break;
+
             case 'list':
                 uasort($all_surnames, static fn (array $a, array $b): int => array_sum($b) <=> array_sum($a));
-                $content = FunctionsPrintLists::surnameList($all_surnames, 1, true, $module, $tree);
+                $content = view('lists/surnames-bullet-list', [
+                    'module'   => $module,
+                    'surnames' => $all_surnames,
+                    'totals'   => true,
+                    'tree'     => $tree,
+                ]);
                 break;
+
             case 'array':
                 uasort($all_surnames, static fn (array $a, array $b): int => array_sum($b) <=> array_sum($a));
-                $content = FunctionsPrintLists::surnameList($all_surnames, 2, true, $module, $tree);
+                $content = view('lists/surnames-compact-list', [
+                    'module'   => $module,
+                    'surnames' => $all_surnames,
+                    'totals'   => true,
+                    'tree'     => $tree,
+                ]);
                 break;
+
             case 'table':
             default:
                 $content = view('lists/surnames-table', [

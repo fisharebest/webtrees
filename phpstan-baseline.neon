@@ -486,11 +486,6 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Anonymous function should return int but returns int\\|false\\.$#"
-			count: 2
-			path: app/Functions/FunctionsPrintLists.php
-
-		-
 			message:
 				"""
 					#^Binary operation "\\." between array\\|non\\-empty\\-string and '
@@ -2953,16 +2948,6 @@ parameters:
 			message: "#^Cannot call method commonGivenMaleTable\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/TopGivenNamesModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$surnames of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintLists\\:\\:surnameTagCloud\\(\\) expects array\\<string, array\\<string, int\\>\\>, array\\<int\\|string, array\\> given\\.$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$module of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintLists\\:\\:surnameTagCloud\\(\\) expects Fisharebest\\\\Webtrees\\\\Module\\\\ModuleListInterface\\|null, mixed given\\.$#"
-			count: 1
-			path: app/Module/TopSurnamesModule.php
 
 		-
 			message: "#^Parameter \\#4 \\$module of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintLists\\:\\:surnameList\\(\\) expects Fisharebest\\\\Webtrees\\\\Module\\\\ModuleListInterface\\|null, mixed given\\.$#"

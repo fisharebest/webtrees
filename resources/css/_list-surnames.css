@@ -14,7 +14,19 @@
  */
 
 /*
- * Timeline chart
- *
- * wt-chart, wt-chart-timeline
+ * Surname lists
  */
+.wt-surnames-tag-cloud {
+    text-align: center;
+}
+
+.wt-surnames-tag-cloud-item {
+    white-space: nowrap;
+}
+
+.wt-surnames-column-list {
+    columns: 15rem;
+    column-rule: solid thin gray;
+    border: solid thin gray;
+    padding: 0 1rem;
+}

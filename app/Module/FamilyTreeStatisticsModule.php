@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -30,6 +29,13 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
+use function extract;
+use function uksort;
+use function view;
+
+use const EXTR_OVERWRITE;
 
 /**
  * Class FamilyTreeStatisticsModule
@@ -131,7 +137,12 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
                 return $module instanceof IndividualListModule;
             });
 
-            $surnames = FunctionsPrintLists::surnameList($all_surnames, 2, false, $module, $tree);
+            $surnames = view('lists/surnames-compact-list', [
+                'module'   => $module,
+                'totals'   => false,
+                'surnames' => $all_surnames,
+                'tree'     => $tree,
+            ]);
         } else {
             $surnames = '';
         }

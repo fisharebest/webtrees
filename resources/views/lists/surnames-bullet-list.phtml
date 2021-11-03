@@ -1,0 +1,31 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\IndividualListModule;
+use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var IndividualListModule|null          $module
+ * @var array<string,array<string,string>> $surnames
+ * @var bool                               $totals
+ * @var Tree                               $tree
+ */
+
+?>
+
+<ul class="wt-surnames-bullet-list">
+    <?php foreach ($surnames as $surn => $surns) : ?>
+        <?php foreach ($surns as $spfxsurn => $count) : ?>
+            <li class="wt-surnames-column-list-item">
+                <?php if ($module instanceof ModuleListInterface) : ?>
+                    <a href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>">
+                        <?= $totals ? I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count)) : e($spfxsurn) ?>
+                    </a>
+                <?php else : ?>
+                    <?= $totals ? I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count)) : e($spfxsurn) ?>
+                <?php endif ?>
+            </li>
+        <?php endforeach ?>
+    <?php endforeach ?>
+</ul>

@@ -876,14 +876,6 @@ div.fact_SHARED_NOTE {
     outline: solid red 1px;
 }
 
-.tag_cloud {
-    text-align: center;
-}
-
-.tag_cloud a {
-    white-space: nowrap;
-}
-
 .nowrap {
     white-space: nowrap;
 }
