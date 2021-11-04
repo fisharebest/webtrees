@@ -79,7 +79,7 @@ trait ModuleCustomTrait
             return $this->customModuleVersion();
         }
 
-        return Registry::cache()->file()->remember($this->name() . '-latest-version', function () {
+        return Registry::cache()->file()->remember($this->name() . '-latest-version', function (): string {
             try {
                 $client = new Client([
                     'timeout' => 3,
