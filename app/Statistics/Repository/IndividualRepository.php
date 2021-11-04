@@ -589,7 +589,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         if ($type === 'list') {
             return view('lists/surnames-bullet-list', [
                 'surnames' => $surnames,
-                'module'   => $this,
+                'module'   => $module,
                 'totals'   => $show_tot,
                 'tree'     => $this->tree,
             ]);
@@ -597,7 +597,7 @@ class IndividualRepository implements IndividualRepositoryInterface
 
         return view('lists/surnames-compact-list', [
             'surnames' => $surnames,
-            'module'   => $this,
+            'module'   => $module,
             'totals'   => $show_tot,
             'tree'     => $this->tree,
         ]);

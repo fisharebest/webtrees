@@ -2950,11 +2950,6 @@ parameters:
 			path: app/Module/TopGivenNamesModule.php
 
 		-
-			message: "#^Parameter \\#4 \\$module of static method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsPrintLists\\:\\:surnameList\\(\\) expects Fisharebest\\\\Webtrees\\\\Module\\\\ModuleListInterface\\|null, mixed given\\.$#"
-			count: 2
-			path: app/Module/TopSurnamesModule.php
-
-		-
 			message: "#^Cannot call method id\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/UserFavoritesModule.php
