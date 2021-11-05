@@ -137,7 +137,7 @@ class ModuleActionTest extends TestCase
      */
     private function fooModule(): ModuleInterface
     {
-        return new class extends AbstractModule {
+        return new class () extends AbstractModule {
             public function getTestAction(): ResponseInterface
             {
                 return response('It works!');
