@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Reports\RightToLeftSupport;
-
 use function hexdec;
 use function is_array;
 use function preg_match;

@@ -19,8 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Reports\RightToLeftSupport;
-
 use function count;
 use function explode;
 use function hexdec;

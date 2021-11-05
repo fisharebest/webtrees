@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Reports;
 
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Report\RightToLeftSupport;
 use Fisharebest\Webtrees\TestCase;
 
 /**
@@ -29,7 +30,7 @@ use Fisharebest\Webtrees\TestCase;
 class RightToLeftSupportTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -49,7 +50,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -133,7 +134,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -161,7 +162,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -189,7 +190,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -225,7 +226,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -261,7 +262,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -321,7 +322,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -365,7 +366,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */
@@ -393,7 +394,7 @@ class RightToLeftSupportTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     * @covers \Fisharebest\Webtrees\Report\RightToLeftSupport
      *
      * @return void
      */

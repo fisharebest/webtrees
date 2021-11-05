@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Reports;
+namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\I18N;
 
