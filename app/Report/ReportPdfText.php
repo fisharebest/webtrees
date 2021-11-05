@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Functions\FunctionsRtl;
+use Fisharebest\Webtrees\Reports\RightToLeftSupport;
 
 use function count;
 use function explode;
@@ -66,7 +66,7 @@ class ReportPdfText extends ReportBaseText
         } else {
             $renderer->tcpdf->SetTextColor(0, 0, 0);
         }
-        $temptext = FunctionsRtl::spanLtrRtl($temptext);
+        $temptext = RightToLeftSupport::spanLtrRtl($temptext);
         $temptext = str_replace(
             [
                 '<br><span dir="rtl">',

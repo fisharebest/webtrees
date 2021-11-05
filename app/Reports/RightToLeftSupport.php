@@ -17,16 +17,16 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Functions;
+namespace Fisharebest\Webtrees\Reports;
 
 use Fisharebest\Webtrees\I18N;
 
 use function str_contains;
 
 /**
- * RTL Functions for use in the PDF/HTML reports
+ * RTL Functions for use in the PDF reports
  */
-class FunctionsRtl
+class RightToLeftSupport
 {
     private const UTF8_LRM = "\xE2\x80\x8E"; // U+200E (Left to Right mark:  zero-width character with LTR directionality)
     private const UTF8_RLM = "\xE2\x80\x8F"; // U+200F (Right to Left mark:  zero-width character with RTL directionality)
@@ -77,7 +77,7 @@ class FunctionsRtl
      *
      * @return string The input string, with &lrm; and &rlm; stripped
      */
-    public static function stripLrmRlm(string $inputText): string
+    private static function stripLrmRlm(string $inputText): string
     {
         return str_replace([
             self::UTF8_LRM,
@@ -167,7 +167,7 @@ class FunctionsRtl
                     $currentLen += $endPos;
                     $entity     = substr($workingText, 0, $currentLen);
                     if (strtolower($entity) === '&nbsp;') {
-                        $entity .= '&nbsp;'; // Ensure consistent case for this entity
+                        $entity = '&nbsp;'; // Ensure consistent case for this entity
                     }
                     if (self::$waitingText === '') {
                         $result .= $entity;
@@ -474,11 +474,16 @@ class FunctionsRtl
         // Include solitary "-" and "+" in surrounding RTL text
         $result = str_replace([
             self::END_RTL . self::START_LTR . '-' . self::END_LTR . self::START_RTL,
-            self::END_RTL . self::START_LTR . '-' . self::END_LTR . self::START_RTL,
+            self::END_RTL . self::START_LTR . '+' . self::END_LTR . self::START_RTL,
         ], [
             '-',
             '+',
         ], $result);
+
+        //$result = strtr($result, [
+        //    self::END_RTL . self::START_LTR . '-' . self::END_LTR . self::START_RTL => '-',
+        //    self::END_RTL . self::START_LTR . '+' . self::END_LTR . self::START_RTL => '+',
+        //]);
 
         // Remove empty spans
         $result = str_replace([
@@ -514,7 +519,7 @@ class FunctionsRtl
      *
      * @return string
      */
-    public static function starredName(string $textSpan, string $direction): string
+    private static function starredName(string $textSpan, string $direction): string
     {
         // To avoid a TCPDF bug that mixes up the word order, insert those <u> and </u> tags
         // only when page and span directions are identical.
@@ -562,7 +567,7 @@ class FunctionsRtl
      *
      * @return array{'letter':string,'length':int}
      */
-    public static function getChar(string $text, int $offset): array
+    private static function getChar(string $text, int $offset): array
     {
         if ($text === '') {
             return [
@@ -597,7 +602,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function breakCurrentSpan(string &$result): void
+    private static function breakCurrentSpan(string &$result): void
     {
         // Interrupt the current span, insert that <br>, and then continue the current span
         $result            .= self::$waitingText;
@@ -614,7 +619,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function beginCurrentSpan(string &$result): void
+    private static function beginCurrentSpan(string &$result): void
     {
         if (self::$currentState === 'LTR') {
             $result .= self::START_LTR;
@@ -634,7 +639,7 @@ class FunctionsRtl
      *
      * @return void
      */
-    public static function finishCurrentSpan(string &$result, bool $theEnd = false): void
+    private static function finishCurrentSpan(string &$result, bool $theEnd = false): void
     {
         $textSpan = substr($result, self::$posSpanStart);
         $result   = substr($result, 0, self::$posSpanStart);

@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Functions\FunctionsRtl;
+use Fisharebest\Webtrees\Reports\RightToLeftSupport;
 
 use function hexdec;
 use function is_array;
@@ -130,7 +130,7 @@ class ReportPdfCell extends ReportBaseCell
             if ($renderer->checkPageBreakPDF($cHT)) {
                 $this->top = $renderer->tcpdf->GetY();
             }
-            $temptext = FunctionsRtl::spanLtrRtl($temptext);
+            $temptext = RightToLeftSupport::spanLtrRtl($temptext);
         }
         // HTML ready - last value is true
         $renderer->tcpdf->MultiCell(
