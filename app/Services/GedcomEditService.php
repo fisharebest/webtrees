@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Elements\AbstractXrefElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -94,17 +95,20 @@ class GedcomEditService
                 }
             }
 
-            // Include this line if there is a value - or if there is a child record with a value.
-            $include = $values[$i] !== '';
-
-            for ($j = $i + 1; !$include && $j < $count && $levels[$j] > $levels[$i]; $j++) {
-                $include = $values[$j] !== '';
+            // Skip children of links (e.g. PAGE without a parent SOUR) if the link is empty
+            $children_with_values = false;
+            for ($j = $i + 1; $j < $count && $levels[$j] > $levels[$i]; $j++) {
+                if ($values[$j] !== '') {
+                    $children_with_values = true;
+                    break;
+                }
             }
 
-            if ($include) {
+            if ($values[$i] !== '' || $children_with_values  && !$element instanceof AbstractXrefElement) {
                 if ($values[$i] === '') {
                     $gedcom_lines[] = $levels[$i] . ' ' . $tags[$i];
                 } else {
+                    // We use CONC for editing NOTE records.
                     if ($tags[$i] === 'CONC') {
                         $next_level = (int) $levels[$i];
                     } else {
@@ -113,6 +117,8 @@ class GedcomEditService
 
                     $gedcom_lines[] = $levels[$i] . ' ' . $tags[$i] . ' ' . str_replace("\n", "\n" . $next_level . ' CONT ', $values[$i]);
                 }
+            } else {
+                $i = $j;
             }
         }
 
