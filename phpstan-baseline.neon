@@ -486,50 +486,6 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message:
-				"""
-					#^Binary operation "\\." between array\\|non\\-empty\\-string and '
-					' results in an error\\.$#
-				"""
-			count: 2
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsRtl\\:\\:spanLtrRtl\\(\\) should return string but returns array\\|string\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsRtl\\:\\:starredName\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, array\\|string given\\.$#"
-			count: 4
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsRtl.php
-
-		-
 			message: "#^Array \\(array\\<array\\<string\\>\\>\\) does not accept array\\<string, string\\|null\\>\\.$#"
 			count: 1
 			path: app/GedcomRecord.php
@@ -3483,6 +3439,50 @@ parameters:
 			message: "#^Parameter \\#1 \\$h of method TCPDF\\:\\:checkPageBreak\\(\\) expects float, mixed given\\.$#"
 			count: 1
 			path: app/Report/TcpdfWrapper.php
+
+		-
+			message:
+				"""
+					#^Binary operation "\\." between array\\|non\\-empty\\-string and '
+					' results in an error\\.$#
+				"""
+			count: 2
+			path: app/Reports/RightToLeftSupport.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Reports\\\\RightToLeftSupport\\:\\:spanLtrRtl\\(\\) should return string but returns array\\|string\\.$#"
+			count: 1
+			path: app/Reports/RightToLeftSupport.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Reports\\\\RightToLeftSupport\\:\\:starredName\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Reports/RightToLeftSupport.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, array\\|string given\\.$#"
+			count: 4
+			path: app/Reports/RightToLeftSupport.php
+
+		-
+			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: app/Reports/RightToLeftSupport.php
+
+		-
+			message: "#^Parameter \\#3 \\$length of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: app/Reports/RightToLeftSupport.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/Reports/RightToLeftSupport.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/Reports/RightToLeftSupport.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"

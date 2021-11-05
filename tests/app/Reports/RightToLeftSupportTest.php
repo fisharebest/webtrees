@@ -37,7 +37,6 @@ class RightToLeftSupportTest extends TestCase
     {
         I18N::init('en-US', true);
         $this->assertSame(
-
             '',
             RightToLeftSupport::spanLtrRtl('')
         );
@@ -199,11 +198,15 @@ class RightToLeftSupportTest extends TestCase
         I18N::init('en-US', true);
         $this->assertSame(
             '<span dir="ltr">foo&nbsp;bar</span>',
-            RightToLeftSupport::spanLtrRtl("foo&nbsp;bar")
+            RightToLeftSupport::spanLtrRtl('foo&nbsp;bar')
         );
         $this->assertSame(
             '<span dir="rtl">אבג&nbsp;דהו</span>',
-            RightToLeftSupport::spanLtrRtl("אבג&nbsp;דהו")
+            RightToLeftSupport::spanLtrRtl('אבג&nbsp;דהו')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo&bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo&bar')
         );
 
         I18N::init('he', true);
@@ -215,6 +218,10 @@ class RightToLeftSupportTest extends TestCase
             '<span dir="rtl">אבג&nbsp;דהו</span>',
             RightToLeftSupport::spanLtrRtl("אבג&nbsp;דהו")
         );
+        $this->assertSame(
+            '<span dir="ltr">foo&bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo&bar')
+        );
     }
 
     /**
@@ -222,36 +229,186 @@ class RightToLeftSupportTest extends TestCase
      *
      * @return void
      */
-    public function xtestLeftToRight(): void
+    public function testBraces(): void
     {
-        $this->assertSame('<span dir="ltr">foo&eacutebar</span>', RightToLeftSupport::spanLtrRtl('foo&eacutebar'));
-        // Number
-        $this->assertSame('<span dir="ltr">foo 123,456.78 bar</span>', RightToLeftSupport::spanLtrRtl('foo 123,456.78 bar'));
-        $this->assertSame('<span dir="ltr">foo -123,456.78 bar</span>', RightToLeftSupport::spanLtrRtl('foo -123,456.78 bar'));
-        $this->assertSame('<span dir="ltr">foo +123,456.78 bar</span>', RightToLeftSupport::spanLtrRtl('foo +123,456.78 bar'));
-        $this->assertSame('<span dir="rtl">אבג</span><span dir="ltr"> ‪123,456.78‬ bar</span>', RightToLeftSupport::spanLtrRtl('אבג 123,456.78 bar'));
-        $this->assertSame('<span dir="rtl">אבג</span><span dir="ltr"> ‪-123,456.78‬ bar</span>', RightToLeftSupport::spanLtrRtl('אבג -123,456.78 bar'));
-        $this->assertSame('<span dir="rtl">אבג</span><span dir="ltr"> ‪+123,456.78‬ bar</span>', RightToLeftSupport::spanLtrRtl('אבג +123,456.78 bar'));
-        // TCPDF directive
-        $this->assertSame('<span dir="ltr">{{FOO BAR}}</span>', RightToLeftSupport::spanLtrRtl('{{FOO BAR}}'));
-        // Broken TCPDF directive
-        $this->assertSame('<span dir="ltr">{{FOO BAR</span>', RightToLeftSupport::spanLtrRtl('{{FOO BAR'));
-        // Starred name.
-        $this->assertSame('<span dir="ltr">John&nbsp;<u>Paul</u>&nbsp;Sartre</span>', RightToLeftSupport::spanLtrRtl('John <span class="starredname">Paul</span> Sartre'));
-        // Unclosed HTML tag
-        $this->assertSame('<span dir="ltr"><foo</span>', RightToLeftSupport::spanLtrRtl('<foo'));
-        // All LTR/RTL
-        $this->assertSame('<span dir="ltr">foo</span>', RightToLeftSupport::spanLtrRtl('foo'));
-        $this->assertSame('<span dir="rtl">אבג</span>', RightToLeftSupport::spanLtrRtl('אבג'));
-        // Leading/trailing spaces
-        $this->assertSame('<span dir="ltr">   foo   </span>', RightToLeftSupport::spanLtrRtl('   foo   '));
-        $this->assertSame('<span dir="ltr">   </span><span dir="rtl">אבג</span><span dir="ltr">   </span>', RightToLeftSupport::spanLtrRtl('   אבג   '));
-        $this->assertSame('<span dir="ltr">&nbsp;foo&nbsp;</span>', RightToLeftSupport::spanLtrRtl('&nbsp;foo&nbsp;'));
-        $this->assertSame('<span dir="ltr">&nbsp;</span><span dir="rtl">אבג</span><span dir="ltr"> </span>', RightToLeftSupport::spanLtrRtl('&nbsp;אבג&nbsp;'));
-        // Spaces stick to the LTR text
-        $this->assertSame('<span dir="ltr">foo </span><span dir="rtl">אבג</span>', RightToLeftSupport::spanLtrRtl('foo אבג'));
-        $this->assertSame('<span dir="rtl">אבג</span><span dir="ltr"> foo</span>', RightToLeftSupport::spanLtrRtl('אבג foo'));
-        // Line breaks
-        $this->assertSame('<span dir="ltr">foo</span><br><span dir="rtl">אבג</span><br><span dir="ltr">bar</span>', RightToLeftSupport::spanLtrRtl('foo<br>אבג<br>bar'));
+        I18N::init('en-US', true);
+        $this->assertSame(
+            '<span dir="ltr">foo{{123}}bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo{{123}}bar')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo{{bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo{{bar')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג{{123}}דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג{{123}}דהו')
+        );
+
+        I18N::init('he', true);
+        $this->assertSame(
+            '<span dir="ltr">foo{{123}}bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo{{123}}bar')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo{{bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo{{bar')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג{{123}}דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג{{123}}דהו')
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     *
+     * @return void
+     */
+    public function testNumbers(): void
+    {
+        I18N::init('en-US', true);
+        $this->assertSame(
+            '<span dir="ltr">foo 123,456.789 bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo 123,456.789 bar')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo +123,456.789 bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo +123,456.789 bar')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo -123,456.789 bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo -123,456.789 bar')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג ‪123,456.789‬ דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג 123,456.789 דהו')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג ‪+123,456.789‬ דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג +123,456.789 דהו')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג ‪-123,456.789‬ דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג -123,456.789 דהו')
+        );
+
+        I18N::init('he', true);
+        $this->assertSame(
+            '<span dir="ltr">foo 123,456.789 bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo 123,456.789 bar')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo +123,456.789 bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo +123,456.789 bar')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo -123,456.789 bar</span>',
+            RightToLeftSupport::spanLtrRtl('foo -123,456.789 bar')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג ‪123,456.789‬ דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג 123,456.789 דהו')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג ‪+123,456.789‬ דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג +123,456.789 דהו')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג ‪-123,456.789‬ דהו</span>',
+            RightToLeftSupport::spanLtrRtl('אבג -123,456.789 דהו')
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     *
+     * @return void
+     */
+    public function testParentheses(): void
+    {
+        I18N::init('en-US', true);
+        $this->assertSame(
+            '<span dir="ltr">foo (bar)</span>',
+            RightToLeftSupport::spanLtrRtl('foo (bar)')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo </span><span dir="rtl">(אבג)</span>',
+            RightToLeftSupport::spanLtrRtl('foo (אבג)')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג</span><span dir="ltr"> (bar)</span>',
+            RightToLeftSupport::spanLtrRtl('אבג (bar)')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג (דהו)</span>',
+            RightToLeftSupport::spanLtrRtl('אבג (דהו)')
+        );
+
+        I18N::init('he', true);
+        $this->assertSame(
+            '<span dir="ltr">foo (bar)</span>',
+            RightToLeftSupport::spanLtrRtl('foo (bar)')
+        );
+        $this->assertSame(
+            '<span dir="ltr">foo </span><span dir="rtl">(אבג)</span>',
+            RightToLeftSupport::spanLtrRtl('foo (אבג)')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג </span><span dir="ltr">(bar)</span>',
+            RightToLeftSupport::spanLtrRtl('אבג (bar)')
+        );
+        $this->assertSame(
+            '<span dir="rtl">אבג (דהו)</span>',
+            RightToLeftSupport::spanLtrRtl('אבג (דהו)')
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     *
+     * @return void
+     */
+    public function testUnescapedHtml(): void
+    {
+        I18N::init('en-US', true);
+        $this->assertSame(
+            '<span dir="ltr">>foo<</span>',
+            RightToLeftSupport::spanLtrRtl(">foo<")
+        );
+        $this->assertSame(
+            '<span dir="ltr">></span><span dir="rtl">אבג<</span>',
+            RightToLeftSupport::spanLtrRtl(">אבג<")
+        );
+
+        I18N::init('he', true);
+        $this->assertSame(
+            '<span dir="rtl">></span><span dir="ltr">foo<</span>',
+            RightToLeftSupport::spanLtrRtl(">foo<")
+        );
+        $this->assertSame(
+            '<span dir="rtl">>אבג<</span>',
+            RightToLeftSupport::spanLtrRtl(">אבג<")
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Reports\RightToLeftSupport
+     *
+     * @return void
+     */
+    public function testBreakInNumber(): void
+    {
+        I18N::init('en-US', true);
+        $this->assertSame(
+            '<span dir="ltr">123</span><br><span dir="ltr">456</span>',
+            RightToLeftSupport::spanLtrRtl("123<br>456")
+        );
+
+        I18N::init('he', true);
+        $this->assertSame(
+            '<span dir="rtl">‪123‬</span><br><span dir="rtl">‪456‬</span>',
+            RightToLeftSupport::spanLtrRtl("123<br>456")
+        );
     }
 }
