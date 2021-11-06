@@ -43,13 +43,12 @@ class CreateSubmitterAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params              = (array) $request->getParsedBody();
-        $name                = $params['submitter_name'];
-        $address             = $params['submitter_address'];
-        $email               = $params['submitter_email'];
-        $phone               = $params['submitter_phone'];
-        $privacy_restriction = $params['privacy-restriction'];
-        $edit_restriction    = $params['edit-restriction'];
+        $params      = (array) $request->getParsedBody();
+        $name        = $params['submitter_name'];
+        $address     = $params['submitter_address'];
+        $email       = $params['submitter_email'];
+        $phone       = $params['submitter_phone'];
+        $restriction = $params['restriction'];
 
         // Fix non-printing characters
         $name = trim(preg_replace('/\s+/', ' ', $name));
@@ -68,12 +67,8 @@ class CreateSubmitterAction implements RequestHandlerInterface
             $gedcom .= "\n1 PHON " . $phone;
         }
 
-        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
-            $gedcom .= "\n1 RESN " . $privacy_restriction;
-        }
-
-        if ($edit_restriction === 'locked') {
-            $gedcom .= "\n1 RESN " . $edit_restriction;
+        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+            $gedcom .= "\n1 RESN " . $restriction;
         }
 
         $record = $tree->createRecord($gedcom);

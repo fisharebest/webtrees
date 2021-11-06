@@ -1166,7 +1166,7 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string\\|null, string\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
@@ -1266,7 +1266,7 @@ parameters:
 			path: app/Http/RequestHandlers/ModuleAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string\\|null, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ModuleAction.php
 
@@ -3670,7 +3670,7 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Parameter \\#1 \\$haystack of function str_starts_with expects string\\|null, int\\|string given\\.$#"
+			message: "#^Parameter \\#1 \\$haystack of function str_starts_with expects string, int\\|string given\\.$#"
 			count: 2
 			path: app/Services/SearchService.php
 

@@ -66,12 +66,11 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params              = (array) $request->getParsedBody();
-        $note                = $params['media-note'] ?? '';
-        $title               = $params['title'] ?? '';
-        $type                = $params['type'] ?? '';
-        $privacy_restriction = $params['privacy-restriction'] ?? '';
-        $edit_restriction    = $params['edit-restriction'] ?? '';
+        $params      = (array) $request->getParsedBody();
+        $note        = $params['media-note'] ?? '';
+        $title       = $params['title'] ?? '';
+        $type        = $params['type'] ?? '';
+        $restriction = $params['restriction'] ?? '';
 
         $file = $this->media_file_service->uploadFile($request);
 
@@ -81,12 +80,8 @@ class CreateMediaObjectAction implements RequestHandlerInterface
 
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
 
-        if (in_array($privacy_restriction, $this->media_file_service::PRIVACY_RESTRICTIONS, true)) {
-            $gedcom .= "\n1 RESN " . $privacy_restriction;
-        }
-
-        if (in_array($edit_restriction, $this->media_file_service::EDIT_RESTRICTIONS, true)) {
-            $gedcom .= "\n1 RESN " . $edit_restriction;
+        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+            $gedcom .= "\n1 RESN " . $restriction;
         }
 
         $record = $tree->createMediaObject($gedcom);

@@ -5,11 +5,11 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <div class="row form-group">
-    <label class="col-form-label col-sm-2" for="privacy-restriction">
-        <?= /* I18N: a restriction on viewing data */ I18N::translate('Privacy restriction') ?>
+    <label class="col-form-label col-sm-2" for="restriction">
+        <?= /* I18N: a restriction on viewing data */ I18N::translate('Restriction') ?>
     </label>
-    <div class="col-sm-4">
-        <select class="form-control" id="privacy-restriction" name="privacy-restriction">
+    <div class="col-sm-10">
+        <select class="form-control" id="restriction" name="restriction">
             <option value="">&nbsp;</option>
             <option value="none">
                 <?= I18N::translate('Show to visitors') ?>
@@ -20,14 +20,6 @@ use Fisharebest\Webtrees\I18N;
             <option value="confidential">
                 <?= I18N::translate('Show to managers') ?>
             </option>
-        </select>
-    </div>
-    <label class="col-form-label col-sm-2" for="edit-restriction">
-        <?= /* I18N: A restriction on editing data */ I18N::translate('Editing restriction') ?>
-    </label>
-    <div class="col-sm-4">
-        <select class="form-control" id="edit-restriction" name="edit-restriction">
-            <option value="">&nbsp;</option>
             <option value="locked">
                 <?= I18N::translate('Only managers can edit') ?>
             </option>

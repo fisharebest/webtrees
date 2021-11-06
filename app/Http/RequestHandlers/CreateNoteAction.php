@@ -43,22 +43,17 @@ class CreateNoteAction implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params              = (array) $request->getParsedBody();
-        $note                = $params['note'];
-        $privacy_restriction = $params['privacy-restriction'];
-        $edit_restriction    = $params['edit-restriction'];
+        $params      = (array) $request->getParsedBody();
+        $note        = $params['note'];
+        $restriction = $params['restriction'];
 
         // Convert HTML line endings to GEDCOM continuations
         $note = strtr($note, ["\r\n" => "\n1 CONT "]);
 
         $gedcom = '0 @@ NOTE ' . $note;
 
-        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
-            $gedcom .= "\n1 RESN " . $privacy_restriction;
-        }
-
-        if ($edit_restriction === 'locked') {
-            $gedcom .= "\n1 RESN " . $edit_restriction;
+        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+            $gedcom .= "\n1 RESN " . $restriction;
         }
 
         $record = $tree->createRecord($gedcom);

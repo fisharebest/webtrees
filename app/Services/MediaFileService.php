@@ -64,16 +64,6 @@ use const UPLOAD_ERR_OK;
  */
 class MediaFileService
 {
-    public const EDIT_RESTRICTIONS = [
-        'locked',
-    ];
-
-    public const PRIVACY_RESTRICTIONS = [
-        'none',
-        'privacy',
-        'confidential',
-    ];
-
     public const EXTENSION_TO_FORM = [
         'jpeg' => 'jpg',
         'tiff' => 'tif',

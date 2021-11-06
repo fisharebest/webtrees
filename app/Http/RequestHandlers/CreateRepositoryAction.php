@@ -52,8 +52,7 @@ class CreateRepositoryAction implements RequestHandlerInterface
         $name                = $params['name'];
         $address             = $params['address'];
         $url                 = $params['url'];
-        $privacy_restriction = $params['privacy-restriction'];
-        $edit_restriction    = $params['edit-restriction'];
+        $restriction = $params['restriction'];
 
         // Fix non-printing characters
         $name = trim(preg_replace('/\s+/', ' ', $name));
@@ -68,12 +67,8 @@ class CreateRepositoryAction implements RequestHandlerInterface
             $gedcom .= "\n1 WWW " . $url;
         }
 
-        if (in_array($privacy_restriction, ['none', 'privacy', 'confidential'], true)) {
-            $gedcom .= "\n1 RESN " . $privacy_restriction;
-        }
-
-        if ($edit_restriction === 'locked') {
-            $gedcom .= "\n1 RESN " . $edit_restriction;
+        if (in_array($restriction, ['none', 'privacy', 'confidential', 'locked'], true)) {
+            $gedcom .= "\n1 RESN " . $restriction;
         }
 
         $record = $tree->createRecord($gedcom);
