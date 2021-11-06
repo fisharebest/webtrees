@@ -23,6 +23,7 @@ use DebugBar\DataCollector\MessagesCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
 use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\DataCollector\TimeDataCollector;
+use DebugBar\DebugBarException;
 use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
 use Fisharebest\Webtrees\DebugBar\ViewCollector;
@@ -35,11 +36,9 @@ use PDO;
  */
 class DebugBar
 {
-    /** @var StandardDebugbar|null  */
-    private static $debugbar;
+    private static ?StandardDebugBar $debugbar = null;
 
-    /** @var JavascriptRenderer */
-    private static $renderer;
+    private static JavascriptRenderer $renderer;
 
     /**
      * Initialize the Debugbar.
@@ -64,6 +63,7 @@ class DebugBar
      * @param PDO $pdo
      *
      * @return PDO
+     * @throws DebugBarException
      */
     public static function initPDO(PDO $pdo): PDO
     {
@@ -135,6 +135,7 @@ class DebugBar
      * @param bool   $isString
      *
      * @return void
+     * @throws DebugBarException
      */
     public static function addMessage(string $message, string $label = 'info', bool $isString = true): void
     {
@@ -153,6 +154,7 @@ class DebugBar
      * @param string $name
      *
      * @return void
+     * @throws DebugBarException
      */
     public static function startMeasure(string $name): void
     {
@@ -171,6 +173,7 @@ class DebugBar
      * @param string $name
      *
      * @return void
+     * @throws DebugBarException
      */
     public static function stopMeasure(string $name): void
     {
@@ -190,6 +193,7 @@ class DebugBar
      * @param array<mixed> $data
      *
      * @return void
+     * @throws DebugBarException
      */
     public static function addView(string $view, array $data): void
     {

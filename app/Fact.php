@@ -411,11 +411,11 @@ class Fact
     }
 
     /**
-     * The Person/Family record where this Fact came from
+     * The GEDCOM record where this Fact came from
      *
-     * @return Individual|Family|Source|Repository|Media|Note|Submitter|Submission|Location|Header|GedcomRecord
+     * @return GedcomRecord
      */
-    public function record()
+    public function record(): GedcomRecord
     {
         return $this->record;
     }
