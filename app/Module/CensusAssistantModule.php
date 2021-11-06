@@ -175,7 +175,17 @@ class CensusAssistantModule extends AbstractModule
      */
     private function createNoteText(CensusInterface $census, string $ca_title, string $ca_place, string $ca_citation, array $ca_individuals, string $ca_notes): string
     {
-        $text = $ca_title . "\n" . $ca_citation . "\n" . $ca_place . "\n\n|";
+        $text = $ca_title;
+
+        if ($ca_citation !== '') {
+            $text .= "\n\n" . $ca_citation;
+        }
+
+        if ($ca_place !== '') {
+            $text .= "\n\n" . $ca_place;
+        }
+
+        $text .= "\n\n|";
 
         foreach ($census->columns() as $column) {
             $text .= ' ' . $column->abbreviation() . ' |';
