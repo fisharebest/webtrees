@@ -195,7 +195,7 @@ class Fact
      */
     public function value(): string
     {
-        if (preg_match('/^1 (?:' . $this->tag . ') ?(.*(?:(?:\n2 CONT ?.*)*))/', $this->gedcom, $match)) {
+        if (preg_match('/^1 ' . $this->tag . ' ?(.*(?:\n2 CONT ?.*)*)/', $this->gedcom, $match)) {
             return preg_replace("/\n2 CONT ?/", "\n", $match[1]);
         }
 
