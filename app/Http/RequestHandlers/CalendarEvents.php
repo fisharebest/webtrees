@@ -89,7 +89,7 @@ class CalendarEvents implements RequestHandlerInterface
         $filterof = $request->getQueryParams()['filterof'] ?? 'all';
         $filtersx = $request->getQueryParams()['filtersx'] ?? '';
 
-        $ged_date = new Date("{$cal} {$day} {$month} {$year}");
+        $ged_date = new Date($cal . ' ' . $day . ' ' . $month . ' ' . $year);
         $cal_date = $ged_date->minimumDate();
         $today    = $cal_date->today();
 

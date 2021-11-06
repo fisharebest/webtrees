@@ -114,7 +114,7 @@ class FunctionsImport
                     // Capitals
                     $date = strtoupper($date);
                     // Temporarily add leading/trailing spaces, to allow efficient matching below
-                    $date = " {$date} ";
+                    $date = ' ' . $date . ' ';
                     // Ensure space digits and letters
                     $date = preg_replace('/([A-Z])(\d)/', '$1 $2', $date);
                     $date = preg_replace('/(\d)([A-Z])/', '$1 $2', $date);

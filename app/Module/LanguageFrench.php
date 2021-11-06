@@ -114,7 +114,7 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
 
         // Functions to coumpound the name that can be indefinitely repeated
         $degree = static fn (int $n, string $suffix, string $genitive_link): array =>
-                $genitive("$suffix au {$n}<sup>e</sup> degré", $genitive_link);
+                $genitive($suffix . ' au ' . $n . '<sup>e</sup> degré', $genitive_link);
 
         $great = static fn (int $n, string $suffix, string $genitive_link): array =>
                 $n <= 1 ? $genitive('arrière-' . $suffix, 'de l’') : $degree($n + 1, $suffix, $genitive_link);
