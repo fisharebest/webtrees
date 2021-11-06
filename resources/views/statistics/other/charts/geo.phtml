@@ -34,15 +34,15 @@ $name = 'callback_' . bin2hex(random_bytes(12));
 
     let <?= $name ?> = function () {
         statistics.drawGeoChart(
-            <?= json_encode($id) ?>,
-            <?= json_encode($data) ?>,
+            <?= json_encode($id, JSON_THROW_ON_ERROR) ?>,
+            <?= json_encode($data, JSON_THROW_ON_ERROR) ?>,
             {
-                title: <?= json_encode($chart_title) ?>,
-                region: <?= json_encode($region) ?>,
+                title: <?= json_encode($chart_title, JSON_THROW_ON_ERROR) ?>,
+                region: <?= json_encode($region, JSON_THROW_ON_ERROR) ?>,
                 colorAxis: {
                     colors: [
-                        <?= json_encode('#' . $chart_color3) ?>,
-                        <?= json_encode('#' . $chart_color2) ?>
+                        <?= json_encode('#' . $chart_color3, JSON_THROW_ON_ERROR) ?>,
+                        <?= json_encode('#' . $chart_color2, JSON_THROW_ON_ERROR) ?>
                     ]
                 }
             }
@@ -52,11 +52,11 @@ $name = 'callback_' . bin2hex(random_bytes(12));
     if (document.readyState === "complete"
         || (document.readyState !== "loading" && !document.documentElement.doScroll)
     ) {
-        statistics.init(<?= json_encode($language) ?>);
+        statistics.init(<?= json_encode($language, JSON_THROW_ON_ERROR) ?>);
         statistics.addCallback(<?= $name ?>);
     } else {
         document.addEventListener("DOMContentLoaded", function () {
-            statistics.init(<?= json_encode($language) ?>);
+            statistics.init(<?= json_encode($language, JSON_THROW_ON_ERROR) ?>);
             statistics.addCallback(<?= $name ?>);
         });
     }
