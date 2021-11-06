@@ -68,9 +68,7 @@ class RedirectTimeLinePhp implements RequestHandlerInterface
         if ($tree instanceof Tree) {
             $individual = Registry::individualFactory()->make($pids[0] ?? '', $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->timeline_chart_module->chartUrl($individual, [
-                'xrefs' => $pids,
-            ]);
+            $url = $this->timeline_chart_module->chartUrl($individual, $pids);
 
             return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
