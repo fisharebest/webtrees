@@ -1020,13 +1020,13 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
             ],
             'hAxis'    => [
                 'title' => $x_axis_title ?? '',
-            ],
-            'colors'   => $colors,
+            ]
         ];
 
         return view('statistics/other/charts/custom', [
             'data'          => $data,
             'chart_options' => $chart_options,
+            'chart_colors'  => $colors,
             'chart_title'   => $chart_title,
             'language'      => I18N::languageTag(),
         ]);

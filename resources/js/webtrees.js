@@ -663,6 +663,88 @@
       }));
 
   };
+
+  /** webtrees.colors namespace */
+  (function(colors) {
+    /**
+     * Convert colors in hexadecimal format to rgb format
+     * @param {string} color
+     * @returns {number[]}
+     */
+    function hexToRgb(color) {
+      color = color.match(/^#?(?<color>[0-9a-f]{6}|[0-9a-f]{3})$/i)?.groups.color ?? '';
+      if(color.length === 3) {
+        return color.split('').map(c => parseInt(c + c, 16));
+      }
+      if(color.length === 6) {
+        return color.match(/[0-9a-f]{2}/gi).map(c => parseInt(c, 16));
+      }
+      throw "Hexadecimal color is not in the correct format";
+     }
+
+    /**
+     * Convert colors in rgb format to hexadecimal format
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @returns {string}
+     */
+    function rgbToHex(r, g, b) {
+      if([r, g, b].every(c => Number.isInteger(c) && 0 <= c && c <= 255)) {
+        return '#' + [r, g, b].map(c => c.toString(16).padStart(2, '0')).join('');
+      }
+      throw "Invalid color values";
+    }
+
+    /**
+     * Interpolate intermediary colors between 2 colors
+     * @param {string} startColor
+     * @param {string} endColor
+     * @param {number} steps
+     * @returns {string[]}
+     */
+    colors.interpolateRgb = function (startColor, endColor, steps) {
+      const s = hexToRgb(startColor);
+      const e = hexToRgb(endColor);
+      const factorR = (e[0] - s[0]) / steps;
+      const factorG = (e[1] - s[1]) / steps;
+      const factorB = (e[2] - s[2]) / steps;
+
+      let colors = [];
+      for(var x = 1; x < steps; x++) {
+        colors.push(rgbToHex(
+          Math.round(s[0] + factorR * x),
+          Math.round(s[1] + factorG * x),
+          Math.round(s[2] + factorB * x),
+        ));
+      }
+      colors.push(rgbToHex(e[0], e[1], e[2]));
+
+      return colors;
+    }
+
+    /**
+     * Evaluate colors based on CSS variables, and fallback to default colors.
+     * @param {object} colors
+     * @returns {string[]}
+     */
+    colors.fromCss = function(colors) {
+      for(let i = 0; i < colors.length; i++) {
+        if(Array.isArray(colors[i])) {
+          if(colors[i].length == 2) {
+            let color = getComputedStyle(document.documentElement).getPropertyValue(colors[i][0]).trim();
+            colors[i] = color.length > 0 ? color : colors[i][1];
+          }
+          else {
+            colors[i] = '#ffffff';
+          }
+        }
+      }
+      return colors;
+    }
+
+  })(webtrees.colors = webtrees.colors || {});
+
 }(window.webtrees = window.webtrees || {}));
 
 // Send the CSRF token on all AJAX requests

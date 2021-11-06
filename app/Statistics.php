@@ -55,7 +55,6 @@ use Fisharebest\Webtrees\Statistics\Repository\PlaceRepository;
 use Fisharebest\Webtrees\Statistics\Repository\ServerRepository;
 use Fisharebest\Webtrees\Statistics\Repository\UserRepository;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Statistics\Service\CountryService;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -131,7 +130,6 @@ class Statistics implements
      * Create the statistics for a tree.
      *
      * @param CenturyService $century_service
-     * @param ColorService   $color_service
      * @param CountryService $country_service
      * @param ModuleService  $module_service
      * @param Tree           $tree Generate statistics for this tree
@@ -139,7 +137,6 @@ class Statistics implements
      */
     public function __construct(
         CenturyService $century_service,
-        ColorService $color_service,
         CountryService $country_service,
         ModuleService $module_service,
         Tree $tree,
@@ -147,10 +144,10 @@ class Statistics implements
     ) {
         $this->tree                    = $tree;
         $this->gedcom_repository       = new GedcomRepository($tree);
-        $this->individual_repository   = new IndividualRepository($century_service, $color_service, $tree);
-        $this->family_repository       = new FamilyRepository($century_service, $color_service, $tree);
+        $this->individual_repository   = new IndividualRepository($century_service, $tree);
+        $this->family_repository       = new FamilyRepository($century_service, $tree);
         $this->family_dates_repository = new FamilyDatesRepository($tree);
-        $this->media_repository        = new MediaRepository($color_service, $tree);
+        $this->media_repository        = new MediaRepository($tree);
         $this->event_repository        = new EventRepository($tree);
         $this->user_repository         = new UserRepository($tree, $user_service);
         $this->server_repository       = new ServerRepository();

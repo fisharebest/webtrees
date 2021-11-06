@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -38,17 +37,13 @@ class ChartBirth
 
     private CenturyService $century_service;
 
-    private ColorService $color_service;
-
     /**
      * @param CenturyService $century_service
-     * @param ColorService   $color_service
      * @param Tree           $tree
      */
-    public function __construct(CenturyService $century_service, ColorService $color_service, Tree $tree)
+    public function __construct(CenturyService $century_service, Tree $tree)
     {
         $this->century_service = $century_service;
-        $this->color_service   = $color_service;
         $this->tree            = $tree;
     }
 
@@ -87,8 +82,8 @@ class ChartBirth
      */
     public function chartBirth(string $color_from = null, string $color_to = null): string
     {
-        $color_from = $color_from ?? 'ffffff';
-        $color_to   = $color_to ?? '84beff';
+        $color_from = $color_from ?? ['--chart-values-low', '#ffffff'];
+        $color_to   = $color_to ??  ['--chart-values-high', '#84beff'];
 
         $data = [
             [
@@ -104,12 +99,11 @@ class ChartBirth
             ];
         }
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
-
         return view('statistics/other/charts/pie', [
             'title'    => I18N::translate('Births by century'),
             'data'     => $data,
-            'colors'   => $colors,
+            'colors'   => [$color_from, $color_to],
+            'steps'    => count($data) - 1,
             'language' => I18N::languageTag(),
         ]);
     }

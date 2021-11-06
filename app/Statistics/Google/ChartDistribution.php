@@ -343,8 +343,7 @@ class ChartDistribution
 
         return view('statistics/other/charts/geo', [
             'chart_title'  => $chart_title,
-            'chart_color2' => '84beff',
-            'chart_color3' => 'c3dfff',
+            'chart_colors' => [['--chart-values-high', '84beff'], ['--chart-values-default', 'c3dfff']],
             'region'       => $chart_shows,
             'data'         => $data,
             'language'     => I18N::languageTag(),

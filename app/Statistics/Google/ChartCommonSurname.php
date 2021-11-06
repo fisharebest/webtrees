@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Google;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 
@@ -34,18 +33,14 @@ use function view;
  */
 class ChartCommonSurname
 {
-    private ColorService $color_service;
-
     private SurnameTraditionInterface $surname_tradition;
 
     /**
-     * @param ColorService              $color_service
      * @param SurnameTraditionInterface $surname_tradition
      */
-    public function __construct(ColorService $color_service, SurnameTraditionInterface $surname_tradition)
+    public function __construct(SurnameTraditionInterface $surname_tradition)
     {
         $this->surname_tradition = $surname_tradition;
-        $this->color_service     = $color_service;
     }
 
     /**
@@ -114,8 +109,8 @@ class ChartCommonSurname
         string $color_from = null,
         string $color_to = null
     ): string {
-        $color_from = $color_from ?? 'ffffff';
-        $color_to   = $color_to ?? '84beff';
+        $color_from = $color_from ?? ['--chart-values-low', '#ffffff'];
+        $color_to   = $color_to ??  ['--chart-values-high', '#84beff'];
 
         $tot = 0;
         foreach ($all_surnames as $surnames) {
@@ -138,12 +133,11 @@ class ChartCommonSurname
             $tot_indi - $tot
         ];
 
-        $colors = $this->color_service->interpolateRgb($color_from, $color_to, count($data) - 1);
-
         return view('statistics/other/charts/pie', [
             'title'    => null,
             'data'     => $data,
-            'colors'   => $colors,
+            'colors'   => [$color_from, $color_to],
+            'steps'    => count($data) - 1,
             'language' => I18N::languageTag(),
         ]);
     }

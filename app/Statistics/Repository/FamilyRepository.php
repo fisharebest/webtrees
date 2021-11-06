@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartMarriage;
 use Fisharebest\Webtrees\Statistics\Google\ChartMarriageAge;
 use Fisharebest\Webtrees\Statistics\Google\ChartNoChildrenFamilies;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
-use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -55,19 +54,15 @@ class FamilyRepository
 {
     private CenturyService $century_service;
 
-    private ColorService $color_service;
-
     private Tree $tree;
 
     /**
      * @param CenturyService $century_service
-     * @param ColorService   $color_service
      * @param Tree           $tree
      */
-    public function __construct(CenturyService $century_service, ColorService $color_service, Tree $tree)
+    public function __construct(CenturyService $century_service, Tree $tree)
     {
         $this->century_service = $century_service;
-        $this->color_service   = $color_service;
         $this->tree            = $tree;
     }
 
@@ -691,7 +686,7 @@ class FamilyRepository
         string $color_to = null,
         int $total = 10
     ): string {
-        return (new ChartFamilyLargest($this->color_service, $this->tree))
+        return (new ChartFamilyLargest($this->tree))
             ->chartLargestFamilies($color_from, $color_to, $total);
     }
 
@@ -1723,7 +1718,7 @@ class FamilyRepository
      */
     public function statsMarr(string $color_from = null, string $color_to = null): string
     {
-        return (new ChartMarriage($this->century_service, $this->color_service, $this->tree))
+        return (new ChartMarriage($this->century_service, $this->tree))
             ->chartMarriage($color_from, $color_to);
     }
 
@@ -1737,7 +1732,7 @@ class FamilyRepository
      */
     public function statsDiv(string $color_from = null, string $color_to = null): string
     {
-        return (new ChartDivorce($this->century_service, $this->color_service, $this->tree))
+        return (new ChartDivorce($this->century_service, $this->tree))
             ->chartDivorce($color_from, $color_to);
     }
 }

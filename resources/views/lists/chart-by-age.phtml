@@ -31,17 +31,18 @@ $chart_options = [
     'hAxis' => [
         'title' => I18N::translate('Age'),
     ],
-    'colors' => [
-        '#84beff',
-        '#ffd1dc',
-        '#ff0000',
-    ],
     'isStacked' => true,
+];
+$chart_colors = [
+    ['--sex-m-chart', '#84beff'],
+    ['--sex-f-chart', '#ffd1dc'],
+    ['--chart-values-avg', '#ff0000']
 ];
 
 echo view('statistics/other/charts/column', [
     'data'          => $data,
     'chart_options' => $chart_options,
+    'chart_colors'  => $chart_colors,
     'chart_title'   => $title,
     'language'      => I18N::languageTag(),
 ]);

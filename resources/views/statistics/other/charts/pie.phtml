@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\I18N;
 
 /**
  * @var array<string> $colors
+ * @var int           $steps
  * @var array<array>  $data
  * @var string        $language
  * @var string        $title
@@ -13,6 +14,8 @@ use Fisharebest\Webtrees\I18N;
 
 $id   = 'google-chart-' . bin2hex(random_bytes(8));
 $name = 'callback_' . bin2hex(random_bytes(12));
+
+$steps = $steps ?? null;
 ?>
 
 <?php if (count($data) === 1) : ?>
@@ -22,6 +25,13 @@ $name = 'callback_' . bin2hex(random_bytes(12));
     <script>
 
     let <?= $name ?> = function () {
+        let colors = webtrees.colors.fromCss(<?= json_encode($colors, JSON_THROW_ON_ERROR) ?>);
+        <?php if($steps !== null) : ?>
+        if(colors.length > 1) {
+            colors = webtrees.colors.interpolateRgb(colors[0], colors[1], <?= (int) $steps ?>);
+        }
+        <?php endif; ?>
+        
         statistics.drawPieChart(
             <?= json_encode($id, JSON_THROW_ON_ERROR) ?>,
             <?= json_encode($data, JSON_THROW_ON_ERROR) ?>,
@@ -34,7 +44,7 @@ $name = 'callback_' . bin2hex(random_bytes(12));
                     labeledValueText: <?= json_encode($labeledValueText ?? 'value', JSON_THROW_ON_ERROR) ?>,
                     position: 'labeled'
                 },
-                colors: <?= json_encode($colors, JSON_THROW_ON_ERROR) ?>
+                colors: colors
             }
         );
     };
