@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -200,10 +201,10 @@ class MediaFileService
                 $auto     = $params['auto'];
                 $new_file = $params['new_file'];
 
-                /** @var UploadedFileInterface|null $uploaded_file */
-                $uploaded_file = $request->getUploadedFiles()['file'];
+                $uploaded_file = $request->getUploadedFiles()['file'] ?? null;
+
                 if ($uploaded_file === null || $uploaded_file->getError() !== UPLOAD_ERR_OK) {
-                    return '';
+                    throw new FileUploadException($uploaded_file);
                 }
 
                 // The filename

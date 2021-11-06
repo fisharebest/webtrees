@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
@@ -101,6 +102,8 @@ class MapDataImportAction implements RequestHandlerInterface
         } elseif ($local_file instanceof UploadedFileInterface && $local_file->getError() === UPLOAD_ERR_OK) {
             // 2nd choice is local file
             $fp = $local_file->getStream()->detach();
+        } else {
+            throw new FileUploadException($local_file);
         }
 
         if ($fp === false || $fp === null) {

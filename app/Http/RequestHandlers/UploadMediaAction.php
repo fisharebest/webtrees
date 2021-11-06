@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
@@ -31,10 +31,8 @@ use League\Flysystem\UnableToCheckFileExistence;
 use League\Flysystem\UnableToWriteFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function e;
 use function preg_match;
 use function redirect;
@@ -76,14 +74,10 @@ class UploadMediaAction implements RequestHandlerInterface
         $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
-            assert($uploaded_file instanceof UploadedFileInterface);
-            if ($uploaded_file->getClientFilename() === '') {
-                continue;
-            }
             if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
-                FlashMessages::addMessage(Functions::fileUploadErrorText($uploaded_file->getError()), 'danger');
-                continue;
+                throw new FileUploadException($uploaded_file);
             }
+
             $key = substr($key, 9);
 
             $folder   = $params['folder' . $key];

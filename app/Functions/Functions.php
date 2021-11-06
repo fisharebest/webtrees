@@ -19,49 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\I18N;
-
 /**
  * Class Functions - common functions
  */
 class Functions
 {
-    /**
-     * Convert a file upload PHP error code into user-friendly text.
-     *
-     * @param int $error_code
-     *
-     * @return string
-     */
-    public static function fileUploadErrorText(int $error_code): string
-    {
-        switch ($error_code) {
-            case UPLOAD_ERR_OK:
-                return I18N::translate('File successfully uploaded');
-            case UPLOAD_ERR_INI_SIZE:
-            case UPLOAD_ERR_FORM_SIZE:
-                // I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-                return I18N::translate('The uploaded file exceeds the allowed size.');
-            case UPLOAD_ERR_PARTIAL:
-                // I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-                return I18N::translate('The file was only partially uploaded. Please try again.');
-            case UPLOAD_ERR_NO_FILE:
-                // I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-                return I18N::translate('No file was received. Please try again.');
-            case UPLOAD_ERR_NO_TMP_DIR:
-                // I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-                return I18N::translate('The PHP temporary folder is missing.');
-            case UPLOAD_ERR_CANT_WRITE:
-                // I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-                return I18N::translate('PHP failed to write to disk.');
-            case UPLOAD_ERR_EXTENSION:
-                // I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-                return I18N::translate('PHP blocked the file because of its extension.');
-            default:
-                return 'Error: ' . $error_code;
-        }
-    }
-
     /**
      * get a gedcom subrecord
      *

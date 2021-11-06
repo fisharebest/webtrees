@@ -41,7 +41,7 @@ class MapDataImportActionTest extends TestCase
     {
         $csv              = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
         $handler          = new MapDataImportAction();
-        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['serverfile' => $csv]);
+        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['localfile' => $csv]);
         $response         = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());

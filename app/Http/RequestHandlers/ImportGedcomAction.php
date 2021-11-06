@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Exceptions\FileUploadException;
 use Fisharebest\Webtrees\FlashMessages;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -83,15 +83,11 @@ class ImportGedcomAction implements RequestHandlerInterface
         if ($source === 'client') {
             $upload = $request->getUploadedFiles()['tree_name'] ?? null;
 
-            if ($upload instanceof UploadedFile) {
-                if ($upload->getError() === UPLOAD_ERR_OK) {
-                    $this->tree_service->importGedcomFile($tree, $upload->getStream(), basename($upload->getClientFilename()));
-                } else {
-                    FlashMessages::addMessage(Functions::fileUploadErrorText($upload->getError()), 'danger');
-                }
-            } else {
-                FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
+            if ($upload === null || $upload->getError() !== UPLOAD_ERR_OK) {
+                throw new FileUploadException($upload);
             }
+
+            $this->tree_service->importGedcomFile($tree, $upload->getStream(), basename($upload->getClientFilename()));
         }
 
         if ($source === 'server') {
