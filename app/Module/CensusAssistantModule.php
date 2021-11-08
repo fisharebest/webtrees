@@ -178,10 +178,12 @@ class CensusAssistantModule extends AbstractModule
         $text = $ca_title;
 
         if ($ca_citation !== '') {
+            // Two trailing spaces create a line-break in markdown
             $text .= "  \n" . $ca_citation;
         }
 
         if ($ca_place !== '') {
+            // Two trailing spaces create a line-break in markdown
             $text .= "  \n" . $ca_place;
         }
 
