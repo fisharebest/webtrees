@@ -178,11 +178,11 @@ class CensusAssistantModule extends AbstractModule
         $text = $ca_title;
 
         if ($ca_citation !== '') {
-            $text .= "\n\n" . $ca_citation;
+            $text .= "  \n" . $ca_citation;
         }
 
         if ($ca_place !== '') {
-            $text .= "\n\n" . $ca_place;
+            $text .= "  \n" . $ca_place;
         }
 
         $text .= "\n\n|";
@@ -201,7 +201,11 @@ class CensusAssistantModule extends AbstractModule
             }
         }
 
-        return $text . "\n\n" . strtr($ca_notes, ["\r" => '']);
+        if ($ca_notes !== '') {
+            $text .= "\n\n" . strtr($ca_notes, ["\r" => '']);
+        }
+
+        return $text;
     }
 
     /**
