@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-11-07 16:52+0000\n"
+"PO-Revision-Date: 2021-11-11 05:50+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -771,7 +771,7 @@ msgstr "Listi yfir staðsetningar."
 #. I18N: Description of the “Media objects” module
 #: app/Module/MediaListModule.php:93
 msgid "A list of media objects."
-msgstr "Listi yfir gögn."
+msgstr "Listi yfir gagnahluti."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:99
@@ -821,12 +821,12 @@ msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
 msgid "A list of the most popular given names."
-msgstr "Listi yfir mest vinsælustu skírnarnöfnin."
+msgstr "Listi yfir algengustu skírnarnöfnin."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:76
 msgid "A list of the most popular surnames."
-msgstr "Listi yfir vinsælustu eftirnöfnin."
+msgstr "Listi yfir algengustu eftirnöfnin."
 
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:58
@@ -1001,7 +1001,7 @@ msgstr "Flipi sem sýnir staðreyndir og atburði hjá einstaklingi."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Flipi sem sýnir miðla sem tengdar eru einstaklingi."
+msgstr "Flipi sem sýnir gögn sem tengd eru einstaklingi."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
@@ -1299,7 +1299,7 @@ msgstr "Bæta við gagnaskrá"
 #: resources/views/individual-page.phtml:94
 #: resources/views/source-page.phtml:111
 msgid "Add a media object"
-msgstr "Bæta við nýjum miðli"
+msgstr "Bæta við nýjum gagnahlut"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:58
 #: resources/views/family-page-grandparents.phtml:63
@@ -1458,7 +1458,7 @@ msgstr "Bæta við heiti hausmerkimiða"
 #: app/Module/ClippingsCartModule.php:189
 #: resources/views/modules/clippings/add-options.phtml:22
 msgid "Add to the clippings cart"
-msgstr "Bætið við úrklippukörfuna"
+msgstr "Bæta við úrklippukörfuna"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
@@ -1899,7 +1899,7 @@ msgstr "Kerfisstjóri verður að samþykkja nýjan notendareikning og velja að
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:53
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Önnu leið að miðlunarflipa og fullkomnari myndaskoðara."
+msgstr "Önnu leið að gagnaflipa og fullkomnari myndaskoðara."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:80
@@ -6309,7 +6309,7 @@ msgstr "Ættartré"
 #: app/Module/ClippingsCartModule.php:244
 #: app/Module/ClippingsCartModule.php:449
 msgid "Family tree clippings cart"
-msgstr "Ættartré úrklippukarfa"
+msgstr "Úrklippukarfa ættartrés"
 
 #: resources/views/admin/trees-create.phtml:24
 #: resources/views/admin/trees-preferences.phtml:53
@@ -7850,7 +7850,7 @@ msgstr "Innifelið einstaklinga með „%s“ sem giftingarnafn"
 
 #: resources/views/admin/trees-export.phtml:72
 msgid "Include media (automatically zips files)"
-msgstr "Innifela miðla (þjappar sjálfvirkt skrár)"
+msgstr "Innifela gögn (þjappar sjálfvirkt skrár)"
 
 #. I18N: Label for check-box
 #: resources/views/admin/media.phtml:70
@@ -9450,7 +9450,7 @@ msgstr "Gagnamöppur"
 #: resources/views/modules/favorites/favorites.phtml:94
 #: resources/views/source-page.phtml:107
 msgid "Media object"
-msgstr "Gagnaskrá"
+msgstr "Gagnahlutur"
 
 #. I18N: Name of a module/list
 #: app/Module/FixSearchAndReplace.php:113 app/Module/MediaListModule.php:82
@@ -9469,15 +9469,15 @@ msgstr "Gagnaskrá"
 #: resources/views/statistics/other/chart-objects.phtml:12
 #: resources/views/statistics/other/total-records.phtml:21
 msgid "Media objects"
-msgstr "Gagnaskrá"
+msgstr "Gagnahlutur"
 
 #: resources/views/modules/media-list/page.phtml:96
 msgid "Media objects found"
-msgstr "Gagnaskrár fundnar"
+msgstr "Gagnahlutir fundnir"
 
 #: resources/views/modules/media-list/page.phtml:53
 msgid "Media objects per page"
-msgstr "Gagnaskrár á síðu"
+msgstr "Gagnahlutar á síðu"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
@@ -11841,7 +11841,7 @@ msgstr "Endurraða fjölskyldum"
 #: resources/views/individual-page-menu.phtml:88
 #: resources/views/individual-page-menu.phtml:93
 msgid "Re-order media"
-msgstr "Endurraða miðlum"
+msgstr "Endurraða gögnum"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:57
 #: resources/views/individual-page-menu.phtml:37
@@ -14290,7 +14290,9 @@ msgstr "Valmynd grafa."
 
 #: resources/views/modules/clippings/show.phtml:19
 msgid "The clippings cart allows you to take extracts from this family tree and download them as a GEDCOM file."
-msgstr "Úrklippuvagninn gerir þér kleift að taka útdrætti úr þessu ættartré og hlaða þeim niður sem GEDCOM skrá."
+msgstr ""
+"Úrklippukarfan gerir þér kleift að sækja útdrætti úr ættartrénu og hlaða "
+"þeim niður sem GEDCOM skrá."
 
 #: resources/views/admin/trees-preferences.phtml:395
 msgid "The date and time of the last update"
@@ -14481,7 +14483,7 @@ msgstr "Gagnaskrá %1$s var giftusamlega endurnefnd í %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:108
 msgid "The media object has been created"
-msgstr "Gagnaskráin hefur verið útbúin"
+msgstr "Gagnahlutur hefur verið útbúin"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -14790,7 +14792,7 @@ msgstr "Það eru engir tenglar á þennan gagnahlut."
 
 #: resources/views/modules/media/tab.phtml:29
 msgid "There are no media objects for this individual."
-msgstr "Það eru engir miðlar fyrir þennan einstakling."
+msgstr "Það eru engir gagnahlutir fyrir þennan einstakling."
 
 #: resources/views/modules/notes/tab.phtml:41
 msgid "There are no notes for this individual."
@@ -15153,12 +15155,12 @@ msgstr ""
 #: app/Exceptions/MediaNotFoundException.php:35
 msgid "This media object does not exist or you do not have permission to view it."
 msgstr ""
-"Þessi gagnaskrá er ekki til eða þú hefur ekki réttindi til að skoða hana."
+"Þessi gagnahlutur er ekki til eða þú hefur ekki réttindi til að skoða hann."
 
 #: resources/views/media-page.phtml:41
 msgid "This media object has been deleted. The deletion will need to be reviewed by a moderator."
 msgstr ""
-"Þessari gagnaskrá hefur verið eytt. Eyðingin þarf að endurskoðast af "
+"Þessum gagnahlut hefur verið eytt. Eyðingin þarf að endurskoðast af "
 "stjórnanda."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
@@ -15166,13 +15168,13 @@ msgstr ""
 #, php-format
 msgid "This media object has been deleted. You should review the deletion and then %1$s or %2$s it."
 msgstr ""
-"Þessari gagnaskrá hefur verið eytt. Þú ættir að endurskoða eyðinguna og "
-"síðan %1$s eða %2$s henni."
+"Þessum gagnahlut hefur verið eytt. Þú ættir að endurskoða eyðinguna og síðan "
+"%1$s eða %2$s henni."
 
 #: resources/views/media-page.phtml:47
 msgid "This media object has been edited. The changes need to be reviewed by a moderator."
 msgstr ""
-"Þessari gagnaskrá hefur verið breytt. Breytingarnar þurfa að endurskoðast af "
+"Þessum gagnahlut hefur verið breytt. Breytingarnar þurfa að endurskoðast af "
 "stjórnanda."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
@@ -15180,7 +15182,7 @@ msgstr ""
 #, php-format
 msgid "This media object has been edited. You should review the changes and then %1$s or %2$s them."
 msgstr ""
-"Þessari gagnaskrá hefur verið breytt. Þú ættir að endurskoða breytinguna og "
+"Þessum gagnahlut hefur verið breytt. Þú ættir að endurskoða breytinguna og "
 "síðan %1$s eða %2$s henni."
 
 #: resources/views/emails/message-copy-html.phtml:33
@@ -15700,8 +15702,8 @@ msgstr "Of margar beiðnir. Reyndu aftur seinna."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Vinsælasta %s fornafnið"
-msgstr[1] "Vinsælustu %s fornöfnin"
+msgstr[0] "Algengasta %s fornafnið"
+msgstr[1] "Algengustu %s fornöfnin"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:165
@@ -15720,7 +15722,7 @@ msgstr "Vinsælt fornafn"
 #: app/Module/TopGivenNamesModule.php:47
 #: resources/views/statistics/individuals/names.phtml:55
 msgid "Top given names"
-msgstr "Vinsælustu skírnarnöfnin"
+msgstr "Algengustu skírnarnöfnin"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:162
@@ -16187,7 +16189,7 @@ msgstr "Uppfærsluálfur"
 #: app/Http/RequestHandlers/UploadMediaPage.php:70
 #: resources/views/admin/control-panel.phtml:723
 msgid "Upload media files"
-msgstr "Flytja inn miðlunarskrár"
+msgstr "Flytja inn gagnaskrár"
 
 #: resources/views/admin/media-upload.phtml:23
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
@@ -19583,7 +19585,7 @@ msgstr "hálfsystir"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:191
 msgid "herself"
-msgstr "hún sjálf"
+msgstr "sjálf"
 
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:560
@@ -19603,7 +19605,7 @@ msgstr "fela"
 #. I18N: reflexive pronoun
 #: app/Functions/Functions.php:188
 msgid "himself"
-msgstr "hann sjálfur"
+msgstr "sjálfur"
 
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
