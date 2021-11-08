@@ -90,11 +90,15 @@ class EditFactAction implements RequestHandlerInterface
 
             if ($ca_individuals !== []) {
                 $gedcom = $census_assistant->updateCensusAssistant($request, $record, $fact_id, $gedcom, $keep_chan);
+
+                // Don't copy the AGE/OCCU fields to other individuals
+                $gedcom2 = preg_replace('/\n2 (?:AGE|OCCU) .*/', '', $gedcom);
+
                 foreach ($ca_individuals as $pid) {
                     if ($pid !== $xref) {
                         $individual = Registry::individualFactory()->make($pid, $tree);
                         if ($individual instanceof Individual && $individual->canEdit()) {
-                            $individual->updateFact('', $gedcom, !$keep_chan);
+                            $individual->updateFact('', $gedcom2, !$keep_chan);
                         }
                     }
                 }

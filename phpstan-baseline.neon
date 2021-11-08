@@ -921,6 +921,11 @@ parameters:
 			path: app/Http/RequestHandlers/EditFactAction.php
 
 		-
+			message: "#^Parameter \\#2 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateFact\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/EditFactAction.php
+
+		-
 			message: "#^Cannot call method label\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditFactPage.php
