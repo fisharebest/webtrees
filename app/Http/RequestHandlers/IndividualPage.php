@@ -116,7 +116,7 @@ class IndividualPage implements RequestHandlerInterface
             $media_object = $fact->target();
             if ($media_object instanceof Media) {
                 $media_file = $media_object->firstImageFile();
-                if ($media_file instanceof MediaFile) {
+                if ($media_file instanceof MediaFile && strtolower($media_file->type()) === 'photo') {
                     $individual_media->add($media_file);
                 }
             }
