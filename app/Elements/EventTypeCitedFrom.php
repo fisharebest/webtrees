@@ -19,6 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
+
+use function uasort;
+
 /**
  * EVENT_OR_FACT_CLASSIFICATION := {Size=1:15}
  * [ <EVENT_ATTRIBUTE_TYPE> ]
@@ -32,4 +39,85 @@ namespace Fisharebest\Webtrees\Elements;
 class EventTypeCitedFrom extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 15;
+
+    protected const FAMILY_EVENTS = [
+        'ANUL',
+        'CENS',
+        'DIV',
+        'DIVF',
+        'ENGA',
+        'MARR',
+        'MARB',
+        'MARC',
+        'MARL',
+        'MARS',
+        'EVEN',
+    ];
+
+    protected const INDIVIDUAL_EVENTS = [
+        'ADOP',
+        'BIRT',
+        'BAPM',
+        'BARM',
+        'BASM',
+        'BLES',
+        'BURI',
+        'CENS',
+        'CHR',
+        'CHRA',
+        'CONF',
+        'CREM',
+        'DEAT',
+        'EMIG',
+        'FCOM',
+        'GRAD',
+        'IMMI',
+        'NATU',
+        'ORDN',
+        'RETI',
+        'PROB',
+        'WILL',
+        'EVEN',
+    ];
+
+    protected const ATTRIBUTE_TYPES = [
+        'CAST',
+        'EDUC',
+        'NATI',
+        'OCCU',
+        'PROP',
+        'RELI',
+        'RESI',
+        'TITL',
+        'FACT',
+    ];
+
+    /**
+     * A list of controlled values for this element
+     *
+     * @return array<int|string,string>
+     */
+    public function values(): array
+    {
+        $data = [
+            Family::RECORD_TYPE     => static::FAMILY_EVENTS,
+            Individual::RECORD_TYPE => array_merge(static::INDIVIDUAL_EVENTS, static::ATTRIBUTE_TYPES),
+        ];
+
+        $values = ['' => ''];
+
+        foreach ($data as $record_type => $subtags) {
+            foreach ($subtags as $subtag) {
+                $element = Registry::elementFactory()->make($record_type . ':' . $subtag);
+
+                if (!$element instanceof UnknownElement) {
+                    $values[$subtag] = $element->label();
+                }
+            }
+        }
+
+        uasort($values, I18N::comparator());
+
+        return $values;
+    }
 }
