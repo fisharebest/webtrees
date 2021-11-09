@@ -95,12 +95,11 @@ class GedcomEditService
                 }
             }
 
-            // Skip children of links (e.g. PAGE without a parent SOUR) if the link is empty
+            // Find the next tag at the same level.  Check if any child tags have values.
             $children_with_values = false;
             for ($j = $i + 1; $j < $count && $levels[$j] > $levels[$i]; $j++) {
                 if ($values[$j] !== '') {
                     $children_with_values = true;
-                    break;
                 }
             }
 
@@ -118,7 +117,7 @@ class GedcomEditService
                     $gedcom_lines[] = $levels[$i] . ' ' . $tags[$i] . ' ' . str_replace("\n", "\n" . $next_level . ' CONT ', $values[$i]);
                 }
             } else {
-                $i = $j;
+                $i = $j - 1;
             }
         }
 

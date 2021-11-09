@@ -75,6 +75,17 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
+        // Missing SOUR, so ignore PAGE
+        $this->assertSame(
+            "1 BIRT\n2 PLAC England",
+            $gedcom_edit_service->editLinesToGedcom(
+                'INDI',
+                ['1', '2', '2', '3'],
+                ['BIRT', 'PLAC', 'SOUR', 'PAGE'],
+                ['Y', 'England', '', '123']
+            )
+        );
+
         $this->assertSame(
             "1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
