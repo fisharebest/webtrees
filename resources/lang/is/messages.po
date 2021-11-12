@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-11-11 05:50+0000\n"
+"PO-Revision-Date: 2021-11-17 08:07+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -1703,7 +1703,7 @@ msgstr "Aldur við fæðingu barns"
 
 #: resources/views/admin/trees-privacy.phtml:71
 msgid "Age at which to assume an individual is dead"
-msgstr "Aldur sem hægt er að gera ráð fyrir að persóna sé látin"
+msgstr "Aldur sem hægt er að gera ráð fyrir að einstaklingur sé látin"
 
 #: resources/views/statistics/families/age-difference.phtml:42
 msgid "Age between husband and wife"
@@ -3608,7 +3608,7 @@ msgstr "Barn"
 #: resources/xml/reports/ahnentafel_report.xml:388
 #: resources/xml/reports/descendancy_report.xml:480
 msgid "Child of "
-msgstr "Barn af "
+msgstr "Barn "
 
 #. I18N: e.g. “Child of [father name & mother name]”
 #: app/Module/InteractiveTree/TreeView.php:366
@@ -3635,7 +3635,7 @@ msgstr "Börn í fjölskyldu"
 #: resources/xml/reports/ahnentafel_report.xml:391
 #: resources/xml/reports/descendancy_report.xml:483
 msgid "Children of "
-msgstr "Börn af "
+msgstr "Börn "
 
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:99
@@ -5266,7 +5266,7 @@ msgstr "Þú gætir uppfært sjálfkrafa, sem veltur á stillingum á netþjóni
 
 #: resources/views/modules/family-book-chart/page.phtml:48
 msgid "Descendant generations"
-msgstr "Afkomendur kynslóða"
+msgstr "Afkomendur ættliða"
 
 #. I18N: gedcom tag DESC
 #. I18N: Name of a module/chart
@@ -5730,25 +5730,25 @@ msgstr "Rafræn"
 #: app/Date/JewishDate.php:202
 msgctxt "GENITIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:306
 msgctxt "INSTRUMENTAL"
 msgid "Elul"
-msgstr "Elul"
+msgstr "elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:254
 msgctxt "LOCATIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "elul"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:150
 msgctxt "NOMINATIVE"
 msgid "Elul"
-msgstr "Elul"
+msgstr "elul"
 
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:23
@@ -6725,7 +6725,11 @@ msgstr "Til dæmis, ef GEDCOM skráin inniheldur %1$s og webtrees á von á að 
 
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Sem dæmi, ef þú tilgreinir slóðalengd upp á 2, þá mun persónan geta séð sonarson/dótturson sinn (barn, barn), frænda/frænku (foreldri, systkini) sína, stjúpdóttur sína (maki, barn) en ekki fyrsta frænda/frænku sína (foreldri, sysktkini, barn)."
+msgstr ""
+"Sem dæmi, ef þú tilgreinir slóðalengd upp á 2, þá mun einstaklingurinn geta "
+"séð eigin sonarson/dótturson (barnabarn), eigin frænda/frænku (foreldri, "
+"systkini), eigin stjúpdóttur (maka, barn) en ekki þeirra fyrsta frænda/"
+"frænku (foreldri, systkini, barn)."
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
@@ -7032,12 +7036,12 @@ msgstr "Útbúið af %s"
 
 #: app/Module/BranchesListModule.php:502
 msgid "Generation"
-msgstr "Kynslóð"
+msgstr "Ættliður"
 
 #: resources/xml/reports/ahnentafel_report.xml:78
 #: resources/xml/reports/descendancy_report.xml:55
 msgid "Generation "
-msgstr "Kynslóð "
+msgstr "Ættlið "
 
 #: resources/views/modules/ancestors-chart/page.phtml:39
 #: resources/views/modules/descendancy_chart/page.phtml:39
@@ -7051,16 +7055,16 @@ msgstr "Kynslóð "
 #: resources/xml/reports/individual_ext_report.xml:7
 #: resources/xml/reports/missing_facts_report.xml:7
 msgid "Generations"
-msgstr "Kynslóðir"
+msgstr "Ættliðir"
 
 #. I18N: gedcom tag ANCE
 #: app/Factories/ElementFactory.php:1400 app/GedcomTag.php:458
 msgid "Generations of ancestors"
-msgstr "Kynslóðir af forfeðrum"
+msgstr "Ættliðir af forfeðrum"
 
 #: app/Factories/ElementFactory.php:1405
 msgid "Generations of descendants"
-msgstr "Kynslóðir afkomenda"
+msgstr "Ættliðir niðja"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7465,25 +7469,25 @@ msgstr "Hermosillo, Mexikó"
 #: app/Date/JewishDate.php:180
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:284
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:232
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "heshvan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:128
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr "Heshvan"
+msgstr "heshvan"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:128
@@ -7563,13 +7567,13 @@ msgstr "Hong Kong"
 #: app/Module/ChartsBlockModule.php:165 app/Module/ChartsBlockModule.php:270
 #: app/Module/HourglassChartModule.php:90
 msgid "Hourglass chart"
-msgstr "Stundaglasagraf"
+msgstr "Stundaglasakort"
 
 #. I18N: %s is an individual’s name
 #: app/Module/HourglassChartModule.php:136
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr "Stundaglasagraf fyrir %s"
+msgstr "Stundaglasakort fyrir %s"
 
 #: resources/views/modules/census-assistant.phtml:111
 msgid "Household"
@@ -7689,7 +7693,11 @@ msgstr "Ef smámyndin er sú sama og upphaflega myndin, þá er þess ekki lengu
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
-msgstr "Ef þessi persóna hefur einhverja atburði aðra en Andlát, Jarðaför eða Líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera á „lifandi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum tilgangi."
+msgstr ""
+"Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðaför eða "
+"líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera "
+"„lifandi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum "
+"tilgangi."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: resources/views/admin/trees-preferences.phtml:259
@@ -7924,11 +7932,11 @@ msgstr "Einstaklingur"
 
 #: resources/views/modules/relationships-chart/page.phtml:33
 msgid "Individual 1"
-msgstr "Persóna 1"
+msgstr "Einstaklingur 1"
 
 #: resources/views/modules/relationships-chart/page.phtml:42
 msgid "Individual 2"
-msgstr "Persóna 2"
+msgstr "Einstaklingur 2"
 
 #: app/Statistics/Google/ChartDistribution.php:354
 msgid "Individual distribution chart"
@@ -7951,7 +7959,7 @@ msgstr "Einstaklings færsla"
 #: resources/views/modules/gedcom_stats/statistics.phtml:211
 #: resources/views/modules/html/template-statistics.phtml:85
 msgid "Individual who lived the longest"
-msgstr "Persóna sem lifði lengst"
+msgstr "Einstaklingur sem lifði lengst"
 
 #. I18N: Name of a module/list
 #: app/Module/AncestorsChartModule.php:277
@@ -8383,25 +8391,25 @@ msgstr "Kíribatí"
 #: app/Date/JewishDate.php:182
 msgctxt "GENITIVE"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:286
 msgctxt "INSTRUMENTAL"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:234
 msgctxt "LOCATIVE"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "kislev"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:130
 msgctxt "NOMINATIVE"
 msgid "Kislev"
-msgstr "Kislev"
+msgstr "kislev"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:117 app/GedcomCode/GedcomCodeTemp.php:417
@@ -9503,7 +9511,7 @@ msgstr "Læknisfræðilegt ástand"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:169
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr "Miðjarðarhaf"
 
 #: resources/views/setup/step-2-server-checks.phtml:70
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -10235,25 +10243,25 @@ msgstr "Nígería"
 #: app/Date/JewishDate.php:192
 msgctxt "GENITIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:296
 msgctxt "INSTRUMENTAL"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:244
 msgctxt "LOCATIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "nissan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:140
 msgctxt "NOMINATIVE"
 msgid "Nissan"
-msgstr "Nissan"
+msgstr "nissan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:373
@@ -12998,25 +13006,25 @@ msgstr "Hún var líkbrennd"
 #: app/Date/JewishDate.php:186
 msgctxt "GENITIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:290
 msgctxt "INSTRUMENTAL"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:238
 msgctxt "LOCATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "shevat"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:134
 msgctxt "NOMINATIVE"
 msgid "Shevat"
-msgstr "Shevat"
+msgstr "shevat"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:181
@@ -13457,25 +13465,25 @@ msgstr "Staðarkort er aðferð fyrir vefstjóra að láta leitarvélar vita af 
 #: app/Date/JewishDate.php:196
 msgctxt "GENITIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:300
 msgctxt "INSTRUMENTAL"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:248
 msgctxt "LOCATIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "sivan"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:144
 msgctxt "NOMINATIVE"
 msgid "Sivan"
-msgstr "Sivan"
+msgstr "sivan"
 
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: resources/views/layouts/administration.phtml:47
@@ -14117,25 +14125,25 @@ msgstr "Tampico, Mexikó"
 #: app/Date/JewishDate.php:198
 msgctxt "GENITIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:302
 msgctxt "INSTRUMENTAL"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:250
 msgctxt "LOCATIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "tamuz"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:146
 msgctxt "NOMINATIVE"
 msgid "Tamuz"
-msgstr "Tamuz"
+msgstr "tamuz"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:504
@@ -14174,25 +14182,25 @@ msgstr "Musteri"
 #: app/Date/JewishDate.php:184
 msgctxt "GENITIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:288
 msgctxt "INSTRUMENTAL"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:236
 msgctxt "LOCATIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "tevet"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:132
 msgctxt "NOMINATIVE"
 msgid "Tevet"
-msgstr "Tevet"
+msgstr "tevet"
 
 #. I18N: gedcom tag TEXT
 #: app/Factories/ElementFactory.php:560 app/Factories/ElementFactory.php:564
@@ -14438,12 +14446,16 @@ msgstr "Hjálpartextinn hefur ekki verið skrifaður fyrir þetta atriði."
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:193
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr "Persónan sem þarf að hafa samband við vegna tæknilegra spurninga eða villna sem upp koma á þessari vefsíðu."
+msgstr ""
+"Einstaklingurinn sem þarf að hafa samband við vegna tæknilegra spurninga eða "
+"villna sem upp koma á þessari vefsíðu."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: resources/views/admin/trees-preferences.phtml:173
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "Persónan til að hafa samband við varðandi ættfræðigögnin á þessari vefsíðu."
+msgstr ""
+"Einstaklingurinn sem hægt er að hafa samband við varðandi ættfræðigögnin á "
+"þessari vefsíðu."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: app/Http/RequestHandlers/DeleteRecord.php:83
@@ -15071,7 +15083,9 @@ msgstr "Þetta er kommu aðgreindur listi af GEDCOM staðreynda merkimiðum sem 
 
 #: resources/views/edit-account-page.phtml:69
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr "Þetta er krækja í þínar eigin færslur í ættartrénu. Ef þetta er röng persóna, hafðu þá samband við vefstjórann."
+msgstr ""
+"Þetta er krækja í þínar eigin færslur í ættartrénu. Ef þetta er rangur "
+"einstaklingur, hafðu þá samband við vefstjórann."
 
 #: resources/views/setup/step-4-database-mysql.phtml:88
 #: resources/views/setup/step-4-database-mysql.phtml:102
@@ -15565,25 +15579,25 @@ msgstr "Tir"
 #: app/Date/JewishDate.php:178
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:282
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:230
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "tishrei"
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:126
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr "Tishrei"
+msgstr "tishrei"
 
 #. I18N: gedcom tag TITL
 #: app/Factories/ElementFactory.php:1285 app/Factories/ElementFactory.php:1314
@@ -15873,7 +15887,7 @@ msgstr "Tré"
 #. I18N: The third day in the French republican calendar
 #: app/Date/FrenchDate.php:291
 msgid "Tridi"
-msgstr "Tridi"
+msgstr "tridi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
@@ -16803,7 +16817,8 @@ msgstr "Þú ert skráður inn sem %s."
 
 #: app/Http/RequestHandlers/LoginPage.php:99
 msgid "You can apply for an account using the link below."
-msgstr "Þú getur sótt um notandareikning með því að nota krækjuna hér að neðan."
+msgstr ""
+"Þú getur sótt um notandareikning með því að smella á krækjuna hér að neðan."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:70
@@ -18153,28 +18168,28 @@ msgstr "eiginkona sonarsonar"
 #: app/Functions/Functions.php:1770
 #, php-format
 msgid "great ×%s aunt"
-msgstr "×%s. kynslóð frænku"
+msgstr "×%s. ættliður frænka"
 
 #: app/Functions/Functions.php:1715 app/Functions/Functions.php:1734
 #: app/Functions/Functions.php:1746 app/Functions/Functions.php:1757
 #: app/Functions/Functions.php:1773
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr "×%s. kynslóð frænku/frænda"
+msgstr "×%s. ættliður frænka/frændi"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2265 app/Functions/Functions.php:2275
 #: app/Functions/Functions.php:2296
 #, php-format
 msgid "great ×%s grandchild"
-msgstr "barnabarn ×%s kynslóðar framættar"
+msgstr "barnabarn ×%s ættliðar áfram"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2262 app/Functions/Functions.php:2273
 #: app/Functions/Functions.php:2292
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr "dótturbarn ×%s kynslóðar framættar"
+msgstr "dótturbarn ×%s ættliðar framættar"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2110 app/Functions/Functions.php:2124
@@ -18182,7 +18197,7 @@ msgstr "dótturbarn ×%s kynslóðar framættar"
 #: app/Functions/Functions.php:2165
 #, php-format
 msgid "great ×%s grandfather"
-msgstr "langafi %s kynslóðar á eftir"
+msgstr "langafi %s ættliðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2114 app/Functions/Functions.php:2128
@@ -18190,7 +18205,7 @@ msgstr "langafi %s kynslóðar á eftir"
 #: app/Functions/Functions.php:2170
 #, php-format
 msgid "great ×%s grandmother"
-msgstr "langamma ×%s kynslóðar á eftir"
+msgstr "langamma ×%s ættliðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2117 app/Functions/Functions.php:2131
@@ -18198,1339 +18213,1339 @@ msgstr "langamma ×%s kynslóðar á eftir"
 #: app/Functions/Functions.php:2174
 #, php-format
 msgid "great ×%s grandparent"
-msgstr "langafi/-amma ×%s kynslóðar á eftir"
+msgstr "langafi/-amma ×%s ættliðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2258 app/Functions/Functions.php:2270
 #: app/Functions/Functions.php:2287
 #, php-format
 msgid "great ×%s grandson"
-msgstr "langafa sonur ×%s kynslóðar á eftir"
+msgstr "langafa sonur ×%s ættliðar á eftir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1993 app/Functions/Functions.php:2005
 #: app/Functions/Functions.php:2021
 #, php-format
 msgid "great ×%s nephew"
-msgstr "×%s. kynslóðar frændi"
+msgstr "%s. ættliðar frændi"
 
 #: app/Functions/Functions.php:1931 app/Functions/Functions.php:1967
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "%s. kynslóðar bróðursonur"
+msgstr "%s. ættliðar bróðursonur"
 
 #: app/Functions/Functions.php:1935 app/Functions/Functions.php:1970
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "%s. kynslóðar systursonur"
+msgstr "%s. ættliðar systursonur"
 
 #: app/Functions/Functions.php:1938 app/Functions/Functions.php:1972
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr "%s. kynslóðar systkinasonur"
+msgstr "%s. ættliðar systkinasonur"
 
 #: app/Functions/Functions.php:2000 app/Functions/Functions.php:2012
 #: app/Functions/Functions.php:2028
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar frændi/frænka"
+msgstr "%s. ættliðar frændi/frænka"
 
 #: app/Functions/Functions.php:1954 app/Functions/Functions.php:1984
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar bróðurbarn"
+msgstr "%s. ættliðar bróðurbarn"
 
 #: app/Functions/Functions.php:1958 app/Functions/Functions.php:1987
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar systurbarn"
+msgstr "%s. ættliðar systurbarn"
 
 #: app/Functions/Functions.php:1961 app/Functions/Functions.php:1989
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar systkinabarn"
+msgstr "%s. ættliðar systkinabarn"
 
 #: app/Functions/Functions.php:1997 app/Functions/Functions.php:2009
 #: app/Functions/Functions.php:2025
 #, php-format
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar frænka"
+msgstr "%s. ættliðar frænka"
 
 #: app/Functions/Functions.php:1943 app/Functions/Functions.php:1976
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar bróðurdóttir"
+msgstr "%s. ættliðar bróðurdóttir"
 
 #: app/Functions/Functions.php:1947 app/Functions/Functions.php:1979
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar systurdóttir"
+msgstr "%s. ættliðar systurdóttir"
 
 #: app/Functions/Functions.php:1950 app/Functions/Functions.php:1981
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar systkinadóttir"
+msgstr "%s. ættliðar systkinadóttir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1708 app/Functions/Functions.php:1739
 #: app/Functions/Functions.php:1751 app/Functions/Functions.php:1766
 #, php-format
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar frændi"
+msgstr "%s. ættliðar frændi"
 
 #: app/Functions/Functions.php:1720
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar föðurbróðir"
+msgstr "%s. ættliðar föðurbróðir"
 
 #: app/Functions/Functions.php:1724
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar móðurbróðir"
+msgstr "%s. ættliðar móðurbróðir"
 
 #: app/Functions/Functions.php:1727
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar frændi"
+msgstr "%s. ættliðar frændi"
 
 #: app/Functions/Functions.php:1638
 msgid "great ×4 aunt"
-msgstr "4. kynslóðar frænka"
+msgstr "4. ættliðar frænka"
 
 #: app/Functions/Functions.php:1641
 msgid "great ×4 aunt/uncle"
-msgstr "4. kynslóðar frænka/frændi"
+msgstr "4. ættliðar frænka/frændi"
 
 #: app/Functions/Functions.php:2213
 msgid "great ×4 grandchild"
-msgstr "barnbarn 4 ættliðar áfram"
+msgstr "barnabarn 4 ættliðir áfram"
 
 #: app/Functions/Functions.php:2210
 msgid "great ×4 granddaughter"
-msgstr "dótturbarn 4 ættliðar áfram"
+msgstr "dótturbarn 4 ættliðir áfram"
 
 #: app/Functions/Functions.php:2060
 msgid "great ×4 grandfather"
-msgstr ""
+msgstr "langa ×4 afi"
 
 #: app/Functions/Functions.php:2064
 msgid "great ×4 grandmother"
-msgstr ""
+msgstr "langa ×4 amma"
 
 #: app/Functions/Functions.php:2067
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "lang ×4 afi/amma"
 
 #: app/Functions/Functions.php:2206
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "langa ×4 barnabarn"
 
 #: app/Functions/Functions.php:1855
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "langa ×4 frændi"
 
 #: app/Functions/Functions.php:1859
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "barna ×4 barnabarn"
 
 #: app/Functions/Functions.php:1862
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "frændi í 4. ættlið"
 
 #: app/Functions/Functions.php:1878
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "frændi/frænka í 4. ættlið"
 
 #: app/Functions/Functions.php:1882
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "frændi/frænka í 4. ættlið"
 
 #: app/Functions/Functions.php:1885
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "frændi/frænka í 4. ættlið"
 
 #: app/Functions/Functions.php:1867
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "frænka í 4. ættlið"
 
 #: app/Functions/Functions.php:1871
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "frænka í 4. ættlið"
 
 #: app/Functions/Functions.php:1874
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "frænka í 4. ættlið"
 
 #: app/Functions/Functions.php:1627
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "frændi í 4. ættlið"
 
 #: app/Functions/Functions.php:1631
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "frændi í 4. ættlið"
 
 #: app/Functions/Functions.php:1634
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "frændi í 4. ættlið"
 
 #: app/Functions/Functions.php:1657
 msgid "great ×5 aunt"
-msgstr ""
+msgstr "frænka í 5. ættlið"
 
 #: app/Functions/Functions.php:1660
 msgid "great ×5 aunt/uncle"
-msgstr ""
+msgstr "frænka/frændi í 5. ættlið"
 
 #: app/Functions/Functions.php:2224
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "barnabarn í 5. ættlið"
 
 #: app/Functions/Functions.php:2221
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "barnabarn í 5. ættlið"
 
 #: app/Functions/Functions.php:2071
 msgid "great ×5 grandfather"
-msgstr ""
+msgstr "langa x5 afi"
 
 #: app/Functions/Functions.php:2075
 msgid "great ×5 grandmother"
-msgstr ""
+msgstr "langa x5 amma"
 
 #: app/Functions/Functions.php:2078
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "langa x5 amma/afi"
 
 #: app/Functions/Functions.php:2217
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "barnabarn í 5. ættlið"
 
 #: app/Functions/Functions.php:1890
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "barnabarn í 5. ættlið"
 
 #: app/Functions/Functions.php:1894
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "frændi í 5. ættlið"
 
 #: app/Functions/Functions.php:1897
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "frændi í 5. ættlið"
 
 #: app/Functions/Functions.php:1913
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "frændi/frænka í 5. ættlið"
 
 #: app/Functions/Functions.php:1917
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "frændi/frænka í 5. ættlið"
 
 #: app/Functions/Functions.php:1920
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "frændi/frænka í 5. ættlið"
 
 #: app/Functions/Functions.php:1902
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "frænka í 5. ættlið"
 
 #: app/Functions/Functions.php:1906
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "frænka í 5. ættlið"
 
 #: app/Functions/Functions.php:1909
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "frænka í 5. ættlið"
 
 #: app/Functions/Functions.php:1646
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "frændi 5. ættlið"
 
 #: app/Functions/Functions.php:1650
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "frændi í 5. ættlið"
 
 #: app/Functions/Functions.php:1653
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "frændi í 5. ættlið"
 
 #: app/Functions/Functions.php:1676
 msgid "great ×6 aunt"
-msgstr ""
+msgstr "frænka í 6. ættlið"
 
 #: app/Functions/Functions.php:1679
 msgid "great ×6 aunt/uncle"
-msgstr ""
+msgstr "frænka/frændi í 6. ættlið"
 
 #: app/Functions/Functions.php:2235
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "barnabarn í 6. ættlið"
 
 #: app/Functions/Functions.php:2232
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "barnabarn í 6. ættlið"
 
 #: app/Functions/Functions.php:2082
 msgid "great ×6 grandfather"
-msgstr ""
+msgstr "afi í 6. ættlið"
 
 #: app/Functions/Functions.php:2086
 msgid "great ×6 grandmother"
-msgstr ""
+msgstr "amma í 6. ættlið"
 
 #: app/Functions/Functions.php:2089
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "amma og afi í 6. ættlið"
 
 #: app/Functions/Functions.php:2228
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "barnabarn í 6. ættlið"
 
 #: app/Functions/Functions.php:1665
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "frændi í 6. ættlið"
 
 #: app/Functions/Functions.php:1669
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "frændi í 6. ættlið"
 
 #: app/Functions/Functions.php:1672
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "frændi í 6. ættlið"
 
 #: app/Functions/Functions.php:1695
 msgid "great ×7 aunt"
-msgstr ""
+msgstr "frænka í 7. ættlið"
 
 #: app/Functions/Functions.php:1698
 msgid "great ×7 aunt/uncle"
-msgstr ""
+msgstr "frænka/frændi í 7. ættlið"
 
 #: app/Functions/Functions.php:2246
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "barnabarn í 7. ættlið"
 
 #: app/Functions/Functions.php:2243
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "barnabarn í 7. ættlið"
 
 #: app/Functions/Functions.php:2093
 msgid "great ×7 grandfather"
-msgstr ""
+msgstr "afi í 7. ættlið"
 
 #: app/Functions/Functions.php:2097
 msgid "great ×7 grandmother"
-msgstr ""
+msgstr "amma í 7. ættlið"
 
 #: app/Functions/Functions.php:2100
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "amma og afi í 7. ættlið"
 
 #: app/Functions/Functions.php:2239
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "barnabarn í 7. ættlið"
 
 #: app/Functions/Functions.php:1684
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "frændi í 7. ættlið"
 
 #: app/Functions/Functions.php:1688
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "frændi í 7. ættlið"
 
 #: app/Functions/Functions.php:1691
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "frændi í 7. ættlið"
 
 #: app/Functions/Functions.php:1368
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki afabróðurs"
 
 #: app/Functions/Functions.php:1064
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "afasystir"
 
 #: app/Functions/Functions.php:1374
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki ömmubróðurs"
 
 #: app/Functions/Functions.php:1076
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "ömmusystir"
 
 #: app/Functions/Functions.php:1380
 msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki bróðurs föðurforeldra"
 
 #: app/Functions/Functions.php:1088
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "systir föðurforeldra"
 
 #: app/Functions/Functions.php:1386
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki afabróðurs"
 
 #: app/Functions/Functions.php:1144
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "ömmusystir"
 
 #: app/Functions/Functions.php:1392
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki ömmubróðurs"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "ömmusystir"
 
 #: app/Functions/Functions.php:1398
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki bróðurs móðurforeldra"
 
 #: app/Functions/Functions.php:1174
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "systir móðurforeldra"
 
 #: app/Functions/Functions.php:1404
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki afabróðurs"
 
 #: app/Functions/Functions.php:1196
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "afa-/ömmusystir"
 
 #: app/Functions/Functions.php:1410
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki afa-/ömmubróðurs"
 
 #: app/Functions/Functions.php:1208
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "ömmusystir"
 
 #: app/Functions/Functions.php:1416
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "maki afa/-ömmubróðurs"
 
 #: app/Functions/Functions.php:1220
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "afa-/ömmusystir"
 
 #: app/Functions/Functions.php:1062
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "afasystkini"
 
 #: app/Functions/Functions.php:1370
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki afasystkina"
 
 #: app/Functions/Functions.php:1074
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "ömmusystkini"
 
 #: app/Functions/Functions.php:1376
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki ömmusystkina"
 
 #: app/Functions/Functions.php:1086
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "afa-/ömmusystkini"
 
 #: app/Functions/Functions.php:1382
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki afa-/ömmusystkina"
 
 #: app/Functions/Functions.php:1142
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "afasystkini"
 
 #: app/Functions/Functions.php:1388
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki afasystkina"
 
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "ömmusystkini"
 
 #: app/Functions/Functions.php:1394
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki ömmusystkina"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "afa-/ömmusystkini"
 
 #: app/Functions/Functions.php:1400
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki afa-/ömmusystkina"
 
 #: app/Functions/Functions.php:1194
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "afa-/ömmusystkini"
 
 #: app/Functions/Functions.php:1406
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki afa-/ömmusystkina"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "afa-/ömmusystkini"
 
 #: app/Functions/Functions.php:1412
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki afa-/ömmusystkina"
 
 #: app/Functions/Functions.php:1218
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "afa-/ömmusystkini"
 
 #: app/Functions/Functions.php:1418
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "maki afa-/ömmusystkina"
 
 #: app/Functions/Functions.php:996
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barnabarnabarn"
 
 #: app/Functions/Functions.php:1002
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barn dótturbarns"
 
 #: app/Functions/Functions.php:1010
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barn sonarbarns"
 
 #: app/Functions/Functions.php:1018
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barnabarn dóttur"
 
 #: app/Functions/Functions.php:1024
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "dótturdótturbarn"
 
 #: app/Functions/Functions.php:1038
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barn dóttursonar"
 
 #: app/Functions/Functions.php:1316
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barnabarn sonar"
 
 #: app/Functions/Functions.php:1322
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barn sonardóttur"
 
 #: app/Functions/Functions.php:1330
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "barn sonarsonar"
 
 #: app/Functions/Functions.php:998
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "dóttir barnabarns"
 
 #: app/Functions/Functions.php:1004
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "barn dótturdóttur"
 
 #: app/Functions/Functions.php:1012
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "barn sonardóttur"
 
 #: app/Functions/Functions.php:1020
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "dóttir dótturbarns"
 
 #: app/Functions/Functions.php:1026
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "dóttir dótturdóttur"
 
 #: app/Functions/Functions.php:1040
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "dóttir dóttursonar"
 
 #: app/Functions/Functions.php:1318
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "dóttir sonarbarns"
 
 #: app/Functions/Functions.php:1324
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "dótturdóttir sonar"
 
 #: app/Functions/Functions.php:1332
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "sonardóttir sonar"
 
 #: app/Functions/Functions.php:1056
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1068
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1080
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1136
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1154
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1166
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1188
 msgctxt "parent’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1200
 msgctxt "parent’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1212
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "langafi"
 
 #: app/Functions/Functions.php:1058
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1070
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1082
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1138
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1156
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1168
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1190
 msgctxt "parent’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1202
 msgctxt "parent’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1214
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "langamma"
 
 #: app/Functions/Functions.php:1060
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "foreldrar afa"
 
 #: app/Functions/Functions.php:1072
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "foreldrar ömmu"
 
 #: app/Functions/Functions.php:1084
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "foreldrar afa og ömmu"
 
 #: app/Functions/Functions.php:1140
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "foreldrar afa"
 
 #: app/Functions/Functions.php:1158
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "foreldrar ömmu"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "langafi og -amma"
 
 #: app/Functions/Functions.php:1192
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "langafi og -amma"
 
 #: app/Functions/Functions.php:1204
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "langafi og -amma"
 
 #: app/Functions/Functions.php:1216
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "langafi og -amma"
 
 #: app/Functions/Functions.php:1000
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "sonur barnabarns"
 
 #: app/Functions/Functions.php:1008
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "barn dóttursonar"
 
 #: app/Functions/Functions.php:1014
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "barn sonarsonar"
 
 #: app/Functions/Functions.php:1022
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "sonur dótturbarns"
 
 #: app/Functions/Functions.php:1030
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "sonur dótturdóttur"
 
 #: app/Functions/Functions.php:1042
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "sonarsonur dóttur"
 
 #: app/Functions/Functions.php:1320
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "sonarbarn sonar"
 
 #: app/Functions/Functions.php:1328
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "dóttursonur sonar"
 
 #: app/Functions/Functions.php:1334
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "sonur sonarsonar"
 
 #: app/Functions/Functions.php:1600
 msgid "great-great-aunt"
-msgstr ""
+msgstr "frænka í 2. ættlið"
 
 #: app/Functions/Functions.php:1603
 msgid "great-great-aunt/uncle"
-msgstr ""
+msgstr "frænka/frændi í 2. ættlið"
 
 #: app/Functions/Functions.php:2191
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "barnabarn barnabarns"
 
 #: app/Functions/Functions.php:2188
 msgid "great-great-granddaughter"
-msgstr ""
+msgstr "dótturbarn barnabarns"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
-msgstr ""
+msgstr "langalangafi"
 
 #: app/Functions/Functions.php:2042
 msgid "great-great-grandmother"
-msgstr ""
+msgstr "langalangamma"
 
 #: app/Functions/Functions.php:2045
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "langalangafi og -amma"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
-msgstr ""
+msgstr "sonarbarn barnabarns"
 
 #: app/Functions/Functions.php:1619
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "frænka í 3. ættlið"
 
 #: app/Functions/Functions.php:1622
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "frænka/frændi í 3. ættlið"
 
 #: app/Functions/Functions.php:2202
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "barn barnabarnabarnabarns"
 
 #: app/Functions/Functions.php:2199
 msgid "great-great-great-granddaughter"
-msgstr ""
+msgstr "dóttir barnabarnabarnabarns"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
-msgstr ""
+msgstr "langalangalangafi"
 
 #: app/Functions/Functions.php:2053
 msgid "great-great-great-grandmother"
-msgstr ""
+msgstr "langalangalangamma"
 
 #: app/Functions/Functions.php:2056
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "langalangalangafi og -amma"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "sonur barnabarnabarnabarns"
 
 #: app/Functions/Functions.php:1820
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "barnabarnabarnabarn bróðurs"
 
 #: app/Functions/Functions.php:1824
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "barnabarnabarnabarn systur"
 
 #: app/Functions/Functions.php:1827
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "barnabarnabarnabarn systkina"
 
 #: app/Functions/Functions.php:1843
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "barnabarnabarnabarn bróðurs"
 
 #: app/Functions/Functions.php:1847
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "barnabarnabarnabarn systur"
 
 #: app/Functions/Functions.php:1850
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "barnabarnabarnabarn systkina"
 
 #: app/Functions/Functions.php:1832
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "barnabarnabarnadóttir bróðurs"
 
 #: app/Functions/Functions.php:1836
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "barnabarnabarnadóttir systurs"
 
 #: app/Functions/Functions.php:1839
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "barnabarnabarnadóttir systkina"
 
 #: app/Functions/Functions.php:1608
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "frændi í 3. ættlið"
 
 #: app/Functions/Functions.php:1612
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "frændi í 3. ættlið"
 
 #: app/Functions/Functions.php:1615
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "frændi í 3. ættlið"
 
 #: app/Functions/Functions.php:1785
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "barnabarnasonur bróðurs"
 
 #: app/Functions/Functions.php:1789
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "barnabarnasonur systurs"
 
 #: app/Functions/Functions.php:1792
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "barnabarnasonur systkina"
 
 #: app/Functions/Functions.php:1808
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "barnabarnabarn bróðurs"
 
 #: app/Functions/Functions.php:1812
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "barnabarnabarn systurs"
 
 #: app/Functions/Functions.php:1815
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "barnabarnabarn systkina"
 
 #: app/Functions/Functions.php:1797
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "barnabarnadóttir bróður"
 
 #: app/Functions/Functions.php:1801
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "barnabarnadóttir systur"
 
 #: app/Functions/Functions.php:1804
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "barnabarnadóttir systkina"
 
 #: app/Functions/Functions.php:1589
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "frændi í 2. ættlið"
 
 #: app/Functions/Functions.php:1593
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "frændi í 2. ættlið"
 
 #: app/Functions/Functions.php:1596
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "frændi í 2. ættlið"
 
 #: app/Functions/Functions.php:945
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "bróðursonarsonur"
+msgstr "sonur bróðurbarns"
 
 #: app/Functions/Functions.php:965
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonur bróðurdóttur"
 
 #: app/Functions/Functions.php:983
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarsonur bróður"
 
 #: app/Functions/Functions.php:1265
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarbarn systur"
 
 #: app/Functions/Functions.php:1285
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "dóttursonur systur"
 
 #: app/Functions/Functions.php:1309
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarsonur systur"
 
 #: app/Functions/Functions.php:948
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr "bróðurdóttursonur"
+msgstr "sonur bróðurbarns"
 
 #: app/Functions/Functions.php:968
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonur bróðurdóttur"
 
 #: app/Functions/Functions.php:986
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarsonur bróðurs"
 
 #: app/Functions/Functions.php:1268
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarbarn systur"
 
 #: app/Functions/Functions.php:1288
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "dóttursonur systur"
 
 #: app/Functions/Functions.php:1312
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarsonur systur"
 
 #: app/Functions/Functions.php:1234
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarbarn systkina"
 
 #: app/Functions/Functions.php:1242
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "dóttursonur systkina"
 
 #: app/Functions/Functions.php:1248
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "sonarsonur systkina"
 
 #: app/Functions/Functions.php:933
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "bróðursonarsonur/-dóttir"
+msgstr "barnabarn bróðurs"
 
 #: app/Functions/Functions.php:951
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "bróðurdóttursonur"
+msgstr "dótturbarn bróðurs"
 
 #: app/Functions/Functions.php:971
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "sonarbarn bróðurs"
 
 #: app/Functions/Functions.php:1253
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "barnabarn systur"
 
 #: app/Functions/Functions.php:1271
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "dótturbarn systur"
 
 #: app/Functions/Functions.php:1297
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "sonarbarn systur"
 
 #: app/Functions/Functions.php:936
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr "bróðurdóttursonur/-dóttir"
+msgstr "barnabarn bróðurs"
 
 #: app/Functions/Functions.php:954
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr "bróðurdótturdóttir"
+msgstr "dótturbarn bróðurs"
 
 #: app/Functions/Functions.php:974
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "sonarbarn bróðurs"
 
 #: app/Functions/Functions.php:1256
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "barnabarn systur"
 
 #: app/Functions/Functions.php:1274
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "dótturbarn systur"
 
 #: app/Functions/Functions.php:1300
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "sonarbarn systur"
 
 #: app/Functions/Functions.php:1230
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "barnabarn systkina"
 
 #: app/Functions/Functions.php:1236
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "dótturbarn systkina"
 
 #: app/Functions/Functions.php:1244
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "sonarbarn systkina"
 
 #: app/Functions/Functions.php:939
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "bróðursonardóttir"
+msgstr "dótturbarn bróðurs"
 
 #: app/Functions/Functions.php:957
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturdóttir bróðurs"
 
 #: app/Functions/Functions.php:977
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "sonardóttir bróðurs"
 
 #: app/Functions/Functions.php:1259
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturbarn systur"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturdóttir systur"
 
 #: app/Functions/Functions.php:1303
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "sonardóttir systur"
 
 #: app/Functions/Functions.php:942
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr "bróðurdótturdóttir"
+msgstr "dótturbarn bróðurs"
 
 #: app/Functions/Functions.php:960
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturdóttir bróðurs"
 
 #: app/Functions/Functions.php:980
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "sonardóttir bróðurs"
 
 #: app/Functions/Functions.php:1262
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturbarn systur"
 
 #: app/Functions/Functions.php:1280
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturdóttir systur"
 
 #: app/Functions/Functions.php:1306
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "sonardóttir systur"
 
 #: app/Functions/Functions.php:1232
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturbarn systkina"
 
 #: app/Functions/Functions.php:1238
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "dótturdóttir systkina"
 
 #: app/Functions/Functions.php:1246
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "sonardóttir systkina"
 
 #: app/Functions/Functions.php:1054
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "afabróðir"
 
 #: app/Functions/Functions.php:1372
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki afasystur"
 
 #: app/Functions/Functions.php:1066
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "ömmubróðir"
 
 #: app/Functions/Functions.php:1378
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki ömmusystur"
 
 #: app/Functions/Functions.php:1078
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "bróðir afa eða ömmu"
 
 #: app/Functions/Functions.php:1384
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki afa- eða ömmusystur"
 
 #: app/Functions/Functions.php:1134
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "afabróðir"
 
 #: app/Functions/Functions.php:1390
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki afasystur"
 
 #: app/Functions/Functions.php:1152
 msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "ömmubróðir"
 
 #: app/Functions/Functions.php:1396
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki ömmusystur"
 
 #: app/Functions/Functions.php:1164
 msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "afa- eða ömmubróðir"
 
 #: app/Functions/Functions.php:1402
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki afa- eða ömmusystur"
 
 #: app/Functions/Functions.php:1186
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "afa- eða ömmubróðir"
 
 #: app/Functions/Functions.php:1408
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki afasystur"
 
 #: app/Functions/Functions.php:1198
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "ömmubróðir"
 
 #: app/Functions/Functions.php:1414
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki ömmusystur"
 
 #: app/Functions/Functions.php:1210
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "afa- eða ömmubróðir"
 
 #: app/Functions/Functions.php:1420
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "maki afa- eða ömmusystur"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:582
@@ -19590,7 +19605,7 @@ msgstr "sjálf"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:560
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "kk:mm eða kk:mm:ss"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
@@ -19869,17 +19884,17 @@ msgstr "sonur mágkonu"
 #: app/Functions/Functions.php:962
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "maki bróðurdóttur"
 
 #: app/Functions/Functions.php:1240
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "maki systkinadótturs"
 
 #: app/Functions/Functions.php:1282
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "maki systurdóttur"
 
 #: app/Functions/Functions.php:768
 msgctxt "brother’s child"
@@ -19889,17 +19904,17 @@ msgstr "frændi/frænka"
 #: app/Functions/Functions.php:1112
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "maki bróðurbarns"
 
 #: app/Functions/Functions.php:1108
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "maki systkinabarns"
 
 #: app/Functions/Functions.php:1110
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "maki systurbarns"
 
 #: app/Functions/Functions.php:872
 msgctxt "sibling’s child"
@@ -19914,21 +19929,21 @@ msgstr "frændi/frænka"
 #: app/Functions/Functions.php:1352
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "maki bróðurbarns"
 
 #: app/Functions/Functions.php:1348
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "maki systkinabarns"
 
 #: app/Functions/Functions.php:1350
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "maki systurbarns"
 
 #: app/Functions/FunctionsEdit.php:564
 msgid "never"
-msgstr ""
+msgstr "aldrei"
 
 #. I18N: A button label, next page
 #: resources/views/admin/data-fix-select.phtml:50
@@ -19957,17 +19972,17 @@ msgstr "frænka"
 #: app/Functions/Functions.php:1118
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "maki bróðurdóttur"
 
 #: app/Functions/Functions.php:1114
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "maki systkinadóttur"
 
 #: app/Functions/Functions.php:1116
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "maki systurdóttur"
 
 #: app/Functions/Functions.php:874
 msgctxt "sibling’s daughter"
@@ -19982,32 +19997,32 @@ msgstr "frænka"
 #: app/Functions/Functions.php:1358
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "maki bróðurdóttur"
 
 #: app/Functions/Functions.php:1354
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "maki systkinadóttur"
 
 #: app/Functions/Functions.php:1356
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "maki systurdóttur"
 
 #: app/Functions/Functions.php:988
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "maki bróðursonar"
 
 #: app/Functions/Functions.php:1250
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "maki systkinasonar"
 
 #: app/Functions/Functions.php:1314
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "maki systursonar"
 
 #: app/Functions/Functions.php:483
 msgid "ninth cousin"
@@ -20348,137 +20363,137 @@ msgstr "annar frændi"
 #: app/Functions/Functions.php:1481
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn afabróðurs"
 
 #: app/Functions/Functions.php:1473
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn afabróðurs"
 
 #: app/Functions/Functions.php:1477
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn afabróðurs"
 
 #: app/Functions/Functions.php:1505
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn afasystkina"
 
 #: app/Functions/Functions.php:1497
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn afasystkina"
 
 #: app/Functions/Functions.php:1501
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn afasystkina"
 
 #: app/Functions/Functions.php:1493
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn afasystur"
 
 #: app/Functions/Functions.php:1485
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn afasystur"
 
 #: app/Functions/Functions.php:1489
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn afasystur"
 
 #: app/Functions/Functions.php:1517
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn ömmubróðurs"
 
 #: app/Functions/Functions.php:1509
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn ömmbróðurs"
 
 #: app/Functions/Functions.php:1513
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn ömmubróðurs"
 
 #: app/Functions/Functions.php:1541
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn ömmusystkina"
 
 #: app/Functions/Functions.php:1533
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn ömmusystkina"
 
 #: app/Functions/Functions.php:1537
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn ömmusystkina"
 
 #: app/Functions/Functions.php:1529
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn ömmusystur"
 
 #: app/Functions/Functions.php:1521
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn ömmusystur"
 
 #: app/Functions/Functions.php:1525
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn ömmusystur"
 
 #: app/Functions/Functions.php:1553
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn afa- eða ömmubróðurs"
 
 #: app/Functions/Functions.php:1545
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn afa- eða ömmubróðurs"
 
 #: app/Functions/Functions.php:1549
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn afa- eða ömmubróðurs"
 
 #: app/Functions/Functions.php:1577
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn afa- eða ömmusystkina"
 
 #: app/Functions/Functions.php:1569
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn afa- eða ömmusystkina"
 
 #: app/Functions/Functions.php:1573
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn afa- eða ömmusystkina"
 
 #: app/Functions/Functions.php:1565
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "barnabarn afa- eða ömmusystur"
 
 #: app/Functions/Functions.php:1557
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "dótturbarn afa- eða ömmusystur"
 
 #: app/Functions/Functions.php:1561
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "sonarbarn afa- eða ömmusystur"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php:51 app/GedcomCode/GedcomCodeQuay.php:52
