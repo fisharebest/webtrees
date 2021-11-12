@@ -1731,32 +1731,12 @@ parameters:
 			path: app/Module/BranchesListModule.php
 
 		-
-			message: "#^Call to an undefined method object\\:\\:censusLanguage\\(\\)\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
 			message: "#^Cannot call method updateFact\\(\\) on Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
 			count: 1
 			path: app/Module/CensusAssistantModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$census of method Fisharebest\\\\Webtrees\\\\Module\\\\CensusAssistantModule\\:\\:censusTableEmptyRow\\(\\) expects Fisharebest\\\\Webtrees\\\\Census\\\\CensusInterface, object given\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$census of method Fisharebest\\\\Webtrees\\\\Module\\\\CensusAssistantModule\\:\\:censusTableHeader\\(\\) expects Fisharebest\\\\Webtrees\\\\Census\\\\CensusInterface, object given\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$census of method Fisharebest\\\\Webtrees\\\\Module\\\\CensusAssistantModule\\:\\:censusTableRow\\(\\) expects Fisharebest\\\\Webtrees\\\\Census\\\\CensusInterface, object given\\.$#"
-			count: 1
-			path: app/Module/CensusAssistantModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$census of method Fisharebest\\\\Webtrees\\\\Module\\\\CensusAssistantModule\\:\\:createNoteText\\(\\) expects Fisharebest\\\\Webtrees\\\\Census\\\\CensusInterface, object given\\.$#"
 			count: 1
 			path: app/Module/CensusAssistantModule.php
 
@@ -4148,4 +4128,3 @@ parameters:
 			message: "#^Ternary operator condition is always true\\.$#"
 			count: 1
 			path: app/Webtrees.php
-

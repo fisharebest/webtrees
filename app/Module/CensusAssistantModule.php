@@ -93,6 +93,7 @@ class CensusAssistantModule extends AbstractModule
         $individual   = Registry::individualFactory()->make($params['xref'], $tree);
         $head         = Registry::individualFactory()->make($params['head'], $tree);
         $census_class = $params['census'];
+        /** @var CensusInterface $census */
         $census       = new $census_class();
 
         // No head of household?  Create a fake one.
@@ -143,6 +144,7 @@ class CensusAssistantModule extends AbstractModule
         $ca_census      = $params['ca_census'] ?? '';
 
         if ($ca_census !== '' && $ca_individuals !== []) {
+            /** @var CensusInterface $census */
             $census = new $ca_census();
 
             $note_text   = $this->createNoteText($census, $ca_title, $ca_place, $ca_citation, $ca_individuals, $ca_notes);
@@ -175,17 +177,9 @@ class CensusAssistantModule extends AbstractModule
      */
     private function createNoteText(CensusInterface $census, string $ca_title, string $ca_place, string $ca_citation, array $ca_individuals, string $ca_notes): string
     {
-        $text = $ca_title;
-
-        if ($ca_citation !== '') {
-            // Two trailing spaces create a line-break in markdown
-            $text .= "  \n" . $ca_citation;
-        }
-
-        if ($ca_place !== '') {
-            // Two trailing spaces create a line-break in markdown
-            $text .= "  \n" . $ca_place;
-        }
+        $text = $this->censusPartToList($ca_title);
+        $text .= $this->censusPartToList($ca_citation);
+        $text .= $this->censusPartToList($ca_place);
 
         $text .= "\n\n|";
 
@@ -203,10 +197,26 @@ class CensusAssistantModule extends AbstractModule
             }
         }
 
-        if ($ca_notes !== '') {
-            $text .= "\n\n" . strtr($ca_notes, ["\r" => '']);
-        }
+        $text .= $this->censusPartToList($ca_notes);
 
+        return $text;
+    }
+
+    /**
+     * Make each paragraph a markdown list element
+     *
+     * @param string $census_part
+     * @return string
+     */
+    private function censusPartToList($census_part)
+    {
+        $lines = preg_split('/\r?\n/', $census_part, -1, PREG_SPLIT_NO_EMPTY);
+        $text  = '';
+        if ($lines !== false && count($lines) > 0) {
+            foreach ($lines as $line) {
+                $text .= "\n+ " . $line;
+            }
+        }
         return $text;
     }
 

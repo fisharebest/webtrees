@@ -44,3 +44,14 @@
     max-width: 100%;
     height: auto;
 }
+
+.markdown .table-responsive {
+    margin-top: 0.75rem;
+    margin-bottom: 0.4rem;
+}
+
+.markdown ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
