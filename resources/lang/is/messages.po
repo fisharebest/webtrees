@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-11-11 05:50+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-11-15 06:29+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -17806,84 +17806,84 @@ msgstr "langafa sonur ×%s kynslóðar á eftir"
 #: app/Services/RelationshipService.php:1750
 #, php-format
 msgid "great ×%s nephew"
-msgstr "×%s. kynslóðar frændi"
+msgstr "%s. ættliðar frændi"
 
 #: app/Services/RelationshipService.php:1657
 #: app/Services/RelationshipService.php:1693
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "%s. kynslóðar bróðursonur"
+msgstr "%s. ættliðar bróðursonur"
 
 #: app/Services/RelationshipService.php:1661
 #: app/Services/RelationshipService.php:1696
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr "%s. kynslóðar systursonur"
+msgstr "%s. ættliðar systursonur"
 
 #: app/Services/RelationshipService.php:1664
 #: app/Services/RelationshipService.php:1699
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr "%s. kynslóðar systkinasonur"
+msgstr "%s. ættliðar systkinasonur"
 
 #: app/Services/RelationshipService.php:1729
 #: app/Services/RelationshipService.php:1741
 #: app/Services/RelationshipService.php:1757
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar frændi/frænka"
+msgstr "%s. ættliðar frændi/frænka"
 
 #: app/Services/RelationshipService.php:1680
 #: app/Services/RelationshipService.php:1712
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar bróðurbarn"
+msgstr "%s. ættliðar bróðurbarn"
 
 #: app/Services/RelationshipService.php:1684
 #: app/Services/RelationshipService.php:1715
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar systurbarn"
+msgstr "%s. ættliðar systurbarn"
 
 #: app/Services/RelationshipService.php:1687
 #: app/Services/RelationshipService.php:1718
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr "%s. kynslóðar systkinabarn"
+msgstr "%s. ættliðar systkinabarn"
 
 #: app/Services/RelationshipService.php:1726
 #: app/Services/RelationshipService.php:1738
 #: app/Services/RelationshipService.php:1754
 #, php-format
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar frænka"
+msgstr "%s. ættliðar frænka"
 
 #: app/Services/RelationshipService.php:1669
 #: app/Services/RelationshipService.php:1703
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar bróðurdóttir"
+msgstr "%s. ættliðar bróðurdóttir"
 
 #: app/Services/RelationshipService.php:1673
 #: app/Services/RelationshipService.php:1706
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar systurdóttir"
+msgstr "%s. ættliðar systurdóttir"
 
 #: app/Services/RelationshipService.php:1676
 #: app/Services/RelationshipService.php:1709
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr "%s. kynslóðar systkinadóttir"
+msgstr "%s. ættliðar systkinadóttir"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Services/RelationshipService.php:1434
@@ -17892,41 +17892,41 @@ msgstr "%s. kynslóðar systkinadóttir"
 #: app/Services/RelationshipService.php:1492
 #, php-format
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar frændi"
+msgstr "%s. ættliðar frændi"
 
 #: app/Services/RelationshipService.php:1446
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar föðurbróðir"
+msgstr "%s. ættliðar föðurbróðir"
 
 #: app/Services/RelationshipService.php:1450
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar móðurbróðir"
+msgstr "%s. ættliðar móðurbróðir"
 
 #: app/Services/RelationshipService.php:1453
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr "%s. kynslóðar frændi"
+msgstr "%s. ættliðar frændi"
 
 #: app/Services/RelationshipService.php:1364
 msgid "great ×4 aunt"
-msgstr "4. kynslóðar frænka"
+msgstr "4. ættliðar frænka"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt/uncle"
-msgstr "4. kynslóðar frænka/frændi"
+msgstr "4. ættliðar frænka/frændi"
 
 #: app/Services/RelationshipService.php:1942
 msgid "great ×4 grandchild"
-msgstr "barnbarn 4 ættliðar áfram"
+msgstr "barnabarn 4 ættliðir áfram"
 
 #: app/Services/RelationshipService.php:1939
 msgid "great ×4 granddaughter"
-msgstr "dótturbarn 4 ættliðar áfram"
+msgstr "dótturbarn 4 ættliðir áfram"
 
 #: app/Services/RelationshipService.php:1789
 msgid "great ×4 grandfather"
