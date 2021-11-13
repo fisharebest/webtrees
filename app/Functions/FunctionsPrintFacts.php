@@ -208,7 +208,7 @@ class FunctionsPrintFacts
 
         echo FunctionsPrint::formatFactDate($fact, $record, true, true);
 
-        echo '<div class="place">', FunctionsPrint::formatFactPlace($fact, true, true, true), '</div>';
+        echo '<div class="place">', FunctionsPrint::formatFactPlace($fact, $fact->id() !== 'histo', true, true), '</div>';
         echo '</div>';
 
         // Secondary attributes
