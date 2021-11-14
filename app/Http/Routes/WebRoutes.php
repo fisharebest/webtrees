@@ -539,7 +539,6 @@ class WebRoutes
                 $router->get(AutoCompleteCitation::class, '/autocomplete/citation');
                 $router->get(AutoCompleteFolder::class, '/autocomplete/folder');
                 $router->get(AutoCompletePlace::class, '/autocomplete/place');
-                $router->get(AutoCompleteSurname::class, '/autocomplete/surname');
                 $router->get(AddChildToFamilyPage::class, '/add-child-to-family/{xref}/{sex}');
                 $router->post(AddChildToFamilyAction::class, '/add-child-to-family/{xref}');
                 $router->get(AddNewFact::class, '/add-fact/{xref}/{fact}');
@@ -658,6 +657,7 @@ class WebRoutes
             // Visitor routes with a tree.
             $router->attach('', '/tree/{tree}', static function (Map $router) {
                 $router->get(TreePage::class, '');
+                $router->get(AutoCompleteSurname::class, '/autocomplete/surname');
                 $router->get(CalendarPage::class, '/calendar/{view}');
                 $router->post(CalendarAction::class, '/calendar/{view}');
                 $router->get(CalendarEvents::class, '/calendar-events/{view}');
