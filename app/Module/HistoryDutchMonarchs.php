@@ -63,6 +63,7 @@ class HistoryDutchMonarchs extends AbstractModule implements ModuleHistoricEvent
      * @return Collection<string>
      */
     public function historicEventsAll(): Collection
+
         /**
         * Variables used for "TYPE" in Collection.
         *
@@ -87,6 +88,7 @@ class HistoryDutchMonarchs extends AbstractModule implements ModuleHistoricEvent
          * and mark the option "markdown"). If markdown is disabled the links are still
          * working with a necessary blank at the end, but the formatting isn't so nice.
          */
+
     {
         return new Collection([
             "1 EVEN Lodewijk I, de Lamme Koning (Lodewijk Napoleon Bonaparte)\n2 TYPE " . $type_01 . "\n2 DATE FROM 05 JUN 1806 TO 01 JUL 1810\n2 NOTE Koninkrijk Holland (1806 - 1810), vazalstaat van het Eerste Franse Keizerrijk",
