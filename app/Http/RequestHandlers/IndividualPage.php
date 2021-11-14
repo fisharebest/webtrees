@@ -50,7 +50,9 @@ use function explode;
 use function implode;
 use function is_string;
 use function redirect;
+use function strip_tags;
 use function strtoupper;
+use function trim;
 
 /**
  * Show an individual's page.
@@ -239,8 +241,8 @@ class IndividualPage implements RequestHandlerInterface
             }
         }
 
-        $meta_facts = array_map('strip_tags', $meta_facts);
-        $meta_facts = array_map('trim', $meta_facts);
+        $meta_facts = array_map(static fn (string $x): string => strip_tags($x), $meta_facts);
+        $meta_facts = array_map(static fn (string $x): string => trim($x), $meta_facts);
 
         return implode(', ', $meta_facts);
     }
