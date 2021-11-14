@@ -104,8 +104,6 @@ Please do not contribute your IDE directories (e.g. `.idea` or `.vscode`).
 
 ## Translations
 
-Please refer to the guide from the [official wiki](https://wiki.webtrees.net/en/Category:Translation_Guidelines).
-
 There is a [translators forum](http://webtrees.net/index.php/en/forum/8-translation) where you can discuss any issues relating to translation.
 
 Updates to translations should be made at [translate.webtrees.net](https://translate.webtrees.net). 
