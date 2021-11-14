@@ -68,7 +68,6 @@ use Fisharebest\Webtrees\Module\DeathReportModule;
 use Fisharebest\Webtrees\Module\DescendancyChartModule;
 use Fisharebest\Webtrees\Module\DescendancyModule;
 use Fisharebest\Webtrees\Module\DescendancyReportModule;
-use Fisharebest\Webtrees\Module\DutchMonarchs;
 use Fisharebest\Webtrees\Module\DutchPrimeMinisters;
 use Fisharebest\Webtrees\Module\EsriMaps;
 use Fisharebest\Webtrees\Module\FabTheme;
@@ -95,6 +94,7 @@ use Fisharebest\Webtrees\Module\GeonamesAutocomplete;
 use Fisharebest\Webtrees\Module\GoogleAnalyticsModule;
 use Fisharebest\Webtrees\Module\GoogleWebmasterToolsModule;
 use Fisharebest\Webtrees\Module\HereMaps;
+use Fisharebest\Webtrees\Module\HistoryDutchMonarchs;
 use Fisharebest\Webtrees\Module\HitCountFooterModule;
 use Fisharebest\Webtrees\Module\HourglassChartModule;
 use Fisharebest\Webtrees\Module\HtmlBlockModule;
@@ -376,7 +376,6 @@ class ModuleService
         'descendancy'             => DescendancyModule::class,
         'descendancy_chart'       => DescendancyChartModule::class,
         'descendancy_report'      => DescendancyReportModule::class,
-        'dutch_monarchs'          => DutchMonarchs::class,
         'dutch_prime_ministers'   => DutchPrimeMinisters::class,
         'esri-maps'               => EsriMaps::class,
         'extra_info'              => IndividualMetadataModule::class,
@@ -406,6 +405,7 @@ class ModuleService
         'google-maps'             => GoogleMaps::class,
         'google-webmaster-tools'  => GoogleWebmasterToolsModule::class,
         'here-maps'               => HereMaps::class,
+        'history_dutch_monarchs'  => HistoryDutchMonarchs::class,
         'hit-counter'             => HitCountFooterModule::class,
         'hourglass_chart'         => HourglassChartModule::class,
         'html'                    => HtmlBlockModule::class,
