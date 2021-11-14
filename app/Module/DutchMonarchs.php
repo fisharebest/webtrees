@@ -56,18 +56,18 @@ class DutchMonarchs extends AbstractModule implements ModuleHistoricEventsInterf
     public function historicEventsAll(): Collection
     {
         return new Collection([
-            "1 EVEN Lodewijk I, de Lamme Koning\n2 NAME Lodewijk Napoleon Bonaparte\n2 TYPE Koning van Holland\n2 DATE FROM 05 JUN 1806 TO 01 JUL 1810\n2 NOTE Koninkrijk Holland (1806 - 1810), vazalstaat van het Eerste Franse Keizerrijk",
-            "1 EVEN Lodewijk II\n2 NAME Napoleon Lodewijk Bonaparte\n2 TYPE Koning van Holland\n2 DATE FROM 01 JUL 1810 TO 13 JUL 1810\n2 NOTE Koninkrijk Holland (1806 - 1810), vazalstaat van het Eerste Franse Keizerrijk",
-            "1 EVEN Napoleon I\n2 NAME Napoleon Bonaparte\n2 TYPE Keizer der Fransen\n2 DATE FROM 13 JUL 1810 TO 21 NOV 1813\n2 NOTE Geannexeerd deel van het Eerste Franse Keizerrijk",
-            "1 EVEN Willem I\n2 NAME Willem Frederik, Prins van Oranje-Nassau\n2 TYPE Soeverein Vorst der Nederlanden\n2 DATE FROM 21 NOV 1813 TO 16 MAR 1815\n2 NOTE Soeverein vorstendom der Verenigde Nederlanden (1813 - 1815)",
-            "1 EVEN Willem I\n2 NAME Willem Frederik van Oranje-Nassau\n2 TYPE Koning der Nederlanden\n2 DATE FROM 16 MAR 1815 TO 21 JUL 1831\n2 NOTE Verenigd Koninkrijk der Nederlanden (1815 - 1830)",
-            "1 EVEN Willem I\n2 NAME Willem Frederik van Oranje-Nassau\n2 TYPE Koning der Nederlanden\n2 DATE FROM 21 JUL 1831 TO 07 OKT 1840\n2 NOTE Koninkrijk der Nederlanden (vanaf 1830)",
-            "1 EVEN Willem II\n2 NAME Willem Frederik George Lodewijk van Oranje-Nassau\n2 TYPE Koning der Nederlanden\n2 DATE FROM 07 OKT 1840 TO 17 MAR 1849\n2 NOTE Koninkrijk der Nederlanden",
-            "1 EVEN Willem III\n2 NAME Willem Alexander Paul Frederik Lodewijk van Oranje-Nassau\n2 TYPE Koning der Nederlanden\n2 DATE FROM 17 MAR 1849 TO 23 NOV 1890\n2 NOTE Koninkrijk der Nederlanden",
-            "1 EVEN Wilhelmina\n2 NAME Wilhelmina Helena Pauline Maria van Oranje-Nassau\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 23 NOV 1890 TO 04 SEP 1948\n2 NOTE Koninkrijk der Nederlanden",
-            "1 EVEN Juliana\n2 NAME Juliana Louise Emma Marie Wilhelmina van Oranje-Nassau\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 04 SEP 1948 TO 30 APR 1980\n2 NOTE Koninkrijk der Nederlanden",
-            "1 EVEN Beatrix\n2 NAME Beatrix Wilhelmina Armgard van Oranje-Nassau\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 30 APR 1980 TO 30 APR 2013\n2 NOTE Koninkrijk der Nederlanden",
-            "1 EVEN Willem-Alexander\n2 NAME Willem-Alexander Claus George Ferdinand van Oranje-Nassau\n2 TYPE Koning der Nederlanden\n2 DATE FROM 30 APR 2013\n2 NOTE Koninkrijk der Nederlanden",
+            "1 EVEN Lodewijk I, de Lamme Koning (Lodewijk Napoleon Bonaparte)\n2 TYPE Koning van Holland\n2 DATE FROM 05 JUN 1806 TO 01 JUL 1810\n2 NOTE Koninkrijk Holland (1806 - 1810), vazalstaat van het Eerste Franse Keizerrijk",
+            "1 EVEN Lodewijk II (Napoleon Lodewijk Bonaparte)\n2 TYPE Koning van Holland\n2 DATE FROM 01 JUL 1810 TO 13 JUL 1810\n2 NOTE Koninkrijk Holland (1806 - 1810), vazalstaat van het Eerste Franse Keizerrijk",
+            "1 EVEN Napoleon I (Napoleon Bonaparte)\n2 TYPE Keizer der Fransen\n2 DATE FROM 13 JUL 1810 TO 21 NOV 1813\n2 NOTE Geannexeerd deel van het Eerste Franse Keizerrijk",
+            "1 EVEN Willem I (Willem Frederik, Prins van Oranje-Nassau)\n2 TYPE Soeverein Vorst der Nederlanden\n2 DATE FROM 21 NOV 1813 TO 16 MAR 1815\n2 NOTE Soeverein vorstendom der Verenigde Nederlanden (1813 - 1815)",
+            "1 EVEN Willem I (Willem Frederik van Oranje-Nassau)\n2 TYPE Koning der Nederlanden\n2 DATE FROM 16 MAR 1815 TO 21 JUL 1831\n2 NOTE Verenigd Koninkrijk der Nederlanden (1815 - 1830)",
+            "1 EVEN Willem I (Willem Frederik van Oranje-Nassau)\n2 TYPE Koning der Nederlanden\n2 DATE FROM 21 JUL 1831 TO 07 OKT 1840\n2 NOTE Koninkrijk der Nederlanden (vanaf 1830)",
+            "1 EVEN Willem II (Willem Frederik George Lodewijk van Oranje-Nassau)\n2 TYPE Koning der Nederlanden\n2 DATE FROM 07 OKT 1840 TO 17 MAR 1849\n2 NOTE Koninkrijk der Nederlanden",
+            "1 EVEN Willem III (Willem Alexander Paul Frederik Lodewijk van Oranje-Nassau)\n2 TYPE Koning der Nederlanden\n2 DATE FROM 17 MAR 1849 TO 23 NOV 1890\n2 NOTE Koninkrijk der Nederlanden",
+            "1 EVEN Wilhelmina (Wilhelmina Helena Pauline Maria van Oranje-Nassau)\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 23 NOV 1890 TO 04 SEP 1948\n2 NOTE Koninkrijk der Nederlanden",
+            "1 EVEN Juliana (Juliana Louise Emma Marie Wilhelmina van Oranje-Nassau)\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 04 SEP 1948 TO 30 APR 1980\n2 NOTE Koninkrijk der Nederlanden",
+            "1 EVEN Beatrix (Beatrix Wilhelmina Armgard van Oranje-Nassau)\n2 TYPE Koningin der Nederlanden\n2 DATE FROM 30 APR 1980 TO 30 APR 2013\n2 NOTE Koninkrijk der Nederlanden",
+            "1 EVEN Willem-Alexander (Willem-Alexander Claus George Ferdinand van Oranje-Nassau)\n2 TYPE Koning der Nederlanden\n2 DATE FROM 30 APR 2013\n2 NOTE Koninkrijk der Nederlanden",
         ]);
     }
 }
