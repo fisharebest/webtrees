@@ -95,7 +95,7 @@ class LoginPage implements RequestHandlerInterface
         }
 
         if (Site::getPreference('USE_REGISTRATION_MODULE') === '1') {
-            $welcome .= ' ' . I18N::translate('You can apply for an account using the link below.');
+            $welcome .= '<br>' . I18N::translate('You can apply for an account using the link below.');
         }
 
         $can_register = Site::getPreference('USE_REGISTRATION_MODULE') === '1';
