@@ -1,0 +1,21 @@
+{
+  "domainName": "google.art",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2006-04-03T13:38:02Z",
+  "expirationDate": "2018-04-03T13:38:02Z",
+  "updatedDate": "2017-06-12T14:11:26Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "",
+  "registrar": "MarkMonitor Inc."
+}

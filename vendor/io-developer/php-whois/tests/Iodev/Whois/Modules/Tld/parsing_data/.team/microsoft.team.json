@@ -1,0 +1,21 @@
+{
+  "domainName": "microsoft.team",
+  "whoisServer": "whois.comlaude.com",
+  "nameServers": [
+    "ns1-09.azure-dns.com",
+    "ns2-09.azure-dns.net",
+    "ns3-09.azure-dns.org",
+    "ns4-09.azure-dns.info"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2015-07-21T16:32:16Z",
+  "expirationDate": "2020-07-21T16:32:16Z",
+  "updatedDate": "2019-07-03T15:18:49Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Microsoft Corporation",
+  "registrar": "Nom-iq Ltd. dba COM LAUDE"
+}

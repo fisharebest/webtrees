@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.band",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-09-22T18:28:27Z",
+  "expirationDate": "2024-09-22T18:28:27Z",
+  "updatedDate": "2019-03-08T19:04:19Z",
+  "nameServers": [
+    "ns-45.awsdns-05.com",
+    "ns-1154.awsdns-16.org",
+    "ns-892.awsdns-47.net",
+    "ns-2046.awsdns-63.co.uk"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

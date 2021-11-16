@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.group",
+  "whoisServer": "whois.donuts.co",
+  "nameServers": [
+    "ns-1501.awsdns-59.org",
+    "ns-380.awsdns-47.com",
+    "ns-811.awsdns-37.net",
+    "ns-1597.awsdns-07.co.uk"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2014-07-28T22:03:02Z",
+  "expirationDate": "2020-07-28T22:03:02Z",
+  "updatedDate": "2019-09-11T22:03:41Z",
+  "states": [
+    "servertransferprohibited"
+  ],
+  "owner": "Donuts Inc.",
+  "registrar": "Donuts Internal (9999)"
+}

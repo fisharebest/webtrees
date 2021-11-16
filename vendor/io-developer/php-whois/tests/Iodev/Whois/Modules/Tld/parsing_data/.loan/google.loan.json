@@ -1,0 +1,17 @@
+{
+  "domainName": "google.loan",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [],
+  "dnssec": "unsigned",
+  "creationDate": "2015-08-03T15:04:16Z",
+  "expirationDate": "2021-08-02T23:59:59Z",
+  "updatedDate": "2020-07-06T09:35:02Z",
+  "states": [
+    "clientupdateprohibited",
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "inactive"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor, Inc."
+}

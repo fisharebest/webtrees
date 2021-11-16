@@ -1,0 +1,16 @@
+{
+  "domainName": "google.koeln",
+  "whoisServer": "",
+  "nameServers": [],
+  "dnssec": "unsigned",
+  "creationDate": "2014-07-07T16:17:23Z",
+  "expirationDate": "2020-07-07T16:17:23Z",
+  "updatedDate": "2019-06-05T10:31:55Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor Inc."
+}

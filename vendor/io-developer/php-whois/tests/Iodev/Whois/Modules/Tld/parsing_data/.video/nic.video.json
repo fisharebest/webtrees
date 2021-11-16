@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.video",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-11-18T18:02:51Z",
+  "expirationDate": "2024-11-18T18:02:51Z",
+  "updatedDate": "2019-03-08T18:50:32Z",
+  "nameServers": [
+    "ns-1701.awsdns-20.co.uk",
+    "ns-1173.awsdns-18.org",
+    "ns-115.awsdns-14.com",
+    "ns-968.awsdns-57.net"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

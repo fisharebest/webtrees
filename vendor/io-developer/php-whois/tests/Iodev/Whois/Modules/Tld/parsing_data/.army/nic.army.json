@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.army",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-03-18T21:37:27Z",
+  "expirationDate": "2024-03-18T21:37:27Z",
+  "updatedDate": "2019-03-08T18:55:54Z",
+  "nameServers": [
+    "ns-1239.awsdns-26.org",
+    "ns-1718.awsdns-22.co.uk",
+    "ns-468.awsdns-58.com",
+    "ns-566.awsdns-06.net"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

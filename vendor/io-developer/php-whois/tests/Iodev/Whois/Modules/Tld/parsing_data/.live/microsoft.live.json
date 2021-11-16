@@ -1,0 +1,21 @@
+{
+  "domainName": "microsoft.live",
+  "whoisServer": "whois.comlaude.com",
+  "nameServers": [
+    "ns1-05.azure-dns.com",
+    "ns2-05.azure-dns.net",
+    "ns3-05.azure-dns.org",
+    "ns4-05.azure-dns.info"
+  ],
+  "dnssec": "Unsigned Delegation",
+  "creationDate": "2015-10-19T10:32:17Z",
+  "expirationDate": "2020-10-19T00:00:00Z",
+  "updatedDate": "2019-09-23T09:11:04Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Microsoft Corporation",
+  "registrar": "NOM-IQ Ltd dba Com Laude"
+}

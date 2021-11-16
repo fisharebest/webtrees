@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.mortgage",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-05-23T17:55:43Z",
+  "expirationDate": "2024-05-23T17:55:43Z",
+  "updatedDate": "2019-03-08T19:45:49Z",
+  "nameServers": [
+    "ns-1359.awsdns-41.org",
+    "ns-688.awsdns-22.net",
+    "ns-217.awsdns-27.com",
+    "ns-1709.awsdns-21.co.uk"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

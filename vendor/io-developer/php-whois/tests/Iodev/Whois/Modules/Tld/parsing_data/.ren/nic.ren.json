@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.ren",
+  "whoisServer": "whois.gtld.knet.cn",
+  "nameServers": [
+    "cns1.zdnscloud.net",
+    "dns1.zdnscloud.info",
+    "ins1.zdnscloud.com",
+    "vns1.zdnscloud.biz"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2014-03-28T10:11:06Z",
+  "expirationDate": "2025-03-28T10:11:06Z",
+  "updatedDate": "2019-10-18T01:22:03Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "ZDNS",
+  "registrar": "zdns"
+}

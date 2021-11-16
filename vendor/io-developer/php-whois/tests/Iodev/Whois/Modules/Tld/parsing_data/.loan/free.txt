@@ -1,0 +1,23 @@
+No Data Found
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2020-10-07T07:35:42Z <<<
+The above WHOIS results have been redacted to remove potential personal data. The full WHOIS output may be available to individuals and organisations with a legitimate interest in accessing this data not outweighed by the fundamental privacy rights of the data subject. To find out more, or to make a request for access, please visit: RDDSrequest.nic.loan.
+For more information on Whois status codes, please visit https://icann.org/epp
+
+The WHOIS service offered by the Registry Operator, and the access to the records in the Registry Operator WHOIS database, are provided for information purposes only and is designed (i) to assist persons in determining whether a specific domain name registration record is available or not in the Registry Operator database and (ii) to obtain information related to the registration records of existing domain names.  The Registry Operator cannot, under any circumstances, be held liable in such instances where the stored information would prove to be wrong, incomplete, or not accurate in any sense.
+By submitting a WHOIS query, you, the user, agree that you will not use this data:
+(i)     to allow, enable or otherwise support in any way the transmission of unsolicited, commercial advertising or other solicitations whether via direct mail, email, telephone or otherwise;
+(ii)    to enable high volume, automated, electronic processes that apply to the registry (or its systems);
+(iii)   for target advertising in any possible way;
+(iv)    to cause nuisance in any possible way to the registrants by sending (whether by automated, electronic processes capable of enabling high volumes or other possible means) messages to them;
+(v)     to violate any law, rule, regulation or statute; and/or
+(vi)    in contravention of any applicable data and privacy protection acts.
+
+Without prejudice to the above, it is explicitly forbidden to extract, copy and/or use or re-utilize in any form and by any means (electronically or not) the whole or a quantitatively or qualitatively substantial part of the contents of the WHOIS database without prior and explicit permission by Registry Operator, nor in any attempt hereof, or to apply automated, electronic processes to Registry Operator (or its systems or their designated third party Registry Service Provider's systems).
+
+You agree that any reproduction and/or transmission of data for commercial purposes will always be considered as the extraction of a substantial part of the content of the WHOIS database. By utilizing this website and/or submitting a query you agree to abide by this policy and accept that Registry Operator can take measures to limit the use of its WHOIS services in order to protect the privacy of its registrants or the integrity of the database.
+
+We reserve the right to make changes to these Terms and Conditions at any time without prior notice to you. It is your responsibility to review these Terms and Conditions each time you access or use the WHOIS service and to familiarise yourself with any changes. If you do not agree to the changes implemented by Registry Operator, your sole and exclusive remedy is to terminate your use of the WHOIS service.
+
+By executing a query, in any manner whatsoever, you agree to abide by these Terms and Conditions.
+NOTE: FAILURE TO LOCATE A RECORD IN THE WHOIS DATABASE IS NOT INDICATIVE OF THE AVAILABILITY OF A DOMAIN NAME.

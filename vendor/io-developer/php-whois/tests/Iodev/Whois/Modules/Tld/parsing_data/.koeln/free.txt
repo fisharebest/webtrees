@@ -1,0 +1,24 @@
+Available
+Domain: free.koeln
+
+>>> Last update of WHOIS database: 2020-05-15T09:09:41Z <<<
+
+
+% The RyCE-whois database is protected through
+% the Austrian Copyright-Law. The query of individual
+% domains is allowed to the internet community
+% free of charge until further notice. All rights,
+% in particular the right of duplication, circulation
+% or usage, belong exclusively to RyCE GmbH,
+% unless you have an explicit written agreement
+% with RyCE GmbH.
+%
+%
+%
+% Die RyCE-Whois-Datenbank ist eine urheberrechtlich
+% geschützte Datenbank. Die Abfrage einzelner Domains
+% wird der Internet-Community bis auf weiteres
+% kostenlos ermöglicht. Das alleinige Recht auf
+% Vervielfältigung, Verbreitung, Übermittlung oder
+% öffentliche Wiedergabe der Datenbank oder Teile
+% derselben liegt bei RyCE GmbH.

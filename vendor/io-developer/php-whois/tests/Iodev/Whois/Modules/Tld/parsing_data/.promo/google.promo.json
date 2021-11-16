@@ -1,0 +1,21 @@
+{
+  "domainName": "google.promo",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns3.googledomains.com",
+    "ns1.googledomains.com",
+    "ns2.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "creationDate": "2016-04-26T15:59:09Z",
+  "expirationDate": "2021-04-26T15:59:09Z",
+  "updatedDate": "2020-03-25T09:40:04Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "dnssec": "unsigned",
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor Inc."
+}

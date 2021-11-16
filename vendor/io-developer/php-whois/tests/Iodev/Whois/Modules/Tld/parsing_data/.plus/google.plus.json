@@ -1,0 +1,21 @@
+{
+  "domainName": "google.plus",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2015-06-30T15:42:06Z",
+  "expirationDate": "2020-06-30T15:42:06Z",
+  "updatedDate": "2019-06-03T09:44:53Z",
+  "states": [
+    "clientupdateprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor Inc."
+}

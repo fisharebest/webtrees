@@ -1,0 +1,21 @@
+{
+  "domainName": "microsoft.studio",
+  "whoisServer": "whois.comlaude.com",
+  "nameServers": [
+    "ns4-07.azure-dns.info",
+    "ns3-07.azure-dns.org",
+    "ns2-07.azure-dns.net",
+    "ns1-07.azure-dns.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2015-10-19T10:37:25Z",
+  "expirationDate": "2021-10-19T10:37:25Z",
+  "updatedDate": "2020-09-24T23:06:20Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Microsoft Corporation",
+  "registrar": "Nom-iq Ltd. dba COM LAUDE"
+}

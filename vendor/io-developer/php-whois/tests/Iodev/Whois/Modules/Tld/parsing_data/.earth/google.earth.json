@@ -1,0 +1,21 @@
+{
+  "domainName": "google.earth",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2015-10-07T21:14:04Z",
+  "expirationDate": "2020-10-06T23:59:59Z",
+  "updatedDate": "2019-09-09T09:37:20Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clientupdateprohibited",
+    "clienttransferprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor, Inc."
+}

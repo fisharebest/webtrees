@@ -1,0 +1,21 @@
+on: [push, pull_request]
+
+jobs:
+
+  php-intl:
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['7.2', '7.3', '7.4', '8.0']
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - run: php${{ matrix.php-version }} -v
+      - run: php${{ matrix.php-version }} -m
+      - run: composer -V
+      - run: composer install
+      - run: php${{ matrix.php-version }} vendor/bin/phpunit --bootstrap tests/bootstrap.php tests

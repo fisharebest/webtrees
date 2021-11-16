@@ -1,0 +1,55 @@
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.10.1
+% Timestamp: Sun Nov 19 00:45:17 2017
+
+domain:       google.it.ao
+registrant:   ND0014-REGITAO
+admin-c:      ND0014-REGITAO
+nsset:        REGITAO:NSSET:1381BCF2112873EF034CD18C5ABB873963F0E3AF
+registrar:    REGITAO
+registered:   07.11.2008 22:02:11
+expire:       02.05.2018
+
+contact:      ND0014-REGITAO
+org:          Google Inc
+name:         Google Inc
+address:      1600 Amphitheatre Parkway
+address:      Mountain View
+address:      94043
+address:      CA
+address:      US
+phone:        +1.6502530000
+fax-no:       +1.6506188571
+e-mail:       ccops@markmonitor.com
+registrar:    REGITAO
+created:      07.11.2008 22:02:11
+changed:      19.02.2013 17:07:21
+
+nsset:        REGITAO:NSSET:1381BCF2112873EF034CD18C5ABB873963F0E3AF
+nserver:      ns1.google.com 
+nserver:      ns2.google.com 
+nserver:      ns3.google.com 
+nserver:      ns4.google.com 
+tech-c:       MS0003-REGITAO
+registrar:    REGITAO
+created:      07.11.2008 22:02:11
+changed:      26.04.2010 20:16:20
+
+contact:      MS0003-REGITAO
+org:          MarkMonitor Inc.
+name:         MarkMonitor Inc.
+address:      3540 East Longwing Lane
+address:      Suite 300
+address:      Meridian
+address:      83646
+address:      Idaho
+address:      US
+phone:        +1.2083895740
+fax-no:       +1.2083895771
+e-mail:       ccops@markmonitor.com
+registrar:    REGITAO
+created:      04.02.2010 19:36:21
+changed:      25.04.2017 21:04:39
+
+

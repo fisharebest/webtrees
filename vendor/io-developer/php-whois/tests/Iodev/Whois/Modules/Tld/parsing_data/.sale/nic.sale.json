@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.sale",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-11-18T18:02:36Z",
+  "expirationDate": "2024-11-18T18:02:36Z",
+  "updatedDate": "2019-03-08T19:06:26Z",
+  "nameServers": [
+    "ns-1245.awsdns-27.org",
+    "ns-143.awsdns-17.com",
+    "ns-1591.awsdns-06.co.uk",
+    "ns-758.awsdns-30.net"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

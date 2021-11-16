@@ -1641,7 +1641,7 @@ class Connection implements DriverConnection
      *
      * @param string|null $name Name of the sequence object from which the ID should be returned.
      *
-     * @return string A string representation of the last inserted ID.
+     * @return string|int|false A string representation of the last inserted ID.
      */
     public function lastInsertId($name = null)
     {
@@ -2083,9 +2083,9 @@ class Connection implements DriverConnection
      * @param mixed                $value The value to bind.
      * @param int|string|Type|null $type  The type to bind (PDO or DBAL).
      *
-     * @return mixed[] [0] => the (escaped) value, [1] => the binding type.
+     * @return array{mixed, int} [0] => the (escaped) value, [1] => the binding type.
      */
-    private function getBindingInfo($value, $type)
+    private function getBindingInfo($value, $type): array
     {
         if (is_string($type)) {
             $type = Type::getType($type);
@@ -2095,7 +2095,7 @@ class Connection implements DriverConnection
             $value       = $type->convertToDatabaseValue($value, $this->getDatabasePlatform());
             $bindingType = $type->getBindingType();
         } else {
-            $bindingType = $type;
+            $bindingType = $type ?? ParameterType::STRING;
         }
 
         return [$value, $bindingType];

@@ -1,0 +1,21 @@
+{
+  "domainName": "google.cologne",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.googledomains.com",
+    "ns2.googledomains.com",
+    "ns3.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2014-06-11T22:20:43Z",
+  "expirationDate": "2021-06-11T22:20:43Z",
+  "updatedDate": "2020-05-10T10:43:16Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor Inc."
+}

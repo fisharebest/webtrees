@@ -569,7 +569,7 @@ var_export((string) Factory::parseAddressString('127.0.0.010'));
 var_export((string) Factory::parseAddressString('127.0.0.010', ParseStringFlag::IPV4_MAYBE_NON_DECIMAL));
 ```
 
-### Accepting IPv4 addresses in nod-quad-dotted notation
+### Accepting IPv4 addresses in not-quad-dotted notation
 
 IPv4 addresses are usually expressed with 4 numbers, for example as `192.168.0.1`.
 

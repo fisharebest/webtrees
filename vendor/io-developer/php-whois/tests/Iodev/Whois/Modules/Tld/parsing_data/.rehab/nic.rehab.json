@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.rehab",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-03-18T21:37:59Z",
+  "expirationDate": "2024-03-18T21:37:59Z",
+  "updatedDate": "2019-03-08T19:20:17Z",
+  "nameServers": [
+    "ns-20.awsdns-02.com",
+    "ns-619.awsdns-13.net",
+    "ns-1935.awsdns-49.co.uk",
+    "ns-1341.awsdns-39.org"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

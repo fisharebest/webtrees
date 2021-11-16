@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.gives",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-03-18T21:37:45Z",
+  "expirationDate": "2024-03-18T21:37:45Z",
+  "updatedDate": "2019-03-08T19:26:29Z",
+  "nameServers": [
+    "ns-1626.awsdns-11.co.uk",
+    "ns-423.awsdns-52.com",
+    "ns-1396.awsdns-46.org",
+    "ns-870.awsdns-44.net"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

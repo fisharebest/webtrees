@@ -1,0 +1,22 @@
+The queried object does not exist: DOMAIN NOT FOUND
+
+>>> Last update of WHOIS database: 2020-03-12T08:25:32.0Z <<<
+
+This data is provided by CAM-REGISTRY for information purposes only in
+accordance with the CAM-REGISTRY TLD Privacy Policy. It is intended to
+assist persons to obtain information about or related to domain name
+ registration records. CAM-REGISTRY does not guarantee its accuracy.
+By submitting this query, you agree to abide as follows:
+
+You agree to use this data only for lawful purposes and that under no
+circumstances will you permit this data to
+1) allow, enable, or otherwise support the transmission of mass
+    unsolicited, commercial advertising or solicitations via e-mail,
+    telephone or fax (spam); nor
+2) enable high volume, automated, electronic processes to the systems
+    of CAM-REGISTRY or Registrars, except as reasonably required to
+    register new domain names or modify existing registrations; nor
+3) will you generate a database of registered domain names and
+    registrant data.
+
+These terms may be changed without prior notice.

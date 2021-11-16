@@ -1,0 +1,21 @@
+{
+  "domainName": "microsoft.tours",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1-07.azure-dns.com",
+    "ns2-07.azure-dns.net",
+    "ns3-07.azure-dns.org",
+    "ns4-07.azure-dns.info"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2015-06-30T08:41:58-0700",
+  "expirationDate": "2020-06-30T00:00:00-0700",
+  "updatedDate": "2019-05-29T02:35:23-0700",
+  "states": [
+    "clientupdateprohibited",
+    "clienttransferprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Microsoft Corporation",
+  "registrar": "MarkMonitor, Inc."
+}

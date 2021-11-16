@@ -1,0 +1,99 @@
+Domain Name: microsoft.live
+Registry Domain ID: 388504f270254e3ea5783099cdfda04e-DONUTS
+Registrar WHOIS Server: whois.comlaude.com
+Registrar URL: https://www.comlaude.com
+Updated Date: 2019-09-23T09:11:04Z
+Creation Date: 2015-10-19T10:32:17Z
+Registrar Registration Expiration Date: 2020-10-19T00:00:00Z
+Registrar: NOM-IQ Ltd dba Com Laude
+Registrar IANA ID: 470
+Domain Status: clientDeleteProhibited https://www.icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://www.icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://www.icann.org/epp#clientUpdateProhibited
+Registry Registrant ID: comlde042510
+Registrant Name: Domain Administrator
+Registrant Organization: Microsoft Corporation
+Registrant Street: One Microsoft Way
+Registrant City: Redmond
+Registrant State/Province: WA
+Registrant Postal Code: 98052
+Registrant Country: US
+Registrant Phone: +1.4258828080
+Registrant Phone Ext:
+Registrant Fax: +1.4259367329
+Registrant Fax Ext:
+Registrant Email: domains@microsoft.com
+Registry Admin ID: comlde042508
+Admin Name: Domain Administrator
+Admin Organization: Microsoft Corporation
+Admin Street: One Microsoft Way
+Admin City: Redmond
+Admin State/Province: WA
+Admin Postal Code: 98052
+Admin Country: US
+Admin Phone: +1.4258828080
+Admin Phone Ext:
+Admin Fax: +1.4259367329
+Admin Fax Ext:
+Admin Email: domains@microsoft.com
+Registry Tech ID: comlde042514
+Tech Name: MSN Hostmaster
+Tech Organization: Microsoft Corporation
+Tech Street: One Microsoft Way
+Tech City: Redmond
+Tech State/Province: WA
+Tech Postal Code: 98052
+Tech Country: US
+Tech Phone: +1.4258828080
+Tech Phone Ext:
+Tech Fax: +1.4259367329
+Tech Fax Ext:
+Tech Email: msnhst@microsoft.com
+Name Server: ns1-05.azure-dns.com
+Name Server: ns2-05.azure-dns.net
+Name Server: ns3-05.azure-dns.org
+Name Server: ns4-05.azure-dns.info
+DNSSEC: Unsigned Delegation
+Registrar Abuse Contact Email: abuse@comlaude.com
+Registrar Abuse Contact Phone: +44.2074218250
+URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 2020-03-17T08:21:09Z <<<
+
+For more information on Whois status codes, please visit https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en
+
+Please query the RDDS service of the Registrar of Record identified in this
+output for information on how to contact the Registrant, Admin, or Tech contact
+of the queried domain name.
+
+-------------------------------------------------------------------------------
+Com Laude registers, maintains and renews domain names around the world for
+leading intellectual property owners and the law firms that support them.
+If you have queries about this domain, you may contact us via our website
+at www.comlaude.com.
+-------------------------------------------------------------------------------
+
+The data in the Com Laude Whois database is provided to assist you in obtaining
+information about a domain name registration record.  Com Laude makes this
+information available "as is," and does not guarantee its accuracy.
+By submitting a WHOIS query, you agree that you will use this data only for
+lawful purposes and that, under no circumstances will you use this data to:
+
+(1) allow, enable, or otherwise support the transmission of mass unsolicited,
+commercial advertising or solicitations via e-mail (spam), telephone or fax; or
+(2) enable high volume, automated, electronic processes that that send queries
+or data to Com Laude or the systems of any Registry Operator or ICANN-Accredited
+registrar.  The compilation, repackaging, dissemination or other use of this
+data is expressly prohibited without the prior written consent of Com Laude.
+
+Com Laude reserves the right to modify these terms at any time. By submitting
+this query, you agree to abide by these terms. If you fail to abide by this
+policy, we may terminate your access to this WHOIS database.
+
+-------------------------------------------------------------------------------
+Com Laude protects intellectual property in the domain name system. Com Laude
+only registers domain names for legitimate rights owners. Should you have any
+queries about the legitimacy of this name or our work as a UK based, ICANN
+Accredited Registrar, contact us at:
+Com Laude, 28-30 Little Russell Street, London WC1A 2HN, UK.
+Com Laude is a business name of Nom IQ Ltd.
+-------------------------------------------------------------------------------

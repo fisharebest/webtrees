@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.attorney",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-05-23T17:54:28Z",
+  "expirationDate": "2024-05-23T17:54:28Z",
+  "updatedDate": "2019-03-08T18:57:51Z",
+  "nameServers": [
+    "ns-869.awsdns-44.net",
+    "ns-7.awsdns-00.com",
+    "ns-1665.awsdns-16.co.uk",
+    "ns-1344.awsdns-40.org"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

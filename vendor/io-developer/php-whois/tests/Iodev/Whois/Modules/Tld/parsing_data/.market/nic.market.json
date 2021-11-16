@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.market",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-05-23T17:55:33Z",
+  "expirationDate": "2024-05-23T17:55:33Z",
+  "updatedDate": "2019-03-08T19:39:07Z",
+  "nameServers": [
+    "ns-957.awsdns-55.net",
+    "ns-36.awsdns-04.com",
+    "ns-1706.awsdns-21.co.uk",
+    "ns-1268.awsdns-30.org"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

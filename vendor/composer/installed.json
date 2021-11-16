@@ -160,17 +160,17 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.13.4",
-            "version_normalized": "2.13.4.0",
+            "version": "2.13.5",
+            "version_normalized": "2.13.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "2411a55a2a628e6d8dd598388ab13474802c7b6e"
+                "reference": "d92ddb260547c2a7b650ff140f744eb6f395d8fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2411a55a2a628e6d8dd598388ab13474802c7b6e",
-                "reference": "2411a55a2a628e6d8dd598388ab13474802c7b6e",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/d92ddb260547c2a7b650ff140f744eb6f395d8fc",
+                "reference": "d92ddb260547c2a7b650ff140f744eb6f395d8fc",
                 "shasum": ""
             },
             "require": {
@@ -183,18 +183,18 @@
             "require-dev": {
                 "doctrine/coding-standard": "9.0.0",
                 "jetbrains/phpstorm-stubs": "2021.1",
-                "phpstan/phpstan": "0.12.99",
+                "phpstan/phpstan": "1.1.1",
                 "phpunit/phpunit": "^7.5.20|^8.5|9.5.10",
                 "psalm/plugin-phpunit": "0.16.1",
-                "squizlabs/php_codesniffer": "3.6.0",
+                "squizlabs/php_codesniffer": "3.6.1",
                 "symfony/cache": "^4.4",
                 "symfony/console": "^2.0.5|^3.0|^4.0|^5.0",
-                "vimeo/psalm": "4.10.0"
+                "vimeo/psalm": "4.12.0"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
             },
-            "time": "2021-10-02T15:59:26+00:00",
+            "time": "2021-11-11T16:27:36+00:00",
             "bin": [
                 "bin/doctrine-dbal"
             ],
@@ -252,7 +252,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/2.13.4"
+                "source": "https://github.com/doctrine/dbal/tree/2.13.5"
             },
             "funding": [
                 {
@@ -2037,17 +2037,17 @@
         },
         {
             "name": "mlocati/ip-lib",
-            "version": "1.17.0",
-            "version_normalized": "1.17.0.0",
+            "version": "1.17.1",
+            "version_normalized": "1.17.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mlocati/ip-lib.git",
-                "reference": "db9552c3460d5fa19a4c8183767fe89da7752a4e"
+                "reference": "28763c87f9a3e24ff4df9258ec4e8375d8fa6523"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mlocati/ip-lib/zipball/db9552c3460d5fa19a4c8183767fe89da7752a4e",
-                "reference": "db9552c3460d5fa19a4c8183767fe89da7752a4e",
+                "url": "https://api.github.com/repos/mlocati/ip-lib/zipball/28763c87f9a3e24ff4df9258ec4e8375d8fa6523",
+                "reference": "28763c87f9a3e24ff4df9258ec4e8375d8fa6523",
                 "shasum": ""
             },
             "require": {
@@ -2057,7 +2057,7 @@
                 "ext-pdo_sqlite": "*",
                 "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.5"
             },
-            "time": "2021-08-03T15:42:09+00:00",
+            "time": "2021-11-10T15:24:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -2095,7 +2095,7 @@
             ],
             "support": {
                 "issues": "https://github.com/mlocati/ip-lib/issues",
-                "source": "https://github.com/mlocati/ip-lib/tree/1.17.0"
+                "source": "https://github.com/mlocati/ip-lib/tree/1.17.1"
             },
             "funding": [
                 {
@@ -2111,17 +2111,17 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.53.1",
-            "version_normalized": "2.53.1.0",
+            "version": "2.54.0",
+            "version_normalized": "2.54.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "f4655858a784988f880c1b8c7feabbf02dfdf045"
+                "reference": "eed83939f1aed3eee517d03a33f5ec587ac529b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/f4655858a784988f880c1b8c7feabbf02dfdf045",
-                "reference": "f4655858a784988f880c1b8c7feabbf02dfdf045",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/eed83939f1aed3eee517d03a33f5ec587ac529b5",
+                "reference": "eed83939f1aed3eee517d03a33f5ec587ac529b5",
                 "shasum": ""
             },
             "require": {
@@ -2132,6 +2132,7 @@
                 "symfony/translation": "^3.4 || ^4.0 || ^5.0"
             },
             "require-dev": {
+                "doctrine/dbal": "^2.0 || ^3.0",
                 "doctrine/orm": "^2.7",
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "kylekatarnls/multi-tester": "^2.0",
@@ -2141,7 +2142,7 @@
                 "phpunit/phpunit": "^7.5.20 || ^8.5.14",
                 "squizlabs/php_codesniffer": "^3.4"
             },
-            "time": "2021-09-06T09:29:23+00:00",
+            "time": "2021-11-01T21:22:20+00:00",
             "bin": [
                 "bin/carbon"
             ],

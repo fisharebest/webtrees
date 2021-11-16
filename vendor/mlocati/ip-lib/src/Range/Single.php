@@ -146,23 +146,6 @@ class Single extends AbstractRange
     /**
      * {@inheritdoc}
      *
-     * @see \IPLib\Range\RangeInterface::containsRange()
-     */
-    public function containsRange(RangeInterface $range)
-    {
-        $result = false;
-        if ($range->getAddressType() === $this->getAddressType()) {
-            if ($range->toString(false) === $this->toString(false)) {
-                $result = true;
-            }
-        }
-
-        return $result;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
      * @see \IPLib\Range\RangeInterface::getStartAddress()
      */
     public function getStartAddress()

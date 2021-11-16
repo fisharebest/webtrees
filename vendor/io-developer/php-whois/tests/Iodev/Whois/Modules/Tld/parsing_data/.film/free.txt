@@ -1,0 +1,17 @@
+No Data Found
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2020-03-12T08:47:14Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+The above WHOIS results have been redacted to remove potential personal data. The full WHOIS output may be available to individuals and organisations with a legitimate interest in accessing this data not outweighed by the fundamental privacy rights of the data subject. To find out more, or to make a request for access, please visit: RDDSrequest.nic.film.
+
+AusRegistry International ACN 103 729 620 as the designated representative of Motion Picture Domain Registry Pty Ltd (we, us, our), provides the WHOIS Service (the Service) so that a user (you, your) may look up certain information in relation to domain names that we hold in our database. Your use of the Service is subject to our policies.
+
+The information provided by the Service, is for informational purposes only, is 'as is' and we make no guarantee of its accuracy.
+
+You agree that by your use of the Service you will not use the information provided by us in a way which is: (i) inconsistent with any applicable laws; (ii) inconsistent with any policy issued by us; (iii) to generate, distribute, or facilitate unsolicited mass email, promotions, advertisings or other solicitations; or (iv) to enable high volume, automated, electronic processes.
+
+You acknowledge that: (i) a response from the Service indicating no match was found, does not guarantee that it is able to be registered; (ii) we may restrict, suspend or terminate your access to the Service at any time; and (iii) the copying, compilation, repackaging, dissemination or other use of the information provided by the Service is not permitted, without our express written consent.
+
+We may discontinue or amend any part or the whole of these Terms of Service from time to time at our absolute discretion.

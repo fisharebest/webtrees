@@ -1,0 +1,97 @@
+Domain Name: google.cologne
+Registry Domain ID: DOM_IO8-COLOGNE
+Registrar WHOIS Server: None
+Registrar URL:
+Updated Date: 2020-05-10T10:43:16Z
+Creation Date: 2014-06-11T22:20:43Z
+Registry Expiry Date: 2021-06-11T22:20:43Z
+Registrar Registration Expiration Date: 2021-06-11T22:20:43Z
+Registrar: MarkMonitor Inc.
+Registrar IANA ID: 292
+Registrar Abuse Contact Email: registry.admin@markmonitor.com
+Registrar Abuse Contact Phone: +1.2083895740
+Reseller:
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Registry Registrant ID: REDACTED
+Registrant Name: REDACTED
+Registrant Organization: Google LLC
+Registrant Street: REDACTED
+Registrant City: REDACTED
+Registrant State/Province: REDACTED
+Registrant Postal Code: REDACTED
+Registrant Country: US
+Registrant Phone: REDACTED
+Registrant Phone Ext: REDACTED
+Registrant Fax: REDACTED
+Registrant Fax Ext: REDACTED
+Registrant Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Admin ID: REDACTED
+Admin Name: REDACTED
+Admin Organization: REDACTED
+Admin Street: REDACTED
+Admin City: REDACTED
+Admin State/Province: REDACTED
+Admin Postal Code: REDACTED
+Admin Country: REDACTED
+Admin Phone: REDACTED
+Admin Phone Ext: REDACTED
+Admin Fax: REDACTED
+Admin Fax Ext: REDACTED
+Admin Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Tech ID: REDACTED
+Tech Name: REDACTED
+Tech Organization: REDACTED
+Tech Street: REDACTED
+Tech City: REDACTED
+Tech State/Province: REDACTED
+Tech Postal Code: REDACTED
+Tech Country: REDACTED
+Tech Phone: REDACTED
+Tech Phone Ext: REDACTED
+Tech Fax: REDACTED
+Tech Fax Ext: REDACTED
+Tech Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Billing ID: REDACTED
+Billing Name: REDACTED
+Billing Organization: REDACTED
+Billing Street: REDACTED
+Billing City: REDACTED
+Billing State/Province: REDACTED
+Billing Postal Code: REDACTED
+Billing Country: REDACTED
+Billing Phone: REDACTED
+Billing Phone Ext: REDACTED
+Billing Fax: REDACTED
+Billing Fax Ext: REDACTED
+Billing Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Name Server: ns3.googledomains.com
+Name Server: ns4.googledomains.com
+Name Server: ns2.googledomains.com
+Name Server: ns1.googledomains.com
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2020-05-15T09:02:24Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+
+% The RyCE-whois database is protected through
+% the Austrian Copyright-Law. The query of individual
+% domains is allowed to the internet community
+% free of charge until further notice. All rights,
+% in particular the right of duplication, circulation
+% or usage, belong exclusively to RyCE GmbH,
+% unless you have an explicit written agreement
+% with RyCE GmbH.
+%
+%
+%
+% Die RyCE-Whois-Datenbank ist eine urheberrechtlich
+% geschützte Datenbank. Die Abfrage einzelner Domains
+% wird der Internet-Community bis auf weiteres
+% kostenlos ermöglicht. Das alleinige Recht auf
+% Vervielfältigung, Verbreitung, Übermittlung oder
+% öffentliche Wiedergabe der Datenbank oder Teile
+% derselben liegt bei RyCE GmbH.

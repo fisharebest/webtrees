@@ -1,0 +1,21 @@
+{
+  "domainName": "google.gay",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.googledomains.com",
+    "ns2.googledomains.com",
+    "ns3.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2020-02-11T15:41:12.0Z",
+  "expirationDate": "2021-02-11T23:59:59.0Z",
+  "updatedDate": "2020-03-07T02:08:32.0Z",
+  "states": [
+    "clienttransferprohibited",
+    "clientupdateprohibited",
+    "clientdeleteprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor, Inc (TLDs)"
+}

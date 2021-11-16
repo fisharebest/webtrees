@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.navy",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-03-18T21:37:53Z",
+  "expirationDate": "2024-03-18T21:37:53Z",
+  "updatedDate": "2019-03-08T19:44:23Z",
+  "nameServers": [
+    "ns-462.awsdns-57.com",
+    "ns-1148.awsdns-15.org",
+    "ns-995.awsdns-60.net",
+    "ns-1542.awsdns-00.co.uk"
+  ],
+  "states": [
+    "ok"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

@@ -1,0 +1,19 @@
+{
+  "domainName": "microsoft.jewelry",
+  "whoisServer": "www.whois.corporatedomains.com",
+  "nameServers": [
+    "ns4-03.azure-dns.info",
+    "ns1-03.azure-dns.com",
+    "ns3-03.azure-dns.org",
+    "ns2-03.azure-dns.net"
+  ],
+  "creationDate": "2015-07-21T16:32:23Z",
+  "expirationDate": "2021-07-21T16:32:23Z",
+  "updatedDate": "2020-07-14T05:00:49Z",
+  "states": [
+    "clienttransferprohibited"
+  ],
+  "dnssec": "unsigned",
+  "owner": "Microsoft Corporation",
+  "registrar": "CSC Corporate Domains, Inc."
+}

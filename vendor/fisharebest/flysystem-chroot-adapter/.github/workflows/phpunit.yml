@@ -1,0 +1,38 @@
+name: PHPUNIT
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-version: ['7.3', '7.4', '8.0']
+
+    name: Testing PHP ${{ matrix.php-version }} on ${{ matrix.operating-system }}
+
+    runs-on: ${{ matrix.operating-system }}
+
+    steps:
+      - name: SETUP-PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: json,fileinfo
+          coverage: pcov
+
+      - name: CHECKOUT
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: COMPOSER
+        uses: php-actions/composer@v5
+        with:
+          php_version: ${{ matrix.php-version }}
+
+      - name: PHPUNIT
+        uses: php-actions/phpunit@v2
+        with:
+          php_version: ${{ matrix.php-version }}
+

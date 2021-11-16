@@ -1,0 +1,69 @@
+Domain Name: nic.ren
+Registry Domain ID: D20140328G10001G_08728625-ren
+Registrar WHOIS Server: whois.gtld.knet.cn
+Registrar URL: http://www.zdns.cn/
+Updated Date: 2019-10-18T01:22:03Z
+Creation Date: 2014-03-28T10:11:06Z
+Registry Expiry Date: 2025-03-28T10:11:06Z
+Registrar: zdns
+Registrar IANA ID: 1723
+Registrar Abuse Contact Email: tech-support@zdns.cn
+Registrar Abuse Contact Phone: +86.01058813521
+Domain Status: ok https://icann.org/epp#OK
+Registry Registrant ID:
+Registrant Name:
+Registrant Organization: ZDNS
+Registrant Street:
+Registrant City:
+Registrant State/Province: BeiJing
+Registrant Postal Code:
+Registrant Country: CN
+Registrant Phone:
+Registrant Phone Ext:
+Registrant Fax:
+Registrant Fax Ext:
+Registrant Email: Please query the RDDS service of the Registrar of Record  identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Admin ID:
+Admin Name:
+Admin Organization:
+Admin Street:
+Admin City:
+Admin State/Province:
+Admin Postal Code:
+Admin Country:
+Admin Phone:
+Admin Phone Ext:
+Admin Fax:
+Admin Fax Ext:
+Admin Email: Please query the RDDS service of the Registrar of Record  identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Registry Tech ID:
+Tech Name:
+Tech Organization:
+Tech Street:
+Tech City:
+Tech State/Province:
+Tech Postal Code:
+Tech Country:
+Tech Phone:
+Tech Phone Ext:
+Tech Fax:
+Tech Fax Ext:
+Tech Email: Please query the RDDS service of the Registrar of Record  identified in this output for information on how to contact the Registrant, Admin, or Tech contact of the queried domain name.
+Name Server: cns1.zdnscloud.net
+Name Server: dns1.zdnscloud.info
+Name Server: ins1.zdnscloud.com
+Name Server: vns1.zdnscloud.biz
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2020-05-06T07:27:42Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: The information displayed in this record is that contained in .ren Whois database. While believed by Renren Inc. to be reliable, it is here provided on an as is base with no guarantee or warranties regarding its accuracy and completeness by Renren Inc.. This data does not necessarily reflect the actual status of the domain name you queried just now. The information above is provided for the sole purpose of assisting you in obtaining information about domain name registration records. Any use of this data for any other purpose is strictly forbidden without prior written permission of Renren Inc. By submitting an inquiry, you agree to these terms of usage and limitations of warranty.

@@ -1,0 +1,17 @@
+{
+  "domainName": "xn--ppettider-z7a.se",
+  "whoisServer": "",
+  "nameServers": [
+    "ns01.one.com",
+    "ns02.one.com"
+  ],
+  "dnssec": "signed delegation",
+  "creationDate": "2003-11-07T00:00:00",
+  "expirationDate": "2021-11-07T00:00:00",
+  "updatedDate": "2020-11-05T00:00:00",
+  "states": [
+    "ok"
+  ],
+  "owner": "(not shown)",
+  "registrar": "One.com"
+}

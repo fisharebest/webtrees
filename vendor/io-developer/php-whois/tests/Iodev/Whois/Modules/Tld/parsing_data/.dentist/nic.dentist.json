@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.dentist",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-05-23T17:55:11Z",
+  "expirationDate": "2024-05-23T17:55:11Z",
+  "updatedDate": "2019-03-08T19:16:22Z",
+  "nameServers": [
+    "ns-1293.awsdns-33.org",
+    "ns-994.awsdns-60.net",
+    "ns-1600.awsdns-08.co.uk",
+    "ns-376.awsdns-47.com"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}

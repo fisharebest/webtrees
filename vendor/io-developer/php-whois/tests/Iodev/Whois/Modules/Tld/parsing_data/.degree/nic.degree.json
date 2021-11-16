@@ -1,0 +1,19 @@
+{
+  "domainName": "nic.degree",
+  "whoisServer": "whois.donuts.co",
+  "creationDate": "2014-05-23T17:54:57Z",
+  "expirationDate": "2024-05-23T17:54:57Z",
+  "updatedDate": "2019-03-08T19:10:59Z",
+  "nameServers": [
+    "ns-75.awsdns-09.com",
+    "ns-1119.awsdns-11.org",
+    "ns-945.awsdns-54.net",
+    "ns-1584.awsdns-06.co.uk"
+  ],
+  "states": [
+    "servertransferprohibited"
+  ],
+  "registrar": "Donuts Internal (9999)",
+  "owner": "United TLD Holdco Ltd.",
+  "dnssec": "unsigned"
+}
