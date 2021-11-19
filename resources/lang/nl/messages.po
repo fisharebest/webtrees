@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-10-29 15:57+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-11-21 19:05+0000\nLast-Translator: Carmen <carmen@justcarmen.nl>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -4416,7 +4416,7 @@ msgstr "Verantwoordelijke"
 #: resources/views/admin/data-fix-page.phtml:70
 #: resources/views/admin/data-fix-select.phtml:29
 msgid "Data fix"
-msgstr "Gegevens correctie"
+msgstr "Gegevenscorrectie"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:68
 #: app/Http/RequestHandlers/DataFixPage.php:90
@@ -4426,11 +4426,11 @@ msgstr "Gegevens correctie"
 #: resources/views/admin/data-fix-page.phtml:24
 #: resources/views/admin/trees.phtml:149
 msgid "Data fixes"
-msgstr "Gegevens correcties"
+msgstr "Gegevenscorrecties"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr "Voor gegevens correcties zijn veel langdurige berekeningen nodig, het is daarom niet mogelijk om een lijst met de te corrigeren gegevens te genereren."
+msgstr "Voor gegevenscorrecties zijn veel langdurige berekeningen nodig, het is daarom niet mogelijk om een lijst met de te corrigeren gegevens te genereren."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
