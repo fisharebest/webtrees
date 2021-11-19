@@ -29,12 +29,7 @@ use Illuminate\Support\Collection;
 
 <div class="d-flex mb-4">
     <h2 class="wt-page-title mx-auto">
-        <?= $record->fullName() ?>, <?= $record->lifespan() ?> <?= $age ?>
-        <?php foreach ($users as $user) : ?>
-            — <a href="<?= e(route(UserListPage::class, ['filter' => $user->email()])) ?>">
-                <?= e($user->userName()) ?>
-            </a>
-        <?php endforeach ?>
+        <?= view('individual-page-title', ['age' => $age, 'record' => $record, 'users' => $users]) ?>
     </h2>
 
     <?php if ($record->canEdit()) : ?>
