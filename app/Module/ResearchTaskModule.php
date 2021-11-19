@@ -61,6 +61,9 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
             'INDI:_TODO:DATE'     => new TransmissionDate(I18N::translate('Date')),
             'INDI:_TODO:_WT_USER' => new WebtreesUser(I18N::translate('User')),
         ]);
+
+        Registry::elementFactory()->make('FAM')->subtag('_TODO', '0:M');
+        Registry::elementFactory()->make('INDI')->subtag('_TODO', '0:M');
     }
 
     /**
