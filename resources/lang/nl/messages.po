@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-10-29 15:57+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
+"PO-Revision-Date: 2021-11-21 19:05+0000\n"
+"Last-Translator: Carmen <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
 "Language: nl\n"
@@ -4498,7 +4498,7 @@ msgstr "Verantwoordelijke"
 #: resources/views/admin/data-fix-page.phtml:70
 #: resources/views/admin/data-fix-select.phtml:29
 msgid "Data fix"
-msgstr "Gegevens correctie"
+msgstr "Gegevenscorrectie"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
@@ -4508,11 +4508,13 @@ msgstr "Gegevens correctie"
 #: resources/views/admin/data-fix-page.phtml:24
 #: resources/views/admin/trees.phtml:149
 msgid "Data fixes"
-msgstr "Gegevens correcties"
+msgstr "Gegevenscorrecties"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
-msgstr "Voor gegevens correcties zijn veel langdurige berekeningen nodig, het is daarom niet mogelijk om een lijst met de te corrigeren gegevens te genereren."
+msgstr ""
+"Voor gegevenscorrecties zijn veel langdurige berekeningen nodig, het is "
+"daarom niet mogelijk om een lijst met de te corrigeren gegevens te genereren."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
