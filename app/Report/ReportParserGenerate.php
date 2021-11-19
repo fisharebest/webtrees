@@ -1833,7 +1833,7 @@ class ReportParserGenerate extends ReportParserBase
         // Some filters/sorts can be applied using SQL, while others require PHP
         switch ($listname) {
             case 'pending':
-                $xrefs = DB::table('change')
+                $this->list = DB::table('change')
                     ->whereIn('change_id', function (Builder $query): void {
                         $query->select(new Expression('MAX(change_id)'))
                             ->from('change')
@@ -1841,13 +1841,12 @@ class ReportParserGenerate extends ReportParserBase
                             ->where('status', '=', 'pending')
                             ->groupBy(['xref']);
                     })
-                    ->pluck('xref');
-
-                $this->list = [];
-                foreach ($xrefs as $xref) {
-                    $this->list[] = Registry::gedcomRecordFactory()->make($xref, $this->tree);
-                }
+                    ->get()
+                    ->map(fn (object $row): ?GedcomRecord => Registry::gedcomRecordFactory()->make($row->xref, $this->tree, $row->new_gedcom ?: $row->old_gedcom))
+                    ->filter()
+                    ->all();
                 break;
+
             case 'individual':
                 $query = DB::table('individuals')
                     ->where('i_file', '=', $this->tree->id())
