@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Services\UserService;
 
+use function is_int;
+
 /**
  * Authentication.
  */
@@ -156,7 +158,9 @@ class Auth
      */
     public static function id(): ?int
     {
-        return Session::get('wt_user');
+        $wt_user = Session::get('wt_user');
+
+        return is_int($wt_user) ? $wt_user : null;
     }
 
     /**

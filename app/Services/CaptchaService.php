@@ -65,10 +65,10 @@ class CaptchaService
      */
     public function isRobot(ServerRequestInterface $request): bool
     {
-        $t = Session::pull('captcha-t', '');
-        $x = Session::pull('captcha-x', '');
-        $y = Session::pull('captcha-y', '');
-        $z = Session::pull('captcha-z', '');
+        $t = Session::pull('captcha-t');
+        $x = Session::pull('captcha-x');
+        $y = Session::pull('captcha-y');
+        $z = Session::pull('captcha-z');
 
         $value_x = $request->getParsedBody()[$x] ?? '';
         $value_y = $request->getParsedBody()[$y] ?? '';

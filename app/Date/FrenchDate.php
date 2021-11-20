@@ -32,8 +32,7 @@ class FrenchDate extends AbstractCalendarDate
     public const ESCAPE = '@#DFRENCH R@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_ABBREVIATIONS = [
-        ''     => 0,
+    protected const MONTH_TO_NUMBER = [
         'VEND' => 1,
         'BRUM' => 2,
         'FRIM' => 3,
@@ -47,6 +46,22 @@ class FrenchDate extends AbstractCalendarDate
         'THER' => 11,
         'FRUC' => 12,
         'COMP' => 13,
+    ];
+
+    protected const NUMBER_TO_MONTH = [
+        1 => 'VEND',
+        2 => 'BRUM',
+        3 => 'FRIM',
+        4 => 'NIVO',
+        5 => 'PLUV',
+        6 => 'VENT',
+        7 => 'GERM',
+        8 => 'FLOR',
+        9 => 'PRAI',
+        10 => 'MESS',
+        11 => 'THER',
+        12 => 'FRUC',
+        13 => 'COMP',
     ];
 
     private RomanNumeralsService $roman_numerals_service;

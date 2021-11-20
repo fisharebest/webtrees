@@ -34,7 +34,6 @@ use League\Flysystem\FilesystemOperator;
 use League\Flysystem\FilesystemReader;
 use League\Flysystem\StorageAttributes;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
 use RuntimeException;
 
 use function array_combine;
@@ -47,7 +46,6 @@ use function ini_get;
 use function intdiv;
 use function min;
 use function pathinfo;
-use function preg_replace;
 use function sha1;
 use function sort;
 use function str_contains;
@@ -86,8 +84,8 @@ class MediaFileService
      */
     public function maxUploadFilesize(): string
     {
-        $sizePostMax   = $this->parseIniFileSize(ini_get('post_max_size'));
-        $sizeUploadMax = $this->parseIniFileSize(ini_get('upload_max_filesize'));
+        $sizePostMax   = $this->parseIniFileSize((string) ini_get('post_max_size'));
+        $sizeUploadMax = $this->parseIniFileSize((string) ini_get('upload_max_filesize'));
 
         $bytes = min($sizePostMax, $sizeUploadMax);
         $kb    = intdiv($bytes + 1023, 1024);
@@ -243,10 +241,6 @@ class MediaFileService
      */
     public function createMediaFileGedcom(string $file, string $type, string $title, string $note): string
     {
-        // Tidy non-printing characters
-        $type  = trim(preg_replace('/\s+/', ' ', $type));
-        $title = trim(preg_replace('/\s+/', ' ', $title));
-
         $gedcom = '1 FILE ' . $file;
 
         $format = strtolower(pathinfo($file, PATHINFO_EXTENSION));
@@ -409,6 +403,6 @@ class MediaFileService
      */
     private function ignorePath(string $path): bool
     {
-        return array_intersect(static::IGNORE_FOLDERS, explode('/', $path)) !== [];
+        return array_intersect(self::IGNORE_FOLDERS, explode('/', $path)) !== [];
     }
 }

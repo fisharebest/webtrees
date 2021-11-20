@@ -31,8 +31,7 @@ class JalaliDate extends AbstractCalendarDate
     public const ESCAPE = '@#DJALALI@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_ABBREVIATIONS = [
-        ''      => 0,
+    protected const MONTH_TO_NUMBER = [
         'FARVA' => 1,
         'ORDIB' => 2,
         'KHORD' => 3,
@@ -45,6 +44,21 @@ class JalaliDate extends AbstractCalendarDate
         'DEY'   => 10,
         'BAHMA' => 11,
         'ESFAN' => 12,
+    ];
+
+    protected const NUMBER_TO_MONTH = [
+        1  => 'FARVA',
+        2  => 'ORDIB',
+        3  => 'KHORD',
+        4  => 'TIR',
+        5  => 'MORDA',
+        6  => 'SHAHR',
+        7  => 'MEHR',
+        8  => 'ABAN',
+        9  => 'AZAR',
+        10 => 'DEY',
+        11 => 'BAHMA',
+        12 => 'ESFAN',
     ];
 
     /**

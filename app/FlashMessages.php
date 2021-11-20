@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function is_a;
+use function is_array;
+
 /**
  * Generate messages in one request and display them in the next.
  */
@@ -37,7 +40,8 @@ class FlashMessages
      */
     public static function addMessage(string $text, string $status = 'info'): void
     {
-        $messages   = Session::get(self::FLASH_KEY, []);
+        $messages = Session::get(self::FLASH_KEY);
+        $messages = is_array($messages) ? $messages : [];
 
         $messages[] = (object) [
             'text'   => $text,
@@ -54,6 +58,8 @@ class FlashMessages
      */
     public static function getMessages(): array
     {
-        return Session::pull(self::FLASH_KEY, []);
+        $messages = Session::pull(self::FLASH_KEY);
+
+        return is_array($messages) ? $messages : [];
     }
 }

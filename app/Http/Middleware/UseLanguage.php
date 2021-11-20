@@ -33,6 +33,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function is_string;
+
 /**
  * Middleware to select a language.
  */
@@ -82,7 +84,11 @@ class UseLanguage implements MiddlewareInterface
         $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true);
 
         // Last language used
-        yield $languages->get('language-' . Session::get('language', ''));
+        $language = Session::get('language');
+        
+        if (is_string($language)) {
+            yield $languages->get('language-' . $language);
+        }
 
         // Browser negotiation
         $locales = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)

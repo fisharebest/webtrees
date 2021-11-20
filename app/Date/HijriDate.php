@@ -34,8 +34,7 @@ class HijriDate extends AbstractCalendarDate
     public const ESCAPE = '@#DHIJRI@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_ABBREVIATIONS = [
-        ''      => 0,
+    protected const MONTH__TO_NUMBER = [
         'MUHAR' => 1,
         'SAFAR' => 2,
         'RABIA' => 3,
@@ -48,6 +47,21 @@ class HijriDate extends AbstractCalendarDate
         'SHAWW' => 10,
         'DHUAQ' => 11,
         'DHUAH' => 12,
+    ];
+
+    protected const NUMBER_TO_MONTH = [
+        1  => 'MUHAR',
+        2  => 'SAFAR',
+        3  => 'RABIA',
+        4  => 'RABIT',
+        5  => 'JUMAA',
+        6  => 'JUMAT',
+        7  => 'RAJAB',
+        8  => 'SHAAB',
+        9  => 'RAMAD',
+        10 => 'SHAWW',
+        11 => 'DHUAQ',
+        12 => 'DHUAH',
     ];
 
     /**

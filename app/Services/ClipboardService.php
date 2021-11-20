@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Session;
 use Illuminate\Support\Collection;
 
 use function explode;
+use function is_array;
 
 /**
  * Copy and past facts between records.
@@ -41,7 +42,8 @@ class ClipboardService
      */
     public function copyFact(Fact $fact): void
     {
-        $clipboard   = Session::get('clipboard', []);
+        $clipboard   = Session::get('clipboard');
+        $clipboard   = is_array($clipboard) ? $clipboard : [];
         $record_type = $fact->record()->tag();
         $fact_id     = $fact->id();
 
@@ -98,14 +100,13 @@ class ClipboardService
      */
     public function pastableFacts(GedcomRecord $record): Collection
     {
-        // The facts are stored in the session.
-        return (new Collection(Session::get('clipboard', [])[$record->tag()] ?? []))
-            // Put the most recently copied fact at the top of the list.
+        $clipboard = Session::get('clipboard');
+        $clipboard = is_array($clipboard) ? $clipboard : [];
+        $facts     = $clipboard[$record->tag()] ?? [];
+
+        return (new Collection($facts))
             ->reverse()
-            // Create facts for the record.
-            ->map(static function (string $clipping) use ($record): Fact {
-                return new Fact($clipping, $record, md5($clipping));
-            });
+            ->map(static fn (string $clipping): Fact => new Fact($clipping, $record, md5($clipping)));
     }
 
     /**
@@ -118,15 +119,14 @@ class ClipboardService
      */
     public function pastableFactsOfType(GedcomRecord $record, Collection $types): Collection
     {
+        $clipboard = Session::get('clipboard');
+        $clipboard = is_array($clipboard) ? $clipboard : [];
+
         // The facts are stored in the session.
-        return (new Collection(Session::get('clipboard', [])))
+        return (new Collection($clipboard))
             ->flatten(1)
             ->reverse()
-            ->map(static function (string $clipping) use ($record): Fact {
-                return new Fact($clipping, $record, md5($clipping));
-            })
-            ->filter(static function (Fact $fact) use ($types): bool {
-                return $types->contains(explode(':', $fact->tag())[1]);
-            });
+            ->map(static fn (string $clipping): Fact => new Fact($clipping, $record, md5($clipping)))
+            ->filter(static fn (Fact $fact): bool => $types->contains(explode(':', $fact->tag())[1]));
     }
 }

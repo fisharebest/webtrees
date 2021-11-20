@@ -59,7 +59,8 @@ abstract class AbstractCalendarDate
     public const ESCAPE = '@#DUNKNOWN@';
 
     // Convert GEDCOM month names to month numbers.
-    protected const MONTH_ABBREVIATIONS = [];
+    protected const MONTH_TO_NUMBER = [];
+    protected const NUMBER_TO_MONTH = [];
 
     protected CalendarInterface $calendar;
 
@@ -95,12 +96,12 @@ abstract class AbstractCalendarDate
         // Construct from an array (of three gedcom-style strings: "1900", "FEB", "4")
         if (is_array($date)) {
             $this->day = (int) $date[2];
-            if (array_key_exists($date[1], static::MONTH_ABBREVIATIONS)) {
-                $this->month = static::MONTH_ABBREVIATIONS[$date[1]];
-            } else {
-                $this->month = 0;
+            $this->month = static::MONTH_TO_NUMBER[$date[1]] ?? 0;
+
+            if ($this->month === 0) {
                 $this->day   = 0;
             }
+
             $this->year = $this->extractYear($date[0]);
 
             // Our simple lookup table above does not take into account Adar and leap-years.
@@ -787,7 +788,7 @@ abstract class AbstractCalendarDate
             return 'ADR';
         }
 
-        return array_search($this->month, static::MONTH_ABBREVIATIONS, true);
+        return static::NUMBER_TO_MONTH[$this->month] ?? '';
     }
 
     /**

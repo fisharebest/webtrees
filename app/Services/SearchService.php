@@ -486,9 +486,9 @@ class SearchService
     }
 
     /**
-     * @param array<Tree>   $trees
-     * @param array<string> $fields
-     * @param array<string> $modifiers
+     * @param array<Tree>          $trees
+     * @param array<string,string> $fields
+     * @param array<string,string> $modifiers
      *
      * @return Collection<Individual>
      */
@@ -741,7 +741,7 @@ class SearchService
             } elseif (str_starts_with($field_name, 'INDI:') && str_ends_with($field_name, ':DATE')) {
                 $date = new Date($field_value);
                 if ($date->isOK()) {
-                    $delta = 365 * ($modifiers[$field_name] ?? 0);
+                    $delta = 365 * (int) ($modifiers[$field_name] ?? 0);
                     $query
                         ->where('date_' . $parts[1] . '.d_fact', '=', $parts[1])
                         ->where('date_' . $parts[1] . '.d_julianday1', '>=', $date->minimumJulianDay() - $delta)
@@ -751,7 +751,7 @@ class SearchService
             } elseif (str_starts_with($field_name, 'FAM:') && str_ends_with($field_name, ':DATE')) {
                 $date = new Date($field_value);
                 if ($date->isOK()) {
-                    $delta = 365 * $modifiers[$field_name];
+                    $delta = 365 * (int) ($modifiers[$field_name] ?? 0);
                     $query
                         ->where('date_' . $parts[1] . '.d_fact', '=', $parts[1])
                         ->where('date_' . $parts[1] . '.d_julianday1', '>=', $date->minimumJulianDay() - $delta)

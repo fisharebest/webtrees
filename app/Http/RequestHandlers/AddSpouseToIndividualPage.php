@@ -106,7 +106,7 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
             'U' => I18N::translate('Add a spouse'),
         ];
 
-        $title = $titles[$sex] ?? $titles['U'];
+        $title = $titles[$sex];
 
         return $this->viewResponse('edit/new-individual', [
             'cancel_url'          => $individual->url(),

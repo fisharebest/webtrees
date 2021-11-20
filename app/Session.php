@@ -25,6 +25,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use function array_map;
 use function explode;
 use function implode;
+use function is_string;
 use function parse_url;
 use function rawurlencode;
 use function session_name;
@@ -117,13 +118,12 @@ class Session
      * Read a value from the session and remove it.
      *
      * @param string $name
-     * @param mixed  $default
      *
      * @return mixed
      */
-    public static function pull(string $name, $default = null)
+    public static function pull(string $name)
     {
-        $value = self::get($name, $default);
+        $value = self::get($name);
         self::forget($name);
 
         return $value;
@@ -190,11 +190,17 @@ class Session
      */
     public static function getCsrfToken(): string
     {
-        if (!self::has('CSRF_TOKEN')) {
-            self::put('CSRF_TOKEN', Str::random(32));
+        $csrf_token = self::get('CSRF_TOKEN');
+
+        if (is_string($csrf_token)) {
+            return $csrf_token;
         }
 
-        return self::get('CSRF_TOKEN');
+        $csrf_token = Str::random(32);
+
+        self::put('CSRF_TOKEN', $csrf_token);
+
+        return $csrf_token;
     }
 
     /**

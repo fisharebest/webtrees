@@ -31,8 +31,7 @@ class JewishDate extends AbstractCalendarDate
     public const ESCAPE = '@#DHEBREW@';
 
     // Convert GEDCOM month names to month numbers
-    protected const MONTH_ABBREVIATIONS = [
-        ''    => 0,
+    protected const MONTH_TO_NUMBER = [
         'TSH' => 1,
         'CSH' => 2,
         'KSL' => 3,
@@ -46,6 +45,22 @@ class JewishDate extends AbstractCalendarDate
         'TMZ' => 11,
         'AAV' => 12,
         'ELL' => 13,
+    ];
+
+    protected const NUMBER_TO_MONTH = [
+        1  => 'TSH',
+        2  => 'CSH',
+        3  => 'KSL',
+        4  => 'TVT',
+        5  => 'SHV',
+        6  => 'ADR',
+        7  => 'ADS',
+        8  => 'NSN',
+        9  => 'IYR',
+        10 => 'SVN',
+        11 => 'TMZ',
+        12 => 'AAV',
+        13 => 'ELL',
     ];
 
     /**

@@ -6,11 +6,6 @@ parameters:
 			path: app/Auth.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Auth\\:\\:id\\(\\) should return int\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Auth.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Census\\\\AbstractCensusColumn\\:\\:spouseFamily\\(\\) should return Fisharebest\\\\Webtrees\\\\Family\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Census/AbstractCensusColumn.php
@@ -49,11 +44,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$tree of method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:calendarUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
 			count: 4
 			path: app/Date.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:formatGedcomMonth\\(\\) should return string but returns int\\|string\\|false\\.$#"
-			count: 1
-			path: app/Date/AbstractCalendarDate.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AbstractElement\\:\\:canonicalText\\(\\) should return string but returns string\\|null\\.$#"
@@ -401,16 +391,6 @@ parameters:
 			path: app/Family.php
 
 		-
-			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 1
-			path: app/FlashMessages.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\FlashMessages\\:\\:getMessages\\(\\) should return array\\<object\\> but returns mixed\\.$#"
-			count: 1
-			path: app/FlashMessages.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Functions\\\\FunctionsImport\\:\\:createMediaObject\\(\\) should return string but returns mixed\\.$#"
 			count: 1
 			path: app/Functions/FunctionsImport.php
@@ -534,11 +514,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/GedcomRecord.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GuestUser\\:\\:getPreference\\(\\) should return string but returns mixed\\.$#"
-			count: 1
-			path: app/GuestUser.php
 
 		-
 			message: "#^Cannot call method getAttribute\\(\\) on mixed\\.$#"
@@ -786,11 +761,6 @@ parameters:
 			path: app/Http/RequestHandlers/AddSpouseToIndividualAction.php
 
 		-
-			message: "#^Offset 'F'\\|'M'\\|'U' on array\\{F\\: string, M\\: string, U\\: string\\} on left side of \\?\\? always exists and is not nullable\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/AddSpouseToIndividualPage.php
-
-		-
 			message: "#^Parameter \\#1 \\$base_url of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:isLocalUrl\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/AddUnlinkedAction.php
@@ -969,11 +939,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$base_url of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:isLocalUrl\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditRawFactAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/EditRawRecordAction.php
 
 		-
 			message: "#^Parameter \\#1 \\$base_url of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:isLocalUrl\\(\\) expects string, mixed given\\.$#"
@@ -1476,11 +1441,6 @@ parameters:
 			path: app/Http/RequestHandlers/SiteLogsData.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/SitePreferencesPage.php
-
-		-
 			message: "#^Cannot call method createStreamFromResource\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/SynchronizeTrees.php
@@ -1691,12 +1651,7 @@ parameters:
 			path: app/Module/AncestorsChartModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\AncestorsChartModule\\:\\:chartUrl\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Module/AncestorsChartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$parameters of method Fisharebest\\\\Webtrees\\\\Module\\\\AncestorsChartModule\\:\\:chartUrl\\(\\) expects array\\<array\\|bool\\|int\\|string\\|null\\>, array\\<string, mixed\\> given\\.$#"
+			message: "#^Parameter \\#2 \\$parameters of method Fisharebest\\\\Webtrees\\\\Module\\\\AncestorsChartModule\\:\\:chartUrl\\(\\) expects array\\<array\\<string\\>\\|bool\\|int\\|string\\|null\\>, array\\<string, mixed\\> given\\.$#"
 			count: 1
 			path: app/Module/AncestorsChartModule.php
 
@@ -1766,27 +1721,7 @@ parameters:
 			path: app/Module/ChartsMenuModule.php
 
 		-
-			message: "#^Cannot access offset mixed on mixed\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Cannot access offset string on mixed\\.$#"
-			count: 30
-			path: app/Module/ClippingsCartModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$input of function array_keys expects array, mixed given\\.$#"
-			count: 2
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, mixed given\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
 
@@ -1859,11 +1794,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 2
 			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\ColorsTheme\\:\\:palette\\(\\) should return string but returns mixed\\.$#"
-			count: 1
-			path: app/Module/ColorsTheme.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\CompactTreeChartModule\\:\\:chartUrl\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
@@ -3531,7 +3461,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset string on mixed\\.$#"
-			count: 10
+			count: 4
 			path: app/Services/ClipboardService.php
 
 		-
@@ -3541,11 +3471,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:createFact\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: app/Services/ClipboardService.php
-
-		-
-			message: "#^Parameter \\#1 \\$input of function array_slice expects array, mixed given\\.$#"
 			count: 1
 			path: app/Services/ClipboardService.php
 
@@ -3578,21 +3503,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$active_blocks of method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:filterActiveBlocks\\(\\) expects Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\>, Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> given\\.$#"
 			count: 2
 			path: app/Services/HomePageService.php
-
-		-
-			message: "#^Parameter \\#1 \\$size of method Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:parseIniFileSize\\(\\) expects string, string\\|false given\\.$#"
-			count: 2
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
-			count: 2
-			path: app/Services/MediaFileService.php
-
-		-
-			message: "#^Unsafe access to private constant Fisharebest\\\\Webtrees\\\\Services\\\\MediaFileService\\:\\:IGNORE_FOLDERS through static\\:\\:\\.$#"
-			count: 1
-			path: app/Services/MediaFileService.php
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface but returns mixed\\.$#"
@@ -3665,18 +3575,8 @@ parameters:
 			path: app/Services/RelationshipService.php
 
 		-
-			message: "#^Binary operation \"\\*\" between 365 and string results in an error\\.$#"
-			count: 1
-			path: app/Services/SearchService.php
-
-		-
 			message: "#^Parameter \\#1 \\$haystack of function mb_stripos expects string, string\\|null given\\.$#"
 			count: 1
-			path: app/Services/SearchService.php
-
-		-
-			message: "#^Parameter \\#1 \\$haystack of function str_starts_with expects string, int\\|string given\\.$#"
-			count: 2
 			path: app/Services/SearchService.php
 
 		-
@@ -3691,7 +3591,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Services/ServerCheckService.php
 
 		-
@@ -3753,11 +3653,6 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:findByUserName\\(\\) should return Fisharebest\\\\Webtrees\\\\User\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Session\\:\\:getCsrfToken\\(\\) should return string but returns mixed\\.$#"
-			count: 1
-			path: app/Session.php
 
 		-
 			message: "#^Parameter \\#1 \\$url of function parse_url expects string, mixed given\\.$#"

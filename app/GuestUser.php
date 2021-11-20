@@ -90,7 +90,9 @@ class GuestUser implements UserInterface
      */
     public function getPreference(string $setting_name, string $default = ''): string
     {
-        return Session::get('_GUEST_' . $setting_name, $default);
+        $preference = Session::get('_GUEST_' . $setting_name);
+
+        return is_string($preference) ? $preference : $default;
     }
 
     /**

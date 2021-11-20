@@ -159,12 +159,10 @@ class ServerCheckService
      */
     public function isFunctionDisabled(string $function): bool
     {
-        $disable_functions = explode(',', ini_get('disable_functions'));
-        $disable_functions = array_map(static function (string $func): string {
-            return strtolower(trim($func));
-        }, $disable_functions);
-
         $function = strtolower($function);
+
+        $disable_functions = explode(',', (string) ini_get('disable_functions'));
+        $disable_functions = array_map(static fn(string $func): string => strtolower(trim($func)), $disable_functions);
 
         return in_array($function, $disable_functions, true) || !function_exists($function);
     }
