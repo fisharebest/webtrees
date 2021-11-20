@@ -347,12 +347,21 @@ abstract class AbstractElement implements ElementInterface
 
         if ($format === 'markdown') {
             $html = Registry::markdownFactory()->markdown($tree)->convertToHtml($canonical);
-        } else {
-            $html = Registry::markdownFactory()->autolink($tree)->convertToHtml($canonical);
-            $html = nl2br($html);
+
+            return '<div class="markdown" dir="auto">' . $html . '</div>';
         }
 
-        return '<div class="markdown" dir="auto">' . $html . '</div>';
+        $html = Registry::markdownFactory()->autolink($tree)->convertToHtml($canonical);
+        $html = strip_tags($html, ['a']);
+        $html = trim($html);
+
+        if (str_contains($html, "\n")) {
+            $html = nl2br($html);
+
+            return '<div dir="auto">' . $html . '</div>';
+        }
+
+        return '<span dir="auto">' . $html . '</span>';
     }
 
     /**

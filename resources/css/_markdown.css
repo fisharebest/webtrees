@@ -21,8 +21,7 @@
 }
 
 .markdown p {
-    margin: 0 0 0.5em;
-    white-space: pre-wrap;
+    margin: 0 0 0.5rem;
 }
 
 .markdown table {

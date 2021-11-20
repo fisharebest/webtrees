@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
@@ -798,18 +799,10 @@ class FunctionsPrintFacts
                 $text = $match[$j][1] . Functions::getCont($level + 1, $nrec);
             }
 
-            if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
-                $formatted_text = '<div class="markdown" dir="auto">';
-                $formatted_text .= Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
-                $formatted_text .= '</div>';
-            } else {
-                $formatted_text = '<div class="markdown" dir="auto" style="white-space: pre-wrap;">';
-                $formatted_text .= Registry::markdownFactory()->autolink($tree)->convertToHtml($text);
-                $formatted_text .= '</div>';
-            }
+            $element = new SubmitterText('');
 
             echo '<td class="', $styleadd, ' wrap">';
-            echo $formatted_text;
+            echo $element->value($text, $tree);
             echo '</td></tr>';
         }
     }
