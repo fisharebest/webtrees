@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -55,6 +56,7 @@ class EditRawRecordAction implements RequestHandlerInterface
 
         $params = (array) $request->getParsedBody();
 
+        $level0   = $params['level0'];
         $facts    = $params['fact'] ?? [];
         $fact_ids = $params['fact_id'] ?? [];
 
@@ -69,6 +71,10 @@ class EditRawRecordAction implements RequestHandlerInterface
                 break;
             default:
                 $gedcom = '0 @' . $xref . '@ ' . $record->tag();
+        }
+
+        if ($level0 !== '') {
+            $gedcom = $level0;
         }
 
         // Retain any private facts
