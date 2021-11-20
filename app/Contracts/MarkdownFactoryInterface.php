@@ -17,30 +17,27 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Elements;
+namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\Tree;
+use League\CommonMark\CommonMarkConverter;
 
 /**
- * SOURCE_PUBLICATION_FACTS := {Size=1:248}
- * When and where the record was created. For published works, this includes information such as
- * the city of publication, name of the publisher, and year of publication.
- * For an unpublished work, it includes the date the record was created and the place where it was
- * created. For example, the county and state of residence of a person making a declaration for a
- * pension or the city and state of residence of the writer of a letter.
+ * Create a markdown converter.
  */
-class SourcePublicationFacts extends AbstractElement
+interface MarkdownFactoryInterface
 {
     /**
-     * Display the value of this type of element.
+     * @param Tree|null $tree
      *
-     * @param string $value
-     * @param Tree   $tree
-     *
-     * @return string
+     * @return CommonMarkConverter
      */
-    public function value(string $value, Tree $tree): string
-    {
-        return $this->valueAutoLink($value, $tree);
-    }
+    public function autolink(Tree $tree = null): CommonMarkConverter;
+
+    /**
+     * @param Tree|null $tree
+     *
+     * @return CommonMarkConverter
+     */
+    public function markdown(Tree $tree = null): CommonMarkConverter;
 }

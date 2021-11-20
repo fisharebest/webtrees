@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\GedcomRecordFactoryInterface;
 use Fisharebest\Webtrees\Contracts\HeaderFactoryInterface;
 use Fisharebest\Webtrees\Contracts\IndividualFactoryInterface;
 use Fisharebest\Webtrees\Contracts\LocationFactoryInterface;
+use Fisharebest\Webtrees\Contracts\MarkdownFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
@@ -97,6 +98,18 @@ class Factory
     public static function location(LocationFactoryInterface $factory = null): LocationFactoryInterface
     {
         return Registry::locationFactory($factory);
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param MarkdownFactoryInterface|null $factory
+     *
+     * @return MarkdownFactoryInterface
+     */
+    public static function markdown(MarkdownFactoryInterface $factory = null): MarkdownFactoryInterface
+    {
+        return Registry::markdownFactory($factory);
     }
 
     /**

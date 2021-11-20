@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 use function array_key_exists;
@@ -41,8 +42,6 @@ use function view;
  */
 abstract class AbstractElement implements ElementInterface
 {
-    protected const REGEX_URL = '~((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?~';
-
     // HTML attributes for an <input>
     protected const MAXIMUM_LENGTH = false;
     protected const PATTERN        = false;
@@ -251,7 +250,7 @@ abstract class AbstractElement implements ElementInterface
      *
      * @return void
      */
-    public function subtag(string $subtag, string $repeat = '0:1', string $before = ''): void
+    public function subtag(string $subtag, string $repeat, string $before = ''): void
     {
         if ($repeat === '') {
             unset($this->subtags[$subtag]);
@@ -325,11 +324,46 @@ abstract class AbstractElement implements ElementInterface
     {
         $canonical = $this->canonical($value);
 
-        if (preg_match(static::REGEX_URL, $canonical)) {
-            return '<a href="' . e($canonical) . '" rel="no-follow">' . e($canonical) . '</a>';
+        if (str_contains($canonical, 'http://') || str_contains($canonical, 'https://')) {
+            $html = Registry::markdownFactory()->autolink()->convertToHtml($canonical);
+
+            return strip_tags($html, '<a>');
         }
 
         return e($canonical);
+    }
+
+    /**
+     * Display the value of this type of element - multi-line text with/without markdown.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    protected function valueFormatted(string $value, Tree $tree): string
+    {
+        $canonical = $this->canonical($value);
+
+        $format = $tree->getPreference('FORMAT_TEXT');
+
+        if ($format === 'markdown') {
+            $html = Registry::markdownFactory()->markdown($tree)->convertToHtml($canonical);
+
+            return '<div class="markdown" dir="auto">' . $html . '</div>';
+        }
+
+        $html = Registry::markdownFactory()->autolink($tree)->convertToHtml($canonical);
+        $html = strip_tags($html, '<a>');
+        $html = trim($html);
+
+        if (str_contains($html, "\n")) {
+            $html = nl2br($html);
+
+            return '<div dir="auto">' . $html . '</div>';
+        }
+
+        return '<span dir="auto">' . $html . '</span>';
     }
 
     /**

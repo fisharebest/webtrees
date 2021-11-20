@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\SubmitterText;
+use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
@@ -965,45 +967,17 @@ class FunctionsPrintFacts
                 }
             }
             echo '</th>';
-            if ($note) {
-                // Note objects
-                $text = Filter::formatText($note->getNote(), $tree);
+            if ($note instanceof Note) {
+                $text = $note->getNote();
             } else {
-                // Inline notes
                 $nrec = Functions::getSubRecord($level, "$level NOTE", $factrec, $j + 1);
                 $text = $match[$j][1] . Functions::getCont($level + 1, $nrec);
-                $text = Filter::formatText($text, $tree);
             }
+
+            $element = new SubmitterText('');
 
             echo '<td class="', $styleadd, ' wrap">';
-            echo $text;
-
-            // 2 RESN tags. Note, there can be more than one, such as "privacy" and "locked"
-            if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
-                foreach ($rmatches[1] as $rmatch) {
-                    echo '<br><span class="label">', GedcomTag::getLabel('RESN'), ':</span> <span class="field">';
-                    switch ($rmatch) {
-                        case 'none':
-                            // Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
-                            // However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-                            echo '<i class="icon-resn-none"></i> ', I18N::translate('Show to visitors');
-                            break;
-                        case 'privacy':
-                            echo '<i class="icon-resn-privacy"></i> ', I18N::translate('Show to members');
-                            break;
-                        case 'confidential':
-                            echo '<i class="icon-resn-confidential"></i> ', I18N::translate('Show to managers');
-                            break;
-                        case 'locked':
-                            echo '<i class="icon-resn-locked"></i> ', I18N::translate('Only managers can edit');
-                            break;
-                        default:
-                            echo $rmatch;
-                            break;
-                    }
-                    echo '</span>';
-                }
-            }
+            echo $element->value($text, $tree);
             echo '</td></tr>';
         }
     }

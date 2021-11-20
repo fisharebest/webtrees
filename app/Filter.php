@@ -37,16 +37,11 @@ use League\CommonMark\Inline\Renderer\TextRenderer;
 
 /**
  * Filter input and escape output.
+ *
+ * @deprecated since 2.0.17. Will be removed in 2.1.0.
  */
 class Filter
 {
-    // REGEX to match a URL
-    // Some versions of RFC3987 have an appendix B which gives the following regex
-    // (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
-    // This matches far too much while a “precise” regex is several pages long.
-    // This is a compromise.
-    private const URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
-
     /**
      * Format block-level text such as notes or transcripts, etc.
      *
@@ -59,9 +54,9 @@ class Filter
     {
         switch ($tree->getPreference('FORMAT_TEXT')) {
             case 'markdown':
-                return '<div class="markdown" dir="auto">' . self::markdown($text, $tree) . '</div>';
+                return self::markdown($text, $tree);
             default:
-                return '<div class="markdown" style="white-space: pre-wrap;" dir="auto">' . self::expandUrls($text, $tree) . '</div>';
+                return self::expandUrls($text, $tree);
         }
     }
 
@@ -75,22 +70,7 @@ class Filter
      */
     public static function expandUrls(string $text, Tree $tree): string
     {
-        // If it looks like a URL, turn it into a markdown autolink.
-        $text = preg_replace('/' . addcslashes(self::URL_REGEX, '/') . '/', '<$0>', $text);
-
-        // Create a minimal commonmark processor - just add support for autolinks.
-        $environment = new Environment();
-        $environment
-            ->addBlockRenderer(Document::class, new DocumentRenderer())
-            ->addBlockRenderer(Paragraph::class, new ParagraphRenderer())
-            ->addInlineRenderer(Text::class, new TextRenderer())
-            ->addInlineRenderer(Link::class, new LinkRenderer())
-            ->addInlineParser(new AutolinkParser())
-            ->addExtension(new XrefExtension($tree));
-
-        $converter = new CommonMarkConverter(['html_input' => Environment::HTML_INPUT_ESCAPE], $environment);
-
-        return $converter->convertToHtml($text);
+        return Registry::markdownFactory()->autolink($tree)->convertToHtml($text);
     }
 
     /**
@@ -103,18 +83,6 @@ class Filter
      */
     public static function markdown(string $text, Tree $tree): string
     {
-        $environment = Environment::createCommonMarkEnvironment();
-        $environment->addExtension(new ResponsiveTableExtension());
-        $environment->addExtension(new CensusTableExtension());
-        $environment->addExtension(new XrefExtension($tree));
-
-        $config = [
-            'allow_unsafe_links' => false,
-            'html_input'         => Environment::HTML_INPUT_ESCAPE,
-        ];
-
-        $converter = new CommonMarkConverter($config, $environment);
-
-        return $converter->convertToHtml($text);
+        return Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
     }
 }
