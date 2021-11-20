@@ -33,6 +33,8 @@ use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -162,12 +164,18 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 
             $changes = DB::table('change')
                 ->where('gedcom_id', '=', $tree->id())
-                ->where('status', '=', 'pending')
-                ->select(['xref'])
+                ->whereIn('change_id', static function (Builder $query) use ($tree): void {
+                    $query->select(new Expression('MAX(change_id)'))
+                        ->from('change')
+                        ->where('gedcom_id', '=', $tree->id())
+                        ->where('status', '=', 'pending')
+                        ->groupBy(['xref']);
+                })
+                //->select(['xref'])
                 ->get();
 
             foreach ($changes as $change) {
-                $record = Registry::gedcomRecordFactory()->make($change->xref, $tree);
+                $record = Registry::gedcomRecordFactory()->make($change->xref, $tree, $change->new_gedcom ?: $change->old_gedcom);
                 if ($record->canShow()) {
                     $content .= '<li><a href="' . e($record->url()) . '">' . $record->fullName() . '</a></li>';
                 }
