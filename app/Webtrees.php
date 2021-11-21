@@ -210,7 +210,7 @@ class Webtrees
     }
 
     /**
-     * Response to an HTTP request.
+     * Respond to an HTTP request.
      *
      * @return ResponseInterface
      */
