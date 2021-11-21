@@ -6,6 +6,11 @@ parameters:
 			path: app/Auth.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Cache\\:\\:remember\\(\\) should return T but returns mixed\\.$#"
+			count: 1
+			path: app/Cache.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Census\\\\AbstractCensusColumn\\:\\:spouseFamily\\(\\) should return Fisharebest\\\\Webtrees\\\\Family\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Census/AbstractCensusColumn.php
@@ -106,11 +111,6 @@ parameters:
 			path: app/Factories/FamilyFactory.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\FamilyFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Family\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/FamilyFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/FamilyFactory.php
@@ -127,11 +127,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/GedcomRecordFactory.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
 
@@ -156,11 +151,6 @@ parameters:
 			path: app/Factories/HeaderFactory.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\HeaderFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Header\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/HeaderFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/HeaderFactory.php
@@ -176,17 +166,7 @@ parameters:
 			path: app/Factories/HeaderFactory.php
 
 		-
-			message: "#^Parameter \\#1 \\$data of method Fisharebest\\\\Webtrees\\\\Factories\\\\ImageFactory\\:\\:imageResponse\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: app/Factories/ImageFactory.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/IndividualFactory.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Individual\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
 
@@ -211,11 +191,6 @@ parameters:
 			path: app/Factories/LocationFactory.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\LocationFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Location\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/LocationFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/LocationFactory.php
@@ -232,11 +207,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/MediaFactory.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Media\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/MediaFactory.php
 
@@ -261,11 +231,6 @@ parameters:
 			path: app/Factories/NoteFactory.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\NoteFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Note\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/NoteFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/NoteFactory.php
@@ -282,11 +247,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/RepositoryFactory.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Repository\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/RepositoryFactory.php
 
@@ -316,11 +276,6 @@ parameters:
 			path: app/Factories/SourceFactory.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SourceFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Source\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/SourceFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/SourceFactory.php
@@ -341,11 +296,6 @@ parameters:
 			path: app/Factories/SubmissionFactory.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmissionFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Submission\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/SubmissionFactory.php
-
-		-
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Factories/SubmissionFactory.php
@@ -362,11 +312,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmitterFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Factories/SubmitterFactory.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmitterFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Submitter\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/SubmitterFactory.php
 
@@ -481,11 +426,6 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:canShow\\(\\) should return bool but returns mixed\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:lastChangeTimestamp\\(\\) should return Fisharebest\\\\Webtrees\\\\Carbon but returns Fisharebest\\\\Webtrees\\\\Carbon\\|false\\.$#"
 			count: 3
 			path: app/GedcomRecord.php
@@ -579,11 +519,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:isModerator\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Http/Middleware/AuthModerator.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\BadBotBlocker\\:\\:fetchIpRangesForAsn\\(\\) should return array\\<IPLib\\\\Range\\\\RangeInterface\\> but returns mixed\\.$#"
-			count: 1
-			path: app/Http/Middleware/BadBotBlocker.php
 
 		-
 			message: "#^Parameter \\#1 \\$ip of method Fisharebest\\\\Webtrees\\\\Http\\\\Middleware\\\\BadBotBlocker\\:\\:checkRobotDNS\\(\\) expects string, mixed given\\.$#"
@@ -1067,11 +1002,6 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 2 on mixed\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ImportThumbnailsData.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ImportThumbnailsData\\:\\:scaledImagePixels\\(\\) should return array\\<array\\<int\\>\\> but returns mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportThumbnailsData.php
 
@@ -1626,17 +1556,7 @@ parameters:
 			path: app/Media.php
 
 		-
-			message: "#^Cannot access offset string on mixed\\.$#"
-			count: 1
-			path: app/Module/AbstractModule.php
-
-		-
-			message: "#^Cannot call method first\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Module/AbstractModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\AbstractModule\\:\\:getBlockSetting\\(\\) should return string but returns mixed\\.$#"
+			message: "#^Cannot access property \\$access_level on mixed\\.$#"
 			count: 1
 			path: app/Module/AbstractModule.php
 
@@ -2166,11 +2086,6 @@ parameters:
 			path: app/Module/GeonamesAutocomplete.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\GeonamesAutocomplete\\:\\:searchPlaceNames\\(\\) should return array\\<string\\> but returns mixed\\.$#"
-			count: 1
-			path: app/Module/GeonamesAutocomplete.php
-
-		-
 			message: "#^Cannot call method getAttribute\\(\\) on mixed\\.$#"
 			count: 2
 			path: app/Module/GoogleAnalyticsModule.php
@@ -2336,17 +2251,7 @@ parameters:
 			path: app/Module/MapGeoLocationGeonames.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MapGeoLocationGeonames\\:\\:searchPlaceNames\\(\\) should return array\\<string\\> but returns mixed\\.$#"
-			count: 1
-			path: app/Module/MapGeoLocationGeonames.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MapGeoLocationNominatim\\:\\:extractLocationsFromResponse\\(\\) should return array\\<string\\> but returns mixed\\.$#"
-			count: 1
-			path: app/Module/MapGeoLocationNominatim.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MapGeoLocationNominatim\\:\\:searchPlaceNames\\(\\) should return array\\<string\\> but returns mixed\\.$#"
 			count: 1
 			path: app/Module/MapGeoLocationNominatim.php
 
@@ -2357,11 +2262,6 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MapGeoLocationOpenRouteService\\:\\:extractLocationsFromResponse\\(\\) should return array\\<string\\> but returns mixed\\.$#"
-			count: 1
-			path: app/Module/MapGeoLocationOpenRouteService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\MapGeoLocationOpenRouteService\\:\\:searchPlaceNames\\(\\) should return array\\<string\\> but returns mixed\\.$#"
 			count: 1
 			path: app/Module/MapGeoLocationOpenRouteService.php
 
@@ -2472,11 +2372,6 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$features on mixed\\.$#"
-			count: 1
-			path: app/Module/OpenRouteServiceAutocomplete.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\OpenRouteServiceAutocomplete\\:\\:searchPlaceNames\\(\\) should return array\\<string\\> but returns mixed\\.$#"
 			count: 1
 			path: app/Module/OpenRouteServiceAutocomplete.php
 
@@ -2981,11 +2876,6 @@ parameters:
 			path: app/Place.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Place\\:\\:id\\(\\) should return int but returns mixed\\.$#"
-			count: 1
-			path: app/Place.php
-
-		-
 			message: "#^Parameter \\#1 \\$str of function mb_substr expects string, mixed given\\.$#"
 			count: 2
 			path: app/Place.php
@@ -3031,12 +2921,7 @@ parameters:
 			path: app/PlaceLocation.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\PlaceLocation\\:\\:details\\(\\) should return object but returns mixed\\.$#"
-			count: 1
-			path: app/PlaceLocation.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\PlaceLocation\\:\\:id\\(\\) should return int\\|null but returns mixed\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\PlaceLocation\\:\\:details\\(\\) should return object but returns object\\|null\\.$#"
 			count: 1
 			path: app/PlaceLocation.php
 
@@ -3510,11 +3395,6 @@ parameters:
 			path: app/Services/ModuleService.php
 
 		-
-			message: "#^Cannot call method filter\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Services/ModuleService.php
-
-		-
 			message: "#^Cannot call method setName\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
@@ -3626,11 +3506,6 @@ parameters:
 
 		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\User\\|null but returns mixed\\.$#"
-			count: 1
-			path: app/Services/UserService.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UserService\\:\\:find\\(\\) should return Fisharebest\\\\Webtrees\\\\User\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Services/UserService.php
 
