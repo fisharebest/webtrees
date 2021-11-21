@@ -56,8 +56,8 @@ msgstr "%1$sKB ladattiin %2$s sekunnissa."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s ei ole olemassa"
+msgid "%s does not exist."
+msgstr "%s ei ole olemassa."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

@@ -176,7 +176,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
 
             // Record was deleted before we could read it?
             if (!is_string($row)) {
-                throw new HttpNotFoundException(I18N::translate('%1$s does not exist', 'news_id:' . $news_id));
+                throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'news_id:' . $news_id));
             }
         } else {
             $row = (object)['body' => '', 'subject' => ''];

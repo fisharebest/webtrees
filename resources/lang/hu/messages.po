@@ -73,8 +73,8 @@ msgstr "%1$s kilobájt letöltése %2$s másodperc alatt megtörtént."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s nem létezik"
+msgid "%s does not exist."
+msgstr "%s nem létezik."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

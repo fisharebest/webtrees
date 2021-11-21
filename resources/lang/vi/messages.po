@@ -56,8 +56,8 @@ msgstr "%1$sKB được tải về trong %2$s giây."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s không Chấp nhận"
+msgid "%s does not exist."
+msgstr "%s không Chấp nhận."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

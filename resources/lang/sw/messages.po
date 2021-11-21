@@ -68,7 +68,7 @@ msgstr "KB %1$s walikuwa kupakuliwa katika sekunde %2$s."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
+msgid "%s does not exist."
 msgstr ""
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123

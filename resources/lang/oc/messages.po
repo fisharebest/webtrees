@@ -68,7 +68,7 @@ msgstr "%1$sKB cargats en %2$s segonds."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
+msgid "%s does not exist."
 msgstr ""
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123

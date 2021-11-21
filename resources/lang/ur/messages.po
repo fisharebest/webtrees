@@ -61,8 +61,8 @@ msgstr "%2$s سیکنڈ میں %1$s کے بی ڈاؤنلوڈ ہوئی۔"
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s موجود نہیں ہے"
+msgid "%s does not exist."
+msgstr "%s موجود نہیں ہے."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

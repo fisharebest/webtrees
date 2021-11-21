@@ -56,8 +56,8 @@ msgstr "Llwythwyd %1$s KB i lawr mewn %2$s eiliad."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "Nid yw %1$s yn bodoli"
+msgid "%s does not exist."
+msgstr "Nid yw %s yn bodoli."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

@@ -73,8 +73,8 @@ msgstr "%1$s KB telah terunduh dalam %2$s detik."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s tidak ada"
+msgid "%s does not exist."
+msgstr "%s tidak ada."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

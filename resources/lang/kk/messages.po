@@ -68,8 +68,8 @@ msgstr "%1$s КБ көшіріп алынды %2$s секунд."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s жоқ"
+msgid "%s does not exist."
+msgstr "%s жоқ."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

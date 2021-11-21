@@ -56,8 +56,8 @@ msgstr "%1$sKB ble hentet på %2$s sekunder."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s eksisterer ikke"
+msgid "%s does not exist."
+msgstr "%s eksisterer ikke."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

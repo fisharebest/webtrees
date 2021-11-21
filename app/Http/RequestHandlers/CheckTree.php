@@ -222,7 +222,7 @@ class CheckTree implements RequestHandlerInterface
                             I18N::translate('%1$s does not exist. Did you mean %2$s?', $this->checkLink($tree, $xref2), $this->checkLink($tree, $upper_links[strtoupper($xref2)]));
                     } else {
                         /* I18N: placeholders are GEDCOM XREFs, such as R123 */
-                        $errors[] = $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('%1$s does not exist.', $this->checkLink($tree, $xref2));
+                        $errors[] = $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('%s does not exist.', $this->checkLink($tree, $xref2));
                     }
                 } elseif ($type2 === 'SOUR' && $type1 === 'NOTE') {
                     // Notes are intended to add explanations and comments to other records. They should not have their own sources.

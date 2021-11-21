@@ -74,8 +74,8 @@ msgstr "%1$s KB 將在%2$s秒後下載完。"
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "不存在 %1$s"
+msgid "%s does not exist."
+msgstr "不存在 %s."
 
 # I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123

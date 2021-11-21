@@ -72,8 +72,8 @@ msgstr "%1$s KB μεταφορτώθηκαν σε %2$s δευτερόλεπτα.
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s δεν υπάρχει"
+msgid "%s does not exist."
+msgstr "%s δεν υπάρχει."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

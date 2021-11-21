@@ -77,8 +77,8 @@ msgstr "Stiahlo sa %1$s KB za %2$s sekúnd."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s neexistuje"
+msgid "%s does not exist."
+msgstr "%s neexistuje."
 
 # I18N: placeholders are GEDCOM XREFs, such as R123
 #. I18N: placeholders are GEDCOM XREFs, such as R123

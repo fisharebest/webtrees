@@ -81,7 +81,7 @@ class UserEditPage implements RequestHandlerInterface
         $user    = $this->user_service->find($user_id);
 
         if ($user === null) {
-            throw new HttpNotFoundException(I18N::translate('%1$s does not exist.', 'user_id:' . $user_id));
+            throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'user_id:' . $user_id));
         }
 
         $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true, true)

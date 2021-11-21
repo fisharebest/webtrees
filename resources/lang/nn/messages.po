@@ -56,8 +56,8 @@ msgstr "%1$sKB blei lasta ned på %2$s sekund."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s finnast ikkje"
+msgid "%s does not exist."
+msgstr "%s finnast ikkje."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

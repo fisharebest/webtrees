@@ -72,8 +72,8 @@ msgstr "%1$sKB je skinuto u %2$s sekundi."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s ne postoji"
+msgid "%s does not exist."
+msgstr "%s ne postoji."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

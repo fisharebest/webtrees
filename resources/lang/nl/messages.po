@@ -56,8 +56,8 @@ msgstr "Het downloaden van %1$sKB duurde %2$s seconden."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s bestaat niet"
+msgid "%s does not exist."
+msgstr "%s bestaat niet."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

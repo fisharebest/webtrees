@@ -70,8 +70,8 @@ msgstr "%1$sKB ont été téléchargés en %2$s secondes."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s n’existe pas"
+msgid "%s does not exist."
+msgstr "%s n’existe pas."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

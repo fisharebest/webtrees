@@ -68,8 +68,8 @@ msgstr "%1$s KB изтеглени за %2$s секунди."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s не съществува"
+msgid "%s does not exist."
+msgstr "%s не съществува."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225

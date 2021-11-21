@@ -7234,7 +7234,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
+msgid "%s does not exist."
 msgstr ""
 
 #. I18N: %s is a server name/URL

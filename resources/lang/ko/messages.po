@@ -68,8 +68,8 @@ msgstr "%1$s KB 를 다운로드 하는데 %2$s 초 걸렸습니다."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
-msgid "%1$s does not exist"
-msgstr "%1$s 존재하지 않음"
+msgid "%s does not exist."
+msgstr "%s 존재하지 않음."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225
