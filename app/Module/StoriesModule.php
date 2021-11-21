@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -33,6 +34,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
 use function redirect;
 use function route;
 
@@ -291,20 +293,23 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
             $story_title = '';
             $story_body  = '';
             $languages   = [];
-            $xref = $request->getQueryParams()['xref'] ?? '';
-
-            $title = I18N::translate('Add a story') . ' — ' . e($tree->title());
+            $xref        = $request->getQueryParams()['xref'] ?? '';
+            $title       = I18N::translate('Add a story') . ' — ' . e($tree->title());
         } else {
             // Editing an existing story
             $xref = (string) DB::table('block')
                 ->where('block_id', '=', $block_id)
                 ->value('xref');
 
+            // Record was deleted before we could read it?
+            if (!is_string($xref)) {
+                throw new HttpNotFoundException(I18N::translate('%1$s does not exist', 'block_id:' . $block_id));
+            }
+
             $story_title = $this->getBlockSetting($block_id, 'title');
             $story_body  = $this->getBlockSetting($block_id, 'story_body');
             $languages   = explode(',', $this->getBlockSetting($block_id, 'languages'));
-
-            $title = I18N::translate('Edit the story') . ' — ' . e($tree->title());
+            $title       = I18N::translate('Edit the story') . ' — ' . e($tree->title());
         }
 
         $individual = Registry::individualFactory()->make($xref, $tree);

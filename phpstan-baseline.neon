@@ -1826,12 +1826,7 @@ parameters:
 			path: app/Module/FamilyTreeFavoritesModule.php
 
 		-
-			message: "#^Cannot access property \\$body on object\\|null\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeNewsModule.php
-
-		-
-			message: "#^Cannot access property \\$subject on object\\|null\\.$#"
+			message: "#^Call to function is_string\\(\\) with object\\|null will always evaluate to false\\.$#"
 			count: 1
 			path: app/Module/FamilyTreeNewsModule.php
 
@@ -2746,12 +2741,7 @@ parameters:
 			path: app/Module/UserFavoritesModule.php
 
 		-
-			message: "#^Cannot access property \\$body on object\\|null\\.$#"
-			count: 1
-			path: app/Module/UserJournalModule.php
-
-		-
-			message: "#^Cannot access property \\$subject on object\\|null\\.$#"
+			message: "#^Call to function is_string\\(\\) with object\\|null will always evaluate to false\\.$#"
 			count: 1
 			path: app/Module/UserJournalModule.php
 
@@ -2931,16 +2921,6 @@ parameters:
 			path: app/PlaceLocation.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:getStyle\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Report/AbstractRenderer.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:getStyle\\(\\) should return array but returns array\\<string, string\\>\\|false\\.$#"
-			count: 1
-			path: app/Report/AbstractRenderer.php
-
-		-
 			message: "#^Array \\(array\\<array\\<string, string\\>\\>\\) does not accept string\\.$#"
 			count: 1
 			path: app/Report/PdfRenderer.php
@@ -2999,6 +2979,11 @@ parameters:
 			message: "#^Parameter \\#4 \\(mixed\\) of echo cannot be converted to string\\.$#"
 			count: 1
 			path: app/Report/ReportHtmlCell.php
+
+		-
+			message: "#^Binary operation \"\\*\" between string and 0\\|int\\<2, max\\> results in an error\\.$#"
+			count: 1
+			path: app/Report/ReportHtmlText.php
 
 		-
 			message: "#^Variable \\$lastelement in empty\\(\\) always exists and is not falsy\\.$#"
@@ -3908,11 +3893,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$hash of function password_verify expects string, mixed given\\.$#"
 			count: 1
 			path: app/User.php
-
-		-
-			message: "#^Cannot call method fromGlobals\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Webtrees.php
 
 		-
 			message: "#^Ternary operator condition is always true\\.$#"

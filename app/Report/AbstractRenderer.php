@@ -394,10 +394,10 @@ abstract class AbstractRenderer
      *
      * @param string $s Style name
      *
-     * @return array
+     * @return array<string>
      */
     public function getStyle(string $s): array
     {
-        return $this->styles[$s] ?? current($this->styles);
+        return $this->styles[$s];
     }
 }

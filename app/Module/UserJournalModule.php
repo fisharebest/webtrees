@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HtmlService;
@@ -33,6 +34,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function is_string;
+use function redirect;
 
 /**
  * Class UserJournalModule
@@ -170,11 +173,13 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
                 ->where('news_id', '=', $news_id)
                 ->where('user_id', '=', Auth::id())
                 ->first();
+
+            // Record was deleted before we could read it?
+            if (!is_string($row)) {
+                throw new HttpNotFoundException(I18N::translate('%1$s does not exist', 'news_id:' . $news_id));
+            }
         } else {
-            $row = (object) [
-                'body'    => '',
-                'subject' => '',
-            ];
+            $row = (object)['body' => '', 'subject' => ''];
         }
 
         $title = I18N::translate('Add/edit a journal/news entry');

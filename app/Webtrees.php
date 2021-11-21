@@ -216,14 +216,18 @@ class Webtrees
      */
     public function httpRequest(): ResponseInterface
     {
-        // PSR7 messages and PSR17 message-factories
-        self::set(ResponseFactoryInterface::class, Psr17Factory::class);
-        self::set(ServerRequestFactoryInterface::class, Psr17Factory::class);
-        self::set(StreamFactoryInterface::class, Psr17Factory::class);
-        self::set(UploadedFileFactoryInterface::class, Psr17Factory::class);
-        self::set(UriFactoryInterface::class, Psr17Factory::class);
+        $psr17factory = new Psr17Factory();
 
-        $request = $this->captureRequest();
+        // PSR7 messages and PSR17 message-factories
+        self::set(ResponseFactoryInterface::class, $psr17factory);
+        self::set(ServerRequestFactoryInterface::class, $psr17factory);
+        self::set(StreamFactoryInterface::class, $psr17factory);
+        self::set(UploadedFileFactoryInterface::class, $psr17factory);
+        self::set(UriFactoryInterface::class, $psr17factory);
+
+        $server_request_creator = new ServerRequestCreator($psr17factory, $psr17factory, $psr17factory, $psr17factory);
+
+        $request = $server_request_creator->fromGlobals();
 
         return self::dispatch($request, self::MIDDLEWARE);
     }
@@ -256,16 +260,6 @@ class Webtrees
 
             return true;
         };
-    }
-
-    /**
-     * Build the request from the PHP super-globals.
-     *
-     * @return ServerRequestInterface
-     */
-    private function captureRequest(): ServerRequestInterface
-    {
-        return self::make(ServerRequestCreator::class)->fromGlobals();
     }
 
     /**
