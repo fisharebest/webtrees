@@ -85,7 +85,7 @@ class UseLanguage implements MiddlewareInterface
 
         // Last language used
         $language = Session::get('language');
-        
+
         if (is_string($language)) {
             yield $languages->get('language-' . $language);
         }
