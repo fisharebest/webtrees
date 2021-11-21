@@ -45,7 +45,7 @@ class HistoryDutchMonarchs extends AbstractModule implements ModuleHistoricEvent
     {
         return I18N::translate('Nederlandse Monarchiën') . " 🇳🇱";
     }
- 
+
     /**
      * Should this module be enabled when it is first installed?
      *
@@ -83,7 +83,7 @@ class HistoryDutchMonarchs extends AbstractModule implements ModuleHistoricEvent
             "1 EVEN Lodewijk II (Napoleon Lodewijk Bonaparte, *1804 — †1831)\n2 TYPE " . I18N::translate('King of Holland') . "\n2 DATE FROM 01 JUL 1810 TO 13 JUL 1810\n2 NOTE Koninkrijk Holland (1806 - 1810), vazalstaat van het Eerste Franse Keizerrijk\n2 SOUR [Wikipedia: Napoleon Lodewijk Bonaparte](https://nl.wikipedia.org/wiki/Napoleon_Lodewijk_Bonaparte )",
             "1 EVEN Napoleon I (Napoleon Bonaparte, *1769 — †1821)\n2 TYPE " . I18N::translate('Emperor of the French') . "\n2 DATE FROM 13 JUL 1810 TO 21 NOV 1813\n2 NOTE Geannexeerd deel van het Eerste Franse Keizerrijk\n2 SOUR [Wikipedia: Napoleon Bonaparte](https://de.wikipedia.org/wiki/Napoleon_Bonaparte )",
             "1 EVEN Willem I (Willem Frederik, Prins van Oranje-Nassau, *1772 — †1843)\n2 TYPE " . I18N::translate('Sovereign Prince of the Netherlands') . "\n2 DATE FROM 21 NOV 1813 TO 16 MAR 1815\n2 NOTE Soeverein vorstendom der Verenigde Nederlanden (1813 - 1815)\n2 SOUR [Wikipedia: Willem I der Nederlanden](https://nl.wikipedia.org/wiki/Willem_I_der_Nederlanden )",
-            "1 EVEN Willem I (Willem Frederik van Oranje-Nassau, *1772 — †1843)\n2 TYPE " . I18N::translate('King of the Netherlands'). "\n2 DATE FROM 16 MAR 1815 TO 21 JUL 1831\n2 NOTE Verenigd Koninkrijk der Nederlanden (1815 - 1830)\n2 SOUR [Wikipedia: Willem I der Nederlanden](https://nl.wikipedia.org/wiki/Willem_I_der_Nederlanden )",
+            "1 EVEN Willem I (Willem Frederik van Oranje-Nassau, *1772 — †1843)\n2 TYPE " . I18N::translate('King of the Netherlands') . "\n2 DATE FROM 16 MAR 1815 TO 21 JUL 1831\n2 NOTE Verenigd Koninkrijk der Nederlanden (1815 - 1830)\n2 SOUR [Wikipedia: Willem I der Nederlanden](https://nl.wikipedia.org/wiki/Willem_I_der_Nederlanden )",
             "1 EVEN Willem I (Willem Frederik van Oranje-Nassau, *1772 — †1843)\n2 TYPE " . I18N::translate('King of the Netherlands') . "\n2 DATE FROM 21 JUL 1831 TO 07 OKT 1840\n2 NOTE Koninkrijk der Nederlanden (vanaf 1830)\n2 SOUR [Wikipedia: Willem I der Nederlanden](https://nl.wikipedia.org/wiki/Willem_I_der_Nederlanden )",
             "1 EVEN Willem II (Willem Frederik George Lodewijk van Oranje-Nassau, *1792 — †1849)\n2 TYPE " . I18N::translate('King of the Netherlands') . "\n2 DATE FROM 07 OKT 1840 TO 17 MAR 1849\n2 NOTE Koninkrijk der Nederlanden\n2 SOUR [Wikipedia: Willem II der Nederlanden](https://nl.wikipedia.org/wiki/Willem_II_der_Nederlanden )",
             "1 EVEN Willem III (Willem Alexander Paul Frederik Lodewijk van Oranje-Nassau, *1817 — †1890)\n2 TYPE " . I18N::translate('King of the Netherlands') . "\n2 DATE FROM 17 MAR 1849 TO 23 NOV 1890\n2 NOTE Koninkrijk der Nederlanden\n2 NOTE Koninkrijk der Nederlanden\n2 SOUR [Wikipedia: Willem III der Nederlanden](https://nl.wikipedia.org/wiki/Willem_III_der_Nederlanden )",
