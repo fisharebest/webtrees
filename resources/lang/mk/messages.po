@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-26 07:38+0000\nLast-Translator: Emir Dervishoski <emir@dervishoski.ch>\nLanguage-Team: Macedonian <https://translate.webtrees.net/projects/webtrees/webtrees/mk/>\nLanguage: mk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n==1 || n%10==1 ? 0 : 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-11-29 17:24+0000\nLast-Translator: Emir Dervishoski <emir@dervishoski.ch>\nLanguage-Team: Macedonian <https://translate.webtrees.net/projects/webtrees/webtrees/mk/>\nLanguage: mk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n==1 || n%10==1 ? 0 : 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: app/Age.php:98 app/Elements/AgeAtEvent.php:81
 #: app/Statistics/Repository/FamilyRepository.php:351
@@ -1930,7 +1930,7 @@ msgstr ""
 #: resources/views/modules/media-list/page.phtml:138
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
@@ -5799,14 +5799,14 @@ msgstr ""
 #: app/Http/RequestHandlers/CheckTree.php:222
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s ne postoi. Dali mislevte na %2$s?"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:225
 #: app/Http/RequestHandlers/UserEditPage.php:84
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s ne postoi."
 
 #: app/Http/RequestHandlers/CheckTree.php:235
 #: app/Http/RequestHandlers/CheckTree.php:240
@@ -5817,13 +5817,13 @@ msgstr ""
 #: app/Http/RequestHandlers/CheckTree.php:246
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s e %2$s, no se očekuva %3$s."
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/RequestHandlers/CheckTree.php:255
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s nema link, nazad do %2$s."
 
 #: app/Http/RequestHandlers/CheckTree.php:260
 #: resources/views/admin/trees.phtml:181
@@ -5833,7 +5833,7 @@ msgstr ""
 #: app/Http/RequestHandlers/CheckTree.php:300
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ima %3$s link so %4$s."
 
 #: app/Http/RequestHandlers/CleanDataFolder.php:101
 #: resources/views/admin/control-panel.phtml:248
@@ -6365,7 +6365,7 @@ msgstr ""
 #: app/Services/MediaFileService.php:104
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #: app/Http/RequestHandlers/ManageMediaData.php:345 app/MediaFile.php:316
 #: app/Module/CustomTagsFamilyTreeBuilder.php:57
@@ -6380,7 +6380,7 @@ msgstr ""
 #: app/Http/RequestHandlers/ManageMediaData.php:354 app/MediaFile.php:329
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s pixels"
 
 #: app/Http/RequestHandlers/ManageMediaPage.php:67
 #: resources/views/admin/control-panel.phtml:807
@@ -7159,8 +7159,8 @@ msgstr ""
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s podatok beše izvlečena za %2$s sekundi."
+msgstr[1] "%1$s podatocite beše izvlečena za %2$s sekundi."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:321
 msgid "The upgrade is complete."
@@ -7324,7 +7324,7 @@ msgstr ""
 #. I18N: This is the format string for full dates. See https://php.net/date for codes
 #: app/I18N.php:263
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:336
@@ -7334,13 +7334,13 @@ msgstr ""
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:623
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:481 app/Module/StatisticsChartModule.php:860
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #: app/Individual.php:844 app/Individual.php:898
 #: resources/xml/reports/individual_ext_report.xml:245
@@ -7794,7 +7794,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:613
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s i nejzinite predci"
 
 #: app/Module/ClippingsCartModule.php:614
 #, php-format
@@ -13627,7 +13627,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2132
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s’s %2$s"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2164
@@ -13912,7 +13912,7 @@ msgstr ""
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2327
@@ -13954,7 +13954,7 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2349
@@ -13990,7 +13990,7 @@ msgstr ""
 #: app/Services/RelationshipService.php:2364
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #: app/Services/SearchService.php:1162
 msgid "The search returned too many results."
@@ -14284,7 +14284,7 @@ msgstr[1] ""
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #: app/Statistics/Service/CenturyService.php:45
 msgctxt "CENTURY"
@@ -20537,7 +20537,7 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
 msgid " in "
-msgstr ""
+msgstr " vo "
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -20546,7 +20546,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr ""
+msgstr " no detalite se nepoznati"
 
 #: resources/xml/reports/ahnentafel_report.xml:167
 msgid "He was christened"
