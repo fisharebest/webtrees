@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-06-01 11:33+0000\n"
-"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
-"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
-"Language: af\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-11-29 17:24+0000\nLast-Translator: Chris Theron <tronsmit@gmail.com>\nLanguage-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\nLanguage: af\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -631,7 +619,7 @@ msgstr "<verstek tema>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Kennisgewing: Deur hierdie vorm in te vul en in te dien, stem jy in:</p><ul><li>om die privaatheid van lewende persone wat op ons webwerf gelys is te beskerm;</li><li>en in die tekskassie hieronder, te verduidelik aan wie jy verwant is, of om aan ons inligting te verskaf oor iemand wat op ons webwerf gelys behoort te word.</li></ul>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -1508,7 +1496,7 @@ msgstr "Adreslyn 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
-msgstr ""
+msgstr "Adresse"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -2064,7 +2052,7 @@ msgstr "Akwamaryn"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Is jy seker dat jy die skakel na “%s” wil verwyder?"
+msgstr "Is jy seker jy wil die skakel na “%s” vernietig?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:41
@@ -5608,7 +5596,7 @@ msgstr "Wysig hierdie persoon en vervang hulle besonderhede met jou eie."
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Wysig met alle GEDCOM-etikette"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -5734,7 +5722,7 @@ msgstr "Werkgewer"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Maak die knipbord leeg"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -6187,7 +6175,7 @@ msgstr "Familieboek van %s"
 
 #: app/Factories/ElementFactory.php:321
 msgid "Family census"
-msgstr ""
+msgstr "Familiesensus"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Family file"
@@ -6210,7 +6198,7 @@ msgstr "Familie van %s"
 
 #: app/Factories/ElementFactory.php:350
 msgid "Family residence"
-msgstr ""
+msgstr "Gesinswoning"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6906,7 +6894,7 @@ msgstr "GEDCOM-etiket"
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:264
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM-etikette"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -7430,7 +7418,7 @@ msgstr "Heshvan"
 #: resources/views/admin/tags.phtml:726 resources/views/admin/tags.phtml:780
 #: resources/views/admin/tags.phtml:884
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Verberg GEDCOM-etikette"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:155
@@ -7452,7 +7440,7 @@ msgstr "Verberg vir almal"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Verberg wagwoord"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7614,7 +7602,7 @@ msgstr "Identifikasienommer"
 
 #: resources/views/admin/tags.phtml:767
 msgid "Identifiers"
-msgstr ""
+msgstr "Identifiseerders"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -8403,7 +8391,7 @@ msgstr "LDS kind verseëling"
 
 #: resources/views/admin/tags.phtml:713
 msgid "LDS church"
-msgstr ""
+msgstr "LDS kerk"
 
 #: app/Factories/ElementFactory.php:499
 msgid "LDS confirmation"
@@ -11550,7 +11538,7 @@ msgstr "Provo, Utah, Verenigde State"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr "Volmag"
+msgstr "Gevolmagtigde"
 
 #: app/Factories/ElementFactory.php:697
 #: resources/views/lists/sources-table.phtml:97
@@ -13118,7 +13106,7 @@ msgstr "Vertoon ouers"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "Vertoon wagwoord"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13471,7 +13459,7 @@ msgstr "Sommige genealogiese toepassings stoor alle name in 'n enkele naamrekord
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Sommige van hierdie GEDCOM-etikette word selde of nooit gebruik nie."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
@@ -13578,7 +13566,7 @@ msgstr "Bron aanhaling"
 
 #: resources/views/admin/tags.phtml:315
 msgid "Source citations"
-msgstr ""
+msgstr "Bronverwysings"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:756
@@ -14141,7 +14129,7 @@ msgstr "Die GEDCOM-lêer “%s” is ingevoer."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "Die GEDCOM-standaard verskaf 'n groot aantal data-invoervelde, bekend as etikette."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -15268,7 +15256,7 @@ msgstr "Tyd"
 #: app/Factories/ElementFactory.php:671 app/Factories/ElementFactory.php:687
 #: app/Factories/ElementFactory.php:718 app/Factories/ElementFactory.php:734
 msgid "Time of last change"
-msgstr ""
+msgstr "Tyd van laaste verandering"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15722,7 +15710,7 @@ msgstr "Tipe feit"
 
 #: app/Factories/ElementFactory.php:541
 msgid "Type of identification number"
-msgstr ""
+msgstr "Tipe identifikasienommer"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15740,7 +15728,7 @@ msgstr "Tipe naam"
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
 #: app/Factories/ElementFactory.php:679 app/Factories/ElementFactory.php:699
 msgid "Type of reference number"
-msgstr ""
+msgstr "Tipe verwysingsnommer"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
@@ -16000,7 +15988,7 @@ msgstr "Gebruik silhoeëtte"
 
 #: app/Http/RequestHandlers/CopyFact.php:79
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Gebruik die “wysig“-kieslys om dit in 'n ander rekord te plak."
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16544,7 +16532,7 @@ msgstr "Jy kan die toegang tot ’n spesifieke rekord, feit of gebeurtenis inste
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "Jy kan die wysigingsvorms vereenvoudig deur GEDCOM-etikette wat nie gebruik word nie, te verberg."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -20807,7 +20795,7 @@ msgstr[1] "±%s jaar"
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s“ is na die knipbord gekopieer."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
