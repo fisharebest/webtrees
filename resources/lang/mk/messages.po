@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-09-26 07:38+0000\n"
+"PO-Revision-Date: 2021-11-29 17:24+0000\n"
 "Last-Translator: Emir Dervishoski <emir@dervishoski.ch>\n"
-"Language-Team: Macedonian <https://translate.webtrees.net/projects/webtrees/webtrees-20/mk/>\n"
+"Language-Team: Macedonian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/mk/>\n"
 "Language: mk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr ""
+msgstr " no detalite se nepoznati"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -42,12 +43,12 @@ msgstr ""
 #: resources/xml/reports/descendancy_report.xml:423
 #: resources/xml/reports/descendancy_report.xml:454
 msgid " in "
-msgstr ""
+msgstr " vo "
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr ""
+msgstr "%1$s %2$s ima %3$s link so %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2374
@@ -74,66 +75,66 @@ msgstr ""
 #: app/Http/RequestHandlers/UserEditAction.php:99
 #, php-format
 msgid "%1$s does not exist"
-msgstr ""
+msgstr "%1$s ne postoi"
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:226
 #: app/Http/RequestHandlers/UserEditPage.php:88
 #, php-format
 msgid "%1$s does not exist."
-msgstr ""
+msgstr "%1$s ne postoi."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: app/Http/RequestHandlers/CheckTree.php:223
 #, php-format
 msgid "%1$s does not exist. Did you mean %2$s?"
-msgstr ""
+msgstr "%1$s ne postoi. Dali mislevte na %2$s?"
 
 #. I18N: %1$s and %2$s are internal ID numbers such as R123
 #: app/Http/RequestHandlers/CheckTree.php:256
 #, php-format
 msgid "%1$s does not have a link back to %2$s."
-msgstr ""
+msgstr "%1$s nema link, nazad do %2$s."
 
 #. I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:292
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s podatok beše izvlečena za %2$s sekundi."
+msgstr[1] "%1$s podatocite beše izvlečena za %2$s sekundi."
 
 #. I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR
 #: app/Http/RequestHandlers/CheckTree.php:247
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr ""
+msgstr "%1$s e %2$s, no se očekuva %3$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:577
 #, php-format
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:555
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:532
 #, php-format
 msgctxt "MALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: image dimensions, width × height
 #: app/Http/RequestHandlers/ManageMediaData.php:322 app/MediaFile.php:333
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s pixels"
 
 #. I18N: e.g. "Occupation: farmer"
 #: app/Elements/AbstractElement.php:212
@@ -143,45 +144,45 @@ msgstr ""
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:558 app/Module/StatisticsChartModule.php:861
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #: app/Functions/Functions.php:2396
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s’s %2$s"
 
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #: app/I18N.php:619
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:258
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
 msgid "%s BCE"
-msgstr ""
+msgstr "%s BCE"
 
 #. I18N: size of file in KB
 #: app/Http/RequestHandlers/ManageMediaData.php:312 app/MediaFile.php:320
 #: app/Services/MediaFileService.php:89
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #: app/Module/ClippingsCartModule.php:605
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s i nejzinite predci"
 
 #: app/Module/ClippingsCartModule.php:614
 #, php-format
