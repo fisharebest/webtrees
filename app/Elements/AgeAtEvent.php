@@ -50,12 +50,14 @@ class AgeAtEvent extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 12;
 
+    protected const KEYWORDS = ['CHILD', 'INFANT', 'STILLBORN'];
+
     public function canonical(string $value): string
     {
         $value = parent::canonical($value);
         $upper = strtoupper($value);
 
-        if ($upper === 'CHILD' || $upper === 'INFANT' || $upper === 'STILLBORN') {
+        if (in_array($upper, static::KEYWORDS, true)) {
             return $upper;
         }
 
@@ -74,16 +76,18 @@ class AgeAtEvent extends AbstractElement
     {
         $canonical = $this->canonical($value);
 
-        return preg_replace_callback_array([
-            '/CHILD/'      => function () {
+        switch ($canonical) {
+            case 'CHILD':
                 return I18N::translate('Child');
-            },
-            '/INFANT/'     => function () {
+
+            case 'INFANT':
                 return I18N::translate('Infant');
-            },
-            '/STILLBORN/'  => function () {
+
+            case 'STILLBORN':
                 return I18N::translate('Stillborn');
-            },
+        }
+
+        return preg_replace_callback_array([
             '/\b(\d+)y\b/' => function (array $match) {
                 return I18N::plural('%s year', '%s years', (int) ($match[1]), I18N::number((float) $match[1]));
             },
