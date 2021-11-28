@@ -50,12 +50,14 @@ class AgeAtEvent extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 12;
 
+    protected const KEYWORDS = ['CHILD', 'INFANT', 'STILLBORN'];
+
     public function canonical(string $value): string
     {
         $value = parent::canonical($value);
         $upper = strtoupper($value);
 
-        if ($upper === 'CHILD' || $upper === 'INFANT' || $upper === 'STILLBORN') {
+        if (in_array($upper, static::KEYWORDS, true)) {
             return $upper;
         }
 
@@ -74,10 +76,18 @@ class AgeAtEvent extends AbstractElement
     {
         $canonical = $this->canonical($value);
 
+        switch ($canonical) {
+            case 'CHILD':
+                return I18N::translate('Child');
+
+            case 'INFANT':
+                return I18N::translate('Infant');
+
+            case 'STILLBORN':
+                return I18N::translate('Stillborn');
+        }
+
         return preg_replace_callback_array([
-            '/CHILD/'     => fn () => I18N::translate('Child'),
-            '/INFANT/'    => fn () => I18N::translate('Infant'),
-            '/STILLBORN/' => fn () => I18N::translate('Stillborn'),
             '/\b(\d+)y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) $match[1], I18N::number((float) $match[1])),
             '/\b(\d+)m\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) $match[1], I18N::number((float) $match[1])),
             '/\b(\d+)w\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) $match[1], I18N::number((float) $match[1])),
