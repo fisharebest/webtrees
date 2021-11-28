@@ -352,7 +352,8 @@ abstract class AbstractElement implements ElementInterface
         }
 
         $html = Registry::markdownFactory()->autolink($tree)->convertToHtml($canonical);
-        $html = strip_tags($html, ['a']);
+        $html = strtr($html, ["</p>\n<p>" => "<br><br>"]);
+        $html = strip_tags($html, ['a', 'br']);
         $html = trim($html);
 
         if (str_contains($html, "\n")) {
