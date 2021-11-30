@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-07-01 08:23+0000\n"
+"PO-Revision-Date: 2021-12-02 08:22+0000\n"
 "Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees-20/pl/>\n"
+"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.9.1\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -25,7 +27,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " , ale szczegóły są nieznane"
+msgstr ", ale szczegóły są nieznane"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -2127,7 +2129,7 @@ msgstr "Aqua Marine"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Usunąć powiązanie do „%s”?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -6275,7 +6277,7 @@ msgstr "Księga rodzinna - %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Spis rodzin"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6299,7 +6301,7 @@ msgstr "Rodzina - %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Miejsce zamieszkania rodziny"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6393,7 +6395,7 @@ msgstr "Żona"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -11627,7 +11629,7 @@ msgstr "Provo, Utah, Stany Zjednoczone"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Pełnomocnik"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -15465,7 +15467,7 @@ msgstr "Czas"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Czas ostatniej zmiany"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15643,7 +15645,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Zbyt dużo próśb. Spróbuj ponownie później."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15921,7 +15923,7 @@ msgstr "Rodzaj faktu"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Rodzaj numeru identyfikacyjnego"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15939,7 +15941,7 @@ msgstr "Rodzaj imienia i nazwiska"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Rodzaj numeru referencyjnego"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -16076,7 +16078,7 @@ msgstr "Nieznani"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Odepnij"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -19553,7 +19555,7 @@ msgstr "Importuj plik"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "w tekście"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20430,7 +20432,7 @@ msgstr "kuzyn siódmego stopnia"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "wspólna notatka"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
