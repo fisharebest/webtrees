@@ -792,17 +792,19 @@ class FunctionsPrintFacts
                 echo '</div>';
             }
             echo '</th>';
-            if ($note instanceof Note) {
-                $text = $note->getNote();
-            } else {
+
+            if (!$note instanceof Note) {
                 $nrec = Functions::getSubRecord($level, "$level NOTE", $factrec, $j + 1);
                 $text = $match[$j][1] . Functions::getCont($level + 1, $nrec);
+                $text = preg_replace(["/\d (NOTE|CON[C,T]) ?/", "/\r?\n/"], ["", "\n1 CONT "], $text);
+                assert(is_string($text));
+                $note = Registry::noteFactory()->new('', '0 @_@ NOTE ' . $text, null, $tree);
             }
 
             $element = new SubmitterText('');
 
             echo '<td class="', $styleadd, ' wrap">';
-            echo $element->value($text, $tree);
+            echo $element->value($note->getHtml(), $tree);
             echo '</td></tr>';
         }
     }

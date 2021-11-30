@@ -35,7 +35,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 use function app;
@@ -45,8 +44,6 @@ use function explode;
 use function in_array;
 use function preg_match;
 use function preg_match_all;
-use function str_contains;
-use function strip_tags;
 use function strlen;
 use function strpos;
 use function substr;
@@ -66,65 +63,49 @@ class FunctionsPrint
      * print a note record
      *
      * @param Tree   $tree
-     * @param string $text
-     * @param int    $nlevel the level of the note record
+     * @param Note|null $note
      * @param string $nrec   the note record to print
      *
      * @return string
      */
-    private static function printNoteRecord(Tree $tree, string $text, int $nlevel, string $nrec): string
+    private static function printNoteRecord(Tree $tree, $note, string $nrec = ''): string
     {
-        $text .= Functions::getCont($nlevel, $nrec);
+        $shared = true;
+        if ($note === null) {
+            if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
+                // Shared note.
+                $note = Registry::noteFactory()->make($match[1], $tree);
+            } else {
+                // Inline note, create a dummy note object
+                $nrec   = '0 @_@ NOTE ' . preg_replace(["/\d (NOTE|CON[C,T]) ?/", "/\r?\n/"], ["", "\n1 CONT "], $nrec);
+                $note   = Registry::noteFactory()->new('', $nrec, null, $tree);
+                $shared = false;
+            }
+        }
+        // It must exist.
+        assert($note instanceof Note);
 
-        if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
-            // Shared note.
-            $note = Registry::noteFactory()->make($match[1], $tree);
-            // It must exist.
-            assert($note instanceof Note);
+        if ($note->canShow()) {
+            $one_line_only = $note->getNote() === strip_tags(html_entity_decode($note->fullName(), ENT_QUOTES, "UTF-8"));
+            if ($shared) {
+                $title = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
+                $label = I18N::translate('Shared note');
+            } else {
+                $title = $note->fullName();
+                $label = I18N::translate('Note');
+            }
 
-            $label      = I18N::translate('Shared note');
-            $html       = Registry::markdownFactory()->markdown($tree)->convertToHtml($note->getNote());
-            $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
-
-            $one_line_only = strip_tags($note->fullName()) === strip_tags($note->getNote());
-        } else {
-            // Inline note.
-            $label = I18N::translate('Note');
-            $html  = Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
-
-            [$first_line] = explode("\n", strip_tags($html));
-            // Use same logic as note objects
-            $first_line = Str::limit($first_line, 100, I18N::translate('…'));
-
-            $one_line_only = !str_contains($text, "\n") && mb_strlen($text) <= 100;
+            return view('note', [
+                'label'         => $label,
+                'title'         => $title,
+                'content'       => $note->getHtml(),
+                'one_line_only' => $one_line_only,
+                'id'            => 'collapse-' . Uuid::uuid4()->toString(),
+                'expanded'      => (bool) $tree->getPreference('EXPAND_NOTES') ? 'show' : '',
+            ]);
         }
 
-        if ($one_line_only) {
-            return
-                '<div class="fact_NOTE">' .
-                I18N::translate(
-                    '<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>',
-                    $label,
-                    $first_line
-                ) .
-                '</div>';
-        }
-
-        $id       = 'collapse-' . Uuid::uuid4()->toString();
-        $expanded = (bool) $tree->getPreference('EXPAND_NOTES');
-
-        return
-            '<div class="fact_NOTE">' .
-            '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
-            view('icons/expand') .
-            view('icons/collapse') .
-            '</a>' .
-            '<span class="label">' . $label . ':</span> ' .
-            $first_line .
-            '</div>' .
-            '<div id="' . e($id) . '" class="collapse ' . ($expanded ? 'show' : '') . '">' .
-            $html .
-            '</div>';
+        return '';
     }
 
     /**
@@ -140,7 +121,6 @@ class FunctionsPrint
     {
         $data          = '';
         $previous_spos = 0;
-        $nlevel        = $level + 1;
         $ct            = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
         for ($j = 0; $j < $ct; $j++) {
             $spos1 = strpos($factrec, $match[$j][0], $previous_spos);
@@ -154,18 +134,10 @@ class FunctionsPrint
                 $match[$j][1] = '';
             }
             if (!preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $match[$j][1], $nmatch)) {
-                $data .= self::printNoteRecord($tree, $match[$j][1], $nlevel, $nrec);
+                $data .= self::printNoteRecord($tree, null, $nrec);
             } else {
                 $note = Registry::noteFactory()->make($nmatch[1], $tree);
-                if ($note) {
-                    if ($note->canShow()) {
-                        $noterec = $note->gedcom();
-                        $nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-                        $data    .= self::printNoteRecord($tree, $nt > 0 ? $n1match[1] : '', 1, $noterec);
-                    }
-                } else {
-                    $data = '<div class="fact_NOTE"><span class="label">' . I18N::translate('Note') . '</span>: <span class="field error">' . $nmatch[1] . '</span></div>';
-                }
+                $data    .= self::printNoteRecord($tree, $note);
             }
         }
 

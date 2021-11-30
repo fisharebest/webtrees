@@ -97,12 +97,12 @@ class Media extends GedcomRecord
         if ($fact instanceof Fact) {
             // Link to note object
             $note = $fact->target();
-            if ($note instanceof Note) {
-                return $note->getNote();
+            if (!$note instanceof Note) {
+                // Inline note
+                $nrec = '0 @_@ NOTE ' . preg_replace(["/\d (NOTE|CON[C,T]) ?/", "/\r?\n/"], ["", "\n1 CONT "], $fact->value());
+                $note = Registry::noteFactory()->new('', $nrec, null, $this->tree());
             }
-
-            // Inline note
-            return $fact->value();
+            return $note->getHtml();
         }
 
         return '';

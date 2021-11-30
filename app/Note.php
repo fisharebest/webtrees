@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Support\Str;
 
 use function explode;
 use function htmlspecialchars_decode;
@@ -41,6 +40,8 @@ class Note extends GedcomRecord
 
     protected const ROUTE_NAME = NotePage::class;
 
+    private const NAME_LENGTH = 75;
+
     /**
      * Get the text contents of the note
      *
@@ -53,6 +54,36 @@ class Note extends GedcomRecord
         }
 
         return '';
+    }
+
+    /**
+     * Get the contents of the note formatted according to the tree option
+     *
+     * @return string
+     */
+    public function getHtml()
+    {
+        $text = $this->getNote();
+        if ($text === '') {
+            return $text;
+        }
+
+        // Obey FORMAT_TEXT option strictly. To restore previous behaviour whereby
+        // text containing markdown tables is always interpreted as markdown
+        // uncomment the end of the next line
+        if ($this->tree()->getPreference('FORMAT_TEXT') === 'markdown') { // || preg_match('/\| ? -{3,}/', $text) === 1) {
+            $paragraphs = '';
+            // Split on "\n" except where the line is part of a markdown table (starts and ends with |)
+            $note_paras = preg_split('/(?<!^\|)(?<!\|)\n/', $text);
+            if ($note_paras !== false) {
+                foreach (array_filter($note_paras) as $note_para) {
+                    $paragraphs .= Registry::markdownFactory()->markdown($this->tree())->convertToHtml($note_para);
+                }
+            }
+            return '<div class="markdown">' . $paragraphs . '</div>';
+        }
+
+        return '<div>' . nl2br($text) . '</div>';
     }
 
     /**
@@ -83,7 +114,7 @@ class Note extends GedcomRecord
 
     /**
      * Create a name for this note - apply (and remove) markup, then take
-     * a maximum of 100 characters from the first non-empty line.
+     * a maximum of NAME_LENGTH characters from the first non-empty line.
      *
      * @return void
      */
@@ -101,8 +132,14 @@ class Note extends GedcomRecord
 
 
         if ($text !== '') {
-            $text = htmlspecialchars_decode($text, ENT_QUOTES);
-            $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());
+            $text = htmlspecialchars_decode($text, ENT_QUOTES | ENT_SUBSTITUTE);
+            if (mb_strlen($text) >= self::NAME_LENGTH) {
+                // truncate $text to words closest to NAME_LENGTH
+                $last_space = (int) mb_strrpos(mb_substr($text, 0, self::NAME_LENGTH), " ", 0);
+                $text = mb_substr($text, 0, $last_space) . I18N::translate('…');
+            }
+
+            $this->addName('NOTE', $text, $this->gedcom());
         }
     }
 }
