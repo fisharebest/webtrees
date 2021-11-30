@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-08-21 05:04+0000\nLast-Translator: Łukasz <wilenskipl@wp.pl>\nLanguage-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\nLanguage: pl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Polish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-12-02 08:22+0000\nLast-Translator: Łukasz <wilenskipl@wp.pl>\nLanguage-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\nLanguage: pl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Polish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -8,7 +8,7 @@ msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nP
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " , ale szczegóły są nieznane"
+msgstr ", ale szczegóły są nieznane"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -2070,7 +2070,7 @@ msgstr "Aqua Marine"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Czy usunąć powiązanie z „%s”?"
+msgstr "Usunąć powiązanie do „%s”?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:41
@@ -6194,7 +6194,7 @@ msgstr "Księga rodzinna - %s"
 
 #: app/Factories/ElementFactory.php:321
 msgid "Family census"
-msgstr "Rodzina podczas spisu ludności"
+msgstr "Spis rodzin"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Family file"
@@ -6217,7 +6217,7 @@ msgstr "Rodzina - %s"
 
 #: app/Factories/ElementFactory.php:350
 msgid "Family residence"
-msgstr "Rezydencja rodzinna"
+msgstr "Miejsce zamieszkania rodziny"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -15874,7 +15874,7 @@ msgstr "Nieznani"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr "Rozłącz"
+msgstr "Odepnij"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -19294,7 +19294,7 @@ msgstr "Importuj plik"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr "notatka"
+msgstr "w tekście"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
