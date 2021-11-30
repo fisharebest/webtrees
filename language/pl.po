@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2018-09-25 11:42+0100\n"
-"PO-Revision-Date: 2021-07-01 08:23+0000\n"
+"PO-Revision-Date: 2021-12-02 08:22+0000\n"
 "Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
 "Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-17/pl/>\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:334
 #: modules_v3/ahnentafel_report/report.xml:359
 msgid " but the details are unknown"
-msgstr " , ale szczegóły są nieznane"
+msgstr ", ale szczegóły są nieznane"
 
 #: modules_v3/ahnentafel_report/report.xml:159
 #: modules_v3/ahnentafel_report/report.xml:187
