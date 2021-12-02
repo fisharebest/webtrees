@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddChildToFamilyPage;
+use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddSpouseToFamilyPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ChangeFamilyMembersPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteRecord;
@@ -13,6 +14,7 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
+ * @var bool             $can_upload_media
  * @var Collection<Fact> $clipboard_facts
  * @var Family           $record
  */
@@ -54,6 +56,15 @@ use Illuminate\Support\Collection;
             <a class="dropdown-item" href="<?= e(route(ReorderChildrenPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/reorder') ?>
                 <?= I18N::translate('Re-order children') ?>
+            </a>
+        <?php endif ?>
+
+        <?php if ($can_upload_media) : ?>
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="<?= e(route(AddNewFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref(), 'fact' => 'OBJE'])) ?>">
+                <?= view('icons/add') ?>
+                <?= I18N::translate('Add a media object') ?>
             </a>
         <?php endif ?>
 

@@ -9,6 +9,7 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
+ * @var bool             $can_upload_media
  * @var Collection<Fact> $clipboard_facts
  * @var Collection<Fact> $facts
  * @var Family           $record
@@ -23,7 +24,7 @@ use Illuminate\Support\Collection;
         <?= $record->fullName() ?>
     </h2>
     <?php if ($record->canEdit()) : ?>
-        <?= view('family-page-menu', ['clipboard_facts' => $clipboard_facts, 'record' => $record]) ?>
+        <?= view('family-page-menu', ['can_upload_media' => $can_upload_media, 'clipboard_facts' => $clipboard_facts, 'record' => $record]) ?>
     <?php endif ?>
 </div>
 
