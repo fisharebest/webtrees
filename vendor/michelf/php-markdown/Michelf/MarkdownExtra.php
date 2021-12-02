@@ -4,7 +4,7 @@
  *
  * @package   php-markdown
  * @author    Michel Fortin <michel.fortin@michelf.com>
- * @copyright 2004-2019 Michel Fortin <https://michelf.com/projects/php-markdown/>
+ * @copyright 2004-2021 Michel Fortin <https://michelf.com/projects/php-markdown/>
  * @copyright (Original Markdown) 2004-2006 John Gruber <https://daringfireball.net/projects/markdown/>
  */
 
@@ -345,7 +345,7 @@ class MarkdownExtra extends \Michelf\Markdown {
 	 * Tags that are always treated as block tags
 	 * @var string
 	 */
-	protected $block_tags_re = 'p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|address|form|fieldset|iframe|hr|legend|article|section|nav|aside|hgroup|header|footer|figcaption|figure';
+	protected $block_tags_re = 'p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|address|form|fieldset|iframe|hr|legend|article|section|nav|aside|hgroup|header|footer|figcaption|figure|details|summary';
 
 	/**
 	 * Tags treated as block tags only if the opening tag is alone on its line
@@ -932,6 +932,7 @@ class MarkdownExtra extends \Michelf\Markdown {
 	protected function _doAnchors_inline_callback($matches) {
 		$link_text		=  $this->runSpanGamut($matches[2]);
 		$url			=  $matches[3] === '' ? $matches[4] : $matches[3];
+		$title_quote		=& $matches[6];
 		$title			=& $matches[7];
 		$attr  = $this->doExtraAttributes("a", $dummy =& $matches[8]);
 
@@ -944,7 +945,7 @@ class MarkdownExtra extends \Michelf\Markdown {
 		$url = $this->encodeURLAttribute($url);
 
 		$result = "<a href=\"$url\"";
-		if (isset($title)) {
+		if (isset($title) && $title_quote) {
 			$title = $this->encodeAttribute($title);
 			$result .=  " title=\"$title\"";
 		}
@@ -1056,13 +1057,14 @@ class MarkdownExtra extends \Michelf\Markdown {
 	protected function _doImages_inline_callback($matches) {
 		$alt_text		= $matches[2];
 		$url			= $matches[3] === '' ? $matches[4] : $matches[3];
+		$title_quote		=& $matches[6];
 		$title			=& $matches[7];
 		$attr  = $this->doExtraAttributes("img", $dummy =& $matches[8]);
 
 		$alt_text = $this->encodeAttribute($alt_text);
 		$url = $this->encodeURLAttribute($url);
 		$result = "<img src=\"$url\" alt=\"$alt_text\"";
-		if (isset($title)) {
+		if (isset($title) && $title_quote) {
 			$title = $this->encodeAttribute($title);
 			$result .=  " title=\"$title\""; // $title already quoted
 		}

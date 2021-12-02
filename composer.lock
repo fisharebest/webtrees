@@ -62,16 +62,16 @@
         },
         {
             "name": "fisharebest/algorithm",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/algorithm.git",
-                "reference": "7d1bc0fc91b66cf613af9147e9a287c905a8b062"
+                "reference": "ce8cee9f8b1fe93b998d7c359f6a0e8598d9f1e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/7d1bc0fc91b66cf613af9147e9a287c905a8b062",
-                "reference": "7d1bc0fc91b66cf613af9147e9a287c905a8b062",
+                "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/ce8cee9f8b1fe93b998d7c359f6a0e8598d9f1e7",
+                "reference": "ce8cee9f8b1fe93b998d7c359f6a0e8598d9f1e7",
                 "shasum": ""
             },
             "require": {
@@ -79,17 +79,18 @@
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "*",
-                "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "4 - 9"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Fisharebest\\Algorithm\\": "src/"
+                    "Fisharebest\\Algorithm\\": "src/",
+                    "Fisharebest\\Tests\\Algorithm\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0+"
+                "GPL-3.0-or-later"
             ],
             "authors": [
                 {
@@ -108,9 +109,9 @@
             ],
             "support": {
                 "issues": "https://github.com/fisharebest/algorithm/issues",
-                "source": "https://github.com/fisharebest/algorithm/tree/develop"
+                "source": "https://github.com/fisharebest/algorithm/tree/1.6.0"
             },
-            "time": "2018-12-24T08:53:40+00:00"
+            "time": "2021-09-03T12:13:28+00:00"
         },
         {
             "name": "fisharebest/ext-calendar",
@@ -433,16 +434,16 @@
         },
         {
             "name": "michelf/php-markdown",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "c83178d49e372ca967d1a8c77ae4e051b3a3c75c"
+                "reference": "5024d623c1a057dcd2d076d25b7d270a1d0d55f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/c83178d49e372ca967d1a8c77ae4e051b3a3c75c",
-                "reference": "c83178d49e372ca967d1a8c77ae4e051b3a3c75c",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/5024d623c1a057dcd2d076d25b7d270a1d0d55f3",
+                "reference": "5024d623c1a057dcd2d076d25b7d270a1d0d55f3",
                 "shasum": ""
             },
             "require": {
@@ -480,22 +481,22 @@
             ],
             "support": {
                 "issues": "https://github.com/michelf/php-markdown/issues",
-                "source": "https://github.com/michelf/php-markdown/tree/1.9.0"
+                "source": "https://github.com/michelf/php-markdown/tree/1.9.1"
             },
-            "time": "2019-12-02T02:32:27+00:00"
+            "time": "2021-11-24T02:52:38+00:00"
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.19",
+            "version": "v2.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "446fc9faa5c2a9ddf65eb7121c0af7e857295241"
+                "reference": "0f1f60250fccffeaf5dda91eea1c018aed1adc2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/446fc9faa5c2a9ddf65eb7121c0af7e857295241",
-                "reference": "446fc9faa5c2a9ddf65eb7121c0af7e857295241",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/0f1f60250fccffeaf5dda91eea1c018aed1adc2a",
+                "reference": "0f1f60250fccffeaf5dda91eea1c018aed1adc2a",
                 "shasum": ""
             },
             "require": {
@@ -536,7 +537,7 @@
                 "issues": "https://github.com/paragonie/random_compat/issues",
                 "source": "https://github.com/paragonie/random_compat"
             },
-            "time": "2020-10-15T10:06:57+00:00"
+            "time": "2021-04-17T09:33:01+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -607,6 +608,16 @@
                 "issues": "https://github.com/ramsey/uuid/issues",
                 "source": "https://github.com/ramsey/uuid"
             },
+            "funding": [
+                {
+                    "url": "https://github.com/ramsey",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2016-03-22T18:20:19+00:00"
         },
         {
@@ -665,6 +676,7 @@
                 "issues": "https://github.com/swiftmailer/swiftmailer/issues",
                 "source": "https://github.com/swiftmailer/swiftmailer/tree/v5.4.12"
             },
+            "abandoned": "symfony/mailer",
             "time": "2018-07-31T09:26:32+00:00"
         },
         {
@@ -1825,16 +1837,16 @@
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.4.1",
+            "version": "6.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "5ba838befdb37ef06a16d9f716f35eb03cb1b329"
+                "reference": "172540dcbfdf8dc983bc2fe78feff48ff7ec1c76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/5ba838befdb37ef06a16d9f716f35eb03cb1b329",
-                "reference": "5ba838befdb37ef06a16d9f716f35eb03cb1b329",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/172540dcbfdf8dc983bc2fe78feff48ff7ec1c76",
+                "reference": "172540dcbfdf8dc983bc2fe78feff48ff7ec1c76",
                 "shasum": ""
             },
             "require": {
@@ -1885,7 +1897,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.4.1"
+                "source": "https://github.com/tecnickcom/TCPDF/tree/6.4.2"
             },
             "funding": [
                 {
@@ -1893,7 +1905,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-27T16:00:33+00:00"
+            "time": "2021-07-20T14:43:20+00:00"
         }
     ],
     "packages-dev": [
@@ -2769,16 +2781,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
-                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/d49695b909c3b7628b6289db5479a1c204601f11",
+                "reference": "d49695b909c3b7628b6289db5479a1c204601f11",
                 "shasum": ""
             },
             "require": {
@@ -2802,7 +2814,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for logging libraries",
@@ -2813,9 +2825,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/1.1.3"
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
             },
-            "time": "2020-03-23T09:12:05+00:00"
+            "time": "2021-05-03T11:20:27+00:00"
         },
         {
             "name": "sebastian/comparator",
@@ -3723,5 +3735,5 @@
     "platform-overrides": {
         "php": "5.3.9"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

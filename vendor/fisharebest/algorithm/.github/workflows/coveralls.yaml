@@ -1,0 +1,20 @@
+name: Coverage
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    name: coveralls.io
+
+    env:
+      COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: composer validate --strict
+      - run: composer install --no-interaction
+      - run: XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
+      - run: composer global require php-coveralls/php-coveralls
+      - run: vendor/bin/php-coveralls --verbose

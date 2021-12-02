@@ -23,6 +23,7 @@ return array(
     'Rhumsaa\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Michelf\\' => array($vendorDir . '/michelf/php-markdown/Michelf'),
     'Fisharebest\\Webtrees\\' => array($baseDir . '/app'),
+    'Fisharebest\\Tests\\Algorithm\\' => array($vendorDir . '/fisharebest/algorithm/tests'),
     'Fisharebest\\PhpPolyfill\\' => array($vendorDir . '/fisharebest/php-polyfill/src'),
     'Fisharebest\\Localization\\' => array($vendorDir . '/fisharebest/localization/src'),
     'Fisharebest\\ExtCalendar\\' => array($vendorDir . '/fisharebest/ext-calendar/src'),

@@ -22,7 +22,7 @@ return array(
     '32dcc8afd4335739640db7d200c1971d' => $vendorDir . '/symfony/polyfill-apcu/bootstrap.php',
     'b45b351e6b6f7487d819961fef2fda77' => $vendorDir . '/jakeasmith/http_build_url/src/http_build_url.php',
     'b3134b0e457069f7362d2c9cf91628c7' => $vendorDir . '/fisharebest/ext-calendar/src/shims.php',
+    '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     'd242c324488a3873d00844a6f8dec437' => $vendorDir . '/fisharebest/php-polyfill/src/bootstrap.php',
     '2c102faa651ef8ea5874edb585946bce' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
-    '2cffec82183ee1cea088009cef9a6fc3' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
 );

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit856cc433deb87b6a225dad7778596ed1
+class ComposerStaticInit1d55f90fa08060145f5551139779c670
 {
     public static $files = array (
         '3e2471375464aac821502deb0ac64275' => __DIR__ . '/..' . '/symfony/polyfill-php54/bootstrap.php',
@@ -23,9 +23,9 @@ class ComposerStaticInit856cc433deb87b6a225dad7778596ed1
         '32dcc8afd4335739640db7d200c1971d' => __DIR__ . '/..' . '/symfony/polyfill-apcu/bootstrap.php',
         'b45b351e6b6f7487d819961fef2fda77' => __DIR__ . '/..' . '/jakeasmith/http_build_url/src/http_build_url.php',
         'b3134b0e457069f7362d2c9cf91628c7' => __DIR__ . '/..' . '/fisharebest/ext-calendar/src/shims.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'd242c324488a3873d00844a6f8dec437' => __DIR__ . '/..' . '/fisharebest/php-polyfill/src/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -57,6 +57,7 @@ class ComposerStaticInit856cc433deb87b6a225dad7778596ed1
         'F' => 
         array (
             'Fisharebest\\Webtrees\\' => 21,
+            'Fisharebest\\Tests\\Algorithm\\' => 28,
             'Fisharebest\\PhpPolyfill\\' => 24,
             'Fisharebest\\Localization\\' => 25,
             'Fisharebest\\ExtCalendar\\' => 24,
@@ -133,6 +134,10 @@ class ComposerStaticInit856cc433deb87b6a225dad7778596ed1
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Fisharebest\\Tests\\Algorithm\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fisharebest/algorithm/tests',
+        ),
         'Fisharebest\\PhpPolyfill\\' => 
         array (
             0 => __DIR__ . '/..' . '/fisharebest/php-polyfill/src',
@@ -198,10 +203,10 @@ class ComposerStaticInit856cc433deb87b6a225dad7778596ed1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit856cc433deb87b6a225dad7778596ed1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit856cc433deb87b6a225dad7778596ed1::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit856cc433deb87b6a225dad7778596ed1::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit856cc433deb87b6a225dad7778596ed1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1d55f90fa08060145f5551139779c670::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1d55f90fa08060145f5551139779c670::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit1d55f90fa08060145f5551139779c670::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit1d55f90fa08060145f5551139779c670::$classMap;
 
         }, null, ClassLoader::class);
     }
