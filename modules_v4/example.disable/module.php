@@ -14,7 +14,7 @@ use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 
-return new class extends AbstractModule implements ModuleCustomInterface {
+return new class() extends AbstractModule implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /**

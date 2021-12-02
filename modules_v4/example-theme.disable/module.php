@@ -14,7 +14,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\View;
 
-return new class extends MinimalTheme implements ModuleCustomInterface {
+return new class() extends MinimalTheme implements ModuleCustomInterface {
     use ModuleCustomTrait;
 
     /**

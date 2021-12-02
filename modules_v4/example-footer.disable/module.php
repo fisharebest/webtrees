@@ -17,7 +17,7 @@ use Fisharebest\Webtrees\View;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-return new class extends AbstractModule implements ModuleCustomInterface, ModuleFooterInterface {
+return new class() extends AbstractModule implements ModuleCustomInterface, ModuleFooterInterface {
     use ModuleCustomTrait;
     use ModuleFooterTrait;
 
