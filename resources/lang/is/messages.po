@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2021-11-29 17:24+0000\n"
+"PO-Revision-Date: 2021-12-04 06:40+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -7172,7 +7172,7 @@ msgstr "Gilbert, Arizona, Bandaríkin"
 #: resources/views/lists/given-names-table.phtml:26
 #: resources/views/search-phonetic-page.phtml:32
 msgid "Given name"
-msgstr "Skírnarnafn"
+msgstr "Fornafn"
 
 #. I18N: gedcom tag GIVN
 #: app/Factories/ElementFactory.php:1216 app/Factories/ElementFactory.php:1223
@@ -7184,7 +7184,7 @@ msgstr "Skírnarnafn"
 #: resources/views/lists/given-names-table.phtml:21
 #: resources/views/lists/individuals-table.phtml:232
 msgid "Given names"
-msgstr "Skírnarnafn/-nöfn"
+msgstr "Fornafn/-nöfn"
 
 #: app/Elements/RelationIsDescriptor.php:112
 #: app/GedcomCode/GedcomCodeRela.php:224
@@ -8868,7 +8868,12 @@ msgstr "London, England"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:371
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Langa lista af persónum með sama eftirnafni er hægt að brjóta niður í minni undirlista samkvæmt fyrsta bókstafnum í skírnarnafni einstaklingsins.<br><br>Þessi valkostur ákvarðar hvenær undirlistar af eftirnöfnum verða til. Til að afvirkja undirlista alveg, stillið þennan valkost þá á núll."
+msgstr ""
+"Langa lista af einstaklingum með sama eftirnafni er hægt að brjóta niður í "
+"minni undirlista samkvæmt fyrsta bókstafnum í fornafni "
+"einstaklingsins.<br><br>Þessi valkostur ákvarðar hvenær undirlistar af "
+"eftirnöfnum verða til. Til að afvirkja undirlista alveg, stillið þennan "
+"valkost þá á núll."
 
 #: resources/views/statistics/families/marriage-length.phtml:22
 msgid "Longest marriage"
@@ -15139,7 +15144,7 @@ msgstr "Þessar upplýsingar liggja ekki fyrir."
 #: app/Statistics/Repository/IndividualRepository.php:1232
 #: app/Statistics/Repository/IndividualRepository.php:1252
 msgid "This information is private and cannot be shown."
-msgstr "Þessar upplýsingar eru einkamál og ekki hægt að sýna."
+msgstr "Þessar upplýsingar eru einkamál og ekki hægt að birta."
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:876
@@ -16750,7 +16755,7 @@ msgstr "Móttökutexti á innskráningarsíðu"
 
 #: resources/views/login-page.phtml:22
 msgid "Welcome to this genealogy website"
-msgstr "Velkomin/-n á þessa ættfræði vefsíðu"
+msgstr "Velkomin/-n á þessa ættfræðivefsíðu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
