@@ -6,14 +6,4 @@ parameters:
         - Webtrees::DEBUG
         - Webtrees::ERROR_REPORTING
     ignoreErrors:
-        - '#^Call to an undefined static method Illuminate\\Database\\Capsule\\Manager::query\(\)\.$#'
-        - '#^Call to an undefined method Aura\\Router\\Map::extras\(\)\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::having\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::orWhere\(\) expects array\|Closure\|string, Illuminate\\Database\\Query\\Expression\|string given\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::orWhere\(\) expects array\|Closure\|string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::pluck\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::whereNotIn\(\) expects string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$table of static method Illuminate\\Database\\Capsule\\Manager::table\(\) expects Closure\|Illuminate\\Database\\Query\\Builder\|string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#1 \$column of method Illuminate\\Database\\Query\\Builder::where\(\) expects array\|Closure\|string, Illuminate\\Database\\Query\\Expression given\.$#'
-        - '#^Parameter \#2 \$key of method Illuminate\\Database\\Query\\Builder::pluck\(\) expects string\|null, Illuminate\\Database\\Query\\Expression given.$#'
         - '#^Access to an undefined property object::\$[A-Za-z0-9_]+\.$#'
