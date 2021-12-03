@@ -19,7 +19,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function preg_match;
 use function response;
 
-return new class() extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface {
+return new class () extends AbstractModule implements ModuleCustomInterface, MiddlewareInterface {
     use ModuleCustomTrait;
 
     // Regular-expressions to match unwanted bots.
