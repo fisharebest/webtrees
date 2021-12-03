@@ -145,6 +145,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function gc($max_lifetime): bool
     {
         DB::table('session')
