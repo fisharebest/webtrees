@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-12-04 06:40+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-05 10:47+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -365,7 +365,7 @@ msgstr[1] "%s vikur"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s árs"
-msgstr[1] "%s ára"
+msgstr[1] "%s ár"
 
 #: app/Http/RequestHandlers/CalendarEvents.php:161
 #: resources/views/modules/yahrzeit/list.phtml:45
@@ -472,7 +472,7 @@ msgstr "(aldur %s)"
 #: app/Http/RequestHandlers/IndividualPage.php:174
 #, php-format
 msgid "(aged %s)"
-msgstr "(%s ára)"
+msgstr "(aldur %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:306
@@ -481,7 +481,7 @@ msgstr "(%s ára)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s ára)"
+msgstr "(aldur %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:302
@@ -490,7 +490,7 @@ msgstr "(%s ára)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s ára)"
+msgstr "(aldur %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -804,7 +804,7 @@ msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
 msgid "A list of the most popular given names."
-msgstr "Listi yfir algengustu skírnarnöfnin."
+msgstr "Listi yfir algengustu fornöfnin."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:76
@@ -898,7 +898,7 @@ msgstr "Skýrsla yfir einstaklinga sem dóu á tilteknum tíma eða stað."
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Skýrsla yfir einstaklinga með tiltekið starfsheiti."
+msgstr "Skýrsla yfir einstaklinga með tiltekið starf."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
@@ -909,7 +909,7 @@ msgstr "Skýrsla yfir einstaklinga sem fæddir voru á tilteknum tíma eða sta�
 #: app/Module/CemeteryReportModule.php:52
 #: resources/xml/reports/cemetery_report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Skýrsla yfir einstaklinga sem grafnir voru á tilteknum stað."
+msgstr "Skýrsla yfir einstaklinga sem jarðaðir voru á tilteknum stað."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:52
@@ -1256,7 +1256,7 @@ msgstr "Bæta við staðreynd"
 #: resources/views/family-page-grandparents.phtml:42
 #: resources/views/modules/relatives/tab.phtml:49
 msgid "Add a father"
-msgstr "Bæta við nýjan föður"
+msgstr "Bæta við nýjum föður"
 
 #: resources/views/modules/favorites/favorites.phtml:44
 #: resources/views/modules/favorites/favorites.phtml:54
@@ -1327,7 +1327,7 @@ msgstr "Bæta við syni"
 
 #: resources/views/modules/sources_tab/tab.phtml:51
 msgid "Add a source citation"
-msgstr "Bæta við nýrri heimildar tilvísun"
+msgstr "Bæta við nýrri heimildartilvísun"
 
 #: app/Http/RequestHandlers/AddSpouseToIndividualPage.php:106
 msgid "Add a spouse"
@@ -1399,7 +1399,7 @@ msgstr "Bæta við fleirum blokkum frá eftirfarandi lista."
 
 #: resources/views/search-advanced-page.phtml:44
 msgid "Add more fields"
-msgstr "Bæta við Fleirum Reitum"
+msgstr "Bæta við fleiri reitum"
 
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:78
@@ -2131,7 +2131,7 @@ msgstr "Auk þess að nota tækjastikuna til að nýta HTML sniðmótun, þá ge
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:155
 msgid "Ash"
-msgstr "Ash"
+msgstr "Aska"
 
 #: resources/views/modules/statistics-chart/custom.phtml:191
 msgid "Asia"
@@ -2765,12 +2765,12 @@ msgstr "Fæðing eftir landi"
 #: resources/xml/reports/bdm_report.xml:8
 #: resources/xml/reports/birth_report.xml:8
 msgid "Birth date range end"
-msgstr "Fæðingar Dagsetningasvið endar"
+msgstr "Tímabil fæðingardags endar"
 
 #: resources/xml/reports/bdm_report.xml:7
 #: resources/xml/reports/birth_report.xml:7
 msgid "Birth date range start"
-msgstr "Fæðingar Dagsetningasvið byrjar"
+msgstr "Tímabil fæðingardags byrjar"
 
 #: app/Module/CustomTagsBrothersKeeper.php:73
 msgid "Birth name"
@@ -3186,7 +3186,7 @@ msgstr "Jarðaför eiginkonu"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
-msgstr "Grafarstaður inniheldur"
+msgstr "Greftrunarstaður inniheldur"
 
 #. I18N: Name of a module/report
 #: app/Module/CemeteryReportModule.php:40
@@ -4579,7 +4579,7 @@ msgstr "Dagsetning líkbrennslu"
 #: resources/xml/reports/fact_sources.xml:274
 #: resources/xml/reports/missing_facts_report.xml:505
 msgid "Date of death"
-msgstr "Dagsetning andláts"
+msgstr "Andlátsdagur"
 
 #: app/Factories/ElementFactory.php:327
 msgid "Date of divorce"
@@ -4628,7 +4628,7 @@ msgstr "Dagsetning síðustu breytingar"
 #: resources/xml/reports/fact_sources.xml:319
 #: resources/xml/reports/missing_facts_report.xml:463
 msgid "Date of marriage"
-msgstr "Dagsetning giftingar"
+msgstr "Giftingardagur"
 
 #: app/Factories/ElementFactory.php:336
 #: resources/xml/reports/missing_facts_report.xml:420
@@ -4649,11 +4649,11 @@ msgstr "Dagsetning bústaðar"
 
 #: resources/views/help/date.phtml:104
 msgid "Date period"
-msgstr "Dagsetninga tímabil"
+msgstr "Dagsetningatímabil"
 
 #: resources/views/help/date.phtml:97
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Dagsetninga tímabil eru notuð til að gefa til kynna að staðreynd, t.d. starfsheiti, hélt áfram fyrir ákveðin tímabil."
+msgstr "Dagsetningatímabil eru notuð til að gefa til kynna að staðreynd, t.d. starf, haldi áfram fyrir ákveðið tímabil."
 
 #: app/Factories/ElementFactory.php:692 resources/views/help/date.phtml:66
 #: resources/views/modules/statistics-chart/custom.phtml:96
@@ -4851,12 +4851,12 @@ msgstr "Andlát eftir landi"
 #: resources/xml/reports/bdm_report.xml:10
 #: resources/xml/reports/death_report.xml:8
 msgid "Death date range end"
-msgstr "Dánar Dagsetningasvið endar"
+msgstr "Tímabil dánardags endar"
 
 #: resources/xml/reports/bdm_report.xml:9
 #: resources/xml/reports/death_report.xml:7
 msgid "Death date range start"
-msgstr "Dánar Dagsetningasvið byrjar"
+msgstr "Tímabil dánardags byrjar"
 
 #: app/Module/IndividualFactsTabModule.php:441
 msgid "Death of a brother"
@@ -5663,7 +5663,7 @@ msgstr "elul"
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr "Tölvupóstur"
+msgstr "Netfang"
 
 #: app/Factories/ElementFactory.php:287 app/Factories/ElementFactory.php:396
 #: app/Factories/ElementFactory.php:420 app/Factories/ElementFactory.php:673
@@ -5745,7 +5745,7 @@ msgstr "Lokaár"
 
 #: resources/xml/reports/change_report.xml:6
 msgid "Ending range of change dates"
-msgstr "Endasvið á breytingar dagsetningum"
+msgstr "Endadagsetning á tímabili breytinga"
 
 #. I18N: Location of an historic LDS church temple - https://en.wikipedia.org/wiki/Endowment_house
 #: app/Elements/TempleCode.php:93
@@ -5872,7 +5872,7 @@ msgstr "Atburðir í löndum"
 
 #: resources/views/modules/personal_facts/tab.phtml:38
 msgid "Events of close relatives"
-msgstr "Atburðir náinni skyldmenna"
+msgstr "Atburðir náinna skyldmenna"
 
 #: resources/views/admin/users-edit.phtml:242
 msgid "Everybody has this role, including visitors to the website and search engines."
@@ -6665,12 +6665,12 @@ msgstr "Fyrir tæknilega aðstoð og upplýsingar hafðu þá samband við %s."
 #: app/Module/ContactsFooterModule.php:136
 #, php-format
 msgid "For technical support or genealogy questions contact %s."
-msgstr "Fyrir tæknilega aðstoð eða spurningar um ættfræði, hafðu þá samband við %s."
+msgstr "Fyrir tæknilega aðstoð eða ættfræðispurningar, hafðu þá samband við %s."
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: resources/views/admin/site-preferences.phtml:105
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr "Fyrir vefsíður með fleiri en einni ættartölu, mun þessi valkostur sýna listann yfir ættartölu í aðalvalmyndinni, leitarsíðum osfrv."
+msgstr "Fyrir vefsíður með fleiri en einni ættartölu, þá mun þessi valkostur sýna listann yfir ættartölu í aðalvalmyndinni, leitarsíðum osfrv."
 
 #: resources/views/login-page.phtml:61
 #: resources/views/modules/login_block/sign-in.phtml:42
@@ -7310,7 +7310,7 @@ msgstr "Hebreska"
 #: app/Module/CustomTagsBrothersKeeper.php:81
 #: app/Module/CustomTagsBrothersKeeper.php:82
 msgid "Hebrew name"
-msgstr "Hebresku nafn"
+msgstr "Hebreskt nafn"
 
 #: app/Module/CustomTagsBrothersKeeper.php:101
 msgid "Height"
@@ -7376,7 +7376,7 @@ msgstr "Helvetica"
 
 #: resources/xml/reports/ahnentafel_report.xml:197
 msgid "Her occupation was"
-msgstr "Starfsheiti hennar var"
+msgstr "Starf hennar var"
 
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
@@ -7473,7 +7473,7 @@ msgstr "Hijri"
 
 #: resources/xml/reports/ahnentafel_report.xml:196
 msgid "His occupation was"
-msgstr "Starfsheiti hans var"
+msgstr "Starf hans var"
 
 #: app/Http/RequestHandlers/ModulesHistoricEventsPage.php:43
 #: resources/views/admin/control-panel.phtml:740
@@ -7904,7 +7904,7 @@ msgstr "Einstaklingssíður"
 #: resources/views/admin/users-edit.phtml:291
 #: resources/views/edit-account-page.phtml:58
 msgid "Individual record"
-msgstr "Einstaklings færsla"
+msgstr "Einstaklingsfærsla"
 
 #: resources/views/modules/gedcom_stats/config.phtml:58
 #: resources/views/modules/gedcom_stats/statistics.phtml:211
@@ -8949,7 +8949,7 @@ msgstr "Handrit"
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:657
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkimiðum og webtrees skilur flest þeirra. Þegar óþekkjanlegir merkimiðar finnst þá gerir þessi valkostur þér kleift að velja hvort eigi að hunsa þá eða birta aðvörunar skilaboð."
+msgstr "Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkimiðum og webtrees skilur flesta þeirra. Þegar óþekkjanlegir merkimiðar finnst þá gerir þessi valkostur þér kleift að velja hvort eigi að hunsa þá eða birta aðvörunar skilaboð."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:71
@@ -9092,11 +9092,11 @@ msgstr "Giftingarsamningur"
 
 #: resources/xml/reports/marriage_report.xml:8
 msgid "Marriage date range end"
-msgstr "Hjúskapar Dagsetningasvið endar"
+msgstr "Tímabil hjúskapardags endar"
 
 #: resources/xml/reports/marriage_report.xml:7
 msgid "Marriage date range start"
-msgstr "Hjúskapar Dagsetningasvið byrjar"
+msgstr "Tímabil hjúskapardags byrjar"
 
 #: app/Module/CustomTagsFamilyTreeMaker.php:71
 #: app/Module/CustomTagsFamilyTreeMaker.php:91
@@ -9430,7 +9430,7 @@ msgstr "Gagnagerð"
 #: app/Module/CustomTagsBrothersKeeper.php:103
 #: app/Module/CustomTagsReunion.php:54
 msgid "Medical"
-msgstr "Læknifræðilegur"
+msgstr "Læknisfræðilegur"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:169
@@ -10568,14 +10568,14 @@ msgstr "Oaxaca, Mexikó"
 #: resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
-msgstr "Starfsheiti"
+msgstr "Starf"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:44
 #: resources/xml/reports/occupation_report.xml:3
 #: resources/xml/reports/occupation_report.xml:37
 msgid "Occupations"
-msgstr "Starfsheiti"
+msgstr "Störf"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:411
@@ -10753,7 +10753,7 @@ msgstr "Skipan könnunar á sögulegum kortum"
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
 msgid "Orientation"
-msgstr "Stefnumörkun"
+msgstr "Lega"
 
 #: app/Module/CustomTagsGenPluswin.php:74
 #: app/Module/CustomTagsGenPluswin.php:83
@@ -11117,7 +11117,7 @@ msgstr "Staður"
 #: app/Module/PlaceHierarchyListModule.php:252
 #: resources/views/place-hierarchy.phtml:16
 msgid "Place hierarchy"
-msgstr "Staðar stigveldi"
+msgstr "Staðarstigveldi"
 
 #: app/Module/CustomTagsPhpGedView.php:56
 msgid "Place in Hebrew"
@@ -11183,7 +11183,7 @@ msgstr "Staður bar mitzvah"
 #: resources/xml/reports/fact_sources.xml:273
 #: resources/xml/reports/missing_facts_report.xml:93
 msgid "Place of birth"
-msgstr "Staður fæðingar"
+msgstr "Fæðingarstaður"
 
 #: app/Factories/ElementFactory.php:480
 msgid "Place of blessing"
@@ -11221,7 +11221,7 @@ msgstr "Staður líkbrennslu"
 #: resources/xml/reports/fact_sources.xml:275
 #: resources/xml/reports/missing_facts_report.xml:516
 msgid "Place of death"
-msgstr "Staður andláts"
+msgstr "Andlátsstaður"
 
 #: app/Factories/ElementFactory.php:518
 msgid "Place of emigration"
@@ -11249,7 +11249,7 @@ msgstr "Staður fólksinnflutnings"
 #: resources/xml/reports/fact_sources.xml:321
 #: resources/xml/reports/missing_facts_report.xml:474
 msgid "Place of marriage"
-msgstr "Staður giftingar"
+msgstr "Giftingarstaður"
 
 #: app/Factories/ElementFactory.php:337
 #: resources/xml/reports/missing_facts_report.xml:431
@@ -11473,7 +11473,7 @@ msgstr "Primidi"
 
 #: resources/xml/reports/family_group_report.xml:10
 msgid "Print basic events when blank"
-msgstr "Prentið grunn atburði þegar autt"
+msgstr "Prenta út grunnatburði þegar autt"
 
 #: app/Module/CustomTagsGedcomL.php:125 app/Module/CustomTagsGedcomL.php:178
 #: app/Module/CustomTagsLegacy.php:120
@@ -12602,7 +12602,7 @@ msgstr "Senda út áminningar með tölvupósti"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:72
 msgid "Sender email"
-msgstr "Tölvupóstur sendanda"
+msgstr "Netfang sendanda"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:58
@@ -12612,7 +12612,7 @@ msgstr "Nafn sendanda"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:68
 #: resources/views/admin/control-panel.phtml:226
 msgid "Sending email"
-msgstr "Sendi tölvupóst"
+msgstr "Sendir tölvupóst"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:180
@@ -12967,7 +12967,7 @@ msgstr "Sýna alla staði á lista"
 
 #: resources/views/modules/sources_tab/tab.phtml:26
 msgid "Show all sources"
-msgstr "Sýna allar heimildir"
+msgstr "Birta allar heimildir"
 
 #. I18N: an age indicator, which can be dragged around the screen
 #: resources/views/modules/timeline-chart/page.phtml:81
@@ -12976,7 +12976,7 @@ msgstr "Sýna aldurs bendil"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Sýna börn forfeðra"
+msgstr "Birta börn forfeðra"
 
 #: resources/views/lists/families-table.phtml:205
 msgid "Show couples where either partner married more than once."
@@ -13065,7 +13065,7 @@ msgstr "Birta glósur"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Sýna starfsheiti"
+msgstr "Birta störf"
 
 #: resources/views/modules/todays_events/config.phtml:19
 #: resources/views/modules/upcoming_events/config.phtml:31
@@ -13116,7 +13116,7 @@ msgstr "Sýna fyrirhugaðar breytingar"
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Show photos"
-msgstr "Sýna myndir"
+msgstr "Birta  myndir"
 
 #: app/Module/PlaceHierarchyListModule.php:217
 msgid "Show place hierarchy"
@@ -13141,7 +13141,7 @@ msgstr "Sýna rannsóknarverkefni sem eru með dagsetningu í framtíðinni"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Sýna búsetu"
+msgstr "Birta búsetu"
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
@@ -13153,7 +13153,7 @@ msgstr "Sýna stjórntæki myndasýningar"
 #: resources/xml/reports/individual_ext_report.xml:9
 #: resources/xml/reports/individual_report.xml:6
 msgid "Show sources"
-msgstr "Sýna heimildir"
+msgstr "Birta heimildir"
 
 #: resources/views/modules/family-book-chart/page.phtml:61
 #: resources/views/modules/hourglass-chart/page.phtml:51
@@ -13227,7 +13227,7 @@ msgstr "Sýna þetta box fyrir hvaða tungumál"
 
 #: resources/views/admin/trees-preferences.phtml:309
 msgid "Show thumbnail images in charts and family groups."
-msgstr "Sýna smámyndir í gröfum og fjölskylduhópum."
+msgstr "Birta smámyndir í gröfum og fjölskylduhópum."
 
 #: app/Auth.php:533 app/Auth.php:546 app/Elements/RestrictionNotice.php:77
 #: app/Functions/FunctionsPrintFacts.php:617
@@ -13697,11 +13697,11 @@ msgstr "Hefja myndasýningu þegar síða er sótt"
 
 #: resources/views/modules/lifespans-chart/page.phtml:54
 msgid "Start year"
-msgstr "Hefja ár"
+msgstr "Upphafsár"
 
 #: resources/xml/reports/change_report.xml:5
 msgid "Starting range of change dates"
-msgstr "Byrjunarsvið á breytingar dagsetningum"
+msgstr "Upphafsdagsetning á tímabili breytinga"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
@@ -14825,12 +14825,12 @@ msgstr[1] "Þessi ættartala hefur %s færslur sem notar sama “XREF” og önn
 
 #: app/Module/SlideShowModule.php:164
 msgid "This family tree has no images to display."
-msgstr "Þessi ættartala hefur engar myndir til að birta."
+msgstr "Þessi ættartala hefur engar myndir að birta."
 
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Þessi ættartala var síðast uppfærð þann #gedcomUpdated#. Það eru #totalSurnames# eftirnöfn í þessari ættartölu. Fyrsti skráði atburðurinn er #firstEventType# af #firstEventName# í #firstEventYear#. Allra nýjasti atburðurinn er #lastEventType# af #lastEventName# í #lastEventYear#.<br><br>Ef þú hefur einhverjar athugasemdir eða ábendingar vinsamlega hafðu þá samband við #contactWebmaster#."
+msgstr "Þessi ættartala var síðast uppfærð þann #gedcomUpdated#. Það eru #totalSurnames# eftirnöfn í þessari ættartölu. Fyrsti skráði atburðurinn er #firstEventType# #firstEventName# þann #firstEventYear#. Allra nýjasti atburðurinn er #lastEventType# hjá #lastEventName# þann #lastEventYear#.<br><br>Ef þú hefur einhverjar athugasemdir eða ábendingar vinsamlega hafðu þá samband við #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:18
@@ -15071,7 +15071,7 @@ msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með f
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Þessi valkostur mun sýna nöfn (án annarra upplýsinga) á einstaklingum með friðhelgi. Einstaklingar eru með friðhelgi ef þeir eru ennþá á lífi eða ef friðhelgis takmörkun hefur verið bætt við einstaklings færslur þeirra. Til að fela ákveðið nafn, bættu þá við friðhelgis takmörk við þá nafna færslu."
+msgstr "Þessi valkostur mun birta nöfn (án annarra upplýsinga) á einstaklingum með friðhelgi. Einstaklingar eru með friðhelgi ef þeir eru ennþá á lífi eða ef friðhelgis takmörkun hefur verið bætt við einstaklingsfærslur þeirra. Til að fela ákveðið nafn, bættu þá við friðhelgistakmörk við þá nafnafærslu."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:23
 #: resources/views/edit/raw-gedcom-record.phtml:25
@@ -15155,7 +15155,7 @@ msgstr "Minnistakmörk þessa vefþjóns eru %sMB og takmörk örgjörvatímans 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:436
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Þætta ætti að vera komma eða bil aðgreidur listi af staðreyndum, til viðbótar við Fæðingu og Andláat, sem þú vilt að birtist í grafarkassa einsog ættartölugrafið. Þessi listi þarfnast þes að þú notir staðreynda merkimiða sem skilgreindir eru í GEDCOM 5.5.1 standard. Sem dæmi, ef þú vilt að starfsheiti birtist í kassanum, þá þarftu að bæta „OCCU“ við þennan reit."
+msgstr "Þetta ætti að vera komma eða bil aðgreindur listi af staðreyndum, til viðbótar við fæðingu og andlát, sem þú vilt að birtist í kassa fyrir grafið eins og í ættartölugrafinu. Þessi listi krefst þess að þú notir staðreyndamerkimiða sem skilgreindir eru í GEDCOM 5.5.1 staðlinum. Sem dæmi, ef þú vilt að starfsheiti birtist í kassanum, þá þarftu að bæta „OCCU“ við þennan reit."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
@@ -15463,7 +15463,7 @@ msgstr "Vinsælt fornafn"
 #: app/Module/TopGivenNamesModule.php:47
 #: resources/views/statistics/individuals/names.phtml:55
 msgid "Top given names"
-msgstr "Algengustu skírnarnöfnin"
+msgstr "Algengustu fornöfnin"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:162
@@ -15544,7 +15544,7 @@ msgstr "Samtals kvenmenn"
 
 #: resources/views/statistics/individuals/names.phtml:46
 msgid "Total given names"
-msgstr "Samtals skírnarnöfn"
+msgstr "Samtals fornöfn"
 
 #: resources/views/statistics/individuals/total-records.phtml:12
 #: resources/xml/reports/bdm_report.xml:210
@@ -16009,7 +16009,7 @@ msgstr "Notandi"
 #: resources/views/admin/users-create.phtml:20
 #: resources/views/admin/users-edit.phtml:29
 msgid "User administration"
-msgstr "Notanda kerfisstjórn"
+msgstr "Notandastjórnun"
 
 #: resources/views/admin/users-cleanup.phtml:64
 msgid "User didn’t verify within 7 days."
@@ -17067,7 +17067,7 @@ msgstr "menningarlegt"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
-msgstr "dagsetninga tímabil"
+msgstr "dagsetningatímabil"
 
 #: app/Services/RelationshipService.php:425
 msgid "daughter"
@@ -19266,7 +19266,7 @@ msgstr "flytja inn skrá"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr "innbyggð glósa"
+msgstr "innsett glósa"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20292,7 +20292,7 @@ msgstr "raða eftir dagsetningu"
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of birth"
-msgstr "raða eftir fæðingar dagsetningu"
+msgstr "raða eftir fæðingardagsetningu"
 
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/cemetery_report.xml:6
@@ -20706,7 +20706,7 @@ msgstr "webtrees þarf að senda tölvupóst, svo sem áminningar um lykilorð o
 
 #: app/Services/MessageService.php:226
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees sendir tölvupósta með engri geymslu"
+msgstr "webtrees sendir tölvupósta án geymslu þeirra"
 
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
@@ -20790,7 +20790,7 @@ msgstr "yngri systir"
 msgid "±%s year"
 msgid_plural "±%s years"
 msgstr[0] "±%s ár"
-msgstr[1] "±%s ára"
+msgstr[1] "±%s ár"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
