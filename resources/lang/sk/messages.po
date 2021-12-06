@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Slovak (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-16 14:45+0000\n"
-"Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
-"Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
-"Language: sk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-05 10:47+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1335,7 +1318,7 @@ msgstr "Pridať súbor médií"
 #: resources/views/individual-page-images.phtml:59
 #: resources/views/individual-page-menu.phtml:93
 msgid "Add a media object"
-msgstr "Pridať objekt médií"
+msgstr "Pridať objekt média"
 
 #: app/Http/RequestHandlers/AddParentToIndividualPage.php:95
 #: resources/views/family-page-grandparents.phtml:64
@@ -1431,7 +1414,7 @@ msgstr "Pridať osobu"
 
 #: resources/views/modules/relatives/family.phtml:149
 msgid "Add marriage details"
-msgstr "Pridať podrobnosti o svadbe"
+msgstr "Pridať podrobnosti o sobáši"
 
 #. I18N: Name of a module
 #: app/Module/FixMissingDeaths.php:58
@@ -1739,7 +1722,7 @@ msgstr "Rozdiel veku"
 #: app/Module/StatisticsChartModule.php:644
 #: resources/views/modules/statistics-chart/custom.phtml:40
 msgid "Age in year of first marriage"
-msgstr "Vek v roku prvej svadby"
+msgstr "Vek v roku prvého sobáša"
 
 #: app/Module/StatisticsChartModule.php:583
 #: resources/views/lists/families-table.phtml:482
@@ -1747,7 +1730,7 @@ msgstr "Vek v roku prvej svadby"
 #: resources/views/modules/statistics-chart/custom.phtml:39
 #: resources/views/statistics/families/marriage-age.phtml:12
 msgid "Age in year of marriage"
-msgstr "Vek v roku svadby"
+msgstr "Vek v roku sobáša"
 
 #: resources/views/modules/statistics-chart/custom.phtml:136
 #: resources/views/modules/statistics-chart/custom.phtml:139
@@ -2190,7 +2173,7 @@ msgstr "Ázia"
 #: app/Module/CustomTagsPhpGedView.php:54 app/Module/CustomTagsWebtrees.php:54
 #: app/Module/CustomTagsWebtrees.php:68
 msgid "Associate"
-msgstr "Pridružená osoba"
+msgstr "Pripojená osoba"
 
 #: app/Http/RequestHandlers/HelpText.php:261
 msgid "Associate events with this source"
@@ -2198,7 +2181,7 @@ msgstr "Asociuj udalosť s týmto zdrojom"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr "Pridružené udalosti"
+msgstr "Pripojené udalosti"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -4160,7 +4143,7 @@ msgstr "Vytvoriť lokalitu"
 #: resources/views/modals/create-media-from-file.phtml:19
 #: resources/views/modals/create-media-object.phtml:19
 msgid "Create a media object"
-msgstr "Vytvoriť nový mediálny objekt"
+msgstr "Vytvoriť objekt média"
 
 #: app/Elements/XrefRepository.php:66
 #: resources/views/modals/create-repository.phtml:18
@@ -5529,7 +5512,7 @@ msgstr "Duplicitné meno užívateľa. Užívateľ s týmto užívateľským men
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Každý zdroj zaznamenáva určité udalosti, všeobecne pre daný časový interval a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva udalosti sčítania a cirkevné záznamy uchovávajú dáta o narodeniach, svadbách a úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z poskytnutého zoznamu udalostí. Dátum by mal byť v špecifikovanom v rozsahu, napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad „Oneida, Idaho, USA“ by bola použitá ako zdrojové miesto pre udalosti, ktoré sa stali v rôznych mestách v kraji Oneida. „Idaho, USA“ by bolo zdrojové miesto, ak by sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu Idaho."
+msgstr "Každý zdroj zaznamenáva určité udalosti, všeobecne pre daný časový interval a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva udalosti sčítania a cirkevné záznamy uchovávajú dáta o narodeniach, ssobášoch a úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z poskytnutého zoznamu udalostí. Dátum by mal byť v špecifikovanom v rozsahu, napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad „Oneida, Idaho, USA“ by bola použitá ako zdrojové miesto pre udalosti, ktoré sa stali v rôznych mestách v kraji Oneida. „Idaho, USA“ by bolo zdrojové miesto, ak by sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu Idaho."
 
 #: resources/views/help/pending-changes.phtml:25
 msgid "Each user account has an option to “automatically accept changes”. When this is enabled, any changes made by that user are saved immediately. Many administrators enable this for their own user account."
@@ -6221,7 +6204,7 @@ msgstr "Rodinná kniha %s"
 
 #: app/Factories/ElementFactory.php:321
 msgid "Family census"
-msgstr ""
+msgstr "Sčítanie rodiny"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Family file"
@@ -6244,7 +6227,7 @@ msgstr "Rodina: %s"
 
 #: app/Factories/ElementFactory.php:350
 msgid "Family residence"
-msgstr ""
+msgstr "Bydlisko rodiny"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6337,7 +6320,7 @@ msgstr "Rodina s manželkou"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "Identifikátor FamilySearch"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -7486,7 +7469,7 @@ msgstr "Ukryť všetkým"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Skryť heslo"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7690,7 +7673,7 @@ msgstr "Ak je priezvisko neznáme, použite prázdne lomky: <%s>Mária //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr "Ak je náhľad obrázku odlišný od obrázku, pridajte ho k mediálnemu objektu."
+msgstr "Ak je náhľad obrázku odlišný od obrázku, pridajte ho k objektu média."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
@@ -7847,7 +7830,7 @@ msgstr "Zahrnúť aliasy"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
-msgstr "Včítane pridružených osôb"
+msgstr "Včítane pripojených osôb"
 
 #: app/Module/IndividualListModule.php:357
 #, php-format
@@ -8699,12 +8682,12 @@ msgstr "Pridať túto osobu k existujúcej rodine ako dieťa"
 #: resources/views/media-page-menu.phtml:63
 #: resources/views/modals/link-media-to-family.phtml:18
 msgid "Link this media object to a family"
-msgstr "Pripojiť tento objekt médií k rodine"
+msgstr "Pripojiť tento objekt média k rodine"
 
 #: resources/views/media-page-menu.phtml:68
 #: resources/views/modals/link-media-to-source.phtml:18
 msgid "Link this media object to a source"
-msgstr "Pripojiť tento objekt médií k zdroju"
+msgstr "Pripojiť tento objekt média k zdroju"
 
 #: resources/views/media-page-menu.phtml:58
 #: resources/views/modals/link-media-to-individual.phtml:18
@@ -11585,7 +11568,7 @@ msgstr "Provo, Utah, USA"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Splnomocnenec"
 
 #: app/Factories/ElementFactory.php:697
 #: resources/views/lists/sources-table.phtml:97
@@ -12175,7 +12158,7 @@ msgstr "Úlohy na výskum sa ukladajú pomocou neštandardného GEDCOM tagu „_
 
 #: app/Factories/ElementFactory.php:588
 msgid "Residence"
-msgstr "Sídlo"
+msgstr "Bydlisko"
 
 #: resources/views/edit-blocks-page.phtml:69
 #: resources/views/edit-blocks-page.phtml:70
@@ -13188,7 +13171,7 @@ msgstr "Zobraziť úlohy na výskum, ktoré majú dátum v budúcnosti"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Zobraziť sídla"
+msgstr "Zobraziť bydliská"
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
@@ -14437,7 +14420,7 @@ msgstr "Súbor médií %1$s bol úspešne premenovaný na %2$s."
 
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:106
 msgid "The media object has been created"
-msgstr "Bol vytvorený objekt médií"
+msgstr "Bol vytvorený objekt média"
 
 #: resources/views/setup/step-2-server-checks.phtml:62
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -15307,7 +15290,7 @@ msgstr "Čas"
 #: app/Factories/ElementFactory.php:671 app/Factories/ElementFactory.php:687
 #: app/Factories/ElementFactory.php:718 app/Factories/ElementFactory.php:734
 msgid "Time of last change"
-msgstr ""
+msgstr "Čas poslednej zmeny"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15763,7 +15746,7 @@ msgstr "Druh faktu"
 
 #: app/Factories/ElementFactory.php:541
 msgid "Type of identification number"
-msgstr ""
+msgstr "Typ identifikačného čísla"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15781,7 +15764,7 @@ msgstr "Typ mena"
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
 #: app/Factories/ElementFactory.php:679 app/Factories/ElementFactory.php:699
 msgid "Type of reference number"
-msgstr ""
+msgstr "Typ referenčného čísla "
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
@@ -15901,7 +15884,7 @@ msgstr "Neznámy"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Odpojiť"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -19321,7 +19304,7 @@ msgstr "importovať súbor"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "priama poznámka"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20171,7 +20154,7 @@ msgstr "bratranec zo 7. kolena"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "zdieľaná poznámka"
 
 #: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/trees-preferences.phtml:307
