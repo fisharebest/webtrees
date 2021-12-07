@@ -33,15 +33,7 @@ use Illuminate\Support\Collection;
             <?php endif ?>
         </th>
         <td>
-            <?php if ($record->tree()->getPreference('FORMAT_TEXT') === 'markdown') : ?>
-                <div class="markdown" dir="auto">
-                    <?= Registry::markdownFactory()->markdown($record->tree())->convertToHtml($record->getNote()) ?>
-                </div>
-            <?php else : ?>
-                <div class="markdown" dir="auto" style="white-space: pre-wrap;">
-                    <?= Registry::markdownFactory()->autolink($record->tree())->convertToHtml($record->getNote()) ?>
-                </div>
-            <?php endif ?>
+          <?= $element->value($record->getNote(), $record->tree()) ?>
         </td>
     </tr>
 

@@ -346,7 +346,9 @@ abstract class AbstractElement implements ElementInterface
         $format = $tree->getPreference('FORMAT_TEXT');
 
         if ($format === 'markdown') {
-            $html = Registry::markdownFactory()->markdown($tree)->convertToHtml($canonical);
+            // Two trailing spaces create a line-break in markdown
+            $html = strtr($canonical, ["\n" => "  \n"]);
+            $html = Registry::markdownFactory()->markdown($tree)->convertToHtml($html);
 
             return '<div class="markdown" dir="auto">' . $html . '</div>';
         }

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Functions;
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
@@ -75,6 +76,7 @@ class FunctionsPrint
     private static function printNoteRecord(Tree $tree, string $text, int $nlevel, string $nrec): string
     {
         $text .= Functions::getCont($nlevel, $nrec);
+        $element = new SubmitterText('');
 
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
             // Shared note.
@@ -83,14 +85,14 @@ class FunctionsPrint
             assert($note instanceof Note);
 
             $label      = I18N::translate('Shared note');
-            $html       = Registry::markdownFactory()->markdown($tree)->convertToHtml($note->getNote());
+            $html       = $element->value($note->getNote(), $tree);
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
 
             $one_line_only = strip_tags($note->fullName()) === strip_tags($note->getNote());
         } else {
             // Inline note.
             $label = I18N::translate('Note');
-            $html  = Registry::markdownFactory()->markdown($tree)->convertToHtml($text);
+            $html  = $element->value($text, $tree);
 
             [$first_line] = explode("\n", strip_tags($html));
             // Use same logic as note objects

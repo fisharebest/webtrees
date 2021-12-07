@@ -276,7 +276,7 @@ class ManageMediaData implements RequestHandlerInterface
      */
     private function mediaObjectInfo(Media $media): string
     {
-        $html = '<b><a href="' . e($media->url()) . '">' . $media->fullName() . '</a></b>' . '<br><i>' . e($media->getNote()) . '</i></br><br>';
+        $html = '<b><a href="' . e($media->url()) . '">' . $media->fullName() . '</a></b>' . $media->getNote();
 
         $linked = [];
         foreach ($media->linkedIndividuals('OBJE') as $link) {

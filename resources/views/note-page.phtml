@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
 
 <div class="wt-page-content">
     <?= view('record-page-links', [
-        'details'              => view('note-page-details', ['clipboard_facts' => $clipboard_facts, 'record' => $record]),
+        'details'              => view('note-page-details', ['clipboard_facts' => $clipboard_facts, 'record' => $record, 'element' => $element]),
         'linked_families'      => $linked_families,
         'linked_individuals'   => $linked_individuals,
         'linked_media_objects' => $linked_media_objects,

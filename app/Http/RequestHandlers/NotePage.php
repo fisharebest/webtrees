@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
@@ -86,6 +87,7 @@ class NotePage implements RequestHandlerInterface
             'record'               => $record,
             'title'                => $record->fullName(),
             'tree'                 => $tree,
+            'element'              => new SubmitterText(''),
         ]);
     }
 }

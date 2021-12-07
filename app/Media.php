@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -93,16 +94,17 @@ class Media extends GedcomRecord
     public function getNote(): string
     {
         $fact = $this->facts(['NOTE'])->first();
+        $element = new SubmitterText('');
 
         if ($fact instanceof Fact) {
             // Link to note object
             $note = $fact->target();
             if ($note instanceof Note) {
-                return $note->getNote();
+                return $element->value($note->getnote(), $this->tree);
             }
 
             // Inline note
-            return $fact->value();
+            return $element->value($fact->value(), $this->tree);
         }
 
         return '';
