@@ -194,9 +194,9 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
         $gedcom = $record->gedcom();
 
         return
-            preg_match('/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedcom) ||
-            preg_match('/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))(?:\n2.*(?:\n[3-9].*)*)*\1/', $gedcom) ||
-            preg_match('/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))(?:\n3.*(?:\n[4-9].*)*)*\1/', $gedcom);
+            preg_match('/(\n1.*@.+@.*(?:\n[2-9].*)*)(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedcom) ||
+            preg_match('/(\n2.*@.+@.*(?:\n[3-9].*)*)(?:\n2.*(?:\n[3-9].*)*)*\1/', $gedcom) ||
+            preg_match('/(\n3.*@.+@.*(?:\n[4-9].*)*)(?:\n3.*(?:\n[4-9].*)*)*\1/', $gedcom);
     }
 
     /**

@@ -598,7 +598,7 @@ class FunctionsImport
         // Insert all new rows together
         $rows = [];
 
-        preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER);
+        preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*\n2 DATE (.+)(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $match) {
             $fact = $match[1];

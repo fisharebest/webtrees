@@ -158,7 +158,7 @@ class SearchReplaceAction implements RequestHandlerInterface
      */
     private function replaceIndividualNames(Collection $records, string $search, string $replace, array $name_tags): int
     {
-        $pattern     = '/(\n(?:' . implode('|', $name_tags) . ') (?:.*))' . preg_quote($search, '/') . '/i';
+        $pattern     = '/(\n(?:' . implode('|', $name_tags) . ') .*)' . preg_quote($search, '/') . '/i';
         $replacement = '$1' . $replace;
         $count       = 0;
 

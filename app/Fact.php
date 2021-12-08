@@ -259,7 +259,7 @@ class Fact
      */
     public function attribute(string $tag): string
     {
-        if (preg_match('/\n2 (?:' . $tag . ') ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
+        if (preg_match('/\n2 ' . $tag . ' ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
             return preg_replace("/\n3 CONT ?/", "\n", $match[1]);
         }
 
