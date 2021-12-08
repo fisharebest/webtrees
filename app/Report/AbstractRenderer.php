@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\MediaFile;
 use Fisharebest\Webtrees\Webtrees;
 use League\Flysystem\FilesystemOperator;
 
-use function current;
-
 /**
  * Class AbstractRenderer - base for PDF and HTML reports
  */

@@ -27,8 +27,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
 
-use function array_key_exists;
-use function array_search;
 use function get_class;
 use function intdiv;
 use function is_array;
