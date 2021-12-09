@@ -7,10 +7,10 @@ use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Fact> $facts
- * @var int              $limit_high
- * @var int              $limit_low
- * @var array<mixed>     $order
+ * @var Collection<Fact>         $facts
+ * @var int                      $limit_high
+ * @var int                      $limit_low
+ * @var array<array<int,string>> $order
  */
 
 ?>
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
         data-info="false"
         data-length-change="false"
         data-page-length="<?= e($limit_low) ?>"
-        data-order="<?= e(json_encode($order ?? [], JSON_THROW_ON_ERROR)) ?>"
+        data-order="<?= e(json_encode($order, JSON_THROW_ON_ERROR)) ?>"
     >
         <thead>
             <tr>

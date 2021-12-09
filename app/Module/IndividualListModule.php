@@ -405,6 +405,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                             echo view('lists/surnames-table', [
                                 'families' => $families,
                                 'module'   => $this,
+                                'order'    => [[1, 'desc']],
                                 'surnames' => $surns,
                                 'tree'     => $tree,
                             ]);

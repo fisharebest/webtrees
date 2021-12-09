@@ -160,6 +160,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             case 'table':
                 return view('lists/given-names-table', [
                     'given_names' => $nameList,
+                    'order'       => [[1, 'desc']],
                 ]);
 
             case 'list':

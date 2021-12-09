@@ -169,9 +169,10 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             case 'table':
             default:
                 $content = view('lists/surnames-table', [
-                    'surnames' => $all_surnames,
-                    'module'   => $module,
                     'families' => false,
+                    'module'   => $module,
+                    'order'    => [[1, 'desc']],
+                    'surnames' => $all_surnames,
                     'tree'     => $tree,
                 ]);
                 break;
