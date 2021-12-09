@@ -209,7 +209,7 @@ class CalendarEvents implements RequestHandlerInterface
                 if (count($cal_facts[0]) > 0) {
                     echo '<div class="cal_day">', I18N::translate('Day not set'), '</div>';
                     echo '<div class="small" style="height: 180px; overflow: auto;">';
-                    echo $this->calendarListText($cal_facts[0], '', '', $tree);
+                    echo $this->calendarListText($cal_facts[0], $tree);
                     echo '</div>';
                     $cal_facts[0] = [];
                 }
@@ -257,7 +257,7 @@ class CalendarEvents implements RequestHandlerInterface
                 }
                 echo '</div>';
                 echo '<div class="small" style="height: 180px; overflow: auto;">';
-                echo $this->calendarListText($cal_facts[$d], '', '', $tree);
+                echo $this->calendarListText($cal_facts[$d], $tree);
                 echo '</div>';
             }
             echo '</td>';
@@ -275,20 +275,18 @@ class CalendarEvents implements RequestHandlerInterface
      * Format a list of facts for display
      *
      * @param array<string> $list
-     * @param string        $tag1
-     * @param string        $tag2
      * @param Tree          $tree
      *
      * @return string
      */
-    private function calendarListText(array $list, string $tag1, string $tag2, Tree $tree): string
+    private function calendarListText(array $list, Tree $tree): string
     {
         $html = '';
 
         foreach ($list as $xref => $facts) {
             $tmp = Registry::gedcomRecordFactory()->make((string) $xref, $tree);
-            $html .= $tag1 . '<a href="' . e($tmp->url()) . '">' . $tmp->fullName() . '</a> ';
-            $html .= '<div class="indent">' . $facts . '</div>' . $tag2;
+            $html .= '<a href="' . e($tmp->url()) . '">' . $tmp->fullName() . '</a> ';
+            $html .= '<div class="indent">' . $facts . '</div>';
         }
 
         return $html;
