@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\AuthorizationService;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -42,20 +41,16 @@ class AddNewFact implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private AuthorizationService $authorization_service;
-
     private GedcomEditService $gedcom_edit_service;
 
     /**
      * AddNewFact constructor.
      *
-     * @param AuthorizationService $authorization_service
-     * @param GedcomEditService    $gedcom_edit_service
+     * @param GedcomEditService $gedcom_edit_service
      */
-    public function __construct(AuthorizationService $authorization_service, GedcomEditService $gedcom_edit_service)
+    public function __construct(GedcomEditService $gedcom_edit_service)
     {
-        $this->authorization_service = $authorization_service;
-        $this->gedcom_edit_service   = $gedcom_edit_service;
+        $this->gedcom_edit_service = $gedcom_edit_service;
     }
 
     /**
@@ -71,7 +66,7 @@ class AddNewFact implements RequestHandlerInterface
         $xref   = (string) $request->getAttribute('xref');
         $subtag = (string) $request->getAttribute('fact');
 
-        if ($subtag === 'OBJE' && !$this->authorization_service->canUploadMedia($tree, Auth::user())) {
+        if ($subtag === 'OBJE' && !Auth::canUploadMedia($tree, Auth::user())) {
             throw new HttpAccessDeniedException();
         }
 

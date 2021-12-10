@@ -536,6 +536,20 @@ class Auth
     }
 
     /**
+     * @param Tree          $tree
+     * @param UserInterface $user
+     *
+     * @return bool
+     */
+    public static function canUploadMedia(Tree $tree, UserInterface $user): bool
+    {
+        return
+            Auth::isEditor($tree, $user) &&
+            Auth::accessLevel($tree, $user) <= (int) $tree->getPreference('MEDIA_UPLOAD');
+    }
+
+
+    /**
      * @return array<int,string>
      */
     public static function accessLevelNames(): array

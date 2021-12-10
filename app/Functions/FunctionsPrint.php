@@ -505,7 +505,7 @@ class FunctionsPrint
 
         uasort($add_facts, I18N::comparator());
 
-        if ((int) $record->tree()->getPreference('MEDIA_UPLOAD') < Auth::accessLevel($record->tree())) {
+        if (!Auth::canUploadMedia($record->tree(), Auth::user())) {
             unset($add_facts['OBJE'], $quick_facts['OBJE']);
         }
 

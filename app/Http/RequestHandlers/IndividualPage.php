@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Module\ModuleShareInterface;
 use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
 use Fisharebest\Webtrees\Module\ModuleTabInterface;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\AuthorizationService;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -61,8 +60,6 @@ class IndividualPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private AuthorizationService $authorization_service;
-
     private ClipboardService $clipboard_service;
 
     private ModuleService $module_service;
@@ -72,21 +69,18 @@ class IndividualPage implements RequestHandlerInterface
     /**
      * IndividualPage constructor.
      *
-     * @param AuthorizationService $authorization_service
-     * @param ClipboardService     $clipboard_service
-     * @param ModuleService        $module_service
-     * @param UserService          $user_service
+     * @param ClipboardService $clipboard_service
+     * @param ModuleService    $module_service
+     * @param UserService      $user_service
      */
     public function __construct(
-        AuthorizationService $authorization_service,
         ClipboardService $clipboard_service,
         ModuleService $module_service,
         UserService $user_service
     ) {
-        $this->authorization_service = $authorization_service;
-        $this->clipboard_service     = $clipboard_service;
-        $this->module_service        = $module_service;
-        $this->user_service          = $user_service;
+        $this->clipboard_service = $clipboard_service;
+        $this->module_service    = $module_service;
+        $this->user_service      = $user_service;
     }
 
     /**
@@ -138,7 +132,7 @@ class IndividualPage implements RequestHandlerInterface
 
         return $this->viewResponse('individual-page', [
             'age'              => $this->ageString($individual),
-            'can_upload_media' => $this->authorization_service->canUploadMedia($tree, Auth::user()),
+            'can_upload_media' => Auth::canUploadMedia($tree, Auth::user()),
             'clipboard_facts'  => $this->clipboard_service->pastableFacts($individual),
             'individual_media' => $individual_media,
             'meta_description' => $this->metaDescription($individual),
