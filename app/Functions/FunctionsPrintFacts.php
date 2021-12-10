@@ -144,12 +144,14 @@ class FunctionsPrintFacts
 
         // Event of close associates
         if ($id === 'asso') {
-            $styles[] = 'wt-associate-fact collapse';
+            $styles[] = 'wt-associate-fact';
+            $styles[] = 'collapse';
         }
 
         // historical facts
         if ($id === 'histo') {
-            $styles[] = 'wt-historic-fact collapse';
+            $styles[] = 'wt-historic-fact';
+            $styles[] = 'collapse';
         }
 
         // Use marriage type as the label.  e.g. "Civil partnership"
