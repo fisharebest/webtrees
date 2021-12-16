@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\AuthorizationService;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ResponseInterface;
@@ -52,20 +51,16 @@ class FamilyPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private AuthorizationService $authorization_service;
-
     private ClipboardService $clipboard_service;
 
     /**
      * FamilyPage constructor.
      *
-     * @param AuthorizationService $authorization_service
-     * @param ClipboardService     $clipboard_service
+     * @param ClipboardService $clipboard_service
      */
-    public function __construct(AuthorizationService $authorization_service, ClipboardService $clipboard_service)
+    public function __construct(ClipboardService $clipboard_service)
     {
-        $this->authorization_service = $authorization_service;
-        $this->clipboard_service     = $clipboard_service;
+        $this->clipboard_service = $clipboard_service;
     }
 
     /**
@@ -99,7 +94,7 @@ class FamilyPage implements RequestHandlerInterface
             });
 
         return $this->viewResponse('family-page', [
-            'can_upload_media' => $this->authorization_service->canUploadMedia($tree, Auth::user()),
+            'can_upload_media' => Auth::canUploadMedia($tree, Auth::user()),
             'clipboard_facts'  => $clipboard_facts,
             'facts'            => $facts,
             'meta_description' => $this->metaDescription($family),
