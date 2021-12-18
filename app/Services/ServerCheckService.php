@@ -82,18 +82,6 @@ class ServerCheckService
             $this->checkPhpFunction('parse_ini_file'),
         ]);
 
-        // egulias/email-validator package checks for an old file - and tries to use it.
-        // Old versions of this file are not compatible with the latest code.  See #4011
-        $file = Webtrees::ROOT_DIR . 'vendor/egulias/email-validator/src/Validation/MessageIDValidation.php';
-
-        if (file_exists($file)) {
-            try {
-                unlink($file);
-            } catch (Throwable $exception) {
-                $errors[] = 'Please delete the old file: ' . $file;
-            }
-        }
-
         return $errors
             ->flatten()
             ->filter();
