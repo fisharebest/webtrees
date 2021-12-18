@@ -320,6 +320,14 @@ class Fact
             return true;
         }
 
+        // A link to a record of the same type: NOTE=>NOTE, OBJE=>OBJE, SOUR=>SOUR, etc.
+        // Use the privacy of the target record.
+        $target = $this->target();
+
+        if ($target instanceof GedcomRecord && $target->tag() === $this->tag) {
+            return $target->canShow($access_level);
+        }
+
         // Does this record have a default RESN?
         $xref                    = $this->record->xref();
         $fact_privacy            = $this->record->tree()->getFactPrivacy();
