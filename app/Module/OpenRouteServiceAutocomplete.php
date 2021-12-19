@@ -146,6 +146,8 @@ class OpenRouteServiceAutocomplete extends AbstractModule implements ModuleConfi
             if ($result->properties->country === 'United Kingdom') {
                 // macroregion will contain England, Scotland, etc.
                 $result->properties->country = null;
+                // region will contain the county.
+                $result->properties->region = null;
             }
 
             $parts = [
