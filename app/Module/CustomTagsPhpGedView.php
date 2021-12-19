@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Elements\AddressEmail;
 use Fisharebest\Webtrees\Elements\AddressLine;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\CustomElement;
-use Fisharebest\Webtrees\Elements\CustomEvent;
+use Fisharebest\Webtrees\Elements\CustomIndividualEvent;
 use Fisharebest\Webtrees\Elements\NamePersonal;
 use Fisharebest\Webtrees\Elements\NoteStructure;
 use Fisharebest\Webtrees\Elements\RelationIsDescriptor;
@@ -62,9 +62,9 @@ class CustomTagsPhpGedView extends AbstractModule implements ModuleConfigInterfa
             'INDI:DEAT:DATE:TIME'   => new TimeValue(I18N::translate('Time')),
             'INDI:EMAIL'            => new AddressEmail(I18N::translate('Email address')),
             'INDI:NAME:_HEB'        => new NamePersonal(I18N::translate('Name in Hebrew'), []),
-            'INDI:_FNRL'            => new CustomEvent(I18N::translate('Funeral')),
-            'INDI:_HOL'             => new CustomEvent(I18N::translate('Holocaust')),
-            'INDI:_MILI'            => new CustomEvent(I18N::translate('Military')),
+            'INDI:_FNRL'            => new CustomIndividualEvent(I18N::translate('Funeral')),
+            'INDI:_HOL'             => new CustomIndividualEvent(I18N::translate('Holocaust')),
+            'INDI:_MILI'            => new CustomIndividualEvent(I18N::translate('Military')),
             'INDI:_PGV_OBJS'        => new XrefMedia(I18N::translate('Re-order media')),
             'NOTE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
             'OBJE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),

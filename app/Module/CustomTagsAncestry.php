@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\CustomElement;
-use Fisharebest\Webtrees\Elements\CustomEvent;
+use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -49,7 +49,7 @@ class CustomTagsAncestry extends AbstractModule implements ModuleConfigInterface
     {
         return [
             'INDI:*:SOUR:_APID' => new CustomElement(I18N::translate('Ancestry PID')),
-            'INDI:_EMPLOY'      => new CustomEvent(I18N::translate('Occupation')),
+            'INDI:_EMPLOY'      => new CustomFact(I18N::translate('Occupation')),
         ];
     }
 

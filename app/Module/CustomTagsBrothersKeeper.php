@@ -22,8 +22,9 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressEmail;
 use Fisharebest\Webtrees\Elements\CustomElement;
-use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
+use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
+use Fisharebest\Webtrees\Elements\CustomIndividualEvent;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\NamePersonal;
 use Fisharebest\Webtrees\Elements\PlaceName;
@@ -60,12 +61,12 @@ class CustomTagsBrothersKeeper extends AbstractModule implements ModuleConfigInt
             'FAM:*:_EVN'       => new CustomElement('Event number'),
             'FAM:CHIL:_FREL'   => new CustomElement('Relationship to father'),
             'FAM:CHIL:_MREL'   => new CustomElement('Relationship to mother'),
-            'FAM:_COML'        => new CustomEvent(I18N::translate('Common law marriage')),
-            'FAM:_MARI'        => new CustomEvent(I18N::translate('Marriage intention')),
-            'FAM:_MBON'        => new CustomEvent(I18N::translate('Marriage bond')),
-            'FAM:_NMR'         => new CustomEvent(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+            'FAM:_COML'        => new CustomFamilyEvent(I18N::translate('Common law marriage')),
+            'FAM:_MARI'        => new CustomFamilyEvent(I18N::translate('Marriage intention')),
+            'FAM:_MBON'        => new CustomFamilyEvent(I18N::translate('Marriage bond')),
+            'FAM:_NMR'         => new CustomFamilyEvent(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
             'FAM:_PRMN'        => new CustomElement(I18N::translate('Permanent number')),
-            'FAM:_SEPR'        => new CustomEvent(I18N::translate('Separated')),
+            'FAM:_SEPR'        => new CustomFamilyEvent(I18N::translate('Separated')),
             'FAM:_TODO'        => new CustomElement(I18N::translate('Research task')),
             'INDI:*:_EVN'      => new CustomElement('Event number'),
             'INDI:NAME:_ADPN'  => new NamePersonal(I18N::translate('Adopted name'), []),
@@ -91,7 +92,7 @@ class CustomTagsBrothersKeeper extends AbstractModule implements ModuleConfigInt
             'INDI:NAME:_SLDN'  => new NamePersonal('Soldier name', []),
             'INDI:_ADPF'       => new CustomElement(I18N::translate('Adopted by father')),
             'INDI:_ADPM'       => new CustomElement(I18N::translate('Adopted by mother')),
-            'INDI:_BRTM'       => new CustomEvent(I18N::translate('Brit milah')),
+            'INDI:_BRTM'       => new CustomIndividualEvent(I18N::translate('Brit milah')),
             'INDI:_BRTM:DATE'  => new DateValue(I18N::translate('Date of brit milah')),
             'INDI:_BRTM:PLAC'  => new PlaceName(I18N::translate('Place of brit milah')),
             'INDI:_EMAIL'      => new AddressEmail(I18N::translate('Email address')),
@@ -103,11 +104,11 @@ class CustomTagsBrothersKeeper extends AbstractModule implements ModuleConfigInt
             'INDI:_MEDC'       => new CustomFact(I18N::translate('Medical')),
             'INDI:_MILT'       => new CustomElement(I18N::translate('Military service')),
             'INDI:_NLIV'       => new CustomFact(I18N::translate('Not living')),
-            'INDI:_NMAR'       => new CustomEvent(I18N::translate('Never married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+            'INDI:_NMAR'       => new CustomFact(I18N::translate('Never married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
             'INDI:_PRMN'       => new CustomElement(I18N::translate('Permanent number')),
             'INDI:_TODO'       => new CustomElement(I18N::translate('Research task')),
             'INDI:_WEIG'       => new CustomFact(I18N::translate('Weight')),
-            'INDI:_YART'       => new CustomEvent(I18N::translate('Yahrzeit')),
+            'INDI:_YART'       => new CustomIndividualEvent(I18N::translate('Yahrzeit')),
             // 1 XXXX
             // 2 _EVN ##
             // 1 ASSO @Xnnn@

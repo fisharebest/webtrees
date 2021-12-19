@@ -65,6 +65,8 @@ use Fisharebest\Webtrees\Elements\Cremation;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
+use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
+use Fisharebest\Webtrees\Elements\CustomIndividualEvent;
 use Fisharebest\Webtrees\Elements\DateLdsOrd;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\Death;
@@ -331,7 +333,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:ENGA'                 => new Engagement(I18N::translate('Engagement')),
             'FAM:ENGA:DATE'            => new DateValue(I18N::translate('Date of engagement')),
             'FAM:ENGA:PLACE'           => new PlaceName(I18N::translate('Place of engagement')),
-            'FAM:EVEN'                 => new CustomEvent(I18N::translate('Event')),
+            'FAM:EVEN'                 => new CustomFamilyEvent(I18N::translate('Event')),
             'FAM:EVEN:TYPE'            => new EventAttributeType(I18N::translate('Type of event')),
             'FAM:HUSB'                 => new XrefIndividual(I18N::translate('Husband')),
             'FAM:MARB'                 => new MarriageBanns(I18N::translate('Marriage banns')),
@@ -524,7 +526,7 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:ENDL:STAT'           => new LdsEndowmentDateStatus(I18N::translate('Status')),
             'INDI:ENDL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
             'INDI:ENDL:TEMP'           => new TempleCode(I18N::translate('Temple')),
-            'INDI:EVEN'                => new CustomEvent(I18N::translate('Event')),
+            'INDI:EVEN'                => new CustomIndividualEvent(I18N::translate('Event')),
             'INDI:EVEN:DATE'           => new DateValue(I18N::translate('Date of event')),
             'INDI:EVEN:PLAC'           => new PlaceName(I18N::translate('Place of event')),
             'INDI:EVEN:TYPE'           => new EventAttributeType(I18N::translate('Type of event')),

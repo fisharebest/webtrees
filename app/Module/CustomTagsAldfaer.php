@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Contracts\ElementInterface;
-use Fisharebest\Webtrees\Elements\CustomEvent;
+use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -47,10 +47,10 @@ class CustomTagsAldfaer extends AbstractModule implements ModuleConfigInterface,
     public function customTags(): array
     {
         return [
-            'FAM:MARR_CIVIL'     => new CustomEvent(I18N::translate('Civil marriage')),
-            'FAM:MARR_RELIGIOUS' => new CustomEvent(I18N::translate('Religious marriage')),
-            'FAM:MARR_PARTNERS'  => new CustomEvent(I18N::translate('Registered partnership')),
-            'FAM:MARR_UNKNOWN'   => new CustomEvent(I18N::translate('Marriage type unknown')),
+            'FAM:MARR_CIVIL'     => new CustomFamilyEvent(I18N::translate('Civil marriage')),
+            'FAM:MARR_RELIGIOUS' => new CustomFamilyEvent(I18N::translate('Religious marriage')),
+            'FAM:MARR_PARTNERS'  => new CustomFamilyEvent(I18N::translate('Registered partnership')),
+            'FAM:MARR_UNKNOWN'   => new CustomFamilyEvent(I18N::translate('Marriage type unknown')),
         ];
     }
 
