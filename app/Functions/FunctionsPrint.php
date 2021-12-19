@@ -88,6 +88,8 @@ class FunctionsPrint
      */
     private static function printNoteRecord(Tree $tree, string $text, int $nlevel, string $nrec): string
     {
+        $element = Registry::elementFactory()->make('NOTE:CONC');
+
         $text .= Functions::getCont($nlevel, $nrec);
 
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
@@ -97,16 +99,16 @@ class FunctionsPrint
             assert($note instanceof Note);
 
             $label      = I18N::translate('Shared note');
-            $html       = Filter::formatText($note->getNote(), $tree);
+            $html       = $element->value($note->getNote(), $tree);
             $first_line = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
 
             $one_line_only = strip_tags($note->fullName()) === strip_tags($note->getNote());
         } else {
             // Inline note.
             $label = I18N::translate('Note');
-            $html  = Filter::formatText($text, $tree);
+            $html  = $element->value($text, $tree);
 
-            [$first_line] = explode("\n", strip_tags($text));
+            [$first_line] = explode("\n", strip_tags($html));
             // Use same logic as note objects
             $first_line = Str::limit($first_line, 100, I18N::translate('…'));
 

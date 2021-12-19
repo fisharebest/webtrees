@@ -24,7 +24,7 @@
     margin: 0 0 0.5rem;
 }
 
-.markdown blockquote {
+.markdown blockquote p {
     border-left: solid thick lightgray;
     padding-left: 0.5rem;
 }
@@ -47,4 +47,8 @@
 .markdown img {
     max-width: 100%;
     height: auto;
+}
+
+.markdown-br p {
+    white-space: pre-wrap;
 }
