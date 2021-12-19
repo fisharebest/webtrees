@@ -136,7 +136,7 @@ class FunctionsPrint
             '<span class="label">' . $label . ':</span> ' .
             $first_line .
             '</div>' .
-            '<div id="' . e($id) . '" class="collapse ' . ($expanded ? 'show' : '') . '">' .
+            '<div id="' . e($id) . '" class="markdown collapse ' . ($expanded ? 'show' : '') . '">' .
             $html .
             '</div>';
     }
