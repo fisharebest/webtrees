@@ -20,13 +20,15 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * CustomEvent
+ * CustomFamilyEvent
  */
-class CustomEvent extends AbstractEventElement
+class CustomFamilyEvent extends CustomEvent
 {
     protected const SUBTAGS = [
         'TYPE' => '0:1',
         'DATE' => '0:1',
+        'HUSB' => '0:1',
+        'WIFE' => '0:1',
         'PLAC' => '0:1',
         'ADDR' => '0:1',
         'AGNC' => '0:1',

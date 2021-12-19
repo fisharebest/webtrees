@@ -66,6 +66,8 @@ use Fisharebest\Webtrees\Elements\Cremation;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
+use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
+use Fisharebest\Webtrees\Elements\CustomIndividualEvent;
 use Fisharebest\Webtrees\Elements\DateLdsOrd;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\Death;
@@ -248,16 +250,16 @@ class ElementFactory implements ElementFactoryInterface
 
             // Aldfaer extensions
             $this->register([
-                'FAM:MARR_CIVIL'     => new CustomEvent(I18N::translate('Civil marriage')),
-                'FAM:MARR_RELIGIOUS' => new CustomEvent(I18N::translate('Religious marriage')),
-                'FAM:MARR_PARTNERS'  => new CustomEvent(I18N::translate('Registered partnership')),
-                'FAM:MARR_UNKNOWN'   => new CustomEvent(I18N::translate('Marriage type unknown')),
+                'FAM:MARR_CIVIL'     => new CustomFamilyEvent(I18N::translate('Civil marriage')),
+                'FAM:MARR_RELIGIOUS' => new CustomFamilyEvent(I18N::translate('Religious marriage')),
+                'FAM:MARR_PARTNERS'  => new CustomFamilyEvent(I18N::translate('Registered partnership')),
+                'FAM:MARR_UNKNOWN'   => new CustomFamilyEvent(I18N::translate('Marriage type unknown')),
             ]);
 
             // Ancestry extensions
             $this->register([
                 'INDI:*:SOUR:_APID' => new CustomElement(I18N::translate('Ancestry PID')),
-                'INDI:_EMPLOY'      => new CustomEvent(I18N::translate('Occupation')),
+                'INDI:_EMPLOY'      => new CustomFact(I18N::translate('Occupation')),
             ]);
 
             // Brother’s Keeper extensions
@@ -265,12 +267,12 @@ class ElementFactory implements ElementFactoryInterface
                 'FAM:*:_EVN'       => new CustomElement('Event number'),
                 'FAM:CHIL:_FREL'   => new CustomElement('Relationship to father'),
                 'FAM:CHIL:_MREL'   => new CustomElement('Relationship to mother'),
-                'FAM:_COML'        => new CustomEvent(I18N::translate('Common law marriage')),
-                'FAM:_MARI'        => new CustomEvent(I18N::translate('Marriage intention')),
-                'FAM:_MBON'        => new CustomEvent(I18N::translate('Marriage bond')),
-                'FAM:_NMR'         => new CustomEvent(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
-                'FAM:_PRMN'        => new CustomElement(I18N::translate('Permanent number')),
-                'FAM:_SEPR'        => new CustomEvent(I18N::translate('Separated')),
+                'FAM:_COML'        => new CustomFamilyEvent(I18N::translate('Common law marriage')),
+                'FAM:_MARI'        => new CustomFamilyEvent(I18N::translate('Marriage intention')),
+                'FAM:_MBON'        => new CustomFamilyEvent(I18N::translate('Marriage bond')),
+                'FAM:_NMR'         => new CustomFamilyEvent(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+                'FAM:_PRMN'        => new CustomFamilyEvent(I18N::translate('Permanent number')),
+                'FAM:_SEPR'        => new CustomFamilyEvent(I18N::translate('Separated')),
                 'FAM:_TODO'        => new CustomElement(I18N::translate('Research task')),
                 'INDI:*:_EVN'      => new CustomElement('Event number'),
                 'INDI:NAME:_ADPN'  => new NamePersonal(I18N::translate('Adopted name')),
@@ -294,25 +296,25 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:NAME:_RELN'  => new NamePersonal('Religious name'),
                 'INDI:NAME:_SHON'  => new NamePersonal('Short name'),
                 'INDI:NAME:_SLDN'  => new NamePersonal('Soldier name'),
-                'INDI:_ADPF'       => new CustomElement(I18N::translate('Adopted by father')),
+                'INDI:_ADPF'       => new CustomIndividualEvent(I18N::translate('Adopted by father')),
                 'INDI:_ADPM'       => new CustomElement(I18N::translate('Adopted by mother')),
-                'INDI:_BRTM'       => new CustomEvent(I18N::translate('Brit milah')),
+                'INDI:_BRTM'       => new CustomIndividualEvent(I18N::translate('Brit milah')),
                 'INDI:_BRTM:DATE'  => new DateValue(I18N::translate('Date of brit milah')),
                 'INDI:_BRTM:PLAC'  => new PlaceName(I18N::translate('Place of brit milah')),
                 'INDI:_EMAIL'      => new AddressEmail(I18N::translate('Email address')),
                 'INDI:_EYEC'       => new CustomFact(I18N::translate('Eye color')),
-                'INDI:_FRNL'       => new CustomElement(I18N::translate('Funeral')),
+                'INDI:_FRNL'       => new CustomIndividualEvent(I18N::translate('Funeral')),
                 'INDI:_HAIR'       => new CustomFact(I18N::translate('Hair color')),
                 'INDI:_HEIG'       => new CustomFact(I18N::translate('Height')),
                 'INDI:_INTE'       => new CustomElement(I18N::translate('Interment')),
                 'INDI:_MEDC'       => new CustomFact(I18N::translate('Medical')),
                 'INDI:_MILT'       => new CustomElement(I18N::translate('Military service')),
                 'INDI:_NLIV'       => new CustomFact(I18N::translate('Not living')),
-                'INDI:_NMAR'       => new CustomEvent(I18N::translate('Never married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+                'INDI:_NMAR'       => new CustomFact(I18N::translate('Never married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
                 'INDI:_PRMN'       => new CustomElement(I18N::translate('Permanent number')),
                 'INDI:_TODO'       => new CustomElement(I18N::translate('Research task')),
                 'INDI:_WEIG'       => new CustomFact(I18N::translate('Weight')),
-                'INDI:_YART'       => new CustomEvent(I18N::translate('Yahrzeit')),
+                'INDI:_YART'       => new CustomIndividualEvent(I18N::translate('Yahrzeit')),
                 // 1 XXXX
                 // 2 _EVN ##
                 // 1 ASSO @Xnnn@
@@ -832,9 +834,9 @@ class ElementFactory implements ElementFactoryInterface
                 'INDI:DEAT:DATE:TIME'   => new TimeValue(I18N::translate('Time')),
                 'INDI:EMAIL'            => new AddressEmail(I18N::translate('Email address')),
                 'INDI:NAME:_HEB'        => new NamePersonal(I18N::translate('Name in Hebrew')),
-                'INDI:_FNRL'            => new CustomEvent(I18N::translate('Funeral')),
-                'INDI:_HOL'             => new CustomEvent(I18N::translate('Holocaust')),
-                'INDI:_MILI'            => new CustomEvent(I18N::translate('Military')),
+                'INDI:_FNRL'            => new CustomIndividualEvent(I18N::translate('Funeral')),
+                'INDI:_HOL'             => new CustomIndividualEvent(I18N::translate('Holocaust')),
+                'INDI:_MILI'            => new CustomIndividualEvent(I18N::translate('Military')),
                 'INDI:_PGV_OBJS'        => new XrefMedia(I18N::translate('Re-order media')),
                 'NOTE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
                 'OBJE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
@@ -999,7 +1001,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:ENGA'                 => new Engagement(I18N::translate('Engagement')),
             'FAM:ENGA:DATE'            => new DateValue(I18N::translate('Date of engagement')),
             'FAM:ENGA:PLACE'           => new PlaceName(I18N::translate('Place of engagement')),
-            'FAM:EVEN'                 => new CustomEvent(I18N::translate('Event')),
+            'FAM:EVEN'                 => new CustomFamilyEvent(I18N::translate('Event')),
             'FAM:EVEN:TYPE'            => new EventAttributeType(I18N::translate('Type of event')),
             'FAM:HUSB'                 => new XrefIndividual(I18N::translate('Husband')),
             'FAM:MARB'                 => new MarriageBanns(I18N::translate('Marriage banns')),
@@ -1192,7 +1194,7 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:ENDL:STAT'           => new LdsEndowmentDateStatus(I18N::translate('Status')),
             'INDI:ENDL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
             'INDI:ENDL:TEMP'           => new TempleCode(I18N::translate('Temple')),
-            'INDI:EVEN'                => new CustomEvent(I18N::translate('Event')),
+            'INDI:EVEN'                => new CustomIndividualEvent(I18N::translate('Event')),
             'INDI:EVEN:DATE'           => new DateValue(I18N::translate('Date of event')),
             'INDI:EVEN:PLAC'           => new PlaceName(I18N::translate('Place of event')),
             'INDI:EVEN:TYPE'           => new EventAttributeType(I18N::translate('Type of event')),
@@ -1305,6 +1307,7 @@ class ElementFactory implements ElementFactoryInterface
             'NOTE:SOUR:PAGE'           => new WhereWithinSource(I18N::translate('Citation details')),
             'NOTE:SOUR:QUAY'           => new CertaintyAssessment(I18N::translate('Quality of data')),
             'OBJE'                     => new MediaRecord(I18N::translate('Media object')),
+            'OBJE:BLOB'                => new CustomElement(I18N::translate('Binary data object')),
             'OBJE:CHAN'                => new Change(I18N::translate('Last change')),
             'OBJE:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
             'OBJE:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time of last change')),
