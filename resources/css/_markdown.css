@@ -24,6 +24,11 @@
     margin: 0 0 0.5rem;
 }
 
+.markdown blockquote {
+    border-left: solid thick lightgray;
+    padding-left: 0.5rem;
+}
+
 .markdown table {
     border-collapse: collapse;
     margin-bottom: 5px;
