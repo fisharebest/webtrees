@@ -53,18 +53,6 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
     }
 
     /**
-     * @return ResponseInterface
-     */
-    public function getAdminAction(): ResponseInterface
-    {
-        $this->layout = 'layouts/administration';
-
-        return $this->viewResponse('modules/openstreetmap/config', [
-            'title'   => $this->title(),
-        ]);
-    }
-
-    /**
      * Parameters to create a TileLayer in LeafletJs.
      *
      * @return array<object>
