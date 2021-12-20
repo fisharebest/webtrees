@@ -290,7 +290,7 @@ abstract class AbstractElement implements ElementInterface
 
         if ($values === []) {
             if (str_contains($value, "\n")) {
-                return '<bdi class="d-inline-block">' . nl2br(e($value)) . '</bdi>';
+                return '<bdi class="d-inline-block">' . nl2br(e($value, false)) . '</bdi>';
             }
 
             return '<bdi>' . e($value) . '</bdi>';
@@ -363,7 +363,7 @@ abstract class AbstractElement implements ElementInterface
                 $html = trim($html);
 
                 if (str_contains($html, "\n")) {
-                    $html = nl2br($html);
+                    $html = nl2br($html, false);
 
                     return '<div dir="auto">' . $html . '</div>';
                 }
