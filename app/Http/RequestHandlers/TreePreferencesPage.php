@@ -102,7 +102,7 @@ class TreePreferencesPage implements RequestHandlerInterface
         ];
 
         $formats = [
-            /* I18N: None of the other options */
+            /* I18N: https://en.wikipedia.org/wiki/Plain_text */
             ''            => I18N::translate('plain text'),
             /* I18N: https://en.wikipedia.org/wiki/Markdown */
             'markdown'    => I18N::translate('markdown'),
