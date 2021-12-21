@@ -328,6 +328,6 @@ class FrenchDate extends AbstractCalendarDate
      */
     protected function formatLongYear(): string
     {
-        return $this->roman_numerals_service->numberToRomanNumerals($this->year);
+        return 'An ' . $this->roman_numerals_service->numberToRomanNumerals($this->year);
     }
 }
