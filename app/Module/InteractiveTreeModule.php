@@ -189,8 +189,9 @@ class InteractiveTreeModule extends AbstractModule implements ModuleChartInterfa
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $xref = $request->getQueryParams()['xref'];
-
+        $xref = $request->getQueryParams()['xref'] ?? '';
+        assert(is_string($xref));
+        
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 
