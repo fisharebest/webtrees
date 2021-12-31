@@ -1678,6 +1678,17 @@ class IndividualRepository implements IndividualRepositoryInterface
     /**
      * @return string
      */
+    public function totalIndisWithSourcesPercentage(): string
+    {
+        return $this->getPercentage(
+            $this->totalIndisWithSourcesQuery(),
+            $this->totalIndividualsQuery()
+        );
+    }  
+
+    /**
+     * @return string
+     */
     public function totalFamiliesPercentage(): string
     {
         return $this->getPercentage(
