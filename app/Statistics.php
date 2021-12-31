@@ -306,6 +306,14 @@ class Statistics implements
     }
 
     /**
+     * @return string
+     */
+    public function totalIndisWithSourcesPercentage(): string
+    {
+        return $this->individualRepository->totalIndisWithSourcesPercentage();
+    }
+
+    /**
      * @param string|null $color_from
      * @param string|null $color_to
      *
