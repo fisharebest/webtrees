@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\BranchesListModule;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -36,18 +37,18 @@ use function redirect;
  */
 class RedirectBranchesPhp implements RequestHandlerInterface
 {
-    private BranchesListModule $module;
+    private ModuleService $module_service;
 
     private TreeService $tree_service;
 
     /**
-     * @param BranchesListModule $module
-     * @param TreeService        $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(BranchesListModule $module, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->module       = $module;
-        $this->tree_service = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -62,12 +63,12 @@ class RedirectBranchesPhp implements RequestHandlerInterface
         $soundex_dm  = $query['soundex_dm'] ?? null;
         $soundex_std = $query['soundex_std'] ?? null;
         $surname     = $query['surname'] ?? null;
+        $tree        = $this->tree_service->all()->get($ged);
+        $module      = $this->module_service->findByInterface(BranchesListModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof BranchesListModule) {
             $url = route('module', [
-                'module'      => $this->module->name(),
+                'module'      => $module->name(),
                 'action'      => 'Page',
                 'soundex_dm'  => $soundex_dm,
                 'soundex_std' => $soundex_std,

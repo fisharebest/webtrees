@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\StatisticsChartModule;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -37,18 +38,20 @@ use function redirect;
  */
 class RedirectStatisticsPhp implements RequestHandlerInterface
 {
-    private TreeService $tree_service;
-
     private StatisticsChartModule $statistics_chart_module;
 
+    private ModuleService $module_service;
+
+    private TreeService $tree_service;
+
     /**
-     * @param StatisticsChartModule $statistics_chart_module
-     * @param TreeService           $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(StatisticsChartModule $statistics_chart_module, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->statistics_chart_module = $statistics_chart_module;
-        $this->tree_service            = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -58,16 +61,16 @@ class RedirectStatisticsPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $query  = $request->getQueryParams();
+        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $tree   = $this->tree_service->all()->get($ged);
+        $module = $this->module_service->findByInterface(StatisticsChartModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof StatisticsChartModule) {
             $individual = $tree->significantIndividual(Auth::user());
 
             // This chart stored a list of individuals in the session, which we won't have.
-            $url = $this->statistics_chart_module->chartUrl($individual, []);
+            $url = $module->chartUrl($individual, []);
 
             return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }

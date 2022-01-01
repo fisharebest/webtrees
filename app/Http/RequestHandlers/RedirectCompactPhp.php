@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -38,18 +39,18 @@ use function redirect;
  */
 class RedirectCompactPhp implements RequestHandlerInterface
 {
-    private CompactTreeChartModule $chart;
+    private ModuleService $module_service;
 
     private TreeService $tree_service;
 
     /**
-     * @param CompactTreeChartModule $chart
-     * @param TreeService            $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(CompactTreeChartModule $chart, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -62,13 +63,13 @@ class RedirectCompactPhp implements RequestHandlerInterface
         $query   = $request->getQueryParams();
         $ged     = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
         $root_id = $query['rootid'] ?? '';
+        $tree    = $this->tree_service->all()->get($ged);
+        $module  = $this->module_service->findByInterface(CompactTreeChartModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof CompactTreeChartModule) {
             $individual = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->chart->chartUrl($individual, []);
+            $url = $module->chartUrl($individual, []);
 
             return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
