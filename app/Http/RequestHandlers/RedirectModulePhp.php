@@ -22,8 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\InteractiveTreeModule;
 use Fisharebest\Webtrees\Module\PedigreeMapModule;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -32,24 +34,25 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
+use function route;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
 class RedirectModulePhp implements RequestHandlerInterface
 {
+    private ModuleService $module_service;
+
     private TreeService $tree_service;
 
-    private PedigreeMapModule $pedigree_map_module;
-
     /**
-     * @param PedigreeMapModule $pedigree_map_module
-     * @param TreeService       $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(PedigreeMapModule $pedigree_map_module, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->pedigree_map_module = $pedigree_map_module;
-        $this->tree_service        = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -64,33 +67,36 @@ class RedirectModulePhp implements RequestHandlerInterface
         $mod        = $query['mod'] ?? '';
         $mod_action = $query['mod_action'] ?? '';
         $rootid     = $query['rootid'] ?? '';
-
-        $tree = $this->tree_service->all()->get($ged);
+        $tree       = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
-            switch ($mod . '/' . $mod_action) {
-                case 'googlemap/pedigree_map':
-                    // Pedigree map:
-                    $individual = Registry::individualFactory()->make($rootid, $tree);
-                    if ($individual instanceof Individual) {
-                        $url = $this->pedigree_map_module->chartUrl($individual, [
-                            'generations' => $query['PEDIGREE_GENERATIONS'] ?? PedigreeMapModule::DEFAULT_GENERATIONS,
-                        ]);
+            $individual = Registry::individualFactory()->make($rootid, $tree);
 
-                        return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
-                    }
-                    break;
+            if ($individual instanceof Individual) {
+                switch ($mod . '/' . $mod_action) {
+                    case 'googlemap/pedigree_map':
+                        $module = $this->module_service->findByInterface(PedigreeMapModule::class)->first();
 
-                case 'tree/treeview':
-                    // interactive tree:
-                    $url = route('module', [
-                        'module' => 'tree',
-                        'action' => 'Chart',
-                        'xref'   => $rootid,
-                        'tree'   => $tree->name(),
-                    ]);
+                        if ($module instanceof PedigreeMapModule) {
+                            $generations = $query['PEDIGREE_GENERATIONS'] ?? PedigreeMapModule::DEFAULT_GENERATIONS;
+                            $url         = $module->chartUrl($individual, ['generations' => $generations]);
 
-                    return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                        }
+
+                        break;
+
+                    case 'tree/treeview':
+                        $module = $this->module_service->findByInterface(InteractiveTreeModule::class)->first();
+
+                        if ($module instanceof InteractiveTreeModule) {
+                            $url = $module->chartUrl($individual, []);
+
+                            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                        }
+
+                        break;
+                }
             }
         }
 

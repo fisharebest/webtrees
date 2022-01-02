@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\AncestorsChartModule;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -45,18 +46,18 @@ class RedirectAncestryPhp implements RequestHandlerInterface
         3 => 'families',
     ];
 
-    private AncestorsChartModule $chart;
+    private ModuleService $module_service;
 
     private TreeService $tree_service;
 
     /**
-     * @param AncestorsChartModule $chart
-     * @param TreeService          $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(AncestorsChartModule $chart, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -71,13 +72,13 @@ class RedirectAncestryPhp implements RequestHandlerInterface
         $root_id     = $query['rootid'] ?? '';
         $generations = $query['PEDIGREE_GENERATIONS'] ?? '4';
         $chart_style = $query['chart_style'] ?? '';
+        $tree        = $this->tree_service->all()->get($ged);
+        $module      = $this->module_service->findByInterface(AncestorsChartModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof AncestorsChartModule) {
             $individual = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->chart->chartUrl($individual, [
+            $url = $module->chartUrl($individual, [
                 'generations' => $generations,
                 'style'       => self::CHART_STYLES[$chart_style] ?? 'tree',
             ]);

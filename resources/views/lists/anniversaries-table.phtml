@@ -55,7 +55,7 @@ use Illuminate\Support\Collection;
                             <small><?= view('icons/sex', ['sex' => $record->sex()]) ?></small>
                         <?php endif ?>
                     </td>
-                    <td data-sort="<?= $fact->jd ?>">
+                    <td data-sort="<?= $fact->jd + $fact->anniv / 10000.0 ?>">
                         <?= $fact->date()->display(true) ?>
                     </td>
                     <td data-sort="<?= $fact->anniv ?>">

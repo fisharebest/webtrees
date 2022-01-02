@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\FanChartModule;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -38,18 +39,18 @@ use function redirect;
  */
 class RedirectFanChartPhp implements RequestHandlerInterface
 {
-    private FanChartModule $chart;
+    private ModuleService $module_service;
 
     private TreeService $tree_service;
 
     /**
-     * @param FanChartModule $chart
-     * @param TreeService    $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(FanChartModule $chart, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -65,13 +66,13 @@ class RedirectFanChartPhp implements RequestHandlerInterface
         $generations = $query['generations'] ?? '4';
         $style       = $query['style'] ?? '4';
         $width       = $query['width'] ?? '100';
+        $tree        = $this->tree_service->all()->get($ged);
+        $module      = $this->module_service->findByInterface(FanChartModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof FanChartModule) {
             $individual = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->chart->chartUrl($individual, [
+            $url = $module->chartUrl($individual, [
                 'generations' => $generations,
                 'style'       => $style,
                 'width'       => $width,

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -45,18 +46,18 @@ class RedirectPedigreePhp implements RequestHandlerInterface
         3 => 'bottom',
     ];
 
-    private PedigreeChartModule $chart;
+    private ModuleService $module_service;
 
     private TreeService $tree_service;
 
     /**
-     * @param PedigreeChartModule $chart
-     * @param TreeService         $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(PedigreeChartModule $chart, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -71,13 +72,13 @@ class RedirectPedigreePhp implements RequestHandlerInterface
         $root_id     = $query['rootid'] ?? '';
         $generations = $query['generations'] ?? '4';
         $orientation = $query['orientation'] ?? '';
+        $tree        = $this->tree_service->all()->get($ged);
+        $module      = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof PedigreeChartModule) {
             $individual = Registry::individualFactory()->make($root_id, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->chart->chartUrl($individual, [
+            $url = $module->chartUrl($individual, [
                 'generations' => $generations,
                 'style'       => self::CHART_STYLES[$orientation] ?? 'right',
             ]);

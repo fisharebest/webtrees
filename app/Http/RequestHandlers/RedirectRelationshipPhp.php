@@ -22,8 +22,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Module\PedigreeChartModule;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -38,18 +40,18 @@ use function redirect;
  */
 class RedirectRelationshipPhp implements RequestHandlerInterface
 {
+    private ModuleService $module_service;
+
     private TreeService $tree_service;
 
-    private RelationshipsChartModule $relationships_chart_module;
-
     /**
-     * @param RelationshipsChartModule $relationships_chart_module
-     * @param TreeService              $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(RelationshipsChartModule $relationships_chart_module, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->relationships_chart_module = $relationships_chart_module;
-        $this->tree_service               = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -65,13 +67,13 @@ class RedirectRelationshipPhp implements RequestHandlerInterface
         $pid2      = $query['pid2'] ?? '';
         $ancestors = $query['ancestors'] ?? '0';
         $recursion = $query['recursion'] ?? '0';
+        $tree        = $this->tree_service->all()->get($ged);
+        $module      = $this->module_service->findByInterface(RelationshipsChartModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof RelationshipsChartModule) {
             $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual(Auth::user());
 
-            $url = $this->relationships_chart_module->chartUrl($individual, [
+            $url = $module->chartUrl($individual, [
                 'xref2'     => $pid2,
                 'ancestors' => $ancestors,
                 'recursion' => $recursion,

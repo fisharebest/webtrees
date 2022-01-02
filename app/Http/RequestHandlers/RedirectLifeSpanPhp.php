@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\LifespansChartModule;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -37,18 +38,18 @@ use function redirect;
  */
 class RedirectLifeSpanPhp implements RequestHandlerInterface
 {
+    private ModuleService $module_service;
+
     private TreeService $tree_service;
 
-    private LifespansChartModule $chart;
-
     /**
-     * @param LifespansChartModule $chart
-     * @param TreeService          $tree_service
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
      */
-    public function __construct(LifespansChartModule $chart, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, TreeService $tree_service)
     {
-        $this->chart        = $chart;
-        $this->tree_service = $tree_service;
+        $this->tree_service   = $tree_service;
+        $this->module_service = $module_service;
     }
 
     /**
@@ -58,16 +59,16 @@ class RedirectLifeSpanPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $query  = $request->getQueryParams();
+        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $tree   = $this->tree_service->all()->get($ged);
+        $module = $this->module_service->findByInterface(LifespansChartModule::class)->first();
 
-        $tree = $this->tree_service->all()->get($ged);
-
-        if ($tree instanceof Tree) {
+        if ($tree instanceof Tree && $module instanceof LifespansChartModule) {
             $individual = $tree->significantIndividual(Auth::user());
 
             // This chart stored a list of individuals in the session, which we won't have.
-            $url = $this->chart->chartUrl($individual, []);
+            $url = $module->chartUrl($individual, []);
 
             return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }

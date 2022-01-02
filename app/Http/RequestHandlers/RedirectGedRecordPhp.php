@@ -25,8 +25,8 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -56,10 +56,9 @@ class RedirectGedRecordPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $request->getQueryParams();
-        $ged   = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $pid   = $query['pid'] ?? '';
-        $tree  = $this->tree_service->all()->get($ged);
+        $ged  = Validator::queryParams($request)->requiredString('ged');
+        $pid  = Validator::queryParams($request)->isXref()->requiredString('pid');
+        $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
             $record = Registry::gedcomRecordFactory()->make($pid, $tree);
