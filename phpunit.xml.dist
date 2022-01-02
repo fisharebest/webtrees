@@ -17,7 +17,6 @@
   <coverage>
     <include>
       <directory suffix=".php">app</directory>
-      <directory suffix=".phtml">resources/views</directory>
     </include>
   </coverage>
 </phpunit>
