@@ -16,8 +16,13 @@
 /* markdown formatting */
 
 .markdown {
-    /* Tables and pre-formatted text can break the layout. */
-    overflow-x: auto;
+    /* Pre-formatted text can break the layout. */
+    overflow-wrap: break-word;
+}
+
+.markdown p code {
+    /* Bootstrap makes code text red */
+    color: inherit;
 }
 
 .markdown p {
