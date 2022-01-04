@@ -143,15 +143,13 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     /**
      * @param int $max_lifetime
      *
-     * @return bool
+     * @return int|false
      */
     #[\ReturnTypeWillChange]
-    public function gc($max_lifetime): bool
+    public function gc($max_lifetime)
     {
-        DB::table('session')
+        return DB::table('session')
             ->where('session_time', '<', Carbon::now()->subSeconds($max_lifetime))
             ->delete();
-
-        return true;
     }
 }
