@@ -1684,7 +1684,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             $this->totalIndisWithSourcesQuery(),
             $this->totalIndividualsQuery()
         );
-    }  
+    }
 
     /**
      * @return string
