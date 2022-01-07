@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-05 10:47+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-10 15:22+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -647,7 +647,7 @@ msgstr "<prednastavený motív>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Poznámka: Vyplnením a odoslaním týchto údajov súhlasíte, že:</p><ul><li>budete chrániť súkromie žijúcich osôb, uvedených na našej stránke;</li><li>v dole uvedenom rámčeku vysvetlíte, ku ktorej osobe z rodokmeňa ste v príbuzenskom vzťahu, alebo nám poskytnete informácie o niekom, kto by mal byť uvedený na našej stránke.</li></ul>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -3814,7 +3814,7 @@ msgstr "Káva a šľahačka"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Kohabitácia"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4071,7 +4071,7 @@ msgstr "Súbory sa kopírujú …"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Kopírovať URL záznamu do schránky"
 
 #: app/Factories/ElementFactory.php:374 app/Factories/ElementFactory.php:401
 msgid "Copyright"
@@ -4192,7 +4192,7 @@ msgstr "Vytvoriť novú osobu"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Vytvoriť mapy použitím %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4365,11 +4365,11 @@ msgstr "Vlastná"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "Užívateľsky definované GEDCOM sub-tagy"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "Užívateľsky definovaný GEDCOM tag"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4377,7 +4377,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:712
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Užívateľsky definované GEDCOM tagy"
 
 #: resources/views/calendar-page.phtml:203
 msgid "Custom event"
@@ -5413,7 +5413,7 @@ msgstr "Zobraziť a spravovať užívateľove obľúbené stránky."
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "Zobraziť užívateľsky definované GEDCOM tagy"
 
 #: app/Factories/ElementFactory.php:326 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5476,7 +5476,7 @@ msgstr "Sťahujem %s…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Stiahnuť .ICS súbor obsahujúci výročie"
 
 #: resources/views/media-page-details.phtml:86
 msgid "Download file"
@@ -5625,7 +5625,7 @@ msgstr "Upraviť túto osobu a nahradiť jej údaje vašimi vlastnými."
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Editovať so všetkými GEDCOM tagmi"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -5751,7 +5751,7 @@ msgstr "Zamestnávateľ"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Vyprázdniť schránku"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -5846,7 +5846,7 @@ msgstr "Esfand"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
@@ -5965,7 +5965,7 @@ msgstr "Externé súbory"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "Externý odkaz"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
@@ -6003,7 +6003,7 @@ msgstr "Často kladené otázky (FAQ) sú zoznamom otázok a odpovedí, ktoré v
 #: app/Module/CustomTagsGenPluswin.php:96
 #: app/Module/CustomTagsGenPluswin.php:98
 msgid "FOKO country"
-msgstr ""
+msgstr "Značka štátu/teritória pre FoKo"
 
 #: app/Factories/ElementFactory.php:529
 msgid "Fact"
@@ -6684,7 +6684,7 @@ msgstr "Ak máte otázky ohľadom genealógie, kontaktujte, prosím, %s."
 #: resources/views/modules/openstreetmap/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Ďalšie informácie pozrite tu: %s."
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
@@ -6909,7 +6909,7 @@ msgstr "Súbor GEDCOM"
 
 #: resources/views/modules/custom-tags/config.phtml:53
 msgid "GEDCOM sub-tag"
-msgstr ""
+msgstr "GEDCOM sub-tag"
 
 #: resources/views/admin/tags.phtml:43 resources/views/admin/tags.phtml:173
 #: resources/views/admin/tags.phtml:265 resources/views/admin/tags.phtml:327
@@ -6918,12 +6918,12 @@ msgstr ""
 #: resources/views/admin/tags.phtml:883
 #: resources/views/modules/custom-tags/config.phtml:51
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "GEDCOM tag"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:264
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "GEDCOM tagy"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -7022,7 +7022,7 @@ msgstr "Generácie potomkov"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:45
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -15764,7 +15764,7 @@ msgstr "Typ mena"
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
 #: app/Factories/ElementFactory.php:679 app/Factories/ElementFactory.php:699
 msgid "Type of reference number"
-msgstr "Typ referenčného čísla "
+msgstr "Typ referenčného čísla"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
