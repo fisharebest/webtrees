@@ -31,13 +31,17 @@
         "php": "7.4 - 8.1",
         "ext-ctype": "*",
         "ext-curl": "*",
+        "ext-exif": "*",
+        "ext-fileinfo": "*",
         "ext-gd": "*",
         "ext-iconv": "*",
         "ext-intl": "*",
         "ext-json": "*",
+        "ext-mbstring": "*",
         "ext-pcre": "*",
         "ext-pdo": "*",
         "ext-session": "*",
+        "ext-simplexml": "*",
         "ext-xml": "*",
         "ext-zip": "*",
         "aura/router": "3.1.0",
@@ -92,7 +96,7 @@
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
         "ext-pdo_pgsql": "Required to use PostgreSQL for database storage",
         "ext-pdo_sqlsvr": "Required to use SQL Server for database storage",
-        "ext-zlib": "Required to compress HTTP respnses"
+        "ext-zlib": "Required to compress HTTP responses"
     },
     "scripts": {
         "webtrees:build": [
