@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-10 15:22+0000\n"
+"PO-Revision-Date: 2022-01-20 11:59+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -2258,36 +2258,36 @@ msgstr "Atlanta, Georgia, USA"
 #: app/Elements/RelationIsDescriptor.php:94
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgid "Attendant"
-msgstr "Opatrovník"
+msgstr "Družba/družička"
 
 #: app/Elements/RelationIsDescriptor.php:73
 #: app/GedcomCode/GedcomCodeRela.php:93
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Slúžka"
+msgstr "Družica"
 
 #: app/Elements/RelationIsDescriptor.php:52
 #: app/GedcomCode/GedcomCodeRela.php:89
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Sluha"
+msgstr "Družba"
 
 #: app/Elements/RelationIsDescriptor.php:95
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Attending"
-msgstr "Obsluhujúci"
+msgstr "Sprevádzajúci"
 
 #: app/Elements/RelationIsDescriptor.php:74
 #: app/GedcomCode/GedcomCodeRela.php:104
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Obsluhujúca"
+msgstr "Sprevádzajúca"
 
 #: app/Elements/RelationIsDescriptor.php:53
 #: app/GedcomCode/GedcomCodeRela.php:100
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Obsluhujúci"
+msgstr "Sprevádzajúci"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Factories/ElementFactory.php:438
@@ -3315,7 +3315,7 @@ msgstr "Kupujúci"
 #: app/GedcomCode/GedcomCodeRela.php:123
 msgctxt "FEMALE"
 msgid "Buyer"
-msgstr "Kupujúci"
+msgstr "Kupujúca"
 
 #: app/Elements/RelationIsDescriptor.php:54
 #: app/GedcomCode/GedcomCodeRela.php:119
@@ -3807,7 +3807,7 @@ msgstr "Vianočný ostrov"
 #: app/Elements/RelationIsDescriptor.php:99
 #: app/GedcomCode/GedcomCodeRela.php:130
 msgid "Circumciser"
-msgstr "Obriezkár"
+msgstr "Obrezávajúci"
 
 #: resources/views/modules/census-assistant.phtml:37
 msgid "Citation"
@@ -3857,13 +3857,13 @@ msgstr "Štátny matrikár"
 #: app/GedcomCode/GedcomCodeRela.php:138
 msgctxt "FEMALE"
 msgid "Civil registrar"
-msgstr "Štátny matrikár"
+msgstr "Sobášiaca úradníčka"
 
 #: app/Elements/RelationIsDescriptor.php:55
 #: app/GedcomCode/GedcomCodeRela.php:134
 msgctxt "MALE"
 msgid "Civil registrar"
-msgstr "Štátny matrikár"
+msgstr "Sobášiaci úradník"
 
 #: app/Http/RequestHandlers/CleanDataFolder.php:93
 #: resources/views/admin/control-panel.phtml:217
@@ -4253,7 +4253,7 @@ msgstr "Vytvoriť nový zdroj"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr "Vytvoriť zasielanie"
+msgstr "Vytvoriť zaslanie"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:553
 #: resources/views/modals/create-submitter.phtml:16
@@ -5830,7 +5830,7 @@ msgstr "Zamestnanec"
 #: app/GedcomCode/GedcomCodeRela.php:149
 msgctxt "FEMALE"
 msgid "Employee"
-msgstr "Zamestnanec"
+msgstr "Zamestnankyňa"
 
 #: app/Elements/RelationIsDescriptor.php:56
 #: app/GedcomCode/GedcomCodeRela.php:145
@@ -5849,7 +5849,7 @@ msgstr "Zamestnávateľ"
 #: app/GedcomCode/GedcomCodeRela.php:160
 msgctxt "FEMALE"
 msgid "Employer"
-msgstr "Zamestnávateľ"
+msgstr "Zamestnávateľka"
 
 #: app/Elements/RelationIsDescriptor.php:57
 #: app/GedcomCode/GedcomCodeRela.php:156
@@ -6033,7 +6033,7 @@ msgstr "Nezahrnúť podpriečinky"
 #: app/Elements/LdsSpouseSealingDateStatus.php:71
 #: app/GedcomCode/GedcomCodeStat.php:127
 msgid "Excluded from this submission"
-msgstr "Vylúčený z tohoto výberu"
+msgstr "Vylúčené z tohto zaslania"
 
 #. I18N: placeholder text for registration-comments field
 #: resources/views/register-page.phtml:89
@@ -6816,22 +6816,22 @@ msgstr "Fort Lauderdale, Florida, USA"
 #: app/Elements/PedigreeLinkageType.php:62 app/GedcomCode/GedcomCodePedi.php:85
 msgctxt "Female pedigree"
 msgid "Foster"
-msgstr "V pestúnskej starostlivosti"
+msgstr "Chovankyňa"
 
 #: app/Elements/PedigreeLinkageType.php:52 app/GedcomCode/GedcomCodePedi.php:81
 msgctxt "Male pedigree"
 msgid "Foster"
-msgstr "V pestúnskej starostlivosti"
+msgstr "Chovanec"
 
 #: app/Elements/PedigreeLinkageType.php:72 app/GedcomCode/GedcomCodePedi.php:88
 msgctxt "Pedigree"
 msgid "Foster"
-msgstr "V pestúnskej starostlivosti"
+msgstr "Chovanec"
 
 #: app/Elements/RelationIsDescriptor.php:103
 #: app/GedcomCode/GedcomCodeRela.php:167
 msgid "Foster child"
-msgstr "Pestúnske dieťa"
+msgstr "Chovanec"
 
 #: app/Elements/RelationIsDescriptor.php:104
 #: app/GedcomCode/GedcomCodeRela.php:171
@@ -6908,7 +6908,7 @@ msgstr "Priateľ"
 #: app/GedcomCode/GedcomCodeRela.php:183
 msgctxt "FEMALE"
 msgid "Friend"
-msgstr "Priateľ"
+msgstr "Priateľka"
 
 #: app/Elements/RelationIsDescriptor.php:58
 #: app/GedcomCode/GedcomCodeRela.php:179
@@ -7297,7 +7297,7 @@ msgstr "Poručník"
 #: app/GedcomCode/GedcomCodeRela.php:232
 msgctxt "FEMALE"
 msgid "Guardian"
-msgstr "Poručník"
+msgstr "Poručníčka"
 
 #: app/Elements/RelationIsDescriptor.php:61
 #: app/GedcomCode/GedcomCodeRela.php:228
@@ -7527,7 +7527,7 @@ msgstr "Chešvan"
 #: app/Http/RequestHandlers/TreePrivacyPage.php:94
 #: resources/views/admin/trees-privacy.phtml:164
 msgid "Hide from everyone"
-msgstr "Ukryť všetkým"
+msgstr "skryť všetkým"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -8823,19 +8823,19 @@ msgstr "Lokality"
 #: app/Elements/RelationIsDescriptor.php:115
 #: app/GedcomCode/GedcomCodeRela.php:257
 msgid "Lodger"
-msgstr "Podnájomník"
+msgstr "Nájomník"
 
 #: app/Elements/RelationIsDescriptor.php:84
 #: app/GedcomCode/GedcomCodeRela.php:254
 msgctxt "FEMALE"
 msgid "Lodger"
-msgstr "Podnájomník"
+msgstr "Nájomníčka"
 
 #: app/Elements/RelationIsDescriptor.php:63
 #: app/GedcomCode/GedcomCodeRela.php:250
 msgctxt "MALE"
 msgid "Lodger"
-msgstr "Podnájomník"
+msgstr "Nájomník"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:121 app/GedcomCode/GedcomCodeTemp.php:429
@@ -10648,19 +10648,19 @@ msgstr "Počet priezvisk"
 #: app/Elements/RelationIsDescriptor.php:117
 #: app/GedcomCode/GedcomCodeRela.php:272
 msgid "Nurse"
-msgstr "Pestúnka"
+msgstr "Dojka"
 
 #: app/Elements/RelationIsDescriptor.php:85
 #: app/GedcomCode/GedcomCodeRela.php:269
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr "Pestúnka"
+msgstr "Dojka"
 
 #: app/Elements/RelationIsDescriptor.php:64
 #: app/GedcomCode/GedcomCodeRela.php:265
 msgctxt "MALE"
 msgid "Nurse"
-msgstr "Pestúnka"
+msgstr "Dojka"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:148 app/GedcomCode/GedcomCodeTemp.php:510
@@ -10890,7 +10890,7 @@ msgstr "Vlastník"
 #: app/GedcomCode/GedcomCodeRela.php:280
 msgctxt "FEMALE"
 msgid "Owner"
-msgstr "Vlastník"
+msgstr "Vlastníčka"
 
 #: app/Elements/RelationIsDescriptor.php:65
 #: app/GedcomCode/GedcomCodeRela.php:276
@@ -11649,7 +11649,7 @@ msgstr "Provo, Utah, USA"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr "Splnomocnenec"
+msgstr "Zástupca"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -11977,19 +11977,19 @@ msgstr "Registrované partnerstvo"
 #: app/Elements/RelationIsDescriptor.php:122
 #: app/GedcomCode/GedcomCodeRela.php:302
 msgid "Registry officer"
-msgstr "Matričný úradník"
+msgstr "Matrikár"
 
 #: app/Elements/RelationIsDescriptor.php:87
 #: app/GedcomCode/GedcomCodeRela.php:299
 msgctxt "FEMALE"
 msgid "Registry officer"
-msgstr "Matričný úradník"
+msgstr "Matrikárka"
 
 #: app/Elements/RelationIsDescriptor.php:66
 #: app/GedcomCode/GedcomCodeRela.php:295
 msgctxt "MALE"
 msgid "Registry officer"
-msgstr "Matričný úradník"
+msgstr "Matrikár"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:106
@@ -12699,7 +12699,7 @@ msgstr "Predávajúci"
 #: app/GedcomCode/GedcomCodeRela.php:310
 msgctxt "FEMALE"
 msgid "Seller"
-msgstr "Predávajúci"
+msgstr "Predávajúca"
 
 #: app/Elements/RelationIsDescriptor.php:67
 #: app/GedcomCode/GedcomCodeRela.php:306
@@ -12826,7 +12826,7 @@ msgstr "Úradník"
 #: app/GedcomCode/GedcomCodeRela.php:321
 msgctxt "FEMALE"
 msgid "Servant"
-msgstr "Úradník"
+msgstr "Úradníčka"
 
 #: app/Elements/RelationIsDescriptor.php:68
 #: app/GedcomCode/GedcomCodeRela.php:317
@@ -13118,7 +13118,7 @@ msgstr "Ukázať páry, kde aspoň jeden partner mal viac ako jedno manželstvo.
 
 #: resources/views/lists/families-table.phtml:163
 msgid "Show couples where only the female partner is dead."
-msgstr "Zobraziť páry, kde zomrela len manželka."
+msgstr "Zobraziť páry, kde zomrela len žena."
 
 #: resources/views/lists/families-table.phtml:167
 msgid "Show couples where only the male partner is dead."
@@ -13918,7 +13918,7 @@ msgstr "Predmet"
 #: app/GedcomTag.php:981 app/Submission.php:95 app/Submission.php:96
 #: app/Submission.php:97
 msgid "Submission"
-msgstr "Rezignácia"
+msgstr "Zaslanie"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
@@ -15771,7 +15771,7 @@ msgstr "Celkom rodín"
 
 #: resources/views/statistics/individuals/total-records.phtml:32
 msgid "Total females"
-msgstr "Celkom žien"
+msgstr "Spolu žien"
 
 #: resources/views/statistics/individuals/names.phtml:46
 msgid "Total given names"
@@ -16199,7 +16199,7 @@ msgstr "Použiť kompaktné zobrazenie"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:915
 msgid "Use full source citations"
-msgstr "Použiť úplnú citáciu zdroja"
+msgstr "Použiť úplné citácie zdrojov"
 
 #: resources/views/setup/step-4-database-mysql.phtml:125
 #: resources/views/setup/step-4-database-pgsql.phtml:110
@@ -16590,7 +16590,11 @@ msgstr "Pri registrácii nového užívateľa sa zašle uvítacia správa s over
 #. I18N: Help text for the “Source type” configuration setting
 #: resources/views/admin/trees-preferences.phtml:935
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default."
-msgstr "Keď pridávate nových blízkych príbuzných, môžete pridať citáciu zdroja buď k záznamu (osoby alebo rodiny), alebo k faktom a udalostiam (narodenie, sobáš, ...). Toto nastavenie určuje, či bude prednastavený celý záznam, alebo jednotlivé fakty a udalosti."
+msgstr ""
+"Keď pridávate nových blízkych príbuzných, môžete pridať citácie zdrojov buď "
+"k záznamu (osoby alebo rodiny), alebo k faktom a udalostiam (narodenie, "
+"sobáš, ...). Toto nastavenie určuje, či bude prednastavený celý záznam, "
+"alebo jednotlivé fakty a udalosti."
 
 #: resources/views/edit/reorder-families.phtml:36
 msgid "When an individual has more than one spouse, you should sort the families in date order."
