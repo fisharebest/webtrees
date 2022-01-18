@@ -411,11 +411,6 @@ parameters:
 			path: app/Functions/FunctionsPrintFacts.php
 
 		-
-			message: "#^Array \\(array\\<array\\<string\\>\\>\\) does not accept array\\<string, string\\|null\\>\\.$#"
-			count: 1
-			path: app/GedcomRecord.php
-
-		-
 			message: "#^Cannot call method acceptRecord\\(\\) on mixed\\.$#"
 			count: 3
 			path: app/GedcomRecord.php
@@ -452,6 +447,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/GedcomRecord.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:\\$getAllNames \\(array\\<array\\<string\\>\\>\\) does not accept array\\<array\\<string\\|null\\>\\>\\.$#"
 			count: 1
 			path: app/GedcomRecord.php
 
@@ -1501,11 +1501,6 @@ parameters:
 			path: app/I18N.php
 
 		-
-			message: "#^Array \\(array\\<array\\<string\\>\\>\\) does not accept array\\<string, mixed\\>\\.$#"
-			count: 1
-			path: app/Individual.php
-
-		-
 			message: "#^Binary operation \"\\*\" between string and 365 results in an error\\.$#"
 			count: 1
 			path: app/Individual.php
@@ -1844,11 +1839,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:isManager\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
 			count: 2
 			path: app/Module/FamilyTreeFavoritesModule.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with object\\|null will always evaluate to false\\.$#"
-			count: 1
-			path: app/Module/FamilyTreeNewsModule.php
 
 		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
@@ -2796,11 +2786,6 @@ parameters:
 			path: app/Module/UserFavoritesModule.php
 
 		-
-			message: "#^Call to function is_string\\(\\) with object\\|null will always evaluate to false\\.$#"
-			count: 1
-			path: app/Module/UserJournalModule.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 2
 			path: app/Module/WebtreesTheme.php
@@ -2976,11 +2961,6 @@ parameters:
 			path: app/PlaceLocation.php
 
 		-
-			message: "#^Array \\(array\\<array\\<string, string\\>\\>\\) does not accept string\\.$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\:\\:getStyle\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Report/PdfRenderer.php
@@ -3007,6 +2987,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$lw of method TCPDF\\:\\:setHeaderData\\(\\) expects string, int given\\.$#"
+			count: 1
+			path: app/Report/PdfRenderer.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\AbstractRenderer\\:\\:\\$styles \\(array\\<array\\<string, string\\>\\>\\) does not accept array\\<array\\<string, string\\>\\|string\\>\\.$#"
 			count: 1
 			path: app/Report/PdfRenderer.php
 
@@ -3046,6 +3031,21 @@ parameters:
 			path: app/Report/ReportHtmlTextbox.php
 
 		-
+			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function feof expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function fread expects resource, resource\\|false given\\.$#"
+			count: 1
+			path: app/Report/ReportParserBase.php
+
+		-
 			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\{\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), non\\-empty\\-string\\} given\\.$#"
 			count: 2
 			path: app/Report/ReportParserBase.php
@@ -3059,11 +3059,6 @@ parameters:
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\:\\:\\$xml_parser has unknown class XMLParser as its type\\.$#"
 			count: 1
 			path: app/Report/ReportParserBase.php
-
-		-
-			message: "#^Array \\(array\\<string\\>\\) does not accept array\\<int, string\\>\\.$#"
-			count: 1
-			path: app/Report/ReportParserGenerate.php
 
 		-
 			message: "#^Call to function assert\\(\\) with false and LogicException will always evaluate to false\\.$#"
@@ -3201,8 +3196,18 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$gedrec_stack \\(array\\<string\\>\\) does not accept array\\<array\\<int, string\\>\\|string\\>\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$list type has no value type specified in iterable type array\\.$#"
 			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$parser \\(XMLParser\\) does not accept XMLParser\\|null\\.$#"
+			count: 4
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -3222,6 +3227,16 @@ parameters:
 
 		-
 			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$print_data \\(bool\\) does not accept bool\\|null\\.$#"
+			count: 4
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$repeat_bytes \\(int\\) does not accept array\\<string\\>\\|int\\.$#"
+			count: 4
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Property Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:\\$repeats \\(array\\<string\\>\\) does not accept array\\<string\\>\\|int\\.$#"
 			count: 4
 			path: app/Report/ReportParserGenerate.php
 
