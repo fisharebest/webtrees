@@ -83,7 +83,7 @@ class ReportParserBase
             }
         );
 
-        $fp = Registry::filesystem()->root()->readStream($report);
+        $fp = fopen($report, 'rb');
 
         while ($data = fread($fp, 4096)) {
             if (!xml_parse($this->xml_parser, $data, feof($fp))) {
