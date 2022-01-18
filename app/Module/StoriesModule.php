@@ -301,11 +301,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
                 ->where('block_id', '=', $block_id)
                 ->value('xref');
 
-            // Record was deleted before we could read it?
-            if (!is_string($xref)) {
-                throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'block_id:' . $block_id));
-            }
-
             $story_title = $this->getBlockSetting($block_id, 'title');
             $story_body  = $this->getBlockSetting($block_id, 'story_body');
             $languages   = explode(',', $this->getBlockSetting($block_id, 'languages'));

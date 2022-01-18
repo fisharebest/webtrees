@@ -174,7 +174,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 ->first();
 
             // Record was deleted before we could read it?
-            if (!is_string($row)) {
+            if ($row === null) {
                 throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'news_id:' . $news_id));
             }
         } else {
