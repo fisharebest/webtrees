@@ -631,47 +631,36 @@
       zoomoutTitle: config.i18n.zoomOut,
     });
 
-    const resetControl = L.Control.extend({
-      options: {
-        position: 'topleft',
-      },
-      onAdd: function (map) {
-        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        container.onclick = resetCallback;
-        let reset = config.i18n.reset;
-        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-        anchor.setAttribute('aria-label', reset);
-        anchor.href = '#';
-        anchor.title = reset;
-        anchor.role = 'button';
-        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
-        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-        image.alt = reset;
-
-        return container;
-      },
-    });
-
+    const preferredLayer = localStorage.getItem('map_default_layer');
     let defaultLayer = null;
+    let systemDefaultLayer = null;
 
     for (let [, provider] of Object.entries(config.mapProviders)) {
       for (let [, child] of Object.entries(provider.children)) {
+        child.name = provider.label + '-' + child.label;
+
         if ('bingMapsKey' in child) {
           child.layer = L.tileLayer.bing(child);
         } else {
           child.layer = L.tileLayer(child.url, child);
         }
         if (provider.default && child.default) {
+          systemDefaultLayer = child.layer;
+        }
+        if (preferredLayer === child['name']) {
           defaultLayer = child.layer;
         }
       }
     }
 
     if (defaultLayer === null) {
-      console.log('No default map layer defined - using the first one.');
-      let defaultLayer = config.mapProviders[0].children[0].layer;
+      if (systemDefaultLayer === null) {
+        console.log('No default map layer defined - using the first one.');
+        defaultLayer = config.mapProviders[0].children[0].layer;
+      } else {
+        defaultLayer = systemDefaultLayer;
+      }
     }
-
 
     // Create the map with all controls and layers
     return L.map(id, {
@@ -683,8 +672,10 @@
       .addControl(L.control.layers.tree(config.mapProviders, null, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
-      }));
-
+      }))
+      .on('baselayerchange', (l) => {
+        localStorage.setItem('map_default_layer', l.layer.options.name);
+      });
   };
 
   /**
