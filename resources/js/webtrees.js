@@ -630,10 +630,12 @@
       zoomoutTitle: config.i18n.zoomOut,
     });
 
+    let translation = [];
+    let index = 0;
     let defaultLayer = null;
 
-    for (let [, provider] of Object.entries(config.mapProviders)) {
-      for (let [, child] of Object.entries(provider.children)) {
+    for (let [i1, provider] of Object.entries(config.mapProviders)) {
+      for (let [i2, child] of Object.entries(provider.children)) {
         if ('bingMapsKey' in child) {
           child.layer = L.tileLayer.bing(child);
         } else {
@@ -642,14 +644,24 @@
         if (provider.default && child.default) {
           defaultLayer = child.layer;
         }
+        // translate provider and layer indices to a linear list
+        // that matches the index returned by the 'baselayerchange' function
+        translation[index++] = {provider: i1, layer: i2};
       }
     }
 
-    if (defaultLayer === null) {
-      console.log('No default map layer defined - using the first one.');
-      let defaultLayer = config.mapProviders[0].children[0].layer;
+    const key = translation[localStorage.getItem('map_default_layer')];
+    if (key !== null &&
+      key !== undefined &&
+      config.mapProviders[key.provider] !== undefined &&
+      config.mapProviders[key.provider].children[key.layer] !== undefined) {
+      defaultLayer = config.mapProviders[key.provider].children[key.layer].layer;
+    } else {
+      if (defaultLayer === null) {
+        console.log('No default map layer defined - using the first one.');
+        defaultLayer = config.mapProviders[0].children[0].layer;
+      }
     }
-
 
     // Create the map with all controls and layers
     return L.map(id, {
@@ -660,8 +672,10 @@
       .addControl(L.control.layers.tree(config.mapProviders, null, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
-      }));
-
+      }))
+      .on('baselayerchange', function (layer) {
+        localStorage.setItem('map_default_layer', layer.name);
+      });
   };
 }(window.webtrees = window.webtrees || {}));
 
