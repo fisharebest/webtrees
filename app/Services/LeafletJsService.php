@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 
@@ -57,6 +58,10 @@ class LeafletJsService
                 ];
             })
             ->values();
+
+        if ($map_providers->isEmpty()) {
+            throw new HttpServiceUnavailableException(I18N::translate('No map providers enabled.'));
+        }
 
         return (object) [
             'i18n'         => [
