@@ -75,7 +75,7 @@ class OrdnanceSurveyHistoricMaps extends AbstractModule implements ModuleMapProv
                 'bounds'      => [[49.852539, -7.793077], [60.894042, 1.790425]],
                 'default'     => true,
                 'label'       => 'Historic map of Great Britain',
-                'maxZoom'     => 17,
+                'maxZoom'     => 15,
                 'minZoom'     => 2,
                 'subdomains'  => ['0', '1', '2', '3'],
                 'url'         => 'https://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
