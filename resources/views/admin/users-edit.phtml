@@ -220,7 +220,7 @@ use Illuminate\Support\Collection;
         <div class="col-sm-9">
             <div class="form-check">
                 <label>
-                    <input type="checkbox" id="admin" name="canadmin" value="1" <?= $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) === '1' ? 'checked' : '' ?>  <?= $user->id() === Auth::id() ? 'disabled' : '' ?>>
+                    <input type="checkbox" id="admin" name="canadmin" value="1" <?= $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) === '1' ? 'checked="checked"' : '' ?>  <?= $user->id() === Auth::id() ? 'disabled="disabled"' : '' ?>>
                     <?= I18N::translate('Administrator') ?>
                 </label>
             </div>

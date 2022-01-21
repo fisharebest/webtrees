@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,18 +31,12 @@ use function response;
 use function strlen;
 
 /**
- * Autocomplete for Select2 based controls.
+ * Autocomplete for TomSelect based controls.
  */
-abstract class AbstractSelect2Handler implements RequestHandlerInterface
+abstract class AbstractTomSelectHandler implements RequestHandlerInterface
 {
     // For clients that request one page of data at a time.
-    private const RESULTS_PER_PAGE = 20;
-
-    // Minimum number of characters for a search.
-    public const MINIMUM_INPUT_LENGTH = 2;
-
-    // Wait for the user to pause typing before sending request.
-    public const AJAX_DELAY = 350;
+    private const RESULTS_PER_PAGE = 50;
 
     /**
      * @param ServerRequestInterface $request
@@ -53,27 +48,30 @@ abstract class AbstractSelect2Handler implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $params = (array) $request->getParsedBody();
-        $query  = $params['q'] ?? '';
-        $page   = (int) ($params['page'] ?? 1);
-        $at     = (bool) ($request->getQueryParams()['at'] ?? false);
+        $at    = Validator::queryParams($request)->requiredString('at');
+        $page  = Validator::queryParams($request)->integer('page') ?? 1;
+        $query = Validator::queryParams($request)->requiredString('query');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
         $limit  = self::RESULTS_PER_PAGE + 1;
 
         // Perform the search.
-        if (strlen($query) >= self::MINIMUM_INPUT_LENGTH) {
+        if ($query !== '') {
             $results = $this->search($tree, $query, $offset, $limit, $at ? '@' : '');
         } else {
             $results = new Collection();
         }
 
+        if ($results->count() > self::RESULTS_PER_PAGE) {
+            $next_url = route(static::class, ['tree' => $tree->name(), 'at' => $at ? '@' : '', 'page' => $page + 1]);
+        } else {
+            $next_url = null;
+        }
+
         return response([
-            'results'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
-            'pagination' => [
-                'more' => $results->count() > self::RESULTS_PER_PAGE,
-            ],
+            'data'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
+            'nextUrl' => $next_url,
         ]);
     }
 

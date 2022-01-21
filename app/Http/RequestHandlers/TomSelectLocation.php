@@ -30,12 +30,12 @@ use function view;
 /**
  * Autocomplete for locations.
  */
-class Select2Location extends AbstractSelect2Handler
+class TomSelectLocation extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Location constructor.
+     * TomSelectLocation constructor.
      *
      * @param SearchService $search_service
      */
@@ -69,9 +69,8 @@ class Select2Location extends AbstractSelect2Handler
 
         return $results->map(static function (Location $location) use ($at): array {
             return [
-                'id'    => $at . $location->xref() . $at,
                 'text'  => view('selects/location', ['location' => $location]),
-                'title' => ' ',
+                'value' => $at . $location->xref() . $at,
             ];
         });
     }

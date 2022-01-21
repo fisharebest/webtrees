@@ -663,6 +663,84 @@
       }));
 
   };
+
+  /**
+   * Initialize a tom-select input
+   * @param {Element} element
+   * @returns {TomSelect}
+   */
+  webtrees.initializeTomSelect = function (element) {
+    if (element.tomselect) {
+      return element.tomselect;
+    }
+
+    let options = {};
+
+    if (element.dataset.url) {
+      options = {
+        plugins: ['dropdown_input', 'virtual_scroll'],
+        render: {
+          item: (data, escape) => '<div>' + data.text + '</div>',
+          option: (data, escape) => '<div>' + data.text + '</div>',
+        },
+        firstUrl: query => element.dataset.url + '&query=' + encodeURIComponent(query),
+        load: function (query, callback) {
+          fetch(this.getUrl(query))
+            .then(response => response.json())
+            .then(json => {
+              this.setNextUrl(query, json.nextUrl + '&query=' + encodeURIComponent(query));
+              callback(json.data);
+            })
+            .catch(callback);
+        },
+      };
+    } else {
+      options = {
+        plugins: ['remove_button'],
+      };
+    }
+
+    return new TomSelect(element, options);
+  }
+
+  /**
+   * Reset a tom-select input to have a single selected option
+   * @param {TomSelect} tomSelect
+   * @param {string} value
+   * @param {string} text
+   */
+  webtrees.resetTomSelect = function (tomSelect, value, text) {
+    tomSelect.clear(true);
+    tomSelect.clearOptions();
+    tomSelect.addOption({ value: value, text: text });
+    tomSelect.refreshOptions();
+    tomSelect.addItem(value, true);
+    tomSelect.refreshItems();
+  };
+
+  /**
+   * Toggle the visibility/status of INDI/FAM/SOUR/REPO/OBJE selectors
+   *
+   * @param {Element} select
+   * @param {Element} container
+   */
+  webtrees.initializeIFSRO = function(select, container) {
+    select.addEventListener('change', function () {
+      // Show only the selected selector.
+      console.log(select.value);
+      container.querySelectorAll('.select-record').forEach(element => element.classList.add('d-none'));
+      container.querySelectorAll('.select-' + select.value).forEach(element => element.classList.remove('d-none'));
+      // Enable only the selected selector (so that disabled ones do not get submitted).
+      container.querySelectorAll('.select-record select').forEach(element => {
+        element.disabled = true;
+        element.tomselect.disable();
+      });
+      container.querySelectorAll('.select-' + select.value + ' select').forEach(element => {
+        element.disabled = false;
+        element.tomselect.enable();
+      });
+    });
+  }
 }(window.webtrees = window.webtrees || {}));
 
 // Send the CSRF token on all AJAX requests
@@ -685,27 +763,15 @@ $(function () {
   // Autocomplete
   webtrees.autocomplete('input[data-wt-autocomplete-url]');
 
-  // Select2 - activate autocomplete fields
-  const lang = document.documentElement.lang;
-  const select2_languages = {
-    'zh-Hans': 'zh-CN',
-    'zh-Hant': 'zh-TW'
-  };
-  $('select.select2').select2({
-    language: select2_languages[lang] || lang,
-    // Needed for elements that are initially hidden.
-    width: '100%',
-    // Do not escape - we do it on the server.
-    escapeMarkup: function (x) {
-      return x;
-    }
-  });
+  document.querySelectorAll('.tom-select').forEach(element => webtrees.initializeTomSelect(element));
 
   // If we clear the select (using the "X" button), we need an empty value
   // (rather than no value at all) for (non-multiple) selects with name="array[]"
-  $('select.select2:not([multiple])')
-    .on('select2:unselect', function (evt) {
-      $(evt.delegateTarget).html('<option value="" selected></option>');
+  document.querySelectorAll('select.tom-select:not([multiple])')
+    .forEach(function (element) {
+      element.addEventListener('clear', function () {
+        webtrees.resetTomSelect(element.tomselect, '', '');
+      });
     });
 
   // Datatables - locale aware sorting

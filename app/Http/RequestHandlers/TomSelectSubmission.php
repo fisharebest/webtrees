@@ -30,12 +30,12 @@ use function view;
 /**
  * Autocomplete for submissions.
  */
-class Select2Submission extends AbstractSelect2Handler
+class TomSelectSubmission extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Submission constructor.
+     * TomSelectSubmission constructor.
      *
      * @param SearchService $search_service
      */
@@ -69,9 +69,8 @@ class Select2Submission extends AbstractSelect2Handler
 
         return $results->map(static function (Submission $submission) use ($at): array {
             return [
-                'id'    => $at . $submission->xref() . $at,
                 'text'  => view('selects/submission', ['submission' => $submission]),
-                'title' => ' ',
+                'value' => $at . $submission->xref() . $at,
             ];
         });
     }

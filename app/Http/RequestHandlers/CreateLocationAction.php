@@ -51,12 +51,12 @@ class CreateLocationAction implements RequestHandlerInterface
         $record = $tree->createRecord($gedcom);
         $record = Registry::locationFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
+        // value and text are for autocomplete
+        // html is for interactive modals
         return response([
-            'id'   => '@' . $record->xref() . '@',
-            'text' => view('selects/location', [
-                'location' => $record,
-            ]),
-            'html' => view('modals/record-created', [
+            'value' => '@' . $record->xref() . '@',
+            'text'  => view('selects/location', ['location' => $record]),
+            'html'  => view('modals/record-created', [
                 'title' => I18N::translate('The location has been created'),
                 'name'  => $record->fullName(),
                 'url'   => $record->url(),

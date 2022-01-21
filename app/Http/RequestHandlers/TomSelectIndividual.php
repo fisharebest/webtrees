@@ -19,29 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function explode;
 use function view;
 
 /**
- * Autocomplete for repositories.
+ * Autocomplete for individuals.
  */
-class Select2Repository extends AbstractSelect2Handler
+class TomSelectIndividual extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Repository constructor.
+     * TomSelectIndividual constructor.
      *
      * @param SearchService $search_service
      */
-    public function __construct(
-        SearchService $search_service
-    ) {
+    public function __construct(SearchService $search_service)
+    {
         $this->search_service = $search_service;
     }
 
@@ -59,19 +59,18 @@ class Select2Repository extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
-        $repository = Registry::repositoryFactory()->make($query, $tree);
+        $individual = Registry::individualFactory()->make($query, $tree);
 
-        if ($repository instanceof Repository) {
-            $results = new Collection([$repository]);
+        if ($individual instanceof Individual) {
+            $results = new Collection([$individual]);
         } else {
-            $results = $this->search_service->searchRepositories([$tree], [$query], $offset, $limit);
+            $results = $this->search_service->searchIndividualNames([$tree], explode(' ', $query), $offset, $limit);
         }
 
-        return $results->map(static function (Repository $repository) use ($at): array {
+        return $results->map(static function (Individual $individual) use ($at): array {
             return [
-                'id'    => $at . $repository->xref() . $at,
-                'text'  => view('selects/repository', ['repository' => $repository]),
-                'title' => ' ',
+                'text'  => view('selects/individual', ['individual' => $individual]),
+                'value' => $at . $individual->xref() . $at,
             ];
         });
     }

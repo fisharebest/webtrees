@@ -59,14 +59,12 @@ class CreateNoteAction implements RequestHandlerInterface
         $record = $tree->createRecord($gedcom);
         $record = Registry::noteFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
-        // id and text are for select2 / autocomplete
+        // value and text are for autocomplete
         // html is for interactive modals
         return response([
-            'id'   => '@' . $record->xref() . '@',
-            'text' => view('selects/note', [
-                'note' => $record,
-            ]),
-            'html' => view('modals/record-created', [
+            'value' => '@' . $record->xref() . '@',
+            'text'  => view('selects/note', ['note' => $record]),
+            'html'  => view('modals/record-created', [
                 'title' => I18N::translate('The note has been created'),
                 'name'  => $record->fullName(),
                 'url'   => $record->url(),

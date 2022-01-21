@@ -32,12 +32,12 @@ use function view;
 /**
  * Autocomplete for sources.
  */
-class Select2Source extends AbstractSelect2Handler
+class TomSelectSource extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Source constructor.
+     * TomSelectSource constructor.
      *
      * @param SearchService $search_service
      */
@@ -77,9 +77,8 @@ class Select2Source extends AbstractSelect2Handler
 
         return $results->map(static function (Source $source) use ($at): array {
             return [
-                'id'    => $at . $source->xref() . $at,
                 'text'  => view('selects/source', ['source' => $source]),
-                'title' => ' ',
+                'value' => $at . $source->xref() . $at,
             ];
         });
     }

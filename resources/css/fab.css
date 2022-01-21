@@ -1162,21 +1162,6 @@ a > .wt-icon-arrow-up:hover {
     overflow-y: hidden;
 }
 
-/* Fit thumbnail into parent on charts */
-.select2-selection.select2-selection--single {
-    min-height: 36px;
-    height: auto;
-    padding: 2px 0;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 2px;
-}
-
-.select2-selection--single .NAME {
-    padding-left: 4px;
-}
-
 /* Some menus (e.g. languages) can be longer than a page */
 .dropdown-menu {
     max-height: 30rem;

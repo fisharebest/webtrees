@@ -42,15 +42,14 @@ use Fisharebest\Webtrees\Tree;
       processData: false,
       success: function (data) {
         if (select) {
-          // If this modal was activated by the "new" button in a select2
+          // If this modal was activated by the "new" button in a select
           // edit control, then insert the result and select it.
-          let option = new Option(data.text, data.id, true, true);
-
-          $(select)
-            .select2({ escapeMarkup: (x) => x })
-            .empty()
-            .append(option)
-            .trigger('change');
+          select.tomselect.clearOptions();
+          select.tomselect.addOption({ value: data.value, text: data.text });
+          select.tomselect.refreshOptions();
+          select.tomselect.clear();
+          select.tomselect.addItem(data.value);
+          select.tomselect.refreshItems();
 
           $('#wt-ajax-modal').modal('hide');
         } else {

@@ -90,14 +90,12 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         // Accept the new record to keep the filesystem synchronized with the genealogy.
         $this->pending_changes_service->acceptRecord($record);
 
-        // id and text are for select2 / autocomplete
+        // value and text are for autocomplete
         // html is for interactive modals
         return response([
-            'id'   => '@' . $record->xref() . '@',
-            'text' => view('selects/media', [
-                'media' => $record,
-            ]),
-            'html' => view('modals/record-created', [
+            'value' => '@' . $record->xref() . '@',
+            'text'  => view('selects/media', ['media' => $record]),
+            'html'  => view('modals/record-created', [
                 'title' => I18N::translate('The media object has been created'),
                 'name'  => $record->fullName(),
                 'url'   => $record->url(),

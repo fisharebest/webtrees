@@ -19,24 +19,25 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function array_filter;
 use function explode;
 use function view;
 
 /**
- * Autocomplete for families.
+ * Autocomplete for media objects.
  */
-class Select2Family extends AbstractSelect2Handler
+class TomSelectMediaObject extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Family constructor.
+     * TomSelectMediaObject constructor.
      *
      * @param SearchService $search_service
      */
@@ -59,20 +60,25 @@ class Select2Family extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
-        // Search by XREF
-        $family = Registry::familyFactory()->make($query, $tree);
+        $search = array_filter(explode(' ', $query));
 
-        if ($family instanceof Family) {
-            $results = new Collection([$family]);
-        } else {
-            $results = $this->search_service->searchFamilyNames([$tree], explode(' ', $query), $offset, $limit);
+        if ($search === []) {
+            return new Collection();
         }
 
-        return $results->map(static function (Family $family) use ($at): array {
+        // Search by XREF
+        $media = Registry::mediaFactory()->make($query, $tree);
+
+        if ($media instanceof Media) {
+            $results = new Collection([$media]);
+        } else {
+            $results = $this->search_service->searchMedia([$tree], $search, $offset, $limit);
+        }
+
+        return $results->map(static function (Media $media) use ($at): array {
             return [
-                'id'    => $at . $family->xref() . $at,
-                'text'  => view('selects/family', ['family' => $family]),
-                'title' => ' ',
+                'text'  => view('selects/media', ['media' => $media]),
+                'value' => $at . $media->xref() . $at,
             ];
         });
     }

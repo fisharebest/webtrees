@@ -160,10 +160,7 @@ use Fisharebest\Webtrees\View;
       .then(response => response.text())
       .then(function (text) {
         document.querySelector('#census-assistant-table tbody').insertAdjacentHTML('beforeend', text);
-        document.querySelector('#select2-census-assistant-individual-container .select2-selection__clear').click();
-        $(indi_selector).trigger({
-          type: 'select2:unselect'
-        });
+        webtrees.resetTomSelect(document.querySelector('#census-assistant-individual').tomselect, '', '');
       });
 
     return false;

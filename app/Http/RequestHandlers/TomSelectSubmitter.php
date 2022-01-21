@@ -19,23 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 use function view;
 
 /**
- * Autocomplete for notes.
+ * Autocomplete for submitters.
  */
-class Select2Note extends AbstractSelect2Handler
+class TomSelectSubmitter extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Note constructor.
+     * TomSelectSubmitter constructor.
      *
      * @param SearchService $search_service
      */
@@ -59,19 +59,18 @@ class Select2Note extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
-        $note = Registry::noteFactory()->make($query, $tree);
+        $submitter = Registry::submitterFactory()->make($query, $tree);
 
-        if ($note instanceof Note) {
-            $results = new Collection([$note]);
+        if ($submitter instanceof Submitter) {
+            $results = new Collection([$submitter]);
         } else {
-            $results = $this->search_service->searchNotes([$tree], [$query], $offset, $limit);
+            $results = $this->search_service->searchSubmitters([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Note $note) use ($at): array {
+        return $results->map(static function (Submitter $submitter) use ($at): array {
             return [
-                'id'    => $at . $note->xref() . $at,
-                'text'  => view('selects/note', ['note' => $note]),
-                'title' => ' ',
+                'text'  => view('selects/submitter', ['submitter' => $submitter]),
+                'value' => $at . $submitter->xref() . $at,
             ];
         });
     }

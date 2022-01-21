@@ -19,31 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Media;
-use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
-use function array_filter;
-use function explode;
-use function view;
-
 /**
- * Autocomplete for media objects.
+ * Autocomplete for places.
  */
-class Select2MediaObject extends AbstractSelect2Handler
+class TomSelectPlace extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2MediaObject constructor.
-     *
      * @param SearchService $search_service
      */
-    public function __construct(
-        SearchService $search_service
-    ) {
+    public function __construct(SearchService $search_service)
+    {
         $this->search_service = $search_service;
     }
 
@@ -60,27 +52,13 @@ class Select2MediaObject extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
-        $search = array_filter(explode(' ', $query));
-
-        if ($search === []) {
-            return new Collection();
-        }
-
-        // Search by XREF
-        $media = Registry::mediaFactory()->make($query, $tree);
-
-        if ($media instanceof Media) {
-            $results = new Collection([$media]);
-        } else {
-            $results = $this->search_service->searchMedia([$tree], $search, $offset, $limit);
-        }
-
-        return $results->map(static function (Media $media) use ($at): array {
-            return [
-                'id'    => $at . $media->xref() . $at,
-                'text'  => view('selects/media', ['media' => $media]),
-                'title' => ' ',
-            ];
-        });
+        return $this->search_service
+            ->searchPlaces($tree, $query, $offset, $limit)
+            ->map(static function (Place $place): array {
+                return [
+                    'text'  => $place->gedcomName(),
+                    'value' => $place->id(),
+                ];
+            });
     }
 }

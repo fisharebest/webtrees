@@ -409,7 +409,7 @@ use Illuminate\Support\Collection;
         </label>
         <div class="col-sm-9">
             <div class="input-group">
-                <?= view('components/select', ['name' => 'CHART_BOX_TAGS[]', 'id' => 'CHART_BOX_TAGS', 'selected' => explode(',', $tree->getPreference('CHART_BOX_TAGS')), 'options' => $all_individual_facts, 'class' => 'select2']) ?>
+                <?= view('components/select', ['name' => 'CHART_BOX_TAGS[]', 'id' => 'CHART_BOX_TAGS', 'selected' => explode(',', $tree->getPreference('CHART_BOX_TAGS')), 'options' => $all_individual_facts, 'class' => 'tom-select']) ?>
             </div>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.') ?>
@@ -645,7 +645,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Facts for new individuals') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FACTS[]', 'id' => 'QUICK_REQUIRED_FACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')), 'options' => $all_individual_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FACTS[]', 'id' => 'QUICK_REQUIRED_FACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')), 'options' => $all_individual_facts, 'class' => 'tom-select']) ?>
         </div>
     </div>
 
@@ -655,7 +655,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Quick individual facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'options' => $all_individual_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'options' => $all_individual_facts, 'class' => 'tom-select']) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('The most common individual facts and events are listed separately, so that they can be added more easily.') ?>
             </div>
@@ -670,7 +670,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Facts for new families') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FAMFACTS[]', 'id' => 'QUICK_REQUIRED_FAMFACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')), 'options' => $all_family_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FAMFACTS[]', 'id' => 'QUICK_REQUIRED_FAMFACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')), 'options' => $all_family_facts, 'class' => 'tom-select']) ?>
         </div>
     </div>
 
@@ -680,7 +680,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Quick family facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'FAM_FACTS_QUICK[]', 'id' => 'FAM_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_QUICK')), 'options' => $all_family_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'FAM_FACTS_QUICK[]', 'id' => 'FAM_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_QUICK')), 'options' => $all_family_facts, 'class' => 'tom-select']) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('The most common family facts and events are listed separately, so that they can be added more easily.') ?>
             </div>

@@ -19,23 +19,30 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function explode;
+use function view;
+
 /**
- * Autocomplete for places.
+ * Autocomplete for families.
  */
-class Select2Place extends AbstractSelect2Handler
+class TomSelectFamily extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
+     * TomSelectFamily constructor.
+     *
      * @param SearchService $search_service
      */
-    public function __construct(SearchService $search_service)
-    {
+    public function __construct(
+        SearchService $search_service
+    ) {
         $this->search_service = $search_service;
     }
 
@@ -52,14 +59,20 @@ class Select2Place extends AbstractSelect2Handler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
-        return $this->search_service
-            ->searchPlaces($tree, $query, $offset, $limit)
-            ->map(static function (Place $place): array {
-                return [
-                    'id'    => $place->id(),
-                    'text'  => $place->gedcomName(),
-                    'title' => ' ',
-                ];
-            });
+        // Search by XREF
+        $family = Registry::familyFactory()->make($query, $tree);
+
+        if ($family instanceof Family) {
+            $results = new Collection([$family]);
+        } else {
+            $results = $this->search_service->searchFamilyNames([$tree], explode(' ', $query), $offset, $limit);
+        }
+
+        return $results->map(static function (Family $family) use ($at): array {
+            return [
+                'text'  => view('selects/family', ['family' => $family]),
+                'value' => $at . $family->xref() . $at,
+            ];
+        });
     }
 }

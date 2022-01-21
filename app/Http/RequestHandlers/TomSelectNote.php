@@ -19,29 +19,29 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
-use function explode;
 use function view;
 
 /**
- * Autocomplete for individuals.
+ * Autocomplete for notes.
  */
-class Select2Individual extends AbstractSelect2Handler
+class TomSelectNote extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Individual constructor.
+     * TomSelectNote constructor.
      *
      * @param SearchService $search_service
      */
-    public function __construct(SearchService $search_service)
-    {
+    public function __construct(
+        SearchService $search_service
+    ) {
         $this->search_service = $search_service;
     }
 
@@ -59,19 +59,18 @@ class Select2Individual extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
-        $individual = Registry::individualFactory()->make($query, $tree);
+        $note = Registry::noteFactory()->make($query, $tree);
 
-        if ($individual instanceof Individual) {
-            $results = new Collection([$individual]);
+        if ($note instanceof Note) {
+            $results = new Collection([$note]);
         } else {
-            $results = $this->search_service->searchIndividualNames([$tree], explode(' ', $query), $offset, $limit);
+            $results = $this->search_service->searchNotes([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Individual $individual) use ($at): array {
+        return $results->map(static function (Note $note) use ($at): array {
             return [
-                'id'    => $at . $individual->xref() . $at,
-                'text'  => view('selects/individual', ['individual' => $individual]),
-                'title' => ' ',
+                'text'  => view('selects/note', ['note' => $note]),
+                'value' => $at . $note->xref() . $at,
             ];
         });
     }

@@ -20,22 +20,22 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 use function view;
 
 /**
- * Autocomplete for submitters.
+ * Autocomplete for repositories.
  */
-class Select2Submitter extends AbstractSelect2Handler
+class TomSelectRepository extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * Select2Submitter constructor.
+     * TomSelectRepository constructor.
      *
      * @param SearchService $search_service
      */
@@ -59,19 +59,18 @@ class Select2Submitter extends AbstractSelect2Handler
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
-        $submitter = Registry::submitterFactory()->make($query, $tree);
+        $repository = Registry::repositoryFactory()->make($query, $tree);
 
-        if ($submitter instanceof Submitter) {
-            $results = new Collection([$submitter]);
+        if ($repository instanceof Repository) {
+            $results = new Collection([$repository]);
         } else {
-            $results = $this->search_service->searchSubmitters([$tree], [$query], $offset, $limit);
+            $results = $this->search_service->searchRepositories([$tree], [$query], $offset, $limit);
         }
 
-        return $results->map(static function (Submitter $submitter) use ($at): array {
+        return $results->map(static function (Repository $repository) use ($at): array {
             return [
-                'id'    => $at . $submitter->xref() . $at,
-                'text'  => view('selects/submitter', ['submitter' => $submitter]),
-                'title' => ' ',
+                'text'  => view('selects/repository', ['repository' => $repository]),
+                'value' => $at . $repository->xref() . $at,
             ];
         });
     }

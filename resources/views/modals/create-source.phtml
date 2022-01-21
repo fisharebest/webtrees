@@ -40,15 +40,9 @@ use Fisharebest\Webtrees\Tree;
       processData: false,
       success: function (data) {
         if (select) {
-          // If this modal was activated by the "new" button in a select2
+          // If this modal was activated by the "new" button in a select
           // edit control, then insert the result and select it.
-          let option = new Option(data.text, data.id, true, true);
-
-          $(select)
-            .select2({ escapeMarkup: (x) => x })
-            .empty()
-            .append(option)
-            .trigger('change');
+          webtrees.resetTomSelect(select.tomselect, data.value, data.text);
 
           $('#wt-ajax-modal').modal('hide');
         } else {
