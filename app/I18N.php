@@ -209,7 +209,7 @@ class I18N
 
     private static Translator $translator;
 
-    private static ?Collator $collator;
+    private static ?Collator $collator = null;
 
     /**
      * The preferred locales for this site, or a default list if no preference.
@@ -343,7 +343,6 @@ class I18N
             }
         } catch (Exception $ex) {
             // PHP-INTL is not installed?  We'll use a fallback later.
-            self::$collator = null;
         }
     }
 
