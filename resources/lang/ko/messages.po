@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-20 12:00+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-23 15:37+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\nLanguage: ko\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1616,7 +1616,7 @@ msgstr "양부모"
 
 #: app/Factories/ElementFactory.php:495
 msgid "Adult christening"
-msgstr "성인 세례"
+msgstr "성인 세례식"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:165
 #: app/Module/SearchMenuModule.php:125
@@ -1948,7 +1948,7 @@ msgstr "기념일 달력"
 
 #: app/Factories/ElementFactory.php:320
 msgid "Annulment"
-msgstr "무효 선언"
+msgstr "결혼무효선언"
 
 #: resources/views/modules/faq/edit.phtml:42
 msgid "Answer"
@@ -2002,29 +2002,29 @@ msgstr "관리자 승인"
 #: app/Date/AbstractGregorianJulianDate.php:204
 msgctxt "Abbreviation for April"
 msgid "Apr"
-msgstr "4월"
+msgstr "Apr"
 
 #: app/Date/AbstractGregorianJulianDate.php:101
 msgctxt "GENITIVE"
 msgid "April"
-msgstr "4월"
+msgstr "April"
 
 #: app/Date/AbstractGregorianJulianDate.php:171
 msgctxt "INSTRUMENTAL"
 msgid "April"
-msgstr "4월"
+msgstr "April"
 
 #: app/Date/AbstractGregorianJulianDate.php:136
 msgctxt "LOCATIVE"
 msgid "April"
-msgstr "4월"
+msgstr "April"
 
 #: app/Date/AbstractGregorianJulianDate.php:66
 #: app/Module/StatisticsChartModule.php:795
 #: resources/views/edit/initialize-calendar-popup.phtml:14
 msgctxt "NOMINATIVE"
 msgid "April"
-msgstr "4월"
+msgstr "April"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:153
@@ -2131,7 +2131,7 @@ msgstr "관련"
 
 #: app/Http/RequestHandlers/HelpText.php:261
 msgid "Associate events with this source"
-msgstr "이 소스와 사건 연관"
+msgstr "이 출처와 관련 된 이벤트"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
@@ -2256,7 +2256,7 @@ msgstr "이 사용자가 변경한 사항을 자동으로 수락"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:555
 msgid "Automatically expand notes"
-msgstr "자동으로 메모 확장"
+msgstr "노트 자동  확장"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:571
@@ -2420,19 +2420,19 @@ msgstr ""
 #: app/Factories/ElementFactory.php:465 resources/views/calendar-page.phtml:185
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
-msgstr "세례"
+msgstr "침례"
 
 #: app/Module/IndividualFactsTabModule.php:318
 msgid "Baptism of a brother"
-msgstr "형제의 세례"
+msgstr "형제의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:297
 msgid "Baptism of a child"
-msgstr "자녀의 세례"
+msgstr "자녀의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:296
 msgid "Baptism of a daughter"
-msgstr "딸의 세례"
+msgstr "딸의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:366
 #: app/Module/IndividualFactsTabModule.php:389
@@ -2440,59 +2440,59 @@ msgstr "딸의 세례"
 #: app/Module/IndividualFactsTabModule.php:489
 #: app/Module/IndividualFactsTabModule.php:507
 msgid "Baptism of a grandchild"
-msgstr "손주의 세례"
+msgstr "손주의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:365
 msgid "Baptism of a granddaughter"
-msgstr "손녀의 세례"
+msgstr "손녀의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:388
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "외손녀의 세례"
+msgstr "외손녀의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:411
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr "손녀의 세례"
+msgstr "손녀의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:364
 msgid "Baptism of a grandson"
-msgstr "손자의 세례"
+msgstr "손자의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:387
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr "외손자의 세례"
+msgstr "외손자의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:410
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr "손자의 세례"
+msgstr "손자의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:341
 msgid "Baptism of a half-brother"
-msgstr "이복 남자형제의 세례"
+msgstr "이복 남자형제의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:343
 msgid "Baptism of a half-sibling"
-msgstr "이복형제자매의 세례"
+msgstr "이복 형제자매의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:342
 msgid "Baptism of a half-sister"
-msgstr "이복 여자 형제의 세례"
+msgstr "이복 여자형제의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:320
 msgid "Baptism of a sibling"
-msgstr "형제자매의 세례"
+msgstr "형제자매의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:319
 msgid "Baptism of a sister"
-msgstr "여자형제의 세례"
+msgstr "여자형제의 침례"
 
 #: app/Module/IndividualFactsTabModule.php:295
 msgid "Baptism of a son"
-msgstr "아들의 세례"
+msgstr "아들의 침례"
 
 #: app/Factories/ElementFactory.php:468
 #: resources/xml/reports/missing_facts_report.xml:17
@@ -2875,7 +2875,7 @@ msgstr "블록"
 #: resources/views/admin/modules.phtml:90
 #: resources/views/admin/modules.phtml:92
 msgid "Blocks"
-msgstr "블록들"
+msgstr "블록"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:159
@@ -2910,7 +2910,7 @@ msgstr "서적"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsChildSealingDateStatus.php:60
 msgid "Born in the covenant"
-msgstr "언약 안에서 태어나다"
+msgstr "Born in the covenant"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:93
@@ -4508,7 +4508,7 @@ msgstr "입양 날짜"
 #: app/Factories/ElementFactory.php:466
 #: resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
-msgstr "세례 날짜"
+msgstr "침례 날짜"
 
 #: app/Factories/ElementFactory.php:469
 #: resources/xml/reports/missing_facts_report.xml:212
@@ -4999,7 +4999,7 @@ msgstr "세기의 사망"
 #: app/Date/AbstractGregorianJulianDate.php:212
 msgctxt "Abbreviation for December"
 msgid "Dec"
-msgstr "12월"
+msgstr "Dec"
 
 #: resources/views/lists/families-table.phtml:432
 #: resources/views/lists/families-table.phtml:448
@@ -5021,29 +5021,29 @@ msgstr "결혼 10년"
 #: app/Date/AbstractGregorianJulianDate.php:109
 msgctxt "GENITIVE"
 msgid "December"
-msgstr "12월"
+msgstr "December"
 
 #: app/Date/AbstractGregorianJulianDate.php:179
 msgctxt "INSTRUMENTAL"
 msgid "December"
-msgstr "12월"
+msgstr "December"
 
 #: app/Date/AbstractGregorianJulianDate.php:144
 msgctxt "LOCATIVE"
 msgid "December"
-msgstr "12월"
+msgstr "December"
 
 #: app/Date/AbstractGregorianJulianDate.php:74
 #: app/Module/StatisticsChartModule.php:803
 #: resources/views/edit/initialize-calendar-popup.phtml:22
 msgctxt "NOMINATIVE"
 msgid "December"
-msgstr "12월"
+msgstr "December"
 
 #. I18N: The tenth day in the French republican calendar
 #: app/Date/FrenchDate.php:305
 msgid "Decidi"
-msgstr ""
+msgstr "Decidi"
 
 #: app/Module/UserWelcomeModule.php:101 app/Module/WelcomeBlockModule.php:100
 msgid "Default chart"
@@ -6364,29 +6364,29 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:202
 msgctxt "Abbreviation for February"
 msgid "Feb"
-msgstr "2월"
+msgstr "Feb"
 
 #: app/Date/AbstractGregorianJulianDate.php:99
 msgctxt "GENITIVE"
 msgid "February"
-msgstr "2월"
+msgstr "February"
 
 #: app/Date/AbstractGregorianJulianDate.php:169
 msgctxt "INSTRUMENTAL"
 msgid "February"
-msgstr "2월"
+msgstr "February"
 
 #: app/Date/AbstractGregorianJulianDate.php:134
 msgctxt "LOCATIVE"
 msgid "February"
-msgstr "2월"
+msgstr "February"
 
 #: app/Date/AbstractGregorianJulianDate.php:64
 #: app/Module/StatisticsChartModule.php:793
 #: resources/views/edit/initialize-calendar-popup.phtml:12
 msgctxt "NOMINATIVE"
 msgid "February"
-msgstr "2월"
+msgstr "February"
 
 #: app/Elements/SexValue.php:74 app/Module/StatisticsChartModule.php:780
 #: resources/views/individual-sex.phtml:36
@@ -8073,29 +8073,29 @@ msgstr "Jamaica"
 #: app/Date/AbstractGregorianJulianDate.php:201
 msgctxt "Abbreviation for January"
 msgid "Jan"
-msgstr "1월"
+msgstr "Jan"
 
 #: app/Date/AbstractGregorianJulianDate.php:98
 msgctxt "GENITIVE"
 msgid "January"
-msgstr "1월"
+msgstr "January"
 
 #: app/Date/AbstractGregorianJulianDate.php:168
 msgctxt "INSTRUMENTAL"
 msgid "January"
-msgstr "1월"
+msgstr "January"
 
 #: app/Date/AbstractGregorianJulianDate.php:133
 msgctxt "LOCATIVE"
 msgid "January"
-msgstr "1월"
+msgstr "January"
 
 #: app/Date/AbstractGregorianJulianDate.php:63
 #: app/Module/StatisticsChartModule.php:792
 #: resources/views/edit/initialize-calendar-popup.phtml:11
 msgctxt "NOMINATIVE"
 msgid "January"
-msgstr "1월"
+msgstr "January"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:272
@@ -8962,29 +8962,29 @@ msgstr ""
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
 msgid "Mar"
-msgstr "3월"
+msgstr "Mar"
 
 #: app/Date/AbstractGregorianJulianDate.php:100
 msgctxt "GENITIVE"
 msgid "March"
-msgstr "3월"
+msgstr "March"
 
 #: app/Date/AbstractGregorianJulianDate.php:170
 msgctxt "INSTRUMENTAL"
 msgid "March"
-msgstr "3월"
+msgstr "March"
 
 #: app/Date/AbstractGregorianJulianDate.php:135
 msgctxt "LOCATIVE"
 msgid "March"
-msgstr "3월"
+msgstr "March"
 
 #: app/Date/AbstractGregorianJulianDate.php:65
 #: app/Module/StatisticsChartModule.php:794
 #: resources/views/edit/initialize-calendar-popup.phtml:13
 msgctxt "NOMINATIVE"
 msgid "March"
-msgstr "3월"
+msgstr "March"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:625
@@ -9047,17 +9047,17 @@ msgstr "Markdown은 Wikipedia와 같은 웹 사이트에서 사용되는 간단�
 #: resources/xml/reports/pedigree_report.xml:1327
 #: resources/xml/reports/pedigree_report.xml:1365
 msgid "Marriage"
-msgstr "결혼함"
+msgstr "결혼"
 
 #: app/Factories/ElementFactory.php:335
 #: resources/xml/reports/missing_facts_report.xml:22
 msgid "Marriage banns"
-msgstr "결혼 발표"
+msgstr "결혼예고(가톨릭교회법)"
 
 #: app/Module/CustomTagsFamilyTreeMaker.php:72
 #: app/Module/CustomTagsFamilyTreeMaker.php:92
 msgid "Marriage beginning status"
-msgstr "결혼시작여부"
+msgstr "결혼 시작 상태"
 
 #: app/Module/CustomTagsBrothersKeeper.php:65
 msgid "Marriage bond"
@@ -9192,7 +9192,7 @@ msgstr "결혼 장소"
 
 #: app/Factories/ElementFactory.php:344
 msgid "Marriage settlement"
-msgstr "결혼 합의"
+msgstr "계약결혼(법적 책임이 있는 혼전계약서 작성 후 결혼 )"
 
 #: app/Module/CustomTagsAldfaer.php:53
 msgid "Marriage type unknown"
@@ -9223,12 +9223,12 @@ msgstr "결혼 후 이름"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:327
 msgid "Marshall Islands"
-msgstr "마셜 제도"
+msgstr "Marshall Islands"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:349
 msgid "Martinique"
-msgstr "마르티니크"
+msgstr "Martinique"
 
 #: resources/views/admin/users-table-options.phtml:37
 msgid "Masquerade as this user"
@@ -9259,7 +9259,7 @@ msgstr "모리타니"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:351
 msgid "Mauritius"
-msgstr "모리셔스"
+msgstr "Mauritius"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:362
@@ -10453,29 +10453,29 @@ msgstr "표시할 항목 없음"
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
 msgid "Nov"
-msgstr "11월"
+msgstr "Nov"
 
 #: app/Date/AbstractGregorianJulianDate.php:108
 msgctxt "GENITIVE"
 msgid "November"
-msgstr "11월"
+msgstr "November"
 
 #: app/Date/AbstractGregorianJulianDate.php:178
 msgctxt "INSTRUMENTAL"
 msgid "November"
-msgstr "11월"
+msgstr "November"
 
 #: app/Date/AbstractGregorianJulianDate.php:143
 msgctxt "LOCATIVE"
 msgid "November"
-msgstr "11월"
+msgstr "November"
 
 #: app/Date/AbstractGregorianJulianDate.php:73
 #: app/Module/StatisticsChartModule.php:802
 #: resources/views/edit/initialize-calendar-popup.phtml:21
 msgctxt "NOMINATIVE"
 msgid "November"
-msgstr "11월"
+msgstr "November"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:145
@@ -11147,7 +11147,7 @@ msgstr "입양 장소"
 #: app/Factories/ElementFactory.php:467
 #: resources/xml/reports/missing_facts_report.xml:140
 msgid "Place of baptism"
-msgstr "세례 장소"
+msgstr "침례 장소"
 
 #: app/Factories/ElementFactory.php:470
 #: resources/xml/reports/missing_facts_report.xml:223
