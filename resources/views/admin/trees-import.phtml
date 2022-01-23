@@ -31,12 +31,12 @@ use Illuminate\Support\Collection;
     <input type="hidden" id="gedcom_filename" value="<?= e($default_gedcom_file) ?>">
     <?= csrf_field() ?>
 
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= I18N::translate('Select a GEDCOM file to import') ?>
         </legend>
         <div class="col-sm-9">
-            <div class="row form-group">
+            <div class="row form-group mb-3">
                 <label class="col-sm-3">
                     <input type="radio" name="source" id="import-computer" value="client" checked>
                     <?= I18N::translate('A file on your computer') ?>
@@ -79,7 +79,7 @@ use Illuminate\Support\Collection;
 
     <hr>
 
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= I18N::translate('Import preferences') ?>
         </legend>
@@ -117,7 +117,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= /* I18N: A button label. */ I18N::translate('continue') ?>

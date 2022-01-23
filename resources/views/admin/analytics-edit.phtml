@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\I18N;
     <?= csrf_field() ?>
     <?= $form_fields ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3" for="preview">
             <?= I18N::translate('Preview') ?>
         </label>
@@ -33,7 +33,7 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>

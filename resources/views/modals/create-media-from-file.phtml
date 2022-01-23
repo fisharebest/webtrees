@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\I18N;
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row form-group">
+                    <div class="row form-group mb-3">
                         <label class="col-form-label col-sm-2" for="file">
                             <?= I18N::translate('Media file') ?>
                         </label>
@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\I18N;
                             <input type="text" class="form-control" id="file" name="file" value="" readonly>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <div class="row form-group mb-3">
                         <label class="col-form-label col-sm-2" for="title">
                             <?= I18N::translate('Title') ?>
                         </label>
@@ -37,7 +37,7 @@ use Fisharebest\Webtrees\I18N;
                             <input type="text" class="form-control" name="title" id="title">
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <div class="row form-group mb-3">
                         <label class="col-form-label col-sm-2" for="type">
                             <?= I18N::translate('Media type') ?>
                         </label>
@@ -45,7 +45,7 @@ use Fisharebest\Webtrees\I18N;
                             <?= view('components/select', ['name' => 'type', 'selected' => '', 'options' => $media_types]) ?>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <div class="row form-group mb-3">
                         <label class="col-form-label col-sm-2" for="note">
                             <?= I18N::translate('Note') ?>
                         </label>

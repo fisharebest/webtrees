@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\I18N;
     <?= csrf_field() ?>
 
     <!-- Server file -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-4" for="serverfile">
             <?= I18N::translate('A file on the server') ?>
         </label>
@@ -44,7 +44,7 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <!-- local file -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-4" for="localfile">
             <?= I18N::translate('A file on your computer') ?>
         </label>
@@ -54,7 +54,7 @@ use Fisharebest\Webtrees\I18N;
     </div>
 
     <!-- Import options -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-4">
             <?= I18N::translate('Import') ?>
         </legend>
@@ -64,7 +64,7 @@ use Fisharebest\Webtrees\I18N;
     </fieldset>
 
     <!-- SAVE BUTTON -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-4 col-sm-8">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>

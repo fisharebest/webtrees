@@ -19,7 +19,7 @@ use Fisharebest\Webtrees\I18N;
 
 <form method="post" action="<?= e(route(CreateTreeAction::class)) ?>" class="form-horizontal">
     <?= csrf_field() ?>
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="title" class="col-sm-2 col-form-label">
             <?= I18N::translate('Family tree title') ?>
         </label>
@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
             <input class="form-control" id="title" maxlength="255" name="title" required="required" type="text" value="<?= e($tree_title) ?>">
         </div>
     </div>
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="name" class="col-sm-2 col-form-label">
             <?= I18N::translate('URL') ?>
         </label>
@@ -48,7 +48,7 @@ use Fisharebest\Webtrees\I18N;
             </div>
         </div>
     </div>
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-2 col-sm-10">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>
