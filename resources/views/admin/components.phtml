@@ -54,7 +54,7 @@ use Illuminate\Support\Collection;
                     <th scope="col">
                         <input type="hidden" name="order[]" value="<?= e($module->name()) ?>">
                         <span title="<?= e(strip_tags($module->description())) ?>">
-                            <?= $module->title() ?>
+                            <?= $module instanceof ModuleCustomInterface ? $module->customTranslations(I18N::languageTag())[$module->title()] ?? $module->title() : $module->title() ?>
                         </span>
                         <?php if ($module instanceof ModuleConfigInterface) : ?>
                             <?php if ($module->isEnabled()) : ?>
