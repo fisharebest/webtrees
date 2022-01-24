@@ -75,8 +75,7 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
                 'label'       => 'WorldStreetMap',
                 'maxZoom'     => 17,
                 'minZoom'     => 2,
-                'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
-                'variant'     => 'World_Street_Map',
+                'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
             ],
             (object) [
                 'attribution' => 'Tiles ©Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',
@@ -84,8 +83,15 @@ class EsriMaps extends AbstractModule implements ModuleMapProviderInterface
                 'label'       => 'WorldTopoMap',
                 'maxZoom'     => 17,
                 'minZoom'     => 2,
-                'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
-                'variant'     => 'World_Topo_Map',
+                'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+            ],
+            (object) [
+                'attribution' => 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+                'default'     => false,
+                'label'       => 'NatGeoWorldMap',
+                'maxZoom'     => 12,
+                'minZoom'     => 2,
+                'url'         => 'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
             ],
         ];
     }
