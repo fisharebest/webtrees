@@ -42,38 +42,23 @@ use Fisharebest\Webtrees\I18N;
             showCoverageOnHover: false,
         });
 
-        let resetControl = L.Control.extend({
-            options: {
-                position: "topleft",
-            },
-            onAdd: function(map) {
-                let container = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-custom");
-                container.onclick = function() {
-                    map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
-                    sidebar.scrollTo(sidebar.children(":first"));
+        /**
+         * Passed to resetControl to
+         * perform necessary reset actions on map
+         */
+        let resetFunction = function () {
+          map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
+          sidebar.scrollTo(sidebar.children(':first'));
 
-                    return false;
-                };
-                let reset    = config.i18n.reset;
-                let anchor   = L.DomUtil.create('a', 'leaflet-control-reset', container);
-                anchor.setAttribute('aria-label', reset);
-                anchor.href  = '#';
-                anchor.title = reset;
-                anchor.role  = 'button';
-                let image    = L.DomUtil.create('i', 'fas fa-redo', anchor);
-                image.alt    = reset;
-
-                return container;
-            },
-        });
+          return false;
+        }
 
         /**
          *
          * @private
          */
         let _drawMap = function() {
-            map = webtrees.buildLeafletJsMap('osm-map', config)
-                .addControl(new resetControl());
+            map = webtrees.buildLeafletJsMap('osm-map', config, resetFunction);
         };
 
         /**
@@ -143,7 +128,7 @@ use Fisharebest\Webtrees\I18N;
             .on('click', '.gchart', function(e) {
                 // first close any existing
                 map.closePopup();
-                let eventId = $(this).data('id');
+                let eventId = $(this).data('wt-feature-id');
                 //find the marker corresponding to the clicked event
                 let mkrLayer = markers.getLayers().filter(function(v) {
                     return typeof(v.feature) !== 'undefined' && v.feature.id === eventId;

@@ -111,31 +111,17 @@ use Fisharebest\Webtrees\View;
                 $('#new_place_long').val(Number(coords.lng).toFixed(5));
             });
 
-        //reset map to initial state
-        let resetControl = L.Control.extend({
-            options: {
-                position: 'topleft'
-            },
-            onAdd: function (map) {
-                let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-                container.onclick = function () {
-                    map.fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]});
-                    marker.setLatLng(<?= json_encode([$location->latitude(), $location->longitude()], JSON_THROW_ON_ERROR) ?>);
-                    $('form').trigger('reset');
-                    return false;
-                };
-                let reset = config.i18n.reset;
-                let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-                anchor.setAttribute('aria-label', reset);
-                anchor.href = '#';
-                anchor.title = reset;
-                anchor.role = 'button';
-                let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-                image.alt = reset;
+        /**
+         * Passed to resetControl to
+         * perform necessary reset actions on map
+         */
+        let resetFunction = function () {
+          map.fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]});
+          marker.setLatLng(<?= json_encode([$location->latitude(), $location->longitude()], JSON_THROW_ON_ERROR) ?>);
+          $('form').trigger('reset');
 
-                return container;
-            }
-        });
+          return false;
+        }
 
         // Geocoder (place lookup)
         let geocoder = new L.Control.geocoder({
@@ -176,8 +162,7 @@ use Fisharebest\Webtrees\View;
             });
         });
 
-      const map = webtrees.buildLeafletJsMap('osm-map', config)
-            .addControl(new resetControl())
+      const map = webtrees.buildLeafletJsMap('osm-map', config, resetFunction)
             .addControl(geocoder)
             .addLayer(marker)
             .fitBounds(<?= json_encode($map_bounds, JSON_THROW_ON_ERROR) ?>, {padding: [50, 30]})
