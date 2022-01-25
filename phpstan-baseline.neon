@@ -2976,17 +2976,7 @@ parameters:
 			path: app/Report/PdfRenderer.php
 
 		-
-			message: "#^Parameter \\#1 \\$font of method TCPDF\\:\\:setHeaderFont\\(\\) expects array\\<int, string\\>, array\\<int, float\\|string\\> given\\.$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
 			message: "#^Parameter \\#1 \\$hm of method TCPDF\\:\\:setHeaderMargin\\(\\) expects int, float given\\.$#"
-			count: 1
-			path: app/Report/PdfRenderer.php
-
-		-
-			message: "#^Parameter \\#2 \\$lw of method TCPDF\\:\\:setHeaderData\\(\\) expects string, int given\\.$#"
 			count: 1
 			path: app/Report/PdfRenderer.php
 
@@ -3266,7 +3256,7 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Parameter \\#1 \\$y of method TCPDF\\:\\:SetY\\(\\) expects float, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$y of method TCPDF\\:\\:setY\\(\\) expects float, mixed given\\.$#"
 			count: 1
 			path: app/Report/ReportPdfCell.php
 
@@ -3281,7 +3271,7 @@ parameters:
 			path: app/Report/ReportPdfCell.php
 
 		-
-			message: "#^Parameter \\#9 \\$y of method TCPDF\\:\\:MultiCell\\(\\) expects float, mixed given\\.$#"
+			message: "#^Parameter \\#9 \\$y of method TCPDF\\:\\:MultiCell\\(\\) expects float\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Report/ReportPdfCell.php
 
@@ -3291,7 +3281,7 @@ parameters:
 			path: app/Report/ReportPdfFootnote.php
 
 		-
-			message: "#^Parameter \\#1 \\$link of method TCPDF\\:\\:SetLink\\(\\) expects int, string given\\.$#"
+			message: "#^Parameter \\#1 \\$link of method TCPDF\\:\\:setLink\\(\\) expects int, string given\\.$#"
 			count: 1
 			path: app/Report/ReportPdfFootnote.php
 
@@ -3365,6 +3355,11 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$h of method TCPDF\\:\\:checkPageBreak\\(\\) expects float, mixed given\\.$#"
+			count: 1
+			path: app/Report/TcpdfWrapper.php
+
+		-
+			message: "#^Parameter \\#2 \\$y of method TCPDF\\:\\:checkPageBreak\\(\\) expects float\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Report/TcpdfWrapper.php
 
