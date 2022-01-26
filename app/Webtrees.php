@@ -74,6 +74,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Server\MiddlewareInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use function class_alias;
 use function date_default_timezone_set;
@@ -85,7 +86,6 @@ use function set_error_handler;
 use const E_ALL;
 use const E_DEPRECATED;
 use const E_USER_DEPRECATED;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Definitions for the webtrees application.
