@@ -75,6 +75,7 @@ use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Server\MiddlewareInterface;
 
+use function class_alias;
 use function date_default_timezone_set;
 use function error_reporting;
 use function is_string;
@@ -84,6 +85,7 @@ use function set_error_handler;
 use const E_ALL;
 use const E_DEPRECATED;
 use const E_USER_DEPRECATED;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Definitions for the webtrees application.
@@ -197,6 +199,9 @@ class Webtrees
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());
         Registry::xrefFactory(new XrefFactory());
+
+        // Workaround for https://github.com/fisharebest/webtrees/issues/4179
+        class_alias(TranslatorInterface::class, 'Symfony\\Component\\Translation\\TranslatorInterface');
     }
 
     /**
