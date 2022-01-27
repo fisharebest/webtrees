@@ -86,7 +86,6 @@
         "ext-sqlite3": "*",
         "composer/composer": "~2.0",
         "league/flysystem-memory": "~2.0",
-        "maximebf/debugbar": "~1.17",
         "php-coveralls/php-coveralls": "~2.4",
         "phpunit/phpunit": "~9.5"
     },

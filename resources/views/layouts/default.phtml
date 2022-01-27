@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
@@ -62,8 +61,6 @@ use Psr\Http\Message\ServerRequestInterface;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->headContent();
         })->implode('') ?>
-
-        <?= DebugBar::renderHead() ?>
     </head>
 
     <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($request->getAttribute('route')->name, '\\'),1)) ?>">
@@ -183,7 +180,5 @@ use Psr\Http\Message\ServerRequestInterface;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->bodyContent();
         })->implode('') ?>
-
-        <?= DebugBar::render() ?>
     </body>
 </html>

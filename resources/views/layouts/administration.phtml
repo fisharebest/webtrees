@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
@@ -36,8 +35,6 @@ use Fisharebest\Webtrees\View;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
     return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent();
         })->implode('') ?>
-
-        <?= DebugBar::renderHead() ?>
     </head>
     <body class="container-lg wt-global wt-control-panel">
         <header>
@@ -88,7 +85,5 @@ use Fisharebest\Webtrees\View;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
     return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent();
         })->implode('') ?>
-
-        <?= DebugBar::render() ?>
     </body>
 </html>
