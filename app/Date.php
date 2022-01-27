@@ -30,8 +30,6 @@ use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
 use Fisharebest\Webtrees\Date\RomanDate;
 
-use function app;
-
 /**
  * A representation of GEDCOM dates and date ranges.
  *
@@ -243,21 +241,18 @@ class Date
     /**
      * Convert a date to the preferred format and calendar(s) display.
      *
-     * @param bool        $url               Wrap the date in a link to calendar.php
+     * @param Tree|null   $tree              Wrap the date in a link to the calendar page for the tree
      * @param string|null $date_format       Override the default date format
-     * @param bool        $convert_calendars Convert the date into other calendars
+     * @param bool        $convert_calendars Convert the date into other calendars (requires a tree)
      *
      * @return string
      */
-    public function display(bool $url = false, string $date_format = null, bool $convert_calendars = true): string
+    public function display(Tree $tree = null, string $date_format = null, bool $convert_calendars = false): string
     {
-        // Do we need a new DateFormatterService class?
-        if (app()->has(Tree::class)) {
-            $tree            = app(Tree::class);
+        if ($tree instanceof Tree) {
             $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
         } else {
-            $tree            = null;
-            $CALENDAR_FORMAT = '';
+            $CALENDAR_FORMAT = 'none';
         }
 
         $date_format = $date_format ?? I18N::dateFormat();
@@ -301,7 +296,7 @@ class Date
                 }
                 // If the date is different from the unconverted date, add it to the date string.
                 if ($d1 != $d1tmp && $d1tmp !== '') {
-                    if ($url) {
+                    if ($tree instanceof Tree) {
                         if ($CALENDAR_FORMAT !== 'none') {
                             $conv1 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d1conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1tmp . '</a>)</span>';
                         } else {
@@ -312,7 +307,7 @@ class Date
                     }
                 }
                 if ($this->date2 !== null && $d2 != $d2tmp && $d1tmp != '') {
-                    if ($url) {
+                    if ($tree instanceof Tree) {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d2conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
                     } else {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $d2tmp . ')</span>';
@@ -322,7 +317,7 @@ class Date
         }
 
         // Add URLs, if requested
-        if ($url) {
+        if ($tree instanceof Tree) {
             $d1 = '<a href="' . e($this->date1->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1 . '</a>';
             if ($this->date2 instanceof AbstractCalendarDate) {
                 $d2 = '<a href="' . e($this->date2->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2 . '</a>';

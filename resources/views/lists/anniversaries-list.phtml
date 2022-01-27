@@ -46,7 +46,7 @@ use Illuminate\Support\Collection;
             <?= view('icons/sex', ['sex' => $record->sex()]) ?>
         <?php endif ?>
         <div class="indent">
-            <?= $fact->label() . ' — ' . $fact->date()->display(true) ?>
+            <?= $fact->label() . ' — ' . $fact->date()->display($record->tree(), null, true) ?>
             (<?= Carbon::now()->subYears($fact->anniv)->local()->diffForHumans() ?>)
             <?php if ($fact->place()->gedcomName() !== '') : ?>
                 — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">

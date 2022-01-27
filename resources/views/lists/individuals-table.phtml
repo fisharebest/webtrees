@@ -304,12 +304,12 @@ $deathAgeData = [
                     <?php $birth_dates = $individual->getAllBirthDates(); ?>
 
                     <?php foreach ($birth_dates as $n => $birth_date) : ?>
-                        <?= $birth_date->display(true) ?>
+                        <?= $birth_date->display($tree, null, true) ?>
                         <br>
                     <?php endforeach ?>
 
                     <?php if (empty($birth_dates) && $show_estimated_dates) : ?>
-                        <?= $estimated_birth_date->display(true) ?>
+                        <?= $estimated_birth_date->display($tree, null, true) ?>
                     <?php endif ?>
                 </td>
 
@@ -340,12 +340,12 @@ $deathAgeData = [
                 <?php $death_dates = $individual->getAllDeathDates() ?>
                 <td data-sort="<?= $individual->getEstimatedDeathDate()->julianDay() ?>">
                     <?php foreach ($death_dates as $num => $death_date) : ?>
-                        <?= $death_date->display(true) ?>
+                        <?= $death_date->display($tree, null, true) ?>
                     <br>
                     <?php endforeach ?>
 
                     <?php if (empty($death_dates) && $show_estimated_dates && $individual->getEstimatedDeathDate()->minimumDate()->minimumJulianDay() < $today_jd) : ?>
-                        <?= $individual->getEstimatedDeathDate()->display(true) ?>
+                        <?= $individual->getEstimatedDeathDate()->display($tree, null, true) ?>
                     <?php endif ?>
                 </td>
 

@@ -36,21 +36,6 @@ parameters:
 			path: app/Date.php
 
 		-
-			message: "#^Cannot call method getPreference\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Date.php
-
-		-
-			message: "#^Cannot call method has\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Date.php
-
-		-
-			message: "#^Parameter \\#2 \\$tree of method Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\:\\:calendarUrl\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
-			count: 4
-			path: app/Date.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\AbstractElement\\:\\:canonicalText\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Elements/AbstractElement.php
@@ -627,7 +612,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method instance\\(\\) on mixed\\.$#"
-			count: 2
+			count: 1
 			path: app/Http/Middleware/Router.php
 
 		-

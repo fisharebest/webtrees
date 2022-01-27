@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
                         </a>
 
                         <div class="indent">
-                            <?= $fact->label() ?> — <?= $fact->date()->display(true, null, false) ?>
+                            <?= $fact->label() ?> — <?= $fact->date()->display($fact->record->tree()) ?>
                             <?php if ($fact->attribute('PLAC') !== '') : ?>
                                 — <?=  $fact->attribute('PLAC') ?>
                             <?php endif ?>
@@ -52,7 +52,7 @@ use Illuminate\Support\Collection;
                         </a>
 
                         <div class="indent">
-                            <?= $fact->label() ?> — <?= $fact->date()->display(true, null, false) ?>
+                            <?= $fact->label() ?> — <?= $fact->date()->display($fact->record->tree()) ?>
                             <?php if ($fact->attribute('PLAC') !== '') : ?>
                                 — <?=  $fact->attribute('PLAC') ?>
                             <?php endif ?>

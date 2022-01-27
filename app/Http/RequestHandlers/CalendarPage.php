@@ -121,13 +121,13 @@ class CalendarPage implements RequestHandlerInterface
 
         switch ($view) {
             case 'day':
-                $title = I18N::translate('On this day…') . ' ' . $ged_date->display(false);
+                $title = I18N::translate('On this day…') . ' ' . $ged_date->display($tree);
                 break;
             case 'month':
-                $title = I18N::translate('In this month…') . ' ' . $ged_date->display(false, '%F %Y');
+                $title = I18N::translate('In this month…') . ' ' . $ged_date->display($tree, '%F %Y');
                 break;
             case 'year':
-                $title = I18N::translate('In this year…') . ' ' . $ged_date->display(false, '%Y');
+                $title = I18N::translate('In this year…') . ' ' . $ged_date->display($tree, '%Y');
                 break;
         }
 

@@ -156,7 +156,7 @@ class CalendarEvents implements RequestHandlerInterface
             $cal_facts[$d] = [];
             foreach ($facts as $fact) {
                 $xref = $fact->record()->xref();
-                $text = $fact->label() . ' — ' . $fact->date()->display(true, null, false);
+                $text = $fact->label() . ' — ' . $fact->date()->display($tree);
                 if ($fact->anniv > 0) {
                     $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
                 }

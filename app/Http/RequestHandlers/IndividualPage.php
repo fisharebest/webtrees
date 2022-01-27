@@ -202,7 +202,7 @@ class IndividualPage implements RequestHandlerInterface
 
         if ($birth_date->isOK() || $birth_place->id() !== 0) {
             $meta_facts[] = I18N::translate('Birth') . ' ' .
-                $birth_date->display(false, null, false) . ' ' .
+                $birth_date->display() . ' ' .
                 $birth_place->placeName();
         }
 
@@ -211,7 +211,7 @@ class IndividualPage implements RequestHandlerInterface
 
         if ($death_date->isOK() || $death_place->id() !== 0) {
             $meta_facts[] = I18N::translate('Death') . ' ' .
-                $death_date->display(false, null, false) . ' ' .
+                $death_date->display() . ' ' .
                 $death_place->placeName();
         }
 

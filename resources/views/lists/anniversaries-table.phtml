@@ -56,7 +56,7 @@ use Illuminate\Support\Collection;
                         <?php endif ?>
                     </td>
                     <td data-sort="<?= $fact->jd + $fact->anniv / 10000.0 ?>">
-                        <?= $fact->date()->display(true) ?>
+                        <?= $fact->date()->display($record->tree(), null, true) ?>
                     </td>
                     <td data-sort="<?= $fact->anniv ?>">
                         <?= $fact->anniv ?>

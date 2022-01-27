@@ -329,7 +329,7 @@ class HelpText implements RequestHandlerInterface
             $gedcom_date = (string) $gedcom_date;
 
             $date                = new Date($gedcom_date);
-            $dates[$gedcom_date] = strip_tags($date->display(false, null, false));
+            $dates[$gedcom_date] = strip_tags($date->display());
         }
 
         return $dates;

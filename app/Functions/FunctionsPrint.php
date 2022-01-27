@@ -263,7 +263,7 @@ class FunctionsPrint
 
         if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
             $date = new Date($match[1]);
-            $html .= ' ' . $date->display($anchor);
+            $html .= ' ' . $date->display($anchor ? $record->tree() : null, null, $anchor);
             // time
             if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match)) {
                 $html .= ' – <span class="date">' . $match[1] . '</span>';

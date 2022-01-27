@@ -319,7 +319,7 @@ $marriageAgeData = [
                 <td data-sort="<?= $family->getMarriageDate()->julianDay() ?>">
                     <?php if ($marriage_dates = $family->getAllMarriageDates()) : ?>
                         <?php foreach ($marriage_dates as $n => $marriage_date) : ?>
-                            <div><?= $marriage_date->display(true) ?></div>
+                            <div><?= $marriage_date->display($tree, null, true) ?></div>
                         <?php endforeach ?>
                         <?php if ($marriage_dates[0]->gregorianYear() >= 1550 && $marriage_dates[0]->gregorianYear() < 2030) : ?>
                             <?php
