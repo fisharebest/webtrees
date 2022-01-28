@@ -1154,7 +1154,8 @@ class Individual extends GedcomRecord
         // Extract the structured name parts - use for "sortable" names and indexes
         ////////////////////////////////////////////////////////////////////////////
 
-        $sublevel = 1 + (int) $gedcom[0];
+        $sublevel = 1;
+        if ($gedcom) $sublevel += (int) $gedcom[0];
         $NPFX     = preg_match("/\n{$sublevel} NPFX (.+)/", $gedcom, $match) ? $match[1] : '';
         $GIVN     = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
         $SURN     = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';

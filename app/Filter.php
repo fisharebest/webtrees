@@ -262,7 +262,7 @@ class Filter
                 )
             );
 
-            return $tmp[$variable] ?: array();
+            if (is_array($tmp)) return $tmp[$variable] ?: array();
         }
     }
 
