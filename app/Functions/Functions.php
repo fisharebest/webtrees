@@ -1999,9 +1999,9 @@ class Functions
 
                             if ($first === 'bro' && $sex1 === 'M') {
                                     return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
-                                }
+                            }
 
-                                if ($first === 'sis' && $sex1 === 'M') {
+                            if ($first === 'sis' && $sex1 === 'M') {
                                     return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
                             }
 
