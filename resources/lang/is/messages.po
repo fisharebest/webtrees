@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-01-23 15:37+0000\n"
+"PO-Revision-Date: 2022-01-30 18:39+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -3961,7 +3961,7 @@ msgstr "Samanþjappað tré"
 #: app/Module/CompactTreeChartModule.php:131
 #, php-format
 msgid "Compact tree of %s"
-msgstr "Samanþjappað tré af %s"
+msgstr "Samanþjappað tré fyrir %s"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:42
 msgid "Comparison"
