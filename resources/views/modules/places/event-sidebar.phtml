@@ -8,6 +8,7 @@ use Fisharebest\Webtrees\Place;
  * @var string $tag
  * @var string $url
  * @var string $value
+ * @var string $date
  */
 
 ?>
@@ -15,6 +16,12 @@ use Fisharebest\Webtrees\Place;
 <div class="label">
     <?= $tag ?>
 </div>
+
+<?php if ($date !== '') : ?>
+  <div>
+      <?= $date ?>
+  </div>
+<?php endif ?>
 
 <?php if ($url !== '') : ?>
     <a href="<?= e($url) ?>">
