@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServiceUnavailableException;
+use Fisharebest\Webtrees\Http\RequestHandlers\ModulesMapProvidersPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
 
@@ -60,7 +62,14 @@ class LeafletJsService
             ->values();
 
         if ($map_providers->isEmpty()) {
-            throw new HttpServiceUnavailableException(I18N::translate('No map providers enabled.'));
+            $message = I18N::translate('To display a map, you need to enable a map-provider in the control panel.');
+
+            if (Auth::isAdmin()) {
+                $url = route(ModulesMapProvidersPage::class);
+                $message .= ' — <a class="alert-link" href="' . e($url) . '">' . I18N::translate('Map providers') . '</a>';
+            }
+
+            throw new HttpServiceUnavailableException($message);
         }
 
         return (object) [
