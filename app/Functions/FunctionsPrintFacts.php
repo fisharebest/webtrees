@@ -438,11 +438,11 @@ class FunctionsPrintFacts
 
                 if ($tree->getPreference('FORMAT_TEXT') === 'markdown') {
                     $data .= '<div class="markdown" dir="auto">';
-                    $data .= Registry::markdownFactory()->markdown($tree)->convertToHtml($source);
+                    $data .= Registry::markdownFactory()->markdown($source, $tree);
                     $data .= '</div>';
                 } else {
                     $data .= '<div class="markdown" dir="auto" style="white-space: pre-wrap;">';
-                    $data .= Registry::markdownFactory()->autolink($tree)->convertToHtml($source);
+                    $data .= Registry::markdownFactory()->autolink($source, $tree);
                     $data .= '</div>';
                 }
 

@@ -199,7 +199,7 @@ class Webtrees
         Registry::xrefFactory(new XrefFactory());
 
         // Workaround for https://github.com/fisharebest/webtrees/issues/4179
-        class_alias(TranslatorInterface::class, 'Symfony\\Component\\Translation\\TranslatorInterface');
+        //class_alias(TranslatorInterface::class, 'Symfony\\Component\\Translation\\TranslatorInterface');
     }
 
     /**

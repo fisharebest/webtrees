@@ -107,7 +107,7 @@ class FunctionsPrint
                 I18N::translate(
                     '<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>',
                     $label,
-                    $first_line
+                    $html
                 ) .
                 '</div>';
         }

@@ -323,7 +323,7 @@ abstract class AbstractElement implements ElementInterface
         $canonical = $this->canonical($value);
 
         if (str_contains($canonical, 'http://') || str_contains($canonical, 'https://')) {
-            $html = Registry::markdownFactory()->autolink()->convertToHtml($canonical);
+            $html = Registry::markdownFactory()->autolink($canonical);
 
             return strip_tags($html, ['a']);
         }
@@ -347,12 +347,12 @@ abstract class AbstractElement implements ElementInterface
 
         switch ($format) {
             case 'markdown':
-                $html = Registry::markdownFactory()->markdown($tree)->convertToHtml($canonical);
+                $html = Registry::markdownFactory()->markdown($canonical, $tree);
 
                 return '<div class="markdown" dir="auto">' . $html . '</div>';
 
             default:
-                $html = Registry::markdownFactory()->autolink($tree)->convertToHtml($canonical);
+                $html = Registry::markdownFactory()->autolink($canonical, $tree);
 
                 if (str_contains($html, "\n")) {
                     return '<div class="markdown" dir="auto">' . $html . '</div>';

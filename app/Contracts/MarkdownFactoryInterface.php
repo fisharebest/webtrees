@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\Tree;
-use League\CommonMark\CommonMarkConverter;
 
 /**
  * Create a markdown converter.
@@ -28,16 +27,18 @@ use League\CommonMark\CommonMarkConverter;
 interface MarkdownFactoryInterface
 {
     /**
+     * @param string    $markdown
      * @param Tree|null $tree
      *
-     * @return CommonMarkConverter
+     * @return string
      */
-    public function autolink(Tree $tree = null): CommonMarkConverter;
+    public function autolink(string $markdown, Tree $tree = null): string;
 
     /**
+     * @param string    $markdown
      * @param Tree|null $tree
      *
-     * @return CommonMarkConverter
+     * @return string
      */
-    public function markdown(Tree $tree = null): CommonMarkConverter;
+    public function markdown(string $markdown, Tree $tree = null): string;
 }

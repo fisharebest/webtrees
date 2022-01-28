@@ -19,27 +19,31 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\CommonMark;
 
-use League\CommonMark\ElementRendererInterface;
-use League\CommonMark\Inline\Element\AbstractInline;
-use League\CommonMark\Inline\Renderer\InlineRendererInterface;
-
-use function e;
+use League\CommonMark\Node\Node;
+use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use League\CommonMark\Renderer\NodeRendererInterface;
+use League\CommonMark\Util\HtmlElement;
+use Stringable;
 
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefRenderer implements InlineRendererInterface
+class XrefRenderer implements NodeRendererInterface
 {
     /**
-     * @param AbstractInline           $inline
-     * @param ElementRendererInterface $htmlRenderer
+     * @param Node                       $node
+     * @param ChildNodeRendererInterface $childRenderer
      *
-     * @return string
+     * @return Stringable
      */
-    public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer): string
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): Stringable
     {
-        assert($inline instanceof XrefNode);
+        XrefNode::assertInstanceOf($node);
 
-        return '<a href="' . e($inline->record()->url()) . '">' . $inline->record()->fullName() . '</a>';
+        /** @var XrefNode $node */
+        $href = $node->record()->url();
+        $html = $node->record()->fullName();
+
+        return new HtmlElement('a', ['href' => $href], $html);
     }
 }

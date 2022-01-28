@@ -106,7 +106,7 @@ use Illuminate\Support\Collection;
                         <td class="wt-page-options-value" colspan="4">
                             <div id="message<?= $message->message_id ?>" class="collapse">
                                 <div dir="auto" style="white-space: pre-wrap;">
-                                    <?= Registry::markdownFactory()->autolink()->convertToHtml($message->body) ?>
+                                    <?= Registry::markdownFactory()->autolink($message->body) ?>
                                 </div>
                                 <br>
 

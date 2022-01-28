@@ -19,34 +19,30 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\CommonMark;
 
-use Fisharebest\Webtrees\Tree;
-use League\CommonMark\Environment\EnvironmentBuilderInterface;
-use League\CommonMark\Extension\ExtensionInterface;
+use League\CommonMark\Parser\Block\BlockStart;
+use League\CommonMark\Parser\Block\BlockStartParserInterface;
+use League\CommonMark\Parser\Cursor;
+use League\CommonMark\Parser\MarkdownParserStateInterface;
 
 /**
- * Convert XREFs within markdown text to links
+ * Convert webtrees 1.x census-assistant markup into tables.
+ * Note that webtrees 2.0 generates markdown tables directly.
  */
-class XrefExtension implements ExtensionInterface
+class CensusTableStartParser implements BlockStartParserInterface
 {
-    private Tree $tree;
-
     /**
-     * MarkdownXrefParser constructor.
+     * @param Cursor                       $cursor
+     * @param MarkdownParserStateInterface $parserState
      *
-     * @param Tree $tree Match XREFs in this tree
+     * @return BlockStart|null
      */
-    public function __construct(Tree $tree)
+    public function tryStart(Cursor $cursor, MarkdownParserStateInterface $parserState): ?BlockStart
     {
-        $this->tree = $tree;
-    }
+        if ($cursor->getLine() === CensusTableExtension::CA_PREFIX) {
+            return BlockStart::of(new CensusTableContinueParser())
+                ->at($cursor);
+        }
 
-    /**
-     * @param EnvironmentBuilderInterface $environment
-     */
-    public function register(EnvironmentBuilderInterface $environment): void
-    {
-        $environment
-            ->addInlineParser(new XrefParser($this->tree))
-            ->addRenderer(XrefNode::class, new XrefRenderer);
+        return BlockStart::none();
     }
 }

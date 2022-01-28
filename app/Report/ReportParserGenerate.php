@@ -1005,9 +1005,9 @@ class ReportParserGenerate extends ReportParserBase
                 $tmp = explode(':', $tag);
                 if (in_array(end($tmp), ['NOTE', 'TEXT'], true)) {
                     if ($this->tree->getPreference('FORMAT_TEXT') === 'markdown') {
-                        $value = strip_tags(Registry::markdownFactory()->markdown($this->tree)->convertToHtml($value));
+                        $value = strip_tags(Registry::markdownFactory()->markdown($value, $this->tree));
                     } else {
-                        $value = strip_tags(Registry::markdownFactory()->autolink($this->tree)->convertToHtml($value));
+                        $value = strip_tags(Registry::markdownFactory()->autolink($value, $this->tree));
                     }
                 }
 

@@ -20,46 +20,62 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\CommonMark\CensusTableExtension;
-use Fisharebest\Webtrees\CommonMark\ResponsiveTableExtension;
 use Fisharebest\Webtrees\CommonMark\XrefExtension;
 use Fisharebest\Webtrees\Contracts\MarkdownFactoryInterface;
 use Fisharebest\Webtrees\Tree;
-use League\CommonMark\Block\Element\Document;
-use League\CommonMark\Block\Element\Paragraph;
-use League\CommonMark\Block\Renderer\DocumentRenderer;
-use League\CommonMark\Block\Renderer\ParagraphRenderer;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
-use League\CommonMark\EnvironmentInterface;
+use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\Autolink\AutolinkExtension;
-use League\CommonMark\Inline\Element\Link;
-use League\CommonMark\Inline\Element\Text;
-use League\CommonMark\Inline\Renderer\LinkRenderer;
-use League\CommonMark\Inline\Renderer\TextRenderer;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+use League\CommonMark\Extension\CommonMark\Renderer\Inline\LinkRenderer;
+use League\CommonMark\Extension\Table\TableExtension;
+use League\CommonMark\MarkdownConverter;
+use League\CommonMark\Node\Block\Document;
+use League\CommonMark\Node\Block\Paragraph;
+use League\CommonMark\Node\Inline\Text;
+use League\CommonMark\Renderer\Block\DocumentRenderer;
+use League\CommonMark\Renderer\Block\ParagraphRenderer;
+use League\CommonMark\Renderer\Inline\TextRenderer;
+use League\CommonMark\Util\HtmlFilter;
 
 /**
  * Create a markdown converter.
  */
 class MarkdownFactory implements MarkdownFactoryInterface
 {
-    protected const CONFIG = [
+    protected const CONFIG_AUTOLINK = [
         'allow_unsafe_links' => false,
-        'html_input'         => EnvironmentInterface::HTML_INPUT_ESCAPE,
+        'html_input'         => HtmlFilter::ESCAPE,
+    ];
+
+    protected const CONFIG_MARKDOWN = [
+        'allow_unsafe_links' => false,
+        'html_input'         => HtmlFilter::ESCAPE,
+        'table'              => [
+            'wrap' => [
+                'enabled'    => true,
+                'tag'        => 'div',
+                'attributes' => [
+                    'class' => 'table-responsive',
+                ],
+            ],
+        ],
     ];
 
     /**
+     * @param string    $markdown
      * @param Tree|null $tree
      *
-     * @return CommonMarkConverter
+     * @return string
      */
-    public function autolink(Tree $tree = null): CommonMarkConverter
+    public function autolink(string $markdown, Tree $tree = null): string
     {
         // Create a minimal commonmark processor - just add support for auto-links.
-        $environment = new Environment();
-        $environment->addBlockRenderer(Document::class, new DocumentRenderer());
-        $environment->addBlockRenderer(Paragraph::class, new ParagraphRenderer());
-        $environment->addInlineRenderer(Text::class, new TextRenderer());
-        $environment->addInlineRenderer(Link::class, new LinkRenderer());
+        $environment = new Environment(static::CONFIG_AUTOLINK);
+        $environment->addRenderer(Document::class, new DocumentRenderer());
+        $environment->addRenderer(Paragraph::class, new ParagraphRenderer());
+        $environment->addRenderer(Text::class, new TextRenderer());
+        $environment->addRenderer(Link::class, new LinkRenderer());
         $environment->addExtension(new AutolinkExtension());
 
         // Optionally create links to other records.
@@ -67,29 +83,33 @@ class MarkdownFactory implements MarkdownFactoryInterface
             $environment->addExtension(new XrefExtension($tree));
         }
 
-        return new CommonMarkConverter(static::CONFIG, $environment);
+        $converter = new MarkDownConverter($environment);
+
+        return $converter->convert($markdown)->getContent();
     }
 
     /**
+     * @param string    $markdown
      * @param Tree|null $tree
      *
-     * @return CommonMarkConverter
+     * @return string
      */
-    public function markdown(Tree $tree = null): CommonMarkConverter
+    public function markdown(string $markdown, Tree $tree = null): string
     {
-        $environment = Environment::createCommonMarkEnvironment();
-
-        // Wrap tables so support horizontal scrolling with bootstrap.
-        $environment->addExtension(new ResponsiveTableExtension());
+        $environment = new Environment(static::CONFIG_MARKDOWN);
+        $environment->addExtension(new CommonMarkCoreExtension());
+        $environment->addExtension(new TableExtension());
 
         // Convert webtrees 1.x style census tables to commonmark format.
-        $environment->addExtension(new CensusTableExtension());
+        $environment->addExtension(new CensusTableExtension(new TableExtension()));
 
         // Optionally create links to other records.
         if ($tree instanceof Tree) {
             $environment->addExtension(new XrefExtension($tree));
         }
 
-        return new CommonMarkConverter(static::CONFIG, $environment);
+        $converter = new MarkDownConverter($environment);
+
+        return $converter->convert($markdown)->getContent();
     }
 }
