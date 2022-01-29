@@ -196,7 +196,8 @@ class IndividualController extends GedcomRecordController
                             // Where it is not a substring of the real surname, show it after the real surname.
                             $surname = Filter::escapeHtml($primary_name['surname']);
                             if (strpos($primary_name['surname'], str_replace(',', ' ', $nmatch[$i][2])) !== false) {
-                                echo '<span dir="auto">' . $surname . '</span>';
+                                //echo '<span dir="auto">' . $surname . '</span>';
+                                echo '<span dir="auto"><a href="/branches.php?surname='.str_replace(' ','+',$surname).'">'.$surname.'</a></span>';
                             } else {
                                 echo I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $surname . '</span>', '<span dir="auto">' . $name . '</span>');
                             }
