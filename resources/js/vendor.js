@@ -60,6 +60,7 @@ import 'pinch-zoom-element';
 
 import 'leaflet';
 import 'leaflet.markercluster';
+import 'leaflet.markercluster.freezable';
 import 'beautifymarker';
 import 'leaflet-control-geocoder';
 import 'leaflet.control.layers.tree';

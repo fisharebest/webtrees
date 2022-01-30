@@ -31,6 +31,9 @@ use Fisharebest\Webtrees\I18N;
       inline: "start"
     };
 
+    // 10 is a reasonable zoom level when displaying a marker (single point)
+    const popupZoomLevel = 10;
+
     // Map components
     let markers = L.markerClusterGroup({
         showCoverageOnHover: false,
@@ -101,9 +104,10 @@ use Fisharebest\Webtrees\I18N;
               item.classList.add('messagebox');
               item.scrollIntoView(scrollOptions);
             })
-            .on("popupclose", function() {
-              sidebar.childNodes.forEach(e => e.classList.remove('messagebox'));
+            .on("popupclose", function(x) {
+              sidebar.querySelector('.gchart.messagebox').classList.remove('messagebox');
               sidebar.firstElementChild.scrollIntoView(scrollOptions);
+              markers.enableClustering();
             });
           },
           onEachFeature: function(feature, layer) {
@@ -121,34 +125,34 @@ use Fisharebest\Webtrees\I18N;
     const _loadListeners = function() {
       // Activate marker popup when sidebar entry clicked
       sidebar.querySelectorAll('.gchart').forEach((element) => {
-        var eventId = parseInt(element.dataset.wtFeatureId);
+        const eventId = parseInt(element.dataset.wtFeatureId);
 
-        element.addEventListener('click', () => {
-          // first close any existing
-          map.closePopup();
-          //find the marker corresponding to the clicked event
-          let mkrLayer = markers.getLayers().filter(function (v) {
-            return v.feature !== undefined && v.feature.id === eventId;
-          });
+        element.addEventListener('mouseup', (evt) => {
+          // Only perform map action if evt was not initiated from an anchor element
+          if (evt.target.closest('a') === null) {
+            //find the marker corresponding to the clicked event
+            const mkrLayer = markers.getLayers().filter(function (v) {
+              return v.feature !== undefined && v.feature.id === eventId;
+            });
 
-          let mkr = mkrLayer.pop();
+            const mkr = mkrLayer.pop();
 
-          markers.zoomToShowLayer(mkr, function (e) {
-            mkr.openPopup();
-          });
-
-          return false;
-        });
-
-        // stop click on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
+            if (mkr instanceof L.Layer) {
+              map
+                .closePopup()
+                .flyTo(mkr.getLatLng(), popupZoomLevel, {animate: true, duration: 0.5})
+                .once('moveend', () => {
+                  markers.disableClustering();
+                  mkr.fire('click');
+                });
+            } else {
+              // Should never get here
+              console.log('Error: unable to find the selected marker');
+            }
+          }
         });
       });
     }
-
     _drawMap();
     _buildMapData();
     _loadListeners();
