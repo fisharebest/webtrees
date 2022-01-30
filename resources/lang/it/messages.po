@@ -481,7 +481,7 @@ msgstr "(all’età di %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s anni)"
+msgstr "(all’età di %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:302
@@ -490,7 +490,7 @@ msgstr "(%s anni)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s anni)"
+msgstr "(all’età di %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
