@@ -1155,7 +1155,7 @@ class Individual extends GedcomRecord
         ////////////////////////////////////////////////////////////////////////////
 
         $sublevel = 1;
-        if ($gedcom) {
+        if (is_array($gedcom)) {
           $sublevel += (int) $gedcom[0];
         }
         $NPFX     = preg_match("/\n{$sublevel} NPFX (.+)/", $gedcom, $match) ? $match[1] : '';
