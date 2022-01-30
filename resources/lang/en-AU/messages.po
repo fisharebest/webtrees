@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-02-27 09:09+0000\n"
+"PO-Revision-Date: 2022-01-30 19:05+0000\n"
 "Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en_AU/>\n"
+"Language-Team: English (Australia) <https://translate.webtrees.net/projects/"
+"webtrees/webtrees-20/en_AU/>\n"
 "Language: en-AU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2104,7 +2105,7 @@ msgstr "Aqua Marine"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Are you sure you want to delete the link to ‘%s’?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -6251,7 +6252,7 @@ msgstr "Family book of %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Family census"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6275,7 +6276,7 @@ msgstr "Family of %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Family residence"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6369,7 +6370,7 @@ msgstr "Family with wife"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -11602,7 +11603,7 @@ msgstr "Provo, Utah, United States"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -15436,7 +15437,7 @@ msgstr "Time"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Time of last change"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15614,7 +15615,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Too many requests. Try again later."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15890,7 +15891,7 @@ msgstr "Type of fact"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Type of identification number"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15908,7 +15909,7 @@ msgstr "Type of name"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Type of reference number"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -16045,7 +16046,7 @@ msgstr "Unknown"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Unlink"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -19520,7 +19521,7 @@ msgstr "import file"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "inline note"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20396,7 +20397,7 @@ msgstr "seventh cousin"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "shared note"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
