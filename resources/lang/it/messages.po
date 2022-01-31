@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-05 10:47+0000\n"
-"Last-Translator: Alex Kalopsia <camilleri.alex@gmail.com>\n"
+"PO-Revision-Date: 2022-02-07 16:13+0000\n"
+"Last-Translator: Giulio Marcon <gmarcon@gmail.com>\n"
 "Language-Team: Italian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/it/>\n"
 "Language: it\n"
@@ -498,7 +498,7 @@ msgstr "(età %s)"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(all’età di %s)"
+msgstr "(età %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:359
@@ -507,7 +507,7 @@ msgstr "(all’età di %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(%s anni)"
+msgstr "(età %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -516,7 +516,7 @@ msgstr "(%s anni)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(%s anni)"
+msgstr "(età %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -7176,7 +7176,7 @@ msgstr "Padrino/madrina"
 
 #: app/Factories/ElementFactory.php:1162
 msgid "Godparents"
-msgstr ""
+msgstr "Padrini"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
@@ -9290,7 +9290,7 @@ msgstr "Nome coniugale"
 
 #: app/GedcomTag.php:1155
 msgid "Married surname"
-msgstr "Cognome coniugale"
+msgstr "Cognome da sposata/o"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:327
