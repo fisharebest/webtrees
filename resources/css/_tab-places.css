@@ -10,23 +10,24 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 /*
- * Pedigree map
+ * Close relatives tab
  *
- * wt-chart, wt-chart-pedigree-map
+ * wt-tabs-individual
+ * +--- wt-tab-places
  */
-.wt-pedigree-map-wrapper {
-    height: 70vh;
+.wt-places-tab-wrapper {
+    height: 70vh
 }
 
-.wt-pedigree-map-map {
-    height: 100%;
+.wt-places-tab-map {
+    height: 100%
 }
 
-.wt-pedigree-map-sidebar {
+.wt-places-tab-sidebar {
     height: 100%;
     overflow-y: auto;
 }

@@ -24,11 +24,7 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<div class="row form-group mb-3">
-    <div class="col-sm-12">
-        <div id="wt-map" class="wt-ajax-load col-sm-12 wt-map-admin" dir="ltr"></div>
-    </div>
-</div>
+<div id="wt-map" class="wt-ajax-load mb-3 border wt-location-edit-map" dir="ltr"></div>
 
 <form method="post" action="<?= e(route(MapDataSave::class)) ?>">
     <?= csrf_field() ?>
@@ -79,15 +75,6 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 </form>
-
-<?php View::push('styles') ?>
-<style>
-    .wt-map-admin {
-        height: 55vh;
-        border: 1px solid darkGrey
-    }
-</style>
-<?php View::endpush() ?>
 
 <?php View::push('javascript') ?>
 <script>
