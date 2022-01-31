@@ -101,7 +101,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $environment->addExtension(new TableExtension());
 
         // Convert webtrees 1.x style census tables to commonmark format.
-        $environment->addExtension(new CensusTableExtension(new TableExtension()));
+        $environment->addExtension(new CensusTableExtension());
 
         // Optionally create links to other records.
         if ($tree instanceof Tree) {
