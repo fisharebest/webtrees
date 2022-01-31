@@ -35,131 +35,133 @@ use Fisharebest\Webtrees\View;
 <script>
   'use strict';
 
-  const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
+  (function () {
+    const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
 
-  let map = null;
-  const sidebar = document.querySelector('.wt-sidebar');
+    let map = null;
+    const sidebar = document.querySelector('.wt-sidebar');
 
-  const scrollOptions = {
-    behavior: "smooth",
-    block: "start",
-    inline: "start"
-  };
+    const scrollOptions = {
+      behavior: "smooth",
+      block: "start",
+      inline: "start"
+    };
 
-  // Map components
-  let markers = L.markerClusterGroup({
-    showCoverageOnHover: false,
-  });
+    // Map components
+    let markers = L.markerClusterGroup({
+      showCoverageOnHover: false,
+    });
 
-  let resetControl = L.Control.extend({
-    options: {
-      position: 'topleft',
-    },
-
-    onAdd: function (map) {
-      let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-      container.onclick = function () {
-        map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
-        sidebar.firstElementChild.scrollIntoView(scrollOptions);
-        return false;
-      };
-      let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-      let reset = config.i18n.reset;
-      anchor.setAttribute('aria-label', reset);
-      anchor.href = '#';
-      anchor.title = reset;
-      anchor.role = 'button';
-      let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-      image.alt = reset;
-
-      return container;
-    },
-  });
-
-  /**
-    * @private
-    */
-  let _drawMap = function () {
-    map = webtrees.buildLeafletJsMap('wt-map', config)
-      .addControl(new resetControl());
-  };
-
-  /**
-    * @private
-    */
-  let _buildMapData = function () {
-    let data = <?= json_encode($data['markers'], JSON_THROW_ON_ERROR) ?>;
-
-    let geoJsonLayer = L.geoJson(data, {
-      pointToLayer: function (feature, latlng) {
-        return new L.Marker(latlng, {
-          icon: L.BeautifyIcon.icon({
-            icon: 'bullseye fas',
-            borderColor: 'transparent',
-            backgroundColor: '#1e90ff',
-            iconShape: 'marker',
-            textColor: 'white',
-          }),
-          title: feature.properties.tooltip,
-          alt: feature.properties.tooltip,
-          id: feature.id,
-        })
-          .on('popupopen', function (e) {
-            let item = document.querySelector('.mapped[data-wt-feature-id="' + e.target.feature.id + '"]');
-            item.classList.add('messagebox');
-            item.scrollIntoView(scrollOptions);
-          })
-          .on('popupclose', function () {
-            sidebar.querySelectorAll('.mapped').forEach(e => e.classList.remove('messagebox'));
-            sidebar.firstElementChild.scrollIntoView(scrollOptions);
-          });
+    let resetControl = L.Control.extend({
+      options: {
+        position: 'topleft',
       },
-      onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.popup);
+
+      onAdd: function (map) {
+        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        container.onclick = function () {
+          map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
+          sidebar.firstElementChild.scrollIntoView(scrollOptions);
+          return false;
+        };
+        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+        let reset = config.i18n.reset;
+        anchor.setAttribute('aria-label', reset);
+        anchor.href = '#';
+        anchor.title = reset;
+        anchor.role = 'button';
+        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
+        image.alt = reset;
+
+        return container;
       },
     });
 
-    if (data.features.length > 0) {
-      markers.addLayer(geoJsonLayer);
-      map.addLayer(markers);
+    /**
+      * @private
+      */
+    let _drawMap = function () {
+      map = webtrees.buildLeafletJsMap('wt-map', config)
+        .addControl(new resetControl());
+    };
+
+    /**
+      * @private
+      */
+    let _buildMapData = function () {
+      let data = <?= json_encode($data['markers'], JSON_THROW_ON_ERROR) ?>;
+
+      let geoJsonLayer = L.geoJson(data, {
+        pointToLayer: function (feature, latlng) {
+          return new L.Marker(latlng, {
+            icon: L.BeautifyIcon.icon({
+              icon: 'bullseye fas',
+              borderColor: 'transparent',
+              backgroundColor: '#1e90ff',
+              iconShape: 'marker',
+              textColor: 'white',
+            }),
+            title: feature.properties.tooltip,
+            alt: feature.properties.tooltip,
+            id: feature.id,
+          })
+            .on('popupopen', function (e) {
+              let item = document.querySelector('.mapped[data-wt-feature-id="' + e.target.feature.id + '"]');
+              item.classList.add('messagebox');
+              item.scrollIntoView(scrollOptions);
+            })
+            .on('popupclose', function () {
+              sidebar.querySelectorAll('.mapped').forEach(e => e.classList.remove('messagebox'));
+              sidebar.firstElementChild.scrollIntoView(scrollOptions);
+            });
+        },
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup(feature.properties.popup);
+        },
+      });
+
+      if (data.features.length > 0) {
+        markers.addLayer(geoJsonLayer);
+        map.addLayer(markers);
+      }
+
+      map.fitBounds(<?= json_encode($data['bounds'], JSON_THROW_ON_ERROR) ?>, { padding: [50, 30] });
+      sidebar.innerHTML = <?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>;
+   };
+
+    window.onload = function() {
+      // Activate marker popup when sidebar entry clicked
+      sidebar.querySelectorAll('.mapped').forEach((element) => {
+        var eventId = parseInt(element.dataset.wtFeatureId);
+
+        element.addEventListener('click', () => {
+          // first close any existing
+          map.closePopup();
+          //find the marker corresponding to the clicked event
+          let mkrLayer = markers.getLayers().filter(function (v) {
+            return v.feature !== undefined && v.feature.id === eventId;
+          });
+
+          let mkr = mkrLayer.pop();
+
+          markers.zoomToShowLayer(mkr, function (e) {
+            mkr.openPopup();
+          });
+
+          return false;
+        });
+
+        // stop clicking on a person also opening the popup
+        element.querySelectorAll('a').forEach((el) => {
+          el.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+        });
+      });
     }
 
-    map.fitBounds(<?= json_encode($data['bounds'], JSON_THROW_ON_ERROR) ?>, { padding: [50, 30] });
-    sidebar.innerHTML = <?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>;
-  };
-
-  window.onload = function() {
-    // Activate marker popup when sidebar entry clicked
-    sidebar.querySelectorAll('.mapped').forEach((element) => {
-      var eventId = parseInt(element.dataset.wtFeatureId);
-
-      element.addEventListener('click', () => {
-        // first close any existing
-        map.closePopup();
-        //find the marker corresponding to the clicked event
-        let mkrLayer = markers.getLayers().filter(function (v) {
-          return v.feature !== undefined && v.feature.id === eventId;
-        });
-
-        let mkr = mkrLayer.pop();
-
-        markers.zoomToShowLayer(mkr, function (e) {
-          mkr.openPopup();
-        });
-
-        return false;
-      });
-
-      // stop clicking on a person also opening the popup
-      element.querySelectorAll('a').forEach((el) => {
-        el.addEventListener('click', (e) => {
-          e.stopPropagation();
-        });
-      });
-    });
-  }
-
-  _drawMap();
-  _buildMapData();
+    _drawMap();
+    _buildMapData();
+  })();
 </script>
 <?php View::endpush() ?>
