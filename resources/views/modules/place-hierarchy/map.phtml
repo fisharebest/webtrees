@@ -78,16 +78,16 @@ use Fisharebest\Webtrees\View;
     });
 
     /**
-      * @private
-      */
+     * @private
+     */
     let _drawMap = function () {
       map = webtrees.buildLeafletJsMap('wt-map', config)
         .addControl(new resetControl());
     };
 
     /**
-      * @private
-      */
+     * @private
+     */
     let _buildMapData = function () {
       let data = <?= json_encode($data['markers'], JSON_THROW_ON_ERROR) ?>;
 
