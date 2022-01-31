@@ -10,29 +10,23 @@ use Fisharebest\Webtrees\View;
 ?>
 
 <div class="py-4">
-    <div class="row gchart osm-wrapper">
-        <div id="osm-map" class="col-sm-9 wt-ajax-load osm-user-map" dir="ltr"></div>
-        <ul class="col-sm-3 osm-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
+    <div class="row gchart wt-map-wrapper">
+        <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map-user" dir="ltr"></div>
+        <ul class="col-sm-3 wt-map-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
     </div>
 </div>
 
 <?php View::push('styles') ?>
 <style>
-    .osm-wrapper, .osm-user-map {
+    .wt-map-wrapper, .wt-map-user {
         height: 70vh
     }
 
-    .osm-sidebar {
+    .wt-map-sidebar {
         height: 100%;
         overflow-x: hidden;
         overflow-y: auto;
         font-size: small;
-    }
-
-    .flag {
-        border: 1px solid grey !important;
-        height: 15px;
-        width: 25px;
     }
 </style>
 <?php View::endpush() ?>
@@ -41,11 +35,17 @@ use Fisharebest\Webtrees\View;
 <script>
   'use strict';
 
-  window.WT_OSM = (function () {
+  (function () {
     const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
 
     let map = null;
-    let sidebar = $('.osm-sidebar');
+    const sidebar = document.querySelector('.wt-map-sidebar');
+
+    const scrollOptions = {
+      behavior: "smooth",
+      block: "start",
+      inline: "start"
+    };
 
     // Map components
     let markers = L.markerClusterGroup({
@@ -61,7 +61,7 @@ use Fisharebest\Webtrees\View;
         let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
         container.onclick = function () {
           map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
-          sidebar.scrollTo(sidebar.children(':first'));
+          sidebar.firstElementChild.scrollIntoView(scrollOptions);
           return false;
         };
         let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
@@ -81,7 +81,7 @@ use Fisharebest\Webtrees\View;
      * @private
      */
     let _drawMap = function () {
-      map = webtrees.buildLeafletJsMap('osm-map', config)
+      map = webtrees.buildLeafletJsMap('wt-map', config)
         .addControl(new resetControl());
     };
 
@@ -106,13 +106,13 @@ use Fisharebest\Webtrees\View;
             id: feature.id,
           })
             .on('popupopen', function (e) {
-              let item = sidebar.children('.mapped[data-wt-feature-id=' + e.target.feature.id + ']');
-              item.addClass('messagebox');
-              sidebar.scrollTo(item);
+              let item = document.querySelector('.mapped[data-wt-feature-id="' + e.target.feature.id + '"]');
+              item.classList.add('messagebox');
+              item.scrollIntoView(scrollOptions);
             })
             .on('popupclose', function () {
-              sidebar.children('.mapped')
-                .removeClass('messagebox');
+              sidebar.querySelectorAll('.mapped').forEach(e => e.classList.remove('messagebox'));
+              sidebar.firstElementChild.scrollIntoView(scrollOptions);
             });
         },
         onEachFeature: function (feature, layer) {
@@ -126,51 +126,42 @@ use Fisharebest\Webtrees\View;
       }
 
       map.fitBounds(<?= json_encode($data['bounds'], JSON_THROW_ON_ERROR) ?>, { padding: [50, 30] });
-      sidebar.append(<?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>);
-    };
+      sidebar.innerHTML = <?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>;
+   };
 
-    /**
-     * @param   elem
-     * @returns {$}
-     */
-    $.fn.scrollTo = function (elem) {
-      let _this = $(this);
-      _this.animate({
-        scrollTop: elem.offset().top - _this.offset().top + _this.scrollTop(),
-      });
-      return this;
-    };
+    window.onload = function() {
+      // Activate marker popup when sidebar entry clicked
+      sidebar.querySelectorAll('.mapped').forEach((element) => {
+        var eventId = parseInt(element.dataset.wtFeatureId);
 
-    // Activate marker popup when sidebar entry clicked
-    $(function () {
-      sidebar
-        // open marker popup if sidebar event is clicked
-        .on('click', '.mapped', function (e) {
+        element.addEventListener('click', () => {
           // first close any existing
           map.closePopup();
-          let eventId = $(this).data('wt-feature-id');
           //find the marker corresponding to the clicked event
           let mkrLayer = markers.getLayers().filter(function (v) {
-            return typeof (v.feature) !== 'undefined' && v.feature.id === eventId;
+            return v.feature !== undefined && v.feature.id === eventId;
           });
+
           let mkr = mkrLayer.pop();
-          // Unfortunately zoomToShowLayer zooms to maxZoom
-          // when all marker in a cluster have exactly the
-          // same co-ordinates
+
           markers.zoomToShowLayer(mkr, function (e) {
             mkr.openPopup();
           });
+
           return false;
-        })
-        .on('click', 'a', function (e) { // stop click on a person also opening the popup
-          e.stopPropagation();
         });
-    });
+
+        // stop clicking on a person also opening the popup
+        element.querySelectorAll('a').forEach((el) => {
+          el.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+        });
+      });
+    }
 
     _drawMap();
     _buildMapData();
-
-    return 'Leaflet map interface for webtrees-2';
   })();
 </script>
 <?php View::endpush() ?>
