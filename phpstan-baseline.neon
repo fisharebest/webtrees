@@ -26,11 +26,6 @@ parameters:
 			path: app/Census/CensusColumnRelationToHead.php
 
 		-
-			message: "#^Parameter \\#1 \\$line of method Fisharebest\\\\Webtrees\\\\CommonMark\\\\CensusTableParser\\:\\:parseRow\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/CommonMark/CensusTableParser.php
-
-		-
 			message: "#^Cannot call method calendarUrl\\(\\) on Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\|null\\.$#"
 			count: 1
 			path: app/Date.php
@@ -189,6 +184,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\LocationFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/LocationFactory.php
+
+		-
+			message: "#^Class Fisharebest\\\\Webtrees\\\\CommonMark\\\\CensusTableExtension does not have a constructor and must be instantiated without any parameters\\.$#"
+			count: 1
+			path: app/Factories/MarkdownFactory.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
@@ -611,8 +611,18 @@ parameters:
 			path: app/Http/Middleware/ReadConfigIni.php
 
 		-
-			message: "#^Cannot call method instance\\(\\) on mixed\\.$#"
+			message: "#^Cannot access property \\$allows on Aura\\\\Router\\\\Route\\|null\\.$#"
 			count: 1
+			path: app/Http/Middleware/Router.php
+
+		-
+			message: "#^Cannot access property \\$failedRule on Aura\\\\Router\\\\Route\\|null\\.$#"
+			count: 1
+			path: app/Http/Middleware/Router.php
+
+		-
+			message: "#^Cannot call method instance\\(\\) on mixed\\.$#"
+			count: 2
 			path: app/Http/Middleware/Router.php
 
 		-
@@ -1461,11 +1471,6 @@ parameters:
 			path: app/Http/Routes/ApiRoutes.php
 
 		-
-			message: "#^Call to an undefined method Aura\\\\Router\\\\Map\\:\\:extras\\(\\)\\.$#"
-			count: 7
-			path: app/Http/Routes/WebRoutes.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\Routes\\\\WebRoutes\\:\\:load\\(\\) has parameter \\$router with no value type specified in iterable type Aura\\\\Router\\\\Map\\.$#"
 			count: 1
 			path: app/Http/Routes/WebRoutes.php
@@ -1657,16 +1662,6 @@ parameters:
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 2
-			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Cannot access offset mixed on non\\-empty\\-array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
 
@@ -1701,13 +1696,8 @@ parameters:
 			path: app/Module/CloudsTheme.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/CloudsTheme.php
 
 		-
@@ -1747,16 +1737,6 @@ parameters:
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 2
-			path: app/Module/FabTheme.php
-
-		-
-			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
-			message: "#^Cannot access offset mixed on non\\-empty\\-array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
 
@@ -1791,13 +1771,8 @@ parameters:
 			path: app/Module/FabTheme.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/FabTheme.php
 
 		-
@@ -2302,16 +2277,6 @@ parameters:
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 2
-			path: app/Module/MinimalTheme.php
-
-		-
-			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
-			message: "#^Cannot access offset mixed on non\\-empty\\-array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
 
@@ -2346,13 +2311,8 @@ parameters:
 			path: app/Module/MinimalTheme.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/MinimalTheme.php
 
 		-
@@ -2767,16 +2727,6 @@ parameters:
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 2
-			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Cannot access offset mixed on non\\-empty\\-array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
 
@@ -2811,27 +2761,12 @@ parameters:
 			path: app/Module/WebtreesTheme.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/WebtreesTheme.php
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 2
-			path: app/Module/XeneaTheme.php
-
-		-
-			message: "#^Cannot access offset int\\|false\\|null on array\\<int, string\\>\\|false\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
-			message: "#^Cannot access offset mixed on non\\-empty\\-array\\<int, string\\>\\|false\\.$#"
 			count: 1
 			path: app/Module/XeneaTheme.php
 
@@ -2866,13 +2801,8 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of function array_search expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/XeneaTheme.php
 
 		-
