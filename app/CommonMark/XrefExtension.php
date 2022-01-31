@@ -47,6 +47,6 @@ class XrefExtension implements ExtensionInterface
     {
         $environment
             ->addInlineParser(new XrefParser($this->tree))
-            ->addRenderer(XrefNode::class, new XrefRenderer);
+            ->addRenderer(XrefNode::class, new XrefRenderer());
     }
 }
