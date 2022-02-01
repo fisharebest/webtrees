@@ -127,7 +127,12 @@ use Fisharebest\Webtrees\View;
       sidebar.querySelectorAll('.gchart').forEach((element) => {
         var eventId = parseInt(element.dataset.wtFeatureId);
 
-        element.addEventListener('click', () => {
+        element.addEventListener('click', (e) => {
+          // If child link is clicked, go straight to it
+          if(e.target.href !== undefined) {
+            window.location = e.target.href;
+            return false;
+          }
           // first close any existing
           map.closePopup();
           //find the marker corresponding to the clicked event
@@ -142,13 +147,6 @@ use Fisharebest\Webtrees\View;
           });
 
           return false;
-        });
-
-        // stop click on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
         });
       });
     }

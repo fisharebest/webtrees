@@ -306,7 +306,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 $stats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
             $sidebar .= view('modules/place-hierarchy/sidebar', [
-                'showlink'      => $show_link,
                 'id'            => $id,
                 'place'         => $place,
                 'sidebar_class' => $sidebar_class,

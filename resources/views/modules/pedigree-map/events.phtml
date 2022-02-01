@@ -20,11 +20,9 @@ use Fisharebest\Webtrees\Fact;
 <?php endif ?>
 
 <div>
-    <?= $fact->label() ?>: <?= $fact->date()->display() ?>
+    <?= $fact->label() ?>: <?= $fact->date()->display($tree) ?>
 </div>
 
 <div>
-    <a href="<?= e($fact->place()->url()) ?>">
-        <?= $fact->place()->fullName() ?>
-    </a>
+    <?= $fact->place()->fullName(true) ?>
 </div>

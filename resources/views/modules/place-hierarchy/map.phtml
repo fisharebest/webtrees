@@ -133,13 +133,6 @@ use Fisharebest\Webtrees\View;
 
           return false;
         });
-
-        // stop clicking on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
-        });
       });
     }
 

@@ -302,6 +302,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                         'tooltip'   => $fact->place()->gedcomName(),
                         'summary'   => view('modules/pedigree-map/events', [
                             'fact'         => $fact,
+                            'tree'         => $tree,
                             'relationship' => ucfirst($this->getSosaName($sosa)),
                             'sosa'         => $sosa,
                         ]),
