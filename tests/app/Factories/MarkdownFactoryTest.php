@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Test harness for the class GedcomEditService
+ * Test harness for the class MarkdownFactory
  *
  * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
  */

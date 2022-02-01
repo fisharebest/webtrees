@@ -43,7 +43,8 @@ class CalendarDateFactory implements CalendarDateFactoryInterface
      *
      * @return AbstractCalendarDate|null
      */
-    public function make(string $date): ?AbstractCalendarDate {
+    public function make(string $date): ?AbstractCalendarDate
+    {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
             $cal  = $match[1];
@@ -67,7 +68,7 @@ class CalendarDateFactory implements CalendarDateFactoryInterface
             $m = '';
             $y = '';
             // Look for a 3/4 digit year anywhere in the date
-            if (preg_match('/\b(\d{3,4})\b/', $date, $match)) {
+            if (preg_match('/(\d{3,4})/', $date, $match)) {
                 $y = $match[1];
             }
             // Look for a month anywhere in the date
