@@ -76,7 +76,7 @@ class CensusTableContinueParser extends AbstractBlockContinueParser
 
         // Blank line before the suffix is an error.
         if ($line === '') {
-            return /** @scrutinizer ignore-call (always returns null) */ BlockContinue::none();
+            return BlockContinue::none();
         }
 
         $cells = explode('|', $line);
