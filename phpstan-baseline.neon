@@ -186,11 +186,6 @@ parameters:
 			path: app/Factories/LocationFactory.php
 
 		-
-			message: "#^Class Fisharebest\\\\Webtrees\\\\CommonMark\\\\CensusTableExtension does not have a constructor and must be instantiated without any parameters\\.$#"
-			count: 1
-			path: app/Factories/MarkdownFactory.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/MediaFactory.php
