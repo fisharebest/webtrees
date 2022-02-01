@@ -41,9 +41,9 @@ class CalendarDateFactory implements CalendarDateFactoryInterface
      *
      * @param string $date
      *
-     * @return AbstractCalendarDate|null
+     * @return AbstractCalendarDate
      */
-    public function make(string $date): ?AbstractCalendarDate
+    public function make(string $date): AbstractCalendarDate
     {
         // Valid calendar escape specified? - use it
         if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {

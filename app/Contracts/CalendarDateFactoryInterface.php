@@ -31,9 +31,9 @@ interface CalendarDateFactoryInterface
      *
      * @param string $date
      *
-     * @return AbstractCalendarDate|null
+     * @return AbstractCalendarDate
      */
-    public function make(string $date): ?AbstractCalendarDate;
+    public function make(string $date): AbstractCalendarDate;
 
     /**
      * A list of supported calendars and their names.
