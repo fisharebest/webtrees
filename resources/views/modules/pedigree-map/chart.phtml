@@ -37,38 +37,23 @@ use Fisharebest\Webtrees\View;
       showCoverageOnHover: false,
     });
 
-    let resetControl = L.Control.extend({
-      options: {
-        position: 'topleft',
-      },
-      onAdd: function (map) {
-        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        container.onclick = function () {
-          map.flyToBounds(markers.getBounds(), { padding: [50, 30], maxZoom: 15 });
-          sidebar.firstElementChild.scrollIntoView(scrollOptions);
+    /**
+     * Passed to resetControl to
+     * perform necessary reset actions on map
+     */
+     let resetActions = function () {
+      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
+      sidebar.firstElementChild.scrollIntoView(scrollOptions);
 
-          return false;
-        };
-        let reset = config.i18n.reset;
-        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
-        anchor.setAttribute('aria-label', reset);
-        anchor.href = '#';
-        anchor.title = reset;
-        anchor.role = 'button';
-        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
-        image.alt = reset;
-
-        return container;
-      },
-    });
+      return false;
+    }
 
     /**
      *
      * @private
      */
     let _drawMap = function () {
-      map = webtrees.buildLeafletJsMap('wt-map', config)
-        .addControl(new resetControl());
+      map = webtrees.buildLeafletJsMap('wt-map', config, resetActions);
     };
 
     /**
