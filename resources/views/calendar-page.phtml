@@ -7,6 +7,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\CalendarAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarEvents;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -226,7 +227,7 @@ use Fisharebest\Webtrees\Tree;
         <td class="wt-page-options-value text-center">
             <?php
                 $n = 0;
-            foreach (Date::calendarNames() as $newcal => $cal_name) {
+            foreach (Registry::calendarDateFactory()->supportedCalendars() as $newcal => $cal_name) {
                 $tmp = $cal_date->convertToCalendar($newcal);
                 if ($tmp->inValidRange()) {
                     if ($n++) {

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use ErrorException;
 use Fisharebest\Webtrees\Factories\CacheFactory;
+use Fisharebest\Webtrees\Factories\CalendarDateFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\FilesystemFactory;
@@ -178,6 +179,7 @@ class Webtrees
 
         // Factory objects
         Registry::cache(new CacheFactory());
+        Registry::calendarDateFactory(new CalendarDateFactory());
         Registry::familyFactory(new FamilyFactory());
         Registry::filesystem(new FilesystemFactory());
         Registry::elementFactory(new ElementFactory());

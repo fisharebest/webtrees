@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
+use Fisharebest\Webtrees\Contracts\CalendarDateFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
@@ -44,6 +45,8 @@ use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
 class Registry
 {
     private static CacheFactoryInterface $cache_factory;
+
+    private static CalendarDateFactoryInterface $calendar_date_factory;
 
     private static ElementFactoryInterface $element_factory;
 
@@ -93,6 +96,22 @@ class Registry
         }
 
         return self::$cache_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param CalendarDateFactoryInterface|null $factory
+     *
+     * @return CalendarDateFactoryInterface
+     */
+    public static function calendarDateFactory(CalendarDateFactoryInterface $factory = null): CalendarDateFactoryInterface
+    {
+        if ($factory instanceof CalendarDateFactoryInterface) {
+            self::$calendar_date_factory = $factory;
+        }
+
+        return self::$calendar_date_factory;
     }
 
     /**
