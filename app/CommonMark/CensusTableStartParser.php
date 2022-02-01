@@ -43,6 +43,6 @@ class CensusTableStartParser implements BlockStartParserInterface
                 ->at($cursor);
         }
 
-        return BlockStart::none();
+        return /** @scrutinizer ignore-call (always returns null) */ BlockStart::none();
     }
 }
