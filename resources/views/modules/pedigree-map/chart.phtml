@@ -41,11 +41,9 @@ use Fisharebest\Webtrees\View;
      * Passed to resetControl to
      * perform necessary reset actions on map
      */
-     let resetActions = function () {
+     let resetCallback = function () {
       map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
-
-      return false;
     }
 
     /**
@@ -53,7 +51,7 @@ use Fisharebest\Webtrees\View;
      * @private
      */
     let _drawMap = function () {
-      map = webtrees.buildLeafletJsMap('wt-map', config, resetActions);
+      map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback);
     };
 
     /**

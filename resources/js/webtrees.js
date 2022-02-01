@@ -622,10 +622,10 @@
    * Create a LeafletJS map from a list of providers/layers.
    * @param {string} id
    * @param {object} config
-   * @param {requestCallback} resetActions
+   * @param {function} resetCallback
    * @returns Map
    */
-  webtrees.buildLeafletJsMap = function (id, config, resetActions) {
+  webtrees.buildLeafletJsMap = function (id, config, resetCallback) {
     const zoomControl = new L.control.zoom({
       zoomInTitle: config.i18n.zoomIn,
       zoomoutTitle: config.i18n.zoomOut,
@@ -637,10 +637,7 @@
       },
       onAdd: function (map) {
         let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-        container.onclick = function () {
-
-          return resetActions();
-        };
+        container.onclick = resetCallback;
         let reset = config.i18n.reset;
         let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
         anchor.setAttribute('aria-label', reset);
