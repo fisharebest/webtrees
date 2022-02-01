@@ -388,7 +388,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
         // No matching name? Typically children with a different surname. The branch stops here.
         if ($person_name === '') {
-            return '<li title="' . strip_tags($individual->fullName()) . '"><small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small>…</li>';
+            return '<li title="' . strip_tags($individual->fullName()) . '" class="wt-branch-split"><small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small>…</li>';
         }
 
         // Is this individual one of our ancestors?
