@@ -286,11 +286,13 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                     'properties' => [
                         'polyline'  => $polyline,
                         'iconcolor' => $color,
-                        'tooltip'   => $fact->place()->gedcomName(),
+                        'tooltip'   => ucfirst($this->getSosaName($sosa)) . "\n" . strip_tags($fact->record()->fullName()),
                         'summary'   => view('modules/pedigree-map/events', [
                             'fact'         => $fact,
                             'relationship' => ucfirst($this->getSosaName($sosa)),
                             'sosa'         => $sosa,
+                            'color'        => $color,
+                            'tree'         => $tree,
                         ]),
                     ],
                 ];

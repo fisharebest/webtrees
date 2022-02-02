@@ -6,25 +6,34 @@ use Fisharebest\Webtrees\Fact;
  * @var Fact   $fact
  * @var string $relationship
  * @var int    $sosa
+ * @var Tree   $tree
  */
 
 ?>
-<div class="label">
-    <?= $relationship ?>
-</div>
+<div class="row ps-1">
+  <div class="col-sm-9 pe-0">
+    <div class="label">
+      <span class="dot" style="background-color: <?= $color ?>"></span>
+        <?= $relationship ?>
+    </div>
 
-<?php if ($sosa !== 1) : ?>
-    <a href="<?= e($fact->record()->url()) ?>">
-        <?= $fact->record()->fullName() ?>
-    </a>
-<?php endif ?>
+    <?php if ($sosa !== 1) : ?>
+        <a href="<?= e($fact->record()->url()) ?>">
+            <?= $fact->record()->fullName() ?>
+        </a>
+    <?php endif ?>
 
-<div>
-    <?= $fact->label() ?>: <?= $fact->date()->display() ?>
-</div>
+    <div>
+        <?= $fact->label() ?>: <?= $fact->date()->display($tree) ?>
+    </div>
 
-<div>
-    <a href="<?= e($fact->place()->url()) ?>">
-        <?= $fact->place()->fullName() ?>
-    </a>
+    <div>
+        <a href="<?= e($fact->place()->url()) ?>">
+            <?= $fact->place()->fullName() ?>
+        </a>
+    </div>
+  </div>
+  <div class="col-sm-3 my-auto">
+      <?= $fact->record()->displayImage(40, 50, 'crop', []) ?>
+  </div>
 </div>
