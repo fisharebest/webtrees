@@ -269,7 +269,11 @@ class FunctionsPrint
                 $html .= ' – <span class="date">' . $match[1] . '</span>';
             }
             if ($record instanceof Individual) {
-                if (in_array($fact, Gedcom::BIRTH_EVENTS, true) && $record->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if (
+                    in_array($fact, Gedcom::BIRTH_EVENTS, true) &&
+                    $record === $event->record() &&
+                    $record->tree()->getPreference('SHOW_PARENTS_AGE') === '1'
+                ) {
                     // age of parents at child birth
                     $html .= self::formatParentsAges($record, $date);
                 }
