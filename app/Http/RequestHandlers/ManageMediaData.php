@@ -277,31 +277,37 @@ class ManageMediaData implements RequestHandlerInterface
     private function mediaObjectInfo(Media $media): string
     {
         $element = Registry::elementFactory()->make('NOTE:CONC');
-        $html    = '<b><a href="' . e($media->url()) . '">' . $media->fullName() . '</a></b>' . $element->value($media->getNote(), $media->tree());
+        $html    = '<a href="' . e($media->url()) . '" title="' . e($media->tree()->title()) . '">' . $media->fullName() . '</a>';
+
+        if ($this->tree_service->all()->count() > 1) {
+            $html .= ' — ' . e($media->tree()->title());
+        }
+
+        $html .= $element->value($media->getNote(), $media->tree());
 
         $linked = [];
         foreach ($media->linkedIndividuals('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+            $linked[] = view('icons/individual') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedFamilies('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+            $linked[] = view('icons/family') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedSources('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+            $linked[] = view('icons/source') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedNotes('OBJE') as $link) {
-            // Invalid GEDCOM - you cannot link a NOTE to an OBJE
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+            $linked[] = view('icons/note') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedRepositories('OBJE') as $link) {
             // Invalid GEDCOM - you cannot link a REPO to an OBJE
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+            $linked[] = view('icons/media') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
         foreach ($media->linkedLocations('OBJE') as $link) {
-            $linked[] = '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
+            $linked[] = view('icons/location') . '<a href="' . e($link->url()) . '">' . $link->fullName() . '</a>';
         }
+
         if ($linked !== []) {
-            $html .= '<ul>';
+            $html .= '<ul class="list-unstyled">';
             foreach ($linked as $link) {
                 $html .= '<li>' . $link . '</li>';
             }
