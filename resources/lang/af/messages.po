@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-11-29 17:24+0000\n"
+"PO-Revision-Date: 2022-02-07 16:13+0000\n"
 "Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
 "Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/af/>\n"
@@ -43,7 +43,7 @@ msgstr " in "
 #: app/Http/RequestHandlers/CheckTree.php:301
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s het ’n %3$s verbintenis met %4$s."
+msgstr "%1$s %2$s het ’n %3$s skakel na %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Functions/Functions.php:2374
@@ -391,12 +391,12 @@ msgstr[1] "%s jaar"
 #: resources/views/modules/yahrzeit/list.phtml:45
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s jarige herdenking"
+msgstr "%s jaar herdenking"
 
 #: app/Functions/Functions.php:497
 #, php-format
 msgid "%s × cousin"
-msgstr "%s × neef/niggie"
+msgstr "%s × neef of niggie"
 
 #: app/Functions/Functions.php:461
 #, php-format
@@ -501,7 +501,7 @@ msgstr "(%s oud)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(ouderdom %s)"
+msgstr "(%s oud)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -510,7 +510,7 @@ msgstr "(ouderdom %s)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(ouderdom %s)"
+msgstr "(%s oud)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -520,7 +520,7 @@ msgstr "(uit %s totale inskrywings gefilter)"
 
 #: app/Age.php:213 app/Functions/FunctionsPrint.php:376
 msgid "(on the date of death)"
-msgstr "(op die datum van dood)"
+msgstr "(by afsterwe)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:325
@@ -695,7 +695,9 @@ msgstr "’n Kind mag meer as een stel ouers hê. Die verwantskap tussen kind en
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:70
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "’n Algemene fout is om verskeie skakels na dieselfde rekord te hê, byvoorbeeld om dieselfde kind meer as een keer in ’n gesinsrekord te lys.."
+msgstr ""
+"’n Algemene fout is om verskeie skakels na dieselfde rekord te hê, "
+"byvoorbeeld om dieselfde kind meer as een keer in ’n gesinsrekord te lys."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
@@ -9496,7 +9498,7 @@ msgstr "Mediterranio"
 
 #: resources/views/setup/step-2-server-checks.phtml:70
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr "Gemiddelde stelses (5,000 persone): 32–64 MB, 20–40 seconds"
+msgstr "Gemiddelde stelses (5,000 persone): 32–64 MB, 20–40 sekondes"
 
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Mehr"
