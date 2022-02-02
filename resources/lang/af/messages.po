@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-11-29 17:24+0000\nLast-Translator: Chris Theron <tronsmit@gmail.com>\nLanguage-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\nLanguage: af\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-02-23 13:42+0000\nLast-Translator: Chris Theron <tronsmit@gmail.com>\nLanguage-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\nLanguage: af\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -30,7 +30,7 @@ msgstr " in "
 #: app/Http/RequestHandlers/CheckTree.php:300
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s het ’n %3$s verbintenis met %4$s."
+msgstr "%1$s %2$s het ’n %3$s skakel na %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: app/Services/RelationshipService.php:2106
@@ -371,12 +371,12 @@ msgstr[1] "%s jaar"
 #: resources/views/modules/yahrzeit/list.phtml:45
 #, php-format
 msgid "%s year anniversary"
-msgstr "%s jarige herdenking"
+msgstr "%s jaar herdenking"
 
 #: app/Services/RelationshipService.php:2282
 #, php-format
 msgid "%s × cousin"
-msgstr "%s × neef/niggie"
+msgstr "%s × neef of niggie"
 
 #: app/Services/RelationshipService.php:2246
 #, php-format
@@ -481,7 +481,7 @@ msgstr "(%s oud)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(ouderdom %s)"
+msgstr "(%s oud)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:302
@@ -490,7 +490,7 @@ msgstr "(ouderdom %s)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(ouderdom %s)"
+msgstr "(%s oud)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
@@ -500,7 +500,7 @@ msgstr "(uit %s totale inskrywings gefilter)"
 
 #: app/Functions/FunctionsPrint.php:323
 msgid "(on the date of death)"
-msgstr "(op die datum van dood)"
+msgstr "(by afsterwe)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:336
@@ -678,7 +678,7 @@ msgstr "’n Kind mag meer as een stel ouers hê. Die verwantskap tussen kind en
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:69
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "’n Algemene fout is om verskeie skakels na dieselfde rekord te hê, byvoorbeeld om dieselfde kind meer as een keer in ’n gesinsrekord te lys.."
+msgstr "’n Algemene fout is om verskeie skakels na dieselfde rekord te hê, byvoorbeeld om dieselfde kind meer as een keer in ’n gesinsrekord te lys."
 
 #. I18N: Description of the “Fan Chart” module
 #: app/Module/FanChartModule.php:130
@@ -9439,7 +9439,7 @@ msgstr "Mediterranio"
 
 #: resources/views/setup/step-2-server-checks.phtml:70
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr "Gemiddelde stelses (5,000 persone): 32–64 MB, 20–40 seconds"
+msgstr "Gemiddelde stelses (5,000 persone): 32–64 MB, 20–40 sekondes"
 
 #: app/Date/JalaliDate.php:265
 msgctxt "Abbreviation for Persian month: Mehr"
