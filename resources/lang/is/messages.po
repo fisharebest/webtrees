@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-01-30 18:39+0000\n"
+"PO-Revision-Date: 2022-02-07 16:13+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -10240,7 +10240,7 @@ msgstr "Ný gögn"
 #: app/Http/RequestHandlers/RegisterAction.php:174
 #, php-format
 msgid "New registration at %s"
-msgstr "Nýskráning við %s"
+msgstr "Nýskráning hjá %s"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/UserEditAction.php:113
@@ -12791,7 +12791,7 @@ msgstr "Nafn sendanda"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:64
 #: resources/views/admin/control-panel.phtml:195
 msgid "Sending email"
-msgstr "Sendir tölvupóst"
+msgstr "Senda tölvupóst"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:165
@@ -16435,7 +16435,11 @@ msgstr "Nota GeoNames gagnagrunn fyrir sjálfkrafa útfyllingu á stöðum"
 
 #: resources/views/register-page.phtml:91
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Notið þennan reit til að láta kerfisstjóra vefsíðunnar vita hvers vegna þú ert að óska eftir reikningi og hvernig þú ert tengdur ættfræðinni sem birt er á þessari vefsíðu. Þú getur einnig notað þetta til að slá inn aðrar athugasemdir sem þú kannt að hafa handa kerfisstjóra vefsíðunnar."
+msgstr ""
+"Notið þennan reit til að láta kerfisstjóra vefsíðunnar vita hvers vegna þú "
+"ert að óska eftir reikningi og hvernig þú ert tengdur ættfræðinni sem birt "
+"er á þessari vefsíðu. Þú getur einnig notað reitinn til að slá inn aðrar "
+"athugasemdir sem þú vilt koma á framfæri við kerfisstjóra vefsíðunnar."
 
 #: app/Functions/FunctionsEdit.php:565
 msgid "Use this image for charts and on the individual’s page."
