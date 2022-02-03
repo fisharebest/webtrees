@@ -87,7 +87,7 @@ use Psr\Http\Message\ServerRequestInterface;
                                     <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
                                     <input type="search" class="form-control wt-header-search-field" id="quick-search"
                                            name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
-                                    <button type="submit" class="btn btn-primary wt-header-search-button">
+                                    <button type="submit" class="btn btn-primary wt-header-search-button" aria-label="<?= I18N::translate('Search') ?>">
                                         <?= view('icons/search') ?>
                                     </button>
                                 </div>
