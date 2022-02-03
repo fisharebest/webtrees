@@ -20,8 +20,6 @@ use Fisharebest\Webtrees\View;
 
   (function () {
     const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
-    const minZoom = 2;
-
     const sidebar = document.querySelector('.wt-pedigree-map-sidebar');
 
     const scrollOptions = {

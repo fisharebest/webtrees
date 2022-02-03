@@ -18,6 +18,69 @@
  *
  * wt-chart, wt-chart-pedigree-map
  */
+:root {
+    --wt-pedigree-map-gen-0: red;
+    --wt-pedigree-map-gen-1: orange;
+    --wt-pedigree-map-gen-2: gold;
+    --wt-pedigree-map-gen-3: lightgreen;
+    --wt-pedigree-map-gen-4: green;
+    --wt-pedigree-map-gen-5: limegreen;
+    --wt-pedigree-map-gen-6: cyan;
+    --wt-pedigree-map-gen-7: blue;
+    --wt-pedigree-map-gen-8: cornflowerblue;
+    --wt-pedigree-map-gen-9: pink;
+    --wt-pedigree-map-gen-10: magenta;
+    --wt-pedigree-map-gen-11: maroon;
+}
+
+.wt-pedigree-map-gen-0 {
+    color: var(--wt-pedigree-map-gen-0);
+}
+
+.wt-pedigree-map-gen-1 {
+    color: var(--wt-pedigree-map-gen-1);
+}
+
+.wt-pedigree-map-gen-2 {
+    color: var(--wt-pedigree-map-gen-2);
+}
+
+.wt-pedigree-map-gen-3 {
+    color: var(--wt-pedigree-map-gen-3);
+}
+
+.wt-pedigree-map-gen-4 {
+    color: var(--wt-pedigree-map-gen-4);
+}
+
+.wt-pedigree-map-gen-5 {
+    color: var(--wt-pedigree-map-gen-5);
+}
+
+.wt-pedigree-map-gen-6 {
+    color: var(--wt-pedigree-map-gen-6);
+}
+
+.wt-pedigree-map-gen-7 {
+    color: var(--wt-pedigree-map-gen-7);
+}
+
+.wt-pedigree-map-gen-8 {
+    color: var(--wt-pedigree-map-gen-8);
+}
+
+.wt-pedigree-map-gen-9 {
+    color: var(--wt-pedigree-map-gen-9);
+}
+
+.wt-pedigree-map-gen-10 {
+    color: var(--wt-pedigree-map-gen-10);
+}
+
+.wt-pedigree-map-gen-11 {
+    color: var(--wt-pedigree-map-gen-11);
+}
+
 .wt-pedigree-map-wrapper {
     height: 70vh;
 }

@@ -67,18 +67,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     public const MAXIMUM_GENERATIONS = 10;
 
     // CSS colors for each generation
-    private const COLORS = [
-        'Red',
-        'Green',
-        'Blue',
-        'Gold',
-        'Cyan',
-        'Orange',
-        'DarkBlue',
-        'LightGreen',
-        'Magenta',
-        'Brown',
-    ];
+    private const COUNT_CSS_COLORS = 12;
 
     private ChartService $chart_service;
 
@@ -245,8 +234,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $color_count = count(self::COLORS);
-
         $facts = $this->getPedigreeMapFacts($request, $this->chart_service);
 
         $geojson = [
@@ -273,7 +260,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 $polyline           = null;
                 $sosa_points[$sosa] = [$latitude, $longitude];
                 $sosa_child         = intdiv($sosa, 2);
-                $color              = self::COLORS[$sosa_child % $color_count];
+                $color              = 'var(--wt-pedigree-map-gen-' . $sosa_child % self::COUNT_CSS_COLORS . ')';
 
                 if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
