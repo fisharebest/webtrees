@@ -29,6 +29,8 @@
     --sex-m-fg: #aaaaaa;
     --sex-u-bg: #ffffff;
     --sex-u-fg: #aaaaaa;
+    --sex-x-bg: #fceaa1;
+    --sex-x-fg: #ffab57;
 }
 
 /* Override Bootstrap formatting */
@@ -524,17 +526,17 @@ table {
  * wt-route-individual
  * +---wt-header-wrapper
  */
-
-.wt-individual-silhouette {
-    content: url(images/individual-silhouette-unknown.png);
-}
-
 .wt-individual-silhouette-f {
     content: url(images/individual-silhouette-female.png);
 }
 
 .wt-individual-silhouette-m {
     content: url(images/individual-silhouette-male.png);
+}
+
+.wt-individual-silhouette-u,
+.wt-individual-silhouette-x {
+    content: url(images/individual-silhouette-unknown.png);
 }
 
 /*
@@ -555,12 +557,6 @@ table {
  * +--- wt-chart-box-facts
  *     +--- wt-chart-box-fact
  */
-.wt-chart-box,
-.wt-chart-box-menu {
-    background: var(--sex-u-bg);
-    border: dashed var(--sex-u-fg) thin;
-}
-
 .wt-chart-box {
     height: 5rem;
     padding: 2px;
@@ -577,6 +573,18 @@ table {
 .wt-chart-box-m .wt-chart-box-dropdown {
     background: var(--sex-m-bg);
     border: solid var(--sex-m-fg) thin;
+}
+
+.wt-chart-box-u,
+.wt-chart-box-u .wt-chart-box-dropdown {
+    background: var(--sex-u-bg);
+    border: solid var(--sex-u-fg) thin;
+}
+
+.wt-chart-box-x,
+.wt-chart-box-x .wt-chart-box-dropdown {
+    background: var(--sex-x-bg);
+    border: solid var(--sex-x-fg) thin;
 }
 
 /* ====== Round Corners ======== */
@@ -700,17 +708,24 @@ div.fact_SHARED_NOTE {
 }
 
 .wt-facts-table td {
-    background: #fff;
     border: solid #999 1px;
     border-radius: 3px;
 }
 
-.wt-facts-table .wt-gender-M td {
+.wt-facts-table .wt-sex-f td {
+    background-color: var(--sex-f-bg);
+}
+
+.wt-facts-table .wt-sex-m td {
     background-color: var(--sex-m-bg);
 }
 
-.wt-facts-table .wt-gender-F td {
-    background-color: var(--sex-f-bg);
+.wt-facts-table .wt-sex-u td {
+    background-color: var(--sex-u-bg);
+}
+
+.wt-facts-table .wt-sex-x td {
+    background-color: var(--sex-x-bg);
 }
 
 .details_label {
@@ -1215,15 +1230,16 @@ div.faq_body {
 }
 
 /* Silhouettes on charts */
-.icon-silhouette-F {
+.icon-silhouette-f {
     content: url(clouds/images/silhouette_female_small.png);
 }
 
-.icon-silhouette-M {
+.icon-silhouette-m {
     content: url(clouds/images/silhouette_male_small.png);
 }
 
-.icon-silhouette-U {
+.icon-silhouette-u,
+.icon-silhouette-x {
     content: url(clouds/images/silhouette_unknown_small.png);
 }
 

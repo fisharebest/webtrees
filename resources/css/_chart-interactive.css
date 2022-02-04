@@ -229,14 +229,10 @@ table#tvTreeBorder td,
 [dir=rtl] #tv_tree div.tv_box img {
     float: right;
 }
-#tv_tree div.tv_box .icon-silhouette-M,
-#tv_tree div.tv_box .icon-silhouette-F,
-#tv_tree div.tv_box .icon-silhouette-U {
+#tv_tree div.tv_box .icon-silhouette {
     float: left;
 }
-[dir=rtl] #tv_tree div.tv_box .icon-silhouette-M,
-[dir=rtl] #tv_tree div.tv_box .icon-silhouette-F,
-[dir=rtl] #tv_tree div.tv_box .icon-silhouette-U {
+[dir=rtl] #tv_tree div.tv_box .icon-silhouette {
     float: right;
 }
 

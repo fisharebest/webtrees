@@ -387,7 +387,7 @@ class Individual extends GedcomRecord
         }
 
         if ($this->tree->getPreference('USE_SILHOUETTE')) {
-            return '<i class="icon-silhouette-' . $this->sex() . '"></i>';
+            return '<i class="icon-silhouette icon-silhouette-' . strtolower($this->sex()) . '"></i>';
         }
 
         return '';
@@ -680,7 +680,7 @@ class Individual extends GedcomRecord
      */
     public function sex(): string
     {
-        if (preg_match('/\n1 SEX ([MF])/', $this->gedcom . $this->pending, $match)) {
+        if (preg_match('/\n1 SEX ([MFX])/', $this->gedcom . $this->pending, $match)) {
             return $match[1];
         }
 

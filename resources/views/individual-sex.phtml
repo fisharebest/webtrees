@@ -5,6 +5,7 @@ use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 
 /**
  * @var Fact $fact
@@ -27,19 +28,7 @@ if ($fact->isPendingDeletion()) {
             <?= view('icons/expand') ?>
             <?= view('icons/collapse') ?>
             <span class="label"><?= I18N::translate('Gender') ?></span>
-            <?php
-            switch ($fact->value()) {
-                case 'M':
-                    echo I18N::translate('Male');
-                    break;
-                case 'F':
-                    echo I18N::translate('Female');
-                    break;
-                default:
-                    echo I18N::translateContext('unknown gender', 'Unknown');
-                    break;
-            }
-            ?>
+            <?= Registry::elementFactory()->make('INDI:SEX')->value($fact->value(), $tree) ?>
         </button>
     </div>
     <div id="name-content-<?= $fact->id() ?>" class="accordion-collapse collapse" data-bs-parent="#individual-names" aria-labelledby="name-header-<?= $fact->id() ?>">
