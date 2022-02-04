@@ -83,20 +83,27 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
         $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
         $dummyf  = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
 
-        // Default names facts.
+        // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newSpouseNames($individual, $sex);
         $name_facts        = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummyi, ''), $names);
+
+        // Individual facts and events.
+        $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
+        $indi_facts  = array_map(static fn(string $fact): Fact => new Fact('1 ' . $fact, $dummyi, ''), $quick_facts);
+
+        // Family facts and events.
+        $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'));
+        $fam_facts  = array_map(static fn(string $fact): Fact => new Fact('1 ' . $fact, $dummyf, ''), $quick_facts);
 
         $facts = [
             'i' => [
                 new Fact('1 SEX ' . $sex, $dummyi, ''),
                 ...$name_facts,
-                new Fact('1 BIRT', $dummyi, ''),
-                new Fact('1 DEAT', $dummyi, ''),
+                ...$indi_facts,
             ],
             'f' => [
-                new Fact('1 MARR', $dummyf, ''),
+                ...$fam_facts,
             ],
         ];
 

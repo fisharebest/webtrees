@@ -74,21 +74,22 @@ class AddChildToFamilyPage implements RequestHandlerInterface
         $family = Auth::checkFamilyAccess($family, true);
 
         // Create a dummy individual, so that we can create new/empty facts.
-        $element = Registry::elementFactory()->make('INDI:NAME');
-        $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $dummy = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
 
-        // Default names facts.
+        // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newChildNames($family->husband(), $family->wife(), $sex);
-        $name_facts        = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
+        $name_facts        = array_map(static fn(string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
+
+        // Individual facts and events.
+        $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
+        $indi_facts  = array_map(static fn(string $fact): Fact => new Fact('1 ' . $fact, $dummy, ''), $quick_facts);
 
         $facts = [
             'i' => [
                 new Fact('1 SEX ' . $sex, $dummy, ''),
                 ...$name_facts,
-                new Fact('1 NAME ' . $element->default($tree), $dummy, ''),
-                new Fact('1 BIRT', $dummy, ''),
-                new Fact('1 DEAT', $dummy, ''),
+                ...$indi_facts,
             ],
         ];
 
