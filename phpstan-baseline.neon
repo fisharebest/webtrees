@@ -686,6 +686,11 @@ parameters:
 			path: app/Http/RequestHandlers/AutoCompletePlace.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\AutoCompletePlace\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/AutoCompletePlace.php
+
+		-
 			message: "#^Parameter \\#1 \\$sender of method Fisharebest\\\\Webtrees\\\\Services\\\\MessageService\\:\\:deliverMessage\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/BroadcastAction.php
@@ -989,6 +994,16 @@ parameters:
 			message: "#^Cannot access offset 2 on mixed\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ImportThumbnailsData.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getSidebars\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleSidebarInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/IndividualPage.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\IndividualPage\\:\\:getTabs\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleTabInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/IndividualPage.php
 
 		-
 			message: "#^Parameter \\#1 \\$base_url of method Fisharebest\\\\Webtrees\\\\Validator\\:\\:isLocalUrl\\(\\) expects string, mixed given\\.$#"
@@ -1396,6 +1411,11 @@ parameters:
 			path: app/Http/RequestHandlers/SynchronizeTrees.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\TomSelectPlace\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<array\\<string, string\\>\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/TomSelectPlace.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/TreePageBlock.php
@@ -1551,6 +1571,11 @@ parameters:
 			path: app/Media.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:mediaFiles\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\MediaFile\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Fact\\>\\.$#"
+			count: 1
+			path: app/Media.php
+
+		-
 			message: "#^Cannot access property \\$access_level on mixed\\.$#"
 			count: 1
 			path: app/Module/AbstractModule.php
@@ -1647,11 +1672,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:isMember\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Parameter \\#6 \\$records of method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomExportService\\:\\:export\\(\\) expects \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null, Illuminate\\\\Support\\\\Collection given\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
 
@@ -1931,12 +1951,12 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:individualsToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixCemeteryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixCemeteryTag.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:individualsToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixDuplicateLinks\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixDuplicateLinks.php
 
@@ -1951,12 +1971,12 @@ parameters:
 			path: app/Module/FixDuplicateLinks.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:individualsToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixMissingDeaths\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixMissingDeaths.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:individualsToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameSlashesAndSpaces\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixNameSlashesAndSpaces.php
 
@@ -1971,12 +1991,12 @@ parameters:
 			path: app/Module/FixNameSlashesAndSpaces.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:familiesToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixNameTags\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
-			path: app/Module/FixPlaceNames.php
+			path: app/Module/FixNameTags.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:individualsToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPlaceNames\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixPlaceNames.php
 
@@ -1986,42 +2006,12 @@ parameters:
 			path: app/Module/FixPlaceNames.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:familiesToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixPrimaryTag\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
-			path: app/Module/FixSearchAndReplace.php
+			path: app/Module/FixPrimaryTag.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:individualsToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FixSearchAndReplace.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:locationsToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FixSearchAndReplace.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:mediaToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FixSearchAndReplace.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:notesToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FixSearchAndReplace.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:repositoriesToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FixSearchAndReplace.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:sourcesToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
-			count: 1
-			path: app/Module/FixSearchAndReplace.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:submittersToFix\\(\\) should return \\(Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\)\\|null but returns Illuminate\\\\Support\\\\Collection\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\FixSearchAndReplace\\:\\:mergePendingRecords\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<object\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
 			count: 1
 			path: app/Module/FixSearchAndReplace.php
 
@@ -2102,6 +2092,11 @@ parameters:
 
 		-
 			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Individual and Fisharebest\\\\Webtrees\\\\Family will always evaluate to false\\.$#"
+			count: 1
+			path: app/Module/IndividualFactsTabModule.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualFactsTabModule\\:\\:historicFacts\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Module/IndividualFactsTabModule.php
 
@@ -2431,9 +2426,19 @@ parameters:
 			path: app/Module/PlaceHierarchyListModule.php
 
 		-
+			message: "#^Parameter \\#2 \\$size of function array_chunk expects int\\<1, max\\>, int given\\.$#"
+			count: 2
+			path: app/Module/PlaceHierarchyListModule.php
+
+		-
 			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:accessLevel\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Module/PlacesModule.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\PrivacyPolicy\\:\\:analyticsModules\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleAnalyticsInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Module/PrivacyPolicy.php
 
 		-
 			message: "#^Parameter \\#1 \\$tree of method Fisharebest\\\\Webtrees\\\\Module\\\\PrivacyPolicy\\:\\:analyticsModules\\(\\) expects Fisharebest\\\\Webtrees\\\\Tree, mixed given\\.$#"
@@ -3374,6 +3379,21 @@ parameters:
 			path: app/Services/HomePageService.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:availableTreeBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Services/HomePageService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:availableUserBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Services/HomePageService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:filterActiveBlocks\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string\\>\\.$#"
+			count: 1
+			path: app/Services/HomePageService.php
+
+		-
 			message: "#^Parameter \\#2 \\$active_blocks of method Fisharebest\\\\Webtrees\\\\Services\\\\HomePageService\\:\\:filterActiveBlocks\\(\\) expects Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\>, Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleBlockInterface\\> given\\.$#"
 			count: 2
 			path: app/Services/HomePageService.php
@@ -3400,6 +3420,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:findByName\\(\\) should return Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\|null but returns mixed\\.$#"
+			count: 1
+			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
 
