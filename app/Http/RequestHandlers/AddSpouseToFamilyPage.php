@@ -88,11 +88,11 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
 
         // Individual facts and events.
         $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
-        $indi_facts  = array_map(static fn(string $fact): Fact => new Fact('1 ' . $fact, $dummyi, ''), $quick_facts);
+        $indi_facts  = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummyi, ''), $quick_facts);
 
         // Family facts and events.
         $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'));
-        $fam_facts   = array_map(static fn(string $fact): Fact => new Fact('1 ' . $fact, $dummyf, ''), $quick_facts);
+        $fam_facts   = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummyf, ''), $quick_facts);
 
         $facts = [
             'i' => [

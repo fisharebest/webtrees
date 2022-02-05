@@ -79,11 +79,11 @@ class AddChildToFamilyPage implements RequestHandlerInterface
         // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newChildNames($family->husband(), $family->wife(), $sex);
-        $name_facts        = array_map(static fn(string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
+        $name_facts        = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
 
         // Individual facts and events.
         $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
-        $indi_facts  = array_map(static fn(string $fact): Fact => new Fact('1 ' . $fact, $dummy, ''), $quick_facts);
+        $indi_facts  = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummy, ''), $quick_facts);
 
         $facts = [
             'i' => [

@@ -14,7 +14,7 @@ use Ramsey\Uuid\Uuid;
 
 preg_match_all('/^(\d+) (\w+) ?(.*)/m', $gedcom, $matches);
 [, $levels, $tags, $values] = $matches;
-$levels   = array_map(static fn(string $x): int => (int) $x, $levels);
+$levels   = array_map(static fn (string $x): int => (int) $x, $levels);
 $keys     = array_keys($levels);
 $elements = [];
 $ids      = [];

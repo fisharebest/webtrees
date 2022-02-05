@@ -67,7 +67,7 @@ class AddUnlinkedPage implements RequestHandlerInterface
 
         // Individual facts and events.
         $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
-        $indi_facts  = array_map(static fn(string $fact): Fact => new Fact('1 ' . $fact, $dummy, ''), $quick_facts);
+        $indi_facts  = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummy, ''), $quick_facts);
 
         $facts   = [
             'i' => [
