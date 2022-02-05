@@ -48,6 +48,7 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
         'F' => 'M',
         'M' => 'F',
         'U' => 'U',
+        'X' => 'U',
     ];
 
     private GedcomEditService $gedcom_edit_service;
@@ -78,21 +79,14 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        // Create a dummy individual, so that we can create new/empty facts.
-        $sex     = self::OPPOSITE_SEX[$individual->sex()];
-        $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $sex = self::OPPOSITE_SEX[$individual->sex()];
 
         // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newSpouseNames($individual, $sex);
-        $name_facts        = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummyi, ''), $names);
 
         $facts = [
-            'i' => [
-                new Fact('1 SEX ' . $sex, $dummyi, ''),
-                ...$name_facts,
-                ...$this->gedcom_edit_service->newIndividualFacts($tree, $sex, $names),
-            ],
+            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, $names),
             'f' => $this->gedcom_edit_service->newFamilyFacts($tree),
         ];
 

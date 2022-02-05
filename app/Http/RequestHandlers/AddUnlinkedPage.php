@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -61,11 +60,11 @@ class AddUnlinkedPage implements RequestHandlerInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        // Create a dummy individual, so that we can create new/empty facts.
-        $element = Registry::elementFactory()->make('INDI:NAME');
+        $sex  = Registry::elementFactory()->make('INDI:SEX')->default($tree);
+        $name = Registry::elementFactory()->make('INDI:NAME')->default($tree);
 
         $facts = [
-            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, 'U', ['1 NAME ' . $element->default($tree)]),
+            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, ['1 NAME ' . $name]),
         ];
 
         $cancel_url = route(ManageTrees::class, ['tree' => $tree->name()]);
