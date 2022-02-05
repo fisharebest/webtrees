@@ -74,9 +74,9 @@ class GedcomEditService
     }
 
     /**
-     * @param Tree   $tree
-     * @param string $sex
-     * @param array  $names
+     * @param Tree          $tree
+     * @param string        $sex
+     * @param array<string> $names
      *
      * @return Collection<Fact>
      */
