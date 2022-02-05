@@ -84,9 +84,9 @@ class GedcomEditService
     {
         $dummy      = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
         $tags       = new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')));
-        $facts      = $tags->map(fn(string $tag): Fact => $this->createNewFact($dummy, $tag));
+        $facts      = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
         $sex_fact   = new Collection([new Fact('1 SEX ' . $sex, $dummy, '')]);
-        $name_facts = Collection::make($names)->map(static fn(string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
+        $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
 
         return $sex_fact->concat($name_facts)->concat(Fact::sortFacts($facts));
     }
