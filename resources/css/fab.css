@@ -667,12 +667,6 @@ div.fact_SHARED_NOTE {
     width: 70%;
 }
 
-/* this keeps the tag color the same when it is a link as when not */
-
-.place {
-    padding-top: 5px;
-}
-
 .filtersH,
 .filtersF {
     margin: 4px;
@@ -729,13 +723,6 @@ div.faq_body {
 
 .faq_top {
     float: right;
-}
-
-/* === Positioning edit, copy, delete links === */
-/* General use */
-.editfacts {
-    clear: left;
-    padding-top: 15px;
 }
 
 #indi_note {

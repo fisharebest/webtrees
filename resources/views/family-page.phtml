@@ -1,10 +1,7 @@
 <?php
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
@@ -44,12 +41,12 @@ use Illuminate\Support\Collection;
             </tr>
         <?php else : ?>
             <?php foreach ($facts as $fact) : ?>
-                <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+                <?= view('fact', ['fact' => $fact, 'record' => $record]) ?>
             <?php endforeach ?>
         <?php endif ?>
 
-        <?php if (Auth::isEditor($record->tree())) : ?>
-            <?php FunctionsPrint::printAddNewFact($record) ?>
+        <?php if ($record->canEdit()) : ?>
+            <?= view('fact-add-new', ['record' => $record]) ?>
         <?php endif ?>
     </table>
 </div>

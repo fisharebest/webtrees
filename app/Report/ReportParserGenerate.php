@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -209,6 +208,88 @@ class ReportParserGenerate extends ReportParserBase
         $this->data_filesystem = $data_filesystem;
 
         parent::__construct($report);
+    }
+
+    /**
+     * get a gedcom subrecord
+     *
+     * searches a gedcom record and returns a subrecord of it. A subrecord is defined starting at a
+     * line with level N and all subsequent lines greater than N until the next N level is reached.
+     * For example, the following is a BIRT subrecord:
+     * <code>1 BIRT
+     * 2 DATE 1 JAN 1900
+     * 2 PLAC Phoenix, Maricopa, Arizona</code>
+     * The following example is the DATE subrecord of the above BIRT subrecord:
+     * <code>2 DATE 1 JAN 1900</code>
+     *
+     * @param int    $level   the N level of the subrecord to get
+     * @param string $tag     a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
+     * @param string $gedrec  the parent gedcom record to search in
+     * @param int    $num     this allows you to specify which matching <var>$tag</var> to get. Oftentimes a
+     *                        gedcom record will have more that 1 of the same type of subrecord. An individual may have
+     *                        multiple events for example. Passing $num=1 would get the first 1. Passing $num=2 would get the
+     *                        second one, etc.
+     *
+     * @return string the subrecord that was found or an empty string "" if not found.
+     */
+    public static function getSubRecord(int $level, string $tag, string $gedrec, int $num = 1): string
+    {
+        if ($gedrec === '') {
+            return '';
+        }
+        // -- adding \n before and after gedrec
+        $gedrec       = "\n" . $gedrec . "\n";
+        $tag          = trim($tag);
+        $searchTarget = "~[\n]" . $tag . "[\s]~";
+        $ct           = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+        if ($ct === 0) {
+            return '';
+        }
+        if ($ct < $num) {
+            return '';
+        }
+        $pos1 = $match[$num - 1][0][1];
+        $pos2 = strpos($gedrec, "\n$level", $pos1 + 1);
+        if (!$pos2) {
+            $pos2 = strpos($gedrec, "\n1", $pos1 + 1);
+        }
+        if (!$pos2) {
+            $pos2 = strpos($gedrec, "\nWT_", $pos1 + 1); // WT_SPOUSE, WT_FAMILY_ID ...
+        }
+        if (!$pos2) {
+            return ltrim(substr($gedrec, $pos1));
+        }
+        $subrec = substr($gedrec, $pos1, $pos2 - $pos1);
+
+        return ltrim($subrec);
+    }
+
+    /**
+     * get CONT lines
+     *
+     * get the N+1 CONT or CONC lines of a gedcom subrecord
+     *
+     * @param int    $nlevel the level of the CONT lines to get
+     * @param string $nrec   the gedcom subrecord to search in
+     *
+     * @return string a string with all CONT lines merged
+     */
+    public static function getCont(int $nlevel, string $nrec): string
+    {
+        $text = '';
+
+        $subrecords = explode("\n", $nrec);
+        foreach ($subrecords as $thisSubrecord) {
+            if (substr($thisSubrecord, 0, 2) !== $nlevel . ' ') {
+                continue;
+            }
+            $subrecordType = substr($thisSubrecord, 2, 4);
+            if ($subrecordType === 'CONT') {
+                $text .= "\n" . substr($thisSubrecord, 7);
+            }
+        }
+
+        return $text;
     }
 
     /**
@@ -666,7 +747,7 @@ class ReportParserGenerate extends ReportParserBase
                         }
                     } else {
                         $level     = 1 + (int) explode(' ', trim($tgedrec))[0];
-                        $newgedrec = Functions::getSubRecord($level, "$level $tag", $tgedrec);
+                        $newgedrec = self::getSubRecord($level, "$level $tag", $tgedrec);
                         $tgedrec   = $newgedrec;
                     }
                 }
@@ -1058,10 +1139,10 @@ class ReportParserGenerate extends ReportParserBase
                     $t = $tags[$i];
                     if (!empty($t)) {
                         if ($i < ($count - 1)) {
-                            $subrec = Functions::getSubRecord($level, "$level $t", $subrec);
+                            $subrec = self::getSubRecord($level, "$level $t", $subrec);
                             if (empty($subrec)) {
                                 $level--;
-                                $subrec = Functions::getSubRecord($level, "@ $t", $this->gedrec);
+                                $subrec = self::getSubRecord($level, "@ $t", $this->gedrec);
                                 if (empty($subrec)) {
                                     return;
                                 }
@@ -1077,7 +1158,7 @@ class ReportParserGenerate extends ReportParserBase
                 while ($i < $count) {
                     $i++;
                     // Privacy check - is this a link, and are we allowed to view the linked object?
-                    $subrecord = Functions::getSubRecord($level, "$level $t", $subrec, $i);
+                    $subrecord = self::getSubRecord($level, "$level $t", $subrec, $i);
                     if (preg_match('/^\d ' . Gedcom::REGEX_TAG . ' @(' . Gedcom::REGEX_XREF . ')@/', $subrecord, $xref_match)) {
                         $linked_object = Registry::gedcomRecordFactory()->make($xref_match[1], $this->tree);
                         if ($linked_object && !$linked_object->canShow()) {
@@ -1345,7 +1426,7 @@ class ReportParserGenerate extends ReportParserBase
                         }
                     }
                     $this->desc = trim($match[2]);
-                    $this->desc .= Functions::getCont(2, $this->gedrec);
+                    $this->desc .= self::getCont(2, $this->gedrec);
                 }
                 $repeat_parser = xml_parser_create();
                 $this->parser  = $repeat_parser;
@@ -2144,7 +2225,7 @@ class ReportParserGenerate extends ReportParserBase
                             $tag  = str_replace('EMAIL', '_EMAIL', $tag);
                             $tags = explode(':', $tag);
                             $t    = end($tags);
-                            $v    = Functions::getSubRecord(1, $tag, $grec);
+                            $v    = self::getSubRecord(1, $tag, $grec);
                         }
 
                         switch ($expr) {
@@ -2704,14 +2785,14 @@ class ReportParserGenerate extends ReportParserBase
         $t = 'XXXX';
         foreach ($tags as $t) {
             $lastsubrec = $subrec;
-            $subrec     = Functions::getSubRecord($level, "$level $t", $subrec);
+            $subrec     = self::getSubRecord($level, "$level $t", $subrec);
             if (empty($subrec) && $origlevel == 0) {
                 $level--;
-                $subrec = Functions::getSubRecord($level, "$level $t", $lastsubrec);
+                $subrec = self::getSubRecord($level, "$level $t", $lastsubrec);
             }
             if (empty($subrec)) {
                 if ($t === 'TITL') {
-                    $subrec = Functions::getSubRecord($level, "$level ABBR", $lastsubrec);
+                    $subrec = self::getSubRecord($level, "$level ABBR", $lastsubrec);
                     if (!empty($subrec)) {
                         $t = 'ABBR';
                     }
@@ -2720,7 +2801,7 @@ class ReportParserGenerate extends ReportParserBase
                     if ($level > 0) {
                         $level--;
                     }
-                    $subrec = Functions::getSubRecord($level, "@ $t", $gedrec);
+                    $subrec = self::getSubRecord($level, "@ $t", $gedrec);
                     if ($subrec === '') {
                         return '';
                     }
@@ -2748,7 +2829,7 @@ class ReportParserGenerate extends ReportParserBase
                 }
             }
             if ($level !== 0 || $t !== 'NOTE') {
-                $value .= Functions::getCont($level + 1, $subrec);
+                $value .= self::getCont($level + 1, $subrec);
             }
 
             return $value;

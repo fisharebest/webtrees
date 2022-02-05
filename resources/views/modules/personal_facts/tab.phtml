@@ -1,8 +1,6 @@
 <?php
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
@@ -52,7 +50,7 @@ use Illuminate\Support\Collection;
             </tr>
 
             <?php foreach ($facts as $fact) : ?>
-                <?php FunctionsPrintFacts::printFact($fact, $individual) ?>
+                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
             <?php endforeach ?>
 
             <?php if ($facts->isEmpty()) : ?>
@@ -64,7 +62,7 @@ use Illuminate\Support\Collection;
             <?php endif ?>
 
             <?php if ($individual->canEdit()) : ?>
-                <?php FunctionsPrint::printAddNewFact($individual) ?>
+                <?= view('fact-add-new', ['record' => $individual]) ?>
             <?php endif ?>
         </tbody>
     </table>

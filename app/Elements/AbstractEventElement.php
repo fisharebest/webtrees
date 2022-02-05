@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
+use function nl2br;
 
 /**
  * Events which can take "Y" to indicate that they occurred, but date/place are unknown.
@@ -66,5 +67,22 @@ class AbstractEventElement extends AbstractElement
             'document.getElementById("' . e($id) . '").value = this.checked ? "Y" : "";' .
             '})' .
             '</script>';
+    }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        if ($value === 'Y') {
+            return I18N::translate('yes');
+        }
+
+        return parent::value($value, $tree);
     }
 }

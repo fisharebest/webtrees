@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateSourceModal;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -56,21 +57,26 @@ class XrefSource extends AbstractXrefElement
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
-        $select = view('components/select-source', [
-            'id'     => $id,
-            'name'   => $name,
-            'source' => Registry::sourceFactory()->make(trim($value, '@'), $tree),
-            'tree'   => $tree,
-            'at'     => '@',
-        ]);
+        // Other applications create sources with text, rather than XREFs
+        if ($value === '' || preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $value)) {
+            $select = view('components/select-source', [
+                'id'     => $id,
+                'name'   => $name,
+                'source' => Registry::sourceFactory()->make(trim($value, '@'), $tree),
+                'tree'   => $tree,
+                'at'     => '@',
+            ]);
 
-        return
-            '<div class="input-group">' .
-            '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-wt-href="' . e(route(CreateSourceModal::class, ['tree' => $tree->name()])) . '" data-wt-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' .
-            view('icons/add') .
-            '</button>' .
-            $select .
-            '</div>';
+            return
+                '<div class="input-group">' .
+                '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-wt-href="' . e(route(CreateSourceModal::class, ['tree' => $tree->name()])) . '" data-wt-select-id="' . $id . '" title="' . I18N::translate('Create a source') . '">' .
+                view('icons/add') .
+                '</button>' .
+                $select .
+                '</div>';
+        }
+
+        return $this->editTextArea($id, $name, $value);
     }
 
     /**

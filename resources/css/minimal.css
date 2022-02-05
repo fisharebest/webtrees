@@ -450,13 +450,6 @@ div.faq_body {
     float: right;
 }
 
-/* === Positioning edit, copy, delete links === */
-/* General use */
-.editfacts {
-    clear: left;
-    padding-top: 15px;
-}
-
 #indi_note {
     margin: 0 0 5px;
 }

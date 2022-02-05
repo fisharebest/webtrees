@@ -21,7 +21,7 @@ $ids      = [];
 $indent   = [];
 $collapse = [];
 
-foreach ($keys as $key) {
+foreach ($keys as $num => $key) {
     $hierarchy[$levels[$key]] = $tags[$key];
     $full_tag                 = implode(':', array_slice($hierarchy, 0, 1 + $levels[$key]));
     $elements[$key]           = Registry::elementFactory()->make($full_tag);
@@ -41,7 +41,7 @@ foreach ($keys as $key) {
 
     $indent[$key] = $elements[$key]->collapseChildren() && $has_subtags;
 
-    $collapse[$key] = $indent[$key] && !$has_subtags_with_values;
+    $collapse[$key] = $num > 0 && $indent[$key] && !$has_subtags_with_values;
 }
 
 ?>

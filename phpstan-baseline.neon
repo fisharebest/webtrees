@@ -81,6 +81,16 @@ parameters:
 			path: app/Elements/PafUid.php
 
 		-
+			message: "#^Cannot call method displayImage\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Elements/XrefMedia.php
+
+		-
+			message: "#^Anonymous function should return int but returns float\\|int\\.$#"
+			count: 1
+			path: app/Fact.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int, array\\|Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
 			count: 1
 			path: app/Fact.php
@@ -334,61 +344,6 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
 			count: 2
 			path: app/Functions/FunctionsImport.php
-
-		-
-			message: "#^Cannot access offset 'OBJE' on array\\<string, string\\>\\|false\\.$#"
-			count: 2
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Cannot call method findByInterface\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Cannot call method spouses\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Parameter \\#1 \\$array_arg of function uasort expects array\\<string\\>, array\\<string, string\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrint.php
-
-		-
-			message: "#^Argument of an invalid type array\\<string\\>\\|string supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Cannot call method getCloseRelationshipName\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Parameter \\#1 \\$value of method Fisharebest\\\\Webtrees\\\\Contracts\\\\ElementInterface\\:\\:labelValue\\(\\) expects string, array\\<string\\>\\|string given\\.$#"
-			count: 5
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
-
-		-
-			message: "#^Parameter \\#3 \\$offset of function strpos expects int, int\\<0, max\\>\\|false given\\.$#"
-			count: 1
-			path: app/Functions/FunctionsPrintFacts.php
 
 		-
 			message: "#^Cannot call method acceptRecord\\(\\) on mixed\\.$#"
@@ -1566,11 +1521,6 @@ parameters:
 			path: app/Media.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:formatListDetails\\(\\) should return string but returns string\\|false\\.$#"
-			count: 1
-			path: app/Media.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:mediaFiles\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\MediaFile\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Fact\\>\\.$#"
 			count: 1
 			path: app/Media.php
@@ -2159,11 +2109,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$key of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string\\|null, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 2
 			path: app/Module/IndividualListModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$str of function strip_tags expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Module/IndividualMetadataModule.php
 
 		-
 			message: "#^Cannot call method fullName\\(\\) on mixed\\.$#"
@@ -3061,12 +3006,12 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$level of static method Fisharebest\\\\Webtrees\\\\Functions\\\\Functions\\:\\:getSubRecord\\(\\) expects int, float\\|int given\\.$#"
+			message: "#^Parameter \\#1 \\$level of static method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:getSubRecord\\(\\) expects int, float\\|int given\\.$#"
 			count: 4
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$nlevel of static method Fisharebest\\\\Webtrees\\\\Functions\\\\Functions\\:\\:getCont\\(\\) expects int, float\\|int given\\.$#"
+			message: "#^Parameter \\#1 \\$nlevel of static method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:getCont\\(\\) expects int, float\\|int given\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
 
@@ -3499,22 +3444,12 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Comparison operation \"\\<\\=\" between 1 and 0 is always false\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
 
 		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
-			message: "#^Result of && is always false\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
 

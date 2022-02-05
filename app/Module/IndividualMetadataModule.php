@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
@@ -99,13 +99,9 @@ class IndividualMetadataModule extends AbstractModule implements ModuleSidebarIn
      */
     public function getSidebarContent(Individual $individual): string
     {
-        ob_start();
-
-        foreach ($individual->facts(static::HANDLED_FACTS) as $fact) {
-            FunctionsPrintFacts::printFact($fact, $individual);
-        }
-
-        $html = ob_get_clean();
+        $html = $individual->facts(static::HANDLED_FACTS)
+            ->map(static fn (Fact $fact): string =>view('fact', ['fact' => $fact, 'record' => $individual]))
+            ->implode('');
 
         return strip_tags($html, '<a><div><span><i>');
     }

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Exception;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -57,6 +56,8 @@ use function str_ends_with;
 use function str_pad;
 use function strtoupper;
 use function trim;
+
+use function view;
 
 use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
@@ -536,9 +537,9 @@ class GedcomRecord
             if ($event->date()->isOK() || $event->place()->gedcomName() !== '') {
                 switch ($style) {
                     case 1:
-                        return '<br><em>' . $event->label() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event, false, false, false) . '</em>';
+                        return '<br><em>' . $event->label() . ' ' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false])  . '</em>';
                     case 2:
-                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event, false, false, false) . '</dd></dl>';
+                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false]) . $joiner . $event->place()->shortName() . '</dd></dl>';
                 }
             }
         }

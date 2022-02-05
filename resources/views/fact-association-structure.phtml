@@ -1,0 +1,107 @@
+<?php
+
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\RelationshipService;
+
+/**
+ * @var Fact $fact
+ */
+
+$parent = $fact->record();
+// To whom is this record an associate?
+if ($parent instanceof Individual) {
+    // On an individual page, we just show links to the person
+    $associates = [$parent];
+} elseif ($parent instanceof Family) {
+    // On a family page, we show links to both spouses
+    $associates = $parent->spouses();
+} else {
+    // On other pages, it does not make sense to show associates
+    return '';
+}
+
+preg_match_all('/\n2 (_?ASSO) @(' . Gedcom::REGEX_XREF . ')@((\n[3-9].*)*)/', $fact->gedcom(), $amatches, PREG_SET_ORDER);
+
+$html = '';
+// For each ASSO record
+foreach ($amatches as $amatch) {
+    $person = Registry::individualFactory()->make($amatch[2], $fact->record()->tree());
+    if ($person && $person->canShowName()) {
+        // Is there a "RELA" tag
+        if (preg_match('/\n([23]) RELA (.+)/', $amatch[3], $rmatch)) {
+            if ($rmatch[1] === '2') {
+                $rela_tag = $fact->record()->tag() . ':' . $amatch[1] . ':RELA';
+            } else {
+                $rela_tag = $fact->tag() . ':' . $amatch[1] . ':RELA';
+            }
+            // Use the supplied relationship as a label
+            $label = Registry::elementFactory()->make($rela_tag)->value($rmatch[2], $parent->tree());
+        } elseif (preg_match('/^1 _?ASSO/', $fact->gedcom())) {
+            // Use a default label
+            $label = Registry::elementFactory()->make($fact->tag())->label();
+        } else {
+            // Use a default label
+            $label = Registry::elementFactory()->make($fact->tag() . ':_ASSO')->label();
+        }
+
+        if ($person->getBirthDate()->isOK() && $fact->date()->isOK()) {
+            $age = new Age($person->getBirthDate(), $fact->date());
+            switch ($person->sex()) {
+                case 'M':
+                    $age_text = ' ' . I18N::translateContext('Male', '(aged %s)', (string) $age);
+                    break;
+                case 'F':
+                    $age_text = ' ' . I18N::translateContext('Female', '(aged %s)', (string) $age);
+                    break;
+                default:
+                    $age_text = ' ' . I18N::translate('(aged %s)', (string) $age);
+                    break;
+            }
+        } else {
+            $age_text = '';
+        }
+
+        $values = ['<a href="' . e($person->url()) . '">' . $person->fullName() . '</a>' . $age_text];
+
+        $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $person->tree(), Auth::user())->first(static function (ModuleInterface $module) {
+            return $module instanceof RelationshipsChartModule;
+        });
+
+        if ($module instanceof RelationshipsChartModule) {
+            foreach ($associates as $associate) {
+                $relationship_name = app(RelationshipService::class)->getCloseRelationshipName($associate, $person);
+                if ($relationship_name === '') {
+                    $relationship_name = I18N::translate('Relationship');
+                }
+
+                if ($parent instanceof Family) {
+                    // For family ASSO records (e.g. MARR), identify the spouse with a sex icon
+                    $relationship_name .= '<small>' . view('icons/sex', ['sex' => $associate->sex()]) . '</small>';
+                }
+
+                $values[] = '<a href="' . $module->chartUrl($associate, ['xref2' => $person->xref()]) . '" rel="nofollow">' . $relationship_name . '</a>';
+            }
+        }
+        $value = implode(' — ', $values);
+        $asso  = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
+    } elseif (!$person && Auth::isEditor($fact->record()->tree())) {
+        $value = '<span class="error">' . $amatch[2] . '</span>';
+        $asso  = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Associate'), $value);
+    } else {
+        $asso = '';
+    }
+    $html .= '<div class="fact_ASSO">' . $asso . '</div>';
+}
+
+echo $html;

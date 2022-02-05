@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
@@ -408,7 +407,7 @@ class EventRepository implements EventRepositoryInterface
             }
 
             if ($fact instanceof Fact) {
-                return FunctionsPrint::formatFactPlace($fact, true, true, true);
+                return $fact->place()->shortName();
             }
         }
 

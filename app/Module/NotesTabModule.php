@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 
+use function preg_match;
+
 /**
  * Class NotesTabModule
  */
@@ -140,13 +142,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
                 }
             }
 
-            $this->facts = new Collection();
+            $callback = static fn (Fact $fact): bool => preg_match('/(?:^1|\n\d) NOTE/', $fact->gedcom()) === 1;
 
-            foreach ($facts as $fact) {
-                if (preg_match('/(?:^1|\n\d) NOTE/', $fact->gedcom())) {
-                    $this->facts->push($fact);
-                }
-            }
+            $this->facts = $facts->filter($callback);
+
             $this->facts = Fact::sortFacts($this->facts);
         }
 

@@ -21,28 +21,22 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 use function e;
+use function explode;
 use function preg_match;
+use function strip_tags;
+use function view;
 
 /**
  * NOTE can be text or an XREF.
  */
-class NoteStructure extends AbstractElement
+class NoteStructure extends SubmitterText
 {
-    /**
-     * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    public function canonical(string $value): string
-    {
-        return $this->canonicalText($value);
-    }
-
     /**
      * An edit control for this data.
      *
@@ -97,5 +91,60 @@ class NoteStructure extends AbstractElement
             ' shared.disabled = !shared.disabled;' .
             '})' .
             '</script>';
+    }
+
+    /**
+     * Create a label/value pair for this element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function labelValue(string $value, Tree $tree): string
+    {
+        // A note structure can contain an inline note or a linked to a shared note.
+        if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match) === 1) {
+            $note = Registry::noteFactory()->make($match[1], $tree);
+
+            if ($note === null) {
+                return parent::labelValue($value, $tree);
+            }
+
+            $value         = $note->getNote();
+            $element       = Registry::elementFactory()->make('NOTE');
+            $label         = $element->label();
+            $html          = $this->valueFormatted($value, $tree);
+            $first_line    = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
+            $one_line_only = strip_tags($note->fullName()) === strip_tags($value);
+        } else {
+            $label         = I18N::translate('Note');
+            $html          = $this->valueFormatted($value, $tree);
+            [$first_line]  = explode("\n", strip_tags($html));
+            $first_line    = Str::limit($first_line, 100, I18N::translate('…'));
+            $one_line_only = !str_contains($value, "\n") && mb_strlen($value) <= 100;
+        }
+
+        $id       = 'collapse-' . Uuid::uuid4()->toString();
+        $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
+
+         if ($one_line_only) {
+             return
+                 '<div class="fact_NOTE">' .
+                 I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $html) .
+                 '</div>';
+         }
+
+        return
+            '<div class="fact_NOTE">' .
+            '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+            view('icons/expand') .
+            view('icons/collapse') .
+            '</a>' .
+            '<span class="label">' . $label . ':</span> ' . $first_line .
+            '</div>' .
+            '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
+            $html .
+            '</div>';
     }
 }

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\FamilyDatesRepositoryInterface;
 use Fisharebest\Webtrees\Tree;
@@ -371,7 +370,7 @@ class FamilyDatesRepository implements FamilyDatesRepositoryInterface
             }
 
             if ($fact instanceof Fact) {
-                return FunctionsPrint::formatFactPlace($fact, true, true, true);
+                return $fact->place()->shortName();
             }
         }
 

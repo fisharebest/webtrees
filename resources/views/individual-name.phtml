@@ -2,8 +2,6 @@
 
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\CopyFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\DeleteFact;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditFactPage;
@@ -69,9 +67,9 @@ if ($fact->isPendingDeletion()) {
                 <?php endforeach ?>
             </dl>
     
-            <?= FunctionsPrintFacts::printFactSources($tree, $fact->gedcom(), 2) ?>
-            <?= FunctionsPrint::printFactNotes($tree, $fact->gedcom(), 2) ?>
-    
+            <?= view('fact-sources', ['fact' => $fact]) ?>
+            <?= view('fact-notes', ['fact' => $fact]) ?>
+
             <?php if ($fact->canEdit()) : ?>
                 <div class="d-flex">
                     <a class="btn btn-link ms-auto" href="<?= e(route(EditFactPage::class, ['xref' => $individual->xref(), 'fact_id' => $fact->id(), 'tree' => $individual->tree()->name()])) ?>" title="<?= I18N::translate('Edit the name') ?>">

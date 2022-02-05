@@ -3,7 +3,6 @@
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
@@ -340,7 +339,7 @@ use Fisharebest\Webtrees\Individual;
         echo $event->label();
         echo ' — ';
         if ($record instanceof Individual) {
-            echo FunctionsPrint::formatFactDate($event, $record, false, false);
+            echo view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $record, 'time' => false]);
         } elseif ($record instanceof Family) {
             echo $gdate->display();
 

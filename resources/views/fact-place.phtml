@@ -1,0 +1,57 @@
+<?php
+
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\ModuleMapLinkInterface;
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
+
+/**
+ * @var bool         $cal_link
+ * @var Fact         $fact
+ * @var GedcomRecord $record
+ * @var bool         $time
+ */
+
+?>
+<div class="wt-fact-place">
+    <?php if (preg_match('/\n(2 PLAC.*(?:\n[3-9].*)*)/', $fact->gedcom(), $match) === 1) : ?>
+        <?php $placerec = $match[1]; ?>
+        <?= $fact->place()->fullName($fact->id() !== 'histo') ?>
+
+        <?php if (preg_match_all('/\n3 (?:_HEB|ROMN|FONE) (.+)/', $placerec, $matches)) : ?>
+            <?php foreach ($matches[1] as $match) : ?>
+                — <?= (new Place($match, $record->tree()))->fullName() ?>
+            <?php endforeach ?>
+        <?php endif ?>
+
+        <?php if ($fact->latitude() !== null && $fact->longitude() !== null) : ?>
+            <div class="wt-fact-coordinates">
+                <span class="label"><?= I18N::translate('Latitude') ?>: </span><?= $fact->latitude() ?>
+                <span class="label"><?= I18N::translate('Longitude') ?>: </span><?= $fact->longitude()?>
+                <?= app(ModuleService::class)->findByInterface(ModuleMapLinkInterface::class)->map(fn(ModuleMapLinkInterface $module): string => ' ' . $module->mapLink($fact))->implode('') ?>
+            </div>
+        <?php endif ?>
+
+        <?php if (preg_match_all('/\n(3 NOTE\b.*(?:\n[^3].*)*)/', $placerec, $matches, PREG_SET_ORDER) > 0) : ?>
+            <?php foreach ($matches as $match) : ?>
+                <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag() . ':PLAC:NOTE', 'tree' => $record->tree()]) ?>
+            <?php endforeach ?>
+        <?php endif ?>
+    <?php endif ?>
+
+    <?php if (preg_match('/2 TEMP (.+)/', $fact->gedcom(), $match)) : ?>
+        <?= Registry::elementFactory()->make($fact->tag() . ':TEMP')->labelValue($match[1], $record->tree()) ?>
+    <?php endif ?>
+
+    <?php if (preg_match('/2 STAT (.+)/', $fact->gedcom(), $match)) : ?>
+        <?= Registry::elementFactory()->make($fact->tag() . ':STAT')->labelValue($match[1], $record->tree()) ?>
+
+        <?php if (preg_match('/3 DATE (.+)/', $fact->gedcom(), $match)) : ?>
+            <?= Registry::elementFactory()->make($fact->tag() . ':STAT:DATE')->labelValue((new Date($match[1]))->display(), $record->tree()) ?>
+        <?php endif ?>
+    <?php endif ?>
+</div>

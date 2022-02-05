@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -141,10 +141,8 @@ class Media extends GedcomRecord
      */
     public function formatListDetails(): string
     {
-        ob_start();
-        FunctionsPrintFacts::printMediaLinks($this->tree(), '1 OBJE @' . $this->xref() . '@', 1);
-
-        return ob_get_clean();
+        return (new XrefMedia(I18N::translate('Media')))
+            ->labelValue('@' . $this->xref . '@', $this->tree());
     }
 
     /**

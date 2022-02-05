@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
@@ -593,7 +592,7 @@ class Fact
             $date = $this->date();
             if ($date->isOK()) {
                 if ($this->record() instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
-                    $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
+                    $attributes[] = $date->display() . view('fact-parents-age', ['individual' => $this->record(), 'birth_date' => $date]);
                 } else {
                     $attributes[] = $date->display();
                 }
