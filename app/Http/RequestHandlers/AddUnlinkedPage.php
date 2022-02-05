@@ -63,14 +63,9 @@ class AddUnlinkedPage implements RequestHandlerInterface
 
         // Create a dummy individual, so that we can create new/empty facts.
         $element = Registry::elementFactory()->make('INDI:NAME');
-        $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
 
-        $facts   = [
-            'i' => [
-                new Fact('1 SEX', $dummy, ''),
-                new Fact('1 NAME ' . $element->default($tree), $dummy, ''),
-                ...$this->gedcom_edit_service->newIndividualFacts($tree),
-            ],
+        $facts = [
+            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, 'U', ['1 NAME ' . $element->default($tree)]),
         ];
 
         $cancel_url = route(ManageTrees::class, ['tree' => $tree->name()]);
