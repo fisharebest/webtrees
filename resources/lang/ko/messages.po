@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-30 18:40+0000\n"
+"PO-Revision-Date: 2022-02-07 16:13+0000\n"
 "Last-Translator: Jeongwan Nam <jeongwann@gmail.com>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/ko/>\n"
@@ -17733,7 +17733,7 @@ msgstr "종자매(사촌)"
 #: app/Functions/Functions.php:379
 msgctxt "MALE"
 msgid "first cousin"
-msgstr "종형제(사촌)"
+msgstr "종조"
 
 #: app/Functions/Functions.php:1046
 msgctxt "father’s brother’s child"
