@@ -154,7 +154,7 @@ class Date
                     }
                 }
                 // If the date is different from the unconverted date, add it to the date string.
-                if ($d1 != $d1tmp && $d1tmp !== '') {
+                if ($d1 !== $d1tmp && $d1tmp !== '') {
                     if ($tree instanceof Tree) {
                         if ($CALENDAR_FORMAT !== 'none') {
                             $conv1 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d1conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1tmp . '</a>)</span>';
@@ -165,7 +165,7 @@ class Date
                         $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
                     }
                 }
-                if ($this->date2 !== null && $d2 != $d2tmp && $d1tmp != '') {
+                if ($this->date2 !== null && $d2 !== $d2tmp && $d1tmp !== '') {
                     if ($tree instanceof Tree) {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d2conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
                     } else {

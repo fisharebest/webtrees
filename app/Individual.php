@@ -41,14 +41,12 @@ class Individual extends GedcomRecord
 
     protected const ROUTE_NAME = IndividualPage::class;
 
-    /** @var int used in some lists to keep track of this individual’s generation in that list */
-    public $generation;
+    /** Used in some lists to keep track of this individual’s generation in that list */
+    public ?int $generation = null;
 
-    /** @var Date The estimated date of birth */
-    private $estimated_birth_date;
+    private ?Date $estimated_birth_date = null;
 
-    /** @var Date The estimated date of death */
-    private $estimated_death_date;
+    private ?Date $estimated_death_date = null;
 
     /**
      * A closure which will compare individuals by birth date.

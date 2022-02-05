@@ -727,7 +727,7 @@ class Fact
             $ret = $factsort[$atag] - $factsort[$btag];
 
             // If facts are the same then put dated facts before non-dated facts
-            if ($ret == 0) {
+            if ($ret === 0) {
                 if ($a->attribute('DATE') !== '' && $b->attribute('DATE') === '') {
                     return -1;
                 }

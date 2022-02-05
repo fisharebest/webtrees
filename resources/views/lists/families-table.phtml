@@ -248,7 +248,7 @@ $marriageAgeData = [
                 <!-- Husband name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
                     <?php foreach ($husb->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] !== '_MARNM' || $num == $husb->getPrimaryName()) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num === $husb->getPrimaryName()) : ?>
                         <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? '' : 'text-muted' ?>">
                             <?= $name['full'] ?>
                         </a>
@@ -283,7 +283,7 @@ $marriageAgeData = [
                 <!-- Wife name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
                     <?php foreach ($wife->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] !== '_MARNM' || $num == $wife->getPrimaryName()) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num === $wife->getPrimaryName()) : ?>
                             <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? '' : 'text-muted' ?>">
                                 <?= $name['full'] ?>
                             </a>

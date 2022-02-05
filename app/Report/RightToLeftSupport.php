@@ -56,17 +56,17 @@ class RightToLeftSupport
     private const LENGTH_START = 5;
     private const LENGTH_END   = 6;
 
-    /** @var string Were we previously processing LTR or RTL. */
-    private static $previousState;
+    /* Were we previously processing LTR or RTL. */
+    private static string $previousState;
 
-    /** @var string Are we currently processing LTR or RTL. */
-    private static $currentState;
+    /* Are we currently processing LTR or RTL. */
+    private static string $currentState;
 
-    /** @var string Text waiting to be processed. */
-    private static $waitingText;
+    /* Text waiting to be processed. */
+    private static string $waitingText;
 
-    /** @var int Offset into the text. */
-    private static $posSpanStart;
+    /* Offset into the text. */
+    private static int $posSpanStart;
 
     /**
      * This function strips &lrm; and &rlm; from the input string. It should be used for all
