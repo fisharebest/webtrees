@@ -73,7 +73,7 @@ trait ModuleChartTrait
      *
      * @return string
      */
-    public function chartTitle(Individual $individual): string
+    public function chartTitle(/** @scrutinizer ignore-unused */ Individual $individual): string
     {
         return $this->title();
     }

@@ -544,8 +544,8 @@ class Auth
     public static function canUploadMedia(Tree $tree, UserInterface $user): bool
     {
         return
-            Auth::isEditor($tree, $user) &&
-            Auth::accessLevel($tree, $user) <= (int) $tree->getPreference('MEDIA_UPLOAD');
+            self::isEditor($tree, $user) &&
+            self::accessLevel($tree, $user) <= (int) $tree->getPreference('MEDIA_UPLOAD');
     }
 
 

@@ -157,7 +157,7 @@ trait ModuleDataFixTrait
      *
      * @return Collection<string>|null
      */
-    protected function familiesToFix(Tree $tree, array $params): ?Collection
+    protected function familiesToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
         return null;
     }

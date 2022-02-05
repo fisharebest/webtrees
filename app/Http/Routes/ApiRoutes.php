@@ -31,7 +31,7 @@ class ApiRoutes
      *
      * @return void
      */
-    public function load(Map $router): void
+    public function load(/** @scrutinizer ignore-unused */ Map $router): void
     {
     }
 }
