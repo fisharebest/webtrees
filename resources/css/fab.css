@@ -462,6 +462,7 @@ div.fact_SHARED_NOTE {
 
 .wt-facts-table td {
     border-radius: 4px;
+    background-color: #ddd;
 }
 
 .wt-facts-table .wt-sex-m > td {

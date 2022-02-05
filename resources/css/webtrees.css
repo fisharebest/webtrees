@@ -650,6 +650,11 @@ div.fact_SHARED_NOTE {
     min-width: 20%;
 }
 
+.wt-facts-table td {
+    background-color: #edf7fd;
+    border: 1px solid #81a9cb;
+}
+
 .wt-facts-table .wt-sex-f > td {
     background-color: var(--sex-f-bg);
     border: solid #81a9cb thin;

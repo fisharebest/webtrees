@@ -710,6 +710,7 @@ div.fact_SHARED_NOTE {
 .wt-facts-table td {
     border: solid #999 1px;
     border-radius: 3px;
+    background-color: #fff;
 }
 
 .wt-facts-table .wt-sex-f td {
