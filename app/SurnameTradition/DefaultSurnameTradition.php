@@ -46,23 +46,13 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     protected const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
 
     /**
-     * Does this surname tradition change surname at marriage?
+     * A default/empty name
      *
-     * @return bool
+     * @return string
      */
-    public function hasMarriedNames(): bool
+    public function defaultName(): string
     {
-        return false;
-    }
-
-    /**
-     * Does this surname tradition use surnames?
-     *
-     * @return bool
-     */
-    public function hasSurnames(): bool
-    {
-        return true;
+        return '//';
     }
 
     /**

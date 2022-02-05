@@ -32,18 +32,6 @@ class PaternalSurnameTraditionTest extends TestCase
     private SurnameTraditionInterface $surname_tradition;
 
     /**
-     * Test whether married surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
-     */
-    public function testMarriedSurnames(): void
-    {
-        self::assertTrue($this->surname_tradition->hasMarriedNames());
-    }
-
-    /**
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
@@ -52,7 +40,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testSurnames(): void
     {
-        self::assertTrue($this->surname_tradition->hasSurnames());
+        self::assertSame('//', $this->surname_tradition->defaultName());
     }
 
     /**

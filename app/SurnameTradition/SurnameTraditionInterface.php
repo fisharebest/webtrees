@@ -28,18 +28,11 @@ use Fisharebest\Webtrees\Individual;
 interface SurnameTraditionInterface
 {
     /**
-     * Does this surname tradition change surname at marriage?
+     * A default/empty name
      *
-     * @return bool
+     * @return string
      */
-    public function hasMarriedNames(): bool;
-
-    /**
-     * Does this surname tradition use surnames?
-     *
-     * @return bool
-     */
-    public function hasSurnames(): bool;
+    public function defaultName(): string;
 
     /**
      * What name is given to a new child

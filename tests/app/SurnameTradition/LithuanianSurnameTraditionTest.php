@@ -44,19 +44,6 @@ class LithuanianSurnameTraditionTest extends TestCase
     }
 
     /**
-     * Test whether married surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition
-     *
-     * @return void
-     */
-    public function testMarriedSurnames(): void
-    {
-        self::assertTrue($this->surname_tradition->hasMarriedNames());
-    }
-
-    /**
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition
@@ -66,7 +53,7 @@ class LithuanianSurnameTraditionTest extends TestCase
      */
     public function testSurnames(): void
     {
-        self::assertTrue($this->surname_tradition->hasSurnames());
+        self::assertSame('//', $this->surname_tradition->defaultName());
     }
 
     /**
