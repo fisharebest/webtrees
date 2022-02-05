@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 use function array_diff;
 use function array_filter;
@@ -47,6 +48,7 @@ use function preg_split;
 use function str_repeat;
 use function str_replace;
 use function substr_count;
+use function trim;
 
 use const ARRAY_FILTER_USE_BOTH;
 use const ARRAY_FILTER_USE_KEY;
@@ -57,6 +59,53 @@ use const PHP_INT_MAX;
  */
 class GedcomEditService
 {
+    /**
+     * @param Tree $tree
+     *
+     * @return Collection<Fact>
+     */
+    public function newFamilyFacts(Tree $tree): Collection
+    {
+        $dummy = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
+        $tags  = new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')));
+        $facts = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
+
+        return Fact::sortFacts($facts);
+    }
+
+    /**
+     * @param Tree   $tree
+     * @param string $sex
+     * @param array  $names
+     *
+     * @return Collection<Fact>
+     */
+    public function newIndividualFacts(Tree $tree, string $sex, array $names): Collection
+    {
+        $dummy      = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
+        $tags       = new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')));
+        $facts      = $tags->map(fn(string $tag): Fact => $this->createNewFact($dummy, $tag));
+        $sex_fact   = new Collection([new Fact('1 SEX ' . $sex, $dummy, '')]);
+        $name_facts = Collection::make($names)->map(static fn(string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
+
+        return $sex_fact->concat($name_facts)->concat(Fact::sortFacts($facts));
+    }
+
+    /**
+     * @param GedcomRecord $record
+     * @param string       $tag
+     *
+     * @return Fact
+     */
+    private function createNewFact(GedcomRecord $record, string $tag): Fact
+    {
+        $element = Registry::elementFactory()->make($record->tag() . ':' . $tag);
+        $default = $element->default($record->tree());
+        $gedcom  = trim('1 ' . $tag . ' ' . $default);
+
+        return new Fact($gedcom, $record, '');
+    }
+
     /**
      * Reassemble edited GEDCOM fields into a GEDCOM fact/event string.
      *

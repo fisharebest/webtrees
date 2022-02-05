@@ -71,9 +71,6 @@ class AddChildToIndividualPage implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        // Create a dummy individual, so that we can create new/empty facts.
-        $dummy = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
-
         // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
 
@@ -91,18 +88,8 @@ class AddChildToIndividualPage implements RequestHandlerInterface
                 break;
         }
 
-        $name_facts = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
-
-        // Individual facts and events.
-        $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
-        $indi_facts  = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummy, ''), $quick_facts);
-
         $facts = [
-            'i' => [
-                new Fact('1 SEX ', $dummy, ''),
-                ...$name_facts,
-                ...$indi_facts,
-            ],
+            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, 'U', $names),
         ];
 
         $title = I18N::translate('Add a child to create a one-parent family');

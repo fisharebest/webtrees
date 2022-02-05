@@ -65,15 +65,11 @@ class AddUnlinkedPage implements RequestHandlerInterface
         $element = Registry::elementFactory()->make('INDI:NAME');
         $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
 
-        // Individual facts and events.
-        $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
-        $indi_facts  = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummy, ''), $quick_facts);
-
         $facts   = [
             'i' => [
                 new Fact('1 SEX', $dummy, ''),
                 new Fact('1 NAME ' . $element->default($tree), $dummy, ''),
-                ...$indi_facts,
+                ...$this->gedcom_edit_service->newIndividualFacts($tree),
             ],
         ];
 

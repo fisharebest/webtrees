@@ -81,30 +81,19 @@ class AddSpouseToIndividualPage implements RequestHandlerInterface
         // Create a dummy individual, so that we can create new/empty facts.
         $sex     = self::OPPOSITE_SEX[$individual->sex()];
         $dummyi  = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
-        $dummyf  = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
 
         // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newSpouseNames($individual, $sex);
         $name_facts        = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummyi, ''), $names);
 
-        // Individual facts and events.
-        $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'));
-        $indi_facts  = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummyi, ''), $quick_facts);
-
-        // Family facts and events.
-        $quick_facts = explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'));
-        $fam_facts  = array_map(static fn (string $fact): Fact => new Fact('1 ' . $fact, $dummyf, ''), $quick_facts);
-
         $facts = [
             'i' => [
                 new Fact('1 SEX ' . $sex, $dummyi, ''),
                 ...$name_facts,
-                ...$indi_facts,
+                ...$this->gedcom_edit_service->newIndividualFacts($tree, $sex, $names),
             ],
-            'f' => [
-                ...$fam_facts,
-            ],
+            'f' => $this->gedcom_edit_service->newFamilyFacts($tree),
         ];
 
         $titles = [
