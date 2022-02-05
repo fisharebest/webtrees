@@ -131,7 +131,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
+    public function getAdminAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -211,7 +211,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      *
      * @return ResponseInterface
      */
-    private function siteMapIndex(ServerRequestInterface $request): ResponseInterface
+    private function siteMapIndex(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $content = Registry::cache()->file()->remember('sitemap.xml', function (): string {
             // Which trees have sitemaps enabled?

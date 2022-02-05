@@ -77,7 +77,7 @@ trait ModuleMapAutocompleteTrait
      *
      * @return RequestInterface
      */
-    protected function createPlaceNameSearchRequest(string $place): RequestInterface
+    protected function createPlaceNameSearchRequest(/** @scrutinizer ignore-unused */ string $place): RequestInterface
     {
         return new Request('GET', '');
     }
@@ -87,7 +87,7 @@ trait ModuleMapAutocompleteTrait
      *
      * @return array<string>
      */
-    protected function parsePlaceNameSearchResponse(ResponseInterface $response): array
+    protected function parsePlaceNameSearchResponse(/** @scrutinizer ignore-unused */ ResponseInterface $response): array
     {
         return [];
     }

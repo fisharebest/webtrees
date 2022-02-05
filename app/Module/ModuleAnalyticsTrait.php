@@ -84,7 +84,7 @@ trait ModuleAnalyticsTrait
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
+    public function getAdminAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -113,7 +113,7 @@ trait ModuleAnalyticsTrait
      *
      * @return string
      */
-    public function analyticsSnippet(array $parameters): string
+    public function analyticsSnippet(/** @scrutinizer ignore-unused */ array $parameters): string
     {
         return '';
     }

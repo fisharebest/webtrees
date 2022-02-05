@@ -100,7 +100,7 @@ trait ModuleListTrait
      *
      * @return bool
      */
-    public function listIsEmpty(Tree $tree): bool
+    public function listIsEmpty(/** @scrutinizer ignore-unused */ Tree $tree): bool
     {
         return false;
     }

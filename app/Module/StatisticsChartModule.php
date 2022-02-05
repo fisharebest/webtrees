@@ -177,7 +177,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getIndividualsAction(ServerRequestInterface $request): ResponseInterface
+    public function getIndividualsAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -192,7 +192,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getFamiliesAction(ServerRequestInterface $request): ResponseInterface
+    public function getFamiliesAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -206,7 +206,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getOtherAction(ServerRequestInterface $request): ResponseInterface
+    public function getOtherAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
