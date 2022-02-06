@@ -78,12 +78,12 @@ foreach ($keys as $key) {
         </div>
     <?php endif ?>
 
-    <?php for ($n = $key; $levels[$n] >= ($levels[$key + 1] ?? PHP_INT_MAX); $n--) : ?>
-        <?php if ( $indent[$n] ) : ?>
+    <?php for ($n = $key; $levels[$n] >= ($levels[$key + 1] ?? $levels[0]); $n--) : ?>
+        <?php if ($indent[$n]) : ?>
             <?php $indent[$n] = false ?>
             </div>
         <?php endif ?>
-        <?php if ( $levels[$n] === ($levels[$key + 1] ?? PHP_INT_MAX)) : ?>
+        <?php if ($levels[$n] === ($levels[$key + 1] ?? $levels[0])) : ?>
             <?php break; ?>
         <?php endif ?>
     <?php endfor ?>
