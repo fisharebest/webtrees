@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-08 22:08+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-02-23 13:42+0000\nLast-Translator: Antoni Planas Vilà <toniplanas@calvermell.cat>\nLanguage-Team: Catalan <https://translate.webtrees.net/projects/webtrees/webtrees/ca/>\nLanguage: ca\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -52,7 +52,7 @@ msgstr "%1$s (%2$s)"
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:268
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "S’ha baixat %1$sKB en %2$s segons."
+msgstr "S’han baixat %1$sKB en %2$s segons."
 
 #: app/Http/RequestHandlers/UserEditAction.php:96
 #, php-format
@@ -619,7 +619,7 @@ msgstr "<presentació per defecte>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
-msgstr ""
+msgstr "<p>Advertiment: en omplir i enviar aquest formulari, accepteu:</p><ul><li>protegir la privadesa de les persones vives que figuren al nostre lloc;</li><li>i al quadre de text següent, explicar amb qui esteu relacionat, o per proporcionar-nos informació sobre algú que hauria de figurar al nostre lloc web.</li></ul>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #: app/Fact.php:613 app/Functions/FunctionsPrint.php:106
@@ -1465,7 +1465,7 @@ msgstr "Afegiu/editeu entrades de l’Agenda"
 #: app/Module/CustomTagsGenPluswin.php:118
 #: app/Module/CustomTagsGenPluswin.php:119
 msgid "Additional information"
-msgstr ""
+msgstr "Informació addicional"
 
 #: app/Factories/ElementFactory.php:276 app/Factories/ElementFactory.php:388
 #: app/Factories/ElementFactory.php:408 app/Factories/ElementFactory.php:661
@@ -1496,7 +1496,7 @@ msgstr "Línia d’adreça 3"
 
 #: resources/views/admin/tags.phtml:253
 msgid "Addresses"
-msgstr ""
+msgstr "Adreces"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55
@@ -1837,7 +1837,7 @@ msgstr "També conegut com"
 #: app/Module/CustomTagsGenPluswin.php:62
 #: app/Module/CustomTagsGenPluswin.php:94
 msgid "Alternative place name"
-msgstr ""
+msgstr "Nom alternatiu de l'indret"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2052,7 +2052,7 @@ msgstr "Aigua marina"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Esteu segur que voleu suprimir l'enllaç a “%s”?"
 
 #: resources/views/individual-name.phtml:87
 #: resources/views/media-page-details.phtml:41
@@ -2153,7 +2153,7 @@ msgstr "Esdeveniments associats amb aquesta font"
 
 #: resources/views/modules/personal_facts/tab.phtml:31
 msgid "Associated events"
-msgstr ""
+msgstr "Esdeveniments associats"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:61
@@ -2265,7 +2265,7 @@ msgstr "Autor de la darrera modificació"
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:43
 #: resources/views/admin/control-panel.phtml:640
 msgid "Autocomplete"
-msgstr ""
+msgstr "Autocompletar"
 
 #: resources/views/admin/users-edit.phtml:155
 msgid "Automatically accept changes made by this user"
@@ -3364,7 +3364,7 @@ msgstr "Data d0empadronament"
 
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:13
 msgid "Census date and place"
-msgstr ""
+msgstr "Data i lloc del cens"
 
 #: app/Factories/ElementFactory.php:487
 msgid "Census place"
@@ -3409,7 +3409,7 @@ msgstr "Certificat"
 #: app/Module/CustomTagsGenPluswin.php:78
 #: app/Module/CustomTagsGenPluswin.php:110
 msgid "Certificate number"
-msgstr ""
+msgstr "Número de certificat"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3785,7 +3785,7 @@ msgstr "Cafè i crema"
 
 #: app/Module/CustomTagsGenPluswin.php:87
 msgid "Cohabitation"
-msgstr ""
+msgstr "Convivència"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4042,7 +4042,7 @@ msgstr "S’està copiant els fitxers…"
 
 #: app/Module/ShareUrlModule.php:51
 msgid "Copy the URL of the record to the clipboard"
-msgstr ""
+msgstr "Copieu l'URL del registre al porta-retalls"
 
 #: app/Factories/ElementFactory.php:374 app/Factories/ElementFactory.php:401
 msgid "Copyright"
@@ -4163,7 +4163,7 @@ msgstr "Crea una persona nova"
 #: app/Module/OrdnanceSurveyHistoricMaps.php:52
 #, php-format
 msgid "Create maps using %s."
-msgstr ""
+msgstr "Creeu mapes amb %s."
 
 #: resources/views/modules/statistics-chart/custom.phtml:18
 msgid "Create your own chart"
@@ -4336,11 +4336,11 @@ msgstr "Personalitzada"
 
 #: resources/views/modules/custom-tags/config.phtml:47
 msgid "Custom GEDCOM sub-tags"
-msgstr ""
+msgstr "Subetiquetes GEDCOM personalitzades"
 
 #: resources/views/modules/custom-tags/config.phtml:29
 msgid "Custom GEDCOM tag"
-msgstr ""
+msgstr "Etiqueta GEDCOM personalitzada"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesCustomTagsPage.php:43
@@ -4348,7 +4348,7 @@ msgstr ""
 #: resources/views/admin/control-panel.phtml:712
 #: resources/views/modules/custom-tags/config.phtml:25
 msgid "Custom GEDCOM tags"
-msgstr ""
+msgstr "Etiqueta GEDCOM personalitzada"
 
 #: resources/views/calendar-page.phtml:203
 msgid "Custom event"
@@ -5384,7 +5384,7 @@ msgstr "Mostra i gestiona les pàgines de favorits de l’usuari."
 
 #: resources/views/modules/custom-tags/config.phtml:22
 msgid "Display custom GEDCOM tags"
-msgstr ""
+msgstr "Mostra etiquetes GEDCOM personalitzades"
 
 #: app/Factories/ElementFactory.php:326 resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
@@ -5447,7 +5447,7 @@ msgstr "S’està descarregant %s…"
 
 #: app/Module/ShareAnniversaryModule.php:89
 msgid "Download a .ICS file containing an anniversary"
-msgstr ""
+msgstr "Baixeu un fitxer .ICS que conté un aniversari"
 
 #: resources/views/media-page-details.phtml:86
 msgid "Download file"
@@ -5596,7 +5596,7 @@ msgstr "Edita aquesta persona i substituïu llurs detalls amb els vostres propis
 #: resources/views/edit/edit-fact.phtml:51
 #: resources/views/edit/edit-record.phtml:52
 msgid "Edit with all GEDCOM tags"
-msgstr ""
+msgstr "Edita amb totes les etiquetes GEDCOM"
 
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
@@ -5722,7 +5722,7 @@ msgstr "Patrò"
 
 #: resources/views/record-page-menu-clipboard.phtml:36
 msgid "Empty the clipboard"
-msgstr ""
+msgstr "Buida el porta-retalls"
 
 #: app/Module/ClippingsCartModule.php:205
 msgid "Empty the clippings cart"
@@ -5817,7 +5817,7 @@ msgstr "Esfand"
 #. I18N: Name of a mapping organisation
 #: app/Module/EsriMaps.php:38
 msgid "Esri/ArcGIS"
-msgstr ""
+msgstr "Esri/ArcGIS"
 
 #: app/Module/CustomTagsBrothersKeeper.php:77
 msgid "Estate name"
@@ -5936,7 +5936,7 @@ msgstr "Fitxers externs"
 
 #: app/Module/CustomTagsRootsMagic.php:52
 msgid "External link"
-msgstr ""
+msgstr "Enllaç extern"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
@@ -5974,7 +5974,7 @@ msgstr "PMF (Preguntes Més Freqüents) són llistes de preguntes i respostes, q
 #: app/Module/CustomTagsGenPluswin.php:96
 #: app/Module/CustomTagsGenPluswin.php:98
 msgid "FOKO country"
-msgstr ""
+msgstr "País malgaix"
 
 #: app/Factories/ElementFactory.php:529
 msgid "Fact"
@@ -6175,7 +6175,7 @@ msgstr "Llibre de família de %s"
 
 #: app/Factories/ElementFactory.php:321
 msgid "Family census"
-msgstr ""
+msgstr "Cens familiars"
 
 #: app/Factories/ElementFactory.php:737
 msgid "Family file"
@@ -6198,7 +6198,7 @@ msgstr "Família de %s"
 
 #: app/Factories/ElementFactory.php:350
 msgid "Family residence"
-msgstr ""
+msgstr "Residència familiar"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6291,7 +6291,7 @@ msgstr "Família amb la dona"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6655,7 +6655,7 @@ msgstr "Per a qüestions genealògiques adreceu-vos a %s."
 #: resources/views/modules/openstreetmap/config.phtml:38
 #, php-format
 msgid "For more information, see %s."
-msgstr ""
+msgstr "Vegeu %s per a més informació."
 
 #: app/Module/ContactsFooterModule.php:162
 #, php-format
@@ -6880,7 +6880,7 @@ msgstr "Fitxer Gedcom"
 
 #: resources/views/modules/custom-tags/config.phtml:53
 msgid "GEDCOM sub-tag"
-msgstr ""
+msgstr "Subetiqueta GEDCOM"
 
 #: resources/views/admin/tags.phtml:43 resources/views/admin/tags.phtml:173
 #: resources/views/admin/tags.phtml:265 resources/views/admin/tags.phtml:327
@@ -6889,12 +6889,12 @@ msgstr ""
 #: resources/views/admin/tags.phtml:883
 #: resources/views/modules/custom-tags/config.phtml:51
 msgid "GEDCOM tag"
-msgstr ""
+msgstr "Etiqueta GEDCOM"
 
 #: app/Http/RequestHandlers/SiteTagsPage.php:47
 #: resources/views/admin/control-panel.phtml:264
 msgid "GEDCOM tags"
-msgstr ""
+msgstr "Etiquetes GEDCOM"
 
 #. I18N: https://gov.genealogy.net
 #: app/Module/CustomTagsGedcomL.php:94 app/Module/CustomTagsGedcomL.php:143
@@ -6993,7 +6993,7 @@ msgstr "Generacions de descendents"
 #: app/Module/GeonamesAutocomplete.php:57
 #: app/Module/MapGeoLocationGeonames.php:45
 msgid "GeoNames"
-msgstr ""
+msgstr "GeoNames"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7013,7 +7013,7 @@ msgstr "Dades geogràfiques"
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:43
 #: resources/views/admin/control-panel.phtml:647
 msgid "Geolocation"
-msgstr ""
+msgstr "Geolocalització"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:203
@@ -7381,7 +7381,7 @@ msgstr "Llur ofici era"
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
 msgid "Here maps"
-msgstr ""
+msgstr "Aquí mapes"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109
@@ -7418,7 +7418,7 @@ msgstr "Heixvan"
 #: resources/views/admin/tags.phtml:726 resources/views/admin/tags.phtml:780
 #: resources/views/admin/tags.phtml:884
 msgid "Hide GEDCOM tags"
-msgstr ""
+msgstr "Amaga les etiquetes GEDCOM"
 
 #: app/Auth.php:534 app/Auth.php:547
 #: app/Http/RequestHandlers/TreePreferencesPage.php:155
@@ -7440,7 +7440,7 @@ msgstr "Oculta-ho a tot-hom"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Hide password"
-msgstr ""
+msgstr "Amaga la contrasenya"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7448,7 +7448,7 @@ msgstr "Amaga els indrets no utilitzats"
 
 #: resources/views/modules/custom-tags/config.phtml:44
 msgid "Hide/show GEDCOM tags in the edit forms"
-msgstr ""
+msgstr "Amaga/mostra les etiquetes GEDCOM als formularis d'edició"
 
 #: app/Module/CustomTagsGedcomL.php:236
 msgid "Hierarchical relationship"
@@ -7531,7 +7531,7 @@ msgstr "Rellotge de sorra de %s"
 #: app/Module/CustomTagsGenPluswin.php:58
 #: app/Module/CustomTagsGenPluswin.php:90
 msgid "House number"
-msgstr ""
+msgstr "Número de casa"
 
 #: resources/views/modules/census-assistant.phtml:117
 msgid "Household"
@@ -7602,7 +7602,7 @@ msgstr "Número d’identificador"
 
 #: resources/views/admin/tags.phtml:767
 msgid "Identifiers"
-msgstr ""
+msgstr "Identificadors"
 
 #: resources/views/admin/fix-level-0-media.phtml:20
 msgid "If a media object is linked to an individual, when it should be linked to a fact or event, then you can move it to the correct location."
@@ -8139,7 +8139,7 @@ msgstr "John /DOE/"
 
 #: app/Module/CustomTagsGenPluswin.php:88
 msgid "Joint family name"
-msgstr ""
+msgstr "Cognom conjunt"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
@@ -8826,7 +8826,7 @@ msgstr "Revista"
 #: app/Module/CustomTagsGedcomL.php:238 app/Module/CustomTagsGenPluswin.php:70
 #: app/Module/CustomTagsGenPluswin.php:102
 msgid "Maidenhead location code"
-msgstr ""
+msgstr "Codi d'ubicació Maidenhead"
 
 #: app/Module/CustomTagsPersonalAncestralFile.php:60
 msgid "Mailing name"
@@ -8960,23 +8960,23 @@ msgstr "Mapa"
 
 #: app/Module/ModuleMapLinkTrait.php:39
 msgid "Map link"
-msgstr ""
+msgstr "Enllaç al mapa"
 
 #. I18N: Links to maps
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:43
 #: resources/views/admin/control-panel.phtml:654
 msgid "Map links"
-msgstr ""
+msgstr "Enllaços al mapa"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:43
 #: resources/views/admin/control-panel.phtml:661
 msgid "Map providers"
-msgstr ""
+msgstr "Proveïdors de mapes"
 
 #. I18N: mapbox.com
 #: app/Module/MapBox.php:82
 msgid "Mapbox"
-msgstr ""
+msgstr "Mapbox"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
@@ -10328,7 +10328,7 @@ msgstr "Nocturn"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr ""
+msgstr "Nominatim"
 
 #: app/Module/IndividualListModule.php:295
 #: app/Module/IndividualListModule.php:511
@@ -10697,7 +10697,7 @@ msgstr "Ep! webtrees no ha pogut crear fitxers en aquesta carpeta."
 #: app/Module/MapGeoLocationOpenRouteService.php:44
 #: app/Module/OpenRouteServiceAutocomplete.php:81
 msgid "OpenRouteService"
-msgstr ""
+msgstr "OpenRouteService"
 
 #: app/Module/MapLinkOpenStreetMap.php:41 app/Module/OpenStreetMap.php:57
 msgid "OpenStreetMap™"
@@ -10748,7 +10748,7 @@ msgstr "Ordenació"
 #. I18N: Ordnance Survey is the UK government mapping service.
 #: app/Module/OrdnanceSurveyHistoricMaps.php:39
 msgid "Ordnance Survey historic maps"
-msgstr ""
+msgstr "Mapes històrics d'Ordinance Survey"
 
 #: resources/xml/reports/change_report.xml:10
 #: resources/xml/reports/pedigree_report.xml:7
@@ -10760,7 +10760,7 @@ msgstr "Orientació"
 #: app/Module/CustomTagsGenPluswin.php:106
 #: app/Module/CustomTagsGenPluswin.php:117
 msgid "Original text"
-msgstr ""
+msgstr "Text original"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:153
@@ -11206,7 +11206,7 @@ msgstr "Indret del bateig"
 #. I18N: German Bürgerort
 #: app/Module/CustomTagsGenPluswin.php:124
 msgid "Place of citizenship"
-msgstr ""
+msgstr "Lloc de ciutadania"
 
 #: app/Factories/ElementFactory.php:498
 #: resources/xml/reports/missing_facts_report.xml:305
@@ -11538,7 +11538,7 @@ msgstr "Provo, Utah, Estats Units"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #: app/Factories/ElementFactory.php:697
 #: resources/views/lists/sources-table.phtml:97
@@ -11934,7 +11934,7 @@ msgstr "Vincles entre %1$s i %2$s"
 #: app/Module/CustomTagsGenPluswin.php:72
 #: app/Module/CustomTagsGenPluswin.php:104
 msgid "Reliability of the information"
-msgstr ""
+msgstr "Fiabilitat de la informació"
 
 #: app/Factories/ElementFactory.php:304 app/Factories/ElementFactory.php:435
 #: app/Factories/ElementFactory.php:587
@@ -12210,7 +12210,7 @@ msgstr "Arrels"
 
 #: app/Module/CustomTagsGedcomL.php:165 app/Module/CustomTagsGenPluswin.php:122
 msgid "Rufname"
-msgstr ""
+msgstr "Rufname"
 
 #. I18N: https://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
@@ -12457,17 +12457,17 @@ msgstr "Cerca per"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
-msgstr ""
+msgstr "Cerca ubicacions en una base de dades externa."
 
 #: app/Http/RequestHandlers/ModulesMapAutocompletePage.php:44
 msgid "Search for place names in an external database."
-msgstr ""
+msgstr "Cerca noms d'indret en una base de dades externa."
 
 #: app/Module/GeonamesAutocomplete.php:69
 #: app/Module/OpenRouteServiceAutocomplete.php:56
 #, php-format
 msgid "Search for place names using %s."
-msgstr ""
+msgstr "Cerca noms de llocs amb %s."
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
@@ -12602,7 +12602,7 @@ msgstr "Fer sortir els correus electrònics de recordatori"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:72
 msgid "Sender email"
-msgstr ""
+msgstr "Correu electrònic del remitent"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:58
@@ -12788,15 +12788,15 @@ msgstr "Shahrivar"
 #: resources/views/individual-page-menu.phtml:34
 #: resources/views/individual-page.phtml:61
 msgid "Share"
-msgstr ""
+msgstr "Compartiu"
 
 #: app/Module/ShareUrlModule.php:41
 msgid "Share the URL"
-msgstr ""
+msgstr "Compartiu l'URL"
 
 #: app/Module/ShareAnniversaryModule.php:79
 msgid "Share the anniversary of an event"
-msgstr ""
+msgstr "Compartiu l'aniversari d'un esdeveniment"
 
 #: app/Functions/FunctionsPrint.php:85
 #: app/Functions/FunctionsPrintFacts.php:778
@@ -12817,7 +12817,7 @@ msgstr "Notes comunes"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:747
 msgid "Shares"
-msgstr ""
+msgstr "Comparticions"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -13106,7 +13106,7 @@ msgstr "Mostra els pares"
 #: resources/views/setup/step-4-database-sqlsvr.phtml:86
 #: resources/views/setup/step-5-administrator.phtml:81
 msgid "Show password"
-msgstr ""
+msgstr "Mostra la contrasenya"
 
 #: resources/xml/reports/change_report.xml:8
 msgid "Show pending changes"
@@ -13206,7 +13206,7 @@ msgstr "Mostra la llista de cognoms"
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
 msgid "Show the location of an event on an external map."
-msgstr ""
+msgstr "Mostra la ubicació d'un esdeveniment en un mapa extern."
 
 #. I18N: Description of the “Places” module
 #: app/Module/PlacesModule.php:96
@@ -13455,11 +13455,11 @@ msgstr "Algunes aplicacions genealògiques creen arxius GEDCOM que contenen noms
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:94
 msgid "Some genealogy software stores all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr ""
+msgstr "Alguns programaris de genealogia emmagatzemen tots els noms en un sol registre de noms, utilitzant etiquetes personalitzades com ara _MARNM i _AKA. Una alternativa és crear un registre de nom nou per a cada nom."
 
 #: resources/views/admin/tags.phtml:26
 msgid "Some of these GEDCOM tags are used infrequently or never used."
-msgstr ""
+msgstr "Algunes d'aquestes etiquetes GEDCOM s'utilitzen amb poca freqüència o mai."
 
 #. I18N: Help text for the “Hit counters” configuration setting
 #: resources/views/admin/trees-preferences.phtml:672
@@ -13566,7 +13566,7 @@ msgstr "Citació de la font"
 
 #: resources/views/admin/tags.phtml:315
 msgid "Source citations"
-msgstr ""
+msgstr "Cites de fonts"
 
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:756
@@ -13780,7 +13780,7 @@ msgstr "Títol de la història"
 #: app/Module/CustomTagsGenPluswin.php:59
 #: app/Module/CustomTagsGenPluswin.php:91
 msgid "Street name"
-msgstr ""
+msgstr "Nom del carrer"
 
 #: resources/views/admin/broadcast.phtml:49
 #: resources/views/admin/email-page.phtml:50
@@ -13856,7 +13856,7 @@ msgstr "El suport per a SQL Server és experimental."
 #. I18N: Description of the “Custom GEDCOM tags” module
 #: app/Module/ModuleCustomTagsTrait.php:74
 msgid "Support for non-standard GEDCOM tags."
-msgstr ""
+msgstr "Suport per a etiquetes GEDCOM no estàndard."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14129,7 +14129,7 @@ msgstr "S'ha importat el fitxer GEDCOM “%s”."
 
 #: resources/views/admin/tags.phtml:24
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "L'estàndard GEDCOM proporciona un gran nombre de camps d'entrada de dades, anomenats etiquetes."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14163,7 +14163,7 @@ msgstr "La configuració PHP.INI “%1$s” està activada."
 
 #: resources/views/modules/share-url/share.phtml:30
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "L'URL s'ha copiat al porta-retalls"
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -14689,7 +14689,7 @@ msgstr "No hi ha Notes d’aquesta persona."
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:215
 #: resources/views/pending-changes-page.phtml:30
 msgid "There are no pending changes."
-msgstr "No hi han canvis opendents."
+msgstr "No hi han canvis pendents."
 
 #: app/Module/ResearchTaskModule.php:121
 msgid "There are no research tasks in this family tree."
@@ -15256,7 +15256,7 @@ msgstr "Hora"
 #: app/Factories/ElementFactory.php:671 app/Factories/ElementFactory.php:687
 #: app/Factories/ElementFactory.php:718 app/Factories/ElementFactory.php:734
 msgid "Time of last change"
-msgstr ""
+msgstr "Hora de l'últim canvi"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15407,11 +15407,11 @@ msgstr "Per indicar als motors de cerca que hi ha disponibles mapes de lloc, pod
 #: resources/views/modules/openrouteservice/config.phtml:36
 #: resources/views/modules/openstreetmap/config.phtml:36
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Per utilitzar aquest servei, necessiteu una clau API."
 
 #: resources/views/modules/geonames/config.phtml:36
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Per utilitzar aquest servei, necessiteu un compte."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15710,7 +15710,7 @@ msgstr "Tipus de fet"
 
 #: app/Factories/ElementFactory.php:541
 msgid "Type of identification number"
-msgstr ""
+msgstr "Tipus de número d'identificació"
 
 #: app/Module/CustomTagsGedcomL.php:219
 msgid "Type of location"
@@ -15728,7 +15728,7 @@ msgstr "Tipus de nom"
 #: app/Factories/ElementFactory.php:625 app/Factories/ElementFactory.php:648
 #: app/Factories/ElementFactory.php:679 app/Factories/ElementFactory.php:699
 msgid "Type of reference number"
-msgstr ""
+msgstr "Tipus de número de referència"
 
 #: app/Module/CustomTagsGedcomL.php:122 app/Module/CustomTagsGedcomL.php:175
 msgid "Type of research task"
@@ -15848,7 +15848,7 @@ msgstr "Desconegut"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Desenllaça"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
@@ -15927,7 +15927,7 @@ msgstr "Empreu un «?» per a que coincideixi amb un sol caràcter, empreu «*»
 
 #: app/Module/ModuleMapGeoLocationTrait.php:48
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Utilitzeu un servei extern per trobar ubicacions."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:61
@@ -15964,7 +15964,7 @@ msgstr "Feu servir lletres A-Z, a-z, dígits 0-9 o guions baixos"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Utilitza mapes a webtrees."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:123
@@ -15988,7 +15988,7 @@ msgstr "Empra siluetes"
 
 #: app/Http/RequestHandlers/CopyFact.php:79
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Utilitzeu el menú \"Edita\" per enganxar-ho a un altre registre."
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16194,7 +16194,7 @@ msgstr "Mostra aquesta família"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Visualitzeu aquesta ubicació amb %s"
 
 #: resources/views/calendar-page.phtml:219
 msgid "View this month"
@@ -16532,7 +16532,7 @@ msgstr "Podeu configurar l'accés a un registre específic, fet o esdeveniment m
 
 #: resources/views/admin/tags.phtml:28
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "Podeu simplificar els formularis d'edició amagant les etiquetes GEDCOM que no feu servir."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
@@ -19266,7 +19266,7 @@ msgstr "importa el fitxer"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "nota en línia"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:351
@@ -20115,7 +20115,7 @@ msgstr "cosí 7è"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "nota compartida"
 
 #: resources/views/admin/site-mail.phtml:155
 #: resources/views/admin/trees-preferences.phtml:307
@@ -20795,7 +20795,7 @@ msgstr[1] "±%s anys"
 #: app/Http/RequestHandlers/CopyFact.php:77
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "“%s” s'ha copiat al porta-retalls."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:65
