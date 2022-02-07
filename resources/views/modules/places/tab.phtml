@@ -31,8 +31,8 @@ use Fisharebest\Webtrees\I18N;
       inline: "start"
     };
 
-    // 10 is a reasonable zoom level when displaying a marker popup (single point)
-    const popupZoomLevel = 10;
+    const popupZoomLevel = 10; // 10 is a reasonable zoom level when displaying a marker popup (single point)
+    const spiderfyDelay = 600; //mS
 
     // Map components
     let markers = L.markerClusterGroup({
@@ -179,31 +179,28 @@ use Fisharebest\Webtrees\I18N;
      */
     const _loadListeners = function() {
       // Activate marker popup when sidebar entry clicked
-      sidebar.querySelectorAll('.gchart').forEach((element) => {
-        const eventId = parseInt(element.dataset.wtFeatureId);
+      document.querySelector('.wt-places-tab-sidebar').addEventListener('click', (evt) => {
+        // Only perform map action if evt was not initiated from an anchor element
+        if (evt.target.closest('a') === null && evt.target.closest('.gchart') instanceof Element) {
+          // first close any existing
+          map.closePopup();
+          //find the marker corresponding to the clicked event
+          const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
+          let mkrLayer = markers.getLayers().filter(function (v) {
+            return v.feature !== undefined && v.feature.id === eventId;
+          });
+          const mkr = mkrLayer.pop();
 
-        element.addEventListener('click', (evt) => {
-          // Only perform map action if evt was not initiated from an anchor element
-          if (evt.target.closest('a') === null) {
-            // first close any existing
-            map.closePopup();
-            //find the marker corresponding to the clicked event
-            let mkrLayer = markers.getLayers().filter(function (v) {
-              return v.feature !== undefined && v.feature.id === eventId;
-            });
-            const mkr = mkrLayer.pop();
-
-            if (mkr instanceof L.Layer) {
-              map.setView(mkr.getLatLng(), popupZoomLevel);
-              setTimeout(() => {
-                _fireEventOnMarkerOrVisibleParentCluster(mkr, 'click');
-              }, 600);
-            } else {
-              // Should never get here
-              console.log('Error: unable to find the selected marker');
-            }
+          if (mkr instanceof L.Layer) {
+            map.setView(mkr.getLatLng(), popupZoomLevel);
+            setTimeout(() => {
+              _fireEventOnMarkerOrVisibleParentCluster(mkr, 'click');
+            }, spiderfyDelay);
+          } else {
+            // Should never get here
+            console.log('Error: unable to find the selected marker');
           }
-        });
+        }
       });
     }
 
