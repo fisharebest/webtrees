@@ -31,8 +31,8 @@ use Fisharebest\Webtrees\I18N;
       inline: "start"
     };
 
-    const popupZoomLevel = 10; // 10 is a reasonable zoom level when displaying a marker popup (single point)
-    const spiderfyDelay = 600; //mS
+    const popupZoomLevel = 12; // 12 is a reasonable compromise for open clusters
+    const spiderfyDelay = 600; // mS
 
     // Map components
     let markers = L.markerClusterGroup({
@@ -179,7 +179,7 @@ use Fisharebest\Webtrees\I18N;
      */
     const _loadListeners = function() {
       // Activate marker popup when sidebar entry clicked
-      document.querySelector('.wt-places-tab-sidebar').addEventListener('click', (evt) => {
+      sidebar.addEventListener('click', (evt) => {
         // Only perform map action if evt was not initiated from an anchor element
         if (evt.target.closest('a') === null && evt.target.closest('.gchart') instanceof Element) {
           // first close any existing
