@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\I18N;
     };
 
     const popupZoomLevel = 12; // 12 is a reasonable compromise for open clusters
-    const spiderfyDelay = 600; // mS
+    const spiderfyDelay = 300; // mS
 
     // Map components
     let markers = L.markerClusterGroup({
@@ -114,14 +114,14 @@ use Fisharebest\Webtrees\I18N;
         var visibleLayer = markers.getVisibleParent(marker);
 
         if (visibleLayer instanceof L.MarkerCluster) {
+          // spiderfy its containing cluster to reveal it.
+          // This will automatically unspiderfy other clusters.
+          visibleLayer.spiderfy();
           // We want to show a marker that is currently hidden in a cluster.
           // Make sure it will get highlighted once revealed.
           markers.once('spiderfied', function() {
             marker.fire(eventName);
           });
-          // Now spiderfy its containing cluster to reveal it.
-          // This will automatically unspiderfy other clusters.
-          visibleLayer.spiderfy();
         } else {
           // The marker is already visible, unspiderfy other clusters if
           // they do not contain the marker.
