@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-20 11:59+0000\n"
-"Last-Translator: Markus Hemprich <hemprich@gmx.de>\n"
+"PO-Revision-Date: 2022-02-23 13:42+0000\n"
+"Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -14791,8 +14791,8 @@ msgstr "Es warten ausstehende Änderungen auf Ihre Moderation."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Es gab keine Veränderungen in den letzen 24 Stunden."
-msgstr[1] "Es gab keine Veränderungen in den letzen %s Tagen."
+msgstr[0] "Es gab keine Veränderungen in den letzten 24 Stunden."
+msgstr[1] "Es gab keine Veränderungen in den letzten %s Tagen."
 
 #: app/Http/RequestHandlers/AddMediaFileAction.php:88
 #: app/Http/RequestHandlers/CreateMediaObjectAction.php:81
