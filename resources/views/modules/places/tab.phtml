@@ -105,75 +105,6 @@ use Fisharebest\Webtrees\I18N;
     };
 
     /**
-     * @private
-     *
-     * @param {L.marker} marker
-     * @param {string} eventName
-     */
-    const _fireEventOnMarkerOrVisibleParentCluster = function(marker, eventName) {
-      if (eventName === 'click') {
-        var visibleLayer = markers.getVisibleParent(marker);
-
-        if (visibleLayer instanceof L.MarkerCluster) {
-          // spiderfy its containing cluster to reveal it.
-          // This will automatically unspiderfy other clusters.
-          visibleLayer.spiderfy();
-          // We want to show a marker that is currently hidden in a cluster.
-          // Make sure it will get highlighted once revealed.
-          markers.once('spiderfied', function() {
-            marker.fire(eventName);
-          });
-        } else {
-          // The marker is already visible, unspiderfy other clusters if
-          // they do not contain the marker.
-          _unspiderfyPreviousClusterIfNotParentOf(marker);
-          marker.fire(eventName);
-        }
-      } else {
-        // For mouseout, marker should be unclustered already, unless
-        // the next mouseover happened before?
-        marker.fire(eventName);
-      }
-    }
-
-    /**
-     * @private
-     *
-     * @param {L.marker} marker
-     */
-    const _unspiderfyPreviousClusterIfNotParentOf = function(marker) {
-      // Check if there is a currently spiderfied cluster.
-      // If so and it does not contain the marker, unspiderfy it.
-      var spiderfiedCluster = markers._spiderfied;
-
-      if (
-        spiderfiedCluster
-        && !_clusterContainsMarker(spiderfiedCluster, marker)
-      ) {
-        spiderfiedCluster.unspiderfy();
-      }
-    }
-
-    /**
-     * @private
-     *
-     * @param {L.clusterGroup} cluster
-     * @param {L.marker} marker
-     *
-     * @returns {boolean}
-     */
-    const _clusterContainsMarker = function(cluster, marker) {
-      var currentLayer = marker;
-
-      while (currentLayer && currentLayer !== cluster) {
-        currentLayer = currentLayer.__parent;
-      }
-
-      // Say if we found a cluster or nothing.
-      return !!currentLayer;
-    }
-
-    /**
      * Can't use window.onload here. seems to be because of AJAX loading
      *
      * @private
@@ -195,7 +126,7 @@ use Fisharebest\Webtrees\I18N;
             .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
             .once('moveend', () => {
               setTimeout(() => {
-                _fireEventOnMarkerOrVisibleParentCluster(mkr, 'click');
+                webtrees.leafletJsSpiderfyClusters(markers, mkr);
                }, spiderfyDelay);
                spiderfyDelay = 0;
             });
