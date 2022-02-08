@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\I18N;
     };
 
     const popupZoomLevel = 12; // 12 is a reasonable compromise for open clusters
-    const spiderfyDelay = 300; // mS
+    let spiderfyDelay = 300; // mS
 
     // Map components
     let markers = L.markerClusterGroup({
@@ -46,6 +46,7 @@ use Fisharebest\Webtrees\I18N;
     let resetCallback = function () {
       map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
+      spiderfyDelay = 300;
     }
 
     /**
@@ -182,8 +183,6 @@ use Fisharebest\Webtrees\I18N;
       sidebar.addEventListener('click', (evt) => {
         // Only perform map action if evt was not initiated from an anchor element
         if (!evt.target.closest('a')) {
-          // first close any existing
-          map.closePopup();
           //find the marker corresponding to the clicked event
           const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
           let mkrLayer = markers.getLayers().filter(function (v) {
@@ -192,10 +191,14 @@ use Fisharebest\Webtrees\I18N;
           const mkr = mkrLayer.pop();
 
           if (mkr instanceof L.Layer) {
-            map.setView(mkr.getLatLng(), popupZoomLevel);
-            setTimeout(() => {
-              _fireEventOnMarkerOrVisibleParentCluster(mkr, 'click');
-            }, spiderfyDelay);
+            map
+            .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
+            .once('moveend', () => {
+              setTimeout(() => {
+                _fireEventOnMarkerOrVisibleParentCluster(mkr, 'click');
+               }, spiderfyDelay);
+               spiderfyDelay = 0;
+            });
           } else {
             // Should never get here
             console.log('Error: unable to find the selected marker');
