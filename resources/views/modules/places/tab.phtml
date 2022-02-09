@@ -32,7 +32,7 @@ use Fisharebest\Webtrees\I18N;
     };
 
     const popupZoomLevel = 12; // 12 is a reasonable compromise for open clusters
-    let spiderfyDelay = 300; // mS
+    const spiderfyDelay = 300; // mS
 
     // Map components
     let markers = L.markerClusterGroup({
@@ -46,7 +46,6 @@ use Fisharebest\Webtrees\I18N;
     let resetCallback = function () {
       map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
-      spiderfyDelay = 300;
     }
 
     /**
@@ -128,7 +127,6 @@ use Fisharebest\Webtrees\I18N;
               setTimeout(() => {
                 webtrees.leafletJsSpiderfyClusters(markers, mkr);
                }, spiderfyDelay);
-               spiderfyDelay = 0;
             });
           } else {
             // Should never get here
