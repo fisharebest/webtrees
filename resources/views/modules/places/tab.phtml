@@ -124,9 +124,7 @@ use Fisharebest\Webtrees\I18N;
             map
             .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
             .once('moveend', () => {
-              setTimeout(() => {
-                webtrees.leafletJsSpiderfyClusters(markers, mkr);
-               }, spiderfyDelay);
+                webtrees.leafletJsSpiderfyClusters(markers, mkr, spiderfyDelay);
             });
           } else {
             // Should never get here

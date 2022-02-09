@@ -688,11 +688,12 @@
 
   /**
    * Spiderfy clusters to show marker & popup when sidebar event is clicked
-   * modified from code written by Ghybs https://github.com/ghybs (author of leaflet,markerCluster)
+   * modified from code written by Ghybs https://github.com/ghybs
    * @param {L.markerClusterGroup} markers
    * @param {L.marker} marker
+   * @param {number} delay - value in milliseconds for timeout
    */
-  webtrees.leafletJsSpiderfyClusters = (markers, marker) => {
+  webtrees.leafletJsSpiderfyClusters = (markers, marker, delay) => {
     /**
      * @private
      *
@@ -730,9 +731,12 @@
     const visibleLayer = markers.getVisibleParent(marker);
 
     if (visibleLayer instanceof L.MarkerCluster) {
-      // spiderfy its containing cluster to reveal it.
-      // This will automatically unspiderfy other clusters.
-      visibleLayer.spiderfy();
+      setTimeout(() => {
+        // spiderfy its containing cluster to reveal it.
+        // This will automatically unspiderfy other clusters.
+        visibleLayer.spiderfy();
+      }, delay);
+
       // We want to show a marker that is currently hidden in a cluster.
       // Make sure it will get highlighted once revealed.
       markers.once('spiderfied', () => {
