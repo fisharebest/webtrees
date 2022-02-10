@@ -676,7 +676,7 @@
     let featureLayer = new L.LayerGroup();
     let overlaysTree = null;
     if (polylines !== undefined && polylines.length) {
-      polylines.forEach(function (line) {
+      polylines.forEach((line) => {
         featureLayer.addLayer(L.polyline(line.points, line.options));
       });
 
