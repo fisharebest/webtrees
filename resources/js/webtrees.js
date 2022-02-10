@@ -623,9 +623,11 @@
    * @param {string} id
    * @param {object} config
    * @param {function} resetCallback
+   * @param {array|undefined} polylines
    * @returns Map
    */
-  webtrees.buildLeafletJsMap = function (id, config, resetCallback) {
+  webtrees.buildLeafletJsMap = function (id, config, resetCallback, polylines) {
+
     const zoomControl = new L.control.zoom({
       zoomInTitle: config.i18n.zoomIn,
       zoomoutTitle: config.i18n.zoomOut,
@@ -671,6 +673,18 @@
       let defaultLayer = config.mapProviders[0].children[0].layer;
     }
 
+    let featureLayer = new L.LayerGroup();
+    let overlaysTree = null;
+    if (polylines !== undefined && polylines.length) {
+      polylines.forEach(function (line) {
+        featureLayer.addLayer(L.polyline(line.points, line.options));
+      });
+
+      overlaysTree = {
+          label: config.i18n.showLines ?? '?',
+          layer: featureLayer,
+      };
+    }
 
     // Create the map with all controls and layers
     return L.map(id, {
@@ -679,7 +693,8 @@
       .addControl(zoomControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
-      .addControl(L.control.layers.tree(config.mapProviders, null, {
+      .addLayer(featureLayer)
+      .addControl(L.control.layers.tree(config.mapProviders, overlaysTree, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
       }));
