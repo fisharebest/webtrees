@@ -56,7 +56,6 @@ use function str_ends_with;
 use function str_pad;
 use function strtoupper;
 use function trim;
-
 use function view;
 
 use const PHP_INT_MAX;

@@ -25,14 +25,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
-
 use function e;
-use function explode;
 use function preg_match;
 use function route;
-use function strip_tags;
 use function trim;
 use function view;
 
