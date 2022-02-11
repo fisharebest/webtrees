@@ -99,7 +99,7 @@ class XrefMedia extends AbstractXrefElement
             $label = $media_file->displayImage(100, 100, 'contain', []);
             $value = '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
 
-            return '<div class="d-flex"><div class="pe-1 pb-1">' . $label .'</div>'. $value . '</div>';
+            return '<div class="d-flex"><div class="pe-1 pb-1">' . $label . '</div>' . $value . '</div>';
         }
 
         return parent::labelValue($value, $tree);
