@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-08 22:08+0000\nLast-Translator: Suleyman <hsarslan@yahoo.com>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-02-23 13:42+0000\nLast-Translator: Suleyman <hsarslan@yahoo.com>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -6198,7 +6198,7 @@ msgstr "%s ailesi"
 
 #: app/Factories/ElementFactory.php:350
 msgid "Family residence"
-msgstr "Aile konutu"
+msgstr "Aile malikanesi"
 
 #: app/Module/CustomTagsGedcomL.php:114
 msgid "Family status"
@@ -6291,7 +6291,7 @@ msgstr "Karısı ile aile"
 #. I18N: familysearch.org
 #: app/Module/CustomTagsFamilySearch.php:50
 msgid "FamilySearch ID"
-msgstr "FamilySearch ID (Kimliği)"
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -10963,28 +10963,28 @@ msgstr "Payson, Utah, ABD"
 #: resources/xml/reports/pedigree_report.xml:3
 #: resources/xml/reports/pedigree_report.xml:48
 msgid "Pedigree"
-msgstr "Soyağacı"
+msgstr "Soy"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Soyağacı şeması"
+msgstr "Soy şeması"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:127
 msgid "Pedigree map"
-msgstr "Soyağacı haritası"
+msgstr "Soy haritası"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeMapModule.php:173 app/Module/PedigreeMapModule.php:231
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "%s soyağacı haritası"
+msgstr "%s soy haritası"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeChartModule.php:164
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "%s soyağacı ağacı"
+msgstr "%s soy ağacı"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:266
@@ -11538,7 +11538,7 @@ msgstr "Provo, Utah, ABD"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr "Vekil Sunucu"
+msgstr "Vekil"
 
 #: app/Factories/ElementFactory.php:697
 #: resources/views/lists/sources-table.phtml:97
@@ -15066,7 +15066,7 @@ msgstr "Bu seçenek, kullanıcıların görüntüleri indirmesini kolaylaştıra
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:166
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Bu seçenek, aile bağlantılarını özel kayıtlarda saklar. Bu, soyağacı grafiğinde ve özel bireylerle diğer grafiklerde boş “özel” kutular göreceğiniz anlamına gelir."
+msgstr "Bu seçenek, aile bağlantılarını özel kayıtlarda saklar. Bu, soy grafiğinde ve özel bireylerle diğer grafiklerde boş “özel” kutular göreceğiniz anlamına gelir."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
@@ -15155,7 +15155,7 @@ msgstr "Bu sunucunun bellek sınırı %s MB ve CPU zaman sınırı %s saniyedir.
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:436
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Bu, soyağacı grafiği gibi grafik kutularında görünmesini istediğiniz doğum ve ölüme ek olarak, virgülle veya boşlukla ayrılmış bir gerçek listesi olmalıdır. Bu liste, GEDCOM 5.5.1 standardında tanımlandığı gibi gerçek etiketlerini kullanmanızı gerektirir. Örneğin, mesleğin kutuda görünmesini istiyorsanız, bu alana “OCCU” eklersiniz."
+msgstr "Bu, soy grafiği gibi grafik kutularında görünmesini istediğiniz doğum ve ölüme ek olarak, virgülle veya boşlukla ayrılmış bir gerçek listesi olmalıdır. Bu liste, GEDCOM 5.5.1 standardında tanımlandığı gibi gerçek etiketlerini kullanmanızı gerektirir. Örneğin, mesleğin kutuda görünmesini istiyorsanız, bu alana “OCCU” eklersiniz."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
