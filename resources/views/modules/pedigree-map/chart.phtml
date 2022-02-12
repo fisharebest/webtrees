@@ -23,8 +23,6 @@ use Fisharebest\Webtrees\View;
     const geoJson_data = <?= json_encode($data, JSON_THROW_ON_ERROR) ?>;
     const sidebar = document.querySelector('.wt-pedigree-map-sidebar');
 
-    config.i18n.showLines = '<?= I18N::translate("Show/Hide parent to child lines") ?>';
-
     const scrollOptions = {
       behavior: "smooth",
       block: "start",
@@ -38,11 +36,21 @@ use Fisharebest\Webtrees\View;
       showCoverageOnHover: false,
     });
 
-    let polyLines = [];
+    // Add the polylines to a separate layer
+    let features = {
+      layer: new L.LayerGroup(),
+      tree: null
+    }
 
     geoJson_data.features.forEach((feature) => {
-       if (feature.properties.polyline) {
-         polyLines.push(feature.properties.polyline);
+      if (feature.properties.polyline) {
+        features.layer.addLayer(L.polyline(feature.properties.polyline.points, feature.properties.polyline.options));
+        if (!features.tree) {
+          features.tree = {
+            label: '<?= I18N::translate("Show/Hide parent to child lines") ?>',
+            layer: features.layer
+          }
+        }
       }
     });
 
@@ -60,7 +68,7 @@ use Fisharebest\Webtrees\View;
      * @private
      */
     let _drawMap = function () {
-      map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback, polyLines);
+      map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback, features);
     };
 
     /**

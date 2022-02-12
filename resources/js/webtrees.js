@@ -623,10 +623,10 @@
    * @param {string} id
    * @param {object} config
    * @param {function} resetCallback
-   * @param {array|undefined} polylines
+   * @param {array|undefined} overlay
    * @returns Map
    */
-  webtrees.buildLeafletJsMap = function (id, config, resetCallback, polylines) {
+  webtrees.buildLeafletJsMap = function (id, config, resetCallback, overlay) {
 
     const zoomControl = new L.control.zoom({
       zoomInTitle: config.i18n.zoomIn,
@@ -673,18 +673,11 @@
       let defaultLayer = config.mapProviders[0].children[0].layer;
     }
 
-    let featureLayer = new L.LayerGroup();
-    let overlaysTree = null;
-    if (polylines !== undefined && polylines.length) {
-      polylines.forEach((line) => {
-        featureLayer.addLayer(L.polyline(line.points, line.options));
-      });
-
-      overlaysTree = {
-          label: config.i18n.showLines ?? '?',
-          layer: featureLayer,
+    //Create a dummy overlay if not defined
+      overlay = overlay || {
+        layer: new L.LayerGroup(),
+        tree: null
       };
-    }
 
     // Create the map with all controls and layers
     return L.map(id, {
@@ -693,8 +686,8 @@
       .addControl(zoomControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
-      .addLayer(featureLayer)
-      .addControl(L.control.layers.tree(config.mapProviders, overlaysTree, {
+      .addLayer(overlay.layer)
+      .addControl(L.control.layers.tree(config.mapProviders, overlay.tree, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
       }));
