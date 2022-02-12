@@ -13,7 +13,9 @@ use Fisharebest\Webtrees\Fact;
 <div class="row ps-1">
   <div class="col-sm-9 pe-0">
     <div class="label">
-      <span class="dot <?= $colorclass ?>">&bull;</span>
+        <span class="<?= $colorclass ?>">
+          <?= view('icons/circle') ?>
+        </span>
         <?= $relationship ?>
     </div>
 
