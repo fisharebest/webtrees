@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-09-08 22:07+0000\n"
+"PO-Revision-Date: 2022-02-23 13:42+0000\n"
 "Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees-20/tr/>\n"
+"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2104,7 +2105,7 @@ msgstr "Aquamarin"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "“%s” bağlantısını silmek istediğinizden emin misiniz?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -6251,7 +6252,7 @@ msgstr "%s aile kitabı"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Aile sayımı"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6275,7 +6276,7 @@ msgstr "%s ailesi"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Aile malikanesi"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6369,7 +6370,7 @@ msgstr "Karısı ile aile"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -11015,28 +11016,28 @@ msgstr "Payson, Utah, ABD"
 #: resources/xml/reports/pedigree_report.xml:3
 #: resources/xml/reports/pedigree_report.xml:48
 msgid "Pedigree"
-msgstr "Soyağacı"
+msgstr "Soy"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
-msgstr "Soyağacı şeması"
+msgstr "Soy şeması"
 
 #. I18N: Name of a module
 #: app/Module/PedigreeMapModule.php:123
 msgid "Pedigree map"
-msgstr "Soyağacı haritası"
+msgstr "Soy haritası"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeMapModule.php:169 app/Module/PedigreeMapModule.php:233
 #, php-format
 msgid "Pedigree map of %s"
-msgstr "%s soyağacı haritası"
+msgstr "%s soy haritası"
 
 #. I18N: %s is an individual’s name
 #: app/Module/PedigreeChartModule.php:164
 #, php-format
 msgid "Pedigree tree of %s"
-msgstr "%s soyağacı ağacı"
+msgstr "%s soy ağacı"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/HelpText.php:267
@@ -11602,7 +11603,7 @@ msgstr "Provo, Utah, ABD"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Vekil"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -15201,7 +15202,10 @@ msgstr "Bu seçenek, kullanıcıların görüntüleri indirmesini kolaylaştıra
 #. I18N: Help text for the “Show private relationships” configuration setting
 #: resources/views/admin/trees-privacy.phtml:166
 msgid "This option will retain family links in private records. This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Bu seçenek, aile bağlantılarını özel kayıtlarda saklar. Bu, soyağacı grafiğinde ve özel bireylerle diğer grafiklerde boş “özel” kutular göreceğiniz anlamına gelir."
+msgstr ""
+"Bu seçenek, aile bağlantılarını özel kayıtlarda saklar. Bu, soy grafiğinde "
+"ve özel bireylerle diğer grafiklerde boş “özel” kutular göreceğiniz anlamına "
+"gelir."
 
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
@@ -15314,7 +15318,12 @@ msgstr "Bu sunucunun bellek sınırı %s MB ve CPU zaman sınırı %s saniyedir.
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:432
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Bu, soyağacı grafiği gibi grafik kutularında görünmesini istediğiniz doğum ve ölüme ek olarak, virgülle veya boşlukla ayrılmış bir gerçek listesi olmalıdır. Bu liste, GEDCOM 5.5.1 standardında tanımlandığı gibi gerçek etiketlerini kullanmanızı gerektirir. Örneğin, mesleğin kutuda görünmesini istiyorsanız, bu alana “OCCU” eklersiniz."
+msgstr ""
+"Bu, soy grafiği gibi grafik kutularında görünmesini istediğiniz doğum ve "
+"ölüme ek olarak, virgülle veya boşlukla ayrılmış bir gerçek listesi "
+"olmalıdır. Bu liste, GEDCOM 5.5.1 standardında tanımlandığı gibi gerçek "
+"etiketlerini kullanmanızı gerektirir. Örneğin, mesleğin kutuda görünmesini "
+"istiyorsanız, bu alana “OCCU” eklersiniz."
 
 #: app/Exceptions/SourceAccessDeniedException.php:35
 #: app/Exceptions/SourceNotFoundException.php:35
@@ -15436,7 +15445,7 @@ msgstr "Zaman"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Son değişiklik zamanı"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15614,7 +15623,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Çok fazla istek. Daha sonra tekrar deneyin."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15890,7 +15899,7 @@ msgstr "Gerçek türü"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Kimlik numarası türü"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15908,7 +15917,7 @@ msgstr "İsim türü"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Referans numarası türü"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -16045,7 +16054,7 @@ msgstr "Bilinmeyen"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Bağlantıyı kaldır"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -19520,7 +19529,7 @@ msgstr "dosyayı içe aktar"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "satır içi not"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20396,7 +20405,7 @@ msgstr "yedinci kuzeni"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "paylaşılan not"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
