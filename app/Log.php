@@ -109,9 +109,9 @@ class Log
      *
      * @return void
      */
-    public static function addErrorLog(string $message): void
+    public static function addErrorLog(string $message, Tree $tree): void
     {
-        self::addLog($message, self::TYPE_ERROR);
+        self::addLog($message, self::TYPE_ERROR, $tree);
     }
 
     /**
@@ -121,9 +121,9 @@ class Log
      *
      * @return void
      */
-    public static function addMediaLog(string $message): void
+    public static function addMediaLog(string $message, Tree $tree): void
     {
-        self::addLog($message, self::TYPE_MEDIA);
+        self::addLog($message, self::TYPE_MEDIA, $tree);
     }
 
     /**
