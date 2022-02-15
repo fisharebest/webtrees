@@ -21,10 +21,12 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -35,8 +37,16 @@ use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
 use function assert;
+use function fclose;
+use function feof;
+use function fread;
+use function max;
+use function stream_filter_append;
 use function strlen;
+use function strrpos;
 use function substr;
+
+use const STREAM_FILTER_READ;
 
 /**
  * Tree management and queries.
@@ -219,10 +229,11 @@ class TreeService
      * @param Tree            $tree
      * @param StreamInterface $stream   The GEDCOM file.
      * @param string          $filename The preferred filename, for export/download.
+     * @param string          $encoding Override the encoding specified in the header.
      *
      * @return void
      */
-    public function importGedcomFile(Tree $tree, StreamInterface $stream, string $filename): void
+    public function importGedcomFile(Tree $tree, StreamInterface $stream, string $filename, string $encoding): void
     {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split
@@ -236,30 +247,31 @@ class TreeService
 
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
 
-        while (!$stream->eof()) {
-            $file_data .= $stream->read(65536);
-            // There is no strrpos() function that searches for substrings :-(
-            for ($pos = strlen($file_data) - 1; $pos > 0; --$pos) {
-                if ($file_data[$pos] === '0' && ($file_data[$pos - 1] === "\n" || $file_data[$pos - 1] === "\r")) {
-                    // We’ve found the last record boundary in this chunk of data
-                    break;
-                }
-            }
-            if ($pos) {
+        $stream = $stream->detach();
+
+        // Convert to UTF-8.
+        stream_filter_append($stream, GedcomEncodingFilter::class, STREAM_FILTER_READ, ['src_encoding' => $encoding]);
+
+        while (!feof($stream)) {
+            $file_data .= fread($stream, 65536);
+            $eol_pos = max((int) strrpos($file_data, "\r0"), (int) strrpos($file_data, "\n0"));
+
+            if ($eol_pos > 0) {
                 DB::table('gedcom_chunk')->insert([
                     'gedcom_id'  => $tree->id(),
-                    'chunk_data' => substr($file_data, 0, $pos),
+                    'chunk_data' => substr($file_data, 0, $eol_pos + 1),
                 ]);
 
-                $file_data = substr($file_data, $pos);
+                $file_data = substr($file_data, $eol_pos + 1);
             }
         }
+
         DB::table('gedcom_chunk')->insert([
             'gedcom_id'  => $tree->id(),
             'chunk_data' => $file_data,
         ]);
 
-        $stream->close();
+        fclose($stream);
     }
 
     /**

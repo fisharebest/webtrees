@@ -86,6 +86,21 @@ parameters:
 			path: app/Elements/XrefMedia.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Encodings\\\\ANSEL\\:\\:fromUtf8\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Encodings/ANSEL.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Encodings/ANSEL.php
+
+		-
+			message: "#^Parameter \\#2 \\$array of function array_map expects array, array\\<int, string\\>\\|false given\\.$#"
+			count: 1
+			path: app/Encodings/AbstractEncoding.php
+
+		-
 			message: "#^Anonymous function should return int but returns float\\|int\\.$#"
 			count: 1
 			path: app/Fact.php
@@ -344,6 +359,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|null given\\.$#"
 			count: 2
 			path: app/Functions/FunctionsImport.php
+
+		-
+			message: "#^Cannot call method fromUtf8\\(\\) on Fisharebest\\\\Webtrees\\\\Encodings\\\\EncodingInterface\\|null\\.$#"
+			count: 2
+			path: app/GedcomFilters/GedcomEncodingFilter.php
 
 		-
 			message: "#^Cannot call method acceptRecord\\(\\) on mixed\\.$#"
@@ -862,16 +882,6 @@ parameters:
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/GedcomLoad.php
-
-		-
-			message: "#^Cannot access property \\$chunk_data on object\\|null\\.$#"
-			count: 3
-			path: app/Http/RequestHandlers/GedcomLoad.php
-
-		-
-			message: "#^Cannot access property \\$gedcom_chunk_id on object\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/GedcomLoad.php
 
@@ -1612,16 +1622,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:isManager\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$user of static method Fisharebest\\\\Webtrees\\\\Auth\\:\\:isMember\\(\\) expects Fisharebest\\\\Webtrees\\\\Contracts\\\\UserInterface\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Module/ClippingsCartModule.php
 
@@ -3457,6 +3457,26 @@ parameters:
 			message: "#^Cannot call method addDay\\(\\) on Fisharebest\\\\Webtrees\\\\Carbon\\|null\\.$#"
 			count: 1
 			path: app/Services/SiteLogsService.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|null given\\.$#"
+			count: 1
+			path: app/Services/TreeService.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function feof expects resource, resource\\|null given\\.$#"
+			count: 1
+			path: app/Services/TreeService.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function fread expects resource, resource\\|null given\\.$#"
+			count: 1
+			path: app/Services/TreeService.php
+
+		-
+			message: "#^Parameter \\#1 \\$stream of function stream_filter_append expects resource, resource\\|null given\\.$#"
+			count: 1
+			path: app/Services/TreeService.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\UpgradeService\\:\\:downloadFile\\(\\) should return int but returns int\\|false\\.$#"

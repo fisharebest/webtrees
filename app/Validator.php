@@ -92,6 +92,17 @@ class Validator
     }
 
     /**
+     * @param array<string> $values
+     *
+     * @return $this
+     */
+    public function isInArray(array $values): self
+    {
+        $this->rules[] = static fn (?string $value): ?string => is_string($value) && in_array($value, $values, true) ? $value : null;
+
+        return $this;
+    }
+    /**
      * @param string $base_url
      *
      * @return $this

@@ -222,7 +222,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $tree         = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
         $stream       = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
-        $tree_service->importGedcomFile($tree, $stream, $gedcom_file);
+        $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
         $timeout_service = new TimeoutService();
         $controller      = new GedcomLoad($timeout_service, $tree_service);

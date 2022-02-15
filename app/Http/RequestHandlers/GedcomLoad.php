@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Exception;
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -136,14 +136,13 @@ class GedcomLoad implements RequestHandlerInterface
                     break;
                 }
 
-                // If we are loading the first (header) record, then delete old data and convert to UTF-8.
+                // If we are loading the first (header) record, then delete old data.
                 if ($first_time) {
                     $this->tree_service->deleteGenealogyData($tree, (bool) $tree->getPreference('keep_media'));
 
                     // Remove any byte-order-mark
-                    if (str_starts_with($data->chunk_data, Gedcom::UTF8_BOM)) {
-                        $data->chunk_data = substr($data->chunk_data, strlen(Gedcom::UTF8_BOM));
-                        // Put it back in the database, so we can do character conversion
+                    if (str_starts_with($data->chunk_data, UTF8::BYTE_ORDER_MARK)) {
+                        $data->chunk_data = substr($data->chunk_data, strlen(UTF8::BYTE_ORDER_MARK));
                         DB::table('gedcom_chunk')
                             ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
                             ->update(['chunk_data' => $data->chunk_data]);
@@ -156,77 +155,7 @@ class GedcomLoad implements RequestHandlerInterface
                         ]);
                     }
 
-                    // What character set is this? Need to convert it to UTF8
-                    if (preg_match('/[\r\n][ \t]*1 CHAR(?:ACTER)? ([^\r\n]+)/', $data->chunk_data, $match)) {
-                        $charset = strtoupper(trim($match[1]));
-                    } else {
-                        $charset = 'ASCII';
-                    }
-
-                    // MySQL supports a wide range of collation conversions. These are ones that
-                    // have been encountered "in the wild".
-                    switch ($charset) {
-                        case 'ASCII':
-                            DB::table('gedcom_chunk')
-                                ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING ascii) USING utf8)')]);
-                            break;
-                        case 'IBMPC':   // IBMPC, IBM WINDOWS and MS-DOS could be anything. Mostly it means CP850.
-                        case 'IBM WINDOWS':
-                        case 'MS-DOS':
-                        case 'CP437':
-                        case 'CP850':
-                            // CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
-                            DB::table('gedcom_chunk')
-                                ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING cp850) USING utf8)')]);
-                            break;
-                        case 'ANSI': // ANSI could be anything. Most applications seem to treat it as latin1.
-                        case 'WINDOWS':
-                        case 'CP1252':
-                        case 'ISO8859-1':
-                        case 'ISO-8859-1':
-                        case 'LATIN1':
-                        case 'LATIN-1':
-                            // Convert from ISO-8859-1 (western european) to UTF8.
-                            DB::table('gedcom_chunk')
-                                ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING latin1) USING utf8)')]);
-                            break;
-                        case 'CP1250':
-                        case 'ISO8859-2':
-                        case 'ISO-8859-2':
-                        case 'LATIN2':
-                        case 'LATIN-2':
-                            // Convert from ISO-8859-2 (eastern european) to UTF8.
-                            DB::table('gedcom_chunk')
-                                ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING latin2) USING utf8)')]);
-                            break;
-                        case 'MACINTOSH':
-                            // Convert from MAC Roman to UTF8.
-                            DB::table('gedcom_chunk')
-                                ->where('gedcom_id', '=', $tree->id())
-                                ->update(['chunk_data' => new Expression('CONVERT(CONVERT(chunk_data USING macroman) USING utf8)')]);
-                            break;
-                        case 'UTF8':
-                        case 'UTF-8':
-                            // Already UTF-8 so nothing to do!
-                            break;
-                        case 'ANSEL':
-                        default:
-                            return $this->viewResponse('admin/import-fail', [
-                                'error' => I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset),
-                                'tree'  => $tree,
-                            ]);
-                    }
                     $first_time = false;
-
-                    // Re-fetch the data, now that we have performed character set conversion.
-                    $data = DB::table('gedcom_chunk')
-                        ->where('gedcom_chunk_id', '=', $data->gedcom_chunk_id)
-                        ->select(['gedcom_chunk_id', 'chunk_data'])
-                        ->first();
                 }
 
                 $data->chunk_data = str_replace("\r", "\n", $data->chunk_data);

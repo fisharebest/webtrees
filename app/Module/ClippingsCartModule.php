@@ -21,6 +21,11 @@ namespace Fisharebest\Webtrees\Module;
 
 use Aura\Router\Route;
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Encodings\ANSEL;
+use Fisharebest\Webtrees\Encodings\ASCII;
+use Fisharebest\Webtrees\Encodings\UTF16BE;
+use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -45,6 +50,7 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
@@ -247,15 +253,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $tree = $request->getAttribute('tree');
         assert($tree instanceof Tree);
 
-        $user  = $request->getAttribute('user');
         $title = I18N::translate('Family tree clippings cart') . ' — ' . I18N::translate('Download');
 
         return $this->viewResponse('modules/clippings/download', [
-            'is_manager' => Auth::isManager($tree, $user),
-            'is_member'  => Auth::isMember($tree, $user),
-            'module'     => $this->name(),
-            'title'      => $title,
-            'tree'       => $tree,
+            'module' => $this->name(),
+            'title'  => $title,
+            'tree'   => $tree,
         ]);
     }
 
@@ -272,23 +275,22 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $data_filesystem = Registry::filesystem()->data();
 
-        $params = (array) $request->getParsedBody();
+        $format       = Validator::parsedBody($request)->isInArray(['gedcom', 'zip'])->requiredString('format');
+        $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->requiredString('privacy');
+        $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->requiredString('encoding');
+        $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->requiredString('line_endings');
 
-        $privatize_export = $params['privatize_export'] ?? 'none';
-
-        if ($privatize_export === 'none' && !Auth::isManager($tree)) {
-            $privatize_export = 'member';
+        if ($privacy === 'none' && !Auth::isManager($tree)) {
+            $privacy = 'member';
         }
 
-        if ($privatize_export === 'gedadmin' && !Auth::isManager($tree)) {
-            $privatize_export = 'member';
+        if ($privacy === 'gedadmin' && !Auth::isManager($tree)) {
+            $privacy = 'member';
         }
 
-        if ($privatize_export === 'user' && !Auth::isMember($tree)) {
-            $privatize_export = 'visitor';
+        if ($privacy === 'user' && !Auth::isMember($tree)) {
+            $privacy = 'visitor';
         }
-
-        $convert = (bool) ($params['convert'] ?? false);
 
         $cart = Session::get('cart');
         $cart = is_array($cart) ? $cart : [];
@@ -296,22 +298,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $xrefs = array_keys($cart[$tree->name()] ?? []);
         $xrefs = array_map('strval', $xrefs); // PHP converts numeric keys to integers.
 
-        // Create a new/empty .ZIP file
-        $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
-        $zip_provider   = new FilesystemZipArchiveProvider($temp_zip_file, 0755);
-        $zip_adapter    = new ZipArchiveAdapter($zip_provider);
-        $zip_filesystem = new Filesystem($zip_adapter);
-
-        $media_filesystem = $tree->mediaFilesystem($data_filesystem);
-
-        // Media file prefix
-        $path = $tree->getPreference('MEDIA_DIRECTORY');
-
-        $encoding = $convert ? 'ANSI' : 'UTF-8';
-
         $records = new Collection();
 
-        switch ($privatize_export) {
+        switch ($privacy) {
             case 'gedadmin':
                 $access_level = Auth::PRIV_NONE;
                 break;
@@ -353,24 +342,44 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 }
 
                 $records->add($record);
+            }
+        }
 
-                if ($object instanceof Media) {
-                    // Add the media files to the archive
-                    foreach ($object->mediaFiles() as $media_file) {
-                        $from = $media_file->filename();
-                        $to   = $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $media_filesystem->fileExists($from)) {
-                            $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
-                        }
+        // Media file prefix
+        $path = $tree->getPreference('MEDIA_DIRECTORY');
+
+        // We have already applied privacy filtering, so do not do it again.
+        $resource = $this->gedcom_export_service->export($tree, false, $encoding, Auth::PRIV_HIDE, $path, $line_endings, $records);
+
+        if ($format === 'gedcom') {
+            return $this->response_factory->createResponse()
+                ->withBody($this->stream_factory->createStreamFromResource($resource))
+                ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $encoding)
+                ->withHeader('Content-Disposition', 'attachment; filename="clippings.ged');
+        }
+
+        // Create a new/empty .ZIP file
+        $temp_zip_file  = stream_get_meta_data(tmpfile())['uri'];
+        $zip_provider   = new FilesystemZipArchiveProvider($temp_zip_file, 0755);
+        $zip_adapter    = new ZipArchiveAdapter($zip_provider);
+        $zip_filesystem = new Filesystem($zip_adapter);
+
+        $media_filesystem = $tree->mediaFilesystem($data_filesystem);
+
+        foreach ($records as $record) {
+            if ($record instanceof Media) {
+                // Add the media files to the archive
+                foreach ($record->mediaFiles() as $media_file) {
+                    $from = $media_file->filename();
+                    $to   = $path . $media_file->filename();
+                    if (!$media_file->isExternal() && $media_filesystem->fileExists($from)) {
+                        $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                     }
                 }
             }
         }
 
-        // We have already applied privacy filtering, so do not do it again.
-        $resource = $this->gedcom_export_service->export($tree, false, $encoding, Auth::PRIV_HIDE, $path, $records);
-
-        // Finally add the GEDCOM file to the .ZIP file.
+        // Finally, add the GEDCOM file to the .ZIP file.
         $zip_filesystem->writeStream('clippings.ged', $resource);
         fclose($resource);
 

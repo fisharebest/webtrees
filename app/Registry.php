@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\CalendarDateFactoryInterface;
+use Fisharebest\Webtrees\Contracts\EncodingFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
@@ -49,6 +50,8 @@ class Registry
     private static CalendarDateFactoryInterface $calendar_date_factory;
 
     private static ElementFactoryInterface $element_factory;
+
+    private static EncodingFactoryInterface $encoding_factory;
 
     private static FamilyFactoryInterface $family_factory;
 
@@ -128,6 +131,22 @@ class Registry
         }
 
         return self::$element_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param EncodingFactoryInterface|null $factory
+     *
+     * @return EncodingFactoryInterface
+     */
+    public static function encodingFactory(EncodingFactoryInterface $factory = null): EncodingFactoryInterface
+    {
+        if ($factory instanceof EncodingFactoryInterface) {
+            self::$encoding_factory = $factory;
+        }
+
+        return self::$encoding_factory;
     }
 
     /**

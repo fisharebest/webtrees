@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
@@ -261,7 +261,7 @@ class AdminService
                     $header = fread($stream, 10);
                     fclose($stream);
 
-                    return preg_match('/^(' . Gedcom::UTF8_BOM . ')?0 HEAD/', $header) > 0;
+                    return preg_match('/^(' . UTF8::BYTE_ORDER_MARK . ')?0 HEAD/', $header) > 0;
                 })
                 ->map(function (StorageAttributes $attributes) {
                     return $attributes->path();

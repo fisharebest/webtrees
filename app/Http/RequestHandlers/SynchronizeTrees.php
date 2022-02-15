@@ -87,7 +87,7 @@ class SynchronizeTrees implements RequestHandlerInterface
                 if ($tree->getPreference('filemtime') !== $filemtime) {
                     $resource = $data_filesystem->readStream($gedcom_file);
                     $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
-                    $this->tree_service->importGedcomFile($tree, $stream, $gedcom_file);
+                    $this->tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
                     $stream->close();
                     $tree->setPreference('filemtime', $filemtime);
 
