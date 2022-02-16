@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\View;
 
   (function () {
     const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
-    const geoJson_data = <?= json_encode($data, JSON_THROW_ON_ERROR) ?>;
+    const polylines = <?= json_encode($data['polylines'], JSON_THROW_ON_ERROR) ?>;
     const sidebar = document.querySelector('.wt-pedigree-map-sidebar');
 
     const scrollOptions = {
@@ -42,17 +42,16 @@ use Fisharebest\Webtrees\View;
       tree: null
     }
 
-    geoJson_data.features.forEach((feature) => {
-      if (feature.properties.polyline) {
-        features.layer.addLayer(L.polyline(feature.properties.polyline.points, feature.properties.polyline.options));
-        if (!features.tree) {
-          features.tree = {
-            label: '<?= I18N::translate("Show/Hide parent to child lines") ?>',
-            layer: features.layer
-          }
-        }
-      }
+    polylines.forEach((line) => {
+      features.layer.addLayer(L.polyline(line.points, line.options));
     });
+
+    if (polylines.length) {
+      features.tree = {
+        label: '<?= I18N::translate("Show/Hide parent to child lines") ?>',
+        layer: features.layer
+      }
+    }
 
     /**
      * Passed to resetControl to
@@ -76,6 +75,8 @@ use Fisharebest\Webtrees\View;
      * @private
      */
     let _buildMapData = function () {
+      const geoJson_data = <?= json_encode($data['geoJSON'], JSON_THROW_ON_ERROR) ?>;
+
       if (geoJson_data.features.length === 0) {
         map.fitWorld();
         sidebar.innerHTML = '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show'), JSON_THROW_ON_ERROR) ?> + '</div>';
