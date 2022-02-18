@@ -48,7 +48,7 @@ class TomSelectPlace extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<array<string,string>>
+     * @return Collection<int,array<string,string>>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {

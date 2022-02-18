@@ -76,7 +76,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      * @param Tree          $tree
      * @param array<string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     protected function familiesToFix(Tree $tree, array $params): Collection
     {
@@ -92,7 +92,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
@@ -108,7 +108,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     protected function mediaToFix(Tree $tree, array $params): Collection
     {
@@ -124,7 +124,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     protected function notesToFix(Tree $tree, array $params): Collection
     {
@@ -140,7 +140,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     protected function repositoriesToFix(Tree $tree, array $params): Collection
     {
@@ -156,7 +156,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     protected function sourcesToFix(Tree $tree, array $params): Collection
     {
@@ -172,7 +172,7 @@ class FixDuplicateLinks extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     protected function submittersToFix(Tree $tree, array $params): Collection
     {

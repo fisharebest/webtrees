@@ -31,7 +31,7 @@ interface ModuleHistoricEventsInterface extends ModuleInterface
     /**
      * All events provided by this module.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection;
 
@@ -40,7 +40,7 @@ interface ModuleHistoricEventsInterface extends ModuleInterface
      *
      * @param Individual $individual
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function historicEventsForIndividual(Individual $individual): Collection;
 }

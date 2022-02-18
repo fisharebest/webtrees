@@ -55,7 +55,7 @@ class ChartDivorce
     /**
      * Returns the related database records.
      *
-     * @return Collection<object>
+     * @return Collection<int,object>
      */
     private function queryRecords(): Collection
     {

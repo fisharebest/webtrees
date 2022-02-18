@@ -214,7 +214,7 @@ class MapDataService
      *
      * @param int|null $parent_id
      *
-     * @return Collection<object>
+     * @return Collection<int,object>
      */
     public function getPlaceListLocation(?int $parent_id): Collection
     {

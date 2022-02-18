@@ -64,7 +64,7 @@ class ServerCheckService
      *
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function serverErrors(string $driver = ''): Collection
     {
@@ -88,7 +88,7 @@ class ServerCheckService
      *
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function serverWarnings(string $driver = ''): Collection
     {
@@ -274,7 +274,7 @@ class ServerCheckService
     /**
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     private function databaseDriverErrors(string $driver): Collection
     {
@@ -313,7 +313,7 @@ class ServerCheckService
     /**
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     private function databaseDriverWarnings(string $driver): Collection
     {

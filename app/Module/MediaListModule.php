@@ -259,7 +259,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      * @param string $filter     optional search string
      * @param string $format     option OBJE/FILE/FORM/TYPE
      *
-     * @return Collection<Media>
+     * @return Collection<int,Media>
      */
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $format): Collection
     {

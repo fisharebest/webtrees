@@ -54,7 +54,7 @@ class PendingChangesService
      *
      * @param Tree $tree
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function pendingXrefs(Tree $tree): Collection
     {

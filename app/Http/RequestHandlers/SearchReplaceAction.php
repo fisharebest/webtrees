@@ -124,9 +124,9 @@ class SearchReplaceAction implements RequestHandlerInterface
     }
 
     /**
-     * @param Collection<GedcomRecord> $records
-     * @param string                   $search
-     * @param string                   $replace
+     * @param Collection<int,GedcomRecord> $records
+     * @param string                       $search
+     * @param string                       $replace
      *
      * @return int
      */
@@ -149,10 +149,10 @@ class SearchReplaceAction implements RequestHandlerInterface
     }
 
     /**
-     * @param Collection<GedcomRecord> $records
-     * @param string                   $search
-     * @param string                   $replace
-     * @param array<string>            $name_tags
+     * @param Collection<int,GedcomRecord> $records
+     * @param string                       $search
+     * @param string                       $replace
+     * @param array<string>                $name_tags
      *
      * @return int
      */
@@ -176,9 +176,9 @@ class SearchReplaceAction implements RequestHandlerInterface
     }
 
     /**
-     * @param Collection<GedcomRecord> $records
-     * @param string                   $search
-     * @param string                   $replace
+     * @param Collection<int,GedcomRecord> $records
+     * @param string                       $search
+     * @param string                       $replace
      *
      * @return int
      */

@@ -117,7 +117,7 @@ class UpgradeService
      *
      * @param string $zip_file
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      * @throws FilesystemException
      */
     public function webtreesZipContents(string $zip_file): Collection
@@ -213,8 +213,8 @@ class UpgradeService
      * Delete files in $destination that aren't in $source.
      *
      * @param FilesystemOperator $filesystem
-     * @param Collection<string> $folders_to_clean
-     * @param Collection<string> $files_to_keep
+     * @param Collection<int,string> $folders_to_clean
+     * @param Collection<int,string> $files_to_keep
      *
      * @return void
      */

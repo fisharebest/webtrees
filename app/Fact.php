@@ -750,9 +750,9 @@ class Fact
      * using the compare type function
      * 3. Then merge the arrays back into the original array using the compare type function
      *
-     * @param Collection<Fact> $unsorted
+     * @param Collection<int,Fact> $unsorted
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public static function sortFacts(Collection $unsorted): Collection
     {
@@ -807,9 +807,9 @@ class Fact
     /**
      * Sort fact/event tags using the same order that we use for facts.
      *
-     * @param Collection<string> $unsorted
+     * @param Collection<int,string> $unsorted
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public static function sortFactTags(Collection $unsorted): Collection
     {

@@ -247,7 +247,7 @@ class IndividualPage implements RequestHandlerInterface
      *
      * @param Individual $individual
      *
-     * @return Collection<ModuleSidebarInterface>
+     * @return Collection<int,ModuleSidebarInterface>
      */
     public function getSidebars(Individual $individual): Collection
     {
@@ -264,7 +264,7 @@ class IndividualPage implements RequestHandlerInterface
      *
      * @param Individual $individual
      *
-     * @return Collection<ModuleTabInterface>
+     * @return Collection<int,ModuleTabInterface>
      */
     public function getTabs(Individual $individual): Collection
     {

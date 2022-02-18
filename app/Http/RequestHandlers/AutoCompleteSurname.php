@@ -33,7 +33,7 @@ class AutoCompleteSurname extends AbstractAutocompleteHandler
     /**
      * @param ServerRequestInterface $request
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     protected function search(ServerRequestInterface $request): Collection
     {

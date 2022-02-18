@@ -278,9 +278,9 @@ class HomePageService
     /**
      * Save the updated blocks for a user.
      *
-     * @param int                $user_id
-     * @param Collection<string> $main_block_ids
-     * @param Collection<string> $side_block_ids
+     * @param int                    $user_id
+     * @param Collection<int,string> $main_block_ids
+     * @param Collection<int,string> $side_block_ids
      *
      * @return void
      */
@@ -335,9 +335,9 @@ class HomePageService
     /**
      * Save the updated blocks for a tree.
      *
-     * @param int                $tree_id
-     * @param Collection<string> $main_block_ids
-     * @param Collection<string> $side_block_ids
+     * @param int                    $tree_id
+     * @param Collection<int,string> $main_block_ids
+     * @param Collection<int,string> $side_block_ids
      *
      * @return void
      */
@@ -392,7 +392,7 @@ class HomePageService
     /**
      * Take a list of block names, and return block (module) objects.
      *
-     * @param Collection<string>                   $blocks
+     * @param Collection<int,string>               $blocks
      * @param Collection<int,ModuleBlockInterface> $active_blocks
      *
      * @return Collection<int,ModuleBlockInterface>

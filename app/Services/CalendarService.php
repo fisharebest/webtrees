@@ -201,7 +201,7 @@ class CalendarService
      * @param string $sort_by
      * @param Tree   $tree
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function getEventsList(int $jd1, int $jd2, string $events, bool $only_living, string $sort_by, Tree $tree): Collection
     {

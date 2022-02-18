@@ -90,7 +90,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
             return $this->createUpdateRanges($tree, $module, $rows, $params);
         }
 
-        /** @var Collection<GedcomRecord> $records */
+        /** @var Collection<int,GedcomRecord> $records */
         $records = $rows->map(function (object $row) use ($tree): ?GedcomRecord {
             return $this->data_fix_service->getRecordByType($row->xref, $tree, $row->type);
         })->filter(static function (?GedcomRecord $record) use ($module, $params): bool {
@@ -107,7 +107,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
     /**
      * @param Tree                   $tree
      * @param ModuleDataFixInterface $module
-     * @param Collection<object>     $rows
+     * @param Collection<int,object> $rows
      * @param array<string>          $params
      *
      * @return ResponseInterface

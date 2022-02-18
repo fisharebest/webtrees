@@ -198,7 +198,7 @@ class Family extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
     public function spouses(int $access_level = null): Collection
     {
@@ -215,7 +215,7 @@ class Family extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
     public function children(int $access_level = null): Collection
     {

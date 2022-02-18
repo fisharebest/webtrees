@@ -551,7 +551,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
     public function linkedIndividuals(string $link): Collection
     {
@@ -575,7 +575,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     public function linkedFamilies(string $link): Collection
     {
@@ -599,7 +599,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Source>
+     * @return Collection<int,Source>
      */
     public function linkedSources(string $link): Collection
     {
@@ -623,7 +623,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Media>
+     * @return Collection<int,Media>
      */
     public function linkedMedia(string $link): Collection
     {
@@ -647,7 +647,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Note>
+     * @return Collection<int,Note>
      */
     public function linkedNotes(string $link): Collection
     {
@@ -672,7 +672,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Repository>
+     * @return Collection<int,Repository>
      */
     public function linkedRepositories(string $link): Collection
     {
@@ -697,7 +697,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Location>
+     * @return Collection<int,Location>
      */
     public function linkedLocations(string $link): Collection
     {
@@ -769,7 +769,7 @@ class GedcomRecord
      * @param int|null      $access_level
      * @param bool          $ignore_deleted
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function facts(
         array $filter = [],
@@ -1215,7 +1215,7 @@ class GedcomRecord
      *
      * @param int              $level
      * @param string           $fact_type
-     * @param Collection<Fact> $facts
+     * @param Collection<int,Fact> $facts
      *
      * @return void
      */
