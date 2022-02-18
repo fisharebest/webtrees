@@ -76,7 +76,7 @@ class FixNameSlashesAndSpaces extends AbstractModule implements ModuleDataFixInt
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {

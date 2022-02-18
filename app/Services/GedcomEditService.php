@@ -62,7 +62,7 @@ class GedcomEditService
     /**
      * @param Tree $tree
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function newFamilyFacts(Tree $tree): Collection
     {
@@ -78,7 +78,7 @@ class GedcomEditService
      * @param string        $sex
      * @param array<string> $names
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function newIndividualFacts(Tree $tree, string $sex, array $names): Collection
     {

@@ -57,7 +57,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<object>
+     * @return Collection<int,object>
      */
     public function recordsToFix(Tree $tree, array $params): Collection
     {
@@ -155,7 +155,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function familiesToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -186,7 +186,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function individualsToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -217,7 +217,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function locationsToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -249,7 +249,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function mediaToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -280,7 +280,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function notesToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -312,7 +312,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function repositoriesToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -344,7 +344,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function sourcesToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -375,7 +375,7 @@ trait ModuleDataFixTrait
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>|null
+     * @return Collection<int,string>|null
      */
     protected function submittersToFix(/** @scrutinizer ignore-unused */ Tree $tree, /** @scrutinizer ignore-unused */ array $params): ?Collection
     {
@@ -404,11 +404,11 @@ trait ModuleDataFixTrait
     /**
      * Merge pending changes of a given type.  We need to check all pending records.
      *
-     * @param Collection<string> $records
-     * @param Tree               $tree
-     * @param string             $type
+     * @param Collection<int,string> $records
+     * @param Tree                   $tree
+     * @param string                 $type
      *
-     * @return Collection<object>
+     * @return Collection<int,object>
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {

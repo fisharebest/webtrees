@@ -84,7 +84,7 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
      * @param int    $limit
      * @param string $at    "@" or ""
      *
-     * @return Collection<array<string,string>>
+     * @return Collection<int,array<string,string>>
      */
     abstract protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection;
 }

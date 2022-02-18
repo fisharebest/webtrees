@@ -137,7 +137,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Collection<ModuleAnalyticsInterface>
+     * @return Collection<int,ModuleAnalyticsInterface>
      */
     protected function analyticsModules(Tree $tree, UserInterface $user): Collection
     {

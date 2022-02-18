@@ -63,13 +63,13 @@ class GedcomExportService
     /**
      * Write GEDCOM data to a stream.
      *
-     * @param Tree                    $tree         - Export data from this tree
-     * @param bool                    $sort_by_xref - Write GEDCOM records in XREF order
-     * @param string                  $encoding     - Convert from UTF-8 to other encoding
-     * @param int                     $access_level - Apply privacy filtering
-     * @param string                  $media_path   - Prepend path to media filenames
-     * @param string                  $line_endings - CRLF or LF
-     * @param Collection<string>|null $records      - Just export these records
+     * @param Tree                        $tree         - Export data from this tree
+     * @param bool                        $sort_by_xref - Write GEDCOM records in XREF order
+     * @param string                      $encoding     - Convert from UTF-8 to other encoding
+     * @param int                         $access_level - Apply privacy filtering
+     * @param string                      $media_path   - Prepend path to media filenames
+     * @param string                      $line_endings - CRLF or LF
+     * @param Collection<int,string>|null $records      - Just export these records
      *
      * @return resource
      */

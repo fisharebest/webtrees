@@ -44,7 +44,7 @@ class Place
     // "Westminster, London, England"
     private string $place_name;
 
-    /** @var Collection<string> The parts of a place name, e.g. ["Westminster", "London", "England"] */
+    /** @var Collection<int,string> The parts of a place name, e.g. ["Westminster", "London", "England"] */
     private Collection $parts;
 
     private Tree $tree;
@@ -161,7 +161,7 @@ class Place
      *
      * @param int $n
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function firstParts(int $n): Collection
     {
@@ -173,7 +173,7 @@ class Place
      *
      * @param int $n
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function lastParts(int $n): Collection
     {

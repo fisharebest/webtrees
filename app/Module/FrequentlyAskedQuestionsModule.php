@@ -407,7 +407,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Collection<object>
+     * @return Collection<int,object>
      */
     private function faqsForTree(Tree $tree): Collection
     {

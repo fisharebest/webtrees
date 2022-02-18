@@ -147,7 +147,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $max_julian_day
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
     private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
     {
@@ -171,7 +171,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $max_julian_day
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
     {

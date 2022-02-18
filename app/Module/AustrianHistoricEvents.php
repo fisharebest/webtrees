@@ -52,7 +52,7 @@ class AustrianHistoricEvents extends AbstractModule implements ModuleHistoricEve
     /**
      * All events provided by this module.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection
     {

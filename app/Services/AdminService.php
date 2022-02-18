@@ -245,7 +245,7 @@ class AdminService
      *
      * @param FilesystemOperator $filesystem
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function gedcomFiles(FilesystemOperator $filesystem): Collection
     {

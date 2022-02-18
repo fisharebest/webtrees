@@ -82,7 +82,7 @@ class AlbumModule extends MediaTabModule
      *
      * @param Individual $individual
      *
-     * @return Collection<Media>
+     * @return Collection<int,Media>
      */
     private function getMedia(Individual $individual): Collection
     {

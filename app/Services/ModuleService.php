@@ -574,7 +574,7 @@ class ModuleService
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Collection<ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
@@ -591,7 +591,7 @@ class ModuleService
      * @param bool   $include_disabled
      * @param bool   $sort
      *
-     * @return Collection<ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
@@ -625,7 +625,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Collection<ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -678,7 +678,7 @@ class ModuleService
     /**
      * All core modules in the system.
      *
-     * @return Collection<ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     private function coreModules(): Collection
     {
@@ -695,7 +695,7 @@ class ModuleService
     /**
      * All custom modules in the system.  Custom modules are defined in modules_v4/
      *
-     * @return Collection<ModuleCustomInterface>
+     * @return Collection<int,ModuleCustomInterface>
      */
     private function customModules(): Collection
     {
@@ -850,7 +850,7 @@ class ModuleService
     /**
      * During setup, we'll need access to some languages.
      *
-     * @return Collection<ModuleLanguageInterface>
+     * @return Collection<int,ModuleLanguageInterface>
      */
     public function setupLanguages(): Collection
     {
@@ -885,7 +885,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Collection<ModuleInterface>
+     * @return Collection<int,ModuleInterface>
      */
     public function otherModules(bool $include_disabled = false): Collection
     {
@@ -904,7 +904,7 @@ class ModuleService
     /**
      * Generate a list of module names which exist in the database but not on disk.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function deletedModules(): Collection
     {
@@ -936,7 +936,7 @@ class ModuleService
     }
 
     /**
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function componentsWithAccess(): Collection
     {
@@ -944,7 +944,7 @@ class ModuleService
     }
 
     /**
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function componentsWithOrder(): Collection
     {
