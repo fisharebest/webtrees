@@ -33,7 +33,7 @@ abstract class AbstractGedcomRecordFactory
     /**
      * @param Tree $tree
      *
-     * @return Collection<int,object>
+     * @return Collection<array-key,string>
      */
     protected function pendingChanges(Tree $tree): Collection
     {

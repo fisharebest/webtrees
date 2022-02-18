@@ -100,7 +100,7 @@ class ChartService
      * @param Individual $individual  Start with this individual
      * @param int        $generations Fetch this number of generations
      *
-     * @return Collection<int,Individual>
+     * @return Collection<int,Family>
      */
     public function descendantFamilies(Individual $individual, int $generations): Collection
     {
