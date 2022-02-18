@@ -820,7 +820,7 @@ class GedcomRecord
             });
         }
 
-        return new Collection($facts);
+        return $facts;
     }
 
     /**
