@@ -155,7 +155,7 @@ class Media extends GedcomRecord
      *
      * @return string
      */
-    public function displayImage(int $width, int $height, string $fit, array $attributes = []): string
+    public function displayImage(int $width, int $height, string $fit, array $attributes): string
     {
         // Display the first image
         foreach ($this->mediaFiles() as $media_file) {

@@ -366,7 +366,7 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Display the prefered image for this individual.
+     * Display the preferred image for this individual.
      * Use an icon if no image is available.
      *
      * @param int           $width      Pixels
