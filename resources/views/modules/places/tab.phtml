@@ -9,11 +9,15 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<div class="py-4">
-    <div class="row gchart wt-places-tab-wrapper">
-        <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-places-tab-map" dir="ltr"></div>
-        <ul class="col-sm-3 wt-places-tab-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
-    </div>
+
+<label class="form-check-label mx-1 my-2">
+  <input class="wt-sidebar-toggle" type="checkbox" data-wt-persist="sidebar" aria-expanded="true"></input>
+  <?= I18N::translate('Hide the list of events') ?>
+</label>
+
+<div class="row gchart wt-places-tab-wrapper">
+  <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-places-tab-map" dir="ltr"></div>
+  <ul class="col-sm-3 wt-places-tab-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
 </div>
 
 <script>
@@ -130,6 +134,15 @@ use Fisharebest\Webtrees\I18N;
           });
         });
       });
+
+      document.querySelector('.wt-sidebar-toggle').addEventListener('change', () => {
+        const mapElement = document.querySelector('.wt-map');
+        sidebar.classList.toggle('d-none');
+        mapElement.classList.toggle('col-sm-9');
+        mapElement.classList.toggle('col-sm-12');
+        map.invalidateSize();
+      });
+
     }
 
     _drawMap();
