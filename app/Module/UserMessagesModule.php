@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -124,7 +124,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->orderByDesc('message_id')
             ->get()
             ->map(static function (object $row): object {
-                $row->created = Carbon::make($row->created);
+                $row->created = Registry::timestampFactory()->fromString($row->created);
 
                 return $row;
             });

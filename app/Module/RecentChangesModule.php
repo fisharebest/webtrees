@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -301,7 +300,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->where('gedcom_id', '=', $tree->id())
             ->where('status', '=', 'accepted')
             ->where('new_gedcom', '<>', '')
-            ->where('change_time', '>', Carbon::now()->subDays($days))
+            ->where('change_time', '>', Registry::timestampFactory()->now()->subtractDays($days)->toDateTimeString())
             ->groupBy(['xref'])
             ->select(new Expression('MAX(change_id) AS recent_change_id'));
 
@@ -314,7 +313,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
             ->map(function (object $row) use ($tree): object {
                 return (object) [
                     'record' => Registry::gedcomRecordFactory()->make($row->xref, $tree, $row->new_gedcom),
-                    'time'   => Carbon::create($row->change_time)->local(),
+                    'time'   => Registry::timestampFactory()->fromString($row->change_time),
                     'user'   => $this->user_service->find((int) $row->user_id),
                 ];
             })
@@ -333,7 +332,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {
-        $julian_day = Carbon::now()->julianDay() - $days;
+        $julian_day = Registry::timestampFactory()->now()->subtractDays($days)->julianDay();
 
         $individuals = DB::table('dates')
             ->where('d_file', '=', $tree->id())

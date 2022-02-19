@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Services;
 
 use Closure;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
@@ -37,6 +36,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
 use function max;
+use function time;
 
 /**
  * Functions for managing users.
@@ -128,7 +128,7 @@ class UserService
             ->where('us1.setting_value', '=', $token)
             ->join('user_setting AS us2', 'us2.user_id', '=', 'user.user_id')
             ->where('us2.setting_name', '=', 'password-token-expire')
-            ->where('us2.setting_value', '>', Carbon::now()->getTimestamp())
+            ->where('us2.setting_value', '>', time())
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper())

@@ -855,30 +855,30 @@ class GedcomRecord
     /**
      * Get the last-change timestamp for this record
      *
-     * @return Carbon
+     * @return Timestamp
      */
-    public function lastChangeTimestamp(): Carbon
+    public function lastChangeTimestamp(): Timestamp
     {
         /** @var Fact|null $chan */
         $chan = $this->facts(['CHAN'])->first();
 
         if ($chan instanceof Fact) {
             // The record does have a CHAN event
-            $d = $chan->date()->minimumDate();
+            $d = $chan->date()->minimumDate()->format('%Y-%m-%d');
 
-            if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->gedcom(), $match)) {
-                return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2], (int) $match[3]);
+            if (preg_match('/\n3 TIME( (\d\d):(\d\d):(\d\d))/', $chan->gedcom(), $match)) {
+                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
             }
 
-            if (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->gedcom(), $match)) {
-                return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2]);
+            if (preg_match('/\n3 TIME ((\d\d):(\d\d))/', $chan->gedcom(), $match)) {
+                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
             }
 
-            return Carbon::create($d->year(), $d->month(), $d->day());
+            return Registry::timestampFactory()->fromString($d, 'Y-m-d');
         }
 
         // The record does not have a CHAN event
-        return Carbon::createFromTimestamp(0);
+        return Registry::timestampFactory()->make(0);
     }
 
     /**

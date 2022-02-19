@@ -85,7 +85,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     public function write($id, $data): bool
     {
         $ip_address   = $this->request->getAttribute('client-ip');
-        $session_time = Carbon::now();
+        $session_time = time();
         $user_id      = (int) Auth::id();
 
         if ($this->row === null) {
@@ -112,7 +112,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
                 $updates['session_data'] = $data;
             }
 
-            if ($session_time->subMinute()->gt($this->row->session_time)) {
+            if ($session_time - 60 > $this->row->session_time) {
                 $updates['session_time'] = $session_time;
             }
 
@@ -149,7 +149,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     public function gc($max_lifetime)
     {
         return DB::table('session')
-            ->where('session_time', '<', Carbon::now()->subSeconds($max_lifetime))
+            ->where('session_time', '<', time() - $max_lifetime)
             ->delete();
     }
 }

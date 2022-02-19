@@ -19,16 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use DomainException;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
-use Fisharebest\Webtrees\Date\FrenchDate;
-use Fisharebest\Webtrees\Date\GregorianDate;
-use Fisharebest\Webtrees\Date\HijriDate;
-use Fisharebest\Webtrees\Date\JalaliDate;
-use Fisharebest\Webtrees\Date\JewishDate;
-use Fisharebest\Webtrees\Date\JulianDate;
-use Fisharebest\Webtrees\Date\RomanDate;
 
 /**
  * A representation of GEDCOM dates and date ranges.

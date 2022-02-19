@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -144,7 +143,7 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = Carbon::now()->julianDay();
+        $startjd = Registry::timestampFactory()->now()->julianDay();
         $endjd   = $startjd;
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);

@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -133,9 +133,9 @@ class UserListData implements RequestHandlerInterface
                 '<a href="mailto:' . e($row->email) . '">' . e($row->email) . '</a>',
                 $languages->get($row->language, $row->language),
                 $row->registered_at,
-                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->registered_at)]) : '',
+                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->registered_at)]) : '',
                 $row->active_at,
-                $row->active_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->active_at)]) : I18N::translate('Never'),
+                $row->active_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->active_at)]) : I18N::translate('Never'),
                 $row->verified ? I18N::translate('yes') : I18N::translate('no'),
                 $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
             ];

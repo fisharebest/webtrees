@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use DomainException;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Family;
@@ -677,7 +676,7 @@ class ReportParserGenerate extends ReportParserBase
      */
     protected function nowStartHandler(): void
     {
-        $this->current_element->addText(Carbon::now()->local()->isoFormat('LLLL'));
+        $this->current_element->addText(Registry::timestampFactory()->now()->isoFormat('LLLL'));
     }
 
     /**

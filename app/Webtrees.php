@@ -23,6 +23,7 @@ use Closure;
 use ErrorException;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\CalendarDateFactory;
+use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
 use Fisharebest\Webtrees\Factories\EncodingFactory;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
@@ -183,10 +184,10 @@ class Webtrees
         // Factory objects
         Registry::cache(new CacheFactory());
         Registry::calendarDateFactory(new CalendarDateFactory());
-        Registry::familyFactory(new FamilyFactory());
-        Registry::filesystem(new FilesystemFactory());
         Registry::elementFactory(new ElementFactory());
         Registry::encodingFactory(new EncodingFactory());
+        Registry::familyFactory(new FamilyFactory());
+        Registry::filesystem(new FilesystemFactory());
         Registry::gedcomRecordFactory(new GedcomRecordFactory());
         Registry::headerFactory(new HeaderFactory());
         Registry::imageFactory(new ImageFactory());
@@ -200,6 +201,7 @@ class Webtrees
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());
+        Registry::timestampFactory(new TimestampFactory());
         Registry::xrefFactory(new XrefFactory());
 
         stream_filter_register(GedcomEncodingFilter::class, GedcomEncodingFilter::class);
