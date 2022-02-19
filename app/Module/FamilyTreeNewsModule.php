@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -34,7 +34,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
-use function is_string;
 
 /**
  * Class FamilyTreeNewsModule
@@ -83,7 +82,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->orderByDesc('updated')
             ->get()
             ->map(static function (object $row): object {
-                $row->updated = Carbon::make($row->updated);
+                $row->updated = Registry::timestampFactory()->fromString($row->updated);
 
                 return $row;
             });

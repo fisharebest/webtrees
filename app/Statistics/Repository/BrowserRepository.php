@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface;
 
 /**
@@ -35,7 +35,7 @@ class BrowserRepository implements BrowserRepositoryInterface
     {
         $format = strtr(I18N::dateFormat(), ['%' => '']);
 
-        return Carbon::now()->local()->format($format);
+        return Registry::timestampFactory()->now()->format($format);
     }
 
     /**
@@ -45,7 +45,7 @@ class BrowserRepository implements BrowserRepositoryInterface
     {
         $format = strtr(I18N::timeFormat(), ['%' => '']);
 
-        return Carbon::now()->local()->format($format);
+        return Registry::timestampFactory()->now()->format($format);
     }
 
     /**
@@ -53,6 +53,6 @@ class BrowserRepository implements BrowserRepositoryInterface
      */
     public function browserTimezone(): string
     {
-        return Carbon::now()->local()->format('T');
+        return Registry::timestampFactory()->now()->format('T');
     }
 }

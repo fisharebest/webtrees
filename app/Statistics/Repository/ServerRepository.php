@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\ServerRepositoryInterface;
 
 /**
@@ -34,10 +35,9 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverDate(): string
     {
-        $format   = strtr(I18N::dateFormat(), ['%' => '']);
-        $timezone = Site::getPreference('TIMEZONE');
+        $format = strtr(I18N::dateFormat(), ['%' => '']);
 
-        return Carbon::now()->local()->timezone($timezone)->format($format);
+        return Registry::timestampFactory()->now(new SiteUser())->format($format);
     }
 
     /**
@@ -45,10 +45,9 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTime(): string
     {
-        $format   = strtr(I18N::timeFormat(), ['%' => '']);
-        $timezone = Site::getPreference('TIMEZONE');
+        $format = strtr(I18N::timeFormat(), ['%' => '']);
 
-        return Carbon::now()->local()->timezone($timezone)->format($format);
+        return Registry::timestampFactory()->now(new SiteUser())->format($format);
     }
 
     /**
@@ -56,9 +55,7 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTime24(): string
     {
-        $timezone = Site::getPreference('TIMEZONE');
-
-        return Carbon::now()->local()->timezone($timezone)->format('G:i');
+        return Registry::timestampFactory()->now(new SiteUser())->format('G:i');
     }
 
     /**
@@ -66,8 +63,6 @@ class ServerRepository implements ServerRepositoryInterface
      */
     public function serverTimezone(): string
     {
-        $timezone = Site::getPreference('TIMEZONE');
-
-        return Carbon::now()->local()->timezone($timezone)->format('T');
+        return Registry::timestampFactory()->now(new SiteUser())->format('T');
     }
 }

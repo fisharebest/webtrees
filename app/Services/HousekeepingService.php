@@ -19,13 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Registry;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\FilesystemReader;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
+
+use function time;
 
 /**
  * Clean up old data, files and folders.
@@ -256,7 +258,7 @@ class HousekeepingService
      */
     public function deleteOldFiles(FilesystemOperator $filesystem, string $path, int $max_age): void
     {
-        $threshold = Carbon::now()->unix() - $max_age;
+        $threshold = time() - $max_age;
 
         $list = $filesystem->listContents($path, FilesystemReader::LIST_DEEP);
 
@@ -277,11 +279,11 @@ class HousekeepingService
      */
     public function deleteOldLogs(int $max_age_in_seconds): void
     {
-        $timestamp = Carbon::now()->subSeconds($max_age_in_seconds);
+        $timestamp = Registry::timestampFactory()->now()->subtractSeconds($max_age_in_seconds);
 
         DB::table('log')
             ->whereIn('log_type', ['error', 'media'])
-            ->where('log_time', '<', $timestamp)
+            ->where('log_time', '<', $timestamp->toDateTimeString())
             ->delete();
     }
 
@@ -292,10 +294,8 @@ class HousekeepingService
      */
     public function deleteOldSessions(int $max_age_in_seconds): void
     {
-        $timestamp = Carbon::now()->subSeconds($max_age_in_seconds);
-
         DB::table('session')
-            ->where('session_time', '<', $timestamp)
+            ->where('session_time', '<', time() - $max_age_in_seconds)
             ->delete();
     }
 

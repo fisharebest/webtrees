@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -26,8 +26,8 @@ use Ramsey\Uuid\Uuid;
 // lists requires a unique ID in case there are multiple lists per page
 $table_id = 'table-indi-' . Uuid::uuid4()->toString();
 
-$today_jd          = Carbon::now()->julianDay();
-$hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
+$today_jd          = Registry::timestampFactory()->now()->julianDay();
+$hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();
 
 $unique_indis = []; // Don't double-count indis with multiple names.
 
@@ -377,7 +377,7 @@ $deathAgeData = [
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $individual->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $individual->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $individual->lastChangeTimestamp()]) ?>
                 </td>
 

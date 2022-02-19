@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Algorithm\MyersDiff;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -102,7 +101,7 @@ class PendingChangesLogData implements RequestHandlerInterface
 
             return [
                 $row->change_id,
-                Carbon::make($row->change_time)->local()->format('Y-m-d H:i:s'),
+                Registry::timestampFactory()->fromString($row->change_time)->toDateTimeString(),
                 I18N::translate($row->status),
                 $record ? '<a href="' . e($record->url()) . '">' . $record->xref() . '</a>' : $row->xref,
                 '<div class="gedcom-data" dir="ltr">' .

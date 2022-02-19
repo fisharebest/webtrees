@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -185,7 +185,7 @@ class MessageService
                     return $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
                 });
             case 'last_6mo':
-                $six_months_ago = Carbon::now()->subMonths(6)->unix();
+                $six_months_ago = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();
 
                 return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
                     $session_time = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);

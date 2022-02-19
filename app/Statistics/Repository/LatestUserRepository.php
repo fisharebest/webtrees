@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\LatestUserRepositoryInterface;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -118,7 +118,7 @@ class LatestUserRepository implements LatestUserRepositoryInterface
         $user      = $this->latestUserQuery();
         $timestamp = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED);
 
-        return Carbon::createFromTimestamp($timestamp)->format(strtr($format, ['%' => '']));
+        return Registry::timestampFactory()->make($timestamp)->format(strtr($format, ['%' => '']));
     }
 
     /**

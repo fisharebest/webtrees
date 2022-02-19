@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -1156,7 +1155,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->map(function (Individual $individual): array {
                 return [
                     'person' => $individual,
-                    'age'    => $this->calculateAge(Carbon::now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                    'age'    => $this->calculateAge(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
                 ];
             })
             ->all();

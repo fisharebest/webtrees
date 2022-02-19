@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -51,8 +51,8 @@ class UsersCleanupPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $inactive_threshold   = Carbon::now()->subMonths(6)->getTimestamp();
-        $unverified_threshold = Carbon::now()->subDays(7)->getTimestamp();
+        $inactive_threshold   = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();
+        $unverified_threshold = Registry::timestampFactory()->now()->subtractDays(7)->timestamp();
 
         $inactive_users = $this->user_service->all()
             ->filter($this->user_service->filterInactive($inactive_threshold))

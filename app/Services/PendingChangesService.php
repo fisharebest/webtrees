@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
@@ -101,7 +100,7 @@ class PendingChangesService
         ];
 
         foreach ($rows as $row) {
-            $row->change_time = Carbon::make($row->change_time);
+            $row->change_time = Registry::timestampFactory()->fromString($row->change_time);
 
             preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 
@@ -281,12 +280,12 @@ class PendingChangesService
             ->where('gedcom_name', '=', $tree);
 
         if ($from !== '') {
-            $query->where('change_time', '>=', $from);
+            $query->where('change_time', '>=', Registry::timestampFactory()->fromString($from, 'Y-m-d')->toDateString());
         }
 
         if ($to !== '') {
             // before end of the day
-            $query->where('change_time', '<', Carbon::make($to)->addDay());
+            $query->where('change_time', '<', Registry::timestampFactory()->fromString($to, 'Y-m-d')->addDays(1)->toDateString());
         }
 
         if ($type !== '') {

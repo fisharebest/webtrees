@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\ExtCalendar\PersianCalendar;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
 use Fisharebest\Webtrees\Date\FrenchDate;
@@ -130,7 +129,7 @@ class CalendarService
         }
 
         if ($filterof === 'recent') {
-            $query->where('d_julianday1', '>=', Carbon::now()->subYears(100)->julianDay());
+            $query->where('d_julianday1', '>=', Registry::timestampFactory()->now()->subtractYears(100)->julianDay());
         }
 
         $ind_query = (clone $query)
@@ -332,7 +331,7 @@ class CalendarService
             }
 
             if ($filterof === 'recent') {
-                $query->where('d_julianday1', '>=', Carbon::now()->subYears(100)->julianDay());
+                $query->where('d_julianday1', '>=', Registry::timestampFactory()->now()->subtractYears(100)->julianDay());
             }
 
             $query

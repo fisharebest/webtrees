@@ -1,0 +1,158 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2021 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Contracts;
+
+/**
+ * A localized date-time.
+ */
+interface TimestampInterface
+{
+    /**
+     * Convert a datetime to the user's Julian day number.
+     *
+     * @return int
+     */
+    public function julianDay(): int;
+
+    /**
+     * @return string
+     */
+    public function diffForHumans(): string;
+
+    /**
+     * @param string $format
+     *
+     * @return string
+     */
+    public function format(string $format): string;
+
+    /**
+     * @param string $format
+     *
+     * @return string
+     */
+    public function isoFormat(string $format): string;
+
+    /**
+     * @return string
+     */
+    public function toDateString(): string;
+
+    /**
+     * @return string
+     */
+    public function toDateTimeString(): string;
+
+    /**
+     * @param TimestampInterface $datetime
+     *
+     * @return int
+     */
+    public function compare(TimestampInterface $datetime): int;
+
+    /**
+     * @param int $seconds
+     *
+     * @return $this
+     */
+    public function addSeconds(int $seconds): static;
+
+    /**
+     * @param int $minutes
+     *
+     * @return $this
+     */
+    public function addMinutes(int $minutes): static;
+
+    /**
+     * @param int $hours
+     *
+     * @return $this
+     */
+    public function addHours(int $hours): static;
+
+    /**
+     * @param int $days
+     *
+     * @return $this
+     */
+    public function addDays(int $days): static;
+
+    /**
+     * @param int $months
+     *
+     * @return $this
+     */
+    public function addMonths(int $months): static;
+
+    /**
+     * @param int $years
+     *
+     * @return $this
+     */
+    public function addYears(int $years): static;
+
+    /**
+     * @param int $seconds
+     *
+     * @return $this
+     */
+    public function subtractSeconds(int $seconds): static;
+
+    /**
+     * @param int $minutes
+     *
+     * @return $this
+     */
+    public function subtractMinutes(int $minutes): static;
+
+    /**
+     * @param int $hours
+     *
+     * @return $this
+     */
+    public function subtractHours(int $hours): static;
+
+    /**
+     * @param int $days
+     *
+     * @return $this
+     */
+    public function subtractDays(int $days): static;
+
+    /**
+     * @param int $months
+     *
+     * @return $this
+     */
+    public function subtractMonths(int $months): static;
+
+    /**
+     * @param int $years
+     *
+     * @return $this
+     */
+    public function subtractYears(int $years): static;
+
+    /**
+     * @return int
+     */
+    public function timestamp(): int;
+}

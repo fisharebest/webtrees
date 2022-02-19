@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
@@ -61,7 +61,7 @@ class SiteLogsData implements RequestHandlerInterface
         return $this->datatables_service->handleQuery($request, $query, [], [], static function (object $row): array {
             return [
                 $row->log_id,
-                Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),
+                Registry::timestampFactory()->fromString($row->log_time)->toDateTimeString(),
                 $row->log_type,
                 '<bdi>' . e($row->log_message) . '</bdi>',
                 '<bdi>' . e($row->ip_address) . '</bdi>',

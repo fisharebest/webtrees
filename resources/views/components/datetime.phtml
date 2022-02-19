@@ -1,17 +1,19 @@
 <?php
 
-use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Timestamp;
 use Fisharebest\Webtrees\I18N;
 
-/** @var Carbon $timestamp */
+/**
+ * @var Timestamp $timestamp
+ */
 ?>
 
-<?php if ($timestamp->unix() === 0) : ?>
+<?php if ($timestamp->timestamp() === 0) : ?>
     <span class="wt-timestamp">
         <?= I18N::translate('Never') ?>
     </span>
 <?php else : ?>
-    <span class="wt-timestamp" title="<?= e($timestamp->local()->diffForHumans()) ?>" dir="auto">
-        <?= e($timestamp->local()->isoFormat('LLLL')) ?>
+    <span class="wt-timestamp" title="<?= e($timestamp->diffForHumans()) ?>" dir="auto">
+        <?= e($timestamp->isoFormat('LLLL')) ?>
     </span>
 <?php endif ?>
