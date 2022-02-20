@@ -24,6 +24,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use SessionHandlerInterface;
 
 use function date;
+use function time;
 
 /**
  * Session handling - stores sessions in the database.
@@ -93,7 +94,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
         if ($this->row === null) {
             DB::table('session')->insert([
                 'session_id'   => $id,
-                'session_time' => $session_time,
+                'session_time' => date('Y-m-d H:i:s', $session_time),
                 'user_id'      => $user_id,
                 'ip_address'   => $ip_address,
                 'session_data' => $data,
