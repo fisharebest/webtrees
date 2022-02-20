@@ -23,6 +23,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ServerRequestInterface;
 use SessionHandlerInterface;
 
+use function date;
+
 /**
  * Session handling - stores sessions in the database.
  */
@@ -149,7 +151,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     public function gc($max_lifetime)
     {
         return DB::table('session')
-            ->where('session_time', '<', time() - $max_lifetime)
+            ->where('session_time', '<', date('Y-m-d H:i:s', time() - $max_lifetime))
             ->delete();
     }
 }
