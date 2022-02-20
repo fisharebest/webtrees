@@ -21,13 +21,11 @@ namespace Fisharebest\Webtrees\Console;
 
 use Composer\Script\Event;
 use Fisharebest\Localization\Translation;
-use Illuminate\Support\Collection;
-use League\Flysystem\DirectoryAttributes;
-use League\Flysystem\FileAttributes;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemReader;
 use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\Flysystem\StorageAttributes;
 
 use function basename;
 use function dirname;
@@ -86,17 +84,10 @@ class ComposerScripts
 
         $filesystem = new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
 
-        $scripts = Collection::make($filesystem->listContents('app', FilesystemReader::LIST_DEEP)
-            ->filter(static function (/*FileAttributes|DirectoryAttributes*/ $file): bool {
-                return $file->isFile();
-            })
-            ->map(static function (/*FileAttributes|DirectoryAttributes*/ $file): string {
-                return $file->path();
-            })
-            ->filter(static function (string $script): bool {
-                return !str_contains($script, 'Interface.php') && !str_contains($script, 'Abstract');
-            })
-        );
+        $scripts = $filesystem->listContents('app', FilesystemReader::LIST_DEEP)
+            ->filter(static fn (StorageAttributes $file): bool => $file->isFile())
+            ->map(static fn (StorageAttributes $file): string => $file->path())
+            ->filter(static fn (string $script): bool => !str_contains($script, 'Interface.php') && !str_contains($script, 'Abstract'));
 
         foreach ($scripts as $script) {
             $class = strtr($script, ['app/' => '', '.php' => '', '/' => '\\']);
