@@ -118,7 +118,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function addSeconds(int $seconds): static
+    public function addSeconds(int $seconds): TimestampInterface
     {
         if ($seconds < 0) {
             return $this->subtractSeconds(-$seconds);
@@ -136,7 +136,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function addMinutes(int $minutes): static
+    public function addMinutes(int $minutes): TimestampInterface
     {
         if ($minutes < 0) {
             return $this->subtractMinutes(-$minutes);
@@ -154,7 +154,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function addHours(int $hours): static
+    public function addHours(int $hours): TimestampInterface
     {
         if ($hours < 0) {
             return $this->subtractHours(-$hours);
@@ -172,7 +172,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function addDays(int $days): static
+    public function addDays(int $days): TimestampInterface
     {
         if ($days < 0) {
             return $this->subtractHours(-$days);
@@ -190,7 +190,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function addMonths(int $months): static
+    public function addMonths(int $months): TimestampInterface
     {
         if ($months < 0) {
             return $this->subtractMonths(-$months);
@@ -208,7 +208,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function addYears(int $years): static
+    public function addYears(int $years): TimestampInterface
     {
         if ($years < 0) {
             return $this->subtractYears(-$years);
@@ -226,7 +226,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function subtractSeconds(int $seconds): static
+    public function subtractSeconds(int $seconds): TimestampInterface
     {
         if ($seconds < 0) {
             return $this->addSeconds(-$seconds);
@@ -244,7 +244,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function subtractMinutes(int $minutes): static
+    public function subtractMinutes(int $minutes): TimestampInterface
     {
         if ($minutes < 0) {
             return $this->addMinutes(-$minutes);
@@ -262,7 +262,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function subtractHours(int $hours): static
+    public function subtractHours(int $hours): TimestampInterface
     {
         if ($hours < 0) {
             return $this->addHours(-$hours);
@@ -280,7 +280,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function subtractDays(int $days): static
+    public function subtractDays(int $days): TimestampInterface
     {
         if ($days < 0) {
             return $this->addDays(-$days);
@@ -298,7 +298,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function subtractMonths(int $months): static
+    public function subtractMonths(int $months): TimestampInterface
     {
         if ($months < 0) {
             return $this->addMonths(-$months);
@@ -316,7 +316,7 @@ class Timestamp implements TimestampInterface
      *
      * @return $this
      */
-    public function subtractYears(int $years): static
+    public function subtractYears(int $years): TimestampInterface
     {
         if ($years < 0) {
             return $this->addYears(-$years);
