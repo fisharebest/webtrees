@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
@@ -40,11 +41,12 @@ class ManageMediaDataTest extends TestCase
      */
     public function testDataLocal(): void
     {
-        $datatables_service = new DatatablesService();
-        $media_file_service = new MediaFileService();
-        $tree_service       = new TreeService();
-        $handler            = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
+        $datatables_service    = new DatatablesService();
+        $media_file_service    = new MediaFileService();
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $handler               = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
+        $request               = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
             'subfolders'   => 'include',
@@ -52,7 +54,7 @@ class ManageMediaDataTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response           = $handler->handle($request);
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -62,11 +64,12 @@ class ManageMediaDataTest extends TestCase
      */
     public function testDataExternal(): void
     {
-        $datatables_service = new DatatablesService();
-        $media_file_service = new MediaFileService();
-        $tree_service       = new TreeService();
-        $handler            = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
+        $datatables_service    = new DatatablesService();
+        $media_file_service    = new MediaFileService();
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $handler               = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
+        $request               = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
             'subfolders'   => 'include',
@@ -74,7 +77,7 @@ class ManageMediaDataTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response           = $handler->handle($request);
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -84,11 +87,12 @@ class ManageMediaDataTest extends TestCase
      */
     public function testDataUnused(): void
     {
-        $datatables_service = new DatatablesService();
-        $media_file_service = new MediaFileService();
-        $tree_service       = new TreeService();
-        $handler            = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
-        $request            = self::createRequest(RequestMethodInterface::METHOD_GET, [
+        $datatables_service    = new DatatablesService();
+        $media_file_service    = new MediaFileService();
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $handler               = new ManageMediaData($datatables_service, $media_file_service, $tree_service);
+        $request               = self::createRequest(RequestMethodInterface::METHOD_GET, [
             'files'        => 'local',
             'media_folder' => '',
             'subfolders'   => 'include',
@@ -96,7 +100,7 @@ class ManageMediaDataTest extends TestCase
             'start'        => '0',
             'length'       => '10',
         ]);
-        $response           = $handler->handle($request);
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

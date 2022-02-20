@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
@@ -38,11 +39,12 @@ class ImportThumbnailsDataTest extends TestCase
      */
     public function testWebtrees1ThumbnailsData(): void
     {
-        $tree_service   = new TreeService();
-        $search_service = new SearchService($tree_service);
-        $handler        = new ImportThumbnailsData($search_service);
-        $request        = self::createRequest()->withQueryParams(['start' => '0', 'length' => '10', 'search' => ['value' => ''], 'draw' => '1']);
-        $response       = $handler->handle($request);
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $search_service        = new SearchService($tree_service);
+        $handler               = new ImportThumbnailsData($search_service);
+        $request               = self::createRequest()->withQueryParams(['start' => '0', 'length' => '10', 'search' => ['value' => ''], 'draw' => '1']);
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

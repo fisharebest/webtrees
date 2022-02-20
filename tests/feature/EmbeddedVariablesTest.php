@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -110,9 +111,10 @@ class EmbeddedVariablesTest extends TestCase
      */
     public function testAllEmbeddedVariablesWithEmptyTree(): void
     {
-        $tree_service = new TreeService();
-        $tree         = $tree_service->create('name', 'title');
-        $statistics   = new Statistics(
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $statistics            = new Statistics(
             new CenturyService(),
             new ColorService(),
             new CountryService(),

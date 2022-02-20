@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
@@ -34,10 +35,11 @@ class LoginPageTest extends TestCase
      */
     public function testLoginPage(): void
     {
-        $tree_service = new TreeService();
-        $request  = self::createRequest();
-        $handler  = new LoginPage($tree_service);
-        $response = $handler->handle($request);
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $request               = self::createRequest();
+        $handler               = new LoginPage($tree_service);
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }
@@ -47,11 +49,12 @@ class LoginPageTest extends TestCase
      */
     public function testLoginPageAlreadyLoggedIn(): void
     {
-        $tree_service = new TreeService();
-        $user     = $this->createMock(User::class);
-        $request  = self::createRequest()->withAttribute('user', $user);
-        $handler  = new LoginPage($tree_service);
-        $response = $handler->handle($request);
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $user                  = $this->createMock(User::class);
+        $request               = self::createRequest()->withAttribute('user', $user);
+        $handler               = new LoginPage($tree_service);
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }
