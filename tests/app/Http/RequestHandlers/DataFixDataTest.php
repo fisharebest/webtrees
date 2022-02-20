@@ -22,11 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Services\DatatablesService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\TestCase;
 
 /**
  * Test DataFixDataTest class.
@@ -43,8 +44,9 @@ class DataFixDataTest extends TestCase
      */
     public function testHandlerForFixSearchAndReplace(): void
     {
-        $tree_service = new TreeService();
-        $tree         = $tree_service->create('name', 'title');
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
 
         $data_fix_service = new DataFixService();
         $datatables_service = new DatatablesService();

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\TestCase;
@@ -38,8 +39,9 @@ class ImportThumbnailsActionTest extends TestCase
      */
     public function testWebtrees1ThumbnailsAction(): void
     {
-        $tree_service            = new TreeService();
-        $pending_changes_service = new PendingChangesService();
+        $gedcom_import_service   = new GedcomImportService();
+        $tree_service            = new TreeService($gedcom_import_service);
+        $pending_changes_service = new PendingChangesService($gedcom_import_service);
         $handler                 = new ImportThumbnailsAction($pending_changes_service, $tree_service);
         $request                 = self::createRequest()
             ->withParsedBody(['thumbnail' => 'foo', 'action' => '', 'xref' => [], 'ged' => []]);

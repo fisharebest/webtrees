@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -218,14 +219,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function importTree(string $gedcom_file): Tree
     {
-        $tree_service = new TreeService();
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
         $tree         = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
         $stream       = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
         $timeout_service = new TimeoutService();
-        $controller      = new GedcomLoad($timeout_service, $tree_service);
+        $controller      = new GedcomLoad($gedcom_import_service, $timeout_service, $tree_service);
         $request         = self::createRequest()->withAttribute('tree', $tree);
 
         do {

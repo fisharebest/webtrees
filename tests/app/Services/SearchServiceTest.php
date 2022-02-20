@@ -36,7 +36,7 @@ class SearchServiceTest extends TestCase
      */
     public function testSearchesReturnCollections(): void
     {
-        $tree_service = new TreeService();
+        $tree_service = new TreeService(new GedcomImportService());
         $search_service = new SearchService($tree_service);
         $tree = $this->importTree('demo.ged');
 

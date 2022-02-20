@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
@@ -48,6 +47,16 @@ use function preg_match;
  */
 class PendingChangesService
 {
+    private GedcomImportService $gedcom_import_service;
+
+    /**
+     * @param GedcomImportService $gedcom_import_service
+     */
+    public function __construct(GedcomImportService $gedcom_import_service)
+    {
+        $this->gedcom_import_service = $gedcom_import_service;
+    }
+
     /**
      * Which records have pending changes
      *
@@ -139,10 +148,10 @@ class PendingChangesService
         foreach ($changes as $change) {
             if ($change->new_gedcom === '') {
                 // delete
-                FunctionsImport::updateRecord($change->old_gedcom, $tree, true);
+                $this->gedcom_import_service->updateRecord($change->old_gedcom, $tree, true);
             } else {
                 // add/update
-                FunctionsImport::updateRecord($change->new_gedcom, $tree, false);
+                $this->gedcom_import_service->updateRecord($change->new_gedcom, $tree, false);
             }
 
             DB::table('change')
@@ -169,10 +178,10 @@ class PendingChangesService
         foreach ($changes as $change) {
             if ($change->new_gedcom === '') {
                 // delete
-                FunctionsImport::updateRecord($change->old_gedcom, $record->tree(), true);
+                $this->gedcom_import_service->updateRecord($change->old_gedcom, $record->tree(), true);
             } else {
                 // add/update
-                FunctionsImport::updateRecord($change->new_gedcom, $record->tree(), false);
+                $this->gedcom_import_service->updateRecord($change->new_gedcom, $record->tree(), false);
             }
 
             DB::table('change')
@@ -200,10 +209,10 @@ class PendingChangesService
         foreach ($changes as $change) {
             if ($change->new_gedcom === '') {
                 // delete
-                FunctionsImport::updateRecord($change->old_gedcom, $record->tree(), true);
+                $this->gedcom_import_service->updateRecord($change->old_gedcom, $record->tree(), true);
             } else {
                 // add/update
-                FunctionsImport::updateRecord($change->new_gedcom, $record->tree(), false);
+                $this->gedcom_import_service->updateRecord($change->new_gedcom, $record->tree(), false);
             }
 
             DB::table('change')

@@ -22,29 +22,25 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Exception;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\DetectsConcurrencyErrors;
-use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function preg_match;
 use function preg_split;
 use function response;
 use function str_replace;
 use function str_starts_with;
 use function strlen;
-use function strtoupper;
 use function substr;
-use function trim;
 use function view;
 
 /**
@@ -55,6 +51,8 @@ class GedcomLoad implements RequestHandlerInterface
     use ViewResponseTrait;
     use DetectsConcurrencyErrors;
 
+    private GedcomImportService $gedcom_import_service;
+
     private TimeoutService $timeout_service;
 
     private TreeService $tree_service;
@@ -62,13 +60,18 @@ class GedcomLoad implements RequestHandlerInterface
     /**
      * GedcomLoad constructor.
      *
-     * @param TimeoutService $timeout_service
-     * @param TreeService    $tree_service
+     * @param GedcomImportService $gedcom_import_service
+     * @param TimeoutService      $timeout_service
+     * @param TreeService         $tree_service
      */
-    public function __construct(TimeoutService $timeout_service, TreeService $tree_service)
-    {
-        $this->timeout_service = $timeout_service;
-        $this->tree_service    = $tree_service;
+    public function __construct(
+        GedcomImportService $gedcom_import_service,
+        TimeoutService $timeout_service,
+        TreeService $tree_service
+    ) {
+        $this->gedcom_import_service = $gedcom_import_service;
+        $this->timeout_service       = $timeout_service;
+        $this->tree_service          = $tree_service;
     }
 
     /**
@@ -163,7 +166,7 @@ class GedcomLoad implements RequestHandlerInterface
                 // Import all the records in this chunk of data
                 foreach (preg_split('/\n+(?=0)/', $data->chunk_data) as $rec) {
                     try {
-                        FunctionsImport::importRecord($rec, $tree, false);
+                        $this->gedcom_import_service->importRecord($rec, $tree, false);
                     } catch (GedcomErrorException $exception) {
                         $errors .= $exception->getMessage();
                     }

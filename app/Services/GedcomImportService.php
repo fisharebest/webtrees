@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Functions;
+namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\UnknownElement;
@@ -33,7 +33,6 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Services\GedcomService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
@@ -51,6 +50,7 @@ use function assert;
 use function date;
 use function explode;
 use function max;
+use function mb_substr;
 use function preg_match;
 use function preg_match_all;
 use function preg_replace;
@@ -61,15 +61,16 @@ use function str_starts_with;
 use function strlen;
 use function strtolower;
 use function strtoupper;
+use function strtr;
 use function substr;
 use function trim;
 
 use const PREG_SET_ORDER;
 
 /**
- * Class FunctionsImport - common functions
+ * Class GedcomImportService - import GEDCOM data
  */
-class FunctionsImport
+class GedcomImportService
 {
     /**
      * Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
@@ -79,7 +80,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function reformatRecord(string $rec, Tree $tree): string
+    private function reformatRecord(string $rec, Tree $tree): string
     {
         $gedcom_service = app(GedcomService::class);
         assert($gedcom_service instanceof GedcomService);
@@ -263,12 +264,12 @@ class FunctionsImport
      *
      * @param string $gedrec the raw gedcom record to parse
      * @param Tree   $tree   import the record into this tree
-     * @param bool   $update whether or not this is an updated record that has been accepted
+     * @param bool   $update whether this is an updated record that has been accepted
      *
      * @return void
      * @throws GedcomErrorException
      */
-    public static function importRecord(string $gedrec, Tree $tree, bool $update): void
+    public function importRecord(string $gedrec, Tree $tree, bool $update): void
     {
         $tree_id = $tree->id();
 
@@ -278,7 +279,7 @@ class FunctionsImport
         }
 
         // Standardise gedcom format
-        $gedrec = self::reformatRecord($gedrec, $tree);
+        $gedrec = $this->reformatRecord($gedrec, $tree);
 
         // import different types of records
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
@@ -321,7 +322,7 @@ class FunctionsImport
         }
 
         // Convert inline media into media objects
-        $gedrec = self::convertInlineMedia($tree, $gedrec);
+        $gedrec = $this->convertInlineMedia($tree, $gedrec);
 
         switch ($type) {
             case Individual::RECORD_TYPE:
@@ -342,9 +343,9 @@ class FunctionsImport
                 ]);
 
                 // Update the cross-reference/index tables.
-                self::updatePlaces($xref, $tree, $gedrec);
-                self::updateDates($xref, $tree_id, $gedrec);
-                self::updateNames($xref, $tree_id, $record);
+                $this->updatePlaces($xref, $tree, $gedrec);
+                $this->updateDates($xref, $tree_id, $gedrec);
+                $this->updateNames($xref, $tree_id, $record);
                 break;
 
             case Family::RECORD_TYPE:
@@ -373,8 +374,8 @@ class FunctionsImport
                 ]);
 
                 // Update the cross-reference/index tables.
-                self::updatePlaces($xref, $tree, $gedrec);
-                self::updateDates($xref, $tree_id, $gedrec);
+                $this->updatePlaces($xref, $tree, $gedrec);
+                $this->updateDates($xref, $tree_id, $gedrec);
                 break;
 
             case Source::RECORD_TYPE:
@@ -445,11 +446,11 @@ class FunctionsImport
                 break;
 
             case '_PLAC ':
-                self::importTNGPlac($gedrec);
+                $this->importTNGPlac($gedrec);
                 return;
 
             case '_PLAC_DEFN':
-                self::importLegacyPlacDefn($gedrec);
+                $this->importLegacyPlacDefn($gedrec);
                 return;
 
             default: // Custom record types.
@@ -463,7 +464,7 @@ class FunctionsImport
         }
 
         // Update the cross-reference/index tables.
-        self::updateLinks($xref, $tree_id, $gedrec);
+        $this->updateLinks($xref, $tree_id, $gedrec);
     }
 
     /**
@@ -471,7 +472,7 @@ class FunctionsImport
      *
      * @param string $gedcom
      */
-    private static function importLegacyPlacDefn(string $gedcom): void
+    private function importLegacyPlacDefn(string $gedcom): void
     {
         $gedcom_service = new GedcomService();
 
@@ -510,7 +511,7 @@ class FunctionsImport
      *
      * @param string $gedcom
      */
-    private static function importTNGPlac(string $gedcom): void
+    private function importTNGPlac(string $gedcom): void
     {
         if (preg_match('/^0 _PLAC (.+)/', $gedcom, $match)) {
             $place_name = $match[1];
@@ -551,7 +552,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updatePlaces(string $xref, Tree $tree, string $gedrec): void
+    public function updatePlaces(string $xref, Tree $tree, string $gedrec): void
     {
         // Insert all new rows together
         $rows = [];
@@ -593,7 +594,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateDates(string $xref, int $ged_id, string $gedrec): void
+    private function updateDates(string $xref, int $ged_id, string $gedrec): void
     {
         // Insert all new rows together
         $rows = [];
@@ -645,7 +646,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateLinks(string $xref, int $ged_id, string $gedrec): void
+    private function updateLinks(string $xref, int $ged_id, string $gedrec): void
     {
         // Insert all new rows together
         $rows = [];
@@ -674,7 +675,7 @@ class FunctionsImport
      *
      * @return void
      */
-    public static function updateNames(string $xref, int $ged_id, Individual $record): void
+    private function updateNames(string $xref, int $ged_id, Individual $record): void
     {
         // Insert all new rows together
         $rows = [];
@@ -724,18 +725,18 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function convertInlineMedia(Tree $tree, string $gedcom): string
+    private function convertInlineMedia(Tree $tree, string $gedcom): string
     {
         while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedcom, $match)) {
-            $xref   = self::createMediaObject($match[0], $tree);
+            $xref   = $this->createMediaObject($match[0], $tree);
             $gedcom = strtr($gedcom, [$match[0] =>  "\n1 OBJE @" . $xref . '@']);
         }
         while (preg_match('/\n2 OBJE(?:\n[3-9].+)+/', $gedcom, $match)) {
-            $xref   = self::createMediaObject($match[0], $tree);
+            $xref   = $this->createMediaObject($match[0], $tree);
             $gedcom = strtr($gedcom, [$match[0] =>  "\n2 OBJE @" . $xref . '@']);
         }
         while (preg_match('/\n3 OBJE(?:\n[4-9].+)+/', $gedcom, $match)) {
-            $xref   = self::createMediaObject($match[0], $tree);
+            $xref   = $this->createMediaObject($match[0], $tree);
             $gedcom = strtr($gedcom, [$match[0] =>  "\n3 OBJE @" . $xref . '@']);
         }
 
@@ -757,7 +758,7 @@ class FunctionsImport
      *
      * @return string
      */
-    public static function createMediaObject(string $gedcom, Tree $tree): string
+    private function createMediaObject(string $gedcom, Tree $tree): string
     {
         preg_match('/\n\d FILE (.+)/', $gedcom, $match);
         $file = $match[1] ?? '';
@@ -859,7 +860,7 @@ class FunctionsImport
      * @return void
      * @throws GedcomErrorException
      */
-    public static function updateRecord(string $gedrec, Tree $tree, bool $delete): void
+    public function updateRecord(string $gedrec, Tree $tree, bool $delete): void
     {
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $gid, $type] = $match;
@@ -881,7 +882,7 @@ class FunctionsImport
         // then we may also need to delete "London, England" and "England".
         do {
             $affected = DB::table('places')
-                ->leftJoin('placelinks', static function (JoinClause $join): void {
+                ->leftJoin('placelinks', function (JoinClause $join): void {
                     $join
                         ->on('p_id', '=', 'pl_p_id')
                         ->on('p_file', '=', 'pl_file');
@@ -948,7 +949,7 @@ class FunctionsImport
         }
 
         if (!$delete) {
-            self::importRecord($gedrec, $tree, true);
+            $this->importRecord($gedrec, $tree, true);
         }
     }
 }
