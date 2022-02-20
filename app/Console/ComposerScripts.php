@@ -87,10 +87,10 @@ class ComposerScripts
         $filesystem = new Filesystem(new LocalFilesystemAdapter(self::ROOT_DIR));
 
         $scripts = Collection::make($filesystem->listContents('app', FilesystemReader::LIST_DEEP)
-            ->filter(static function (FileAttributes|DirectoryAttributes $file): bool {
+            ->filter(static function (/*FileAttributes|DirectoryAttributes*/ $file): bool {
                 return $file->isFile();
             })
-            ->map(static function (FileAttributes|DirectoryAttributes $file): string {
+            ->map(static function (/*FileAttributes|DirectoryAttributes*/ $file): string {
                 return $file->path();
             })
             ->filter(static function (string $script): bool {
