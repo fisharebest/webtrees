@@ -9,11 +9,15 @@ use Fisharebest\Webtrees\I18N;
 
 ?>
 
-<div class="py-4">
-    <div class="row gchart wt-places-tab-wrapper">
-        <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-places-tab-map" dir="ltr"></div>
-        <ul class="col-sm-3 wt-places-tab-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
-    </div>
+
+<label class="form-check-label mx-1 my-2">
+  <input class="wt-sidebar-toggle" type="checkbox" data-wt-persist="places-tab-sidebar-toggle" aria-expanded="true"></input>
+  <?= I18N::translate('Hide the list of events') ?>
+</label>
+
+<div class="row gchart wt-places-tab-wrapper">
+  <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-places-tab-map" dir="ltr"></div>
+  <ul class="col-sm-3 wt-places-tab-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
 </div>
 
 <script>
@@ -102,34 +106,33 @@ use Fisharebest\Webtrees\I18N;
 
     // Can't use window.onload here. seems to be because of AJAX loading
     const _loadListeners = function() {
-      // Activate marker popup when sidebar entry clicked
-      sidebar.querySelectorAll('.gchart').forEach((element) => {
-        var eventId = parseInt(element.dataset.wtFeatureId);
+    webtrees.waitForElement('.wt-sidebar-toggle').then(elm => webtrees.persistentToggle(elm));
 
-        element.addEventListener('click', () => {
-          // first close any existing
-          map.closePopup();
+      // Activate marker popup when sidebar entry clicked
+      sidebar.addEventListener('click', (evt) => {
+        // Only perform map action if evt was not initiated from an anchor element
+        if (!evt.target.closest('a')) {
           //find the marker corresponding to the clicked event
+          const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
           let mkrLayer = markers.getLayers().filter(function (v) {
             return v.feature !== undefined && v.feature.id === eventId;
           });
-
-          let mkr = mkrLayer.pop();
+          const mkr = mkrLayer.pop();
 
           markers.zoomToShowLayer(mkr, function (e) {
             mkr.openPopup();
           });
 
-          return false;
-        });
-
-        // stop click on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
-        });
+        }
       });
+
+      document.querySelector('.wt-sidebar-toggle').addEventListener('change', () => {
+        const mapElement = document.querySelector('.wt-map');
+        sidebar.classList.toggle('d-none');
+        ['col-sm-9', 'col-sm-12'].forEach(item => mapElement.classList.toggle(item));
+        map.invalidateSize();
+      });
+
     }
 
     _drawMap();
