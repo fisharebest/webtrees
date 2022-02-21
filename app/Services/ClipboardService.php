@@ -112,8 +112,8 @@ class ClipboardService
     /**
      * Find facts of a given type, from all records.
      *
-     * @param GedcomRecord $record
-     * @param Collection   $types
+     * @param GedcomRecord           $record
+     * @param Collection<int,string> $types
      *
      * @return Collection<int,Fact>
      */

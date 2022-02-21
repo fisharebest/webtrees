@@ -111,8 +111,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * The URL for this chart.
      *
-     * @param Individual                        $individual
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -873,8 +873,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * @param int|string        $x
      * @param int|string        $z
      * @param int|string        $value
-     * @param array             $x_axis
-     * @param array             $z_axis
+     * @param array<string>     $x_axis
+     * @param array<string>     $z_axis
      * @param array<array<int>> $ydata
      *
      * @return void
@@ -902,8 +902,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * Some are direct lookup (e.g. M/F, JAN/FEB/MAR).
      * Others need to find the appropriate range.
      *
-     * @param int|float|string $value
-     * @param array<string>    $axis
+     * @param int|string    $value
+     * @param array<string> $axis
      *
      * @return int|string
      */
@@ -1016,10 +1016,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 'format' => '\'%\'',
             ],
             'vAxis'    => [
-                'title' => $y_axis_title ?? '',
+                'title' => $y_axis_title,
             ],
             'hAxis'    => [
-                'title' => $x_axis_title ?? '',
+                'title' => $x_axis_title,
             ],
             'colors'   => $colors,
         ];

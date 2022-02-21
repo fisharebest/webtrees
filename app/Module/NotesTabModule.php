@@ -34,6 +34,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
+    /** @var Collection<array-key,Fact>|null  */
     private ?Collection $facts = null;
 
     private ClipboardService $clipboard_service;

@@ -99,7 +99,7 @@ class TreePrivacyPage implements RequestHandlerInterface
      *
      * @param Tree $tree
      *
-     * @return array<string,string>
+     * @return array<object>
      */
     private function privacyRestrictions(Tree $tree): array
     {

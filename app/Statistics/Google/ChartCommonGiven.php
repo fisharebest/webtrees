@@ -44,7 +44,7 @@ class ChartCommonGiven
      * Create a chart of common given names.
      *
      * @param int         $tot_indi   The total number of individuals
-     * @param array       $given      The list of common given names
+     * @param array<int>  $given      The list of common given names
      * @param string|null $color_from
      * @param string|null $color_to
      *

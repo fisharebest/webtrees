@@ -53,8 +53,8 @@ interface ModuleListInterface extends ModuleInterface
     /**
      * The URL for a page showing list options.
      *
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */

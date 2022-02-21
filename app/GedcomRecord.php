@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
@@ -855,9 +856,9 @@ class GedcomRecord
     /**
      * Get the last-change timestamp for this record
      *
-     * @return Timestamp
+     * @return TimestampInterface
      */
-    public function lastChangeTimestamp(): Timestamp
+    public function lastChangeTimestamp(): TimestampInterface
     {
         /** @var Fact|null $chan */
         $chan = $this->facts(['CHAN'])->first();

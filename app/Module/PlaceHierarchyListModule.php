@@ -160,8 +160,8 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Tree         $tree
-     * @param array<mixed> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */

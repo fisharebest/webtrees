@@ -157,7 +157,7 @@ class ReportParserGenerate extends ReportParserBase
     /** @var int The current generational level */
     private $generation = 1;
 
-    /** @var array Source data for processing lists */
+    /** @var array<static|GedcomRecord> Source data for processing lists */
     private array $list = [];
 
     /** @var int Number of items in lists */

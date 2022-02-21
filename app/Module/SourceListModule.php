@@ -94,8 +94,8 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
     }
 
     /**
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */

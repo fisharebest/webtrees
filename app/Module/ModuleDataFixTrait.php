@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
+use stdClass;
 
 /**
  * Trait ModuleDataFixTrait - default implementation of ModuleDataFixTrait
@@ -408,7 +409,7 @@ trait ModuleDataFixTrait
      * @param Tree                   $tree
      * @param string                 $type
      *
-     * @return Collection<int,object>
+     * @return Collection<int,stdClass>
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {

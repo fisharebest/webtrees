@@ -95,8 +95,8 @@ class RepositoryListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */

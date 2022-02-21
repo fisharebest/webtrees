@@ -153,8 +153,8 @@ function response($content = '', int $code = StatusCodeInterface::STATUS_OK, arr
 /**
  * Generate a URL for a named route.
  *
- * @param string                            $route_name
- * @param array<bool|int|string|array|null> $parameters
+ * @param string                                    $route_name
+ * @param array<bool|int|string|array<string>|null> $parameters
  *
  * @return string
  */

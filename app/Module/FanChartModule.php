@@ -201,8 +201,8 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * A form to request the chart parameters.
      *
-     * @param Individual               $individual
-     * @param array<string,int|string> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */

@@ -63,8 +63,8 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionNamedType;
+use stdClass;
 
-use function call_user_func;
 use function count;
 use function in_array;
 use function str_contains;
@@ -192,7 +192,7 @@ class Statistics implements
                 ->map(function (ReflectionMethod $method): string {
                     $tag = $method->getName();
 
-                    return '<dt>#' . $tag . '#</dt><dd>' . call_user_func([$this, $tag]) . '</dd>';
+                    return '<dt>#' . $tag . '#</dt><dd>' . $this->$tag() . '</dd>';
                 });
 
             return '<dl>' . $examples->implode('') . '</dl>';
@@ -1060,9 +1060,9 @@ class Statistics implements
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array|string
+     * @return array<array<stdClass>>
      */
-    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
+    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {
         return $this->individual_repository->statsAgeQuery($related, $sex, $year1, $year2);
     }
@@ -1658,7 +1658,7 @@ class Statistics implements
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array
+     * @return array<stdClass>
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
@@ -2006,7 +2006,7 @@ class Statistics implements
      * @param int $year1
      * @param int $year2
      *
-     * @return array
+     * @return array<stdClass>
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
@@ -2855,7 +2855,7 @@ class Statistics implements
             $method = array_shift($params);
 
             if (method_exists($this, $method)) {
-                $tags[$match[0] . '#'] = call_user_func([$this, $method], ...$params);
+                $tags[$match[0] . '#'] = $this->$method(...$params);
             }
         }
 

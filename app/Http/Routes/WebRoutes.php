@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Routes;
 
 use Aura\Router\Map;
+use Aura\Router\Route;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Http\Middleware\AuthAdministrator;
 use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
@@ -331,7 +332,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 class WebRoutes
 {
     /**
-     * @param Map $router
+     * @param Map<Route> $router
      *
      * @return void
      */

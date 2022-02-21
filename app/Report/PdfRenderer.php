@@ -208,7 +208,7 @@ class PdfRenderer extends AbstractRenderer
      *
      * @param string $s Style name
      *
-     * @return array
+     * @return array<string,string>
      */
     public function getStyle(string $s): array
     {

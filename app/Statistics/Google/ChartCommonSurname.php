@@ -101,10 +101,10 @@ class ChartCommonSurname
     /**
      * Create a chart of common surnames.
      *
-     * @param int         $tot_indi     The total number of individuals
-     * @param array       $all_surnames The list of common surnames
-     * @param string|null $color_from
-     * @param string|null $color_to
+     * @param int               $tot_indi     The total number of individuals
+     * @param array<array<int>> $all_surnames The list of common surnames
+     * @param string|null       $color_from
+     * @param string|null       $color_to
      *
      * @return string
      */

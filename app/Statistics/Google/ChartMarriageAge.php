@@ -26,6 +26,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use stdClass;
 
 use function round;
 use function view;
@@ -52,7 +53,7 @@ class ChartMarriageAge
     /**
      * Returns the related database records.
      *
-     * @return Collection<int,object>
+     * @return Collection<array-key,stdClass>
      */
     private function queryRecords(): Collection
     {

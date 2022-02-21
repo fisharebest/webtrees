@@ -166,8 +166,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                        $individual
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */

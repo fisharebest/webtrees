@@ -34,7 +34,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -70,10 +69,10 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */

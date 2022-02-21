@@ -19,11 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -33,6 +33,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+use stdClass;
 
 use function extract;
 use function view;
@@ -97,10 +98,10 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
     }
 
     /**
-     * @param Tree   $tree
-     * @param int    $block_id
-     * @param string $context
-     * @param array  $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -123,14 +124,14 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
         switch ($sortStyle) {
             case 'name':
-                $rows  = $rows->sort(static function (object $x, object $y): int {
+                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return GedcomRecord::nameComparator()($x->record, $y->record);
                 });
                 $order = [[1, 'asc']];
                 break;
 
             case 'date_asc':
-                $rows  = $rows->sort(static function (object $x, object $y): int {
+                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $x->time <=> $y->time;
                 });
                 $order = [[2, 'asc']];
@@ -138,7 +139,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 
             default:
             case 'date_desc':
-                $rows  = $rows->sort(static function (object $x, object $y): int {
+                $rows  = $rows->sort(static function (stdClass $x, stdClass $y): int {
                     return $y->time <=> $x->time;
                 });
                 $order = [[2, 'desc']];
@@ -292,7 +293,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<int,object> List of records with changes
+     * @return Collection<array-key,stdClass> List of records with changes
      */
     private function getRecentChangesFromDatabase(Tree $tree, int $days): Collection
     {
@@ -328,7 +329,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree Changes for which tree
      * @param int  $days Number of days
      *
-     * @return Collection<int,object> List of records with changes
+     * @return Collection<array-key,stdClass> List of records with changes
      */
     private function getRecentChangesFromGenealogy(Tree $tree, int $days): Collection
     {

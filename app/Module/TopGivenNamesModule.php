@@ -61,10 +61,10 @@ class TopGivenNamesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
