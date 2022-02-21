@@ -39,11 +39,9 @@ use Fisharebest\Webtrees\View;
      * Passed to resetControl to
      * perform necessary reset actions on map
      */
-    let resetCallback = function () {
+     let resetCallback = function () {
       map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
-
-      return false;
     }
 
     /**
