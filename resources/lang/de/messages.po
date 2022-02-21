@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
 "PO-Revision-Date: 2022-02-23 13:42+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
+"Last-Translator: Markus Hemprich <hemprich@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -16969,7 +16969,7 @@ msgstr "Ort hinzufügen"
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:47 app/GedcomCode/GedcomCodeName.php:73
 msgid "adopted name"
-msgstr "Adoptionsname"
+msgstr "Adoptivname"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:69
@@ -17102,7 +17102,7 @@ msgstr "Geburt"
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php:51 app/GedcomCode/GedcomCodeName.php:101
 msgid "birth name"
-msgstr "geborene"
+msgstr "Geburtsname"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:97
