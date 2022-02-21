@@ -28,6 +28,9 @@ use Fisharebest\Webtrees\View;
       inline: "start"
     };
 
+    const popupZoomLevel = 12; // 12 is a reasonable compromise for open clusters
+    const spiderfyDelay = 300; // mS
+
     let map = null;
 
     // Map components
@@ -116,9 +119,19 @@ use Fisharebest\Webtrees\View;
         });
         const mkr = mkrLayer.pop();
 
-        markers.zoomToShowLayer(mkr, function (e) {
-          mkr.openPopup();
-        });
+        if (mkr instanceof L.Layer) {
+          const overlay = document.querySelector('.leaflet-overlay-pane');
+          overlay.classList.add('d-none');
+          map
+          .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
+          .once('moveend', () => {
+              webtrees.leafletJsSpiderfyClusters(markers, mkr, spiderfyDelay);
+              overlay.classList.remove('d-none');
+            });
+        } else {
+          // Should never get here
+          console.log('Error: unable to find the selected marker');
+        }
 
         return false;
       }
