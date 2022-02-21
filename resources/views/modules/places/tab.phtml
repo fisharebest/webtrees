@@ -103,32 +103,23 @@ use Fisharebest\Webtrees\I18N;
     // Can't use window.onload here. seems to be because of AJAX loading
     const _loadListeners = function() {
       // Activate marker popup when sidebar entry clicked
-      sidebar.querySelectorAll('.gchart').forEach((element) => {
-        var eventId = parseInt(element.dataset.wtFeatureId);
+      sidebar.addEventListener('click', (evt) => {
+        // Only perform map action if evt was not initiated from an anchor element
+        if (!evt.target.closest('a')) {
 
-        element.addEventListener('click', () => {
-          // first close any existing
-          map.closePopup();
           //find the marker corresponding to the clicked event
+          const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
           let mkrLayer = markers.getLayers().filter(function (v) {
             return v.feature !== undefined && v.feature.id === eventId;
           });
-
-          let mkr = mkrLayer.pop();
+          const mkr = mkrLayer.pop();
 
           markers.zoomToShowLayer(mkr, function (e) {
             mkr.openPopup();
           });
 
           return false;
-        });
-
-        // stop click on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
-        });
+        }
       });
     }
 
