@@ -1,6 +1,6 @@
 <phpunit bootstrap="./phpunit.php">
     <testsuites>
-        <testsuite>
+        <testsuite name="Aura.Router test suite">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

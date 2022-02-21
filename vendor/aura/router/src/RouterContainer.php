@@ -33,7 +33,7 @@ class RouterContainer
      *
      * Logs activity in the Matcher.
      *
-     * @var Psr\Log\LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      *
      */
     protected $logger;
@@ -94,9 +94,9 @@ class RouterContainer
 
     /**
      *
-     * An collection of route-matching rules to iterate through.
+     * A collection of route-matching rules to iterate through.
      *
-     * @var RuleIterator
+     * @var Rule\RuleIterator
      *
      */
     protected $ruleIterator;
@@ -105,10 +105,15 @@ class RouterContainer
      *
      * The basepath to use for matching and generating.
      *
-     * @var string
+     * @var string|null
      *
      */
     protected $basepath;
+
+    /**
+     * @var callable
+     */
+    protected $mapBuilder;
 
     /**
      *
@@ -154,7 +159,7 @@ class RouterContainer
     /**
      * mapFactory
      *
-     * @return mixed
+     * @return Map
      *
      * @access protected
      */
@@ -168,7 +173,7 @@ class RouterContainer
      *
      * @param Map $map DESCRIPTION
      *
-     * @return mixed
+     * @return void
      *
      * @access protected
      */
@@ -288,7 +293,7 @@ class RouterContainer
      *
      * Gets the shared Logger instance.
      *
-     * @return Logger
+     * @return \Psr\Log\LoggerInterface
      *
      */
     public function getLogger()
@@ -318,7 +323,7 @@ class RouterContainer
      *
      * Gets the rule iterator instance.
      *
-     * @return RuleIterator
+     * @return Rule\RuleIterator
      *
      */
     public function getRuleIterator()

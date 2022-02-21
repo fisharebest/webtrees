@@ -1,11 +1,11 @@
 <?php
 namespace Aura\Router\Rule;
 
-class AcceptTest extends AbstractRuleTest
+class AcceptsTest extends AbstractRuleTest
 {
-    public function setup()
+    public function set_up()
     {
-        parent::setup();
+        parent::set_up();
         $this->rule = new Accepts();
     }
 

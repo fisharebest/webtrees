@@ -1,0 +1,16 @@
+{
+  "domainName": "google.com.kw",
+  "whoisServer": "",
+  "nameServers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "creationDate": "2007-03-17T00:00:00.0Z",
+  "expirationDate": "2023-03-17T00:00:00.0Z",
+  "updatedDate": "2021-03-22T06:47:10.876Z",
+  "states": [
+    "ok"
+  ],
+  "owner": "Abu Ghazaleh Consulting & Intellectual Properties Co.",
+  "registrar": "Solutions by STC"
+}

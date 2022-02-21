@@ -4,7 +4,7 @@ Every time you add a route to the _Map_, you get back a _Route_ object. The _Rou
 
 ## Placeholder Tokens and Default Values
 
-When you add a `{token}` placeholer in the path, it uses a default regular expression of `([^/]+)`. Essentially, this matches everything except a slash, which of course indicates the next path segment.
+When you add a `{token}` placeholder in the path, it uses a default regular expression of `([^/]+)`. Essentially, this matches everything except a slash, which of course indicates the next path segment.
 
 To define custom regular expressions for placeholder tokens, use the `tokens()` method.
 
@@ -148,7 +148,7 @@ $map->get('blog.browse', '/blog')
 ?>
 ```
 
-Note that this is *not* a content negotiation method. It is only a pro-forma check to see if one of the specified types is present in the `Accept` header with a non-zero `q` value. THe handler, or some other layer, should perform content negotation proper.
+Note that this is *not* a content negotiation method. It is only a pro-forma check to see if one of the specified types is present in the `Accept` header with a non-zero `q` value. The route handler, or some other layer, should perform content negotiation proper.
 
 ## Multiple HTTP Verbs
 
@@ -163,7 +163,7 @@ $map->post('blog.edit', '/blog/{id}')
 
 ## Secure Protocols
 
-You can use the `secure()` method to specify that a route should only match a secure protcol. (Specifically, `$_SERVER['HTTPS']` must be on, or the request must be on port 443.)
+You can use the `secure()` method to specify that a route should only match a secure protocol. (Specifically, `$_SERVER['HTTPS']` must be on, or the request must be on port 443.)
 
 ```php
 <?php

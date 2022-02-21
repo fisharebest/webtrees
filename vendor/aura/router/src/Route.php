@@ -32,7 +32,7 @@ namespace Aura\Router;
  *
  * @property-read string $wildcard The name of the wildcard token.
  *
- * @property-read array $accept
+ * @property-read array $accepts
  *
  * @property-read mixed $auth The auth value.
  *
@@ -112,7 +112,7 @@ class Route
      *
      * The rule that failed, if any, during matching.
      *
-     * @var string
+     * @var string|null
      *
      */
     protected $failedRule;
@@ -139,7 +139,7 @@ class Route
      *
      * The name for this route.
      *
-     * @var string
+     * @var string|null
      *
      */
     protected $name;
@@ -157,7 +157,7 @@ class Route
      *
      * The path for this route.
      *
-     * @var string
+     * @var string|null
      *
      */
     protected $path;
@@ -184,7 +184,7 @@ class Route
      *
      * Should this route respond on a secure protocol?
      *
-     * @var bool
+     * @var bool|null
      *
      */
     protected $secure = null;
@@ -193,7 +193,7 @@ class Route
      *
      * A callable to use for special matching logic on this individual Route.
      *
-     * @var callable
+     * @var callable|null
      *
      */
     protected $special;
@@ -211,14 +211,14 @@ class Route
      *
      * Wildcard token name, if any.
      *
-     * @var string
+     * @var string|null
      *
      */
     protected $wildcard = null;
 
     /**
      *
-     * When cloning the Route, reset the `$attributes` to an empty array, and
+     * When cloning the Route, reset the `$attributes` to defaults, and
      * clear the `$failedRule`.
      *
      */

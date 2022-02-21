@@ -1,0 +1,11 @@
+package = aura/router
+
+[commands]
+phpunit = ./vendor/bin/phpunit
+
+[files]
+changes = CHANGES.md
+contributing = CONTRIBUTING.md
+license = LICENSE.md
+phpunit = phpunit.xml.dist
+readme = README.md

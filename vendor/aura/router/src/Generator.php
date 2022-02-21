@@ -75,7 +75,7 @@ class Generator
      *
      * The basepath to prefix to generated paths.
      *
-     * @var string
+     * @var string|null
      *
      */
     protected $basepath;
@@ -105,8 +105,7 @@ class Generator
      * @param array $data The data to interpolate into the URI; data keys
      * map to attribute tokens in the path.
      *
-     * @return string|false A URI path string if the route name is found, or
-     * boolean false if not.
+     * @return string A URI path string if the route name is found
      *
      * @throws Exception\RouteNotFound
      *
@@ -125,8 +124,7 @@ class Generator
      * @param array $data The data to interpolate into the URI; data keys
      * map to attribute tokens in the path.
      *
-     * @return string|false A URI path string if the route name is found, or
-     * boolean false if not.
+     * @return string A URI path string
      *
      * @throws Exception\RouteNotFound
      *
@@ -146,6 +144,8 @@ class Generator
      * attribute tokens in the path for the Route.
      *
      * @param bool $raw Leave the data unencoded?
+     *
+     * @throws Exception\RouteNotFound
      *
      * @return string
      *
@@ -170,7 +170,7 @@ class Generator
      *
      * Builds the URL property.
      *
-     * @return null
+     * @return void
      *
      */
     protected function buildUrl()
@@ -195,7 +195,7 @@ class Generator
      *
      * Builds urlencoded data for token replacements.
      *
-     * @return array
+     * @return void
      *
      */
     protected function buildTokenReplacements()
@@ -209,7 +209,7 @@ class Generator
      *
      * Builds replacements for attributes in the generated path.
      *
-     * @return string
+     * @return void
      *
      */
     protected function buildOptionalReplacements()
@@ -259,7 +259,7 @@ class Generator
      *
      * Builds a wildcard replacement in the generated path.
      *
-     * @return string
+     * @return void
      *
      */
     protected function buildWildcardReplacement()

@@ -1,7 +1,8 @@
-This release adds three new features:
+# 3.2.0
 
-- Route URL view helpers
-- Support for custom token matching logic
-- Support for route-specific matching logic
-
-Documentation, examples, and tests have also been updated.
+1. Varioud documentation and doc block improvements by @muglug, @johnnypeck, Andreas Sundqvist, @afilina, @vitorbari, @bkdotcom, @daniel-mueller, @cxj, @koriym
+1. CI improvements @jakejohns, @koriym,
+1. 8.1 support @koriym, @fisharebest
+1. Fixes #178 psr/log version 3 support @koriym
+1. Fixed #162 by @NaokiTsuchiya and @harikt
+1. Fixed #169 by @harikt

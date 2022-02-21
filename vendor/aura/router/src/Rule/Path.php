@@ -42,7 +42,7 @@ class Path implements RuleInterface
      *
      * The basepath to prefix when matching the path.
      *
-     * @var string
+     * @var string|null
      *
      */
     protected $basepath;
@@ -86,7 +86,7 @@ class Path implements RuleInterface
 
         foreach ($this->route->tokens as $name => $pattern) {
             if (is_callable($pattern)) {
-                if (!$pattern($attributes[$name], $route, $request)) {
+                if (!$pattern(isset($attributes[$name]) ? $attributes[$name] : null, $route, $request)) {
                     return false;
                 }
             }
@@ -174,7 +174,7 @@ class Path implements RuleInterface
      *
      * Gets the replacement for optional attributes in the regex.
      *
-     * @param array $list The optional attributes.
+     * @param string $list The optional attributes.
      *
      * @return string
      *
@@ -240,7 +240,7 @@ class Path implements RuleInterface
 
     /**
      *
-     * Returns a named subpattern for a attribute name.
+     * Returns a named subpattern for an attribute name.
      *
      * @param string $name The attribute name.
      *

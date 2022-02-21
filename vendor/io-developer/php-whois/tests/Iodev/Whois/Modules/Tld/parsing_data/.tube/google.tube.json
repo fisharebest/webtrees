@@ -1,0 +1,21 @@
+{
+  "domainName": "google.tube",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.googledomains.com",
+    "ns2.googledomains.com",
+    "ns3.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2016-06-20T15:29:33Z",
+  "expirationDate": "2022-06-19T23:59:59Z",
+  "updatedDate": "2021-05-23T09:43:03Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "Google LLC",
+  "registrar": "MarkMonitor, Inc."
+}

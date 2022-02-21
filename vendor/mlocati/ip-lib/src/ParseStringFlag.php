@@ -64,4 +64,16 @@ class ParseStringFlag
      * @see http://git.musl-libc.org/cgit/musl/tree/src/network/inet_aton.c?h=v1.2.2
      */
     const IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED = 16;
+
+    /**
+     * Use this flag if you want to accept parsing IPv4/IPv6 addresses in Reverse DNS Lookup Address format.
+     *
+     * @var int
+     *
+     * @since 1.18.0
+     *
+     * @example 140.13.12.10.in-addr.arpa => 10.12.13.140
+     * @example b.a.9.8.7.6.5.0.4.0.0.0.3.0.0.0.2.0.0.0.1.0.0.0.0.0.0.0.1.2.3.4.ip6.arpa => 4321:0:1:2:3:4:567:89ab
+     */
+    const ADDRESS_MAYBE_RDNS = 32;
 }

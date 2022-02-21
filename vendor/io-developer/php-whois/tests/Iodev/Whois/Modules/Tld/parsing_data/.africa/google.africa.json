@@ -1,0 +1,21 @@
+{
+  "domainName": "google.africa",
+  "whoisServer": "whois.markmonitor.com",
+  "nameServers": [
+    "ns1.googledomains.com",
+    "ns2.googledomains.com",
+    "ns3.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "dnssec": "unsigned",
+  "creationDate": "2017-06-02T20:00:29Z",
+  "expirationDate": "2022-06-02T20:00:29Z",
+  "updatedDate": "2021-05-01T09:30:28Z",
+  "states": [
+    "clientdeleteprohibited",
+    "clienttransferprohibited",
+    "clientupdateprohibited"
+  ],
+  "owner": "REDACTED",
+  "registrar": "MarkMonitor"
+}

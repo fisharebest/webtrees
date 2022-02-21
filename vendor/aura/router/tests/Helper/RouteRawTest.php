@@ -3,16 +3,17 @@ namespace Aura\Router\Helper;
 
 use Aura\Router\Exception\RouteNotFound;
 use Aura\Router\RouterContainer;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
-class RouteRawTest extends \PHPUnit_Framework_TestCase
+class RouteRawTest extends TestCase
 {
     protected $container;
     protected $map;
     protected $generator;
 
-    protected function setUp()
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $container = new RouterContainer();
         $this->container = $container;
         $this->map = $container->getMap();

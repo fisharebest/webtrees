@@ -134,7 +134,7 @@ class Host implements RuleInterface
 
     /**
      *
-     * Returns a named subpattern for a attribute name.
+     * Returns a named subpattern for an attribute name.
      *
      * @param string $name The attribute name.
      *

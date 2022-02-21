@@ -3,9 +3,9 @@ namespace Aura\Router\Rule;
 
 class PathTest extends AbstractRuleTest
 {
-    public function setup()
+    public function set_up()
     {
-        parent::setup();
+        parent::set_up();
         $this->rule = new Path();
     }
 
@@ -194,6 +194,22 @@ class PathTest extends AbstractRuleTest
 
         $request = $this->newRequest('/foo/');
         $this->assertIsMatch($request, $route);
+    }
+
+    public function testIsMatchOnCustomOptionalAttribute()
+    {
+        $route = $this->newRoute('/foo{/option}')
+            ->tokens(['option' => function ($option, $route, $request) {
+                return $option;
+            }]);
+
+        $request = $this->newRequest('/foo');
+        $this->assertIsNotMatch($request, $route);
+        $this->assertSame(['option' => null], $route->attributes);
+
+        $request = $this->newRequest('/foo/option');
+        $this->assertIsMatch($request, $route);
+        $this->assertSame(['option' => 'option'], $route->attributes);
     }
 
     public function testIsMatchWithBasepath()

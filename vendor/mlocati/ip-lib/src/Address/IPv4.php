@@ -120,6 +120,13 @@ class IPv4 implements AddressInterface
             return null;
         }
         $flags = (int) $flags;
+        $matches = null;
+        if ($flags & ParseStringFlag::ADDRESS_MAYBE_RDNS) {
+            if (preg_match('/^([12]?[0-9]{1,2}\.[12]?[0-9]{1,2}\.[12]?[0-9]{1,2}\.[12]?[0-9]{1,2})\.in-addr\.arpa\.?$/i', $address, $matches)) {
+                $address = implode('.', array_reverse(explode('.', $matches[1])));
+                $flags = $flags & ~(ParseStringFlag::IPV4_MAYBE_NON_DECIMAL | ParseStringFlag::IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED);
+            }
+        }
         if ($flags & ParseStringFlag::IPV4ADDRESS_MAYBE_NON_QUAD_DOTTED) {
             if (strpos($address, '.') === 0) {
                 return null;
@@ -151,7 +158,6 @@ class IPv4 implements AddressInterface
         if ($flags & ParseStringFlag::MAY_INCLUDE_PORT) {
             $rx .= '(?::\d+)?';
         }
-        $matches = null;
         if (!preg_match('/^' . $rx . '$/', $address, $matches)) {
             return null;
         }

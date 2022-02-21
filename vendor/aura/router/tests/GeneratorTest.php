@@ -1,7 +1,9 @@
 <?php
 namespace Aura\Router;
 
-class GeneratorTest extends \PHPUnit_Framework_TestCase
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
+
+class GeneratorTest extends TestCase
 {
     /**
      * @var Map
@@ -13,9 +15,9 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     protected $generator;
 
-    protected function setUp()
+    protected function set_up()
     {
-        parent::setUp();
+        parent::set_up();
         $container = new RouterContainer();
         $this->map = $container->getMap();
         $this->generator = $container->getGenerator();
@@ -63,7 +65,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateMissing()
     {
-        $this->setExpectedException('Aura\Router\Exception\RouteNotFound');
+        $this->expectException('Aura\Router\Exception\RouteNotFound');
         $this->generator->generate('no-such-route');
     }
 

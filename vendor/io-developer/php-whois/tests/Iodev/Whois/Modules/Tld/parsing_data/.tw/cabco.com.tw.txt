@@ -1,0 +1,31 @@
+Domain Name: cabco.com.tw
+   Domain Status: ok
+   Registrant:
+      誠麗實業股份有限公司
+      Charming ＆ Beauty Co.,LTD
+      CHARLES YU  cabco.yu@msa.hinet.net
+      +886.228271901
+
+      IF,NO 55,SEC 1,ZHIYUAN 1ST RD,BEITOU DIST., TAIPEI, TAIWAN,ROC
+      none, Taiwan
+      TW
+
+   Administrative Contact:
+      CHARLES YU  cabco.yu@msa.hinet.net
+      +886.228271901
+
+
+   Technical Contact:
+      CHARLES YU  cabco.yu@msa.hinet.net
+      +886.228271901
+
+
+   Record expires on 2022-07-25 00:00:00 (UTC+8)
+   Record created on 2002-07-07 01:46:06 (UTC+8)
+
+   Domain servers in listed order:
+      vdns3.seed.net.tw
+      vdns4.seed.net.tw
+
+Registration Service Provider: SEEDNET
+Registration Service URL: http://rs.seed.net.tw

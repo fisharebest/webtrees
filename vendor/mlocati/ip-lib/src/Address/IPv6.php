@@ -126,10 +126,23 @@ class IPv6 implements AddressInterface
      */
     public static function parseString($address, $flags = 0)
     {
+        if (!is_string($address)) {
+            return null;
+        }
+        $matches = null;
         $flags = (int) $flags;
+        if ($flags & ParseStringFlag::ADDRESS_MAYBE_RDNS) {
+            if (preg_match('/^([0-9a-f](?:\.[0-9a-f]){31})\.ip6\.arpa\.?/i', $address, $matches)) {
+                $nibbles = array_reverse(explode('.', $matches[1]));
+                $quibbles = array();
+                foreach (array_chunk($nibbles, 4) as $n) {
+                    $quibbles[] = implode('', $n);
+                }
+                $address = implode(':', $quibbles);
+            }
+        }
         $result = null;
         if (is_string($address) && strpos($address, ':') !== false && strpos($address, ':::') === false) {
-            $matches = null;
             if ($flags & ParseStringFlag::MAY_INCLUDE_PORT && $address[0] === '[' && preg_match('/^\[(.+)]:\d+$/', $address, $matches)) {
                 $address = $matches[1];
             }

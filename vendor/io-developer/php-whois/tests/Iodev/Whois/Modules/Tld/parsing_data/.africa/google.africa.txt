@@ -1,0 +1,83 @@
+Domain Name: google.africa
+Registry Domain ID: DOM_BC-AFRICA
+Registrar WHOIS Server: Whois.markmonitor.com
+Registrar URL: https://www.markmonitor.com/
+Updated Date: 2021-05-01T09:30:28Z
+Creation Date: 2017-06-02T20:00:29Z
+Registry Expiry Date: 2022-06-02T20:00:29Z
+Registrar Registration Expiration Date: 2022-06-02T20:00:29Z
+Registrar: MarkMonitor
+Registrar IANA ID: 292
+Registrar Abuse Contact Email: registry.billing@markmonitor.com
+Registrar Abuse Contact Phone: +1.2083895740
+Reseller:
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+Registry Registrant ID: REDACTED
+Registrant Name: REDACTED
+Registrant Organization:
+Registrant Street: REDACTED
+Registrant City: REDACTED
+Registrant State/Province: CA
+Registrant Postal Code: REDACTED
+Registrant Country: US
+Registrant Phone: REDACTED
+Registrant Phone Ext: REDACTED
+Registrant Fax: REDACTED
+Registrant Fax Ext: REDACTED
+Registrant Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Admin ID: REDACTED
+Admin Name: REDACTED
+Admin Organization: REDACTED
+Admin Street: REDACTED
+Admin City: REDACTED
+Admin State/Province: REDACTED
+Admin Postal Code: REDACTED
+Admin Country: REDACTED
+Admin Phone: REDACTED
+Admin Phone Ext: REDACTED
+Admin Fax: REDACTED
+Admin Fax Ext: REDACTED
+Admin Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Tech ID: REDACTED
+Tech Name: REDACTED
+Tech Organization: REDACTED
+Tech Street: REDACTED
+Tech City: REDACTED
+Tech State/Province: REDACTED
+Tech Postal Code: REDACTED
+Tech Country: REDACTED
+Tech Phone: REDACTED
+Tech Phone Ext: REDACTED
+Tech Fax: REDACTED
+Tech Fax Ext: REDACTED
+Tech Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Registry Billing ID: REDACTED
+Billing Name: REDACTED
+Billing Organization: REDACTED
+Billing Street: REDACTED
+Billing City: REDACTED
+Billing State/Province: REDACTED
+Billing Postal Code: REDACTED
+Billing Country: REDACTED
+Billing Phone: REDACTED
+Billing Phone Ext: REDACTED
+Billing Fax: REDACTED
+Billing Fax Ext: REDACTED
+Billing Email: Please query the RDDS service of the Registrar of Record identified in this output for information on how to contact the Registrant, Admin or Tech contacts of the domain name.
+Name Server: ns2.googledomains.com
+Name Server: ns4.googledomains.com
+Name Server: ns1.googledomains.com
+Name Server: ns3.googledomains.com
+DNSSEC: unsigned
+URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of WHOIS database: 2021-12-24T08:51:04Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+
+#
+# The use of this Whois facility is subject to the following terms and
+# conditions. https://registry.net.za/whois_terms
+# Copyright (c) ZACR 1995-2021

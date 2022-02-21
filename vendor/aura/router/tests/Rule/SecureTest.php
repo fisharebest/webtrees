@@ -3,9 +3,9 @@ namespace Aura\Router\Rule;
 
 class SecureTest extends AbstractRuleTest
 {
-    public function setup()
+    public function set_up()
     {
-        parent::setup();
+        parent::set_up();
         $this->rule = new Secure();
     }
 

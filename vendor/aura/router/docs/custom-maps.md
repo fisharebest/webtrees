@@ -63,7 +63,7 @@ Likewise, you may only need to add special parameters to the routes themselves, 
 
 3. Use the _RouterContainer_ as normal, and it will use your custom _Route_ for the _Map_.
 
-For example, you may need to add a `model()` method that specifes the model to use with the handler. First, write your extended _Route_ class:
+For example, you may need to add a `model()` method that specifies the model to use with the handler. First, write your extended _Route_ class:
 
 ```php
 <?php

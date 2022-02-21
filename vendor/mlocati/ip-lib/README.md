@@ -413,6 +413,19 @@ echo $ipv4->getReverseDNSLookupName();
 echo $ipv6->getReverseDNSLookupName();
 ```
 
+To parse addresses in reverse DNS lookup format you can use the `IPLib\ParseStringFlag::ADDRESS_MAYBE_RDNS` flag when parsing a string:
+
+```php
+$ipv4 = \IPLib\Factory::parseAddressString('255.3.2.1.in-addr.arpa', \IPLib\ParseStringFlag::ADDRESS_MAYBE_RDNS);
+$ipv6 = \IPLib\Factory::parseAddressString('e.b.a.b.e.f.a.c.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.c.b.a.4.3.2.1.ip6.arpa', \IPLib\ParseStringFlag::ADDRESS_MAYBE_RDNS);
+
+// This will print 1.2.3.255
+echo $ipv4->toString();
+
+// This will print 1234:abcd::cafe:babe
+echo (string) $ipv6->toString();
+```
+
 You can also use `getReverseDNSLookupName()` for IP ranges.
 In this case, the result is an array of strings:
 

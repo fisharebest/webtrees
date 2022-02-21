@@ -1,9 +1,9 @@
 <?php
 namespace Aura\Router;
 
-use Zend\Diactoros\ServerRequestFactory;
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
-class RouteTest extends \PHPUnit_Framework_TestCase
+class RouteTest extends TestCase
 {
     public function test__get()
     {
@@ -16,7 +16,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
     {
         $route = new Route();
         $route->path('/foo');
-        $this->setExpectedException(
+        $this->expectException(
             'Aura\Router\Exception\ImmutableProperty',
             'Aura\Router\Route::$path'
         );
@@ -27,7 +27,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
     {
         $route = new Route();
         $route->path('/foo');
-        $this->setExpectedException(
+        $this->expectException(
             'Aura\Router\Exception\ImmutableProperty',
             'Aura\Router\Route::$pathPrefix'
         );
@@ -38,7 +38,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
     {
         $route = new Route();
         $route->name('/foo');
-        $this->setExpectedException(
+        $this->expectException(
             'Aura\Router\Exception\ImmutableProperty',
             'Aura\Router\Route::$name'
         );
@@ -49,7 +49,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
     {
         $route = new Route();
         $route->name('/foo');
-        $this->setExpectedException(
+        $this->expectException(
             'Aura\Router\Exception\ImmutableProperty',
             'Aura\Router\Route::$namePrefix'
         );
