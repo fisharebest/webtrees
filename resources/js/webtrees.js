@@ -687,6 +687,68 @@
   };
 
   /**
+   * Spiderfy clusters to show marker & popup when sidebar event is clicked
+   * modified from code written by Ghybs https://github.com/ghybs
+   * @param {L.markerClusterGroup} markers
+   * @param {L.marker} marker
+   */
+  webtrees.leafletJsSpiderfyClusters = (markers, marker, delay) => {
+  /**
+   * @private
+   *
+   * @param {L.marker} marker
+   */
+  const _unspiderfyPreviousClusterIfNotParentOf = (marker) => {
+    // Check if there is a currently spiderfied cluster.
+    // If so and it does not contain the marker, unspiderfy it.
+    const spiderfiedCluster = markers._spiderfied;
+
+    if (spiderfiedCluster && !_clusterContainsMarker(spiderfiedCluster, marker)) {
+      spiderfiedCluster.unspiderfy();
+    }
+  }
+
+  /**
+   * @private
+   *
+   * @param {L.clusterGroup} cluster
+   * @param {L.marker} marker
+   *
+   * @returns {boolean}
+   */
+  const _clusterContainsMarker = (cluster, marker) => {
+    let currentLayer = marker;
+
+    while (currentLayer && currentLayer !== cluster) {
+      currentLayer = currentLayer.__parent;
+    }
+
+    // Say if we found a cluster or nothing.
+    return !!currentLayer;
+  }
+
+  const visibleLayer = markers.getVisibleParent(marker);
+
+  if (visibleLayer instanceof L.MarkerCluster) {
+    setTimeout(() => {
+      // spiderfy its containing cluster to reveal it.
+      // This will automatically unspiderfy other clusters.
+      visibleLayer.spiderfy();
+    }, delay);
+    // We want to show a marker that is currently hidden in a cluster.
+    // Make sure it will get highlighted once revealed.
+    markers.once('spiderfied', () => {
+      marker.fire('click');
+    });
+  } else {
+    // The marker is already visible, unspiderfy other clusters if
+    // they do not contain the marker.
+    _unspiderfyPreviousClusterIfNotParentOf(marker);
+    marker.fire('click');
+  }
+};
+
+  /**
    * Initialize a tom-select input
    * @param {Element} element
    * @returns {TomSelect}
