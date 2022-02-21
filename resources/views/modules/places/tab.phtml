@@ -11,7 +11,7 @@ use Fisharebest\Webtrees\I18N;
 
 
 <label class="form-check-label mx-1 my-2">
-  <input class="wt-sidebar-toggle" type="checkbox" data-wt-persist="sidebar" aria-expanded="true"></input>
+  <input class="wt-sidebar-toggle" type="checkbox" data-wt-persist="places-tab-sidebar-toggle" aria-expanded="true"></input>
   <?= I18N::translate('Hide the list of events') ?>
 </label>
 
@@ -138,8 +138,7 @@ use Fisharebest\Webtrees\I18N;
       document.querySelector('.wt-sidebar-toggle').addEventListener('change', () => {
         const mapElement = document.querySelector('.wt-map');
         sidebar.classList.toggle('d-none');
-        mapElement.classList.toggle('col-sm-9');
-        mapElement.classList.toggle('col-sm-12');
+        ['col-sm-9', 'col-sm-12'].forEach(item => mapElement.classList.toggle(item));
         map.invalidateSize();
       });
 
