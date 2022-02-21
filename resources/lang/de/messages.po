@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-02-23 13:42+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-02-23 13:42+0000\nLast-Translator: Markus Hemprich <hemprich@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -16747,7 +16747,7 @@ msgstr "Ort hinzufügen"
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:47
 msgid "adopted name"
-msgstr "Adoptionsname"
+msgstr "Adoptivname"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:359
@@ -16844,7 +16844,7 @@ msgstr "zwischen %s und %s"
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php:51
 msgid "birth name"
-msgstr "geborene"
+msgstr "Geburtsname"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/trees-privacy.phtml:121
