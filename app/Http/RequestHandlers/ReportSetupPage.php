@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
@@ -29,12 +28,11 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -68,13 +66,10 @@ class ReportSetupPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
-
-        $report = $request->getAttribute('report');
+        $report = Validator::attributes($request)->string('report');
         $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {

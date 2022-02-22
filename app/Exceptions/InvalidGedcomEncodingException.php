@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Exceptions;
 
-use DomainException;
 use Exception;
 use Fisharebest\Webtrees\I18N;
 

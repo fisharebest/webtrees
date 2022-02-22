@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Encodings;
 use function chr;
 use function intdiv;
 use function ord;
-use function str_split;
 
 /**
  * Convert between UTF-16LE and UTF-8.

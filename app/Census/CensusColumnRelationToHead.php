@@ -22,6 +22,9 @@ namespace Fisharebest\Webtrees\Census;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\RelationshipService;
 
+use function app;
+use function assert;
+
 /**
  * Relationship to head of household.
  */
@@ -43,6 +46,9 @@ class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusC
             return static::HEAD_OF_HOUSEHOLD;
         }
 
-        return app(RelationshipService::class)->getCloseRelationshipName($head, $individual);
+        $relationship_service = app(RelationshipService::class);
+        assert($relationship_service instanceof RelationshipService);
+
+        return $relationship_service->getCloseRelationshipName($head, $individual);
     }
 }

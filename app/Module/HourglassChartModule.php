@@ -22,12 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -35,7 +35,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
-use function is_string;
 use function response;
 use function view;
 
@@ -159,38 +158,29 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $individual = Registry::individualFactory()->make($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual, false, true);
-
-        $user        = $request->getAttribute('user');
-        $generations = (int) $request->getAttribute('generations');
-        $spouses     = (bool) $request->getAttribute('spouses');
-        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $tree        = Validator::attributes($request)->tree();
+        $xref        = Validator::attributes($request)->isXref()->string('xref');
+        $user        = Validator::attributes($request)->user();
+        $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
+        $spouses     = Validator::attributes($request)->boolean('spouses');
+        $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $params = (array) $request->getParsedBody();
-
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'xref'        => $params['xref'],
-                'generations' => $params['generations'],
-                'spouses'     => $params['spouses'] ?? false,
+                'xref'        => Validator::parsedBody($request)->string('xref', ''),
+                'generations' => Validator::parsedBody($request)->string('generations', ''),
+                'spouses'     => Validator::parsedBody($request)->string('spouses', ''),
             ]));
         }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
-        $generations = min($generations, self::MAXIMUM_GENERATIONS);
-        $generations = max($generations, self::MINIMUM_GENERATIONS);
+        $individual  = Registry::individualFactory()->make($xref, $tree);
+        $individual  = Auth::checkIndividualAccess($individual, false, true);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             $this->layout = 'layouts/ajax';
 
             return $this->viewResponse('modules/hourglass-chart/chart', [
@@ -228,8 +218,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getAncestorsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -251,8 +240,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 

@@ -22,12 +22,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\AdminService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function e;
 
 /**
@@ -56,9 +55,7 @@ class RenumberTreePage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree  = Validator::attributes($request)->tree();
         $xrefs = $this->admin_service->duplicateXrefs($tree);
 
         /* I18N: Renumber the records in a family tree */

@@ -25,13 +25,13 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -121,7 +121,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $this->layout = 'layouts/administration';
 
         // This module can't run without a tree
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         if (!$tree instanceof Tree) {
             $tree = $this->tree_service->all()->first();
@@ -388,8 +388,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)

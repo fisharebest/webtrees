@@ -22,12 +22,11 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function response;
 use function view;
 
@@ -98,15 +97,13 @@ trait ModuleTabTrait
      */
     public function getTabAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         $xref = $request->getQueryParams()['xref'];
 
         $record = Registry::individualFactory()->make($xref, $tree);
         $record = Auth::checkIndividualAccess($record);
-
-        $user = $request->getAttribute('user');
 
         if ($this->accessLevel($tree, ModuleTabInterface::class) < Auth::accessLevel($tree, $user)) {
             throw new HttpAccessDeniedException();

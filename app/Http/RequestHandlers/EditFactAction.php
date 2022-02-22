@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -63,14 +62,9 @@ class EditFactAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $fact_id = $request->getAttribute('fact_id') ?? '';
-        assert(is_string($fact_id));
+        $tree    = Validator::attributes($request)->tree();
+        $xref    = Validator::attributes($request)->isXref()->string('xref');
+        $fact_id = Validator::attributes($request)->string('fact_id');
 
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
@@ -118,8 +112,8 @@ class EditFactAction implements RequestHandlerInterface
             }
         }
 
-        $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $record->url();
+        $base_url = Validator::attributes($request)->string('base_url');
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->optionalString('url') ?? $record->url();
 
         return redirect($url);
     }

@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
@@ -153,17 +154,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user      = $request->getAttribute('user');
-        $xrefs     = $request->getQueryParams()['xrefs'] ?? [];
-        $ajax      = $request->getQueryParams()['ajax'] ?? '';
-
-        // URLs created by older versions may already contain an array.
-        if (!is_array($xrefs)) {
-            $xrefs = explode(self::SEPARATOR, $xrefs);
-        }
+        $tree  = Validator::attributes($request)->tree();
+        $user  = Validator::attributes($request)->user();
+        $xrefs = Validator::queryParams($request)->array('xrefs');
+        $ajax  = Validator::queryParams($request)->boolean('ajax', false);
 
         $params = (array) $request->getParsedBody();
 
@@ -217,7 +211,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             $this->layout = 'layouts/ajax';
 
             return $this->chart($tree, $xrefs);

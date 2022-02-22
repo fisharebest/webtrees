@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -66,7 +67,7 @@ class VerifyEmail implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $token    = $request->getAttribute('token');
-        $tree     = $request->getAttribute('tree');
+        $tree     = Validator::attributes($request)->treeOptional();
         $username = $request->getAttribute('username');
 
         $title = I18N::translate('User verification');
@@ -80,7 +81,7 @@ class VerifyEmail implements RequestHandlerInterface
                 // switch language to administrator settings
                 I18N::init($administrator->getPreference(UserInterface::PREF_LANGUAGE));
 
-                $base_url = $request->getAttribute('base_url');
+                $base_url = Validator::attributes($request)->string('base_url');
 
                 /* I18N: %s is a server name/URL */
                 $subject = I18N::translate('New user at %s', $base_url);

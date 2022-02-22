@@ -27,12 +27,12 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function route;
 use function view;
 
@@ -86,19 +86,16 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteMessageAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params = (array) $request->getParsedBody();
-
-        $message_ids = $params['message_id'] ?? [];
+        $tree        = Validator::attributes($request)->tree();
+        $context     = Validator::queryParams($request)->string('context');
+        $message_ids = Validator::parsedBody($request)->array('message_ids');
 
         DB::table('message')
             ->where('user_id', '=', Auth::id())
             ->whereIn('message_id', $message_ids)
             ->delete();
 
-        if ($request->getQueryParams()['context'] === ModuleBlockInterface::CONTEXT_USER_PAGE) {
+        if ($context === ModuleBlockInterface::CONTEXT_USER_PAGE) {
             $url = route(UserPage::class, ['tree' => $tree->name()]);
         } else {
             $url = route(TreePage::class, ['tree' => $tree->name()]);

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 
@@ -69,9 +70,14 @@ class CaptchaService
         $x = Session::pull('captcha-x');
         $y = Session::pull('captcha-y');
         $z = Session::pull('captcha-z');
+        
+        assert(is_int($t));
+        assert(is_string($x));
+        assert(is_string($y));
+        assert(is_string($z));
 
-        $value_x = $request->getParsedBody()[$x] ?? '';
-        $value_y = $request->getParsedBody()[$y] ?? '';
+        $value_x = Validator::parsedBody($request)->string($x, '');
+        $value_y = Validator::parsedBody($request)->string($y, '');
 
         // The captcha uses javascript to copy value z from field y to field x.
         // Expect it in both fields.

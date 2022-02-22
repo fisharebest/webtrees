@@ -56,8 +56,8 @@ class RedirectSourcePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged  = Validator::queryParams($request)->requiredString('ged');
-        $sid  = Validator::queryParams($request)->isXref()->requiredString('sid');
+        $ged  = Validator::queryParams($request)->string('ged');
+        $sid  = Validator::queryParams($request)->isXref()->string('sid');
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {

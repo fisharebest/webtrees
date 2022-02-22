@@ -47,6 +47,16 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
     /** Show this number of surnames by default */
     private const DEFAULT_NUMBER_OF_SURNAMES = '10';
 
+    private ModuleService $module_service;
+
+    /**
+     * @param ModuleService $module_service
+     */
+    public function __construct(ModuleService $module_service)
+    {
+        $this->module_service = $module_service;
+    }
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -132,10 +142,10 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 
             uksort($all_surnames, I18N::comparator());
 
-            //find a module providing individual lists
-            $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $tree, Auth::user())->first(static function (ModuleInterface $module) {
-                return $module instanceof IndividualListModule;
-            });
+            // Find a module providing individual lists
+            $module = $this->module_service
+                ->findByComponent(ModuleListInterface::class, $tree, Auth::user())
+                ->first(static fn (ModuleInterface $module): bool => $module instanceof IndividualListModule);
 
             $surnames = view('lists/surnames-compact-list', [
                 'module'   => $module,

@@ -20,13 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
 
 /**
  * Class FamilyListModule
@@ -74,11 +71,8 @@ class FamilyListModule extends IndividualListModule
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 

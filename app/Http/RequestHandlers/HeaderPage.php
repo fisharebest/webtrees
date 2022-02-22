@@ -23,7 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -47,19 +47,14 @@ class HeaderPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $slug   = Validator::attributes($request)->string('slug', '');
         $header = Registry::headerFactory()->make($xref, $tree);
         $header = Auth::checkHeaderAccess($header, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($header);
-
-        if ($header->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+        if ($header->xref() !== $xref || Registry::slugFactory()->make($header) !== $slug) {
             return redirect($header->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

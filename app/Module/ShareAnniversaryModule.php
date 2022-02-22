@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -139,14 +139,11 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref    = $request->getAttribute('xref');
-        $fact_id = $request->getAttribute('fact_id');
-
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record);
+        $tree    = Validator::attributes($request)->tree();
+        $xref    = Validator::attributes($request)->isXref()->string('xref');
+        $fact_id = Validator::attributes($request)->string('fact_id');
+        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record  = Auth::checkRecordAccess($record);
 
         $fact = $record->facts()
             ->filter(fn (Fact $fact): bool => $fact->id() === $fact_id)

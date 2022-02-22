@@ -32,14 +32,13 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SurnameTradition;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
-use function assert;
 use function e;
 use function explode;
 use function in_array;
@@ -76,9 +75,7 @@ class TreePreferencesPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree        = Validator::attributes($request)->tree();
         $data_folder = Registry::filesystem()->dataName();
 
         $french_calendar_start    = new Date('22 SEP 1792');
@@ -161,7 +158,7 @@ class TreePreferencesPage implements RequestHandlerInterface
 
         $title = I18N::translate('Preferences') . ' — ' . e($tree->title());
 
-        $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+        $base_url = Validator::attributes($request)->string('base_url');
 
         return $this->viewResponse('admin/trees-preferences', [
             'all_family_facts'         => $all_family_facts,

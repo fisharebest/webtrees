@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -54,7 +54,6 @@ use function imagettfbbox;
 use function imagettftext;
 use function implode;
 use function intdiv;
-use function is_string;
 use function max;
 use function mb_substr;
 use function min;
@@ -221,44 +220,31 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $individual = Registry::individualFactory()->make($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual, false, true);
-
-        $style       = $request->getAttribute('style');
-        $generations = (int) $request->getAttribute('generations');
-        $width       = (int) $request->getAttribute('width');
-        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $tree        = Validator::attributes($request)->tree();
+        $user        = Validator::attributes($request)->user();
+        $xref        = Validator::attributes($request)->isXref()->string('xref');
+        $style       = Validator::attributes($request)->string('style');
+        $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
+        $width       = Validator::attributes($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width');
+        $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $params = (array) $request->getParsedBody();
-
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'xref'        => $params['xref'],
-                'style'       => $params['style'],
-                'generations' => $params['generations'],
-                'width'       => $params['width'],
-            ]));
+                'generations' => Validator::parsedBody($request)->string('generations', ''),
+                'style'       => Validator::parsedBody($request)->string('style', ''),
+                'width'       => Validator::parsedBody($request)->string('width', ''),
+                'xref'        => Validator::parsedBody($request)->string('xref', ''),
+             ]));
         }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
-        $width = min($width, self::MAXIMUM_WIDTH);
-        $width = max($width, self::MINIMUM_WIDTH);
+        $individual  = Registry::individualFactory()->make($xref, $tree);
+        $individual  = Auth::checkIndividualAccess($individual, false, true);
 
-        $generations = min($generations, self::MAXIMUM_GENERATIONS);
-        $generations = max($generations, self::MINIMUM_GENERATIONS);
-
-        if ($ajax === '1') {
+        if ($ajax) {
             return $this->chart($individual, $style, $width, $generations);
         }
 

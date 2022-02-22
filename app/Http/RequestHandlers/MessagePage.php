@@ -24,12 +24,11 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function route;
 
 /**
@@ -58,10 +57,8 @@ class MessagePage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user    = $request->getAttribute('user');
+        $tree    = Validator::attributes($request)->tree();
+        $user    = Validator::attributes($request)->user();
         $body    = $request->getQueryParams()['body'] ?? '';
         $subject = $request->getQueryParams()['subject'] ?? '';
         $to      = $request->getQueryParams()['to'] ?? '';

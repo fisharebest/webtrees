@@ -21,14 +21,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function preg_replace;
 use function redirect;
 use function trim;
@@ -45,21 +42,13 @@ class EditRawFactAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
-
-        $fact_id = $request->getAttribute('fact_id');
-        assert(is_string($fact_id));
-
-        $params = (array) $request->getParsedBody();
-
-        $gedcom = $params['gedcom'];
+        $tree    = Validator::attributes($request)->tree();
+        $xref    = Validator::attributes($request)->isXref()->string('xref');
+        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record  = Auth::checkRecordAccess($record, true);
+        $fact_id = Validator::attributes($request)->string('fact_id');
+        $params  = (array) $request->getParsedBody();
+        $gedcom  = $params['gedcom'];
 
         // Cleanup the client’s bad editing?
         $gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom); // Empty lines
@@ -73,8 +62,8 @@ class EditRawFactAction implements RequestHandlerInterface
             }
         }
 
-        $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $record->url();
+        $base_url = Validator::attributes($request)->string('base_url');
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->optionalString('url') ?? $record->url();
 
         return redirect($url);
     }

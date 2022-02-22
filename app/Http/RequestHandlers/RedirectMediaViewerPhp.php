@@ -56,8 +56,8 @@ class RedirectMediaViewerPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged  = Validator::queryParams($request)->requiredString('ged');
-        $mid  = Validator::queryParams($request)->isXref()->requiredString('mid');
+        $ged  = Validator::queryParams($request)->string('ged');
+        $mid  = Validator::queryParams($request)->isXref()->string('mid');
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {

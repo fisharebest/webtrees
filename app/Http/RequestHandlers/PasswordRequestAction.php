@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -83,7 +84,7 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         $params = (array) $request->getParsedBody();
 

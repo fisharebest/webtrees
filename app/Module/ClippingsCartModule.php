@@ -167,12 +167,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getMenu(Tree $tree): ?Menu
     {
-        /** @var ServerRequestInterface $request */
         $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
 
-        $route = $request->getAttribute('route');
-        assert($route instanceof Route);
-
+        $route = Validator::attributes($request)->route();
         $cart  = Session::get('cart');
         $cart  = is_array($cart) ? $cart : [];
         $count = count($cart[$tree->name()] ?? []);
@@ -250,8 +248,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getDownloadFormAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $title = I18N::translate('Family tree clippings cart') . ' — ' . I18N::translate('Download');
 
@@ -270,15 +267,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postDownloadAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $data_filesystem = Registry::filesystem()->data();
 
-        $format       = Validator::parsedBody($request)->isInArray(['gedcom', 'zip'])->requiredString('format');
-        $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->requiredString('privacy');
-        $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->requiredString('encoding');
-        $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->requiredString('line_endings');
+        $format       = Validator::parsedBody($request)->isInArray(['gedcom', 'zip'])->string('format');
+        $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->string('privacy');
+        $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->string('encoding');
+        $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->string('line_endings');
 
         if ($privacy === 'none' && !Auth::isManager($tree)) {
             $privacy = 'member';
@@ -399,8 +395,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getEmptyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $cart = Session::get('cart');
         $cart = is_array($cart) ? $cart : [];
@@ -424,8 +419,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postRemoveAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -451,8 +445,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         return $this->viewResponse('modules/clippings/show', [
             'module'  => $this->name(),
@@ -500,8 +493,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -534,8 +526,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddFamilyAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $params = (array) $request->getParsedBody();
 
@@ -600,8 +591,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -646,8 +636,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $params = (array) $request->getParsedBody();
 
@@ -733,8 +722,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddLocationAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -763,8 +751,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddLocationAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -783,8 +770,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddMediaAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -813,8 +799,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddMediaAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -833,8 +818,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddNoteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -863,8 +847,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddNoteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -883,8 +866,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -913,8 +895,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddRepositoryAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -937,8 +918,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddSourceAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -968,8 +948,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddSourceAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $params = (array) $request->getParsedBody();
 
@@ -1000,8 +979,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function getAddSubmitterAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 
@@ -1030,8 +1008,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      */
     public function postAddSubmitterAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref = $request->getQueryParams()['xref'] ?? '';
 

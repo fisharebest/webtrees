@@ -34,8 +34,6 @@ use Fisharebest\Webtrees\Encodings\Windows1251;
 use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\TestCase;
 
-use function count;
-
 /**
  * Test harness for the class EncodingFactory
  *

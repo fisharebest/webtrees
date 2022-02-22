@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Module;
 
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -33,6 +32,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -156,7 +156,9 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect($this->listUrl($request->getAttribute('tree'), $request->getQueryParams()));
+        $tree = Validator::attributes($request)->tree();
+
+        return redirect($this->listUrl($tree, $request->getQueryParams()));
     }
 
     /**
@@ -179,11 +181,8 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 

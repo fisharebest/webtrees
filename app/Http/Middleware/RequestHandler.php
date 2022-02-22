@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Aura\Router\Route;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Container\Container;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -41,8 +42,7 @@ class RequestHandler implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        /** @var Route $route */
-        $route = $request->getAttribute('route');
+        $route = Validator::attributes($request)->route();
 
         $request_handler = $route->handler;
 

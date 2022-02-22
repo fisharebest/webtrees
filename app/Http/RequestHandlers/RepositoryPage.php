@@ -24,13 +24,11 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -59,19 +57,14 @@ class RepositoryPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $slug   = Validator::attributes($request)->string('slug', '');
         $record = Registry::repositoryFactory()->make($xref, $tree);
         $record = Auth::checkRepositoryAccess($record, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($record);
-
-        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+        if ($record->xref() !== $xref || Registry::slugFactory()->make($record) !== $slug) {
             return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 

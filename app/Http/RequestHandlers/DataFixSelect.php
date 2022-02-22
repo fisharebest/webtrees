@@ -21,12 +21,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -54,9 +53,7 @@ class DataFixSelect implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree       = Validator::attributes($request)->tree();
         $data_fixes = $this->module_service->findByInterface(ModuleDataFixInterface::class);
         $data_fix   = $request->getParsedBody()['data_fix'] ?? '';
 

@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Search and replace genealogy data
@@ -44,12 +42,9 @@ class SearchReplacePage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree   = Validator::attributes($request)->tree();
         $params = $request->getQueryParams();
-
-        $title = I18N::translate('Search and replace');
+        $title  = I18N::translate('Search and replace');
 
         return $this->viewResponse('search-replace-page', [
             'context' => $params['context'] ?? 'all',

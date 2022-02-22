@@ -1000,7 +1000,10 @@ class GedcomRecord
             $this->pending = $new_gedcom;
 
             if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-                app(PendingChangesService::class)->acceptRecord($this);
+                $pending_changes_service = app(PendingChangesService::class);
+                assert($pending_changes_service instanceof PendingChangesService);
+
+                $pending_changes_service->acceptRecord($this);
                 $this->gedcom  = $new_gedcom;
                 $this->pending = null;
             }
@@ -1048,7 +1051,10 @@ class GedcomRecord
 
         // Accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            app(PendingChangesService::class)->acceptRecord($this);
+            $pending_changes_service = app(PendingChangesService::class);
+            assert($pending_changes_service instanceof PendingChangesService);
+
+            $pending_changes_service->acceptRecord($this);
             $this->gedcom  = $gedcom;
             $this->pending = null;
         }
@@ -1078,7 +1084,10 @@ class GedcomRecord
 
         // Auto-accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            app(PendingChangesService::class)->acceptRecord($this);
+            $pending_changes_service = app(PendingChangesService::class);
+            assert($pending_changes_service instanceof PendingChangesService);
+
+            $pending_changes_service->acceptRecord($this);
         }
 
         Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);

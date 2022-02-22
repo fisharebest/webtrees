@@ -26,15 +26,14 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function max;
 use function time;
 
@@ -393,10 +392,8 @@ class UserService
      */
     public function contactLink(User $contact_user, ServerRequestInterface $request): string
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'mailto') {
             $url = 'mailto:' . $contact_user->email();

@@ -505,8 +505,8 @@ class WebRoutes
                 $router->get(TreePageEdit::class, '/tree-page-edit');
                 $router->post(GedcomLoad::class, '/load');
                 $router->post(TreePageUpdate::class, '/tree-page-update');
-                $router->get(TreePageBlockEdit::class, '/tree-page-block-edit');
-                $router->post(TreePageBlockUpdate::class, '/tree-page-block-edit');
+                $router->get(TreePageBlockEdit::class, '/tree-page-block-edit/{block_id}');
+                $router->post(TreePageBlockUpdate::class, '/tree-page-block-update/{block_id}');
                 $router->get(TreePrivacyPage::class, '/privacy');
                 $router->post(TreePrivacyAction::class, '/privacy');
                 $router->get(UnconnectedPage::class, '/unconnected');
@@ -624,8 +624,8 @@ class WebRoutes
                 $router->get(UserPageBlock::class, '/my-page-block');
                 $router->get(UserPageEdit::class, '/my-page-edit');
                 $router->post(UserPageUpdate::class, '/my-page-edit');
-                $router->get(UserPageBlockEdit::class, '/my-page-block-edit');
-                $router->post(UserPageBlockUpdate::class, '/my-page-block-edit');
+                $router->get(UserPageBlockEdit::class, '/my-page-block-edit/{block_id}');
+                $router->post(UserPageBlockUpdate::class, '/my-page-block-edit/{block_id}');
             });
 
             // User routes without a tree.

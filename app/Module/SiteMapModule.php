@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
@@ -188,8 +189,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $route = $request->getAttribute('route');
-        assert($route instanceof Route);
+        $route = Validator::attributes($request)->route();
 
         if ($route->name === 'sitemap-style') {
             $content = view('modules/sitemap/sitemap-xsl');
@@ -305,11 +305,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     private function siteMapFile(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $type = $request->getAttribute('type');
-        $page = (int) $request->getAttribute('page');
+        $tree = Validator::attributes($request)->tree('tree');
+        $type = Validator::attributes($request)->string('type');
+        $page = Validator::attributes($request)->integer('page');
 
         if ($tree->getPreference('include_in_sitemap') !== '1') {
             throw new HttpNotFoundException();

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\CommonMark;
 
 use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\ConfigurableExtensionInterface;
-use League\CommonMark\Extension\Table\TableExtension;
 use League\Config\ConfigurationBuilderInterface;
 
 /**

@@ -27,14 +27,13 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
-use function is_string;
 use function max;
 use function min;
 use function route;
@@ -176,38 +175,29 @@ class DescendancyChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $individual = Registry::individualFactory()->make($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual, false, true);
-
-        $user        = $request->getAttribute('user');
-        $style       = $request->getAttribute('style');
-        $generations = (int) $request->getAttribute('generations');
-        $ajax        = $request->getQueryParams()['ajax'] ?? '';
+        $tree        = Validator::attributes($request)->tree();
+        $user        = Validator::attributes($request)->user();
+        $xref        = Validator::attributes($request)->isXref()->string('xref');
+        $style       = Validator::attributes($request)->string('style');
+        $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
+        $ajax        = Validator::queryParams($request)->boolean('style', false);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $params = (array) $request->getParsedBody();
-
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'xref'        => $params['xref'],
-                'style'       => $params['style'],
-                'generations' => $params['generations'],
+                'generations' => Validator::parsedBody($request)->string('generations', ''),
+                'style'       => Validator::parsedBody($request)->string('style', ''),
+                'xref'        => Validator::parsedBody($request)->string('xref', ''),
             ]));
         }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
-        $generations = min($generations, self::MAXIMUM_GENERATIONS);
-        $generations = max($generations, self::MINIMUM_GENERATIONS);
+        $individual  = Registry::individualFactory()->make($xref, $tree);
+        $individual  = Auth::checkIndividualAccess($individual, false, true);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             $this->layout = 'layouts/ajax';
 
             switch ($style) {

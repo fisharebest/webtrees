@@ -29,7 +29,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
@@ -43,7 +42,6 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function addcslashes;
-use function assert;
 use function fclose;
 use function pathinfo;
 use function strtolower;
@@ -89,16 +87,15 @@ class ExportGedcomClient implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $data_filesystem = Registry::filesystem()->data();
 
-        $format       = Validator::parsedBody($request)->isInArray(['gedcom', 'zip'])->requiredString('format');
-        $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->requiredString('privacy');
-        $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->requiredString('encoding');
-        $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->requiredString('line_endings');
-        $media_path   = Validator::parsedBody($request)->string('media_path') ?? '';
+        $format       = Validator::parsedBody($request)->isInArray(['gedcom', 'zip'])->string('format');
+        $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->string('privacy');
+        $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->string('encoding');
+        $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->string('line_endings');
+        $media_path   = Validator::parsedBody($request)->optionalString('media_path') ?? '';
 
         $access_levels = [
             'gedadmin' => Auth::PRIV_NONE,

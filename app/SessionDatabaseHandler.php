@@ -87,7 +87,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      */
     public function write($id, $data): bool
     {
-        $ip_address   = $this->request->getAttribute('client-ip');
+        $ip_address   = Validator::attributes($this->request)->string('client-ip');
         $session_time = time();
         $user_id      = (int) Auth::id();
 

@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -56,14 +55,9 @@ class AddChildToIndividualAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $params = (array) $request->getParsedBody();
-
+        $tree       = Validator::attributes($request)->tree();
+        $xref       = Validator::attributes($request)->isXref()->string('xref');
+        $params     = (array) $request->getParsedBody();
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
@@ -86,8 +80,8 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         // Link the child to the family
         $child->createFact('1 FAMC @' . $family->xref() . '@', false);
 
-        $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $child->url();
+        $base_url = Validator::attributes($request)->string('base_url');
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->optionalString('url') ?? $child->url();
 
         return redirect($url);
     }

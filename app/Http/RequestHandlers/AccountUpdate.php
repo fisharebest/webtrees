@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -57,9 +58,9 @@ class AccountUpdate implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
+        $user = Validator::attributes($request)->user();
 
-        $user = $request->getAttribute('user');
         assert($user instanceof User);
 
         $params = (array) $request->getParsedBody();

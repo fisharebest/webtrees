@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
-use function nl2br;
 
 /**
  * Events which can take "Y" to indicate that they occurred, but date/place are unknown.

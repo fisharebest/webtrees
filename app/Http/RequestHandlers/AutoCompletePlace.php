@@ -23,11 +23,9 @@ use Fisharebest\Webtrees\Module\ModuleMapAutocompleteInterface;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
 
 /**
  * Autocomplete handler for places
@@ -54,8 +52,7 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
      */
     protected function search(ServerRequestInterface $request): Collection
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $query = $request->getQueryParams()['query'] ?? '';
 

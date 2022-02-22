@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Aura\Router\Route;
 use Closure;
+use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
 use LogicException;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,7 +40,7 @@ use function str_starts_with;
  */
 class Validator
 {
-    /** @var array<string|array<string>> */
+    /** @var array<string|Tree|UserInterface|array<string>> */
     private array $parameters;
 
     /** @var array<Closure> */
@@ -50,6 +52,16 @@ class Validator
     public function __construct(array $parameters)
     {
         $this->parameters = $parameters;
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return self
+     */
+    public static function attributes(ServerRequestInterface $request): self
+    {
+        return new self($request->getAttributes());
     }
 
     /**
@@ -70,6 +82,16 @@ class Validator
     public static function queryParams(ServerRequestInterface $request): self
     {
         return new self($request->getQueryParams());
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return self
+     */
+    public static function serverParams(ServerRequestInterface $request): self
+    {
+        return new self($request->getServerParams());
     }
 
     /**
@@ -140,6 +162,22 @@ class Validator
     /**
      * @return $this
      */
+    public function isTag(): self
+    {
+        $this->rules[] = static function (?string $value): ?string {
+            if (is_string($value) && preg_match('/^' . Gedcom::REGEX_TAG . '$/', $value) === 1) {
+                return $value;
+            }
+
+            return null;
+        };
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
     public function isXref(): self
     {
         $this->rules[] = static function (?string $value): ?string {
@@ -158,7 +196,7 @@ class Validator
      *
      * @return array<string>|null
      */
-    public function array(string $parameter): ?array
+    public function optionalArray(string $parameter): ?array
     {
         $value = $this->parameters[$parameter] ?? null;
 
@@ -176,7 +214,7 @@ class Validator
      *
      * @return int|null
      */
-    public function integer(string $parameter): ?int
+    public function optionalInteger(string $parameter): ?int
     {
         $value = $this->parameters[$parameter] ?? null;
 
@@ -196,7 +234,7 @@ class Validator
      *
      * @return string|null
      */
-    public function string(string $parameter): ?string
+    public function optionalString(string $parameter): ?string
     {
         $value = $this->parameters[$parameter] ?? null;
 
@@ -210,29 +248,80 @@ class Validator
     }
 
     /**
+     * @param string    $parameter
+     * @param bool|null $default
+     *
+     * @return bool
+     */
+    public function boolean(string $parameter, bool $default = null): bool
+    {
+        $value = $this->parameters[$parameter] ?? null;
+
+        if (in_array($value, ['1', true], true)) {
+            return true;
+        }
+
+        if (in_array($value, ['0', '', false], true)) {
+            return false;
+        }
+
+        if ($default === null) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        }
+
+        return $default;
+    }
+
+    /**
      * @param string $parameter
      *
      * @return array<string>
      */
-    public function requiredArray(string $parameter): array
+    public function array(string $parameter): array
     {
-        $value = $this->array($parameter);
+        $value = $this->parameters[$parameter] ?? null;
 
-        if ($value === null) {
-            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+        if (!is_array($value)) {
+            $value = null;
         }
+
+        $callback = static fn (?array $value, Closure $rule): ?array => $rule($value);
+
+        $value = array_reduce($this->rules, $callback, $value);
+        $value ??= [];
+
+        $check_utf8 = static function($v, $k) use ($parameter) {
+            if (is_string($k) && !preg_match('//u', $k) || is_string($v) && !preg_match('//u', $v)) {
+                throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+            }
+        };
+
+        array_walk_recursive($value, $check_utf8);
 
         return $value;
     }
 
     /**
-     * @param string $parameter
+     * @param string   $parameter
+     * @param int|null $default
      *
      * @return int
      */
-    public function requiredInteger(string $parameter): int
+    public function integer(string $parameter, int $default = null): int
     {
-        $value = $this->integer($parameter);
+        $value = $this->parameters[$parameter] ?? null;
+
+        if (is_string($value) && ctype_digit($value)) {
+            $value = (int) $value;
+        } else {
+            $value = null;
+        }
+
+        $callback = static fn (?int $value, Closure $rule): ?int => $rule($value);
+
+        $value = array_reduce($this->rules, $callback, $value);
+
+        $value ??= $default;
 
         if ($value === null) {
             throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
@@ -244,16 +333,90 @@ class Validator
     /**
      * @param string $parameter
      *
+     * @return Route
+     */
+    public function route(string $parameter = 'route'): Route
+    {
+        $value = $this->parameters[$parameter] ?? null;
+
+        if ($value instanceof Route) {
+            return $value;
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+    }
+
+    /**
+     * @param string      $parameter
+     * @param string|null $default
+     *
      * @return string
      */
-    public function requiredString(string $parameter): string
+    public function string(string $parameter, string $default = null): string
     {
-        $value = $this->string($parameter);
+        $value = $this->parameters[$parameter] ?? null;
 
-        if ($value === null) {
+        if (!is_string($value)) {
+            $value = null;
+        }
+
+        $callback = static fn (?string $value, Closure $rule): ?string => $rule($value);
+
+        $value =  array_reduce($this->rules, $callback, $value);
+        $value ??= $default;
+
+        if ($value === null || preg_match('//u', $value) !== 1) {
             throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
         }
 
         return $value;
+    }
+
+    /**
+     * @param string $parameter
+     *
+     * @return Tree
+     */
+    public function tree(string $parameter = 'tree'): Tree
+    {
+        $value = $this->parameters[$parameter] ?? null;
+
+        if ($value instanceof Tree) {
+            return $value;
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+    }
+
+    /**
+     * @param string $parameter
+     *
+     * @return Tree|null
+     */
+    public function treeOptional(string $parameter = 'tree'): ?Tree
+    {
+        $value = $this->parameters[$parameter] ?? null;
+
+        if ($value === null || $value instanceof Tree) {
+            return $value;
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
+    }
+
+    /**
+     * @param string $parameter
+     *
+     * @return UserInterface
+     */
+    public function user(string $parameter = 'user'): UserInterface
+    {
+        $value = $this->parameters[$parameter] ?? null;
+
+        if ($value instanceof UserInterface) {
+            return $value;
+        }
+
+        throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
     }
 }

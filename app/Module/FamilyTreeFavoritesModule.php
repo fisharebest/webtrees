@@ -25,12 +25,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
 
 /**
  * Class FamilyTreeFavoritesModule
@@ -162,10 +161,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user   = $request->getAttribute('user');
+        $tree   = Validator::attributes($request)->tree();
+        $user   = Validator::attributes($request)->user();
         $params = (array) $request->getParsedBody();
 
         $note  = $params['note'];
@@ -198,10 +195,8 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
      */
     public function postDeleteFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user        = $request->getAttribute('user');
+        $tree        = Validator::attributes($request)->tree();
+        $user        = Validator::attributes($request)->user();
         $favorite_id = $request->getQueryParams()['favorite_id'];
 
         if (Auth::isManager($tree, $user)) {

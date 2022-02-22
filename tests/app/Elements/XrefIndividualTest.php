@@ -55,7 +55,7 @@ class XrefIndividualTest extends TestCase
 
         Registry::individualFactory($factory);
 
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = self::createRequest();
 
         app()->instance(ServerRequestInterface::class, $request);
 

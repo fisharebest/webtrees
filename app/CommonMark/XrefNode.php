@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\GedcomRecord;
 use League\CommonMark\Node\Node;
-use League\CommonMark\Renderer\NodeRendererInterface;
 
 /**
  * Convert XREFs within markdown text to links

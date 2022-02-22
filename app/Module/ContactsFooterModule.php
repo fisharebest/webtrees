@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -84,7 +85,7 @@ class ContactsFooterModule extends AbstractModule implements ModuleFooterInterfa
      */
     public function getFooter(ServerRequestInterface $request): string
     {
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         if ($tree === null) {
             return '';

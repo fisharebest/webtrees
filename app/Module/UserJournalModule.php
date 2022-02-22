@@ -27,13 +27,13 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function redirect;
 
 /**
@@ -158,8 +158,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         if (!Auth::check()) {
             throw new HttpAccessDeniedException();
@@ -199,8 +198,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         if (!Auth::check()) {
             throw new HttpAccessDeniedException();
@@ -244,9 +242,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteJournalAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree    = Validator::attributes($request)->tree();
         $news_id = $request->getQueryParams()['news_id'];
 
         DB::table('news')

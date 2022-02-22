@@ -19,11 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
 
 /**
  * Autocomplete handler for surnames
@@ -37,8 +35,7 @@ class AutoCompleteSurname extends AbstractAutocompleteHandler
      */
     protected function search(ServerRequestInterface $request): Collection
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $query = $request->getQueryParams()['query'] ?? '';
 

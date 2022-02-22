@@ -23,7 +23,6 @@ use InvalidArgumentException;
 
 use function chr;
 use function mb_substitute_character;
-use function preg_replace;
 
 /**
  * Convert between (potentially invalid) UTF-8 and UTF-8.

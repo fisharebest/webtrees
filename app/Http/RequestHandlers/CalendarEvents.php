@@ -33,12 +33,12 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function count;
 use function e;
 use function explode;
@@ -75,10 +75,8 @@ class CalendarEvents implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $view            = $request->getAttribute('view');
+        $tree            = Validator::attributes($request)->tree();
+        $view            = Validator::attributes($request)->string('view');
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         $cal      = $request->getQueryParams()['cal'] ?? '';

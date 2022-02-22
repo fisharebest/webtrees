@@ -56,8 +56,8 @@ class RedirectRepositoryPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged  = Validator::queryParams($request)->requiredString('ged');
-        $rid  = Validator::queryParams($request)->isXref()->requiredString('rid');
+        $ged  = Validator::queryParams($request)->string('ged');
+        $rid  = Validator::queryParams($request)->isXref()->string('rid');
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {

@@ -26,12 +26,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
 
 /**
  * Class UserFavoritesModule
@@ -164,10 +163,8 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user   = $request->getAttribute('user');
+        $tree   = Validator::attributes($request)->tree();
+        $user   = Validator::attributes($request)->user();
         $params = (array) $request->getParsedBody();
 
         $note  = $params['note'];
@@ -200,11 +197,9 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user        = $request->getAttribute('user');
-        $favorite_id = $request->getQueryParams()['favorite_id'];
+        $tree        = Validator::attributes($request)->tree();
+        $user        = Validator::attributes($request)->user();
+        $favorite_id = Validator::queryParams($request)->integer('favorite_id');
 
         if (Auth::check()) {
             DB::table('favorite')

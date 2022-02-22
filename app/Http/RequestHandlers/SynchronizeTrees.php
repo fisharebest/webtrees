@@ -45,6 +45,8 @@ class SynchronizeTrees implements RequestHandlerInterface
 {
     private AdminService $admin_service;
 
+    private StreamFactoryInterface $stream_factory;
+
     private TimeoutService $timeout_service;
 
     private TreeService $tree_service;
@@ -53,15 +55,18 @@ class SynchronizeTrees implements RequestHandlerInterface
      * AdminTreesController constructor.
      *
      * @param AdminService        $admin_service
+     * @param StreamFactoryInterface $stream_factory
      * @param TimeoutService      $timeout_service
      * @param TreeService         $tree_service
      */
     public function __construct(
         AdminService $admin_service,
+        StreamFactoryInterface $stream_factory,
         TimeoutService $timeout_service,
         TreeService $tree_service
     ) {
         $this->admin_service   = $admin_service;
+        $this->stream_factory  = $stream_factory;
         $this->timeout_service = $timeout_service;
         $this->tree_service    = $tree_service;
     }
@@ -86,7 +91,7 @@ class SynchronizeTrees implements RequestHandlerInterface
 
                 if ($tree->getPreference('filemtime') !== $filemtime) {
                     $resource = $data_filesystem->readStream($gedcom_file);
-                    $stream   = app(StreamFactoryInterface::class)->createStreamFromResource($resource);
+                    $stream   = $this->stream_factory->createStreamFromResource($resource);
                     $this->tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
                     $stream->close();
                     $tree->setPreference('filemtime', $filemtime);

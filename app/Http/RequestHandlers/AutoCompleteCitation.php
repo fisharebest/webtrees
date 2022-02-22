@@ -22,13 +22,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function preg_match_all;
 use function preg_quote;
 
@@ -39,9 +38,7 @@ class AutoCompleteCitation extends AbstractAutocompleteHandler
 {
     protected function search(ServerRequestInterface $request): Collection
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree   = Validator::attributes($request)->tree();
         $query  = $request->getQueryParams()['query'] ?? '';
         $xref   = $request->getQueryParams()['extra'] ?? '';
         $source = Registry::sourceFactory()->make($xref, $tree);

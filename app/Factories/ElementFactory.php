@@ -63,7 +63,6 @@ use Fisharebest\Webtrees\Elements\CountOfChildren;
 use Fisharebest\Webtrees\Elements\CountOfMarriages;
 use Fisharebest\Webtrees\Elements\Cremation;
 use Fisharebest\Webtrees\Elements\CustomElement;
-use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
 use Fisharebest\Webtrees\Elements\CustomIndividualEvent;

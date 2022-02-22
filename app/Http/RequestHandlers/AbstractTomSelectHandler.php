@@ -26,9 +26,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function response;
-use function strlen;
 
 /**
  * Autocomplete for TomSelect based controls.
@@ -45,12 +43,11 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
-        $at    = Validator::queryParams($request)->requiredString('at');
-        $page  = Validator::queryParams($request)->integer('page') ?? 1;
-        $query = Validator::queryParams($request)->requiredString('query');
+        $at    = Validator::queryParams($request)->string('at');
+        $page  = Validator::queryParams($request)->optionalInteger('page') ?? 1;
+        $query = Validator::queryParams($request)->string('query');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;

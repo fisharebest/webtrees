@@ -20,12 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Services\HomePageService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -51,11 +50,10 @@ class TreePageBlockUpdate implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree     = Validator::attributes($request)->tree();
+        $block_id = Validator::attributes($request)->integer('block_id');
 
-        $block    = $this->home_page_service->treeBlock($request);
-        $block_id = (int) $request->getQueryParams()['block_id'];
+        $block = $this->home_page_service->treeBlock($request);
 
         $block->saveBlockConfiguration($request, $block_id);
 

@@ -23,12 +23,11 @@ use Fisharebest\Webtrees\Census\CensusInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_keys;
-use function assert;
 use function count;
 use function e;
 use function response;
@@ -86,8 +85,7 @@ class CensusAssistantModule extends AbstractModule
      */
     public function postCensusIndividualAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $params       = (array) $request->getParsedBody();
         $individual   = Registry::individualFactory()->make($params['xref'], $tree);

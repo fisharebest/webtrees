@@ -22,19 +22,18 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
-use function is_string;
 use function route;
 
 /**
@@ -153,31 +152,25 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $individual = Registry::individualFactory()->make($xref, $tree);
-        $individual = Auth::checkIndividualAccess($individual, false, true);
-
-        $user = $request->getAttribute('user');
-        $ajax = $request->getQueryParams()['ajax'] ?? '';
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
+        $xref = Validator::attributes($request)->isXref()->string('xref');
+        $ajax = Validator::queryParams($request)->boolean('ajax', false);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $params = (array) $request->getParsedBody();
-
             return redirect(route(static::class, [
                 'tree' => $tree->name(),
-                'xref' => $params['xref'],
+                'xref' => Validator::parsedBody($request)->string('xref', ''),
             ]));
         }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
-        if ($ajax === '1') {
+        $individual = Registry::individualFactory()->make($xref, $tree);
+        $individual = Auth::checkIndividualAccess($individual, false, true);
+
+        if ($ajax) {
             $this->layout = 'layouts/ajax';
 
             return $this->viewResponse('modules/compact-chart/chart', [

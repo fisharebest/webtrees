@@ -20,12 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Services\HomePageService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -51,13 +50,11 @@ class UserPageBlockUpdate implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree     = Validator::attributes($request)->tree();
+        $user     = Validator::attributes($request)->user();
+        $block_id = Validator::attributes($request)->integer('block_id');
 
-        $user     = $request->getAttribute('user');
-        $block    = $this->home_page_service->userBlock($request, $user);
-        $block_id = (int) $request->getQueryParams()['block_id'];
-
+        $block = $this->home_page_service->userBlock($request, $user);
         $block->saveBlockConfiguration($request, $block_id);
 
         return redirect(route(UserPage::class, ['tree' => $tree->name()]));

@@ -582,10 +582,13 @@ class IndividualRepository implements IndividualRepositoryInterface
                 break;
         }
 
-        //find a module providing individual lists
-        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(static function (ModuleInterface $module): bool {
-            return $module instanceof IndividualListModule;
-        });
+        // find a module providing individual lists
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        $module = $module_service
+            ->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())
+            ->first(static fn (ModuleInterface $module): bool => $module instanceof IndividualListModule);
 
         if ($type === 'list') {
             return view('lists/surnames-bullet-list', [

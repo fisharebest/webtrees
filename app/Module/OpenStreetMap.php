@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\I18N;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class OpenStreetMap - use maps within webtrees

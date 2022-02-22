@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
@@ -39,7 +40,6 @@ use RuntimeException;
 use function array_combine;
 use function array_diff;
 use function array_intersect;
-use function assert;
 use function dirname;
 use function explode;
 use function ini_get;
@@ -156,8 +156,7 @@ class MediaFileService
      */
     public function uploadFile(ServerRequestInterface $request): string
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $data_filesystem = Registry::filesystem()->data();
 

@@ -21,7 +21,6 @@ namespace Fisharebest\Webtrees\Report;
 
 use DomainException;
 use Exception;
-use Fisharebest\Webtrees\Registry;
 use XMLParser;
 
 use function call_user_func;

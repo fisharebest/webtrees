@@ -24,12 +24,10 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Show anniversaries for events in a given day/month/year.
@@ -63,10 +61,9 @@ class CalendarPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
-        $view     = $request->getAttribute('view');
+        $view     = Validator::attributes($request)->string('view');
         $cal      = $request->getQueryParams()['cal'] ?? '';
         $day      = $request->getQueryParams()['day'] ?? '';
         $month    = $request->getQueryParams()['month'] ?? '';

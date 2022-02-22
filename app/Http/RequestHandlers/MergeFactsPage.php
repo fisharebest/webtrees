@@ -22,12 +22,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function redirect;
 
 /**
@@ -48,8 +47,7 @@ class MergeFactsPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $xref1 = $request->getQueryParams()['xref1'] ?? '';
         $xref2 = $request->getQueryParams()['xref2'] ?? '';

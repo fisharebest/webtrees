@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Edit note objects.
@@ -42,14 +40,10 @@ class EditNoteAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-
-        $note = Registry::noteFactory()->make($xref, $tree);
-        $note = Auth::checkNoteAccess($note, true);
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $note   = Registry::noteFactory()->make($xref, $tree);
+        $note   = Auth::checkNoteAccess($note, true);
         $params = (array) $request->getParsedBody();
 
         $NOTE = $params['NOTE'];

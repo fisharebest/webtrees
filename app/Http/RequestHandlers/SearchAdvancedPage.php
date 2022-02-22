@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -33,7 +33,6 @@ use function array_fill_keys;
 use function array_filter;
 use function array_key_exists;
 use function array_merge;
-use function assert;
 use function strtr;
 
 /**
@@ -142,8 +141,7 @@ class SearchAdvancedPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $default_fields = array_fill_keys(self::DEFAULT_ADVANCED_FIELDS, '');
 

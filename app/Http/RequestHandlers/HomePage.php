@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -60,7 +61,7 @@ class HomePage implements RequestHandlerInterface
     {
         $default = Site::getPreference('DEFAULT_GEDCOM');
         $tree    = $this->tree_service->all()->get($default) ?? $this->tree_service->all()->first();
-        $user    = $request->getAttribute('user');
+        $user    = Validator::attributes($request)->user();
 
         if ($tree instanceof Tree) {
             if ($tree->getPreference('imported') === '1') {

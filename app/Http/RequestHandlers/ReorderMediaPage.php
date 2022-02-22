@@ -23,13 +23,10 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
-use function is_string;
 
 /**
  * Reorder the media of an individual.
@@ -45,16 +42,11 @@ class ReorderMediaPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree       = Validator::attributes($request)->tree();
+        $xref       = Validator::attributes($request)->isXref()->string('xref');
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
-
-        $title = $individual->fullName() . ' — ' . I18N::translate('Re-order media');
+        $title      = $individual->fullName() . ' — ' . I18N::translate('Re-order media');
 
         return $this->viewResponse('edit/reorder-media', [
             'individual' => $individual,

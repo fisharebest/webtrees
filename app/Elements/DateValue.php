@@ -57,7 +57,10 @@ class DateValue extends AbstractElement
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
         // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
-        $dmy = app(LocalizationService::class)->dateFormatToOrder(I18N::dateFormat());
+        $localization_service = app(LocalizationService::class);
+        assert($localization_service instanceof LocalizationService);
+
+        $dmy = $localization_service->dateFormatToOrder(I18N::dateFormat());
 
         return
             '<div class="input-group">' .

@@ -170,7 +170,10 @@ class Auth
      */
     public static function user(): UserInterface
     {
-        return app(UserService::class)->find(self::id()) ?? new GuestUser();
+        $user_service = app(UserService::class);
+        assert($user_service instanceof UserService);
+
+        return $user_service->find(self::id()) ?? new GuestUser();
     }
 
     /**

@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
-use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -57,9 +57,7 @@ class EmailPreferencesAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user = $request->getAttribute('user');
-        assert($user instanceof User);
-
+        $user   = Validator::attributes($request)->user();
         $params = (array) $request->getParsedBody();
 
         Site::setPreference('SMTP_ACTIVE', $params['SMTP_ACTIVE']);

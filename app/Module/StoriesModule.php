@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
@@ -29,12 +28,11 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 use function route;
 
@@ -217,7 +215,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $this->layout = 'layouts/administration';
 
         // This module can't run without a tree
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         if (!$tree instanceof Tree) {
             $tree = $this->tree_service->all()->first();
@@ -281,12 +279,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree     = Validator::attributes($request)->tree();
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
-
-        $url = $request->getQueryParams()['url'] ?? '';
+        $url      = $request->getQueryParams()['url'] ?? '';
 
         if ($block_id === 0) {
             // Creating a new story
@@ -328,12 +323,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree     = Validator::attributes($request)->tree();
         $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
-
-        $params = (array) $request->getParsedBody();
+        $params   = (array) $request->getParsedBody();
 
         $xref        = $params['xref'];
         $story_body  = $params['story_body'];
@@ -381,9 +373,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree     = Validator::attributes($request)->tree();
         $block_id = $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')
@@ -410,8 +400,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function getShowListAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())
