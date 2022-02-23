@@ -40,14 +40,14 @@ use function str_starts_with;
  */
 class Validator
 {
-    /** @var array<string|Tree|UserInterface|array<string>> */
+    /** @var array<int|string|Tree|UserInterface|array<int|string>> */
     private array $parameters;
 
     /** @var array<Closure> */
     private array $rules = [];
 
     /**
-     * @param array<string|array<string>> $parameters
+     * @param array<int|string|Tree|UserInterface|array<int|string>> $parameters
      */
     public function __construct(array $parameters)
     {
@@ -281,8 +281,8 @@ class Validator
     {
         $value = $this->parameters[$parameter] ?? null;
 
-        if (!is_array($value)) {
-            $value = null;
+        if (!is_array($value) && $value !== null) {
+            throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
         }
 
         $callback = static fn (?array $value, Closure $rule): ?array => $rule($value);
@@ -313,7 +313,7 @@ class Validator
 
         if (is_string($value) && ctype_digit($value)) {
             $value = (int) $value;
-        } else {
+        } elseif (!is_int($value)) {
             $value = null;
         }
 
