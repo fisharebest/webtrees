@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-02-23 13:42+0000\n"
+"PO-Revision-Date: 2022-03-14 22:09+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -5722,7 +5722,7 @@ msgstr "Breyta þessum einstaklingi og skipta út þeirra upplýsingum með þí
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
 msgid "Editing restriction"
-msgstr "Breytingartakmörkun"
+msgstr "Breytingatakmörkun"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:104
@@ -15207,21 +15207,21 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:686
 msgid "This is the list of GEDCOM facts that your users can add to individuals. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique individual facts” list."
 msgstr ""
-"Þetta er listi yfir GEDCOM staðreyndir sem notendur þínir geta bætt við "
+"Þetta er listi yfir GEDCOM staðreyndir sem notendur þínir geta bætt við hjá "
 "einstaklingum. Þú getur breytt þessum lista með því að fjarlægja eða bæta "
-"við staðreyndaheitum, jafnvel sérsniðnum, eins og þörf er á. Staðreyndaheiti "
-"sem birtast í þessum lista mega ekki einnig birtast í listanum <i>Einstakar "
-"einstaklings staðreyndir</i>."
+"við staðreyndum, jafnvel sérsniðnum, eins og þörf er á. Staðreyndir sem "
+"birtast í þessum lista mega ekki einnig birtast í listanum <i>Einstakar "
+"einstaklingsstaðreyndir</i>."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:835
 msgid "This is the list of GEDCOM facts that your users can add to repositories. You can modify this list by removing or adding fact names, even custom ones, as necessary. Fact names that appear in this list must not also appear in the “Unique repository facts” list."
 msgstr ""
-"Þessi listi yfir GEDCOM staðreyndir sem notendur þínir geta bætt við "
+"Þetta er listi yfir GEDCOM staðreyndir sem notendur þínir geta bætt við "
 "gagnahirsluna. Þú getur breytt þessum lista með því að fjarlægja eða að bæta "
-"við staðreyndaheitum, jafnvel sérsniðnum, eins og nauðsynlegt er. "
-"Staðreyndaheiti sem birtast á þessum lista mega ekki að auki birtasta í "
-"listanum <i>Einstakar Gagnahirslu Staðreyndir</i>."
+"við staðreyndum, jafnvel sérsniðnum, eins og nauðsynlegt er. Staðreyndir sem "
+"birtast á þessum lista mega ekki að auki birtasta í listanum <i>Einstakar "
+"Gagnahirslu Staðreyndir</i>."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: resources/views/admin/trees-preferences.phtml:794
@@ -19898,7 +19898,7 @@ msgstr "stjórnendur"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:111
 msgid "markdown"
-msgstr "niðursetning"
+msgstr "sniðkerfi"
 
 #: app/Statistics/Repository/EventRepository.php:327
 msgid "marriage"
