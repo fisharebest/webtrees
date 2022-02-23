@@ -28,46 +28,6 @@ use LogicException;
 class ValidatorTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\Validator::optionalArray
-     */
-    public function testArrayParameter(): void
-    {
-        $parameters = ['param' => ['test'], 'invalid' => 'not_array'];
-        $validator = new Validator($parameters);
-
-        self::assertSame(['test'], $validator->optionalArray('param'));
-        self::assertNull($validator->optionalArray('invalid'));
-        self::assertNull($validator->optionalArray('param2'));
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::optionalInteger
-     */
-    public function testIntegerParameter(): void
-    {
-        $parameters = ['param' => '42', 'invalid' => 'not_int', 'integer' => 42];
-        $validator = new Validator($parameters);
-
-        self::assertSame(42, $validator->optionalInteger('param'));
-        self::assertNull($validator->optionalInteger('invalid'));
-        self::assertNull($validator->optionalInteger('integer'));
-        self::assertNull($validator->optionalInteger('param2'));
-    }
-
-    /**
-     * @covers \Fisharebest\Webtrees\Validator::optionalString
-     */
-    public function testStringParameter(): void
-    {
-        $parameters = ['param' => 'test', 'invalid' => ['not_string']];
-        $validator = new Validator($parameters);
-
-        self::assertSame('test', $validator->optionalString('param'));
-        self::assertNull($validator->optionalString('invalid'));
-        self::assertNull($validator->optionalString('param2'));
-    }
-
-    /**
      * @covers \Fisharebest\Webtrees\Validator::array
      */
     public function testRequiredArrayParameter(): void
@@ -121,9 +81,9 @@ class ValidatorTest extends TestCase
         ];
         $validator = (new Validator($parameters))->isBetween(40, 45);
 
-        self::assertSame(42, $validator->optionalInteger('param'));
-        self::assertNull($validator->optionalInteger('invalid'));
-        self::assertNull($validator->optionalInteger('wrongtype'));
+        self::assertSame(42, $validator->integer('param'));
+        self::assertSame(42, $validator->integer('invalid', 42));
+        self::assertSame(42, $validator->integer('wrongtype', 42));
     }
 
     /**
@@ -137,8 +97,10 @@ class ValidatorTest extends TestCase
         ];
         $validator = (new Validator($parameters))->isXref();
 
-        self::assertSame('X1', $validator->optionalString('param'));
-        self::assertNull($validator->optionalString('invalid'));
+        self::assertSame('X1', $validator->string('param'));
+
+        $this->expectException(HttpBadRequestException::class);
+        $validator->string('invalid');
     }
 
     /**
@@ -149,17 +111,53 @@ class ValidatorTest extends TestCase
         $parameters = [
             'param'     => 'http://example.local/wt/page',
             'noscheme'  => '//example.local/wt/page',
+        ];
+        $validator = (new Validator($parameters))->isLocalUrl('http://example.local/wt');
+
+        self::assertSame('http://example.local/wt/page', $validator->string('param'));
+        self::assertSame('//example.local/wt/page', $validator->string('noscheme'));
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Validator::isLocalUrl
+     */
+    public function testIsLocalUrlParameterWrongScheme(): void
+    {
+        $parameters = [
             'https'     => 'https://example.local/wt/page',
+        ];
+        $validator = (new Validator($parameters))->isLocalUrl('http://example.local/wt');
+
+        $this->expectException(HttpBadRequestException::class);
+        $validator->string('https');
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Validator::isLocalUrl
+     */
+    public function testIsLocalUrlParameterWrongDomain(): void
+    {
+        $parameters = [
             'invalid'   => 'http://example.com/wt/page',
+        ];
+        $validator = (new Validator($parameters))->isLocalUrl('http://example.local/wt');
+
+        $this->expectException(HttpBadRequestException::class);
+        $validator->string('invalid');
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Validator::isLocalUrl
+     */
+    public function testIsLocalUrlParameterWrongType(): void
+    {
+        $parameters = [
             'wrongtype' => ['42']
         ];
         $validator = (new Validator($parameters))->isLocalUrl('http://example.local/wt');
 
-        self::assertSame('http://example.local/wt/page', $validator->optionalString('param'));
-        self::assertSame('//example.local/wt/page', $validator->optionalString('noscheme'));
-        self::assertNull($validator->optionalString('https'));
-        self::assertNull($validator->optionalString('invalid'));
-        self::assertNull($validator->optionalString('wrongtype'));
+        $this->expectException(HttpBadRequestException::class);
+        $validator->string('wrongtype');
     }
 
     /**
@@ -168,7 +166,7 @@ class ValidatorTest extends TestCase
     public function testIsLocalUrlWithInvalidBaseUrl(): void
     {
         $this->expectException(LogicException::class);
-        (new Validator(['param' => 'test']))->isLocalUrl('http://:invalid.url/')->optionalString('param');
+        (new Validator(['param' => 'test']))->isLocalUrl('http://:invalid.url/')->string('param');
     }
 
     /**
@@ -177,11 +175,12 @@ class ValidatorTest extends TestCase
      */
     public function testParsedBody(): void
     {
-        $request = self::createRequest()->withQueryParams(['param' => 'test']);
-        self::assertNull(Validator::parsedBody($request)->optionalString('param'));
-
         $request = self::createRequest()->withParsedBody(['param' => 'test']);
-        self::assertSame('test', Validator::parsedBody($request)->optionalString('param'));
+        self::assertSame('test', Validator::parsedBody($request)->string('param'));
+
+        $this->expectException(HttpBadRequestException::class);
+        $request = self::createRequest()->withQueryParams(['param' => 'test']);
+        Validator::parsedBody($request)->string('param');
     }
 
     /**
@@ -190,10 +189,12 @@ class ValidatorTest extends TestCase
      */
     public function testQueryParams(): void
     {
-        $request = self::createRequest()->withParsedBody(['param' => 'test']);
-        self::assertNull(Validator::queryParams($request)->optionalString('param'));
-
         $request = self::createRequest()->withQueryParams(['param' => 'test']);
-        self::assertSame('test', Validator::queryParams($request)->optionalString('param'));
+        self::assertSame('test', Validator::queryParams($request)->string('param'));
+
+        $this->expectException(HttpBadRequestException::class);
+        $request = self::createRequest()->withParsedBody(['param' => 'test']);
+        Validator::queryParams($request)->string('param');
+
     }
 }

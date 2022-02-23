@@ -89,16 +89,15 @@ class ContactAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $base_url   = Validator::attributes($request)->string('base_url');
-        $body       = Validator::parsedBody($request)->optionalString('body') ?? '';
-        $from_email = Validator::parsedBody($request)->optionalString('from_email') ?? '';
-        $from_name  = Validator::parsedBody($request)->optionalString('from_name') ?? '';
-        $subject    = Validator::parsedBody($request)->optionalString('subject') ?? '';
-        $to         = Validator::parsedBody($request)->optionalString('to') ?? '';
-        $url        = Validator::parsedBody($request)->isLocalUrl($base_url)->optionalString('url') ?? $base_url;
+        $tree       = Validator::attributes($request)->tree();
         $ip         = Validator::attributes($request)->string('client-ip');
+        $base_url   = Validator::attributes($request)->string('base_url');
+        $body       = Validator::parsedBody($request)->string('body');
+        $from_email = Validator::parsedBody($request)->string('from_email');
+        $from_name  = Validator::parsedBody($request)->string('from_name');
+        $subject    = Validator::parsedBody($request)->string('subject');
+        $to         = Validator::parsedBody($request)->string('to');
+        $url        = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $base_url);
         $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {

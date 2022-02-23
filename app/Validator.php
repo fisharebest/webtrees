@@ -192,62 +192,6 @@ class Validator
     }
 
     /**
-     * @param string $parameter
-     *
-     * @return array<string>|null
-     */
-    public function optionalArray(string $parameter): ?array
-    {
-        $value = $this->parameters[$parameter] ?? null;
-
-        if (!is_array($value)) {
-            $value = null;
-        }
-
-        $callback = static fn (?array $value, Closure $rule): ?array => $rule($value);
-
-        return array_reduce($this->rules, $callback, $value);
-    }
-
-    /**
-     * @param string $parameter
-     *
-     * @return int|null
-     */
-    public function optionalInteger(string $parameter): ?int
-    {
-        $value = $this->parameters[$parameter] ?? null;
-
-        if (is_string($value) && ctype_digit($value)) {
-            $value = (int) $value;
-        } else {
-            $value = null;
-        }
-
-        $callback = static fn (?int $value, Closure $rule): ?int => $rule($value);
-
-        return array_reduce($this->rules, $callback, $value);
-    }
-
-    /**
-     * @param string $parameter
-     *
-     * @return string|null
-     */
-    public function optionalString(string $parameter): ?string
-    {
-        $value = $this->parameters[$parameter] ?? null;
-
-        if (!is_string($value)) {
-            $value = null;
-        }
-
-        $callback = static fn (?string $value, Closure $rule): ?string => $rule($value);
-
-        return array_reduce($this->rules, $callback, $value);
-    }
-
-    /**
      * @param string    $parameter
      * @param bool|null $default
      *

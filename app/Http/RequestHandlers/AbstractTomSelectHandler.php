@@ -46,7 +46,7 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
         $tree = Validator::attributes($request)->tree();
 
         $at    = Validator::queryParams($request)->string('at');
-        $page  = Validator::queryParams($request)->optionalInteger('page') ?? 1;
+        $page  = Validator::queryParams($request)->integer('page', 1);
         $query = Validator::queryParams($request)->string('query');
 
         // Fetch one more row than we need, so we can know if more rows exist.
