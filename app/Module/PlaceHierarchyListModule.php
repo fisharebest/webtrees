@@ -203,7 +203,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         if ($showmap) {
             $content .= view('modules/place-hierarchy/map', [
-                'data'           => $this->mapData($tree, $place),
+                'data'           => $this->mapData($place),
                 'leaflet_config' => $this->leaflet_js_service->config(),
             ]);
         }
@@ -253,24 +253,22 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Tree  $tree
      * @param Place $placeObj
      *
      * @return array<mixed>
      */
-    protected function mapData(Tree $tree, Place $placeObj): array
+    protected function mapData(Place $placeObj): array
     {
         $places    = $placeObj->getChildPlaces();
         $features  = [];
         $sidebar   = '';
-        $show_link = true;
 
         if ($places === []) {
             $places[]  = $placeObj;
-            $show_link = false;
         }
 
         foreach ($places as $id => $place) {
+            $num_children = count($place->getChildPlaces());
             $location = new PlaceLocation($place->gedcomName());
 
             if ($location->latitude() === null || $location->longitude() === null) {
@@ -287,7 +285,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                     'properties' => [
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
-                            'showlink'  => $show_link,
+                            'showlink'  => $sidebar_class === 'mapped' && $num_children > 0,
                             'place'     => $place,
                             'latitude'  => $location->latitude(),
                             'longitude' => $location->longitude(),
@@ -304,8 +302,9 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 $tmp          = $statistics->statsPlaces($type, '', $place->id());
                 $stats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
             }
+
             $sidebar .= view('modules/place-hierarchy/sidebar', [
-                'showlink'      => $show_link,
+                'num_children'  => $num_children,
                 'id'            => $id,
                 'place'         => $place,
                 'sidebar_class' => $sidebar_class,

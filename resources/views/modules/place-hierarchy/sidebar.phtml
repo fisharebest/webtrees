@@ -18,7 +18,7 @@ use Fisharebest\Webtrees\Place;
 <li class="gchart px-md-2 <?= $sidebar_class ?>" data-wt-feature-id="<?= $id ?>">
     <div class="row label">
         <div class="col" style="word-wrap: break-word">
-            <?php if ($showlink) : ?>
+            <?php if ($sidebar_class === 'mapped' && $num_children > 0) : ?>
                 <a href="<?= e($place->url()) ?>">
                     <?= $place->placeName() ?>
                 </a>
@@ -34,6 +34,11 @@ use Fisharebest\Webtrees\Place;
             <div class="col-sm-3 align-digits"><?= view('icons/warning') ?></div>
         </div>
     <?php endif ?>
+
+    <div class="row">
+        <div class="col-sm-9"><?= I18N::translate('Child Places') ?></div>
+        <div class="col-sm-3 align-digits"><?= I18N::number($num_children) ?></div>
+    </div>
 
     <div class="row">
         <div class="col-sm-9"><?= I18N::translate('Individuals') ?></div>
