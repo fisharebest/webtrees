@@ -116,7 +116,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
             }
 
             if ($session_time - 60 > $this->row->session_time) {
-                $updates['session_time'] = $session_time;
+                $updates['session_time'] = date('Y-m-d H:i:s', $session_time);
             }
 
             if ($updates !== []) {
