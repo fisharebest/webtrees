@@ -574,7 +574,7 @@ class ModuleService
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function findByComponent(string $interface, Tree $tree, UserInterface $user): Collection
     {
@@ -591,7 +591,7 @@ class ModuleService
      * @param bool   $include_disabled
      * @param bool   $sort
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function findByInterface(string $interface, bool $include_disabled = false, bool $sort = false): Collection
     {
@@ -625,7 +625,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function all(bool $include_disabled = false): Collection
     {
@@ -678,13 +678,14 @@ class ModuleService
     /**
      * All core modules in the system.
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     private function coreModules(): Collection
     {
         return Collection::make(self::CORE_MODULES)
             ->map(static function (string $class, string $name): ModuleInterface {
                 $module = app($class);
+                assert($module instanceof ModuleInterface);
 
                 $module->setName($name);
 
@@ -695,7 +696,7 @@ class ModuleService
     /**
      * All custom modules in the system.  Custom modules are defined in modules_v4/
      *
-     * @return Collection<int,ModuleCustomInterface>
+     * @return Collection<string,ModuleCustomInterface>
      */
     private function customModules(): Collection
     {
@@ -850,7 +851,7 @@ class ModuleService
     /**
      * During setup, we'll need access to some languages.
      *
-     * @return Collection<int,ModuleLanguageInterface>
+     * @return Collection<string,ModuleLanguageInterface>
      */
     public function setupLanguages(): Collection
     {
@@ -885,7 +886,7 @@ class ModuleService
      *
      * @param bool $include_disabled
      *
-     * @return Collection<int,ModuleInterface>
+     * @return Collection<string,ModuleInterface>
      */
     public function otherModules(bool $include_disabled = false): Collection
     {

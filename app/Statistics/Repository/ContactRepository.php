@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\User;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
+use function assert;
 
 /**
  * A repository providing methods for contact related statistics.
@@ -56,6 +57,7 @@ class ContactRepository implements ContactRepositoryInterface
 
         if ($user instanceof User) {
             $request = app(ServerRequestInterface::class);
+            assert($request instanceof ServerRequestInterface);
 
             return $this->user_service->contactLink($user, $request);
         }
@@ -73,6 +75,7 @@ class ContactRepository implements ContactRepositoryInterface
 
         if ($user instanceof User) {
             $request = app(ServerRequestInterface::class);
+            assert($request instanceof ServerRequestInterface);
 
             return $this->user_service->contactLink($user, $request);
         }

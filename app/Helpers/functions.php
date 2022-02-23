@@ -167,9 +167,12 @@ function route(string $route_name, array $parameters = []): string
     $request = app(ServerRequestInterface::class);
     assert($request instanceof ServerRequestInterface);
 
-    $base_url         = Validator::attributes($request)->string('base_url');
+    $base_url = Validator::attributes($request)->string('base_url');
+
     $router_container = app(RouterContainer::class);
-    $route            = $router_container->getMap()->getRoute($route_name);
+    assert($router_container instanceof RouterContainer);
+
+    $route = $router_container->getMap()->getRoute($route_name);
 
     // Generate the URL.
     $url = $router_container->getGenerator()->generate($route_name, $parameters);
