@@ -644,6 +644,7 @@
         anchor.href = '#';
         anchor.title = reset;
         anchor.role = 'button';
+        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
         let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
         image.alt = reset;
 
