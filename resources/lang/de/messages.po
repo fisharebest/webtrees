@@ -14830,7 +14830,7 @@ msgstr "Dieser Stammbaum besitzt keine darzustellenden Bilder."
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Diese Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen in diesem Stammbaum. Das älteste gespeicherte Ereignis ist #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Das neueste Ereignis ist #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Für Anmerkungen oder Hinweise kontaktieren Sie bitte #contactWebmaster#."
+msgstr "Dieser Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen in diesem Stammbaum. Das älteste gespeicherte Ereignis ist #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Das neueste Ereignis ist #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Für Anmerkungen oder Hinweise kontaktieren Sie bitte #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:18
