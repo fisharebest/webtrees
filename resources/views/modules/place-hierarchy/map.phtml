@@ -96,38 +96,33 @@ use Fisharebest\Webtrees\View;
    };
 
     window.onload = function() {
-      // Activate marker popup when sidebar entry clicked
-      sidebar.querySelectorAll('.mapped').forEach((element) => {
-        var eventId = parseInt(element.dataset.wtFeatureId);
-
-        element.addEventListener('click', () => {
-          // first close any existing
-          map.closePopup();
+    // Activate marker popup when sidebar entry clicked
+      sidebar.addEventListener('click', (evt) => {
+        // Has this location got map co-ordinates?
+        if (evt.target.closest('li.mapped')) {
           //find the marker corresponding to the clicked event
+          const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
           let mkrLayer = markers.getLayers().filter(function (v) {
             return v.feature !== undefined && v.feature.id === eventId;
           });
+          const mkr = mkrLayer.pop();
 
-          let mkr = mkrLayer.pop();
-
-          markers.zoomToShowLayer(mkr, function (e) {
-            mkr.openPopup();
-          });
+          if (mkr instanceof L.Layer) {
+            markers.zoomToShowLayer(mkr, function (e) {
+              mkr.openPopup();
+            });
+          } else {
+            // Should never get here
+            console.log('Error: unable to find the selected marker');
+          }
 
           return false;
-        });
+        }
+    });
+  }
 
-        // stop clicking on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
-        });
-      });
-    }
-
-    _drawMap();
-    _buildMapData();
+  _drawMap();
+  _buildMapData();
   })();
 </script>
 <?php View::endpush() ?>
