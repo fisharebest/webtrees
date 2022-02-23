@@ -195,6 +195,5 @@ class ValidatorTest extends TestCase
         $this->expectException(HttpBadRequestException::class);
         $request = self::createRequest()->withParsedBody(['param' => 'test']);
         Validator::queryParams($request)->string('param');
-
     }
 }
