@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -285,10 +286,11 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                     'properties' => [
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
-                            'showlink'  => $sidebar_class === 'mapped' && $num_children > 0,
-                            'place'     => $place,
-                            'latitude'  => $location->latitude(),
-                            'longitude' => $location->longitude(),
+                            'showlink'     => $sidebar_class === 'mapped' && $num_children > 0,
+                            'num_children' => $num_children,
+                            'place'        => $place,
+                            'latitude'     => $location->latitude(),
+                            'longitude'    => $location->longitude(),
                         ]),
                     ],
                 ];
@@ -309,6 +311,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 'place'         => $place,
                 'sidebar_class' => $sidebar_class,
                 'stats'         => $stats,
+                'geo_link'      => Auth::isAdmin() ? route(MapDataEdit::class, ['place_id'  => $location->id()]) : '',
             ]);
         }
 

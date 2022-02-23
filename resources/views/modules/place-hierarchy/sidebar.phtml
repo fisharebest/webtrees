@@ -11,6 +11,7 @@ use Fisharebest\Webtrees\Place;
  * @var Place                $place
  * @var int                  $id
  * @var string               $sidebar_class
+ * @var int                  $num_children
  * @var array<string,string> $stats
  */
 ?>
@@ -25,37 +26,42 @@ use Fisharebest\Webtrees\Place;
             <?php else : ?>
                 <?= $place->placeName() ?>
             <?php endif ?>
+            <?php if($geo_link !== '') : ?>
+              <a class="ms-1" href="<?= e($geo_link)?>" title = "<?= I18N::translate('Edit map co-ordinates') ?>">
+                <?= view('icons/map') ?>
+              </a>
+          <?php endif ?>
         </div>
     </div>
 
     <?php if ($sidebar_class === 'unmapped') : ?>
         <div class="row">
-            <div class="col-sm-9"><i><?= I18N::translate('The location of this place is not known.') ?></i></div>
-            <div class="col-sm-3 align-digits"><?= view('icons/warning') ?></div>
+            <div class="col-sm-9"><?= I18N::translate('The location of this place is not known.') ?></div>
+            <div class="col-sm-3 text-end"><?= view('icons/warning') ?></div>
         </div>
     <?php endif ?>
 
     <div class="row">
-        <div class="col-sm-9"><?= I18N::translate('Child Places') ?></div>
-        <div class="col-sm-3 align-digits"><?= I18N::number($num_children) ?></div>
+        <div class="col-sm-9"><?= I18N::translate('Subordinate Places') ?></div>
+        <div class="col-sm-3 text-end"><?= I18N::number($num_children) ?></div>
     </div>
 
     <div class="row">
         <div class="col-sm-9"><?= I18N::translate('Individuals') ?></div>
-        <div class="col-sm-3 align-digits"><?= I18N::number($stats[Individual::RECORD_TYPE]) ?></div>
+        <div class="col-sm-3 text-end"><?= I18N::number($stats[Individual::RECORD_TYPE]) ?></div>
     </div>
 
     <?php if ($stats[Family::RECORD_TYPE] > 0): ?>
         <div class="row">
             <div class="col-sm-9"><?= I18N::translate('Families') ?></div>
-            <div class="col-sm-3 align-digits"><?= I18N::number($stats[Family::RECORD_TYPE]) ?></div>
+            <div class="col-sm-3 text-end"><?= I18N::number($stats[Family::RECORD_TYPE]) ?></div>
         </div>
     <?php endif ?>
 
     <?php if ($stats[Location::RECORD_TYPE] > 0): ?>
         <div class="row">
             <div class="col-sm-9"><?= I18N::translate('Locations') ?></div>
-            <div class="col-sm-3 align-digits"><?= I18N::number($stats[Location::RECORD_TYPE]) ?></div>
+            <div class="col-sm-3 text-end"><?= I18N::number($stats[Location::RECORD_TYPE]) ?></div>
         </div>
     <?php endif ?>
 </li>
