@@ -290,7 +290,7 @@ class Validator
         $value = array_reduce($this->rules, $callback, $value);
         $value ??= [];
 
-        $check_utf8 = static function($v, $k) use ($parameter) {
+        $check_utf8 = static function ($v, $k) use ($parameter) {
             if (is_string($k) && !preg_match('//u', $k) || is_string($v) && !preg_match('//u', $v)) {
                 throw new HttpBadRequestException(I18N::translate('The parameter “%s” is missing.', $parameter));
             }

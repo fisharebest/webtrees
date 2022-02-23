@@ -70,7 +70,7 @@ class CaptchaService
         $x = Session::pull('captcha-x');
         $y = Session::pull('captcha-y');
         $z = Session::pull('captcha-z');
-        
+
         assert(is_int($t));
         assert(is_string($x));
         assert(is_string($y));
