@@ -9,7 +9,12 @@ use Fisharebest\Webtrees\View;
  */
 ?>
 
-<div class="row my-4 gchart wt-pedigree-map-wrapper">
+<label class="form-check-label mb-2">
+  <input class="wt-sidebar-toggle" type="checkbox" data-wt-persist="pedigree-map" autocomplete="off"></input>
+  <?= I18N::translate('Hide the list of events') ?>
+</label>
+
+<div class="row gchart wt-pedigree-map-wrapper">
     <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-pedigree-map-map" dir="ltr"></div>
     <ul class="col-sm-3 wt-pedigree-map-sidebar wt-page-options-value list-unstyled container-fluid px-1"></ul>
 </div>
@@ -120,37 +125,44 @@ use Fisharebest\Webtrees\View;
       }
     };
 
+    document.querySelector('.wt-sidebar-toggle').addEventListener('change', (evt) => {
+      sidebar.classList.toggle('d-none');
+      const mapElement = document.querySelector('.wt-map');
+      ['col-sm-9', 'col-sm-12'].forEach((item) => mapElement.classList.toggle(item));
+      map.invalidateSize();
+    });
+
     window.onload = function() {
     // Activate marker popup when sidebar entry clicked
-    sidebar.addEventListener('click', (evt) => {
+      sidebar.addEventListener('click', (evt) => {
       // Only perform map action if evt was not initiated from an anchor element
-      if (!evt.target.closest('a')) {
+        if (!evt.target.closest('a')) {
 
-        //find the marker corresponding to the clicked event
-        const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
-        let mkrLayer = markers.getLayers().filter(function (v) {
-          return v.feature !== undefined && v.feature.id === eventId;
-        });
-        const mkr = mkrLayer.pop();
+          //find the marker corresponding to the clicked event
+          const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
+          let mkrLayer = markers.getLayers().filter(function (v) {
+            return v.feature !== undefined && v.feature.id === eventId;
+          });
+          const mkr = mkrLayer.pop();
 
-        if (mkr instanceof L.Layer) {
-          const overlay = document.querySelector('.leaflet-overlay-pane');
-          overlay.classList.add('d-none');
-          map
-          .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
-          .once('moveend', () => {
-              webtrees.leafletJsSpiderfyClusters(markers, mkr, spiderfyDelay);
-              overlay.classList.remove('d-none');
-            });
-        } else {
-          // Should never get here
-          console.log('Error: unable to find the selected marker');
+          if (mkr instanceof L.Layer) {
+            const overlay = document.querySelector('.leaflet-overlay-pane');
+            overlay.classList.add('d-none');
+            map
+            .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
+            .once('moveend', () => {
+                webtrees.leafletJsSpiderfyClusters(markers, mkr, spiderfyDelay);
+                overlay.classList.remove('d-none');
+              });
+          } else {
+            // Should never get here
+            console.log('Error: unable to find the selected marker');
+          }
+
+          return false;
         }
-
-        return false;
-      }
     });
-    }
+  }
 
     _drawMap();
     _buildMapData();
