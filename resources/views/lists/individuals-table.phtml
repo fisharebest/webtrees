@@ -98,7 +98,7 @@ $("#<?= e($table_id) ?>")
     });
 </script>
 <?php View::endpush() ?>
-    
+
 <?php
 $max_age = (int) $tree->getPreference('MAX_ALIVE_AGE');
 
@@ -209,7 +209,7 @@ $deathAgeData = [
                         </div>
 
                         <div class="btn-group btn-group-sm" role="group">
-                        
+
                             <input id="<?= e($table_id) ?>-bg-born-YES" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="YES" autocomplete="off">
                             <label for="<?= e($table_id) ?>-bg-born-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals born more than 100 years ago.') ?>">
                                 <?= I18N::translate('Birth') ?>&gt;100
@@ -424,11 +424,11 @@ $deathAgeData = [
             <tr>
                 <th colspan="16">
                     <div class="btn-group btn-group-sm">
-                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" autocomplete="off" data-wt-persist="individuals-parents">
+                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" autocomplete="off" data-wt-persist="individuals-parents" autocomplete="off">
                         <label class="btn btn-secondary" for="btn-toggle-parents">
                             <?= I18N::translate('Show parents') ?>
                         </label>
-                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" autocomplete="off" data-wt-persist="individuals-statistics">
+                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" autocomplete="off" data-wt-persist="individuals-statistics" autocomplete="off">
                         <label class="btn btn-secondary" for="btn-toggle-statistics">
                             <?= I18N::translate('Show statistics charts') ?>
                         </label>
