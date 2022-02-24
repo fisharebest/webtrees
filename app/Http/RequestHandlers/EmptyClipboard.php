@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Empty the clipboard.
@@ -58,6 +57,6 @@ class EmptyClipboard implements RequestHandlerInterface
         $default_url = $request->getHeaderLine('Referer');
         $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
 
-        return redirect($url);
+        return Registry::responseFactory()->redirectUrl($url);
     }
 }

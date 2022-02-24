@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\View;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Respond to /apple-touch-icon.png.
@@ -40,7 +39,7 @@ class WebmanifestJson implements RequestHandlerInterface
     {
         $content = View::make('webmanifest-json');
 
-        return response($content)
+        return Registry::responseFactory()->response($content)
             ->withHeader('content-type', 'application/json')
             ->withHeader('cache-control', 'public,max-age=31536000');
     }

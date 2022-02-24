@@ -22,14 +22,13 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Masquerade as another user, for testing and administration.
@@ -66,6 +65,6 @@ class Masquerade implements RequestHandlerInterface
             Session::put('masquerade', '1');
         }
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

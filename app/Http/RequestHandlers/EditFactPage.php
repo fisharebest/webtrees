@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Edit a fact.
  */
@@ -69,7 +67,7 @@ class EditFactPage implements RequestHandlerInterface
         $fact = $record->facts()->first(fn (Fact $fact): bool => $fact->id() === $fact_id && $fact->canEdit());
 
         if ($fact === null) {
-            return redirect($record->url());
+            return Registry::responseFactory()->redirectUrl($record->url());
         }
 
         $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD') === '1';

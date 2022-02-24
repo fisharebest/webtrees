@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Show a header's page.
  */
@@ -53,7 +51,7 @@ class HeaderPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($header->xref() !== $xref || Registry::slugFactory()->make($header) !== $slug) {
-            return redirect($header->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($header->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('record-page', [

@@ -23,12 +23,11 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Delete a user.
@@ -67,6 +66,6 @@ class DeleteUser implements RequestHandlerInterface
         Log::addAuthenticationLog('Deleted user: ' . $user->userName());
         $this->user_service->delete($user);
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

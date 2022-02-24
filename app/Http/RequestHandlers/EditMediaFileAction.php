@@ -36,8 +36,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function preg_replace;
-use function redirect;
-use function route;
 use function str_replace;
 use function trim;
 
@@ -94,7 +92,7 @@ class EditMediaFileAction implements RequestHandlerInterface
 
         // Media file does not exist?
         if ($media_file === null) {
-            return redirect(route(TreePage::class, ['tree' => $tree->name()]));
+            return Registry::responseFactory()->redirect(TreePage::class, ['tree' => $tree->name()]);
         }
 
         // We can edit the file as either a URL or a folder/file
@@ -150,6 +148,6 @@ class EditMediaFileAction implements RequestHandlerInterface
             $this->pending_changes_service->acceptRecord($media);
         }
 
-        return redirect($media->url());
+        return Registry::responseFactory()->redirectUrl($media->url());
     }
 }

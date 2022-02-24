@@ -45,8 +45,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function date;
-use function redirect;
-use function response;
 use function route;
 use function view;
 
@@ -170,7 +168,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
-        return redirect($this->getConfigLink());
+        return Registry::responseFactory()->redirectUrl($this->getConfigLink());
     }
 
     /**
@@ -185,7 +183,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         if ($route->name === 'sitemap-style') {
             $content = view('modules/sitemap/sitemap-xsl');
 
-            return response($content, StatusCodeInterface::STATUS_OK, [
+            return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [
                 'content-type' => 'application/xml',
             ]);
         }
@@ -284,7 +282,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ]);
         }, self::CACHE_LIFE);
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
+        return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [
             'content-type' => 'application/xml',
         ]);
     }
@@ -317,7 +315,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             ]);
         }, self::CACHE_LIFE);
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
+        return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [
             'content-type' => 'application/xml',
         ]);
     }

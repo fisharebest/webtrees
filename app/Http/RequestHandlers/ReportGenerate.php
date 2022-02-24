@@ -36,9 +36,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function addcslashes;
 use function ob_get_clean;
 use function ob_start;
-use function redirect;
-use function response;
-use function route;
 
 /**
  * Show all available reports.
@@ -74,7 +71,7 @@ class ReportGenerate implements RequestHandlerInterface
         $module = $this->module_service->findByName($report);
 
         if (!$module instanceof ModuleReportInterface) {
-            return redirect(route(ReportListPage::class, ['tree' => $tree->name()]));
+            return Registry::responseFactory()->redirect(ReportListPage::class, ['tree' => $tree->name()]);
         }
 
         Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
@@ -125,7 +122,7 @@ class ReportGenerate implements RequestHandlerInterface
                     $headers['content-disposition'] = 'attachment; filename="' . addcslashes($report, '"') . '.pdf"';
                 }
 
-                return response($pdf, StatusCodeInterface::STATUS_OK, $headers);
+                return Registry::responseFactory()->response($pdf, StatusCodeInterface::STATUS_OK, $headers);
         }
     }
 }

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -28,7 +29,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function is_string;
-use function response;
 
 /**
  * Select a new language for the current session.
@@ -50,6 +50,6 @@ class SelectLanguage implements RequestHandlerInterface
         Session::put('language', $language);
         $user->setPreference(UserInterface::PREF_LANGUAGE, $language);
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

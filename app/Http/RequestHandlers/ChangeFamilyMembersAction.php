@@ -28,7 +28,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
-use function redirect;
 
 /**
  * Change the members of a family.
@@ -136,6 +135,6 @@ class ChangeFamilyMembersAction implements RequestHandlerInterface
             }
         }
 
-        return redirect($family->url());
+        return Registry::responseFactory()->redirectUrl($family->url());
     }
 }

@@ -43,7 +43,7 @@ class LinkMediaToFamilyModal implements RequestHandlerInterface
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);
 
-        return response(view('modals/link-media-to-family', [
+        return Registry::responseFactory()->response(view('modals/link-media-to-family', [
             'media' => $media,
             'tree'  => $tree,
         ]));

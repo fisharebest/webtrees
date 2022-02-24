@@ -21,15 +21,13 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Update a list of modules.
@@ -74,6 +72,6 @@ class ModulesAllAction implements RequestHandlerInterface
             }
         }
 
-        return redirect(route(ModulesAllPage::class));
+        return Registry::responseFactory()->redirect(ModulesAllPage::class);
     }
 }

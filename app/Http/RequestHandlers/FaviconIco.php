@@ -19,12 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function file_get_contents;
-use function response;
 
 /**
  * Respond to /favicon.ico.
@@ -40,7 +40,7 @@ class FaviconIco implements RequestHandlerInterface
     {
         $content = file_get_contents(__DIR__ . '/../../../favicon.ico');
 
-        return response($content)
+        return Registry::responseFactory()->response($content)
             ->withHeader('content-type', 'image/x-icon')
             ->withHeader('cache-control', 'public,max-age=31536000');
     }

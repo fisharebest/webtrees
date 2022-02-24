@@ -68,7 +68,6 @@ use function in_array;
 use function is_array;
 use function is_string;
 use function preg_match_all;
-use function redirect;
 use function route;
 use function str_replace;
 use function uasort;
@@ -352,13 +351,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $cart[$tree->name()] = [];
         Session::put('cart', $cart);
 
-        $url = route('module', [
+        return Registry::responseFactory()->redirect('module', [
             'module' => $this->name(),
             'action' => 'Show',
             'tree'   => $tree->name(),
         ]);
-
-        return redirect($url);
     }
 
     /**
@@ -376,13 +373,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         unset($cart[$tree->name()][$xref]);
         Session::put('cart', $cart);
 
-        $url = route('module', [
+        return Registry::responseFactory()->redirect('module', [
             'module' => $this->name(),
             'action' => 'Show',
             'tree'   => $tree->name(),
         ]);
-
-        return redirect($url);
     }
 
     /**
@@ -492,7 +487,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 break;
         }
 
-        return redirect($family->url());
+        return Registry::responseFactory()->redirectUrl($family->url());
     }
 
 
@@ -615,7 +610,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
                 break;
         }
 
-        return redirect($individual->url());
+        return Registry::responseFactory()->redirectUrl($individual->url());
     }
 
     /**
@@ -693,7 +688,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $this->addLocationToCart($location);
 
-        return redirect($location->url());
+        return Registry::responseFactory()->redirectUrl($location->url());
     }
 
     /**
@@ -737,7 +732,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $this->addMediaToCart($media);
 
-        return redirect($media->url());
+        return Registry::responseFactory()->redirectUrl($media->url());
     }
 
     /**
@@ -781,7 +776,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $this->addNoteToCart($note);
 
-        return redirect($note->url());
+        return Registry::responseFactory()->redirectUrl($note->url());
     }
 
     /**
@@ -829,7 +824,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             $this->addSourceToCart($source);
         }
 
-        return redirect($repository->url());
+        return Registry::responseFactory()->redirectUrl($repository->url());
     }
 
     /**
@@ -885,7 +880,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
             }
         }
 
-        return redirect($source->url());
+        return Registry::responseFactory()->redirectUrl($source->url());
     }
 
     /**
@@ -929,7 +924,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $this->addSubmitterToCart($submitter);
 
-        return redirect($submitter->url());
+        return Registry::responseFactory()->redirectUrl($submitter->url());
     }
 
     /**

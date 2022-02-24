@@ -19,12 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
 use function view;
 
 /**
@@ -43,7 +43,7 @@ class CreateNoteModal implements RequestHandlerInterface
     {
         $tree = Validator::attributes($request)->tree();
 
-        return response(view('modals/create-note-object', [
+        return Registry::responseFactory()->response(view('modals/create-note-object', [
             'tree' => $tree,
         ]));
     }

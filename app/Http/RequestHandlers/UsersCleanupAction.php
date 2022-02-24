@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -30,8 +31,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
-use function route;
 
 /**
  * Delete old/inactive users.
@@ -68,8 +67,6 @@ class UsersCleanupAction implements RequestHandlerInterface
             }
         }
 
-        $url = route(UsersCleanupPage::class);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(UsersCleanupPage::class);
     }
 }

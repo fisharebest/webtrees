@@ -41,7 +41,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function get_class;
 use function in_array;
-use function redirect;
 
 /**
  * Display non-standard genealogy records.
@@ -94,7 +93,7 @@ class GedcomRecordPage implements RequestHandlerInterface
 
         // Standard genealogy records have their own pages.
         if ($record->xref() !== $xref || in_array(get_class($record), self::STANDARD_RECORDS, true)) {
-            return redirect($record->url());
+            return Registry::responseFactory()->redirectUrl($record->url());
         }
 
         $linked_families     = $this->linked_record_service->linkedFamilies($record);

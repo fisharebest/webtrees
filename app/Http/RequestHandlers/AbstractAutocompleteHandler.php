@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Autocomplete handler
@@ -60,7 +59,7 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
                 return ['value' => $datum];
             });
 
-        return response($data)
+        return Registry::responseFactory()->response($data)
             ->withHeader('cache-control', 'public,max-age=' . static::CACHE_LIFE);
     }
 

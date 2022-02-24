@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Add a new spouse to an individual, creating a new family.
  */
@@ -84,6 +82,6 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $spouse->url());
 
-        return redirect($url);
+        return Registry::responseFactory()->redirectUrl($url);
     }
 }

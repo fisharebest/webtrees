@@ -19,13 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Delete unused locations from the control panel.
@@ -53,8 +51,6 @@ class MapDataDeleteUnused implements RequestHandlerInterface
     {
         $this->map_data_service->deleteUnusedLocations(null, [0]);
 
-        $url = route(MapDataList::class);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(MapDataList::class);
     }
 }

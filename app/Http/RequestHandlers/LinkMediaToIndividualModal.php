@@ -43,7 +43,7 @@ class LinkMediaToIndividualModal implements RequestHandlerInterface
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);
 
-        return response(view('modals/link-media-to-individual', [
+        return Registry::responseFactory()->response(view('modals/link-media-to-individual', [
             'media' => $media,
             'tree'  => $tree,
         ]));

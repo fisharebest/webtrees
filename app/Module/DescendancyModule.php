@@ -107,7 +107,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
             $html = '<ul>' . $html . '</ul>';
         }
 
-        return response($html);
+        return Registry::responseFactory()->response($html);
     }
 
     /**
@@ -128,7 +128,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
             $html = '';
         }
 
-        return response($html);
+        return Registry::responseFactory()->response($html);
     }
 
     /**

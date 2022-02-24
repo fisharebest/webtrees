@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DataFixService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
@@ -33,7 +34,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
 use function json_encode;
-use function response;
 
 use const JSON_THROW_ON_ERROR;
 
@@ -79,7 +79,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
         $rows   = $module->recordsToFix($tree, $params);
 
         if ($rows->isEmpty()) {
-            return response([]);
+            return Registry::responseFactory()->response([]);
         }
 
         $start = Validator::queryParams($request)->string('start');
@@ -100,7 +100,7 @@ class DataFixUpdateAll implements RequestHandlerInterface
             $module->updateRecord($record, $params);
         }
 
-        return response();
+        return Registry::responseFactory()->response('');
     }
 
     /**
@@ -143,6 +143,6 @@ class DataFixUpdateAll implements RequestHandlerInterface
             })
             ->all();
 
-        return response(json_encode($updates, JSON_THROW_ON_ERROR));
+        return Registry::responseFactory()->response(json_encode($updates, JSON_THROW_ON_ERROR));
     }
 }

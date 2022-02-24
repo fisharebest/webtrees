@@ -19,14 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Autocomplete for TomSelect based controls.
@@ -65,7 +64,7 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
             $next_url = null;
         }
 
-        return response([
+        return Registry::responseFactory()->response([
             'data'    => $results->slice(0, self::RESULTS_PER_PAGE)->all(),
             'nextUrl' => $next_url,
         ]);

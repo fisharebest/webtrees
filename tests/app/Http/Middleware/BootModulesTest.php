@@ -21,11 +21,10 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Test the BootModules middleware.
@@ -42,7 +41,7 @@ class BootModulesTest extends TestCase
         $theme = new WebtreesTheme();
 
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willReturn(response('It works!'));
+        $handler->method('handle')->willReturn(Registry::responseFactory()->response('It works!'));
 
         $module_service = $this->createMock(ModuleService::class);
         $module_service

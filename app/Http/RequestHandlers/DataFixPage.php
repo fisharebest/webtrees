@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -29,7 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
 use function route;
 
 /**
@@ -63,7 +63,7 @@ class DataFixPage implements RequestHandlerInterface
         $data_fixes = $this->module_service->findByInterface(ModuleDataFixInterface::class, false, true);
 
         if ($data_fixes->isEmpty()) {
-            return redirect(route('control-panel'));
+            return Registry::responseFactory()->redirect(ControlPanel::class);
         }
 
         $data_fix = Validator::attributes($request)->string('data_fix', '');

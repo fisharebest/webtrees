@@ -46,7 +46,6 @@ use function date;
 use function e;
 use function explode;
 use function implode;
-use function redirect;
 use function strip_tags;
 use function strtoupper;
 use function trim;
@@ -96,7 +95,7 @@ class IndividualPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($individual->xref() !== $xref || Registry::slugFactory()->make($individual) !== $slug) {
-            return redirect($individual->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($individual->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         // What images are linked to this individual

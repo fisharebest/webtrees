@@ -23,6 +23,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -37,7 +38,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 use function random_int;
-use function redirect;
 use function route;
 use function view;
 
@@ -122,6 +122,6 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
         $message2 = I18N::translate('This link is valid for one hour.');
         FlashMessages::addMessage($message1 . '<br>' . $message2, 'success');
 
-        return redirect(route(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return Registry::responseFactory()->redirect(LoginPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
     }
 }

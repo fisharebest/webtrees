@@ -29,6 +29,9 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToCheckFileExistence;
+use League\Flysystem\UnableToReadFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -194,6 +197,6 @@ class MapDataImportAction implements RequestHandlerInterface
             'info'
         );
 
-        return redirect($url);
+        return Registry::responseFactory()->redirectUrl($url);
     }
 }

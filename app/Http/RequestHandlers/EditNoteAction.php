@@ -60,6 +60,6 @@ class EditNoteAction implements RequestHandlerInterface
 
         $note->updateRecord($gedrec, true);
 
-        return redirect($note->url());
+        return Registry::responseFactory()->redirectUrl($note->url());
     }
 }

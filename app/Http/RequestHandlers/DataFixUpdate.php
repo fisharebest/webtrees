@@ -29,7 +29,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function response;
 
 /**
  * Run a data-fix.
@@ -70,6 +69,6 @@ class DataFixUpdate implements RequestHandlerInterface
             $module->updateRecord($record, $params);
         }
 
-        return response();
+        return Registry::responseFactory()->response('');
     }
 }

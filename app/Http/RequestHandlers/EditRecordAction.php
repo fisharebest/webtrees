@@ -28,8 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Save an updated GEDCOM record.
  */
@@ -73,6 +71,6 @@ class EditRecordAction implements RequestHandlerInterface
 
         $record->updateRecord($gedcom, !$keep_chan);
 
-        return redirect($record->url());
+        return Registry::responseFactory()->redirectUrl($record->url());
     }
 }

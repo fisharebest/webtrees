@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -33,7 +34,6 @@ use function array_unshift;
 use function count;
 use function implode;
 use function preg_replace;
-use function response;
 
 /**
  * Export geographic data.
@@ -128,7 +128,7 @@ class MapDataExportGeoJson implements RequestHandlerInterface
 
         $filename = addcslashes($filename, '"');
 
-        return response($geojson)
+        return Registry::responseFactory()->response($geojson)
             ->withHeader('content-type', 'application/vnd.geo+json')
             ->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
     }

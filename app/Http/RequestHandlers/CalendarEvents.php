@@ -46,7 +46,6 @@ use function get_class;
 use function ob_get_clean;
 use function ob_start;
 use function range;
-use function response;
 use function view;
 
 /**
@@ -117,7 +116,7 @@ class CalendarEvents implements RequestHandlerInterface
                 return $f->record() instanceof Individual;
             });
 
-            return response(view('calendar-list', [
+            return Registry::responseFactory()->response(view('calendar-list', [
                 'family_anniversaries'     => $family_anniversaries,
                 'individual_anniversaries' => $individual_anniversaries,
             ]));
@@ -267,7 +266,7 @@ class CalendarEvents implements RequestHandlerInterface
         echo '</tbody>';
         echo '</table>';
 
-        return response(ob_get_clean());
+        return Registry::responseFactory()->response(ob_get_clean());
     }
 
     /**

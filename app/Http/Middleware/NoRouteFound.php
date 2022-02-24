@@ -23,14 +23,13 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
-use function redirect;
-use function route;
 
 /**
  * Middleware to generate a response when no route was matched.
@@ -54,6 +53,6 @@ class NoRouteFound implements MiddlewareInterface
             throw new HttpNotFoundException();
         }
 
-        return redirect(route(HomePage::class));
+        return Registry::responseFactory()->redirect(HomePage::class);
     }
 }

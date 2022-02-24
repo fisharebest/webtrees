@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
 use GuzzleHttp\Psr7\Request;
@@ -33,7 +34,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use function array_filter;
 use function implode;
 use function json_decode;
-use function redirect;
 use function usort;
 
 use const JSON_THROW_ON_ERROR;
@@ -109,7 +109,7 @@ class GeonamesAutocomplete extends AbstractModule implements ModuleConfigInterfa
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
-        return redirect($this->getConfigLink());
+        return Registry::responseFactory()->redirectUrl($this->getConfigLink());
     }
 
     /**

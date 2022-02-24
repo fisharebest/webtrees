@@ -33,8 +33,6 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function basename;
-use function redirect;
-use function route;
 
 use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
@@ -110,6 +108,6 @@ class ImportGedcomAction implements RequestHandlerInterface
             $this->tree_service->importGedcomFile($tree, $stream, $server_file, $encoding);
         }
 
-        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
+        return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $tree->name()]);
     }
 }

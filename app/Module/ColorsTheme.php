@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -31,7 +32,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function asset;
 use function is_string;
-use function response;
 use function uasort;
 
 /**
@@ -94,7 +94,7 @@ class ColorsTheme extends CloudsTheme
 
         Session::put('palette', $palette);
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 
     /**

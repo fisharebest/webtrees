@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Edit the raw GEDCOM of a fact.
  */
@@ -66,6 +64,6 @@ class EditRawFactPage implements RequestHandlerInterface
             ]);
         }
 
-        return redirect($record->url());
+        return Registry::responseFactory()->redirectUrl($record->url());
     }
 }

@@ -108,14 +108,12 @@ class SearchReplaceAction implements RequestHandlerInterface
                 break;
         }
 
-        $url = route(SearchReplacePage::class, [
+        return Registry::responseFactory()->redirect(SearchReplacePage::class, [
             'search'  => $search,
             'replace' => $replace,
             'context' => $context,
             'tree'    => $tree->name(),
         ]);
-
-        return redirect($url);
     }
 
     /**

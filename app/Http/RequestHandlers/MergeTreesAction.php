@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
@@ -32,9 +33,6 @@ use Illuminate\Database\Query\Expression;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Merge two family trees.
@@ -248,14 +246,12 @@ class MergeTreesAction implements RequestHandlerInterface
 
             FlashMessages::addMessage(I18N::translate('The family trees have been merged successfully.'), 'success');
 
-            $url = route(ManageTrees::class, ['tree' => $tree2->name()]);
-        } else {
-            $url = route(MergeTreesPage::class, [
-                'tree1_name' => $tree1->name(),
-                'tree2_name' => $tree2->name(),
-            ]);
+            return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $tree2->name()]);
         }
 
-        return redirect($url);
+        return Registry::responseFactory()->redirect(MergeTreesPage::class, [
+            'tree1_name' => $tree1->name(),
+            'tree2_name' => $tree2->name(),
+        ]);
     }
 }

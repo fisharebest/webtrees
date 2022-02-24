@@ -28,7 +28,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function assert;
-use function redirect;
 
 /**
  * Download a media file.
@@ -58,7 +57,7 @@ class MediaFileDownload implements RequestHandlerInterface
         foreach ($media->mediaFiles() as $media_file) {
             if ($media_file->factId() === $fact_id) {
                 if ($media_file->isExternal()) {
-                    return redirect($media_file->filename());
+                    return Registry::responseFactory()->redirectUrl($media_file->filename());
                 }
 
                 $watermark = $media_file->isImage() && $image_factory->fileNeedsWatermark($media_file, $user);

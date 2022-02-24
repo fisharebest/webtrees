@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -28,9 +29,6 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Delete a user account.
@@ -65,6 +63,6 @@ class AccountDelete implements RequestHandlerInterface
             Auth::logout();
         }
 
-        return redirect(route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return Registry::responseFactory()->redirect(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
     }
 }

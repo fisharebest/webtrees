@@ -34,8 +34,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function fclose;
 use function pathinfo;
-use function redirect;
-use function route;
 use function strtolower;
 
 use const PATHINFO_EXTENSION;
@@ -91,8 +89,6 @@ class ExportGedcomServer implements RequestHandlerInterface
             );
         }
 
-        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $tree->name()]);
     }
 }

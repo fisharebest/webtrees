@@ -38,7 +38,6 @@ use function e;
 use function explode;
 use function implode;
 use function in_array;
-use function redirect;
 use function strip_tags;
 use function trim;
 
@@ -76,7 +75,7 @@ class FamilyPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($family->xref() !== $xref || Registry::slugFactory()->make($family) !== $slug) {
-            return redirect($family->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($family->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         $clipboard_facts = $this->clipboard_service->pastableFacts($family);

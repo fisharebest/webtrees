@@ -28,7 +28,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
 use function preg_replace;
-use function response;
 use function trim;
 use function view;
 
@@ -72,7 +71,7 @@ class CreateRepositoryAction implements RequestHandlerInterface
 
         // value and text are for autocomplete
         // html is for interactive modals
-        return response([
+        return Registry::responseFactory()->response([
             'value' => '@' . $record->xref() . '@',
             'text'  => view('selects/repository', ['repository' => $record]),
             'html'  => view('modals/record-created', [

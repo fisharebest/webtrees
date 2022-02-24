@@ -19,13 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Delete pending changes.
@@ -55,6 +54,6 @@ class PendingChangesLogDelete implements RequestHandlerInterface
 
         $this->pending_changes_service->changesQuery($params)->delete();
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

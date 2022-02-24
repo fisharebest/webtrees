@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -61,7 +62,7 @@ class LoginPage implements RequestHandlerInterface
 
         // Already logged in?
         if ($user instanceof User) {
-            return redirect(route(UserPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : '']));
+            return Registry::responseFactory()->redirect(UserPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : '']);
         }
 
         $url      = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
@@ -73,7 +74,7 @@ class LoginPage implements RequestHandlerInterface
             $tree    = $this->tree_service->all()->get($default) ?? $this->tree_service->all()->first();
 
             if ($tree instanceof Tree) {
-                return redirect(route(self::class, ['tree' => $tree->name(), 'url' => $url]));
+                return Registry::responseFactory()->redirect(self::class, ['tree' => $tree->name(), 'url' => $url]);
             }
         }
 

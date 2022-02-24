@@ -28,8 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Add a new parent to an individual, creating a one-parent family.
  */
@@ -80,6 +78,6 @@ class AddParentToIndividualAction implements RequestHandlerInterface
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $parent->url());
 
-        return redirect($url);
+        return Registry::responseFactory()->redirectUrl($url);
     }
 }

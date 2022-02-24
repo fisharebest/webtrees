@@ -23,14 +23,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Perform a logout.
@@ -52,6 +50,6 @@ class Logout implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('You have signed out.'));
         }
 
-        return redirect(route(HomePage::class));
+        return Registry::responseFactory()->redirect(HomePage::class);
     }
 }

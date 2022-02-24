@@ -73,7 +73,7 @@ class CreateSubmitterAction implements RequestHandlerInterface
 
         // value and text are for autocomplete
         // html is for interactive modals
-        return response([
+        return Registry::responseFactory()->response([
             'value' => '@' . $record->xref() . '@',
             'text'  => view('selects/submitter', ['submitter' => $record]),
             'html'  => view('modals/record-created', [

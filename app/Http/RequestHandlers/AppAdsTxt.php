@@ -19,11 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Respond to /app-ads.txt.
@@ -37,7 +36,7 @@ class AppAdsTxt implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return response('#No pesky ads here')
+        return Registry::responseFactory()->response('#No pesky ads here')
             ->withHeader('content-type', 'text/plain');
     }
 }

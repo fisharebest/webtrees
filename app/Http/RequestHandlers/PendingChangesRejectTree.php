@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -28,7 +29,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function response;
 
 /**
  * Reject pending changes for a tree.
@@ -58,6 +58,6 @@ class PendingChangesRejectTree implements RequestHandlerInterface
 
         FlashMessages::addMessage(I18N::translate('The changes to “%s” have been rejected.', e($tree->title())));
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Show a submission's page.
  */
@@ -53,7 +51,7 @@ class SubmissionPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($record->xref() !== $xref || Registry::slugFactory()->make($record) !== $slug) {
-            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('record-page', [

@@ -50,7 +50,6 @@ use function file_put_contents;
 use function ini_get;
 use function random_bytes;
 use function realpath;
-use function redirect;
 use function substr;
 use function touch;
 use function unlink;
@@ -360,7 +359,7 @@ class SetupWizard implements RequestHandlerInterface
         }
 
         // Done - start using webtrees!
-        return redirect($data['baseurl']);
+        return Registry::responseFactory()->redirectUrl($data['baseurl']);
     }
 
     /**

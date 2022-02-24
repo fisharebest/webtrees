@@ -56,7 +56,6 @@ use function mb_substr;
 use function ob_get_clean;
 use function ob_start;
 use function redirect;
-use function response;
 use function round;
 use function route;
 use function rtrim;
@@ -477,7 +476,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         imagedestroy($image);
         $png = ob_get_clean();
 
-        return response(view('modules/fanchart/chart', [
+        return Registry::responseFactory()->response(view('modules/fanchart/chart', [
             'fanh'  => $height,
             'fanw'  => $width,
             'html'  => $html,

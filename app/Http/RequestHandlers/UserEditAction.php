@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
@@ -33,8 +34,6 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function route;
 
 /**
  * Edit a user.
@@ -149,19 +148,19 @@ class UserEditAction implements RequestHandlerInterface
         if ($edit_user->email() !== $email && $this->user_service->findByEmail($email) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate email address. A user with that email already exists.') . $email, 'danger');
 
-            return redirect(route('admin-users-edit', ['user_id' => $edit_user->id()]));
+            return Registry::responseFactory()->redirect('admin-users-edit', ['user_id' => $edit_user->id()]);
         }
 
         if ($edit_user->userName() !== $username && $this->user_service->findByUserName($username) instanceof User) {
             FlashMessages::addMessage(I18N::translate('Duplicate username. A user with that username already exists. Please choose another username.'), 'danger');
 
-            return redirect(route(UserEditPage::class, ['user_id' => $edit_user->id()]));
+            return Registry::responseFactory()->redirect(UserEditPage::class, ['user_id' => $edit_user->id()]);
         }
 
         $edit_user
             ->setEmail($email)
             ->setUserName($username);
 
-        return redirect(route(UserListPage::class));
+        return Registry::responseFactory()->redirect(UserListPage::class);
     }
 }

@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
-
 /**
  * Copy a fact to the clipboard.
  */
@@ -77,6 +75,6 @@ class CopyFact implements RequestHandlerInterface
             }
         }
 
-        return response();
+        return Registry::responseFactory()->response('');
     }
 }

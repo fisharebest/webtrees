@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HomePageService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -27,9 +28,6 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Save the updated blocks on a user's page.
@@ -77,6 +75,6 @@ class UserPageUpdate implements RequestHandlerInterface
 
         $this->home_page_service->updateUserBlocks($user->id(), $main_blocks, $side_blocks);
 
-        return redirect(route(UserPage::class, ['tree' => $tree->name()]));
+        return Registry::responseFactory()->redirect(UserPage::class, ['tree' => $tree->name()]);
     }
 }

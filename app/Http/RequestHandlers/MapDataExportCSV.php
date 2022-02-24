@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -39,7 +40,6 @@ use function fopen;
 use function fputcsv;
 use function max;
 use function preg_replace;
-use function response;
 use function rewind;
 use function stream_get_contents;
 
@@ -172,7 +172,7 @@ class MapDataExportCSV implements RequestHandlerInterface
 
         $filename = addcslashes($filename, '"');
 
-        return response(stream_get_contents($resource))
+        return Registry::responseFactory()->response(stream_get_contents($resource))
             ->withHeader('content-type', 'text/csv; charset=UTF-8')
             ->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
     }

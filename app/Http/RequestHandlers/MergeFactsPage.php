@@ -27,8 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Merge records
  */
@@ -63,11 +61,11 @@ class MergeFactsPage implements RequestHandlerInterface
             $record1->isPendingDeletion() ||
             $record2->isPendingDeletion()
         ) {
-            return redirect(route(MergeRecordsPage::class, [
+            return Registry::responseFactory()->redirect(MergeRecordsPage::class, [
                 'tree'  => $tree->name(),
                 'xref1' => $xref1,
                 'xref2' => $xref2,
-            ]));
+            ]);
         }
 
         // Facts found both records

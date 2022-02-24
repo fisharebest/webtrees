@@ -20,13 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Download pending changes.
@@ -70,7 +69,7 @@ class PendingChangesLogDownload implements RequestHandlerInterface
             })
             ->implode("\n");
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
+        return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [
             'content-type'        => 'text/csv; charset=UTF-8',
             'content-disposition' => 'attachment; filename="changes.csv"',
         ]);

@@ -192,7 +192,7 @@ trait ModuleCustomTrait
         $extension = strtoupper(pathinfo($asset, PATHINFO_EXTENSION));
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
+        return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [
             'cache-control'  => 'public,max-age=31536000',
             'content-type'   => $mime_type,
         ]);

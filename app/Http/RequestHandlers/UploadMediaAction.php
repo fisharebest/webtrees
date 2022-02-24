@@ -36,8 +36,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 use function preg_match;
-use function redirect;
-use function route;
 use function str_replace;
 use function substr;
 use function trim;
@@ -134,8 +132,6 @@ class UploadMediaAction implements RequestHandlerInterface
             }
         }
 
-        $url = route(UploadMediaPage::class);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(UploadMediaPage::class);
     }
 }

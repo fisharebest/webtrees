@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Psr\Http\Message\ResponseInterface;
@@ -28,7 +29,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
 use function route;
 
 /**
@@ -67,7 +67,7 @@ class MapDataEdit implements RequestHandlerInterface
         $location = $this->map_data_service->findById($place_id);
 
         if ($location->id() === null) {
-            return redirect(route(MapDataList::class));
+            return Registry::responseFactory()->redirect(MapDataList::class);
         }
 
         $title = e($location->locationName()) . ' — ' . I18N::translate('Edit');

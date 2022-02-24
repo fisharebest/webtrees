@@ -27,8 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Paste a fact from the clipboard.
  */
@@ -63,6 +61,6 @@ class PasteFact implements RequestHandlerInterface
 
         $this->clipboard_service->pasteFact($fact_id, $record);
 
-        return redirect($record->url());
+        return Registry::responseFactory()->redirectUrl($record->url());
     }
 }

@@ -229,9 +229,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ]);
         }
 
-        $url = route(TreePage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(TreePage::class, ['tree' => $tree->name()]);
     }
 
     /**
@@ -253,8 +251,6 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->where('gedcom_id', '=', $tree->id())
             ->delete();
 
-        $url = route(TreePage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(TreePage::class, ['tree' => $tree->name()]);
     }
 }

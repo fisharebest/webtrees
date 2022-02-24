@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fisharebest\Webtrees\Http\RequestHandlers\LoginPage;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
@@ -27,8 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Middleware to restrict access to logged-in users.
@@ -52,9 +51,9 @@ class AuthLoggedIn implements MiddlewareInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, [
+        return Registry::responseFactory()->redirect(LoginPage::class, [
             'tree' => $tree instanceof Tree ? $tree->name() : null,
             'url'  => (string) $request->getUri(),
-        ]));
+        ]);
     }
 }

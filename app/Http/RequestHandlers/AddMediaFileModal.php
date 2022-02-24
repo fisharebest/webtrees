@@ -30,7 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
 use function view;
 
 /**
@@ -66,7 +65,7 @@ class AddMediaFileModal implements RequestHandlerInterface
         try {
             $media = Auth::checkMediaAccess($media);
         } catch (HttpNotFoundException | HttpAccessDeniedException $ex) {
-            return response(view('modals/error', [
+            return Registry::responseFactory()->response(view('modals/error', [
                 'title' => I18N::translate('Add a media file'),
                 'error' => $ex->getMessage(),
             ]));
@@ -76,7 +75,7 @@ class AddMediaFileModal implements RequestHandlerInterface
         $media_types     = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
         $unused_files    = $this->media_file_service->unusedFiles($tree);
 
-        return response(view('modals/add-media-file', [
+        return Registry::responseFactory()->response(view('modals/add-media-file', [
             'max_upload_size' => $max_upload_size,
             'media'           => $media,
             'media_types'     => $media_types,

@@ -180,9 +180,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
             }
         }
 
-        $url = route(TreePage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(TreePage::class, ['tree' => $tree->name()]);
     }
 
     /**
@@ -203,9 +201,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
                 ->delete();
         }
 
-        $url = route(TreePage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(TreePage::class, ['tree' => $tree->name()]);
     }
 
     /**

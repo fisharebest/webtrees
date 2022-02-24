@@ -25,9 +25,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-use function route;
-
 /**
  * Merge records
  */
@@ -56,17 +53,17 @@ class MergeRecordsAction implements RequestHandlerInterface
             $record1->isPendingDeletion() ||
             $record2->isPendingDeletion()
         ) {
-            return redirect(route(MergeRecordsPage::class, [
+            return Registry::responseFactory()->redirect(MergeRecordsPage::class, [
                 'tree'  => $tree->name(),
                 'xref1' => $xref1,
                 'xref2' => $xref2,
-            ]));
+            ]);
         }
 
-        return redirect(route(MergeFactsPage::class, [
+        return Registry::responseFactory()->redirect(MergeFactsPage::class, [
             'tree'  => $tree->name(),
             'xref1' => $xref1,
             'xref2' => $xref2,
-        ]));
+        ]);
     }
 }

@@ -26,9 +26,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-use function route;
-
 /**
  * Search for genealogy data
  */
@@ -51,9 +48,9 @@ class SearchQuickAction implements RequestHandlerInterface
         $record = Registry::gedcomRecordFactory()->make($query, $tree);
 
         if ($record instanceof GedcomRecord && $record->canShow()) {
-            return redirect($record->url());
+            return Registry::responseFactory()->redirectUrl($record->url());
         }
 
-        return redirect(route(SearchGeneralPage::class, ['tree' => $tree->name(), 'query' => $query]));
+        return Registry::responseFactory()->redirect(SearchGeneralPage::class, ['tree' => $tree->name(), 'query' => $query]);
     }
 }

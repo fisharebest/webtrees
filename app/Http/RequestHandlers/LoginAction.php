@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
@@ -81,16 +82,16 @@ class LoginAction implements RequestHandlerInterface
             }
 
             // Redirect to the target URL
-            return redirect($url);
+            return Registry::responseFactory()->redirectUrl($url);
         } catch (Exception $ex) {
             // Failed to log in.
             FlashMessages::addMessage($ex->getMessage(), 'danger');
 
-            return redirect(route(LoginPage::class, [
+            return Registry::responseFactory()->redirect(LoginPage::class, [
                 'tree'     => $tree instanceof Tree ? $tree->name() : null,
                 'username' => $username,
                 'url'      => $url,
-            ]));
+            ]);
         }
     }
 

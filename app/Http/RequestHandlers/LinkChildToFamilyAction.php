@@ -27,8 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Link an existing individual as child in an existing family.
  */
@@ -93,6 +91,6 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
             $family->createFact('1 CHIL @' . $individual->xref() . '@', true);
         }
 
-        return redirect($individual->url());
+        return Registry::responseFactory()->redirectUrl($individual->url());
     }
 }

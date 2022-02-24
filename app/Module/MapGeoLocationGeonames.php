@@ -21,12 +21,11 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function redirect;
 
 /**
  * Class MapLocationGeonames - use geonames to find locations
@@ -86,6 +85,6 @@ class MapGeoLocationGeonames extends AbstractModule implements ModuleConfigInter
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
-        return redirect($this->getConfigLink());
+        return Registry::responseFactory()->redirectUrl($this->getConfigLink());
     }
 }

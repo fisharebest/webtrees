@@ -44,7 +44,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function count;
 use function in_array;
-use function redirect;
 use function route;
 use function view;
 
@@ -214,13 +213,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
+            return Registry::responseFactory()->redirect(static::class, [
                 'tree'      => $tree->name(),
                 'ancestors' => Validator::parsedBody($request)->string('ancestors', ''),
                 'recursion' => Validator::parsedBody($request)->string('recursion', ''),
                 'xref'      => Validator::parsedBody($request)->string('xref', ''),
                 'xref2'     => Validator::parsedBody($request)->string('xref2', ''),
-            ]));
+            ]);
         }
 
         $individual1 = Registry::individualFactory()->make($xref, $tree);
@@ -403,7 +402,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         $html = ob_get_clean();
 
-        return response($html);
+        return Registry::responseFactory()->response($html);
     }
 
     /**
@@ -442,7 +441,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         FlashMessages::addMessage(I18N::translate('The preferences for the module “%s” have been updated.', $this->title()), 'success');
 
-        return redirect($this->getConfigLink());
+        return Registry::responseFactory()->redirectUrl($this->getConfigLink());
     }
 
     /**

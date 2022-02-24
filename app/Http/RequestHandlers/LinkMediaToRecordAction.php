@@ -50,6 +50,6 @@ class LinkMediaToRecordAction implements RequestHandlerInterface
 
         $record->createFact('1 OBJE @' . $xref . '@', true);
 
-        return redirect($media->url());
+        return Registry::responseFactory()->redirectUrl($media->url());
     }
 }

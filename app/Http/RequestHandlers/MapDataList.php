@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -32,8 +33,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_reverse;
 use function e;
-use function redirect;
-use function route;
 
 /**
  * Show a list of map data.
@@ -83,7 +82,7 @@ class MapDataList implements RequestHandlerInterface
 
         // Request for a non-existent location?
         if ($parent_id !== null && $parent->id() === null) {
-            return redirect(route(__CLASS__));
+            return Registry::responseFactory()->redirect(__CLASS__);
         }
 
         // Automatically import any new/missing places.
@@ -98,16 +97,22 @@ class MapDataList implements RequestHandlerInterface
         $tmp = $parent->parent();
 
         while ($tmp->id() !== null) {
-            $breadcrumbs[route(__CLASS__, ['parent_id' => $tmp->id()])] = $tmp->locationName();
+            $url = Registry::routeFactory()->route(__CLASS__, ['parent_id' => $tmp->id()]);
+
+            $breadcrumbs[$url] = $tmp->locationName();
 
             $tmp = $tmp->parent();
         }
 
         $title = I18N::translate('Geographic data');
 
-        $breadcrumbs[route(__CLASS__)] = $title;
+        $url = Registry::routeFactory()->route(__CLASS__);
 
-        $breadcrumbs[route(ControlPanel::class)] = I18N::translate('Control panel');
+        $breadcrumbs[$url] = $title;
+
+        $url = Registry::routeFactory()->route(ControlPanel::class);
+
+        $breadcrumbs[$url] = I18N::translate('Control panel');
 
         $list_module = $this->module_service
             ->findByInterface(PlaceHierarchyListModule::class)

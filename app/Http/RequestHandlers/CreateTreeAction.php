@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -29,8 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
-use function route;
 
 /**
  * Create a new tree.
@@ -62,13 +61,13 @@ class CreateTreeAction implements RequestHandlerInterface
         if ($this->tree_service->all()->get($name) instanceof Tree) {
             FlashMessages::addMessage(I18N::translate('The family tree “%s” already exists.', e($name)), 'danger');
 
-            return redirect(route(CreateTreePage::class, ['title' => $title]));
+            return Registry::responseFactory()->redirect(CreateTreePage::class, ['title' => $title]);
         }
 
         $tree = $this->tree_service->create($name, $title);
 
         FlashMessages::addMessage(I18N::translate('The family tree “%s” has been created.', e($name)), 'success');
 
-        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
+        return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $tree->name()]);
     }
 }

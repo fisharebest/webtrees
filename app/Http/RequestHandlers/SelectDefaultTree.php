@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -29,8 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
-use function route;
 
 /**
  * Set the default tree.
@@ -53,8 +52,6 @@ class SelectDefaultTree implements RequestHandlerInterface, StatusCodeInterface
 
         FlashMessages::addMessage($message, 'success');
 
-        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $tree->name()]);
     }
 }

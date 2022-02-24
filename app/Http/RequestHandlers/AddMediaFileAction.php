@@ -30,8 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Add a new media file to a media object.
  */
@@ -74,7 +72,7 @@ class AddMediaFileAction implements RequestHandlerInterface
         if ($file === '') {
             FlashMessages::addMessage(I18N::translate('There was an error uploading your file.'));
 
-            return redirect($media->url());
+            return Registry::responseFactory()->redirectUrl($media->url());
         }
 
         $gedcom = $this->media_file_service->createMediaFileGedcom($file, $type, $title, '');
@@ -84,6 +82,6 @@ class AddMediaFileAction implements RequestHandlerInterface
         // Accept the changes, to keep the filesystem in sync with the GEDCOM data.
         $this->pending_changes_service->acceptRecord($media);
 
-        return redirect($media->url());
+        return Registry::responseFactory()->redirectUrl($media->url());
     }
 }

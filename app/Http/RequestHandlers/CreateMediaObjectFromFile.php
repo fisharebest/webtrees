@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Fisharebest\Webtrees\Validator;
@@ -67,6 +68,6 @@ class CreateMediaObjectFromFile implements RequestHandlerInterface
         // Accept the new record.  Rejecting it would leave the filesystem out-of-sync with the genealogy
         $this->pending_changes_service->acceptRecord($media_object);
 
-        return redirect($media_object->url());
+        return Registry::responseFactory()->redirectUrl($media_object->url());
     }
 }

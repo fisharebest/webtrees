@@ -23,12 +23,12 @@ use Fisharebest\Webtrees\Elements\AddressLine;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\NameOfRepository;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
 use function view;
 
 /**
@@ -51,7 +51,7 @@ class CreateRepositoryModal implements RequestHandlerInterface
             'url'     => new AddressWebPage(I18N::translate('URL')),
         ];
 
-        return response(view('modals/create-repository', [
+        return Registry::responseFactory()->response(view('modals/create-repository', [
             'elements' => $elements,
             'tree'     => $tree,
         ]));

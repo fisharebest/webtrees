@@ -43,7 +43,7 @@ class LinkMediaToSourceModal implements RequestHandlerInterface
         $media = Registry::mediaFactory()->make($xref, $tree);
         $media = Auth::checkMediaAccess($media);
 
-        return response(view('modals/link-media-to-source', [
+        return Registry::responseFactory()->response(view('modals/link-media-to-source', [
             'media' => $media,
             'tree'  => $tree,
         ]));

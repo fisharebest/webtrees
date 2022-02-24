@@ -30,7 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
-use function response;
 
 /**
  * Process a form to create a new media object.
@@ -71,7 +70,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         $file = $this->media_file_service->uploadFile($request);
 
         if ($file === '') {
-            return response(['error_message' => I18N::translate('There was an error uploading your file.')], StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
+            return Registry::responseFactory()->response(['error_message' => I18N::translate('There was an error uploading your file.')], StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
         }
 
         $gedcom = "0 @@ OBJE\n" . $this->media_file_service->createMediaFileGedcom($file, $type, $title, $note);
@@ -88,7 +87,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
 
         // value and text are for autocomplete
         // html is for interactive modals
-        return response([
+        return Registry::responseFactory()->response([
             'value' => '@' . $record->xref() . '@',
             'text'  => view('selects/media', ['media' => $record]),
             'html'  => view('modals/record-created', [

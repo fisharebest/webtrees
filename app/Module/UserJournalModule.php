@@ -34,8 +34,6 @@ use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function redirect;
-
 /**
  * Class UserJournalModule
  */
@@ -228,9 +226,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ]);
         }
 
-        $url = route(UserPage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(UserPage::class, ['tree' => $tree->name()]);
     }
 
     /**
@@ -248,8 +244,6 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ->where('user_id', '=', Auth::id())
             ->delete();
 
-        $url = route(UserPage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(UserPage::class, ['tree' => $tree->name()]);
     }
 }

@@ -19,14 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HomePageService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Update block config options.
@@ -57,6 +55,6 @@ class TreePageBlockUpdate implements RequestHandlerInterface
 
         $block->saveBlockConfiguration($request, $block_id);
 
-        return redirect(route(TreePage::class, ['tree' => $tree->name()]));
+        return Registry::responseFactory()->redirect(TreePage::class, ['tree' => $tree->name()]);
     }
 }

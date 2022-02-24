@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Validator;
@@ -32,8 +33,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
-use function route;
 
 /**
  * Send a message from a logged-in user.
@@ -80,29 +79,29 @@ class MessageAction implements RequestHandlerInterface
         }
 
         if ($body === '' || $subject === '') {
-            return redirect(route(MessagePage::class, [
+            return Registry::responseFactory()->redirect(MessagePage::class, [
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
                 'tree'    => $tree->name(),
                 'url'     => $url,
-            ]));
+            ]);
         }
 
         if ($this->message_service->deliverMessage($user, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
-            return redirect($url);
+            return Registry::responseFactory()->redirectUrl($url);
         }
 
         FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
 
-        return redirect(route(MessagePage::class, [
+        return Registry::responseFactory()->redirect(MessagePage::class, [
             'body'    => $body,
             'subject' => $subject,
             'to'      => $to,
             'tree'    => $tree->name(),
             'url'     => $url,
-        ]));
+        ]);
     }
 }

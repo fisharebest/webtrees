@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
-
 /**
  * Reject pending changes for a record.
  */
@@ -64,6 +62,6 @@ class PendingChangesRejectRecord implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('The changes to “%s” have been rejected.', $record->fullName()));
         }
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

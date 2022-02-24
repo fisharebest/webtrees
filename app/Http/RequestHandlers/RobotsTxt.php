@@ -21,13 +21,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Module\SiteMapModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 use const PHP_URL_PATH;
 
@@ -79,7 +78,7 @@ class RobotsTxt implements RequestHandlerInterface
             $data['sitemap_url'] = route('sitemap-index');
         }
 
-        return response(view('robots-txt', $data))
+        return Registry::responseFactory()->response(view('robots-txt', $data))
             ->withHeader('content-type', 'text/plain');
     }
 }

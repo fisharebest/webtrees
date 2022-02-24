@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\MessageService;
@@ -39,8 +40,6 @@ use function e;
 use function in_array;
 use function preg_match;
 use function preg_quote;
-use function redirect;
-use function route;
 
 /**
  * Send a message from a visitor.
@@ -127,7 +126,7 @@ class ContactAction implements RequestHandlerInterface
         }
 
         if ($errors) {
-            return redirect(route(ContactPage::class, [
+            return Registry::responseFactory()->redirect(ContactPage::class, [
                 'body'       => $body,
                 'from_email' => $from_email,
                 'from_name'  => $from_name,
@@ -135,7 +134,7 @@ class ContactAction implements RequestHandlerInterface
                 'to'         => $to,
                 'tree'       => $tree->name(),
                 'url'        => $url,
-            ]));
+            ]);
         }
 
         $sender = new GuestUser($from_email, $from_name);
@@ -145,12 +144,12 @@ class ContactAction implements RequestHandlerInterface
         if ($this->message_service->deliverMessage($sender, $to_user, $subject, $body, $url, $ip)) {
             FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
 
-            return redirect($url);
+            return Registry::responseFactory()->redirectUrl($url);
         }
 
         FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
 
-        $redirect_url = route(ContactPage::class, [
+        return Registry::responseFactory()->redirect(ContactPage::class, [
             'body'       => $body,
             'from_email' => $from_email,
             'from_name'  => $from_name,
@@ -159,7 +158,5 @@ class ContactAction implements RequestHandlerInterface
             'tree'       => $tree->name(),
             'url'        => $url,
         ]);
-
-        return redirect($redirect_url);
     }
 }

@@ -34,9 +34,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-use function route;
-
 /**
  * Synchronize GEDCOM files with trees.
  */
@@ -98,7 +95,7 @@ class SynchronizeTrees implements RequestHandlerInterface
                     FlashMessages::addMessage(I18N::translate('The GEDCOM file “%s” has been imported.', e($gedcom_file)), 'success');
 
                     if ($this->timeout_service->isTimeNearlyUp(10.0)) {
-                        return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                        return Registry::responseFactory()->redirect(__CLASS__, [], StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
                     }
                 }
             } catch (FilesystemException | UnableToRetrieveMetadata | UnableToReadFile $ex) {
@@ -112,11 +109,11 @@ class SynchronizeTrees implements RequestHandlerInterface
                 FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', e($tree->title())), 'success');
 
                 if ($this->timeout_service->isTimeNearlyUp(10.0)) {
-                    return redirect(route(__CLASS__), StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
+                    return Registry::responseFactory()->redirect(__CLASS__, [], StatusCodeInterface::STATUS_TEMPORARY_REDIRECT);
                 }
             }
         }
 
-        return redirect(route(ManageTrees::class, ['tree' => $this->tree_service->all()->first()->name()]));
+        return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $this->tree_service->all()->first()->name()]);
     }
 }

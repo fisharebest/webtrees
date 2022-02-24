@@ -30,8 +30,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Show a media object's page.
  */
@@ -70,7 +68,7 @@ class MediaPage implements RequestHandlerInterface
 
         // Redirect to correct xref/slug
         if ($record->xref() !== $xref || Registry::slugFactory()->make($record) !== $slug) {
-            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         $linked_families    = $this->linked_record_service->linkedFamilies($record);

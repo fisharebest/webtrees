@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use PDOException;
@@ -33,7 +34,6 @@ use function array_unique;
 use function e;
 use function implode;
 use function preg_replace;
-use function redirect;
 use function route;
 use function trim;
 
@@ -171,6 +171,6 @@ class TreePreferencesAction implements RequestHandlerInterface
             FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.'), 'success');
         }
 
-        return redirect($url);
+        return Registry::responseFactory()->redirectUrl($url);
     }
 }

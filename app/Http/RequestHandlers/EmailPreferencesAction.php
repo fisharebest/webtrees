@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
@@ -30,8 +31,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
-use function route;
 
 /**
  * Edit the email preferences.
@@ -102,9 +101,9 @@ class EmailPreferencesAction implements RequestHandlerInterface
                 FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
             }
 
-            return redirect(route(EmailPreferencesPage::class));
+            return Registry::responseFactory()->redirect(EmailPreferencesPage::class);
         }
 
-        return redirect(route(ControlPanel::class));
+        return Registry::responseFactory()->redirect(ControlPanel::class);
     }
 }

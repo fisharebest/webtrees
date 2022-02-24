@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -72,7 +73,7 @@ class CheckCsrf implements MiddlewareInterface
                         FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
                     }
 
-                    return redirect((string) $request->getUri());
+                    return Registry::responseFactory()->redirectUrl($request->getUri());
                 }
             }
         }

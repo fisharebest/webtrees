@@ -20,10 +20,10 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function response;
 use function view;
 
 /**
@@ -53,6 +53,6 @@ trait ViewResponseTrait
         // Insert the view into the layout
         $html = view($this->layout, $layout_data);
 
-        return response($html, $status);
+        return Registry::responseFactory()->response($html, $status);
     }
 }

@@ -39,9 +39,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-use function route;
-
 /**
  * Renumber the XREFs in a family tree.
  */
@@ -553,8 +550,6 @@ class RenumberTreeAction implements RequestHandlerInterface
             }
         }
 
-        $url = route(RenumberTreePage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(RenumberTreePage::class, ['tree' => $tree->name()]);
     }
 }

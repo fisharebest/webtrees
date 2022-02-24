@@ -35,7 +35,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function e;
 use function preg_match_all;
 use function preg_replace;
-use function response;
 use function sprintf;
 
 /**
@@ -103,7 +102,7 @@ class DeleteRecord implements RequestHandlerInterface
             $record->deleteRecord();
         }
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 
     /**

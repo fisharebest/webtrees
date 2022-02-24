@@ -25,11 +25,10 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Message\ResponseInterface;
-
-use function response;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\ModuleAction
@@ -143,7 +142,7 @@ class ModuleActionTest extends TestCase
              */
             public function getTestAction(): ResponseInterface
             {
-                return response('It works!');
+                return Registry::responseFactory()->response('It works!');
             }
         };
     }

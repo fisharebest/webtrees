@@ -20,10 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Test the NoRouteFound middleware.
@@ -38,7 +37,7 @@ class NoRouteFoundTest extends TestCase
     public function testMiddleware(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willReturn(response());
+        $handler->method('handle')->willReturn(Registry::responseFactory()->response());
 
         $request    = self::createRequest();
         $middleware = new NoRouteFound();

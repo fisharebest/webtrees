@@ -21,15 +21,13 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Request a new password.
@@ -50,7 +48,7 @@ class PasswordRequestPage implements RequestHandlerInterface
 
         // Already logged in?
         if ($user instanceof User) {
-            return redirect(route(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+            return Registry::responseFactory()->redirect(AccountEdit::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
         }
 
         $title = I18N::translate('Request a new password');

@@ -28,8 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Link an existing individual as a new spouse.
  */
@@ -81,6 +79,6 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
         $individual->createFact('1 FAMS @' . $family->xref() . '@', false);
         $spouse->createFact('1 FAMS @' . $family->xref() . '@', false);
 
-        return redirect($family->url());
+        return Registry::responseFactory()->redirectUrl($family->url());
     }
 }

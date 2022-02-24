@@ -35,7 +35,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Sabre\VObject\Component\VCalendar;
 
-use function response;
 use function route;
 use function strip_tags;
 use function view;
@@ -152,7 +151,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             $vevent->add('RRULE', 'FREQ=YEARLY');
             $vevent->add('SUMMARY', strip_tags($record->fullName()) . ' — ' . $fact->label());
 
-            return response($vcalendar->serialize())
+            return Registry::responseFactory()->response($vcalendar->serialize())
                 ->withHeader('content-type', 'text/calendar')
                 ->withHeader('content-disposition', 'attachment; filename="' . $fact->id() . '.ics');
         }

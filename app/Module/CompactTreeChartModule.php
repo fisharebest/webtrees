@@ -153,10 +153,10 @@ class CompactTreeChartModule extends AbstractModule implements ModuleChartInterf
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
+            return Registry::responseFactory()->redirect(static::class, [
                 'tree' => $tree->name(),
                 'xref' => Validator::parsedBody($request)->string('xref', ''),
-            ]));
+            ]);
         }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);

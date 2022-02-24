@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\MessageService;
@@ -118,7 +119,7 @@ class RegisterAction implements RequestHandlerInterface
             Session::put('register_realname', $realname);
             Session::put('register_username', $username);
 
-            return redirect(route(RegisterPage::class));
+            return Registry::responseFactory()->redirect(RegisterPage::class);
         }
 
         $this->rate_limit_service->limitRateForSite(5, 300, 'rate-limit-registration');

@@ -44,14 +44,11 @@ use function array_reduce;
 use function array_unique;
 use function count;
 use function date;
-use function explode;
 use function implode;
 use function intdiv;
 use function max;
 use function md5;
 use function min;
-use function redirect;
-use function response;
 use function route;
 use function usort;
 use function view;
@@ -201,10 +198,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            return redirect(route(static::class, [
+            return Registry::responseFactory()->redirect(static::class, [
                 'tree'  => $tree->name(),
                 'xrefs' => implode(self::SEPARATOR, $xrefs),
-            ]));
+            ]);
         }
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
@@ -274,7 +271,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             'subtitle'   => $subtitle,
         ]);
 
-        return response($html);
+        return Registry::responseFactory()->response($html);
     }
 
     /**

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -75,7 +76,7 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
 
             FlashMessages::addMessage($message, 'success');
 
-            return redirect(route(HomePage::class));
+            return Registry::responseFactory()->redirect(HomePage::class);
         }
 
         $message1 = I18N::translate('The password reset link has expired.');
@@ -84,6 +85,6 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
 
         FlashMessages::addMessage($message, 'danger');
 
-        return redirect(route(PasswordRequestPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
+        return Registry::responseFactory()->redirect(PasswordRequestPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]);
     }
 }

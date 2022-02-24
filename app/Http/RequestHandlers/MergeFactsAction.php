@@ -35,8 +35,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function e;
 use function in_array;
 use function preg_replace;
-use function redirect;
-use function route;
 use function str_replace;
 
 /**
@@ -79,11 +77,11 @@ class MergeFactsAction implements RequestHandlerInterface
             $record1->isPendingDeletion() ||
             $record2->isPendingDeletion()
         ) {
-            return redirect(route(MergeRecordsPage::class, [
+            return Registry::responseFactory()->redirect(MergeRecordsPage::class, [
                 'tree'  => $tree->name(),
                 'xref1' => $xref1,
                 'xref2' => $xref2,
-            ]));
+            ]);
         }
 
         // If we are not auto-accepting, then we can show a link to the pending deletion
@@ -176,6 +174,6 @@ class MergeFactsAction implements RequestHandlerInterface
             $record2_name
         ), 'success');
 
-        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
+        return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $tree->name()]);
     }
 }

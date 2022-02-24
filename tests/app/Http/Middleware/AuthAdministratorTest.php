@@ -23,11 +23,10 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\GuestUser;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Test the AuthAdministrator middleware.
@@ -42,7 +41,7 @@ class AuthAdministratorTest extends TestCase
     public function testAllowed(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willReturn(response('lorem ipsum'));
+        $handler->method('handle')->willReturn(Registry::responseFactory()->response('lorem ipsum'));
 
         $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('1');
@@ -64,7 +63,7 @@ class AuthAdministratorTest extends TestCase
         $this->expectExceptionMessage('You do not have permission to view this page.');
 
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willReturn(response('lorem ipsum'));
+        $handler->method('handle')->willReturn(Registry::responseFactory()->response('lorem ipsum'));
 
         $user = $this->createMock(User::class);
         $user->method('getPreference')->with(UserInterface::PREF_IS_ADMINISTRATOR)->willReturn('');
@@ -81,7 +80,7 @@ class AuthAdministratorTest extends TestCase
     public function testNotLoggedIn(): void
     {
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->method('handle')->willReturn(response('lorem ipsum'));
+        $handler->method('handle')->willReturn(Registry::responseFactory()->response('lorem ipsum'));
 
         $request    = self::createRequest()->withAttribute('user', new GuestUser());
         $middleware = new AuthAdministrator();

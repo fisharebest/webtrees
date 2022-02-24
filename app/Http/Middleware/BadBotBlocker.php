@@ -41,7 +41,6 @@ use function gethostbyaddr;
 use function gethostbyname;
 use function preg_match_all;
 use function random_int;
-use function response;
 use function str_contains;
 use function str_ends_with;
 
@@ -298,6 +297,6 @@ class BadBotBlocker implements MiddlewareInterface
      */
     private function response(): ResponseInterface
     {
-        return response('Not acceptable', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
+        return Registry::responseFactory()->response('Not acceptable', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
     }
 }

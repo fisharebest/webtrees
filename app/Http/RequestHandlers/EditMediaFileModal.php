@@ -31,7 +31,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
 use function view;
 
 /**
@@ -68,7 +67,7 @@ class EditMediaFileModal implements RequestHandlerInterface
         try {
             $media = Auth::checkMediaAccess($media);
         } catch (HttpNotFoundException | HttpAccessDeniedException $ex) {
-            return response(view('modals/error', [
+            return Registry::responseFactory()->response(view('modals/error', [
                 'title' => I18N::translate('Edit a media file'),
                 'error' => $ex->getMessage(),
             ]), StatusCodeInterface::STATUS_FORBIDDEN);
@@ -78,7 +77,7 @@ class EditMediaFileModal implements RequestHandlerInterface
             if ($media_file->factId() === $fact_id) {
                 $media_types = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
 
-                return response(view('modals/edit-media-file', [
+                return Registry::responseFactory()->response(view('modals/edit-media-file', [
                     'media_file'      => $media_file,
                     'max_upload_size' => $this->media_file_service->maxUploadFilesize(),
                     'media'           => $media,
@@ -89,6 +88,6 @@ class EditMediaFileModal implements RequestHandlerInterface
             }
         }
 
-        return response('', StatusCodeInterface::STATUS_NOT_FOUND);
+        return Registry::responseFactory()->response('', StatusCodeInterface::STATUS_NOT_FOUND);
     }
 }

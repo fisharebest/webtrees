@@ -20,14 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Run a data-fix.
@@ -59,9 +57,9 @@ class DataFixSelect implements RequestHandlerInterface
         $module     = $data_fixes->get($data_fix);
 
         if ($module instanceof ModuleDataFixInterface) {
-            return redirect(route(DataFixPage::class, ['tree' => $tree->name(), 'data_fix' => $module->name()]));
+            return Registry::responseFactory()->redirect(DataFixPage::class, ['tree' => $tree->name(), 'data_fix' => $module->name()]);
         }
 
-        return redirect(route(DataFixPage::class, ['tree' => $tree->name()]));
+        return Registry::responseFactory()->redirect(DataFixPage::class, ['tree' => $tree->name()]);
     }
 }

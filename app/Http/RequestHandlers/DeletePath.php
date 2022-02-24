@@ -33,7 +33,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
 use function in_array;
-use function response;
 use function str_ends_with;
 
 /**
@@ -72,7 +71,7 @@ class DeletePath implements RequestHandlerInterface
 
         if (in_array($normalized_path, self::PROTECTED_PATHS, true)) {
             FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', e($path)), 'danger');
-            return response();
+            return Registry::responseFactory()->response('');
         }
 
         // The request adds a slash to folders, so we know which delete function to use.
@@ -92,6 +91,6 @@ class DeletePath implements RequestHandlerInterface
             }
         }
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

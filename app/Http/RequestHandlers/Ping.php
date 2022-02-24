@@ -19,12 +19,11 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
 
 /**
  * Check the server is up.
@@ -49,13 +48,13 @@ class Ping implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         if ($this->server_check_service->serverErrors()->isNotEmpty()) {
-            return response('ERROR');
+            return Registry::responseFactory()->response('ERROR');
         }
 
         if ($this->server_check_service->serverWarnings()->isNotEmpty()) {
-            return response('WARNING');
+            return Registry::responseFactory()->response('WARNING');
         }
 
-        return response('OK');
+        return Registry::responseFactory()->response('OK');
     }
 }

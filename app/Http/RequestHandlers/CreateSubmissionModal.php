@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,7 +39,7 @@ class CreateSubmissionModal implements RequestHandlerInterface
     {
         $tree = Validator::attributes($request)->tree();
 
-        return response(view('modals/create-submission', [
+        return Registry::responseFactory()->response(view('modals/create-submission', [
             'tree' => $tree,
         ]));
     }

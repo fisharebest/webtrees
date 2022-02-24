@@ -21,14 +21,12 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Show all available reports.
@@ -64,14 +62,14 @@ class ReportListAction implements RequestHandlerInterface
         if ($module instanceof ModuleReportInterface) {
             Auth::checkComponentAccess($module, ModuleReportInterface::class, $tree, $user);
 
-            return redirect(route(ReportSetupPage::class, [
+            return Registry::responseFactory()->redirect(ReportSetupPage::class, [
                 'tree'   => $tree->name(),
                 'report' => $report,
-            ]));
+            ]);
         }
 
-        return redirect(route(ReportListPage::class, [
+        return Registry::responseFactory()->redirect(ReportListPage::class, [
             'tree' => $tree->name(),
-        ]));
+        ]);
     }
 }

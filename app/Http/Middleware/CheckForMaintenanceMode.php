@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -45,7 +46,7 @@ class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterfac
                 'url'     => (string) $request->getUri(),
             ]);
 
-            return response($html, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
+            return Registry::responseFactory()->response($html, StatusCodeInterface::STATUS_SERVICE_UNAVAILABLE);
         }
 
         return $handler->handle($request);

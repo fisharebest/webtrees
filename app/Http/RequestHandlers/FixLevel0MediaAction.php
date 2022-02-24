@@ -28,8 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
-
 /**
  * Move media links from records to facts.
  */
@@ -80,6 +78,6 @@ class FixLevel0MediaAction implements RequestHandlerInterface
             }
         }
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

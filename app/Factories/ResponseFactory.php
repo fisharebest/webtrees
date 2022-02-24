@@ -99,7 +99,7 @@ class ResponseFactory implements ResponseFactoryInterface
      *
      * @return ResponseInterface
      */
-    public function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
+    public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
     {
         if ($content === '' && $code === StatusCodeInterface::STATUS_OK) {
             $code = StatusCodeInterface::STATUS_NO_CONTENT;

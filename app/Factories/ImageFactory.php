@@ -47,7 +47,6 @@ use function extension_loaded;
 use function get_class;
 use function implode;
 use function pathinfo;
-use function response;
 use function str_contains;
 use function view;
 
@@ -328,7 +327,7 @@ class ImageFactory implements ImageFactoryInterface
         $svg = view('errors/image-svg', ['status' => $text]);
 
         // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
-        return response($svg, StatusCodeInterface::STATUS_OK, [
+        return Registry::responseFactory()->response($svg, StatusCodeInterface::STATUS_OK, [
             'content-type' => 'image/svg+xml',
         ]);
     }
@@ -348,7 +347,7 @@ class ImageFactory implements ImageFactoryInterface
         }
 
         // HTML files may contain javascript and iframes, so use content-security-policy to disable them.
-        $response = response($data)
+        $response = Registry::responseFactory()->response($data)
             ->withHeader('content-type', $mime_type)
             ->withHeader('content-security-policy', 'script-src none;frame-src none');
 

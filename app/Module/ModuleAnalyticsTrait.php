@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -169,6 +170,6 @@ trait ModuleAnalyticsTrait
             $this->setPreference($parameter, $new_value);
         }
 
-        return redirect(route(ModulesAnalyticsPage::class));
+        return Registry::responseFactory()->redirect(ModulesAnalyticsPage::class);
     }
 }

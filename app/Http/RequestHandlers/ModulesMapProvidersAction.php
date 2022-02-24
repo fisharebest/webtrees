@@ -22,11 +22,9 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleMapProviderInterface;
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Update a list of modules.
@@ -44,6 +42,6 @@ class ModulesMapProvidersAction extends AbstractModuleComponentAction
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 
-        return redirect(route(ModulesMapProvidersPage::class));
+        return Registry::responseFactory()->redirect(ModulesMapProvidersPage::class);
     }
 }

@@ -182,9 +182,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
             }
         }
 
-        $url = route(UserPage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(UserPage::class, ['tree' => $tree->name()]);
     }
 
     /**
@@ -205,9 +203,7 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
                 ->delete();
         }
 
-        $url = route(UserPage::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return Registry::responseFactory()->redirect(UserPage::class, ['tree' => $tree->name()]);
     }
 
     /**

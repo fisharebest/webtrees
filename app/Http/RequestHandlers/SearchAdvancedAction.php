@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -46,10 +47,10 @@ class SearchAdvancedAction implements RequestHandlerInterface
             $fields[$other_field] = $other_value;
         }
 
-        return redirect(route(SearchAdvancedPage::class, [
+        return Registry::responseFactory()->redirect(SearchAdvancedPage::class, [
             'fields'    => $fields,
             'modifiers' => $modifiers,
             'tree'      => $tree->name(),
-        ]));
+        ]);
     }
 }

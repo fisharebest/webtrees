@@ -27,8 +27,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
-
 /**
  * Accept pending changes for a record.
  */
@@ -60,6 +58,6 @@ class PendingChangesAcceptChange implements RequestHandlerInterface
             $this->pending_changes_service->acceptChange($record, $change);
         }
 
-        return response();
+        return Registry::responseFactory()->response();
     }
 }

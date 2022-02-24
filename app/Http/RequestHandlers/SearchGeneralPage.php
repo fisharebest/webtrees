@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -38,7 +39,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function in_array;
 use function preg_replace;
-use function redirect;
 use function trim;
 
 use const PREG_SET_ORDER;
@@ -173,23 +173,23 @@ class SearchGeneralPage implements RequestHandlerInterface
 
         // If only 1 item is returned, automatically forward to that item
         if ($individuals->count() === 1 && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
-            return redirect($individuals->first()->url());
+            return Registry::responseFactory()->redirectUrl($individuals->first()->url());
         }
 
         if ($individuals->isEmpty() && $families->count() === 1 && $sources->isEmpty() && $notes->isEmpty() && $locations->isEmpty()) {
-            return redirect($families->first()->url());
+            return Registry::responseFactory()->redirectUrl($families->first()->url());
         }
 
         if ($individuals->isEmpty() && $families->isEmpty() && $sources->count() === 1 && $notes->isEmpty() && $locations->isEmpty()) {
-            return redirect($sources->first()->url());
+            return Registry::responseFactory()->redirectUrl($sources->first()->url());
         }
 
         if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->count() === 1 && $locations->isEmpty()) {
-            return redirect($notes->first()->url());
+            return Registry::responseFactory()->redirectUrl($notes->first()->url());
         }
 
         if ($individuals->isEmpty() && $families->isEmpty() && $sources->isEmpty() && $notes->isEmpty() && $locations->count() === 1) {
-            return redirect($locations->first()->url());
+            return Registry::responseFactory()->redirectUrl($locations->first()->url());
         }
 
         $title = I18N::translate('General search');

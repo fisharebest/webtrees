@@ -32,7 +32,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function response;
 use function view;
 
 /**
@@ -213,7 +212,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family);
 
-        return response(view('modules/hourglass-chart/parents', [
+        return Registry::responseFactory()->response(view('modules/hourglass-chart/parents', [
             'family'      => $family,
             'generations' => 1,
         ]));
@@ -238,7 +237,7 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
             return $family->children();
         })->flatten();
 
-        return response(view('modules/hourglass-chart/children', [
+        return Registry::responseFactory()->response(view('modules/hourglass-chart/children', [
             'children'    => $children,
             'generations' => 1,
             'spouses'     => $spouses,

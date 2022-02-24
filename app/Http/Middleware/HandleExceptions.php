@@ -24,6 +24,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Validator;
@@ -41,7 +42,6 @@ use function ini_get;
 use function ob_end_clean;
 use function ob_get_level;
 use function register_shutdown_function;
-use function response;
 use function str_replace;
 use function view;
 
@@ -140,7 +140,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
             }
 
             // Show a stack dump.
-            return response((string) $exception, StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+            return Registry::responseFactory()->response((string) $exception, StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -233,7 +233,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 $status_code = StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR;
             }
 
-            return response(view('components/alert-danger', ['alert' => $trace]), $status_code);
+            return Registry::responseFactory()->response(view('components/alert-danger', ['alert' => $trace]), $status_code);
         }
 
         try {

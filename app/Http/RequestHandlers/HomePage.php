@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
@@ -29,9 +30,6 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Redirect to a user/tree page.
@@ -67,21 +65,21 @@ class HomePage implements RequestHandlerInterface
             if ($tree->getPreference('imported') === '1') {
                 // Logged in?  Go to the user's page.
                 if ($user instanceof User) {
-                    return redirect(route(UserPage::class, ['tree' => $tree->name()]));
+                    return Registry::responseFactory()->redirect(UserPage::class, ['tree' => $tree->name()]);
                 }
 
                 // Not logged in?  Go to the tree's page.
-                return redirect(route(TreePage::class, ['tree' => $tree->name()]));
+                return Registry::responseFactory()->redirect(TreePage::class, ['tree' => $tree->name()]);
             }
 
             if (Auth::isManager($tree, $user)) {
-                return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
+                return Registry::responseFactory()->redirect(ManageTrees::class, ['tree' => $tree->name()]);
             }
         }
 
         // No tree available?  Create one.
         if (Auth::isAdmin($user)) {
-            return redirect(route(CreateTreePage::class));
+            return Registry::responseFactory()->redirect(CreateTreePage::class);
         }
 
         // Logged in, but no access to any tree.
@@ -90,6 +88,6 @@ class HomePage implements RequestHandlerInterface
         }
 
         // Not logged in.
-        return redirect(route(LoginPage::class, ['url' => '']));
+        return Registry::responseFactory()->redirect(LoginPage::class, ['url' => '']);
     }
 }

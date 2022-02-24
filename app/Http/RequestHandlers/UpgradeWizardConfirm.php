@@ -19,12 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Registry;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
-use function route;
 
 /**
  * Upgrade to a new version of webtrees.
@@ -38,6 +36,6 @@ class UpgradeWizardConfirm implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect(route(UpgradeWizardPage::class, ['continue' => 1]));
+        return Registry::responseFactory()->redirect(UpgradeWizardPage::class, ['continue' => 1]);
     }
 }

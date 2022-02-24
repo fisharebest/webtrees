@@ -26,8 +26,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Create a thumbnail of a media file.
  */
@@ -61,7 +59,7 @@ class MediaFileThumbnail implements RequestHandlerInterface
         foreach ($media->mediaFiles() as $media_file) {
             if ($media_file->factId() === $fact_id) {
                 if ($media_file->isExternal()) {
-                    return redirect($media_file->filename());
+                    return Registry::responseFactory()->redirectUrl($media_file->filename());
                 }
 
                 // Validate HTTP signature

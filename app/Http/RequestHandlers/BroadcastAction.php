@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -29,8 +30,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function e;
-use function redirect;
-use function route;
 
 /**
  * Send messages from an administrator.
@@ -67,11 +66,11 @@ class BroadcastAction implements RequestHandlerInterface
         $subject = Validator::parsedBody($request)->isNotEmpty()->string('subject');
 
         if ($body === '' || $subject === '') {
-            return redirect(route(BroadcastPage::class, [
+            return Registry::responseFactory()->redirect(BroadcastPage::class, [
                 'body'    => $body,
                 'subject' => $subject,
                 'to'      => $to,
-            ]));
+            ]);
         }
 
         foreach ($this->message_service->recipientUsers($to) as $to_user) {
@@ -88,6 +87,10 @@ class BroadcastAction implements RequestHandlerInterface
             }
         }
 
-        return redirect(route(ControlPanel::class));
+        if ($errors) {
+            FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
+        }
+
+        return Registry::responseFactory()->redirect(ControlPanel::class);
     }
 }
