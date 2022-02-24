@@ -17,51 +17,48 @@ use Fisharebest\Webtrees\Place;
 ?>
 
 <li class="gchart px-md-2 <?= $sidebar_class ?>" data-wt-feature-id="<?= $id ?>">
-    <div class="row label">
-        <div class="col" style="word-wrap: break-word">
-            <?php if ($sidebar_class === 'mapped' && $num_children > 0) : ?>
-                <a href="<?= e($place->url()) ?>">
-                    <?= $place->placeName() ?>
-                </a>
-            <?php else : ?>
-                <?= $place->placeName() ?>
-            <?php endif ?>
-            <?php if($geo_link !== '') : ?>
-              <a class="ms-1" href="<?= e($geo_link)?>" title = "<?= I18N::translate('Edit map co-ordinates') ?>">
-                <?= view('icons/map') ?>
-              </a>
-          <?php endif ?>
-        </div>
-    </div>
-
+  <table class="table table-borderless">
     <?php if ($sidebar_class === 'unmapped') : ?>
-        <div class="row">
-            <div class="col-sm-9"><?= I18N::translate('The location of this place is not known.') ?></div>
-            <div class="col-sm-3 text-end"><?= view('icons/warning') ?></div>
-        </div>
+        <tr>
+          <th scope="row" class="text-danger p-0"><?= I18N::translate('The location of this place is not known.') ?></th>
+          <td class="p-0 align-digits"><?= view('icons/warning') ?></td>
+        </tr>
     <?php endif ?>
-
-    <div class="row">
-        <div class="col-sm-9"><?= I18N::translate('Subordinate Places') ?></div>
-        <div class="col-sm-3 text-end"><?= I18N::number($num_children) ?></div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-9"><?= I18N::translate('Individuals') ?></div>
-        <div class="col-sm-3 text-end"><?= I18N::number($stats[Individual::RECORD_TYPE]) ?></div>
-    </div>
-
-    <?php if ($stats[Family::RECORD_TYPE] > 0): ?>
-        <div class="row">
-            <div class="col-sm-9"><?= I18N::translate('Families') ?></div>
-            <div class="col-sm-3 text-end"><?= I18N::number($stats[Family::RECORD_TYPE]) ?></div>
-        </div>
-    <?php endif ?>
-
+    <tr>
+      <th scope="row" class="p-0">
+        <span class="label">
+          <?php if ($sidebar_class === 'mapped' && $num_children > 0) : ?>
+            <a href="<?= e($place->url()) ?>"><?= $place->placeName() ?></a>
+          <?php else : ?>
+            <?= $place->placeName() ?>
+          <?php endif ?>
+        </span>
+      </th>
+        <?php if($geo_link !== '') : ?>
+        <td class="p-0 align-digits">
+          <a class="ms-1" href="<?= e($geo_link)?>" title = "<?= I18N::translate('Add or edit place co-ordinates') ?>">
+            <?= view('icons/map') ?>
+          </a>
+        </td>
+      <?php endif ?>
+    </tr>
+    <tr>
+      <th scope="row" class="p-0"><?= I18N::translate('Subordinate Places') ?></th>
+      <td class="p-0 align-digits"><?= I18N::number($num_children) ?></td>
+    </tr>
+    <tr>
+      <th scope="row" class="p-0"><?= I18N::translate('Individuals') ?></th>
+      <td class="p-0 align-digits"><?= I18N::number($stats[Individual::RECORD_TYPE]) ?></td>
+    </tr>
+    <tr>
+      <th scope="row" class="p-0"><?= I18N::translate('Families') ?></th>
+      <td class="p-0 align-digits"><?= I18N::number($stats[Family::RECORD_TYPE]) ?></td>
+    </tr>
     <?php if ($stats[Location::RECORD_TYPE] > 0): ?>
-        <div class="row">
-            <div class="col-sm-9"><?= I18N::translate('Locations') ?></div>
-            <div class="col-sm-3 text-end"><?= I18N::number($stats[Location::RECORD_TYPE]) ?></div>
-        </div>
+      <tr>
+        <th scope="row" class="p-0"><?= I18N::translate('Locations') ?></th>
+        <td class="p-0 align-digits"><?= I18N::number($stats[Location::RECORD_TYPE]) ?></td>
+      </tr>
     <?php endif ?>
+  </table>
 </li>
