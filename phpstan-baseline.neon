@@ -496,11 +496,6 @@ parameters:
 			path: app/Http/RequestHandlers/AutoCompletePlace.php
 
 		-
-			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$anniv\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/CalendarEvents.php
-
-		-
 			message: "#^Cannot call method fullName\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CalendarEvents.php
@@ -2282,16 +2277,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/AdminService.php
-
-		-
-			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$anniv\\.$#"
-			count: 2
-			path: app/Services/CalendarService.php
-
-		-
-			message: "#^Access to an undefined property Fisharebest\\\\Webtrees\\\\Fact\\:\\:\\$jd\\.$#"
-			count: 5
-			path: app/Services/CalendarService.php
 
 		-
 			message: "#^Cannot access offset string on mixed\\.$#"

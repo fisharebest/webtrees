@@ -29,6 +29,20 @@ use Fisharebest\Webtrees\Menu;
 trait ModuleReportTrait
 {
     /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * Name of the XML report file, relative to the resources folder.
      *
      * @return string

@@ -33,6 +33,13 @@ use Psr\Http\Message\ResponseInterface;
 trait ModuleMapAutocompleteTrait
 {
     /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
      * @param string $place
      *
      * @return array<string>

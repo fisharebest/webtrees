@@ -21,7 +21,9 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -39,6 +41,13 @@ trait ModuleTabTrait
     protected int $tab_order;
 
     /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * The text that appears on the tab.
      *
      * @return string
@@ -47,6 +56,16 @@ trait ModuleTabTrait
     {
         return $this->title();
     }
+
+    /**
+     * Get a the current access level for a module
+     *
+     * @param Tree   $tree
+     * @param string $interface
+     *
+     * @return int
+     */
+    abstract public function accessLevel(Tree $tree, string $interface): int;
 
     /**
      * Users change change the order of tabs using the control panel.
@@ -88,6 +107,18 @@ trait ModuleTabTrait
     public function supportedFacts(): Collection
     {
         return new Collection();
+    }
+
+    /**
+     * Generate the HTML content of this tab.
+     *
+     * @param Individual $individual
+     *
+     * @return string
+     */
+    public function getTabContent(Individual $individual): string
+    {
+        return '';
     }
 
     /**

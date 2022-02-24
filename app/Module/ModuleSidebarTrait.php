@@ -31,6 +31,13 @@ trait ModuleSidebarTrait
     protected int $sidebar_order;
 
     /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * The text that appears on the sidebar's title.
      *
      * @param Individual $individual

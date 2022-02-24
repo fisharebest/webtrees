@@ -156,7 +156,7 @@ class CalendarEvents implements RequestHandlerInterface
                 $xref = $fact->record()->xref();
                 $text = $fact->label() . ' — ' . $fact->date()->display($tree);
                 if ($fact->anniv > 0) {
-                    $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
+                    $text .= ' (' . I18N::translate('%s year anniversary', I18N::number($fact->anniv)) . ')';
                 }
                 if (empty($cal_facts[$d][$xref])) {
                     $cal_facts[$d][$xref] = $text;
@@ -169,7 +169,8 @@ class CalendarEvents implements RequestHandlerInterface
         $week_start    = (I18N::locale()->territory()->firstDay() + 6) % 7;
         $weekend_start = (I18N::locale()->territory()->weekendStart() + 6) % 7;
         $weekend_end   = (I18N::locale()->territory()->weekendEnd() + 6) % 7;
-        // The french  calendar has a 10-day week, which starts on primidi
+        
+        // The French calendar has a 10-day week, which starts on primidi.
         if ($days_in_week === 10) {
             $week_start    = 0;
             $weekend_start = -1;

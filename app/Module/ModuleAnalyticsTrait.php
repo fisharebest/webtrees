@@ -37,6 +37,33 @@ trait ModuleAnalyticsTrait
     use ViewResponseTrait;
 
     /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
+     * Set a module setting.
+     *
+     * Since module settings are NOT NULL, setting a value to NULL will cause
+     * it to be deleted.
+     *
+     * @param string $setting_name
+     * @param string $setting_value
+     *
+     * @return void
+     */
+    abstract public function setPreference(string $setting_name, string $setting_value): void;
+
+    /**
      * Should we add this tracker?
      *
      * @return bool

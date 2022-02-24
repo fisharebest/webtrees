@@ -58,6 +58,13 @@ use function view;
 trait ModuleThemeTrait
 {
     /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * A sentence describing what this module does.
      *
      * @return string

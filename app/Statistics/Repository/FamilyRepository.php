@@ -1426,7 +1426,7 @@ class FamilyRepository
 
         return $query
             ->get()
-            ->map(static function (object $row): object {
+            ->map(static function (stdClass $row): stdClass {
                 $row->age = (int) $row->age;
 
                 return $row;

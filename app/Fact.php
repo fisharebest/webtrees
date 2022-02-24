@@ -160,8 +160,12 @@ class Fact
 
     private Place $place;
 
-    // Used by Functions::sortFacts()
+    // Used to sort facts
     public int $sortOrder;
+
+    // Used by anniversary calculations
+    public int $jd;
+    public int $anniv;
 
     /**
      * Create an event object from a gedcom fragment.
