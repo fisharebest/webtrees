@@ -76,7 +76,7 @@ class CalendarEvents implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree            = Validator::attributes($request)->tree();
-        $view            = Validator::attributes($request)->string('view');
+        $view            = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         $cal      = $request->getQueryParams()['cal'] ?? '';

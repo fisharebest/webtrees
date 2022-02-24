@@ -56,22 +56,17 @@ class TomSelectMediaObject extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
-        $search = array_filter(explode(' ', $query));
-
-        if ($search === []) {
-            return new Collection();
-        }
-
         // Search by XREF
         $media = Registry::mediaFactory()->make($query, $tree);
 
         if ($media instanceof Media) {
             $results = new Collection([$media]);
         } else {
+            $search  = array_filter(explode(' ', $query));
             $results = $this->search_service->searchMedia([$tree], $search, $offset, $limit);
         }
 

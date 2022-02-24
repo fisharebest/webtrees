@@ -17,10 +17,9 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\AccountDelete;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 
@@ -36,10 +35,12 @@ class AccountDeleteTest extends TestCase
      */
     public function testHandler(): void
     {
-        $user_service = $this->createMock(UserService::class);
-        $handler      = new AccountDelete($user_service);
-        $request      = self::createRequest();
-        $response     = $handler->handle($request);
+        $user_service = $this->createStub(UserService::class);
+
+        $request = self::createRequest();
+
+        $handler  = new AccountDelete($user_service);
+        $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
     }

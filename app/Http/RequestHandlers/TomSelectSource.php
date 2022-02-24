@@ -56,7 +56,7 @@ class TomSelectSource extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
@@ -72,6 +72,7 @@ class TomSelectSource extends AbstractTomSelectHandler
         if ($source instanceof Source) {
             $results = new Collection([$source]);
         } else {
+            $search  = array_filter(explode(' ', $query));
             $results = $this->search_service->searchSourcesByName([$tree], $search, $offset, $limit);
         }
 

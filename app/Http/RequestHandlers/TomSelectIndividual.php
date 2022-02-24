@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function array_filter;
 use function explode;
 use function view;
 
@@ -54,7 +55,7 @@ class TomSelectIndividual extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
@@ -64,7 +65,8 @@ class TomSelectIndividual extends AbstractTomSelectHandler
         if ($individual instanceof Individual) {
             $results = new Collection([$individual]);
         } else {
-            $results = $this->search_service->searchIndividualNames([$tree], explode(' ', $query), $offset, $limit);
+            $search  = array_filter(explode(' ', $query));
+            $results = $this->search_service->searchIndividualNames([$tree], $search, $offset, $limit);
         }
 
         return $results->map(static function (Individual $individual) use ($at): array {

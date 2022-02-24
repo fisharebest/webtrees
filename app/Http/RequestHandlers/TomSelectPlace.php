@@ -48,7 +48,7 @@ class TomSelectPlace extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
@@ -57,7 +57,7 @@ class TomSelectPlace extends AbstractTomSelectHandler
             ->map(static function (Place $place): array {
                 return [
                     'text'  => $place->gedcomName(),
-                    'value' => $place->id(),
+                    'value' => (string) $place->id(),
                 ];
             });
     }

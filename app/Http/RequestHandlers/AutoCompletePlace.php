@@ -35,10 +35,10 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
     private ModuleService $module_service;
 
     /**
-     * @param SearchService $search_service
      * @param ModuleService $module_service
+     * @param SearchService $search_service
      */
-    public function __construct(SearchService $search_service, ModuleService $module_service)
+    public function __construct(ModuleService $module_service, SearchService $search_service)
     {
         parent::__construct($search_service);
 

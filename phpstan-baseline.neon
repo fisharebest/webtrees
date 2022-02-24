@@ -1001,7 +1001,7 @@ parameters:
 			path: app/Http/RequestHandlers/SynchronizeTrees.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\TomSelectPlace\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, array\\<string, string\\>\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\TomSelectPlace\\:\\:search\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, array\\{text\\: string, value\\: string\\}\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Place\\>\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/TomSelectPlace.php
 

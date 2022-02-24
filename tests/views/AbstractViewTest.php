@@ -87,11 +87,6 @@ abstract class AbstractViewTest extends TestCase
         $doc = new DOMDocument();
         $doc->validateOnParse = true;
 
-        try {
-            self::assertTrue($doc->loadXML($xml, LIBXML_PEDANTIC), $html);
-        } catch (Exception $ex) {
-            echo $html, PHP_EOL;
-            self::assertTrue(false);
-        }
+        self::assertTrue($doc->loadXML($xml, LIBXML_PEDANTIC), $html);
     }
 }

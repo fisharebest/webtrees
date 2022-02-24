@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function array_filter;
+use function explode;
 use function view;
 
 /**
@@ -54,7 +56,7 @@ class TomSelectSubmitter extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
@@ -64,7 +66,8 @@ class TomSelectSubmitter extends AbstractTomSelectHandler
         if ($submitter instanceof Submitter) {
             $results = new Collection([$submitter]);
         } else {
-            $results = $this->search_service->searchSubmitters([$tree], [$query], $offset, $limit);
+            $search  = array_filter(explode(' ', $query));
+            $results = $this->search_service->searchSubmitters([$tree], $search, $offset, $limit);
         }
 
         return $results->map(static function (Submitter $submitter) use ($at): array {

@@ -61,9 +61,8 @@ class CalendarPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $view     = Validator::attributes($request)->string('view');
+        $tree     = Validator::attributes($request)->tree();
+        $view     = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
         $cal      = $request->getQueryParams()['cal'] ?? '';
         $day      = $request->getQueryParams()['day'] ?? '';
         $month    = $request->getQueryParams()['month'] ?? '';

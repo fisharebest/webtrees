@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Services\SearchService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function array_filter;
+use function explode;
 use function view;
 
 /**
@@ -54,7 +56,7 @@ class TomSelectRepository extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
@@ -64,7 +66,8 @@ class TomSelectRepository extends AbstractTomSelectHandler
         if ($repository instanceof Repository) {
             $results = new Collection([$repository]);
         } else {
-            $results = $this->search_service->searchRepositories([$tree], [$query], $offset, $limit);
+            $search  = array_filter(explode(' ', $query));
+            $results = $this->search_service->searchRepositories([$tree], $search, $offset, $limit);
         }
 
         return $results->map(static function (Repository $repository) use ($at): array {
