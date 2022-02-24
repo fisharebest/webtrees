@@ -169,7 +169,7 @@ class CalendarEvents implements RequestHandlerInterface
         $week_start    = (I18N::locale()->territory()->firstDay() + 6) % 7;
         $weekend_start = (I18N::locale()->territory()->weekendStart() + 6) % 7;
         $weekend_end   = (I18N::locale()->territory()->weekendEnd() + 6) % 7;
-        
+
         // The French calendar has a 10-day week, which starts on primidi.
         if ($days_in_week === 10) {
             $week_start    = 0;

@@ -856,11 +856,6 @@ parameters:
 			path: app/Http/RequestHandlers/PhpInformation.php
 
 		-
-			message: "#^Property Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\RedirectStatisticsPhp\\:\\:\\$statistics_chart_module is unused\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/RedirectStatisticsPhp.php
-
-		-
 			message: "#^Argument of an invalid type array\\<string\\>\\|string supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ReportSetupPage.php
