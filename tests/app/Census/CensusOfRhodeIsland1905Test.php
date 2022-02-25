@@ -58,30 +58,31 @@ class CensusOfRhodeIsland1905Test extends TestCase
         self::assertInstanceOf(CensusColumnNull::class, $columns[1]);
         self::assertInstanceOf(CensusColumnSurnameGivenNameInitial::class, $columns[2]);
         self::assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[3]);
-  /*  
-        self::assertInstanceOf(CensusColumnNull::class, $columns[2]);
-        self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
-        self::assertInstanceOf(CensusColumnSexMF::class, $columns[4]);
-        self::assertInstanceOf(CensusColumnNull::class, $columns[5]);
-        self::assertInstanceOf(CensusColumnAge::class, $columns[6]);
-        self::assertInstanceOf(CensusColumnConditionUs::class, $columns[7]);
-        self::assertInstanceOf(CensusColumnNull::class, $columns[8]);
-        self::assertInstanceOf(CensusColumnNull::class, $columns[9]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[4]);
+        self::assertInstanceOf(CensusColumnAge::class, $columns[5]);
+        self::assertInstanceOf(CensusColumnConditionUs::class, $columns[6]);
+        self::assertInstanceOf(CensusColumnBirthYear::class, $columns[7]);
+        self::assertInstanceOf(CensusColumnBirthMonthDay::class, $columns[8]);
+        self::assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[9]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[10]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[11]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[12]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[13]);
-        self::assertInstanceOf(CensusColumnBirthPlaceSimple::class, $columns[14]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[14]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[15]);
-        self::assertInstanceOf(CensusColumnFatherBirthPlaceSimple::class, $columns[16]);
-        self::assertInstanceOf(CensusColumnNull::class, $columns[17]);
-        self::assertInstanceOf(CensusColumnFatherBirthPlaceSimple::class, $columns[18]);
-        self::assertInstanceOf(CensusColumnNull::class, $columns[19]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[16]);
+        self::assertInstanceOf(CensusColumnFatherBirthPlaceSimple::class, $columns[17]);
+        self::assertInstanceOf(CensusColumnMotherBirthPlaceSimple::class, $columns[18]);
+        self::assertInstanceOf(CensusColumnOccupation::class, $columns[19]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[20]);
-        self::assertInstanceOf(CensusColumnOccupation::class, $columns[21]);
-        self::assertInstanceOf(CensusColumnNull::class, $columns[22]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[21]);
+        self::assertInstanceOf(CensusColumnReligion::class, $columns[22]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[23]);
-
+        self::assertInstanceOf(CensusColumnNull::class, $columns[24]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[25]);
+        self::assertInstanceOf(CensusColumnChildrenBornAlive::class, $columns[26]);
+        self::assertInstanceOf(CensusColumnChildrenLiving::class, $columns[27]);
+ /*  
         self::assertSame('Name', $columns[0]->abbreviation());
         self::assertSame('Relation', $columns[1]->abbreviation());
         self::assertSame('Home', $columns[2]->abbreviation());
