@@ -111,30 +111,35 @@ class CensusOfRhodeIsland1905Test extends TestCase
         self::assertSame('Vtr', $columns[25]->abbreviation());
         self::assertSame('Chil born', $columns[26]->abbreviation());
         self::assertSame('Chil liv', $columns[27]->abbreviation());
-/*
-        self::assertSame('Name', $columns[0]->title());
-        self::assertSame('Relationship of each person to the head of the family', $columns[1]->title());
-        self::assertSame('Owned or rented', $columns[2]->title());
-        self::assertSame('If owned, free or mortgaged', $columns[3]->title());
-        self::assertSame('Sex', $columns[4]->title());
-        self::assertSame('Color or race', $columns[5]->title());
-        self::assertSame('Age at last birthday', $columns[6]->title());
-        self::assertSame('Whether single, married, widowed, or divorced', $columns[7]->title());
-        self::assertSame('Year of immigration to the United States', $columns[8]->title());
-        self::assertSame('Naturalized or alien', $columns[9]->title());
-        self::assertSame('If naturalized, year of naturalization', $columns[10]->title());
-        self::assertSame('Attended school since Sept. 1, 1919', $columns[11]->title());
-        self::assertSame('Whether able to read', $columns[12]->title());
-        self::assertSame('Whether able to write', $columns[13]->title());
-        self::assertSame('Place of birth', $columns[14]->title());
-        self::assertSame('Mother tongue', $columns[15]->title());
-        self::assertSame('Place of birth of father', $columns[16]->title());
-        self::assertSame('Mother tongue of father', $columns[17]->title());
-        self::assertSame('Place of birth of mother', $columns[18]->title());
-        self::assertSame('Mother tongue of mother', $columns[19]->title());
-        self::assertSame('Whether able to speak English', $columns[20]->title());
-        self::assertSame('Trade, profession, or particular kind of work done', $columns[21]->title());
-        self::assertSame('Industry, business of establishment in which at work', $columns[22]->title());
-        self::assertSame('Employer, salary or wage worker, or work on own account', $columns[23]->title()); */
+
+        self::assertSame('Sex', $columns[0]->title());
+        self::assertSame('Number of people in the family', $columns[1]->title());
+        self::assertSame('Name', $columns[2]->title());
+        self::assertSame('Relationship to head of household', $columns[3]->title());
+        self::assertSame('Color or race', $columns[4]->title());
+        self::assertSame('Age at last birthday', $columns[5]->title());
+        self::assertSame('Congugal Condition', $columns[6]->title());
+        self::assertSame('Year of Birth', $columns[7]->title());
+        self::assertSame('Month Day', $columns[8]->title());
+        self::assertSame('Place of birth', $columns[9]->title());
+        self::assertSame('Native or Foreign Born', $columns[10]->title());
+        self::assertSame('Read', $columns[11]->title());
+        self::assertSame('Write', $columns[12]->title());
+        self::assertSame('Year of immigration to the United States', $columns[13]->title());
+        self::assertSame('Years in US', $columns[14]->title());
+        self::assertSame('Years resident of Rhode Island', $columns[15]->title());
+        self::assertSame('Months in current year as a Rhode Island resident', $columns[16]->title());
+        self::assertSame('Place of birth of father of this person', $columns[17]->title());
+        self::assertSame('Place of birth of mother of this person', $columns[18]->title());
+        self::assertSame('Occupation', $columns[19]->title());
+        self::assertSame('Months unemployed during Census Year', $columns[20]->title());
+        self::assertSame('Did you receive a pension', $columns[21]->title());
+        self::assertSame('Religious preference', $columns[22]->title());
+        self::assertSame('Military or widow of military', $columns[23]->title()); 
+        self::assertSame('Naturalization information', $columns[24]->title());
+        self::assertSame('Voter information', $columns[25]->title());
+        self::assertSame('Mother of how many children', $columns[26]->title());
+        self::assertSame('Number of these children living on June 1 1905', $columns[27]->title());
+        
     }
 }
