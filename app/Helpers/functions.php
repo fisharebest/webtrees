@@ -17,9 +17,7 @@
 
 declare(strict_types=1);
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session as WebtreesSession;
 use Fisharebest\Webtrees\Validator;
@@ -28,7 +26,6 @@ use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\StreamFactoryInterface;
 
 /**
  * Get the IoC container, or fetch something from it.
@@ -56,7 +53,7 @@ function app(string $abstract = null)
  */
 function asset(string $path): string
 {
-    if (substr($path, -1) === '/') {
+    if (str_ends_with($path, '/')) {
         $version = '';
     } elseif (Webtrees::STABILITY === '') {
         $version = '?v=' . Webtrees::VERSION;
