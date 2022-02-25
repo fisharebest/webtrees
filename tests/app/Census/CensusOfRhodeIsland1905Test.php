@@ -58,7 +58,6 @@ class CensusOfRhodeIsland1905Test extends TestCase
         self::assertInstanceOf(CensusColumnNull::class, $columns[1]);
         self::assertInstanceOf(CensusColumnSurnameGivenNameInitial::class, $columns[2]);
         self::assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[3]);
-
   /*  
         self::assertInstanceOf(CensusColumnNull::class, $columns[2]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
