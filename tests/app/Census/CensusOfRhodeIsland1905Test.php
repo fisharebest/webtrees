@@ -139,7 +139,6 @@ class CensusOfRhodeIsland1905Test extends TestCase
         self::assertSame('Naturalization information', $columns[24]->title());
         self::assertSame('Voter information', $columns[25]->title());
         self::assertSame('Mother of how many children', $columns[26]->title());
-        self::assertSame('Number of these children living on June 1 1905', $columns[27]->title());
-        
+        self::assertSame('Number of these children living on June 1 1905', $columns[27]->title());        
     }
 }
