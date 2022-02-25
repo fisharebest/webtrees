@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Show a form to create a new media object.
@@ -52,9 +50,7 @@ class CreateMediaObjectModal implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree            = Validator::attributes($request)->tree();
         $max_upload_size = $this->media_file_service->maxUploadFilesize();
         $media_types     = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
         $data_filesystem = Registry::filesystem()->data();

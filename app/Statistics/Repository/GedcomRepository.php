@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Exception;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Header;
@@ -144,7 +143,7 @@ class GedcomRepository implements GedcomRepositoryInterface
             $fact = $head->facts(['DATE'])->first();
 
             if ($fact instanceof Fact) {
-                return Carbon::make($fact->value())->local()->isoFormat('LL');
+                return Registry::timestampFactory()->fromString($fact->value(), 'j M Y')->isoFormat('LL');
             }
         }
 
@@ -167,7 +166,7 @@ class GedcomRepository implements GedcomRepositoryInterface
             return $this->gedcomDate();
         }
 
-        return Carbon::make($row->change_time)->local()->isoFormat('LL');
+        return Registry::timestampFactory()->fromString($row->change_time)->isoFormat('LL');
     }
 
     /**

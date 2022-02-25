@@ -10,162 +10,130 @@ use Fisharebest\Webtrees\I18N;
 ?>
 
 <div class="py-4">
-    <div class="row gchart osm-wrapper">
-        <div id="osm-map" class="col-sm-9 wt-ajax-load osm-user-map" dir="ltr"></div>
-        <ul class="col-sm-3 osm-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
+    <div class="row gchart wt-places-tab-wrapper">
+        <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-places-tab-map" dir="ltr"></div>
+        <ul class="col-sm-3 wt-places-tab-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
     </div>
 </div>
 
-<style>
-    .osm-wrapper, .osm-user-map {
-        height: 70vh
-    }
-
-    .osm-sidebar {
-        height: 100%;
-        overflow-y: auto;
-        font-size: small;
-    }
-</style>
-
 <script>
-    "use strict";
+  'use strict';
 
-    window.WT_OSM = (function() {
-        const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
+  (function () {
+    const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
 
-        let map       = null;
-        let sidebar   = $('.osm-sidebar');
+    let map       = null;
+    const sidebar = document.querySelector('.wt-places-tab-sidebar');
 
-        // Map components
-        let markers = L.markerClusterGroup({
-            showCoverageOnHover: false,
-        });
+    const scrollOptions = {
+      behavior: "smooth",
+      block: "start",
+      inline: "start"
+    };
 
-        let resetControl = L.Control.extend({
-            options: {
-                position: "topleft",
-            },
-            onAdd: function(map) {
-                let container = L.DomUtil.create("div", "leaflet-bar leaflet-control leaflet-control-custom");
-                container.onclick = function() {
-                    map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
-                    sidebar.scrollTo(sidebar.children(":first"));
+    // Map components
+    let markers = L.markerClusterGroup({
+        showCoverageOnHover: false,
+    });
 
-                    return false;
-                };
-                let reset    = config.i18n.reset;
-                let anchor   = L.DomUtil.create('a', 'leaflet-control-reset', container);
-                anchor.setAttribute('aria-label', reset);
-                anchor.href  = '#';
-                anchor.title = reset;
-                anchor.role  = 'button';
-                let image    = L.DomUtil.create('i', 'fas fa-redo', anchor);
-                image.alt    = reset;
+    /**
+     * Passed to resetControl to
+     * perform necessary reset actions on map
+     */
+      let resetCallback = function () {
+      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
+      sidebar.firstElementChild.scrollIntoView(scrollOptions);
+    }
 
-                return container;
-            },
-        });
+    /**
+     *
+     * @private
+     */
+    let _drawMap = function() {
+      map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback);
+    };
 
-        /**
-         *
-         * @private
-         */
-        let _drawMap = function() {
-            map = webtrees.buildLeafletJsMap('osm-map', config)
-                .addControl(new resetControl());
-        };
+    /**
+     *
+     * @private
+     */
+    let _buildMapData = function() {
+      let data = <?= json_encode($data, JSON_THROW_ON_ERROR) ?>;
 
-        /**
-         *
-         * @private
-         */
-        let _buildMapData = function() {
-            let sidebar_content = "";
-            let data            = <?= json_encode($data, JSON_THROW_ON_ERROR) ?>;
-
-            if (data.features.length === 0) {
-                map.fitWorld();
-                sidebar_content += '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show'), JSON_THROW_ON_ERROR) ?> + '</div>';
-            } else {
-                let geoJsonLayer = L.geoJson(data, {
-                    pointToLayer: function(feature, latlng) {
-                        return new L.Marker(latlng, {
-                            icon: L.BeautifyIcon.icon({
-                                icon           : feature.properties.icon["name"],
-                                borderColor    : "transparent",
-                                backgroundColor: feature.properties.icon["color"],
-                                iconShape      : "marker",
-                                textColor      : "white",
-                            }),
-                            title: feature.properties.tooltip,
-                            alt  : feature.properties.tooltip,
-                            id   : feature.id,
-                        })
-                        .on("popupopen", function(e) {
-                            let item = sidebar.children(".gchart[data-wt-feature-id=" + e.target.feature.id + "]");
-                            item.addClass("messagebox");
-                            sidebar.scrollTo(item);
-                        })
-                        .on("popupclose", function() {
-                            sidebar.children(".gchart")
-                                .removeClass("messagebox");
-                        });
-                    },
-                    onEachFeature: function(feature, layer) {
-                        layer.bindPopup(feature.properties.summary);
-                        sidebar_content += `<li class="gchart px-md-2" data-wt-feature-id=${feature.id}>${feature.properties.summary}</li>`;
-                    },
-                });
-                markers.addLayer(geoJsonLayer);
-                map.addLayer(markers);
-                map.fitBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
-            }
-            sidebar.append(sidebar_content);
-        };
-
-        /**
-         * @param   elem
-         * @returns {$}
-         */
-        $.fn.scrollTo = function(elem) {
-            let _this = $(this);
-            _this.animate({
-                scrollTop: elem.offset().top - _this.offset().top + _this.scrollTop(),
-            });
-            return this;
-        };
-
-        // Activate marker popup when sidebar entry clicked
-        $(function() {
-            sidebar
-            // open marker popup if sidebar event is clicked
-            .on('click', '.gchart', function(e) {
-                // first close any existing
-                map.closePopup();
-                let eventId = $(this).data('id');
-                //find the marker corresponding to the clicked event
-                let mkrLayer = markers.getLayers().filter(function(v) {
-                    return typeof(v.feature) !== 'undefined' && v.feature.id === eventId;
-                });
-                let mkr = mkrLayer.pop();
-                // Unfortunately zoomToShowLayer zooms to maxZoom
-                // when all marker in a cluster have exactly the
-                // same co-ordinates
-                markers.zoomToShowLayer(mkr, function(e) {
-                    mkr.openPopup();
-                });
-
-                return false;
+      if (data.features.length === 0) {
+        map.fitWorld();
+        sidebar.innerHTML = '<div class="bg-info text-white text-center">' + <?= json_encode(I18N::translate('Nothing to show'), JSON_THROW_ON_ERROR) ?> + '</div>';
+      } else {
+        sidebar.innerHTML = '';
+        let geoJsonLayer = L.geoJson(data, {
+          pointToLayer: function(feature, latlng) {
+            return new L.Marker(latlng, {
+              icon: L.BeautifyIcon.icon({
+                icon           : feature.properties.icon["name"],
+                borderColor    : "transparent",
+                backgroundColor: feature.properties.icon["color"],
+                iconShape      : "marker",
+                textColor      : "white",
+              }),
+              title: feature.properties.tooltip,
+              alt  : feature.properties.tooltip,
+              id   : feature.id,
             })
-            .on('click', 'a', function(e) { // stop click on a person also opening the popup
-                e.stopPropagation();
+            .on("popupopen", function(e) {
+              let item = document.querySelector('.gchart[data-wt-feature-id="' + e.target.feature.id + '"]');
+              item.classList.add('messagebox');
+              item.scrollIntoView(scrollOptions);
+            })
+            .on("popupclose", function() {
+              sidebar.childNodes.forEach(e => e.classList.remove('messagebox'));
+              sidebar.firstElementChild.scrollIntoView(scrollOptions);
             });
+          },
+          onEachFeature: function(feature, layer) {
+              layer.bindPopup(feature.properties.summary);
+              sidebar.innerHTML += `<li class="gchart px-md-2" data-wt-feature-id=${feature.id}>${feature.properties.summary}</li>`;
+          },
+        });
+        markers.addLayer(geoJsonLayer);
+        map.addLayer(markers);
+        map.fitBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
+      }
+    };
+
+    // Can't use window.onload here. seems to be because of AJAX loading
+    const _loadListeners = function() {
+      // Activate marker popup when sidebar entry clicked
+      sidebar.querySelectorAll('.gchart').forEach((element) => {
+        var eventId = parseInt(element.dataset.wtFeatureId);
+
+        element.addEventListener('click', () => {
+          // first close any existing
+          map.closePopup();
+          //find the marker corresponding to the clicked event
+          let mkrLayer = markers.getLayers().filter(function (v) {
+            return v.feature !== undefined && v.feature.id === eventId;
+          });
+
+          let mkr = mkrLayer.pop();
+
+          markers.zoomToShowLayer(mkr, function (e) {
+            mkr.openPopup();
+          });
+
+          return false;
         });
 
-        _drawMap();
-        _buildMapData();
+        // stop click on a person also opening the popup
+        element.querySelectorAll('a').forEach((el) => {
+          el.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+        });
+      });
+    }
 
-        return "Leaflet map interface for webtrees-2";
-    })();
+    _drawMap();
+    _buildMapData();
+    _loadListeners();
+  })();
 </script>

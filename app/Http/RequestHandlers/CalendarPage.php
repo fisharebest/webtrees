@@ -24,12 +24,10 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Services\LocalizationService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Show anniversaries for events in a given day/month/year.
@@ -63,10 +61,8 @@ class CalendarPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $view     = $request->getAttribute('view');
+        $tree     = Validator::attributes($request)->tree();
+        $view     = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
         $cal      = $request->getQueryParams()['cal'] ?? '';
         $day      = $request->getQueryParams()['day'] ?? '';
         $month    = $request->getQueryParams()['month'] ?? '';
@@ -121,13 +117,13 @@ class CalendarPage implements RequestHandlerInterface
 
         switch ($view) {
             case 'day':
-                $title = I18N::translate('On this day…') . ' ' . $ged_date->display(false);
+                $title = I18N::translate('On this day…') . ' ' . $ged_date->display($tree);
                 break;
             case 'month':
-                $title = I18N::translate('In this month…') . ' ' . $ged_date->display(false, '%F %Y');
+                $title = I18N::translate('In this month…') . ' ' . $ged_date->display($tree, '%F %Y');
                 break;
             case 'year':
-                $title = I18N::translate('In this year…') . ' ' . $ged_date->display(false, '%Y');
+                $title = I18N::translate('In this year…') . ' ' . $ged_date->display($tree, '%Y');
                 break;
         }
 

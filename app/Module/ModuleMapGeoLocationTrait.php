@@ -39,6 +39,13 @@ use const JSON_THROW_ON_ERROR;
 trait ModuleMapGeoLocationTrait
 {
     /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
      * A sentence describing what this module does.
      *
      * @return string

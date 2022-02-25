@@ -7,12 +7,12 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Tree>  $all_trees
- * @var array<int,string> $ancestors_options
- * @var string            $default_ancestors
- * @var string            $default_recursion
- * @var array<int,string> $recursion_options
- * @var string            $title
+ * @var Collection<int,Tree> $all_trees
+ * @var array<int,string>    $ancestors_options
+ * @var string               $default_ancestors
+ * @var string               $default_recursion
+ * @var array<int,string>    $recursion_options
+ * @var string               $title
  */
 
 ?>
@@ -28,7 +28,7 @@ use Illuminate\Support\Collection;
     <?= csrf_field() ?>
     <?php foreach ($all_trees as $tree) : ?>
         <h2><?= e($tree->title()) ?></h2>
-        <div class="row form-group">
+        <div class="row form-group mb-3">
             <label class="col-sm-3 col-form-label" for="relationship-ancestors-<?= $tree->id() ?>">
                 <?= /* I18N: Configuration option */
                 I18N::translate('Relationships') ?>
@@ -38,7 +38,7 @@ use Illuminate\Support\Collection;
             </div>
         </div>
 
-        <fieldset class="row form-group">
+        <fieldset class="row form-group mb-3">
             <legend class="col-form-label col-sm-3">
                 <?= /* I18N: Configuration option */
                 I18N::translate('How much recursion to use when searching for relationships') ?>
@@ -49,7 +49,7 @@ use Illuminate\Support\Collection;
         </fieldset>
     <?php endforeach ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>

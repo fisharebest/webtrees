@@ -22,12 +22,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\HomePageService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function route;
 
 /**
@@ -54,17 +53,17 @@ class TreePageBlockEdit implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree     = Validator::attributes($request)->tree();
+        $block_id = Validator::attributes($request)->integer('block_id');
 
-        $block_id = (int) $request->getQueryParams()['block_id'];
-        $block    = $this->home_page_service->treeBlock($request);
-        $title    = $block->title() . ' — ' . I18N::translate('Preferences');
+        $block = $this->home_page_service->treeBlock($request);
+        $title = $block->title() . ' — ' . I18N::translate('Preferences');
 
         return $this->viewResponse('modules/edit-block-config', [
             'block'      => $block,
             'block_id'   => $block_id,
             'cancel_url' => route(TreePage::class, ['tree' => $tree->name()]),
+            'save_url'   => route(TreePageBlockUpdate::class, ['tree' => $tree->name(), 'block_id' => $block_id]),
             'title'      => $title,
             'tree'       => $tree,
         ]);

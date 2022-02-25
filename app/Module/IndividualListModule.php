@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -120,14 +121,17 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     }
 
     /**
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
-        $xref = app(ServerRequestInterface::class)->getAttribute('xref', '');
+        $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
+
+        $xref = Validator::attributes($request)->isXref()->string('xref', '');
 
         if ($xref !== '') {
             $individual = Registry::individualFactory()->make($xref, $tree);
@@ -161,7 +165,9 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect($this->listUrl($request->getAttribute('tree'), $request->getQueryParams()));
+        $tree = Validator::attributes($request)->tree();
+
+        return redirect($this->listUrl($tree, $request->getQueryParams()));
     }
 
     /**
@@ -171,11 +177,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 

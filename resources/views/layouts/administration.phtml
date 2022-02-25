@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\Logout;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
@@ -12,8 +11,10 @@ use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\View;
 
-/** @var string $title */
-/** @var string $content */
+/**
+ * @var string $title
+ * @var string $content
+ */
 
 ?>
 
@@ -36,8 +37,6 @@ use Fisharebest\Webtrees\View;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
     return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->headContent();
         })->implode('') ?>
-
-        <?= DebugBar::renderHead() ?>
     </head>
     <body class="container-lg wt-global wt-control-panel">
         <header>
@@ -68,17 +67,18 @@ use Fisharebest\Webtrees\View;
             </ul>
         </header>
 
-        <div id="content"></div>
+        <main id="content">
+            <?php foreach (FlashMessages::getMessages() as $message) : ?>
+                <div class="alert alert-<?= $message->status ?> alert-dismissible" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
+                    </button>
+                    <?= $message->text ?>
+                </div>
+            <?php endforeach ?>
 
-        <?php foreach (FlashMessages::getMessages() as $message) : ?>
-            <div class="alert alert-<?= $message->status ?> alert-dismissible" role="alert">
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= I18N::translate('close') ?>">
-                </button>
-                <?= $message->text ?>
-            </div>
-        <?php endforeach ?>
+            <?= $content ?>
+        </main>
 
-        <?= $content ?>
 
         <script src="<?= e(asset('js/vendor.min.js')) ?>"></script>
         <script src="<?= e(asset('js/webtrees.min.js')) ?>"></script>
@@ -88,7 +88,5 @@ use Fisharebest\Webtrees\View;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
     return $module instanceof ModuleCustomInterface || $module instanceof CustomCssJsModule ? '' : $module->bodyContent();
         })->implode('') ?>
-
-        <?= DebugBar::render() ?>
     </body>
 </html>

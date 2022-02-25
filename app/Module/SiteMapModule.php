@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Collection;
@@ -131,7 +132,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
+    public function getAdminAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -188,8 +189,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $route = $request->getAttribute('route');
-        assert($route instanceof Route);
+        $route = Validator::attributes($request)->route();
 
         if ($route->name === 'sitemap-style') {
             $content = view('modules/sitemap/sitemap-xsl');
@@ -211,7 +211,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      *
      * @return ResponseInterface
      */
-    private function siteMapIndex(ServerRequestInterface $request): ResponseInterface
+    private function siteMapIndex(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $content = Registry::cache()->file()->remember('sitemap.xml', function (): string {
             // Which trees have sitemaps enabled?
@@ -305,11 +305,9 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      */
     private function siteMapFile(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $type = $request->getAttribute('type');
-        $page = (int) $request->getAttribute('page');
+        $tree = Validator::attributes($request)->tree('tree');
+        $type = Validator::attributes($request)->string('type');
+        $page = Validator::attributes($request)->integer('page');
 
         if ($tree->getPreference('include_in_sitemap') !== '1') {
             throw new HttpNotFoundException();
@@ -339,7 +337,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int    $limit
      * @param int    $offset
      *
-     * @return Collection<GedcomRecord>
+     * @return Collection<int,GedcomRecord>
      */
     private function sitemapRecords(Tree $tree, string $type, int $limit, int $offset): Collection
     {
@@ -389,7 +387,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     private function sitemapFamilies(Tree $tree, int $limit, int $offset): Collection
     {
@@ -407,7 +405,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
     private function sitemapIndividuals(Tree $tree, int $limit, int $offset): Collection
     {
@@ -425,7 +423,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection<Media>
+     * @return Collection<int,Media>
      */
     private function sitemapMedia(Tree $tree, int $limit, int $offset): Collection
     {
@@ -443,7 +441,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection<Note>
+     * @return Collection<int,Note>
      */
     private function sitemapNotes(Tree $tree, int $limit, int $offset): Collection
     {
@@ -462,7 +460,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection<Repository>
+     * @return Collection<int,Repository>
      */
     private function sitemapRepositories(Tree $tree, int $limit, int $offset): Collection
     {
@@ -481,7 +479,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection<Source>
+     * @return Collection<int,Source>
      */
     private function sitemapSources(Tree $tree, int $limit, int $offset): Collection
     {
@@ -499,7 +497,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
      * @param int  $limit
      * @param int  $offset
      *
-     * @return Collection<Submitter>
+     * @return Collection<int,Submitter>
      */
     private function sitemapSubmitters(Tree $tree, int $limit, int $offset): Collection
     {

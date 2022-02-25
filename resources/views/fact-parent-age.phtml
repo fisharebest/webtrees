@@ -1,0 +1,44 @@
+<?php
+
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var Age    $age
+ * @var bool   $died
+ * @var string $sex
+ */
+
+?>
+
+<?php if ($sex === 'F') : ?>
+    <?php if ($died) : ?>
+        <span title="<?= I18N::translate('Death of a mother') ?>" class="parentdeath">
+            <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
+        </span>
+    <?php else : ?>
+        <span title="<?= I18N::translate('Mother’s age') ?>">
+            <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
+        </span>
+    <?php endif ?>
+<?php elseif ($sex === 'M') : ?>
+    <?php if ($died) : ?>
+        <span title="<?= I18N::translate('Death of a father') ?>" class="parentdeath">
+            <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
+        </span>
+    <?php else : ?>
+        <span title="<?= I18N::translate('Father’s age') ?>">
+            <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
+        </span>
+    <?php endif ?>
+<?php else : ?>
+    <?php if ($died) : ?>
+        <span title="<?= I18N::translate('Death of a parent') ?>" class="parentdeath">
+            <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
+        </span>
+    <?php else : ?>
+        <span title="<?= I18N::translate('Parent’s age') ?>">
+            <small><?= view('icons/sex', ['sex' => $sex]) ?></small><?= I18N::number($age->ageYears()) ?>
+        </span>
+    <?php endif ?>
+<?php endif ?>

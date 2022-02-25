@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Elements\ResearchTask;
 use Fisharebest\Webtrees\Elements\TransmissionDate;
 use Fisharebest\Webtrees\Elements\WebtreesUser;
@@ -35,6 +34,8 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
+use const PHP_INT_MAX;
 
 /**
  * Class ResearchTaskModule
@@ -80,10 +81,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -95,7 +96,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $end_jd      = $show_future ? Carbon::maxValue()->julianDay() : Carbon::now()->julianDay();
+        $end_jd      = $show_future ? PHP_INT_MAX : Registry::timestampFactory()->now()->julianDay();
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 
@@ -147,7 +148,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $max_julian_day
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
     private function individualsWithTasks(Tree $tree, int $max_julian_day): Collection
     {
@@ -171,7 +172,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      * @param Tree $tree
      * @param int  $max_julian_day
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     private function familiesWithTasks(Tree $tree, int $max_julian_day): Collection
     {

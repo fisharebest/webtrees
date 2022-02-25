@@ -8,6 +8,7 @@ use Fisharebest\Webtrees\Tree;
  * @var ModuleBlockInterface $block
  * @var int                  $block_id
  * @var string               $cancel_url
+ * @var string               $save_url
  * @var string               $title
  * @var Tree                 $tree
  */
@@ -22,13 +23,12 @@ use Fisharebest\Webtrees\Tree;
     <?= $block->description() ?>
 </p>
 
-<form method="post">
-    <input type="hidden" name="save" value="1">
+<form method="post" action="<?= e($save_url) ?>">
     <?= csrf_field() ?>
 
     <?= $block->editBlockConfiguration($tree, $block_id) ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>

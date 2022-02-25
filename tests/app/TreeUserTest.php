@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 
 /**
@@ -39,9 +40,10 @@ class TreeUserTest extends TestCase
      */
     public function testConstructor(): void
     {
-        $tree_service = new TreeService();
-        $tree         = $tree_service->create('name', 'title');
-        $user         = new TreeUser($tree);
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $user                  = new TreeUser($tree);
 
         self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
@@ -57,9 +59,10 @@ class TreeUserTest extends TestCase
      */
     public function testPreferences(): void
     {
-        $tree_service = new TreeService();
-        $tree         = $tree_service->create('name', 'title');
-        $user         = new TreeUser($tree);
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $user                  = new TreeUser($tree);
 
         self::assertSame('', $user->getPreference('foo'));
         self::assertSame('', $user->getPreference('foo'));

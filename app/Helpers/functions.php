@@ -21,6 +21,7 @@ use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\Session as WebtreesSession;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\View as WebtreesView;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -62,7 +63,10 @@ function asset(string $path): string
         $version = '?v=' . filemtime(Webtrees::ROOT_DIR . 'public/' . $path);
     }
 
-    $base_url = app(ServerRequestInterface::class)->getAttribute('base_url');
+    $request = app(ServerRequestInterface::class);
+    assert($request instanceof ServerRequestInterface);
+
+    $base_url = Validator::attributes($request)->string('base_url');
 
     return $base_url . '/public/' . $path . $version;
 }
@@ -153,17 +157,22 @@ function response($content = '', int $code = StatusCodeInterface::STATUS_OK, arr
 /**
  * Generate a URL for a named route.
  *
- * @param string                            $route_name
- * @param array<bool|int|string|array|null> $parameters
+ * @param string                                    $route_name
+ * @param array<bool|int|string|array<string>|null> $parameters
  *
  * @return string
  */
 function route(string $route_name, array $parameters = []): string
 {
-    $request          = app(ServerRequestInterface::class);
-    $base_url         = $request->getAttribute('base_url');
+    $request = app(ServerRequestInterface::class);
+    assert($request instanceof ServerRequestInterface);
+
+    $base_url = Validator::attributes($request)->string('base_url');
+
     $router_container = app(RouterContainer::class);
-    $route            = $router_container->getMap()->getRoute($route_name);
+    assert($router_container instanceof RouterContainer);
+
+    $route = $router_container->getMap()->getRoute($route_name);
 
     // Generate the URL.
     $url = $router_container->getGenerator()->generate($route_name, $parameters);
@@ -173,7 +182,7 @@ function route(string $route_name, array $parameters = []): string
         return !str_contains($route->path, '{' . $key . '}') && !str_contains($route->path, '{/' . $key . '}');
     }, ARRAY_FILTER_USE_KEY);
 
-    if ($request->getAttribute('rewrite_urls') === '1') {
+    if (Validator::attributes($request)->boolean('rewrite_urls', false)) {
         // Make the pretty URL absolute.
         $base_path = parse_url($base_url, PHP_URL_PATH) ?? '';
         $url = $base_url . substr($url, strlen($base_path));

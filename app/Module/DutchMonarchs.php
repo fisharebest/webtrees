@@ -52,7 +52,7 @@ class DutchMonarchs extends AbstractModule implements ModuleHistoricEventsInterf
     /**
      * All events provided by this module.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection
     {

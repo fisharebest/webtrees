@@ -1,0 +1,149 @@
+<?php
+
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
+
+/**
+ * @var bool         $cal_link
+ * @var Fact         $fact
+ * @var GedcomRecord $record
+ * @var bool         $time
+ */
+
+$element_factory = Registry::elementFactory();
+
+$factrec = $fact->gedcom();
+$html    = '';
+
+// Recorded age
+if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
+    $fact_age = $element_factory->make($fact->tag() . ':AGE')->value($match[1], $record->tree());
+} else {
+    $fact_age = '';
+}
+
+if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match)) {
+    $husb_age = $element_factory->make($fact->tag() . ':HUSB:AGE')->value($match[1], $record->tree());
+} else {
+    $husb_age = '';
+}
+
+if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
+    $wife_age = $element_factory->make($fact->tag() . ':WIFE:AGE')->value($match[1], $record->tree());
+} else {
+    $wife_age = '';
+}
+
+// Calculated age
+[, $tag] = explode(':', $fact->tag());
+
+if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
+    $date = new Date($match[1]);
+    $html .= ' ' . $date->display($cal_link ? $record->tree() : null, null, true);
+    // Time isn't valid GEDCOM, but it is widely used.
+    if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match)) {
+        $html .= ' – <span class="date">' . $match[1] . '</span>';
+    }
+
+    if ($record instanceof Individual) {
+        if (
+            in_array($tag, Gedcom::BIRTH_EVENTS, true) &&
+            $record === $fact->record() &&
+            $record->tree()->getPreference('SHOW_PARENTS_AGE') === '1'
+        ) {
+            // age of parents at child birth
+            $html .= view('fact-parents-age', ['individual' => $record, 'birth_date' => $date]);
+        }
+
+        if ($tag !== 'BIRT' && $tag !== 'CHAN' && $tag !== '_TODO') {
+            // age at event
+            $birth_date = $record->getBirthDate();
+            // Can't use getDeathDate(), as this also gives BURI/CREM events, which
+            // wouldn't give the correct "days after death" result for people with
+            // no DEAT.
+            $death_event = $record->facts(['DEAT'])->first();
+            if ($death_event instanceof Fact) {
+                $death_date = $death_event->date();
+            } else {
+                $death_date = new Date('');
+            }
+            $ageText = '';
+
+            if ($tag === 'DEAT' || Date::compare($date, $death_date) <= 0 || !$record->isDead()) {
+                // Before death, print age
+                $age = (string) new Age($birth_date, $date);
+
+                // Only show calculated age if it differs from recorded age
+                if ($age !== '') {
+                    if (
+                        $fact_age !== '' && !str_starts_with($fact_age, $age) ||
+                        $fact_age === '' && $husb_age === '' && $wife_age === '' ||
+                        $husb_age !== '' && !str_starts_with($husb_age, $age) && $record->sex() === 'M' ||
+                        $wife_age !== '' && !str_starts_with($wife_age, $age) && $record->sex() === 'F'
+                    ) {
+                        switch ($record->sex()) {
+                            case 'M':
+                                /* I18N: The age of an individual at a given date */
+                                $ageText = I18N::translateContext('Male', '(aged %s)', $age);
+                                break;
+                            case 'F':
+                                /* I18N: The age of an individual at a given date */
+                                $ageText = I18N::translateContext('Female', '(aged %s)', $age);
+                                break;
+                            default:
+                                /* I18N: The age of an individual at a given date */
+                                $ageText = I18N::translate('(aged %s)', $age);
+                                break;
+                        }
+                    }
+                }
+            }
+
+            if ($tag !== 'DEAT' && $death_date->isOK() && Date::compare($death_date, $date) <= 0) {
+                $death_day = $death_date->minimumDate()->day();
+                $event_day = $date->minimumDate()->day();
+                if ($death_day !== 0 && $event_day !== 0 && Date::compare($death_date, $date) === 0) {
+                    // On the exact date of death?
+                    // NOTE: this path is never reached.  Keep the code (translation) in case
+                    // we decide to re-introduce it.
+                    $ageText = I18N::translate('(on the date of death)');
+                } else {
+                    // After death
+                    $age     = (string) new Age($death_date, $date);
+                    $ageText = I18N::translate('(%s after death)', $age);
+                }
+
+                // Family events which occur after death are probably errors
+                if ($fact->record() instanceof Family) {
+                    $ageText .= view('icons/warning');
+                }
+            }
+
+            if ($ageText !== '') {
+                $html .= ' <span class="age">' . $ageText . '</span>';
+            }
+        }
+    }
+}
+// print gedcom ages
+$age_labels = [
+    I18N::translate('Age')     => $fact_age,
+    I18N::translate('Husband') => $husb_age,
+    I18N::translate('Wife')    => $wife_age,
+];
+
+foreach (array_filter($age_labels) as $label => $age) {
+    $html .= ' <span class="label">' . $label . ':</span> <span class="age">' . $age . '</span>';
+}
+
+?>
+<div class="wt-fact-date-age">
+    <?= $html ?>
+</div>

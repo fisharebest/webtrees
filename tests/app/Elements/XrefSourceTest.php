@@ -55,7 +55,7 @@ class XrefSourceTest extends TestCase
 
         Registry::sourceFactory($factory);
 
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = self::createRequest();
 
         app()->instance(ServerRequestInterface::class, $request);
 

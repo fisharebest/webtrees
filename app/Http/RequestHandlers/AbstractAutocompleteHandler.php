@@ -67,7 +67,7 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
     /**
      * @param ServerRequestInterface $request
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     abstract protected function search(ServerRequestInterface $request): Collection;
 }

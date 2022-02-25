@@ -4,20 +4,20 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var string             $dbhost
- * @var string             $dbname
- * @var string             $dbpass
- * @var string             $dbport
- * @var string             $dbtype
- * @var string             $dbuser
- * @var Collection<string> $errors
- * @var string             $lang
- * @var string             $tblpfx
- * @var Collection<string> $warnings
- * @var string             $wtemail
- * @var string             $wtname
- * @var string             $wtpass
- * @var string             $wtuser
+ * @var string                 $dbhost
+ * @var string                 $dbname
+ * @var string                 $dbpass
+ * @var string                 $dbport
+ * @var string                 $dbtype
+ * @var string                 $dbuser
+ * @var Collection<int,string> $errors
+ * @var string                 $lang
+ * @var string                 $tblpfx
+ * @var Collection<int,string> $warnings
+ * @var string                 $wtemail
+ * @var string                 $wtname
+ * @var string                 $wtpass
+ * @var string                 $wtuser
  */
 
 ?>
@@ -49,7 +49,7 @@ use Illuminate\Support\Collection;
         <?= I18N::translate('You need to set up an administrator account. This account can control all aspects of this webtrees installation. Please choose a strong password.') ?>
     </p>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="wtname">
             <?= I18N::translate('Your name') ?>
         </label>
@@ -61,7 +61,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="wtuser">
             <?= I18N::translate('Username') ?>
         </label>
@@ -73,7 +73,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="wtpass">
             <?= I18N::translate('Password') ?>
         </label>
@@ -85,7 +85,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="wtemail">
             <?= I18N::translate('Email address') ?>
         </label>

@@ -25,12 +25,11 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function route;
 use function trim;
 
@@ -60,11 +59,9 @@ class AddNewFact implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref   = (string) $request->getAttribute('xref');
-        $subtag = (string) $request->getAttribute('fact');
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $subtag = Validator::attributes($request)->isTag()->string('fact');
 
         if ($subtag === 'OBJE' && !Auth::canUploadMedia($tree, Auth::user())) {
             throw new HttpAccessDeniedException();

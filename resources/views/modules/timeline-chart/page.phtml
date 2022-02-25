@@ -6,14 +6,14 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var string                 $ajax_url
- * @var Collection<Individual> $individuals
- * @var array<string,string>   $remove_urls
- * @var string                 $reset_url
- * @var string                 $title
- * @var Tree                   $tree
- * @var string                 $zoom_in_url
- * @var string                 $zoom_out_url
+ * @var string                     $ajax_url
+ * @var Collection<int,Individual> $individuals
+ * @var array<string,string>       $remove_urls
+ * @var string                     $reset_url
+ * @var string                     $title
+ * @var Tree                       $tree
+ * @var string                     $zoom_in_url
+ * @var string                     $zoom_out_url
  */
 
 ?>
@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-form-label col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
             <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */
@@ -46,7 +46,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-form-label col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
             <a href="<?= e($zoom_in_url) ?>" title="<?= I18N::translate('Zoom in') ?>">

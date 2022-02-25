@@ -24,9 +24,6 @@ namespace Fisharebest\Webtrees;
  */
 class Gedcom
 {
-    // Use MSDOS style line endings, for maximum compatibility.
-    public const EOL = "\r\n";
-
     // 255 less the EOL character.
     public const LINE_LENGTH = 253;
 
@@ -48,10 +45,7 @@ class Gedcom
     // Regular expression to match a GEDCOM XREF.
     public const REGEX_XREF = '[A-Za-z0-9:_.-]{1,20}';
 
-    // UTF-8 encoded files may begin with an optional byte-order-mark (U+FEFF).
-    public const UTF8_BOM = "\xEF\xBB\xBF";
-
-    // Separates parts of a place name.
+    // Separates the parts of a place name.
     public const PLACE_SEPARATOR = ', ';
 
     // Regex to match a (badly formed) GEDCOM place separator.

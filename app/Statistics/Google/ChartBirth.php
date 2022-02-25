@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use stdClass;
 
 use function count;
 use function view;
@@ -55,7 +56,7 @@ class ChartBirth
     /**
      * Returns the related database records.
      *
-     * @return Collection<object>
+     * @return Collection<array-key,stdClass>
      */
     private function queryRecords(): Collection
     {

@@ -23,6 +23,8 @@ use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Illuminate\Database\Capsule\Manager as DB;
 
+use function is_string;
+
 /**
  * Provide an interface to the wt_user table.
  */
@@ -235,7 +237,7 @@ class User implements UserInterface
             ->where('user_id', '=', $this->id())
             ->value('password');
 
-        if ($password_hash !== null && password_verify($password, $password_hash)) {
+        if (is_string($password_hash) && password_verify($password, $password_hash)) {
             if (password_needs_rehash($password_hash, PASSWORD_DEFAULT)) {
                 $this->setPassword($password);
             }

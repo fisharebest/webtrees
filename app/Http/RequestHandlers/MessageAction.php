@@ -26,13 +26,11 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function e;
 use function redirect;
 use function route;
@@ -67,18 +65,15 @@ class MessageAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user     = $request->getAttribute('user');
-        $params   = (array) $request->getParsedBody();
-        $body     = $params['body'];
-        $subject  = $params['subject'];
-        $to       = $params['to'];
+        $tree     = Validator::attributes($request)->tree();
+        $user     = Validator::attributes($request)->user();
+        $ip       = Validator::attributes($request)->string('client-ip');
+        $base_url = Validator::attributes($request)->string('base_url');
+        $body     = Validator::parsedBody($request)->string('body');
+        $subject  = Validator::parsedBody($request)->string('subject');
+        $to       = Validator::parsedBody($request)->string('to');
         $to_user  = $this->user_service->findByUserName($to);
-        $ip       = $request->getAttribute('client-ip');
-        $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $base_url;
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $base_url);
 
         if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'none') {
             throw new HttpAccessDeniedException('Invalid contact user id');

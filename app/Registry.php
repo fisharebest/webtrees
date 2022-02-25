@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
+use Fisharebest\Webtrees\Contracts\CalendarDateFactoryInterface;
+use Fisharebest\Webtrees\Contracts\EncodingFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
@@ -36,6 +38,7 @@ use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
+use Fisharebest\Webtrees\Contracts\TimestampFactoryInterface;
 use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
 
 /**
@@ -45,7 +48,11 @@ class Registry
 {
     private static CacheFactoryInterface $cache_factory;
 
+    private static CalendarDateFactoryInterface $calendar_date_factory;
+
     private static ElementFactoryInterface $element_factory;
+
+    private static EncodingFactoryInterface $encoding_factory;
 
     private static FamilyFactoryInterface $family_factory;
 
@@ -77,6 +84,8 @@ class Registry
 
     private static SubmitterFactoryInterface $submitter_factory;
 
+    private static TimestampFactoryInterface $timestamp_factory;
+
     private static XrefFactoryInterface $xref_factory;
 
     /**
@@ -98,6 +107,22 @@ class Registry
     /**
      * Store or retrieve a factory object.
      *
+     * @param CalendarDateFactoryInterface|null $factory
+     *
+     * @return CalendarDateFactoryInterface
+     */
+    public static function calendarDateFactory(CalendarDateFactoryInterface $factory = null): CalendarDateFactoryInterface
+    {
+        if ($factory instanceof CalendarDateFactoryInterface) {
+            self::$calendar_date_factory = $factory;
+        }
+
+        return self::$calendar_date_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
      * @param ElementFactoryInterface|null $factory
      *
      * @return ElementFactoryInterface
@@ -109,6 +134,22 @@ class Registry
         }
 
         return self::$element_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param EncodingFactoryInterface|null $factory
+     *
+     * @return EncodingFactoryInterface
+     */
+    public static function encodingFactory(EncodingFactoryInterface $factory = null): EncodingFactoryInterface
+    {
+        if ($factory instanceof EncodingFactoryInterface) {
+            self::$encoding_factory = $factory;
+        }
+
+        return self::$encoding_factory;
     }
 
     /**
@@ -349,6 +390,22 @@ class Registry
         }
 
         return self::$submitter_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param TimestampFactoryInterface|null $factory
+     *
+     * @return TimestampFactoryInterface
+     */
+    public static function timestampFactory(TimestampFactoryInterface $factory = null): TimestampFactoryInterface
+    {
+        if ($factory instanceof TimestampFactoryInterface) {
+            self::$timestamp_factory = $factory;
+        }
+
+        return self::$timestamp_factory;
     }
 
     /**

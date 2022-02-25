@@ -104,7 +104,7 @@ class ChartDistribution
      *
      * @param array<int|string,int> $places
      *
-     * @return array
+     * @return array<array<string>>
      */
     private function createChartData(array $places): array
     {
@@ -132,7 +132,7 @@ class ChartDistribution
     /**
      * Returns the google geochart data for birth fact.
      *
-     * @return array
+     * @return array<array<string>>
      */
     private function getBirthChartData(): array
     {
@@ -159,7 +159,7 @@ class ChartDistribution
     /**
      * Returns the google geochart data for death fact.
      *
-     * @return array
+     * @return array<array<string>>
      */
     private function getDeathChartData(): array
     {
@@ -186,7 +186,7 @@ class ChartDistribution
     /**
      * Returns the google geochart data for marriages.
      *
-     * @return array
+     * @return array<array<string>>
      */
     private function getMarriageChartData(): array
     {
@@ -237,7 +237,7 @@ class ChartDistribution
      *
      * @param string $surname The surname used to create the chart
      *
-     * @return array
+     * @return array<array<string>>
      */
     private function getSurnameChartData(string $surname): array
     {
@@ -274,7 +274,7 @@ class ChartDistribution
     /**
      * Returns the google geochart data for individuals.
      *
-     * @return array
+     * @return array<array<string>>
      */
     private function getIndivdualChartData(): array
     {

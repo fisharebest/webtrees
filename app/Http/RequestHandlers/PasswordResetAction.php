@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -55,7 +56,7 @@ class PasswordResetAction implements RequestHandlerInterface, StatusCodeInterfac
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree  = Validator::attributes($request)->treeOptional();
         $token = $request->getAttribute('token');
 
         $user = $this->user_service->findByToken($token);

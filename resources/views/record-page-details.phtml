@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomRecord;
 
 /**
@@ -11,6 +10,6 @@ use Fisharebest\Webtrees\GedcomRecord;
 
 <table class="table wt-facts-table">
     <?php foreach ($record->facts([], true) as $fact) : ?>
-        <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+        <?= view('fact', ['fact' => $fact, 'record' => $record]) ?>
     <?php endforeach ?>
 </table>

@@ -31,6 +31,16 @@ use Fisharebest\Webtrees\Individual;
 class SpanishSurnameTradition extends DefaultSurnameTradition
 {
     /**
+     * A default/empty name
+     *
+     * @return string
+     */
+    public function defaultName(): string
+    {
+        return '// //';
+    }
+
+    /**
      * What name is given to a new child
      *
      * @param Individual|null $father

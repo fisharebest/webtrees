@@ -6,9 +6,9 @@ use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Fact> $facts
- * @var Individual       $record
- * @var string           $url
+ * @var Collection<int,Fact> $facts
+ * @var Individual           $record
+ * @var string               $url
  */
 
 ?>
@@ -27,12 +27,10 @@ use Illuminate\Support\Collection;
 </div>
 <form id="share-anniversary-form"></form>
 <script>
-    document.getElementById('share-anniversary-button').addEventListener('click', function () {
-        console.log('clicked');
-        const select = document.getElementById('share-anniversary-select');
-        let form = document.getElementById('share-anniversary-form');
-        form.action = select.options[select.selectedIndex].value;;
-        form.submit();
-        console.log('submitted');
-    });
+  document.getElementById('share-anniversary-button').addEventListener('click', function () {
+    const select = document.getElementById('share-anniversary-select');
+    let form = document.getElementById('share-anniversary-form');
+    form.action = select.options[select.selectedIndex].value;
+    form.submit();
+  });
 </script>

@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Welsh (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2021-09-08 22:09+0000\nLast-Translator: Rhoslyn Prys <rprys@posteo.net>\nLanguage-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\nLanguage: cy\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: Welsh (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-20 12:00+0000\nLast-Translator: Jeongwan Nam <jeongwann@gmail.com>\nLanguage-Team: Welsh <https://translate.webtrees.net/projects/webtrees/webtrees/cy/>\nLanguage: cy\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : (n==3) ? 3 :(n==6) ? 4 : 5;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -11681,7 +11681,7 @@ msgstr "Quintidi"
 #: resources/views/modules/user-messages/user-messages.phtml:116
 #: resources/views/modules/user-messages/user-messages.phtml:117
 msgid "RE: "
-msgstr "Ynghylch:"
+msgstr "Ynghylch: "
 
 #: app/Elements/RelationIsDescriptor.php:121
 msgid "Rabbi"

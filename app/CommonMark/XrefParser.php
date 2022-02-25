@@ -23,11 +23,9 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use League\CommonMark\Inline\Parser\InlineParserInterface;
-use League\CommonMark\InlineParserContext;
-
-use function is_string;
-use function trim;
+use League\CommonMark\Parser\Inline\InlineParserInterface;
+use League\CommonMark\Parser\Inline\InlineParserMatch;
+use League\CommonMark\Parser\InlineParserContext;
 
 /**
  * Convert XREFs within markdown text to links
@@ -49,11 +47,11 @@ class XrefParser implements InlineParserInterface
     /**
      * We are only interested in text that begins with '@'.
      *
-     * @return array<string>
+     * @return InlineParserMatch
      */
-    public function getCharacters(): array
+    public function getMatchDefinition(): InlineParserMatch
     {
-        return ['@'];
+        return InlineParserMatch::regex('@(' . Gedcom::REGEX_XREF . ')@');
     }
 
     /**
@@ -63,27 +61,17 @@ class XrefParser implements InlineParserInterface
      */
     public function parse(InlineParserContext $inlineContext): bool
     {
-        // The cursor should be positioned on the opening '@'.
         $cursor = $inlineContext->getCursor();
+        [$xref] = $inlineContext->getSubMatches();
+        $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
 
-        // If this isn't the start of an XREF, we'll need to rewind to here.
-        $previous_state = $cursor->saveState();
+        if ($record instanceof GedcomRecord) {
+            $cursor->advanceBy($inlineContext->getFullMatchLength());
 
-        $xref = $cursor->match('/@' . Gedcom::REGEX_XREF . '@/');
+            $inlineContext->getContainer()->appendChild(new XrefNode($record));
 
-        if (is_string($xref)) {
-            $xref   = trim($xref, '@');
-            $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
-
-            if ($record instanceof GedcomRecord) {
-                $inlineContext->getContainer()->appendChild(new XrefNode($record));
-
-                return true;
-            }
+            return true;
         }
-
-        // Not an XREF? Linked record does not exist?
-        $cursor->restoreState($previous_state);
 
         return false;
     }

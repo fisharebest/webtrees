@@ -18,7 +18,7 @@ use Illuminate\Support\Collection;
  * @var array<string,string> $roles
  * @var array<string,string> $theme_options
  * @var string               $title
- * @var Collection<Tree>     $trees
+ * @var Collection<int,Tree>     $trees
  * @var UserInterface        $user
  */
 
@@ -37,7 +37,7 @@ use Illuminate\Support\Collection;
     <input type="hidden" name="user_id" value="<?= $user->id() ?>">
 
     <!-- REAL NAME -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="real_name">
             <?= I18N::translate('Real name') ?>
         </label>
@@ -50,7 +50,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- USER NAME -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="username">
             <?= I18N::translate('Username') ?>
         </label>
@@ -63,7 +63,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- PASSWORD -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="password">
             <?= I18N::translate('Password') ?>
         </label>
@@ -76,7 +76,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- EMAIL ADDRESS -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="email">
             <?= I18N::translate('Email address') ?>
         </label>
@@ -90,7 +90,7 @@ use Illuminate\Support\Collection;
 
     <!-- EMAIL VERIFIED -->
     <!-- ACCOUNT APPROVED -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="verified">
             <?= I18N::translate('Account approval and email verification') ?>
         </label>
@@ -121,7 +121,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- LANGUAGE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="language">
             <?= /* I18N: A configuration setting */ I18N::translate('Language') ?>
         </label>
@@ -131,7 +131,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- TIMEZONE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="timezone">
             <?= /* I18N: A configuration setting */ I18N::translate('Time zone') ?>
         </label>
@@ -144,7 +144,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- AUTO ACCEPT -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="auto_accept">
             <?= I18N::translate('Changes') ?>
         </label>
@@ -162,7 +162,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- VISIBLE ONLINE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="visible-online">
             <?= /* I18N: A configuration setting */ I18N::translate('Visible online') ?>
         </label>
@@ -180,7 +180,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- CONTACT METHOD -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="contact-method">
             <?= /* I18N: A configuration setting */ I18N::translate('Preferred contact method') ?>
         </label>
@@ -194,7 +194,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- THEME -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="theme">
             <?= I18N::translate('Theme') ?>
         </label>
@@ -204,7 +204,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- COMMENTS -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="comment">
             <?= I18N::translate('Administrator comments on user') ?>
         </label>
@@ -214,13 +214,13 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- ADMINISTRATOR -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="admin">
         </label>
         <div class="col-sm-9">
             <div class="form-check">
                 <label>
-                    <input type="checkbox" id="admin" name="canadmin" value="1" <?= $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) === '1' ? 'checked' : '' ?>  <?= $user->id() === Auth::id() ? 'disabled' : '' ?>>
+                    <input type="checkbox" id="admin" name="canadmin" value="1" <?= $user->getPreference(UserInterface::PREF_IS_ADMINISTRATOR) === '1' ? 'checked="checked"' : '' ?>  <?= $user->id() === Auth::id() ? 'disabled="disabled"' : '' ?>>
                     <?= I18N::translate('Administrator') ?>
                 </label>
             </div>
@@ -331,7 +331,7 @@ use Illuminate\Support\Collection;
                     <td>
                         <select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">
                             <?php for ($n = 0; $n <= 10; ++$n) : ?>
-                                <option value="<?= $n ?>" <?= $tree->getUserPreference($user, UserInterface::PREF_TREE_PATH_LENGTH) == $n ? 'selected' : '' ?>>
+                                <option value="<?= $n ?>" <?= (int) $tree->getUserPreference($user, UserInterface::PREF_TREE_PATH_LENGTH) === $n ? 'selected' : '' ?>>
                                     <?= $n ?: I18N::translate('No') ?>
                                 </option>
                             <?php endfor ?>
@@ -342,7 +342,7 @@ use Illuminate\Support\Collection;
         </tbody>
     </table>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= I18N::translate('save') ?>

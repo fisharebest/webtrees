@@ -67,4 +67,21 @@ class AbstractEventElement extends AbstractElement
             '})' .
             '</script>';
     }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        if ($value === 'Y') {
+            return I18N::translate('yes');
+        }
+
+        return parent::value($value, $tree);
+    }
 }

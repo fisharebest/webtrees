@@ -20,21 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
-use function is_string;
 
 /**
  * Class FamilyTreeNewsModule
@@ -69,10 +67,10 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -83,7 +81,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
             ->orderByDesc('updated')
             ->get()
             ->map(static function (object $row): object {
-                $row->updated = Carbon::make($row->updated);
+                $row->updated = Registry::timestampFactory()->fromString($row->updated);
 
                 return $row;
             });
@@ -158,8 +156,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function getEditNewsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         if (!Auth::isManager($tree)) {
             throw new HttpAccessDeniedException();
@@ -174,7 +171,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
                 ->first();
 
             // Record was deleted before we could read it?
-            if (!is_string($row)) {
+            if ($row === null) {
                 throw new HttpNotFoundException(I18N::translate('%s does not exist.', 'news_id:' . $news_id));
             }
         } else {
@@ -202,8 +199,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function postEditNewsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         if (!Auth::isManager($tree)) {
             throw new HttpAccessDeniedException();
@@ -248,8 +244,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
      */
     public function postDeleteNewsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $news_id = $request->getQueryParams()['news_id'];
 

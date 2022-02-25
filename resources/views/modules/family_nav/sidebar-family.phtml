@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
     </caption>
     <tbody>
         <?php foreach ($family->spouses() as $spouse) : ?>
-            <tr class="text-center wt-family-navigator-parent wt-gender-<?= $spouse->sex() ?>">
+            <tr class="text-center wt-family-navigator-parent wt-sex-<?= strtolower($spouse->sex()) ?>">
                 <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($spouse === $individual) : ?>
                         <?= app(RelationshipService::class)->getCloseRelationshipName($individual, $spouse) ?>
@@ -69,7 +69,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
         <?php endforeach ?>
 
         <?php foreach ($family->children() as $child) : ?>
-            <tr class="text-center wt-family-navigator-child wt-gender-<?= $child->sex() ?>">
+            <tr class="text-center wt-family-navigator-child wt-sex-<?= strtolower($child->sex()) ?>">
                 <th class="align-middle wt-family-navigator-label" scope="row">
                     <?php if ($child === $individual) : ?>
                         <?= app(RelationshipService::class)->getCloseRelationshipName($individual, $child) ?>

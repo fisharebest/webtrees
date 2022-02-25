@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -125,14 +126,17 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
     }
 
     /**
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
     public function listUrl(Tree $tree, array $parameters = []): string
     {
-        $xref = app(ServerRequestInterface::class)->getAttribute('xref', '');
+        $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
+
+        $xref = Validator::attributes($request)->isXref()->string('xref', '');
 
         if ($xref !== '') {
             $individual = Registry::individualFactory()->make($xref, $tree);
@@ -164,7 +168,9 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      */
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect($this->listUrl($request->getAttribute('tree'), $request->getQueryParams()));
+        $tree = Validator::attributes($request)->tree();
+
+        return redirect($this->listUrl($tree, $request->getQueryParams()));
     }
 
     /**
@@ -174,11 +180,8 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
@@ -190,11 +193,11 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
         $surname = (string) $request->getAttribute('surname');
 
         $params      = $request->getQueryParams();
-        $ajax        = $params['ajax'] ?? '';
+        $ajax        = Validator::queryParams($request)->boolean('ajax', false);
         $soundex_std = (bool) ($params['soundex_std'] ?? false);
         $soundex_dm  = (bool) ($params['soundex_dm'] ?? false);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             $this->layout = 'layouts/ajax';
 
             // Highlight direct-line ancestors of this individual.
@@ -388,7 +391,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
 
         // No matching name? Typically children with a different surname. The branch stops here.
         if ($person_name === '') {
-            return '<li title="' . strip_tags($individual->fullName()) . '"><small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small>…</li>';
+            return '<li title="' . strip_tags($individual->fullName()) . '" class="wt-branch-split"><small>' . view('icons/sex', ['sex' => $individual->sex()]) . '</small>…</li>';
         }
 
         // Is this individual one of our ancestors?

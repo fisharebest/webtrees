@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\Tree;
-use League\CommonMark\ConfigurableEnvironmentInterface;
+use League\CommonMark\Environment\EnvironmentBuilderInterface;
 use League\CommonMark\Extension\ExtensionInterface;
 
 /**
@@ -40,10 +40,13 @@ class XrefExtension implements ExtensionInterface
         $this->tree = $tree;
     }
 
-    public function register(ConfigurableEnvironmentInterface $environment): void
+    /**
+     * @param EnvironmentBuilderInterface $environment
+     */
+    public function register(EnvironmentBuilderInterface $environment): void
     {
         $environment
             ->addInlineParser(new XrefParser($this->tree))
-            ->addInlineRenderer(XrefNode::class, new XrefRenderer());
+            ->addRenderer(XrefNode::class, new XrefRenderer());
     }
 }

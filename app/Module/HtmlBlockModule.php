@@ -19,13 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function time;
 
 /**
  * Class HtmlBlockModule
@@ -71,10 +73,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -96,10 +98,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title   = $statistics->embedTags($title);
         $content = $statistics->embedTags($content);
 
-        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
+        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) time());
 
         if ($show_timestamp === '1') {
-            $content .= '<br>' . view('components/datetime', ['timestamp' => Carbon::createFromTimestamp($block_timestamp)]);
+            $content .= '<br>' . view('components/datetime', ['timestamp' => Registry::timestampFactory()->make($block_timestamp)]);
         }
 
         if ($context !== self::CONTEXT_EMBED) {
@@ -167,7 +169,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $this->setBlockSetting($block_id, 'title', $title);
         $this->setBlockSetting($block_id, 'html', $html);
         $this->setBlockSetting($block_id, 'show_timestamp', $params['show_timestamp']);
-        $this->setBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
+        $this->setBlockSetting($block_id, 'timestamp', (string) time());
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
     }
 

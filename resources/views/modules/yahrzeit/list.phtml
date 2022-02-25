@@ -5,10 +5,10 @@ use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var int                $id
- * @var int                $limit_low
- * @var int                $limit_high
- * @var Collection<object> $yahrzeits
+ * @var int                    $id
+ * @var int                    $limit_low
+ * @var int                    $limit_high
+ * @var Collection<int,object> $yahrzeits
  */
 
 ?>
@@ -40,8 +40,8 @@ use Illuminate\Support\Collection;
         </a>
         <small><?= view('icons/sex', ['sex' => $yahrzeit->individual->sex()]) ?></small>
         <div class="indent">
-            <?= $yahrzeit->fact->date()->display(true, null, false) ?>,
-            <?= $yahrzeit->yahrzeit_date->display(true, null, false) ?>,
+            <?= $yahrzeit->fact->date()->display($yahrzeit->individual->tree()) ?>,
+            <?= $yahrzeit->yahrzeit_date->display($yahrzeit->individual->tree()) ?>,
             <?= I18N::translate('%s year anniversary', $yahrzeit->fact->anniv) ?>
         </div>
     </div>

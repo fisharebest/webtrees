@@ -9,6 +9,8 @@ use Fisharebest\Webtrees\Tree;
  * @var int        $book_size
  * @var int        $generations
  * @var Individual $individual
+ * @var int        $maximum_book_size
+ * @var int        $minimum_book_size
  * @var int        $maximum_generations
  * @var int        $minimum_generations
  * @var bool       $spouses
@@ -39,7 +41,7 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('Generations') ?>
         </label>
         <div class="col-sm-9 wt-page-options-value">
-            <?= view('components/select-number', ['name' => 'book_size', 'selected' => $book_size, 'options' => range(2, 5)]) ?>
+            <?= view('components/select-number', ['name' => 'book_size', 'selected' => $book_size, 'options' => range($minimum_book_size, $maximum_book_size)]) ?>
         </div>
     </div>
 
@@ -52,7 +54,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3 wt-page-options-label">
             <?= I18N::translate('Spouses') ?>
         </legend>
@@ -61,7 +63,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </fieldset>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-sm-3 wt-page-options-label"></div>
         <div class="col-sm-9 wt-page-options-value">
             <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">

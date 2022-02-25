@@ -27,16 +27,6 @@ use Fisharebest\Webtrees\Individual;
 class PaternalSurnameTradition extends PatrilinealSurnameTradition
 {
     /**
-     * Does this surname tradition change surname at marriage?
-     *
-     * @return bool
-     */
-    public function hasMarriedNames(): bool
-    {
-        return true;
-    }
-
-    /**
      * What name is given to a new parent
      *
      * @param Individual $child

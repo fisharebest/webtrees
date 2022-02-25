@@ -65,7 +65,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function mediaToFix(Tree $tree, array $params): Collection
     {

@@ -21,12 +21,10 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function assert;
 
 /**
  * Process a form to create a new submission.
@@ -40,9 +38,7 @@ class CreateSubmissionAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree      = Validator::attributes($request)->tree();
         $params    = (array) $request->getParsedBody();
         $submitter = $params['submitter'];
 
@@ -51,14 +47,12 @@ class CreateSubmissionAction implements RequestHandlerInterface
         $record = $tree->createRecord($gedcom);
         $record = Registry::submissionFactory()->new($record->xref(), $record->gedcom(), null, $tree);
 
-        // id and text are for select2 / autocomplete
+        // value and text are for autocomplete
         // html is for interactive modals
         return response([
-            'id'   => '@' . $record->xref() . '@',
-            'text' => view('selects/submission', [
-                'submission' => $record,
-            ]),
-            'html' => view('modals/record-created', [
+            'value' => '@' . $record->xref() . '@',
+            'text'  => view('selects/submission', ['submission' => $record]),
+            'html'  => view('modals/record-created', [
                 'title' => I18N::translate('The submission has been created'),
                 'name'  => $record->fullName(),
                 'url'   => $record->url(),

@@ -43,7 +43,7 @@ interface ModuleDataFixInterface extends ModuleInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<object>
+     * @return Collection<int,object>
      */
     public function recordsToFix(Tree $tree, array $params): Collection;
 

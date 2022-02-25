@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-05 10:47+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-02-23 13:42+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3854,7 +3854,7 @@ msgstr "Samanþjappað tré"
 #: app/Module/CompactTreeChartModule.php:131
 #, php-format
 msgid "Compact tree of %s"
-msgstr "Samanþjappað tré af %s"
+msgstr "Samanþjappað tré fyrir %s"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:42
 msgid "Comparison"
@@ -4010,7 +4010,7 @@ msgstr "Cook-eyjar"
 
 #: resources/views/modules/privacy-policy/page.phtml:29
 msgid "Cookies"
-msgstr "Vafrakökur"
+msgstr "Vefkökur"
 
 #: app/Factories/ElementFactory.php:298 app/Factories/ElementFactory.php:429
 #: app/Module/CustomTagsGedcomL.php:197
@@ -9203,7 +9203,7 @@ msgstr "Gifting foreldra"
 
 #: resources/xml/reports/marriage_report.xml:6
 msgid "Marriage place contains"
-msgstr "Hjúskapar Staður inniheldur"
+msgstr "Hjúskaparstaður inniheldur"
 
 #: resources/views/statistics/other/places.phtml:39
 msgid "Marriage places"
@@ -10108,7 +10108,7 @@ msgstr "Ný gögn"
 #: app/Http/RequestHandlers/RegisterAction.php:156
 #, php-format
 msgid "New registration at %s"
-msgstr "Nýskráning við %s"
+msgstr "Nýskráning hjá %s"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/UserEditAction.php:110
@@ -12612,7 +12612,7 @@ msgstr "Nafn sendanda"
 #: app/Http/RequestHandlers/EmailPreferencesPage.php:68
 #: resources/views/admin/control-panel.phtml:226
 msgid "Sending email"
-msgstr "Sendir tölvupóst"
+msgstr "Senda tölvupóst"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:180
@@ -15992,7 +15992,7 @@ msgstr "Notaðu valmyndina „breyta“ til að líma þetta í aðra færslu."
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Notið þennan reit til að láta kerfisstjóra vefsíðunnar vita hvers vegna þú ert að óska eftir reikningi og hvernig þú ert tengdur ættfræðinni sem birt er á þessari vefsíðu. Þú getur einnig notað þetta til að slá inn aðrar athugasemdir sem þú kannt að hafa handa kerfisstjóra vefsíðunnar."
+msgstr "Notið þennan reit til að láta kerfisstjóra vefsíðunnar vita hvers vegna þú ert að óska eftir reikningi og hvernig þú ert tengdur ættfræðinni sem birt er á þessari vefsíðu. Þú getur einnig notað reitinn til að slá inn aðrar athugasemdir sem þú vilt koma á framfæri við kerfisstjóra vefsíðunnar."
 
 #: app/Module/ResearchTaskModule.php:59 app/Module/ResearchTaskModule.php:62
 #: resources/views/admin/changes-log.phtml:85

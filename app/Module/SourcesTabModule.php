@@ -32,6 +32,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
+    /** @var Collection<array-key,Fact>|null  */
     private ?Collection $facts = null;
 
     private ClipboardService $clipboard_service;
@@ -125,7 +126,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @param Individual $individual
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     private function getFactsWithSources(Individual $individual): Collection
     {
@@ -167,7 +168,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function supportedFacts(): Collection
     {

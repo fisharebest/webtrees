@@ -30,13 +30,11 @@ use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function e;
 use function in_array;
 use function preg_match;
@@ -91,17 +89,15 @@ class ContactAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $base_url   = $request->getAttribute('base_url');
-        $body       = Validator::parsedBody($request)->string('body') ?? '';
-        $from_email = Validator::parsedBody($request)->string('from_email') ?? '';
-        $from_name  = Validator::parsedBody($request)->string('from_name') ?? '';
-        $subject    = Validator::parsedBody($request)->string('subject') ?? '';
-        $to         = Validator::parsedBody($request)->string('to') ?? '';
-        $url        = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $base_url;
-        $ip         = $request->getAttribute('client-ip');
+        $tree       = Validator::attributes($request)->tree();
+        $ip         = Validator::attributes($request)->string('client-ip');
+        $base_url   = Validator::attributes($request)->string('base_url');
+        $body       = Validator::parsedBody($request)->string('body');
+        $from_email = Validator::parsedBody($request)->string('from_email');
+        $from_name  = Validator::parsedBody($request)->string('from_name');
+        $subject    = Validator::parsedBody($request)->string('subject');
+        $to         = Validator::parsedBody($request)->string('to');
+        $url        = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $base_url);
         $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {

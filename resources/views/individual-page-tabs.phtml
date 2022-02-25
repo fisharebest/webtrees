@@ -6,8 +6,8 @@ use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var Individual                     $record
- * @var Collection<ModuleTabInterface> $tabs
+ * @var Individual                         $record
+ * @var Collection<int,ModuleTabInterface> $tabs
  */
 ?>
 
@@ -33,14 +33,16 @@ use Illuminate\Support\Collection;
 
 <?php View::push('javascript') ?>
 <script>
-  "use strict";
+  'use strict';
 
   // Bootstrap tabs - load content dynamically using AJAX
   $('a[data-bs-toggle="tab"][data-wt-href]').on('show.bs.tab', function () {
     let target = $(this.hash + ':empty');
     if (target.length > 0) {
       // Start the download immediately...
-      let download = fetch(this.dataset.wtHref);
+      let download = fetch(this.dataset.wtHref, {
+        headers: new Headers({ 'X-Requested-with': 'XMLHttpRequest' }),
+      });
 
       // ...but don't insert it until the tab is ready.
       $(this).one('shown.bs.tab', () => {

@@ -33,7 +33,7 @@ use function trim;
  */
 class SlugFactory implements SlugFactoryInterface
 {
-    private ?Transliterator $transliterator;
+    private ?Transliterator $transliterator = null;
 
     public function __construct()
     {

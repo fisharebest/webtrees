@@ -4,20 +4,20 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var string             $dbhost
- * @var string             $dbname
- * @var string             $dbpass
- * @var string             $dbport
- * @var string             $dbtype
- * @var string             $dbuser
- * @var Collection<string> $errors
- * @var string             $lang
- * @var string             $tblpfx
- * @var Collection<string> $warnings
- * @var string             $wtemail
- * @var string             $wtname
- * @var string             $wtpass
- * @var string             $wtuser
+ * @var string                 $dbhost
+ * @var string                 $dbname
+ * @var string                 $dbpass
+ * @var string                 $dbport
+ * @var string                 $dbtype
+ * @var string                 $dbuser
+ * @var Collection<int,string> $errors
+ * @var string                 $lang
+ * @var string                 $tblpfx
+ * @var Collection<int,string> $warnings
+ * @var string                 $wtemail
+ * @var string                 $wtname
+ * @var string                 $wtpass
+ * @var string                 $wtuser
  */
 
 ?>
@@ -47,7 +47,7 @@ use Illuminate\Support\Collection;
         <?= I18N::translate('webtrees needs a database to store your genealogy data.') ?>
     </p>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="dbhost">
             <?= I18N::translate('Database type') ?>
         </label>

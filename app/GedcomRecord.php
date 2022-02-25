@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees;
 
 use Closure;
 use Exception;
+use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -57,6 +57,7 @@ use function str_ends_with;
 use function str_pad;
 use function strtoupper;
 use function trim;
+use function view;
 
 use const PHP_INT_MAX;
 use const PREG_SET_ORDER;
@@ -536,9 +537,9 @@ class GedcomRecord
             if ($event->date()->isOK() || $event->place()->gedcomName() !== '') {
                 switch ($style) {
                     case 1:
-                        return '<br><em>' . $event->label() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event, false, false, false) . '</em>';
+                        return '<br><em>' . $event->label() . ' ' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false]) . '</em>';
                     case 2:
-                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . $joiner . FunctionsPrint::formatFactPlace($event, false, false, false) . '</dd></dl>';
+                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false]) . $joiner . $event->place()->shortName() . '</dd></dl>';
                 }
             }
         }
@@ -551,7 +552,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Individual>
+     * @return Collection<int,Individual>
      */
     public function linkedIndividuals(string $link): Collection
     {
@@ -575,7 +576,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     public function linkedFamilies(string $link): Collection
     {
@@ -599,7 +600,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Source>
+     * @return Collection<int,Source>
      */
     public function linkedSources(string $link): Collection
     {
@@ -623,7 +624,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Media>
+     * @return Collection<int,Media>
      */
     public function linkedMedia(string $link): Collection
     {
@@ -647,7 +648,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Note>
+     * @return Collection<int,Note>
      */
     public function linkedNotes(string $link): Collection
     {
@@ -672,7 +673,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Repository>
+     * @return Collection<int,Repository>
      */
     public function linkedRepositories(string $link): Collection
     {
@@ -697,7 +698,7 @@ class GedcomRecord
      *
      * @param string $link
      *
-     * @return Collection<Location>
+     * @return Collection<int,Location>
      */
     public function linkedLocations(string $link): Collection
     {
@@ -769,7 +770,7 @@ class GedcomRecord
      * @param int|null      $access_level
      * @param bool          $ignore_deleted
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function facts(
         array $filter = [],
@@ -820,7 +821,7 @@ class GedcomRecord
             });
         }
 
-        return new Collection($facts);
+        return $facts;
     }
 
     /**
@@ -855,30 +856,30 @@ class GedcomRecord
     /**
      * Get the last-change timestamp for this record
      *
-     * @return Carbon
+     * @return TimestampInterface
      */
-    public function lastChangeTimestamp(): Carbon
+    public function lastChangeTimestamp(): TimestampInterface
     {
         /** @var Fact|null $chan */
         $chan = $this->facts(['CHAN'])->first();
 
         if ($chan instanceof Fact) {
             // The record does have a CHAN event
-            $d = $chan->date()->minimumDate();
+            $d = $chan->date()->minimumDate()->format('%Y-%m-%d');
 
-            if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->gedcom(), $match)) {
-                return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2], (int) $match[3]);
+            if (preg_match('/\n3 TIME( (\d\d):(\d\d):(\d\d))/', $chan->gedcom(), $match)) {
+                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
             }
 
-            if (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->gedcom(), $match)) {
-                return Carbon::create($d->year(), $d->month(), $d->day(), (int) $match[1], (int) $match[2]);
+            if (preg_match('/\n3 TIME ((\d\d):(\d\d))/', $chan->gedcom(), $match)) {
+                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
             }
 
-            return Carbon::create($d->year(), $d->month(), $d->day());
+            return Registry::timestampFactory()->fromString($d, 'Y-m-d');
         }
 
         // The record does not have a CHAN event
-        return Carbon::createFromTimestamp(0);
+        return Registry::timestampFactory()->make(0);
     }
 
     /**
@@ -999,7 +1000,10 @@ class GedcomRecord
             $this->pending = $new_gedcom;
 
             if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-                app(PendingChangesService::class)->acceptRecord($this);
+                $pending_changes_service = app(PendingChangesService::class);
+                assert($pending_changes_service instanceof PendingChangesService);
+
+                $pending_changes_service->acceptRecord($this);
                 $this->gedcom  = $new_gedcom;
                 $this->pending = null;
             }
@@ -1047,7 +1051,10 @@ class GedcomRecord
 
         // Accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            app(PendingChangesService::class)->acceptRecord($this);
+            $pending_changes_service = app(PendingChangesService::class);
+            assert($pending_changes_service instanceof PendingChangesService);
+
+            $pending_changes_service->acceptRecord($this);
             $this->gedcom  = $gedcom;
             $this->pending = null;
         }
@@ -1077,7 +1084,10 @@ class GedcomRecord
 
         // Auto-accept this pending change
         if (Auth::user()->getPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS) === '1') {
-            app(PendingChangesService::class)->acceptRecord($this);
+            $pending_changes_service = app(PendingChangesService::class);
+            assert($pending_changes_service instanceof PendingChangesService);
+
+            $pending_changes_service->acceptRecord($this);
         }
 
         Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref, $this->tree);
@@ -1215,7 +1225,7 @@ class GedcomRecord
      *
      * @param int              $level
      * @param string           $fact_type
-     * @param Collection<Fact> $facts
+     * @param Collection<int,Fact> $facts
      *
      * @return void
      */

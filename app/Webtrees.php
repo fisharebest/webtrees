@@ -22,7 +22,10 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use ErrorException;
 use Fisharebest\Webtrees\Factories\CacheFactory;
+use Fisharebest\Webtrees\Factories\CalendarDateFactory;
+use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
+use Fisharebest\Webtrees\Factories\EncodingFactory;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
 use Fisharebest\Webtrees\Factories\FilesystemFactory;
 use Fisharebest\Webtrees\Factories\GedcomRecordFactory;
@@ -55,12 +58,12 @@ use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
 use Fisharebest\Webtrees\Http\Middleware\UseDatabase;
-use Fisharebest\Webtrees\Http\Middleware\UseDebugbar;
 use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
+use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Illuminate\Container\Container;
 use Middleland\Dispatcher;
 use Nyholm\Psr7\Factory\Psr17Factory;
@@ -80,6 +83,7 @@ use function error_reporting;
 use function is_string;
 use function mb_internal_encoding;
 use function set_error_handler;
+use function stream_filter_register;
 
 use const E_ALL;
 use const E_DEPRECATED;
@@ -147,7 +151,6 @@ class Webtrees
         CompressResponse::class,
         BadBotBlocker::class,
         UseDatabase::class,
-        UseDebugbar::class,
         UpdateDatabaseSchema::class,
         UseSession::class,
         UseLanguage::class,
@@ -180,9 +183,11 @@ class Webtrees
 
         // Factory objects
         Registry::cache(new CacheFactory());
+        Registry::calendarDateFactory(new CalendarDateFactory());
+        Registry::elementFactory(new ElementFactory());
+        Registry::encodingFactory(new EncodingFactory());
         Registry::familyFactory(new FamilyFactory());
         Registry::filesystem(new FilesystemFactory());
-        Registry::elementFactory(new ElementFactory());
         Registry::gedcomRecordFactory(new GedcomRecordFactory());
         Registry::headerFactory(new HeaderFactory());
         Registry::imageFactory(new ImageFactory());
@@ -196,7 +201,10 @@ class Webtrees
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());
+        Registry::timestampFactory(new TimestampFactory());
         Registry::xrefFactory(new XrefFactory());
+
+        stream_filter_register(GedcomEncodingFilter::class, GedcomEncodingFilter::class);
     }
 
     /**

@@ -24,9 +24,9 @@ use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<string>          $deleted_modules
- * @var Collection<ModuleInterface> $modules
- * @var string                      $title
+ * @var Collection<int,string>          $deleted_modules
+ * @var Collection<int,ModuleInterface> $modules
+ * @var string                          $title
  */
 
 ?>
@@ -130,13 +130,13 @@ use Illuminate\Support\Collection;
             <?php foreach ($modules as $module) : ?>
                 <tr>
                     <th scope="row" dir="auto">
-                        <?= $module->title() ?>
+                        <?= $module instanceof ModuleCustomInterface ? $module->customTranslations(I18N::languageTag())[$module->title()] ?? $module->title() : $module->title() ?>
                     </th>
                     <td class="text-center" data-sort="<?= $module->isEnabled() ?>">
                         <?= view('components/checkbox', ['label' => '', 'name' => 'status-' . $module->name(), 'checked' => $module->isEnabled()]) ?>
                     </td>
                     <td>
-                        <?= $module->description() ?>
+                        <?= $module instanceof ModuleCustomInterface ? $module->customTranslations(I18N::languageTag())[$module->description()] ?? $module->description() : $module->description() ?>
                         <?php if ($module instanceof ModuleCustomInterface) : ?>
                             <?= view('admin/custom-module-info', ['module' => $module]) ?>
                         <?php endif ?>

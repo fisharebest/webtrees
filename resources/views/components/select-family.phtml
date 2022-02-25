@@ -1,8 +1,7 @@
 <?php
 
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\RequestHandlers\AbstractSelect2Handler;
-use Fisharebest\Webtrees\Http\RequestHandlers\Select2Family;
+use Fisharebest\Webtrees\Http\RequestHandlers\TomSelectFamily;
 use Fisharebest\Webtrees\Tree;
 
 /**
@@ -20,18 +19,12 @@ $at = $at ?? '';
 
 <select
     autocomplete="off"
-    class="form-select select2 <?= $class ?? '' ?>"
-    data-ajax--delay="<?= e(AbstractSelect2Handler::AJAX_DELAY) ?>"
-    data-minimum-input-length="<?= e(AbstractSelect2Handler::MINIMUM_INPUT_LENGTH) ?>"
-    data-ajax--type="POST"
-    data-ajax--url="<?= e(route(Select2Family::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
-    data-allow-clear="true"
-    data-placeholder=""
+    class="form-select tom-select <?= $class ?? '' ?>"
+    data-url="<?= e(route(TomSelectFamily::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
     id="<?= e($id ?? $name) ?>"
     name="<?= e($name) ?>"
-    <?= ($disabled ?? false) ? 'disabled' : '' ?>
-    <?= ($required ?? false) ? 'required' : '' ?>
-style="width:100%"
+    <?= ($disabled ?? false) ? 'disabled="disabled"' : '' ?>
+    <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($family ?? null) instanceof Family) : ?>
         <option value="<?= e($at . $family->xref() . $at) ?>">

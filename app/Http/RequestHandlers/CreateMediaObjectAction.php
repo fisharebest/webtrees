@@ -24,12 +24,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MediaFileService;
 use Fisharebest\Webtrees\Services\PendingChangesService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function in_array;
 use function response;
 
@@ -63,9 +62,7 @@ class CreateMediaObjectAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree        = Validator::attributes($request)->tree();
         $params      = (array) $request->getParsedBody();
         $note        = $params['media-note'] ?? '';
         $title       = $params['title'] ?? '';
@@ -90,14 +87,12 @@ class CreateMediaObjectAction implements RequestHandlerInterface
         // Accept the new record to keep the filesystem synchronized with the genealogy.
         $this->pending_changes_service->acceptRecord($record);
 
-        // id and text are for select2 / autocomplete
+        // value and text are for autocomplete
         // html is for interactive modals
         return response([
-            'id'   => '@' . $record->xref() . '@',
-            'text' => view('selects/media', [
-                'media' => $record,
-            ]),
-            'html' => view('modals/record-created', [
+            'value' => '@' . $record->xref() . '@',
+            'text'  => view('selects/media', ['media' => $record]),
+            'html'  => view('modals/record-created', [
                 'title' => I18N::translate('The media object has been created'),
                 'name'  => $record->fullName(),
                 'url'   => $record->url(),

@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
@@ -161,8 +160,12 @@ class Fact
 
     private Place $place;
 
-    // Used by Functions::sortFacts()
+    // Used to sort facts
     public int $sortOrder;
+
+    // Used by anniversary calculations
+    public int $jd;
+    public int $anniv;
 
     /**
      * Create an event object from a gedcom fragment.
@@ -593,7 +596,7 @@ class Fact
             $date = $this->date();
             if ($date->isOK()) {
                 if ($this->record() instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
-                    $attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->record(), $date);
+                    $attributes[] = $date->display() . view('fact-parents-age', ['individual' => $this->record(), 'birth_date' => $date]);
                 } else {
                     $attributes[] = $date->display();
                 }
@@ -727,7 +730,7 @@ class Fact
             $ret = $factsort[$atag] - $factsort[$btag];
 
             // If facts are the same then put dated facts before non-dated facts
-            if ($ret == 0) {
+            if ($ret === 0) {
                 if ($a->attribute('DATE') !== '' && $b->attribute('DATE') === '') {
                     return -1;
                 }
@@ -751,9 +754,9 @@ class Fact
      * using the compare type function
      * 3. Then merge the arrays back into the original array using the compare type function
      *
-     * @param Collection<Fact> $unsorted
+     * @param Collection<int,Fact> $unsorted
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public static function sortFacts(Collection $unsorted): Collection
     {
@@ -808,9 +811,9 @@ class Fact
     /**
      * Sort fact/event tags using the same order that we use for facts.
      *
-     * @param Collection<string> $unsorted
+     * @param Collection<int,string> $unsorted
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public static function sortFactTags(Collection $unsorted): Collection
     {

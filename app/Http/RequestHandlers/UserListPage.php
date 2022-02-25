@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -41,7 +42,7 @@ class UserListPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $user = $request->getAttribute('user');
+        $user = Validator::attributes($request)->user();
 
         $params = $request->getQueryParams();
         $filter = $params['filter'] ?? '';

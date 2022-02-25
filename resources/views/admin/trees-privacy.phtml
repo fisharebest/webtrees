@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\View;
     <?= csrf_field() ?>
 
     <!-- REQUIRE_AUTHENTICATION -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-form-label col-sm-4">
             <label>
                 <?= /* I18N: A configuration setting */ I18N::translate('Show the family tree') ?>
@@ -46,7 +46,7 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- SHOW_DEAD_PEOPLE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-form-label col-sm-4">
             <label for="SHOW_DEAD_PEOPLE">
                 <?= /* I18N: A configuration setting */ I18N::translate('Show dead individuals') ?>
@@ -66,7 +66,7 @@ use Fisharebest\Webtrees\View;
 
 
     <!-- MAX_ALIVE_AGE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-4" for="MAX_ALIVE_AGE">
             <?= I18N::translate('Age at which to assume an individual is dead') ?>
         </label>
@@ -79,7 +79,7 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- HIDE_LIVE_PEOPLE -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-sm-4 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
             <div class="hidden-xs">
@@ -97,7 +97,7 @@ use Fisharebest\Webtrees\View;
     </fieldset>
 
     <!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-4">
             <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
         </legend>
@@ -116,7 +116,7 @@ use Fisharebest\Webtrees\View;
     </fieldset>
 
     <!-- SHOW_LIVING_NAMES -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-form-label col-sm-4">
             <label for="SHOW_LIVING_NAMES">
                 <?= /* I18N: A configuration setting */ I18N::translate('Show names of private individuals') ?>
@@ -136,7 +136,7 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- SHOW_PRIVATE_RELATIONSHIPS -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-form-label col-sm-4">
             <label for="SHOW_PRIVATE_RELATIONSHIPS">
                 <?= /* I18N: A configuration setting */ I18N::translate('Show private relationships') ?>
@@ -161,7 +161,7 @@ use Fisharebest\Webtrees\View;
     <script id="new-resn-template" type="text/html">
         <tr>
             <td>
-                <select class="form-control record-type-selector">
+                <select class="form-control record-type-selector mb-3">
                     <option value="all"><?= I18N::translate('All records') ?></option>
                     <option value="individual"><?= I18N::translate('Individual') ?></option>
                     <option value="family"><?= I18N::translate('Family') ?></option>
@@ -275,7 +275,7 @@ use Fisharebest\Webtrees\View;
         </tbody>
     </table>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-4 col-sm-8">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>
@@ -309,94 +309,85 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-    "use strict";
+  'use strict';
 
-    /**
-     * Hide/show the feedback labels for a privacy option.
-     *
-     * @param sel    the control to change
-     * @param who    "visitors", "members" or "managers"
-     * @param access true or false
-     */
-    function setPrivacyFeedback(sel, who, access) {
-        var formGroup = $(sel).closest(".form-group");
+  /**
+   * Hide/show the feedback labels for a privacy option.
+   *
+   * @param sel    the control to change
+   * @param who    "visitors", "members" or "managers"
+   * @param access true or false
+   */
+  function setPrivacyFeedback (sel, who, access) {
+    var formGroup = $(sel).closest('.form-group');
 
-        if (access) {
-            $("." + who, formGroup).addClass("bg-success").removeClass("bg-secondary");
-            $("." + who + " i", formGroup).addClass("fa-check").removeClass("fa-times");
-        } else {
-            $("." + who, formGroup).addClass("bg-secondary").removeClass("bg-success");
-            $("." + who + " i", formGroup).addClass("fa-times").removeClass("fa-check");
-        }
+    if (access) {
+      $('.' + who, formGroup).addClass('bg-success').removeClass('bg-secondary');
+      $('.' + who + ' i', formGroup).addClass('fa-check').removeClass('fa-times');
+    } else {
+      $('.' + who, formGroup).addClass('bg-secondary').removeClass('bg-success');
+      $('.' + who + ' i', formGroup).addClass('fa-times').removeClass('fa-check');
     }
+  }
 
-    /**
-     * Update all the privacy feedback labels.
-     */
-    function updatePrivacyFeedback() {
-        var requireAuthentication    = parseInt($("[name=REQUIRE_AUTHENTICATION]").val(), 10);
-        var showDeadPeople           = parseInt($("[name=SHOW_DEAD_PEOPLE]").val(), 10);
-        var hideLivePeople           = parseInt($("[name=HIDE_LIVE_PEOPLE]").val(), 10);
-        var showLivingNames          = parseInt($("[name=SHOW_LIVING_NAMES]").val(), 10);
-        var showPrivateRelationships = parseInt($("[name=SHOW_PRIVATE_RELATIONSHIPS]").val(), 10);
+  /**
+   * Update all the privacy feedback labels.
+   */
+  function updatePrivacyFeedback () {
+    var requireAuthentication = parseInt($('[name=REQUIRE_AUTHENTICATION]').val(), 10);
+    var showDeadPeople = parseInt($('[name=SHOW_DEAD_PEOPLE]').val(), 10);
+    var hideLivePeople = parseInt($('[name=HIDE_LIVE_PEOPLE]').val(), 10);
+    var showLivingNames = parseInt($('[name=SHOW_LIVING_NAMES]').val(), 10);
+    var showPrivateRelationships = parseInt($('[name=SHOW_PRIVATE_RELATIONSHIPS]').val(), 10);
 
-        setPrivacyFeedback("[name=REQUIRE_AUTHENTICATION]", "visitors", requireAuthentication === 0);
-        setPrivacyFeedback("[name=REQUIRE_AUTHENTICATION]", "members", true);
+    setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'visitors', requireAuthentication === 0);
+    setPrivacyFeedback('[name=REQUIRE_AUTHENTICATION]', 'members', true);
 
-        setPrivacyFeedback("[name=SHOW_DEAD_PEOPLE]", "visitors", requireAuthentication === 0 && (showDeadPeople >= 2 || hideLivePeople === 0));
-        setPrivacyFeedback("[name=SHOW_DEAD_PEOPLE]", "members", showDeadPeople >= 1 || hideLivePeople === 0);
+    setPrivacyFeedback('[name=SHOW_DEAD_PEOPLE]', 'visitors', requireAuthentication === 0 && (showDeadPeople >= 2 || hideLivePeople === 0));
+    setPrivacyFeedback('[name=SHOW_DEAD_PEOPLE]', 'members', showDeadPeople >= 1 || hideLivePeople === 0);
 
-        setPrivacyFeedback("[name=HIDE_LIVE_PEOPLE]", "visitors", requireAuthentication === 0 && hideLivePeople === 0);
-        setPrivacyFeedback("[name=HIDE_LIVE_PEOPLE]", "members", true);
+    setPrivacyFeedback('[name=HIDE_LIVE_PEOPLE]', 'visitors', requireAuthentication === 0 && hideLivePeople === 0);
+    setPrivacyFeedback('[name=HIDE_LIVE_PEOPLE]', 'members', true);
 
-        setPrivacyFeedback("[name=SHOW_LIVING_NAMES]", "visitors", requireAuthentication === 0 && showLivingNames >= 2);
-        setPrivacyFeedback("[name=SHOW_LIVING_NAMES]", "members", showLivingNames >= 1);
-        setPrivacyFeedback("[name=SHOW_LIVING_NAMES]", "managers", showLivingNames >= 0);
+    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'visitors', requireAuthentication === 0 && showLivingNames >= 2);
+    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'members', showLivingNames >= 1);
+    setPrivacyFeedback('[name=SHOW_LIVING_NAMES]', 'managers', showLivingNames >= 0);
 
-        setPrivacyFeedback("[name=SHOW_PRIVATE_RELATIONSHIPS]", "visitors", requireAuthentication === 0 && showPrivateRelationships >= 1);
-        setPrivacyFeedback("[name=SHOW_PRIVATE_RELATIONSHIPS]", "members", showPrivateRelationships >= 1);
-    }
+    setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'visitors', requireAuthentication === 0 && showPrivateRelationships >= 1);
+    setPrivacyFeedback('[name=SHOW_PRIVATE_RELATIONSHIPS]', 'members', showPrivateRelationships >= 1);
+  }
 
-    // Activate the privacy feedback labels.
+  // Activate the privacy feedback labels.
+  updatePrivacyFeedback();
+  $('[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]').on('change', function () {
     updatePrivacyFeedback();
-    $("[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]").on("change", function () {
-        updatePrivacyFeedback();
-    });
+  });
 
-    // Mute a line when it is marked for deletion
-    $("#default-resn").on("click", "input[type=checkbox]", function () {
-        if ($(this).prop("checked")) {
-            $($(this).closest("tr").addClass("text-muted"));
-        } else {
-            $($(this).closest("tr").removeClass("text-muted"));
-        }
-    });
+  // Mute a line when it is marked for deletion
+  $('#default-resn').on('click', 'input[type=checkbox]', function () {
+    if ($(this).prop('checked')) {
+      $($(this).closest('tr').addClass('text-muted'));
+    } else {
+      $($(this).closest('tr').removeClass('text-muted'));
+    }
+  });
 
-    // Add a new row to the table
-    $("#add-resn").on("click", function () {
-        $("#default-resn tbody").prepend($("#new-resn-template").html());
+  // Add a new row to the table
+  $('#add-resn').on('click', function () {
+    $('#default-resn tbody').prepend($('#new-resn-template').html());
 
-        // Select2 - same as webtrees.js
-        $("#default-resn tbody tr:first select.select2").select2({
-            width: '100%',
-            escapeMarkup: function (x) {
-                return x;
-            },
-        })
-        .on("select2:unselect", function (evt) {
-            $(evt.delegateTarget).append("<option value=\"\" selected=\"selected\"></option>");
-        });
+    document.querySelectorAll('#default-resn tbody tr select.tom-select')
+      .forEach(element => webtrees.initializeTomSelect(element));
 
-        // Record type selector
-        $(".record-type-selector").change(function () {
-            const container = $(this).closest("td");
-            $(".select-record", container).addClass('d-none');
-            $(".select-record select", container).prop( "disabled", true);
-            $(".select-record input", container).prop( "disabled", true);
-            $(".select-" + $(this).val(), container).removeClass('d-none');
-            $(".select-" + $(this).val() + " select", container).prop( "disabled", false);
-            $(".select-" + $(this).val() + " input", container).prop( "disabled", false);
-        });
-    });
+
+//      .on('select2:unselect', function (evt) {
+//        $(evt.delegateTarget).append('<option value="" selected="selected"></option>');
+//      });
+
+
+    let row = document.getElementById('default-resn').querySelector('tbody tr');
+    console.log(row.querySelector('select'));
+    webtrees.initializeIFSRO(row.querySelector('select'), row);
+  });
 </script>
 <?php View::endpush() ?>

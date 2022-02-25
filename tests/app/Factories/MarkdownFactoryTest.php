@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Test harness for the class GedcomEditService
+ * Test harness for the class MarkdownFactory
  *
  * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
  */
@@ -35,11 +35,10 @@ class MarkdownFactoryTest extends TestCase
     public function testAutoLinkWithoutTree(): void
     {
         $factory  = new MarkdownFactory();
-        $autolink = $factory->autolink();
 
         $this->assertSame(
             "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
-            $autolink->convertToHtml('FOO https://example.com BAR')
+            $factory->autolink('FOO https://example.com BAR')
         );
     }
 
@@ -49,14 +48,12 @@ class MarkdownFactoryTest extends TestCase
      */
     public function testAutoLinkWithTree(): void
     {
-        $tree = $this->createStub(Tree::class);
-
-        $factory  = new MarkdownFactory();
-        $autolink = $factory->autolink($tree);
+        $factory = new MarkdownFactory();
+        $tree    = $this->createStub(Tree::class);
 
         $this->assertSame(
             "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
-            $autolink->convertToHtml('FOO https://example.com BAR')
+            $factory->autolink('FOO https://example.com BAR', $tree)
         );
     }
 
@@ -67,11 +64,10 @@ class MarkdownFactoryTest extends TestCase
     public function testAutoLinkWithHtml(): void
     {
         $factory  = new MarkdownFactory();
-        $autolink = $factory->autolink();
 
         $this->assertSame(
             "<p>&lt;b&gt; <a href=\"https://example.com\">https://example.com</a> &lt;/b&gt;</p>\n",
-            $autolink->convertToHtml('<b> https://example.com </b>')
+            $factory->autolink('<b> https://example.com </b>')
         );
     }
 
@@ -80,17 +76,16 @@ class MarkdownFactoryTest extends TestCase
      */
     public function testMarkdownWithoutTree(): void
     {
-        $factory  = new MarkdownFactory();
-        $Markdown = $factory->Markdown();
+        $factory = new MarkdownFactory();
 
         $this->assertSame(
             "<p>FOO https://example.com BAR</p>\n",
-            $Markdown->convertToHtml('FOO https://example.com BAR')
+            $factory->markdown('FOO https://example.com BAR')
         );
 
         $this->assertSame(
             "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
-            $Markdown->convertToHtml('FOO <https://example.com> BAR')
+            $factory->markdown('FOO <https://example.com> BAR')
         );
     }
 
@@ -100,19 +95,17 @@ class MarkdownFactoryTest extends TestCase
      */
     public function testMarkdownWithTree(): void
     {
-        $tree = $this->createStub(Tree::class);
-
-        $factory  = new MarkdownFactory();
-        $Markdown = $factory->Markdown($tree);
+        $tree    = $this->createStub(Tree::class);
+        $factory = new MarkdownFactory();
 
         $this->assertSame(
             "<p>FOO https://example.com BAR</p>\n",
-            $Markdown->convertToHtml('FOO https://example.com BAR')
+            $factory->markdown('FOO https://example.com BAR', $tree)
         );
 
         $this->assertSame(
             "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>\n",
-            $Markdown->convertToHtml('FOO <https://example.com> BAR')
+            $factory->markdown('FOO <https://example.com> BAR', $tree)
         );
     }
 
@@ -122,12 +115,11 @@ class MarkdownFactoryTest extends TestCase
      */
     public function testMarkdownWithHtml(): void
     {
-        $factory  = new MarkdownFactory();
-        $markdown = $factory->Markdown();
+        $factory = new MarkdownFactory();
 
         $this->assertSame(
             "<p>&lt;b&gt; <a href=\"https://example.com\">https://example.com</a> &lt;/b&gt;</p>\n",
-            $markdown->convertToHtml('<b> <https://example.com> </b>')
+            $factory->markdown('<b> <https://example.com> </b>')
         );
     }
 }

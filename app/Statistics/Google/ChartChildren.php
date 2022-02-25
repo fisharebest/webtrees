@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
+use stdClass;
 
 /**
  * A chart showing the average number of children by century.
@@ -48,7 +49,7 @@ class ChartChildren
     /**
      * Returns the related database records.
      *
-     * @return Collection<object>
+     * @return Collection<array-key,stdClass>
      */
     private function queryRecords(): Collection
     {
@@ -106,7 +107,9 @@ class ChartChildren
                 'title' => I18N::translate('Number of children'),
             ],
             'hAxis' => [
-                'title' => I18N::translate('Century'),
+                'showTextEvery' => 1,
+                'slantedText'   => false,
+                'title'         => I18N::translate('Century'),
             ],
             'colors' => [
                 '#84beff'

@@ -5,8 +5,8 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Fact> $family_anniversaries
- * @var Collection<Fact> $individual_anniversaries
+ * @var Collection<int,Fact> $family_anniversaries
+ * @var Collection<int,Fact> $individual_anniversaries
  */
 
 ?>
@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
                         </a>
 
                         <div class="indent">
-                            <?= $fact->label() ?> — <?= $fact->date()->display(true, null, false) ?>
+                            <?= $fact->label() ?> — <?= $fact->date()->display($fact->record()->tree()) ?>
                             <?php if ($fact->attribute('PLAC') !== '') : ?>
                                 — <?=  $fact->attribute('PLAC') ?>
                             <?php endif ?>
@@ -52,7 +52,7 @@ use Illuminate\Support\Collection;
                         </a>
 
                         <div class="indent">
-                            <?= $fact->label() ?> — <?= $fact->date()->display(true, null, false) ?>
+                            <?= $fact->label() ?> — <?= $fact->date()->display($fact->record()->tree()) ?>
                             <?php if ($fact->attribute('PLAC') !== '') : ?>
                                 — <?=  $fact->attribute('PLAC') ?>
                             <?php endif ?>

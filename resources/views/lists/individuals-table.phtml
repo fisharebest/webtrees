@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -18,16 +18,16 @@ use Illuminate\Support\Collection;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @var Collection<Individual> $individuals
- * @var bool                   $sosa
- * @var Tree                   $tree
+ * @var Collection<int,Individual> $individuals
+ * @var bool                       $sosa
+ * @var Tree                       $tree
  */
 
 // lists requires a unique ID in case there are multiple lists per page
 $table_id = 'table-indi-' . Uuid::uuid4()->toString();
 
-$today_jd          = Carbon::now()->julianDay();
-$hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
+$today_jd          = Registry::timestampFactory()->now()->julianDay();
+$hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();
 
 $unique_indis = []; // Don't double-count indis with multiple names.
 
@@ -98,7 +98,7 @@ $("#<?= e($table_id) ?>")
     });
 </script>
 <?php View::endpush() ?>
-    
+
 <?php
 $max_age = (int) $tree->getPreference('MAX_ALIVE_AGE');
 
@@ -209,7 +209,7 @@ $deathAgeData = [
                         </div>
 
                         <div class="btn-group btn-group-sm" role="group">
-                        
+
                             <input id="<?= e($table_id) ?>-bg-born-YES" class="btn-check" type="checkbox" data-filter-column="13" data-filter-value="YES" autocomplete="off">
                             <label for="<?= e($table_id) ?>-bg-born-YES" class="btn btn-outline-secondary" title="<?= I18N::translate('Show individuals born more than 100 years ago.') ?>">
                                 <?= I18N::translate('Birth') ?>&gt;100
@@ -304,12 +304,12 @@ $deathAgeData = [
                     <?php $birth_dates = $individual->getAllBirthDates(); ?>
 
                     <?php foreach ($birth_dates as $n => $birth_date) : ?>
-                        <?= $birth_date->display(true) ?>
+                        <?= $birth_date->display($tree, null, true) ?>
                         <br>
                     <?php endforeach ?>
 
                     <?php if (empty($birth_dates) && $show_estimated_dates) : ?>
-                        <?= $estimated_birth_date->display(true) ?>
+                        <?= $estimated_birth_date->display($tree, null, true) ?>
                     <?php endif ?>
                 </td>
 
@@ -340,12 +340,12 @@ $deathAgeData = [
                 <?php $death_dates = $individual->getAllDeathDates() ?>
                 <td data-sort="<?= $individual->getEstimatedDeathDate()->julianDay() ?>">
                     <?php foreach ($death_dates as $num => $death_date) : ?>
-                        <?= $death_date->display(true) ?>
+                        <?= $death_date->display($tree, null, true) ?>
                     <br>
                     <?php endforeach ?>
 
                     <?php if (empty($death_dates) && $show_estimated_dates && $individual->getEstimatedDeathDate()->minimumDate()->minimumJulianDay() < $today_jd) : ?>
-                        <?= $individual->getEstimatedDeathDate()->display(true) ?>
+                        <?= $individual->getEstimatedDeathDate()->display($tree, null, true) ?>
                     <?php endif ?>
                 </td>
 
@@ -377,7 +377,7 @@ $deathAgeData = [
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $individual->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $individual->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $individual->lastChangeTimestamp()]) ?>
                 </td>
 
@@ -424,11 +424,11 @@ $deathAgeData = [
             <tr>
                 <th colspan="16">
                     <div class="btn-group btn-group-sm">
-                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" autocomplete="off" data-wt-persist="individuals-parents">
+                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" autocomplete="off" data-wt-persist="individuals-parents" autocomplete="off">
                         <label class="btn btn-secondary" for="btn-toggle-parents">
                             <?= I18N::translate('Show parents') ?>
                         </label>
-                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" autocomplete="off" data-wt-persist="individuals-statistics">
+                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" autocomplete="off" data-wt-persist="individuals-statistics" autocomplete="off">
                         <label class="btn btn-secondary" for="btn-toggle-statistics">
                             <?= I18N::translate('Show statistics charts') ?>
                         </label>

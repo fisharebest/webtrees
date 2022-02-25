@@ -7,10 +7,10 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var string                    $filesize
- * @var int                       $max_upload_files
- * @var Collection<string,string> $media_folders
- * @var string                    $title
+ * @var string                       $filesize
+ * @var int                          $max_upload_files
+ * @var Collection<array-key,string> $media_folders
+ * @var string                       $title
  */
 
 ?>
@@ -30,7 +30,7 @@ use Illuminate\Support\Collection;
     <?php for ($i = 1; $i <= $max_upload_files; $i++) : ?>
         <h2><?= I18N::translate('Media file') ?> <?= I18N::number($i) ?></h2>
 
-        <div class="row form-group">
+        <div class="row form-group mb-3">
             <label class="form-control-label col-sm-3" for="mediafile<?= e($i) ?>">
                 <?= I18N::translate('Media file to upload') ?>
                 <span class="visually-hidden"><?= e($i) ?></span>
@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
             </div>
         </div>
 
-        <div class="row form-group">
+        <div class="row form-group mb-3">
             <label class="form-control-label col-sm-3" for="filename<?= e($i) ?>">
                 <?= I18N::translate('Filename on server') ?>
                 <span class="visually-hidden"><?= e($i) ?></span>
@@ -53,7 +53,7 @@ use Illuminate\Support\Collection;
             </div>
         </div>
 
-        <div class="row form-group">
+        <div class="row form-group mb-3">
             <label class="form-control-label col-sm-3" for="folder_list<?= e($i) ?>">
                 <?= I18N::translate('Folder name on server') ?>
                 <span class="visually-hidden"><?= e($i) ?></span>

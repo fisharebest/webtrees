@@ -20,13 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Services\GedcomEditService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function redirect;
 
 /**
@@ -53,8 +51,7 @@ class AddUnlinkedAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $params = (array) $request->getParsedBody();
 
@@ -66,8 +63,8 @@ class AddUnlinkedAction implements RequestHandlerInterface
 
         $individual = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
 
-        $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $individual->url();
+        $base_url = Validator::attributes($request)->string('base_url');
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $individual->url());
 
         return redirect($url);
     }

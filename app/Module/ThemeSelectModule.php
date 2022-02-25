@@ -59,16 +59,19 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $menu = app(ModuleThemeInterface::class)->menuThemes();
+        $theme = app(ModuleThemeInterface::class);
+        assert($theme instanceof ModuleThemeInterface);
+
+        $menu = $theme->menuThemes();
 
         if ($menu instanceof Menu) {
             $content = '<ul class="nav text-justify" role="menu">' . view('components/menu-item', ['menu' => $menu]) . '</ul>';

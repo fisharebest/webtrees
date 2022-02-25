@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -121,8 +122,8 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
     /**
      * The URL for this chart.
      *
-     * @param Individual        $individual
-     * @param array<int|string> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -141,23 +142,13 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user  = $request->getAttribute('user');
-        $scale = (int) $request->getAttribute('scale');
-        $xrefs = $request->getQueryParams()['xrefs'] ?? [];
-        $ajax  = $request->getQueryParams()['ajax'] ?? '';
-
-
+        $tree  = Validator::attributes($request)->tree();
+        $user  = Validator::attributes($request)->user();
+        $scale = Validator::attributes($request)->isBetween(self::MINIMUM_SCALE, self::MAXIMUM_SCALE)->integer('scale');
+        $xrefs = Validator::queryParams($request)->array('xrefs');
+        $ajax  = Validator::queryParams($request)->boolean('ajax', false);
         $params = (array) $request->getParsedBody();
-
         $add = $params['add'] ?? '';
-
-        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
-
-        $scale = min($scale, self::MAXIMUM_SCALE);
-        $scale = max($scale, self::MINIMUM_SCALE);
 
         $xrefs[] = $add;
         $xrefs = array_filter(array_unique($xrefs));
@@ -165,11 +156,13 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(static::class, [
-                'scale' => $scale,
                 'tree'  => $tree->name(),
+                'scale' => $scale,
                 'xrefs' => $xrefs,
             ]));
         }
+
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
         // Find the requested individuals.
         $individuals = (new Collection($xrefs))
@@ -207,9 +200,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
             return $individual instanceof Individual && $individual->canShow();
         });
 
-        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
-
-        if ($ajax === '1') {
+        if ($ajax) {
             $this->layout = 'layouts/ajax';
 
             return $this->chart($tree, $xrefs, $scale);

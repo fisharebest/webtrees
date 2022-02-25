@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -56,14 +55,9 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
         $params = (array) $request->getParsedBody();
-
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
@@ -95,8 +89,8 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         // Link the spouse to the family
         $family->createFact('1 ' . $link . ' @' . $spouse->xref() . '@', false);
 
-        $base_url = $request->getAttribute('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $spouse->url();
+        $base_url = Validator::attributes($request)->string('base_url');
+        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $spouse->url());
 
         return redirect($url);
     }

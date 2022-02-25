@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\Age;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
@@ -17,12 +16,12 @@ use Ramsey\Uuid\Uuid;
 $table_id = 'table-fam-' . Uuid::uuid4()->toString(); // lists requires a unique ID in case there are multiple lists per page
 
 $today             = new Date(strtoupper(date('d M Y')));
-$today_jd          = Carbon::now()->julianDay();
-$hundred_years_ago = Carbon::now()->subYears(100)->julianDay();
+$today_jd          = Registry::timestampFactory()->now()->julianDay();
+$hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();
 
 /**
- * @var Tree               $tree
- * @var Collection<Family> $families
+ * @var Tree                   $tree
+ * @var Collection<int,Family> $families
  */
 
 ?>
@@ -248,7 +247,7 @@ $marriageAgeData = [
                 <!-- Husband name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $husb->sortName()))))) ?>">
                     <?php foreach ($husb->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] !== '_MARNM' || $num == $husb->getPrimaryName()) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num === $husb->getPrimaryName()) : ?>
                         <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $husb->getPrimaryName() ? '' : 'text-muted' ?>">
                             <?= $name['full'] ?>
                         </a>
@@ -283,7 +282,7 @@ $marriageAgeData = [
                 <!-- Wife name -->
                 <td colspan="2" data-sort="<?= e(str_replace([',', Individual::PRAENOMEN_NESCIO, Individual::NOMEN_NESCIO], 'AAAA', implode(',', array_reverse(explode(',', $wife->sortName()))))) ?>">
                     <?php foreach ($wife->getAllNames() as $num => $name) : ?>
-                        <?php if ($name['type'] !== '_MARNM' || $num == $wife->getPrimaryName()) : ?>
+                        <?php if ($name['type'] !== '_MARNM' || $num === $wife->getPrimaryName()) : ?>
                             <a title="<?= $name['type'] === '_MARNM' ? I18N::translate('Married name') :  '' ?>" href="<?= e($family->url()) ?>" class="<?= $num === $wife->getPrimaryName() ? '' : 'text-muted' ?>">
                                 <?= $name['full'] ?>
                             </a>
@@ -319,7 +318,7 @@ $marriageAgeData = [
                 <td data-sort="<?= $family->getMarriageDate()->julianDay() ?>">
                     <?php if ($marriage_dates = $family->getAllMarriageDates()) : ?>
                         <?php foreach ($marriage_dates as $n => $marriage_date) : ?>
-                            <div><?= $marriage_date->display(true) ?></div>
+                            <div><?= $marriage_date->display($tree, null, true) ?></div>
                         <?php endforeach ?>
                         <?php if ($marriage_dates[0]->gregorianYear() >= 1550 && $marriage_dates[0]->gregorianYear() < 2030) : ?>
                             <?php
@@ -354,7 +353,7 @@ $marriageAgeData = [
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $family->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $family->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $family->lastChangeTimestamp()]) ?>
                 </td>
 
@@ -417,11 +416,11 @@ $marriageAgeData = [
             <tr>
                 <th colspan="14">
                     <div class="btn-group btn-group-sm">
-                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" autocomplete="off" data-wt-persist="families-parents">
+                        <input type="checkbox" class="btn-check" id="btn-toggle-parents" autocomplete="off" data-wt-persist="families-parents" autocomplete="off">
                         <label class="btn btn-secondary" for="btn-toggle-parents">
                             <?= I18N::translate('Show parents') ?>
                         </label>
-                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" autocomplete="off" data-wt-persist="families-statistics">
+                        <input type="checkbox" class="btn-check" id="btn-toggle-statistics" autocomplete="off" data-wt-persist="families-statistics" autocomplete="off">
                         <label class="btn btn-secondary" for="btn-toggle-statistics">
                             <?= I18N::translate('Show statistics charts') ?>
                         </label>

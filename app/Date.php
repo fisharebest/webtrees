@@ -19,18 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use DomainException;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
-use Fisharebest\Webtrees\Date\FrenchDate;
-use Fisharebest\Webtrees\Date\GregorianDate;
-use Fisharebest\Webtrees\Date\HijriDate;
-use Fisharebest\Webtrees\Date\JalaliDate;
-use Fisharebest\Webtrees\Date\JewishDate;
-use Fisharebest\Webtrees\Date\JulianDate;
-use Fisharebest\Webtrees\Date\RomanDate;
-
-use function app;
 
 /**
  * A representation of GEDCOM dates and date ranges.
@@ -67,6 +57,8 @@ class Date
      */
     public function __construct(string $date)
     {
+        $calendar_date_factory = Registry::calendarDateFactory();
+
         // Extract any explanatory text
         if (preg_match('/^(.*) ?[(](.*)[)]/', $date, $match)) {
             $date       = $match[1];
@@ -74,14 +66,14 @@ class Date
         }
         if (preg_match('/^(FROM|BET) (.+) (AND|TO) (.+)/', $date, $match)) {
             $this->qual1 = $match[1];
-            $this->date1 = $this->parseDate($match[2]);
+            $this->date1 = $calendar_date_factory->make($match[2]);
             $this->qual2 = $match[3];
-            $this->date2 = $this->parseDate($match[4]);
+            $this->date2 = $calendar_date_factory->make($match[4]);
         } elseif (preg_match('/^(TO|FROM|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
             $this->qual1 = $match[1];
-            $this->date1 = $this->parseDate($match[2]);
+            $this->date1 = $calendar_date_factory->make($match[2]);
         } else {
-            $this->date1 = $this->parseDate($date);
+            $this->date1 = $calendar_date_factory->make($date);
         }
     }
 
@@ -98,166 +90,20 @@ class Date
     }
 
     /**
-     * Convert a calendar date, such as "12 JUN 1943" into calendar date object.
-     * A GEDCOM date range may have two calendar dates.
-     *
-     * @param string $date
-     *
-     * @return AbstractCalendarDate
-     * @throws DomainException
-     */
-    private function parseDate(string $date): AbstractCalendarDate
-    {
-        // Valid calendar escape specified? - use it
-        if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
-            $cal  = $match[1];
-            $date = $match[2];
-        } else {
-            $cal = '';
-        }
-        // A date with a month: DM, M, MY or DMY
-        if (preg_match('/^(\d?\d?) ?(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL|VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP|MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH|FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN) ?((?:\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d)?)$/', $date, $match)) {
-            $d = $match[1];
-            $m = $match[2];
-            $y = $match[3];
-        } elseif (preg_match('/^(\d{1,4}(?: B\.C\.)?|\d\d\d\d\/\d\d)$/', $date, $match)) {
-            // A date with just a year
-            $d = '';
-            $m = '';
-            $y = $match[1];
-        } else {
-            // An invalid date - do the best we can.
-            $d = '';
-            $m = '';
-            $y = '';
-            // Look for a 3/4 digit year anywhere in the date
-            if (preg_match('/\b(\d{3,4})\b/', $date, $match)) {
-                $y = $match[1];
-            }
-            // Look for a month anywhere in the date
-            if (preg_match('/(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC|TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL|VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP|MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH|FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)/', $date, $match)) {
-                $m = $match[1];
-                // Look for a day number anywhere in the date
-                if (preg_match('/\b(\d\d?)\b/', $date, $match)) {
-                    $d = $match[1];
-                }
-            }
-        }
-
-        // Unambiguous dates - override calendar escape
-        if (preg_match('/^(TSH|CSH|KSL|TVT|SHV|ADR|ADS|NSN|IYR|SVN|TMZ|AAV|ELL)$/', $m)) {
-            $cal = JewishDate::ESCAPE;
-        } elseif (preg_match('/^(VEND|BRUM|FRIM|NIVO|PLUV|VENT|GERM|FLOR|PRAI|MESS|THER|FRUC|COMP)$/', $m)) {
-            $cal = FrenchDate::ESCAPE;
-        } elseif (preg_match('/^(MUHAR|SAFAR|RABI[AT]|JUMA[AT]|RAJAB|SHAAB|RAMAD|SHAWW|DHUAQ|DHUAH)$/', $m)) {
-            $cal = HijriDate::ESCAPE; // This is a WT extension
-        } elseif (preg_match('/^(FARVA|ORDIB|KHORD|TIR|MORDA|SHAHR|MEHR|ABAN|AZAR|DEY|BAHMA|ESFAN)$/', $m)) {
-            $cal = JalaliDate::ESCAPE; // This is a WT extension
-        } elseif (preg_match('/^\d{1,4}( B\.C\.)|\d\d\d\d\/\d\d$/', $y)) {
-            $cal = JulianDate::ESCAPE;
-        }
-
-        // Ambiguous dates - don't override calendar escape
-        if ($cal === '') {
-            if (preg_match('/^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$/', $m)) {
-                $cal = GregorianDate::ESCAPE;
-            } elseif (preg_match('/^[345]\d\d\d$/', $y)) {
-                // Year 3000-5999
-                $cal = JewishDate::ESCAPE;
-            } else {
-                $cal = GregorianDate::ESCAPE;
-            }
-        }
-        // Now construct an object of the correct type
-        switch ($cal) {
-            case GregorianDate::ESCAPE:
-                return new GregorianDate([
-                    $y,
-                    $m,
-                    $d,
-                ]);
-            case JulianDate::ESCAPE:
-                return new JulianDate([
-                    $y,
-                    $m,
-                    $d,
-                ]);
-            case JewishDate::ESCAPE:
-                return new JewishDate([
-                    $y,
-                    $m,
-                    $d,
-                ]);
-            case HijriDate::ESCAPE:
-                return new HijriDate([
-                    $y,
-                    $m,
-                    $d,
-                ]);
-            case FrenchDate::ESCAPE:
-                return new FrenchDate([
-                    $y,
-                    $m,
-                    $d,
-                ]);
-            case JalaliDate::ESCAPE:
-                return new JalaliDate([
-                    $y,
-                    $m,
-                    $d,
-                ]);
-            case RomanDate::ESCAPE:
-                return new RomanDate([
-                    $y,
-                    $m,
-                    $d,
-                ]);
-            default:
-                throw new DomainException('Invalid calendar');
-        }
-    }
-
-    /**
-     * A list of supported calendars and their names.
-     *
-     * @return array<string>
-     */
-    public static function calendarNames(): array
-    {
-        return [
-            /* I18N: The gregorian calendar */
-            'gregorian' => I18N::translate('Gregorian'),
-            /* I18N: The julian calendar */
-            'julian'    => I18N::translate('Julian'),
-            /* I18N: The French calendar */
-            'french'    => I18N::translate('French'),
-            /* I18N: The Hebrew/Jewish calendar */
-            'jewish'    => I18N::translate('Jewish'),
-            /* I18N: The Arabic/Hijri calendar */
-            'hijri'     => I18N::translate('Hijri'),
-            /* I18N: The Persian/Jalali calendar */
-            'jalali'    => I18N::translate('Jalali'),
-        ];
-    }
-
-    /**
      * Convert a date to the preferred format and calendar(s) display.
      *
-     * @param bool        $url               Wrap the date in a link to calendar.php
+     * @param Tree|null   $tree              Wrap the date in a link to the calendar page for the tree
      * @param string|null $date_format       Override the default date format
-     * @param bool        $convert_calendars Convert the date into other calendars
+     * @param bool        $convert_calendars Convert the date into other calendars (requires a tree)
      *
      * @return string
      */
-    public function display(bool $url = false, string $date_format = null, bool $convert_calendars = true): string
+    public function display(Tree $tree = null, string $date_format = null, bool $convert_calendars = false): string
     {
-        // Do we need a new DateFormatterService class?
-        if (app()->has(Tree::class)) {
-            $tree            = app(Tree::class);
+        if ($tree instanceof Tree) {
             $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
         } else {
-            $tree            = null;
-            $CALENDAR_FORMAT = '';
+            $CALENDAR_FORMAT = 'none';
         }
 
         $date_format = $date_format ?? I18N::dateFormat();
@@ -300,8 +146,8 @@ class Date
                     }
                 }
                 // If the date is different from the unconverted date, add it to the date string.
-                if ($d1 != $d1tmp && $d1tmp !== '') {
-                    if ($url) {
+                if ($d1 !== $d1tmp && $d1tmp !== '') {
+                    if ($tree instanceof Tree) {
                         if ($CALENDAR_FORMAT !== 'none') {
                             $conv1 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d1conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1tmp . '</a>)</span>';
                         } else {
@@ -311,8 +157,8 @@ class Date
                         $conv1 .= ' <span dir="' . I18N::direction() . '">(' . $d1tmp . ')</span>';
                     }
                 }
-                if ($this->date2 !== null && $d2 != $d2tmp && $d1tmp != '') {
-                    if ($url) {
+                if ($this->date2 !== null && $d2 !== $d2tmp && $d1tmp !== '') {
+                    if ($tree instanceof Tree) {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(<a href="' . e($d2conv->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2tmp . '</a>)</span>';
                     } else {
                         $conv2 .= ' <span dir="' . I18N::direction() . '">(' . $d2tmp . ')</span>';
@@ -322,7 +168,7 @@ class Date
         }
 
         // Add URLs, if requested
-        if ($url) {
+        if ($tree instanceof Tree) {
             $d1 = '<a href="' . e($this->date1->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d1 . '</a>';
             if ($this->date2 instanceof AbstractCalendarDate) {
                 $d2 = '<a href="' . e($this->date2->calendarUrl($date_format, $tree)) . '" rel="nofollow">' . $d2 . '</a>';

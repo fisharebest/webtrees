@@ -43,6 +43,8 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
+use PhpParser\Node\Expr\AssignOp\Mod;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
@@ -55,6 +57,13 @@ use function view;
  */
 trait ModuleThemeTrait
 {
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
     /**
      * A sentence describing what this module does.
      *
@@ -144,7 +153,11 @@ trait ModuleThemeTrait
     public function individualBoxMenuCharts(Individual $individual): array
     {
         $menus = [];
-        foreach (app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user()) as $chart) {
+
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        foreach ($module_service->findByComponent(ModuleChartInterface::class, $individual->tree(), Auth::user()) as $chart) {
             $menu = $chart->chartBoxMenu($individual);
             if ($menu) {
                 $menus[] = $menu;
@@ -194,11 +207,10 @@ trait ModuleThemeTrait
      */
     public function menuChangeBlocks(Tree $tree): ?Menu
     {
-        /** @var ServerRequestInterface $request */
         $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
 
-        $route = $request->getAttribute('route');
-        assert($route instanceof Route);
+        $route = Validator::attributes($request)->route();
 
         if (Auth::check() && $route->name === UserPage::class) {
             return new Menu(I18N::translate('Customize this page'), route(UserPageEdit::class, ['tree' => $tree->name()]), 'menu-change-blocks');
@@ -267,13 +279,13 @@ trait ModuleThemeTrait
         }
 
         $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
 
         // Return to this page after login...
         $redirect = $request->getQueryParams()['url'] ?? (string) $request->getUri();
 
-        $tree  = $request->getAttribute('tree');
-        $route = $request->getAttribute('route');
-        assert($route instanceof Route);
+        $tree  = Validator::attributes($request)->treeOptional();
+        $route = Validator::attributes($request)->route();
 
         // ...but switch from the tree-page to the user-page
         if ($route->name === TreePage::class) {
@@ -387,10 +399,12 @@ trait ModuleThemeTrait
     {
         $my_xref = $tree->getUserPreference(Auth::user(), UserInterface::PREF_TREE_ACCOUNT_XREF);
 
-        $pedigree_chart = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-            ->first(static function (ModuleInterface $module): bool {
-                return $module instanceof PedigreeChartModule;
-            });
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        $pedigree_chart = $module_service
+            ->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+            ->first(static fn (ModuleInterface $module): bool => $module instanceof PedigreeChartModule);
 
         if ($my_xref !== '' && $pedigree_chart instanceof PedigreeChartModule) {
             $individual = Registry::individualFactory()->make($my_xref, $tree);
@@ -417,9 +431,12 @@ trait ModuleThemeTrait
     public function menuPendingChanges(?Tree $tree): ?Menu
     {
         if ($tree instanceof Tree && $tree->hasPendingEdit() && Auth::isModerator($tree)) {
+            $request = app(ServerRequestInterface::class);
+            assert($request instanceof ServerRequestInterface);
+
             $url = route(PendingChanges::class, [
                 'tree' => $tree->name(),
-                'url' => (string) app(ServerRequestInterface::class)->getUri(),
+                'url' => (string) $request->getUri(),
             ]);
 
             return new Menu(I18N::translate('Pending changes'), $url, 'menu-pending');
@@ -435,7 +452,10 @@ trait ModuleThemeTrait
      */
     public function menuThemes(): ?Menu
     {
-        $themes = app(ModuleService::class)->findByInterface(ModuleThemeInterface::class, false, true);
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        $themes = $module_service->findByInterface(ModuleThemeInterface::class, false, true);
 
         $current_theme = app(ModuleThemeInterface::class);
 
@@ -468,10 +488,12 @@ trait ModuleThemeTrait
             return [];
         }
 
-        return app(ModuleService::class)->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
-            ->map(static function (ModuleMenuInterface $menu) use ($tree): ?Menu {
-                return $menu->getMenu($tree);
-            })
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        return $module_service
+            ->findByComponent(ModuleMenuInterface::class, $tree, Auth::user())
+            ->map(static fn (ModuleMenuInterface $menu): ?Menu => $menu->getMenu($tree))
             ->filter()
             ->all();
     }

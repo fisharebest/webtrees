@@ -9,10 +9,10 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<ModuleDataFixInterface> $data_fixes
- * @var string                             $latest_version
- * @var string                             $title
- * @var Tree                               $tree
+ * @var Collection<int,ModuleDataFixInterface> $data_fixes
+ * @var string                                 $latest_version
+ * @var string                                 $title
+ * @var Tree                                   $tree
  */
 
 ?>
@@ -24,7 +24,7 @@ use Illuminate\Support\Collection;
 <form method="post" action="<?= e(route(DataFixSelect::class, ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="data_fix">
             <?= I18N::translate('Data fix') ?>
         </label>
@@ -40,7 +40,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-sm-3">
         </div>
 

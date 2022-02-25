@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\CommonMark;
 
 use Fisharebest\Webtrees\GedcomRecord;
-use League\CommonMark\Inline\Element\AbstractStringContainer;
+use League\CommonMark\Node\Node;
 
 /**
  * Convert XREFs within markdown text to links
  */
-class XrefNode extends AbstractStringContainer
+class XrefNode extends Node
 {
     private GedcomRecord $record;
 
@@ -41,6 +41,9 @@ class XrefNode extends AbstractStringContainer
         $this->record = $record;
     }
 
+    /**
+     * @return GedcomRecord
+     */
     public function record(): GedcomRecord
     {
         return $this->record;

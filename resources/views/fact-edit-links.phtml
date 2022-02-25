@@ -1,0 +1,17 @@
+<?php
+
+use Fisharebest\Webtrees\Fact;
+
+/**
+ * @var Fact        $fact
+ * @var string|null $url
+ */
+
+?>
+<?php if ($fact->canEdit()) : ?>
+    <div class="pt-2 wt-fact-edit-links">
+        <?= view('edit/icon-fact-edit', ['fact' => $fact, 'url' => $url ?? null]) ?>
+        <?= view('edit/icon-fact-copy', ['fact' => $fact]) ?>
+        <?= view('edit/icon-fact-delete', ['fact' => $fact]) ?>
+    </div>
+<?php endif ?>

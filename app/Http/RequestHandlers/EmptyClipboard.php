@@ -55,9 +55,9 @@ class EmptyClipboard implements RequestHandlerInterface
     {
         $this->clipboard_service->emptyClipboard();
 
-        $base_url    = $request->getAttribute('base_url');
+        $base_url    = Validator::attributes($request)->string('base_url');
         $default_url = $request->getHeaderLine('Referer');
-        $url         = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url') ?? $default_url;
+        $url         = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $default_url);
 
         return redirect($url);
     }

@@ -237,7 +237,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of individuals in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalIndividuals(): Collection
     {
@@ -253,7 +253,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of families in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalFamilies(): Collection
     {
@@ -269,7 +269,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of sources in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalSources(): Collection
     {
@@ -285,7 +285,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of media objects in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalMediaObjects(): Collection
     {
@@ -299,9 +299,9 @@ class ControlPanel implements RequestHandlerInterface
     }
 
     /**
-     * Count the number of repositorie in each tree.
+     * Count the number of repositories in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalRepositories(): Collection
     {
@@ -321,7 +321,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of notes in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalNotes(): Collection
     {
@@ -341,7 +341,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of submitters in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalSubmitters(): Collection
     {

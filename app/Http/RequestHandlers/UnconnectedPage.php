@@ -24,14 +24,12 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
-use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function strtolower;
 
 /**
@@ -48,12 +46,8 @@ class UnconnectedPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof User);
-
+        $tree       = Validator::attributes($request)->tree();
+        $user       = Validator::attributes($request)->user();
         $aliases    = (bool) ($request->getQueryParams()['aliases'] ?? false);
         $associates = (bool) ($request->getQueryParams()['associates'] ?? false);
 

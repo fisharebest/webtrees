@@ -2,7 +2,6 @@
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditNotePage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
@@ -10,9 +9,9 @@ use Fisharebest\Webtrees\Registry;
 use Illuminate\Support\Collection;
 
 /**
- * @var Note             $record
- * @var Collection<Fact> $clipboard_facts
- * @var string           $text
+ * @var Note                 $record
+ * @var Collection<int,Fact> $clipboard_facts
+ * @var string               $text
  */
 
 ?>
@@ -22,7 +21,7 @@ use Illuminate\Support\Collection;
         <th scope="row">
             <?= I18N::translate('Shared note') ?>
             <?php if (Auth::isEditor($record->tree())) : ?>
-                <div class="editfacts nowrap">
+                <div class="pt-2 wt-fact-edit-links">
                     <a class="btn btn-link" href="<?= e(route(EditNotePage::class, ['xref' => $record->xref(), 'tree' => $record->tree()->name()])) ?>" title="<?= I18N::translate('Edit') ?>">
                         <?= view('icons/edit') ?>
                         <span class="visually-hidden">
@@ -39,7 +38,7 @@ use Illuminate\Support\Collection;
 
     <?php foreach ($record->facts() as $fact) : ?>
         <?php if ($fact->tag() !== 'NOTE:CONT') : ?>
-           <?php FunctionsPrintFacts::printFact($fact, $record) ?>
+            <?= view('fact', ['fact' => $fact, 'record' => $record]) ?>
     <?php endif ?>
     <?php endforeach ?>
 </table>

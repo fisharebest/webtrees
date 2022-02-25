@@ -275,8 +275,6 @@ class View
     {
         $view = new self($name, $data);
 
-        DebugBar::addView($name, $data);
-
         return $view->render();
     }
 }

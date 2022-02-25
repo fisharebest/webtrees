@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -124,11 +125,9 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $route = $request->getAttribute('route');
-        assert($route instanceof Route);
-
-        $tree  = $request->getAttribute('tree');
-        $user  = $request->getAttribute('user');
+        $route = Validator::attributes($request)->route();
+        $tree  = Validator::attributes($request)->treeOptional();
+        $user  = Validator::attributes($request)->user();
 
         if ($tree instanceof Tree && $tree->getPreference('SHOW_COUNTER')) {
             $page_name = self::PAGE_NAMES[$route->name] ?? '';
@@ -141,7 +140,8 @@ class HitCountFooterModule extends AbstractModule implements ModuleFooterInterfa
                 case RepositoryPage::class:
                 case SourcePage::class:
                 case SubmitterPage::class:
-                    $this->page_hits = $this->countHit($tree, $page_name, $request->getAttribute('xref', ''));
+                    $xref = Validator::attributes($request)->isXref()->string('xref');
+                    $this->page_hits = $this->countHit($tree, $page_name, $xref);
                     break;
 
                 case TreePage::class:

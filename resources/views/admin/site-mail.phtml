@@ -37,7 +37,7 @@ use Fisharebest\Webtrees\Webtrees;
 <form method="post" action="<?= e(route(EmailPreferencesAction::class)) ?>" class="form-horizontal">
     <?= csrf_field() ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_ACTIVE" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Messages') ?>
@@ -51,7 +51,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_DISP_NAME" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Sender name') ?>
@@ -65,7 +65,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_FROM_NAME" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Sender email') ?>
@@ -87,7 +87,7 @@ use Fisharebest\Webtrees\Webtrees;
 
     <h2><?= I18N::translate('SMTP mail server') ?></h2>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_HOST" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Server name') ?>
@@ -101,7 +101,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_PORT" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Port number') ?>
@@ -115,7 +115,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */
             I18N::translate('Use password') ?>
@@ -129,7 +129,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </fieldset>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_AUTH_USER" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Username') ?>
@@ -143,7 +143,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_AUTH_PASS" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Password') ?>
@@ -157,7 +157,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_SSL" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Secure connection') ?>
@@ -171,7 +171,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="SMTP_HELO" class="col-sm-3 col-form-label">
             <?= /* I18N: A configuration setting */
             I18N::translate('Sending server name') ?>
@@ -196,7 +196,7 @@ use Fisharebest\Webtrees\Webtrees;
         I18N::translate('DKIM digital signature') ?>
     </h2>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="DKIM_DOMAIN" class="col-sm-3 col-form-label">
             <?= I18N::translate('Domain name') ?>
         </label>
@@ -205,7 +205,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="DKIM_SELECTOR" class="col-sm-3 col-form-label">
             <?= I18N::translate('Selector') ?>
         </label>
@@ -214,7 +214,7 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label for="DKIM_KEY" class="col-sm-3 col-form-label">
             <?= I18N::translate('Private key') ?>
         </label>
@@ -225,7 +225,7 @@ use Fisharebest\Webtrees\Webtrees;
 
     <hr>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-3 col-sm-9">
             <p class="form-check">
                 <input class="form-check-input" type="checkbox" id="test" name="test">

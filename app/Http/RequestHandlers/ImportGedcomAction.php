@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\UnableToReadFile;
 use Psr\Http\Message\ResponseInterface;
@@ -32,7 +32,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function basename;
 use function redirect;
 use function route;
@@ -63,8 +62,7 @@ class ImportGedcomAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $data_filesystem = Registry::filesystem()->data();
 
@@ -73,6 +71,7 @@ class ImportGedcomAction implements RequestHandlerInterface
         $keep_media         = (bool) ($params['keep_media'] ?? false);
         $WORD_WRAPPED_NOTES = (bool) ($params['WORD_WRAPPED_NOTES'] ?? false);
         $GEDCOM_MEDIA_PATH  = $params['GEDCOM_MEDIA_PATH'];
+        $encoding           = $params['encoding'] ?? '';
 
         // Save these choices as defaults
         $tree->setPreference('keep_media', $keep_media ? '1' : '0');
@@ -86,7 +85,7 @@ class ImportGedcomAction implements RequestHandlerInterface
                 throw new FileUploadException($upload);
             }
 
-            $this->tree_service->importGedcomFile($tree, $upload->getStream(), basename($upload->getClientFilename()));
+            $this->tree_service->importGedcomFile($tree, $upload->getStream(), basename($upload->getClientFilename()), $encoding);
         }
 
         if ($source === 'server') {
@@ -95,7 +94,7 @@ class ImportGedcomAction implements RequestHandlerInterface
             if ($basename) {
                 $resource = $data_filesystem->readStream($basename);
                 $stream   = $this->stream_factory->createStreamFromResource($resource);
-                $this->tree_service->importGedcomFile($tree, $stream, $basename);
+                $this->tree_service->importGedcomFile($tree, $stream, $basename, $encoding);
             } else {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
             }

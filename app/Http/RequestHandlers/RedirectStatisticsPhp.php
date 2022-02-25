@@ -38,8 +38,6 @@ use function redirect;
  */
 class RedirectStatisticsPhp implements RequestHandlerInterface
 {
-    private StatisticsChartModule $statistics_chart_module;
-
     private ModuleService $module_service;
 
     private TreeService $tree_service;

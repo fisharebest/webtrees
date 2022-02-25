@@ -22,12 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -104,8 +104,8 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
     }
 
     /**
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -145,7 +145,9 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      */
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect($this->listUrl($request->getAttribute('tree'), $request->getQueryParams()));
+        $tree = Validator::attributes($request)->tree();
+
+        return redirect($this->listUrl($tree, $request->getQueryParams()));
     }
 
     /**
@@ -155,11 +157,8 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         $data_filesystem = Registry::filesystem()->data();
 
@@ -259,7 +258,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      * @param string $filter     optional search string
      * @param string $format     option OBJE/FILE/FORM/TYPE
      *
-     * @return Collection<Media>
+     * @return Collection<int,Media>
      */
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $format): Collection
     {

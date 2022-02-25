@@ -16,9 +16,9 @@ use Illuminate\Support\Collection;
  * @var array<string,array<string,string>> $access_summary
  * @var string                             $description
  * @var string                             $interface
- * @var Collection<ModuleInterface>        $modules
+ * @var Collection<int,ModuleInterface>    $modules
  * @var string                             $title
- * @var Collection<Tree>                   $trees
+ * @var Collection<int,Tree>               $trees
  * @var bool                               $uses_access
  * @var bool                               $uses_sorting
  */
@@ -54,7 +54,7 @@ use Illuminate\Support\Collection;
                     <th scope="col">
                         <input type="hidden" name="order[]" value="<?= e($module->name()) ?>">
                         <span title="<?= e(strip_tags($module->description())) ?>">
-                            <?= $module->title() ?>
+                            <?= $module instanceof ModuleCustomInterface ? $module->customTranslations(I18N::languageTag())[$module->title()] ?? $module->title() : $module->title() ?>
                         </span>
                         <?php if ($module instanceof ModuleConfigInterface) : ?>
                             <?php if ($module->isEnabled()) : ?>

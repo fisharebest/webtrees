@@ -26,7 +26,11 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
+use function assert;
 
 /**
  * Census
@@ -62,9 +66,15 @@ class Census extends AbstractElement
             'census_places' => Censuses::censusPlaces(I18N::languageTag()),
         ]);
 
-        $xref = app(ServerRequestInterface::class)->getAttribute('xref', '');
+        $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
 
-        $census_assistant = app(ModuleService::class)->findByInterface(CensusAssistantModule::class)->first();
+        $xref = Validator::attributes($request)->isXref()->string('xref', '');
+
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        $census_assistant = $module_service->findByInterface(CensusAssistantModule::class)->first();
         $record           = Registry::individualFactory()->make($xref, $tree);
 
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {

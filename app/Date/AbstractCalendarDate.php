@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
 
@@ -137,7 +137,7 @@ abstract class AbstractCalendarDate
         // ...else construct an inequivalent xxxxDate object
         if ($date->year === 0) {
             // Incomplete date - convert on basis of anniversary in current year
-            $today = $date->calendar->jdToYmd(Carbon::now()->julianDay());
+            $today = $date->calendar->jdToYmd(Registry::timestampFactory()->now()->julianDay());
             $jd    = $date->calendar->ymdToJd($today[0], $date->month, $date->day === 0 ? $today[2] : $date->day);
         } else {
             // Complete date
@@ -843,7 +843,7 @@ abstract class AbstractCalendarDate
      */
     public function todayYmd(): array
     {
-        return $this->calendar->jdToYmd(Carbon::now()->julianDay());
+        return $this->calendar->jdToYmd(Registry::timestampFactory()->now()->julianDay());
     }
 
     /**

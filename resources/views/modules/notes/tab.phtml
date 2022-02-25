@@ -1,17 +1,20 @@
 <?php
 
+use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
 use Illuminate\Support\Collection;
 
 /**
- * @var bool             $can_edit
- * @var Collection<Fact> $clipboard_facts
- * @var Collection<Fact> $facts
- * @var Individual       $individual
+ * @var bool                 $can_edit
+ * @var Collection<int,Fact> $clipboard_facts
+ * @var Collection<int,Fact> $facts
+ * @var Individual           $individual
  */
 
 ?>
@@ -21,18 +24,59 @@ use Illuminate\Support\Collection;
         <tr>
             <td colspan="2">
                 <label>
-                    <input id="show-level-2-notes" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-note" data-wt-persist="level-two-notes">
+                    <input id="show-level-2-notes" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-note" data-wt-persist="level-two-notes" autocomplete="off">
                     <?= I18N::translate('Show all notes') ?>
                 </label>
             </td>
         </tr>
 
         <?php foreach ($facts as $fact) : ?>
-            <?php FunctionsPrintFacts::printMainNotes($fact, 1) ?>
-            <?php FunctionsPrintFacts::printMainNotes($fact, 2) ?>
-            <?php FunctionsPrintFacts::printMainNotes($fact, 3) ?>
-            <?php FunctionsPrintFacts::printMainNotes($fact, 4) ?>
-        <?php endforeach ?>
+            <?php if ($fact->tag() === 'INDI:NOTE' || $fact->tag() === 'FAM:NOTE') : ?>
+                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
+            <?php else : ?>
+                <?php
+                    if ($fact->isPendingAddition()) {
+                        $styleadd = 'wt-new ';
+                    } elseif ($fact->isPendingDeletion()) {
+                        $styleadd = 'wt-old ';
+                    } else {
+                        $styleadd = '';
+                    }
+                ?>
+
+                <tr class="wt-level-two-note collapse">
+                    <th scope="row" class="rela <?= $styleadd ?>">
+                        <?= $fact->label() ?>
+                        <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-notes']) ?>
+                    </th>
+
+                    <td class="<?= $styleadd ?>">
+                        <?php preg_match_all("/\n[1-9] NOTE ?(.*(?:\n\d CONT.*)*)/", $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
+                        <?php foreach ($matches as $match) : ?>
+                            <div class="mb-2">
+                                <?php $text = preg_replace('/\n\d CONT ?/', "\n", $match[1]) ?>
+                                <?php if (preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $text)) : ?>
+                                    <?php $note = Registry::noteFactory()->make(trim($text, '@'), $individual->tree()) ?>
+                                    <?php if ($note instanceof Note) : ?>
+                                        <?php if ($note->canShow()) : ?>
+                                            <a href="<?= e($note->url()) ?>">
+                                                <?= I18N::translate('Shared note') ?>
+                                                <?= view('icons/note') ?>
+                                            </a>
+                                            <?= (new SubmitterText(''))->value($note->getNote(), $individual->tree()) ?>
+                                        <?php endif ?>
+                                    <?php else : ?>
+                                        <span class="error"><?= e($text) ?></span>
+                                    <?php endif ?>
+                                <?php else : ?>
+                                    <?= (new SubmitterText(''))->value($text, $individual->tree()) ?>
+                                <?php endif ?>
+                            </div>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                <?php endforeach ?>
+            </td>
+        </tr>
 
         <?php if ($facts->isEmpty()) : ?>
             <tr>

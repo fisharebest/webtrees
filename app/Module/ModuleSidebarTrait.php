@@ -31,13 +31,20 @@ trait ModuleSidebarTrait
     protected int $sidebar_order;
 
     /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * The text that appears on the sidebar's title.
      *
      * @param Individual $individual
      *
      * @return string
      */
-    public function sidebarTitle(Individual $individual): string
+    public function sidebarTitle(/** @scrutinizer ignore-unused */ Individual $individual): string
     {
         return $this->title();
     }
@@ -78,7 +85,7 @@ trait ModuleSidebarTrait
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function supportedFacts(): Collection
     {

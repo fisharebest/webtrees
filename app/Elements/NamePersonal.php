@@ -94,13 +94,7 @@ class NamePersonal extends AbstractElement
      */
     public function default(Tree $tree): string
     {
-        $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
-
-        if ($surname_tradition->hasSurnames()) {
-            return '//';
-        }
-
-        return '';
+        return SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'))->defaultName();
     }
 
     /**

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -50,7 +51,7 @@ class FixDuplicateLinksTest extends TestCase
     {
         parent::setUp();
 
-        $tree_service = new TreeService();
+        $tree_service = new TreeService(new GedcomImportService());
         $this->tree = $tree_service->create('name', 'title');
 
         $this->fixDuplicateLinks = new FixDuplicateLinks(new DataFixService());

@@ -27,13 +27,13 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_merge;
-use function assert;
 use function e;
 use function in_array;
 use function uasort;
@@ -61,9 +61,7 @@ class TreePrivacyPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree                 = Validator::attributes($request)->tree();
         $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy();
         $privacy_constants    = $this->privacyConstants();
@@ -99,7 +97,7 @@ class TreePrivacyPage implements RequestHandlerInterface
      *
      * @param Tree $tree
      *
-     * @return array<string,string>
+     * @return array<object>
      */
     private function privacyRestrictions(Tree $tree): array
     {

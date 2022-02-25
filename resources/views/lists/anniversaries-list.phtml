@@ -1,17 +1,17 @@
 <?php
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Fact> $facts
- * @var int              $id
- * @var int              $limit_low
- * @var int              $limit_high
+ * @var Collection<int,Fact> $facts
+ * @var int                  $id
+ * @var int                  $limit_low
+ * @var int                  $limit_high
  */
 
 ?>
@@ -46,8 +46,8 @@ use Illuminate\Support\Collection;
             <?= view('icons/sex', ['sex' => $record->sex()]) ?>
         <?php endif ?>
         <div class="indent">
-            <?= $fact->label() . ' — ' . $fact->date()->display(true) ?>
-            (<?= Carbon::now()->subYears($fact->anniv)->local()->diffForHumans() ?>)
+            <?= $fact->label() . ' — ' . $fact->date()->display($record->tree(), null, true) ?>
+            (<?= Registry::timestampFactory()->now()->subtractYears($fact->anniv)->diffForHumans() ?>)
             <?php if ($fact->place()->gedcomName() !== '') : ?>
                 — <a href="<?= e($fact->place()->url()) ?>" title="<?= strip_tags($fact->place()->fullName()) ?>">
                     <?= $fact->place()->shortName() ?>

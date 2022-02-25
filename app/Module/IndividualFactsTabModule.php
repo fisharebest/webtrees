@@ -184,7 +184,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param Date       $min_date
      * @param Date       $max_date
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     private function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): Collection
     {
@@ -274,7 +274,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param Date       $min_date
      * @param Date       $max_date
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     private function childFacts(Individual $person, Family $family, string $option, string $relation, Date $min_date, Date $max_date): Collection
     {
@@ -706,7 +706,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      * @param Date       $min_date
      * @param Date       $max_date
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     private function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): Collection
     {
@@ -873,7 +873,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @param Individual $person
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     private function associateFacts(Individual $person): Collection
     {
@@ -917,7 +917,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @param Individual $individual
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     private function historicFacts(Individual $individual): Collection
     {
@@ -953,7 +953,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function supportedFacts(): Collection
     {

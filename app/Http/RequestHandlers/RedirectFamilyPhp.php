@@ -56,8 +56,8 @@ class RedirectFamilyPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged   = Validator::queryParams($request)->requiredString('ged');
-        $famid = Validator::queryParams($request)->isXref()->requiredString('famid');
+        $ged   = Validator::queryParams($request)->string('ged');
+        $famid = Validator::queryParams($request)->isXref()->string('famid');
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {

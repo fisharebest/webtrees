@@ -59,8 +59,10 @@ class Log
     private static function addLog(string $message, string $log_type, Tree $tree = null): void
     {
         if (app()->has(ServerRequestInterface::class)) {
-            $request    = app(ServerRequestInterface::class);
-            $ip_address = $request->getAttribute('client-ip');
+            $request = app(ServerRequestInterface::class);
+            assert($request instanceof ServerRequestInterface);
+
+            $ip_address = Validator::attributes($request)->string('client-ip');
         } else {
             $ip_address = '127.0.0.1';
         }

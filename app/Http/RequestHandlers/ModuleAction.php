@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -59,8 +60,7 @@ class ModuleAction implements RequestHandlerInterface
     {
         $module_name = $request->getAttribute('module');
         $action      = $request->getAttribute('action');
-        $user        = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $user        = Validator::attributes($request)->user();
 
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,

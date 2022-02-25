@@ -30,13 +30,13 @@ use Fisharebest\Webtrees\Individual;
 class IcelandicSurnameTradition extends DefaultSurnameTradition
 {
     /**
-     * Does this surname tradition use surnames?
+     * A default/empty name
      *
-     * @return bool
+     * @return string
      */
-    public function hasSurnames(): bool
+    public function defaultName(): string
     {
-        return false;
+        return '';
     }
 
     /**

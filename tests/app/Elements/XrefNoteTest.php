@@ -57,7 +57,7 @@ class XrefNoteTest extends TestCase
 
         $request = $this->createMock(ServerRequestInterface::class);
 
-        app()->instance(ServerRequestInterface::class, $request);
+        $request = self::createRequest();
 
         $html = $element->edit('some-id', 'some-name', '@X123@', $tree);
         $dom  = new DOMDocument();

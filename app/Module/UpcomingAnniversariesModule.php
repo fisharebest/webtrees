@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -119,10 +118,10 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -149,13 +148,13 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         $events_filter = implode('|', $event_array);
 
-        $startjd = Carbon::now()->julianDay() + 1;
-        $endjd   = Carbon::now()->julianDay() + $days;
+        $startjd = Registry::timestampFactory()->now()->addDays(1)->julianDay();
+        $endjd   = Registry::timestampFactory()->now()->addDays($days)->julianDay();
 
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
         if ($facts->isEmpty()) {
-            if ($endjd == $startjd) {
+            if ($endjd === $startjd) {
                 $content = view('modules/upcoming_events/empty', [
                     'message' => I18N::translate('No events exist for tomorrow.'),
                 ]);

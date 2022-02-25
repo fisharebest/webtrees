@@ -28,6 +28,20 @@ use Fisharebest\Webtrees\Tree;
 trait ModuleListTrait
 {
     /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * A main menu item for this list, or null if the list is empty.
      *
      * @param Tree $tree
@@ -71,8 +85,8 @@ trait ModuleListTrait
     /**
      * The URL for a page showing list options.
      *
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -100,7 +114,7 @@ trait ModuleListTrait
      *
      * @return bool
      */
-    public function listIsEmpty(Tree $tree): bool
+    public function listIsEmpty(/** @scrutinizer ignore-unused */ Tree $tree): bool
     {
         return false;
     }

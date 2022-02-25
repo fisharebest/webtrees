@@ -52,7 +52,7 @@ class CzechMonarchsAndPresidents extends AbstractModule implements ModuleHistori
     /**
      * All events provided by this module.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function historicEventsAll(): Collection
     {

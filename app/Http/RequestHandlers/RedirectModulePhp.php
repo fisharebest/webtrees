@@ -34,7 +34,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function redirect;
-use function route;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).

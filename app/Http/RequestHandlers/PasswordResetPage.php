@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -58,7 +59,7 @@ class PasswordResetPage implements RequestHandlerInterface, StatusCodeInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree  = $request->getAttribute('tree');
+        $tree  = Validator::attributes($request)->treeOptional();
         $token = $request->getAttribute('token');
         $title = I18N::translate('Set a new password');
         $user  = $this->user_service->findByToken($token);

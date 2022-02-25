@@ -63,7 +63,6 @@ use Fisharebest\Webtrees\Elements\CountOfChildren;
 use Fisharebest\Webtrees\Elements\CountOfMarriages;
 use Fisharebest\Webtrees\Elements\Cremation;
 use Fisharebest\Webtrees\Elements\CustomElement;
-use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
 use Fisharebest\Webtrees\Elements\CustomIndividualEvent;
@@ -619,7 +618,7 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:SUBM'                => new XrefSubmitter(I18N::translate('Submitter')),
             'INDI:TITL'                => new NobilityTypeTitle(I18N::translate('Title')),
             'INDI:WILL'                => new Will(I18N::translate('Will')),
-            'NOTE'                     => new NoteRecord(I18N::translate('Note')),
+            'NOTE'                     => new NoteRecord(I18N::translate('Shared note')),
             'NOTE:CHAN'                => new Change(I18N::translate('Last change')),
             'NOTE:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
             'NOTE:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time of last change')),

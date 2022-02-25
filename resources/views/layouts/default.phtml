@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\DebugBar;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\BrowserconfigXml;
@@ -12,6 +11,7 @@ use Fisharebest\Webtrees\Module\ModuleGlobalInterface;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ServerRequestInterface;
@@ -62,11 +62,9 @@ use Psr\Http\Message\ServerRequestInterface;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->headContent();
         })->implode('') ?>
-
-        <?= DebugBar::renderHead() ?>
     </head>
 
-    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($request->getAttribute('route')->name, '\\'),1)) ?>">
+    <body class="wt-global wt-theme-<?= e(app(ModuleThemeInterface::class)->name()) ?> wt-route-<?= e(substr(strrchr($route = Validator::attributes($request)->route()->name ?? 'no-route', '\\'),1)) ?>">
         <header class="wt-header-wrapper d-print-none">
             <div class="container-lg wt-header-container">
                 <div class="row wt-header-content">
@@ -90,7 +88,7 @@ use Psr\Http\Message\ServerRequestInterface;
                                     <label class="visually-hidden" for="quick-search"><?= I18N::translate('Search') ?></label>
                                     <input type="search" class="form-control wt-header-search-field" id="quick-search"
                                            name="query" size="15" placeholder="<?= I18N::translate('Search') ?>">
-                                    <button type="submit" class="btn btn-primary wt-header-search-button">
+                                    <button type="submit" class="btn btn-primary wt-header-search-button" aria-label="<?= I18N::translate('Search') ?>">
                                         <?= view('icons/search') ?>
                                     </button>
                                 </div>
@@ -183,7 +181,5 @@ use Psr\Http\Message\ServerRequestInterface;
         <?= app(ModuleService::class)->findByInterface(ModuleGlobalInterface::class)->map(static function (ModuleGlobalInterface $module): string {
             return $module->bodyContent();
         })->implode('') ?>
-
-        <?= DebugBar::render() ?>
     </body>
 </html>

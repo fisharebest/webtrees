@@ -289,16 +289,6 @@ class HelpText implements RequestHandlerInterface
                 $text  = view('help/relationship-privacy');
                 break;
 
-            case 'iso-8859-1':
-                $title = I18N::translate('Convert from UTF-8 to ISO-8859-1');
-                $text  = view('help/iso-8859-1');
-                break;
-
-            case 'zip-gedcom':
-                $title = I18N::translate('Compress the GEDCOM file');
-                $text  = view('help/zip-gedcom');
-                break;
-
             default:
                 $title = I18N::translate('Help');
                 $text  = I18N::translate('The help text has not been written for this item.');
@@ -329,7 +319,7 @@ class HelpText implements RequestHandlerInterface
             $gedcom_date = (string) $gedcom_date;
 
             $date                = new Date($gedcom_date);
-            $dates[$gedcom_date] = strip_tags($date->display(false, null, false));
+            $dates[$gedcom_date] = strip_tags($date->display());
         }
 
         return $dates;

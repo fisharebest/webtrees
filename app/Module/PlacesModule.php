@@ -170,7 +170,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
     /**
      * @param Individual $individual
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      * @throws Exception
      */
     private function getPersonalFacts(Individual $individual): Collection
@@ -227,7 +227,7 @@ class PlacesModule extends AbstractModule implements ModuleTabInterface
             'url'   => $url,
             'name'  => $name,
             'value' => $fact->value(),
-            'date'  => $fact->date()->display(true),
+            'date'  => $fact->date()->display($individual->tree(), null, true),
             'place' => $fact->place(),
         ];
     }

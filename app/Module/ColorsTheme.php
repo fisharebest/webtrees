@@ -20,12 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -83,8 +83,7 @@ class ColorsTheme extends CloudsTheme
      */
     public function postPaletteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $user = Validator::attributes($request)->user();
 
         $palette = $request->getQueryParams()['palette'];
         assert(array_key_exists($palette, $this->palettes()));

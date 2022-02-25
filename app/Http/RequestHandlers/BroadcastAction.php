@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -57,13 +58,13 @@ class BroadcastAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user    = $request->getAttribute('user');
+        $user    = Validator::attributes($request)->user();
         $params  = (array) $request->getParsedBody();
         $body    = $params['body'];
         $subject = $params['subject'];
         $to      = $params['to'];
 
-        $ip       = $request->getAttribute('client-ip');
+        $ip       = Validator::attributes($request)->string('client-ip');
         $to_users = $this->message_service->recipientUsers($to);
 
         if ($body === '' || $subject === '') {

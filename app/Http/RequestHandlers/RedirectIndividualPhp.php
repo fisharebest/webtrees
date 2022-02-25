@@ -56,8 +56,8 @@ class RedirectIndividualPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged  = Validator::queryParams($request)->requiredString('ged');
-        $pid  = Validator::queryParams($request)->isXref()->requiredString('pid');
+        $ged  = Validator::queryParams($request)->string('ged');
+        $pid  = Validator::queryParams($request)->isXref()->string('pid');
         $tree = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {

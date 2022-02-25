@@ -38,7 +38,7 @@ class PlaceLocation
     // e.g. "Westminster, London, England"
     private string $location_name;
 
-    /** @var Collection<string> The parts of a location name, e.g. ["Westminster", "London", "England"] */
+    /** @var Collection<int,string> The parts of a location name, e.g. ["Westminster", "London", "England"] */
     private Collection $parts;
 
     /**

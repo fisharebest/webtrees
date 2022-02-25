@@ -39,20 +39,6 @@ h4 {
     font-size: 1.25rem;
 }
 
-/* Tree Preferences - fit thumbnail into parent for Default Individual*/
-.select2-selection.select2-selection--single {
-    min-height: 36px;
-    height: auto;
-    padding: 2px 0;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-    padding-left: 2px;
-}
-.select2-selection--single .NAME {
-    padding-left: 4px;
-}
-
 .wt-global {
     background: url(administration/paper_fibers.png); /* http://www.subtlepatterns.com */
 }
@@ -68,6 +54,11 @@ h4 {
     .wt-global {
         background: url(administration/paper_fibers_@2X.png);
     }
+}
+
+/* Location edit maps */
+.wt-location-edit-map {
+    height: 55vh;
 }
 
 /* Raw GEDCOM data */

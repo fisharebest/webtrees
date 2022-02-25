@@ -1,0 +1,158 @@
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Elements\UnknownElement;
+use Fisharebest\Webtrees\Elements\XrefAssociate;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleInterface;
+use Fisharebest\Webtrees\Module\RelationshipsChartModule;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Services\RelationshipService;
+
+/**
+ * @var Fact         $fact
+ * @var GedcomRecord $record
+ */
+
+$parent  = $fact->record();
+$tree    = $parent->tree();
+[, $tag] = explode(':', $fact->tag());
+$label   = $fact->label();
+$value   = $fact->value();
+$type    = $fact->attribute('TYPE');
+$id      = $fact->id();
+
+$element = Registry::elementFactory()->make($fact->tag());
+
+// New or deleted facts need different styling
+$styles = [];
+if ($fact->isPendingAddition()) {
+    $styles[] = 'wt-new';
+}
+if ($fact->isPendingDeletion()) {
+    $styles[] = 'wt-old';
+}
+
+// Event of close relative
+if ($tag === 'EVEN' && $value === 'CLOSE_RELATIVE') {
+    $value    = '';
+    $styles[] = 'wt-relation-fact collapse';
+}
+
+// Event of close associates
+if ($id === 'asso') {
+    $styles[] = 'wt-associate-fact collapse';
+}
+
+if ($element instanceof UnknownElement && $tree->getPreference('HIDE_GEDCOM_ERRORS') === '0') {
+    $styles[] = 'd-none';
+}
+
+
+// historical facts
+if ($id === 'histo') {
+    $styles[] = 'wt-historic-fact collapse';
+}
+
+// Use marriage type as the label.  e.g. "Civil partnership"
+if ($tag === 'MARR') {
+    $label = $fact->label();
+    $type  = '';
+}
+
+?>
+<tr class="<?= implode(' ', $styles) ?>">
+    <th scope="row">
+        <div class="wt-fact-label"><?= $label?></div>
+
+        <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
+            <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
+        <?php endif ?>
+
+        <?php if ($tree->getPreference('SHOW_FACT_ICONS')) : ?>
+            <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>"></span>
+        <?php endif ?>
+    </th>
+
+    <td>
+        <?php if ($fact->target() instanceof Media) : ?>
+            <div class="d-flex">
+                <?php foreach ($fact->target()->mediaFiles() as $media_file) : ?>
+                    <?= $media_file->displayImage(100, 100, 'contain', []) ?>
+                <?php endforeach ?>
+            </div>
+
+            <a href="<?= e($fact->target()->url()) ?>"><?= $fact->target()->fullName() ?></a>
+
+            <?php foreach ($fact->target()->facts(['NOTE']) as $note) : ?>
+                <?= view('fact-gedcom-fields', ['gedcom' => $note->gedcom(), 'parent' => $fact->target()->tag(), 'tree' => $fact->record()->tree()]) ?>
+            <?php endforeach ?>
+        <?php else : ?>
+            <div class="wt-fact-main-attributes">
+                <?php if ($parent !== $record) : ?>
+                    <div class="wt-fact-record">
+                        <?php if ($parent instanceof Family) : ?>
+                            <?php foreach ($parent->spouses()->filter(static fn($individual): bool => $individual !== $record) as $spouse) : ?>
+                                <a href="<?= e($spouse->url()) ?>"><?= $spouse->fullName() ?></a> —
+                            <?php endforeach ?>
+                            <a href="<?= e($parent->url()) ?>"><?= I18N::translate('View this family') ?></a>
+                        <?php elseif ($parent instanceof Individual) : ?>
+                            <a href="<?= e($parent->url()) ?>"><?= $parent->fullName() ?></a>
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
+
+                <div class="wt-fact-value">
+                    <?= $element->value($value, $tree) ?>
+                    <?php if ($element instanceof XrefAssociate && $fact->target() instanceof Individual) : ?>
+                        <?php
+                        $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
+                            ->first(static fn (ModuleInterface $module):bool => $module instanceof RelationshipsChartModule)
+                        ?>
+
+                        <?php if ($module instanceof RelationshipsChartModule) : ?>
+                            — <a href="<?= $module->chartUrl($fact->target(), ['xref2' => $record->xref()]) ?>" rel="nofollow">
+                                <?= app(RelationshipService::class)->getCloseRelationshipName($fact->target(), $record) ?>
+                            </a>
+                        <?php endif ?>
+                    <?php endif ?>
+                </div>
+
+                <!-- Type of this fact/event (allow user-translations) -->
+                <?php if ($type !== '' && $tag !== 'EVEN' && $tag !== 'FACT') : ?>
+                    <div class="wt-fact-type">
+                        <?= Registry::elementFactory()->make($fact->tag() . ':TYPE')->labelValue(I18N::translate($type), $tree) ?>
+                    </div>
+                <?php endif ?>
+
+                <?= view('fact-date', ['cal_link' => 'true', 'fact' => $fact, 'record' => $record, 'time' => true]) ?>
+                <?= view('fact-place', ['fact' => $fact, 'record' => $record]) ?>
+            </div>
+
+            <div class="wt-fact-other-attributes mt-2">
+                <?php preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') ?((\n[3-9].*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
+                <?php foreach ($matches as $match) : ?>
+                    <?php if (!in_array($match[1], ['DATE', 'TIME', 'AGE', 'HUSB', 'WIFE', 'PLAC', 'ASSO', '_ASSO', 'STAT', 'TEMP', 'TYPE', 'CONT', 'NOTE', 'OBJE', 'SOUR'], true)) : ?>
+                        <?= view('fact-gedcom-fields', ['gedcom' => $match[0], 'parent' => $fact->tag() . ':' . $match[1], 'tree' => $tree]) ?>
+                    <?php endif ?>
+                <?php endforeach; ?>
+            </div>
+
+            <?php if ($id !== 'asso') : ?>
+                <?= view('fact-associates', ['fact' => $fact]) ?>
+            <?php endif ?>
+
+            <?= view('fact-sources', ['fact' => $fact]) ?>
+            <?= view('fact-notes', ['fact' => $fact]) ?>
+            <?= view('fact-media', ['fact' => $fact]) ?>
+        <?php endif ?>
+    </td>
+</tr>

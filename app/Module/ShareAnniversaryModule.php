@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -116,7 +116,7 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             ->filter(fn (Fact $fact): bool => $fact->date()->minimumJulianDay() === $fact->date()->maximumJulianDay())
             ->mapWithKeys(fn (Fact $fact): array => [
                 route(static::class, ['tree' => $record->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()]) =>
-                    $fact->label() . ' — ' . $fact->date()->display(false, null, false),
+                    $fact->label() . ' — ' . $fact->date()->display(),
             ]);
 
         if ($facts->isNotEmpty()) {
@@ -139,14 +139,11 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref    = $request->getAttribute('xref');
-        $fact_id = $request->getAttribute('fact_id');
-
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record);
+        $tree    = Validator::attributes($request)->tree();
+        $xref    = Validator::attributes($request)->isXref()->string('xref');
+        $fact_id = Validator::attributes($request)->string('fact_id');
+        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record  = Auth::checkRecordAccess($record);
 
         $fact = $record->facts()
             ->filter(fn (Fact $fact): bool => $fact->id() === $fact_id)

@@ -8,27 +8,28 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePreferencesAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var array<string,string>      $all_family_facts
- * @var array<string,string>      $all_individual_facts
- * @var array<string,string>      $all_surname_traditions
- * @var array<int,string>         $calendar_formats
- * @var string                    $data_folder
- * @var array<int,string>         $formats
- * @var Date                      $french_calendar_end
- * @var Date                      $french_calendar_start
- * @var Date                      $gregorian_calendar_start
- * @var Collection<UserInterface> $members
- * @var Individual|null           $pedigree_individual
- * @var array<int,string>         $privacy_options
- * @var array<int,string>         $relatives_events
- * @var array<int,string>         $source_types
- * @var array<string,string>      $surname_list_styles
- * @var string                    $title
- * @var Tree                      $tree
+ * @var array<string,string>          $all_family_facts
+ * @var array<string,string>          $all_individual_facts
+ * @var array<string,string>          $all_surname_traditions
+ * @var array<int,string>             $calendar_formats
+ * @var string                        $data_folder
+ * @var array<int,string>             $formats
+ * @var Date                          $french_calendar_end
+ * @var Date                          $french_calendar_start
+ * @var Date                          $gregorian_calendar_start
+ * @var Collection<int,UserInterface> $members
+ * @var Individual|null               $pedigree_individual
+ * @var array<int,string>             $privacy_options
+ * @var array<int,string>             $relatives_events
+ * @var array<int,string>             $source_types
+ * @var array<string,string>          $surname_list_styles
+ * @var string                        $title
+ * @var Tree                          $tree
  * @var int                       $tree_count
  */
 
@@ -44,7 +45,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('General') ?></h2>
 
     <!-- TREE TITLE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="title">
             <?= I18N::translate('Family tree title') ?>
         </label>
@@ -64,7 +65,7 @@ use Illuminate\Support\Collection;
 
     <!-- TREE URL / FILENAME -->
     <?php if (Auth::isAdmin()) : ?>
-        <div class="row form-group">
+        <div class="row form-group mb-3">
             <label class="col-sm-3 col-form-label" for="gedcom">
                 <?= I18N::translate('URL') ?>
             </label>
@@ -89,7 +90,7 @@ use Illuminate\Support\Collection;
     <?php endif ?>
 
     <!-- PEDIGREE_ROOT_ID -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="PEDIGREE_ROOT_ID">
             <?= /* I18N: A configuration setting */ I18N::translate('Default individual') ?>
         </label>
@@ -102,7 +103,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- CALENDAR_FORMAT -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?>
             <label class="visually-hidden" for="CALENDAR_FORMAT0">
@@ -115,17 +116,17 @@ use Illuminate\Support\Collection;
         <div class="col-sm-9">
             <div class="row">
                 <div class="col-sm-6">
-                    <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
+                    <?= view('components/select', ['name' => 'CALENDAR_FORMAT0', 'selected' => $calendar_formats[0], 'options' => ['none' => I18N::translate('No calendar conversion')] + Registry::calendarDateFactory()->supportedCalendars()]) ?>
                 </div>
                 <div class="col-sm-6">
-                    <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => ['none' => I18N::translate('No calendar conversion')] + Date::calendarNames()]) ?>
+                    <?= view('components/select', ['name' => 'CALENDAR_FORMAT1', 'selected' => $calendar_formats[1], 'options' => ['none' => I18N::translate('No calendar conversion')] + Registry::calendarDateFactory()->supportedCalendars()]) ?>
                 </div>
             </div>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Calendar conversion” configuration setting */ I18N::translate('Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past. Where possible, you should enter dates using the calendar in which the event was originally recorded. You can then specify a conversion, to show these dates in a more familiar calendar. If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars.') ?>
             </div>
             <div class="form-text">
-                <?= /* I18N: Help text for the “Calendar conversion” configuration setting */ I18N::translate('Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar.', $french_calendar_start->display(false, null, false), $french_calendar_end->display(false, null, false), $gregorian_calendar_start->display(false, null, false)) ?>
+                <?= /* I18N: Help text for the “Calendar conversion” configuration setting */ I18N::translate('Dates are only converted if they are valid for the calendar. For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar.', $french_calendar_start->display(), $french_calendar_end->display(), $gregorian_calendar_start->display()) ?>
             </div>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Calendar conversion” configuration setting */ I18N::translate('In some calendars, days start at midnight. In other calendars, days start at sunset. The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out.') ?>
@@ -134,7 +135,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- GENERATE_UIDS -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Add unique identifiers') ?>
         </legend>
@@ -149,7 +150,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Contact information') ?></h2>
 
     <!-- CONTACT_USER_ID -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="CONTACT_USER_ID">
             <?= /* I18N: A configuration setting */ I18N::translate('Genealogy contact') ?>
         </label>
@@ -169,7 +170,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- WEBMASTER_USER_ID -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="WEBMASTER_USER_ID">
             <?= /* I18N: A configuration setting */ I18N::translate('Technical help contact') ?>
         </label>
@@ -191,7 +192,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Website') ?></h2>
 
     <!-- META_TITLE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="META_TITLE">
             <?= /* I18N: A configuration setting */ I18N::translate('Add to TITLE header tag') ?>
         </label>
@@ -211,7 +212,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- META_DESCRIPTION -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="META_DESCRIPTION">
             <?= /* I18N: A configuration setting */ I18N::translate('Description META tag') ?>
         </label>
@@ -234,7 +235,7 @@ use Illuminate\Support\Collection;
         <h2><?= I18N::translate('Media folders') ?></h2>
 
         <!-- MEDIA_DIRECTORY -->
-        <div class="row form-group">
+        <div class="row form-group mb-3">
             <label class="col-sm-3 col-form-label" for="MEDIA_DIRECTORY">
                 <?= /* I18N: A configuration setting */ I18N::translate('Media folder') ?>
             </label>
@@ -259,7 +260,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Media files') ?></h2>
 
     <!-- MEDIA_UPLOAD -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="MEDIA_UPLOAD">
             <?= /* I18N: A configuration setting */ I18N::translate('Who can upload new media files') ?>
         </label>
@@ -272,7 +273,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- SHOW_MEDIA_DOWNLOAD -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Show a download link in the media viewer') ?>
         </legend>
@@ -287,7 +288,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Thumbnail images') ?></h2>
 
     <!-- SHOW_HIGHLIGHT_IMAGES -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= I18N::translate('Thumbnail images') ?>
         </legend>
@@ -300,7 +301,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- USE_SILHOUETTE -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Use silhouettes') ?>
         </legend>
@@ -315,7 +316,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Watermarks') ?></h2>
 
     <!-- SHOW_NO_WATERMARK -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="SHOW_NO_WATERMARK">
             <?= I18N::translate('Images without watermarks') ?>
         </label>
@@ -330,7 +331,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Lists') ?></h2>
 
     <!-- SURNAME_LIST_STYLE -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="SURNAME_LIST_STYLE">
             <?= I18N::translate('Surname list style') ?>
         </label>
@@ -342,7 +343,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- SUBLIST_TRIGGER_I -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="SUBLIST_TRIGGER_I">
             <?= /* I18N: A configuration setting */ I18N::translate('Maximum number of surnames on individual list') ?>
         </label>
@@ -363,7 +364,7 @@ use Illuminate\Support\Collection;
     </div>
 
     <!-- SHOW_EST_LIST_DATES -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Estimated dates for birth and death') ?>
         </legend>
@@ -376,7 +377,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- SHOW_LAST_CHANGE -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= I18N::translate('The date and time of the last update') ?>
         </legend>
@@ -390,7 +391,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Charts') ?></h2>
 
     <!-- SHOW_PARENTS_AGE -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Age of parents next to child’s birthdate') ?>
         </legend>
@@ -403,13 +404,13 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- CHART_BOX_TAGS -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="CHART_BOX_TAGS">
             <?= I18N::translate('Other facts to show in charts') ?>
         </label>
         <div class="col-sm-9">
             <div class="input-group">
-                <?= view('components/select', ['name' => 'CHART_BOX_TAGS[]', 'id' => 'CHART_BOX_TAGS', 'selected' => explode(',', $tree->getPreference('CHART_BOX_TAGS')), 'options' => $all_individual_facts, 'class' => 'select2']) ?>
+                <?= view('components/select', ['name' => 'CHART_BOX_TAGS[]', 'id' => 'CHART_BOX_TAGS', 'selected' => explode(',', $tree->getPreference('CHART_BOX_TAGS')), 'options' => $all_individual_facts, 'class' => 'tom-select']) ?>
             </div>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.') ?>
@@ -420,7 +421,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Individual pages') ?></h2>
 
     <!-- SHOW_RELATIVES_EVENTS -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= I18N::translate('Show the events of close relatives on the individual page') ?>
         </legend>
@@ -511,7 +512,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- SHOW_FACT_ICONS -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Fact icons') ?>
         </legend>
@@ -524,7 +525,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- EXPAND_NOTES -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Automatically expand notes') ?>
         </legend>
@@ -538,7 +539,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- EXPAND_SOURCES -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Automatically expand sources') ?>
         </legend>
@@ -554,7 +555,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Places') ?></h2>
 
     <!-- SHOW_PEDIGREE_PLACES -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Abbreviate place names') ?>
             <label class="visually-hidden" for="SHOW_PEDIGREE_PLACES_SUFFIX">
@@ -580,7 +581,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Text') ?></h2>
 
     <!-- FORMAT_TEXT -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Format text and notes') ?>
         </legend>
@@ -597,7 +598,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('General') ?></h2>
 
     <!-- SHOW_GEDCOM_RECORD -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Allow users to see raw GEDCOM records') ?>
         </legend>
@@ -610,7 +611,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- HIDE_GEDCOM_ERRORS -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('GEDCOM errors') ?>
         </legend>
@@ -623,7 +624,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- SHOW_COUNTER -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Hit counters') ?>
         </legend>
@@ -640,22 +641,22 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Facts for individual records') ?></h2>
 
     <!-- QUICK_REQUIRED_FACTS -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="QUICK_REQUIRED_FACTS">
             <?= I18N::translate('Facts for new individuals') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FACTS[]', 'id' => 'QUICK_REQUIRED_FACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')), 'options' => $all_individual_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FACTS[]', 'id' => 'QUICK_REQUIRED_FACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')), 'options' => $all_individual_facts, 'class' => 'tom-select']) ?>
         </div>
     </div>
 
     <!-- INDI_FACTS_QUICK -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="INDI_FACTS_QUICK">
             <?= I18N::translate('Quick individual facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'options' => $all_individual_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'INDI_FACTS_QUICK[]', 'id' => 'INDI_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('INDI_FACTS_QUICK')), 'options' => $all_individual_facts, 'class' => 'tom-select']) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Quick individual facts” configuration setting */ I18N::translate('The most common individual facts and events are listed separately, so that they can be added more easily.') ?>
             </div>
@@ -665,22 +666,22 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Facts for family records') ?></h2>
 
     <!-- QUICK_REQUIRED_FAMFACTS -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="QUICK_REQUIRED_FAMFACTS">
             <?= I18N::translate('Facts for new families') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FAMFACTS[]', 'id' => 'QUICK_REQUIRED_FAMFACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')), 'options' => $all_family_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'QUICK_REQUIRED_FAMFACTS[]', 'id' => 'QUICK_REQUIRED_FAMFACTS', 'selected' => explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')), 'options' => $all_family_facts, 'class' => 'tom-select']) ?>
         </div>
     </div>
 
     <!-- FAM_FACTS_QUICK -->
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="FAM_FACTS_QUICK">
             <?= I18N::translate('Quick family facts') ?>
         </label>
         <div class="col-sm-9">
-            <?= view('components/select', ['name' => 'FAM_FACTS_QUICK[]', 'id' => 'FAM_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_QUICK')), 'options' => $all_family_facts, 'class' => 'select2']) ?>
+            <?= view('components/select', ['name' => 'FAM_FACTS_QUICK[]', 'id' => 'FAM_FACTS_QUICK', 'selected' => explode(',', $tree->getPreference('FAM_FACTS_QUICK')), 'options' => $all_family_facts, 'class' => 'tom-select']) ?>
             <div class="form-text">
                 <?= /* I18N: Help text for the “Quick family facts” configuration setting */ I18N::translate('The most common family facts and events are listed separately, so that they can be added more easily.') ?>
             </div>
@@ -690,7 +691,7 @@ use Illuminate\Support\Collection;
     <h2><?= I18N::translate('Other preferences') ?></h2>
 
     <!-- SURNAME_TRADITION -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= I18N::translate('Surname tradition') ?>
         </legend>
@@ -703,7 +704,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- FULL_SOURCES -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Use full source citations') ?>
         </legend>
@@ -716,7 +717,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- PREFER_LEVEL2_SOURCES -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Source type') ?>
         </legend>
@@ -729,7 +730,7 @@ use Illuminate\Support\Collection;
     </fieldset>
 
     <!-- NO_UPDATE_CHAN -->
-    <fieldset class="row form-group">
+    <fieldset class="row form-group mb-3">
         <legend class="col-form-label col-sm-3">
             <?= /* I18N: A configuration setting */ I18N::translate('Keep the existing “last change” information') ?>
         </legend>
@@ -741,7 +742,7 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="offset-sm-3 col-sm-9">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>

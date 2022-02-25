@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-05 10:47+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-02-23 13:42+0000\nLast-Translator: Markus Hemprich <hemprich@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -5601,7 +5601,7 @@ msgstr "Mit allen GEDCOM-Kennzeichen bearbeiten"
 #. I18N: A restriction on editing data
 #: resources/views/modals/restriction-fields.phtml:26
 msgid "Editing restriction"
-msgstr "Bearbeitungseinschränkung"
+msgstr "Einschränkung Bearbeitung"
 
 #. I18N: Listbox entry; name of a role
 #: app/Http/RequestHandlers/UserEditPage.php:100
@@ -9071,7 +9071,7 @@ msgstr "Heirat"
 #: app/Factories/ElementFactory.php:335
 #: resources/xml/reports/missing_facts_report.xml:22
 msgid "Marriage banns"
-msgstr "Aufgebote"
+msgstr "Aufgebot"
 
 #: app/Module/CustomTagsFamilyTreeMaker.php:72
 #: app/Module/CustomTagsFamilyTreeMaker.php:92
@@ -11494,12 +11494,12 @@ msgstr "Datenschutzerklärung"
 #. I18N: a restriction on viewing data
 #: resources/views/modals/restriction-fields.phtml:9
 msgid "Privacy restriction"
-msgstr "Datenschutzeinschränkung"
+msgstr "Einschränkung Datenschutz"
 
 #. I18N: Privacy restrictions are set by RESN tags in GEDCOM.
 #: resources/views/admin/trees-privacy.phtml:170
 msgid "Privacy restrictions"
-msgstr "Datenschutzeinschränkungen"
+msgstr "Einschränkungen Datenschutz"
 
 #: resources/views/admin/trees-privacy.phtml:232
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
@@ -14709,8 +14709,8 @@ msgstr "Es warten ausstehende Änderungen auf Ihre Moderation."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] "Es gab keine Veränderungen in den letzen 24 Stunden."
-msgstr[1] "Es gab keine Veränderungen in den letzen %s Tagen."
+msgstr[0] "Es gab keine Veränderungen in den letzten 24 Stunden."
+msgstr[1] "Es gab keine Veränderungen in den letzten %s Tagen."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:105
 #, php-format
@@ -14830,7 +14830,7 @@ msgstr "Dieser Stammbaum besitzt keine darzustellenden Bilder."
 #. I18N: do not translate the #keywords#
 #: resources/views/modules/html/template-narrative.phtml:7
 msgid "This family tree was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br><br>If you have any comments or feedback please contact #contactWebmaster#."
-msgstr "Diese Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen in diesem Stammbaum. Das älteste gespeicherte Ereignis ist #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Das neueste Ereignis ist #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Für Anmerkungen oder Hinweise kontaktieren Sie bitte #contactWebmaster#."
+msgstr "Dieser Stammbaum wurde aktualisiert am #gedcomUpdated#. Es gibt insgesamt #totalSurnames# Nachnamen in diesem Stammbaum. Das älteste gespeicherte Ereignis ist #firstEventType# von #firstEventName# im Jahre #firstEventYear#. Das neueste Ereignis ist #lastEventType# von #lastEventName# im Jahre #lastEventYear#.<br><br>Für Anmerkungen oder Hinweise kontaktieren Sie bitte #contactWebmaster#."
 
 #: resources/views/modules/gedcom_stats/statistics.phtml:32
 #: resources/views/modules/html/template-statistics.phtml:18
@@ -15071,7 +15071,7 @@ msgstr "Diese Einstellung erhält familiäre Verknüpfungen in vertraulichen Dat
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: resources/views/admin/trees-privacy.phtml:147
 msgid "This option will show the names (but no other details) of private individuals. Individuals are private if they are still alive or if a privacy restriction has been added to their individual record. To hide a specific name, add a privacy restriction to that name record."
-msgstr "Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von vertraulichen Personen. Personen sind vertraulich, sofern sie noch leben oder falls dem Datensatz eine Einschränkung hinsichtlich der Veröffentlichung hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen Sie dem Datensatz bitte eine solche Einschränkung hinzu."
+msgstr "Diese Einstellung zeigt die Namen (aber keine weiteren Einzelheiten) von vertraulichen Personen. Personen sind vertraulich, sofern sie noch leben oder falls dem Datensatz eine Einschränkung hinsichtlich des Datenschutzes hinzugefügt wurde. Um gezielt einen Namen zu verbergen, fügen Sie dem Datensatz bitte eine solche Datenschutzeinschränkung hinzu."
 
 #: resources/views/edit/raw-gedcom-fact.phtml:23
 #: resources/views/edit/raw-gedcom-record.phtml:25
@@ -16747,7 +16747,7 @@ msgstr "Ort hinzufügen"
 #. I18N: The name given to a child by its adoptive parents
 #: app/Elements/NameType.php:47
 msgid "adopted name"
-msgstr "Adoptionsname"
+msgstr "Adoptivname"
 
 #. I18N: Gedcom AFT dates
 #: app/Date.php:359
@@ -16844,7 +16844,7 @@ msgstr "zwischen %s und %s"
 #. I18N: The name given to an individual at their birth
 #: app/Elements/NameType.php:51
 msgid "birth name"
-msgstr "geborene"
+msgstr "Geburtsname"
 
 #. I18N: Extend privacy to dead individuals who were…
 #: resources/views/admin/trees-privacy.phtml:121

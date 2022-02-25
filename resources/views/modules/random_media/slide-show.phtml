@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
@@ -46,7 +45,9 @@ use Fisharebest\Webtrees\Tree;
     </figure>
 
     <p class="wt-slide-show-notes text-center">
-        <?= FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1) ?>
+        <?php foreach ($media->facts(['NOTE']) as $fact) : ?>
+            <?= view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media->tag(), 'tree' => $tree]) ?>
+        <?php endforeach ?>
     </p>
 
     <ul class="fa-ul wt-slide-show-links">

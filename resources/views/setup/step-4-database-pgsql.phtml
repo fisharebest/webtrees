@@ -4,20 +4,20 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var string             $dbhost
- * @var string             $dbname
- * @var string             $dbpass
- * @var string             $dbport
- * @var string             $dbtype
- * @var string             $dbuser
- * @var Collection<string> $errors
- * @var string             $lang
- * @var string             $tblpfx
- * @var Collection<string> $warnings
- * @var string             $wtemail
- * @var string             $wtname
- * @var string             $wtpass
- * @var string             $wtuser
+ * @var string                 $dbhost
+ * @var string                 $dbname
+ * @var string                 $dbpass
+ * @var string                 $dbport
+ * @var string                 $dbtype
+ * @var string                 $dbuser
+ * @var Collection<int,string> $errors
+ * @var string                 $lang
+ * @var string                 $tblpfx
+ * @var Collection<int,string> $warnings
+ * @var string                 $wtemail
+ * @var string                 $wtname
+ * @var string                 $wtpass
+ * @var string                 $wtuser
  */
 
 ?>
@@ -42,7 +42,7 @@ use Illuminate\Support\Collection;
         <p class="alert alert-warning"><?= $warning ?></p>
     <?php endforeach ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="dbhost">
             <?= I18N::translate('Server name') ?>
         </label>
@@ -54,7 +54,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="dbport">
             <?= I18N::translate('Port number') ?>
         </label>
@@ -66,7 +66,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="dbuser">
             <?= I18N::translate('Database user account') ?>
         </label>
@@ -78,7 +78,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="dbpass">
             <?= I18N::translate('Database password') ?>
         </label>
@@ -90,7 +90,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="dbname">
             <?= I18N::translate('Database name') ?>
         </label>
@@ -99,7 +99,7 @@ use Illuminate\Support\Collection;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-form-label col-sm-3" for="tblpfx">
             <?= I18N::translate('Table prefix') ?>
         </label>

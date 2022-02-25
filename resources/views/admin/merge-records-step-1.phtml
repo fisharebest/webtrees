@@ -42,10 +42,10 @@ use Fisharebest\Webtrees\View;
 
 <h1><?= $title ?></h1>
 
-<form method="post" action="<?= e(route(MergeRecordsAction::class, ['tree' => $tree->name()])) ?>">
+<form id="merge-step-1" method="post" action="<?= e(route(MergeRecordsAction::class, ['tree' => $tree->name()])) ?>">
     <?= csrf_field() ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="record-type">
             <?= I18N::translate('Select two records to merge.') ?>
         </label>
@@ -63,7 +63,7 @@ use Fisharebest\Webtrees\View;
         </div>
     </div>
 
-    <label class="row form-group">
+    <label class="row form-group mb-3">
         <span class="col-sm-3 col-form-label">
             <?= I18N::translate('First record') ?>
         </span>
@@ -101,7 +101,7 @@ use Fisharebest\Webtrees\View;
         </span>
     </label>
 
-    <label class="row form-group">
+    <label class="row form-group mb-3">
         <span class="col-sm-3 col-form-label">
             <?= I18N::translate('Second record') ?>
         </span>
@@ -139,7 +139,7 @@ use Fisharebest\Webtrees\View;
         </span>
     </label>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-sm-3">
         </div>
 
@@ -154,14 +154,8 @@ use Fisharebest\Webtrees\View;
 
 <?php View::push('javascript') ?>
 <script>
-  "use strict";
+  'use strict';
 
-  // Disabled elements do not get submitted with the form.
-  $("#record-type").change(function() {
-      $(".select-record").addClass('d-none');
-      $(".select-" + $(this).val()).removeClass('d-none');
-      $(".select-record select").attr("disabled", true);
-      $(".select-" + $(this).val() + " select").attr("disabled", false);
-  });
+  webtrees.initializeIFSRO(document.getElementById('record-type'), document.getElementById('merge-step-1'));
 </script>
 <?php View::endpush() ?>

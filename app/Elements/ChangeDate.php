@@ -47,6 +47,6 @@ class ChangeDate extends AbstractElement
 
         $date = new Date($canonical);
 
-        return $date->display(false);
+        return $date->display();
     }
 }

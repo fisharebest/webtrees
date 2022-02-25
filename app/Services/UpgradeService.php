@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
@@ -48,6 +47,7 @@ use function ftell;
 use function fwrite;
 use function rewind;
 use function strlen;
+use function time;
 use function unlink;
 use function version_compare;
 
@@ -117,7 +117,7 @@ class UpgradeService
      *
      * @param string $zip_file
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      * @throws FilesystemException
      */
     public function webtreesZipContents(string $zip_file): Collection
@@ -213,8 +213,8 @@ class UpgradeService
      * Delete files in $destination that aren't in $source.
      *
      * @param FilesystemOperator $filesystem
-     * @param Collection<string> $folders_to_clean
-     * @param Collection<string> $files_to_keep
+     * @param Collection<int,string> $folders_to_clean
+     * @param Collection<int,string> $files_to_keep
      *
      * @return void
      */
@@ -307,7 +307,7 @@ class UpgradeService
     {
         $last_update_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        $current_timestamp = Carbon::now()->unix();
+        $current_timestamp = time();
 
         if ($last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
             try {

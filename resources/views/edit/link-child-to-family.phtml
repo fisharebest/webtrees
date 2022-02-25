@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Tree;
 <form method="post" action="<?= e(route(LinkChildToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="famid">
             <?= I18N::translate('Family') ?>
         </label>
@@ -29,7 +29,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <label class="col-sm-3 col-form-label" for="PEDI">
             <?= Registry::elementFactory()->make('INDI:FAMC:PEDI')->label() ?>
         </label>
@@ -41,7 +41,7 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="row form-group">
+    <div class="row form-group mb-3">
         <div class="col-sm-9 offset-sm-3">
             <button class="btn btn-primary" type="submit">
                 <?= view('icons/save') ?>

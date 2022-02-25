@@ -4,9 +4,9 @@ use Fisharebest\Webtrees\I18N;
 use Illuminate\Support\Collection;
 
 /**
- * @var int                $limit_high
- * @var int                $limit_low
- * @var Collection<object> $yahrzeits
+ * @var int                    $limit_high
+ * @var int                    $limit_low
+ * @var Collection<int,object> $yahrzeits
  */
 
 ?>
@@ -48,13 +48,13 @@ use Illuminate\Support\Collection;
                         </a>
                     </td>
                     <td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
-                        <?= $yahrzeit->fact_date->display(true, null, false) ?>
+                        <?= $yahrzeit->fact_date->display($yahrzeit->individual->tree()) ?>
                     </td>
                     <td data-sort="<?= e($yahrzeit->fact->anniv) ?>">
                         <?= I18N::number($yahrzeit->fact->anniv) ?>
                     </td>
                     <td data-sort="<?= e($yahrzeit->yahrzeit_date->julianDay()) ?>">
-                        <?= $yahrzeit->yahrzeit_date->display(true, null, false) ?>
+                        <?= $yahrzeit->yahrzeit_date->display($yahrzeit->individual->tree()) ?>
                     </td>
                 </tr>
             <?php endforeach ?>

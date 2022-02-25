@@ -22,11 +22,6 @@
 
 /* Override Bootstrap formatting */
 
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #eee;
-    color: #000;
-}
-
 .card-header h4 {
     font-size: 1.2rem;
 }
@@ -513,15 +508,16 @@ div.faq_title {
 }
 
 /* Silhouettes on charts */
-.icon-silhouette-F {
+.icon-silhouette-f {
     content: url(colors/images/silhouette_female_small.png);
 }
 
-.icon-silhouette-M {
+.icon-silhouette-m {
     content: url(colors/images/silhouette_male_small.png);
 }
 
-.icon-silhouette-U {
+.icon-silhouette-u,
+.icon-silhouette-x {
     content: url(colors/images/silhouette_unknown_small.png);
 }
 

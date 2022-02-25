@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Mailer;
@@ -135,7 +136,7 @@ class EmailService
                 $request = app(ServerRequestInterface::class);
                 assert($request instanceof ServerRequestInterface);
 
-                $sendmail_command = $request->getAttribute('sendmail_command', '/usr/sbin/sendmail -bs');
+                $sendmail_command = Validator::attributes($request)->string('sendmail_command', '/usr/sbin/sendmail -bs');
 
                 return new SendmailTransport($sendmail_command);
 

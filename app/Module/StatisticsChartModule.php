@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -111,8 +111,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * The URL for this chart.
      *
-     * @param Individual                        $individual
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -134,10 +134,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -177,7 +175,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getIndividualsAction(ServerRequestInterface $request): ResponseInterface
+    public function getIndividualsAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -192,7 +190,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getFamiliesAction(ServerRequestInterface $request): ResponseInterface
+    public function getFamiliesAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -206,7 +204,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      *
      * @return ResponseInterface
      */
-    public function getOtherAction(ServerRequestInterface $request): ResponseInterface
+    public function getOtherAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/ajax';
 
@@ -224,8 +222,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     {
         $this->layout = 'layouts/ajax';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         return $this->viewResponse('modules/statistics-chart/custom', [
             'module' => $this,
@@ -873,8 +870,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * @param int|string        $x
      * @param int|string        $z
      * @param int|string        $value
-     * @param array             $x_axis
-     * @param array             $z_axis
+     * @param array<string>     $x_axis
+     * @param array<string>     $z_axis
      * @param array<array<int>> $ydata
      *
      * @return void
@@ -902,8 +899,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * Some are direct lookup (e.g. M/F, JAN/FEB/MAR).
      * Others need to find the appropriate range.
      *
-     * @param int|float|string $value
-     * @param array<string>    $axis
+     * @param int|string    $value
+     * @param array<string> $axis
      *
      * @return int|string
      */
@@ -1016,10 +1013,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 'format' => '\'%\'',
             ],
             'vAxis'    => [
-                'title' => $y_axis_title ?? '',
+                'title' => $y_axis_title,
             ],
             'hAxis'    => [
-                'title' => $x_axis_title ?? '',
+                'title' => $x_axis_title,
             ],
             'colors'   => $colors,
         ];

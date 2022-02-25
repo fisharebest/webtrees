@@ -1,7 +1,6 @@
 <?php
 
-use Fisharebest\Webtrees\Http\RequestHandlers\AbstractSelect2Handler;
-use Fisharebest\Webtrees\Http\RequestHandlers\Select2Place;
+use Fisharebest\Webtrees\Http\RequestHandlers\TomSelectPlace;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
 
@@ -17,18 +16,12 @@ use Fisharebest\Webtrees\Tree;
 
 <select
     autocomplete="off"
-    class="form-select select2 <?= $class ?? '' ?>"
-    data-ajax--delay="<?= e(AbstractSelect2Handler::AJAX_DELAY) ?>"
-    data-minimum-input-length="<?= e(AbstractSelect2Handler::MINIMUM_INPUT_LENGTH) ?>"
-    data-ajax--type="POST"
-    data-ajax--url="<?= e(route(Select2Place::class, ['tree' => $tree->name()])) ?>"
-    data-allow-clear="true"
-    data-placeholder=""
+    class="form-select tom-select <?= $class ?? '' ?>"
+    data-url="<?= e(route(TomSelectPlace::class, ['tree' => $tree->name()])) ?>"
     id="<?= e($id ?? $name) ?>"
     name="<?= e($name) ?>"
-    <?= ($disabled ?? false) ? 'disabled' : '' ?>
-    <?= ($required ?? false) ? 'required' : '' ?>
-    style="width:100%"
+    <?= ($disabled ?? false) ? 'disabled="disabled"' : '' ?>
+    <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($place ?? null) instanceof Place) : ?>
         <option value="<?= e($place->id()) ?>">

@@ -15,9 +15,8 @@
 
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../../node_modules/datatables.net-bs5/css/dataTables.bootstrap5.css";
-@import "begin-ignore-rtl.css";
-@import "../../node_modules/select2/dist/css/select2.min.css";
-@import "end-ignore-rtl.css";
+@import "../../node_modules/tom-select/dist/css/tom-select.min.css";
+@import "../../node_modules/tom-select/dist/css/tom-select.bootstrap5.min.css";
 @import "../../node_modules/typeahead.js-bootstrap4-css/typeaheadjs.css";
 @import "../../node_modules/leaflet/dist/leaflet.css";
 @import "../../node_modules/beautifymarker/leaflet-beautify-marker-icon.css";
