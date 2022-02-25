@@ -40,3 +40,7 @@
 .wt-place-hierarchy-sidebar th {
     font-weight: 600;
 }
+
+.wt-place-hierarchy-sidebar .wt-icon-map {
+    color: mediumblue;
+}
