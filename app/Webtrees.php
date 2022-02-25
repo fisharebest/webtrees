@@ -23,7 +23,6 @@ use Closure;
 use ErrorException;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\CalendarDateFactory;
-use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
 use Fisharebest\Webtrees\Factories\EncodingFactory;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
@@ -37,10 +36,13 @@ use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Factories\MediaFactory;
 use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Factories\RepositoryFactory;
+use Fisharebest\Webtrees\Factories\ResponseFactory;
+use Fisharebest\Webtrees\Factories\RouteFactory;
 use Fisharebest\Webtrees\Factories\SlugFactory;
 use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
@@ -118,6 +120,10 @@ class Webtrees
 
     // We want to know about all PHP errors during development, and fewer in production.
     public const ERROR_REPORTING = self::DEBUG ? E_ALL : E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
+
+    // Page layouts for admin an user pages.
+    public const LAYOUT_ADMIN   = 'layouts/admin';
+    public const LAYOUT_DEFAULT = 'layouts/default';
 
     // The name of the application.
     public const NAME = 'webtrees';
@@ -197,6 +203,8 @@ class Webtrees
         Registry::mediaFactory(new MediaFactory());
         Registry::noteFactory(new NoteFactory());
         Registry::repositoryFactory(new RepositoryFactory());
+        Registry::responseFactory(new ResponseFactory(new Psr17Factory(), new Psr17Factory()));
+        Registry::routeFactory(new RouteFactory());
         Registry::slugFactory(new SlugFactory());
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());

@@ -20,6 +20,7 @@ declare(strict_types=1);
 use Aura\Router\RouterContainer;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session as WebtreesSession;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\View as WebtreesView;
@@ -110,48 +111,15 @@ function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): R
 /**
  * Create a response.
  *
- * @param mixed         $content
- * @param int           $code
- * @param array<string> $headers
+ * @param string|array<mixed>|object $content
+ * @param int                        $code
+ * @param array<string>              $headers
  *
  * @return ResponseInterface
  */
 function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface
 {
-    if ($content === '' && $code === StatusCodeInterface::STATUS_OK) {
-        $code = StatusCodeInterface::STATUS_NO_CONTENT;
-    }
-
-    if ($headers === []) {
-        if (is_string($content)) {
-            $headers = [
-                'Content-Type' => 'text/html; charset=UTF-8',
-            ];
-        } else {
-            $content = json_encode($content, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-            $headers = [
-                'Content-Type' => 'application/json',
-            ];
-        }
-    }
-
-    /** @var ResponseFactoryInterface $response_factory */
-    $response_factory = app(ResponseFactoryInterface::class);
-
-    /** @var StreamFactoryInterface $stream_factory */
-    $stream_factory = app(StreamFactoryInterface::class);
-
-    $stream = $stream_factory->createStream($content);
-
-    $response = $response_factory
-        ->createResponse($code)
-        ->withBody($stream);
-
-    foreach ($headers as $key => $value) {
-        $response = $response->withHeader($key, $value);
-    }
-
-    return $response;
+    return Registry::responseFactory()->response($content, $code, $headers);
 }
 
 /**
@@ -164,36 +132,7 @@ function response($content = '', int $code = StatusCodeInterface::STATUS_OK, arr
  */
 function route(string $route_name, array $parameters = []): string
 {
-    $request = app(ServerRequestInterface::class);
-    assert($request instanceof ServerRequestInterface);
-
-    $base_url = Validator::attributes($request)->string('base_url');
-
-    $router_container = app(RouterContainer::class);
-    assert($router_container instanceof RouterContainer);
-
-    $route = $router_container->getMap()->getRoute($route_name);
-
-    // Generate the URL.
-    $url = $router_container->getGenerator()->generate($route_name, $parameters);
-
-    // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
-    $parameters = array_filter($parameters, static function (string $key) use ($route): bool {
-        return !str_contains($route->path, '{' . $key . '}') && !str_contains($route->path, '{/' . $key . '}');
-    }, ARRAY_FILTER_USE_KEY);
-
-    if (Validator::attributes($request)->boolean('rewrite_urls', false)) {
-        // Make the pretty URL absolute.
-        $base_path = parse_url($base_url, PHP_URL_PATH) ?? '';
-        $url = $base_url . substr($url, strlen($base_path));
-    } else {
-        // Turn the pretty URL into an ugly one.
-        $path       = parse_url($url, PHP_URL_PATH);
-        $parameters = ['route' => $path] + $parameters;
-        $url        = $base_url . '/index.php';
-    }
-
-    return Html::url($url, $parameters);
+    return Registry::routeFactory()->route($route_name, $parameters);
 }
 
 /**
