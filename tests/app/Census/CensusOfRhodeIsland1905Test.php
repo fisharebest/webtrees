@@ -53,10 +53,13 @@ class CensusOfRhodeIsland1905Test extends TestCase
     {
         $census  = new CensusOfRhodeIsland1905();
         $columns = $census->columns();
+        self::assertCount(28, $columns);
+        self::assertInstanceOf(CensusColumnSexMF::class, $columns[0]);
+        self::assertInstanceOf(CensusColumnNull::class, $columns[1]);
+        self::assertInstanceOf(CensusColumnSurnameGivenNameInitial::class, $columns[2]);
+        self::assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[3]);
+
   /*  
-        self::assertCount(0, $columns);
-        self::assertInstanceOf(CensusColumnSurnameGivenNameInitial::class, $columns[0]);
-        self::assertInstanceOf(CensusColumnRelationToHeadEnglish::class, $columns[1]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[2]);
         self::assertInstanceOf(CensusColumnNull::class, $columns[3]);
         self::assertInstanceOf(CensusColumnSexMF::class, $columns[4]);
