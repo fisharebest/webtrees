@@ -19,7 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Test harness for the class UpcomingAnniversariesModule
@@ -29,12 +31,23 @@ use Fisharebest\Webtrees\TestCase;
 class UpcomingAnniversariesModuleTest extends TestCase
 {
     /**
-     * Test that the class exists
-     *
      * @return void
      */
-    public function testClassExists(): void
+    public function testModule(): void
     {
-        self::assertTrue(class_exists(UpcomingAnniversariesModule::class));
+        $tree = $this->createStub(Tree::class);
+        $calendar_service = $this->createStub(CalendarService::class);
+
+        $module = new UpcomingAnniversariesModule($calendar_service);
+
+        self::assertInstanceOf(ModuleBlockInterface::class, $module);
+        self::assertTrue($module->loadAjax());
+        self::assertTrue($module->isTreeBlock());
+        self::assertTrue($module->isUserBlock());
+        self::assertIsString($module->editBlockConfiguration($tree, 1));
+
+        $request = self::createRequest();
+        $module->saveBlockConfiguration($request, 1);
+        self::assertIsString($module->getBlock($tree, 1, ModuleBlockInterface::CONTEXT_EMBED));
     }
 }

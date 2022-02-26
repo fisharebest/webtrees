@@ -1556,21 +1556,6 @@ parameters:
 			path: app/Module/PedigreeChartModule.php
 
 		-
-			message: "#^Parameter \\#2 \\$parameters of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule\\:\\:chartUrl\\(\\) expects array\\<array\\<string\\>\\|bool\\|int\\|string\\|null\\>, array\\<string, mixed\\> given\\.$#"
-			count: 1
-			path: app/Module/PedigreeChartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$style of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule\\:\\:nextLink\\(\\) expects string, mixed given\\.$#"
-			count: 2
-			path: app/Module/PedigreeChartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$style of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule\\:\\:previousLink\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: app/Module/PedigreeChartModule.php
-
-		-
 			message: "#^Cannot call method statsPlaces\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/PlaceHierarchyListModule.php
