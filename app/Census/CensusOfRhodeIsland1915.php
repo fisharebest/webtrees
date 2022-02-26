@@ -43,18 +43,18 @@ class CensusOfRhodeIsland1915 extends CensusOfRhodeIsland implements CensusInter
     {
         return [
             new CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name'),
-            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to head of household'),
+            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship of this person to head of the family'),
             new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnNull($this, 'Race', 'Color or race'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday'),
-            new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),
-            new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
-            new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
-            new CensusColumnNull($this, 'Cit', 'Naturalized or alien'),
+            new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth of this person'),
+            new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of Father of this person'),
+            new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of Mother of this person'),
+            new CensusColumnNull($this, 'Cit', 'Whether naturalized or alien'),
             new CensusColumnNull($this, 'Trade', 'Trade or profession'),
             new CensusColumnNull($this, 'Ind', 'Nature of industry'),
             new CensusColumnNull($this, 'Type', 'Whether an employer, employee or working on own account'),
-            new CensusColumnNull($this, 'Uemp', 'If Employee, Whether out of work on Apr 15 1915'),
+            new CensusColumnNull($this, 'Uemp', 'If Employee, Whether out of work on Apr 15, 1915'),
         ];
     }
 }
