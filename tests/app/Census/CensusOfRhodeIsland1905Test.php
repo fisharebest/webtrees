@@ -83,8 +83,8 @@ class CensusOfRhodeIsland1905Test extends TestCase
         self::assertInstanceOf(CensusColumnChildrenBornAlive::class, $columns[26]);
         self::assertInstanceOf(CensusColumnChildrenLiving::class, $columns[27]);
 
-        self::assertSame('Sex', $columns[0]->abbreviation());        
-        self::assertSame('Num', $columns[1]->abbreviation());        
+        self::assertSame('Sex', $columns[0]->abbreviation());
+        self::assertSame('Num', $columns[1]->abbreviation());
         self::assertSame('Name', $columns[2]->abbreviation());
         self::assertSame('Relation', $columns[3]->abbreviation());
         self::assertSame('Race', $columns[4]->abbreviation());
@@ -135,10 +135,10 @@ class CensusOfRhodeIsland1905Test extends TestCase
         self::assertSame('Months unemployed during Census Year', $columns[20]->title());
         self::assertSame('Did you receive a pension', $columns[21]->title());
         self::assertSame('Religious preference', $columns[22]->title());
-        self::assertSame('Military or widow of military', $columns[23]->title()); 
+        self::assertSame('Military or widow of military', $columns[23]->title());
         self::assertSame('Naturalization information', $columns[24]->title());
         self::assertSame('Voter information', $columns[25]->title());
         self::assertSame('Mother of how many children', $columns[26]->title());
-        self::assertSame('Number of these children living on June 1 1905', $columns[27]->title());        
+        self::assertSame('Number of these children living on June 1 1905', $columns[27]->title());
     }
 }
