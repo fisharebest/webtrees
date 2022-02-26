@@ -79,10 +79,7 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST);
     }
@@ -147,14 +144,12 @@ class TimelineChartModule extends AbstractModule implements ModuleChartInterface
         $scale = Validator::attributes($request)->isBetween(self::MINIMUM_SCALE, self::MAXIMUM_SCALE)->integer('scale');
         $xrefs = Validator::queryParams($request)->array('xrefs');
         $ajax  = Validator::queryParams($request)->boolean('ajax', false);
-        $params = (array) $request->getParsedBody();
-        $add = $params['add'] ?? '';
-
-        $xrefs[] = $add;
         $xrefs = array_filter(array_unique($xrefs));
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
+            $xrefs[] = Validator::parsedBody($request)->isXref()->string('add', '');
+
             return redirect(route(static::class, [
                 'tree'  => $tree->name(),
                 'scale' => $scale,
