@@ -711,7 +711,9 @@
           fetch(this.getUrl(query))
             .then(response => response.json())
             .then(json => {
-              this.setNextUrl(query, json.nextUrl + '&query=' + encodeURIComponent(query));
+              if (json.nextUrl !== null) {
+                this.setNextUrl(query, json.nextUrl + '&query=' + encodeURIComponent(query));
+              }
               callback(json.data);
             })
             .catch(callback);
