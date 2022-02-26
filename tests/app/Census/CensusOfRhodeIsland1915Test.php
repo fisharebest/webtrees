@@ -83,17 +83,17 @@ class CensusOfRhodeIsland1915Test extends TestCase
         self::assertSame('Uemp', $columns[12]->abbreviation());
         
         self::assertSame('Name', $columns[0]->title());
-        self::assertSame('Relationship to head of household', $columns[1]->title());
+        self::assertSame('Relationship of this person to head of the family', $columns[1]->title());
         self::assertSame('Sex', $columns[2]->title());
         self::assertSame('Color or race', $columns[3]->title());
         self::assertSame('Age at last birthday', $columns[4]->title());
-        self::assertSame('Place of birth', $columns[5]->title());
-        self::assertSame('Place of birth of father of this person', $columns[6]->title());
-        self::assertSame('Place of birth of mother of this person', $columns[7]->title());
-        self::assertSame('Naturalized or alien', $columns[8]->title());
+        self::assertSame('Place of birth of this person', $columns[5]->title());
+        self::assertSame('Place of birth of Father of this person', $columns[6]->title());
+        self::assertSame('Place of birth of Mother of this person', $columns[7]->title());
+        self::assertSame('Whether naturalized or alien', $columns[8]->title());
         self::assertSame('Trade or profession', $columns[9]->title());
         self::assertSame('Nature of industry', $columns[10]->title());
         self::assertSame('Whether an employer, employee or working on own account', $columns[11]->title());
-        self::assertSame('If Employee, Whether out of work on Apr 15 1915', $columns[12]->title());
+        self::assertSame('If Employee, Whether out of work on Apr 15, 1915', $columns[12]->title());
     }
 }
