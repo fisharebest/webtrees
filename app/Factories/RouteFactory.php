@@ -19,15 +19,20 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
+use Aura\Router\Map;
+use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
 use Fisharebest\Webtrees\Html;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function array_filter;
 use function assert;
+use function intval;
+use function is_bool;
 use function parse_url;
 use function strlen;
 use function substr;
@@ -55,12 +60,16 @@ class RouteFactory implements RouteFactoryInterface
 
         $base_url = Validator::attributes($request)->string('base_url');
 
+        $route = $this->routeMap()->getRoute($route_name);
+
+        // Generate the URL.
         $router_container = app(RouterContainer::class);
         assert($router_container instanceof RouterContainer);
 
-        $route = $router_container->getMap()->getRoute($route_name);
+        // webtrees uses http_build_query() to generate URLs - which maps false onto "0".
+        // Aura uses rawurlencode(), which maps false onto "" - which does not work as an aura URL parameter.
+        $parameters = array_map(static fn ($var) => is_bool($var) ? (int) $var : $var, $parameters);
 
-        // Generate the URL.
         $url = $router_container->getGenerator()->generate($route_name, $parameters);
 
         // Aura ignores parameters that are not tokens.  We need to add them as query parameters.
@@ -80,5 +89,16 @@ class RouteFactory implements RouteFactoryInterface
         }
 
         return Html::url($url, $parameters);
+    }
+
+    /**
+     * @return Map<Route>
+     */
+    public function routeMap(): Map
+    {
+        $router_container = app(RouterContainer::class);
+        assert($router_container instanceof RouterContainer);
+
+        return $router_container->getMap();
     }
 }

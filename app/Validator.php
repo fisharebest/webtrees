@@ -126,6 +126,16 @@ class Validator
     }
 
     /**
+     * @param array<string> $values
+     *
+     * @return $this
+     */
+    public function isInArrayKeys(array $values): self
+    {
+        return $this->isInArray(array_keys($values));
+    }
+
+    /**
      * @return $this
      */
     public function isNotEmpty(): self

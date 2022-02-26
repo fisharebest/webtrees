@@ -19,6 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
+use Aura\Router\Map;
+use Aura\Router\Route;
+
 /**
  * Make a URL for a route.
  */
@@ -33,4 +36,9 @@ interface RouteFactoryInterface
      * @return string
      */
     public function route(string $route_name, array $parameters = []): string;
+
+    /**
+     * @return Map<Route>
+     */
+    public function routeMap(): Map;
 }
