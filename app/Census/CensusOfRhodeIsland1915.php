@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfRhodeIsland1905 extends CensusOfRhodeIsland implements CensusInterface
+class CensusOfRhodeIsland1915 extends CensusOfRhodeIsland implements CensusInterface
 {
     /**
      * When did this census occur.
@@ -31,7 +31,7 @@ class CensusOfRhodeIsland1905 extends CensusOfRhodeIsland implements CensusInter
      */
     public function censusDate(): string
     {
-        return 'JUN 1905';
+        return 'APR 1915';
     }
 
     /**
@@ -42,34 +42,19 @@ class CensusOfRhodeIsland1905 extends CensusOfRhodeIsland implements CensusInter
     public function columns(): array
     {
         return [
-            new CensusColumnSexMF($this, 'Sex', 'Sex'),
-            new CensusColumnNull($this, 'Num', 'Number of people in the family'),
             new CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name'),
             new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship to head of household'),
+            new CensusColumnSexMF($this, 'Sex', 'Sex'),
             new CensusColumnNull($this, 'Race', 'Color or race'),
             new CensusColumnAge($this, 'Age', 'Age at last birthday'),
-            new CensusColumnConditionUs($this, 'Cond', 'Congugal Condition'),
-            new CensusColumnBirthYear($this, 'Year', 'Year of Birth'),
-            new CensusColumnBirthMonthDay($this, 'Month Day', 'Month Day'),
             new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),
-            new CensusColumnNull($this, 'N/F', 'Native or Foreign Born'),
-            new CensusColumnNull($this, 'R', 'Read'),
-            new CensusColumnNull($this, 'W', 'Write'),
-            new CensusColumnNull($this, 'Imm', 'Year of immigration to the United States'),
-            new CensusColumnNull($this, 'US yrs', 'Years in US'),
-            new CensusColumnNull($this, 'RI yrs', 'Years resident of Rhode Island'),
-            new CensusColumnNull($this, 'Town mnths', 'Months in current year as a Rhode Island resident'),
             new CensusColumnFatherBirthPlaceSimple($this, 'FBP', 'Place of birth of father of this person'),
             new CensusColumnMotherBirthPlaceSimple($this, 'MBP', 'Place of birth of mother of this person'),
-            new CensusColumnOccupation($this, 'Occupation', 'Occupation'),
-            new CensusColumnNull($this, 'Unemp', 'Months unemployed during Census Year'),
-            new CensusColumnNull($this, 'Pen', 'Did you receive a pension'),
-            new CensusColumnReligion($this, 'Rel', 'Religious preference'),
-            new CensusColumnNull($this, 'Mil', 'Military or widow of military'),
-            new CensusColumnNull($this, 'Nat', 'Naturalization information'),
-            new CensusColumnNull($this, 'Vtr', 'Voter information'),
-            new CensusColumnChildrenBornAlive($this, 'Chil born', 'Mother of how many children'),
-            new CensusColumnChildrenLiving($this, 'Chil liv', 'Number of these children living on June 1 1905'),
+            new CensusColumnNull($this, 'Cit', 'Naturalized or alien'),
+            new CensusColumnNull($this, 'Trade', 'Trade or profession'),
+            new CensusColumnNull($this, 'Ind', 'Nature of industry'),
+            new CensusColumnNull($this, 'Type', 'Whether an employer, employee or working on own account'),
+            new CensusColumnNull($this, 'Uemp', 'If Employee, Whether out of work on Apr 15 1915'),
         ];
     }
 }

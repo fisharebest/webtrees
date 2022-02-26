@@ -33,6 +33,7 @@ class CensusOfRhodeIsland extends Census implements CensusPlaceInterface
     {
         return [
             new CensusOfRhodeIsland1905(),
+            new CensusOfRhodeIsland1915(),
         ];
     }
 

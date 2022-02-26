@@ -38,7 +38,7 @@ class CensusOfRhodeIsland1905Test extends TestCase
         $census = new CensusOfRhodeIsland1905();
 
         self::assertSame('Rhode Island, United States', $census->censusPlace());
-        self::assertSame('1905', $census->censusDate());
+        self::assertSame('JUN 1905', $census->censusDate());
     }
 
     /**

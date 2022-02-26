@@ -67,7 +67,8 @@ class CensusOfRhodeIslandTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        self::assertCount(1, $census_dates);
+        self::assertCount(2, $census_dates);
         self::assertInstanceOf(CensusOfRhodeIsland1905::class, $census_dates[0]);
+        self::assertInstanceOf(CensusOfRhodeIsland1915::class, $census_dates[1]);
     }
 }
