@@ -204,7 +204,6 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         if ($showmap) {
             $content .= view('modules/place-hierarchy/map', [
-                'world_url'      => $this->listUrl($tree),
                 'data'           => $this->mapData($place),
                 'leaflet_config' => $this->leaflet_js_service->config(),
             ]);

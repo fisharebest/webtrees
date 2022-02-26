@@ -40,7 +40,8 @@ use Fisharebest\Webtrees\View;
      * perform necessary reset actions on map
      */
      let resetCallback = function () {
-       window.location.href = <?= json_encode($world_url, JSON_THROW_ON_ERROR) ?>;
+      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
+      sidebar.firstElementChild.scrollIntoView(scrollOptions);
     }
 
     /**
@@ -48,6 +49,7 @@ use Fisharebest\Webtrees\View;
      */
     let _drawMap = function () {
       map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback);
+      map.fitBounds(<?= json_encode($data['bounds'], JSON_THROW_ON_ERROR) ?>, { padding: [50, 30] });
     };
 
     /**
@@ -90,7 +92,7 @@ use Fisharebest\Webtrees\View;
         map.addLayer(markers);
       }
 
-      map.fitBounds(<?= json_encode($data['bounds'], JSON_THROW_ON_ERROR) ?>, { padding: [50, 30] });
+      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
       sidebar.innerHTML = <?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>;
    };
 
