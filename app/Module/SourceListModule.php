@@ -54,10 +54,7 @@ class SourceListModule extends AbstractModule implements ModuleListInterface, Re
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this);
     }
 

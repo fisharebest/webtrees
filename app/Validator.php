@@ -120,10 +120,31 @@ class Validator
      */
     public function isInArray(array $values): self
     {
-        $this->rules[] = static fn (?string $value): ?string => is_string($value) && in_array($value, $values, true) ? $value : null;
+        $this->rules[] = static fn (?string $value): ?string => $value !== null && in_array($value, $values, true) ? $value : null;
 
         return $this;
     }
+
+    /**
+     * @param array<string> $values
+     *
+     * @return $this
+     */
+    public function isInArrayKeys(array $values): self
+    {
+        return $this->isInArray(array_keys($values));
+    }
+
+    /**
+     * @return $this
+     */
+    public function isNotEmpty(): self
+    {
+        $this->rules[] = static fn (?string $value): ?string => $value !== null && $value !== '' ? $value : null;
+
+        return $this;
+    }
+
     /**
      * @param string $base_url
      *
@@ -132,7 +153,7 @@ class Validator
     public function isLocalUrl(string $base_url): self
     {
         $this->rules[] = static function (?string $value) use ($base_url): ?string {
-            if (is_string($value)) {
+            if ($value !== null) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
 
@@ -165,7 +186,7 @@ class Validator
     public function isTag(): self
     {
         $this->rules[] = static function (?string $value): ?string {
-            if (is_string($value) && preg_match('/^' . Gedcom::REGEX_TAG . '$/', $value) === 1) {
+            if ($value !== null && preg_match('/^' . Gedcom::REGEX_TAG . '$/', $value) === 1) {
                 return $value;
             }
 
@@ -181,7 +202,7 @@ class Validator
     public function isXref(): self
     {
         $this->rules[] = static function (?string $value): ?string {
-            if (is_string($value) && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
+            if ($value !== null && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
                 return $value;
             }
 
