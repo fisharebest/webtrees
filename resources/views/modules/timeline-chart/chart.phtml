@@ -264,7 +264,7 @@ use Fisharebest\Webtrees\Individual;
     </div>
     <?php
     // at a scale of 25 or higher, show every year
-    $mod = 25 / $scale;
+    $mod = intdiv(25, $scale);
     if ($mod < 1) {
         $mod = 1;
     }
