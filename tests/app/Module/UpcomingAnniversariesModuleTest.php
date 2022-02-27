@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
@@ -33,9 +34,8 @@ class UpcomingAnniversariesModuleTest extends TestCase
     /**
      * @return void
      */
-    public function testModule(): void
+    public function testModuleProperties(): void
     {
-        $tree = $this->createStub(Tree::class);
         $calendar_service = $this->createStub(CalendarService::class);
 
         $module = new UpcomingAnniversariesModule($calendar_service);
@@ -44,10 +44,5 @@ class UpcomingAnniversariesModuleTest extends TestCase
         self::assertTrue($module->loadAjax());
         self::assertTrue($module->isTreeBlock());
         self::assertTrue($module->isUserBlock());
-        self::assertIsString($module->editBlockConfiguration($tree, 1));
-
-        $request = self::createRequest();
-        $module->saveBlockConfiguration($request, 1);
-        self::assertIsString($module->getBlock($tree, 1, ModuleBlockInterface::CONTEXT_EMBED));
     }
 }
