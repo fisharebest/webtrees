@@ -22,39 +22,33 @@ namespace Fisharebest\Webtrees\Census;
 /**
  * Definitions for a census
  */
-class CensusOfRhodeIsland extends Census implements CensusPlaceInterface
+class CensusOfRhodeIsland1925 extends CensusOfRhodeIsland implements CensusInterface
 {
     /**
-     * All available censuses for this census place.
+     * When did this census occur.
      *
-     * @return array<CensusInterface>
+     * @return string
      */
-    public function allCensusDates(): array
+    public function censusDate(): string
+    {
+        return 'APR 1925';
+    }
+
+    /**
+     * The columns of the census.
+     *
+     * @return array<CensusColumnInterface>
+     */
+    public function columns(): array
     {
         return [
-            new CensusOfRhodeIsland1905(),
-            new CensusOfRhodeIsland1915(),
-            new CensusOfRhodeIsland1925(),
+            new CensusColumnSurnameGivenNameInitial($this, 'Name', 'Name'),
+            new CensusColumnRelationToHeadEnglish($this, 'Relation', 'Relationship of this person to head of the family'),
+            new CensusColumnSexMF($this, 'Sex', 'Sex'),
+            new CensusColumnNull($this, 'Race', 'Color or race'),
+            new CensusColumnAge($this, 'Age', 'Age at last birthday'),
+            new CensusColumnBirthPlaceSimple($this, 'BP', 'Place of birth'),
+            new CensusColumnNull($this, 'Cit', 'Citzenship'),
         ];
-    }
-
-    /**
-     * Where did this census occur, in GEDCOM format.
-     *
-     * @return string
-     */
-    public function censusPlace(): string
-    {
-        return 'Rhode Island, United States';
-    }
-
-    /**
-     * In which language was this census written.
-     *
-     * @return string
-     */
-    public function censusLanguage(): string
-    {
-        return 'en-US';
     }
 }
