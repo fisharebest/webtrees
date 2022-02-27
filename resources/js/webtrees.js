@@ -700,8 +700,16 @@
     let options = {};
 
     if (element.dataset.url) {
+      let plugins = ['dropdown_input', 'virtual_scroll'];
+
+      if (element.multiple) {
+        plugins.push('remove_button');
+      } else if (!element.required) {
+        plugins.push('clear_button');
+      }
+
       options = {
-        plugins: ['dropdown_input', 'virtual_scroll'],
+        plugins: plugins,
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
