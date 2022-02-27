@@ -727,10 +727,6 @@
             .catch(callback);
         },
       };
-    } else {
-      options = {
-        plugins: ['remove_button'],
-      };
     }
 
     return new TomSelect(element, options);
