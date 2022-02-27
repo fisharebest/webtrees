@@ -710,6 +710,7 @@
 
       options = {
         plugins: plugins,
+        maxOptions: false,
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
