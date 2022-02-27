@@ -31,7 +31,7 @@ class CensusOfRhodeIsland1905 extends CensusOfRhodeIsland implements CensusInter
      */
     public function censusDate(): string
     {
-        return '1905';
+        return 'JUN 1905';
     }
 
     /**
