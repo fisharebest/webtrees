@@ -700,8 +700,17 @@
     let options = {};
 
     if (element.dataset.url) {
+      let plugins = ['dropdown_input', 'virtual_scroll'];
+
+      if (element.multiple) {
+        plugins.push('remove_button');
+      } else if (!element.required) {
+        plugins.push('clear_button');
+      }
+
       options = {
-        plugins: ['dropdown_input', 'virtual_scroll'],
+        plugins: plugins,
+        maxOptions: false,
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
@@ -711,15 +720,13 @@
           fetch(this.getUrl(query))
             .then(response => response.json())
             .then(json => {
-              this.setNextUrl(query, json.nextUrl + '&query=' + encodeURIComponent(query));
+              if (json.nextUrl !== null) {
+                this.setNextUrl(query, json.nextUrl + '&query=' + encodeURIComponent(query));
+              }
               callback(json.data);
             })
             .catch(callback);
         },
-      };
-    } else {
-      options = {
-        plugins: ['remove_button'],
       };
     }
 
