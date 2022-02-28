@@ -318,7 +318,7 @@ class Webtrees
      * @param string        $abstract
      * @param string|object $concrete
      */
-    public static function set(string $abstract, $concrete): void
+    public static function set(string $abstract, string|object $concrete): void
     {
         if (is_string($concrete)) {
             Container::getInstance()->bind($abstract, $concrete);

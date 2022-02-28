@@ -105,11 +105,11 @@ class Session
      * Read a value from the session
      *
      * @param string $name
-     * @param mixed  $default
+     * @param array|bool|int|null|string  $default
      *
-     * @return mixed
+     * @return array|bool|int|null|string
      */
-    public static function get(string $name, $default = null)
+    public static function get(string $name, array|bool|int|string $default = null)
     {
         return $_SESSION[$name] ?? $default;
     }
@@ -119,9 +119,9 @@ class Session
      *
      * @param string $name
      *
-     * @return mixed
+     * @return array|bool|int|null|string
      */
-    public static function pull(string $name)
+    public static function pull(string $name): array|bool|int|null|string
     {
         $value = self::get($name);
         self::forget($name);
@@ -160,12 +160,12 @@ class Session
     /**
      * Write a value to the session
      *
-     * @param string $name
-     * @param mixed  $value
+     * @param string                      $name
+     * @param array|bool|int|null|string  $value
      *
      * @return void
      */
-    public static function put(string $name, $value): void
+    public static function put(string $name, array|bool|int|null|string $value): void
     {
         $_SESSION[$name] = $value;
     }

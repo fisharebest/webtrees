@@ -62,7 +62,7 @@ interface ResponseFactoryInterface
      *
      * @return ResponseInterface
      */
-    public function response($content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface;
+    public function response(string|array|object $content = '', int $code = StatusCodeInterface::STATUS_OK, array $headers = []): ResponseInterface;
 
     /**
      * Create and render a view, and embed it in an HTML page.

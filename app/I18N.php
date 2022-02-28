@@ -269,7 +269,7 @@ class I18N
      *
      * @return string
      */
-    public static function digits($n): string
+    public static function digits(string|int $n): string
     {
         return self::$locale->digits((string) $n);
     }
