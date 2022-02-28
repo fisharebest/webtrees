@@ -51,7 +51,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      *
      * @return bool
      */
-    public function open($path, $name): bool
+    public function open(string $path, string $name): bool
     {
         return true;
     }
@@ -69,7 +69,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      *
      * @return string
      */
-    public function read($id): string
+    public function read(string $id): string
     {
         $this->row = DB::table('session')
             ->where('session_id', '=', $id)
@@ -85,7 +85,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      *
      * @return bool
      */
-    public function write($id, $data): bool
+    public function write(string $id, string $data): bool
     {
         $ip_address   = Validator::attributes($this->request)->string('client-ip');
         $session_time = time();
@@ -134,7 +134,7 @@ class SessionDatabaseHandler implements SessionHandlerInterface
      *
      * @return bool
      */
-    public function destroy($id): bool
+    public function destroy(string $id): bool
     {
         DB::table('session')
             ->where('session_id', '=', $id)
@@ -146,10 +146,9 @@ class SessionDatabaseHandler implements SessionHandlerInterface
     /**
      * @param int $max_lifetime
      *
-     * @return int|false
+     * @return int
      */
-    #[\ReturnTypeWillChange]
-    public function gc($max_lifetime)
+    public function gc(int $max_lifetime): int
     {
         return DB::table('session')
             ->where('session_time', '<', date('Y-m-d H:i:s', time() - $max_lifetime))
