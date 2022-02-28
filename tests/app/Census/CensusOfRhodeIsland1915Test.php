@@ -80,7 +80,7 @@ class CensusOfRhodeIsland1915Test extends TestCase
         self::assertSame('Trade', $columns[9]->abbreviation());
         self::assertSame('Ind', $columns[10]->abbreviation());
         self::assertSame('Type', $columns[11]->abbreviation());
-        self::assertSame('Uemp', $columns[12]->abbreviation());   
+        self::assertSame('Uemp', $columns[12]->abbreviation());
         self::assertSame('Name', $columns[0]->title());
         self::assertSame('Relationship of this person to head of the family', $columns[1]->title());
         self::assertSame('Sex', $columns[2]->title());
