@@ -69,7 +69,7 @@ class CensusOfRhodeIsland1925Test extends TestCase
         self::assertSame('Age', $columns[4]->abbreviation());
         self::assertSame('BP', $columns[5]->abbreviation());
         self::assertSame('Cit', $columns[6]->abbreviation());
-        
+
         self::assertSame('Name', $columns[0]->title());
         self::assertSame('Relationship of this person to head of the family', $columns[1]->title());
         self::assertSame('Sex', $columns[2]->title());
