@@ -116,7 +116,7 @@ class Validator
     /**
      * @param array<string> $values
      *
-     * @return $this
+     * @return self
      */
     public function isInArray(array $values): self
     {
@@ -128,7 +128,7 @@ class Validator
     /**
      * @param array<string> $values
      *
-     * @return $this
+     * @return self
      */
     public function isInArrayKeys(array $values): self
     {
@@ -136,7 +136,7 @@ class Validator
     }
 
     /**
-     * @return $this
+     * @return self
      */
     public function isNotEmpty(): self
     {
@@ -148,7 +148,7 @@ class Validator
     /**
      * @param string $base_url
      *
-     * @return $this
+     * @return self
      */
     public function isLocalUrl(string $base_url): self
     {
@@ -181,7 +181,7 @@ class Validator
     }
 
     /**
-     * @return $this
+     * @return self
      */
     public function isTag(): self
     {
@@ -197,7 +197,7 @@ class Validator
     }
 
     /**
-     * @return $this
+     * @return self
      */
     public function isXref(): self
     {

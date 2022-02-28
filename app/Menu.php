@@ -75,7 +75,7 @@ class Menu
      *
      * @param array<string> $attrs
      *
-     * @return $this
+     * @return self
      */
     public function setAttrs(array $attrs): self
     {
@@ -99,7 +99,7 @@ class Menu
      *
      * @param string $class
      *
-     * @return $this
+     * @return self
      */
     public function setClass(string $class): self
     {
@@ -123,7 +123,7 @@ class Menu
      *
      * @param string $label
      *
-     * @return $this
+     * @return self
      */
     public function setLabel(string $label): self
     {
@@ -147,7 +147,7 @@ class Menu
      *
      * @param string $link
      *
-     * @return $this
+     * @return self
      */
     public function setLink(string $link): self
     {
@@ -161,7 +161,7 @@ class Menu
      *
      * @param Menu $menu
      *
-     * @return $this
+     * @return self
      */
     public function addSubmenu(Menu $menu): self
     {
@@ -185,7 +185,7 @@ class Menu
      *
      * @param array<Menu> $submenus
      *
-     * @return $this
+     * @return self
      */
     public function setSubmenus(array $submenus): self
     {
