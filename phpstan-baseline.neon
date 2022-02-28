@@ -1316,11 +1316,6 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$image of function imagecolorallocate expects GdImage, resource given\\.$#"
-			count: 1
-			path: app/Module/FanChartModule.php
-
-		-
 			message: "#^Parameter \\#1 \\$image of function imagecolortransparent expects GdImage, GdImage\\|false given\\.$#"
 			count: 1
 			path: app/Module/FanChartModule.php
@@ -1351,7 +1346,7 @@ parameters:
 			path: app/Module/FanChartModule.php
 
 		-
-			message: "#^Parameter \\#1 \\$image of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) expects resource, GdImage\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$image of method Fisharebest\\\\Webtrees\\\\Module\\\\FanChartModule\\:\\:imageColor\\(\\) expects GdImage, GdImage\\|false given\\.$#"
 			count: 4
 			path: app/Module/FanChartModule.php
 

@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ChartService;
 use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
+use GdImage;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -489,12 +490,12 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     /**
      * Convert a CSS color into a GD color.
      *
-     * @param resource $image
-     * @param string   $css_color
+     * @param GdImage $image
+     * @param string  $css_color
      *
      * @return int
      */
-    protected function imageColor($image, string $css_color): int
+    protected function imageColor(GdImage $image, string $css_color): int
     {
         return imagecolorallocate(
             $image,
