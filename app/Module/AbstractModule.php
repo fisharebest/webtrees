@@ -101,7 +101,7 @@ abstract class AbstractModule implements ModuleInterface
      * @param string $setting_name
      * @param string $setting_value
      *
-     * @return $this
+     * @return self
      */
     final protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {
