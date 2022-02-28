@@ -128,8 +128,8 @@ class ReportParserGenerate extends ReportParserBase
     /** @var array<AbstractRenderer> Nested repeating data */
     private array $wt_report_stack = [];
 
-    /** @var XMLParser (resource before PHP 8.0) Nested repeating data */
-    private $parser;
+    // Nested repeating data
+    private XMLParser $parser;
 
     /** @var XMLParser[] (resource[] before PHP 8.0) Nested repeating data */
     private array $parser_stack = [];

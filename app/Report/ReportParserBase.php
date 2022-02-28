@@ -45,8 +45,8 @@ use const XML_OPTION_CASE_FOLDING;
  */
 class ReportParserBase
 {
-    /** @var XMLParser (resource before PHP 8.0) The XML parser */
-    protected $xml_parser;
+    // The XML parser
+    protected XMLParser $xml_parser;
 
     /** @var string Text contents of tags */
     protected string $text = '';
