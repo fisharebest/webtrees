@@ -128,10 +128,10 @@ class ResponseFactory implements ResponseFactoryInterface
     /**
      * Create and render a view, and embed it in an HTML page.
      *
-     * @param string       $view_name
-     * @param array<mixed> $view_data
-     * @param int          $status
-     * @param string       $layout_name
+     * @param string              $view_name
+     * @param array<string,mixed> $view_data
+     * @param int                 $status
+     * @param string              $layout_name
      *
      * @return ResponseInterface
      */

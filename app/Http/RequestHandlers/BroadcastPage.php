@@ -54,8 +54,8 @@ class BroadcastPage implements RequestHandlerInterface
     {
         $recipient_types = $this->message_service->recipientTypes();
 
-        $user    = Validator::attributes($request)->user();
-        $to      = Validator::attributes($request)->isInArrayKeys($recipient_types)->string('to');
+        $user = Validator::attributes($request)->user();
+        $to   = Validator::attributes($request)->isInArrayKeys($recipient_types)->string('to');
 
         $title = $recipient_types[$to];
 
