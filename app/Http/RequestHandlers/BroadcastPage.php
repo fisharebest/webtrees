@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Validator;
@@ -53,28 +52,20 @@ class BroadcastPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
+        $recipient_types = $this->message_service->recipientTypes();
+
         $user    = Validator::attributes($request)->user();
-        $params  = $request->getQueryParams();
-        $body    = $params['body'] ?? '';
-        $subject = $params['subject'] ?? '';
-        $to      = $params['to'];
+        $to      = Validator::attributes($request)->isInArrayKeys($recipient_types)->string('to');
 
-        $to_names = $this->message_service->recipientUsers($to)
-            ->map(static function (UserInterface $user): string {
-                return $user->realName();
-            });
-
-        $title = $this->message_service->recipientDescription($to);
+        $title = $recipient_types[$to];
 
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/broadcast', [
-            'body'     => $body,
-            'from'     => $user,
-            'subject'  => $subject,
-            'title'    => $title,
-            'to'       => $to,
-            'to_names' => $to_names,
+            'from'       => $user,
+            'title'      => $title,
+            'to'         => $to,
+            'recipients' => $this->message_service->recipientUsers($to),
         ]);
     }
 }

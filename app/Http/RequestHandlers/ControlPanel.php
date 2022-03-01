@@ -53,6 +53,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -79,9 +80,11 @@ class ControlPanel implements RequestHandlerInterface
 
     private AdminService $admin_service;
 
-    private ModuleService $module_service;
-
     private HousekeepingService $housekeeping_service;
+
+    private MessageService $message_service;
+
+    private ModuleService $module_service;
 
     private ServerCheckService $server_check_service;
 
@@ -96,6 +99,7 @@ class ControlPanel implements RequestHandlerInterface
      *
      * @param AdminService        $admin_service
      * @param HousekeepingService $housekeeping_service
+     * @param MessageService      $message_service
      * @param ModuleService       $module_service
      * @param ServerCheckService  $server_check_service
      * @param TreeService         $tree_service
@@ -105,6 +109,7 @@ class ControlPanel implements RequestHandlerInterface
     public function __construct(
         AdminService $admin_service,
         HousekeepingService $housekeeping_service,
+        MessageService $message_service,
         ModuleService $module_service,
         ServerCheckService $server_check_service,
         TreeService $tree_service,
@@ -113,6 +118,7 @@ class ControlPanel implements RequestHandlerInterface
     ) {
         $this->admin_service        = $admin_service;
         $this->housekeeping_service = $housekeeping_service;
+        $this->message_service      = $message_service;
         $this->module_service       = $module_service;
         $this->server_check_service = $server_check_service;
         $this->tree_service         = $tree_service;
@@ -152,6 +158,7 @@ class ControlPanel implements RequestHandlerInterface
             'moderators'                        => $this->user_service->moderators(),
             'unapproved'                        => $this->user_service->unapproved(),
             'unverified'                        => $this->user_service->unverified(),
+            'recipients'                        => $this->message_service->recipientTypes(),
             'all_trees'                         => $this->tree_service->all(),
             'changes'                           => $this->totalChanges(),
             'individuals'                       => $this->totalIndividuals(),
