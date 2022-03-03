@@ -348,8 +348,8 @@ class WebRoutes
                 ]);
 
                 $router->get(ControlPanel::class, '');
-                $router->get(BroadcastPage::class, '/broadcast');
-                $router->post(BroadcastAction::class, '/broadcast');
+                $router->get(BroadcastPage::class, '/broadcast/{to}');
+                $router->post(BroadcastAction::class, '/broadcast/{to}');
                 $router->get(CleanDataFolder::class, '/clean');
                 $router->post(DeletePath::class, '/delete-path');
                 $router->get(EmailPreferencesPage::class, '/email');

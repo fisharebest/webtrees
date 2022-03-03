@@ -38,6 +38,10 @@ use function view;
  */
 class MessageService
 {
+    private const BROADCAST_ALL   = 'all';
+    private const BROADCAST_NEVER = 'never';
+    private const BROADCAST_GONE  = 'gone';
+
     private EmailService $email_service;
 
     private UserService $user_service;
@@ -178,13 +182,13 @@ class MessageService
     {
         switch ($to) {
             default:
-            case 'all':
+            case self::BROADCAST_ALL:
                 return $this->user_service->all();
-            case 'never_logged':
+            case self::BROADCAST_NEVER:
                 return $this->user_service->all()->filter(static function (UserInterface $user): bool {
                     return $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
                 });
-            case 'last_6mo':
+            case self::BROADCAST_GONE:
                 $six_months_ago = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();
 
                 return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
@@ -196,21 +200,17 @@ class MessageService
     }
 
     /**
-     * @param string $to
+     * Recipients for broadcast messages
      *
-     * @return string
+     * @return array<string,string>
      */
-    public function recipientDescription(string $to): string
+    public function recipientTypes(): array
     {
-        switch ($to) {
-            default:
-            case 'all':
-                return I18N::translate('Send a message to all users');
-            case 'never_logged':
-                return I18N::translate('Send a message to users who have never signed in');
-            case 'last_6mo':
-                return I18N::translate('Send a message to users who have not signed in for 6 months');
-        }
+        return [
+            self::BROADCAST_ALL   => I18N::translate('Send a message to all users'),
+            self::BROADCAST_NEVER => I18N::translate('Send a message to users who have never signed in'),
+            self::BROADCAST_GONE  => I18N::translate('Send a message to users who have not signed in for 6 months'),
+        ];
     }
 
     /**

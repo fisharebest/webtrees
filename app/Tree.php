@@ -177,7 +177,7 @@ class Tree
      * @param string $setting_name
      * @param string $setting_value
      *
-     * @return $this
+     * @return self
      */
     public function setPreference(string $setting_name, string $setting_value): Tree
     {
@@ -274,7 +274,7 @@ class Tree
      * @param string        $setting_name
      * @param string        $setting_value
      *
-     * @return $this
+     * @return self
      */
     public function setUserPreference(UserInterface $user, string $setting_name, string $setting_value): Tree
     {

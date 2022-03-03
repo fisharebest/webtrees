@@ -128,6 +128,7 @@ use Illuminate\Support\Collection;
  * @var Collection<array-key,int>                      $notes
  * @var NoteListModule|null                            $note_list_module
  * @var Collection<int,ModuleInterface>                $other_modules
+ * @var array<string,string>                           $recipients
  * @var Collection<int,ModuleReportInterface>          $report_modules_disabled
  * @var Collection<int,ModuleReportInterface>          $report_modules_enabled
  * @var Collection<array-key,int>                      $repositories
@@ -534,24 +535,14 @@ use Illuminate\Support\Collection;
             </div>
             <div class="col-sm-6">
                 <ul class="fa-ul mx-0">
+                    <?php foreach ($recipients as $to => $recipient) : ?>
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'all'])) ?>">
-                            <?= I18N::translate('Send a message to all users') ?>
+                        <a href="<?= e(route(BroadcastPage::class, ['to' => $to])) ?>">
+                            <?= $recipient ?>
                         </a>
                     </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'never_logged'])) ?>">
-                            <?= I18N::translate('Send a message to users who have never signed in') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'last_6mo'])) ?>">
-                            <?= I18N::translate('Send a message to users who have not signed in for 6 months') ?>
-                        </a>
-                    </li>
+                    <?php endforeach ?>
                 </ul>
             </div>
         </div>

@@ -70,84 +70,84 @@ interface TimestampInterface
     /**
      * @param int $seconds
      *
-     * @return $this
+     * @return self
      */
     public function addSeconds(int $seconds): TimestampInterface;
 
     /**
      * @param int $minutes
      *
-     * @return $this
+     * @return self
      */
     public function addMinutes(int $minutes): TimestampInterface;
 
     /**
      * @param int $hours
      *
-     * @return $this
+     * @return self
      */
     public function addHours(int $hours): TimestampInterface;
 
     /**
      * @param int $days
      *
-     * @return $this
+     * @return self
      */
     public function addDays(int $days): TimestampInterface;
 
     /**
      * @param int $months
      *
-     * @return $this
+     * @return self
      */
     public function addMonths(int $months): TimestampInterface;
 
     /**
      * @param int $years
      *
-     * @return $this
+     * @return self
      */
     public function addYears(int $years): TimestampInterface;
 
     /**
      * @param int $seconds
      *
-     * @return $this
+     * @return self
      */
     public function subtractSeconds(int $seconds): TimestampInterface;
 
     /**
      * @param int $minutes
      *
-     * @return $this
+     * @return self
      */
     public function subtractMinutes(int $minutes): TimestampInterface;
 
     /**
      * @param int $hours
      *
-     * @return $this
+     * @return self
      */
     public function subtractHours(int $hours): TimestampInterface;
 
     /**
      * @param int $days
      *
-     * @return $this
+     * @return self
      */
     public function subtractDays(int $days): TimestampInterface;
 
     /**
      * @param int $months
      *
-     * @return $this
+     * @return self
      */
     public function subtractMonths(int $months): TimestampInterface;
 
     /**
      * @param int $years
      *
-     * @return $this
+     * @return self
      */
     public function subtractYears(int $years): TimestampInterface;
 

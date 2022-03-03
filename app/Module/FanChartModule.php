@@ -127,17 +127,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->tokens([
-                'generations' => '\d+',
-                'style'       => implode('|', array_keys($this->styles())),
-                'width'       => '\d+',
-            ]);
+            ->allows(RequestMethodInterface::METHOD_POST);
     }
 
     /**
@@ -223,7 +215,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
         $xref        = Validator::attributes($request)->isXref()->string('xref');
-        $style       = Validator::attributes($request)->string('style');
+        $style       = Validator::attributes($request)->isInArrayKeys($this->styles())->string('style');
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
         $width       = Validator::attributes($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
@@ -232,10 +224,10 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'generations' => Validator::parsedBody($request)->string('generations', ''),
-                'style'       => Validator::parsedBody($request)->string('style', ''),
-                'width'       => Validator::parsedBody($request)->string('width', ''),
-                'xref'        => Validator::parsedBody($request)->string('xref', ''),
+                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
+                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->string('style'),
+                'width'       => Validator::parsedBody($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width'),
+                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
              ]));
         }
 

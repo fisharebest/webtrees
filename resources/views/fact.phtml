@@ -138,9 +138,9 @@ if ($tag === 'MARR') {
             </div>
 
             <div class="wt-fact-other-attributes mt-2">
-                <?php preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ') ?((\n[3-9].*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
+                <?php preg_match_all('/\n2 (' . Gedcom::REGEX_TAG . ')( .*)?((\n[3-9].*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) ?>
                 <?php foreach ($matches as $match) : ?>
-                    <?php if (!in_array($match[1], ['DATE', 'TIME', 'AGE', 'HUSB', 'WIFE', 'PLAC', 'ASSO', '_ASSO', 'STAT', 'TEMP', 'TYPE', 'CONT', 'NOTE', 'OBJE', 'SOUR'], true)) : ?>
+                    <?php if (!in_array($match[1], ['DATE', 'AGE', 'HUSB', 'WIFE', 'PLAC', 'ASSO', '_ASSO', 'STAT', 'TEMP', 'TYPE', 'CONT', 'NOTE', 'OBJE', 'SOUR'], true)) : ?>
                         <?= view('fact-gedcom-fields', ['gedcom' => $match[0], 'parent' => $fact->tag() . ':' . $match[1], 'tree' => $tree]) ?>
                     <?php endif ?>
                 <?php endforeach; ?>

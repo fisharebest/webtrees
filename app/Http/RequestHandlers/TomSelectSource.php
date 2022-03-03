@@ -60,12 +60,6 @@ class TomSelectSource extends AbstractTomSelectHandler
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
-        $search = array_filter(explode(' ', $query));
-
-        if ($search === []) {
-            return new Collection();
-        }
-
         // Search by XREF
         $source = Registry::sourceFactory()->make($query, $tree);
 

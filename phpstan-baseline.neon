@@ -356,16 +356,6 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Parameter \\#1 \\$content of method Psr\\\\Http\\\\Message\\\\StreamFactoryInterface\\:\\:createStream\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: app/Helpers/functions.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Helpers/functions.php
-
-		-
 			message: "#^Strict comparison using \\=\\=\\= between '\\-alpha\\.2' and '' will always evaluate to false\\.$#"
 			count: 1
 			path: app/Helpers/functions.php
@@ -486,6 +476,11 @@ parameters:
 			path: app/Http/Middleware/UseTransaction.php
 
 		-
+			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/AppleTouchIconPng.php
+
+		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:searchPlaceNames\\(\\)\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/AutoCompletePlace.php
@@ -502,6 +497,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method url\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/CalendarEvents.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CalendarEvents.php
 
@@ -579,6 +579,11 @@ parameters:
 			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ExportGedcomClient.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/FaviconIco.php
 
 		-
 			message: "#^Cannot call method displayImage\\(\\) on Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
@@ -726,6 +731,11 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
 
 		-
+			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportCSV.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
@@ -854,6 +864,11 @@ parameters:
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/PhpInformation.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ReportGenerate.php
 
 		-
 			message: "#^Argument of an invalid type array\\<string\\>\\|string supplied for foreach, only iterables are supported\\.$#"
@@ -1541,21 +1556,6 @@ parameters:
 			path: app/Module/PedigreeChartModule.php
 
 		-
-			message: "#^Parameter \\#2 \\$parameters of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule\\:\\:chartUrl\\(\\) expects array\\<array\\<string\\>\\|bool\\|int\\|string\\|null\\>, array\\<string, mixed\\> given\\.$#"
-			count: 1
-			path: app/Module/PedigreeChartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$style of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule\\:\\:nextLink\\(\\) expects string, mixed given\\.$#"
-			count: 2
-			path: app/Module/PedigreeChartModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$style of method Fisharebest\\\\Webtrees\\\\Module\\\\PedigreeChartModule\\:\\:previousLink\\(\\) expects string, mixed given\\.$#"
-			count: 1
-			path: app/Module/PedigreeChartModule.php
-
-		-
 			message: "#^Cannot call method statsPlaces\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Module/PlaceHierarchyListModule.php
@@ -1598,6 +1598,11 @@ parameters:
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
+			path: app/Module/RelationshipsChartModule.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
+			count: 1
 			path: app/Module/RelationshipsChartModule.php
 
 		-
