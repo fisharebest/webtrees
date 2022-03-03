@@ -16,6 +16,11 @@ parameters:
 			path: app/Census/CensusColumnBornForeignParts.php
 
 		-
+			message: "#^Parameter \\#1 \\$str of function strtr expects string, mixed given\\.$#"
+			count: 2
+			path: app/Console/ComposerScripts.php
+
+		-
 			message: "#^Cannot call method calendarUrl\\(\\) on Fisharebest\\\\Webtrees\\\\Date\\\\AbstractCalendarDate\\|null\\.$#"
 			count: 1
 			path: app/Date.php
@@ -481,6 +486,11 @@ parameters:
 			path: app/Http/RequestHandlers/AppleTouchIconPng.php
 
 		-
+			message: "#^Cannot call method gedcom\\(\\) on mixed\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/AutoCompleteCitation.php
+
+		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:searchPlaceNames\\(\\)\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/AutoCompletePlace.php
@@ -504,6 +514,21 @@ parameters:
 			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/CalendarEvents.php
+
+		-
+			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/CheckTree.php
+
+		-
+			message: "#^Cannot access property \\$type on mixed\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/CheckTree.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 6
+			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
 			message: "#^Cannot call method realName\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#"
@@ -574,6 +599,11 @@ parameters:
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditNoteAction.php
+
+		-
+			message: "#^Cannot call method mediaFiles\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
 		-
 			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
@@ -711,6 +741,16 @@ parameters:
 			path: app/Http/RequestHandlers/ManageMediaData.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, mixed given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
+			message: "#^Parameter \\#2 \\$needle of function str_starts_with expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/ManageMediaData.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataAdd.php
@@ -726,6 +766,26 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataEdit.php
 
 		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportCSV.php
+
+		-
+			message: "#^Cannot access property \\$latitude on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportCSV.php
+
+		-
+			message: "#^Cannot access property \\$longitude on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportCSV.php
+
+		-
+			message: "#^Cannot access property \\$place on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportCSV.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
@@ -734,6 +794,26 @@ parameters:
 			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataExportCSV.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
+
+		-
+			message: "#^Cannot access property \\$latitude on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
+
+		-
+			message: "#^Cannot access property \\$longitude on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
+
+		-
+			message: "#^Cannot access property \\$place on mixed\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/MapDataExportGeoJson.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
@@ -1026,6 +1106,16 @@ parameters:
 			path: app/Http/RequestHandlers/TreePageBlock.php
 
 		-
+			message: "#^Cannot access property \\$l_from on mixed\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/UnconnectedPage.php
+
+		-
+			message: "#^Cannot access property \\$l_to on mixed\\.$#"
+			count: 2
+			path: app/Http/RequestHandlers/UnconnectedPage.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/UserPageBlock.php
@@ -1107,6 +1197,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Media\\:\\:mediaFiles\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\MediaFile\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Fact\\>\\.$#"
+			count: 1
+			path: app/Media.php
+
+		-
+			message: "#^Parameter \\#1 \\$xref of method Fisharebest\\\\Webtrees\\\\Contracts\\\\GedcomRecordFactoryInterface\\:\\:make\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Media.php
 
@@ -1446,8 +1541,38 @@ parameters:
 			path: app/Module/IndividualFactsTabModule.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
+			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
+			count: 1
+			path: app/Module/IndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$n_givn on mixed\\.$#"
+			count: 1
+			path: app/Module/IndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
 			count: 2
+			path: app/Module/IndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$n_surname on mixed\\.$#"
+			count: 1
+			path: app/Module/IndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$total on mixed\\.$#"
+			count: 1
+			path: app/Module/IndividualListModule.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 1
+			path: app/Module/IndividualListModule.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 4
 			path: app/Module/IndividualListModule.php
 
 		-
@@ -1581,6 +1706,16 @@ parameters:
 			path: app/Module/RelationshipsChartModule.php
 
 		-
+			message: "#^Cannot access property \\$l_from on mixed\\.$#"
+			count: 3
+			path: app/Module/RelationshipsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$l_to on mixed\\.$#"
+			count: 3
+			path: app/Module/RelationshipsChartModule.php
+
+		-
 			message: "#^Cannot call method gedcom\\(\\) on Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
 			count: 2
 			path: app/Module/RelationshipsChartModule.php
@@ -1601,6 +1736,11 @@ parameters:
 			path: app/Module/RelationshipsChartModule.php
 
 		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\RelationshipsChartModule\\:\\:allAncestors\\(\\) should return array\\<string\\> but returns array\\<int, mixed\\>\\.$#"
+			count: 1
+			path: app/Module/RelationshipsChartModule.php
+
+		-
 			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Module/RelationshipsChartModule.php
@@ -1609,6 +1749,21 @@ parameters:
 			message: "#^Parameter \\#2 \\$language of method Fisharebest\\\\Webtrees\\\\Services\\\\RelationshipService\\:\\:nameFromPath\\(\\) expects Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface, mixed given\\.$#"
 			count: 1
 			path: app/Module/RelationshipsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$new_gedcom on mixed\\.$#"
+			count: 1
+			path: app/Module/ReviewChangesModule.php
+
+		-
+			message: "#^Cannot access property \\$old_gedcom on mixed\\.$#"
+			count: 1
+			path: app/Module/ReviewChangesModule.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 1
+			path: app/Module/ReviewChangesModule.php
 
 		-
 			message: "#^Cannot call method canShow\\(\\) on Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
@@ -1656,9 +1811,79 @@ parameters:
 			path: app/Module/StatisticsChartModule.php
 
 		-
+			message: "#^Binary operation \"/\" between stdClass and 365\\.25 results in an error\\.$#"
+			count: 3
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$d_month on mixed\\.$#"
+			count: 11
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$f_husb on mixed\\.$#"
+			count: 4
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$f_wife on mixed\\.$#"
+			count: 4
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$i_sex on mixed\\.$#"
+			count: 3
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$month on mixed\\.$#"
+			count: 2
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$total on mixed\\.$#"
+			count: 11
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Cannot access property \\$block_id on mixed\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Cannot access property \\$individual on mixed\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Cannot access property \\$languages on mixed\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Cannot access property \\$title on mixed\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: app/Module/StoriesModule.php
+
+		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: app/Module/StoriesModule.php
+
+		-
+			message: "#^Cannot call method xref\\(\\) on mixed\\.$#"
+			count: 2
+			path: app/Module/TimelineChartModule.php
 
 		-
 			message: "#^Cannot call method commonGivenFemaleListTotals\\(\\) on mixed\\.$#"
@@ -1736,6 +1961,11 @@ parameters:
 			path: app/Module/XeneaTheme.php
 
 		-
+			message: "#^Parameter \\#1 \\$xref of method Fisharebest\\\\Webtrees\\\\Contracts\\\\GedcomRecordFactoryInterface\\:\\:make\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Note.php
+
+		-
 			message: "#^Cannot call method findByComponent\\(\\) on mixed\\.$#"
 			count: 1
 			path: app/Place.php
@@ -1799,6 +2029,11 @@ parameters:
 			message: "#^Parameter \\#1 \\$str of function mb_substr expects string, mixed given\\.$#"
 			count: 1
 			path: app/PlaceLocation.php
+
+		-
+			message: "#^Binary operation \"/\" between string and 2 results in an error\\.$#"
+			count: 1
+			path: app/Report/HtmlRenderer.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\PdfRenderer\\:\\:getStyle\\(\\) should return array\\<string, string\\> but returns array\\<string, string\\>\\|string\\.$#"
@@ -1901,6 +2136,11 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
+			message: "#^Binary operation \"\\+\" between non\\-empty\\-string and 1 results in an error\\.$#"
+			count: 1
+			path: app/Report/ReportParserGenerate.php
+
+		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\|static\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\)\\:\\:canShow\\(\\)\\.$#"
 			count: 1
 			path: app/Report/ReportParserGenerate.php
@@ -1933,6 +2173,16 @@ parameters:
 		-
 			message: "#^Cannot access offset float\\|int on array\\<int, string\\>\\|false\\.$#"
 			count: 14
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
+			count: 2
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 4
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -2013,16 +2263,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$im of function imagesy expects resource, resource\\|false given\\.$#"
 			count: 2
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Parameter \\#1 \\$level of static method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:getSubRecord\\(\\) expects int, float\\|int given\\.$#"
-			count: 4
-			path: app/Report/ReportParserGenerate.php
-
-		-
-			message: "#^Parameter \\#1 \\$nlevel of static method Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\:\\:getCont\\(\\) expects int, float\\|int given\\.$#"
-			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
@@ -2181,14 +2421,6 @@ parameters:
 			path: app/Report/ReportPdfTextBox.php
 
 		-
-			message: """
-				#^Binary operation "\\." between array\\|non\\-empty\\-string and '
-				' results in an error\\.$#
-			"""
-			count: 2
-			path: app/Report/RightToLeftSupport.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\RightToLeftSupport\\:\\:spanLtrRtl\\(\\) should return string but returns array\\|string\\.$#"
 			count: 1
 			path: app/Report/RightToLeftSupport.php
@@ -2196,11 +2428,6 @@ parameters:
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\RightToLeftSupport\\:\\:starredName\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
-			path: app/Report/RightToLeftSupport.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, array\\|string given\\.$#"
-			count: 4
 			path: app/Report/RightToLeftSupport.php
 
 		-
@@ -2232,6 +2459,26 @@ parameters:
 			message: "#^Parameter \\#2 \\$y of method TCPDF\\:\\:checkPageBreak\\(\\) expects float\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Report/TcpdfWrapper.php
+
+		-
+			message: "#^Cannot access property \\$access_level on mixed\\.$#"
+			count: 1
+			path: app/Schema/Migration42.php
+
+		-
+			message: "#^Cannot access property \\$component on mixed\\.$#"
+			count: 1
+			path: app/Schema/Migration42.php
+
+		-
+			message: "#^Cannot access property \\$gedcom_id on mixed\\.$#"
+			count: 1
+			path: app/Schema/Migration42.php
+
+		-
+			message: "#^Cannot access property \\$module_name on mixed\\.$#"
+			count: 1
+			path: app/Schema/Migration42.php
 
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:having\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
@@ -2277,6 +2524,46 @@ parameters:
 			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/AdminService.php
+
+		-
+			message: "#^Cannot access property \\$d_day on mixed\\.$#"
+			count: 2
+			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access property \\$d_fact on mixed\\.$#"
+			count: 2
+			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access property \\$d_month on mixed\\.$#"
+			count: 2
+			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access property \\$d_type on mixed\\.$#"
+			count: 4
+			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access property \\$d_year on mixed\\.$#"
+			count: 4
+			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
+			count: 4
+			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 4
+			path: app/Services/CalendarService.php
+
+		-
+			message: "#^Cannot call method children\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Services/ChartService.php
 
 		-
 			message: "#^Cannot access offset string on mixed\\.$#"
@@ -2349,6 +2636,36 @@ parameters:
 			path: app/Services/HomePageService.php
 
 		-
+			message: "#^Parameter \\#2 \\$path of method Fisharebest\\\\Webtrees\\\\Services\\\\HousekeepingService\\:\\:deleteFileOrFolder\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Services/HousekeepingService.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Cannot access property \\$p_place on mixed\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Cannot access property \\$place on mixed\\.$#"
+			count: 2
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\MapDataService\\:\\:activePlaces\\(\\) should return array\\<string, array\\<object\\>\\> but returns array\\<string, array\\<int, mixed\\>\\>\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
+			message: "#^Parameter \\#1 \\$location_name of class Fisharebest\\\\Webtrees\\\\PlaceLocation constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Services/MapDataService.php
+
+		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
 			path: app/Services/MediaFileService.php
@@ -2356,6 +2673,11 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 2
+			path: app/Services/MediaFileService.php
+
+		-
+			message: "#^Parameter \\#1 \\$location of method League\\\\Flysystem\\\\FilesystemReader\\:\\:listContents\\(\\) expects string, mixed given\\.$#"
+			count: 1
 			path: app/Services/MediaFileService.php
 
 		-
@@ -2367,6 +2689,41 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\ModuleService\\:\\:setupLanguages\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleLanguageInterface\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
 			count: 1
 			path: app/Services/ModuleService.php
+
+		-
+			message: "#^Cannot access property \\$change_id on mixed\\.$#"
+			count: 3
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Cannot access property \\$change_time on mixed\\.$#"
+			count: 2
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Cannot access property \\$new_gedcom on mixed\\.$#"
+			count: 8
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Cannot access property \\$old_gedcom on mixed\\.$#"
+			count: 5
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Cannot access property \\$record on mixed\\.$#"
+			count: 1
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 2
+			path: app/Services/PendingChangesService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\PendingChangesService\\:\\:pendingChanges\\(\\) should return array\\<array\\<object\\>\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#"
+			count: 1
+			path: app/Services/PendingChangesService.php
 
 		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Family\\|Fisharebest\\\\Webtrees\\\\Individual\\:\\:childFamilies\\(\\)\\.$#"
@@ -2544,6 +2901,11 @@ parameters:
 			path: app/Services/UpgradeService.php
 
 		-
+			message: "#^Parameter \\#1 \\$location of method League\\\\Flysystem\\\\FilesystemWriter\\:\\:delete\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Services/UpgradeService.php
+
+		-
 			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\User\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Services/UserService.php
@@ -2704,8 +3066,13 @@ parameters:
 			path: app/Statistics/Repository/HitCountRepository.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
+			message: "#^Cannot access property \\$days on mixed\\.$#"
 			count: 1
+			path: app/Statistics/Repository/IndividualRepository.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 3
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
@@ -2857,6 +3224,21 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/SurnameTradition/PatrilinealSurnameTradition.php
+
+		-
+			message: "#^Cannot access property \\$resn on mixed\\.$#"
+			count: 5
+			path: app/Tree.php
+
+		-
+			message: "#^Cannot access property \\$tag_type on mixed\\.$#"
+			count: 3
+			path: app/Tree.php
+
+		-
+			message: "#^Cannot access property \\$xref on mixed\\.$#"
+			count: 3
+			path: app/Tree.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Tree\\:\\:significantIndividual\\(\\) should return Fisharebest\\\\Webtrees\\\\Individual but returns mixed\\.$#"
