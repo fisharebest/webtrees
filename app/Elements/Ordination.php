@@ -25,9 +25,14 @@ namespace Fisharebest\Webtrees\Elements;
 class Ordination extends AbstractElement
 {
     protected const SUBTAGS = [
+        'TYPE' => '0:1:?',
         'DATE' => '0:1',
         'AGE'  => '0:1',
         'PLAC' => '0:1',
+        'ADDR' => '0:1',
+        'CAUS' => '0:1:?',
+        'AGNC' => '0:1:?',
+        'RELI' => '0:1',
         'NOTE' => '0:M',
         'OBJE' => '0:M',
         'SOUR' => '0:M',

@@ -28,6 +28,7 @@ class LdsChildSealing extends AbstractEventElement
         'DATE' => '0:1',
         'TEMP' => '0:1',
         'PLAC' => '0:1',
+        'FAMC' => '0:1:?',
         'STAT' => '0:1',
         'NOTE' => '0:M',
         'SOUR' => '0:M',

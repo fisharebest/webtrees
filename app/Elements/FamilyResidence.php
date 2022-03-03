@@ -20,17 +20,18 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * Death
+ * FamilyResidence
  */
-class Death extends AbstractEventElement
+class FamilyResidence extends AbstractElement
 {
     protected const SUBTAGS = [
         'TYPE' => '0:1:?',
         'DATE' => '0:1',
-        'AGE'  => '0:1',
+        'HUSB' => '0:1:?',
+        'WIFE' => '0:1:?',
         'PLAC' => '0:1',
         'ADDR' => '0:1',
-        'CAUS' => '0:1',
+        'CAUS' => '0:1:?',
         'AGNC' => '0:1:?',
         'RELI' => '0:1:?',
         'NOTE' => '0:M',

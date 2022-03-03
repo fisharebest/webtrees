@@ -82,6 +82,7 @@ use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
 use Fisharebest\Webtrees\Elements\FamilyCensus;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
+use Fisharebest\Webtrees\Elements\FamilyResidence;
 use Fisharebest\Webtrees\Elements\FileName;
 use Fisharebest\Webtrees\Elements\FirstCommunion;
 use Fisharebest\Webtrees\Elements\Form;
@@ -350,7 +351,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:OBJE'                 => new XrefMedia(I18N::translate('Media object')),
             'FAM:REFN'                 => new UserReferenceNumber(I18N::translate('Reference number')),
             'FAM:REFN:TYPE'            => new UserReferenceType(I18N::translate('Type of reference number')),
-            'FAM:RESI'                 => new Residence(I18N::translate('Family residence')),
+            'FAM:RESI'                 => new FamilyResidence(I18N::translate('Family residence')),
             'FAM:RESN'                 => new RestrictionNotice(I18N::translate('Restriction')),
             'FAM:RIN'                  => new AutomatedRecordId(I18N::translate('Record ID number')),
             'FAM:SLGS'                 => new LdsSpouseSealing(I18N::translate('LDS spouse sealing')),

@@ -45,6 +45,7 @@ use function implode;
 use function max;
 use function preg_replace;
 use function preg_split;
+use function str_ends_with;
 use function str_repeat;
 use function str_replace;
 use function substr_count;
@@ -258,7 +259,9 @@ class GedcomEditService
         $return = array_shift($parts) ?? '';
 
         foreach ($subtags as $subtag => $occurrences) {
-            if (!$include_hidden && $this->isHiddenTag($tag . ':' . $subtag)) {
+            $hidden = str_ends_with($occurrences, ':?') || $this->isHiddenTag($tag . ':' . $subtag);
+
+            if (!$include_hidden && $hidden) {
                 continue;
             }
 
