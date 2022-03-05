@@ -2064,7 +2064,7 @@ class RelationshipService
                             }
 
                             return I18N::translate('great ×%s grandchild', I18N::number($up + 1));
-                            
+
                         case 'zh-Hans': // Source: xmlf
                         case 'zh-Hant':
                             if ($sex2 === 'M') {
