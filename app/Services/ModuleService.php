@@ -50,7 +50,9 @@ use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
 use Fisharebest\Webtrees\Module\CustomTagsAldfaer;
+use Fisharebest\Webtrees\Module\CustomTagsAncestry;
 use Fisharebest\Webtrees\Module\CustomTagsBrothersKeeper;
+use Fisharebest\Webtrees\Module\CustomTagsFamilySearch;
 use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeBuilder;
 use Fisharebest\Webtrees\Module\CustomTagsFamilyTreeMaker;
 use Fisharebest\Webtrees\Module\CustomTagsGedcom53;
@@ -359,11 +361,13 @@ class ModuleService
         'czech-leaders'           => CzechMonarchsAndPresidents::class,
         'custom-css-js'           => CustomCssJsModule::class,
         'custom-tags-aldfaer'     => CustomTagsAldfaer::class,
+        'custom-tags-ancestry'    => CustomTagsAncestry::class,
         'custom-tags-bk'          => CustomTagsBrothersKeeper::class,
         'custom-tags-gedcom-53'   => CustomTagsGedcom53::class,
         'custom-tags-gedcom-l'    => CustomTagsGedcomL::class,
         'custom-tags-genpluswin'  => CustomTagsGenPluswin::class,
         'custom-tags-legacy'      => CustomTagsLegacy::class,
+        'custom-tags-fam-search'  => CustomTagsFamilySearch::class,
         'custom-tags-ftb'         => CustomTagsFamilyTreeBuilder::class,
         'custom-tags-ftm'         => CustomTagsFamilyTreeMaker::class,
         'custom-tags-paf'         => CustomTagsPersonalAncestralFile::class,
