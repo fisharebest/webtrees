@@ -133,7 +133,7 @@ use Psr\Http\Message\ServerRequestInterface;
             </div>
         </main>
 
-        <footer class="container-lg wt-footers d-print-none">
+        <footer class="container-lg wt-footers mt-auto d-print-none">
             <?= app(ModuleService::class)->findByInterface(ModuleFooterInterface::class)->map(static function (ModuleFooterInterface $module) use ($request): string {
                 return $module->getFooter($request);
             })->implode('') ?>
