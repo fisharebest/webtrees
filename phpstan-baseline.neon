@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Cache\\:\\:remember\\(\\) should return T but returns mixed\\.$#"
-			count: 1
-			path: app/Cache.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Census\\\\AbstractCensusColumn\\:\\:spouseFamily\\(\\) should return Fisharebest\\\\Webtrees\\\\Family\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Census/AbstractCensusColumn.php
@@ -2844,6 +2839,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
+
+		-
+			message: "#^Comparison operation \"\\<\\=\" between \\-1\\|0 and 0 is always true\\.$#"
+			count: 1
+			path: app/Services/ServerCheckService.php
 
 		-
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, string\\|false given\\.$#"
