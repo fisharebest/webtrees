@@ -19,9 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\AddressCity;
+use Fisharebest\Webtrees\Elements\AddressCountry;
+use Fisharebest\Webtrees\Elements\AddressLine;
+use Fisharebest\Webtrees\Elements\AddressLine1;
+use Fisharebest\Webtrees\Elements\AddressLine2;
+use Fisharebest\Webtrees\Elements\AddressLine3;
 use Fisharebest\Webtrees\Elements\AddressPostalCode;
+use Fisharebest\Webtrees\Elements\AddressState;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
+use Fisharebest\Webtrees\Elements\CauseOfEvent;
 use Fisharebest\Webtrees\Elements\CertaintyAssessment;
 use Fisharebest\Webtrees\Elements\Change;
 use Fisharebest\Webtrees\Elements\ChangeDate;
@@ -41,16 +48,23 @@ use Fisharebest\Webtrees\Elements\MaidenheadLocator;
 use Fisharebest\Webtrees\Elements\NamePieceGiven;
 use Fisharebest\Webtrees\Elements\NoteStructure;
 use Fisharebest\Webtrees\Elements\PafUid;
+use Fisharebest\Webtrees\Elements\PhoneticType;
+use Fisharebest\Webtrees\Elements\PlaceHierarchy;
 use Fisharebest\Webtrees\Elements\PlaceLatitude;
 use Fisharebest\Webtrees\Elements\PlaceLongtitude;
 use Fisharebest\Webtrees\Elements\PlaceName;
+use Fisharebest\Webtrees\Elements\PlacePhoneticVariation;
+use Fisharebest\Webtrees\Elements\PlaceRomanizedVariation;
 use Fisharebest\Webtrees\Elements\RelationIsDescriptor;
 use Fisharebest\Webtrees\Elements\ReligiousAffiliation;
 use Fisharebest\Webtrees\Elements\ResearchTask;
 use Fisharebest\Webtrees\Elements\ResearchTaskPriority;
 use Fisharebest\Webtrees\Elements\ResearchTaskStatus;
 use Fisharebest\Webtrees\Elements\ResearchTaskType;
+use Fisharebest\Webtrees\Elements\ResponsibleAgency;
+use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Elements\RoleInEvent;
+use Fisharebest\Webtrees\Elements\RomanizedType;
 use Fisharebest\Webtrees\Elements\SexXValue;
 use Fisharebest\Webtrees\Elements\SourceData;
 use Fisharebest\Webtrees\Elements\SubmitterText;
@@ -198,8 +212,34 @@ class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface,
             '_LOC:CHAN:DATE:TIME'            => new TimeValue(I18N::translate('Time')),
             '_LOC:CHAN:NOTE'                 => new NoteStructure(I18N::translate('Note')),
             '_LOC:EVEN'                      => new CustomEvent(I18N::translate('Event')),
+            '_LOC:EVEN:DATE'                 => new DateValue(I18N::translate('Date of event')),
+            '_LOC:EVEN:PLAC'                 => new PlaceName(I18N::translate('Place of event')),
+            '_LOC:EVEN:PLAC:FONE'            => new PlacePhoneticVariation(I18N::translate('Phonetic place')),
+            '_LOC:EVEN:PLAC:FONE:TYPE'       => new PhoneticType(I18N::translate('Type')),
+            '_LOC:EVEN:PLAC:FORM'            => new PlaceHierarchy(I18N::translate('Format')),
+            '_LOC:EVEN:PLAC:MAP'             => new EmptyElement(I18N::translate('Coordinates'), ['LATI' => '1:1', 'LONG' => '1:1']),
+            '_LOC:EVEN:PLAC:MAP:LATI'        => new PlaceLatitude(I18N::translate('Latitude')),
+            '_LOC:EVEN:PLAC:MAP:LONG'        => new PlaceLongtitude(I18N::translate('Longitude')),
+            '_LOC:EVEN:PLAC:NOTE'            => new NoteStructure(I18N::translate('Note')),
+            '_LOC:EVEN:PLAC:ROMN'            => new PlaceRomanizedVariation(I18N::translate('Romanized place')),
+            '_LOC:EVEN:PLAC:ROMN:TYPE'       => new RomanizedType(I18N::translate('Type')),
             '_LOC:EVEN:TYPE'                 => new EventAttributeType(I18N::translate('Type of event')),
-            '_LOC:MAP'                       => new EmptyElement(I18N::translate('Coordinates')),
+            '_LOC:EVEN:AGNC'                 => new ResponsibleAgency(I18N::translate('Agency')),
+            '_LOC:EVEN:ADDR'                 => new AddressLine(I18N::translate('Address')),
+            '_LOC:EVEN:ADDR:ADR1'            => new AddressLine1(I18N::translate('Address line 1')),
+            '_LOC:EVEN:ADDR:ADR2'            => new AddressLine2(I18N::translate('Address line 2')),
+            '_LOC:EVEN:ADDR:ADR3'            => new AddressLine3(I18N::translate('Address line 3')),
+            '_LOC:EVEN:ADDR:CITY'            => new AddressCity(I18N::translate('City')),
+            '_LOC:EVEN:ADDR:CTRY'            => new AddressCountry(I18N::translate('Country')),
+            '_LOC:EVEN:ADDR:POST'            => new AddressPostalCode(I18N::translate('Postal code')),
+            '_LOC:EVEN:ADDR:STAE'            => new AddressState(I18N::translate('State')),
+            '_LOC:EVEN:CAUS'                 => new CauseOfEvent(I18N::translate('Cause')),
+            '_LOC:EVEN:RELI'                 => new ReligiousAffiliation(I18N::translate('Religion'), []),
+            '_LOC:EVEN:RESN'                 => new RestrictionNotice(I18N::translate('Restriction')),
+            '_LOC:EVEN:SOUR'                 => new XrefSource(I18N::translate('Source citation')),
+            '_LOC:EVEN:NOTE'                 => new NoteStructure(I18N::translate('Note')),
+            '_LOC:EVEN:OBJE'                 => new XrefMedia(I18N::translate('Media object')),
+            '_LOC:MAP'                       => new EmptyElement(I18N::translate('Coordinates'), ['LATI' => '1:1', 'LONG' => '1:1']),
             '_LOC:MAP:LATI'                  => new PlaceLatitude(I18N::translate('Latitude')),
             '_LOC:MAP:LONG'                  => new PlaceLongtitude(I18N::translate('Longitude')),
             '_LOC:NAME'                      => new PlaceName(I18N::translate('Place'), ['ABBR' => '0:1', 'DATE' => '0:1', 'LANG' => '0:1', 'SOUR' => '0:M']),
@@ -221,7 +261,7 @@ class CustomTagsGedcomL extends AbstractModule implements ModuleConfigInterface,
             '_LOC:SOUR:OBJE'                 => new XrefMedia(I18N::translate('Media object')),
             '_LOC:SOUR:PAGE'                 => new WhereWithinSource(I18N::translate('Citation details')),
             '_LOC:SOUR:QUAY'                 => new CertaintyAssessment(I18N::translate('Quality of data')),
-            '_LOC:TYPE'                      => new CustomElement(I18N::translate('Type of location')),
+            '_LOC:TYPE'                      => new CustomElement(I18N::translate('Type of location'), ['DATE' => '0:1', '_GOVTYPE' => '0:1', 'SOUR' => '0:M']),
             '_LOC:TYPE:DATE'                 => new DateValue(I18N::translate('Date')),
             '_LOC:TYPE:SOUR'                 => new XrefSource(I18N::translate('Source')),
             '_LOC:TYPE:_GOVTYPE'             => new CustomElement('GOV identifier type'),
