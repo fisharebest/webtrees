@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -103,6 +104,8 @@ class UnconnectedPage implements RequestHandlerInterface
                     ->filter();
             }
         }
+
+        usort($individual_groups, static fn (Collection $x, Collection $y): int => count($x) <=> count($y));
 
         $title = I18N::translate('Find unrelated individuals') . ' — ' . e($tree->title());
 
