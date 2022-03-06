@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressCity;
 use Fisharebest\Webtrees\Elements\AddressCountry;
 use Fisharebest\Webtrees\Elements\AddressLine;
