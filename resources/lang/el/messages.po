@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2021-08-18 10:49+0100\n"
-"PO-Revision-Date: 2021-07-19 07:49+0000\n"
-"Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
-"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
-"Language: el\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-03-14 22:09+0000\nLast-Translator: Klimis Panagiotis <klimis.p@gmail.com>\nLanguage-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees/el/>\nLanguage: el\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SearchPath-0: .\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -19005,7 +18989,7 @@ msgstr "great-ανηψιά"
 #: app/Services/RelationshipService.php:703
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Services/RelationshipService.php:985
 msgctxt "(a man’s) sister’s child’s daughter"
@@ -19030,12 +19014,12 @@ msgstr "great-ανηψιός"
 #: app/Services/RelationshipService.php:686
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Services/RelationshipService.php:706
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Services/RelationshipService.php:988
 msgctxt "(a woman’s) sister’s child’s daughter"
@@ -19055,7 +19039,7 @@ msgstr "μικρανιψιά"
 #: app/Services/RelationshipService.php:958
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Services/RelationshipService.php:964
 msgctxt "sibling’s daughter’s daughter"
