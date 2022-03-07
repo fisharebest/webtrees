@@ -30,7 +30,7 @@ class SubmitterRecord extends AbstractElement
         'PHON'  => '0:1',
         'EMAIL' => '0:1',
         'WWW'   => '0:1',
-        'LANG'  => '0:3',
+        'LANG'  => '3:3',
         'RFN'   => '0:1',
         'RIN'   => '0:1',
         'NOTE'  => '0:1',
