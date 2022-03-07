@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-01-10 15:22+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2021-08-18 10:49+0100\nPO-Revision-Date: 2022-03-14 22:10+0000\nLast-Translator: rui <xmlf@hotmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -157,7 +157,7 @@ msgstr "%H:%i:%s"
 #. I18N: This is the format string for full dates. See https://php.net/date for codes
 #: app/I18N.php:263
 msgid "%j %F %Y"
-msgstr "%Y年 %n月 %j日"
+msgstr "%Y年 %n月%j日"
 
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
@@ -472,7 +472,7 @@ msgstr "&lt; 选择 &gt;"
 #: app/Functions/FunctionsPrint.php:327
 #, php-format
 msgid "(%s after death)"
-msgstr "(%s 去世后)"
+msgstr "(%s之后去世)"
 
 #. I18N: The current age of a living individual
 #: app/Http/RequestHandlers/IndividualPage.php:187
@@ -18031,7 +18031,7 @@ msgstr "缩小"
 #: app/Date.php:339
 #, php-format
 msgid "about %s"
-msgstr "关于 %s"
+msgstr "about%s"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
@@ -18089,7 +18089,7 @@ msgstr "过继/收养后姓名"
 #: app/Date.php:359
 #, php-format
 msgid "after %s"
-msgstr "在 %s 之后"
+msgstr "在%s 之后"
 
 #: app/Module/StatisticsChartModule.php:522
 #: app/Module/StatisticsChartModule.php:584
@@ -18171,14 +18171,14 @@ msgstr "返回页首"
 #: app/Date.php:355
 #, php-format
 msgid "before %s"
-msgstr "在 %s 之前"
+msgstr "在%s 之前"
 
 # I18N: Gedcom BET-AND dates
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:371
 #, php-format
 msgid "between %s and %s"
-msgstr "在 %s 和 %s 间"
+msgstr "在%s和%s 间"
 
 # I18N: The name given to an individual at their birth
 #. I18N: The name given to an individual at their birth
@@ -18567,7 +18567,7 @@ msgstr "居住时的姓名"
 #: app/Date.php:347
 #, php-format
 msgid "estimated %s"
-msgstr "估计 %s"
+msgstr "估计于%s年"
 
 #: app/Services/RelationshipService.php:362
 msgid "ex-husband"
