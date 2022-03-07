@@ -279,11 +279,9 @@ class HousekeepingService
      */
     public function deleteOldLogs(int $max_age_in_seconds): void
     {
-        $timestamp = Registry::timestampFactory()->now()->subtractSeconds($max_age_in_seconds);
-
         DB::table('log')
             ->whereIn('log_type', ['error', 'media'])
-            ->where('log_time', '<', $timestamp->toDateTimeString())
+            ->where('log_time', '<', time() - $max_age_in_seconds)
             ->delete();
     }
 
