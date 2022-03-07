@@ -77,6 +77,8 @@ class MediaFileService
         '@eaDir',
         // QNAP,
         '.@__thumb',
+        // WebDAV,
+        '_DAV',
     ];
 
     /**
