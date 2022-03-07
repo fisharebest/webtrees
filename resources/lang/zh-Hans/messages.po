@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-10 15:22+0000\n"
+"PO-Revision-Date: 2022-03-14 22:09+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/zh_Hans/>\n"
@@ -177,7 +177,7 @@ msgstr "%H:%i:%s"
 #. I18N: This is the format string for full dates. See http://php.net/date for codes
 #: app/I18N.php:258
 msgid "%j %F %Y"
-msgstr "%Y年 %n月 %j日"
+msgstr "%Y年 %n月%j日"
 
 #: app/Statistics/Service/CenturyService.php:39
 #, php-format
@@ -496,7 +496,7 @@ msgstr "&lt; 选择 &gt;"
 #: app/Age.php:219 app/Functions/FunctionsPrint.php:380
 #, php-format
 msgid "(%s after death)"
-msgstr "(%s 去世后)"
+msgstr "(%s之后去世)"
 
 #. I18N: The current age of a living individual
 #: app/Age.php:192 app/Http/RequestHandlers/IndividualPage.php:192
@@ -18280,7 +18280,7 @@ msgstr "缩小"
 #: app/Date.php:342
 #, php-format
 msgid "about %s"
-msgstr "关于 %s"
+msgstr "about%s"
 
 # I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
@@ -18357,7 +18357,7 @@ msgstr "过继/收养儿女"
 #: app/Date.php:362
 #, php-format
 msgid "after %s"
-msgstr "在 %s 之后"
+msgstr "在%s 之后"
 
 #: app/Module/StatisticsChartModule.php:523
 #: app/Module/StatisticsChartModule.php:585
@@ -18457,14 +18457,14 @@ msgstr "返回页首"
 #: app/Date.php:358
 #, php-format
 msgid "before %s"
-msgstr "在 %s 之前"
+msgstr "在%s 之前"
 
 # I18N: Gedcom BET-AND dates
 #. I18N: Gedcom BET-AND dates
 #: app/Date.php:374
 #, php-format
 msgid "between %s and %s"
-msgstr "在 %s 和 %s 间"
+msgstr "在%s和%s 间"
 
 #: app/Statistics/Repository/EventRepository.php:325
 msgid "birth"
@@ -18911,7 +18911,7 @@ msgstr "居住时的姓名"
 #: app/Date.php:350
 #, php-format
 msgid "estimated %s"
-msgstr "估计 %s"
+msgstr "估计于%s年"
 
 #: app/Functions/Functions.php:636
 msgid "ex-husband"
