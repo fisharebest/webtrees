@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-07-19 07:49+0000\n"
+"PO-Revision-Date: 2022-03-14 22:09+0000\n"
 "Last-Translator: Klimis Panagiotis <klimis.p@gmail.com>\n"
-"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/webtrees-20/el/>\n"
+"Language-Team: Greek <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19266,7 +19267,7 @@ msgstr "great-ανηψιά"
 #: app/Functions/Functions.php:977
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Functions/Functions.php:1259
 msgctxt "(a man’s) sister’s child’s daughter"
@@ -19291,12 +19292,12 @@ msgstr "great-ανηψιός"
 #: app/Functions/Functions.php:960
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Functions/Functions.php:980
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Functions/Functions.php:1262
 msgctxt "(a woman’s) sister’s child’s daughter"
@@ -19316,7 +19317,7 @@ msgstr "μικρανιψιά"
 #: app/Functions/Functions.php:1232
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr "great-ανηψιά"
+msgstr "μικρανεψιά"
 
 #: app/Functions/Functions.php:1238
 msgctxt "sibling’s daughter’s daughter"
