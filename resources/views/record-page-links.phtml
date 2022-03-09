@@ -77,8 +77,8 @@ use Illuminate\Support\Collection;
 
     <?php if ($linked_locations instanceof Collection) : ?>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#notes">
-                <?= I18N::translate('Notes') ?>
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#locations">
+                <?= I18N::translate('Locations') ?>
                 <?= view('components/badge', ['count' => $linked_locations->count()]) ?>
             </a>
         </li>
@@ -121,7 +121,7 @@ use Illuminate\Support\Collection;
     <?php endif ?>
 
     <?php if ($linked_locations instanceof Collection) : ?>
-        <div class="tab-pane fade" role="tabpanel" id="notes">
+        <div class="tab-pane fade" role="tabpanel" id="locations">
             <?= view('lists/locations-table', ['locations' => $linked_locations, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
