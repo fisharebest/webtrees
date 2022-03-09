@@ -24,13 +24,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -42,14 +41,16 @@ class MediaPage implements RequestHandlerInterface
 
     private ClipboardService $clipboard_service;
 
+    private LinkedRecordService $linked_record_service;
+
     /**
-     * MediaPage constructor.
-     *
      * @param ClipboardService $clipboard_service
+     * @param LinkedRecordService $linked_record_service
      */
-    public function __construct(ClipboardService $clipboard_service)
+    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
     {
-        $this->clipboard_service = $clipboard_service;
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
     }
 
     /**
@@ -72,13 +73,20 @@ class MediaPage implements RequestHandlerInterface
             return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
+        $linked_families    = $this->linked_record_service->linkedFamilies($record);
+        $linked_individuals = $this->linked_record_service->linkedIndividuals($record);
+        $linked_locations   = $this->linked_record_service->linkedLocations($record);
+        $linked_notes       = $this->linked_record_service->linkedNotes($record);
+        $linked_sources     = $this->linked_record_service->linkedSources($record);
+
         return $this->viewResponse('media-page', [
             'clipboard_facts'    => $this->clipboard_service->pastableFacts($record),
             'data_filesystem'    => $data_filesystem,
-            'linked_families'    => $record->linkedFamilies('OBJE'),
-            'linked_individuals' => $record->linkedIndividuals('OBJE'),
-            'linked_notes'       => $record->linkedNotes('OBJE'),
-            'linked_sources'     => $record->linkedSources('OBJE'),
+            'linked_families'    => $linked_families,
+            'linked_individuals' => $linked_individuals,
+            'linked_locations'   => $linked_locations->isEmpty() ? null : $linked_locations,
+            'linked_notes'       => $linked_notes,
+            'linked_sources'     => $linked_sources,
             'meta_description'   => '',
             'meta_robots'        => 'index,follow',
             'record'             => $record,

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
@@ -43,6 +44,16 @@ use function str_replace;
  */
 class MergeFactsAction implements RequestHandlerInterface
 {
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -87,7 +98,7 @@ class MergeFactsAction implements RequestHandlerInterface
         }
 
         // Update records that link to the one we will be removing.
-        $linking_records = $record2->linkingRecords();
+        $linking_records = $this->linked_record_service->allLinkedRecords($record2);
 
         foreach ($linking_records as $record) {
             if (!$record->isPendingDeletion()) {

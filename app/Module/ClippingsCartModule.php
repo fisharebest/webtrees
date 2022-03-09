@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\Route;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Encodings\ANSEL;
 use Fisharebest\Webtrees\Encodings\ASCII;
@@ -46,6 +45,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\GedcomExportService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submitter;
@@ -116,6 +116,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
     private GedcomExportService $gedcom_export_service;
 
+    private LinkedRecordService $linked_record_service;
+
     private ResponseFactoryInterface $response_factory;
 
     private StreamFactoryInterface $stream_factory;
@@ -124,15 +126,18 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * ClippingsCartModule constructor.
      *
      * @param GedcomExportService      $gedcom_export_service
+     * @param LinkedRecordService      $linked_record_service
      * @param ResponseFactoryInterface $response_factory
      * @param StreamFactoryInterface   $stream_factory
      */
     public function __construct(
         GedcomExportService $gedcom_export_service,
+        LinkedRecordService $linked_record_service,
         ResponseFactoryInterface $response_factory,
         StreamFactoryInterface $stream_factory
     ) {
         $this->gedcom_export_service = $gedcom_export_service;
+        $this->linked_record_service = $linked_record_service;
         $this->response_factory      = $response_factory;
         $this->stream_factory        = $stream_factory;
     }
@@ -904,7 +909,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         $this->addRepositoryToCart($repository);
 
-        foreach ($repository->linkedSources('REPO') as $source) {
+        foreach ($this->linked_record_service->linkedSources($repository) as $source) {
             $this->addSourceToCart($source);
         }
 
@@ -961,10 +966,10 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         $this->addSourceToCart($source);
 
         if ($option === self::ADD_LINKED_INDIVIDUALS) {
-            foreach ($source->linkedIndividuals('SOUR') as $individual) {
+            foreach ($this->linked_record_service->linkedIndividuals($source) as $individual) {
                 $this->addIndividualToCart($individual);
             }
-            foreach ($source->linkedFamilies('SOUR') as $family) {
+            foreach ($this->linked_record_service->linkedFamilies($source) as $family) {
                 $this->addFamilyToCart($family);
             }
         }

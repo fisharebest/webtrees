@@ -19,13 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -37,10 +37,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function addcslashes;
-use function app;
 use function array_combine;
 use function array_unshift;
-use function assert;
 use function dirname;
 use function max;
 use function min;
@@ -55,6 +53,16 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
     use ModuleListTrait;
 
     protected const ROUTE_URL = '/tree/{tree}/media-list';
+
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
 
     /**
      * Initialization.
@@ -199,21 +207,22 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         $media_objects = $media_objects->slice(($page - 1) * $max, $max);
 
         return $this->viewResponse('modules/media-list/page', [
-            'count'           => $count,
-            'filter'          => $filter,
-            'folder'          => $folder,
-            'folders'         => $folders,
-            'format'          => $format,
-            'formats'         => $formats,
-            'max'             => $max,
-            'media_objects'   => $media_objects,
-            'page'            => $page,
-            'pages'           => $pages,
-            'subdirs'         => $subdirs,
-            'data_filesystem' => $data_filesystem,
-            'module'          => $this,
-            'title'           => I18N::translate('Media'),
-            'tree'            => $tree,
+            'count'                 => $count,
+            'filter'                => $filter,
+            'folder'                => $folder,
+            'folders'               => $folders,
+            'format'                => $format,
+            'formats'               => $formats,
+            'linked_record_service' => $this->linked_record_service,
+            'max'                   => $max,
+            'media_objects'         => $media_objects,
+            'page'                  => $page,
+            'pages'                 => $pages,
+            'subdirs'               => $subdirs,
+            'data_filesystem'       => $data_filesystem,
+            'module'                => $this,
+            'title'                 => I18N::translate('Media'),
+            'tree'                  => $tree,
         ]);
     }
 

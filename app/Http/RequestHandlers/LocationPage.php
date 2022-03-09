@@ -23,6 +23,8 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -39,6 +41,20 @@ use function redirect;
 class LocationPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private ClipboardService $clipboard_service;
+
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param ClipboardService $clipboard_service
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
+    {
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -59,12 +75,14 @@ class LocationPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('record-page', [
-            'clipboard_facts'      => new Collection(),
-            'linked_families'      => $record->linkedFamilies($record->tag()),
-            'linked_individuals'   => $record->linkedIndividuals($record->tag()),
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($record),
+            'linked_families'      => $this->linked_record_service->linkedFamilies($record),
+            'linked_individuals'   => $this->linked_record_service->linkedIndividuals($record),
+            'linked_locations'     => $this->linked_record_service->linkedLocations($record),
             'linked_media_objects' => null,
             'linked_notes'         => null,
-            'linked_sources'       => null,
+            'linked_repositories'  => null,
+            'linked_sources'       => $this->linked_record_service->linkedSources($record),
             'record'               => $record,
             'title'                => $record->fullName(),
             'tree'                 => $tree,

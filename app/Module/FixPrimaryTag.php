@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
@@ -36,6 +37,16 @@ use function strtoupper;
 class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;
+
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -104,7 +115,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
         }
 
         $html .= '<ul>';
-        foreach ($record->linkedIndividuals('OBJE') as $individual) {
+        foreach ($this->linked_record_service->linkedIndividuals($record) as $individual) {
             $html .= '<li>' . I18N::translate('Re-order media') . ' – <a href="' . e($individual->url()) . '">' . $individual->fullName() . '</a></li>';
         }
         $html .= '</ul>';
@@ -129,7 +140,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
         foreach ($facts as $fact) {
             $primary = strtoupper($fact->value()) !== 'N';
 
-            foreach ($record->linkedIndividuals('OBJE') as $individual) {
+            foreach ($this->linked_record_service->linkedIndividuals($record) as $individual) {
                 $this->updateMediaLinks($individual, $record->xref(), $primary);
             }
 

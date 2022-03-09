@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -40,14 +41,16 @@ class SourcePage implements RequestHandlerInterface
 
     private ClipboardService $clipboard_service;
 
+    private LinkedRecordService $linked_record_service;
+
     /**
-     * SourcePage constructor.
-     *
      * @param ClipboardService $clipboard_service
+     * @param LinkedRecordService $linked_record_service
      */
-    public function __construct(ClipboardService $clipboard_service)
+    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
     {
-        $this->clipboard_service = $clipboard_service;
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
     }
 
     /**
@@ -68,12 +71,16 @@ class SourcePage implements RequestHandlerInterface
             return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
+        $linked_locations = $this->linked_record_service->linkedLocations($record);
+
         return $this->viewResponse('record-page', [
             'clipboard_facts'      => $this->clipboard_service->pastableFacts($record),
-            'linked_families'      => $record->linkedFamilies('SOUR'),
-            'linked_individuals'   => $record->linkedIndividuals('SOUR'),
-            'linked_media_objects' => $record->linkedMedia('SOUR'),
-            'linked_notes'         => $record->linkedNotes('SOUR'),
+            'linked_families'      => $this->linked_record_service->linkedFamilies($record),
+            'linked_individuals'   => $this->linked_record_service->linkedIndividuals($record),
+            'linked_locations'     => $linked_locations->isEmpty() ? null : $linked_locations,
+            'linked_media_objects' => $this->linked_record_service->linkedMedia($record),
+            'linked_notes'         => $this->linked_record_service->linkedNotes($record),
+            'linked_repositories'  => null,
             'linked_sources'       => null,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',

@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
 
@@ -43,20 +44,24 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 {
     use ModuleTabTrait;
 
-    private ModuleService $module_service;
-
     private ClipboardService $clipboard_service;
+
+    private LinkedRecordService $linked_record_service;
+
+    private ModuleService $module_service;
 
     /**
      * IndividualFactsTabModule constructor.
      *
-     * @param ModuleService    $module_service
-     * @param ClipboardService $clipboard_service
+     * @param ModuleService       $module_service
+     * @param LinkedRecordService $linked_record_service
+     * @param ClipboardService    $clipboard_service
      */
-    public function __construct(ModuleService $module_service, ClipboardService $clipboard_service)
+    public function __construct(ModuleService $module_service, LinkedRecordService $linked_record_service, ClipboardService $clipboard_service)
     {
-        $this->module_service    = $module_service;
-        $this->clipboard_service = $clipboard_service;
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
+        $this->module_service        = $module_service;
     }
 
     /**
@@ -879,10 +884,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     {
         $facts = [];
 
-        $asso1 = $person->linkedIndividuals('ASSO');
-        $asso2 = $person->linkedIndividuals('_ASSO');
-        $asso3 = $person->linkedFamilies('ASSO');
-        $asso4 = $person->linkedFamilies('_ASSO');
+        $asso1 = $this->linked_record_service->linkedIndividuals($person, 'ASSO');
+        $asso2 = $this->linked_record_service->linkedIndividuals($person, '_ASSO');
+        $asso3 = $this->linked_record_service->linkedFamilies($person, 'ASSO');
+        $asso4 = $this->linked_record_service->linkedFamilies($person, '_ASSO');
 
         $associates = $asso1->merge($asso2)->merge($asso3)->merge($asso4);
 

@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -38,10 +39,20 @@ use function response;
 use function sprintf;
 
 /**
- * Controller for edit forms and responses.
+ * Delete a record.
  */
 class DeleteRecord implements RequestHandlerInterface
 {
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
+
     /**
      * Delete a record.
      *
@@ -58,7 +69,7 @@ class DeleteRecord implements RequestHandlerInterface
 
         if (Auth::isEditor($record->tree()) && $record->canShow() && $record->canEdit()) {
             // Delete links to this record
-            foreach ($record->linkingRecords() as $linker) {
+            foreach ($this->linked_record_service->allLinkedRecords($record) as $linker) {
                 $old_gedcom = $linker->gedcom();
                 $new_gedcom = $this->removeLinks($old_gedcom, $record->xref());
                 if ($old_gedcom !== $new_gedcom) {
