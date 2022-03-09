@@ -250,9 +250,7 @@ abstract class AbstractElement implements ElementInterface
      */
     public function subtag(string $subtag, string $repeat, string $before = ''): void
     {
-        if ($repeat === '') {
-            unset($this->subtags[$subtag]);
-        } elseif ($before === '' || ($this->subtags[$before] ?? null) === null) {
+        if ($before === '' || ($this->subtags[$before] ?? null) === null) {
             $this->subtags[$subtag] = $repeat;
         } else {
             $tmp = [];
