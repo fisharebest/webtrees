@@ -82,6 +82,7 @@ class SourcePage implements RequestHandlerInterface
             'linked_notes'         => $this->linked_record_service->linkedNotes($record),
             'linked_repositories'  => null,
             'linked_sources'       => null,
+            'linked_submitters'    => null,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',
             'record'               => $record,

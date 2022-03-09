@@ -83,6 +83,7 @@ class LocationPage implements RequestHandlerInterface
             'linked_notes'         => null,
             'linked_repositories'  => null,
             'linked_sources'       => $this->linked_record_service->linkedSources($record),
+            'linked_submitters'    => null,
             'record'               => $record,
             'title'                => $record->fullName(),
             'tree'                 => $tree,

@@ -81,6 +81,7 @@ class SubmitterPage implements RequestHandlerInterface
             'linked_notes'         => null,
             'linked_repositories'  => null,
             'linked_sources'       => null,
+            'linked_submitters'    => null,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',
             'record'               => $record,
