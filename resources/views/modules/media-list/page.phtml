@@ -170,6 +170,12 @@ use League\Flysystem\FilesystemOperator;
                                 <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
                                 <br>
                             <?php endforeach ?>
+                                
+                            <?php foreach ($linked_record_service->linkedLocations($media_object) as $record) : ?>
+                                <?= view('icons/location') ?>
+                                <a href="<?= e($record->url()) ?>"><?= $record->fullName() ?></a>
+                                <br>
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>
