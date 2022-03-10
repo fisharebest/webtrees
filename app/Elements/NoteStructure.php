@@ -89,6 +89,7 @@ class NoteStructure extends SubmitterText
             ' const shared = document.getElementById("' . e($id) . '-shared").querySelector("select");' .
             ' inline.disabled = !inline.disabled;' .
             ' shared.disabled = !shared.disabled;' .
+            ' if (shared.disabled) { shared.tomselect.disable(); } else { shared.tomselect.enable(); }' .
             '})' .
             '</script>';
     }
