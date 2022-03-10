@@ -28,7 +28,7 @@ use function strtoupper;
  */
 class FamilySearchFamilyTreeId extends AbstractExternalLink
 {
-    protected const EXTERNAL_URL = 'https://ancestors.familysearch.org/en/{ID}';
+    protected const EXTERNAL_URL = 'https://www.familysearch.org/tree/person/details/{ID}';
 
     protected const MAXIMUM_LENGTH = 8;
 
