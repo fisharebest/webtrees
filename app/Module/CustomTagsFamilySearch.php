@@ -57,7 +57,7 @@ class CustomTagsFamilySearch extends AbstractModule implements ModuleConfigInter
             'INDI' => [['_FSFTID', '0:1']],
         ];
     }
-    
+
     /**
      * The application for which we are supporting custom tags.
      *
