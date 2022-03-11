@@ -623,9 +623,11 @@
    * @param {string} id
    * @param {object} config
    * @param {function} resetCallback
+   * @param {array|undefined} overlay
    * @returns Map
    */
-  webtrees.buildLeafletJsMap = function (id, config, resetCallback) {
+  webtrees.buildLeafletJsMap = function (id, config, resetCallback, overlay) {
+
     const zoomControl = new L.control.zoom({
       zoomInTitle: config.i18n.zoomIn,
       zoomoutTitle: config.i18n.zoomOut,
@@ -672,6 +674,11 @@
       let defaultLayer = config.mapProviders[0].children[0].layer;
     }
 
+    //Create a dummy overlay if not defined
+      overlay = overlay || {
+        layer: new L.LayerGroup(),
+        tree: null
+      };
 
     // Create the map with all controls and layers
     return L.map(id, {
@@ -680,7 +687,8 @@
       .addControl(zoomControl)
       .addControl(new resetControl())
       .addLayer(defaultLayer)
-      .addControl(L.control.layers.tree(config.mapProviders, null, {
+      .addLayer(overlay.layer)
+      .addControl(L.control.layers.tree(config.mapProviders, overlay.tree, {
         closedSymbol: config.icons.expand,
         openedSymbol: config.icons.collapse,
       }));
