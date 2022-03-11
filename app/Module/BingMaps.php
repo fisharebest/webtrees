@@ -111,32 +111,32 @@ class BingMaps extends AbstractModule implements ModuleConfigInterface, ModuleMa
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => false,
-                'imagerySet' => 'Aerial',
-                'label' => 'Aerial',
+                'imagerySet'  => 'Aerial',
+                'label'       => 'Aerial',
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => false,
-                'imagerySet' => 'CanvasDark',
-                'label' => 'Dark',
+                'imagerySet'  => 'CanvasDark',
+                'label'       => 'Dark',
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => false,
-                'imagerySet' => 'CanvasGray',
-                'label' => 'Grey',
+                'imagerySet'  => 'CanvasGray',
+                'label'       => 'Grey',
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => true,
-                'imagerySet' => 'CanvasLight',
-                'label' => 'Light',
+                'imagerySet'  => 'CanvasLight',
+                'label'       => 'Light',
             ],
             (object) [
                 'bingMapsKey' => $api_key,
                 'default'     => false,
-                'imagerySet' => 'Road',
-                'label' => 'Road',
+                'imagerySet'  => 'Road',
+                'label'       => 'Road',
             ],
         ];
     }
