@@ -30,7 +30,7 @@ class DefaultUserTest extends TestCase
 {
     protected static bool $uses_database = true;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
