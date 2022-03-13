@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use DOMDocument;
-use Exception;
 
 use function str_starts_with;
 
