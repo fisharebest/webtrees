@@ -2091,11 +2091,6 @@ parameters:
 			path: app/Report/ReportHtmlText.php
 
 		-
-			message: "#^Variable \\$lastelement in empty\\(\\) always exists and is not falsy\\.$#"
-			count: 1
-			path: app/Report/ReportHtmlTextbox.php
-
-		-
 			message: "#^Parameter \\#1 \\$fp of function fclose expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Report/ReportParserBase.php
@@ -2412,11 +2407,6 @@ parameters:
 
 		-
 			message: "#^Result of \\|\\| is always true\\.$#"
-			count: 1
-			path: app/Report/ReportPdfTextBox.php
-
-		-
-			message: "#^Variable \\$lastelement in empty\\(\\) always exists and is not falsy\\.$#"
 			count: 1
 			path: app/Report/ReportPdfTextBox.php
 

@@ -219,23 +219,21 @@ class RightToLeftSupport
                                 }
                             }
                         }
-                    } else {
+                    } elseif (str_contains(self::NUMBER_PREFIX, $currentLetter)) {
                         // If we're outside a numeric string, look for reasons to start it
-                        if (str_contains(self::NUMBER_PREFIX, $currentLetter)) {
-                            // This might be a number lead-in
-                            $offset   = $currentLen;
-                            $nextChar = substr($workingText . "\n", $offset, 1);
-                            if (str_contains(self::NUMBERS, $nextChar)) {
-                                $numberState = true; // We found a digit: the lead-in is therefore numeric
-                                if (self::$currentState === 'RTL') {
-                                    $currentLetter = self::UTF8_LRE . $currentLetter;
-                                }
-                            }
-                        } elseif (str_contains(self::NUMBERS, $currentLetter)) {
-                            $numberState = true; // The current letter is a digit
+                        // This might be a number lead-in
+                        $offset   = $currentLen;
+                        $nextChar = substr($workingText . "\n", $offset, 1);
+                        if (str_contains(self::NUMBERS, $nextChar)) {
+                            $numberState = true; // We found a digit: the lead-in is therefore numeric
                             if (self::$currentState === 'RTL') {
                                 $currentLetter = self::UTF8_LRE . $currentLetter;
                             }
+                        }
+                    } elseif (str_contains(self::NUMBERS, $currentLetter)) {
+                        $numberState = true; // The current letter is a digit
+                        if (self::$currentState === 'RTL') {
+                            $currentLetter = self::UTF8_LRE . $currentLetter;
                         }
                     }
 
@@ -366,10 +364,8 @@ class RightToLeftSupport
                 if (self::$currentState === 'RTL') {
                     $result .= self::UTF8_PDF;
                 }
-            } else {
-                if (self::$currentState === 'RTL') {
-                    self::$waitingText .= self::UTF8_PDF;
-                }
+            } elseif (self::$currentState === 'RTL') {
+                self::$waitingText .= self::UTF8_PDF;
             }
         }
         self::finishCurrentSpan($result, true);
