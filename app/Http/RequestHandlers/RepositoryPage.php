@@ -82,7 +82,7 @@ class RepositoryPage implements RequestHandlerInterface
             'linked_notes'         => null,
             'linked_repositories'  => null,
             'linked_sources'       => $linked_sources,
-            'linked_submittesr'    => null,
+            'linked_submitters'    => null,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',
             'record'               => $record,
