@@ -170,8 +170,7 @@
 .wt-facts-table td,
 .ui-widget-header,
 .optionbox, .ui-state-active a:link,
-.list_value, .list_value_wrap, .list_value_wrap a,
-#login-form, #new_passwd_form, #register-form  {
+.list_value, .list_value_wrap, .list_value_wrap a {
     background: var(--color-4);
 }
 

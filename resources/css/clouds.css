@@ -607,7 +607,6 @@ fieldset,
 .wt-genealogy-menu ul,
 .user-menu li ul,
 footer,
-#indi_main_blocks,
 #tabs{
     border-radius: 3px;
 }
@@ -1250,10 +1249,6 @@ div.faq_body {
 footer .error {
     color: #d00;
     font-weight: bold;
-}
-
-.user_links {
-    white-space: nowrap;
 }
 
 /*

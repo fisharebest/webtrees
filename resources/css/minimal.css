@@ -941,57 +941,6 @@ a > .wt-icon-arrow-up:hover {
     overflow-y: hidden;
 }
 
-/*
- *  These selectors control how the short horizontal lines are positioned in the Charts
- *  Optimized for Win10 and FF, Chrome and Edge browsers
- *  	Ancestors
- *  	Descendants
- *  	amily book
- *
- */
-
-/* Ascentors */
-.wt-chart-ancestors .linea1 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-ancestors .linea2 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-ancestors .linea3 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-ancestors .linea4 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-ancestors .linea5 {
-    vertical-align: top;
-}
-
-/* Descendants */
-.wt-chart-descendants .lined1 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-descendants .lined2 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-descendants .lined3 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-descendants .lined4 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-descendants .linea5 {
-    vertical-align: top;
-}
-
 .wt-calendar-month {
     border-collapse: collapse;
 }
