@@ -45,7 +45,7 @@
         "ext-xml": "*",
         "ext-zip": "*",
         "aura/router": "3.2.0",
-        "doctrine/dbal": "3.3.2",
+        "doctrine/dbal": "3.3.3",
         "ezyang/htmlpurifier": "4.14.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
@@ -53,9 +53,9 @@
         "fisharebest/flysystem-chroot-adapter": "2.0.0",
         "fisharebest/localization": "1.15.1",
         "guzzlehttp/guzzle": "7.4.1",
-        "illuminate/container": "8.83.3",
-        "illuminate/database": "8.83.3",
-        "illuminate/support": "8.83.3",
+        "illuminate/container": "8.83.4",
+        "illuminate/database": "8.83.4",
+        "illuminate/support": "8.83.4",
         "intervention/image": "2.7.1",
         "io-developer/php-whois": "4.1.6",
         "league/commonmark": "2.2.3",
@@ -73,11 +73,11 @@
         "psr/http-server-middleware": "1.0.1",
         "ramsey/uuid": "4.2.3",
         "sabre/vobject": "4.4.1",
-        "symfony/cache": "5.4.5",
+        "symfony/cache": "5.4.6",
         "symfony/expression-language": "5.4.3",
         "symfony/mailer": "5.4.5",
-        "symfony/polyfill-mbstring": "1.24.0",
-        "symfony/polyfill-php80": "1.24.0",
+        "symfony/polyfill-mbstring": "1.25.0",
+        "symfony/polyfill-php80": "1.25.0",
         "tecnickcom/tcpdf": "6.4.4"
     },
     "require-dev": {
@@ -88,7 +88,7 @@
         "composer/composer": "2.2.7",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.5.2",
-        "phpunit/phpunit": "9.5.16"
+        "phpunit/phpunit": "9.5.18"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
