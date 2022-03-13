@@ -891,16 +891,6 @@ parameters:
 			path: app/Http/RequestHandlers/MergeTreesPage.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Http\\\\RequestHandlers\\\\ModuleAction\\:\\:handle\\(\\) should return Psr\\\\Http\\\\Message\\\\ResponseInterface but returns mixed\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\{Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface, non\\-empty\\-string\\} given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ModuleAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/ModuleAction.php
@@ -2103,11 +2093,6 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$fp of function fread expects resource, resource\\|false given\\.$#"
 			count: 1
-			path: app/Report/ReportParserBase.php
-
-		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\{\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserBase\\), non\\-empty\\-string\\} given\\.$#"
-			count: 2
 			path: app/Report/ReportParserBase.php
 
 		-

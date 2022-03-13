@@ -84,6 +84,6 @@ class ModuleAction implements RequestHandlerInterface
             throw new HttpNotFoundException('Method ' . $method . '() not found in ' . $module_name);
         }
 
-        return call_user_func([$module, $method], $request);
+        return $module->$method($request);
     }
 }

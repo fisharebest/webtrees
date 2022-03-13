@@ -23,7 +23,6 @@ use DomainException;
 use Exception;
 use XMLParser;
 
-use function call_user_func;
 use function fclose;
 use function feof;
 use function fread;
@@ -113,7 +112,7 @@ class ReportParserBase
         $method = $name . 'StartHandler';
 
         if (method_exists($this, $method)) {
-            call_user_func([$this, $method], $attrs);
+            $this->$method($attrs);
         }
     }
 
@@ -130,7 +129,7 @@ class ReportParserBase
         $method = $name . 'EndHandler';
 
         if (method_exists($this, $method)) {
-            call_user_func([$this, $method]);
+            $this->$method();
         }
     }
 
