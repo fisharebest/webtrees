@@ -27,6 +27,7 @@ use League\Flysystem\FilesystemReader;
 use League\Flysystem\UnableToDeleteDirectory;
 use League\Flysystem\UnableToDeleteFile;
 
+use function date;
 use function time;
 
 /**
@@ -281,7 +282,7 @@ class HousekeepingService
     {
         DB::table('log')
             ->whereIn('log_type', ['error', 'media'])
-            ->where('log_time', '<', time() - $max_age_in_seconds)
+            ->where('log_time', '<', date('Y-m-d H:i:s', time() - $max_age_in_seconds))
             ->delete();
     }
 
@@ -293,7 +294,7 @@ class HousekeepingService
     public function deleteOldSessions(int $max_age_in_seconds): void
     {
         DB::table('session')
-            ->where('session_time', '<', time() - $max_age_in_seconds)
+            ->where('session_time', '<', date('Y-m-d H:i:s', time() - $max_age_in_seconds))
             ->delete();
     }
 
