@@ -43,7 +43,7 @@ class TcpdfWrapper extends TCPDF
      * @param mixed $y       Starting y position, leave empty for current position.
      * @param bool  $addpage If true add a page, otherwise only return the true/false state
      *
-     * @return boolean true in case of page break, false otherwise.
+     * @return bool true in case of page break, false otherwise.
      */
     public function checkPageBreak($h = 0, $y = '', $addpage = true): bool
     {

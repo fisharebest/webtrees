@@ -162,7 +162,7 @@ class EncodingFactory implements EncodingFactoryInterface
      * @param string $name
      *
      * @return EncodingInterface
-     * @thorws DomainException
+     * @throws DomainException
      */
     public function make(string $name): EncodingInterface
     {
