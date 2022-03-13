@@ -21,7 +21,20 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\I18N;
 
+use function ord;
+use function preg_replace;
 use function str_contains;
+use function str_pad;
+use function str_replace;
+use function strlen;
+use function strpos;
+use function strrpos;
+use function strtolower;
+use function strtoupper;
+use function substr;
+
+use const STR_PAD_LEFT;
+use const STR_PAD_RIGHT;
 
 /**
  * RTL Functions for use in the PDF reports
