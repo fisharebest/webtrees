@@ -49,14 +49,14 @@ class UTF16LETest extends TestCase
             $expected = iconv(UTF16LE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            $this->assertSame($expected, $actual, 'U+' . dechex($code));
+            static::assertSame($expected, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0x80, 0xFF) as $code) {
             $char     = chr($code % 256) . chr(intdiv($code, 256));
             $actual = $encoding->toUtf8($char);
 
-            $this->assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
+            static::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0x100, 0xD7FF) as $code) {
@@ -64,14 +64,14 @@ class UTF16LETest extends TestCase
             $expected = iconv(UTF16LE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            $this->assertSame($expected, $actual, 'U+' . dechex($code));
+            static::assertSame($expected, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0xD800, 0xDFFF) as $code) {
             $char     = chr($code % 256) . chr(intdiv($code, 256));
             $actual = $encoding->toUtf8($char);
 
-            $this->assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
+            static::assertSame(UTF8::REPLACEMENT_CHARACTER, $actual, 'U+' . dechex($code));
         }
 
         foreach (range(0xE000, 0xFFFF) as $code) {
@@ -79,7 +79,7 @@ class UTF16LETest extends TestCase
             $expected = iconv(UTF16LE::NAME, UTF8::NAME, $char);
             $actual   = $encoding->toUtf8($char);
 
-            $this->assertSame($expected, $actual, 'U+' . dechex($code));
+            static::assertSame($expected, $actual, 'U+' . dechex($code));
         }
     }
 }

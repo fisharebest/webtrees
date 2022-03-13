@@ -44,10 +44,10 @@ class CalendarDateFactoryTest extends TestCase
 
         $date = $factory->make('');
 
-        $this->assertSame(GregorianDate::ESCAPE, $date->format('%@'));
-        $this->assertSame(0, $date->year);
-        $this->assertSame(0, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame(GregorianDate::ESCAPE, $date->format('%@'));
+        static::assertSame(0, $date->year);
+        static::assertSame(0, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -69,10 +69,10 @@ class CalendarDateFactoryTest extends TestCase
 
         foreach ($calendar_escapes as $calendar_escape) {
             $date = $factory->make($calendar_escape);
-            $this->assertSame($calendar_escape, $date->format('%@'));
-            $this->assertSame(0, $date->year);
-            $this->assertSame(0, $date->month);
-            $this->assertSame(0, $date->day);
+            static::assertSame($calendar_escape, $date->format('%@'));
+            static::assertSame(0, $date->year);
+            static::assertSame(0, $date->month);
+            static::assertSame(0, $date->day);
         }
     }
 
@@ -84,10 +84,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('@#DSTARDATE@');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(0, $date->year);
-        $this->assertSame(0, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(0, $date->year);
+        static::assertSame(0, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -98,10 +98,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('01 JAN 1970');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(1970, $date->year);
-        $this->assertSame(1, $date->month);
-        $this->assertSame(1, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(1970, $date->year);
+        static::assertSame(1, $date->month);
+        static::assertSame(1, $date->day);
     }
 
     /**
@@ -112,10 +112,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('JAN 1970');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(1970, $date->year);
-        $this->assertSame(1, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(1970, $date->year);
+        static::assertSame(1, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -126,10 +126,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('1970');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(1970, $date->year);
-        $this->assertSame(0, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(1970, $date->year);
+        static::assertSame(0, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -140,10 +140,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('THE MID 1960S');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(1960, $date->year);
-        $this->assertSame(0, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(1960, $date->year);
+        static::assertSame(0, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -154,10 +154,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('PERHAPS FEB OR MAR IN 1960 or 1961');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(1960, $date->year);
-        $this->assertSame(2, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(1960, $date->year);
+        static::assertSame(2, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -168,10 +168,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('PERHAPS 11 OR 12 FEB OR MAR IN 1960 or 1961');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(1960, $date->year);
-        $this->assertSame(2, $date->month);
-        $this->assertSame(11, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(1960, $date->year);
+        static::assertSame(2, $date->month);
+        static::assertSame(11, $date->day);
     }
 
     /**
@@ -182,10 +182,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('PERHAPS FEB OR MAR');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(0, $date->year);
-        $this->assertSame(2, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(0, $date->year);
+        static::assertSame(2, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -196,10 +196,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('PERHAPS 11 OR 12 FEB OR MAR');
-        $this->assertSame('@#DGREGORIAN@', $date->format('%@'));
-        $this->assertSame(0, $date->year);
-        $this->assertSame(2, $date->month);
-        $this->assertSame(11, $date->day);
+        static::assertSame('@#DGREGORIAN@', $date->format('%@'));
+        static::assertSame(0, $date->year);
+        static::assertSame(2, $date->month);
+        static::assertSame(11, $date->day);
     }
 
     /**
@@ -210,10 +210,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('@#DGREGORIAN@ 10 NSN 5432');
-        $this->assertSame('@#DHEBREW@', $date->format('%@'));
-        $this->assertSame(5432, $date->year);
-        $this->assertSame(8, $date->month);
-        $this->assertSame(10, $date->day);
+        static::assertSame('@#DHEBREW@', $date->format('%@'));
+        static::assertSame(5432, $date->year);
+        static::assertSame(8, $date->month);
+        static::assertSame(10, $date->day);
     }
 
     /**
@@ -224,10 +224,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('@#DGREGORIAN@ 10 PLUV 11');
-        $this->assertSame('@#DFRENCH R@', $date->format('%@'));
-        $this->assertSame(11, $date->year);
-        $this->assertSame(5, $date->month);
-        $this->assertSame(10, $date->day);
+        static::assertSame('@#DFRENCH R@', $date->format('%@'));
+        static::assertSame(11, $date->year);
+        static::assertSame(5, $date->month);
+        static::assertSame(10, $date->day);
     }
 
     /**
@@ -238,10 +238,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('@#DGREGORIAN@ 10 SHAAB 1234');
-        $this->assertSame('@#DHIJRI@', $date->format('%@'));
-        $this->assertSame(1234, $date->year);
-        $this->assertSame(8, $date->month);
-        $this->assertSame(10, $date->day);
+        static::assertSame('@#DHIJRI@', $date->format('%@'));
+        static::assertSame(1234, $date->year);
+        static::assertSame(8, $date->month);
+        static::assertSame(10, $date->day);
     }
 
     /**
@@ -252,10 +252,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('@#DGREGORIAN@ 10 BAHMA 1234');
-        $this->assertSame('@#DJALALI@', $date->format('%@'));
-        $this->assertSame(1234, $date->year);
-        $this->assertSame(11, $date->month);
-        $this->assertSame(10, $date->day);
+        static::assertSame('@#DJALALI@', $date->format('%@'));
+        static::assertSame(1234, $date->year);
+        static::assertSame(11, $date->month);
+        static::assertSame(10, $date->day);
     }
 
     /**
@@ -266,10 +266,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('@#DGREGORIAN@ 10 AUG 44 B.C.');
-        $this->assertSame('@#DJULIAN@', $date->format('%@'));
-        $this->assertSame(-44, $date->year);
-        $this->assertSame(8, $date->month);
-        $this->assertSame(10, $date->day);
+        static::assertSame('@#DJULIAN@', $date->format('%@'));
+        static::assertSame(-44, $date->year);
+        static::assertSame(8, $date->month);
+        static::assertSame(10, $date->day);
     }
 
     /**
@@ -280,10 +280,10 @@ class CalendarDateFactoryTest extends TestCase
         $factory = new CalendarDateFactory();
 
         $date = $factory->make('3456');
-        $this->assertSame('@#DHEBREW@', $date->format('%@'));
-        $this->assertSame(3456, $date->year);
-        $this->assertSame(0, $date->month);
-        $this->assertSame(0, $date->day);
+        static::assertSame('@#DHEBREW@', $date->format('%@'));
+        static::assertSame(3456, $date->year);
+        static::assertSame(0, $date->month);
+        static::assertSame(0, $date->day);
     }
 
     /**
@@ -295,6 +295,6 @@ class CalendarDateFactoryTest extends TestCase
 
         $calendars = $factory->supportedCalendars();
 
-        $this->assertIsArray($calendars);
+        static::assertIsArray($calendars);
     }
 }

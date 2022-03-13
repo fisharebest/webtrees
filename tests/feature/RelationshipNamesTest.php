@@ -121,7 +121,8 @@ class RelationshipNamesTest extends TestCase
         $i38f = new Individual('i38f', "0 @i38f@ INDI\n1 SEX F\n1 FAMC @f7@", null, $tree);
         $i39mo = new Individual('i39mo', "0 @i39o@ INDI\n1 SEX M\n1 FAMC @f14d@\n2 PEDI foster", null, $tree);
 
-        $individual_factory->method('make')->will($this->returnValueMap([
+        $individual_factory->method('make')->will(
+            static::returnValueMap([
             'i1m'  => $i1m,
             'i2f'  => $i2f,
             'i3m'  => $i3m,
@@ -181,7 +182,8 @@ class RelationshipNamesTest extends TestCase
         $f16  = new Family('f16', "0 @f16@ FAM\n1 WIFE @i34f@\n1 CHIL @i35m@", null, $tree);
         $f17  = new Family('f17', "0 @f17@ FAM\n1 HUSB @i35m@\n1 CHIL @i36f@", null, $tree);
 
-        $family_factory->method('make')->will($this->returnValueMap([
+        $family_factory->method('make')->will(
+            static::returnValueMap([
             'f1m'  => $f1m,
             'f2d'  => $f2d,
             'f3e'  => $f3e,

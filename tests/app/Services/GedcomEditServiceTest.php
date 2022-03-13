@@ -35,7 +35,7 @@ class GedcomEditServiceTest extends TestCase
     {
         $gedcom_edit_service = new GedcomEditService();
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT Y",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -45,7 +45,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT Y\n2 ADDR England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -55,7 +55,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -65,7 +65,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England\n2 SOUR @S1@\n3 PAGE 123",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -76,7 +76,7 @@ class GedcomEditServiceTest extends TestCase
         );
 
         // Missing SOUR, so ignore PAGE
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -86,7 +86,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -96,7 +96,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England\n1 DEAT\n2 PLAC Scotland",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -106,7 +106,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "0 NOTE @N1@\n1 CONC foo\n1 CONT bar\n1 RESN locked",
             $gedcom_edit_service->editLinesToGedcom(
                 'NOTE',

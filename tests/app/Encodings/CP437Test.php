@@ -48,7 +48,7 @@ class CP437Test extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(CP437::NAME, UTF8::NAME, $character);
 
-            $this->assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
+            static::assertSame($expected, $actual, dechex($code_point) . '=>' . $actual . ' ' . $expected);
         }
     }
 }

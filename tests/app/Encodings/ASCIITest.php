@@ -47,7 +47,7 @@ class ASCIITest extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = iconv(ASCII::NAME, UTF8::NAME, $character);
 
-            $this->assertSame($expected, $actual);
+            static::assertSame($expected, $actual);
         }
 
         foreach (range(128, 255) as $code_point) {
@@ -55,7 +55,7 @@ class ASCIITest extends TestCase
             $actual    = $encoding->toUtf8($character);
             $expected  = UTF8::REPLACEMENT_CHARACTER;
 
-            $this->assertSame($expected, $actual);
+            static::assertSame($expected, $actual);
         }
     }
 }

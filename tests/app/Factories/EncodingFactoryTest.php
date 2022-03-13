@@ -48,17 +48,17 @@ class EncodingFactoryTest extends TestCase
     {
         $factory = new EncodingFactory();
 
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             UTF8::class,
             $factory->detect(UTF8::BYTE_ORDER_MARK)
         );
 
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             UTF16BE::class,
             $factory->detect(UTF16BE::BYTE_ORDER_MARK)
         );
 
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             UTF16LE::class,
             $factory->detect(UTF16LE::BYTE_ORDER_MARK)
         );
@@ -71,12 +71,12 @@ class EncodingFactoryTest extends TestCase
     {
         $factory = new EncodingFactory();
 
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             UTF16BE::class,
             $factory->detect("\x000")
         );
 
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             UTF16LE::class,
             $factory->detect("0\x00")
         );
@@ -89,7 +89,7 @@ class EncodingFactoryTest extends TestCase
     {
         $factory = new EncodingFactory();
 
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             MacRoman::class,
             $factory->detect("0 HEAD\n1 CHAR MACINTOSH\n0 TRLR")
         );
@@ -102,17 +102,17 @@ class EncodingFactoryTest extends TestCase
     {
         $factory = new EncodingFactory();
 
-        $this->assertInstanceOf(UTF8::class, $factory->make(UTF8::NAME));
-        $this->assertInstanceOf(UTF16BE::class, $factory->make(UTF16BE::NAME));
-        $this->assertInstanceOf(UTF16LE::class, $factory->make(UTF16LE::NAME));
-        $this->assertInstanceOf(ANSEL::class, $factory->make(ANSEL::NAME));
-        $this->assertInstanceOf(ASCII::class, $factory->make(ASCII::NAME));
-        $this->assertInstanceOf(CP437::class, $factory->make(CP437::NAME));
-        $this->assertInstanceOf(CP850::class, $factory->make(CP850::NAME));
-        $this->assertInstanceOf(Windows1250::class, $factory->make(Windows1250::NAME));
-        $this->assertInstanceOf(Windows1251::class, $factory->make(Windows1251::NAME));
-        $this->assertInstanceOf(Windows1252::class, $factory->make(Windows1252::NAME));
-        $this->assertInstanceOf(MacRoman::class, $factory->make(MacRoman::NAME));
+        static::assertInstanceOf(UTF8::class, $factory->make(UTF8::NAME));
+        static::assertInstanceOf(UTF16BE::class, $factory->make(UTF16BE::NAME));
+        static::assertInstanceOf(UTF16LE::class, $factory->make(UTF16LE::NAME));
+        static::assertInstanceOf(ANSEL::class, $factory->make(ANSEL::NAME));
+        static::assertInstanceOf(ASCII::class, $factory->make(ASCII::NAME));
+        static::assertInstanceOf(CP437::class, $factory->make(CP437::NAME));
+        static::assertInstanceOf(CP850::class, $factory->make(CP850::NAME));
+        static::assertInstanceOf(Windows1250::class, $factory->make(Windows1250::NAME));
+        static::assertInstanceOf(Windows1251::class, $factory->make(Windows1251::NAME));
+        static::assertInstanceOf(Windows1252::class, $factory->make(Windows1252::NAME));
+        static::assertInstanceOf(MacRoman::class, $factory->make(MacRoman::NAME));
 
         $this->expectException(DomainException::class);
         $factory->make('Not the name of a valid encoding');
@@ -127,12 +127,12 @@ class EncodingFactoryTest extends TestCase
 
         $encodings = $factory->list();
 
-        $this->assertCount(13, $encodings);
+        static::assertCount(13, $encodings);
 
         foreach ($encodings as $key => $value) {
-            $this->assertIsString($key);
-            $this->assertIsString($value);
-            $this->assertInstanceOf(EncodingInterface::class, $factory->make($key));
+            static::assertIsString($key);
+            static::assertIsString($value);
+            static::assertInstanceOf(EncodingInterface::class, $factory->make($key));
         }
     }
 }

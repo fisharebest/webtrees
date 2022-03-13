@@ -158,7 +158,7 @@ class AnselTest extends TestCase
                         continue;
                     }
 
-                    $this->assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
+                    static::assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
                 }
             }
         }

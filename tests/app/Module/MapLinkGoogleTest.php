@@ -43,7 +43,7 @@ class MapLinkGoogleTest extends TestCase
 
         $html = $module->mapLink($fact);
 
-        $this->assertSame('', $html);
+        static::assertSame('', $html);
     }
 
     /**
