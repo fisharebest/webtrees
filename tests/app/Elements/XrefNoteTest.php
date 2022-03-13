@@ -55,10 +55,6 @@ class XrefNoteTest extends TestCase
 
         Registry::noteFactory($factory);
 
-        $request = $this->createMock(ServerRequestInterface::class);
-
-        $request = self::createRequest();
-
         $html = $element->edit('some-id', 'some-name', '@X123@', $tree);
         $dom  = new DOMDocument();
         $dom->loadHTML($html);
