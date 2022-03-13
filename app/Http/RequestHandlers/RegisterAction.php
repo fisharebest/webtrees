@@ -155,7 +155,7 @@ class RegisterAction implements RequestHandlerInterface
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         $this->email_service->send(
-            new Siteuser(),
+            new SiteUser(),
             $user,
             $reply_to,
             I18N::translate('Your registration at %s', $base_url),

@@ -111,7 +111,7 @@ class AccountUpdate implements RequestHandlerInterface
         // Switch to the new language now
         Session::put('language', $language);
 
-        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->username())), 'success');
+        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->userName())), 'success');
 
         return redirect(route(HomePage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }

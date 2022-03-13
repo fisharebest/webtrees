@@ -31,7 +31,7 @@ use Illuminate\Support\Collection;
                 ev.target.parentNode.removeChild(ev.target);
             });
         </script>
-        <?php View::endPush() ?>
+        <?php View::endpush() ?>
     <?php endif ?>
 
     <div class="<?= $n >= $limit_low && $yahrzeits->count() > $limit_high ? 'd-none' : '' ?>">

@@ -58,7 +58,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
         }
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // Set the link to this y/page position
-        $renderer->tcpdf->SetLink($this->addlink, -1, -1);
+        $renderer->tcpdf->setLink($this->addlink, -1, -1);
         // Print first the source number
         // working
         if ($renderer->tcpdf->getRTL()) {
