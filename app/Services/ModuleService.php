@@ -49,7 +49,6 @@ use Fisharebest\Webtrees\Module\ColorsTheme;
 use Fisharebest\Webtrees\Module\CompactTreeChartModule;
 use Fisharebest\Webtrees\Module\ContactsFooterModule;
 use Fisharebest\Webtrees\Module\CustomCssJsModule;
-use Fisharebest\Webtrees\Module\CustomTagsAldfaer;
 use Fisharebest\Webtrees\Module\CustomTagsAncestry;
 use Fisharebest\Webtrees\Module\CustomTagsBrothersKeeper;
 use Fisharebest\Webtrees\Module\CustomTagsFamilySearch;
@@ -360,7 +359,6 @@ class ModuleService
         'contact-links'           => ContactsFooterModule::class,
         'czech-leaders'           => CzechMonarchsAndPresidents::class,
         'custom-css-js'           => CustomCssJsModule::class,
-        'custom-tags-aldfaer'     => CustomTagsAldfaer::class,
         'custom-tags-ancestry'    => CustomTagsAncestry::class,
         'custom-tags-bk'          => CustomTagsBrothersKeeper::class,
         'custom-tags-gedcom-53'   => CustomTagsGedcom53::class,
