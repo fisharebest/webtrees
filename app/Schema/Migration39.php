@@ -28,7 +28,7 @@ use Illuminate\Database\Schema\Blueprint;
 class Migration39 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to the next version
      *
      * @return void
      */

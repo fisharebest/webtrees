@@ -27,7 +27,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 class Migration43 implements MigrationInterface
 {
     /**
-     * Upgrade to to the next version
+     * Upgrade to the next version
      *
      * @return void
      */
