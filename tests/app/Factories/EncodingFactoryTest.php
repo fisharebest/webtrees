@@ -96,6 +96,19 @@ class EncodingFactoryTest extends TestCase
     }
 
     /**
+     * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::detect
+     */
+    public function testMissingCharHeader(): void
+    {
+        $factory = new EncodingFactory();
+
+        static::assertInstanceOf(
+            ASCII::class,
+            $factory->detect("0 HEAD\n0 TRLR")
+        );
+    }
+
+    /**
      * @covers \Fisharebest\Webtrees\Factories\EncodingFactory::make
      */
     public function testMake(): void

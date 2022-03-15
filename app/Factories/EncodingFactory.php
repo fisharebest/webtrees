@@ -148,12 +148,10 @@ class EncodingFactory implements EncodingFactoryInterface
         }
 
         if (preg_match('/1 CHAR (.+)/', $header, $match) === 1) {
-            $charset = $match[1];
-        } else {
-            $charset = '???';
+            throw new InvalidGedcomEncodingException($match[1]);
         }
 
-        throw new InvalidGedcomEncodingException($charset);
+        return $this->make(ASCII::NAME);
     }
 
     /**
