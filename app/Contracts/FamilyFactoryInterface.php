@@ -28,6 +28,15 @@ use Fisharebest\Webtrees\Tree;
  */
 interface FamilyFactoryInterface
 {
+    /**
+     * Create a family.
+     *
+     * @param string      $xref
+     * @param Tree        $tree
+     * @param string|null $gedcom
+     *
+     * @return Family|null
+     */
     public function make(string $xref, Tree $tree, string $gedcom = null): ?Family;
 
     /**

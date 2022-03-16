@@ -36,6 +36,11 @@ use function preg_quote;
  */
 class AutoCompleteCitation extends AbstractAutocompleteHandler
 {
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return Collection<int,string>
+     */
     protected function search(ServerRequestInterface $request): Collection
     {
         $tree   = Validator::attributes($request)->tree();

@@ -52,6 +52,9 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private const LIMIT_LOW  = 10;
     private const LIMIT_HIGH = 20;
 
+    /**
+     * Early initialisation.  Called before most of the middleware.
+     */
     public function boot(): void
     {
         Registry::elementFactory()->register([

@@ -56,6 +56,11 @@ class TreePreferencesPage implements RequestHandlerInterface
 
     private UserService $user_service;
 
+    /**
+     * @param ModuleService $module_service
+     * @param TreeService   $tree_service
+     * @param UserService   $user_service
+     */
     public function __construct(
         ModuleService $module_service,
         TreeService $tree_service,

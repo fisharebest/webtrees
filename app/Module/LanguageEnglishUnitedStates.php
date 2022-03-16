@@ -107,6 +107,9 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
         1  => ' ascending',
     ];
 
+    /**
+     * @return LocaleInterface
+     */
     public function locale(): LocaleInterface
     {
         return new LocaleEnUs();

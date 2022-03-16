@@ -47,6 +47,9 @@ class TreePrivacyPage implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
+    /**
+     * @param TreeService $tree_service
+     */
     public function __construct(TreeService $tree_service)
     {
         $this->tree_service = $tree_service;

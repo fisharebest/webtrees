@@ -280,6 +280,9 @@ class UpgradeService
         return $url;
     }
 
+    /**
+     * @return void
+     */
     public function startMaintenanceMode(): void
     {
         $message = I18N::translate('This website is being upgraded. Try again in a few minutes.');
@@ -287,6 +290,9 @@ class UpgradeService
         file_put_contents(Webtrees::OFFLINE_FILE, $message);
     }
 
+    /**
+     * @return void
+     */
     public function endMaintenanceMode(): void
     {
         if (file_exists(Webtrees::OFFLINE_FILE)) {

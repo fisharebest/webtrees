@@ -33,6 +33,9 @@ trait ModuleCustomTagsTrait
 {
     use ViewResponseTrait;
 
+    /**
+     * Early initialisation.  Called before most of the middleware.
+     */
     public function boot(): void
     {
         $element_factory = Registry::elementFactory();

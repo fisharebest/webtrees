@@ -52,6 +52,13 @@ class AgeAtEvent extends AbstractElement
 
     protected const KEYWORDS = ['CHILD', 'INFANT', 'STILLBORN'];
 
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
     public function canonical(string $value): string
     {
         $value = parent::canonical($value);

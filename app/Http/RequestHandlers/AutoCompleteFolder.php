@@ -33,6 +33,9 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
 {
     private MediaFileService $media_file_service;
 
+    /**
+     * @param SearchService $search_service
+     */
     public function __construct(MediaFileService $media_file_service, SearchService $search_service)
     {
         parent::__construct($search_service);

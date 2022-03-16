@@ -47,6 +47,10 @@ class ImportGedcomAction implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
+    /**
+     * @param StreamFactoryInterface $stream_factory
+     * @param TreeService            $tree_service
+     */
     public function __construct(StreamFactoryInterface $stream_factory, TreeService $tree_service)
     {
         $this->tree_service   = $tree_service;

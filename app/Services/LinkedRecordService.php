@@ -112,6 +112,7 @@ class LinkedRecordService
      * Find individuals linked to a record.
      *
      * @param GedcomRecord $record
+     * @param string|null  $link_type
      *
      * @return Collection<int,Individual>
      */
