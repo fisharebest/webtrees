@@ -110,7 +110,7 @@ class Webtrees
     public const MODULES_DIR  = self::ROOT_DIR . self::MODULES_PATH;
 
     // Enable debugging on development builds.
-    public const DEBUG = self::STABILITY !== '';
+    public const DEBUG = self::STABILITY !== '-dev';
 
     // We want to know about all PHP errors during development, and fewer in production.
     public const ERROR_REPORTING = self::DEBUG ? E_ALL : E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
