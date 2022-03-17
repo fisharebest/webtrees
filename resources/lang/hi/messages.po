@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-03-16 15:26+0000\n"
-"PO-Revision-Date: 2021-10-29 15:57+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
-"Language: hi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-03-16 15:26+0000\nPO-Revision-Date: 2022-03-20 22:01+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3484,7 +3472,7 @@ msgstr "परिवर्तन लॉग"
 #: resources/views/admin/gedcom-export-options.phtml:43
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "अक्षर संकेतीकरण"
 
 #: app/Factories/ElementFactory.php:376
 msgid "Character set"
@@ -5168,7 +5156,7 @@ msgstr "यह नाम हटाएं"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "अप्रयुक्त स्थानों को हटाएं"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -8651,7 +8639,7 @@ msgstr "लीमा, पेरु"
 
 #: resources/views/admin/gedcom-export-options.phtml:53
 msgid "Line endings"
-msgstr ""
+msgstr "पंक्ति के अंत"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:809
@@ -12239,12 +12227,12 @@ msgstr "SQLite version %s इंस्टाल किया हुआ है।
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12960,7 +12948,7 @@ msgstr "“नए उपयोगकर्ता खाते का अनु�
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "सभी मीडिया दिखाएं"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13487,7 +13475,7 @@ msgstr "%s के बेटे"
 
 #: app/Module/CustomTagsTheMasterGenealogist.php:50
 msgid "Sort date"
-msgstr ""
+msgstr "दिनांक क्रमबद्ध करें"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -14406,7 +14394,7 @@ msgstr "मेमोरी और सीपीयू के समय की म
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "संदेश %s को नहीं भेजा गया।"
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -15370,7 +15358,7 @@ msgstr "नए शोध कार्य बनाने के लिए, आ�
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "मानचित्र प्रदर्शित करने के लिए, आपको कंट्रोल पैनल में मानचित्र-प्रदाता को सक्षम करना होगा।"
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -15435,7 +15423,7 @@ msgstr "टोंगा"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "बहुत अधिक अनुरोध।  बाद में पुन: प्रयास करें।"
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -16683,7 +16671,7 @@ msgstr "आपका वेब सर्वर PHP version %s का उपय�
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:35
 msgid "ZIP (includes media files)"
-msgstr ""
+msgstr "ZIP (मीडिया फ़ाइलें शामिल हैं)"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16838,7 +16826,7 @@ msgstr "चाचा/बुआ/मामा/मौसी"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "स्वचालित"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19788,7 +19776,7 @@ msgstr "प्रतिशत"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:103
 msgid "plain text"
-msgstr ""
+msgstr "सादा टेक्स्ट"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
