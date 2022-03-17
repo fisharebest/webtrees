@@ -39,7 +39,7 @@ class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterfac
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (file_exists(Webtrees::OFFLINE_FILE)) {
+        if (file_exists(Webtrees::OFFLINE_FILE) && !is_dir(Webtrees::OFFLINE_FILE)) {
             $html = view('layouts/offline', [
                 'message' => file_get_contents(Webtrees::OFFLINE_FILE),
                 'url'     => (string) $request->getUri(),
