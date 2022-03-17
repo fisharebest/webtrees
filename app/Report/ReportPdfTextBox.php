@@ -281,18 +281,16 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 $renderer->tcpdf->setLeftMargin($cX);
                 $renderer->tcpdf->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
             }
-        } else {
-            if ($this->padding) {
-                if (is_array($cM['cell'])) {
-                    $renderer->tcpdf->setRightMargin($cX + $cM['padding_right']);
-                } else {
-                    $renderer->tcpdf->setRightMargin($cX + $cM['cell']);
-                }
-                $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
+        } elseif ($this->padding) {
+            if (is_array($cM['cell'])) {
+                $renderer->tcpdf->setRightMargin($cX + $cM['padding_right']);
             } else {
-                $renderer->tcpdf->setRightMargin($cX);
-                $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
+                $renderer->tcpdf->setRightMargin($cX + $cM['cell']);
             }
+            $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
+        } else {
+            $renderer->tcpdf->setRightMargin($cX);
+            $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
         }
         // Save the current page number
         $cPN = $renderer->tcpdf->getPage();
