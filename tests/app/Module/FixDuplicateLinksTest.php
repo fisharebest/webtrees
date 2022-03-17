@@ -109,7 +109,7 @@ class FixDuplicateLinksTest extends TestCase
         $family = $this->tree->createFamily("0 @@ FAM\n1 HUSB @X1@\n1 CHIL @X2@");
         self::assertFalse($this->fixDuplicateLinks->doesRecordNeedUpdate($family, []));
 
-        $family->createFact("1 CHIL @X2@", true);
+        $family->createFact('1 CHIL @X2@', true);
         self::assertTrue($this->fixDuplicateLinks->doesRecordNeedUpdate($family, []));
     }
 

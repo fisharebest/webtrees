@@ -42,7 +42,7 @@ class EventsRecordedTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('FOO,BAR,BAZ', self::$element->canonical("Foo , bAr,  baZ"));
-        self::assertSame('FOO,BAR,BAZ', self::$element->canonical(", Foo, bAr ,baZ, "));
+        self::assertSame('FOO,BAR,BAZ', self::$element->canonical('Foo , bAr,  baZ'));
+        self::assertSame('FOO,BAR,BAZ', self::$element->canonical(', Foo, bAr ,baZ, '));
     }
 }

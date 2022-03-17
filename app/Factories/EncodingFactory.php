@@ -142,7 +142,7 @@ class EncodingFactory implements EncodingFactoryInterface
                 $regex = "\n1 CHAR(?:ACTER)? " . $pattern;
             }
 
-            if (preg_match("/" . $regex . "/i", $header) === 1) {
+            if (preg_match('/' . $regex . '/i', $header) === 1) {
                 return $this->make($encoding);
             }
         }

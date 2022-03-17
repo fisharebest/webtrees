@@ -43,13 +43,13 @@ class MaidenheadLocatorTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('AB', self::$element->canonical("ab"));
-        self::assertSame('AB', self::$element->canonical("AB"));
-        self::assertSame('AB12', self::$element->canonical("ab12"));
-        self::assertSame('AB12', self::$element->canonical("AB12"));
-        self::assertSame('AB12cd', self::$element->canonical("ab12cd"));
-        self::assertSame('AB12cd', self::$element->canonical("AB12CD"));
-        self::assertSame('AB12cd34', self::$element->canonical("ab12cd34"));
-        self::assertSame('AB12cd34', self::$element->canonical("AB12CD34"));
+        self::assertSame('AB', self::$element->canonical('ab'));
+        self::assertSame('AB', self::$element->canonical('AB'));
+        self::assertSame('AB12', self::$element->canonical('ab12'));
+        self::assertSame('AB12', self::$element->canonical('AB12'));
+        self::assertSame('AB12cd', self::$element->canonical('ab12cd'));
+        self::assertSame('AB12cd', self::$element->canonical('AB12CD'));
+        self::assertSame('AB12cd34', self::$element->canonical('ab12cd34'));
+        self::assertSame('AB12cd34', self::$element->canonical('AB12CD34'));
     }
 }

@@ -43,10 +43,10 @@ class AgeAtEventTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('CHILD', self::$element->canonical("cHiLd"));
-        self::assertSame('INFANT', self::$element->canonical("iNfAnT "));
-        self::assertSame('STILLBORN', self::$element->canonical(" sTiLlBoRn"));
-        self::assertSame('fish', self::$element->canonical("fIsH"));
-        self::assertSame('1y 2m 3d', self::$element->canonical("1Y  2M  3D"));
+        self::assertSame('CHILD', self::$element->canonical('cHiLd'));
+        self::assertSame('INFANT', self::$element->canonical('iNfAnT '));
+        self::assertSame('STILLBORN', self::$element->canonical(' sTiLlBoRn'));
+        self::assertSame('fish', self::$element->canonical('fIsH'));
+        self::assertSame('1y 2m 3d', self::$element->canonical('1Y  2M  3D'));
     }
 }

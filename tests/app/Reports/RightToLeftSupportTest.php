@@ -171,21 +171,21 @@ class RightToLeftSupportTest extends TestCase
         I18N::init('en-US', true);
         static::assertSame(
             '<span dir="ltr">foo</span><br><span dir="ltr">bar</span>',
-            RightToLeftSupport::spanLtrRtl("foo<br>bar")
+            RightToLeftSupport::spanLtrRtl('foo<br>bar')
         );
         static::assertSame(
             '<span dir="rtl">אבג</span><br><span dir="rtl">דהו</span>',
-            RightToLeftSupport::spanLtrRtl("אבג<br>דהו")
+            RightToLeftSupport::spanLtrRtl('אבג<br>דהו')
         );
 
         I18N::init('he', true);
         static::assertSame(
             '<span dir="ltr">foo</span><br><span dir="ltr">bar</span>',
-            RightToLeftSupport::spanLtrRtl("foo<br>bar")
+            RightToLeftSupport::spanLtrRtl('foo<br>bar')
         );
         static::assertSame(
             '<span dir="rtl">אבג</span><br><span dir="rtl">דהו</span>',
-            RightToLeftSupport::spanLtrRtl("אבג<br>דהו")
+            RightToLeftSupport::spanLtrRtl('אבג<br>דהו')
         );
     }
 
@@ -213,11 +213,11 @@ class RightToLeftSupportTest extends TestCase
         I18N::init('he', true);
         static::assertSame(
             '<span dir="ltr">foo&nbsp;bar</span>',
-            RightToLeftSupport::spanLtrRtl("foo&nbsp;bar")
+            RightToLeftSupport::spanLtrRtl('foo&nbsp;bar')
         );
         static::assertSame(
             '<span dir="rtl">אבג&nbsp;דהו</span>',
-            RightToLeftSupport::spanLtrRtl("אבג&nbsp;דהו")
+            RightToLeftSupport::spanLtrRtl('אבג&nbsp;דהו')
         );
         static::assertSame(
             '<span dir="ltr">foo&bar</span>',
@@ -375,21 +375,21 @@ class RightToLeftSupportTest extends TestCase
         I18N::init('en-US', true);
         static::assertSame(
             '<span dir="ltr">>foo<</span>',
-            RightToLeftSupport::spanLtrRtl(">foo<")
+            RightToLeftSupport::spanLtrRtl('>foo<')
         );
         static::assertSame(
             '<span dir="ltr">></span><span dir="rtl">אבג<</span>',
-            RightToLeftSupport::spanLtrRtl(">אבג<")
+            RightToLeftSupport::spanLtrRtl('>אבג<')
         );
 
         I18N::init('he', true);
         static::assertSame(
             '<span dir="rtl">></span><span dir="ltr">foo<</span>',
-            RightToLeftSupport::spanLtrRtl(">foo<")
+            RightToLeftSupport::spanLtrRtl('>foo<')
         );
         static::assertSame(
             '<span dir="rtl">>אבג<</span>',
-            RightToLeftSupport::spanLtrRtl(">אבג<")
+            RightToLeftSupport::spanLtrRtl('>אבג<')
         );
     }
 
@@ -403,13 +403,13 @@ class RightToLeftSupportTest extends TestCase
         I18N::init('en-US', true);
         static::assertSame(
             '<span dir="ltr">123</span><br><span dir="ltr">456</span>',
-            RightToLeftSupport::spanLtrRtl("123<br>456")
+            RightToLeftSupport::spanLtrRtl('123<br>456')
         );
 
         I18N::init('he', true);
         static::assertSame(
             '<span dir="rtl">‪123‬</span><br><span dir="rtl">‪456‬</span>',
-            RightToLeftSupport::spanLtrRtl("123<br>456")
+            RightToLeftSupport::spanLtrRtl('123<br>456')
         );
     }
 }

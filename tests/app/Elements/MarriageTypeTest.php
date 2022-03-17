@@ -42,7 +42,7 @@ class MarriageTypeTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('Foo bar baz', self::$element->canonical("Foo  bAr  baZ"));
+        self::assertSame('Foo bar baz', self::$element->canonical('Foo  bAr  baZ'));
         self::assertSame('Foo bar baz', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
         self::assertSame('Foo bar baz', self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
     }

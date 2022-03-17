@@ -107,7 +107,7 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
         return $this->individualsToFixQuery($tree, $params)
             ->where(static function (Builder $query): void {
                 foreach (array_keys(self::CONVERT) as $tag) {
-                    $query->orWhere('i_gedcom', 'LIKE', "%\n2 " . $tag . " %");
+                    $query->orWhere('i_gedcom', 'LIKE', "%\n2 " . $tag . ' %');
                 }
             })
             ->pluck('i_id');

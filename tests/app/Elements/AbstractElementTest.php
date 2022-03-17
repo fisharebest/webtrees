@@ -38,7 +38,7 @@ abstract class AbstractElementTest extends TestCase
      */
     public function testCanonical(): void
     {
-        self::assertSame('Foo bAr baZ', self::$element->canonical("Foo  bAr  baZ"));
+        self::assertSame('Foo bAr baZ', self::$element->canonical('Foo  bAr  baZ'));
         self::assertSame('Foo bAr baZ', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
         self::assertSame('Foo bAr baZ', self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
     }

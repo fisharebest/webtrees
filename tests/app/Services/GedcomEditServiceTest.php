@@ -36,7 +36,7 @@ class GedcomEditServiceTest extends TestCase
         $gedcom_edit_service = new GedcomEditService();
 
         static::assertSame(
-            "1 BIRT Y",
+            '1 BIRT Y',
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1'],
