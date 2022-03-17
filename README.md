@@ -26,7 +26,7 @@
 ## License
 
 * **webtrees: online genealogy**
-* Copyright 2021 webtrees development team
+* Copyright 2022 webtrees development team
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
