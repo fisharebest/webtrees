@@ -256,7 +256,7 @@ class ElementFactory implements ElementFactoryInterface
     private function findElementByWildcard(string $tag): ?ElementInterface
     {
         foreach ($this->elements() as $tags => $element) {
-            if (strpos($tags, '*') !== false) {
+            if (str_contains($tags, '*')) {
                 $regex = '/^' . strtr($tags, ['*' => '[^:]+']) . '$/';
 
                 if (preg_match($regex, $tag)) {

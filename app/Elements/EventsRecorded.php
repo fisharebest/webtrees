@@ -105,7 +105,7 @@ class EventsRecorded extends AbstractElement
     {
         $value = strtoupper(strtr(parent::canonical($value), [' ' => ',']));
 
-        while (strpos($value, ',,') !== false) {
+        while (str_contains($value, ',,')) {
             $value = strtr($value, [',,' => ',']);
         }
 

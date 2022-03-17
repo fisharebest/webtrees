@@ -45,7 +45,7 @@ class SitePreferencesAction implements RequestHandlerInterface
 
         $INDEX_DIRECTORY = $params['INDEX_DIRECTORY'];
 
-        if (substr($INDEX_DIRECTORY, -1) !== '/') {
+        if (!str_ends_with($INDEX_DIRECTORY, '/')) {
             $INDEX_DIRECTORY .= '/';
         }
 
