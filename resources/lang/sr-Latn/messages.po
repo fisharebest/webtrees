@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-16 11:32+0000\n"
+"PO-Revision-Date: 2022-03-18 13:08+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/sr_Latn/>\n"
@@ -17409,7 +17409,7 @@ msgstr "brat"
 #: app/Functions/Functions.php:990
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "snahin brat"
 
 #: app/Functions/Functions.php:816
 msgctxt "husband’s brother"
@@ -17429,12 +17429,12 @@ msgstr "zet"
 #: app/Functions/Functions.php:1290
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "zetov brat"
 
 #: app/Functions/Functions.php:896
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "badžo"
 
 #: app/Functions/Functions.php:914
 msgctxt "wife’s brother"
@@ -17449,7 +17449,7 @@ msgstr "pašenog"
 #: app/Functions/Functions.php:992
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "snahini brat i sestra"
 
 #: app/Functions/Functions.php:826
 msgctxt "husband’s sibling"
@@ -17459,17 +17459,17 @@ msgstr "dever/zaova"
 #: app/Functions/Functions.php:878
 msgctxt "sibling’s spouse"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brat i sestra supružnika"
 
 #: app/Functions/Functions.php:1292
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "zetov brat i sestra"
 
 #: app/Functions/Functions.php:912
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "brat i sestra supružnika"
 
 #: app/Functions/Functions.php:924
 msgctxt "wife’s sibling"
@@ -17544,7 +17544,7 @@ msgstr "popis dodat"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "osporeno"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/Elements/NameType.php:53 app/GedcomCode/GedcomCodeName.php:115
@@ -17629,7 +17629,7 @@ msgstr "kreiraj"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "kulturološki"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -17763,35 +17763,35 @@ msgstr "starija sestra"
 
 #: app/Functions/Functions.php:487
 msgid "eleventh cousin"
-msgstr ""
+msgstr "rod u jedanaestom kolenu"
 
 #: app/Functions/Functions.php:451
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "rođaka u jedanaestom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:409
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "rođak u jedanaestom kolenu"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:55 app/GedcomCode/GedcomCodeName.php:129
 msgid "estate name"
-msgstr ""
+msgstr "ime imanja"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:125
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "ime imanja"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:120
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "ime imanja"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:350
@@ -17805,7 +17805,7 @@ msgstr "bivši muž"
 
 #: app/Functions/Functions.php:683
 msgid "ex-spouse"
-msgstr ""
+msgstr "bivši supružnici"
 
 #: app/Functions/Functions.php:660
 msgid "ex-wife"
@@ -17814,7 +17814,7 @@ msgstr "bivša žena"
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:150
 msgid "export file"
-msgstr ""
+msgstr "izvezi datoteku"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:116
 #: resources/xml/reports/fact_sources.xml:6
@@ -17842,65 +17842,65 @@ msgstr "tast"
 
 #: app/Functions/Functions.php:640
 msgid "fiancé"
-msgstr ""
+msgstr "verenik"
 
 #: app/Functions/Functions.php:687
 msgid "fiancé(e)"
-msgstr ""
+msgstr "verenik/verenica"
 
 #: app/Functions/Functions.php:664
 msgid "fiancée"
-msgstr ""
+msgstr "verenica"
 
 #: app/Functions/Functions.php:495
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "rod u petnaestom kolenu"
 
 #: app/Functions/Functions.php:459
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "rođaka u petnaestom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:421
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "rođak u petnaestom kolenu"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:574
 #, php-format
 msgid "fifth %s"
-msgstr ""
+msgstr "peti %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:552
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "peta %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:529
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "peti %s"
 
 #: app/Functions/Functions.php:475
 msgid "fifth cousin"
-msgstr ""
+msgstr "rod u petom kolenu"
 
 #: app/Functions/Functions.php:439
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "rođaka u petom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:391
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "rođak u petom kolenu"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:588
@@ -17937,248 +17937,248 @@ msgstr "prvi %s"
 
 #: app/Functions/Functions.php:467
 msgid "first cousin"
-msgstr ""
+msgstr "rod u prvom kolenu"
 
 #: app/Functions/Functions.php:431
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "rođaka u prvom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:379
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "rođak u prvom kolenu"
 
 #: app/Functions/Functions.php:1046
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "prvo bratučed"
 
 #: app/Functions/Functions.php:1048
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "sestra od strica"
 
 #: app/Functions/Functions.php:1050
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "brat od strica"
 
 #: app/Functions/Functions.php:1090
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "tetkić"
 
 #: app/Functions/Functions.php:1092
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "sestra od tetke"
 
 #: app/Functions/Functions.php:1096
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "brat od tetke"
 
 #: app/Functions/Functions.php:1126
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "nećak"
 
 #: app/Functions/Functions.php:1128
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "nećaka"
 
 #: app/Functions/Functions.php:1130
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "nećak"
 
 #: app/Functions/Functions.php:1176
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "tetkić"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "sestra od tetke"
 
 #: app/Functions/Functions.php:1182
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "brat od tetke"
 
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata dete"
 
 #: app/Functions/Functions.php:1422
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata ćerka"
 
 #: app/Functions/Functions.php:1424
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata sin"
 
 #: app/Functions/Functions.php:1432
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre dete"
 
 #: app/Functions/Functions.php:1428
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre ćerka"
 
 #: app/Functions/Functions.php:1430
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre sin"
 
 #: app/Functions/Functions.php:1438
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata dete"
 
 #: app/Functions/Functions.php:1434
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata ćerka"
 
 #: app/Functions/Functions.php:1436
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata sin"
 
 #: app/Functions/Functions.php:1444
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre dete"
 
 #: app/Functions/Functions.php:1440
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre ćerka"
 
 #: app/Functions/Functions.php:1442
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre sin"
 
 #: app/Functions/Functions.php:1450
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata dete"
 
 #: app/Functions/Functions.php:1446
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata ćerka"
 
 #: app/Functions/Functions.php:1448
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedinog brata sin"
 
 #: app/Functions/Functions.php:1456
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre dete"
 
 #: app/Functions/Functions.php:1452
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre ćerka"
 
 #: app/Functions/Functions.php:1454
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "dedine sestre sin"
 
 #: app/Functions/Functions.php:1462
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata dete"
 
 #: app/Functions/Functions.php:1458
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata ćerka"
 
 #: app/Functions/Functions.php:1460
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakinog brata sin"
 
 #: app/Functions/Functions.php:1468
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre dete"
 
 #: app/Functions/Functions.php:1464
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre ćerka"
 
 #: app/Functions/Functions.php:1466
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "bakine sestre sin"
 
 #: app/Functions/Functions.php:493
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "rod u četrnaestom kolenu"
 
 #: app/Functions/Functions.php:457
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "rođaka u četrnaestom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:418
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "rođak u četrnaestom kolenu"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:571
 #, php-format
 msgid "fourth %s"
-msgstr ""
+msgstr "četvrti %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:549
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "četvrta %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:526
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "četvrti %s"
 
 #: app/Functions/Functions.php:473
 msgid "fourth cousin"
-msgstr ""
+msgstr "rod u četvrtom kolenu"
 
 #: app/Functions/Functions.php:437
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "rođaka u četvrtom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:388
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr ""
+msgstr "rođak u četvrtom kolenu"
 
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml:101
@@ -18209,16 +18209,16 @@ msgstr "od %s do %s"
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:586
 msgid "full circle"
-msgstr ""
+msgstr "puni krug"
 
 #: resources/views/modules/statistics-chart/custom.phtml:88
 msgid "gender"
-msgstr ""
+msgstr "pol"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "geografski"
 
 #. I18N: A button label.
 #: resources/views/edit/new-individual.phtml:336
@@ -18228,17 +18228,17 @@ msgstr "snimi i idi na novu osobu"
 #: app/Functions/Functions.php:776
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "unuk/unuka"
 
 #: app/Functions/Functions.php:788
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "unuk/unuka"
 
 #: app/Functions/Functions.php:888
 msgctxt "son’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "unuk/unuka"
 
 #: app/Functions/Functions.php:778
 msgctxt "child’s daughter"
@@ -18258,17 +18258,17 @@ msgstr "unuka"
 #: app/Functions/Functions.php:1006
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "unukin muž"
 
 #: app/Functions/Functions.php:1028
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "unukin muž"
 
 #: app/Functions/Functions.php:1326
 msgctxt "son’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "unukin muž"
 
 #: app/Functions/Functions.php:858
 msgctxt "parent’s father"
@@ -18283,7 +18283,7 @@ msgstr "baka"
 #: app/Functions/Functions.php:862
 msgctxt "parent’s parent"
 msgid "grandparent"
-msgstr ""
+msgstr "deda/baka"
 
 #: app/Functions/Functions.php:782
 msgctxt "child’s son"
@@ -18320,28 +18320,28 @@ msgstr "unukova žena"
 #: app/Functions/Functions.php:1770
 #, php-format
 msgid "great ×%s aunt"
-msgstr ""
+msgstr "pra ×%s tetka"
 
 #: app/Functions/Functions.php:1715 app/Functions/Functions.php:1734
 #: app/Functions/Functions.php:1746 app/Functions/Functions.php:1757
 #: app/Functions/Functions.php:1773
 #, php-format
 msgid "great ×%s aunt/uncle"
-msgstr ""
+msgstr "pra ×%s tetka/teča"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2265 app/Functions/Functions.php:2275
 #: app/Functions/Functions.php:2296
 #, php-format
 msgid "great ×%s grandchild"
-msgstr ""
+msgstr "pra ×%s unuče"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2262 app/Functions/Functions.php:2273
 #: app/Functions/Functions.php:2292
 #, php-format
 msgid "great ×%s granddaughter"
-msgstr ""
+msgstr "pra ×%s unuka"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2110 app/Functions/Functions.php:2124
@@ -18349,7 +18349,7 @@ msgstr ""
 #: app/Functions/Functions.php:2165
 #, php-format
 msgid "great ×%s grandfather"
-msgstr ""
+msgstr "pra ×%s deda"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2114 app/Functions/Functions.php:2128
@@ -18357,7 +18357,7 @@ msgstr ""
 #: app/Functions/Functions.php:2170
 #, php-format
 msgid "great ×%s grandmother"
-msgstr ""
+msgstr "pra ×%s baka"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2117 app/Functions/Functions.php:2131
@@ -18365,450 +18365,450 @@ msgstr ""
 #: app/Functions/Functions.php:2174
 #, php-format
 msgid "great ×%s grandparent"
-msgstr ""
+msgstr "pra×%s deda i baka"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:2258 app/Functions/Functions.php:2270
 #: app/Functions/Functions.php:2287
 #, php-format
 msgid "great ×%s grandson"
-msgstr ""
+msgstr "pra ×%s unuk"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1993 app/Functions/Functions.php:2005
 #: app/Functions/Functions.php:2021
 #, php-format
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "pra ×%s nećak"
 
 #: app/Functions/Functions.php:1931 app/Functions/Functions.php:1967
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "pra ×%s nećak"
 
 #: app/Functions/Functions.php:1935 app/Functions/Functions.php:1970
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "pra ×%s nećak"
 
 #: app/Functions/Functions.php:1938 app/Functions/Functions.php:1972
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "pra ×%s nećaka"
 
 #: app/Functions/Functions.php:2000 app/Functions/Functions.php:2012
 #: app/Functions/Functions.php:2028
 #, php-format
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "pra ×%s nećak/nećaka"
 
 #: app/Functions/Functions.php:1954 app/Functions/Functions.php:1984
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "pra ×%s nećak/nećaka"
 
 #: app/Functions/Functions.php:1958 app/Functions/Functions.php:1987
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "pra ×%s nećak/nećaka"
 
 #: app/Functions/Functions.php:1961 app/Functions/Functions.php:1989
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "pra ×%s nećak/nećaka"
 
 #: app/Functions/Functions.php:1997 app/Functions/Functions.php:2009
 #: app/Functions/Functions.php:2025
 #, php-format
 msgid "great ×%s niece"
-msgstr ""
+msgstr "pra ×%s nećaka"
 
 #: app/Functions/Functions.php:1943 app/Functions/Functions.php:1976
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "pra ×%s nećaka"
 
 #: app/Functions/Functions.php:1947 app/Functions/Functions.php:1979
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "pra ×%s nećaka"
 
 #: app/Functions/Functions.php:1950 app/Functions/Functions.php:1981
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "pra ×%s nećaka"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1708 app/Functions/Functions.php:1739
 #: app/Functions/Functions.php:1751 app/Functions/Functions.php:1766
 #, php-format
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "pra ×%s stric"
 
 #: app/Functions/Functions.php:1720
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "pra ×%s deda stric"
 
 #: app/Functions/Functions.php:1724
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "pra ×%s baba ujak"
 
 #: app/Functions/Functions.php:1727
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "pra ×%s deda stric"
 
 #: app/Functions/Functions.php:1638
 msgid "great ×4 aunt"
-msgstr ""
+msgstr "pra ×4 tetka"
 
 #: app/Functions/Functions.php:1641
 msgid "great ×4 aunt/uncle"
-msgstr ""
+msgstr "pra ×4 tetka/teča"
 
 #: app/Functions/Functions.php:2213
 msgid "great ×4 grandchild"
-msgstr ""
+msgstr "pra ×4 unuče"
 
 #: app/Functions/Functions.php:2210
 msgid "great ×4 granddaughter"
-msgstr ""
+msgstr "pra ×4 unuka"
 
 #: app/Functions/Functions.php:2060
 msgid "great ×4 grandfather"
-msgstr ""
+msgstr "pra ×4 deda"
 
 #: app/Functions/Functions.php:2064
 msgid "great ×4 grandmother"
-msgstr ""
+msgstr "pra ×4 baka"
 
 #: app/Functions/Functions.php:2067
 msgid "great ×4 grandparent"
-msgstr ""
+msgstr "pra ×4 deda i baka"
 
 #: app/Functions/Functions.php:2206
 msgid "great ×4 grandson"
-msgstr ""
+msgstr "pra ×4 unuče"
 
 #: app/Functions/Functions.php:1855
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "pra ×4 nećak"
 
 #: app/Functions/Functions.php:1859
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "pra ×4 nećak"
 
 #: app/Functions/Functions.php:1862
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "pra ×4 nećak"
 
 #: app/Functions/Functions.php:1878
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "pra ×4 nećak/nećaka"
 
 #: app/Functions/Functions.php:1882
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "pra ×4 nećak/nećaka"
 
 #: app/Functions/Functions.php:1885
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr ""
+msgstr "pra ×4 nećak/nećaka"
 
 #: app/Functions/Functions.php:1867
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "pra ×4 nećaka"
 
 #: app/Functions/Functions.php:1871
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "pra ×4 nećaka"
 
 #: app/Functions/Functions.php:1874
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr ""
+msgstr "pra ×4 nećaka"
 
 #: app/Functions/Functions.php:1627
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "pra ×4 stric"
 
 #: app/Functions/Functions.php:1631
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "pra ×4 stric"
 
 #: app/Functions/Functions.php:1634
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr ""
+msgstr "pra ×4 stric"
 
 #: app/Functions/Functions.php:1657
 msgid "great ×5 aunt"
-msgstr ""
+msgstr "great ×5 tetka"
 
 #: app/Functions/Functions.php:1660
 msgid "great ×5 aunt/uncle"
-msgstr ""
+msgstr "pra ×5 tetka/stric"
 
 #: app/Functions/Functions.php:2224
 msgid "great ×5 grandchild"
-msgstr ""
+msgstr "pra ×5 unuče"
 
 #: app/Functions/Functions.php:2221
 msgid "great ×5 granddaughter"
-msgstr ""
+msgstr "pra ×5 unuka"
 
 #: app/Functions/Functions.php:2071
 msgid "great ×5 grandfather"
-msgstr ""
+msgstr "pra ×5 deda"
 
 #: app/Functions/Functions.php:2075
 msgid "great ×5 grandmother"
-msgstr ""
+msgstr "pra ×5 baka"
 
 #: app/Functions/Functions.php:2078
 msgid "great ×5 grandparent"
-msgstr ""
+msgstr "pra ×5 deda i baka"
 
 #: app/Functions/Functions.php:2217
 msgid "great ×5 grandson"
-msgstr ""
+msgstr "pra ×5 unuk"
 
 #: app/Functions/Functions.php:1890
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "pra ×5 nećak"
 
 #: app/Functions/Functions.php:1894
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "pra ×5 nećak"
 
 #: app/Functions/Functions.php:1897
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr ""
+msgstr "pra ×5 nećak"
 
 #: app/Functions/Functions.php:1913
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "pra ×5 nećak/nećaka"
 
 #: app/Functions/Functions.php:1917
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "pra ×5 nećak/nećaka"
 
 #: app/Functions/Functions.php:1920
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr ""
+msgstr "pra ×5 nećak/nećaka"
 
 #: app/Functions/Functions.php:1902
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "pra ×5 nećaka"
 
 #: app/Functions/Functions.php:1906
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "pra ×5 nećaka"
 
 #: app/Functions/Functions.php:1909
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr ""
+msgstr "pra ×5 nećaka"
 
 #: app/Functions/Functions.php:1646
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "pra ×5 stric"
 
 #: app/Functions/Functions.php:1650
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "pra ×5 stric"
 
 #: app/Functions/Functions.php:1653
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr ""
+msgstr "pra ×5 stric"
 
 #: app/Functions/Functions.php:1676
 msgid "great ×6 aunt"
-msgstr ""
+msgstr "pra ×6 tetka"
 
 #: app/Functions/Functions.php:1679
 msgid "great ×6 aunt/uncle"
-msgstr ""
+msgstr "pra ×6 tetka/teča"
 
 #: app/Functions/Functions.php:2235
 msgid "great ×6 grandchild"
-msgstr ""
+msgstr "pra ×6 unuče"
 
 #: app/Functions/Functions.php:2232
 msgid "great ×6 granddaughter"
-msgstr ""
+msgstr "pra ×6 praunuka"
 
 #: app/Functions/Functions.php:2082
 msgid "great ×6 grandfather"
-msgstr ""
+msgstr "pra ×6 deda"
 
 #: app/Functions/Functions.php:2086
 msgid "great ×6 grandmother"
-msgstr ""
+msgstr "pra ×6 baka"
 
 #: app/Functions/Functions.php:2089
 msgid "great ×6 grandparent"
-msgstr ""
+msgstr "pra ×6 deda i baka"
 
 #: app/Functions/Functions.php:2228
 msgid "great ×6 grandson"
-msgstr ""
+msgstr "pra ×6 unuk"
 
 #: app/Functions/Functions.php:1665
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "pra ×6 stric"
 
 #: app/Functions/Functions.php:1669
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "pra ×6 ujak"
 
 #: app/Functions/Functions.php:1672
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr ""
+msgstr "pra ×6 stric/ujak"
 
 #: app/Functions/Functions.php:1695
 msgid "great ×7 aunt"
-msgstr ""
+msgstr "pra ×7 tetka"
 
 #: app/Functions/Functions.php:1698
 msgid "great ×7 aunt/uncle"
-msgstr ""
+msgstr "pra ×7 tetka/teča"
 
 #: app/Functions/Functions.php:2246
 msgid "great ×7 grandchild"
-msgstr ""
+msgstr "pra ×7 unuče"
 
 #: app/Functions/Functions.php:2243
 msgid "great ×7 granddaughter"
-msgstr ""
+msgstr "pra ×7 unuka"
 
 #: app/Functions/Functions.php:2093
 msgid "great ×7 grandfather"
-msgstr ""
+msgstr "pra ×7 deda"
 
 #: app/Functions/Functions.php:2097
 msgid "great ×7 grandmother"
-msgstr ""
+msgstr "pra ×7 baka"
 
 #: app/Functions/Functions.php:2100
 msgid "great ×7 grandparent"
-msgstr ""
+msgstr "pra ×7 deda i baka"
 
 #: app/Functions/Functions.php:2239
 msgid "great ×7 grandson"
-msgstr ""
+msgstr "pra ×7 unuk"
 
 #: app/Functions/Functions.php:1684
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "pra ×7 stric"
 
 #: app/Functions/Functions.php:1688
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "pra ×7 ujak"
 
 #: app/Functions/Functions.php:1691
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr ""
+msgstr "pra ×7 stric/ujak"
 
 #: app/Functions/Functions.php:1368
 msgctxt "father’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog brata žena"
 
 #: app/Functions/Functions.php:1064
 msgctxt "father’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedova sestra"
 
 #: app/Functions/Functions.php:1374
 msgctxt "father’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "bakinog brata žena"
 
 #: app/Functions/Functions.php:1076
 msgctxt "father’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "bakina sestra"
 
 #: app/Functions/Functions.php:1380
 msgctxt "father’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog/bakinog brata žena"
 
 #: app/Functions/Functions.php:1088
 msgctxt "father’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedova/bakina sestra"
 
 #: app/Functions/Functions.php:1386
 msgctxt "mother’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog brata žena"
 
 #: app/Functions/Functions.php:1144
 msgctxt "mother’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedova sestra"
 
 #: app/Functions/Functions.php:1392
 msgctxt "mother’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "bakinog brata žena"
 
 #: app/Functions/Functions.php:1162
 msgctxt "mother’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "bakina sestra"
 
 #: app/Functions/Functions.php:1398
 msgctxt "mother’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog/bakinog brata žena"
 
 #: app/Functions/Functions.php:1174
 msgctxt "mother’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedova/bakina sestra"
 
 #: app/Functions/Functions.php:1404
 msgctxt "parent’s father’s brother’s wife"
@@ -18818,7 +18818,7 @@ msgstr ""
 #: app/Functions/Functions.php:1196
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "pradedova sestra"
 
 #: app/Functions/Functions.php:1410
 msgctxt "parent’s mother’s brother’s wife"
@@ -18828,7 +18828,7 @@ msgstr ""
 #: app/Functions/Functions.php:1208
 msgctxt "parent’s mother’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "bakina sestra"
 
 #: app/Functions/Functions.php:1416
 msgctxt "parent’s parent’s brother’s wife"
@@ -18838,7 +18838,7 @@ msgstr ""
 #: app/Functions/Functions.php:1220
 msgctxt "parent’s parent’s sister"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedova/bakina sestra"
 
 #: app/Functions/Functions.php:1062
 msgctxt "father’s father’s sibling"
@@ -18848,12 +18848,12 @@ msgstr ""
 #: app/Functions/Functions.php:1370
 msgctxt "father’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog brata/sestre supružnik"
 
 #: app/Functions/Functions.php:1074
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "bakini brat i sestra"
 
 #: app/Functions/Functions.php:1376
 msgctxt "father’s mother’s sibling’s spouse"
@@ -18863,7 +18863,7 @@ msgstr ""
 #: app/Functions/Functions.php:1086
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedini/bakini brat i sestra"
 
 #: app/Functions/Functions.php:1382
 msgctxt "father’s parent’s sibling’s spouse"
@@ -18873,7 +18873,7 @@ msgstr ""
 #: app/Functions/Functions.php:1142
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedini brat i sestra"
 
 #: app/Functions/Functions.php:1388
 msgctxt "mother’s father’s sibling’s spouse"
@@ -18883,7 +18883,7 @@ msgstr ""
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "bakini brat i sestra"
 
 #: app/Functions/Functions.php:1394
 msgctxt "mother’s mother’s sibling’s spouse"
@@ -18893,7 +18893,7 @@ msgstr ""
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedini/babini brat i sestra"
 
 #: app/Functions/Functions.php:1400
 msgctxt "mother’s parent’s sibling’s spouse"
@@ -18903,7 +18903,7 @@ msgstr ""
 #: app/Functions/Functions.php:1194
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "pradedovi/prababini brat i sestra"
 
 #: app/Functions/Functions.php:1406
 msgctxt "parent’s father’s sibling’s spouse"
@@ -18913,7 +18913,7 @@ msgstr ""
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "prabakin brat i sestra"
 
 #: app/Functions/Functions.php:1412
 msgctxt "parent’s mother’s sibling’s spouse"
@@ -18923,7 +18923,7 @@ msgstr ""
 #: app/Functions/Functions.php:1218
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedov/bakin brat i sestra"
 
 #: app/Functions/Functions.php:1418
 msgctxt "parent’s parent’s sibling’s spouse"
@@ -18933,47 +18933,47 @@ msgstr ""
 #: app/Functions/Functions.php:996
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1002
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1010
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1018
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1024
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1038
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1316
 msgctxt "son’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1322
 msgctxt "son’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:1330
 msgctxt "son’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "praunuče"
 
 #: app/Functions/Functions.php:998
 msgctxt "child’s child’s daughter"
@@ -19113,47 +19113,47 @@ msgstr "prabaka"
 #: app/Functions/Functions.php:1060
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1072
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1084
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1140
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1158
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1192
 msgctxt "parent’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1204
 msgctxt "parent’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1216
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "pradeda/prabaka"
 
 #: app/Functions/Functions.php:1000
 msgctxt "child’s child’s son"
@@ -19202,72 +19202,72 @@ msgstr "praunuk"
 
 #: app/Functions/Functions.php:1600
 msgid "great-great-aunt"
-msgstr ""
+msgstr "pra-pra-tetka"
 
 #: app/Functions/Functions.php:1603
 msgid "great-great-aunt/uncle"
-msgstr ""
+msgstr "pra-pra-tetka/teča"
 
 #: app/Functions/Functions.php:2191
 msgid "great-great-grandchild"
-msgstr ""
+msgstr "pra-praunuče"
 
 #: app/Functions/Functions.php:2188
 msgid "great-great-granddaughter"
-msgstr ""
+msgstr "čukununuka"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
-msgstr ""
+msgstr "čukundeda"
 
 #: app/Functions/Functions.php:2042
 msgid "great-great-grandmother"
-msgstr ""
+msgstr "čukunbaba"
 
 #: app/Functions/Functions.php:2045
 msgid "great-great-grandparent"
-msgstr ""
+msgstr "čukundeda/čukunbaba"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
-msgstr ""
+msgstr "čukununuk"
 
 #: app/Functions/Functions.php:1619
 msgid "great-great-great-aunt"
-msgstr ""
+msgstr "navrtetka"
 
 #: app/Functions/Functions.php:1622
 msgid "great-great-great-aunt/uncle"
-msgstr ""
+msgstr "navrtetka/teča"
 
 #: app/Functions/Functions.php:2202
 msgid "great-great-great-grandchild"
-msgstr ""
+msgstr "navrunuče"
 
 #: app/Functions/Functions.php:2199
 msgid "great-great-great-granddaughter"
-msgstr ""
+msgstr "navrunuka"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
-msgstr ""
+msgstr "navrdeda"
 
 #: app/Functions/Functions.php:2053
 msgid "great-great-great-grandmother"
-msgstr ""
+msgstr "navrbaba"
 
 #: app/Functions/Functions.php:2056
 msgid "great-great-great-grandparent"
-msgstr ""
+msgstr "navrdeda/navrbaba"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
-msgstr ""
+msgstr "navrunuk"
 
 #: app/Functions/Functions.php:1820
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "bratov čukununuk"
 
 #: app/Functions/Functions.php:1824
 msgctxt "(a man’s) sister’s great-great-grandson"
@@ -19527,7 +19527,7 @@ msgstr ""
 #: app/Functions/Functions.php:1236
 msgctxt "sibling’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1244
 msgctxt "sibling’s son’s child"
@@ -19612,62 +19612,62 @@ msgstr ""
 #: app/Functions/Functions.php:1054
 msgctxt "father’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedov brat"
 
 #: app/Functions/Functions.php:1372
 msgctxt "father’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedove sestre muž"
 
 #: app/Functions/Functions.php:1066
 msgctxt "father’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedove majke brat"
 
 #: app/Functions/Functions.php:1378
 msgctxt "father’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedove majčine sestre muž"
 
 #: app/Functions/Functions.php:1078
 msgctxt "father’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "očevih roditelja brat"
 
 #: app/Functions/Functions.php:1384
 msgctxt "father’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "očevih roditelja sestrin muž"
 
 #: app/Functions/Functions.php:1134
 msgctxt "mother’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "majčinog oca brat"
 
 #: app/Functions/Functions.php:1390
 msgctxt "mother’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedove sestre muž"
 
 #: app/Functions/Functions.php:1152
 msgctxt "mother’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "bakin brat"
 
 #: app/Functions/Functions.php:1396
 msgctxt "mother’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "bakine sestre muž"
 
 #: app/Functions/Functions.php:1164
 msgctxt "mother’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "majčinih roditelja brat"
 
 #: app/Functions/Functions.php:1402
 msgctxt "mother’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "majčinih roditelja sestrin muž"
 
 #: app/Functions/Functions.php:1186
 msgctxt "parent’s father’s brother"
@@ -19702,17 +19702,17 @@ msgstr ""
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:582
 msgid "half circle"
-msgstr ""
+msgstr "polukrug"
 
 #: app/Functions/Functions.php:812
 msgctxt "father’s son"
 msgid "half-brother"
-msgstr "polubrat"
+msgstr "polubrat (po ocu)"
 
 #: app/Functions/Functions.php:850
 msgctxt "mother’s son"
 msgid "half-brother"
-msgstr "polubrat"
+msgstr "polubrat (po majci)"
 
 #: app/Functions/Functions.php:868
 msgctxt "parent’s son"
@@ -19722,27 +19722,27 @@ msgstr "polubrat"
 #: app/Functions/Functions.php:798
 msgctxt "father’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "polubrat/polusestra"
 
 #: app/Functions/Functions.php:834
 msgctxt "mother’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "polubrat/polusestra"
 
 #: app/Functions/Functions.php:854
 msgctxt "parent’s child"
 msgid "half-sibling"
-msgstr ""
+msgstr "polubrat/polusestra"
 
 #: app/Functions/Functions.php:800
 msgctxt "father’s daughter"
 msgid "half-sister"
-msgstr "polusestra"
+msgstr "polusestra (po ocu)"
 
 #: app/Functions/Functions.php:836
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr "polusestra"
+msgstr "polusestra (po majci)"
 
 #: app/Functions/Functions.php:856
 msgctxt "parent’s daughter"
@@ -19757,7 +19757,7 @@ msgstr "ona"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: app/Functions/FunctionsEdit.php:560
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm ili hh:mm:ss"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
@@ -19777,7 +19777,7 @@ msgstr "on"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "domaćinstvu"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -19786,24 +19786,24 @@ msgstr "muž"
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:57 app/GedcomCode/GedcomCodeName.php:143
 msgid "immigration name"
-msgstr ""
+msgstr "imigracijsko ime"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:139
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "imigracijsko ime"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:134
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "imigracijsko ime"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:163
 msgid "import file"
-msgstr ""
+msgstr "uvezi datoteku"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
@@ -19813,36 +19813,36 @@ msgstr ""
 #: app/Date.php:354
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr "interpretirano %s (%s)"
+msgstr "Protumačeno %s (%s)"
 
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:53
 msgid "invert selection"
-msgstr ""
+msgstr "obrni selekciju"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:159
 msgctxt "GENITIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:253
 msgctxt "INSTRUMENTAL"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgctxt "LOCATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:112
 msgctxt "NOMINATIVE"
 msgid "jours complementaires"
-msgstr ""
+msgstr "jours complementaires"
 
 #. I18N: A button label, last page
 #: resources/views/admin/trees-preferences.phtml:588
@@ -19860,7 +19860,7 @@ msgstr "poslednjih"
 #: app/Module/PedigreeChartModule.php:387
 #: app/Module/PedigreeChartModule.php:395
 msgid "left"
-msgstr ""
+msgstr "levo"
 
 #. I18N: Layout option for lists of names
 #. I18N: An option in a list-box
@@ -19870,12 +19870,12 @@ msgstr ""
 #: app/Module/UpcomingAnniversariesModule.php:274
 #: app/Module/YahrzeitModule.php:257
 msgid "list"
-msgstr ""
+msgstr "lista"
 
 #: app/Http/RequestHandlers/MapDataImportAction.php:189
 #, php-format
 msgid "locations updated: %s, locations added: %s"
-msgstr ""
+msgstr "lokacije ažurirane: %s, dodate lokacije: %s"
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:59 app/GedcomCode/GedcomCodeName.php:148
@@ -19884,7 +19884,7 @@ msgstr "devojačko prezime"
 
 #: resources/views/admin/trees-privacy.phtml:141
 msgid "managers"
-msgstr ""
+msgstr "menadžeri"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:111
@@ -19898,12 +19898,12 @@ msgstr "sklapanje braka"
 #: resources/xml/reports/descendancy_report.xml:245
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "udata"
 
 #: resources/xml/reports/descendancy_report.xml:176
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "oženjen"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/Elements/NameType.php:61 app/GedcomCode/GedcomCodeName.php:162
@@ -19935,12 +19935,12 @@ msgstr "baka"
 #: app/Functions/Functions.php:844
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "deda/baka"
 
 #. I18N: A system where children take their mother’s surname
 #: app/SurnameTradition.php:88
 msgid "matrilineal"
-msgstr ""
+msgstr "po majčinoj liniji"
 
 #: resources/views/modules/recent_changes/config.phtml:25
 #: resources/views/modules/upcoming_events/config.phtml:25
@@ -19948,9 +19948,9 @@ msgstr ""
 #, php-format
 msgid "maximum %s day"
 msgid_plural "maximum %s days"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "maksimalno %s dan"
+msgstr[1] "maksimalno %s dana"
+msgstr[2] "maksimalno %s dana"
 
 #: resources/views/admin/trees-privacy.phtml:37
 #: resources/views/admin/trees-privacy.phtml:56
@@ -19958,12 +19958,12 @@ msgstr[2] ""
 #: resources/views/admin/trees-privacy.phtml:140
 #: resources/views/admin/trees-privacy.phtml:160
 msgid "members"
-msgstr ""
+msgstr "članovi"
 
 #. I18N: Name of a theme.
 #: app/Module/MinimalTheme.php:39
 msgid "minimal"
-msgstr ""
+msgstr "minimal"
 
 #: app/Functions/Functions.php:620
 msgid "mother"
@@ -19977,7 +19977,7 @@ msgstr "svekrva"
 #: app/Functions/Functions.php:904
 msgctxt "spouse’s mother"
 msgid "mother-in-law"
-msgstr "tašta"
+msgstr "svekrva/tašta"
 
 #: app/Functions/Functions.php:922
 msgctxt "wife’s mother"
@@ -19987,112 +19987,112 @@ msgstr "tašta"
 #: app/Functions/Functions.php:910
 msgctxt "spouse’s parent"
 msgid "mother/father-in-law"
-msgstr ""
+msgstr "roditelji supružnika"
 
 #: app/Functions/Functions.php:772
 msgctxt "brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "bratanac"
 
 #: app/Functions/Functions.php:1124
 msgctxt "husband’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "deverov sin"
 
 #: app/Functions/Functions.php:1120
 msgctxt "husband’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "deverov/zaovin sin"
 
 #: app/Functions/Functions.php:1122
 msgctxt "husband’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "zaovin sin"
 
 #: app/Functions/Functions.php:876
 msgctxt "sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "nećak"
 
 #: app/Functions/Functions.php:886
 msgctxt "sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "sestrić"
 
 #: app/Functions/Functions.php:1364
 msgctxt "wife’s brother’s son"
 msgid "nephew"
-msgstr ""
+msgstr "šurakov sin"
 
 #: app/Functions/Functions.php:1360
 msgctxt "wife’s sibling’s son"
 msgid "nephew"
-msgstr ""
+msgstr "šurakov/svastikin sin"
 
 #: app/Functions/Functions.php:1362
 msgctxt "wife’s sister’s son"
 msgid "nephew"
-msgstr ""
+msgstr "svastikin sin"
 
 #: app/Functions/Functions.php:962
 msgctxt "brother’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "muž bratanice"
 
 #: app/Functions/Functions.php:1240
 msgctxt "sibling’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "muž bratanice/sestričine"
 
 #: app/Functions/Functions.php:1282
 msgctxt "sisters’s daughter’s husband"
 msgid "nephew-in-law"
-msgstr ""
+msgstr "muž sestričine"
 
 #: app/Functions/Functions.php:768
 msgctxt "brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "bratanac"
 
 #: app/Functions/Functions.php:1112
 msgctxt "husband’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "deverovo dete"
 
 #: app/Functions/Functions.php:1108
 msgctxt "husband’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "deverovo/zaovino dete"
 
 #: app/Functions/Functions.php:1110
 msgctxt "husband’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "zaovino dete"
 
 #: app/Functions/Functions.php:872
 msgctxt "sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "nećak/nećaka"
 
 #: app/Functions/Functions.php:880
 msgctxt "sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "sestrić/sestrična"
 
 #: app/Functions/Functions.php:1352
 msgctxt "wife’s brother’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "šurakovo dete"
 
 #: app/Functions/Functions.php:1348
 msgctxt "wife’s sibling’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "šurakovo/svastikino dete"
 
 #: app/Functions/Functions.php:1350
 msgctxt "wife’s sister’s child"
 msgid "nephew/niece"
-msgstr ""
+msgstr "svastikino dete"
 
 #: app/Functions/FunctionsEdit.php:564
 msgid "never"
@@ -20120,77 +20120,77 @@ msgstr "sledeći"
 #: app/Functions/Functions.php:770
 msgctxt "brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "bratanica"
 
 #: app/Functions/Functions.php:1118
 msgctxt "husband’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "deverova ćerka"
 
 #: app/Functions/Functions.php:1114
 msgctxt "husband’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "deverova/zaovina ćerka"
 
 #: app/Functions/Functions.php:1116
 msgctxt "husband’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "zaovina ćerka"
 
 #: app/Functions/Functions.php:874
 msgctxt "sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "nećaka"
 
 #: app/Functions/Functions.php:882
 msgctxt "sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "sestričina"
 
 #: app/Functions/Functions.php:1358
 msgctxt "wife’s brother’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "šurakova ćerka"
 
 #: app/Functions/Functions.php:1354
 msgctxt "wife’s sibling’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "šurakova/svastikina ćerka"
 
 #: app/Functions/Functions.php:1356
 msgctxt "wife’s sister’s daughter"
 msgid "niece"
-msgstr ""
+msgstr "svastikina ćerka"
 
 #: app/Functions/Functions.php:988
 msgctxt "brother’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "žena bratanca"
 
 #: app/Functions/Functions.php:1250
 msgctxt "sibling’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "žena bratanca/sestrića"
 
 #: app/Functions/Functions.php:1314
 msgctxt "sisters’s son’s wife"
 msgid "niece-in-law"
-msgstr ""
+msgstr "žena sestrića"
 
 #: app/Functions/Functions.php:483
 msgid "ninth cousin"
-msgstr ""
+msgstr "rod u devetom kolenu"
 
 #: app/Functions/Functions.php:447
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "rođaka u devetom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:403
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr ""
+msgstr "rođak u devetom kolenu"
 
 #: app/Elements/OrdinanceProcessFlag.php:55 app/Functions/FunctionsEdit.php:152
 #: app/Functions/FunctionsEdit.php:186
@@ -20248,7 +20248,7 @@ msgstr "nema"
 
 #: resources/views/modules/statistics-chart/custom.phtml:126
 msgid "numbers"
-msgstr ""
+msgstr "brojevi"
 
 #: resources/xml/reports/ahnentafel_report.xml:56
 #: resources/xml/reports/bdm_report.xml:42
@@ -20264,30 +20264,30 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:38
 #: resources/xml/reports/relative_ext_report.xml:51
 msgid "of"
-msgstr ""
+msgstr "od"
 
 #: app/Functions/Functions.php:624
 msgid "parent"
-msgstr ""
+msgstr "roditelj"
 
 #: app/Functions/Functions.php:694
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/Functions/Functions.php:671
 msgctxt "FEMALE"
 msgid "partner"
-msgstr ""
+msgstr "partnerka"
 
 #: app/Functions/Functions.php:647
 msgctxt "MALE"
 msgid "partner"
-msgstr ""
+msgstr "partner"
 
 #: app/SurnameTradition.php:77
 msgctxt "Surname tradition"
 msgid "paternal"
-msgstr ""
+msgstr "po ocu"
 
 #: app/Functions/Functions.php:802
 msgctxt "father’s father"
@@ -20302,26 +20302,26 @@ msgstr "baka"
 #: app/Functions/Functions.php:806
 msgctxt "father’s parent"
 msgid "paternal grandparent"
-msgstr ""
+msgstr "deda/baka"
 
 #. I18N: A system where children take their father’s surname
 #: app/SurnameTradition.php:84
 msgid "patrilineal"
-msgstr ""
+msgstr "po očevoj liniji"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:126
 msgid "pending"
-msgstr ""
+msgstr "na čekanju"
 
 #: resources/views/modules/statistics-chart/custom.phtml:131
 msgid "percentage"
-msgstr ""
+msgstr "procenat"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "politički"
 
 #. I18N: A button label, previous page
 #: resources/views/individual-page.phtml:82
@@ -20343,17 +20343,17 @@ msgstr "prethodni"
 #. I18N: Quality of source information - GEDCOM tag “QUAY 3”
 #: app/Elements/CertaintyAssessment.php:52 app/GedcomCode/GedcomCodeQuay.php:49
 msgid "primary evidence"
-msgstr ""
+msgstr "primarni dokaz"
 
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "dokazan"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/Elements/CertaintyAssessment.php:50 app/GedcomCode/GedcomCodeQuay.php:55
 msgid "questionable evidence"
-msgstr ""
+msgstr "sumnjivi dokaz"
 
 #: app/Http/RequestHandlers/TreePreferencesPage.php:117
 #: resources/xml/reports/fact_sources.xml:6
@@ -20367,7 +20367,7 @@ msgstr "zapisi"
 #: resources/views/source-page.phtml:40 resources/views/submitter-page.phtml:33
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "odbaci"
 
 #: resources/views/family-page.phtml:24
 #: resources/views/gedcom-record-page.phtml:33
@@ -20376,17 +20376,17 @@ msgstr ""
 #: resources/views/source-page.phtml:34 resources/views/submitter-page.phtml:27
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr ""
+msgstr "odbaci"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:124
 msgid "rejected"
-msgstr ""
+msgstr "odbačeno"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "religiozno"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
@@ -20408,7 +20408,7 @@ msgstr "versko ime"
 #. I18N: A button label.
 #: resources/views/search-replace-page.phtml:53
 msgid "replace"
-msgstr ""
+msgstr "zameni"
 
 #. I18N: A button label.
 #: resources/views/admin/changes-log.phtml:106
@@ -20422,7 +20422,7 @@ msgstr "resetuj"
 #: app/Module/PedigreeChartModule.php:388
 #: app/Module/PedigreeChartModule.php:396
 msgid "right"
-msgstr ""
+msgstr "desno"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:40
@@ -20482,181 +20482,181 @@ msgstr "pretraži"
 #: app/Functions/Functions.php:565
 #, php-format
 msgid "second %s"
-msgstr ""
+msgstr "drugo %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:543
 #, php-format
 msgctxt "FEMALE"
 msgid "second %s"
-msgstr ""
+msgstr "druga %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:520
 #, php-format
 msgctxt "MALE"
 msgid "second %s"
-msgstr ""
+msgstr "drugi %s"
 
 #: app/Functions/Functions.php:469
 msgid "second cousin"
-msgstr ""
+msgstr "rod u drugom kolenu"
 
 #: app/Functions/Functions.php:433
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka u drugom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:382
 msgctxt "MALE"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak u drugom kolenu"
 
 #: app/Functions/Functions.php:1481
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1473
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1477
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1505
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1497
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1501
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1493
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1485
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1489
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1517
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1509
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1513
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1541
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1533
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1537
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1529
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1521
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1525
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1553
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1545
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1549
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1577
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1569
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1573
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1565
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #: app/Functions/Functions.php:1557
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr ""
+msgstr "rođaka"
 
 #: app/Functions/Functions.php:1561
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr ""
+msgstr "rođak"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php:51 app/GedcomCode/GedcomCodeQuay.php:52
 msgid "secondary evidence"
-msgstr ""
+msgstr "sekundarni dokaz"
 
 #. I18N: select all (of a list of options)
 #: resources/views/search-trees.phtml:46
 msgid "select all"
-msgstr ""
+msgstr "izaberi sve"
 
 #. I18N: select none (of a list of options)
 #: resources/views/search-trees.phtml:49
@@ -20665,26 +20665,26 @@ msgstr "izaberi ništa"
 
 #: app/Functions/Functions.php:617
 msgid "self"
-msgstr ""
+msgstr "ja"
 
 #: app/Functions/Functions.php:479
 msgid "seventh cousin"
-msgstr ""
+msgstr "rod u sedmom kolenu"
 
 #: app/Functions/Functions.php:443
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "rođaka u sedmom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:397
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr ""
+msgstr "rođak u sedmom kolenu"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "zajednička beleška"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
@@ -20723,7 +20723,7 @@ msgstr "prikaži grafikon"
 
 #: app/Functions/Functions.php:764
 msgid "sibling"
-msgstr ""
+msgstr "brat i sestra"
 
 #. I18N: A button label.
 #: resources/views/login-page.phtml:57
@@ -20743,57 +20743,57 @@ msgstr "sestra"
 #: app/Functions/Functions.php:774
 msgctxt "brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "snaja"
 
 #: app/Functions/Functions.php:994
 msgctxt "brother’s wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "snajina sestra"
 
 #: app/Functions/Functions.php:1104
 msgctxt "husband’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "deverova žena"
 
 #: app/Functions/Functions.php:828
 msgctxt "husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "zaova"
 
 #: app/Functions/Functions.php:1294
 msgctxt "sister’s husband’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "zetova sestra"
 
 #: app/Functions/Functions.php:906
 msgctxt "spouse’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "supružnikova sestra"
 
 #: app/Functions/Functions.php:1344
 msgctxt "wife’s brother’s wife"
 msgid "sister-in-law"
-msgstr ""
+msgstr "šurnaja"
 
 #: app/Functions/Functions.php:926
 msgctxt "wife’s sister"
 msgid "sister-in-law"
-msgstr ""
+msgstr "svastika"
 
 #: app/Functions/Functions.php:477
 msgid "sixth cousin"
-msgstr ""
+msgstr "rod u šetom kolenu"
 
 #: app/Functions/Functions.php:441
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "rođaka u šetom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:394
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr ""
+msgstr "rođak u šetom kolenu"
 
 #: app/Functions/Functions.php:697
 msgid "son"
@@ -20816,17 +20816,17 @@ msgstr "zet"
 #: app/Functions/Functions.php:1032
 msgctxt "daughter’s husband’s father"
 msgid "son-in-law’s father"
-msgstr ""
+msgstr "prijatelj"
 
 #: app/Functions/Functions.php:1034
 msgctxt "daughter’s husband’s mother"
 msgid "son-in-law’s mother"
-msgstr ""
+msgstr "prija"
 
 #: app/Functions/Functions.php:1036
 msgctxt "daughter’s husband’s parent"
 msgid "son-in-law’s parent"
-msgstr ""
+msgstr "prijatelj/prija"
 
 #: app/Functions/Functions.php:784
 msgctxt "child’s spouse"
@@ -20849,14 +20849,14 @@ msgstr "sortiraj po datumu"
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of birth"
-msgstr ""
+msgstr "sortiraj po datumu rođenja"
 
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/cemetery_report.xml:6
 #: resources/xml/reports/death_report.xml:9
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by date of death"
-msgstr ""
+msgstr "sortiraj po datumu smrti"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-families.phtml:42
@@ -20867,7 +20867,7 @@ msgstr "sortiraj po datumu venčanja"
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:270 app/Module/RecentChangesModule.php:268
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "sortiraj po datumu, najnoviji na vrhu"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:268 app/Module/RecentChangesModule.php:266
@@ -20897,7 +20897,7 @@ msgstr "supružnik"
 #. I18N: Secure Sockets Layer - a secure communications protocol
 #: app/Services/EmailService.php:236
 msgid "ssl"
-msgstr ""
+msgstr "SSL"
 
 #: app/Functions/Functions.php:1102
 msgctxt "father’s wife’s son"
@@ -20917,17 +20917,17 @@ msgstr "polubrat"
 #: app/Functions/Functions.php:818
 msgctxt "husband’s child"
 msgid "step-child"
-msgstr ""
+msgstr "pastorče"
 
 #: app/Functions/Functions.php:898
 msgctxt "spouse’s child"
 msgid "step-child"
-msgstr ""
+msgstr "pastorče"
 
 #: app/Functions/Functions.php:916
 msgctxt "wife’s child"
 msgid "step-child"
-msgstr ""
+msgstr "pastorče"
 
 #: app/Functions/Functions.php:820
 msgctxt "husband’s daughter"
@@ -20957,22 +20957,22 @@ msgstr "maćeha"
 #: app/Functions/Functions.php:870
 msgctxt "parent’s spouse"
 msgid "step-parent"
-msgstr ""
+msgstr "očuh/maćeha"
 
 #: app/Functions/Functions.php:1098
 msgctxt "father’s wife’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "polubrat/polusestra"
 
 #: app/Functions/Functions.php:1146
 msgctxt "mother’s husband’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "polubrat/polusestra"
 
 #: app/Functions/Functions.php:1224
 msgctxt "parent’s spouse’s child"
 msgid "step-sibling"
-msgstr ""
+msgstr "polubrat/polusestra"
 
 #: app/Functions/Functions.php:1100
 msgctxt "father’s wife’s daughter"
@@ -21023,18 +21023,18 @@ msgstr ""
 
 #: app/Functions/Functions.php:485
 msgid "tenth cousin"
-msgstr ""
+msgstr "rod u desetom kolenu"
 
 #: app/Functions/Functions.php:449
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "rođaka u desetom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:406
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr ""
+msgstr "rođak u desetom kolenu"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:24
@@ -21049,13 +21049,13 @@ msgstr "fascikla „/data” i datoteka „/data/config.ini.php” imaju podeše
 #. I18N: reflexive pronoun - gender neutral version of himself/herself
 #: app/Functions/Functions.php:194
 msgid "themself"
-msgstr ""
+msgstr "on/ona"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:568
 #, php-format
 msgid "third %s"
-msgstr "treći/a %s"
+msgstr "treći %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:546
@@ -21078,7 +21078,7 @@ msgstr "rod u trećem kolenu"
 #: app/Functions/Functions.php:435
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr "rod u trećem kolenu"
+msgstr "rođaka u trećem kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:385
@@ -21093,7 +21093,7 @@ msgstr "rod u trinaestom kolenu"
 #: app/Functions/Functions.php:455
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr "rod u trinaestom kolenu"
+msgstr "rođaka u trinaestom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:415
@@ -21109,7 +21109,7 @@ msgstr "tri četvrtine kruga"
 #. I18N: Transport Layer Security - a secure communications protocol
 #: app/Services/EmailService.php:238
 msgid "tls"
-msgstr ""
+msgstr "TLS"
 
 #. I18N: Gedcom TO dates
 #: app/Date.php:370
@@ -21124,7 +21124,7 @@ msgstr "rod u dvanaestom kolenu"
 #: app/Functions/Functions.php:453
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr "rod u dvanaestom kolenu"
+msgstr "rođaka u dvanaestom kolenu"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:412
@@ -21181,22 +21181,22 @@ msgstr "nepoznato"
 #: app/Module/InteractiveTree/TreeView.php:353
 msgctxt "unknown family"
 msgid "unknown"
-msgstr "nepoznato"
+msgstr "nepoznata"
 
 #: app/Module/RelationshipsChartModule.php:462
 msgid "unlimited"
-msgstr ""
+msgstr "neograničeno"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 0”
 #: app/Elements/CertaintyAssessment.php:49 app/GedcomCode/GedcomCodeQuay.php:58
 msgid "unreliable evidence"
-msgstr ""
+msgstr "nepouzdan dokaz"
 
 #: app/Module/PedigreeChartModule.php:389
 #: app/Module/PedigreeChartModule.php:397
 #: resources/views/edit/reorder-card-header.phtml:26
 msgid "up"
-msgstr ""
+msgstr "gore"
 
 #: resources/views/admin/trees-unconnected.phtml:31
 msgid "update"
@@ -21246,7 +21246,7 @@ msgstr "je rođen"
 
 #: app/Module/WebtreesTheme.php:38
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: app/Services/MessageService.php:127
 msgid "webtrees message"
@@ -21260,10 +21260,12 @@ msgstr "webtrees zahteva bazu podataka da tu čuva vaše geneaološke podatke."
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
 msgstr ""
+"webtrees treba da šalje e-mailove, kao što su podsetnici za lozinku i "
+"obaveštenja o web stranici."
 
 #: app/Services/MessageService.php:228
 msgid "webtrees sends emails with no storage"
-msgstr "webtrees šalje e-poštu bez čuvanja kopije"
+msgstr "webtrees šalje e-mailove bez čuvanja kopije"
 
 #: resources/views/help/iso-8859-1.phtml:8
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-Latin scripts. If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
@@ -21278,7 +21280,7 @@ msgstr "žena"
 #. I18N: Name of a theme.
 #: app/Module/XeneaTheme.php:39
 msgid "xenea"
-msgstr ""
+msgstr "xenea"
 
 #: resources/views/modules/timeline-chart/chart.phtml:141
 msgid "years"
@@ -21371,7 +21373,7 @@ msgstr ""
 #: app/Report/ReportParserGenerate.php:972
 #: app/Report/ReportParserGenerate.php:1054
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:42 app/Family.php:395
 #: app/Family.php:413 app/Individual.php:1131
@@ -21379,7 +21381,7 @@ msgstr ""
 #: app/Module/IndividualListModule.php:492
 msgctxt "Unknown given name"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #: app/Census/CensusColumnSurnameGivenNames.php:41 app/Family.php:395
 #: app/Family.php:413 app/Individual.php:1130
@@ -21388,7 +21390,7 @@ msgstr ""
 #: app/Module/IndividualListModule.php:508
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #, php-format
 #~ msgid "#%s"
