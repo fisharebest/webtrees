@@ -47,6 +47,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail;
+use Fisharebest\Webtrees\Http\RequestHandlers\AdsTxt;
+use Fisharebest\Webtrees\Http\RequestHandlers\AppAdsTxt;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder;
@@ -722,6 +724,8 @@ class WebRoutes
             $router->get(HomePage::class, '/');
 
             // Special files, either dynamic or need to be in the root folder.
+            $router->get(AdsTxt::class, '/ads.txt');
+            $router->get(AppAdsTxt::class, '/app-ads.txt');
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png');
             $router->get(BrowserconfigXml::class, '/browserconfig.xml');
             $router->get(FaviconIco::class, '/favicon.ico');
