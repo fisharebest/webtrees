@@ -117,7 +117,6 @@ class CustomTagsWebtrees extends AbstractModule implements ModuleConfigInterface
             'FAM:SLGS'         => [['_ASSO', '0:M', 'NOTE']],
             'FAM:SOUR:DATA'    => [['TEXT', '0:1']],
             'INDI'             => [['_UID', '0:M']],
-            'INDI:*:SOUR'      => [['NOTE', '0:0']],
             'INDI:*:SOUR:DATA' => [['TEXT', '0:1']],
             'INDI:ADOP'        => [['_ASSO', '0:M', 'NOTE']],
             'INDI:BAPL'        => [['_ASSO', '0:M', 'NOTE']],
