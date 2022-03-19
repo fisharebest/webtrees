@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-05 10:47+0000\n"
+"PO-Revision-Date: 2022-03-23 09:35+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -14557,7 +14557,7 @@ msgstr "De vereisten voor geheugen en processortijd zijn afhankelijk van het aan
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:92
 #: app/Http/RequestHandlers/MessageAction.php:105
 msgid "The message was not sent."
-msgstr "Bericht werd niet verstuurd."
+msgstr "Bericht werd niet verzonden."
 
 #: app/Http/RequestHandlers/BroadcastAction.php:82
 #: app/Http/RequestHandlers/ContactAction.php:154
