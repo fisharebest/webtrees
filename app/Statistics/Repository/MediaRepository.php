@@ -70,30 +70,6 @@ class MediaRepository implements MediaRepositoryInterface
     private const MEDIA_TYPE_UNKNOWN     = '';
 
     /**
-     * List of GEDCOM media types.
-     */
-    private const MEDIA_TYPES = [
-        self::MEDIA_TYPE_AUDIO,
-        self::MEDIA_TYPE_BOOK,
-        self::MEDIA_TYPE_CARD,
-        self::MEDIA_TYPE_CERTIFICATE,
-        self::MEDIA_TYPE_COAT,
-        self::MEDIA_TYPE_DOCUMENT,
-        self::MEDIA_TYPE_ELECTRONIC,
-        self::MEDIA_TYPE_FICHE,
-        self::MEDIA_TYPE_FILM,
-        self::MEDIA_TYPE_MAGAZINE,
-        self::MEDIA_TYPE_MANUSCRIPT,
-        self::MEDIA_TYPE_MAP,
-        self::MEDIA_TYPE_NEWSPAPER,
-        self::MEDIA_TYPE_PAINTING,
-        self::MEDIA_TYPE_PHOTO,
-        self::MEDIA_TYPE_TOMBSTONE,
-        self::MEDIA_TYPE_VIDEO,
-        self::MEDIA_TYPE_OTHER,
-    ];
-
-    /**
      * @param ColorService $color_service
      * @param Tree         $tree
      */
@@ -101,25 +77,6 @@ class MediaRepository implements MediaRepositoryInterface
     {
         $this->color_service = $color_service;
         $this->tree          = $tree;
-    }
-
-    /**
-     * Returns the number of media records of the given type.
-     *
-     * @param string $type The media type to query
-     *
-     * @return int
-     */
-    private function totalMediaTypeQuery(string $type): int
-    {
-        $query = DB::table('media_file')->where('m_file', '=', $this->tree->id());
-
-        if ($type !== self::MEDIA_TYPE_ALL) {
-            $query->where('source_media_type', '=', $type);
-        }
-
-        return $query->count();
-
     }
 
     /**
@@ -291,21 +248,6 @@ class MediaRepository implements MediaRepositoryInterface
     }
 
     /**
-     * Returns a sorted list of media types and their total counts.
-     *
-     * @return array<string,int>
-     */
-    private function getSortedMediaTypeList(): array
-    {
-        return DB::table('media_file')
-            ->where('m_file', '=', $this->tree->id())
-            ->groupBy('source_media_type')
-            ->pluck(new Expression('COUNT(*)'), 'source_media_type')
-            ->map(static fn (string $n): int => (int) $n)
-            ->all();
-    }
-
-    /**
      * @param string|null $color_from
      * @param string|null $color_to
      *
@@ -313,7 +255,12 @@ class MediaRepository implements MediaRepositoryInterface
      */
     public function chartMedia(string $color_from = null, string $color_to = null): string
     {
-        $media = $this->getSortedMediaTypeList();
+        $media = DB::table('media_file')
+            ->where('m_file', '=', $this->tree->id())
+            ->groupBy('source_media_type')
+            ->pluck(new Expression('COUNT(*)'), 'source_media_type')
+            ->map(static fn (string $n): int => (int) $n)
+            ->all();
 
         return (new ChartMedia($this->color_service))
             ->chartMedia($media, $color_from, $color_to);
