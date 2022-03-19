@@ -273,7 +273,7 @@ class PlaceRepository implements PlaceRepositoryInterface
         $countries = $this->statsPlaces();
 
         if ($countries === []) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         $top10 = [];

@@ -11,10 +11,10 @@ use Fisharebest\Webtrees\Statistics;
 ?>
 
 <div class="container pt-3">
-    <?= view('statistics/other/total-records', ['stats' => $stats]) ?>
-    <?= view('statistics/other/total-events', ['stats' => $stats]) ?>
-    <?= view('statistics/other/chart-objects', ['stats' => $stats]) ?>
-    <?= view('statistics/other/chart-sources', ['stats' => $stats]) ?>
-    <?= view('statistics/other/places', ['stats' => $stats]) ?>
-    <?= view('statistics/other/chart-distribution', ['stats' => $stats]) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/other-records')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/other-events')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/chart-objects')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/chart-sources')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/places')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/chart-distribution')) ?>
 </div>

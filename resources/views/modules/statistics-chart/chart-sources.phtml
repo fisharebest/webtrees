@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics;
 
-/** @var Statistics $stats */
 ?>
 
 <h4 class="border-bottom p-2 mb-4">
@@ -17,10 +15,10 @@ use Fisharebest\Webtrees\Statistics;
         <div class="card">
             <h5 class="card-header">
                 <?= I18N::translate('Individuals with sources') ?>
-                <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalIndisWithSources() ?></span>
+                <span class="badge bg-secondary rounded-pill float-end">#totalIndisWithSources#</span>
             </h5>
             <div class="card-body">
-                <?= $stats->chartIndisWithSources() ?>
+                #chartIndisWithSources#
             </div>
         </div>
     </div>
@@ -29,10 +27,10 @@ use Fisharebest\Webtrees\Statistics;
         <div class="card">
             <h5 class="card-header">
                 <?= I18N::translate('Families with sources') ?>
-                <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalFamsWithSources() ?></span>
+                <span class="badge bg-secondary rounded-pill float-end">#totalFamsWithSources#</span>
             </h5>
             <div class="card-body">
-                <?= $stats->chartFamsWithSources() ?>
+                #chartFamsWithSources#
             </div>
         </div>
     </div>
