@@ -385,7 +385,7 @@ class Individual extends GedcomRecord
         }
 
         if ($this->tree->getPreference('USE_SILHOUETTE')) {
-            return '<i class="icon-silhouette icon-silhouette-' . strtolower($this->sex()) . '"></i>';
+            return '<i class="icon-silhouette icon-silhouette-' . strtolower($this->sex()) . ' wt-icon-flip-rtl"></i>';
         }
 
         return '';
