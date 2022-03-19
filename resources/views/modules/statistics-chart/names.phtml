@@ -3,9 +3,7 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics;
 
-/** @var Statistics $stats */
 ?>
 
 <h4 class="border-bottom p-2 mb-4">
@@ -18,7 +16,7 @@ use Fisharebest\Webtrees\Statistics;
             <div class="card">
                 <h5 class="card-header border-bottom-0">
                     <?= I18N::translate('Total surnames') ?>
-                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalSurnames() ?></span>
+                    <span class="badge bg-secondary rounded-pill float-end">#totalSurnames#</span>
                 </h5>
             </div>
 
@@ -27,7 +25,7 @@ use Fisharebest\Webtrees\Statistics;
                     <?= I18N::translate('Top surnames') ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->chartCommonSurnames() ?>
+                    #chartCommonSurnames#
                 </div>
             </div>
         </div>
@@ -38,7 +36,7 @@ use Fisharebest\Webtrees\Statistics;
             <div class="card">
                 <h5 class="card-header border-bottom-0">
                     <?= I18N::translate('Total given names') ?>
-                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalGivennames() ?></span>
+                    <span class="badge bg-secondary rounded-pill float-end">#totalGivennames#</span>
                 </h5>
             </div>
 
@@ -47,7 +45,7 @@ use Fisharebest\Webtrees\Statistics;
                     <?= I18N::translate('Top given names') ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->chartCommonGiven() ?>
+                    #chartCommonGiven#
                 </div>
             </div>
         </div>

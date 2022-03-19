@@ -1268,33 +1268,33 @@ class Statistics implements
     }
 
     /**
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function averageLifespan(bool $show_years = false): string
+    public function averageLifespan(string $show_years = ''): string
     {
-        return $this->individual_repository->averageLifespan($show_years);
+        return $this->individual_repository->averageLifespan((bool) $show_years);
     }
 
     /**
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function averageLifespanFemale(bool $show_years = false): string
+    public function averageLifespanFemale(string $show_years = ''): string
     {
-        return $this->individual_repository->averageLifespanFemale($show_years);
+        return $this->individual_repository->averageLifespanFemale((bool) $show_years);
     }
 
     /**
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function averageLifespanMale(bool $show_years = false): string
+    public function averageLifespanMale(string $show_years = ''): string
     {
-        return $this->individual_repository->averageLifespanMale($show_years);
+        return $this->individual_repository->averageLifespanMale((bool) $show_years);
     }
 
     /**

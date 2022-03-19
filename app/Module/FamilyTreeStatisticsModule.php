@@ -177,9 +177,10 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
             'stat_avg_life'        => $stat_avg_life,
             'stat_most_chil'       => $stat_most_chil,
             'stat_avg_chil'        => $stat_avg_chil,
-            'stats'                => $statistics,
             'surnames'             => $surnames,
         ]);
+
+        $content = $statistics->embedTags($content);
 
         if ($context !== self::CONTEXT_EMBED) {
             return view('modules/block-template', [

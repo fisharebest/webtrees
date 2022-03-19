@@ -9,10 +9,10 @@ use Fisharebest\Webtrees\Statistics;
 ?>
 
 <div class="container pt-3">
-    <?= view('statistics/families/total-records', ['stats' => $stats]) ?>
-    <?= view('statistics/families/marriage-length', ['stats' => $stats]) ?>
-    <?= view('statistics/families/marriage-age', ['stats' => $stats]) ?>
-    <?= view('statistics/families/birth-age', ['stats' => $stats]) ?>
-    <?= view('statistics/families/children', ['stats' => $stats]) ?>
-    <?= view('statistics/families/age-difference', ['stats' => $stats]) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/family-totals')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/marriage-length')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/marriage-age')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/birth-age')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/children')) ?>
+    <?= $stats->embedTags(view('modules/statistics-chart/age-difference')) ?>
 </div>

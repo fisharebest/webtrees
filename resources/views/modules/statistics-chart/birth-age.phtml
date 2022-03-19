@@ -3,32 +3,21 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics;
 
-/** @var Statistics $stats */
 ?>
 
 <h4 class="border-bottom p-2 mb-4">
-    <?= I18N::translate('Age difference') ?>
+    <?= I18N::translate('Age at birth of child') ?>
 </h4>
 
 <div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
     <div class="col">
         <div class="card">
             <h5 class="card-header">
-                <?= I18N::translate('Age between siblings') ?>
-            </h5>
-            <?= $stats->topAgeBetweenSiblingsList() ?>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card">
-            <h5 class="card-header">
-                <?= I18N::translate('Greatest age between siblings') ?>
+                <?= I18N::translate('Youngest father') ?> — #youngestFatherAge:1#
             </h5>
             <div class="card-body">
-                <?= $stats->topAgeBetweenSiblingsFullName() ?>
+                #youngestFather#
             </div>
         </div>
     </div>
@@ -36,18 +25,33 @@ use Fisharebest\Webtrees\Statistics;
     <div class="col">
         <div class="card">
             <h5 class="card-header">
-                <?= I18N::translate('Age between husband and wife') ?>
+                <?= I18N::translate('Youngest mother') ?> — #youngestMotherAge:1#
             </h5>
-            <?= $stats->ageBetweenSpousesMFList() ?>
+            <div class="card-body">
+                #youngestMother#
+            </div>
         </div>
     </div>
 
     <div class="col">
         <div class="card">
             <h5 class="card-header">
-                <?= I18N::translate('Age between wife and husband') ?>
+                <?= I18N::translate('Oldest father') ?> — #oldestFatherAge:1#
             </h5>
-            <?= $stats->ageBetweenSpousesFMList() ?>
+            <div class="card-body">
+                #oldestFather#
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Oldest mother') ?> — #oldestMotherAge:1#
+            </h5>
+            <div class="card-body">
+                #oldestMother#
+            </div>
         </div>
     </div>
 </div>

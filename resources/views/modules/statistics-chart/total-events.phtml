@@ -3,15 +3,11 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics;
-
-/** @var Statistics $stats */
 
 ?>
 
 <h4 class="border-bottom p-2 mb-4">
-    <?= I18N::translate('Total families') ?>
-    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalFamilies() ?></span>
+    <?= I18N::translate('Events') ?>
 </h4>
 
 <div class="row mb-3 row-cols-1 row-cols-lg-2 g-3">
@@ -19,39 +15,39 @@ use Fisharebest\Webtrees\Statistics;
         <div class="d-grid gap-3">
             <div class="card">
                 <h5 class="card-header border-bottom-0">
-                    <?= I18N::translate('Total marriages') ?>
-                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalMarriages() ?></span>
+                    <?= I18N::translate('Total births') ?>
+                    <span class="badge bg-secondary rounded-pill float-end">#totalBirths#</span>
                 </h5>
             </div>
-
+            
             <div class="card">
                 <h5 class="card-header">
-                    <?= I18N::translate('Marriages by century') ?>
+                    <?= I18N::translate('Births by century') ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->statsMarr() ?>
+                    #statsBirth#
                 </div>
             </div>
-
+            
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 g-3">
                 <div class="col">
                     <div class="card">
                         <h5 class="card-header">
-                            <?= I18N::translate('Earliest marriage') ?>
+                            <?= I18N::translate('Earliest birth') ?>
                         </h5>
                         <div class="card-body">
-                            <?= $stats->firstMarriage() ?>
+                            #firstBirth#
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col">
                     <div class="card">
                         <h5 class="card-header">
-                            <?= I18N::translate('Latest marriage') ?>
+                            <?= I18N::translate('Latest birth') ?>
                         </h5>
                         <div class="card-body">
-                            <?= $stats->lastMarriage() ?>
+                            #lastBirth#
                         </div>
                     </div>
                 </div>
@@ -61,19 +57,19 @@ use Fisharebest\Webtrees\Statistics;
 
     <div class="col">
         <div class="d-grid gap-3">
-            <div class="card m-0">
+            <div class="card">
                 <h5 class="card-header border-bottom-0">
-                    <?= I18N::translate('Total divorces') ?>
-                    <span class="badge bg-secondary rounded-pill float-end"><?= $stats->totalDivorces() ?></span>
+                    <?= I18N::translate('Total deaths') ?>
+                    <span class="badge bg-secondary rounded-pill float-end">#totalDeaths#</span>
                 </h5>
             </div>
-
-            <div class="card m-0">
+            
+            <div class="card">
                 <h5 class="card-header">
-                    <?= I18N::translate('Divorces by century') ?>
+                    <?= I18N::translate('Deaths by century') ?>
                 </h5>
                 <div class="card-body">
-                    <?= $stats->statsDiv() ?>
+                    #statsDeath#
                 </div>
             </div>
 
@@ -81,10 +77,10 @@ use Fisharebest\Webtrees\Statistics;
                 <div class="col">
                     <div class="card">
                         <h5 class="card-header">
-                            <?= I18N::translate('Earliest divorce') ?>
+                            <?= I18N::translate('Earliest death') ?>
                         </h5>
                         <div class="card-body">
-                            <?= $stats->firstDivorce() ?>
+                            #firstDeath#
                         </div>
                     </div>
                 </div>
@@ -92,10 +88,10 @@ use Fisharebest\Webtrees\Statistics;
                 <div class="col">
                     <div class="card">
                         <h5 class="card-header">
-                            <?= I18N::translate('Latest divorce') ?>
+                            <?= I18N::translate('Latest death') ?>
                         </h5>
                         <div class="card-body">
-                            <?= $stats->lastDivorce() ?>
+                            #lastDeath#
                         </div>
                     </div>
                 </div>

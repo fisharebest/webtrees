@@ -3,13 +3,11 @@
 declare(strict_types=1);
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Statistics;
 
-/** @var Statistics $stats */
 ?>
 
 <h4 class="border-bottom p-2 mb-4">
-    <?= I18N::translate('Greatest age at death') ?>
+    <?= I18N::translate('Oldest living individuals') ?>
 </h4>
 
 <div class="row row-cols-1 row-cols-md-2 mb-3 g-3">
@@ -18,7 +16,7 @@ use Fisharebest\Webtrees\Statistics;
             <h5 class="card-header">
                 <?= I18N::translate('Males') ?>
             </h5>
-            <?= $stats->topTenOldestMaleList() ?>
+            #topTenOldestMaleListAlive#
         </div>
     </div>
 
@@ -27,7 +25,7 @@ use Fisharebest\Webtrees\Statistics;
             <h5 class="card-header">
                 <?= I18N::translate('Females') ?>
             </h5>
-            <?= $stats->topTenOldestFemaleList() ?>
+            #topTenOldestFemaleListAlive#
         </div>
     </div>
 </div>

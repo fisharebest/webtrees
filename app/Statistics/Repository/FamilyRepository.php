@@ -848,7 +848,7 @@ class FamilyRepository
             ->first();
 
         if ($row === null) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         $person = Registry::individualFactory()->make($row->id, $this->tree);
@@ -1498,7 +1498,7 @@ class FamilyRepository
             ->first();
 
         if ($row === null) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         $family = Registry::familyFactory()->make($row->famid, $this->tree);
