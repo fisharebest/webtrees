@@ -181,7 +181,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         return $this->viewResponse('modules/statistics-chart/individuals', [
             'show_oldest_living' => Auth::check(),
-            'stats'              => app(Statistics::class),
+            'statistics'         => app(Statistics::class),
         ]);
     }
 
@@ -195,7 +195,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/families', [
-            'stats' => app(Statistics::class),
+            'statistics' => app(Statistics::class),
         ]);
     }
 
@@ -209,7 +209,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/other', [
-            'stats' => app(Statistics::class),
+            'statistics' => app(Statistics::class),
         ]);
     }
 
