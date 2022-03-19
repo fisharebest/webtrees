@@ -48,6 +48,7 @@ use function preg_split;
 use function str_ends_with;
 use function str_repeat;
 use function str_replace;
+use function str_starts_with;
 use function substr_count;
 use function trim;
 
@@ -184,7 +185,10 @@ class GedcomEditService
      */
     public function insertMissingFactSubtags(Fact $fact, bool $include_hidden): string
     {
-        return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $fact->gedcom(), $include_hidden);
+        // Merge CONT records onto their parent line.
+        $gedcom = preg_replace('/\n\d CONT ?/', "\r", $fact->gedcom());
+
+        return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $gedcom, $include_hidden);
     }
 
     /**
@@ -197,7 +201,10 @@ class GedcomEditService
      */
     public function insertMissingRecordSubtags(GedcomRecord $record, bool $include_hidden): string
     {
-        $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $record->gedcom(), $include_hidden);
+        // Merge CONT records onto their parent line.
+        $gedcom = preg_replace('/\n\d CONT ?/', "\r", $record->gedcom());
+
+        $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $gedcom, $include_hidden);
 
         // NOTE records have data at level 0.  Move it to 1 CONC.
         if ($record instanceof Note) {
@@ -247,12 +254,6 @@ class GedcomEditService
         $next_level = substr_count($tag, ':') + 1;
         $factory    = Registry::elementFactory();
         $subtags    = $factory->make($tag)->subtags();
-
-        // Merge CONT records onto their parent line.
-        $gedcom = strtr($gedcom, [
-            "\n" . $next_level . ' CONT ' => "\r",
-            "\n" . $next_level . ' CONT' => "\r",
-        ]);
 
         // The first part is level N.  The remainder are level N+1.
         $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
