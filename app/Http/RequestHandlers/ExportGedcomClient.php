@@ -95,7 +95,7 @@ class ExportGedcomClient implements RequestHandlerInterface
         $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->string('privacy');
         $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->string('encoding');
         $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->string('line_endings');
-        $media_path   = Validator::parsedBody($request)->string('media_path');
+        $media_path   = Validator::parsedBody($request)->string('media_path', '');
 
         $access_levels = [
             'gedadmin' => Auth::PRIV_NONE,

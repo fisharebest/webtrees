@@ -61,7 +61,7 @@ use Fisharebest\Webtrees\Tree;
 
                     <?= view('admin/gedcom-export-options', ['tree' => $tree]) ?>
 
-                    <?php if ($tree->getPreference('GEDCOM_MEDIA_PATH')) : ?>
+                    <?php if ($tree->getPreference('GEDCOM_MEDIA_PATH') !== '') : ?>
                         <div class="row mb-3">
                             <label class="col-sm-3" for="media-path">
                                 <?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
