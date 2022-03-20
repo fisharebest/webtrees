@@ -907,6 +907,7 @@ document.addEventListener('click', (event) => {
 
   if ('wtConfirm' in target.dataset && !confirm(target.dataset.wtConfirm)) {
     event.preventDefault();
+    return;
   }
 
   if ('wtPostUrl' in target.dataset) {
