@@ -332,7 +332,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:DIVF'                 => new DivorceFiled(I18N::translate('Divorce filed')),
             'FAM:ENGA'                 => new Engagement(I18N::translate('Engagement')),
             'FAM:ENGA:DATE'            => new DateValue(I18N::translate('Date of engagement')),
-            'FAM:ENGA:PLACE'           => new PlaceName(I18N::translate('Place of engagement')),
+            'FAM:ENGA:PLAC'            => new PlaceName(I18N::translate('Place of engagement')),
             'FAM:EVEN'                 => new CustomFamilyEvent(I18N::translate('Event')),
             'FAM:EVEN:TYPE'            => new EventAttributeType(I18N::translate('Type of event')),
             'FAM:HUSB'                 => new XrefIndividual(I18N::translate('Husband')),
