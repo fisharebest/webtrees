@@ -38,7 +38,7 @@ foreach ($keys as $key) {
         $record = Registry::gedcomRecordFactory()->make($match[1], $tree);
 
         if ($record instanceof GedcomRecord && !$record->canShow()) {
-            $private_level = $levels[$key];
+            $private_level = min($private_level, $levels[$key]);
         }
     }
 
