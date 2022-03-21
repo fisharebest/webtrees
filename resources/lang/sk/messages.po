@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-03-16 15:26+0000\nPO-Revision-Date: 2022-03-20 22:00+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-03-16 15:26+0000\nPO-Revision-Date: 2022-03-23 09:36+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3495,7 +3495,7 @@ msgstr "Protokol zmien"
 #: resources/views/admin/gedcom-export-options.phtml:43
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "Kódovanie znakov"
 
 #: app/Factories/ElementFactory.php:376
 msgid "Character set"
