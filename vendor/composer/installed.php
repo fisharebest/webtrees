@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3771e18d9635e5d71ed2601ec707c1b411720b50',
+        'reference' => 'cafad011f5a88991fd0e5020f3415284919b6015',
         'name' => 'fisharebest/webtrees',
         'dev' => false,
     ),
@@ -142,7 +142,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3771e18d9635e5d71ed2601ec707c1b411720b50',
+            'reference' => 'cafad011f5a88991fd0e5020f3415284919b6015',
             'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(

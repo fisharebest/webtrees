@@ -98,6 +98,7 @@
         "webtrees:build": [
             "rm -Rf webtrees/",
             "git archive --prefix=webtrees/ HEAD --format=tar | tar -x",
+            "touch webtrees/vendor/egulias/email-validator/src/Validation/MessageIDValidation.php",
             "@composer webtrees:lang",
             "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
             "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
