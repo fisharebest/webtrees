@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
-
 use Illuminate\Database\Query\Expression;
 
 use function array_slice;
