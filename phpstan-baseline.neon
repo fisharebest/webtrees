@@ -356,7 +356,7 @@ parameters:
 			path: app/GedcomRecord.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between '\\-alpha\\.2' and '' will always evaluate to false\\.$#"
+			message: "#^Strict comparison using \\=\\=\\= between '\\-beta\\.1' and '' will always evaluate to false\\.$#"
 			count: 1
 			path: app/Helpers/functions.php
 
@@ -1294,6 +1294,11 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/FabTheme.php
+
+		-
+			message: "#^Cannot call method embedTags\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Module/FamilyTreeStatisticsModule.php
 
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
@@ -2561,6 +2566,11 @@ parameters:
 			path: app/Services/GedcomEditService.php
 
 		-
+			message: "#^Parameter \\#3 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomEditService\\:\\:insertMissingLevels\\(\\) expects string, string\\|null given\\.$#"
+			count: 2
+			path: app/Services/GedcomEditService.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomExportService\\:\\:convertMediaPath\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Services/GedcomExportService.php
@@ -2819,6 +2829,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
+
+		-
+			message: "#^Comparison operation \"\\<\\=\" between \\-1\\|0 and 0 is always true\\.$#"
+			count: 1
+			path: app/Services/ServerCheckService.php
 
 		-
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, string\\|false given\\.$#"
@@ -3179,6 +3194,11 @@ parameters:
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Statistics/Repository/LatestUserRepository.php
+
+		-
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 1
+			path: app/Statistics/Repository/MediaRepository.php
 
 		-
 			message: "#^Cannot access property \\$country on int\\|object\\.$#"
