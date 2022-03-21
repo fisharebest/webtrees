@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-21 02:37+0000\n"
+"PO-Revision-Date: 2022-03-23 09:36+0000\n"
 "Last-Translator: rui <xmlf@hotmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/zh_Hans/>\n"
@@ -511,7 +511,7 @@ msgstr "年龄 %s"
 #: app/Http/RequestHandlers/IndividualPage.php:179
 #, php-format
 msgid "(aged %s)"
-msgstr "(终年 %s)"
+msgstr "(时年 %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:359
@@ -520,7 +520,7 @@ msgstr "(终年 %s)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr "(终年 %s)"
+msgstr "(时年 %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Functions/FunctionsPrint.php:355
@@ -529,7 +529,7 @@ msgstr "(终年 %s)"
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr "(终年 %s)"
+msgstr "(时年 %s)"
 
 # I18N: %s is a number
 #. I18N: %s is a number
