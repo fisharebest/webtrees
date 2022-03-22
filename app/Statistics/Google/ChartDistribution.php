@@ -265,7 +265,7 @@ class ChartDistribution
             $country_code = $this->country_to_iso3166[$row->place] ?? null;
 
             if ($country_code !== null) {
-                $place_regex = '/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC.*[, ]' .preg_quote($row->place, '(?:\n|$)/i') . '\n/';
+                $place_regex = '/\n1 ' . $fact . '(?:\n[2-9].*)*\n2 PLAC.*[, ]' . preg_quote($row->place, '(?:\n|$)/i') . '\n/';
 
                 if (preg_match($place_regex, $row->gedcom) === 1) {
                     $totals[$country_code] = 1 + ($totals[$country_code] ?? 0);
