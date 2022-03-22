@@ -191,7 +191,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): Collection
+    protected function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): Collection
     {
         $SHOW_RELATIVES_EVENTS = $individual->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -235,7 +235,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return bool
      */
-    private function includeFact(Fact $fact, Date $min_date, Date $max_date): bool
+    protected function includeFact(Fact $fact, Date $min_date, Date $max_date): bool
     {
         $fact_date = $fact->date();
 
@@ -250,7 +250,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact
      */
-    private function convertEvent(Fact $fact, string $type): Fact
+    protected function convertEvent(Fact $fact, string $type): Fact
     {
         $gedcom = $fact->gedcom();
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);
@@ -281,7 +281,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function childFacts(Individual $person, Family $family, string $option, string $relation, Date $min_date, Date $max_date): Collection
+    protected function childFacts(Individual $person, Family $family, string $option, string $relation, Date $min_date, Date $max_date): Collection
     {
         $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -713,7 +713,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): Collection
+    protected function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): Collection
     {
         $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -880,7 +880,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function associateFacts(Individual $person): Collection
+    protected function associateFacts(Individual $person): Collection
     {
         $facts = [];
 
@@ -924,7 +924,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function historicFacts(Individual $individual): Collection
+    protected function historicFacts(Individual $individual): Collection
     {
         return $this->module_service->findByInterface(ModuleHistoricEventsInterface::class)
             ->map(static function (ModuleHistoricEventsInterface $module) use ($individual): Collection {
