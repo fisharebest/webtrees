@@ -791,19 +791,6 @@ class Statistics implements
     }
 
     /**
-     * @param string $what
-     * @param string $fact
-     * @param int    $parent
-     * @param bool   $country
-     *
-     * @return array<object>
-     */
-    public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
-    {
-        return $this->place_repository->statsPlaces($what, $fact, $parent, $country);
-    }
-
-    /**
      * @return string
      */
     public function totalPlaces(): string

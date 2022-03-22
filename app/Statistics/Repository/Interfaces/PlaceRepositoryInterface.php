@@ -25,18 +25,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
 interface PlaceRepositoryInterface
 {
     /**
-     * Places
-     *
-     * @param string $what
-     * @param string $fact
-     * @param int    $parent
-     * @param bool   $country
-     *
-     * @return array<int|object>
-     */
-    public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array;
-
-    /**
      * A list of common birth places.
      *
      * @return string

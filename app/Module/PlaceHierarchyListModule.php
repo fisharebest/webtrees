@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
@@ -31,19 +30,18 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_chunk;
 use function array_pop;
 use function array_reverse;
-use function assert;
 use function ceil;
 use function count;
 use function redirect;
@@ -78,7 +76,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     public function __construct(LeafletJsService $leaflet_js_service, ModuleService $module_service, SearchService $search_service)
     {
         $this->leaflet_js_service = $leaflet_js_service;
-        $this->module_service = $module_service;
+        $this->module_service     = $module_service;
         $this->search_service     = $search_service;
     }
 
@@ -294,14 +292,12 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 ];
             }
 
-            $statistics = app(Statistics::class);
+            $stats = [
+                Family::RECORD_TYPE     => $this->familyPlaceLinks($place)->count(),
+                Individual::RECORD_TYPE => $this->individualPlaceLinks($place)->count(),
+                Location::RECORD_TYPE   => $this->locationPlaceLinks($place)->count(),
+            ];
 
-            //Stats
-            $stats = [];
-            foreach ([Individual::RECORD_TYPE, Family::RECORD_TYPE, Location::RECORD_TYPE] as $type) {
-                $tmp          = $statistics->statsPlaces($type, '', $place->id());
-                $stats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
-            }
             $sidebar .= view('modules/place-hierarchy/sidebar', [
                 'showlink'      => $show_link,
                 'id'            => $id,
@@ -394,5 +390,68 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             'breadcrumbs' => $breadcrumbs,
             'current'     => $current,
         ];
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function placeLinks(Place $place): Builder
+    {
+        return DB::table('places')
+            ->join('placelinks', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'p_file')
+                    ->on('pl_p_id', '=', 'p_id');
+            })
+            ->where('p_file', '=', $place->tree()->id())
+            ->where('p_id', '=', $place->id());
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function familyPlaceLinks(Place $place): Builder
+    {
+        return $this->placeLinks($place)
+            ->join('families', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'f_file')
+                    ->on('pl_gid', '=', 'f_id');
+            });
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function individualPlaceLinks(Place $place): Builder
+    {
+        return $this->placeLinks($place)
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'i_file')
+                    ->on('pl_gid', '=', 'i_id');
+            });
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function locationPlaceLinks(Place $place): Builder
+    {
+        return $this->placeLinks($place)
+            ->join('other', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'o_file')
+                    ->on('pl_gid', '=', 'o_id');
+            })
+            ->where('o_type', '=', Location::RECORD_TYPE);
     }
 }

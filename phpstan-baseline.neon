@@ -1676,11 +1676,6 @@ parameters:
 			path: app/Module/PedigreeChartModule.php
 
 		-
-			message: "#^Cannot call method statsPlaces\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Module/PlaceHierarchyListModule.php
-
-		-
 			message: "#^Parameter \\#2 \\$size of function array_chunk expects int\\<1, max\\>, int given\\.$#"
 			count: 2
 			path: app/Module/PlaceHierarchyListModule.php
@@ -2926,11 +2921,6 @@ parameters:
 			path: app/Statistics.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsPlaces\\(\\) should return array\\<object\\> but returns array\\<int\\|object\\>\\.$#"
-			count: 1
-			path: app/Statistics.php
-
-		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$params of method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:totalGivennames\\(\\) expects string, array\\<string\\> given\\.$#"
 			count: 1
 			path: app/Statistics.php
@@ -2946,27 +2936,12 @@ parameters:
 			path: app/Statistics/Google/ChartAge.php
 
 		-
-			message: "#^Cannot access property \\$country on int\\|object\\.$#"
-			count: 4
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: "#^Cannot access property \\$tot on int\\|object\\.$#"
-			count: 4
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Google\\\\ChartDistribution\\:\\:createChartData\\(\\) should return array\\<array\\<string\\>\\> but returns array\\<int, array\\<int, array\\<string, int\\|string\\>\\|int\\|string\\>\\>\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
+			count: 2
 			path: app/Statistics/Google/ChartDistribution.php
 
 		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:where\\(\\) expects array\\|Closure\\|string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
-			count: 1
-			path: app/Statistics/Google/ChartDistribution.php
-
-		-
-			message: "#^Parameter \\#1 \\$twoLetterCode of method Fisharebest\\\\Webtrees\\\\Statistics\\\\Service\\\\CountryService\\:\\:mapTwoLetterToName\\(\\) expects string, int\\|string given\\.$#"
 			count: 1
 			path: app/Statistics/Google/ChartDistribution.php
 
@@ -3201,13 +3176,8 @@ parameters:
 			path: app/Statistics/Repository/MediaRepository.php
 
 		-
-			message: "#^Cannot access property \\$country on int\\|object\\.$#"
+			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 1
-			path: app/Statistics/Repository/PlaceRepository.php
-
-		-
-			message: "#^Cannot access property \\$tot on int\\|object\\.$#"
-			count: 2
 			path: app/Statistics/Repository/PlaceRepository.php
 
 		-
