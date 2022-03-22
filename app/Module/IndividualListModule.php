@@ -697,7 +697,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      *
      * @return array<array<int>>
      */
-    public function surnames(
+    protected function surnames(
         Tree $tree,
         string $surn,
         string $salpha,
@@ -759,7 +759,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      *
      * @return Collection<Individual>
      */
-    private function individuals(
+    protected function individuals(
         Tree $tree,
         string $surn,
         string $salpha,
@@ -845,7 +845,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      *
      * @return Collection<Family>
      */
-    private function families(Tree $tree, string $surn, string $salpha, string $galpha, bool $marnm, LocaleInterface $locale): Collection
+    protected function families(Tree $tree, string $surn, string $salpha, string $galpha, bool $marnm, LocaleInterface $locale): Collection
     {
         $families = new Collection();
 
