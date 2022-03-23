@@ -106,7 +106,7 @@
             "cp -r vendor/ webtrees/vendor/",
             "@composer webtrees:lang",
             "for FILE in resources/lang/*/messages.php; do cp $FILE webtrees/$FILE; done",
-            "zip --quiet --recurse-paths --move -9 webtrees.zip webtrees"
+            "zip --quiet --recurse-paths --move -9 webtrees-`git describe`.zip webtrees"
         ],
         "webtrees:pre-commit-hook": [
             "@composer webtrees:phpcs",
