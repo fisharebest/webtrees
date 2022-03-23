@@ -82,9 +82,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     protected const ROUTE_URL = '/tree/{tree}/fan-chart-{style}-{generations}-{width}/{xref}';
 
     // Chart styles
-    private const STYLE_HALF_CIRCLE          = '2';
-    private const STYLE_THREE_QUARTER_CIRCLE = '3';
-    private const STYLE_FULL_CIRCLE          = '4';
+    private const STYLE_HALF_CIRCLE          = 2;
+    private const STYLE_THREE_QUARTER_CIRCLE = 3;
+    private const STYLE_FULL_CIRCLE          = 4;
 
     // Defaults
     private const   DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
@@ -215,7 +215,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
         $xref        = Validator::attributes($request)->isXref()->string('xref');
-        $style       = Validator::attributes($request)->isInArrayKeys($this->styles())->string('style');
+        $style       = Validator::attributes($request)->isInArrayKeys($this->styles())->integer('style');
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
         $width       = Validator::attributes($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
@@ -225,7 +225,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
                 'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
-                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->string('style'),
+                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->integer('style'),
                 'width'       => Validator::parsedBody($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width'),
                 'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
              ]));
@@ -268,13 +268,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      * Generate both the HTML and PNG components of the fan chart
      *
      * @param Individual $individual
-     * @param string     $style
+     * @param int        $style
      * @param int        $width
      * @param int        $generations
      *
      * @return ResponseInterface
      */
-    protected function chart(Individual $individual, string $style, int $width, int $generations): ResponseInterface
+    protected function chart(Individual $individual, int $style, int $width, int $generations): ResponseInterface
     {
         $ancestors = $this->chart_service->sosaStradonitzAncestors($individual, $generations);
 

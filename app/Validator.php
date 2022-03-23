@@ -28,6 +28,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;
 use function ctype_digit;
+use function in_array;
 use function is_array;
 use function is_int;
 use function is_string;
@@ -120,7 +121,7 @@ class Validator
      */
     public function isInArray(array $values): self
     {
-        $this->rules[] = static fn (?string $value): ?string => $value !== null && in_array($value, $values, true) ? $value : null;
+        $this->rules[] = static fn (int|string|null $value): int|string|null => $value !== null && in_array($value, $values, true) ? $value : null;
 
         return $this;
     }
