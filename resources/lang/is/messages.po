@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-03-23 09:35+0000\n"
+"PO-Revision-Date: 2022-03-24 19:09+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -5853,7 +5853,7 @@ msgstr "Vinnuveitandi"
 
 #: app/Module/ClippingsCartModule.php:193
 msgid "Empty the clippings cart"
-msgstr "Karfa tóm"
+msgstr "Tæma körfu"
 
 #: resources/views/admin/components.phtml:40
 #: resources/views/admin/components.phtml:80
