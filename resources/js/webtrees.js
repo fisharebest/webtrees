@@ -631,9 +631,29 @@
       zoomoutTitle: config.i18n.zoomOut,
     });
 
+    const resetControl = L.Control.extend({
+      options: {
+        position: 'topleft',
+      },
+      onAdd: function (map) {
+        let container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+        container.onclick = resetCallback;
+        let reset = config.i18n.reset;
+        let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
+        anchor.setAttribute('aria-label', reset);
+        anchor.href = '#';
+        anchor.title = reset;
+        anchor.role = 'button';
+        L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
+        let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
+        image.alt = reset;
+
+        return container;
+      },
+    });
+
     const preferredLayer = localStorage.getItem('map_default_layer');
     let defaultLayer = null;
-    let systemDefaultLayer = null;
 
     for (let [, provider] of Object.entries(config.mapProviders)) {
       for (let [, child] of Object.entries(provider.children)) {
@@ -644,22 +664,19 @@
         } else {
           child.layer = L.tileLayer(child.url, child);
         }
-        if (provider.default && child.default) {
-          systemDefaultLayer = child.layer;
+
+        if (defaultLayer === null && provider.default && child.default) {
+          defaultLayer = child.layer;
         }
-        if (preferredLayer === child['name']) {
+        if (preferredLayer === child.name) {
           defaultLayer = child.layer;
         }
       }
     }
 
     if (defaultLayer === null) {
-      if (systemDefaultLayer === null) {
-        console.log('No default map layer defined - using the first one.');
-        defaultLayer = config.mapProviders[0].children[0].layer;
-      } else {
-        defaultLayer = systemDefaultLayer;
-      }
+      console.log('No default map layer defined - using the first one.');
+      defaultLayer = config.mapProviders[0].children[0].layer;
     }
 
     // Create the map with all controls and layers
