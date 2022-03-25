@@ -46,11 +46,17 @@ class MarkdownFactory implements MarkdownFactoryInterface
     protected const CONFIG_AUTOLINK = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
+        'renderer'           => [
+            'soft_break'     => "\n",
+        ],
     ];
 
     protected const CONFIG_MARKDOWN = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
+        'renderer'           => [
+            'soft_break'     => "\n",
+        ],
         'table'              => [
             'wrap' => [
                 'enabled'    => true,
