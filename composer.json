@@ -45,7 +45,7 @@
         "ext-xml": "*",
         "ext-zip": "*",
         "aura/router": "3.2.0",
-        "doctrine/dbal": "3.3.3",
+        "doctrine/dbal": "3.3.4",
         "ezyang/htmlpurifier": "4.14.0",
         "fig/http-message-util": "1.1.5",
         "fisharebest/algorithm": "1.6.0",
