@@ -2826,11 +2826,6 @@ parameters:
 			path: app/Services/SearchService.php
 
 		-
-			message: "#^Comparison operation \"\\<\\=\" between \\-1\\|0 and 0 is always true\\.$#"
-			count: 1
-			path: app/Services/ServerCheckService.php
-
-		-
 			message: "#^Parameter \\#1 \\$value of function e expects Illuminate\\\\Contracts\\\\Support\\\\DeferringDisplayableValue\\|Illuminate\\\\Contracts\\\\Support\\\\Htmlable\\|string\\|null, string\\|false given\\.$#"
 			count: 1
 			path: app/Services/ServerCheckService.php
