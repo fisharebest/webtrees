@@ -18,9 +18,6 @@
 .markdown {
     /* Pre-formatted text can break the layout. */
     overflow-wrap: break-word;
-
-    /* https://spec.commonmark.org/0.30/#soft-line-breaks - LF can be shown as either a space or a new-line */
-    white-space: pre-wrap;
 }
 
 .markdown p code {

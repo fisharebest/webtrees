@@ -45,6 +45,9 @@ class MarkdownFactory implements MarkdownFactoryInterface
     protected const CONFIG = [
         'allow_unsafe_links' => false,
         'html_input'         => EnvironmentInterface::HTML_INPUT_ESCAPE,
+        'renderer'           => [
+            'soft_break'     => "\n",
+        ],
     ];
 
     /**
