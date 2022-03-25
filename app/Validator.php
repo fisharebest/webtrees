@@ -223,7 +223,7 @@ class Validator
     {
         $value = $this->parameters[$parameter] ?? null;
 
-        if (in_array($value, ['1', true], true)) {
+        if (in_array($value, ['1', 'on', true], true)) {
             return true;
         }
 

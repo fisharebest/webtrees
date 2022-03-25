@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -60,10 +61,8 @@ abstract class AbstractModuleComponentAction implements RequestHandlerInterface
     {
         $modules = $this->module_service->findByInterface($interface, true);
 
-        $params = (array) $request->getParsedBody();
-
         foreach ($modules as $module) {
-            $enabled = (bool) ($params['status-' . $module->name()] ?? false);
+            $enabled = Validator::parsedBody($request)->boolean('status-' . $module->name(), false);
 
             if ($enabled !== $module->isEnabled()) {
                 DB::table('module')
