@@ -693,18 +693,21 @@ class GedcomRecord
         $chan = $this->facts(['CHAN'])->first();
 
         if ($chan instanceof Fact) {
-            // The record does have a CHAN event
+            // The record has a CHAN event.
             $d = $chan->date()->minimumDate()->format('%Y-%m-%d');
 
-            if (preg_match('/\n3 TIME( (\d\d):(\d\d):(\d\d))/', $chan->gedcom(), $match)) {
-                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
-            }
+            if ($d !== '') {
+                // The CHAN event has a valid DATE.
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d):([0-5]\d))/', $chan->gedcom(), $match)) {
+                    return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
+                }
 
-            if (preg_match('/\n3 TIME ((\d\d):(\d\d))/', $chan->gedcom(), $match)) {
-                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
-            }
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d))/', $chan->gedcom(), $match)) {
+                    return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
+                }
 
-            return Registry::timestampFactory()->fromString($d, 'Y-m-d');
+                return Registry::timestampFactory()->fromString($d, 'Y-m-d');
+            }
         }
 
         // The record does not have a CHAN event
