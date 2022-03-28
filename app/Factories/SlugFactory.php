@@ -49,9 +49,9 @@ class SlugFactory implements SlugFactoryInterface
     /**
      * @param GedcomRecord $record
      *
-     * @return string|null
+     * @return string
      */
-    public function make(GedcomRecord $record): ?string
+    public function make(GedcomRecord $record): string
     {
         $slug = strip_tags($record->fullName());
 
@@ -59,17 +59,12 @@ class SlugFactory implements SlugFactoryInterface
             $slug = $this->transliterator->transliterate($slug);
 
             if ($slug === false) {
-                return null;
+                return '';
             }
         }
 
         $slug = preg_replace('/[^A-Za-z0-9]+/', '-', $slug);
-        $slug = trim($slug, '-');
 
-        if ($slug !== '') {
-            return $slug;
-        }
-
-        return null;
+        return trim($slug, '-');
     }
 }

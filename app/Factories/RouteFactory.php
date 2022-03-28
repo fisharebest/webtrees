@@ -30,6 +30,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function array_filter;
+use function array_map;
 use function assert;
 use function intval;
 use function is_bool;
@@ -69,6 +70,9 @@ class RouteFactory implements RouteFactoryInterface
         // webtrees uses http_build_query() to generate URLs - which maps false onto "0".
         // Aura uses rawurlencode(), which maps false onto "" - which does not work as an aura URL parameter.
         $parameters = array_map(static fn ($var) => is_bool($var) ? (int) $var : $var, $parameters);
+
+        // Aura doesn't work with empty/optional parameters.
+        $parameters = array_map(static fn ($var) => $var === '' ? null : $var, $parameters);
 
         $url = $router_container->getGenerator()->generate($route_name, $parameters);
 

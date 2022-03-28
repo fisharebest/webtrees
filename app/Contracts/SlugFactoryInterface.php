@@ -29,7 +29,7 @@ interface SlugFactoryInterface
     /**
      * @param GedcomRecord $record
      *
-     * @return string|null
+     * @return string
      */
-    public function make(GedcomRecord $record): ?string;
+    public function make(GedcomRecord $record): string;
 }
