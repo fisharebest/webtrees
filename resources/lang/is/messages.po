@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-03-24 19:09+0000\n"
+"PO-Revision-Date: 2022-03-29 00:50+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -3154,131 +3154,131 @@ msgstr "Búlgaría"
 #: resources/xml/reports/family_group_report.xml:1049
 #: resources/xml/reports/missing_facts_report.xml:25
 msgid "Burial"
-msgstr "Jarðaför"
+msgstr "Jarðsetning"
 
 #: app/Module/IndividualFactsTabModule.php:466
 msgid "Burial of a brother"
-msgstr "Jarðaför bróður"
+msgstr "Jarðsetning bróður"
 
 #: app/Module/IndividualFactsTabModule.php:450
 msgid "Burial of a child"
-msgstr "Jarðaför barns"
+msgstr "Jarðsetning barns"
 
 #: app/Module/IndividualFactsTabModule.php:449
 msgid "Burial of a daughter"
-msgstr "Jarðaför dóttur"
+msgstr "Jarðsetning dóttur"
 
 #: app/Module/IndividualFactsTabModule.php:744
 msgid "Burial of a father"
-msgstr "Jarðaför föður"
+msgstr "Jarðsetning föður"
 
 #: app/Module/IndividualFactsTabModule.php:504
 #: app/Module/IndividualFactsTabModule.php:522
 #: app/Module/IndividualFactsTabModule.php:540
 msgid "Burial of a grandchild"
-msgstr "Jarðaför barnabarns"
+msgstr "Jarðsetning barnabarns"
 
 #: app/Module/IndividualFactsTabModule.php:503
 msgid "Burial of a granddaughter"
-msgstr "Jarðaför sonardóttur/dótturdóttur"
+msgstr "Jarðsetning sonardóttur/dótturdóttur"
 
 #: app/Module/IndividualFactsTabModule.php:521
 msgctxt "daughter’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Jarðaför dótturdóttur"
+msgstr "Jarðsetning dótturdóttur"
 
 #: app/Module/IndividualFactsTabModule.php:539
 msgctxt "son’s daughter"
 msgid "Burial of a granddaughter"
-msgstr "Jarðaför sonardóttur"
+msgstr "Jarðsetning sonardóttur"
 
 #: app/Module/IndividualFactsTabModule.php:762
 msgid "Burial of a grandfather"
-msgstr "Jarðaför afa"
+msgstr "Jarðsetning afa"
 
 #: app/Module/IndividualFactsTabModule.php:763
 msgid "Burial of a grandmother"
-msgstr "Jarðaför ömmu"
+msgstr "Jarðsetning ömmu"
 
 #: app/Module/IndividualFactsTabModule.php:764
 #: app/Module/IndividualFactsTabModule.php:782
 #: app/Module/IndividualFactsTabModule.php:800
 msgid "Burial of a grandparent"
-msgstr "Jarðaför afa og ömmu"
+msgstr "Jarðsetning afa og ömmu"
 
 #: app/Module/IndividualFactsTabModule.php:502
 msgid "Burial of a grandson"
-msgstr "Jarðaför sonarsonar/dóttursonar"
+msgstr "Jarðsetning sonarsonar/dóttursonar"
 
 #: app/Module/IndividualFactsTabModule.php:520
 msgctxt "daughter’s son"
 msgid "Burial of a grandson"
-msgstr "Jarðaför dóttursonar"
+msgstr "Jarðsetning dóttursonar"
 
 #: app/Module/IndividualFactsTabModule.php:538
 msgctxt "son’s son"
 msgid "Burial of a grandson"
-msgstr "Jarðaför sonarsonar"
+msgstr "Jarðsetning sonarsonar"
 
 #: app/Module/IndividualFactsTabModule.php:484
 msgid "Burial of a half-brother"
-msgstr "Jarðaför hálfbróðurs"
+msgstr "Jarðsetning hálfbróðurs"
 
 #: app/Module/IndividualFactsTabModule.php:486
 msgid "Burial of a half-sibling"
-msgstr "Jarðaför hálfsystkinis"
+msgstr "Jarðsetning hálfsystkinis"
 
 #: app/Module/IndividualFactsTabModule.php:485
 msgid "Burial of a half-sister"
-msgstr "Jarðaför hálfsysturs"
+msgstr "Jarðsetning hálfsysturs"
 
 #: app/Module/IndividualFactsTabModule.php:263
 msgid "Burial of a husband"
-msgstr "Jarðaför eiginmanns"
+msgstr "Jarðsetning eiginmanns"
 
 #: app/Module/IndividualFactsTabModule.php:780
 msgid "Burial of a maternal grandfather"
-msgstr "Jarðaför móðurafa"
+msgstr "Jarðsetning móðurafa"
 
 #: app/Module/IndividualFactsTabModule.php:781
 msgid "Burial of a maternal grandmother"
-msgstr "Jarðaför móðurömmu"
+msgstr "Jarðsetning móðurömmu"
 
 #: app/Module/IndividualFactsTabModule.php:745
 msgid "Burial of a mother"
-msgstr "Jarðaför móður"
+msgstr "Jarðsetning móður"
 
 #: app/Module/IndividualFactsTabModule.php:746
 msgid "Burial of a parent"
-msgstr "Jarðaför foreldra"
+msgstr "Jarðsetning foreldra"
 
 #: app/Module/IndividualFactsTabModule.php:798
 msgid "Burial of a paternal grandfather"
-msgstr "Jarðaför föðurafa"
+msgstr "Jarðsetning föðurafa"
 
 #: app/Module/IndividualFactsTabModule.php:799
 msgid "Burial of a paternal grandmother"
-msgstr "Jarðaför föðurömmu"
+msgstr "Jarðsetning föðurömmu"
 
 #: app/Module/IndividualFactsTabModule.php:468
 msgid "Burial of a sibling"
-msgstr "Jarðaför systkinis"
+msgstr "Jarðsetning systkinis"
 
 #: app/Module/IndividualFactsTabModule.php:467
 msgid "Burial of a sister"
-msgstr "Jarðaför systur"
+msgstr "Jarðsetning systur"
 
 #: app/Module/IndividualFactsTabModule.php:448
 msgid "Burial of a son"
-msgstr "Jarðaför sonar"
+msgstr "Jarðsetning sonar"
 
 #: app/Module/IndividualFactsTabModule.php:265
 msgid "Burial of a spouse"
-msgstr "Jarðaför maka"
+msgstr "Jarðsetning maka"
 
 #: app/Module/IndividualFactsTabModule.php:264
 msgid "Burial of a wife"
-msgstr "Jarðaför eiginkonu"
+msgstr "Jarðsetning eiginkonu"
 
 #: resources/xml/reports/cemetery_report.xml:5
 msgid "Burial place contains"
@@ -7731,8 +7731,8 @@ msgstr "Ef smámyndin er sú sama og upphaflega myndin, þá er þess ekki lengu
 #: resources/views/admin/trees-privacy.phtml:85
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”. Children’s birth dates are considered to be such events for this purpose."
 msgstr ""
-"Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðaför eða "
-"líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera "
+"Ef þessi einstaklingur hefur einhverja atburði aðra en andlát, jarðsetningu "
+"eða líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera "
 "„lifandi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum "
 "tilgangi."
 
@@ -17032,7 +17032,11 @@ msgstr ""
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:69
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Þú getur flýtt fyrir friðhelgis útreikningum með því að bæta við færslu um andlát við einstaklinga þar sem draga má ályktun um andlát þeirra frá öðrum dagsetningum en sem ekki eru með færslur um andlát, jarðaför, líkbrennslu o.s.frv."
+msgstr ""
+"Þú getur flýtt fyrir friðhelgis útreikningum með því að bæta við færslu um "
+"andlát við einstaklinga þar sem draga má ályktun um andlát þeirra frá öðrum "
+"dagsetningum en sem ekki eru með færslur um andlát, jarðsetningu, "
+"líkbrennslu o.s.frv."
 
 #: app/Http/RequestHandlers/LoginAction.php:112
 msgid "You cannot sign in because your browser does not accept cookies."
