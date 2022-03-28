@@ -24,7 +24,6 @@ use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
 use Fisharebest\Webtrees\Html;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -32,7 +31,6 @@ use function app;
 use function array_filter;
 use function array_map;
 use function assert;
-use function intval;
 use function is_bool;
 use function parse_url;
 use function strlen;

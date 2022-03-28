@@ -199,7 +199,6 @@ use Fisharebest\Webtrees\I18N;
 
 use function array_merge;
 use function preg_match;
-use function strpos;
 
 /**
  * Make a GEDCOM element.

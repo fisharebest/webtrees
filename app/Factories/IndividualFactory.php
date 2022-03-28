@@ -30,7 +30,7 @@ use function assert;
 use function preg_match;
 
 /**
- * Make a Individual object.
+ * Make an Individual object.
  */
 class IndividualFactory extends AbstractGedcomRecordFactory implements IndividualFactoryInterface
 {
