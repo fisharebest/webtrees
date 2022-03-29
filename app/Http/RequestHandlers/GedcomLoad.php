@@ -97,11 +97,14 @@ class GedcomLoad implements RequestHandlerInterface
 
             // Finished?
             if ($import_offset === $import_total) {
-                $tree->setPreference('imported', '1');
+                if ($tree->getPreference('imported') !== '1') {
+                    return $this->viewResponse('admin/import-fail', [
+                        'error' => I18N::translate('Invalid GEDCOM file - no trailer record found.'),
+                        'tree'  => $tree,
+                    ]);
+                }
 
-                $html = view('admin/import-complete', ['tree' => $tree]);
-
-                return response($html);
+                return $this->viewResponse('admin/import-complete', ['tree' => $tree]);
             }
 
             // Calculate progress so far

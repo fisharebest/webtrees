@@ -302,6 +302,7 @@ class GedcomImportService
             $type = 'HEAD';
             $xref = 'HEAD'; // For records without an XREF, use the type as a pseudo XREF.
         } elseif (str_starts_with($gedrec, '0 TRLR')) {
+            $tree->setPreference('imported', '1');
             $type = 'TRLR';
             $xref = 'TRLR'; // For records without an XREF, use the type as a pseudo XREF.
         } else {
