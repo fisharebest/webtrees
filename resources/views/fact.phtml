@@ -100,7 +100,7 @@ if ($tag === 'MARR') {
                 <?php if ($parent !== $record) : ?>
                     <div class="wt-fact-record">
                         <?php if ($parent instanceof Family) : ?>
-                            <?php foreach ($parent->spouses()->filter(static fn($individual): bool => $individual !== $record) as $spouse) : ?>
+                            <?php foreach ($parent->spouses()->filter(static fn ($individual): bool => $individual !== $record) as $spouse) : ?>
                                 <a href="<?= e($spouse->url()) ?>"><?= $spouse->fullName() ?></a> —
                             <?php endforeach ?>
                             <a href="<?= e($parent->url()) ?>"><?= I18N::translate('View this family') ?></a>

@@ -210,7 +210,7 @@ class PlaceRepository implements PlaceRepositoryInterface
             ->orderByDesc(new Expression('COUNT(*)'))
             ->orderBy('p_place')
             ->pluck(new Expression('COUNT(*)'), 'p_place')
-            ->map(static fn(string $col): int => (int) $col)
+            ->map(static fn (string $col): int => (int) $col)
             ->all();
 
         if ($countries === []) {
