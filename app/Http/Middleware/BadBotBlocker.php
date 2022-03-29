@@ -63,6 +63,7 @@ class BadBotBlocker implements MiddlewareInterface
         'AspiegelBot',
         'Barkrowler',
         'BLEXBot',
+        'DataForSEO',
         'DotBot',
         'Grapeshot',
         'ia_archiver',
