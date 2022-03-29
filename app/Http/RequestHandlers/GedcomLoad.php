@@ -35,12 +35,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function preg_split;
-use function response;
 use function str_replace;
 use function str_starts_with;
 use function strlen;
 use function substr;
-use function view;
 
 /**
  * Load a chunk of GEDCOM data.
@@ -54,23 +52,18 @@ class GedcomLoad implements RequestHandlerInterface
 
     private TimeoutService $timeout_service;
 
-    private TreeService $tree_service;
-
     /**
      * GedcomLoad constructor.
      *
      * @param GedcomImportService $gedcom_import_service
      * @param TimeoutService      $timeout_service
-     * @param TreeService         $tree_service
      */
     public function __construct(
         GedcomImportService $gedcom_import_service,
-        TimeoutService $timeout_service,
-        TreeService $tree_service
+        TimeoutService $timeout_service
     ) {
         $this->gedcom_import_service = $gedcom_import_service;
         $this->timeout_service       = $timeout_service;
-        $this->tree_service          = $tree_service;
     }
 
     /**
@@ -107,6 +100,46 @@ class GedcomLoad implements RequestHandlerInterface
                 return $this->viewResponse('admin/import-complete', ['tree' => $tree]);
             }
 
+            // If we are loading the first (header) record, then delete old data.
+            if ($import_offset === 0) {
+                $queries = [
+                    'individuals' => DB::table('individuals')->where('i_file', '=', $tree->id()),
+                    'families'    => DB::table('families')->where('f_file', '=', $tree->id()),
+                    'sources'     => DB::table('sources')->where('s_file', '=', $tree->id()),
+                    'other'       => DB::table('other')->where('o_file', '=', $tree->id()),
+                    'places'      => DB::table('places')->where('p_file', '=', $tree->id()),
+                    'placelinks'  => DB::table('placelinks')->where('pl_file', '=', $tree->id()),
+                    'name'        => DB::table('name')->where('n_file', '=', $tree->id()),
+                    'dates'       => DB::table('dates')->where('d_file', '=', $tree->id()),
+                    'change'      => DB::table('change')->where('gedcom_id', '=', $tree->id()),
+                ];
+
+                if ($tree->getPreference('keep_media') === '1') {
+                    $queries['link'] = DB::table('link')->where('l_file', '=', $tree->id())
+                        ->where('l_type', '<>', 'OBJE');
+                } else {
+                    $queries['link']       = DB::table('link')->where('l_file', '=', $tree->id());
+                    $queries['media_file'] = DB::table('media_file')->where('m_file', '=', $tree->id());
+                    $queries['media']      = DB::table('media')->where('m_file', '=', $tree->id());
+                }
+
+                foreach ($queries as $table => $query) {
+                    // take() and delete() together don't return the number of delete rows.
+                    while ((clone $query)->count() > 0) {
+                        (clone $query)->take(1000)->delete();
+
+                        if ($this->timeout_service->isTimeLimitUp()) {
+                            return $this->viewResponse('admin/import-progress', [
+                                'errors'   => '',
+                                'progress' => 0.0,
+                                'status'   => I18N::translate('Deleting…') . ' ' . $table,
+                                'tree'     => $tree,
+                            ]);
+                        }
+                    }
+                }
+            }
+
             // Calculate progress so far
             $progress = $import_offset / $import_total;
 
@@ -140,10 +173,7 @@ class GedcomLoad implements RequestHandlerInterface
                     break;
                 }
 
-                // If we are loading the first (header) record, then delete old data.
                 if ($first_time) {
-                    $this->tree_service->deleteGenealogyData($tree, (bool) $tree->getPreference('keep_media'));
-
                     // Remove any byte-order-mark
                     if (str_starts_with($data->chunk_data, UTF8::BYTE_ORDER_MARK)) {
                         $data->chunk_data = substr($data->chunk_data, strlen(UTF8::BYTE_ORDER_MARK));
@@ -182,6 +212,7 @@ class GedcomLoad implements RequestHandlerInterface
             return $this->viewResponse('admin/import-progress', [
                 'errors'   => $errors,
                 'progress' => $progress,
+                'status'   => '',
                 'tree'     => $tree,
             ]);
         } catch (Exception $ex) {
@@ -192,6 +223,7 @@ class GedcomLoad implements RequestHandlerInterface
                 return $this->viewResponse('admin/import-progress', [
                     'errors'   => '',
                     'progress' => $progress ?? 0.0,
+                    'status'   => $ex->getMessage(),
                     'tree'     => $tree,
                 ]);
             }

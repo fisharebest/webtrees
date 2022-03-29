@@ -292,9 +292,18 @@ class TreeService
         }
 
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
-
-        $this->deleteGenealogyData($tree, false);
-
+        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
+        DB::table('families')->where('f_file', '=', $tree->id())->delete();
+        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
+        DB::table('other')->where('o_file', '=', $tree->id())->delete();
+        DB::table('places')->where('p_file', '=', $tree->id())->delete();
+        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
+        DB::table('name')->where('n_file', '=', $tree->id())->delete();
+        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
+        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::table('link')->where('l_file', '=', $tree->id())->delete();
+        DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
+        DB::table('media')->where('m_file', '=', $tree->id())->delete();
         DB::table('block_setting')
             ->join('block', 'block.block_id', '=', 'block_setting.block_id')
             ->where('gedcom_id', '=', $tree->id())
@@ -308,40 +317,6 @@ class TreeService
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('log')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->delete();
-    }
-
-    /**
-     * Delete all the genealogy data from a tree - in preparation for importing
-     * new data. Optionally retain the media data, for when the user has been
-     * editing their data offline using an application which deletes (or does not
-     * support) media data.
-     *
-     * @param Tree $tree
-     * @param bool $keep_media
-     *
-     * @return void
-     */
-    public function deleteGenealogyData(Tree $tree, bool $keep_media): void
-    {
-        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
-        DB::table('families')->where('f_file', '=', $tree->id())->delete();
-        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
-        DB::table('other')->where('o_file', '=', $tree->id())->delete();
-        DB::table('places')->where('p_file', '=', $tree->id())->delete();
-        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
-        DB::table('name')->where('n_file', '=', $tree->id())->delete();
-        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
-        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
-
-        if ($keep_media) {
-            DB::table('link')->where('l_file', '=', $tree->id())
-                ->where('l_type', '<>', 'OBJE')
-                ->delete();
-        } else {
-            DB::table('link')->where('l_file', '=', $tree->id())->delete();
-            DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
-            DB::table('media')->where('m_file', '=', $tree->id())->delete();
-        }
     }
 
     /**

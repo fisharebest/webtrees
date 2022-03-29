@@ -6,8 +6,9 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var string $errors
- * @var float $progress
- * @var Tree $tree
+ * @var float  $progress
+ * @var string $status
+ * @var Tree   $tree
  */
 
 ?>
@@ -19,9 +20,9 @@ use Fisharebest\Webtrees\Tree;
         aria-valuenow="<?= $progress * 100 ?>"
         aria-valuemin="0"
         aria-valuemax="100"
-        style="width: <?= $progress * 100 ?>%; min-width: 40px;"
+        style="min-width: <?= $progress * 100 ?>%;"
     >
-        <?= I18N::percentage($progress, 1) ?>
+        <?= $status ?: I18N::percentage($progress, 1) ?>
     </div>
 </div>
 

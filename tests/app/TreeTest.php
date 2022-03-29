@@ -313,7 +313,6 @@ class TreeTest extends TestCase
 
     /**
      * @covers \Fisharebest\Webtrees\Services\TreeService::importGedcomFile
-     * @covers \Fisharebest\Webtrees\Services\TreeService::deleteGenealogyData
      * @return void
      */
     public function testImportAndDeleteGedcomFile(): void
