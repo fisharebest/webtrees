@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-23 09:35+0000\n"
+"PO-Revision-Date: 2022-03-30 17:03+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nn/>\n"
@@ -8011,7 +8011,7 @@ msgstr "Spedbarn"
 #: app/Elements/RelationIsDescriptor.php:114
 #: app/GedcomCode/GedcomCodeRela.php:246
 msgid "Informant"
-msgstr "Heimelsmann"
+msgstr "Informant"
 
 #: app/Elements/RelationIsDescriptor.php:83
 #: app/GedcomCode/GedcomCodeRela.php:243
