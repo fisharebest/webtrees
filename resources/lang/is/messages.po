@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-03-16 15:26+0000\nPO-Revision-Date: 2022-03-29 00:50+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-03-16 15:26+0000\nPO-Revision-Date: 2022-04-03 13:14+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -127,7 +127,7 @@ msgstr "%1$s–%2$s"
 #: app/Services/RelationshipService.php:2204
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s’s %2$s"
+msgstr "%1$ss %2$s"
 
 #. I18N: This is the format string for the time-of-day. See https://php.net/date for codes
 #: app/I18N.php:616
@@ -290,13 +290,13 @@ msgstr[1] "%s minnisatriði hafa verið uppfærð."
 #: app/Services/RelationshipService.php:2151
 #, php-format
 msgid "%s once removed ascending"
-msgstr "%s einu sinni fjarlægð hækkandi"
+msgstr "%s og einum ættlið meira"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2156
 #, php-format
 msgid "%s once removed descending"
-msgstr "%s einu sinni fjarlægð lækkandi"
+msgstr "%s og einum ættlið meira"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:80
 #, php-format
@@ -330,25 +330,25 @@ msgstr[1] "%s heimildir hafa verið uppfærðar."
 #: app/Services/RelationshipService.php:2169
 #, php-format
 msgid "%s three times removed ascending"
-msgstr "%s þrisvar sinnum fjarlægð hækkandi"
+msgstr "%s og þremur ættliðum meira"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2174
 #, php-format
 msgid "%s three times removed descending"
-msgstr "%s þrisvar sinnum fjarlægð lækkandi"
+msgstr "%s og þremur ættliðum meira"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2160
 #, php-format
 msgid "%s twice removed ascending"
-msgstr "%s tvisvar sinnum fjarlægð hækkandi"
+msgstr "%s og tveimur ættliðum meira"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2165
 #, php-format
 msgid "%s twice removed descending"
-msgstr "%s tvisvar sinnum fjarlægð lækkandi"
+msgstr "%s og tveimur ættliðum meira"
 
 #: app/Elements/AgeAtEvent.php:93
 #, php-format
@@ -7327,7 +7327,7 @@ msgstr "Halló %s …"
 #: resources/views/register-success-page.phtml:19
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Halló %s …<br>Takk fyrir skráninguna þína."
+msgstr "Hæ %s …<br><br>Takk fyrir skráninguna þína."
 
 #: resources/views/emails/register-notify-html.phtml:17
 #: resources/views/emails/register-notify-text.phtml:15
@@ -16272,7 +16272,7 @@ msgstr "Vatnsmerki eru valfrjáls og venjulega sýnd bara gestum."
 #: resources/views/register-success-page.phtml:23
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Við munum núna senda staðfestingar tölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um reikning með því að fylgja leiðbeiningum í staðfestingar tölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft síðan að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningunum í staðfestingar tölvupóstinum, þá þarf kerfisstjórinn sem sem áður að samþykkja beiðni þína áður en hægt er að nota reikningingin þinn.<br><br>Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
+msgstr "Við munum núna senda staðfestingartölvupóst á netfangið <b>%s</b>. Þú verður að staðfesta beiðni þína um notandareikning með því að fylgja leiðbeiningum í staðfestingartölvupóstinum. Ef þú staðfestir ekki reikningsbeiðni þína innan sjö daga, þá verður þinni umsókn hafnað sjálfkrafa. Þú þarft þá að sækja um aftur.<br><br>Eftir að þú hefur fylgt leiðbeiningum í staðfestingartölvupóstinum, þá þarf kerfisstjórinn samt sem áður að samþykkja beiðni þína áður en þú getur notað reikninginn þinn.<br><br>Til að skrá þig inn á vefsíðuna, þá þarftu að vita notandaheitið þitt og lykilorð."
 
 #: resources/views/admin/control-panel.phtml:164
 #: resources/views/admin/control-panel.phtml:575
@@ -17162,18 +17162,18 @@ msgstr "breyta"
 
 #: app/Services/RelationshipService.php:2338
 msgid "eighth cousin"
-msgstr "áttundu frændsystkini"
+msgstr "frændsystkini í níunda ættlið"
 
 #: app/Services/RelationshipService.php:2302
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr "áttunda frænka"
+msgstr "frænka í níunda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2257
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr "áttundi frændi"
+msgstr "frændi í níunda ættlið"
 
 #: app/Services/RelationshipService.php:446
 msgid "elder brother"
@@ -17189,18 +17189,18 @@ msgstr "eldri systir"
 
 #: app/Services/RelationshipService.php:2344
 msgid "eleventh cousin"
-msgstr "elleftu frændsystkini"
+msgstr "frændsystkini í tólfta ættlið"
 
 #: app/Services/RelationshipService.php:2308
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr "ellefta frænka"
+msgstr "frænka í tólfta ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2266
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr "ellefti frændi"
+msgstr "frændi í tólfta ættlið"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/Elements/NameType.php:55
@@ -17268,18 +17268,18 @@ msgstr "unnusta"
 
 #: app/Services/RelationshipService.php:2352
 msgid "fifteenth cousin"
-msgstr "fimmtándu frændsystkini"
+msgstr "frændsystkini í sextánda ættlið"
 
 #: app/Services/RelationshipService.php:2316
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr "fimmtánda frænka"
+msgstr "frænka í sextánda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2278
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr "fimmtándi frændi"
+msgstr "frændi í sextánda ættlið"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2433
@@ -17303,18 +17303,18 @@ msgstr "fimmti %s"
 
 #: app/Services/RelationshipService.php:2332
 msgid "fifth cousin"
-msgstr "fimmtu frændsystkini"
+msgstr "frændsystkini í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:2296
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr "fimmta frænka"
+msgstr "frænka í sjötta ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2248
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr "fimmti frændi"
+msgstr "frændi í sjötta ættlið"
 
 #. I18N: A button label, first page
 #: resources/views/admin/trees-preferences.phtml:563
@@ -17351,78 +17351,78 @@ msgstr "fyrsti %s"
 
 #: app/Services/RelationshipService.php:2324
 msgid "first cousin"
-msgstr "fyrstu frændsystkini"
+msgstr "frændsystkini í annan ættlið"
 
 #: app/Services/RelationshipService.php:2288
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr "frænka"
+msgstr "frænka í annan ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2236
 msgctxt "MALE"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændi í annan ættlið"
 
 #: app/Services/RelationshipService.php:775
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændsystkini í annan ættlið"
 
 #: app/Services/RelationshipService.php:777
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frænka í annan ættlið"
 
 #: app/Services/RelationshipService.php:779
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændi í annan ættlið"
 
 #: app/Services/RelationshipService.php:819
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændsystkini í annan ættlið"
 
 #: app/Services/RelationshipService.php:821
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frænka í annan ættlið"
 
 #: app/Services/RelationshipService.php:825
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændi í annan ættlið"
 
 #: app/Services/RelationshipService.php:855
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændsystkini í annan ættlið"
 
 #: app/Services/RelationshipService.php:857
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frænka í annan ættlið"
 
 #: app/Services/RelationshipService.php:859
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændi í annan ættlið"
 
 #: app/Services/RelationshipService.php:905
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændsystkini í annan ættlið"
 
 #: app/Services/RelationshipService.php:907
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frænka í annan ættlið"
 
 #: app/Services/RelationshipService.php:911
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr "frændi"
+msgstr "frændi í annan ættlið"
 
 #: app/Services/RelationshipService.php:1155
 msgctxt "father’s father’s brother’s child"
@@ -17546,18 +17546,18 @@ msgstr "systursonur ömmu"
 
 #: app/Services/RelationshipService.php:2350
 msgid "fourteenth cousin"
-msgstr "fjórtándu frændsystkini"
+msgstr "frændsystkini í fimmtánda ættlið"
 
 #: app/Services/RelationshipService.php:2314
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr "fjórtánda frænka"
+msgstr "frænka í fimmtánda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2275
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr "fjórtándi frændi"
+msgstr "frændi í fimmtánda ættlið"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2430
@@ -17581,18 +17581,18 @@ msgstr "fjórði %s"
 
 #: app/Services/RelationshipService.php:2330
 msgid "fourth cousin"
-msgstr "fjórðu frændsystkini"
+msgstr "frændsystkini í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:2294
 msgctxt "FEMALE"
 msgid "fourth cousin"
-msgstr "fjórða frænka"
+msgstr "frænka í fimmta ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2245
 msgctxt "MALE"
 msgid "fourth cousin"
-msgstr "fjórði frændi"
+msgstr "frændi í fimmta ættlið"
 
 #. I18N: from 1700 interval 50 years
 #: resources/views/modules/statistics-chart/custom.phtml:101
@@ -17932,19 +17932,19 @@ msgstr "%s. ættliðar frændi"
 
 #: app/Services/RelationshipService.php:1367
 msgid "great ×4 aunt"
-msgstr "4. ættliðar frænka"
+msgstr "frænka í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1370
 msgid "great ×4 aunt/uncle"
-msgstr "4. ættliðar frænka/frændi"
+msgstr "frænka/frændi í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:2003
 msgid "great ×4 grandchild"
-msgstr "barnabarn 4. ættliðir áfram"
+msgstr "barnabarn fjórða ættliðar"
 
 #: app/Services/RelationshipService.php:2000
 msgid "great ×4 granddaughter"
-msgstr "dótturbarn 4. ættliðir áfram"
+msgstr "dótturbarn fjórða ættliðar"
 
 #: app/Services/RelationshipService.php:1839
 msgid "great ×4 grandfather"
@@ -17970,73 +17970,73 @@ msgstr "langa ×4 frændi"
 #: app/Services/RelationshipService.php:1600
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr "systursonur í 4. ættlið"
+msgstr "systursonur í fjórða ættliðar"
 
 #: app/Services/RelationshipService.php:1603
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr "frændi í 4. ættlið"
+msgstr "frændi í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1619
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "frændi/frænka í 4. ættlið"
+msgstr "bróðurbarn í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1623
 msgctxt "(a man’s) sister’s great-great-great-grandchild"
 msgid "great ×4 nephew/niece"
-msgstr "frændi/frænka í 4. ættlið"
+msgstr "systurbarn í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1626
 msgctxt "(a woman’s) great ×4 nephew/niece"
 msgid "great ×4 nephew/niece"
-msgstr "frændi/frænka í 4. ættlið"
+msgstr "systkinabarn í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1608
 msgctxt "(a man’s) brother’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "frænka í 4. ættlið"
+msgstr "bróðurdóttir í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1612
 msgctxt "(a man’s) sister’s great-great-great-granddaughter"
 msgid "great ×4 niece"
-msgstr "frænka í 4. ættlið"
+msgstr "systurdóttir í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1615
 msgctxt "(a woman’s) great ×4 niece"
 msgid "great ×4 niece"
-msgstr "frænka í 4. ættlið"
+msgstr "frænka í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1356
 msgctxt "great-great-great-grandfather’s brother"
 msgid "great ×4 uncle"
-msgstr "frændi í 4. ættlið"
+msgstr "frændi í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1360
 msgctxt "great-great-great-grandmother’s brother"
 msgid "great ×4 uncle"
-msgstr "frændi í 4. ættlið"
+msgstr "móðurbróðir í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1363
 msgctxt "great-great-great-grandparent’s brother"
 msgid "great ×4 uncle"
-msgstr "frændi í 4. ættlið"
+msgstr "frændi í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1386
 msgid "great ×5 aunt"
-msgstr "frænka í 5. ættlið"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1389
 msgid "great ×5 aunt/uncle"
-msgstr "frænka/frændi í 5. ættlið"
+msgstr "frænka/frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:2014
 msgid "great ×5 grandchild"
-msgstr "barnabarn í 5. ættlið"
+msgstr "barnabarn í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:2011
 msgid "great ×5 granddaughter"
-msgstr "dótturbarn í 5. ættlið"
+msgstr "dótturbarn í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1850
 msgid "great ×5 grandfather"
@@ -18052,161 +18052,161 @@ msgstr "langa x5 amma/afi"
 
 #: app/Services/RelationshipService.php:2007
 msgid "great ×5 grandson"
-msgstr "sonarbarn í 5. ættlið"
+msgstr "sonarbarn í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1631
 msgctxt "(a man’s) brother’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "sonarbarn í 5. ættlið"
+msgstr "sonarbarn í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1635
 msgctxt "(a man’s) sister’s great ×4 grandson"
 msgid "great ×5 nephew"
-msgstr "frændi í 5. ættlið"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1638
 msgctxt "(a woman’s) great ×5 nephew"
 msgid "great ×5 nephew"
-msgstr "frændi í 5. ættlið"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1654
 msgctxt "(a man’s) brother’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "frændi/frænka í 5. ættlið"
+msgstr "frændi/frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1658
 msgctxt "(a man’s) sister’s great ×4 grandchild"
 msgid "great ×5 nephew/niece"
-msgstr "frændi/frænka í 5. ættlið"
+msgstr "frændi/frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1661
 msgctxt "(a woman’s) great ×5 nephew/niece"
 msgid "great ×5 nephew/niece"
-msgstr "frændi/frænka í 5. ættlið"
+msgstr "frændi/frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1643
 msgctxt "(a man’s) brother’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "frænka í 5. ættlið"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1647
 msgctxt "(a man’s) sister’s great ×4 granddaughter"
 msgid "great ×5 niece"
-msgstr "frænka í 5. ættlið"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1650
 msgctxt "(a woman’s) great ×5 niece"
 msgid "great ×5 niece"
-msgstr "frænka í 5. ættlið"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1375
 msgctxt "great ×4 grandfather’s brother"
 msgid "great ×5 uncle"
-msgstr "frændi 5. ættlið"
+msgstr "frændi fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1379
 msgctxt "great ×4 grandmother’s brother"
 msgid "great ×5 uncle"
-msgstr "frændi í 5. ættlið"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1382
 msgctxt "great ×4 grandparent’s brother"
 msgid "great ×5 uncle"
-msgstr "frændi í 5. ættlið"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1405
 msgid "great ×6 aunt"
-msgstr "frænka í 6. ættlið"
+msgstr "frænka í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1408
 msgid "great ×6 aunt/uncle"
-msgstr "frænka/frændi í 6. ættlið"
+msgstr "frænka/frændi í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:2025
 msgid "great ×6 grandchild"
-msgstr "barnabarn í 6. ættlið"
+msgstr "barnabarn í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:2022
 msgid "great ×6 granddaughter"
-msgstr "dótturbarn í 6. ættlið"
+msgstr "dótturbarn í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1861
 msgid "great ×6 grandfather"
-msgstr "afi í 6. ættlið"
+msgstr "afi í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1865
 msgid "great ×6 grandmother"
-msgstr "amma í 6. ættlið"
+msgstr "amma í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1868
 msgid "great ×6 grandparent"
-msgstr "amma og afi í 6. ættlið"
+msgstr "amma og afi í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:2018
 msgid "great ×6 grandson"
-msgstr "sonarbarn í 6. ættlið"
+msgstr "sonarbarn í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1394
 msgctxt "great ×5 grandfather’s brother"
 msgid "great ×6 uncle"
-msgstr "frændi í 6. ættlið"
+msgstr "frændi í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1398
 msgctxt "great ×5 grandmother’s brother"
 msgid "great ×6 uncle"
-msgstr "frændi í 6. ættlið"
+msgstr "frændi í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1401
 msgctxt "great ×5 grandparent’s brother"
 msgid "great ×6 uncle"
-msgstr "frændi í 6. ættlið"
+msgstr "frændi í sjötta ættlið"
 
 #: app/Services/RelationshipService.php:1424
 msgid "great ×7 aunt"
-msgstr "frænka í 7. ættlið"
+msgstr "frænka í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1427
 msgid "great ×7 aunt/uncle"
-msgstr "frænka/frændi í 7. ættlið"
+msgstr "frænka/frændi í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:2036
 msgid "great ×7 grandchild"
-msgstr "barnabarn í 7. ættlið"
+msgstr "barnabarn í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:2033
 msgid "great ×7 granddaughter"
-msgstr "dótturbarn í 7. ættlið"
+msgstr "dótturbarn í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1872
 msgid "great ×7 grandfather"
-msgstr "afi í 7. ættlið"
+msgstr "afi í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1876
 msgid "great ×7 grandmother"
-msgstr "amma í 7. ættlið"
+msgstr "amma í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1879
 msgid "great ×7 grandparent"
-msgstr "amma og afi í 7. ættlið"
+msgstr "amma og afi í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:2029
 msgid "great ×7 grandson"
-msgstr "sonarbarn í 7. ættlið"
+msgstr "sonarbarn í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1413
 msgctxt "great ×6 grandfather’s brother"
 msgid "great ×7 uncle"
-msgstr "frændi í 7. ættlið"
+msgstr "frændi í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1417
 msgctxt "great ×6 grandmother’s brother"
 msgid "great ×7 uncle"
-msgstr "frændi í 7. ættlið"
+msgstr "frændi í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1420
 msgctxt "great ×6 grandparent’s brother"
 msgid "great ×7 uncle"
-msgstr "frændi í 7. ættlið"
+msgstr "frændi í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:1097
 msgctxt "father’s father’s brother’s wife"
@@ -18660,11 +18660,11 @@ msgstr "sonur sonarsonar"
 
 #: app/Services/RelationshipService.php:1329
 msgid "great-great-aunt"
-msgstr "frænka í 2. ættlið"
+msgstr "frænka í annan ættlið"
 
 #: app/Services/RelationshipService.php:1332
 msgid "great-great-aunt/uncle"
-msgstr "frænka/frændi í 2. ættlið"
+msgstr "frænka/frændi í annan ættlið"
 
 #: app/Services/RelationshipService.php:1981
 msgid "great-great-grandchild"
@@ -18692,11 +18692,11 @@ msgstr "sonarbarn barnabarns"
 
 #: app/Services/RelationshipService.php:1348
 msgid "great-great-great-aunt"
-msgstr "frænka í 3. ættlið"
+msgstr "frænka í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1351
 msgid "great-great-great-aunt/uncle"
-msgstr "frænka/frændi í 3. ættlið"
+msgstr "frænka/frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1992
 msgid "great-great-great-grandchild"
@@ -18725,12 +18725,12 @@ msgstr "sonur barnabarnabarnabarns"
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "barnabarnabarnabarn bróðurs"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1565
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr "barnabarnabarnabarn systurs"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1568
 msgctxt "(a woman’s) great-great-great-nephew"
@@ -18740,12 +18740,12 @@ msgstr "barnabarnabarnabarn systkina"
 #: app/Services/RelationshipService.php:1584
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "barnabarnabarnabarn bróðurs"
+msgstr "frændi/frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1588
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr "barnabarnabarnabarn systurs"
+msgstr "frændi/frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1591
 msgctxt "(a woman’s) great-great-great-nephew/niece"
@@ -18770,17 +18770,17 @@ msgstr "barnabarnabarnadóttir systkina"
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr "frændi í 3. ættlið"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1341
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr "frændi í 3. ættlið"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1344
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr "frændi í 3. ættlið"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
@@ -18830,17 +18830,17 @@ msgstr "barnabarnadóttir systkina"
 #: app/Services/RelationshipService.php:1318
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr "frændi í 2. ættlið"
+msgstr "föðurbróðir í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1322
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr "frændi í 2. ættlið"
+msgstr "móðurbróðir í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1325
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr "frændi í 2. ættlið"
+msgstr "frændi í annan ættlið"
 
 #: app/Services/RelationshipService.php:674
 msgctxt "(a man’s) brother’s child’s son"
@@ -19633,18 +19633,18 @@ msgstr "maki systursonar"
 
 #: app/Services/RelationshipService.php:2340
 msgid "ninth cousin"
-msgstr "níundu frændsystkini"
+msgstr "frændsystkini í tíunda ættlið"
 
 #: app/Services/RelationshipService.php:2304
 msgctxt "FEMALE"
 msgid "ninth cousin"
-msgstr "níunda frænka"
+msgstr "frænka í tíunda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2260
 msgctxt "MALE"
 msgid "ninth cousin"
-msgstr "níundi frændi"
+msgstr "frændi í tíunda ættlið"
 
 #: app/Elements/OrdinanceProcessFlag.php:55
 #: app/Http/RequestHandlers/UserListData.php:140
@@ -19946,153 +19946,153 @@ msgstr "annar %s"
 
 #: app/Services/RelationshipService.php:2326
 msgid "second cousin"
-msgstr "önnur frændsystkini"
+msgstr "frændsystkini þriðja ættlið"
 
 #: app/Services/RelationshipService.php:2290
 msgctxt "FEMALE"
 msgid "second cousin"
-msgstr "önnur frænka"
+msgstr "frænka í þriðja ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2239
 msgctxt "MALE"
 msgid "second cousin"
-msgstr "annar frændi"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1210
 msgctxt "grandfather’s brother’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn afabróðurs"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1202
 msgctxt "grandfather’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn afabróðurs"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1206
 msgctxt "grandfather’s brother’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn afabróðurs"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1234
 msgctxt "grandfather’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn afasystkina"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1226
 msgctxt "grandfather’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn afasystkina"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1230
 msgctxt "grandfather’s sibling’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn afasystkina"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1222
 msgctxt "grandfather’s sister’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn afasysturs"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1214
 msgctxt "grandfather’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn afasystur"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1218
 msgctxt "grandfather’s sister’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn afasystur"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1246
 msgctxt "grandmother’s brother’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn ömmubróðurs"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1238
 msgctxt "grandmother’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn ömmbróðurs"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1242
 msgctxt "grandmother’s brother’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn ömmubróðurs"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1270
 msgctxt "grandmother’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn ömmusystkina"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1262
 msgctxt "grandmother’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn ömmusystkina"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1266
 msgctxt "grandmother’s sibling’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn ömmusystkina"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1258
 msgctxt "grandmother’s sister’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn ömmusysturs"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1250
 msgctxt "grandmother’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn ömmusystur"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1254
 msgctxt "grandmother’s sister’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn ömmusystur"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1282
 msgctxt "grandparent’s brother’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn afa- eða ömmubróðurs"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1274
 msgctxt "grandparent’s brother’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn afa- eða ömmubróðurs"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1278
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn afa- eða ömmubróðurs"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1306
 msgctxt "grandparent’s sibling’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn afa- eða ömmusystkina"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1298
 msgctxt "grandparent’s sibling’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn afa- eða ömmusystkina"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1302
 msgctxt "grandparent’s sibling’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn afa- eða ömmusystkina"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1294
 msgctxt "grandparent’s sister’s grandchild"
 msgid "second cousin"
-msgstr "barnabarn afa- eða ömmusysturs"
+msgstr "frændsystkini í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1286
 msgctxt "grandparent’s sister’s granddaughter"
 msgid "second cousin"
-msgstr "dótturbarn afa- eða ömmusystur"
+msgstr "frænka í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1290
 msgctxt "grandparent’s sister’s grandson"
 msgid "second cousin"
-msgstr "sonarbarn afa- eða ömmusystur"
+msgstr "frændi í þriðja ættlið"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 2”
 #: app/Elements/CertaintyAssessment.php:51
@@ -20115,18 +20115,18 @@ msgstr "Sjálf"
 
 #: app/Services/RelationshipService.php:2336
 msgid "seventh cousin"
-msgstr "sjöundu frændsystkini"
+msgstr "frændsystkini í áttunda ættlið"
 
 #: app/Services/RelationshipService.php:2300
 msgctxt "FEMALE"
 msgid "seventh cousin"
-msgstr "sjöunda frænka"
+msgstr "frænka í áttunda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2254
 msgctxt "MALE"
 msgid "seventh cousin"
-msgstr "sjöundi frændi"
+msgstr "frændi í áttunda ættlið"
 
 #: app/Elements/NoteStructure.php:67
 msgid "shared note"
@@ -20240,18 +20240,18 @@ msgstr "mágkona"
 
 #: app/Services/RelationshipService.php:2334
 msgid "sixth cousin"
-msgstr "sjöttu frændsystkini"
+msgstr "frændsystkini í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:2298
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr "sjötta frænka"
+msgstr "frænka í sjöunda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2251
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr "sjötti frændi"
+msgstr "frændi í sjöunda ættlið"
 
 #: app/Services/RelationshipService.php:426
 msgid "son"
@@ -20476,18 +20476,18 @@ msgstr "merkimiðaský"
 
 #: app/Services/RelationshipService.php:2342
 msgid "tenth cousin"
-msgstr "tíundu frændsystkini"
+msgstr "frændsystkini í ellefta ættlið"
 
 #: app/Services/RelationshipService.php:2306
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr "tíunda frænka"
+msgstr "frænka í ellefta ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2263
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr "tíundi frændi"
+msgstr "frændi í ellefta ættlið"
 
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:24
@@ -20526,33 +20526,33 @@ msgstr "þriðji %s"
 
 #: app/Services/RelationshipService.php:2328
 msgid "third cousin"
-msgstr "þriðju frændsystkini"
+msgstr "frændsystkini í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:2292
 msgctxt "FEMALE"
 msgid "third cousin"
-msgstr "þriðja frænka"
+msgstr "frænka í fjórða ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2242
 msgctxt "MALE"
 msgid "third cousin"
-msgstr "þriðji frændi"
+msgstr "frændi í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:2348
 msgid "thirteenth cousin"
-msgstr "þrettándu frændsystkini"
+msgstr "frændsystkini í fjórtánda ættlið"
 
 #: app/Services/RelationshipService.php:2312
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr "þrettánda frænka"
+msgstr "frænka í fórtánda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2272
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr "þrettándi frændi"
+msgstr "frændi í fjórtánda ættlið"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:523
@@ -20567,18 +20567,18 @@ msgstr "til %s"
 
 #: app/Services/RelationshipService.php:2346
 msgid "twelfth cousin"
-msgstr "tólftu frændsystkini"
+msgstr "frændsystkini í þrettánda ættlið"
 
 #: app/Services/RelationshipService.php:2310
 msgctxt "FEMALE"
 msgid "twelfth cousin"
-msgstr "tólfta frænka"
+msgstr "frænka í þrettánda ættlið"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language. You only need to translate - you do not need to convert. For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Services/RelationshipService.php:2269
 msgctxt "MALE"
 msgid "twelfth cousin"
-msgstr "tólfti frændi"
+msgstr "frændi í þrettánda ættlið"
 
 #: app/Services/RelationshipService.php:438
 msgid "twin brother"
