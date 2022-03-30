@@ -57,6 +57,7 @@ use Fisharebest\Webtrees\Elements\ChildLinkageStatus;
 use Fisharebest\Webtrees\Elements\Christening;
 use Fisharebest\Webtrees\Elements\Confirmation;
 use Fisharebest\Webtrees\Elements\ContentDescription;
+use Fisharebest\Webtrees\Elements\Coordinates;
 use Fisharebest\Webtrees\Elements\CopyrightFile;
 use Fisharebest\Webtrees\Elements\CopyrightSourceData;
 use Fisharebest\Webtrees\Elements\CountOfChildren;
@@ -298,7 +299,7 @@ class ElementFactory implements ElementFactoryInterface
             'FAM:*:PLAC:FONE'          => new PlacePhoneticVariation(I18N::translate('Phonetic place')),
             'FAM:*:PLAC:FONE:TYPE'     => new PhoneticType(I18N::translate('Type')),
             'FAM:*:PLAC:FORM'          => new PlaceHierarchy(I18N::translate('Format')),
-            'FAM:*:PLAC:MAP'           => new EmptyElement(I18N::translate('Coordinates'), ['LATI' => '1:1', 'LONG' => '1:1']),
+            'FAM:*:PLAC:MAP'           => new Coordinates(I18N::translate('Coordinates')),
             'FAM:*:PLAC:MAP:LATI'      => new PlaceLatitude(I18N::translate('Latitude')),
             'FAM:*:PLAC:MAP:LONG'      => new PlaceLongtitude(I18N::translate('Longitude')),
             'FAM:*:PLAC:NOTE'          => new NoteStructure(I18N::translate('Note')),
@@ -429,7 +430,7 @@ class ElementFactory implements ElementFactoryInterface
             'INDI:*:PLAC:FONE'         => new PlacePhoneticVariation(I18N::translate('Phonetic place')),
             'INDI:*:PLAC:FONE:TYPE'    => new PhoneticType(I18N::translate('Type')),
             'INDI:*:PLAC:FORM'         => new PlaceHierarchy(I18N::translate('Format')),
-            'INDI:*:PLAC:MAP'          => new EmptyElement(I18N::translate('Coordinates'), ['LATI' => '1:1', 'LONG' => '1:1']),
+            'INDI:*:PLAC:MAP'          => new Coordinates(I18N::translate('Coordinates')),
             'INDI:*:PLAC:MAP:LATI'     => new PlaceLatitude(I18N::translate('Latitude')),
             'INDI:*:PLAC:MAP:LONG'     => new PlaceLongtitude(I18N::translate('Longitude')),
             'INDI:*:PLAC:NOTE'         => new NoteStructure(I18N::translate('Note')),
