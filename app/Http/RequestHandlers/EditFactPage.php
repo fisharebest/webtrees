@@ -29,8 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -59,10 +57,10 @@ class EditFactPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree    = Validator::attributes($request)->tree();
-        $xref    = Validator::attributes($request)->isXref()->string('xref');
-        $fact_id = Validator::attributes($request)->string('fact_id');
-        $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
+        $tree           = Validator::attributes($request)->tree();
+        $xref           = Validator::attributes($request)->isXref()->string('xref');
+        $fact_id        = Validator::attributes($request)->string('fact_id');
+        $include_hidden = Validator::queryParams($request)->boolean('include_hidden', false);
 
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record, true);
@@ -78,7 +76,7 @@ class EditFactPage implements RequestHandlerInterface
 
         $gedcom = $this->gedcom_edit_service->insertMissingFactSubtags($fact, $include_hidden);
         $hidden = $this->gedcom_edit_service->insertMissingFactSubtags($fact, true);
-        $url = $request->getQueryParams()['url'] ?? $record->url();
+        $url    = Validator::queryParams($request)->isLocalUrl()->string('url', $record->url());
 
         if ($gedcom === $hidden) {
             $hidden_url = '';

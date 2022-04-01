@@ -20,11 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
@@ -280,8 +280,8 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $this->layout = 'layouts/administration';
 
         $tree     = Validator::attributes($request)->tree();
-        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
-        $url      = $request->getQueryParams()['url'] ?? '';
+        $block_id = Validator::queryParams($request)->integer('block_id', 0);
+        $url      = Validator::queryParams($request)->string('url', '');
 
         if ($block_id === 0) {
             // Creating a new story
@@ -323,16 +323,14 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree     = Validator::attributes($request)->tree();
-        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
-        $params   = (array) $request->getParsedBody();
-
-        $xref        = $params['xref'];
-        $story_body  = $params['story_body'];
-        $story_title = $params['story_title'];
-        $languages   = $params['languages'] ?? [];
-        $url         = $params['url'] ?? '';
-
+        $tree        = Validator::attributes($request)->tree();
+        $block_id    = Validator::queryParams($request)->integer('block_id', 0);
+        $xref        = Validator::parsedBody($request)->string('xref');
+        $story_body  = Validator::parsedBody($request)->string('story_body');
+        $story_title = Validator::parsedBody($request)->string('story_title');
+        $languages   = Validator::parsedBody($request)->array('languages');
+        $default_url = route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]);
+        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
         $story_body  = $this->html_service->sanitize($story_body);
 
         if ($block_id !== 0) {
@@ -356,12 +354,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $this->setBlockSetting($block_id, 'story_body', $story_body);
         $this->setBlockSetting($block_id, 'title', $story_title);
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
-
-        $url = $url ?: route('module', [
-            'module' => $this->name(),
-            'action' => 'Admin',
-            'tree'    => $tree->name(),
-        ]);
 
         return redirect($url);
     }

@@ -45,11 +45,10 @@ class CreateRepositoryAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $params      = (array) $request->getParsedBody();
-        $name        = $params['name'];
-        $address     = $params['address'];
-        $url         = $params['url'];
-        $restriction = $params['restriction'];
+        $name        = Validator::parsedBody($request)->string('name');
+        $address     = Validator::parsedBody($request)->string('address');
+        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url');
+        $restriction = Validator::parsedBody($request)->string('restriction');
 
         // Fix non-printing characters
         $name = trim(preg_replace('/\s+/', ' ', $name));

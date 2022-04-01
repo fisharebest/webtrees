@@ -73,7 +73,7 @@ class AddUnlinkedPage implements RequestHandlerInterface
             'post_url'            => route(AddUnlinkedAction::class, ['tree' => $tree->name()]),
             'tree'                => $tree,
             'title'               => I18N::translate('Create an individual'),
-            'url'                 => $request->getQueryParams()['url'] ?? $cancel_url,
+            'url'                 => Validator::queryParams($request)->isLocalUrl()->string('url', $cancel_url),
         ]);
     }
 }

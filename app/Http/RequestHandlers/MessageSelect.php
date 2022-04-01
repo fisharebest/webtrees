@@ -36,15 +36,12 @@ class MessageSelect implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree   = Validator::attributes($request)->tree();
-        $params = (array) $request->getParsedBody();
-
         return redirect(route(MessagePage::class, [
-            'body'    => $params['body'] ?? '',
-            'subject' => $params['subject'] ?? '',
-            'to'      => $params['to'] ?? '',
-            'tree'    => $tree->name(),
-            'url'     => $params['url'] ?? '',
+            'body'    => Validator::parsedBody($request)->string('body', ''),
+            'subject' => Validator::parsedBody($request)->string('subject', ''),
+            'to'      => Validator::parsedBody($request)->string('to', ''),
+            'tree'    => Validator::attributes($request)->tree()->name(),
+            'url'     => Validator::parsedBody($request)->string('url', ''),
         ]));
     }
 }

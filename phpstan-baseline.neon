@@ -526,14 +526,14 @@ parameters:
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
-			message: "#^Cannot call method realName\\(\\) on Fisharebest\\\\Webtrees\\\\User\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ContactPage.php
-
-		-
 			message: "#^Parameter \\#1 \\$column of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:pluck\\(\\) expects string, Illuminate\\\\Database\\\\Query\\\\Expression given\\.$#"
 			count: 8
 			path: app/Http/RequestHandlers/ControlPanel.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Http/RequestHandlers/CreateRepositoryAction.php
 
 		-
 			message: "#^Cannot access offset 'data_fix' on array\\|object\\|null\\.$#"
@@ -2406,6 +2406,11 @@ parameters:
 			path: app/Report/RightToLeftSupport.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function substr expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Report/RightToLeftSupport.php
+
+		-
 			message: "#^Parameter \\#2 \\$start of function substr expects int, int\\<0, max\\>\\|false given\\.$#"
 			count: 1
 			path: app/Report/RightToLeftSupport.php
@@ -2911,6 +2916,11 @@ parameters:
 			path: app/Services/UserService.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function strlen expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Soundex.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsAgeQuery\\(\\) should return array\\<array\\<stdClass\\>\\> but returns array\\<stdClass\\>\\.$#"
 			count: 1
 			path: app/Statistics.php
@@ -3204,6 +3214,11 @@ parameters:
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Tree\\:\\:significantIndividual\\(\\) should return Fisharebest\\\\Webtrees\\\\Individual but returns mixed\\.$#"
 			count: 1
 			path: app/Tree.php
+
+		-
+			message: "#^Parameter \\#1 \\$url of function parse_url expects string, mixed given\\.$#"
+			count: 1
+			path: app/Validator.php
 
 		-
 			message: "#^Ternary operator condition is always true\\.$#"

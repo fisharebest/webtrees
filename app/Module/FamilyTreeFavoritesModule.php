@@ -163,14 +163,11 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     {
         $tree   = Validator::attributes($request)->tree();
         $user   = Validator::attributes($request)->user();
-        $params = (array) $request->getParsedBody();
-
-        $note  = $params['note'];
-        $title = $params['title'];
-        $url   = $params['url'];
-        $type  = $params['type'];
-        $xref  = $params[$type . '-xref'] ?? '';
-
+        $note   = Validator::parsedBody($request)->string('note');
+        $title  = Validator::parsedBody($request)->string('title');
+        $url    = Validator::parsedBody($request)->string('url');
+        $type   = Validator::parsedBody($request)->string('type');
+        $xref   = Validator::parsedBody($request)->string($type . '-xref', '');
         $record = $this->getRecordForType($type, $xref, $tree);
 
         if (Auth::isManager($tree, $user)) {

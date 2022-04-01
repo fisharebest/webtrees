@@ -64,8 +64,8 @@ class LoginPage implements RequestHandlerInterface
             return redirect(route(UserPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : '']));
         }
 
-        $url      = $request->getQueryParams()['url'] ?? '';
-        $username = $request->getQueryParams()['username'] ?? '';
+        $url      = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
+        $username = Validator::queryParams($request)->isLocalUrl()->string('username', '');
 
         // No tree?  perhaps we came here from a page without one.
         if ($tree === null) {

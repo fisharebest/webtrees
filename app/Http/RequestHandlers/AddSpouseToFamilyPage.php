@@ -92,7 +92,7 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
             'post_url'            => route(AddSpouseToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
             'title'               => $title,
             'tree'                => $tree,
-            'url'                 => $request->getQueryParams()['url'] ?? $family->url(),
+            'url'                 => Validator::queryParams($request)->isLocalUrl()->string('url', $family->url()),
         ]);
     }
 }
