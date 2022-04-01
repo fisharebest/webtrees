@@ -1,24 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-03-16 15:26+0000\n"
-"PO-Revision-Date: 2022-01-30 18:40+0000\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
-"Language: cs\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Language: cs_CZ\n"
-"X-Source-Language: C\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-03-16 15:26+0000\nPO-Revision-Date: 2022-04-03 13:14+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3505,7 +3486,7 @@ msgstr "Log změn"
 #: resources/views/admin/gedcom-export-options.phtml:43
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "Kódování znaků"
 
 #: app/Factories/ElementFactory.php:376
 msgid "Character set"
@@ -5189,7 +5170,7 @@ msgstr "Smazat jméno"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Smazat nepoužitá místa"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -8672,7 +8653,7 @@ msgstr "Lima, Peru"
 
 #: resources/views/admin/gedcom-export-options.phtml:53
 msgid "Line endings"
-msgstr ""
+msgstr "Konce řádků"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:809
@@ -12261,12 +12242,12 @@ msgstr "Je instalován SQLite verse %s. Žádoucí je verse %s nebo pozdější.
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12982,7 +12963,7 @@ msgstr "Zobrazit dohodu o používání na stránce «Request a new user account
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "Ukázat všechna média"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13509,7 +13490,7 @@ msgstr "Syn od %s"
 
 #: app/Module/CustomTagsTheMasterGenealogist.php:50
 msgid "Sort date"
-msgstr ""
+msgstr "Třídit datum"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -14428,7 +14409,7 @@ msgstr "Požadavky na paměť a procesorový čas závisí na počtu osob ve va�
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Zpráva uživateli %s nebyla odeslaná."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -15396,7 +15377,7 @@ msgstr "Abyste vytvořili nové badatelské úkoly, musíte nejdříve přidat �
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "Aby se zobrazila mapa, musíte v panelu správy nastavit poskytovatele mapy."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -15461,7 +15442,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Příliš mnoho požadavků. Zkuste později."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -16712,7 +16693,7 @@ msgstr "Váš webový server používá PHP verse %s, pro kterou se už nevydáv
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:35
 msgid "ZIP (includes media files)"
-msgstr ""
+msgstr "ZIP (včetně souborů médií)"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16867,7 +16848,7 @@ msgstr "teta/strýc"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "automaticky"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19819,7 +19800,7 @@ msgstr "procento"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:103
 msgid "plain text"
-msgstr ""
+msgstr "prostý text"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
