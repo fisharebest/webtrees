@@ -31,8 +31,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function route;
 
 /**
@@ -70,8 +68,11 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $spouse            = $family->spouses()->first();
-        assert($spouse instanceof Individual);
-        $names      = $surname_tradition->newSpouseNames($spouse, $sex);
+        if ($spouse instanceof Individual) {
+            $names = $surname_tradition->newSpouseNames($spouse, $sex);
+        } else {
+            $names = ['1 NAME ' . $surname_tradition->defaultName()];
+        }
 
         $facts = [
             'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, $names),
