@@ -89,8 +89,7 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         // Link the spouse to the family
         $family->createFact('1 ' . $link . ' @' . $spouse->xref() . '@', false);
 
-        $base_url = Validator::attributes($request)->string('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $spouse->url());
+        $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $spouse->url());
 
         return redirect($url);
     }

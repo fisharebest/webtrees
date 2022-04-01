@@ -97,7 +97,7 @@ class ContactAction implements RequestHandlerInterface
         $from_name  = Validator::parsedBody($request)->string('from_name');
         $subject    = Validator::parsedBody($request)->string('subject');
         $to         = Validator::parsedBody($request)->string('to');
-        $url        = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $base_url);
+        $url        = Validator::parsedBody($request)->isLocalUrl()->string('url', $base_url);
         $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {

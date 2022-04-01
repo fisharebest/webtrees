@@ -62,8 +62,7 @@ class EditRawFactAction implements RequestHandlerInterface
             }
         }
 
-        $base_url = Validator::attributes($request)->string('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $record->url());
+        $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $record->url());
 
         return redirect($url);
     }

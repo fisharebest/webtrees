@@ -68,11 +68,10 @@ class LoginAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->treeOptional();
-        $base_url    = Validator::attributes($request)->string('base_url');
         $default_url = route(HomePage::class);
         $username    = Validator::parsedBody($request)->string('username');
         $password    = Validator::parsedBody($request)->string('password');
-        $url         = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $default_url);
+        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
 
         try {
             $this->doLogin($username, $password);

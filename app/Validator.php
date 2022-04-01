@@ -44,15 +44,19 @@ class Validator
     /** @var array<int|string|Tree|UserInterface|array<int|string>> */
     private array $parameters;
 
+    private ServerRequestInterface $request;
+
     /** @var array<Closure> */
     private array $rules = [];
 
     /**
      * @param array<int|string|Tree|UserInterface|array<int|string>> $parameters
+     * @param ServerRequestInterface                                 $request
      */
-    public function __construct(array $parameters)
+    public function __construct(array $parameters, ServerRequestInterface $request)
     {
         $this->parameters = $parameters;
+        $this->request    = $request;
     }
 
     /**
@@ -62,7 +66,7 @@ class Validator
      */
     public static function attributes(ServerRequestInterface $request): self
     {
-        return new self($request->getAttributes());
+        return new self($request->getAttributes(), $request);
     }
 
     /**
@@ -72,7 +76,7 @@ class Validator
      */
     public static function parsedBody(ServerRequestInterface $request): self
     {
-        return new self((array) $request->getParsedBody());
+        return new self((array) $request->getParsedBody(), $request);
     }
 
     /**
@@ -82,7 +86,7 @@ class Validator
      */
     public static function queryParams(ServerRequestInterface $request): self
     {
-        return new self($request->getQueryParams());
+        return new self($request->getQueryParams(), $request);
     }
 
     /**
@@ -92,7 +96,7 @@ class Validator
      */
     public static function serverParams(ServerRequestInterface $request): self
     {
-        return new self($request->getServerParams());
+        return new self($request->getServerParams(), $request);
     }
 
     /**
@@ -147,22 +151,18 @@ class Validator
     }
 
     /**
-     * @param string $base_url
-     *
      * @return self
      */
-    public function isLocalUrl(string $base_url): self
+    public function isLocalUrl(): self
     {
+        $base_url = $this->request->getAttribute('base_url', '');
+
         $this->rules[] = static function (?string $value) use ($base_url): ?string {
             if ($value !== null) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
 
-                if (!is_array($base_url_info)) {
-                    throw new LogicException(__METHOD__ . ' needs a valid URL');
-                }
-
-                if (is_array($value_info)) {
+                if (is_array($value_info) && is_array($base_url_info)) {
                     $scheme_ok = ($value_info['scheme'] ?? 'http') === ($base_url_info['scheme'] ?? 'http');
                     $host_ok   = ($value_info['host'] ?? '') === ($base_url_info['host'] ?? '');
                     $port_ok   = ($value_info['port'] ?? '') === ($base_url_info['port'] ?? '');

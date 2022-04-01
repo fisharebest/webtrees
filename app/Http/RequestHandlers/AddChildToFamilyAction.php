@@ -71,8 +71,7 @@ class AddChildToFamilyAction implements RequestHandlerInterface
         // Link the child to the family
         $family->createFact('1 CHIL @' . $child->xref() . '@', false);
 
-        $base_url = Validator::attributes($request)->string('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $child->url());
+        $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $child->url());
 
         return redirect($url);
     }

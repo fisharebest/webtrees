@@ -63,8 +63,7 @@ class AddUnlinkedAction implements RequestHandlerInterface
 
         $individual = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
 
-        $base_url = Validator::attributes($request)->string('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $individual->url());
+        $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $individual->url());
 
         return redirect($url);
     }
