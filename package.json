@@ -14,7 +14,7 @@
     "postcss-image-inliner": "^5.0.0",
     "postcss-import": "^14.1.0",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.49.9",
+    "sass": "^1.49.11",
     "sass-loader": "^12.6.0",
     "vue-template-compiler": "^2.6.14"
   },
@@ -33,7 +33,7 @@
     "leaflet": "1.7.1",
     "leaflet-control-geocoder": "2.4.0",
     "leaflet.markercluster": "1.5.3",
-    "moment": "2.29.1",
+    "moment": "2.29.2",
     "pinch-zoom-element": "1.1.1",
     "popper.js": "1.16.1",
     "select2": "4.0.13",
