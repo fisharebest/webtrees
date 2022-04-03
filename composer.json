@@ -53,9 +53,9 @@
         "fisharebest/flysystem-chroot-adapter": "2.0.0",
         "fisharebest/localization": "1.15.1",
         "guzzlehttp/guzzle": "7.4.2",
-        "illuminate/container": "8.83.5",
-        "illuminate/database": "8.83.5",
-        "illuminate/support": "8.83.5",
+        "illuminate/container": "8.83.6",
+        "illuminate/database": "8.83.6",
+        "illuminate/support": "8.83.6",
         "intervention/image": "2.7.1",
         "io-developer/php-whois": "4.1.6",
         "league/commonmark": "2.2.3",
@@ -73,9 +73,9 @@
         "psr/http-server-middleware": "1.0.1",
         "ramsey/uuid": "4.2.3",
         "sabre/vobject": "4.4.1",
-        "symfony/cache": "5.4.6",
-        "symfony/expression-language": "5.4.3",
-        "symfony/mailer": "5.4.5",
+        "symfony/cache": "5.4.7",
+        "symfony/expression-language": "5.4.7",
+        "symfony/mailer": "5.4.7",
         "symfony/polyfill-mbstring": "1.25.0",
         "symfony/polyfill-php80": "1.25.0",
         "tecnickcom/tcpdf": "6.4.4"
@@ -88,7 +88,7 @@
         "composer/composer": "2.2.9",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.5.2",
-        "phpunit/phpunit": "9.5.19"
+        "phpunit/phpunit": "9.5.20"
     },
     "suggest": {
         "ext-imagick": "Required to generate thumbnail images",
