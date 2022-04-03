@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:27+0100\n"
+"POT-Creation-Date: 2022-04-03 14:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16553,7 +16553,7 @@ msgid "Many genealogy applications define their own custom GEDCOM tags and webtr
 msgstr ""
 
 #: resources/views/admin/tags.phtml:936
-msgid "It is not recommended to use custom GEDCOM tags.  This data can be lost when you transfer it to other applications."
+msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
 
 #: resources/views/admin/tags.phtml:938
@@ -16568,8 +16568,9 @@ msgstr ""
 msgid "Family facts and events"
 msgstr ""
 
+#. I18N: https://genealogy.net/GEDCOM/
 #: resources/views/admin/tags.phtml:963
-msgid "Gedcom-L"
+msgid "GEDCOM-L"
 msgstr ""
 
 #. I18N: A configuration setting

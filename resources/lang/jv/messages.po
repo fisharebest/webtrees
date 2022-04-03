@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:27+0100\n"
+"POT-Creation-Date: 2022-04-03 14:32+0100\n"
 "PO-Revision-Date: 2018-10-01 01:22+0000\n"
 "Last-Translator: Andi Ahmad Fachrudin <nugeonet@gmail.com>\n"
 "Language-Team: Javanese <https://translate.webtrees.net/projects/webtrees/webtrees/jv/>\n"
@@ -6746,6 +6746,11 @@ msgstr ""
 msgid "GEDCOM tags"
 msgstr ""
 
+#. I18N: https://genealogy.net/GEDCOM/
+#: resources/views/admin/tags.phtml:963
+msgid "GEDCOM-L"
+msgstr ""
+
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1047 app/Gedcom.php:1099 app/Gedcom.php:1214
 #: app/Gedcom.php:1253 app/Gedcom.php:1285
@@ -6760,10 +6765,6 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:215
 msgid "Gambia"
-msgstr ""
-
-#: resources/views/admin/tags.phtml:963
-msgid "Gedcom-L"
 msgstr ""
 
 #: app/Gedcom.php:685 app/Gedcom.php:1123
@@ -7892,7 +7893,7 @@ msgid "It can take several minutes to download and install the upgrade. Be patie
 msgstr ""
 
 #: resources/views/admin/tags.phtml:936
-msgid "It is not recommended to use custom GEDCOM tags.  This data can be lost when you transfer it to other applications."
+msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 msgstr ""
 
 #. I18N: Name of a country or state
