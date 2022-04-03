@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:32+0100\n"
-"PO-Revision-Date: 2022-04-03 13:24+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\n"
-"Language: en-GB\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-03 13:37+0000\nLast-Translator: Administrator <greg.roach@open.ac.uk>\nLanguage-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -5067,7 +5055,7 @@ msgstr "Deleting the family will unlink all of the individuals from each other b
 
 #: app/Http/RequestHandlers/GedcomLoad.php:135
 msgid "Deleting…"
-msgstr ""
+msgstr "Deleting…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -6033,7 +6021,7 @@ msgstr "Family census"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Family facts and events"
-msgstr ""
+msgstr "Family facts and events"
 
 #: app/Gedcom.php:827
 msgid "Family file"
@@ -6749,7 +6737,7 @@ msgstr "GEDCOM tags"
 #. I18N: https://genealogy.net/GEDCOM/
 #: resources/views/admin/tags.phtml:963
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1047 app/Gedcom.php:1099 app/Gedcom.php:1214
@@ -7729,7 +7717,7 @@ msgstr "Individual distribution chart"
 
 #: resources/views/admin/tags.phtml:943
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Individual facts and events"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7853,7 +7841,7 @@ msgstr "Invalid GEDCOM file - no header record found."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:95
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Invalid GEDCOM file - no trailer record found."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7894,7 +7882,7 @@ msgstr "It can take several minutes to download and install the upgrade. Be pati
 
 #: resources/views/admin/tags.phtml:936
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8791,7 +8779,7 @@ msgstr "Manuscript"
 
 #: resources/views/admin/tags.phtml:934
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9823,7 +9811,7 @@ msgstr "Name in Hebrew"
 
 #: app/Gedcom.php:1378 app/Gedcom.php:1440
 msgid "Name of addressee"
-msgstr ""
+msgstr "Name of addressee"
 
 #: app/Gedcom.php:638 app/Gedcom.php:645 app/Gedcom.php:650
 msgid "Name prefix"
@@ -13437,7 +13425,7 @@ msgstr "St. Paul, Minnesota, United States"
 
 #: resources/views/admin/tags.phtml:27
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standard GEDCOM tags"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -15078,7 +15066,7 @@ msgstr "To assist you in getting started with this block, we have created severa
 
 #: resources/views/admin/tags.phtml:938
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "To create new data using custom tags, you need to enable them."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
