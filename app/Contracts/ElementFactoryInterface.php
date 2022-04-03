@@ -33,11 +33,17 @@ interface ElementFactoryInterface
      */
     public function make(string $tag): ElementInterface;
 
-
     /**
-     * Register more elements.
+     * Register GEDCOM tags.
      *
      * @param array<string,ElementInterface> $elements
      */
-    public function register(array $elements): void;
+    public function registerTags(array $elements): void;
+
+    /**
+     * Register more subtags.
+     *
+     * @param array<string,array<int,array<int,string>>> $subtags
+     */
+    public function registerSubTags(array $subtags): void;
 }

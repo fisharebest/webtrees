@@ -23,11 +23,13 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_keys;
+use function implode;
 use function redirect;
 use function route;
 
@@ -43,12 +45,18 @@ class SiteTagsAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $params = (array) $request->getParsedBody();
-
         foreach (array_keys(Gedcom::HIDDEN_TAGS) as $setting) {
-            $value = (bool) ($params['HIDE_' . $setting] ?? false);
+            $value = Validator::parsedBody($request)->boolean('HIDE_' . $setting, false);
             Site::setPreference('HIDE_' . $setting, (string) $value);
         }
+
+        $custom_family_tags     = Validator::parsedBody($request)->array('custom_family_tags');
+        $custom_individual_tags = Validator::parsedBody($request)->array('custom_individual_tags');
+        $custom_gedcom_l_tags   = Validator::parsedBody($request)->boolean('custom_gedcom_l_tags', false);
+
+        Site::setPreference('CUSTOM_FAMILY_TAGS', implode(',', $custom_family_tags));
+        Site::setPreference('CUSTOM_INDIVIDUAL_TAGS', implode(',', $custom_individual_tags));
+        Site::setPreference('CUSTOM_GEDCOM_L_TAGS', (string) $custom_gedcom_l_tags);
 
         FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 

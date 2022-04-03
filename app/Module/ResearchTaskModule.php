@@ -57,7 +57,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
      */
     public function boot(): void
     {
-        Registry::elementFactory()->register([
+        Registry::elementFactory()->registerTags([
             'FAM:_TODO'           => new ResearchTask(I18N::translate('Research task')),
             'FAM:_TODO:DATE'      => new TransmissionDate(I18N::translate('Date')),
             'FAM:_TODO:_WT_USER'  => new WebtreesUser(I18N::translate('User')),

@@ -96,6 +96,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
         if (static::$uses_database) {
             static::createTestDatabase();
 
+            // This is normally set in middleware.
+            (new Gedcom())->registerTags();
+
             // Boot modules
             (new ModuleService())->bootModules(new WebtreesTheme());
         }

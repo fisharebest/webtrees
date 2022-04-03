@@ -28,6 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class GedcomEditServiceTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     /**
      * @covers \Fisharebest\Webtrees\Services\GedcomEditService::editLinesToGedcom
      */

@@ -58,6 +58,7 @@ use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
+use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
@@ -167,6 +168,7 @@ class Webtrees
         DoHousekeeping::class,
         UseTransaction::class,
         LoadRoutes::class,
+        RegisterGedcomTags::class,
         BootModules::class,
         Router::class,
         NoRouteFound::class,

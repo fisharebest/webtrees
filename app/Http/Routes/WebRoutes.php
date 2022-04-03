@@ -181,8 +181,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesCustomTagsAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesCustomTagsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersAction;
@@ -401,8 +399,6 @@ class WebRoutes
                 $router->post(ModulesBlocksAction::class, '/blocks');
                 $router->get(ModulesChartsPage::class, '/charts');
                 $router->post(ModulesChartsAction::class, '/charts');
-                $router->get(ModulesCustomTagsPage::class, '/custom-tags');
-                $router->post(ModulesCustomTagsAction::class, '/custom-tags');
                 $router->get(ModulesDataFixesPage::class, '/data-fixes');
                 $router->post(ModulesDataFixesAction::class, '/data-fixes');
                 $router->get(ModulesFootersPage::class, '/footers');

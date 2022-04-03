@@ -17,31 +17,42 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\RequestHandlers;
+namespace Fisharebest\Webtrees\Http\Middleware;
 
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Module\ModuleCustomTagsInterface;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ModuleService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function view;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 /**
- * Show a list of modules.
+ * Middleware to register GEDCOM tags.
  */
-class ModulesCustomTagsPage extends AbstractModuleComponentPage
+class RegisterGedcomTags implements MiddlewareInterface
 {
+    private Gedcom $gedcom;
+
     /**
-     * @param ServerRequestInterface $request
+     * @param Gedcom $gedcom
+     */
+    public function __construct(Gedcom $gedcom)
+    {
+        $this->gedcom = $gedcom;
+    }
+
+    /**
+     * @param ServerRequestInterface  $request
+     * @param RequestHandlerInterface $handler
      *
      * @return ResponseInterface
      */
-    public function handle(ServerRequestInterface $request): ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        return $this->listComponents(
-            ModuleCustomTagsInterface::class,
-            view('icons/chart') . ' ' . I18N::translate('Custom GEDCOM tags'),
-            ''
-        );
+        $this->gedcom->registerTags();
+
+        return $handler->handle($request);
     }
 }
