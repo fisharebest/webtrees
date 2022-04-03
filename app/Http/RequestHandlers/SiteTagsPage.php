@@ -58,7 +58,7 @@ class SiteTagsPage implements RequestHandlerInterface
         );
 
         $all_individual_tags = $all_individual_tags->mapWithKeys(
-            static fn (string $tag): array => [$tag => Registry::elementFactory()->make('INDI:' . $tag)->label(). ' - ' . $tag]
+            static fn (string $tag): array => [$tag => Registry::elementFactory()->make('INDI:' . $tag)->label() . ' - ' . $tag]
         );
 
         $custom_gedcom_l_tags = (bool) Site::getPreference('CUSTOM_GEDCOM_L_TAGS');

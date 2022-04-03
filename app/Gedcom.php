@@ -1874,7 +1874,7 @@ class Gedcom
 
         return $subtags;
     }
-    
+
     public function registerTags(): void
     {
         // Standard GEDCOM.
