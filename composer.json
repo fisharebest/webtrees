@@ -70,8 +70,8 @@
         "psr/http-server-middleware": "1.0.1",
         "ramsey/uuid": "3.9.6",
         "swiftmailer/swiftmailer": "6.3.0",
-        "symfony/cache": "4.4.38",
-        "symfony/expression-language": "4.4.37",
+        "symfony/cache": "4.4.40",
+        "symfony/expression-language": "4.4.40",
         "symfony/polyfill-mbstring": "1.25.0",
         "symfony/polyfill-php80": "1.25.0",
         "tecnickcom/tcpdf": "6.4.4"
