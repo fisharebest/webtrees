@@ -32,11 +32,20 @@ use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\MarkdownConverter;
 use League\CommonMark\Node\Block\Document;
 use League\CommonMark\Node\Block\Paragraph;
+use League\CommonMark\Node\Inline\Newline;
 use League\CommonMark\Node\Inline\Text;
+use League\CommonMark\Parser\Inline\NewlineParser;
 use League\CommonMark\Renderer\Block\DocumentRenderer;
 use League\CommonMark\Renderer\Block\ParagraphRenderer;
+use League\CommonMark\Renderer\Inline\NewlineRenderer;
 use League\CommonMark\Renderer\Inline\TextRenderer;
 use League\CommonMark\Util\HtmlFilter;
+
+use function e;
+use function rtrim;
+use function strip_tags;
+use function strtr;
+use function var_dump;
 
 /**
  * Create a markdown converter.
@@ -47,7 +56,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => "\n",
+            'soft_break'     => '<br>',
         ],
     ];
 
@@ -55,7 +64,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => "\n",
+            'soft_break'     => '<br>',
         ],
         'table'              => [
             'wrap' => [
@@ -78,10 +87,12 @@ class MarkdownFactory implements MarkdownFactoryInterface
     {
         // Create a minimal commonmark processor - just add support for auto-links.
         $environment = new Environment(static::CONFIG_AUTOLINK);
+        $environment->addInlineParser(new NewlineParser());
         $environment->addRenderer(Document::class, new DocumentRenderer());
         $environment->addRenderer(Paragraph::class, new ParagraphRenderer());
         $environment->addRenderer(Text::class, new TextRenderer());
         $environment->addRenderer(Link::class, new LinkRenderer());
+        $environment->addRenderer(Newline::class, new NewlineRenderer());
         $environment->addExtension(new AutolinkExtension());
 
         // Optionally create links to other records.

@@ -90,7 +90,6 @@ class MarkdownFactoryTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\CommonMark\XrefExtension
      * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
      */
     public function testMarkdownWithTree(): void
@@ -110,7 +109,6 @@ class MarkdownFactoryTest extends TestCase
     }
 
     /**
-     * @covers \Fisharebest\Webtrees\CommonMark\XrefExtension
      * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
      */
     public function testMarkdownWithHtml(): void
@@ -120,6 +118,42 @@ class MarkdownFactoryTest extends TestCase
         static::assertSame(
             "<p>&lt;b&gt; <a href=\"https://example.com\">https://example.com</a> &lt;/b&gt;</p>\n",
             $factory->markdown('<b> <https://example.com> </b>')
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
+     */
+    public function testSoftLineBreaks(): void
+    {
+        $factory = new MarkdownFactory();
+
+        static::assertSame(
+            "<p>alpha<br>beta<br>gamma<br />\ndelta</p>\n",
+            $factory->autolink("alpha\nbeta\ngamma  \ndelta")
+        );
+
+        static::assertSame(
+            "<p>alpha<br>beta<br>gamma<br />\ndelta</p>\n",
+            $factory->markdown("alpha\nbeta\ngamma  \ndelta")
+        );
+    }
+
+    /**
+     * @covers \Fisharebest\Webtrees\Factories\MarkdownFactory
+     */
+    public function testMultipleParagraphs(): void
+    {
+        $factory = new MarkdownFactory();
+
+        static::assertSame(
+            "<p>alpha<br>beta</p>\n<p>gamma<br>delta</p>\n",
+            $factory->autolink("alpha\nbeta\n\n\n\ngamma\ndelta")
+        );
+
+        static::assertSame(
+            "<p>alpha<br>beta</p>\n<p>gamma<br>delta</p>\n",
+            $factory->markdown("alpha\nbeta\n\n\n\ngamma\ndelta")
         );
     }
 }
