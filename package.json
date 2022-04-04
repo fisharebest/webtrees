@@ -6,7 +6,6 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "@mjhenkes/postcss-rtl": "2.0.0",
     "autoprefixer": "10.4.4",
     "cross-env": "7.0.3",
     "laravel-mix": "6.0.43",
@@ -14,6 +13,7 @@
     "postcss-custom-properties": "12.1.5",
     "postcss-image-inliner": "5.0.0",
     "postcss-import": "14.1.0",
+    "postcss-rtlcss": "3.5.4",
     "resolve-url-loader": "5.0.0",
     "sass": "1.49.11",
     "sass-loader": "12.6.0",
