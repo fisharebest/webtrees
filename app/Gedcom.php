@@ -836,12 +836,20 @@ class Gedcom
 
     /**
      * @return array<string,ElementInterface>
+     *
+     * @see https://www.webtrees.net/index.php/en/forum/help-for-release-2-1-x/36664-2-1-beta-support-for-indi-even-sour-data-note-and-the-like
      */
     private function ancestryTags(): array
     {
         return [
-            'INDI:*:SOUR:_APID' => new CustomElement(I18N::translate('Ancestry PID')),
-            'INDI:_EMPLOY'      => new CustomFact(I18N::translate('Occupation')),
+            'INDI:*:SOUR:_APID'     => new CustomElement(I18N::translate('Ancestry PID')),
+            'INDI:*:SOUR:DATA:NOTE' => new SubmitterText(I18N::translate('Note')),
+            'INDI:_EMPLOY'          => new CustomFact(I18N::translate('Occupation')),
+            'OBJE:DATE'             => new DateValue(I18N::translate('Date')),
+            'OBJE:PLAC'             => new PlaceName(I18N::translate('Place')),
+            'OBJE:_CREA'            => /* I18N: GEDCOM tag _CREA */ new CustomElement(I18N::translate('Created at')),
+            'OBJE:_ORIG'            => /* I18N: GEDCOM tag _ORIG */ new CustomElement(I18N::translate('Original text')),
+            'OBJE:_ORIG:_URL'       => new AddressWebPage(I18N::translate('URL')),
         ];
     }
 
