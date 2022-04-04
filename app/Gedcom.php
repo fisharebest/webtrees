@@ -845,7 +845,7 @@ class Gedcom
             'HEAD:SOUR:_TREE'       => new CustomElement(I18N::translate('Family tree')),
             'HEAD:SOUR:_TREE:NOTE'  => new SubmitterText(I18N::translate('Note')),
             'HEAD:SOUR:_TREE:RIN'   => new AutomatedRecordId(I18N::translate('Record ID number')),
-            'INDI:*:SOUR:_APID'     => new CustomElement(I18N::translate('Ancestry PID')),
+            'INDI:*:SOUR:_APID'     => /* I18N: GEDCOM tag _APID */ new CustomElement(I18N::translate('Ancestry PID')),
             'INDI:*:SOUR:DATA:NOTE' => new SubmitterText(I18N::translate('Note')),
             'INDI:_EMPLOY'          => new CustomFact(I18N::translate('Occupation')),
             'OBJE:DATE'             => new DateValue(I18N::translate('Date')),
