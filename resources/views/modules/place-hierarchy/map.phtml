@@ -94,10 +94,10 @@ use Fisharebest\Webtrees\View;
 
       map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15});
       sidebar.innerHTML = <?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>;
-   };
+    };
 
     window.onload = function() {
-    // Activate marker popup when sidebar entry clicked
+      // Activate marker popup when sidebar entry clicked
       sidebar.addEventListener('click', (evt) => {
         // Has this location got map co-ordinates?
         if (!evt.target.closest('a') && evt.target.closest('li.mapped')) {
@@ -119,11 +119,11 @@ use Fisharebest\Webtrees\View;
 
           return false;
         }
-    });
-  }
+      });
+    };
 
-  _drawMap();
-  _buildMapData();
+    _drawMap();
+    _buildMapData();
   })();
 </script>
 <?php View::endpush() ?>
