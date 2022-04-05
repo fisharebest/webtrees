@@ -65,8 +65,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     public const MINIMUM_GENERATIONS = 1;
     public const MAXIMUM_GENERATIONS = 10;
 
-    // CSS colors defined for each generation
-    private const GENERATION_COLORS = 12;
+    // CSS colors for each generation
+    private const COUNT_CSS_COLORS = 12;
 
     private ChartService $chart_service;
 
@@ -245,7 +245,7 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 $polyline           = null;
                 $sosa_points[$sosa] = [$latitude, $longitude];
                 $sosa_child         = intdiv($sosa, 2);
-                $color              = 'var(--wt-pedigree-map-gen-' . $sosa_child % self::GENERATION_COLORS . ')';
+                $color              = 'var(--wt-pedigree-map-gen-' . $sosa_child % self::COUNT_CSS_COLORS . ')';
 
                 if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
