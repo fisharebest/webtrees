@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Illuminate\Support\Collection;
 
+use function preg_match;
+
 /**
  * Class NotesTabModule
  */
@@ -32,6 +34,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
 {
     use ModuleTabTrait;
 
+    /** @var Collection<array-key,Fact>|null  */
     private ?Collection $facts = null;
 
     private ClipboardService $clipboard_service;
@@ -125,7 +128,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
      *
      * @param Individual $individual
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     private function getFactsWithNotes(Individual $individual): Collection
     {
@@ -140,13 +143,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
                 }
             }
 
-            $this->facts = new Collection();
+            $callback = static fn (Fact $fact): bool => preg_match('/(?:^1|\n\d) NOTE/', $fact->gedcom()) === 1;
 
-            foreach ($facts as $fact) {
-                if (preg_match('/(?:^1|\n\d) NOTE/', $fact->gedcom())) {
-                    $this->facts->push($fact);
-                }
-            }
+            $this->facts = $facts->filter($callback);
+
             $this->facts = Fact::sortFacts($this->facts);
         }
 
@@ -166,7 +166,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface
     /**
      * This module handles the following facts - so don't show them on the "Facts and events" tab.
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function supportedFacts(): Collection
     {

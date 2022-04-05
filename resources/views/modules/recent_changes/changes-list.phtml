@@ -5,12 +5,12 @@ use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
 
 /**
- * @var int                $id
- * @var int                $limit_low
- * @var int                $limit_high
- * @var Collection<object> $rows
- * @var bool               $show_date
- * @var bool               $show_user
+ * @var int                    $id
+ * @var int                    $limit_low
+ * @var int                    $limit_high
+ * @var Collection<int,object> $rows
+ * @var bool                   $show_date
+ * @var bool                   $show_user
  */
 
 ?>
@@ -33,7 +33,7 @@ use Illuminate\Support\Collection;
                 ev.target.parentNode.removeChild(ev.target);
             });
         </script>
-        <?php View::endPush() ?>
+        <?php View::endpush() ?>
     <?php endif ?>
 
     <div class="<?= $n >= $limit_low && $rows->count() > $limit_high ? 'd-none' : '' ?>">

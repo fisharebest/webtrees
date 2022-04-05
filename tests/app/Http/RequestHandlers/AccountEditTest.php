@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,16 +17,14 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\AccountEdit;
-use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\User;
+use Illuminate\Support\Collection;
 
 /**
  * Test the AccountEdit request handler.
@@ -42,10 +40,16 @@ class AccountEditTest extends TestCase
      */
     public function testHandler(): void
     {
-        $user     = $this->createMock(User::class);
-        $handler  = new AccountEdit(new MessageService(new EmailService(), new UserService()), new ModuleService());
-        $request  = self::createRequest()
+        $user            = $this->createStub(User::class);
+        $message_service = $this->createStub(MessageService::class);
+        $module_service  = $this->createStub(ModuleService::class);
+
+        $module_service->method('findByInterface')->willReturn(new Collection([]));
+
+        $request = self::createRequest()
             ->withAttribute('user', $user);
+
+        $handler  = new AccountEdit($message_service, $module_service);
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Report;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 
 use function preg_match;
 use function strtoupper;
@@ -30,7 +30,7 @@ use function strtoupper;
  */
 class ReportParserSetup extends ReportParserBase
 {
-    /** @var array An array of report options/parameters */
+    /** @var array<string,string|array<string>> An array of report options/parameters */
     private array $data = [];
 
     /** @var array<string> An array of input attributes */
@@ -39,7 +39,7 @@ class ReportParserSetup extends ReportParserBase
     /**
      * Return the parsed data.
      *
-     * @return array
+     * @return array<string,string|array<string>>
      */
     public function reportProperties(): array
     {
@@ -121,12 +121,12 @@ class ReportParserSetup extends ReportParserBase
 
         if (isset($attrs['default'])) {
             if ($attrs['default'] === 'NOW') {
-                $date = Carbon::now();
+                $date = Registry::timestampFactory()->now();
                 $this->input['default'] = strtoupper($date->format('d M Y'));
             } else {
                 $match = [];
                 if (preg_match('/NOW([+\-]\d+)/', $attrs['default'], $match) > 0) {
-                    $date = Carbon::now()->addDays((int) $match[1]);
+                    $date = Registry::timestampFactory()->now()->addDays((int)$match[1]);
                     $this->input['default'] = strtoupper($date->format('d M Y'));
                 } else {
                     $this->input['default'] = $attrs['default'];

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
@@ -35,8 +35,15 @@ use Psr\Http\Message\StreamInterface;
 use RuntimeException;
 
 use function assert;
-use function strlen;
+use function fclose;
+use function feof;
+use function fread;
+use function max;
+use function stream_filter_append;
+use function strrpos;
 use function substr;
+
+use const STREAM_FILTER_READ;
 
 /**
  * Tree management and queries.
@@ -53,10 +60,20 @@ class TreeService
         'pt-BR' => 'portuguese',
     ];
 
+    private GedcomImportService $gedcom_import_service;
+
+    /**
+     * @param GedcomImportService $gedcom_import_service
+     */
+    public function __construct(GedcomImportService $gedcom_import_service)
+    {
+        $this->gedcom_import_service = $gedcom_import_service;
+    }
+
     /**
      * All the trees that the current user has permission to access.
      *
-     * @return Collection<Tree>
+     * @return Collection<array-key,Tree>
      */
     public function all(): Collection
     {
@@ -202,13 +219,13 @@ class TreeService
 
         // A tree needs at least one record.
         $head = "0 HEAD\n1 SOUR webtrees\n2 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8";
-        FunctionsImport::importRecord($head, $tree, true);
+        $this->gedcom_import_service->importRecord($head, $tree, true);
 
         // I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname.
         $name = I18N::translate('John /DOE/');
         $note = I18N::translate('Edit this individual and replace their details with your own.');
         $indi = "0 @X1@ INDI\n1 NAME " . $name . "\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE " . $note;
-        FunctionsImport::importRecord($indi, $tree, true);
+        $this->gedcom_import_service->importRecord($indi, $tree, true);
 
         return $tree;
     }
@@ -219,10 +236,11 @@ class TreeService
      * @param Tree            $tree
      * @param StreamInterface $stream   The GEDCOM file.
      * @param string          $filename The preferred filename, for export/download.
+     * @param string          $encoding Override the encoding specified in the header.
      *
      * @return void
      */
-    public function importGedcomFile(Tree $tree, StreamInterface $stream, string $filename): void
+    public function importGedcomFile(Tree $tree, StreamInterface $stream, string $filename, string $encoding): void
     {
         // Read the file in blocks of roughly 64K. Ensure that each block
         // contains complete gedcom records. This will ensure we don’t split
@@ -236,30 +254,31 @@ class TreeService
 
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
 
-        while (!$stream->eof()) {
-            $file_data .= $stream->read(65536);
-            // There is no strrpos() function that searches for substrings :-(
-            for ($pos = strlen($file_data) - 1; $pos > 0; --$pos) {
-                if ($file_data[$pos] === '0' && ($file_data[$pos - 1] === "\n" || $file_data[$pos - 1] === "\r")) {
-                    // We’ve found the last record boundary in this chunk of data
-                    break;
-                }
-            }
-            if ($pos) {
+        $stream = $stream->detach();
+
+        // Convert to UTF-8.
+        stream_filter_append($stream, GedcomEncodingFilter::class, STREAM_FILTER_READ, ['src_encoding' => $encoding]);
+
+        while (!feof($stream)) {
+            $file_data .= fread($stream, 65536);
+            $eol_pos = max((int) strrpos($file_data, "\r0"), (int) strrpos($file_data, "\n0"));
+
+            if ($eol_pos > 0) {
                 DB::table('gedcom_chunk')->insert([
                     'gedcom_id'  => $tree->id(),
-                    'chunk_data' => substr($file_data, 0, $pos),
+                    'chunk_data' => substr($file_data, 0, $eol_pos + 1),
                 ]);
 
-                $file_data = substr($file_data, $pos);
+                $file_data = substr($file_data, $eol_pos + 1);
             }
         }
+
         DB::table('gedcom_chunk')->insert([
             'gedcom_id'  => $tree->id(),
             'chunk_data' => $file_data,
         ]);
 
-        $stream->close();
+        fclose($stream);
     }
 
     /**
@@ -273,9 +292,18 @@ class TreeService
         }
 
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
-
-        $this->deleteGenealogyData($tree, false);
-
+        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
+        DB::table('families')->where('f_file', '=', $tree->id())->delete();
+        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
+        DB::table('other')->where('o_file', '=', $tree->id())->delete();
+        DB::table('places')->where('p_file', '=', $tree->id())->delete();
+        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
+        DB::table('name')->where('n_file', '=', $tree->id())->delete();
+        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
+        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
+        DB::table('link')->where('l_file', '=', $tree->id())->delete();
+        DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
+        DB::table('media')->where('m_file', '=', $tree->id())->delete();
         DB::table('block_setting')
             ->join('block', 'block.block_id', '=', 'block_setting.block_id')
             ->where('gedcom_id', '=', $tree->id())
@@ -289,40 +317,6 @@ class TreeService
         DB::table('gedcom_chunk')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('log')->where('gedcom_id', '=', $tree->id())->delete();
         DB::table('gedcom')->where('gedcom_id', '=', $tree->id())->delete();
-    }
-
-    /**
-     * Delete all the genealogy data from a tree - in preparation for importing
-     * new data. Optionally retain the media data, for when the user has been
-     * editing their data offline using an application which deletes (or does not
-     * support) media data.
-     *
-     * @param Tree $tree
-     * @param bool $keep_media
-     *
-     * @return void
-     */
-    public function deleteGenealogyData(Tree $tree, bool $keep_media): void
-    {
-        DB::table('individuals')->where('i_file', '=', $tree->id())->delete();
-        DB::table('families')->where('f_file', '=', $tree->id())->delete();
-        DB::table('sources')->where('s_file', '=', $tree->id())->delete();
-        DB::table('other')->where('o_file', '=', $tree->id())->delete();
-        DB::table('places')->where('p_file', '=', $tree->id())->delete();
-        DB::table('placelinks')->where('pl_file', '=', $tree->id())->delete();
-        DB::table('name')->where('n_file', '=', $tree->id())->delete();
-        DB::table('dates')->where('d_file', '=', $tree->id())->delete();
-        DB::table('change')->where('gedcom_id', '=', $tree->id())->delete();
-
-        if ($keep_media) {
-            DB::table('link')->where('l_file', '=', $tree->id())
-                ->where('l_type', '<>', 'OBJE')
-                ->delete();
-        } else {
-            DB::table('link')->where('l_file', '=', $tree->id())->delete();
-            DB::table('media_file')->where('m_file', '=', $tree->id())->delete();
-            DB::table('media')->where('m_file', '=', $tree->id())->delete();
-        }
     }
 
     /**

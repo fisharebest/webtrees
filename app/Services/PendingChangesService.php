@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,10 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Exceptions\GedcomErrorException;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
@@ -49,12 +47,22 @@ use function preg_match;
  */
 class PendingChangesService
 {
+    private GedcomImportService $gedcom_import_service;
+
+    /**
+     * @param GedcomImportService $gedcom_import_service
+     */
+    public function __construct(GedcomImportService $gedcom_import_service)
+    {
+        $this->gedcom_import_service = $gedcom_import_service;
+    }
+
     /**
      * Which records have pending changes
      *
      * @param Tree $tree
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function pendingXrefs(Tree $tree): Collection
     {
@@ -101,7 +109,7 @@ class PendingChangesService
         ];
 
         foreach ($rows as $row) {
-            $row->change_time = Carbon::make($row->change_time);
+            $row->change_time = Registry::timestampFactory()->fromString($row->change_time);
 
             preg_match('/^0 (?:@' . Gedcom::REGEX_XREF . '@ )?(' . Gedcom::REGEX_TAG . ')/', $row->old_gedcom . $row->new_gedcom, $match);
 
@@ -140,10 +148,10 @@ class PendingChangesService
         foreach ($changes as $change) {
             if ($change->new_gedcom === '') {
                 // delete
-                FunctionsImport::updateRecord($change->old_gedcom, $tree, true);
+                $this->gedcom_import_service->updateRecord($change->old_gedcom, $tree, true);
             } else {
                 // add/update
-                FunctionsImport::updateRecord($change->new_gedcom, $tree, false);
+                $this->gedcom_import_service->updateRecord($change->new_gedcom, $tree, false);
             }
 
             DB::table('change')
@@ -170,10 +178,10 @@ class PendingChangesService
         foreach ($changes as $change) {
             if ($change->new_gedcom === '') {
                 // delete
-                FunctionsImport::updateRecord($change->old_gedcom, $record->tree(), true);
+                $this->gedcom_import_service->updateRecord($change->old_gedcom, $record->tree(), true);
             } else {
                 // add/update
-                FunctionsImport::updateRecord($change->new_gedcom, $record->tree(), false);
+                $this->gedcom_import_service->updateRecord($change->new_gedcom, $record->tree(), false);
             }
 
             DB::table('change')
@@ -201,10 +209,10 @@ class PendingChangesService
         foreach ($changes as $change) {
             if ($change->new_gedcom === '') {
                 // delete
-                FunctionsImport::updateRecord($change->old_gedcom, $record->tree(), true);
+                $this->gedcom_import_service->updateRecord($change->old_gedcom, $record->tree(), true);
             } else {
                 // add/update
-                FunctionsImport::updateRecord($change->new_gedcom, $record->tree(), false);
+                $this->gedcom_import_service->updateRecord($change->new_gedcom, $record->tree(), false);
             }
 
             DB::table('change')
@@ -281,12 +289,12 @@ class PendingChangesService
             ->where('gedcom_name', '=', $tree);
 
         if ($from !== '') {
-            $query->where('change_time', '>=', $from);
+            $query->where('change_time', '>=', Registry::timestampFactory()->fromString($from, 'Y-m-d')->toDateString());
         }
 
         if ($to !== '') {
             // before end of the day
-            $query->where('change_time', '<', Carbon::make($to)->addDay());
+            $query->where('change_time', '<', Registry::timestampFactory()->fromString($to, 'Y-m-d')->addDays(1)->toDateString());
         }
 
         if ($type !== '') {

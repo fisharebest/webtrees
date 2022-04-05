@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -200,7 +200,7 @@ class PdfRenderer extends AbstractRenderer
     {
         $this->currentStyle = $s;
         $style              = $this->getStyle($s);
-        $this->tcpdf->SetFont($style['font'], $style['style'], $style['size']);
+        $this->tcpdf->setFont($style['font'], $style['style'], $style['size']);
     }
 
     /**
@@ -208,7 +208,7 @@ class PdfRenderer extends AbstractRenderer
      *
      * @param string $s Style name
      *
-     * @return array
+     * @return array<string,string>
      */
     public function getStyle(string $s): array
     {
@@ -236,7 +236,7 @@ class PdfRenderer extends AbstractRenderer
         } else {
             $x += $m['left'];
         }
-        $this->tcpdf->SetX($x);
+        $this->tcpdf->setX($x);
 
         return $x;
     }
@@ -370,19 +370,19 @@ class PdfRenderer extends AbstractRenderer
             self::DISK_CACHE
         );
 
-        $this->tcpdf->SetMargins($this->left_margin, $this->top_margin, $this->right_margin);
+        $this->tcpdf->setMargins($this->left_margin, $this->top_margin, $this->right_margin);
         $this->tcpdf->setHeaderMargin($this->header_margin);
         $this->tcpdf->setFooterMargin($this->footer_margin);
-        $this->tcpdf->SetAutoPageBreak(true, $this->bottom_margin);
+        $this->tcpdf->setAutoPageBreak(true, $this->bottom_margin);
         $this->tcpdf->setFontSubsetting(self::SUBSETTING);
-        $this->tcpdf->SetCompression(self::COMPRESSION);
+        $this->tcpdf->setCompression(self::COMPRESSION);
         $this->tcpdf->setRTL($this->rtl);
-        $this->tcpdf->SetCreator(Webtrees::NAME . ' ' . Webtrees::VERSION);
-        $this->tcpdf->SetAuthor($this->rauthor);
-        $this->tcpdf->SetTitle($this->title);
-        $this->tcpdf->SetSubject($this->rsubject);
-        $this->tcpdf->SetKeywords($this->rkeywords);
-        $this->tcpdf->SetHeaderData('', 0, $this->title);
+        $this->tcpdf->setCreator(Webtrees::NAME . ' ' . Webtrees::VERSION);
+        $this->tcpdf->setAuthor($this->rauthor);
+        $this->tcpdf->setTitle($this->title);
+        $this->tcpdf->setSubject($this->rsubject);
+        $this->tcpdf->setKeywords($this->rkeywords);
+        $this->tcpdf->setHeaderData('', 0, $this->title);
         $this->tcpdf->setHeaderFont([$this->default_font, '', $this->default_font_size]);
 
         if ($this->show_generated_by) {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,21 +20,20 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -70,10 +69,10 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -84,7 +83,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
             ->orderByDesc('updated')
             ->get()
             ->map(static function (object $row): object {
-                $row->updated = Carbon::make($row->updated);
+                $row->updated = Registry::timestampFactory()->fromString($row->updated);
 
                 return $row;
             });
@@ -159,8 +158,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function getEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         if (!Auth::check()) {
             throw new HttpAccessDeniedException();
@@ -200,8 +198,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postEditJournalAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         if (!Auth::check()) {
             throw new HttpAccessDeniedException();
@@ -245,9 +242,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteJournalAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree    = Validator::attributes($request)->tree();
         $news_id = $request->getQueryParams()['news_id'];
 
         DB::table('news')

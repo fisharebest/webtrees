@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -51,20 +51,20 @@ class ServerCheckService
     private const PHP_SUPPORT_URL   = 'https://www.php.net/supported-versions.php';
     private const PHP_MINOR_VERSION = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
     private const PHP_SUPPORT_DATES = [
-        '7.3' => '2021-12-06',
         '7.4' => '2022-11-28',
         '8.0' => '2023-11-26',
+        '8.1' => '2024-11-25',
     ];
 
-    // As required by illuminate/database 5.8
-    private const MINIMUM_SQLITE_VERSION = '3.7.11';
+    // As required by illuminate/database 8.x
+    private const MINIMUM_SQLITE_VERSION = '3.8.8';
 
     /**
      * Things that may cause webtrees to break.
      *
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function serverErrors(string $driver = ''): Collection
     {
@@ -88,7 +88,7 @@ class ServerCheckService
      *
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function serverWarnings(string $driver = ''): Collection
     {
@@ -274,7 +274,7 @@ class ServerCheckService
     /**
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     private function databaseDriverErrors(string $driver): Collection
     {
@@ -313,7 +313,7 @@ class ServerCheckService
     /**
      * @param string $driver
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     private function databaseDriverWarnings(string $driver): Collection
     {

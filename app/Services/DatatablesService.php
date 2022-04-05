@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,7 +40,7 @@ class DatatablesService
      * Apply filtering and pagination to a collection, and generate a response suitable for datatables.
      *
      * @param ServerRequestInterface   $request        Includes the datatables request parameters.
-     * @param Collection<mixed>        $collection     All the data.
+     * @param Collection<int,mixed>    $collection     All the data.
      * @param array<string>|array<int> $search_columns The names of searchable columns.
      * @param array<string>|array<int> $sort_columns   Sort column mapping.
      * @param Closure                  $callback       Converts a row-object to an array-of-columns.

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,11 +25,11 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleInterface;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function is_numeric;
 use function is_object;
 
@@ -59,10 +59,8 @@ class HomePageService
      */
     public function treeBlock(ServerRequestInterface $request): ModuleBlockInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $block_id = (int) $request->getQueryParams()['block_id'];
+        $tree     = Validator::attributes($request)->tree();
+        $block_id = Validator::attributes($request)->integer('block_id');
 
         $block = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -91,7 +89,7 @@ class HomePageService
      */
     public function userBlock(ServerRequestInterface $request, UserInterface $user): ModuleBlockInterface
     {
-        $block_id = (int) $request->getQueryParams()['block_id'];
+        $block_id = Validator::attributes($request)->integer('block_id');
 
         $block = DB::table('block')
             ->where('block_id', '=', $block_id)
@@ -278,9 +276,9 @@ class HomePageService
     /**
      * Save the updated blocks for a user.
      *
-     * @param int                $user_id
-     * @param Collection<string> $main_block_ids
-     * @param Collection<string> $side_block_ids
+     * @param int                    $user_id
+     * @param Collection<int,string> $main_block_ids
+     * @param Collection<int,string> $side_block_ids
      *
      * @return void
      */
@@ -335,9 +333,9 @@ class HomePageService
     /**
      * Save the updated blocks for a tree.
      *
-     * @param int                $tree_id
-     * @param Collection<string> $main_block_ids
-     * @param Collection<string> $side_block_ids
+     * @param int                    $tree_id
+     * @param Collection<int,string> $main_block_ids
+     * @param Collection<int,string> $side_block_ids
      *
      * @return void
      */
@@ -392,7 +390,7 @@ class HomePageService
     /**
      * Take a list of block names, and return block (module) objects.
      *
-     * @param Collection<string>                   $blocks
+     * @param Collection<int,string>               $blocks
      * @param Collection<int,ModuleBlockInterface> $active_blocks
      *
      * @return Collection<int,ModuleBlockInterface>

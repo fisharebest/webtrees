@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
-use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Registry;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
@@ -54,12 +54,12 @@ class SiteLogsService
             ->select(['log.*', new Expression("COALESCE(user_name, '<none>') AS user_name"), new Expression("COALESCE(gedcom_name, '<none>') AS gedcom_name")]);
 
         if ($from !== '') {
-            $query->where('log_time', '>=', $from);
+            $query->where('log_time', '>=', Registry::timestampFactory()->fromString($from, 'Y-m-d')->toDateString());
         }
 
         if ($to !== '') {
             // before end of the day
-            $query->where('log_time', '<', Carbon::make($to)->addDay());
+            $query->where('log_time', '<', Registry::timestampFactory()->fromString($to, 'Y-m-d')->addDays(1)->toDateString());
         }
 
         if ($type !== '') {

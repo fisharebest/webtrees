@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Children in family') ?>
+</h4>
+
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Average number of children per family') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#averageChildren#</span>
+            </h5>
+            <div class="card-body">
+                #statsChildren#
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Number of families without children') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#noChildrenFamilies#</span>
+            </h5>
+            <div class="card-body">
+                #chartNoChildrenFamilies#
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Largest families') ?>
+            </h5>
+            #topTenLargestFamilyList#
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Largest number of grandchildren') ?>
+            </h5>
+            #topTenLargestGrandFamilyList#
+        </div>
+    </div>
+</div>

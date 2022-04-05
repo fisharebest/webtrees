@@ -1,17 +1,16 @@
 <?php
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddNewFact;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
- * @var bool             $can_edit
- * @var Collection<Fact> $clipboard_facts
- * @var Collection<Fact> $facts
- * @var Individual       $individual
+ * @var bool                 $can_edit
+ * @var Collection<int,Fact> $clipboard_facts
+ * @var Collection<int,Fact> $facts
+ * @var Individual           $individual
  */
 
 ?>
@@ -21,22 +20,48 @@ use Illuminate\Support\Collection;
         <tr>
             <td colspan="2">
                 <label>
-                    <input id="show-level-2-sources" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-source" data-wt-persist="level-two-sources">
+                    <input id="show-level-2-sources" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-level-two-source" data-wt-persist="level-two-sources" autocomplete="off">
                     <?= I18N::translate('Show all sources') ?>
                 </label>
             </td>
         </tr>
 
         <?php foreach ($facts as $fact) : ?>
-            <?php FunctionsPrintFacts::printMainSources($fact, 1) ?>
-            <?php FunctionsPrintFacts::printMainSources($fact, 2) ?>
+            <?php if (str_ends_with($fact->tag(), ':SOUR')) : ?>
+                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
+            <?php else : ?>
+                <?php
+                    if ($fact->isPendingAddition()) {
+                        $styleadd = 'wt-new ';
+                    } elseif ($fact->isPendingDeletion()) {
+                        $styleadd = 'wt-old ';
+                    } else {
+                        $styleadd = '';
+                    }
+                ?>
+
+                <tr class="wt-level-two-source collapse">
+                    <th scope="row" class="rela <?= $styleadd ?>">
+                        <?= $fact->label() ?>
+                        <?= view('fact-edit-links', ['fact' => $fact, 'url' => $fact->record()->url() . '#tab-sources']) ?>
+                    </th>
+
+                    <td class="<?= $styleadd ?>">
+                        <?php if (preg_match_all('/\n(2 SOUR\b.*(?:\n[^2].*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) > 0) : ?>
+                            <?php foreach($matches as $match) : ?>
+                                <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag(), 'tree' => $fact->record()->tree()]) ?>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    </td>
+                </tr>
+            <?php endif ?>
         <?php endforeach ?>
 
         <?php if ($facts->isEmpty()) : ?>
             <tr>
                 <td colspan="2">
                     <?= I18N::translate('There are no source citations for this individual.') ?>
-                    </td>
+                </td>
             </tr>
         <?php endif ?>
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -100,14 +100,14 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function individualsToFix(Tree $tree, array $params): Collection
     {
         return $this->individualsToFixQuery($tree, $params)
             ->where(static function (Builder $query): void {
                 foreach (array_keys(self::CONVERT) as $tag) {
-                    $query->orWhere('i_gedcom', 'LIKE', "%\n2 " . $tag . " %");
+                    $query->orWhere('i_gedcom', 'LIKE', "%\n2 " . $tag . ' %');
                 }
             })
             ->pluck('i_id');

@@ -34,7 +34,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             $found |= !$fact->isPendingDeletion();
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-gender-' . $person->sex();
+                $row_class = 'wt-sex-' . strtolower($person->sex());
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -71,7 +71,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
             $person = $fact->target();
             if ($person instanceof Individual) {
                 $found |= !$fact->isPendingDeletion();
-                $row_class = 'wt-gender-' . $person->sex();
+                $row_class = 'wt-sex-' . strtolower($person->sex());
                 if ($fact->isPendingAddition()) {
                     $row_class .= ' wt-new';
                 } elseif ($fact->isPendingDeletion()) {
@@ -157,7 +157,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
         foreach ($family->facts(['CHIL'], false, $fam_access_level) as $fact) {
             $person = $fact->target();
             if ($person instanceof Individual) {
-                $row_class = 'wt-gender-' . $person->sex();
+                $row_class = 'wt-sex-' . strtolower($person->sex());
                 if ($fact->isPendingAddition()) {
                     $child_number++;
                     $row_class .= ' new';

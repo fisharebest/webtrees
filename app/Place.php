@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,7 +44,7 @@ class Place
     // "Westminster, London, England"
     private string $place_name;
 
-    /** @var Collection<string> The parts of a place name, e.g. ["Westminster", "London", "England"] */
+    /** @var Collection<int,string> The parts of a place name, e.g. ["Westminster", "London", "England"] */
     private Collection $parts;
 
     private Tree $tree;
@@ -161,7 +161,7 @@ class Place
      *
      * @param int $n
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function firstParts(int $n): Collection
     {
@@ -173,7 +173,7 @@ class Place
      *
      * @param int $n
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function lastParts(int $n): Collection
     {

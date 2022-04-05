@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -41,14 +41,12 @@ class Individual extends GedcomRecord
 
     protected const ROUTE_NAME = IndividualPage::class;
 
-    /** @var int used in some lists to keep track of this individual’s generation in that list */
-    public $generation;
+    /** Used in some lists to keep track of this individual’s generation in that list */
+    public ?int $generation = null;
 
-    /** @var Date The estimated date of birth */
-    private $estimated_birth_date;
+    private ?Date $estimated_birth_date = null;
 
-    /** @var Date The estimated date of death */
-    private $estimated_death_date;
+    private ?Date $estimated_death_date = null;
 
     /**
      * A closure which will compare individuals by birth date.
@@ -257,7 +255,7 @@ class Individual extends GedcomRecord
     public function isDead(): bool
     {
         $MAX_ALIVE_AGE = (int) $this->tree->getPreference('MAX_ALIVE_AGE');
-        $today_jd      = Carbon::now()->julianDay();
+        $today_jd      = Registry::timestampFactory()->now()->julianDay();
 
         // "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
         if (preg_match('/\n1 (?:' . implode('|', Gedcom::DEATH_EVENTS) . ')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
@@ -368,7 +366,7 @@ class Individual extends GedcomRecord
     }
 
     /**
-     * Display the prefered image for this individual.
+     * Display the preferred image for this individual.
      * Use an icon if no image is available.
      *
      * @param int           $width      Pixels
@@ -387,7 +385,7 @@ class Individual extends GedcomRecord
         }
 
         if ($this->tree->getPreference('USE_SILHOUETTE')) {
-            return '<i class="icon-silhouette-' . $this->sex() . '"></i>';
+            return '<i class="icon-silhouette icon-silhouette-' . strtolower($this->sex()) . ' wt-icon-flip-rtl"></i>';
         }
 
         return '';
@@ -680,7 +678,7 @@ class Individual extends GedcomRecord
      */
     public function sex(): string
     {
-        if (preg_match('/\n1 SEX ([MF])/', $this->gedcom . $this->pending, $match)) {
+        if (preg_match('/\n1 SEX ([MFX])/', $this->gedcom . $this->pending, $match)) {
             return $match[1];
         }
 
@@ -692,7 +690,7 @@ class Individual extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     public function spouseFamilies(int $access_level = null): Collection
     {
@@ -758,7 +756,7 @@ class Individual extends GedcomRecord
      *
      * @param int|null $access_level
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     public function childFamilies(int $access_level = null): Collection
     {
@@ -783,7 +781,7 @@ class Individual extends GedcomRecord
     /**
      * Get a list of step-parent families.
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     public function childStepFamilies(): Collection
     {
@@ -807,7 +805,7 @@ class Individual extends GedcomRecord
     /**
      * Get a list of step-parent families.
      *
-     * @return Collection<Family>
+     * @return Collection<int,Family>
      */
     public function spouseStepFamilies(): Collection
     {

@@ -3,20 +3,26 @@
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var Note                   $record
- * @var Collection<Fact>       $clipboard_facts
- * @var Collection<Family>     $linked_families
- * @var Collection<Individual> $linked_individuals
- * @var Collection<Media>      $linked_media_objects
- * @var Collection<Source>     $linked_sources
- * @var Tree                   $tree
+ * @var Note                       $record
+ * @var Collection<int,Fact>       $clipboard_facts
+ * @var Collection<int,Family>     $linked_families
+ * @var Collection<int,Individual> $linked_individuals
+ * @var Collection<int,Location>   $linked_locations
+ * @var Collection<int,Media>      $linked_media_objects
+ * @var Collection<int,Repository> $linked_repositories
+ * @var Collection<int,Source>     $linked_sources
+ * @var Collection<int,Submitter>  $linked_submitters
+ * @var Tree                       $tree
  */
 
 ?>
@@ -37,9 +43,12 @@ use Illuminate\Support\Collection;
         'details'              => view('note-page-details', ['clipboard_facts' => $clipboard_facts, 'record' => $record]),
         'linked_families'      => $linked_families,
         'linked_individuals'   => $linked_individuals,
+        'linked_locations'     => $linked_locations,
         'linked_media_objects' => $linked_media_objects,
         'linked_notes'         => null,
+        'linked_repositories'  => $linked_repositories,
         'linked_sources'       => $linked_sources,
+        'linked_submitters'    => $linked_submitters,
         'tree'                 => $tree,
     ]) ?>
 </div>

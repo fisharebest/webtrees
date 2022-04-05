@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Validator;
 use League\Flysystem\FilesystemException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -151,10 +152,9 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
      */
     private function httpExceptionResponse(ServerRequestInterface $request, HttpException $exception): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-
+        $tree    = Validator::attributes($request)->treeOptional();
         $default = Site::getPreference('DEFAULT_GEDCOM');
-        $tree = $tree ?? $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
+        $tree    ??= $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
 
         $status_code = $exception->getCode();
 
@@ -183,7 +183,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
      */
     private function thirdPartyExceptionResponse(ServerRequestInterface $request, Throwable $exception): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         $default = Site::getPreference('DEFAULT_GEDCOM');
         $tree = $tree ?? $this->tree_service->all()[$default] ?? $this->tree_service->all()->first();
@@ -242,7 +242,7 @@ class HandleExceptions implements MiddlewareInterface, StatusCodeInterface
                 'title'   => 'Error',
                 'error'   => $trace,
                 'request' => $request,
-                'tree'    => $request->getAttribute('tree'),
+                'tree'    => Validator::attributes($request)->treeOptional(),
             ], StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
         } catch (Throwable $ignore) {
             // Try with a minimal header/menu

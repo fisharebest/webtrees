@@ -3,6 +3,7 @@
 use Fisharebest\Webtrees\Fact;
 
 /**
+ * @var string $class
  * @var Fact   $fact
  * @var string $relationship
  * @var int    $sosa
@@ -10,32 +11,30 @@ use Fisharebest\Webtrees\Fact;
  */
 
 ?>
-<div class="row ps-1">
-  <div class="col-sm-9 pe-0">
-    <div class="label">
-        <span class="<?= $colorclass ?>">
-          <?= view('icons/circle') ?>
-        </span>
-        <?= $relationship ?>
-    </div>
-
-    <?php if ($sosa !== 1) : ?>
-        <a href="<?= e($fact->record()->url()) ?>">
-            <?= $fact->record()->fullName() ?>
-        </a>
-    <?php endif ?>
-
+<div class="d-flex justify-content-between">
     <div>
-        <?= $fact->label() ?>: <?= $fact->date()->display($tree) ?>
-    </div>
+        <div class="label">
+            <span class="<?= $class ?>"><?= view('icons/location') ?></span>
+            <?= $relationship ?>
+        </div>
 
-    <div>
-        <a href="<?= e($fact->place()->url()) ?>">
-            <?= $fact->place()->fullName() ?>
-        </a>
+        <?php if ($sosa !== 1) : ?>
+            <a href="<?= e($fact->record()->url()) ?>">
+                <?= $fact->record()->fullName() ?>
+            </a>
+        <?php endif ?>
+
+        <div>
+            <?= $fact->label() ?>: <?= $fact->date()->display($fact->record()->tree()) ?>
+        </div>
+
+        <div>
+            <a href="<?= e($fact->place()->url()) ?>">
+                <?= $fact->place()->fullName() ?>
+            </a>
+        </div>
     </div>
-  </div>
-  <div class="col-sm-3 my-auto">
-      <?= $fact->record()->displayImage(40, 50, 'crop', []) ?>
-  </div>
+    <div class="d-none d-lg-block">
+        <?= $fact->record()->displayImage(40, 50, 'crop', []) ?>
+    </div>
 </div>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -50,7 +51,7 @@ class BaseUrl implements MiddlewareInterface
         $request_url = $request->getUri();
 
         // The base URL, as specified in the configuration file.
-        $base_url = $request->getAttribute('base_url', '');
+        $base_url = Validator::attributes($request)->string('base_url');
 
         if ($base_url === '') {
             // Guess the base URL from the request URL.

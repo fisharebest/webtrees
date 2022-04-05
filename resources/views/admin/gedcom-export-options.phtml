@@ -1,0 +1,78 @@
+<?php
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Encodings\ANSEL;
+use Fisharebest\Webtrees\Encodings\ASCII;
+use Fisharebest\Webtrees\Encodings\UTF16BE;
+use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var Tree $tree
+ */
+
+?>
+
+<div class="row mb-3">
+    <label class="col-sm-3" for="format">
+        <?= I18N::translate('Format') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="format" id="format-gedcom" value="gedcom" checked="checked">
+
+            <label class="form-check-label" for="format-gedcom">
+                <?= I18N::translate('GEDCOM') ?>
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="format" id="format-zip" value="zip">
+
+            <label class="form-check-label" for="format-zip">
+                <?= /* I18N: ZIP = file format */ I18N::translate('ZIP (includes media files)') ?>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label class="col-sm-3" for="encoding">
+        <?= I18N::translate('Character encoding') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?= view('components/select', ['name' => 'encoding', 'id' => 'encoding', 'selected' => UTF8::NAME, 'options' => [UTF8::NAME => 'UTF-8', UTF16BE::NAME => 'UNICODE (UTF16-BE)', ANSEL::NAME => 'ANSEL', ASCII::NAME => 'ASCII', 'CP1252' => 'ANSI (CP1252)']]) ?>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label class="col-sm-3" for="line_endings">
+        <?= I18N::translate('Line endings') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?= view('components/radios-inline', ['name' => 'line_endings', 'options' => ['CRLF' => 'CR/LF (windows)', 'LF' => 'LF (unix)'], 'selected' => 'CRLF']) ?>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label class="col-sm-3" for="privacy">
+        <?= I18N::translate('Apply privacy settings') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <?php if (Auth::isAdmin()) : ?>
+            <?= view('components/radios-inline', ['name' => 'privacy', 'options' => ['none' => I18N::translate('None'), 'gedadmin' => I18N::translate('Manager'), 'user' => I18N::translate('Member'), 'visitor' => I18N::translate('Visitor')], 'selected' => 'none']) ?>
+        <?php elseif (Auth::isManager($tree)) : ?>
+            <?= view('components/radios-inline', ['name' => 'privacy', 'options' => ['gedadmin' => I18N::translate('Manager'), 'user' => I18N::translate('Member'), 'visitor' => I18N::translate('Visitor')], 'selected' => 'gedadmin']) ?>
+        <?php elseif (Auth::isMember($tree)) : ?>
+            <?= view('components/radios-inline', ['name' => 'privacy', 'options' => ['user' => I18N::translate('Member'), 'visitor' => I18N::translate('Visitor')], 'selected' => 'user']) ?>
+        <?php else : ?>
+            <input type="hidden" name="privacy" value="visitor">
+        <?php endif ?>
+    </div>
+</div>
+

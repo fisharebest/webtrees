@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Services\UserService;
+
+use function assert;
 
 /**
  * A tree can act as a user, for example to send email.
@@ -57,6 +59,8 @@ class TreeUser implements UserInterface
     public function email(): string
     {
         $user_service = app(UserService::class);
+        assert($user_service instanceof UserService);
+
         $contact_id   = (int) $this->getPreference('CONTACT_USER_ID');
 
         if ($contact_id !== 0) {

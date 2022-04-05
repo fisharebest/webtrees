@@ -10,8 +10,8 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Source> $sources
- * @var Tree               $tree
+ * @var Collection<int,Source> $sources
+ * @var Tree                   $tree
  */
 
 ?>
@@ -149,7 +149,7 @@ $count_notes = DB::table('other')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $source->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $source->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $source->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

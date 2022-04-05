@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\TreeUser;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
@@ -88,7 +89,7 @@ class RegisterAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         $this->checkRegistrationAllowed();
 
@@ -142,7 +143,7 @@ class RegisterAction implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_IS_ADMINISTRATOR, '');
         $user->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, '0');
 
-        $base_url = $request->getAttribute('base_url');
+        $base_url = Validator::attributes($request)->string('base_url');
         $reply_to = $tree instanceof Tree ? new TreeUser($tree) : new SiteUser();
 
         $verify_url = route(VerifyEmail::class, [
@@ -154,7 +155,7 @@ class RegisterAction implements RequestHandlerInterface
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         $this->email_service->send(
-            new Siteuser(),
+            new SiteUser(),
             $user,
             $reply_to,
             I18N::translate('Your registration at %s', $base_url),
@@ -258,7 +259,7 @@ class RegisterAction implements RequestHandlerInterface
             throw new Exception(I18N::translate('Duplicate email address. A user with that email already exists.'));
         }
 
-        $base_url = $request->getAttribute('base_url');
+        $base_url = Validator::attributes($request)->string('base_url');
 
         // No external links
         if (preg_match('/(?!' . preg_quote($base_url, '/') . ')(((?:http|https):\/\/)[a-zA-Z0-9.-]+)/', $comments, $match)) {

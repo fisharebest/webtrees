@@ -9,8 +9,8 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Submitter> $submitters
- * @var Tree                  $tree
+ * @var Collection<int,Submitter> $submitters
+ * @var Tree                      $tree
  */
 
 ?>
@@ -88,7 +88,7 @@ $count_families = DB::table('families')
                     <?= I18N::number($count_families[$submitter->xref()] ?? 0) ?>
                 </td>
 
-                <td data-sort="<?= $submitter->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $submitter->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $submitter->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

@@ -1,0 +1,57 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Age at birth of child') ?>
+</h4>
+
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Youngest father') ?> — #youngestFatherAge:1#
+            </h5>
+            <div class="card-body">
+                #youngestFather#
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Youngest mother') ?> — #youngestMotherAge:1#
+            </h5>
+            <div class="card-body">
+                #youngestMother#
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Oldest father') ?> — #oldestFatherAge:1#
+            </h5>
+            <div class="card-body">
+                #oldestFather#
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">
+                <?= I18N::translate('Oldest mother') ?> — #oldestMotherAge:1#
+            </h5>
+            <div class="card-body">
+                #oldestMother#
+            </div>
+        </div>
+    </div>
+</div>

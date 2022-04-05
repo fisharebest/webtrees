@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\Module\ModuleAnalyticsInterface;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
-use Fisharebest\Webtrees\Module\ModuleCustomTagsInterface;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
@@ -53,6 +52,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\AdminService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TreeService;
@@ -79,9 +79,11 @@ class ControlPanel implements RequestHandlerInterface
 
     private AdminService $admin_service;
 
-    private ModuleService $module_service;
-
     private HousekeepingService $housekeeping_service;
+
+    private MessageService $message_service;
+
+    private ModuleService $module_service;
 
     private ServerCheckService $server_check_service;
 
@@ -96,6 +98,7 @@ class ControlPanel implements RequestHandlerInterface
      *
      * @param AdminService        $admin_service
      * @param HousekeepingService $housekeeping_service
+     * @param MessageService      $message_service
      * @param ModuleService       $module_service
      * @param ServerCheckService  $server_check_service
      * @param TreeService         $tree_service
@@ -105,6 +108,7 @@ class ControlPanel implements RequestHandlerInterface
     public function __construct(
         AdminService $admin_service,
         HousekeepingService $housekeeping_service,
+        MessageService $message_service,
         ModuleService $module_service,
         ServerCheckService $server_check_service,
         TreeService $tree_service,
@@ -113,6 +117,7 @@ class ControlPanel implements RequestHandlerInterface
     ) {
         $this->admin_service        = $admin_service;
         $this->housekeeping_service = $housekeeping_service;
+        $this->message_service      = $message_service;
         $this->module_service       = $module_service;
         $this->server_check_service = $server_check_service;
         $this->tree_service         = $tree_service;
@@ -152,6 +157,7 @@ class ControlPanel implements RequestHandlerInterface
             'moderators'                        => $this->user_service->moderators(),
             'unapproved'                        => $this->user_service->unapproved(),
             'unverified'                        => $this->user_service->unverified(),
+            'recipients'                        => $this->message_service->recipientTypes(),
             'all_trees'                         => $this->tree_service->all(),
             'changes'                           => $this->totalChanges(),
             'individuals'                       => $this->totalIndividuals(),
@@ -179,8 +185,6 @@ class ControlPanel implements RequestHandlerInterface
             'chart_modules_disabled'            => $this->module_service->findByInterface(ModuleChartInterface::class, true),
             'chart_modules_enabled'             => $this->module_service->findByInterface(ModuleChartInterface::class),
             'custom_updates'                    => $custom_updates,
-            'custom_tags_modules_disabled' => $this->module_service->findByInterface(ModuleCustomTagsInterface::class, true),
-            'custom_tags_modules_enabled'  => $this->module_service->findByInterface(ModuleCustomTagsInterface::class),
             'data_fix_modules_disabled'         => $this->module_service->findByInterface(ModuleDataFixInterface::class, true),
             'data_fix_modules_enabled'          => $this->module_service->findByInterface(ModuleDataFixInterface::class),
             'other_modules'                     => $this->module_service->otherModules(true),
@@ -237,7 +241,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of individuals in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalIndividuals(): Collection
     {
@@ -253,7 +257,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of families in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalFamilies(): Collection
     {
@@ -269,7 +273,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of sources in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalSources(): Collection
     {
@@ -285,7 +289,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of media objects in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalMediaObjects(): Collection
     {
@@ -299,9 +303,9 @@ class ControlPanel implements RequestHandlerInterface
     }
 
     /**
-     * Count the number of repositorie in each tree.
+     * Count the number of repositories in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalRepositories(): Collection
     {
@@ -321,7 +325,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of notes in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalNotes(): Collection
     {
@@ -341,7 +345,7 @@ class ControlPanel implements RequestHandlerInterface
     /**
      * Count the number of submitters in each tree.
      *
-     * @return Collection<string,int>
+     * @return Collection<int,int>
      */
     private function totalSubmitters(): Collection
     {

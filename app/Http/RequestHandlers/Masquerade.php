@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -52,14 +53,14 @@ class Masquerade implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user_id = (int) $request->getAttribute('user_id');
+        $user_id = Validator::attributes($request)->integer('user_id');
         $user    = $this->user_service->find($user_id);
 
         if ($user === null) {
             throw new HttpNotFoundException('User ID ' . $user_id . ' not found');
         }
 
-        if ($request->getAttribute('user')->id() !== $user_id) {
+        if (Validator::attributes($request)->user()->id() !== $user_id) {
             Log::addAuthenticationLog('Masquerade as user: ' . $user->userName());
             Auth::login($user);
             Session::put('masquerade', '1');

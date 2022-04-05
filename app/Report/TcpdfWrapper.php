@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,7 +43,7 @@ class TcpdfWrapper extends TCPDF
      * @param mixed $y       Starting y position, leave empty for current position.
      * @param bool  $addpage If true add a page, otherwise only return the true/false state
      *
-     * @return boolean true in case of page break, false otherwise.
+     * @return bool true in case of page break, false otherwise.
      */
     public function checkPageBreak($h = 0, $y = '', $addpage = true): bool
     {

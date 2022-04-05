@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,17 +29,17 @@ use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Submitter;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -63,6 +63,20 @@ class GedcomRecordPage implements RequestHandlerInterface
         Submitter::class,
     ];
 
+    private ClipboardService $clipboard_service;
+
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param ClipboardService $clipboard_service
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
+    {
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
+    }
+
     /**
      * Show a gedcom record's page.
      *
@@ -72,12 +86,8 @@ class GedcomRecordPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
         $record = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record = Auth::checkRecordAccess($record);
 
@@ -86,13 +96,25 @@ class GedcomRecordPage implements RequestHandlerInterface
             return redirect($record->url());
         }
 
+        $linked_families     = $this->linked_record_service->linkedFamilies($record);
+        $linked_individuals  = $this->linked_record_service->linkedIndividuals($record);
+        $linked_locations    = $this->linked_record_service->linkedLocations($record);
+        $linked_media        = $this->linked_record_service->linkedMedia($record);
+        $linked_notes        = $this->linked_record_service->linkedNotes($record);
+        $linked_repositories = $this->linked_record_service->linkedRepositories($record);
+        $linked_sources      = $this->linked_record_service->linkedSources($record);
+        $linked_submitters   = $this->linked_record_service->linkedSubmitters($record);
+
         return $this->viewResponse('record-page', [
-            'clipboard_facts'      => new Collection(),
-            'linked_families'      => $record->linkedFamilies($record->tag()),
-            'linked_individuals'   => $record->linkedIndividuals($record->tag()),
-            'linked_media_objects' => $record->linkedMedia($record->tag()),
-            'linked_notes'         => $record->linkedNotes($record->tag()),
-            'linked_sources'       => $record->linkedSources($record->tag()),
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($record),
+            'linked_families'      => $linked_families->isEmpty() ? null : $linked_families,
+            'linked_individuals'   => $linked_individuals->isEmpty() ? null : $linked_individuals,
+            'linked_locations'     => $linked_locations->isEmpty() ? null : $linked_locations,
+            'linked_media_objects' => $linked_media->isEmpty() ? null : $linked_media,
+            'linked_notes'         => $linked_notes->isEmpty() ? null : $linked_notes,
+            'linked_repositories'  => $linked_repositories->isEmpty() ? null : $linked_repositories,
+            'linked_sources'       => $linked_sources->isEmpty() ? null : $linked_sources,
+            'linked_submitters'    => $linked_submitters->isEmpty() ? null : $linked_submitters,
             'record'               => $record,
             'title'                => $record->fullName(),
             'tree'                 => $tree,

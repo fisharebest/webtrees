@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php if ($individual === null) : ?>
                     <?= view('chart-box', ['individual' => null]) ?>
                 <?php elseif ($parent_family === null) : ?>
-                    <div class="wt-chart-box">
+                    <div class="wt-chart-box wt-chart-box-m">
                         <?php if ($individual->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a father') ?>
@@ -36,7 +36,7 @@ use Fisharebest\Webtrees\Individual;
                         <?php endif ?>
                     </div>
                 <?php elseif ($parent_family->husband() === null) : ?>
-                    <div class="wt-chart-box">
+                    <div class="wt-chart-box wt-chart-box-m">
                         <?php if ($parent_family->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'M', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a father') ?>
@@ -58,7 +58,7 @@ use Fisharebest\Webtrees\Individual;
                 <?php if ($individual === null) : ?>
                     <?= view('chart-box', ['individual' => null]) ?>
                 <?php elseif ($parent_family === null) : ?>
-                    <div class="wt-chart-box">
+                    <div class="wt-chart-box wt-chart-box-f">
                         <?php if ($individual->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a mother') ?>
@@ -66,7 +66,7 @@ use Fisharebest\Webtrees\Individual;
                         <?php endif ?>
                     </div>
                 <?php elseif ($parent_family->wife() === null) : ?>
-                    <div class="wt-chart-box">
+                    <div class="wt-chart-box wt-chart-box-f">
                         <?php if ($parent_family->canEdit()) : ?>
                             <a class="btn btn-link" href="<?= e(route(AddSpouseToFamilyPage::class, ['tree' => $parent_family->tree()->name(), 'xref' => $parent_family->xref(), 'sex' => 'F', 'url' => $family->url()])) ?>">
                                 <?= I18N::translate('Add a mother') ?>

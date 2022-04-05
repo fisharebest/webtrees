@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\CacheFactoryInterface;
 use Fisharebest\Webtrees\Contracts\CalendarDateFactoryInterface;
+use Fisharebest\Webtrees\Contracts\EncodingFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FamilyFactoryInterface;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
@@ -33,10 +34,13 @@ use Fisharebest\Webtrees\Contracts\MarkdownFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
+use Fisharebest\Webtrees\Contracts\ResponseFactoryInterface;
+use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
+use Fisharebest\Webtrees\Contracts\TimestampFactoryInterface;
 use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
 
 /**
@@ -49,6 +53,8 @@ class Registry
     private static CalendarDateFactoryInterface $calendar_date_factory;
 
     private static ElementFactoryInterface $element_factory;
+
+    private static EncodingFactoryInterface $encoding_factory;
 
     private static FamilyFactoryInterface $family_factory;
 
@@ -72,6 +78,10 @@ class Registry
 
     private static RepositoryFactoryInterface $repository_factory;
 
+    private static ResponseFactoryInterface $response_factory;
+
+    private static RouteFactoryInterface $route_factory;
+
     private static SlugFactoryInterface $slug_factory;
 
     private static SourceFactoryInterface $source_factory;
@@ -79,6 +89,8 @@ class Registry
     private static SubmissionFactoryInterface $submission_factory;
 
     private static SubmitterFactoryInterface $submitter_factory;
+
+    private static TimestampFactoryInterface $timestamp_factory;
 
     private static XrefFactoryInterface $xref_factory;
 
@@ -128,6 +140,22 @@ class Registry
         }
 
         return self::$element_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param EncodingFactoryInterface|null $factory
+     *
+     * @return EncodingFactoryInterface
+     */
+    public static function encodingFactory(EncodingFactoryInterface $factory = null): EncodingFactoryInterface
+    {
+        if ($factory instanceof EncodingFactoryInterface) {
+            self::$encoding_factory = $factory;
+        }
+
+        return self::$encoding_factory;
     }
 
     /**
@@ -309,6 +337,38 @@ class Registry
     /**
      * Store or retrieve a factory object.
      *
+     * @param ResponseFactoryInterface|null $factory
+     *
+     * @return ResponseFactoryInterface
+     */
+    public static function responseFactory(ResponseFactoryInterface $factory = null): ResponseFactoryInterface
+    {
+        if ($factory instanceof ResponseFactoryInterface) {
+            self::$response_factory = $factory;
+        }
+
+        return self::$response_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param RouteFactoryInterface|null $factory
+     *
+     * @return RouteFactoryInterface
+     */
+    public static function routeFactory(RouteFactoryInterface $factory = null): RouteFactoryInterface
+    {
+        if ($factory instanceof RouteFactoryInterface) {
+            self::$route_factory = $factory;
+        }
+
+        return self::$route_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
      * @param SlugFactoryInterface|null $factory
      *
      * @return SlugFactoryInterface
@@ -368,6 +428,22 @@ class Registry
         }
 
         return self::$submitter_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param TimestampFactoryInterface|null $factory
+     *
+     * @return TimestampFactoryInterface
+     */
+    public static function timestampFactory(TimestampFactoryInterface $factory = null): TimestampFactoryInterface
+    {
+        if ($factory instanceof TimestampFactoryInterface) {
+            self::$timestamp_factory = $factory;
+        }
+
+        return self::$timestamp_factory;
     }
 
     /**

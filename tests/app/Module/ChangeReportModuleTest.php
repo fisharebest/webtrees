@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\HtmlRenderer;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -85,8 +85,8 @@ class ChangeReportModuleTest extends TestCase
         $module = $module_service->findByInterface(ChangeReportModule::class)->first();
         $xml    = 'resources/' . $module->xmlFilename();
         $vars   = [
-            'changeRangeStart' => ['id' => Carbon::now()->subMonth()->format('d M Y')],
-            'changeRangeEnd'   => ['id' => Carbon::now()->format('d M Y')],
+            'changeRangeStart' => ['id' => Registry::timestampFactory()->now()->subtractMonths(1)->format('d M Y')],
+            'changeRangeEnd'   => ['id' => Registry::timestampFactory()->now()->format('d M Y')],
             'pending'          => ['id' => 'yes'],
             'sortby'           => ['id' => 'CHAN'],
             'pageSize'         => ['id' => 'A4'],

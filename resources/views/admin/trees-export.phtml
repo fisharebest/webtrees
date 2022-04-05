@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Tree;
 <h1><?= $title ?></h1>
 
 <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
                 <?= I18N::translate('A file on the server') ?>
@@ -30,7 +30,7 @@ use Fisharebest\Webtrees\Tree;
                     <?= csrf_field() ?>
 
 
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="filename"><?= I18N::translate('Filename') ?></label>
                         <input type="text" class="form-control" id="filename" name="filename" value="<?= e($filename) ?>">
                     </div>
@@ -45,11 +45,12 @@ use Fisharebest\Webtrees\Tree;
         </div>
     </div>
 
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
                 <?= I18N::translate('A file on your computer') ?>
             </div>
+
             <div class="card-body">
                 <form method="post" action="<?= e(route(ExportGedcomClient::class, ['tree' => $tree->name()])) ?>" class="form form-horizontal">
                     <?= csrf_field() ?>
@@ -58,75 +59,24 @@ use Fisharebest\Webtrees\Tree;
                         <?= I18N::translate('Export preferences') ?>
                     </p>
 
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="zip">
-                            <?= I18N::translate('Compress the GEDCOM file') ?>
-                        </label>
-                        <?= view('help/link', ['topic' => 'zip-gedcom']) ?>
-                    </div>
+                    <?= view('admin/gedcom-export-options', ['tree' => $tree]) ?>
 
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="media">
-                            <?= I18N::translate('Include media (automatically zips files)') ?>
-                        </label>
-                    </div>
+                    <?php if ($tree->getPreference('GEDCOM_MEDIA_PATH') !== '') : ?>
+                        <div class="row mb-3">
+                            <label class="col-sm-3" for="media-path">
+                                <?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
+                            </label>
 
-                   <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="convert">
-                            <?= I18N::translate('Convert from UTF-8 to ISO-8859-1') ?>
-                        </label>
-                       <?= view('help/link', ['topic' => 'iso-8859-1']) ?>
-                    </div>
-
-                    <?php if ($tree->getPreference('GEDCOM_MEDIA_PATH')) : ?>
-                        <hr>
-
-                        <label>
-                            <input type="checkbox" name="media-path" value="<?= e($tree->getPreference('GEDCOM_MEDIA_PATH')) ?>">
-                            <?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */
-                            I18N::translate('Add the GEDCOM media path to filenames') ?>
-                        </label>
-                        <p>
-                            <?= /* I18N: %s is the name of a folder. */
-                            I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . e($tree->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
-                        </p>
+                            <div class="col-sm-9">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="media-path" name="media_path">
+                                    <label class="form-check-label" for="media-path">
+                                        <?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . e($tree->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     <?php endif ?>
-
-                    <hr>
-
-                    <fieldset class="form-group">
-                        <legend class="col-form-label">
-                            <?= I18N::translate('Apply privacy settings') ?>
-                        </legend>
-
-                        <div class="form-check form-check-inline">
-                            <label>
-                                <input type="radio" name="privatize_export" value="none" checked>
-                                <?= I18N::translate('None') ?>
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <label>
-                                <input type="radio" name="privatize_export" value="gedadmin">
-                                <?= I18N::translate('Manager') ?>
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <label>
-                                <input type="radio" name="privatize_export" value="user">
-                                <?= I18N::translate('Member') ?>
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <label>
-                                <input type="radio" name="privatize_export" value="visitor">
-                                <?= I18N::translate('Visitor') ?>
-                            </label>
-                        </div>
-                    </fieldset>
 
                     <button type="submit" class="btn btn-primary">
                         <?= view('icons/download') ?>

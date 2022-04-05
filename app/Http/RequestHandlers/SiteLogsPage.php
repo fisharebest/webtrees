@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
@@ -68,8 +68,8 @@ class SiteLogsPage implements RequestHandlerInterface
         $earliest = DB::table('log')->min('log_time');
         $latest   = DB::table('log')->max('log_time');
 
-        $earliest = Carbon::make($earliest) ?? Carbon::now();
-        $latest   = Carbon::make($latest) ?? Carbon::now();
+        $earliest = Registry::timestampFactory()->fromString($earliest);
+        $latest   = Registry::timestampFactory()->fromString($latest);
 
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();

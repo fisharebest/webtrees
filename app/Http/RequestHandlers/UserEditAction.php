@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -70,7 +71,7 @@ class UserEditAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user = $request->getAttribute('user');
+        $user = Validator::attributes($request)->user();
 
         $params = (array) $request->getParsedBody();
 
@@ -100,7 +101,7 @@ class UserEditAction implements RequestHandlerInterface
         if ($approved && $edit_user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) !== '1') {
             I18N::init($edit_user->getPreference(UserInterface::PREF_LANGUAGE));
 
-            $base_url = $request->getAttribute('base_url');
+            $base_url = Validator::attributes($request)->string('base_url');
 
             $this->email_service->send(
                 new SiteUser(),

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,13 +28,27 @@ use Fisharebest\Webtrees\Menu;
 trait ModuleChartTrait
 {
     /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
      * A menu item for this chart for an individual box in a chart.
      *
      * @param Individual $individual
      *
      * @return Menu|null
      */
-    public function chartBoxMenu(Individual $individual): ?Menu
+    public function chartBoxMenu(/** @scrutinizer ignore-unused */ Individual $individual): ?Menu
     {
         return null;
     }
@@ -46,7 +60,7 @@ trait ModuleChartTrait
      *
      * @return Menu
      */
-    public function chartMenu(Individual $individual): Menu
+    public function chartMenu(/** @scrutinizer ignore-unused */ Individual $individual): Menu
     {
         return new Menu(
             $this->title(),
@@ -73,7 +87,7 @@ trait ModuleChartTrait
      *
      * @return string
      */
-    public function chartTitle(Individual $individual): string
+    public function chartTitle(/** @scrutinizer ignore-unused */ Individual $individual): string
     {
         return $this->title();
     }
@@ -81,8 +95,8 @@ trait ModuleChartTrait
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                        $individual
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */

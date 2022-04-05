@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,12 +33,12 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function count;
 use function e;
 use function explode;
@@ -75,10 +75,8 @@ class CalendarEvents implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $view            = $request->getAttribute('view');
+        $tree            = Validator::attributes($request)->tree();
+        $view            = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         $cal      = $request->getQueryParams()['cal'] ?? '';
@@ -158,7 +156,7 @@ class CalendarEvents implements RequestHandlerInterface
                 $xref = $fact->record()->xref();
                 $text = $fact->label() . ' — ' . $fact->date()->display($tree);
                 if ($fact->anniv > 0) {
-                    $text .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
+                    $text .= ' (' . I18N::translate('%s year anniversary', I18N::number($fact->anniv)) . ')';
                 }
                 if (empty($cal_facts[$d][$xref])) {
                     $cal_facts[$d][$xref] = $text;
@@ -171,7 +169,8 @@ class CalendarEvents implements RequestHandlerInterface
         $week_start    = (I18N::locale()->territory()->firstDay() + 6) % 7;
         $weekend_start = (I18N::locale()->territory()->weekendStart() + 6) % 7;
         $weekend_end   = (I18N::locale()->territory()->weekendEnd() + 6) % 7;
-        // The french  calendar has a 10-day week, which starts on primidi
+
+        // The French calendar has a 10-day week, which starts on primidi.
         if ($days_in_week === 10) {
             $week_start    = 0;
             $weekend_start = -1;

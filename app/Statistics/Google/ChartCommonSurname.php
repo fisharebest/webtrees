@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -101,10 +101,10 @@ class ChartCommonSurname
     /**
      * Create a chart of common surnames.
      *
-     * @param int         $tot_indi     The total number of individuals
-     * @param array       $all_surnames The list of common surnames
-     * @param string|null $color_from
-     * @param string|null $color_to
+     * @param int               $tot_indi     The total number of individuals
+     * @param array<array<int>> $all_surnames The list of common surnames
+     * @param string|null       $color_from
+     * @param string|null       $color_to
      *
      * @return string
      */

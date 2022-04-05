@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -55,7 +55,7 @@ class XrefLocationTest extends TestCase
 
         Registry::locationFactory($factory);
 
-        $request = $this->createMock(ServerRequestInterface::class);
+        $request = self::createRequest();
 
         app()->instance(ServerRequestInterface::class, $request);
 
@@ -106,7 +106,7 @@ class XrefLocationTest extends TestCase
             ->willReturn($record);
 
 
-        Registry::LocationFactory($factory);
+        Registry::locationFactory($factory);
 
         self::assertSame('<a href="https://url">Full Name</a>', $element->value('@X123@', $tree));
     }
@@ -138,7 +138,7 @@ class XrefLocationTest extends TestCase
             ->method('make')
             ->willReturn(null);
 
-        Registry::LocationFactory($factory);
+        Registry::locationFactory($factory);
 
         self::assertSame('<span class="error">@X321@</span>', $element->value('@X321@', $tree));
     }

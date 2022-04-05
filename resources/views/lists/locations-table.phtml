@@ -9,8 +9,8 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Location> $locations
- * @var Tree                   $tree
+ * @var Collection<int,Location> $locations
+ * @var Tree                     $tree
  */
 
 ?>
@@ -88,7 +88,7 @@ $count_families = DB::table('families')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $location->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $location->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $location->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

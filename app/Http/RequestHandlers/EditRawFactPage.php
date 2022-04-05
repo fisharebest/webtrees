@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,13 +24,11 @@ use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -47,18 +45,12 @@ class EditRawFactPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $record = Registry::gedcomRecordFactory()->make($xref, $tree);
-        $record = Auth::checkRecordAccess($record, true);
-
-        $fact_id = $request->getAttribute('fact_id');
-
-        $title = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
+        $tree    = Validator::attributes($request)->tree();
+        $xref    = Validator::attributes($request)->isXref()->string('xref');
+        $record  = Registry::gedcomRecordFactory()->make($xref, $tree);
+        $record  = Auth::checkRecordAccess($record, true);
+        $fact_id = Validator::attributes($request)->string('fact_id');
+        $title   = I18N::translate('Edit the raw GEDCOM') . ' - ' . $record->fullName();
 
         $fact = $record->facts([], false, null, true)
             ->first(static function (Fact $fact) use ($fact_id): bool {
@@ -70,7 +62,7 @@ class EditRawFactPage implements RequestHandlerInterface
                 'fact'  => $fact,
                 'title' => $title,
                 'tree'  => $tree,
-                'url'   => $request->getQueryParams()['url'] ?? null,
+                'url'   => Validator::queryParams($request)->isLocalUrl()->string('url', $fact->record()->url()),
             ]);
         }
 

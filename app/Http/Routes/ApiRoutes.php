@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Routes;
 
 use Aura\Router\Map;
+use Aura\Router\Route;
 
 /**
  * Routing table for API requests
@@ -27,11 +28,11 @@ use Aura\Router\Map;
 class ApiRoutes
 {
     /**
-     * @param Map $router
+     * @param Map<Route> $router
      *
      * @return void
      */
-    public function load(Map $router): void
+    public function load(/** @scrutinizer ignore-unused */ Map $router): void
     {
     }
 }

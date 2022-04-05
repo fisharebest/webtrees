@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -94,13 +94,7 @@ class NamePersonal extends AbstractElement
      */
     public function default(Tree $tree): string
     {
-        $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
-
-        if ($surname_tradition->hasSurnames()) {
-            return '//';
-        }
-
-        return '';
+        return SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'))->defaultName();
     }
 
     /**

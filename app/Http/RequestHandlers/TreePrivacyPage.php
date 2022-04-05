@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,13 +27,13 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_merge;
-use function assert;
 use function e;
 use function in_array;
 use function uasort;
@@ -47,6 +47,9 @@ class TreePrivacyPage implements RequestHandlerInterface
 
     private TreeService $tree_service;
 
+    /**
+     * @param TreeService $tree_service
+     */
     public function __construct(TreeService $tree_service)
     {
         $this->tree_service = $tree_service;
@@ -61,9 +64,7 @@ class TreePrivacyPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree                 = Validator::attributes($request)->tree();
         $title                = e($tree->name()) . ' — ' . I18N::translate('Privacy');
         $all_tags             = $this->tagsForPrivacy();
         $privacy_constants    = $this->privacyConstants();
@@ -99,7 +100,7 @@ class TreePrivacyPage implements RequestHandlerInterface
      *
      * @param Tree $tree
      *
-     * @return array<string,string>
+     * @return array<object>
      */
     private function privacyRestrictions(Tree $tree): array
     {

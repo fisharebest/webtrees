@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,11 +20,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Encodings\ANSEL;
+use Fisharebest\Webtrees\Encodings\ASCII;
+use Fisharebest\Webtrees\Encodings\UTF16BE;
+use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomExportService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
@@ -37,7 +42,6 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function addcslashes;
-use function assert;
 use function fclose;
 use function pathinfo;
 use function strtolower;
@@ -83,18 +87,15 @@ class ExportGedcomClient implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $data_filesystem = Registry::filesystem()->data();
 
-        $params = (array) $request->getParsedBody();
-
-        $convert          = (bool) ($params['convert'] ?? false);
-        $zip              = (bool) ($params['zip'] ?? false);
-        $media            = (bool) ($params['media'] ?? false);
-        $media_path       = $params['media-path'] ?? '';
-        $privatize_export = $params['privatize_export'];
+        $format       = Validator::parsedBody($request)->isInArray(['gedcom', 'zip'])->string('format');
+        $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->string('privacy');
+        $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->string('encoding');
+        $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->string('line_endings');
+        $media_path   = Validator::parsedBody($request)->string('media_path', '');
 
         $access_levels = [
             'gedadmin' => Auth::PRIV_NONE,
@@ -103,8 +104,7 @@ class ExportGedcomClient implements RequestHandlerInterface
             'none'     => Auth::PRIV_HIDE,
         ];
 
-        $access_level = $access_levels[$privatize_export];
-        $encoding     = $convert ? 'ANSI' : 'UTF-8';
+        $access_level = $access_levels[$privacy];
 
         // What to call the downloaded file
         $download_filename = $tree->name();
@@ -114,8 +114,8 @@ class ExportGedcomClient implements RequestHandlerInterface
             $download_filename .= '.ged';
         }
 
-        if ($zip || $media) {
-            $resource = $this->gedcom_export_service->export($tree, true, $encoding, $access_level, $media_path);
+        if ($format === 'zip') {
+            $resource = $this->gedcom_export_service->export($tree, true, $encoding, $access_level, $media_path, $line_endings);
 
             $path = $tree->getPreference('MEDIA_DIRECTORY');
 
@@ -127,22 +127,20 @@ class ExportGedcomClient implements RequestHandlerInterface
             $zip_filesystem->writeStream($download_filename, $resource);
             fclose($resource);
 
-            if ($media) {
-                $media_filesystem = $tree->mediaFilesystem($data_filesystem);
+            $media_filesystem = $tree->mediaFilesystem($data_filesystem);
 
-                $records = DB::table('media')
-                    ->where('m_file', '=', $tree->id())
-                    ->get()
-                    ->map(Registry::mediaFactory()->mapper($tree))
-                    ->filter(GedcomRecord::accessFilter());
+            $records = DB::table('media')
+                ->where('m_file', '=', $tree->id())
+                ->get()
+                ->map(Registry::mediaFactory()->mapper($tree))
+                ->filter(GedcomRecord::accessFilter());
 
-                foreach ($records as $record) {
-                    foreach ($record->mediaFiles() as $media_file) {
-                        $from = $media_file->filename();
-                        $to   = $path . $media_file->filename();
-                        if (!$media_file->isExternal() && $media_filesystem->fileExists($from) && !$zip_filesystem->fileExists($to)) {
-                            $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
-                        }
+            foreach ($records as $record) {
+                foreach ($record->mediaFiles() as $media_file) {
+                    $from = $media_file->filename();
+                    $to   = $path . $media_file->filename();
+                    if (!$media_file->isExternal() && $media_filesystem->fileExists($from) && !$zip_filesystem->fileExists($to)) {
+                        $zip_filesystem->writeStream($to, $media_filesystem->readStream($from));
                     }
                 }
             }
@@ -157,13 +155,11 @@ class ExportGedcomClient implements RequestHandlerInterface
         }
 
         $resource = $this->gedcom_export_service->export($tree, true, $encoding, $access_level, $media_path);
-
-        $charset = $convert ? 'ISO-8859-1' : 'UTF-8';
-        $stream  = $this->stream_factory->createStreamFromResource($resource);
+        $stream   = $this->stream_factory->createStreamFromResource($resource);
 
         return $this->response_factory->createResponse()
             ->withBody($stream)
-            ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $charset)
+            ->withHeader('Content-Type', 'text/x-gedcom; charset=' . UTF8::NAME)
             ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
     }
 }

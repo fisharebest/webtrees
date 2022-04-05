@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\RequestMethodInterface;
+use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Test harness for the class UpcomingAnniversariesModule
@@ -29,12 +32,17 @@ use Fisharebest\Webtrees\TestCase;
 class UpcomingAnniversariesModuleTest extends TestCase
 {
     /**
-     * Test that the class exists
-     *
      * @return void
      */
-    public function testClassExists(): void
+    public function testModuleProperties(): void
     {
-        self::assertTrue(class_exists(UpcomingAnniversariesModule::class));
+        $calendar_service = $this->createStub(CalendarService::class);
+
+        $module = new UpcomingAnniversariesModule($calendar_service);
+
+        self::assertInstanceOf(ModuleBlockInterface::class, $module);
+        self::assertTrue($module->loadAjax());
+        self::assertTrue($module->isTreeBlock());
+        self::assertTrue($module->isUserBlock());
     }
 }

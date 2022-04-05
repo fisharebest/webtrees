@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,12 +26,11 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-
-use function assert;
 
 /**
  * Class UserFavoritesModule
@@ -65,10 +64,10 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -164,18 +163,13 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postAddFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user   = $request->getAttribute('user');
-        $params = (array) $request->getParsedBody();
-
-        $note  = $params['note'];
-        $title = $params['title'];
-        $url   = $params['url'];
-        $type  = $params['type'];
-        $xref  = $params[$type . '-xref'] ?? '';
-
+        $tree   = Validator::attributes($request)->tree();
+        $user   = Validator::attributes($request)->user();
+        $note   = Validator::parsedBody($request)->string('note');
+        $title  = Validator::parsedBody($request)->string('title');
+        $url    = Validator::parsedBody($request)->string('url');
+        $type   = Validator::parsedBody($request)->string('type');
+        $xref   = Validator::parsedBody($request)->string($type . '-xref', '');
         $record = $this->getRecordForType($type, $xref, $tree);
 
         if (Auth::check()) {
@@ -200,11 +194,9 @@ class UserFavoritesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteFavoriteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user        = $request->getAttribute('user');
-        $favorite_id = $request->getQueryParams()['favorite_id'];
+        $tree        = Validator::attributes($request)->tree();
+        $user        = Validator::attributes($request)->user();
+        $favorite_id = Validator::queryParams($request)->integer('favorite_id');
 
         if (Auth::check()) {
             DB::table('favorite')

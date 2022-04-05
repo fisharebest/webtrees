@@ -6,14 +6,15 @@ use Fisharebest\Webtrees\Http\RequestHandlers\UnconnectedAction;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 /**
- * @var string         $title
- * @var bool           $aliases
- * @var bool           $associates
- * @var Individual[][] $individual_groups
- * @var Individual     $root
- * @var Tree           $tree
+ * @var string                            $title
+ * @var bool                              $aliases
+ * @var bool                              $associates
+ * @var array<Collection<int,Individual>> $individual_groups
+ * @var Individual                        $root
+ * @var Tree                              $tree
  */
 
 ?>
