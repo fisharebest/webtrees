@@ -278,8 +278,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                             'fact'         => $fact,
                             'relationship' => ucfirst($this->getSosaName($sosa)),
                             'sosa'         => $sosa,
-                            'colorclass'   => 'wt-pedigree-map-gen-' . $sosa_child % self::COUNT_CSS_COLORS,
-                            'tree'         => $tree,
                         ]),
                     ],
                 ];
