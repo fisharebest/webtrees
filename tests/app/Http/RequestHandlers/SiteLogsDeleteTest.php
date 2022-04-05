@@ -19,37 +19,32 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\SiteLogsService;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-
-use function response;
+use Fisharebest\Webtrees\TestCase;
+use Illuminate\Database\Query\Builder;
 
 /**
- * Delete logs.
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete
  */
-class SiteLogsDelete implements RequestHandlerInterface
+class SiteLogsDeleteTest extends TestCase
 {
-    private SiteLogsService $site_logs_service;
-
     /**
-     * @param SiteLogsService $site_logs_service
+     * @return void
      */
-    public function __construct(SiteLogsService $site_logs_service)
+    public function testResponse(): void
     {
-        $this->site_logs_service = $site_logs_service;
-    }
+        $request = self::createRequest();
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
-    public function handle(ServerRequestInterface $request): ResponseInterface
-    {
-        $this->site_logs_service->logsQuery($request)->delete();
+        $query = $this->createStub(Builder::class);
+        $query->method('delete');
 
-        return response();
+        $site_logs_service = $this->createStub(SiteLogsService::class);
+        $site_logs_service->method('logsQuery')->willReturn($query);
+
+        $handler  = new SiteLogsDelete($site_logs_service);
+        $response = $handler->handle($request);
+
+        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

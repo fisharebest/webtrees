@@ -50,7 +50,7 @@ class SiteLogsDownload implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $content = $this->site_logs_service->logsQuery($request->getQueryParams())
+        $content = $this->site_logs_service->logsQuery($request)
             ->orderBy('log_id')
             ->get()
             ->map(static function (object $row): string {
