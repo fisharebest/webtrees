@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,6 +28,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;
 use function ctype_digit;
+use function in_array;
 use function is_array;
 use function is_int;
 use function is_string;
@@ -43,15 +44,19 @@ class Validator
     /** @var array<int|string|Tree|UserInterface|array<int|string>> */
     private array $parameters;
 
+    private ServerRequestInterface $request;
+
     /** @var array<Closure> */
     private array $rules = [];
 
     /**
      * @param array<int|string|Tree|UserInterface|array<int|string>> $parameters
+     * @param ServerRequestInterface                                 $request
      */
-    public function __construct(array $parameters)
+    public function __construct(array $parameters, ServerRequestInterface $request)
     {
         $this->parameters = $parameters;
+        $this->request    = $request;
     }
 
     /**
@@ -61,7 +66,7 @@ class Validator
      */
     public static function attributes(ServerRequestInterface $request): self
     {
-        return new self($request->getAttributes());
+        return new self($request->getAttributes(), $request);
     }
 
     /**
@@ -71,7 +76,7 @@ class Validator
      */
     public static function parsedBody(ServerRequestInterface $request): self
     {
-        return new self((array) $request->getParsedBody());
+        return new self((array) $request->getParsedBody(), $request);
     }
 
     /**
@@ -81,7 +86,7 @@ class Validator
      */
     public static function queryParams(ServerRequestInterface $request): self
     {
-        return new self($request->getQueryParams());
+        return new self($request->getQueryParams(), $request);
     }
 
     /**
@@ -91,7 +96,7 @@ class Validator
      */
     public static function serverParams(ServerRequestInterface $request): self
     {
-        return new self($request->getServerParams());
+        return new self($request->getServerParams(), $request);
     }
 
     /**
@@ -116,31 +121,48 @@ class Validator
     /**
      * @param array<string> $values
      *
-     * @return $this
+     * @return self
      */
     public function isInArray(array $values): self
     {
-        $this->rules[] = static fn (?string $value): ?string => is_string($value) && in_array($value, $values, true) ? $value : null;
+        $this->rules[] = static fn (/*int|string|null*/ $value)/*: int|string|null*/ => $value !== null && in_array($value, $values, true) ? $value : null;
 
         return $this;
     }
+
     /**
-     * @param string $base_url
+     * @param array<string> $values
      *
-     * @return $this
+     * @return self
      */
-    public function isLocalUrl(string $base_url): self
+    public function isInArrayKeys(array $values): self
     {
+        return $this->isInArray(array_keys($values));
+    }
+
+    /**
+     * @return self
+     */
+    public function isNotEmpty(): self
+    {
+        $this->rules[] = static fn (?string $value): ?string => $value !== null && $value !== '' ? $value : null;
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function isLocalUrl(): self
+    {
+        $base_url = $this->request->getAttribute('base_url', '');
+
         $this->rules[] = static function (?string $value) use ($base_url): ?string {
-            if (is_string($value)) {
+            if ($value !== null) {
                 $value_info    = parse_url($value);
                 $base_url_info = parse_url($base_url);
 
-                if (!is_array($base_url_info)) {
-                    throw new LogicException(__METHOD__ . ' needs a valid URL');
-                }
-
-                if (is_array($value_info)) {
+                if (is_array($value_info) && is_array($base_url_info)) {
                     $scheme_ok = ($value_info['scheme'] ?? 'http') === ($base_url_info['scheme'] ?? 'http');
                     $host_ok   = ($value_info['host'] ?? '') === ($base_url_info['host'] ?? '');
                     $port_ok   = ($value_info['port'] ?? '') === ($base_url_info['port'] ?? '');
@@ -160,12 +182,12 @@ class Validator
     }
 
     /**
-     * @return $this
+     * @return self
      */
     public function isTag(): self
     {
         $this->rules[] = static function (?string $value): ?string {
-            if (is_string($value) && preg_match('/^' . Gedcom::REGEX_TAG . '$/', $value) === 1) {
+            if ($value !== null && preg_match('/^' . Gedcom::REGEX_TAG . '$/', $value) === 1) {
                 return $value;
             }
 
@@ -176,12 +198,12 @@ class Validator
     }
 
     /**
-     * @return $this
+     * @return self
      */
     public function isXref(): self
     {
         $this->rules[] = static function (?string $value): ?string {
-            if (is_string($value) && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
+            if ($value !== null && preg_match('/^' . Gedcom::REGEX_XREF . '$/', $value) === 1) {
                 return $value;
             }
 
@@ -201,7 +223,7 @@ class Validator
     {
         $value = $this->parameters[$parameter] ?? null;
 
-        if (in_array($value, ['1', true], true)) {
+        if (in_array($value, ['1', 'on', true], true)) {
             return true;
         }
 

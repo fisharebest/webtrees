@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -602,7 +602,7 @@
             replace: function (url, uriEncodedQuery) {
               const symbol = (url.indexOf("?") > 0) ? '&' : '?';
               if (that.dataset.wtAutocompleteExtra === 'SOUR') {
-                let row_group = that.closest('.form-group').previousElementSibling;
+                let row_group = that.closest('.form-group').parentElement.previousElementSibling;
                 while (row_group.querySelector('select') === null) {
                   row_group = row_group.previousElementSibling;
                 }
@@ -700,8 +700,17 @@
     let options = {};
 
     if (element.dataset.url) {
+      let plugins = ['dropdown_input', 'virtual_scroll'];
+
+      if (element.multiple) {
+        plugins.push('remove_button');
+      } else if (!element.required) {
+        plugins.push('clear_button');
+      }
+
       options = {
-        plugins: ['dropdown_input', 'virtual_scroll'],
+        plugins: plugins,
+        maxOptions: false,
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
@@ -711,15 +720,13 @@
           fetch(this.getUrl(query))
             .then(response => response.json())
             .then(json => {
-              this.setNextUrl(query, json.nextUrl + '&query=' + encodeURIComponent(query));
+              if (json.nextUrl !== null) {
+                this.setNextUrl(query, json.nextUrl + '&query=' + encodeURIComponent(query));
+              }
               callback(json.data);
             })
             .catch(callback);
         },
-      };
-    } else {
-      options = {
-        plugins: ['remove_button'],
       };
     }
 
@@ -900,6 +907,7 @@ document.addEventListener('click', (event) => {
 
   if ('wtConfirm' in target.dataset && !confirm(target.dataset.wtConfirm)) {
     event.preventDefault();
+    return;
   }
 
   if ('wtPostUrl' in target.dataset) {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -66,16 +66,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->tokens([
-                'generations' => '\d+',
-                'spouses'     => '1?',
-            ]);
+            ->allows(RequestMethodInterface::METHOD_POST);
     }
 
     /**
@@ -169,9 +162,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'xref'        => Validator::parsedBody($request)->string('xref', ''),
-                'generations' => Validator::parsedBody($request)->string('generations', ''),
-                'spouses'     => Validator::parsedBody($request)->string('spouses', ''),
+                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
+                'spouses'     => Validator::parsedBody($request)->boolean('spouses'),
             ]));
         }
 
@@ -218,10 +211,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getAncestorsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::queryParams($request)->isXref()->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family);
 
@@ -240,11 +231,9 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function getDescendantsAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $xref = $request->getQueryParams()['xref'] ?? '';
-
-        $spouses    = (bool) ($request->getQueryParams()['spouses'] ?? false);
+        $tree       = Validator::attributes($request)->tree();
+        $xref       = Validator::queryParams($request)->isXref()->string('xref');
+        $spouses    = Validator::queryParams($request)->boolean('spouses', false);
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, false, true);
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -95,7 +95,7 @@ class ExportGedcomClient implements RequestHandlerInterface
         $privacy      = Validator::parsedBody($request)->isInArray(['none', 'gedadmin', 'user', 'visitor'])->string('privacy');
         $encoding     = Validator::parsedBody($request)->isInArray([UTF8::NAME, UTF16BE::NAME, ANSEL::NAME, ASCII::NAME, Windows1252::NAME])->string('encoding');
         $line_endings = Validator::parsedBody($request)->isInArray(['CRLF', 'LF'])->string('line_endings');
-        $media_path   = Validator::parsedBody($request)->string('media_path');
+        $media_path   = Validator::parsedBody($request)->string('media_path', '');
 
         $access_levels = [
             'gedadmin' => Auth::PRIV_NONE,

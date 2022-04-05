@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,8 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -62,9 +64,12 @@ class SubmissionPage implements RequestHandlerInterface
             'clipboard_facts'      => new Collection(),
             'linked_families'      => null,
             'linked_individuals'   => null,
+            'linked_locations'     => null,
             'linked_media_objects' => null,
             'linked_notes'         => null,
+            'linked_repositories'  => null,
             'linked_sources'       => null,
+            'linked_submitters'    => null,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',
             'record'               => $record,

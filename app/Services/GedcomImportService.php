@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -284,9 +284,27 @@ class GedcomImportService
         // import different types of records
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $xref, $type] = $match;
-        } elseif (preg_match('/0 (HEAD|TRLR|_PLAC |_PLAC_DEFN)/', $gedrec, $match)) {
-            $type = $match[1];
-            $xref = $type; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (str_starts_with($gedrec, '0 _EVDEF')) {
+            // Created by RootsMagic.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 _EVENT_DEFN')) {
+            // Created by PAF and Legacy.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 _PLAC_DEFN')) {
+            $this->importLegacyPlacDefn($gedrec);
+
+            return;
+        } elseif (str_starts_with($gedrec, '0 _PLAC ')) {
+            $this->importTNGPlac($gedrec);
+
+            return;
+        } elseif (str_starts_with($gedrec, '0 HEAD')) {
+            $type = 'HEAD';
+            $xref = 'HEAD'; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (str_starts_with($gedrec, '0 TRLR')) {
+            $tree->setPreference('imported', '1');
+            $type = 'TRLR';
+            $xref = 'TRLR'; // For records without an XREF, use the type as a pseudo XREF.
         } else {
             throw new GedcomErrorException($gedrec);
         }
@@ -444,14 +462,6 @@ class GedcomImportService
                     ]);
                 }
                 break;
-
-            case '_PLAC ':
-                $this->importTNGPlac($gedrec);
-                return;
-
-            case '_PLAC_DEFN':
-                $this->importLegacyPlacDefn($gedrec);
-                return;
 
             default: // Custom record types.
                 DB::table('other')->insert([

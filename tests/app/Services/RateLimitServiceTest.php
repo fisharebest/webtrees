@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -63,15 +63,15 @@ class RateLimitServiceTest extends TestCase
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(1, explode(',', $history));
+        static::assertCount(1, explode(',', $history));
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(2, explode(',', $history));
+        static::assertCount(2, explode(',', $history));
 
         $rate_limit_service->limitRateForUser($user, 3, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(3, explode(',', $history));
+        static::assertCount(3, explode(',', $history));
     }
 
     /**
@@ -90,7 +90,7 @@ class RateLimitServiceTest extends TestCase
 
         $rate_limit_service->limitRateForUser($user, 5, 30, 'rate-limit');
         $history = $user->getPreference('rate-limit');
-        $this->assertCount(6, explode(',', $history));
+        static::assertCount(6, explode(',', $history));
     }
 
     /**

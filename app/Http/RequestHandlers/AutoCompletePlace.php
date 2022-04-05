@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,10 +35,10 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
     private ModuleService $module_service;
 
     /**
-     * @param SearchService $search_service
      * @param ModuleService $module_service
+     * @param SearchService $search_service
      */
-    public function __construct(SearchService $search_service, ModuleService $module_service)
+    public function __construct(ModuleService $module_service, SearchService $search_service)
     {
         parent::__construct($search_service);
 

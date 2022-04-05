@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,7 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('cs');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[0]);
         self::assertInstanceOf(CensusOfSlovakia::class, $censuses[1]);
         self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
@@ -44,8 +44,9 @@ class CensusTest extends TestCase
         self::assertInstanceOf(CensusOfFrance::class, $censuses[5]);
         self::assertInstanceOf(CensusOfScotland::class, $censuses[6]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfCanada::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfCanada::class, $censuses[10]);
     }
 
     /**
@@ -57,7 +58,7 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('da');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfDenmark::class, $censuses[0]);
         self::assertInstanceOf(CensusOfDeutschland::class, $censuses[1]);
         self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[2]);
@@ -66,8 +67,9 @@ class CensusTest extends TestCase
         self::assertInstanceOf(CensusOfScotland::class, $censuses[5]);
         self::assertInstanceOf(CensusOfSlovakia::class, $censuses[6]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfCanada::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfCanada::class, $censuses[10]);
     }
 
     /**
@@ -79,6 +81,7 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('de');
 
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfDeutschland::class, $censuses[0]);
         self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[1]);
         self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
@@ -87,8 +90,9 @@ class CensusTest extends TestCase
         self::assertInstanceOf(CensusOfScotland::class, $censuses[5]);
         self::assertInstanceOf(CensusOfSlovakia::class, $censuses[6]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfCanada::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfCanada::class, $censuses[10]);
     }
 
     /**
@@ -100,17 +104,18 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('en-AU');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfEngland::class, $censuses[0]);
         self::assertInstanceOf(CensusOfScotland::class, $censuses[1]);
         self::assertInstanceOf(CensusOfWales::class, $censuses[2]);
         self::assertInstanceOf(CensusOfCanada::class, $censuses[3]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[4]);
-        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[5]);
-        self::assertInstanceOf(CensusOfDenmark::class, $censuses[6]);
-        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfFrance::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[10]);
     }
 
     /**
@@ -122,17 +127,18 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('en-GB');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfEngland::class, $censuses[0]);
         self::assertInstanceOf(CensusOfScotland::class, $censuses[1]);
         self::assertInstanceOf(CensusOfWales::class, $censuses[2]);
         self::assertInstanceOf(CensusOfCanada::class, $censuses[3]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[4]);
-        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[5]);
-        self::assertInstanceOf(CensusOfDenmark::class, $censuses[6]);
-        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfFrance::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[10]);
     }
 
     /**
@@ -144,17 +150,18 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('en-US');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[0]);
-        self::assertInstanceOf(CensusOfCanada::class, $censuses[1]);
-        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[2]);
-        self::assertInstanceOf(CensusOfDenmark::class, $censuses[3]);
-        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[4]);
-        self::assertInstanceOf(CensusOfEngland::class, $censuses[5]);
-        self::assertInstanceOf(CensusOfFrance::class, $censuses[6]);
-        self::assertInstanceOf(CensusOfScotland::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfCanada::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[10]);
     }
 
     /**
@@ -166,7 +173,7 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('fr');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfFrance::class, $censuses[0]);
         self::assertInstanceOf(CensusOfCanada::class, $censuses[1]);
         self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[2]);
@@ -176,7 +183,8 @@ class CensusTest extends TestCase
         self::assertInstanceOf(CensusOfScotland::class, $censuses[6]);
         self::assertInstanceOf(CensusOfSlovakia::class, $censuses[7]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[10]);
     }
 
     /**
@@ -188,7 +196,7 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('fr-CA');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfCanada::class, $censuses[0]);
         self::assertInstanceOf(CensusOfFrance::class, $censuses[1]);
         self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[2]);
@@ -198,7 +206,8 @@ class CensusTest extends TestCase
         self::assertInstanceOf(CensusOfScotland::class, $censuses[6]);
         self::assertInstanceOf(CensusOfSlovakia::class, $censuses[7]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[10]);
     }
 
     /**
@@ -210,7 +219,7 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('sk');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfSlovakia::class, $censuses[0]);
         self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[1]);
         self::assertInstanceOf(CensusOfDenmark::class, $censuses[2]);
@@ -219,8 +228,9 @@ class CensusTest extends TestCase
         self::assertInstanceOf(CensusOfFrance::class, $censuses[5]);
         self::assertInstanceOf(CensusOfScotland::class, $censuses[6]);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfCanada::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfCanada::class, $censuses[10]);
     }
 
     /**
@@ -232,16 +242,17 @@ class CensusTest extends TestCase
     {
         $censuses = Census::censusPlaces('XX');
 
-        self::assertCount(10, $censuses);
+        self::assertCount(11, $censuses);
         self::assertInstanceOf(CensusOfUnitedStates::class, $censuses[0]);
-        self::assertInstanceOf(CensusOfEngland::class, $censuses[1]);
-        self::assertInstanceOf(CensusOfScotland::class, $censuses[2]);
-        self::assertInstanceOf(CensusOfWales::class, $censuses[3]);
-        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[4]);
-        self::assertInstanceOf(CensusOfFrance::class, $censuses[5]);
-        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[6]);
-        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[7]);
-        self::assertInstanceOf(CensusOfDenmark::class, $censuses[8]);
-        self::assertInstanceOf(CensusOfCanada::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfRhodeIsland::class, $censuses[1]);
+        self::assertInstanceOf(CensusOfEngland::class, $censuses[2]);
+        self::assertInstanceOf(CensusOfScotland::class, $censuses[3]);
+        self::assertInstanceOf(CensusOfWales::class, $censuses[4]);
+        self::assertInstanceOf(CensusOfDeutschland::class, $censuses[5]);
+        self::assertInstanceOf(CensusOfFrance::class, $censuses[6]);
+        self::assertInstanceOf(CensusOfCzechRepublic::class, $censuses[7]);
+        self::assertInstanceOf(CensusOfSlovakia::class, $censuses[8]);
+        self::assertInstanceOf(CensusOfDenmark::class, $censuses[9]);
+        self::assertInstanceOf(CensusOfCanada::class, $censuses[10]);
     }
 }

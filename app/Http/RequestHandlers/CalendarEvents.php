@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -76,7 +76,7 @@ class CalendarEvents implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree            = Validator::attributes($request)->tree();
-        $view            = Validator::attributes($request)->string('view');
+        $view            = Validator::attributes($request)->isInArray(['day', 'month', 'year'])->string('view');
         $CALENDAR_FORMAT = $tree->getPreference('CALENDAR_FORMAT');
 
         $cal      = $request->getQueryParams()['cal'] ?? '';

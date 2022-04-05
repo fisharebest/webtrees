@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -142,18 +142,16 @@ class EncodingFactory implements EncodingFactoryInterface
                 $regex = "\n1 CHAR(?:ACTER)? " . $pattern;
             }
 
-            if (preg_match("/" . $regex . "/i", $header) === 1) {
+            if (preg_match('/' . $regex . '/i', $header) === 1) {
                 return $this->make($encoding);
             }
         }
 
         if (preg_match('/1 CHAR (.+)/', $header, $match) === 1) {
-            $charset = $match[1];
-        } else {
-            $charset = '???';
+            throw new InvalidGedcomEncodingException($match[1]);
         }
 
-        throw new InvalidGedcomEncodingException($charset);
+        return $this->make(ASCII::NAME);
     }
 
     /**
@@ -162,7 +160,7 @@ class EncodingFactory implements EncodingFactoryInterface
      * @param string $name
      *
      * @return EncodingInterface
-     * @thorws DomainException
+     * @throws DomainException
      */
     public function make(string $name): EncodingInterface
     {

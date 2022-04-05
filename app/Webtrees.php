@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,6 @@ use Closure;
 use ErrorException;
 use Fisharebest\Webtrees\Factories\CacheFactory;
 use Fisharebest\Webtrees\Factories\CalendarDateFactory;
-use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\ElementFactory;
 use Fisharebest\Webtrees\Factories\EncodingFactory;
 use Fisharebest\Webtrees\Factories\FamilyFactory;
@@ -37,12 +36,17 @@ use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Factories\MediaFactory;
 use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Factories\RepositoryFactory;
+use Fisharebest\Webtrees\Factories\ResponseFactory;
+use Fisharebest\Webtrees\Factories\RouteFactory;
 use Fisharebest\Webtrees\Factories\SlugFactory;
 use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
+use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
+use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
@@ -54,6 +58,7 @@ use Fisharebest\Webtrees\Http\Middleware\HandleExceptions;
 use Fisharebest\Webtrees\Http\Middleware\LoadRoutes;
 use Fisharebest\Webtrees\Http\Middleware\NoRouteFound;
 use Fisharebest\Webtrees\Http\Middleware\ReadConfigIni;
+use Fisharebest\Webtrees\Http\Middleware\RegisterGedcomTags;
 use Fisharebest\Webtrees\Http\Middleware\Router;
 use Fisharebest\Webtrees\Http\Middleware\SecurityHeaders;
 use Fisharebest\Webtrees\Http\Middleware\UpdateDatabaseSchema;
@@ -62,8 +67,6 @@ use Fisharebest\Webtrees\Http\Middleware\UseLanguage;
 use Fisharebest\Webtrees\Http\Middleware\UseSession;
 use Fisharebest\Webtrees\Http\Middleware\UseTheme;
 use Fisharebest\Webtrees\Http\Middleware\UseTransaction;
-use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
-use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Illuminate\Container\Container;
 use Middleland\Dispatcher;
 use Nyholm\Psr7\Factory\Psr17Factory;
@@ -119,6 +122,12 @@ class Webtrees
     // We want to know about all PHP errors during development, and fewer in production.
     public const ERROR_REPORTING = self::DEBUG ? E_ALL : E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED;
 
+    // Page layouts for various page types.
+    public const LAYOUT_ADMINISTRATION = 'layouts/administration';
+    public const LAYOUT_AJAX           = 'layouts/ajax';
+    public const LAYOUT_DEFAULT        = 'layouts/default';
+    public const LAYOUT_ERROR          = 'layouts/error';
+
     // The name of the application.
     public const NAME = 'webtrees';
 
@@ -126,7 +135,7 @@ class Webtrees
     public const SCHEMA_VERSION = 45;
 
     // e.g. "-dev", "-alpha", "-beta", etc.
-    public const STABILITY = '-alpha.2';
+    public const STABILITY = '-beta.2';
 
     // Version number
     public const VERSION = '2.1.0' . self::STABILITY;
@@ -159,6 +168,7 @@ class Webtrees
         DoHousekeeping::class,
         UseTransaction::class,
         LoadRoutes::class,
+        RegisterGedcomTags::class,
         BootModules::class,
         Router::class,
         NoRouteFound::class,
@@ -197,6 +207,8 @@ class Webtrees
         Registry::mediaFactory(new MediaFactory());
         Registry::noteFactory(new NoteFactory());
         Registry::repositoryFactory(new RepositoryFactory());
+        Registry::responseFactory(new ResponseFactory(new Psr17Factory(), new Psr17Factory()));
+        Registry::routeFactory(new RouteFactory());
         Registry::slugFactory(new SlugFactory());
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());

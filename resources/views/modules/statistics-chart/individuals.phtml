@@ -3,16 +3,16 @@
 use Fisharebest\Webtrees\Statistics;
 
 /**
- * @var Statistics $stats
+ * @var Statistics $statistics
  */
 
 ?>
 
 <div class="container pt-3">
-    <?= view('statistics/individuals/total-records', ['stats' => $stats]) ?>
-    <?= view('statistics/individuals/total-events', ['stats' => $stats]) ?>
-    <?= view('statistics/individuals/lifespan', ['stats' => $stats]) ?>
-    <?= view('statistics/individuals/greatest-age', ['stats' => $stats]) ?>
-    <?= view('statistics/individuals/oldest-living', ['stats' => $stats]) ?>
-    <?= view('statistics/individuals/names', ['stats' => $stats]) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/total-individuals')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/individual-events')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/lifespan')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/greatest-age')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/oldest-living')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/names')) ?>
 </div>

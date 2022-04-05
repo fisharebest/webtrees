@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -155,7 +155,7 @@ class RegisterAction implements RequestHandlerInterface
         // Send a verification message to the user.
         /* I18N: %s is a server name/URL */
         $this->email_service->send(
-            new Siteuser(),
+            new SiteUser(),
             $user,
             $reply_to,
             I18N::translate('Your registration at %s', $base_url),

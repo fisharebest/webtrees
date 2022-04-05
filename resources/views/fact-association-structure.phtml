@@ -55,7 +55,7 @@ foreach ($amatches as $amatch) {
             $label = Registry::elementFactory()->make($fact->tag() . ':_ASSO')->label();
         }
 
-        if ($person->getBirthDate()->isOK() && $fact->date()->isOK()) {
+        if ($person !== $parent && $person->getBirthDate()->isOK() && $fact->date()->isOK()) {
             $age = new Age($person->getBirthDate(), $fact->date());
             switch ($person->sex()) {
                 case 'M':

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -467,14 +467,14 @@ abstract class AbstractCalendarDate
         // %j. %F %Y
         // Don’t show exact details or unnecessary punctuation for inexact dates.
         if ($this->day === 0) {
-            $format = strtr($format, ['%d' => '', '%j日' => '', '%j,' => '', '%j' => '', '%l' => '', '%D' => '', '%N' => '', '%S' => '', '%w' => '', '%z' => '']);
+            $format = strtr($format, ['%d' => '', '日' => '', '%j,' => '', '%j' => '', '%l' => '', '%D' => '', '%N' => '', '%S' => '', '%w' => '', '%z' => '']);
         }
         if ($this->month === 0) {
-            $format = strtr($format, ['%F' => '', '%m' => '', '%M' => '', '年 %n月' => '', '%n' => '', '%t' => '']);
+            $format = strtr($format, ['%F' => '', '%m' => '', '%M' => '', '月' => '', '%n' => '', '%t' => '']);
         }
         if ($this->year === 0) {
-            $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '%Y年' => '', '%Y' => '']);
-        }
+            $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '年' => '', '%Y' => '']);
+        }// 年 %n月%j日
         $format = trim($format, ',. /-');
 
         if ($this->day !== 0 && preg_match('/%[djlDNSwz]/', $format)) {

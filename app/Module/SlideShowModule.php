@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
@@ -48,6 +49,16 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
 
     // How long to show each slide (seconds)
     private const DELAY = 6;
+
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
 
     /**
      * A sentence describing what this module does.
@@ -119,7 +130,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             ->select('media.*')
             ->get()
             ->shuffle()
-            ->first(static function (object $row) use ($filter_links, $tree): bool {
+            ->first(function (object $row) use ($filter_links, $tree): bool {
                 $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
                 assert($media instanceof Media);
 
@@ -127,7 +138,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                     return false;
                 }
 
-                foreach ($media->linkedIndividuals('OBJE') as $individual) {
+                foreach ($this->linked_record_service->linkedIndividuals($media) as $individual) {
                     switch ($filter_links) {
                         case self::LINK_ALL:
                             return true;
@@ -153,6 +164,9 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
             $content = view('modules/random_media/slide-show', [
                 'block_id'            => $block_id,
                 'delay'               => self::DELAY,
+                'linked_families'     => $this->linked_record_service->linkedFamilies($random_media),
+                'linked_individuals'  => $this->linked_record_service->linkedIndividuals($random_media),
+                'linked_sources'      => $this->linked_record_service->linkedSources($random_media),
                 'media'               => $random_media,
                 'media_file'          => $random_media->firstImageFile(),
                 'show_controls'       => $controls,

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -116,7 +116,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $seconds
      *
-     * @return $this
+     * @return self
      */
     public function addSeconds(int $seconds): TimestampInterface
     {
@@ -134,7 +134,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $minutes
      *
-     * @return $this
+     * @return self
      */
     public function addMinutes(int $minutes): TimestampInterface
     {
@@ -152,7 +152,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $hours
      *
-     * @return $this
+     * @return self
      */
     public function addHours(int $hours): TimestampInterface
     {
@@ -170,7 +170,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $days
      *
-     * @return $this
+     * @return self
      */
     public function addDays(int $days): TimestampInterface
     {
@@ -188,7 +188,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $months
      *
-     * @return $this
+     * @return self
      */
     public function addMonths(int $months): TimestampInterface
     {
@@ -206,7 +206,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $years
      *
-     * @return $this
+     * @return self
      */
     public function addYears(int $years): TimestampInterface
     {
@@ -224,7 +224,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $seconds
      *
-     * @return $this
+     * @return self
      */
     public function subtractSeconds(int $seconds): TimestampInterface
     {
@@ -242,7 +242,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $minutes
      *
-     * @return $this
+     * @return self
      */
     public function subtractMinutes(int $minutes): TimestampInterface
     {
@@ -260,7 +260,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $hours
      *
-     * @return $this
+     * @return self
      */
     public function subtractHours(int $hours): TimestampInterface
     {
@@ -278,7 +278,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $days
      *
-     * @return $this
+     * @return self
      */
     public function subtractDays(int $days): TimestampInterface
     {
@@ -296,7 +296,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $months
      *
-     * @return $this
+     * @return self
      */
     public function subtractMonths(int $months): TimestampInterface
     {
@@ -314,7 +314,7 @@ class Timestamp implements TimestampInterface
     /**
      * @param int $years
      *
-     * @return $this
+     * @return self
      */
     public function subtractYears(int $years): TimestampInterface
     {

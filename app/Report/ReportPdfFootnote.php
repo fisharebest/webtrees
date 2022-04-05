@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,7 +58,7 @@ class ReportPdfFootnote extends ReportBaseFootnote
         }
         $temptext = str_replace('#PAGENUM#', (string) $renderer->tcpdf->PageNo(), $this->text);
         // Set the link to this y/page position
-        $renderer->tcpdf->SetLink($this->addlink, -1, -1);
+        $renderer->tcpdf->setLink($this->addlink, -1, -1);
         // Print first the source number
         // working
         if ($renderer->tcpdf->getRTL()) {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,9 +43,8 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $at    = Validator::queryParams($request)->string('at');
+        $tree  = Validator::attributes($request)->tree();
+        $at    = Validator::queryParams($request)->isInArray(['', '@'])->string('at');
         $page  = Validator::queryParams($request)->integer('page', 1);
         $query = Validator::queryParams($request)->string('query');
 
@@ -81,7 +80,7 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
      * @param int    $limit
      * @param string $at    "@" or ""
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     abstract protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection;
 }

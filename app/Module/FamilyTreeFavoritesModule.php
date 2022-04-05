@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -163,14 +163,11 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
     {
         $tree   = Validator::attributes($request)->tree();
         $user   = Validator::attributes($request)->user();
-        $params = (array) $request->getParsedBody();
-
-        $note  = $params['note'];
-        $title = $params['title'];
-        $url   = $params['url'];
-        $type  = $params['type'];
-        $xref  = $params[$type . '-xref'] ?? '';
-
+        $note   = Validator::parsedBody($request)->string('note');
+        $title  = Validator::parsedBody($request)->string('title');
+        $url    = Validator::parsedBody($request)->string('url');
+        $type   = Validator::parsedBody($request)->string('type');
+        $xref   = Validator::parsedBody($request)->string($type . '-xref', '');
         $record = $this->getRecordForType($type, $xref, $tree);
 
         if (Auth::isManager($tree, $user)) {

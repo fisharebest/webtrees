@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -34,6 +34,8 @@ use Fisharebest\Webtrees\Contracts\MarkdownFactoryInterface;
 use Fisharebest\Webtrees\Contracts\MediaFactoryInterface;
 use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
+use Fisharebest\Webtrees\Contracts\ResponseFactoryInterface;
+use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
@@ -75,6 +77,10 @@ class Registry
     private static NoteFactoryInterface $note_factory;
 
     private static RepositoryFactoryInterface $repository_factory;
+
+    private static ResponseFactoryInterface $response_factory;
+
+    private static RouteFactoryInterface $route_factory;
 
     private static SlugFactoryInterface $slug_factory;
 
@@ -326,6 +332,38 @@ class Registry
         }
 
         return self::$repository_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param ResponseFactoryInterface|null $factory
+     *
+     * @return ResponseFactoryInterface
+     */
+    public static function responseFactory(ResponseFactoryInterface $factory = null): ResponseFactoryInterface
+    {
+        if ($factory instanceof ResponseFactoryInterface) {
+            self::$response_factory = $factory;
+        }
+
+        return self::$response_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param RouteFactoryInterface|null $factory
+     *
+     * @return RouteFactoryInterface
+     */
+    public static function routeFactory(RouteFactoryInterface $factory = null): RouteFactoryInterface
+    {
+        if ($factory instanceof RouteFactoryInterface) {
+            self::$route_factory = $factory;
+        }
+
+        return self::$route_factory;
     }
 
     /**

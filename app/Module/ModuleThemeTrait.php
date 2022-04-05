@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -282,10 +282,9 @@ trait ModuleThemeTrait
         assert($request instanceof ServerRequestInterface);
 
         // Return to this page after login...
-        $redirect = $request->getQueryParams()['url'] ?? (string) $request->getUri();
-
-        $tree  = Validator::attributes($request)->treeOptional();
-        $route = Validator::attributes($request)->route();
+        $redirect = Validator::queryParams($request)->string('url', (string) $request->getUri());
+        $tree     = Validator::attributes($request)->treeOptional();
+        $route    = Validator::attributes($request)->route();
 
         // ...but switch from the tree-page to the user-page
         if ($route->name === TreePage::class) {

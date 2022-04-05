@@ -7,6 +7,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
 
 /**
+ * @var array<string>           $all_family_tags
+ * @var array<string>           $all_individual_tags
+ * @var array<string>           $custom_family_tags
+ * @var bool                    $custom_gedcom_l_tags
+ * @var array<string>           $custom_individual_tags
  * @var ElementFactoryInterface $element_factory
  * @var string                  $title
  */
@@ -20,6 +25,8 @@ use Fisharebest\Webtrees\Site;
 <form method="post" action="<?= e(route(SiteTagsAction::class)) ?>" class="form">
     <?= csrf_field() ?>
 
+    <h2><?= I18N::translate('Standard GEDCOM tags') ?></h2>
+
     <p>
         <?= I18N::translate('The GEDCOM standard provides a large number of data-entry fields, called tags.') ?>
         <br>
@@ -28,7 +35,7 @@ use Fisharebest\Webtrees\Site;
         <?= I18N::translate('You can simplify the edit forms by hiding GEDCOM tags that you do not use.') ?>
     </p>
 
-    <h2><?= I18N::translate('Names') ?></h2>
+    <h3><?= I18N::translate('Names') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -158,7 +165,7 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('Places') ?></h2>
+    <h3><?= I18N::translate('Places') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -250,7 +257,7 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('Addresses') ?></h2>
+    <h3><?= I18N::translate('Addresses') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -312,7 +319,7 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('Source citations') ?></h2>
+    <h3><?= I18N::translate('Source citations') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -387,7 +394,7 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('Sources') ?></h2>
+    <h3><?= I18N::translate('Sources') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -420,13 +427,13 @@ use Fisharebest\Webtrees\Site;
                 </td>
 
                 <td>
-                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_DATA', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_EVEN')]) ?>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_SOUR_DATA', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_SOUR_DATA')]) ?>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('Facts and events') ?></h2>
+    <h3><?= I18N::translate('Facts and events') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -710,7 +717,7 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('LDS church') ?></h2>
+    <h3><?= I18N::translate('LDS church') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -764,7 +771,7 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('Identifiers') ?></h2>
+    <h3><?= I18N::translate('Identifiers') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -868,7 +875,7 @@ use Fisharebest\Webtrees\Site;
         </tbody>
     </table>
 
-    <h2><?= I18N::translate('Submitters') ?></h2>
+    <h3><?= I18N::translate('Submitters') ?></h3>
 
     <table class="table table-bordered">
         <colgroup>
@@ -921,6 +928,49 @@ use Fisharebest\Webtrees\Site;
             </tr>
         </tbody>
     </table>
+
+    <h2><?= I18N::translate('Custom GEDCOM tags') ?></h2>
+
+    <p>
+        <?= I18N::translate('Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them.') ?>
+        <br>
+        <?= I18N::translate('It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications.') ?>
+        <br>
+        <?= I18N::translate('To create new data using custom tags, you need to enable them.') ?>
+    </p>
+
+    <div class="row mb-3">
+        <label class="col-sm-3" for="custom_individual_tags">
+            <?= I18N::translate('Individual facts and events') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <?= view('components/select', ['class' => 'tom-select', 'id' => 'custom_individual_tags', 'name' => 'custom_individual_tags[]', 'options' => $all_individual_tags, 'selected' => $custom_individual_tags]) ?>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3" for="custom_family_tags">
+            <?= I18N::translate('Family facts and events') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <?= view('components/select', ['class' => 'tom-select', 'id' => 'custom_family_tags', 'name' => 'custom_family_tags[]', 'options' => $all_family_tags, 'selected' => $custom_family_tags]) ?>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3" for="custom_gedcom_l_tags">
+            <?= /* I18N: https://genealogy.net/GEDCOM/ */ I18N::translate('GEDCOM-L') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <?= view('components/checkbox-inline', ['name' => 'custom_gedcom_l_tags', 'label' => I18N::translate('show'), 'checked' => $custom_gedcom_l_tags]) ?>
+            <p>
+                <?= I18N::translate('For more information, see %s.', '<a href="https://genealogy.net/GEDCOM/">https://genealogy.net/GEDCOM/</a>') ?>
+            </p>
+        </div>
+    </div>
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">

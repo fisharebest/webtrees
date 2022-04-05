@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -36,6 +36,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -81,10 +82,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this);
     }
 
@@ -699,7 +697,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      *
      * @return array<array<int>>
      */
-    public function surnames(
+    protected function surnames(
         Tree $tree,
         string $surn,
         string $salpha,
@@ -759,9 +757,9 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * @param bool            $fams   if set, only fetch individuals with FAMS records
      * @param LocaleInterface $locale
      *
-     * @return array<Individual>
+     * @return Collection<Individual>
      */
-    public function individuals(
+    protected function individuals(
         Tree $tree,
         string $surn,
         string $salpha,
@@ -769,7 +767,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         bool $marnm,
         bool $fams,
         LocaleInterface $locale
-    ): array {
+    ): Collection {
         $collation = $this->localization_service->collation($locale);
 
         // Use specific collation for name fields.
@@ -810,7 +808,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             ->orderBy(new Expression("CASE n_givn WHEN '" . Individual::NOMEN_NESCIO . "' THEN 1 ELSE 0 END"))
             ->orderBy($n_givn);
 
-        $list = [];
+        $individuals = new Collection();
         $rows = $query->get();
 
         foreach ($rows as $row) {
@@ -824,13 +822,13 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                     // We need to clone $individual, as we may have multiple references to the
                     // same individual in this list, and the "primary name" would otherwise
                     // be shared amongst all of them.
-                    $list[] = clone $individual;
+                    $individuals->push(clone $individual);
                     break;
                 }
             }
         }
 
-        return $list;
+        return $individuals;
     }
 
     /**
@@ -845,19 +843,19 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * @param bool            $marnm  if set, include married names
      * @param LocaleInterface $locale
      *
-     * @return array<Family>
+     * @return Collection<Family>
      */
-    public function families(Tree $tree, string $surn, string $salpha, string $galpha, bool $marnm, LocaleInterface $locale): array
+    protected function families(Tree $tree, string $surn, string $salpha, string $galpha, bool $marnm, LocaleInterface $locale): Collection
     {
-        $list = [];
+        $families = new Collection();
+
         foreach ($this->individuals($tree, $surn, $salpha, $galpha, $marnm, true, $locale) as $indi) {
             foreach ($indi->spouseFamilies() as $family) {
-                $list[$family->xref()] = $family;
+                $families->push($family);
             }
         }
-        usort($list, GedcomRecord::nameComparator());
 
-        return $list;
+        return $families->unique();
     }
 
     /**

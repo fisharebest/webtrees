@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\CalendarService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -34,16 +35,22 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 {
     use ModuleBlockTrait;
 
+    private const SORT_STYLE_DATE = 'anniv';
+    private const SORT_STYLE_NAME = 'alpha';
+
+    private const LAYOUT_STYLE_LIST  = 'list';
+    private const LAYOUT_STYLE_TABLE = 'table';
+
     // Default values for new blocks.
     private const DEFAULT_DAYS   = '7';
     private const DEFAULT_FILTER = '1';
-    private const DEFAULT_SORT   = 'alpha';
-    private const DEFAULT_STYLE  = 'table';
+    private const DEFAULT_SORT   = self::SORT_STYLE_NAME;
+    private const DEFAULT_STYLE  = self::LAYOUT_STYLE_TABLE;
 
     // Initial sorting for datatables
     private const DATATABLES_ORDER = [
-        'alpha' => [[0, 'asc']],
-        'anniv' => [[1, 'asc']],
+        self::SORT_STYLE_NAME => [[0, 'asc']],
+        self::SORT_STYLE_DATE => [[1, 'asc']],
     ];
 
     // Can show this number of days into the future.
@@ -93,6 +100,16 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         'DEAT',
     ];
 
+    private CalendarService $calendar_service;
+
+    /**
+     * @param CalendarService $calendar_service
+     */
+    public function __construct(CalendarService $calendar_service)
+    {
+        $this->calendar_service = $calendar_service;
+    }
+
     /**
      * How should this module be identified in the control panel, etc.?
      *
@@ -127,12 +144,10 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      */
     public function getBlock(Tree $tree, int $block_id, string $context, array $config = []): string
     {
-        $calendar_service = new CalendarService();
-
         $default_events = implode(',', self::DEFAULT_EVENTS);
 
-        $days      = (int) $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
-        $filter    = (bool) $this->getBlockSetting($block_id, 'filter', self::DEFAULT_FILTER);
+        $days      = (int)$this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+        $filter    = (bool)$this->getBlockSetting($block_id, 'filter', self::DEFAULT_FILTER);
         $infoStyle = $this->getBlockSetting($block_id, 'infoStyle', self::DEFAULT_STYLE);
         $sortStyle = $this->getBlockSetting($block_id, 'sortStyle', self::DEFAULT_SORT);
         $events    = $this->getBlockSetting($block_id, 'events', $default_events);
@@ -151,7 +166,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
         $startjd = Registry::timestampFactory()->now()->addDays(1)->julianDay();
         $endjd   = Registry::timestampFactory()->now()->addDays($days)->julianDay();
 
-        $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
+        $facts = $this->calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
         if ($facts->isEmpty()) {
             if ($endjd === $startjd) {
@@ -159,7 +174,8 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                     'message' => I18N::translate('No events exist for tomorrow.'),
                 ]);
             } else {
-                /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */                $content = view('modules/upcoming_events/empty', [
+                /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */
+                $content = view('modules/upcoming_events/empty', [
                     'message' => I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1)),
                 ]);
             }
@@ -228,19 +244,23 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
      * Update the configuration for a block.
      *
      * @param ServerRequestInterface $request
-     * @param int     $block_id
+     * @param int                    $block_id
      *
      * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
+        $days       = Validator::parsedBody($request)->isBetween(1, self::MAX_DAYS)->integer('days');
+        $filter     = Validator::parsedBody($request)->boolean('filter');
+        $info_style = Validator::parsedBody($request)->isInArrayKeys($this->infoStyles())->string('infoStyle');
+        $sort_style = Validator::parsedBody($request)->isInArrayKeys($this->sortStyles())->string('sortStyle');
+        $events     = Validator::parsedBody($request)->array('events');
 
-        $this->setBlockSetting($block_id, 'days', $params['days']);
-        $this->setBlockSetting($block_id, 'filter', $params['filter']);
-        $this->setBlockSetting($block_id, 'infoStyle', $params['infoStyle']);
-        $this->setBlockSetting($block_id, 'sortStyle', $params['sortStyle']);
-        $this->setBlockSetting($block_id, 'events', implode(',', $params['events'] ?? []));
+        $this->setBlockSetting($block_id, 'days', (string)$days);
+        $this->setBlockSetting($block_id, 'filter', (string)$filter);
+        $this->setBlockSetting($block_id, 'infoStyle', $info_style);
+        $this->setBlockSetting($block_id, 'sortStyle', $sort_style);
+        $this->setBlockSetting($block_id, 'events', implode(',', $events));
     }
 
     /**
@@ -268,30 +288,38 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
             $all_events[$event] = Registry::elementFactory()->make($tag)->label();
         }
 
-        $info_styles = [
-            /* I18N: An option in a list-box */
-            'list'  => I18N::translate('list'),
-            /* I18N: An option in a list-box */
-            'table' => I18N::translate('table'),
-        ];
-
-        $sort_styles = [
-            /* I18N: An option in a list-box */
-            'alpha' => I18N::translate('sort by name'),
-            /* I18N: An option in a list-box */
-            'anniv' => I18N::translate('sort by date'),
-        ];
-
         return view('modules/upcoming_events/config', [
             'all_events'  => $all_events,
             'days'        => $days,
             'event_array' => $event_array,
             'filter'      => $filter,
             'info_style'  => $info_style,
-            'info_styles' => $info_styles,
+            'info_styles' => $this->infoStyles(),
             'max_days'    => self::MAX_DAYS,
             'sort_style'  => $sort_style,
-            'sort_styles' => $sort_styles,
+            'sort_styles' => $this->sortStyles(),
         ]);
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    private function infoStyles(): array
+    {
+        return [
+            self::LAYOUT_STYLE_LIST  => /* I18N: An option in a list-box */ I18N::translate('list'),
+            self::LAYOUT_STYLE_TABLE => /* I18N: An option in a list-box */ I18N::translate('table'),
+        ];
+    }
+
+    /**
+     * @return array<string,string>
+     */
+    private function sortStyles(): array
+    {
+        return [
+            self::SORT_STYLE_NAME => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
+            self::SORT_STYLE_DATE => /* I18N: An option in a list-box */ I18N::translate('sort by date'),
+        ];
     }
 }

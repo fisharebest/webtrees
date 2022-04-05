@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Submission;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function array_filter;
+use function explode;
 use function view;
 
 /**
@@ -54,7 +56,7 @@ class TomSelectSubmission extends AbstractTomSelectHandler
      * @param int    $limit
      * @param string $at
      *
-     * @return Collection<int,array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
@@ -64,7 +66,8 @@ class TomSelectSubmission extends AbstractTomSelectHandler
         if ($submission instanceof Submission) {
             $results = new Collection([$submission]);
         } else {
-            $results = $this->search_service->searchSubmissions([$tree], [$query], $offset, $limit);
+            $search  = array_filter(explode(' ', $query));
+            $results = $this->search_service->searchSubmissions([$tree], $search, $offset, $limit);
         }
 
         return $results->map(static function (Submission $submission) use ($at): array {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -71,7 +71,7 @@ class AddChildToIndividualAction implements RequestHandlerInterface
 
         // Create a new family
         $link   = $child->sex() === 'F' ? 'WIFE' : 'HUSB';
-        $gedcom = "0 @@ FAM\n1 " . $link . " @" . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
+        $gedcom = "0 @@ FAM\n1 " . $link . ' @' . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
         $family = $tree->createFamily($gedcom);
 
         // Link the individual to the family
@@ -80,8 +80,7 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         // Link the child to the family
         $child->createFact('1 FAMC @' . $family->xref() . '@', false);
 
-        $base_url = Validator::attributes($request)->string('base_url');
-        $url      = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $child->url());
+        $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $child->url());
 
         return redirect($url);
     }

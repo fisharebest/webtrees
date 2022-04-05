@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -58,14 +58,13 @@ class PendingChanges implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $n = (int) ($request->getQueryParams()['n'] ?? self::MAX_CHANGES);
-
-        $url     = $request->getQueryParams()['url'] ?? route(TreePage::class, ['tree' => $tree->name()]);
-        $xrefs   = $this->pending_changes_service->pendingXrefs($tree);
-        $changes = $this->pending_changes_service->pendingChanges($tree, $n);
-        $title   = I18N::translate('Pending changes');
+        $tree        = Validator::attributes($request)->tree();
+        $n           = Validator::queryParams($request)->integer('n', self::MAX_CHANGES);
+        $default_url = route(TreePage::class, ['tree' => $tree->name()]);
+        $url         = Validator::queryParams($request)->isLocalUrl()->string('url', $default_url);
+        $xrefs       = $this->pending_changes_service->pendingXrefs($tree);
+        $changes     = $this->pending_changes_service->pendingChanges($tree, $n);
+        $title       = I18N::translate('Pending changes');
 
         return $this->viewResponse('pending-changes-page', [
             'changes' => $changes,

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -91,15 +91,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->tokens([
-                'generations' => '\d+',
-            ]);
+            ->allows(RequestMethodInterface::METHOD_POST);
     }
 
     /**
@@ -191,8 +185,8 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'xref'        => Validator::parsedBody($request)->string('xref', ''),
-                'generations' => Validator::parsedBody($request)->string('generations', ''),
+                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
             ]));
         }
 

@@ -29,7 +29,7 @@ use Illuminate\Support\Collection;
     <div class="col-sm-3">
         <?php if ($individual_media->isEmpty()) : ?>
             <div class="img-thumbnail">
-                <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($record->sex()) ?>"></i>
+                <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($record->sex()) ?> wt-icon-flip-rtl w-100"></i>
             </div>
         <?php elseif ($individual_media->count() === 1) : ?>
             <?= $individual_media->first()->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>

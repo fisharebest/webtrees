@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -52,9 +52,12 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private const LIMIT_LOW  = 10;
     private const LIMIT_HIGH = 20;
 
+    /**
+     * Early initialisation.  Called before most of the middleware.
+     */
     public function boot(): void
     {
-        Registry::elementFactory()->register([
+        Registry::elementFactory()->registerTags([
             'FAM:_TODO'           => new ResearchTask(I18N::translate('Research task')),
             'FAM:_TODO:DATE'      => new TransmissionDate(I18N::translate('Date')),
             'FAM:_TODO:_WT_USER'  => new WebtreesUser(I18N::translate('User')),

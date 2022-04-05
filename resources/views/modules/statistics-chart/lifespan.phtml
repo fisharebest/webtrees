@@ -1,0 +1,48 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Lifespan') ?>
+</h4>
+
+<div class="row mb-3">
+    <div class="d-grid gap-3">
+        <div class="card">
+            <h5 class="card-header border-bottom-0">
+                <?= I18N::translate('Average age at death') ?>
+                <span class="badge bg-secondary rounded-pill float-end">#averageLifespan:1#</span>
+            </h5>
+        </div>
+        
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header border-bottom-0">
+                        <?= I18N::translate('Males') ?>
+                        <span class="badge bg-secondary rounded-pill float-end">#averageLifespanMale:1#</span>
+                    </h5>
+                </div>
+            </div>
+    
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header border-bottom-0">
+                        <?= I18N::translate('Females') ?>
+                        <span class="badge bg-secondary rounded-pill float-end">#averageLifespanFemale:1#</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card m-0">
+            <div class="card-body">
+                #statsAge#
+            </div>
+        </div>
+    </div>
+</div>

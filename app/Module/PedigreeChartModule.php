@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -93,16 +93,9 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->tokens([
-                'generations' => '\d+',
-                'style'       => implode('|', array_keys($this->styles('ltr'))),
-            ]);
+            ->allows(RequestMethodInterface::METHOD_POST);
     }
 
     /**
@@ -186,19 +179,19 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree        = Validator::attributes($request)->tree();
-        $xref        = Validator::attributes($request)->isXref()->string('xref');
-        $ajax        = Validator::queryParams($request)->boolean('ajax', false);
-        $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
-        $style       = $request->getAttribute('style');
         $user        = Validator::attributes($request)->user();
+        $xref        = Validator::attributes($request)->isXref()->string('xref');
+        $style       = Validator::attributes($request)->isInArrayKeys($this->styles('ltr'))->string('style');
+        $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
+        $ajax        = Validator::queryParams($request)->boolean('ajax', false);
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(self::class, [
                 'tree'        => $tree->name(),
-                'xref'        => Validator::parsedBody($request)->string('xref', ''),
-                'style'       => Validator::parsedBody($request)->string('style', ''),
-                'generations' => Validator::parsedBody($request)->string('generations', ''),
+                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles('ltr'))->string('style'),
+                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
             ]));
         }
 

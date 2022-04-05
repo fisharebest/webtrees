@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -111,7 +111,7 @@ class AccountUpdate implements RequestHandlerInterface
         // Switch to the new language now
         Session::put('language', $language);
 
-        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->username())), 'success');
+        FlashMessages::addMessage(I18N::translate('The details for “%s” have been updated.', e($user->userName())), 'success');
 
         return redirect(route(HomePage::class, ['tree' => $tree instanceof Tree ? $tree->name() : null]));
     }

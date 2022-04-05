@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -71,17 +71,16 @@ class ContactPage implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $tree       = Validator::attributes($request)->tree();
-        $params     = $request->getQueryParams();
-        $body       = $params['body'] ?? '';
-        $from_email = $params['from_email'] ?? '';
-        $from_name  = $params['from_name'] ?? '';
-        $subject    = $params['subject'] ?? '';
-        $to         = $params['to'] ?? '';
-        $url        = $params['url'] ?? route(HomePage::class);
+        $body       = Validator::queryParams($request)->string('body', '');
+        $from_email = Validator::queryParams($request)->string('from_email', '');
+        $from_name  = Validator::queryParams($request)->string('from_name', '');
+        $subject    = Validator::queryParams($request)->string('subject', '');
+        $to         = Validator::queryParams($request)->string('to', '');
+        $url        = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
 
         $to_user = $this->user_service->findByUserName($to);
 
-        if (!in_array($to_user, $this->message_service->validContacts($tree), false)) {
+        if ($to_user === null || !in_array($to_user, $this->message_service->validContacts($tree), false)) {
             throw new HttpAccessDeniedException('Invalid contact user id');
         }
 

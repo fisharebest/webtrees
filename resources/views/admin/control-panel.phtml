@@ -15,7 +15,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAllPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesCustomTagsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesHistoricEventsPage;
@@ -54,7 +53,6 @@ use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
-use Fisharebest\Webtrees\Module\ModuleCustomTagsInterface;
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
@@ -94,8 +92,6 @@ use Illuminate\Support\Collection;
  * @var Collection<int,ModuleChartInterface>           $chart_modules_disabled
  * @var Collection<int,ModuleChartInterface>           $chart_modules_enabled
  * @var Collection<int,ModuleCustomInterface>          $custom_updates
- * @var Collection<int,ModuleCustomTagsInterface>      $custom_tags_modules_disabled
- * @var Collection<int,ModuleCustomTagsInterface>      $custom_tags_modules_enabled
  * @var Collection<int,ModuleDataFixInterface>         $data_fix_modules_disabled
  * @var Collection<int,ModuleDataFixInterface>         $data_fix_modules_enabled
  * @var Collection<array-key,int>                      $families
@@ -128,6 +124,7 @@ use Illuminate\Support\Collection;
  * @var Collection<array-key,int>                      $notes
  * @var NoteListModule|null                            $note_list_module
  * @var Collection<int,ModuleInterface>                $other_modules
+ * @var array<string,string>                           $recipients
  * @var Collection<int,ModuleReportInterface>          $report_modules_disabled
  * @var Collection<int,ModuleReportInterface>          $report_modules_enabled
  * @var Collection<array-key,int>                      $repositories
@@ -534,24 +531,14 @@ use Illuminate\Support\Collection;
             </div>
             <div class="col-sm-6">
                 <ul class="fa-ul mx-0">
+                    <?php foreach ($recipients as $to => $recipient) : ?>
                     <li>
                         <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'all'])) ?>">
-                            <?= I18N::translate('Send a message to all users') ?>
+                        <a href="<?= e(route(BroadcastPage::class, ['to' => $to])) ?>">
+                            <?= $recipient ?>
                         </a>
                     </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'never_logged'])) ?>">
-                            <?= I18N::translate('Send a message to users who have never signed in') ?>
-                        </a>
-                    </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/email') ?></span>
-                        <a href="<?= e(route(BroadcastPage::class, ['to' => 'last_6mo'])) ?>">
-                            <?= I18N::translate('Send a message to users who have not signed in for 6 months') ?>
-                        </a>
-                    </li>
+                    <?php endforeach ?>
                 </ul>
             </div>
         </div>
@@ -705,13 +692,6 @@ use Illuminate\Support\Collection;
                             <?= I18N::translate('Data fixes') ?>
                         </a>
                         <?= view('components/badge', ['count' => $data_fix_modules_enabled->count(), 'total' => $data_fix_modules_disabled->count(), 'context' => 'primary']) ?>
-                    </li>
-                    <li>
-                        <span class="fa-li"><?= view('icons/tag') ?></span>
-                        <a href="<?= e(route(ModulesCustomTagsPage::class)) ?>">
-                            <?= I18N::translate('Custom GEDCOM tags') ?>
-                        </a>
-                        <?= view('components/badge', ['count' => $custom_tags_modules_enabled->count(), 'total' => $custom_tags_modules_disabled->count(), 'context' => 'primary']) ?>
                     </li>
                 </ul>
 

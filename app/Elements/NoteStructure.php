@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -89,6 +89,7 @@ class NoteStructure extends SubmitterText
             ' const shared = document.getElementById("' . e($id) . '-shared").querySelector("select");' .
             ' inline.disabled = !inline.disabled;' .
             ' shared.disabled = !shared.disabled;' .
+            ' if (shared.disabled) { shared.tomselect.disable(); } else { shared.tomselect.enable(); }' .
             '})' .
             '</script>';
     }
@@ -120,9 +121,9 @@ class NoteStructure extends SubmitterText
         } else {
             $label         = I18N::translate('Note');
             $html          = $this->valueFormatted($value, $tree);
-            [$first_line]  = explode("\n", strip_tags($html));
+            [$first_line]  = explode('<br>', strip_tags($html, ['<br>']));
             $first_line    = Str::limit($first_line, 100, I18N::translate('…'));
-            $one_line_only = !str_contains($value, "\n") && mb_strlen($value) <= 100;
+            $one_line_only = !str_contains($html, '<br>') && mb_strlen($value) <= 100;
         }
 
         $id       = 'collapse-' . Uuid::uuid4()->toString();

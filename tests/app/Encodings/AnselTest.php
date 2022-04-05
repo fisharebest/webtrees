@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -158,7 +158,7 @@ class AnselTest extends TestCase
                         continue;
                     }
 
-                    $this->assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
+                    static::assertSame($utf8, $encoding->toUtf8($encoding->fromUtf8($utf8)), 'U+' . dechex($code));
                 }
             }
         }

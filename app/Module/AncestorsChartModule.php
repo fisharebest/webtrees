@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -50,12 +50,6 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     public const CHART_STYLE_INDIVIDUALS = 'individuals';
     public const CHART_STYLE_FAMILIES    = 'families';
 
-    private const CHART_STYLES = [
-        self::CHART_STYLE_TREE,
-        self::CHART_STYLE_INDIVIDUALS,
-        self::CHART_STYLE_FAMILIES,
-    ];
-
     // Defaults
     protected const DEFAULT_GENERATIONS = '4';
     protected const DEFAULT_STYLE       = self::CHART_STYLE_TREE;
@@ -87,10 +81,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
             ->tokens([
@@ -181,7 +172,7 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
     {
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
-        $style       = Validator::attributes($request)->isInArray(self::CHART_STYLES)->string('style');
+        $style       = Validator::attributes($request)->isInArrayKeys($this->styles())->string('style');
         $xref        = Validator::attributes($request)->isXref()->string('xref');
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
@@ -190,9 +181,9 @@ class AncestorsChartModule extends AbstractModule implements ModuleChartInterfac
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'xref'        => Validator::parsedBody($request)->string('xref', ''),
-                'style'       => Validator::parsedBody($request)->string('style', ''),
-                'generations' => Validator::parsedBody($request)->string('generations', ''),
+                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
+                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->string('style'),
+                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
             ]));
         }
 

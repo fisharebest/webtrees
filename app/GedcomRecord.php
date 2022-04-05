@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -548,177 +548,6 @@ class GedcomRecord
     }
 
     /**
-     * Find individuals linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Individual>
-     */
-    public function linkedIndividuals(string $link): Collection
-    {
-        return DB::table('individuals')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'i_file')
-                    ->on('l_from', '=', 'i_id');
-            })
-            ->where('i_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['individuals.*'])
-            ->get()
-            ->map(Registry::individualFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find families linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Family>
-     */
-    public function linkedFamilies(string $link): Collection
-    {
-        return DB::table('families')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'f_file')
-                    ->on('l_from', '=', 'f_id');
-            })
-            ->where('f_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['families.*'])
-            ->get()
-            ->map(Registry::familyFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find sources linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Source>
-     */
-    public function linkedSources(string $link): Collection
-    {
-        return DB::table('sources')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 's_file')
-                    ->on('l_from', '=', 's_id');
-            })
-            ->where('s_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['sources.*'])
-            ->get()
-            ->map(Registry::sourceFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find media objects linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Media>
-     */
-    public function linkedMedia(string $link): Collection
-    {
-        return DB::table('media')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'm_file')
-                    ->on('l_from', '=', 'm_id');
-            })
-            ->where('m_file', '=', $this->tree->id())
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['media.*'])
-            ->get()
-            ->map(Registry::mediaFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find notes linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Note>
-     */
-    public function linkedNotes(string $link): Collection
-    {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', Note::RECORD_TYPE)
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['other.*'])
-            ->get()
-            ->map(Registry::noteFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find repositories linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Repository>
-     */
-    public function linkedRepositories(string $link): Collection
-    {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', Repository::RECORD_TYPE)
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['other.*'])
-            ->get()
-            ->map(Registry::repositoryFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
-     * Find locations linked to this record.
-     *
-     * @param string $link
-     *
-     * @return Collection<int,Location>
-     */
-    public function linkedLocations(string $link): Collection
-    {
-        return DB::table('other')
-            ->join('link', static function (JoinClause $join): void {
-                $join
-                    ->on('l_file', '=', 'o_file')
-                    ->on('l_from', '=', 'o_id');
-            })
-            ->where('o_file', '=', $this->tree->id())
-            ->where('o_type', '=', Location::RECORD_TYPE)
-            ->where('l_type', '=', $link)
-            ->where('l_to', '=', $this->xref)
-            ->select(['other.*'])
-            ->get()
-            ->map(Registry::locationFactory()->mapper($this->tree))
-            ->filter(self::accessFilter());
-    }
-
-    /**
      * Get all attributes (e.g. DATE or PLAC) from an event (e.g. BIRT or MARR).
      * This is used to display multiple events on the individual/family lists.
      * Multiple events can exist because of uncertainty in dates, dates in different
@@ -864,18 +693,21 @@ class GedcomRecord
         $chan = $this->facts(['CHAN'])->first();
 
         if ($chan instanceof Fact) {
-            // The record does have a CHAN event
+            // The record has a CHAN event.
             $d = $chan->date()->minimumDate()->format('%Y-%m-%d');
 
-            if (preg_match('/\n3 TIME( (\d\d):(\d\d):(\d\d))/', $chan->gedcom(), $match)) {
-                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
-            }
+            if ($d !== '') {
+                // The CHAN event has a valid DATE.
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d):([0-5]\d))/', $chan->gedcom(), $match)) {
+                    return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
+                }
 
-            if (preg_match('/\n3 TIME ((\d\d):(\d\d))/', $chan->gedcom(), $match)) {
-                return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
-            }
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d))/', $chan->gedcom(), $match)) {
+                    return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
+                }
 
-            return Registry::timestampFactory()->fromString($d, 'Y-m-d');
+                return Registry::timestampFactory()->fromString($d, 'Y-m-d');
+            }
         }
 
         // The record does not have a CHAN event
@@ -1118,44 +950,6 @@ class GedcomRecord
                 $this->updateFact($fact->id(), $gedcom, $update_chan);
             }
         }
-    }
-
-    /**
-     * Fetch XREFs of all records linked to a record - when deleting an object, we must
-     * also delete all links to it.
-     *
-     * @return array<GedcomRecord>
-     */
-    public function linkingRecords(): array
-    {
-        $like = addcslashes($this->xref(), '\\%_');
-
-        $union = DB::table('change')
-            ->where('gedcom_id', '=', $this->tree()->id())
-            ->where('new_gedcom', 'LIKE', '%@' . $like . '@%')
-            ->where('new_gedcom', 'NOT LIKE', '0 @' . $like . '@%')
-            ->whereIn('change_id', function (Builder $query): void {
-                $query->select(new Expression('MAX(change_id)'))
-                    ->from('change')
-                    ->where('gedcom_id', '=', $this->tree->id())
-                    ->where('status', '=', 'pending')
-                    ->groupBy(['xref']);
-            })
-            ->select(['xref']);
-
-        $xrefs = DB::table('link')
-            ->where('l_file', '=', $this->tree()->id())
-            ->where('l_to', '=', $this->xref())
-            ->select(['l_from'])
-            ->union($union)
-            ->pluck('l_from');
-
-        return $xrefs->map(function (string $xref): GedcomRecord {
-            $record = Registry::gedcomRecordFactory()->make($xref, $this->tree);
-            assert($record instanceof GedcomRecord);
-
-            return $record;
-        })->all();
     }
 
     /**

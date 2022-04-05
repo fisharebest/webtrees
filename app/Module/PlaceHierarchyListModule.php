@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
@@ -28,22 +27,22 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\PlaceLocation;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\LeafletJsService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\SearchService;
-use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_chunk;
 use function array_pop;
 use function array_reverse;
-use function assert;
 use function ceil;
 use function count;
 use function redirect;
@@ -78,7 +77,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     public function __construct(LeafletJsService $leaflet_js_service, ModuleService $module_service, SearchService $search_service)
     {
         $this->leaflet_js_service = $leaflet_js_service;
-        $this->module_service = $module_service;
+        $this->module_service     = $module_service;
         $this->search_service     = $search_service;
     }
 
@@ -89,10 +88,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this);
     }
 
@@ -221,8 +217,8 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 $alt_link = I18N::translate('Show all places in a list');
                 $alt_url  = $this->listUrl($tree, ['action2' => 'list', 'place_id' => 0]);
                 $data     = $this->getHierarchy($place);
-                $content .= (null === $data || $showmap) ? '' : view('place-hierarchy', $data);
-                if (null === $data || $action2 === 'hierarchy-e') {
+                $content .= ($data === null || $showmap) ? '' : view('place-hierarchy', $data);
+                if ($data === null || $action2 === 'hierarchy-e') {
                     $content .= view('modules/place-hierarchy/events', [
                         'indilist' => $this->search_service->searchIndividualsInPlace($place),
                         'famlist'  => $this->search_service->searchFamiliesInPlace($place),
@@ -296,14 +292,11 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                 ];
             }
 
-            $statistics = app(Statistics::class);
-
-            //Stats
-            $stats = [];
-            foreach ([Individual::RECORD_TYPE, Family::RECORD_TYPE, Location::RECORD_TYPE] as $type) {
-                $tmp          = $statistics->statsPlaces($type, '', $place->id());
-                $stats[$type] = $tmp === [] ? 0 : $tmp[0]->tot;
-            }
+            $stats = [
+                Family::RECORD_TYPE     => $this->familyPlaceLinks($place)->count(),
+                Individual::RECORD_TYPE => $this->individualPlaceLinks($place)->count(),
+                Location::RECORD_TYPE   => $this->locationPlaceLinks($place)->count(),
+            ];
 
             $sidebar .= view('modules/place-hierarchy/sidebar', [
                 'num_children'  => $num_children,
@@ -398,5 +391,68 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             'breadcrumbs' => $breadcrumbs,
             'current'     => $current,
         ];
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function placeLinks(Place $place): Builder
+    {
+        return DB::table('places')
+            ->join('placelinks', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'p_file')
+                    ->on('pl_p_id', '=', 'p_id');
+            })
+            ->where('p_file', '=', $place->tree()->id())
+            ->where('p_id', '=', $place->id());
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function familyPlaceLinks(Place $place): Builder
+    {
+        return $this->placeLinks($place)
+            ->join('families', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'f_file')
+                    ->on('pl_gid', '=', 'f_id');
+            });
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function individualPlaceLinks(Place $place): Builder
+    {
+        return $this->placeLinks($place)
+            ->join('individuals', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'i_file')
+                    ->on('pl_gid', '=', 'i_id');
+            });
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return Builder
+     */
+    private function locationPlaceLinks(Place $place): Builder
+    {
+        return $this->placeLinks($place)
+            ->join('other', static function (JoinClause $join): void {
+                $join
+                    ->on('pl_file', '=', 'o_file')
+                    ->on('pl_gid', '=', 'o_id');
+            })
+            ->where('o_type', '=', Location::RECORD_TYPE);
     }
 }

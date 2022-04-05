@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -97,7 +97,7 @@ class ContactAction implements RequestHandlerInterface
         $from_name  = Validator::parsedBody($request)->string('from_name');
         $subject    = Validator::parsedBody($request)->string('subject');
         $to         = Validator::parsedBody($request)->string('to');
-        $url        = Validator::parsedBody($request)->isLocalUrl($base_url)->string('url', $base_url);
+        $url        = Validator::parsedBody($request)->isLocalUrl()->string('url', $base_url);
         $to_user    = $this->user_service->findByUserName($to);
 
         if ($to_user === null) {

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
 
@@ -43,20 +44,24 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 {
     use ModuleTabTrait;
 
-    private ModuleService $module_service;
-
     private ClipboardService $clipboard_service;
+
+    private LinkedRecordService $linked_record_service;
+
+    private ModuleService $module_service;
 
     /**
      * IndividualFactsTabModule constructor.
      *
-     * @param ModuleService    $module_service
-     * @param ClipboardService $clipboard_service
+     * @param ModuleService       $module_service
+     * @param LinkedRecordService $linked_record_service
+     * @param ClipboardService    $clipboard_service
      */
-    public function __construct(ModuleService $module_service, ClipboardService $clipboard_service)
+    public function __construct(ModuleService $module_service, LinkedRecordService $linked_record_service, ClipboardService $clipboard_service)
     {
-        $this->module_service    = $module_service;
-        $this->clipboard_service = $clipboard_service;
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
+        $this->module_service        = $module_service;
     }
 
     /**
@@ -186,7 +191,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): Collection
+    protected function spouseFacts(Individual $individual, Individual $spouse, Date $min_date, Date $max_date): Collection
     {
         $SHOW_RELATIVES_EVENTS = $individual->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -230,7 +235,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return bool
      */
-    private function includeFact(Fact $fact, Date $min_date, Date $max_date): bool
+    protected function includeFact(Fact $fact, Date $min_date, Date $max_date): bool
     {
         $fact_date = $fact->date();
 
@@ -245,7 +250,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Fact
      */
-    private function convertEvent(Fact $fact, string $type): Fact
+    protected function convertEvent(Fact $fact, string $type): Fact
     {
         $gedcom = $fact->gedcom();
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);
@@ -276,7 +281,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function childFacts(Individual $person, Family $family, string $option, string $relation, Date $min_date, Date $max_date): Collection
+    protected function childFacts(Individual $person, Family $family, string $option, string $relation, Date $min_date, Date $max_date): Collection
     {
         $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -708,7 +713,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): Collection
+    protected function parentFacts(Individual $person, int $sosa, Date $min_date, Date $max_date): Collection
     {
         $SHOW_RELATIVES_EVENTS = $person->tree()->getPreference('SHOW_RELATIVES_EVENTS');
 
@@ -875,14 +880,14 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function associateFacts(Individual $person): Collection
+    protected function associateFacts(Individual $person): Collection
     {
         $facts = [];
 
-        $asso1 = $person->linkedIndividuals('ASSO');
-        $asso2 = $person->linkedIndividuals('_ASSO');
-        $asso3 = $person->linkedFamilies('ASSO');
-        $asso4 = $person->linkedFamilies('_ASSO');
+        $asso1 = $this->linked_record_service->linkedIndividuals($person, 'ASSO');
+        $asso2 = $this->linked_record_service->linkedIndividuals($person, '_ASSO');
+        $asso3 = $this->linked_record_service->linkedFamilies($person, 'ASSO');
+        $asso4 = $this->linked_record_service->linkedFamilies($person, '_ASSO');
 
         $associates = $asso1->merge($asso2)->merge($asso3)->merge($asso4);
 
@@ -919,7 +924,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
      *
      * @return Collection<int,Fact>
      */
-    private function historicFacts(Individual $individual): Collection
+    protected function historicFacts(Individual $individual): Collection
     {
         return $this->module_service->findByInterface(ModuleHistoricEventsInterface::class)
             ->map(static function (ModuleHistoricEventsInterface $module) use ($individual): Collection {

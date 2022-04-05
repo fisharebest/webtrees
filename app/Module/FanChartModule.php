@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -82,9 +82,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     protected const ROUTE_URL = '/tree/{tree}/fan-chart-{style}-{generations}-{width}/{xref}';
 
     // Chart styles
-    private const STYLE_HALF_CIRCLE          = '2';
-    private const STYLE_THREE_QUARTER_CIRCLE = '3';
-    private const STYLE_FULL_CIRCLE          = '4';
+    private const STYLE_HALF_CIRCLE          = 2;
+    private const STYLE_THREE_QUARTER_CIRCLE = 3;
+    private const STYLE_FULL_CIRCLE          = 4;
 
     // Defaults
     private const   DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
@@ -127,17 +127,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
-            ->allows(RequestMethodInterface::METHOD_POST)
-            ->tokens([
-                'generations' => '\d+',
-                'style'       => implode('|', array_keys($this->styles())),
-                'width'       => '\d+',
-            ]);
+            ->allows(RequestMethodInterface::METHOD_POST);
     }
 
     /**
@@ -223,7 +215,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         $tree        = Validator::attributes($request)->tree();
         $user        = Validator::attributes($request)->user();
         $xref        = Validator::attributes($request)->isXref()->string('xref');
-        $style       = Validator::attributes($request)->string('style');
+        $style       = Validator::attributes($request)->isInArrayKeys($this->styles())->integer('style');
         $generations = Validator::attributes($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations');
         $width       = Validator::attributes($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width');
         $ajax        = Validator::queryParams($request)->boolean('ajax', false);
@@ -232,10 +224,10 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
             return redirect(route(static::class, [
                 'tree'        => $tree->name(),
-                'generations' => Validator::parsedBody($request)->string('generations', ''),
-                'style'       => Validator::parsedBody($request)->string('style', ''),
-                'width'       => Validator::parsedBody($request)->string('width', ''),
-                'xref'        => Validator::parsedBody($request)->string('xref', ''),
+                'generations' => Validator::parsedBody($request)->isBetween(self::MINIMUM_GENERATIONS, self::MAXIMUM_GENERATIONS)->integer('generations'),
+                'style'       => Validator::parsedBody($request)->isInArrayKeys($this->styles())->integer('style'),
+                'width'       => Validator::parsedBody($request)->isBetween(self::MINIMUM_WIDTH, self::MAXIMUM_WIDTH)->integer('width'),
+                'xref'        => Validator::parsedBody($request)->isXref()->string('xref'),
              ]));
         }
 
@@ -276,13 +268,13 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
      * Generate both the HTML and PNG components of the fan chart
      *
      * @param Individual $individual
-     * @param string     $style
+     * @param int        $style
      * @param int        $width
      * @param int        $generations
      *
      * @return ResponseInterface
      */
-    protected function chart(Individual $individual, string $style, int $width, int $generations): ResponseInterface
+    protected function chart(Individual $individual, int $style, int $width, int $generations): ResponseInterface
     {
         $ancestors = $this->chart_service->sosaStradonitzAncestors($individual, $generations);
 

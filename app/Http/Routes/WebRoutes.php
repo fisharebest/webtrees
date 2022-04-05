@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -47,6 +47,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail;
+use Fisharebest\Webtrees\Http\RequestHandlers\AdsTxt;
+use Fisharebest\Webtrees\Http\RequestHandlers\AppAdsTxt;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder;
@@ -179,8 +181,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesCustomTagsAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesCustomTagsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersAction;
@@ -348,8 +348,8 @@ class WebRoutes
                 ]);
 
                 $router->get(ControlPanel::class, '');
-                $router->get(BroadcastPage::class, '/broadcast');
-                $router->post(BroadcastAction::class, '/broadcast');
+                $router->get(BroadcastPage::class, '/broadcast/{to}');
+                $router->post(BroadcastAction::class, '/broadcast/{to}');
                 $router->get(CleanDataFolder::class, '/clean');
                 $router->post(DeletePath::class, '/delete-path');
                 $router->get(EmailPreferencesPage::class, '/email');
@@ -399,8 +399,6 @@ class WebRoutes
                 $router->post(ModulesBlocksAction::class, '/blocks');
                 $router->get(ModulesChartsPage::class, '/charts');
                 $router->post(ModulesChartsAction::class, '/charts');
-                $router->get(ModulesCustomTagsPage::class, '/custom-tags');
-                $router->post(ModulesCustomTagsAction::class, '/custom-tags');
                 $router->get(ModulesDataFixesPage::class, '/data-fixes');
                 $router->post(ModulesDataFixesAction::class, '/data-fixes');
                 $router->get(ModulesFootersPage::class, '/footers');
@@ -722,6 +720,8 @@ class WebRoutes
             $router->get(HomePage::class, '/');
 
             // Special files, either dynamic or need to be in the root folder.
+            $router->get(AdsTxt::class, '/ads.txt');
+            $router->get(AppAdsTxt::class, '/app-ads.txt');
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png');
             $router->get(BrowserconfigXml::class, '/browserconfig.xml');
             $router->get(FaviconIco::class, '/favicon.ico');
