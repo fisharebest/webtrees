@@ -41,7 +41,7 @@ class WebmanifestJson implements RequestHandlerInterface
         $content = View::make('webmanifest-json');
 
         return response($content)
-            ->withHeader('Content-Type', 'application/json')
-            ->withHeader('Cache-Control', 'public,max-age=31536000');
+            ->withHeader('content-type', 'application/json')
+            ->withHeader('cache-control', 'public,max-age=31536000');
     }
 }

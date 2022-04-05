@@ -192,7 +192,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
             $content = view('modules/sitemap/sitemap-xsl');
 
             return response($content, StatusCodeInterface::STATUS_OK, [
-                'Content-Type' => 'application/xml',
+                'content-type' => 'application/xml',
             ]);
         }
 
@@ -291,7 +291,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         }, self::CACHE_LIFE);
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'application/xml',
+            'content-type' => 'application/xml',
         ]);
     }
 
@@ -324,7 +324,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface, Req
         }, self::CACHE_LIFE);
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type' => 'application/xml',
+            'content-type' => 'application/xml',
         ]);
     }
 

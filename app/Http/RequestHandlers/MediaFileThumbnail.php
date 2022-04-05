@@ -70,7 +70,7 @@ class MediaFileThumbnail implements RequestHandlerInterface
 
                 if ($media_file->signature($params) !== $params['s']) {
                     return Registry::imageFactory()->replacementImageResponse((string) StatusCodeInterface::STATUS_FORBIDDEN)
-                        ->withHeader('X-Signature-Exception', 'Signature mismatch');
+                        ->withHeader('x-signature-exception', 'Signature mismatch');
                 }
 
                 $image_factory = Registry::imageFactory();
@@ -83,7 +83,7 @@ class MediaFileThumbnail implements RequestHandlerInterface
                     $image_factory->fileNeedsWatermark($media_file, $user)
                 );
 
-                return $response->withHeader('Cache-Control', 'public,max-age=31536000');
+                return $response->withHeader('cache-control', 'public,max-age=31536000');
             }
         }
 

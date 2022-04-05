@@ -41,7 +41,7 @@ class FaviconIco implements RequestHandlerInterface
         $content = file_get_contents(__DIR__ . '/../../../favicon.ico');
 
         return response($content)
-            ->withHeader('Content-Type', 'image/x-icon')
-            ->withHeader('Cache-Control', 'public,max-age=31536000');
+            ->withHeader('content-type', 'image/x-icon')
+            ->withHeader('cache-control', 'public,max-age=31536000');
     }
 }

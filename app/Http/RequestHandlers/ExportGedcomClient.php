@@ -150,8 +150,8 @@ class ExportGedcomClient implements RequestHandlerInterface
 
             return $this->response_factory->createResponse()
                 ->withBody($stream)
-                ->withHeader('Content-Type', 'application/zip')
-                ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+                ->withHeader('content-type', 'application/zip')
+                ->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
         }
 
         $resource = $this->gedcom_export_service->export($tree, true, $encoding, $access_level, $media_path);
@@ -159,7 +159,7 @@ class ExportGedcomClient implements RequestHandlerInterface
 
         return $this->response_factory->createResponse()
             ->withBody($stream)
-            ->withHeader('Content-Type', 'text/x-gedcom; charset=' . UTF8::NAME)
-            ->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
+            ->withHeader('content-type', 'text/x-gedcom; charset=' . UTF8::NAME)
+            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes($download_filename, '"') . '"');
     }
 }

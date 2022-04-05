@@ -20,29 +20,31 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Services\MapDataService;
+use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\TestCase;
+use Illuminate\Database\Query\Builder;
 
 /**
- * Test the location export.
- *
- * @covers \Fisharebest\Webtrees\Http\RequestHandlers\MapDataExportGeoJson
+ * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsDelete
  */
-class MapDataExportGeoJsonTest extends TestCase
+class SiteLogsDeleteTest extends TestCase
 {
-    protected static bool $uses_database = true;
-
     /**
      * @return void
      */
-    public function testExportGeoJson(): void
+    public function testResponse(): void
     {
-        $map_data_service = new MapDataService();
-        $handler          = new MapDataExportGeoJson($map_data_service);
-        $request          = self::createRequest();
-        $response         = $handler->handle($request);
+        $request = self::createRequest();
 
-        self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        self::assertSame($response->getHeaderLine('content-type'), 'application/vnd.geo+json');
+        $query = $this->createStub(Builder::class);
+        $query->method('delete');
+
+        $site_logs_service = $this->createStub(SiteLogsService::class);
+        $site_logs_service->method('logsQuery')->willReturn($query);
+
+        $handler  = new SiteLogsDelete($site_logs_service);
+        $response = $handler->handle($request);
+
+        $this->assertSame(StatusCodeInterface::STATUS_NO_CONTENT, $response->getStatusCode());
     }
 }

@@ -71,8 +71,8 @@ class PendingChangesLogDownload implements RequestHandlerInterface
             ->implode("\n");
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type'        => 'text/csv; charset=UTF-8',
-            'Content-Disposition' => 'attachment; filename="changes.csv"',
+            'content-type'        => 'text/csv; charset=UTF-8',
+            'content-disposition' => 'attachment; filename="changes.csv"',
         ]);
     }
 }

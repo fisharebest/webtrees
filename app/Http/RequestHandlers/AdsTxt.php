@@ -38,6 +38,6 @@ class AdsTxt implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return response('#No pesky ads here')
-            ->withHeader('Content-Type', 'text/plain');
+            ->withHeader('content-type', 'text/plain');
     }
 }

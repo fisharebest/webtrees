@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -68,21 +69,17 @@ class SiteLogsPage implements RequestHandlerInterface
         $earliest = DB::table('log')->min('log_time');
         $latest   = DB::table('log')->max('log_time');
 
-        $earliest = Registry::timestampFactory()->fromString($earliest);
-        $latest   = Registry::timestampFactory()->fromString($latest);
+        $earliest = Registry::timestampFactory()->fromString($earliest)->toDateString();
+        $latest   = Registry::timestampFactory()->fromString($latest)->toDateString();
 
-        $earliest = $earliest->toDateString();
-        $latest   = $latest->toDateString();
-
-        $params   = $request->getQueryParams();
-        $action   = $params['action'] ?? '';
-        $from     = $params['from'] ?? $earliest;
-        $to       = $params['to'] ?? $latest;
-        $type     = $params['type'] ?? '';
-        $text     = $params['text'] ?? '';
-        $ip       = $params['ip'] ?? '';
-        $username = $params['username'] ?? '';
-        $tree     = $params['tree'] ?? '';
+        $action   = Validator::queryParams($request)->string('action', '');
+        $from     = Validator::queryParams($request)->string('from', $earliest);
+        $to       = Validator::queryParams($request)->string('to', $latest);
+        $type     = Validator::queryParams($request)->string('type', '');
+        $text     = Validator::queryParams($request)->string('text', '');
+        $ip       = Validator::queryParams($request)->string('ip', '');
+        $username = Validator::queryParams($request)->string('username', '');
+        $tree     = Validator::queryParams($request)->string('tree', '');
 
         $from = max($from, $earliest);
         $to   = min(max($from, $to), $latest);

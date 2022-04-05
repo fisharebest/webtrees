@@ -355,8 +355,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
         if ($format === 'gedcom') {
             return $this->response_factory->createResponse()
                 ->withBody($this->stream_factory->createStreamFromResource($resource))
-                ->withHeader('Content-Type', 'text/x-gedcom; charset=' . $encoding)
-                ->withHeader('Content-Disposition', 'attachment; filename="clippings.ged');
+                ->withHeader('content-type', 'text/x-gedcom; charset=' . $encoding)
+                ->withHeader('content-disposition', 'attachment; filename="clippings.ged');
         }
 
         // Create a new/empty .ZIP file
@@ -389,8 +389,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
 
         return $this->response_factory->createResponse()
             ->withBody($resource)
-            ->withHeader('Content-Type', 'application/zip')
-            ->withHeader('Content-Disposition', 'attachment; filename="clippings.zip');
+            ->withHeader('content-type', 'application/zip')
+            ->withHeader('content-disposition', 'attachment; filename="clippings.zip');
     }
 
     /**
