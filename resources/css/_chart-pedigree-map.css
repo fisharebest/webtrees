@@ -90,23 +90,6 @@
 }
 
 .wt-pedigree-map-sidebar {
-    font-size: small;
     height: 100%;
     overflow-y: auto;
-}
-
-/* used in sidebar */
-
-.wt-pedigree-map-sidebar .row {
-    padding: 2px;
-}
-
-.wt-pedigree-map-sidebar .NAME {
-    font-weight: 600;
-}
-
-/* make image fluid */
-.wt-pedigree-map-sidebar img {
-    max-width: 100%;
-    height: auto;
 }
