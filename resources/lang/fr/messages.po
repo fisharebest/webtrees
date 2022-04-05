@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-07 00:01+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
+"PO-Revision-Date: 2022-04-06 13:22+0000\n"
+"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fr/>\n"
 "Language: fr\n"
@@ -1005,7 +1005,7 @@ msgstr "Onglet montrant les faits et les événements d’un individu."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:71
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Onglet affichant les objets média reliés à un individu."
+msgstr "Onglet affichant les objets médias reliés à un individu."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
@@ -7822,7 +7822,9 @@ msgstr "Cette année-là…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "Dans webtrees version 1, vous pouviez ajouter des vignettes personnalisées aux objets média en créant des fichiers dans le dossier « thumbs »."
+msgstr ""
+"Dans webtrees version 1, vous pouviez ajouter des vignettes personnalisées "
+"aux objets médias en créant des fichiers dans le dossier « thumbs »."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -8054,7 +8056,7 @@ msgstr "Messagerie interne par courriel"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:158
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "Fichier GEDCOM incorrect - absence d’en-tête dans l’enregistrement trouvée."
+msgstr "Fichier GEDCOM incorrect - l'en-tête n'a pu être trouvé."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -8680,7 +8682,7 @@ msgstr "Lima, Pérou"
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:729
 msgid "Link media objects to facts and events"
-msgstr "Relier des objets média à des faits ou événements"
+msgstr "Relier des objets médias à des faits ou événements"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
@@ -9462,15 +9464,15 @@ msgstr "Objet média"
 #: resources/views/statistics/other/chart-objects.phtml:12
 #: resources/views/statistics/other/total-records.phtml:21
 msgid "Media objects"
-msgstr "Objets média"
+msgstr "Objets médias"
 
 #: resources/views/modules/media-list/page.phtml:96
 msgid "Media objects found"
-msgstr "Objets média trouvés"
+msgstr "Objets médias trouvés"
 
 #: resources/views/modules/media-list/page.phtml:53
 msgid "Media objects per page"
-msgstr "Objets média par page"
+msgstr "Objets médias par page"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
@@ -11834,7 +11836,7 @@ msgstr "Réorganiser les familles"
 #: resources/views/individual-page-menu.phtml:88
 #: resources/views/individual-page-menu.phtml:93
 msgid "Re-order media"
-msgstr "Réorganiser les objets média"
+msgstr "Réorganiser les objets médias"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:57
 #: resources/views/individual-page-menu.phtml:37
@@ -12219,7 +12221,10 @@ msgstr "Les tâches à faire sont des événements spéciaux ajoutés aux indivi
 
 #: resources/views/modules/todo/config.phtml:16
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Les tâches à faire sont stockées sous la balise GEDCOM standard « _TODO ». Il est possible que d’autres logiciels de généalogie ne reconnaissent pas cette balise."
+msgstr ""
+"Les tâches à faire sont stockées sous la balise GEDCOM personnalisée « _TODO "
+"». Il est possible que d’autres logiciels de généalogie ne reconnaissent pas "
+"cette balise."
 
 #: resources/views/admin/location-edit.phtml:131
 msgid "Reset to initial map state"
