@@ -43,6 +43,6 @@ class MapDataExportGeoJsonTest extends TestCase
         $response         = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        self::assertSame($response->getHeaderLine('Content-Type'), 'application/vnd.geo+json');
+        self::assertSame($response->getHeaderLine('content-type'), 'application/vnd.geo+json');
     }
 }

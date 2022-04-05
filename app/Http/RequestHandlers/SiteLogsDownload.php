@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SiteLogsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -65,9 +66,9 @@ class SiteLogsDownload implements RequestHandlerInterface
             })
             ->implode('');
 
-        return response($content, StatusCodeInterface::STATUS_OK, [
-            'Content-Type'        => 'text/csv; charset=UTF-8',
-            'Content-Disposition' => 'attachment; filename="webtrees-logs.csv"',
+        return Registry::responseFactory()->response($content, StatusCodeInterface::STATUS_OK, [
+            'content-type'        => 'text/csv; charset=UTF-8',
+            'content-disposition' => 'attachment; filename="webtrees-logs.csv"',
         ]);
     }
 }

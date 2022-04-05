@@ -129,7 +129,7 @@ class MapDataExportGeoJson implements RequestHandlerInterface
         $filename = addcslashes($filename, '"');
 
         return response($geojson)
-            ->withHeader('Content-Type', 'application/vnd.geo+json')
-            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+            ->withHeader('content-type', 'application/vnd.geo+json')
+            ->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
     }
 }

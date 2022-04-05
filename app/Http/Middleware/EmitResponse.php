@@ -60,8 +60,8 @@ class EmitResponse implements MiddlewareInterface
         $this->removeDefaultPhpHeaders();
 
         // Unless webtrees set a cache-control header, assume the page cannot be cached
-        if (!$response->hasHeader('Cache-Control')) {
-            $response = $response->withHeader('Cache-Control', 'no-store');
+        if (!$response->hasHeader('cache-control')) {
+            $response = $response->withHeader('cache-control', 'no-store');
         }
 
         $this->assertBodyNotEmitted();
@@ -81,7 +81,7 @@ class EmitResponse implements MiddlewareInterface
     private function removeDefaultPhpHeaders(): void
     {
         header_remove('X-Powered-By');
-        header_remove('Cache-control');
+        header_remove('cache-control');
         header_remove('Expires');
         header_remove('Pragma');
     }

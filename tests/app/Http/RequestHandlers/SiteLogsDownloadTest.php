@@ -39,8 +39,8 @@ class SiteLogsDownloadTest extends TestCase
 
         $query1 = $this->createStub(Builder::class);
         $query2 = $this->createStub(Builder::class);
-        $rows1 = $this->createStub(Collection::class);
-        $rows2 = $this->createStub(Collection::class);
+        $rows1  = $this->createStub(Collection::class);
+        $rows2  = $this->createStub(Collection::class);
         $query1->method('orderBy')->willReturn($query2);
         $query2->method('get')->willReturn($rows1);
         $rows1->method('map')->willReturn($rows2);
@@ -52,6 +52,8 @@ class SiteLogsDownloadTest extends TestCase
         $handler  = new SiteLogsDownload($site_logs_service);
         $response = $handler->handle($request);
 
-        $this->assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        static::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
+        static::assertSame('text/csv; charset=UTF-8', $response->getHeaderLine('content-type'));
+        static::assertSame('attachment; filename="webtrees-logs.csv"', $response->getHeaderLine('content-disposition'));
     }
 }
