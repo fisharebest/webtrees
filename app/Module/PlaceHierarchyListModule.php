@@ -199,7 +199,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         if ($showmap) {
             $content .= view('modules/place-hierarchy/map', [
-                'data'           => $this->mapData($tree, $place),
+                'data'           => $this->mapData($place),
                 'leaflet_config' => $this->leaflet_js_service->config(),
             ]);
         }
@@ -249,12 +249,11 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Tree  $tree
      * @param Place $placeObj
      *
      * @return array<mixed>
      */
-    protected function mapData(Tree $tree, Place $placeObj): array
+    protected function mapData(Place $placeObj): array
     {
         $places    = $placeObj->getChildPlaces();
         $features  = [];
