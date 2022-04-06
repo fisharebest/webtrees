@@ -170,14 +170,22 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 
         if ($facts->isEmpty()) {
             if ($endjd === $startjd) {
-                $content = view('modules/upcoming_events/empty', [
-                    'message' => I18N::translate('No events exist for tomorrow.'),
-                ]);
+                if ($filter) {
+                    $message = I18N::translate('No events for living individuals exist for tomorrow.');
+                } else {
+                    $message = I18N::translate('No events exist for tomorrow.');
+                }
+
+                $content = view('modules/upcoming_events/empty', ['message' => $message]);
             } else {
-                /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */
-                $content = view('modules/upcoming_events/empty', [
-                    'message' => I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1)),
-                ]);
+                if ($filter) {
+                    /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */
+                    $message = I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+                } else {
+                    /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */
+                    $message = I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
+                }
+                $content = view('modules/upcoming_events/empty', ['message' => $message]);
             }
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [

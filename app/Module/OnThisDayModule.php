@@ -149,7 +149,12 @@ class OnThisDayModule extends AbstractModule implements ModuleBlockInterface
         $facts = $calendar_service->getEventsList($startjd, $endjd, $events_filter, $filter, $sortStyle, $tree);
 
         if ($facts->isEmpty()) {
-            $content = view('modules/todays_events/empty');
+            if ($filter) {
+                $message = I18N::translate('No events for living individuals exist for today.');
+            } else {
+                $message = I18N::translate('No events exist for today.');
+            }
+            $content = view('modules/todays_events/empty', ['message' => $message]);
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
                 'id'         => $block_id,
