@@ -12,9 +12,10 @@ use Illuminate\Support\Collection;
  */
 ?>
 
-<?= $record->fullName() ?>,
 <?php if ($record->getBirthDate()->isOK() || $record->getDeathDate()->isOK()) : ?>
-    <?= $record->lifespan() ?>
+    <?= $record->fullName() ?>, <?= $record->lifespan() ?>
+<?php else: ?>
+    <?= $record->fullName() ?>
 <?php endif ?></?>
 <?= $age ?>
 <?php foreach ($users as $user) : ?>
