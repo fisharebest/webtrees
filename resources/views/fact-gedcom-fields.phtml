@@ -1,0 +1,83 @@
+<?php
+
+use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Elements\XrefSource;
+use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
+use Ramsey\Uuid\Uuid;
+
+/**
+ * @var string $gedcom
+ * @var string $parent e.g. "INDI:BIRT:DATE"
+ * @var Tree   $tree
+ */
+
+$hierarchy = explode(':', $parent);
+
+// Merge CONT records onto their parent line.
+$gedcom = preg_replace('/\n\d CONT ?/', "\r", $gedcom);
+
+preg_match_all('/^(\d+) (\w+) ?(.*)/m', $gedcom, $matches);
+[, $levels, $tags, $values] = $matches;
+$levels   = array_map(static fn (string $x): int => (int) $x, $levels);
+$keys     = array_keys($levels);
+$elements = [];
+
+$private_level = PHP_INT_MAX;
+
+foreach ($keys as $key) {
+    $hierarchy[$levels[$key]] = $tags[$key];
+    $full_tag                 = implode(':', array_slice($hierarchy, 0, 1 + $levels[$key]));
+    $elements[$key]           = Registry::elementFactory()->make($full_tag);
+
+    if ($elements[$key] instanceof AbstractXrefElement && preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $values[$key], $match) === 1) {
+        $record = Registry::gedcomRecordFactory()->make($match[1], $tree);
+
+        if ($record instanceof GedcomRecord && !$record->canShow()) {
+            $private_level = min($private_level, $levels[$key]);
+        }
+    }
+
+    if ($levels[$key] >= $private_level) {
+        $values[$key] = '';
+    } else {
+        $private_level = PHP_INT_MAX;
+    }
+}
+
+?>
+
+<?php if ($elements[0] instanceof XrefSource && preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $values[0], $match) === 1) : ?>
+    <?php $source = Registry::sourceFactory()->make($match[1], $tree) ?>
+    <?php if ($source instanceof Source) : ?>
+        <?php $id = 'collapse-' . Uuid::uuid4()->toString() ?>
+        <?php $expanded = $tree->getPreference('EXPAND_SOURCES') === '1' ?>
+        <div class="fact_SOUR">
+            <a href="#<?= e($id) ?>" role="button" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
+                <?= view('icons/expand') ?>
+                <?= view('icons/collapse') ?>
+             </a>
+
+            <?= I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Source'), '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>') ?>
+        </div>
+
+        <div id="<?= e($id) ?>" class="ps-4 collapse <?= $expanded ? 'show' : '' ?>">
+            <?php array_shift($keys) ?>
+            <?php foreach ($keys as $key) : ?>
+                <?php if ($values[$key] !== '') : ?>
+                    <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
+                <?php endif ?>
+            <?php endforeach ?>
+        </div>
+    <?php endif ?>
+<?php else : ?>
+    <?php foreach ($keys as $key) : ?>
+        <?php if ($values[$key] !== '') : ?>
+            <?= $elements[$key]->labelValue(strtr($values[$key], ["\r" => "\n"]), $tree) ?>
+        <?php endif ?>
+    <?php endforeach ?>
+<?php endif ?>

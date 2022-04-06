@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -36,17 +36,12 @@ class MessageSelect implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params = (array) $request->getParsedBody();
-
         return redirect(route(MessagePage::class, [
-            'body'    => $params['body'] ?? '',
-            'subject' => $params['subject'] ?? '',
-            'to'      => $params['to'] ?? '',
-            'tree'    => $tree->name(),
-            'url'     => $params['url'] ?? '',
+            'body'    => Validator::parsedBody($request)->string('body', ''),
+            'subject' => Validator::parsedBody($request)->string('subject', ''),
+            'to'      => Validator::parsedBody($request)->string('to', ''),
+            'tree'    => Validator::attributes($request)->tree()->name(),
+            'url'     => Validator::parsedBody($request)->string('url', ''),
         ]));
     }
 }

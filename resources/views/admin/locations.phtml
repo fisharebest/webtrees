@@ -15,7 +15,7 @@ use Illuminate\Support\Collection;
 
 /**
  * @var array<object>                 $active
- * @var Collection<Tree>              $all_trees
+ * @var Collection<int,Tree>          $all_trees
  * @var array<string,string>          $breadcrumbs
  * @var int                           $parent_id
  * @var array<object>                 $placelist
@@ -31,7 +31,7 @@ use Illuminate\Support\Collection;
 
 <p>
     <label>
-        <input id="hide-unused-locations" type="checkbox" data-bs-toggle="collapse" data-bs-target=".unused-location" data-wt-persist="hide-unused-locations">
+        <input id="hide-unused-locations" type="checkbox" data-bs-toggle="collapse" data-bs-target=".unused-location" data-wt-persist="hide-unused-locations" autocomplete="off">
         <?= I18N::translate('Hide unused locations') ?>
     </label>
 </p>
@@ -177,4 +177,3 @@ use Illuminate\Support\Collection;
         </tr>
     </tfoot>
 </table>
-

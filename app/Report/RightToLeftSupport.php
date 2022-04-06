@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,7 +21,20 @@ namespace Fisharebest\Webtrees\Report;
 
 use Fisharebest\Webtrees\I18N;
 
+use function ord;
+use function preg_replace;
 use function str_contains;
+use function str_pad;
+use function str_replace;
+use function strlen;
+use function strpos;
+use function strrpos;
+use function strtolower;
+use function strtoupper;
+use function substr;
+
+use const STR_PAD_LEFT;
+use const STR_PAD_RIGHT;
 
 /**
  * RTL Functions for use in the PDF reports
@@ -56,17 +69,17 @@ class RightToLeftSupport
     private const LENGTH_START = 5;
     private const LENGTH_END   = 6;
 
-    /** @var string Were we previously processing LTR or RTL. */
-    private static $previousState;
+    /* Were we previously processing LTR or RTL. */
+    private static string $previousState;
 
-    /** @var string Are we currently processing LTR or RTL. */
-    private static $currentState;
+    /* Are we currently processing LTR or RTL. */
+    private static string $currentState;
 
-    /** @var string Text waiting to be processed. */
-    private static $waitingText;
+    /* Text waiting to be processed. */
+    private static string $waitingText;
 
-    /** @var int Offset into the text. */
-    private static $posSpanStart;
+    /* Offset into the text. */
+    private static int $posSpanStart;
 
     /**
      * This function strips &lrm; and &rlm; from the input string. It should be used for all
@@ -219,23 +232,21 @@ class RightToLeftSupport
                                 }
                             }
                         }
-                    } else {
+                    } elseif (str_contains(self::NUMBER_PREFIX, $currentLetter)) {
                         // If we're outside a numeric string, look for reasons to start it
-                        if (str_contains(self::NUMBER_PREFIX, $currentLetter)) {
-                            // This might be a number lead-in
-                            $offset   = $currentLen;
-                            $nextChar = substr($workingText . "\n", $offset, 1);
-                            if (str_contains(self::NUMBERS, $nextChar)) {
-                                $numberState = true; // We found a digit: the lead-in is therefore numeric
-                                if (self::$currentState === 'RTL') {
-                                    $currentLetter = self::UTF8_LRE . $currentLetter;
-                                }
-                            }
-                        } elseif (str_contains(self::NUMBERS, $currentLetter)) {
-                            $numberState = true; // The current letter is a digit
+                        // This might be a number lead-in
+                        $offset   = $currentLen;
+                        $nextChar = substr($workingText . "\n", $offset, 1);
+                        if (str_contains(self::NUMBERS, $nextChar)) {
+                            $numberState = true; // We found a digit: the lead-in is therefore numeric
                             if (self::$currentState === 'RTL') {
                                 $currentLetter = self::UTF8_LRE . $currentLetter;
                             }
+                        }
+                    } elseif (str_contains(self::NUMBERS, $currentLetter)) {
+                        $numberState = true; // The current letter is a digit
+                        if (self::$currentState === 'RTL') {
+                            $currentLetter = self::UTF8_LRE . $currentLetter;
                         }
                     }
 
@@ -304,13 +315,13 @@ class RightToLeftSupport
                                 if ($workingText === '') {
                                     break;
                                 }
-                                if (substr($workingText, 0, 1) === ' ') {
+                                if (str_starts_with($workingText, ' ')) {
                                     // Spaces following this left parenthesis inherit the following directionality too
                                     self::$waitingText .= ' ';
                                     $workingText       = substr($workingText, 1);
                                     continue;
                                 }
-                                if (substr($workingText, 0, 6) === '&nbsp;') {
+                                if (str_starts_with($workingText, '&nbsp;')) {
                                     // Spaces following this left parenthesis inherit the following directionality too
                                     self::$waitingText .= '&nbsp;';
                                     $workingText       = substr($workingText, 6);
@@ -366,10 +377,8 @@ class RightToLeftSupport
                 if (self::$currentState === 'RTL') {
                     $result .= self::UTF8_PDF;
                 }
-            } else {
-                if (self::$currentState === 'RTL') {
-                    self::$waitingText .= self::UTF8_PDF;
-                }
+            } elseif (self::$currentState === 'RTL') {
+                self::$waitingText .= self::UTF8_PDF;
             }
         }
         self::finishCurrentSpan($result, true);
@@ -454,7 +463,7 @@ class RightToLeftSupport
         ], $result);
 
         // Include leading indeterminate directional text in whatever follows
-        if (substr($result . "\n", 0, self::LENGTH_START) !== self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) !== self::START_RTL && substr($result . "\n", 0, 4) !== '<br>') {
+        if (substr($result . "\n", 0, self::LENGTH_START) !== self::START_LTR && substr($result . "\n", 0, self::LENGTH_START) !== self::START_RTL && !str_starts_with($result . "\n", '<br>')) {
             $leadingText = '';
             while (true) {
                 if ($result === '') {
@@ -735,12 +744,12 @@ class RightToLeftSupport
                 $savedSpan      = $textSpan;
                 while ($textSpan !== '') {
                     // Look for trailing spaces and tentatively move them
-                    if (substr($textSpan, -1) === ' ') {
+                    if (str_ends_with($textSpan, ' ')) {
                         $trailingString = ' ' . $trailingString;
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (substr($textSpan, -6) === '&nbsp;') {
+                    if (str_ends_with($textSpan, '&nbsp;')) {
                         $trailingString = '&nbsp;' . $trailingString;
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
@@ -761,12 +770,12 @@ class RightToLeftSupport
 
                     // Look for more spaces and move them too
                     while ($textSpan !== '') {
-                        if (substr($textSpan, -1) === ' ') {
+                        if (str_ends_with($textSpan, ' ')) {
                             $trailingString = ' ' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
                         }
-                        if (substr($textSpan, -6) === '&nbsp;') {
+                        if (str_ends_with($textSpan, '&nbsp;')) {
                             $trailingString = '&nbsp;' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
@@ -782,30 +791,30 @@ class RightToLeftSupport
             $savedSpan = $textSpan;
             // Move any trailing <br>, optionally preceded or followed by blanks, outside this LTR span
             while ($textSpan !== '') {
-                if (substr($textSpan, -1) === ' ') {
+                if (str_ends_with($textSpan, ' ')) {
                     $trailingBlanks = ' ' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (substr('......' . $textSpan, -6) === '&nbsp;') {
+                if (str_ends_with('......' . $textSpan, '&nbsp;')) {
                     $trailingBlanks = '&nbsp;' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -6);
                     continue;
                 }
                 break;
             }
-            while (substr($textSpan, -7) === '<LTRbr>') {
+            while (str_ends_with($textSpan, '<LTRbr>')) {
                 $trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
                 $textSpan       = substr($textSpan, 0, -7);
             }
             if ($trailingBreaks !== '') {
                 while ($textSpan !== '') {
-                    if (substr($textSpan, -1) === ' ') {
+                    if (str_ends_with($textSpan, ' ')) {
                         $trailingBreaks = ' ' . $trailingBreaks;
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (substr($textSpan, -6) === '&nbsp;') {
+                    if (str_ends_with($textSpan, '&nbsp;')) {
                         $trailingBreaks = '&nbsp;' . $trailingBreaks;
                         $textSpan       = substr($textSpan, 0, -6);
                         continue;
@@ -827,12 +836,12 @@ class RightToLeftSupport
                 if (str_contains($result, self::START_RTL)) {
                     // Remove trailing blanks for inclusion in a separate LTR span
                     while ($textSpan !== '') {
-                        if (substr($textSpan, -1) === ' ') {
+                        if (str_ends_with($textSpan, ' ')) {
                             $trailingBlanks = ' ' . $trailingBlanks;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
                         }
-                        if (substr($textSpan, -6) === '&nbsp;') {
+                        if (str_ends_with($textSpan, '&nbsp;')) {
                             $trailingBlanks = '&nbsp;' . $trailingBlanks;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
@@ -854,7 +863,7 @@ class RightToLeftSupport
 
                 // Remove trailing ID numbers that look like "(xnnn)" for inclusion in a separate LTR span
                 while (true) {
-                    if (substr($textSpan, -1) !== ')') {
+                    if (!str_ends_with($textSpan, ')')) {
                         break;
                     } // There is no trailing ')'
                     $posLeftParen = strrpos($textSpan, '(');
@@ -888,17 +897,17 @@ class RightToLeftSupport
                 // Look for " - " or blank preceding the ID number and remove it for inclusion in a separate LTR span
                 if ($trailingID !== '') {
                     while ($textSpan !== '') {
-                        if (substr($textSpan, -1) === ' ') {
+                        if (str_ends_with($textSpan, ' ')) {
                             $trailingSeparator = ' ' . $trailingSeparator;
                             $textSpan          = substr($textSpan, 0, -1);
                             continue;
                         }
-                        if (substr($textSpan, -6) === '&nbsp;') {
+                        if (str_ends_with($textSpan, '&nbsp;')) {
                             $trailingSeparator = '&nbsp;' . $trailingSeparator;
                             $textSpan          = substr($textSpan, 0, -6);
                             continue;
                         }
-                        if (substr($textSpan, -1) === '-') {
+                        if (str_ends_with($textSpan, '-')) {
                             $trailingSeparator = '-' . $trailingSeparator;
                             $textSpan          = substr($textSpan, 0, -1);
                             continue;
@@ -911,17 +920,17 @@ class RightToLeftSupport
                 $foundSeparator = false;
                 $savedSpan      = $textSpan;
                 while ($textSpan !== '') {
-                    if (substr($textSpan, 0, 1) === ' ') {
+                    if (str_starts_with($textSpan, ' ')) {
                         $leadingSeparator = ' ' . $leadingSeparator;
                         $textSpan         = substr($textSpan, 1);
                         continue;
                     }
-                    if (substr($textSpan, 0, 6) === '&nbsp;') {
+                    if (str_starts_with($textSpan, '&nbsp;')) {
                         $leadingSeparator = '&nbsp;' . $leadingSeparator;
                         $textSpan         = substr($textSpan, 6);
                         continue;
                     }
-                    if (substr($textSpan, 0, 1) === '-') {
+                    if (str_starts_with($textSpan, '-')) {
                         $leadingSeparator = '-' . $leadingSeparator;
                         $textSpan         = substr($textSpan, 1);
                         $foundSeparator   = true;
@@ -975,19 +984,19 @@ class RightToLeftSupport
 
             // Move any trailing <br>, optionally followed by blanks, outside this RTL span
             while ($textSpan !== '') {
-                if (substr($textSpan, -1) === ' ') {
+                if (str_ends_with($textSpan, ' ')) {
                     $trailingBlanks = ' ' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (substr('......' . $textSpan, -6) === '&nbsp;') {
+                if (str_ends_with('......' . $textSpan, '&nbsp;')) {
                     $trailingBlanks = '&nbsp;' . $trailingBlanks;
                     $textSpan       = substr($textSpan, 0, -6);
                     continue;
                 }
                 break;
             }
-            while (substr($textSpan, -7) === '<RTLbr>') {
+            while (str_ends_with($textSpan, '<RTLbr>')) {
                 $trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it’s outside a span
                 $textSpan       = substr($textSpan, 0, -7);
             }
@@ -1003,12 +1012,12 @@ class RightToLeftSupport
                 $savedSpan      = $textSpan;
                 while ($textSpan !== '') {
                     // Look for trailing spaces and tentatively move them
-                    if (substr($textSpan, -1) === ' ') {
+                    if (str_ends_with($textSpan, ' ')) {
                         $trailingString = ' ' . $trailingString;
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
                     }
-                    if (substr($textSpan, -6) === '&nbsp;') {
+                    if (str_ends_with($textSpan, '&nbsp;')) {
                         $trailingString = '&nbsp;' . $trailingString;
                         $textSpan       = substr($textSpan, 0, -1);
                         continue;
@@ -1029,12 +1038,12 @@ class RightToLeftSupport
 
                     // Look for more spaces and move them too
                     while ($textSpan !== '') {
-                        if (substr($textSpan, -1) === ' ') {
+                        if (str_ends_with($textSpan, ' ')) {
                             $trailingString = ' ' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
                         }
-                        if (substr($textSpan, -6) === '&nbsp;') {
+                        if (str_ends_with($textSpan, '&nbsp;')) {
                             $trailingString = '&nbsp;' . $trailingString;
                             $textSpan       = substr($textSpan, 0, -1);
                             continue;
@@ -1048,7 +1057,7 @@ class RightToLeftSupport
             }
 
             // Trailing " - " needs to be prefixed to the following span
-            if (!$theEnd && substr('...' . $textSpan, -3) === ' - ') {
+            if (!$theEnd && str_ends_with('...' . $textSpan, ' - ')) {
                 $textSpan          = substr($textSpan, 0, -3);
                 self::$waitingText = ' - ' . self::$waitingText;
             }
@@ -1072,12 +1081,12 @@ class RightToLeftSupport
             // Strip leading spaces from the RTL text
             $countLeadingSpaces = 0;
             while ($textSpan !== '') {
-                if (substr($textSpan, 0, 1) === ' ') {
+                if (str_starts_with($textSpan, ' ')) {
                     $countLeadingSpaces++;
                     $textSpan = substr($textSpan, 1);
                     continue;
                 }
-                if (substr($textSpan, 0, 6) === '&nbsp;') {
+                if (str_starts_with($textSpan, '&nbsp;')) {
                     $countLeadingSpaces++;
                     $textSpan = substr($textSpan, 6);
                     continue;
@@ -1088,12 +1097,12 @@ class RightToLeftSupport
             // Strip trailing spaces from the RTL text
             $countTrailingSpaces = 0;
             while ($textSpan !== '') {
-                if (substr($textSpan, -1) === ' ') {
+                if (str_ends_with($textSpan, ' ')) {
                     $countTrailingSpaces++;
                     $textSpan = substr($textSpan, 0, -1);
                     continue;
                 }
-                if (substr($textSpan, -6) === '&nbsp;') {
+                if (str_ends_with($textSpan, '&nbsp;')) {
                     $countTrailingSpaces++;
                     $textSpan = substr($textSpan, 0, -6);
                     continue;
@@ -1102,7 +1111,7 @@ class RightToLeftSupport
             }
 
             // Look for trailing " -", reverse it, and relocate it to the front of the string
-            if (substr($textSpan, -2) === ' -') {
+            if (str_ends_with($textSpan, ' -')) {
                 $posDashString  = strlen($textSpan) - 2;
                 $posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr>');
                 if ($posStringStart === false) {

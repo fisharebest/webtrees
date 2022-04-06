@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -59,14 +59,12 @@ class ReportPdfTextBox extends ReportBaseTextbox
                     $footnote_element = [];
                     if (empty($lastelement)) {
                         $lastelement = $element;
-                    } else {
+                    } elseif ($element->getStyleName() === $lastelement->getStyleName()) {
                         // Checking if the Text has the same style
-                        if ($element->getStyleName() === $lastelement->getStyleName()) {
-                            $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
-                        } elseif (!empty($lastelement)) {
-                            $newelements[] = $lastelement;
-                            $lastelement   = $element;
-                        }
+                        $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
+                    } else {
+                        $newelements[] = $lastelement;
+                        $lastelement   = $element;
                     }
                 } elseif ($element instanceof ReportPdfFootnote) {
                     // Check if the Footnote has been set with it’s link number
@@ -136,7 +134,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
             $cY = $renderer->tcpdf->GetY();
         } else {
             $cY = $this->top;
-            $renderer->tcpdf->SetY($cY);
+            $renderer->tcpdf->setY($cY);
         }
 
         // Check the width if set to page wide OR set by xml to larger then page width (margin)
@@ -246,7 +244,7 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 $r  = hexdec($match[1]);
                 $g  = hexdec($match[2]);
                 $b  = hexdec($match[3]);
-                $renderer->tcpdf->SetFillColor($r, $g, $b);
+                $renderer->tcpdf->setFillColor($r, $g, $b);
             }
         }
         // Clean up a bit
@@ -264,9 +262,9 @@ class ReportPdfTextBox extends ReportBaseTextbox
         if ($this->padding) {
             if ($cHT > 0) {
                 if (is_array($cM['cell'])) {
-                    $renderer->tcpdf->SetY($cY + $cM['padding_top']);
+                    $renderer->tcpdf->setY($cY + $cM['padding_top']);
                 } else {
-                    $renderer->tcpdf->SetY($cY + $cM['cell']);
+                    $renderer->tcpdf->setY($cY + $cM['cell']);
                 }
             }
         }
@@ -274,27 +272,25 @@ class ReportPdfTextBox extends ReportBaseTextbox
         if (!$renderer->tcpdf->getRTL()) {
             if ($this->padding) {
                 if (is_array($cM['cell'])) {
-                    $renderer->tcpdf->SetLeftMargin($cX + $cM['padding_left']);
+                    $renderer->tcpdf->setLeftMargin($cX + $cM['padding_left']);
                 } else {
-                    $renderer->tcpdf->SetLeftMargin($cX + $cM['cell']);
+                    $renderer->tcpdf->setLeftMargin($cX + $cM['cell']);
                 }
-                $renderer->tcpdf->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
+                $renderer->tcpdf->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
             } else {
-                $renderer->tcpdf->SetLeftMargin($cX);
-                $renderer->tcpdf->SetRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
+                $renderer->tcpdf->setLeftMargin($cX);
+                $renderer->tcpdf->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
             }
+        } elseif ($this->padding) {
+            if (is_array($cM['cell'])) {
+                $renderer->tcpdf->setRightMargin($cX + $cM['padding_right']);
+            } else {
+                $renderer->tcpdf->setRightMargin($cX + $cM['cell']);
+            }
+            $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
         } else {
-            if ($this->padding) {
-                if (is_array($cM['cell'])) {
-                    $renderer->tcpdf->SetRightMargin($cX + $cM['padding_right']);
-                } else {
-                    $renderer->tcpdf->SetRightMargin($cX + $cM['cell']);
-                }
-                $renderer->tcpdf->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
-            } else {
-                $renderer->tcpdf->SetRightMargin($cX);
-                $renderer->tcpdf->SetLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
-            }
+            $renderer->tcpdf->setRightMargin($cX);
+            $renderer->tcpdf->setLeftMargin($renderer->getRemainingWidthPDF() - $cW + $cM['left']);
         }
         // Save the current page number
         $cPN = $renderer->tcpdf->getPage();
@@ -310,8 +306,8 @@ class ReportPdfTextBox extends ReportBaseTextbox
             }
         }
         // Restore the margins
-        $renderer->tcpdf->SetLeftMargin($cM['left']);
-        $renderer->tcpdf->SetRightMargin($cM['right']);
+        $renderer->tcpdf->setLeftMargin($cM['left']);
+        $renderer->tcpdf->setRightMargin($cM['right']);
 
         // This will be mostly used to trick the multiple images last height
         if ($this->reseth) {
@@ -323,12 +319,12 @@ class ReportPdfTextBox extends ReportBaseTextbox
         }
         // New line and some clean up
         if (!$this->newline) {
-            $renderer->tcpdf->SetXY($cX + $cW, $cY);
+            $renderer->tcpdf->setXY($cX + $cW, $cY);
             $renderer->lastCellHeight = $cH;
         } else {
             // addMarginX() also updates X
             $renderer->addMarginX(0);
-            $renderer->tcpdf->SetY($cY + $cH);
+            $renderer->tcpdf->setY($cY + $cH);
             $renderer->lastCellHeight = 0;
         }
     }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,13 +25,13 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -121,7 +121,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
         $this->layout = 'layouts/administration';
 
         // This module can't run without a tree
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         if (!$tree instanceof Tree) {
             $tree = $this->tree_service->all()->first();
@@ -388,8 +388,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
      */
     public function getShowAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         // Filter foreign languages.
         $faqs = $this->faqsForTree($tree)
@@ -407,7 +406,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
     /**
      * @param Tree $tree
      *
-     * @return Collection<object>
+     * @return Collection<int,object>
      */
     private function faqsForTree(Tree $tree): Collection
     {

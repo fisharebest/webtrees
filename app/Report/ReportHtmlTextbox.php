@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -60,14 +60,12 @@ class ReportHtmlTextbox extends ReportBaseTextbox
                     }
                     if (empty($lastelement)) {
                         $lastelement = $element;
-                    } else {
+                    } elseif ($element->getStyleName() === $lastelement->getStyleName()) {
                         // Checking if the Text has the same style
-                        if ($element->getStyleName() === $lastelement->getStyleName()) {
-                            $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
-                        } elseif (!empty($lastelement)) {
-                            $newelements[] = $lastelement;
-                            $lastelement   = $element;
-                        }
+                        $lastelement->addText(str_replace("\n", '<br>', $element->getValue()));
+                    } else {
+                        $newelements[] = $lastelement;
+                        $lastelement   = $element;
                     }
                 } elseif ($element instanceof ReportHtmlFootnote) {
                     // Check if the Footnote has been set with it’s link number

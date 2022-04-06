@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,6 +30,16 @@ use Fisharebest\Webtrees\Individual;
  */
 class SpanishSurnameTradition extends DefaultSurnameTradition
 {
+    /**
+     * A default/empty name
+     *
+     * @return string
+     */
+    public function defaultName(): string
+    {
+        return '// //';
+    }
+
     /**
      * What name is given to a new child
      *

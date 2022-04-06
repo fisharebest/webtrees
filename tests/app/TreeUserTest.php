@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 
 /**
@@ -39,9 +40,10 @@ class TreeUserTest extends TestCase
      */
     public function testConstructor(): void
     {
-        $tree_service = new TreeService();
-        $tree         = $tree_service->create('name', 'title');
-        $user         = new TreeUser($tree);
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $user                  = new TreeUser($tree);
 
         self::assertInstanceOf(UserInterface::class, $user);
         self::assertSame(0, $user->id());
@@ -57,9 +59,10 @@ class TreeUserTest extends TestCase
      */
     public function testPreferences(): void
     {
-        $tree_service = new TreeService();
-        $tree         = $tree_service->create('name', 'title');
-        $user         = new TreeUser($tree);
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $tree                  = $tree_service->create('name', 'title');
+        $user                  = new TreeUser($tree);
 
         self::assertSame('', $user->getPreference('foo'));
         self::assertSame('', $user->getPreference('foo'));

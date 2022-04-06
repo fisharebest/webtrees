@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,9 +26,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function response;
-use function strlen;
 
 /**
  * Autocomplete for TomSelect based controls.
@@ -45,12 +43,10 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $at    = Validator::queryParams($request)->requiredString('at');
-        $page  = Validator::queryParams($request)->integer('page') ?? 1;
-        $query = Validator::queryParams($request)->requiredString('query');
+        $tree  = Validator::attributes($request)->tree();
+        $at    = Validator::queryParams($request)->isInArray(['', '@'])->string('at');
+        $page  = Validator::queryParams($request)->integer('page', 1);
+        $query = Validator::queryParams($request)->string('query');
 
         // Fetch one more row than we need, so we can know if more rows exist.
         $offset = ($page - 1) * self::RESULTS_PER_PAGE;
@@ -84,7 +80,7 @@ abstract class AbstractTomSelectHandler implements RequestHandlerInterface
      * @param int    $limit
      * @param string $at    "@" or ""
      *
-     * @return Collection<array<string,string>>
+     * @return Collection<int,array{text:string,value:string}>
      */
     abstract protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection;
 }

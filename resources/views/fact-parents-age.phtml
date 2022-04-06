@@ -1,0 +1,29 @@
+<?php
+
+use Fisharebest\Webtrees\Age;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
+
+/**
+ * @var Individual $individual
+ * @var Date       $birth_date
+ */
+
+$family = $individual->childFamilies()->first();
+
+?>
+
+<?php  if ($family instanceof Family && $birth_date->isOK()) : ?>
+    <span class="age">
+    <?php foreach ($family->spouses() as $parent) : ?>
+        <?php if ($parent->getBirthDate()->isOK()) : ?>
+            <?php if ($parent->sex() === 'F') : ?>
+                <?= view('fact-parent-age', ['age' => new Age($parent->getBirthDate(), $birth_date), 'died' => $parent->getDeathDate()->isOK() && $parent->getDeathDate()->maximumJulianDay() < $birth_date->minimumJulianDay() + 90, 'sex' => $parent->sex()]) ?>
+            <?php else : ?>
+                <?= view('fact-parent-age', ['age' => new Age($parent->getBirthDate(), $birth_date), 'died' => $parent->getDeathDate()->isOK() && $parent->getDeathDate()->maximumJulianDay() < $birth_date->minimumJulianDay(), 'sex' => $parent->sex()]) ?>
+            <?php endif ?>
+        <?php endif ?>
+    <?php endforeach ?>
+    </span>
+<?php endif ?>

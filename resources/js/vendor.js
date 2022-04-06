@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,6 +45,7 @@ import 'datatables.net-bs5';
 import Sortable from 'sortablejs';
 
 import TomSelect from 'tom-select/dist/js/tom-select.base.js';
+TomSelect.define('clear_button', require('tom-select/dist/js/plugins/clear_button.js'));
 TomSelect.define('dropdown_input', require('tom-select/dist/js/plugins/dropdown_input.js'));
 TomSelect.define('remove_button', require('tom-select/dist/js/plugins/remove_button.js'));
 TomSelect.define('virtual_scroll', require('tom-select/dist/js/plugins/virtual_scroll.js'));

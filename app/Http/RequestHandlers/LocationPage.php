@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,9 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Services\ClipboardService;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -40,6 +42,20 @@ class LocationPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
+    private ClipboardService $clipboard_service;
+
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param ClipboardService $clipboard_service
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
+    {
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
+    }
+
     /**
      * @param ServerRequestInterface $request
      *
@@ -47,29 +63,27 @@ class LocationPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $slug   = Validator::attributes($request)->string('slug', '');
         $record = Registry::locationFactory()->make($xref, $tree);
         $record = Auth::checkLocationAccess($record, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($record);
-
-        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+        if ($record->xref() !== $xref || Registry::slugFactory()->make($record) !== $slug) {
             return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('record-page', [
-            'clipboard_facts'      => new Collection(),
-            'linked_families'      => $record->linkedFamilies($record->tag()),
-            'linked_individuals'   => $record->linkedIndividuals($record->tag()),
+            'clipboard_facts'      => $this->clipboard_service->pastableFacts($record),
+            'linked_families'      => $this->linked_record_service->linkedFamilies($record),
+            'linked_individuals'   => $this->linked_record_service->linkedIndividuals($record),
+            'linked_locations'     => $this->linked_record_service->linkedLocations($record),
             'linked_media_objects' => null,
             'linked_notes'         => null,
-            'linked_sources'       => null,
+            'linked_repositories'  => null,
+            'linked_sources'       => $this->linked_record_service->linkedSources($record),
+            'linked_submitters'    => null,
             'record'               => $record,
             'title'                => $record->fullName(),
             'tree'                 => $tree,

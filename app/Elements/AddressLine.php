@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,6 +32,16 @@ use Fisharebest\Webtrees\Tree;
 class AddressLine extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 60;
+
+    protected const SUBTAGS = [
+        'ADR1' => '0:1:?',
+        'ADR2' => '0:1:?',
+        'ADR3' => '0:1:?',
+        'CITY' => '0:1:?',
+        'CTRY' => '0:1:?',
+        'POST' => '0:1:?',
+        'STAE' => '0:1:?',
+    ];
 
     /**
      * Convert a value to a canonical form.

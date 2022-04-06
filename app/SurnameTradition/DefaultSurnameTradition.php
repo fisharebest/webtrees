@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -46,23 +46,13 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     protected const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
 
     /**
-     * Does this surname tradition change surname at marriage?
+     * A default/empty name
      *
-     * @return bool
+     * @return string
      */
-    public function hasMarriedNames(): bool
+    public function defaultName(): string
     {
-        return false;
-    }
-
-    /**
-     * Does this surname tradition use surnames?
-     *
-     * @return bool
-     */
-    public function hasSurnames(): bool
-    {
-        return true;
+        return '//';
     }
 
     /**

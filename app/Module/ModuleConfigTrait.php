@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,13 @@ namespace Fisharebest\Webtrees\Module;
  */
 trait ModuleConfigTrait
 {
+    /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
     /**
      * The URL to a page where the user can modify the configuration of this module.
      *

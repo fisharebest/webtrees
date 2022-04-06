@@ -4,8 +4,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var bool   $is_manager
- * @var bool   $is_member
  * @var string $module
  * @var string $title
  * @var Tree   $tree
@@ -18,68 +16,12 @@ use Fisharebest\Webtrees\Tree;
 <form method="post" action="<?= e(route('module', ['module' => $module, 'action' => 'Download', 'tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-clippings-download hidden-print">
     <?= csrf_field() ?>
 
-    <?php if ($is_manager) : ?>
-        <div class="row form-group">
-            <div class="col-sm-3 col-form-label wt-page-options-label">
-                <?= I18N::translate('Apply privacy settings') ?>
-            </div>
-            <div class="col-sm-9 wt-page-options-value">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="privatize_export" value="none" id="priv-none" checked>
-                    <label class="form-check-label" for="priv-none">
-                        <?= I18N::translate('None') ?>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="privatize_export" value="gedadmin" id="priv-manager">
-                    <label class="form-check-label" for="priv-manager">
-                        <?= I18N::translate('Manager') ?>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="privatize_export" value="user" id="priv-member">
-                    <label class="form-check-label" for="priv-member">
-                        <?= I18N::translate('Member') ?>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="privatize_export" value="visitor" id="priv-visitor">
-                    <label class="form-check-label" for="priv-visitor">
-                        <?= I18N::translate('Visitor') ?>
-                    </label>
-                </div>
-            </div>
-        </div>
-    <?php elseif ($is_member) : ?>
-        <div class="row form-group">
-            <div class="col-sm-3 col-form-label wt-page-options-label">
-                <?= I18N::translate('Apply privacy settings') ?>
-            </div>
-            <div class="col-sm-9 wt-page-options-value">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="privatize_export" value="user" id="priv-member" checked>
-                    <label class="form-check-label" for="priv-member">
-                        <?= I18N::translate('Member') ?>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="privatize_export" value="visitor" id="priv-visitor">
-                    <label class="form-check-label" for="priv-visitor">
-                        <?= I18N::translate('Visitor') ?>
-                    </label>
-                </div>
-            </div>
-        </div>
-    <?php else : ?>
-        <input type="hidden" name="privatize_export" value="visitor">
-    <?php endif ?>
-
     <div class="row form-group">
-        <label class="col-sm-3 col-form-label wt-page-options-label" for="convert">
-            <?= I18N::translate('Convert from UTF-8 to ISO-8859-1') ?>
-        </label>
+        <div class="col-sm-3 col-form-label wt-page-options-label">
+            <?= I18N::translate('Export preferences') ?>
+        </div>
         <div class="col-sm-9 wt-page-options-value">
-            <input type="checkbox" name="convert" id="convert">
+            <?= view('admin/gedcom-export-options', ['tree' => $tree]) ?>
         </div>
     </div>
 

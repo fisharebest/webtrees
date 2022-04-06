@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,6 +29,8 @@
     --sex-m-fg: #888888;
     --sex-u-bg: #ffffff;
     --sex-u-fg: #888888;
+    --sex-x-bg: #ffffff;
+    --sex-x-fg: #888888;
 }
 
 /* Override Bootstrap formatting */
@@ -250,17 +252,17 @@ table {
  * wt-route-individual
  * +---wt-header-wrapper
  */
-
-.wt-individual-silhouette {
-    content: url(images/individual-silhouette-unknown.png);
-}
-
 .wt-individual-silhouette-f {
     content: url(images/individual-silhouette-female.png);
 }
 
 .wt-individual-silhouette-m {
     content: url(images/individual-silhouette-male.png);
+}
+
+.wt-individual-silhouette-u,
+.wt-individual-silhouette-x {
+    content: url(images/individual-silhouette-unknown.png);
 }
 
 /*
@@ -281,12 +283,6 @@ table {
  * +--- wt-chart-box-facts
  *     +--- wt-chart-box-fact
  */
-.wt-chart-box,
-.wt-chart-box-menu {
-    background: var(--sex-u-bg);
-    border: dashed var(--sex-u-fg) thin;
-}
-
 .wt-chart-box {
     height: 5rem;
     padding: 2px;
@@ -303,6 +299,18 @@ table {
 .wt-chart-box-m .wt-chart-box-dropdown {
     background: var(--sex-m-bg);
     border: solid var(--sex-m-fg) thin;
+}
+
+.wt-chart-box-u,
+.wt-chart-box-u .wt-chart-box-dropdown {
+    background: var(--sex-u-bg);
+    border: solid var(--sex-u-fg) thin;
+}
+
+.wt-chart-box-x,
+.wt-chart-box-x .wt-chart-box-dropdown {
+    background: var(--sex-x-bg);
+    border: solid var(--sex-x-fg) thin;
 }
 
 /* ---Pending edits--- */
@@ -440,13 +448,6 @@ div.faq_body {
 
 .faq_top {
     float: right;
-}
-
-/* === Positioning edit, copy, delete links === */
-/* General use */
-.editfacts {
-    clear: left;
-    padding-top: 15px;
 }
 
 #indi_note {
@@ -898,15 +899,16 @@ a > .wt-icon-arrow-up:hover {
 }
 
 /* Silhouettes on charts */
-.icon-silhouette-F {
+.icon-silhouette-f {
     content: url(minimal/images/silhouette_female_small.png);
 }
 
-.icon-silhouette-M {
+.icon-silhouette-m {
     content: url(minimal/images/silhouette_male_small.png);
 }
 
-.icon-silhouette-U {
+.icon-silhouette-u,
+.icon-silhouette-x {
     content: url(minimal/images/silhouette_unknown_small.png);
 }
 
@@ -937,57 +939,6 @@ a > .wt-icon-arrow-up:hover {
 .wt-chart {
     overflow-x: auto;
     overflow-y: hidden;
-}
-
-/*
- *  These selectors control how the short horizontal lines are positioned in the Charts
- *  Optimized for Win10 and FF, Chrome and Edge browsers
- *  	Ancestors
- *  	Descendants
- *  	amily book
- *
- */
-
-/* Ascentors */
-.wt-chart-ancestors .linea1 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-ancestors .linea2 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-ancestors .linea3 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-ancestors .linea4 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-ancestors .linea5 {
-    vertical-align: top;
-}
-
-/* Descendants */
-.wt-chart-descendants .lined1 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-descendants .lined2 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-descendants .lined3 {
-    margin-bottom: 4px;
-}
-
-.wt-chart-descendants .lined4 {
-    margin-bottom: 7px;
-}
-
-.wt-chart-descendants .linea5 {
-    vertical-align: top;
 }
 
 .wt-calendar-month {

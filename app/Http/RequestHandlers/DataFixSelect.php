@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,12 +21,11 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
 use function redirect;
 use function route;
 
@@ -54,9 +53,7 @@ class DataFixSelect implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree       = Validator::attributes($request)->tree();
         $data_fixes = $this->module_service->findByInterface(ModuleDataFixInterface::class);
         $data_fix   = $request->getParsedBody()['data_fix'] ?? '';
 

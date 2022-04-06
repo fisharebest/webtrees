@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\I18N;
@@ -245,7 +245,7 @@ class AdminService
      *
      * @param FilesystemOperator $filesystem
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     public function gedcomFiles(FilesystemOperator $filesystem): Collection
     {
@@ -261,7 +261,7 @@ class AdminService
                     $header = fread($stream, 10);
                     fclose($stream);
 
-                    return preg_match('/^(' . Gedcom::UTF8_BOM . ')?0 HEAD/', $header) > 0;
+                    return preg_match('/^(' . UTF8::BYTE_ORDER_MARK . ')?0 HEAD/', $header) > 0;
                 })
                 ->map(function (StorageAttributes $attributes) {
                     return $attributes->path();

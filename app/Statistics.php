@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -63,8 +63,8 @@ use ReflectionClass;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionNamedType;
+use stdClass;
 
-use function call_user_func;
 use function count;
 use function in_array;
 use function str_contains;
@@ -192,7 +192,7 @@ class Statistics implements
                 ->map(function (ReflectionMethod $method): string {
                     $tag = $method->getName();
 
-                    return '<dt>#' . $tag . '#</dt><dd>' . call_user_func([$this, $tag]) . '</dd>';
+                    return '<dt>#' . $tag . '#</dt><dd>' . $this->$tag() . '</dd>';
                 });
 
             return '<dl>' . $examples->implode('') . '</dl>';
@@ -791,19 +791,6 @@ class Statistics implements
     }
 
     /**
-     * @param string $what
-     * @param string $fact
-     * @param int    $parent
-     * @param bool   $country
-     *
-     * @return array<object>
-     */
-    public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array
-    {
-        return $this->place_repository->statsPlaces($what, $fact, $parent, $country);
-    }
-
-    /**
      * @return string
      */
     public function totalPlaces(): string
@@ -1060,9 +1047,9 @@ class Statistics implements
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array|string
+     * @return array<array<stdClass>>
      */
-    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1)
+    public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {
         return $this->individual_repository->statsAgeQuery($related, $sex, $year1, $year2);
     }
@@ -1268,33 +1255,33 @@ class Statistics implements
     }
 
     /**
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function averageLifespan(bool $show_years = false): string
+    public function averageLifespan(string $show_years = ''): string
     {
-        return $this->individual_repository->averageLifespan($show_years);
+        return $this->individual_repository->averageLifespan((bool) $show_years);
     }
 
     /**
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function averageLifespanFemale(bool $show_years = false): string
+    public function averageLifespanFemale(string $show_years = ''): string
     {
-        return $this->individual_repository->averageLifespanFemale($show_years);
+        return $this->individual_repository->averageLifespanFemale((bool) $show_years);
     }
 
     /**
-     * @param bool $show_years
+     * @param string $show_years
      *
      * @return string
      */
-    public function averageLifespanMale(bool $show_years = false): string
+    public function averageLifespanMale(string $show_years = ''): string
     {
-        return $this->individual_repository->averageLifespanMale($show_years);
+        return $this->individual_repository->averageLifespanMale((bool) $show_years);
     }
 
     /**
@@ -1658,7 +1645,7 @@ class Statistics implements
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array
+     * @return array<stdClass>
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
@@ -2006,7 +1993,7 @@ class Statistics implements
      * @param int $year1
      * @param int $year2
      *
-     * @return array
+     * @return array<stdClass>
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
@@ -2855,7 +2842,7 @@ class Statistics implements
             $method = array_shift($params);
 
             if (method_exists($this, $method)) {
-                $tags[$match[0] . '#'] = call_user_func([$this, $method], ...$params);
+                $tags[$match[0] . '#'] = $this->$method(...$params);
             }
         }
 

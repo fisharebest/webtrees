@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,13 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleLanguageInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
@@ -69,7 +70,7 @@ class UserListData implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user = $request->getAttribute('user');
+        $user = Validator::attributes($request)->user();
 
         $languages = $this->module_service->findByInterface(ModuleLanguageInterface::class, true)
             ->mapWithKeys(static function (ModuleLanguageInterface $module): array {
@@ -133,9 +134,9 @@ class UserListData implements RequestHandlerInterface
                 '<a href="mailto:' . e($row->email) . '">' . e($row->email) . '</a>',
                 $languages->get($row->language, $row->language),
                 $row->registered_at,
-                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->registered_at)]) : '',
+                $row->registered_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->registered_at)]) : '',
                 $row->active_at,
-                $row->active_at ? view('components/datetime-diff', ['timestamp' => Carbon::createFromTimestamp((int) $row->active_at)]) : I18N::translate('Never'),
+                $row->active_at ? view('components/datetime-diff', ['timestamp' => Registry::timestampFactory()->make((int) $row->active_at)]) : I18N::translate('Never'),
                 $row->verified ? I18N::translate('yes') : I18N::translate('no'),
                 $row->verified_by_admin ? I18N::translate('yes') : I18N::translate('no'),
             ];

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -134,12 +134,12 @@ class ImageFactory implements ImageFactoryInterface
             return $this->imageResponse($data, $image->mime(), '');
         } catch (NotReadableException $ex) {
             return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -174,12 +174,12 @@ class ImageFactory implements ImageFactoryInterface
             return $this->imageResponse($data, $image->mime(), $filename);
         } catch (NotReadableException $ex) {
             return $this->replacementImageResponse(pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('X-Image-Exception', $ex->getMessage());
+                ->withHeader('x-image-exception', $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Image-Exception', $ex->getMessage());
+                ->withHeader('x-image-exception', $ex->getMessage());
         }
     }
 
@@ -243,12 +243,12 @@ class ImageFactory implements ImageFactoryInterface
             return $this->imageResponse($data, $mime_type, '');
         } catch (NotReadableException $ex) {
             return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
-                ->withHeader('X-Thumbnail-Exception', get_class($ex) . ': ' . $ex->getMessage());
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -340,7 +340,7 @@ class ImageFactory implements ImageFactoryInterface
     {
         if ($mime_type === 'image/svg+xml' && str_contains($data, '<script')) {
             return $this->replacementImageResponse('XSS')
-                ->withHeader('X-Image-Exception', 'SVG image blocked due to XSS.');
+                ->withHeader('x-image-exception', 'SVG image blocked due to XSS.');
         }
 
         // HTML files may contain javascript and iframes, so use content-security-policy to disable them.

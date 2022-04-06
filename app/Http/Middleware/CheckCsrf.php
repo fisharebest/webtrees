@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\SelectLanguage;
 use Fisharebest\Webtrees\Http\RequestHandlers\SelectTheme;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -53,7 +54,7 @@ class CheckCsrf implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $route = $request->getAttribute('route');
+            $route = Validator::attributes($request)->route();
 
             if (!in_array($route->name, self::EXCLUDE_ROUTES, true)) {
                 $params        = (array) $request->getParsedBody();

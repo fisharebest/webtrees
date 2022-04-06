@@ -14,14 +14,14 @@ use Ramsey\Uuid\Uuid;
 
 preg_match_all('/^(\d+) (\w+) ?(.*)/m', $gedcom, $matches);
 [, $levels, $tags, $values] = $matches;
-$levels   = array_map(static fn(string $x): int => (int) $x, $levels);
+$levels   = array_map(static fn (string $x): int => (int) $x, $levels);
 $keys     = array_keys($levels);
 $elements = [];
 $ids      = [];
 $indent   = [];
 $collapse = [];
 
-foreach ($keys as $key) {
+foreach ($keys as $num => $key) {
     $hierarchy[$levels[$key]] = $tags[$key];
     $full_tag                 = implode(':', array_slice($hierarchy, 0, 1 + $levels[$key]));
     $elements[$key]           = Registry::elementFactory()->make($full_tag);
@@ -41,7 +41,7 @@ foreach ($keys as $key) {
 
     $indent[$key] = $elements[$key]->collapseChildren() && $has_subtags;
 
-    $collapse[$key] = $indent[$key] && !$has_subtags_with_values;
+    $collapse[$key] = $num > 0 && $indent[$key] && !$has_subtags_with_values;
 }
 
 ?>
@@ -78,12 +78,12 @@ foreach ($keys as $key) {
         </div>
     <?php endif ?>
 
-    <?php for ($n = $key; $levels[$n] >= ($levels[$key + 1] ?? PHP_INT_MAX); $n--) : ?>
-        <?php if ( $indent[$n] ) : ?>
+    <?php for ($n = $key; $levels[$n] >= ($levels[$key + 1] ?? $levels[0]); $n--) : ?>
+        <?php if ($indent[$n]) : ?>
             <?php $indent[$n] = false ?>
             </div>
         <?php endif ?>
-        <?php if ( $levels[$n] === ($levels[$key + 1] ?? PHP_INT_MAX)) : ?>
+        <?php if ($levels[$n] === ($levels[$key + 1] ?? $levels[0])) : ?>
             <?php break; ?>
         <?php endif ?>
     <?php endfor ?>

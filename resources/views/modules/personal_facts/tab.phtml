@@ -1,20 +1,18 @@
 <?php
 
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
- * @var bool             $can_edit
- * @var Collection<Fact> $clipboard_facts
- * @var Collection<Fact> $facts
- * @var bool             $has_associate_facts
- * @var bool             $has_historic_facts
- * @var bool             $has_relative_facts
- * @var Individual       $individual
+ * @var bool                 $can_edit
+ * @var Collection<int,Fact> $clipboard_facts
+ * @var Collection<int,Fact> $facts
+ * @var bool                 $has_associate_facts
+ * @var bool                 $has_historic_facts
+ * @var bool                 $has_relative_facts
+ * @var Individual           $individual
  */
 
 ?>
@@ -30,21 +28,21 @@ use Illuminate\Support\Collection;
                 <td colspan="2">
                     <?php if ($has_associate_facts) : ?>
                         <label>
-                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates">
+                            <input id="show-associate-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-associate-fact" data-wt-persist="associates" autocomplete="off">
                             <?= I18N::translate('Associated events') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_relative_facts) : ?>
                         <label>
-                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives">
+                            <input id="show-relatives-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-relation-fact" data-wt-persist="relatives" autocomplete="off">
                             <?= I18N::translate('Events of close relatives') ?>
                         </label>
                     <?php endif ?>
 
                     <?php if ($has_historic_facts) : ?>
                         <label>
-                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts">
+                            <input id="show-historical-facts" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-historic-fact" data-wt-persist="historic-facts" autocomplete="off">
                             <?= I18N::translate('Historic events') ?>
                         </label>
                     <?php endif ?>
@@ -52,7 +50,7 @@ use Illuminate\Support\Collection;
             </tr>
 
             <?php foreach ($facts as $fact) : ?>
-                <?php FunctionsPrintFacts::printFact($fact, $individual) ?>
+                <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
             <?php endforeach ?>
 
             <?php if ($facts->isEmpty()) : ?>
@@ -64,7 +62,7 @@ use Illuminate\Support\Collection;
             <?php endif ?>
 
             <?php if ($individual->canEdit()) : ?>
-                <?php FunctionsPrint::printAddNewFact($individual) ?>
+                <?= view('fact-add-new', ['record' => $individual]) ?>
             <?php endif ?>
         </tbody>
     </table>

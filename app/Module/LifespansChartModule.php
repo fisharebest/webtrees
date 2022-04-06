@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Psr\Http\Message\ResponseInterface;
@@ -90,10 +91,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST);
     }
@@ -133,8 +131,8 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
     /**
      * The URL for this chart.
      *
-     * @param Individual                        $individual
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -153,25 +151,23 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree  = Validator::attributes($request)->tree();
+        $user  = Validator::attributes($request)->user();
+        $xrefs = Validator::queryParams($request)->string('xrefs', '');
+        $ajax  = Validator::queryParams($request)->boolean('ajax', false);
 
-        $user      = $request->getAttribute('user');
-        $xrefs     = $request->getQueryParams()['xrefs'] ?? [];
-        $ajax      = $request->getQueryParams()['ajax'] ?? '';
-
-        // URLs created by older versions may already contain an array.
-        if (!is_array($xrefs)) {
+        // URLs created by webtrees 2.0 and earlier used an array.
+        if ($xrefs === '') {
+            $xrefs = Validator::queryParams($request)->array('xrefs');
+        } else {
             $xrefs = explode(self::SEPARATOR, $xrefs);
         }
 
-        $params = (array) $request->getParsedBody();
-
-        $addxref   = $params['addxref'] ?? '';
-        $addfam    = (bool) ($params['addfam'] ?? false);
-        $place_id  = (int) ($params['place_id'] ?? 0);
-        $start     = $params['start'] ?? '';
-        $end       = $params['end'] ?? '';
+        $addxref   = Validator::parsedBody($request)->string('addxref', '');
+        $addfam    = Validator::parsedBody($request)->boolean('addfam', false);
+        $place_id  = Validator::parsedBody($request)->integer('place_id', 0);
+        $start     = Validator::parsedBody($request)->string('start', '');
+        $end       = Validator::parsedBody($request)->string('end', '');
 
         $place      = Place::find($place_id, $tree);
         $start_date = new Date($start);
@@ -217,7 +213,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
-        if ($ajax === '1') {
+        if ($ajax) {
             $this->layout = 'layouts/ajax';
 
             return $this->chart($tree, $xrefs);

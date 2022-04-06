@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,12 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\CreateMediaObjectModal;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
+use function preg_match;
 use function route;
 use function trim;
 use function view;
@@ -62,6 +64,40 @@ class XrefMedia extends AbstractXrefElement
             '</button>' .
             $select .
             '</div>';
+    }
+
+
+    /**
+     * Create a label/value pair for this element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function labelValue(string $value, Tree $tree): string
+    {
+        // Show the image instead of the label.
+        if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match) === 1) {
+            $media = Registry::mediaFactory()->make($match[1], $tree);
+
+            if ($media === null) {
+                return parent::labelValue($value, $tree);
+            }
+
+            $media_file = $media->mediaFiles()->first();
+
+            if ($media_file === null) {
+                return parent::labelValue($value, $tree);
+            }
+
+            $label = $media_file->displayImage(100, 100, 'contain', []);
+            $value = '<a href="' . e($media->url()) . '">' . $media->fullName() . '</a>';
+
+            return '<div class="d-flex"><div class="pe-1 pb-1">' . $label . '</div>' . $value . '</div>';
+        }
+
+        return parent::labelValue($value, $tree);
     }
 
     /**

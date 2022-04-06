@@ -5,7 +5,6 @@ use Fisharebest\Webtrees\Statistics;
 
 /**
  * @var string     $show_last_update
- * @var Statistics $stats
  * @var string     $stat_indi
  * @var string     $stat_surname
  * @var string     $stat_fam
@@ -29,7 +28,7 @@ use Fisharebest\Webtrees\Statistics;
 
 <?php if ($show_last_update) : ?>
     <p class="card-text">
-        <?= I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) ?>
+        <?= I18N::translate('This family tree was last updated on %s.', '#gedcomUpdated#') ?>
     </p>
 <?php endif ?>
 
@@ -46,7 +45,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Individuals') ?>
                     </th>
                     <td>
-                        <?= $stats->totalIndividuals() ?>
+                        #totalIndividuals#
                     </td>
                 </tr>
 
@@ -55,9 +54,9 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Males') ?>
                     </th>
                     <td>
-                        <?= $stats->totalSexMales() ?>
+                        #totalSexMales#
                         <br>
-                        <?= $stats->totalSexMalesPercentage() ?>
+                        #totalSexMalesPercentage#
                     </td>
                 </tr>
 
@@ -66,9 +65,9 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Females') ?>
                     </th>
                     <td>
-                        <?= $stats->totalSexFemales() ?>
+                        #totalSexFemales#
                         <br>
-                        <?= $stats->totalSexFemalesPercentage() ?>
+                        #totalSexFemalesPercentage#
                     </td>
                 </tr>
             <?php endif ?>
@@ -79,7 +78,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Surnames') ?>
                     </th>
                     <td>
-                        <?= $stats->totalSurnames() ?>
+                        #totalSurnames#
                     </td>
                 </tr>
             <?php endif ?>
@@ -90,7 +89,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Families') ?>
                     </th>
                     <td>
-                        <?= $stats->totalFamilies() ?>
+                        #totalFamilies#
                     </td>
                 </tr>
             <?php endif ?>
@@ -102,7 +101,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Sources') ?>
                     </th>
                     <td>
-                        <?= $stats->totalSources() ?>
+                        #totalSources#
                     </td>
                 </tr>
             <?php endif ?>
@@ -113,7 +112,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Media objects') ?>
                     </th>
                     <td>
-                        <?= $stats->totalMedia() ?>
+                        #totalMedia#
                     </td>
                 </tr>
             <?php endif ?>
@@ -124,7 +123,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Repositories') ?>
                     </th>
                     <td>
-                        <?= $stats->totalRepositories() ?>
+                        #totalRepositories#
                     </td>
                 </tr>
             <?php endif ?>
@@ -135,7 +134,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Events') ?>
                     </th>
                     <td>
-                        <?= $stats->totalEvents() ?>
+                        #totalEvents#
                     </td>
                 </tr>
             <?php endif ?>
@@ -146,7 +145,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Users') ?>
                     </th>
                     <td>
-                        <?= $stats->totalUsers() ?>
+                        #totalUsers#
                     </td>
                 </tr>
             <?php endif ?>
@@ -167,7 +166,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Earliest birth') ?>
                     </th>
                     <td>
-                        <?= $stats->firstBirth() ?>
+                        #firstBirth#
                     </td>
                 </tr>
             <?php endif ?>
@@ -178,7 +177,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Latest birth') ?>
                     </th>
                     <td>
-                        <?= $stats->lastBirth() ?>
+                        #lastBirth#
                     </td>
                 </tr>
             <?php endif ?>
@@ -189,7 +188,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Earliest death') ?>
                     </th>
                     <td>
-                        <?= $stats->firstDeath() ?>
+                        #firstDeath#
                     </td>
                 </tr>
             <?php endif ?>
@@ -200,7 +199,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Latest death') ?>
                     </th>
                     <td>
-                        <?= $stats->lastDeath() ?>
+                        #lastDeath#
                     </td>
                 </tr>
             <?php endif ?>
@@ -211,7 +210,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Individual who lived the longest') ?>
                     </th>
                     <td>
-                        <?= $stats->longestLife() ?>
+                        #longestLife#
                     </td>
                 </tr>
             <?php endif ?>
@@ -222,11 +221,11 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Average age at death') ?>
                     </th>
                     <td>
-                        <?= $stats->averageLifespan() ?>
+                        #averageLifespan#
                         <br>
-                        <?= I18N::translate('Males') ?>:&nbsp;<?= $stats->averageLifespanMale() ?>
+                        <?= I18N::translate('Males') ?>: #averageLifespanMale#
                         <br>
-                        <?= I18N::translate('Females') ?>&nbsp;<?= $stats->averageLifespanFemale() ?>
+                        <?= I18N::translate('Females') ?>: #averageLifespanFemale#
                     </td>
                 </tr>
             <?php endif ?>
@@ -237,9 +236,9 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Family with the most children') ?>
                     </th>
                     <td>
-                        <?= e($stats->largestFamilySize()) ?>
+                        #largestFamilySize#
                         <br>
-                        <?= $stats->largestFamily() ?>
+                        #largestFamily#
                     </td>
                 </tr>
             <?php endif ?>
@@ -250,7 +249,7 @@ use Fisharebest\Webtrees\Statistics;
                         <?= I18N::translate('Average number of children per family') ?>
                     </th>
                     <td>
-                        <?= $stats->averageChildren() ?>
+                        #averageChildren#
                     </td>
                 </tr>
             <?php endif ?>

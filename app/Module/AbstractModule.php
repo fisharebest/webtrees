@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -101,7 +101,7 @@ abstract class AbstractModule implements ModuleInterface
      * @param string $setting_name
      * @param string $setting_value
      *
-     * @return $this
+     * @return self
      */
     final protected function setBlockSetting(int $block_id, string $setting_name, string $setting_value): self
     {

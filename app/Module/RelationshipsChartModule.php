@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\RelationshipService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
@@ -44,7 +45,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function assert;
-use function is_string;
 use function redirect;
 use function route;
 use function view;
@@ -72,16 +72,20 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
         'recursion' => self::DEFAULT_RECURSION,
     ];
 
+    private ModuleService $module_service;
+
     private TreeService $tree_service;
 
     private RelationshipService $relationship_service;
 
     /**
+     * @param ModuleService       $module_service
      * @param RelationshipService $relationship_service
      * @param TreeService         $tree_service
      */
-    public function __construct(RelationshipService $relationship_service, TreeService $tree_service)
+    public function __construct(ModuleService $module_service, RelationshipService $relationship_service, TreeService $tree_service)
     {
+        $this->module_service       = $module_service;
         $this->relationship_service = $relationship_service;
         $this->tree_service         = $tree_service;
     }
@@ -93,10 +97,7 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST)
             ->tokens([
@@ -184,8 +185,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
     /**
      * The URL for a page showing chart options.
      *
-     * @param Individual                        $individual
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -204,29 +205,22 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $xref2 = $request->getAttribute('xref2') ?? '';
-
-        $ajax      = $request->getQueryParams()['ajax'] ?? '';
+        $tree      = Validator::attributes($request)->tree();
+        $xref      = Validator::attributes($request)->isXref()->string('xref');
+        $xref2     = Validator::attributes($request)->isXref()->string('xref2', '');
+        $ajax      = Validator::queryParams($request)->boolean('ajax', false);
         $ancestors = (int) $request->getAttribute('ancestors');
         $recursion = (int) $request->getAttribute('recursion');
-        $user      = $request->getAttribute('user');
+        $user      = Validator::attributes($request)->user();
 
         // Convert POST requests into GET requests for pretty URLs.
         if ($request->getMethod() === RequestMethodInterface::METHOD_POST) {
-            $params = (array) $request->getParsedBody();
-
             return redirect(route(static::class, [
-                'ancestors' => $params['ancestors'],
-                'recursion' => $params['recursion'],
                 'tree'      => $tree->name(),
-                'xref'      => $params['xref'],
-                'xref2'     => $params['xref2'],
+                'ancestors' => Validator::parsedBody($request)->string('ancestors', ''),
+                'recursion' => Validator::parsedBody($request)->string('recursion', ''),
+                'xref'      => Validator::parsedBody($request)->string('xref', ''),
+                'xref2'     => Validator::parsedBody($request)->string('xref2', ''),
             ]));
         }
 
@@ -238,6 +232,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
 
         $recursion = min($recursion, $max_recursion);
 
+        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
+
         if ($individual1 instanceof Individual) {
             $individual1 = Auth::checkIndividualAccess($individual1, false, true);
         }
@@ -246,10 +242,8 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
             $individual2 = Auth::checkIndividualAccess($individual2, false, true);
         }
 
-        Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
-
         if ($individual1 instanceof Individual && $individual2 instanceof Individual) {
-            if ($ajax === '1') {
+            if ($ajax) {
                 return $this->chart($individual1, $individual2, $recursion, $ancestors);
             }
 
@@ -327,11 +321,9 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                     return  Registry::familyFactory()->make($xref, $tree);
                 });
 
-            $language = app(ModuleService::class)
+            $language = $this->module_service
                 ->findByInterface(ModuleLanguageInterface::class, true)
                 ->first(fn (ModuleLanguageInterface $language): bool => $language->locale()->languageTag() === I18N::languageTag());
-
-
 
             echo '<h3>', I18N::translate('Relationship: %s', $this->relationship_service->nameFromPath($nodes->all(), $language)), '</h3>';
             $num_paths++;
@@ -355,17 +347,17 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'bro':
                         case 'sis':
                         case 'sib':
-                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
+                            $table[$x + 1][$y] = '<div style="background:url(' . e(asset('css/images/hline.png')) . ') repeat-x center;  width: 94px; text-align: center"><div class="hline-text" style="height: 32px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px;">' . view('icons/arrow-right') . '</div></div>';
                             $x += 2;
                             break;
                         case 'son':
                         case 'dau':
                         case 'chi':
                             if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: start;">' . view('icons/arrow-down') . '</div></div>';
                                 $x += 2;
                             } else {
-                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x][$y - 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align: center;"><div class="vline-text" style="display: inline-block; width:50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . view('icons/arrow-down') . '</div></div>';
                             }
                             $y -= 2;
                             break;
@@ -373,10 +365,10 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                         case 'mot':
                         case 'par':
                             if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
+                                $table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="height: 32px; text-align: end;">' . view('icons/arrow-down') . '</div></div>';
                                 $x += 2;
                             } else {
-                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . app(RelationshipService::class)->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
+                                $table[$x][$y + 1] = '<div style="background:url(' . e('"' . asset('css/images/vline.png') . '"') . ') repeat-y center; height: 64px; text-align:center; "><div class="vline-text" style="display: inline-block; width: 50%; line-height: 64px;">' . $this->relationship_service->legacyNameAlgorithm($relationships[$n], Registry::individualFactory()->make($path[$n - 1], $tree), Registry::individualFactory()->make($path[$n + 1], $tree)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . view('icons/arrow-up') . '</div></div>';
                             }
                             $y += 2;
                             break;

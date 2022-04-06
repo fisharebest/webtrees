@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,12 +19,17 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Site;
+use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+
+use function explode;
 
 /**
  * Edit the tree preferences.
@@ -42,9 +47,31 @@ class SiteTagsPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
+        $custom_family_tags      = explode(',', Site::getPreference('CUSTOM_FAMILY_TAGS'));
+        $custom_individual_tags  = explode(',', Site::getPreference('CUSTOM_INDIVIDUAL_TAGS'));
+
+        $all_family_tags = new Collection(Gedcom::CUSTOM_FAMILY_TAGS);
+        $all_individual_tags = new Collection(Gedcom::CUSTOM_INDIVIDUAL_TAGS);
+
+        $all_family_tags = $all_family_tags->mapWithKeys(
+            static fn (string $tag): array => [$tag => Registry::elementFactory()->make('FAM:' . $tag)->label() . ' - ' . $tag]
+        );
+
+        $all_individual_tags = $all_individual_tags->mapWithKeys(
+            static fn (string $tag): array => [$tag => Registry::elementFactory()->make('INDI:' . $tag)->label() . ' - ' . $tag]
+        );
+
+        $custom_gedcom_l_tags = (bool) Site::getPreference('CUSTOM_GEDCOM_L_TAGS');
+
+
         return $this->viewResponse('admin/tags', [
-            'element_factory' => Registry::elementFactory(),
-            'title'           => I18N::translate('GEDCOM tags'),
+            'all_family_tags'        => $all_family_tags->sort()->all(),
+            'all_individual_tags'    => $all_individual_tags->sort()->all(),
+            'custom_family_tags'     => $custom_family_tags,
+            'custom_gedcom_l_tags'   => $custom_gedcom_l_tags,
+            'custom_individual_tags' => $custom_individual_tags,
+            'element_factory'        => Registry::elementFactory(),
+            'title'                  => I18N::translate('GEDCOM tags'),
         ]);
     }
 }

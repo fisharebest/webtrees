@@ -1,0 +1,161 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2022 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Encodings;
+
+/**
+ * Convert between Windows Code Page 437 and UTF-8.
+ *
+ * @link https://en.wikipedia.org/wiki/Code_page_437
+ */
+class CP437 extends AbstractEncoding
+{
+    public const NAME = 'CP437';
+
+    protected const TO_UTF8 = [
+        "\x80" => UTF8::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,
+        "\x81" => UTF8::LATIN_SMALL_LETTER_U_WITH_DIAERESIS,
+        "\x82" => UTF8::LATIN_SMALL_LETTER_E_WITH_ACUTE,
+        "\x83" => UTF8::LATIN_SMALL_LETTER_A_WITH_CIRCUMFLEX,
+        "\x84" => UTF8::LATIN_SMALL_LETTER_A_WITH_DIAERESIS,
+        "\x85" => UTF8::LATIN_SMALL_LETTER_A_WITH_GRAVE,
+        "\x86" => UTF8::LATIN_SMALL_LETTER_A_WITH_RING_ABOVE,
+        "\x87" => UTF8::LATIN_SMALL_LETTER_C_WITH_CEDILLA,
+        "\x88" => UTF8::LATIN_SMALL_LETTER_E_WITH_CIRCUMFLEX,
+        "\x89" => UTF8::LATIN_SMALL_LETTER_E_WITH_DIAERESIS,
+        "\x8A" => UTF8::LATIN_SMALL_LETTER_E_WITH_GRAVE,
+        "\x8B" => UTF8::LATIN_SMALL_LETTER_I_WITH_DIAERESIS,
+        "\x8C" => UTF8::LATIN_SMALL_LETTER_I_WITH_CIRCUMFLEX,
+        "\x8D" => UTF8::LATIN_SMALL_LETTER_I_WITH_GRAVE,
+        "\x8E" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
+        "\x8F" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+        "\x90" => UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
+        "\x91" => UTF8::LATIN_SMALL_LETTER_AE,
+        "\x92" => UTF8::LATIN_CAPITAL_LETTER_AE,
+        "\x93" => UTF8::LATIN_SMALL_LETTER_O_WITH_CIRCUMFLEX,
+        "\x94" => UTF8::LATIN_SMALL_LETTER_O_WITH_DIAERESIS,
+        "\x95" => UTF8::LATIN_SMALL_LETTER_O_WITH_GRAVE,
+        "\x96" => UTF8::LATIN_SMALL_LETTER_U_WITH_CIRCUMFLEX,
+        "\x97" => UTF8::LATIN_SMALL_LETTER_U_WITH_GRAVE,
+        "\x98" => UTF8::LATIN_SMALL_LETTER_Y_WITH_DIAERESIS,
+        "\x99" => UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+        "\x9A" => UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+        "\x9B" => UTF8::CENT_SIGN,
+        "\x9C" => UTF8::POUND_SIGN,
+        "\x9D" => UTF8::YEN_SIGN,
+        "\x9E" => UTF8::PESETA_SIGN,
+        "\x9F" => UTF8::LATIN_SMALL_LETTER_F_WITH_HOOK,
+        "\xA0" => UTF8::LATIN_SMALL_LETTER_A_WITH_ACUTE,
+        "\xA1" => UTF8::LATIN_SMALL_LETTER_I_WITH_ACUTE,
+        "\xA2" => UTF8::LATIN_SMALL_LETTER_O_WITH_ACUTE,
+        "\xA3" => UTF8::LATIN_SMALL_LETTER_U_WITH_ACUTE,
+        "\xA4" => UTF8::LATIN_SMALL_LETTER_N_WITH_TILDE,
+        "\xA5" => UTF8::LATIN_CAPITAL_LETTER_N_WITH_TILDE,
+        "\xA6" => UTF8::FEMININE_ORDINAL_INDICATOR,
+        "\xA7" => UTF8::MASCULINE_ORDINAL_INDICATOR,
+        "\xA8" => UTF8::INVERTED_QUESTION_MARK,
+        "\xA9" => UTF8::REVERSED_NOT_SIGN,
+        "\xAA" => UTF8::NOT_SIGN,
+        "\xAB" => UTF8::VULGAR_FRACTION_ONE_HALF,
+        "\xAC" => UTF8::VULGAR_FRACTION_ONE_QUARTER,
+        "\xAD" => UTF8::INVERTED_EXCLAMATION_MARK,
+        "\xAE" => UTF8::LEFT_POINTING_DOUBLE_ANGLE_QUOTATION_MARK,
+        "\xAF" => UTF8::RIGHT_POINTING_DOUBLE_ANGLE_QUOTATION_MARK,
+        "\xB0" => UTF8::LIGHT_SHADE,
+        "\xB1" => UTF8::MEDIUM_SHADE,
+        "\xB2" => UTF8::DARK_SHADE,
+        "\xB3" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL,
+        "\xB4" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL_AND_LEFT,
+        "\xB5" => UTF8::BOX_DRAWINGS_VERTICAL_SINGLE_AND_LEFT_DOUBLE,
+        "\xB6" => UTF8::BOX_DRAWINGS_VERTICAL_DOUBLE_AND_LEFT_SINGLE,
+        "\xB7" => UTF8::BOX_DRAWINGS_DOWN_DOUBLE_AND_LEFT_SINGLE,
+        "\xB8" => UTF8::BOX_DRAWINGS_DOWN_SINGLE_AND_LEFT_DOUBLE,
+        "\xB9" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL_AND_LEFT,
+        "\xBA" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL,
+        "\xBB" => UTF8::BOX_DRAWINGS_DOUBLE_DOWN_AND_LEFT,
+        "\xBC" => UTF8::BOX_DRAWINGS_DOUBLE_UP_AND_LEFT,
+        "\xBD" => UTF8::BOX_DRAWINGS_UP_DOUBLE_AND_LEFT_SINGLE,
+        "\xBE" => UTF8::BOX_DRAWINGS_UP_SINGLE_AND_LEFT_DOUBLE,
+        "\xBF" => UTF8::BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT,
+        "\xC0" => UTF8::BOX_DRAWINGS_LIGHT_UP_AND_RIGHT,
+        "\xC1" => UTF8::BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL,
+        "\xC2" => UTF8::BOX_DRAWINGS_LIGHT_DOWN_AND_HORIZONTAL,
+        "\xC3" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL_AND_RIGHT,
+        "\xC4" => UTF8::BOX_DRAWINGS_LIGHT_HORIZONTAL,
+        "\xC5" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL_AND_HORIZONTAL,
+        "\xC6" => UTF8::BOX_DRAWINGS_VERTICAL_SINGLE_AND_RIGHT_DOUBLE,
+        "\xC7" => UTF8::BOX_DRAWINGS_VERTICAL_DOUBLE_AND_RIGHT_SINGLE,
+        "\xC8" => UTF8::BOX_DRAWINGS_DOUBLE_UP_AND_RIGHT,
+        "\xC9" => UTF8::BOX_DRAWINGS_DOUBLE_DOWN_AND_RIGHT,
+        "\xCA" => UTF8::BOX_DRAWINGS_BOX_DRAWINGS_DOUBLE_UP_AND_HORIZONTAL,
+        "\xCB" => UTF8::BOX_DRAWINGS_DOUBLE_DOWN_AND_HORIZONTAL,
+        "\xCC" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL_AND_RIGHT,
+        "\xCD" => UTF8::BOX_DRAWINGS_DOUBLE_HORIZONTAL,
+        "\xCE" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL_AND_HORIZONTAL,
+        "\xCF" => UTF8::BOX_DRAWINGS_UP_SINGLE_AND_HORIZONTAL_DOUBLE,
+        "\xD0" => UTF8::BOX_DRAWINGS_UP_DOUBLE_AND_HORIZONTAL_SINGLE,
+        "\xD1" => UTF8::BOX_DRAWINGS_DOWN_SINGLE_AND_HORIZONTAL_DOUBLE,
+        "\xD2" => UTF8::BOX_DRAWINGS_DOWN_DOUBLE_AND_HORIZONTAL_SINGLE,
+        "\xD3" => UTF8::BOX_DRAWINGS_UP_DOUBLE_AND_RIGHT_SINGLE,
+        "\xD4" => UTF8::BOX_DRAWINGS_UP_SINGLE_AND_RIGHT_DOUBLE,
+        "\xD5" => UTF8::BOX_DRAWINGS_DOWN_SINGLE_AND_RIGHT_DOUBLE,
+        "\xD6" => UTF8::BOX_DRAWINGS_DOWN_DOUBLE_AND_RIGHT_SINGLE,
+        "\xD7" => UTF8::BOX_DRAWINGS_VERTICAL_DOUBLE_AND_HORIZONTAL_SINGLE,
+        "\xD8" => UTF8::BOX_DRAWINGS_VERTICAL_SINGLE_AND_HORIZONTAL_DOUBLE,
+        "\xD9" => UTF8::BOX_DRAWINGS_LIGHT_UP_AND_LEFT,
+        "\xDA" => UTF8::BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT,
+        "\xDB" => UTF8::FULL_BLOCK,
+        "\xDC" => UTF8::LOWER_HALF_BLOCK,
+        "\xDD" => UTF8::LEFT_HALF_BLOCK,
+        "\xDE" => UTF8::RIGHT_HALF_BLOCK,
+        "\xDF" => UTF8::UPPER_HALF_BLOCK,
+        "\xE0" => UTF8::GREEK_SMALL_LETTER_ALPHA,
+        "\xE1" => UTF8::LATIN_SMALL_LETTER_SHARP_S,
+        "\xE2" => UTF8::GREEK_CAPITAL_LETTER_GAMMA,
+        "\xE3" => UTF8::GREEK_SMALL_LETTER_PI,
+        "\xE4" => UTF8::GREEK_CAPITAL_LETTER_SIGMA,
+        "\xE5" => UTF8::GREEK_SMALL_LETTER_SIGMA,
+        "\xE6" => UTF8::MICRO_SIGN,
+        "\xE7" => UTF8::GREEK_SMALL_LETTER_TAU,
+        "\xE8" => UTF8::GREEK_CAPITAL_LETTER_PHI,
+        "\xE9" => UTF8::GREEK_CAPITAL_LETTER_THETA,
+        "\xEA" => UTF8::GREEK_CAPITAL_LETTER_OMEGA,
+        "\xEB" => UTF8::GREEK_SMALL_LETTER_DELTA,
+        "\xEC" => UTF8::INFINITY,
+        "\xED" => UTF8::GREEK_SMALL_LETTER_PHI,
+        "\xEE" => UTF8::GREEK_SMALL_LETTER_EPSILON,
+        "\xEF" => UTF8::INTERSECTION,
+        "\xF0" => UTF8::IDENTICAL_TO,
+        "\xF1" => UTF8::PLUS_MINUS_SIGN,
+        "\xF2" => UTF8::GREATER_THAN_OR_EQUAL_TO,
+        "\xF3" => UTF8::LESS_THAN_OR_EQUAL_TO,
+        "\xF4" => UTF8::TOP_HALF_INTEGRAL,
+        "\xF5" => UTF8::BOTTOM_HALF_INTEGRAL,
+        "\xF6" => UTF8::DIVISION_SIGN,
+        "\xF7" => UTF8::ALMOST_EQUAL_TO,
+        "\xF8" => UTF8::DEGREE_SIGN,
+        "\xF9" => UTF8::BULLET_OPERATOR,
+        "\xFA" => UTF8::MIDDLE_DOT,
+        "\xFB" => UTF8::SQUARE_ROOT,
+        "\xFC" => UTF8::SUPERSCRIPT_LATIN_SMALL_LETTER_N,
+        "\xFD" => UTF8::SUPERSCRIPT_TWO,
+        "\xFE" => UTF8::BLACK_SQUARE,
+        "\xFF" => UTF8::NO_BREAK_SPACE,
+    ];
+}

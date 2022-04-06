@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,12 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -60,12 +60,10 @@ class PendingChangesLogPage implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree  = Validator::attributes($request)->tree();
         $trees = $this->tree_service->titles();
-
         $users = ['' => ''];
+
         foreach ($this->user_service->all() as $user) {
             $user_name         = $user->userName();
             $users[$user_name] = $user_name;
@@ -75,8 +73,8 @@ class PendingChangesLogPage implements RequestHandlerInterface
         $earliest = DB::table('change')->min('change_time');
         $latest   = DB::table('change')->max('change_time');
 
-        $earliest = Carbon::make($earliest) ?? Carbon::now();
-        $latest   = Carbon::make($latest) ?? Carbon::now();
+        $earliest = Registry::timestampFactory()->fromString($earliest);
+        $latest   = Registry::timestampFactory()->fromString($latest);
 
         $earliest = $earliest->toDateString();
         $latest   = $latest->toDateString();

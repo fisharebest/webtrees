@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -287,16 +287,6 @@ class HelpText implements RequestHandlerInterface
             case 'relationship-privacy':
                 $title = I18N::translate('Restrict to immediate family');
                 $text  = view('help/relationship-privacy');
-                break;
-
-            case 'iso-8859-1':
-                $title = I18N::translate('Convert from UTF-8 to ISO-8859-1');
-                $text  = view('help/iso-8859-1');
-                break;
-
-            case 'zip-gedcom':
-                $title = I18N::translate('Compress the GEDCOM file');
-                $text  = view('help/zip-gedcom');
                 break;
 
             default:

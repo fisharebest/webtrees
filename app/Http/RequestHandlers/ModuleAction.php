@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpAccessDeniedException;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Services\ModuleService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -59,8 +60,7 @@ class ModuleAction implements RequestHandlerInterface
     {
         $module_name = $request->getAttribute('module');
         $action      = $request->getAttribute('action');
-        $user        = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $user        = Validator::attributes($request)->user();
 
         // Check that the module is enabled.
         // The module itself will need to check any tree-level access,
@@ -84,6 +84,6 @@ class ModuleAction implements RequestHandlerInterface
             throw new HttpNotFoundException('Method ' . $method . '() not found in ' . $module_name);
         }
 
-        return call_user_func([$module, $method], $request);
+        return $module->$method($request);
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 use Ramsey\Uuid\Uuid;
 
@@ -70,8 +71,13 @@ class CaptchaService
         $y = Session::pull('captcha-y');
         $z = Session::pull('captcha-z');
 
-        $value_x = $request->getParsedBody()[$x] ?? '';
-        $value_y = $request->getParsedBody()[$y] ?? '';
+        assert(is_int($t));
+        assert(is_string($x));
+        assert(is_string($y));
+        assert(is_string($z));
+
+        $value_x = Validator::parsedBody($request)->string($x, '');
+        $value_y = Validator::parsedBody($request)->string($y, '');
 
         // The captcha uses javascript to copy value z from field y to field x.
         // Expect it in both fields.

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,11 +25,15 @@ namespace Fisharebest\Webtrees\Elements;
 class Adoption extends AbstractEventElement
 {
     protected const SUBTAGS = [
+        'TYPE' => '0:1:?',
+        'FAMC' => '0:1',
         'DATE' => '0:1',
         'AGE'  => '0:1',
-        'PLAC' => '0:1',
-        'ADDR' => '0:1',
-        'FAMC' => '0:1',
+        'PLAC' => '0:1:?',
+        'ADDR' => '0:1:?',
+        'CAUS' => '0:1:?',
+        'AGNC' => '0:1',
+        'RELI' => '0:1:?',
         'NOTE' => '0:M',
         'OBJE' => '0:M',
         'SOUR' => '0:M',

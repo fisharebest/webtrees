@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,9 +29,13 @@
     --sex-m-fg: #8888ff;
     --sex-u-bg: #ddffdd;
     --sex-u-fg: #88ff88;
+    --sex-x-bg: #fceaa1;
+    --sex-x-fg: #ffab57;
 }
 
-/* Override Bootstrap formatting */
+/* Override Bootstrap format    --sex-u-bg: #ddffdd;
+    --sex-u-fg: #88ff88;
+ting */
 .btn-link {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
@@ -288,17 +292,17 @@ table {
  * wt-route-individual
  * +---wt-header-wrapper
  */
-
-.wt-individual-silhouette {
-    content: url(images/individual-silhouette-unknown.png);
-}
-
 .wt-individual-silhouette-f {
     content: url(images/individual-silhouette-female.png);
 }
 
 .wt-individual-silhouette-m {
     content: url(images/individual-silhouette-male.png);
+}
+
+.wt-individual-silhouette-u,
+.wt-individual-silhouette-x {
+    content: url(images/individual-silhouette-unknown.png);
 }
 
 /*
@@ -319,11 +323,6 @@ table {
  * +--- wt-chart-box-facts
  *     +--- wt-chart-box-fact
  */
-.wt-chart-box,
-.wt-chart-box-menu {
-    background: var(--sex-u-bg);
-    border: dashed var(--sex-u-fg) thin;
-}
 
 .wt-chart-box {
     height: 5rem;
@@ -336,11 +335,25 @@ table {
 .wt-chart-box-f,
 .wt-chart-box-f .wt-chart-box-dropdown {
     background: var(--sex-f-bg);
+    border: solid var(--sex-f-fg) thin;
 }
 
 .wt-chart-box-m,
 .wt-chart-box-m .wt-chart-box-dropdown {
     background: var(--sex-m-bg);
+    border: solid var(--sex-m-fg) thin;
+}
+
+.wt-chart-box-u,
+.wt-chart-box-u .wt-chart-box-dropdown {
+    background: var(--sex-u-bg);
+    border: solid var(--sex-u-fg) thin;
+}
+
+.wt-chart-box-x,
+.wt-chart-box-x .wt-chart-box-dropdown {
+    background: var(--sex-x-bg);
+    border: solid var(--sex-x-fg) thin;
 }
 
 /* ====== Round Corners ======== */
@@ -358,7 +371,6 @@ table {
 .person3,
 .person4,
 .person5,
-#indi_main_blocks,
 #tabs {
     margin: 4px;
     padding: 4px;
@@ -452,12 +464,20 @@ div.fact_SHARED_NOTE {
     background-color: #ddd;
 }
 
-.wt-facts-table .wt-gender-M td {
+.wt-facts-table .wt-sex-m > td {
     background-color: var(--sex-m-bg);
 }
 
-.wt-facts-table .wt-gender-F td {
+.wt-facts-table .wt-sex-f > td {
     background-color: var(--sex-f-bg);
+}
+
+.wt-facts-table .wt-sex-u > td {
+    background-color: var(--sex-u-bg);
+}
+
+.wt-facts-table .wt-sex-x > td {
+    background-color: var(--sex-x-bg);
 }
 
 .details_label {
@@ -646,12 +666,6 @@ div.fact_SHARED_NOTE {
     width: 70%;
 }
 
-/* this keeps the tag color the same when it is a link as when not */
-
-.place {
-    padding-top: 5px;
-}
-
 .filtersH,
 .filtersF {
     margin: 4px;
@@ -708,13 +722,6 @@ div.faq_body {
 
 .faq_top {
     float: right;
-}
-
-/* === Positioning edit, copy, delete links === */
-/* General use */
-.editfacts {
-    clear: left;
-    padding-top: 15px;
 }
 
 #indi_note {
@@ -1101,15 +1108,16 @@ a > .wt-icon-arrow-up:hover {
 }
 
 /* Silhouettes on charts */
-.icon-silhouette-F {
+.icon-silhouette-f {
     content: url(fab/images/silhouette_female_small.png);
 }
 
-.icon-silhouette-M {
+.icon-silhouette-m {
     content: url(fab/images/silhouette_male_small.png);
 }
 
-.icon-silhouette-U {
+.icon-silhouette-u,
+.icon-silhouette-x {
     content: url(fab/images/silhouette_unknown_small.png);
 }
 

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,22 +21,21 @@ namespace Fisharebest\Webtrees\Services;
 
 use Closure;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ContactPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\MessagePage;
 use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function max;
+use function time;
 
 /**
  * Functions for managing users.
@@ -99,7 +98,7 @@ class UserService
      *
      * @param Individual $individual
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function findByIndividual(Individual $individual): Collection
     {
@@ -128,7 +127,7 @@ class UserService
             ->where('us1.setting_value', '=', $token)
             ->join('user_setting AS us2', 'us2.user_id', '=', 'user.user_id')
             ->where('us2.setting_name', '=', 'password-token-expire')
-            ->where('us2.setting_value', '>', Carbon::now()->getTimestamp())
+            ->where('us2.setting_value', '>', time())
             ->select(['user.*'])
             ->get()
             ->map(User::rowMapper())
@@ -188,7 +187,7 @@ class UserService
     /**
      * Get a list of all users.
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function all(): Collection
     {
@@ -202,7 +201,7 @@ class UserService
     /**
      * Get a list of all administrators.
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function administrators(): Collection
     {
@@ -220,7 +219,7 @@ class UserService
     /**
      * Get a list of all managers.
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function managers(): Collection
     {
@@ -239,7 +238,7 @@ class UserService
     /**
      * Get a list of all moderators.
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function moderators(): Collection
     {
@@ -258,7 +257,7 @@ class UserService
     /**
      * Get a list of all verified users.
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function unapproved(): Collection
     {
@@ -283,7 +282,7 @@ class UserService
     /**
      * Get a list of all verified users.
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function unverified(): Collection
     {
@@ -308,7 +307,7 @@ class UserService
     /**
      * Get a list of all users who are currently logged in.
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function allLoggedIn(): Collection
     {
@@ -393,10 +392,8 @@ class UserService
      */
     public function contactLink(User $contact_user, ServerRequestInterface $request): string
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'mailto') {
             $url = 'mailto:' . $contact_user->email();

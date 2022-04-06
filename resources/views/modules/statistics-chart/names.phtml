@@ -1,0 +1,53 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Names') ?>
+</h4>
+
+<div class="row row-cols-1 row-cols-lg-2 mb-3 g-3">
+    <div class="col">
+        <div class="d-grid gap-3">
+            <div class="card">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Total surnames') ?>
+                    <span class="badge bg-secondary rounded-pill float-end">#totalSurnames#</span>
+                </h5>
+            </div>
+
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Top surnames') ?>
+                </h5>
+                <div class="card-body">
+                    #chartCommonSurnames#
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="d-grid gap-3">
+            <div class="card">
+                <h5 class="card-header border-bottom-0">
+                    <?= I18N::translate('Total given names') ?>
+                    <span class="badge bg-secondary rounded-pill float-end">#totalGivennames#</span>
+                </h5>
+            </div>
+
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Top given names') ?>
+                </h5>
+                <div class="card-body">
+                    #chartCommonGiven#
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

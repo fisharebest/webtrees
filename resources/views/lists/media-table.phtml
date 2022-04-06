@@ -9,8 +9,8 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Media> $media_objects
- * @var Tree              $tree
+ * @var Collection<int,Media> $media_objects
+ * @var Tree                  $tree
  */
 
 ?>
@@ -116,7 +116,7 @@ $count_sources = DB::table('sources')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $media_object->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $media_object->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $media_object->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

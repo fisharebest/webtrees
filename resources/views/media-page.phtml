@@ -1,19 +1,25 @@
 <?php
 
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 use League\Flysystem\FilesystemOperator;
 
 /**
- * @var Collection         $clipboard_facts
- * @var FilesystemOperator $data_filesystem
- * @var Collection         $linked_families
- * @var Collection         $linked_individuals
- * @var Collection         $linked_notes
- * @var Collection         $linked_sources
- * @var Media              $record
- * @var Tree               $tree
+ * @var Collection             $clipboard_facts
+ * @var FilesystemOperator     $data_filesystem
+ * @var Collection<Family>     $linked_families
+ * @var Collection<Individual> $linked_individuals
+ * @var Collection<Location>   $linked_locations
+ * @var Collection<Note>       $linked_notes
+ * @var Collection<Source>     $linked_sources
+ * @var Media                  $record
+ * @var Tree                   $tree
  */
 
 ?>
@@ -34,9 +40,12 @@ use League\Flysystem\FilesystemOperator;
             'details'              => view('media-page-details', ['clipboard_facts' => $clipboard_facts, 'data_filesystem' => $data_filesystem, 'record' => $record]),
             'linked_families'      => $linked_families,
             'linked_individuals'   => $linked_individuals,
+            'linked_locations'     => $linked_locations,
             'linked_media_objects' => null,
             'linked_notes'         => $linked_notes,
+            'linked_repositories'  => null,
             'linked_sources'       => $linked_sources,
+            'linked_submitters'    => null,
             'tree'                 => $tree,
         ]) ?>
 </div>

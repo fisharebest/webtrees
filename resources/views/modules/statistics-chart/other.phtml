@@ -5,16 +5,16 @@ declare(strict_types=1);
 use Fisharebest\Webtrees\Statistics;
 
 /**
- * @var Statistics $stats
+ * @var Statistics $statistics
  */
 
 ?>
 
 <div class="container pt-3">
-    <?= view('statistics/other/total-records', ['stats' => $stats]) ?>
-    <?= view('statistics/other/total-events', ['stats' => $stats]) ?>
-    <?= view('statistics/other/chart-objects', ['stats' => $stats]) ?>
-    <?= view('statistics/other/chart-sources', ['stats' => $stats]) ?>
-    <?= view('statistics/other/places', ['stats' => $stats]) ?>
-    <?= view('statistics/other/chart-distribution', ['stats' => $stats]) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/other-records')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/other-events')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/chart-objects')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/chart-sources')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/places')) ?>
+    <?= $statistics->embedTags(view('modules/statistics-chart/chart-distribution')) ?>
 </div>

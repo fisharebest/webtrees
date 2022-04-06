@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
@@ -37,6 +36,8 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function time;
 
 /**
  * Class ReviewChangesModule
@@ -93,10 +94,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -114,11 +115,11 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             ->exists();
 
         if ($changes_exist && $sendmail) {
-            $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));
-            $next_email_timestamp = $last_email_timestamp->addDays($days);
+            $last_email_timestamp = (int) Site::getPreference('LAST_CHANGE_EMAIL');
+            $next_email_timestamp = $last_email_timestamp + 86400 * $days;
 
             // There are pending changes - tell moderators/managers/administrators about them.
-            if ($next_email_timestamp < Carbon::now()) {
+            if ($next_email_timestamp < time()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
                     if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== 'none') {
@@ -145,7 +146,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                     }
                 }
                 I18N::init($old_language);
-                Site::setPreference('LAST_CHANGE_EMAIL', (string) Carbon::now()->unix());
+                Site::setPreference('LAST_CHANGE_EMAIL', (string) time());
             }
         }
         if (Auth::isEditor($tree) && $tree->hasPendingEdit()) {
@@ -154,8 +155,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
                 $content .= '<a href="' . e(route(PendingChanges::class, ['tree' => $tree->name()])) . '">' . I18N::translate('There are pending changes for you to moderate.') . '</a><br>';
             }
             if ($sendmail) {
-                $last_email_timestamp = Carbon::createFromTimestamp((int) Site::getPreference('LAST_CHANGE_EMAIL'));
-                $next_email_timestamp = $last_email_timestamp->copy()->addDays($days);
+                $last_email_timestamp = Registry::timestampFactory()->make((int) Site::getPreference('LAST_CHANGE_EMAIL'));
+                $next_email_timestamp = $last_email_timestamp->addDays($days);
 
                 $content .= I18N::translate('Last email reminder was sent ') . view('components/datetime', ['timestamp' => $last_email_timestamp]) . '<br>';
                 $content .= I18N::translate('Next email reminder will be sent after ') . view('components/datetime', ['timestamp' => $next_email_timestamp]) . '<br><br>';

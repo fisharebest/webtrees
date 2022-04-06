@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Exception;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Header;
@@ -144,7 +143,7 @@ class GedcomRepository implements GedcomRepositoryInterface
             $fact = $head->facts(['DATE'])->first();
 
             if ($fact instanceof Fact) {
-                return Carbon::make($fact->value())->local()->isoFormat('LL');
+                return Registry::timestampFactory()->fromString($fact->value(), 'j M Y')->isoFormat('LL');
             }
         }
 
@@ -167,7 +166,7 @@ class GedcomRepository implements GedcomRepositoryInterface
             return $this->gedcomDate();
         }
 
-        return Carbon::make($row->change_time)->local()->isoFormat('LL');
+        return Registry::timestampFactory()->fromString($row->change_time)->isoFormat('LL');
     }
 
     /**

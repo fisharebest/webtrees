@@ -1,0 +1,161 @@
+<?php
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2022 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+declare(strict_types=1);
+
+namespace Fisharebest\Webtrees\Encodings;
+
+/**
+ * Convert between UTF-8 and Windows Code Page 850.
+ *
+ * @link
+ */
+class CP850 extends AbstractEncoding
+{
+    public const NAME = 'CP850';
+
+    protected const TO_UTF8 = [
+        "\x80" => UTF8::LATIN_CAPITAL_LETTER_C_WITH_CEDILLA,
+        "\x81" => UTF8::LATIN_SMALL_LETTER_U_WITH_DIAERESIS,
+        "\x82" => UTF8::LATIN_SMALL_LETTER_E_WITH_ACUTE,
+        "\x83" => UTF8::LATIN_SMALL_LETTER_A_WITH_CIRCUMFLEX,
+        "\x84" => UTF8::LATIN_SMALL_LETTER_A_WITH_DIAERESIS,
+        "\x85" => UTF8::LATIN_SMALL_LETTER_A_WITH_GRAVE,
+        "\x86" => UTF8::LATIN_SMALL_LETTER_A_WITH_RING_ABOVE,
+        "\x87" => UTF8::LATIN_SMALL_LETTER_C_WITH_CEDILLA,
+        "\x88" => UTF8::LATIN_SMALL_LETTER_E_WITH_CIRCUMFLEX,
+        "\x89" => UTF8::LATIN_SMALL_LETTER_E_WITH_DIAERESIS,
+        "\x8A" => UTF8::LATIN_SMALL_LETTER_E_WITH_GRAVE,
+        "\x8B" => UTF8::LATIN_SMALL_LETTER_I_WITH_DIAERESIS,
+        "\x8C" => UTF8::LATIN_SMALL_LETTER_I_WITH_CIRCUMFLEX,
+        "\x8D" => UTF8::LATIN_SMALL_LETTER_I_WITH_GRAVE,
+        "\x8E" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_DIAERESIS,
+        "\x8F" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_RING_ABOVE,
+        "\x90" => UTF8::LATIN_CAPITAL_LETTER_E_WITH_ACUTE,
+        "\x91" => UTF8::LATIN_SMALL_LETTER_AE,
+        "\x92" => UTF8::LATIN_CAPITAL_LETTER_AE,
+        "\x93" => UTF8::LATIN_SMALL_LETTER_O_WITH_CIRCUMFLEX,
+        "\x94" => UTF8::LATIN_SMALL_LETTER_O_WITH_DIAERESIS,
+        "\x95" => UTF8::LATIN_SMALL_LETTER_O_WITH_GRAVE,
+        "\x96" => UTF8::LATIN_SMALL_LETTER_U_WITH_CIRCUMFLEX,
+        "\x97" => UTF8::LATIN_SMALL_LETTER_U_WITH_GRAVE,
+        "\x98" => UTF8::LATIN_SMALL_LETTER_Y_WITH_DIAERESIS,
+        "\x99" => UTF8::LATIN_CAPITAL_LETTER_O_WITH_DIAERESIS,
+        "\x9A" => UTF8::LATIN_CAPITAL_LETTER_U_WITH_DIAERESIS,
+        "\x9B" => UTF8::LATIN_SMALL_LETTER_O_WITH_STROKE,
+        "\x9C" => UTF8::POUND_SIGN,
+        "\x9D" => UTF8::LATIN_CAPITAL_LETTER_O_WITH_STROKE,
+        "\x9E" => UTF8::MULTIPLICATION_SIGN,
+        "\x9F" => UTF8::LATIN_SMALL_LETTER_F_WITH_HOOK,
+        "\xA0" => UTF8::LATIN_SMALL_LETTER_A_WITH_ACUTE,
+        "\xA1" => UTF8::LATIN_SMALL_LETTER_I_WITH_ACUTE,
+        "\xA2" => UTF8::LATIN_SMALL_LETTER_O_WITH_ACUTE,
+        "\xA3" => UTF8::LATIN_SMALL_LETTER_U_WITH_ACUTE,
+        "\xA4" => UTF8::LATIN_SMALL_LETTER_N_WITH_TILDE,
+        "\xA5" => UTF8::LATIN_CAPITAL_LETTER_N_WITH_TILDE,
+        "\xA6" => UTF8::FEMININE_ORDINAL_INDICATOR,
+        "\xA7" => UTF8::MASCULINE_ORDINAL_INDICATOR,
+        "\xA8" => UTF8::INVERTED_QUESTION_MARK,
+        "\xA9" => UTF8::REGISTERED_SIGN,
+        "\xAA" => UTF8::NOT_SIGN,
+        "\xAB" => UTF8::VULGAR_FRACTION_ONE_HALF,
+        "\xAC" => UTF8::VULGAR_FRACTION_ONE_QUARTER,
+        "\xAD" => UTF8::INVERTED_EXCLAMATION_MARK,
+        "\xAE" => UTF8::LEFT_POINTING_DOUBLE_ANGLE_QUOTATION_MARK,
+        "\xAF" => UTF8::RIGHT_POINTING_DOUBLE_ANGLE_QUOTATION_MARK,
+        "\xB0" => UTF8::LIGHT_SHADE,
+        "\xB1" => UTF8::MEDIUM_SHADE,
+        "\xB2" => UTF8::DARK_SHADE,
+        "\xB3" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL,
+        "\xB4" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL_AND_LEFT,
+        "\xB5" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_ACUTE,
+        "\xB6" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_CIRCUMFLEX,
+        "\xB7" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_GRAVE,
+        "\xB8" => UTF8::COPYRIGHT_SIGN,
+        "\xB9" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL_AND_LEFT,
+        "\xBA" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL,
+        "\xBB" => UTF8::BOX_DRAWINGS_DOUBLE_DOWN_AND_LEFT,
+        "\xBC" => UTF8::BOX_DRAWINGS_DOUBLE_UP_AND_LEFT,
+        "\xBD" => UTF8::CENT_SIGN,
+        "\xBE" => UTF8::YEN_SIGN,
+        "\xBF" => UTF8::BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT,
+        "\xC0" => UTF8::BOX_DRAWINGS_LIGHT_UP_AND_RIGHT,
+        "\xC1" => UTF8::BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL,
+        "\xC2" => UTF8::BOX_DRAWINGS_LIGHT_DOWN_AND_HORIZONTAL,
+        "\xC3" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL_AND_RIGHT,
+        "\xC4" => UTF8::BOX_DRAWINGS_LIGHT_HORIZONTAL,
+        "\xC5" => UTF8::BOX_DRAWINGS_LIGHT_VERTICAL_AND_HORIZONTAL,
+        "\xC6" => UTF8::LATIN_SMALL_LETTER_A_WITH_TILDE,
+        "\xC7" => UTF8::LATIN_CAPITAL_LETTER_A_WITH_TILDE,
+        "\xC8" => UTF8::BOX_DRAWINGS_DOUBLE_UP_AND_RIGHT,
+        "\xC9" => UTF8::BOX_DRAWINGS_DOUBLE_DOWN_AND_RIGHT,
+        "\xCA" => UTF8::BOX_DRAWINGS_BOX_DRAWINGS_DOUBLE_UP_AND_HORIZONTAL,
+        "\xCB" => UTF8::BOX_DRAWINGS_DOUBLE_DOWN_AND_HORIZONTAL,
+        "\xCC" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL_AND_RIGHT,
+        "\xCD" => UTF8::BOX_DRAWINGS_DOUBLE_HORIZONTAL,
+        "\xCE" => UTF8::BOX_DRAWINGS_DOUBLE_VERTICAL_AND_HORIZONTAL,
+        "\xCF" => UTF8::CURRENCY_SIGN,
+        "\xD0" => UTF8::LATIN_SMALL_LETTER_ETH,
+        "\xD1" => UTF8::LATIN_CAPITAL_LETTER_ETH,
+        "\xD2" => UTF8::LATIN_CAPITAL_LETTER_E_WITH_CIRCUMFLEX,
+        "\xD3" => UTF8::LATIN_CAPITAL_LETTER_E_WITH_DIAERESIS,
+        "\xD4" => UTF8::LATIN_CAPITAL_LETTER_E_WITH_GRAVE,
+        "\xD5" => UTF8::LATIN_SMALL_LETTER_DOTLESS_I,
+        "\xD6" => UTF8::LATIN_CAPITAL_LETTER_I_WITH_ACUTE,
+        "\xD7" => UTF8::LATIN_CAPITAL_LETTER_I_WITH_CIRCUMFLEX,
+        "\xD8" => UTF8::LATIN_CAPITAL_LETTER_I_WITH_DIAERESIS,
+        "\xD9" => UTF8::BOX_DRAWINGS_LIGHT_UP_AND_LEFT,
+        "\xDA" => UTF8::BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT,
+        "\xDB" => UTF8::FULL_BLOCK,
+        "\xDC" => UTF8::LOWER_HALF_BLOCK,
+        "\xDD" => UTF8::BROKEN_BAR,
+        "\xDE" => UTF8::LATIN_CAPITAL_LETTER_I_WITH_GRAVE,
+        "\xDF" => UTF8::UPPER_HALF_BLOCK,
+        "\xE0" => UTF8::LATIN_CAPITAL_LETTER_O_WITH_ACUTE,
+        "\xE1" => UTF8::LATIN_SMALL_LETTER_SHARP_S,
+        "\xE2" => UTF8::LATIN_CAPITAL_LETTER_O_WITH_CIRCUMFLEX,
+        "\xE3" => UTF8::LATIN_CAPITAL_LETTER_O_WITH_GRAVE,
+        "\xE4" => UTF8::LATIN_SMALL_LETTER_O_WITH_TILDE,
+        "\xE5" => UTF8::LATIN_CAPITAL_LETTER_O_WITH_TILDE,
+        "\xE6" => UTF8::MICRO_SIGN,
+        "\xE7" => UTF8::LATIN_SMALL_LETTER_THORN,
+        "\xE8" => UTF8::LATIN_CAPITAL_LETTER_THORN,
+        "\xE9" => UTF8::LATIN_CAPITAL_LETTER_U_WITH_ACUTE,
+        "\xEA" => UTF8::LATIN_CAPITAL_LETTER_U_WITH_CIRCUMFLEX,
+        "\xEB" => UTF8::LATIN_CAPITAL_LETTER_U_WITH_GRAVE,
+        "\xEC" => UTF8::LATIN_SMALL_LETTER_Y_WITH_ACUTE,
+        "\xED" => UTF8::LATIN_CAPITAL_LETTER_Y_WITH_ACUTE,
+        "\xEE" => UTF8::MACRON,
+        "\xEF" => UTF8::ACUTE_ACCENT,
+        "\xF0" => UTF8::SOFT_HYPHEN,
+        "\xF1" => UTF8::PLUS_MINUS_SIGN,
+        "\xF2" => UTF8::DOUBLE_LOW_LINE,
+        "\xF3" => UTF8::VULGAR_FRACTION_THREE_QUARTERS,
+        "\xF4" => UTF8::PILCROW_SIGN,
+        "\xF5" => UTF8::SECTION_SIGN,
+        "\xF6" => UTF8::DIVISION_SIGN,
+        "\xF7" => UTF8::CEDILLA,
+        "\xF8" => UTF8::DEGREE_SIGN,
+        "\xF9" => UTF8::DIAERESIS,
+        "\xFA" => UTF8::MIDDLE_DOT,
+        "\xFB" => UTF8::SUPERSCRIPT_ONE,
+        "\xFC" => UTF8::SUPERSCRIPT_THREE,
+        "\xFD" => UTF8::SUPERSCRIPT_TWO,
+        "\xFE" => UTF8::BLACK_SQUARE,
+        "\xFF" => UTF8::NO_BREAK_SPACE,
+    ];
+}

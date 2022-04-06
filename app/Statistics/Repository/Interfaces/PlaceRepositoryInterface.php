@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,18 +24,6 @@ namespace Fisharebest\Webtrees\Statistics\Repository\Interfaces;
  */
 interface PlaceRepositoryInterface
 {
-    /**
-     * Places
-     *
-     * @param string $what
-     * @param string $fact
-     * @param int    $parent
-     * @param bool   $country
-     *
-     * @return array<int|object>
-     */
-    public function statsPlaces(string $what = 'ALL', string $fact = '', int $parent = 0, bool $country = false): array;
-
     /**
      * A list of common birth places.
      *

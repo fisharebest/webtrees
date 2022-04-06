@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,10 +22,12 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesAnalyticsPage;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
+use function assert;
 
 /**
  * Trait ModuleAnalyticsTrait - default implementation of ModuleAnalyticsInterface
@@ -35,6 +37,33 @@ trait ModuleAnalyticsTrait
     use ViewResponseTrait;
 
     /**
+     * A unique internal name for this module (based on the installation folder).
+     *
+     * @return string
+     */
+    abstract public function name(): string;
+
+    /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    abstract public function title(): string;
+
+    /**
+     * Set a module setting.
+     *
+     * Since module settings are NOT NULL, setting a value to NULL will cause
+     * it to be deleted.
+     *
+     * @param string $setting_name
+     * @param string $setting_value
+     *
+     * @return void
+     */
+    abstract public function setPreference(string $setting_name, string $setting_value): void;
+
+    /**
      * Should we add this tracker?
      *
      * @return bool
@@ -42,11 +71,10 @@ trait ModuleAnalyticsTrait
     public function analyticsCanShow(): bool
     {
         $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
 
         // If the browser sets the DNT header, then we won't use analytics.
-        $dnt = $request->getServerParams()['HTTP_DNT'] ?? '';
-
-        if ($dnt === '1') {
+        if (Validator::serverParams($request)->boolean('HTTP_DNT', false)) {
             return false;
         }
 
@@ -84,7 +112,7 @@ trait ModuleAnalyticsTrait
      *
      * @return ResponseInterface
      */
-    public function getAdminAction(ServerRequestInterface $request): ResponseInterface
+    public function getAdminAction(/** @scrutinizer ignore-unused */ ServerRequestInterface $request): ResponseInterface
     {
         $this->layout = 'layouts/administration';
 
@@ -113,7 +141,7 @@ trait ModuleAnalyticsTrait
      *
      * @return string
      */
-    public function analyticsSnippet(array $parameters): string
+    public function analyticsSnippet(/** @scrutinizer ignore-unused */ array $parameters): string
     {
         return '';
     }

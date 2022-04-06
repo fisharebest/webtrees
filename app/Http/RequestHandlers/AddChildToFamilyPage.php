@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,13 +20,12 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\SurnameTradition;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -61,35 +60,18 @@ class AddChildToFamilyPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
-        $sex = $request->getAttribute('sex');
-        assert(is_string($sex));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $sex    = Validator::attributes($request)->string('sex');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
-        // Create a dummy individual, so that we can create new/empty facts.
-        $element = Registry::elementFactory()->make('INDI:NAME');
-        $dummy   = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
-
-        // Default names facts.
+        // Name facts.
         $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
         $names             = $surname_tradition->newChildNames($family->husband(), $family->wife(), $sex);
-        $name_facts        = array_map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''), $names);
 
         $facts = [
-            'i' => [
-                new Fact('1 SEX ' . $sex, $dummy, ''),
-                ...$name_facts,
-                new Fact('1 NAME ' . $element->default($tree), $dummy, ''),
-                new Fact('1 BIRT', $dummy, ''),
-                new Fact('1 DEAT', $dummy, ''),
-            ],
+            'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, $names),
         ];
 
         $titles = [
@@ -107,7 +89,7 @@ class AddChildToFamilyPage implements RequestHandlerInterface
             'post_url'            => route(AddChildToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref]),
             'title'               => $family->fullName() . ' - ' . $title,
             'tree'                => $tree,
-            'url'                 => $request->getQueryParams()['url'] ?? $family->url(),
+            'url'                 => Validator::queryParams($request)->isLocalUrl()->string('url', $family->url()),
         ]);
     }
 }

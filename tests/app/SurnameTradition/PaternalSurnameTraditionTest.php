@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,18 +32,6 @@ class PaternalSurnameTraditionTest extends TestCase
     private SurnameTraditionInterface $surname_tradition;
 
     /**
-     * Test whether married surnames are used
-     *
-     * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
-     *
-     * @return void
-     */
-    public function testMarriedSurnames(): void
-    {
-        self::assertTrue($this->surname_tradition->hasMarriedNames());
-    }
-
-    /**
      * Test whether surnames are used
      *
      * @covers \Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition
@@ -52,7 +40,7 @@ class PaternalSurnameTraditionTest extends TestCase
      */
     public function testSurnames(): void
     {
-        self::assertTrue($this->surname_tradition->hasSurnames());
+        self::assertSame('//', $this->surname_tradition->defaultName());
     }
 
     /**

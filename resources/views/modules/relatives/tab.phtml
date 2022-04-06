@@ -12,13 +12,13 @@ use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
- * @var bool               $can_edit
- * @var int                $fam_access_level
- * @var Individual         $individual
- * @var Collection<Family> $parent_families
- * @var Collection<Family> $spouse_families
- * @var Collection<Family> $step_child_families
- * @var Collection<Family> $step_parent_families
+ * @var bool                   $can_edit
+ * @var int                    $fam_access_level
+ * @var Individual             $individual
+ * @var Collection<int,Family> $parent_families
+ * @var Collection<int,Family> $spouse_families
+ * @var Collection<int,Family> $step_child_families
+ * @var Collection<int,Family> $step_parent_families
  */
 
 ?>
@@ -31,7 +31,7 @@ use Illuminate\Support\Collection;
         <tr>
             <td>
                 <label>
-                    <input id="show-date-differences" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-date-difference" data-wt-persist="date-differences">
+                    <input id="show-date-differences" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-date-difference" data-wt-persist="date-differences" autocomplete="off">
                     <?= I18N::translate('Date differences') ?>
                 </label>
             </td>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,13 +43,13 @@ class MaidenheadLocatorTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('AB', self::$element->canonical("ab"));
-        self::assertSame('AB', self::$element->canonical("AB"));
-        self::assertSame('AB12', self::$element->canonical("ab12"));
-        self::assertSame('AB12', self::$element->canonical("AB12"));
-        self::assertSame('AB12cd', self::$element->canonical("ab12cd"));
-        self::assertSame('AB12cd', self::$element->canonical("AB12CD"));
-        self::assertSame('AB12cd34', self::$element->canonical("ab12cd34"));
-        self::assertSame('AB12cd34', self::$element->canonical("AB12CD34"));
+        self::assertSame('AB', self::$element->canonical('ab'));
+        self::assertSame('AB', self::$element->canonical('AB'));
+        self::assertSame('AB12', self::$element->canonical('ab12'));
+        self::assertSame('AB12', self::$element->canonical('AB12'));
+        self::assertSame('AB12cd', self::$element->canonical('ab12cd'));
+        self::assertSame('AB12cd', self::$element->canonical('AB12CD'));
+        self::assertSame('AB12cd34', self::$element->canonical('ab12cd34'));
+        self::assertSame('AB12cd34', self::$element->canonical('AB12CD34'));
     }
 }

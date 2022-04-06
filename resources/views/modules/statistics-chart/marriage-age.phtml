@@ -1,0 +1,64 @@
+<?php
+
+declare(strict_types=1);
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<h4 class="border-bottom p-2 mb-4">
+    <?= I18N::translate('Age in year of marriage') ?>
+</h4>
+
+<div class="d-grid gap-3 mb-3">
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Youngest male') ?> — #youngestMarriageMaleAge:1#
+                </h5>
+                <div class="card-body">
+                    #youngestMarriageMale#
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Youngest female') ?> — #youngestMarriageFemaleAge:1#
+                </h5>
+                <div class="card-body">
+                    #youngestMarriageFemale#
+                </div>
+            </div>
+        </div>
+        
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Oldest male') ?> — #oldestMarriageMaleAge:1#
+                </h5>
+                <div class="card-body">
+                    #oldestMarriageMale#
+                </div>
+            </div>
+        </div>
+    
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">
+                    <?= I18N::translate('Oldest female') ?> — #oldestMarriageFemaleAge:1#
+                </h5>
+                <div class="card-body">
+                    #oldestMarriageFemale#
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card m-0">
+        <div class="card-body">
+            #statsMarrAge#
+        </div>
+    </div>
+</div>

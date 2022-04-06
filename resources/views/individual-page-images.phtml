@@ -11,17 +11,17 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var string                             $age
- * @var bool                               $can_upload_media
- * @var Collection<Media>                  $individual_media
- * @var Collection<Fact>                   $name_records
- * @var Individual                         $record
- * @var Collection<Fact>                   $sex_records
- * @var Collection<string>                 $shares
- * @var Collection<ModuleSidebarInterface> $sidebars
- * @var Collection<ModuleTabInterface>     $tabs
- * @var Tree                               $tree
- * @var string                             $user_link
+ * @var string                                 $age
+ * @var bool                                   $can_upload_media
+ * @var Collection<int,Media>                  $individual_media
+ * @var Collection<int,Fact>                   $name_records
+ * @var Individual                             $record
+ * @var Collection<int,Fact>                   $sex_records
+ * @var Collection<int,string>                 $shares
+ * @var Collection<int,ModuleSidebarInterface> $sidebars
+ * @var Collection<int,ModuleTabInterface>     $tabs
+ * @var Tree                                   $tree
+ * @var string                                 $user_link
  */
 ?>
 
@@ -29,7 +29,7 @@ use Illuminate\Support\Collection;
     <div class="col-sm-3">
         <?php if ($individual_media->isEmpty()) : ?>
             <div class="img-thumbnail">
-                <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($record->sex()) ?>"></i>
+                <i class="wt-individual-silhouette wt-individual-silhouette-<?= strtolower($record->sex()) ?> wt-icon-flip-rtl w-100"></i>
             </div>
         <?php elseif ($individual_media->count() === 1) : ?>
             <?= $individual_media->first()->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>

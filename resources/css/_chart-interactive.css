@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -229,14 +229,10 @@ table#tvTreeBorder td,
 [dir=rtl] #tv_tree div.tv_box img {
     float: right;
 }
-#tv_tree div.tv_box .icon-silhouette-M,
-#tv_tree div.tv_box .icon-silhouette-F,
-#tv_tree div.tv_box .icon-silhouette-U {
+#tv_tree div.tv_box .icon-silhouette {
     float: left;
 }
-[dir=rtl] #tv_tree div.tv_box .icon-silhouette-M,
-[dir=rtl] #tv_tree div.tv_box .icon-silhouette-F,
-[dir=rtl] #tv_tree div.tv_box .icon-silhouette-U {
+[dir=rtl] #tv_tree div.tv_box .icon-silhouette {
     float: right;
 }
 

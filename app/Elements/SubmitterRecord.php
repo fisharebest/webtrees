@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ class SubmitterRecord extends AbstractElement
         'PHON'  => '0:1',
         'EMAIL' => '0:1',
         'WWW'   => '0:1',
-        'LANG'  => '0:3',
+        'LANG'  => '3:3',
         'RFN'   => '0:1',
         'RIN'   => '0:1',
         'NOTE'  => '0:1',

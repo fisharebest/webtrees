@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -56,8 +56,8 @@ class RedirectFamilyPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $ged   = Validator::queryParams($request)->requiredString('ged');
-        $famid = Validator::queryParams($request)->isXref()->requiredString('famid');
+        $ged   = Validator::queryParams($request)->string('ged');
+        $famid = Validator::queryParams($request)->isXref()->string('famid');
         $tree  = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {

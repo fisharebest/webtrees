@@ -25,7 +25,7 @@ jobs:
       - run: composer global require squizlabs/php_codesniffer
 
       - name: PHP
-        run: ~/.composer/vendor/bin/phpcs --colors --standard=PSR12 --exclude=Generic.Files.LineLength --extensions=php index.php app modules_v4 tests
+        run: ~/.composer/vendor/bin/phpcs --colors --standard=PSR12 --exclude=Generic.Files.LineLength --extensions=php index.php app tests
 
       - name: Style sheets
         run: ~/.composer/vendor/bin/phpcs --colors --extensions=css resources/css

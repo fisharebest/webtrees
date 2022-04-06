@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -127,7 +127,9 @@ class ChartNoChildrenFamilies
                 'title' => I18N::translate('Total families'),
             ],
             'hAxis' => [
-                'title' => I18N::translate('Century'),
+                'showTextEvery' => 1,
+                'slantedText'   => false,
+                'title'         => I18N::translate('Century'),
             ],
             'colors' => [
                 '#84beff'

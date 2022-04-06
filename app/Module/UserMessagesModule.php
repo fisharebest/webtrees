@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,19 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function route;
 use function view;
 
@@ -86,19 +86,16 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
      */
     public function postDeleteMessageAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $params = (array) $request->getParsedBody();
-
-        $message_ids = $params['message_id'] ?? [];
+        $tree        = Validator::attributes($request)->tree();
+        $context     = Validator::queryParams($request)->string('context');
+        $message_ids = Validator::parsedBody($request)->array('message_ids');
 
         DB::table('message')
             ->where('user_id', '=', Auth::id())
             ->whereIn('message_id', $message_ids)
             ->delete();
 
-        if ($request->getQueryParams()['context'] === ModuleBlockInterface::CONTEXT_USER_PAGE) {
+        if ($context === ModuleBlockInterface::CONTEXT_USER_PAGE) {
             $url = route(UserPage::class, ['tree' => $tree->name()]);
         } else {
             $url = route(TreePage::class, ['tree' => $tree->name()]);
@@ -110,10 +107,10 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -124,7 +121,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
             ->orderByDesc('message_id')
             ->get()
             ->map(static function (object $row): object {
-                $row->created = Carbon::make($row->created);
+                $row->created = Registry::timestampFactory()->fromString($row->created);
 
                 return $row;
             });

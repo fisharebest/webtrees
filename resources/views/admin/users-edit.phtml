@@ -18,7 +18,7 @@ use Illuminate\Support\Collection;
  * @var array<string,string> $roles
  * @var array<string,string> $theme_options
  * @var string               $title
- * @var Collection<Tree>     $trees
+ * @var Collection<int,Tree>     $trees
  * @var UserInterface        $user
  */
 
@@ -331,7 +331,7 @@ use Illuminate\Support\Collection;
                     <td>
                         <select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">
                             <?php for ($n = 0; $n <= 10; ++$n) : ?>
-                                <option value="<?= $n ?>" <?= $tree->getUserPreference($user, UserInterface::PREF_TREE_PATH_LENGTH) == $n ? 'selected' : '' ?>>
+                                <option value="<?= $n ?>" <?= (int) $tree->getUserPreference($user, UserInterface::PREF_TREE_PATH_LENGTH) === $n ? 'selected' : '' ?>>
                                     <?= $n ?: I18N::translate('No') ?>
                                 </option>
                             <?php endfor ?>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -176,9 +176,9 @@ class TreeView
     /**
      * Draw the children for some families
      *
-     * @param Collection<Family> $familyList array of families to draw the children for
-     * @param int                $gen        number of generations to draw
-     * @param bool               $ajax       true for an ajax call
+     * @param Collection<int,Family> $familyList array of families to draw the children for
+     * @param int                    $gen        number of generations to draw
+     * @param bool                   $ajax       true for an ajax call
      *
      * @return string
      */
@@ -199,16 +199,16 @@ class TreeView
             }
         }
         $tc = count($children2draw);
-        if ($tc) {
+        if ($tc > 0) {
             $f2load = implode(',', $f2load);
             $nbc    = 0;
             foreach ($children2draw as $child) {
                 $nbc++;
-                if ($tc == 1) {
+                if ($tc === 1) {
                     $co = 'c'; // unique
-                } elseif ($nbc == 1) {
+                } elseif ($nbc === 1) {
                     $co = 't'; // first
-                } elseif ($nbc == $tc) {
+                } elseif ($nbc === $tc) {
                     $co = 'b'; //last
                 } else {
                     $co = 'h';
@@ -216,7 +216,7 @@ class TreeView
                 $html .= $this->drawPerson($child, $gen - 1, -1, null, $co, false);
             }
             if (!$ajax) {
-                $html = '<td align="right"' . ($gen == 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
+                $html = '<td align="right"' . ($gen === 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
             }
         }
 
@@ -309,7 +309,7 @@ class TreeView
 
             if ($parent instanceof Individual) {
                 $u = $unique ? 'c' : 't';
-                $html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $primaryChildFamily->xref() . '@' . $u . '"' : '') . '>';
+                $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $primaryChildFamily->xref() . '@' . $u . '"' : '') . '>';
                 $html .= $this->drawPerson($parent, $gen - 1, 1, $primaryChildFamily, $u, false);
                 $html .= '</td></tr>';
             }
@@ -319,8 +319,8 @@ class TreeView
                 $nb = count($fop);
                 foreach ($fop as $p) {
                     $n++;
-                    $u = $unique ? 'c' : ($n == $nb || empty($p[1]) ? 'b' : 'h');
-                    $html .= '<tr><td ' . ($gen == 0 ? ' abbr="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
+                    $u = $unique ? 'c' : ($n === $nb || empty($p[1]) ? 'b' : 'h');
+                    $html .= '<tr><td ' . ($gen === 0 ? ' abbr="p' . $p[1]->xref() . '@' . $u . '"' : '') . '>' . $this->drawPerson($p[0], $gen - 1, 1, $p[1], $u, false) . '</td></tr>';
                 }
             }
             $html .= '</tbody></table></td>';

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -63,7 +63,7 @@ class Session
         // Store sessions in the database
         session_set_save_handler(new SessionDatabaseHandler($request));
 
-        $url    = $request->getAttribute('base_url');
+        $url    = Validator::attributes($request)->string('base_url');
         $secure = parse_url($url, PHP_URL_SCHEME) === 'https';
         $domain = (string) parse_url($url, PHP_URL_HOST);
         $path   = (string) parse_url($url, PHP_URL_PATH);

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\MessageService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -57,14 +58,13 @@ class BroadcastAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user    = $request->getAttribute('user');
-        $params  = (array) $request->getParsedBody();
-        $body    = $params['body'];
-        $subject = $params['subject'];
-        $to      = $params['to'];
+        $recipients = $this->message_service->recipientTypes();
 
-        $ip       = $request->getAttribute('client-ip');
-        $to_users = $this->message_service->recipientUsers($to);
+        $user    = Validator::attributes($request)->user();
+        $to      = Validator::attributes($request)->isInArrayKeys($recipients)->string('to');
+        $ip      = Validator::attributes($request)->string('client-ip');
+        $body    = Validator::parsedBody($request)->isNotEmpty()->string('body');
+        $subject = Validator::parsedBody($request)->isNotEmpty()->string('subject');
 
         if ($body === '' || $subject === '') {
             return redirect(route(BroadcastPage::class, [
@@ -74,18 +74,18 @@ class BroadcastAction implements RequestHandlerInterface
             ]));
         }
 
-        $errors = false;
-
-        foreach ($to_users as $to_user) {
+        foreach ($this->message_service->recipientUsers($to) as $to_user) {
             if ($this->message_service->deliverMessage($user, $to_user, $subject, $body, '', $ip)) {
-                FlashMessages::addMessage(I18N::translate('The message was successfully sent to %s.', e($to_user->realName())), 'success');
+                FlashMessages::addMessage(
+                    I18N::translate('The message was successfully sent to %s.', e($to_user->realName())),
+                    'success'
+                );
             } else {
-                $errors = true;
+                FlashMessages::addMessage(
+                    I18N::translate('The message was not sent to %s.', e($to_user->realName())),
+                    'danger'
+                );
             }
-        }
-
-        if ($errors) {
-            FlashMessages::addMessage(I18N::translate('The message was not sent.'), 'danger');
         }
 
         return redirect(route(ControlPanel::class));

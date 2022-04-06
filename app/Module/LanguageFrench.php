@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -247,31 +247,31 @@ class LanguageFrench extends AbstractModule implements ModuleLanguageInterface
             Relationship::fixed('trisaïeul paternel', '%s du trisaïeul paternel')->father()->parent()->parent()->father(),
             Relationship::fixed('trisaïeule', '%s de la trisaïeule')->parent()->parent()->parent()->mother(),
             Relationship::fixed('trisaïeul', '%s du trisaïeul')->parent()->parent()->parent()->father(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-mère maternelle', 'de la '))->mother()->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-père maternel', 'du '))->mother()->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-parent maternel', 'du '))->mother()->ancestor(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-mère paternelle', 'de la '))->father()->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-père paternel', 'du '))->father()->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-parent paternel', 'du '))->father()->ancestor(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-mère', 'de la '))->parent()->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-père', 'du '))->parent()->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'grand-parent', 'du '))->parent()->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-mère maternelle', 'de la '))->mother()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-père maternel', 'du '))->mother()->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-parent maternel', 'du '))->mother()->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-mère paternelle', 'de la '))->father()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-père paternel', 'du '))->father()->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-parent paternel', 'du '))->father()->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-mère', 'de la '))->parent()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-père', 'du '))->parent()->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'grand-parent', 'du '))->parent()->ancestor(),
             // Grandchildren and below
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'petite-fille', 'de la '))->child()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'petit-fils', 'du '))->child()->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $firstCompound($n, 'petit-enfant', 'du '))->child()->descendant(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'petite-fille', 'de la '))->child()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'petit-fils', 'du '))->child()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $firstCompound($n, 'petit-enfant', 'du '))->child()->descendant(),
             // Collateral relatives
-            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'tante', 'de la ', 'de la '))->ancestor()->sister(),
-            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'tante par alliance', 'de la ', 'de la '))->ancestor()->sibling()->wife(),
-            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'oncle', 'de l’', 'du '))->ancestor()->brother(),
-            Relationship::dynamic(fn (int $n) => $compound($n, 'grand-', 'oncle par alliance', 'de l’', 'du '))->ancestor()->sibling()->husband(),
-            Relationship::dynamic(fn (int $n) => $compound($n, 'petite-', 'nièce', 'de la ', 'de la '))->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $compound($n, 'petite-', 'nièce par alliance', 'de la ', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $compound($n, 'petit-', 'neveu', 'du ', 'du '))->sibling()->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $compound($n, 'petit-', 'neveu par alliance', 'du ', 'du '))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'tante', 'de la ', 'de la '))->ancestor()->sister(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'tante par alliance', 'de la ', 'de la '))->ancestor()->sibling()->wife(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'oncle', 'de l’', 'du '))->ancestor()->brother(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'grand-', 'oncle par alliance', 'de l’', 'du '))->ancestor()->sibling()->husband(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'petite-', 'nièce', 'de la ', 'de la '))->sibling()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'petite-', 'nièce par alliance', 'de la ', 'de la '))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'petit-', 'neveu', 'du ', 'du '))->sibling()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $compound($n, 'petit-', 'neveu par alliance', 'du ', 'du '))->married()->spouse()->sibling()->descendant()->male(),
             // Cousins (based on canon law)
-            Relationship::dynamic(fn (int $up, int $down) => $cousin($up, $down, 'F'))->cousin()->female(),
-            Relationship::dynamic(fn (int $up, int $down) => $cousin($up, $down, 'M'))->cousin()->male(),
+            Relationship::dynamic(static fn (int $up, int $down) => $cousin($up, $down, 'F'))->cousin()->female(),
+            Relationship::dynamic(static fn (int $up, int $down) => $cousin($up, $down, 'M'))->cousin()->male(),
 
         ];
     }

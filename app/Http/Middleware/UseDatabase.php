@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use PDO;
@@ -43,9 +44,9 @@ class UseDatabase implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Earlier versions of webtrees did not have a dbtype config option.  They always used mysql.
-        $driver = $request->getAttribute('dbtype', 'mysql');
+        $driver = Validator::attributes($request)->string('dbtype', 'mysql');
 
-        $dbname = $request->getAttribute('dbname');
+        $dbname = Validator::attributes($request)->string('dbname');
 
         if ($driver === 'sqlite') {
             $dbname = Webtrees::ROOT_DIR . 'data/' . $dbname . '.sqlite';
@@ -54,7 +55,7 @@ class UseDatabase implements MiddlewareInterface
         $capsule = new DB();
 
         // Newer versions of webtrees support utf8mb4.  Older ones only support 3-byte utf8
-        if ($driver === 'mysql' && $request->getAttribute('mysql_utf8mb4') === '1') {
+        if ($driver === 'mysql' && Validator::attributes($request)->boolean('mysql_utf8mb4', false)) {
             $charset   = 'utf8mb4';
             $collation = 'utf8mb4_unicode_ci';
         } else {
@@ -67,10 +68,10 @@ class UseDatabase implements MiddlewareInterface
             PDO::ATTR_STRINGIFY_FETCHES => true,
         ];
 
-        $dbkey    = (string) $request->getAttribute('dbkey');
-        $dbcert   = (string) $request->getAttribute('dbcert');
-        $dbca     = (string) $request->getAttribute('dbca');
-        $dbverify = (bool) $request->getAttribute('dbverify');
+        $dbkey    = Validator::attributes($request)->string('dbkey', '');
+        $dbcert   = Validator::attributes($request)->string('dbcert', '');
+        $dbca     = Validator::attributes($request)->string('dbca', '');
+        $dbverify = Validator::attributes($request)->boolean('dbverify', false);
 
         // MySQL/MariaDB support encrypted connections
         if ($dbkey !== '' && $dbcert !== '' && $dbca !== '') {
@@ -82,12 +83,12 @@ class UseDatabase implements MiddlewareInterface
 
         $capsule->addConnection([
             'driver'                  => $driver,
-            'host'                    => $request->getAttribute('dbhost'),
-            'port'                    => $request->getAttribute('dbport'),
+            'host'                    => Validator::attributes($request)->string('dbhost'),
+            'port'                    => Validator::attributes($request)->string('dbport'),
             'database'                => $dbname,
-            'username'                => $request->getAttribute('dbuser'),
-            'password'                => $request->getAttribute('dbpass'),
-            'prefix'                  => $request->getAttribute('tblpfx'),
+            'username'                => Validator::attributes($request)->string('dbuser'),
+            'password'                => Validator::attributes($request)->string('dbpass'),
+            'prefix'                  => Validator::attributes($request)->string('tblpfx'),
             'prefix_indexes'          => true,
             'options'                 => $options,
             // For MySQL

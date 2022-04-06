@@ -1,19 +1,25 @@
 <?php
 
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\MediaFile;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
+use Illuminate\Support\Collection;
 
 /**
- * @var int       $block_id
- * @var int       $delay
- * @var bool      $show_controls
- * @var bool      $start_automatically
- * @var Media     $media
- * @var MediaFile $media_file
- * @var Tree      $tree
+ * @var int                    $block_id
+ * @var int                    $delay
+ * @var Collection<Family>     $linked_families
+ * @var Collection<Individual> $linked_individuals
+ * @var Collection<Source>     $linked_sources
+ * @var Media                  $media
+ * @var MediaFile              $media_file
+ * @var bool                   $show_controls
+ * @var bool                   $start_automatically
+ * @var Tree                   $tree
  */
 
 ?>
@@ -46,11 +52,13 @@ use Fisharebest\Webtrees\Tree;
     </figure>
 
     <p class="wt-slide-show-notes text-center">
-        <?= FunctionsPrint::printFactNotes($tree, $media->gedcom(), 1) ?>
+        <?php foreach ($media->facts(['NOTE']) as $fact) : ?>
+            <?= view('fact-gedcom-fields', ['gedcom' => $fact->gedcom(), 'parent' => $media->tag(), 'tree' => $tree]) ?>
+        <?php endforeach ?>
     </p>
 
     <ul class="fa-ul wt-slide-show-links">
-        <?php foreach ($media->linkedIndividuals('OBJE') as $individual) : ?>
+        <?php foreach ($linked_individuals as $individual) : ?>
             <li>
                 <span class="fa-li" title="<?= I18N::translate('Individual') ?>"><?= view('icons/individual') ?></span>
                 <a href="<?= e($individual->url()) ?>" class="wt-slide-show-link">
@@ -59,7 +67,7 @@ use Fisharebest\Webtrees\Tree;
             </li>
         <?php endforeach ?>
 
-        <?php foreach ($media->linkedFamilies('OBJE') as $family) : ?>
+        <?php foreach ($linked_families as $family) : ?>
             <li>
                 <span class="fa-li" title="<?= I18N::translate('Family') ?>"><?= view('icons/family') ?></span>
                 <a href="<?= e($family->url()) ?>" class="wt-slide-show-link">
@@ -68,7 +76,7 @@ use Fisharebest\Webtrees\Tree;
             </li>
         <?php endforeach ?>
 
-        <?php foreach ($media->linkedSources('OBJE') as $source) : ?>
+        <?php foreach ($linked_sources as $source) : ?>
             <li>
                 <span class="fa-li" title="<?= I18N::translate('Source') ?>"><?= view('icons/source') ?></span>
                 <a href="<?= e($source->url()) ?>" class="wt-slide-show-link">

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\Services\GedcomExportService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -48,7 +49,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService())
         );
 
@@ -68,7 +69,7 @@ class UpgradeWizardStepTest extends TestCase
         $mock_upgrade_service->method('latestVersion')->willReturn('999.999.999');
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
 
@@ -89,7 +90,7 @@ class UpgradeWizardStepTest extends TestCase
         $mock_upgrade_service->method('latestVersion')->willReturn('');
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
 
@@ -108,7 +109,7 @@ class UpgradeWizardStepTest extends TestCase
         $mock_upgrade_service->method('latestVersion')->willReturn('0.0.0');
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
 
@@ -123,7 +124,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService())
         );
 
@@ -140,7 +141,7 @@ class UpgradeWizardStepTest extends TestCase
     {
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService())
         );
 
@@ -155,7 +156,7 @@ class UpgradeWizardStepTest extends TestCase
      */
     public function testStepPendingExist(): void
     {
-        $tree_service = new TreeService();
+        $tree_service = new TreeService(new GedcomImportService());
         $tree         = $tree_service->create('name', 'title');
         $user         = (new UserService())->create('user', 'name', 'email', 'password');
 
@@ -164,7 +165,7 @@ class UpgradeWizardStepTest extends TestCase
 
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             new UpgradeService(new TimeoutService())
         );
 
@@ -212,7 +213,7 @@ class UpgradeWizardStepTest extends TestCase
         $mock_upgrade_service->method('downloadFile')->will(self::throwException(new Exception()));
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
 
@@ -229,7 +230,7 @@ class UpgradeWizardStepTest extends TestCase
         $mock_upgrade_service->method('downloadFile')->willReturn(123456);
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
 
@@ -248,7 +249,7 @@ class UpgradeWizardStepTest extends TestCase
         $mock_upgrade_service->method('webtreesZipContents')->willReturn(new Collection());
         $handler = new UpgradeWizardStep(
             new GedcomExportService(),
-            new TreeService(),
+            new TreeService(new GedcomImportService()),
             $mock_upgrade_service
         );
 

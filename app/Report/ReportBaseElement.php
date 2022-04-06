@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ class ReportBaseElement
      *
      * @return void
      */
-    public function render($renderer): void
+    public function render(/** @scrutinizer ignore-unused */ $renderer): void
     {
         //-- to be implemented in inherited classes
     }
@@ -51,7 +51,7 @@ class ReportBaseElement
      *
      * @return float
      */
-    public function getHeight($renderer): float
+    public function getHeight(/** @scrutinizer ignore-unused */ $renderer): float
     {
         return 0.0;
     }
@@ -63,7 +63,7 @@ class ReportBaseElement
      *
      * @return array{0:float,1:int,2:float}
      */
-    public function getWidth($renderer): array
+    public function getWidth(/** @scrutinizer ignore-unused */ $renderer): array
     {
         return [0.0, 1, 0.0];
     }
@@ -111,7 +111,7 @@ class ReportBaseElement
      *
      * @return float
      */
-    public function setWrapWidth(float $wrapwidth, float $cellwidth): float
+    public function setWrapWidth(/** @scrutinizer ignore-unused */ float $wrapwidth, /** @scrutinizer ignore-unused */ float $cellwidth): float
     {
         return 0;
     }
@@ -123,7 +123,7 @@ class ReportBaseElement
      *
      * @return void
      */
-    public function renderFootnote($renderer): void
+    public function renderFootnote(/** @scrutinizer ignore-unused */ $renderer): void
     {
     }
 

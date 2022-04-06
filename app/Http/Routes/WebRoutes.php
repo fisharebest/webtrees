@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Routes;
 
 use Aura\Router\Map;
+use Aura\Router\Route;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Http\Middleware\AuthAdministrator;
 use Fisharebest\Webtrees\Http\Middleware\AuthEditor;
@@ -46,6 +47,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\AddUnlinkedPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileDownload;
 use Fisharebest\Webtrees\Http\RequestHandlers\AdminMediaFileThumbnail;
+use Fisharebest\Webtrees\Http\RequestHandlers\AdsTxt;
+use Fisharebest\Webtrees\Http\RequestHandlers\AppAdsTxt;
 use Fisharebest\Webtrees\Http\RequestHandlers\AppleTouchIconPng;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteCitation;
 use Fisharebest\Webtrees\Http\RequestHandlers\AutoCompleteFolder;
@@ -178,8 +181,6 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesBlocksPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesChartsPage;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesCustomTagsAction;
-use Fisharebest\Webtrees\Http\RequestHandlers\ModulesCustomTagsPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesDataFixesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ModulesFootersAction;
@@ -331,7 +332,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\WebmanifestJson;
 class WebRoutes
 {
     /**
-     * @param Map $router
+     * @param Map<Route> $router
      *
      * @return void
      */
@@ -347,8 +348,8 @@ class WebRoutes
                 ]);
 
                 $router->get(ControlPanel::class, '');
-                $router->get(BroadcastPage::class, '/broadcast');
-                $router->post(BroadcastAction::class, '/broadcast');
+                $router->get(BroadcastPage::class, '/broadcast/{to}');
+                $router->post(BroadcastAction::class, '/broadcast/{to}');
                 $router->get(CleanDataFolder::class, '/clean');
                 $router->post(DeletePath::class, '/delete-path');
                 $router->get(EmailPreferencesPage::class, '/email');
@@ -398,8 +399,6 @@ class WebRoutes
                 $router->post(ModulesBlocksAction::class, '/blocks');
                 $router->get(ModulesChartsPage::class, '/charts');
                 $router->post(ModulesChartsAction::class, '/charts');
-                $router->get(ModulesCustomTagsPage::class, '/custom-tags');
-                $router->post(ModulesCustomTagsAction::class, '/custom-tags');
                 $router->get(ModulesDataFixesPage::class, '/data-fixes');
                 $router->post(ModulesDataFixesAction::class, '/data-fixes');
                 $router->get(ModulesFootersPage::class, '/footers');
@@ -504,8 +503,8 @@ class WebRoutes
                 $router->get(TreePageEdit::class, '/tree-page-edit');
                 $router->post(GedcomLoad::class, '/load');
                 $router->post(TreePageUpdate::class, '/tree-page-update');
-                $router->get(TreePageBlockEdit::class, '/tree-page-block-edit');
-                $router->post(TreePageBlockUpdate::class, '/tree-page-block-edit');
+                $router->get(TreePageBlockEdit::class, '/tree-page-block-edit/{block_id}');
+                $router->post(TreePageBlockUpdate::class, '/tree-page-block-update/{block_id}');
                 $router->get(TreePrivacyPage::class, '/privacy');
                 $router->post(TreePrivacyAction::class, '/privacy');
                 $router->get(UnconnectedPage::class, '/unconnected');
@@ -623,8 +622,8 @@ class WebRoutes
                 $router->get(UserPageBlock::class, '/my-page-block');
                 $router->get(UserPageEdit::class, '/my-page-edit');
                 $router->post(UserPageUpdate::class, '/my-page-edit');
-                $router->get(UserPageBlockEdit::class, '/my-page-block-edit');
-                $router->post(UserPageBlockUpdate::class, '/my-page-block-edit');
+                $router->get(UserPageBlockEdit::class, '/my-page-block-edit/{block_id}');
+                $router->post(UserPageBlockUpdate::class, '/my-page-block-edit/{block_id}');
             });
 
             // User routes without a tree.
@@ -721,6 +720,8 @@ class WebRoutes
             $router->get(HomePage::class, '/');
 
             // Special files, either dynamic or need to be in the root folder.
+            $router->get(AdsTxt::class, '/ads.txt');
+            $router->get(AppAdsTxt::class, '/app-ads.txt');
             $router->get(AppleTouchIconPng::class, '/apple-touch-icon.png');
             $router->get(BrowserconfigXml::class, '/browserconfig.xml');
             $router->get(FaviconIco::class, '/favicon.ico');

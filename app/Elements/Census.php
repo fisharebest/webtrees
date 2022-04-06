@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,11 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function app;
+use function assert;
 
 /**
  * Census
@@ -34,10 +38,14 @@ use Psr\Http\Message\ServerRequestInterface;
 class Census extends AbstractElement
 {
     protected const SUBTAGS = [
+        'TYPE' => '0:1:?',
         'DATE' => '0:1',
         'AGE'  => '0:1',
         'PLAC' => '0:1',
         'ADDR' => '0:1',
+        'CAUS' => '0:1:?',
+        'AGNC' => '0:1:?',
+        'RELI' => '0:1:?',
         'NOTE' => '0:M',
         'OBJE' => '0:M',
         'SOUR' => '0:M',
@@ -62,9 +70,15 @@ class Census extends AbstractElement
             'census_places' => Censuses::censusPlaces(I18N::languageTag()),
         ]);
 
-        $xref = app(ServerRequestInterface::class)->getAttribute('xref', '');
+        $request = app(ServerRequestInterface::class);
+        assert($request instanceof ServerRequestInterface);
 
-        $census_assistant = app(ModuleService::class)->findByInterface(CensusAssistantModule::class)->first();
+        $xref = Validator::attributes($request)->isXref()->string('xref', '');
+
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        $census_assistant = $module_service->findByInterface(CensusAssistantModule::class)->first();
         $record           = Registry::individualFactory()->make($xref, $tree);
 
         if ($census_assistant instanceof CensusAssistantModule && $record instanceof Individual) {

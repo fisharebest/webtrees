@@ -1,6 +1,5 @@
 <?php
 
-use Fisharebest\Webtrees\Http\RequestHandlers\AbstractTomSelectHandler;
 use Fisharebest\Webtrees\Http\RequestHandlers\TomSelectSource;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
@@ -28,7 +27,7 @@ $at = $at ?? '';
     <?= ($required ?? false) ? 'required="required"' : '' ?>
 >
     <?php if (($source ?? null) instanceof Source) : ?>
-        <option value="<?= e($at . $source->xref() . $at) ?>"d>
+        <option value="<?= e($at . $source->xref() . $at) ?>">
             <?= view('selects/source', ['source' => $source]) ?>
         </option>
     <?php else : ?>
