@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:32+0100\n"
-"PO-Revision-Date: 2022-04-03 13:14+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-14 22:15+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -6488,7 +6476,7 @@ msgstr "Til dæmis, ef GEDCOM skráin inniheldur %1$s og webtrees á von á að 
 
 #: resources/views/help/relationship-privacy.phtml:12
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Sem dæmi, ef þú tilgreinir slóðalengd upp á 2, þá mun einstaklingurinn geta séð eigin sonarson/dótturson (barnabarn), eigin frænda/frænku (foreldri, systkini), eigin stjúpdóttur (maka, barn) en ekki þeirra fyrsta frænda/frænku (foreldri, systkini, barn)."
+msgstr "Sem dæmi, ef þú tilgreinir slóðalengd upp á 2, þá mun einstaklingurinn geta séð eigin sonarson/dótturson (barnabarn), eigin frænda/frænku (foreldri, systkini), eigin stjúpdóttur (maka, barn) en ekki þeirra frænda/frænku í annan ættlið (foreldri, systkini, barn)."
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
@@ -13458,7 +13446,7 @@ msgstr "Statcounter™"
 #: app/Gedcom.php:371 app/Gedcom.php:483 app/Gedcom.php:503 app/Gedcom.php:758
 #: app/Gedcom.php:805 app/Gedcom.php:1172 app/Gedcom.php:1439
 msgid "State"
-msgstr "Fylki"
+msgstr "Landsvæði"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
@@ -17132,122 +17120,122 @@ msgstr "frændi í annan ættlið"
 #: app/Services/RelationshipService.php:1155
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn afa"
+msgstr "bróðurbarn föðurafa"
 
 #: app/Services/RelationshipService.php:1151
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir afa"
+msgstr "bróðurdóttir föðurafa"
 
 #: app/Services/RelationshipService.php:1153
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur afa"
+msgstr "bróðursonur föðurafa"
 
 #: app/Services/RelationshipService.php:1161
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn afa"
+msgstr "systurbarn föðurafa"
 
 #: app/Services/RelationshipService.php:1157
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir afa"
+msgstr "systurdóttir föðurafa"
 
 #: app/Services/RelationshipService.php:1159
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur afa"
+msgstr "systursonur föðurafa"
 
 #: app/Services/RelationshipService.php:1167
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn ömmu"
+msgstr "bróðurbarn föðurömmu"
 
 #: app/Services/RelationshipService.php:1163
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir ömmu"
+msgstr "bróðurdóttir föðurömmu"
 
 #: app/Services/RelationshipService.php:1165
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur ömmu"
+msgstr "bróðursonur föðurömmu"
 
 #: app/Services/RelationshipService.php:1173
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn ömmu"
+msgstr "systurbarn föðurömmu"
 
 #: app/Services/RelationshipService.php:1169
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir ömmu"
+msgstr "systurdóttir föðurömmu"
 
 #: app/Services/RelationshipService.php:1171
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur ömmu"
+msgstr "systursonur föðurömmu"
 
 #: app/Services/RelationshipService.php:1179
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn afa"
+msgstr "bróðurbarn móðurafa"
 
 #: app/Services/RelationshipService.php:1175
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir afa"
+msgstr "bróðurdóttir móðurafa"
 
 #: app/Services/RelationshipService.php:1177
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur afa"
+msgstr "bróðursonur móðurafa"
 
 #: app/Services/RelationshipService.php:1185
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn afa"
+msgstr "systurbarn móðurafa"
 
 #: app/Services/RelationshipService.php:1181
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir afa"
+msgstr "systurdóttir móðurafa"
 
 #: app/Services/RelationshipService.php:1183
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur afa"
+msgstr "systursonur móðurafa"
 
 #: app/Services/RelationshipService.php:1191
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn ömmu"
+msgstr "bróðurbarn móðurömmu"
 
 #: app/Services/RelationshipService.php:1187
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir ömmu"
+msgstr "bróðurdóttir móðurömmu"
 
 #: app/Services/RelationshipService.php:1189
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur ömmu"
+msgstr "bróðursonur móðurömmu"
 
 #: app/Services/RelationshipService.php:1197
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn ömmu"
+msgstr "systurbarn móðurömmu"
 
 #: app/Services/RelationshipService.php:1193
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir ömmu"
+msgstr "systurdóttir móðurömmu"
 
 #: app/Services/RelationshipService.php:1195
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur ömmu"
+msgstr "systursonur móðurömmu"
 
 #: app/Services/RelationshipService.php:2350
 msgid "fourteenth cousin"
@@ -18365,11 +18353,11 @@ msgstr "sonur sonarsonar"
 
 #: app/Services/RelationshipService.php:1329
 msgid "great-great-aunt"
-msgstr "frænka í annan ættlið"
+msgstr "frænka í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1332
 msgid "great-great-aunt/uncle"
-msgstr "frænka/frændi í annan ættlið"
+msgstr "frænka/frændi í fjórða ættlið"
 
 #: app/Services/RelationshipService.php:1981
 msgid "great-great-grandchild"
@@ -18377,7 +18365,7 @@ msgstr "barnabarnabarnabarn"
 
 #: app/Services/RelationshipService.php:1978
 msgid "great-great-granddaughter"
-msgstr "dótturbarn barnabarns"
+msgstr "barnabarnabarn dóttur"
 
 #: app/Services/RelationshipService.php:1817
 msgid "great-great-grandfather"
@@ -18393,15 +18381,15 @@ msgstr "langalangafi og -amma"
 
 #: app/Services/RelationshipService.php:1974
 msgid "great-great-grandson"
-msgstr "sonarbarn barnabarns"
+msgstr "barnabarnabarn sonar"
 
 #: app/Services/RelationshipService.php:1348
 msgid "great-great-great-aunt"
-msgstr "frænka í fjórða ættlið"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1351
 msgid "great-great-great-aunt/uncle"
-msgstr "frænka/frændi í þriðja ættlið"
+msgstr "frænka/frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1992
 msgid "great-great-great-grandchild"
@@ -18409,7 +18397,7 @@ msgstr "barnabarnabarnabarnabarn"
 
 #: app/Services/RelationshipService.php:1989
 msgid "great-great-great-granddaughter"
-msgstr "dóttir barnabarnabarnabarns"
+msgstr "barnabarnabarnabarn dóttur"
 
 #: app/Services/RelationshipService.php:1828
 msgid "great-great-great-grandfather"
@@ -18425,7 +18413,7 @@ msgstr "langalangalangafi og -amma"
 
 #: app/Services/RelationshipService.php:1985
 msgid "great-great-great-grandson"
-msgstr "sonur barnabarnabarnabarns"
+msgstr "barnabarnabarnabarn sonar"
 
 #: app/Services/RelationshipService.php:1561
 msgctxt "(a man’s) brother’s great-great-grandson"
@@ -18440,7 +18428,7 @@ msgstr "frændi í fimmta ættlið"
 #: app/Services/RelationshipService.php:1568
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "barnabarnabarnabarn systkina"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1584
 msgctxt "(a man’s) brother’s great-great-grandchild"
@@ -18455,22 +18443,22 @@ msgstr "frændi/frænka í fimmta ættlið"
 #: app/Services/RelationshipService.php:1591
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr "barnabarnabarnabarn systkina"
+msgstr "frændi/frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1573
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "barnabarnabarnadóttir bróðurs"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1577
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "barnabarnabarnadóttir systurs"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1580
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "barnabarnabarnadóttir systkina"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
@@ -18490,17 +18478,17 @@ msgstr "frændi í fimmta ættlið"
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "barnabarnasonur bróðurs"
+msgstr "barnabarnabarn bróðurs"
 
 #: app/Services/RelationshipService.php:1530
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr "barnabarnasonur systurs"
+msgstr "barnabarnabarn systurs"
 
 #: app/Services/RelationshipService.php:1533
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "barnabarnasonur systkina"
+msgstr "barnabarnabarn systkina"
 
 #: app/Services/RelationshipService.php:1549
 msgctxt "(a man’s) brother’s great-grandchild"
@@ -19767,7 +19755,7 @@ msgstr "frænka í þriðja ættlið"
 #: app/Services/RelationshipService.php:1278
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr "frændsystkini í þriðja ættlið"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Services/RelationshipService.php:1306
 msgctxt "grandparent’s sibling’s grandchild"
