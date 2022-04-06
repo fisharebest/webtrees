@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-06 13:22+0000\n"
+"PO-Revision-Date: 2022-04-14 22:15+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -2242,19 +2242,19 @@ msgstr "Anwesender"
 #: app/Elements/RelationIsDescriptor.php:95
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Attending"
-msgstr "Behandelnder"
+msgstr "anwesend"
 
 #: app/Elements/RelationIsDescriptor.php:74
 #: app/GedcomCode/GedcomCodeRela.php:104
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Behandelnde"
+msgstr "anwesend"
 
 #: app/Elements/RelationIsDescriptor.php:53
 #: app/GedcomCode/GedcomCodeRela.php:100
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Behandelnder"
+msgstr "anwesend"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Factories/ElementFactory.php:438
