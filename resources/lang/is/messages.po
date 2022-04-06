@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-04-03 13:14+0000\n"
+"PO-Revision-Date: 2022-04-14 22:15+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -6763,8 +6763,8 @@ msgid "For example, if you specify a path length of 2, the individual will be ab
 msgstr ""
 "Sem dæmi, ef þú tilgreinir slóðalengd upp á 2, þá mun einstaklingurinn geta "
 "séð eigin sonarson/dótturson (barnabarn), eigin frænda/frænku (foreldri, "
-"systkini), eigin stjúpdóttur (maka, barn) en ekki þeirra fyrsta frænda/"
-"frænku (foreldri, systkini, barn)."
+"systkini), eigin stjúpdóttur (maka, barn) en ekki þeirra frænda/frænku í "
+"annan ættlið (foreldri, systkini, barn)."
 
 #: resources/views/help/data-fixes.phtml:12
 msgid "For example, we can quickly find individuals that do not have a death event, but it is much slower to calculate if the individual is dead."
@@ -13878,7 +13878,7 @@ msgstr "Statcounter™"
 #: app/Factories/ElementFactory.php:1084 app/Factories/ElementFactory.php:1337
 #: app/Factories/ElementFactory.php:1384 app/GedcomTag.php:970
 msgid "State"
-msgstr "Fylki"
+msgstr "Landsvæði"
 
 #. I18N: Name of a module
 #. I18N: Name of a module/chart
@@ -18035,122 +18035,122 @@ msgstr "frændi í annan ættlið"
 #: app/Functions/Functions.php:1426
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn afa"
+msgstr "bróðurbarn föðurafa"
 
 #: app/Functions/Functions.php:1422
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir afa"
+msgstr "bróðurdóttir föðurafa"
 
 #: app/Functions/Functions.php:1424
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur afa"
+msgstr "bróðursonur föðurafa"
 
 #: app/Functions/Functions.php:1432
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn afa"
+msgstr "systurbarn föðurafa"
 
 #: app/Functions/Functions.php:1428
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir afa"
+msgstr "systurdóttir föðurafa"
 
 #: app/Functions/Functions.php:1430
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur afa"
+msgstr "systursonur föðurafa"
 
 #: app/Functions/Functions.php:1438
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn ömmu"
+msgstr "bróðurbarn föðurömmu"
 
 #: app/Functions/Functions.php:1434
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir ömmu"
+msgstr "bróðurdóttir föðurömmu"
 
 #: app/Functions/Functions.php:1436
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur ömmu"
+msgstr "bróðursonur föðurömmu"
 
 #: app/Functions/Functions.php:1444
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn ömmu"
+msgstr "systurbarn föðurömmu"
 
 #: app/Functions/Functions.php:1440
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir ömmu"
+msgstr "systurdóttir föðurömmu"
 
 #: app/Functions/Functions.php:1442
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur ömmu"
+msgstr "systursonur föðurömmu"
 
 #: app/Functions/Functions.php:1450
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn afa"
+msgstr "bróðurbarn móðurafa"
 
 #: app/Functions/Functions.php:1446
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir afa"
+msgstr "bróðurdóttir móðurafa"
 
 #: app/Functions/Functions.php:1448
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur afa"
+msgstr "bróðursonur móðurafa"
 
 #: app/Functions/Functions.php:1456
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn afa"
+msgstr "systurbarn móðurafa"
 
 #: app/Functions/Functions.php:1452
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir afa"
+msgstr "systurdóttir móðurafa"
 
 #: app/Functions/Functions.php:1454
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur afa"
+msgstr "systursonur móðurafa"
 
 #: app/Functions/Functions.php:1462
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr "bróðurbarn ömmu"
+msgstr "bróðurbarn móðurömmu"
 
 #: app/Functions/Functions.php:1458
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "bróðurdóttir ömmu"
+msgstr "bróðurdóttir móðurömmu"
 
 #: app/Functions/Functions.php:1460
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr "bróðursonur ömmu"
+msgstr "bróðursonur móðurömmu"
 
 #: app/Functions/Functions.php:1468
 msgctxt "mother’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr "systurbarn ömmu"
+msgstr "systurbarn móðurömmu"
 
 #: app/Functions/Functions.php:1464
 msgctxt "mother’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr "systurdóttir ömmu"
+msgstr "systurdóttir móðurömmu"
 
 #: app/Functions/Functions.php:1466
 msgctxt "mother’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr "systursonur ömmu"
+msgstr "systursonur móðurömmu"
 
 #: app/Functions/Functions.php:493
 msgid "fourteenth cousin"
@@ -19223,11 +19223,11 @@ msgstr "sonur sonarsonar"
 
 #: app/Functions/Functions.php:1600
 msgid "great-great-aunt"
-msgstr "frænka í annan ættlið"
+msgstr "frænka í fjórða ættlið"
 
 #: app/Functions/Functions.php:1603
 msgid "great-great-aunt/uncle"
-msgstr "frænka/frændi í annan ættlið"
+msgstr "frænka/frændi í fjórða ættlið"
 
 #: app/Functions/Functions.php:2191
 msgid "great-great-grandchild"
@@ -19235,7 +19235,7 @@ msgstr "barnabarnabarnabarn"
 
 #: app/Functions/Functions.php:2188
 msgid "great-great-granddaughter"
-msgstr "dótturbarn barnabarns"
+msgstr "barnabarnabarn dóttur"
 
 #: app/Functions/Functions.php:2038
 msgid "great-great-grandfather"
@@ -19251,15 +19251,15 @@ msgstr "langalangafi og -amma"
 
 #: app/Functions/Functions.php:2184
 msgid "great-great-grandson"
-msgstr "sonarbarn barnabarns"
+msgstr "barnabarnabarn sonar"
 
 #: app/Functions/Functions.php:1619
 msgid "great-great-great-aunt"
-msgstr "frænka í fjórða ættlið"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Functions/Functions.php:1622
 msgid "great-great-great-aunt/uncle"
-msgstr "frænka/frændi í þriðja ættlið"
+msgstr "frænka/frændi í fimmta ættlið"
 
 #: app/Functions/Functions.php:2202
 msgid "great-great-great-grandchild"
@@ -19267,7 +19267,7 @@ msgstr "barnabarnabarnabarnabarn"
 
 #: app/Functions/Functions.php:2199
 msgid "great-great-great-granddaughter"
-msgstr "dóttir barnabarnabarnabarns"
+msgstr "barnabarnabarnabarn dóttur"
 
 #: app/Functions/Functions.php:2049
 msgid "great-great-great-grandfather"
@@ -19283,7 +19283,7 @@ msgstr "langalangalangafi og -amma"
 
 #: app/Functions/Functions.php:2195
 msgid "great-great-great-grandson"
-msgstr "sonur barnabarnabarnabarns"
+msgstr "barnabarnabarnabarn sonar"
 
 #: app/Functions/Functions.php:1820
 msgctxt "(a man’s) brother’s great-great-grandson"
@@ -19298,7 +19298,7 @@ msgstr "frændi í fimmta ættlið"
 #: app/Functions/Functions.php:1827
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr "barnabarnabarnabarn systkina"
+msgstr "frændi í fimmta ættlið"
 
 #: app/Functions/Functions.php:1843
 msgctxt "(a man’s) brother’s great-great-grandchild"
@@ -19313,22 +19313,22 @@ msgstr "frændi/frænka í fimmta ættlið"
 #: app/Functions/Functions.php:1850
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr "barnabarnabarnabarn systkina"
+msgstr "frændi/frænka í fimmta ættlið"
 
 #: app/Functions/Functions.php:1832
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "barnabarnabarnadóttir bróðurs"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Functions/Functions.php:1836
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr "barnabarnabarnadóttir systurs"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Functions/Functions.php:1839
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr "barnabarnabarnadóttir systkina"
+msgstr "frænka í fimmta ættlið"
 
 #: app/Functions/Functions.php:1608
 msgctxt "great-great-grandfather’s brother"
@@ -19348,17 +19348,17 @@ msgstr "frændi í fimmta ættlið"
 #: app/Functions/Functions.php:1785
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr "barnabarnasonur bróðurs"
+msgstr "barnabarnabarn bróðurs"
 
 #: app/Functions/Functions.php:1789
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr "barnabarnasonur systurs"
+msgstr "barnabarnabarn systurs"
 
 #: app/Functions/Functions.php:1792
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr "barnabarnasonur systkina"
+msgstr "barnabarnabarn systkina"
 
 #: app/Functions/Functions.php:1808
 msgctxt "(a man’s) brother’s great-grandchild"
@@ -20636,7 +20636,7 @@ msgstr "frænka í þriðja ættlið"
 #: app/Functions/Functions.php:1549
 msgctxt "grandparent’s brother’s grandson"
 msgid "second cousin"
-msgstr "frændsystkini í þriðja ættlið"
+msgstr "frændi í þriðja ættlið"
 
 #: app/Functions/Functions.php:1577
 msgctxt "grandparent’s sibling’s grandchild"
