@@ -13,8 +13,10 @@ use Fisharebest\Webtrees\Fact;
 <div class="d-flex justify-content-between">
     <div>
         <div>
-            <span class="<?= $class ?>"><?= view('icons/location') ?></span>
-            <?= $relationship ?>
+            <a href="#" data-wt-sosa="<?= $sosa ?>">
+                <span class="<?= $class ?>"><?= view('icons/location') ?></span>
+                <?= $relationship ?>
+            </a>
         </div>
 
         <?php if ($sosa !== 1) : ?>
