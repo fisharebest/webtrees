@@ -45,6 +45,7 @@ use function e;
 use function rtrim;
 use function strip_tags;
 use function strtr;
+use function trim;
 use function var_dump;
 
 /**
@@ -103,8 +104,9 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $converter = new MarkDownConverter($environment);
 
         $html = $converter->convert($markdown)->getContent();
+        $html = strtr($html, ["</p>\n<p>" => '<br><br>' ]);
 
-        return strip_tags($html, ['a', 'br']);
+        return trim(strip_tags($html, ['a', 'br']));
     }
 
     /**
