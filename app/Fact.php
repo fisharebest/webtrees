@@ -614,11 +614,11 @@ class Fact
             $class .= ' wt-old';
         }
 
-        return
-            '<div class="' . $class . '">' .
-            /* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
-            I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $this->label(), implode(' — ', $attributes)) .
-            '</div>';
+        $label = '<span class="label">' . $this->label() . '</span>';
+        $value = '<span class="field" dir="auto">' . implode(' — ', $attributes) . '</span>';
+
+        /* I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation. */
+        return '<div class="' . $class . '">' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
     }
 
     /**

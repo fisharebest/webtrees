@@ -130,10 +130,10 @@ class NoteStructure extends SubmitterText
         $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
 
         if ($one_line_only) {
-            return
-                 '<div class="fact_NOTE">' .
-                 I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $html) .
-                 '</div>';
+            $label = '<span class="label">' . $label . '</span>';
+            $value = '<span class="field" dir="auto">' . $html . '</span>';
+
+            return '<div class="fact_NOTE">' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
         }
 
         return
