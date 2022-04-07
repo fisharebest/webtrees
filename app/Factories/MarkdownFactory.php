@@ -102,7 +102,9 @@ class MarkdownFactory implements MarkdownFactoryInterface
 
         $converter = new MarkDownConverter($environment);
 
-        return $converter->convert($markdown)->getContent();
+        $html = $converter->convert($markdown)->getContent();
+
+        return strip_tags($html, ['a', 'br']);
     }
 
     /**
