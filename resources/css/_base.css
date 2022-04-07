@@ -105,3 +105,12 @@ a:hover, .btn-link:hover, .nav-link:hover {
     color: var(--link-color-hover);
     text-decoration: var(--link-decoration-hover);
 }
+
+/* User-generated text */
+.ut {
+    /* RTL text on LTR pages (or vice-versa) */
+    unicode-bidi: isolate;
+
+    /* Long words without spaces can break the page layout */
+    word-break: break-all;
+}
