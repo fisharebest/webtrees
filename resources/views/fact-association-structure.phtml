@@ -100,7 +100,7 @@ foreach ($amatches as $amatch) {
     } elseif (!$person && Auth::isEditor($fact->record()->tree())) {
         $label = '<span class="label">' . I18N::translate('Associate') . '</span>';
         $value = '<span class="error">' . e($amatch[2]) . '</span>';
-        $asso  = I18N::translate('%1$s: %2$s</span>', $label, $value);
+        $asso  = I18N::translate('%1$s: %2$s', $label, $value);
     } else {
         $asso = '';
     }
