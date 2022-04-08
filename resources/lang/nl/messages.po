@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:32+0100\n"
-"PO-Revision-Date: 2022-03-20 22:00+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-14 22:15+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -2161,31 +2145,31 @@ msgstr "Atlanta, Georgia, Verenigde Staten"
 
 #: app/Elements/RelationIsDescriptor.php:94
 msgid "Attendant"
-msgstr "Verzorger"
+msgstr "Assistent"
 
 #: app/Elements/RelationIsDescriptor.php:73
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Verzorgster"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:52
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Verzorger"
+msgstr "Assistent"
 
 #: app/Elements/RelationIsDescriptor.php:95
 msgid "Attending"
-msgstr "Verzorgt"
+msgstr "Aanwezig"
 
 #: app/Elements/RelationIsDescriptor.php:74
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Verzorgt"
+msgstr "Aanwezig"
 
 #: app/Elements/RelationIsDescriptor.php:53
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Verzorgt"
+msgstr "Aanwezig"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Gedcom.php:1408
@@ -5071,7 +5055,7 @@ msgstr "Door het verwijderen van het gezin verbreekt u de koppeling tussen alle 
 
 #: app/Http/RequestHandlers/GedcomLoad.php:135
 msgid "Deleting…"
-msgstr ""
+msgstr "Verwijderen…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -6037,7 +6021,7 @@ msgstr "Gezinstelling"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Family facts and events"
-msgstr ""
+msgstr "Gezinsfeiten en -gebeurtenissen"
 
 #: app/Gedcom.php:827
 msgid "Family file"
@@ -6753,7 +6737,7 @@ msgstr "GEDCOM-labels"
 #. I18N: https://genealogy.net/GEDCOM/
 #: resources/views/admin/tags.phtml:963
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1047 app/Gedcom.php:1099 app/Gedcom.php:1214
@@ -6953,12 +6937,12 @@ msgstr "Peetdochter"
 #: app/Elements/RelationIsDescriptor.php:59
 #: app/Elements/RelationIsDescriptor.php:107
 msgid "Godfather"
-msgstr "Peetoom"
+msgstr "Peetvader"
 
 #: app/Elements/RelationIsDescriptor.php:80
 #: app/Elements/RelationIsDescriptor.php:108
 msgid "Godmother"
-msgstr "Peettante"
+msgstr "Peetmoeder"
 
 #: app/Elements/RelationIsDescriptor.php:109 app/Gedcom.php:1300
 msgid "Godparent"
@@ -7733,7 +7717,7 @@ msgstr "Verdeling per persoon"
 
 #: resources/views/admin/tags.phtml:943
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Persoonsfeiten en -gebeurtenissen"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7857,7 +7841,7 @@ msgstr "Ongeldig GEDCOM-bestand - geen headerrecord gevonden."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:95
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Ongeldig GEDCOM-bestand - geen sluitrecord (TRLR) gevonden."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7898,7 +7882,7 @@ msgstr "Het kan enkele minuten duren om de upgrade te downloaden en te installer
 
 #: resources/views/admin/tags.phtml:936
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Het wordt niet aanbevolen om aangepaste GEDCOM-labels te gebruiken. Deze gegevens kunnen verloren gaan wanneer u ze overzet naar andere programma's."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8795,7 +8779,7 @@ msgstr "Manuscript"
 
 #: resources/views/admin/tags.phtml:934
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Veel genealogieprogramma's definiëren hun eigen aangepaste GEDCOM-labels en webtrees zal de meeste ervan kunnen weergeven."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9827,7 +9811,7 @@ msgstr "Naam in het Hebreeuws"
 
 #: app/Gedcom.php:1378 app/Gedcom.php:1440
 msgid "Name of addressee"
-msgstr ""
+msgstr "Naam van geadresseerde"
 
 #: app/Gedcom.php:638 app/Gedcom.php:645 app/Gedcom.php:650
 msgid "Name prefix"
@@ -10361,7 +10345,7 @@ msgstr "Verpleegkundige"
 #: app/Elements/RelationIsDescriptor.php:85
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr "Verpleegkundige"
+msgstr "Verpleegster"
 
 #: app/Elements/RelationIsDescriptor.php:64
 msgctxt "MALE"
@@ -12431,7 +12415,7 @@ msgstr "Bediende"
 #: app/Elements/RelationIsDescriptor.php:89
 msgctxt "FEMALE"
 msgid "Servant"
-msgstr "Dienster"
+msgstr "Bediende"
 
 #: app/Elements/RelationIsDescriptor.php:68
 msgctxt "MALE"
@@ -12441,7 +12425,7 @@ msgstr "Bediende"
 #: app/Http/RequestHandlers/PhpInformation.php:60
 #: resources/views/admin/control-panel.phtml:251
 msgid "Server information"
-msgstr "Server informatie"
+msgstr "Serverinformatie"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:93
@@ -13441,7 +13425,7 @@ msgstr "St. Paul, Minnesota, Verenigde Staten"
 
 #: resources/views/admin/tags.phtml:27
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standaard GEDCOM-labels"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14247,7 +14231,7 @@ msgstr "De voorkeuren voor module “%s” zijn bijgewerkt."
 #: resources/views/setup/step-4-database-sqlite.phtml:79
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr "Het voorvoegsel is optioneel, maar wel aanbevolen. Door tabelnamen een uniek voorvoegsel te geven, kunnen verschillende applicaties gebruik maken van dezelfde database."
+msgstr "Het voorvoegsel is optioneel, maar wel aanbevolen. Door tabelnamen een uniek voorvoegsel te geven, kunnen verschillende toepassingen gebruikmaken van dezelfde database."
 
 #: app/Gedcom.php:1072 app/Gedcom.php:1128
 msgid "The problem"
@@ -15082,7 +15066,7 @@ msgstr "Om u te helpen met dit blok hebben we diverse standaard sjablonen gecre�
 
 #: resources/views/admin/tags.phtml:938
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Om nieuwe gegevens aan te maken met behulp van aangepaste labels, moet u deze inschakelen."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15095,7 +15079,7 @@ msgstr "Om een kaart weer te geven, moet u een kaartprovider inschakelen in het 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Om compatibiliteit met andere genealogische programma’s te garanderen, zouden notities, tekst en transcripties eigenllijk vastgelegd moeten worden in simpele niet-opgemaakte tekst. Opmaak is echter vaak wenselijk als ondersteuning van de presentatie, het begrijpelijk maken van de tekst enz."
+msgstr "Om compatibiliteit met andere genealogieprogramma’s te garanderen, zouden notities, tekst en transcripties eigenllijk vastgelegd moeten worden in simpele niet-opgemaakte tekst. Opmaak is echter vaak wenselijk als ondersteuning van de presentatie, het begrijpelijk maken van de tekst enz."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
@@ -20479,7 +20463,7 @@ msgstr "ja"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:30
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "verbinding kan maken met de database door een andere applicatie te gebruiken, b.v. phpmyadmin"
+msgstr "verbinding maken met de database kan door een ander programma te gebruiken, b.v. phpmyadmin"
 
 #: app/Services/RelationshipService.php:442
 msgid "younger brother"
