@@ -943,7 +943,7 @@ class Gedcom
     private function familyTreeBuilderTags(): array
     {
         return [
-            '*:_UPD'              => new CustomElement(I18N::translate('Last change')), // e.g. "1 _UPD 14 APR 2012 00:14:10 GMT-5"
+            '*:_UPD'              => /* I18N: GEDCOM tag _UPD */ new CustomElement(I18N::translate('Updated at')), // e.g. "1 _UPD 14 APR 2012 00:14:10 GMT-5"
             'INDI:NAME:_AKA'      => new NamePersonal(I18N::translate('Also known as'), []),
             'OBJE:_ALBUM'         => new CustomElement(I18N::translate('Album')), // XREF to an album
             'OBJE:_DATE'          => new DateValue(I18N::translate('Date')),
