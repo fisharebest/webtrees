@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-23 09:35+0000\n"
+"PO-Revision-Date: 2022-04-14 22:15+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -2248,36 +2248,36 @@ msgstr "Atlanta, Georgia, Verenigde Staten"
 #: app/Elements/RelationIsDescriptor.php:94
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgid "Attendant"
-msgstr "Verzorger"
+msgstr "Assistent"
 
 #: app/Elements/RelationIsDescriptor.php:73
 #: app/GedcomCode/GedcomCodeRela.php:93
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Verzorgster"
+msgstr "Assistente"
 
 #: app/Elements/RelationIsDescriptor.php:52
 #: app/GedcomCode/GedcomCodeRela.php:89
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Verzorger"
+msgstr "Assistent"
 
 #: app/Elements/RelationIsDescriptor.php:95
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Attending"
-msgstr "Verzorgt"
+msgstr "Aanwezig"
 
 #: app/Elements/RelationIsDescriptor.php:74
 #: app/GedcomCode/GedcomCodeRela.php:104
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "Verzorgt"
+msgstr "Aanwezig"
 
 #: app/Elements/RelationIsDescriptor.php:53
 #: app/GedcomCode/GedcomCodeRela.php:100
 msgctxt "MALE"
 msgid "Attending"
-msgstr "Verzorgt"
+msgstr "Aanwezig"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Factories/ElementFactory.php:438
@@ -7187,13 +7187,13 @@ msgstr "Peetdochter"
 #: app/Elements/RelationIsDescriptor.php:107
 #: app/GedcomCode/GedcomCodeRela.php:190 app/GedcomCode/GedcomCodeRela.php:198
 msgid "Godfather"
-msgstr "Peetoom"
+msgstr "Peetvader"
 
 #: app/Elements/RelationIsDescriptor.php:80
 #: app/Elements/RelationIsDescriptor.php:108
 #: app/GedcomCode/GedcomCodeRela.php:194 app/GedcomCode/GedcomCodeRela.php:202
 msgid "Godmother"
-msgstr "Peettante"
+msgstr "Peetmoeder"
 
 #. I18N: gedcom tag _GODP
 #: app/Elements/RelationIsDescriptor.php:109
@@ -10676,7 +10676,7 @@ msgstr "Verpleegkundige"
 #: app/GedcomCode/GedcomCodeRela.php:269
 msgctxt "FEMALE"
 msgid "Nurse"
-msgstr "Verpleegkundige"
+msgstr "Verpleegster"
 
 #: app/Elements/RelationIsDescriptor.php:64
 #: app/GedcomCode/GedcomCodeRela.php:265
@@ -12856,7 +12856,7 @@ msgstr "Bediende"
 #: app/GedcomCode/GedcomCodeRela.php:321
 msgctxt "FEMALE"
 msgid "Servant"
-msgstr "Dienster"
+msgstr "Bediende"
 
 #: app/Elements/RelationIsDescriptor.php:68
 #: app/GedcomCode/GedcomCodeRela.php:317
@@ -12867,7 +12867,7 @@ msgstr "Bediende"
 #: app/Http/RequestHandlers/PhpInformation.php:60
 #: resources/views/admin/control-panel.phtml:223
 msgid "Server information"
-msgstr "Server informatie"
+msgstr "Serverinformatie"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:79
@@ -14665,7 +14665,10 @@ msgstr "De voorkeuren voor module “%s” zijn bijgewerkt."
 #: resources/views/setup/step-4-database-sqlite.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
-msgstr "Het voorvoegsel is optioneel, maar wel aanbevolen. Door tabelnamen een uniek voorvoegsel te geven, kunnen verschillende applicaties gebruik maken van dezelfde database."
+msgstr ""
+"Het voorvoegsel is optioneel, maar wel aanbevolen. Door tabelnamen een uniek "
+"voorvoegsel te geven, kunnen verschillende toepassingen gebruikmaken van "
+"dezelfde database."
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
@@ -15652,7 +15655,11 @@ msgstr "Om nieuwe onderzoekstaken aan te maken moet u eerst <b>onderzoekstaak</b
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Om compatibiliteit met andere genealogische programma’s te garanderen, zouden notities, tekst en transcripties eigenllijk vastgelegd moeten worden in simpele niet-opgemaakte tekst. Opmaak is echter vaak wenselijk als ondersteuning van de presentatie, het begrijpelijk maken van de tekst enz."
+msgstr ""
+"Om compatibiliteit met andere genealogieprogramma’s te garanderen, zouden "
+"notities, tekst en transcripties eigenllijk vastgelegd moeten worden in "
+"simpele niet-opgemaakte tekst. Opmaak is echter vaak wenselijk als "
+"ondersteuning van de presentatie, het begrijpelijk maken van de tekst enz."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
@@ -21154,7 +21161,9 @@ msgstr "ja"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:30
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "verbinding kan maken met de database door een andere applicatie te gebruiken, b.v. phpmyadmin"
+msgstr ""
+"verbinding maken met de database kan door een ander programma te gebruiken, "
+"b.v. phpmyadmin"
 
 #: app/Functions/Functions.php:713
 msgid "younger brother"
