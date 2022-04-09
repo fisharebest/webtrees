@@ -1063,7 +1063,7 @@ class Gedcom
             'FAM:*:_ASSO:SOUR:OBJE'          => new XrefMedia(I18N::translate('Media object')),
             'FAM:*:_ASSO:SOUR:PAGE'          => new WhereWithinSource(I18N::translate('Citation details')),
             'FAM:*:_ASSO:SOUR:QUAY'          => new CertaintyAssessment(I18N::translate('Quality of data')),
-            'FAM:*:_WITN'                    => new CustomElement('Witness'),
+            'FAM:*:_WITN'                    => new CustomElement('Witnesses'),
             'FAM:_STAT'                      => new FamilyStatusText(I18N::translate('Family status')),
             'FAM:_TODO'                      => new ResearchTask(I18N::translate('Research task'), ['DESC' => '1:1', '_CAT' => '0:1', '_PRTY' => '0:1', 'TYPE' => '0:1', 'NOTE' => '0:M', 'DATA' => '0:1', 'STAT' => '0:1', '_CDATE' => '0:1', '_RDATE' => '0:1', 'REPO' => '0:1', '_UID' => '0:M']),
             'FAM:_TODO:DATA'                 => new SubmitterText(I18N::translate('The solution')),
@@ -1115,9 +1115,9 @@ class Gedcom
             'INDI:*:_ASSO:SOUR:OBJE'         => new XrefMedia(I18N::translate('Media object')),
             'INDI:*:_ASSO:SOUR:PAGE'         => new WhereWithinSource(I18N::translate('Citation details')),
             'INDI:*:_ASSO:SOUR:QUAY'         => new CertaintyAssessment(I18N::translate('Quality of data')),
-            'INDI:*:_WITN'                   => new CustomElement('Witness'),
-            'INDI:BAPM:_GODP'                => new CustomElement('Godparent'),
-            'INDI:CHR:_GODP'                 => new CustomElement('Godparent'),
+            'INDI:*:_WITN'                   => new CustomElement('Witnesses'),
+            'INDI:BAPM:_GODP'                => new CustomElement('Godparents'),
+            'INDI:CHR:_GODP'                 => new CustomElement('Godparents'),
             'INDI:NAME:_RUFNAME'             => new NamePieceGiven(I18N::translate('Rufname')),
             'INDI:OBJE:_PRIM'                => new CustomElement(I18N::translate('Highlighted image')),
             'INDI:SEX'                       => new SexXValue(I18N::translate('Gender')),
@@ -1263,7 +1263,7 @@ class Gedcom
             'FAM:*:_CERT'             => new CustomElement(I18N::translate('Certificate number')),
             'FAM:*:_COM'              => new CustomElement(I18N::translate('Comment')),
             'FAM:*:_SITE'             => new CustomElement(I18N::translate('Extra information')),
-            'FAM:*:_WITN'             => new CustomElement(I18N::translate('Witness')),
+            'FAM:*:_WITN'             => new CustomElement(I18N::translate('Witnesses')),
             'FAM:OBJE:_PRIM'          => new CustomElement(I18N::translate('Highlighted image')),
             'FAM:SOUR:_ORI'           => new TextFromSource(I18N::translate('Original text')),
             'FAM:SOUR:_ZUS'           => new CustomElement(I18N::translate('Additional information')),
@@ -1295,9 +1295,9 @@ class Gedcom
             'INDI:*:_CERT'            => new CustomElement(I18N::translate('Certificate number')),
             'INDI:*:_COM'             => new CustomElement(I18N::translate('Comment')),
             'INDI:*:_SITE'            => new CustomElement(I18N::translate('Extra information')),
-            'INDI:*:_WITN'            => new CustomElement(I18N::translate('Witness')),
-            'INDI:BAPM:_GODP'         => new CustomElement(I18N::translate('Also known as')),
-            'INDI:CHR:_GODP'          => new CustomElement(I18N::translate('Godparent')),
+            'INDI:*:_WITN'            => new CustomElement(I18N::translate('Witnesses')),
+            'INDI:BAPM:_GODP'         => new CustomElement(I18N::translate('Godparents')),
+            'INDI:CHR:_GODP'          => new CustomElement(I18N::translate('Godparents')),
             'INDI:OBJE:_PRIM'         => new CustomElement(I18N::translate('Highlighted image')),
             'INDI:SOUR:_ORI'          => new TextFromSource(I18N::translate('Original text')),
             'INDI:SOUR:_ZUS'          => new CustomElement(I18N::translate('Additional information')),
@@ -1688,7 +1688,7 @@ class Gedcom
             $subtags['FAM:*:PLAC']          = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['FAM:ENGA:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['FAM:MARB:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
-            $subtags['FAM:MARR']            = [['_WITN', '0:M']];
+            $subtags['FAM:MARR']            = [['_WITN', '0:1']];
             $subtags['FAM:MARR:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['FAM:SLGS:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI'][]              = ['_UID', '0:M'];
@@ -1696,7 +1696,7 @@ class Gedcom
             $subtags['INDI:*:PLAC']         = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:ADOP:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:BAPL:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
-            $subtags['INDI:BAPM']           = [['_GODP', '0:M'], ['_WITN', '0:M']];
+            $subtags['INDI:BAPM']           = [['_GODP', '0:1'], ['_WITN', '0:1']];
             $subtags['INDI:BAPM:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:BARM:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:BASM:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
@@ -1704,7 +1704,7 @@ class Gedcom
             $subtags['INDI:BLES:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:BURI:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:CENS:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
-            $subtags['INDI:CHR']            = [['_GODP', '0:M'], ['_WITN', '0:M']];
+            $subtags['INDI:CHR']            = [['_GODP', '0:1'], ['_WITN', '0:1']];
             $subtags['INDI:CHR:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:CHRA:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:CONF:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
