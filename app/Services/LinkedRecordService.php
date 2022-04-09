@@ -103,6 +103,7 @@ class LinkedRecordService
 
         return $query
             ->select(['families.*'])
+            ->groupBy('f_id', 'f_file')
             ->get()
             ->map(Registry::familyFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
@@ -133,6 +134,7 @@ class LinkedRecordService
 
         return $query
             ->select(['individuals.*'])
+            ->groupBy('i_id', 'i_file')
             ->get()
             ->map(Registry::individualFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
@@ -157,6 +159,7 @@ class LinkedRecordService
             ->where('o_type', '=', Location::RECORD_TYPE)
             ->where('l_to', '=', $record->xref())
             ->select(['other.*'])
+            ->groupBy('o_id', 'o_file')
             ->get()
             ->map(Registry::locationFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
@@ -180,6 +183,7 @@ class LinkedRecordService
             ->where('m_file', '=', $record->tree()->id())
             ->where('l_to', '=', $record->xref())
             ->select(['media.*'])
+            ->groupBy('m_id', 'm_file')
             ->get()
             ->map(Registry::mediaFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
@@ -205,6 +209,7 @@ class LinkedRecordService
             ->where('l_to', '=', $record->xref())
             ->select(['other.*'])
             ->get()
+            ->groupBy('o_id', 'o_file')
             ->map(Registry::noteFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
     }
@@ -228,6 +233,7 @@ class LinkedRecordService
             ->where('o_type', '=', Repository::RECORD_TYPE)
             ->where('l_to', '=', $record->xref())
             ->select(['other.*'])
+            ->groupBy('o_id', 'o_file')
             ->get()
             ->map(Registry::repositoryFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
@@ -251,6 +257,7 @@ class LinkedRecordService
             ->where('s_file', '=', $record->tree()->id())
             ->where('l_to', '=', $record->xref())
             ->select(['sources.*'])
+            ->groupBy('s_id', 's_file')
             ->get()
             ->map(Registry::sourceFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
@@ -275,6 +282,7 @@ class LinkedRecordService
             ->where('o_type', '=', Submitter::RECORD_TYPE)
             ->where('l_to', '=', $record->xref())
             ->select(['other.*'])
+            ->groupBy('o_id', 'o_file')
             ->get()
             ->map(Registry::repositoryFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
