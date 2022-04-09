@@ -683,7 +683,7 @@ class GedcomImportService
 
         foreach ($matches as $match) {
             // Some applications (e.g. GenoPro) create links longer than 15 characters.
-            $link = mb_substr($match[1], 15);
+            $link = mb_substr($match[1], 0, 15);
 
             // Take care of "duplicates" that differ on case/collation, e.g. "SOUR @S1@" and "SOUR @s1@"
             $rows[$link . strtoupper($match[2])] = [
