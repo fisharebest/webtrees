@@ -13,7 +13,7 @@ use Fisharebest\Webtrees\I18N;
 ?>
 <?= I18N::translate('Hello %s…', $recipient->realName()) ?>
 
-<?= /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', $sender->realName()) ?>
+<?= /* I18N: %s is a person's name */ I18N::translate('%s sent you the following message.', I18N::translate('%1$s (%2$s)', $sender->realName(), $sender->email())) ?>
 
 ------------------------------------------------------------
 <?= $message ?>
