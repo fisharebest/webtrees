@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,11 +24,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
 use function view;
 
 /**
@@ -95,14 +95,12 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
      */
     public function getFooter(ServerRequestInterface $request): string
     {
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
+        $user = Validator::attributes($request)->user();
 
         if ($tree === null) {
             return '';
         }
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
 
         return view('modules/privacy-policy/footer', [
             'tree'           => $tree,
@@ -117,11 +115,8 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
      */
     public function getPageAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         $title = I18N::translate('Privacy policy');
 
@@ -137,7 +132,7 @@ class PrivacyPolicy extends AbstractModule implements ModuleFooterInterface
      * @param Tree          $tree
      * @param UserInterface $user
      *
-     * @return Collection<ModuleAnalyticsInterface>
+     * @return Collection<int,ModuleAnalyticsInterface>
      */
     protected function analyticsModules(Tree $tree, UserInterface $user): Collection
     {

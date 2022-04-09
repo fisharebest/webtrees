@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,6 +35,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
@@ -130,15 +131,14 @@ class SetupWizard implements RequestHandlerInterface
         Registry::cache(new CacheFactory());
 
         // We will need an IP address for the logs.
-        $ip_address  = $request->getServerParams()['REMOTE_ADDR'] ?? '127.0.0.1';
-        $request     = $request->withAttribute('client-ip', $ip_address);
+        $ip_address = Validator::serverParams($request)->string('REMOTE_ADDR', '127.0.0.1');
+        $request    = $request->withAttribute('client-ip', $ip_address);
 
         app()->instance(ServerRequestInterface::class, $request);
 
         $data = $this->userData($request);
 
-        $params = (array) $request->getParsedBody();
-        $step   = (int) ($params['step'] ?? '1');
+        $step = Validator::parsedBody($request)->integer('step', 1);
 
         $locales = $this->module_service
             ->setupLanguages()

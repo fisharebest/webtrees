@@ -17,7 +17,7 @@
     </label>
 
     <div class="col-sm-6 wt-page-options-value">
-        <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" <?php if (substr($field_name, -5) === ':DATE') :
+        <input class="form-control form-control" type="text" id="fields[<?= e($field_name) ?>]" name="fields[<?= e($field_name) ?>]" value="<?= e($field_value) ?>" <?php if (str_ends_with($field_name, ':DATE')) :
             ?>onchange="webtrees.reformatDate(this, 'dmy')" <?php
                                                                         endif ?>>
     </div>

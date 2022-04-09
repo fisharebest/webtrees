@@ -7,8 +7,8 @@ const postcssImport = require('postcss-import')();
 // https://github.com/postcss/autoprefixer
 const postcssAutoprefixer = require('autoprefixer')();
 
-// https://github.com/jakob101/postcss-inline-rtl
-const postcssRtl = require('@mjhenkes/postcss-rtl')();
+// https://github.com/elchininet/postcss-rtlcss
+const postcssRTLCSS = require('postcss-rtlcss')({safeBothPrefix: true});
 
 // https://github.com/bezoerb/postcss-image-inliner
 const postcssImageInliner = require('postcss-image-inliner')({
@@ -34,7 +34,7 @@ mix
     processCssUrls: false,
     postCss: [
       postcssImport,
-      postcssRtl,
+      postcssRTLCSS,
       postcssAutoprefixer,
       postcssImageInliner,
       postcssCustomProperties

@@ -6,16 +6,16 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var int                $block_id
- * @var bool               $can_edit
- * @var Collection<object> $favorites
- * @var string             $module_name
- * @var Tree               $tree
+ * @var int                    $block_id
+ * @var bool                   $can_edit
+ * @var Collection<int,object> $favorites
+ * @var string                 $module_name
+ * @var Tree                   $tree
  */
 ?>
 
 <?php foreach ($favorites as $favorite) : ?>
-    <div class="person_box action_header<?= $favorite->record instanceof Individual ? $favorite->record->sex() : '' ?>">
+    <div class="pt-2">
         <?php if ($favorite->favorite_type === 'URL') : ?>
             <a href="<?= e($favorite->url) ?>"><b><?= e($favorite->title) ?></b></a>
         <?php elseif ($favorite->record instanceof Individual) : ?>

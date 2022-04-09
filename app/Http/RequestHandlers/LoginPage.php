@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -55,16 +56,16 @@ class LoginPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        $user = $request->getAttribute('user');
+        $tree = Validator::attributes($request)->treeOptional();
+        $user = Validator::attributes($request)->user();
 
         // Already logged in?
         if ($user instanceof User) {
             return redirect(route(UserPage::class, ['tree' => $tree instanceof Tree ? $tree->name() : '']));
         }
 
-        $url      = $request->getQueryParams()['url'] ?? '';
-        $username = $request->getQueryParams()['username'] ?? '';
+        $url      = Validator::queryParams($request)->isLocalUrl()->string('url', route(HomePage::class));
+        $username = Validator::queryParams($request)->isLocalUrl()->string('username', '');
 
         // No tree?  perhaps we came here from a page without one.
         if ($tree === null) {

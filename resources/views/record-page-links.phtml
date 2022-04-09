@@ -3,20 +3,26 @@
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
 /**
- * @var string                  $details
- * @var ?Collection<Family>     $linked_families
- * @var ?Collection<Individual> $linked_individuals
- * @var ?Collection<Media>      $linked_media_objects
- * @var ?Collection<Note>       $linked_notes
- * @var ?Collection<Source>     $linked_sources
- * @var Tree                    $tree
+ * @var string                      $details
+ * @var ?Collection<int,Family>     $linked_families
+ * @var ?Collection<int,Individual> $linked_individuals
+ * @var ?Collection<int,Location>   $linked_locations
+ * @var ?Collection<int,Media>      $linked_media_objects
+ * @var ?Collection<int,Note>       $linked_notes
+ * @var ?Collection<int,Repository> $linked_repositories
+ * @var ?Collection<int,Source>     $linked_sources
+ * @var ?Collection<int,Submitter>  $linked_submitters
+ * @var Tree                        $tree
  */
 
 ?>
@@ -72,6 +78,33 @@ use Illuminate\Support\Collection;
             </a>
         </li>
     <?php endif ?>
+
+    <?php if ($linked_repositories instanceof Collection) : ?>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#repositories">
+                <?= I18N::translate('Repositories') ?>
+                <?= view('components/badge', ['count' => $linked_repositories->count()]) ?>
+            </a>
+        </li>
+    <?php endif ?>
+
+    <?php if ($linked_submitters instanceof Collection) : ?>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#submitters">
+                <?= I18N::translate('Submitters') ?>
+                <?= view('components/badge', ['count' => $linked_submitters->count()]) ?>
+            </a>
+        </li>
+    <?php endif ?>
+
+    <?php if ($linked_locations instanceof Collection) : ?>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" data-bs-toggle="tab" role="tab" href="#locations">
+                <?= I18N::translate('Locations') ?>
+                <?= view('components/badge', ['count' => $linked_locations->count()]) ?>
+            </a>
+        </li>
+    <?php endif ?>
 </ul>
 
 <div class="tab-content">
@@ -106,6 +139,24 @@ use Illuminate\Support\Collection;
     <?php if ($linked_notes instanceof Collection) : ?>
         <div class="tab-pane fade" role="tabpanel" id="notes">
             <?= view('lists/notes-table', ['notes' => $linked_notes, 'tree' => $tree]) ?>
+        </div>
+    <?php endif ?>
+
+    <?php if ($linked_repositories instanceof Collection) : ?>
+        <div class="tab-pane fade" role="tabpanel" id="repositories">
+            <?= view('lists/repositories-table', ['repositories' => $linked_repositories, 'tree' => $tree]) ?>
+        </div>
+    <?php endif ?>
+
+    <?php if ($linked_submitters instanceof Collection) : ?>
+        <div class="tab-pane fade" role="tabpanel" id="submitters">
+            <?= view('lists/submitters-table', ['submitters' => $linked_submitters, 'tree' => $tree]) ?>
+        </div>
+    <?php endif ?>
+
+    <?php if ($linked_locations instanceof Collection) : ?>
+        <div class="tab-pane fade" role="tabpanel" id="locations">
+            <?= view('lists/locations-table', ['locations' => $linked_locations, 'tree' => $tree]) ?>
         </div>
     <?php endif ?>
 </div>

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Validator;
 use Iodev\Whois\Loaders\CurlLoader;
 use Iodev\Whois\Modules\Asn\AsnRouteInfo;
 use Iodev\Whois\Whois;
@@ -62,6 +63,7 @@ class BadBotBlocker implements MiddlewareInterface
         'AspiegelBot',
         'Barkrowler',
         'BLEXBot',
+        'DataForSEO',
         'DotBot',
         'Grapeshot',
         'ia_archiver',
@@ -100,9 +102,12 @@ class BadBotBlocker implements MiddlewareInterface
      * Some search engines only use reverse DNS to verify the IP address.
      *
      * @see https://help.baidu.com/question?prod_id=99&class=0&id=3001
+     * @see https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler
      */
     private const ROBOT_REV_ONLY_DNS = [
         'Baiduspider' => ['.baidu.com', '.baidu.jp'],
+        'FreshBot'    => ['.seznam.cz'],
+        'Seznam'      => ['.seznam.cz'],
     ];
 
     /**
@@ -162,8 +167,8 @@ class BadBotBlocker implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $ua      = $request->getServerParams()['HTTP_USER_AGENT'] ?? '';
-        $ip      = $request->getAttribute('client-ip');
+        $ua      = Validator::serverParams($request)->string('HTTP_USER_AGENT', '');
+        $ip      = Validator::attributes($request)->string('client-ip');
         $address = IPFactory::parseAddressString($ip);
         assert($address instanceof AddressInterface);
 
@@ -214,7 +219,9 @@ class BadBotBlocker implements MiddlewareInterface
         }
 
         // Allow sites to block access from entire networks.
-        preg_match_all('/(AS\d+)/', $request->getAttribute('block_asn', ''), $matches);
+        $block_asn = Validator::attributes($request)->string('block_asn', '');
+        preg_match_all('/(AS\d+)/', $block_asn, $matches);
+
         foreach ($matches[1] as $asn) {
             foreach ($this->fetchIpRangesForAsn($asn) as $range) {
                 if ($range->contains($address)) {

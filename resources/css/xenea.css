@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -856,12 +856,6 @@ div.fact_SHARED_NOTE {
     width: 70%;
 }
 
-/* this keeps the tag color the same when it is a link as when not */
-
-.place {
-    padding-top: 5px;
-}
-
 .filtersH,
 .filtersF {
     margin: 4px;
@@ -906,13 +900,6 @@ div.faq_body {
 
 .faq_top {
     float: right;
-}
-
-/* === Positioning edit, copy, delete links === */
-/* General use */
-.editfacts {
-    clear: left;
-    padding-top: 15px;
 }
 
 #indi_note {

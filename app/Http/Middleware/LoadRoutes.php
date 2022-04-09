@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\Middleware;
 use Aura\Router\RouterContainer;
 use Fisharebest\Webtrees\Http\Routes\ApiRoutes;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -59,7 +60,7 @@ class LoadRoutes implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $base_url         = $request->getAttribute('base_url');
+        $base_url         = Validator::attributes($request)->string('base_url');
         $base_path        = parse_url($base_url, PHP_URL_PATH);
         $router_container = new RouterContainer($base_path);
 

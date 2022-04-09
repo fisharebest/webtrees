@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\FlashMessages;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
@@ -30,6 +29,7 @@ use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -47,6 +47,12 @@ use function view;
 class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterface
 {
     private const TOKEN_LENGTH = 40;
+
+    private const TOKEN_VALIDITY_SECONDS = 3600;
+
+    private const RATE_LIMIT_REQUESTS = 5;
+
+    private const RATE_LIMIT_SECONDS = 300;
 
     private EmailService $email_service;
 
@@ -78,7 +84,7 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         $params = (array) $request->getParsedBody();
 
@@ -86,10 +92,10 @@ class PasswordRequestAction implements RequestHandlerInterface, StatusCodeInterf
         $user  = $this->user_service->findByEmail($email);
 
         if ($user instanceof User) {
-            $this->rate_limit_service->limitRateForUser($user, 5, 300, 'rate-limit-pw-reset');
+            $this->rate_limit_service->limitRateForUser($user, self::RATE_LIMIT_REQUESTS, self::RATE_LIMIT_SECONDS, 'rate-limit-pw-reset');
 
             $token  = Str::random(self::TOKEN_LENGTH);
-            $expire = (string) Carbon::now()->addHour()->getTimestamp();
+            $expire = (string) (time() + self::TOKEN_VALIDITY_SECONDS);
             $url    = route(PasswordResetPage::class, [
                 'token' => $token,
                 'tree'  => $tree instanceof Tree ? $tree->name() : null,

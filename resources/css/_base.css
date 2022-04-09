@@ -1,6 +1,6 @@
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,13 +44,13 @@ th.align-digits {
 }
 
 /* Keep the page as tall as the window, so the footer can remain at the bottom. */
-.wt-global {
+body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-.wt-main-container {
+main {
     flex: 1;
 }
 
@@ -104,4 +104,13 @@ a, .btn-link, .nav-link {
 a:hover, .btn-link:hover, .nav-link:hover {
     color: var(--link-color-hover);
     text-decoration: var(--link-decoration-hover);
+}
+
+/* User-generated text */
+.ut {
+    /* RTL text on LTR pages (or vice-versa) */
+    unicode-bidi: isolate;
+
+    /* Long words without spaces can break the page layout */
+    word-break: break-all;
 }

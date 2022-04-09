@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -192,8 +192,8 @@ trait ModuleCustomTrait
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
         return response($content, StatusCodeInterface::STATUS_OK, [
-            'Cache-Control'  => 'public,max-age=31536000',
-            'Content-Type'   => $mime_type,
+            'cache-control'  => 'public,max-age=31536000',
+            'content-type'   => $mime_type,
         ]);
     }
 }

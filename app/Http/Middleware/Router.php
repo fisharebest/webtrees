@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,6 +26,7 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -75,7 +76,7 @@ class Router implements MiddlewareInterface
         // Turn the ugly URL into a pretty one, so the router can parse it.
         $pretty = $request;
 
-        if ($request->getAttribute('rewrite_urls') !== '1') {
+        if (!Validator::attributes($request)->boolean('rewrite_urls', false)) {
             // Ugly URLs store the path in a query parameter.
             $url_route = $request->getQueryParams()['route'] ?? '';
             $uri       = $request->getUri()->withPath($url_route);

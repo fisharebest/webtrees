@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Site;
@@ -48,6 +47,7 @@ use function ftell;
 use function fwrite;
 use function rewind;
 use function strlen;
+use function time;
 use function unlink;
 use function version_compare;
 
@@ -117,7 +117,7 @@ class UpgradeService
      *
      * @param string $zip_file
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      * @throws FilesystemException
      */
     public function webtreesZipContents(string $zip_file): Collection
@@ -213,8 +213,8 @@ class UpgradeService
      * Delete files in $destination that aren't in $source.
      *
      * @param FilesystemOperator $filesystem
-     * @param Collection<string> $folders_to_clean
-     * @param Collection<string> $files_to_keep
+     * @param Collection<int,string> $folders_to_clean
+     * @param Collection<int,string> $files_to_keep
      *
      * @return void
      */
@@ -280,6 +280,9 @@ class UpgradeService
         return $url;
     }
 
+    /**
+     * @return void
+     */
     public function startMaintenanceMode(): void
     {
         $message = I18N::translate('This website is being upgraded. Try again in a few minutes.');
@@ -287,6 +290,9 @@ class UpgradeService
         file_put_contents(Webtrees::OFFLINE_FILE, $message);
     }
 
+    /**
+     * @return void
+     */
     public function endMaintenanceMode(): void
     {
         if (file_exists(Webtrees::OFFLINE_FILE)) {
@@ -307,7 +313,7 @@ class UpgradeService
     {
         $last_update_timestamp = (int) Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 
-        $current_timestamp = Carbon::now()->unix();
+        $current_timestamp = time();
 
         if ($last_update_timestamp < $current_timestamp - self::CHECK_FOR_UPDATE_INTERVAL) {
             try {

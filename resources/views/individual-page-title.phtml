@@ -6,13 +6,18 @@ use Fisharebest\Webtrees\User;
 use Illuminate\Support\Collection;
 
 /**
- * @var string           $age
- * @var Individual       $record
- * @var Collection<User> $users
+ * @var string               $age
+ * @var Individual           $record
+ * @var Collection<int,User> $users
  */
 ?>
 
-<?= $record->fullName() ?>, <?= $record->lifespan() ?> <?= $age ?>
+<?php if ($record->getBirthDate()->isOK() || $record->getDeathDate()->isOK()) : ?>
+    <?= $record->fullName() ?>, <?= $record->lifespan() ?>
+<?php else: ?>
+    <?= $record->fullName() ?>
+<?php endif ?></?>
+<?= $age ?>
 <?php foreach ($users as $user) : ?>
     — <a href="<?= e(route(UserListPage::class, ['filter' => $user->email()])) ?>">
         <?= e($user->userName()) ?>

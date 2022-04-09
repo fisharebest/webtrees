@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -62,7 +62,7 @@ class Media extends GedcomRecord
     /**
      * Get the media files for this media object
      *
-     * @return Collection<MediaFile>
+     * @return Collection<int,MediaFile>
      */
     public function mediaFiles(): Collection
     {
@@ -141,10 +141,8 @@ class Media extends GedcomRecord
      */
     public function formatListDetails(): string
     {
-        ob_start();
-        FunctionsPrintFacts::printMediaLinks($this->tree(), '1 OBJE @' . $this->xref() . '@', 1);
-
-        return ob_get_clean();
+        return (new XrefMedia(I18N::translate('Media')))
+            ->labelValue('@' . $this->xref . '@', $this->tree());
     }
 
     /**
@@ -157,7 +155,7 @@ class Media extends GedcomRecord
      *
      * @return string
      */
-    public function displayImage(int $width, int $height, string $fit, array $attributes = []): string
+    public function displayImage(int $width, int $height, string $fit, array $attributes): string
     {
         // Display the first image
         foreach ($this->mediaFiles() as $media_file) {

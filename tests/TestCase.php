@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\GedcomLoad;
 use Fisharebest\Webtrees\Http\Routes\WebRoutes;
 use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 use Fisharebest\Webtrees\Module\WebtreesTheme;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -94,6 +95,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         if (static::$uses_database) {
             static::createTestDatabase();
+
+            // This is normally set in middleware.
+            (new Gedcom())->registerTags();
 
             // Boot modules
             (new ModuleService())->bootModules(new WebtreesTheme());
@@ -218,14 +222,15 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function importTree(string $gedcom_file): Tree
     {
-        $tree_service = new TreeService();
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
         $tree         = $tree_service->create(basename($gedcom_file), basename($gedcom_file));
         $stream       = app(StreamFactoryInterface::class)->createStreamFromFile(__DIR__ . '/data/' . $gedcom_file);
 
-        $tree_service->importGedcomFile($tree, $stream, $gedcom_file);
+        $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
         $timeout_service = new TimeoutService();
-        $controller      = new GedcomLoad($timeout_service, $tree_service);
+        $controller      = new GedcomLoad($gedcom_import_service, $timeout_service, $tree_service);
         $request         = self::createRequest()->withAttribute('tree', $tree);
 
         do {
@@ -292,13 +297,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
             $html = substr($html, strcspn($html, '<>'));
 
             if (str_starts_with($html, '>')) {
-                $this->fail('Unescaped > found in HTML');
+                static::fail('Unescaped > found in HTML');
             }
 
             if (str_starts_with($html, '<')) {
                 if (preg_match('~^</([a-z]+)>~', $html, $match)) {
                     if ($match[1] !== array_pop($stack)) {
-                        $this->fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
+                        static::fail('Closing tag matches nothing: ' . $match[0] . ' at ' . implode(':', $stack));
                     }
                     $html = substr($html, strlen($match[0]));
                 } elseif (preg_match('~^<([a-z]+)(?:\s+[a-z_\-]+="[^">]*")*\s*(/?)>~', $html, $match)) {
@@ -309,14 +314,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
                     switch ($tag) {
                         case 'html':
-                            $this->assertSame([], $stack);
+                            static::assertSame([], $stack);
                             break;
                         case 'head':
                         case 'body':
-                            $this->assertSame(['head'], $stack);
+                            static::assertSame(['head'], $stack);
                             break;
                         case 'div':
-                            $this->assertNotContains('span', $stack, $message);
+                            static::assertNotContains('span', $stack, $message);
                             break;
                     }
 
@@ -330,11 +335,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
                         $html = substr($html, strlen($match[0]));
                     }
                 } else {
-                    $this->fail('Unrecognised tag: ' . substr($html, 0, 40));
+                    static::fail('Unrecognised tag: ' . substr($html, 0, 40));
                 }
             }
         } while ($html !== '');
 
-        $this->assertSame([], $stack);
+        static::assertSame([], $stack);
     }
 }

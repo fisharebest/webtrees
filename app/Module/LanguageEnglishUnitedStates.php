@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -107,6 +107,9 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
         1  => ' ascending',
     ];
 
+    /**
+     * @return LocaleInterface
+     */
     public function locale(): LocaleInterface
     {
         return new LocaleEnUs();
@@ -120,7 +123,7 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
         // Genitive forms in English are simple/regular, as no relationship name ends in "s".
         $genitive = static fn (string $s): array => [$s, $s . '’s %s'];
 
-        $cousin = fn (int $up, int $down): array => $genitive(
+        $cousin = static fn (int $up, int $down): array => $genitive(
             (static::COUSIN[min($up, $down)] ?? 'distant cousin') .
             (static::REMOVED[abs($up - $down)] ?? ' many times removed') .
             static::DIRECTION[$up <=> $down]
@@ -221,22 +224,22 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
             Relationship::fixed('grandson', 'grandson’s %s')->child()->son(),
             Relationship::fixed('grandchild', 'grandchild’s %s')->child()->child(),
             // Relationships with dynamically generated names
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'aunt'))->ancestor()->sister(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'aunt'))->ancestor()->sibling()->wife(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'uncle'))->ancestor()->brother(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'uncle'))->ancestor()->sibling()->husband(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'niece'))->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'niece'))->married()->spouse()->sibling()->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'nephew'))->sibling()->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'nephew'))->married()->spouse()->sibling()->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, 'maternal ', 'grandmother'))->mother()->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, 'maternal ', 'grandfather'))->mother()->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, 'paternal ', 'grandmother'))->father()->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, 'paternal ', 'grandfather'))->father()->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 1, '', 'grandparent'))->ancestor(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, '', 'granddaughter'))->descendant()->female(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, '', 'grandson'))->descendant()->male(),
-            Relationship::dynamic(fn (int $n) => $great($n - 2, '', 'grandchild'))->descendant(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'aunt'))->ancestor()->sister(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'aunt'))->ancestor()->sibling()->wife(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'uncle'))->ancestor()->brother(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'uncle'))->ancestor()->sibling()->husband(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'niece'))->sibling()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'niece'))->married()->spouse()->sibling()->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'nephew'))->sibling()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'nephew'))->married()->spouse()->sibling()->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'maternal ', 'grandmother'))->mother()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'maternal ', 'grandfather'))->mother()->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'paternal ', 'grandmother'))->father()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'paternal ', 'grandfather'))->father()->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'grandparent'))->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'granddaughter'))->descendant()->female(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'grandson'))->descendant()->male(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 2, '', 'grandchild'))->descendant(),
             Relationship::dynamic($cousin)->ancestor()->sibling()->descendant(),
         ];
     }

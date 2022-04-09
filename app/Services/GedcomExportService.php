@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,11 +20,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Encodings\UTF16BE;
+use Fisharebest\Webtrees\Encodings\UTF16LE;
+use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\Factories\AbstractGedcomRecordFactory;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Gedcom;
+use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Header;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -37,18 +42,18 @@ use function date;
 use function explode;
 use function fopen;
 use function fwrite;
-use function mb_convert_encoding;
 use function pathinfo;
 use function rewind;
 use function str_contains;
 use function str_starts_with;
+use function stream_filter_append;
 use function strlen;
 use function strpos;
 use function strtolower;
 use function strtoupper;
-use function utf8_decode;
 
 use const PATHINFO_EXTENSION;
+use const STREAM_FILTER_WRITE;
 
 /**
  * Export data in GEDCOM format
@@ -58,21 +63,23 @@ class GedcomExportService
     /**
      * Write GEDCOM data to a stream.
      *
-     * @param Tree                    $tree         - Export data from this tree
-     * @param bool                    $sort_by_xref - Write GEDCOM records in XREF order
-     * @param string                  $encoding     - Convert from UTF-8 to other encoding
-     * @param int                     $access_level - Apply privacy filtering
-     * @param string                  $media_path   - Prepend path to media filenames
-     * @param Collection<string>|null $records      - Just export these records
+     * @param Tree                        $tree         - Export data from this tree
+     * @param bool                        $sort_by_xref - Write GEDCOM records in XREF order
+     * @param string                      $encoding     - Convert from UTF-8 to other encoding
+     * @param int                         $access_level - Apply privacy filtering
+     * @param string                      $media_path   - Prepend path to media filenames
+     * @param string                      $line_endings - CRLF or LF
+     * @param Collection<int,string>|null $records      - Just export these records
      *
      * @return resource
      */
     public function export(
         Tree $tree,
         bool $sort_by_xref = false,
-        string $encoding = 'UTF-8',
+        string $encoding = UTF8::NAME,
         int $access_level = Auth::PRIV_HIDE,
         string $media_path = '',
+        string $line_endings = 'CRLF',
         Collection $records = null
     ) {
         $stream = fopen('php://memory', 'wb+');
@@ -80,6 +87,8 @@ class GedcomExportService
         if ($stream === false) {
             throw new RuntimeException('Failed to create temporary stream');
         }
+
+        stream_filter_append($stream, GedcomEncodingFilter::class, STREAM_FILTER_WRITE, ['src_encoding' => UTF8::NAME, 'dst_encoding' => $encoding]);
 
         if ($records instanceof Collection) {
             // Export just these records - e.g. from clippings cart.
@@ -135,8 +144,11 @@ class GedcomExportService
                     $gedcom = $this->convertMediaPath($gedcom, $media_path);
                 }
 
-                $gedcom = $this->wrapLongLines($gedcom, Gedcom::LINE_LENGTH) . Gedcom::EOL;
-                $gedcom = $this->convertEncoding($encoding, $gedcom);
+                $gedcom = $this->wrapLongLines($gedcom, Gedcom::LINE_LENGTH) . "\n";
+
+                if ($line_endings === 'CRLF') {
+                    $gedcom = strtr($gedcom, ["\n" => "\r\n"]);
+                }
 
                 $bytes_written = fwrite($stream, $gedcom);
 
@@ -170,6 +182,14 @@ class GedcomExportService
         if (strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== 'ged') {
             $filename .= '.ged';
         }
+
+        $gedcom_encodings = [
+            UTF16BE::NAME     => 'UNICODE',
+            UTF16LE::NAME     => 'UNICODE',
+            Windows1252::NAME => 'ANSI',
+        ];
+
+        $encoding = $gedcom_encodings[$encoding] ?? $encoding;
 
         // Build a new header record
         $gedcom = '0 HEAD';
@@ -233,30 +253,6 @@ class GedcomExportService
     }
 
     /**
-     * @param string $encoding
-     * @param string $gedcom
-     *
-     * @return string
-     */
-    private function convertEncoding(string $encoding, string $gedcom): string
-    {
-        switch ($encoding) {
-            case 'ANSI':
-                // Many desktop applications interpret ANSI as ISO-8859-1
-                return utf8_decode($gedcom);
-
-            case 'ANSEL':
-                // coming soon...?
-            case 'ASCII':
-                // Might be needed by really old software?
-                return mb_convert_encoding($gedcom, 'UTF-8', 'ASCII');
-
-            default:
-                return $gedcom;
-        }
-    }
-
-    /**
      * Wrap long lines using concatenation records.
      *
      * @param string $gedcom
@@ -295,7 +291,7 @@ class GedcomExportService
             $lines[] = $line;
         }
 
-        return implode(Gedcom::EOL, $lines);
+        return implode("\n", $lines);
     }
 
     /**

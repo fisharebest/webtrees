@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Statistics;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -111,8 +111,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     /**
      * The URL for this chart.
      *
-     * @param Individual                        $individual
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Individual                                $individual
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -134,10 +134,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      */
     public function getChartAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         Auth::checkComponentAccess($this, ModuleChartInterface::class, $tree, $user);
 
@@ -183,7 +181,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
 
         return $this->viewResponse('modules/statistics-chart/individuals', [
             'show_oldest_living' => Auth::check(),
-            'stats'              => app(Statistics::class),
+            'statistics'         => app(Statistics::class),
         ]);
     }
 
@@ -197,7 +195,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/families', [
-            'stats' => app(Statistics::class),
+            'statistics' => app(Statistics::class),
         ]);
     }
 
@@ -211,7 +209,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
         $this->layout = 'layouts/ajax';
 
         return $this->viewResponse('modules/statistics-chart/other', [
-            'stats' => app(Statistics::class),
+            'statistics' => app(Statistics::class),
         ]);
     }
 
@@ -224,8 +222,7 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
     {
         $this->layout = 'layouts/ajax';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         return $this->viewResponse('modules/statistics-chart/custom', [
             'module' => $this,
@@ -873,8 +870,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * @param int|string        $x
      * @param int|string        $z
      * @param int|string        $value
-     * @param array             $x_axis
-     * @param array             $z_axis
+     * @param array<string>     $x_axis
+     * @param array<string>     $z_axis
      * @param array<array<int>> $ydata
      *
      * @return void
@@ -902,8 +899,8 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
      * Some are direct lookup (e.g. M/F, JAN/FEB/MAR).
      * Others need to find the appropriate range.
      *
-     * @param int|float|string $value
-     * @param array<string>    $axis
+     * @param int|string    $value
+     * @param array<string> $axis
      *
      * @return int|string
      */
@@ -1016,10 +1013,10 @@ class StatisticsChartModule extends AbstractModule implements ModuleChartInterfa
                 'format' => '\'%\'',
             ],
             'vAxis'    => [
-                'title' => $y_axis_title ?? '',
+                'title' => $y_axis_title,
             ],
             'hAxis'    => [
-                'title' => $x_axis_title ?? '',
+                'title' => $x_axis_title,
             ],
             'colors'   => $colors,
         ];

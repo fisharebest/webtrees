@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,9 +20,9 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
@@ -38,6 +38,10 @@ use function view;
  */
 class MessageService
 {
+    private const BROADCAST_ALL   = 'all';
+    private const BROADCAST_NEVER = 'never';
+    private const BROADCAST_GONE  = 'gone';
+
     private EmailService $email_service;
 
     private UserService $user_service;
@@ -172,20 +176,20 @@ class MessageService
      *
      * @param string $to
      *
-     * @return Collection<User>
+     * @return Collection<int,User>
      */
     public function recipientUsers(string $to): Collection
     {
         switch ($to) {
             default:
-            case 'all':
+            case self::BROADCAST_ALL:
                 return $this->user_service->all();
-            case 'never_logged':
+            case self::BROADCAST_NEVER:
                 return $this->user_service->all()->filter(static function (UserInterface $user): bool {
                     return $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) === '1' && $user->getPreference(UserInterface::PREF_TIMESTAMP_REGISTERED) > $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
                 });
-            case 'last_6mo':
-                $six_months_ago = Carbon::now()->subMonths(6)->unix();
+            case self::BROADCAST_GONE:
+                $six_months_ago = Registry::timestampFactory()->now()->subtractMonths(6)->timestamp();
 
                 return $this->user_service->all()->filter(static function (UserInterface $user) use ($six_months_ago): bool {
                     $session_time = (int) $user->getPreference(UserInterface::PREF_TIMESTAMP_ACTIVE);
@@ -196,21 +200,17 @@ class MessageService
     }
 
     /**
-     * @param string $to
+     * Recipients for broadcast messages
      *
-     * @return string
+     * @return array<string,string>
      */
-    public function recipientDescription(string $to): string
+    public function recipientTypes(): array
     {
-        switch ($to) {
-            default:
-            case 'all':
-                return I18N::translate('Send a message to all users');
-            case 'never_logged':
-                return I18N::translate('Send a message to users who have never signed in');
-            case 'last_6mo':
-                return I18N::translate('Send a message to users who have not signed in for 6 months');
-        }
+        return [
+            self::BROADCAST_ALL   => I18N::translate('Send a message to all users'),
+            self::BROADCAST_NEVER => I18N::translate('Send a message to users who have never signed in'),
+            self::BROADCAST_GONE  => I18N::translate('Send a message to users who have not signed in for 6 months'),
+        ];
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -96,7 +96,7 @@ class ClipboardService
      *
      * @param GedcomRecord $record
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function pastableFacts(GedcomRecord $record): Collection
     {
@@ -112,10 +112,10 @@ class ClipboardService
     /**
      * Find facts of a given type, from all records.
      *
-     * @param GedcomRecord $record
-     * @param Collection   $types
+     * @param GedcomRecord           $record
+     * @param Collection<int,string> $types
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function pastableFactsOfType(GedcomRecord $record, Collection $types): Collection
     {

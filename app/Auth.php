@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -170,7 +170,10 @@ class Auth
      */
     public static function user(): UserInterface
     {
-        return app(UserService::class)->find(self::id()) ?? new GuestUser();
+        $user_service = app(UserService::class);
+        assert($user_service instanceof UserService);
+
+        return $user_service->find(self::id()) ?? new GuestUser();
     }
 
     /**

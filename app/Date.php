@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,16 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
-use DomainException;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Date\AbstractCalendarDate;
-use Fisharebest\Webtrees\Date\FrenchDate;
-use Fisharebest\Webtrees\Date\GregorianDate;
-use Fisharebest\Webtrees\Date\HijriDate;
-use Fisharebest\Webtrees\Date\JalaliDate;
-use Fisharebest\Webtrees\Date\JewishDate;
-use Fisharebest\Webtrees\Date\JulianDate;
-use Fisharebest\Webtrees\Date\RomanDate;
 
 /**
  * A representation of GEDCOM dates and date ranges.

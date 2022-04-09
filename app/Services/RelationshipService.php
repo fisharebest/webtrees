@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -1462,6 +1462,18 @@ class RelationshipService
 
                             return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 2));
 
+                        case 'ko': // Source : Jeongwan Nam (jeongwann@gmail.com)
+                            if ($sex2 === 'M') {
+                                // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+                                return I18N::translate('great ×%s uncle', I18N::number($up + 1));
+                            }
+
+                            if ($sex2 === 'F') {
+                                return I18N::translate('great ×%s aunt', I18N::number($up + 1));
+                            }
+
+                            return I18N::translate('great ×%s aunt/uncle', I18N::number($up + 1));
+
                         case 'hi': // Source: MrQD
                             if ($sex2 === 'M') {
                                 // I18N: if you need a different number for %s, contact the developers, as a code-change is required
@@ -1689,6 +1701,41 @@ class RelationshipService
 
                             return I18N::translateContext('(a woman’s) great ×%s nephew/niece', 'great ×%s nephew/niece', I18N::number($down - 3));
 
+                        case 'ko': // Source: Jeongwan Nam (jeongwann@gmail.com)
+                            if ($sex2 === 'M') {
+                                if ($first === 'bro' && $sex1 === 'M') {
+                                    return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 0));
+                                }
+
+                                if ($first === 'sis' && $sex1 === 'M') {
+                                    return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 0));
+                                }
+
+                                return I18N::translateContext('(a woman’s) great ×%s nephew', 'great ×%s nephew', I18N::number($down - 0));
+                            }
+
+                            if ($sex2 === 'F') {
+                                if ($first === 'bro' && $sex1 === 'M') {
+                                    return I18N::translateContext('(a man’s) brother’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
+                                }
+
+                                if ($first === 'sis' && $sex1 === 'M') {
+                                    return I18N::translateContext('(a man’s) sister’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
+                                }
+
+                                return I18N::translateContext('(a woman’s) great ×%s niece', 'great ×%s niece', I18N::number($down - 3));
+                            }
+
+                            if ($first === 'bro' && $sex1 === 'M') {
+                                return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
+                            }
+
+                            if ($first === 'sis' && $sex1 === 'M') {
+                                return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
+                            }
+
+                            return I18N::translateContext('(a woman’s) great ×%s nephew/niece', 'great ×%s nephew/niece', I18N::number($down - 3));
+
                         case 'zh-Hans': // Source: xmlf
                         case 'zh-Hant':
                             if ($sex2 === 'M') {
@@ -1874,6 +1921,17 @@ class RelationshipService
 
                             return I18N::translate('great ×%s grandparent', I18N::number($up - 1));
 
+                        case 'ko': // Source : Jeongwan Nam (jeongwann@gmail.com)
+                            if ($sex2 === 'M') {
+                                return I18N::translate('great ×%s grandfather', I18N::number($up + 1));
+                            }
+
+                            if ($sex2 === 'F') {
+                                return I18N::translate('great ×%s grandmother', I18N::number($up + 1));
+                            }
+
+                            return I18N::translate('great ×%s grandparent', I18N::number($up + 1));
+
                         case 'nn': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
                         case 'nb':
                             if ($sex2 === 'M') {
@@ -1995,6 +2053,17 @@ class RelationshipService
                             }
 
                             return I18N::translate('great ×%s grandchild', I18N::number($up - 3));
+
+                        case 'ko': // Source : Jeongwan Nam (jeongwann@gmail.com)
+                            if ($sex2 === 'M') {
+                                return I18N::translate('great ×%s grandson', I18N::number($up + 1));
+                            }
+
+                            if ($sex2 === 'F') {
+                                return I18N::translate('great ×%s granddaughter', I18N::number($up + 1));
+                            }
+
+                            return I18N::translate('great ×%s grandchild', I18N::number($up + 1));
 
                         case 'zh-Hans': // Source: xmlf
                         case 'zh-Hant':

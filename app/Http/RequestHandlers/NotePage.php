@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,13 +24,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -42,14 +41,16 @@ class NotePage implements RequestHandlerInterface
 
     private ClipboardService $clipboard_service;
 
+    private LinkedRecordService $linked_record_service;
+
     /**
-     * NotePage constructor.
-     *
      * @param ClipboardService $clipboard_service
+     * @param LinkedRecordService $linked_record_service
      */
-    public function __construct(ClipboardService $clipboard_service)
+    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
     {
-        $this->clipboard_service = $clipboard_service;
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
     }
 
     /**
@@ -59,28 +60,34 @@ class NotePage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $slug   = Validator::attributes($request)->string('slug', '');
         $record = Registry::noteFactory()->make($xref, $tree);
         $record = Auth::checkNoteAccess($record, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($record);
-
-        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+        if ($record->xref() !== $xref || Registry::slugFactory()->make($record) !== $slug) {
             return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
+        $linked_families     = $this->linked_record_service->linkedFamilies($record);
+        $linked_individuals  = $this->linked_record_service->linkedIndividuals($record);
+        $linked_locations    = $this->linked_record_service->linkedLocations($record);
+        $linked_media        = $this->linked_record_service->linkedMedia($record);
+        $linked_repositories = $this->linked_record_service->linkedRepositories($record);
+        $linked_sources      = $this->linked_record_service->linkedSources($record);
+        $linked_submitters   = $this->linked_record_service->linkedSubmitters($record);
+
         return $this->viewResponse('note-page', [
             'clipboard_facts'      => $this->clipboard_service->pastableFacts($record),
-            'linked_families'      => $record->linkedFamilies('NOTE'),
-            'linked_individuals'   => $record->linkedIndividuals('NOTE'),
-            'linked_media_objects' => $record->linkedMedia('NOTE'),
-            'linked_sources'       => $record->linkedSources('NOTE'),
+            'linked_families'      => $linked_families,
+            'linked_individuals'   => $linked_individuals,
+            'linked_locations'     => $linked_locations->isEmpty() ? null : $linked_locations,
+            'linked_media_objects' => $linked_media,
+            'linked_repositories'  => $linked_repositories,
+            'linked_sources'       => $linked_sources,
+            'linked_submitters'    => $linked_submitters,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',
             'record'               => $record,

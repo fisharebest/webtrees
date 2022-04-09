@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,13 +19,16 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Statistics;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
+
+use function time;
 
 /**
  * Class HtmlBlockModule
@@ -71,10 +74,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
     /**
      * Generate the HTML content of this block.
      *
-     * @param Tree          $tree
-     * @param int           $block_id
-     * @param string        $context
-     * @param array<string> $config
+     * @param Tree                 $tree
+     * @param int                  $block_id
+     * @param string               $context
+     * @param array<string,string> $config
      *
      * @return string
      */
@@ -96,10 +99,10 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $title   = $statistics->embedTags($title);
         $content = $statistics->embedTags($content);
 
-        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
+        $block_timestamp = (int) $this->getBlockSetting($block_id, 'timestamp', (string) time());
 
         if ($show_timestamp === '1') {
-            $content .= '<br>' . view('components/datetime', ['timestamp' => Carbon::createFromTimestamp($block_timestamp)]);
+            $content .= '<br>' . view('components/datetime', ['timestamp' => Registry::timestampFactory()->make($block_timestamp)]);
         }
 
         if ($context !== self::CONTEXT_EMBED) {
@@ -107,7 +110,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => $this->configUrl($tree, $context, $block_id),
-                'title'      => e($title),
+                'title'      => e(strip_tags($title)),
                 'content'    => $content,
             ]);
         }
@@ -151,23 +154,21 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
      * Update the configuration for a block.
      *
      * @param ServerRequestInterface $request
-     * @param int     $block_id
+     * @param int                    $block_id
      *
      * @return void
      */
     public function saveBlockConfiguration(ServerRequestInterface $request, int $block_id): void
     {
-        $params = (array) $request->getParsedBody();
-
-        $title = $this->html_service->sanitize($params['title']);
-        $html  = $this->html_service->sanitize($params['html']);
-
-        $languages = $params['languages'] ?? [];
+        $title          = Validator::parsedBody($request)->string('title');
+        $html           = Validator::parsedBody($request)->string('html');
+        $show_timestamp = Validator::parsedBody($request)->boolean('show_timestamp');
+        $languages      = Validator::parsedBody($request)->array('languages');
 
         $this->setBlockSetting($block_id, 'title', $title);
-        $this->setBlockSetting($block_id, 'html', $html);
-        $this->setBlockSetting($block_id, 'show_timestamp', $params['show_timestamp']);
-        $this->setBlockSetting($block_id, 'timestamp', (string) Carbon::now()->unix());
+        $this->setBlockSetting($block_id, 'html', $this->html_service->sanitize($html));
+        $this->setBlockSetting($block_id, 'show_timestamp', (string) $show_timestamp);
+        $this->setBlockSetting($block_id, 'timestamp', (string) time());
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
     }
 
@@ -187,9 +188,9 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface
         $languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
         $templates = [
-            $html                                    => I18N::translate('Custom'),
-            view('modules/html/template-keywords')   => I18N::translate('Keyword examples'),
-            view('modules/html/template-narrative')  => I18N::translate('Narrative description'),
+            $html                                                       => I18N::translate('Custom'),
+            view('modules/html/template-keywords')                      => I18N::translate('Keyword examples'),
+            view('modules/html/template-narrative')                     => I18N::translate('Narrative description'),
             view('modules/html/template-statistics', ['tree' => $tree]) => I18N::translate('Statistics'),
         ];
 

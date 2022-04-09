@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,15 +19,15 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Contracts\UserInterface;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
@@ -37,10 +37,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function addcslashes;
-use function app;
 use function array_combine;
 use function array_unshift;
-use function assert;
 use function dirname;
 use function max;
 use function min;
@@ -56,6 +54,16 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
 
     protected const ROUTE_URL = '/tree/{tree}/media-list';
 
+    private LinkedRecordService $linked_record_service;
+
+    /**
+     * @param LinkedRecordService $linked_record_service
+     */
+    public function __construct(LinkedRecordService $linked_record_service)
+    {
+        $this->linked_record_service = $linked_record_service;
+    }
+
     /**
      * Initialization.
      *
@@ -63,10 +71,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      */
     public function boot(): void
     {
-        $router_container = app(RouterContainer::class);
-        assert($router_container instanceof RouterContainer);
-
-        $router_container->getMap()
+        Registry::routeFactory()->routeMap()
             ->get(static::class, static::ROUTE_URL, $this)
             ->allows(RequestMethodInterface::METHOD_POST);
     }
@@ -104,8 +109,8 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
     }
 
     /**
-     * @param Tree                              $tree
-     * @param array<bool|int|string|array|null> $parameters
+     * @param Tree                                      $tree
+     * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
      */
@@ -145,7 +150,9 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      */
     public function getListAction(ServerRequestInterface $request): ResponseInterface
     {
-        return redirect($this->listUrl($request->getAttribute('tree'), $request->getQueryParams()));
+        $tree = Validator::attributes($request)->tree();
+
+        return redirect($this->listUrl($tree, $request->getQueryParams()));
     }
 
     /**
@@ -155,11 +162,8 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $user = $request->getAttribute('user');
-        assert($user instanceof UserInterface);
+        $tree = Validator::attributes($request)->tree();
+        $user = Validator::attributes($request)->user();
 
         $data_filesystem = Registry::filesystem()->data();
 
@@ -203,21 +207,22 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
         $media_objects = $media_objects->slice(($page - 1) * $max, $max);
 
         return $this->viewResponse('modules/media-list/page', [
-            'count'           => $count,
-            'filter'          => $filter,
-            'folder'          => $folder,
-            'folders'         => $folders,
-            'format'          => $format,
-            'formats'         => $formats,
-            'max'             => $max,
-            'media_objects'   => $media_objects,
-            'page'            => $page,
-            'pages'           => $pages,
-            'subdirs'         => $subdirs,
-            'data_filesystem' => $data_filesystem,
-            'module'          => $this,
-            'title'           => I18N::translate('Media'),
-            'tree'            => $tree,
+            'count'                 => $count,
+            'filter'                => $filter,
+            'folder'                => $folder,
+            'folders'               => $folders,
+            'format'                => $format,
+            'formats'               => $formats,
+            'linked_record_service' => $this->linked_record_service,
+            'max'                   => $max,
+            'media_objects'         => $media_objects,
+            'page'                  => $page,
+            'pages'                 => $pages,
+            'subdirs'               => $subdirs,
+            'data_filesystem'       => $data_filesystem,
+            'module'                => $this,
+            'title'                 => I18N::translate('Media'),
+            'tree'                  => $tree,
         ]);
     }
 
@@ -259,7 +264,7 @@ class MediaListModule extends AbstractModule implements ModuleListInterface, Req
      * @param string $filter     optional search string
      * @param string $format     option OBJE/FILE/FORM/TYPE
      *
-     * @return Collection<Media>
+     * @return Collection<int,Media>
      */
     private function allMedia(Tree $tree, string $folder, string $subfolders, string $sort, string $filter, string $format): Collection
     {

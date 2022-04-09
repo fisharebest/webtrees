@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -39,7 +39,7 @@ class CheckForMaintenanceMode implements MiddlewareInterface, StatusCodeInterfac
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (file_exists(Webtrees::OFFLINE_FILE)) {
+        if (file_exists(Webtrees::OFFLINE_FILE) && !is_dir(Webtrees::OFFLINE_FILE)) {
             $html = view('layouts/offline', [
                 'message' => file_get_contents(Webtrees::OFFLINE_FILE),
                 'url'     => (string) $request->getUri(),

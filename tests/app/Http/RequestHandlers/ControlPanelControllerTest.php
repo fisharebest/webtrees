@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -17,12 +17,14 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Controllers\Admin;
+namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
-use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Services\AdminService;
+use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\HousekeepingService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\ServerCheckService;
 use Fisharebest\Webtrees\Services\TimeoutService;
@@ -45,17 +47,19 @@ class ControlPanelControllerTest extends TestCase
      */
     public function testControlPanel(): void
     {
-        $admin_service        = new AdminService();
-        $module_service       = new ModuleService();
-        $housekeeping_service = new HousekeepingService();
-        $server_check_service = new ServerCheckService();
-        $timeout_service      = new TimeoutService();
-        $tree_service         = new TreeService();
-        $upgrade_service      = new UpgradeService($timeout_service);
-        $user_service         = new UserService();
-        $handler              = new ControlPanel($admin_service, $housekeeping_service, $module_service, $server_check_service, $tree_service, $upgrade_service, $user_service);
-        $request              = self::createRequest();
-        $response             = $handler->handle($request);
+        $admin_service         = new AdminService();
+        $message_service       = new MessageService(new EmailService(), new UserService());
+        $module_service        = new ModuleService();
+        $housekeeping_service  = new HousekeepingService();
+        $server_check_service  = new ServerCheckService();
+        $timeout_service       = new TimeoutService();
+        $gedcom_import_service = new GedcomImportService();
+        $tree_service          = new TreeService($gedcom_import_service);
+        $upgrade_service       = new UpgradeService($timeout_service);
+        $user_service          = new UserService();
+        $handler               = new ControlPanel($admin_service, $housekeeping_service, $message_service, $module_service, $server_check_service, $tree_service, $upgrade_service, $user_service);
+        $request               = self::createRequest();
+        $response              = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
     }

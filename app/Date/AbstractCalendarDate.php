@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\ExtCalendar\JewishCalendar;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Http\RequestHandlers\CalendarPage;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use InvalidArgumentException;
 
@@ -137,7 +137,7 @@ abstract class AbstractCalendarDate
         // ...else construct an inequivalent xxxxDate object
         if ($date->year === 0) {
             // Incomplete date - convert on basis of anniversary in current year
-            $today = $date->calendar->jdToYmd(Carbon::now()->julianDay());
+            $today = $date->calendar->jdToYmd(Registry::timestampFactory()->now()->julianDay());
             $jd    = $date->calendar->ymdToJd($today[0], $date->month, $date->day === 0 ? $today[2] : $date->day);
         } else {
             // Complete date
@@ -467,14 +467,14 @@ abstract class AbstractCalendarDate
         // %j. %F %Y
         // Don’t show exact details or unnecessary punctuation for inexact dates.
         if ($this->day === 0) {
-            $format = strtr($format, ['%d' => '', '%j日' => '', '%j,' => '', '%j' => '', '%l' => '', '%D' => '', '%N' => '', '%S' => '', '%w' => '', '%z' => '']);
+            $format = strtr($format, ['%d' => '', '日' => '', '%j,' => '', '%j' => '', '%l' => '', '%D' => '', '%N' => '', '%S' => '', '%w' => '', '%z' => '']);
         }
         if ($this->month === 0) {
-            $format = strtr($format, ['%F' => '', '%m' => '', '%M' => '', '年 %n月' => '', '%n' => '', '%t' => '']);
+            $format = strtr($format, ['%F' => '', '%m' => '', '%M' => '', '月' => '', '%n' => '', '%t' => '']);
         }
         if ($this->year === 0) {
-            $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '%Y年' => '', '%Y' => '']);
-        }
+            $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '年' => '', '%Y' => '']);
+        }// 年 %n月%j日
         $format = trim($format, ',. /-');
 
         if ($this->day !== 0 && preg_match('/%[djlDNSwz]/', $format)) {
@@ -843,7 +843,7 @@ abstract class AbstractCalendarDate
      */
     public function todayYmd(): array
     {
-        return $this->calendar->jdToYmd(Carbon::now()->julianDay());
+        return $this->calendar->jdToYmd(Registry::timestampFactory()->now()->julianDay());
     }
 
     /**

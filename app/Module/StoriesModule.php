@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,21 +20,19 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\HtmlService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 use function route;
 
@@ -217,7 +215,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $this->layout = 'layouts/administration';
 
         // This module can't run without a tree
-        $tree = $request->getAttribute('tree');
+        $tree = Validator::attributes($request)->treeOptional();
 
         if (!$tree instanceof Tree) {
             $tree = $this->tree_service->all()->first();
@@ -281,12 +279,9 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
     {
         $this->layout = 'layouts/administration';
 
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
-
-        $url = $request->getQueryParams()['url'] ?? '';
+        $tree     = Validator::attributes($request)->tree();
+        $block_id = Validator::queryParams($request)->integer('block_id', 0);
+        $url      = Validator::queryParams($request)->string('url', '');
 
         if ($block_id === 0) {
             // Creating a new story
@@ -328,19 +323,14 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminEditAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $block_id = (int) ($request->getQueryParams()['block_id'] ?? 0);
-
-        $params = (array) $request->getParsedBody();
-
-        $xref        = $params['xref'];
-        $story_body  = $params['story_body'];
-        $story_title = $params['story_title'];
-        $languages   = $params['languages'] ?? [];
-        $url         = $params['url'] ?? '';
-
+        $tree        = Validator::attributes($request)->tree();
+        $block_id    = Validator::queryParams($request)->integer('block_id', 0);
+        $xref        = Validator::parsedBody($request)->string('xref');
+        $story_body  = Validator::parsedBody($request)->string('story_body');
+        $story_title = Validator::parsedBody($request)->string('story_title');
+        $languages   = Validator::parsedBody($request)->array('languages');
+        $default_url = route('module', ['module' => $this->name(), 'action' => 'Admin', 'tree' => $tree->name()]);
+        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
         $story_body  = $this->html_service->sanitize($story_body);
 
         if ($block_id !== 0) {
@@ -365,12 +355,6 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
         $this->setBlockSetting($block_id, 'title', $story_title);
         $this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 
-        $url = $url ?: route('module', [
-            'module' => $this->name(),
-            'action' => 'Admin',
-            'tree'    => $tree->name(),
-        ]);
-
         return redirect($url);
     }
 
@@ -381,9 +365,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function postAdminDeleteAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
+        $tree     = Validator::attributes($request)->tree();
         $block_id = $request->getQueryParams()['block_id'];
 
         DB::table('block_setting')
@@ -410,8 +392,7 @@ class StoriesModule extends AbstractModule implements ModuleConfigInterface, Mod
      */
     public function getShowListAction(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
+        $tree = Validator::attributes($request)->tree();
 
         $stories = DB::table('block')
             ->where('module_name', '=', $this->name())

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -61,13 +61,13 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
             });
 
         return response($data)
-            ->withHeader('Cache-Control', 'public,max-age=' . static::CACHE_LIFE);
+            ->withHeader('cache-control', 'public,max-age=' . static::CACHE_LIFE);
     }
 
     /**
      * @param ServerRequestInterface $request
      *
-     * @return Collection<string>
+     * @return Collection<int,string>
      */
     abstract protected function search(ServerRequestInterface $request): Collection;
 }

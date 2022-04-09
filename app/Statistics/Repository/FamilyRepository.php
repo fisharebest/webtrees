@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -38,6 +38,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 use function arsort;
 use function asort;
@@ -144,7 +145,7 @@ class FamilyRepository
      *
      * @param int $total
      *
-     * @return array<object>
+     * @return array<array<string,int|Family>>
      */
     private function topTenGrandFamilyQuery(int $total): array
     {
@@ -557,7 +558,7 @@ class FamilyRepository
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<object>
+     * @return array<stdClass>
      */
     public function statsChildrenQuery(int $year1 = -1, int $year2 = -1): array
     {
@@ -847,7 +848,7 @@ class FamilyRepository
             ->first();
 
         if ($row === null) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         $person = Registry::individualFactory()->make($row->id, $this->tree);
@@ -1393,7 +1394,7 @@ class FamilyRepository
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<object>
+     * @return array<stdClass>
      */
     public function statsMarrAgeQuery(string $sex, int $year1 = -1, int $year2 = -1): array
     {
@@ -1425,7 +1426,7 @@ class FamilyRepository
 
         return $query
             ->get()
-            ->map(static function (object $row): object {
+            ->map(static function (stdClass $row): stdClass {
                 $row->age = (int) $row->age;
 
                 return $row;
@@ -1497,7 +1498,7 @@ class FamilyRepository
             ->first();
 
         if ($row === null) {
-            return '';
+            return I18N::translate('This information is not available.');
         }
 
         $family = Registry::familyFactory()->make($row->famid, $this->tree);

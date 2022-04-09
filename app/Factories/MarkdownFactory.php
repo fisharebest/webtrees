@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,11 +32,21 @@ use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\MarkdownConverter;
 use League\CommonMark\Node\Block\Document;
 use League\CommonMark\Node\Block\Paragraph;
+use League\CommonMark\Node\Inline\Newline;
 use League\CommonMark\Node\Inline\Text;
+use League\CommonMark\Parser\Inline\NewlineParser;
 use League\CommonMark\Renderer\Block\DocumentRenderer;
 use League\CommonMark\Renderer\Block\ParagraphRenderer;
+use League\CommonMark\Renderer\Inline\NewlineRenderer;
 use League\CommonMark\Renderer\Inline\TextRenderer;
 use League\CommonMark\Util\HtmlFilter;
+
+use function e;
+use function rtrim;
+use function strip_tags;
+use function strtr;
+use function trim;
+use function var_dump;
 
 /**
  * Create a markdown converter.
@@ -46,11 +56,17 @@ class MarkdownFactory implements MarkdownFactoryInterface
     protected const CONFIG_AUTOLINK = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
+        'renderer'           => [
+            'soft_break'     => '<br>',
+        ],
     ];
 
     protected const CONFIG_MARKDOWN = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
+        'renderer'           => [
+            'soft_break'     => '<br>',
+        ],
         'table'              => [
             'wrap' => [
                 'enabled'    => true,
@@ -72,10 +88,12 @@ class MarkdownFactory implements MarkdownFactoryInterface
     {
         // Create a minimal commonmark processor - just add support for auto-links.
         $environment = new Environment(static::CONFIG_AUTOLINK);
+        $environment->addInlineParser(new NewlineParser());
         $environment->addRenderer(Document::class, new DocumentRenderer());
         $environment->addRenderer(Paragraph::class, new ParagraphRenderer());
         $environment->addRenderer(Text::class, new TextRenderer());
         $environment->addRenderer(Link::class, new LinkRenderer());
+        $environment->addRenderer(Newline::class, new NewlineRenderer());
         $environment->addExtension(new AutolinkExtension());
 
         // Optionally create links to other records.
@@ -85,7 +103,10 @@ class MarkdownFactory implements MarkdownFactoryInterface
 
         $converter = new MarkDownConverter($environment);
 
-        return $converter->convert($markdown)->getContent();
+        $html = $converter->convert($markdown)->getContent();
+        $html = strtr($html, ["</p>\n<p>" => '<br><br>' ]);
+
+        return trim(strip_tags($html, ['a', 'br']));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -147,9 +147,9 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             Relationship::fixed('prastarý otec', '%s prastarého otca')->parent()->parent()->mother(),
             Relationship::fixed('prastarý otec', '%s prastarého otca')->parent()->parent()->parent(),
             // Ancestors
-            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'prastarý otec', '%s prastarého otca'))->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'prastará matka', '%s prastarej matky'))->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'prastarý rodič', '%s prastarého rodiča'))->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'prastarý otec', '%s prastarého otca'))->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'prastará matka', '%s prastarej matky'))->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'prastarý rodič', '%s prastarého rodiča'))->ancestor(),
             // Grandchildren
             Relationship::fixed('vnuk', '%s vnuka')->child()->son(),
             Relationship::fixed('vnučka', '%s vnučky')->child()->daughter(),
@@ -159,9 +159,9 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             Relationship::fixed('pravnučka', '%s pravnučky')->child()->child()->daughter(),
             Relationship::fixed('pravnúča', '%s pravnúčaťa')->child()->child()->child(),
             // Descendants
-            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'pravnuk', '%s pravnuka'))->ancestor()->male(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'pravnučka', '%s pravnučky'))->ancestor()->female(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 1, 'pravnúča', '%s pravnúčaťa'))->ancestor(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'pravnuk', '%s pravnuka'))->ancestor()->male(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'pravnučka', '%s pravnučky'))->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 1, 'pravnúča', '%s pravnúčaťa'))->ancestor(),
             // Aunts and uncles
             Relationship::fixed('ujo', '%s uja')->mother()->brother(),
             Relationship::fixed('ujčiná', '%s ujčinej')->mother()->brother()->wife(),
@@ -169,20 +169,20 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
             Relationship::fixed('strýko', '%s strýka')->parent()->brother(),
             Relationship::fixed('teta', '%s tety')->parent()->sister(),
             // Great-aunts and great-uncles
-            Relationship::dynamic(fn (int $n) => $pra($n - 2, 'prastrýko', '%s prastrýka'))->ancestor()->brother(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 2, 'prateta', '%s pratety'))->ancestor()->sister(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'prastrýko', '%s prastrýka'))->ancestor()->brother(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'prateta', '%s pratety'))->ancestor()->sister(),
             // Nieces and nephews
             Relationship::fixed('synovec', '%s synovca')->sibling()->son(),
             Relationship::fixed('neter', '%s netere')->sibling()->daughter(),
             // Great-nieces and great-nephews
             Relationship::fixed('prasynovec', '%s prasynovca')->sibling()->child()->son(),
             Relationship::fixed('praneter', '%s pranetere')->sibling()->child()->daughter(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 2, 'prasynovec', '%s prasynovca'))->sibling()->descendant()->son(),
-            Relationship::dynamic(fn (int $n) => $pra($n - 2, 'praneter', '%s pranetere'))->sibling()->descendant()->daughter(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'prasynovec', '%s prasynovca'))->sibling()->descendant()->son(),
+            Relationship::dynamic(static fn (int $n) => $pra($n - 2, 'praneter', '%s pranetere'))->sibling()->descendant()->daughter(),
             // Cousins
-            Relationship::dynamic(fn (int $n): array => $cousin($n, static::FEMALE_COUSINS, '', ''))->symmetricCousin()->female(),
-            Relationship::dynamic(fn (int $n): array => $cousin($n, static::MALE_COUSINS, '', ''))->symmetricCousin()->male(),
-            Relationship::dynamic(fn (int $n): array => $cousin($n, static::MALE_COUSINS, '', ''))->symmetricCousin(),
+            Relationship::dynamic(static fn (int $n): array => $cousin($n, static::FEMALE_COUSINS, '', ''))->symmetricCousin()->female(),
+            Relationship::dynamic(static fn (int $n): array => $cousin($n, static::MALE_COUSINS, '', ''))->symmetricCousin()->male(),
+            Relationship::dynamic(static fn (int $n): array => $cousin($n, static::MALE_COUSINS, '', ''))->symmetricCousin(),
         ];
     }
 }

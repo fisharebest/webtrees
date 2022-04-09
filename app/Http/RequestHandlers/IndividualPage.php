@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -90,19 +90,14 @@ class IndividualPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree       = Validator::attributes($request)->tree();
+        $xref       = Validator::attributes($request)->isXref()->string('xref');
+        $slug       = Validator::attributes($request)->string('slug', '');
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($individual);
-
-        if ($individual->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+        if ($individual->xref() !== $xref || Registry::slugFactory()->make($individual) !== $slug) {
             return redirect($individual->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
@@ -247,7 +242,7 @@ class IndividualPage implements RequestHandlerInterface
      *
      * @param Individual $individual
      *
-     * @return Collection<ModuleSidebarInterface>
+     * @return Collection<int,ModuleSidebarInterface>
      */
     public function getSidebars(Individual $individual): Collection
     {
@@ -264,7 +259,7 @@ class IndividualPage implements RequestHandlerInterface
      *
      * @param Individual $individual
      *
-     * @return Collection<ModuleTabInterface>
+     * @return Collection<int,ModuleTabInterface>
      */
     public function getTabs(Individual $individual): Collection
     {

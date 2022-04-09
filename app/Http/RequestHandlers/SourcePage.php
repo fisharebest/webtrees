@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,13 +24,12 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function assert;
-use function is_string;
 use function redirect;
 
 /**
@@ -42,14 +41,16 @@ class SourcePage implements RequestHandlerInterface
 
     private ClipboardService $clipboard_service;
 
+    private LinkedRecordService $linked_record_service;
+
     /**
-     * SourcePage constructor.
-     *
      * @param ClipboardService $clipboard_service
+     * @param LinkedRecordService $linked_record_service
      */
-    public function __construct(ClipboardService $clipboard_service)
+    public function __construct(ClipboardService $clipboard_service, LinkedRecordService $linked_record_service)
     {
-        $this->clipboard_service = $clipboard_service;
+        $this->clipboard_service     = $clipboard_service;
+        $this->linked_record_service = $linked_record_service;
     }
 
     /**
@@ -59,29 +60,29 @@ class SourcePage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $slug   = Validator::attributes($request)->string('slug', '');
         $record = Registry::sourceFactory()->make($xref, $tree);
         $record = Auth::checkSourceAccess($record, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($record);
-
-        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+        if ($record->xref() !== $xref || Registry::slugFactory()->make($record) !== $slug) {
             return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
+        $linked_locations = $this->linked_record_service->linkedLocations($record);
+
         return $this->viewResponse('record-page', [
             'clipboard_facts'      => $this->clipboard_service->pastableFacts($record),
-            'linked_families'      => $record->linkedFamilies('SOUR'),
-            'linked_individuals'   => $record->linkedIndividuals('SOUR'),
-            'linked_media_objects' => $record->linkedMedia('SOUR'),
-            'linked_notes'         => $record->linkedNotes('SOUR'),
+            'linked_families'      => $this->linked_record_service->linkedFamilies($record),
+            'linked_individuals'   => $this->linked_record_service->linkedIndividuals($record),
+            'linked_locations'     => $linked_locations->isEmpty() ? null : $linked_locations,
+            'linked_media_objects' => $this->linked_record_service->linkedMedia($record),
+            'linked_notes'         => $this->linked_record_service->linkedNotes($record),
+            'linked_repositories'  => null,
             'linked_sources'       => null,
+            'linked_submitters'    => null,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',
             'record'               => $record,

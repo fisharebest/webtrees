@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -48,6 +47,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
+use stdClass;
 
 use function app;
 use function array_key_exists;
@@ -582,10 +582,13 @@ class IndividualRepository implements IndividualRepositoryInterface
                 break;
         }
 
-        //find a module providing individual lists
-        $module = app(ModuleService::class)->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())->first(static function (ModuleInterface $module): bool {
-            return $module instanceof IndividualListModule;
-        });
+        // find a module providing individual lists
+        $module_service = app(ModuleService::class);
+        assert($module_service instanceof ModuleService);
+
+        $module = $module_service
+            ->findByComponent(ModuleListInterface::class, $this->tree, Auth::user())
+            ->first(static fn (ModuleInterface $module): bool => $module instanceof IndividualListModule);
 
         if ($type === 'list') {
             return view('lists/surnames-bullet-list', [
@@ -796,7 +799,7 @@ class IndividualRepository implements IndividualRepositoryInterface
      * @param int    $year1
      * @param int    $year2
      *
-     * @return array<object>
+     * @return array<stdClass>
      */
     public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {
@@ -1156,7 +1159,7 @@ class IndividualRepository implements IndividualRepositoryInterface
             ->map(function (Individual $individual): array {
                 return [
                     'person' => $individual,
-                    'age'    => $this->calculateAge(Carbon::now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
+                    'age'    => $this->calculateAge(Registry::timestampFactory()->now()->julianDay() - $individual->getBirthDate()->minimumJulianDay()),
                 ];
             })
             ->all();

@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Statistics\Repository;
 
-use Fisharebest\Webtrees\Carbon;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\BrowserRepositoryInterface;
 
 /**
@@ -35,7 +35,7 @@ class BrowserRepository implements BrowserRepositoryInterface
     {
         $format = strtr(I18N::dateFormat(), ['%' => '']);
 
-        return Carbon::now()->local()->format($format);
+        return Registry::timestampFactory()->now()->format($format);
     }
 
     /**
@@ -45,7 +45,7 @@ class BrowserRepository implements BrowserRepositoryInterface
     {
         $format = strtr(I18N::timeFormat(), ['%' => '']);
 
-        return Carbon::now()->local()->format($format);
+        return Registry::timestampFactory()->now()->format($format);
     }
 
     /**
@@ -53,6 +53,6 @@ class BrowserRepository implements BrowserRepositoryInterface
      */
     public function browserTimezone(): string
     {
-        return Carbon::now()->local()->format('T');
+        return Registry::timestampFactory()->now()->format('T');
     }
 }

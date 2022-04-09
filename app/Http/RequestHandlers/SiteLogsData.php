@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,9 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Carbon;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -56,17 +57,17 @@ class SiteLogsData implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $this->site_logs_service->logsQuery($request->getQueryParams());
+        $query = $this->site_logs_service->logsQuery($request);
 
         return $this->datatables_service->handleQuery($request, $query, [], [], static function (object $row): array {
             return [
                 $row->log_id,
-                Carbon::make($row->log_time)->local()->format('Y-m-d H:i:s'),
+                Registry::timestampFactory()->fromString($row->log_time)->toDateTimeString(),
                 $row->log_type,
-                '<bdi>' . e($row->log_message) . '</bdi>',
-                '<bdi>' . e($row->ip_address) . '</bdi>',
-                '<bdi>' . e($row->user_name) . '</bdi>',
-                '<bdi>' . e($row->gedcom_name) . '</bdi>',
+                '<span class="ut">' . e($row->log_message) . '</span>',
+                e($row->ip_address),
+                '<span class="ut">' . e($row->user_name) . '</span>',
+                '<span class="ut">' . e($row->gedcom_name) . '</span>',
             ];
         });
     }

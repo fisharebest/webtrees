@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,10 +43,10 @@ class AgeAtEventTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('CHILD', self::$element->canonical("cHiLd"));
-        self::assertSame('INFANT', self::$element->canonical("iNfAnT "));
-        self::assertSame('STILLBORN', self::$element->canonical(" sTiLlBoRn"));
-        self::assertSame('fish', self::$element->canonical("fIsH"));
-        self::assertSame('1y 2m 3d', self::$element->canonical("1Y  2M  3D"));
+        self::assertSame('CHILD', self::$element->canonical('cHiLd'));
+        self::assertSame('INFANT', self::$element->canonical('iNfAnT '));
+        self::assertSame('STILLBORN', self::$element->canonical(' sTiLlBoRn'));
+        self::assertSame('fish', self::$element->canonical('fIsH'));
+        self::assertSame('1y 2m 3d', self::$element->canonical('1Y  2M  3D'));
     }
 }

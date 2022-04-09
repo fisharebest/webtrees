@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -28,6 +28,8 @@ use Fisharebest\Webtrees\TestCase;
  */
 class GedcomEditServiceTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     /**
      * @covers \Fisharebest\Webtrees\Services\GedcomEditService::editLinesToGedcom
      */
@@ -35,8 +37,8 @@ class GedcomEditServiceTest extends TestCase
     {
         $gedcom_edit_service = new GedcomEditService();
 
-        $this->assertSame(
-            "1 BIRT Y",
+        static::assertSame(
+            '1 BIRT Y',
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1'],
@@ -45,7 +47,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT Y\n2 ADDR England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -55,7 +57,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -65,7 +67,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England\n2 SOUR @S1@\n3 PAGE 123",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -76,7 +78,7 @@ class GedcomEditServiceTest extends TestCase
         );
 
         // Missing SOUR, so ignore PAGE
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -86,7 +88,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -96,7 +98,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "1 BIRT\n2 PLAC England\n1 DEAT\n2 PLAC Scotland",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
@@ -106,7 +108,7 @@ class GedcomEditServiceTest extends TestCase
             )
         );
 
-        $this->assertSame(
+        static::assertSame(
             "0 NOTE @N1@\n1 CONC foo\n1 CONT bar\n1 RESN locked",
             $gedcom_edit_service->editLinesToGedcom(
                 'NOTE',

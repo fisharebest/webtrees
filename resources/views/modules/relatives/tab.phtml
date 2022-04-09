@@ -12,13 +12,13 @@ use Fisharebest\Webtrees\Individual;
 use Illuminate\Support\Collection;
 
 /**
- * @var bool               $can_edit
- * @var int                $fam_access_level
- * @var Individual         $individual
- * @var Collection<Family> $parent_families
- * @var Collection<Family> $spouse_families
- * @var Collection<Family> $step_child_families
- * @var Collection<Family> $step_parent_families
+ * @var bool                   $can_edit
+ * @var int                    $fam_access_level
+ * @var Individual             $individual
+ * @var Collection<int,Family> $parent_families
+ * @var Collection<int,Family> $spouse_families
+ * @var Collection<int,Family> $step_child_families
+ * @var Collection<int,Family> $step_parent_families
  */
 
 ?>
@@ -31,34 +31,13 @@ use Illuminate\Support\Collection;
         <tr>
             <td>
                 <label>
-                    <input id="show-date-differences" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-date-difference" data-wt-persist="date-differences">
+                    <input id="show-date-differences" type="checkbox" data-bs-toggle="collapse" data-bs-target=".wt-date-difference" data-wt-persist="date-differences" autocomplete="off">
                     <?= I18N::translate('Date differences') ?>
                 </label>
             </td>
         </tr>
     </tbody>
 </table>
-
-<?php if ($can_edit && $parent_families->isEmpty()) : ?>
-    <table class="table table-sm wt-facts-table" role="presentation">
-        <tbody>
-            <tr>
-                <td>
-                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= I18N::translate('Add a father') ?>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
-                        <?= I18N::translate('Add a mother') ?>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<?php endif ?>
 
 <!-- Parents -->
 <?php foreach ($parent_families as $family) : ?>
@@ -118,6 +97,24 @@ use Illuminate\Support\Collection;
                     </td>
                 </tr>
             <?php endif ?>
+
+            <?php if ($parent_families->isEmpty()) : ?>
+                <tr>
+                    <td>
+                        <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'M', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                            <?= I18N::translate('Add a father') ?>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="<?= e(route(AddParentToIndividualPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref(), 'sex' => 'F', 'url' => $individual->url() . '#tab-relatives'])) ?>">
+                            <?= I18N::translate('Add a mother') ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endif ?>
+
             <tr>
                 <td>
                     <a href="<?= e(route(LinkChildToFamilyPage::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>">

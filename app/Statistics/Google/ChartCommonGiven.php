@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -44,7 +44,7 @@ class ChartCommonGiven
      * Create a chart of common given names.
      *
      * @param int         $tot_indi   The total number of individuals
-     * @param array       $given      The list of common given names
+     * @param array<int>  $given      The list of common given names
      * @param string|null $color_from
      * @param string|null $color_to
      *

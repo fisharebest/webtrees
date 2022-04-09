@@ -9,8 +9,8 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 /**
- * @var Collection<Repository> $repositories
- * @var Tree                   $tree
+ * @var Collection<int,Repository> $repositories
+ * @var Tree                       $tree
  */
 
 ?>
@@ -69,7 +69,7 @@ $count_sources = DB::table('sources')
                 </td>
 
                 <!-- Last change -->
-                <td data-sort="<?= $repository->lastChangeTimestamp()->unix() ?>">
+                <td data-sort="<?= $repository->lastChangeTimestamp()->timestamp() ?>">
                     <?= view('components/datetime', ['timestamp' => $repository->lastChangeTimestamp()]) ?>
                 </td>
             </tr>

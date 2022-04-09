@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +21,9 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\RelationshipService;
+
+use function app;
+use function assert;
 
 /**
  * Relationship to head of household.
@@ -43,6 +46,9 @@ class CensusColumnRelationToHead extends AbstractCensusColumn implements CensusC
             return static::HEAD_OF_HOUSEHOLD;
         }
 
-        return app(RelationshipService::class)->getCloseRelationshipName($head, $individual);
+        $relationship_service = app(RelationshipService::class);
+        assert($relationship_service instanceof RelationshipService);
+
+        return $relationship_service->getCloseRelationshipName($head, $individual);
     }
 }

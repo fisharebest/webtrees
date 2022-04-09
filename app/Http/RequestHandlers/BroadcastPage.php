@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Services\MessageService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -52,28 +52,20 @@ class BroadcastPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $user    = $request->getAttribute('user');
-        $params  = $request->getQueryParams();
-        $body    = $params['body'] ?? '';
-        $subject = $params['subject'] ?? '';
-        $to      = $params['to'];
+        $recipient_types = $this->message_service->recipientTypes();
 
-        $to_names = $this->message_service->recipientUsers($to)
-            ->map(static function (UserInterface $user): string {
-                return $user->realName();
-            });
+        $user = Validator::attributes($request)->user();
+        $to   = Validator::attributes($request)->isInArrayKeys($recipient_types)->string('to');
 
-        $title = $this->message_service->recipientDescription($to);
+        $title = $recipient_types[$to];
 
         $this->layout = 'layouts/administration';
 
         return $this->viewResponse('admin/broadcast', [
-            'body'     => $body,
-            'from'     => $user,
-            'subject'  => $subject,
-            'title'    => $title,
-            'to'       => $to,
-            'to_names' => $to_names,
+            'from'       => $user,
+            'title'      => $title,
+            'to'         => $to,
+            'recipients' => $this->message_service->recipientUsers($to),
         ]);
     }
 }

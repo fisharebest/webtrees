@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -23,7 +23,8 @@ use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Services\LinkedRecordService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -47,19 +48,14 @@ class HeaderPage implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = $request->getAttribute('tree');
-        assert($tree instanceof Tree);
-
-        $xref = $request->getAttribute('xref');
-        assert(is_string($xref));
-
+        $tree   = Validator::attributes($request)->tree();
+        $xref   = Validator::attributes($request)->isXref()->string('xref');
+        $slug   = Validator::attributes($request)->string('slug', '');
         $header = Registry::headerFactory()->make($xref, $tree);
         $header = Auth::checkHeaderAccess($header, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($header);
-
-        if ($header->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+        if ($header->xref() !== $xref || Registry::slugFactory()->make($header) !== $slug) {
             return redirect($header->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
@@ -67,9 +63,12 @@ class HeaderPage implements RequestHandlerInterface
             'clipboard_facts'      => new Collection(),
             'linked_families'      => null,
             'linked_individuals'   => null,
+            'linked_locations'     => null,
             'linked_media_objects' => null,
             'linked_notes'         => null,
+            'linked_repositories'  => null,
             'linked_sources'       => null,
+            'linked_submitters'    => null,
             'meta_description'     => '',
             'meta_robots'          => 'index,follow',
             'record'               => $header,

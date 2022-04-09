@@ -2,7 +2,7 @@
 
 /**
  * webtrees: online genealogy
- * Copyright (C) 2021 webtrees development team
+ * Copyright (C) 2022 webtrees development team
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -45,8 +45,10 @@ use function implode;
 use function max;
 use function preg_replace;
 use function preg_split;
+use function str_ends_with;
 use function str_repeat;
 use function str_replace;
+use function str_starts_with;
 use function substr_count;
 use function trim;
 
@@ -62,7 +64,7 @@ class GedcomEditService
     /**
      * @param Tree $tree
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function newFamilyFacts(Tree $tree): Collection
     {
@@ -78,7 +80,7 @@ class GedcomEditService
      * @param string        $sex
      * @param array<string> $names
      *
-     * @return Collection<Fact>
+     * @return Collection<int,Fact>
      */
     public function newIndividualFacts(Tree $tree, string $sex, array $names): Collection
     {
@@ -183,7 +185,10 @@ class GedcomEditService
      */
     public function insertMissingFactSubtags(Fact $fact, bool $include_hidden): string
     {
-        return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $fact->gedcom(), $include_hidden);
+        // Merge CONT records onto their parent line.
+        $gedcom = preg_replace('/\n\d CONT ?/', "\r", $fact->gedcom());
+
+        return $this->insertMissingLevels($fact->record()->tree(), $fact->tag(), $gedcom, $include_hidden);
     }
 
     /**
@@ -196,7 +201,10 @@ class GedcomEditService
      */
     public function insertMissingRecordSubtags(GedcomRecord $record, bool $include_hidden): string
     {
-        $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $record->gedcom(), $include_hidden);
+        // Merge CONT records onto their parent line.
+        $gedcom = preg_replace('/\n\d CONT ?/', "\r", $record->gedcom());
+
+        $gedcom = $this->insertMissingLevels($record->tree(), $record->tag(), $gedcom, $include_hidden);
 
         // NOTE records have data at level 0.  Move it to 1 CONC.
         if ($record instanceof Note) {
@@ -247,18 +255,14 @@ class GedcomEditService
         $factory    = Registry::elementFactory();
         $subtags    = $factory->make($tag)->subtags();
 
-        // Merge CONT records onto their parent line.
-        $gedcom = strtr($gedcom, [
-            "\n" . $next_level . ' CONT ' => "\r",
-            "\n" . $next_level . ' CONT' => "\r",
-        ]);
-
         // The first part is level N.  The remainder are level N+1.
         $parts  = preg_split('/\n(?=' . $next_level . ')/', $gedcom);
         $return = array_shift($parts) ?? '';
 
         foreach ($subtags as $subtag => $occurrences) {
-            if (!$include_hidden && $this->isHiddenTag($tag . ':' . $subtag)) {
+            $hidden = str_ends_with($occurrences, ':?') || $this->isHiddenTag($tag . ':' . $subtag);
+
+            if (!$include_hidden && $hidden) {
                 continue;
             }
 
