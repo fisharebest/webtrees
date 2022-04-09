@@ -120,19 +120,14 @@ use Fisharebest\Webtrees\I18N;
           });
           const mkr = mkrLayer.pop();
 
-          if (mkr instanceof L.Layer) {
-            map
-            .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
-            .once('moveend', () => {
-                webtrees.leafletJsSpiderfyClusters(markers, mkr, spiderfyDelay);
-            });
-          } else {
-            // Should never get here
-            console.log('Error: unable to find the selected marker');
-          }
+          map
+          .flyTo(mkr.getLatLng(), popupZoomLevel, {duration: 0.75})
+          .once('moveend', () => {
+              webtrees.leafletJsSpiderfyClusters(markers, mkr, spiderfyDelay);
+          });
         }
       });
-    }
+    };
 
     _drawMap();
     _buildMapData();
