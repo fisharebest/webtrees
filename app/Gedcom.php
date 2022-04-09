@@ -1080,6 +1080,8 @@ class Gedcom
             'FAM:*:_ASSO:SOUR:PAGE'           => new WhereWithinSource(I18N::translate('Citation details')),
             'FAM:*:_ASSO:SOUR:QUAY'           => new CertaintyAssessment(I18N::translate('Quality of data')),
             'FAM:*:_WITN'                     => new CustomElement('Witness'),
+            'FAM:_ASSO'                       => new XrefAssociate(I18N::translate('Associate')),
+            'FAM:_ASSO:RELA'                  => new RelationIsDescriptor(I18N::translate('Relationship')),
             'FAM:_STAT'                       => new FamilyStatusText(I18N::translate('Family status')),
             'FAM:_TODO'                       => new ResearchTask(I18N::translate('Research task'), ['DESC' => '1:1', '_CAT' => '0:1', '_PRTY' => '0:1', 'TYPE' => '0:1', 'NOTE' => '0:M', 'DATA' => '0:1', 'STAT'  => '0:1', '_CDATE' => '0:1', '_RDATE' => '0:1', 'REPO' => '0:1', '_UID' => '0:M']),
             'FAM:_TODO:DATA'                  => new SubmitterText(I18N::translate('The solution')),
