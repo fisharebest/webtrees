@@ -48,7 +48,7 @@ class SiteLogsDelete implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $this->site_logs_service->logsQuery($request->getQueryParams())->delete();
+        $this->site_logs_service->logsQuery($request)->delete();
 
         return response();
     }

@@ -836,12 +836,28 @@ class Gedcom
 
     /**
      * @return array<string,ElementInterface>
+     *
+     * @see https://www.webtrees.net/index.php/en/forum/help-for-release-2-1-x/36664-2-1-beta-support-for-indi-even-sour-data-note-and-the-like
      */
     private function ancestryTags(): array
     {
         return [
-            'INDI:*:SOUR:_APID' => new CustomElement(I18N::translate('Ancestry PID')),
-            'INDI:_EMPLOY'      => new CustomFact(I18N::translate('Occupation')),
+            'HEAD:SOUR:_TREE'       => new CustomElement(I18N::translate('Family tree')),
+            'HEAD:SOUR:_TREE:NOTE'  => new SubmitterText(I18N::translate('Note')),
+            'HEAD:SOUR:_TREE:RIN'   => new AutomatedRecordId(I18N::translate('Record ID number')),
+            'INDI:*:SOUR:_APID'     => /* I18N: GEDCOM tag _APID */ new CustomElement(I18N::translate('Ancestry PID')),
+            'INDI:*:SOUR:DATA:NOTE' => new SubmitterText(I18N::translate('Note')),
+            'INDI:_EMPLOY'          => new CustomFact(I18N::translate('Occupation')),
+            'INDI:_FUN'             => new CustomEvent(I18N::translate('Funeral')),
+            'INDI:_INIT'            => /* I18N: GEDCOM tag _INIT - an LDS ceremony performed */ new CustomEvent(I18N::translate('Initiatory')),
+            'INDI:_ORDI'            => new CustomEvent(I18N::translate('Ordination')),
+            'INDI:_ORIG'            => new CustomFact(I18N::translate('Origin')),
+            'INDI:_DEST'            => new CustomFact(I18N::translate('Destination')),
+            'OBJE:DATE'             => new DateValue(I18N::translate('Date')),
+            'OBJE:PLAC'             => new PlaceName(I18N::translate('Place')),
+            'OBJE:_CREA'            => /* I18N: GEDCOM tag _CREA */ new CustomElement(I18N::translate('Created at')),
+            'OBJE:_ORIG'            => /* I18N: GEDCOM tag _ORIG */ new CustomElement(I18N::translate('Original text')),
+            'OBJE:_ORIG:_URL'       => new AddressWebPage(I18N::translate('URL')),
         ];
     }
 
@@ -927,7 +943,7 @@ class Gedcom
     private function familyTreeBuilderTags(): array
     {
         return [
-            '*:_UPD'              => new CustomElement(I18N::translate('Last change')), // e.g. "1 _UPD 14 APR 2012 00:14:10 GMT-5"
+            '*:_UPD'              => /* I18N: GEDCOM tag _UPD */ new CustomElement(I18N::translate('Updated at')), // e.g. "1 _UPD 14 APR 2012 00:14:10 GMT-5"
             'INDI:NAME:_AKA'      => new NamePersonal(I18N::translate('Also known as'), []),
             'OBJE:_ALBUM'         => new CustomElement(I18N::translate('Album')), // XREF to an album
             'OBJE:_DATE'          => new DateValue(I18N::translate('Date')),
@@ -1064,8 +1080,6 @@ class Gedcom
             'FAM:*:_ASSO:SOUR:PAGE'           => new WhereWithinSource(I18N::translate('Citation details')),
             'FAM:*:_ASSO:SOUR:QUAY'           => new CertaintyAssessment(I18N::translate('Quality of data')),
             'FAM:*:_WITN'                     => new CustomElement('Witnesses'),
-            'FAM:_STAT'                       => new FamilyStatusText(I18N::translate('Family status')),
-            'FAM:_TODO'                       => new ResearchTask(I18N::translate('Research task'), ['DESC' => '1:1', '_CAT' => '0:1', '_PRTY' => '0:1', 'TYPE' => '0:1', 'NOTE' => '0:M', 'DATA' => '0:1', 'STAT' => '0:1', '_CDATE' => '0:1', '_RDATE' => '0:1', 'REPO' => '0:1', '_UID' => '0:M']),
             'FAM:_TODO:DATA'                  => new SubmitterText(I18N::translate('The solution')),
             'FAM:_TODO:DATE'                  => new DateValue(I18N::translate('Creation date')),
             'FAM:_TODO:DESC'                  => new CustomElement(I18N::translate('Description')),
@@ -1140,6 +1154,11 @@ class Gedcom
             'REPO:ADDR:_NAME'                 => new CustomElement('Name of addressee'),
             'REPO:_UID'                       => new PafUid(I18N::translate('Unique identifier')),
             'SOUR:_UID'                       => new PafUid(I18N::translate('Unique identifier')),
+            'SOUR:DATA:EVEN:PLAC:_LOC'        => new XrefLocation(I18N::translate('Location')),
+            // I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
+            'SOUR:DATA:EVEN:PLAC:_MAIDENHEAD' => new MaidenheadLocator(I18N::translate('Maidenhead location code')),
+            'SOUR:DATA:EVEN:PLAC:_POST'       => new AddressPostalCode('Postal code'),
+            'SOUR:DATA:EVEN:PLAC:_POST:DATE'  => new DateValue(I18N::translate('Date')),
             'SUBM:ADDR:_NAME'                 => new CustomElement('Name of addressee'),
             'SUBM:_UID'                       => new PafUid(I18N::translate('Unique identifier')),
             'SUBN:_UID'                       => new PafUid(I18N::translate('Unique identifier')),

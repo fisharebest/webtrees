@@ -467,14 +467,14 @@ abstract class AbstractCalendarDate
         // %j. %F %Y
         // Don’t show exact details or unnecessary punctuation for inexact dates.
         if ($this->day === 0) {
-            $format = strtr($format, ['%d' => '', '%j日' => '', '%j,' => '', '%j' => '', '%l' => '', '%D' => '', '%N' => '', '%S' => '', '%w' => '', '%z' => '']);
+            $format = strtr($format, ['%d' => '', '日' => '', '%j,' => '', '%j' => '', '%l' => '', '%D' => '', '%N' => '', '%S' => '', '%w' => '', '%z' => '']);
         }
         if ($this->month === 0) {
-            $format = strtr($format, ['%F' => '', '%m' => '', '%M' => '', '年 %n月' => '', '%n' => '', '%t' => '']);
+            $format = strtr($format, ['%F' => '', '%m' => '', '%M' => '', '月' => '', '%n' => '', '%t' => '']);
         }
         if ($this->year === 0) {
-            $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '%Y年' => '', '%Y' => '']);
-        }
+            $format = strtr($format, ['%t' => '', '%L' => '', '%G' => '', '%y' => '', '年' => '', '%Y' => '']);
+        }// 年 %n月%j日
         $format = trim($format, ',. /-');
 
         if ($this->day !== 0 && preg_match('/%[djlDNSwz]/', $format)) {

@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:32+0100\n"
-"PO-Revision-Date: 2022-01-07 09:19+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-06 13:22+0000\nLast-Translator: Jonathan Jaubart <dev@jaubart.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1001,7 +985,7 @@ msgstr "Onglet montrant les faits et les événements d’un individu."
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:70
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Onglet affichant les objets média reliés à un individu."
+msgstr "Onglet affichant les objets médias reliés à un individu."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:71
@@ -3437,7 +3421,7 @@ msgstr "Journal des modifications"
 #: resources/views/admin/gedcom-export-options.phtml:43
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "Encodage de caractères"
 
 #: app/Gedcom.php:460
 msgid "Character set"
@@ -5059,7 +5043,7 @@ msgstr "Supprimer le nom"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Supprimer les lieux non utilisés"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -5071,7 +5055,7 @@ msgstr "Effacer la famille supprimera tous les liens avec les individus mais ceu
 
 #: app/Http/RequestHandlers/GedcomLoad.php:135
 msgid "Deleting…"
-msgstr ""
+msgstr "Suppression en cours…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -6037,7 +6021,7 @@ msgstr "Recensement familial"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Family facts and events"
-msgstr ""
+msgstr "Faits et événements familiaux"
 
 #: app/Gedcom.php:827
 msgid "Family file"
@@ -6753,7 +6737,7 @@ msgstr "Balises GEDCOM"
 #. I18N: https://genealogy.net/GEDCOM/
 #: resources/views/admin/tags.phtml:963
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1047 app/Gedcom.php:1099 app/Gedcom.php:1214
@@ -7633,7 +7617,7 @@ msgstr "Cette année-là…"
 #. I18N: "thumbs" is fixed text.  Do not change it.
 #: resources/views/admin/webtrees1-thumbnails.phtml:19
 msgid "In webtrees version 1, you could add custom thumbnails to media objects by creating files in the “thumbs” folders."
-msgstr "Dans webtrees version 1, vous pouviez ajouter des vignettes personnalisées aux objets média en créant des fichiers dans le dossier « thumbs »."
+msgstr "Dans webtrees version 1, vous pouviez ajouter des vignettes personnalisées aux objets médias en créant des fichiers dans le dossier « thumbs »."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:21
 msgid "In webtrees version 2, custom thumbnails are stored as a second media file in the same media object."
@@ -7733,7 +7717,7 @@ msgstr "Diagramme de distribution des individus"
 
 #: resources/views/admin/tags.phtml:943
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Faits et événements individuels"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7853,11 +7837,11 @@ msgstr "Messagerie interne par courriel"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:187
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "Fichier GEDCOM incorrect - absence d’en-tête dans l’enregistrement trouvée."
+msgstr "Fichier GEDCOM incorrect - l'en-tête n'a pu être trouvé."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:95
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Fichier GEDCOM incorrect - la balise de fin n'a pu être trouvée."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7898,7 +7882,7 @@ msgstr "Plusieurs minutes peuvent être nécessaires pour télécharger et insta
 
 #: resources/views/admin/tags.phtml:936
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "L'usage des balises GEDCOM personnalisées n'est pas recommandé. Ces données peuvent être perdues lors des transferts avec d'autres applications."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8485,12 +8469,12 @@ msgstr "Lima, Pérou"
 
 #: resources/views/admin/gedcom-export-options.phtml:53
 msgid "Line endings"
-msgstr ""
+msgstr "Fins de ligne"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
 msgid "Link media objects to facts and events"
-msgstr "Relier des objets média à des faits ou événements"
+msgstr "Relier des objets médias à des faits ou événements"
 
 #. I18N: You need to:
 #: resources/views/emails/verify-notify-html.phtml:41
@@ -8795,7 +8779,7 @@ msgstr "Manuscrit"
 
 #: resources/views/admin/tags.phtml:934
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Plusieurs logiciels de généalogie définissent leurs propres balises GEDCOM, et webtrees est capable d'afficher la plupart d'entre elles."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9248,15 +9232,15 @@ msgstr "Objet média"
 #: resources/views/modules/statistics-chart/other-records.phtml:18
 #: resources/views/record-page-links.phtml:58
 msgid "Media objects"
-msgstr "Objets média"
+msgstr "Objets médias"
 
 #: resources/views/modules/media-list/page.phtml:95
 msgid "Media objects found"
-msgstr "Objets média trouvés"
+msgstr "Objets médias trouvés"
 
 #: resources/views/modules/media-list/page.phtml:52
 msgid "Media objects per page"
-msgstr "Objets média par page"
+msgstr "Objets médias par page"
 
 #: app/Gedcom.php:734 app/Gedcom.php:792
 #: resources/views/modals/create-media-from-file.phtml:42
@@ -9827,7 +9811,7 @@ msgstr "Nom en hébreu"
 
 #: app/Gedcom.php:1378 app/Gedcom.php:1440
 msgid "Name of addressee"
-msgstr ""
+msgstr "Nom du destinataire"
 
 #: app/Gedcom.php:638 app/Gedcom.php:645 app/Gedcom.php:650
 msgid "Name prefix"
@@ -11514,7 +11498,7 @@ msgstr "Réorganiser les familles"
 #: resources/views/individual-page-menu.phtml:102
 #: resources/views/individual-page-menu.phtml:107
 msgid "Re-order media"
-msgstr "Réorganiser les objets média"
+msgstr "Réorganiser les objets médias"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -11869,7 +11853,7 @@ msgstr "Les tâches à faire sont des événements spéciaux ajoutés aux indivi
 
 #: resources/views/modules/todo/config.phtml:16
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
-msgstr "Les tâches à faire sont stockées sous la balise GEDCOM standard « _TODO ». Il est possible que d’autres logiciels de généalogie ne reconnaissent pas cette balise."
+msgstr "Les tâches à faire sont stockées sous la balise GEDCOM personnalisée « _TODO ». Il est possible que d’autres logiciels de généalogie ne reconnaissent pas cette balise."
 
 #: app/Gedcom.php:677
 msgid "Residence"
@@ -11987,12 +11971,12 @@ msgstr "La version %s de SQLite est installée. Il faut au moins la version %s."
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12708,7 +12692,7 @@ msgstr "Voir les conditions d’utilisation sur la page « Demander un compte 
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "Afficher tous les objets médias"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13235,7 +13219,7 @@ msgstr "Fils de %s"
 
 #: app/Gedcom.php:1538
 msgid "Sort date"
-msgstr ""
+msgstr "Date de classement"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -13441,7 +13425,7 @@ msgstr "St. Paul, Minnesota, États-Unis"
 
 #: resources/views/admin/tags.phtml:27
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Balises GEDCOM standards"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14136,7 +14120,7 @@ msgstr "La mémoire et le temps d’exécution requis dépendent du nombre d’i
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Le message n'a pas été envoyé à %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -15082,7 +15066,7 @@ msgstr "Pour vous aider à travailler avec ce bloc, nous avons créé plusieurs 
 
 #: resources/views/admin/tags.phtml:938
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Il est nécessaire d'activer les balises GEDCOM personnalisées avant de les utiliser pour ajouter de nouvelles données."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15090,7 +15074,7 @@ msgstr "Pour créer des nouvelles tâches à faire, vous devez premièrement ajo
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "Au moins un service de cartographie doit être activé dans le panneau de contrôle pour afficher la carte."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -15155,7 +15139,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Nombre de requêtes maximal dépassé. Veuillez réessayer plus tard."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -16376,7 +16360,7 @@ msgstr "Votre serveur web utilise PHP version %s qui ne reçoit plus de mises à
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:35
 msgid "ZIP (includes media files)"
-msgstr ""
+msgstr "Archive ZIP (avec les fichiers médias)"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16531,7 +16515,7 @@ msgstr "tante/oncle"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "automatique"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19480,7 +19464,7 @@ msgstr "pourcentage"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:108
 msgid "plain text"
-msgstr ""
+msgstr "texte brut"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56

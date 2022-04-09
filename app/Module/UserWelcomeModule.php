@@ -124,7 +124,7 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface
                 'block'      => Str::kebab($this->name()),
                 'id'         => $block_id,
                 'config_url' => '',
-                'title'      => e($title),
+                'title'      => $title,
                 'content'    => $content,
             ]);
         }

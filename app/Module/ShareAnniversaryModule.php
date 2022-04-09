@@ -156,8 +156,8 @@ class ShareAnniversaryModule extends AbstractModule implements ModuleShareInterf
             $vevent->add('SUMMARY', strip_tags($record->fullName()) . ' — ' . $fact->label());
 
             return response($vcalendar->serialize())
-                ->withHeader('Content-Type', 'text/calendar')
-                ->withHeader('Content-Disposition', 'attachment; filename="' . $fact->id() . '.ics');
+                ->withHeader('content-type', 'text/calendar')
+                ->withHeader('content-disposition', 'attachment; filename="' . $fact->id() . '.ics');
         }
 
         throw new HttpNotFoundException();

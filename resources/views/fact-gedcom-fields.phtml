@@ -62,7 +62,9 @@ foreach ($keys as $key) {
                 <?= view('icons/collapse') ?>
              </a>
 
-            <?= I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', I18N::translate('Source'), '<a href="' . e($source->url()) . '">' . $source->fullName() . '</a>') ?>
+            <?php $label = '<span class="label">' . I18N::translate('Source') . '</span>' ?>
+            <?php $value = '<span class="field" dir="auto"><a href="' . e($source->url()) . '">' . $source->fullName() . '</a></span>' ?>
+            <?= I18N::translate('%1$s: %2$s', $label, $value) ?>
         </div>
 
         <div id="<?= e($id) ?>" class="ps-4 collapse <?= $expanded ? 'show' : '' ?>">

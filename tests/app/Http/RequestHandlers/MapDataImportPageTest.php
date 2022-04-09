@@ -41,6 +41,6 @@ class MapDataImportPageTest extends TestCase
         $response = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_OK, $response->getStatusCode());
-        self::assertSame($response->getHeaderLine('Content-Type'), 'text/html; charset=UTF-8');
+        self::assertSame($response->getHeaderLine('content-type'), 'text/html; charset=UTF-8');
     }
 }
