@@ -173,7 +173,7 @@ class MapDataExportCSV implements RequestHandlerInterface
         $filename = addcslashes($filename, '"');
 
         return response(stream_get_contents($resource))
-            ->withHeader('Content-Type', 'text/csv; charset=UTF-8')
-            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+            ->withHeader('content-type', 'text/csv; charset=UTF-8')
+            ->withHeader('content-disposition', 'attachment; filename="' . $filename . '"');
     }
 }

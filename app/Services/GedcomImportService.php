@@ -284,12 +284,13 @@ class GedcomImportService
         // import different types of records
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@ (' . Gedcom::REGEX_TAG . ')/', $gedrec, $match)) {
             [, $xref, $type] = $match;
-        } elseif (str_starts_with($gedrec, '0 _EVDEF')) {
-            // Created by RootsMagic.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 _EVENT_DEFN')) {
-            // Created by PAF and Legacy.  We cannot process these records without an XREF.
-            return;
+        } elseif (str_starts_with($gedrec, '0 HEAD')) {
+            $type = 'HEAD';
+            $xref = 'HEAD'; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (str_starts_with($gedrec, '0 TRLR')) {
+            $tree->setPreference('imported', '1');
+            $type = 'TRLR';
+            $xref = 'TRLR'; // For records without an XREF, use the type as a pseudo XREF.
         } elseif (str_starts_with($gedrec, '0 _PLAC_DEFN')) {
             $this->importLegacyPlacDefn($gedrec);
 
@@ -298,13 +299,30 @@ class GedcomImportService
             $this->importTNGPlac($gedrec);
 
             return;
-        } elseif (str_starts_with($gedrec, '0 HEAD')) {
-            $type = 'HEAD';
-            $xref = 'HEAD'; // For records without an XREF, use the type as a pseudo XREF.
-        } elseif (str_starts_with($gedrec, '0 TRLR')) {
-            $tree->setPreference('imported', '1');
-            $type = 'TRLR';
-            $xref = 'TRLR'; // For records without an XREF, use the type as a pseudo XREF.
+        } elseif (str_starts_with($gedrec, '0 _EVDEF')) {
+            // Created by RootsMagic.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 _EVENT_DEFN')) {
+            // Created by PAF and Legacy.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 PEDIGREELINK')) {
+            // Created by GenoPro.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 GLOBAL')) {
+            // Created by GenoPro.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 GENOMAP')) {
+            // Created by GenoPro.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 EMOTIONALRELATIONSHIP')) {
+            // Created by GenoPro.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 SOCIALRELATIONSHIP')) {
+            // Created by GenoPro.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 LABEL')) {
+            // Created by GenoPro.  We cannot process these records without an XREF.
+            return;
         } else {
             throw new GedcomErrorException($gedrec);
         }
@@ -664,11 +682,14 @@ class GedcomImportService
         preg_match_all('/\n\d+ (' . Gedcom::REGEX_TAG . ') @(' . Gedcom::REGEX_XREF . ')@/', $gedrec, $matches, PREG_SET_ORDER);
 
         foreach ($matches as $match) {
+            // Some applications (e.g. GenoPro) create links longer than 15 characters.
+            $link = mb_substr($match[1], 15);
+
             // Take care of "duplicates" that differ on case/collation, e.g. "SOUR @S1@" and "SOUR @s1@"
-            $rows[$match[1] . strtoupper($match[2])] = [
+            $rows[$link . strtoupper($match[2])] = [
                 'l_from' => $xref,
                 'l_to'   => $match[2],
-                'l_type' => $match[1],
+                'l_type' => $link,
                 'l_file' => $ged_id,
             ];
         }

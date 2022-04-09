@@ -69,7 +69,7 @@ class MediaFileDownload implements RequestHandlerInterface
 
                 $response = $image_factory->mediaFileResponse($media_file, $watermark, $download);
 
-                return $response->withHeader('Cache-Control', 'public,max-age=31536000');
+                return $response->withHeader('cache-control', 'public,max-age=31536000');
             }
         }
 

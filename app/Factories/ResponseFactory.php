@@ -89,7 +89,7 @@ class ResponseFactory implements ResponseFactoryInterface
     {
         return $this->response_factory
             ->createResponse($code)
-            ->withHeader('Location', (string) $url);
+            ->withHeader('location', (string) $url);
     }
 
     /**
@@ -106,10 +106,10 @@ class ResponseFactory implements ResponseFactoryInterface
         }
 
         if (is_string($content)) {
-            $headers['Content-Type'] ??= 'text/html; charset=UTF-8';
+            $headers['content-type'] ??= 'text/html; charset=UTF-8';
         } else {
             $content                 = json_encode($content, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-            $headers['Content-Type'] ??= 'application/json';
+            $headers['content-type'] ??= 'application/json';
         }
 
         $stream = $this->stream_factory->createStream($content);

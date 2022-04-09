@@ -102,7 +102,7 @@ function redirect(string $url, int $code = StatusCodeInterface::STATUS_FOUND): R
 
     return $response_factory
         ->createResponse($code)
-        ->withHeader('Location', $url);
+        ->withHeader('location', $url);
 }
 
 /**

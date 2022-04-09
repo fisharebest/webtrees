@@ -61,7 +61,7 @@ abstract class AbstractAutocompleteHandler implements RequestHandlerInterface
             });
 
         return response($data)
-            ->withHeader('Cache-Control', 'public,max-age=' . static::CACHE_LIFE);
+            ->withHeader('cache-control', 'public,max-age=' . static::CACHE_LIFE);
     }
 
     /**
