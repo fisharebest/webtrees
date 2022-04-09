@@ -1296,7 +1296,7 @@ class Gedcom
             'INDI:*:_COM'             => new CustomElement(I18N::translate('Comment')),
             'INDI:*:_SITE'            => new CustomElement(I18N::translate('Extra information')),
             'INDI:*:_WITN'            => new CustomElement(I18N::translate('Witness')),
-            'INDI:BAPM:_GODP'         => new CustomElement(I18N::translate('Also known as')),
+            'INDI:BAPM:_GODP'         => new CustomElement(I18N::translate('Godparent')),
             'INDI:CHR:_GODP'          => new CustomElement(I18N::translate('Godparent')),
             'INDI:OBJE:_PRIM'         => new CustomElement(I18N::translate('Highlighted image')),
             'INDI:SOUR:_ORI'          => new TextFromSource(I18N::translate('Original text')),
