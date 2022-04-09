@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:32+0100\n"
-"PO-Revision-Date: 2022-03-20 22:00+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-06 13:22+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -2162,7 +2150,7 @@ msgstr "Anwesender"
 #: app/Elements/RelationIsDescriptor.php:73
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Anwesender"
+msgstr "Anwesende"
 
 #: app/Elements/RelationIsDescriptor.php:52
 msgctxt "MALE"
@@ -2171,17 +2159,17 @@ msgstr "Anwesender"
 
 #: app/Elements/RelationIsDescriptor.php:95
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Behandelnder"
 
 #: app/Elements/RelationIsDescriptor.php:74
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Behandelnde"
 
 #: app/Elements/RelationIsDescriptor.php:53
 msgctxt "MALE"
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Behandelnder"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Gedcom.php:1408
@@ -2500,7 +2488,7 @@ msgstr "Barbados"
 
 #: app/Gedcom.php:1086
 msgid "Base GEDCOM tag"
-msgstr "Standard-GEDCOM-Kennzeichen"
+msgstr "Basis-GEDCOM-Kennzeichen"
 
 #: app/Gedcom.php:559 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
@@ -5067,7 +5055,7 @@ msgstr "Das Löschen der Familie wird die Verknüpfungen aller Personen von eina
 
 #: app/Http/RequestHandlers/GedcomLoad.php:135
 msgid "Deleting…"
-msgstr ""
+msgstr "Wird gelöscht …"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -6033,7 +6021,7 @@ msgstr "Familienvolkszählung"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Family facts and events"
-msgstr ""
+msgstr "Tatsachen und Ereignisse für Familien"
 
 #: app/Gedcom.php:827
 msgid "Family file"
@@ -6749,7 +6737,7 @@ msgstr "GEDCOM-Kennzeichen"
 #. I18N: https://genealogy.net/GEDCOM/
 #: resources/views/admin/tags.phtml:963
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1047 app/Gedcom.php:1099 app/Gedcom.php:1214
@@ -7729,7 +7717,7 @@ msgstr "Personenverteilungsdiagramm"
 
 #: resources/views/admin/tags.phtml:943
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Tatsachen und Ereignisse für Personen"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7853,7 +7841,7 @@ msgstr "Ungültige GEDCOM Datei - keine Kopfdaten gefunden."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:95
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Ungültige GEDCOM-Datei - keinen Trailer-Datensatz gefunden."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7894,7 +7882,7 @@ msgstr "Die Aktualisierung kann mehrere Minuten benötigen. Bitte haben Sie Gedu
 
 #: resources/views/admin/tags.phtml:936
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Es wird nicht empfohlen, benutzerdefinierte GEDCOM-Kennzeichen zu verwenden. Diese Daten können verloren gehen, wenn Sie diese in andere Programme übertragen."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8791,7 +8779,7 @@ msgstr "Manuskript"
 
 #: resources/views/admin/tags.phtml:934
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Viele Genealogieprogramme definieren ihre eigenen GEDCOM-Kennzeichen und Webtrees kann die meisten von ihnen anzeigen."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9823,7 +9811,7 @@ msgstr "Name (hebräisch)"
 
 #: app/Gedcom.php:1378 app/Gedcom.php:1440
 msgid "Name of addressee"
-msgstr ""
+msgstr "Name des Empfängers"
 
 #: app/Gedcom.php:638 app/Gedcom.php:645 app/Gedcom.php:650
 msgid "Name prefix"
@@ -13437,7 +13425,7 @@ msgstr "St. Paul, Minnesota, Vereinigte Staaten"
 
 #: resources/views/admin/tags.phtml:27
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standard-GEDCOM-Kennzeichen"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -15078,7 +15066,7 @@ msgstr "Ihnen stehen einige Standardvorlagen zur Verfügung, um den Einstieg mit
 
 #: resources/views/admin/tags.phtml:938
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Um neue Daten mit benutzerdefinierten Kennzeichen zu erstellen, müssen Sie diese aktivieren."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."

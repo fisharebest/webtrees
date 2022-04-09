@@ -41,7 +41,7 @@ class AppleTouchIconPng implements RequestHandlerInterface
         $content = file_get_contents(__DIR__ . '/../../../apple-touch-icon.png');
 
         return response($content)
-            ->withHeader('Content-Type', 'image/png')
-            ->withHeader('Cache-Control', 'public,max-age=31536000');
+            ->withHeader('content-type', 'image/png')
+            ->withHeader('cache-control', 'public,max-age=31536000');
     }
 }

@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\DatatablesService;
 use Fisharebest\Webtrees\Services\SiteLogsService;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -56,17 +57,17 @@ class SiteLogsData implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query = $this->site_logs_service->logsQuery($request->getQueryParams());
+        $query = $this->site_logs_service->logsQuery($request);
 
         return $this->datatables_service->handleQuery($request, $query, [], [], static function (object $row): array {
             return [
                 $row->log_id,
                 Registry::timestampFactory()->fromString($row->log_time)->toDateTimeString(),
                 $row->log_type,
-                '<bdi>' . e($row->log_message) . '</bdi>',
-                '<bdi>' . e($row->ip_address) . '</bdi>',
-                '<bdi>' . e($row->user_name) . '</bdi>',
-                '<bdi>' . e($row->gedcom_name) . '</bdi>',
+                '<span class="ut">' . e($row->log_message) . '</span>',
+                e($row->ip_address),
+                '<span class="ut">' . e($row->user_name) . '</span>',
+                '<span class="ut">' . e($row->gedcom_name) . '</span>',
             ];
         });
     }

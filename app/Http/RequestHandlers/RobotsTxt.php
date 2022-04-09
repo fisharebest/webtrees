@@ -80,6 +80,6 @@ class RobotsTxt implements RequestHandlerInterface
         }
 
         return response(view('robots-txt', $data))
-            ->withHeader('Content-type', 'text/plain');
+            ->withHeader('content-type', 'text/plain');
     }
 }

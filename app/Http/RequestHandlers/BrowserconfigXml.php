@@ -41,7 +41,7 @@ class BrowserconfigXml implements RequestHandlerInterface
         $content = View::make('browserconfig-xml');
 
         return response($content)
-            ->withHeader('Content-Type', 'application/xml')
-            ->withHeader('Cache-Control', 'public,max-age=31536000');
+            ->withHeader('content-type', 'application/xml')
+            ->withHeader('cache-control', 'public,max-age=31536000');
     }
 }

@@ -114,7 +114,7 @@ class ReportGenerate implements RequestHandlerInterface
                 ]);
 
                 if ($destination === 'download') {
-                    $response = $response->withHeader('Content-Disposition', 'attachment; filename="' . addcslashes($report, '"') . '.html"');
+                    $response = $response->withHeader('content-disposition', 'attachment; filename="' . addcslashes($report, '"') . '.html"');
                 }
 
                 return $response;
@@ -124,10 +124,10 @@ class ReportGenerate implements RequestHandlerInterface
                 new ReportParserGenerate($xml_filename, new PdfRenderer(), $variables, $tree, $data_filesystem);
                 $pdf = ob_get_clean();
 
-                $headers = ['Content-Type' => 'application/pdf'];
+                $headers = ['content-type' => 'application/pdf'];
 
                 if ($destination === 'download') {
-                    $headers['Content-Disposition'] = 'attachment; filename="' . addcslashes($report, '"') . '.pdf"';
+                    $headers['content-disposition'] = 'attachment; filename="' . addcslashes($report, '"') . '.pdf"';
                 }
 
                 return response($pdf, StatusCodeInterface::STATUS_OK, $headers);

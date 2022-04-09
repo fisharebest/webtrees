@@ -121,19 +121,19 @@ class NoteStructure extends SubmitterText
         } else {
             $label         = I18N::translate('Note');
             $html          = $this->valueFormatted($value, $tree);
-            [$first_line]  = explode("\n", strip_tags($html));
+            [$first_line]  = explode('<br>', strip_tags($html, ['<br>']));
             $first_line    = Str::limit($first_line, 100, I18N::translate('…'));
-            $one_line_only = !str_contains($value, "\n") && mb_strlen($value) <= 100;
+            $one_line_only = !str_contains($html, '<br>') && mb_strlen($value) <= 100;
         }
 
         $id       = 'collapse-' . Uuid::uuid4()->toString();
         $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
 
         if ($one_line_only) {
-            return
-                 '<div class="fact_NOTE">' .
-                 I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $html) .
-                 '</div>';
+            $label = '<span class="label">' . $label . '</span>';
+            $value = '<span class="field" dir="auto">' . $html . '</span>';
+
+            return '<div class="fact_NOTE">' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
         }
 
         return

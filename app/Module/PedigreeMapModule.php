@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
@@ -37,9 +36,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_key_exists;
-use function assert;
 use function intdiv;
 use function redirect;
 use function route;
@@ -65,23 +62,30 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
     public const MINIMUM_GENERATIONS = 1;
     public const MAXIMUM_GENERATIONS = 10;
 
-    // CSS colors defined for each generation
-    private const GENERATION_COLORS = 12;
+    // CSS colors for each generation
+    private const COUNT_CSS_COLORS = 12;
 
     private ChartService $chart_service;
 
     private LeafletJsService $leaflet_js_service;
 
+    private RelationshipService $relationship_service;
+
     /**
      * PedigreeMapModule constructor.
      *
-     * @param ChartService     $chart_service
-     * @param LeafletJsService $leaflet_js_service
+     * @param ChartService        $chart_service
+     * @param LeafletJsService    $leaflet_js_service
+     * @param RelationshipService $relationship_service
      */
-    public function __construct(ChartService $chart_service, LeafletJsService $leaflet_js_service)
-    {
+    public function __construct(
+        ChartService $chart_service,
+        LeafletJsService $leaflet_js_service,
+        RelationshipService $relationship_service
+    ) {
         $this->chart_service      = $chart_service;
         $this->leaflet_js_service = $leaflet_js_service;
+        $this->relationship_service = $relationship_service;
     }
 
     /**
@@ -245,7 +249,9 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                 $polyline           = null;
                 $sosa_points[$sosa] = [$latitude, $longitude];
                 $sosa_child         = intdiv($sosa, 2);
-                $color              = 'var(--wt-pedigree-map-gen-' . $sosa_child % self::GENERATION_COLORS . ')';
+                $generation         = (int) log($sosa, 2);
+                $color              = 'var(--wt-pedigree-map-gen-' . $generation % self::COUNT_CSS_COLORS . ')';
+                $class              = 'wt-pedigree-map-gen-' . $generation % self::COUNT_CSS_COLORS;
 
                 if (array_key_exists($sosa_child, $sosa_points)) {
                     // Would like to use a GeometryCollection to hold LineStrings
@@ -271,10 +277,11 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
                     'properties' => [
                         'polyline'  => $polyline,
                         'iconcolor' => $color,
-                        'tooltip'   => $fact->place()->gedcomName(),
+                        'tooltip'   => null,
                         'summary'   => view('modules/pedigree-map/events', [
+                            'class'        => $class,
                             'fact'         => $fact,
-                            'relationship' => ucfirst($this->getSosaName($sosa)),
+                            'relationship' => $this->getSosaName($sosa),
                             'sosa'         => $sosa,
                         ]),
                     ],
@@ -337,9 +344,6 @@ class PedigreeMapModule extends AbstractModule implements ModuleChartInterface, 
             $sosa = intdiv($sosa, 2);
         }
 
-        $relationship_service = app(RelationshipService::class);
-        assert($relationship_service instanceof RelationshipService);
-
-        return $relationship_service->legacyNameAlgorithm($path);
+        return ucfirst($this->relationship_service->legacyNameAlgorithm($path));
     }
 }
