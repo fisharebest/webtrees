@@ -1156,6 +1156,11 @@ class Gedcom
             'REPO:ADDR:_NAME'                => new CustomElement('Name of addressee'),
             'REPO:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
             'SOUR:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+            'SOUR:DATA:EVEN:PLAC:_LOC'       => new XrefLocation(I18N::translate('Location')),
+            // I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
+            'SOUR:DATA:EVEN:PLAC:_MAIDENHEAD'=> new MaidenheadLocator(I18N::translate('Maidenhead location code')),
+            'SOUR:DATA:EVEN:PLAC:_POST'      => new AddressPostalCode('Postal code'),
+            'SOUR:DATA:EVEN:PLAC:_POST:DATE' => new DateValue(I18N::translate('Date')),
             'SUBM:ADDR:_NAME'                => new CustomElement('Name of addressee'),
             'SUBM:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
             'SUBN:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
