@@ -208,8 +208,8 @@ class LinkedRecordService
             ->where('o_type', '=', Note::RECORD_TYPE)
             ->where('l_to', '=', $record->xref())
             ->select(['other.*'])
-            ->get()
             ->groupBy('o_id', 'o_file')
+            ->get()
             ->map(Registry::noteFactory()->mapper($record->tree()))
             ->filter(GedcomRecord::accessFilter());
     }
