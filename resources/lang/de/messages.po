@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
 "PO-Revision-Date: 2022-04-14 22:15+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
+"Last-Translator: Markus Hemprich <hemprich@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -16615,7 +16615,7 @@ msgstr "Ehefrau"
 #: app/Factories/ElementFactory.php:987
 #: resources/views/modules/timeline-chart/chart.phtml:351
 msgid "Wife’s age"
-msgstr "Alter, Gattin"
+msgstr "Alter der Ehefrau"
 
 #: app/Module/FixMissingMarriedNames.php:94
 msgid "Wife’s maiden surname becomes new given name"
