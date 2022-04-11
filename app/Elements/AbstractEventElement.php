@@ -30,15 +30,21 @@ use function e;
 class AbstractEventElement extends AbstractElement
 {
     /**
-     * Create a default value for this element.
+     * Convert a value to a canonical form.
      *
-     * @param Tree $tree
+     * @param string $value
      *
      * @return string
      */
-    public function default(Tree $tree): string
+    public function canonical(string $value): string
     {
-        return 'Y';
+        $value = parent::canonical($value);
+
+        if ($value === 'y') {
+            return 'Y';
+        }
+        
+        return $value;
     }
 
     /**
