@@ -218,7 +218,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         if (str_contains($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
             foreach ($spouse->facts(['DEAT', 'BURI', 'CREM']) as $fact) {
                 if ($this->includeFact($fact, $min_date, $max_date)) {
-                    $facts[] = $this->convertEvent($fact, $death_of_a_spouse[$fact->tag()][$fact->record()->sex()]);
+                    $facts[] = $this->convertEvent($fact, $death_of_a_spouse[$fact->tag()], $fact->record()->sex());
                 }
             }
         }
@@ -245,13 +245,16 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * Convert an event into a special "event of a close relative".
      *
-     * @param Fact   $fact
-     * @param string $type
+     * @param Fact          $fact
+     * @param array<string> $types
+     * @param string        $sex
      *
      * @return Fact
      */
-    protected function convertEvent(Fact $fact, string $type): Fact
+    protected function convertEvent(Fact $fact, array $types, string $sex): Fact
     {
+        $type = $types[$sex] ?? $types['U'];
+
         $gedcom = $fact->gedcom();
         $gedcom = preg_replace('/\n2 TYPE .*/', '', $gedcom);
         $gedcom = preg_replace('/^1 .*/', "1 EVEN CLOSE_RELATIVE\n2 TYPE " . $type, $gedcom);
@@ -610,24 +613,24 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                             case '_GCHI':
                                 switch ($relation) {
                                     case 'dau':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild1[$fact->tag()][$fact->record()->sex()]);
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild1[$fact->tag()], $fact->record()->sex());
                                         break;
                                     case 'son':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild2[$fact->tag()][$fact->record()->sex()]);
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild2[$fact->tag()], $fact->record()->sex());
                                         break;
                                     case 'chil':
-                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild[$fact->tag()][$fact->record()->sex()]);
+                                        $facts[] = $this->convertEvent($fact, $birth_of_a_grandchild[$fact->tag()], $fact->record()->sex());
                                         break;
                                 }
                                 break;
                             case '_SIBL':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_sibling[$fact->tag()][$fact->record()->sex()]);
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_sibling[$fact->tag()], $fact->record()->sex());
                                 break;
                             case '_HSIB':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_half_sibling[$fact->tag()][$fact->record()->sex()]);
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_half_sibling[$fact->tag()], $fact->record()->sex());
                                 break;
                             case '_CHIL':
-                                $facts[] = $this->convertEvent($fact, $birth_of_a_child[$fact->tag()][$fact->record()->sex()]);
+                                $facts[] = $this->convertEvent($fact, $birth_of_a_child[$fact->tag()], $fact->record()->sex());
                                 break;
                         }
                     }
@@ -641,24 +644,24 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                             case '_GCHI':
                                 switch ($relation) {
                                     case 'dau':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild1[$fact->tag()][$fact->record()->sex()]);
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild1[$fact->tag()], $fact->record()->sex());
                                         break;
                                     case 'son':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild2[$fact->tag()][$fact->record()->sex()]);
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild2[$fact->tag()], $fact->record()->sex());
                                         break;
                                     case 'chi':
-                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild[$fact->tag()][$fact->record()->sex()]);
+                                        $facts[] = $this->convertEvent($fact, $death_of_a_grandchild[$fact->tag()], $fact->record()->sex());
                                         break;
                                 }
                                 break;
                             case '_SIBL':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_sibling[$fact->tag()][$fact->record()->sex()]);
+                                $facts[] = $this->convertEvent($fact, $death_of_a_sibling[$fact->tag()], $fact->record()->sex());
                                 break;
                             case '_HSIB':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_half_sibling[$fact->tag()][$fact->record()->sex()]);
+                                $facts[] = $this->convertEvent($fact, $death_of_a_half_sibling[$fact->tag()], $fact->record()->sex());
                                 break;
                             case '_CHIL':
-                                $facts[] = $this->convertEvent($fact, $death_of_a_child[$fact->tag()][$fact->record()->sex()]);
+                                $facts[] = $this->convertEvent($fact, $death_of_a_child[$fact->tag()], $fact->record()->sex());
                                 break;
                         }
                     }
@@ -674,24 +677,24 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                                 case '_GCHI':
                                     switch ($relation) {
                                         case 'dau':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild1[$child->sex()]);
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild1, $child->sex());
                                             break;
                                         case 'son':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild2[$child->sex()]);
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild2, $child->sex());
                                             break;
                                         case 'chi':
-                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild[$child->sex()]);
+                                            $facts[] = $this->convertEvent($fact, $marriage_of_a_grandchild, $child->sex());
                                             break;
                                     }
                                     break;
                                 case '_SIBL':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_sibling[$child->sex()]);
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_sibling, $child->sex());
                                     break;
                                 case '_HSIB':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_half_sibling[$child->sex()]);
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_half_sibling, $child->sex());
                                     break;
                                 case '_CHIL':
-                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_child[$child->sex()]);
+                                    $facts[] = $this->convertEvent($fact, $marriage_of_a_child, $child->sex());
                                     break;
                             }
                         }
@@ -825,7 +828,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of parents (to each other)
-                            $facts[] = $this->convertEvent($fact, I18N::translate('Marriage of parents'));
+                            $facts[] = $this->convertEvent($fact, ['U' => I18N::translate('Marriage of parents')], 'U');
                         }
                     }
                 }
@@ -833,7 +836,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                     foreach ($sfamily->facts(['MARR']) as $fact) {
                         if ($this->includeFact($fact, $min_date, $max_date)) {
                             // marriage of a parent (to another spouse)
-                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent['U']);
+                            $facts[] = $this->convertEvent($fact, $marriage_of_a_parent, 'U');
                         }
                     }
                 }
@@ -848,19 +851,19 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
                         if ($sosa === 1 && Date::compare($fact->date(), $min_date) < 0 || $this->includeFact($fact, $min_date, $max_date)) {
                             switch ($sosa) {
                                 case 1:
-                                    $facts[] = $this->convertEvent($fact, $death_of_a_parent[$fact->tag()][$fact->record()->sex()]);
+                                    $facts[] = $this->convertEvent($fact, $death_of_a_parent[$fact->tag()], $fact->record()->sex());
                                     break;
                                 case 2:
                                 case 3:
                                     switch ($person->sex()) {
                                         case 'M':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()][$fact->record()->sex()]);
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_paternal_grandparent[$fact->tag()], $fact->record()->sex());
                                             break;
                                         case 'F':
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()][$fact->record()->sex()]);
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_maternal_grandparent[$fact->tag()], $fact->record()->sex());
                                             break;
                                         default:
-                                            $facts[] = $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()][$fact->record()->sex()]);
+                                            $facts[] = $this->convertEvent($fact, $death_of_a_grandparent[$fact->tag()], $fact->record()->sex());
                                             break;
                                     }
                             }
