@@ -43,7 +43,7 @@ class AbstractEventElement extends AbstractElement
         if ($value === 'y') {
             return 'Y';
         }
-        
+
         return $value;
     }
 

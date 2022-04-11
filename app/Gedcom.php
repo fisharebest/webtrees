@@ -1707,7 +1707,7 @@ class Gedcom
             $subtags['FAM'][]               = ['_ASSO', '0:M'];
             $subtags['FAM'][]               = ['_STAT', '0:1'];
             $subtags['FAM'][]               = ['_UID', '0:M'];
-            $subtags['FAM:*:ADDR']          = [['_NAME', '0:1', 'ADR1']];
+            $subtags['FAM:*:ADDR']          = [['_NAME', '0:1:?', 'ADR1']];
             $subtags['FAM:*:PLAC']          = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['FAM:ENGA:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['FAM:MARB:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
@@ -1715,7 +1715,7 @@ class Gedcom
             $subtags['FAM:MARR:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['FAM:SLGS:PLAC']       = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI'][]              = ['_UID', '0:M'];
-            $subtags['INDI:*:ADDR']         = [['_NAME', '0:1', 'ADR1']];
+            $subtags['INDI:*:ADDR']         = [['_NAME', '0:1:?', 'ADR1']];
             $subtags['INDI:*:PLAC']         = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:ADOP:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:BAPL:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
