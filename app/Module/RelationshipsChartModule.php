@@ -705,13 +705,13 @@ class RelationshipsChartModule extends AbstractModule implements ModuleChartInte
                 return [];
             }
             if (($rel1 === 'HUSB' || $rel1 === 'WIFE') && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $spouse_codes[$next->sex()];
+                $relationships[$i] = $spouse_codes[$next->sex()] ?? $spouse_codes['U'];
             } elseif (($rel1 === 'HUSB' || $rel1 === 'WIFE') && $rel2 === 'CHIL') {
-                $relationships[$i] = $child_codes[$next->sex()];
+                $relationships[$i] = $child_codes[$next->sex()] ?? $child_codes['U'];
             } elseif ($rel1 === 'CHIL' && ($rel2 === 'HUSB' || $rel2 === 'WIFE')) {
-                $relationships[$i] = $parent_codes[$next->sex()];
+                $relationships[$i] = $parent_codes[$next->sex()] ?? $parent_codes['U'];
             } elseif ($rel1 === 'CHIL' && $rel2 === 'CHIL') {
-                $relationships[$i] = $sibling_codes[$next->sex()];
+                $relationships[$i] = $sibling_codes[$next->sex()] ?? $sibling_codes['U'];
             }
         }
 

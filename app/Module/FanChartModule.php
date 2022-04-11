@@ -369,7 +369,7 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
                         $arc_diameter,
                         $start_angle,
                         $end_angle,
-                        $backgrounds[$individual->sex()],
+                        $backgrounds[$individual->sex()] ?? $backgrounds['U'],
                         IMG_ARC_PIE
                     );
 

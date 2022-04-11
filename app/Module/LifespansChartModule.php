@@ -427,7 +427,7 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
      */
     private function layoutIndividuals(array $individuals): array
     {
-        $colors = [
+        $color_generators = [
             'M' => new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1),
             'F' => new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
             'U' => new ColorGenerator(120, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE),
@@ -467,8 +467,10 @@ class LifespansChartModule extends AbstractModule implements ModuleChartInterfac
             // Fill the row up to the year (leaving a small gap)
             $rows[$next_row] = $death_year;
 
+            $color_generator = $color_generators[$individual->sex()] ?? $color_generators['U'];
+
             $lifespans[] = (object) [
-                'background' => $colors[$individual->sex()]->getNextColor(),
+                'background' => $color_generator->getNextColor(),
                 'birth_year' => $birth_year,
                 'death_year' => $death_year,
                 'id'         => 'individual-' . md5($individual->xref()),
