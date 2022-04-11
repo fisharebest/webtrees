@@ -78,10 +78,10 @@ class LocationPage implements RequestHandlerInterface
         $location = Auth::checkLocationAccess($location, false);
 
         // Redirect to correct xref/slug
-        $slug = Registry::slugFactory()->make($record);
+        $slug = Registry::slugFactory()->make($location);
 
-        if ($record->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
-            return redirect($record->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        if ($location->xref() !== $xref || $request->getAttribute('slug') !== $slug) {
+            return redirect($location->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         return $this->viewResponse('gedcom-record-page', [
