@@ -44,8 +44,8 @@ class AutoCompleteCitation extends AbstractAutocompleteHandler
     protected function search(ServerRequestInterface $request): Collection
     {
         $tree   = Validator::attributes($request)->tree();
-        $query  = $request->getQueryParams()['query'] ?? '';
-        $xref   = $request->getQueryParams()['extra'] ?? '';
+        $query  = Validator::queryParams($request)->string('query');
+        $xref   = Validator::queryParams($request)->string('extra', '');
         $source = Registry::sourceFactory()->make($xref, $tree);
         $source = Auth::checkSourceAccess($source);
 

@@ -52,9 +52,8 @@ class AutoCompletePlace extends AbstractAutocompleteHandler
      */
     protected function search(ServerRequestInterface $request): Collection
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $query = $request->getQueryParams()['query'] ?? '';
+        $tree  = Validator::attributes($request)->tree();
+        $query = Validator::queryParams($request)->string('query');
 
         $data = $this->search_service
             ->searchPlaces($tree, $query, 0, static::LIMIT)

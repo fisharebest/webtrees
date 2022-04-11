@@ -35,9 +35,8 @@ class AutoCompleteSurname extends AbstractAutocompleteHandler
      */
     protected function search(ServerRequestInterface $request): Collection
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $query = $request->getQueryParams()['query'] ?? '';
+        $tree  = Validator::attributes($request)->tree();
+        $query = Validator::queryParams($request)->string('query');
 
         return $this->search_service
             ->searchSurnames([$tree], [$query], 0, static::LIMIT);

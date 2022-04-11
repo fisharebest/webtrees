@@ -50,9 +50,8 @@ class AutoCompleteFolder extends AbstractAutocompleteHandler
      */
     protected function search(ServerRequestInterface $request): Collection
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $query = $request->getQueryParams()['query'] ?? '';
+        $tree  = Validator::attributes($request)->tree();
+        $query = Validator::queryParams($request)->string('query');
 
         try {
             return $this->media_file_service->mediaFolders($tree)
