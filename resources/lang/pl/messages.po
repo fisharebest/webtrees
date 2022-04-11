@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-03 14:32+0100\n"
-"PO-Revision-Date: 2021-12-02 08:22+0000\n"
-"Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
-"Language: pl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-14 22:15+0000\nLast-Translator: Łukasz <wilenskipl@wp.pl>\nLanguage-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\nLanguage: pl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Polish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3457,7 +3440,7 @@ msgstr "Rejestr zmian"
 #: resources/views/admin/gedcom-export-options.phtml:43
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "Kodowanie znaków"
 
 #: app/Gedcom.php:460
 msgid "Character set"
@@ -5079,7 +5062,7 @@ msgstr "Usuń imię i nazwisko"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Usuń nieużywane miejsca"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -5091,7 +5074,7 @@ msgstr "Usunięcie rodziny spowoduje, że powiązania między jej członkami zos
 
 #: app/Http/RequestHandlers/GedcomLoad.php:135
 msgid "Deleting…"
-msgstr ""
+msgstr "Usuwanie…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -6057,7 +6040,7 @@ msgstr "Spis rodzin"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Family facts and events"
-msgstr ""
+msgstr "Fakty i wydarzenia rodzinne"
 
 #: app/Gedcom.php:827
 msgid "Family file"
@@ -6773,7 +6756,7 @@ msgstr "Wpisy GEDCOM"
 #. I18N: https://genealogy.net/GEDCOM/
 #: resources/views/admin/tags.phtml:963
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1047 app/Gedcom.php:1099 app/Gedcom.php:1214
@@ -7753,7 +7736,7 @@ msgstr "Rozmieszczenie wszystkich osób"
 
 #: resources/views/admin/tags.phtml:943
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Fakty i wydarzenia osobowe"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7877,7 +7860,7 @@ msgstr "Nieprawidłowy plik GEDCOM - nie znaleziono wpisu nagłówka."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:95
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Nieprawidłowy plik GEDCOM - nie znaleziono rekordu końcowego."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7918,7 +7901,7 @@ msgstr "Pobieranie i instalacja aktualizacji może zająć kilka minut. Prosimy 
 
 #: resources/views/admin/tags.phtml:936
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Nie zaleca się używania niestandardowych tagów GEDCOM. Te dane mogą zostać utracone podczas przenoszenia do innych aplikacji."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8505,7 +8488,7 @@ msgstr "Lima, Peru"
 
 #: resources/views/admin/gedcom-export-options.phtml:53
 msgid "Line endings"
-msgstr ""
+msgstr "Zakończenia wierszy"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -8815,7 +8798,7 @@ msgstr "Rękopis"
 
 #: resources/views/admin/tags.phtml:934
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Wiele aplikacji genealogicznych definiuje własne niestandardowe tagi GEDCOM, a webtrees będzie w stanie wyświetlić większość z nich."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9847,7 +9830,7 @@ msgstr "W hebrajskim"
 
 #: app/Gedcom.php:1378 app/Gedcom.php:1440
 msgid "Name of addressee"
-msgstr ""
+msgstr "Imię i nazwisko adresata"
 
 #: app/Gedcom.php:638 app/Gedcom.php:645 app/Gedcom.php:650
 msgid "Name prefix"
@@ -12008,12 +11991,12 @@ msgstr "Wersja SQLite %s jest zainstalowana. Wymagana jest wersja SQLite %s lub 
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12729,7 +12712,7 @@ msgstr "Pokaż zasady dozwolonego użytkowania na stronie „Załóż nowe konto
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "Pokaż wszystkie multimedia"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13256,7 +13239,7 @@ msgstr "Syn rodziny: %s"
 
 #: app/Gedcom.php:1538
 msgid "Sort date"
-msgstr ""
+msgstr "Data sortowania"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -13462,7 +13445,7 @@ msgstr "St. Paul, Minnesota, Stany Zjednoczone"
 
 #: resources/views/admin/tags.phtml:27
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standardowe tagi GEDCOM"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14157,7 +14140,7 @@ msgstr "Wymagania pamięci i czasu pracy procesora zależą od liczby osób w tw
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Wiadomość nie została wysłana do %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -15107,7 +15090,7 @@ msgstr "Aby pomóc ci w rozpoczęciu pracy nad nowym blokiem, utworzyliśmy kilk
 
 #: resources/views/admin/tags.phtml:938
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Aby tworzyć nowe dane za pomocą tagów niestandardowych, należy je włączyć."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15115,7 +15098,7 @@ msgstr "Aby utworzyć nowe zadanie badawcze, należy najpierw dodać „zadanie 
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "Aby wyświetlić mapę, należy włączyć dostawcę map w panelu sterowania."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -15180,7 +15163,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Zbyt wiele żądań. Spróbuj ponownie później."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -16404,7 +16387,7 @@ msgstr "Twój serwer używa PHP w wersji %s, które już nie otrzymuje aktualiza
 #. I18N: ZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:35
 msgid "ZIP (includes media files)"
-msgstr ""
+msgstr "ZIP (zawiera pliki multimedialne)"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16559,7 +16542,7 @@ msgstr "rodzeństwo rodzica"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "automatycznie"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19510,7 +19493,7 @@ msgstr "procentowa"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:108
 msgid "plain text"
-msgstr ""
+msgstr "Zwykły tekst"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
