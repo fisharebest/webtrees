@@ -28,7 +28,6 @@ use Ramsey\Uuid\Uuid;
 use function array_map;
 use function explode;
 use function implode;
-use function strpos;
 use function strtoupper;
 use function trim;
 use function view;

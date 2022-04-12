@@ -25,15 +25,7 @@ use Fisharebest\Webtrees\Statistics\Repository\Interfaces\MediaRepositoryInterfa
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Expression;
-
-use function array_slice;
-use function arsort;
-use function asort;
-use function count;
-use function in_array;
-use function var_dump;
 
 /**
  * A repository providing methods for media type related statistics.

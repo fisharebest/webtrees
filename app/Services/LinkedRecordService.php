@@ -36,7 +36,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 use function addcslashes;
-use function assert;
 
 /**
  * Find records linked to other records

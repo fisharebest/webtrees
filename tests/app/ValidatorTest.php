@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
-use LogicException;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**

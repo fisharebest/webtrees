@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
@@ -35,9 +34,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function array_filter;
-use function array_keys;
 use function array_map;
-use function assert;
 use function cos;
 use function deg2rad;
 use function e;
@@ -54,9 +51,7 @@ use function imagettfbbox;
 use function imagettftext;
 use function implode;
 use function intdiv;
-use function max;
 use function mb_substr;
-use function min;
 use function ob_get_clean;
 use function ob_start;
 use function redirect;

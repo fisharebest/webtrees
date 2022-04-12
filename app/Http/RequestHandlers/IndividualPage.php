@@ -42,12 +42,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_map;
-use function assert;
 use function date;
 use function e;
 use function explode;
 use function implode;
-use function is_string;
 use function redirect;
 use function strip_tags;
 use function strtoupper;

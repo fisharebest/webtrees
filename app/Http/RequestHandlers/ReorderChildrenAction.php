@@ -31,7 +31,6 @@ use function array_search;
 use function assert;
 use function implode;
 use function is_array;
-use function is_string;
 use function redirect;
 use function uksort;
 

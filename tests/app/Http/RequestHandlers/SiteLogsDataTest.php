@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Services\SiteLogsService;
 use Fisharebest\Webtrees\TestCase;
 use Illuminate\Database\Query\Builder;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @covers \Fisharebest\Webtrees\Http\RequestHandlers\SiteLogsData

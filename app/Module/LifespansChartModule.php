@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Aura\Router\RouterContainer;
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Auth;
@@ -37,20 +36,17 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function app;
 use function array_filter;
 use function array_intersect;
 use function array_map;
 use function array_merge;
 use function array_reduce;
 use function array_unique;
-use function assert;
 use function count;
 use function date;
 use function explode;
 use function implode;
 use function intdiv;
-use function is_array;
 use function max;
 use function md5;
 use function min;

@@ -23,7 +23,6 @@ use Aura\Router\Route;
 use Closure;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpBadRequestException;
-use LogicException;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function array_reduce;

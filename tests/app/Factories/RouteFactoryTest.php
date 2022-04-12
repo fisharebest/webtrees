@@ -19,23 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
-use DomainException;
-use Fisharebest\Webtrees\Encodings\ANSEL;
-use Fisharebest\Webtrees\Encodings\ASCII;
-use Fisharebest\Webtrees\Encodings\CP437;
-use Fisharebest\Webtrees\Encodings\CP850;
-use Fisharebest\Webtrees\Encodings\EncodingInterface;
-use Fisharebest\Webtrees\Encodings\MacRoman;
-use Fisharebest\Webtrees\Encodings\UTF16BE;
-use Fisharebest\Webtrees\Encodings\UTF16LE;
-use Fisharebest\Webtrees\Encodings\UTF8;
-use Fisharebest\Webtrees\Encodings\Windows1250;
-use Fisharebest\Webtrees\Encodings\Windows1251;
-use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\Http\RequestHandlers\HomePage;
 use Fisharebest\Webtrees\TestCase;
-
-use function parse_url;
 
 /**
  * Test harness for the class RouteFactory

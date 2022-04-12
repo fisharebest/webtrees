@@ -41,12 +41,9 @@ use League\CommonMark\Renderer\Inline\NewlineRenderer;
 use League\CommonMark\Renderer\Inline\TextRenderer;
 use League\CommonMark\Util\HtmlFilter;
 
-use function e;
-use function rtrim;
 use function strip_tags;
 use function strtr;
 use function trim;
-use function var_dump;
 
 /**
  * Create a markdown converter.
