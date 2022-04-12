@@ -19,10 +19,12 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Aura\Router\Route;
 use Aura\Router\RouterContainer;
 use Aura\Router\Rule\Accepts;
 use Aura\Router\Rule\Allows;
 use Fig\Http\Message\StatusCodeInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Tree;
@@ -34,6 +36,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
+use function implode;
 use function response;
 use function str_contains;
 
@@ -91,20 +94,20 @@ class Router implements MiddlewareInterface
         if ($route === false) {
             $failed_route = $matcher->getFailedRoute();
 
-            switch ($failed_route->failedRule) {
-                case Allows::class:
-                    return response('', StatusCodeInterface::STATUS_METHOD_NOT_ALLOWED, [
+            if ($failed_route instanceof Route) {
+                if ($failed_route->failedRule === Allows::class) {
+                    Registry::responseFactory()->response('', StatusCodeInterface::STATUS_METHOD_NOT_ALLOWED, [
                         'Allow' => implode(', ', $failed_route->allows),
                     ]);
+                }
 
-                case Accepts::class:
-                    // We don't use this, but modules might.
-                    return response('Negotiation failed', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
-
-                default:
-                    // Not found
-                    return $handler->handle($request);
+                if ($failed_route->failedRule === Accepts::class) {
+                    return Registry::responseFactory()->response('Negotiation failed', StatusCodeInterface::STATUS_NOT_ACCEPTABLE);
+                }
             }
+
+            // Not found
+            return $handler->handle($request);
         }
 
         // Add the route as attribute of the request

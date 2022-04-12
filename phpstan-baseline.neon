@@ -441,16 +441,6 @@ parameters:
 			path: app/Http/Middleware/ReadConfigIni.php
 
 		-
-			message: "#^Cannot access property \\$allows on Aura\\\\Router\\\\Route\\|null\\.$#"
-			count: 1
-			path: app/Http/Middleware/Router.php
-
-		-
-			message: "#^Cannot access property \\$failedRule on Aura\\\\Router\\\\Route\\|null\\.$#"
-			count: 1
-			path: app/Http/Middleware/Router.php
-
-		-
 			message: "#^Cannot call method instance\\(\\) on mixed\\.$#"
 			count: 2
 			path: app/Http/Middleware/Router.php

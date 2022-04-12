@@ -152,7 +152,7 @@ class ResponseFactory implements ResponseFactoryInterface
             'title'   => $view_data['title'] ?? Webtrees::NAME,
         ];
 
-        // Embde the content in the layout.
+        // Embed the content in the layout.
         $html = view($layout_name, $layout_data);
 
         return $this->response($html, $status);
