@@ -1,18 +1,17 @@
 <?php
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
 /**
- * @var array<mixed> $data
- * @var object       $leaflet_config
+ * @var integer $startPlaceId
+ * @var object  $leaflet_config
  */
 
 ?>
 
-<div class="row gchart wt-place-hierarchy-wrapper">
-    <div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-place-hierarchy-map" dir="ltr"></div>
-    <ul class="col-sm-3 wt-place-hierarchy-sidebar wt-page-options-value list-unstyled px-md-1"></ul>
-</div>
+<div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-place-hierarchy-map" dir="ltr"></div>
+<ul class="col-sm-3 wt-place-hierarchy-sidebar wt-page-options-value list-unstyled px-1"></ul>
 
 <?php View::push('javascript') ?>
 <script>
@@ -20,6 +19,13 @@ use Fisharebest\Webtrees\View;
 
   (function () {
     const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
+    const startPlaceId = <?= json_encode($start_place_id, JSON_THROW_ON_ERROR) ?>;
+    const dummyData = {
+      breadcrumbs: '<?= I18N::translate('Updating map&hellip;') ?>',
+      place_summary: {
+        id: 0,
+      }
+    };
 
     let map = null;
     const sidebar = document.querySelector('.wt-place-hierarchy-sidebar');
@@ -31,33 +37,41 @@ use Fisharebest\Webtrees\View;
     };
 
     // Map components
-    let markers = L.markerClusterGroup({
-      showCoverageOnHover: false,
-    });
+    let markers = null;
 
     /**
      * Passed to resetControl to
      * perform necessary reset actions on map
      */
-     let resetCallback = function () {
-      map.flyToBounds(markers.getBounds(), {padding: [50, 30], maxZoom: 15 });
+    const resetCallback = function () {
+      map.flyToBounds(markers.getBounds(), {
+        padding: [50, 30],
+        maxZoom: 15
+      });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
     }
 
     /**
      * @private
      */
-    let _drawMap = function () {
+    const _drawMap = function () {
       map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback);
+      map.fitWorld({
+        padding: [50, 30]
+      });
     };
 
     /**
      * @private
+     *
+     * @param {object} data
      */
-    let _buildMapData = function () {
-      let data = <?= json_encode($data['markers'], JSON_THROW_ON_ERROR) ?>;
+    const _buildMapData = function (data) {
+      markers = L.markerClusterGroup({
+        showCoverageOnHover: false,
+      });
 
-      let geoJsonLayer = L.geoJson(data, {
+      let geoJsonLayer = L.geoJson(data.markers, {
         pointToLayer: function (feature, latlng) {
           return new L.Marker(latlng, {
             icon: L.BeautifyIcon.icon({
@@ -70,63 +84,89 @@ use Fisharebest\Webtrees\View;
             title: feature.properties.tooltip,
             id: feature.id,
           })
-            .on('popupopen', function (e) {
-              let item = document.querySelector('.mapped[data-wt-feature-id="' + e.target.feature.id + '"]');
-              item.classList.add('messagebox');
-              item.scrollIntoView(scrollOptions);
-            })
-            .on('popupclose', function () {
-              sidebar.querySelectorAll('.mapped').forEach(e => e.classList.remove('messagebox'));
-              sidebar.firstElementChild.scrollIntoView(scrollOptions);
-            });
+          .on('popupopen', function (e) {
+            let item = document.querySelector('.mapped[data-wt-feature-id="' + e.target.feature.id + '"]');
+            item.classList.add('messagebox');
+            item.scrollIntoView(scrollOptions);
+          })
+          .on('popupclose', function () {
+            sidebar.querySelectorAll('.mapped').forEach(e => e.classList.remove('messagebox'));
+            sidebar.firstElementChild.scrollIntoView(scrollOptions);
+          });
         },
         onEachFeature: function (feature, layer) {
-          layer.bindPopup(feature.properties.popup);
+          layer.bindPopup(feature.properties.popup, {
+            minWidth: 150
+          });
         },
       });
 
-      if (data.features.length > 0) {
+      if (data.markers.features.length > 0) {
         markers.addLayer(geoJsonLayer);
         map.addLayer(markers);
       }
 
-      map.fitBounds(<?= json_encode($data['bounds'], JSON_THROW_ON_ERROR) ?>, { padding: [50, 30] });
-      sidebar.innerHTML = <?= json_encode($data['sidebar'], JSON_THROW_ON_ERROR) ?>;
-   };
+      map.flyToBounds(markers.getBounds(), {
+        padding: [50, 30],
+        maxZoom: 15
+      });
+      sidebar.innerHTML = data.sidebar;
+    };
 
-    window.onload = function() {
-      // Activate marker popup when sidebar entry clicked
-      sidebar.querySelectorAll('.mapped').forEach((element) => {
-        var eventId = parseInt(element.dataset.wtFeatureId);
+    /**
+     * @private
+     *
+     * @param {integer} id
+     */
+    const _getMapData = function (id) {
+      const markersLoaded = map.hasLayer(markers);
+      if (markersLoaded) {
+        wt_place_list.updateLinks(dummyData);
+      }
+      wt_place_list.getData('map', id, false, function (text) {
+        map.once('zoomend', () => {
+          // Update the breadcrumbs and the link below the map
+          wt_place_list.updateLinks(result);
+        });
+        const result = JSON.parse(text);
+        // Update the map
+        if (markersLoaded) {
+          map.removeLayer(markers);
+          markers.clearLayers();
+        }
+        _buildMapData(result.data);
+      });
+    };
 
-        element.addEventListener('click', () => {
-          // first close any existing
-          map.closePopup();
-          //find the marker corresponding to the clicked event
+    window.onload = function () {
+      document.getElementById('place-hierarchy').addEventListener('click', (evt) => {
+        if (evt.target.closest('a') && evt.target.closest('a').hasAttribute('href')) {
+          //do nothing - go to the href value
+        } else if (evt.target.parentNode.classList.contains('map-place')) {
+          _getMapData(evt.target.parentNode.dataset.id);
+        } else if (evt.target.closest('li.mapped')) {
+          // find the marker corresponding to the clicked event
+          const eventId = parseInt(evt.target.closest('.gchart').dataset.wtFeatureId);
           let mkrLayer = markers.getLayers().filter(function (v) {
             return v.feature !== undefined && v.feature.id === eventId;
           });
+          const mkr = mkrLayer.pop();
 
-          let mkr = mkrLayer.pop();
-
-          markers.zoomToShowLayer(mkr, function (e) {
-            mkr.openPopup();
-          });
+          if (mkr instanceof L.Layer) {
+            markers.zoomToShowLayer(mkr, function (e) {
+              mkr.openPopup();
+            });
+          } else {
+            // Should never get here
+            console.log('Error: unable to find the selected marker');
+          }
 
           return false;
-        });
-
-        // stop clicking on a person also opening the popup
-        element.querySelectorAll('a').forEach((el) => {
-          el.addEventListener('click', (e) => {
-            e.stopPropagation();
-          });
-        });
+        }
       });
-    }
-
-    _drawMap();
-    _buildMapData();
+      _drawMap();
+      _getMapData(startPlaceId);
+    };
   })();
 </script>
 <?php View::endpush() ?>

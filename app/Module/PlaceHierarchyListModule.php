@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
@@ -158,7 +160,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Tree                                      $tree
+     * @param Tree $tree
      * @param array<bool|int|string|array<string>|null> $parameters
      *
      * @return string
@@ -182,70 +184,47 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $action2  = $request->getQueryParams()['action2'] ?? 'hierarchy';
-        $place_id = (int) ($request->getQueryParams()['place_id'] ?? 0);
+        $place_id = Validator::queryParams($request)->integer('place_id', 0);
         $place    = Place::find($place_id, $tree);
 
         // Request for a non-existent place?
         if ($place_id !== $place->id()) {
-            return redirect($place->url());
+            throw new HttpNotFoundException(I18N::translate('The place with ID %s does not exist', (string) $place_id));
         }
 
         $map_providers = $this->module_service->findByInterface(ModuleMapProviderInterface::class);
+        $use_map       = $map_providers->isNotEmpty();
 
-        $content = '';
-        $showmap = $map_providers->isNotEmpty();
-        $data    = null;
-
-        if ($showmap) {
-            $content .= view('modules/place-hierarchy/map', [
-                'data'           => $this->mapData($place),
+        if ($use_map) {
+            $content = view('modules/place-hierarchy/map', [
                 'leaflet_config' => $this->leaflet_js_service->config(),
+                'start_place_id' => $place_id,
             ]);
-        }
-
-        switch ($action2) {
-            case 'list':
-            default:
-                $alt_link = I18N::translate('Show place hierarchy');
-                $alt_url  = $this->listUrl($tree, ['action2' => 'hierarchy', 'place_id' => $place_id]);
-                $content .= view('modules/place-hierarchy/list', ['columns' => $this->getList($tree)]);
-                break;
-            case 'hierarchy':
-            case 'hierarchy-e':
-                $alt_link = I18N::translate('Show all places in a list');
-                $alt_url  = $this->listUrl($tree, ['action2' => 'list', 'place_id' => 0]);
-                $data     = $this->getHierarchy($place);
-                $content .= ($data === null || $showmap) ? '' : view('place-hierarchy', $data);
-                if ($data === null || $action2 === 'hierarchy-e') {
-                    $content .= view('modules/place-hierarchy/events', [
-                        'indilist' => $this->search_service->searchIndividualsInPlace($place),
-                        'famlist'  => $this->search_service->searchFamiliesInPlace($place),
-                        'tree'     => $place->tree(),
-                    ]);
-                }
-        }
-
-        if ($data !== null && $action2 !== 'hierarchy-e' && $place->gedcomName() !== '') {
-            $events_link = $this->listUrl($tree, ['action2' => 'hierarchy-e', 'place_id' => $place_id]);
         } else {
-            $events_link = '';
+            $content = view('modules/place-hierarchy/hierarchy', $this->getHierarchy($place));
         }
-
-        $breadcrumbs = $this->breadcrumbs($place);
 
         return $this->viewResponse('modules/place-hierarchy/page', [
-            'alt_link'    => $alt_link,
-            'alt_url'     => $alt_url,
-            'breadcrumbs' => $breadcrumbs['breadcrumbs'],
-            'content'     => $content,
-            'current'     => $breadcrumbs['current'],
-            'events_link' => $events_link,
-            'place'       => $place,
-            'title'       => I18N::translate('Place hierarchy'),
-            'tree'        => $tree,
-            'world_url'   => $this->listUrl($tree),
+            'breadcrumbs'   => $this->breadcrumbs($place),
+            'content'       => $content,
+            'title'         => I18N::translate('Place hierarchy'),
+            'tree'          => $tree,
+            'use_map'       => $use_map,
+            'place_summary' => $this->placeSummary($place),
         ]);
+    }
+
+    /**
+     * @param Place $place
+     *
+     * @return array<mixed>
+     */
+    private function placeSummary($place): array
+    {
+        return [
+            'id'   => $place->id(),
+            'link' =>  I18N::translate('View table of events occurring in %s', $place->fullName()),
+        ];
     }
 
     /**
@@ -255,14 +234,12 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
      */
     protected function mapData(Place $placeObj): array
     {
-        $places    = $placeObj->getChildPlaces();
-        $features  = [];
-        $sidebar   = '';
-        $show_link = true;
+        $places   = $placeObj->getChildPlaces();
+        $features = [];
+        $sidebar  = '';
 
         if ($places === []) {
-            $places[]  = $placeObj;
-            $show_link = false;
+            $places[] = $placeObj;
         }
 
         foreach ($places as $id => $place) {
@@ -273,16 +250,15 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             } else {
                 $sidebar_class = 'mapped';
                 $features[]    = [
-                    'type'       => 'Feature',
-                    'id'         => $id,
-                    'geometry'   => [
+                    'type'     => 'Feature',
+                    'id'       => $id,
+                    'geometry' => [
                         'type'        => 'Point',
                         'coordinates' => [$location->longitude(), $location->latitude()],
                     ],
                     'properties' => [
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
-                            'showlink'  => $show_link,
                             'place'     => $place,
                             'latitude'  => $location->latitude(),
                             'longitude' => $location->longitude(),
@@ -298,16 +274,16 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
             ];
 
             $sidebar .= view('modules/place-hierarchy/sidebar', [
-                'showlink'      => $show_link,
+                'num_children'  => count($place->getChildPlaces()),
                 'id'            => $id,
                 'place'         => $place,
                 'sidebar_class' => $sidebar_class,
                 'stats'         => $stats,
+                'geo_link'      => Auth::isAdmin() ? route(MapDataEdit::class, ['place_id'  => $location->id()]) : '',
             ]);
         }
 
         return [
-            'bounds'  => (new PlaceLocation($placeObj->gedcomName()))->boundingRectangle(),
             'sidebar' => $sidebar,
             'markers' => [
                 'type'     => 'FeatureCollection',
@@ -317,78 +293,88 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     }
 
     /**
-     * @param Tree $tree
-     *
-     * @return array<array<Place>>
-     */
-    private function getList(Tree $tree): array
-    {
-        $places = $this->search_service->searchPlaces($tree, '')
-            ->sort(static function (Place $x, Place $y): int {
-                return $x->gedcomName() <=> $y->gedcomName();
-            })
-            ->all();
-
-        $count = count($places);
-
-        if ($places === []) {
-            return [];
-        }
-
-        $columns = $count > 20 ? 3 : 2;
-
-        return array_chunk($places, (int) ceil($count / $columns));
-    }
-
-    /**
      * @param Place $place
      *
-     * @return array{'tree':Tree,'col_class':string,'columns':array<array<Place>>,'place':Place}|null
+     * @return array<mixed>
      */
-    private function getHierarchy(Place $place): ?array
+    private function getHierarchy(Place $place): array
     {
-        $child_places = $place->getChildPlaces();
-        $numfound     = count($child_places);
+        $places   = $place->getChildPlaces();
+        $numfound = count($places);
+        $divisor  = $numfound > 20 ? 3 : 2;
 
         if ($numfound > 0) {
-            $divisor = $numfound > 20 ? 3 : 2;
-
-            return [
-                'tree'      => $place->tree(),
-                'col_class' => 'w-' . ($divisor === 2 ? '25' : '50'),
-                'columns'   => array_chunk($child_places, (int) ceil($numfound / $divisor)),
-                'place'     => $place,
-            ];
+            $columns = ceil($numfound / $divisor);
+        } else {
+            $columns = 1;
+            $places  = [$place];
         }
 
-        return null;
+        return [
+            'col_class' => 'w-' . ($divisor > 2 ? '50' : '25'),
+            'columns'   => array_chunk($places, (int) $columns),
+        ];
     }
 
     /**
      * @param Place $place
      *
-     * @return array{'breadcrumbs':array<Place>,'current':Place|null}
+     * @return string
      */
-    private function breadcrumbs(Place $place): array
+    private function breadcrumbs(Place $place): string
     {
-        $breadcrumbs = [];
+        $place_hierarchy = [];
         if ($place->gedcomName() !== '') {
-            $breadcrumbs[] = $place;
-            $parent_place  = $place->parent();
+            $place_hierarchy[] = $place;
+            $parent_place      = $place->parent();
             while ($parent_place->gedcomName() !== '') {
-                $breadcrumbs[] = $parent_place;
-                $parent_place  = $parent_place->parent();
+                $place_hierarchy[] = $parent_place;
+                $parent_place      = $parent_place->parent();
             }
-            $breadcrumbs = array_reverse($breadcrumbs);
-            $current     = array_pop($breadcrumbs);
+            $place_hierarchy = array_reverse($place_hierarchy);
+            $current         = array_pop($place_hierarchy);
         } else {
             $current = null;
         }
 
-        return [
-            'breadcrumbs' => $breadcrumbs,
-            'current'     => $current,
-        ];
+        return view('modules/place-hierarchy/breadcrumbs', [
+            'place_hierarchy' => $place_hierarchy,
+            'current'         => $current,
+        ]);
+    }
+
+    /**
+     * @param ServerRequestInterface $request
+     *
+     * @return ResponseInterface
+     */
+    public function postUpdateDataAction(ServerRequestInterface $request): ResponseInterface
+    {
+        $tree     = Validator::attributes($request)->tree();
+        $place_id = Validator::parsedBody($request)->integer('placeId', 0);
+        $type     = Validator::parsedBody($request)->string('type', '');
+        $place    = Place::find($place_id, $tree);
+
+        switch ($type) {
+            case 'map':
+                $data = $this->mapData($place);
+                break;
+            case 'events':
+                $data = view('modules/place-hierarchy/events', [
+                    'indilist' => $this->search_service->searchIndividualsInPlace($place),
+                    'famlist'  => $this->search_service->searchFamiliesInPlace($place),
+                    'tree'     => $tree,
+                ]);
+                break;
+            default: // hierarchy
+                $data = view('modules/place-hierarchy/hierarchy', $this->getHierarchy($place));
+        }
+
+        return response([
+            'data'          => $data,
+            'breadcrumbs'   => $this->breadcrumbs($place),
+            'place_summary' => $this->placeSummary($place),
+        ]);
     }
 
     /**

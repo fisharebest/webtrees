@@ -1,0 +1,19 @@
+<?php
+
+use Fisharebest\Webtrees\I18N;
+
+?>
+
+<?php if ($current !== null) : ?>
+  <a role="button" class="map-place" data-id="0" dir="auto"><bdi><?= I18N::translate('World') ?></bdi></a>
+<?php else : ?>
+  <bdi><?= I18N::translate('World') ?></bdi>
+<?php endif ?>
+
+<?php foreach ($place_hierarchy as $item) : ?>
+  - <a role="button" class="map-place" data-id="<?= $item->id() ?>" dir="auto"><?= $item->placeName() ?></a>
+<?php endforeach ?>
+
+<?php if ($current !== null) : ?>
+  - <?= $current->placeName() ?>
+<?php endif ?>

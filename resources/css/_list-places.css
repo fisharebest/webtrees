@@ -18,15 +18,30 @@
  *
  * wt-route-place-list
  */
- .wt-place-hierarchy-wrapper {
-    height: 70vh;
-}
+
+ #place-hierarchy {
+    --wt-place-hierarchy-height: 70vh;
+  }
 
 .wt-place-hierarchy-map {
-    height: 100%;
+    height: var(--wt-place-hierarchy-height);
 }
 
 .wt-place-hierarchy-sidebar {
-    height: 100%;
+    font-size: small;
+    max-height:  var(--wt-place-hierarchy-height);
     overflow-y: auto;
+    min-width:150px;
+}
+
+.wt-place-hierarchy-sidebar table {
+   margin-bottom: 0;
+}
+
+.wt-place-hierarchy-sidebar th {
+    font-weight: 600;
+}
+
+.wt-place-hierarchy-sidebar .wt-icon-map {
+    color: var(--color-1);
 }

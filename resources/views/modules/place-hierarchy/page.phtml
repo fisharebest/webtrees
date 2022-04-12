@@ -1,60 +1,154 @@
 <?php
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
 
 /**
- * @var string       $alt_link
- * @var string       $alt_url
- * @var array<Place> $breadcrumbs
- * @var string       $content
- * @var Place|null   $current
- * @var string       $events_link
- * @var Place        $place
- * @var string       $title
- * @var Tree         $tree
- * @var string       $world_url
+ * @var string $breadcrumbs
+ * @var string $content
+ * @var string $title
+ * @var Tree   $tree
  */
 
 ?>
 
 <div id="place-hierarchy">
-    <div class="container">
-        <h4><?= $title ?></h4>
-        <h5 class="text-center">
-            <?php if ($current !== null) : ?>
-                <a href="<?= e($world_url) ?>">
-                    <?= I18N::translate('World') ?>
-                </a>
-            <?php else : ?>
-                <?= I18N::translate('World') ?>
-            <?php endif ?>
+  <h4><?= $title ?></h4>
+  <h5 class="breadcrumbs text-center"><?= $breadcrumbs ?></h5>
 
-            <?php foreach ($breadcrumbs as $item) : ?>
-                -
-                <a href="<?= e($item->url()) ?>" dir="auto"><?= $item->placeName() ?></a>
-            <?php endforeach ?>
+  <div class="row wt-place-hierarchy-content">
+    <?= $content ?>
+  </div>
 
-            <?php if ($current !== null) : ?>
-                - <?= $current->placeName() ?>
-            <?php endif ?>
-        </h5>
-
-        <?= $content ?>
-
-        <div class="text-center">
-            <?php if ($events_link !== '') : ?>
-                <a class="formField" href= <?= e($events_link) ?>>
-                    <?= I18N::translate('View table of events occurring in %s', $place->fullName()) ?>
-                </a>
-                |
-            <?php endif ?>
-
-            <a href="<?= e($alt_url) ?>">
-                <?= $alt_link ?>
-            </a>
-        </div>
+  <div class="invisible place_link text-center my-2">
+    <a role="button" class="" data-type="events"></a>
+    <div>
+      <span role="alert" class="alert alert-warning px-2 py-0">
+        <?= I18N::translate('Places with a large number of events may take a long time to load.') ?>
+      </span>
     </div>
+  </div>
+
+  <div class="row text-content"></div>
 </div>
 
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  const wt_place_list = (function () {
+    const use_map = <?= json_encode($use_map, JSON_THROW_ON_ERROR) ?>;
+    const place_summary = <?= json_encode($place_summary, JSON_THROW_ON_ERROR) ?>;
+    const target = document.querySelector('.text-content');
+
+    /**
+     * @private
+     *
+     * @param {boolean} showloading
+     */
+    const _clearText = function (showloading) {
+      target.innerHTML = '';
+      if (showloading) {
+        target.classList.add('wt-ajax-load');
+      } else {
+        target.classList.remove('wt-ajax-load');
+      }
+    }
+
+    /**
+     * @private
+     *
+     * @param {object} data
+     */
+    const _updateLinks = function (data) {
+      document.querySelector('.breadcrumbs').innerHTML = data.breadcrumbs;
+      const link = document.querySelector('.place_link');
+      if (data.place_summary.id === 0) {
+        link.classList.add('invisible');
+      } else {
+        const target = link.querySelector('a');
+        target.dataset.place_id = data.place_summary.id;
+        target.innerHTML = data.place_summary.link;
+        link.classList.remove('invisible');
+      }
+      _clearText(false);
+    }
+
+    /**
+     * @private
+     *
+     * @param {string}   type
+     * @param {integer}  id
+     * @param {boolean}  clear
+     * @param {function} callback
+     */
+    const _getData = function (type, id, clear, callback) {
+      _clearText(clear);
+
+      let formData = new FormData();
+
+      formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
+      formData.append('placeId', id);
+      formData.append('type', type);
+      fetch(<?= json_encode(route('module', ['module' => 'places_list', 'action' => 'updateData', 'tree' => $tree->name()]), JSON_THROW_ON_ERROR) ?>, {
+          credentials: 'same-origin',
+          body: formData,
+          method: 'POST',
+        })
+        .then(response => response.text())
+        .then(callback);
+    }
+
+    // Request for events table
+    document.querySelector('.place_link').addEventListener('click', (evt) => {
+      evt.stopPropagation();
+      const source = evt.target.closest('a').dataset;
+      _getData(source.type, source.place_id, true, function (text) {
+        const result = JSON.parse(text);
+        target.innerHTML = result.data;
+      });
+    });
+
+    if (!use_map) {
+      // act on breadcrumb click
+      document.querySelector('.breadcrumbs').addEventListener('click', (evt) => {
+        _getData('hierarchy', evt.target.closest('a').dataset.id, false, function (text) {
+          const result = JSON.parse(text);
+          document.querySelector('.wt-place-hierarchy-content').innerHTML = result.data;
+          _updateLinks(result);
+        });
+      });
+    }
+
+    // act on hierarchy of places table
+    const selector = document.querySelector('.list_table');
+    if (selector instanceof Element) {
+      const dest = document.querySelector('.wt-place-hierarchy-content');
+      dest.addEventListener('click', (evt) => {
+        const source = evt.target.closest('a').dataset;
+        _getData(source.type, source.place_id, false, function (text) {
+          const result = JSON.parse(text);
+          dest.innerHTML = result.data;
+          _updateLinks(result);
+        });
+      });
+    }
+
+    // Called with url containing a place id
+    if (place_summary.id > 0) {
+      _updateLinks({
+        'breadcrumbs': <?= json_encode($breadcrumbs, JSON_THROW_ON_ERROR) ?>,
+        'place_summary': place_summary,
+      });
+      document.querySelector('.place_link a').click();
+    }
+
+    return {
+      updateLinks: _updateLinks,
+      getData: _getData,
+    }
+
+  })();
+</script>
+<?php View::endpush() ?>

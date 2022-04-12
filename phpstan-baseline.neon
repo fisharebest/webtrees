@@ -1662,7 +1662,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$size of function array_chunk expects int\\<1, max\\>, int given\\.$#"
-			count: 2
+			count: 1
 			path: app/Module/PlaceHierarchyListModule.php
 
 		-
