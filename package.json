@@ -13,7 +13,7 @@
     "postcss-custom-properties": "12.1.7",
     "postcss-image-inliner": "5.0.0",
     "postcss-import": "14.1.0",
-    "postcss-rtlcss": "3.6.0",
+    "postcss-rtlcss": "3.6.2",
     "resolve-url-loader": "5.0.0",
     "sass": "1.50.0",
     "sass-loader": "12.6.0",
