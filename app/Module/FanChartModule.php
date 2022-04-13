@@ -82,9 +82,9 @@ class FanChartModule extends AbstractModule implements ModuleChartInterface, Req
     private const STYLE_FULL_CIRCLE          = 4;
 
     // Defaults
-    private const   DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
-    private const   DEFAULT_GENERATIONS = 4;
-    private const   DEFAULT_WIDTH       = 100;
+    public const    DEFAULT_STYLE       = self::STYLE_THREE_QUARTER_CIRCLE;
+    public const    DEFAULT_GENERATIONS = 4;
+    public const    DEFAULT_WIDTH       = 100;
     protected const DEFAULT_PARAMETERS  = [
         'style'       => self::DEFAULT_STYLE,
         'generations' => self::DEFAULT_GENERATIONS,

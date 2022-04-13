@@ -21,14 +21,14 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -52,18 +52,16 @@ class RedirectCalendarPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query    = $request->getQueryParams();
-        $ged      = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $cal      = $query['cal'] ?? null;
-        $day      = $query['day'] ?? null;
-        $month    = $query['month'] ?? null;
-        $year     = $query['year'] ?? null;
-        $filterev = $query['filterev'] ?? null;
-        $filterof = $query['filterof'] ?? null;
-        $filtersx = $query['filtersx'] ?? null;
-        $view     = $query['view'] ?? 'day';
-
-        $tree = $this->tree_service->all()->get($ged);
+        $ged      = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $cal      = Validator::queryParams($request)->string('cal', '');
+        $day      = Validator::queryParams($request)->string('day', '');
+        $month    = Validator::queryParams($request)->string('month', '');
+        $year     = Validator::queryParams($request)->string('year', '');
+        $filterev = Validator::queryParams($request)->string('filterev', '');
+        $filterof = Validator::queryParams($request)->string('filterof', '');
+        $filtersx = Validator::queryParams($request)->string('filtersx', '');
+        $view     = Validator::queryParams($request)->string('view', 'day');
+        $tree     = $this->tree_service->all()->get($ged);
 
         if ($tree instanceof Tree) {
             $url = route(CalendarPage::class, [
@@ -78,7 +76,7 @@ class RedirectCalendarPhp implements RequestHandlerInterface
                 'filtersx' => $filtersx,
             ]);
 
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

@@ -62,7 +62,7 @@ class RedirectCalendarPhpTest extends TestCase
 
         self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
         self::assertSame(
-            'https://www.example.com/index.php?route=%2Ftree1%2Fcalendar%2Fday',
+            'https://www.example.com/index.php?route=%2Ftree1%2Fcalendar%2Fday&cal=&day=&month=&year=&filterev=&filterof=&filtersx=',
             $response->getHeaderLine('Location')
         );
     }

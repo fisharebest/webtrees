@@ -22,15 +22,15 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\BranchesListModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -58,11 +58,10 @@ class RedirectBranchesPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query       = $request->getQueryParams();
-        $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $soundex_dm  = $query['soundex_dm'] ?? null;
-        $soundex_std = $query['soundex_std'] ?? null;
-        $surname     = $query['surname'] ?? null;
+        $ged         = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $soundex_dm  = Validator::queryParams($request)->string('soundex_dm', '');
+        $soundex_std = Validator::queryParams($request)->string('soundex_std', '');
+        $surname     = Validator::queryParams($request)->string('surname', '');
         $tree        = $this->tree_service->all()->get($ged);
         $module      = $this->module_service->findByInterface(BranchesListModule::class)->first();
 
@@ -76,7 +75,7 @@ class RedirectBranchesPhp implements RequestHandlerInterface
                 'tree'        => $tree->name(),
             ]);
 
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

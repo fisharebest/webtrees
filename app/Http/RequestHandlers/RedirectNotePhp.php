@@ -31,8 +31,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
@@ -64,7 +62,7 @@ class RedirectNotePhp implements RequestHandlerInterface
             $note = Registry::noteFactory()->make($nid, $tree);
 
             if ($note instanceof Note) {
-                return redirect($note->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                return Registry::responseFactory()->redirectUrl($note->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
             }
         }
 

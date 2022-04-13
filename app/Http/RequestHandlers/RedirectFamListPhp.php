@@ -22,18 +22,15 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Module\FamilyListModule;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function array_flip;
-use function array_intersect_key;
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -61,16 +58,29 @@ class RedirectFamListPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query  = $request->getQueryParams();
-        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $tree   = $this->tree_service->all()->get($ged);
-        $module = $this->module_service->findByInterface(FamilyListModule::class)->first();
+        $ged                 = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $alpha               = Validator::queryParams($request)->string('alpha', '');
+        $falpha              = Validator::queryParams($request)->string('falpha', '');
+        $show                = Validator::queryParams($request)->string('show', '');
+        $show_all            = Validator::queryParams($request)->string('show_all', '');
+        $show_all_firstnames = Validator::queryParams($request)->string('show_all_firstnames', '');
+        $show_marnm          = Validator::queryParams($request)->string('show_marnm', '');
+        $surname             = Validator::queryParams($request)->string('', '');
+        $tree                = $this->tree_service->all()->get($ged);
+        $module              = $this->module_service->findByInterface(FamilyListModule::class)->first();
 
-        if ($tree instanceof Tree && $module instanceof ModuleListInterface) {
-            $allowed = ['alpha', 'falpha', 'show', 'show_all', 'show_all_firstnames', 'show_marnm', 'surname'];
-            $params  = array_intersect_key($query, array_flip($allowed));
+        if ($tree instanceof Tree && $module instanceof FamilyListModule) {
+            $url = $module->listUrl($tree, [
+                'alpha'               => $alpha,
+                'falpha'              => $falpha,
+                'show'                => $show,
+                'show_all'            => $show_all,
+                'show_all_firstnames' => $show_all_firstnames,
+                'show_marnm'          => $show_marnm,
+                'surname'             => $surname,
+            ]);
 
-            return redirect($module->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

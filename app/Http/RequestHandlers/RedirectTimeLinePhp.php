@@ -28,11 +28,10 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -60,9 +59,8 @@ class RedirectTimeLinePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query  = $request->getQueryParams();
-        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $pids   = $query['pids'] ?? [];
+        $ged    = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $pids   = Validator::queryParams($request)->array('pids');
         $tree   = $this->tree_service->all()->get($ged);
         $module = $this->module_service->findByInterface(TimelineChartModule::class)->first();
 
@@ -71,7 +69,7 @@ class RedirectTimeLinePhp implements RequestHandlerInterface
 
             $url = $module->chartUrl($individual, $pids);
 
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

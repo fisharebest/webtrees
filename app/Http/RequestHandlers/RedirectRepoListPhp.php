@@ -21,17 +21,16 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\RepositoryListModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -59,13 +58,12 @@ class RedirectRepoListPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query  = $request->getQueryParams();
-        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
+        $ged    = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
         $tree   = $this->tree_service->all()->get($ged);
         $module = $this->module_service->findByInterface(RepositoryListModule::class)->first();
 
-        if ($tree instanceof Tree && $module instanceof ModuleListInterface) {
-            return redirect($module->listUrl($tree), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+        if ($tree instanceof Tree && $module instanceof RepositoryListModule) {
+            return Registry::responseFactory()->redirectUrl($module->listUrl($tree), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

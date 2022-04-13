@@ -50,8 +50,8 @@ class PedigreeChartModule extends AbstractModule implements ModuleChartInterface
     public const STYLE_DOWN  = 'down';
 
     // Defaults
-    protected const DEFAULT_GENERATIONS = '4';
-    protected const DEFAULT_STYLE       = self::STYLE_RIGHT;
+    public const    DEFAULT_GENERATIONS = '4';
+    public const    DEFAULT_STYLE       = self::STYLE_RIGHT;
     protected const DEFAULT_PARAMETERS  = [
         'generations' => self::DEFAULT_GENERATIONS,
         'style'       => self::DEFAULT_STYLE,

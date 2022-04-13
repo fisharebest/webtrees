@@ -31,8 +31,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function redirect;
-
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
  */
@@ -64,7 +62,7 @@ class RedirectRepositoryPhp implements RequestHandlerInterface
             $repository = Registry::repositoryFactory()->make($rid, $tree);
 
             if ($repository instanceof Repository) {
-                return redirect($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+                return Registry::responseFactory()->redirectUrl($repository->url(), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
             }
         }
 

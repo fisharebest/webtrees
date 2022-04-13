@@ -45,8 +45,8 @@ class HourglassChartModule extends AbstractModule implements ModuleChartInterfac
     protected const ROUTE_URL = '/tree/{tree}/hourglass-{generations}-{spouses}/{xref}';
 
     // Defaults
-    private const   DEFAULT_GENERATIONS = '3';
-    private const   DEFAULT_SPOUSES     = false;
+    public const    DEFAULT_GENERATIONS = '3';
+    public const    DEFAULT_SPOUSES     = false;
     protected const DEFAULT_PARAMETERS  = [
         'generations' => self::DEFAULT_GENERATIONS,
         'spouses'     => self::DEFAULT_SPOUSES,

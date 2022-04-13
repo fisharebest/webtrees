@@ -28,11 +28,10 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -60,12 +59,11 @@ class RedirectFanChartPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query       = $request->getQueryParams();
-        $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $root_id     = $query['rootid'] ?? '';
-        $generations = $query['generations'] ?? '4';
-        $style       = $query['style'] ?? '4';
-        $width       = $query['width'] ?? '100';
+        $ged         = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $root_id     = Validator::queryParams($request)->string('rootid', '');
+        $generations = Validator::queryParams($request)->string('generations', '4');
+        $style       = Validator::queryParams($request)->string('style', '4');
+        $width       = Validator::queryParams($request)->integer('width', FanChartModule::DEFAULT_WIDTH);
         $tree        = $this->tree_service->all()->get($ged);
         $module      = $this->module_service->findByInterface(FanChartModule::class)->first();
 
@@ -78,7 +76,7 @@ class RedirectFanChartPhp implements RequestHandlerInterface
                 'width'       => $width,
             ]);
 
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

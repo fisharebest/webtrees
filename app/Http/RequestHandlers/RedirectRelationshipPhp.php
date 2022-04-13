@@ -28,11 +28,10 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -60,14 +59,13 @@ class RedirectRelationshipPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query     = $request->getQueryParams();
-        $ged       = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $pid1      = $query['pid1'] ?? '';
-        $pid2      = $query['pid2'] ?? '';
-        $ancestors = $query['ancestors'] ?? '0';
-        $recursion = $query['recursion'] ?? '0';
-        $tree        = $this->tree_service->all()->get($ged);
-        $module      = $this->module_service->findByInterface(RelationshipsChartModule::class)->first();
+        $ged       = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $pid1      = Validator::queryParams($request)->string('pid1', '');
+        $pid2      = Validator::queryParams($request)->string('pid2', '');
+        $ancestors = Validator::queryParams($request)->string('ancestors', '0');
+        $recursion = Validator::queryParams($request)->string('recursion', '0');
+        $tree      = $this->tree_service->all()->get($ged);
+        $module    = $this->module_service->findByInterface(RelationshipsChartModule::class)->first();
 
         if ($tree instanceof Tree && $module instanceof RelationshipsChartModule) {
             $individual = Registry::individualFactory()->make($pid1, $tree) ?? $tree->significantIndividual(Auth::user());
@@ -78,7 +76,7 @@ class RedirectRelationshipPhp implements RequestHandlerInterface
                 'recursion' => $recursion,
             ]);
 
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

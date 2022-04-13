@@ -21,19 +21,16 @@ namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
-use Fisharebest\Webtrees\Module\ModuleListInterface;
 use Fisharebest\Webtrees\Module\PlaceHierarchyListModule;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function array_flip;
-use function array_intersect_key;
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -61,16 +58,16 @@ class RedirectPlaceListPhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query  = $request->getQueryParams();
-        $ged    = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $tree   = $this->tree_service->all()->get($ged);
-        $module = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->first();
+        $ged      = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $action2  = Validator::queryParams($request)->string('action2', '');
+        $place_id = Validator::queryParams($request)->string('place_id', '');
+        $tree     = $this->tree_service->all()->get($ged);
+        $module   = $this->module_service->findByInterface(PlaceHierarchyListModule::class)->first();
 
-        if ($tree instanceof Tree && $module instanceof ModuleListInterface) {
-            $allowed = ['action2', 'place_id'];
-            $params  = array_intersect_key($query, array_flip($allowed));
+        if ($tree instanceof Tree && $module instanceof PlaceHierarchyListModule) {
+            $url = $module->listUrl($tree, ['action2' => $action2, 'place-id' => $place_id]);
 
-            return redirect($module->listUrl($tree, $params), StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

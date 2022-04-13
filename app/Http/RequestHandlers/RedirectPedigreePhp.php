@@ -28,11 +28,10 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-
-use function redirect;
 
 /**
  * Redirect URLs created by webtrees 1.x (and PhpGedView).
@@ -67,11 +66,10 @@ class RedirectPedigreePhp implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $query       = $request->getQueryParams();
-        $ged         = $query['ged'] ?? Site::getPreference('DEFAULT_GEDCOM');
-        $root_id     = $query['rootid'] ?? '';
-        $generations = $query['generations'] ?? '4';
-        $orientation = $query['orientation'] ?? '';
+        $ged         = Validator::queryParams($request)->string('ged', Site::getPreference('DEFAULT_GEDCOM'));
+        $root_id     = Validator::queryParams($request)->string('rootid', '');
+        $generations = Validator::queryParams($request)->string('generations', PedigreeChartModule::DEFAULT_GENERATIONS);
+        $orientation = Validator::queryParams($request)->string('orientation', '');
         $tree        = $this->tree_service->all()->get($ged);
         $module      = $this->module_service->findByInterface(PedigreeChartModule::class)->first();
 
@@ -80,10 +78,10 @@ class RedirectPedigreePhp implements RequestHandlerInterface
 
             $url = $module->chartUrl($individual, [
                 'generations' => $generations,
-                'style'       => self::CHART_STYLES[$orientation] ?? 'right',
+                'style'       => self::CHART_STYLES[$orientation] ?? PedigreeChartModule::DEFAULT_STYLE,
             ]);
 
-            return redirect($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
+            return Registry::responseFactory()->redirectUrl($url, StatusCodeInterface::STATUS_MOVED_PERMANENTLY);
         }
 
         throw new HttpNotFoundException();

@@ -73,7 +73,7 @@ class RedirectBranchesPhpTest extends TestCase
 
         self::assertSame(StatusCodeInterface::STATUS_MOVED_PERMANENTLY, $response->getStatusCode());
         self::assertSame(
-            'https://www.example.com/index.php?route=%2F%2FPage%2Ftree1&surname=XYZ',
+            'https://www.example.com/index.php?route=%2F%2FPage%2Ftree1&soundex_dm=&soundex_std=&surname=XYZ',
             $response->getHeaderLine('Location')
         );
     }
