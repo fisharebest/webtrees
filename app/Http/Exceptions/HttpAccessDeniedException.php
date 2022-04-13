@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -33,6 +34,6 @@ class HttpAccessDeniedException extends HttpException
     {
         $message ??= I18N::translate('You do not have permission to view this page.');
 
-        parent::__construct($message, self::STATUS_FORBIDDEN);
+        parent::__construct($message, StatusCodeInterface::STATUS_FORBIDDEN);
     }
 }

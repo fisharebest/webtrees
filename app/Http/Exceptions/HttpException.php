@@ -19,22 +19,19 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
-use Fig\Http\Message\StatusCodeInterface;
 use RuntimeException;
-use Throwable;
 
 /**
  * Application level exceptions.
  */
-class HttpException extends RuntimeException implements StatusCodeInterface
+class HttpException extends RuntimeException
 {
     /**
-     * @param string         $message
-     * @param int            $status_code
-     * @param Throwable|null $previous
+     * @param string $message
+     * @param int    $status_code
      */
-    public function __construct(string $message, int $status_code, Throwable $previous = null)
+    public function __construct(string $message, int $status_code)
     {
-        parent::__construct($message, $status_code, $previous);
+        parent::__construct($message, $status_code);
     }
 }

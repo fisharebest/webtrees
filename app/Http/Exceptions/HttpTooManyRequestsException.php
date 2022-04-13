@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Exceptions;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -33,6 +34,6 @@ class HttpTooManyRequestsException extends HttpException
     {
         $message ??= I18N::translate('Too many requests. Try again later.');
 
-        parent::__construct($message, self::STATUS_TOO_MANY_REQUESTS);
+        parent::__construct($message, StatusCodeInterface::STATUS_TOO_MANY_REQUESTS);
     }
 }
