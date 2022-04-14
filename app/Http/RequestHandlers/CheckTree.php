@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Elements\MultimediaFormat;
 use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Elements\UnknownElement;
 use Fisharebest\Webtrees\Elements\XrefFamily;
@@ -32,6 +33,7 @@ use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\Elements\XrefSubmission;
 use Fisharebest\Webtrees\Elements\XrefSubmitter;
 use Fisharebest\Webtrees\Factories\ElementFactory;
+use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Header;
@@ -40,9 +42,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
@@ -58,6 +62,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use function array_slice;
 use function e;
 use function implode;
+use function in_array;
 use function preg_match;
 use function route;
 use function str_starts_with;
@@ -269,7 +274,7 @@ class CheckTree implements RequestHandlerInterface
                             $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                         }
                     } elseif ($tag === 'SOUR') {
-                        $message  = I18N::translate('Inline-source records are discouraged.');
+                        $message    = I18N::translate('Inline-source records are discouraged.');
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     } else {
                         $message  = I18N::translate('Invalid GEDCOM value');
@@ -280,6 +285,16 @@ class CheckTree implements RequestHandlerInterface
                     $actual     = strtr(e($value), ["\t" => '&rarr;']);
                     $message    = I18N::translate('“%1$s” should be “%2$s”.', $actual, $expected);
                     $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                } elseif ($element instanceof MultimediaFormat) {
+                    $mime = Mime::TYPES[$value] ?? Mime::DEFAULT_TYPE;
+
+                    if ($mime === Mime::DEFAULT_TYPE) {
+                        $message    = I18N::translate('webtrees does not recognise this file format.');
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    } elseif (str_starts_with($mime, 'image/') && !in_array($mime, ImageFactory::SUPPORTED_FORMATS, true)) {
+                        $message    = I18N::translate('webtrees cannot create thumbnails for this file format.');
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    }
                 }
             }
 
