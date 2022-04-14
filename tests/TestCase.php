@@ -97,7 +97,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             static::createTestDatabase();
 
             // This is normally set in middleware.
-            (new Gedcom())->registerTags();
+            (new Gedcom())->registerTags(Registry::elementFactory(), true);
 
             // Boot modules
             (new ModuleService())->bootModules(new WebtreesTheme());

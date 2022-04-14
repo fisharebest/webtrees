@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\ElementFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressCity;
 use Fisharebest\Webtrees\Elements\AddressCountry;
@@ -1784,31 +1785,35 @@ class Gedcom
         return $subtags;
     }
 
-    public function registerTags(): void
+    public function registerTags(ElementFactoryInterface $element_factory, bool $include_custom_tags): void
     {
         // Standard GEDCOM.
-        Registry::elementFactory()->registerTags($this->gedcom551Tags());
+        $element_factory->registerTags($this->gedcom551Tags());
 
         // webtrees extensions.
-        Registry::elementFactory()->registerTags($this->webtreesTags());
-        Registry::elementFactory()->registerSubTags($this->webtreesSubTags());
+        $element_factory->registerTags($this->webtreesTags());
 
-        // Third-party extensions.
-        Registry::elementFactory()->registerTags($this->ancestryTags());
-        Registry::elementFactory()->registerTags($this->brothersKeeperTags());
-        Registry::elementFactory()->registerTags($this->familySearchTags());
-        Registry::elementFactory()->registerTags($this->familyTreeBuilderTags());
-        Registry::elementFactory()->registerTags($this->familyTreeMakerTags());
-        Registry::elementFactory()->registerTags($this->gedcomLTags());
-        Registry::elementFactory()->registerTags($this->genPlusWinTags());
-        Registry::elementFactory()->registerTags($this->legacyTags());
-        Registry::elementFactory()->registerTags($this->personalAncestralFileTags());
-        Registry::elementFactory()->registerTags($this->phpGedViewTags());
-        Registry::elementFactory()->registerTags($this->reunionTags());
-        Registry::elementFactory()->registerTags($this->rootsMagicTags());
-        Registry::elementFactory()->registerTags($this->theMasterGenealogistTags());
+        if ($include_custom_tags) {
+            // webtrees extensions.
+            $element_factory->registerSubTags($this->webtreesSubTags());
 
-        // Creating tags from all the above are grouped into one place
-        Registry::elementFactory()->registerSubTags($this->customSubTags());
+            // Third-party extensions.
+            $element_factory->registerTags($this->ancestryTags());
+            $element_factory->registerTags($this->brothersKeeperTags());
+            $element_factory->registerTags($this->familySearchTags());
+            $element_factory->registerTags($this->familyTreeBuilderTags());
+            $element_factory->registerTags($this->familyTreeMakerTags());
+            $element_factory->registerTags($this->gedcomLTags());
+            $element_factory->registerTags($this->genPlusWinTags());
+            $element_factory->registerTags($this->legacyTags());
+            $element_factory->registerTags($this->personalAncestralFileTags());
+            $element_factory->registerTags($this->phpGedViewTags());
+            $element_factory->registerTags($this->reunionTags());
+            $element_factory->registerTags($this->rootsMagicTags());
+            $element_factory->registerTags($this->theMasterGenealogistTags());
+
+            // Creating tags from all the above are grouped into one place
+            $element_factory->registerSubTags($this->customSubTags());
+        }
     }
 }

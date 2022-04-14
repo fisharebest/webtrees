@@ -65,7 +65,7 @@ class TimeoutService
     }
 
     /**
-     * Some long running scripts are broken down into small chunks.
+     * Some long-running scripts are broken down into small chunks.
      *
      * @param float $limit
      *

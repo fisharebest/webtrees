@@ -7,6 +7,7 @@ use Fisharebest\Webtrees\Tree;
 
 /**
  * @var array<string> $errors
+ * @var string        $more_url
  * @var string        $title
  * @var Tree          $tree
  * @var array<string> $warnings
@@ -18,11 +19,11 @@ use Fisharebest\Webtrees\Tree;
 
 <h1><?= $title ?></h1>
 
-<ul class="list-group">
-    <li class="list-group-item">
-        <strong><?= I18N::translate('GEDCOM errors') ?></strong>
-    </li>
+<h2>
+    <?= I18N::translate('GEDCOM errors') ?>
+</h2>
 
+<ul class="list-group">
     <?php foreach ($errors as $error) : ?>
         <li class="list-group-item list-group-item-danger"><?= $error ?></li>
     <?php endforeach ?>
@@ -35,3 +36,12 @@ use Fisharebest\Webtrees\Tree;
         <li class="list-group-item"><?= I18N::translate('No errors have been found.') ?></li>
     <?php endif ?>
 </ul>
+
+<?php if ($more_url !== '') : ?>
+    <p>
+        <?= I18N::translate('The server’s time limit has been reached.') ?>
+        <a class="btn btn-primary" href="<?= e($more_url) ?>">
+            <?= I18N::translate('show more') ?>
+        </a>
+    </p>
+<?php endif ?>

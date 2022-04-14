@@ -19,10 +19,34 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Elements\SubmitterText;
+use Fisharebest\Webtrees\Elements\UnknownElement;
+use Fisharebest\Webtrees\Elements\XrefFamily;
+use Fisharebest\Webtrees\Elements\XrefIndividual;
+use Fisharebest\Webtrees\Elements\XrefLocation;
+use Fisharebest\Webtrees\Elements\XrefMedia;
+use Fisharebest\Webtrees\Elements\XrefNote;
+use Fisharebest\Webtrees\Elements\XrefRepository;
+use Fisharebest\Webtrees\Elements\XrefSource;
+use Fisharebest\Webtrees\Elements\XrefSubmission;
+use Fisharebest\Webtrees\Elements\XrefSubmitter;
+use Fisharebest\Webtrees\Factories\ElementFactory;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Header;
 use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Location;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Services\TimeoutService;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Submission;
+use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -31,15 +55,14 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function array_key_exists;
+use function array_slice;
 use function e;
-use function in_array;
+use function implode;
 use function preg_match;
-use function preg_match_all;
 use function route;
+use function str_starts_with;
 use function strtoupper;
-
-use const PREG_SET_ORDER;
+use function substr_count;
 
 /**
  * Check a tree for errors.
@@ -47,6 +70,20 @@ use const PREG_SET_ORDER;
 class CheckTree implements RequestHandlerInterface
 {
     use ViewResponseTrait;
+
+    private Gedcom $gedcom;
+
+    private TimeoutService $timeout_service;
+
+    /**
+     * @param Gedcom         $gedcom
+     * @param TimeoutService $timeout_service
+     */
+    public function __construct(Gedcom $gedcom, TimeoutService $timeout_service)
+    {
+        $this->gedcom          = $gedcom;
+        $this->timeout_service = $timeout_service;
+    }
 
     /**
      * @param ServerRequestInterface $request
@@ -57,7 +94,8 @@ class CheckTree implements RequestHandlerInterface
     {
         $this->layout = 'layouts/administration';
 
-        $tree = Validator::attributes($request)->tree();
+        $tree    = Validator::attributes($request)->tree();
+        $skip_to = Validator::queryParams($request)->string('skip_to', '');
 
         // We need to work with raw GEDCOM data, as we are looking for errors
         // which may prevent the GedcomRecord objects from working.
@@ -76,7 +114,6 @@ class CheckTree implements RequestHandlerInterface
             ->select(['s_id AS xref', 's_gedcom AS gedcom', new Expression("'SOUR' AS type")]);
         $q5 = DB::table('other')
             ->where('o_file', '=', $tree->id())
-            ->whereNotIn('o_type', [Header::RECORD_TYPE, 'TRLR'])
             ->select(['o_id AS xref', 'o_gedcom AS gedcom', 'o_type']);
         $q6 = DB::table('change')
             ->where('gedcom_id', '=', $tree->id())
@@ -93,7 +130,7 @@ class CheckTree implements RequestHandlerInterface
             ->get()
             ->map(static function (object $row): object {
                 // Extract type for pending record
-                if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match)) {
+                if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match) === 1) {
                     $row->type = $match[1];
                 }
 
@@ -101,6 +138,7 @@ class CheckTree implements RequestHandlerInterface
             });
 
         $records = [];
+        $xrefs   = [];
 
         foreach ($rows as $row) {
             if ($row->gedcom !== '') {
@@ -110,156 +148,164 @@ class CheckTree implements RequestHandlerInterface
                 // deleted record
                 unset($records[$row->xref]);
             }
+
+            $xrefs[strtoupper($row->xref)] = $row->xref;
         }
 
-        // LOOK FOR BROKEN LINKS
-        $XREF_LINKS = [
-            'NOTE'          => 'NOTE',
-            'SOUR'          => 'SOUR',
-            'REPO'          => 'REPO',
-            'OBJE'          => 'OBJE',
-            'SUBM'          => 'SUBM',
-            'FAMC'          => 'FAM',
-            'FAMS'          => 'FAM',
-            //'ADOP'=>'FAM', // Need to handle this case specially. We may have both ADOP and FAMC links to the same FAM, but only store one.
-            'HUSB'          => 'INDI',
-            'WIFE'          => 'INDI',
-            'CHIL'          => 'INDI',
-            'ASSO'          => 'INDI',
-            '_ASSO'         => 'INDI',
-            // A webtrees extension
-            'ALIA'          => 'INDI',
-            'AUTH'          => 'INDI',
-            // A webtrees extension
-            'ANCI'          => 'SUBM',
-            'DESI'          => 'SUBM',
-            '_WT_OBJE_SORT' => 'OBJE',
-            '_LOC'          => '_LOC',
-        ];
-
-        $RECORD_LINKS = [
-            'INDI' => [
-                'NOTE',
-                'OBJE',
-                'SOUR',
-                'SUBM',
-                'ASSO',
-                '_ASSO',
-                'FAMC',
-                'FAMS',
-                'ALIA',
-                '_WT_OBJE_SORT',
-                '_LOC',
-            ],
-            'FAM'  => [
-                'NOTE',
-                'OBJE',
-                'SOUR',
-                'SUBM',
-                'ASSO',
-                '_ASSO',
-                'HUSB',
-                'WIFE',
-                'CHIL',
-                '_LOC',
-            ],
-            'SOUR' => [
-                'NOTE',
-                'OBJE',
-                'REPO',
-                'AUTH',
-                '_LOC',
-            ],
-            'REPO' => ['NOTE'],
-            'OBJE' => ['NOTE'],
-            // The spec also allows SOUR, but we treat this as a warning
-            'NOTE' => [],
-            // The spec also allows SOUR, but we treat this as a warning
-            'SUBM' => [
-                'NOTE',
-                'OBJE',
-            ],
-            'SUBN' => ['SUBM'],
-            '_LOC' => [
-                'SOUR',
-                'OBJE',
-                '_LOC',
-                'NOTE',
-            ],
-        ];
+        unset($rows);
 
         $errors   = [];
         $warnings = [];
 
-        // Generate lists of all links
-        $all_links   = [];
-        $upper_links = [];
+        $element_factory = new ElementFactory();
+        $this->gedcom->registerTags($element_factory, false);
+
         foreach ($records as $record) {
-            $all_links[$record->xref]               = [];
-            $upper_links[strtoupper($record->xref)] = $record->xref;
-            preg_match_all('/\n\d (' . Gedcom::REGEX_TAG . ') @([^#@\n][^\n@]*)@/', $record->gedcom, $matches, PREG_SET_ORDER);
-            foreach ($matches as $match) {
-                $all_links[$record->xref][$match[2]] = $match[1];
+            // If we are nearly out of time, then stop processing here
+            if ($skip_to === $record->xref) {
+                $skip_to = '';
+            } elseif ($skip_to !== '') {
+                continue;
+            } elseif ($this->timeout_service->isTimeNearlyUp()) {
+                $skip_to = $record->xref;
+                break;
             }
-        }
 
-        foreach ($all_links as $xref1 => $links) {
-            // PHP converts array keys to integers.
-            $xref1 = (string) $xref1;
+            $lines = explode("\n", $record->gedcom);
+            array_shift($lines);
 
-            $type1 = $records[$xref1]->type;
-            foreach ($links as $xref2 => $type2) {
-                // PHP converts array keys to integers.
-                $xref2 = (string) $xref2;
+            $last_level = 0;
+            $hierarchy  = [$record->type];
 
-                $type3 = isset($records[$xref2]) ? $records[$xref2]->type : '';
-                if (!array_key_exists($xref2, $all_links)) {
-                    if (array_key_exists(strtoupper($xref2), $upper_links)) {
-                        $warnings[] =
-                            $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' .
-                            /* I18N: placeholders are GEDCOM XREFs, such as R123 */
-                            I18N::translate('%1$s does not exist. Did you mean %2$s?', $this->checkLink($tree, $xref2), $this->checkLink($tree, $upper_links[strtoupper($xref2)]));
+            foreach ($lines as $line_number => $line) {
+                if (preg_match('/^(\d+) (\w+) ?(.*)/', $line, $match) !== 1) {
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM record'));
+                    break;
+                }
+
+                $level = (int) $match[1];
+                if ($level > $last_level + 1) {
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM line number'));
+                    break;
+                }
+
+                $tag               = $match[2];
+                $value             = $match[3];
+                $hierarchy[$level] = $tag;
+                $full_tag          = implode(':', array_slice($hierarchy, 0, 1 + $level));
+                $element           = Registry::elementFactory()->make($full_tag);
+                $last_level        = $level;
+
+                if ($tag === 'CONT') {
+                    $element = new SubmitterText('CONT');
+                }
+
+                if ($element instanceof UnknownElement) {
+                    if (str_starts_with($tag, '_')) {
+                        $message    = I18N::translate('Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags.');
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     } else {
-                        /* I18N: placeholders are GEDCOM XREFs, such as R123 */
-                        $errors[] = $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('%s does not exist.', $this->checkLink($tree, $xref2));
+                        $message  = I18N::translate('Invalid GEDCOM tag.') . ' ' . $full_tag;
+                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     }
-                } elseif ($type2 === 'SOUR' && $type1 === 'NOTE') {
-                    // Notes are intended to add explanations and comments to other records. They should not have their own sources.
-                } elseif ($type2 === 'SOUR' && $type1 === 'OBJE') {
-                    // Media objects are intended to illustrate other records, facts, and source/citations. They should not have their own sources.
-                } elseif ($type2 === 'OBJE' && $type1 === 'REPO') {
-                    $warnings[] =
-                        $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
-                        ' ' .
-                        I18N::translate('This type of link is not allowed here.');
-                } elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1], true) || !array_key_exists($type2, $XREF_LINKS)) {
-                    $errors[] =
-                        $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) .
-                        ' ' .
-                        I18N::translate('This type of link is not allowed here.');
-                } elseif ($XREF_LINKS[$type2] !== $type3) {
-                    // Target XREF does exist - but is invalid
-                    $errors[] =
-                        $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' .
-                        /* I18N: %1$s is an internal ID number such as R123. %2$s and %3$s are record types, such as INDI or SOUR */
-                        I18N::translate('%1$s is a %2$s but a %3$s is expected.', $this->checkLink($tree, $xref2), $this->formatType($type3), $this->formatType($type2));
-                } elseif (
-                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'FAMC', ['CHIL']) ||
-                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'FAMS', ['HUSB', 'WIFE']) ||
-                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'CHIL', ['FAMC']) ||
-                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'HUSB', ['FAMS']) ||
-                    $this->checkReverseLink($type2, $all_links, $xref1, $xref2, 'WIFE', ['FAMS'])
-                ) {
-                    /* I18N: %1$s and %2$s are internal ID numbers such as R123 */
-                    $errors[] = $this->checkLinkMessage($tree, $type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('%1$s does not have a link back to %2$s.', $this->checkLink($tree, $xref2), $this->checkLink($tree, $xref1));
+                } elseif ($element instanceof AbstractXrefElement) {
+                    if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $value, $match) === 1) {
+                        $xref1  = $match[1];
+                        $xref2  = $xrefs[strtoupper($xref1)] ?? null;
+                        $linked = $records[$xref2] ?? null;
+
+                        if ($linked === null) {
+                            $message  = I18N::translate('%s does not exist.', e($xref1));
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefFamily && $linked->type !== Family::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Family::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefIndividual && $linked->type !== Individual::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Individual::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefMedia && $linked->type !== Media::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Media::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefNote && $linked->type !== Note::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Note::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefSource && $linked->type !== Source::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Source::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefRepository && $linked->type !== Repository::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Repository::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefSubmitter && $linked->type !== Submitter::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Submitter::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefSubmission && $linked->type !== Submission::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Submission::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($element instanceof XrefLocation && $linked->type !== Location::RECORD_TYPE) {
+                            $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Location::RECORD_TYPE);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif (($full_tag === 'FAM:HUSB' || $full_tag === 'FAM:WIFE') && !str_contains($linked->gedcom, "\n1 FAMS @" . $record->xref . '@')) {
+                            $link1    = $this->recordLink($tree, $linked->xref);
+                            $link2    = $this->recordLink($tree, $record->xref);
+                            $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($full_tag === 'FAM:CHIL' && !str_contains($linked->gedcom, "\n1 FAMC @" . $record->xref . '@')) {
+                            $link1    = $this->recordLink($tree, $linked->xref);
+                            $link2    = $this->recordLink($tree, $record->xref);
+                            $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($full_tag === 'INDI:FAMC' && !str_contains($linked->gedcom, "\n1 CHIL @" . $record->xref . '@')) {
+                            $link1    = $this->recordLink($tree, $linked->xref);
+                            $link2    = $this->recordLink($tree, $record->xref);
+                            $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($full_tag === 'INDI:FAMS' && !str_contains($linked->gedcom, "\n1 HUSB @" . $record->xref . '@') && !str_contains($linked->gedcom, "\n1 WIFE @" . $record->xref . '@')) {
+                            $link1    = $this->recordLink($tree, $linked->xref);
+                            $link2    = $this->recordLink($tree, $record->xref);
+                            $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        } elseif ($xref1 !== $xref2) {
+                            $message    = I18N::translate('%1$s does not exist. Did you mean %2$s?', e($xref1), e($xref2));
+                            $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        }
+                    } elseif ($tag === 'SOUR') {
+                        $message  = I18N::translate('Inline-source records are discouraged.');
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    } else {
+                        $message  = I18N::translate('Invalid GEDCOM value');
+                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    }
+                } elseif ($element->canonical($value) !== $value) {
+                    $expected   = e($element->canonical($value));
+                    $actual     = strtr(e($value), ["\t" => '&rarr;']);
+                    $message    = I18N::translate('“%1$s” should be “%2$s”.', $actual, $expected);
+                    $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                }
+            }
+
+            if ($record->type === Family::RECORD_TYPE) {
+                if (substr_count($record->gedcom, "\n1 HUSB @") > 1) {
+                    $message  = I18N::translate('%s occurs too many times.', 'FAM:HUSB');
+                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message);
+                }
+                if (substr_count($record->gedcom, "\n1 WIFE @") > 1) {
+                    $message  = I18N::translate('%s occurs too many times.', 'FAM:WIFE');
+                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message);
                 }
             }
         }
 
         $title = I18N::translate('Check for errors') . ' — ' . e($tree->title());
 
+        if ($skip_to === '') {
+            $more_url = '';
+        } else {
+            $more_url = route(self::class, ['tree' => $tree->name(), 'skip_to' => $skip_to]);
+        }
+
         return $this->viewResponse('admin/trees-check', [
             'errors'   => $errors,
+            'more_url' => $more_url,
             'title'    => $title,
             'tree'     => $tree,
             'warnings' => $warnings,
@@ -267,68 +313,93 @@ class CheckTree implements RequestHandlerInterface
     }
 
     /**
-     * @param string               $type
-     * @param array<array<string>> $links
-     * @param string               $xref1
-     * @param string               $xref2
-     * @param string               $link
-     * @param array<string>        $reciprocal
-     *
-     * @return bool
-     */
-    private function checkReverseLink(string $type, array $links, string $xref1, string $xref2, string $link, array $reciprocal): bool
-    {
-        return $type === $link && (!array_key_exists($xref1, $links[$xref2]) || !in_array($links[$xref2][$xref1], $reciprocal, true));
-    }
-
-    /**
-     * Create a message linking one record to another.
-     *
-     * @param Tree   $tree
-     * @param string $type1
-     * @param string $xref1
-     * @param string $type2
-     * @param string $xref2
+     * @param string $type
      *
      * @return string
      */
-    private function checkLinkMessage(Tree $tree, string $type1, string $xref1, string $type2, string $xref2): string
+    private function recordType(string $type): string
     {
-        /* I18N: The placeholders are GEDCOM XREFs and tags. e.g. “INDI I123 contains a FAMC link to F234.” */
-        return I18N::translate(
-            '%1$s %2$s has a %3$s link to %4$s.',
-            $this->formatType($type1),
-            $this->checkLink($tree, $xref1),
-            $this->formatType($type2),
-            $this->checkLink($tree, $xref2)
-        );
+        $types = [
+            Family::RECORD_TYPE     => I18N::translate('Family'),
+            Header::RECORD_TYPE     => I18N::translate('Header'),
+            Individual::RECORD_TYPE => I18N::translate('Individual'),
+            Location::RECORD_TYPE   => I18N::translate('Location'),
+            Media::RECORD_TYPE      => I18N::translate('Media object'),
+            Note::RECORD_TYPE       => I18N::translate('Note'),
+            Repository::RECORD_TYPE => I18N::translate('Repository'),
+            Source::RECORD_TYPE     => I18N::translate('Source'),
+            Submission::RECORD_TYPE => I18N::translate('Submission'),
+            Submitter::RECORD_TYPE  => I18N::translate('Submitter'),
+        ];
+
+        return $types[$type] ?? e($type);
+    }
+
+    /**
+     * @param Tree   $tree
+     * @param string $xref
+     *
+     * @return string
+     */
+    private function recordLink(Tree $tree, string $xref): string
+    {
+        $url = route(GedcomRecordPage::class, ['xref' => $xref, 'tree' => $tree->name()]);
+
+        return '<a href="' . e($url) . '">' . e($xref) . '</a>';
     }
 
     /**
      * Format a link to a record.
      *
      * @param Tree   $tree
+     * @param string $type
      * @param string $xref
+     * @param int    $line_number
+     * @param string $line
+     * @param string $message
      *
      * @return string
      */
-    private function checkLink(Tree $tree, string $xref): string
+    private function lineError(Tree $tree, string $type, string $xref, int $line_number, string $line, string $message): string
     {
-        return '<b><a href="' . e(route(GedcomRecordPage::class, [
-                'xref' => $xref,
-                'tree' => $tree->name(),
-            ])) . '">' . $xref . '</a></b>';
+        return
+            I18N::translate('%1$s: %2$s', $this->recordType($type), $this->recordLink($tree, $xref)) .
+            ' — ' .
+            I18N::translate('%1$s: %2$s', I18N::translate('Line number'), I18N::number($line_number)) .
+            ' — ' .
+            '<code>' . e($line) . '</code>' .
+            '<br>' . $message;
     }
 
     /**
-     * Format a record type.
+     * Format a link to a record.
      *
+     * @param Tree   $tree
      * @param string $type
+     * @param string $xref
+     * @param string $message
      *
      * @return string
      */
-    private function formatType(string $type): string
+    private function recordError(Tree $tree, string $type, string $xref, string $message): string
     {
-        return '<b>' . $type . '</b>';
+        return I18N::translate('%1$s: %2$s', $this->recordType($type), $this->recordLink($tree, $xref)) . ' — ' . $message;
+    }
+
+    /**
+     * @param Tree   $tree
+     * @param string $xref
+     * @param string $type1
+     * @param string $type2
+     *
+     * @return string
+     */
+    private function linkErrorMessage(Tree $tree, string $xref, string $type1, string $type2): string
+    {
+        $link  = $this->recordLink($tree, $xref);
+        $type1 = $this->recordType($type1);
+        $type2 = $this->recordType($type2);
+
+        return I18N::translate('%1$s is a %2$s but a %3$s is expected.', $link, $type1, $type2);
     }
 }

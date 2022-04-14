@@ -502,17 +502,17 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
-			count: 2
+			count: 9
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
 			message: "#^Cannot access property \\$type on mixed\\.$#"
-			count: 2
+			count: 44
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
-			count: 6
+			count: 43
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
