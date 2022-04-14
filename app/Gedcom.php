@@ -352,6 +352,21 @@ class Gedcom
         '_YART',
     ];
 
+    // Some applications create GEDCOM files containing records without XREFS.
+    // We cannot process these.
+    public const CUSTOM_RECORDS_WITHOUT_XREFS = [
+        'EMOTIONALRELATIONSHIP', // GenoPro
+        'GENOMAP', // GenoPro
+        'GLOBAL', // GenoPro
+        'LABEL', // GenoPro
+        'PEDIGREELINK', // GenoPro
+        'SOCIALRELATIONSHIP', // GenoPro
+        '_EVDEF', // RootsMagic
+        '_EVENT_DEFN', // PAF and Legacy
+        '_HASHTAG_DEFN', // Legacy
+        '_TODO', // Legacy
+    ];
+
     /**
      * Definitions for GEDCOM 5.5.1.
      *

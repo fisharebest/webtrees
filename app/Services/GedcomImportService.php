@@ -299,37 +299,13 @@ class GedcomImportService
             $this->importTNGPlac($gedrec);
 
             return;
-        } elseif (str_starts_with($gedrec, '0 _EVDEF')) {
-            // Created by RootsMagic.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 _HASHTAG_DEFN')) {
-            // Created by Legacy.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 _EVENT_DEFN')) {
-            // Created by PAF and Legacy.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 _TODO')) {
-            // Created by Legacy.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 PEDIGREELINK')) {
-            // Created by GenoPro.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 GLOBAL')) {
-            // Created by GenoPro.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 GENOMAP')) {
-            // Created by GenoPro.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 EMOTIONALRELATIONSHIP')) {
-            // Created by GenoPro.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 SOCIALRELATIONSHIP')) {
-            // Created by GenoPro.  We cannot process these records without an XREF.
-            return;
-        } elseif (str_starts_with($gedrec, '0 LABEL')) {
-            // Created by GenoPro.  We cannot process these records without an XREF.
-            return;
         } else {
+            foreach (Gedcom::CUSTOM_RECORDS_WITHOUT_XREFS as $record_type) {
+                if (preg_match('/^0 ' . $record_type . '\b/', $gedrec) === 1) {
+                    return;
+                }
+            }
+
             throw new GedcomErrorException($gedrec);
         }
 
