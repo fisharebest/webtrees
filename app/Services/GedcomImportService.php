@@ -302,8 +302,14 @@ class GedcomImportService
         } elseif (str_starts_with($gedrec, '0 _EVDEF')) {
             // Created by RootsMagic.  We cannot process these records without an XREF.
             return;
+        } elseif (str_starts_with($gedrec, '0 _HASHTAG_DEFN')) {
+            // Created by Legacy.  We cannot process these records without an XREF.
+            return;
         } elseif (str_starts_with($gedrec, '0 _EVENT_DEFN')) {
             // Created by PAF and Legacy.  We cannot process these records without an XREF.
+            return;
+        } elseif (str_starts_with($gedrec, '0 _TODO')) {
+            // Created by Legacy.  We cannot process these records without an XREF.
             return;
         } elseif (str_starts_with($gedrec, '0 PEDIGREELINK')) {
             // Created by GenoPro.  We cannot process these records without an XREF.
