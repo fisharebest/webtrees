@@ -118,7 +118,7 @@ if ($tag === 'MARR') {
                             ->first(static fn (ModuleInterface $module):bool => $module instanceof RelationshipsChartModule)
                         ?>
 
-                        <?php if ($module instanceof RelationshipsChartModule) : ?>
+                        <?php if ($module instanceof RelationshipsChartModule && $record instanceof Individual) : ?>
                             — <a href="<?= $module->chartUrl($fact->target(), ['xref2' => $record->xref()]) ?>" rel="nofollow">
                                 <?= app(RelationshipService::class)->getCloseRelationshipName($fact->target(), $record) ?>
                             </a>
