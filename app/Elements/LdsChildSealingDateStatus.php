@@ -56,18 +56,18 @@ class LdsChildSealingDateStatus extends AbstractElement
     {
         return [
             ''          => '',
-            'BIC'       => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Born in the covenant'),
-            'EXCLUDED'  => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Excluded from this submission'),
-            'PRE-1970'  => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Completed before 1970; date not available'),
-            'STILLBORN' => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Stillborn: exempt'),
-            'SUBMITTED' => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Submitted but not yet cleared'),
-            'UNCLEARED' => /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-                I18N::translate('Uncleared: insufficient data'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'BIC'       => I18N::translate('Born in the covenant'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'EXCLUDED'  => I18N::translate('Excluded from this submission'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'PRE-1970'  => I18N::translate('Completed before 1970; date not available'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'STILLBORN' => I18N::translate('Stillborn: exempt'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'SUBMITTED' => I18N::translate('Submitted but not yet cleared'),
+            /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
+            'UNCLEARED' => I18N::translate('Uncleared: insufficient data'),
         ];
     }
 }
