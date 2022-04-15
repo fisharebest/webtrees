@@ -837,7 +837,13 @@ class Individual extends GedcomRecord
      */
     public function getChildFamilyLabel(Family $family): string
     {
-        preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->gedcom(), $match);
+        $fact = $this->facts(['FAMC'])->first(static fn (Fact $fact): bool => $fact->target() === $family);
+
+        if ($fact instanceof Fact) {
+            $pedigree = $fact->attribute('PEDI');
+        } else {
+            $pedigree = '';
+        }
 
         $values = [
             PedigreeLinkageType::TYPE_BIRTH   => I18N::translate('Family with parents'),
@@ -849,9 +855,7 @@ class Individual extends GedcomRecord
             PedigreeLinkageType::TYPE_RADA    => I18N::translate('Family with rada parents'),
         ];
 
-        $value = $match[1] ?? PedigreeLinkageType::TYPE_BIRTH;
-
-        return $values[$value] ?? $values[PedigreeLinkageType::TYPE_BIRTH];
+        return $values[$pedigree] ?? $values[PedigreeLinkageType::TYPE_BIRTH];
     }
 
     /**

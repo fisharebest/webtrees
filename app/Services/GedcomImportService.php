@@ -157,10 +157,6 @@ class GedcomImportService
                     // Tidy up non-printing characters
                     $data = preg_replace('/  +/', ' ', trim($data));
                     break;
-                case 'PEDI':
-                    // PEDI values are lower case
-                    $data = strtolower($data);
-                    break;
                 case 'PLAC':
                     // Consistent commas
                     $data = preg_replace('/ *[,，،] */u', ', ', $data);
