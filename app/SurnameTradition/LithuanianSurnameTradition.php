@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -73,12 +74,12 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
             }
 
             return [
-                $this->buildName($name, ['TYPE' => 'birth', 'SURN' => $surn]),
+                $this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SURN' => $surn]),
             ];
         }
 
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
         ];
     }
 
@@ -97,12 +98,12 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
             return [
-                $this->buildName($name, ['TYPE' => 'birth', 'SURN' => $surn]),
+                $this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SURN' => $surn]),
             ];
         }
 
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
         ];
     }
 
@@ -121,13 +122,13 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
             return [
-                $this->buildName('//', ['TYPE' => 'birth']),
-                $this->buildName($name, ['TYPE' => 'married', 'SURN' => $surn]),
+                $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
+                $this->buildName($name, ['TYPE' => NameType::TYPE_MARRIED, 'SURN' => $surn]),
             ];
         }
 
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
         ];
     }
 }

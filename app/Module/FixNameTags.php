@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
@@ -41,23 +42,23 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
 
     // https://legacyfamilytree.se/WEB_US/user_defined_gedcom_tags.htm
     private const CONVERT = [
-        '_ADPN'  => 'adopted', // Adopted name
-        '_AKA'   => 'aka', // Also known as
-        '_AKAN'  => 'aka', // Also known as
-        '_BIRN'  => 'birth', // Birth name
+        '_ADPN'  => NameType::TYPE_ADOPTED,
+        '_AKA'   => NameType::TYPE_AKA,
+        '_AKAN'  => NameType::TYPE_AKA,
+        '_BIRN'  => NameType::TYPE_BIRTH,
         '_CENN'  => '', // Census name
         '_CURN'  => '', // Currently known as
-        '_FARN'  => 'estate', // Farm name
-        '_FKAN'  => 'aka', // Formerly known as
+        '_FARN'  => NameType::TYPE_ESTATE,
+        '_FKAN'  => NameType::TYPE_AKA, // Formerly known as
         '_GERN'  => '', // German name
         '_HEB'   => '', // Hebrew name
         '_HEBN'  => '', // Hebrew name
         '_INDN'  => '', // Indian name
-        '_MARNM' => 'married', // Married name
-        '_OTHN'  => 'aka', // Other name
-        '_RELN'  => 'religious', // Religious name
-        '_SHON'  => 'aka', // Short name
-        '_SLDN'  => 'aka', // Soldier name
+        '_MARNM' => NameType::TYPE_MARRIED,
+        '_OTHN'  => NameType::TYPE_AKA, // Other name
+        '_RELN'  => NameType::TYPE_RELIGIOUS,
+        '_SHON'  => NameType::TYPE_AKA, // Short name
+        '_SLDN'  => NameType::TYPE_AKA, // Soldier name
     ];
 
     private DataFixService $data_fix_service;

@@ -34,6 +34,16 @@ use Fisharebest\Webtrees\I18N;
  */
 class NameType extends AbstractElement
 {
+    public const TYPE_ADOPTED   = 'adopted';
+    public const TYPE_AKA       = 'aka';
+    public const TYPE_BIRTH     = 'birth';
+    public const TYPE_CHANGE    = 'change';
+    public const TYPE_ESTATE    = 'estate';
+    public const TYPE_IMMIGRANT = 'immigrant';
+    public const TYPE_MAIDEN    = 'maiden';
+    public const TYPE_MARRIED   = 'married';
+    public const TYPE_RELIGIOUS = 'religious';
+
     /**
      * A list of controlled values for this element
      *
@@ -42,25 +52,25 @@ class NameType extends AbstractElement
     public function values(): array
     {
         return [
-            ''          => '',
-            'adopted'   => /* I18N: The name given to a child by its adoptive parents */
-                I18N::translate('adopted name'),
-            'aka'       => /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
-                I18N::translate('also known as'),
-            'birth'     => /* I18N: The name given to an individual at their birth */
-                I18N::translate('birth name'),
-            'change'    => /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-                I18N::translate('change of name'),
-            'estate'    => /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-                I18N::translate('estate name'),
-            'immigrant' => /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-                I18N::translate('immigration name'),
-            'maiden'    => /* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
-                I18N::translate('maiden name'),
-            'married'   => /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-                I18N::translate('married name'),
-            'religious' => /* I18N: A name taken when entering a religion or a religious order */
-                I18N::translate('religious name'),
+            ''                   => '',
+            /* I18N: The name given to a child by its adoptive parents */
+            self::TYPE_ADOPTED   => I18N::translate('adopted name'),
+            /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
+            self::TYPE_AKA       => I18N::translate('also known as'),
+            /* I18N: The name given to an individual at their birth */
+            self::TYPE_BIRTH     => I18N::translate('birth name'),
+            /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
+            self::TYPE_CHANGE    => I18N::translate('change of name'),
+            /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
+            self::TYPE_ESTATE    => I18N::translate('estate name'),
+            /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
+            self::TYPE_IMMIGRANT => I18N::translate('immigration name'),
+            /* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
+            self::TYPE_MAIDEN    => I18N::translate('maiden name'),
+            /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
+            self::TYPE_MARRIED   => I18N::translate('married name'),
+            /* I18N: A name taken when entering a religion or a religious order */
+            self::TYPE_RELIGIOUS => I18N::translate('religious name'),
         ];
     }
 }

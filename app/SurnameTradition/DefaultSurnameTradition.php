@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Individual;
 
@@ -67,7 +68,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
         ];
     }
 
@@ -82,7 +83,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newParentNames(Individual $child, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
         ];
     }
 
@@ -97,7 +98,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => 'birth']),
+            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
         ];
     }
 
@@ -138,7 +139,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
         if ($individual instanceof Individual) {
             $fact = $individual
                 ->facts(['NAME'])
-                ->first(fn (Fact $fact): bool => in_array($fact->attribute('TYPE'), ['', 'birth', 'change'], true));
+                ->first(fn (Fact $fact): bool => in_array($fact->attribute('TYPE'), ['', NameType::TYPE_BIRTH, NameType::TYPE_CHANGE], true));
 
             if ($fact instanceof Fact) {
                 return $fact->value();

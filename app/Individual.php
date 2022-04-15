@@ -849,7 +849,9 @@ class Individual extends GedcomRecord
             PedigreeLinkageType::TYPE_RADA    => I18N::translate('Family with rada parents'),
         ];
 
-        return $values[$match[1] ?? 'birth'] ?? $values['birth'];
+        $value = $match[1] ?? PedigreeLinkageType::TYPE_BIRTH;
+
+        return $values[$value] ?? $values[PedigreeLinkageType::TYPE_BIRTH];
     }
 
     /**

@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\SurnameTradition;
 
+use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -43,7 +44,7 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
             $surn = $match['SURN'];
 
             return [
-                $this->buildName($name, ['TYPE' => 'birth', 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 
@@ -66,7 +67,7 @@ class MatrilinealSurnameTradition extends DefaultSurnameTradition
             $surn = $match['SURN'];
 
             return [
-                $this->buildName($name, ['TYPE' => 'birth', 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 
