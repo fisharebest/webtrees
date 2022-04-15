@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
 use Closure;
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
@@ -839,13 +840,13 @@ class Individual extends GedcomRecord
         preg_match('/\n1 FAMC @' . $family->xref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->gedcom(), $match);
 
         $values = [
-            'birth'   => I18N::translate('Family with parents'),
-            'adopted' => I18N::translate('Family with adoptive parents'),
-            'foster'  => I18N::translate('Family with foster parents'),
-            'sealing' => /* I18N: “sealing” is a Mormon ceremony. */
-                I18N::translate('Family with sealing parents'),
-            'rada'    => /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
-                I18N::translate('Family with rada parents'),
+            PedigreeLinkageType::TYPE_BIRTH   => I18N::translate('Family with parents'),
+            PedigreeLinkageType::TYPE_ADOPTED => I18N::translate('Family with adoptive parents'),
+            PedigreeLinkageType::TYPE_FOSTER  => I18N::translate('Family with foster parents'),
+            /* I18N: “sealing” is a Mormon ceremony. */
+            PedigreeLinkageType::TYPE_SEALING => I18N::translate('Family with sealing parents'),
+            /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
+            PedigreeLinkageType::TYPE_RADA    => I18N::translate('Family with rada parents'),
         ];
 
         return $values[$match[1] ?? 'birth'] ?? $values['birth'];

@@ -99,10 +99,6 @@ class GedcomImportService
             $tag = $gedcom_service->canonicalTag($tag);
 
             switch ($tag) {
-                case 'AFN':
-                    // AFN values are upper case
-                    $data = strtoupper($data);
-                    break;
                 case 'DATE':
                     // Preserve text from INT dates
                     if (str_contains($data, '(')) {
@@ -146,9 +142,6 @@ class GedcomImportService
                     // Append the "INT" text
                     $data = $date . $text;
                     break;
-                case '_FILE':
-                    $tag = 'FILE';
-                    break;
                 case 'FORM':
                     // Consistent commas
                     $data = preg_replace('/ *, */', ', ', $data);
@@ -188,16 +181,6 @@ class GedcomImportService
                     }
                     break;
                 case 'SEX':
-                    $data = strtoupper($data);
-                    break;
-                case 'STAT':
-                    if ($data === 'CANCELLED') {
-                        // PhpGedView mis-spells this tag - correct it.
-                        $data = 'CANCELED';
-                    }
-                    break;
-                case 'TEMP':
-                    // Temple codes are upper case
                     $data = strtoupper($data);
                     break;
                 case 'TRLR':

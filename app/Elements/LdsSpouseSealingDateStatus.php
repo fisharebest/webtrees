@@ -47,6 +47,7 @@ class LdsSpouseSealingDateStatus extends AbstractElement
      */
     public function canonical(string $value): string
     {
+        // PhpGedView misspells this tag.
         return strtr(strtoupper(parent::canonical($value)), ['CANCELLED' => 'CANCELED']);
     }
 

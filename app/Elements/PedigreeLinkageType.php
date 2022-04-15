@@ -35,6 +35,12 @@ class PedigreeLinkageType extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 7;
 
+    public const TYPE_ADOPTED = 'adopted';
+    public const TYPE_BIRTH   = 'birth';
+    public const TYPE_FOSTER  = 'foster';
+    public const TYPE_SEALING = 'sealing';
+    public const TYPE_RADA    = 'rada';
+
     /**
      * A list of controlled values for this element
      *
@@ -47,33 +53,33 @@ class PedigreeLinkageType extends AbstractElement
         $values = [
             'M' => [
                 ''        => '',
-                'birth'   => I18N::translateContext('Male pedigree', 'Birth'),
-                'adopted' => I18N::translateContext('Male pedigree', 'Adopted'),
-                'foster'  => I18N::translateContext('Male pedigree', 'Foster'),
-                'sealing' => /* I18N: “sealing” is a Mormon ceremony. */
-                    I18N::translateContext('Male pedigree', 'Sealing'),
-                'rada'    => /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
-                    I18N::translateContext('Male pedigree', 'Rada'),
+                self::TYPE_BIRTH   => I18N::translateContext('Male pedigree', 'Birth'),
+                self::TYPE_ADOPTED => I18N::translateContext('Male pedigree', 'Adopted'),
+                self::TYPE_FOSTER  => I18N::translateContext('Male pedigree', 'Foster'),
+                /* I18N: “sealing” is a Mormon ceremony. */
+                self::TYPE_SEALING => I18N::translateContext('Male pedigree', 'Sealing'),
+                /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
+                self::TYPE_RADA    => I18N::translateContext('Male pedigree', 'Rada'),
             ],
             'F' => [
                 ''        => '',
-                'birth'   => I18N::translateContext('Female pedigree', 'Birth'),
-                'adopted' => I18N::translateContext('Female pedigree', 'Adopted'),
-                'foster'  => I18N::translateContext('Female pedigree', 'Foster'),
-                'sealing' => /* I18N: “sealing” is a Mormon ceremony. */
-                    I18N::translateContext('Female pedigree', 'Sealing'),
-                'rada'    => /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
-                    I18N::translateContext('Female pedigree', 'Rada'),
+                self::TYPE_BIRTH   => I18N::translateContext('Female pedigree', 'Birth'),
+                self::TYPE_ADOPTED => I18N::translateContext('Female pedigree', 'Adopted'),
+                self::TYPE_FOSTER  => I18N::translateContext('Female pedigree', 'Foster'),
+                /* I18N: “sealing” is a Mormon ceremony. */
+                self::TYPE_SEALING => I18N::translateContext('Female pedigree', 'Sealing'),
+                /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
+                self::TYPE_RADA    => I18N::translateContext('Female pedigree', 'Rada'),
             ],
             'U' => [
                 ''        => '',
-                'birth'   => I18N::translateContext('Pedigree', 'Birth'),
-                'adopted' => I18N::translateContext('Pedigree', 'Adopted'),
-                'foster'  => I18N::translateContext('Pedigree', 'Foster'),
-                'sealing' => /* I18N: “sealing” is a Mormon ceremony. */
-                    I18N::translateContext('Pedigree', 'Sealing'),
-                'rada'    => /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
-                    I18N::translateContext('Pedigree', 'Rada'),
+                self::TYPE_BIRTH   => I18N::translateContext('Pedigree', 'Birth'),
+                self::TYPE_ADOPTED => I18N::translateContext('Pedigree', 'Adopted'),
+                self::TYPE_FOSTER  => I18N::translateContext('Pedigree', 'Foster'),
+                /* I18N: “sealing” is a Mormon ceremony. */
+                self::TYPE_SEALING => I18N::translateContext('Pedigree', 'Sealing'),
+                /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
+                self::TYPE_RADA    => I18N::translateContext('Pedigree', 'Rada'),
             ],
         ];
 
