@@ -21,14 +21,17 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
-use function ucfirst;
+use function strtoupper;
 
 /**
  * MARR:TYPE
  */
 class MarriageType extends AbstractElement
 {
+    public const TYPE_CIVIL     = 'CIVIL';
+    public const TYPE_PARTNERS  = 'PARTNERS';
+    public const TYPE_RELIGIOUS = 'RELIGIOUS';
+
     /**
      * Convert a value to a canonical form.
      * GEDCOM 5.5EL uses 'RELI' and 'CIVIL'
@@ -39,10 +42,10 @@ class MarriageType extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        $value = ucfirst(strtolower(parent::canonical($value)));
+        $value = strtoupper(parent::canonical($value));
 
         $canonical = [
-            'Reli' => 'Religious'
+            'RELI' => 'RELIGIOUS'
         ];
 
         return $canonical[$value] ?? $value;
@@ -56,10 +59,10 @@ class MarriageType extends AbstractElement
     public function values(): array
     {
         return [
-            ''          => '',
-            'Civil'     => I18N::translate('Civil marriage'),
-            'Partners'  => I18N::translate('Registered partnership'),
-            'Religious' => I18N::translate('Religious marriage'),
+            ''                   => '',
+            self::TYPE_CIVIL     => I18N::translate('Civil marriage'),
+            self::TYPE_PARTNERS  => I18N::translate('Registered partnership'),
+            self::TYPE_RELIGIOUS => I18N::translate('Religious marriage'),
 
         ];
     }
