@@ -48,6 +48,11 @@ use function strtolower;
  */
 class RestrictionNotice extends AbstractElement
 {
+    public const RESTRICTION_NONE         = 'none';
+    public const RESTRICTION_PRIVACY      = 'privacy';
+    public const RESTRICTION_CONFIDENTIAL = 'confidential';
+    public const RESTRICTION_LOCKED       = 'locked';
+
     /**
      * Convert a value to a canonical form.
      *
@@ -72,10 +77,10 @@ class RestrictionNotice extends AbstractElement
 
         return [
             ''             => '',
-            'none'         => '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'),
-            'privacy'      => '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'),
-            'confidential' => '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'),
-            'locked'       => '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'),
+            self::RESTRICTION_NONE         => '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'),
+            self::RESTRICTION_PRIVACY      => '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'),
+            self::RESTRICTION_CONFIDENTIAL => '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'),
+            self::RESTRICTION_LOCKED       => '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'),
         ];
     }
 }
