@@ -77,17 +77,17 @@ class PortugueseSurnameTraditionTest extends TestCase
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
-            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE birth\n2 SURN Iglesias,Lorca"],
+            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE BIRTH\n2 SURN Iglesias,Lorca"],
             $this->surname_tradition->newChildNames($father, $mother, 'M')
         );
 
         self::assertSame(
-            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE birth\n2 SURN Iglesias,Lorca"],
+            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE BIRTH\n2 SURN Iglesias,Lorca"],
             $this->surname_tradition->newChildNames($father, $mother, 'F')
         );
 
         self::assertSame(
-            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE birth\n2 SURN Iglesias,Lorca"],
+            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE BIRTH\n2 SURN Iglesias,Lorca"],
             $this->surname_tradition->newChildNames($father, $mother, 'U')
         );
     }
@@ -102,7 +102,7 @@ class PortugueseSurnameTraditionTest extends TestCase
     public function testNewChildNamesWithNoParentsNames(): void
     {
         self::assertSame(
-            ["1 NAME // //\n2 TYPE birth"],
+            ["1 NAME // //\n2 TYPE BIRTH"],
             $this->surname_tradition->newChildNames(null, null, 'U')
         );
     }
@@ -129,7 +129,7 @@ class PortugueseSurnameTraditionTest extends TestCase
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
-            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE birth\n2 SURN Iglesias,Lorca"],
+            ["1 NAME /Iglesias/ /Lorca/\n2 TYPE BIRTH\n2 SURN Iglesias,Lorca"],
             $this->surname_tradition->newChildNames($father, $mother, 'M')
         );
     }
@@ -150,16 +150,16 @@ class PortugueseSurnameTraditionTest extends TestCase
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
-            ["1 NAME // /Garcia/\n2 TYPE birth\n2 SURN Garcia"],
+            ["1 NAME // /Garcia/\n2 TYPE BIRTH\n2 SURN Garcia"],
             $this->surname_tradition->newParentNames($individual, 'M')
         );
         self::assertSame(
-            ["1 NAME // /Iglesias/\n2 TYPE birth\n2 SURN Iglesias"],
+            ["1 NAME // /Iglesias/\n2 TYPE BIRTH\n2 SURN Iglesias"],
             $this->surname_tradition->newParentNames($individual, 'F')
         );
 
         self::assertSame(
-            ["1 NAME // //\n2 TYPE birth"],
+            ["1 NAME // //\n2 TYPE BIRTH"],
             $this->surname_tradition->newParentNames($individual, 'U')
         );
     }
@@ -180,17 +180,17 @@ class PortugueseSurnameTraditionTest extends TestCase
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
-            ["1 NAME // //\n2 TYPE birth"],
+            ["1 NAME // //\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'M')
         );
 
         self::assertSame(
-            ["1 NAME // //\n2 TYPE birth"],
+            ["1 NAME // //\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'F')
         );
 
         self::assertSame(
-            ["1 NAME // //\n2 TYPE birth"],
+            ["1 NAME // //\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'U')
         );
     }

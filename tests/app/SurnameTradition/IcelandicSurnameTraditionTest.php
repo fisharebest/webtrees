@@ -65,7 +65,7 @@ class IcelandicSurnameTraditionTest extends TestCase
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
-            ["1 NAME Jonsson\n2 TYPE birth\n2 GIVN Jonsson"],
+            ["1 NAME Jonsson\n2 TYPE BIRTH\n2 GIVN Jonsson"],
             $this->surname_tradition->newChildNames($father, $mother, 'M')
         );
     }
@@ -92,7 +92,7 @@ class IcelandicSurnameTraditionTest extends TestCase
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
-            ["1 NAME Jonsdottir\n2 TYPE birth\n2 GIVN Jonsdottir"],
+            ["1 NAME Jonsdottir\n2 TYPE BIRTH\n2 GIVN Jonsdottir"],
             $this->surname_tradition->newChildNames($father, $mother, 'F')
         );
     }
@@ -119,7 +119,7 @@ class IcelandicSurnameTraditionTest extends TestCase
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
-            ["1 NAME\n2 TYPE birth"],
+            ["1 NAME\n2 TYPE BIRTH"],
             $this->surname_tradition->newChildNames($father, $mother, 'U')
         );
     }
@@ -140,7 +140,7 @@ class IcelandicSurnameTraditionTest extends TestCase
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
-            ["1 NAME Einar\n2 TYPE birth\n2 GIVN Einar"],
+            ["1 NAME Einar\n2 TYPE BIRTH\n2 GIVN Einar"],
             $this->surname_tradition->newParentNames($individual, 'M')
         );
     }
@@ -161,7 +161,7 @@ class IcelandicSurnameTraditionTest extends TestCase
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
-            ["1 NAME Eva\n2 TYPE birth\n2 GIVN Eva"],
+            ["1 NAME Eva\n2 TYPE BIRTH\n2 GIVN Eva"],
             $this->surname_tradition->newParentNames($individual, 'F')
         );
     }
@@ -182,7 +182,7 @@ class IcelandicSurnameTraditionTest extends TestCase
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
-            ["1 NAME\n2 TYPE birth"],
+            ["1 NAME\n2 TYPE BIRTH"],
             $this->surname_tradition->newParentNames($individual, 'U')
         );
     }
@@ -203,17 +203,17 @@ class IcelandicSurnameTraditionTest extends TestCase
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
-            ["1 NAME\n2 TYPE birth"],
+            ["1 NAME\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'M')
         );
 
         self::assertSame(
-            ["1 NAME\n2 TYPE birth"],
+            ["1 NAME\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'F')
         );
 
         self::assertSame(
-            ["1 NAME\n2 TYPE birth"],
+            ["1 NAME\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'U')
         );
     }

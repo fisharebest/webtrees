@@ -77,17 +77,17 @@ class MatrilinealSurnameTraditionTest extends TestCase
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
-            ["1 NAME /Black/\n2 TYPE birth\n2 SURN Black"],
+            ["1 NAME /Black/\n2 TYPE BIRTH\n2 SURN Black"],
             $this->surname_tradition->newChildNames($father, $mother, 'M')
         );
 
         self::assertSame(
-            ["1 NAME /Black/\n2 TYPE birth\n2 SURN Black"],
+            ["1 NAME /Black/\n2 TYPE BIRTH\n2 SURN Black"],
             $this->surname_tradition->newChildNames($father, $mother, 'F')
         );
 
         self::assertSame(
-            ["1 NAME /Black/\n2 TYPE birth\n2 SURN Black"],
+            ["1 NAME /Black/\n2 TYPE BIRTH\n2 SURN Black"],
             $this->surname_tradition->newChildNames($father, $mother, 'U')
         );
     }
@@ -114,7 +114,7 @@ class MatrilinealSurnameTraditionTest extends TestCase
         $mother->method('facts')->willReturn(new Collection([$mother_fact]));
 
         self::assertSame(
-            ["1 NAME /van Black/\n2 TYPE birth\n2 SPFX van\n2 SURN Black"],
+            ["1 NAME /van Black/\n2 TYPE BIRTH\n2 SPFX van\n2 SURN Black"],
             $this->surname_tradition->newChildNames($father, $mother, 'U')
         );
     }
@@ -129,7 +129,7 @@ class MatrilinealSurnameTraditionTest extends TestCase
     public function testNewChildNamesWithNoParentsNames(): void
     {
         self::assertSame(
-            ["1 NAME //\n2 TYPE birth"],
+            ["1 NAME //\n2 TYPE BIRTH"],
             $this->surname_tradition->newChildNames(null, null, 'U')
         );
     }
@@ -151,17 +151,17 @@ class MatrilinealSurnameTraditionTest extends TestCase
 
 
         self::assertSame(
-            ["1 NAME //\n2 TYPE birth"],
+            ["1 NAME //\n2 TYPE BIRTH"],
             $this->surname_tradition->newParentNames($individual, 'M')
         );
 
         self::assertSame(
-            ["1 NAME /White/\n2 TYPE birth\n2 SURN White"],
+            ["1 NAME /White/\n2 TYPE BIRTH\n2 SURN White"],
             $this->surname_tradition->newParentNames($individual, 'F')
         );
 
         self::assertSame(
-            ["1 NAME //\n2 TYPE birth"],
+            ["1 NAME //\n2 TYPE BIRTH"],
             $this->surname_tradition->newParentNames($individual, 'U')
         );
     }
@@ -182,17 +182,17 @@ class MatrilinealSurnameTraditionTest extends TestCase
         $individual->method('facts')->willReturn(new Collection([$fact]));
 
         self::assertSame(
-            ["1 NAME //\n2 TYPE birth"],
+            ["1 NAME //\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'M')
         );
 
         self::assertSame(
-            ["1 NAME //\n2 TYPE birth"],
+            ["1 NAME //\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'F')
         );
 
         self::assertSame(
-            ["1 NAME //\n2 TYPE birth"],
+            ["1 NAME //\n2 TYPE BIRTH"],
             $this->surname_tradition->newSpouseNames($individual, 'U')
         );
     }

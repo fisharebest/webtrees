@@ -265,7 +265,7 @@ class Fact
         if (preg_match('/\n2 ' . $tag . ' ?(.*(?:(?:\n3 CONT ?.*)*)*)/', $this->gedcom, $match)) {
             $value = preg_replace("/\n3 CONT ?/", "\n", $match[1]);
 
-            return Registry::elementFactory()->make($this->tag . ':' . $tag)->canonical($value);
+            return Registry::elementFactory()->make($this->tag() . ':' . $tag)->canonical($value);
         }
 
         return '';

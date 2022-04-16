@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
+use function strtoupper;
+
 /**
  * NAME_TYPE := {Size=5:30}
  * [ aka | birth | immigrant | maiden | married | <user defined>]
@@ -34,15 +36,27 @@ use Fisharebest\Webtrees\I18N;
  */
 class NameType extends AbstractElement
 {
-    public const TYPE_ADOPTED   = 'adopted';
-    public const TYPE_AKA       = 'aka';
-    public const TYPE_BIRTH     = 'birth';
-    public const TYPE_CHANGE    = 'change';
-    public const TYPE_ESTATE    = 'estate';
-    public const TYPE_IMMIGRANT = 'immigrant';
-    public const TYPE_MAIDEN    = 'maiden';
-    public const TYPE_MARRIED   = 'married';
-    public const TYPE_RELIGIOUS = 'religious';
+    public const TYPE_ADOPTED   = 'ADOPTED';
+    public const TYPE_AKA       = 'AKA';
+    public const TYPE_BIRTH     = 'BIRTH';
+    public const TYPE_CHANGE    = 'CHANGE';
+    public const TYPE_ESTATE    = 'ESTATE';
+    public const TYPE_IMMIGRANT = 'IMMIGRANT';
+    public const TYPE_MAIDEN    = 'MAIDEN';
+    public const TYPE_MARRIED   = 'MARRIED';
+    public const TYPE_RELIGIOUS = 'RELIGIOUS';
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        return strtoupper(parent::canonical($value));
+    }
 
     /**
      * A list of controlled values for this element
