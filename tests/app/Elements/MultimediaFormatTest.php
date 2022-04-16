@@ -42,14 +42,14 @@ class MultimediaFormatTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('jpg', self::$element->canonical('jpg'));
-        self::assertSame('jpg', self::$element->canonical('jpeg'));
-        self::assertSame('jpg', self::$element->canonical('JPG'));
-        self::assertSame('jpg', self::$element->canonical('JPEG'));
-        self::assertSame('tif', self::$element->canonical('tif'));
-        self::assertSame('tif', self::$element->canonical('tiff'));
-        self::assertSame('tif', self::$element->canonical('TIF'));
-        self::assertSame('tif', self::$element->canonical('TIFF'));
-        self::assertSame('pdf', self::$element->canonical('pdf'));
+        self::assertSame('JPG', self::$element->canonical('jpg'));
+        self::assertSame('JPG', self::$element->canonical('jpeg'));
+        self::assertSame('JPG', self::$element->canonical('JPG'));
+        self::assertSame('JPG', self::$element->canonical('JPEG'));
+        self::assertSame('TIF', self::$element->canonical('tif'));
+        self::assertSame('TIF', self::$element->canonical('tiff'));
+        self::assertSame('TIF', self::$element->canonical('TIF'));
+        self::assertSame('TIF', self::$element->canonical('TIFF'));
+        self::assertSame('PDF', self::$element->canonical('pdf'));
     }
 }

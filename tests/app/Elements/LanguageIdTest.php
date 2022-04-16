@@ -42,9 +42,9 @@ class LanguageIdTest extends AbstractElementTest
      */
     public function testCanonical(): void
     {
-        self::assertSame('English', self::$element->canonical("\t English\t "));
-        self::assertSame('Klingon', self::$element->canonical('kLiNgOn'));
-        self::assertSame('Anglo-Saxon', self::$element->canonical('anglo-saxon'));
-        self::assertSame('Catalan_Spn', self::$element->canonical('CATALAN_SPN'));
+        self::assertSame('ENGLISH', self::$element->canonical("\t English\t "));
+        self::assertSame('KLINGON', self::$element->canonical('kLiNgOn'));
+        self::assertSame('ANGLO-SAXON', self::$element->canonical('anglo-saxon'));
+        self::assertSame('CATALAN_SPN', self::$element->canonical('CATALAN_SPN'));
     }
 }

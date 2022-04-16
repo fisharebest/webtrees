@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
+use function strtoupper;
 
 /**
  * CHILD_LINKAGE_STATUS := {Size=1:15}
@@ -37,6 +37,10 @@ use function strtolower;
  */
 class ChildLinkageStatus extends AbstractElement
 {
+    public const STATUS_CHALLENGED = 'CHALLENGED';
+    public const STATUS_DISPROVEN  = 'DISPROVEN';
+    public const STATUS_PROVEN     = 'PROVEN';
+
     /**
      * Convert a value to a canonical form.
      *
@@ -46,7 +50,7 @@ class ChildLinkageStatus extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtolower(parent::canonical($value));
+        return strtoupper(parent::canonical($value));
     }
 
     /**
@@ -58,9 +62,9 @@ class ChildLinkageStatus extends AbstractElement
     {
         return [
             ''           => '',
-            'challenged' => /* I18N: Status of child-parent link */ I18N::translate('challenged'),
-            'disproven'  => /* I18N: Status of child-parent link */ I18N::translate('disproven'),
-            'proven'     => /* I18N: Status of child-parent link */ I18N::translate('proven'),
+            self::STATUS_CHALLENGED => /* I18N: Status of child-parent link */ I18N::translate('challenged'),
+            self::STATUS_DISPROVEN  => /* I18N: Status of child-parent link */ I18N::translate('disproven'),
+            self::STATUS_PROVEN     => /* I18N: Status of child-parent link */ I18N::translate('proven'),
         ];
     }
 }

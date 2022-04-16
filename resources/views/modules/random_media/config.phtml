@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
     </legend>
     <div class="col-sm-9">
         <?php foreach ($formats as $type => $label) : ?>
-            <?= view('components/checkbox', ['label' => $label, 'name' => 'filter_' . $type, 'checked' => (bool) $filters[$type]]) ?>
+            <?= view('components/checkbox', ['label' => $label, 'name' => $type, 'checked' => (bool) $filters[$type]]) ?>
         <?php endforeach ?>
     </div>
 </fieldset>

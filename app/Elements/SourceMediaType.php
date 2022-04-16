@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
+use function strtoupper;
 use function uasort;
 
 /**
@@ -33,24 +33,24 @@ use function uasort;
  */
 class SourceMediaType extends AbstractElement
 {
-    public const TYPE_AUDIO       = 'audio';
-    public const TYPE_BOOK        = 'book';
-    public const TYPE_CARD        = 'card';
-    public const TYPE_CERTIFICATE = 'certificate';
-    public const TYPE_COAT        = 'coat';
-    public const TYPE_DOCUMENT    = 'document';
-    public const TYPE_ELECTRONIC  = 'electronic';
-    public const TYPE_FICHE       = 'fiche';
-    public const TYPE_FILM        = 'film';
-    public const TYPE_MAGAZINE    = 'magazine';
-    public const TYPE_MANUSCRIPT  = 'manuscript';
-    public const TYPE_MAP         = 'map';
-    public const TYPE_NEWSPAPER   = 'newspaper';
-    public const TYPE_OTHER       = 'other';
-    public const TYPE_PAINTING    = 'painting';
-    public const TYPE_PHOTO       = 'photo';
-    public const TYPE_TOMBSTONE   = 'tombstone';
-    public const TYPE_VIDEO       = 'video';
+    public const TYPE_AUDIO       = 'AUDIO';
+    public const TYPE_BOOK        = 'BOOK';
+    public const TYPE_CARD        = 'CARD';
+    public const TYPE_CERTIFICATE = 'CERTIFICATE';
+    public const TYPE_COAT        = 'COAT';
+    public const TYPE_DOCUMENT    = 'DOCUMENT';
+    public const TYPE_ELECTRONIC  = 'ELECTRONIC';
+    public const TYPE_FICHE       = 'FICHE';
+    public const TYPE_FILM        = 'FILM';
+    public const TYPE_MAGAZINE    = 'MAGAZINE';
+    public const TYPE_MANUSCRIPT  = 'MANUSCRIPT';
+    public const TYPE_MAP         = 'MAP';
+    public const TYPE_NEWSPAPER   = 'NEWSPAPER';
+    public const TYPE_OTHER       = 'OTHER';
+    public const TYPE_PAINTING    = 'PAINTING';
+    public const TYPE_PHOTO       = 'PHOTO';
+    public const TYPE_TOMBSTONE   = 'TOMBSTONE';
+    public const TYPE_VIDEO       = 'VIDEO';
 
     protected const MAXIMUM_LENGTH = 15;
 
@@ -63,7 +63,7 @@ class SourceMediaType extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtolower(parent::canonical($value));
+        return strtoupper(parent::canonical($value));
     }
 
     /**

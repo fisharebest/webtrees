@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use function strtolower;
+use function strtoupper;
 
 /**
  * MULTIMEDIA_FORMAT := {Size=3:4}
@@ -37,8 +37,8 @@ class MultimediaFormat extends AbstractElement
 
     // GEDCOM uses the abbreviated versions of these extensions
     protected const EXTENSIONS = [
-        'jpeg' => 'jpg',
-        'tiff' => 'tif',
+        'JPEG' => 'JPG',
+        'TIFF' => 'TIF',
     ];
 
     /**
@@ -50,8 +50,7 @@ class MultimediaFormat extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        $value = parent::canonical($value);
-        $value = strtolower($value);
+        $value = strtoupper(parent::canonical($value));
 
         return self::EXTENSIONS[$value] ?? $value;
     }
