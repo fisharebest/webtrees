@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
-use function strtolower;
+use function strtoupper;
 
 /**
  * RESTRICTION_NOTICE := {Size=6:7}
@@ -48,10 +48,10 @@ use function strtolower;
  */
 class RestrictionNotice extends AbstractElement
 {
-    public const VALUE_NONE         = 'none';
-    public const VALUE_PRIVACY      = 'privacy';
-    public const VALUE_CONFIDENTIAL = 'confidential';
-    public const VALUE_LOCKED       = 'locked';
+    public const VALUE_NONE         = 'NONE';
+    public const VALUE_PRIVACY      = 'PRIVACY';
+    public const VALUE_CONFIDENTIAL = 'CONFIDENTIAL';
+    public const VALUE_LOCKED       = 'LOCKED';
 
     // Store the locked value after the privacy value.
     private const CANONICAL = [
@@ -69,7 +69,7 @@ class RestrictionNotice extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        $value = strtolower(parent::canonical($value));
+        $value = strtoupper(parent::canonical($value));
         $value = trim($value, ', ');
         $value = preg_replace('/[, ]+/', ', ', $value);
 
@@ -87,11 +87,14 @@ class RestrictionNotice extends AbstractElement
         // However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
 
         return [
-            ''                       => '',
-            self::VALUE_NONE         => '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'),
-            self::VALUE_PRIVACY      => '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'),
-            self::VALUE_CONFIDENTIAL => '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'),
-            self::VALUE_LOCKED       => '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'),
+            ''                                                   => '',
+            self::VALUE_NONE                                     => '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'),
+            self::VALUE_NONE . ', ' . self::VALUE_LOCKED         => '<i class="icon-resn-none"><i class="icon-resn-locked"></i> ' . I18N::translate('Show to visitors') . ' — ' . I18N::translate('Only managers can edit'),
+            self::VALUE_PRIVACY                                  => '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'),
+            self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED      => '<i class="icon-resn-privacy"><i class="icon-resn-locked"></i> ' . I18N::translate('Show to members') . ' — ' . I18N::translate('Only managers can edit'),
+            self::VALUE_CONFIDENTIAL                             => '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'),
+            self::VALUE_CONFIDENTIAL . ', ' . self::VALUE_LOCKED => '<i class="icon-resn-confidential"><i class="icon-resn-locked"></i> ' . I18N::translate('Show to managers') . ' — ' . I18N::translate('Only managers can edit'),
+            self::VALUE_LOCKED                                   => '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'),
         ];
     }
 }

@@ -1108,6 +1108,7 @@ class GedcomRecord
         }
 
         // Does this record have a restriction notice?
+        // Cannot use $this->>fact(), as that function calls this one.
         if (preg_match('/\n1 RESN (.+)/', $this->gedcom(), $match)) {
             $element     = new RestrictionNotice('');
             $restriction = $element->canonical($match[1]);

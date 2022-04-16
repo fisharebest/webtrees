@@ -109,12 +109,12 @@ class GedcomEditServiceTest extends TestCase
         );
 
         static::assertSame(
-            "0 NOTE @N1@\n1 CONC foo\n1 CONT bar\n1 RESN locked",
+            "0 NOTE @N1@\n1 CONC foo\n1 CONT bar\n1 RESN LOCKED",
             $gedcom_edit_service->editLinesToGedcom(
                 'NOTE',
                 ['0', '1', '1'],
                 ['NOTE', 'CONC', 'RESN'],
-                ['@N1@', "foo\nbar", 'locked']
+                ['@N1@', "foo\nbar", 'LOCKED']
             )
         );
     }
