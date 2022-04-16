@@ -324,9 +324,7 @@ class ImageFactory implements ImageFactoryInterface
         $svg = view('errors/image-svg', ['status' => $text]);
 
         // We can't send the actual status code, as browsers won't show images with 4xx/5xx.
-        return response($svg, StatusCodeInterface::STATUS_OK, [
-            'content-type' => 'image/svg+xml',
-        ]);
+        return response($svg, StatusCodeInterface::STATUS_OK)->withHeader('content-type', 'image/svg+xml');
     }
 
     /**
