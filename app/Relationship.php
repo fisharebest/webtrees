@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
-
 use Fisharebest\Webtrees\Elements\PedigreeLinkageType;
 
 use function abs;
