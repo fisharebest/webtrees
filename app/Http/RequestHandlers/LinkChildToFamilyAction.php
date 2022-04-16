@@ -68,13 +68,13 @@ class LinkChildToFamilyAction implements RequestHandlerInterface
             case '':
                 $gedcom = "1 FAMC @$famid@";
                 break;
-            case PedigreeLinkageType::TYPE_ADOPTED:
+            case PedigreeLinkageType::VALUE_ADOPTED:
                 $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$famid@\n3 ADOP BOTH";
                 break;
-            case PedigreeLinkageType::TYPE_SEALING:
+            case PedigreeLinkageType::VALUE_SEALING:
                 $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$famid@";
                 break;
-            case PedigreeLinkageType::TYPE_FOSTER:
+            case PedigreeLinkageType::VALUE_FOSTER:
                 $gedcom = "1 FAMC @$famid@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
                 break;
             default:

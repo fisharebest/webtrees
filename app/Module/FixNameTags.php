@@ -42,23 +42,23 @@ class FixNameTags extends AbstractModule implements ModuleDataFixInterface
 
     // https://legacyfamilytree.se/WEB_US/user_defined_gedcom_tags.htm
     private const CONVERT = [
-        '_ADPN'  => NameType::TYPE_ADOPTED,
-        '_AKA'   => NameType::TYPE_AKA,
-        '_AKAN'  => NameType::TYPE_AKA,
-        '_BIRN'  => NameType::TYPE_BIRTH,
+        '_ADPN'  => NameType::VALUE_ADOPTED,
+        '_AKA'   => NameType::VALUE_AKA,
+        '_AKAN'  => NameType::VALUE_AKA,
+        '_BIRN'  => NameType::VALUE_BIRTH,
         '_CENN'  => '', // Census name
         '_CURN'  => '', // Currently known as
-        '_FARN'  => NameType::TYPE_ESTATE,
-        '_FKAN'  => NameType::TYPE_AKA, // Formerly known as
+        '_FARN'  => NameType::VALUE_ESTATE,
+        '_FKAN'  => NameType::VALUE_AKA, // Formerly known as
         '_GERN'  => '', // German name
         '_HEB'   => '', // Hebrew name
         '_HEBN'  => '', // Hebrew name
         '_INDN'  => '', // Indian name
-        '_MARNM' => NameType::TYPE_MARRIED,
-        '_OTHN'  => NameType::TYPE_AKA, // Other name
-        '_RELN'  => NameType::TYPE_RELIGIOUS,
-        '_SHON'  => NameType::TYPE_AKA, // Short name
-        '_SLDN'  => NameType::TYPE_AKA, // Soldier name
+        '_MARNM' => NameType::VALUE_MARRIED,
+        '_OTHN'  => NameType::VALUE_AKA, // Other name
+        '_RELN'  => NameType::VALUE_RELIGIOUS,
+        '_SHON'  => NameType::VALUE_AKA, // Short name
+        '_SLDN'  => NameType::VALUE_AKA, // Soldier name
     ];
 
     private DataFixService $data_fix_service;

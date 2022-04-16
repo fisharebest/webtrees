@@ -63,10 +63,10 @@ class PolishSurnameTradition extends PaternalSurnameTradition
 
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
-            return [$this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SURN' => $surn])];
+            return [$this->buildName($name, ['TYPE' => NameType::VALUE_BIRTH, 'SURN' => $surn])];
         }
 
-        return [$this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH])];
+        return [$this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH])];
     }
 
     /**
@@ -84,11 +84,11 @@ class PolishSurnameTradition extends PaternalSurnameTradition
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
             return [
-                $this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SURN' => $surn]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_BIRTH, 'SURN' => $surn]),
             ];
         }
 
-        return [$this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH])];
+        return [$this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH])];
     }
 
     /**
@@ -106,11 +106,11 @@ class PolishSurnameTradition extends PaternalSurnameTradition
             $surn = $this->inflect($match['SURN'], self::INFLECT_MALE);
 
             return [
-                $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
-                $this->buildName($name, ['TYPE' => NameType::TYPE_MARRIED, 'SURN' => $surn]),
+                $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_MARRIED, 'SURN' => $surn]),
             ];
         }
 
-        return [$this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH])];
+        return [$this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH])];
     }
 }

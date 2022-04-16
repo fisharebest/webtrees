@@ -37,9 +37,9 @@ use function strtoupper;
  */
 class ChildLinkageStatus extends AbstractElement
 {
-    public const STATUS_CHALLENGED = 'CHALLENGED';
-    public const STATUS_DISPROVEN  = 'DISPROVEN';
-    public const STATUS_PROVEN     = 'PROVEN';
+    public const VALUE_CHALLENGED = 'CHALLENGED';
+    public const VALUE_DISPROVEN  = 'DISPROVEN';
+    public const VALUE_PROVEN     = 'PROVEN';
 
     /**
      * Convert a value to a canonical form.
@@ -61,10 +61,10 @@ class ChildLinkageStatus extends AbstractElement
     public function values(): array
     {
         return [
-            ''           => '',
-            self::STATUS_CHALLENGED => /* I18N: Status of child-parent link */ I18N::translate('challenged'),
-            self::STATUS_DISPROVEN  => /* I18N: Status of child-parent link */ I18N::translate('disproven'),
-            self::STATUS_PROVEN     => /* I18N: Status of child-parent link */ I18N::translate('proven'),
+            ''                     => '',
+            self::VALUE_CHALLENGED => /* I18N: Status of child-parent link */ I18N::translate('challenged'),
+            self::VALUE_DISPROVEN  => /* I18N: Status of child-parent link */ I18N::translate('disproven'),
+            self::VALUE_PROVEN     => /* I18N: Status of child-parent link */ I18N::translate('proven'),
         ];
     }
 }

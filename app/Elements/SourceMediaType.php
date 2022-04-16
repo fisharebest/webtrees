@@ -33,24 +33,24 @@ use function uasort;
  */
 class SourceMediaType extends AbstractElement
 {
-    public const TYPE_AUDIO       = 'AUDIO';
-    public const TYPE_BOOK        = 'BOOK';
-    public const TYPE_CARD        = 'CARD';
-    public const TYPE_CERTIFICATE = 'CERTIFICATE';
-    public const TYPE_COAT        = 'COAT';
-    public const TYPE_DOCUMENT    = 'DOCUMENT';
-    public const TYPE_ELECTRONIC  = 'ELECTRONIC';
-    public const TYPE_FICHE       = 'FICHE';
-    public const TYPE_FILM        = 'FILM';
-    public const TYPE_MAGAZINE    = 'MAGAZINE';
-    public const TYPE_MANUSCRIPT  = 'MANUSCRIPT';
-    public const TYPE_MAP         = 'MAP';
-    public const TYPE_NEWSPAPER   = 'NEWSPAPER';
-    public const TYPE_OTHER       = 'OTHER';
-    public const TYPE_PAINTING    = 'PAINTING';
-    public const TYPE_PHOTO       = 'PHOTO';
-    public const TYPE_TOMBSTONE   = 'TOMBSTONE';
-    public const TYPE_VIDEO       = 'VIDEO';
+    public const VALUE_AUDIO       = 'AUDIO';
+    public const VALUE_BOOK        = 'BOOK';
+    public const VALUE_CARD        = 'CARD';
+    public const VALUE_CERTIFICATE = 'CERTIFICATE';
+    public const VALUE_COAT        = 'COAT';
+    public const VALUE_DOCUMENT    = 'DOCUMENT';
+    public const VALUE_ELECTRONIC  = 'ELECTRONIC';
+    public const VALUE_FICHE       = 'FICHE';
+    public const VALUE_FILM        = 'FILM';
+    public const VALUE_MAGAZINE    = 'MAGAZINE';
+    public const VALUE_MANUSCRIPT  = 'MANUSCRIPT';
+    public const VALUE_MAP         = 'MAP';
+    public const VALUE_NEWSPAPER   = 'NEWSPAPER';
+    public const VALUE_OTHER       = 'OTHER';
+    public const VALUE_PAINTING    = 'PAINTING';
+    public const VALUE_PHOTO       = 'PHOTO';
+    public const VALUE_TOMBSTONE   = 'TOMBSTONE';
+    public const VALUE_VIDEO       = 'VIDEO';
 
     protected const MAXIMUM_LENGTH = 15;
 
@@ -75,25 +75,25 @@ class SourceMediaType extends AbstractElement
     {
         // *** indicates custom values
         $values = [
-            ''            => '',
-            self::TYPE_AUDIO       => /* I18N: Type of media object */ I18N::translate('Audio'),
-            self::TYPE_BOOK        => /* I18N: Type of media object */ I18N::translate('Book'),
-            self::TYPE_CARD        => /* I18N: Type of media object */ I18N::translate('Card'),
-            self::TYPE_CERTIFICATE => /* I18N: Type of media object */ I18N::translate('Certificate'),
-            self::TYPE_COAT        => /* I18N: Type of media object */ I18N::translate('Coat of arms'),
-            self::TYPE_DOCUMENT    => /* I18N: Type of media object */ I18N::translate('Document'),
-            self::TYPE_ELECTRONIC  => /* I18N: Type of media object */ I18N::translate('Electronic'),
-            self::TYPE_FICHE       => /* I18N: Type of media object */ I18N::translate('Microfiche'),
-            self::TYPE_FILM        => /* I18N: Type of media object */ I18N::translate('Microfilm'),
-            self::TYPE_MAGAZINE    => /* I18N: Type of media object */ I18N::translate('Magazine'),
-            self::TYPE_MANUSCRIPT  => /* I18N: Type of media object */ I18N::translate('Manuscript'),
-            self::TYPE_MAP         => /* I18N: Type of media object */ I18N::translate('Map'),
-            self::TYPE_NEWSPAPER   => /* I18N: Type of media object */ I18N::translate('Newspaper'),
-            self::TYPE_OTHER       => /* I18N: Type of media object */ I18N::translate('Other'),
-            self::TYPE_PAINTING    => /* I18N: Type of media object */ I18N::translate('Painting'),
-            self::TYPE_PHOTO       => /* I18N: Type of media object */ I18N::translate('Photo'),
-            self::TYPE_TOMBSTONE   => /* I18N: Type of media object */ I18N::translate('Tombstone'),
-            self::TYPE_VIDEO       => /* I18N: Type of media object */ I18N::translate('Video'),
+            ''                      => '',
+            self::VALUE_AUDIO       => /* I18N: Type of media object */ I18N::translate('Audio'),
+            self::VALUE_BOOK        => /* I18N: Type of media object */ I18N::translate('Book'),
+            self::VALUE_CARD        => /* I18N: Type of media object */ I18N::translate('Card'),
+            self::VALUE_CERTIFICATE => /* I18N: Type of media object */ I18N::translate('Certificate'),
+            self::VALUE_COAT       => /* I18N: Type of media object */ I18N::translate('Coat of arms'),
+            self::VALUE_DOCUMENT   => /* I18N: Type of media object */ I18N::translate('Document'),
+            self::VALUE_ELECTRONIC => /* I18N: Type of media object */ I18N::translate('Electronic'),
+            self::VALUE_FICHE      => /* I18N: Type of media object */ I18N::translate('Microfiche'),
+            self::VALUE_FILM       => /* I18N: Type of media object */ I18N::translate('Microfilm'),
+            self::VALUE_MAGAZINE   => /* I18N: Type of media object */ I18N::translate('Magazine'),
+            self::VALUE_MANUSCRIPT => /* I18N: Type of media object */ I18N::translate('Manuscript'),
+            self::VALUE_MAP        => /* I18N: Type of media object */ I18N::translate('Map'),
+            self::VALUE_NEWSPAPER  => /* I18N: Type of media object */ I18N::translate('Newspaper'),
+            self::VALUE_OTHER      => /* I18N: Type of media object */ I18N::translate('Other'),
+            self::VALUE_PAINTING   => /* I18N: Type of media object */ I18N::translate('Painting'),
+            self::VALUE_PHOTO      => /* I18N: Type of media object */ I18N::translate('Photo'),
+            self::VALUE_TOMBSTONE  => /* I18N: Type of media object */ I18N::translate('Tombstone'),
+            self::VALUE_VIDEO      => /* I18N: Type of media object */ I18N::translate('Video'),
         ];
 
         uasort($values, I18N::comparator());

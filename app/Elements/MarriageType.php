@@ -28,9 +28,9 @@ use function strtoupper;
  */
 class MarriageType extends AbstractElement
 {
-    public const TYPE_CIVIL     = 'CIVIL';
-    public const TYPE_PARTNERS  = 'PARTNERS';
-    public const TYPE_RELIGIOUS = 'RELIGIOUS';
+    public const VALUE_CIVIL     = 'CIVIL';
+    public const VALUE_PARTNERS  = 'PARTNERS';
+    public const VALUE_RELIGIOUS = 'RELIGIOUS';
 
     /**
      * Convert a value to a canonical form.
@@ -59,10 +59,10 @@ class MarriageType extends AbstractElement
     public function values(): array
     {
         return [
-            ''                   => '',
-            self::TYPE_CIVIL     => I18N::translate('Civil marriage'),
-            self::TYPE_PARTNERS  => I18N::translate('Registered partnership'),
-            self::TYPE_RELIGIOUS => I18N::translate('Religious marriage'),
+            ''                    => '',
+            self::VALUE_CIVIL     => I18N::translate('Civil marriage'),
+            self::VALUE_PARTNERS  => I18N::translate('Registered partnership'),
+            self::VALUE_RELIGIOUS => I18N::translate('Religious marriage'),
 
         ];
     }

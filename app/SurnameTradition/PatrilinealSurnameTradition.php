@@ -44,7 +44,7 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
             $surn = $match['SURN'];
 
             return [
-                $this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_BIRTH, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 
@@ -67,7 +67,7 @@ class PatrilinealSurnameTradition extends DefaultSurnameTradition
             $surn = $match['SURN'];
 
             return [
-                $this->buildName($name, ['TYPE' => NameType::TYPE_BIRTH, 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_BIRTH, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 

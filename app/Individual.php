@@ -846,16 +846,16 @@ class Individual extends GedcomRecord
         }
 
         $values = [
-            PedigreeLinkageType::TYPE_BIRTH   => I18N::translate('Family with parents'),
-            PedigreeLinkageType::TYPE_ADOPTED => I18N::translate('Family with adoptive parents'),
-            PedigreeLinkageType::TYPE_FOSTER  => I18N::translate('Family with foster parents'),
+            PedigreeLinkageType::VALUE_BIRTH   => I18N::translate('Family with parents'),
+            PedigreeLinkageType::VALUE_ADOPTED => I18N::translate('Family with adoptive parents'),
+            PedigreeLinkageType::VALUE_FOSTER  => I18N::translate('Family with foster parents'),
             /* I18N: “sealing” is a Mormon ceremony. */
-            PedigreeLinkageType::TYPE_SEALING => I18N::translate('Family with sealing parents'),
+            PedigreeLinkageType::VALUE_SEALING => I18N::translate('Family with sealing parents'),
             /* I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing. */
-            PedigreeLinkageType::TYPE_RADA    => I18N::translate('Family with rada parents'),
+            PedigreeLinkageType::VALUE_RADA    => I18N::translate('Family with rada parents'),
         ];
 
-        return $values[$pedigree] ?? $values[PedigreeLinkageType::TYPE_BIRTH];
+        return $values[$pedigree] ?? $values[PedigreeLinkageType::VALUE_BIRTH];
     }
 
     /**

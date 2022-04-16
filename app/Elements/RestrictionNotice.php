@@ -48,16 +48,16 @@ use function strtolower;
  */
 class RestrictionNotice extends AbstractElement
 {
-    public const RESTRICTION_NONE         = 'none';
-    public const RESTRICTION_PRIVACY      = 'privacy';
-    public const RESTRICTION_CONFIDENTIAL = 'confidential';
-    public const RESTRICTION_LOCKED       = 'locked';
+    public const VALUE_NONE         = 'none';
+    public const VALUE_PRIVACY      = 'privacy';
+    public const VALUE_CONFIDENTIAL = 'confidential';
+    public const VALUE_LOCKED       = 'locked';
 
     // Store the locked value after the privacy value.
     private const CANONICAL = [
-        self::RESTRICTION_LOCKED . ', ' . self::RESTRICTION_NONE         => self::RESTRICTION_NONE . ', ' . self::RESTRICTION_LOCKED,
-        self::RESTRICTION_LOCKED . ', ' . self::RESTRICTION_PRIVACY      => self::RESTRICTION_PRIVACY . ', ' . self::RESTRICTION_LOCKED,
-        self::RESTRICTION_LOCKED . ', ' . self::RESTRICTION_CONFIDENTIAL => self::RESTRICTION_CONFIDENTIAL . ', ' . self::RESTRICTION_LOCKED,
+        self::VALUE_LOCKED . ', ' . self::VALUE_NONE         => self::VALUE_NONE . ', ' . self::VALUE_LOCKED,
+        self::VALUE_LOCKED . ', ' . self::VALUE_PRIVACY      => self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED,
+        self::VALUE_LOCKED . ', ' . self::VALUE_CONFIDENTIAL => self::VALUE_CONFIDENTIAL . ', ' . self::VALUE_LOCKED,
     ];
 
     /**
@@ -87,11 +87,11 @@ class RestrictionNotice extends AbstractElement
         // However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
 
         return [
-            ''             => '',
-            self::RESTRICTION_NONE         => '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'),
-            self::RESTRICTION_PRIVACY      => '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'),
-            self::RESTRICTION_CONFIDENTIAL => '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'),
-            self::RESTRICTION_LOCKED       => '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'),
+            ''                       => '',
+            self::VALUE_NONE         => '<i class="icon-resn-none"></i> ' . I18N::translate('Show to visitors'),
+            self::VALUE_PRIVACY      => '<i class="icon-resn-privacy"></i> ' . I18N::translate('Show to members'),
+            self::VALUE_CONFIDENTIAL => '<i class="icon-resn-confidential"></i> ' . I18N::translate('Show to managers'),
+            self::VALUE_LOCKED       => '<i class="icon-resn-locked"></i> ' . I18N::translate('Only managers can edit'),
         ];
     }
 }

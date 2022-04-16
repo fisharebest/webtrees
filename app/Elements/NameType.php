@@ -36,15 +36,15 @@ use function strtoupper;
  */
 class NameType extends AbstractElement
 {
-    public const TYPE_ADOPTED   = 'ADOPTED';
-    public const TYPE_AKA       = 'AKA';
-    public const TYPE_BIRTH     = 'BIRTH';
-    public const TYPE_CHANGE    = 'CHANGE';
-    public const TYPE_ESTATE    = 'ESTATE';
-    public const TYPE_IMMIGRANT = 'IMMIGRANT';
-    public const TYPE_MAIDEN    = 'MAIDEN';
-    public const TYPE_MARRIED   = 'MARRIED';
-    public const TYPE_RELIGIOUS = 'RELIGIOUS';
+    public const VALUE_ADOPTED   = 'ADOPTED';
+    public const VALUE_AKA       = 'AKA';
+    public const VALUE_BIRTH     = 'BIRTH';
+    public const VALUE_CHANGE    = 'CHANGE';
+    public const VALUE_ESTATE    = 'ESTATE';
+    public const VALUE_IMMIGRANT = 'IMMIGRANT';
+    public const VALUE_MAIDEN    = 'MAIDEN';
+    public const VALUE_MARRIED   = 'MARRIED';
+    public const VALUE_RELIGIOUS = 'RELIGIOUS';
 
     /**
      * Convert a value to a canonical form.
@@ -68,23 +68,23 @@ class NameType extends AbstractElement
         return [
             ''                   => '',
             /* I18N: The name given to a child by its adoptive parents */
-            self::TYPE_ADOPTED   => I18N::translate('adopted name'),
+            self::VALUE_ADOPTED   => I18N::translate('adopted name'),
             /* I18N: The name by which an individual is also known. e.g. a professional name or a stage name */
-            self::TYPE_AKA       => I18N::translate('also known as'),
+            self::VALUE_AKA       => I18N::translate('also known as'),
             /* I18N: The name given to an individual at their birth */
-            self::TYPE_BIRTH     => I18N::translate('birth name'),
+            self::VALUE_BIRTH     => I18N::translate('birth name'),
             /* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-            self::TYPE_CHANGE    => I18N::translate('change of name'),
+            self::VALUE_CHANGE    => I18N::translate('change of name'),
             /* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-            self::TYPE_ESTATE    => I18N::translate('estate name'),
+            self::VALUE_ESTATE    => I18N::translate('estate name'),
             /* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-            self::TYPE_IMMIGRANT => I18N::translate('immigration name'),
+            self::VALUE_IMMIGRANT => I18N::translate('immigration name'),
             /* I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage) */
-            self::TYPE_MAIDEN    => I18N::translate('maiden name'),
+            self::VALUE_MAIDEN    => I18N::translate('maiden name'),
             /* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-            self::TYPE_MARRIED   => I18N::translate('married name'),
+            self::VALUE_MARRIED   => I18N::translate('married name'),
             /* I18N: A name taken when entering a religion or a religious order */
-            self::TYPE_RELIGIOUS => I18N::translate('religious name'),
+            self::VALUE_RELIGIOUS => I18N::translate('religious name'),
         ];
     }
 }

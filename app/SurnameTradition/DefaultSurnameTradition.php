@@ -68,7 +68,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newChildNames(?Individual $father, ?Individual $mother, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -83,7 +83,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newParentNames(Individual $child, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -98,7 +98,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
         return [
-            $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -139,7 +139,7 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
         if ($individual instanceof Individual) {
             $fact = $individual
                 ->facts(['NAME'])
-                ->first(fn (Fact $fact): bool => in_array($fact->attribute('TYPE'), ['', NameType::TYPE_BIRTH, NameType::TYPE_CHANGE], true));
+                ->first(fn (Fact $fact): bool => in_array($fact->attribute('TYPE'), ['', NameType::VALUE_BIRTH, NameType::VALUE_CHANGE], true));
 
             if ($fact instanceof Fact) {
                 return $fact->value();

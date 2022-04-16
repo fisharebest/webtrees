@@ -410,7 +410,7 @@ class BranchesListModule extends AbstractModule implements ModuleListInterface, 
                 if ($fact->target() === $parents) {
                     $pedi = $fact->attribute('PEDI');
 
-                    if ($pedi !== '' && $pedi !== PedigreeLinkageType::TYPE_BIRTH) {
+                    if ($pedi !== '' && $pedi !== PedigreeLinkageType::VALUE_BIRTH) {
                         $pedigree  = Registry::elementFactory()->make('INDI:FAMC:PEDI')->value($pedi, $tree);
                         $indi_html = '<span class="red">' . $pedigree . '</span> ' . $indi_html;
                     }

@@ -57,20 +57,20 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition
                     $givn = $match['GIVN'] . 'sson';
 
                     return [
-                        $this->buildName($givn, ['TYPE' => NameType::TYPE_BIRTH, 'GIVN' => $givn]),
+                        $this->buildName($givn, ['TYPE' => NameType::VALUE_BIRTH, 'GIVN' => $givn]),
                     ];
 
                 case 'F':
                     $givn = $match['GIVN'] . 'sdottir';
 
                     return [
-                        $this->buildName($givn, ['TYPE' => NameType::TYPE_BIRTH, 'GIVN' => $givn]),
+                        $this->buildName($givn, ['TYPE' => NameType::VALUE_BIRTH, 'GIVN' => $givn]),
                     ];
             }
         }
 
         return [
-            $this->buildName('', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -86,18 +86,18 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition
     {
         if ($sex === 'M' && preg_match('~(?<GIVN>[^ /]+)(:?sson)$~', $this->extractName($child), $match)) {
             return [
-                $this->buildName($match['GIVN'], ['TYPE' => NameType::TYPE_BIRTH, 'GIVN' => $match['GIVN']]),
+                $this->buildName($match['GIVN'], ['TYPE' => NameType::VALUE_BIRTH, 'GIVN' => $match['GIVN']]),
             ];
         }
 
         if ($sex === 'F' && preg_match('~(?<GIVN>[^ /]+)(:?sdottir)$~', $this->extractName($child), $match)) {
             return [
-                $this->buildName($match['GIVN'], ['TYPE' => NameType::TYPE_BIRTH, 'GIVN' => $match['GIVN']]),
+                $this->buildName($match['GIVN'], ['TYPE' => NameType::VALUE_BIRTH, 'GIVN' => $match['GIVN']]),
             ];
         }
 
         return [
-            $this->buildName('', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -112,7 +112,7 @@ class IcelandicSurnameTradition extends DefaultSurnameTradition
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
         return [
-            $this->buildName('', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 }

@@ -45,8 +45,8 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
             $surn = $match['SURN'];
 
             return [
-                $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
-                $this->buildName($name, ['TYPE' => NameType::TYPE_MARRIED, 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_MARRIED, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 
@@ -69,8 +69,8 @@ class PaternalSurnameTradition extends PatrilinealSurnameTradition
             $surn = $match['SURN'];
 
             return [
-                $this->buildName('//', ['TYPE' => NameType::TYPE_BIRTH]),
-                $this->buildName($name, ['TYPE' => NameType::TYPE_MARRIED, 'SPFX' => $spfx, 'SURN' => $surn]),
+                $this->buildName('//', ['TYPE' => NameType::VALUE_BIRTH]),
+                $this->buildName($name, ['TYPE' => NameType::VALUE_MARRIED, 'SPFX' => $spfx, 'SURN' => $surn]),
             ];
         }
 

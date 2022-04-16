@@ -66,7 +66,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
 
         return [
             $this->buildName('/' . $father_surname . '/ /' . $mother_surname . '/', [
-                'TYPE' => NameType::TYPE_BIRTH,
+                'TYPE' => NameType::VALUE_BIRTH,
                 'SURN' => trim($father_surname . ',' . $mother_surname, ','),
             ]),
         ];
@@ -87,7 +87,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
                 case 'M':
                     return [
                         $this->buildName('/' . $match['SURN1'] . '/ //', [
-                            'TYPE' => NameType::TYPE_BIRTH,
+                            'TYPE' => NameType::VALUE_BIRTH,
                             'SURN' => $match['SURN1'],
                         ]),
                     ];
@@ -95,7 +95,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
                 case 'F':
                     return [
                         $this->buildName('/' . $match['SURN2'] . '/ //', [
-                            'TYPE' => NameType::TYPE_BIRTH,
+                            'TYPE' => NameType::VALUE_BIRTH,
                             'SURN' => $match['SURN2'],
                         ]),
                     ];
@@ -103,7 +103,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
         }
 
         return [
-            $this->buildName('// //', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('// //', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 
@@ -118,7 +118,7 @@ class SpanishSurnameTradition extends DefaultSurnameTradition
     public function newSpouseNames(Individual $spouse, string $sex): array
     {
         return [
-            $this->buildName('// //', ['TYPE' => NameType::TYPE_BIRTH]),
+            $this->buildName('// //', ['TYPE' => NameType::VALUE_BIRTH]),
         ];
     }
 }
