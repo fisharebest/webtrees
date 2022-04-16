@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\Webtrees\Elements\SourceMediaType;
+use Fisharebest\Webtrees\Factories\ImageFactory;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Registry;
@@ -31,7 +33,6 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function array_filter;
-use function assert;
 use function in_array;
 use function str_contains;
 
@@ -90,24 +91,24 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $start         = (bool) ($request->getQueryParams()['start'] ?? $default_start);
 
         $filter_types = [
-            $this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
-            $this->getBlockSetting($block_id, 'filter_book', '1') ? 'book' : null,
-            $this->getBlockSetting($block_id, 'filter_card', '1') ? 'card' : null,
-            $this->getBlockSetting($block_id, 'filter_certificate', '1') ? 'certificate' : null,
-            $this->getBlockSetting($block_id, 'filter_coat', '1') ? 'coat' : null,
-            $this->getBlockSetting($block_id, 'filter_document', '1') ? 'document' : null,
-            $this->getBlockSetting($block_id, 'filter_electronic', '1') ? 'electronic' : null,
-            $this->getBlockSetting($block_id, 'filter_fiche', '1') ? 'fiche' : null,
-            $this->getBlockSetting($block_id, 'filter_film', '1') ? 'film' : null,
-            $this->getBlockSetting($block_id, 'filter_magazine', '1') ? 'magazine' : null,
-            $this->getBlockSetting($block_id, 'filter_manuscript', '1') ? 'manuscript' : null,
-            $this->getBlockSetting($block_id, 'filter_map', '1') ? 'map' : null,
-            $this->getBlockSetting($block_id, 'filter_newspaper', '1') ? 'newspaper' : null,
-            $this->getBlockSetting($block_id, 'filter_other', '1') ? 'other' : null,
-            $this->getBlockSetting($block_id, 'filter_painting', '1') ? 'painting' : null,
-            $this->getBlockSetting($block_id, 'filter_photo', '1') ? 'photo' : null,
-            $this->getBlockSetting($block_id, 'filter_tombstone', '1') ? 'tombstone' : null,
-            $this->getBlockSetting($block_id, 'filter_video', '0') ? 'video' : null,
+            $this->getBlockSetting($block_id, 'filter_audio', '0') ? SourceMediaType::TYPE_AUDIO : null,
+            $this->getBlockSetting($block_id, 'filter_book', '1') ? SourceMediaType::TYPE_BOOK : null,
+            $this->getBlockSetting($block_id, 'filter_card', '1') ? SourceMediaType::TYPE_CARD : null,
+            $this->getBlockSetting($block_id, 'filter_certificate', '1') ? SourceMediaType::TYPE_CERTIFICATE : null,
+            $this->getBlockSetting($block_id, 'filter_coat', '1') ? SourceMediaType::TYPE_COAT : null,
+            $this->getBlockSetting($block_id, 'filter_document', '1') ? SourceMediaType::TYPE_DOCUMENT : null,
+            $this->getBlockSetting($block_id, 'filter_electronic', '1') ? SourceMediaType::TYPE_ELECTRONIC : null,
+            $this->getBlockSetting($block_id, 'filter_fiche', '1') ? SourceMediaType::TYPE_FICHE : null,
+            $this->getBlockSetting($block_id, 'filter_film', '1') ? SourceMediaType::TYPE_FILM : null,
+            $this->getBlockSetting($block_id, 'filter_magazine', '1') ? SourceMediaType::TYPE_MAGAZINE : null,
+            $this->getBlockSetting($block_id, 'filter_manuscript', '1') ? SourceMediaType::TYPE_MANUSCRIPT : null,
+            $this->getBlockSetting($block_id, 'filter_map', '1') ? SourceMediaType::TYPE_MAP : null,
+            $this->getBlockSetting($block_id, 'filter_newspaper', '1') ? SourceMediaType::TYPE_NEWSPAPER : null,
+            $this->getBlockSetting($block_id, 'filter_other', '1') ? SourceMediaType::TYPE_OTHER : null,
+            $this->getBlockSetting($block_id, 'filter_painting', '1') ? SourceMediaType::TYPE_PAINTING : null,
+            $this->getBlockSetting($block_id, 'filter_photo', '1') ? SourceMediaType::TYPE_PHOTO : null,
+            $this->getBlockSetting($block_id, 'filter_tombstone', '1') ? SourceMediaType::TYPE_TOMBSTONE : null,
+            $this->getBlockSetting($block_id, 'filter_video', '0') ? SourceMediaType::TYPE_VIDEO : null,
         ];
 
         $filter_types = array_filter($filter_types);
@@ -125,16 +126,15 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
                     ->on('media_file.m_id', '=', 'media.m_id');
             })
             ->where('media.m_file', '=', $tree->id())
-            ->whereIn('media_file.multimedia_format', ['jpg', 'jpeg', 'png', 'gif', 'tiff', 'bmp'])
+            ->whereIn('media_file.multimedia_format', ImageFactory::SUPPORTED_FORMATS)
             ->whereIn('media_file.source_media_type', $filter_types)
             ->select('media.*')
             ->get()
             ->shuffle()
             ->first(function (object $row) use ($filter_links, $tree): bool {
                 $media = Registry::mediaFactory()->make($row->m_id, $tree, $row->m_gedcom);
-                assert($media instanceof Media);
 
-                if (!$media->canShow() || $media->firstImageFile() === null) {
+                if ($media === null || !$media->canShow() || $media->firstImageFile() === null) {
                     return false;
                 }
 
@@ -283,24 +283,24 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $start    = $this->getBlockSetting($block_id, 'start', '0');
 
         $filters = [
-            'audio'       => $this->getBlockSetting($block_id, 'filter_audio', '0'),
-            'book'        => $this->getBlockSetting($block_id, 'filter_book', '1'),
-            'card'        => $this->getBlockSetting($block_id, 'filter_card', '1'),
-            'certificate' => $this->getBlockSetting($block_id, 'filter_certificate', '1'),
-            'coat'        => $this->getBlockSetting($block_id, 'filter_coat', '1'),
-            'document'    => $this->getBlockSetting($block_id, 'filter_document', '1'),
-            'electronic'  => $this->getBlockSetting($block_id, 'filter_electronic', '1'),
-            'fiche'       => $this->getBlockSetting($block_id, 'filter_fiche', '1'),
-            'film'        => $this->getBlockSetting($block_id, 'filter_film', '1'),
-            'magazine'    => $this->getBlockSetting($block_id, 'filter_magazine', '1'),
-            'manuscript'  => $this->getBlockSetting($block_id, 'filter_manuscript', '1'),
-            'map'         => $this->getBlockSetting($block_id, 'filter_map', '1'),
-            'newspaper'   => $this->getBlockSetting($block_id, 'filter_newspaper', '1'),
-            'other'       => $this->getBlockSetting($block_id, 'filter_other', '1'),
-            'painting'    => $this->getBlockSetting($block_id, 'filter_painting', '1'),
-            'photo'       => $this->getBlockSetting($block_id, 'filter_photo', '1'),
-            'tombstone'   => $this->getBlockSetting($block_id, 'filter_tombstone', '1'),
-            'video'       => $this->getBlockSetting($block_id, 'filter_video', '0'),
+            SourceMediaType::TYPE_AUDIO       => $this->getBlockSetting($block_id, 'filter_audio', '0'),
+            SourceMediaType::TYPE_BOOK        => $this->getBlockSetting($block_id, 'filter_book', '1'),
+            SourceMediaType::TYPE_CARD        => $this->getBlockSetting($block_id, 'filter_card', '1'),
+            SourceMediaType::TYPE_CERTIFICATE => $this->getBlockSetting($block_id, 'filter_certificate', '1'),
+            SourceMediaType::TYPE_COAT        => $this->getBlockSetting($block_id, 'filter_coat', '1'),
+            SourceMediaType::TYPE_DOCUMENT    => $this->getBlockSetting($block_id, 'filter_document', '1'),
+            SourceMediaType::TYPE_ELECTRONIC  => $this->getBlockSetting($block_id, 'filter_electronic', '1'),
+            SourceMediaType::TYPE_FICHE       => $this->getBlockSetting($block_id, 'filter_fiche', '1'),
+            SourceMediaType::TYPE_FILM        => $this->getBlockSetting($block_id, 'filter_film', '1'),
+            SourceMediaType::TYPE_MAGAZINE    => $this->getBlockSetting($block_id, 'filter_magazine', '1'),
+            SourceMediaType::TYPE_MANUSCRIPT  => $this->getBlockSetting($block_id, 'filter_manuscript', '1'),
+            SourceMediaType::TYPE_MAP         => $this->getBlockSetting($block_id, 'filter_map', '1'),
+            SourceMediaType::TYPE_NEWSPAPER   => $this->getBlockSetting($block_id, 'filter_newspaper', '1'),
+            SourceMediaType::TYPE_OTHER       => $this->getBlockSetting($block_id, 'filter_other', '1'),
+            SourceMediaType::TYPE_PAINTING    => $this->getBlockSetting($block_id, 'filter_painting', '1'),
+            SourceMediaType::TYPE_PHOTO       => $this->getBlockSetting($block_id, 'filter_photo', '1'),
+            SourceMediaType::TYPE_TOMBSTONE   => $this->getBlockSetting($block_id, 'filter_tombstone', '1'),
+            SourceMediaType::TYPE_VIDEO       => $this->getBlockSetting($block_id, 'filter_video', '0'),
         ];
 
         $formats = array_filter(Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values());

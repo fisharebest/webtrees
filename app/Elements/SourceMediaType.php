@@ -33,6 +33,25 @@ use function uasort;
  */
 class SourceMediaType extends AbstractElement
 {
+    public const TYPE_AUDIO       = 'audio';
+    public const TYPE_BOOK        = 'book';
+    public const TYPE_CARD        = 'card';
+    public const TYPE_CERTIFICATE = 'certificate';
+    public const TYPE_COAT        = 'coat';
+    public const TYPE_DOCUMENT    = 'document';
+    public const TYPE_ELECTRONIC  = 'electronic';
+    public const TYPE_FICHE       = 'fiche';
+    public const TYPE_FILM        = 'film';
+    public const TYPE_MAGAZINE    = 'magazine';
+    public const TYPE_MANUSCRIPT  = 'manuscript';
+    public const TYPE_MAP         = 'map';
+    public const TYPE_NEWSPAPER   = 'newspaper';
+    public const TYPE_OTHER       = 'other';
+    public const TYPE_PAINTING    = 'painting';
+    public const TYPE_PHOTO       = 'photo';
+    public const TYPE_TOMBSTONE   = 'tombstone';
+    public const TYPE_VIDEO       = 'video';
+
     protected const MAXIMUM_LENGTH = 15;
 
     /**
@@ -57,24 +76,24 @@ class SourceMediaType extends AbstractElement
         // *** indicates custom values
         $values = [
             ''            => '',
-            'audio'       => /* I18N: Type of media object */ I18N::translate('Audio'),
-            'book'        => /* I18N: Type of media object */ I18N::translate('Book'),
-            'card'        => /* I18N: Type of media object */ I18N::translate('Card'),
-            'certificate' => /* I18N: Type of media object */ I18N::translate('Certificate'),
-            'coat'        => /* I18N: Type of media object */ I18N::translate('Coat of arms'),
-            'document'    => /* I18N: Type of media object */ I18N::translate('Document'),
-            'electronic'  => /* I18N: Type of media object */ I18N::translate('Electronic'),
-            'fiche'       => /* I18N: Type of media object */ I18N::translate('Microfiche'),
-            'film'        => /* I18N: Type of media object */ I18N::translate('Microfilm'),
-            'magazine'    => /* I18N: Type of media object */ I18N::translate('Magazine'),
-            'manuscript'  => /* I18N: Type of media object */ I18N::translate('Manuscript'),
-            'map'         => /* I18N: Type of media object */ I18N::translate('Map'),
-            'newspaper'   => /* I18N: Type of media object */ I18N::translate('Newspaper'),
-            'other'       => /* I18N: Type of media object */ I18N::translate('Other'),
-            'photo'       => /* I18N: Type of media object */ I18N::translate('Photo'),
-            'painting'    => /* I18N: Type of media object */ I18N::translate('Painting'),
-            'tombstone'   => /* I18N: Type of media object */ I18N::translate('Tombstone'),
-            'video'       => /* I18N: Type of media object */ I18N::translate('Video'),
+            self::TYPE_AUDIO       => /* I18N: Type of media object */ I18N::translate('Audio'),
+            self::TYPE_BOOK        => /* I18N: Type of media object */ I18N::translate('Book'),
+            self::TYPE_CARD        => /* I18N: Type of media object */ I18N::translate('Card'),
+            self::TYPE_CERTIFICATE => /* I18N: Type of media object */ I18N::translate('Certificate'),
+            self::TYPE_COAT        => /* I18N: Type of media object */ I18N::translate('Coat of arms'),
+            self::TYPE_DOCUMENT    => /* I18N: Type of media object */ I18N::translate('Document'),
+            self::TYPE_ELECTRONIC  => /* I18N: Type of media object */ I18N::translate('Electronic'),
+            self::TYPE_FICHE       => /* I18N: Type of media object */ I18N::translate('Microfiche'),
+            self::TYPE_FILM        => /* I18N: Type of media object */ I18N::translate('Microfilm'),
+            self::TYPE_MAGAZINE    => /* I18N: Type of media object */ I18N::translate('Magazine'),
+            self::TYPE_MANUSCRIPT  => /* I18N: Type of media object */ I18N::translate('Manuscript'),
+            self::TYPE_MAP         => /* I18N: Type of media object */ I18N::translate('Map'),
+            self::TYPE_NEWSPAPER   => /* I18N: Type of media object */ I18N::translate('Newspaper'),
+            self::TYPE_OTHER       => /* I18N: Type of media object */ I18N::translate('Other'),
+            self::TYPE_PAINTING    => /* I18N: Type of media object */ I18N::translate('Painting'),
+            self::TYPE_PHOTO       => /* I18N: Type of media object */ I18N::translate('Photo'),
+            self::TYPE_TOMBSTONE   => /* I18N: Type of media object */ I18N::translate('Tombstone'),
+            self::TYPE_VIDEO       => /* I18N: Type of media object */ I18N::translate('Video'),
         ];
 
         uasort($values, I18N::comparator());
