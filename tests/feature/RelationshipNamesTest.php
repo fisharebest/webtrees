@@ -43,6 +43,8 @@ use function array_reverse;
  */
 class RelationshipNamesTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     /**
      * @return void
      */

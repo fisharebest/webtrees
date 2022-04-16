@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
+use function strtoupper;
+
 /**
  * PEDIGREE_LINKAGE_TYPE := {Size=5:7}
  * [ adopted | birth | foster | sealing ]
@@ -35,11 +37,23 @@ class PedigreeLinkageType extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 7;
 
-    public const TYPE_ADOPTED = 'adopted';
-    public const TYPE_BIRTH   = 'birth';
-    public const TYPE_FOSTER  = 'foster';
-    public const TYPE_SEALING = 'sealing';
-    public const TYPE_RADA    = 'rada';
+    public const TYPE_ADOPTED = 'ADOPTED';
+    public const TYPE_BIRTH   = 'BIRTH';
+    public const TYPE_FOSTER  = 'FOSTER';
+    public const TYPE_SEALING = 'SEALING';
+    public const TYPE_RADA    = 'RADA';
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        return strtoupper(parent::canonical($value));
+    }
 
     /**
      * A list of controlled values for this element
