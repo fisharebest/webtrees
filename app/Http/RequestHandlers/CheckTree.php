@@ -46,7 +46,6 @@ use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
-use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
@@ -59,6 +58,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function array_key_exists;
 use function array_slice;
 use function e;
 use function implode;
@@ -291,7 +291,7 @@ class CheckTree implements RequestHandlerInterface
                     if ($mime === Mime::DEFAULT_TYPE) {
                         $message    = I18N::translate('webtrees does not recognise this file format.');
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
-                    } elseif (str_starts_with($mime, 'image/') && !in_array($mime, ImageFactory::SUPPORTED_FORMATS, true)) {
+                    } elseif (str_starts_with($mime, 'image/') && !array_key_exists($mime, ImageFactory::SUPPORTED_FORMATS)) {
                         $message    = I18N::translate('webtrees cannot create thumbnails for this file format.');
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     }

@@ -35,6 +35,7 @@ class Mime
         'ged'  => 'text/vnd.familysearch.gedcom',
         'gif'  => 'image/gif',
         'flac' => 'audio/flac',
+        'heif' => 'image/heif',
         'htm'  => 'text/html',
         'html' => 'text/html',
         'ico'  => 'image/x-icon',

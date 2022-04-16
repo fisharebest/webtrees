@@ -507,12 +507,12 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$type on mixed\\.$#"
-			count: 44
+			count: 46
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
-			count: 43
+			count: 45
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
