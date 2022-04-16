@@ -8383,7 +8383,7 @@ msgstr "印尼"
 
 # I18N: gedcom tag INFL
 #: app/Elements/AgeAtEvent.php:91
-msgid "Infant"
+msgid "infant"
 msgstr "幼兒"
 
 #: app/Elements/RelationIsDescriptor.php:114
@@ -14579,7 +14579,7 @@ msgid "Status change date"
 msgstr "狀態更改日期"
 
 #: app/Elements/AgeAtEvent.php:94
-msgid "Stillborn"
+msgid "stillborn"
 msgstr "未出生"
 
 # I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)

@@ -7813,7 +7813,7 @@ msgid "Indonesia"
 msgstr "Indonésia"
 
 #: app/Elements/AgeAtEvent.php:91
-msgid "Infant"
+msgid "infant"
 msgstr "Criança"
 
 #: app/Elements/RelationIsDescriptor.php:114
@@ -13502,7 +13502,7 @@ msgid "Status change date"
 msgstr "Data de alteração do status"
 
 #: app/Elements/AgeAtEvent.php:94
-msgid "Stillborn"
+msgid "stillborn"
 msgstr "Natimorto"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)

@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 use function preg_replace_callback_array;
-use function strtolower;
 use function strtoupper;
 
 /**
@@ -61,14 +60,7 @@ class AgeAtEvent extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        $value = parent::canonical($value);
-        $upper = strtoupper($value);
-
-        if (in_array($upper, static::KEYWORDS, true)) {
-            return $upper;
-        }
-
-        return strtolower($value);
+        return strtoupper(parent::canonical($value));
     }
 
     /**
@@ -85,20 +77,20 @@ class AgeAtEvent extends AbstractElement
 
         switch ($canonical) {
             case 'CHILD':
-                return I18N::translate('Child');
+                return I18N::translate('child');
 
             case 'INFANT':
-                return I18N::translate('Infant');
+                return I18N::translate('infant');
 
             case 'STILLBORN':
-                return I18N::translate('Stillborn');
+                return I18N::translate('stillborn');
         }
 
         return preg_replace_callback_array([
-            '/\b(\d+)y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) $match[1], I18N::number((float) $match[1])),
-            '/\b(\d+)m\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) $match[1], I18N::number((float) $match[1])),
-            '/\b(\d+)w\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) $match[1], I18N::number((float) $match[1])),
-            '/\b(\d+)d\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)Y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)M\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)W\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)D\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) $match[1], I18N::number((float) $match[1])),
         ], e($canonical));
     }
 }

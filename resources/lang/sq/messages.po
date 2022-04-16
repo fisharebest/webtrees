@@ -8409,7 +8409,7 @@ msgstr "Indonezia"
 
 # I18N: gedcom tag INFL
 #: app/Elements/AgeAtEvent.php:91
-msgid "Infant"
+msgid "infant"
 msgstr "Foshnje"
 
 #: app/Elements/RelationIsDescriptor.php:114
@@ -14498,7 +14498,7 @@ msgid "Status change date"
 msgstr "Statuti i datës së ndryshimit"
 
 #: app/Elements/AgeAtEvent.php:94
-msgid "Stillborn"
+msgid "stillborn"
 msgstr "Lindur i vdekur"
 
 # I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)

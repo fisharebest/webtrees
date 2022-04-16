@@ -2004,11 +2004,11 @@ msgid "Child"
 msgstr ""
 
 #: app/Elements/AgeAtEvent.php:91
-msgid "Infant"
+msgid "infant"
 msgstr ""
 
 #: app/Elements/AgeAtEvent.php:94
-msgid "Stillborn"
+msgid "stillborn"
 msgstr ""
 
 #: app/Elements/AgeAtEvent.php:100
