@@ -53,6 +53,13 @@ class RestrictionNotice extends AbstractElement
     public const RESTRICTION_CONFIDENTIAL = 'confidential';
     public const RESTRICTION_LOCKED       = 'locked';
 
+    // Store the locked value after the privacy value.
+    private const CANONICAL = [
+        self::RESTRICTION_LOCKED . ', ' . self::RESTRICTION_NONE         => self::RESTRICTION_NONE . ', ' . self::RESTRICTION_LOCKED,
+        self::RESTRICTION_LOCKED . ', ' . self::RESTRICTION_PRIVACY      => self::RESTRICTION_PRIVACY . ', ' . self::RESTRICTION_LOCKED,
+        self::RESTRICTION_LOCKED . ', ' . self::RESTRICTION_CONFIDENTIAL => self::RESTRICTION_CONFIDENTIAL . ', ' . self::RESTRICTION_LOCKED,
+    ];
+
     /**
      * Convert a value to a canonical form.
      *
@@ -62,7 +69,11 @@ class RestrictionNotice extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtolower(parent::canonical($value));
+        $value = strtolower(parent::canonical($value));
+        $value = trim($value, ', ');
+        $value = preg_replace('/[, ]+/', ', ', $value);
+
+        return self::CANONICAL[$value] ?? $value;
     }
 
     /**
