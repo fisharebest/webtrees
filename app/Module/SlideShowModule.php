@@ -268,7 +268,6 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface
         $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::TYPE_PHOTO), (string) Validator::parsedBody($request)->boolean(SourceMediaType::TYPE_PHOTO, false));
         $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::TYPE_TOMBSTONE), (string) Validator::parsedBody($request)->boolean(SourceMediaType::TYPE_TOMBSTONE, false));
         $this->setBlockSetting($block_id, 'filter_' . strtolower(SourceMediaType::TYPE_VIDEO), (string) Validator::parsedBody($request)->boolean(SourceMediaType::TYPE_VIDEO, false));
-
     }
 
     /**

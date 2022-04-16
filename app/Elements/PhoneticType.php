@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use function strtolower;
+use function strtoupper;
 
 /**
  * PHONETIC_TYPE := {Size=5:30}
@@ -43,13 +43,6 @@ class PhoneticType extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        $value = parent::canonical($value);
-        $lower = strtolower($value);
-
-        if ($lower === 'hangul' || $lower === 'kana') {
-            return $lower;
-        }
-
-        return $value;
+        return strtoupper(parent::canonical($value));
     }
 }
