@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use function preg_replace;
+use function strtoupper;
+use function trim;
+
 /**
  * PLACE_HIERARCHY := {Size=1:120}
  * This shows the jurisdictional entities that are named in a sequence from the
@@ -36,4 +40,19 @@ namespace Fisharebest\Webtrees\Elements;
 class PlaceHierarchy extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 120;
+
+    /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        $value = parent::canonical($value);
+        $value = preg_replace('/[, ]+/', ', ', $value);
+
+        return trim($value, ', ');
+    }
 }

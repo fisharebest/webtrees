@@ -53,11 +53,13 @@ class RestrictionNotice extends AbstractElement
     public const VALUE_CONFIDENTIAL = 'CONFIDENTIAL';
     public const VALUE_LOCKED       = 'LOCKED';
 
-    // Store the locked value after the privacy value.
     private const CANONICAL = [
+        // Store the locked value after the privacy value.
         self::VALUE_LOCKED . ', ' . self::VALUE_NONE         => self::VALUE_NONE . ', ' . self::VALUE_LOCKED,
         self::VALUE_LOCKED . ', ' . self::VALUE_PRIVACY      => self::VALUE_PRIVACY . ', ' . self::VALUE_LOCKED,
         self::VALUE_LOCKED . ', ' . self::VALUE_CONFIDENTIAL => self::VALUE_CONFIDENTIAL . ', ' . self::VALUE_LOCKED,
+        // Old versions of Legacy
+        'invisible'                                          => self::VALUE_PRIVACY,
     ];
 
     /**

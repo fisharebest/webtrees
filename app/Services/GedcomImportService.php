@@ -142,12 +142,9 @@ class GedcomImportService
                     // Append the "INT" text
                     $data = $date . $text;
                     break;
-                case 'FORM':
-                    // Consistent commas
-                    $data = preg_replace('/ *, */', ', ', $data);
-                    break;
                 case 'HEAD':
-                    // HEAD records don't have an XREF or DATA
+                case 'TRLR':
+                    // HEAD and TRLR records do not have an XREF or DATA
                     if ($level === '0') {
                         $xref = '';
                         $data = '';
@@ -169,24 +166,10 @@ class GedcomImportService
                             ($level + 2) . ' LONG ' . ($match[9] . round($match[6] + ($match[7] / 60) + ($match[8] / 3600), 4));
                     }
                     break;
-                case 'RESN':
-                    // RESN values are lower case (confidential, privacy, locked, none)
-                    $data = strtolower($data);
-                    if ($data === 'invisible') {
-                        $data = 'confidential'; // From old versions of Legacy.
-                    }
-                    break;
                 case 'SEX':
                     $data = strtoupper($data);
                     break;
-                case 'TRLR':
-                    // TRLR records don't have an XREF or DATA
-                    if ($level === '0') {
-                        $xref = '';
-                        $data = '';
-                    }
-                    break;
-            }
+             }
             // Suppress "Y", for facts/events with a DATE or PLAC
             if ($data === 'y') {
                 $data = 'Y';
