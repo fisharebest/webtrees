@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees;
 
 use Closure;
+use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Services\GedcomService;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
@@ -34,6 +35,7 @@ use function preg_match;
 use function preg_match_all;
 use function preg_replace;
 use function str_contains;
+use function str_ends_with;
 use function usort;
 
 use const PREG_SET_ORDER;
@@ -314,14 +316,17 @@ class Fact
     {
         $access_level = $access_level ?? Auth::accessLevel($this->record->tree());
 
-        // Does this record have an explicit RESN?
-        if (str_contains($this->gedcom, "\n2 RESN confidential")) {
+        // Does this record have an explicit restriction notice?
+        $restriction = $this->attribute('RESN');
+
+        if (str_ends_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
             return Auth::PRIV_NONE >= $access_level;
         }
-        if (str_contains($this->gedcom, "\n2 RESN privacy")) {
+
+        if (str_ends_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
             return Auth::PRIV_USER >= $access_level;
         }
-        if (str_contains($this->gedcom, "\n2 RESN none")) {
+        if (str_ends_with($restriction, RestrictionNotice::VALUE_NONE)) {
             return true;
         }
 
@@ -364,7 +369,7 @@ class Fact
         }
 
         // Members cannot edit RESN, CHAN and locked records
-        return Auth::isEditor($this->record->tree()) && !str_contains($this->gedcom, "\n2 RESN locked") && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
+        return Auth::isEditor($this->record->tree()) && !str_ends_with($this->attribute('RESN'), RestrictionNotice::VALUE_LOCKED) && $this->tag !== 'RESN' && $this->tag !== 'CHAN';
     }
 
     /**

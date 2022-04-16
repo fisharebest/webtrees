@@ -23,6 +23,7 @@ use Closure;
 use Exception;
 use Fisharebest\Webtrees\Contracts\TimestampInterface;
 use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\Elements\RestrictionNotice;
 use Fisharebest\Webtrees\Http\RequestHandlers\GedcomRecordPage;
 use Fisharebest\Webtrees\Services\PendingChangesService;
 use Illuminate\Database\Capsule\Manager as DB;
@@ -51,6 +52,7 @@ use function route;
 use function str_contains;
 use function str_ends_with;
 use function str_pad;
+use function str_starts_with;
 use function strtoupper;
 use function trim;
 use function view;
@@ -286,7 +288,10 @@ class GedcomRecord
             return true;
         }
 
-        return Auth::isEditor($this->tree) && !str_contains($this->gedcom, "\n1 RESN locked");
+        $fact   = $this->facts(['RESN'])->first();
+        $locked = $fact instanceof Fact && str_ends_with($fact->attribute('RESN'), RestrictionNotice::VALUE_LOCKED);
+
+        return Auth::isEditor($this->tree) && !$locked;
     }
 
     /**
@@ -1102,15 +1107,20 @@ class GedcomRecord
             return true;
         }
 
-        // Does this record have a RESN?
-        if (str_contains($this->gedcom, "\n1 RESN confidential")) {
-            return Auth::PRIV_NONE >= $access_level;
-        }
-        if (str_contains($this->gedcom, "\n1 RESN privacy")) {
-            return Auth::PRIV_USER >= $access_level;
-        }
-        if (str_contains($this->gedcom, "\n1 RESN none")) {
-            return true;
+        // Does this record have a restriction notice?
+        if (preg_match('/\n1 RESN (.+)/', $this->gedcom(), $match)) {
+            $element     = new RestrictionNotice('');
+            $restriction = $element->canonical($match[1]);
+
+            if (str_starts_with($restriction, RestrictionNotice::VALUE_CONFIDENTIAL)) {
+                return Auth::PRIV_NONE >= $access_level;
+            }
+            if (str_starts_with($restriction, RestrictionNotice::VALUE_PRIVACY)) {
+                return Auth::PRIV_USER >= $access_level;
+            }
+            if (str_starts_with($restriction, RestrictionNotice::VALUE_NONE)) {
+                return true;
+            }
         }
 
         // Does this record have a default RESN?
