@@ -161,6 +161,7 @@ class CheckTree implements RequestHandlerInterface
 
         $errors   = [];
         $warnings = [];
+        $infos    = [];
 
         $element_factory = new ElementFactory();
         $this->gedcom->registerTags($element_factory, false);
@@ -281,10 +282,10 @@ class CheckTree implements RequestHandlerInterface
                         $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     }
                 } elseif ($element->canonical($value) !== $value) {
-                    $expected   = e($element->canonical($value));
-                    $actual     = strtr(e($value), ["\t" => '&rarr;']);
-                    $message    = I18N::translate('“%1$s” should be “%2$s”.', $actual, $expected);
-                    $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    $expected = e($element->canonical($value));
+                    $actual   = strtr(e($value), ["\t" => '&rarr;']);
+                    $message  = I18N::translate('“%1$s” should be “%2$s”.', $actual, $expected);
+                    $infos[]  = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                 } elseif ($element instanceof MultimediaFormat) {
                     $mime = Mime::TYPES[$value] ?? Mime::DEFAULT_TYPE;
 
@@ -320,6 +321,7 @@ class CheckTree implements RequestHandlerInterface
 
         return $this->viewResponse('admin/trees-check', [
             'errors'   => $errors,
+            'infos'    => $infos,
             'more_url' => $more_url,
             'title'    => $title,
             'tree'     => $tree,
