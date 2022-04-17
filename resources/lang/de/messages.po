@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-14 22:15+0000\n"
-"Last-Translator: Markus Hemprich <hemprich@gmx.de>\n"
+"PO-Revision-Date: 2022-04-18 05:29+0000\n"
+"Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -690,7 +690,11 @@ msgstr "Ein Diagramm der Lebenszeit einer Person."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Ein Kind kann in mehreren Elternbeziehungen stehen. Diese Beziehung kann sowohl biologisch, rechtlich, oder aber in der lokalen Kultur und Tradition begründet sein. Sofern keine gesonderte Verwandtschaft angegeben ist, wird eine biologische Elternschaft angenommen."
+msgstr ""
+"Ein Kind kann mehr als ein Elternpaar haben. Die Beziehung zwischen dem Kind "
+"und den Eltern kann biologisch, rechtlich oder aufgrund der örtlichen Kultur "
+"und Tradition sein. Wenn keine Abstammung angegeben ist, wird eine "
+"biologische Beziehung angenommen."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:70
@@ -2225,36 +2229,36 @@ msgstr "Atlanta, Georgia, Vereinigte Staaten"
 #: app/Elements/RelationIsDescriptor.php:94
 #: app/GedcomCode/GedcomCodeRela.php:96
 msgid "Attendant"
-msgstr "Anwesender"
+msgstr "Beteiligter"
 
 #: app/Elements/RelationIsDescriptor.php:73
 #: app/GedcomCode/GedcomCodeRela.php:93
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Anwesende"
+msgstr "Beteiligte"
 
 #: app/Elements/RelationIsDescriptor.php:52
 #: app/GedcomCode/GedcomCodeRela.php:89
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Anwesender"
+msgstr "Beteiligter"
 
 #: app/Elements/RelationIsDescriptor.php:95
 #: app/GedcomCode/GedcomCodeRela.php:107
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Anwesender"
 
 #: app/Elements/RelationIsDescriptor.php:74
 #: app/GedcomCode/GedcomCodeRela.php:104
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Anwesende"
 
 #: app/Elements/RelationIsDescriptor.php:53
 #: app/GedcomCode/GedcomCodeRela.php:100
 msgctxt "MALE"
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Anwesender"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Factories/ElementFactory.php:438
@@ -11016,7 +11020,7 @@ msgstr "Payson, Utah, Vereinigte Staaten"
 #: resources/xml/reports/pedigree_report.xml:3
 #: resources/xml/reports/pedigree_report.xml:48
 msgid "Pedigree"
-msgstr "Vorfahrentafel"
+msgstr "Abstammung"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
