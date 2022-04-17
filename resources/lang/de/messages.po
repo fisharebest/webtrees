@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-14 22:15+0000\nLast-Translator: Markus Hemprich <hemprich@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-03 14:32+0100\nPO-Revision-Date: 2022-04-20 12:22+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -674,7 +674,7 @@ msgstr "Ein Diagramm der Lebenszeit einer Person."
 
 #: resources/views/edit/link-child-to-family.phtml:39
 msgid "A child may have more than one set of parents. The relationship between the child and the parents can be biological, legal, or based on local culture and tradition. If no pedigree is specified, then a biological relationship will be assumed."
-msgstr "Ein Kind kann in mehreren Elternbeziehungen stehen. Diese Beziehung kann sowohl biologisch, rechtlich, oder aber in der lokalen Kultur und Tradition begründet sein. Sofern keine gesonderte Verwandtschaft angegeben ist, wird eine biologische Elternschaft angenommen."
+msgstr "Ein Kind kann mehr als ein Elternpaar haben. Die Beziehung zwischen dem Kind und den Eltern kann biologisch, rechtlich oder aufgrund der örtlichen Kultur und Tradition sein. Wenn keine Abstammung angegeben ist, wird eine biologische Beziehung angenommen."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixDuplicateLinks.php:69
@@ -2145,31 +2145,31 @@ msgstr "Atlanta, Georgia, Vereinigte Staaten"
 
 #: app/Elements/RelationIsDescriptor.php:94
 msgid "Attendant"
-msgstr "Anwesender"
+msgstr "Beteiligter"
 
 #: app/Elements/RelationIsDescriptor.php:73
 msgctxt "FEMALE"
 msgid "Attendant"
-msgstr "Anwesende"
+msgstr "Beteiligte"
 
 #: app/Elements/RelationIsDescriptor.php:52
 msgctxt "MALE"
 msgid "Attendant"
-msgstr "Anwesender"
+msgstr "Beteiligter"
 
 #: app/Elements/RelationIsDescriptor.php:95
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Anwesender"
 
 #: app/Elements/RelationIsDescriptor.php:74
 msgctxt "FEMALE"
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Anwesende"
 
 #: app/Elements/RelationIsDescriptor.php:53
 msgctxt "MALE"
 msgid "Attending"
-msgstr "anwesend"
+msgstr "Anwesender"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:60 app/Gedcom.php:1408
@@ -10757,7 +10757,7 @@ msgstr "Payson, Utah, Vereinigte Staaten"
 #: resources/xml/reports/pedigree_report.xml:3
 #: resources/xml/reports/pedigree_report.xml:48
 msgid "Pedigree"
-msgstr "Vorfahrentafel"
+msgstr "Abstammung"
 
 #: resources/xml/reports/pedigree_report.xml:750
 msgid "Pedigree chart"
