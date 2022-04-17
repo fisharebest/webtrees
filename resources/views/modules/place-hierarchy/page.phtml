@@ -1,5 +1,6 @@
 <?php
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
@@ -15,14 +16,14 @@ use Fisharebest\Webtrees\View;
 
 <div id="place-hierarchy">
   <h4><?= $title ?></h4>
-  <h5 class="breadcrumbs text-center"><?= $breadcrumbs ?></h5>
+  <h5 class="breadcrumbs text-center"><?= $breadcrumbs ?? '&nbsp' ?></h5>
 
   <div class="row wt-place-hierarchy-content">
     <?= $content ?>
   </div>
 
   <div class="invisible place_link text-center my-2">
-    <a role="button" class="" data-type="events"></a>
+    <a role="button" class=""></a>
     <div>
       <span role="alert" class="alert alert-warning px-2 py-0">
         <?= I18N::translate('Places with a large number of events may take a long time to load.') ?>
@@ -40,19 +41,20 @@ use Fisharebest\Webtrees\View;
   const wt_place_list = (function () {
     const use_map = <?= json_encode($use_map, JSON_THROW_ON_ERROR) ?>;
     const place_summary = <?= json_encode($place_summary, JSON_THROW_ON_ERROR) ?>;
-    const target = document.querySelector('.text-content');
+    const events_target = document.querySelector('.text-content');
+    const body_target = document.querySelector('.wt-place-hierarchy-content');
 
     /**
      * @private
      *
      * @param {boolean} showloading
      */
-    const _clearText = function (showloading) {
-      target.innerHTML = '';
+    const _clearText = (showloading) => {
+      events_target.innerHTML = '';
       if (showloading) {
-        target.classList.add('wt-ajax-load');
+        events_target.classList.add('wt-ajax-load');
       } else {
-        target.classList.remove('wt-ajax-load');
+        events_target.classList.remove('wt-ajax-load');
       }
     }
 
@@ -61,7 +63,7 @@ use Fisharebest\Webtrees\View;
      *
      * @param {object} data
      */
-    const _updateLinks = function (data) {
+    const _updateLinks = (data) => {
       document.querySelector('.breadcrumbs').innerHTML = data.breadcrumbs;
       const link = document.querySelector('.place_link');
       if (data.place_summary.id === 0) {
@@ -83,30 +85,47 @@ use Fisharebest\Webtrees\View;
      * @param {boolean}  clear
      * @param {function} callback
      */
-    const _getData = function (type, id, clear, callback) {
+    const _getData = (type, id, clear, callback) => {
       _clearText(clear);
 
-      let formData = new FormData();
+      const formData = new FormData();
 
       formData.append('_csrf', document.querySelector('meta[name=csrf]').content);
-      formData.append('placeId', id);
+      formData.append('placeId', id || place_summary.id);
       formData.append('type', type);
       fetch(<?= json_encode(route('module', ['module' => 'places_list', 'action' => 'updateData', 'tree' => $tree->name()]), JSON_THROW_ON_ERROR) ?>, {
           credentials: 'same-origin',
           body: formData,
           method: 'POST',
         })
-        .then(response => response.text())
-        .then(callback);
+        .then((response) => {
+          if (response.status === <?= json_encode(StatusCodeInterface::STATUS_OK) ?>) {
+            return response.text();
+          } else {
+            throw response;
+          }
+        })
+        .then(callback)
+        .catch(error => {
+          error.text()
+          .then(errorMessage => alert(errorMessage));
+        });
+    }
+
+    const _getTabularData = (id) => {
+      _getData('hierarchy', id, false, function (text) {
+        const result = JSON.parse(text);
+        body_target.innerHTML = result.data;
+        _updateLinks(result);
+      });
     }
 
     // Request for events table
     document.querySelector('.place_link').addEventListener('click', (evt) => {
       evt.stopPropagation();
-      const source = evt.target.closest('a').dataset;
-      _getData(source.type, source.place_id, true, function (text) {
+      _getData('events', evt.target.closest('a').dataset.place_id, true, function (text) {
         const result = JSON.parse(text);
-        target.innerHTML = result.data;
+        events_target.innerHTML = result.data;
       });
     });
 
@@ -119,30 +138,15 @@ use Fisharebest\Webtrees\View;
           _updateLinks(result);
         });
       });
-    }
 
-    // act on hierarchy of places table
-    const selector = document.querySelector('.list_table');
-    if (selector instanceof Element) {
-      const dest = document.querySelector('.wt-place-hierarchy-content');
-      dest.addEventListener('click', (evt) => {
-        const source = evt.target.closest('a').dataset;
-        _getData(source.type, source.place_id, false, function (text) {
-          const result = JSON.parse(text);
-          dest.innerHTML = result.data;
-          _updateLinks(result);
-        });
+      // Get tabular data
+      body_target.addEventListener('click', (evt) => {
+        _getTabularData(evt.target.closest('a').dataset.place_id);
       });
-    }
 
-    // Called with url containing a place id
-    if (place_summary.id > 0) {
-      _updateLinks({
-        'breadcrumbs': <?= json_encode($breadcrumbs, JSON_THROW_ON_ERROR) ?>,
-        'place_summary': place_summary,
-      });
-      document.querySelector('.place_link a').click();
-    }
+      // load initial data
+      _getTabularData(null);
+  }
 
     return {
       updateLinks: _updateLinks,

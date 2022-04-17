@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Http\Exceptions\HttpNotFoundException;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -184,47 +184,24 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
 
         Auth::checkComponentAccess($this, ModuleListInterface::class, $tree, $user);
 
-        $place_id = Validator::queryParams($request)->integer('place_id', 0);
-        $place    = Place::find($place_id, $tree);
-
-        // Request for a non-existent place?
-        if ($place_id !== $place->id()) {
-            throw new HttpNotFoundException(I18N::translate('The place with ID %s does not exist', (string) $place_id));
-        }
-
+        $place_id      = Validator::queryParams($request)->integer('place_id', 0);
         $map_providers = $this->module_service->findByInterface(ModuleMapProviderInterface::class);
         $use_map       = $map_providers->isNotEmpty();
+        $content       = '';
 
         if ($use_map) {
             $content = view('modules/place-hierarchy/map', [
                 'leaflet_config' => $this->leaflet_js_service->config(),
-                'start_place_id' => $place_id,
             ]);
-        } else {
-            $content = view('modules/place-hierarchy/hierarchy', $this->getHierarchy($place));
         }
 
         return $this->viewResponse('modules/place-hierarchy/page', [
-            'breadcrumbs'   => $this->breadcrumbs($place),
             'content'       => $content,
             'title'         => I18N::translate('Place hierarchy'),
             'tree'          => $tree,
             'use_map'       => $use_map,
-            'place_summary' => $this->placeSummary($place),
+            'place_summary' => ['id' => $place_id, 'link' => ''],
         ]);
-    }
-
-    /**
-     * @param Place $place
-     *
-     * @return array<mixed>
-     */
-    private function placeSummary($place): array
-    {
-        return [
-            'id'   => $place->id(),
-            'link' =>  I18N::translate('View table of events occurring in %s', $place->fullName()),
-        ];
     }
 
     /**
@@ -355,6 +332,10 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         $type     = Validator::parsedBody($request)->string('type', '');
         $place    = Place::find($place_id, $tree);
 
+        // Request for a non-existent place?
+        if ($place_id > 0 && $place->fullName() === '') {
+            return response(I18N::translate('ERROR: the selected place cannot be found'), StatusCodeInterface::STATUS_NOT_FOUND);
+        }
         switch ($type) {
             case 'map':
                 $data = $this->mapData($place);
@@ -373,7 +354,10 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         return response([
             'data'          => $data,
             'breadcrumbs'   => $this->breadcrumbs($place),
-            'place_summary' => $this->placeSummary($place),
+            'place_summary' => [
+                'id'   => $place->id(),
+                'link' =>  I18N::translate('View table of events occurring in %s', $place->fullName()),
+            ],
         ]);
     }
 

@@ -4,7 +4,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\View;
 
 /**
- * @var integer $startPlaceId
  * @var object  $leaflet_config
  */
 
@@ -19,13 +18,6 @@ use Fisharebest\Webtrees\View;
 
   (function () {
     const config = <?= json_encode($leaflet_config, JSON_THROW_ON_ERROR) ?>;
-    const startPlaceId = <?= json_encode($start_place_id, JSON_THROW_ON_ERROR) ?>;
-    const dummyData = {
-      breadcrumbs: '<?= I18N::translate('Updating map&hellip;') ?>',
-      place_summary: {
-        id: 0,
-      }
-    };
 
     let map = null;
     const sidebar = document.querySelector('.wt-place-hierarchy-sidebar');
@@ -43,7 +35,7 @@ use Fisharebest\Webtrees\View;
      * Passed to resetControl to
      * perform necessary reset actions on map
      */
-    const resetCallback = function () {
+    const resetCallback = () => {
       map.flyToBounds(markers.getBounds(), {
         padding: [50, 30],
         maxZoom: 15
@@ -54,7 +46,7 @@ use Fisharebest\Webtrees\View;
     /**
      * @private
      */
-    const _drawMap = function () {
+    const _drawMap = () => {
       map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback);
       map.fitWorld({
         padding: [50, 30]
@@ -66,7 +58,7 @@ use Fisharebest\Webtrees\View;
      *
      * @param {object} data
      */
-    const _buildMapData = function (data) {
+    const _buildMapData = (data) => {
       markers = L.markerClusterGroup({
         showCoverageOnHover: false,
       });
@@ -118,10 +110,15 @@ use Fisharebest\Webtrees\View;
      *
      * @param {integer} id
      */
-    const _getMapData = function (id) {
+    const _getMapData = (id) => {
       const markersLoaded = map.hasLayer(markers);
       if (markersLoaded) {
-        wt_place_list.updateLinks(dummyData);
+        wt_place_list.updateLinks({
+          breadcrumbs: <?= json_encode(I18N::translate('Updating map&hellip;')) ?>,
+          place_summary: {
+            id: 0,
+          }
+        });
       }
       wt_place_list.getData('map', id, false, function (text) {
         map.once('zoomend', () => {
@@ -138,7 +135,7 @@ use Fisharebest\Webtrees\View;
       });
     };
 
-    window.onload = function () {
+    window.onload = () => {
       document.getElementById('place-hierarchy').addEventListener('click', (evt) => {
         if (evt.target.closest('a') && evt.target.closest('a').hasAttribute('href')) {
           //do nothing - go to the href value
@@ -165,7 +162,7 @@ use Fisharebest\Webtrees\View;
         }
       });
       _drawMap();
-      _getMapData(startPlaceId);
+      _getMapData(null);
     };
   })();
 </script>
