@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\Place;
             <ul class="col wt-page-options-value me-1 list-unstyled">
                 <?php foreach ($column as $item) : ?>
                     <li>
-                        <a role="button" class="" data-place_id="<?= $item->id() ?>"><?= $item->placeName() ?></a>
+                        <a role="button" class="" data-id="<?= $item->id() ?>"><?= $item->placeName() ?></a>
                     </li>
                 <?php endforeach ?>
             </ul>

@@ -70,7 +70,7 @@ use Fisharebest\Webtrees\View;
         link.classList.add('invisible');
       } else {
         const target = link.querySelector('a');
-        target.dataset.place_id = data.place_summary.id;
+        target.dataset.id = data.place_summary.id;
         target.innerHTML = data.place_summary.link;
         link.classList.remove('invisible');
       }
@@ -123,7 +123,7 @@ use Fisharebest\Webtrees\View;
     // Request for events table
     document.querySelector('.place_link').addEventListener('click', (evt) => {
       evt.stopPropagation();
-      _getData('events', evt.target.closest('a').dataset.place_id, true, function (text) {
+      _getData('events', evt.target.closest('a').dataset.id, true, function (text) {
         const result = JSON.parse(text);
         events_target.innerHTML = result.data;
       });
@@ -132,21 +132,17 @@ use Fisharebest\Webtrees\View;
     if (!use_map) {
       // act on breadcrumb click
       document.querySelector('.breadcrumbs').addEventListener('click', (evt) => {
-        _getData('hierarchy', evt.target.closest('a').dataset.id, false, function (text) {
-          const result = JSON.parse(text);
-          document.querySelector('.wt-place-hierarchy-content').innerHTML = result.data;
-          _updateLinks(result);
-        });
+        _getTabularData(evt.target.closest('a').dataset.id);
       });
 
       // Get tabular data
       body_target.addEventListener('click', (evt) => {
-        _getTabularData(evt.target.closest('a').dataset.place_id);
+        _getTabularData(evt.target.closest('a').dataset.id);
       });
 
       // load initial data
       _getTabularData(null);
-  }
+    }
 
     return {
       updateLinks: _updateLinks,

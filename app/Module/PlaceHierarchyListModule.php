@@ -333,7 +333,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         $place    = Place::find($place_id, $tree);
 
         // Request for a non-existent place?
-        if ($place_id > 0 && $place->fullName() === '') {
+        if ($place_id > 0 && $place->gedcomName() === '') {
             return response(I18N::translate('ERROR: the selected place cannot be found'), StatusCodeInterface::STATUS_NOT_FOUND);
         }
         switch ($type) {
