@@ -226,16 +226,9 @@ table#tvTreeBorder td,
     max-width: 80px;
     width: auto;
 }
-[dir=rtl] #tv_tree div.tv_box img {
-    float: right;
-}
 #tv_tree div.tv_box .icon-silhouette {
     float: left;
 }
-[dir=rtl] #tv_tree div.tv_box .icon-silhouette {
-    float: right;
-}
-
 #tv_tree div.tv_box div.tv_person_expanded a {
     font-weight: bold;
 }

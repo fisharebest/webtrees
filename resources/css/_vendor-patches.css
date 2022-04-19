@@ -30,6 +30,7 @@
 }
 
 /* Allow font-awesome icon lists to work on RTL pages */
+/* rtl:ignore */
 [dir=rtl] .fa-li {
     right: -2rem;
 }
@@ -40,6 +41,7 @@
 }
 
 /* Bootstrap carousel icons should mirror on RTL  pages */
+/* rtl:ignore */
 [dir=rtl] .carousel-control-next-icon,
 [dir=rtl] .carousel-control-prev-icon  {
     transform: scale(-1, 1);

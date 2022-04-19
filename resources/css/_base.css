@@ -32,6 +32,7 @@
 @import "_tab-relatives.css";
 
 /* Some icons need to be reversed on right-to-left pages */
+/* rtl:ignore */
 [dir=rtl] .wt-icon-flip-rtl
 {
     transform: scale(-1, 1);
