@@ -901,12 +901,6 @@ div.faq_body {
     left: 0;
 }
 
-/*-- Relationship ---- */
-.wt-relationship-chart .hline-text,
-.wt-relationship-chart .vline-text {
-    font-size: 12px;
-}
-
 /*
  * Any element that is loaded dynamically has the class wt-ajax-load.
  * We can provide a "loading" placeholder for empty elements with this class.
