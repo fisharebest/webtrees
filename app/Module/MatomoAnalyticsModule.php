@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 
+use function str_ends_with;
+
 /**
  * Class MatomoAnalyticsModule - add support for Matomo analytics.
  */
@@ -79,9 +81,17 @@ class MatomoAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
      */
     public function analyticsParameters(): array
     {
+        $matomo_site_id = $this->getPreference('MATOMO_SITE_ID');
+        $matomo_url     = $this->getPreference('MATOMO_URL');
+
+        // Reports on the webtrees forum say that a trailing slash is required.
+        if (!str_ends_with($matomo_url, '/')) {
+            $matomo_url .= '/';
+        }
+
         return [
-            'MATOMO_SITE_ID' => $this->getPreference('MATOMO_SITE_ID'),
-            'MATOMO_URL'     => $this->getPreference('MATOMO_URL'),
+            'MATOMO_SITE_ID' => $matomo_site_id,
+            'MATOMO_URL'     => $matomo_url,
         ];
     }
 
