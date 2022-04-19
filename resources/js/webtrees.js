@@ -757,17 +757,21 @@
   webtrees.initializeIFSRO = function(select, container) {
     select.addEventListener('change', function () {
       // Show only the selected selector.
-      console.log(select.value);
       container.querySelectorAll('.select-record').forEach(element => element.classList.add('d-none'));
       container.querySelectorAll('.select-' + select.value).forEach(element => element.classList.remove('d-none'));
+
       // Enable only the selected selector (so that disabled ones do not get submitted).
       container.querySelectorAll('.select-record select').forEach(element => {
         element.disabled = true;
-        element.tomselect.disable();
+        if (element.matches('.tom-select')) {
+          element.tomselect.disable();
+        }
       });
       container.querySelectorAll('.select-' + select.value + ' select').forEach(element => {
         element.disabled = false;
-        element.tomselect.enable();
+        if (element.matches('.tom-select')) {
+          element.tomselect.enable();
+        }
       });
     });
   }

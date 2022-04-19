@@ -160,7 +160,7 @@ use Fisharebest\Webtrees\View;
 
     <script id="new-resn-template" type="text/html">
         <tr>
-            <td>
+            <td class="w-50">
                 <select class="form-control record-type-selector mb-3">
                     <option value="all"><?= I18N::translate('All records') ?></option>
                     <option value="individual"><?= I18N::translate('Individual') ?></option>
@@ -172,31 +172,35 @@ use Fisharebest\Webtrees\View;
                 </select>
 
                 <div class="select-record select-all">
-                    <input type="hidden" name="xref[]">
+                    <div class="d-none">
+                        <select name="xref[] required="required">
+                            <option selected="selected"></option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="select-record select-individual d-none">
-                    <?= view('components/select-individual', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-individual', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true, 'required' => true]) ?>
                 </div>
 
                 <div class="select-record select-family d-none">
-                    <?= view('components/select-family', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-family', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true, 'required' => true]) ?>
                 </div>
 
                 <div class="select-record select-source d-none">
-                    <?= view('components/select-source', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-source', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true, 'required' => true]) ?>
                 </div>
 
                 <div class="select-record select-repository d-none">
-                    <?= view('components/select-repository', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-repository', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true, 'required' => true]) ?>
                 </div>
 
                 <div class="select-record select-note d-none">
-                    <?= view('components/select-note', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-note', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true, 'required' => true]) ?>
                 </div>
 
                 <div class="select-record select-media d-none">
-                    <?= view('components/select-media', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true]) ?>
+                    <?= view('components/select-media', ['name' => 'xref[]', 'id' => '', 'tree' => $tree, 'disabled' => true, 'required' => true]) ?>
                 </div>
             </td>
 
@@ -219,7 +223,7 @@ use Fisharebest\Webtrees\View;
         </caption>
         <thead>
             <tr>
-                <th>
+                <th class="w-50">
                     <?= I18N::translate('Record') ?>
                 </th>
                 <th>
@@ -376,17 +380,10 @@ use Fisharebest\Webtrees\View;
   $('#add-resn').on('click', function () {
     $('#default-resn tbody').prepend($('#new-resn-template').html());
 
-    document.querySelectorAll('#default-resn tbody tr select.tom-select')
+    document.querySelectorAll('#default-resn tbody tr:first-child select.tom-select')
       .forEach(element => webtrees.initializeTomSelect(element));
 
-
-//      .on('select2:unselect', function (evt) {
-//        $(evt.delegateTarget).append('<option value="" selected="selected"></option>');
-//      });
-
-
     let row = document.getElementById('default-resn').querySelector('tbody tr');
-    console.log(row.querySelector('select'));
     webtrees.initializeIFSRO(row.querySelector('select'), row);
   });
 </script>
