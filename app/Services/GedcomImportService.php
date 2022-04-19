@@ -169,7 +169,7 @@ class GedcomImportService
                 case 'SEX':
                     $data = strtoupper($data);
                     break;
-             }
+            }
             // Suppress "Y", for facts/events with a DATE or PLAC
             if ($data === 'y') {
                 $data = 'Y';

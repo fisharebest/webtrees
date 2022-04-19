@@ -51,6 +51,11 @@ parameters:
 			path: app/Elements/PafUid.php
 
 		-
+			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Elements/PlaceHierarchy.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Elements\\\\RestrictionNotice\\:\\:canonical\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
 			path: app/Elements/RestrictionNotice.php
