@@ -43,7 +43,6 @@
         "ext-session": "*",
         "ext-simplexml": "*",
         "ext-xml": "*",
-        "ext-zip": "*",
         "aura/router": "3.2.0",
         "doctrine/dbal": "3.3.5",
         "ezyang/htmlpurifier": "4.14.0",
@@ -96,6 +95,7 @@
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
         "ext-pdo_pgsql": "Required to use PostgreSQL for database storage",
         "ext-pdo_sqlsvr": "Required to use SQL Server for database storage",
+        "ext-zip": "Required to compress downloads and use the upgrade wizard",
         "ext-zlib": "Required to compress HTTP responses"
     },
     "scripts": {
