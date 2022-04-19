@@ -181,7 +181,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
      */
     protected function locationsToFix(Tree $tree, array $params): ?Collection
     {
-        if ($params['type'] !== Note::RECORD_TYPE || $params['search'] === '') {
+        if ($params['type'] !== Location::RECORD_TYPE || $params['search'] === '') {
             return null;
         }
 
