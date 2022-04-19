@@ -21,12 +21,16 @@ use Fisharebest\Webtrees\Tree;
     <?= csrf_field() ?>
 
     <?php foreach ($facts ?? [] as $prefix => $prefix_facts) : ?>
-        <?php foreach ($prefix_facts as $fact) : ?>
+        <?php foreach ($prefix_facts as $n => $fact) : ?>
             <div class="card mb-2">
                 <div class="card-header">
+                    <button class="btn btn-small btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#fact-<?= $prefix ?>-<?= $n ?>" aria-expanded="true" aria-controls="fact-<?= $prefix ?>-<?= $n ?>">
+                        <?= view('icons/expand') ?>
+                        <?= view('icons/collapse') ?>
+                    </button>
                     <?= $fact->label() ?>
                 </div>
-                <div class="card-body pb-1">
+                <div class="card-body pb-1 collapse show" id="fact-<?= $prefix ?>-<?= $n ?>">
                     <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom_edit_service->insertMissingFactSubtags($fact, false), 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => $prefix]) ?>
                 </div>
             </div>
