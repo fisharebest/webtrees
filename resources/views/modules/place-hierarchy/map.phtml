@@ -38,7 +38,8 @@ use Fisharebest\Webtrees\View;
     const resetCallback = () => {
       map.flyToBounds(markers.getBounds(), {
         padding: [50, 30],
-        maxZoom: 15
+        maxZoom: 15,
+        duration: 0.55,
       });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
     }
@@ -49,7 +50,7 @@ use Fisharebest\Webtrees\View;
     const _drawMap = () => {
       map = webtrees.buildLeafletJsMap('wt-map', config, resetCallback);
       map.fitWorld({
-        padding: [50, 30]
+        padding: [50, 30],
       });
     };
 
@@ -100,7 +101,8 @@ use Fisharebest\Webtrees\View;
 
       map.flyToBounds(markers.getBounds(), {
         padding: [50, 30],
-        maxZoom: 15
+        maxZoom: 15,
+        duration: 0.55,
       });
       sidebar.innerHTML = data.sidebar;
     };
@@ -111,15 +113,13 @@ use Fisharebest\Webtrees\View;
      * @param {integer} id
      */
     const _getMapData = (id) => {
-      const markersLoaded = map.hasLayer(markers);
-      if (markersLoaded) {
-        wt_place_list.updateLinks({
-          breadcrumbs: <?= json_encode(I18N::translate('Updating map&hellip;')) ?>,
-          place_summary: {
-            id: 0,
-          }
-        });
-      }
+      wt_place_list.updateLinks({
+        breadcrumbs: <?= json_encode(I18N::translate('Updating map&hellip;')) ?>,
+        place_summary: {
+          id: 0,
+        }
+      });
+
       wt_place_list.getData('map', id, false, function (text) {
         map.once('zoomend', () => {
           // Update the breadcrumbs and the link below the map
@@ -127,7 +127,7 @@ use Fisharebest\Webtrees\View;
         });
         const result = JSON.parse(text);
         // Update the map
-        if (markersLoaded) {
+        if (map.hasLayer(markers)) {
           map.removeLayer(markers);
           markers.clearLayers();
         }
