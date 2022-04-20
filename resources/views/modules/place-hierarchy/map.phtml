@@ -9,7 +9,7 @@ use Fisharebest\Webtrees\View;
 
 ?>
 
-<div id="wt-map" class="col-sm-9 wt-ajax-load wt-map wt-place-hierarchy-map" dir="ltr"></div>
+<div id="wt-map" class="col-sm-9 wt-map wt-place-hierarchy-map" dir="ltr"></div>
 <ul class="col-sm-3 wt-place-hierarchy-sidebar wt-page-options-value list-unstyled px-1"></ul>
 
 <?php View::push('javascript') ?>
@@ -39,7 +39,6 @@ use Fisharebest\Webtrees\View;
       map.flyToBounds(markers.getBounds(), {
         padding: [50, 30],
         maxZoom: 15,
-        duration: 0.55,
       });
       sidebar.firstElementChild.scrollIntoView(scrollOptions);
     }
@@ -60,9 +59,15 @@ use Fisharebest\Webtrees\View;
      * @param {object} data
      */
     const _buildMapData = (data) => {
-      markers = L.markerClusterGroup({
-        showCoverageOnHover: false,
-      });
+      if (map.hasLayer(markers)) {
+        // Update the map
+        map.removeLayer(markers);
+        markers.clearLayers();
+      } else {
+        markers = L.markerClusterGroup({
+          showCoverageOnHover: false,
+        });
+      }
 
       let geoJsonLayer = L.geoJson(data.markers, {
         pointToLayer: function (feature, latlng) {
@@ -94,15 +99,11 @@ use Fisharebest\Webtrees\View;
         },
       });
 
-      if (data.markers.features.length > 0) {
-        markers.addLayer(geoJsonLayer);
-        map.addLayer(markers);
-      }
-
+      markers.addLayer(geoJsonLayer);
+      map.addLayer(markers);
       map.flyToBounds(markers.getBounds(), {
         padding: [50, 30],
         maxZoom: 15,
-        duration: 0.55,
       });
       sidebar.innerHTML = data.sidebar;
     };
@@ -114,7 +115,7 @@ use Fisharebest\Webtrees\View;
      */
     const _getMapData = (id) => {
       wt_place_list.updateLinks({
-        breadcrumbs: <?= json_encode(I18N::translate('Updating map&hellip;')) ?>,
+        breadcrumbs: '',
         place_summary: {
           id: 0,
         }
@@ -126,11 +127,6 @@ use Fisharebest\Webtrees\View;
           wt_place_list.updateLinks(result);
         });
         const result = JSON.parse(text);
-        // Update the map
-        if (map.hasLayer(markers)) {
-          map.removeLayer(markers);
-          markers.clearLayers();
-        }
         _buildMapData(result.data);
       });
     };

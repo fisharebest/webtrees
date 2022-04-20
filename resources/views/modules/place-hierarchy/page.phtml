@@ -6,17 +6,19 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
 /**
- * @var string $breadcrumbs
- * @var string $content
- * @var string $title
- * @var Tree   $tree
+ * @var string  $breadcrumbs
+ * @var string  $content
+ * @var string  $title
+ * @var Tree    $tree
+ * @var boolean $use_map
+ * @var array   $place_summary
  */
 
 ?>
 
 <div id="place-hierarchy">
   <h4><?= $title ?></h4>
-  <h5 class="breadcrumbs text-center"><?= $breadcrumbs ?? '&nbsp' ?></h5>
+  <h5 class="breadcrumbs text-center wt-ajax-load"><?= $breadcrumbs ?? '' ?></h5>
 
   <div class="row wt-place-hierarchy-content">
     <?= $content ?>
@@ -29,9 +31,8 @@ use Fisharebest\Webtrees\View;
         <?= I18N::translate('Places with a large number of events may take a long time to load.') ?>
       </span>
     </div>
+    <div class="row text-content wt-ajax-load"></div>
   </div>
-
-  <div class="row text-content"></div>
 </div>
 
 <?php View::push('javascript') ?>
@@ -50,11 +51,11 @@ use Fisharebest\Webtrees\View;
      * @param {boolean} showloading
      */
     const _clearText = (showloading) => {
-      events_target.innerHTML = '';
       if (showloading) {
-        events_target.classList.add('wt-ajax-load');
+        events_target.innerHTML = '';
       } else {
-        events_target.classList.remove('wt-ajax-load');
+        // hide ajax loading spinner
+        events_target.innerHTML = '&nbsp;';
       }
     }
 
