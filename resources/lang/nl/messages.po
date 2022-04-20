@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:45+0100\n"
-"PO-Revision-Date: 2022-04-14 22:15+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -311,7 +295,7 @@ msgstr[1] "%s notities zijn bijgewerkt."
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s komt te vaak voor."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -530,7 +514,7 @@ msgstr "(gefilterd uit %s vermeldingen)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(inclusief mediabestanden)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1444,7 +1428,7 @@ msgstr "Voeg stijl (CSS) en scripts (JS) toe aan elke pagina."
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:197
 msgid "Add to TITLE header tag"
-msgstr "Voeg toe aan TITLE header tag"
+msgstr "Voeg toe aan TITEL-koptekstlabel"
 
 #: app/Module/ClippingsCartModule.php:188
 #: resources/views/modules/clippings/add-options.phtml:22
@@ -1510,7 +1494,7 @@ msgstr "Adelaide, Australië"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "Administratief ID"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1934,7 +1918,7 @@ msgstr "Voorouderlijk PID"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com bron-identificatienummer"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1998,11 +1982,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "Programma-ID"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "Programmanaam"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3692,7 +3676,7 @@ msgstr "Besnijder"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "Besnijdenis"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4141,13 +4125,13 @@ msgstr "Stamboom aanmaken, bijwerken of verwijderen voor elk GEDCOM-bestand in d
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "Gemaakt op"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
 #: app/Gedcom.php:1354 app/Gedcom.php:1356
 msgid "Creation date"
-msgstr "Aanmaakdatum"
+msgstr "Gemaakt op"
 
 #: app/Gedcom.php:610 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4305,7 +4289,7 @@ msgstr "Aangepaste GEDCOM-labels"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Aangepaste GEDCOM-labels worden ontmoedigd. Probeer alleen standaard GEDCOM-labels te gebruiken."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5112,7 +5096,7 @@ msgstr "Democratische republiek Congo"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "Demografische gegevens"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -6810,7 +6794,7 @@ msgstr "GEDCOM-L"
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6820,7 +6804,7 @@ msgstr "GOV-identificatienummer"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "Soort GOV-identificatienummer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7888,11 +7872,11 @@ msgstr "Aangever"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "Inwijding"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Inlinebronrecords worden ontmoedigd."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7930,7 +7914,7 @@ msgstr "Ongeldig GEDCOM-bestand - geen sluitrecord (TRLR) gevonden."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Ongeldig GEDCOM-niveaunummer."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7938,15 +7922,15 @@ msgstr "Ongeldig GEDCOM-record"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Ongeldig GEDCOM-record."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Ongeldig GEDCOM-label."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Ongeldige GEDCOM-waarde."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8224,7 +8208,7 @@ msgstr "Openhouden"
 #: resources/views/edit/edit-fact.phtml:34
 #: resources/views/edit/edit-record.phtml:34
 msgid "Keep the existing “last change” information"
-msgstr "Behoud de bestaande “laatste wijziging” informatie"
+msgstr "Behoud de bestaande “laatste wijziging”-informatie"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -8349,11 +8333,11 @@ msgstr "Label"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "Label voor echtgenoot"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "Label voor echtgenote"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8363,12 +8347,12 @@ msgstr "Laie, Hawaï"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "Aankoop van grond"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "Verkoop van grond"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8592,7 +8576,7 @@ msgstr "Regeleinden"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "Regelnummer"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -10695,7 +10679,7 @@ msgstr "Oriëntatie"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "Herkomst"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -13464,7 +13448,7 @@ msgstr "Bronvermeldingen kunnen velden bevatten om de kwaliteit van de gegevens 
 #: resources/views/admin/trees-preferences.phtml:722
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
-msgstr "Bron type"
+msgstr "Brontype"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
@@ -14708,7 +14692,7 @@ msgstr "Deze stamboom werd het laatst gewijzigd op %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Deze bestandsnaam is niet compatibel met het GEDZIP-bestandsformaat."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15024,7 +15008,7 @@ msgstr "Deze bron bestaat niet of u heeft geen permissie om deze bron in te zien
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:209
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
-msgstr "Deze tekst zal worden toegevoegd aan elke pagina titel. Het zal worden getoond in de titelbalk van de browser, bladwijzers, enzovoorts."
+msgstr "Deze tekst zal worden toegevoegd aan elke paginatitel. Het zal worden getoond in de titelbalk van de browser, bladwijzers, enzovoorts."
 
 #: resources/views/errors/no-tree-access.phtml:8
 msgid "This user account does not have access to any tree."
@@ -15087,7 +15071,7 @@ msgstr "Miniatuurafbeelding"
 #: resources/views/admin/trees-preferences.phtml:288
 #: resources/views/admin/trees-preferences.phtml:293
 msgid "Thumbnail images"
-msgstr "Miniatuur weergave"
+msgstr "Miniatuurafbeeldingen"
 
 #: app/Date/AbstractCalendarDate.php:249
 msgid "Thursday"
@@ -15739,7 +15723,7 @@ msgstr "De plaatsnamen gedeeltes van een hoger niveau worden bijgewerkt, de dele
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "Bijgewerkt op"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16181,7 +16165,7 @@ msgstr "Westelijke Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:740
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tijd opgeslagen. Soms is het wenselijk om de bestaande “laatste wijziging” informatie te behouden, bijvoorbeeld wanneer u kleine correcties maakt in de data van iemand anders. Met deze optie kunt u deze toepassing instellen als standaard optie."
+msgstr "Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tijd opgeslagen. Soms is het wenselijk om de bestaande “laatste wijziging”-informatie te behouden, bijvoorbeeld wanneer u kleine correcties maakt in de gegevens van iemand anders. Met deze optie kunt u deze toepassing instellen als standaardoptie."
 
 #: resources/views/admin/users-edit.phtml:108
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -16283,7 +16267,7 @@ msgstr "Getuige"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "Getuigen"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16522,7 +16506,7 @@ msgstr "Uw webserver gebruikt PHP-versie %s, die niet langer beveiligingsupdates
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -20563,11 +20547,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees kan geen miniatuurafbeeldingen maken voor dit bestandsformaat."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees herkent dit bestandsformaat niet."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20670,7 +20654,7 @@ msgstr[1] "±%s jaar"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” moet zijn “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
