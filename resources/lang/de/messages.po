@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:45+0100\n"
-"PO-Revision-Date: 2022-04-20 12:22+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -307,7 +295,7 @@ msgstr[1] "%s Notizen wurden aktualisiert."
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s kommt zu oft vor."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -526,7 +514,7 @@ msgstr "gefiltert aus %s Gesamteinträgen"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(enthält Mediendateien)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1506,7 +1494,7 @@ msgstr "Adelaide, Australien"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "Verwaltungskennzeichen"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1515,7 +1503,7 @@ msgstr "Administrator"
 
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "Administrator account"
-msgstr "Administrator Konto"
+msgstr "Administrator-Konto"
 
 #: resources/views/admin/users-edit.phtml:209
 msgid "Administrator comments on user"
@@ -1930,7 +1918,7 @@ msgstr "Ancestry-PID"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry-Quellenkennung"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -7888,7 +7876,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Von Inline-Quellenangaben wird abgeraten."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7926,7 +7914,7 @@ msgstr "Ungültige GEDCOM-Datei - keinen Trailer-Datensatz gefunden."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Ungültige GEDCOM-Ebenennummer."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -8345,11 +8333,11 @@ msgstr "Bezeichnung"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "Kennzeichen für den Ehemann"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "Kennzeichen für die Ehefrau"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8503,7 +8491,7 @@ msgstr "Passwort leer lassen, um das aktuelle Passwort beizubehalten."
 
 #: resources/views/admin/media-upload.phtml:51
 msgid "Leave this entry blank to keep the original filename"
-msgstr "Leer lassen, um den Original Dateinamen bei zu behalten"
+msgstr "Lassen Sie diesen Eintrag leer, um den ursprünglichen Dateinamen beizubehalten"
 
 #: resources/views/lists/families-table.phtml:186
 #: resources/views/lists/individuals-table.phtml:233
@@ -9567,7 +9555,7 @@ msgstr "Modul"
 
 #: resources/views/admin/modules.phtml:61
 msgid "Module administration"
-msgstr "Verwaltungsmodul"
+msgstr "Modul-Verwaltung"
 
 #: resources/views/admin/analytics-edit.phtml:17
 #: resources/views/admin/control-panel.phtml:552
@@ -10691,7 +10679,7 @@ msgstr "Richtung"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "Herkunft"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -15544,7 +15532,7 @@ msgstr "Art der Abkürzung"
 
 #: app/Gedcom.php:1247
 msgid "Type of administrative ID"
-msgstr "Art der Verwaltungs-ID"
+msgstr "Art des Verwaltungskennzeichens"
 
 #: app/Gedcom.php:1251
 msgid "Type of demographic data"
@@ -16410,7 +16398,7 @@ msgstr "Sie können HTML benutzen, um die Anwort zu formatieren und Links zu and
 
 #: app/Http/RequestHandlers/SetupWizard.php:379
 msgid "You must enter all the administrator account fields."
-msgstr "Sie müssen alle Administrator Konto Felder ausfüllen."
+msgstr "Sie müssen alle Felder des Administrator-Kontos eingeben."
 
 #: resources/views/admin/trees-merge.phtml:31
 msgid "You must renumber the records in one of the trees before you can merge them."
@@ -20638,7 +20626,7 @@ msgstr "ja"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:30
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "Sie können sich mit anderen Anwendungen, wie »phpmyadmin«, mit der Datenbank verbinden"
+msgstr "Sie können mit anderen Anwendungen, wie phpmyadmin, eine Verbindung zur Datenbank herstellen"
 
 #: app/Services/RelationshipService.php:442
 msgid "younger brother"
