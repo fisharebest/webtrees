@@ -641,9 +641,9 @@
         let reset = config.i18n.reset;
         let anchor = L.DomUtil.create('a', 'leaflet-control-reset', container);
         anchor.setAttribute('aria-label', reset);
+        anchor.setAttribute('role', 'button');
         anchor.href = '#';
         anchor.title = reset;
-        anchor.role = 'button';
         L.DomEvent.addListener(anchor, 'click', L.DomEvent.preventDefault);
         let image = L.DomUtil.create('i', 'fas fa-redo', anchor);
         image.alt = reset;
