@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Markus Hemprich <hemprich@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3676,7 +3676,7 @@ msgstr "Beschneider"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "Beschneidung"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4289,7 +4289,7 @@ msgstr "Benutzerdefinierte GEDCOM-Kennzeichen"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Benutzerdefinierte GEDCOM-Kennzeichen werden nicht empfohlen. Versuche nur Standard GEDCOM-Kennzeichen einzusetzen."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5096,7 +5096,7 @@ msgstr "Demokratische Republik Kongo"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "Demografische Daten"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -6794,7 +6794,7 @@ msgstr "GEDCOM-L"
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6804,7 +6804,7 @@ msgstr "GOV-Kennung"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV-Objekttyp"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7922,15 +7922,15 @@ msgstr "Ungültiger GEDCOM-Datensatz"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Ungültiger GEDCOM-Datensatz."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Ungültiges GEDCOM-Kennzeichen."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Ungültiger GEDCOM-Wert."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8347,12 +8347,12 @@ msgstr "Laie, Hawaii, Vereinigte Staaten"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "Grundstückskauf"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "Grundstücksverkauf"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8576,7 +8576,7 @@ msgstr "Zeilenenden"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "Zeilennummer"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -14692,7 +14692,7 @@ msgstr "Dieser Stammbaum wurde zuletzt am %s aktualisiert."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Der Dateiname ist nicht kompatibel mit dem GEDZIP Dateiformat."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15723,7 +15723,7 @@ msgstr "Aktualisieren Sie die übergeordneten Teile der Ortsnamen, während die 
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "Aktualisiert am"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16267,7 +16267,7 @@ msgstr "Zeuge"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "Zeugen"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16506,7 +16506,7 @@ msgstr "Ihr Webserver verwendet die PHP-Version %s, welche nicht länger Sicherh
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -20547,11 +20547,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees kann keine Vorschaubilder für dieses Dateiformat erzeugen."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees kennt dieses Dateiformat nicht."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20654,7 +20654,7 @@ msgstr[1] "±%s Jahre"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” sollte “%2$s” sein."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
