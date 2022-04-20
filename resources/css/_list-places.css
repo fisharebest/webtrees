@@ -19,9 +19,13 @@
  * wt-route-place-list
  */
 
- #place-hierarchy {
+#place-hierarchy {
     --wt-place-hierarchy-height: 70vh;
-  }
+}
+
+#place-hierarchy .breadcrumbs{
+    height: 1.8rem;
+}
 
 .wt-place-hierarchy-map {
     height: var(--wt-place-hierarchy-height);
@@ -29,13 +33,13 @@
 
 .wt-place-hierarchy-sidebar {
     font-size: small;
-    max-height:  var(--wt-place-hierarchy-height);
+    max-height: var(--wt-place-hierarchy-height);
     overflow-y: auto;
-    min-width:150px;
+    min-width: 150px;
 }
 
 .wt-place-hierarchy-sidebar table {
-   margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .wt-place-hierarchy-sidebar th {
