@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-14 22:15+0000\n"
+"PO-Revision-Date: 2022-04-29 08:55+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -1469,7 +1469,7 @@ msgstr "Voeg het GEDCOM-mediapad toe aan bestandsnamen"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:203
 msgid "Add to TITLE header tag"
-msgstr "Voeg toe aan TITLE header tag"
+msgstr "Voeg toe aan TITEL-koptekstlabel"
 
 #: app/Module/ClippingsCartModule.php:189
 #: resources/views/modules/clippings/add-options.phtml:22
@@ -4273,7 +4273,7 @@ msgstr ""
 
 #: app/Factories/ElementFactory.php:595 app/Factories/ElementFactory.php:637
 msgid "Creation date"
-msgstr "Aanmaakdatum"
+msgstr "Gemaakt op"
 
 #. I18N: gedcom tag CREM
 #: app/Factories/ElementFactory.php:1174 app/GedcomTag.php:603
@@ -8391,7 +8391,7 @@ msgstr "Openhouden"
 #: resources/views/edit/edit-fact.phtml:113
 #: resources/views/edit/edit-record.phtml:32
 msgid "Keep the existing “last change” information"
-msgstr "Behoud de bestaande “laatste wijziging” informatie"
+msgstr "Behoud de bestaande “laatste wijziging”-informatie"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -13729,7 +13729,7 @@ msgstr "Bronvermeldingen kunnen velden bevatten om de kwaliteit van de gegevens 
 #: resources/views/admin/trees-preferences.phtml:930
 #: resources/xml/reports/fact_sources.xml:6
 msgid "Source type"
-msgstr "Bron type"
+msgstr "Brontype"
 
 #. I18N: Name of a module/list
 #. I18N: Name of a module
@@ -15435,7 +15435,9 @@ msgstr "Deze bron werd gewijzigd. Beoordeel de wijzigingen en %1$s of %2$s ze da
 #. I18N: Help text for the “Add to TITLE header tag” configuration setting
 #: resources/views/admin/trees-preferences.phtml:215
 msgid "This text will be appended to each page title. It will be shown in the browser’s title bar, bookmarks, etc."
-msgstr "Deze tekst zal worden toegevoegd aan elke pagina titel. Het zal worden getoond in de titelbalk van de browser, bladwijzers, enzovoorts."
+msgstr ""
+"Deze tekst zal worden toegevoegd aan elke paginatitel. Het zal worden "
+"getoond in de titelbalk van de browser, bladwijzers, enzovoorts."
 
 #: app/Http/RequestHandlers/CheckTree.php:236
 #: app/Http/RequestHandlers/CheckTree.php:241
@@ -15506,7 +15508,7 @@ msgstr "Miniatuurafbeelding"
 #: resources/views/admin/trees-preferences.phtml:294
 #: resources/views/admin/trees-preferences.phtml:300
 msgid "Thumbnail images"
-msgstr "Miniatuur weergave"
+msgstr "Miniatuurafbeeldingen"
 
 #: app/Date/AbstractCalendarDate.php:261
 msgid "Thursday"
@@ -16631,7 +16633,12 @@ msgstr "Westelijke Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:950
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tijd opgeslagen. Soms is het wenselijk om de bestaande “laatste wijziging” informatie te behouden, bijvoorbeeld wanneer u kleine correcties maakt in de data van iemand anders. Met deze optie kunt u deze toepassing instellen als standaard optie."
+msgstr ""
+"Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tijd "
+"opgeslagen. Soms is het wenselijk om de bestaande “laatste wijziging”-"
+"informatie te behouden, bijvoorbeeld wanneer u kleine correcties maakt in de "
+"gegevens van iemand anders. Met deze optie kunt u deze toepassing instellen "
+"als standaardoptie."
 
 #: resources/views/admin/users-edit.phtml:108
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
