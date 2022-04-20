@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:32+0100\n"
-"PO-Revision-Date: 2022-04-03 13:37+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\n"
-"Language: en-GB\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:32+0100\nPO-Revision-Date: 2022-04-20 12:45+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: English (United Kingdom) <https://translate.webtrees.net/projects/webtrees/webtrees/en_GB/>\nLanguage: en-GB\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -307,7 +295,7 @@ msgstr[1] "%s notes have been updated."
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s occurs too many times."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -526,7 +514,7 @@ msgstr "(filtered from %s total entries)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(includes media files)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1506,7 +1494,7 @@ msgstr "Adelaide, Australia"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "Administrative ID"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1930,7 +1918,7 @@ msgstr "Ancestry PID"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com source identifier"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1994,11 +1982,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "Application ID"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "Application name"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3688,7 +3676,7 @@ msgstr "Circumciser"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "Circumcision"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4137,7 +4125,7 @@ msgstr "Create, update and delete a family tree for every GEDCOM file in the dat
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "Created at"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
@@ -4301,7 +4289,7 @@ msgstr "Custom GEDCOM tags"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5108,7 +5096,7 @@ msgstr "Democratic Republic of the Congo"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "Demographic data"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -6806,7 +6794,7 @@ msgstr "GEDCOM-L"
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6816,7 +6804,7 @@ msgstr "GOV identifier"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV identifier type"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7884,11 +7872,11 @@ msgstr "Informant"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "Initiatory"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Inline-source records are discouraged."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7926,7 +7914,7 @@ msgstr "Invalid GEDCOM file - no trailer record found."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Invalid GEDCOM level number."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7934,15 +7922,15 @@ msgstr "Invalid GEDCOM record"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Invalid GEDCOM record."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Invalid GEDCOM tag."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value"
-msgstr ""
+msgstr "Invalid GEDCOM value"
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8345,11 +8333,11 @@ msgstr "Label"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "Label for husband"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "Label for wife"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8359,12 +8347,12 @@ msgstr "Laie, Hawaii, United States"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "Land purchase"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "Land sale"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8588,7 +8576,7 @@ msgstr "Line endings"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "Line number"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -10691,7 +10679,7 @@ msgstr "Orientation"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "Origin"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -14704,7 +14692,7 @@ msgstr "This family tree was last updated on %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "This filename is not compatible with the GEDZIP file format."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15735,7 +15723,7 @@ msgstr "Update the higher-level parts of place names, while keeping the lower-le
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "Updated at"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16279,7 +16267,7 @@ msgstr "Witness"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "Witnesses"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16518,7 +16506,7 @@ msgstr "Your web server is using PHP version %s, which is no longer receiving se
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -20559,11 +20547,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees cannot create thumbnails for this file format."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees does not recognise this file format."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20666,7 +20654,7 @@ msgstr[1] "±%s years"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "‘%1$s’ should be ‘%2$s’."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
