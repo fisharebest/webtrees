@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Markus Hemprich <hemprich@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Bernd Schwendinger <b0ernie@gmx.net>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1507,7 +1507,7 @@ msgstr "Administrator-Konto"
 
 #: resources/views/admin/users-edit.phtml:209
 msgid "Administrator comments on user"
-msgstr "Bemerkungen des Verwalters zu diesem Benutzer"
+msgstr "Bemerkungen des Administrators zu diesem Benutzer"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Administrators"
@@ -1982,11 +1982,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "Anwendungs-ID"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "Anwendungsname"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -4125,7 +4125,7 @@ msgstr "Erzeugt, aktualisiert und löscht einen Stammbaum für jede GEDCOM-Datei
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "Erstellt am"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
@@ -7242,7 +7242,7 @@ msgstr "Hallo %s!<br>Danke für Ihre Anfrage."
 #: resources/views/emails/verify-notify-html.phtml:14
 #: resources/views/emails/verify-notify-text.phtml:12
 msgid "Hello administrator…"
-msgstr "Hallo Verwalter!"
+msgstr "Hallo Administrator!"
 
 #: app/Http/RequestHandlers/HelpText.php:293 resources/views/help/link.phtml:11
 #: resources/views/help/link.phtml:13
@@ -7506,7 +7506,7 @@ msgstr "Diese Sprache wird genutzt, wenn im Browser des Besuchers keine oder ein
 
 #: resources/views/admin/users-edit.phtml:111
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "Wenn ein Verwalter ein Benutzerkonto anlegt, wird keine E-Mail zur Überprüfung gesendet und die E-Mail muss manuell geprüft werden."
+msgstr "Wenn ein Administrator ein Benutzerkonto anlegt, wird keine E-Mail zur Überprüfung gesendet und die E-Mail muss manuell geprüft werden."
 
 #: resources/views/help/name.phtml:22
 #, php-format
@@ -7872,7 +7872,7 @@ msgstr "Anzeigender"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "Initiation"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
@@ -10314,7 +10314,7 @@ msgstr "Norwegen"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not approved by an administrator"
-msgstr "Noch nicht vom Verwalter bestätigt"
+msgstr "Noch nicht vom Administrator bestätigt"
 
 #: app/Gedcom.php:933
 msgid "Not living"
@@ -11303,7 +11303,7 @@ msgstr "Prairial"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:49
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "Vordefinierter Text, der erklärt, dass der Verwalter über die Benutzeranfrage entscheidet"
+msgstr "Vordefinierter Text, der erklärt, dass der Administrator über die Benutzeranfrage entscheidet"
 
 #: app/Http/RequestHandlers/SiteRegistrationPage.php:48
 msgid "Predefined text that states all users can request a user account"
@@ -14026,11 +14026,11 @@ msgstr "Die Internetadresse (URL) wurde in die Zwischenablage kopiert"
 #: resources/views/emails/approve-user-text.phtml:14
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account. You may now sign in by accessing the following link: %s"
-msgstr "Der Verwalter der webtrees-Webseite %s hat Ihre Anfrage für ein Benutzerkonto genehmigt. Sie können sich jetzt unter dem folgenden Link anmelden: %s"
+msgstr "Der Administrator der webtrees-Webseite %s hat Ihre Anfrage für ein Benutzerkonto genehmigt. Sie können sich jetzt unter dem folgenden Link anmelden: %s"
 
 #: resources/views/verify-success-page.phtml:20
 msgid "The administrator has been informed. As soon as they give you permission to sign in, you can sign in with your username and password."
-msgstr "Der Verwalter wurde benachrichtigt. Sobald dieser Ihr Benutzerkonto freigegeben hat, können Sie sich mit Ihrem Benutzernamen und Passwort anmelden."
+msgstr "Der Administrator wurde benachrichtigt. Sobald dieser Ihr Benutzerkonto freigegeben hat, können Sie sich mit Ihrem Benutzernamen und Passwort anmelden."
 
 #. I18N: Description of the “Calendar” module
 #: app/Module/CalendarMenuModule.php:53
@@ -14780,7 +14780,7 @@ msgstr "Diese Information ist vertraulich und wird deshalb nicht angezeigt."
 
 #: resources/views/edit-account-page.phtml:68
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
-msgstr "Dies ist ein Verknüpfung zu Ihrem eigenen Datensatz im Stammbaum. Falls dies die falsche Person ist, kontaktieren Sie bitte den Verwalter."
+msgstr "Dies ist ein Verknüpfung zu Ihrem eigenen Datensatz im Stammbaum. Falls dies die falsche Person ist, kontaktieren Sie bitte den Administrator."
 
 #: resources/views/setup/step-4-database-mysql.phtml:88
 #: resources/views/setup/step-4-database-mysql.phtml:102
@@ -15828,7 +15828,7 @@ msgstr "Verwenden Sie das Menü \"Bearbeiten\", um dies zu einem anderen Datensa
 
 #: resources/views/register-page.phtml:90
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Bitte benutzen Sie dieses Feld, um dem Verwalter mitzuteilen, warum Sie sich registrieren wollen und wie Sie mit diesem Stammbaum verbunden sind. Sie können hier auch andere Anmerkungen eingeben, die Sie dem Verwalter mitteilen möchten."
+msgstr "Bitte benutzen Sie dieses Feld, um dem Administrator mitzuteilen, warum Sie sich registrieren wollen und wie Sie mit diesem Stammbaum verbunden sind. Sie können hier auch andere Anmerkungen eingeben, die Sie dem Administrator mitteilen möchten."
 
 #: app/Module/ResearchTaskModule.php:63 app/Module/ResearchTaskModule.php:66
 #: resources/views/admin/changes-log.phtml:85
@@ -16110,7 +16110,7 @@ msgstr "Wasserzeichen sind optional und sind normalerweise nur für Besucher sic
 #: resources/views/register-success-page.phtml:23
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically. You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To sign in to this website, you will need to know your username and password."
-msgstr "Ihnen wird nun eine Bestätigungs-E-Mail an die Adresse <b>%s</b> geschickt. Sie müssen den in der E-Mail enthaltenen Anweisungen folgen, um Ihr Benutzerkonto zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihre Registrierungsanfrage automatisch verworfen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs-E-Mail gefolgt sind, muss der Verwalter Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie dann Ihren Benutzernamen und Ihr Passwort."
+msgstr "Ihnen wird nun eine Bestätigungs-E-Mail an die Adresse <b>%s</b> geschickt. Sie müssen den in der E-Mail enthaltenen Anweisungen folgen, um Ihr Benutzerkonto zu aktivieren. Falls Sie innerhalb von 7 Tagen nicht reagieren, wird Ihre Registrierungsanfrage automatisch verworfen. Sie müssen dann erneut anfragen.<br><br>Wenn Sie den Anweisungen in der Bestätigungs-E-Mail gefolgt sind, muss der Administrator Ihren Benutzernamen noch freischalten, bevor Sie ihn benutzen können.<br><br>Um sich auf dieser Webseite anzumelden, benötigen Sie dann Ihren Benutzernamen und Ihr Passwort."
 
 #: resources/views/admin/control-panel.phtml:160
 #: resources/views/admin/control-panel.phtml:571
