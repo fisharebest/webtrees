@@ -186,13 +186,13 @@ class CheckTree implements RequestHandlerInterface
 
             foreach ($lines as $line_number => $line) {
                 if (preg_match('/^(\d+) (\w+) ?(.*)/', $line, $match) !== 1) {
-                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM record'));
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM record.'));
                     break;
                 }
 
                 $level = (int) $match[1];
                 if ($level > $last_level + 1) {
-                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM line number'));
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM level number.'));
                     break;
                 }
 
