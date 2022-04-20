@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Elements\AbstractXrefElement;
+use Fisharebest\Webtrees\Elements\MultimediaFileReference;
 use Fisharebest\Webtrees\Elements\MultimediaFormat;
 use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Elements\UnknownElement;
@@ -296,6 +297,9 @@ class CheckTree implements RequestHandlerInterface
                         $message    = I18N::translate('webtrees cannot create thumbnails for this file format.');
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     }
+                } elseif ($element instanceof MultimediaFileReference && $value === 'gedcom.ged') {
+                    $message  = I18N::translate('This filename is not compatible with the GEDZIP file format.');
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                 }
             }
 

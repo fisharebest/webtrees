@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\GedcomImportService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use InvalidArgumentException;
+use Nyholm\Psr7\Factory\Psr17Factory;
 use Symfony\Component\Cache\Adapter\NullAdapter;
 
 use function fclose;
@@ -358,7 +359,7 @@ class TreeTest extends TestCase
     {
         $tree = $this->importTree('demo.ged');
 
-        $gedcom_export_service = new GedcomExportService();
+        $gedcom_export_service = new GedcomExportService(new Psr17Factory(), new Psr17Factory());
 
         $resource = $gedcom_export_service->export($tree, true);
         $original = file_get_contents(__DIR__ . '/../data/demo.ged');

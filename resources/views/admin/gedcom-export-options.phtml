@@ -7,9 +7,12 @@ use Fisharebest\Webtrees\Encodings\UTF16BE;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
 
 /**
- * @var Tree $tree
+ * @var array<string> $download_filenames
+ * @var Tree          $tree
+ * @var bool          $zip_available
  */
 
 ?>
@@ -21,7 +24,7 @@ use Fisharebest\Webtrees\Tree;
 
     <div class="col-sm-9">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="format" id="format-gedcom" value="gedcom" checked="checked">
+            <input class="form-check-input" type="radio" name="format" id="format-gedcom" value="gedcom" checked="checked" data-wt-extension=".ged">
 
             <label class="form-check-label" for="format-gedcom">
                 <?= I18N::translate('GEDCOM') ?>
@@ -29,11 +32,42 @@ use Fisharebest\Webtrees\Tree;
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="format" id="format-zip" value="zip">
+            <input class="form-check-input" type="radio" name="format" id="format-zip" value="zip" data-wt-extension=".zip" <?= $zip_available ? '' : 'disabled="disabled"'?>>
 
             <label class="form-check-label" for="format-zip">
-                <?= /* I18N: ZIP = file format */ I18N::translate('ZIP (includes media files)') ?>
+                <?= /* I18N: ZIP = file format */ I18N::translate('ZIP') ?>
             </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="format" id="format-zipmedia" value="zipmedia" data-wt-extension=".zip" <?= $zip_available ? '' : 'disabled="disabled"'?>>
+
+            <label class="form-check-label" for="format-zipmedia">
+                <?= /* I18N: ZIP = file format */ I18N::translate('ZIP') ?>
+                <?= I18N::translate('(includes media files)') ?>
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="format" id="format-gdz" value="gedzip" data-wt-extension=".gdz" <?= $zip_available ? '' : 'disabled="disabled"'?>>
+
+            <label class="form-check-label" for="format-gdz">
+                <?= /* I18N: GEDZIP = file format */ I18N::translate('GEDZIP') ?>
+                <?= I18N::translate('(includes media files)') ?>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <label class="col-sm-3" for="filename">
+        <?= I18N::translate('Filename') ?>
+    </label>
+
+    <div class="col-sm-9">
+        <div class="input-group">
+            <?= view('components/select', ['name' => 'filename', 'id' => 'filename', 'selected' => 0, 'options' => $download_filenames]) ?>
+            <span class="input-group-text" id="extension">.ged</span>
         </div>
     </div>
 </div>
@@ -76,3 +110,14 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  document.querySelectorAll('[name=format]').forEach(element => element.addEventListener('change', event => document.getElementById('extension').innerText = event.target.dataset.wtExtension));
+
+  // Firefox will reload the page and change the selected item.
+  document.getElementById('extension').innerText = document.querySelector('[name=format]:checked').dataset.wtExtension;
+
+</script>
+<?php View::endpush(); ?>

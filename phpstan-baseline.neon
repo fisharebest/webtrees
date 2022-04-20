@@ -512,12 +512,12 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$type on mixed\\.$#"
-			count: 46
+			count: 47
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
-			count: 45
+			count: 46
 			path: app/Http/RequestHandlers/CheckTree.php
 
 		-
@@ -589,16 +589,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:updateRecord\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/EditNoteAction.php
-
-		-
-			message: "#^Cannot call method mediaFiles\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ExportGedcomClient.php
-
-		-
-			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/ExportGedcomClient.php
 
 		-
 			message: "#^Parameter \\#1 \\$content of function response expects array\\|object\\|string, string\\|false given\\.$#"
@@ -1234,11 +1224,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$census of method Fisharebest\\\\Webtrees\\\\Module\\\\CensusAssistantModule\\:\\:createNoteText\\(\\) expects Fisharebest\\\\Webtrees\\\\Census\\\\CensusInterface, object given\\.$#"
 			count: 1
 			path: app/Module/CensusAssistantModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
-			count: 1
-			path: app/Module/ClippingsCartModule.php
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
@@ -2567,6 +2552,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomExportService\\:\\:convertMediaPath\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: app/Services/GedcomExportService.php
+
+		-
+			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/GedcomExportService.php
 

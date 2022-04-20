@@ -8,9 +8,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string $filename
- * @var string $title
- * @var Tree   $tree
+ * @var array<string> $download_filenames
+ * @var string        $filename
+ * @var string        $title
+ * @var Tree          $tree
+ * @var bool          $zip_available
  */
 
 ?>
@@ -38,7 +40,7 @@ use Fisharebest\Webtrees\Tree;
                     <button type="submit" class="btn btn-primary">
                         <?= view('icons/save') ?>
                         <?= /* I18N: A button label. */
-                        I18N::translate('continue') ?>
+                        I18N::translate('save') ?>
                     </button>
                 </form>
             </div>
@@ -59,29 +61,12 @@ use Fisharebest\Webtrees\Tree;
                         <?= I18N::translate('Export preferences') ?>
                     </p>
 
-                    <?= view('admin/gedcom-export-options', ['tree' => $tree]) ?>
-
-                    <?php if ($tree->getPreference('GEDCOM_MEDIA_PATH') !== '') : ?>
-                        <div class="row mb-3">
-                            <label class="col-sm-3" for="media-path">
-                                <?= /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames') ?>
-                            </label>
-
-                            <div class="col-sm-9">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="media-path" name="media_path">
-                                    <label class="form-check-label" for="media-path">
-                                        <?= /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . e($tree->getPreference('GEDCOM_MEDIA_PATH')) . '</code>') ?>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endif ?>
+                    <?= view('admin/gedcom-export-options', ['download_filenames' =>$download_filenames, 'tree' => $tree, 'zip_available' => $zip_available]) ?>
 
                     <button type="submit" class="btn btn-primary">
                         <?= view('icons/download') ?>
                         <?= /* I18N: A button label. */
-                        I18N::translate('continue') ?>
+                        I18N::translate('download') ?>
                     </button>
                 </form>
             </div>
