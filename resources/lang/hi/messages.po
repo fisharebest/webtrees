@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:32+0100\n"
+"POT-Creation-Date: 2022-04-20 13:45+0100\n"
 "PO-Revision-Date: 2022-03-20 22:01+0000\n"
 "Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
 "Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
@@ -7946,7 +7946,7 @@ msgid "Invalid GEDCOM tag."
 msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php:282
-msgid "Invalid GEDCOM value"
+msgid "Invalid GEDCOM value."
 msgstr ""
 
 #: app/Date.php:224

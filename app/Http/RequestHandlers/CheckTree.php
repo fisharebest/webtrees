@@ -279,7 +279,7 @@ class CheckTree implements RequestHandlerInterface
                         $message    = I18N::translate('Inline-source records are discouraged.');
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     } else {
-                        $message  = I18N::translate('Invalid GEDCOM value');
+                        $message  = I18N::translate('Invalid GEDCOM value.');
                         $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     }
                 } elseif ($element->canonical($value) !== $value) {
