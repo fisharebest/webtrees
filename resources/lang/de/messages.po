@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
 "PO-Revision-Date: 2022-04-29 08:55+0000\n"
-"Last-Translator: Bernd Schwendinger <b0ernie@gmx.net>\n"
+"Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -1524,7 +1524,7 @@ msgstr "Administrator"
 
 #: resources/views/setup/step-5-administrator.phtml:37
 msgid "Administrator account"
-msgstr "Administrator Konto"
+msgstr "Administrator-Konto"
 
 #: resources/views/admin/users-edit.phtml:209
 msgid "Administrator comments on user"
@@ -8599,7 +8599,9 @@ msgstr "Passwort leer lassen, um das aktuelle Passwort beizubehalten."
 
 #: resources/views/admin/media-upload.phtml:51
 msgid "Leave this entry blank to keep the original filename"
-msgstr "Leer lassen, um den Original Dateinamen bei zu behalten"
+msgstr ""
+"Lassen Sie diesen Eintrag leer, um den ursprünglichen Dateinamen "
+"beizubehalten"
 
 #: resources/views/lists/families-table.phtml:184
 #: resources/views/lists/individuals-table.phtml:225
@@ -9698,7 +9700,7 @@ msgstr "Modul"
 #: resources/views/admin/modules.phtml:61
 #: resources/views/modules/batch_update/admin.phtml:10
 msgid "Module administration"
-msgstr "Verwaltungsmodul"
+msgstr "Modul-Verwaltung"
 
 #: resources/views/admin/analytics-edit.phtml:17
 #: resources/views/admin/control-panel.phtml:521
@@ -15901,7 +15903,7 @@ msgstr "Art der Abkürzung"
 
 #: app/Factories/ElementFactory.php:693
 msgid "Type of administrative ID"
-msgstr "Art der Verwaltungs-ID"
+msgstr "Art des Verwaltungskennzeichens"
 
 #: app/Factories/ElementFactory.php:697
 msgid "Type of demographic data"
@@ -16815,7 +16817,7 @@ msgstr "Sie können HTML benutzen, um die Anwort zu formatieren und Links zu and
 
 #: app/Http/RequestHandlers/SetupWizard.php:386
 msgid "You must enter all the administrator account fields."
-msgstr "Sie müssen alle Administrator Konto Felder ausfüllen."
+msgstr "Sie müssen alle Felder des Administrator-Kontos eingeben."
 
 #: resources/views/admin/trees-merge.phtml:31
 msgid "You must renumber the records in one of the trees before you can merge them."
@@ -21077,7 +21079,9 @@ msgstr "ja"
 #. I18N: [you should check that:] ...
 #: resources/views/errors/database-connection.phtml:30
 msgid "you can connect to the database using other applications, such as phpmyadmin"
-msgstr "Sie können sich mit anderen Anwendungen, wie »phpmyadmin«, mit der Datenbank verbinden"
+msgstr ""
+"Sie können mit anderen Anwendungen, wie phpmyadmin, eine Verbindung zur "
+"Datenbank herstellen"
 
 #: app/Functions/Functions.php:713
 msgid "younger brother"
