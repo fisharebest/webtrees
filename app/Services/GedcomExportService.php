@@ -157,7 +157,7 @@ class GedcomExportService
         return $this->response_factory->createResponse()
             ->withBody($stream)
             ->withHeader('content-type', 'application/zip')
-            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes($filename, '"')  . $extension . '"');
+            ->withHeader('content-disposition', 'attachment; filename="' . addcslashes($filename, '"') . $extension . '"');
     }
 
     /**
