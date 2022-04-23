@@ -51,10 +51,11 @@ class BaseUrl implements MiddlewareInterface
         $request_url = $request->getUri();
 
         // The base URL, as specified in the configuration file.
-        $base_url = Validator::attributes($request)->string('base_url');
+        $base_url = Validator::attributes($request)->string('base_url', '');
 
         if ($base_url === '') {
-            // Guess the base URL from the request URL.
+            // Not set in config.ini.php?  Didn't read the upgrade instructions?
+            // We can guess the URL, provided we aren't using pretty URLs.
             $base_url    = rtrim(explode('index.php', (string) $request_url)[0], '/');
             $request     = $request->withAttribute('base_url', $base_url);
             $base_path   = parse_url($base_url, PHP_URL_PATH) ?? '';
