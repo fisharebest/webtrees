@@ -88,7 +88,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
     {
         $tree        = Validator::attributes($request)->tree();
         $context     = Validator::queryParams($request)->string('context');
-        $message_ids = Validator::parsedBody($request)->array('message_ids');
+        $message_ids = Validator::parsedBody($request)->array('message_id');
 
         DB::table('message')
             ->where('user_id', '=', Auth::id())
