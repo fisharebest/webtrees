@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-23 09:36+0000\n"
+"PO-Revision-Date: 2022-04-29 08:55+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -873,7 +873,12 @@ msgstr "Zoznam aktuálne pripojených užívateľov a návštevníkov."
 
 #: resources/views/help/media-object.phtml:8
 msgid "A media object is a record in the family tree which contains information about a media file. This information may include a title, a copyright notice, a transcript, privacy restrictions, etc. The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
-msgstr "Objekt média je záznam v rodokmeni, ktorý obsahuje informácie o mediálnom súbore. Medzi takéto informácie môže patriť názov, poznámka o autorských právach, prepis, obmedzenia prístupu a podobne. Mediálny súbor, ako napr. fotografia alebo video, môžu byť uložené na tomto serveri (lokálne) alebo na inom serveri (vzdialene)."
+msgstr ""
+"Objekt média je záznam v rodokmeni, ktorý obsahuje informácie o súbore "
+"médií. Medzi takéto informácie môže patriť názov, poznámka o autorských "
+"právach, prepis, obmedzenia prístupu a podobne. Súbor médií, ako napr. "
+"fotografia alebo video, môže byť uložený na tomto serveri (lokálne) alebo na "
+"inom serveri (vzdialene)."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: resources/views/emails/verify-notify-html.phtml:20
@@ -6068,7 +6073,7 @@ msgstr "Externé súbory"
 
 #: resources/views/admin/media.phtml:79
 msgid "External media files have a URL instead of a filename."
-msgstr "Externé mediálne súbory majú URL namiesto mena súboru."
+msgstr "Externé súbory médií majú URL namiesto mena súboru."
 
 #. I18N: Name of a module/sidebar
 #: app/Module/IndividualMetadataModule.php:56
