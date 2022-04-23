@@ -70,7 +70,7 @@ class CleanDataFolder implements RequestHandlerInterface
             'config.ini.php',
         ];
 
-        if (Validator::attributes($request)->string('dbtype') === 'sqlite') {
+        if (Validator::attributes($request)->string('dbtype', 'mysql') === 'sqlite') {
             $protected[] = Validator::attributes($request)->string('dbname') . '.sqlite';
         }
 
