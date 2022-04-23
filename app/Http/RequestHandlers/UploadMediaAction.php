@@ -41,6 +41,7 @@ use function str_replace;
 use function substr;
 use function trim;
 
+use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -74,6 +75,10 @@ class UploadMediaAction implements RequestHandlerInterface
         $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
+            if ($uploaded_file->getError() == UPLOAD_ERR_NO_FILE) {
+                continue;
+            }
+
             if ($uploaded_file->getError() !== UPLOAD_ERR_OK) {
                 throw new FileUploadException($uploaded_file);
             }
