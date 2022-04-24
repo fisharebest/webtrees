@@ -9,7 +9,7 @@ Use your best judgment, and feel free to propose changes to this document in a p
 
 If you want to submit a patch or feature, please create a pull request on Github. There are different branches for different versions of webtrees:
 
-* For webtrees 2.0, use the `master` branch
+* For webtrees 2.*, use the `main` branch
 * For the latest webtrees 1.7.*, use the `1.7` branch
 
 Before submitting a pull request make sure you have [tested the code](#how-to-test) 
