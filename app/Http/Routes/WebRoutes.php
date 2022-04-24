@@ -240,6 +240,8 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderFamiliesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaFilesAction;
+use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaFilesPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderMediaPage;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderNamesPage;
@@ -587,6 +589,8 @@ class WebRoutes
                 $router->post(ReorderChildrenAction::class, '/reorder-children/{xref}');
                 $router->get(ReorderMediaPage::class, '/reorder-media/{xref}');
                 $router->post(ReorderMediaAction::class, '/reorder-media/{xref}');
+                $router->get(ReorderMediaFilesPage::class, '/reorder-media-files/{xref}');
+                $router->post(ReorderMediaFilesAction::class, '/reorder-media-files/{xref}');
                 $router->get(ReorderNamesPage::class, '/reorder-names/{xref}');
                 $router->post(ReorderNamesAction::class, '/reorder-names/{xref}');
                 $router->get(ReorderFamiliesPage::class, '/reorder-spouses/{xref}');
