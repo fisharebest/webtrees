@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-01-30 18:39+0000\n"
+"PO-Revision-Date: 2022-04-29 08:55+0000\n"
 "Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
 "Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/cs/>\n"
@@ -940,7 +940,7 @@ msgstr "Výpis osob, které zemřely na daném místě nebo čase."
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Zpráva o osobách s daným zaměstnáním."
+msgstr "Zpráva o osobách s daným povoláním."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
@@ -7472,7 +7472,7 @@ msgstr "Helvetica"
 
 #: resources/xml/reports/ahnentafel_report.xml:197
 msgid "Her occupation was"
-msgstr "Její zaměstnání bylo"
+msgstr "Pracovala jako"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:109 app/GedcomCode/GedcomCodeTemp.php:393
@@ -7533,7 +7533,7 @@ msgstr "Muslimský (Hijri)"
 
 #: resources/xml/reports/ahnentafel_report.xml:196
 msgid "His occupation was"
-msgstr "Jeho zaměstnání bylo"
+msgstr "Pracoval jako"
 
 #: app/Http/RequestHandlers/ModulesHistoricEventsPage.php:43
 #: resources/views/admin/control-panel.phtml:656
@@ -10658,14 +10658,14 @@ msgstr "Oaxaca, Mexiko"
 #: app/GedcomTag.php:845 resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
-msgstr "Zaměstnání"
+msgstr "Povolání"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:44
 #: resources/xml/reports/occupation_report.xml:3
 #: resources/xml/reports/occupation_report.xml:37
 msgid "Occupations"
-msgstr "Zaměstnání"
+msgstr "Povolání"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:411
@@ -13180,7 +13180,7 @@ msgstr "Zobrazit poznámky"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Zobrazit zaměstnání"
+msgstr "Zobrazit povolání"
 
 #: resources/views/modules/todays_events/config.phtml:19
 #: resources/views/modules/upcoming_events/config.phtml:31
