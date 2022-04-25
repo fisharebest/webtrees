@@ -365,6 +365,7 @@ class Gedcom
         '_EVDEF', // RootsMagic
         '_EVENT_DEFN', // PAF and Legacy
         '_HASHTAG_DEFN', // Legacy
+        '_PUBLISH', // MyHeritage
         '_TODO', // Legacy
     ];
 
@@ -1474,6 +1475,27 @@ class Gedcom
     /**
      * @return array<string,ElementInterface>
      */
+    private function myHeritageTags(): array
+    {
+        return [
+            'FAM:*:_UID'                  => new PafUid(I18N::translate('Unique identifier')),
+            'FAM:*:RIN'                   => new AutomatedRecordId(I18N::translate('Record ID number')),
+            'HEAD:DATE:_TIMEZONE'         => new CustomElement(I18N::translate('Time zone')),
+            'HEAD:SOUR:_RTLSAVE'          => new CustomElement(I18N::translate('Text direction')), // ?
+            'HEAD:_RINS'                  => new CustomElement(I18N::translate('Record ID number')), // ?
+            'HEAD:_UID'                   => new PafUid(I18N::translate('Unique identifier')),
+            'HEAD:_PROJECT_GUID'          => new PafUid(I18N::translate('Unique identifier')),
+            'HEAD:_EXPORTED_FROM_SITE_ID' => new CustomElement(I18N::translate('Site identification code')),
+            'HEAD:_DESCRIPTION_AWARE'     => new CustomElement(I18N::translate('Description')), // ?
+            'INDI:*:_UID'                 => new PafUid(I18N::translate('Unique identifier')),
+            'INDI:*:RIN'                  => new AutomatedRecordId(I18N::translate('Record ID number')),
+            '*:_UPD'                      => new CustomElement(I18N::translate('Updated at')),
+        ];
+    }
+
+    /**
+     * @return array<string,ElementInterface>
+     */
     private function personalAncestralFileTags(): array
     {
         return [
@@ -1806,6 +1828,7 @@ class Gedcom
             $element_factory->registerTags($this->gedcomLTags());
             $element_factory->registerTags($this->genPlusWinTags());
             $element_factory->registerTags($this->legacyTags());
+            $element_factory->registerTags($this->myHeritageTags());
             $element_factory->registerTags($this->personalAncestralFileTags());
             $element_factory->registerTags($this->phpGedViewTags());
             $element_factory->registerTags($this->reunionTags());
