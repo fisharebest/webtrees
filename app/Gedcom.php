@@ -1251,7 +1251,7 @@ class Gedcom
             '_LOC:_DMGD:TYPE'                 => new CustomElement(I18N::translate('Type of demographic data')),
             // I18N: https://gov.genealogy.net
             '_LOC:_GOV'                       => new GovIdentifier(I18N::translate('GOV identifier')),
-            '_LOC:_LOC'                       => new XrefLocation(I18N::translate('Parent'), ['DATE' => '0:1', 'SOUR' => '0:M', 'TYPE' => '0:1']),
+            '_LOC:_LOC'                       => new XrefLocation(I18N::translate('Parent location'), ['DATE' => '0:1', 'SOUR' => '0:M', 'TYPE' => '0:1']),
             '_LOC:_LOC:DATE'                  => new DateValue(I18N::translate('Date')),
             '_LOC:_LOC:SOUR'                  => new XrefSource(I18N::translate('Source')),
             '_LOC:_LOC:TYPE'                  => new HierarchicalRelationship(I18N::translate('Hierarchical relationship')),
