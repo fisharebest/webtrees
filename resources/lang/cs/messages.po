@@ -1,24 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:45+0100\n"
-"PO-Revision-Date: 2022-04-03 13:14+0000\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
-"Language: cs\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Language: cs_CZ\n"
-"X-Source-Language: C\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -327,7 +308,7 @@ msgstr[2] "%s poznámek bylo aktualizováno."
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s se vyskytuje příliš často."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -551,7 +532,7 @@ msgstr "(filtrováno z celkových %s záznamů)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(obsahuje soubory médií)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -943,7 +924,7 @@ msgstr "Výpis osob, které zemřely na daném místě nebo čase."
 #: app/Module/OccupationReportModule.php:56
 #: resources/xml/reports/occupation_report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Zpráva o osobách s daným zaměstnáním."
+msgstr "Zpráva o osobách s daným povoláním."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:52 resources/xml/reports/birth_report.xml:4
@@ -1531,7 +1512,7 @@ msgstr "Adelaide, Austrálie"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "Administrativní identifikátor"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1955,7 +1936,7 @@ msgstr "PID původu"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "identifikátor pramene v Ancestry.com"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -2019,11 +2000,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "Identifikátor aplikace"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "Název aplikace"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3714,7 +3695,7 @@ msgstr "Obřezávač"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "Obřízka"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4163,7 +4144,7 @@ msgstr "Vytvořit, aktualizovat a smazat rodokmen pro každý soubor GEDCOM ve s
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "Vytvořeno dne"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
@@ -4327,7 +4308,7 @@ msgstr "Nestandardní tagy GEDCOM"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Nedporučuje se používat uživatelsky definované GEDCOM tagy. Pokuste se používat jen standardní GEDCOM tagy."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5125,7 +5106,7 @@ msgstr "Smazání rodiny smaže odkazy na jednotlivé osoby, ale jejich údaje z
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Smazává se…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5134,7 +5115,7 @@ msgstr "Kongo (Kinshasa)"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "Demografické údaje"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -6109,7 +6090,7 @@ msgstr "Sčítání rodiny"
 
 #: resources/views/admin/tags.phtml:954
 msgid "Family facts and events"
-msgstr ""
+msgstr "Rodinné fakty a události"
 
 #: app/Gedcom.php:843
 msgid "Family file"
@@ -6827,12 +6808,12 @@ msgstr "Tagy GEDCOM"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/Gedcom.php:1115 resources/views/admin/tags.phtml:964
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6842,7 +6823,7 @@ msgstr "Identifikátor GOV"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "Typ identifikátoru GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7314,7 +7295,7 @@ msgstr "Helvetica"
 
 #: resources/xml/reports/ahnentafel_report.xml:197
 msgid "Her occupation was"
-msgstr "Její zaměstnání bylo"
+msgstr "Pracovala jako"
 
 #. I18N: https://wego.here.com
 #: app/Module/HereMaps.php:82
@@ -7404,7 +7385,7 @@ msgstr "Muslimský (Hijri)"
 
 #: resources/xml/reports/ahnentafel_report.xml:196
 msgid "His occupation was"
-msgstr "Jeho zaměstnání bylo"
+msgstr "Pracoval jako"
 
 #: app/Http/RequestHandlers/ModulesHistoricEventsPage.php:43
 #: resources/views/admin/control-panel.phtml:720
@@ -7819,7 +7800,7 @@ msgstr "Diagram rozmístění osob"
 
 #: resources/views/admin/tags.phtml:944
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Osobní fakty a události"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7910,11 +7891,11 @@ msgstr "Zpravodaj"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "Iniciace (LDS)"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Nedoporučují se řádkové záznamy pramenů."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7948,11 +7929,11 @@ msgstr "Neplatný GEDCOM soubor - nebyla nalezena hlavička."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Neplatný GEDCOM soubor - nenašel se ukončovací záznam."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Neplatné číslo GEDCOM úrovně."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7960,15 +7941,15 @@ msgstr "Neplatný záznam GEDCOM"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Neplatný GEDCOM záznam."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Neplatný GEDCOM tag."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Neplatná GEDCOM hodnota."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8005,7 +7986,7 @@ msgstr "Stáhnutí aktualizace a její provedení může trvat několik minut. B
 
 #: resources/views/admin/tags.phtml:937
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Nedoporučuje se používat uživatelsky definované GEDCOM tagy. Při přenosu do jiné aplikace můžete takové údaje ztratit."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8371,11 +8352,11 @@ msgstr "Štítek"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "Označení manžela"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "Označení manželky"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8385,12 +8366,12 @@ msgstr "Laie, Hawaii, USA"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "Koupě pozemku"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "Prodej pozemku"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8614,7 +8595,7 @@ msgstr "Konce řádků"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "Číslo řádku"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -8926,7 +8907,7 @@ msgstr "Rukopis"
 
 #: resources/views/admin/tags.phtml:935
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Mnoho genealogických aplikací používá vlastní GEDCOM tagy a webtrees dokáže většinu z nich zobrazit."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9955,7 +9936,7 @@ msgstr "Jméno v hebrejštině"
 #: app/Gedcom.php:1174 app/Gedcom.php:1182 app/Gedcom.php:1428
 #: app/Gedcom.php:1491
 msgid "Name of addressee"
-msgstr ""
+msgstr "Jméno adresáta"
 
 #: app/Gedcom.php:654 app/Gedcom.php:661 app/Gedcom.php:666
 msgid "Name prefix"
@@ -10530,14 +10511,14 @@ msgstr "Oaxaca, Mexiko"
 #: resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
-msgstr "Zaměstnání"
+msgstr "Povolání"
 
 #. I18N: Name of a report
 #: app/Module/OccupationReportModule.php:44
 #: resources/xml/reports/occupation_report.xml:3
 #: resources/xml/reports/occupation_report.xml:37
 msgid "Occupations"
-msgstr "Zaměstnání"
+msgstr "Povolání"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:411
@@ -10719,7 +10700,7 @@ msgstr "Natočení"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "Původ"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -12977,7 +12958,7 @@ msgstr "Zobrazit poznámky"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Zobrazit zaměstnání"
+msgstr "Zobrazit povolání"
 
 #: resources/views/modules/todays_events/config.phtml:19
 #: resources/views/modules/upcoming_events/config.phtml:31
@@ -13604,7 +13585,7 @@ msgstr "St. Paul, Minnesota, USA"
 
 #: resources/views/admin/tags.phtml:28
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standardní GEDCOM tagy"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14735,7 +14716,7 @@ msgstr "Tento rodokmen byl naposledy aktualizován %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Tento název souboru není slučitelný s formátem souboru GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15247,7 +15228,7 @@ msgstr "Abychom vám pomohli začít s tímto blokem, vytvořili jsme několik s
 
 #: resources/views/admin/tags.phtml:939
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Abyste mohli zadávat údaje s uživatelsky definovanými tagy, musíte je povolit."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15769,7 +15750,7 @@ msgstr "Aktualizovat části názvů míst vyšší úrovně při zachování č
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "Aktualizováno dne"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16314,7 +16295,7 @@ msgstr "Svědek"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "Svědci"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16553,7 +16534,7 @@ msgstr "Váš webový server používá PHP verse %s, pro kterou se už nevydáv
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -20596,11 +20577,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "Pro tento formát souboru nedokáže webtrees vytvořit náhledy."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees nerozezná tento formát souboru."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20704,7 +20685,7 @@ msgstr[2] "±%s let"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "\"%1$s\" by mělo být \"%2$s\"."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
