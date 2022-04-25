@@ -10,6 +10,6 @@ use Fisharebest\Webtrees\MediaFile;
 ?>
 
 <?php if ($individual->findHighlightedMediaFile() instanceof MediaFile) : ?>
-    <?= $individual->findHighlightedMediaFile()->displayImage(30, 40, 'crop', []) ?>
+    <?= $individual->findHighlightedMediaFile()->displayImage(30, 40, 'crop', []) ?>&nbsp;
 <?php endif; ?>
 <?= $individual->fullName() ?>, <?= $individual->lifespan() ?>

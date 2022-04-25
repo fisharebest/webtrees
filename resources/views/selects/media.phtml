@@ -8,6 +8,6 @@ use Fisharebest\Webtrees\Media;
 
 ?>
 <?php foreach ($media->mediaFiles() as $media_file) : ?>
-    <?= $media_file->displayImage(30, 40, 'crop', []) ?>
+    <?= $media_file->displayImage(30, 40, 'crop', []) ?>&nbsp;
 <?php endforeach ?>
 <?= $media->fullName();
