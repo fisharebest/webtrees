@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:45+0100\n"
-"PO-Revision-Date: 2021-08-21 05:04+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
-"Language: fi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -300,14 +288,14 @@ msgstr[1] "%s kuukautta"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s lisätieto on päivitetty."
-msgstr[1] "%s lisätietoa on päivitetty."
+msgstr[0] "%s huomautus on päivitetty."
+msgstr[1] "%s huomautusta on päivitetty."
 
 #: app/Http/RequestHandlers/CheckTree.php:308
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s esiintyy liian monta kertaa."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -526,7 +514,7 @@ msgstr "(valittu %s:sta)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(sisältää mediatiedostot)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -789,7 +777,7 @@ msgstr "Luettelo tietovarastoista."
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:75
 msgid "A list of shared notes."
-msgstr "Luettelo lisätiedoista."
+msgstr "Luettelo jaetuista huomautuksista."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:77
@@ -866,7 +854,7 @@ msgstr "Salasanan palautuslinkki on lähetetty  ”%s”:lle."
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
 msgid "A private area to record notes or keep a journal."
-msgstr "Yksityisalue, jossa voi tallentaa muistiinpanoja tai pitää päiväkirjaa."
+msgstr "Yksityisalue, jossa voi tallentaa huomautuksia tai pitää päiväkirjaa."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:22
@@ -1009,7 +997,7 @@ msgstr "Välilehti, joka näyttää henkilöön liitetyt mediakohteet."
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:71
 msgid "A tab showing the notes attached to an individual."
-msgstr "Välilehti, joka näyttää henkilöön liitetyt muistiinpanot."
+msgstr "Välilehti, joka näyttää henkilöön liitetyt huomautukset."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:69
@@ -1327,7 +1315,7 @@ msgstr "Lisää uutisartikkeli"
 
 #: resources/views/modules/notes/tab.phtml:96
 msgid "Add a note"
-msgstr "Lisää lisätieto"
+msgstr "Lisää huomautus"
 
 #: resources/views/modules/relatives/family.phtml:227
 msgid "Add a sibling"
@@ -1506,7 +1494,7 @@ msgstr "Adelaide, Australia"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "Ylläpitäjän tunnus"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1930,7 +1918,7 @@ msgstr "Ancestry henkilötunnus"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com-lähdetunniste"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1994,11 +1982,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "Sovellustunnus"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "Sovelluksen nimi"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -2270,7 +2258,7 @@ msgstr "Hyväksy automaattisesti tämän käyttäjän muutokset"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:530
 msgid "Automatically expand notes"
-msgstr "Automaattisesti laajenna lisätiedot"
+msgstr "Laajenna automaattisesti huomautukset"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:544
@@ -3452,7 +3440,7 @@ msgstr "Muutosten luettelo"
 #: resources/views/admin/gedcom-export-options.phtml:77
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "Kirjain koodaus"
 
 #: app/Gedcom.php:476
 msgid "Character set"
@@ -3688,7 +3676,7 @@ msgstr "Ympärileikkaaja"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "Ympärileikkaus"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4085,11 +4073,11 @@ msgstr "Luo tietovarasto"
 #: app/Elements/XrefNote.php:60
 #: resources/views/modals/create-note-object.phtml:16
 msgid "Create a shared note"
-msgstr "Luo jaettu lisätieto"
+msgstr "Luo jaettu huomautus"
 
 #: resources/views/modules/census-assistant.phtml:15
 msgid "Create a shared note using the census assistant"
-msgstr "Lisää jaettu lisätieto väestönlaskenta avustajaa käyttäen"
+msgstr "Lisää jaettu huomautus väestönlaskenta avustajaa käyttäen"
 
 #: app/Elements/XrefSource.php:72 resources/views/modals/create-source.phtml:16
 msgid "Create a source"
@@ -4137,7 +4125,7 @@ msgstr "Luo, päivitä ja poista sukupuu jokaiselle GEDCOM tiedostolle joka löy
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "Luotu"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
@@ -4301,7 +4289,7 @@ msgstr "Mukautetut GEDCOM-tunnisteet"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Mukautettuja GEDCOM-tunnisteita ei suositella. Yritä käyttää vain tavallisia GEDCOM-tunnisteita."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5087,7 +5075,7 @@ msgstr "Poista nimi"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Poista käyttämättömät sijainnit"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -5099,7 +5087,7 @@ msgstr "Perheen poistaminen poistaa kaikki henkilöiden väliset yhteydet mutta 
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Poistetaan…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5108,7 +5096,7 @@ msgstr "Kongon demokraattinen tasavalta"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "Väestötiedot"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -5512,7 +5500,7 @@ msgstr "Muokkaa GEDCOM raakadata"
 
 #: app/Http/RequestHandlers/EditNotePage.php:54
 msgid "Edit the shared note"
-msgstr "Muokkaa jaettu lisätieto"
+msgstr "Muokkaa jaettu huomautus"
 
 #: app/Module/StoriesModule.php:302
 #: resources/views/modules/stories/tab.phtml:27
@@ -5688,7 +5676,7 @@ msgstr "Englanti"
 
 #: resources/views/modules/favorites/favorites.phtml:162
 msgid "Enter an optional note about this favorite"
-msgstr "Syötä tarvittaessa lisätieto tästä suosikista"
+msgstr "Syötä valinnainen huomautus tästä suosikista"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -6083,7 +6071,7 @@ msgstr "Perheen väestönlaskenta"
 
 #: resources/views/admin/tags.phtml:954
 msgid "Family facts and events"
-msgstr ""
+msgstr "Perheen faktat ja tapahtumat"
 
 #: app/Gedcom.php:843
 msgid "Family file"
@@ -6801,12 +6789,12 @@ msgstr "GEDCOM-tunnisteet"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/Gedcom.php:1115 resources/views/admin/tags.phtml:964
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6816,7 +6804,7 @@ msgstr "GOV-tunniste"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV-tunnisteen tyyppi"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7793,7 +7781,7 @@ msgstr "Henkilöjakautuma"
 
 #: resources/views/admin/tags.phtml:944
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Henkilön faktat ja tapahtumat"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7884,11 +7872,11 @@ msgstr "Tiedon antaja"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "Aloite"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Sisäänrakennettuja lähdetietueita ei suositella."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7922,11 +7910,11 @@ msgstr "Rakennevirhe GEDCOM tiedostossa - otsikkotietuetta (header) ei löytynyt
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Virheellinen GEDCOM-tiedosto – traileritietuetta ei löytynyt."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Virheellinen GEDCOM-tason numero."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7934,15 +7922,15 @@ msgstr "Virheellinen GEDCOM-tietue"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Virheellinen GEDCOM-tietue."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Virheellinen GEDCOM-tunniste."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Virheellinen GEDCOM-arvo."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -7979,7 +7967,7 @@ msgstr "Päivityksen lataaminen ja asentaminen voi kestää useita minuutteja. O
 
 #: resources/views/admin/tags.phtml:937
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Ei ole suositeltavaa käyttää mukautettuja GEDCOM-tunnisteita. Nämä tiedot voivat kadota, kun siirrät ne muihin sovelluksiin."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8345,11 +8333,11 @@ msgstr "Nimiö"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "Nimiö miehelle"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "Nimiö vaimolle"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8359,12 +8347,12 @@ msgstr "Laie, Havaiji, Yhdysvallat"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "Maan osto"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "Maan myynti"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8584,11 +8572,11 @@ msgstr "Lima, Peru"
 
 #: resources/views/admin/gedcom-export-options.phtml:87
 msgid "Line endings"
-msgstr ""
+msgstr "Rivien päätteet"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "Rivin numero"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -8900,7 +8888,7 @@ msgstr "Käsikirjoitus"
 
 #: resources/views/admin/tags.phtml:935
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Monet sukututkimussovellukset määrittelevät omat mukautetut GEDCOM-tunnisteensa ja webtrees pystyy näyttämään suurimman osan niistä."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9929,7 +9917,7 @@ msgstr "Nimi hepreaksi"
 #: app/Gedcom.php:1174 app/Gedcom.php:1182 app/Gedcom.php:1428
 #: app/Gedcom.php:1491
 msgid "Name of addressee"
-msgstr ""
+msgstr "Vastaanottajan nimi"
 
 #: app/Gedcom.php:654 app/Gedcom.php:661 app/Gedcom.php:666
 msgid "Name prefix"
@@ -10368,7 +10356,7 @@ msgstr "Käyttäjä jättänyt vahvistamatta"
 #: resources/xml/reports/family_group_report.xml:1101
 #: resources/xml/reports/occupation_report.xml:64
 msgid "Note"
-msgstr "Lisätieto"
+msgstr "Huomautus"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10376,7 +10364,7 @@ msgstr "Muista, rekisteröity henkilö näkee aina omat tietonsa."
 
 #: resources/views/help/relationship-privacy.phtml:16
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "Huom.: mitä isompi on sallittujen hyppyjen määrä, sitä enemmän laskentaa tarvitaan, joka voi hidastaa toimintaa näille käyttäjille."
+msgstr "Huomaa: pidemmät polut vaativat paljon laskelmia, mikä voi hidastaa verkkosivustosi toimintaa käyttäjille."
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:113 app/Module/NoteListModule.php:157
@@ -10389,7 +10377,7 @@ msgstr "Huom.: mitä isompi on sallittujen hyppyjen määrä, sitä enemmän las
 #: resources/xml/reports/individual_ext_report.xml:237
 #: resources/xml/reports/individual_report.xml:226
 msgid "Notes"
-msgstr "Lisätiedot"
+msgstr "Huomautukset"
 
 #: resources/views/admin/users-cleanup.phtml:75
 msgid "Nothing found to cleanup"
@@ -10691,7 +10679,7 @@ msgstr "Sivun asento"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "Alkuperä"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -11060,7 +11048,7 @@ msgstr "Usein paikan nimet ovat liian pitkiä sovitettavaksi kaavioihin, listoih
 
 #: resources/views/help/place.phtml:12
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää lähteissä, lisätiedoissa jne."
+msgstr "Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää lähteissä, huomautuksissa, jne."
 
 #: resources/views/help/place.phtml:8
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -12118,12 +12106,12 @@ msgstr "SQLite-versio %s on asennettu. SQLite-versio %s tai uudempi on tarpeen."
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12684,14 +12672,14 @@ msgstr "Jaa tapahtuman vuosipäivä"
 #: resources/views/modules/notes/tab.phtml:63
 #: resources/views/note-page-details.phtml:22
 msgid "Shared note"
-msgstr "Jaettu lisätieto"
+msgstr "Jaettu huomautus"
 
 #. I18N: Name of a module/list
 #: app/Module/NoteListModule.php:64
 #: resources/views/lists/sources-table.phtml:101
 #: resources/views/search-general-page.phtml:105
 msgid "Shared notes"
-msgstr "Jaetut lisätiedot"
+msgstr "Jaetut huomautukset"
 
 #. I18N: plural noun - things that can be shared
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
@@ -12839,11 +12827,11 @@ msgstr "Näytä käyttöehdot kun pyydetään uusi käyttäjätili"
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "Näytä kaikki mediat"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
-msgstr "Näytä kaikki lisätiedot"
+msgstr "Näytä kaikki huomautukset"
 
 #: app/Module/PlaceHierarchyListModule.php:216
 msgid "Show all places in a list"
@@ -12945,7 +12933,7 @@ msgstr "Näytä yksityisten henkilöiden nimet"
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Näytä lisätiedot"
+msgstr "Näytä huomautukset"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
@@ -13369,7 +13357,7 @@ msgstr "%s - poika"
 
 #: app/Gedcom.php:1589
 msgid "Sort date"
-msgstr ""
+msgstr "Lajittelupäivämäärä"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -13576,7 +13564,7 @@ msgstr "St. Paul, Minnesota, Yhdysvallat"
 
 #: resources/views/admin/tags.phtml:28
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Vakio-GEDCOM-tunnisteet"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14269,7 +14257,7 @@ msgstr "Muistin ja CPU vaatimukset riippuvat siitä, miten paljon henkilöitä s
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Viestiä ei lähetetty vastaanottajalle %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -14315,7 +14303,7 @@ msgstr "Uutta käyttäjää pyydetään vahvistamaan sähköpostiosoite ennen ku
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:64
 msgid "The note has been created"
-msgstr "Lisätieto on luotu"
+msgstr "Huomautus on luotu"
 
 #: app/Validator.php:234 app/Validator.php:250 app/Validator.php:260
 #: app/Validator.php:292 app/Validator.php:311 app/Validator.php:334
@@ -14559,7 +14547,7 @@ msgstr "Tällä henkilöllä ei ole multimediakohteita."
 
 #: resources/views/modules/notes/tab.phtml:84
 msgid "There are no notes for this individual."
-msgstr "Tällä henkilöllä ei ole lisätietoja."
+msgstr "Tällä henkilöllä ei ole huomautuksia."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:212
 #: resources/views/pending-changes-page.phtml:30
@@ -14704,7 +14692,7 @@ msgstr "Tätä sukupuuta on viimeksi päivitetty %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Tämä tiedostonimi ei ole yhteensopiva GEDZIP-tiedostomuodon kanssa."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -14873,11 +14861,11 @@ msgstr "Tätä nimeä käytetään ”Keneltä (From)”-kentässä, kun tältä
 
 #: app/Auth.php:377 app/Http/RequestHandlers/RedirectNotePhp.php:69
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "Tämä lisätieto ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
+msgstr "Tämä huomautus ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
 #: resources/views/note-page-pending.phtml:19
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Tämä lisätieto on poistettu. Valvojan on tarkastettava poisto."
+msgstr "Tämä huomautus on poistettu. Valvojan on tarkastettava poisto."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page-pending.phtml:17
@@ -14887,7 +14875,7 @@ msgstr "Tämä huomautus on poistettu. Tarkistaa poisto ja %1$s tai %2$s se."
 
 #: resources/views/note-page-pending.phtml:25
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "Tämä lisätieto on muokattu. Valvojan on tarkastettava muutokset."
+msgstr "Tämä huomautus on muokattu. Valvojan on tarkastettava muutokset."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page-pending.phtml:23
@@ -14898,7 +14886,7 @@ msgstr "Tämä huomautus on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:536
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Tällä valinnalla vaikutetaan siihen, näytetäänkö automaattisesti <i>Lisätiedot</i> tekstit henkilön sivulla."
+msgstr "Tällä valinnalla vaikutetaan siihen, näytetäänkö automaattisesti <i>Huomautus</i> tekstit henkilön sivulla."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:550
@@ -15215,7 +15203,7 @@ msgstr "Auttaaksemme sinua alkamaan tämän lohkon määrittelyn, olemme luoneet
 
 #: resources/views/admin/tags.phtml:939
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Jos haluat luoda uusia tietoja mukautetuilla tunnisteilla, sinun on otettava ne käyttöön."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15223,12 +15211,12 @@ msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä 
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "Kartan näyttämiseksi sinun on otettava käyttöön karttatarjoaja ohjauspaneelissa."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä jne."
+msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, huomautukset, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä, jne."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
@@ -15288,7 +15276,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Liikaa pyyntöjä. Yritä myöhemmin uudelleen."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15560,7 +15548,7 @@ msgstr "Faktatyyppi"
 
 #: app/Gedcom.php:646
 msgid "Type of identification number"
-msgstr "Tunnistenumeron tyyppi"
+msgstr "Tunnusnumeron tyyppi"
 
 #: app/Gedcom.php:1240
 msgid "Type of location"
@@ -15641,7 +15629,7 @@ msgstr "Epäselvä: puutteelliset tiedot"
 #: app/Gedcom.php:1569 app/Gedcom.php:1571 app/Gedcom.php:1575
 #: app/Gedcom.php:1576 app/Gedcom.php:1579
 msgid "Unique identifier"
-msgstr "Unique identifier - Yksilöllinen tunniste"
+msgstr "Yksilöllinen tunniste"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:145
@@ -15735,7 +15723,7 @@ msgstr "Päivitä paikannimien korkeamman tason osat pitäen alhaisemman tason o
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "Päivitetty"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16279,7 +16267,7 @@ msgstr "Todistaja"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "Todistajat"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16518,7 +16506,7 @@ msgstr "Web-palvelimesi käyttää PHP versiota %s , joka ei enää vastaanottaa
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16673,7 +16661,7 @@ msgstr "täti/setä/eno"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "automaattinen"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19138,7 +19126,7 @@ msgstr "Sylilapsi"
 
 #: app/Elements/NoteStructure.php:66
 msgid "inline note"
-msgstr "upotettu lisätieto"
+msgstr "sisäinen huomautus"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:197
@@ -19625,7 +19613,7 @@ msgstr "prosenttiosuus"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:107
 msgid "plain text"
-msgstr ""
+msgstr "yksinkertainen teksti"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -19985,7 +19973,7 @@ msgstr "7. serkku"
 
 #: app/Elements/NoteStructure.php:67
 msgid "shared note"
-msgstr "jaettu lisätieto"
+msgstr "jaettu huomautus"
 
 #: resources/views/admin/site-mail.phtml:152
 #: resources/views/admin/tags.phtml:968
@@ -20559,11 +20547,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees ei voi luoda pikkukuvia tälle tiedostomuodolle."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees ei tunnista tätä tiedostomuotoa."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20666,7 +20654,7 @@ msgstr[1] "±%s vuotta"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "\"%1$s\" tulee olla \"%2$s\"."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
