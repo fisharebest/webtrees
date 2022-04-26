@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:45+0100\n"
-"PO-Revision-Date: 2021-08-21 05:04+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
-"Language: he\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\nLanguage: he\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -311,7 +295,7 @@ msgstr[1] "%s הערות עודכנו."
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s מתרחש יותר מדי פעמים."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -530,7 +514,7 @@ msgstr "(סונן מסה״כ %s כניסות)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(כולל קבצי מדיה)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1510,7 +1494,7 @@ msgstr "אדלייד, אוסטרליה"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "קוד זהוי מנהלתי"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1934,7 +1918,7 @@ msgstr "זהוי אישי באנססטרי"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "מזהה מקור של Ancestry.com"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1998,11 +1982,11 @@ msgstr "אפיה, סמואה"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "מזהה אפליקציה"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "שם אפליקציה"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3456,7 +3440,7 @@ msgstr "יומן שינויים"
 #: resources/views/admin/gedcom-export-options.phtml:77
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "קידוד תווים"
 
 #: app/Gedcom.php:476
 msgid "Character set"
@@ -3692,7 +3676,7 @@ msgstr "מוהל"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "ברית מילה"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4141,7 +4125,7 @@ msgstr "צור, עדכן ומחק עץ משפחה עבור כל קובץ GEDCOM 
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "נוצר"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
@@ -4305,7 +4289,7 @@ msgstr "תגי GEDCOM מותאמים אישית"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "רצוי להמנע מתגי GEDCOM מותאמים אישית. נסה להשתמש רק בתגיות GEDCOM סטנדרטיות."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5091,7 +5075,7 @@ msgstr "מחק שם"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "מחק מיקומים שאינם בשימוש"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -5103,7 +5087,7 @@ msgstr "מחיקת המשפחה תבטל את הקשר בין כל האנשים 
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "מוחק…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5112,7 +5096,7 @@ msgstr "הרפובליקה הדמוקרטית של קונגו"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "מידע דמוגרפי"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -6087,7 +6071,7 @@ msgstr "מפקד משפחה"
 
 #: resources/views/admin/tags.phtml:954
 msgid "Family facts and events"
-msgstr ""
+msgstr "עובדות ואירועים משפחתיים"
 
 #: app/Gedcom.php:843
 msgid "Family file"
@@ -6805,12 +6789,12 @@ msgstr "תגי GEDCOM"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/Gedcom.php:1115 resources/views/admin/tags.phtml:964
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6820,7 +6804,7 @@ msgstr "מזהה GOV"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "סוג מזהה GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7797,7 +7781,7 @@ msgstr "תרשים התפלגות אנשים"
 
 #: resources/views/admin/tags.phtml:944
 msgid "Individual facts and events"
-msgstr ""
+msgstr "עובדות ואירועים אישיים"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7888,11 +7872,11 @@ msgstr "מוסר מידע"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "יוזם"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "רצוי להמנע מרשומות מקור מוטבעות."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7926,11 +7910,11 @@ msgstr "קובץ ה -GEDCOM לא חוקי - לא נמצאה רשומת הכות�
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "קובץ GEDCOM לא חוקי - רשומת סיומת לא נמצאה."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "מספר רמת GEDCOM לא חוקי."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7938,15 +7922,15 @@ msgstr "רשומת GEDCOM לא חוקית"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "רשומת GEDCOM לא חוקית."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "תג GEDCOM לא חוקי."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "ערך GEDCOM לא חוקי."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -7983,7 +7967,7 @@ msgstr "הורדת והתקנת השדרוג יכולה לקחת מספר דקו
 
 #: resources/views/admin/tags.phtml:937
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "לא מומלץ להשתמש בתגיות GEDCOM מותאמות אישית. נתונים אלה עלולים ללכת לאיבוד כאשר אתה מעביר אותם ליישומים אחרים."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8349,11 +8333,11 @@ msgstr "תווית"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "תווית לבעל"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "תווית לאישה"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8363,12 +8347,12 @@ msgstr "לאיה, הוואי, ארצות הברית"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "רכישת קרקע"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "מכירת קרקע"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8588,11 +8572,11 @@ msgstr "לימה, פרו"
 
 #: resources/views/admin/gedcom-export-options.phtml:87
 msgid "Line endings"
-msgstr ""
+msgstr "סיומי שורה"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "מספר שורה"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -8904,7 +8888,7 @@ msgstr "כתב-יד"
 
 #: resources/views/admin/tags.phtml:935
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "יישומי גנאלוגיה רבים מגדירים תגיות GEDCOM מותאמות אישית משלהם ו-webtrees יוכל להציג את רובם."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9220,7 +9204,7 @@ msgstr "מצא התאמה מלאה אלא אם המחרוזת מופיעה בא�
 
 #: app/Module/MatomoAnalyticsModule.php:44
 msgid "Matomo™ / Piwik™ analytics"
-msgstr "Matomo™ / Piwik™ analytics"
+msgstr "ניתוח של ™Matomo™ / Piwik"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -9933,7 +9917,7 @@ msgstr "שם בעברית"
 #: app/Gedcom.php:1174 app/Gedcom.php:1182 app/Gedcom.php:1428
 #: app/Gedcom.php:1491
 msgid "Name of addressee"
-msgstr ""
+msgstr "שם הנמען"
 
 #: app/Gedcom.php:654 app/Gedcom.php:661 app/Gedcom.php:666
 msgid "Name prefix"
@@ -10278,7 +10262,7 @@ msgstr "ליילי"
 #. I18N: https://nominatim.org
 #: app/Module/MapGeoLocationNominatim.php:39
 msgid "Nominatim"
-msgstr "Nominatim"
+msgstr "מועמדים"
 
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
@@ -10695,7 +10679,7 @@ msgstr "כוון"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "מקור"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -11440,7 +11424,7 @@ msgstr "פרובו, יוטה, ארצות הברית"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr "מיופה כח"
+msgstr "פרוקסי"
 
 #: app/Gedcom.php:803 resources/views/lists/sources-table.phtml:97
 #: resources/views/modals/source-fields.phtml:36
@@ -12122,12 +12106,12 @@ msgstr "גירסת SQLite %s מותקנת. נדרשת גירסת SQLite %s וא�
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12843,7 +12827,7 @@ msgstr "הראה הסכם הגנה על פרטיות על הדף \"בקש חשב
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "הצג את כל המדיה"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13373,7 +13357,7 @@ msgstr "בן של %s"
 
 #: app/Gedcom.php:1589
 msgid "Sort date"
-msgstr ""
+msgstr "תאריך המיון"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -13580,7 +13564,7 @@ msgstr "סיינט פול, מינסוטה, ארצות הברית"
 
 #: resources/views/admin/tags.phtml:28
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "תגי GEDCOM סטנדרטיים"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14273,7 +14257,7 @@ msgstr "דרישות ה-CPU והזיכרון תלויות במספר האנשי�
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "ההודעה לא נשלחה אל %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -14708,7 +14692,7 @@ msgstr "עץ המשפחה הזה עודכן לאחרונה ב-%s."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "שם קובץ זה אינו תואם לפורמט הקובץ GEDZIP."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15219,7 +15203,7 @@ msgstr "כדי לסייע לך להתחיל עם המסגרת הזו, יצרנו
 
 #: resources/views/admin/tags.phtml:939
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "כדי ליצור נתונים חדשים באמצעות תגים מותאמים אישית, עליך להפעיל אותם."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15227,7 +15211,7 @@ msgstr "כדי ליצור משימות מחקר חדשות, תחילה עליך 
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "כדי להציג מפה, עליך להפעיל ספק מפות בלוח הבקרה."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -15292,7 +15276,7 @@ msgstr "טונגה"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "יותר מדי בקשות. נסה שוב מאוחר יותר."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15739,7 +15723,7 @@ msgstr "עדכן את החלקים ברמה הגבוהה ביותר של שמו�
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "עודכן"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16283,7 +16267,7 @@ msgstr "עד"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "עדים"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16522,7 +16506,7 @@ msgstr "שרת האינטרנט שלך משתמש בגרסת PHP %s, שכבר ל
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16677,7 +16661,7 @@ msgstr "דוד/דודה"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "אוֹטוֹמָטִי"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19629,7 +19613,7 @@ msgstr "אחוז"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:107
 msgid "plain text"
-msgstr ""
+msgstr "טקסט רגיל"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -20563,11 +20547,11 @@ msgstr "וובטריס"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees לא יכול ליצור תמונות ממוזערות עבור פורמט קובץ זה."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees אינו מזהה את פורמט הקובץ הזה."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20670,7 +20654,7 @@ msgstr[1] "± %s שנים"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "\"%1$s\" צריך להיות \"%2$s\"."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
