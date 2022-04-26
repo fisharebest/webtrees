@@ -100,7 +100,7 @@ use Illuminate\Support\Collection;
             <td>
                 <?php if ($list_module !== null && array_key_exists($place->key, $active)): ?>
                     <?php if (count($active[$place->key]) === 1): ?>
-                        <a class="btn btn-link" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][0]->tree_name), ['place_id' => $active[$place->key][0]->p_id, 'action2' => 'hierarchy-e'])) ?>">
+                        <a class="btn btn-link" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][0]->tree_name), ['place_id' => $active[$place->key][0]->p_id])) ?>">
                             <?= e($active[$place->key][0]->tree_title) ?>
                         </a>
                     <?php else: ?>
