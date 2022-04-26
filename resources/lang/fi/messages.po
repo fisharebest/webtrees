@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-04-01 13:26+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees-20/fi/>\n"
+"PO-Revision-Date: 2022-04-29 08:55+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -298,8 +299,8 @@ msgstr[1] "%s kuukautta"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s lisätieto on päivitetty."
-msgstr[1] "%s lisätietoa on päivitetty."
+msgstr[0] "%s huomautus on päivitetty."
+msgstr[1] "%s huomautusta on päivitetty."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: app/Functions/Functions.php:2350
@@ -785,7 +786,7 @@ msgstr "Luettelo tietovarastoista."
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr "Luettelo lisätiedoista."
+msgstr "Luettelo jaetuista huomautuksista."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
@@ -862,7 +863,7 @@ msgstr "Salasanan palautuslinkki on lähetetty  ”%s”:lle."
 #. I18N: Description of the “Journal” module
 #: app/Module/UserJournalModule.php:66
 msgid "A private area to record notes or keep a journal."
-msgstr "Yksityisalue, jossa voi tallentaa muistiinpanoja tai pitää päiväkirjaa."
+msgstr "Yksityisalue, jossa voi tallentaa huomautuksia tai pitää päiväkirjaa."
 
 #. I18N: %s is a server name/URL
 #: resources/views/emails/register-notify-html.phtml:22
@@ -1005,7 +1006,7 @@ msgstr "Välilehti, joka näyttää henkilöön liitetyt mediakohteet."
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:70
 msgid "A tab showing the notes attached to an individual."
-msgstr "Välilehti, joka näyttää henkilöön liitetyt muistiinpanot."
+msgstr "Välilehti, joka näyttää henkilöön liitetyt huomautukset."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:70
@@ -1319,7 +1320,7 @@ msgstr "Lisää uutisartikkeli"
 #: resources/views/family-page.phtml:75
 #: resources/views/modules/notes/tab.phtml:55
 msgid "Add a note"
-msgstr "Lisää lisätieto"
+msgstr "Lisää huomautus"
 
 #: resources/views/media-page.phtml:200
 msgid "Add a restriction"
@@ -1328,7 +1329,7 @@ msgstr "Lisää rajoitus"
 #: resources/views/family-page.phtml:86 resources/views/media-page.phtml:190
 #: resources/views/modules/notes/tab.phtml:65
 msgid "Add a shared note"
-msgstr "Lisää jaettu lisätieto"
+msgstr "Lisää jaettu huomautus"
 
 #: resources/views/modules/relatives/family.phtml:228
 msgid "Add a sibling"
@@ -2104,7 +2105,7 @@ msgstr "akvamariini"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa linkin kohteeseen \"%s\"?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -2326,7 +2327,7 @@ msgstr "Hyväksy automaattisesti tämän käyttäjän muutokset"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:551
 msgid "Automatically expand notes"
-msgstr "Automaattisesti laajenna lisätiedot"
+msgstr "Laajenna automaattisesti huomautukset"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:567
@@ -4204,11 +4205,11 @@ msgstr "Luo tietovarasto"
 #: app/Elements/XrefNote.php:61 app/Functions/FunctionsEdit.php:481
 #: resources/views/modals/create-note-object.phtml:16
 msgid "Create a shared note"
-msgstr "Luo jaettu lisätieto"
+msgstr "Luo jaettu huomautus"
 
 #: resources/views/modules/census-assistant.phtml:15
 msgid "Create a shared note using the census assistant"
-msgstr "Lisää jaettu lisätieto väestönlaskenta avustajaa käyttäen"
+msgstr "Lisää jaettu huomautus väestönlaskenta avustajaa käyttäen"
 
 #: app/Elements/XrefSource.php:70 app/Functions/FunctionsEdit.php:545
 #: resources/views/modals/create-source.phtml:16
@@ -5664,7 +5665,7 @@ msgstr "Muokkaa GEDCOM raakadata"
 
 #: app/Http/RequestHandlers/EditNotePage.php:59
 msgid "Edit the shared note"
-msgstr "Muokkaa jaettu lisätieto"
+msgstr "Muokkaa jaettu huomautus"
 
 #: app/Module/StoriesModule.php:310
 #: resources/views/modules/stories/tab.phtml:27
@@ -5853,7 +5854,7 @@ msgstr "Englanti"
 
 #: resources/views/modules/favorites/favorites.phtml:163
 msgid "Enter an optional note about this favorite"
-msgstr "Syötä tarvittaessa lisätieto tästä suosikista"
+msgstr "Syötä valinnainen huomautus tästä suosikista"
 
 #: resources/views/search-replace-page.phtml:47
 msgid "Entire record"
@@ -6251,7 +6252,7 @@ msgstr "Sukukirja - %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Perheen väestönlaskenta"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6275,7 +6276,7 @@ msgstr "Perhe - %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Perheasunto"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6369,7 +6370,7 @@ msgstr "Perhe vaimon kanssa"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch-tunnus"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -10488,7 +10489,7 @@ msgstr "Käyttäjä jättänyt vahvistamatta"
 #: resources/xml/reports/family_group_report.xml:1101
 #: resources/xml/reports/occupation_report.xml:64
 msgid "Note"
-msgstr "Lisätieto"
+msgstr "Huomautus"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10496,7 +10497,9 @@ msgstr "Muista, rekisteröity henkilö näkee aina omat tietonsa."
 
 #: resources/views/help/relationship-privacy.phtml:16
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "Huom.: mitä isompi on sallittujen hyppyjen määrä, sitä enemmän laskentaa tarvitaan, joka voi hidastaa toimintaa näille käyttäjille."
+msgstr ""
+"Huomaa: pidemmät polut vaativat paljon laskelmia, mikä voi hidastaa "
+"verkkosivustosi toimintaa käyttäjille."
 
 #. I18N: Name of a module
 #: app/Module/FixSearchAndReplace.php:114 app/Module/NoteListModule.php:164
@@ -10510,7 +10513,7 @@ msgstr "Huom.: mitä isompi on sallittujen hyppyjen määrä, sitä enemmän las
 #: resources/xml/reports/individual_ext_report.xml:237
 #: resources/xml/reports/individual_report.xml:226
 msgid "Notes"
-msgstr "Lisätiedot"
+msgstr "Huomautukset"
 
 #: resources/views/admin/users-cleanup.phtml:75
 msgid "Nothing found to cleanup"
@@ -11197,7 +11200,10 @@ msgstr "Usein paikan nimet ovat liian pitkiä sovitettavaksi kaavioihin, listoih
 
 #: resources/views/help/place.phtml:12
 msgid "Place names can change over time.  In genealogy, it is customary to use the current name for a town or country. The historic name can be shown in sources, notes, etc."
-msgstr "Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää lähteissä, lisätiedoissa jne."
+msgstr ""
+"Paikannimet voivat muuttua ajan myötä. Sukututkimuksessa on tapana käyttää "
+"nykyistä nimeä kaupungille tai maalle. Historiallinen nimi voidaan näyttää "
+"lähteissä, huomautuksissa, jne."
 
 #: resources/views/help/place.phtml:8
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
@@ -11602,7 +11608,7 @@ msgstr "Provo, Utah, Yhdysvallat"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Edustaja"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -12892,14 +12898,14 @@ msgstr "Shahrivar"
 #: resources/views/modules/notes/tab.phtml:61
 #: resources/views/note-page.phtml:98
 msgid "Shared note"
-msgstr "Jaettu lisätieto"
+msgstr "Jaettu huomautus"
 
 #. I18N: Name of a module/list
 #: app/Module/NoteListModule.php:70
 #: resources/views/lists/sources-table.phtml:100
 #: resources/views/search-general-page.phtml:88
 msgid "Shared notes"
-msgstr "Jaetut lisätiedot"
+msgstr "Jaetut huomautukset"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:146
@@ -13046,7 +13052,7 @@ msgstr "Näytä käyttöehdot kun pyydetään uusi käyttäjätili"
 
 #: resources/views/modules/notes/tab.phtml:26
 msgid "Show all notes"
-msgstr "Näytä kaikki lisätiedot"
+msgstr "Näytä kaikki huomautukset"
 
 #: app/Module/PlaceHierarchyListModule.php:217
 msgid "Show all places in a list"
@@ -13148,7 +13154,7 @@ msgstr "Näytä yksityisten henkilöiden nimet"
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Näytä lisätiedot"
+msgstr "Näytä huomautukset"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
@@ -13732,7 +13738,7 @@ msgstr "Puoliso"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:223
 msgid "Spouse note"
-msgstr "Puoliso, lisätieto"
+msgstr "Puoliso huomautus"
 
 #: resources/views/edit/reorder-families.phtml:33
 #: resources/views/lists/surnames-table.phtml:35
@@ -14526,7 +14532,7 @@ msgstr "Uutta käyttäjää pyydetään vahvistamaan sähköpostiosoite ennen ku
 
 #: app/Http/RequestHandlers/CreateNoteAction.php:75
 msgid "The note has been created"
-msgstr "Lisätieto on luotu"
+msgstr "Huomautus on luotu"
 
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
@@ -14765,7 +14771,7 @@ msgstr "Tällä henkilöllä ei ole multimediakohteita."
 
 #: resources/views/modules/notes/tab.phtml:41
 msgid "There are no notes for this individual."
-msgstr "Tällä henkilöllä ei ole lisätietoja."
+msgstr "Tällä henkilöllä ei ole huomautuksia."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:218
 #: resources/views/pending-changes-page.phtml:30
@@ -15151,11 +15157,12 @@ msgstr "Tätä nimeä käytetään ”Keneltä (From)”-kentässä, kun tältä
 #: app/Exceptions/NoteAccessDeniedException.php:35
 #: app/Exceptions/NoteNotFoundException.php:35
 msgid "This note does not exist or you do not have permission to view it."
-msgstr "Tämä lisätieto ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
+msgstr ""
+"Tämä huomautus ei ole olemassa tai sinulla ei ole oikeutta katsella sitä."
 
 #: resources/views/note-page.phtml:37
 msgid "This note has been deleted. The deletion will need to be reviewed by a moderator."
-msgstr "Tämä lisätieto on poistettu. Valvojan on tarkastettava poisto."
+msgstr "Tämä huomautus on poistettu. Valvojan on tarkastettava poisto."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:35
@@ -15165,7 +15172,7 @@ msgstr "Tämä huomautus on poistettu. Tarkistaa poisto ja %1$s tai %2$s se."
 
 #: resources/views/note-page.phtml:43
 msgid "This note has been edited. The changes need to be reviewed by a moderator."
-msgstr "Tämä lisätieto on muokattu. Valvojan on tarkastettava muutokset."
+msgstr "Tämä huomautus on muokattu. Valvojan on tarkastettava muutokset."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/note-page.phtml:41
@@ -15176,7 +15183,9 @@ msgstr "Tämä huomautus on muokattu. Tarkista muutokset ja %1$s tai %2$s ne."
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:557
 msgid "This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page."
-msgstr "Tällä valinnalla vaikutetaan siihen, näytetäänkö automaattisesti <i>Lisätiedot</i> tekstit henkilön sivulla."
+msgstr ""
+"Tällä valinnalla vaikutetaan siihen, näytetäänkö automaattisesti "
+"<i>Huomautus</i> tekstit henkilön sivulla."
 
 #. I18N: Help text for the “Automatically expand sources” configuration setting
 #: resources/views/admin/trees-preferences.phtml:573
@@ -15436,7 +15445,7 @@ msgstr "Aika"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Viimeisen muutoksen aika"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15562,7 +15571,11 @@ msgstr "Voidaksesi luoda uusia tutkimustehtäviä, sinun täytyy ensin lisätä 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:618
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text. However, formatting is often desirable to aid presentation, comprehension, etc."
-msgstr "Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, muistiinpanot, tekstit ja selostukset olisi kirjattava yksinkertaisena, muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta voidaan tukea esittelyä, ymmärtämistä jne."
+msgstr ""
+"Muiden sukututkimussovellusten yhteensopivuuden varmistamiseksi, "
+"huomautukset, tekstit ja selostukset olisi kirjattava yksinkertaisena, "
+"muotoilemattomana tekstinä. Muotoilu on kuitenkin usein suotavaa jotta "
+"voidaan tukea esittelyä, ymmärtämistä, jne."
 
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:36
@@ -15614,7 +15627,7 @@ msgstr "Tonga"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Liikaa pyyntöjä. Yritä myöhemmin uudelleen."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15890,7 +15903,7 @@ msgstr "Faktatyyppi"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Tunnusnumeron tyyppi"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15908,7 +15921,7 @@ msgstr "Nimen tyyppi"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Viitenumeron tyyppi"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -15979,7 +15992,7 @@ msgstr "Yksilölliset perhefaktat"
 #: app/Factories/ElementFactory.php:893 app/Factories/ElementFactory.php:896
 #: app/Factories/ElementFactory.php:899 app/GedcomTag.php:1232
 msgid "Unique identifier"
-msgstr "Unique identifier - Yksilöllinen tunniste"
+msgstr "Yksilöllinen tunniste"
 
 #. I18N: Help text for the “Add unique identifiers” configuration setting
 #: resources/views/admin/trees-preferences.phtml:150
@@ -16045,7 +16058,7 @@ msgstr "Henkilö ei tiedossa"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Poista linkitys"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -19520,7 +19533,7 @@ msgstr "tuo tietue"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "sisäinen huomautus"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20396,7 +20409,7 @@ msgstr "7. serkku"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "jaettu huomautus"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
