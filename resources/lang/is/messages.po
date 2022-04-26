@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-04-14 22:15+0000\n"
+"PO-Revision-Date: 2022-04-29 08:55+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -5421,7 +5421,7 @@ msgstr "Dhu al-Hijjah"
 #: app/Date/HijriDate.php:105
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhul-Hijjah"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:148
@@ -6082,7 +6082,7 @@ msgstr "F.A.B."
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:73
 msgid "FAQ"
-msgstr "Algengar spurningar"
+msgstr "Spurningar"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:26
@@ -6413,7 +6413,7 @@ msgstr "Fjölskylda með eiginkonu"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr "FamilySearch (ID) auðkenni"
+msgstr "FamilySearch Auðkenni"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -8388,7 +8388,7 @@ msgstr "Haltu opnum"
 #: resources/views/edit/edit-fact.phtml:113
 #: resources/views/edit/edit-record.phtml:32
 msgid "Keep the existing “last change” information"
-msgstr "Haltu núverandi „síðustu breytingar“ upplýsingum"
+msgstr "Halda núverandi upplýsingum um „síðustu breytingar“"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -9064,7 +9064,7 @@ msgstr ""
 "Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkimiðum og "
 "webtrees skilur flesta þeirra. Þegar óþekkjanlegir merkimiðar finnst þá "
 "gerir þessi valkostur þér kleift að velja hvort eigi að hunsa þá eða birta "
-"aðvörunar skilaboð."
+"aðvörunarskilaboð."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:71
@@ -9404,7 +9404,7 @@ msgstr "Máritus"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:358
 msgid "Maximum number of surnames on individual list"
-msgstr "Hámarksfjöldi eftirnafna á einstakling lista"
+msgstr "Hámarksfjöldi eftirnafna á einstaklingslista"
 
 #: resources/views/admin/media-upload.phtml:24
 #: resources/views/modals/media-file-fields.phtml:46
@@ -11729,11 +11729,11 @@ msgstr "Quetzaltenango, Guatemala"
 
 #: resources/views/admin/trees-preferences.phtml:774
 msgid "Quick family facts"
-msgstr "Flýti fjölskyldur staðreyndir"
+msgstr "Flýti fjölskyldustaðreyndir"
 
 #: resources/views/admin/trees-preferences.phtml:720
 msgid "Quick individual facts"
-msgstr "Flýti einstaklings staðreyndir"
+msgstr "Flýti einstaklingsstaðreyndir"
 
 #: resources/views/admin/trees-preferences.phtml:856
 msgid "Quick repository facts"
@@ -12922,7 +12922,10 @@ msgstr "Stilltu stöðuna á „samþykkt“."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:638
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Með því að stilla þetta á <b>Já</b> þá verða krækjur staðsettar á einstaklings, heimilda og fjölskyldum til að leyfa notendum að kalla fram annan glugga sem inniheldur hrá gögn sem tekin eru úr GEDCOOM skránni."
+msgstr ""
+"Með því að stilla þetta á <b>Já</b> þá verða krækjur staðsettar á "
+"einstaklingum, heimildum og fjölskyldum til að leyfa notendum að kalla fram "
+"annan glugga sem inniheldur hrá gögn sem tekin eru úr GEDCOM skránni."
 
 #: resources/views/layouts/setup.phtml:16
 #: resources/views/layouts/setup.phtml:24
@@ -13732,7 +13735,11 @@ msgstr "Tilvitnun heimildar"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:920
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Heimilda tilvísanir geta innihaldið reiti til að skrá gæði gagnanna (uppruna, vara o.s.frv.) og dagsetning þegar atburðurinn var skráður í heimildina. Ef þú notar ekki þessa reiti, þá getur þú afvirkjað þá þegar ný heimilda tilvísun er stofnuð."
+msgstr ""
+"Heimildatilvísanir geta innihaldið reiti til að skrá gæði gagnanna (aðal, "
+"vara o.s.frv.) og dagsetning þegar atburðurinn var skráður í heimildina. Ef "
+"þú notar ekki þessa reiti, þá getur þú afvirkjað þá þegar ný "
+"heimildatilvísun er stofnuð."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:930
@@ -14217,7 +14224,7 @@ msgstr "Tansanía"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:183
 msgid "Teal Top"
-msgstr "Teal Top"
+msgstr "Blágrænn"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:181
@@ -15373,7 +15380,9 @@ msgstr "Þessi valkostur stjórnar því hvort birting innihalds sé sjálfvirk 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:416
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Þessi valkostur stjórnar því hvort sýna eigi eða ekki aldur föðurs og móður við hliðina á fæðingardeg barns á grafi."
+msgstr ""
+"Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og móður við "
+"hliðina á fæðingardegi barns á grafi eða ekki."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:385
@@ -16795,8 +16804,8 @@ msgstr "Vestur-Sahara"
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
 msgstr ""
 "Þegar færslu er breytt er notandi og tímamerki skráð. Stundum er æskilegt að "
-"geyma núverandi „síðustu breytingu“ upplýsingar, til dæmis þegar gerðar eru "
-"smávægilegar leiðréttingar á gögnum einhvers annars. Þessi valkostur "
+"geyma núverandi upplýsingar um „síðustu breytingu“, til dæmis þegar gerðar "
+"eru smávægilegar leiðréttingar á gögnum einhvers annars. Þessi valkostur "
 "stjórnar því hvort þessi eiginleiki er sjálfgefið valinn."
 
 #: resources/views/admin/users-edit.phtml:108
