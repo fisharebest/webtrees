@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:45+0100\n"
-"PO-Revision-Date: 2022-04-14 22:15+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -307,7 +295,7 @@ msgstr[1] "%s minnisatriði hafa verið uppfærð."
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s kemur of oft fyrir."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -526,7 +514,7 @@ msgstr "(síað frá %s samtals skráningum)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(inniheldur margmiðlunarskrár)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1506,7 +1494,7 @@ msgstr "Adelaide, Ástralía"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "Stjórnunarauðkenni"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1930,7 +1918,7 @@ msgstr "Ættar PID"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com upprunaauðkenni"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1994,11 +1982,11 @@ msgstr "Apia, Samóa"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "Hugbúnaðarauðkenni"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "Hugbúnaðarheiti"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3452,7 +3440,7 @@ msgstr "Breytingaskrá"
 #: resources/views/admin/gedcom-export-options.phtml:77
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "Stafakóðun"
 
 #: app/Gedcom.php:476
 msgid "Character set"
@@ -3688,7 +3676,7 @@ msgstr "Umskurðarmanneskja"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "Umskurður"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4137,7 +4125,7 @@ msgstr "Útbúa, uppfæra og eyða ættartölu fyrir hverja GEDCOM skrá í gagn
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "Stofnað klukkan"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
@@ -4301,7 +4289,7 @@ msgstr "Sérsniðin GEDCOM merki"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Ekki er mælt með sérsniðnum GEDCOM merkjum. Reyndu að nota aðeins stöðluð GEDCOM merki."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5087,7 +5075,7 @@ msgstr "Eyða nafni"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Eyða ónotuðum stöðum"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -5099,7 +5087,7 @@ msgstr "Með því að eyða fjölskyldunni þá aftengjast allir einstaklingar 
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Eyði…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5108,7 +5096,7 @@ msgstr "Kongó (Kinshasa)"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "Lýðfræðileg gögn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -5245,7 +5233,7 @@ msgstr "Dhu al-Hijjah"
 #: app/Date/HijriDate.php:119
 msgctxt "NOMINATIVE"
 msgid "Dhu al-Hijjah"
-msgstr "Dhu al-Hijjah"
+msgstr "Dhul-Hijjah"
 
 #. I18N: https://en.wikipedia.org/wiki/Dhu_al-Qi%27dah
 #: app/Date/HijriDate.php:162
@@ -5881,7 +5869,7 @@ msgstr "F.A.B."
 #. I18N: Name of a module. Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:70
 msgid "FAQ"
-msgstr "Algengar spurningar"
+msgstr "Spurningar"
 
 #. I18N: FAQ = “Frequently Asked Question”
 #: resources/views/modules/faq/config.phtml:26
@@ -6083,7 +6071,7 @@ msgstr "Fjölskyldu manntal"
 
 #: resources/views/admin/tags.phtml:954
 msgid "Family facts and events"
-msgstr ""
+msgstr "Fjölskyldustaðreyndir og atburðir"
 
 #: app/Gedcom.php:843
 msgid "Family file"
@@ -6199,7 +6187,7 @@ msgstr "Fjölskylda með eiginkonu"
 #. I18N: familysearch.org
 #: app/Gedcom.php:952
 msgid "FamilySearch ID"
-msgstr "FamilySearch (ID) auðkenni"
+msgstr "FamilySearch Auðkenni"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:138
@@ -6801,12 +6789,12 @@ msgstr "GEDCOM merki"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/Gedcom.php:1115 resources/views/admin/tags.phtml:964
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6816,7 +6804,7 @@ msgstr "GOV auðkenni"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV auðkennistegund"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7793,7 +7781,7 @@ msgstr "Einstaklings dreifingargraf"
 
 #: resources/views/admin/tags.phtml:944
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Einstaklingsstaðreyndir og atburðir"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7884,11 +7872,11 @@ msgstr "Heimildamaður"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "Frumkvæði"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Ekki er mælt með innbyggðum heimildum."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7922,11 +7910,11 @@ msgstr "Ógild GEDCOM skrá - engin hausfærsla fannst."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Ógild GEDCOM skrá - engin hausfærsla fannst."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Ógilt GEDCOM stigsnúmer."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7934,15 +7922,15 @@ msgstr "Ógild GEDCOM færsla"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Ógild GEDCOM færsla."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Ógilt GEDCOM merki."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Ógilt GEDCOM gildi."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -7979,7 +7967,7 @@ msgstr "Það getur tekið nokkrar mínútur að hlaða niður og setja upp uppf
 
 #: resources/views/admin/tags.phtml:937
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Ekki er mælt með því að nota sérsniðin GEDCOM merki. Þessi gögn geta glatast þegar þú flytur þau yfir í önnur forrit."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8220,7 +8208,7 @@ msgstr "Haltu opnum"
 #: resources/views/edit/edit-fact.phtml:34
 #: resources/views/edit/edit-record.phtml:34
 msgid "Keep the existing “last change” information"
-msgstr "Haltu núverandi „síðustu breytingar“ upplýsingum"
+msgstr "Halda núverandi upplýsingum um „síðustu breytingar“"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -8345,11 +8333,11 @@ msgstr "Merkja"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "Merki fyrir eiginmann"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "Merki fyrir eiginkonu"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8359,12 +8347,12 @@ msgstr "Laie, Hawaii, Bandaríkin"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "Landakaup"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "Lóðasala"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8584,11 +8572,11 @@ msgstr "Lima, Perú"
 
 #: resources/views/admin/gedcom-export-options.phtml:87
 msgid "Line endings"
-msgstr ""
+msgstr "Línuendingar"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "Línunúmer"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -8900,12 +8888,12 @@ msgstr "Handrit"
 
 #: resources/views/admin/tags.phtml:935
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Mörg ættfræðiforrit skilgreina sín eigin sérsniðnu GEDCOM merki og webtrees mun geta birt flest þeirra."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
 msgid "Many genealogy programs create GEDCOM files with custom tags, and webtrees understands most of them. When unrecognized tags are found, this option lets you choose whether to ignore them or display a warning message."
-msgstr "Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkimiðum og webtrees skilur flesta þeirra. Þegar óþekkjanlegir merkimiðar finnst þá gerir þessi valkostur þér kleift að velja hvort eigi að hunsa þá eða birta aðvörunar skilaboð."
+msgstr "Mörg ættfræðiforrit stofna GEDCOM skrár með sérsniðnum merkimiðum og webtrees skilur flesta þeirra. Þegar óþekkjanlegir merkimiðar finnst þá gerir þessi valkostur þér kleift að velja hvort eigi að hunsa þá eða birta aðvörunarskilaboð."
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:90
@@ -9231,7 +9219,7 @@ msgstr "Máritus"
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:348
 msgid "Maximum number of surnames on individual list"
-msgstr "Hámarksfjöldi eftirnafna á einstakling lista"
+msgstr "Hámarksfjöldi eftirnafna á einstaklingslista"
 
 #: resources/views/admin/media-upload.phtml:24
 #: resources/views/modals/media-file-fields.phtml:46
@@ -9929,7 +9917,7 @@ msgstr "Nafn á Hebresku"
 #: app/Gedcom.php:1174 app/Gedcom.php:1182 app/Gedcom.php:1428
 #: app/Gedcom.php:1491
 msgid "Name of addressee"
-msgstr ""
+msgstr "Nafn viðtakanda"
 
 #: app/Gedcom.php:654 app/Gedcom.php:661 app/Gedcom.php:666
 msgid "Name prefix"
@@ -10207,8 +10195,8 @@ msgstr "Engir atburðir eru til staðar á morgun fyrir fólk á lífi."
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Engir viðburðir fyrir lifandi fólk eru til fyrir næsta %s dag."
+msgstr[1] "Engir viðburðir fyrir lifandi fólk eru til fyrir næstu %s daga."
 
 #: resources/views/family-page.phtml:39
 msgid "No facts exist for this family."
@@ -10691,7 +10679,7 @@ msgstr "Lega"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "Uppruni"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -11477,11 +11465,11 @@ msgstr "Quetzaltenango, Guatemala"
 
 #: resources/views/admin/trees-preferences.phtml:681
 msgid "Quick family facts"
-msgstr "Flýti fjölskyldur staðreyndir"
+msgstr "Flýti fjölskyldustaðreyndir"
 
 #: resources/views/admin/trees-preferences.phtml:656
 msgid "Quick individual facts"
-msgstr "Flýti einstaklings staðreyndir"
+msgstr "Flýti einstaklingsstaðreyndir"
 
 #. I18N: The fifth day in the French republican calendar
 #: app/Date/FrenchDate.php:309
@@ -12118,12 +12106,12 @@ msgstr "SQLite útgáfa %s er uppsett. SQLite útgáfa %s eða seinna er krafist
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12620,7 +12608,7 @@ msgstr "Stilltu stöðuna á „samþykkt“."
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: resources/views/admin/trees-preferences.phtml:608
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Með því að stilla þetta á <b>Já</b> þá verða krækjur staðsettar á einstaklings, heimilda og fjölskyldum til að leyfa notendum að kalla fram annan glugga sem inniheldur hrá gögn sem tekin eru úr GEDCOOM skránni."
+msgstr "Með því að stilla þetta á <b>Já</b> þá verða krækjur staðsettar á einstaklingum, heimildum og fjölskyldum til að leyfa notendum að kalla fram annan glugga sem inniheldur hrá gögn sem tekin eru úr GEDCOM skránni."
 
 #: resources/views/layouts/setup.phtml:16
 #: resources/views/layouts/setup.phtml:24
@@ -12839,7 +12827,7 @@ msgstr "Sýna ásættanlegt notkunarsamkomulag á «Óska eftir nýjum notandare
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "Sýna öll gögn"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13369,7 +13357,7 @@ msgstr "Sonur %s"
 
 #: app/Gedcom.php:1589
 msgid "Sort date"
-msgstr ""
+msgstr "Raða dagsetningu"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -13454,7 +13442,7 @@ msgstr "Tilvitnanir heimilda"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: resources/views/admin/trees-preferences.phtml:714
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Heimilda tilvísanir geta innihaldið reiti til að skrá gæði gagnanna (uppruna, vara o.s.frv.) og dagsetning þegar atburðurinn var skráður í heimildina. Ef þú notar ekki þessa reiti, þá getur þú afvirkjað þá þegar ný heimilda tilvísun er stofnuð."
+msgstr "Heimildatilvísanir geta innihaldið reiti til að skrá gæði gagnanna (aðal, vara o.s.frv.) og dagsetning þegar atburðurinn var skráður í heimildina. Ef þú notar ekki þessa reiti, þá getur þú afvirkjað þá þegar ný heimildatilvísun er stofnuð."
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:722
@@ -13576,7 +13564,7 @@ msgstr "St. Paul, Minnesota, Bandaríkin"
 
 #: resources/views/admin/tags.phtml:28
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Stöðluð GEDCOM merki"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -13922,7 +13910,7 @@ msgstr "Tansanía"
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:183
 msgid "Teal Top"
-msgstr "Teal Top"
+msgstr "Blágrænn"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:175
@@ -14269,7 +14257,7 @@ msgstr "Kröfurnar um minni og örgjörvatíma ráðast af fjölda einstaklinga 
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Skilaboðin voru ekki send til %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -14704,7 +14692,7 @@ msgstr "Þessi ættartala var síðast uppfærð þann %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Þetta skráarnafn er ekki samhæft við GEDZIP skráarsnið."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -14908,7 +14896,7 @@ msgstr "Þessi valkostur stjórnar því hvort birting innihalds sé sjálfvirk 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: resources/views/admin/trees-preferences.phtml:401
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Þessi valkostur stjórnar því hvort sýna eigi eða ekki aldur föðurs og móður við hliðina á fæðingardeg barns á grafi."
+msgstr "Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og móður við hliðina á fæðingardegi barns á grafi eða ekki."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:374
@@ -15215,7 +15203,7 @@ msgstr "Til að aðstoða þig við að byrja á þessum kassa, þá höfum við
 
 #: resources/views/admin/tags.phtml:939
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Til að búa til ný gögn með sérsniðnum merkjum, þá þarftu að virkja þau."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15223,7 +15211,7 @@ msgstr "Til að stofna nýtt rannsóknarverkefni, þá verður þú fyrst að b�
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "Til að birta kort þá þarftu að virkja kortaveitu á stjórnborðinu."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -15288,7 +15276,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Of margar beiðnir. Reyndu aftur seinna."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15735,7 +15723,7 @@ msgstr "Uppfærðu hluta af örnefnum á hærra stigi en haltu hlutunum á lægr
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "Uppfært klukkan"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16177,7 +16165,7 @@ msgstr "Vestur-Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:740
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Þegar færslu er breytt er notandi og tímamerki skráð. Stundum er æskilegt að geyma núverandi „síðustu breytingu“ upplýsingar, til dæmis þegar gerðar eru smávægilegar leiðréttingar á gögnum einhvers annars. Þessi valkostur stjórnar því hvort þessi eiginleiki er sjálfgefið valinn."
+msgstr "Þegar færslu er breytt er notandi og tímamerki skráð. Stundum er æskilegt að geyma núverandi upplýsingar um „síðustu breytingu“, til dæmis þegar gerðar eru smávægilegar leiðréttingar á gögnum einhvers annars. Þessi valkostur stjórnar því hvort þessi eiginleiki er sjálfgefið valinn."
 
 #: resources/views/admin/users-edit.phtml:108
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -16279,7 +16267,7 @@ msgstr "Vitni"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "Vitni"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16518,7 +16506,7 @@ msgstr "Vefþjóninn þinn notar PHP útgáfu %s sem fær ekki lengur öryggisup
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16673,7 +16661,7 @@ msgstr "frænka/frændi"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "sjálfvirkt"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19625,7 +19613,7 @@ msgstr "prósenta"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:107
 msgid "plain text"
-msgstr ""
+msgstr "einfaldur texti"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -20559,11 +20547,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees getur ekki búið til smámyndir fyrir þetta skráarsnið."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees kannast ekki við þetta skráarsnið."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20666,7 +20654,7 @@ msgstr[1] "±%s ár"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "“%1$s” ætti að vera “%2$s”."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
