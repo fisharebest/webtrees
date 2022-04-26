@@ -49,7 +49,7 @@ use function pathinfo;
 use function sha1;
 use function sort;
 use function str_contains;
-use function strtolower;
+use function strtoupper;
 use function strtr;
 use function substr;
 use function trim;
@@ -63,8 +63,8 @@ use const UPLOAD_ERR_OK;
 class MediaFileService
 {
     public const EXTENSION_TO_FORM = [
-        'jpeg' => 'jpg',
-        'tiff' => 'tif',
+        'JPEG' => 'JPG',
+        'TIFF' => 'TIF',
     ];
 
     private const IGNORE_FOLDERS = [
@@ -244,7 +244,7 @@ class MediaFileService
     {
         $gedcom = '1 FILE ' . $file;
 
-        $format = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $format = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
         $format = self::EXTENSION_TO_FORM[$format] ?? $format;
 
         if ($format !== '') {

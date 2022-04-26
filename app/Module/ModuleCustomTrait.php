@@ -30,7 +30,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function str_contains;
-use function strtolower;
+use function strtoupper;
 
 /**
  * Trait ModuleCustomTrait - default implementation of ModuleCustomInterface
@@ -188,7 +188,7 @@ trait ModuleCustomTrait
         }
 
         $content   = file_get_contents($file);
-        $extension = strtolower(pathinfo($asset, PATHINFO_EXTENSION));
+        $extension = strtoupper(pathinfo($asset, PATHINFO_EXTENSION));
         $mime_type = Mime::TYPES[$extension] ?? Mime::DEFAULT_TYPE;
 
         return response($content, StatusCodeInterface::STATUS_OK, [
