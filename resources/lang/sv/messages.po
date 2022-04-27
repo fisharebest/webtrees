@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-04-20 13:45+0100\n"
-"PO-Revision-Date: 2021-08-21 05:04+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -311,7 +295,7 @@ msgstr[1] "%s antekningar har uppdaterats."
 #: app/Http/RequestHandlers/CheckTree.php:312
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s förekommer för många gånger."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -530,7 +514,7 @@ msgstr "(valda av totalt %s)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(inklusive mediafiler)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1510,7 +1494,7 @@ msgstr "Adelaide, Australien"
 
 #: app/Gedcom.php:1244
 msgid "Administrative ID"
-msgstr ""
+msgstr "Administrativt ID"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1934,7 +1918,7 @@ msgstr "Ancestry PID"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1038
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com källidentifierare"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1998,11 +1982,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:490
 msgid "Application ID"
-msgstr ""
+msgstr "Applikation-ID"
 
 #: app/Gedcom.php:507
 msgid "Application name"
-msgstr ""
+msgstr "Applikationsnamn"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3456,7 +3440,7 @@ msgstr "Ändringslogg"
 #: resources/views/admin/gedcom-export-options.phtml:77
 #: resources/views/admin/trees-import.phtml:83
 msgid "Character encoding"
-msgstr ""
+msgstr "Teckenkodning"
 
 #: app/Gedcom.php:476
 msgid "Character set"
@@ -3692,7 +3676,7 @@ msgstr "Omskärare"
 
 #: app/Gedcom.php:1042
 msgid "Circumcision"
-msgstr ""
+msgstr "Omskärelse"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -4141,7 +4125,7 @@ msgstr "Skapa, uppdatera och ta bort ett släktträd för varje GEDCOM-fil i dat
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:874
 msgid "Created at"
-msgstr ""
+msgstr "Skapad"
 
 #: app/Gedcom.php:1104 app/Gedcom.php:1160 app/Gedcom.php:1310
 #: app/Gedcom.php:1347 app/Gedcom.php:1350 app/Gedcom.php:1352
@@ -4305,7 +4289,7 @@ msgstr "Anpassade GEDCOM-taggar"
 
 #: app/Http/RequestHandlers/CheckTree.php:212
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Anpassade GEDCOM-taggar avråds från. Försök att endast använda vanliga GEDCOM-taggar."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5078,7 +5062,7 @@ msgstr "Ta bort inaktiva användare"
 
 #: resources/views/modules/user-messages/user-messages.phtml:146
 msgid "Delete selected messages"
-msgstr "Radera markerade meddelande"
+msgstr "Ta bort markerade meddelanden"
 
 #: resources/views/admin/modules.phtml:45
 msgid "Delete the preferences for this module."
@@ -5087,11 +5071,11 @@ msgstr "Ta bort inställningarna för denna modul."
 #: resources/views/individual-name.phtml:88
 #: resources/views/individual-name.phtml:90
 msgid "Delete this name"
-msgstr "Radera namn"
+msgstr "Ta bort detta namn"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Ta bort oanvända platser"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -5099,11 +5083,11 @@ msgstr "Ta bort ditt konto"
 
 #: resources/views/family-page-menu.phtml:79
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place. Are you sure you want to delete this family?"
-msgstr "Radering av familjen kommer att koppla loss alla personerna ifrån familjen men kommer att lämna alla personerna orörda. Är du säker på att du ska radera familjen?"
+msgstr "Att ta bort familjen kommer att ta bort alla individer från varandra men lämnar individerna på plats. Är du säker på att du vill ta bort den här familjen?"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Tar bort…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5112,7 +5096,7 @@ msgstr "Kongo-Kinshasa"
 
 #: app/Gedcom.php:1248
 msgid "Demographic data"
-msgstr ""
+msgstr "Demografisk data"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -6087,7 +6071,7 @@ msgstr "Familjens folkräkning"
 
 #: resources/views/admin/tags.phtml:954
 msgid "Family facts and events"
-msgstr ""
+msgstr "Familjefakta och händelser"
 
 #: app/Gedcom.php:843
 msgid "Family file"
@@ -6805,12 +6789,12 @@ msgstr "GEDCOM-taggar"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/Gedcom.php:1115 resources/views/admin/tags.phtml:964
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1079 app/Gedcom.php:1133 app/Gedcom.php:1253
@@ -6820,7 +6804,7 @@ msgstr "GOV-identifierare"
 
 #: app/Gedcom.php:1243
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV-identifieringstyp"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7797,7 +7781,7 @@ msgstr "Fördelning av personer (diagram)"
 
 #: resources/views/admin/tags.phtml:944
 msgid "Individual facts and events"
-msgstr ""
+msgstr "Individuellfakta och händelser"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7888,11 +7872,11 @@ msgstr "Meddelare"
 #. I18N: GEDCOM tag _INIT - an LDS ceremony performed
 #: app/Gedcom.php:868
 msgid "Initiatory"
-msgstr ""
+msgstr "Initierande"
 
 #: app/Http/RequestHandlers/CheckTree.php:279
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "Inline-källaposter avskräcks."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7926,11 +7910,11 @@ msgstr "Ogiltig GEDCOM-fil - inga rubrikdataposter (header) hittades.."
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "Ogiltig GEDCOM-fil - ingen trailerpost hittades."
 
 #: app/Http/RequestHandlers/CheckTree.php:195
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "Ogiltigt GEDCOM-nivånummer."
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7938,15 +7922,15 @@ msgstr "Ogiltig GEDCOM-post"
 
 #: app/Http/RequestHandlers/CheckTree.php:189
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "Ogiltig GEDCOM-post."
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Ogiltig GEDCOM-tagg."
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Ogiltigt GEDCOM-värde."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -7983,7 +7967,7 @@ msgstr "Det kan ta flera minuter att ladda ner och installera uppgraderingen. Ha
 
 #: resources/views/admin/tags.phtml:937
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "Det rekommenderas inte att använda anpassade GEDCOM-taggar. Denna data kan gå förlorad när du överför den till andra applikationer."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8349,11 +8333,11 @@ msgstr "Märka"
 
 #: app/Gedcom.php:1379
 msgid "Label for husband"
-msgstr ""
+msgstr "Etikett för make"
 
 #: app/Gedcom.php:1381
 msgid "Label for wife"
-msgstr ""
+msgstr "Etikett för maka"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8363,12 +8347,12 @@ msgstr "Laie, Hawaii, Förenta staterna"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1554
 msgid "Land purchase"
-msgstr ""
+msgstr "Markköp"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1555
 msgid "Land sale"
-msgstr ""
+msgstr "Markförsäljning"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:102
@@ -8588,11 +8572,11 @@ msgstr "Lima, Peru"
 
 #: resources/views/admin/gedcom-export-options.phtml:87
 msgid "Line endings"
-msgstr ""
+msgstr "Radslut"
 
 #: app/Http/RequestHandlers/CheckTree.php:389
 msgid "Line number"
-msgstr ""
+msgstr "Radnummer"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -8904,7 +8888,7 @@ msgstr "Manuskript"
 
 #: resources/views/admin/tags.phtml:935
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "Många släktforskningsprogram definierar sina egna anpassade GEDCOM-taggar och webtrees kommer att kunna visa de flesta av dem."
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
@@ -9933,7 +9917,7 @@ msgstr "Namn på hebreiska"
 #: app/Gedcom.php:1174 app/Gedcom.php:1182 app/Gedcom.php:1428
 #: app/Gedcom.php:1491
 msgid "Name of addressee"
-msgstr ""
+msgstr "Adressatens namn"
 
 #: app/Gedcom.php:654 app/Gedcom.php:661 app/Gedcom.php:666
 msgid "Name prefix"
@@ -10695,7 +10679,7 @@ msgstr "Orientering"
 
 #: app/Gedcom.php:870
 msgid "Origin"
-msgstr ""
+msgstr "Ursprung"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:875 app/Gedcom.php:1298 app/Gedcom.php:1307
@@ -12122,12 +12106,12 @@ msgstr "SQLite version %s är installerat. SQLite version %s eller senare krävs
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:205
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:207
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12843,7 +12827,7 @@ msgstr "Visa godtagbara användaravtal på sidan ”Begär ett nytt användarkon
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "Visa alla media"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13373,7 +13357,7 @@ msgstr "%ss son"
 
 #: app/Gedcom.php:1589
 msgid "Sort date"
-msgstr ""
+msgstr "Sorteringsdatum"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -13580,7 +13564,7 @@ msgstr "St. Paul, Minnesota, Förenta staterna"
 
 #: resources/views/admin/tags.phtml:28
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "Standard GEDCOM-taggar"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14273,7 +14257,7 @@ msgstr "Minneskrav och processor-tidskrav beror på antalet personer som finns i
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Meddelandet skickades inte till %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -14708,7 +14692,7 @@ msgstr "Detta släktträd uppdaterades senast den %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:301
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Det här filnamnet är inte kompatibelt med GEDZIP filformatet."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:32
@@ -15219,7 +15203,7 @@ msgstr "För att hjälpa dig komma igång med det block har vi skapat flera stan
 
 #: resources/views/admin/tags.phtml:939
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "För att skapa ny data med hjälp av anpassade taggar måste du aktivera dem."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15227,7 +15211,7 @@ msgstr "För att skapa nya forskningsuppgifter, måste du först lägga ”forsk
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "För att visa en karta måste du aktivera en kartleverantör i kontrollpanelen."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
@@ -15292,7 +15276,7 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "För många förfrågningar. Försök igen senare."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15739,7 +15723,7 @@ msgstr "Uppdatera de högre nivåerna av ortnamn samtidigt som du behåller de l
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:962
 msgid "Updated at"
-msgstr ""
+msgstr "Uppdaterad"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16283,7 +16267,7 @@ msgstr "Vittne"
 #: app/Gedcom.php:1098 app/Gedcom.php:1152 app/Gedcom.php:1305
 #: app/Gedcom.php:1337
 msgid "Witnesses"
-msgstr ""
+msgstr "Vittnen"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -16522,7 +16506,7 @@ msgstr "Din webbserver använder PHP versionen %s, som inte längre tar emot sä
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16677,7 +16661,7 @@ msgstr "förälders syskon"
 
 #: resources/views/admin/trees-import.phtml:87
 msgid "automatic"
-msgstr ""
+msgstr "automatisk"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -19629,7 +19613,7 @@ msgstr "procent"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:107
 msgid "plain text"
-msgstr ""
+msgstr "oformatterad text"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -20563,11 +20547,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:297
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees kan inte skapa miniatyrer för detta filformat."
 
 #: app/Http/RequestHandlers/CheckTree.php:294
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees känner inte igen detta filformat."
 
 #: app/Services/MessageService.php:129
 msgid "webtrees message"
@@ -20670,7 +20654,7 @@ msgstr[1] "±%s år"
 #: app/Http/RequestHandlers/CheckTree.php:288
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "\"%1$s\" ska vara \"%2$s\"."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
