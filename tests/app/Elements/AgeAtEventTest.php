@@ -47,8 +47,8 @@ class AgeAtEventTest extends AbstractElementTest
         self::assertSame('CHILD', self::$element->canonical('cHiLd'));
         self::assertSame('INFANT', self::$element->canonical('iNfAnT '));
         self::assertSame('STILLBORN', self::$element->canonical(' sTiLlBoRn'));
-        self::assertSame('FISH', self::$element->canonical('fIsH'));
-        self::assertSame('1Y 2M 3D', self::$element->canonical('1Y  2M  3D'));
+        self::assertSame('fish', self::$element->canonical('fIsH'));
+        self::assertSame('1y 2m 3d', self::$element->canonical('1Y  2M  3D'));
     }
 
     /**
@@ -61,7 +61,7 @@ class AgeAtEventTest extends AbstractElementTest
         self::assertSame('child', self::$element->value('cHiLd', $tree));
         self::assertSame('infant', self::$element->value('iNfAnT ', $tree));
         self::assertSame('stillborn', self::$element->value(' sTiLlBoRn', $tree));
-        self::assertSame('FISH', self::$element->value('fIsH', $tree));
+        self::assertSame('fish', self::$element->value('fIsH', $tree));
         self::assertSame('1 year 2 months 3 days', self::$element->value('1Y  2M  3D', $tree));
     }
 }

@@ -22,7 +22,11 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
+use phpDocumentor\Reflection\Types\Self_;
+
+use function in_array;
 use function preg_replace_callback_array;
+use function strtolower;
 use function strtoupper;
 
 /**
@@ -60,7 +64,15 @@ class AgeAtEvent extends AbstractElement
      */
     public function canonical(string $value): string
     {
-        return strtoupper(parent::canonical($value));
+        // Keywords are upper case.  Ages are lower case
+        $canonical = parent::canonical($value);
+        $upper     = strtoupper($canonical);
+
+        if (in_array($upper, self::KEYWORDS)) {
+            return $upper;
+        }
+
+        return strtolower($canonical);
     }
 
     /**
@@ -87,10 +99,10 @@ class AgeAtEvent extends AbstractElement
         }
 
         return preg_replace_callback_array([
-            '/\b(\d+)Y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) $match[1], I18N::number((float) $match[1])),
-            '/\b(\d+)M\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) $match[1], I18N::number((float) $match[1])),
-            '/\b(\d+)W\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) $match[1], I18N::number((float) $match[1])),
-            '/\b(\d+)D\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)y\b/' => fn (array $match) => I18N::plural('%s year', '%s years', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)m\b/' => fn (array $match) => I18N::plural('%s month', '%s months', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)w\b/' => fn (array $match) => I18N::plural('%s week', '%s weeks', (int) $match[1], I18N::number((float) $match[1])),
+            '/\b(\d+)d\b/' => fn (array $match) => I18N::plural('%s day', '%s days', (int) $match[1], I18N::number((float) $match[1])),
         ], e($canonical));
     }
 }
