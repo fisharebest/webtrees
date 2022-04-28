@@ -200,7 +200,7 @@ class CheckTree implements RequestHandlerInterface
                 $value             = $match[3];
                 $hierarchy[$level] = $tag;
                 $full_tag          = implode(':', array_slice($hierarchy, 0, 1 + $level));
-                $element           = Registry::elementFactory()->make($full_tag);
+                $element           = $element_factory->make($full_tag);
                 $last_level        = $level;
 
                 if ($tag === 'CONT') {
