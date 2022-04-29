@@ -22,8 +22,6 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 
-use phpDocumentor\Reflection\Types\Self_;
-
 use function in_array;
 use function preg_replace_callback_array;
 use function strtolower;

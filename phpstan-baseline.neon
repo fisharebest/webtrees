@@ -531,7 +531,7 @@ parameters:
 			path: app/Http/RequestHandlers/CreateRepositoryAction.php
 
 		-
-			message: "#^Cannot access offset 'data_fix' on array\\|object\\|null\\.$#"
+			message: "#^Cannot access offset 'data_fix' on array\\|object\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/DataFixSelect.php
 
