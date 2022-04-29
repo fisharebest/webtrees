@@ -167,7 +167,7 @@ class AdminService
             ->where('m_file', '=', $tree->id())
             ->where('descriptive_title', '<>', '')
             ->groupBy(['descriptive_title'])
-            ->having(new Expression('COUNT(m_id)'), '>', '1')
+            ->having(new Expression('COUNT(DISTINCT m_id)'), '>', '1')
             ->select([new Expression('GROUP_CONCAT(m_id) AS xrefs')])
             ->orderBy('xrefs')
             ->pluck('xrefs')
