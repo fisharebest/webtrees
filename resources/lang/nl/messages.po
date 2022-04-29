@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-05-03 22:54+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1624,7 +1624,7 @@ msgstr "Adoptieouders"
 
 #: app/Gedcom.php:599
 msgid "Adult christening"
-msgstr "Doop van volwassene"
+msgstr "Volwassenendoop"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:163
 #: app/Module/SearchMenuModule.php:125
@@ -3851,7 +3851,7 @@ msgstr "Voltooiingsdatum"
 
 #: app/Gedcom.php:601 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
-msgstr "Vormsel/confirmatie"
+msgstr "Belijdenis/confirmatie"
 
 #: resources/views/setup/step-3-database-type.phtml:35
 msgid "Connection to database server"
@@ -4493,7 +4493,7 @@ msgstr "Doopdatum"
 
 #: app/Gedcom.php:602 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
-msgstr "Datum van vormsel/confirmatie"
+msgstr "Datum van belijdenis/confirmatie"
 
 #: app/Gedcom.php:611
 msgid "Date of cremation"
@@ -11119,7 +11119,7 @@ msgstr "Plaats van staatsburgerschap"
 
 #: app/Gedcom.php:603 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
-msgstr "Plaats vormsel/confirmatie"
+msgstr "Plaats van belijdenis/confirmatie"
 
 #: app/Gedcom.php:612
 msgid "Place of cremation"
