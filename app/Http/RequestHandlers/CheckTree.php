@@ -66,6 +66,7 @@ use function implode;
 use function in_array;
 use function preg_match;
 use function route;
+use function str_contains;
 use function str_starts_with;
 use function strtoupper;
 use function substr_count;
@@ -208,7 +209,7 @@ class CheckTree implements RequestHandlerInterface
                 }
 
                 if ($element instanceof UnknownElement) {
-                    if (str_starts_with($tag, '_')) {
+                    if (str_starts_with($tag, '_') || str_starts_with($full_tag, '_') || str_contains($full_tag, ':_')) {
                         $message    = I18N::translate('Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags.');
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
                     } else {

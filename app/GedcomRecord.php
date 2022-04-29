@@ -632,7 +632,12 @@ class GedcomRecord
                 default:
                     $subtags = Registry::elementFactory()->make($this->tag())->subtags();
                     $subtags = array_map(fn (string $tag): string => $this->tag() . ':' . $tag, array_keys($subtags));
-                    $subtags = array_combine(range(1, count($subtags)), $subtags);
+
+                    if ($subtags !== []) {
+                        // Renumber keys from 1.
+                        $subtags = array_combine(range(1, count($subtags)), $subtags);
+                    }
+
 
                     $facts = $facts
                         ->sort(static function (Fact $x, Fact $y) use ($subtags): int {
