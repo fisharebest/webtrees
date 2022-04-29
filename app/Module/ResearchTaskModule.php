@@ -20,8 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\ResearchTask;
-use Fisharebest\Webtrees\Elements\TransmissionDate;
 use Fisharebest\Webtrees\Elements\WebtreesUser;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -59,10 +59,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     {
         Registry::elementFactory()->registerTags([
             'FAM:_TODO'           => new ResearchTask(I18N::translate('Research task')),
-            'FAM:_TODO:DATE'      => new TransmissionDate(I18N::translate('Date')),
+            'FAM:_TODO:DATE'      => new DateValue(I18N::translate('Date')),
             'FAM:_TODO:_WT_USER'  => new WebtreesUser(I18N::translate('User')),
             'INDI:_TODO'          => new ResearchTask(I18N::translate('Research task')),
-            'INDI:_TODO:DATE'     => new TransmissionDate(I18N::translate('Date')),
+            'INDI:_TODO:DATE'     => new DateValue(I18N::translate('Date')),
             'INDI:_TODO:_WT_USER' => new WebtreesUser(I18N::translate('User')),
         ]);
 
