@@ -95,13 +95,11 @@ class Note extends GedcomRecord
             $text = Registry::markdownFactory()->autolink($this->getNote());
         }
 
+        $lines = preg_split('/\n|<br>/', strip_tags(trim($text), '<br>'), 2);
 
-        // Take the first line
-        [$text] = explode("\n", strip_tags(trim($text)));
-
-
-        if ($text !== '') {
-            $text = htmlspecialchars_decode($text, ENT_QUOTES);
+        if ($lines !== false && !empty($lines)) {
+            // Take the first line
+            $text = htmlspecialchars_decode($lines[0], ENT_QUOTES);
             $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());
         }
     }
