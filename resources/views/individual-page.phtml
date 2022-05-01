@@ -36,21 +36,31 @@ use Illuminate\Support\Collection;
     <?php endif ?>
 </div>
 
-<div class="row">
-    <div class="col">
-        <div class="row mb-4">
-            <?= view('individual-page-images', ['can_upload_media' => $can_upload_media, 'individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
+<?php if ($sidebars->isEmpty()) : ?>
+    <div class="row mb-4">
+        <?= view('individual-page-images', ['can_upload_media' => $can_upload_media, 'individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
 
-            <?= view('individual-page-names', ['record' => $record]) ?>
-        </div>
-
-        <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>
+        <?= view('individual-page-names', ['record' => $record]) ?>
     </div>
 
-    <?php if ($sidebars->isNotEmpty()) : ?>
-        <?= view('individual-page-sidebars', ['record' => $record, 'sidebars' => $sidebars]) ?>
-    <?php endif ?>
-</div>
+    <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>
+<?php else : ?>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="row mb-4">
+                <?= view('individual-page-images', ['can_upload_media' => $can_upload_media, 'individual_media' => $individual_media, 'record' => $record, 'tree' => $tree]) ?>
+
+                <?= view('individual-page-names', ['record' => $record]) ?>
+            </div>
+
+            <?= view('individual-page-tabs', ['record' => $record, 'tabs' => $tabs]) ?>
+        </div>
+
+        <div class="col-sm-4">
+            <?= view('individual-page-sidebars', ['record' => $record, 'sidebars' => $sidebars]) ?>
+        </div>
+    </div>
+<?php endif ?>
 
 <?= view('modals/ajax') ?>
 <?= view('modals/shares', ['shares' => $shares, 'title' => I18N::translate('Share') . ' — ' . $record->fullName()]) ?>
