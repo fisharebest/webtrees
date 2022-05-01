@@ -65,7 +65,7 @@ class RestrictionNotice extends AbstractElement
     private const ICON_CONFIDENTIAL = '<i class="icon-resn-confidential"></i>';
     private const ICON_LOCKED       = '<i class="icon-resn-locked"></i> ';
     private const ICON_NONE         = '<i class="icon-resn-none"></i>';
-    private const ICON_PRIVACY      = '<i class="icon-resn-privacy">';
+    private const ICON_PRIVACY      = '<i class="icon-resn-privacy"></i>';
 
     /**
      * Convert a value to a canonical form.
