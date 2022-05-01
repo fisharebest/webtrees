@@ -65,11 +65,12 @@ class ChartMedia
             ],
         ];
 
-        $values = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE')->values();
+        $element = Registry::elementFactory()->make('OBJE:FILE:FORM:TYPE');
+        $values  = $element->values();
 
         foreach ($media as $type => $count) {
             $data[] = [
-                $values[$type] ?? $type,
+                $values[$element->canonical($type)] ?? $type,
                 $count
             ];
         }
