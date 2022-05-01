@@ -218,7 +218,7 @@ class TreeService
         $tree->setPreference('SURNAME_TRADITION', self::DEFAULT_SURNAME_TRADITIONS[I18N::languageTag()] ?? 'paternal');
 
         // A tree needs at least one record.
-        $head = "0 HEAD\n1 SOUR webtrees\n2 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8";
+        $head = "0 HEAD\n1 SOUR webtrees\n1 DEST webtrees\n1 GEDC\n2 VERS 5.5.1\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8";
         $this->gedcom_import_service->importRecord($head, $tree, true);
 
         // I18N: This should be a common/default/placeholder name of an individual. Put slashes around the surname.
