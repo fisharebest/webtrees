@@ -27,13 +27,15 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
-use function preg_match;
+use function implode;
 use function str_contains;
 
+use const PHP_INT_MAX;
+
 /**
- * Class FixCemeteryTag
+ * Class FixPrimaryTag
  */
-class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
+class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
 {
     use ModuleDataFixTrait;
 
@@ -57,7 +59,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
     public function title(): string
     {
         /* I18N: Name of a module */
-        return I18N::translate('Convert %s tags to GEDCOM 5.5.1', 'INDI:BURI:CEME');
+        return I18N::translate('Convert %s tags to GEDCOM 5.5.1', 'INDI:_WT_OBJE_SORT');
     }
 
     /**
@@ -68,47 +70,25 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
     public function description(): string
     {
         /* I18N: Description of a “Data fix” module */
-        return I18N::translate('Replace cemetery tags with burial places.');
+        return I18N::translate('_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first.');
     }
 
     /**
-     * Options form.
-     *
-     * @param Tree $tree
-     *
-     * @return string
-     */
-    public function fixOptions(Tree $tree): string
-    {
-        $options = [
-            'ADDR' => I18N::translate('Address'),
-            'PLAC' => I18N::translate('Place'),
-        ];
-
-        $selected = 'ADDR';
-
-        return view('modules/fix-ceme-tag/options', [
-            'options'  => $options,
-            'selected' => $selected,
-        ]);
-    }
-
-    /**
-     * A list of all records that need examining.  This may include records
-     * that do not need updating, if we can't detect this quickly using SQL.
+     * XREFs of media records that might need fixing.
      *
      * @param Tree                 $tree
      * @param array<string,string> $params
      *
-     * @return Collection<int,string>|null
+     * @return Collection<int,string>
      */
-    protected function individualsToFix(Tree $tree, array $params): ?Collection
+    public function individualsToFix(Tree $tree, array $params): Collection
     {
         return $this->individualsToFixQuery($tree, $params)
-            ->where(static function (Builder $query): void {
+            ->where('i_file', '=', $tree->id())
+            ->where(function (Builder $query): void {
                 $query
-                    ->where('i_gedcom', 'LIKE', "%\n2 CEME%")
-                    ->orWhere('i_gedcom', 'LIKE', "%\n3 CEME%");
+                    ->where('i_gedcom', 'LIKE', "%\n1 _WT_OBJE_SORT %")
+                    ->orWhere('i_gedcom', 'LIKE', "%\n1 _WT_OBJE_SORT %");
             })
             ->pluck('i_id');
     }
@@ -123,11 +103,7 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function doesRecordNeedUpdate(GedcomRecord $record, array $params): bool
     {
-        return $record->facts(['BURI'], false, null, true)
-            ->filter(static function (Fact $fact): bool {
-                return preg_match('/\n[23] CEME/', $fact->gedcom()) === 1;
-            })
-            ->isNotEmpty();
+        return str_contains($record->gedcom(), "\n1 _WT_OBJE_SORT ") || str_contains($record->gedcom(), "\n1 _PGV_OBJE_SORT ");
     }
 
     /**
@@ -140,16 +116,8 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function previewUpdate(GedcomRecord $record, array $params): string
     {
-        $old = [];
-        $new = [];
-
-        foreach ($record->facts(['BURI'], false, null, true) as $fact) {
-            $old[] = $fact->gedcom();
-            $new[] = $this->updateGedcom($fact, $params);
-        }
-
-        $old = implode("\n", $old);
-        $new = implode("\n", $new);
+        $old = $record->gedcom();
+        $new = $this->reorderMediaLinks($record);
 
         return $this->data_fix_service->gedcomDiff($record->tree(), $old, $new);
     }
@@ -164,43 +132,38 @@ class FixCemeteryTag extends AbstractModule implements ModuleDataFixInterface
      */
     public function updateRecord(GedcomRecord $record, array $params): void
     {
-        foreach ($record->facts(['BURI'], false, null, true) as $fact) {
-            $record->updateFact($fact->id(), $this->updateGedcom($fact, $params), false);
-        }
+        $record->updateRecord($this->reorderMediaLinks($record), false);
     }
 
     /**
-     * @param Fact                 $fact
-     * @param array<string,string> $params
+     * @param GedcomRecord $record
      *
      * @return string
      */
-    private function updateGedcom(Fact $fact, array $params): string
+    private function reorderMediaLinks(GedcomRecord $record): string
     {
-        $gedcom = $fact->gedcom();
+        // Sort the level 1 media links in this order
+        $wt_obje_sort = $record->facts(['_PGV_OBJE_SORT', '_WT_OBJE_SORT'], false, null, true)
+            ->map(static fn (Fact $fact): string => $fact->value());
 
-        if (preg_match('/\n\d CEME ?(.+)(?:\n\d PLOT ?(.+))?/', $gedcom, $match)) {
-            $ceme = $match[1];
-            $plot = $match[2] ?? '';
+        $callback = static function (Fact $x, Fact $y) use ($wt_obje_sort): int {
+            $sort1 = $wt_obje_sort->search($x->value(), true);
+            $sort2 = $wt_obje_sort->search($y->value(), true);
+            $sort1 = $sort1 === false ? PHP_INT_MAX : $sort1;
+            $sort2 = $sort2 === false ? PHP_INT_MAX : $sort2;
 
-            // Merge PLOT with CEME
-            if ($plot !== '') {
-                $ceme = $plot . ', ' . $ceme;
-            }
+            return $sort1 <=> $sort2;
+        };
 
-            // Remove CEME/PLOT
-            $gedcom = strtr($gedcom, [$match[0] => '']);
+        $obje = $record
+            ->facts(['OBJE'], false, null, true)
+            ->sort($callback);
 
-            // Add PLAC/ADDR
-            $convert = $params['convert'];
+        $gedcom = '0 @' . $record->xref() . "@ INDI\n" . $record->facts([], false, null, true)
+            ->filter(static fn(Fact $fact): bool => $fact->tag() !== 'INDI:OBJE' && $fact->tag() !== 'INDI:_WT_OBJE_SORT' && $fact->tag() !== '_PGV_OBJE_SORT:OBJE')
+            ->map(static fn(Fact $fact): string => $fact->gedcom())
+            ->implode("\n");
 
-            if (!str_contains($gedcom, "\n2 " . $convert . ' ')) {
-                $gedcom .= "\n2 " . $convert . ' ' . $ceme;
-            } else {
-                $gedcom = strtr($gedcom, ["\n2 " . $convert . ' ' => "\n2 " . $convert . ' ' . $ceme . ', ']);
-            }
-        }
-
-        return $gedcom;
+        return $gedcom . $obje->map(static fn (Fact $fact): string => "\n" . $fact->gedcom())->implode('');
     }
 }

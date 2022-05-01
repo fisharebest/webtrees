@@ -56,7 +56,7 @@ class FixPrimaryTag extends AbstractModule implements ModuleDataFixInterface
     public function title(): string
     {
         /* I18N: Name of a module */
-        return I18N::translate('Convert _PRIM tags to GEDCOM 5.5.1');
+        return I18N::translate('Convert %s tags to GEDCOM 5.5.1', 'OBJE:_PRIM');
     }
 
     /**

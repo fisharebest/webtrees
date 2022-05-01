@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
-use stdClass;
 
 /**
  * Trait ModuleDataFixTrait - default implementation of ModuleDataFixTrait
@@ -409,7 +408,7 @@ trait ModuleDataFixTrait
      * @param Tree                   $tree
      * @param string                 $type
      *
-     * @return Collection<int,stdClass>
+     * @return Collection<int,object>
      */
     private function mergePendingRecords(Collection $records, Tree $tree, string $type): Collection
     {
@@ -418,8 +417,8 @@ trait ModuleDataFixTrait
             ->where('status', '=', 'pending')
             ->where(static function (Builder $query) use ($type): void {
                 $query
-                    ->where('old_gedcom', 'LIKE', '%@ ' . $type . '%')
-                    ->orWhere('new_gedcom', 'LIKE', '%@ ' . $type . '%');
+                    ->where('old_gedcom', 'LIKE', '%@ ' . $type . '\n%')
+                    ->orWhere('new_gedcom', 'LIKE', '%@ ' . $type . '\n%');
             })
             ->pluck('xref');
 
