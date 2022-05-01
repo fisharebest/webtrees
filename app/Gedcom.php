@@ -853,6 +853,17 @@ class Gedcom
 
     /**
      * @return array<string,ElementInterface>
+     */
+    private function aldfaerTags(): array
+    {
+        return [
+            'INDI:BIRT:_LENGTH' => new CustomElement(I18N::translate('Length')),
+            'INDI:BIRT:_WEIGHT' => new CustomElement(I18N::translate('Weight')),
+        ];
+    }
+
+    /**
+     * @return array<string,ElementInterface>
      *
      * @see https://www.webtrees.net/index.php/en/forum/help-for-release-2-1-x/36664-2-1-beta-support-for-indi-even-sour-data-note-and-the-like
      */
@@ -1820,6 +1831,7 @@ class Gedcom
             $element_factory->registerSubTags($this->webtreesSubTags());
 
             // Third-party extensions.
+            $element_factory->registerTags($this->aldfaerTags());
             $element_factory->registerTags($this->ancestryTags());
             $element_factory->registerTags($this->brothersKeeperTags());
             $element_factory->registerTags($this->familySearchTags());
