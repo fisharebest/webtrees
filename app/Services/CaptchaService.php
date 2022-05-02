@@ -71,7 +71,7 @@ class CaptchaService
         $y = Session::pull('captcha-y');
         $z = Session::pull('captcha-z');
 
-        assert(is_int($t));
+        assert(is_float($t));
         assert(is_string($x));
         assert(is_string($y));
         assert(is_string($z));
@@ -85,7 +85,7 @@ class CaptchaService
             return true;
         }
 
-        // If the form was returned too quickly, the probably a robot.
+        // If the form was returned too quickly, then probably a robot.
         return microtime(true) < $t + self::MINIMUM_FORM_TIME;
     }
 }

@@ -60,7 +60,7 @@ class RegisterPage implements RequestHandlerInterface
     {
         $this->checkRegistrationAllowed();
 
-        $tree     = Validator::attributes($request)->treeOptional();
+        $tree = Validator::attributes($request)->treeOptional();
 
         $comments = Session::get('register_comments');
         $comments = is_string($comments) ? $comments : '';
