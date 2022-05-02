@@ -84,9 +84,11 @@ if ($tag === 'MARR') {
 
     <td>
         <?php if ($fact->target() instanceof Media) : ?>
-            <div class="d-flex">
+            <div class="d-flex flex-wrap">
                 <?php foreach ($fact->target()->mediaFiles() as $media_file) : ?>
-                    <?= $media_file->displayImage(100, 100, 'contain', []) ?>
+                    <div class="me-1 mb-1">
+                        <?= $media_file->displayImage(100, 100, 'contain', []) ?>
+                    </div>
                 <?php endforeach ?>
             </div>
 
