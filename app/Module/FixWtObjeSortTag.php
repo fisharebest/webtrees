@@ -160,8 +160,8 @@ class FixWtObjeSortTag extends AbstractModule implements ModuleDataFixInterface
             ->sort($callback);
 
         $gedcom = '0 @' . $record->xref() . "@ INDI\n" . $record->facts([], false, null, true)
-            ->filter(static fn(Fact $fact): bool => $fact->tag() !== 'INDI:OBJE' && $fact->tag() !== 'INDI:_WT_OBJE_SORT' && $fact->tag() !== '_PGV_OBJE_SORT:OBJE')
-            ->map(static fn(Fact $fact): string => $fact->gedcom())
+            ->filter(static fn (Fact $fact): bool => $fact->tag() !== 'INDI:OBJE' && $fact->tag() !== 'INDI:_WT_OBJE_SORT' && $fact->tag() !== '_PGV_OBJE_SORT:OBJE')
+            ->map(static fn (Fact $fact): string => $fact->gedcom())
             ->implode("\n");
 
         return $gedcom . $obje->map(static fn (Fact $fact): string => "\n" . $fact->gedcom())->implode('');
