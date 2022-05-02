@@ -10,10 +10,10 @@ use Fisharebest\Webtrees\Individual;
 <!-- Name accordion -->
 <div class="col-sm accordion" id="individual-names">
     <?php foreach ($record->facts(['NAME']) as $fact) : ?>
-        <?= view('individual-name', ['fact' => $fact]) ?>
+        <?= view('individual-page-name', ['fact' => $fact]) ?>
     <?php endforeach ?>
 
     <?php foreach ($record->facts(['SEX']) as $fact) : ?>
-        <?= view('individual-sex', ['fact' => $fact]) ?>
+        <?= view('individual-page-sex', ['fact' => $fact]) ?>
     <?php endforeach ?>
 </div>
