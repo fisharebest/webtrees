@@ -21,7 +21,7 @@ use Fisharebest\Webtrees\View;
     <form method="post" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
         <?= csrf_field() ?>
 
-        <div class="row form-group mb-3">
+        <div class="row mb-3">
             <div class="col-sm-2 wt-page-options-label">
                 <?= I18N::translate('Chart type') ?>
             </div>
@@ -164,7 +164,7 @@ use Fisharebest\Webtrees\View;
                             </option>
                         </select>
 
-                        <div id="surname_opt" class="form-group" style="display:none;">
+                        <div id="surname_opt" class="mb-3 d-none;">
                             <label for="SURN"><?= I18N::translate('Surname') ?></label>
                             <input data-wt-autocomplete-url="<?= e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) ?>" autocomplete="off" class="form-control" type="text" id="SURN" name="SURN">
                         </div>

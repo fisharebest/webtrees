@@ -34,15 +34,13 @@ use Illuminate\Support\Collection;
 
     <h2><?= I18N::translate('Select a GEDCOM file to import') ?></h2>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-sm-3">
             <input type="radio" name="source" id="import-computer" value="client" checked>
             <?= I18N::translate('A file on your computer') ?>
         </label>
         <div class="col-sm-9">
-            <div class="btn btn-default">
-                <input type="file" class="form-control-file" name="tree_name" id="import-computer-file">
-            </div>
+            <input type="file" class="form-control" name="tree_name" id="import-computer-file">
         </div>
     </div>
 

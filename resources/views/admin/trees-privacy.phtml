@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\View;
     <?= csrf_field() ?>
 
     <!-- REQUIRE_AUTHENTICATION -->
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-form-label col-sm-4">
             <label>
                 <?= /* I18N: A configuration setting */ I18N::translate('Show the family tree') ?>
@@ -46,7 +46,7 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- SHOW_DEAD_PEOPLE -->
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-form-label col-sm-4">
             <label for="SHOW_DEAD_PEOPLE">
                 <?= /* I18N: A configuration setting */ I18N::translate('Show dead individuals') ?>
@@ -66,7 +66,7 @@ use Fisharebest\Webtrees\View;
 
 
     <!-- MAX_ALIVE_AGE -->
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <label class="col-form-label col-sm-4" for="MAX_ALIVE_AGE">
             <?= I18N::translate('Age at which to assume an individual is dead') ?>
         </label>
@@ -79,7 +79,7 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- HIDE_LIVE_PEOPLE -->
-    <fieldset class="row form-group mb-3">
+    <fieldset class="row mb-3">
         <legend class="col-sm-4 col-form-label">
             <?= /* I18N: A configuration setting */ I18N::translate('Show living individuals') ?>
             <div class="hidden-xs">
@@ -97,7 +97,7 @@ use Fisharebest\Webtrees\View;
     </fieldset>
 
     <!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
-    <fieldset class="row form-group mb-3">
+    <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-4">
             <?= /* I18N: A configuration setting. …who were born in the last XX years or died in the    last YY years */ I18N::translate('Extend privacy to dead individuals') ?>
         </legend>
@@ -116,7 +116,7 @@ use Fisharebest\Webtrees\View;
     </fieldset>
 
     <!-- SHOW_LIVING_NAMES -->
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-form-label col-sm-4">
             <label for="SHOW_LIVING_NAMES">
                 <?= /* I18N: A configuration setting */ I18N::translate('Show names of private individuals') ?>
@@ -136,7 +136,7 @@ use Fisharebest\Webtrees\View;
     </div>
 
     <!-- SHOW_PRIVATE_RELATIONSHIPS -->
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-form-label col-sm-4">
             <label for="SHOW_PRIVATE_RELATIONSHIPS">
                 <?= /* I18N: A configuration setting */ I18N::translate('Show private relationships') ?>
@@ -279,7 +279,7 @@ use Fisharebest\Webtrees\View;
         </tbody>
     </table>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="offset-sm-4 col-sm-8">
             <button type="submit" class="btn btn-primary">
                 <?= view('icons/save') ?>

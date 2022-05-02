@@ -165,7 +165,7 @@ use Illuminate\Support\Collection;
             </td>
             <td colspan="2">
                 <?php if (count($active) !== count($placelist)) : ?>
-                    <form class="form-inline d-inline" method="post" action="<?= route(MapDataDeleteUnused::class) ?>">
+                    <form class="d-inline" method="post" action="<?= route(MapDataDeleteUnused::class) ?>">
                         <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger">
                             <?= view('icons/delete') ?>

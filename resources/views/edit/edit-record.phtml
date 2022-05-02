@@ -25,12 +25,12 @@ use Fisharebest\Webtrees\Tree;
 
     <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom, 'hierarchy' => [$record->tag()], 'tree' => $tree, 'prefix' => '']) ?>
 
-    <div class="row form-group mb-3">
+    <div class="row mb-3">
         <div class="col-sm-3 wt-page-options-label">
         </div>
         <div class="col-sm-9 wt-page-options-value">
             <?php if ($has_chan): ?>
-                <div class="form-group">
+                <div class="mb-3">
                     <?= view('components/checkbox', ['label' => I18N::translate('Keep the existing “last change” information'), 'name' => 'keep_chan', 'checked' => (bool) $tree->getPreference('NO_UPDATE_CHAN')]) ?>
                 </div>
             <?php endif ?>

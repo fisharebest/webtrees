@@ -16,7 +16,7 @@ use Fisharebest\Webtrees\Tree;
 
 ?>
 
-<div class="row form-group <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
+<div class="row <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
     <label class="col-form-label col-sm-2" for="file-location">
         <?= I18N::translate('Media file') ?>
     </label>
@@ -37,12 +37,12 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group file-location file-location-upload <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
+<div class="row file-location file-location-upload <?= $media_file instanceof MediaFile ? 'd-none' : '' ?>">
     <label class="col-form-label col-sm-2" for="file">
         <?= I18N::translate('A file on your computer') ?>
     </label>
     <div class="col-sm-10">
-        <input class="form-control-file" id="file" name="file" type="file">
+        <input class="form-control" id="file" name="file" type="file">
         <small class="text-muted">
             <?= I18N::translate('Maximum upload size: ') ?>
             <?= $max_upload_size ?>
@@ -50,7 +50,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group file-location file-location-upload <?= $media_file instanceof MediaFile && $media_file->isExternal() ? 'd-none' : '' ?>">
+<div class="row file-location file-location-upload <?= $media_file instanceof MediaFile && $media_file->isExternal() ? 'd-none' : '' ?>">
     <label class="col-form-label col-sm-2" for="folder">
         <?= I18N::translate('Filename on server') ?>
     </label>
@@ -83,7 +83,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group file-location file-location-unused d-none">
+<div class="row file-location file-location-unused d-none">
     <label class="col-form-label col-sm-2" for="unused">
         <?= I18N::translate('A file on the server') ?>
     </label>
@@ -94,7 +94,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group file-location file-location-url <?= $media_file && $media_file->isExternal() ? '' : 'd-none' ?>">
+<div class="row file-location file-location-url <?= $media_file && $media_file->isExternal() ? '' : 'd-none' ?>">
     <label class="col-form-label col-sm-2" for="remote">
         <?= I18N::translate('URL') ?>
     </label>
@@ -103,7 +103,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group mb-3">
+<div class="row mb-3">
     <label class="col-form-label col-sm-2" for="title">
         <?= I18N::translate('Title') ?>
     </label>
@@ -112,7 +112,7 @@ use Fisharebest\Webtrees\Tree;
     </div>
 </div>
 
-<div class="row form-group mb-3">
+<div class="row mb-3">
     <label class="col-form-label col-sm-2" for="type">
         <?= I18N::translate('Media type') ?>
     </label>
