@@ -42,6 +42,7 @@ class Site
     // Default values for some site preferences.
     protected const DEFAULT_PREFERENCES = [
         'ALLOW_CHANGE_GEDCOM'     => '1',
+        'HIDE_ADDR_EMAIL'         => '1',
         'HIDE_ADDR_FAX'           => '1',
         'HIDE_ADDR_PHON'          => '1',
         'HIDE_ADDR_WWW'           => '1',

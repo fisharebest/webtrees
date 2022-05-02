@@ -277,20 +277,6 @@ use Fisharebest\Webtrees\Site;
         <tbody>
             <tr>
                 <td>
-                    <?= $element_factory->make('INDI:RESI:FAX')->label() ?>
-                </td>
-
-                <td>
-                    <code dir="ltr">FAX</code>
-                </td>
-
-                <td>
-                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_FAX', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ADDR_FAX')]) ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
                     <?= $element_factory->make('INDI:RESI:PHON')->label() ?>
                 </td>
 
@@ -314,6 +300,20 @@ use Fisharebest\Webtrees\Site;
 
                 <td>
                     <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_WWW', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ADDR_WWW')]) ?>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <?= $element_factory->make('INDI:RESI:EMAIL')->label() ?>
+                </td>
+
+                <td>
+                    <code dir="ltr">EMAIL</code>
+                </td>
+
+                <td>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_EMAIL', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_WWW_EMAIL')]) ?>
                 </td>
             </tr>
         </tbody>
