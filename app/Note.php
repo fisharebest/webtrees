@@ -95,7 +95,7 @@ class Note extends GedcomRecord
             $text = Registry::markdownFactory()->autolink($this->getNote());
         }
 
-        $lines = preg_split('/\n|<br>/', strip_tags(trim($text), '<br>'), 2);
+        $lines = preg_split('/\n|<br(\s*\/)?>/', strip_tags(trim($text), '<br>'), 2);
 
         if ($lines !== false && !empty($lines)) {
             // Take the first line
