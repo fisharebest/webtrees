@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-04-29 08:55+0000\nLast-Translator: Bernd Schwendinger <b0ernie@gmx.net>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-04-20 13:45+0100\nPO-Revision-Date: 2022-05-03 22:54+0000\nLast-Translator: Markus Hemprich <hemprich@gmx.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -18274,47 +18274,47 @@ msgstr "Urenkel"
 #: app/Services/RelationshipService.php:727
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:733
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:741
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:749
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:755
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:769
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:1047
 msgctxt "son’s child’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:1053
 msgctxt "son’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:1061
 msgctxt "son’s son’s daughter"
 msgid "great-granddaughter"
-msgstr "Urenkeltochter"
+msgstr "Ur-Enkeltochter"
 
 #: app/Services/RelationshipService.php:785
 msgctxt "father’s father’s father"
@@ -18454,47 +18454,47 @@ msgstr "Urgroßvater/-mutter"
 #: app/Services/RelationshipService.php:729
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:737
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:743
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:751
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:759
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:771
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:1049
 msgctxt "son’s child’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:1057
 msgctxt "son’s daughter’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:1063
 msgctxt "son’s son’s son"
 msgid "great-grandson"
-msgstr "Urenkelsohn"
+msgstr "Ur-Enkelsohn"
 
 #: app/Services/RelationshipService.php:1329
 msgid "great-great-aunt"
