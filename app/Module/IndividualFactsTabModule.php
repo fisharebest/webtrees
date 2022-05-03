@@ -142,7 +142,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
         // Add spouse-family facts
         foreach ($individual->spouseFamilies() as $family) {
             foreach ($family->facts() as $fact) {
-                if (!$exclude_facts->contains($fact->tag()) && $fact->tag() !== 'FAM:CHAN') {
+                if (!$exclude_facts->contains($fact->tag()) && $fact->tag() !== 'FAM:CHAN' && $fact->tag() !== 'FAM:_UID') {
                     $relative_facts->push($fact);
                 }
             }
@@ -184,7 +184,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
     /**
      * Spouse facts that are shown on an individual’s page.
      *
-     * @param Individual $individual Show events that occured during the lifetime of this individual
+     * @param Individual $individual Show events that occurred during the lifetime of this individual
      * @param Individual $spouse     Show events of this individual
      * @param Date       $min_date
      * @param Date       $max_date
