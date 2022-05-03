@@ -30,4 +30,5 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class TimeValue extends AbstractElement
 {
+    protected const PATTERN = '([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?';
 }

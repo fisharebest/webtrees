@@ -1764,6 +1764,11 @@ class Gedcom
             'INDI' => array_map(static fn (string $tag): array => [$tag, '0:M'], $custom_individual_tags),
         ];
 
+        if (Site::getPreference('CUSTOM_TIME_TAGS') === '1') {
+            $subtags['INDI:BIRT:DATE'][] = ['TIME', '0:1'];
+            $subtags['INDI:DEAT:DATE'][] = ['TIME', '0:1'];
+        }
+
         if (Site::getPreference('CUSTOM_GEDCOM_L_TAGS') === '1') {
             $subtags['FAM'][]               = ['_ASSO', '0:M'];
             $subtags['FAM'][]               = ['_STAT', '0:1'];

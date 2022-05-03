@@ -12,6 +12,7 @@ use Fisharebest\Webtrees\Site;
  * @var array<string>           $custom_family_tags
  * @var bool                    $custom_gedcom_l_tags
  * @var array<string>           $custom_individual_tags
+ * @var array<string>           $custom_time_tags
  * @var ElementFactoryInterface $element_factory
  * @var string                  $title
  */
@@ -950,6 +951,16 @@ use Fisharebest\Webtrees\Site;
     </div>
 
     <div class="row mb-3">
+        <label class="col-sm-3" for="custom_time_tags">
+            <?= I18N::translate('Time of birth and time of death') ?>
+        </label>
+
+        <div class="col-sm-9">
+            <?= view('components/checkbox', ['id' => 'custom_time_tags', 'name' => 'custom_time_tags', 'label' => I18N::translate('show'), 'checked' => $custom_time_tags]) ?>
+        </div>
+    </div>
+
+    <div class="row mb-3">
         <label class="col-sm-3" for="custom_family_tags">
             <?= I18N::translate('Family facts and events') ?>
         </label>
@@ -965,7 +976,7 @@ use Fisharebest\Webtrees\Site;
         </label>
 
         <div class="col-sm-9">
-            <?= view('components/checkbox-inline', ['name' => 'custom_gedcom_l_tags', 'label' => I18N::translate('show'), 'checked' => $custom_gedcom_l_tags]) ?>
+            <?= view('components/checkbox', ['name' => 'custom_gedcom_l_tags', 'label' => I18N::translate('show'), 'checked' => $custom_gedcom_l_tags]) ?>
             <p>
                 <?= I18N::translate('For more information, see %s.', '<a href="https://genealogy.net/GEDCOM/">https://genealogy.net/GEDCOM/</a>') ?>
             </p>

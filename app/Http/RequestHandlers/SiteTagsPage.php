@@ -62,6 +62,7 @@ class SiteTagsPage implements RequestHandlerInterface
         );
 
         $custom_gedcom_l_tags = (bool) Site::getPreference('CUSTOM_GEDCOM_L_TAGS');
+        $custom_time_tags     = (bool) Site::getPreference('CUSTOM_TIME_TAGS');
 
 
         return $this->viewResponse('admin/tags', [
@@ -70,6 +71,7 @@ class SiteTagsPage implements RequestHandlerInterface
             'custom_family_tags'     => $custom_family_tags,
             'custom_gedcom_l_tags'   => $custom_gedcom_l_tags,
             'custom_individual_tags' => $custom_individual_tags,
+            'custom_time_tags'       => $custom_time_tags,
             'element_factory'        => Registry::elementFactory(),
             'title'                  => I18N::translate('GEDCOM tags'),
         ]);
