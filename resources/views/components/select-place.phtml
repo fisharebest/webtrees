@@ -17,7 +17,7 @@ use Fisharebest\Webtrees\Tree;
 <select
     autocomplete="off"
     class="form-select tom-select <?= $class ?? '' ?>"
-    data-url="<?= e(route(TomSelectPlace::class, ['tree' => $tree->name()])) ?>"
+    data-url="<?= e(route(TomSelectPlace::class, ['tree' => $tree->name(), 'at' => ''])) ?>"
     id="<?= e($id ?? $name) ?>"
     name="<?= e($name) ?>"
     <?= ($disabled ?? false) ? 'disabled="disabled"' : '' ?>
