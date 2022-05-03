@@ -697,19 +697,9 @@
       return element.tomselect;
     }
 
-    let options = {};
-
     if (element.dataset.url) {
-      let plugins = ['dropdown_input', 'virtual_scroll'];
-
-      if (element.multiple) {
-        plugins.push('remove_button');
-      } else if (!element.required) {
-        plugins.push('clear_button');
-      }
-
-      options = {
-        plugins: plugins,
+      let options = {
+        plugins: ['dropdown_input', 'virtual_scroll'],
         maxOptions: false,
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
@@ -728,9 +718,23 @@
             .catch(callback);
         },
       };
+
+      if (!element.required) {
+        options.plugins.push('clear_button');
+      }
+
+      return new TomSelect(element, options);
     }
 
-    return new TomSelect(element, options);
+    if (element.multiple) {
+      return new TomSelect(element, { plugins: ['caret_position', 'remove_button'] });
+    }
+
+    if (!element.required) {
+      return new TomSelect(element, { plugins: ['clear_button'] });
+    }
+
+    return new TomSelect(element, { });
   }
 
   /**

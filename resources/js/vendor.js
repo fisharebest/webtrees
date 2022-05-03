@@ -45,6 +45,7 @@ import 'datatables.net-bs5';
 import Sortable from 'sortablejs';
 
 import TomSelect from 'tom-select/dist/js/tom-select.base.js';
+TomSelect.define('caret_position', require('tom-select/dist/js/plugins/caret_position.js'));
 TomSelect.define('clear_button', require('tom-select/dist/js/plugins/clear_button.js'));
 TomSelect.define('dropdown_input', require('tom-select/dist/js/plugins/dropdown_input.js'));
 TomSelect.define('remove_button', require('tom-select/dist/js/plugins/remove_button.js'));
