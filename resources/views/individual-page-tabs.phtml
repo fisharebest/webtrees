@@ -40,9 +40,7 @@ use Illuminate\Support\Collection;
     let target = $(this.hash + ':empty');
     if (target.length > 0) {
       // Start the download immediately...
-      let download = fetch(this.dataset.wtHref, {
-        headers: new Headers({ 'X-Requested-with': 'XMLHttpRequest' }),
-      });
+      let download = webtrees.httpGet(this.dataset.wtHref);
 
       // ...but don't insert it until the tab is ready.
       $(this).one('shown.bs.tab', () => {

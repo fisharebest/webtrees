@@ -37,6 +37,49 @@
   }
 
   /**
+   * Simple wrapper around fetch() with our preferred headers
+   *
+   * @param {string} url
+   * @returns {Promise}
+   */
+  webtrees.httpGet = function (url) {
+    const options = {
+      method: 'GET',
+      credentials: 'same-origin',
+      referrerPolicy: 'same-origin',
+      headers: new Headers({
+        'x-requested-with': 'XMLHttpRequest',
+      })
+    };
+
+    return fetch(url, options);
+  }
+
+  /**
+   * Simple wrapper around fetch() with our preferred headers
+   *
+   * @param {string} url
+   * @param {string|FormData} body
+   * @returns {Promise}
+   */
+  webtrees.httpPost= function (url, body = '') {
+    const csrfToken = document.head.querySelector('meta[name=csrf]').getAttribute('content');
+
+    const options = {
+      body: body,
+      method: 'POST',
+      credentials: 'same-origin',
+      referrerPolicy:  'same-origin',
+      headers: new Headers({
+        'X-CSRF-TOKEN': csrfToken,
+        'x-requested-with': 'XMLHttpRequest',
+      })
+    };
+
+    return fetch(url, options, body);
+  }
+
+  /**
    * Look for non-latin characters in a string.
    * @param {string} str
    * @returns {string}
@@ -707,7 +750,7 @@
         },
         firstUrl: query => element.dataset.url + '&query=' + encodeURIComponent(query),
         load: function (query, callback) {
-          fetch(this.getUrl(query))
+          webtrees.httpGet(this.getUrl(query))
             .then(response => response.json())
             .then(json => {
               if (json.nextUrl !== null) {
@@ -919,15 +962,7 @@ document.addEventListener('click', (event) => {
   }
 
   if ('wtPostUrl' in target.dataset) {
-    const token = document.querySelector('meta[name=csrf]').content;
-
-    fetch(target.dataset.wtPostUrl, {
-      method: 'POST',
-      headers: {
-        'X-CSRF-TOKEN': token,
-        'X-Requested-with': 'XMLHttpRequest',
-      },
-    }).then(() => {
+    webtrees.httpPost(target.dataset.wtPostUrl).then(() => {
       if ('wtReloadUrl' in target.dataset) {
         // Go somewhere else. e.g. the home page after logout.
         document.location = target.dataset.wtReloadUrl;
