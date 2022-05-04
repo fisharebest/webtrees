@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-03 22:54+0000\n"
+"PO-Revision-Date: 2022-05-05 15:08+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -3950,13 +3950,13 @@ msgstr "Comoren"
 #. I18N: Name of a module/chart
 #: app/Module/CompactTreeChartModule.php:85
 msgid "Compact tree"
-msgstr "Compacte boom"
+msgstr "Voorouders (compact)"
 
 #. I18N: %s is an individual’s name
 #: app/Module/CompactTreeChartModule.php:131
 #, php-format
 msgid "Compact tree of %s"
-msgstr "Compacte boom van %s"
+msgstr "Compacte boom met voorouders van %s"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:42
 msgid "Comparison"
@@ -11887,14 +11887,14 @@ msgstr "Willekeurige afbeeldingen uit de huidige stamboom."
 #: resources/views/family-page-menu.phtml:53
 #: resources/views/modules/relatives/family.phtml:234
 msgid "Re-order children"
-msgstr "Herschik de kinderen"
+msgstr "Kinderen rangschikken"
 
 #: app/Http/RequestHandlers/ReorderFamiliesPage.php:57
 #: resources/views/individual-page-menu.phtml:69
 #: resources/views/individual-page-menu.phtml:74
 #: resources/views/modules/relatives/tab.phtml:117
 msgid "Re-order families"
-msgstr "Herschik de gezinnen"
+msgstr "Gezinnen rangschikken"
 
 #. I18N: gedcom tag _WT_OBJE_SORT
 #: app/Factories/ElementFactory.php:837 app/Factories/ElementFactory.php:881
@@ -11903,7 +11903,7 @@ msgstr "Herschik de gezinnen"
 #: resources/views/individual-page-menu.phtml:88
 #: resources/views/individual-page-menu.phtml:93
 msgid "Re-order media"
-msgstr "Wijzig volgorde media"
+msgstr "Media rangschikken"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:57
 #: resources/views/individual-page-menu.phtml:37
