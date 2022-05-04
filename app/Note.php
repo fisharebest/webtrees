@@ -97,7 +97,7 @@ class Note extends GedcomRecord
 
 
         // Take the first line
-        [$text] = explode("\n", strip_tags(trim($text)));
+        [$text] = explode('<br />', strip_tags(trim($text), ['br']));
 
 
         if ($text !== '') {

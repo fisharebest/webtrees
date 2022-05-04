@@ -50,11 +50,12 @@ use function trim;
  */
 class MarkdownFactory implements MarkdownFactoryInterface
 {
+    // Commonmark uses <br /> for hard-breaks, so we use the same for soft-breaks.
     protected const CONFIG_AUTOLINK = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => '<br>',
+            'soft_break'     => '<br />',
         ],
     ];
 
@@ -62,7 +63,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => '<br>',
+            'soft_break'     => '<br />',
         ],
         'table'              => [
             'wrap' => [
