@@ -104,7 +104,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $converter = new MarkDownConverter($environment);
 
         $html = $converter->convert($markdown)->getContent();
-        $html = strtr($html, ["</p>\n<p>" => self::BREAK . self::BREAK ]);
+        $html = strtr($html, ["</p>\n<p>" => self::BREAK . self::BREAK]);
 
         return trim(strip_tags($html, ['a', 'br']));
     }
