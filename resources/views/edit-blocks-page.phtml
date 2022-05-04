@@ -116,13 +116,16 @@ use Illuminate\Support\Collection;
         sort:      false,
     });
 
-    $("#current-blocks").on("click", ".wt-icon-delete", function () {
-        $(this).closest(".wt-block").remove();
+    document.getElementById('current-blocks').addEventListener('click', function (event) {
+      if (event.target.matches('.wt-icon-delete')) {
+        const wtBlock = event.target.closest('.wt-block');
+        wtBlock.parentNode.removeChild(wtBlock);
+      }
     });
 
-    $('#edit-blocks').submit(function () {
-        $('#main-blocks input').attr('name', 'main[]');
-        $('#side-blocks input').attr('name', 'side[]');
+    document.getElementById('edit-blocks').addEventListener('submit', function (event) {
+      document.querySelectorAll('#main-blocks input').forEach((element) => { element.setAttribute('name', 'main[]'); })
+      document.querySelectorAll('#side-blocks input').forEach((element) => { element.setAttribute('name', 'side[]'); })
     });
 </script>
 <?php View::endpush() ?>
