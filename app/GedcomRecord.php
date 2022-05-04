@@ -1044,7 +1044,9 @@ class GedcomRecord
                     }
                     if ($match[3] && preg_match_all('/^' . $sublevel . ' (ROMN|FONE|_\w+) (.+)((\n[' . $subsublevel . '-9].+)*)/m', $match[3], $submatches, PREG_SET_ORDER)) {
                         foreach ($submatches as $submatch) {
-                            $this->addName($submatch[1], $submatch[2], $match[3]);
+                            if ($submatch[1] !== '_RUFNAME') {
+                                $this->addName($submatch[1], $submatch[2], $match[3]);
+                            }
                         }
                     }
                 }
