@@ -119,9 +119,13 @@ class Media extends GedcomRecord
         foreach ($this->mediaFiles() as $media_file) {
             $names[] = $media_file->title();
         }
-        foreach ($this->mediaFiles() as $media_file) {
-            $names[] = $media_file->filename();
+
+        if ($names === []) {
+            foreach ($this->mediaFiles() as $media_file) {
+                $names[] = $media_file->filename();
+            }
         }
+
         $names = array_filter(array_unique($names));
 
         if ($names === []) {
