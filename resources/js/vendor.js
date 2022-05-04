@@ -16,7 +16,22 @@
 import $ from 'jquery';
 
 import '@popperjs/core';
-import 'bootstrap';
+import { Alert, Button, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip } from 'bootstrap';
+window.bootstrap = {
+  Alert: Alert,
+  Button: Button,
+  Carousel: Carousel,
+  Collapse: Collapse,
+  Dropdown: Dropdown,
+  Modal: Modal,
+  Offcanvas: Offcanvas,
+  Popover: Popover,
+  ScrollSpy: ScrollSpy,
+  Tab: Tab,
+  Toast: Toast,
+  Tooltip: Tooltip,
+};
+
 import 'datatables.net';
 
 // Just import the subset of icons that we use in resources/views/icons/

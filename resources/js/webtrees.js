@@ -821,7 +821,37 @@
         }
       });
     });
-  }
+  };
+
+  /**
+   * Save a form using ajax, for use in modals
+   *
+   * @param {Event} event
+   */
+  webtrees.createRecordModalSubmit = function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const modal = document.getElementById('wt-ajax-modal')
+    const modal_content = modal.querySelector('.modal-content');
+    const select = document.getElementById(modal_content.dataset.wtSelectId);
+
+    webtrees.httpPost(form.action, new FormData(form))
+      .then(response => response.json())
+      .then(json => {
+        if (select) {
+          // This modal was activated by the "create new" button in a select edit control.
+          webtrees.resetTomSelect(select.tomselect, json.value, json.text);
+
+          bootstrap.Modal.getInstance(modal).hide();
+        } else {
+          // Show the success message in the existing modal.
+          modal_content.innerHTML = json.html;
+        }
+      })
+      .catch(error => {
+        modal_content.innerHTML = error;
+      });
+  };
 }(window.webtrees = window.webtrees || {}));
 
 // Send the CSRF token on all AJAX requests
