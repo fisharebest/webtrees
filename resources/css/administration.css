@@ -109,4 +109,8 @@ h4 {
     border: 0;
 }
 
-
+/* Up/down arrows to move items in a list tr*/
+tr:first-child > td.move.up > a,
+tr:last-child > td.move.down > a {
+    display: none;
+}
