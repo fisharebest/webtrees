@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Http\RequestHandlers\NotePage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
@@ -97,7 +98,7 @@ class Note extends GedcomRecord
 
 
         // Take the first line
-        [$text] = explode('<br />', strip_tags(trim($text), ['br']));
+        [$text] = explode(MarkdownFactory::BREAK, strip_tags(trim($text), ['br']));
 
 
         if ($text !== '') {

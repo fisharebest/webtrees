@@ -50,12 +50,14 @@ use function trim;
  */
 class MarkdownFactory implements MarkdownFactoryInterface
 {
+    public const BREAK = '<br />';
+
     // Commonmark uses <br /> for hard-breaks, so we use the same for soft-breaks.
     protected const CONFIG_AUTOLINK = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => '<br />',
+            'soft_break'     => self::BREAK,
         ],
     ];
 
@@ -63,7 +65,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => '<br />',
+            'soft_break'     => self::BREAK,
         ],
         'table'              => [
             'wrap' => [
@@ -102,7 +104,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $converter = new MarkDownConverter($environment);
 
         $html = $converter->convert($markdown)->getContent();
-        $html = strtr($html, ["</p>\n<p>" => '<br><br>' ]);
+        $html = strtr($html, ["</p>\n<p>" => self::BREAK . self::BREAK ]);
 
         return trim(strip_tags($html, ['a', 'br']));
     }

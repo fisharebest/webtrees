@@ -129,12 +129,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         static::assertSame(
-            "alpha<br>beta<br>gamma<br />\ndelta",
+            "alpha<br />beta<br />gamma<br />\ndelta",
             $factory->autolink("alpha\nbeta\ngamma  \ndelta")
         );
 
         static::assertSame(
-            "<p>alpha<br>beta<br>gamma<br />\ndelta</p>\n",
+            "<p>alpha<br />beta<br />gamma<br />\ndelta</p>\n",
             $factory->markdown("alpha\nbeta\ngamma  \ndelta")
         );
     }
@@ -147,12 +147,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         static::assertSame(
-            "alpha<br>beta<br><br>gamma<br>delta",
+            "alpha<br />beta<br /><br />gamma<br />delta",
             $factory->autolink("alpha\nbeta\n\n\n\ngamma\ndelta")
         );
 
         static::assertSame(
-            "<p>alpha<br>beta</p>\n<p>gamma<br>delta</p>\n",
+            "<p>alpha<br />beta</p>\n<p>gamma<br />delta</p>\n",
             $factory->markdown("alpha\nbeta\n\n\n\ngamma\ndelta")
         );
     }
