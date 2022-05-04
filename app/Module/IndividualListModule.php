@@ -289,7 +289,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $show     = 'indi'; // SURN list makes no sense here
         } elseif ($alpha === ',') {
             $show_all = 'no';
-            $legend   = I18N::translate('None');
+            $legend   = I18N::translate('No surname');
             $params   = [
                 'alpha' => $alpha,
                 'tree'  => $tree->name(),
@@ -516,7 +516,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         }
 
         if ($initial === ',') {
-            return I18N::translate('None');
+            return I18N::translate('No surname');
         }
 
         return e($initial);
