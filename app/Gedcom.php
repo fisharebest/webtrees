@@ -726,6 +726,7 @@ class Gedcom
             'NOTE:CHAN:DATE'           => new ChangeDate(I18N::translate('Date of last change')),
             'NOTE:CHAN:DATE:TIME'      => new TimeValue(I18N::translate('Time of last change')),
             'NOTE:CHAN:NOTE'           => new NoteStructure(I18N::translate('Note')),
+            'NOTE:CONC'                => new SubmitterText(I18N::translate('Note')),
             'NOTE:CONT'                => new SubmitterText(I18N::translate('Continuation')),
             'NOTE:REFN'                => new UserReferenceNumber(I18N::translate('Reference number')),
             'NOTE:REFN:TYPE'           => new UserReferenceType(I18N::translate('Type of reference number')),
