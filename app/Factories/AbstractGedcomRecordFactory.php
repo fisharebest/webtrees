@@ -25,6 +25,8 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
+use function str_starts_with;
+
 /**
  * Make a GedcomRecord object.
  */
@@ -59,6 +61,10 @@ abstract class AbstractGedcomRecordFactory
     {
         if (preg_match('/^0 @(' . Gedcom::REGEX_XREF . ')@/', $gedcom, $match)) {
             return $match[1];
+        }
+
+        if (str_starts_with($gedcom, '0 HEAD')) {
+            return 'HEAD';
         }
 
         return $xref;
