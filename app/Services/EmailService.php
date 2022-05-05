@@ -70,8 +70,12 @@ class EmailService
             $transport = $this->transport();
             $mailer    = new Mailer($transport);
             $mailer->send($message);
+        } catch (RfcComplianceException $ex) {
+            Log::addErrorLog('Cannot create email  ' . $ex->getMessage());
+
+            return false;
         } catch (TransportExceptionInterface $ex) {
-            Log::addErrorLog('MailService: ' . $ex->getMessage());
+            Log::addErrorLog('Cannot send email: ' . $ex->getMessage());
 
             return false;
         }
