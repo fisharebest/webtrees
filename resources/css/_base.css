@@ -115,3 +115,9 @@ a:hover, .btn-link:hover, .nav-link:hover {
     /* Long words without spaces can break the page layout */
     word-break: break-all;
 }
+
+.wt-nested-edit-fields {
+    padding-left: 1rem;
+    margin-left: 1rem;
+    border-left: solid 4px grey;
+}

@@ -48,9 +48,9 @@ foreach ($keys as $num => $key) {
 <?php foreach ($keys as $key) : ?>
     <?php if ($indent[$key - 1] ?? false) : ?>
         <?php if ($collapse[$key - 1] ?? false) : ?>
-            <div id="collapse-<?= $key ?>" class="collapse ms-4 ps-4 border-start border-4">
+            <div id="collapse-<?= $key ?>" class="collapse wt-nested-edit-fields">
         <?php else : ?>
-                <div class="ms-4 ps-4 border-start border-4">
+                <div class="wt-nested-edit-fields">
         <?php endif ?>
     <?php endif ?>
 
