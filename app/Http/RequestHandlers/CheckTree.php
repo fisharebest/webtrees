@@ -137,7 +137,7 @@ class CheckTree implements RequestHandlerInterface
             ->get()
             ->map(static function (object $row): object {
                 // Extract type for pending record
-                if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match) === 1) {
+                if ($row->type === '' && preg_match('/^0( @[^@]*@)? ([_A-Z0-9]+)/', $row->gedcom, $match) === 1) {
                     $row->type = $match[1];
                 }
 
