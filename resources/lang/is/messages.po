@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
+"PO-Revision-Date: 2022-05-05 15:08+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -1409,11 +1409,11 @@ msgstr "Bæta við atburði"
 
 #: resources/views/modules/custom-css-js/edit.phtml:34
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr "Bæta innihaldi við lok af <code>&lt;body&gt;</code> hluti."
+msgstr "Bæta innihaldi við endan af <code>&lt;body&gt;</code> hlutanum."
 
 #: resources/views/modules/custom-css-js/edit.phtml:22
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "Bæta innihaldi við lok af <code>&lt;head&gt;</code> hluti."
+msgstr "Bæta innihaldi við endan af <code>&lt;head&gt;</code> hlutanum."
 
 #: resources/views/edit/paste-fact-row.phtml:20
 msgid "Add from clipboard"
@@ -2211,7 +2211,13 @@ msgstr "Aruba"
 
 #: resources/views/modules/html/config.phtml:43
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Auk þess að nota tækjastikuna til að nýta HTML sniðmótun, þá getur þú bætt inn gagnagrunnsreitum sem eru sjálfvirkt uppfærðir. Þessir sérstöku reitir eru merktir með <b>#</b> stöfum. Sem dæmi <b>#totalFamilies#</b> verður skipt út með raunverulegum fjölda fjölskyldna í gagnagrunninum. Þróaðir notendur gætu óskað þess að nýta CSS flokka í textum sínum, þannig að sniðmótun sé í samræmi við núverandi valið þema."
+msgstr ""
+"Auk þess að nota tækjastikuna til að nýta HTML sniðmótun, þá getur þú bætt "
+"inn gagnagrunnsreitum sem eru sjálfvirkt uppfærðir. Þessir sérstöku reitir "
+"eru merktir með <b>#</b> stöfum. Sem dæmi <b>#totalFamilies#</b> verður "
+"skipt út með raunverulegum fjölda fjölskyldna í gagnagrunninum. Reyndir "
+"notendur gætu óskað þess að nýta CSS flokka í textum sínum, þannig að "
+"sniðmótun sé í samræmi við núverandi valið þema."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:155
@@ -17612,7 +17618,7 @@ msgstr "borgari"
 #: resources/views/modals/header.phtml:15
 #: resources/views/modules/privacy-policy/footer.phtml:23
 msgid "close"
-msgstr "lok"
+msgstr "loka"
 
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
