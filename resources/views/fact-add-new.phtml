@@ -20,7 +20,7 @@ $add_facts = (new GedcomEditService())->factsToAdd($record, false);
 // Add from pick list
 switch ($record->tag()) {
     case Individual::RECORD_TYPE:
-        $quick_facts  = explode(',', $record->tree()->getPreference('INDI_FACTS_QUICK'));
+        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('INDI_FACTS_QUICK')));
         $unique_facts = [
             'ADOP',
             'AFN',
@@ -59,7 +59,7 @@ switch ($record->tag()) {
         break;
 
     case Family::RECORD_TYPE:
-        $quick_facts  = explode(',', $record->tree()->getPreference('FAM_FACTS_QUICK'));
+        $quick_facts  = array_filter(explode(',', $record->tree()->getPreference('FAM_FACTS_QUICK')));
         $unique_facts = [
             'DIV',
             'DIVF',
