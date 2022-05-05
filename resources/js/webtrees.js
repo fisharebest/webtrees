@@ -744,6 +744,7 @@
       let options = {
         plugins: ['dropdown_input', 'virtual_scroll'],
         maxOptions: false,
+        searchField: ['text','value'], // Allow records found by XREF to be displayed
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
