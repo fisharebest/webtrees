@@ -323,7 +323,7 @@ use Fisharebest\Webtrees\View;
    * @param access true or false
    */
   function setPrivacyFeedback (sel, who, access) {
-    var formGroup = $(sel).closest('.form-group');
+    var formGroup = $(sel).closest('.row');
 
     if (access) {
       $('.' + who, formGroup).addClass('bg-success').removeClass('bg-secondary');
