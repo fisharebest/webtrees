@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-05 15:08+0000\n"
+"PO-Revision-Date: 2022-05-12 23:23+0000\n"
 "Last-Translator: Markus Hemprich <hemprich@gmx.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -666,7 +666,8 @@ msgstr "Ein Diagramm der Vorfahren und Nachkommen einer Person als Familienbuch.
 #. I18N: Description of the “CompactTreeChart” module
 #: app/Module/CompactTreeChartModule.php:96
 msgid "A chart of an individual’s ancestors, as a compact tree."
-msgstr "Eine kompakte Tafel der Vorfahren einer Person."
+msgstr ""
+"Eine Tafel der Vorfahren einer Person mit einer kompakten Darstellungsform."
 
 #. I18N: Description of the “PedigreeChart” module
 #: app/Module/PedigreeChartModule.php:129
@@ -3931,7 +3932,7 @@ msgstr "Komoren"
 #. I18N: Name of a module/chart
 #: app/Module/CompactTreeChartModule.php:85
 msgid "Compact tree"
-msgstr "Kompakte Vorfahrentafel"
+msgstr "Vorfahrentafel, kompakt"
 
 #. I18N: %s is an individual’s name
 #: app/Module/CompactTreeChartModule.php:131
@@ -6379,13 +6380,13 @@ msgstr "FamilySearch ID"
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
 msgid "Fan chart"
-msgstr "Fächerdiagramm"
+msgstr "Vorfahrenfächer"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Module/FanChartModule.php:165
 #, php-format
 msgid "Fan chart of %s"
-msgstr "Fächerdiagramm von %s"
+msgstr "Vorfahrenfächer von %s"
 
 #: app/Date/JalaliDate.php:259
 msgctxt "Abbreviation for Persian month: Farvardin"
