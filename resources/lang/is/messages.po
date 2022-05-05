@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-03 23:56+0100\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-05 15:08+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1384,11 +1372,11 @@ msgstr "Bæta við í spurningar og svör"
 
 #: resources/views/modules/custom-css-js/edit.phtml:34
 msgid "Add content to the end of the <code>&lt;body&gt;</code> element."
-msgstr "Bæta innihaldi við lok af <code>&lt;body&gt;</code> hluti."
+msgstr "Bæta innihaldi við endan af <code>&lt;body&gt;</code> hlutanum."
 
 #: resources/views/modules/custom-css-js/edit.phtml:22
 msgid "Add content to the end of the <code>&lt;head&gt;</code> element."
-msgstr "Bæta innihaldi við lok af <code>&lt;head&gt;</code> hluti."
+msgstr "Bæta innihaldi við endan af <code>&lt;head&gt;</code> hlutanum."
 
 #: resources/views/record-page-menu-clipboard.phtml:18
 msgid "Add from clipboard"
@@ -2133,7 +2121,7 @@ msgstr "Aruba"
 
 #: resources/views/modules/html/config.phtml:43
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically. These special fields are marked with <b>#</b> characters. For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database. Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Auk þess að nota tækjastikuna til að nýta HTML sniðmótun, þá getur þú bætt inn gagnagrunnsreitum sem eru sjálfvirkt uppfærðir. Þessir sérstöku reitir eru merktir með <b>#</b> stöfum. Sem dæmi <b>#totalFamilies#</b> verður skipt út með raunverulegum fjölda fjölskyldna í gagnagrunninum. Þróaðir notendur gætu óskað þess að nýta CSS flokka í textum sínum, þannig að sniðmótun sé í samræmi við núverandi valið þema."
+msgstr "Auk þess að nota tækjastikuna til að nýta HTML sniðmótun, þá getur þú bætt inn gagnagrunnsreitum sem eru sjálfvirkt uppfærðir. Þessir sérstöku reitir eru merktir með <b>#</b> stöfum. Sem dæmi <b>#totalFamilies#</b> verður skipt út með raunverulegum fjölda fjölskyldna í gagnagrunninum. Reyndir notendur gætu óskað þess að nýta CSS flokka í textum sínum, þannig að sniðmótun sé í samræmi við núverandi valið þema."
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:155
@@ -3954,7 +3942,7 @@ msgstr "Stjórnborð"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Umbreyta %s merkjum í GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -8518,7 +8506,7 @@ msgstr "Erfingi"
 
 #: app/Gedcom.php:860
 msgid "Length"
-msgstr ""
+msgstr "Lengd"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -10839,7 +10827,7 @@ msgstr "Paraguay"
 
 #: app/Gedcom.php:1266
 msgid "Parent location"
-msgstr ""
+msgstr "Foreldra staðsetning"
 
 #: app/Gedcom.php:705 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:72
@@ -11641,7 +11629,7 @@ msgstr "Endurraða gögnum"
 
 #: resources/views/media-page-menu.phtml:44
 msgid "Re-order media files"
-msgstr ""
+msgstr "Endurraða gagnaskrám"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -13978,7 +13966,7 @@ msgstr "Texti"
 
 #: app/Gedcom.php:1495
 msgid "Text direction"
-msgstr ""
+msgstr "Textastefna"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -15102,15 +15090,15 @@ msgstr "Tími"
 
 #: app/Gedcom.php:1548
 msgid "Time of birth"
-msgstr ""
+msgstr "Tími fæðingar"
 
 #: resources/views/admin/tags.phtml:955
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Tími fæðingar og tími andláts"
 
 #: app/Gedcom.php:1552
 msgid "Time of death"
-msgstr ""
+msgstr "Tími andláts"
 
 #: app/Gedcom.php:429 app/Gedcom.php:595 app/Gedcom.php:727 app/Gedcom.php:747
 #: app/Gedcom.php:778 app/Gedcom.php:794 app/Gedcom.php:825 app/Gedcom.php:841
@@ -16561,7 +16549,7 @@ msgstr "Þysja út"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "_WT_OBJE_SORT merki voru notuð af eldri útgáfum af webtrees til að gefa til kynna ákjósanlega mynd fyrir einstakling. Annar valkostur er að raða myndunum upp á nýtt þannig að sú ákjósanlegasta sé skráð fyrst."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -16885,7 +16873,7 @@ msgstr "borgari"
 #: resources/views/modules/favorites/favorites.phtml:56
 #: resources/views/modules/privacy-policy/footer.phtml:23
 msgid "close"
-msgstr "lok"
+msgstr "loka"
 
 #. I18N: Name of a theme.
 #: app/Module/CloudsTheme.php:43
