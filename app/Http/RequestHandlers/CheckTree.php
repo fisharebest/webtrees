@@ -70,6 +70,7 @@ use function str_contains;
 use function str_starts_with;
 use function strtoupper;
 use function substr_count;
+use function var_dump;
 
 /**
  * Check a tree for errors.
@@ -137,7 +138,11 @@ class CheckTree implements RequestHandlerInterface
             ->get()
             ->map(static function (object $row): object {
                 // Extract type for pending record
-                if ($row->type === '' && preg_match('/^0( @[^@]*@)? ([_A-Z0-9]+)/', $row->gedcom, $match) === 1) {
+                if ($row->type === '' && str_starts_with($row->gedcom, '0 HEAD')) {
+                    $row->type = 'HEAD';
+                }
+
+                if ($row->type === '' && preg_match('/^0 @[^@]*@ ([_A-Z0-9]+)/', $row->gedcom, $match) === 1) {
                     $row->type = $match[1];
                 }
 
