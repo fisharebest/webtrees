@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-03 23:56+0100\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
-"Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
-"Language: pl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-12 23:23+0000\nLast-Translator: Łukasz <wilenskipl@wp.pl>\nLanguage-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\nLanguage: pl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Polish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3978,7 +3961,7 @@ msgstr "Panel sterowania"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Konwertuj tagi %s na GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -8542,7 +8525,7 @@ msgstr "Legatariusz / Zapisobiorca"
 
 #: app/Gedcom.php:860
 msgid "Length"
-msgstr ""
+msgstr "Długość"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -10865,7 +10848,7 @@ msgstr "Paragwaj"
 
 #: app/Gedcom.php:1266
 msgid "Parent location"
-msgstr ""
+msgstr "Lokalizacja nadrzędna"
 
 #: app/Gedcom.php:705 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:72
@@ -11667,7 +11650,7 @@ msgstr "Uporządkuj multimedia"
 
 #: resources/views/media-page-menu.phtml:44
 msgid "Re-order media files"
-msgstr ""
+msgstr "Zmień kolejność plików multimedialnych"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -14004,7 +13987,7 @@ msgstr "Tekst"
 
 #: app/Gedcom.php:1495
 msgid "Text direction"
-msgstr ""
+msgstr "Kierunek tekstu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -15132,15 +15115,15 @@ msgstr "Czas"
 
 #: app/Gedcom.php:1548
 msgid "Time of birth"
-msgstr ""
+msgstr "Czas narodzin"
 
 #: resources/views/admin/tags.phtml:955
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Czas urodzenia i czas śmierci"
 
 #: app/Gedcom.php:1552
 msgid "Time of death"
-msgstr ""
+msgstr "Czas śmierci"
 
 #: app/Gedcom.php:429 app/Gedcom.php:595 app/Gedcom.php:727 app/Gedcom.php:747
 #: app/Gedcom.php:778 app/Gedcom.php:794 app/Gedcom.php:825 app/Gedcom.php:841
@@ -16594,7 +16577,7 @@ msgstr "Pomniejsz"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "Tagi _WT_OBJE_SORT były używane w starych wersjach webtrees  do wskazywania preferowanego zdjęcia dla danej osoby. Alternatywą jest zmiana kolejności obrazów, tak aby preferowany był wymieniony jako pierwszy."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
