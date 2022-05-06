@@ -60,7 +60,7 @@ class IndividualRecord extends AbstractElement
         'IDNO' => '0:M',
         'IMMI' => '0:M',
         'NAME' => '0:M',
-        'NATI' => '0:M',        
+        'NATI' => '0:M',
         'NATU' => '0:M',
         'NCHI' => '0:M',
         'NMR'  => '0:M',
