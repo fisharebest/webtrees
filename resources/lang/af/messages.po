@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-03 23:56+0100\n"
-"PO-Revision-Date: 2022-04-20 12:22+0000\n"
-"Last-Translator: Chris Theron <tronsmit@gmail.com>\n"
-"Language-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
-"Language: af\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-12 23:23+0000\nLast-Translator: Chris Theron <tronsmit@gmail.com>\nLanguage-Team: Afrikaans <https://translate.webtrees.net/projects/webtrees/webtrees/af/>\nLanguage: af\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -307,7 +295,7 @@ msgstr[1] "%s notas is bygewerk."
 #: app/Http/RequestHandlers/CheckTree.php:313
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s kom te veel kere voor."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -526,7 +514,7 @@ msgstr "(uit %s totale inskrywings gefilter)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(sluit medialêers in)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1506,7 +1494,7 @@ msgstr "Adelaide, Australië"
 
 #: app/Gedcom.php:1256
 msgid "Administrative ID"
-msgstr ""
+msgstr "Administratiewe ID"
 
 #: resources/views/admin/users-edit.phtml:224
 #: resources/views/admin/users-edit.phtml:273
@@ -1930,7 +1918,7 @@ msgstr "Ancestry PID"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1050
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com bron identifiseerder"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -1994,11 +1982,11 @@ msgstr "Apia, Samoa"
 
 #: app/Gedcom.php:491
 msgid "Application ID"
-msgstr ""
+msgstr "Toepassing ID"
 
 #: app/Gedcom.php:508
 msgid "Application name"
-msgstr ""
+msgstr "Toepassing naam"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3688,7 +3676,7 @@ msgstr "Besnyer"
 
 #: app/Gedcom.php:1054
 msgid "Circumcision"
-msgstr ""
+msgstr "Besnydenis"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -3954,7 +3942,7 @@ msgstr "Beheerpaneel"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Skakel %s etikette om na GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4129,7 +4117,7 @@ msgstr "Skep, wysig of verwyder 'n stamboom vir elke GEDCOM lêer in die data-l�
 #. I18N: GEDCOM tag _CREA
 #: app/Gedcom.php:886
 msgid "Created at"
-msgstr ""
+msgstr "Geskep te"
 
 #: app/Gedcom.php:1116 app/Gedcom.php:1172 app/Gedcom.php:1322
 #: app/Gedcom.php:1359 app/Gedcom.php:1362 app/Gedcom.php:1364
@@ -4293,7 +4281,7 @@ msgstr "Aangepaste GEDCOM-etikette"
 
 #: app/Http/RequestHandlers/CheckTree.php:213
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "Aangepaste GEDCOM etikette word ontmoedig. Probeer om slegs standaard GEDCOM etikette te gebruik."
 
 #: resources/views/calendar-page.phtml:204
 msgid "Custom event"
@@ -5100,7 +5088,7 @@ msgstr "Kongo (Kinshasa)"
 
 #: app/Gedcom.php:1260
 msgid "Demographic data"
-msgstr ""
+msgstr "Demografiese data"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -6798,7 +6786,7 @@ msgstr "GEDCOM-L"
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1091 app/Gedcom.php:1145 app/Gedcom.php:1265
@@ -6808,7 +6796,7 @@ msgstr "GOV-identifiseerder"
 
 #: app/Gedcom.php:1255
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV identifikasie tipe"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
