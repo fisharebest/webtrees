@@ -21,10 +21,12 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\ModuleService;
@@ -169,6 +171,10 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             ->merge($relative_facts);
 
         $individual_facts = Fact::sortFacts($individual_facts);
+
+        // Facts of relatives take the form 1 EVEN / 2 TYPE Event of Individual
+        // Ensure custom tags from there are recognised
+        Registry::elementFactory()->registerTags(['INDI:EVEN:CEME' => new CustomElement('Cemetery')]);
 
         return view('modules/personal_facts/tab', [
             'can_edit'            => $individual->canEdit(),
