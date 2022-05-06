@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-03 23:56+0100\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
-"Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
-"Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
-"Language: fr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-12 23:23+0000\nLast-Translator: Jonathan Jaubart <dev@jaubart.com>\nLanguage-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\nLanguage: fr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -530,7 +514,7 @@ msgstr "(filtrés parmi %s entrées au total)"
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr "(incluant les objets médias)"
+msgstr "(incluant les fichiers médias)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -3958,7 +3942,7 @@ msgstr "Panneau de contrôle"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Convertir les balises %s vers GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -8522,7 +8506,7 @@ msgstr "Légataire"
 
 #: app/Gedcom.php:860
 msgid "Length"
-msgstr ""
+msgstr "Taille"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -10843,7 +10827,7 @@ msgstr "Paraguay"
 
 #: app/Gedcom.php:1266
 msgid "Parent location"
-msgstr ""
+msgstr "Lieu partagé parent"
 
 #: app/Gedcom.php:705 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:72
@@ -11645,7 +11629,7 @@ msgstr "Réorganiser les objets médias"
 
 #: resources/views/media-page-menu.phtml:44
 msgid "Re-order media files"
-msgstr ""
+msgstr "Réorganiser les fichiers médias"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -13982,7 +13966,7 @@ msgstr "Texte"
 
 #: app/Gedcom.php:1495
 msgid "Text direction"
-msgstr ""
+msgstr "Direction du texte"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -15106,15 +15090,15 @@ msgstr "Heure"
 
 #: app/Gedcom.php:1548
 msgid "Time of birth"
-msgstr ""
+msgstr "Heure de naissance"
 
 #: resources/views/admin/tags.phtml:955
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Heures de naissance et décès"
 
 #: app/Gedcom.php:1552
 msgid "Time of death"
-msgstr ""
+msgstr "Heure du décès"
 
 #: app/Gedcom.php:429 app/Gedcom.php:595 app/Gedcom.php:727 app/Gedcom.php:747
 #: app/Gedcom.php:778 app/Gedcom.php:794 app/Gedcom.php:825 app/Gedcom.php:841
@@ -16565,7 +16549,7 @@ msgstr "Zoom arrière"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "Les balises _WT_OBJE_SORT étaient utilisées par des versions antérieures de webtrees pour indiquer l'image à utiliser de préférence pour un individu. Une alternative est de réorganiser les objets médias de manière à ce que l'image préférée soit listée en premier."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
