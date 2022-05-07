@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\SurnameTradition;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
 use function e;
@@ -94,7 +94,9 @@ class NamePersonal extends AbstractElement
      */
     public function default(Tree $tree): string
     {
-        return SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'))->defaultName();
+        return Registry::surnameTraditionFactory()
+            ->make($tree->getPreference('SURNAME_TRADITION'))
+            ->defaultName();
     }
 
     /**

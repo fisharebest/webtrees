@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -27,6 +28,28 @@ use Fisharebest\Webtrees\Individual;
  */
 class MatrilinealSurnameTradition extends DefaultSurnameTradition
 {
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        /* I18N: A system where children take their mother’s surname */
+        return I18N::translate('matrilineal');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: In the matrilineal surname tradition, ... */
+        return I18N::translate('Children take their mother’s surname.');
+    }
+
     /**
      * What name is given to a new child
      *

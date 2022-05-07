@@ -25,7 +25,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
-use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -66,8 +65,11 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         $family = Auth::checkFamilyAccess($family, true);
 
         // Name facts.
-        $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
-        $spouse            = $family->spouses()->first();
+        $surname_tradition = Registry::surnameTraditionFactory()
+            ->make($tree->getPreference('SURNAME_TRADITION'));
+
+        $spouse = $family->spouses()->first();
+
         if ($spouse instanceof Individual) {
             $names = $surname_tradition->newSpouseNames($spouse, $sex);
         } else {

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 use function var_dump;
@@ -29,6 +30,29 @@ use function var_dump;
  */
 class PaternalSurnameTradition extends PatrilinealSurnameTradition
 {
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'paternal');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: In the paternal surname tradition, ... */
+        return
+            I18N::translate('Children take their father’s surname.') . ' ' .
+            I18N::translate('Wives take their husband’s surname.');
+    }
+
     /**
      * What name is given to a new parent
      *

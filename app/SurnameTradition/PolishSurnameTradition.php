@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -42,6 +43,30 @@ class PolishSurnameTradition extends PaternalSurnameTradition
         'ska\b'  => 'ski',
         'żka\b'  => 'żki',
     ];
+
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'Polish');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: In the Polish surname tradition, ... */
+        return
+            I18N::translate('Children take their father’s surname.') . ' ' .
+            I18N::translate('Wives take their husband’s surname.') . ' ' .
+            I18N::translate('Surnames are inflected to indicate an individual’s gender.');
+    }
 
     /**
      * What name is given to a new child

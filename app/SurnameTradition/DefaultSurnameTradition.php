@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 use function array_filter;
@@ -45,6 +46,26 @@ class DefaultSurnameTradition implements SurnameTraditionInterface
 
     /** Extract two Spanish/Portuguese SURNs from a NAME */
     protected const REGEX_SURNS = '~/(?<SURN1>[^ /]+)(?: | y |/ /|/ y /)(?<SURN2>[^ /]+)/~';
+
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'none');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        return '';
+    }
 
     /**
      * A default/empty name

@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use Fisharebest\Webtrees\Contracts\SurnameTraditionFactoryInterface;
+use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
 use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition;
@@ -32,45 +34,49 @@ use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 /**
  * Test harness for the class SurnameTradition
  */
-class SurnameTraditionTest extends TestCase
+class SurnameTraditionFactoryTest extends TestCase
 {
     /**
-     * @covers \Fisharebest\Webtrees\SurnameTradition::create
+     * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::make
      * @return void
      */
     public function testCreate(): void
     {
-        self::assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('none'));
-        self::assertInstanceOf(IcelandicSurnameTradition::class, SurnameTradition::create('icelandic'));
-        self::assertInstanceOf(LithuanianSurnameTradition::class, SurnameTradition::create('lithuanian'));
-        self::assertInstanceOf(MatrilinealSurnameTradition::class, SurnameTradition::create('matrilineal'));
-        self::assertInstanceOf(PaternalSurnameTradition::class, SurnameTradition::create('paternal'));
-        self::assertInstanceOf(PatrilinealSurnameTradition::class, SurnameTradition::create('patrilineal'));
-        self::assertInstanceOf(PolishSurnameTradition::class, SurnameTradition::create('polish'));
-        self::assertInstanceOf(PortugueseSurnameTradition::class, SurnameTradition::create('portuguese'));
-        self::assertInstanceOf(SpanishSurnameTradition::class, SurnameTradition::create('spanish'));
+        $factory = new SurnameTraditionFactory();
+
+        self::assertInstanceOf(DefaultSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::DEFAULT));
+        self::assertInstanceOf(IcelandicSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::ICELANDIC));
+        self::assertInstanceOf(LithuanianSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::LITHUANIAN));
+        self::assertInstanceOf(MatrilinealSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::MATRILINEAL));
+        self::assertInstanceOf(PaternalSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::PATERNAL));
+        self::assertInstanceOf(PatrilinealSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::PATRILINEAL));
+        self::assertInstanceOf(PolishSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::POLISH));
+        self::assertInstanceOf(PortugueseSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::PORTUGUESE));
+        self::assertInstanceOf(SpanishSurnameTradition::class, $factory->make(SurnameTraditionFactoryInterface::SPANISH));
     }
 
     /**
      * Test create() with invalid input
      *
-     * @covers \Fisharebest\Webtrees\SurnameTradition::create
+     * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::make
      * @return void
      */
     public function testCreateInvalid(): void
     {
-        self::assertInstanceOf(DefaultSurnameTradition::class, SurnameTradition::create('FOOBAR'));
+        $factory = new SurnameTraditionFactory();
+
+        self::assertInstanceOf(DefaultSurnameTradition::class, $factory->make('FOOBAR'));
     }
 
     /**
      * Test allDescriptions()
      *
-     * @covers \Fisharebest\Webtrees\SurnameTradition::allDescriptions
+     * @covers \Fisharebest\Webtrees\Factories\SurnameTraditionFactory::list
      * @return void
      */
     public function testAllDescriptions(): void
     {
-        $descriptions = SurnameTradition::allDescriptions();
+        $descriptions = Registry::surnameTraditionFactory()->list();
         self::assertCount(9, $descriptions);
     }
 }

@@ -24,7 +24,6 @@ use Fisharebest\Webtrees\Http\ViewResponseTrait;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
-use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -65,8 +64,10 @@ class AddChildToFamilyPage implements RequestHandlerInterface
         $family = Auth::checkFamilyAccess($family, true);
 
         // Name facts.
-        $surname_tradition = SurnameTradition::create($tree->getPreference('SURNAME_TRADITION'));
-        $names             = $surname_tradition->newChildNames($family->husband(), $family->wife(), $sex);
+        $surname_tradition = Registry::surnameTraditionFactory()
+            ->make($tree->getPreference('SURNAME_TRADITION'));
+
+        $names = $surname_tradition->newChildNames($family->husband(), $family->wife(), $sex);
 
         $facts = [
             'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, $names),

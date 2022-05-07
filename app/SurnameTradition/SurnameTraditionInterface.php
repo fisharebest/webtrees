@@ -28,6 +28,20 @@ use Fisharebest\Webtrees\Individual;
 interface SurnameTraditionInterface
 {
     /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string;
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string;
+
+    /**
      * A default/empty name
      *
      * @return string

@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
@@ -156,7 +155,7 @@ class TreePreferencesPage implements RequestHandlerInterface
             ->map(static fn (ElementInterface $element): string => $element->label())
             ->sort(I18N::comparator());
 
-        $all_surname_traditions = SurnameTradition::allDescriptions();
+        $all_surname_traditions = Registry::surnameTraditionFactory()->list();
 
         $tree_count = $this->tree_service->all()->count();
 

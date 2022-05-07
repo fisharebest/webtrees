@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Contracts;
 
 use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
@@ -31,31 +31,41 @@ use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 
 /**
- * @deprecated - Will be removed in 2.2.0 - use the factory to create surname traditions.
+ * Create a surname tradition.
  */
-class SurnameTradition
+interface SurnameTraditionFactoryInterface
 {
-    /**
-     * Create a surname tradition object for a given surname tradition name.
-     *
-     * @param string $name Internal name of the surname tradition
-     *
-     * @return SurnameTraditionInterface
-     * @deprecated - Will be removed in 2.2.0 - use the factory to create surname traditions.
-     */
-    public static function create(string $name): SurnameTraditionInterface
-    {
-        return Registry::surnameTraditionFactory()->make('name');
-    }
+    public const PATERNAL    = 'paternal';
+    public const PATRILINEAL = 'patrilineal';
+    public const MATRILINEAL = 'matrilineal';
+    public const PORTUGUESE  = 'portuguese';
+    public const SPANISH     = 'spanish';
+    public const POLISH      = 'polish';
+    public const LITHUANIAN  = 'lithuanian';
+    public const ICELANDIC   = 'icelandic';
+    public const DEFAULT     = '';
 
     /**
-     * A list of known surname traditions, with their descriptions
+     * A list of supported surname traditions and their names.
      *
-     * @return array<string>
-     * @deprecated - Will be removed in 2.2.0 - use the factory to create surname traditions.
+     * @return array<string,string>
      */
-    public static function allDescriptions(): array
-    {
-        return Registry::surnameTraditionFactory()->list();
-    }
+    public function list(): array;
+
+    /**
+     * Create a named surname tradition.
+     *
+     * @param string $name
+     *
+     * @return SurnameTraditionInterface
+     */
+    public function make(string $name): SurnameTraditionInterface;
+
+    /**
+     * @param string                    $name
+     * @param SurnameTraditionInterface $surname_tradition
+     *
+     * @return void
+     */
+    public function register(string $name, SurnameTraditionInterface $surname_tradition): void;
 }

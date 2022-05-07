@@ -41,7 +41,6 @@ use Fisharebest\Webtrees\Statistics\Google\ChartSex;
 use Fisharebest\Webtrees\Statistics\Repository\Interfaces\IndividualRepositoryInterface;
 use Fisharebest\Webtrees\Statistics\Service\CenturyService;
 use Fisharebest\Webtrees\Statistics\Service\ColorService;
-use Fisharebest\Webtrees\SurnameTradition;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Database\Query\Builder;
@@ -1823,7 +1822,8 @@ class IndividualRepository implements IndividualRepositoryInterface
             return I18N::translate('This information is not available.');
         }
 
-        $surname_tradition = SurnameTradition::create($this->tree->getPreference('SURNAME_TRADITION'));
+        $surname_tradition = Registry::surnameTraditionFactory()
+            ->make($this->tree->getPreference('SURNAME_TRADITION'));
 
         return (new ChartCommonSurname($this->color_service, $surname_tradition))
             ->chartCommonSurnames($tot_indi, $all_surnames, $color_from, $color_to);

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -31,6 +32,27 @@ use Fisharebest\Webtrees\Individual;
  */
 class PortugueseSurnameTradition extends DefaultSurnameTradition
 {
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'Portuguese');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: In the Portuguese surname tradition, ... */
+        return I18N::translate('Children take one surname from the mother and one surname from the father.');
+    }
+
     /**
      * A default/empty name
      *

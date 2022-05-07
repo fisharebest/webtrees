@@ -40,6 +40,7 @@ use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
+use Fisharebest\Webtrees\Contracts\SurnameTraditionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\TimestampFactoryInterface;
 use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
 
@@ -89,6 +90,8 @@ class Registry
     private static SubmissionFactoryInterface $submission_factory;
 
     private static SubmitterFactoryInterface $submitter_factory;
+
+    private static SurnameTraditionFactoryInterface $surname_tradition_factory;
 
     private static TimestampFactoryInterface $timestamp_factory;
 
@@ -428,6 +431,22 @@ class Registry
         }
 
         return self::$submitter_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param SurnameTraditionFactoryInterface|null $factory
+     *
+     * @return SurnameTraditionFactoryInterface
+     */
+    public static function surnameTraditionFactory(SurnameTraditionFactoryInterface $factory = null): SurnameTraditionFactoryInterface
+    {
+        if ($factory instanceof SurnameTraditionFactoryInterface) {
+            self::$surname_tradition_factory = $factory;
+        }
+
+        return self::$surname_tradition_factory;
     }
 
     /**

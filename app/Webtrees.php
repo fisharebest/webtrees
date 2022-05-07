@@ -42,6 +42,7 @@ use Fisharebest\Webtrees\Factories\SlugFactory;
 use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
+use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
 use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
@@ -213,6 +214,7 @@ class Webtrees
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());
+        Registry::surnameTraditionFactory(new SurnameTraditionFactory());
         Registry::timestampFactory(new TimestampFactory());
         Registry::xrefFactory(new XrefFactory());
 

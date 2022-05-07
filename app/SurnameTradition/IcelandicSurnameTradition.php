@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -30,6 +31,27 @@ use Fisharebest\Webtrees\Individual;
  */
 class IcelandicSurnameTradition extends DefaultSurnameTradition
 {
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'Icelandic');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: In the Icelandic surname tradition, ... */
+        return I18N::translate('Children take a patronym instead of a surname.');
+    }
+
     /**
      * A default/empty name
      *

@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\SurnameTradition;
 
 use Fisharebest\Webtrees\Elements\NameType;
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
 /**
@@ -52,6 +53,30 @@ class LithuanianSurnameTradition extends PaternalSurnameTradition
         'iūtė\b' => 'ius',
         'utė\b'  => 'us',
     ];
+
+    /**
+     * The name of this surname tradition
+     *
+     * @return string
+     */
+    public function name(): string
+    {
+        return I18N::translateContext('Surname tradition', 'Lithuanian');
+    }
+
+    /**
+     * A short description of this surname tradition
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        /* I18N: In the Lithuanian surname tradition, ... */
+        return
+            I18N::translate('Children take their father’s surname.') . ' ' .
+            I18N::translate('Wives take their husband’s surname.') . ' ' .
+            I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.');
+    }
 
     /**
      * What name is given to a new child
