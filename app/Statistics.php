@@ -310,7 +310,7 @@ class Statistics implements
      */
     public function totalIndisWithSourcesPercentage(): string
     {
-        return $this->individualRepository->totalIndisWithSourcesPercentage();
+        return $this->individual_repository->totalIndisWithSourcesPercentage();
     }
 
     /**
