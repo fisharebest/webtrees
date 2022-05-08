@@ -111,6 +111,7 @@ a:hover, .btn-link:hover, .nav-link:hover {
 .dropdown-menu {
     max-height: 90vh;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
 }
 
 /* User-generated text */
