@@ -107,6 +107,12 @@ a:hover, .btn-link:hover, .nav-link:hover {
     text-decoration: var(--link-decoration-hover);
 }
 
+/* Some menus (e.g. languages) can be longer than a page */
+.dropdown-menu {
+    max-height: 90vh;
+    overflow-x: hidden;
+}
+
 /* User-generated text */
 .ut {
     /* RTL text on LTR pages (or vice-versa) */

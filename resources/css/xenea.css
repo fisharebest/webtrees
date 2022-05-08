@@ -1515,12 +1515,6 @@ a > .wt-icon-arrow-up:hover {
     overflow-y: hidden;
 }
 
-/* Some menus (e.g. languages) can be longer than a page */
-.dropdown-menu {
-    max-height: 30rem;
-    overflow-x: hidden;
-}
-
 /* Forms */
 .col-form-label {
     font-weight: bold;
