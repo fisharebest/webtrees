@@ -48,6 +48,9 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     private const DEFAULT_SHOW_UNASSIGNED = '1';
     private const DEFAULT_SHOW_FUTURE     = '1';
 
+    // 31 DEC 9999
+    private const MAXIMUM_JULIAN_DAY = 5373484;
+
     // Pagination
     private const LIMIT_LOW  = 10;
     private const LIMIT_HIGH = 20;
@@ -99,7 +102,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
 
         extract($config, EXTR_OVERWRITE);
 
-        $end_jd      = $show_future ? PHP_INT_MAX : Registry::timestampFactory()->now()->julianDay();
+        $end_jd      = $show_future ? self::MAXIMUM_JULIAN_DAY : Registry::timestampFactory()->now()->julianDay();
         $individuals = $this->individualsWithTasks($tree, $end_jd);
         $families    = $this->familiesWithTasks($tree, $end_jd);
 
