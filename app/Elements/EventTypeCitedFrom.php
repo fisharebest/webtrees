@@ -40,6 +40,10 @@ class EventTypeCitedFrom extends AbstractElement
 {
     protected const MAXIMUM_LENGTH = 15;
 
+    protected const SUBTAGS = [
+        'ROLE' => '0:1',
+    ];
+
     protected const FAMILY_EVENTS = [
         'ANUL',
         'CENS',
