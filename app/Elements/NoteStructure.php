@@ -112,12 +112,12 @@ class NoteStructure extends SubmitterText
                 return parent::labelValue($value, $tree);
             }
 
-            $value         = $note->getNote();
+            $value         = trim($note->getNote());
             $element       = Registry::elementFactory()->make('NOTE');
             $label         = $element->label();
-            $html          = $this->valueFormatted($value, $tree);
             $first_line    = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
             $one_line_only = strip_tags($note->fullName()) === strip_tags($value);
+            $html          = $one_line_only ? $first_line : $this->valueFormatted($value, $tree);
         } else {
             $label         = I18N::translate('Note');
             $html          = $this->valueFormatted($value, $tree);
