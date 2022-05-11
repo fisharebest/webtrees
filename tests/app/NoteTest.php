@@ -26,6 +26,8 @@ namespace Fisharebest\Webtrees;
  */
 class NoteTest extends TestCase
 {
+    protected static bool $uses_database = true;
+
     /**
      * Test that the class exists
      *
@@ -34,5 +36,13 @@ class NoteTest extends TestCase
     public function testClassExists(): void
     {
         self::assertTrue(class_exists(Note::class));
+    }
+
+    public function testNoteName(): void
+    {
+        $tree = $this->createStub(Tree::class);
+        $note = new Note('X123', "0 @X123@ NOTE 1\n1 CONT\n1 CONT 2\n1 CONT 3\n1 CONT 4", null, $tree);
+
+        self::assertSame('<bdi>1</bdi>', $note->fullName());
     }
 }

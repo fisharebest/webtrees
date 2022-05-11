@@ -31,6 +31,8 @@ use function preg_replace;
 use function strip_tags;
 use function trim;
 
+use function var_dump;
+
 use const ENT_QUOTES;
 
 /**
@@ -91,19 +93,18 @@ class Note extends GedcomRecord
     public function extractNames(): void
     {
         if ($this->tree->getPreference('FORMAT_TEXT') === 'markdown') {
-            $text = Registry::markdownFactory()->markdown($this->getNote());
+            $html = Registry::markdownFactory()->markdown($this->getNote());
         } else {
-            $text = Registry::markdownFactory()->autolink($this->getNote());
+            $html = Registry::markdownFactory()->autolink($this->getNote());
         }
 
-
         // Take the first line
-        [$text] = explode(MarkdownFactory::BREAK, strip_tags(trim($text), ['br']));
+        $html   = strtr($html, ["</p>\n<p>" => MarkdownFactory::BREAK . MarkdownFactory::BREAK]);
+        [$html] = explode(MarkdownFactory::BREAK, strip_tags(trim($html), ['br']));
 
-
-        if ($text !== '') {
-            $text = htmlspecialchars_decode($text, ENT_QUOTES);
-            $this->addName('NOTE', Str::limit($text, 100, I18N::translate('…')), $this->gedcom());
+        if ($html !== '') {
+            $html = htmlspecialchars_decode($html, ENT_QUOTES);
+            $this->addName('NOTE', Str::limit($html, 100, I18N::translate('…')), $this->gedcom());
         }
     }
 }
