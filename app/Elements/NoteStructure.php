@@ -121,7 +121,7 @@ class NoteStructure extends SubmitterText
         } else {
             $label         = I18N::translate('Note');
             $html          = $this->valueFormatted($value, $tree);
-            [$first_line]  = explode('<br>', strip_tags($html, ['<br>']));
+            [$first_line]  = explode('<br>', strip_tags($html, ['br']));
             $first_line    = Str::limit($first_line, 100, I18N::translate('…'));
             $one_line_only = !str_contains($html, '<br>') && mb_strlen($value) <= 100;
         }
