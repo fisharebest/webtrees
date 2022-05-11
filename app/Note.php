@@ -31,8 +31,6 @@ use function preg_replace;
 use function strip_tags;
 use function trim;
 
-use function var_dump;
-
 use const ENT_QUOTES;
 
 /**
