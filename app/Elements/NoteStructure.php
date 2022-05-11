@@ -131,7 +131,7 @@ class NoteStructure extends SubmitterText
 
         if ($one_line_only) {
             $label = '<span class="label">' . $label . '</span>';
-            $value = '<span class="field" dir="auto">' . $html . '</span>';
+            $value = '<span class="field" dir="auto">' . $first_line . '</span>';
 
             return '<div class="fact_NOTE">' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
         }
