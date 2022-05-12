@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -59,7 +60,7 @@ class AddUnlinkedAction implements RequestHandlerInterface
         $tags   = $params['itags'] ?? [];
         $values = $params['ivalues'] ?? [];
 
-        $gedcom = $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
 
         $individual = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
 

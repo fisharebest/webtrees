@@ -20,6 +20,8 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Validator;
@@ -63,14 +65,14 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $levels = $params['ilevels'] ?? [];
         $tags   = $params['itags'] ?? [];
         $values = $params['ivalues'] ?? [];
-        $gedcom = $this->gedcom_edit_service->editLinesToGedcom('INDI', $levels, $tags, $values);
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $spouse = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
 
         // Create the new family
         $levels = $params['flevels'] ?? [];
         $tags   = $params['ftags'] ?? [];
         $values = $params['fvalues'] ?? [];
-        $gedcom = $this->gedcom_edit_service->editLinesToGedcom('FAM', $levels, $tags, $values);
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
         $i_link = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
         $s_link = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
         $family = $tree->createFamily("0 @@ FAM\n" . $gedcom . $i_link . $s_link);

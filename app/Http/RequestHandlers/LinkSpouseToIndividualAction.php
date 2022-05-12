@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Validator;
@@ -75,7 +76,7 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
             $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . "@\n1 HUSB @" . $spouse->xref() . '@';
         }
 
-        $gedcom .= "\n" . $this->gedcom_edit_service->editLinesToGedcom('FAM', $levels, $tags, $values);
+        $gedcom .= "\n" . $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
 
         $family = $tree->createFamily($gedcom);
 
