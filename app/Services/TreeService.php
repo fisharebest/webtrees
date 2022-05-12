@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use DomainException;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
@@ -32,9 +33,7 @@ use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\StreamInterface;
-use RuntimeException;
 
-use function assert;
 use function fclose;
 use function feof;
 use function fread;
@@ -153,9 +152,11 @@ class TreeService
             return $tree->id() === $id;
         });
 
-        assert($tree instanceof Tree, new RuntimeException());
+        if ($tree instanceof Tree) {
+            return $tree;
+        }
 
-        return $tree;
+        throw new DomainException('Call to find() with an invalid id: ' . $id);
     }
 
     /**
