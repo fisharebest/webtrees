@@ -58,11 +58,10 @@ class EditRecordAction implements RequestHandlerInterface
         $xref      = Validator::attributes($request)->isXref()->string('xref');
         $record    = Registry::gedcomRecordFactory()->make($xref, $tree);
         $record    = Auth::checkRecordAccess($record, true);
-        $params    = (array) $request->getParsedBody();
-        $keep_chan = (bool) ($params['keep_chan'] ?? false);
-        $levels    = $params['levels'];
-        $tags      = $params['tags'];
-        $values    = $params['values'];
+        $keep_chan = Validator::parsedBody($request)->boolean('keep_chan', false);
+        $levels    = Validator::parsedBody($request)->array('levels');
+        $tags      = Validator::parsedBody($request)->array('tags');
+        $values    = Validator::parsedBody($request)->array('values');
 
         if ($record->tag() === Header::RECORD_TYPE) {
             $gedcom = '0 ' . $record->tag();

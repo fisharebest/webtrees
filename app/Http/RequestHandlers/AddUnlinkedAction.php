@@ -54,12 +54,9 @@ class AddUnlinkedAction implements RequestHandlerInterface
     {
         $tree = Validator::attributes($request)->tree();
 
-        $params = (array) $request->getParsedBody();
-
-        $levels = $params['ilevels'] ?? [];
-        $tags   = $params['itags'] ?? [];
-        $values = $params['ivalues'] ?? [];
-
+        $levels = Validator::parsedBody($request)->array('ilevels');
+        $tags   = Validator::parsedBody($request)->array('itags');
+        $values = Validator::parsedBody($request)->array('ivalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
 
         $individual = $tree->createIndividual('0 @@ INDI' . $gedcom);

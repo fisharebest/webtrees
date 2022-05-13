@@ -43,12 +43,13 @@ class GedcomEditServiceTest extends TestCase
                 'INDI',
                 ['1'],
                 ['BIRT'],
-                ['Y']
+                ['Y'],
+                false
             )
         );
 
         static::assertSame(
-            "1 BIRT Y\n2 ADDR England",
+            "\n1 BIRT Y\n2 ADDR England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2'],
@@ -58,7 +59,7 @@ class GedcomEditServiceTest extends TestCase
         );
 
         static::assertSame(
-            "1 BIRT\n2 PLAC England",
+            "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2'],
@@ -68,7 +69,7 @@ class GedcomEditServiceTest extends TestCase
         );
 
         static::assertSame(
-            "1 BIRT\n2 PLAC England\n2 SOUR @S1@\n3 PAGE 123",
+            "\n1 BIRT\n2 PLAC England\n2 SOUR @S1@\n3 PAGE 123",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3'],
@@ -79,7 +80,7 @@ class GedcomEditServiceTest extends TestCase
 
         // Missing SOUR, so ignore PAGE
         static::assertSame(
-            "1 BIRT\n2 PLAC England",
+            "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3'],
@@ -89,7 +90,7 @@ class GedcomEditServiceTest extends TestCase
         );
 
         static::assertSame(
-            "1 BIRT\n2 PLAC England",
+            "\n1 BIRT\n2 PLAC England",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3'],
@@ -99,22 +100,12 @@ class GedcomEditServiceTest extends TestCase
         );
 
         static::assertSame(
-            "1 BIRT\n2 PLAC England\n1 DEAT\n2 PLAC Scotland",
+            "\n1 BIRT\n2 PLAC England\n1 DEAT\n2 PLAC Scotland",
             $gedcom_edit_service->editLinesToGedcom(
                 'INDI',
                 ['1', '2', '2', '3', '1', '2', '2', '3'],
                 ['BIRT', 'PLAC', 'SOUR', 'PAGE', 'DEAT', 'PLAC', 'SOUR', 'PAGE'],
                 ['Y', 'England', '', '123', 'Y', 'Scotland', '', '123']
-            )
-        );
-
-        static::assertSame(
-            "0 NOTE @N1@\n1 CONC foo\n1 CONT bar\n1 RESN LOCKED",
-            $gedcom_edit_service->editLinesToGedcom(
-                'NOTE',
-                ['0', '1', '1'],
-                ['NOTE', 'CONC', 'RESN'],
-                ['@N1@', "foo\nbar", 'LOCKED']
             )
         );
     }

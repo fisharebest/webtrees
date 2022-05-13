@@ -56,16 +56,16 @@ class AddChildToFamilyAction implements RequestHandlerInterface
     {
         $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $params = (array) $request->getParsedBody();
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
-        $levels = $params['ilevels'] ?? [];
-        $tags   = $params['itags'] ?? [];
-        $values = $params['ivalues'] ?? [];
+
+        $levels = Validator::parsedBody($request)->array('ilevels');
+        $tags   = Validator::parsedBody($request)->array('itags');
+        $values = Validator::parsedBody($request)->array('ivalues');
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
 
         // Create the new child
-        $gedcom = "0 @@ INDI\n1 FAMC @" . $xref . '@' . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
-        $child  = $tree->createIndividual($gedcom);
+        $child  = $tree->createIndividual("0 @@ INDI\n1 FAMC @" . $xref . '@' . $gedcom);
 
         // Link the child to the family
         $family->createFact('1 CHIL @' . $child->xref() . '@', false);

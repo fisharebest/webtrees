@@ -69,12 +69,11 @@ class EditFactAction implements RequestHandlerInterface
         $record = Auth::checkRecordAccess($record, true);
 
         $params    = (array) $request->getParsedBody();
-        $keep_chan = (bool) ($params['keep_chan'] ?? false);
-        $levels    = $params['levels'];
-        $tags      = $params['tags'];
-        $values    = $params['values'];
-
-        $gedcom = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values, false);
+        $keep_chan = Validator::parsedBody($request)->boolean('keep_chan', false);
+        $levels    = Validator::parsedBody($request)->array('levels');
+        $tags      = Validator::parsedBody($request)->array('tags');
+        $values    = Validator::parsedBody($request)->array('values');
+        $gedcom    = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values, false);
 
         $census_assistant = $this->module_service->findByInterface(CensusAssistantModule::class)->first();
 

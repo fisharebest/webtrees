@@ -59,14 +59,12 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
         $individual = Registry::individualFactory()->make($xref, $tree);
         $individual = Auth::checkIndividualAccess($individual, true);
 
-        $params = (array) $request->getParsedBody();
-
-        $levels = $params['flevels'] ?? [];
-        $tags   = $params['ftags'] ?? [];
-        $values = $params['fvalues'] ?? [];
+        $levels = Validator::parsedBody($request)->array('flevels');
+        $tags   = Validator::parsedBody($request)->array('ftags');
+        $values = Validator::parsedBody($request)->array('fvalues');
 
         // Create the new family
-        $spid   = $params['spid'];
+        $spid   = Validator::parsedBody($request)->string('spid');
         $spouse = Registry::individualFactory()->make($spid, $tree);
         $spouse = Auth::checkIndividualAccess($spouse, true);
 

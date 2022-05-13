@@ -57,14 +57,13 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
     {
         $tree   = Validator::attributes($request)->tree();
         $xref   = Validator::attributes($request)->isXref()->string('xref');
-        $params = (array) $request->getParsedBody();
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
         // Create the new spouse
-        $levels = $params['ilevels'] ?? [];
-        $tags   = $params['itags'] ?? [];
-        $values = $params['ivalues'] ?? [];
+        $levels = Validator::parsedBody($request)->array('ilevels');
+        $tags   = Validator::parsedBody($request)->array('itags');
+        $values = Validator::parsedBody($request)->array('ivalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $spouse = $tree->createIndividual("0 @@ INDI\n1 FAMS @" . $family->xref() . '@' . $gedcom);
 
@@ -89,9 +88,9 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         $family->createFact('1 ' . $link . ' @' . $spouse->xref() . '@', false);
 
         // Add any family facts
-        $levels = $params['flevels'] ?? [];
-        $tags   = $params['ftags'] ?? [];
-        $values = $params['fvalues'] ?? [];
+        $levels = Validator::parsedBody($request)->array('flevels');
+        $tags   = Validator::parsedBody($request)->array('ftags');
+        $values = Validator::parsedBody($request)->array('fvalues');
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
 
         if ($gedcom !== '') {
