@@ -69,7 +69,7 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         $child  = $tree->createIndividual($gedcom);
 
         // Create a new family
-        $link   = $child->sex() === 'F' ? 'WIFE' : 'HUSB';
+        $link   = $individual->sex() === 'F' ? 'WIFE' : 'HUSB';
         $gedcom = "0 @@ FAM\n1 " . $link . ' @' . $individual->xref() . "@\n1 CHIL @" . $child->xref() . '@';
         $family = $tree->createFamily($gedcom);
 
