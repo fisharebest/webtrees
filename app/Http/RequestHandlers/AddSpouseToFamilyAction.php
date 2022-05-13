@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\GedcomEditService;
@@ -60,13 +61,12 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
 
+        // Create the new spouse
         $levels = $params['ilevels'] ?? [];
         $tags   = $params['itags'] ?? [];
         $values = $params['ivalues'] ?? [];
-
-        // Create the new spouse
-        $gedcom = "0 @@ INDI\n1 FAMS @" . $family->xref() . '@' . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
-        $spouse = $tree->createIndividual($gedcom);
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
+        $spouse = $tree->createIndividual("0 @@ INDI\n1 FAMS @" . $family->xref() . '@' . $gedcom);
 
         // Link the spouse to the family
         $husb = $family->facts(['HUSB'], false, null, true)->first();
@@ -87,6 +87,16 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
 
         // Link the spouse to the family
         $family->createFact('1 ' . $link . ' @' . $spouse->xref() . '@', false);
+
+        // Add any family facts
+        $levels = $params['flevels'] ?? [];
+        $tags   = $params['ftags'] ?? [];
+        $values = $params['fvalues'] ?? [];
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
+
+        if ($gedcom !== '') {
+            $family->createFact($gedcom, false);
+        }
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $spouse->url());
 
