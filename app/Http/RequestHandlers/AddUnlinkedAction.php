@@ -62,7 +62,7 @@ class AddUnlinkedAction implements RequestHandlerInterface
 
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
 
-        $individual = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
+        $individual = $tree->createIndividual('0 @@ INDI' . $gedcom);
 
         $url = Validator::parsedBody($request)->isLocalUrl()->string('url', $individual->url());
 

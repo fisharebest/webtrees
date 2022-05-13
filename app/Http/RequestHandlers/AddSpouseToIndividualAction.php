@@ -66,7 +66,7 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $tags   = $params['itags'] ?? [];
         $values = $params['ivalues'] ?? [];
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
-        $spouse = $tree->createIndividual("0 @@ INDI\n" . $gedcom);
+        $spouse = $tree->createIndividual('0 @@ INDI' . $gedcom);
 
         // Create the new family
         $levels = $params['flevels'] ?? [];
@@ -75,7 +75,7 @@ class AddSpouseToIndividualAction implements RequestHandlerInterface
         $gedcom = $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
         $i_link = "\n1 " . ($individual->sex() === 'F' ? 'WIFE' : 'HUSB') . ' @' . $individual->xref() . '@';
         $s_link = "\n1 " . ($individual->sex() !== 'F' ? 'WIFE' : 'HUSB') . ' @' . $spouse->xref() . '@';
-        $family = $tree->createFamily("0 @@ FAM\n" . $gedcom . $i_link . $s_link);
+        $family = $tree->createFamily('0 @@ FAM' . $gedcom . $i_link . $s_link);
 
         // Link the individual to the family
         $individual->createFact('1 FAMS @' . $family->xref() . '@', false);

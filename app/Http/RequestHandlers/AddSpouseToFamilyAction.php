@@ -65,7 +65,7 @@ class AddSpouseToFamilyAction implements RequestHandlerInterface
         $values = $params['ivalues'] ?? [];
 
         // Create the new spouse
-        $gedcom = "0 @@ INDI\n1 FAMS @" . $family->xref() . "@\n" . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
+        $gedcom = "0 @@ INDI\n1 FAMS @" . $family->xref() . '@' . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $spouse = $tree->createIndividual($gedcom);
 
         // Link the spouse to the family

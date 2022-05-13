@@ -115,10 +115,11 @@ class GedcomEditService
      * @param array<string> $levels
      * @param array<string> $tags
      * @param array<string> $values
+     * @param bool          $append - Are we appending to a level 0 record, or replacing a level 1 record?
      *
      * @return string
      */
-    public function editLinesToGedcom(string $record_type, array $levels, array $tags, array $values): string
+    public function editLinesToGedcom(string $record_type, array $levels, array $tags, array $values, bool $append = true): string
     {
         // Assert all arrays are the same size.
         $count = count($levels);
@@ -172,7 +173,13 @@ class GedcomEditService
             }
         }
 
-        return implode("\n", $gedcom_lines);
+        $gedcom = implode("\n", $gedcom_lines);
+
+        if ($append && $gedcom !== '') {
+            $gedcom = "\n" . $gedcom;
+        }
+
+        return $gedcom;
     }
 
     /**

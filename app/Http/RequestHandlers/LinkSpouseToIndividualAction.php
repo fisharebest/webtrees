@@ -76,7 +76,7 @@ class LinkSpouseToIndividualAction implements RequestHandlerInterface
             $gedcom = "0 @@ FAM\n1 WIFE @" . $individual->xref() . "@\n1 HUSB @" . $spouse->xref() . '@';
         }
 
-        $gedcom .= "\n" . $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
+        $gedcom .= $this->gedcom_edit_service->editLinesToGedcom(Family::RECORD_TYPE, $levels, $tags, $values);
 
         $family = $tree->createFamily($gedcom);
 

@@ -65,7 +65,7 @@ class AddChildToIndividualAction implements RequestHandlerInterface
         $values = $params['ivalues'] ?? [];
 
         // Create the new child
-        $gedcom = "0 @@ INDI\n" . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
+        $gedcom = '0 @@ INDI' . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $child  = $tree->createIndividual($gedcom);
 
         // Create a new family

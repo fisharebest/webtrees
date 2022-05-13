@@ -30,6 +30,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function ltrim;
 use function redirect;
 
 /**
@@ -73,7 +74,7 @@ class EditFactAction implements RequestHandlerInterface
         $tags      = $params['tags'];
         $values    = $params['values'];
 
-        $gedcom = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values);
+        $gedcom = $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values, false);
 
         $census_assistant = $this->module_service->findByInterface(CensusAssistantModule::class)->first();
 

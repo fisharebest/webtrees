@@ -65,9 +65,9 @@ class EditRecordAction implements RequestHandlerInterface
         $values    = $params['values'];
 
         if ($record->tag() === Header::RECORD_TYPE) {
-            $gedcom = '0 ' . $record->tag() . "\n";
+            $gedcom = '0 ' . $record->tag();
         } else {
-            $gedcom = '0 @' . $record->xref() . '@ ' . $record->tag() . "\n";
+            $gedcom = '0 @' . $record->xref() . '@ ' . $record->tag();
         }
 
         $gedcom .= $this->gedcom_edit_service->editLinesToGedcom($record::RECORD_TYPE, $levels, $tags, $values);

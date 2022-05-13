@@ -64,7 +64,7 @@ class AddChildToFamilyAction implements RequestHandlerInterface
         $values = $params['ivalues'] ?? [];
 
         // Create the new child
-        $gedcom = "0 @@ INDI\n1 FAMC @" . $xref . "@\n" . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
+        $gedcom = "0 @@ INDI\n1 FAMC @" . $xref . '@' . $this->gedcom_edit_service->editLinesToGedcom(Individual::RECORD_TYPE, $levels, $tags, $values);
         $child  = $tree->createIndividual($gedcom);
 
         // Link the child to the family
