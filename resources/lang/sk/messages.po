@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
+"PO-Revision-Date: 2022-05-19 11:29+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -4747,7 +4747,7 @@ msgstr "Datum vysvätenia"
 
 #: app/Factories/ElementFactory.php:1258 app/GedcomTag.php:912
 msgid "Date of residence"
-msgstr "Dátum bydliska"
+msgstr "Dátum sídla"
 
 #: resources/views/help/date.phtml:104
 msgid "Date period"
@@ -6326,7 +6326,7 @@ msgstr "Rodina: %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr "Bydlisko rodiny"
+msgstr "Sídlo rodiny"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -10962,7 +10962,7 @@ msgstr "Veľkosť stránky"
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:75
 msgid "Painting"
-msgstr "Obrázok"
+msgstr "Obraz/maľba"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:387
@@ -11381,7 +11381,7 @@ msgstr "Miesto vysvätenia"
 
 #: app/Factories/ElementFactory.php:1259 app/GedcomTag.php:914
 msgid "Place of residence"
-msgstr "Miesto bydliska"
+msgstr "Miesto sídla"
 
 #. I18N: Name of a module
 #: app/Module/PlacesModule.php:67
@@ -12275,7 +12275,7 @@ msgstr "Obnoviť pôvodný stav mapy"
 #. I18N: gedcom tag RESI
 #: app/Factories/ElementFactory.php:1257 app/GedcomTag.php:910
 msgid "Residence"
-msgstr "Bydlisko"
+msgstr "Sídlo"
 
 #: resources/views/edit-blocks-page.phtml:69
 #: resources/views/edit-blocks-page.phtml:70
@@ -13265,7 +13265,7 @@ msgstr "Zobraziť úlohy na výskum, ktoré majú dátum v budúcnosti"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Zobraziť bydliská"
+msgstr "Zobraziť sídlá"
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
