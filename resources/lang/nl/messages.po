@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-05 15:08+0000\n"
+"PO-Revision-Date: 2022-05-19 11:29+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -9071,7 +9071,7 @@ msgstr "Landkaart"
 #: resources/views/admin/control-panel.phtml:766
 #: resources/views/admin/map-provider.phtml:23
 msgid "Map provider"
-msgstr "Kaartprovider"
+msgstr "Kaartaanbieder"
 
 #: app/Date/AbstractGregorianJulianDate.php:203
 msgctxt "Abbreviation for March"
