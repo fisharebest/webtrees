@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-23 09:36+0000\n"
-"Last-Translator: rui <xmlf@hotmail.com>\n"
+"PO-Revision-Date: 2022-05-19 11:29+0000\n"
+"Last-Translator: olor <olor@foxmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/zh_Hans/>\n"
 "Language: zh-Hans\n"
@@ -165,7 +165,7 @@ msgstr "%1$s–%2$s"
 #: app/Functions/Functions.php:2396
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s's %2$s"
+msgstr "%1$s的 %2$s"
 
 # I18N: This is the format string for the time-of-day. See http://php.net/date for codes
 #. I18N: This is the format string for the time-of-day. See http://php.net/date for codes
@@ -264,7 +264,7 @@ msgstr[0] "%s 的家庭已经更新完毕。"
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
+msgstr[0] "%s家谱"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -806,7 +806,7 @@ msgstr "个体列表。"
 #. I18N: Description of the “Locations” module
 #: app/Module/LocationListModule.php:84
 msgid "A list of locations."
-msgstr ""
+msgstr "一份地点清单。"
 
 # I18N: Description of the “MediaListModule” module
 #. I18N: Description of the “Media objects” module
@@ -1617,7 +1617,7 @@ msgstr "地址二"
 #: app/Factories/ElementFactory.php:1080 app/Factories/ElementFactory.php:1333
 #: app/Factories/ElementFactory.php:1380 app/GedcomTag.php:436
 msgid "Address line 3"
-msgstr ""
+msgstr "地址三"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -1680,7 +1680,7 @@ msgstr "被母亲收养"
 
 #: app/Factories/ElementFactory.php:275 app/Factories/ElementFactory.php:810
 msgid "Adopted name"
-msgstr ""
+msgstr "过继姓名"
 
 # I18N: gedcom tag ADOP
 #. I18N: gedcom tag ADOP
@@ -1761,7 +1761,7 @@ msgstr "养子"
 
 #: app/Factories/ElementFactory.php:1120
 msgid "Adoptive parents"
-msgstr ""
+msgstr "养父母"
 
 # I18N: gedcom tag CHRA
 #. I18N: gedcom tag CHRA
@@ -2090,7 +2090,7 @@ msgstr "数据库发生意外错误。"
 
 #: resources/views/admin/control-panel.phtml:177
 msgid "An upgrade is available."
-msgstr ""
+msgstr "可以升级。"
 
 # I18N: Name of a module/report
 # I18N: Name of a module/chart
@@ -2127,7 +2127,7 @@ msgstr "祖先文件编号 (AFN)"
 
 #: app/Factories/ElementFactory.php:258
 msgid "Ancestry PID"
-msgstr ""
+msgstr "祖先PID"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -2261,7 +2261,7 @@ msgstr "碧海蓝天"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "确实要删除指向“%s”的链接吗？"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -2773,7 +2773,7 @@ msgstr "巴巴多斯岛"
 
 #: app/Factories/ElementFactory.php:608
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "基本GEDCOM标签"
 
 # I18N: gedcom tag BASM
 #. I18N: gedcom tag BASM
@@ -2874,7 +2874,7 @@ msgstr "Bing Maps™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr ""
+msgstr "Bing™ 站长工具"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -3044,7 +3044,7 @@ msgstr "出生日期范围的开始"
 
 #: app/Factories/ElementFactory.php:277
 msgid "Birth name"
-msgstr ""
+msgstr "出生姓名"
 
 #: app/Module/IndividualFactsTabModule.php:328
 msgid "Birth of a brother"
@@ -3121,7 +3121,7 @@ msgstr "儿子出生"
 
 #: app/Factories/ElementFactory.php:1145
 msgid "Birth parents"
-msgstr ""
+msgstr "亲生父母"
 
 #: resources/views/statistics/other/places.phtml:21
 msgid "Birth places"
@@ -3648,7 +3648,7 @@ msgstr "类别"
 
 #: app/Factories/ElementFactory.php:601 app/Factories/ElementFactory.php:643
 msgid "Category"
-msgstr ""
+msgstr "类别"
 
 # I18N: gedcom tag CAUS
 #. I18N: gedcom tag CAUS
@@ -3769,7 +3769,7 @@ msgstr "更改“我的网页”块"
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "%1$s已改变"
 
 # I18N: [a record was] Changed on <date/time>
 #. I18N: [a record was] Changed on <date/time>
@@ -4272,7 +4272,7 @@ msgstr "完成;日期未知"
 
 #: app/Factories/ElementFactory.php:602 app/Factories/ElementFactory.php:644
 msgid "Completion date"
-msgstr ""
+msgstr "完成日期"
 
 #: app/Http/RequestHandlers/HelpText.php:284
 #: resources/views/admin/trees-export.phtml:64
@@ -4386,7 +4386,7 @@ msgstr "转换CEME标签到GEDCOM 5.5.1"
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:84
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "转换NAME:_XXX标记为GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
@@ -4418,7 +4418,7 @@ msgstr "Cookies"
 #: app/Factories/ElementFactory.php:664 app/Factories/ElementFactory.php:967
 #: app/Factories/ElementFactory.php:1098 app/GedcomTag.php:770
 msgid "Coordinates"
-msgstr ""
+msgstr "坐标"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -4470,7 +4470,7 @@ msgstr "修正由旧的家谱程序产生的姓名记录格式 ‘Joe/BLOGGS/’
 
 #: app/Elements/ResearchTaskStatus.php:52 app/Elements/ResearchTaskType.php:51
 msgid "Correspondence"
-msgstr ""
+msgstr "对应分析"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -4515,7 +4515,7 @@ msgstr "新建一个家谱"
 #: app/Elements/XrefLocation.php:61
 #: resources/views/modals/create-location.phtml:16
 msgid "Create a location"
-msgstr ""
+msgstr "创建一个位置"
 
 #: app/Elements/XrefMedia.php:61 app/Functions/FunctionsEdit.php:490
 #: resources/views/modals/create-media-from-file.phtml:19
@@ -4545,7 +4545,7 @@ msgstr "创建新的信息来源记录"
 #: app/Elements/XrefSubmission.php:61
 #: resources/views/modals/create-submission.phtml:16
 msgid "Create a submission"
-msgstr ""
+msgstr "创建提交"
 
 #: app/Elements/XrefSubmitter.php:61 app/Functions/FunctionsEdit.php:553
 #: resources/views/modals/create-submitter.phtml:16
@@ -4574,7 +4574,7 @@ msgstr "创建，更新和删除家谱中的数据文件夹中的每个GEDCOM文
 
 #: app/Factories/ElementFactory.php:595 app/Factories/ElementFactory.php:637
 msgid "Creation date"
-msgstr ""
+msgstr "建立日期"
 
 # I18N: gedcom tag CREM
 #. I18N: gedcom tag CREM
@@ -4911,7 +4911,7 @@ msgstr "LDS 儿童密封的日期"
 
 #: app/Factories/ElementFactory.php:1169
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "确认LDS的日期"
 
 # I18N: LDS = Church of Latter Day Saints.
 #. I18N: LDS = Church of Latter Day Saints.
@@ -5506,7 +5506,7 @@ msgstr "默认主题"
 #: app/Factories/ElementFactory.php:616 app/Factories/ElementFactory.php:617
 #: app/Factories/ElementFactory.php:618
 msgid "Definition"
-msgstr ""
+msgstr "解释"
 
 # I18N: gedcom tag _DEG
 #. I18N: gedcom tag _DEG
@@ -6328,7 +6328,7 @@ msgstr "第十二月"
 
 #: app/Factories/ElementFactory.php:281
 msgid "Estate name"
-msgstr ""
+msgstr "庄园名称"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -6699,7 +6699,7 @@ msgstr "%s 的家庭薄"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "家庭普查"
 
 # I18N: gedcom tag FAMF
 #. I18N: gedcom tag FAMF
@@ -6726,11 +6726,11 @@ msgstr "%s 的家庭"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "家庭寓所"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
-msgstr ""
+msgstr "家庭状况"
 
 #: app/Module/TreesMenuModule.php:96 resources/views/admin/changes-log.phtml:92
 #: resources/views/admin/changes-log.phtml:139
@@ -7466,7 +7466,7 @@ msgstr "GEDCOM文件"
 #: app/Factories/ElementFactory.php:578 app/Factories/ElementFactory.php:620
 #: app/Factories/ElementFactory.php:698 app/GedcomTag.php:1121
 msgid "GOV identifier"
-msgstr ""
+msgstr "政府标识符"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -7562,7 +7562,7 @@ msgstr "祖先"
 
 #: app/Factories/ElementFactory.php:1405
 msgid "Generations of descendants"
-msgstr ""
+msgstr "后代的世系"
 
 #: resources/views/modules/statistics-chart/custom.phtml:174
 #: resources/views/modules/statistics-chart/custom.phtml:176
@@ -7692,7 +7692,7 @@ msgstr "教父母"
 
 #: app/Factories/ElementFactory.php:1162
 msgid "Godparents"
-msgstr ""
+msgstr "教父教母"
 
 #: app/Elements/RelationIsDescriptor.php:60
 #: app/Elements/RelationIsDescriptor.php:110
@@ -7706,11 +7706,11 @@ msgstr "谷歌地图™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "谷歌™ 分析"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "谷歌™ 网站管理员工具"
 
 # I18N: gedcom tag GRAD
 #. I18N: gedcom tag GRAD
@@ -8041,11 +8041,11 @@ msgstr "对所有人隐藏"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
-msgstr ""
+msgstr "隐藏未使用的位置"
 
 #: app/Factories/ElementFactory.php:702
 msgid "Hierarchical relationship"
-msgstr ""
+msgstr "层次关系"
 
 # I18N: gedcom tag _PRIM
 #. I18N: gedcom tag _PRIM
@@ -8408,7 +8408,7 @@ msgstr "在webtree版本2中，自定义缩略图作为第二个多媒体文件�
 
 #: resources/views/admin/trees-unconnected.phtml:29
 msgid "Include aliases"
-msgstr ""
+msgstr "包括别名"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
@@ -8631,7 +8631,7 @@ msgstr "%s 的交互树"
 #. I18N: gedcom tag _INTE
 #: app/Factories/ElementFactory.php:306 app/GedcomTag.php:1140
 msgid "Interment"
-msgstr ""
+msgstr "安葬"
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
@@ -9090,7 +9090,7 @@ msgstr "LDS 配偶密封"
 #: app/Factories/ElementFactory.php:362 app/Factories/ElementFactory.php:376
 #: app/Factories/ElementFactory.php:380 app/Factories/ElementFactory.php:395
 msgid "Label"
-msgstr ""
+msgstr "标签"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -9263,7 +9263,7 @@ msgstr "黎巴嫩"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:120
 msgid "Legacy URLs"
-msgstr ""
+msgstr "遗留URL"
 
 # I18N: gedcom tag LEGA
 #. I18N: gedcom tag LEGA
@@ -9442,7 +9442,7 @@ msgstr "位置"
 #: resources/views/admin/merge-records-step-1.phtml:61
 #: resources/views/lists/locations-table.phtml:58
 msgid "Locations"
-msgstr ""
+msgstr "地点"
 
 #: app/Elements/RelationIsDescriptor.php:115
 #: app/GedcomCode/GedcomCodeRela.php:257
@@ -10031,7 +10031,7 @@ msgstr "全字匹配。"
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ 分析"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -10949,7 +10949,7 @@ msgstr "新喀里多尼亚"
 #: app/Factories/ElementFactory.php:611 app/Factories/ElementFactory.php:612
 #: app/Factories/ElementFactory.php:613
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "新GEDCOM标签"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -11360,7 +11360,7 @@ msgstr "什么都没有。"
 #: resources/views/modules/pedigree-map/chart.phtml:110
 #: resources/views/modules/places/tab.phtml:107
 msgid "Nothing to show"
-msgstr ""
+msgstr "没有显示"
 
 #: app/Date/AbstractGregorianJulianDate.php:211
 msgctxt "Abbreviation for November"
@@ -11833,7 +11833,7 @@ msgstr "巴拉圭"
 
 #: app/Factories/ElementFactory.php:699
 msgid "Parent"
-msgstr ""
+msgstr "父母亲"
 
 #: app/Factories/ElementFactory.php:1268
 #: app/Http/RequestHandlers/IndividualPage.php:223
@@ -12017,7 +12017,7 @@ msgstr "语音标题"
 
 #: app/Factories/ElementFactory.php:1222
 msgid "Phonetic type"
-msgstr ""
+msgstr "语音类型"
 
 # I18N: Type of media object
 #. I18N: Type of media object
@@ -12113,7 +12113,7 @@ msgstr "LDS 儿童密封的地点"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "确认LDS的地点"
 
 # I18N: LDS = Church of Latter Day Saints.
 #. I18N: LDS = Church of Latter Day Saints.
@@ -12464,7 +12464,7 @@ msgstr "当空白时显示基本事件"
 
 #: app/Factories/ElementFactory.php:603 app/Factories/ElementFactory.php:645
 msgid "Priority"
-msgstr ""
+msgstr "优先事项"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:68
 #: resources/views/admin/trees.phtml:107
@@ -12530,7 +12530,7 @@ msgstr "犹他州普罗沃"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "代理人"
 
 # I18N: gedcom tag PUBL
 #. I18N: gedcom tag PUBL
@@ -12686,13 +12686,13 @@ msgstr ""
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "追踪"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "追踪"
 
 # I18N: http://en.wikipedia.org/wiki/Rajab
 #. I18N: https://en.wikipedia.org/wiki/Rajab
@@ -12860,7 +12860,7 @@ msgstr "记录"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "重定向 webtrees 版本1中的旧URL。"
 
 # I18N: Location of an LDS church temple
 #. I18N: Location of an LDS church temple
@@ -13020,11 +13020,11 @@ msgstr "宗教名称"
 #: resources/views/modules/place-hierarchy/map.phtml:76
 #: resources/views/modules/places/tab.phtml:63
 msgid "Reload map"
-msgstr ""
+msgstr "重新加载地图"
 
 #: app/Factories/ElementFactory.php:604 app/Factories/ElementFactory.php:646
 msgid "Reminder date"
-msgstr ""
+msgstr "提醒日期"
 
 #: resources/views/modules/review_changes/config.phtml:29
 msgid "Reminder email frequency (days)"
@@ -13173,7 +13173,7 @@ msgstr "注册账户"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "研究"
 
 # I18N: gedcom tag _TODO
 #. I18N: gedcom tag _TODO
@@ -13282,7 +13282,7 @@ msgstr "罗马化"
 
 #: app/Factories/ElementFactory.php:1227
 msgid "Romanized name"
-msgstr ""
+msgstr "罗马化姓名"
 
 #: app/Factories/ElementFactory.php:971 app/Factories/ElementFactory.php:1102
 #: app/GedcomTag.php:876
@@ -13295,7 +13295,7 @@ msgstr "罗马标题"
 
 #: app/Factories/ElementFactory.php:1234
 msgid "Romanized type"
-msgstr ""
+msgstr "罗马化类型"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:221
@@ -13304,7 +13304,7 @@ msgstr "未录入父母的"
 
 #: app/Factories/ElementFactory.php:632
 msgid "Rufname"
-msgstr ""
+msgstr "点名"
 
 # I18N: http://en.wikipedia.org/wiki/Soundex
 #. I18N: http://en.wikipedia.org/wiki/Soundex
@@ -13497,7 +13497,7 @@ msgstr "沙特阿拉伯"
 
 #: app/Factories/ElementFactory.php:607
 msgid "Schema"
-msgstr ""
+msgstr "架构"
 
 #: app/Factories/ElementFactory.php:1184 app/Factories/ElementFactory.php:1208
 #: app/GedcomTag.php:651
@@ -13772,7 +13772,7 @@ msgstr "分离"
 #. I18N: gedcom tag _SEPR
 #: app/Factories/ElementFactory.php:359 app/GedcomTag.php:1214
 msgid "Separation"
-msgstr ""
+msgstr "分居"
 
 #: app/Date/AbstractGregorianJulianDate.php:106
 msgctxt "GENITIVE"
@@ -14327,7 +14327,7 @@ msgstr "在地图上显示祖先的出生地。"
 #. I18N: label for a yes/no option
 #: resources/views/modules/recent_changes/config.phtml:67
 msgid "Show the date and time"
-msgstr ""
+msgstr "显示日期和时间"
 
 #: resources/views/modules/html/config.phtml:52
 msgid "Show the date and time of update"
@@ -14632,7 +14632,7 @@ msgstr "索马里"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixNameTags.php:95
 msgid "Some genealogy applications store all names in a single name record, using custom tags such as _MARNM and _AKA. An alternative is to create a new name record for each name."
-msgstr ""
+msgstr "一些家谱应用程序使用_MARNM和_AKA等自定义标记将所有姓名存储在一个姓名记录中。另一种方法是为每个名字创建一个新的名字记录。"
 
 # I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
@@ -14748,7 +14748,7 @@ msgstr "信息来源"
 #: app/Factories/ElementFactory.php:1273 app/Factories/ElementFactory.php:1296
 #: app/Factories/ElementFactory.php:1319
 msgid "Source citation"
-msgstr ""
+msgstr "来源引用"
 
 # I18N: Help text for the “Use full source citations” configuration setting
 #. I18N: Help text for the “Use full source citations” configuration setting
@@ -15632,7 +15632,7 @@ msgstr "列表菜单。"
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
 msgid "The location has been created"
-msgstr ""
+msgstr "位置已创建"
 
 #: resources/views/modules/place-hierarchy/sidebar.phtml:30
 msgid "The location of this place is not known."
@@ -15720,7 +15720,7 @@ msgstr "记录已被创建"
 #: app/Exceptions/MissingParameterException.php:36
 #, php-format
 msgid "The parameter “%s” is missing."
-msgstr ""
+msgstr "缺少参数“%s”。"
 
 #: app/Http/RequestHandlers/SetupWizard.php:390
 msgid "The password needs to be at least six characters long."
@@ -15779,7 +15779,7 @@ msgstr "前缀是可选的，建议表名称为唯一的前缀，这样可以让
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
-msgstr ""
+msgstr "问题存在于"
 
 #: app/Http/RequestHandlers/CopyFact.php:77
 msgid "The record has been copied to the clipboard."
@@ -15816,7 +15816,7 @@ msgstr "服务器配置正常。"
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "服务器无法理解此请求。"
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
@@ -15835,7 +15835,7 @@ msgstr "家谱的大小，最早、最新事件，常见的姓名等。"
 
 #: app/Factories/ElementFactory.php:594 app/Factories/ElementFactory.php:636
 msgid "The solution"
-msgstr ""
+msgstr "解决办法"
 
 #: app/Http/RequestHandlers/CreateSourceAction.php:113
 msgid "The source has been created"
@@ -15843,7 +15843,7 @@ msgstr "来源信息已被创建"
 
 #: app/Http/RequestHandlers/CreateSubmissionAction.php:62
 msgid "The submission has been created"
-msgstr ""
+msgstr "这个提交已创建"
 
 #: app/Http/RequestHandlers/CreateSubmitterAction.php:90
 msgid "The submitter has been created"
@@ -16054,7 +16054,7 @@ msgstr "这一块会显示需要通过管理员审核的编辑或更改记录表
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "这可能是由%s处的错误引起的"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -16066,7 +16066,7 @@ msgstr "将用于重置密码和网站消息通知。"
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr ""
+msgstr "发生了此事件，但细节未知。"
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -16680,7 +16680,7 @@ msgstr "时间"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "最后更改的时间"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -16878,7 +16878,7 @@ msgstr "汤加"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "请求太多了，请稍后再试。"
 
 # I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
@@ -17149,15 +17149,15 @@ msgstr "类型"
 
 #: app/Factories/ElementFactory.php:669
 msgid "Type of abbreviation"
-msgstr ""
+msgstr "缩写类型"
 
 #: app/Factories/ElementFactory.php:693
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "管理ID的类型"
 
 #: app/Factories/ElementFactory.php:697
 msgid "Type of demographic data"
-msgstr ""
+msgstr "人口统计数据的类型"
 
 #: app/Factories/ElementFactory.php:663 app/Factories/ElementFactory.php:1002
 #: app/Factories/ElementFactory.php:1197 app/GedcomTag.php:688
@@ -17170,29 +17170,29 @@ msgstr "事实类型"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "识别号的类型"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
-msgstr ""
+msgstr "地点类型"
 
 #: app/Factories/ElementFactory.php:1012
 msgid "Type of marriage"
-msgstr ""
+msgstr "婚姻类型"
 
 #: app/Factories/ElementFactory.php:1237
 msgid "Type of name"
-msgstr ""
+msgstr "姓名类型"
 
 #: app/Factories/ElementFactory.php:1018 app/Factories/ElementFactory.php:1255
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "参考号的类型"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
-msgstr ""
+msgstr "研究任务类型"
 
 # I18N: gedcom tag URL (A web address / URL)
 # I18N: gedcom tag WWW (A web address / URL)
@@ -17340,7 +17340,7 @@ msgstr "未知个体"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "取消连接"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -18642,7 +18642,7 @@ msgstr "人口普查增加"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:61
 msgid "challenged"
-msgstr ""
+msgstr "残缺的"
 
 # I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
@@ -18671,7 +18671,7 @@ msgstr "孩子"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:56
 msgid "citizen"
-msgstr ""
+msgstr "居民"
 
 #: resources/views/components/alert-warning-dismissible.phtml:14
 #: resources/views/layouts/administration.phtml:75
@@ -18735,7 +18735,7 @@ msgstr "创建"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:59
 msgid "cultural"
-msgstr ""
+msgstr "文化的"
 
 #: resources/views/modules/statistics-chart/custom.phtml:93
 msgid "date periods"
@@ -18808,7 +18808,7 @@ msgstr "去世"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:62
 msgid "disproven"
-msgstr ""
+msgstr "反驳"
 
 #: app/Module/PedigreeChartModule.php:390
 #: app/Module/PedigreeChartModule.php:398
@@ -18961,11 +18961,11 @@ msgstr "未婚夫"
 
 #: app/Functions/Functions.php:687
 msgid "fiancé(e)"
-msgstr ""
+msgstr "未婚夫"
 
 #: app/Functions/Functions.php:664
 msgid "fiancée"
-msgstr ""
+msgstr "未婚妻"
 
 #: app/Functions/Functions.php:495
 msgid "fifteenth cousin"
@@ -19351,7 +19351,7 @@ msgstr "性别"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:58
 msgid "geographic"
-msgstr ""
+msgstr "地区的"
 
 # I18N: A button label.
 #. I18N: A button label.
@@ -20923,7 +20923,7 @@ msgstr "他自己"
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "一家人"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -20957,7 +20957,7 @@ msgstr "导入文件"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "内联注释"
 
 # I18N: Gedcom INT dates
 #. I18N: Gedcom INT dates
@@ -21489,7 +21489,7 @@ msgstr "百分比"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
 msgid "political"
-msgstr ""
+msgstr "政治的"
 
 # I18N: A button label, previous page
 #. I18N: A button label, previous page
@@ -21518,7 +21518,7 @@ msgstr "主要证据"
 #. I18N: Status of child-parent link
 #: app/Elements/ChildLinkageStatus.php:63
 msgid "proven"
-msgstr ""
+msgstr "已证实的"
 
 # I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
@@ -21558,7 +21558,7 @@ msgstr "拒绝"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "宗教的"
 
 # I18N: A name taken when entering a religion or a religious order
 #. I18N: A name taken when entering a religion or a religious order
@@ -21871,7 +21871,7 @@ msgstr "第七代堂兄(妹)"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "共享笔记"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
@@ -21888,12 +21888,12 @@ msgstr "显示"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:273
 msgid "show changes made in webtrees"
-msgstr ""
+msgstr "显示在webtrees中所做的更改"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:275
 msgid "show changes recorded in the genealogy data"
-msgstr ""
+msgstr "显示谱系数据中记录的变化"
 
 #. I18N: button label
 #: resources/views/lists/anniversaries-list.phtml:24
