@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-05 15:08+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-19 11:29+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -812,7 +812,7 @@ msgstr "Listi yfir afmælisdaga sem væntanlegir eru í náinni framtíð."
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:58
 msgid "A list of the most popular given names."
-msgstr "Listi yfir algengustu fornöfnin."
+msgstr "Listi yfir algengustu eiginnöfnin."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:83
@@ -3538,7 +3538,7 @@ msgstr "Börn "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:99
 msgid "Children take a patronym instead of a surname."
-msgstr "Börn taka fornafn í stað eftirnafns."
+msgstr "Börn taka kenninafn í stað eftirnafns."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:93
@@ -4384,7 +4384,7 @@ msgstr "Gagnagrunnsheiti"
 #: resources/views/setup/step-4-database-pgsql.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:83
 msgid "Database password"
-msgstr "Gagagrunns lykilorð"
+msgstr "Lykilorð gagnagrunns"
 
 #: resources/views/setup/step-3-database-type.phtml:52
 msgid "Database type"
@@ -4394,7 +4394,7 @@ msgstr "Gagnagrunnsgerð"
 #: resources/views/setup/step-4-database-pgsql.phtml:71
 #: resources/views/setup/step-4-database-sqlsvr.phtml:71
 msgid "Database user account"
-msgstr "Gagnagrunns notandareikningur"
+msgstr "Notandareikningur gagnagrunns"
 
 #: app/Gedcom.php:391 app/Gedcom.php:480 app/Gedcom.php:507 app/Gedcom.php:524
 #: app/Gedcom.php:884 app/Gedcom.php:977 app/Gedcom.php:1096
@@ -6968,7 +6968,7 @@ msgstr "Gilbert, Arizona, Bandaríkin"
 #: resources/views/lists/given-names-table.phtml:26
 #: resources/views/search-phonetic-page.phtml:32
 msgid "Given name"
-msgstr "Fornafn"
+msgstr "Eiginnafn"
 
 #: app/Gedcom.php:653 app/Gedcom.php:660 app/Gedcom.php:665
 #: resources/views/lists/families-table.phtml:220
@@ -6976,7 +6976,7 @@ msgstr "Fornafn"
 #: resources/views/lists/given-names-table.phtml:21
 #: resources/views/lists/individuals-table.phtml:240
 msgid "Given names"
-msgstr "Fornafn/-nöfn"
+msgstr "Eiginnafn/-nöfn"
 
 #: app/Elements/RelationIsDescriptor.php:112
 msgid "Godchild"
@@ -8702,7 +8702,7 @@ msgstr "London, England"
 #. I18N: Help text for the “Maximum number of surnames on individual list” configuration setting
 #: resources/views/admin/trees-preferences.phtml:361
 msgid "Long lists of individuals with the same surname can be broken into smaller sub-lists according to the first letter of the individual’s given name.<br><br>This option determines when sub-listing of surnames will occur. To disable sub-listing completely, set this option to zero."
-msgstr "Langa lista af einstaklingum með sama eftirnafni er hægt að brjóta niður í minni undirlista samkvæmt fyrsta bókstafnum í fornafni einstaklingsins.<br><br>Þessi valkostur ákvarðar hvenær undirlistar af eftirnöfnum verða til. Til að afvirkja undirlista alveg, stillið þennan valkost þá á núll."
+msgstr "Langa lista af einstaklingum með sama eftirnafni er hægt að brjóta niður í minni undirlista samkvæmt fyrsta bókstafnum í eiginnafni einstaklingsins.<br><br>Þessi valkostur ákvarðar hvenær undirlistar af eftirnöfnum verða til. Til að afvirkja undirlista alveg, stillið þennan valkost þá á núll."
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:17
 msgid "Longest marriage"
@@ -13751,7 +13751,7 @@ msgstr "Valmöguleiki eftirnafns"
 
 #: app/Gedcom.php:657 app/Gedcom.php:669 app/Gedcom.php:672
 msgid "Surname prefix"
-msgstr "Forskeyti fornafns"
+msgstr "Forskeyti eiginnafns"
 
 #: resources/views/admin/trees-preferences.phtml:696
 msgid "Surname tradition"
@@ -13828,7 +13828,7 @@ msgstr "Flipi"
 #: resources/views/setup/step-4-database-sqlite.phtml:72
 #: resources/views/setup/step-4-database-sqlsvr.phtml:104
 msgid "Table prefix"
-msgstr "Töflu forskeyti"
+msgstr "Töfluforskeyti"
 
 #: resources/xml/reports/ahnentafel_report.xml:13
 #: resources/xml/reports/bdm_report.xml:12
@@ -15296,8 +15296,8 @@ msgstr "Of margar beiðnir. Reyndu aftur seinna."
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "Algengasta %s fornafnið"
-msgstr[1] "Algengustu %s fornöfnin"
+msgstr[0] "Algengasta %s eiginnafnið"
+msgstr[1] "Algengustu %s eiginnöfnin"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:188
@@ -15310,13 +15310,13 @@ msgstr[1] "Vinsælustu %s eftirnöfnin"
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:101
 msgid "Top given name"
-msgstr "Vinsælt fornafn"
+msgstr "Vinsælt eiginnafn"
 
 #. I18N: Name of a module. Top=Most common
 #: app/Module/TopGivenNamesModule.php:47
 #: resources/views/modules/statistics-chart/names.phtml:45
 msgid "Top given names"
-msgstr "Algengustu fornöfnin"
+msgstr "Algengustu eiginnöfnin"
 
 #. I18N: i.e. most popular surname.
 #: app/Module/TopSurnamesModule.php:185
@@ -15397,7 +15397,7 @@ msgstr "Samtals kvenmenn"
 
 #: resources/views/modules/statistics-chart/names.phtml:38
 msgid "Total given names"
-msgstr "Samtals fornöfn"
+msgstr "Samtals eiginnöfn"
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:10
 #: resources/xml/reports/bdm_report.xml:210
@@ -19219,7 +19219,7 @@ msgstr "staðsetningar uppfærðar: %s, staðsetningum bætt við: %s"
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Elements/NameType.php:83
 msgid "maiden name"
-msgstr "ættarnafn"
+msgstr "eftirnafn"
 
 #: resources/views/admin/trees-privacy.phtml:127
 msgid "managers"
