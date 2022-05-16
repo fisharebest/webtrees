@@ -1289,6 +1289,37 @@ class Gedcom
     /**
      * @return array<string,ElementInterface>
      */
+    private function geneatique(): array
+    {
+        return [
+            /*
+            Pour déclarer les témoins dans les actes de naissance
+
+            Balise GEDCOM non valide. INDI:BIRT:ASSO
+            INDI:BIRT:ASSO:TYPE
+            INDI:BIRT:ASSO:RELA
+            INDI:DEAT:PLAC:QUAY
+            INDI:BIRT:OBJE:QUAY
+            INDI:BIRT:SOUR:TEXT
+
+            Dans les mariages
+
+            FAM:MARR:ASSO
+            FAM:MARR:ASSO:TYPE
+            FAM:MARR:ASSO:RELA
+            FAM:MARR:WWW:QUAY
+            OBJE:WWW
+            OBJE:SOUR:TEXTHTTPS
+            OBJE:NOTE:WWW
+            SOUR:QUAY
+            SOUR:TYPE
+            */
+        ];
+    }
+
+    /**
+     * @return array<string,ElementInterface>
+     */
     private function genPlusWinTags(): array
     {
         return [
@@ -1369,6 +1400,23 @@ class Gedcom
             'SOUR:_CREAT'             => new DateValue(I18N::translate('Creation date')),
             'SOUR:_KTIT'              => new SourceFiledByEntry(I18N::translate('Abbreviation')),
             'SOUR:_UID'               => new PafUid(I18N::translate('Unique identifier')),
+        ];
+    }
+
+    /**
+     * @return array<string,ElementInterface>
+     */
+    private function heredis(): array
+    {
+        return [
+            'INDI:SIGN'                   => new CustomElement(I18N::translate('Signature')),
+            /* Reported on the forum - but what do they mean?
+            'INDI:_FIL'                   => new CustomElement(I18N::translate('???')),
+            'INDI:*:_FNA'                 => new CustomElement(I18N::translate('???')),
+            'INDI:????:????:_SUBMAP'      => new EmptyElement(I18N::translate('Coordinates'), ['INDI' => '1:1', 'LONG' => '1:1']),
+            'INDI:????:????:_SUBMAP:LATI' => new PlaceLatitude(I18N::translate('Latitude')),
+            'INDI:????:????:_SUBMAP:LONG' => new PlaceLongtitude(I18N::translate('Longitude')),
+            */
         ];
     }
 
@@ -1844,7 +1892,9 @@ class Gedcom
             $element_factory->registerTags($this->familyTreeBuilderTags());
             $element_factory->registerTags($this->familyTreeMakerTags());
             $element_factory->registerTags($this->gedcomLTags());
+            $element_factory->registerTags($this->geneatique());
             $element_factory->registerTags($this->genPlusWinTags());
+            $element_factory->registerTags($this->heredis());
             $element_factory->registerTags($this->legacyTags());
             $element_factory->registerTags($this->myHeritageTags());
             $element_factory->registerTags($this->personalAncestralFileTags());
