@@ -214,16 +214,44 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
         $places   = $placeObj->getChildPlaces();
         $features = [];
         $sidebar  = '';
-
+        $icon_common = [
+            'iconShape'       => 'marker',
+            'borderColor'     => 'transparent',
+            'backgroundColor' => '#1e90ff',
+        ];
         if ($places === []) {
             $places[] = $placeObj;
         }
 
+        $num_places = count($places);
         foreach ($places as $id => $place) {
             $location = new PlaceLocation($place->gedcomName());
 
             if ($location->latitude() === null || $location->longitude() === null) {
+                // Go up the hierarchy until a place with coordinates is found
+                $parent = $location->parent();
+                while ($parent->id() !== null && ($parent->latitude() === null || $parent->longitude() === null)) {
+                    $parent = $parent->parent();
+                }
+
                 $sidebar_class = 'unmapped';
+                if ($num_places === 1) {
+                    $features[]    = [
+                        'type'     => 'Feature',
+                        'id'       => $id,
+                        'geometry' => [
+                            'type'        => 'Point',
+                            'coordinates' => [$parent->longitude() ?? 0, $parent->latitude() ?? 0],
+                        ],
+                        'properties' => [
+                            'icon' => $icon_common + [
+                                'icon'      => 'exclamation-triangle fas',
+                                'textColor' => 'yellow',
+                            ],
+                            'tooltip' => I18N::translate('The location of this place is not known.'),
+                        ],
+                    ];
+                }
             } else {
                 $sidebar_class = 'mapped';
                 $features[]    = [
@@ -234,6 +262,10 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
                         'coordinates' => [$location->longitude(), $location->latitude()],
                     ],
                     'properties' => [
+                        'icon' => $icon_common + [
+                            'icon'      => 'bullseye fas',
+                            'textColor' => 'white',
+                        ],
                         'tooltip' => $place->gedcomName(),
                         'popup'   => view('modules/place-hierarchy/popup', [
                             'place'     => $place,

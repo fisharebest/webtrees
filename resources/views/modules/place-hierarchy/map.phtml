@@ -24,7 +24,7 @@ use Fisharebest\Webtrees\View;
 
     const scrollOptions = {
       behavior: "smooth",
-      block: "start",
+      block: "nearest",
       inline: "start"
     };
 
@@ -72,13 +72,7 @@ use Fisharebest\Webtrees\View;
       let geoJsonLayer = L.geoJson(data.markers, {
         pointToLayer: function (feature, latlng) {
           return new L.Marker(latlng, {
-            icon: L.BeautifyIcon.icon({
-              icon: 'bullseye fas',
-              borderColor: 'transparent',
-              backgroundColor: '#1e90ff',
-              iconShape: 'marker',
-              textColor: 'white',
-            }),
+            icon: L.BeautifyIcon.icon(feature.properties.icon),
             title: feature.properties.tooltip,
             id: feature.id,
           })
@@ -93,9 +87,11 @@ use Fisharebest\Webtrees\View;
           });
         },
         onEachFeature: function (feature, layer) {
-          layer.bindPopup(feature.properties.popup, {
-            minWidth: 150
-          });
+          if (feature.properties.popup !== undefined) {
+            layer.bindPopup(feature.properties.popup, {
+              minWidth: 150
+            });
+          }
         },
       });
 
