@@ -34,6 +34,7 @@ use function is_string;
 use function parse_url;
 use function preg_match;
 use function str_starts_with;
+use function substr;
 
 /**
  * Validate a parameter from an HTTP request
@@ -276,9 +277,15 @@ class Validator
     {
         $value = $this->parameters[$parameter] ?? null;
 
-        if (is_string($value) && ctype_digit($value)) {
-            $value = (int) $value;
-        } elseif (!is_int($value)) {
+        if (is_string($value)) {
+            if (ctype_digit($value)) {
+                $value = (int) $value;
+            } elseif (str_starts_with($value, '-') && ctype_digit(substr($value, 1))) {
+                $value = (int) $value;
+            }
+        }
+
+        if (!is_int($value)) {
             $value = null;
         }
 

@@ -48,10 +48,19 @@ class ValidatorTest extends TestCase
     public function testRequiredIntegerParameter(): void
     {
         $request    = $this->createStub(ServerRequestInterface::class);
-        $parameters = ['param' => '42', 'invalid' => 'not_int'];
+        $parameters = [
+            'int_type_positive'    => 42,
+            'int_type_negative'    => -42,
+            'string_type_positive' => '42',
+            'string_type_negative' => '-42',
+            'invalid'              => 'not_int',
+        ];
         $validator  = new Validator($parameters, $request);
 
-        self::assertSame(42, $validator->integer('param'));
+        self::assertSame(42, $validator->integer('int_type_positive'));
+        self::assertSame(-42, $validator->integer('int_type_negative'));
+        self::assertSame(42, $validator->integer('string_type_positive'));
+        self::assertSame(-42, $validator->integer('string_type_negative'));
 
         $this->expectException(HttpBadRequestException::class);
         $validator->integer('invalid');
