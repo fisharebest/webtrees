@@ -605,7 +605,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             }
         }
 
-        // Empty surnames have a special code ',' - as we search for SURN.GIVN
+        // Empty surnames have a special code ',' - as we search for SURN,GIVN
         foreach ($specials as $special) {
             if ($rows->has($special)) {
                 $alphas[$special ?: ','] = (int) $rows[$special];
