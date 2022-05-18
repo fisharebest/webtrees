@@ -155,7 +155,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A configuration setting */ I18N::translate('Genealogy contact') ?>
         </label>
         <div class="col-sm-9">
-            <select id="CONTACT_USER_ID" name="CONTACT_USER_ID" class="form-control">
+            <select id="CONTACT_USER_ID" name="CONTACT_USER_ID" class="form-select">
                 <option value="">&nbsp;</option>
                 <?php foreach ($members as $member) : ?>
                     <option value="<?= $member->id() ?>" <?= (int) $tree->getPreference('CONTACT_USER_ID') === $member->id() ? 'selected' : '' ?>>
@@ -175,7 +175,7 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A configuration setting */ I18N::translate('Technical help contact') ?>
         </label>
         <div class="col-sm-9">
-            <select id="WEBMASTER_USER_ID" name="WEBMASTER_USER_ID" class="form-control">
+            <select id="WEBMASTER_USER_ID" name="WEBMASTER_USER_ID" class="form-select">
                 <option value="">&nbsp;</option>
                 <?php foreach ($members as $member) : ?>
                     <option value="<?= $member->id() ?>" <?= (int) $tree->getPreference('WEBMASTER_USER_ID') === $member->id() ? 'selected' : '' ?>>

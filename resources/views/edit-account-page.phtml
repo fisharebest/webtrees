@@ -57,7 +57,7 @@ use Fisharebest\Webtrees\Tree;
                 <?= I18N::translate('Individual record') ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <select class="form-control" id="gedcom-id" aria-describedby="gedcom-id-description" disabled>
+                <select class="form-select" id="gedcom-id" aria-describedby="gedcom-id-description" disabled>
                     <?php if ($my_individual_record !== null) : ?>
                         <option value=""><?= $my_individual_record->fullName() ?></option>
                     <?php else : ?>

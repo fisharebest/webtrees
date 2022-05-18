@@ -316,7 +316,7 @@ use Illuminate\Support\Collection;
                         <?= e($tree->title()) ?>
                     </td>
                     <td>
-                        <select class="form-control" name="canedit<?= $tree->id() ?>">
+                        <select class="form-select" name="canedit<?= $tree->id() ?>">
                             <?php foreach ($roles as $role => $description) : ?>
                                 <option value="<?= $role ?>"
                                     <?= $role === $tree->getUserPreference($user, UserInterface::PREF_TREE_ROLE) ? 'selected' : '' ?>>
@@ -329,7 +329,7 @@ use Illuminate\Support\Collection;
                         <?= view('components/select-individual', ['name' => 'gedcomid' . $tree->id(), 'individual' => Registry::individualFactory()->make($tree->getUserPreference($user, 'gedcomid'), $tree), 'tree' => $tree]) ?>
                     </td>
                     <td>
-                        <select class="form-control" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">
+                        <select class="form-select" name="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" id="RELATIONSHIP_PATH_LENGTH<?= $tree->id() ?>" class="relpath">
                             <?php for ($n = 0; $n <= 10; ++$n) : ?>
                                 <option value="<?= $n ?>" <?= (int) $tree->getUserPreference($user, UserInterface::PREF_TREE_PATH_LENGTH) === $n ? 'selected' : '' ?>>
                                     <?= $n ?: I18N::translate('No') ?>

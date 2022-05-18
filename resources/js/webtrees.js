@@ -415,7 +415,7 @@
   function calGenerateSelectorContent (dateFieldId, dateDivId, date) {
     let i, j;
     let content = '<table border="1"><tr>';
-    content += '<td><select class="form-control" id="' + dateFieldId + '_daySelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+    content += '<td><select class="form-select" id="' + dateFieldId + '_daySelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
     for (i = 1; i < 32; i++) {
       content += '<option value="' + i + '"';
       if (date.getDate() === i) {
@@ -424,7 +424,7 @@
       content += '>' + i + '</option>';
     }
     content += '</select></td>';
-    content += '<td><select class="form-control" id="' + dateFieldId + '_monSelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
+    content += '<td><select class="form-select" id="' + dateFieldId + '_monSelect" onchange="return webtrees.calUpdateCalendar(\'' + dateFieldId + '\', \'' + dateDivId + '\');">';
     for (i = 1; i < 13; i++) {
       content += '<option value="' + i + '"';
       if (date.getMonth() + 1 === i) {

@@ -42,7 +42,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Language') ?>
         </label>
         <div class="col-sm-9">
-            <select class="form-control" id="lang" name="lang">
+            <select class="form-select" id="lang" name="lang">
                 <?php foreach ($locales as $locale) : ?>
                     <option value="<?= $locale->languageTag() ?>" <?= $lang === $locale->languageTag() ? 'selected' : '' ?>>
                         <?= $locale->endonym() ?>

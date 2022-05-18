@@ -59,7 +59,7 @@ use Illuminate\Support\Collection;
                 <span class="visually-hidden"><?= e($i) ?></span>
             </label>
             <div class="col-sm-9">
-                <select class="form-control" id="folder_list<?= e($i) ?>" name="folder<?= e($i) ?>">
+                <select class="form-select" id="folder_list<?= e($i) ?>" name="folder<?= e($i) ?>">
                     <?php foreach ($media_folders as $media_folder) : ?>
                         <option value="<?= e($media_folder) ?>">
                             <?= e($media_folder) ?>

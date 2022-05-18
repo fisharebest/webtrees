@@ -55,7 +55,7 @@ use Illuminate\Support\Collection;
                             <?= e($data_folder) ?>
                         </span>
 
-                <select name="tree_name" class="form-control" dir="ltr" id="import-server-file">
+                <select name="tree_name" class="form-select" dir="ltr" id="import-server-file">
                     <option value="">&nbsp;</option>
                     <?php foreach ($gedcom_files as $gedcom_file) : ?>
                         <option value="<?= e($gedcom_file) ?>" <?= $gedcom_file === $default_gedcom_file ? 'selected' : '' ?>>

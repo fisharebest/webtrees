@@ -95,7 +95,7 @@ use Fisharebest\Webtrees\View;
                     <label for="z-axis-boundaries-periods" class="visually-hidden">
                         <?= I18N::translate('Date range') ?>
                     </label>
-                    <select id="z-axis-boundaries-periods" class="form-control" name="z-axis-boundaries-periods">
+                    <select id="z-axis-boundaries-periods" class="form-select" name="z-axis-boundaries-periods">
                         <option value="1700,1750,1800,1850,1900,1950,2000" selected>
                             <?= /* I18N: from 1700 interval 50 years */
                             I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, I18N::digits(1700), I18N::number(50)) ?>
@@ -155,7 +155,7 @@ use Fisharebest\Webtrees\View;
                         <legend><?= I18N::translate('Chart type') ?></legend>
 
                         <label for="chart_type" class="visually-hidden"><?= I18N::translate('Chart type') ?></label>
-                        <select name="chart_type" class="form-control" onchange="statusShowSurname(this);">
+                        <select name="chart_type" class="form-select" onchange="statusShowSurname(this);">
                             <option value="indi_distribution_chart" selected>
                                 <?= I18N::translate('Individuals') ?>
                             </option>
@@ -174,7 +174,7 @@ use Fisharebest\Webtrees\View;
                         <legend id="label-area"><?= I18N::translate('Geographic area') ?></legend>
 
                         <label for="chart_shows" class="visually-hidden"><?= I18N::translate('Geographic area') ?></label>
-                        <select id="chart_shows" class="form-control" name="chart_shows">
+                        <select id="chart_shows" class="form-select" name="chart_shows">
                             <option value="world" selected>
                                 <?= I18N::translate('World') ?>
                             </option>
