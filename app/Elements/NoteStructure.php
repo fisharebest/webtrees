@@ -129,7 +129,7 @@ class NoteStructure extends SubmitterText
 
                 return I18N::translate('%1$s: %2$s', $label, $value);
             }
-            
+
             return
                 '<div class="wt-text-overflow-elipsis">' .
                 '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
