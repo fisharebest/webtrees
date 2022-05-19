@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
@@ -31,6 +32,7 @@ use function e;
 use function explode;
 use function preg_match;
 use function strip_tags;
+use function substr_count;
 use function view;
 
 /**
@@ -105,6 +107,9 @@ class NoteStructure extends SubmitterText
      */
     public function labelValue(string $value, Tree $tree): string
     {
+        $id       = 'collapse-' . Uuid::uuid4()->toString();
+        $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
+
         // A note structure can contain an inline note or a linked to a shared note.
         if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match) === 1) {
             $note = Registry::noteFactory()->make($match[1], $tree);
@@ -113,38 +118,54 @@ class NoteStructure extends SubmitterText
                 return parent::labelValue($value, $tree);
             }
 
+            $label         = '<span class="label">' . I18N::translate('Shared note') . '</span>';
             $value         = $note->getNote();
-            $label         = I18N::translate('Shared note');
             $html          = $this->valueFormatted($value, $tree);
             $first_line    = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
-            $one_line_only = strip_tags($note->fullName()) === strip_tags($value);
-        } else {
-            $label         = I18N::translate('Note');
-            $html          = $this->valueFormatted($value, $tree);
-            [$first_line]  = explode(MarkdownFactory::BREAK, strip_tags($html, ['br']));
-            $first_line    = Str::limit($first_line, 100, I18N::translate('…'));
-            $one_line_only = !str_contains($html, MarkdownFactory::BREAK);
+
+            // Shared note where the title is the same as the text
+            if ($html === '<p>' . strip_tags($note->fullName()) . '</p>') {
+                $value = '<a href="' . e($note->url()) . '">' . strip_tags($html) . '</a>';
+
+                return I18N::translate('%1$s: %2$s', $label, $value);
+            }
+            
+            return
+                '<div class="wt-text-overflow-elipsis">' .
+                '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+                view('icons/expand') .
+                view('icons/collapse') .
+                '</a>' .
+                '<span class="label">' . $label . ':</span> ' . $first_line .
+                '</div>' .
+                '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
+                $html .
+                '</div>';
         }
 
-        $id       = 'collapse-' . Uuid::uuid4()->toString();
-        $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
+        $label = '<span class="label">' . I18N::translate('Note') . '</span>';
+        $html  = $this->valueFormatted($value, $tree);
 
-        if ($one_line_only) {
-            $label = '<span class="label">' . $label . '</span>';
-            $value = '<span class="field" dir="auto">' . $html . '</span>';
+        // Inline note with only one paragraph and inline markup?
+        if ($html === strip_tags($html, ['a', 'em', 'p', 'strong']) && substr_count($html, '<p>') === 1) {
+            $html  = strip_tags($html, ['a', 'em', 'strong']);
+            $value = '<span class="ut">' . $html . '</span>';
 
-            return '<div class="fact_NOTE">' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
+            return I18N::translate('%1$s: %2$s', $label, $value);
         }
+
+        $value = e(Note::firstLineOfTextFromHtml($html));
+        $value = '<span class="ut collapse ' . ($expanded ? '' : 'show') . ' ' . e($id) . '">' . $value . '</span>';
 
         return
-            '<div class="fact_NOTE">' .
-            '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+            '<div class="wt-text-overflow-elipsis">' .
+            '<a href="#" data-bs-target=".' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
             view('icons/expand') .
             view('icons/collapse') .
             '</a>' .
-            '<span class="label">' . $label . ':</span> ' . $first_line .
+            I18N::translate('%1$s: %2$s', $label, $value) .
             '</div>' .
-            '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
+            '<div class="ps-4 collapse ' . ($expanded ? 'show' : '') . ' ' . e($id) . '">' .
             $html .
             '</div>';
     }

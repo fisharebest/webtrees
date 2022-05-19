@@ -97,27 +97,7 @@ class Note extends GedcomRecord
             $html = Registry::markdownFactory()->autolink($this->getNote());
         }
 
-        // Take the first line
-        $html = strtr($html, [
-            '</blockquote>' => MarkdownFactory::BREAK,
-            '</h1>'         => MarkdownFactory::BREAK,
-            '</h2>'         => MarkdownFactory::BREAK,
-            '</h3>'         => MarkdownFactory::BREAK,
-            '</h4>'         => MarkdownFactory::BREAK,
-            '</h5>'         => MarkdownFactory::BREAK,
-            '</h6>'         => MarkdownFactory::BREAK,
-            '</li>'         => MarkdownFactory::BREAK,
-            '</p>'          => MarkdownFactory::BREAK,
-            '</pre>'        => MarkdownFactory::BREAK,
-            '</td>'         => ' ',
-            '</th>'         => ' ',
-            '<hr>'          => MarkdownFactory::BREAK,
-        ]);
-
-        [$first_line] = explode(MarkdownFactory::BREAK, $html, 2);
-
-        $first_line = strip_tags($first_line, ['br']);
-        $first_line = htmlspecialchars_decode($first_line, ENT_QUOTES);
+        $first_line = self::firstLineOfTextFromHtml($html);
 
         if ($first_line !== '') {
             $this->addName('NOTE', Str::limit($first_line, 100, I18N::translate('…')), $this->gedcom());

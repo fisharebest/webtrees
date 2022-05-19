@@ -345,18 +345,10 @@ abstract class AbstractElement implements ElementInterface
 
         switch ($format) {
             case 'markdown':
-                $html = Registry::markdownFactory()->markdown($canonical, $tree);
-
-                return '<div class="markdown" dir="auto">' . $html . '</div>';
+                return Registry::markdownFactory()->markdown($canonical, $tree);
 
             default:
-                $html = Registry::markdownFactory()->autolink($canonical, $tree);
-
-                if (str_contains($html, "\n")) {
-                    return '<div class="markdown" dir="auto">' . $html . '</div>';
-                }
-
-                return '<span class="markdown" dir="auto">' . $html . '</span>';
+                return Registry::markdownFactory()->autolink($canonical, $tree);
         }
     }
 

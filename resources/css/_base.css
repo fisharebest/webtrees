@@ -128,3 +128,9 @@ a:hover, .btn-link:hover, .nav-link:hover {
     margin-left: 1rem;
     border-left: solid 4px grey;
 }
+
+.wt-text-overflow-elipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
