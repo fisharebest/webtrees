@@ -336,6 +336,7 @@ class Gedcom
 
     // Custom GEDCOM tags that can be created in webtrees.
     public const CUSTOM_FAMILY_TAGS = [
+        'FACT',
         '_COML',
         '_MARI',
         '_MBON',
@@ -1602,6 +1603,7 @@ class Gedcom
         return [
             'FAM:CHAN:_PGVU'        => new WebtreesUser(I18N::translate('Author of last change')),
             'FAM:COMM'              => new CustomElement(I18N::translate('Comment')),
+            'FAM:FACT'              => new CustomFact(I18N::translate('Fact')),
             'INDI:*:ASSO'           => new XrefAssociate(I18N::translate('Associate')),
             'INDI:*:ASSO:RELA'      => new RelationIsDescriptor(I18N::translate('Relationship')),
             'INDI:*:PLAC:_HEB'      => new NoteStructure(I18N::translate('Place in Hebrew')),
