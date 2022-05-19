@@ -29,7 +29,8 @@ use function htmlspecialchars_decode;
 use function preg_match;
 use function preg_replace;
 use function strip_tags;
-use function trim;
+
+use function var_dump;
 
 use const ENT_QUOTES;
 
@@ -97,12 +98,61 @@ class Note extends GedcomRecord
         }
 
         // Take the first line
-        $html   = strtr($html, ["</p>\n<p>" => MarkdownFactory::BREAK . MarkdownFactory::BREAK]);
-        [$html] = explode(MarkdownFactory::BREAK, strip_tags(trim($html), ['br']));
+        $html = strtr($html, [
+            '</blockquote>' => MarkdownFactory::BREAK,
+            '</h1>'         => MarkdownFactory::BREAK,
+            '</h2>'         => MarkdownFactory::BREAK,
+            '</h3>'         => MarkdownFactory::BREAK,
+            '</h4>'         => MarkdownFactory::BREAK,
+            '</h5>'         => MarkdownFactory::BREAK,
+            '</h6>'         => MarkdownFactory::BREAK,
+            '</li>'         => MarkdownFactory::BREAK,
+            '</p>'          => MarkdownFactory::BREAK,
+            '</pre>'        => MarkdownFactory::BREAK,
+            '</td>'         => ' ',
+            '</th>'         => ' ',
+            '<hr>'          => MarkdownFactory::BREAK,
+        ]);
 
-        if ($html !== '') {
-            $html = htmlspecialchars_decode($html, ENT_QUOTES);
-            $this->addName('NOTE', Str::limit($html, 100, I18N::translate('…')), $this->gedcom());
+        [$first_line] = explode(MarkdownFactory::BREAK, $html, 2);
+
+        $first_line = strip_tags($first_line, ['br']);
+        $first_line = htmlspecialchars_decode($first_line, ENT_QUOTES);
+
+        if ($first_line !== '') {
+            $this->addName('NOTE', Str::limit($first_line, 100, I18N::translate('…')), $this->gedcom());
         }
+    }
+
+    /**
+     * Notes are converted to HTML for display.  We want the first line
+     *
+     * @param string $html
+     *
+     * @return string
+     */
+    public static function firstLineOfTextFromHtml(string $html): string
+    {
+        $html = strtr($html, [
+            '</blockquote>' => MarkdownFactory::BREAK,
+            '</h1>'         => MarkdownFactory::BREAK,
+            '</h2>'         => MarkdownFactory::BREAK,
+            '</h3>'         => MarkdownFactory::BREAK,
+            '</h4>'         => MarkdownFactory::BREAK,
+            '</h5>'         => MarkdownFactory::BREAK,
+            '</h6>'         => MarkdownFactory::BREAK,
+            '</li>'         => MarkdownFactory::BREAK,
+            '</p>'          => MarkdownFactory::BREAK,
+            '</pre>'        => MarkdownFactory::BREAK,
+            '</td>'         => ' ',
+            '</th>'         => ' ',
+            '<hr>'          => MarkdownFactory::BREAK,
+        ]);
+
+        $html = strip_tags($html, ['br']);
+
+        [$first] = explode(MarkdownFactory::BREAK, $html, 2);
+
+        return htmlspecialchars_decode($first, ENT_QUOTES);
     }
 }

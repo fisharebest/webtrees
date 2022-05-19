@@ -43,21 +43,20 @@ use League\CommonMark\Util\HtmlFilter;
 
 use function strip_tags;
 use function strtr;
-use function trim;
 
 /**
  * Create a markdown converter.
  */
 class MarkdownFactory implements MarkdownFactoryInterface
 {
+    // Commonmark uses the self-closing form of this tag, so we do the same for consistency.
     public const BREAK = '<br />';
 
-    // Commonmark uses <br /> for hard-breaks, so we use the same for soft-breaks.
     protected const CONFIG_AUTOLINK = [
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => self::BREAK,
+            'soft_break' => self::BREAK,
         ],
     ];
 
@@ -65,7 +64,7 @@ class MarkdownFactory implements MarkdownFactoryInterface
         'allow_unsafe_links' => false,
         'html_input'         => HtmlFilter::ESCAPE,
         'renderer'           => [
-            'soft_break'     => self::BREAK,
+            'soft_break' => self::BREAK,
         ],
         'table'              => [
             'wrap' => [
@@ -104,9 +103,12 @@ class MarkdownFactory implements MarkdownFactoryInterface
         $converter = new MarkDownConverter($environment);
 
         $html = $converter->convert($markdown)->getContent();
-        $html = strtr($html, ["</p>\n<p>" => self::BREAK . self::BREAK]);
 
-        return trim(strip_tags($html, ['a', 'br']));
+        // We should only have certain tags.  Make sure of this.
+        $html = strip_tags($html, ['a', 'br', 'p']);
+
+        // The markdown convert adds newlines, but not in a documented way.  Safest to ignore them.
+        return strtr($html, ["\n"   => '']);
     }
 
     /**
@@ -131,6 +133,9 @@ class MarkdownFactory implements MarkdownFactoryInterface
 
         $converter = new MarkDownConverter($environment);
 
-        return $converter->convert($markdown)->getContent();
+        $html = $converter->convert($markdown)->getContent();
+
+        // The markdown convert adds newlines, but not in a documented way.  Safest to ignore them.
+        return strtr($html, ["\n"   => '']);
     }
 }

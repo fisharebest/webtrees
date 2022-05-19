@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
@@ -113,17 +114,16 @@ class NoteStructure extends SubmitterText
             }
 
             $value         = $note->getNote();
-            $element       = Registry::elementFactory()->make('NOTE');
-            $label         = $element->label();
+            $label         = I18N::translate('Shared note');
             $html          = $this->valueFormatted($value, $tree);
             $first_line    = '<a href="' . e($note->url()) . '">' . $note->fullName() . '</a>';
             $one_line_only = strip_tags($note->fullName()) === strip_tags($value);
         } else {
             $label         = I18N::translate('Note');
             $html          = $this->valueFormatted($value, $tree);
-            [$first_line]  = explode('<br>', strip_tags($html, ['br']));
+            [$first_line]  = explode(MarkdownFactory::BREAK, strip_tags($html, ['br']));
             $first_line    = Str::limit($first_line, 100, I18N::translate('…'));
-            $one_line_only = !str_contains($html, '<br>') && mb_strlen($value) <= 100;
+            $one_line_only = !str_contains($html, MarkdownFactory::BREAK);
         }
 
         $id       = 'collapse-' . Uuid::uuid4()->toString();
