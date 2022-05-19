@@ -37,7 +37,6 @@ use Illuminate\Support\Collection;
         <?php if (Auth::isManager($tree)) : ?>
             <hr>
             <form method="post" action="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'DeleteNews', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
-                <?= csrf_field() ?>
                 <a class="btn btn-link" href="<?= e(route('module', ['module' => 'gedcom_news', 'action' => 'EditNews', 'news_id' => $article->news_id, 'tree' => $tree->name()])) ?>">
                     <?= I18N::translate('Edit') ?>
                 </a>
@@ -45,6 +44,8 @@ use Illuminate\Support\Collection;
                 <button class="btn btn-link" type="submit" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($article->subject)) ?>" onclick="return confirm(this.dataset.confirm);">
                     <?= I18N::translate('Delete') ?>
                 </button>
+
+                <?= csrf_field() ?>
             </form>
         <?php endif ?>
     </div>

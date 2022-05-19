@@ -34,10 +34,10 @@ use Fisharebest\Webtrees\I18N;
     </p>
 
     <form method="post" action="<?= e(route(UpgradeWizardConfirm::class)) ?>" class="form-horizontal">
-        <?= csrf_field() ?>
-
         <button type="submit" class="btn btn-primary" name="continue" value="1">
             <?= I18N::translate('continue') ?>
         </button>
+
+        <?= csrf_field() ?>
     </form>
 <?php endif ?>

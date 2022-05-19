@@ -29,9 +29,6 @@ use Fisharebest\Webtrees\Tree;
             </div>
             <div class="card-body">
                 <form method="post" action="<?= e(route(ExportGedcomServer::class, ['tree' => $tree->name()])) ?>" class="form form-horizontal">
-                    <?= csrf_field() ?>
-
-
                     <div class="mb-3">
                         <label for="filename"><?= I18N::translate('Filename') ?></label>
                         <input type="text" class="form-control" id="filename" name="filename" value="<?= e($filename) ?>">
@@ -42,6 +39,8 @@ use Fisharebest\Webtrees\Tree;
                         <?= /* I18N: A button label. */
                         I18N::translate('save') ?>
                     </button>
+
+                    <?= csrf_field() ?>
                 </form>
             </div>
         </div>
@@ -55,8 +54,6 @@ use Fisharebest\Webtrees\Tree;
 
             <div class="card-body">
                 <form method="post" action="<?= e(route(ExportGedcomClient::class, ['tree' => $tree->name()])) ?>" class="form form-horizontal">
-                    <?= csrf_field() ?>
-
                     <p class="card-title">
                         <?= I18N::translate('Export preferences') ?>
                     </p>
@@ -68,6 +65,8 @@ use Fisharebest\Webtrees\Tree;
                         <?= /* I18N: A button label. */
                         I18N::translate('download') ?>
                     </button>
+
+                    <?= csrf_field() ?>
                 </form>
             </div>
         </div>

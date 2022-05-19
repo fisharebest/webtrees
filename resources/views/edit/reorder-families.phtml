@@ -23,8 +23,6 @@ use Illuminate\Support\Collection;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(ReorderFamiliesAction::class, ['tree' => $tree->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
-
     <?php if ($fams_facts->count() < 2) : ?>
         <?php foreach ($fams_facts as $fact) : ?>
             <input type="hidden" name="order[]" value="<?= e($fact->id()) ?>">
@@ -104,6 +102,8 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
         </a>
     </p>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

@@ -25,7 +25,6 @@ use Illuminate\Support\Collection;
 </p>
 
 <form method="post">
-    <?= csrf_field() ?>
     <?php foreach ($all_trees as $tree) : ?>
         <h2><?= e($tree->title()) ?></h2>
         <div class="row mb-3">
@@ -57,4 +56,6 @@ use Illuminate\Support\Collection;
             </button>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

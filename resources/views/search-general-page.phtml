@@ -41,9 +41,7 @@ use Illuminate\Support\Collection;
     <?= $title ?>
 </h2>
 
-<form method="post" action="<?= e(route(SearchGeneralAction::class, ['tree' => $tree->name()])) ?>"
-      class="wt-page-options wt-page-options-search hidden-print mb-4" name="searchform">
-    <?= csrf_field() ?>
+<form method="post" action="<?= e(route(SearchGeneralAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-options wt-page-options-search hidden-print mb-4" name="searchform">
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="query">
             <?= I18N::translate('Search for') ?>
@@ -128,6 +126,8 @@ use Illuminate\Support\Collection;
             I18N::translate('search') ?>">
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php if ($query !== '') : ?>

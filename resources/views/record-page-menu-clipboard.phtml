@@ -20,20 +20,26 @@ use Illuminate\Support\Collection;
 
 <?php foreach ($clipboard_facts as $fact) : ?>
     <form method="post" class="dropdown-item" action="<?= route(PasteFact::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()]) ?>">
-        <?= csrf_field() ?>
         <?= view('icons/copy') ?>
+
         <input type="hidden" name="fact_id" value="<?= e($fact->id()) ?>">
+
         <button type="submit" class="btn btn-text p-0 text-truncate" style="max-width: 12rem;" title="<?= strip_tags($fact->name()) ?>">
             <?= $fact->name() ?>
         </button>
+
+        <?= csrf_field() ?>
     </form>
 <?php endforeach ?>
 
 <form method="post" class="dropdown-item" action="<?= route(EmptyClipboard::class) ?>">
-    <?= csrf_field() ?>
     <input type="hidden" value="<?= e($record->url()) ?>">
+
     <?= view('icons/delete') ?>
+
     <button type="submit" class="btn btn-text p-0">
         <?= I18N::translate('Empty the clipboard') ?>
     </button>
+
+    <?= csrf_field() ?>
 </form>

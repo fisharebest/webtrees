@@ -28,14 +28,14 @@ use Illuminate\Support\Collection;
 </p>
 
 <form method="post" class="row">
-    <?= csrf_field() ?>
-
     <div class="col-auto">
         <div class="input-group">
             <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names, 'aria_label' => I18N::translate('Family tree')]) ?>
             <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <p>

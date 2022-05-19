@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\Site;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(SiteTagsAction::class)) ?>" class="form">
-    <?= csrf_field() ?>
-
     <h2><?= I18N::translate('Standard GEDCOM tags') ?></h2>
 
     <p>
@@ -993,4 +991,6 @@ use Fisharebest\Webtrees\Site;
             <?= I18N::translate('cancel') ?>
         </a>
     </div>
+
+    <?= csrf_field() ?>
 </form>

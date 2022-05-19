@@ -18,8 +18,6 @@ use Fisharebest\Webtrees\I18N;
 <h3><?= $title ?></h3>
 
 <form method="post" action="<?= e(route(MapDataImportAction::class)) ?>" id="upload_form" enctype="multipart/form-data">
-    <?= csrf_field() ?>
-
     <!-- Server file -->
     <div class="row mb-3">
         <label class="col-form-label col-sm-4" for="serverfile">
@@ -76,4 +74,6 @@ use Fisharebest\Webtrees\I18N;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

@@ -19,7 +19,6 @@ use Fisharebest\Webtrees\I18N;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e($action) ?>" class="form-horizontal">
-    <?= csrf_field() ?>
     <?= $form_fields ?>
 
     <div class="row mb-3">
@@ -46,4 +45,6 @@ use Fisharebest\Webtrees\I18N;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

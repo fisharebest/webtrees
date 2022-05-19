@@ -24,7 +24,6 @@ use Illuminate\Support\Collection;
 </p>
 
 <form method="post" action="<?= e($url_save) ?>" id="edit-blocks">
-    <?= csrf_field() ?>
     <div class="row row-cols-1 row-cols-sm-2 g-3" id="current-blocks">
         <div class="col">
             <div class="card h-100">
@@ -75,6 +74,8 @@ use Illuminate\Support\Collection;
             </button>
         <?php endif ?>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('styles') ?>

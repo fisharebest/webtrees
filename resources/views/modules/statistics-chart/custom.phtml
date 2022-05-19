@@ -19,8 +19,6 @@ use Fisharebest\Webtrees\View;
     </h4>
 
     <form method="post" action="<?= e(route('module', ['module' => $module->name(), 'action' => 'CustomChart', 'tree' => $tree->name()])) ?>" id="own-stats-form" class="wt-page-options wt-page-options-statistics">
-        <?= csrf_field() ?>
-
         <div class="row mb-3">
             <div class="col-sm-2 wt-page-options-label">
                 <?= I18N::translate('Chart type') ?>
@@ -208,6 +206,8 @@ use Fisharebest\Webtrees\View;
                 <?= I18N::translate('show the chart') ?>
             </button>
         </p>
+
+        <?= csrf_field() ?>
     </form>
 
     <div id="custom-chart" class="wt-ajax-load">

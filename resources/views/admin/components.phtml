@@ -32,7 +32,6 @@ use Illuminate\Support\Collection;
 <p><?= $description ?></p>
 
 <form method="post">
-    <?= csrf_field() ?>
     <table class="table table-bordered wt-table-components">
         <thead>
             <tr>
@@ -167,6 +166,8 @@ use Illuminate\Support\Collection;
         <?= view('icons/cancel') ?>
         <?= I18N::translate('cancel') ?>
     </a>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

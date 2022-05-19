@@ -40,8 +40,6 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(TreePreferencesAction::class, ['tree' => $tree->name()])) ?>" class="form-horizontal">
-    <?= csrf_field() ?>
-
     <h2><?= I18N::translate('General') ?></h2>
 
     <!-- TREE TITLE -->
@@ -749,7 +747,7 @@ use Illuminate\Support\Collection;
                 <?= I18N::translate('save') ?>
             </button>
             <a class="btn btn-secondary" href="<?= e(route(ManageTrees::class, ['tree' => $tree->name()])) ?>">
-        <?= view('icons/cancel') ?>
+                <?= view('icons/cancel') ?>
                 <?= I18N::translate('cancel') ?>
             </a>
             <!-- Coming soon
@@ -767,7 +765,9 @@ use Illuminate\Support\Collection;
                     <?= /* I18N: Label for checkbox */ I18N::translate('Apply these preferences to new family trees') ?>
                 </label>
             </div>
+            -->
         </div>
-        -->
-        </div>
+    </div>
+
+    <?= csrf_field() ?>
 </form>

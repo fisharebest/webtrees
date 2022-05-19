@@ -20,14 +20,14 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" class="row">
-    <?= csrf_field() ?>
-
     <div class="col-auto">
         <div class="input-group">
             <?= view('components/select', ['name' => 'tree', 'selected' => $tree->name(), 'options' => $tree_names, 'aria_label' => I18N::translate('Family tree')]) ?>
             <input type="submit" class="btn btn-primary" value="<?= I18N::translate('show') ?>">
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <p>
@@ -83,11 +83,12 @@ use Illuminate\Support\Collection;
                 </td>
                 <td>
                     <form method="post" action="<?= e(route('module', ['module' => 'stories', 'action' => 'AdminDelete', 'tree' => $tree->name(), 'block_id' => $story->block_id])) ?>">
-                        <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" data-wt-confirm="<?= I18N::translate('Are you sure you want to delete “%s”?', e($story->title)) ?>" onclick="return confirm(this.dataset.confirm);" aria-label="<?= I18N::translate('Delete') ?>">
                             <?= view('icons/delete') ?>
                             <?= I18N::translate('Delete') ?>
                         </button>
+
+                        <?= csrf_field() ?>
                     </form>
                 </td>
             </tr>

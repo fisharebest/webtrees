@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\I18N;
 
 <form method="post">
     <input type="hidden" value="admin-clean-data">
-    <?= csrf_field() ?>
 
     <ul class="fa-ul mx-0">
         <?php foreach ($entries as $entry) : ?>
@@ -49,4 +48,6 @@ use Fisharebest\Webtrees\I18N;
             </li>
         <?php endforeach ?>
     </ul>
+
+    <?= csrf_field() ?>
 </form>

@@ -26,8 +26,6 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(UsersCleanupAction::class)) ?>">
-    <?= csrf_field() ?>
-
     <table class="table table-bordered">
         <?php foreach ($inactive_users as $user) : ?>
             <tr>
@@ -79,4 +77,6 @@ use Illuminate\Support\Collection;
             </button>
         <?php endif ?>
     </p>
+
+    <?= csrf_field() ?>
 </form>

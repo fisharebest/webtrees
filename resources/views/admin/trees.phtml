@@ -131,11 +131,12 @@ use Illuminate\Database\Capsule\Manager as DB;
                                                     <span class="visually-hidden"><?= e($managed_tree->title()) ?></span>
                                                 </a>
                                                 <form method="post" action="<?= route(SelectDefaultTree::class, ['tree' => $managed_tree->name()]) ?>" name="defaultform<?= $managed_tree->id() ?>">
-                                                    <?= csrf_field() ?>
                                                     <!-- A11Y - forms need submit buttons, but they look ugly here -->
                                                     <button class="visually-hidden" type="submit">
                                                         <?= I18N::translate('Set as default') ?>
                                                     </button>
+
+                                                    <?= csrf_field() ?>
                                                 </form>
                                             <?php endif ?>
                                         </li>

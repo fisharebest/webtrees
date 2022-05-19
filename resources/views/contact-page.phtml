@@ -22,7 +22,6 @@ use Fisharebest\Webtrees\Tree;
 <h2><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(ContactAction::class, ['tree' => $tree->name()])) ?>">
-    <?= csrf_field() ?>
     <?= $captcha ?>
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="url" value="<?= e($url) ?>">
@@ -83,4 +82,6 @@ use Fisharebest\Webtrees\Tree;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

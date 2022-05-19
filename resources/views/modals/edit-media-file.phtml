@@ -17,8 +17,6 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <form method="post" action="<?= e(route(EditMediaFileAction::class, ['xref' => $media->xref(), 'tree' => $media->tree()->name(), 'fact_id' => $media_file->factId()])) ?>" enctype="multipart/form-data">
-    <?= csrf_field() ?>
-
     <?= view('modals/header', ['title' => I18N::translate('Edit a media file')]) ?>
 
     <div class="modal-body">
@@ -26,4 +24,6 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <?= view('modals/footer-save-cancel') ?>
+
+    <?= csrf_field() ?>
 </form>

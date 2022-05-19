@@ -15,8 +15,6 @@ use Fisharebest\Webtrees\View;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(ReorderMediaAction::class, ['tree' => $individual->tree()->name(), 'xref' => $individual->xref()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
-
     <div class="wt-sortable-list">
         <?php foreach ($individual->facts(['OBJE']) as $fact) : ?>
             <div class="card my-2 wt-sortable-item">
@@ -43,6 +41,8 @@ use Fisharebest\Webtrees\View;
             <?= /* I18N: A button label. */ I18N::translate('cancel') ?>
         </a>
     </p>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

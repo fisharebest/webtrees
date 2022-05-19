@@ -17,8 +17,6 @@ use Fisharebest\Webtrees\Site;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(SitePreferencesAction::class)) ?>" class="form-horizontal">
-    <?= csrf_field() ?>
-
     <!-- INDEX_DIRECTORY -->
     <div class="row mb-3">
         <label for="INDEX_DIRECTORY" class="col-sm-3 col-form-label">
@@ -119,4 +117,6 @@ use Fisharebest\Webtrees\Site;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

@@ -21,7 +21,6 @@ use Fisharebest\Webtrees\Tree;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(EditFactAction::class, ['tree' => $tree->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
     <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom, 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => '']) ?>
@@ -59,6 +58,8 @@ use Fisharebest\Webtrees\Tree;
             <?php endif; ?>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?= view('modals/on-screen-keyboard') ?>

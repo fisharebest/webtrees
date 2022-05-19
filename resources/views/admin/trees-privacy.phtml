@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\View;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(TreePrivacyAction::class, ['tree' => $tree->name()])) ?>">
-    <?= csrf_field() ?>
-
     <!-- REQUIRE_AUTHENTICATION -->
     <div class="row mb-3">
         <div class="col-form-label col-sm-4">
@@ -305,10 +303,11 @@ use Fisharebest\Webtrees\View;
                     <?= /* I18N: Label for checkbox */ I18N::translate('Apply these preferences to new family trees') ?>
                 </label>
             </div>
+            -->
         </div>
-        -->
-        </div>
+    </div>
 
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

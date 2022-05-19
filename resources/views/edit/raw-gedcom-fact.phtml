@@ -18,7 +18,6 @@ use Fisharebest\Webtrees\Webtrees;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" id="edit-raw-gedcom" action="<?= e(route(EditRawFactAction::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 
     <div class="form-text">
@@ -47,6 +46,8 @@ use Fisharebest\Webtrees\Webtrees;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

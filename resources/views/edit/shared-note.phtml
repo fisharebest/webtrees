@@ -16,8 +16,6 @@ use Fisharebest\Webtrees\Tree;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(EditNoteAction::class, ['tree' => $tree->name(), 'xref' => $note->xref()])) ?>" class="wt-page-options">
-    <?= csrf_field() ?>
-
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="NOTE">
             <?= I18N::translate('Shared note') ?>
@@ -47,5 +45,8 @@ use Fisharebest\Webtrees\Tree;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
+
 <?= view('modals/on-screen-keyboard') ?>

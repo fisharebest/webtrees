@@ -20,8 +20,6 @@ use Fisharebest\Webtrees\Webtrees;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" id="edit-raw-gedcom" action="<?= e(route(EditRawRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
-
     <div class="form-text">
         <?= I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly. It is an advanced option, and you should not use it unless you understand the GEDCOM format. If you make a mistake here, it can be difficult to fix.') ?>
         <br>
@@ -76,6 +74,8 @@ use Fisharebest\Webtrees\Webtrees;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

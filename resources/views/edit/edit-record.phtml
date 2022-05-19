@@ -21,8 +21,6 @@ use Fisharebest\Webtrees\Tree;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(EditRecordAction::class, ['tree' => $tree->name(), 'xref' => $record->xref()])) ?>" class="wt-page-content">
-    <?= csrf_field() ?>
-
     <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom, 'hierarchy' => [$record->tag()], 'tree' => $tree, 'prefix' => '']) ?>
 
     <div class="row mb-3">
@@ -60,6 +58,8 @@ use Fisharebest\Webtrees\Tree;
             <?php endif; ?>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?= view('modals/on-screen-keyboard') ?>

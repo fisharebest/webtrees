@@ -22,8 +22,6 @@ use Fisharebest\Webtrees\Tree;
 </h2>
 
 <form method="post" class="wt-page-options wt-page-options-hourglass-chart d-print-none">
-    <?= csrf_field() ?>
-
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
             <?= I18N::translate('Individual') ?>
@@ -57,6 +55,8 @@ use Fisharebest\Webtrees\Tree;
             <input class="btn btn-primary" type="submit" value="<?= /* I18N: A button label. */ I18N::translate('view') ?>">
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <div class="wt-ajax-load wt-page-content wt-chart wt-chart-hourglass" data-wt-ajax-url="<?= e($ajax_url) ?>"></div>

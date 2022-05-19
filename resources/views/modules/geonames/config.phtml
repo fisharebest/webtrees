@@ -16,8 +16,6 @@ use Fisharebest\Webtrees\I18N;
 <h1><?= $title ?></h1>
 
 <form method="post">
-    <?= csrf_field() ?>
-
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="username">
             <?= I18N::translate('Username') ?>
@@ -48,4 +46,6 @@ use Fisharebest\Webtrees\I18N;
         <?= view('icons/cancel') ?>
         <?= I18N::translate('cancel') ?>
     </a>
+
+    <?= csrf_field() ?>
 </form>

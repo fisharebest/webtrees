@@ -36,7 +36,6 @@ use Fisharebest\Webtrees\Tree;
     </p>
 
     <form method="post" action="<?= e(route(RenumberTreeAction::class, ['tree' => $tree->name()])) ?>">
-        <?= csrf_field() ?>
         <button type="submit" class="btn btn-primary">
             <?= view('icons/save') ?>
             <?= /* I18N: A button label. */
@@ -44,5 +43,7 @@ use Fisharebest\Webtrees\Tree;
         </button>
 
         <?= I18N::translate('Caution! This may take a long time. Be patient.') ?>
+
+        <?= csrf_field() ?>
     </form>
 <?php endif ?>

@@ -43,10 +43,11 @@ use Fisharebest\Webtrees\Tree;
                     </td>
                     <td>
                         <form method="post" action="<?= e(route('module', ['module' => $module, 'action' => 'Remove', 'tree' => $tree->name(), 'xref' => $record->xref()])) ?>">
-                            <?= csrf_field() ?>
                             <button type="submit" class="btn btn-link" title="<?= I18N::translate('Remove') ?>">
                                 <?= view('icons/delete') ?>
                             </button>
+
+                            <?= csrf_field() ?>
                         </form>
                     </td>
                 </tr>

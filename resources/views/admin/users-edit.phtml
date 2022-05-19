@@ -33,7 +33,6 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(UserEditAction::class)) ?>" class="form-horizontal" autocomplete="off">
-    <?= csrf_field() ?>
     <input type="hidden" name="user_id" value="<?= $user->id() ?>">
 
     <!-- REAL NAME -->
@@ -349,6 +348,8 @@ use Illuminate\Support\Collection;
             </button>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?= view('modals/ajax') ?>

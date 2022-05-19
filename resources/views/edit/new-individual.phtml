@@ -18,8 +18,6 @@ use Fisharebest\Webtrees\Tree;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e($post_url) ?>">
-    <?= csrf_field() ?>
-
     <?php foreach ($facts ?? [] as $prefix => $prefix_facts) : ?>
         <?php foreach ($prefix_facts as $n => $fact) : ?>
             <div class="card mb-2">
@@ -56,6 +54,8 @@ use Fisharebest\Webtrees\Tree;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?= view('modals/on-screen-keyboard') ?>

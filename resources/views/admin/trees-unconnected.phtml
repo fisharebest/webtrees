@@ -24,13 +24,14 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(UnconnectedAction::class, ['tree' => $tree->name()])) ?>">
-    <?= csrf_field() ?>
-
     <?= view('components/checkbox-inline', ['label' => I18N::translate('Include associates'), 'checked' => $associates, 'name' => 'associates']) ?>
     <?= view('components/checkbox-inline', ['label' => I18N::translate('Include aliases'), 'checked' => $aliases, 'name' => 'aliases']) ?>
+
     <button type="submit" class="btn btn-primary">
         <?= I18N::translate('update') ?>
     </button>
+
+    <?= csrf_field() ?>
 </form>
 
 <p><?= I18N::translate('These groups of individuals are not related to %s.', $root->fullName()) ?></p>

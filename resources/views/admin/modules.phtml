@@ -38,19 +38,20 @@ use Illuminate\Support\Collection;
 <?php foreach ($deleted_modules as $module_name) : ?>
     <div class="alert alert-warning" role="alert">
         <form method="post" action="<?= e(route(ModuleDeleteSettings::class)) ?>">
-            <?= csrf_field() ?>
             <input type="hidden" name="module_name" value="<?= $module_name ?>">
+
             <?= I18N::translate('Preferences exist for the module “%s”, but this module no longer exists.', $module_name) ?>
+
             <button type="submit" class="btn btn-secondary">
                 <?= I18N::translate('Delete the preferences for this module.') ?>
             </button>
+
+            <?= csrf_field() ?>
         </form>
     </div>
 <?php endforeach ?>
 
 <form method="post" action="<?= e(route(ModulesAllAction::class)) ?>">
-    <?= csrf_field() ?>
-
     <table class="table table-bordered table-hover table-sm table-module-administration"
         <?= view('lists/datatables-attributes') ?>
         data-info="false"
@@ -273,9 +274,13 @@ use Illuminate\Support\Collection;
             <?php endforeach ?>
         </tbody>
     </table>
+
     <button class="btn btn-primary" type="submit">
         <?= view('icons/save') ?>
-        <?= I18N::translate('save') ?></button>
+        <?= I18N::translate('save') ?>
+    </button>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

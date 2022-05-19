@@ -15,7 +15,6 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <form method="post" action="<?= route(LoginAction::class, ['tree' => $tree->name()]) ?>" name="login-form">
-    <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e(route(UserPage::class, ['tree' => $tree->name()])) ?>">
 
     <div class="mb-3">
@@ -41,6 +40,8 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('Forgot password?') ?>
         </button>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php if ($allow_register) : ?>

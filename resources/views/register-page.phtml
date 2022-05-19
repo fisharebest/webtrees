@@ -28,7 +28,6 @@ use Fisharebest\Webtrees\View;
 <?php endif ?>
 
 <form method="post" action="<?= e(route(RegisterAction::class, ['tree' => $tree instanceof Tree ? $tree->name() : null])) ?>" autocomplete="off" class="wt-page-options wt-page-options-register">
-    <?= csrf_field() ?>
     <?= $captcha ?>
 
     <div class="row">
@@ -100,6 +99,8 @@ use Fisharebest\Webtrees\View;
                 <?= I18N::translate('continue') ?>
             </button>
         </div>
+
+        <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

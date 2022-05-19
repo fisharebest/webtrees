@@ -18,8 +18,6 @@ use Fisharebest\Webtrees\Site;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(SiteRegistrationAction::class)) ?>" class="form-horizontal">
-    <?= csrf_field() ?>
-
     <!-- WELCOME_TEXT_AUTH_MODE -->
     <div class="row mb-3">
         <label for="WELCOME_TEXT_AUTH_MODE" class="col-sm-3 col-form-label">
@@ -85,4 +83,6 @@ use Fisharebest\Webtrees\Site;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

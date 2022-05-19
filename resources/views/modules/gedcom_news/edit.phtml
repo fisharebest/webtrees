@@ -16,8 +16,6 @@ use Fisharebest\Webtrees\Tree;
 <h2><?= $title ?></h2>
 
 <form method="post">
-    <?= csrf_field() ?>
-
     <table>
         <tr>
             <th>
@@ -56,4 +54,6 @@ use Fisharebest\Webtrees\Tree;
             </td>
         </tr>
     </table>
+
+    <?= csrf_field() ?>
 </form>

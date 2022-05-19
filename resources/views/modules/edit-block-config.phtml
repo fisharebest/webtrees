@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\Tree;
 </p>
 
 <form method="post" action="<?= e($save_url) ?>">
-    <?= csrf_field() ?>
-
     <?= $block->editBlockConfiguration($tree, $block_id) ?>
 
     <div class="row mb-3">
@@ -40,4 +38,6 @@ use Fisharebest\Webtrees\Tree;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

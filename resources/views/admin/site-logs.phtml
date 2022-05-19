@@ -31,8 +31,6 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" class="form" name="logs">
-    <?= csrf_field() ?>
-
     <div class="row">
         <div class="col-sm-6 col-sm-3">
             <label for="from">
@@ -107,6 +105,8 @@ use Illuminate\Support\Collection;
             <?= /* I18N: A button label. */ I18N::translate('delete') ?>
         </a>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <table

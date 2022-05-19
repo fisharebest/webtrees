@@ -25,7 +25,6 @@ use Illuminate\Support\Collection;
 
 <?php if ($users->isNotEmpty()): ?>
     <form method="post" action="<?= e(route(MessageSelect::class, ['tree' => $tree->name()])) ?>">
-        <?= csrf_field() ?>
         <input type="hidden" name="url" value="<?= e(route(UserPage::class, ['tree' => $tree->name()])) ?>">
         <label for="to"><?= I18N::translate('Send a message') ?></label>
 
@@ -41,8 +40,9 @@ use Illuminate\Support\Collection;
 
             <button type="submit" class="btn btn-primary"><?= I18N::translate('Send') ?></button>
         </div>
-        <br><br>
+        <?= csrf_field() ?>
     </form>
+    <br><br>
 <?php endif ?>
 
 <form
@@ -53,8 +53,6 @@ use Illuminate\Support\Collection;
     id="messageform"
     name="messageform"
 >
-    <?= csrf_field() ?>
-
     <?php if ($messages->isNotEmpty()): ?>
         <div class="table-responsive">
             <table class="table-sm w-100">
@@ -146,4 +144,6 @@ use Illuminate\Support\Collection;
             <button type="submit" class="btn btn-primary"><?= I18N::translate('Delete selected messages') ?></button>
         </p>
     <?php endif ?>
+
+    <?= csrf_field() ?>
 </form>

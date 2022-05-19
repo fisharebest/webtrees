@@ -21,8 +21,6 @@ use Illuminate\Support\Collection;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" action="<?= e(route(ChangeFamilyMembersAction::class, ['tree' => $tree->name()])) ?>" class="wt-page-content" name="changefamform">
-    <?= csrf_field() ?>
-
     <input type="hidden" name="tree" value="<?= e($tree->name()) ?>">
     <input type="hidden" name="xref" value="<?= e($family->xref()) ?>">
 
@@ -98,4 +96,6 @@ use Illuminate\Support\Collection;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

@@ -18,8 +18,6 @@ use Fisharebest\Webtrees\Tree;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" class="wt-page-options wt-page-options-pedigreemap-chart d-print-none">
-    <?= csrf_field() ?>
-
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="xref">
             <?= I18N::translate('Individual') ?>
@@ -46,6 +44,8 @@ use Fisharebest\Webtrees\Tree;
             ?>">
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 

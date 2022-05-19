@@ -23,8 +23,6 @@ use Illuminate\Support\Collection;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(ManageMediaAction::class)) ?>" id="admin-media-form">
-    <?= csrf_field() ?>
-
     <table class="table table-bordered table-sm">
         <thead>
             <tr>
@@ -82,6 +80,8 @@ use Illuminate\Support\Collection;
             </tr>
         </tbody>
     </table>
+
+    <?= csrf_field() ?>
 </form>
 <br>
 <br>

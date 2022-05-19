@@ -14,7 +14,6 @@ use Fisharebest\Webtrees\I18N;
 <h2 class="wt-page-title"><?= $title ?></h2>
 
 <form method="post" class="wt-page-options wt-page-options-clippings d-print-none">
-    <?= csrf_field() ?>
     <input type="hidden" name="xref" value="<?= e($record->xref()) ?>">
 
     <div class="row">
@@ -40,4 +39,6 @@ use Fisharebest\Webtrees\I18N;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

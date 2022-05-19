@@ -25,8 +25,6 @@ use Illuminate\Support\Collection;
 </p>
 
 <form method="post" action="<?= e(route(UploadMediaPage::class)) ?>" name="uploadmedia" enctype="multipart/form-data">
-    <?= csrf_field() ?>
-
     <?php for ($i = 1; $i <= $max_upload_files; $i++) : ?>
         <h2><?= I18N::translate('Media file') ?> <?= I18N::number($i) ?></h2>
 
@@ -73,4 +71,6 @@ use Illuminate\Support\Collection;
     <button class="btn btn-primary" type="submit">
         <?= /* I18N: A button label. */ I18N::translate('upload') ?>
     </button>
+
+    <?= csrf_field() ?>
 </form>

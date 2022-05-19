@@ -30,7 +30,6 @@ use Illuminate\Support\Collection;
 
 <form method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" class="form form-horizontal" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
     <input type="hidden" id="gedcom_filename" value="<?= e($default_gedcom_file) ?>">
-    <?= csrf_field() ?>
 
     <h2><?= I18N::translate('Select a GEDCOM file to import') ?></h2>
 
@@ -135,6 +134,8 @@ use Illuminate\Support\Collection;
     <button type="submit" class="btn btn-primary">
         <?= /* I18N: A button label. */ I18N::translate('continue') ?>
     </button>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

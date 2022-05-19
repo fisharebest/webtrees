@@ -13,8 +13,6 @@ use Fisharebest\Webtrees\Tree;
 ?>
 
 <form method="post" action="<?= e(route(LinkMediaToRecordAction::class, ['tree' => $tree->name(), 'xref' => $media->xref()])) ?>" id="wt-modal-form">
-    <?= csrf_field() ?>
-
     <?= view('modals/header', ['title' => I18N::translate('Link this media object to an individual')]) ?>
 
     <div class="modal-body">
@@ -27,4 +25,6 @@ use Fisharebest\Webtrees\Tree;
     </div>
 
     <?= view('modals/footer-save-cancel') ?>
+
+    <?= csrf_field() ?>
 </form>

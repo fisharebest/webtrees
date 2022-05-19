@@ -124,10 +124,11 @@ use Illuminate\Support\Collection;
             <td>
                 <?php if (!array_key_exists($place->key, $active)): ?>
                     <form method="post" action="<?= e(route(MapDataDelete::class, ['place_id' => $place->id])) ?>">
-                        <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger" aria-label="<?= I18N::translate('delete') ?>" data-wt-confirm="<?= I18N::translate('Remove this location?') ?>">
                             <?= view('icons/delete') ?>
                         </button>
+
+                        <?= csrf_field() ?>
                     </form>
                 <?php endif ?>
             </td>
@@ -166,11 +167,12 @@ use Illuminate\Support\Collection;
             <td colspan="2">
                 <?php if (count($active) !== count($placelist)) : ?>
                     <form class="d-inline" method="post" action="<?= route(MapDataDeleteUnused::class) ?>">
-                        <?= csrf_field() ?>
                         <button type="submit" class="btn btn-danger">
                             <?= view('icons/delete') ?>
                             <?= I18N::translate('Delete unused locations') ?>
                         </button>
+
+                        <?= csrf_field() ?>
                     </form>
                 <?php endif ?>
             </td>

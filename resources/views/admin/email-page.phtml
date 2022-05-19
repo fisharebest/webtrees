@@ -25,8 +25,6 @@ use Fisharebest\Webtrees\I18N;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(EmailPreferencesAction::class, ['to' => $to->userName()])) ?>">
-    <?= csrf_field() ?>
-
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="from">
             <?= I18N::translateContext('Email sender', 'From') ?>
@@ -74,4 +72,6 @@ use Fisharebest\Webtrees\I18N;
             </a>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>

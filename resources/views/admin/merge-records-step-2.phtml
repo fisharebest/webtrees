@@ -25,8 +25,6 @@ use Fisharebest\Webtrees\Tree;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(MergeFactsAction::class, ['tree' => $tree->name()])) ?>">
-    <?= csrf_field() ?>
-
     <input type="hidden" name="xref1" value="<?= e($record1->xref()) ?>">
     <input type="hidden" name="xref2" value="<?= e($record2->xref()) ?>">
 
@@ -177,4 +175,6 @@ use Fisharebest\Webtrees\Tree;
         <?= view('icons/save') ?>
         <?= I18N::translate('save') ?>
     </button>
+
+    <?= csrf_field() ?>
 </form>

@@ -24,8 +24,6 @@ use Fisharebest\Webtrees\View;
 <h1><?= $title ?></h1>
 
 <form method="post" action="<?= e(route(UserAddAction::class)) ?>" class="form-horizontal" autocomplete="off">
-    <?= csrf_field() ?>
-
     <!-- REAL NAME -->
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label" for="real_name">
@@ -85,6 +83,8 @@ use Fisharebest\Webtrees\View;
             </button>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php View::push('javascript') ?>

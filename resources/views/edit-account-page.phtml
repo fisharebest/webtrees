@@ -25,8 +25,6 @@ use Fisharebest\Webtrees\Tree;
 </h2>
 
 <form method="post" class="wt-page-options wt-page-options-my-account">
-    <?= csrf_field() ?>
-
     <div class="row">
         <label class="col-sm-3 col-form-label wt-page-options-label" for="user-name">
             <?= I18N::translate('Username') ?>
@@ -163,6 +161,8 @@ use Fisharebest\Webtrees\Tree;
             </button>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
 
 <?php if ($show_delete_option) : ?>

@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Tree;
 </p>
 
 <form method="post" action="<?= e(route(LoginAction::class, ['tree' => $tree instanceof Tree ? $tree->name() : null])) ?>" class="wt-page-options wt-page-options-login">
-    <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url) ?>">
 
     <div class="row">
@@ -67,4 +66,6 @@ use Fisharebest\Webtrees\Tree;
             <?php endif ?>
         </div>
     </div>
+
+    <?= csrf_field() ?>
 </form>
