@@ -67,7 +67,7 @@ class CheckCsrf implements MiddlewareInterface
 
                 if ($client_token !== $session_token) {
                     if ($client_token === '') {
-                        FlashMessages::addMessage(I18N::translate('Missing CSRF token.  Perhaps you need to increase max_input_vars in php.ini.'));
+                        FlashMessages::addMessage(I18N::translate('The form data is incomplete. Perhaps you need to increase max_input_vars on your server?'));
                     } else {
                         FlashMessages::addMessage(I18N::translate('This form has expired. Try again.'));
                     }
