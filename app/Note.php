@@ -30,8 +30,6 @@ use function preg_match;
 use function preg_replace;
 use function strip_tags;
 
-use function var_dump;
-
 use const ENT_QUOTES;
 
 /**
