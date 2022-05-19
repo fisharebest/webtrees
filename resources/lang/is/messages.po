@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
+"PO-Revision-Date: 2022-05-20 18:01+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -16906,7 +16906,7 @@ msgstr "Aldur eiginkonu"
 
 #: app/Module/FixMissingMarriedNames.php:94
 msgid "Wife’s maiden surname becomes new given name"
-msgstr "Meyjanafn eiginkonunnar verður nýtt fornafn"
+msgstr "Meyjanafn eiginkonunnar verður nýtt eiginnafn"
 
 #: app/Module/FixMissingMarriedNames.php:93
 msgid "Wife’s surname replaced by husband’s surname"
