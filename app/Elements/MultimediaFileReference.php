@@ -19,7 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+
+use function view;
 
 /**
  * MULTIMEDIA_FILE_REFERENCE := {Size=1:30}
@@ -45,6 +48,34 @@ class MultimediaFileReference extends AbstractElement
     {
         // Leading/trailing/multiple spaces are valid in filenames.
         return strtr($value, ["\t" => '', "\r" => '', "\n" => '']);
+    }
+
+    /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return true;
+    }
+
+    /**
+     * An edit control for this data.
+     *
+     * @param string $id
+     * @param string $name
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function edit(string $id, string $name, string $value, Tree $tree): string
+    {
+        $icon    = view('icons/warning');
+        $warning = I18N::translate('If you modify the filename, you should also rename the file.');
+
+        return parent::edit($id, $name, $value, $tree) . '<div class="alert alert-warning mb-0">' . $icon . ' ' . $warning . '</div>';
     }
 
     /**

@@ -44,6 +44,13 @@ use Fisharebest\Webtrees\Webtrees;
                 </div>
                 <label class="visually-hidden" for="fact-<?= e($fact->id()) ?>"><?= $fact->summary() ?></label>
 
+                <?php if ($fact->tag() === 'OBJE:FILE') : ?>
+                    <div class="alert alert-warning mb-0">
+                        <?= view('icons/warning') ?>
+                        <?= I18N::translate('If you modify the filename, you should also rename the file.') ?>
+                    </div>
+                <?php endif ?>
+
                 <textarea class="card-body form-control py-1 px-2" data-wt-pattern="<?= e(Gedcom::REGEX_FACT) ?>" dir="ltr" id="fact-<?= e($fact->id()) ?>" name="fact[]" rows="<?= 1 + preg_match_all('/\n/', $fact->gedcom()) ?>"><?= e($fact->gedcom()) ?></textarea>
             </div>
         <?php endforeach ?>
