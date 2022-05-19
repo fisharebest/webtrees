@@ -853,6 +853,28 @@
         modal_content.innerHTML = error;
       });
   };
+
+  /**
+   * Text areas don't support the pattern attribute, so apply it manually via data-wt-pattern.
+   *
+   * @param {HTMLFormElement} form
+   */
+  webtrees.textareaPatterns = function (form) {
+    form.addEventListener('submit', function (event) {
+      event.target.querySelectorAll('textarea[data-wt-pattern]').forEach(function (element) {
+        const pattern = new RegExp('^' + element.dataset.wtPattern + '$');
+
+        if (!element.readOnly && element.value !== '' && !pattern.test(element.value)) {
+          event.preventDefault();
+          event.stopPropagation();
+          element.classList.add('is-invalid');
+          element.scrollIntoView();
+        } else {
+          element.classList.remove('is-invalid');
+        }
+      });
+    });
+  };
 }(window.webtrees = window.webtrees || {}));
 
 // Send the CSRF token on all AJAX requests

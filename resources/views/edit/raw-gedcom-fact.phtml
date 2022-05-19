@@ -1,8 +1,10 @@
 <?php
 
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\EditRawFactAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
 use Fisharebest\Webtrees\Webtrees;
 
 /**
@@ -15,7 +17,7 @@ use Fisharebest\Webtrees\Webtrees;
 
 <h2 class="wt-page-title"><?= $title ?></h2>
 
-<form method="post" action="<?= e(route(EditRawFactAction::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
+<form method="post" id="edit-raw-gedcom" action="<?= e(route(EditRawFactAction::class, ['tree' => $fact->record()->tree()->name(), 'xref' => $fact->record()->xref(), 'fact_id' => $fact->id()])) ?>" class="wt-page-content">
     <?= csrf_field() ?>
     <input type="hidden" name="url" value="<?= e($url ?? $fact->record()->url()) ?>">
 
@@ -30,7 +32,7 @@ use Fisharebest\Webtrees\Webtrees;
         <label class="card-header py-1 px-2 d-flex" for="gedcom">
             <?= $fact->summary() ?>
         </label>
-        <textarea class="card-body form-control py-1 px-2" id="gedcom" name="gedcom" rows="<?= 5 + preg_match_all('/\n/', $fact->gedcom()) ?>" dir="ltr"><?= e($fact->gedcom()) ?></textarea>
+        <textarea class="card-body form-control py-1 px-2" data-wt-pattern="<?= e(Gedcom::REGEX_FACT) ?>" id="gedcom" name="gedcom" rows="<?= 5 + preg_match_all('/\n/', $fact->gedcom()) ?>" dir="ltr"><?= e($fact->gedcom()) ?></textarea>
     </div>
 
     <div class="row mb-3">
@@ -46,4 +48,10 @@ use Fisharebest\Webtrees\Webtrees;
         </div>
     </div>
 </form>
+
+<?php View::push('javascript') ?>
+<script>
+  webtrees.textareaPatterns(document.getElementById('edit-raw-gedcom'));
+</script>
+<?php View::endpush() ?>
 
