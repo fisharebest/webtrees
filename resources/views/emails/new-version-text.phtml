@@ -1,0 +1,21 @@
+<?php
+
+use Fisharebest\Webtrees\Contracts\UserInterface;
+use Fisharebest\Webtrees\I18N;
+
+/**
+ * @var string        $latest_version
+ * @var UserInterface $recipient
+ * @var string        $url
+ */
+
+?>
+
+?>
+<?= I18N::translate('Hello %s…', $recipient->realName()) ?>
+
+<?= I18N::translate('A new version of webtrees is available.') ?> <?= e($latest_version) ?>
+
+<?= I18N::translate('See %s for more information.', 'https://webtrees.net') ?>
+
+<?= $url ?>

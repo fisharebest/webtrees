@@ -50,6 +50,7 @@ use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
 use Fisharebest\Webtrees\Http\Middleware\CompressResponse;
 use Fisharebest\Webtrees\Http\Middleware\ContentLength;
@@ -138,16 +139,16 @@ class Webtrees
     // e.g. "-dev", "-alpha", "-beta", etc.
     public const STABILITY = '-dev';
 
-    // Version number
+    // Version number.
     public const VERSION = '2.1.3' . self::STABILITY;
 
     // Project website.
     public const URL = 'https://webtrees.net/';
 
-    // FAQ links
+    // FAQ links.
     public const URL_FAQ_EMAIL = 'https://webtrees.net/faq/email';
 
-    // Project website.
+    // GEDCOM specification.
     public const GEDCOM_PDF = 'https://webtrees.net/downloads/gedcom-5-5-1.pdf';
 
     private const MIDDLEWARE = [
@@ -164,6 +165,7 @@ class Webtrees
         UpdateDatabaseSchema::class,
         UseSession::class,
         UseLanguage::class,
+        CheckForNewVersion::class,
         CheckForMaintenanceMode::class,
         UseTheme::class,
         DoHousekeeping::class,

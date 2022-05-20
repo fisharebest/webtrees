@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
@@ -35,6 +36,7 @@ use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Ramsey\Uuid\Uuid;
 use RuntimeException;
 use ZipArchive;
 
@@ -345,12 +347,20 @@ class UpgradeService
      */
     private function serverParameters(): array
     {
-        $operating_system = DIRECTORY_SEPARATOR === '/' ? 'u' : 'w';
+        $site_uuid = Site::getPreference('SITE_UUID');
+
+        if ($site_uuid === '') {
+            $site_uuid = Uuid::uuid4()->toString();
+            Site::setPreference('SITE_UUID', $site_uuid);
+        }
+
+        $database_type = DB::connection()->getDriverName();
 
         return [
             'w' => Webtrees::VERSION,
             'p' => PHP_VERSION,
-            'o' => $operating_system,
+            's' => $site_uuid,
+            'd' => $database_type,
         ];
     }
 }
