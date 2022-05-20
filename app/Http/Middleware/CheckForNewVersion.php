@@ -68,7 +68,12 @@ class CheckForNewVersion implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         try {
-            if ($request->getMethod() === RequestMethodInterface::METHOD_GET && $this->upgrade_service->isUpgradeAvailable()) {
+            // Only run on full page requests.
+            if (
+                $request->getMethod() === RequestMethodInterface::METHOD_GET &&
+                $request->getHeaderLine('X-Requested-With') !== '' &&
+                $this->upgrade_service->isUpgradeAvailable()
+            ) {
                 $latest_version       = $this->upgrade_service->latestVersion();
                 $latest_version_email = Site::getPreference('LATEST_WT_VERSION_EMAIL');
 
