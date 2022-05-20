@@ -232,7 +232,7 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
             Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'niece'))->married()->spouse()->sibling()->descendant()->female(),
             Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'nephew'))->sibling()->descendant()->male(),
             Relationship::dynamic(static fn (int $n) => $great($n - 1, '', 'nephew'))->married()->spouse()->sibling()->descendant()->male(),
-            Relationship::dynamic(static fn (int $n) => $great($n - 2, 'maternal ', 'grandmother'))->mother()->ancestor()->female(),
+            Relationship::dynamic(static fn (int $n) => $great($n - 1, 'maternal ', 'grandmother'))->mother()->ancestor()->female(),
             Relationship::dynamic(static fn (int $n) => $great($n - 1, 'maternal ', 'grandfather'))->mother()->ancestor()->male(),
             Relationship::dynamic(static fn (int $n) => $great($n - 1, 'paternal ', 'grandmother'))->father()->ancestor()->female(),
             Relationship::dynamic(static fn (int $n) => $great($n - 1, 'paternal ', 'grandfather'))->father()->ancestor()->male(),
