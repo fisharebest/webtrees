@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-19 11:29+0000\nLast-Translator: Dieter <ungeahnt@proavitus.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-20 18:01+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -16082,7 +16082,7 @@ msgstr "Besucher"
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
-msgstr "Personendaten"
+msgstr "Lebensdaten"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:534
