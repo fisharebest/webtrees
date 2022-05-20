@@ -33,7 +33,6 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
 
-use function var_dump;
 use function view;
 
 /**
