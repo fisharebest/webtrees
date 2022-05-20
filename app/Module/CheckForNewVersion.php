@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Http\Middleware;
+namespace Fisharebest\Webtrees\Module;
 
 use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\I18N;
@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Services\UpgradeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\SiteUser;
-use Fisharebest\Webtrees\Webtrees;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -38,7 +37,7 @@ use function view;
 /**
  * Middleware to check if a new version of webtrees is available.
  */
-class CheckForNewVersion implements MiddlewareInterface
+class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
 {
     private EmailService $email_service;
 
@@ -59,6 +58,26 @@ class CheckForNewVersion implements MiddlewareInterface
     }
 
     /**
+     * How should this module be identified in the control panel, etc.?
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        return I18N::translate('Check for new version');
+    }
+
+    /**
+     * A sentence describing what this module does.
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        return I18N::translate('Send an email to all administrators when a new version of webtrees is available.');
+    }
+
+    /**
      * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
      *
@@ -70,7 +89,7 @@ class CheckForNewVersion implements MiddlewareInterface
             // Only run on full page requests.
             if (
                 $request->getMethod() === RequestMethodInterface::METHOD_GET &&
-                $request->getHeaderLine('X-Requested-With') !== '' &&
+                $request->getHeaderLine('X-Requested-With') === '' &&
                 $this->upgrade_service->isUpgradeAvailable()
             ) {
                 $latest_version       = $this->upgrade_service->latestVersion();
@@ -79,9 +98,6 @@ class CheckForNewVersion implements MiddlewareInterface
                 // Have we emailed about this version before?
                 if ($latest_version !== $latest_version_email) {
                     Site::setPreference('LATEST_WT_VERSION_EMAIL', $latest_version);
-
-                    // Yuck.  The email service needs a setting from config.ini.php - which is in the request.
-                    Webtrees::set(ServerRequestInterface::class, $request);
 
                     foreach ($this->user_service->administrators() as $administrator) {
                         $this->email_service->send(
@@ -104,6 +120,7 @@ class CheckForNewVersion implements MiddlewareInterface
                 }
             }
         } catch (Throwable $ex) {
+            throw $ex;
             // We couldn't fetch the latest version or send an email? Nothing we can do...
         }
 

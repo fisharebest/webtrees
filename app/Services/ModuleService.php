@@ -42,6 +42,7 @@ use Fisharebest\Webtrees\Module\CensusAssistantModule;
 use Fisharebest\Webtrees\Module\ChangeReportModule;
 use Fisharebest\Webtrees\Module\ChartsBlockModule;
 use Fisharebest\Webtrees\Module\ChartsMenuModule;
+use Fisharebest\Webtrees\Module\CheckForNewVersion;
 use Fisharebest\Webtrees\Module\CkeditorModule;
 use Fisharebest\Webtrees\Module\ClippingsCartModule;
 use Fisharebest\Webtrees\Module\CloudsTheme;
@@ -336,6 +337,7 @@ class ModuleService
         'change_report'           => ChangeReportModule::class,
         'charts'                  => ChartsBlockModule::class,
         'charts-menu'             => ChartsMenuModule::class,
+        'check-for-new-version'   => CheckForNewVersion::class,
         'ckeditor'                => CkeditorModule::class,
         'clippings'               => ClippingsCartModule::class,
         'clouds'                  => CloudsTheme::class,
