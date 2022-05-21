@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-20 18:01+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-03 23:56+0100\nPO-Revision-Date: 2022-05-21 21:13+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -11677,9 +11677,8 @@ msgstr "Datensatz"
 #: app/Gedcom.php:787 app/Gedcom.php:811 app/Gedcom.php:835 app/Gedcom.php:847
 #: app/Gedcom.php:875 app/Gedcom.php:979 app/Gedcom.php:1493
 #: app/Gedcom.php:1496 app/Gedcom.php:1502
-#, fuzzy
 msgid "Record ID number"
-msgstr "Datensatzidentnummer"
+msgstr "Datensatz-ID"
 
 #: app/Gedcom.php:700 app/Gedcom.php:834
 msgid "Record file number"
@@ -16082,7 +16081,7 @@ msgstr "Besucher"
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
-msgstr "Lebensdaten"
+msgstr "Geburt/Heirat/Tod"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:534
@@ -20586,7 +20585,7 @@ msgstr "webtrees benötigt eine Datenbank zum Speichern Ihrer genealogischen Dat
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr "webtrees muss E-Mails wie Passworterinnerungen und Webseiten-Benachrichtigungen senden."
+msgstr "webtrees muss E-Mails versenden, z. B. Passworterinnerungen und Website-Benachrichtigungen."
 
 #: app/Services/MessageService.php:226
 msgid "webtrees sends emails with no storage"
