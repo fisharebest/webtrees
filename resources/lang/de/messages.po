@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-20 18:01+0000\n"
+"PO-Revision-Date: 2022-05-21 21:13+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -11895,9 +11895,8 @@ msgstr "Datensatz"
 #: app/Factories/ElementFactory.php:1349 app/Factories/ElementFactory.php:1373
 #: app/Factories/ElementFactory.php:1397 app/Factories/ElementFactory.php:1409
 #: app/GedcomTag.php:932
-#, fuzzy
 msgid "Record ID number"
-msgstr "Datensatzidentnummer"
+msgstr "Datensatz-ID"
 
 #. I18N: gedcom tag RFN
 #: app/Factories/ElementFactory.php:1263 app/Factories/ElementFactory.php:1396
@@ -16461,7 +16460,7 @@ msgstr "Besucher"
 #: resources/xml/reports/bdm_report.xml:3
 #: resources/xml/reports/bdm_report.xml:34
 msgid "Vital records"
-msgstr "Lebensdaten"
+msgstr "Geburt/Heirat/Tod"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:534
@@ -21015,7 +21014,9 @@ msgstr "webtrees benötigt eine Datenbank zum Speichern Ihrer genealogischen Dat
 #. I18N: Help text for the “Messages” site configuration setting
 #: resources/views/admin/site-mail.phtml:49
 msgid "webtrees needs to send emails, such as password reminders and website notifications."
-msgstr "webtrees muss E-Mails wie Passworterinnerungen und Webseiten-Benachrichtigungen senden."
+msgstr ""
+"webtrees muss E-Mails versenden, z. B. Passworterinnerungen und Website-"
+"Benachrichtigungen."
 
 #: app/Services/MessageService.php:228
 msgid "webtrees sends emails with no storage"
