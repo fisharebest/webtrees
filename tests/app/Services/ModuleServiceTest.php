@@ -118,7 +118,7 @@ class ModuleServiceTest extends TestCase
         $modules = $module_service->otherModules()
             ->filter(fn (ModuleInterface $module): bool => !$module instanceof ModuleCustomInterface);
 
-        self::assertSame(3, $modules->count());
+        self::assertSame(4, $modules->count());
     }
 
     /**
