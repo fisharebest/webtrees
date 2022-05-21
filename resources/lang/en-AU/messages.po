@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-21 22:13+0100\n"
-"PO-Revision-Date: 2022-04-20 12:48+0000\n"
-"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
-"Language-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en_AU/>\n"
-"Language: en-AU\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-21 22:13+0100\nPO-Revision-Date: 2022-05-21 21:21+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: English (Australia) <https://translate.webtrees.net/projects/webtrees/webtrees/en_AU/>\nLanguage: en-AU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3497,7 +3485,7 @@ msgstr "Check for errors"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Check for new version"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3898,7 +3886,7 @@ msgstr "Content"
 
 #: app/Gedcom.php:743
 msgid "Continuation"
-msgstr ""
+msgstr "Continuation"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3965,7 +3953,7 @@ msgstr "Control panel"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Convert %s tags to GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -7610,7 +7598,7 @@ msgstr "If you have created media objects in webtrees, and have subsequently edi
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "If you modify the filename, you should also rename the file."
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8536,7 +8524,7 @@ msgstr "Legatee"
 
 #: app/Gedcom.php:874
 msgid "Length"
-msgstr ""
+msgstr "Length"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -10274,7 +10262,7 @@ msgstr "No signed-in and no anonymous users"
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
 msgid "No surname"
-msgstr ""
+msgstr "No surname"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10862,7 +10850,7 @@ msgstr "Paraguay"
 
 #: app/Gedcom.php:1280
 msgid "Parent location"
-msgstr ""
+msgstr "Parent location"
 
 #: app/Gedcom.php:718 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
@@ -11664,7 +11652,7 @@ msgstr "Re-order media"
 
 #: resources/views/media-page-menu.phtml:38
 msgid "Re-order media files"
-msgstr ""
+msgstr "Re-order media files"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -12499,11 +12487,11 @@ msgstr "Send a message to users who have not signed in for 6 months"
 
 #: resources/views/admin/site-mail.phtml:231
 msgid "Send a test email using these settings"
-msgstr "Send a test email using these settings"
+msgstr "Send a test e-mail using these settings"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Send an e-mail to all administrators when an upgrade is available."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -12513,7 +12501,7 @@ msgstr "Send out reminder e-mails"
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:69
 msgid "Sender email"
-msgstr "Sender email"
+msgstr "Sender e-mail"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:55
@@ -13230,7 +13218,7 @@ msgstr "Sign-in and registration"
 
 #: app/Gedcom.php:1425
 msgid "Signature"
-msgstr ""
+msgstr "Signature"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -14010,7 +13998,7 @@ msgstr "Text"
 
 #: app/Gedcom.php:1557
 msgid "Text direction"
-msgstr ""
+msgstr "Text direction"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -14244,7 +14232,7 @@ msgstr "The following list shows typical requirements."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -15134,15 +15122,15 @@ msgstr "Time"
 
 #: app/Gedcom.php:1611
 msgid "Time of birth"
-msgstr ""
+msgstr "Time of birth"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Time of birth and time of death"
 
 #: app/Gedcom.php:1615
 msgid "Time of death"
-msgstr ""
+msgstr "Time of death"
 
 #: app/Gedcom.php:442 app/Gedcom.php:608 app/Gedcom.php:740 app/Gedcom.php:761
 #: app/Gedcom.php:792 app/Gedcom.php:808 app/Gedcom.php:839 app/Gedcom.php:855
@@ -16591,7 +16579,7 @@ msgstr "Zoom out"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
