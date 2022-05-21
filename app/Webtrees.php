@@ -50,6 +50,7 @@ use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
 use Fisharebest\Webtrees\Http\Middleware\BaseUrl;
 use Fisharebest\Webtrees\Http\Middleware\BootModules;
 use Fisharebest\Webtrees\Http\Middleware\CheckForMaintenanceMode;
+use Fisharebest\Webtrees\Http\Middleware\CheckForNewVersion;
 use Fisharebest\Webtrees\Http\Middleware\ClientIp;
 use Fisharebest\Webtrees\Http\Middleware\CompressResponse;
 use Fisharebest\Webtrees\Http\Middleware\ContentLength;
@@ -168,6 +169,7 @@ class Webtrees
         UseTheme::class,
         DoHousekeeping::class,
         UseTransaction::class,
+        CheckForNewVersion::class,
         LoadRoutes::class,
         RegisterGedcomTags::class,
         BootModules::class,

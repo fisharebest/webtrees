@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fig\Http\Message\RequestMethodInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UpgradeService;
@@ -30,7 +29,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Throwable;
 
 use function view;
 
@@ -74,7 +72,7 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
      */
     public function description(): string
     {
-        return I18N::translate('Send an email to all administrators when a new version of webtrees is available.');
+        return I18N::translate('Send an email to all administrators when an upgrade is available.');
     }
 
     /**
@@ -85,43 +83,33 @@ class CheckForNewVersion extends AbstractModule implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        try {
-            // Only run on full page requests.
-            if (
-                $request->getMethod() === RequestMethodInterface::METHOD_GET &&
-                $request->getHeaderLine('X-Requested-With') === '' &&
-                $this->upgrade_service->isUpgradeAvailable()
-            ) {
-                $latest_version       = $this->upgrade_service->latestVersion();
-                $latest_version_email = Site::getPreference('LATEST_WT_VERSION_EMAIL');
+        if ($this->upgrade_service->isUpgradeAvailable()) {
+            $latest_version       = $this->upgrade_service->latestVersion();
+            $latest_version_email = Site::getPreference('LATEST_WT_VERSION_EMAIL');
 
-                // Have we emailed about this version before?
-                if ($latest_version !== $latest_version_email) {
-                    Site::setPreference('LATEST_WT_VERSION_EMAIL', $latest_version);
+            // Have we emailed about this version before?
+            if ($latest_version !== $latest_version_email) {
+                Site::setPreference('LATEST_WT_VERSION_EMAIL', $latest_version);
 
-                    foreach ($this->user_service->administrators() as $administrator) {
-                        $this->email_service->send(
-                            new SiteUser(),
-                            $administrator,
-                            new SiteUser(),
-                            I18N::translate('A new version of webtrees is available.'),
-                            view('emails/new-version-text', [
-                                'latest_version' => $latest_version,
-                                'recipient'      => $administrator,
-                                'url'            => $request->getAttribute('base_url'),
-                            ]),
-                            view('emails/new-version-html', [
-                                'latest_version' => $latest_version,
-                                'recipient'      => $administrator,
-                                'url'            => $request->getAttribute('base_url'),
-                            ])
-                        );
-                    }
+                foreach ($this->user_service->administrators() as $administrator) {
+                    $this->email_service->send(
+                        new SiteUser(),
+                        $administrator,
+                        new SiteUser(),
+                        I18N::translate('A new version of webtrees is available.'),
+                        view('emails/new-version-text', [
+                            'latest_version' => $latest_version,
+                            'recipient'      => $administrator,
+                            'url'            => $request->getAttribute('base_url'),
+                        ]),
+                        view('emails/new-version-html', [
+                            'latest_version' => $latest_version,
+                            'recipient'      => $administrator,
+                            'url'            => $request->getAttribute('base_url'),
+                        ])
+                    );
                 }
             }
-        } catch (Throwable $ex) {
-            throw $ex;
-            // We couldn't fetch the latest version or send an email? Nothing we can do...
         }
 
         return $handler->handle($request);
