@@ -20,24 +20,16 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ClipboardService;
 use Fisharebest\Webtrees\Services\IndividualFactsService;
-use Fisharebest\Webtrees\Services\LinkedRecordService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
 
-use function explode;
-use function preg_match;
-use function preg_replace;
-use function str_contains;
-use function str_replace;
 use function view;
 
 /**
@@ -49,25 +41,22 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 
     private ClipboardService $clipboard_service;
 
-    private LinkedRecordService $linked_record_service;
+    private IndividualFactsService $individual_facts_service;
 
     private ModuleService $module_service;
 
     /**
      * @param ClipboardService       $clipboard_service
      * @param IndividualFactsService $individual_facts_service
-     * @param LinkedRecordService    $linked_record_service
      * @param ModuleService          $module_service
      */
     public function __construct(
         ClipboardService $clipboard_service,
         IndividualFactsService $individual_facts_service,
-        LinkedRecordService $linked_record_service,
         ModuleService $module_service
     ) {
         $this->clipboard_service        = $clipboard_service;
         $this->individual_facts_service = $individual_facts_service;
-        $this->linked_record_service    = $linked_record_service;
         $this->module_service           = $module_service;
     }
 

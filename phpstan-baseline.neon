@@ -1496,27 +1496,7 @@ parameters:
 			path: app/Module/HtmlBlockModule.php
 
 		-
-			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:sex\\(\\)\\.$#"
-			count: 17
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
-			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Individual and Fisharebest\\\\Webtrees\\\\Family will always evaluate to false\\.$#"
-			count: 1
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Module\\\\IndividualFactsTabModule\\:\\:historicFacts\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
-			count: 1
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
-			message: "#^Parameter \\#1 \\$gedcom of class Fisharebest\\\\Webtrees\\\\Fact constructor expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			message: "#^Parameter \\#2 \\$exclude_facts of method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:individualFacts\\(\\) expects Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>, Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\> given\\.$#"
 			count: 1
 			path: app/Module/IndividualFactsTabModule.php
 
@@ -2614,6 +2594,41 @@ parameters:
 			message: "#^Parameter \\#2 \\$path of method Fisharebest\\\\Webtrees\\\\Services\\\\HousekeepingService\\:\\:deleteFileOrFolder\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Services/HousekeepingService.php
+
+		-
+			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\GedcomRecord\\:\\:sex\\(\\)\\.$#"
+			count: 17
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Instanceof between Fisharebest\\\\Webtrees\\\\Individual and Fisharebest\\\\Webtrees\\\\Family will always evaluate to false\\.$#"
+			count: 1
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:familyFacts\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Family\\>\\.$#"
+			count: 1
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:historicFacts\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Fact\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\>\\.$#"
+			count: 1
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Parameter \\#1 \\$gedcom of class Fisharebest\\\\Webtrees\\\\Fact constructor expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Parameter \\#2 \\$spouse of method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:spouseFacts\\(\\) expects Fisharebest\\\\Webtrees\\\\Individual, Fisharebest\\\\Webtrees\\\\Individual\\|null given\\.$#"
+			count: 1
+			path: app/Services/IndividualFactsService.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function preg_replace expects array\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/Services/IndividualFactsService.php
 
 		-
 			message: "#^Cannot access property \\$id on mixed\\.$#"
