@@ -292,7 +292,10 @@ class CheckTree implements RequestHandlerInterface
                     $expected = e($element->canonical($value));
                     $actual   = strtr(e($value), ["\t" => '&rarr;']);
                     $message  = I18N::translate('“%1$s” should be “%2$s”.', $actual, $expected);
-                    $infos[]  = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    if (strtoupper($element->canonical($value)) !== strtoupper($value)) {
+                        // This will be relevant for GEDCOM 7.0.  It's not relevant now, and causes confusion.
+                        $infos[]  = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    }
                 } elseif ($element instanceof MultimediaFormat) {
                     $mime = Mime::TYPES[$value] ?? Mime::DEFAULT_TYPE;
 
