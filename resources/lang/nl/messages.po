@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-21 22:13+0100\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-21 22:13+0100\nPO-Revision-Date: 2022-06-05 08:15+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3501,7 +3485,7 @@ msgstr "Controleer op fouten"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Controleer op nieuwe versie"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3902,7 +3886,7 @@ msgstr "Inhoud"
 
 #: app/Gedcom.php:743
 msgid "Continuation"
-msgstr ""
+msgstr "Voortzetting"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -7614,7 +7598,7 @@ msgstr "Als u mediaobjecten hebt aangemaakt in webtrees, en vervolgens dit GEDCO
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Als u de bestandsnaam wijzigt, moet ook u het bestand hernoemen."
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8983,7 +8967,7 @@ msgstr "maart"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:591
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown is een eenvoudig opmaak systeem dat wordt gebruikt op websites zoals Wikipedia. Het systeem maakt gebruik van simpele tekens om headers en subheaders, vetgedrukte en schuine tekst, lijsten, tabellen enz. te maken."
+msgstr "Markdown is een eenvoudig opmaaksysteem dat wordt gebruikt op websites zoals Wikipedia. Het systeem maakt gebruik van simpele tekens om koppen en subkoppen, vetgedrukte en schuine tekst, lijsten, tabellen enz. te maken."
 
 #: app/Gedcom.php:458 app/Module/BranchesListModule.php:445
 #: resources/views/calendar-page.phtml:190
@@ -10278,7 +10262,7 @@ msgstr "Niemand aangemeld en geen anonieme gebruikers"
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
 msgid "No surname"
-msgstr ""
+msgstr "Geen achternaam"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -12479,7 +12463,7 @@ msgstr "Verkoper"
 #: resources/views/contact-page.phtml:78 resources/views/message-page.phtml:66
 #: resources/views/modules/user-messages/user-messages.phtml:41
 msgid "Send"
-msgstr "Verstuur"
+msgstr "Verzenden"
 
 #: app/Http/RequestHandlers/ContactPage.php:89
 #: app/Http/RequestHandlers/MessagePage.php:72
@@ -12487,19 +12471,19 @@ msgstr "Verstuur"
 #: resources/views/modules/user-messages/user-messages.phtml:29
 #: resources/views/pending-changes-page.phtml:78
 msgid "Send a message"
-msgstr "Bericht versturen"
+msgstr "Een bericht verzenden"
 
 #: app/Services/MessageService.php:210
 msgid "Send a message to all users"
-msgstr "Stuur een bericht aan alle gebruikers"
+msgstr "Een bericht verzenden aan alle gebruikers"
 
 #: app/Services/MessageService.php:211
 msgid "Send a message to users who have never signed in"
-msgstr "Stuur een bericht aan nooit aangemelde gebruikers"
+msgstr "Een bericht verzenden aan gebruikers die zich nog nooit hebben aangemeld"
 
 #: app/Services/MessageService.php:212
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr "Stuur een bericht aan langer dan 6 maanden niet aangemelde gebruikers"
+msgstr "Een bericht verzenden aan gebruikers die zich al 6 maanden niet hebben aangemeld"
 
 #: resources/views/admin/site-mail.phtml:231
 msgid "Send a test email using these settings"
@@ -12507,12 +12491,12 @@ msgstr "Een test e-mail met deze instellingen verzenden"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Een e-mail verzenden naar alle beheerders wanneer een upgrade beschikbaar is."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
 msgid "Send out reminder emails"
-msgstr "E-mailherinneringen versturen"
+msgstr "E-mailherinneringen verzenden"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:69
@@ -13234,7 +13218,7 @@ msgstr "Aanmelden en registratie"
 
 #: app/Gedcom.php:1425
 msgid "Signature"
-msgstr ""
+msgstr "Handtekening"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -14248,7 +14232,7 @@ msgstr "De volgende lijst toont u typische benodigdheden."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "De formuliergegevens zijn onvolledig. Misschien moet u max_input_vars op uw server verhogen?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
