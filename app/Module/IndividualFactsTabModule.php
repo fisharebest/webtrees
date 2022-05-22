@@ -126,7 +126,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
             ->flatten();
 
         $indi_exclude_facts = $sidebar_facts->merge($tab_facts);
-        $fam_exclude_facts  = new Collection(['FAM:CHAN', 'FAM:_UID']);
+        $fam_exclude_facts  = new Collection(['FAM:CHAN', 'FAM:_UID', 'FAM:HUSB', 'FAM:WIFE', 'FAM:CHIL']);
 
         $individual_facts = $this->individual_facts_service->individualFacts($individual, $indi_exclude_facts);
         $family_facts     = $this->individual_facts_service->familyFacts($individual, $fam_exclude_facts);
