@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
+"PO-Revision-Date: 2022-06-06 09:18+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -9103,7 +9103,10 @@ msgstr "maart"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:621
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown is een eenvoudig opmaak systeem dat wordt gebruikt op websites zoals Wikipedia. Het systeem maakt gebruik van simpele tekens om headers en subheaders, vetgedrukte en schuine tekst, lijsten, tabellen enz. te maken."
+msgstr ""
+"Markdown is een eenvoudig opmaaksysteem dat wordt gebruikt op websites zoals "
+"Wikipedia. Het systeem maakt gebruik van simpele tekens om koppen en "
+"subkoppen, vetgedrukte en schuine tekst, lijsten, tabellen enz. te maken."
 
 #. I18N: gedcom tag MARR
 #: app/Factories/ElementFactory.php:1009 app/GedcomTag.php:786
@@ -12742,7 +12745,7 @@ msgstr "Verkoper"
 #: resources/views/contact-page.phtml:79 resources/views/message-page.phtml:68
 #: resources/views/modules/user-messages/user-messages.phtml:42
 msgid "Send"
-msgstr "Verstuur"
+msgstr "Verzenden"
 
 #: app/Http/RequestHandlers/ContactPage.php:96
 #: app/Http/RequestHandlers/MessagePage.php:76
@@ -12750,22 +12753,25 @@ msgstr "Verstuur"
 #: resources/views/modules/user-messages/user-messages.phtml:30
 #: resources/views/pending-changes-page.phtml:78
 msgid "Send a message"
-msgstr "Bericht versturen"
+msgstr "Een bericht verzenden"
 
 #: app/Services/MessageService.php:210
 #: resources/views/admin/control-panel.phtml:496
 msgid "Send a message to all users"
-msgstr "Stuur een bericht aan alle gebruikers"
+msgstr "Een bericht verzenden aan alle gebruikers"
 
 #: app/Services/MessageService.php:212
 #: resources/views/admin/control-panel.phtml:502
 msgid "Send a message to users who have never signed in"
-msgstr "Stuur een bericht aan nooit aangemelde gebruikers"
+msgstr ""
+"Een bericht verzenden aan gebruikers die zich nog nooit hebben aangemeld"
 
 #: app/Services/MessageService.php:214
 #: resources/views/admin/control-panel.phtml:508
 msgid "Send a message to users who have not signed in for 6 months"
-msgstr "Stuur een bericht aan langer dan 6 maanden niet aangemelde gebruikers"
+msgstr ""
+"Een bericht verzenden aan gebruikers die zich al 6 maanden niet hebben "
+"aangemeld"
 
 #: resources/views/admin/site-mail.phtml:221
 msgid "Send a test email using these settings"
@@ -12774,7 +12780,7 @@ msgstr "Een test e-mail met deze instellingen verzenden"
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:19
 msgid "Send out reminder emails"
-msgstr "E-mailherinneringen versturen"
+msgstr "E-mailherinneringen verzenden"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:57
