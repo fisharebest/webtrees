@@ -87,7 +87,7 @@ class OpenStreetMap extends AbstractModule implements ModuleMapProviderInterface
                 'url'         => 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
             ],
             (object) [
-                'attribution' => 'Map data ©<a href="https://www.hotosm.org/updates/2013-09-29_a_new_window_on_openstreetmap_data">Yohan Boniface &amp; Humanitarian OpenStreetMap Team</a>, contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
+                'attribution' => 'Map data ©<a href="https://www.hotosm.org">Yohan Boniface &amp; Humanitarian OpenStreetMap Team</a>, contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC-BY-SA</a>',
                 'default'     => false,
                 'label'       => 'Humanitaire',
                 'maxZoom'     => 20,
