@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-21 22:13+0100\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-21 22:13+0100\nPO-Revision-Date: 2022-06-05 08:15+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3327,7 +3315,7 @@ msgstr "Cayman-eyjar"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:77
 msgid "Cebu City, Philippines"
-msgstr "Cebu City, Filipseyjar"
+msgstr "Cebu City, Filippseyjar"
 
 #: app/Gedcom.php:1612
 msgid "Cemetery"
@@ -3497,7 +3485,7 @@ msgstr "Leita að villum"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Athuga með nýja útgáfu"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3558,7 +3546,7 @@ msgstr "Börn "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition/IcelandicSurnameTradition.php:52
 msgid "Children take a patronym instead of a surname."
-msgstr "Börn taka kenninafn í stað eftirnafns."
+msgstr "Börn taka fornafn föðurs (+ son) eða móðurs (+ dóttir) í eignarfalli í stað fjölskyldunafns."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition/SpanishSurnameTradition.php:53
@@ -3719,7 +3707,7 @@ msgstr "Ríkisfang"
 #: app/Gedcom.php:398 app/Gedcom.php:510 app/Gedcom.php:530 app/Gedcom.php:786
 #: app/Gedcom.php:833 app/Gedcom.php:1234 app/Gedcom.php:1582
 msgid "City"
-msgstr "Borg"
+msgstr "Bær"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:79
@@ -3898,7 +3886,7 @@ msgstr "Innihald"
 
 #: app/Gedcom.php:743
 msgid "Continuation"
-msgstr ""
+msgstr "Framhald"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -7610,7 +7598,7 @@ msgstr "Ef þú hefur stofnað gagnaskrá í webtrees og hefur í kjölfarið br
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Ef þú breytir skráarheitinu ættirðu líka að endurnefna skrána."
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -10274,7 +10262,7 @@ msgstr "Engin innskráður og engir nafnlausir notendur"
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
 msgid "No surname"
-msgstr ""
+msgstr "Ekkert eftirnafn"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -11766,11 +11754,11 @@ msgstr "Skráningarfulltrúi"
 #. I18N: https://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:105
 msgid "Regular expression"
-msgstr "Regluleg framsetning"
+msgstr "Regluleg segð"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:44
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr "Venjuleg tjáning er háþróuð mynstursaðferðartækni."
+msgstr "Regluleg segð er háþróuð mynstur samsvörunartækni."
 
 #: resources/views/pending-changes-page.phtml:51
 #: resources/views/pending-changes-page.phtml:89
@@ -12503,7 +12491,7 @@ msgstr "Sendu prófunartölvupóst með þessum stillingum"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Sendu tölvupóst til allra stjórnenda þegar uppfærsla er í boði."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -13230,7 +13218,7 @@ msgstr "Innskráning og nýskráning"
 
 #: app/Gedcom.php:1425
 msgid "Signature"
-msgstr ""
+msgstr "Undirskrift"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -14244,7 +14232,7 @@ msgstr "Eftirfarandi listi sýnir venjulegar kröfur."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "Gagnasniðið er ófullnægjandi. Kannski þarftu að auka max_input_vars á netþjóninum þínum?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -15102,7 +15090,7 @@ msgstr "Þessi vefsíða notar þjónustu þriðja aðila til að læra um hegð
 #: resources/views/admin/trees-import.phtml:28
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Þetta mun eyða öllum ættfræðigögnum frá „%s“ og skipta þeim út með gögnum frá öðrum GEDCOM."
+msgstr "Þetta mun eyða öllum ættfræðigögnum frá “%s” og skipta þeim út með gögnum frá GEDCOM skrá."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:279
@@ -19175,7 +19163,7 @@ msgstr "eiginmaður"
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:81
 msgid "immigration name"
-msgstr "innflutningsnafn"
+msgstr "innflytjandanafn"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:164
