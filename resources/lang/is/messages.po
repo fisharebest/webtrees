@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-05-20 18:01+0000\n"
+"PO-Revision-Date: 2022-06-06 09:18+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -3450,7 +3450,7 @@ msgstr "Cayman-eyjar"
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:77 app/GedcomCode/GedcomCodeTemp.php:297
 msgid "Cebu City, Philippines"
-msgstr "Cebu City, Filipseyjar"
+msgstr "Cebu City, Filippseyjar"
 
 #. I18N: gedcom tag CEME
 #: app/Factories/ElementFactory.php:505 app/Factories/ElementFactory.php:828
@@ -3670,7 +3670,9 @@ msgstr "Börn "
 #. I18N: In the Icelandic surname tradition, ...
 #: app/SurnameTradition.php:99
 msgid "Children take a patronym instead of a surname."
-msgstr "Börn taka kenninafn í stað eftirnafns."
+msgstr ""
+"Börn taka fornafn föðurs (+ son) eða móðurs (+ dóttir) í eignarfalli í stað "
+"fjölskyldunafns."
 
 #. I18N: In the Spanish surname tradition, ...
 #: app/SurnameTradition.php:93
@@ -3835,7 +3837,7 @@ msgstr "Ríkisfang"
 #: app/Factories/ElementFactory.php:1081 app/Factories/ElementFactory.php:1334
 #: app/Factories/ElementFactory.php:1381 app/GedcomTag.php:575
 msgid "City"
-msgstr "Borg"
+msgstr "Bær"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:79 app/GedcomCode/GedcomCodeTemp.php:303
@@ -12033,11 +12035,11 @@ msgstr "Skráningarfulltrúi"
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/FixSearchAndReplace.php:106
 msgid "Regular expression"
-msgstr "Regluleg framsetning"
+msgstr "Regluleg segð"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:44
 msgid "Regular expressions are an advanced pattern matching technique."
-msgstr "Venjuleg tjáning er háþróuð mynstursaðferðartækni."
+msgstr "Regluleg segð er háþróuð mynstur samsvörunartækni."
 
 #: resources/views/pending-changes-page.phtml:51
 #: resources/views/pending-changes-page.phtml:89
@@ -15645,7 +15647,9 @@ msgstr "Þessi vefsíða notar þjónustu þriðja aðila til að læra um hegð
 #: resources/views/admin/trees-import.phtml:27
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Þetta mun eyða öllum ættfræðigögnum frá „%s“ og skipta þeim út með gögnum frá öðrum GEDCOM."
+msgstr ""
+"Þetta mun eyða öllum ættfræðigögnum frá “%s” og skipta þeim út með gögnum "
+"frá GEDCOM skrá."
 
 #. I18N: abbreviation for Thursday
 #: app/Date/AbstractCalendarDate.php:291
@@ -19822,19 +19826,19 @@ msgstr "eiginmaður"
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/Elements/NameType.php:57 app/GedcomCode/GedcomCodeName.php:143
 msgid "immigration name"
-msgstr "innflutningsnafn"
+msgstr "innflytjandanafn"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:139
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr "innflutningsnafn"
+msgstr "innflytjandanafn"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:134
 msgctxt "MALE"
 msgid "immigration name"
-msgstr "innflutningsnafn"
+msgstr "innflytjandanafn"
 
 #. I18N: A button label.
 #: resources/views/admin/locations.phtml:163
