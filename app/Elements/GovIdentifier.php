@@ -35,18 +35,6 @@ class GovIdentifier extends AbstractElement
     protected const MAXIMUM_LENGTH = 12;
 
     /**
-     * Convert a value to a canonical form.
-     *
-     * @param string $value
-     *
-     * @return string
-     */
-    public function canonical(string $value): string
-    {
-        return strtoupper(parent::canonical($value));
-    }
-
-    /**
      * Display the value of this type of element.
      *
      * @param string $value
