@@ -120,7 +120,7 @@ a:hover, .btn-link:hover, .nav-link:hover {
     unicode-bidi: isolate;
 
     /* Long words without spaces can break the page layout */
-    word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .wt-nested-edit-fields {
