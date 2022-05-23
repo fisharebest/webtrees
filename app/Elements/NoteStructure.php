@@ -127,7 +127,7 @@ class NoteStructure extends SubmitterText
             if ($html === '<p>' . strip_tags($note->fullName()) . '</p>') {
                 $value = '<a href="' . e($note->url()) . '">' . strip_tags($html) . '</a>';
 
-                return I18N::translate('%1$s: %2$s', $label, $value);
+                return '<div>' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
             }
 
             return
@@ -151,7 +151,7 @@ class NoteStructure extends SubmitterText
             $html  = strip_tags($html, ['a', 'em', 'strong']);
             $value = '<span class="ut">' . $html . '</span>';
 
-            return I18N::translate('%1$s: %2$s', $label, $value);
+            return '<div>' . I18N::translate('%1$s: %2$s', $label, $value) . '</div>';
         }
 
         $value = e(Note::firstLineOfTextFromHtml($html));
