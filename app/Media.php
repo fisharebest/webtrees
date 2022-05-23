@@ -24,6 +24,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\MediaPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
+use function array_filter;
+use function array_unique;
+
 /**
  * A GEDCOM media (OBJE) object.
  */
@@ -120,14 +123,19 @@ class Media extends GedcomRecord
             $names[] = $media_file->title();
         }
 
+        // Titles may be empty.
+        $names = array_filter($names);
+
         if ($names === []) {
             foreach ($this->mediaFiles() as $media_file) {
                 $names[] = $media_file->filename();
             }
         }
 
-        $names = array_filter(array_unique($names));
+        // Name and title may be the same.
+        $names = array_unique($names);
 
+        // No media files in this media object?
         if ($names === []) {
             $names[] = $this->getFallBackName();
         }
