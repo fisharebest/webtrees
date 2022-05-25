@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-05-21 22:13+0100\n"
-"PO-Revision-Date: 2017-10-18 21:08+0000\n"
-"Last-Translator: Kilik Alexander <kilikgantit@gmail.com>\n"
-"Language-Team: Malay <https://translate.webtrees.net/projects/webtrees/webtrees/ms/>\n"
-"Language: ms\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.10\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-05-21 22:13+0100\nPO-Revision-Date: 2022-06-05 08:15+0000\nLast-Translator: Irwan Marzuki <irwanmarzuki@gmail.com>\nLanguage-Team: Malay <https://translate.webtrees.net/projects/webtrees/webtrees/ms/>\nLanguage: ms\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -232,7 +220,7 @@ msgstr ""
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
+msgstr[0] "%s keluarga-keluarga"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:76
 #: app/Http/RequestHandlers/SearchReplaceAction.php:108
@@ -260,7 +248,7 @@ msgstr[0] "%s cucu"
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] "%s individu"
+msgstr[0] "%s individu-individu"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:72
 #: app/Http/RequestHandlers/SearchReplaceAction.php:98
@@ -268,7 +256,7 @@ msgstr[0] "%s individu"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s individu telah dikemaskini."
+msgstr[0] "%s individu-individu telah dikemaskini."
 
 #: app/Module/UserMessagesModule.php:157
 #, php-format
@@ -313,7 +301,7 @@ msgstr "%s dipisahkan sekali urutan turun"
 #, php-format
 msgid "%s repository has been updated."
 msgid_plural "%s repositories have been updated."
-msgstr[0] ""
+msgstr[0] "%s repositori-repositori telah dikemas kini."
 
 #. I18N: %s is a person's name
 #: resources/views/emails/message-user-html.phtml:21
@@ -332,7 +320,7 @@ msgstr[0] "%s pengguna telah log masuk"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s sumber telah dikemaskini."
+msgstr[0] "%s sumber-sumber telah dikemaskini."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2169
@@ -413,9 +401,9 @@ msgstr "%s&nbsp; Sebelum Tahun Masihi"
 
 #. I18N: Label on a graph; 40+ means 40 or more
 #: app/Module/StatisticsChartModule.php:862
-#, php-format
+#, fuzzy, php-format
 msgid "%s+"
-msgstr "%s +"
+msgstr "%s+"
 
 #: app/Module/ClippingsCartModule.php:558
 #, php-format
@@ -466,13 +454,13 @@ msgstr "&lt;pilih &gt;"
 #: resources/views/fact-date.phtml:120
 #, php-format
 msgid "(%s after death)"
-msgstr ""
+msgstr "(%s selepas kematian)"
 
 #. I18N: The current age of a living individual
 #: app/Http/RequestHandlers/IndividualPage.php:181
 #, php-format
 msgid "(age %s)"
-msgstr ""
+msgstr "(umur %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:168
@@ -489,7 +477,7 @@ msgstr "(berumur %s tahun)"
 #, php-format
 msgctxt "Female"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(umur %s)"
 
 #. I18N: The age of an individual at a given date
 #: app/Http/RequestHandlers/IndividualPage.php:162
@@ -498,13 +486,13 @@ msgstr ""
 #, php-format
 msgctxt "Male"
 msgid "(aged %s)"
-msgstr ""
+msgstr "(umur %s)"
 
 #. I18N: %s is a number
 #: resources/views/lists/datatables-attributes.phtml:27
 #, php-format
 msgid "(filtered from %s total entries)"
-msgstr ""
+msgstr "(ditapis daripada %s jumlah entri)"
 
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
@@ -513,7 +501,7 @@ msgstr ""
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
-msgstr ""
+msgstr "(pada tarikh kematian)"
 
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:334
@@ -523,17 +511,17 @@ msgstr ""
 #: app/Statistics/Service/CenturyService.php:67
 msgctxt "CENTURY"
 msgid "10th"
-msgstr ""
+msgstr "ke-10"
 
 #: app/Statistics/Service/CenturyService.php:65
 msgctxt "CENTURY"
 msgid "11th"
-msgstr ""
+msgstr "ke-11"
 
 #: app/Statistics/Service/CenturyService.php:63
 msgctxt "CENTURY"
 msgid "12th"
-msgstr ""
+msgstr "ke-12"
 
 #: app/Statistics/Service/CenturyService.php:61
 msgctxt "CENTURY"
