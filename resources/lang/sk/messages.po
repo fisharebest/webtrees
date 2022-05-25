@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
+"PO-Revision-Date: 2022-06-06 09:18+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -12330,7 +12330,7 @@ msgstr "Rexburg, Idaho, USA"
 #: app/Factories/ElementFactory.php:1301 app/Factories/ElementFactory.php:1324
 #: app/GedcomTag.php:935 resources/views/admin/users-edit.phtml:288
 msgid "Role"
-msgstr "Rola"
+msgstr "Postavenie"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:419
