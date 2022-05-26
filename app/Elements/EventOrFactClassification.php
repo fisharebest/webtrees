@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 /**
- * EVENT_OR_FACT_CLASSIFICA TION := {Size=1:90}
+ * EVENT_OR_FACT_CLASSIFICATION := {Size=1:90}
  * A descriptive word or phrase used to further classify the parent event or
  * attribute tag. This should be used whenever either of the generic EVEN or
  * FACT tags are used. The value of this primative is responsible for

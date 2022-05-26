@@ -344,7 +344,7 @@ class Tree
     }
 
     /**
-     * Are there any pending edits for this tree, than need reviewing by a moderator.
+     * Are there any pending edits for this tree, that need reviewing by a moderator.
      *
      * @return bool
      */
