@@ -871,8 +871,12 @@ class Gedcom
     private function aldfaerTags(): array
     {
         return [
-            'INDI:BIRT:_LENGTH' => new CustomElement(I18N::translate('Length')),
-            'INDI:BIRT:_WEIGHT' => new CustomElement(I18N::translate('Weight')),
+            'FAM:MARR_CIVIL'     => new Marriage(I18N::translate('Civil marriage')),
+            'FAM:MARR_PARTNERS'  => new Marriage(I18N::translate('Registered partnership')),
+            'FAM:MARR_RELIGIOUS' => new Marriage(I18N::translate('Religious marriage')),
+            'FAM:MARR_UNKNOWN'   => new Marriage(I18N::translate('Marriage')),
+            'INDI:BIRT:_LENGTH'  => new CustomElement(I18N::translate('Length')),
+            'INDI:BIRT:_WEIGHT'  => new CustomElement(I18N::translate('Weight')),
         ];
     }
 
@@ -1886,6 +1890,12 @@ class Gedcom
         return $subtags;
     }
 
+    /**
+     * @param ElementFactoryInterface $element_factory
+     * @param bool                    $include_custom_tags
+     *
+     * @return void
+     */
     public function registerTags(ElementFactoryInterface $element_factory, bool $include_custom_tags): void
     {
         // Standard GEDCOM.
