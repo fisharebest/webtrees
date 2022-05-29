@@ -110,8 +110,8 @@ use Illuminate\Support\Collection;
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <?php foreach ($active[$place->key] as $link): ?>
-                                    <a class="dropdown-item" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][0]->tree_name), ['place_id' => $link->p_id])) ?>">
+                                <?php foreach ($active[$place->key] as $n => $link): ?>
+                                    <a class="dropdown-item" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][$n]->tree_name), ['place_id' => $link->p_id])) ?>">
                                         <?= e($link->tree_title) ?>
                                     </a>
                                 <?php endforeach ?>
