@@ -1454,6 +1454,8 @@ class Gedcom
             'FAM:CHIL:_STAT'               => new CustomElement(I18N::translate('Status')),
             'FAM:EVEN:_OVER'               => new CustomElement('Event sentence override'),
             'FAM:MARR:_HTITL'              => new CustomElement(I18N::translate('Label for husband')),
+            'FAM:MARR:_RPT_PHRS'           => /* I18N: GEDCOM gag _RPT_PHRS */ new CustomElement(I18N::translate('Report phrase')),
+            'FAM:MARR:_RPT_PHRS2'          => /* I18N: GEDCOM gag _RPT_PHRS */ new CustomElement(I18N::translate('Report phrase')),
             'FAM:MARR:_STAT'               => new CustomElement(I18N::translate('Status')),
             'FAM:MARR:_WTITL'              => new CustomElement(I18N::translate('Label for wife')),
             'FAM:_NONE'                    => new CustomElement(I18N::translate('No children')),
