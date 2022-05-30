@@ -44,6 +44,7 @@ use function dirname;
 use function explode;
 use function ini_get;
 use function intdiv;
+use function is_float;
 use function min;
 use function pathinfo;
 use function sha1;
@@ -55,6 +56,7 @@ use function substr;
 use function trim;
 
 use const PATHINFO_EXTENSION;
+use const PHP_INT_MAX;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -106,19 +108,23 @@ class MediaFileService
     {
         $number = (int) $size;
 
-        switch (substr($size, -1)) {
-            case 'g':
-            case 'G':
-                return $number * 1073741824;
-            case 'm':
-            case 'M':
-                return $number * 1048576;
-            case 'k':
-            case 'K':
-                return $number * 1024;
-            default:
-                return $number;
+        $units = [
+            'g' => 1073741824,
+            'G' => 1073741824,
+            'm' => 1048576,
+            'M' => 1048576,
+            'k' => 1024,
+            'K' => 1024,
+        ];
+
+        $number *= $units[substr($size, -1)] ?? 1;
+
+        if (is_float($number)) {
+            // Probably a 32bit version of PHP, with an INI setting >= 2GB
+            return PHP_INT_MAX;
         }
+
+        return $number;
     }
 
     /**
