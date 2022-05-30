@@ -9,6 +9,7 @@ use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
+use Fisharebest\Webtrees\Module\ModuleDataFixInterface;
 use Fisharebest\Webtrees\Module\ModuleExternalUrlInterface;
 use Fisharebest\Webtrees\Module\ModuleFooterInterface;
 use Fisharebest\Webtrees\Module\ModuleHistoricEventsInterface;
@@ -91,6 +92,10 @@ use Illuminate\Support\Collection;
                 <th title="<?= I18N::translate('Blocks') ?>">
                     <?= view('icons/block') ?>
                     <span class="visually-hidden"><?= I18N::translate('Blocks') ?></span>
+                </th>
+                <th title="<?= I18N::translate('Data fixes') ?>">
+                    <?= view('icons/data-fix') ?>
+                    <span class="visually-hidden"><?= I18N::translate('Data fixes') ?></span>
                 </th>
                 <th title="<?= I18N::translate('Charts') ?>">
                     <?= view('icons/chart') ?>
@@ -202,6 +207,14 @@ use Illuminate\Support\Collection;
                                     <?= I18N::translate('Home page') ?>
                                 </span>
                             <?php endif ?>
+                        <?php else : ?>
+                            -
+                        <?php endif ?>
+                    </td>
+                    <td class="text-center text-muted" title="<?= I18N::translate('Data fix') ?>">
+                        <?php if ($module instanceof ModuleDataFixInterface) : ?>
+                            <?= view('icons/data-fix') ?>
+                            <span class="visually-hidden"><?= I18N::translate('Data fix') ?></span>
                         <?php else : ?>
                             -
                         <?php endif ?>
