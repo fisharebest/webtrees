@@ -222,13 +222,13 @@ class GedcomLoad implements RequestHandlerInterface
                 return $this->viewResponse('admin/import-progress', [
                     'errors'   => '',
                     'progress' => $progress ?? 0.0,
-                    'status'   => $ex->getMessage(),
+                    'status'   => e($ex->getMessage()),
                     'tree'     => $tree,
                 ]);
             }
 
             return $this->viewResponse('admin/import-fail', [
-                'error' => $ex->getMessage(),
+                'error' => e($ex->getMessage()),
                 'tree'  => $tree,
             ]);
         }
