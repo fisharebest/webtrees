@@ -744,7 +744,7 @@
       let options = {
         plugins: ['dropdown_input', 'virtual_scroll'],
         maxOptions: false,
-        searchField: ['text','value'], // Allow records found by XREF to be displayed
+        searchField: [], // We filter on the server, so don't filter on the client.
         render: {
           item: (data, escape) => '<div>' + data.text + '</div>',
           option: (data, escape) => '<div>' + data.text + '</div>',
