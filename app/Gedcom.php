@@ -1228,6 +1228,7 @@ class Gedcom
             '_LOC:EVEN:PLAC:NOTE'             => new NoteStructure(I18N::translate('Note')),
             '_LOC:EVEN:PLAC:ROMN'             => new PlaceRomanizedVariation(I18N::translate('Romanized place')),
             '_LOC:EVEN:PLAC:ROMN:TYPE'        => new RomanizedType(I18N::translate('Type')),
+            '_LOC:EVEN:PLAC:_LOC'             => new XrefLocation(I18N::translate('Location')),
             '_LOC:EVEN:TYPE'                  => new EventAttributeType(I18N::translate('Type of event')),
             '_LOC:EVEN:AGNC'                  => new ResponsibleAgency(I18N::translate('Agency')),
             '_LOC:EVEN:ADDR'                  => new AddressLine(I18N::translate('Address')),
