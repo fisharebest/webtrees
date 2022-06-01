@@ -15,10 +15,10 @@ use Fisharebest\Webtrees\Tree;
 
 <div class="wt-tab-stories py-4">
     <?php foreach ($stories as $story) : ?>
-        <div class="wt-story-title descriptionbox text-center">
+        <div class="wt-story-title text-center">
             <h3><?= e($story->title) ?></h3>
         </div>
-        <div class="wt-story-body optionbox">
+        <div class="wt-story-body">
             <p><?= $story->story_body ?></p>
         </div>
         <?php if ($is_admin) : ?>
