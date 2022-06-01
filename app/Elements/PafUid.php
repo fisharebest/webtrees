@@ -45,6 +45,10 @@ class PafUid extends AbstractElement
      */
     public function default(Tree $tree): string
     {
+        if ($tree->getPreference('GENERATE_UIDS') !== '1') {
+            return '';
+        }
+
         try {
             $uid = strtr(Uuid::uuid4()->toString(), ['-' => '']);
         } catch (RandomSourceException $ex) {
