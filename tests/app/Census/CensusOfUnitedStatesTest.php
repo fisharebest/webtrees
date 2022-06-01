@@ -67,7 +67,7 @@ class CensusOfUnitedStatesTest extends TestCase
 
         $census_dates = $census->allCensusDates();
 
-        self::assertCount(16, $census_dates);
+        self::assertCount(17, $census_dates);
         self::assertInstanceOf(CensusOfUnitedStates1790::class, $census_dates[0]);
         self::assertInstanceOf(CensusOfUnitedStates1800::class, $census_dates[1]);
         self::assertInstanceOf(CensusOfUnitedStates1810::class, $census_dates[2]);
@@ -84,5 +84,6 @@ class CensusOfUnitedStatesTest extends TestCase
         self::assertInstanceOf(CensusOfUnitedStates1920::class, $census_dates[13]);
         self::assertInstanceOf(CensusOfUnitedStates1930::class, $census_dates[14]);
         self::assertInstanceOf(CensusOfUnitedStates1940::class, $census_dates[15]);
+        self::assertInstanceOf(CensusOfUnitedStates1950::class, $census_dates[16]);
     }
 }
