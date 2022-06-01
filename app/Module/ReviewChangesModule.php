@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\PendingChanges;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\TreeService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Site;
@@ -122,7 +123,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
             if ($next_email_timestamp < time()) {
                 // Which users have pending changes?
                 foreach ($this->user_service->all() as $user) {
-                    if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== 'none') {
+                    if ($user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE) {
                         foreach ($this->tree_service->all() as $tmp_tree) {
                             if ($tmp_tree->hasPendingEdit() && Auth::isManager($tmp_tree, $user)) {
                                 I18N::init($user->getPreference(UserInterface::PREF_LANGUAGE));

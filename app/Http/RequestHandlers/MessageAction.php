@@ -75,7 +75,7 @@ class MessageAction implements RequestHandlerInterface
         $to_user  = $this->user_service->findByUserName($to);
         $url      = Validator::parsedBody($request)->isLocalUrl()->string('url', $base_url);
 
-        if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'none') {
+        if ($to_user === null || $to_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_NONE) {
             throw new HttpAccessDeniedException('Invalid contact user id');
         }
 

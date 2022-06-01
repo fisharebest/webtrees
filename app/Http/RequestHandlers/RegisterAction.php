@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\CaptchaService;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\RateLimitService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Session;
@@ -136,7 +137,7 @@ class RegisterAction implements RequestHandlerInterface
         $user->setPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED, '');
         $user->setPreference(UserInterface::PREF_TIMESTAMP_REGISTERED, date('U'));
         $user->setPreference(UserInterface::PREF_VERIFICATION_TOKEN, $token);
-        $user->setPreference(UserInterface::PREF_CONTACT_METHOD, 'messaging2');
+        $user->setPreference(UserInterface::PREF_CONTACT_METHOD, MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL);
         $user->setPreference(UserInterface::PREF_NEW_ACCOUNT_COMMENT, $comments);
         $user->setPreference(UserInterface::PREF_IS_VISIBLE_ONLINE, '1');
         $user->setPreference(UserInterface::PREF_AUTO_ACCEPT_EDITS, '');
@@ -196,7 +197,11 @@ class RegisterAction implements RequestHandlerInterface
             );
 
             $mail1_method = $administrator->getPreference(UserInterface::PREF_CONTACT_METHOD);
-            if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+            if (
+                $mail1_method !== MessageService::CONTACT_METHOD_EMAIL &&
+                $mail1_method !== MessageService::CONTACT_METHOD_MAILTO &&
+                $mail1_method !== MessageService::CONTACT_METHOD_NONE
+            ) {
                 DB::table('message')->insert([
                     'sender'     => $user->email(),
                     'ip_address' => $request->getAttribute('client-ip'),

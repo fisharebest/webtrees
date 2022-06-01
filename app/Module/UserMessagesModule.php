@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\TreePage;
 use Fisharebest\Webtrees\Http\RequestHandlers\UserPage;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -134,7 +135,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface
                 $user->id() !== Auth::id() &&
                 $user->getPreference(UserInterface::PREF_IS_ACCOUNT_APPROVED) &&
                 $can_see_tree &&
-                $user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== 'none';
+                $user->getPreference(UserInterface::PREF_CONTACT_METHOD) !== MessageService::CONTACT_METHOD_NONE;
         });
 
         $content = view('modules/user-messages/user-messages', [

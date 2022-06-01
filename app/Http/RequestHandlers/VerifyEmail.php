@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\NoReplyUser;
 use Fisharebest\Webtrees\Services\EmailService;
+use Fisharebest\Webtrees\Services\MessageService;
 use Fisharebest\Webtrees\Services\UserService;
 use Fisharebest\Webtrees\SiteUser;
 use Fisharebest\Webtrees\User;
@@ -97,7 +98,11 @@ class VerifyEmail implements RequestHandlerInterface
 
                 $mail1_method = $administrator->getPreference('CONTACT_METHOD');
 
-                if ($mail1_method !== 'messaging3' && $mail1_method !== 'mailto' && $mail1_method !== 'none') {
+                if (
+                    $mail1_method !== MessageService::CONTACT_METHOD_EMAIL &&
+                    $mail1_method !== MessageService::CONTACT_METHOD_MAILTO &&
+                    $mail1_method !== MessageService::CONTACT_METHOD_NONE
+                ) {
                     DB::table('message')->insert([
                         'sender'     => $username,
                         'ip_address' => $request->getAttribute('client-ip'),

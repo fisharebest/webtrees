@@ -38,6 +38,13 @@ use function view;
  */
 class MessageService
 {
+    // Users can be contacted by various methods
+    public const CONTACT_METHOD_INTERNAL           = 'messaging';
+    public const CONTACT_METHOD_INTERNAL_AND_EMAIL = 'messaging2';
+    public const CONTACT_METHOD_EMAIL              = 'messaging3';
+    public const CONTACT_METHOD_MAILTO             = 'mailto';
+    public const CONTACT_METHOD_NONE               = 'none';
+
     private const BROADCAST_ALL   = 'all';
     private const BROADCAST_NEVER = 'never';
     private const BROADCAST_GONE  = 'gone';
@@ -147,10 +154,10 @@ class MessageService
     public function sendInternalMessage(UserInterface $user): bool
     {
         return in_array($user->getPreference(UserInterface::PREF_CONTACT_METHOD), [
-            'messaging',
-            'messaging2',
-            'mailto',
-            'none',
+            self::CONTACT_METHOD_INTERNAL,
+            self::CONTACT_METHOD_INTERNAL_AND_EMAIL,
+            self::CONTACT_METHOD_MAILTO,
+            self::CONTACT_METHOD_NONE,
         ], true);
     }
 
@@ -164,10 +171,10 @@ class MessageService
     public function sendEmail(UserInterface $user): bool
     {
         return in_array($user->getPreference(UserInterface::PREF_CONTACT_METHOD), [
-            'messaging2',
-            'messaging3',
-            'mailto',
-            'none',
+            MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL,
+            MessageService::CONTACT_METHOD_EMAIL,
+            self::CONTACT_METHOD_MAILTO,
+            self::CONTACT_METHOD_NONE,
         ], true);
     }
 
@@ -221,11 +228,11 @@ class MessageService
     public function contactMethods(): array
     {
         return [
-            'messaging'  => I18N::translate('Internal messaging'),
-            'messaging2' => I18N::translate('Internal messaging with emails'),
-            'messaging3' => I18N::translate('webtrees sends emails with no storage'),
-            'mailto'     => I18N::translate('Mailto link'),
-            'none'       => I18N::translate('No contact'),
+            self::CONTACT_METHOD_INTERNAL           => I18N::translate('Internal messaging'),
+            self::CONTACT_METHOD_INTERNAL_AND_EMAIL => I18N::translate('Internal messaging with emails'),
+            self::CONTACT_METHOD_EMAIL              => I18N::translate('webtrees sends emails with no storage'),
+            self::CONTACT_METHOD_MAILTO             => I18N::translate('Mailto link'),
+            self::CONTACT_METHOD_NONE               => I18N::translate('No contact'),
         ];
     }
 }

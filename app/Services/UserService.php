@@ -395,7 +395,7 @@ class UserService
         $tree = Validator::attributes($request)->tree();
         $user = Validator::attributes($request)->user();
 
-        if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === 'mailto') {
+        if ($contact_user->getPreference(UserInterface::PREF_CONTACT_METHOD) === MessageService::CONTACT_METHOD_MAILTO) {
             $url = 'mailto:' . $contact_user->email();
         } elseif ($user instanceof User) {
             // Logged-in users send direct messages
