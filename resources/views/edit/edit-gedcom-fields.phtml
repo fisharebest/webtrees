@@ -3,7 +3,6 @@
 use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @var string        $gedcom
@@ -25,7 +24,7 @@ foreach ($keys as $num => $key) {
     $hierarchy[$levels[$key]] = $tags[$key];
     $full_tag                 = implode(':', array_slice($hierarchy, 0, 1 + $levels[$key]));
     $elements[$key]           = Registry::elementFactory()->make($full_tag);
-    $ids[$key]                = Uuid::uuid4()->toString() . '-' . $full_tag;
+    $ids[$key]                = Registry::idFactory()->id() . '-' . $full_tag;
 
     // Does this element have any children?
     $has_subtags = ($levels[$key + 1] ?? 0) > $levels[$key];

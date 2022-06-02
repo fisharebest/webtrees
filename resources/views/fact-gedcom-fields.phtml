@@ -8,7 +8,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @var string $gedcom
@@ -54,7 +53,7 @@ foreach ($keys as $key) {
 <?php if ($elements[0] instanceof XrefSource && preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $values[0], $match) === 1) : ?>
     <?php $source = Registry::sourceFactory()->make($match[1], $tree) ?>
     <?php if ($source instanceof Source) : ?>
-        <?php $id = 'collapse-' . Uuid::uuid4()->toString() ?>
+        <?php $id = Registry::idFactory()->id() ?>
         <?php $expanded = $tree->getPreference('EXPAND_SOURCES') === '1' ?>
         <div class="fact_SOUR">
             <a href="#<?= e($id) ?>" role="button" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">

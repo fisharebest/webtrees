@@ -43,6 +43,7 @@ use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmitterFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SurnameTraditionFactoryInterface;
 use Fisharebest\Webtrees\Contracts\TimestampFactoryInterface;
+use Fisharebest\Webtrees\Contracts\IdFactoryInterface;
 use Fisharebest\Webtrees\Contracts\XrefFactoryInterface;
 
 /**
@@ -65,6 +66,8 @@ class Registry
     private static GedcomRecordFactoryInterface $gedcom_record_factory;
 
     private static HeaderFactoryInterface $header_factory;
+
+    private static IdFactoryInterface $id_factory;
 
     private static ImageFactoryInterface $image_factory;
 
@@ -226,6 +229,22 @@ class Registry
         }
 
         return self::$header_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param IdFactoryInterface|null $factory
+     *
+     * @return IdFactoryInterface
+     */
+    public static function idFactory(IdFactoryInterface $factory = null): IdFactoryInterface
+    {
+        if ($factory instanceof IdFactoryInterface) {
+            self::$id_factory = $factory;
+        }
+
+        return self::$id_factory;
     }
 
     /**

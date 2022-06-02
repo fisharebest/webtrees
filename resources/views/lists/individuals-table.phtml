@@ -15,7 +15,6 @@ use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @var Collection<int,Individual> $individuals
@@ -24,7 +23,7 @@ use Ramsey\Uuid\Uuid;
  */
 
 // lists requires a unique ID in case there are multiple lists per page
-$table_id = 'table-indi-' . Uuid::uuid4()->toString();
+$table_id = Registry::idFactory()->id();
 
 $today_jd          = Registry::timestampFactory()->now()->julianDay();
 $hundred_years_ago = Registry::timestampFactory()->now()->subtractYears(100)->julianDay();

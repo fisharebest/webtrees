@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
-use Ramsey\Uuid\Uuid;
 
 use function view;
 
@@ -41,9 +41,9 @@ class CaptchaService
      */
     public function createCaptcha(): string
     {
-        $x = Uuid::uuid4()->toString();
-        $y = Uuid::uuid4()->toString();
-        $z = Uuid::uuid4()->toString();
+        $x = Registry::idFactory()->uuid();
+        $y = Registry::idFactory()->uuid();
+        $z = Registry::idFactory()->uuid();
 
         Session::put('captcha-t', microtime(true));
         Session::put('captcha-x', $x);

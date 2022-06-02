@@ -17,31 +17,36 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Elements;
-
-use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Tree;
+namespace Fisharebest\Webtrees\Contracts;
 
 /**
- * UID fields
+ * Create a unique identifier.
  */
-class Uid extends AbstractElement
+interface IdFactoryInterface
 {
-    protected const MAXIMUM_LENGTH = 36;
+    /**
+     * @return string
+     */
+    public function uuid(): string;
 
     /**
-     * Create a default value for this element.
-     *
-     * @param Tree $tree
+     * An identifier for use in CSS/HTML
      *
      * @return string
      */
-    public function default(Tree $tree): string
-    {
-        if ($tree->getPreference('GENERATE_UIDS') === '1') {
-            return Registry::idFactory()->uuid();
-        }
+    public function id(string $prefix = 'id-'): string;
 
-        return '';
-    }
+    /**
+     * A value for _UID fields, as created by PAF
+     *
+     * @return string
+     */
+    public function pafUid(): string;
+
+    /**
+     * @param string $uid - exactly 32 hex characters
+     *
+     * @return string
+     */
+    public function pafUidChecksum(string $uid): string;
 }

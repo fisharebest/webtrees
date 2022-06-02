@@ -45,6 +45,7 @@ use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
 use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
 use Fisharebest\Webtrees\Factories\TimestampFactory;
+use Fisharebest\Webtrees\Factories\IdFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
 use Fisharebest\Webtrees\GedcomFilters\GedcomEncodingFilter;
 use Fisharebest\Webtrees\Http\Middleware\BadBotBlocker;
@@ -204,6 +205,7 @@ class Webtrees
         Registry::filesystem(new FilesystemFactory());
         Registry::gedcomRecordFactory(new GedcomRecordFactory());
         Registry::headerFactory(new HeaderFactory());
+        Registry::idFactory(new IdFactory());
         Registry::imageFactory(new ImageFactory());
         Registry::individualFactory(new IndividualFactory());
         Registry::locationFactory(new LocationFactory());

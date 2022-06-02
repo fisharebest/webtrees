@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
 use GuzzleHttp\Client;
@@ -350,7 +351,7 @@ class UpgradeService
         $site_uuid = Site::getPreference('SITE_UUID');
 
         if ($site_uuid === '') {
-            $site_uuid = Uuid::uuid4()->toString();
+            $site_uuid = Registry::idFactory()->uuid();
             Site::setPreference('SITE_UUID', $site_uuid);
         }
 

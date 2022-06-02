@@ -107,7 +107,7 @@ class NoteStructure extends SubmitterText
      */
     public function labelValue(string $value, Tree $tree): string
     {
-        $id       = 'collapse-' . Uuid::uuid4()->toString();
+        $id       = Registry::idFactory()->id();
         $expanded = $tree->getPreference('EXPAND_NOTES') === '1';
 
         // A note structure can contain an inline note or a linked to a shared note.

@@ -9,9 +9,9 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Illuminate\Support\Collection;
-use Ramsey\Uuid\Uuid;
 
 /**
  * @var Individual|null   $individual
@@ -94,7 +94,7 @@ $all_facts = $all_facts->filter(static function (Fact $fact) use ($exclude): boo
 
 $all_facts = Fact::sortFacts($all_facts);
 
-$id = Uuid::uuid4()->toString();
+$id = Registry::idFactory()->id();
 ?>
 
 <div class="wt-chart-box wt-chart-box-<?= strtolower($individual->sex()) ?> <?= $individual->isPendingAddition() ? 'wt-new' : '' ?> <?= $individual->isPendingDeletion() ? 'wt-old' : '' ?> overflow-hidden" data-wt-chart-xref="<?= e($individual->xref()) ?>" data-tree="<?= e($individual->tree()->name()) ?>">

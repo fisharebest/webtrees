@@ -11,9 +11,8 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 use Illuminate\Support\Collection;
-use Ramsey\Uuid\Uuid;
 
-$table_id = 'table-fam-' . Uuid::uuid4()->toString(); // lists requires a unique ID in case there are multiple lists per page
+$table_id = Registry::idFactory()->id(); // lists requires a unique ID in case there are multiple lists per page
 
 $today             = new Date(strtoupper(date('d M Y')));
 $today_jd          = Registry::timestampFactory()->now()->julianDay();
