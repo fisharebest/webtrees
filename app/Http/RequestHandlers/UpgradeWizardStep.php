@@ -43,7 +43,6 @@ use function date;
 use function e;
 use function fclose;
 use function intdiv;
-use function microtime;
 use function response;
 use function route;
 use function version_compare;
@@ -240,7 +239,7 @@ class UpgradeWizardStep implements RequestHandlerInterface
      */
     private function wizardStepDownload(FilesystemOperator $root_filesystem): ResponseInterface
     {
-        $start_time   = microtime(true);
+        $start_time   = Registry::timeFactory()->now();
         $download_url = $this->upgrade_service->downloadUrl();
 
         try {
@@ -250,7 +249,7 @@ class UpgradeWizardStep implements RequestHandlerInterface
         }
 
         $kb       = I18N::number(intdiv($bytes + 1023, 1024));
-        $end_time = microtime(true);
+        $end_time = Registry::timeFactory()->now();
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         return response(view('components/alert-success', [
@@ -268,10 +267,10 @@ class UpgradeWizardStep implements RequestHandlerInterface
      */
     private function wizardStepUnzip(string $zip_file, string $zip_folder): ResponseInterface
     {
-        $start_time = microtime(true);
+        $start_time = Registry::timeFactory()->now();
         $this->upgrade_service->extractWebtreesZip($zip_file, $zip_folder);
         $count    = $this->upgrade_service->webtreesZipContents($zip_file)->count();
-        $end_time = microtime(true);
+        $end_time = Registry::timeFactory()->now();
         $seconds  = I18N::number($end_time - $start_time, 2);
 
         /* I18N: …from the .ZIP file, %2$s is a (fractional) number of seconds */

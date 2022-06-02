@@ -17,19 +17,15 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Contracts;
 
 /**
- * Class MockGlobalFunctions
+ * What is the time?
  */
-abstract class MockGlobalFunctions
+interface TimeFactoryInterface
 {
     /**
-     * Mock version of ini_get()
-     *
-     * @param string $varname
-     *
-     * @return string
+     * @return float
      */
-    abstract public function iniGet(string $varname): string;
+    public function now(): float;
 }

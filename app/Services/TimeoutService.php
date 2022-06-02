@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Services;
 
+use Fisharebest\Webtrees\Registry;
+
 /**
  * Check for PHP timeouts.
  */
@@ -40,7 +42,7 @@ class TimeoutService
      */
     public function __construct(float $start_time = null)
     {
-        $this->start_time = $start_time ?? microtime(true);
+        $this->start_time = $start_time ?? Registry::timeFactory()->now();
     }
 
     /**
@@ -59,7 +61,7 @@ class TimeoutService
             return false;
         }
 
-        $now = microtime(true);
+        $now = Registry::timeFactory()->now();
 
         return $now + $threshold > $this->start_time + (float) $max_execution_time;
     }
@@ -73,7 +75,7 @@ class TimeoutService
      */
     public function isTimeLimitUp(float $limit = self::TIME_LIMIT): bool
     {
-        $now = microtime(true);
+        $now = Registry::timeFactory()->now();
 
         return $now > $this->start_time + $limit;
     }

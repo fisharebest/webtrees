@@ -45,7 +45,7 @@ class CaptchaService
         $y = Registry::idFactory()->uuid();
         $z = Registry::idFactory()->uuid();
 
-        Session::put('captcha-t', microtime(true));
+        Session::put('captcha-t', Registry::timeFactory()->now());
         Session::put('captcha-x', $x);
         Session::put('captcha-y', $y);
         Session::put('captcha-z', $z);
@@ -86,6 +86,6 @@ class CaptchaService
         }
 
         // If the form was returned too quickly, then probably a robot.
-        return microtime(true) < $t + self::MINIMUM_FORM_TIME;
+        return Registry::timeFactory()->now() < $t + self::MINIMUM_FORM_TIME;
     }
 }

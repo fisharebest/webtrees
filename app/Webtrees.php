@@ -44,6 +44,7 @@ use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
 use Fisharebest\Webtrees\Factories\SubmitterFactory;
 use Fisharebest\Webtrees\Factories\SurnameTraditionFactory;
+use Fisharebest\Webtrees\Factories\TimeFactory;
 use Fisharebest\Webtrees\Factories\TimestampFactory;
 use Fisharebest\Webtrees\Factories\IdFactory;
 use Fisharebest\Webtrees\Factories\XrefFactory;
@@ -221,6 +222,7 @@ class Webtrees
         Registry::submissionFactory(new SubmissionFactory());
         Registry::submitterFactory(new SubmitterFactory());
         Registry::surnameTraditionFactory(new SurnameTraditionFactory());
+        Registry::timeFactory(new TimeFactory());
         Registry::timestampFactory(new TimestampFactory());
         Registry::xrefFactory(new XrefFactory());
 

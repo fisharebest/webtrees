@@ -17,19 +17,22 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Factories;
+
+use Fisharebest\Webtrees\Contracts\TimeFactoryInterface;
+
+use function microtime;
 
 /**
- * Class MockGlobalFunctions
+ * What is the time?
  */
-abstract class MockGlobalFunctions
+class TimeFactory implements TimeFactoryInterface
 {
     /**
-     * Mock version of ini_get()
-     *
-     * @param string $varname
-     *
-     * @return string
+     * @return float
      */
-    abstract public function iniGet(string $varname): string;
+    public function now(): float
+    {
+        return microtime(true);
+    }
 }
