@@ -1506,16 +1506,6 @@ parameters:
 			path: app/Module/HtmlBlockModule.php
 
 		-
-			message: "#^Parameter \\#2 \\$exclude_facts of method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:familyFacts\\(\\) expects Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>, Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\> given\\.$#"
-			count: 1
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
-			message: "#^Parameter \\#2 \\$exclude_facts of method Fisharebest\\\\Webtrees\\\\Services\\\\IndividualFactsService\\:\\:individualFacts\\(\\) expects Illuminate\\\\Support\\\\Collection&iterable\\<int, string\\>, Illuminate\\\\Support\\\\Collection&iterable\\<string, Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\> given\\.$#"
-			count: 1
-			path: app/Module/IndividualFactsTabModule.php
-
-		-
 			message: "#^Cannot access property \\$gedcom on mixed\\.$#"
 			count: 1
 			path: app/Module/IndividualListModule.php
