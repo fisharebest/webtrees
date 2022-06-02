@@ -36,6 +36,7 @@ use Fisharebest\Webtrees\Contracts\NoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RepositoryFactoryInterface;
 use Fisharebest\Webtrees\Contracts\ResponseFactoryInterface;
 use Fisharebest\Webtrees\Contracts\RouteFactoryInterface;
+use Fisharebest\Webtrees\Contracts\SharedNoteFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SlugFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SourceFactoryInterface;
 use Fisharebest\Webtrees\Contracts\SubmissionFactoryInterface;
@@ -82,6 +83,8 @@ class Registry
     private static ResponseFactoryInterface $response_factory;
 
     private static RouteFactoryInterface $route_factory;
+
+    private static SharedNoteFactoryInterface $shared_note_factory;
 
     private static SlugFactoryInterface $slug_factory;
 
@@ -367,6 +370,22 @@ class Registry
         }
 
         return self::$route_factory;
+    }
+
+    /**
+     * Store or retrieve a factory object.
+     *
+     * @param SharedNoteFactoryInterface|null $factory
+     *
+     * @return SharedNoteFactoryInterface
+     */
+    public static function sharedNoteFactory(SharedNoteFactoryInterface $factory = null): SharedNoteFactoryInterface
+    {
+        if ($factory instanceof SharedNoteFactoryInterface) {
+            self::$shared_note_factory = $factory;
+        }
+
+        return self::$shared_note_factory;
     }
 
     /**

@@ -48,7 +48,7 @@ class Note extends GedcomRecord
      */
     public function getNote(): string
     {
-        if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ NOTE ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
+        if (preg_match('/^0 @' . Gedcom::REGEX_XREF . '@ ' . static::RECORD_TYPE . ' ?(.*(?:\n1 CONT ?.*)*)/', $this->gedcom . $this->pending, $match)) {
             return preg_replace("/\n1 CONT ?/", "\n", $match[1]);
         }
 
@@ -98,7 +98,7 @@ class Note extends GedcomRecord
         $first_line = self::firstLineOfTextFromHtml($html);
 
         if ($first_line !== '') {
-            $this->addName('NOTE', Str::limit($first_line, 100, I18N::translate('…')), $this->gedcom());
+            $this->addName(static::RECORD_TYPE, Str::limit($first_line, 100, I18N::translate('…')), $this->gedcom());
         }
     }
 

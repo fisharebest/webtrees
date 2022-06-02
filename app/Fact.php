@@ -120,6 +120,7 @@ class Fact
         'CONL',
         'ENDL',
         'SLGS',
+        'NO',
         'ADDR',
         'PHON',
         'EMAIL',
@@ -138,6 +139,7 @@ class Fact
         'OBJE',
         'NOTE',
         'SOUR',
+        'CREA',
         'CHAN',
         '_TODO',
     ];

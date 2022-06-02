@@ -19,9 +19,9 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\RequestHandlers;
 
-use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\SearchService;
+use Fisharebest\Webtrees\SharedNote;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
@@ -32,12 +32,12 @@ use function view;
 /**
  * Autocomplete for notes.
  */
-class TomSelectNote extends AbstractTomSelectHandler
+class TomSelectSharedNote extends AbstractTomSelectHandler
 {
     protected SearchService $search_service;
 
     /**
-     * TomSelectNote constructor.
+     * TomSelectSharedNote constructor.
      *
      * @param SearchService $search_service
      */
@@ -61,16 +61,16 @@ class TomSelectNote extends AbstractTomSelectHandler
     protected function search(Tree $tree, string $query, int $offset, int $limit, string $at): Collection
     {
         // Search by XREF
-        $note = Registry::noteFactory()->make($query, $tree);
+        $note = Registry::sharedNoteFactory()->make($query, $tree);
 
-        if ($note instanceof Note) {
+        if ($note instanceof SharedNote) {
             $results = new Collection([$note]);
         } else {
             $search  = array_filter(explode(' ', $query));
-            $results = $this->search_service->searchNotes([$tree], $search, $offset, $limit);
+            $results = $this->search_service->searchSharedNotes([$tree], $search, $offset, $limit);
         }
 
-        return $results->map(static function (Note $note) use ($at): array {
+        return $results->map(static function (SharedNote $note) use ($at): array {
             return [
                 'text'  => view('selects/shared-note', ['note' => $note]),
                 'value' => $at . $note->xref() . $at,

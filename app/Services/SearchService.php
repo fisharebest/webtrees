@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\SharedNote;
 use Fisharebest\Webtrees\Soundex;
 use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Submission;
@@ -293,6 +294,27 @@ class SearchService
         $this->whereSearch($query, 'o_gedcom', $search);
 
         return $this->paginateQuery($query, $this->noteRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
+    }
+
+    /**
+     * Search for notes.
+     *
+     * @param array<Tree>   $trees
+     * @param array<string> $search
+     * @param int           $offset
+     * @param int           $limit
+     *
+     * @return Collection<int,SharedNote>
+     */
+    public function searchSharedNotes(array $trees, array $search, int $offset = 0, int $limit = PHP_INT_MAX): Collection
+    {
+        $query = DB::table('other')
+            ->where('o_type', '=', SharedNote::RECORD_TYPE);
+
+        $this->whereTrees($query, 'o_file', $trees);
+        $this->whereSearch($query, 'o_gedcom', $search);
+
+        return $this->paginateQuery($query, $this->sharedNoteRowMapper(), GedcomRecord::accessFilter(), $offset, $limit);
     }
 
     /**
@@ -1246,6 +1268,20 @@ class SearchService
             $tree = $this->tree_service->find((int) $row->o_file);
 
             return Registry::repositoryFactory()->mapper($tree)($row);
+        };
+    }
+
+    /**
+     * Convert a row from any tree in the other table into a note object.
+     *
+     * @return Closure
+     */
+    private function sharedNoteRowMapper(): Closure
+    {
+        return function (object $row): Note {
+            $tree = $this->tree_service->find((int) $row->o_file);
+
+            return Registry::sharedNoteFactory()->mapper($tree)($row);
         };
     }
 

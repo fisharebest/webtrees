@@ -394,6 +394,35 @@ class Auth
     }
 
     /**
+     * @param SharedNote|null $shared_note
+     * @param bool            $edit
+     *
+     * @return SharedNote
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
+     */
+    public static function checkSharedNoteAccess(?SharedNote $shared_note, bool $edit = false): SharedNote
+    {
+        $message = I18N::translate('This note does not exist or you do not have permission to view it.');
+
+        if ($shared_note === null) {
+            throw new HttpNotFoundException($message);
+        }
+
+        if ($edit && $shared_note->canEdit()) {
+            $shared_note->lock();
+
+            return $shared_note;
+        }
+
+        if ($shared_note->canShow()) {
+            return $shared_note;
+        }
+
+        throw new HttpAccessDeniedException($message);
+    }
+
+    /**
      * @param GedcomRecord|null $record
      * @param bool              $edit
      *

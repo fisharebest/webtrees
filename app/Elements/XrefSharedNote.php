@@ -19,18 +19,21 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Http\RequestHandlers\CreateNoteModal;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 
+use function e;
+use function route;
 use function trim;
 use function view;
 
 /**
- * XREF:FAM := {Size=1:22}
- * A pointer to, or a cross-reference identifier of, a family record.
+ * XREF:SNOTE := {Size=1:22}
+ * A pointer to, or a cross-reference identifier of, a shared note record.
  */
-class XrefFamily extends AbstractXrefElement
+class XrefSharedNote extends AbstractXrefElement
 {
     /**
      * An edit control for this data.
@@ -44,13 +47,21 @@ class XrefFamily extends AbstractXrefElement
      */
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
-        return view('components/select-family', [
-            'id'     => $id,
-            'name'   => $name,
-            'family' => Registry::familyFactory()->make(trim($value, '@'), $tree),
-            'tree'   => $tree,
-            'at'     => '@',
+        $select = view('components/select-shared-note', [
+            'id'          => $id,
+            'name'        => $name,
+            'shared_note' => Registry::sharedNoteFactory()->make(trim($value, '@'), $tree),
+            'tree'        => $tree,
+            'at'          => '@',
         ]);
+
+        return
+            '<div class="input-group">' .
+            '<button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wt-ajax-modal" data-wt-href="' . e(route(CreateNoteModal::class, ['tree' => $tree->name()])) . '" data-wt-select-id="' . $id . '" title="' . I18N::translate('Create a shared note') . '">' .
+            view('icons/add') .
+            '</button>' .
+            $select .
+            '</div>';
     }
 
     /**
@@ -63,6 +74,6 @@ class XrefFamily extends AbstractXrefElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return $this->valueXrefLink($value, $tree, Registry::familyFactory());
+        return $this->valueXrefLink($value, $tree, Registry::sharedNoteFactory());
     }
 }

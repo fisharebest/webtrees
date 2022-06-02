@@ -20,44 +20,37 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use DOMDocument;
-use Fisharebest\Webtrees\Factories\SourceFactory;
-use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Factories\SharedNoteFactory;
+use Fisharebest\Webtrees\SharedNote;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
-use Psr\Http\Message\ServerRequestInterface;
-
-use function app;
 
 /**
- * Test harness for the class XrefSource
+ * Test harness for the class XrefSharedNote
  *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
  * @covers \Fisharebest\Webtrees\Elements\AbstractXrefElement
- * @covers \Fisharebest\Webtrees\Elements\XrefSource
+ * @covers \Fisharebest\Webtrees\Elements\XrefSharedNote
  */
-class XrefSourceTest extends TestCase
+class XrefSharedNoteTest extends TestCase
 {
     /**
      * @return void
      */
     public function testEdit(): void
     {
-        $element = new XrefSource('');
+        $element = new XrefSharedNote('');
 
         $tree = $this->createMock(Tree::class);
 
-        $factory = $this->createMock(SourceFactory::class);
+        $factory = $this->createMock(SharedNoteFactory::class);
 
         $factory->expects(self::once())
             ->method('make')
             ->willReturn(null);
 
-        Registry::sourceFactory($factory);
-
-        $request = self::createRequest();
-
-        app()->instance(ServerRequestInterface::class, $request);
+        Registry::sharedNoteFactory($factory);
 
         $html = $element->edit('some-id', 'some-name', '@X123@', $tree);
         $dom  = new DOMDocument();
@@ -69,34 +62,12 @@ class XrefSourceTest extends TestCase
         $option_nodes = $select_nodes[0]->getElementsByTagName('option');
         self::assertEquals(1, $option_nodes->count());
     }
-
-    /**
-     * @return void
-     */
-    public function testEditInlineSource(): void
-    {
-        $element = new XrefSource('');
-
-        $tree = $this->createMock(Tree::class);
-
-        $request = self::createRequest();
-
-        app()->instance(ServerRequestInterface::class, $request);
-
-        $html = $element->edit('some-id', 'some-name', 'An inline source', $tree);
-        $dom  = new DOMDocument();
-        $dom->loadHTML($html);
-
-        $textarea_nodes = $dom->getElementsByTagName('textarea');
-        self::assertEquals(1, $textarea_nodes->count());
-    }
-
     /**
      * @return void
      */
     public function testEscape(): void
     {
-        $element = new XrefSource('');
+        $element = new XrefSharedNote('');
 
         self::assertSame('@X123@', $element->escape('@X123@'));
     }
@@ -106,9 +77,9 @@ class XrefSourceTest extends TestCase
      */
     public function testValueXrefLink(): void
     {
-        $element = new XrefSource('');
+        $element = new XrefSharedNote('');
 
-        $record = $this->createMock(Source::class);
+        $record = $this->createMock(SharedNote::class);
 
         $record->expects(self::once())
             ->method('fullName')
@@ -120,14 +91,14 @@ class XrefSourceTest extends TestCase
 
         $tree = $this->createMock(Tree::class);
 
-        $factory = $this->createMock(SourceFactory::class);
+        $factory = $this->createMock(SharedNoteFactory::class);
 
         $factory->expects(self::once())
             ->method('make')
             ->willReturn($record);
 
 
-        Registry::sourceFactory($factory);
+        Registry::sharedNoteFactory($factory);
 
         self::assertSame('<a href="https://url">Full Name</a>', $element->value('@X123@', $tree));
     }
@@ -137,7 +108,7 @@ class XrefSourceTest extends TestCase
      */
     public function testValueXrefLinkWithInvalidXref(): void
     {
-        $element = new XrefSource('');
+        $element = new XrefSharedNote('');
 
         $tree = $this->createMock(Tree::class);
 
@@ -149,17 +120,17 @@ class XrefSourceTest extends TestCase
      */
     public function testValueXrefLinkWithMissingRecord(): void
     {
-        $element = new XrefSource('');
+        $element = new XrefSharedNote('');
 
         $tree = $this->createMock(Tree::class);
 
-        $factory = $this->createMock(SourceFactory::class);
+        $factory = $this->createMock(SharedNoteFactory::class);
 
         $factory->expects(self::once())
             ->method('make')
             ->willReturn(null);
 
-        Registry::sourceFactory($factory);
+        Registry::sharedNoteFactory($factory);
 
         self::assertSame('<span class="error">@X321@</span>', $element->value('@X321@', $tree));
     }

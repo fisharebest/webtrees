@@ -62,6 +62,7 @@ use Fisharebest\Webtrees\Elements\CopyrightFile;
 use Fisharebest\Webtrees\Elements\CopyrightSourceData;
 use Fisharebest\Webtrees\Elements\CountOfChildren;
 use Fisharebest\Webtrees\Elements\CountOfMarriages;
+use Fisharebest\Webtrees\Elements\Creation;
 use Fisharebest\Webtrees\Elements\Cremation;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\CustomEvent;
@@ -81,6 +82,8 @@ use Fisharebest\Webtrees\Elements\EventAttributeType;
 use Fisharebest\Webtrees\Elements\EventOrFactClassification;
 use Fisharebest\Webtrees\Elements\EventsRecorded;
 use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
+use Fisharebest\Webtrees\Elements\ExternalIdentifier;
+use Fisharebest\Webtrees\Elements\ExternalIdentifierType;
 use Fisharebest\Webtrees\Elements\FamilyCensus;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
 use Fisharebest\Webtrees\Elements\FamilyResidence;
@@ -106,6 +109,8 @@ use Fisharebest\Webtrees\Elements\LdsChildSealingDateStatus;
 use Fisharebest\Webtrees\Elements\LdsConfirmation;
 use Fisharebest\Webtrees\Elements\LdsEndowment;
 use Fisharebest\Webtrees\Elements\LdsEndowmentDateStatus;
+use Fisharebest\Webtrees\Elements\LdsInitiatory;
+use Fisharebest\Webtrees\Elements\LdsOrdinanceStatus;
 use Fisharebest\Webtrees\Elements\LdsSpouseSealing;
 use Fisharebest\Webtrees\Elements\LdsSpouseSealingDateStatus;
 use Fisharebest\Webtrees\Elements\LocationRecord;
@@ -138,6 +143,7 @@ use Fisharebest\Webtrees\Elements\NationalIdNumber;
 use Fisharebest\Webtrees\Elements\NationOrTribalOrigin;
 use Fisharebest\Webtrees\Elements\Naturalization;
 use Fisharebest\Webtrees\Elements\NobilityTypeTitle;
+use Fisharebest\Webtrees\Elements\NonEvent;
 use Fisharebest\Webtrees\Elements\NoteRecord;
 use Fisharebest\Webtrees\Elements\NoteStructure;
 use Fisharebest\Webtrees\Elements\Occupation;
@@ -194,6 +200,7 @@ use Fisharebest\Webtrees\Elements\TempleCode;
 use Fisharebest\Webtrees\Elements\TextFromSource;
 use Fisharebest\Webtrees\Elements\TimeValue;
 use Fisharebest\Webtrees\Elements\TransmissionDate;
+use Fisharebest\Webtrees\Elements\Uid;
 use Fisharebest\Webtrees\Elements\UserReferenceNumber;
 use Fisharebest\Webtrees\Elements\UserReferenceType;
 use Fisharebest\Webtrees\Elements\VersionNumber;
@@ -206,6 +213,7 @@ use Fisharebest\Webtrees\Elements\XrefIndividual;
 use Fisharebest\Webtrees\Elements\XrefLocation;
 use Fisharebest\Webtrees\Elements\XrefMedia;
 use Fisharebest\Webtrees\Elements\XrefRepository;
+use Fisharebest\Webtrees\Elements\XrefSharedNote;
 use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\Elements\XrefSubmission;
 use Fisharebest\Webtrees\Elements\XrefSubmitter;
@@ -617,7 +625,7 @@ class Gedcom
             'INDI:CONL'                => new LdsConfirmation(I18N::translate('LDS confirmation')),
             'INDI:CONL:DATE'           => new DateLdsOrd(I18N::translate('Date of LDS confirmation')),
             'INDI:CONL:PLAC'           => new PlaceLivingOrdinance(I18N::translate('Place of LDS confirmation')),
-            'INDI:CONL:STAT'           => new LdsSpouseSealingDateStatus(I18N::translate('Status')),
+            'INDI:CONL:STAT'           => new LdsBaptismDateStatus(I18N::translate('Status')),
             'INDI:CONL:STAT:DATE'      => new ChangeDate(I18N::translate('Status change date')),
             'INDI:CONL:TEMP'           => new TempleCode(I18N::translate('Temple')),
             'INDI:CREM'                => new Cremation(I18N::translate('Cremation')),
@@ -865,6 +873,118 @@ class Gedcom
     }
 
     /**
+     * Definitions for GEDCOM 7.
+     *
+     * @return array<string,ElementInterface>
+     */
+    private function gedcom7Tags(): array
+    {
+        return [
+            'FAM:NO' => new NonEvent('Event did not happen'),
+            'INDI:NO' => new NonEvent('Event did not happen'),
+            'FAM:*:ASSO'                 => new XrefAssociate(I18N::translate('Associate')),
+            'FAM:*:ASSO:PHRASE'          => new CustomElement(I18N::translate('Phrase')),
+            'FAM:*:ASSO:ROLE'            => new RoleInEvent(I18N::translate('Role')),
+            'FAM:*:ASSO:ROLE:PHRASE'     => new CustomElement(I18N::translate('Phrase')),
+            'FAM:*:DATE:TIME'            => new TimeValue(I18N::translate('Time')),
+            'FAM:*:PLAC:EXID'            => new ExternalIdentifier(I18N::translate('External identifier')),
+            'FAM:*:PLAC:EXID:TYPE'       => new ExternalIdentifierType(I18N::translate('Type')),
+            'FAM:*:SDATE'                => new CustomElement(I18N::translate('Sort date')),
+            'FAM:*:SDATE:PHRASE'         => new CustomElement(I18N::translate('Phrase')),
+            'FAM:*:SDATE:TIME'           => new CustomElement(I18N::translate('Sort time')),
+            'FAM:*:SNOTE'                => new XrefSharedNote(I18N::translate('Shared note')),
+            'FAM:*:UID'                  => new Uid(I18N::translate('Unique identifier')),
+            'FAM:ASSO'                   => new XrefAssociate(I18N::translate('Associate')),
+            'FAM:ASSO:PHRASE'            => new CustomElement(I18N::translate('Phrase')),
+            'FAM:ASSO:ROLE'              => new RoleInEvent(I18N::translate('Role')),
+            'FAM:ASSO:ROLE:PHRASE'       => new CustomElement(I18N::translate('Phrase')),
+            'FAM:CREA'                   => new Creation(I18N::translate('Created at')),
+            'FAM:CREA:DATE'              => new DateValue(I18N::translate('Creation date')),
+            'FAM:CREA:DATE:TIME'         => new TimeValue(I18N::translate('Creation time')),
+            'FAM:EXID'                   => new ExternalIdentifier(I18N::translate('External identifier')),
+            'FAM:EXID:TYPE'              => new ExternalIdentifierType(I18N::translate('Type')),
+            'FAM:FACT'                   => new CustomFact(I18N::translate('Fact')),
+            'FAM:REFN'                   => new UserReferenceNumber(I18N::translate('Reference number')),
+            'FAM:REFN:TYPE'              => new UserReferenceType(I18N::translate('Type')),
+            'FAM:SNOTE'                  => new XrefSharedNote(I18N::translate('Shared note')),
+            'FAM:UID'                    => new Uid(I18N::translate('Unique identifier')),
+            'INDI:*:ASSO'                => new XrefAssociate(I18N::translate('Associate')),
+            'INDI:*:ASSO:PHRASE'         => new CustomElement(I18N::translate('Phrase')),
+            'INDI:*:ASSO:ROLE'           => new RoleInEvent(I18N::translate('Role')),
+            'INDI:*:ASSO:ROLE:PHRASE'    => new CustomElement(I18N::translate('Phrase')),
+            'INDI:*:DATE:TIME'           => new TimeValue(I18N::translate('Time')),
+            'INDI:*:PLAC:EXID'           => new ExternalIdentifier(I18N::translate('External identifier')),
+            'INDI:*:PLAC:EXID:TYPE'      => new ExternalIdentifierType(I18N::translate('Type')),
+            'INDI:*:SDATE'               => new CustomElement(I18N::translate('Sort date')),
+            'INDI:*:SDATE:PHRASE'        => new CustomElement(I18N::translate('Phrase')),
+            'INDI:*:SDATE:TIME'          => new CustomElement(I18N::translate('Sort time')),
+            'INDI:*:SNOTE'               => new XrefSharedNote(I18N::translate('Shared note')),
+            'INDI:*:UID'                 => new Uid(I18N::translate('Unique identifier')),
+            'INDI:ADOP:FAMC:ADOP:PHRASE' => new CustomElement(I18N::translate('Phrase')),
+            'INDI:ALIA:PHRASE'           => new CustomElement(I18N::translate('Phrase')),
+            'INDI:ASSO'                  => new XrefAssociate(I18N::translate('Associate')),
+            'INDI:ASSO:PHRASE'           => new CustomElement(I18N::translate('Phrase')),
+            'INDI:ASSO:ROLE'             => new RoleInEvent(I18N::translate('Role')),
+            'INDI:ASSO:ROLE:PHRASE'      => new CustomElement(I18N::translate('Phrase')),
+            'INDI:BIRT:DATE:TIME'        => new TimeValue(I18N::translate('Time of birth')),
+            'INDI:CREA'                  => new Creation(I18N::translate('Created at')),
+            'INDI:CREA:DATE'             => new DateValue(I18N::translate('Creation date')),
+            'INDI:CREA:DATE:TIME'        => new TimeValue(I18N::translate('Creation time')),
+            'INDI:DEAT:DATE:TIME'        => new TimeValue(I18N::translate('Time of death')),
+            'INDI:EXID'                  => new ExternalIdentifier(I18N::translate('External identifier')),
+            'INDI:EXID:TYPE'             => new ExternalIdentifierType(I18N::translate('Type')),
+            'INDI:INIL'                  => /* I18N: GEDCOM tag INIL - an LDS ceremony */ new LdsInitiatory(I18N::translate('LDS initiatory')),
+            'INDI:INIL:STAT'             => new LdsOrdinanceStatus(I18N::translate('Status')),
+            'INDI:INIL:STAT:DATE'        => new ChangeDate(I18N::translate('Date of status change')),
+            'INDI:INIL:STAT:DATE:TIME'   => new TimeValue(I18N::translate('Time of status change')),
+            'INDI:INIL:TEMP'             => new TempleCode(I18N::translate('Temple')),
+            'INDI:REFN'                  => new UserReferenceNumber(I18N::translate('Reference number')),
+            'INDI:REFN:TYPE'             => new UserReferenceType(I18N::translate('Type')),
+            'INDI:SNOTE'                 => new XrefSharedNote(I18N::translate('Shared note')),
+            'INDI:UID'                   => new Uid(I18N::translate('Unique identifier')),
+            'OBJE:CREA'                  => new Creation(I18N::translate('Created at')),
+            'OBJE:CREA:DATE'             => new DateValue(I18N::translate('Creation date')),
+            'OBJE:CREA:DATE:TIME'        => new TimeValue(I18N::translate('Creation time')),
+            'OBJE:SNOTE'                 => new XrefSharedNote(I18N::translate('Shared note')),
+            'REPO:CREA'                  => new Creation(I18N::translate('Created at')),
+            'REPO:CREA:DATE'             => new DateValue(I18N::translate('Creation date')),
+            'REPO:CREA:DATE:TIME'        => new TimeValue(I18N::translate('Creation time')),
+            'REPO:EXID'                  => new ExternalIdentifier(I18N::translate('External identifier')),
+            'REPO:EXID:TYPE'             => new ExternalIdentifierType(I18N::translate('Type')),
+            'REPO:REFN'                  => new UserReferenceNumber(I18N::translate('Reference number')),
+            'REPO:REFN:TYPE'             => new UserReferenceType(I18N::translate('Type')),
+            'REPO:SNOTE'                 => new XrefSharedNote(I18N::translate('Shared note')),
+            'REPO:UID'                   => new Uid(I18N::translate('Unique identifier')),
+            'SNOTE:CREA'                 => new Creation(I18N::translate('Created at')),
+            'SNOTE:CREA:DATE'            => new DateValue(I18N::translate('Creation date')),
+            'SNOTE:CREA:DATE:TIME'       => new TimeValue(I18N::translate('Creation time')),
+            'SNOTE:EXID'                 => new ExternalIdentifier(I18N::translate('External identifier')),
+            'SNOTE:EXID:TYPE'            => new ExternalIdentifierType(I18N::translate('Type')),
+            'SNOTE:REFN'                 => new UserReferenceNumber(I18N::translate('Reference number')),
+            'SNOTE:REFN:TYPE'            => new UserReferenceType(I18N::translate('Type')),
+            'SNOTE:UID'                  => new Uid(I18N::translate('Unique identifier')),
+            'SOUR:CREA'                  => new Creation(I18N::translate('Created at')),
+            'SOUR:CREA:DATE'             => new DateValue(I18N::translate('Creation date')),
+            'SOUR:CREA:DATE:TIME'        => new TimeValue(I18N::translate('Creation time')),
+            'SOUR:EXID'                  => new ExternalIdentifier(I18N::translate('External identifier')),
+            'SOUR:EXID:TYPE'             => new ExternalIdentifierType(I18N::translate('Type')),
+            'SOUR:REFN'                  => new UserReferenceNumber(I18N::translate('Reference number')),
+            'SOUR:REFN:TYPE'             => new UserReferenceType(I18N::translate('Type')),
+            'SOUR:SNOTE'                 => new XrefSharedNote(I18N::translate('Shared note')),
+            'SOUR:UID'                   => new Uid(I18N::translate('Unique identifier')),
+            'SUBM:CREA'                  => new Creation(I18N::translate('Created at')),
+            'SUBM:CREA:DATE'             => new DateValue(I18N::translate('Creation date')),
+            'SUBM:CREA:DATE:TIME'        => new TimeValue(I18N::translate('Creation time')),
+            'SUBM:EXID'                  => new ExternalIdentifier(I18N::translate('External identifier')),
+            'SUBM:EXID:TYPE'             => new ExternalIdentifierType(I18N::translate('Type')),
+            'SUBM:REFN'                  => new UserReferenceNumber(I18N::translate('Reference number')),
+            'SUBM:REFN:TYPE'             => new UserReferenceType(I18N::translate('Type')),
+            'SUBM:SNOTE'                 => new XrefSharedNote(I18N::translate('Shared note')),
+            'SUBM:UID'                   => new Uid(I18N::translate('Unique identifier')),
+        ];
+    }
+
+    /**
      * @return array<string,ElementInterface>
      */
     private function aldfaerTags(): array
@@ -894,7 +1014,7 @@ class Gedcom
             'INDI:*:SOUR:DATA:NOTE' => new SubmitterText(I18N::translate('Note')),
             'INDI:_EMPLOY'          => new CustomFact(I18N::translate('Occupation')),
             'INDI:_FUN'             => new CustomEvent(I18N::translate('Funeral')),
-            'INDI:_INIT'            => /* I18N: GEDCOM tag _INIT - an LDS ceremony performed */ new CustomEvent(I18N::translate('Initiatory')),
+            'INDI:_INIT'            => new LdsInitiatory(I18N::translate('LDS initiatory')),
             'INDI:_ORDI'            => new CustomEvent(I18N::translate('Ordination')),
             'INDI:_ORIG'            => new CustomFact(I18N::translate('Origin')),
             'INDI:_DEST'            => new CustomFact(I18N::translate('Destination')),
@@ -1214,7 +1334,7 @@ class Gedcom
             '_LOC'                            => new LocationRecord(I18N::translate('Location')),
             '_LOC:CHAN'                       => new Change(I18N::translate('Last change')),
             '_LOC:CHAN:DATE'                  => new ChangeDate(I18N::translate('Date of last change')),
-            '_LOC:CHAN:DATE:TIME'             => new TimeValue(I18N::translate('Time')),
+            '_LOC:CHAN:DATE:TIME'             => new TimeValue(I18N::translate('Time of last change')),
             '_LOC:CHAN:NOTE'                  => new NoteStructure(I18N::translate('Note')),
             '_LOC:EVEN'                       => new CustomEvent(I18N::translate('Event')),
             '_LOC:EVEN:DATE'                  => new DateValue(I18N::translate('Date of event')),
@@ -1609,25 +1729,18 @@ class Gedcom
         return [
             'FAM:CHAN:_PGVU'        => new WebtreesUser(I18N::translate('Author of last change')),
             'FAM:COMM'              => new CustomElement(I18N::translate('Comment')),
-            'FAM:FACT'              => new CustomFact(I18N::translate('Fact')),
             'INDI:*:ASSO'           => new XrefAssociate(I18N::translate('Associate')),
             'INDI:*:ASSO:RELA'      => new RelationIsDescriptor(I18N::translate('Relationship')),
             'INDI:*:PLAC:_HEB'      => new NoteStructure(I18N::translate('Place in Hebrew')),
-            'INDI:ADDR'             => new AddressLine(I18N::translate('Address')),
-            'INDI:BIRT:DATE:TIME'   => new TimeValue(I18N::translate('Time of birth')),
             'INDI:BURI:CEME'        => new CustomElement(I18N::translate('Cemetery')),
             'INDI:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
             'INDI:COMM'             => new CustomElement(I18N::translate('Comment')),
-            'INDI:DEAT:DATE:TIME'   => new TimeValue(I18N::translate('Time of death')),
-            'INDI:EMAIL'            => new AddressEmail(I18N::translate('Email address')),
             'INDI:NAME:_HEB'        => new NamePersonal(I18N::translate('Name in Hebrew'), []),
-            'INDI:_FNRL'            => new CustomIndividualEvent(I18N::translate('Funeral')),
             'INDI:_HOL'             => new CustomIndividualEvent(I18N::translate('Holocaust')),
             'INDI:_MILI'            => new CustomIndividualEvent(I18N::translate('Military')),
             'INDI:_PGV_OBJS'        => new XrefMedia(I18N::translate('Re-order media')),
             'NOTE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
             'OBJE:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
-            'OBJE:_PRIM'            => new CustomElement(I18N::translate('Highlighted image')),
             'OBJE:_THUM'            => new CustomElement(I18N::translate('Thumbnail image')),
             'REPO:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
             'SOUR:CHAN:_PGVU'       => new WebtreesUser(I18N::translate('Author of last change')),
@@ -1917,6 +2030,7 @@ class Gedcom
             $element_factory->registerTags($this->familySearchTags());
             $element_factory->registerTags($this->familyTreeBuilderTags());
             $element_factory->registerTags($this->familyTreeMakerTags());
+            $element_factory->registerTags($this->gedcom7Tags());
             $element_factory->registerTags($this->gedcomLTags());
             $element_factory->registerTags($this->geneatique());
             $element_factory->registerTags($this->genPlusWinTags());

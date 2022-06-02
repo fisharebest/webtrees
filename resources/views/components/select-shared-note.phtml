@@ -1,0 +1,36 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\TomSelectSharedNote;
+use Fisharebest\Webtrees\SharedNote;
+use Fisharebest\Webtrees\Tree;
+
+/**
+ * @var string          $at "@" or "" (or unset).
+ * @var SharedNote|null $shared_note
+ * @var string|null     $class
+ * @var string|null     $id
+ * @var string          $name
+ * @var Tree            $tree
+ */
+
+$at = $at ?? '';
+
+?>
+
+<select
+    autocomplete="off"
+    class="form-select tom-select <?= $class ?? '' ?>"
+    data-url="<?= e(route(TomSelectSharedNote::class, ['tree' => $tree->name(), 'at' => $at])) ?>"
+    id="<?= e($id ?? $name) ?>"
+    name="<?= e($name) ?>"
+    <?= ($disabled ?? false) ? 'disabled="disabled"' : '' ?>
+    <?= ($required ?? false) ? 'required="required"' : '' ?>
+>
+    <?php if (($shared_note ?? null) instanceof SharedNote) : ?>
+        <option value="<?= e($at . $shared_note->xref() . $at) ?>">
+            <?= view('selects/shared-note', ['note' => $shared_note]) ?>
+        </option>
+    <?php else : ?>
+        <option value="">&nbsp;</option>
+    <?php endif ?>
+</select>

@@ -38,6 +38,7 @@ use Fisharebest\Webtrees\Factories\NoteFactory;
 use Fisharebest\Webtrees\Factories\RepositoryFactory;
 use Fisharebest\Webtrees\Factories\ResponseFactory;
 use Fisharebest\Webtrees\Factories\RouteFactory;
+use Fisharebest\Webtrees\Factories\SharedNoteFactory;
 use Fisharebest\Webtrees\Factories\SlugFactory;
 use Fisharebest\Webtrees\Factories\SourceFactory;
 use Fisharebest\Webtrees\Factories\SubmissionFactory;
@@ -212,6 +213,7 @@ class Webtrees
         Registry::repositoryFactory(new RepositoryFactory());
         Registry::responseFactory(new ResponseFactory(new Psr17Factory(), new Psr17Factory()));
         Registry::routeFactory(new RouteFactory());
+        Registry::sharedNoteFactory(new SharedNoteFactory());
         Registry::slugFactory(new SlugFactory());
         Registry::sourceFactory(new SourceFactory());
         Registry::submissionFactory(new SubmissionFactory());

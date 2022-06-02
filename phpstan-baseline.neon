@@ -46,11 +46,6 @@ parameters:
 			path: app/Elements/DateValue.php
 
 		-
-			message: "#^Parameter \\#1 \\$num of function dechex expects int, float\\|int given\\.$#"
-			count: 1
-			path: app/Elements/PafUid.php
-
-		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
 			count: 1
 			path: app/Elements/PlaceHierarchy.php
@@ -151,6 +146,11 @@ parameters:
 			path: app/Factories/HeaderFactory.php
 
 		-
+			message: "#^Parameter \\#1 \\$num of function dechex expects int, float\\|int given\\.$#"
+			count: 1
+			path: app/Factories/IdFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
@@ -249,6 +249,26 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\RepositoryFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/RepositoryFactory.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SharedNoteFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
+			count: 1
+			path: app/Factories/SharedNoteFactory.php
+
+		-
+			message: "#^Parameter \\#1 \\$gedcom of method Fisharebest\\\\Webtrees\\\\Factories\\\\AbstractGedcomRecordFactory\\:\\:extractXref\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Factories/SharedNoteFactory.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, mixed given\\.$#"
+			count: 1
+			path: app/Factories/SharedNoteFactory.php
+
+		-
+			message: "#^Parameter \\#3 \\$pending of class Fisharebest\\\\Webtrees\\\\SharedNote constructor expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: app/Factories/SharedNoteFactory.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
@@ -2802,6 +2822,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchRepositories\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\Repository\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, mixed\\>\\.$#"
+			count: 1
+			path: app/Services/SearchService.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\SearchService\\:\\:searchSharedNotes\\(\\) should return Illuminate\\\\Support\\\\Collection&iterable\\<int, Fisharebest\\\\Webtrees\\\\SharedNote\\> but returns Illuminate\\\\Support\\\\Collection&iterable\\<int, mixed\\>\\.$#"
 			count: 1
 			path: app/Services/SearchService.php
 
