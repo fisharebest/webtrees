@@ -240,7 +240,7 @@ class GedcomLoad implements RequestHandlerInterface
                     try {
                         FunctionsImport::importRecord($rec, $tree, false);
                     } catch (GedcomErrorException $exception) {
-                        $errors .= $exception->getMessage();
+                        $errors .= e($exception->getMessage());
                     }
                 }
 
@@ -268,7 +268,7 @@ class GedcomLoad implements RequestHandlerInterface
             }
 
             return $this->viewResponse('admin/import-fail', [
-                'error' => $ex->getMessage(),
+                'error' => e($ex->getMessage()),
                 'tree'  => $tree,
             ]);
         }
