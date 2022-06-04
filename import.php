@@ -221,7 +221,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
             $controller->addInlineJavascript('jQuery("#import' . $gedcom_id . '").load("import.php?gedcom_id=' . $gedcom_id . '&u=' . uniqid() . '");');
         } else {
             // A fatal error. Nothing we can do?
-            echo '<span class="error">', $ex->getMessage(), '</span>';
+            echo '<span class="error">', Filter::escapeHtml($ex->getMessage()), '</span>';
             $controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
         }
 
