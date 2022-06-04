@@ -33,6 +33,7 @@ use League\Flysystem\Cached\Storage\Memory;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemInterface;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use Ramsey\Uuid\Uuid;
 use ZipArchive;
 
 use function rewind;
@@ -308,12 +309,17 @@ class UpgradeService
      */
     private function serverParameters(): array
     {
-        $operating_system = DIRECTORY_SEPARATOR === '/' ? 'u' : 'w';
+        $site_uuid = Site::getPreference('SITE_UUID');
+
+        if ($site_uuid === '') {
+            $site_uuid = Uuid::uuid4()->toString();
+            Site::setPreference('SITE_UUID', $site_uuid);
+        }
 
         return [
             'w' => Webtrees::VERSION,
             'p' => PHP_VERSION,
-            'o' => $operating_system,
+            's' => $site_uuid,
         ];
     }
 }
