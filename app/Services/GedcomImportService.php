@@ -791,7 +791,7 @@ class GedcomImportService
             }
 
             if ($title !== '') {
-                $gedcom .= "\n3 TITL " . $title;
+                $gedcom .= "\n2 TITL " . $title;
             }
 
             if ($scrapbook !== '') {
