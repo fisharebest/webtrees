@@ -589,7 +589,7 @@ class Fact
      *
      * @return string
      */
-    public function summary(): string
+    public function summary($neverIncludeParentsAge = false): string
     {
         $attributes = [];
         $target     = $this->target();
@@ -604,7 +604,7 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if ($this->record() instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                if (!$neverIncludeParentsAge && $this->record() instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
                     $attributes[] = $date->display() . view('fact-parents-age', ['individual' => $this->record(), 'birth_date' => $date]);
                 } else {
                     $attributes[] = $date->display();
