@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\File;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Site;
+use Rhumsaa\Uuid\Uuid;
 
 /**
  * Class Functions - common functions
@@ -41,8 +42,13 @@ class Functions
     {
         $last_update_timestamp = Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
         if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
-            $row                = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-            $params             = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&m=' . $row->value . '&o=' . (DIRECTORY_SEPARATOR === '/' ? 'u' : 'w');
+            $site_uuid          = (string) Site::getPreference('SITE_UUID');
+            if ($site_uuid === '') {
+                $site_uuid = Uuid::uuid4();
+                Site::setPreference('SITE_UUID', $site_uuid);
+            }
+
+            $params             = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&s=' . $site_uuid;
             $latest_version_txt = File::fetchUrl('https://dev.webtrees.net/build/latest-version.txt' . $params);
             if ($latest_version_txt) {
                 Site::setPreference('LATEST_WT_VERSION', $latest_version_txt);
