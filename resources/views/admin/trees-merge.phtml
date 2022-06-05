@@ -32,12 +32,12 @@ use Fisharebest\Webtrees\Tree;
     </p>
     <p>
         <a class="current" href="<?= e(route(RenumberTreePage::class, ['tree' => $tree1->name()])) ?>">
-            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree1->title()) ?>
+            <?= I18N::translate('Renumber XREFs') ?> — <?= e($tree1->title()) ?>
         </a>
     </p>
     <p>
         <a class="current" href="<?= e(route(RenumberTreePage::class, ['tree' => $tree2->name()])) ?>">
-            <?= I18N::translate('Renumber family tree') ?> — <?= e($tree2->title()) ?>
+            <?= I18N::translate('Renumber XREFs') ?> — <?= e($tree2->title()) ?>
         </a>
     </p>
 <?php endif ?>

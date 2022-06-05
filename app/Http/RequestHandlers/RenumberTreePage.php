@@ -59,7 +59,7 @@ class RenumberTreePage implements RequestHandlerInterface
         $xrefs = $this->admin_service->duplicateXrefs($tree);
 
         /* I18N: Renumber the records in a family tree */
-        $title = I18N::translate('Renumber family tree') . ' — ' . e($tree->title());
+        $title = I18N::translate('Renumber XREFs') . ' — ' . e($tree->title());
 
         return $this->viewResponse('admin/trees-renumber', [
             'title' => $title,
