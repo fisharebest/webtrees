@@ -24,7 +24,11 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
 ?>
 
-<table class="table table-sm wt-facts-table">
+<table class="table table-sm wt-facts-table wt-table-fixed">
+    <colgroup>
+        <col class="w-25">
+        <col class="w-75">
+    </colgroup>
     <caption>
         <a href="<?= e($family->url()) ?>"><?= $label ?></a>
     </caption>

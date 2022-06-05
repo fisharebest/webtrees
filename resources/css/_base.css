@@ -27,7 +27,6 @@
 @import "_on-screen-keyboard.css";
 @import "_pages.css";
 @import "_sortable.css";
-@import "_table.css";
 @import "_tab-album.css";
 @import "_tab-relatives.css";
 
@@ -135,6 +134,10 @@ a:hover, .btn-link:hover, .nav-link:hover {
     text-overflow: ellipsis;
 }
 
+.wt-table-fixed {
+    table-layout: fixed;
+}
+
 /* Enter/exit fullscreen mode */
 .wt-icon-exit-fullscreen {
     display: none;
@@ -147,3 +150,4 @@ a:hover, .btn-link:hover, .nav-link:hover {
 }
 :fullscreen .wt-icon-enter-fullscreen {
     display: none;
+}
