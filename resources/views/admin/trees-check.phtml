@@ -4,6 +4,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\ManageTrees;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string> $errors
@@ -26,15 +27,39 @@ use Fisharebest\Webtrees\Tree;
 
 <ul class="list-group">
     <?php foreach ($errors as $error) : ?>
-        <li class="list-group-item list-group-item-danger"><?= $error ?></li>
+        <li class="list-group-item list-group-item-danger" data-wt-tag="<?= e($error->tag) ?>">
+            <?php if ($error->tag !== '') : ?>
+                <button type="button" class="btn btn-sm btn-link float-end" title="<?= e($error->tag) ?>">
+                    <?= I18N::translate('Hide these errors') ?>
+                </button>
+            <?php endif ?>
+
+            <?= $error->message ?>
+        </li>
     <?php endforeach ?>
 
     <?php foreach ($warnings as $warning) : ?>
-        <li class="list-group-item list-group-item-warning"><?= $warning ?></li>
+        <li class="list-group-item list-group-item-warning" data-wt-tag="<?= e($warning->tag) ?>">
+            <?php if ($error->tag !== '') : ?>
+            <button type="button" class="btn btn-sm btn-link float-end" title="<?= e($warning->tag) ?>">
+                <?= I18N::translate('Hide these errors') ?>
+            </button>
+            <?php endif ?>
+
+            <?= $warning->message ?>
+        </li>
     <?php endforeach ?>
 
     <?php foreach ($infos as $info) : ?>
-        <li class="list-group-item list-group-item-info"><?= $info ?></li>
+        <li class="list-group-item list-group-item-info" data-wt-tag="<?= e($info->tag) ?>">
+            <?php if ($info->tag !== '') : ?>
+            <button type="button" class="btn btn-sm btn-link float-end" title="<?= e($info->tag) ?>">
+                <?= I18N::translate('Hide these errors') ?>
+            </button>
+            <?php endif ?>
+
+            <?= $info->message ?>
+        </li>
     <?php endforeach ?>
 
     <?php if ($errors === [] && $warnings === []) : ?>
@@ -50,3 +75,21 @@ use Fisharebest\Webtrees\Tree;
         </a>
     </p>
 <?php endif ?>
+
+<?php View::push('javascript') ?>
+<script>
+  'use strict';
+
+  document.querySelector('ul.list-group').addEventListener('click', (event) => {
+    if (event.target.matches('button')) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Much quicker to hide elements than remove them.
+      document
+        .querySelectorAll('[data-wt-tag=' + CSS.escape(event.target.closest('li').dataset.wtTag) + ']')
+        .forEach((element) => { element.style.display = 'none'; });
+    }
+  });
+</script>
+<?php View::endpush() ?>
