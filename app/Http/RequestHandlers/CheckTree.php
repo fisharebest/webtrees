@@ -45,7 +45,6 @@ use Fisharebest\Webtrees\Location;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Mime;
 use Fisharebest\Webtrees\Note;
-use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Repository;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Source;
@@ -63,14 +62,12 @@ use function array_key_exists;
 use function array_slice;
 use function e;
 use function implode;
-use function in_array;
 use function preg_match;
 use function route;
 use function str_contains;
 use function str_starts_with;
 use function strtoupper;
 use function substr_count;
-use function var_dump;
 
 /**
  * Check a tree for errors.
@@ -192,13 +189,13 @@ class CheckTree implements RequestHandlerInterface
 
             foreach ($lines as $line_number => $line) {
                 if (preg_match('/^(\d+) (\w+) ?(.*)/', $line, $match) !== 1) {
-                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM record.'));
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM record.'), '');
                     break;
                 }
 
                 $level = (int) $match[1];
                 if ($level > $last_level + 1) {
-                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM level number.'));
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, I18N::translate('Invalid GEDCOM level number.'), '');
                     break;
                 }
 
@@ -216,10 +213,10 @@ class CheckTree implements RequestHandlerInterface
                 if ($element instanceof UnknownElement) {
                     if (str_starts_with($tag, '_') || str_starts_with($full_tag, '_') || str_contains($full_tag, ':_')) {
                         $message    = I18N::translate('Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags.');
-                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag);
                     } else {
                         $message  = I18N::translate('Invalid GEDCOM tag.') . ' ' . $full_tag;
-                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag);
                     }
                 } elseif ($element instanceof AbstractXrefElement) {
                     if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $value, $match) === 1) {
@@ -229,64 +226,64 @@ class CheckTree implements RequestHandlerInterface
 
                         if ($linked === null) {
                             $message  = I18N::translate('%s does not exist.', e($xref1));
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $xref1);
                         } elseif ($element instanceof XrefFamily && $linked->type !== Family::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Family::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefIndividual && $linked->type !== Individual::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Individual::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefMedia && $linked->type !== Media::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Media::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefNote && $linked->type !== Note::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Note::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefSource && $linked->type !== Source::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Source::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefRepository && $linked->type !== Repository::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Repository::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefSubmitter && $linked->type !== Submitter::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Submitter::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefSubmission && $linked->type !== Submission::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Submission::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif ($element instanceof XrefLocation && $linked->type !== Location::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Location::RECORD_TYPE);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
                         } elseif (($full_tag === 'FAM:HUSB' || $full_tag === 'FAM:WIFE') && !str_contains($linked->gedcom, "\n1 FAMS @" . $record->xref . '@')) {
                             $link1    = $this->recordLink($tree, $linked->xref);
                             $link2    = $this->recordLink($tree, $record->xref);
                             $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-FAMS');
                         } elseif ($full_tag === 'FAM:CHIL' && !str_contains($linked->gedcom, "\n1 FAMC @" . $record->xref . '@')) {
                             $link1    = $this->recordLink($tree, $linked->xref);
                             $link2    = $this->recordLink($tree, $record->xref);
                             $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-FAMC');
                         } elseif ($full_tag === 'INDI:FAMC' && !str_contains($linked->gedcom, "\n1 CHIL @" . $record->xref . '@')) {
                             $link1    = $this->recordLink($tree, $linked->xref);
                             $link2    = $this->recordLink($tree, $record->xref);
                             $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-CHIL');
                         } elseif ($full_tag === 'INDI:FAMS' && !str_contains($linked->gedcom, "\n1 HUSB @" . $record->xref . '@') && !str_contains($linked->gedcom, "\n1 WIFE @" . $record->xref . '@')) {
                             $link1    = $this->recordLink($tree, $linked->xref);
                             $link2    = $this->recordLink($tree, $record->xref);
                             $message  = I18N::translate('%1$s does not have a link back to %2$s.', $link1, $link2);
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-HUSB-WIFE');
                         } elseif ($xref1 !== $xref2) {
                             $message    = I18N::translate('%1$s does not exist. Did you mean %2$s?', e($xref1), e($xref2));
-                            $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                            $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $xref1);
                         }
                     } elseif ($tag === 'SOUR') {
                         $message    = I18N::translate('Inline-source records are discouraged.');
-                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-inline');
                     } else {
                         $message  = I18N::translate('Invalid GEDCOM value.');
-                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-value-' . $value);
                     }
                 } elseif ($element->canonical($value) !== $value) {
                     $expected = e($element->canonical($value));
@@ -294,32 +291,32 @@ class CheckTree implements RequestHandlerInterface
                     $message  = I18N::translate('“%1$s” should be “%2$s”.', $actual, $expected);
                     if (strtoupper($element->canonical($value)) !== strtoupper($value)) {
                         // This will be relevant for GEDCOM 7.0.  It's not relevant now, and causes confusion.
-                        $infos[]  = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        $infos[]  = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-value');
                     }
                 } elseif ($element instanceof MultimediaFormat) {
                     $mime = Mime::TYPES[$value] ?? Mime::DEFAULT_TYPE;
 
                     if ($mime === Mime::DEFAULT_TYPE) {
                         $message    = I18N::translate('webtrees does not recognise this file format.');
-                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $mime);
                     } elseif (str_starts_with($mime, 'image/') && !array_key_exists($mime, ImageFactory::SUPPORTED_FORMATS)) {
                         $message    = I18N::translate('webtrees cannot create thumbnails for this file format.');
-                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $mime);
                     }
                 } elseif ($element instanceof MultimediaFileReference && $value === 'gedcom.ged') {
                     $message  = I18N::translate('This filename is not compatible with the GEDZIP file format.');
-                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message);
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '_' . $value);
                 }
             }
 
             if ($record->type === Family::RECORD_TYPE) {
                 if (substr_count($record->gedcom, "\n1 HUSB @") > 1) {
                     $message  = I18N::translate('%s occurs too many times.', 'FAM:HUSB');
-                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message);
+                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message, $full_tag . '-count');
                 }
                 if (substr_count($record->gedcom, "\n1 WIFE @") > 1) {
                     $message  = I18N::translate('%s occurs too many times.', 'FAM:WIFE');
-                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message);
+                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message, $full_tag . '-count');
                 }
             }
         }
@@ -379,44 +376,6 @@ class CheckTree implements RequestHandlerInterface
     }
 
     /**
-     * Format a link to a record.
-     *
-     * @param Tree   $tree
-     * @param string $type
-     * @param string $xref
-     * @param int    $line_number
-     * @param string $line
-     * @param string $message
-     *
-     * @return string
-     */
-    private function lineError(Tree $tree, string $type, string $xref, int $line_number, string $line, string $message): string
-    {
-        return
-            I18N::translate('%1$s: %2$s', $this->recordType($type), $this->recordLink($tree, $xref)) .
-            ' — ' .
-            I18N::translate('%1$s: %2$s', I18N::translate('Line number'), I18N::number($line_number)) .
-            ' — ' .
-            '<code>' . e($line) . '</code>' .
-            '<br>' . $message;
-    }
-
-    /**
-     * Format a link to a record.
-     *
-     * @param Tree   $tree
-     * @param string $type
-     * @param string $xref
-     * @param string $message
-     *
-     * @return string
-     */
-    private function recordError(Tree $tree, string $type, string $xref, string $message): string
-    {
-        return I18N::translate('%1$s: %2$s', $this->recordType($type), $this->recordLink($tree, $xref)) . ' — ' . $message;
-    }
-
-    /**
      * @param Tree   $tree
      * @param string $xref
      * @param string $type1
@@ -431,5 +390,62 @@ class CheckTree implements RequestHandlerInterface
         $type2 = $this->recordType($type2);
 
         return I18N::translate('%1$s is a %2$s but a %3$s is expected.', $link, $type1, $type2);
+    }
+
+    /**
+     * Format a link to a record.
+     *
+     * @param Tree   $tree
+     * @param string $type
+     * @param string $xref
+     * @param int    $line_number
+     * @param string $line
+     * @param string $message
+     * @param string $tag
+     *
+     * @return object
+     */
+    private function lineError(
+        Tree $tree,
+        string $type,
+        string $xref,
+        int $line_number,
+        string $line,
+        string $message,
+        string $tag
+    ): object {
+        $message =
+            I18N::translate('%1$s: %2$s', $this->recordType($type), $this->recordLink($tree, $xref)) .
+            ' — ' .
+            I18N::translate('%1$s: %2$s', I18N::translate('Line number'), I18N::number($line_number)) .
+            ' — ' .
+            '<code>' . e($line) . '</code>' .
+            '<br>' . $message;
+
+        return (object) [
+            'message' => $message,
+            'tag'     => $tag,
+        ];
+    }
+
+    /**
+     * Format a link to a record.
+     *
+     * @param Tree   $tree
+     * @param string $type
+     * @param string $xref
+     * @param string $message
+     * @param string $tag
+     *
+     * @return object
+     */
+    private function recordError(Tree $tree, string $type, string $xref, string $message, string $tag): object
+    {
+        $message = I18N::translate('%1$s: %2$s', $this->recordType($type), $this->recordLink($tree, $xref)) . ' — ' . $message;
+
+        return (object) [
+            'message' => $message,
+            'tag'     => $tag,
+        ];
     }
 }
