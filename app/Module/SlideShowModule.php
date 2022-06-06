@@ -34,11 +34,9 @@ use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function array_filter;
-use function array_keys;
 use function in_array;
 use function str_contains;
 use function strtolower;
-use function var_dump;
 
 /**
  * Class SlideShowModule
