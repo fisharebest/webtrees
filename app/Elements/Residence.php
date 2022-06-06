@@ -19,10 +19,14 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Tree;
+
+use function e;
+
 /**
  * Residence
  */
-class Residence extends EmptyElement
+class Residence extends AbstractElement
 {
     protected const SUBTAGS = [
         'TYPE'  => '0:1:?',
@@ -41,4 +45,19 @@ class Residence extends EmptyElement
         'SOUR'  => '0:M',
         'RESN'  => '0:1',
     ];
+
+    /**
+     * An edit control for this data.
+     *
+     * @param string $id
+     * @param string $name
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function edit(string $id, string $name, string $value, Tree $tree): string
+    {
+        return '<input class="form-control" type="hidden" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />';
+    }
 }

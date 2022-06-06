@@ -140,7 +140,7 @@ use Fisharebest\Webtrees\Elements\NamePieceSurnamePrefix;
 use Fisharebest\Webtrees\Elements\NameRomanizedVariation;
 use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\Elements\NationalIdNumber;
-use Fisharebest\Webtrees\Elements\NationOrTribalOrigin;
+use Fisharebest\Webtrees\Elements\NationalOrTribalOrigin;
 use Fisharebest\Webtrees\Elements\Naturalization;
 use Fisharebest\Webtrees\Elements\NobilityTypeTitle;
 use Fisharebest\Webtrees\Elements\NonEvent;
@@ -692,7 +692,7 @@ class Gedcom
             'INDI:NAME:SPFX'           => new NamePieceSurnamePrefix(I18N::translate('Surname prefix')),
             'INDI:NAME:SURN'           => new NamePieceSurname(I18N::translate('Surname')),
             'INDI:NAME:TYPE'           => new NameType(I18N::translate('Type of name')),
-            'INDI:NATI'                => new NationOrTribalOrigin(I18N::translate('Nationality')),
+            'INDI:NATI'                => new NationalOrTribalOrigin(I18N::translate('Nationality')),
             'INDI:NATU'                => new Naturalization(I18N::translate('Naturalization')),
             'INDI:NATU:DATE'           => new DateValue(I18N::translate('Date of naturalization')),
             'INDI:NATU:PLAC'           => new PlaceName(I18N::translate('Place of naturalization')),
@@ -1429,6 +1429,12 @@ class Gedcom
     private function geneatique(): array
     {
         return [
+            'INDI:DEAT:DATE:TIME' => new TimeValue(I18N::translate('Time of death')),
+            'OBJE:FORM' => '',
+            'OBJE:TITL' => '',
+            'INDI:NAME:_AKA' => '',
+            'INDI:NAME:_MARNM' => '',
+
             /*
             Pour déclarer les témoins dans les actes de naissance
 

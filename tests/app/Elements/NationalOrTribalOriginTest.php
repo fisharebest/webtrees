@@ -23,9 +23,9 @@ namespace Fisharebest\Webtrees\Elements;
  * Test harness for the class NationOrTribalOrigin
  *
  * @covers \Fisharebest\Webtrees\Elements\AbstractElement
- * @covers \Fisharebest\Webtrees\Elements\NationOrTribalOrigin
+ * @covers \Fisharebest\Webtrees\Elements\NationalOrTribalOrigin
  */
-class NationOrTribalOriginTest extends AbstractElementTest
+class NationalOrTribalOriginTest extends AbstractElementTest
 {
     /**
      * Standard tests for all elements.
@@ -34,6 +34,6 @@ class NationOrTribalOriginTest extends AbstractElementTest
     {
         parent::setUpBeforeClass();
 
-        self::$element = new NationOrTribalOrigin('label');
+        self::$element = new NationalOrTribalOrigin('label');
     }
 }
