@@ -40,7 +40,7 @@ use Fisharebest\Webtrees\View;
 
     <?php foreach ($warnings as $warning) : ?>
         <li class="list-group-item list-group-item-warning" data-wt-tag="<?= e($warning->tag) ?>">
-            <?php if ($error->tag !== '') : ?>
+            <?php if ($warning->tag !== '') : ?>
             <button type="button" class="btn btn-sm btn-link float-end" title="<?= e($warning->tag) ?>">
                 <?= I18N::translate('Hide these errors') ?>
             </button>
