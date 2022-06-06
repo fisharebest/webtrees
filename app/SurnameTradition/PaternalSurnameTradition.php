@@ -23,8 +23,6 @@ use Fisharebest\Webtrees\Elements\NameType;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 
-use function var_dump;
-
 /**
  * Children take their father’s surname. Wives take their husband’s surname.
  */
