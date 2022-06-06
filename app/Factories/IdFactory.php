@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Factories;
 
 use Fisharebest\Webtrees\Contracts\IdFactoryInterface;
-
 use Ramsey\Uuid\Exception\RandomSourceException;
 use Ramsey\Uuid\Uuid;
 
