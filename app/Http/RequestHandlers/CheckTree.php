@@ -312,11 +312,11 @@ class CheckTree implements RequestHandlerInterface
             if ($record->type === Family::RECORD_TYPE) {
                 if (substr_count($record->gedcom, "\n1 HUSB @") > 1) {
                     $message  = I18N::translate('%s occurs too many times.', 'FAM:HUSB');
-                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message, $full_tag . '-count');
+                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message, 'FAM:HUSB-count');
                 }
                 if (substr_count($record->gedcom, "\n1 WIFE @") > 1) {
                     $message  = I18N::translate('%s occurs too many times.', 'FAM:WIFE');
-                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message, $full_tag . '-count');
+                    $errors[] = $this->recordError($tree, $record->type, $record->xref, $message, 'FAM:WIFE-count');
                 }
             }
         }
