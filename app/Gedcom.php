@@ -985,17 +985,45 @@ class Gedcom
     }
 
     /**
+     * Aldfaer also uses: _BOLD, _ITALIC, _UNDERLINE, _COLOR
+     *
      * @return array<string,ElementInterface>
      */
     private function aldfaerTags(): array
     {
         return [
-            'FAM:MARR_CIVIL'     => new Marriage(I18N::translate('Civil marriage')),
-            'FAM:MARR_PARTNERS'  => new Marriage(I18N::translate('Registered partnership')),
-            'FAM:MARR_RELIGIOUS' => new Marriage(I18N::translate('Religious marriage')),
-            'FAM:MARR_UNKNOWN'   => new Marriage(I18N::translate('Marriage')),
-            'INDI:BIRT:_LENGTH'  => new CustomElement(I18N::translate('Length')),
-            'INDI:BIRT:_WEIGHT'  => new CustomElement(I18N::translate('Weight')),
+            'FAM:MARR_CIVIL'           => new Marriage(I18N::translate('Civil marriage')),
+            'FAM:MARR_PARTNERS'        => new Marriage(I18N::translate('Registered partnership')),
+            'FAM:MARR_RELIGIOUS'       => new Marriage(I18N::translate('Religious marriage')),
+            'FAM:MARR_UNKNOWN'         => new Marriage(I18N::translate('Marriage')),
+            'FAM:_ALDFAER_NOREL'       => new EmptyElement('No relation'), // What is this?
+            'HEAD:SUBM:ADDR'           => new AddressLine(I18N::translate('Address')),
+            'HEAD:SUBM:PHON'           => new PhoneNumber(I18N::translate('Phone')),
+            'HEAD:SUBM:_EMAI'          => new AddressEmail(I18N::translate('Email')),
+            'HEAD:SUBM:_FAX'           => new AddressFax(I18N::translate('Fax')),
+            'HEAD:SUBM:_WWW'           => new AddressWebPage(I18N::translate('URL')),
+            'INDI:BIRT:_ALDFAER_TIME'  => new TimeValue(I18N::translate('Time of birth')),
+            'INDI:BIRT:_LENGTH'        => new CustomElement(I18N::translate('Length')),
+            'INDI:BIRT:_WEIGHT'        => new CustomElement(I18N::translate('Weight')),
+            'INDI:DEAT:_ALDFAER_TIME'  => new TimeValue(I18N::translate('Time of death')),
+            'INDI:_REFERENCE'          => new CustomElement(''),
+            'INDI:_PRIVACY'            => new CustomElement(''),
+            'INDI:_PRIVACY:_OBJECTION' => new CustomElement(''),
+            'INDI:_PRIVACY:_PUBLISH'   => new CustomElement(''),
+            'INDI:NAME:_SURNAS'        => new CustomElement(I18N::translate('Alternative spelling of surname')),
+            'INDI:DEAT:_DATE'          => new DateValue(I18N::translate('Date')),
+            'INDI:_INQUBIRT'           => new CustomElement(I18N::translate('')),
+            'INDI:_INQUCHIL'           => new CustomElement(I18N::translate('')),
+            'INDI:_INQURELA'           => new CustomElement(I18N::translate('')),
+            'INDI:_INQUDEAT'           => new CustomElement(I18N::translate('')),
+            'INDI:_INQUVAR1'           => new CustomElement(I18N::translate('')),
+            'INDI:_INQUVAR1CAT'        => new CustomElement(I18N::translate('')),
+            'INDI:_INQUVAR2'           => new CustomElement(I18N::translate('')),
+            'INDI:_INQUVAR2CAT'        => new CustomElement(I18N::translate('')),
+            'INDI:_INQUVAR3'           => new CustomElement(I18N::translate('')),
+            'INDI:_INQUVAR3CAT'        => new CustomElement(I18N::translate('')),
+            'INDI:_NOPARTNER'          => new CustomElement(I18N::translate('')),
+            'INDI:_NEW'                => new CustomElement(I18N::translate('')),
         ];
     }
 
