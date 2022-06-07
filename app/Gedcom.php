@@ -1101,7 +1101,7 @@ class Gedcom
             'INDI:_BRTM:PLAC'  => new PlaceName(I18N::translate('Place of brit milah')),
             'INDI:_EMAIL'      => new AddressEmail(I18N::translate('Email address')),
             'INDI:_EYEC'       => new CustomFact(I18N::translate('Eye color')),
-            'INDI:_FRNL'       => new CustomElement(I18N::translate('Funeral')),
+            'INDI:_FNRL'       => new CustomElement(I18N::translate('Funeral')),
             'INDI:_HAIR'       => new CustomFact(I18N::translate('Hair color')),
             'INDI:_HEIG'       => new CustomFact(I18N::translate('Height')),
             'INDI:_INTE'       => new CustomElement(I18N::translate('Interment')),
