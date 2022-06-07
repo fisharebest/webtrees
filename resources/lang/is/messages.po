@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-06-05 08:15+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -20,7 +8,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " en upplýsingarnar eru ókunnar"
+msgstr " en upplýsingarnar eru óþekktar"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3869,7 +3857,7 @@ msgstr "Lokið fyrir 1970; dagsetning ekki til staðar"
 #: app/Elements/LdsOrdinanceStatus.php:67
 #: app/Elements/LdsSpouseSealingDateStatus.php:66
 msgid "Completed; date unknown"
-msgstr "Lokið; dagsetning ókunn"
+msgstr "Lokið; dagsetning óþekkt"
 
 #: app/Gedcom.php:1260 app/Gedcom.php:1316 app/Gedcom.php:1651
 msgid "Completion date"
@@ -4161,7 +4149,7 @@ msgstr "Stofndagur"
 #: app/Gedcom.php:903 app/Gedcom.php:932 app/Gedcom.php:947 app/Gedcom.php:951
 #: app/Gedcom.php:960 app/Gedcom.php:968 app/Gedcom.php:977
 msgid "Creation time"
-msgstr ""
+msgstr "Stofntími"
 
 #: app/Gedcom.php:631 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4567,7 +4555,7 @@ msgstr "Dagsetning fyrstu altarisgöngu"
 
 #: app/Gedcom.php:669
 msgid "Date of immigration"
-msgstr "Dagsetning fólksinnflutnings"
+msgstr "Dagsetning innflutnings"
 
 #: app/Gedcom.php:448 app/Gedcom.php:614 app/Gedcom.php:746 app/Gedcom.php:767
 #: app/Gedcom.php:798 app/Gedcom.php:814 app/Gedcom.php:845 app/Gedcom.php:861
@@ -4598,7 +4586,7 @@ msgstr "Dagsetning bústaðar"
 
 #: app/Gedcom.php:938
 msgid "Date of status change"
-msgstr ""
+msgstr "Dagsetning stöðubreytingar"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -4615,7 +4603,7 @@ msgstr "Dagsetningasvið"
 
 #: resources/views/help/date.phtml:60
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
-msgstr "Dagsetningarsvið eru notuð til að gefa til kynna atburð, t.d. fæðingu, sem eiga sér stað á ókunnri dagsetningu innan hugsanlegs sviðs."
+msgstr "Dagsetningarsvið eru notuð til að gefa til kynna atburð, t.d. fæðingu, sem eiga sér stað á óþekktri dagsetningu innan hugsanlegs sviðs."
 
 #: resources/views/admin/users.phtml:31
 msgid "Date registered"
@@ -5306,7 +5294,7 @@ msgstr "Dó sem barn: undanþegið"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died before less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Dó fyrir 1 árs aldur, innsiglunar ekki krafist."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5891,7 +5879,7 @@ msgstr "Ytri skrár"
 #: app/Gedcom.php:890 app/Gedcom.php:904 app/Gedcom.php:916 app/Gedcom.php:934
 #: app/Gedcom.php:952 app/Gedcom.php:961 app/Gedcom.php:969 app/Gedcom.php:978
 msgid "External identifier"
-msgstr ""
+msgstr "Ytra auðkenni"
 
 #: app/Gedcom.php:1188 app/Gedcom.php:1787
 msgid "External link"
@@ -6312,7 +6300,7 @@ msgstr "Föðurfjölskylda með %s"
 #. I18N: A step-family.
 #: app/Individual.php:885
 msgid "Father’s family with an unknown individual"
-msgstr "Föðurfjölskylda með ókunnum einstakling"
+msgstr "Föðurfjölskylda með óþekktum einstaklingi"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:49
@@ -7583,7 +7571,7 @@ msgstr "Ef einstaklingur var ekki þekktur undir fyrsta eiginnafni, ætti að ge
 #: resources/views/help/name.phtml:16
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "Ef eftirnafnið er ókunnugt, notaðu tóm skrástrik: <%s>Mary //<%s>"
+msgstr "Ef eftirnafnið er óþekkt, notaðu tóm skrástrik: <%s>Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
@@ -7679,7 +7667,7 @@ msgstr "Myndir án vatnsmerkja"
 
 #: app/Gedcom.php:668
 msgid "Immigration"
-msgstr "Fólksinnflutningur"
+msgstr "Innflytjandi"
 
 #: resources/views/admin/map-import-form.phtml:57
 #: resources/views/admin/trees.phtml:288
@@ -8377,7 +8365,7 @@ msgstr "LDS heimanmundur"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:936 app/Gedcom.php:1017
 msgid "LDS initiatory"
-msgstr ""
+msgstr "LDS frumkvæði"
 
 #: app/Gedcom.php:478
 msgid "LDS spouse sealing"
@@ -9846,7 +9834,7 @@ msgstr "Móðurfjölskylda með %s"
 #. I18N: A step-family.
 #: app/Individual.php:895
 msgid "Mother’s family with an unknown individual"
-msgstr "Móðurfjölskylda með ókunnum einstaklingi"
+msgstr "Móðurfjölskylda með óþekktum einstaklingi"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:140
@@ -10395,7 +10383,7 @@ msgstr "Ekki gift/-ur"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Ekki skráð"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -11067,7 +11055,7 @@ msgstr "Ljósmynd"
 #: app/Gedcom.php:900 app/Gedcom.php:912 app/Gedcom.php:914 app/Gedcom.php:919
 #: app/Gedcom.php:923 app/Gedcom.php:924 app/Gedcom.php:926 app/Gedcom.php:928
 msgid "Phrase"
-msgstr ""
+msgstr "Setning"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11225,7 +11213,7 @@ msgstr "Staður fyrstu altarisgöngu"
 
 #: app/Gedcom.php:670
 msgid "Place of immigration"
-msgstr "Staður fólksinnflutnings"
+msgstr "Staður innflutnings"
 
 #: app/Gedcom.php:467 resources/xml/reports/fact_sources.xml:321
 #: resources/xml/reports/missing_facts_report.xml:474
@@ -11961,7 +11949,7 @@ msgstr "Endurnúmera"
 #. I18N: Renumber the records in a family tree
 #: app/Http/RequestHandlers/RenumberTreePage.php:62
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Endurnúmera XREFs"
 
 #: resources/views/admin/trees-merge.phtml:35
 #: resources/views/admin/trees-merge.phtml:40
@@ -11983,7 +11971,7 @@ msgstr "Skipta út með"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:28
 msgid "Replacement text"
-msgstr "Útskiptingar texti"
+msgstr "Útskiptingartexti"
 
 #: resources/views/modules/user-messages/user-messages.phtml:128
 #: resources/views/modules/user-messages/user-messages.phtml:129
@@ -12000,7 +11988,7 @@ msgstr "Skýrsla"
 #. I18N: GEDCOM gag _RPT_PHRS
 #: app/Gedcom.php:1578 app/Gedcom.php:1579
 msgid "Report phrase"
-msgstr ""
+msgstr "Skýrslusetning"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -13486,7 +13474,7 @@ msgstr "Flokkunarröð"
 
 #: app/Gedcom.php:894 app/Gedcom.php:920
 msgid "Sort time"
-msgstr ""
+msgstr "Flokkunartími"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:242
@@ -14756,7 +14744,7 @@ msgstr "Þetta netfang verður notað til að senda þér lykilorða upprifjun, 
 
 #: app/Elements/AbstractEventElement.php:67
 msgid "This event occurred, but the details are unknown."
-msgstr "Þessi atburður átti sér stað, en nánari upplýsingar eru ókunnar."
+msgstr "Þessi atburður átti sér stað, en nánari upplýsingar eru óþekktar."
 
 #: app/Auth.php:227 app/Http/RequestHandlers/RedirectFamilyPhp.php:69
 msgid "This family does not exist or you do not have permission to view it."
@@ -15016,7 +15004,7 @@ msgstr "Þessi valkostur stjórnar því hvort sýna eigi aldur föðurs og mó�
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: resources/views/admin/trees-preferences.phtml:372
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar fyrir fæðingu og andlát í stað þess að skilja eftir autt á einstaklingslistum og gröfum fyrir einstaklinga þar sem dagsetningar eru ókunnar."
+msgstr "Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar fyrir fæðingu og andlát í stað þess að skilja eftir autt á einstaklingslistum og gröfum fyrir einstaklinga þar sem dagsetningar eru óþekktar."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:281
@@ -15221,7 +15209,7 @@ msgstr "Tími síðustu breytinga"
 
 #: app/Gedcom.php:939
 msgid "Time of status change"
-msgstr ""
+msgstr "Tími stöðubreytingar"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1682 resources/views/admin/site-preferences.phtml:48
@@ -15795,12 +15783,12 @@ msgstr "Bandaríkin"
 #: app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
-msgstr "Ókunn"
+msgstr "Óþekktur"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:114
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr "Ókunn"
+msgstr "Óþekktur"
 
 #: app/Elements/SexValue.php:87
 #: resources/xml/reports/family_group_report.xml:844
@@ -15815,7 +15803,7 @@ msgstr "Óþekkt"
 #: resources/views/edit-account-page.phtml:62
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr "Ókunn"
+msgstr "Óþekkt"
 
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
@@ -15824,7 +15812,7 @@ msgstr "Aftengja"
 
 #: app/Elements/UnknownElement.php:36
 msgid "Unrecognized GEDCOM code"
-msgstr "Ókunnur GEDCOM kóði"
+msgstr "Óþekktur GEDCOM kóði"
 
 #: resources/views/admin/media.phtml:48
 msgid "Unused files"
@@ -20617,7 +20605,7 @@ msgstr "frændi"
 
 #: app/Place.php:249
 msgid "unknown"
-msgstr "ókunn"
+msgstr "óþekktur"
 
 #: app/Module/InteractiveTree/TreeView.php:356
 msgctxt "unknown family"
