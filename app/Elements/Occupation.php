@@ -43,5 +43,4 @@ class Occupation extends AbstractElement
         'SOUR'  => '0:M',
         'RESN'  => '0:1',
     ];
-
 }

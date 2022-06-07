@@ -42,5 +42,4 @@ class Will extends AbstractEventElement
         'SOUR'  => '0:M',
         'RESN'  => '0:1',
     ];
-
 }
