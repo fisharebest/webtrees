@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-06-06 09:18+0000\n"
+"PO-Revision-Date: 2022-07-17 04:40+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: resources/xml/reports/ahnentafel_report.xml:333
 #: resources/xml/reports/ahnentafel_report.xml:358
 msgid " but the details are unknown"
-msgstr " en upplýsingarnar eru ókunnar"
+msgstr " en upplýsingarnar eru óþekktar"
 
 #: resources/xml/reports/ahnentafel_report.xml:160
 #: resources/xml/reports/ahnentafel_report.xml:188
@@ -3992,7 +3992,7 @@ msgstr "Lokið fyrir 1970; dagsetning ekki til staðar"
 #: app/Elements/LdsSpouseSealingDateStatus.php:65
 #: app/GedcomCode/GedcomCodeStat.php:118
 msgid "Completed; date unknown"
-msgstr "Lokið; dagsetning ókunn"
+msgstr "Lokið; dagsetning óþekkt"
 
 #: app/Factories/ElementFactory.php:602 app/Factories/ElementFactory.php:644
 msgid "Completion date"
@@ -4716,7 +4716,7 @@ msgstr "Dagsetning fyrstu altarisgöngu"
 
 #: app/Factories/ElementFactory.php:1212 app/GedcomTag.php:747
 msgid "Date of immigration"
-msgstr "Dagsetning fólksinnflutnings"
+msgstr "Dagsetning innflutnings"
 
 #. I18N: gedcom tag CHAN:DATE
 #: app/Factories/ElementFactory.php:659 app/Factories/ElementFactory.php:992
@@ -4770,7 +4770,7 @@ msgstr "Dagsetningasvið"
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
 msgstr ""
 "Dagsetningarsvið eru notuð til að gefa til kynna atburð, t.d. fæðingu, sem "
-"eiga sér stað á ókunnri dagsetningu innan hugsanlegs sviðs."
+"eiga sér stað á óþekktri dagsetningu innan hugsanlegs sviðs."
 
 #: resources/views/admin/users.phtml:31
 msgid "Date registered"
@@ -6496,7 +6496,7 @@ msgstr "Föðurfjölskylda með %s"
 #. I18N: A step-family.
 #: app/Individual.php:957
 msgid "Father’s family with an unknown individual"
-msgstr "Föðurfjölskylda með ókunnum einstakling"
+msgstr "Föðurfjölskylda með óþekktum einstaklingi"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeFavoritesModule.php:51
@@ -7725,7 +7725,7 @@ msgstr "Ef einstaklingur var ekki þekktur undir fyrsta eiginnafni, ætti að ge
 #: resources/views/help/name.phtml:16
 #, php-format
 msgid "If the surname is unknown, use empty slashes: <%s>Mary //<%s>"
-msgstr "Ef eftirnafnið er ókunnugt, notaðu tóm skrástrik: <%s>Mary //<%s>"
+msgstr "Ef eftirnafnið er óþekkt, notaðu tóm skrástrik: <%s>Mary //<%s>"
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
@@ -7831,7 +7831,7 @@ msgstr "Myndir án vatnsmerkja"
 #. I18N: gedcom tag IMMI
 #: app/Factories/ElementFactory.php:1211 app/GedcomTag.php:745
 msgid "Immigration"
-msgstr "Fólksinnflutningur"
+msgstr "Innflytjandi"
 
 #: resources/views/admin/map-import-form.phtml:74
 #: resources/views/admin/trees.phtml:287
@@ -9997,7 +9997,7 @@ msgstr "Móðurfjölskylda með %s"
 #. I18N: A step-family.
 #: app/Individual.php:967
 msgid "Mother’s family with an unknown individual"
-msgstr "Móðurfjölskylda með ókunnum einstaklingi"
+msgstr "Móðurfjölskylda með óþekktum einstaklingi"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:140 app/GedcomCode/GedcomCodeTemp.php:486
@@ -11393,7 +11393,7 @@ msgstr "Staður fyrstu altarisgöngu"
 
 #: app/Factories/ElementFactory.php:1213 app/GedcomTag.php:749
 msgid "Place of immigration"
-msgstr "Staður fólksinnflutnings"
+msgstr "Staður innflutnings"
 
 #: app/Factories/ElementFactory.php:1011 app/GedcomTag.php:790
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:227
@@ -12207,7 +12207,7 @@ msgstr "Skipta út með"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:28
 msgid "Replacement text"
-msgstr "Útskiptingar texti"
+msgstr "Útskiptingartexti"
 
 #: resources/views/modules/user-messages/user-messages.phtml:131
 #: resources/views/modules/user-messages/user-messages.phtml:132
@@ -15004,7 +15004,7 @@ msgstr ""
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr "Þessi atburður átti sér stað, en nánari upplýsingar eru ókunnar."
+msgstr "Þessi atburður átti sér stað, en nánari upplýsingar eru óþekktar."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15399,7 +15399,7 @@ msgstr ""
 "Þessi valkostur stjórnar því hvort birta eigi eða ekki áætlaðar dagsetningar "
 "fyrir fæðingu og andlát í stað þess að skilja eftir autt á "
 "einstaklingslistum og gröfum fyrir einstaklinga þar sem dagsetningar eru "
-"ókunnar."
+"óþekktar."
 
 #. I18N: Help text for the “Show a download link in the media viewer” configuration setting
 #: resources/views/admin/trees-preferences.phtml:288
@@ -16286,12 +16286,12 @@ msgstr "Bandaríkin"
 #: app/GedcomRecord.php:907 app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
 msgid "Unknown"
-msgstr "Ókunn"
+msgstr "Óþekktur"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:120
 msgctxt "unknown century"
 msgid "Unknown"
-msgstr "Ókunn"
+msgstr "Óþekktur"
 
 #: app/Elements/SexValue.php:75 app/Functions/FunctionsEdit.php:541
 #: resources/views/individual-sex.phtml:39
@@ -16307,7 +16307,7 @@ msgstr "Óþekkt"
 #: resources/views/edit-account-page.phtml:65
 msgctxt "unknown people"
 msgid "Unknown"
-msgstr "Ókunn"
+msgstr "Óþekkt"
 
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
@@ -16316,7 +16316,7 @@ msgstr "Aftengja"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
-msgstr "Ókunnur GEDCOM kóði"
+msgstr "Óþekktur GEDCOM kóði"
 
 #: resources/views/admin/media.phtml:50
 msgid "Unused files"
@@ -21215,7 +21215,7 @@ msgstr "frændi"
 
 #: app/Place.php:246
 msgid "unknown"
-msgstr "ókunn"
+msgstr "óþekktur"
 
 #: app/Module/InteractiveTree/TreeView.php:353
 msgctxt "unknown family"
