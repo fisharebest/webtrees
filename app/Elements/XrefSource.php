@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Tree;
 
 use function e;
 use function route;
+use function str_ends_with;
+use function str_starts_with;
 use function trim;
 use function view;
 
@@ -89,6 +91,11 @@ class XrefSource extends AbstractXrefElement
      */
     public function value(string $value, Tree $tree): string
     {
-        return $this->valueXrefLink($value, $tree, Registry::sourceFactory());
+        if (str_starts_with($value, '@') && str_ends_with($value, '@')) {
+            return $this->valueXrefLink($value, $tree, Registry::sourceFactory());
+        }
+
+        // Inline sources are deprecated - but used by some historic events
+        return $this->valueFormatted($value, $tree);
     }
 }

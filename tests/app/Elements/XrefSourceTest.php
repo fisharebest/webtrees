@@ -141,7 +141,19 @@ class XrefSourceTest extends TestCase
 
         $tree = $this->createMock(Tree::class);
 
-        self::assertSame('<span class="error">invalid</span>', $element->value('invalid', $tree));
+        self::assertSame('<span class="error">@invalid@</span>', $element->value('@invalid@', $tree));
+    }
+
+    /**
+     * @return void
+     */
+    public function testValueXrefLinkWithInlineData(): void
+    {
+        $element = new XrefSource('');
+
+        $tree = $this->createMock(Tree::class);
+
+        self::assertSame('<p>invalid</p>', $element->value('invalid', $tree));
     }
 
     /**
