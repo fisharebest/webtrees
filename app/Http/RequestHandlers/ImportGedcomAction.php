@@ -36,6 +36,7 @@ use function basename;
 use function redirect;
 use function route;
 
+use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -85,22 +86,24 @@ class ImportGedcomAction implements RequestHandlerInterface
         if ($source === 'client') {
             $upload = $request->getUploadedFiles()['tree_name'] ?? null;
 
-            if ($upload === null || $upload->getError() !== UPLOAD_ERR_OK) {
+            if ($upload === null || $upload->getError() === UPLOAD_ERR_NO_FILE) {
+                FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
+            } elseif ($upload->getError() !== UPLOAD_ERR_OK) {
                 throw new FileUploadException($upload);
+            } else {
+                $this->tree_service->importGedcomFile($tree, $upload->getStream(), basename($upload->getClientFilename()), $encoding);
             }
-
-            $this->tree_service->importGedcomFile($tree, $upload->getStream(), basename($upload->getClientFilename()), $encoding);
         }
 
         if ($source === 'server') {
             $basename = basename($params['tree_name'] ?? '');
 
-            if ($basename) {
+            if ($basename === '') {
+                FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
+            } else {
                 $resource = $data_filesystem->readStream($basename);
                 $stream   = $this->stream_factory->createStreamFromResource($resource);
                 $this->tree_service->importGedcomFile($tree, $stream, $basename, $encoding);
-            } else {
-                FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
             }
         }
 
