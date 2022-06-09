@@ -1,24 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-06-05 08:15+0000\n"
-"Last-Translator: Josef Prause <josef.prause@gmail.com>\n"
-"Language-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
-"Language: cs\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Language: cs_CZ\n"
-"X-Source-Language: C\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:40+0000\nLast-Translator: Josef Prause <josef.prause@gmail.com>\nLanguage-Team: Czech <https://translate.webtrees.net/projects/webtrees/webtrees/cs/>\nLanguage: cs\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Czech\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Language: cs_CZ\nX-Source-Language: C\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -4187,7 +4168,7 @@ msgstr "Datum vytvoření"
 #: app/Gedcom.php:903 app/Gedcom.php:932 app/Gedcom.php:947 app/Gedcom.php:951
 #: app/Gedcom.php:960 app/Gedcom.php:968 app/Gedcom.php:977
 msgid "Creation time"
-msgstr ""
+msgstr "Čas vytvoření"
 
 #: app/Gedcom.php:631 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4624,7 +4605,7 @@ msgstr "Datum bydliště"
 
 #: app/Gedcom.php:938
 msgid "Date of status change"
-msgstr ""
+msgstr "Datum změny stavu"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5332,7 +5313,7 @@ msgstr "Zemřelo jako dítě: vyloučeno (exempt)"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died before less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Zemřel/a před dožitím 1 roku věku."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5917,7 +5898,7 @@ msgstr "Vzdálené soubory"
 #: app/Gedcom.php:890 app/Gedcom.php:904 app/Gedcom.php:916 app/Gedcom.php:934
 #: app/Gedcom.php:952 app/Gedcom.php:961 app/Gedcom.php:969 app/Gedcom.php:978
 msgid "External identifier"
-msgstr ""
+msgstr "Externí identifikátor"
 
 #: app/Gedcom.php:1188 app/Gedcom.php:1787
 msgid "External link"
@@ -8403,7 +8384,7 @@ msgstr "Věno LDS"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:936 app/Gedcom.php:1017
 msgid "LDS initiatory"
-msgstr ""
+msgstr "Iniciace LDS"
 
 #: app/Gedcom.php:478
 msgid "LDS spouse sealing"
@@ -9926,7 +9907,7 @@ msgstr "al-muharram"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
-msgstr "Vícečetné sňatky"
+msgstr "Vícečetná manželství"
 
 #: app/Http/RequestHandlers/AccountEdit.php:90
 #: app/Module/ModuleThemeTrait.php:329 app/Module/UserWelcomeModule.php:112
@@ -10337,7 +10318,7 @@ msgstr "Žádný přihlášený ani anonymní uživatel"
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
 msgid "No surname"
-msgstr "Žádné příjmení"
+msgstr "Bez příjmení"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10423,7 +10404,7 @@ msgstr "Nesezdaní"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Nebylo zaznamenáno"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -11095,7 +11076,7 @@ msgstr "Fotografie"
 #: app/Gedcom.php:900 app/Gedcom.php:912 app/Gedcom.php:914 app/Gedcom.php:919
 #: app/Gedcom.php:923 app/Gedcom.php:924 app/Gedcom.php:926 app/Gedcom.php:928
 msgid "Phrase"
-msgstr ""
+msgstr "Fráze"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11989,7 +11970,7 @@ msgstr "Přečíslovat"
 #. I18N: Renumber the records in a family tree
 #: app/Http/RequestHandlers/RenumberTreePage.php:62
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Přečíslovat údaje XREF"
 
 #: resources/views/admin/trees-merge.phtml:35
 #: resources/views/admin/trees-merge.phtml:40
@@ -12028,7 +12009,7 @@ msgstr "Zpráva"
 #. I18N: GEDCOM gag _RPT_PHRS
 #: app/Gedcom.php:1578 app/Gedcom.php:1579
 msgid "Report phrase"
-msgstr ""
+msgstr "Ohlásit frázi"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -13514,7 +13495,7 @@ msgstr "Řazení"
 
 #: app/Gedcom.php:894 app/Gedcom.php:920
 msgid "Sort time"
-msgstr ""
+msgstr "Doba třídění"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:242
@@ -15253,7 +15234,7 @@ msgstr "Čas poslední změny"
 
 #: app/Gedcom.php:939
 msgid "Time of status change"
-msgstr ""
+msgstr "Čas změny stavu"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1682 resources/views/admin/site-preferences.phtml:48
