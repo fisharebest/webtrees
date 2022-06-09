@@ -251,8 +251,12 @@ class MediaFileService
     {
         $gedcom = '1 FILE ' . $file;
 
-        $format = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
-        $format = self::EXTENSION_TO_FORM[$format] ?? $format;
+        if (str_contains($file, '://')) {
+            $format = '';
+        } else {
+            $format = strtoupper(pathinfo($file, PATHINFO_EXTENSION));
+            $format = self::EXTENSION_TO_FORM[$format] ?? $format;
+        }
 
         if ($format !== '' && strlen($format) <= 4) {
             $gedcom .= "\n2 FORM " . $format;
