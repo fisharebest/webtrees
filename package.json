@@ -8,14 +8,14 @@
   "devDependencies": {
     "autoprefixer": "10.4.7",
     "cross-env": "7.0.3",
-    "laravel-mix": "6.0.48",
+    "laravel-mix": "6.0.49",
     "postcss": "8.4.14",
-    "postcss-custom-properties": "12.1.7",
+    "postcss-custom-properties": "12.1.8",
     "postcss-image-inliner": "5.0.0",
     "postcss-import": "14.1.0",
     "postcss-rtlcss": "3.6.3",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.52.2",
+    "sass": "1.52.3",
     "sass-loader": "13.0.0",
     "vue-template-compiler": "2.6.14"
   },
