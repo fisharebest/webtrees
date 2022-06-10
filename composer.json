@@ -51,7 +51,7 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/flysystem-chroot-adapter": "2.0.0",
         "fisharebest/localization": "1.15.1",
-        "guzzlehttp/guzzle": "7.4.3",
+        "guzzlehttp/guzzle": "7.4.4",
         "illuminate/container": "8.83.16",
         "illuminate/database": "8.83.16",
         "illuminate/support": "8.83.16",
@@ -84,7 +84,7 @@
         "ext-libxml": "*",
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
-        "composer/composer": "2.3.5",
+        "composer/composer": "2.3.7",
         "league/flysystem-memory": "2.0.6",
         "php-coveralls/php-coveralls": "2.5.2",
         "phpunit/phpunit": "9.5.20"
