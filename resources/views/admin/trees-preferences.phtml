@@ -410,9 +410,6 @@ use Illuminate\Support\Collection;
             <div class="input-group">
                 <?= view('components/select', ['name' => 'CHART_BOX_TAGS[]', 'id' => 'CHART_BOX_TAGS', 'selected' => explode(',', $tree->getPreference('CHART_BOX_TAGS')), 'options' => $all_individual_facts, 'class' => 'tom-select']) ?>
             </div>
-            <div class="form-text">
-                <?= /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart. This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard. For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.') ?>
-            </div>
         </div>
     </div>
 
