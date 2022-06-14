@@ -2142,7 +2142,12 @@ parameters:
 
 		-
 			message: "#^Cannot access offset float\\|int on array\\<int, string\\>\\|false\\.$#"
-			count: 14
+			count: 13
+			path: app/Report/ReportParserGenerate.php
+
+		-
+			message: "#^Cannot access offset float\\|int\\<1, max\\> on array\\<int, string\\>\\|false\\.$#"
+			count: 1
 			path: app/Report/ReportParserGenerate.php
 
 		-
