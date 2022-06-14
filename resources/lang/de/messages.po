@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-21 21:13+0000\n"
+"PO-Revision-Date: 2022-07-17 04:40+0000\n"
 "Last-Translator: Martin <der@bauschaffen.de>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
@@ -4570,7 +4570,7 @@ msgstr "Datum der HLT-Taufe"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1267 app/GedcomTag.php:952
 msgid "Date of LDS child sealing"
-msgstr "Datum der HLT-Siegelung eines Kindes"
+msgstr "Datum der HLT-Kindes-Siegelung"
 
 #: app/Factories/ElementFactory.php:1169
 msgid "Date of LDS confirmation"
@@ -4584,7 +4584,7 @@ msgstr "Datum der HLT-Begabung"
 #: app/Factories/ElementFactory.php:1023
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:224
 msgid "Date of LDS spouse sealing"
-msgstr "Datum der HLT-Siegelung an den Ehepartner"
+msgstr "Datum der HLT-Ehepartner-Siegelung"
 
 #: app/Factories/ElementFactory.php:1119 app/GedcomTag.php:441
 msgid "Date of adoption"
@@ -8432,22 +8432,22 @@ msgstr "HLT-Taufe"
 #. I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1266 app/GedcomTag.php:949
 msgid "LDS child sealing"
-msgstr "HLT Kindes-Siegelung"
+msgstr "HLT-Kindes-Siegelung"
 
 #. I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1168 app/GedcomTag.php:594
 msgid "LDS confirmation"
-msgstr "HLT Konfirmation"
+msgstr "HLT-Konfirmation"
 
 #. I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1188 app/GedcomTag.php:666
 msgid "LDS endowment"
-msgstr "HLT Begabung"
+msgstr "HLT-Begabung"
 
 #. I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1022 app/GedcomTag.php:958
 msgid "LDS spouse sealing"
-msgstr "HLT Ehepartner-Siegelung"
+msgstr "HLT-Ehepartner-Siegelung"
 
 #: app/Factories/ElementFactory.php:362 app/Factories/ElementFactory.php:376
 #: app/Factories/ElementFactory.php:380 app/Factories/ElementFactory.php:395
@@ -11221,7 +11221,7 @@ msgstr "Ort der HLT-Taufe"
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1269 app/GedcomTag.php:955
 msgid "Place of LDS child sealing"
-msgstr "Ort der HLT-Siegelung eines Kindes"
+msgstr "Ort der HLT-Kindes-Siegelung"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Place of LDS confirmation"
@@ -11235,7 +11235,7 @@ msgstr "Ort der HLT-Begabung"
 #: app/Factories/ElementFactory.php:1024
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:225
 msgid "Place of LDS spouse sealing"
-msgstr "Ort der HLT-Siegelung an den Ehepartner"
+msgstr "Ort der HLT-Ehepartner-Siegelung"
 
 #: app/Factories/ElementFactory.php:1122 app/GedcomTag.php:443
 msgid "Place of adoption"
