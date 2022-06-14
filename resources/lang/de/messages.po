@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-06-05 08:15+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
-"Language-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:40+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -4161,7 +4149,7 @@ msgstr "Erstellungsdatum"
 #: app/Gedcom.php:903 app/Gedcom.php:932 app/Gedcom.php:947 app/Gedcom.php:951
 #: app/Gedcom.php:960 app/Gedcom.php:968 app/Gedcom.php:977
 msgid "Creation time"
-msgstr ""
+msgstr "Erstellungszeit"
 
 #: app/Gedcom.php:631 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4471,7 +4459,7 @@ msgstr "Datum der HLT-Taufe"
 
 #: app/Gedcom.php:724
 msgid "Date of LDS child sealing"
-msgstr "Datum der HLT-Siegelung eines Kindes"
+msgstr "Datum der HLT-Kindes-Siegelung"
 
 #: app/Gedcom.php:626
 msgid "Date of LDS confirmation"
@@ -4483,7 +4471,7 @@ msgstr "Datum der HLT-Begabung"
 
 #: app/Gedcom.php:479
 msgid "Date of LDS spouse sealing"
-msgstr "Datum der HLT-Siegelung an den Ehepartner"
+msgstr "Datum der HLT-Ehepartner-Siegelung"
 
 #: app/Gedcom.php:575
 msgid "Date of adoption"
@@ -4598,7 +4586,7 @@ msgstr "Wohnsitzdatum"
 
 #: app/Gedcom.php:938
 msgid "Date of status change"
-msgstr ""
+msgstr "Datum der Statusänderung"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5306,7 +5294,7 @@ msgstr "Als Kind gestorben: befreit"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died before less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Mit weniger als 1 Jahr gestorben, Siegelung nicht erforderlich."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5891,7 +5879,7 @@ msgstr "Externe Dateien"
 #: app/Gedcom.php:890 app/Gedcom.php:904 app/Gedcom.php:916 app/Gedcom.php:934
 #: app/Gedcom.php:952 app/Gedcom.php:961 app/Gedcom.php:969 app/Gedcom.php:978
 msgid "External identifier"
-msgstr ""
+msgstr "Externe Kennung"
 
 #: app/Gedcom.php:1188 app/Gedcom.php:1787
 msgid "External link"
@@ -8360,28 +8348,28 @@ msgstr "HLT-Taufe"
 
 #: app/Gedcom.php:723
 msgid "LDS child sealing"
-msgstr "HLT Kindes-Siegelung"
+msgstr "HLT-Kindes-Siegelung"
 
 #: resources/views/admin/tags.phtml:719
 msgid "LDS church"
-msgstr "HLT Kirche"
+msgstr "HLT-Kirche"
 
 #: app/Gedcom.php:625
 msgid "LDS confirmation"
-msgstr "HLT Konfirmation"
+msgstr "HLT-Konfirmation"
 
 #: app/Gedcom.php:645
 msgid "LDS endowment"
-msgstr "HLT Begabung"
+msgstr "HLT-Begabung"
 
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:936 app/Gedcom.php:1017
 msgid "LDS initiatory"
-msgstr ""
+msgstr "LDS-Initiation"
 
 #: app/Gedcom.php:478
 msgid "LDS spouse sealing"
-msgstr "HLT Ehepartner-Siegelung"
+msgstr "HLT-Ehepartner-Siegelung"
 
 #: app/Gedcom.php:1152 app/Gedcom.php:1166 app/Gedcom.php:1170
 #: app/Gedcom.php:1185
@@ -10309,7 +10297,7 @@ msgstr "Keine angemeldeten Benutzer und keine Gäste"
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
 msgid "No surname"
-msgstr "Kein Nachname"
+msgstr "Ohne Nachnamen"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10395,7 +10383,7 @@ msgstr "unverheiratet"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Nicht gespeichert"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -11067,7 +11055,7 @@ msgstr "Foto"
 #: app/Gedcom.php:900 app/Gedcom.php:912 app/Gedcom.php:914 app/Gedcom.php:919
 #: app/Gedcom.php:923 app/Gedcom.php:924 app/Gedcom.php:926 app/Gedcom.php:928
 msgid "Phrase"
-msgstr ""
+msgstr "Phrase"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11137,7 +11125,7 @@ msgstr "Ort der HLT-Taufe"
 
 #: app/Gedcom.php:726
 msgid "Place of LDS child sealing"
-msgstr "Ort der HLT-Siegelung eines Kindes"
+msgstr "Ort der HLT-Kindes-Siegelung"
 
 #: app/Gedcom.php:627
 msgid "Place of LDS confirmation"
@@ -11149,7 +11137,7 @@ msgstr "Ort der HLT-Begabung"
 
 #: app/Gedcom.php:480
 msgid "Place of LDS spouse sealing"
-msgstr "Ort der HLT-Siegelung an den Ehepartner"
+msgstr "Ort der HLT-Ehepartner-Siegelung"
 
 #: app/Gedcom.php:578
 msgid "Place of adoption"
@@ -11961,7 +11949,7 @@ msgstr "Neu nummerieren"
 #. I18N: Renumber the records in a family tree
 #: app/Http/RequestHandlers/RenumberTreePage.php:62
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "xref_ID’s neu nummerieren"
 
 #: resources/views/admin/trees-merge.phtml:35
 #: resources/views/admin/trees-merge.phtml:40
@@ -12000,7 +11988,7 @@ msgstr "Bericht"
 #. I18N: GEDCOM gag _RPT_PHRS
 #: app/Gedcom.php:1578 app/Gedcom.php:1579
 msgid "Report phrase"
-msgstr ""
+msgstr "Berichtsphrase"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -13463,7 +13451,7 @@ msgstr "Sohn von %s"
 
 #: app/Gedcom.php:892 app/Gedcom.php:918 app/Gedcom.php:1804
 msgid "Sort date"
-msgstr "Datum sortieren"
+msgstr "Sortierdatum"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/faq/config.phtml:56
@@ -13486,7 +13474,7 @@ msgstr "Sortierreihenfolge"
 
 #: app/Gedcom.php:894 app/Gedcom.php:920
 msgid "Sort time"
-msgstr ""
+msgstr "Sortierzeit"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:242
@@ -15221,7 +15209,7 @@ msgstr "Uhrzeit der letzten Änderung"
 
 #: app/Gedcom.php:939
 msgid "Time of status change"
-msgstr ""
+msgstr "Uhrzeit der Statusänderung"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1682 resources/views/admin/site-preferences.phtml:48
