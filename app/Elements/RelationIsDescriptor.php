@@ -113,6 +113,7 @@ class RelationIsDescriptor extends AbstractElement
                 'guardian'         => I18N::translate('Guardian'),
                 'informant'        => I18N::translate('Informant'),
                 'lodger'           => I18N::translate('Lodger'),
+                'multiple'         => /* I18N: twin, triplet, etc. */ I18N::translate('Multiple birth'),
                 'nanny'            => I18N::translate('Nanny'),
                 'nurse'            => I18N::translate('Nurse'),
                 'owner'            => I18N::translate('Owner'),
