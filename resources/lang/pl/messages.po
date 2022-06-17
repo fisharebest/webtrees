@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-05-12 23:23+0000\n"
-"Last-Translator: Łukasz <wilenskipl@wp.pl>\n"
-"Language-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
-"Language: pl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: Łukasz <wilenskipl@wp.pl>\nLanguage-Team: Polish <https://translate.webtrees.net/projects/webtrees/webtrees/pl/>\nLanguage: pl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Polish\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3525,7 +3508,7 @@ msgstr "Sprawdź błędy"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Sprawdź czy jest nowa wersja"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3929,7 +3912,7 @@ msgstr "Zawartość"
 
 #: app/Gedcom.php:750
 msgid "Continuation"
-msgstr ""
+msgstr "Ciąg dalszy"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -4185,7 +4168,7 @@ msgstr "Data utworzenia"
 #: app/Gedcom.php:903 app/Gedcom.php:932 app/Gedcom.php:947 app/Gedcom.php:951
 #: app/Gedcom.php:960 app/Gedcom.php:968 app/Gedcom.php:977
 msgid "Creation time"
-msgstr ""
+msgstr "Czas utworzenia"
 
 #: app/Gedcom.php:631 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4622,7 +4605,7 @@ msgstr "Data zamieszkania"
 
 #: app/Gedcom.php:938
 msgid "Date of status change"
-msgstr ""
+msgstr "Data zmiany statusu"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5330,7 +5313,7 @@ msgstr "Zmarł jako dziecko: zwolnione"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died before less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Zmarł przed ukończeniem 1 roku życia, naznaczenie nie jest wymagane."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5915,7 +5898,7 @@ msgstr "Pliki zewnętrzne"
 #: app/Gedcom.php:890 app/Gedcom.php:904 app/Gedcom.php:916 app/Gedcom.php:934
 #: app/Gedcom.php:952 app/Gedcom.php:961 app/Gedcom.php:969 app/Gedcom.php:978
 msgid "External identifier"
-msgstr ""
+msgstr "Identyfikator zewnętrzny"
 
 #: app/Gedcom.php:1188 app/Gedcom.php:1787
 msgid "External link"
@@ -7669,7 +7652,7 @@ msgstr "Jeśli utworzyłeś obiekty multimedialne w webtrees, a następnie edyto
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Jeśli modyfikujesz nazwę pliku, powinieneś również zmienić nazwę pliku."
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8401,7 +8384,7 @@ msgstr "Obdarowanie mormońskie"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:936 app/Gedcom.php:1017
 msgid "LDS initiatory"
-msgstr ""
+msgstr "Inicjacja mormońska"
 
 #: app/Gedcom.php:478
 msgid "LDS spouse sealing"
@@ -10335,7 +10318,7 @@ msgstr "Brak zalogowanych użytkowników"
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
 msgid "No surname"
-msgstr ""
+msgstr "Brak nazwiska"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10421,7 +10404,7 @@ msgstr "Nieżonaty/niezamężna"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Niezarejestrowany"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -11093,7 +11076,7 @@ msgstr "Fotografia"
 #: app/Gedcom.php:900 app/Gedcom.php:912 app/Gedcom.php:914 app/Gedcom.php:919
 #: app/Gedcom.php:923 app/Gedcom.php:924 app/Gedcom.php:926 app/Gedcom.php:928
 msgid "Phrase"
-msgstr ""
+msgstr "Wyrażenie"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11987,7 +11970,7 @@ msgstr "Przenumeruj"
 #. I18N: Renumber the records in a family tree
 #: app/Http/RequestHandlers/RenumberTreePage.php:62
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Zmień numerację XREF"
 
 #: resources/views/admin/trees-merge.phtml:35
 #: resources/views/admin/trees-merge.phtml:40
@@ -12026,7 +12009,7 @@ msgstr "Raport"
 #. I18N: GEDCOM gag _RPT_PHRS
 #: app/Gedcom.php:1578 app/Gedcom.php:1579
 msgid "Report phrase"
-msgstr ""
+msgstr "Wyrażenie"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12589,7 +12572,7 @@ msgstr "Wyślij testową wiadomość e-mail, używając tych ustawień"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Wyślij wiadomość e-mail do wszystkich administratorów, gdy aktualizacja będzie dostępna."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -13318,7 +13301,7 @@ msgstr "Logowanie i rejestracja"
 
 #: app/Gedcom.php:1549
 msgid "Signature"
-msgstr ""
+msgstr "Sygnatura"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13512,7 +13495,7 @@ msgstr "Sortowanie"
 
 #: app/Gedcom.php:894 app/Gedcom.php:920
 msgid "Sort time"
-msgstr ""
+msgstr "Czas sortowania"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:242
@@ -14338,7 +14321,7 @@ msgstr "Poniższa lista przedstawia typowe wymagania."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "Dane formularza są niekompletne. Prawdopodobnie należy zwiększyć parametr max_input_vars na serwerze?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -15251,7 +15234,7 @@ msgstr "Czas ostatniej zmiany"
 
 #: app/Gedcom.php:939
 msgid "Time of status change"
-msgstr ""
+msgstr "Czas zmiany statusu"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1682 resources/views/admin/site-preferences.phtml:48
