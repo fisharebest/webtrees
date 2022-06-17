@@ -21,16 +21,22 @@ $minimum = min(array_map(static fn (array $x): int => min($x), $surnames));
     <?php foreach ($surnames as $surn => $surns) : ?>
         <?php foreach ($surns as $spfxsurn => $count) : ?>
             <?php
-                $size = 1.0 + ($maximum === $minimum ? 0 : 1.5 * ($count - $minimum) / ($maximum - $minimum));
-                $tag_item = $totals ? I18N::translate('%1$s (%2$s)', '<bdi>' . e($spfxsurn) . '</bdi>', I18N::number($count)) : e($spfxsurn);
+                $size     = 1.0 + ($maximum === $minimum ? 0 : 1.5 * ($count - $minimum) / ($maximum - $minimum));
+                $label    = $spfxsurn ? e($spfxsurn) : I18N::translate('No surname');
+
+                if ($totals) {
+                    $item = I18N::translate('%1$s (%2$s)', '<bdi>' . $label . '</bdi>', I18N::number($count));
+                } else {
+                    $item = '<bdi>' . $label . '</bdi>';
+                }
             ?>
             <div class="wt-surnames-column-list-item">
                 <?php if ($module instanceof ModuleListInterface) : ?>
                     <a href="<?= e($module->listUrl($tree, ['surname' => $surn])) ?>">
-                        <?= $tag_item ?>
+                        <?= $item ?>
                     </a>
                 <?php else : ?>
-                    <?= $tag_item ?>
+                    <?= $item ?>
                 <?php endif ?>
             </div>
         <?php endforeach ?>
