@@ -59,7 +59,7 @@ use Fisharebest\Webtrees\Tree;
                                 <?php endif ?>
                             <?php else : ?>
                                 <!-- No surname, but a value from "2 SURN"? A common workaround for toponyms, etc. -->
-                                <a href="<?= $module->listUrl($tree, ['surname' => $surn]) ?>" dir="auto"><?= e($surn) ?></a>
+                                <a href="<?= $module->listUrl($tree, ['surname' => $surn]) ?>" dir="auto"><?= I18N::translate('No surname') ?></a>
                             <?php endif ?>
                         <?php else : ?>
                             <?php if ($spfxsurn) : ?>
