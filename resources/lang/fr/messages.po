@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
+"PO-Revision-Date: 2022-07-17 04:40+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fr/>\n"
@@ -14681,8 +14681,12 @@ msgstr "Le fuseau horaire est nécessaire pour le calcul des dates, par exemple 
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Les deux arbres généalogiques ont %1$s enregistrement qui utilise le même code (« XREF »)."
-msgstr[1] "Les deux arbres généalogiques ont %1$s enregistrements qui utilisent le même identifiant (« XREF »)."
+msgstr[0] ""
+"Les deux arbres généalogiques ont %1$s enregistrement qui utilise le même "
+"identifiant (« XREF »)."
+msgstr[1] ""
+"Les deux arbres généalogiques ont %1$s enregistrements qui utilisent le même "
+"identifiant (« XREF »)."
 
 #: app/Http/RequestHandlers/UpgradeWizardStep.php:324
 msgid "The upgrade is complete."
