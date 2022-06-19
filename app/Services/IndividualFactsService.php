@@ -153,7 +153,8 @@ class IndividualFactsService
 
         return $parent_facts
             ->merge($child_facts)
-            ->merge($spouse_facts);
+            ->merge($spouse_facts)
+            ->unique();
     }
 
     /**
