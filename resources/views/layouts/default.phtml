@@ -50,7 +50,7 @@ use Psr\Http\Message\ServerRequestInterface;
         <!--IE11/Edge-->
         <meta name="msapplication-config" content="<?= e(route(BrowserconfigXml::class)) ?>">
 
-        <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>">
+        <link rel="manifest" href="<?= e(route(WebmanifestJson::class)) ?>" crossorigin="use-credentials">
 
         <link rel="stylesheet" href="<?= e(asset('css/vendor.min.css')) ?>">
         <?php foreach (app(ModuleThemeInterface::class)->stylesheets() as $stylesheet) : ?>
