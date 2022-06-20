@@ -1256,11 +1256,6 @@ parameters:
 			path: app/Module/CensusAssistantModule.php
 
 		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Module/CloudsTheme.php
-
-		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
@@ -1279,11 +1274,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/CloudsTheme.php
-
-		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Module/FabTheme.php
 
 		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
@@ -1631,11 +1621,6 @@ parameters:
 			path: app/Module/MapGeoLocationOpenRouteService.php
 
 		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Module/MinimalTheme.php
-
-		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
 			count: 1
 			path: app/Module/MinimalTheme.php
@@ -1891,11 +1876,6 @@ parameters:
 			path: app/Module/TopSurnamesModule.php
 
 		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Module/WebtreesTheme.php
-
-		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
@@ -1914,11 +1894,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<int, string\\>\\|false given\\.$#"
 			count: 1
 			path: app/Module/WebtreesTheme.php
-
-		-
-			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
-			count: 1
-			path: app/Module/XeneaTheme.php
 
 		-
 			message: "#^Call to an undefined method Fisharebest\\\\Webtrees\\\\Module\\\\ModuleInterface\\:\\:chartBoxMenu\\(\\)\\.$#"
