@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
+use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
@@ -39,6 +40,11 @@ abstract class AbstractGedcomRecordFactory
      */
     protected function pendingChanges(Tree $tree): Collection
     {
+        // Only editors can see pending changes
+        if (!Auth::isEditor($tree)) {
+            return new Collection();
+        }
+
         // Caution - this cache can be overwritten by GedcomExportService
         return Registry::cache()->array()->remember(__CLASS__ . $tree->id(), static function () use ($tree): Collection {
             return DB::table('change')
