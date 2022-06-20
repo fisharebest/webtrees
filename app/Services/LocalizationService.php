@@ -50,7 +50,7 @@ class LocalizationService
     private const POLISH_ALPHABET     = ['A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż'];
     private const ROMANIAN_ALPHABET   = ['A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     private const SERBIAN_ALPHABET    = ['A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'];
-    private const SLOVAKIAN_ALPHABET  = ['A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'DZ', 'ĎZ', 'E', 'É', 'F', 'G', 'H', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'];
+    private const SLOVAKIAN_ALPHABET  = ['A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'DZ', 'DŽ', 'E', 'É', 'F', 'G', 'H', 'CH', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'];
     private const SLOVENIAN_ALPHABET  = ['A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'];
     private const SPANISH_ALPHABET    = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     private const SWEDISH_ALPHABET    = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö'];
@@ -86,7 +86,7 @@ class LocalizationService
         'sv'      => self::SWEDISH_ALPHABET,
     ];
 
-    // Some language collate names using digraphs (or trigraphs).
+    // Some languages collate names using digraphs (or trigraphs).
     private const DIGRAPHS = [
         'cs' => ['CH' => 'CH'],
         'da' => ['AA' => 'Å'],
@@ -94,6 +94,7 @@ class LocalizationService
         'hu' => ['CS' => 'CS', 'DZS' => 'DZS', 'DZ' => 'DZ', 'GY' => 'GY', 'LY' => 'LY', 'NY' => 'NY', 'SZ' => 'SZ', 'TY' => 'TY', 'ZS' => 'ZS'],
         'nl' => ['IJ' => 'IJ'],
         'nn' => ['AA' => 'Å'],
+        'sk' => ['DZ' => 'DZ', 'DŽ' => 'DŽ','CH' => 'CH'],
     ];
 
     /**
