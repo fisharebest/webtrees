@@ -51,7 +51,7 @@
         "fisharebest/ext-calendar": "2.6.0",
         "fisharebest/flysystem-chroot-adapter": "2.0.0",
         "fisharebest/localization": "1.15.1",
-        "guzzlehttp/guzzle": "7.4.4",
+        "guzzlehttp/guzzle": "7.4.5",
         "illuminate/container": "8.83.16",
         "illuminate/database": "8.83.16",
         "illuminate/support": "8.83.16",
