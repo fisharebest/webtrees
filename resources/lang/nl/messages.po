@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-06-06 09:18+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3501,7 +3501,7 @@ msgstr "Controleren van de capaciteit van de server"
 
 #: resources/views/setup/step-2-server-checks.phtml:42
 msgid "Checking server configuration"
-msgstr "Sever configuratie aan het controleren"
+msgstr "Severconfiguratie aan het controleren"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:78
@@ -5135,7 +5135,7 @@ msgstr "Denver, Colorado, Verenigde Staten"
 
 #: resources/views/admin/upgrade/wizard.phtml:33
 msgid "Depending on your server configuration, you may be able to upgrade automatically."
-msgstr "Het hangt van uw server configuratie af of u automatisch kunt upgraden."
+msgstr "Het hangt van uw serverconfiguratie af of u automatisch kunt upgraden."
 
 #: resources/views/modules/family-book-chart/page.phtml:48
 msgid "Descendant generations"
@@ -14501,7 +14501,7 @@ msgstr "De zoekopdracht heeft te veel resultaten opgeleverd."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
-msgstr "De server configuratie is OK."
+msgstr "De serverconfiguratie is OK."
 
 #: app/Http/Exceptions/HttpBadRequestException.php:35
 msgid "The server could not understand this request."
@@ -15340,7 +15340,7 @@ msgstr "Om compatibiliteit met andere genealogieprogramma’s te garanderen, zou
 #. I18N: “Apache” is a software program.
 #: resources/views/admin/site-preferences.phtml:34
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder. If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "Om deze privédata te beschermen, gebruikt webtrees een Apache-configuratie bestand (.htaccess) dat alle toegang tot deze map blokkeert. Als uw webserver geen .htaccess-bestanden ondersteunt, en u kunt geen restricties instellen voor deze map, dan kunt u een andere map selecteren, die buiten uw webdocumenten staat."
+msgstr "Om deze privédata te beschermen, gebruikt webtrees een Apache-configuratiebestand (.htaccess) dat alle toegang tot deze map blokkeert. Als uw webserver geen .htaccess-bestanden ondersteunt, en u kunt geen restricties instellen voor deze map, dan kunt u een andere map selecteren, die buiten uw webdocumenten staat."
 
 #: resources/views/emails/password-request-html.phtml:18
 #: resources/views/emails/password-request-text.phtml:14
