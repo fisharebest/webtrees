@@ -250,7 +250,7 @@ class UpgradeService
      */
     public function isUpgradeAvailable(): bool
     {
-        // If the latest version is unavailable, we will have an empty sting which equates to version 0.
+        // If the latest version is unavailable, we will have an empty string which equates to version 0.
 
         return version_compare(Webtrees::VERSION, $this->fetchLatestVersion()) < 0;
     }
