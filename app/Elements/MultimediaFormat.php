@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
+use Fisharebest\Webtrees\Services\MediaFileService;
+
 use function strtoupper;
 
 /**
@@ -35,12 +37,6 @@ class MultimediaFormat extends AbstractElement
         'TYPE' => '0:1',
     ];
 
-    // GEDCOM uses the abbreviated versions of these extensions
-    protected const EXTENSIONS = [
-        'JPEG' => 'JPG',
-        'TIFF' => 'TIF',
-    ];
-
     /**
      * Convert a value to a canonical form.
      *
@@ -52,6 +48,6 @@ class MultimediaFormat extends AbstractElement
     {
         $value = strtoupper(parent::canonical($value));
 
-        return self::EXTENSIONS[$value] ?? $value;
+        return MediaFileService::EXTENSION_TO_FORM[$value] ?? $value;
     }
 }
