@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Slovak (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-06-05 08:15+0000\n"
-"Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
-"Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
-"Language: sk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: Slovak (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: Ladislav Rosival <lacoros@gmail.com>\nLanguage-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\nLanguage: sk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Slovak\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -4193,7 +4176,7 @@ msgstr "Dátum vytvorenia"
 #: app/Gedcom.php:903 app/Gedcom.php:932 app/Gedcom.php:947 app/Gedcom.php:951
 #: app/Gedcom.php:960 app/Gedcom.php:968 app/Gedcom.php:977
 msgid "Creation time"
-msgstr ""
+msgstr "Čas vytvorenia"
 
 #: app/Gedcom.php:631 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4630,7 +4613,7 @@ msgstr "Dátum sídla"
 
 #: app/Gedcom.php:938
 msgid "Date of status change"
-msgstr ""
+msgstr "Dátum zmeny stavu"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5338,7 +5321,7 @@ msgstr "Zomrelo ako dieťa: vylúčené (exempt)"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died before less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Úmrtie pred dovŕšením 1. veku života, pečatenie nie je potrebné."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5923,7 +5906,7 @@ msgstr "Externé súbory"
 #: app/Gedcom.php:890 app/Gedcom.php:904 app/Gedcom.php:916 app/Gedcom.php:934
 #: app/Gedcom.php:952 app/Gedcom.php:961 app/Gedcom.php:969 app/Gedcom.php:978
 msgid "External identifier"
-msgstr ""
+msgstr "Externý identifikátor"
 
 #: app/Gedcom.php:1188 app/Gedcom.php:1787
 msgid "External link"
@@ -8292,7 +8275,7 @@ msgstr "Nechať otvorené"
 #: resources/views/edit/edit-fact.phtml:33
 #: resources/views/edit/edit-record.phtml:32
 msgid "Keep the existing “last change” information"
-msgstr "Ponechať pôvodnú informáciu o „poslednej zmeny“"
+msgstr "Ponechať pôvodnú informáciu o „poslednej zmene“"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -8409,7 +8392,7 @@ msgstr "Obdarovanie LDS"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:936 app/Gedcom.php:1017
 msgid "LDS initiatory"
-msgstr ""
+msgstr "Iniciácia LDS"
 
 #: app/Gedcom.php:478
 msgid "LDS spouse sealing"
@@ -10429,7 +10412,7 @@ msgstr "Nezosobášení"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Nie je zaznamenané"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -11101,7 +11084,7 @@ msgstr "Fotografia"
 #: app/Gedcom.php:900 app/Gedcom.php:912 app/Gedcom.php:914 app/Gedcom.php:919
 #: app/Gedcom.php:923 app/Gedcom.php:924 app/Gedcom.php:926 app/Gedcom.php:928
 msgid "Phrase"
-msgstr ""
+msgstr "Fráza"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11995,7 +11978,7 @@ msgstr "Prečíslovať"
 #. I18N: Renumber the records in a family tree
 #: app/Http/RequestHandlers/RenumberTreePage.php:62
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Nanovo prečíslovať XREF"
 
 #: resources/views/admin/trees-merge.phtml:35
 #: resources/views/admin/trees-merge.phtml:40
@@ -12034,7 +12017,7 @@ msgstr "Protokol"
 #. I18N: GEDCOM gag _RPT_PHRS
 #: app/Gedcom.php:1578 app/Gedcom.php:1579
 msgid "Report phrase"
-msgstr ""
+msgstr "Fráza správy"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -13520,7 +13503,7 @@ msgstr "Poradie triedenia"
 
 #: app/Gedcom.php:894 app/Gedcom.php:920
 msgid "Sort time"
-msgstr ""
+msgstr "Čas pre triedenie"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:242
@@ -15259,7 +15242,7 @@ msgstr "Čas poslednej zmeny"
 
 #: app/Gedcom.php:939
 msgid "Time of status change"
-msgstr ""
+msgstr "Čas zmeny stavu"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1682 resources/views/admin/site-preferences.phtml:48
@@ -16344,7 +16327,7 @@ msgstr "Západná Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:738
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Pri úprave záznamu sa zaznamenáva užívateľ a časová značka. Niekedy je vhodné zachovať existujúcu informáciu o „poslednej zmeny“, napríklad ak sa vykonávajú malé úpravy. Toto nastaveniu určuje, či sa nastaví táto možnosť ako predvolená."
+msgstr "Pri úprave záznamu sa zaznamenáva užívateľ a časová značka. Niekedy je vhodné zachovať existujúcu informáciu o „poslednej zmene“, napríklad ak sa vykonávajú malé úpravy. Toto nastaveniu určuje, či sa nastaví táto možnosť ako predvolená."
 
 #: resources/views/admin/users-edit.phtml:107
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
