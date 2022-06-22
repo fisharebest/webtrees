@@ -226,7 +226,7 @@ class CheckTree implements RequestHandlerInterface
 
                         if ($linked === null) {
                             $message  = I18N::translate('%s does not exist.', e($xref1));
-                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $xref1);
+                            $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $tag . '-' . $xref1);
                         } elseif ($element instanceof XrefFamily && $linked->type !== Family::RECORD_TYPE) {
                             $message  = $this->linkErrorMessage($tree, $xref1, $linked->type, Family::RECORD_TYPE);
                             $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-type');
@@ -276,7 +276,7 @@ class CheckTree implements RequestHandlerInterface
                             $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-HUSB-WIFE');
                         } elseif ($xref1 !== $xref2) {
                             $message    = I18N::translate('%1$s does not exist. Did you mean %2$s?', e($xref1), e($xref2));
-                            $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $xref1);
+                            $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $tag . '-' . $xref1);
                         }
                     } elseif ($tag === 'SOUR') {
                         $message    = I18N::translate('Inline-source records are discouraged.');
