@@ -7,12 +7,12 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\View;
 
 /**
- * @var array<string> $errors
- * @var array<string> $infos
+ * @var array<object> $errors
+ * @var array<object> $infos
  * @var string        $more_url
  * @var string        $title
  * @var Tree          $tree
- * @var array<string> $warnings
+ * @var array<object> $warnings
  */
 
 ?>
@@ -28,37 +28,49 @@ use Fisharebest\Webtrees\View;
 <ul class="list-group">
     <?php foreach ($errors as $error) : ?>
         <li class="list-group-item list-group-item-danger" data-wt-tag="<?= e($error->tag) ?>">
-            <?php if ($error->tag !== '') : ?>
-                <button type="button" class="btn btn-sm btn-link float-end" title="<?= e($error->tag) ?>">
-                    <?= I18N::translate('Hide these errors') ?>
-                </button>
-            <?php endif ?>
+            <div class="row">
+                <div class="col-auto"><?= $error->message ?></div>
 
-            <?= $error->message ?>
+                <?php if ($error->tag !== '') : ?>
+                    <div class="col-auto ms-auto">
+                        <button type="button" class="btn btn-link p-0 border-0">
+                            <?= I18N::translate('Hide these errors') ?> — <?= e($error->tag) ?>
+                        </button>
+                    </div>
+                <?php endif ?>
+            </div>
         </li>
     <?php endforeach ?>
 
     <?php foreach ($warnings as $warning) : ?>
         <li class="list-group-item list-group-item-warning" data-wt-tag="<?= e($warning->tag) ?>">
-            <?php if ($warning->tag !== '') : ?>
-            <button type="button" class="btn btn-sm btn-link float-end" title="<?= e($warning->tag) ?>">
-                <?= I18N::translate('Hide these errors') ?>
-            </button>
-            <?php endif ?>
+            <div class="row">
+                <div class="col-auto"><?= $warning->message ?></div>
 
-            <?= $warning->message ?>
+                <?php if ($warning->tag !== '') : ?>
+                    <div class="col-auto ms-auto">
+                        <button type="button" class="btn btn-link p-0 border-0">
+                            <?= I18N::translate('Hide these errors') ?> — <?= e($warning->tag) ?>
+                        </button>
+                    </div>
+                <?php endif ?>
+            </div>
         </li>
     <?php endforeach ?>
 
     <?php foreach ($infos as $info) : ?>
         <li class="list-group-item list-group-item-info" data-wt-tag="<?= e($info->tag) ?>">
-            <?php if ($info->tag !== '') : ?>
-            <button type="button" class="btn btn-sm btn-link float-end" title="<?= e($info->tag) ?>">
-                <?= I18N::translate('Hide these errors') ?>
-            </button>
-            <?php endif ?>
+            <div class="row">
+                <div class="col-auto"><?= $info->message ?></div>
 
-            <?= $info->message ?>
+                <?php if ($info->tag !== '') : ?>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-link p-0 border-0">
+                            <?= I18N::translate('Hide these errors') ?> — <?= e($info->tag) ?>
+                        </button>
+                    </div>
+                <?php endif ?>
+            </div>
         </li>
     <?php endforeach ?>
 
