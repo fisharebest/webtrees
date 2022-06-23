@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees\Services;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Http\Exceptions\HttpServerErrorException;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Webtrees;
@@ -335,6 +336,7 @@ class UpgradeService
             } catch (GuzzleException $ex) {
                 // Can't connect to the server?
                 // Use the existing information about latest versions.
+                Log::addErrorLog('Cannot fetch latest webtrees version. ' . $ex->getMessage());
             }
         }
 
