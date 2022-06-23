@@ -312,7 +312,7 @@ use Fisharebest\Webtrees\Site;
                 </td>
 
                 <td>
-                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_EMAIL', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_WWW_EMAIL')]) ?>
+                    <?= view('components/checkbox-inline', ['name' => 'HIDE_ADDR_EMAIL', 'label' => I18N::translate('hide'), 'checked' => (bool) Site::getPreference('HIDE_ADDR_EMAIL')]) ?>
                 </td>
             </tr>
         </tbody>
