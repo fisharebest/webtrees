@@ -132,10 +132,10 @@ class NoteStructure extends SubmitterText
 
             return
                 '<div class="wt-text-overflow-elipsis">' .
-                '<a href="#' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+                '<button type="button" class="btn btn-text p-0" href="#' . e($id) . '" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
                 view('icons/expand') .
                 view('icons/collapse') .
-                '</a>' .
+                '</button> ' .
                 '<span class="label">' . $label . ':</span> ' . $first_line .
                 '</div>' .
                 '<div id="' . e($id) . '" class="ps-4 collapse ' . ($expanded ? 'show' : '') . '">' .
@@ -159,10 +159,10 @@ class NoteStructure extends SubmitterText
 
         return
             '<div class="wt-text-overflow-elipsis">' .
-            '<a href="#" data-bs-target=".' . e($id) . '" role="button" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
+            '<button type="button" class="btn btn-text p-0" href="#" data-bs-target=".' . e($id) . '" data-bs-toggle="collapse" aria-controls="' . e($id) . '" aria-expanded="' . ($expanded ? 'true' : 'false') . '">' .
             view('icons/expand') .
             view('icons/collapse') .
-            '</a>' .
+            '</button> ' .
             I18N::translate('%1$s: %2$s', $label, $value) .
             '</div>' .
             '<div class="ps-4 collapse ' . ($expanded ? 'show' : '') . ' ' . e($id) . '">' .
