@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-06-06 09:18+0000\n"
+"PO-Revision-Date: 2022-07-17 04:40+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -8373,7 +8373,7 @@ msgstr "Nechať otvorené"
 #: resources/views/edit/edit-fact.phtml:113
 #: resources/views/edit/edit-record.phtml:32
 msgid "Keep the existing “last change” information"
-msgstr "Ponechať pôvodnú informáciu o „poslednej zmeny“"
+msgstr "Ponechať pôvodnú informáciu o „poslednej zmene“"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:276
@@ -16586,7 +16586,11 @@ msgstr "Západná Sahara"
 #. I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting
 #: resources/views/admin/trees-preferences.phtml:950
 msgid "When a record is edited, the user and timestamp are recorded. Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data. This option controls whether this feature is selected by default."
-msgstr "Pri úprave záznamu sa zaznamenáva užívateľ a časová značka. Niekedy je vhodné zachovať existujúcu informáciu o „poslednej zmeny“, napríklad ak sa vykonávajú malé úpravy. Toto nastaveniu určuje, či sa nastaví táto možnosť ako predvolená."
+msgstr ""
+"Pri úprave záznamu sa zaznamenáva užívateľ a časová značka. Niekedy je "
+"vhodné zachovať existujúcu informáciu o „poslednej zmene“, napríklad ak sa "
+"vykonávajú malé úpravy. Toto nastaveniu určuje, či sa nastaví táto možnosť "
+"ako predvolená."
 
 #: resources/views/admin/users-edit.phtml:108
 msgid "When a user registers for an account, an email is sent to their email address with a verification link. When they follow this link, we know the email address is correct, and the “email verified” option is selected automatically."
