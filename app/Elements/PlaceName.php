@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\Tree;
 
 use function e;
 use function route;
+use function trim;
 
 /**
  * PLACE_NAME := {1,120}
@@ -64,7 +65,7 @@ class PlaceName extends AbstractElement
         $value = strtr($value, [',' => ', ']);
         $value = strtr($value, [',  ' => ', ']);
 
-        return $value;
+        return trim($value);
     }
 
     /**
