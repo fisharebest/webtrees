@@ -36,7 +36,7 @@ class ScholasticAchievement extends AbstractElement
         'PHON'  => '0:1:?',
         'FAX'   => '0:1:?',
         'CAUS'  => '0:1:?',
-        'AGNC'  => '0:1:?',
+        'AGNC'  => '0:1',
         'RELI'  => '0:1:?',
         'NOTE'  => '0:M',
         'OBJE'  => '0:M',
