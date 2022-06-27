@@ -1898,7 +1898,6 @@ class Gedcom
     {
         return [
             'FAM'              => [['_UID', '0:M']],
-            'FAM:*:SOUR'       => [['NOTE', '0:0']],
             'FAM:*:SOUR:DATA'  => [['TEXT', '0:1']],
             'FAM:ANUL'         => [['_ASSO', '0:M', 'NOTE']],
             'FAM:CENS'         => [['_ASSO', '0:M', 'NOTE']],
@@ -1952,11 +1951,9 @@ class Gedcom
             'INDI:WILL'        => [['_ASSO', '0:M', 'NOTE']],
             'NOTE'             => [['RESN', '0:1', 'CHAN']],
             'NOTE:CHAN'        => [['_WT_USER', '0:1']],
-            'NOTE:SOUR'        => [['NOTE', '0:0']],
             'NOTE:SOUR:DATA'   => [['TEXT', '0:1']],
             'OBJE'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M']],
             'OBJE:CHAN'        => [['_WT_USER', '0:1']],
-            'OBJE:SOUR'        => [['NOTE', '0:0']],
             'OBJE:SOUR:DATA'   => [['TEXT', '0:1']],
             'REPO'             => [['RESN', '0:1', 'CHAN'], ['_UID', '0:M']],
             'REPO:CHAN'        => [['_WT_USER', '0:1']],
