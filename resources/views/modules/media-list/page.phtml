@@ -133,11 +133,9 @@ use League\Flysystem\FilesystemOperator;
                                     if ($media_file->isExternal()) {
                                         echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
                                     } elseif ($media_file->fileExists($data_filesystem)) {
-                                        echo Registry::elementFactory()->make('OBJE:FILE:FORM')->labelValue($media_file->mimeType(), $media_object->tree());
                                         if (Auth::isEditor($tree)) {
                                             echo Registry::elementFactory()->make('OBJE:FILE')->labelValue($media_file->filename(), $media_object->tree());
-                                        }
-                                        if (Auth::isEditor($tree)) {
+
                                             foreach ($media_file->attributes($data_filesystem) as $label => $value) {
                                                 $label = '<span class="label">' . $label . '</span>';
                                                 $value = '<span class="value">' . $value . '</span>';
