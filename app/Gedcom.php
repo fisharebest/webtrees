@@ -244,7 +244,7 @@ class Gedcom
     // Regular expression to match a GEDCOM XREF.
     public const REGEX_XREF = '[A-Za-z0-9:_.-]{1,20}';
 
-    // Regular expression to match a GEDCOM fact/event
+    // Regular expression to match a GEDCOM fact/event for editing raw GEDCOM.
     private const REGEX_VALUE   = '( .+)?';
     private const REGEX_LEVEL_9 = '\n9 ' . self::REGEX_TAG . self::REGEX_VALUE;
     private const REGEX_LEVEL_8 = '\n8 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_9 . ')*';
@@ -254,7 +254,7 @@ class Gedcom
     private const REGEX_LEVEL_4 = '\n4 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_5 . ')*';
     private const REGEX_LEVEL_3 = '\n3 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_4 . ')*';
     private const REGEX_LEVEL_2 = '\n2 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_3 . ')*';
-    public const REGEX_FACT     = '1 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_2 . ')*';
+    public const REGEX_FACT     = '1 ' . self::REGEX_TAG . self::REGEX_VALUE . '(' . self::REGEX_LEVEL_2 . ')*\n?';
 
     // Separates the parts of a place name.
     public const PLACE_SEPARATOR = ', ';
