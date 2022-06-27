@@ -1,22 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2019-11-09 18:04+0000\n"
-"Last-Translator: Administrator <greg.roach@open.ac.uk>\n"
-"Language-Team: Serbian <http://translate.webtrees.net/projects/webtrees/webtrees/sr/>\n"
-"Language: sr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Serbian\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: Enes <enes_s@yahoo.com>\nLanguage-Team: Serbian <https://translate.webtrees.net/projects/webtrees/webtrees/sr/>\nLanguage: sr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Serbian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -98,7 +81,7 @@ msgstr[2] "%1$s датотека је унетo у %2$s секунди."
 #: app/Http/RequestHandlers/CheckTree.php:433
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s je %2$s a %3$s je očekivano."
+msgstr "%1$s је %2$s а %3$s је очекивано."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2436
@@ -142,7 +125,7 @@ msgstr "%1$s × %2$s пиксела"
 #: resources/views/modules/media-list/page.phtml:145
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:480 app/Module/StatisticsChartModule.php:857
@@ -196,7 +179,7 @@ msgstr "%s и повезани појединци."
 #: app/Module/ClippingsCartModule.php:457
 #, php-format
 msgid "%s and their children"
-msgstr "%s и њихова дјеца"
+msgstr "%s и њихова деца"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:459
@@ -227,12 +210,12 @@ msgstr[2] "%s децe"
 #: app/Age.php:100 app/Elements/AgeAtEvent.php:103
 #: app/Statistics/Repository/FamilyRepository.php:353
 #: app/Statistics/Repository/IndividualRepository.php:979
-#, fuzzy, php-format
+#, php-format
 msgid "%s day"
 msgid_plural "%s days"
 msgstr[0] "%s дан"
-msgstr[1] "%s дани"
-msgstr[2] "%s дани"
+msgstr[1] "%s дана"
+msgstr[2] "%s дана"
 
 #: app/Http/RequestHandlers/CheckTree.php:231
 #: app/Http/RequestHandlers/UserEditAction.php:97
@@ -246,13 +229,13 @@ msgstr "%s не постоји."
 #, php-format
 msgid "%s family"
 msgid_plural "%s families"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s породица"
+msgstr[1] "%s породице"
+msgstr[2] "%s породица"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:76
 #: app/Http/RequestHandlers/SearchReplaceAction.php:108
-#, fuzzy, php-format
+#, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
 msgstr[0] "%s породица је ажурирана."
@@ -263,9 +246,9 @@ msgstr[2] "%s породице су ажуриране."
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s породично стабло"
+msgstr[1] "%s породична стабла"
+msgstr[2] "%s породичних стабла"
 
 #: resources/views/statistics/families/top10-list-grand.phtml:20
 #: resources/views/statistics/families/top10-nolist-grand.phtml:16
@@ -360,9 +343,9 @@ msgstr ""
 #, php-format
 msgid "%s signed-in user"
 msgid_plural "%s signed-in users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s пријављени корисник"
+msgstr[1] "%s пријављена корисника"
+msgstr[2] "%s пријављених корисника"
 
 #: app/Http/RequestHandlers/SearchReplaceAction.php:84
 #, php-format
@@ -670,7 +653,7 @@ msgstr ""
 #: app/Http/RequestHandlers/TreePreferencesPage.php:120
 #: app/Http/RequestHandlers/UserEditPage.php:110
 msgid "<default theme>"
-msgstr ""
+msgstr "<основна тема>"
 
 #: resources/views/register-page.phtml:26
 msgid "<p>Notice: By completing and submitting this form, you agree:</p><ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul>"
@@ -854,7 +837,7 @@ msgstr ""
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:83
 msgid "A list of the most popular surnames."
-msgstr ""
+msgstr "Листа најпопуларнијих презимена."
 
 #. I18N: Description of the “Most viewed pages” module
 #: app/Module/TopPageViewsModule.php:60
@@ -1669,7 +1652,7 @@ msgstr ""
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:163
 #: app/Module/SearchMenuModule.php:125
 msgid "Advanced search"
-msgstr ""
+msgstr "Напредно претраживање"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:42
@@ -2760,7 +2743,7 @@ msgstr ""
 #: resources/xml/reports/pedigree_report.xml:1379
 #: resources/xml/reports/relative_ext_report.xml:63
 msgid "Birth"
-msgstr "Rođen/a"
+msgstr "Рођење"
 
 #: app/Elements/PedigreeLinkageType.php:80
 msgctxt "Female pedigree"
@@ -4483,7 +4466,7 @@ msgstr ""
 #: resources/xml/reports/marriage_report.xml:46
 #: resources/xml/reports/occupation_report.xml:57
 msgid "Date"
-msgstr "Datum"
+msgstr "Датум"
 
 #: resources/views/modules/relatives/tab.phtml:35
 msgid "Date differences"
@@ -4818,7 +4801,7 @@ msgstr "Ukupno umrlih"
 #: resources/xml/reports/pedigree_report.xml:1381
 #: resources/xml/reports/relative_ext_report.xml:69
 msgid "Death"
-msgstr "Umro/la"
+msgstr "Смрт"
 
 #: app/Statistics/Google/ChartDistribution.php:306
 msgid "Death by country"
@@ -5059,7 +5042,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:62
 msgid "Default theme"
-msgstr ""
+msgstr "Подразумевана тема"
 
 #: app/Gedcom.php:1275 app/Gedcom.php:1276 app/Gedcom.php:1277
 #: app/Gedcom.php:1278 app/Gedcom.php:1279
@@ -5461,14 +5444,14 @@ msgstr ""
 #: app/Http/RequestHandlers/UserAddAction.php:72
 #: app/Http/RequestHandlers/UserEditAction.php:153
 msgid "Duplicate email address. A user with that email already exists."
-msgstr ""
+msgstr "Дупла е-мејл адреса. Корисник са том е-мејл адресом већ постоји."
 
 #: app/Http/RequestHandlers/AccountUpdate.php:87
 #: app/Http/RequestHandlers/RegisterAction.php:259
 #: app/Http/RequestHandlers/UserAddAction.php:67
 #: app/Http/RequestHandlers/UserEditAction.php:159
 msgid "Duplicate username. A user with that username already exists. Please choose another username."
-msgstr ""
+msgstr "Дупло корисничко име. Корисник са тим именом већ постоји. Молимо одаберите друго корисничко име."
 
 #: resources/views/help/source-events.phtml:8
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction. For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5662,7 +5645,7 @@ msgstr ""
 #: resources/views/register-page.phtml:47
 #: resources/views/setup/step-5-administrator.phtml:90
 msgid "Email address"
-msgstr ""
+msgstr "Е-мејл адреса"
 
 #: resources/views/admin/users-edit.phtml:100
 msgid "Email verified"
@@ -5831,7 +5814,7 @@ msgstr ""
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
 msgid "Event"
-msgstr "Događaj"
+msgstr "Догађај"
 
 #: app/Gedcom.php:819 resources/views/calendar-page.phtml:176
 #: resources/views/modules/gedcom_stats/statistics.phtml:133
@@ -5848,7 +5831,7 @@ msgstr ""
 
 #: resources/views/modules/personal_facts/tab.phtml:39
 msgid "Events of close relatives"
-msgstr "Događaji bliže rodbine"
+msgstr "Догађаји ближе родбине"
 
 #: resources/views/admin/users-edit.phtml:241
 msgid "Everybody has this role, including visitors to the website and search engines."
@@ -6188,7 +6171,7 @@ msgstr ""
 #: resources/views/modules/faq/edit.phtml:72
 #: resources/views/modules/stories/config.phtml:25
 msgid "Family tree"
-msgstr "Porodično stablo"
+msgstr "Породично стабло"
 
 #: app/Module/ClippingsCartModule.php:242
 #: app/Module/ClippingsCartModule.php:403
@@ -6398,7 +6381,7 @@ msgstr "Žensko"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:26
 #: resources/views/modules/top10_givnnames/block.phtml:18
 msgid "Females"
-msgstr ""
+msgstr "Жене"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
@@ -6561,7 +6544,7 @@ msgstr ""
 #: resources/views/emails/register-user-html.phtml:24
 #: resources/views/emails/register-user-text.phtml:18
 msgid "Follow this link to verify your email address."
-msgstr ""
+msgstr "Пратите овај линк да бисте потврдили своју е-мејл адресу."
 
 #: resources/xml/reports/ahnentafel_report.xml:15
 #: resources/xml/reports/bdm_report.xml:14
@@ -6922,7 +6905,7 @@ msgstr ""
 #: app/Http/RequestHandlers/SearchGeneralPage.php:196
 #: app/Module/SearchMenuModule.php:100
 msgid "General search"
-msgstr ""
+msgstr "Општа претрага"
 
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:110
@@ -8454,14 +8437,14 @@ msgstr ""
 #: resources/views/layouts/administration.phtml:56
 #: resources/views/setup/step-1-language.phtml:42
 msgid "Language"
-msgstr ""
+msgstr "Језик"
 
 #: app/Http/RequestHandlers/ModulesLanguagesPage.php:43
 #: resources/views/admin/control-panel.phtml:599
 #: resources/views/admin/modules.phtml:128
 #: resources/views/admin/modules.phtml:130
 msgid "Languages"
-msgstr ""
+msgstr "Језици"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:290
@@ -8677,7 +8660,7 @@ msgstr ""
 #: app/Http/RequestHandlers/LinkChildToFamilyPage.php:49
 #: resources/views/modules/relatives/tab.phtml:121
 msgid "Link this individual to an existing family as a child"
-msgstr "Dodaj ovu osobu kao dete već upisanoj porodici"
+msgstr "Додај ову особу као дете већ уписаној породици"
 
 #: resources/views/media-page-menu.phtml:63
 #: resources/views/modals/link-media-to-family.phtml:16
@@ -8899,7 +8882,7 @@ msgstr "Muško"
 #: resources/views/modules/statistics-chart/oldest-living.phtml:17
 #: resources/views/modules/top10_givnnames/block.phtml:14
 msgid "Males"
-msgstr ""
+msgstr "Мушкарци"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:331
@@ -9799,7 +9782,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.phtml:264
 #: resources/views/modules/html/template-statistics.phtml:105
 msgid "Most common surnames"
-msgstr "Najčešća prezimena"
+msgstr "Најчешћа презимена"
 
 #: resources/views/admin/site-mail.phtml:186
 msgid "Most mail servers require a valid domain name."
@@ -10238,7 +10221,7 @@ msgstr ""
 #: app/Gedcom.php:1582 app/Module/DescendancyModule.php:267
 #: resources/views/family-page-children.phtml:17
 msgid "No children"
-msgstr "Nema upisane dece"
+msgstr "Без деце"
 
 #: app/Services/MessageService.php:235
 msgid "No contact"
@@ -10263,7 +10246,7 @@ msgstr[2] ""
 
 #: app/Module/OnThisDayModule.php:156
 msgid "No events exist for today."
-msgstr "Nema događaja za današnji dan."
+msgstr "Нема догађаја за данашњи дан."
 
 #: app/Module/UpcomingAnniversariesModule.php:177
 msgid "No events exist for tomorrow."
@@ -10330,7 +10313,7 @@ msgstr ""
 
 #: app/Statistics/Repository/UserRepository.php:81
 msgid "No signed-in and no anonymous users"
-msgstr "Nijedan korisnik nije prijavljen"
+msgstr "Ниједан корисник није пријављен"
 
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
@@ -10558,7 +10541,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/config.phtml:80
 #: resources/views/modules/top10_surnames/config.phtml:15
 msgid "Number of surnames"
-msgstr ""
+msgstr "Број презимена"
 
 #: app/Elements/RelationIsDescriptor.php:117
 msgid "Nurse"
@@ -10685,11 +10668,11 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:101
 msgid "On this day"
-msgstr ""
+msgstr "На данашњи дан"
 
 #: app/Http/RequestHandlers/CalendarPage.php:120
 msgid "On this day…"
-msgstr "Na današnji dan…"
+msgstr "На данашњи дан…"
 
 #: resources/views/admin/map-import-form.phtml:60
 msgid "Only add new records"
@@ -10961,7 +10944,7 @@ msgstr ""
 #: resources/views/register-page.phtml:71
 #: resources/views/setup/step-5-administrator.phtml:78
 msgid "Password"
-msgstr "Lozinka"
+msgstr "Лозинка"
 
 #: resources/views/admin/users-create.phtml:61
 #: resources/views/admin/users-edit.phtml:72
@@ -11078,7 +11061,7 @@ msgstr ""
 #: app/Http/RequestHandlers/SearchPhoneticPage.php:98
 #: app/Module/SearchMenuModule.php:113 resources/views/branches-page.phtml:35
 msgid "Phonetic search"
-msgstr "Фонетска претрага"
+msgstr "Фонетско претраживање"
 
 #: app/Gedcom.php:679
 msgid "Phonetic type"
@@ -11290,7 +11273,7 @@ msgstr "Пусти"
 
 #: app/Http/RequestHandlers/ContactAction.php:119
 msgid "Please enter a valid email address."
-msgstr ""
+msgstr "Молимо вас да упишете исправну е-мејл адресу."
 
 #: app/Http/RequestHandlers/ContactAction.php:114
 #: app/Http/RequestHandlers/PasswordResetAction.php:85
@@ -11753,7 +11736,7 @@ msgstr ""
 #: resources/views/emails/register-notify-text.phtml:22
 #: resources/views/register-page.phtml:35
 msgid "Real name"
-msgstr ""
+msgstr "Право име"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:86
@@ -11779,7 +11762,7 @@ msgstr ""
 #: resources/views/modules/recent_changes/changes-table.phtml:43
 #: resources/views/modules/todo/research-tasks.phtml:30
 msgid "Record"
-msgstr "Upis"
+msgstr "Запис"
 
 #: app/Gedcom.php:477 app/Gedcom.php:721 app/Gedcom.php:753 app/Gedcom.php:777
 #: app/Gedcom.php:808 app/Gedcom.php:832 app/Gedcom.php:856 app/Gedcom.php:868
@@ -12088,19 +12071,19 @@ msgstr "Затражи нови кориснички налог"
 
 #: app/Elements/ResearchTaskStatus.php:51 app/Elements/ResearchTaskType.php:50
 msgid "Research"
-msgstr ""
+msgstr "Истраживање"
 
 #: app/Gedcom.php:1046 app/Gedcom.php:1085 app/Gedcom.php:1251
 #: app/Gedcom.php:1307 app/Gedcom.php:1648 app/Module/ResearchTaskModule.php:64
 #: app/Module/ResearchTaskModule.php:67
 #: resources/views/modules/todo/research-tasks.phtml:36
 msgid "Research task"
-msgstr ""
+msgstr "Задатак за истраживање"
 
 #. I18N: Name of a module. Tasks that need further research.
 #: app/Module/ResearchTaskModule.php:209
 msgid "Research tasks"
-msgstr ""
+msgstr "Задаци за истраживање"
 
 #: resources/views/modules/todo/config.phtml:14
 msgid "Research tasks are special events, added to individuals in your family tree, which identify the need for further research. You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc."
@@ -12422,13 +12405,13 @@ msgstr ""
 #: resources/views/modules/fix-place-names/options.phtml:11
 #: resources/views/search-replace-page.phtml:42
 msgid "Search"
-msgstr ""
+msgstr "Претрага"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/SearchReplacePage.php:47
 #: app/Module/FixSearchAndReplace.php:77 app/Module/SearchMenuModule.php:138
 msgid "Search and replace"
-msgstr ""
+msgstr "Претражи и замени"
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixSearchAndReplace.php:88
@@ -12442,12 +12425,12 @@ msgstr ""
 
 #: resources/views/modules/media-list/page.phtml:73
 msgid "Search filters"
-msgstr ""
+msgstr "Филтери за претрагу"
 
 #: resources/views/search-general-page.phtml:47
 #: resources/views/search-replace-page.phtml:24
 msgid "Search for"
-msgstr ""
+msgstr "Тражи"
 
 #: app/Http/RequestHandlers/ModulesMapGeoLocationsPage.php:44
 msgid "Search for locations in an external database."
@@ -12465,11 +12448,11 @@ msgstr ""
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:38
 msgid "Search method"
-msgstr ""
+msgstr "Метода тражења"
 
 #: resources/views/modules/fix-search-and-replace/options.phtml:18
 msgid "Search text/pattern"
-msgstr ""
+msgstr "Тражи текст/узорак"
 
 #: resources/views/modules/relationships-chart/config.phtml:24
 msgid "Searching for all possible relationships can take a lot of time in complex trees."
@@ -12515,7 +12498,7 @@ msgstr ""
 #: resources/views/edit/input-addon-calendar.phtml:12
 #: resources/views/edit/input-addon-calendar.phtml:15
 msgid "Select a date"
-msgstr "Izaberi datum"
+msgstr "Изабери датум"
 
 #: resources/views/modules/lifespans-chart/page.phtml:37
 msgid "Select individuals by place or date"
@@ -13077,7 +13060,7 @@ msgstr ""
 
 #: resources/views/lists/individuals-table.phtml:178
 msgid "Show only females."
-msgstr "Pokaži samo osobe ženskog pola."
+msgstr "Прикажи само жене."
 
 #: resources/views/lists/individuals-table.phtml:183
 msgid "Show only individuals for whom the gender is not known."
@@ -13089,7 +13072,7 @@ msgstr "Прикажи само особе, догађаје или све"
 
 #: resources/views/lists/individuals-table.phtml:173
 msgid "Show only males."
-msgstr "Pokaži samo osobe muškog pola."
+msgstr "Прикажи само мушкарце."
 
 #: resources/views/lists/families-table.phtml:420
 #: resources/views/lists/individuals-table.phtml:428
@@ -13167,7 +13150,7 @@ msgstr "Pokaži supruge"
 #: resources/views/lists/families-table.phtml:424
 #: resources/views/lists/individuals-table.phtml:432
 msgid "Show statistics charts"
-msgstr ""
+msgstr "Прикажи графикон статистике"
 
 #. I18N: The placeholders are edit controls. Show the [first/last] [1/2/3/4/5] parts of a place name
 #: resources/views/admin/trees-preferences.phtml:569
@@ -13204,7 +13187,7 @@ msgstr ""
 
 #: app/Module/IndividualListModule.php:369
 msgid "Show the list of surnames"
-msgstr ""
+msgstr "Прикажи листу презимена"
 
 #: app/Http/RequestHandlers/ModulesMapLinksPage.php:44
 #: app/Module/ModuleMapLinkTrait.php:49
@@ -13226,7 +13209,7 @@ msgstr ""
 #: resources/views/modules/html/config.phtml:60
 #: resources/views/modules/stories/edit.phtml:58
 msgid "Show this block for which languages"
-msgstr ""
+msgstr "За које језике желите приказати овај блок"
 
 #: resources/views/admin/trees-preferences.phtml:296
 msgid "Show thumbnail images in charts and family groups."
@@ -13731,7 +13714,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.phtml:38
 #: resources/views/modules/gedcom_stats/statistics.phtml:158
 msgid "Statistics"
-msgstr ""
+msgstr "Статистика"
 
 #: app/Gedcom.php:481 app/Gedcom.php:587 app/Gedcom.php:628 app/Gedcom.php:648
 #: app/Gedcom.php:659 app/Gedcom.php:727 app/Gedcom.php:937 app/Gedcom.php:1257
@@ -13902,7 +13885,7 @@ msgstr ""
 #: resources/views/modules/gedcom_stats/statistics.phtml:77
 #: resources/views/modules/statistics-chart/custom.phtml:161
 msgid "Surnames"
-msgstr ""
+msgstr "Презимена"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:78
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
@@ -14531,11 +14514,11 @@ msgstr ""
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Мени за претрагу."
 
 #: app/Services/SearchService.php:1183
 msgid "The search returned too many results."
-msgstr ""
+msgstr "Претрага је дала превише резултата."
 
 #: resources/views/setup/step-2-server-checks.phtml:55
 msgid "The server configuration is OK."
@@ -14618,7 +14601,7 @@ msgstr ""
 #: app/Http/RequestHandlers/LoginAction.php:117
 #: app/Http/RequestHandlers/LoginAction.php:122
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Корисничко име или лозинка нису исправни."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: resources/views/admin/site-mail.phtml:139
@@ -14660,19 +14643,19 @@ msgstr ""
 #: resources/views/admin/modules.phtml:273
 #: resources/views/admin/users-edit.phtml:198
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #. I18N: Name of a module
 #: app/Module/ThemeSelectModule.php:45
 msgid "Theme change"
-msgstr ""
+msgstr "Промена теме"
 
 #: app/Http/RequestHandlers/ModulesThemesPage.php:43
 #: resources/views/admin/control-panel.phtml:592
 #: resources/views/admin/modules.phtml:124
 #: resources/views/admin/modules.phtml:126
 msgid "Themes"
-msgstr ""
+msgstr "Теме"
 
 #: resources/views/modules/personal_facts/tab.phtml:59
 msgid "There are no facts for this individual."
@@ -14951,7 +14934,7 @@ msgstr ""
 #: resources/views/register-page.phtml:40
 #: resources/views/setup/step-5-administrator.phtml:59
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr ""
+msgstr "Ово је ваше право име, које ће бити приказано на екрану."
 
 #: app/Http/RequestHandlers/PasswordRequestAction.php:125
 msgid "This link is valid for one hour."
@@ -15114,7 +15097,7 @@ msgstr ""
 
 #: resources/views/modules/privacy-policy/page.phtml:25
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr ""
+msgstr "Ово истраживање је \"легитиман интерес\" према члану 6(ф) Општих прописа ЕУ о заштити података."
 
 #: resources/views/admin/users-edit.phtml:261
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15183,7 +15166,7 @@ msgstr ""
 
 #: resources/views/modules/privacy-policy/page.phtml:22
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr ""
+msgstr "Ова веб страница обрађује личне податке у сврху историјског и генеаолошког истраживања."
 
 #: resources/views/modules/privacy-policy/page.phtml:33
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
@@ -15392,7 +15375,7 @@ msgstr ""
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: resources/views/admin/site-registration.phtml:41
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Да би поставили овај текст за други језик, морате се пребацити на тај језик, и поново посетити ову страницу."
 
 #: resources/views/modules/sitemap/config.phtml:49
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15477,7 +15460,7 @@ msgstr ""
 #: app/Module/TopSurnamesModule.php:72
 #: resources/views/modules/statistics-chart/names.phtml:25
 msgid "Top surnames"
-msgstr ""
+msgstr "Најчешћа презимена"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:199
@@ -15529,7 +15512,7 @@ msgstr ""
 #: resources/views/modules/statistics-chart/other-events.phtml:10
 #: resources/xml/reports/missing_facts_report.xml:602
 msgid "Total events"
-msgstr "Ukupno događaja"
+msgstr "Укупно догађаја"
 
 #: app/Statistics/Google/ChartNoChildrenFamilies.php:127
 #: resources/views/modules/statistics-chart/family-totals.phtml:10
@@ -15543,7 +15526,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:30
 msgid "Total females"
-msgstr ""
+msgstr "Укупно жена"
 
 #: resources/views/modules/statistics-chart/names.phtml:38
 msgid "Total given names"
@@ -15570,7 +15553,7 @@ msgstr ""
 
 #: resources/views/modules/statistics-chart/total-individuals.phtml:21
 msgid "Total males"
-msgstr ""
+msgstr "Укупно мушкараца"
 
 #: resources/views/modules/statistics-chart/family-totals.phtml:19
 msgid "Total marriages"
@@ -15584,7 +15567,7 @@ msgstr ""
 #: resources/views/modules/html/template-statistics.phtml:36
 #: resources/views/modules/statistics-chart/names.phtml:18
 msgid "Total surnames"
-msgstr ""
+msgstr "Укупно презимена"
 
 #: resources/views/modules/gedcom_stats/config.phtml:52
 msgid "Total users"
@@ -15942,9 +15925,9 @@ msgstr ""
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Најмање %s карактер."
+msgstr[1] "Најмање %s карактера."
+msgstr[2] "Најмање %s карактера."
 
 #: resources/xml/reports/family_group_report.xml:12
 #: resources/xml/reports/individual_ext_report.xml:13
@@ -16046,19 +16029,19 @@ msgstr ""
 #: resources/views/register-page.phtml:59
 #: resources/views/setup/step-5-administrator.phtml:66
 msgid "Username"
-msgstr ""
+msgstr "Корисничко име"
 
 #: resources/views/forgot-password-page.phtml:21
 #: resources/views/modules/login_block/sign-in.phtml:58
 msgid "Username or email address"
-msgstr "Корисничко име или адреса е-поште"
+msgstr "Корисничко име или адреса електронске поште"
 
 #: resources/views/admin/users-create.phtml:48
 #: resources/views/admin/users-edit.phtml:59
 #: resources/views/edit-account-page.phtml:35
 #: resources/views/register-page.phtml:64
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
+msgstr "Корисничко име не разликује велика/мала и акцентирана слова, па се тако „micа”, „mićа” i „Mićа” сматрају истим корисничким именима."
 
 #: resources/views/admin/control-panel.phtml:475
 #: resources/views/modules/gedcom_stats/statistics.phtml:144
@@ -16088,7 +16071,7 @@ msgstr ""
 #. I18N: Description of the “StatisticsChart” module
 #: app/Module/StatisticsChartModule.php:98
 msgid "Various statistics charts."
-msgstr ""
+msgstr "Различити статистички графикони."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:518
@@ -16326,7 +16309,7 @@ msgstr ""
 
 #: resources/views/login-page.phtml:21
 msgid "Welcome to this genealogy website"
-msgstr "Dobrodošli na Rodoslov bratstva Damjanci"
+msgstr "Добродошли на генеалошку веб страницу"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:177
@@ -16377,7 +16360,7 @@ msgstr ""
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:42
 msgid "Who is online"
-msgstr ""
+msgstr "Ко је онлајн"
 
 #: resources/views/admin/data-fix-page.phtml:82
 msgid "Why does this list include records that do not need to be updated?"
@@ -16481,7 +16464,7 @@ msgstr "Jemen"
 #: resources/views/emails/register-user-text.phtml:16
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
-msgstr ""
+msgstr "Ви (или неко ко се представља да сте ви) је затражио кориснички налог на %1$s користећи е-мејл адресу %2$s."
 
 #: app/Http/RequestHandlers/ContactAction.php:124
 #: app/Http/RequestHandlers/RegisterAction.php:271
@@ -16495,7 +16478,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/LoginPage.php:99
 msgid "You can apply for an account using the link below."
-msgstr ""
+msgstr "Можете затражити нови кориснички налог кликом на линк испод."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #: resources/views/admin/site-preferences.phtml:68
@@ -16587,7 +16570,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/LoginPage.php:88
 msgid "You need to be an authorized user to access this website."
-msgstr ""
+msgstr "Морате бити регистровани корисник да би приступили овој страници."
 
 #: resources/views/admin/control-panel.phtml:284
 #: resources/views/admin/trees.phtml:48
@@ -17065,7 +17048,7 @@ msgstr ""
 #: resources/views/register-page.phtml:99
 #: resources/views/report-select-page.phtml:38
 msgid "continue"
-msgstr ""
+msgstr "настави"
 
 #. I18N: A button label.
 #: resources/views/admin/trees-create.phtml:55
@@ -19944,7 +19927,7 @@ msgstr "сачувај"
 #: resources/views/search-general-page.phtml:126
 #: resources/views/search-phonetic-page.phtml:86
 msgid "search"
-msgstr ""
+msgstr "претражи"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Services/RelationshipService.php:2424
@@ -20211,7 +20194,7 @@ msgstr ""
 #: resources/views/login-page.phtml:55
 #: resources/views/modules/login_block/sign-in.phtml:36
 msgid "sign in"
-msgstr "prijava"
+msgstr "пријава"
 
 #. I18N: A button label.
 #: resources/views/modules/login_block/sign-out.phtml:20
