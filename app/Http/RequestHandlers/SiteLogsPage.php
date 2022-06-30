@@ -87,12 +87,12 @@ class SiteLogsPage implements RequestHandlerInterface
         $user_options = $this->user_service->all()->mapWithKeys(static function (User $user): array {
             return [$user->userName() => $user->userName()];
         });
-        $user_options = (new Collection(['' => '']))->merge($user_options);
+        $user_options->prepend('', '');
 
         $tree_options = $this->tree_service->all()->mapWithKeys(static function (Tree $tree): array {
             return [$tree->name() => $tree->title()];
         });
-        $tree_options = (new Collection(['' => '']))->merge($tree_options);
+        $tree_options->prepend('', '');
 
         $title = I18N::translate('Website logs');
 
