@@ -25,7 +25,7 @@ namespace Fisharebest\Webtrees\Elements;
 class Marriage extends AbstractEventElement
 {
     protected const SUBTAGS = [
-        'TYPE'  => '0:1:?',
+        'TYPE'  => '0:1',
         'DATE'  => '0:1',
         'HUSB'  => '0:1',
         'WIFE'  => '0:1',
