@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-03-18 13:08+0000\n"
+"PO-Revision-Date: 2022-07-17 04:40+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/sr_Latn/>\n"
@@ -3467,7 +3467,7 @@ msgstr "Datum popisa"
 
 #: app/Factories/ElementFactory.php:1156 app/GedcomTag.php:543
 msgid "Census place"
-msgstr "Popis mesta"
+msgstr "Mesto popisa"
 
 #: resources/views/modules/census-assistant.phtml:111
 msgid "Census transcript"
@@ -3476,7 +3476,7 @@ msgstr "Prepis popisa"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:116
 msgid "Central African Republic"
-msgstr "Stredoafrická republika"
+msgstr "Centralnoafrička republika"
 
 #: app/Module/StatisticsChartModule.php:987
 #: app/Statistics/Google/ChartAge.php:116
