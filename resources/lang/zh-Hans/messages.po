@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
+"PO-Revision-Date: 2022-07-17 04:40+0000\n"
 "Last-Translator: olor <olor@foxmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/zh_Hans/>\n"
@@ -153,7 +153,7 @@ msgstr "%1$s × %2$s 像素"
 #: resources/views/edit/edit-record.phtml:37
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s:%2$s"
 
 # I18N: A range of numbers
 #. I18N: A range of numbers
@@ -6824,7 +6824,7 @@ msgstr "妻子的家庭"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 # I18N: Name of a module/chart
 #. I18N: Name of a module/chart
@@ -7444,7 +7444,7 @@ msgstr "葬礼"
 
 #: app/Factories/ElementFactory.php:1048
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -12349,7 +12349,7 @@ msgstr "邮编"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "webtrees™版权所有"
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
@@ -12680,7 +12680,7 @@ msgstr "抚育"
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "瑞达"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
@@ -14905,7 +14905,7 @@ msgstr "变更日期范围的开始"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 # I18N: gedcom tag STAE
 #. I18N: gedcom tag STAE
