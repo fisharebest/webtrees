@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-02-23 13:42+0000\n"
-"Last-Translator: Suleyman <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
-"Language: tr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: Ekrem Parlak <ekrem@parlak.org>\nLanguage-Team: Turkish <https://translate.webtrees.net/projects/webtrees/webtrees/tr/>\nLanguage: tr\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3501,7 +3489,7 @@ msgstr "Hataları kontrol et"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Yeni versiyon için kontrol et"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3699,7 +3687,7 @@ msgstr "Sünnetçi"
 
 #: app/Gedcom.php:1191
 msgid "Circumcision"
-msgstr ""
+msgstr "Sünnet"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -3972,7 +3960,7 @@ msgstr "Kontrol paneli"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "%s etiketlerini GEDCOM 5.5.1'e dönüştür"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4598,7 +4586,7 @@ msgstr "İkamet tarihi"
 
 #: app/Gedcom.php:938
 msgid "Date of status change"
-msgstr ""
+msgstr "Durum değişiklik tarihi"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5112,7 +5100,7 @@ msgstr "Bu adı sil"
 
 #: resources/views/admin/locations.phtml:172
 msgid "Delete unused locations"
-msgstr ""
+msgstr "Kullanılmayan yerleri sil"
 
 #: resources/views/edit-account-page.phtml:174
 msgid "Delete your account"
@@ -5124,7 +5112,7 @@ msgstr "Ailenin silinmesi, tüm bireylerin birbirleriyle olan bağlantısını k
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "Siliniyor…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5133,7 +5121,7 @@ msgstr "Kongo Demokratik Cumhuriyeti"
 
 #: app/Gedcom.php:1398
 msgid "Demographic data"
-msgstr ""
+msgstr "Demografik veri"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -5306,7 +5294,7 @@ msgstr "Çocukken öldü: muaf"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died before less than 1 year old, sealing not required."
-msgstr ""
+msgstr "1 yaşından önce öldü, mühür gerekmiyor."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5891,7 +5879,7 @@ msgstr "Harici dosyalar"
 #: app/Gedcom.php:890 app/Gedcom.php:904 app/Gedcom.php:916 app/Gedcom.php:934
 #: app/Gedcom.php:952 app/Gedcom.php:961 app/Gedcom.php:969 app/Gedcom.php:978
 msgid "External identifier"
-msgstr ""
+msgstr "Harici tanımlayıcı"
 
 #: app/Gedcom.php:1188 app/Gedcom.php:1787
 msgid "External link"
@@ -6854,7 +6842,7 @@ msgstr "GOV tanımlayıcı"
 
 #: app/Gedcom.php:1393
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV tanımlayıcı türü"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7978,11 +7966,11 @@ msgstr ""
 
 #: app/Http/RequestHandlers/CheckTree.php:221
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "Geçersiz GEDCOM etiketi."
 
 #: app/Http/RequestHandlers/CheckTree.php:288
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "Geçersiz GEDCOM değeri."
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8571,7 +8559,7 @@ msgstr "Vasiyet edilen"
 
 #: app/Gedcom.php:997
 msgid "Length"
-msgstr ""
+msgstr "Uzunluk"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -10309,7 +10297,7 @@ msgstr "Oturum açılmamış ve anonim kullanıcı yok"
 #: app/Module/IndividualListModule.php:292
 #: app/Module/IndividualListModule.php:519
 msgid "No surname"
-msgstr ""
+msgstr "Soyadı yok"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10395,7 +10383,7 @@ msgstr "Evli değil"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Kayıtlı değil"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -10903,7 +10891,7 @@ msgstr "Paraguay"
 
 #: app/Gedcom.php:1404
 msgid "Parent location"
-msgstr ""
+msgstr "Ebeveyn konumu"
 
 #: app/Gedcom.php:725 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
@@ -11711,7 +11699,7 @@ msgstr "Medyayı yeniden sırala"
 
 #: resources/views/media-page-menu.phtml:38
 msgid "Re-order media files"
-msgstr ""
+msgstr "Medya dosyalarını yeniden sırala"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -12201,12 +12189,12 @@ msgstr "SQLite sürümü %s yüklü. SQLite sürümü %s veya üstü gereklidir.
 #. I18N: Use SMTP over SSL/TLS, or Implicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:209
 msgid "SSL/TLS"
-msgstr ""
+msgstr "SSL/TLS"
 
 #. I18N: Use SMTP with STARTTLS, or Explicit TLS - a secure communications protocol
 #: app/Services/EmailService.php:211
 msgid "STARTTLS"
-msgstr ""
+msgstr "STARTTLS"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173
@@ -12563,7 +12551,7 @@ msgstr "Bu ayarları kullanarak bir test e-postası gönder"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Bir yükseltme mevcut olduğunda tüm yönetici hesaplarına bir eposta gönder."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -12932,7 +12920,7 @@ msgstr "“Yeni kullanıcı hesabı iste” sayfasında kabul edilebilir kullan�
 
 #: resources/views/modules/media/tab.phtml:22
 msgid "Show all media"
-msgstr ""
+msgstr "Tüm medyaları göster"
 
 #: resources/views/modules/notes/tab.phtml:28
 msgid "Show all notes"
@@ -13292,7 +13280,7 @@ msgstr "Oturum açma ve kayıt"
 
 #: app/Gedcom.php:1549
 msgid "Signature"
-msgstr ""
+msgstr "İmza"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -14375,7 +14363,7 @@ msgstr "Bellek ve CPU zaman gereksinimleri, aile ağacınızdaki kişi sayısın
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Mesaj %s'e gönderilmedi."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -14806,7 +14794,7 @@ msgstr "Bu aile ağacı son %s tarihinde güncellendi."
 
 #: app/Http/RequestHandlers/CheckTree.php:310
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Bu dosya adı GEDZIP dosya formatı ile uyumlu değil."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:30
@@ -15407,15 +15395,15 @@ msgstr "Tonga"
 
 #: app/Http/Exceptions/HttpTooManyRequestsException.php:35
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Çok fazla istek gönderdiniz, Daha sonra tekrar deneyin."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
 #, php-format
 msgid "Top %s given name"
 msgid_plural "Top %s given names"
-msgstr[0] "En çok %s verilen ad"
-msgstr[1] "En çok %s verilen adlar"
+msgstr[0] "En çok verilen %s ad"
+msgstr[1] "En çok verilen %s ad"
 
 #. I18N: Title for a list of the most common surnames, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopSurnamesModule.php:188
@@ -16405,7 +16393,7 @@ msgstr "Şahit"
 #: app/Gedcom.php:1247 app/Gedcom.php:1301 app/Gedcom.php:1486
 #: app/Gedcom.php:1518
 msgid "Witnesses"
-msgstr ""
+msgstr "Şahitler"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:53
@@ -16642,7 +16630,7 @@ msgstr "Web sunucunuz artık güvenlik güncelleştirmeleri almayan PHP %s sür�
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16802,7 +16790,7 @@ msgstr "halası-teyzesi/amcası-dayısı"
 
 #: resources/views/admin/trees-import.phtml:84
 msgid "automatic"
-msgstr ""
+msgstr "otomatik"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -20691,7 +20679,7 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:306
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees bu dosya formatı için küçük resim oluşturamaz."
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees does not recognise this file format."
