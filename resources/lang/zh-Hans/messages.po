@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: Chinese (Simplified) (webtrees)\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
-"Last-Translator: olor <olor@foxmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
-"Language: zh-Hans\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: Chinese (Simplified) (webtrees)\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: olor <olor@foxmail.com>\nLanguage-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\nLanguage: zh-Hans\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -149,7 +133,7 @@ msgstr "%1$s × %2$s 像素"
 #: resources/views/modules/media-list/page.phtml:145
 #, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s:%2$s"
 
 # I18N: A range of numbers
 #. I18N: A range of numbers
@@ -6682,7 +6666,7 @@ msgstr "妻子的家庭"
 #. I18N: familysearch.org
 #: app/Gedcom.php:1101
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 # I18N: Name of a module/chart
 #. I18N: Name of a module/chart
@@ -7301,7 +7285,7 @@ msgstr "葬礼"
 
 #: app/Gedcom.php:504 resources/views/admin/gedcom-export-options.phtml:30
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
@@ -12247,7 +12231,7 @@ msgstr "邮编"
 #. I18N: Name of a module
 #: app/Module/PoweredByWebtreesModule.php:41
 msgid "Powered by webtrees™"
-msgstr ""
+msgstr "webtrees™版权所有"
 
 # I18N: a month in the French republican calendar
 #. I18N: a month in the French republican calendar
@@ -12538,7 +12522,7 @@ msgstr "第四月"
 #: app/Elements/PedigreeLinkageType.php:86
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "瑞达"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
@@ -14790,7 +14774,7 @@ msgstr "变更日期范围的开始"
 
 #: app/Module/StatcounterModule.php:41
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 # I18N: gedcom tag STAE
 #: app/Gedcom.php:408 app/Gedcom.php:520 app/Gedcom.php:540 app/Gedcom.php:796
