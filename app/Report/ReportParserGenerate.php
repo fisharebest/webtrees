@@ -1749,8 +1749,8 @@ class ReportParserGenerate extends ReportParserBase
                 $perc  = $height / $attributes[1];
                 $width = round($attributes[0] * $perc);
             } else {
-                $width  = $attributes[0];
-                $height = $attributes[1];
+                $width  = (float) $attributes[0];
+                $height = (float) $attributes[1];
             }
             $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
             $this->wt_report->addElement($image);
@@ -1801,8 +1801,8 @@ class ReportParserGenerate extends ReportParserBase
                         $perc  = $height / $attributes[1];
                         $width = round($attributes[0] * $perc);
                     } else {
-                        $width  = $attributes[0];
-                        $height = $attributes[1];
+                        $width  = (float) $attributes[0];
+                        $height = (float) $attributes[1];
                     }
                     $image = $this->report_root->createImageFromObject($media_file, $left, $top, $width, $height, $align, $ln, $this->data_filesystem);
                     $this->wt_report->addElement($image);
