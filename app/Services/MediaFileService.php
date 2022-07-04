@@ -401,6 +401,7 @@ class MediaFileService
 
         return $disk_folders->concat($db_folders)
             ->uniqueStrict()
+            ->sort(I18N::comparator())
             ->mapWithKeys(static function (string $folder): array {
                 return [$folder => $folder];
             });
