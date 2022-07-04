@@ -27,7 +27,7 @@ namespace Fisharebest\Webtrees\Elements;
  * for example if hiragana was used to provide a reading of a name written in
  * kanji, then the <PHONETIC_TYPE> value would indicate ‘kana’. See page 57.
  */
-class NamePhoneticVariation extends AbstractElement
+class NamePhoneticVariation extends NamePersonal
 {
     protected const MAXIMUM_LENGTH = 120;
 
@@ -39,5 +39,17 @@ class NamePhoneticVariation extends AbstractElement
         'SURN' => '0:1',
         'NSFX' => '0:1',
         'NICK' => '0:1',
+        'NOTE' => '0:M',
+        'SOUR' => '0:M',
     ];
+
+    /**
+     * Should we collapse the children of this element when editing?
+     *
+     * @return bool
+     */
+    public function collapseChildren(): bool
+    {
+        return true;
+    }
 }
