@@ -107,6 +107,7 @@ for ($age = 0; $age <= $max_age; $age++) {
     $deat_by_age[$age]['M'] = 0;
     $deat_by_age[$age]['F'] = 0;
     $deat_by_age[$age]['U'] = 0;
+    $deat_by_age[$age]['X'] = 0;
 }
 $birt_by_decade = [];
 $deat_by_decade = [];
@@ -114,9 +115,11 @@ for ($year = 1400; $year < 2050; $year += 10) {
     $birt_by_decade[$year]['M'] = 0;
     $birt_by_decade[$year]['F'] = 0;
     $birt_by_decade[$year]['U'] = 0;
+    $birt_by_decade[$year]['X'] = 0;
     $deat_by_decade[$year]['M'] = 0;
     $deat_by_decade[$year]['F'] = 0;
     $deat_by_decade[$year]['U'] = 0;
+    $deat_by_decade[$year]['X'] = 0;
 }
 
 $birthData = [
