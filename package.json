@@ -15,9 +15,9 @@
     "postcss-import": "14.1.0",
     "postcss-rtlcss": "3.6.3",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.52.3",
-    "sass-loader": "13.0.0",
-    "vue-template-compiler": "2.6.14"
+    "sass": "1.53.0",
+    "sass-loader": "13.0.2",
+    "vue-template-compiler": "2.7.3"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.1.1",
@@ -37,7 +37,7 @@
     "leaflet-control-geocoder": "2.4.0",
     "leaflet.control.layers.tree": "1.1.0",
     "leaflet.markercluster": "1.5.3",
-    "moment": "2.29.3",
+    "moment": "2.29.4",
     "pinch-zoom-element": "1.1.1",
     "sortablejs": "1.15.0",
     "tom-select": "2.0.3",
