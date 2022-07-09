@@ -288,10 +288,10 @@ abstract class AbstractElement implements ElementInterface
 
         if ($values === []) {
             if (str_contains($value, "\n")) {
-                return '<bdi class="d-inline-block">' . nl2br(e($value, false)) . '</bdi>';
+                return '<span class="ut d-inline-block">' . nl2br(e($value, false)) . '</span>';
             }
 
-            return '<bdi>' . e($value) . '</bdi>';
+            return '<span class="ut">' . e($value) . '</span>';
         }
 
         $canonical = $this->canonical($value);

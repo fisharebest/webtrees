@@ -71,7 +71,7 @@ if ($tag === 'MARR') {
 ?>
 <tr class="<?= implode(' ', $styles) ?>">
     <th scope="row">
-        <div class="wt-fact-label"><?= $label?></div>
+        <div class="wt-fact-label ut"><?= $label?></div>
 
         <?php if ($id !== 'histo' && $id !== 'asso' && $fact->canEdit() && !in_array($tag, ['HUSB', 'WIFE', 'CHIL', 'FAMC', 'FAMS'], true)) : ?>
             <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
