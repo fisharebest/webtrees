@@ -85,6 +85,8 @@ use Fisharebest\Webtrees\Elements\EventTypeCitedFrom;
 use Fisharebest\Webtrees\Elements\ExternalIdentifier;
 use Fisharebest\Webtrees\Elements\ExternalIdentifierType;
 use Fisharebest\Webtrees\Elements\FamilyCensus;
+use Fisharebest\Webtrees\Elements\FamilyEvent;
+use Fisharebest\Webtrees\Elements\FamilyFact;
 use Fisharebest\Webtrees\Elements\FamilyRecord;
 use Fisharebest\Webtrees\Elements\FamilyResidence;
 use Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId;
@@ -100,6 +102,8 @@ use Fisharebest\Webtrees\Elements\Graduation;
 use Fisharebest\Webtrees\Elements\HeaderRecord;
 use Fisharebest\Webtrees\Elements\HierarchicalRelationship;
 use Fisharebest\Webtrees\Elements\Immigration;
+use Fisharebest\Webtrees\Elements\IndividualEvent;
+use Fisharebest\Webtrees\Elements\IndividualFact;
 use Fisharebest\Webtrees\Elements\IndividualRecord;
 use Fisharebest\Webtrees\Elements\LanguageId;
 use Fisharebest\Webtrees\Elements\LdsBaptism;
@@ -454,8 +458,8 @@ class Gedcom
             'FAM:ENGA'                   => new Engagement(I18N::translate('Engagement')),
             'FAM:ENGA:DATE'              => new DateValue(I18N::translate('Date of engagement')),
             'FAM:ENGA:PLAC'              => new PlaceName(I18N::translate('Place of engagement')),
-            'FAM:EVEN'                   => new CustomFamilyEvent(I18N::translate('Event')),
-            'FAM:EVEN:TYPE'              => new EventAttributeType(I18N::translate('Type of event')),
+            'FAM:EVEN'                   => new FamilyEvent(I18N::translate('Event')),
+            'FAM:EVEN:TYPE'              => new EventOrFactClassification(I18N::translate('Type of event')),
             'FAM:HUSB'                   => new XrefIndividual(I18N::translate('Husband')),
             'FAM:MARB'                   => new MarriageBanns(I18N::translate('Marriage banns')),
             'FAM:MARB:DATE'              => new DateValue(I18N::translate('Date of marriage banns')),
@@ -648,12 +652,12 @@ class Gedcom
             'INDI:ENDL:STAT'             => new LdsEndowmentDateStatus(I18N::translate('Status')),
             'INDI:ENDL:STAT:DATE'        => new ChangeDate(I18N::translate('Status change date')),
             'INDI:ENDL:TEMP'             => new TempleCode(I18N::translate('Temple')),
-            'INDI:EVEN'                  => new CustomIndividualEvent(I18N::translate('Event')),
+            'INDI:EVEN'                  => new IndividualEvent(I18N::translate('Event')),
             'INDI:EVEN:DATE'             => new DateValue(I18N::translate('Date of event')),
             'INDI:EVEN:PLAC'             => new PlaceName(I18N::translate('Place of event')),
-            'INDI:EVEN:TYPE'             => new EventAttributeType(I18N::translate('Type of event')),
-            'INDI:FACT'                  => new CustomFact(I18N::translate('Fact')),
-            'INDI:FACT:TYPE'             => new EventAttributeType(I18N::translate('Type of fact')),
+            'INDI:EVEN:TYPE'             => new EventOrFactClassification(I18N::translate('Type of event')),
+            'INDI:FACT'                  => new IndividualFact(I18N::translate('Fact')),
+            'INDI:FACT:TYPE'             => new EventOrFactClassification(I18N::translate('Type of fact')),
             'INDI:FAMC'                  => new XrefFamily(I18N::translate('Family as a child'), ['NOTE' => '0:1', 'PEDI' => '0:1', 'STAT' => '0:1']),
             'INDI:FAMC:PEDI'             => new PedigreeLinkageType(I18N::translate('Relationship to parents')),
             'INDI:FAMC:STAT'             => new ChildLinkageStatus(I18N::translate('Status')),
@@ -664,7 +668,7 @@ class Gedcom
             'INDI:GRAD'                  => new Graduation(I18N::translate('Graduation')),
             'INDI:GRAD:AGNC'             => new ResponsibleAgency(I18N::translate('School or college')),
             'INDI:IDNO'                  => new NationalIdNumber(I18N::translate('Identification number')),
-            'INDI:IDNO:TYPE'             => new EventAttributeType(I18N::translate('Type of identification number')),
+            'INDI:IDNO:TYPE'             => new EventOrFactClassification(I18N::translate('Type of identification number')),
             'INDI:IMMI'                  => new Immigration(I18N::translate('Immigration')),
             'INDI:IMMI:DATE'             => new DateValue(I18N::translate('Date of immigration')),
             'INDI:IMMI:PLAC'             => new PlaceName(I18N::translate('Place of immigration')),
@@ -917,7 +921,7 @@ class Gedcom
             'FAM:CREA:DATE:TIME'         => new TimeValue(I18N::translate('Creation time')),
             'FAM:EXID'                   => new ExternalIdentifier(I18N::translate('External identifier')),
             'FAM:EXID:TYPE'              => new ExternalIdentifierType(I18N::translate('Type')),
-            'FAM:FACT'                   => new CustomFact(I18N::translate('Fact')),
+            'FAM:FACT'                   => new FamilyFact(I18N::translate('Fact')),
             'FAM:REFN'                   => new UserReferenceNumber(I18N::translate('Reference number')),
             'FAM:REFN:TYPE'              => new UserReferenceType(I18N::translate('Type')),
             'FAM:SNOTE'                  => new XrefSharedNote(I18N::translate('Shared note')),
@@ -1863,6 +1867,8 @@ class Gedcom
     {
         return [
             'FAM:CHAN:_WT_USER'           => new WebtreesUser(I18N::translate('Author of last change')),
+            'FAM:FACT'                    => new FamilyFact(I18N::translate('Fact')),
+            'FAM:FACT:TYPE'               => new EventOrFactClassification(I18N::translate('Type of fact')),
             'FAM:*:_ASSO'                 => new XrefAssociate(I18N::translate('Associate')),
             'FAM:*:_ASSO:NOTE'            => new NoteStructure(I18N::translate('Note')),
             'FAM:*:_ASSO:RELA'            => new RelationIsDescriptor(I18N::translate('Relationship')),
