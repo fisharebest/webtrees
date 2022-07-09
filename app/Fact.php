@@ -130,6 +130,7 @@ class Fact
         'WWW',
         'URL',
         '_URL',
+        '_FSFTID',
         'AFN',
         'REFN',
         '_PRMN',
