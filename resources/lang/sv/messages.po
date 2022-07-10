@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-06-05 09:17+0100\n"
-"PO-Revision-Date: 2022-05-19 11:29+0000\n"
-"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -3505,7 +3489,7 @@ msgstr "Leta efter fel"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Kolla efter ny version"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3909,7 +3893,7 @@ msgstr "Innehåll"
 
 #: app/Gedcom.php:750
 msgid "Continuation"
-msgstr ""
+msgstr "Fortsättning"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -7932,7 +7916,7 @@ msgstr "Meddelare"
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Inline-source records are discouraged."
-msgstr "Inline-källaposter avskräcks."
+msgstr "Inline-källposter avråds från."
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -9362,12 +9346,12 @@ msgstr "Mediefiler"
 #: resources/views/admin/media.phtml:59
 #: resources/views/admin/trees-preferences.phtml:238
 msgid "Media folder"
-msgstr "Media mapp"
+msgstr "Mediamapp"
 
 #: resources/views/admin/media.phtml:30
 #: resources/views/admin/trees-preferences.phtml:233
 msgid "Media folders"
-msgstr "Media mappar"
+msgstr "Mediamappar"
 
 #: app/Gedcom.php:417 app/Gedcom.php:438 app/Gedcom.php:472 app/Gedcom.php:491
 #: app/Gedcom.php:548 app/Gedcom.php:569 app/Gedcom.php:702 app/Gedcom.php:737
@@ -15901,7 +15885,7 @@ msgstr "Använd SMTP för sända meddelanden"
 
 #: app/Module/FixSearchAndReplace.php:103
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Använd &laquo;?&raquo; för att matcha ett tecken, använd &laquo;*&raquo; för att matcha noll eller flera tecken."
+msgstr "Använd \"?\" för att matcha ett tecken, använd \"*\" för att matcha noll eller fler tecken."
 
 #: app/Module/ModuleMapGeoLocationTrait.php:55
 msgid "Use an external service to find locations."
