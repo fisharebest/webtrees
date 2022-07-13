@@ -169,4 +169,25 @@ class NoteStructure extends SubmitterText
             $html .
             '</div>';
     }
+
+    /**
+     * Display the value of this type of element.
+     *
+     * @param string $value
+     * @param Tree   $tree
+     *
+     * @return string
+     */
+    public function value(string $value, Tree $tree): string
+    {
+        if (preg_match('/^@(' . Gedcom::REGEX_XREF . ')@$/', $value, $match) === 1) {
+            $note = Registry::noteFactory()->make($match[1], $tree);
+
+            if ($note instanceof Note) {
+                $value = $note->getNote();
+            }
+        }
+
+        return parent::value($value, $tree);
+    }
 }
