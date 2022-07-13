@@ -50,7 +50,7 @@ class NamePieceSurname extends AbstractElement
             '<div class="input-group">' .
             '<input data-wt-autocomplete-url="' . e(route(AutoCompleteSurname::class, ['tree' => $tree->name()])) . '" autocomplete="off" class="form-control" dir="auto" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" />' .
             view('edit/input-addon-keyboard', ['id' => $id]) .
-            view('edit/input-addon-help', ['fact' => 'SURN']) .
+            view('edit/input-addon-help', ['topic' => 'SURN']) .
             '</div>';
     }
 }
