@@ -73,7 +73,7 @@ class NameRomanizedVariation extends AbstractElement
         return
             '<div class="input-group">' .
             parent::edit($id, $name, $value, $tree) .
-            view('help/link', ['topic' => 'ROMN']) .
+            view('edit/input-addon-help', ['topic' => 'ROMN']) .
             '</div>';
     }
 }
