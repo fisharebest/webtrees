@@ -58,12 +58,10 @@ use Fisharebest\Webtrees\Tree;
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-check">
-                    <label class="form-check-label">
-                        <span class="input-group">
-                            <input class="form-check-input" type="radio" name="auto" value="0" checked>
-                            <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file instanceof MediaFile ? $media_file->filename() : '') === '.' ? '' : dirname($media_file instanceof MediaFile ? $media_file->filename() : '')) ?>" data-wt-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
-                            <span class="input-group-text">/</span>
-                        </span>
+                    <input class="form-check-input" type="radio" name="auto" id="filename-manual" value="0" checked>
+                    <label class="form-check-label input-group" for="filename-manual">
+                        <input class="form-control" id="folder" name="folder" placeholder="<?= I18N::translate('Folder') ?>" type="text" value="<?= e(dirname($media_file instanceof MediaFile ? $media_file->filename() : '') === '.' ? '' : dirname($media_file instanceof MediaFile ? $media_file->filename() : '')) ?>" data-wt-autocomplete-url="<?= e(route(AutoCompleteFolder::class, ['tree' => $tree->name()])) ?>" autocomplete="off">
+                        <span class="input-group-text">/</span>
                     </label>
                 </div>
             </div>
@@ -75,8 +73,8 @@ use Fisharebest\Webtrees\Tree;
             <?= I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.') ?>
         </div>
         <div class="form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="auto" value="1">
+            <input class="form-check-input" type="radio" name="auto" id="filename-auto" value="1">
+            <label class="form-check-label" for="filename-auto">
                 <?= I18N::translate('Create a unique filename') ?>
             </label>
         </div>
