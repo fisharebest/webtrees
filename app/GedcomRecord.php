@@ -40,6 +40,7 @@ use function count;
 use function date;
 use function e;
 use function explode;
+use function implode;
 use function in_array;
 use function md5;
 use function preg_match;
@@ -499,10 +500,10 @@ class GedcomRecord
      */
     public function formatList(): string
     {
-        $html = '<a href="' . e($this->url()) . '" class="list_item">';
+        $html = '<a href="' . e($this->url()) . '">';
         $html .= '<b>' . $this->fullName() . '</b>';
-        $html .= $this->formatListDetails();
         $html .= '</a>';
+        $html .= $this->formatListDetails();
 
         return $html;
     }
@@ -528,24 +529,28 @@ class GedcomRecord
      */
     public function formatFirstMajorFact(array $facts, int $style): string
     {
-        foreach ($this->facts($facts, true) as $event) {
-            // Only display if it has a date or place (or both)
-            if ($event->date()->isOK() && $event->place()->gedcomName() !== '') {
-                $joiner = ' — ';
-            } else {
-                $joiner = '';
-            }
-            if ($event->date()->isOK() || $event->place()->gedcomName() !== '') {
-                switch ($style) {
-                    case 1:
-                        return '<br><em>' . $event->label() . ' ' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false]) . '</em>';
-                    case 2:
-                        return '<dl><dt class="label">' . $event->label() . '</dt><dd class="field">' . view('fact-date', ['cal_link' => 'false', 'fact' => $event, 'record' => $event->record(), 'time' => false]) . $joiner . $event->place()->shortName() . '</dd></dl>';
-                }
-            }
+        $fact = $this->facts($facts, true)->first();
+
+        if ($fact === null) {
+            return '';
         }
 
-        return '';
+        // Only display if it has a date or place (or both)
+        $attributes = [];
+
+        if ($fact->date()->isOK()) {
+            $attributes[] = view('fact-date', ['cal_link' => 'false', 'fact' => $fact, 'record' => $fact->record(), 'time' => false]);
+        }
+
+        if ($fact->place()->gedcomName() !== '' && $style === 2) {
+            $attributes[] = $fact->place()->shortName();
+        }
+
+        if ($attributes === []) {
+            return '';
+        }
+
+        return '<div><em>' . I18N::translate('%1$s: %2$s', $fact->label(), implode(' — ', $attributes)) . '</em></div>';
     }
 
     /**
