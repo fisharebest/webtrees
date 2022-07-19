@@ -390,6 +390,7 @@ class Gedcom
         '_EVENT_DEFN', // PAF and Legacy
         '_HASHTAG_DEFN', // Legacy
         '_PUBLISH', // MyHeritage
+        '_TASK', // Ages
         '_TODO', // Legacy
     ];
 
