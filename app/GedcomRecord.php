@@ -700,24 +700,24 @@ class GedcomRecord
      */
     public function lastChangeTimestamp(): TimestampInterface
     {
-        /** @var Fact|null $chan */
         $chan = $this->facts(['CHAN'])->first();
 
         if ($chan instanceof Fact) {
             // The record has a CHAN event.
-            $d = $chan->date()->minimumDate()->format('%Y-%m-%d');
+            $date = $chan->date()->minimumDate();
+            $ymd = sprintf('%04d-%02d-%02d', $date->year(), $date->month(), $date->day());
 
-            if ($d !== '') {
+            if ($ymd !== '') {
                 // The CHAN event has a valid DATE.
-                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d):([0-5]\d))/', $chan->gedcom(), $match)) {
-                    return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i:s');
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d):([0-5]\d))/', $chan->gedcom(), $match) === 1) {
+                    return Registry::timestampFactory()->fromString($ymd . $match[1], 'Y-m-d H:i:s');
                 }
 
-                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d))/', $chan->gedcom(), $match)) {
-                    return Registry::timestampFactory()->fromString($d . $match[1], 'Y-m-d H:i');
+                if (preg_match('/\n3 TIME (([01]\d|2[0-3]):([0-5]\d))/', $chan->gedcom(), $match) === 1) {
+                    return Registry::timestampFactory()->fromString($ymd . $match[1], 'Y-m-d H:i');
                 }
 
-                return Registry::timestampFactory()->fromString($d, 'Y-m-d');
+                return Registry::timestampFactory()->fromString($ymd, 'Y-m-d');
             }
         }
 
