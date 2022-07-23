@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:40+0000\nLast-Translator: Martin <der@bauschaffen.de>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-27 11:54+0000\nLast-Translator: Bernd Schwendinger <b0ernie@gmx.net>\nLanguage-Team: German <https://translate.webtrees.net/projects/webtrees/webtrees/de/>\nLanguage: de\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -10983,7 +10983,7 @@ msgstr "Ausstehende Änderungen"
 
 #: resources/views/help/pending-changes.phtml:20
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Ausstehende Änderungen werden nur angezeigt, wenn Ihr Konto über die Berechtigung zum Bearbeiten verfügt. Wenn Sie sich abmelden, werden Sie bis zur Freigabe durch den Administrator nicht mehr in der Lage sein, die vorgenommenen Änderungen zu sehen. Außerdem werden die ausstehenden Änderungen nur auf bestimmten Seiten angezeigt. Zum Beispiel werden sie nicht in Listen, Berichten oder Suchergebnissen angezeigt."
+msgstr "Ausstehende Änderungen werden nur angezeigt, wenn Ihr Konto über die Berechtigung zum Bearbeiten verfügt. Wenn Sie sich abmelden, werden Sie bis zur Freigabe durch den Moderator nicht mehr in der Lage sein, die vorgenommenen Änderungen zu sehen. Außerdem werden die ausstehenden Änderungen nur auf bestimmten Seiten angezeigt. Zum Beispiel werden sie nicht in Listen, Berichten oder Suchergebnissen angezeigt."
 
 #: app/Gedcom.php:1044 app/Gedcom.php:1084
 msgid "Permanent number"
