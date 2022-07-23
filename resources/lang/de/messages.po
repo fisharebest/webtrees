@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
-"Last-Translator: Martin <der@bauschaffen.de>\n"
+"PO-Revision-Date: 2022-07-27 11:54+0000\n"
+"Last-Translator: Bernd Schwendinger <b0ernie@gmx.net>\n"
 "Language-Team: German <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/de/>\n"
 "Language: de\n"
@@ -11062,7 +11062,13 @@ msgstr "Ausstehende Änderungen"
 
 #: resources/views/help/pending-changes.phtml:20
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
-msgstr "Ausstehende Änderungen werden nur angezeigt, wenn Ihr Konto über die Berechtigung zum Bearbeiten verfügt. Wenn Sie sich abmelden, werden Sie bis zur Freigabe durch den Administrator nicht mehr in der Lage sein, die vorgenommenen Änderungen zu sehen. Außerdem werden die ausstehenden Änderungen nur auf bestimmten Seiten angezeigt. Zum Beispiel werden sie nicht in Listen, Berichten oder Suchergebnissen angezeigt."
+msgstr ""
+"Ausstehende Änderungen werden nur angezeigt, wenn Ihr Konto über die "
+"Berechtigung zum Bearbeiten verfügt. Wenn Sie sich abmelden, werden Sie bis "
+"zur Freigabe durch den Moderator nicht mehr in der Lage sein, die "
+"vorgenommenen Änderungen zu sehen. Außerdem werden die ausstehenden "
+"Änderungen nur auf bestimmten Seiten angezeigt. Zum Beispiel werden sie "
+"nicht in Listen, Berichten oder Suchergebnissen angezeigt."
 
 #. I18N: gedcom tag _PRMN
 #: app/Factories/ElementFactory.php:271 app/Factories/ElementFactory.php:311
