@@ -372,6 +372,7 @@ class Gedcom
         '_MILI',
         '_MILT',
         '_NAMS',
+        '_NMAR',
         '_PRMN',
         '_WEIG',
         '_YART',
