@@ -1128,7 +1128,7 @@ class Gedcom
             'INDI:_MEDC'       => new CustomFact(I18N::translate('Medical')),
             'INDI:_MILT'       => new CustomElement(I18N::translate('Military service')),
             'INDI:_NLIV'       => new CustomFact(I18N::translate('Not living')),
-            'INDI:_NMAR'       => new CustomFact(I18N::translate('Never married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+            'INDI:_NMAR'       => new CustomEvent(I18N::translate('Never married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
             'INDI:_PRMN'       => new CustomElement(I18N::translate('Permanent number')),
             'INDI:_TODO'       => new CustomElement(I18N::translate('Research task')),
             'INDI:_WEIG'       => new CustomFact(I18N::translate('Weight')),
