@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-17 04:41+0000\nLast-Translator: Enes <enes_s@yahoo.com>\nLanguage-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\nLanguage: sr-Latn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Serbian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-06-05 09:17+0100\nPO-Revision-Date: 2022-07-27 11:54+0000\nLast-Translator: Enes <enes_s@yahoo.com>\nLanguage-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\nLanguage: sr-Latn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Serbian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -5423,7 +5423,7 @@ msgstr "Preuzmite .ICS datoteku koja sadrži godišnjicu"
 
 #: resources/views/media-page-details.phtml:83
 msgid "Download file"
-msgstr "Preuzmite datoteku"
+msgstr "Preuzmi datoteku"
 
 #: resources/views/edit-blocks-page.phtml:23
 msgid "Drag the blocks to change their position."
@@ -5516,7 +5516,7 @@ msgstr "Izmeni"
 #: app/Http/RequestHandlers/EditMediaFileModal.php:74
 #: resources/views/modals/edit-media-file.phtml:20
 msgid "Edit a media file"
-msgstr "Uredi medijsku datoteku"
+msgstr "Izmeni medijsku datoteku"
 
 #. I18N: Options for editing
 #: resources/views/admin/trees-preferences.phtml:637
@@ -5532,14 +5532,14 @@ msgstr "Izmeni FAQ"
 #: resources/views/individual-page-sex.phtml:40
 #: resources/views/individual-page-sex.phtml:42
 msgid "Edit the gender"
-msgstr "Edituj pol"
+msgstr "Izmeni pol"
 
 #: resources/views/edit/input-addon-edit-name.phtml:12
 #: resources/views/edit/input-addon-edit-name.phtml:15
 #: resources/views/individual-page-name.phtml:75
 #: resources/views/individual-page-name.phtml:77
 msgid "Edit the name"
-msgstr "Edituj ime"
+msgstr "Izmeni ime"
 
 #: app/Http/RequestHandlers/EditRawFactPage.php:53
 #: app/Http/RequestHandlers/EditRawRecordPage.php:55
@@ -12348,7 +12348,7 @@ msgstr "Subota"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:425
 msgid "Saudi Arabia"
-msgstr "Saudská Arábia"
+msgstr "Saudijska Arabija"
 
 #: app/Gedcom.php:1150 app/Gedcom.php:1268
 msgid "Schema"
@@ -12799,7 +12799,7 @@ msgstr "Deljene beleške"
 #: app/Http/RequestHandlers/ModulesSharesPage.php:43
 #: resources/views/admin/control-panel.phtml:727
 msgid "Shares"
-msgstr ""
+msgstr "Podeli"
 
 #. I18N: https://en.wikipedia.org/wiki/Shawwal
 #: app/Date/HijriDate.php:160
@@ -14109,7 +14109,7 @@ msgstr "GEDCOM datoteka “%s” je učitana."
 
 #: resources/views/admin/tags.phtml:30
 msgid "The GEDCOM standard provides a large number of data-entry fields, called tags."
-msgstr ""
+msgstr "GEDCOM standard obezbeđuje veliki broj polja za unos podataka, koji se nazivaju tagovi."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:104
@@ -14143,7 +14143,7 @@ msgstr "Podešavanje PHP.INI “%1$s” je omogućeno."
 
 #: resources/views/modules/share-url/share.phtml:29
 msgid "The URL was copied to the clipboard"
-msgstr ""
+msgstr "URL je kopiran u clipboard"
 
 #: resources/views/emails/approve-user-html.phtml:20
 #: resources/views/emails/approve-user-text.phtml:14
@@ -14317,11 +14317,11 @@ msgstr "Sledeće činjenice i događaji su pronađeni samo u zapisu %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
-msgstr "Lista koji sledi prikazuje tipične zahteve."
+msgstr "Lista koja sledi prikazuje tipične zahteve."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "Podaci iz forme su nepotpuni. Možda treba da povećate max_input_vars na svom serveru?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -14384,7 +14384,7 @@ msgstr "Potrebna količina memorije i procesora zavise od broja pojedinaca u va�
 #: app/Http/RequestHandlers/BroadcastAction.php:85
 #, php-format
 msgid "The message was not sent to %s."
-msgstr ""
+msgstr "Poruka nije poslata za %s."
 
 #: app/Http/RequestHandlers/ContactAction.php:151
 #: app/Http/RequestHandlers/EmailPreferencesAction.php:90
@@ -14818,7 +14818,7 @@ msgstr "Ovo porodično stablo je poslednji put ažurirano %s."
 
 #: app/Http/RequestHandlers/CheckTree.php:310
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "Ovo ime datoteke nije kompatibilno sa GEDZIP formatom datoteke."
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:30
@@ -15218,15 +15218,15 @@ msgstr "Vreme"
 
 #: app/Gedcom.php:929
 msgid "Time of birth"
-msgstr ""
+msgstr "Vreme rođenja"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Vreme rođenja i vreme smrti"
 
 #: app/Gedcom.php:933
 msgid "Time of death"
-msgstr ""
+msgstr "Vreme smrti"
 
 #: app/Gedcom.php:449 app/Gedcom.php:615 app/Gedcom.php:747 app/Gedcom.php:768
 #: app/Gedcom.php:799 app/Gedcom.php:815 app/Gedcom.php:846 app/Gedcom.php:862
@@ -15236,7 +15236,7 @@ msgstr "Vreme poslednje promene"
 
 #: app/Gedcom.php:939
 msgid "Time of status change"
-msgstr ""
+msgstr "Vreme promene statusa"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1682 resources/views/admin/site-preferences.phtml:48
@@ -15349,7 +15349,7 @@ msgstr "Da bismo vam pomogli da počnete sa ovim blokom, napravili smo nekoliko 
 
 #: resources/views/admin/tags.phtml:938
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "Da biste kreirali nove podatke pomoću prilagođenih oznaka, morate ih omogućiti."
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15357,7 +15357,7 @@ msgstr "Za kreiranje novog zadatka za istraživanje, prvo morate dodati “zadat
 
 #: app/Services/LeafletJsService.php:65
 msgid "To display a map, you need to enable a map-provider in the control panel."
-msgstr ""
+msgstr "Da biste prikazali mapu, potrebno je da omogućite dobavljača mapa u kontrolnoj tabli."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: resources/views/admin/trees-preferences.phtml:589
@@ -15389,11 +15389,11 @@ msgstr "Da biste pokazali pretraživačima da su mape sajta dostupne, možete ko
 #: resources/views/modules/map-box/config.phtml:34
 #: resources/views/modules/openrouteservice/config.phtml:34
 msgid "To use this service, you need an API key."
-msgstr ""
+msgstr "Da biste koristili ovaj servis, potreban vam je API ključ."
 
 #: resources/views/modules/geonames/config.phtml:34
 msgid "To use this service, you need an account."
-msgstr ""
+msgstr "Da biste koristili ovaj servis, potreban vam je nalog."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:480
@@ -15878,7 +15878,7 @@ msgstr "Ažurirajte delove naziva mesta višeg nivoa, zadržavajući delove ni�
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:1111 app/Gedcom.php:1691
 msgid "Updated at"
-msgstr ""
+msgstr "Ažurirano u"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -15918,7 +15918,7 @@ msgstr "Koristi “?” za zamenu jednog karaktera, koristi “*” za zamenu nu
 
 #: app/Module/ModuleMapGeoLocationTrait.php:55
 msgid "Use an external service to find locations."
-msgstr ""
+msgstr "Koristite eksterni servis da pronađete lokacije."
 
 #. I18N: placeholder text for new-password field
 #: resources/views/admin/users-create.phtml:59
@@ -15956,7 +15956,7 @@ msgstr "Koristite slova A-Z, a-z, cifre 0-9 ili donje crte"
 
 #: app/Http/RequestHandlers/ModulesMapProvidersPage.php:44
 msgid "Use maps in webtrees."
-msgstr ""
+msgstr "Koristite mape u webtrees."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-mail.phtml:119
@@ -15980,7 +15980,7 @@ msgstr "Koristi siluete"
 
 #: app/Http/RequestHandlers/CopyFact.php:73
 msgid "Use the “edit“ menu to paste this into another record."
-msgstr ""
+msgstr "Koristite meni „uredi“ da biste ovo nalepili u drugi zapis."
 
 #: resources/views/register-page.phtml:89
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
@@ -16181,7 +16181,7 @@ msgstr "Pogledaj ovu porodicu"
 #: app/Module/ModuleMapLinkTrait.php:62
 #, php-format
 msgid "View this location using %s"
-msgstr ""
+msgstr "Pogledajte ovu lokaciju koristeći %s"
 
 #: resources/views/calendar-page.phtml:223
 msgid "View this month"
@@ -16425,7 +16425,7 @@ msgstr "Svedok"
 #: app/Gedcom.php:1247 app/Gedcom.php:1301 app/Gedcom.php:1486
 #: app/Gedcom.php:1518
 msgid "Witnesses"
-msgstr ""
+msgstr "Svedoci"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:53
@@ -16520,7 +16520,7 @@ msgstr "Možete podesiti pristup pojedinačnim zapisima, činjenicama ili događ
 
 #: resources/views/admin/tags.phtml:34
 msgid "You can simplify the edit forms by hiding GEDCOM tags that you do not use."
-msgstr ""
+msgstr "Možete da pojednostavite forme za uređivanje tako što ćete sakriti GEDCOM oznake koje ne koristite."
 
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixMissingDeaths.php:68
@@ -16662,7 +16662,7 @@ msgstr "Vaš web server koristi PHP verziju %s, koja više ne dobija sigurnosne 
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16691,7 +16691,7 @@ msgstr "Umanji"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "Oznake _VT_OBJE_SORT su koristile stare verzije webtrees da ukažu na primarnu sliku pojedinca. Alternativa je da promenite redosled slika tako da primarna bude prva na listi."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -16822,7 +16822,7 @@ msgstr "stric/ujak/tetka"
 
 #: resources/views/admin/trees-import.phtml:84
 msgid "automatic"
-msgstr ""
+msgstr "automatski"
 
 #: resources/views/modules/faq/show.phtml:30
 msgid "back to top"
@@ -18273,17 +18273,17 @@ msgstr "dedova/bakina sestra"
 #: app/Services/RelationshipService.php:1133
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog/bakinog brata žena"
 
 #: app/Services/RelationshipService.php:925
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "pradedova sestra"
+msgstr "dedova sestra"
 
 #: app/Services/RelationshipService.php:1139
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "bakinog brata žena"
 
 #: app/Services/RelationshipService.php:937
 msgctxt "parent’s mother’s sister"
@@ -18293,7 +18293,7 @@ msgstr "bakina sestra"
 #: app/Services/RelationshipService.php:1145
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog/bakinog brata žena"
 
 #: app/Services/RelationshipService.php:949
 msgctxt "parent’s parent’s sister"
@@ -18303,7 +18303,7 @@ msgstr "dedova/bakina sestra"
 #: app/Services/RelationshipService.php:791
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedov brat/sestra"
 
 #: app/Services/RelationshipService.php:1099
 msgctxt "father’s father’s sibling’s spouse"
@@ -18313,82 +18313,82 @@ msgstr "dedovog brata/sestre supružnik"
 #: app/Services/RelationshipService.php:803
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "bakini brat i sestra"
+msgstr "bakini brat/sestra"
 
 #: app/Services/RelationshipService.php:1105
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "bakinog brata/sestre supružnik"
 
 #: app/Services/RelationshipService.php:815
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedini/bakini brat i sestra"
+msgstr "dedini/bakini brat/sestra"
 
 #: app/Services/RelationshipService.php:1111
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dekini/bakini od brata/sestre supružnici"
 
 #: app/Services/RelationshipService.php:871
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedini brat i sestra"
+msgstr "dedini brat/sestra"
 
 #: app/Services/RelationshipService.php:1117
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog brata/sestre supružnici"
 
 #: app/Services/RelationshipService.php:889
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "bakini brat i sestra"
+msgstr "bakini brat/sestra"
 
 #: app/Services/RelationshipService.php:1123
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "baginog brata/sestre supružnik"
 
 #: app/Services/RelationshipService.php:901
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedini/babini brat i sestra"
+msgstr "dedini/babini brat/sestra"
 
 #: app/Services/RelationshipService.php:1129
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Services/RelationshipService.php:923
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "pradedovi/prababini brat i sestra"
+msgstr "dedovi/bakini brat/sestra"
 
 #: app/Services/RelationshipService.php:1135
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Services/RelationshipService.php:935
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "prabakin brat i sestra"
+msgstr "dedov/bakin brat/sestra"
 
 #: app/Services/RelationshipService.php:1141
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Services/RelationshipService.php:947
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedov/bakin brat i sestra"
+msgstr "dedov/bakin brat/sestra"
 
 #: app/Services/RelationshipService.php:1147
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Services/RelationshipService.php:725
 msgctxt "child’s child’s child"
@@ -18732,257 +18732,257 @@ msgstr "bratov čukununuk"
 #: app/Services/RelationshipService.php:1565
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "sestrin čukununuk"
 
 #: app/Services/RelationshipService.php:1568
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "čukununuk"
 
 #: app/Services/RelationshipService.php:1584
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "bratov čukununuk/čukununuka"
 
 #: app/Services/RelationshipService.php:1588
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "sestrin čukununuk/čukununuka"
 
 #: app/Services/RelationshipService.php:1591
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "čukununuk/čukununuka"
 
 #: app/Services/RelationshipService.php:1573
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "bratovljeva čukununkuka"
 
 #: app/Services/RelationshipService.php:1577
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "sestrina čukununuka"
 
 #: app/Services/RelationshipService.php:1580
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "čukununuka"
 
 #: app/Services/RelationshipService.php:1337
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "čukundedov brat"
 
 #: app/Services/RelationshipService.php:1341
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "čukunbakin brat"
 
 #: app/Services/RelationshipService.php:1344
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "čukundedov/čukunbakin brat"
 
 #: app/Services/RelationshipService.php:1526
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "praunukov brat"
 
 #: app/Services/RelationshipService.php:1530
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "praunukova sestra"
 
 #: app/Services/RelationshipService.php:1533
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "praunuk"
 
 #: app/Services/RelationshipService.php:1549
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "praunukov brat"
 
 #: app/Services/RelationshipService.php:1553
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "praunukova sestra"
 
 #: app/Services/RelationshipService.php:1556
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "praunukov brat/sestra"
 
 #: app/Services/RelationshipService.php:1538
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "praunukova sestra"
 
 #: app/Services/RelationshipService.php:1542
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "praunukove sestre sestra"
 
 #: app/Services/RelationshipService.php:1545
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "praunuka"
 
 #: app/Services/RelationshipService.php:1318
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "pradedov brat"
 
 #: app/Services/RelationshipService.php:1322
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "prabakin brat"
 
 #: app/Services/RelationshipService.php:1325
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "pradedov/prabakin brat"
 
 #: app/Services/RelationshipService.php:674
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:694
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:712
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:994
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:1014
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:1038
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:677
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:697
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:715
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:997
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:1017
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:1041
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:963
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:971
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:977
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Services/RelationshipService.php:662
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:680
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:700
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:982
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:1000
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:1026
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:665
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:683
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:703
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:985
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:1003
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:1029
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:959
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:965
 msgctxt "sibling’s daughter’s child"
@@ -18992,82 +18992,82 @@ msgstr "pranećak/nećakinja"
 #: app/Services/RelationshipService.php:973
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Services/RelationshipService.php:668
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:686
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:706
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:988
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:1006
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:1032
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:671
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:689
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:709
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:991
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:1009
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:1035
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:961
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:967
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:975
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Services/RelationshipService.php:783
 msgctxt "father’s father’s brother"
@@ -19132,32 +19132,32 @@ msgstr "majčinih roditelja sestrin muž"
 #: app/Services/RelationshipService.php:915
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedov brat"
 
 #: app/Services/RelationshipService.php:1137
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedeove sestre muž"
 
 #: app/Services/RelationshipService.php:927
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "bakin brat"
 
 #: app/Services/RelationshipService.php:1143
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "majčinih roditelja sestrin muž"
 
 #: app/Services/RelationshipService.php:939
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedov/bakin brat"
 
 #: app/Services/RelationshipService.php:1149
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedove/bakine sestre muž"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:516
@@ -19290,7 +19290,7 @@ msgstr "Odojče"
 
 #: app/Elements/NoteStructure.php:69
 msgid "inline note"
-msgstr ""
+msgstr "\"inline note\""
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:197
@@ -19372,7 +19372,7 @@ msgstr "menadžeri"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:108
 msgid "markdown"
-msgstr ""
+msgstr "\"markdown\""
 
 #: resources/xml/reports/descendancy_report.xml:245
 msgctxt "FEMALE"
@@ -19778,7 +19778,7 @@ msgstr "procenat"
 #. I18N: https://en.wikipedia.org/wiki/Plain_text
 #: app/Http/RequestHandlers/TreePreferencesPage.php:106
 msgid "plain text"
-msgstr ""
+msgstr "običan tekst"
 
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:56
@@ -20487,7 +20487,7 @@ msgstr "tabela"
 #: app/Http/RequestHandlers/TreePreferencesPage.php:94
 #: app/Module/TopSurnamesModule.php:272
 msgid "tag cloud"
-msgstr ""
+msgstr "Označi grupu"
 
 #: app/Services/RelationshipService.php:2342
 msgid "tenth cousin"
@@ -20713,11 +20713,11 @@ msgstr "webtrees"
 
 #: app/Http/RequestHandlers/CheckTree.php:306
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "webtrees ne može kreirati sličice za ovaj format datoteke."
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees ne prepoznaje ovaj format datoteke."
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -20821,12 +20821,12 @@ msgstr[2] "±%s godina"
 #: app/Http/RequestHandlers/CheckTree.php:294
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "„%1$s“ bi trebalo da bude „%2$s“."
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
 msgid "“%s“ has been copied to the clipboard."
-msgstr ""
+msgstr "„%s“ je kopiran u clipboard."
 
 #. I18N: %s is the name of a genealogy record
 #: app/Http/RequestHandlers/PendingChangesAcceptRecord.php:62
