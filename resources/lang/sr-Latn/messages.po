@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
+"PO-Revision-Date: 2022-07-27 11:54+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/sr_Latn/>\n"
@@ -5562,7 +5562,7 @@ msgstr "Preuzmite %s…"
 
 #: resources/views/media-page.phtml:159
 msgid "Download file"
-msgstr "Preuzmite datoteku"
+msgstr "Preuzmi datoteku"
 
 #: resources/views/edit-blocks-page.phtml:23
 msgid "Drag the blocks to change their position."
@@ -5652,7 +5652,7 @@ msgstr "Izmeni"
 #: app/Http/RequestHandlers/EditMediaFileModal.php:82
 #: resources/views/modals/edit-media-file.phtml:22
 msgid "Edit a media file"
-msgstr "Uredi medijsku datoteku"
+msgstr "Izmeni medijsku datoteku"
 
 #. I18N: Options for editing
 #: resources/views/admin/trees-preferences.phtml:674
@@ -5668,7 +5668,7 @@ msgstr "Izmeni FAQ"
 #: resources/views/individual-sex.phtml:52
 #: resources/views/individual-sex.phtml:54
 msgid "Edit the gender"
-msgstr "Edituj pol"
+msgstr "Izmeni pol"
 
 #: app/Functions/FunctionsEdit.php:582 app/Http/RequestHandlers/EditName.php:71
 #: resources/views/edit/input-addon-edit-name.phtml:13
@@ -5676,7 +5676,7 @@ msgstr "Edituj pol"
 #: resources/views/individual-name.phtml:81
 #: resources/views/individual-name.phtml:83
 msgid "Edit the name"
-msgstr "Edituj ime"
+msgstr "Izmeni ime"
 
 #: app/Http/RequestHandlers/EditRawFactPage.php:61
 #: app/Http/RequestHandlers/EditRawRecordPage.php:61
@@ -12535,7 +12535,7 @@ msgstr "Subota"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:425
 msgid "Saudi Arabia"
-msgstr "Saudská Arábia"
+msgstr "Saudijska Arabija"
 
 #: app/Factories/ElementFactory.php:607
 msgid "Schema"
@@ -14509,7 +14509,7 @@ msgstr "Sledeće činjenice i događaji su pronađeni samo u zapisu %s."
 
 #: resources/views/setup/step-2-server-checks.phtml:65
 msgid "The following list shows typical requirements."
-msgstr "Lista koji sledi prikazuje tipične zahteve."
+msgstr "Lista koja sledi prikazuje tipične zahteve."
 
 #: app/Http/RequestHandlers/HelpText.php:290
 msgid "The help text has not been written for this item."
@@ -18813,17 +18813,17 @@ msgstr "dedova/bakina sestra"
 #: app/Functions/Functions.php:1404
 msgctxt "parent’s father’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog/bakinog brata žena"
 
 #: app/Functions/Functions.php:1196
 msgctxt "parent’s father’s sister"
 msgid "great-aunt"
-msgstr "pradedova sestra"
+msgstr "dedova sestra"
 
 #: app/Functions/Functions.php:1410
 msgctxt "parent’s mother’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "bakinog brata žena"
 
 #: app/Functions/Functions.php:1208
 msgctxt "parent’s mother’s sister"
@@ -18833,7 +18833,7 @@ msgstr "bakina sestra"
 #: app/Functions/Functions.php:1416
 msgctxt "parent’s parent’s brother’s wife"
 msgid "great-aunt"
-msgstr ""
+msgstr "dedovog/bakinog brata žena"
 
 #: app/Functions/Functions.php:1220
 msgctxt "parent’s parent’s sister"
@@ -18843,7 +18843,7 @@ msgstr "dedova/bakina sestra"
 #: app/Functions/Functions.php:1062
 msgctxt "father’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedov brat/sestra"
 
 #: app/Functions/Functions.php:1370
 msgctxt "father’s father’s sibling’s spouse"
@@ -18853,82 +18853,82 @@ msgstr "dedovog brata/sestre supružnik"
 #: app/Functions/Functions.php:1074
 msgctxt "father’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "bakini brat i sestra"
+msgstr "bakini brat/sestra"
 
 #: app/Functions/Functions.php:1376
 msgctxt "father’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "bakinog brata/sestre supružnik"
 
 #: app/Functions/Functions.php:1086
 msgctxt "father’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedini/bakini brat i sestra"
+msgstr "dedini/bakini brat/sestra"
 
 #: app/Functions/Functions.php:1382
 msgctxt "father’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dekini/bakini od brata/sestre supružnici"
 
 #: app/Functions/Functions.php:1142
 msgctxt "mother’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedini brat i sestra"
+msgstr "dedini brat/sestra"
 
 #: app/Functions/Functions.php:1388
 msgctxt "mother’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog brata/sestre supružnici"
 
 #: app/Functions/Functions.php:1160
 msgctxt "mother’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "bakini brat i sestra"
+msgstr "bakini brat/sestra"
 
 #: app/Functions/Functions.php:1394
 msgctxt "mother’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "baginog brata/sestre supružnik"
 
 #: app/Functions/Functions.php:1172
 msgctxt "mother’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedini/babini brat i sestra"
+msgstr "dedini/babini brat/sestra"
 
 #: app/Functions/Functions.php:1400
 msgctxt "mother’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Functions/Functions.php:1194
 msgctxt "parent’s father’s sibling"
 msgid "great-aunt/uncle"
-msgstr "pradedovi/prababini brat i sestra"
+msgstr "dedovi/bakini brat/sestra"
 
 #: app/Functions/Functions.php:1406
 msgctxt "parent’s father’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Functions/Functions.php:1206
 msgctxt "parent’s mother’s sibling"
 msgid "great-aunt/uncle"
-msgstr "prabakin brat i sestra"
+msgstr "dedov/bakin brat/sestra"
 
 #: app/Functions/Functions.php:1412
 msgctxt "parent’s mother’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Functions/Functions.php:1218
 msgctxt "parent’s parent’s sibling"
 msgid "great-aunt/uncle"
-msgstr "dedov/bakin brat i sestra"
+msgstr "dedov/bakin brat/sestra"
 
 #: app/Functions/Functions.php:1418
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "dedovog/bakinog brata/sestre supružnik"
 
 #: app/Functions/Functions.php:996
 msgctxt "child’s child’s child"
@@ -19272,257 +19272,257 @@ msgstr "bratov čukununuk"
 #: app/Functions/Functions.php:1824
 msgctxt "(a man’s) sister’s great-great-grandson"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "sestrin čukununuk"
 
 #: app/Functions/Functions.php:1827
 msgctxt "(a woman’s) great-great-great-nephew"
 msgid "great-great-great-nephew"
-msgstr ""
+msgstr "čukununuk"
 
 #: app/Functions/Functions.php:1843
 msgctxt "(a man’s) brother’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "bratov čukununuk/čukununuka"
 
 #: app/Functions/Functions.php:1847
 msgctxt "(a man’s) sister’s great-great-grandchild"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "sestrin čukununuk/čukununuka"
 
 #: app/Functions/Functions.php:1850
 msgctxt "(a woman’s) great-great-great-nephew/niece"
 msgid "great-great-great-nephew/niece"
-msgstr ""
+msgstr "čukununuk/čukununuka"
 
 #: app/Functions/Functions.php:1832
 msgctxt "(a man’s) brother’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "bratovljeva čukununkuka"
 
 #: app/Functions/Functions.php:1836
 msgctxt "(a man’s) sister’s great-great-granddaughter"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "sestrina čukununuka"
 
 #: app/Functions/Functions.php:1839
 msgctxt "(a woman’s) great-great-great-niece"
 msgid "great-great-great-niece"
-msgstr ""
+msgstr "čukununuka"
 
 #: app/Functions/Functions.php:1608
 msgctxt "great-great-grandfather’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "čukundedov brat"
 
 #: app/Functions/Functions.php:1612
 msgctxt "great-great-grandmother’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "čukunbakin brat"
 
 #: app/Functions/Functions.php:1615
 msgctxt "great-great-grandparent’s brother"
 msgid "great-great-great-uncle"
-msgstr ""
+msgstr "čukundedov/čukunbakin brat"
 
 #: app/Functions/Functions.php:1785
 msgctxt "(a man’s) brother’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "praunukov brat"
 
 #: app/Functions/Functions.php:1789
 msgctxt "(a man’s) sister’s great-grandson"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "praunukova sestra"
 
 #: app/Functions/Functions.php:1792
 msgctxt "(a woman’s) great-great-nephew"
 msgid "great-great-nephew"
-msgstr ""
+msgstr "praunuk"
 
 #: app/Functions/Functions.php:1808
 msgctxt "(a man’s) brother’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "praunukov brat"
 
 #: app/Functions/Functions.php:1812
 msgctxt "(a man’s) sister’s great-grandchild"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "praunukova sestra"
 
 #: app/Functions/Functions.php:1815
 msgctxt "(a woman’s) great-great-nephew/niece"
 msgid "great-great-nephew/niece"
-msgstr ""
+msgstr "praunukov brat/sestra"
 
 #: app/Functions/Functions.php:1797
 msgctxt "(a man’s) brother’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "praunukova sestra"
 
 #: app/Functions/Functions.php:1801
 msgctxt "(a man’s) sister’s great-granddaughter"
 msgid "great-great-niece"
-msgstr ""
+msgstr "praunukove sestre sestra"
 
 #: app/Functions/Functions.php:1804
 msgctxt "(a woman’s) great-great-niece"
 msgid "great-great-niece"
-msgstr ""
+msgstr "praunuka"
 
 #: app/Functions/Functions.php:1589
 msgctxt "great-grandfather’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "pradedov brat"
 
 #: app/Functions/Functions.php:1593
 msgctxt "great-grandmother’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "prabakin brat"
 
 #: app/Functions/Functions.php:1596
 msgctxt "great-grandparent’s brother"
 msgid "great-great-uncle"
-msgstr ""
+msgstr "pradedov/prabakin brat"
 
 #: app/Functions/Functions.php:945
 msgctxt "(a man’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:965
 msgctxt "(a man’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:983
 msgctxt "(a man’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1265
 msgctxt "(a man’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1285
 msgctxt "(a man’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1309
 msgctxt "(a man’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:948
 msgctxt "(a woman’s) brother’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:968
 msgctxt "(a woman’s) brother’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:986
 msgctxt "(a woman’s) brother’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1268
 msgctxt "(a woman’s) sister’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1288
 msgctxt "(a woman’s) sister’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1312
 msgctxt "(a woman’s) sister’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1234
 msgctxt "sibling’s child’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1242
 msgctxt "sibling’s daughter’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:1248
 msgctxt "sibling’s son’s son"
 msgid "great-nephew"
-msgstr ""
+msgstr "pranećak"
 
 #: app/Functions/Functions.php:933
 msgctxt "(a man’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:951
 msgctxt "(a man’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:971
 msgctxt "(a man’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1253
 msgctxt "(a man’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1271
 msgctxt "(a man’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1297
 msgctxt "(a man’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:936
 msgctxt "(a woman’s) brother’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:954
 msgctxt "(a woman’s) brother’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:974
 msgctxt "(a woman’s) brother’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1256
 msgctxt "(a woman’s) sister’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1274
 msgctxt "(a woman’s) sister’s daughter’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1300
 msgctxt "(a woman’s) sister’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1230
 msgctxt "sibling’s child’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:1236
 msgctxt "sibling’s daughter’s child"
@@ -19532,82 +19532,82 @@ msgstr "pranećak/nećakinja"
 #: app/Functions/Functions.php:1244
 msgctxt "sibling’s son’s child"
 msgid "great-nephew/niece"
-msgstr ""
+msgstr "pranećak/nećakinja"
 
 #: app/Functions/Functions.php:939
 msgctxt "(a man’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:957
 msgctxt "(a man’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:977
 msgctxt "(a man’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1259
 msgctxt "(a man’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1277
 msgctxt "(a man’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1303
 msgctxt "(a man’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:942
 msgctxt "(a woman’s) brother’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:960
 msgctxt "(a woman’s) brother’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:980
 msgctxt "(a woman’s) brother’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1262
 msgctxt "(a woman’s) sister’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1280
 msgctxt "(a woman’s) sister’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1306
 msgctxt "(a woman’s) sister’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1232
 msgctxt "sibling’s child’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1238
 msgctxt "sibling’s daughter’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1246
 msgctxt "sibling’s son’s daughter"
 msgid "great-niece"
-msgstr ""
+msgstr "pranećakinja"
 
 #: app/Functions/Functions.php:1054
 msgctxt "father’s father’s brother"
@@ -19672,32 +19672,32 @@ msgstr "majčinih roditelja sestrin muž"
 #: app/Functions/Functions.php:1186
 msgctxt "parent’s father’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedov brat"
 
 #: app/Functions/Functions.php:1408
 msgctxt "parent’s father’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedeove sestre muž"
 
 #: app/Functions/Functions.php:1198
 msgctxt "parent’s mother’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "bakin brat"
 
 #: app/Functions/Functions.php:1414
 msgctxt "parent’s mother’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "majčinih roditelja sestrin muž"
 
 #: app/Functions/Functions.php:1210
 msgctxt "parent’s parent’s brother"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedov/bakin brat"
 
 #: app/Functions/Functions.php:1420
 msgctxt "parent’s parent’s sister’s husband"
 msgid "great-uncle"
-msgstr ""
+msgstr "dedove/bakine sestre muž"
 
 #. I18N: layout option for the fan chart
 #: app/Module/FanChartModule.php:582
@@ -19807,7 +19807,7 @@ msgstr "uvezi datoteku"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "\"inline note\""
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -19889,7 +19889,7 @@ msgstr "menadžeri"
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: app/Http/RequestHandlers/TreePreferencesPage.php:111
 msgid "markdown"
-msgstr ""
+msgstr "\"markdown\""
 
 #: app/Statistics/Repository/EventRepository.php:327
 msgid "marriage"
@@ -21019,7 +21019,7 @@ msgstr "tabela"
 #: app/Http/RequestHandlers/TreePreferencesPage.php:97
 #: app/Module/TopSurnamesModule.php:249
 msgid "tag cloud"
-msgstr ""
+msgstr "Označi grupu"
 
 #: app/Functions/Functions.php:485
 msgid "tenth cousin"
