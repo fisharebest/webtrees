@@ -1843,7 +1843,7 @@ msgstr "Alternative place name"
 
 #: app/Gedcom.php:1035
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Alternative spelling of surname"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -4167,7 +4167,7 @@ msgstr "Creation date"
 #: app/Gedcom.php:925 app/Gedcom.php:954 app/Gedcom.php:969 app/Gedcom.php:973
 #: app/Gedcom.php:982 app/Gedcom.php:990 app/Gedcom.php:999
 msgid "Creation time"
-msgstr ""
+msgstr "Creation time"
 
 #: app/Gedcom.php:639 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4605,7 +4605,7 @@ msgstr "Date of residence"
 
 #: app/Gedcom.php:960
 msgid "Date of status change"
-msgstr ""
+msgstr "Date of status change"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5313,7 +5313,7 @@ msgstr "Died as a child: exempt"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Died less than 1 year old, sealing not required."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5900,7 +5900,7 @@ msgstr "External files"
 #: app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:938 app/Gedcom.php:956
 #: app/Gedcom.php:974 app/Gedcom.php:983 app/Gedcom.php:991 app/Gedcom.php:1000
 msgid "External identifier"
-msgstr ""
+msgstr "External identifier"
 
 #: app/Gedcom.php:1238 app/Gedcom.php:1843
 msgid "External link"
@@ -7407,7 +7407,7 @@ msgstr "Hide password"
 #: resources/views/admin/trees-check.phtml:53
 #: resources/views/admin/trees-check.phtml:69
 msgid "Hide these errors"
-msgstr ""
+msgstr "Hide these errors"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -8392,7 +8392,7 @@ msgstr "LDS endowment"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:958 app/Gedcom.php:1067
 msgid "LDS initiatory"
-msgstr ""
+msgstr "LDS initiatory"
 
 #: app/Gedcom.php:485
 msgid "LDS spouse sealing"
@@ -9916,7 +9916,7 @@ msgstr "Muḥarram"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Multiple birth"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
@@ -10419,7 +10419,7 @@ msgstr "Not married"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Not recorded"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -10449,44 +10449,45 @@ msgstr "Note"
 #: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
 #: app/Gedcom.php:1891
 msgid "Note on association"
-msgstr ""
+msgstr "Note on association"
 
 #: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
 #: app/Gedcom.php:1388
 msgid "Note on last change"
-msgstr ""
+msgstr "Note on last change"
 
 #: app/Gedcom.php:693
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Note on phonetic name"
 
 #: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
 msgid "Note on place"
-msgstr ""
+msgstr "Note on place"
 
 #: app/Gedcom.php:853
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Note on repository reference"
 
 #: app/Gedcom.php:707
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Note on romanised name"
 
 #: app/Gedcom.php:845
 msgid "Note on source"
-msgstr ""
+msgstr "Note on source"
 
 #: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
 #: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
 #: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
 #: app/Gedcom.php:1885 app/Gedcom.php:1899
 msgid "Note on source citation"
-msgstr ""
+msgstr "Note on source citation"
 
 #: app/Gedcom.php:844
+#, fuzzy
 msgid "Note on source data"
-msgstr ""
+msgstr "Note on source data"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -11125,7 +11126,7 @@ msgstr "Photo"
 #: app/Gedcom.php:922 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:941
 #: app/Gedcom.php:945 app/Gedcom.php:946 app/Gedcom.php:948 app/Gedcom.php:950
 msgid "Phrase"
-msgstr ""
+msgstr "Phrase"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -12018,7 +12019,7 @@ msgstr "Reno, Nevada, United States"
 #: resources/views/admin/trees-merge.phtml:40
 #: resources/views/admin/trees.phtml:199
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Renumber XREFs"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12052,7 +12053,7 @@ msgstr "Report"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
-msgstr ""
+msgstr "Report phrase"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -13538,7 +13539,7 @@ msgstr "Sort order"
 
 #: app/Gedcom.php:916 app/Gedcom.php:942
 msgid "Sort time"
-msgstr ""
+msgstr "Sort time"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:245
@@ -15268,7 +15269,7 @@ msgstr "Time of last change"
 
 #: app/Gedcom.php:961
 msgid "Time of status change"
-msgstr ""
+msgstr "Time of status change"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1738 resources/views/admin/site-preferences.phtml:48
