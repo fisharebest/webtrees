@@ -55,6 +55,7 @@ use function str_ends_with;
 use function str_pad;
 use function str_starts_with;
 use function strtoupper;
+use function strtr;
 use function trim;
 use function view;
 
@@ -814,7 +815,9 @@ class GedcomRecord
                     $new_gedcom .= "\n" . $gedcom;
                 }
                 $fact_id = 'NOT A VALID FACT ID'; // Only replace/delete one copy of a duplicate fact
-            } elseif (!str_ends_with($fact->tag(), ':CHAN') || !$update_chan) {
+            } elseif ($update_chan && str_ends_with($fact->tag(), ':CHAN')) {
+                $new_gedcom .= "\n" . $this->updateChange($fact->gedcom());
+            } else {
                 $new_gedcom .= "\n" . $fact->gedcom();
             }
         }
@@ -825,9 +828,7 @@ class GedcomRecord
         }
 
         if ($update_chan && !str_contains($new_gedcom, "\n1 CHAN")) {
-            $today = strtoupper(date('d M Y'));
-            $now   = date('H:i:s');
-            $new_gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
+            $new_gedcom .= $this->updateChange("\n1 CHAN");
         }
 
         if ($new_gedcom !== $old_gedcom) {
@@ -874,10 +875,11 @@ class GedcomRecord
 
         // Update the CHAN record
         if ($update_chan) {
-            $gedcom = preg_replace('/\n1 CHAN(\n[2-9].*)*/', '', $gedcom);
-            $today = strtoupper(date('d M Y'));
-            $now   = date('H:i:s');
-            $gedcom .= "\n1 CHAN\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . Auth::user()->userName();
+            if (preg_match('/\n1 CHAN(\n[2-9].*)*/', $gedcom, $match)) {
+                $gedcom = strtr($gedcom, [$match[0] => $this->updateChange($match[0])]);
+            } else {
+                $gedcom .= $this->updateChange("\n1 CHAN");
+            }
         }
 
         // Create a pending change
@@ -1161,5 +1163,21 @@ class GedcomRecord
             ->where('o_id', '=', $this->xref())
             ->lockForUpdate()
             ->get();
+    }
+
+    /**
+     * Change records may contain notes and other fields.  Just update the date/time/author.
+     *
+     * @param string $gedcom
+     *
+     * @return string
+     */
+    private function updateChange(string $gedcom): string {
+        $gedcom = preg_replace('/\n2 (DATE|_WT_USER).*(\n[3-9].*)*/', '', $gedcom);
+        $today  = strtoupper(date('d M Y'));
+        $now    = date('H:i:s');
+        $author = Auth::user()->userName();
+
+        return $gedcom . "\n2 DATE " . $today . "\n3 TIME " . $now . "\n2 _WT_USER " . $author;
     }
 }
