@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:45+0100\n"
+"POT-Creation-Date: 2022-07-27 13:59+0100\n"
 "PO-Revision-Date: 2021-09-26 07:38+0000\n"
 "Last-Translator: Jens Friismose <jelo2007@gmail.com>\n"
 "Language-Team: Danish <https://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
@@ -5316,7 +5316,7 @@ msgstr "Død som barn: undtaget"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
-msgid "Died before less than 1 year old, sealing not required."
+msgid "Died less than 1 year old, sealing not required."
 msgstr ""
 
 #: resources/xml/reports/change_report.xml:60
@@ -12053,7 +12053,7 @@ msgstr "Svar"
 msgid "Report"
 msgstr "Rapport"
 
-#. I18N: GEDCOM gag _RPT_PHRS
+#. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
 msgstr ""

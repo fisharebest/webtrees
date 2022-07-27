@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:45+0100\n"
+"POT-Creation-Date: 2022-07-27 13:59+0100\n"
 "PO-Revision-Date: 2022-07-17 04:41+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
@@ -5344,8 +5344,8 @@ msgstr "Zomrelo ako dieťa: vylúčené (exempt)"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
-msgid "Died before less than 1 year old, sealing not required."
-msgstr "Úmrtie pred dovŕšením 1. veku života, pečatenie nie je potrebné."
+msgid "Died less than 1 year old, sealing not required."
+msgstr ""
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -12083,7 +12083,7 @@ msgstr "Odpovedať"
 msgid "Report"
 msgstr "Protokol"
 
-#. I18N: GEDCOM gag _RPT_PHRS
+#. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
 msgstr "Fráza správy"
@@ -21486,6 +21486,9 @@ msgstr "…"
 
 #~ msgid "Died as an infant: exempt"
 #~ msgstr "Zomrelo ako dieťa: vylúčené (exempt)"
+
+#~ msgid "Died before less than 1 year old, sealing not required."
+#~ msgstr "Úmrtie pred dovŕšením 1. veku života, pečatenie nie je potrebné."
 
 #~ msgid "Display all"
 #~ msgstr "Zobraziť všetko"

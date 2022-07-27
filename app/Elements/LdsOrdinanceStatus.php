@@ -72,7 +72,7 @@ class LdsOrdinanceStatus extends AbstractElement
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
             'EXCLUDED'  => I18N::translate('Excluded from this submission'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
-            'INFANT'  => I18N::translate('Died before less than 1 year old, sealing not required.'),
+            'INFANT'  => I18N::translate('Died less than 1 year old, sealing not required.'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
             'PRE_1970'  => I18N::translate('Completed before 1970; date not available'),
             /* I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism) */
