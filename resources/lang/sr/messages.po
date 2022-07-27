@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-27 11:54+0000\n"
+"PO-Revision-Date: 2022-07-27 13:01+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sr/>\n"
@@ -1142,7 +1142,7 @@ msgstr ""
 
 #: resources/views/pending-changes-page.phtml:101
 msgid "Accept all changes"
-msgstr ""
+msgstr "Прихвати све промене"
 
 #: resources/views/admin/components.phtml:42
 #: resources/views/admin/components.phtml:99
@@ -1841,7 +1841,7 @@ msgstr ""
 #: resources/xml/reports/relative_ext_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:46
 msgid "All"
-msgstr ""
+msgstr "Сви"
 
 #: app/Http/RequestHandlers/TreePrivacyPage.php:176
 #: resources/views/admin/trees-privacy.phtml:272
@@ -1854,7 +1854,7 @@ msgstr ""
 
 #: app/Http/RequestHandlers/RegisterAction.php:252
 msgid "All fields must be completed."
-msgstr ""
+msgstr "Сва поља морају бити попуњена."
 
 #: resources/views/admin/trees-preferences.phtml:681
 msgid "All individual facts"
@@ -1863,7 +1863,7 @@ msgstr ""
 #: resources/views/calendar-page.phtml:121
 #: resources/views/calendar-page.phtml:133
 msgid "All individuals"
-msgstr ""
+msgstr "Све особе"
 
 #: app/Http/RequestHandlers/ModulesAllPage.php:59
 #: resources/views/admin/components.phtml:28
@@ -3356,7 +3356,7 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1370 app/GedcomTag.php:527
 #: resources/views/modals/source-fields.phtml:50
 msgid "Call number"
-msgstr ""
+msgstr "Контакт број"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:280
@@ -3547,7 +3547,7 @@ msgstr ""
 #: resources/xml/reports/change_report.xml:3
 #: resources/xml/reports/change_report.xml:44
 msgid "Changes"
-msgstr ""
+msgstr "Измене"
 
 #: app/Module/RecentChangesModule.php:178
 #, php-format
@@ -3560,7 +3560,7 @@ msgstr[2] "Промене у последњих %s дана"
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:207
 msgid "Changes log"
-msgstr ""
+msgstr "Дневник промена"
 
 #. I18N: gedcom tag CHAR
 #: app/Factories/ElementFactory.php:1041 app/GedcomTag.php:556
@@ -4758,7 +4758,7 @@ msgstr ""
 
 #: resources/views/modules/user-messages/user-messages.phtml:71
 msgid "Date sent"
-msgstr ""
+msgstr "Датум слања"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: resources/views/admin/trees-preferences.phtml:132
@@ -8071,11 +8071,11 @@ msgstr ""
 
 #: app/Services/MessageService.php:226
 msgid "Internal messaging"
-msgstr ""
+msgstr "Интерно дописивање"
 
 #: app/Services/MessageService.php:227
 msgid "Internal messaging with emails"
-msgstr ""
+msgstr "Интерно дописивање са е-мејлом"
 
 #: app/Http/RequestHandlers/GedcomLoad.php:158
 msgid "Invalid GEDCOM file - no header record found."
@@ -8616,11 +8616,11 @@ msgstr "Latvija"
 #: resources/views/modules/hourglass-chart/page.phtml:48
 #: resources/views/modules/pedigree-chart/page.phtml:48
 msgid "Layout"
-msgstr ""
+msgstr "Изглед"
 
 #: resources/views/edit-account-page.phtml:96
 msgid "Leave the password blank if you want to keep the current password."
-msgstr ""
+msgstr "Оставите лозинку празну ако желите да задржите садашњу лозинку."
 
 #: resources/views/admin/media-upload.phtml:51
 msgid "Leave this entry blank to keep the original filename"
@@ -8905,7 +8905,7 @@ msgstr ""
 
 #: app/Services/MessageService.php:229
 msgid "Mailto link"
-msgstr ""
+msgstr "Линк за слање е-мејла"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:353
@@ -10331,7 +10331,7 @@ msgstr "Без деце"
 
 #: app/Services/MessageService.php:230
 msgid "No contact"
-msgstr ""
+msgstr "Нема контакта"
 
 #: resources/views/admin/trees-duplicates.phtml:46
 msgid "No duplicates have been found."
@@ -11890,7 +11890,7 @@ msgstr ""
 #: app/Module/RecentChangesModule.php:88
 #: resources/xml/reports/change_report.xml:92
 msgid "Recent changes"
-msgstr ""
+msgstr "Недавне промене"
 
 #: resources/views/calendar-page.phtml:127
 msgid "Recent years (&lt; 100 yrs)"
@@ -13457,6 +13457,8 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:141
 msgid "Site members can send each other messages. You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Чланови могу међусобно слати поруке. Можете одабрати како ће се те поруке "
+"слати вама, или одабрати да их уопште не примате."
 
 #. I18N: A configuration setting
 #: resources/views/modules/bing-webmaster-tools/form.phtml:9
@@ -13617,7 +13619,7 @@ msgstr "Син од %s"
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "Sort order"
-msgstr ""
+msgstr "Сортирање"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:235
@@ -13903,7 +13905,7 @@ msgstr "Наслов приче"
 #: resources/views/contact-page.phtml:59 resources/views/message-page.phtml:48
 #: resources/views/modules/user-messages/user-messages.phtml:70
 msgid "Subject"
-msgstr ""
+msgstr "Тема"
 
 #. I18N: gedcom tag SUBN
 #: app/Factories/ElementFactory.php:1075 app/Factories/ElementFactory.php:1399
@@ -14706,6 +14708,8 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:117
 msgid "The time zone is required for date calculations, such as knowing today’s date."
 msgstr ""
+"Временска зона је потребна за калкулације датума, као што је нпр. данашњи "
+"датум."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: resources/views/admin/trees-merge.phtml:28
@@ -15085,6 +15089,8 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:69
 msgid "This is a link to your own record in the family tree. If this is the wrong individual, contact an administrator."
 msgstr ""
+"Ово је линк ка вашим личним подацима у породичном стаблу. Ако је ово "
+"погрешна особа, контактирајте администратора."
 
 #: resources/views/setup/step-4-database-mysql.phtml:88
 #: resources/views/setup/step-4-database-mysql.phtml:102
@@ -16224,7 +16230,7 @@ msgstr ""
 
 #: resources/views/modules/interactive-tree/chart.phtml:19
 msgid "Use compact layout"
-msgstr ""
+msgstr "Користите компактан изглед"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-preferences.phtml:915
@@ -16805,6 +16811,8 @@ msgstr ""
 #: resources/views/edit-account-page.phtml:154
 msgid "You can choose whether to appear in the list of users who are currently signed-in."
 msgstr ""
+"Можете одабрати да ли желите да се појавите на листи корисника који су "
+"тренутно пријављени (онлајн)."
 
 #. I18N: %s is a URL
 #: resources/views/edit/raw-gedcom-fact.phtml:27
@@ -17026,7 +17034,7 @@ msgstr ""
 #: resources/views/source-page.phtml:40 resources/views/submitter-page.phtml:33
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "прихвати"
 
 #. I18N: %1$s is “accept”, %2$s is “reject”. These are links.
 #: resources/views/family-page.phtml:24
@@ -20180,7 +20188,7 @@ msgstr "записи"
 #: resources/views/source-page.phtml:40 resources/views/submitter-page.phtml:33
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr ""
+msgstr "одбаци"
 
 #: resources/views/family-page.phtml:24
 #: resources/views/gedcom-record-page.phtml:33
@@ -20650,7 +20658,7 @@ msgstr "снаха/зет"
 #: app/Module/UpcomingAnniversariesModule.php:283
 #: resources/xml/reports/change_report.xml:7
 msgid "sort by date"
-msgstr ""
+msgstr "сортирај по датуму"
 
 #. I18N: A button label.
 #: resources/views/edit/reorder-children.phtml:45
@@ -20680,12 +20688,12 @@ msgstr "сортирај по датуму венчања"
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:270 app/Module/RecentChangesModule.php:268
 msgid "sort by date, newest first"
-msgstr ""
+msgstr "сортирај по датуму, најновији на врху"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:268 app/Module/RecentChangesModule.php:266
 msgid "sort by date, oldest first"
-msgstr ""
+msgstr "сортирај по датуму, најстарији на врху"
 
 #. I18N: An option in a list-box
 #: app/Module/OnThisDayModule.php:266 app/Module/RecentChangesModule.php:264
@@ -20701,7 +20709,7 @@ msgstr ""
 #: resources/xml/reports/occupation_report.xml:6
 #: resources/xml/reports/relative_ext_report.xml:7
 msgid "sort by name"
-msgstr ""
+msgstr "сортирај по имену"
 
 #: app/Functions/Functions.php:685
 msgid "spouse"
