@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:45+0100\n"
+"POT-Creation-Date: 2022-07-27 13:59+0100\n"
 "PO-Revision-Date: 2022-07-17 04:41+0000\n"
 "Last-Translator: Jonathan Jaubart <dev@jaubart.com>\n"
 "Language-Team: French <https://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
@@ -5316,8 +5316,8 @@ msgstr "Décédé enfant : exempt"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
-msgid "Died before less than 1 year old, sealing not required."
-msgstr "Décédé avant l'âge d'un an, scellement non nécessaire."
+msgid "Died less than 1 year old, sealing not required."
+msgstr ""
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -12053,7 +12053,7 @@ msgstr "Réponse"
 msgid "Report"
 msgstr "Rapport"
 
-#. I18N: GEDCOM gag _RPT_PHRS
+#. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
 msgstr "Phrase pour rapport"
@@ -21490,6 +21490,9 @@ msgstr "…"
 
 #~ msgid "Died as an infant: exempt"
 #~ msgstr "Décédé bébé : exempt"
+
+#~ msgid "Died before less than 1 year old, sealing not required."
+#~ msgstr "Décédé avant l'âge d'un an, scellement non nécessaire."
 
 #~ msgid "Disable these modules"
 #~ msgstr "Désactiver ces modules"

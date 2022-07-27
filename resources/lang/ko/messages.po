@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:45+0100\n"
+"POT-Creation-Date: 2022-07-27 13:59+0100\n"
 "PO-Revision-Date: 2022-02-23 13:42+0000\n"
 "Last-Translator: Jeongwan Nam <jeongwann@gmail.com>\n"
 "Language-Team: Korean <https://translate.webtrees.net/projects/webtrees/webtrees/ko/>\n"
@@ -5293,7 +5293,7 @@ msgstr "어린 시절 사망: 면제"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
-msgid "Died before less than 1 year old, sealing not required."
+msgid "Died less than 1 year old, sealing not required."
 msgstr ""
 
 #: resources/xml/reports/change_report.xml:60
@@ -12028,7 +12028,7 @@ msgstr "회신"
 msgid "Report"
 msgstr "보고서"
 
-#. I18N: GEDCOM gag _RPT_PHRS
+#. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
 msgstr ""
