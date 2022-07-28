@@ -29,4 +29,17 @@ class TransmissionDate extends DateValueToday
     protected const SUBTAGS = [
         'TIME' => '1:1',
     ];
+
+    /**
+     * Escape @ signs in a GEDCOM export.
+     * This value should not include calendar escapes, so override special logic for date fields.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function escape(string $value): string
+    {
+        return strtr($value, ['@' => '@@']);
+    }
 }
