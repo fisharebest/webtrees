@@ -19,9 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Tree;
-
 /**
  * CHANGE_DATE := {Size=10:11}
  * <DATE_EXACT>
