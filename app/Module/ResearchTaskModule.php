@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\Elements\DateValue;
+use Fisharebest\Webtrees\Elements\DateValueToday;
 use Fisharebest\Webtrees\Elements\ResearchTask;
 use Fisharebest\Webtrees\Elements\WebtreesUser;
 use Fisharebest\Webtrees\Family;
@@ -34,8 +34,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
-
-use const PHP_INT_MAX;
 
 /**
  * Class ResearchTaskModule
@@ -62,10 +60,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface
     {
         Registry::elementFactory()->registerTags([
             'FAM:_TODO'           => new ResearchTask(I18N::translate('Research task')),
-            'FAM:_TODO:DATE'      => new DateValue(I18N::translate('Date')),
+            'FAM:_TODO:DATE'      => new DateValueToday(I18N::translate('Date')),
             'FAM:_TODO:_WT_USER'  => new WebtreesUser(I18N::translate('User')),
             'INDI:_TODO'          => new ResearchTask(I18N::translate('Research task')),
-            'INDI:_TODO:DATE'     => new DateValue(I18N::translate('Date')),
+            'INDI:_TODO:DATE'     => new DateValueToday(I18N::translate('Date')),
             'INDI:_TODO:_WT_USER' => new WebtreesUser(I18N::translate('User')),
         ]);
 
