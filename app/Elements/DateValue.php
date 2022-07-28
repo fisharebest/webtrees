@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
@@ -62,9 +63,21 @@ class DateValue extends AbstractElement
 
         $dmy = $localization_service->dateFormatToOrder(I18N::dateFormat());
 
+        $attributes = [
+            'class'     => 'form-control',
+            'dir'       => 'ltr',
+            'type'      => 'text',
+            'id'        => $id,
+            'name'      => $name,
+            'value'     => $value,
+            'onchange'  => 'webtrees.reformatDate(this, \'' . e($dmy) . '\')',
+            'maxlength' => static::MAXIMUM_LENGTH,
+            'pattern'   => static::PATTERN,
+        ];
+
         return
             '<div class="input-group">' .
-            '<input class="form-control" type="text" id="' . $id . '" name="' . $name . '" value="' . e($value) . '" onchange="webtrees.reformatDate(this, \'' . e($dmy) . '\')" dir="ltr" />' .
+            '<input ' . Html::attributes($attributes) . ' />' .
             view('edit/input-addon-calendar', ['id' => $id]) .
             view('edit/input-addon-help', ['topic' => 'DATE']) .
             '</div>' .

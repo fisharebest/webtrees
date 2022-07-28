@@ -24,6 +24,9 @@ namespace Fisharebest\Webtrees\Elements;
  * <DATE_EXACT>
  * The date that this transmission was created.
  */
-class TransmissionDate extends AbstractElement
+class TransmissionDate extends DateValueToday
 {
+    protected const SUBTAGS = [
+        'TIME' => '1:1',
+    ];
 }
