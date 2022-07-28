@@ -1172,7 +1172,8 @@ class GedcomRecord
      *
      * @return string
      */
-    private function updateChange(string $gedcom): string {
+    private function updateChange(string $gedcom): string
+    {
         $gedcom = preg_replace('/\n2 (DATE|_WT_USER).*(\n[3-9].*)*/', '', $gedcom);
         $today  = strtoupper(date('d M Y'));
         $now    = date('H:i:s');
