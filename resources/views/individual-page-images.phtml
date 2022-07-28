@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
         <?php elseif ($individual_media->count() === 1) : ?>
             <?= $individual_media->first()->displayImage(200, 260, 'crop', ['class' => 'img-thumbnail img-fluid w-100']) ?>
         <?php else : ?>
-            <div id="individual-images" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+            <div id="individual-images" class="carousel slide" data-bs-interval="false">
                 <div class="carousel-inner">
                     <?php foreach ($individual_media as $n => $media_file) : ?>
                         <div class="carousel-item <?= $n === 0 ? 'active' : '' ?>">
