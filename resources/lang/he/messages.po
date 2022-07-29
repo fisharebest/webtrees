@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:59+0100\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
-"Language: he\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-10 12:48+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/webtrees/he/>\nLanguage: he\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=(n != 1);\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1847,7 +1831,7 @@ msgstr "שם מקום חלופי"
 
 #: app/Gedcom.php:1035
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "איות חלופי של שם המשפחה"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -2074,7 +2058,7 @@ msgstr "כחול ירקרק"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "האם אתה בטוח שברצונך למחוק את הקישור ל-\"%s\"?"
+msgstr "האם אתה בטוח שברצונך למחוק את הקישור אל \"%s\"?"
 
 #: resources/views/individual-page-name.phtml:86
 #: resources/views/media-page-details.phtml:38
@@ -3511,7 +3495,7 @@ msgstr "בדוק שגיאות"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "בדוק אם יש גרסה חדשה"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3915,7 +3899,7 @@ msgstr "תוכן"
 
 #: app/Gedcom.php:772
 msgid "Continuation"
-msgstr ""
+msgstr "המשך"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3982,7 +3966,7 @@ msgstr "לוח בקרה"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "המר 1%s תגים ל-GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4171,7 +4155,7 @@ msgstr "תאריך היווצרות"
 #: app/Gedcom.php:925 app/Gedcom.php:954 app/Gedcom.php:969 app/Gedcom.php:973
 #: app/Gedcom.php:982 app/Gedcom.php:990 app/Gedcom.php:999
 msgid "Creation time"
-msgstr ""
+msgstr "זמן יצירה"
 
 #: app/Gedcom.php:639 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4609,7 +4593,7 @@ msgstr "תאריך מגורים"
 
 #: app/Gedcom.php:960
 msgid "Date of status change"
-msgstr ""
+msgstr "תאריך שינוי הסטטוס"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5317,7 +5301,7 @@ msgstr "מת בילדותו: פטור"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "נפטר בגיל פחות משנה, אין צורך לחתום."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5904,7 +5888,7 @@ msgstr "קבצים חיצוניים"
 #: app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:938 app/Gedcom.php:956
 #: app/Gedcom.php:974 app/Gedcom.php:983 app/Gedcom.php:991 app/Gedcom.php:1000
 msgid "External identifier"
-msgstr ""
+msgstr "מזהה חיצוני"
 
 #: app/Gedcom.php:1238 app/Gedcom.php:1843
 msgid "External link"
@@ -7411,7 +7395,7 @@ msgstr "הסתר ססמא"
 #: resources/views/admin/trees-check.phtml:53
 #: resources/views/admin/trees-check.phtml:69
 msgid "Hide these errors"
-msgstr ""
+msgstr "הסתר שגיאות אלה"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7664,7 +7648,7 @@ msgstr "אם יצרת ב-webtrees ישויות מדיה, וערכת את ה-GEDC
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "אם תשנה את שם הקובץ, עליך לתת מחדש שם לקובץ."
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8396,7 +8380,7 @@ msgstr "סמיכה של מיקדש המורמונים"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:958 app/Gedcom.php:1067
 msgid "LDS initiatory"
-msgstr ""
+msgstr "ייזום מורמוני"
 
 #: app/Gedcom.php:485
 msgid "LDS spouse sealing"
@@ -8590,7 +8574,7 @@ msgstr "יורש"
 
 #: app/Gedcom.php:1028
 msgid "Length"
-msgstr ""
+msgstr "אורך"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -9920,7 +9904,7 @@ msgstr "מוחרם"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "לידה מרובה"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
@@ -10337,7 +10321,7 @@ msgstr "אין משתמשים מחוברים ואין משתמשים אלמונ�
 #: resources/views/lists/surnames-compact-list.phtml:19
 #: resources/views/lists/surnames-table.phtml:62
 msgid "No surname"
-msgstr ""
+msgstr "אין שם משפחה"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10423,7 +10407,7 @@ msgstr "לא נשואים"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "לא נרשם"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -10453,44 +10437,44 @@ msgstr "הערה"
 #: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
 #: app/Gedcom.php:1891
 msgid "Note on association"
-msgstr ""
+msgstr "הערה לגבי קישור"
 
 #: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
 #: app/Gedcom.php:1388
 msgid "Note on last change"
-msgstr ""
+msgstr "הערה לגבי השינוי האחרון"
 
 #: app/Gedcom.php:693
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "הערה על שם פונטי"
 
 #: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
 msgid "Note on place"
-msgstr ""
+msgstr "הערה על מקום"
 
 #: app/Gedcom.php:853
 msgid "Note on repository reference"
-msgstr ""
+msgstr "הערה לגבי הפניה למאגר"
 
 #: app/Gedcom.php:707
 msgid "Note on romanized name"
-msgstr ""
+msgstr "הערה על שם בתעתיק לטיני"
 
 #: app/Gedcom.php:845
 msgid "Note on source"
-msgstr ""
+msgstr "הערה על מקור"
 
 #: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
 #: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
 #: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
 #: app/Gedcom.php:1885 app/Gedcom.php:1899
 msgid "Note on source citation"
-msgstr ""
+msgstr "הערה לגבי ציטוט מקור"
 
 #: app/Gedcom.php:844
 msgid "Note on source data"
-msgstr ""
+msgstr "הערה לגבי נתוני מקור"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10965,7 +10949,7 @@ msgstr "פרגוואי"
 
 #: app/Gedcom.php:1454
 msgid "Parent location"
-msgstr ""
+msgstr "מיקום ההורים"
 
 #: app/Gedcom.php:747 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
@@ -11129,7 +11113,7 @@ msgstr "תצלום"
 #: app/Gedcom.php:922 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:941
 #: app/Gedcom.php:945 app/Gedcom.php:946 app/Gedcom.php:948 app/Gedcom.php:950
 msgid "Phrase"
-msgstr ""
+msgstr "משפט"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11773,7 +11757,7 @@ msgstr "סדר מחדש מדיה"
 
 #: resources/views/media-page-menu.phtml:38
 msgid "Re-order media files"
-msgstr ""
+msgstr "סדר מחדש קבצי מדיה"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -12022,7 +12006,7 @@ msgstr "רינו, נבדה, ארצות הברית"
 #: resources/views/admin/trees-merge.phtml:40
 #: resources/views/admin/trees.phtml:199
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "מספר מחדש מספרי התיחסות"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12056,7 +12040,7 @@ msgstr "דו״ח"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
-msgstr ""
+msgstr "דווח משפט"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12619,7 +12603,7 @@ msgstr "שלח דוא\"ל ניסיוני השתמש בהגדרות האלו"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "שלח דואר אלקטרוני לכל מנהלי המערכת כאשר יש שדרוג זמין."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -13348,7 +13332,7 @@ msgstr "התחברות ורישום"
 
 #: app/Gedcom.php:1605
 msgid "Signature"
-msgstr ""
+msgstr "חתימה"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13542,7 +13526,7 @@ msgstr "סדר המיון"
 
 #: app/Gedcom.php:916 app/Gedcom.php:942
 msgid "Sort time"
-msgstr ""
+msgstr "זמן מיון"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:245
@@ -14134,7 +14118,7 @@ msgstr "מלל"
 
 #: app/Gedcom.php:1739
 msgid "Text direction"
-msgstr ""
+msgstr "כיוון טקסט"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -14368,7 +14352,7 @@ msgstr "הרשימה שלהלן מציגה דרישות טיפוסיות."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "נתוני הטופס אינם מלאים. יתכן ואתה צריך להגדיל את max_input_vars על השרת שלך?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -15254,25 +15238,25 @@ msgstr "שעה"
 
 #: app/Gedcom.php:951 app/Gedcom.php:1027
 msgid "Time of birth"
-msgstr ""
+msgstr "זמן הלידה"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "זמן הלידה וזמן הפטירה"
 
 #: app/Gedcom.php:955 app/Gedcom.php:1030 app/Gedcom.php:1482
 msgid "Time of death"
-msgstr ""
+msgstr "זמן הפטירה"
 
 #: app/Gedcom.php:455 app/Gedcom.php:622 app/Gedcom.php:769 app/Gedcom.php:790
 #: app/Gedcom.php:821 app/Gedcom.php:837 app/Gedcom.php:868 app/Gedcom.php:884
 #: app/Gedcom.php:1387
 msgid "Time of last change"
-msgstr "מועד השינוי האחרון"
+msgstr "זמן השנוי האחרון"
 
 #: app/Gedcom.php:961
 msgid "Time of status change"
-msgstr ""
+msgstr "זמן שינוי הסטטוס"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1738 resources/views/admin/site-preferences.phtml:48
@@ -15734,7 +15718,7 @@ msgstr "סוג עובדה"
 
 #: app/Gedcom.php:675
 msgid "Type of identification number"
-msgstr "סוג מספר הזיהוי"
+msgstr "סוג מספר זיהוי"
 
 #: app/Gedcom.php:1440
 msgid "Type of location"
@@ -15751,7 +15735,7 @@ msgstr "סוג שם"
 #: app/Gedcom.php:481 app/Gedcom.php:734 app/Gedcom.php:774 app/Gedcom.php:798
 #: app/Gedcom.php:829 app/Gedcom.php:849
 msgid "Type of reference number"
-msgstr "סוג מספר ההפניה"
+msgstr "סוג מספר סימוכין"
 
 #: app/Gedcom.php:1308 app/Gedcom.php:1364
 msgid "Type of research task"
@@ -16724,7 +16708,7 @@ msgstr "התרחק"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "תגיות _WT_OBJE_SORT שימשו גרסאות ישנות של webtrees כדי לציין את התמונה המועדפת על אדם. חלופה היא לסדר מחדש את התמונות כך שהמועדפת תופיע ראשונה."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
