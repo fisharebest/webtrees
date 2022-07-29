@@ -22,13 +22,13 @@ use Fisharebest\Webtrees\Tree;
         <?php foreach ($prefix_facts as $n => $fact) : ?>
             <div class="card mb-2">
                 <div class="card-header">
-                    <button class="btn btn-small btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#fact-<?= $prefix ?>-<?= $n ?>" aria-expanded="true" aria-controls="fact-<?= $prefix ?>-<?= $n ?>">
+                    <button class="btn btn-small btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#fact-<?= $prefix ?>-<?= $n ?>" aria-expanded="false" aria-controls="fact-<?= $prefix ?>-<?= $n ?>" data-wt-persist="<?= e($fact->tag()) ?>">
                         <?= view('icons/expand') ?>
                         <?= view('icons/collapse') ?>
                     </button>
                     <?= $fact->label() ?>
                 </div>
-                <div class="card-body pb-1 collapse show" id="fact-<?= $prefix ?>-<?= $n ?>">
+                <div class="card-body pb-1 collapse" id="fact-<?= $prefix ?>-<?= $n ?>">
                     <?= view('edit/edit-gedcom-fields', ['gedcom' => $gedcom_edit_service->insertMissingFactSubtags($fact, false), 'hierarchy' => explode(':', $fact->tag()), 'tree' => $fact->record()->tree(), 'prefix' => $prefix]) ?>
                 </div>
             </div>
