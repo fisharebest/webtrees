@@ -549,24 +549,31 @@
   };
 
   /**
-   * Persistent checkbox options to hide/show extra data.
-   * @param {HTMLInputElement} element
+   * Make bootstrap "collapse" elements persistent.
+   *
+   * @param {HTMLElement} element
    */
   webtrees.persistentToggle = function (element) {
-    if (element instanceof HTMLInputElement && element.type === 'checkbox') {
-      const key = 'state-of-' + element.dataset.wtPersist;
-      const state = localStorage.getItem(key);
+    const key = 'state-of-' + element.dataset.wtPersist;
+    const previous_state = localStorage.getItem(key);
 
-      // Previously selected? Select again now.
-      if (state === 'true') {
-        element.click();
-      }
+    // Accordion buttons have aria-expanded.  Checkboxes are checked/unchecked
+    const current_state = element.getAttribute('aria-expanded') ?? element.checked.toString();
 
-      // Remember state for the next page load.
-      element.addEventListener('change', function () {
-        localStorage.setItem(key, element.checked.toString());
-      });
+    // Previously selected? Select again now.
+    if (previous_state !== current_state) {
+      element.click();
     }
+
+    // Remember state for the next page load.
+    element.addEventListener('click', function () {
+      if (element.type === 'checkbox') {
+        localStorage.setItem(key, element.checked.toString());
+      }
+      if (element.type === 'button') {
+        localStorage.setItem(key, element.getAttribute('aria-expanded'));
+      }
+    });
   };
 
   /**
