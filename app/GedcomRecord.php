@@ -389,7 +389,7 @@ class GedcomRecord
             $this->getPrimaryName = 0;
             // ...except when the language/name use different character sets
             foreach ($this->getAllNames() as $n => $name) {
-                if (I18N::textScript($name['sort']) === $language_script) {
+                if ($name['type'] !== '_MARNM' && I18N::textScript($name['sort']) === $language_script) {
                     $this->getPrimaryName = $n;
                     break;
                 }
