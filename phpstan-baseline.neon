@@ -86,16 +86,6 @@ parameters:
 			path: app/Fact.php
 
 		-
-			message: "#^Instantiated class Fisharebest\\\\Webtrees\\\\Factories\\\\DefaultCustomTag not found\\.$#"
-			count: 1
-			path: app/Factories/CustomTagFactory.php
-
-		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\CustomTagFactory\\:\\:make\\(\\) should return Fisharebest\\\\Webtrees\\\\Contracts\\\\CustomTagInterface but returns Fisharebest\\\\Webtrees\\\\Contracts\\\\CustomTagInterface\\|Fisharebest\\\\Webtrees\\\\Factories\\\\DefaultCustomTag\\.$#"
-			count: 1
-			path: app/Factories/CustomTagFactory.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\FamilyFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/FamilyFactory.php
