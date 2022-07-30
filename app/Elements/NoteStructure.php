@@ -118,6 +118,10 @@ class NoteStructure extends SubmitterText
                 return parent::labelValue($value, $tree);
             }
 
+            if (!$note->canShow()) {
+                return '';
+            }
+
             $label         = '<span class="label">' . I18N::translate('Shared note') . '</span>';
             $value         = $note->getNote();
             $html          = $this->valueFormatted($value, $tree);
