@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
+"PO-Revision-Date: 2022-08-10 12:48+0000\n"
 "Last-Translator: Ekrem Parlak <ekrem@parlak.org>\n"
 "Language-Team: Turkish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/tr/>\n"
@@ -3530,7 +3530,7 @@ msgstr "Değişiklikler"
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Son %s gün içindeki değişiklikler"
-msgstr[1] "Son %s günler içindeki değişiklikler"
+msgstr[1] "Son %s gün içindeki değişiklikler"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:207
@@ -15638,8 +15638,8 @@ msgstr[1] "En çok verilen %s ad"
 #, php-format
 msgid "Top %s surname"
 msgid_plural "Top %s surnames"
-msgstr[0] "En çok %s soyadı"
-msgstr[1] "En çok %s soyadları"
+msgstr[0] "En yaygın %s soyadı"
+msgstr[1] "En yaygın %s soyadı"
 
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:101
