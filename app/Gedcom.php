@@ -2043,7 +2043,7 @@ class Gedcom
             $subtags['INDI:EVEN:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:FCOM:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:IMMI:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
-            $subtags['INDI:NAME']           = [['_RUFN', '0:1']];
+            $subtags['INDI:NAME']           = [['_RUFNAME', '0:1', 'SPFX']];
             $subtags['INDI:NATU:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:ORDN:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
             $subtags['INDI:RESI:PLAC']      = [['_POST', '0:1'], ['_MAIDENHEAD', '0:1:?'], ['_LOC', '0:1']];
