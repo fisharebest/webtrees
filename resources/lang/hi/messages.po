@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:59+0100\n"
-"PO-Revision-Date: 2022-03-20 22:01+0000\n"
-"Last-Translator: Mustafa Raza <mrqd.009@gmail.com>\n"
-"Language-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\n"
-"Language: hi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-10 12:48+0000\nLast-Translator: Mustafa Raza <mrqd.009@gmail.com>\nLanguage-Team: Hindi <https://translate.webtrees.net/projects/webtrees/webtrees/hi/>\nLanguage: hi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n > 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -314,7 +302,7 @@ msgstr[1] "%s नोट अपडेट कर दिए गए।"
 #: app/Http/RequestHandlers/CheckTree.php:318
 #, php-format
 msgid "%s occurs too many times."
-msgstr ""
+msgstr "%s बहुत बार पाया जा रहा है।"
 
 #. I18N: %s=“fifth cousin”, etc.
 #: app/Services/RelationshipService.php:2151
@@ -533,7 +521,7 @@ msgstr "(कुल %s इंट्री में से फिल्टर क
 #: resources/views/admin/gedcom-export-options.phtml:47
 #: resources/views/admin/gedcom-export-options.phtml:56
 msgid "(includes media files)"
-msgstr ""
+msgstr "(मीडिया फ़ाइलों सहित)"
 
 #: resources/views/fact-date.phtml:116
 msgid "(on the date of death)"
@@ -1516,7 +1504,7 @@ msgstr "एडिलेड, ऑस्ट्रेलिया"
 
 #: app/Gedcom.php:1444
 msgid "Administrative ID"
-msgstr ""
+msgstr "प्रशासनिक आईडी"
 
 #: resources/views/admin/users-edit.phtml:223
 #: resources/views/admin/users-edit.phtml:272
@@ -1848,7 +1836,7 @@ msgstr "वैकल्पिक स्थान का नाम"
 
 #: app/Gedcom.php:1035
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "उपनाम की वैकल्पिक वर्तनी"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -1946,7 +1934,7 @@ msgstr "पुश्तैनी पीआईडी"
 #. I18N: GEDCOM tag _APID
 #: app/Gedcom.php:1237
 msgid "Ancestry.com source identifier"
-msgstr ""
+msgstr "Ancestry.com स्रोत पहचानकर्ता"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58
@@ -2010,11 +1998,11 @@ msgstr "आपिया, समोआ"
 
 #: app/Gedcom.php:518
 msgid "Application ID"
-msgstr ""
+msgstr "आवेदन आईडी"
 
 #: app/Gedcom.php:535
 msgid "Application name"
-msgstr ""
+msgstr "आवेदन नाम"
 
 #: resources/views/admin/gedcom-export-options.phtml:97
 msgid "Apply privacy settings"
@@ -3512,7 +3500,7 @@ msgstr "एरर देखें"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "नए संस्करण का पता करें"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3710,7 +3698,7 @@ msgstr "खतना करने वाले"
 
 #: app/Gedcom.php:1241
 msgid "Circumcision"
-msgstr ""
+msgstr "खतना"
 
 #: resources/views/modules/census-assistant.phtml:35
 msgid "Citation"
@@ -3916,7 +3904,7 @@ msgstr "कन्टेंट"
 
 #: app/Gedcom.php:772
 msgid "Continuation"
-msgstr ""
+msgstr "विस्तार"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3983,7 +3971,7 @@ msgstr "कंट्रोल पैनल"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "%s टैग को GEDCOM 5.5.1 . में बदलें"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4159,7 +4147,7 @@ msgstr "डेटा फ़ोल्डर में प्रत्येक GE
 #: app/Gedcom.php:923 app/Gedcom.php:952 app/Gedcom.php:967 app/Gedcom.php:971
 #: app/Gedcom.php:980 app/Gedcom.php:988 app/Gedcom.php:997 app/Gedcom.php:1073
 msgid "Created at"
-msgstr ""
+msgstr "पर बनाया गया"
 
 #: app/Gedcom.php:924 app/Gedcom.php:953 app/Gedcom.php:968 app/Gedcom.php:972
 #: app/Gedcom.php:981 app/Gedcom.php:989 app/Gedcom.php:998 app/Gedcom.php:1303
@@ -4172,7 +4160,7 @@ msgstr "निर्माण तिथि"
 #: app/Gedcom.php:925 app/Gedcom.php:954 app/Gedcom.php:969 app/Gedcom.php:973
 #: app/Gedcom.php:982 app/Gedcom.php:990 app/Gedcom.php:999
 msgid "Creation time"
-msgstr ""
+msgstr "निर्माण का समय"
 
 #: app/Gedcom.php:639 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4330,7 +4318,7 @@ msgstr "कस्टम GEDCOM टैग"
 
 #: app/Http/RequestHandlers/CheckTree.php:215
 msgid "Custom GEDCOM tags are discouraged. Try to use only standard GEDCOM tags."
-msgstr ""
+msgstr "कस्टम GEDCOM टैग्स को हतोत्साहित किया जाता है।  केवल मानक GEDCOM टैग का उपयोग करने का प्रयास करें।"
 
 #: resources/views/calendar-page.phtml:205
 msgid "Custom event"
@@ -4610,7 +4598,7 @@ msgstr "निवास की तिथि"
 
 #: app/Gedcom.php:960
 msgid "Date of status change"
-msgstr ""
+msgstr "स्थिति परिवर्तन की तिथि"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5136,7 +5124,7 @@ msgstr "परिवार को हटाने का कार्य सभ�
 
 #: app/Http/RequestHandlers/GedcomLoad.php:134
 msgid "Deleting…"
-msgstr ""
+msgstr "मिटाया जा रहा है…"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:132
@@ -5145,7 +5133,7 @@ msgstr "कांगो लोकतान्त्रिक गणराज्�
 
 #: app/Gedcom.php:1448
 msgid "Demographic data"
-msgstr ""
+msgstr "जनसांख्यिकीय डेटा"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:163
@@ -5318,7 +5306,7 @@ msgstr "बचपन में ही मृत्यु: मुक्त"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "1 वर्ष से कम उम्र में मृत्यु हो गई, सीलिंग की आवश्यकता नहीं है।"
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5905,7 +5893,7 @@ msgstr "बाहरी फाइलें"
 #: app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:938 app/Gedcom.php:956
 #: app/Gedcom.php:974 app/Gedcom.php:983 app/Gedcom.php:991 app/Gedcom.php:1000
 msgid "External identifier"
-msgstr ""
+msgstr "बाहरी पहचानकर्ता"
 
 #: app/Gedcom.php:1238 app/Gedcom.php:1843
 msgid "External link"
@@ -6135,7 +6123,7 @@ msgstr "परिवार की जनगणना"
 
 #: resources/views/admin/tags.phtml:963
 msgid "Family facts and events"
-msgstr ""
+msgstr "पारिवारिक तथ्य और घटनाएं"
 
 #: app/Gedcom.php:887
 msgid "Family file"
@@ -6853,12 +6841,12 @@ msgstr "GEDCOM टैग"
 #. I18N: https://genealogy.net/GEDCOM/
 #: app/Gedcom.php:1314 resources/views/admin/tags.phtml:973
 msgid "GEDCOM-L"
-msgstr ""
+msgstr "GEDCOM-L"
 
 #. I18N: GEDZIP = file format
 #: resources/views/admin/gedcom-export-options.phtml:55
 msgid "GEDZIP"
-msgstr ""
+msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
 #: app/Gedcom.php:1278 app/Gedcom.php:1332 app/Gedcom.php:1453
@@ -6868,7 +6856,7 @@ msgstr "GOV पहचानकर्ता"
 
 #: app/Gedcom.php:1443
 msgid "GOV identifier type"
-msgstr ""
+msgstr "GOV पहचानकर्ता प्रकार"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7412,7 +7400,7 @@ msgstr "पासवर्ड छिपाएं"
 #: resources/views/admin/trees-check.phtml:53
 #: resources/views/admin/trees-check.phtml:69
 msgid "Hide these errors"
-msgstr ""
+msgstr "इन त्रुटियों को छुपाएं"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7665,7 +7653,7 @@ msgstr "यदि आपने webtrees में मीडिया ऑब्�
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "यदि आप फ़ाइल का नाम संशोधित करते हैं, तो आपको फ़ाइल का नाम भी बदलना चाहिए।"
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -7858,7 +7846,7 @@ msgstr "व्यक्ती वितरण चार्ट"
 
 #: resources/views/admin/tags.phtml:943
 msgid "Individual facts and events"
-msgstr ""
+msgstr "व्यक्तिगत तथ्य और घटनाएं"
 
 #: resources/views/admin/control-panel.phtml:699
 msgid "Individual page"
@@ -7948,7 +7936,7 @@ msgstr "सूचक"
 
 #: app/Http/RequestHandlers/CheckTree.php:282
 msgid "Inline-source records are discouraged."
-msgstr ""
+msgstr "इनलाइन-स्रोत रिकॉर्ड को हतोत्साहित किया जाता है।"
 
 #. I18N: Name of a module
 #: app/Module/ChartsBlockModule.php:176 app/Module/ChartsBlockModule.php:258
@@ -7982,11 +7970,11 @@ msgstr "अमान्य GEDCOM फ़ाइल - कोई हेडर र�
 
 #: app/Http/RequestHandlers/GedcomLoad.php:94
 msgid "Invalid GEDCOM file - no trailer record found."
-msgstr ""
+msgstr "अमान्य GEDCOM फ़ाइल - कोई ट्रेलर रिकॉर्ड नहीं मिला।"
 
 #: app/Http/RequestHandlers/CheckTree.php:198
 msgid "Invalid GEDCOM level number."
-msgstr ""
+msgstr "अमान्य GEDCOM स्तर संख्या।"
 
 #: app/Exceptions/GedcomErrorException.php:39
 msgid "Invalid GEDCOM record"
@@ -7994,15 +7982,15 @@ msgstr "अमान्य GEDCOM रिकॉर्ड"
 
 #: app/Http/RequestHandlers/CheckTree.php:192
 msgid "Invalid GEDCOM record."
-msgstr ""
+msgstr "अमान्य GEDCOM रिकॉर्ड।"
 
 #: app/Http/RequestHandlers/CheckTree.php:218
 msgid "Invalid GEDCOM tag."
-msgstr ""
+msgstr "अमान्य GEDCOM टैग।"
 
 #: app/Http/RequestHandlers/CheckTree.php:285
 msgid "Invalid GEDCOM value."
-msgstr ""
+msgstr "अमान्य GEDCOM मान।"
 
 #: app/Date.php:224
 msgid "Invalid date"
@@ -8039,7 +8027,7 @@ msgstr "अपग्रेड को डाउनलोड करने और �
 
 #: resources/views/admin/tags.phtml:936
 msgid "It is not recommended to use custom GEDCOM tags. This data can be lost when you transfer it to other applications."
-msgstr ""
+msgstr "कस्टम GEDCOM टैग का उपयोग करने की अनुशंसा नहीं की जाती है।  जब आप इसे अन्य एप्लिकेशन में स्थानांतरित करते हैं तो यह डेटा खो सकता है।"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:265
@@ -8397,7 +8385,7 @@ msgstr "LDS दान"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:958 app/Gedcom.php:1067
 msgid "LDS initiatory"
-msgstr ""
+msgstr "एलडीएस पहल"
 
 #: app/Gedcom.php:485
 msgid "LDS spouse sealing"
@@ -8410,11 +8398,11 @@ msgstr "लेबल"
 
 #: app/Gedcom.php:1633
 msgid "Label for husband"
-msgstr ""
+msgstr "पति के लिए लेबल"
 
 #: app/Gedcom.php:1637
 msgid "Label for wife"
-msgstr ""
+msgstr "पत्नी के लिए लेबल"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:107
@@ -8424,12 +8412,12 @@ msgstr "लाई, हवाई, संयुक्त राज्य"
 #. I18N: GEDCOM tag _PURC
 #: app/Gedcom.php:1825
 msgid "Land purchase"
-msgstr ""
+msgstr "भूमि खरीद"
 
 #. I18N: GEDCOM tag _SALE
 #: app/Gedcom.php:1826
 msgid "Land sale"
-msgstr ""
+msgstr "जमीन की बिक्री"
 
 #. I18N: page orientation
 #: app/Http/RequestHandlers/TreePreferencesPage.php:101
@@ -8591,7 +8579,7 @@ msgstr "वसीयत दार"
 
 #: app/Gedcom.php:1028
 msgid "Length"
-msgstr ""
+msgstr "लंबाई"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -8657,7 +8645,7 @@ msgstr "पंक्ति के अंत"
 
 #: app/Http/RequestHandlers/CheckTree.php:420
 msgid "Line number"
-msgstr ""
+msgstr "लाइन नंबर"
 
 #: app/Http/RequestHandlers/FixLevel0MediaPage.php:48
 #: resources/views/admin/control-panel.phtml:798
@@ -8969,7 +8957,7 @@ msgstr "हस्तलिपि"
 
 #: resources/views/admin/tags.phtml:934
 msgid "Many genealogy applications define their own custom GEDCOM tags and webtrees will be able to display most of them."
-msgstr ""
+msgstr "कई वंशावली अनुप्रयोग अपने स्वयं के कस्टम GEDCOM टैग को परिभाषित करते हैं और webtrees उनमें से अधिकांश को प्रदर्शित करने में सक्षम होगी।"
 
 #. I18N: Help text for the “GEDCOM errors” configuration setting
 #: resources/views/admin/trees-preferences.phtml:616
@@ -9921,7 +9909,7 @@ msgstr "मुहर्रम"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "एकाधिक जन्म"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
@@ -10004,7 +9992,7 @@ msgstr "हिब्रू में नाम"
 #: app/Gedcom.php:1373 app/Gedcom.php:1381 app/Gedcom.php:1684
 #: app/Gedcom.php:1768
 msgid "Name of addressee"
-msgstr ""
+msgstr "पता करने वाले का नाम"
 
 #: app/Gedcom.php:694 app/Gedcom.php:702 app/Gedcom.php:708
 msgid "Name prefix"
@@ -10272,19 +10260,19 @@ msgstr "कल के लिए कोई के कार्यक्रम म
 
 #: app/Module/OnThisDayModule.php:154
 msgid "No events for living individuals exist for today."
-msgstr ""
+msgstr "आज के दिन जीवित व्यक्तियों के लिए कोई कार्यक्रम मौजूद नहीं है।"
 
 #: app/Module/UpcomingAnniversariesModule.php:175
 msgid "No events for living individuals exist for tomorrow."
-msgstr ""
+msgstr "जीवित व्यक्तियों के लिए कोई भी घटना कल के लिए मौजूद नहीं है।"
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: app/Module/UpcomingAnniversariesModule.php:184
 #, php-format
 msgid "No events for living people exist for the next %s day."
 msgid_plural "No events for living people exist for the next %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "अगले %s दिन के लिए जीवित लोगों के लिए कोई कार्यक्रम मौजूद नहीं है।"
+msgstr[1] "अगले %s दिनों के लिए जीवित लोगों के लिए कोई कार्यक्रम मौजूद नहीं है।"
 
 #: resources/views/family-page.phtml:39
 msgid "No facts exist for this family."
@@ -10338,7 +10326,7 @@ msgstr "कोई साइन-इन और कोई अनाम उपयो
 #: resources/views/lists/surnames-compact-list.phtml:19
 #: resources/views/lists/surnames-table.phtml:62
 msgid "No surname"
-msgstr ""
+msgstr "कुलनाम नहीं"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10424,7 +10412,7 @@ msgstr "अविवाहित"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "दर्ज नहीं है"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -10454,44 +10442,44 @@ msgstr "नोट"
 #: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
 #: app/Gedcom.php:1891
 msgid "Note on association"
-msgstr ""
+msgstr "एसोसिएशन पर नोट"
 
 #: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
 #: app/Gedcom.php:1388
 msgid "Note on last change"
-msgstr ""
+msgstr "अंतिम परिवर्तन पर नोट"
 
 #: app/Gedcom.php:693
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "ध्वन्यात्मक नाम पर नोट"
 
 #: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
 msgid "Note on place"
-msgstr ""
+msgstr "स्थान पर नोट"
 
 #: app/Gedcom.php:853
 msgid "Note on repository reference"
-msgstr ""
+msgstr "भंडार संदर्भ पर नोट"
 
 #: app/Gedcom.php:707
 msgid "Note on romanized name"
-msgstr ""
+msgstr "रोमनकृत नाम पर नोट"
 
 #: app/Gedcom.php:845
 msgid "Note on source"
-msgstr ""
+msgstr "स्रोत पर नोट"
 
 #: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
 #: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
 #: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
 #: app/Gedcom.php:1885 app/Gedcom.php:1899
 msgid "Note on source citation"
-msgstr ""
+msgstr "स्रोत उद्धरण पर नोट"
 
 #: app/Gedcom.php:844
 msgid "Note on source data"
-msgstr ""
+msgstr "स्रोत डेटा पर नोट"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10813,7 +10801,7 @@ msgstr "अभिविन्यास"
 
 #: app/Gedcom.php:1069
 msgid "Origin"
-msgstr ""
+msgstr "मूल"
 
 #. I18N: GEDCOM tag _ORIG
 #: app/Gedcom.php:1074 app/Gedcom.php:1535 app/Gedcom.php:1544
@@ -10966,7 +10954,7 @@ msgstr "पैराग्वे"
 
 #: app/Gedcom.php:1454
 msgid "Parent location"
-msgstr ""
+msgstr "मूल स्थान"
 
 #: app/Gedcom.php:747 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
@@ -11130,7 +11118,7 @@ msgstr "फोटो"
 #: app/Gedcom.php:922 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:941
 #: app/Gedcom.php:945 app/Gedcom.php:946 app/Gedcom.php:948 app/Gedcom.php:950
 msgid "Phrase"
-msgstr ""
+msgstr "मुहावरा"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11774,7 +11762,7 @@ msgstr "मीडिया व्यवस्थित करें"
 
 #: resources/views/media-page-menu.phtml:38
 msgid "Re-order media files"
-msgstr ""
+msgstr "मीडिया फ़ाइलों को पुन: क्रमित करें"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -12023,7 +12011,7 @@ msgstr "रेनो, नेवादा, संयुक्त राज्य"
 #: resources/views/admin/trees-merge.phtml:40
 #: resources/views/admin/trees.phtml:199
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "XREF पुन: अंकित करें"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12057,7 +12045,7 @@ msgstr "रिपोर्ट"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
-msgstr ""
+msgstr "वाक्यांश रिपोर्ट करें"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12620,7 +12608,7 @@ msgstr "इन सेटिंग्स का उपयोग करके ए�
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "अपग्रेड उपलब्ध होने पर सभी व्यवस्थापकों को एक ईमेल भेजें।"
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -13349,7 +13337,7 @@ msgstr "साइन-इन और रजिस्ट्रेशन"
 
 #: app/Gedcom.php:1605
 msgid "Signature"
-msgstr ""
+msgstr "हस्ताक्षर"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13543,7 +13531,7 @@ msgstr "तरतीब"
 
 #: app/Gedcom.php:916 app/Gedcom.php:942
 msgid "Sort time"
-msgstr ""
+msgstr "क्रमबद्ध समय"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:245
@@ -13731,7 +13719,7 @@ msgstr "सेंट पॉल, मिनेसोटा, संयुक्त 
 
 #: resources/views/admin/tags.phtml:27
 msgid "Standard GEDCOM tags"
-msgstr ""
+msgstr "मानक GEDCOM टैग"
 
 #: resources/views/modules/random_media/config.phtml:46
 msgid "Start slide show on page load"
@@ -14135,7 +14123,7 @@ msgstr "पाठ"
 
 #: app/Gedcom.php:1739
 msgid "Text direction"
-msgstr ""
+msgstr "पाठ की दिशा"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -14369,7 +14357,7 @@ msgstr "यह सूची विशिष्ट आवश्यकताओं
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "प्रपत्र डेटा अधूरा है।  शायद आपको अपने सर्वर पर max_input_vars बढ़ाने की आवश्यकता है?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -14863,7 +14851,7 @@ msgstr "इस वंश वृक्ष को अंतिम बार %s क
 
 #: app/Http/RequestHandlers/CheckTree.php:307
 msgid "This filename is not compatible with the GEDZIP file format."
-msgstr ""
+msgstr "यह फ़ाइल नाम GEDZIP फ़ाइल स्वरूप के साथ संगत नहीं है।"
 
 #. I18N: Help text for the "Data folder" site configuration setting
 #: resources/views/admin/site-preferences.phtml:30
@@ -15255,15 +15243,15 @@ msgstr "समय"
 
 #: app/Gedcom.php:951 app/Gedcom.php:1027
 msgid "Time of birth"
-msgstr ""
+msgstr "जन्म का समय"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "जन्म का समय और मृत्यु का समय"
 
 #: app/Gedcom.php:955 app/Gedcom.php:1030 app/Gedcom.php:1482
 msgid "Time of death"
-msgstr ""
+msgstr "मृत्यु का समय"
 
 #: app/Gedcom.php:455 app/Gedcom.php:622 app/Gedcom.php:769 app/Gedcom.php:790
 #: app/Gedcom.php:821 app/Gedcom.php:837 app/Gedcom.php:868 app/Gedcom.php:884
@@ -15273,7 +15261,7 @@ msgstr "अंतिम परिवर्तन का समय"
 
 #: app/Gedcom.php:961
 msgid "Time of status change"
-msgstr ""
+msgstr "स्थिति परिवर्तन का समय"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1738 resources/views/admin/site-preferences.phtml:48
@@ -15386,7 +15374,7 @@ msgstr "इस ब्लॉक के साथ आरंभ करने मे
 
 #: resources/views/admin/tags.phtml:938
 msgid "To create new data using custom tags, you need to enable them."
-msgstr ""
+msgstr "कस्टम टैग का उपयोग करके नया डेटा बनाने के लिए, आपको उन्हें सक्षम करना होगा।"
 
 #: resources/views/modules/todo/config.phtml:15
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
@@ -15915,7 +15903,7 @@ msgstr "निम्न-स्तरीय भागों को रखते �
 #. I18N: GEDCOM tag _UPD
 #: app/Gedcom.php:1161 app/Gedcom.php:1747
 msgid "Updated at"
-msgstr ""
+msgstr "पर अपडेट किया गया"
 
 #. I18N: %s is a version number, such as 1.2.3
 #. I18N: %s is a version number
@@ -16459,7 +16447,7 @@ msgstr "गवाह"
 #: app/Gedcom.php:1297 app/Gedcom.php:1351 app/Gedcom.php:1542
 #: app/Gedcom.php:1574
 msgid "Witnesses"
-msgstr ""
+msgstr "गवाह"
 
 #: app/SurnameTradition/LithuanianSurnameTradition.php:77
 #: app/SurnameTradition/PaternalSurnameTradition.php:51
@@ -16696,7 +16684,7 @@ msgstr "आपका वेब सर्वर PHP version %s का उपय�
 #: resources/views/admin/gedcom-export-options.phtml:38
 #: resources/views/admin/gedcom-export-options.phtml:46
 msgid "ZIP"
-msgstr ""
+msgstr "ZIP"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:542
@@ -16725,7 +16713,7 @@ msgstr "ज़ूम आउट"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "_WT_OBJE_SORT टैग का उपयोग वेबट्री के पुराने संस्करणों द्वारा किसी व्यक्ति के लिए पसंदीदा छवि को इंगित करने के लिए किया गया था।  एक विकल्प छवियों को फिर से क्रमित करना है ताकि पसंदीदा को पहले सूचीबद्ध किया जा सके।"
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
@@ -20746,11 +20734,11 @@ msgstr "वेबट्रीस"
 
 #: app/Http/RequestHandlers/CheckTree.php:303
 msgid "webtrees cannot create thumbnails for this file format."
-msgstr ""
+msgstr "वेबट्री इस फ़ाइल स्वरूप के लिए थंबनेल नहीं बना सकते।"
 
 #: app/Http/RequestHandlers/CheckTree.php:300
 msgid "webtrees does not recognise this file format."
-msgstr ""
+msgstr "webtrees इस फ़ाइल स्वरूप को नहीं पहचानता है।"
 
 #: app/Services/MessageService.php:136
 msgid "webtrees message"
@@ -20853,7 +20841,7 @@ msgstr[1] "±%s साल"
 #: app/Http/RequestHandlers/CheckTree.php:291
 #, php-format
 msgid "“%1$s” should be “%2$s”."
-msgstr ""
+msgstr "\"%1$s\" को \"%2$s\" होना चाहिए।"
 
 #: app/Http/RequestHandlers/CopyFact.php:71
 #, php-format
