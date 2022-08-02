@@ -45,7 +45,7 @@ class SurnameTradition
      */
     public static function create(string $name): SurnameTraditionInterface
     {
-        return Registry::surnameTraditionFactory()->make('name');
+        return Registry::surnameTraditionFactory()->make($name);
     }
 
     /**
