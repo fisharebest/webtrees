@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:59+0100\n"
-"PO-Revision-Date: 2022-07-17 04:41+0000\n"
-"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
-"Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
-"Language: sv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-10 12:48+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -2074,7 +2058,7 @@ msgstr "Akvamarin"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr "Är du säker på att du vill ta bort länken till “%s”?"
+msgstr "Är du säker på att du vill ta bort länken till \"%s\"?"
 
 #: resources/views/individual-page-name.phtml:86
 #: resources/views/media-page-details.phtml:38
@@ -6130,7 +6114,7 @@ msgstr "Familjebok för %s"
 
 #: app/Gedcom.php:452
 msgid "Family census"
-msgstr "Familjens folkräkning"
+msgstr "Familjeräkning"
 
 #: resources/views/admin/tags.phtml:963
 msgid "Family facts and events"
@@ -11563,7 +11547,7 @@ msgstr "Provo, Utah, Förenta staterna"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:120
 msgid "Proxy"
-msgstr "Fullmäktig"
+msgstr "Ombud"
 
 #: app/Gedcom.php:847 resources/views/lists/sources-table.phtml:97
 #: resources/views/modals/source-fields.phtml:36
@@ -15268,7 +15252,7 @@ msgstr ""
 #: app/Gedcom.php:821 app/Gedcom.php:837 app/Gedcom.php:868 app/Gedcom.php:884
 #: app/Gedcom.php:1387
 msgid "Time of last change"
-msgstr "Tid för senaste ändring"
+msgstr "Tidpunkt för senaste ändring"
 
 #: app/Gedcom.php:961
 msgid "Time of status change"
@@ -19323,7 +19307,7 @@ msgstr "Spädbarn"
 
 #: app/Elements/NoteStructure.php:69
 msgid "inline note"
-msgstr "infogad anteckning"
+msgstr "inline-anteckning"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:197
