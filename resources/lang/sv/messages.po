@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
-"Last-Translator: Fredrik Ekdahl <fekdahl@gmail.com>\n"
+"PO-Revision-Date: 2022-08-10 12:48+0000\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sv/>\n"
 "Language: sv\n"
@@ -2109,7 +2109,7 @@ msgstr "Akvamarin"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Är du säker på att du vill ta bort länken till \"%s\"?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -6259,7 +6259,7 @@ msgstr "Familjebok för %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Familjeräkning"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6283,7 +6283,7 @@ msgstr "Familj %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Familjehem"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6377,7 +6377,7 @@ msgstr "Familj med maka"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "FamilySearch ID"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -11610,7 +11610,7 @@ msgstr "Provo, Utah, Förenta staterna"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Ombud"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -15444,7 +15444,7 @@ msgstr "Tid"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Tidpunkt för senaste ändring"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15898,7 +15898,7 @@ msgstr "Faktumtyp"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Typ av identifikationsnummer"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15916,7 +15916,7 @@ msgstr "Namntyp"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Typ av referensnummer"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -16053,7 +16053,7 @@ msgstr "Okänd"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Ta bort länken"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -19530,7 +19530,7 @@ msgstr "importera fil"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "inline-anteckning"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20406,7 +20406,7 @@ msgstr "7. kusin"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "delad anteckning"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
