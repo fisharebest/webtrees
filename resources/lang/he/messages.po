@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-29 08:55+0000\n"
+"PO-Revision-Date: 2022-08-10 12:48+0000\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/he/>\n"
@@ -2109,7 +2109,7 @@ msgstr "כחול ירקרק"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "האם אתה בטוח שברצונך למחוק את הקישור אל \"%s\"?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -6374,7 +6374,7 @@ msgstr "משפחה עם אשה"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "מזהה FamilySearch"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -15441,7 +15441,7 @@ msgstr "שעה"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "זמן השנוי האחרון"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15895,7 +15895,7 @@ msgstr "סוג עובדה"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "סוג מספר זיהוי"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15913,7 +15913,7 @@ msgstr "סוג שם"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "סוג מספר סימוכין"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -16050,7 +16050,7 @@ msgstr "לא ידוע"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "בטל את הקישור"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -19525,7 +19525,7 @@ msgstr "ייבא קובץ"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "הערה מוטבעת"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20401,7 +20401,7 @@ msgstr "דודן מדרגה 7"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "הערה משותפת"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
