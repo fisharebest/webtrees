@@ -561,7 +561,7 @@
     const current_state = element.getAttribute('aria-expanded') ?? element.checked.toString();
 
     // Previously selected? Select again now.
-    if (previous_state !== current_state) {
+    if (previous_state !== null && previous_state !== current_state) {
       element.click();
     }
 
