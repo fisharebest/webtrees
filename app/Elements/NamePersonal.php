@@ -93,7 +93,6 @@ class NamePersonal extends AbstractElement
      */
     public function __construct(string $label, array $subtags = null)
     {
-
         if ($subtags === null && in_array(I18N::languageTag(), static::SURNAME_FIRST_LANGUAGES, true)) {
             $subtags = static::SUBTAGS_SURNAME_FIRST;
         }
