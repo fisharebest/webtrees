@@ -9,13 +9,13 @@
     "autoprefixer": "10.4.8",
     "cross-env": "7.0.3",
     "laravel-mix": "6.0.49",
-    "postcss": "8.4.14",
+    "postcss": "8.4.16",
     "postcss-custom-properties": "12.1.8",
     "postcss-image-inliner": "5.0.0",
     "postcss-import": "14.1.0",
     "postcss-rtlcss": "3.7.2",
     "resolve-url-loader": "5.0.0",
-    "sass": "1.54.0",
+    "sass": "1.54.3",
     "sass-loader": "13.0.2"
   },
   "dependencies": {
