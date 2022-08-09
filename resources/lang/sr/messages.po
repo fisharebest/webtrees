@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-27 13:01+0000\n"
+"PO-Revision-Date: 2022-08-10 12:48+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sr/>\n"
@@ -14915,12 +14915,12 @@ msgstr ""
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr "Нешто се догодило, али детаљи нису познати."
+msgstr "Овај догађај се десио, али детаљи нису познати."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
 msgid "This family does not exist or you do not have permission to view it."
-msgstr ""
+msgstr "Ова породица не постоји или ви немате дозволу да је видите."
 
 #: resources/views/family-page.phtml:26
 msgid "This family has been deleted. The deletion will need to be reviewed by a moderator."
