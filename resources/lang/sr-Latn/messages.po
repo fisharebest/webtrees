@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-27 11:54+0000\n"
+"PO-Revision-Date: 2022-08-10 12:48+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/sr_Latn/>\n"
@@ -14990,7 +14990,7 @@ msgstr "Ova e-mail adresa će se koristiti za slanje podsetnika za lozinku, oba
 
 #: app/Elements/AbstractEventElement.php:61
 msgid "This event occurred, but the details are unknown."
-msgstr "Nešto se dogodio, ali detalji nisu poznati."
+msgstr "Ovaj događaj se desio, ali detalji nisu poznati."
 
 #: app/Exceptions/FamilyAccessDeniedException.php:35
 #: app/Exceptions/FamilyNotFoundException.php:35
@@ -15387,7 +15387,6 @@ msgstr ""
 #: resources/views/admin/trees-preferences.phtml:416
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
 msgstr ""
-"Croatian \n"
 "Ova opcija kontroliše da li će se na grafikonima prikazivati starost oca ili "
 "majke pored dana rođenja deteta."
 
