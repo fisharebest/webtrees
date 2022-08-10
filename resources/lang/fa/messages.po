@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-10 12:48+0000\nLast-Translator: bijan borjian borujeni <borjian1344@yahoo.com>\nLanguage-Team: Persian <https://translate.webtrees.net/projects/webtrees/webtrees/fa/>\nLanguage: fa\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Persian\nX-Poedit-SourceCharset: utf-8\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-13 13:17+0000\nLast-Translator: bijan borjian borujeni <borjian1344@yahoo.com>\nLanguage-Team: Persian <https://translate.webtrees.net/projects/webtrees/webtrees/fa/>\nLanguage: fa\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Persian\nX-Poedit-SourceCharset: utf-8\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -2871,7 +2871,7 @@ msgstr "بیسمارک، داکوتای شمالی، ایالات متحده"
 
 #: app/Gedcom.php:610
 msgid "Blessing"
-msgstr ""
+msgstr "برکت"
 
 #: app/Gedcom.php:1806 resources/views/edit-blocks-block.phtml:22
 msgid "Block"
@@ -2986,7 +2986,7 @@ msgstr "بریزبن، استرالیا"
 
 #: app/Gedcom.php:1121
 msgid "Brit milah"
-msgstr "بریت میلا"
+msgstr "Brit milah"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:253
@@ -3444,7 +3444,7 @@ msgstr "تغییرات"
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "تغییرات در %s روز گذشته"
-msgstr[1] "تغییرات در %s روز گذشته"
+msgstr[1] "تغییرات در %s روزهای گذشته"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:97
 #: resources/views/admin/trees.phtml:209
