@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-08-10 12:48+0000\n"
+"PO-Revision-Date: 2022-08-13 13:17+0000\n"
 "Last-Translator: bijan borjian borujeni <borjian1344@yahoo.com>\n"
 "Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/fa/>\n"
@@ -2985,7 +2985,7 @@ msgstr "بیسمارک، داکوتای شمالی، ایالات متحده"
 #. I18N: gedcom tag BLES
 #: app/Factories/ElementFactory.php:1147 app/GedcomTag.php:510
 msgid "Blessing"
-msgstr ""
+msgstr "برکت"
 
 #: app/Factories/ElementFactory.php:847
 #: resources/views/edit-blocks-block.phtml:22
@@ -3104,7 +3104,7 @@ msgstr "بریزبن، استرالیا"
 #. I18N: gedcom tag _BRTM
 #: app/Factories/ElementFactory.php:298 app/GedcomTag.php:1052
 msgid "Brit milah"
-msgstr ""
+msgstr "Brit milah"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:253
@@ -3572,7 +3572,7 @@ msgstr "تغییرات"
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "تغییرات در %s روز گذشته"
-msgstr[1] "تغییرات در %s روز گذشته"
+msgstr[1] "تغییرات در %s روزهای گذشته"
 
 #: app/Http/RequestHandlers/PendingChangesLogPage.php:101
 #: resources/views/admin/trees.phtml:207
@@ -7794,14 +7794,13 @@ msgstr ""
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
-msgstr ""
-"اگر تصویر بند انگشتی یک تصویر سفارشی است، باید آن را به شی رسانه اضافه کنید."
+msgstr "اگر ریزعکس یک تصویر سفارشی است، باید آن را به شی رسانه اضافه کنید."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
 msgstr ""
-"اگر تصویر بند انگشتی با تصویر اصلی یکسان است، دیگر نیازی به آن نیست و باید "
-"آن را حذف کنید."
+"اگر ریزعکس با تصویر اصلی یکسان است، دیگر نیازی به آن نیست و باید آن را حذف "
+"کنید."
 
 #. I18N: Help text for the “Age at which to assume an individual is dead” configuration setting
 #: resources/views/admin/trees-privacy.phtml:85
