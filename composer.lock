@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d9ad51212909a4ca93db7f302120609",
+    "content-hash": "684e6ab5348154098e15b770a1f1ed0c",
     "packages": [
         {
             "name": "aura/router",
@@ -1051,16 +1051,16 @@
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.16.0",
+            "version": "1.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "0b62ab3803eabcfbf2fe45a0ba606365814ca5a2"
+                "reference": "8ad99b7c5c014ea4956af97808ece0c672a351b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/0b62ab3803eabcfbf2fe45a0ba606365814ca5a2",
-                "reference": "0b62ab3803eabcfbf2fe45a0ba606365814ca5a2",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/8ad99b7c5c014ea4956af97808ece0c672a351b5",
+                "reference": "8ad99b7c5c014ea4956af97808ece0c672a351b5",
                 "shasum": ""
             },
             "require": {
@@ -1110,9 +1110,9 @@
             ],
             "support": {
                 "issues": "https://github.com/fisharebest/localization/issues",
-                "source": "https://github.com/fisharebest/localization/tree/1.16.0"
+                "source": "https://github.com/fisharebest/localization/tree/1.16.1"
             },
-            "time": "2022-07-07T08:45:37+00:00"
+            "time": "2022-08-10T13:09:20+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
