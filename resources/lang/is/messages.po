@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:59+0100\n"
-"PO-Revision-Date: 2022-07-17 04:41+0000\n"
-"Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
-"Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
-"Language: is\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-13 13:17+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1843,7 +1831,7 @@ msgstr "Annað staðarheiti"
 
 #: app/Gedcom.php:1035
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Önnur stafsetning eftirnafns"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -5313,7 +5301,7 @@ msgstr "Dó sem barn: undanþegið"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Dó yngri en 1 árs, innsiglunar ekki krafist."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -7407,7 +7395,7 @@ msgstr "Fela lykilorð"
 #: resources/views/admin/trees-check.phtml:53
 #: resources/views/admin/trees-check.phtml:69
 msgid "Hide these errors"
-msgstr ""
+msgstr "Fela þessar villur"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -9916,7 +9904,7 @@ msgstr "Muharram"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Fjölburafæðing"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
@@ -10449,44 +10437,44 @@ msgstr "Glósa"
 #: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
 #: app/Gedcom.php:1891
 msgid "Note on association"
-msgstr ""
+msgstr "Glósa um tengsl"
 
 #: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
 #: app/Gedcom.php:1388
 msgid "Note on last change"
-msgstr ""
+msgstr "Glósa um síðustu breytingu"
 
 #: app/Gedcom.php:693
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Glósa um hljóðnafn"
 
 #: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
 msgid "Note on place"
-msgstr ""
+msgstr "Glósa um stað"
 
 #: app/Gedcom.php:853
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Glósa um tilvísun í geymslu"
 
 #: app/Gedcom.php:707
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Glósa um rómanískt nafn"
 
 #: app/Gedcom.php:845
 msgid "Note on source"
-msgstr ""
+msgstr "Glósa um heimild"
 
 #: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
 #: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
 #: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
 #: app/Gedcom.php:1885 app/Gedcom.php:1899
 msgid "Note on source citation"
-msgstr ""
+msgstr "Glósa um heimildartilvitnun"
 
 #: app/Gedcom.php:844
 msgid "Note on source data"
-msgstr ""
+msgstr "Glósa um heimildargögn"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
