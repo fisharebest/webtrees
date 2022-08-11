@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-10 12:48+0000\nLast-Translator: Enes <enes_s@yahoo.com>\nLanguage-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\nLanguage: sr-Latn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Serbian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-13 13:17+0000\nLast-Translator: Enes <enes_s@yahoo.com>\nLanguage-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\nLanguage: sr-Latn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Serbian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1849,7 +1849,7 @@ msgstr "Alternativni naziv mesta"
 
 #: app/Gedcom.php:1035
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Alternativno spelovanje prezimena"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -5320,7 +5320,7 @@ msgstr "Smrt u detinjstvu: izuzet"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Umro je za manje od 1 godine, pečaćenje nije potrebno."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -7414,7 +7414,7 @@ msgstr "Sakrij lozinku"
 #: resources/views/admin/trees-check.phtml:53
 #: resources/views/admin/trees-check.phtml:69
 msgid "Hide these errors"
-msgstr ""
+msgstr "Sakrij ove greške"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -9923,7 +9923,7 @@ msgstr "Muharrem"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Višestruko rođenje"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
@@ -10458,44 +10458,44 @@ msgstr "Beleška"
 #: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
 #: app/Gedcom.php:1891
 msgid "Note on association"
-msgstr ""
+msgstr "Napomena o asocijaciji"
 
 #: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
 #: app/Gedcom.php:1388
 msgid "Note on last change"
-msgstr ""
+msgstr "Napomena o poslednjoj promeni"
 
 #: app/Gedcom.php:693
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Napomena o fonetskom nazivu"
 
 #: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
 msgid "Note on place"
-msgstr ""
+msgstr "Napomena o mestu"
 
 #: app/Gedcom.php:853
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Napomena o referenci skladišta"
 
 #: app/Gedcom.php:707
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Napomena o romanizovanom imenu"
 
 #: app/Gedcom.php:845
 msgid "Note on source"
-msgstr ""
+msgstr "Napomena o izvoru"
 
 #: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
 #: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
 #: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
 #: app/Gedcom.php:1885 app/Gedcom.php:1899
 msgid "Note on source citation"
-msgstr ""
+msgstr "Napomena o citiranju izvora"
 
 #: app/Gedcom.php:844
 msgid "Note on source data"
-msgstr ""
+msgstr "Napomena o izvornim podacima"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
