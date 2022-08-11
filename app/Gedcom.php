@@ -1010,7 +1010,7 @@ class Gedcom
     }
 
     /**
-     * Aldfaer also uses: _BOLD, _ITALIC, _UNDERLINE, _COLOR
+     * Aldfaer
      *
      * @return array<string,ElementInterface>
      */
@@ -1049,6 +1049,10 @@ class Gedcom
             'INDI:_INQUVAR3CAT'        => new CustomElement(''),
             'INDI:_NOPARTNER'          => new CustomElement(''),
             'INDI:_NEW'                => new CustomElement(''),
+            'INDI:_BOLD'               => new CustomElement(''),
+            'INDI:_ITALIC'             => new CustomElement(''),
+            'INDI:_UNDERLINE'          => new CustomElement(''),
+            'INDI:_COLOR'              => new CustomElement(''),
         ];
     }
 
