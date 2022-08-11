@@ -1425,7 +1425,7 @@ class Gedcom
             '_LOC:EVEN:RESN'                  => new RestrictionNotice(I18N::translate('Restriction')),
             '_LOC:EVEN:SOUR'                  => new XrefSource(I18N::translate('Source citation')),
             '_LOC:EVEN:TYPE'                  => new EventAttributeType(I18N::translate('Type of event')),
-            '_LOC:EVEN:URL'                   => new CustomElement(I18N::translate('URL')),
+            '_LOC:EVEN:WWW'                   => new CustomElement(I18N::translate('URL')),
             '_LOC:MAP'                        => new EmptyElement(I18N::translate('Coordinates'), ['LATI' => '1:1', 'LONG' => '1:1']),
             '_LOC:MAP:LATI'                   => new PlaceLatitude(I18N::translate('Latitude')),
             '_LOC:MAP:LONG'                   => new PlaceLongtitude(I18N::translate('Longitude')),
