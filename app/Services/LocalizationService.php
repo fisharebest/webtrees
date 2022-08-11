@@ -71,6 +71,7 @@ class LocalizationService
         'da'      => self::NORWEGIAN_ALPHABET,
         'es'      => self::SPANISH_ALPHABET,
         'et'      => self::ESTONIAN_ALPHABET,
+        'fa'      => self::ARABIC_ALPHABET,
         'fi'      => self::SWEDISH_ALPHABET,
         'hu'      => self::HUNGARIAN_ALPHABET,
         'lt'      => self::LITHUANIAN_ALPHABET,
