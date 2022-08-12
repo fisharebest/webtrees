@@ -29,8 +29,6 @@ namespace Fisharebest\Webtrees\Elements;
  */
 class NamePhoneticVariation extends NamePersonal
 {
-    protected const MAXIMUM_LENGTH = 120;
-
     protected const SUBTAGS = [
         'TYPE' => '1:1',
         'NPFX' => '0:1',
