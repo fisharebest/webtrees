@@ -6181,7 +6181,7 @@ msgstr "Семья %s"
 
 #: app/Gedcom.php:482
 msgid "Family residence"
-msgstr ""
+msgstr "Семейное жильё"
 
 #: app/Gedcom.php:1300
 msgid "Family status"
