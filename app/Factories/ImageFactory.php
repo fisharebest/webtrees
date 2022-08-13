@@ -99,7 +99,8 @@ class ImageFactory implements ImageFactoryInterface
 
             return $this->imageResponse($filesystem->read($path), $mime_type, $filename);
         } catch (UnableToReadFile | FilesystemException $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         }
     }
 
@@ -136,7 +137,8 @@ class ImageFactory implements ImageFactoryInterface
             return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
                 ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
                 ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
@@ -176,7 +178,8 @@ class ImageFactory implements ImageFactoryInterface
             return $this->replacementImageResponse(pathinfo($path, PATHINFO_EXTENSION))
                 ->withHeader('x-image-exception', $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
                 ->withHeader('x-image-exception', $ex->getMessage());
@@ -245,7 +248,8 @@ class ImageFactory implements ImageFactoryInterface
             return $this->replacementImageResponse('.' . pathinfo($path, PATHINFO_EXTENSION))
                 ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (FilesystemException | UnableToReadFile $ex) {
-            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND);
+            return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_NOT_FOUND)
+                ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
         } catch (Throwable $ex) {
             return $this->replacementImageResponse((string) StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR)
                 ->withHeader('x-thumbnail-exception', get_class($ex) . ': ' . $ex->getMessage());
