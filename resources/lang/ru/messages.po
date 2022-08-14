@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2021-04-28 07:05+0000\n"
-"Last-Translator: Alex <zink@mail.ru>\n"
-"Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/webtrees-20/ru/>\n"
+"PO-Revision-Date: 2022-08-15 09:37+0000\n"
+"Last-Translator: Александр Бойко <aurbo@bk.ru>\n"
+"Language-Team: Russian <https://translate.webtrees.net/projects/webtrees/"
+"webtrees-20/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.9.1\n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -145,9 +147,9 @@ msgstr "%1$s × %2$s пикселей"
 #: resources/views/edit/edit-fact.phtml:118
 #: resources/views/edit/edit-record.phtml:34
 #: resources/views/edit/edit-record.phtml:37
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s: %2$s"
-msgstr ""
+msgstr "%1$s: %2$s"
 
 #. I18N: A range of numbers
 #: app/Individual.php:558 app/Module/StatisticsChartModule.php:861
@@ -807,12 +809,12 @@ msgstr "Список записей, которые были недавно об
 #. I18N: Description of the “Repositories” module
 #: app/Module/RepositoryListModule.php:84
 msgid "A list of repositories."
-msgstr ""
+msgstr "Список репозиториев."
 
 #. I18N: Description of the “Shared notes” module
 #: app/Module/NoteListModule.php:81
 msgid "A list of shared notes."
-msgstr ""
+msgstr "Список общих заметок."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourceListModule.php:83
@@ -1532,7 +1534,7 @@ msgstr "Строка адреса 2"
 #: app/Factories/ElementFactory.php:1080 app/Factories/ElementFactory.php:1333
 #: app/Factories/ElementFactory.php:1380 app/GedcomTag.php:436
 msgid "Address line 3"
-msgstr ""
+msgstr "Строка адреса 3"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:55 app/GedcomCode/GedcomCodeTemp.php:231
@@ -2008,7 +2010,7 @@ msgstr "Номер потомственного файла"
 
 #: app/Factories/ElementFactory.php:258
 msgid "Ancestry PID"
-msgstr ""
+msgstr "Родовой PID"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:58 app/GedcomCode/GedcomCodeTemp.php:240
@@ -2131,7 +2133,7 @@ msgstr "Аквамарин"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #, php-format
 msgid "Are you sure you want to delete the link to “%s”?"
-msgstr ""
+msgstr "Вы уверены, что хотите удалить ссылку на “%s”?"
 
 #: resources/views/individual-name.phtml:92
 #: resources/views/media-page.phtml:114
@@ -2415,7 +2417,7 @@ msgstr "Продолжительность жизни по столетиям"
 
 #: app/Statistics/Google/ChartChildren.php:95
 msgid "Average number"
-msgstr ""
+msgstr "Среднее число"
 
 #: app/Statistics/Google/ChartChildren.php:106
 #: resources/views/modules/gedcom_stats/config.phtml:61
@@ -2606,7 +2608,7 @@ msgstr "Барбадос"
 
 #: app/Factories/ElementFactory.php:608
 msgid "Base GEDCOM tag"
-msgstr ""
+msgstr "Базовый тег GEDCOM"
 
 #. I18N: gedcom tag BASM
 #: app/Factories/ElementFactory.php:1140 app/GedcomTag.php:496
@@ -2693,7 +2695,7 @@ msgstr "Bing Maps™"
 
 #: app/Module/BingWebmasterToolsModule.php:41
 msgid "Bing™ webmaster tools"
-msgstr "Bing™ webmaster tools"
+msgstr "Bing™ инструменты разработчика"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:65 app/GedcomCode/GedcomCodeTemp.php:261
@@ -3323,13 +3325,14 @@ msgstr "По умолчанию, SMTP работает на порте 25."
 
 #. I18N: Name of a module. CKEditor is a trademark. Do not translate it? https://ckeditor.com
 #: app/Module/CkeditorModule.php:43
+#, fuzzy
 msgid "CKEditor™"
 msgstr "CKEditor™"
 
 #. I18N: Name of a module.
 #: app/Module/CustomCssJsModule.php:82
 msgid "CSS and JS"
-msgstr ""
+msgstr "CSS и JS "
 
 #: resources/views/admin/trees.phtml:71
 #: resources/views/lists/datatables-attributes.phtml:31
@@ -3527,7 +3530,7 @@ msgstr "Изменение блоков на \"Моя страница\""
 #: resources/views/modules/recent_changes/changes-list.phtml:50
 #, php-format
 msgid "Changed by %1$s"
-msgstr ""
+msgstr "Изменено %1$s"
 
 #. I18N: [a record was] Changed on <date/time>
 #: resources/views/modules/recent_changes/changes-list.phtml:48
@@ -4092,17 +4095,17 @@ msgstr "Панель управления"
 #. I18N: Name of a module
 #: app/Module/FixCemeteryTag.php:61
 msgid "Convert CEME tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Преобразование тегов CEME в GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixNameTags.php:84
 msgid "Convert NAME:_XXX tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Преобразование тегов NAME:_XXX в GEDCOM 5.5.1"
 
 #. I18N: Name of a module
 #: app/Module/FixPrimaryTag.php:48
 msgid "Convert _PRIM tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Преобразование тегов _PRIM в GEDCOM 5.5.1"
 
 #: app/Http/RequestHandlers/HelpText.php:279
 #: resources/views/admin/trees-export.phtml:79
@@ -4495,12 +4498,12 @@ msgstr "Данные"
 
 #: resources/views/modules/privacy-policy/page.phtml:66
 msgid "Data controller"
-msgstr ""
+msgstr "Управление данными"
 
 #: resources/views/admin/data-fix-page.phtml:70
 #: resources/views/admin/data-fix-select.phtml:29
 msgid "Data fix"
-msgstr ""
+msgstr "Правка данных"
 
 #: app/Http/RequestHandlers/DataFixChoose.php:69
 #: app/Http/RequestHandlers/DataFixPage.php:91
@@ -4510,11 +4513,14 @@ msgstr ""
 #: resources/views/admin/data-fix-page.phtml:24
 #: resources/views/admin/trees.phtml:149
 msgid "Data fixes"
-msgstr ""
+msgstr "Правки данных"
 
 #: resources/views/help/data-fixes.phtml:8
 msgid "Data fixes can require lots of slow calculations, so it is not possible to create an exact list of records that need to be updated."
 msgstr ""
+"Исправление данных может потребовать большое количество медленных "
+"вычислений, поэтому невозможно создать точный список записей, которые "
+"необходимо обновить."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:26
@@ -4596,7 +4602,7 @@ msgstr "Дата запечатывания ребёнка (мормоны)"
 
 #: app/Factories/ElementFactory.php:1169
 msgid "Date of LDS confirmation"
-msgstr ""
+msgstr "Дата конфирмации LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1189 app/GedcomTag.php:669
@@ -5180,7 +5186,7 @@ msgstr "Тема по умолчанию"
 #: app/Factories/ElementFactory.php:616 app/Factories/ElementFactory.php:617
 #: app/Factories/ElementFactory.php:618
 msgid "Definition"
-msgstr ""
+msgstr "Определение"
 
 #. I18N: gedcom tag _DEG
 #: app/Factories/ElementFactory.php:403 app/GedcomTag.php:1068
@@ -5536,7 +5542,7 @@ msgstr "Документ"
 
 #: resources/views/admin/site-mail.phtml:189
 msgid "Domain name"
-msgstr ""
+msgstr "Доменное имя"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:161
@@ -5772,7 +5778,7 @@ msgstr "элул"
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:23
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #. I18N: gedcom tag EMAIL
 #. I18N: gedcom tag _EMAIL
@@ -6279,7 +6285,7 @@ msgstr "Семейная книга для %s"
 
 #: app/Factories/ElementFactory.php:990
 msgid "Family census"
-msgstr ""
+msgstr "Семейная перепись"
 
 #. I18N: gedcom tag FAMF
 #: app/Factories/ElementFactory.php:1406 app/GedcomTag.php:702
@@ -6303,7 +6309,7 @@ msgstr "Семья %s"
 
 #: app/Factories/ElementFactory.php:1019
 msgid "Family residence"
-msgstr ""
+msgstr "Семейное жильё"
 
 #: app/Factories/ElementFactory.php:588
 msgid "Family status"
@@ -6397,7 +6403,7 @@ msgstr "Семья с женой"
 #. I18N: familysearch.org
 #: app/Factories/ElementFactory.php:323
 msgid "FamilySearch ID"
-msgstr ""
+msgstr "Идентификатор FamilySearch"
 
 #. I18N: Name of a module/chart
 #: app/Module/FanChartModule.php:119
@@ -6727,14 +6733,14 @@ msgstr "Шрифт"
 #: resources/views/admin/modules.phtml:232
 #: resources/views/admin/modules.phtml:235
 msgid "Footer"
-msgstr ""
+msgstr "Нижний колонтитул"
 
 #: app/Http/RequestHandlers/ModulesFootersPage.php:43
 #: resources/views/admin/control-panel.phtml:589
 #: resources/views/admin/modules.phtml:106
 #: resources/views/admin/modules.phtml:108
 msgid "Footers"
-msgstr ""
+msgstr "Нижние колонтитулы"
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: resources/views/admin/trees-import.phtml:119
@@ -6971,8 +6977,9 @@ msgid "Funeral"
 msgstr "Захоронение"
 
 #: app/Factories/ElementFactory.php:1048
+#, fuzzy
 msgid "GEDCOM"
-msgstr ""
+msgstr "GEDCOM"
 
 #. I18N: A configuration setting
 #: resources/views/admin/trees-check.phtml:23
@@ -6991,7 +6998,7 @@ msgstr "Файл GEDCOM"
 #: app/Factories/ElementFactory.php:578 app/Factories/ElementFactory.php:620
 #: app/Factories/ElementFactory.php:698 app/GedcomTag.php:1121
 msgid "GOV identifier"
-msgstr ""
+msgstr "Идентификатор GOV"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:199
@@ -7211,11 +7218,11 @@ msgstr "Google Maps™"
 
 #: app/Module/GoogleAnalyticsModule.php:44
 msgid "Google™ analytics"
-msgstr ""
+msgstr "Google™ аналитика"
 
 #: app/Module/GoogleWebmasterToolsModule.php:41
 msgid "Google™ webmaster tools"
-msgstr ""
+msgstr "Google™ инструменты вебмастера"
 
 #. I18N: gedcom tag GRAD
 #: app/Factories/ElementFactory.php:1207 app/GedcomTag.php:733
@@ -7700,6 +7707,8 @@ msgstr "Если фамилия неизвестна, используйте п�
 #: resources/views/admin/webtrees1-thumbnails.phtml:24
 msgid "If the thumbnail image is a custom image, you should add it to the media object."
 msgstr ""
+"Если изображение эскиза является пользовательским изображением, его следует "
+"добавить к медиа-объекту."
 
 #: resources/views/admin/webtrees1-thumbnails.phtml:23
 msgid "If the thumbnail image is the same as the original image, it is no longer needed and you should delete it."
@@ -7731,6 +7740,8 @@ msgstr "Если Вы сами не можете решить проблему, 
 #: resources/views/setup/step-4-database-mysql.phtml:59
 msgid "If you connect to the database using a UNIX socket, enter the path here and leave the port number empty."
 msgstr ""
+"Если вы подключаетесь к базе данных с помощью сокета UNIX, введите здесь "
+"путь и оставьте номер порта пустым."
 
 #: resources/views/admin/trees-import.phtml:103
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -8635,7 +8646,7 @@ msgstr "Ливан"
 #. I18N: Name of a module - historic/obsolete URLs.
 #: app/Module/RedirectLegacyUrlsModule.php:120
 msgid "Legacy URLs"
-msgstr ""
+msgstr "Наследуемые URL-адреса"
 
 #. I18N: gedcom tag LEGA
 #: app/Factories/ElementFactory.php:858 app/GedcomTag.php:764
@@ -9342,7 +9353,7 @@ msgstr "Поиск точного текста, если он не находи�
 
 #: app/Module/MatomoAnalyticsModule.php:42
 msgid "Matomo™ / Piwik™ analytics"
-msgstr ""
+msgstr "Matomo™ / Piwik™ аналитика"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:345
@@ -9875,16 +9886,20 @@ msgstr "Наиболее часто встречающиеся фамилии"
 
 #: resources/views/admin/site-mail.phtml:176
 msgid "Most mail servers require a valid domain name."
-msgstr ""
+msgstr "Большинству почтовых серверов требуется действительное доменное имя."
 
 #: resources/views/admin/site-mail.phtml:68
 msgid "Most mail servers require a valid email address."
 msgstr ""
+"Большинству почтовых серверов требуется действительные электронные почтовые "
+"адреса."
 
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: resources/views/admin/site-mail.phtml:171
 msgid "Most mail servers require that the sending server identifies itself correctly, using a valid domain name."
 msgstr ""
+"Большинству почтовых серверов требуется, чтобы отправляющий сервер правильно "
+"идентифицировал себя, используя действительное доменное имя."
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: resources/views/admin/site-mail.phtml:157
@@ -9900,6 +9915,7 @@ msgstr "Большинство сайтов настроены на исполь
 #: resources/views/setup/step-4-database-sqlsvr.phtml:64
 msgid "Most sites are configured to use the default value of 1433."
 msgstr ""
+"Большинство сайтов настроены на использование значения по умолчанию 1433."
 
 #: resources/views/setup/step-4-database-mysql.phtml:74
 msgid "Most sites are configured to use the default value of 3306."
@@ -9908,6 +9924,7 @@ msgstr "Большенство страниц используют по умол
 #: resources/views/setup/step-4-database-pgsql.phtml:64
 msgid "Most sites are configured to use the default value of 5432."
 msgstr ""
+"Большинство сайтов настроены на использование значения по умолчанию 5432."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:47
@@ -10173,7 +10190,7 @@ msgstr "Новая Каледония"
 #: app/Factories/ElementFactory.php:611 app/Factories/ElementFactory.php:612
 #: app/Factories/ElementFactory.php:613
 msgid "New GEDCOM tag"
-msgstr ""
+msgstr "Новый тег GEDCOM"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:146 app/GedcomCode/GedcomCodeTemp.php:504
@@ -10446,7 +10463,7 @@ msgstr "Северная Корея"
 
 #: resources/views/modules/statistics-chart/custom.phtml:185
 msgid "Northern America"
-msgstr ""
+msgstr "Северная Америка"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:371
@@ -10789,7 +10806,7 @@ msgstr "Ой! webtrees не удалось создать файлы в этой
 #: app/Functions/FunctionsPrint.php:464 app/Functions/FunctionsPrint.php:466
 #: resources/views/admin/map-provider.phtml:28
 msgid "OpenStreetMap™"
-msgstr "OpenStreetMap™"
+msgstr "Карты OpenStreetMap™"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:152 app/GedcomCode/GedcomCodeTemp.php:522
@@ -11156,7 +11173,7 @@ msgstr "Название (фонетически)"
 
 #: app/Factories/ElementFactory.php:1222
 msgid "Phonetic type"
-msgstr ""
+msgstr "Фонетический тип"
 
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:74 app/Factories/ElementFactory.php:333
@@ -11244,7 +11261,7 @@ msgstr "Место запечатывания ребёнка (мормоны)"
 
 #: app/Factories/ElementFactory.php:1170
 msgid "Place of LDS confirmation"
-msgstr ""
+msgstr "Место конфирмации LDS"
 
 #. I18N: LDS = Church of Latter Day Saints.
 #: app/Factories/ElementFactory.php:1190 app/GedcomTag.php:672
@@ -11606,7 +11623,7 @@ msgstr "Приватно"
 
 #: resources/views/admin/site-mail.phtml:207
 msgid "Private key"
-msgstr ""
+msgstr "Секретный ключ"
 
 #. I18N: gedcom tag PROB
 #: app/Factories/ElementFactory.php:1252 app/GedcomTag.php:884
@@ -11631,7 +11648,7 @@ msgstr "Прово, Юта"
 #. I18N: An individual that represents another
 #: app/Elements/RelationIsDescriptor.php:119
 msgid "Proxy"
-msgstr ""
+msgstr "Прокси"
 
 #. I18N: gedcom tag PUBL
 #: app/Factories/ElementFactory.php:1366 app/GedcomTag.php:890
@@ -11765,19 +11782,19 @@ msgstr "Молочный"
 #: app/Elements/PedigreeLinkageType.php:66
 msgctxt "Female pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Рада"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:56
 msgctxt "Male pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Рада"
 
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”. It is child-to-parent pedigree, established by wet-nursing.
 #: app/Elements/PedigreeLinkageType.php:76
 msgctxt "Pedigree"
 msgid "Rada"
-msgstr ""
+msgstr "Рада"
 
 #. I18N: https://en.wikipedia.org/wiki/Rajab
 #: app/Date/HijriDate.php:140
@@ -11930,7 +11947,7 @@ msgstr "Записей"
 #. I18N: Description of the “Legacy URLs” module
 #: app/Module/RedirectLegacyUrlsModule.php:114
 msgid "Redirect old URLs from webtrees version 1."
-msgstr ""
+msgstr "Перенаправление старых URL-адресов с webtrees 1 версии."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:169 app/GedcomCode/GedcomCodeTemp.php:573
@@ -12140,7 +12157,7 @@ msgstr "Заменить"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixCemeteryTag.php:72
 msgid "Replace cemetery tags with burial places."
-msgstr ""
+msgstr "Заменить теги кладбищ местами захоронения."
 
 #: resources/views/search-replace-page.phtml:35
 msgid "Replace with"
@@ -12321,7 +12338,7 @@ msgstr "Латиницей"
 
 #: app/Factories/ElementFactory.php:1227
 msgid "Romanized name"
-msgstr ""
+msgstr "Латинизированное имя"
 
 #: app/Factories/ElementFactory.php:971 app/Factories/ElementFactory.php:1102
 #: app/GedcomTag.php:876
@@ -12334,7 +12351,7 @@ msgstr "Заголовок латиницей"
 
 #: app/Factories/ElementFactory.php:1234
 msgid "Romanized type"
-msgstr ""
+msgstr "Латинизированный шрифт"
 
 #: resources/views/lists/families-table.phtml:180
 #: resources/views/lists/individuals-table.phtml:221
@@ -12343,7 +12360,7 @@ msgstr "Корни"
 
 #: app/Factories/ElementFactory.php:632
 msgid "Rufname"
-msgstr ""
+msgstr "Как зовут"
 
 #. I18N: http://en.wikipedia.org/wiki/Soundex
 #: app/Soundex.php:3491 resources/views/branches-page.phtml:42
@@ -12367,12 +12384,13 @@ msgstr "Почтовый сервер SMTP"
 
 #: app/Services/ServerCheckService.php:326
 msgid "SQLite is only suitable for small sites, testing and evaluation."
-msgstr ""
+msgstr "SQLite подходит только для небольших сайтов, тестирования и оценки."
 
 #: app/Services/ServerCheckService.php:216
 #, php-format
 msgid "SQLite version %s is installed. SQLite version %s or later is required."
 msgstr ""
+"Установлена версия SQLite %s. Требуется версия SQLite %s или более поздняя."
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:173 app/GedcomCode/GedcomCodeTemp.php:585
@@ -12670,7 +12688,7 @@ msgstr "Выберите две записи для слияния."
 
 #: resources/views/admin/site-mail.phtml:198
 msgid "Selector"
-msgstr ""
+msgstr "Переключатель"
 
 #: app/Elements/RelationIsDescriptor.php:123
 #: app/GedcomCode/GedcomCodeRela.php:313
@@ -13616,7 +13634,7 @@ msgstr "Кекуле-номер"
 
 #: resources/views/modules/ancestors-chart/tree.phtml:18
 msgid "Sosa-Stradonitz number"
-msgstr ""
+msgstr "Номер по методу Sosa-Stradonitz"
 
 #: app/Http/RequestHandlers/SearchAdvancedPage.php:263
 msgid "Sounds like"
@@ -13811,8 +13829,9 @@ msgid "Starting range of change dates"
 msgstr "Начало диапазона дат"
 
 #: app/Module/StatcounterModule.php:41
+#, fuzzy
 msgid "Statcounter™"
-msgstr ""
+msgstr "Statcounter™"
 
 #. I18N: gedcom tag STAE
 #: app/Factories/ElementFactory.php:952 app/Factories/ElementFactory.php:1064
@@ -13958,11 +13977,11 @@ msgstr "Поддержка и документация может быть на�
 
 #: app/Services/ServerCheckService.php:331
 msgid "Support for PostgreSQL is experimental."
-msgstr ""
+msgstr "Поддержка PostgreSQL пока экспериментальная."
 
 #: app/Services/ServerCheckService.php:336
 msgid "Support for SQL Server is experimental."
-msgstr ""
+msgstr "Поддержка SQL Sever пока экспериментальная."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:461
@@ -14097,7 +14116,7 @@ msgstr "Префикс таблицы"
 #: resources/xml/reports/relative_ext_report.xml:8
 msgctxt "paper size"
 msgid "Tabloid"
-msgstr ""
+msgstr "Бульварный"
 
 #: app/Http/RequestHandlers/ModulesTabsPage.php:43
 #: resources/views/admin/control-panel.phtml:642
@@ -14245,12 +14264,12 @@ msgstr "Гаага, Нидерланды"
 #: app/Services/ServerCheckService.php:125
 #, php-format
 msgid "The PHP extension “%s” is not installed."
-msgstr ""
+msgstr "Расширение PHP “%s” не установлено."
 
 #: app/Services/ServerCheckService.php:183
 #, php-format
 msgid "The PHP function “%1$s” is disabled."
-msgstr ""
+msgstr "Функция PHP “%1$s” отключена."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: app/Functions/Functions.php:58
@@ -14260,12 +14279,12 @@ msgstr "Отсутствует папка для временных PHP файл
 #: app/Services/ServerCheckService.php:144
 #, php-format
 msgid "The PHP.INI setting “%1$s” is disabled."
-msgstr ""
+msgstr "PHP.INI настройка “%1$s” отключена."
 
 #: app/Services/ServerCheckService.php:148
 #, php-format
 msgid "The PHP.INI setting “%1$s” is enabled."
-msgstr ""
+msgstr "PHP.INI настройка “%1$s” включена."
 
 #: resources/views/emails/approve-user-html.phtml:19
 #: resources/views/emails/approve-user-text.phtml:14
@@ -14471,7 +14490,7 @@ msgstr "Ссылка из “%1$s” на “%2$s” была обновлена
 #. I18N: Description of the “Lists” module
 #: app/Module/ListsMenuModule.php:69
 msgid "The lists menu."
-msgstr ""
+msgstr "Меню \"Списки\"."
 
 #: app/Http/RequestHandlers/CreateLocationAction.php:60
 #: app/Http/RequestHandlers/MapDataSave.php:89
@@ -14614,6 +14633,9 @@ msgstr "Предпочтения для модуля “%s” были обно�
 #: resources/views/setup/step-4-database-sqlsvr.phtml:109
 msgid "The prefix is optional, but recommended. By giving the table names a unique prefix you can let several different applications share the same database."
 msgstr ""
+"Префикс необязателен, но рекомендуется. Присвоив именам таблиц уникальный "
+"префикс, вы можете разрешить нескольким разным приложениям совместно "
+"использовать одну и ту же базу данных."
 
 #: app/Factories/ElementFactory.php:597 app/Factories/ElementFactory.php:639
 msgid "The problem"
@@ -14631,7 +14653,7 @@ msgstr "Записи “%1$s” и “%2$s” были объединены."
 #. I18N: Description of the “Reports” module
 #: app/Module/ReportsMenuModule.php:72
 msgid "The reports menu."
-msgstr ""
+msgstr "Меню \"Отчеты\"."
 
 #: app/Http/RequestHandlers/CreateRepositoryAction.php:80
 msgid "The repository has been created"
@@ -14640,7 +14662,7 @@ msgstr "Хранилище (репозиторий) создано"
 #. I18N: Description of the “Search” module
 #: app/Module/SearchMenuModule.php:59
 msgid "The search menu."
-msgstr ""
+msgstr "Меню \"Поиск\"."
 
 #: app/Services/SearchService.php:1171
 msgid "The search returned too many results."
@@ -14652,11 +14674,11 @@ msgstr "Конфигурация сервера в порядке."
 
 #: app/Exceptions/HttpBadRequestException.php:34
 msgid "The server could not understand this request."
-msgstr ""
+msgstr "Сервер не смог понять этот запрос."
 
 #: app/Services/ServerCheckService.php:248
 msgid "The server’s temporary folder cannot be accessed."
-msgstr ""
+msgstr "Доступ к временной папке сервера отсутствует."
 
 #: app/Http/RequestHandlers/RenumberTreeAction.php:556
 #: app/Services/UpgradeService.php:150 app/Services/UpgradeService.php:183
@@ -14884,7 +14906,7 @@ msgstr "Этот блок будет показывать редакторам �
 #: app/Exceptions/MissingParameterException.php:43
 #, php-format
 msgid "This could be caused by an error at %s"
-msgstr ""
+msgstr "Это может быть вызвано ошибкой в %s"
 
 #: resources/views/admin/users-create.phtml:76
 #: resources/views/admin/users-edit.phtml:86
@@ -15318,6 +15340,8 @@ msgstr "Этот репозиторий был отредактирован. В�
 #: resources/views/modules/privacy-policy/page.phtml:25
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
 msgstr ""
+"Это исследование является “законным интересом” в соответствии со статьей 6(f)"
+" Общих правил ЕС по защите данных."
 
 #: resources/views/admin/users-edit.phtml:262
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15402,7 +15426,7 @@ msgstr "Сайт закрыт на техническое обслуживани
 
 #: resources/views/modules/privacy-policy/page.phtml:70
 msgid "This website is operated by the following individuals."
-msgstr ""
+msgstr "Этот веб-сайт управляется следующими лицами."
 
 #: resources/views/layouts/error.phtml:17
 #: resources/views/layouts/error.phtml:34
@@ -15469,7 +15493,7 @@ msgstr "Время"
 #: app/Factories/ElementFactory.php:1340 app/Factories/ElementFactory.php:1356
 #: app/Factories/ElementFactory.php:1387 app/Factories/ElementFactory.php:1403
 msgid "Time of last change"
-msgstr ""
+msgstr "Время последнего изменения"
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:50
@@ -15647,7 +15671,7 @@ msgstr "Тонга"
 
 #: app/Exceptions/HttpTooManyRequestsException.php:34
 msgid "Too many requests. Try again later."
-msgstr ""
+msgstr "Слишком много запросов. Попробуйте еще раз позже."
 
 #. I18N: Title for a list of the most common given names, %s is a number. Note that a separate translation exists when %s is 1
 #: app/Module/TopGivenNamesModule.php:104
@@ -15908,7 +15932,7 @@ msgstr "Тип сокращения"
 
 #: app/Factories/ElementFactory.php:693
 msgid "Type of administrative ID"
-msgstr ""
+msgstr "Тип административного идентификатора"
 
 #: app/Factories/ElementFactory.php:697
 msgid "Type of demographic data"
@@ -15925,7 +15949,7 @@ msgstr "Тип факта"
 
 #: app/Factories/ElementFactory.php:1210
 msgid "Type of identification number"
-msgstr ""
+msgstr "Тип идентификационного номера"
 
 #: app/Factories/ElementFactory.php:686
 msgid "Type of location"
@@ -15943,7 +15967,7 @@ msgstr "Тип имени"
 #: app/Factories/ElementFactory.php:1294 app/Factories/ElementFactory.php:1317
 #: app/Factories/ElementFactory.php:1348 app/Factories/ElementFactory.php:1368
 msgid "Type of reference number"
-msgstr ""
+msgstr "Тип номера ссылки"
 
 #: app/Factories/ElementFactory.php:600 app/Factories/ElementFactory.php:642
 msgid "Type of research task"
@@ -16080,7 +16104,7 @@ msgstr "неизвестно"
 #: resources/views/edit/icon-fact-delete.phtml:19
 #: resources/views/edit/icon-fact-delete.phtml:21
 msgid "Unlink"
-msgstr ""
+msgstr "Разъединить"
 
 #: app/Elements/UnknownElement.php:36 app/GedcomTag.php:1264
 msgid "Unrecognized GEDCOM code"
@@ -17470,7 +17494,7 @@ msgstr "скачать"
 
 #: resources/views/modules/descendancy_chart/tree.phtml:17
 msgid "d’Aboville number"
-msgstr ""
+msgstr "Номер d’Aboville"
 
 #: resources/views/admin/components.phtml:133
 #: resources/views/family-page-menu.phtml:22
@@ -17596,11 +17620,11 @@ msgstr "жених"
 
 #: app/Functions/Functions.php:687
 msgid "fiancé(e)"
-msgstr ""
+msgstr "жених(и)"
 
 #: app/Functions/Functions.php:664
 msgid "fiancée"
-msgstr ""
+msgstr "невеста"
 
 #: app/Functions/Functions.php:495
 msgid "fifteenth cousin"
@@ -19527,7 +19551,7 @@ msgstr " "
 #. I18N: Type of demographic data
 #: app/Elements/DemographicDataType.php:55
 msgid "household"
-msgstr ""
+msgstr "домашнее хозяйство"
 
 #: app/Functions/Functions.php:638
 msgid "husband"
@@ -19557,7 +19581,7 @@ msgstr "импорт файла"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "встроенная заметка"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
@@ -20136,7 +20160,7 @@ msgstr "отклонено"
 #. I18N: Type of location hierarchy
 #: app/Elements/HierarchicalRelationship.php:57
 msgid "religious"
-msgstr ""
+msgstr "религиозный"
 
 #. I18N: A name taken when entering a religion or a religious order
 #: app/Elements/NameType.php:63 app/GedcomCode/GedcomCodeName.php:176
@@ -20434,7 +20458,7 @@ msgstr "8-миюродный брат"
 
 #: app/Elements/NoteStructure.php:74
 msgid "shared note"
-msgstr ""
+msgstr "общая заметка"
 
 #: resources/views/admin/trees-preferences.phtml:303
 #: resources/views/admin/trees-preferences.phtml:383
