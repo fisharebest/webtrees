@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-13 13:17+0000\nLast-Translator: Enes <enes_s@yahoo.com>\nLanguage-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\nLanguage: sr-Latn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Serbian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-18 15:18+0000\nLast-Translator: Enes <enes_s@yahoo.com>\nLanguage-Team: Serbian (latin) <https://translate.webtrees.net/projects/webtrees/webtrees/sr_Latn/>\nLanguage: sr-Latn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Serbian\nX-Poedit-SourceCharset: utf-8\nX-Poedit-SearchPath-0: .\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -7050,7 +7050,7 @@ msgstr "Ime"
 #: resources/views/lists/given-names-table.phtml:21
 #: resources/views/lists/individuals-table.phtml:242
 msgid "Given names"
-msgstr "Imena"
+msgstr "Ime"
 
 #: app/Elements/RelationIsDescriptor.php:112
 msgid "Godchild"
@@ -9991,7 +9991,7 @@ msgstr "Majanmar"
 #: resources/xml/reports/occupation_report.xml:43
 #: resources/xml/reports/relative_ext_report.xml:57
 msgid "Name"
-msgstr "Ime"
+msgstr "Ime i prezime"
 
 #: app/Gedcom.php:825 app/Http/RequestHandlers/CreateRepositoryModal.php:49
 msgctxt "Repository"
@@ -15651,7 +15651,7 @@ msgstr "Tridi"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
 msgid "Trinidad and Tobago"
-msgstr "Trinidad a Tobago"
+msgstr "Trinidad i Tobago"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200
@@ -15676,17 +15676,17 @@ msgstr "Tunis"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:498
 msgid "Turkey"
-msgstr "Turecko"
+msgstr "Turska"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:488
 msgid "Turkmenistan"
-msgstr "Turkménsko"
+msgstr "Turkmenistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
 msgid "Turks and Caicos Islands"
-msgstr "Ostrovy Turks a Caicos"
+msgstr "Turks i Kaiko ostrva"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:500
@@ -16280,7 +16280,7 @@ msgstr "Wels"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:532
 msgid "Wallis and Futuna"
-msgstr "Wallis a Futuna"
+msgstr "Valis i Fortuna"
 
 #: app/Elements/RelationIsDescriptor.php:127
 msgid "Ward"
@@ -16448,7 +16448,7 @@ msgstr "Ženine godine"
 
 #: app/Gedcom.php:765
 msgid "Will"
-msgstr "Oporuka"
+msgstr "Testament"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:207
@@ -16801,7 +16801,7 @@ msgstr "posle %s"
 #: app/Module/StatisticsChartModule.php:581
 #: app/Module/StatisticsChartModule.php:642
 msgid "age"
-msgstr "Starost"
+msgstr "starost"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:73
@@ -19338,13 +19338,13 @@ msgstr "Odojče"
 
 #: app/Elements/NoteStructure.php:69
 msgid "inline note"
-msgstr "\"inline note\""
+msgstr "umetnuta beleška"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:197
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr "Protumačeno %s (%s)"
+msgstr "protumačeno %s (%s)"
 
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:52
