@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-08-10 12:48+0000\n"
+"PO-Revision-Date: 2022-08-18 15:18+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian (latin) <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/sr_Latn/>\n"
@@ -7168,7 +7168,7 @@ msgstr "Ime"
 #: resources/views/lists/given-names-table.phtml:21
 #: resources/views/lists/individuals-table.phtml:232
 msgid "Given names"
-msgstr "Imena"
+msgstr "Ime"
 
 #: app/Elements/RelationIsDescriptor.php:112
 #: app/GedcomCode/GedcomCodeRela.php:224
@@ -10084,7 +10084,7 @@ msgstr "Majanmar"
 #: resources/xml/reports/occupation_report.xml:43
 #: resources/xml/reports/relative_ext_report.xml:57
 msgid "Name"
-msgstr "Ime"
+msgstr "Ime i prezime"
 
 #: app/Factories/ElementFactory.php:1344 app/GedcomTag.php:907
 #: resources/views/modals/repository-fields.phtml:9
@@ -16056,7 +16056,7 @@ msgstr "Tridi"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:494
 msgid "Trinidad and Tobago"
-msgstr "Trinidad a Tobago"
+msgstr "Trinidad i Tobago"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:200 app/GedcomCode/GedcomCodeTemp.php:666
@@ -16081,17 +16081,17 @@ msgstr "Tunis"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:498
 msgid "Turkey"
-msgstr "Turecko"
+msgstr "Turska"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:488
 msgid "Turkmenistan"
-msgstr "Turkménsko"
+msgstr "Turkmenistan"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:476
 msgid "Turks and Caicos Islands"
-msgstr "Ostrovy Turks a Caicos"
+msgstr "Turks i Kaiko ostrva"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:500
@@ -16698,7 +16698,7 @@ msgstr "Wels"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:532
 msgid "Wallis and Futuna"
-msgstr "Wallis a Futuna"
+msgstr "Valis i Fortuna"
 
 #: app/Elements/RelationIsDescriptor.php:126
 #: app/GedcomCode/GedcomCodeRela.php:346
@@ -16888,7 +16888,7 @@ msgstr "Ženino prezime zamenjeno muževim prezimenom"
 #. I18N: gedcom tag WILL
 #: app/Factories/ElementFactory.php:1286 app/GedcomTag.php:1020
 msgid "Will"
-msgstr "Oporuka"
+msgstr "Testament"
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:207 app/GedcomCode/GedcomCodeTemp.php:687
@@ -17276,7 +17276,7 @@ msgstr "posle %s"
 #: app/Module/StatisticsChartModule.php:585
 #: app/Module/StatisticsChartModule.php:646
 msgid "age"
-msgstr "Starost"
+msgstr "starost"
 
 #. I18N: The name by which an individual is also known. e.g. a professional name or a stage name
 #: app/Elements/NameType.php:49 app/GedcomCode/GedcomCodeName.php:87
@@ -19806,13 +19806,13 @@ msgstr "uvezi datoteku"
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr "\"inline note\""
+msgstr "umetnuta beleška"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
 #, php-format
 msgid "interpreted %s (%s)"
-msgstr "Protumačeno %s (%s)"
+msgstr "protumačeno %s (%s)"
 
 #. I18N: reverse the selection (of a list of options)
 #: resources/views/search-trees.phtml:53
