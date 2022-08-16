@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-08-10 12:48+0000\n"
+"PO-Revision-Date: 2022-08-18 15:18+0000\n"
 "Last-Translator: Enes <enes_s@yahoo.com>\n"
 "Language-Team: Serbian <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sr/>\n"
@@ -5492,12 +5492,12 @@ msgstr ""
 #: resources/views/calendar-page.phtml:191
 #: resources/views/lists/families-table.phtml:203
 msgid "Divorce"
-msgstr "Razvod"
+msgstr "Развод"
 
 #. I18N: gedcom tag DIVF
 #: app/Factories/ElementFactory.php:997 app/GedcomTag.php:643
 msgid "Divorce filed"
-msgstr "Podnet zahtev za razvod braka"
+msgstr "Поднет захтев за развод брака"
 
 #: app/Statistics/Google/ChartDivorce.php:129
 #: resources/views/statistics/families/total-records.phtml:81
@@ -7137,7 +7137,7 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:209
 msgid "Gibraltar"
-msgstr "Džibraltar"
+msgstr ""
 
 #. I18N: Location of an LDS church temple
 #: app/Elements/TempleCode.php:99 app/GedcomCode/GedcomCodeTemp.php:363
@@ -7164,7 +7164,7 @@ msgstr "Име"
 #: resources/views/lists/given-names-table.phtml:21
 #: resources/views/lists/individuals-table.phtml:232
 msgid "Given names"
-msgstr "Имена"
+msgstr "Име"
 
 #: app/Elements/RelationIsDescriptor.php:112
 #: app/GedcomCode/GedcomCodeRela.php:224
@@ -10009,7 +10009,7 @@ msgstr "Мој налог"
 
 #: app/Http/RequestHandlers/CreateTreePage.php:60
 msgid "My family tree"
-msgstr ""
+msgstr "Моје породично стабло"
 
 #: app/Module/ModuleThemeTrait.php:334 app/Module/UserWelcomeModule.php:108
 msgid "My individual record"
@@ -10029,12 +10029,12 @@ msgstr "Моје странице"
 
 #: app/Module/ModuleThemeTrait.php:397
 msgid "My pedigree"
-msgstr ""
+msgstr "Моје порекло"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:335
 msgid "Myanmar"
-msgstr "Majanmar"
+msgstr ""
 
 #. I18N: gedcom tag NAME
 #: app/Factories/ElementFactory.php:437 app/Factories/ElementFactory.php:1214
@@ -10066,13 +10066,13 @@ msgstr "Majanmar"
 #: resources/xml/reports/occupation_report.xml:43
 #: resources/xml/reports/relative_ext_report.xml:57
 msgid "Name"
-msgstr "Име"
+msgstr "Име и презиме"
 
 #: app/Factories/ElementFactory.php:1344 app/GedcomTag.php:907
 #: resources/views/modals/repository-fields.phtml:9
 msgctxt "Repository"
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #: app/Factories/ElementFactory.php:833 app/GedcomTag.php:811
 msgid "Name in Hebrew"
@@ -10082,36 +10082,36 @@ msgstr ""
 #: app/Factories/ElementFactory.php:1218 app/Factories/ElementFactory.php:1225
 #: app/Factories/ElementFactory.php:1230 app/GedcomTag.php:836
 msgid "Name prefix"
-msgstr ""
+msgstr "Префикс имена"
 
 #. I18N: gedcom tag NSFX
 #: app/Factories/ElementFactory.php:1219 app/Factories/ElementFactory.php:1226
 #: app/Factories/ElementFactory.php:1231 app/GedcomTag.php:839
 msgid "Name suffix"
-msgstr ""
+msgstr "Суфикс имена"
 
 #: resources/views/search-replace-page.phtml:47
 #: resources/views/statistics/individuals/names.phtml:12
 #: resources/xml/reports/cemetery_report.xml:7
 #: resources/xml/reports/death_report.xml:10
 msgid "Names"
-msgstr ""
+msgstr "Име"
 
 #. I18N: gedcom tag _NAMS
 #: app/Factories/ElementFactory.php:425 app/Factories/ElementFactory.php:509
 #: app/GedcomTag.php:1186
 msgid "Namesake"
-msgstr ""
+msgstr "Имењак"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:359
 msgid "Namibia"
-msgstr "Namíbia"
+msgstr ""
 
 #: app/Elements/RelationIsDescriptor.php:116
 #: app/GedcomCode/GedcomCodeRela.php:261
 msgid "Nanny"
-msgstr ""
+msgstr "Дадиља"
 
 #: app/Module/HtmlBlockModule.php:193
 msgid "Narrative description"
@@ -10125,12 +10125,12 @@ msgstr ""
 #. I18N: gedcom tag NATI
 #: app/Factories/ElementFactory.php:1238 app/GedcomTag.php:814
 msgid "Nationality"
-msgstr "Nacionalnost"
+msgstr "Националност"
 
 #. I18N: gedcom tag NATU
 #: app/Factories/ElementFactory.php:1239 app/GedcomTag.php:817
 msgid "Naturalization"
-msgstr "Promena državljanstva"
+msgstr "Промена држављанства"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:381
@@ -10150,17 +10150,17 @@ msgstr ""
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:379
 msgid "Nepal"
-msgstr "Nepál"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:375
 msgid "Netherlands"
-msgstr "Holandsko"
+msgstr ""
 
 #: app/Http/RequestHandlers/UserListData.php:142
 #: resources/views/components/datetime.phtml:11
 msgid "Never"
-msgstr ""
+msgstr "Никада"
 
 #. I18N: gedcom tag _NMAR
 #: app/Elements/FamilyStatusText.php:72 app/Factories/ElementFactory.php:310
@@ -10191,7 +10191,7 @@ msgstr "Нови Зеланд"
 
 #: resources/views/admin/changes-log.phtml:78
 msgid "New data"
-msgstr ""
+msgstr "Нови подаци"
 
 #. I18N: %s is a server name/URL
 #: app/Http/RequestHandlers/RegisterAction.php:174
@@ -10233,7 +10233,7 @@ msgstr "Следећа фотографија"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:369
 msgid "Nicaragua"
-msgstr "Nikaragua"
+msgstr ""
 
 #. I18N: gedcom tag NICK
 #: app/Factories/ElementFactory.php:1217 app/Factories/ElementFactory.php:1224
@@ -10244,12 +10244,12 @@ msgstr "Надимак"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:363
 msgid "Niger"
-msgstr "Nigéria"
+msgstr ""
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:367
 msgid "Nigeria"
-msgstr "Nigéria"
+msgstr ""
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:192
@@ -10307,7 +10307,7 @@ msgstr ""
 #: app/Functions/FunctionsPrintFacts.php:265
 #: resources/views/admin/users-edit.phtml:335
 msgid "No"
-msgstr "Ne"
+msgstr "Не"
 
 #: app/Http/RequestHandlers/ImportGedcomAction.php:88
 #: app/Http/RequestHandlers/ImportGedcomAction.php:100
@@ -15908,7 +15908,7 @@ msgstr "Тунис"
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:498
 msgid "Turkey"
-msgstr ""
+msgstr "Турска"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:488
@@ -19628,7 +19628,7 @@ msgstr ""
 
 #: app/Elements/NoteStructure.php:73
 msgid "inline note"
-msgstr ""
+msgstr "уметнута белешка"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:354
