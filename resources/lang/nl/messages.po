@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-07-27 21:07+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-18 15:18+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -14763,7 +14763,7 @@ msgstr "Thermidor"
 
 #: resources/views/modules/privacy-policy/page.phtml:36
 msgid "These cookies are “essential”, and do not require consent."
-msgstr "Deze cookies zijn essentieel voor het functioneren van de website en vereisen geen toestemming."
+msgstr "Deze cookies zijn essentieel voor de goede werking van de website en vereisen daarom geen toestemming."
 
 #: resources/views/admin/trees-unconnected.phtml:37
 #, php-format
@@ -15124,7 +15124,7 @@ msgstr "Deze opslagplaats bestaat niet of u heeft geen recht deze in te zien."
 
 #: resources/views/modules/privacy-policy/page.phtml:25
 msgid "This research is a “legitimate interest” under article 6(f) of the EU General Data Protection Regulations."
-msgstr "Dit onderzoek is een 'legitiem belang' onder artikel 6 (f) van de EU Algemene Verordening Gegevensbescherming."
+msgstr "Dit onderzoek is een 'gerechtvaardigd belang' in de zin van artikel 6, eerste lid, onderdeel f, van de Europese Algemene Verordening Gegevensbescherming (EU-AVG)."
 
 #: resources/views/admin/users-edit.phtml:261
 msgid "This role has all the permissions of the editor role, plus permission to accept/reject changes made by other users."
@@ -15188,7 +15188,7 @@ msgstr "Deze website is tijdelijk niet beschikbaar"
 
 #: resources/views/modules/privacy-policy/page.phtml:22
 msgid "This website processes personal data for the purpose of historical and genealogical research."
-msgstr "Deze website verwerkt persoonsgegevens ten behoeve van historisch en genealogisch onderzoek."
+msgstr "Deze website verwerkt persoonsgegevens voor historisch en genealogisch onderzoek."
 
 #: resources/views/modules/privacy-policy/page.phtml:33
 msgid "This website uses cookies to enable login sessions, and to remember preferences such as your chosen language."
