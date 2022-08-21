@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-06 13:22+0000\n"
+"PO-Revision-Date: 2022-09-05 12:36+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nn/>\n"
@@ -2407,7 +2407,8 @@ msgstr "Gjennomsnittleg tal på born pr. familie"
 #: resources/views/admin/trees-create.phtml:49
 #: resources/views/admin/trees-preferences.phtml:89
 msgid "Avoid spaces and punctuation. A family name might be a good choice."
-msgstr "Unngå mellomrom og teiknstting. Eit familienamn er kanskje ein god ide."
+msgstr ""
+"Unngå mellomrom og bruk av teikn. Eit familienamn er kanskje ein god ide."
 
 #: app/Date/JalaliDate.php:267
 msgctxt "Abbreviation for Persian month: Azar"
