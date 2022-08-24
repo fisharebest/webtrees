@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-04-06 13:22+0000\n"
+"PO-Revision-Date: 2022-09-05 12:36+0000\n"
 "Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://translate.webtrees.net/projects/"
 "webtrees/webtrees-20/nb_NO/>\n"
@@ -2201,7 +2201,7 @@ msgstr "Asia"
 #: app/GedcomTag.php:467 app/GedcomTag.php:1044
 #: resources/views/cards/add-associate.phtml:17
 msgid "Associate"
-msgstr "Forbindelser"
+msgstr "Tilknyttet person"
 
 #: app/Http/RequestHandlers/HelpText.php:262
 msgid "Associate events with this source"
@@ -7830,7 +7830,7 @@ msgstr "Inkluder alias"
 
 #: resources/views/admin/trees-unconnected.phtml:28
 msgid "Include associates"
-msgstr "Inkluder tilsluttede personer"
+msgstr "Inkluder tilknyttede personer"
 
 #: app/Module/IndividualListModule.php:358
 #, php-format
