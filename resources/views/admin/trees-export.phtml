@@ -58,7 +58,7 @@ use Fisharebest\Webtrees\Tree;
                         <?= I18N::translate('Export preferences') ?>
                     </p>
 
-                    <?= view('admin/gedcom-export-options', ['download_filenames' =>$download_filenames, 'tree' => $tree, 'zip_available' => $zip_available]) ?>
+                    <?= view('admin/gedcom-export-options', ['download_filenames' => $download_filenames, 'tree' => $tree, 'zip_available' => $zip_available]) ?>
 
                     <button type="submit" class="btn btn-primary">
                         <?= view('icons/download') ?>

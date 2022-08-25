@@ -29,7 +29,7 @@ use Illuminate\Support\Collection;
     </button>
 
     <div class="dropdown-menu dropdown-menu-end wt-page-menu-items" aria-labelledby="page-menu">
-        <?php if ($shares->isNotEmpty()): ?>
+        <?php if ($shares->isNotEmpty()) : ?>
             <button class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#wt-shares-modal">
                 <?= view('icons/share') ?>
                 <?= I18N::translate('Share') ?>
@@ -121,7 +121,7 @@ use Illuminate\Support\Collection;
             <?= I18N::translate('Delete') ?>
         </a>
 
-        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD')) : ?>
+        <?php if (Auth::isAdmin() || $record->tree()->getPreference('SHOW_GEDCOM_RECORD') === '1') : ?>
             <a class="dropdown-item" href="<?= e(route(EditRawRecordPage::class, ['tree' => $record->tree()->name(), 'xref' => $record->xref()])) ?>">
                 <?= view('icons/edit') ?>
                 <?= I18N::translate('Edit the raw GEDCOM') ?>

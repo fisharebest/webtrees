@@ -39,13 +39,13 @@ use Illuminate\Support\Collection;
                 <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
             <?php else : ?>
                 <?php
-                    if ($fact->isPendingAddition()) {
-                        $styleadd = 'wt-new ';
-                    } elseif ($fact->isPendingDeletion()) {
-                        $styleadd = 'wt-old ';
-                    } else {
-                        $styleadd = '';
-                    }
+                if ($fact->isPendingAddition()) {
+                    $styleadd = 'wt-new ';
+                } elseif ($fact->isPendingDeletion()) {
+                    $styleadd = 'wt-old ';
+                } else {
+                    $styleadd = '';
+                }
                 ?>
 
                 <tr class="wt-level-two-note collapse">
@@ -59,7 +59,7 @@ use Illuminate\Support\Collection;
                         <?php foreach ($matches as $match) : ?>
                             <div class="mb-2">
                                 <?php $text = preg_replace('/\n\d CONT ?/', "\n", $match[1]) ?>
-                                <?php if (preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $text)) : ?>
+                                <?php if (preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $text) === 1) : ?>
                                     <?php $note = Registry::noteFactory()->make(trim($text, '@'), $individual->tree()) ?>
                                     <?php if ($note instanceof Note) : ?>
                                         <?php if ($note->canShow()) : ?>
@@ -77,10 +77,10 @@ use Illuminate\Support\Collection;
                                 <?php endif ?>
                             </div>
                         <?php endforeach ?>
-                    <?php endif ?>
-                <?php endforeach ?>
-            </td>
-        </tr>
+                    </td>
+                </tr>
+            <?php endif ?>
+        <?php endforeach ?>
 
         <?php if ($facts->isEmpty()) : ?>
             <tr>

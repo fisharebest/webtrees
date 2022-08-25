@@ -72,7 +72,7 @@ class EditFactPage implements RequestHandlerInterface
             return redirect($record->url());
         }
 
-        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
+        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD') === '1';
 
         $gedcom = $this->gedcom_edit_service->insertMissingFactSubtags($fact, $include_hidden);
         $hidden = $this->gedcom_edit_service->insertMissingFactSubtags($fact, true);

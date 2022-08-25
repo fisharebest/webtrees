@@ -77,7 +77,7 @@ if ($tag === 'MARR') {
             <?= view('fact-edit-links', ['fact' => $fact, 'url' => $record->url()]) ?>
         <?php endif ?>
 
-        <?php if ($tree->getPreference('SHOW_FACT_ICONS')) : ?>
+        <?php if ($tree->getPreference('SHOW_FACT_ICONS') === '1') : ?>
             <span class="wt-fact-icon wt-fact-icon-<?= e($tag) ?>" title="<?= strip_tags($label) ?>"></span>
         <?php endif ?>
     </th>
@@ -117,7 +117,7 @@ if ($tag === 'MARR') {
                     <?php if ($element instanceof XrefAssociate && $fact->target() instanceof Individual) : ?>
                         <?php
                         $module = app(ModuleService::class)->findByComponent(ModuleChartInterface::class, $tree, Auth::user())
-                            ->first(static fn (ModuleInterface $module):bool => $module instanceof RelationshipsChartModule)
+                            ->first(static fn (ModuleInterface $module): bool => $module instanceof RelationshipsChartModule)
                         ?>
 
                         <?php if ($module instanceof RelationshipsChartModule && $record instanceof Individual) : ?>

@@ -22,7 +22,7 @@ use Fisharebest\Webtrees\Services\ModuleService;
         <?php $placerec = $match[1]; ?>
         <?= $fact->place()->fullName($fact->id() !== 'histo') ?>
 
-        <?php if (preg_match_all('/\n3 (?:_HEB|ROMN|FONE) (.+)/', $placerec, $matches)) : ?>
+        <?php if (preg_match_all('/\n3 (?:_HEB|ROMN|FONE) (.+)/', $placerec, $matches) === 1) : ?>
             <?php foreach ($matches[1] as $match) : ?>
                 — <?= (new Place($match, $record->tree()))->fullName() ?>
             <?php endforeach ?>

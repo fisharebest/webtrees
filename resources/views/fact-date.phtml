@@ -23,19 +23,19 @@ $factrec = $fact->gedcom();
 $html    = '';
 
 // Recorded age
-if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
+if (preg_match('/\n2 AGE (.+)/', $factrec, $match) === 1) {
     $fact_age = $element_factory->make($fact->tag() . ':AGE')->value($match[1], $record->tree());
 } else {
     $fact_age = '';
 }
 
-if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match)) {
+if (preg_match('/\n2 HUSB\n3 AGE (.+)/', $factrec, $match) === 1) {
     $husb_age = $element_factory->make($fact->tag() . ':HUSB:AGE')->value($match[1], $record->tree());
 } else {
     $husb_age = '';
 }
 
-if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
+if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match) === 1) {
     $wife_age = $element_factory->make($fact->tag() . ':WIFE:AGE')->value($match[1], $record->tree());
 } else {
     $wife_age = '';
@@ -44,11 +44,11 @@ if (preg_match('/\n2 WIFE\n3 AGE (.+)/', $factrec, $match)) {
 // Calculated age
 [, $tag] = explode(':', $fact->tag());
 
-if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
+if (preg_match('/\n2 DATE (.+)/', $factrec, $match) === 1) {
     $date = new Date($match[1]);
     $html .= ' ' . $date->display($cal_link ? $record->tree() : null, null, true);
     // Time isn't valid GEDCOM, but it is widely used.
-    if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match)) {
+    if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match) === 1) {
         $html .= ' – <span class="date">' . $match[1] . '</span>';
     }
 

@@ -35,13 +35,13 @@ use Illuminate\Support\Collection;
                 <?= view('fact', ['fact' => $fact, 'record' => $individual]) ?>
             <?php else : ?>
                 <?php
-                    if ($fact->isPendingAddition()) {
-                        $styleadd = 'wt-new ';
-                    } elseif ($fact->isPendingDeletion()) {
-                        $styleadd = 'wt-old ';
-                    } else {
-                        $styleadd = '';
-                    }
+                if ($fact->isPendingAddition()) {
+                    $styleadd = 'wt-new ';
+                } elseif ($fact->isPendingDeletion()) {
+                    $styleadd = 'wt-old ';
+                } else {
+                    $styleadd = '';
+                }
                 ?>
 
                 <tr class="wt-level-two-source collapse">
@@ -52,7 +52,7 @@ use Illuminate\Support\Collection;
 
                     <td class="<?= $styleadd ?>">
                         <?php if (preg_match_all('/\n(2 SOUR\b.*(?:\n[^2].*)*)/', $fact->gedcom(), $matches, PREG_SET_ORDER) > 0) : ?>
-                            <?php foreach($matches as $match) : ?>
+                            <?php foreach ($matches as $match) : ?>
                                 <?= view('fact-gedcom-fields', ['gedcom' => $match[1], 'parent' => $fact->tag(), 'tree' => $fact->record()->tree()]) ?>
                             <?php endforeach ?>
                         <?php endif ?>

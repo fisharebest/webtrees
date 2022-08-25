@@ -23,11 +23,11 @@
     </div>
 
     <div class="col-sm-3 wt-page-options-value">
-        <?php if (preg_match('/(GIVN|SURN)$/', $field_name)) : ?>
+        <?php if (preg_match('/(GIVN|SURN)$/', $field_name) === 1) : ?>
             <?= view('components/select', ['name' => 'modifiers[' . $field_name . ']', 'id' => 'modifiers-' . $field_name, 'selected' => $modifier, 'options' => $name_options]) ?>
         <?php endif ?>
 
-        <?php if (preg_match('/(DATE)$/', $field_name)) : ?>
+        <?php if (preg_match('/(DATE)$/', $field_name) === 1) : ?>
             <?= view('components/select', ['name' => 'modifiers[' . $field_name . ']', 'id' => 'modifiers-' . $field_name, 'selected' => $modifier, 'options' => $date_options]) ?>
         <?php endif ?>
     </div>

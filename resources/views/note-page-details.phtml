@@ -39,6 +39,6 @@ use Illuminate\Support\Collection;
     <?php foreach ($record->facts() as $fact) : ?>
         <?php if ($fact->tag() !== 'NOTE:CONT') : ?>
             <?= view('fact', ['fact' => $fact, 'record' => $record]) ?>
-    <?php endif ?>
+        <?php endif ?>
     <?php endforeach ?>
 </table>

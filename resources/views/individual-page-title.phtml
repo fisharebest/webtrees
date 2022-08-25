@@ -15,7 +15,7 @@ use Illuminate\Support\Collection;
 
 <?php if ($record->getBirthDate()->isOK() || $record->getDeathDate()->isOK()) : ?>
     <?= $record->fullName() ?>, <?= $record->lifespan() ?>
-<?php else: ?>
+<?php else : ?>
     <?= $record->fullName() ?>
 <?php endif ?></?>
 <?= $age ?>
