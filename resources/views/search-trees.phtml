@@ -18,9 +18,9 @@ use Illuminate\Support\Collection;
         </div>
         <div class="col-sm-9 wt-page-options-value pt-2">
             <div id="search-trees">
-                <?php if ($all_trees->count() > 3): ?>
+                <?php if ($all_trees->count() > 3) : ?>
                     <div class="d-flex">
-                        <?php if ($all_trees->count() > $search_trees->count()): ?>
+                        <?php if ($all_trees->count() > $search_trees->count()) : ?>
                             <div class="me-2">
                                 <button type="button" data-bs-toggle="collapse" class="btn btn-secondary btn-sm" href="#more-trees,#select-all" aria-expanded="false" aria-controls="more-trees">
                                     <?= view('icons/expand') ?>
@@ -34,7 +34,7 @@ use Illuminate\Support\Collection;
                             <?php endforeach ?>
                             <div id="more-trees" class="<?= $all_trees->count() > $search_trees->count() ? 'collapse' : '' ?>">
                                 <?php foreach ($all_trees as $n => $tree) : ?>
-                                    <?php if (!$search_trees->containsStrict($tree)): ?>
+                                    <?php if (!$search_trees->containsStrict($tree)) : ?>
                                         <?= view('components/checkbox', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => e($tree->name()), 'label' => e($tree->title())]) ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
@@ -54,7 +54,7 @@ use Illuminate\Support\Collection;
                             <?php endif ?>
                         </div>
                 </div>
-                <?php else: ?>
+                <?php else : ?>
                     <?php foreach ($all_trees as $n => $tree) : ?>
                         <?= view('components/checkbox-inline', ['name' => 'search_trees[]', 'id' => 'chkbx-' . $n, 'checked' => $search_trees->containsStrict($tree), 'value' => e($tree->name()), 'label' => e($tree->title())]) ?>
                     <?php endforeach ?>

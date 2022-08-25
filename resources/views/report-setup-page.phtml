@@ -34,13 +34,13 @@ use Fisharebest\Webtrees\I18N;
                 <?= I18N::translate($input['value']) ?>
             </label>
             <div class="col-sm-9 wt-page-options-value">
-                <?php if ($input['extra'] !== ''): ?>
+                <?php if ($input['extra'] !== '') : ?>
                     <div class="input-group">
                         <?= $input['control'] ?>
                         <?= $input['extra'] ?>
                     </div>
                     <div id="caldivinput-<?= e($n) ?>" style="position:absolute;visibility:hidden;background-color:white;z-index:1000"></div>
-                <?php else: ?>
+                <?php else : ?>
                     <?= $input['control'] ?>
                 <?php endif ?>
             </div>

@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
     <span class="input-group-text" dir="ltr">iCalendar</span>
 
     <select class="custom-select" id="share-anniversary-select" aria-label=" <?= I18N::translate('Anniversary') ?>" name="fact_id">
-        <?php foreach ($facts as $url => $label): ?>
+        <?php foreach ($facts as $url => $label) : ?>
             <option value="<?= e($url) ?>"><?= $label ?></option>
         <?php endforeach ?>
     </select>

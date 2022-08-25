@@ -63,7 +63,7 @@ class EditRecordPage implements RequestHandlerInterface
 
         $include_hidden = (bool) ($request->getQueryParams()['include_hidden'] ?? false);
 
-        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD');
+        $can_edit_raw = Auth::isAdmin() || $tree->getPreference('SHOW_GEDCOM_RECORD') === '1';
 
         $subtags = Registry::elementFactory()->make($record->tag())->subtags();
 

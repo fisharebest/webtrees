@@ -57,14 +57,14 @@ use Illuminate\Support\Collection;
             <th scope="row">
                 <a href="<?= e(route(MapDataList::class, ['parent_id' => $place->id])) ?>">
                     <bdi><?= e($place->place) ?></bdi>
-                    <?php if ($place->no_coord > 0): ?>
+                    <?php if ($place->no_coord > 0) : ?>
                         <span class="badge bg-secondary rounded-pill">
                             <?= view('icons/warning') ?>
                             <?= I18N::number($place->no_coord) ?>
                             /
                             <?= I18N::number($place->child_count) ?>
                         </span>
-                    <?php elseif ($place->child_count > 0): ?>
+                    <?php elseif ($place->child_count > 0) : ?>
                         <span class="badge bg-secondary rounded-pill">
                             <?= I18N::number($place->child_count) ?>
                         </span>
@@ -98,19 +98,19 @@ use Illuminate\Support\Collection;
             </td>
 
             <td>
-                <?php if ($list_module !== null && array_key_exists($place->key, $active)): ?>
-                    <?php if (count($active[$place->key]) === 1): ?>
+                <?php if ($list_module !== null && array_key_exists($place->key, $active)) : ?>
+                    <?php if (count($active[$place->key]) === 1) : ?>
                         <a class="btn btn-link" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][0]->tree_name), ['place_id' => $active[$place->key][0]->p_id, 'action2' => 'hierarchy-e'])) ?>">
                             <?= e($active[$place->key][0]->tree_title) ?>
                         </a>
-                    <?php else: ?>
+                    <?php else : ?>
                         <div class="dropdown">
                             <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?= I18N::plural('%s family tree', '%s family trees', count($active[$place->key]), I18N::number(count($active[$place->key]))) ?>
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <?php foreach ($active[$place->key] as $n => $link): ?>
+                                <?php foreach ($active[$place->key] as $n => $link) : ?>
                                     <a class="dropdown-item" href="<?= e($list_module->listUrl($all_trees->get($active[$place->key][$n]->tree_name), ['place_id' => $link->p_id])) ?>">
                                         <?= e($link->tree_title) ?>
                                     </a>
@@ -122,7 +122,7 @@ use Illuminate\Support\Collection;
             </td>
 
             <td>
-                <?php if (!array_key_exists($place->key, $active)): ?>
+                <?php if (!array_key_exists($place->key, $active)) : ?>
                     <form method="post" action="<?= e(route(MapDataDelete::class, ['place_id' => $place->id])) ?>">
                         <button type="submit" class="btn btn-danger" aria-label="<?= I18N::translate('delete') ?>" data-wt-confirm="<?= I18N::translate('Remove this location?') ?>">
                             <?= view('icons/delete') ?>

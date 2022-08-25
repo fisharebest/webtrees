@@ -20,7 +20,7 @@ use Fisharebest\Webtrees\Tree;
 
 <h2 class="wt-page-title">
     <?= $title ?>
-    <?php if ($count > count($changes)): ?>
+    <?php if ($count > count($changes)) : ?>
         — <?= I18N::translate('Showing %1$s to %2$s of %3$s', I18N::number(1), I18N::number(count($changes)), I18N::number($count)) ?>
     <?php endif ?>
 </h2>

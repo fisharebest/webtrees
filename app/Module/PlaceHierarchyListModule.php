@@ -343,7 +343,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     /**
      * @param Place $place
      *
-     * @return array{'tree':Tree,'col_class':string,'columns':array<array<Place>>,'place':Place}|null
+     * @return array{columns:array<array<Place>>,place:Place,tree:Tree,col_class:string}|null
      */
     private function getHierarchy(Place $place): ?array
     {
@@ -367,7 +367,7 @@ class PlaceHierarchyListModule extends AbstractModule implements ModuleListInter
     /**
      * @param Place $place
      *
-     * @return array{'breadcrumbs':array<Place>,'current':Place|null}
+     * @return array{breadcrumbs:array<Place>,current:Place|null}
      */
     private function breadcrumbs(Place $place): array
     {

@@ -574,7 +574,7 @@ class RightToLeftSupport
      * @param string $text
      * @param int    $offset
      *
-     * @return array{'letter':string,'length':int}
+     * @return array{letter:string,length:int}
      */
     private static function getChar(string $text, int $offset): array
     {

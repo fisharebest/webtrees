@@ -94,7 +94,6 @@ use League\Flysystem\FilesystemOperator;
 <div class="wt-page-content">
     <p class="text-center mt-4"><?= I18N::translate('Media objects found') ?> <?= I18N::number($count) ?></p>
     <?php if ($media_objects->isNotEmpty()) : ?>
-
         <?= view('modules/media-list/pagination', ['module' => $module, 'page' => $page, 'pages' => $pages, 'folder' => $folder, 'subdirs' => $subdirs, 'filter' => $filter, 'format' => $format, 'max' => $max, 'tree' => $tree]) ?>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
@@ -112,7 +111,7 @@ use League\Flysystem\FilesystemOperator;
                             <?php endforeach ?>
 
                             <?php $media_file = $media_object->mediaFiles()->first() ?>
-                            <?php if ($media_file instanceof MediaFile): ?>
+                            <?php if ($media_file instanceof MediaFile) : ?>
                                 <p class="card-text">
                                     <?php
                                     // Show file details
