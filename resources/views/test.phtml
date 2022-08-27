@@ -1,0 +1,9 @@
+<?php if (count($items) === 0) : ?>
+    There are no items
+<?php else : ?>
+    <ol>
+        <?php foreach ($items as $item) : ?>
+          <li><?= $item ?></li>
+        <?php endforeach ?>
+    </ol>
+<?php endif ?>

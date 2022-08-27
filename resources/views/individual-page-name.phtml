@@ -38,11 +38,13 @@ if ($fact->isPendingDeletion()) {
             <?= view('icons/expand') ?>
             <?= view('icons/collapse') ?>
             <span class="label"><?= I18N::translate('Name') ?></span>
-            <?= $fake_individual->fullName() ?>
-            <?php if ($fact->attribute('TYPE') !== '') : ?>
-                —
-                <?= Registry::elementFactory()->make($fact->tag() . ':TYPE')->value($fact->attribute('TYPE'), $tree) ?>
-            <?php endif ?>
+            <div>
+                <?= $fake_individual->fullName() ?>
+                <?php if ($fact->attribute('TYPE') !== '') : ?>
+                    —
+                    <?= Registry::elementFactory()->make($fact->tag() . ':TYPE')->value($fact->attribute('TYPE'), $tree) ?>
+                <?php endif ?>
+            </div>
         </button>
     </div>
 
