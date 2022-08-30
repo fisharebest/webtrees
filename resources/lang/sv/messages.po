@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-10 12:48+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-09-05 12:36+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Swedish <https://translate.webtrees.net/projects/webtrees/webtrees/sv/>\nLanguage: sv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1831,7 +1831,7 @@ msgstr "Alternativt ortnamn"
 
 #: app/Gedcom.php:1035
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Alternativ stavning av efternamn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -3966,7 +3966,7 @@ msgstr "Kontrollpanel"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Konvertera %s-taggar till GEDCOM 5.5.1"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4155,7 +4155,7 @@ msgstr "Skapelsedag"
 #: app/Gedcom.php:925 app/Gedcom.php:954 app/Gedcom.php:969 app/Gedcom.php:973
 #: app/Gedcom.php:982 app/Gedcom.php:990 app/Gedcom.php:999
 msgid "Creation time"
-msgstr ""
+msgstr "Skapelsetid"
 
 #: app/Gedcom.php:639 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4593,7 +4593,7 @@ msgstr "Bosättningsdatum"
 
 #: app/Gedcom.php:960
 msgid "Date of status change"
-msgstr ""
+msgstr "Datum för statusändring"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5301,7 +5301,7 @@ msgstr "(mormon) Dog som barn: förskonad"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Död mindre än 1 år gammal, tätning krävs inte."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5888,7 +5888,7 @@ msgstr "Externa filer"
 #: app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:938 app/Gedcom.php:956
 #: app/Gedcom.php:974 app/Gedcom.php:983 app/Gedcom.php:991 app/Gedcom.php:1000
 msgid "External identifier"
-msgstr ""
+msgstr "Extern identifierare"
 
 #: app/Gedcom.php:1238 app/Gedcom.php:1843
 msgid "External link"
@@ -7395,7 +7395,7 @@ msgstr "Dölj lösenord"
 #: resources/views/admin/trees-check.phtml:53
 #: resources/views/admin/trees-check.phtml:69
 msgid "Hide these errors"
-msgstr ""
+msgstr "Dölj dessa fel"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7648,7 +7648,7 @@ msgstr "Om du skapat mediaobjekt i webtrees, och har redigerat din GEDCOM-fil of
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Om du ändrar filnamnet bör du också byta namnet på filen."
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8380,7 +8380,7 @@ msgstr "LDS begåvning"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:958 app/Gedcom.php:1067
 msgid "LDS initiatory"
-msgstr ""
+msgstr "LDS-initierande"
 
 #: app/Gedcom.php:485
 msgid "LDS spouse sealing"
@@ -8574,7 +8574,7 @@ msgstr "Förmånstagare"
 
 #: app/Gedcom.php:1028
 msgid "Length"
-msgstr ""
+msgstr "Längd"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -9904,7 +9904,7 @@ msgstr "Muharram"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Flerfaldig födelse"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
@@ -10321,7 +10321,7 @@ msgstr "Inga inloggade eller anonyma användare"
 #: resources/views/lists/surnames-compact-list.phtml:19
 #: resources/views/lists/surnames-table.phtml:62
 msgid "No surname"
-msgstr ""
+msgstr "Inget efternamn"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10407,7 +10407,7 @@ msgstr "Ogift"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Inte registrerad"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -10437,44 +10437,44 @@ msgstr "Anteckning"
 #: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
 #: app/Gedcom.php:1891
 msgid "Note on association"
-msgstr ""
+msgstr "Anteckning om association"
 
 #: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
 #: app/Gedcom.php:1388
 msgid "Note on last change"
-msgstr ""
+msgstr "Anteckning om senaste ändringen"
 
 #: app/Gedcom.php:693
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Anteckning om fonetiskt namn"
 
 #: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
 msgid "Note on place"
-msgstr ""
+msgstr "Anteckning om plats"
 
 #: app/Gedcom.php:853
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Anteckning om arkiv referens"
 
 #: app/Gedcom.php:707
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Anteckning om romaniserat namn"
 
 #: app/Gedcom.php:845
 msgid "Note on source"
-msgstr ""
+msgstr "Anteckning om källa"
 
 #: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
 #: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
 #: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
 #: app/Gedcom.php:1885 app/Gedcom.php:1899
 msgid "Note on source citation"
-msgstr ""
+msgstr "Anteckning om källcitat"
 
 #: app/Gedcom.php:844
 msgid "Note on source data"
-msgstr ""
+msgstr "Anteckning om källdata"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10949,7 +10949,7 @@ msgstr "Paraguay"
 
 #: app/Gedcom.php:1454
 msgid "Parent location"
-msgstr ""
+msgstr "Förälders plats"
 
 #: app/Gedcom.php:747 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
@@ -11113,7 +11113,7 @@ msgstr "Foto"
 #: app/Gedcom.php:922 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:941
 #: app/Gedcom.php:945 app/Gedcom.php:946 app/Gedcom.php:948 app/Gedcom.php:950
 msgid "Phrase"
-msgstr ""
+msgstr "Fras"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11757,7 +11757,7 @@ msgstr "Ändra ordningen på media"
 
 #: resources/views/media-page-menu.phtml:38
 msgid "Re-order media files"
-msgstr ""
+msgstr "Ordna om mediefiler"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -12006,7 +12006,7 @@ msgstr "Reno, Nevada, Förenta staterna"
 #: resources/views/admin/trees-merge.phtml:40
 #: resources/views/admin/trees.phtml:199
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Omnumrera XREF:erna"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12040,7 +12040,7 @@ msgstr "Rapport"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
-msgstr ""
+msgstr "Rapportera fras"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12603,7 +12603,7 @@ msgstr "Skicka ett testmeddelande med dessa inställningar"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Skicka ett e-postmeddelande till alla administratörer när en uppgradering är tillgänglig."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -13332,7 +13332,7 @@ msgstr "Inloggning och registrering"
 
 #: app/Gedcom.php:1605
 msgid "Signature"
-msgstr ""
+msgstr "Signatur"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13526,7 +13526,7 @@ msgstr "Sorteringsordning"
 
 #: app/Gedcom.php:916 app/Gedcom.php:942
 msgid "Sort time"
-msgstr ""
+msgstr "Sorteringstid"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:245
@@ -14118,7 +14118,7 @@ msgstr "Text"
 
 #: app/Gedcom.php:1739
 msgid "Text direction"
-msgstr ""
+msgstr "Textriktning"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -14352,7 +14352,7 @@ msgstr "Följande lista visar typiska krav."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "Formulärdatan är ofullständig. Du kanske behöver öka max_input_vars på din server?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -15238,15 +15238,15 @@ msgstr "Tid"
 
 #: app/Gedcom.php:951 app/Gedcom.php:1027
 msgid "Time of birth"
-msgstr ""
+msgstr "Födelsetiden"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Födelsetiden och dödstiden"
 
 #: app/Gedcom.php:955 app/Gedcom.php:1030 app/Gedcom.php:1482
 msgid "Time of death"
-msgstr ""
+msgstr "Dödstiden"
 
 #: app/Gedcom.php:455 app/Gedcom.php:622 app/Gedcom.php:769 app/Gedcom.php:790
 #: app/Gedcom.php:821 app/Gedcom.php:837 app/Gedcom.php:868 app/Gedcom.php:884
@@ -15256,7 +15256,7 @@ msgstr "Tidpunkt för senaste ändring"
 
 #: app/Gedcom.php:961
 msgid "Time of status change"
-msgstr ""
+msgstr "Tidpunkt för statusändring"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1738 resources/views/admin/site-preferences.phtml:48
@@ -16708,7 +16708,7 @@ msgstr "Zooma ut"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "_WT_OBJE_SORT-taggar användes av gamla versioner av webbtrees för att indikera den föredragna bilden för en individ. Ett alternativ är att ordna om bilderna så att den föredragna listas först."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
