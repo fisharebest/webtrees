@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-08-18 15:17+0000\n"
+"PO-Revision-Date: 2022-09-05 12:36+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -13146,7 +13146,7 @@ msgstr "Leeftijd indicator tonen"
 
 #: resources/xml/reports/ahnentafel_report.xml:12
 msgid "Show children of ancestors"
-msgstr "Kinderen van voorouders weergeven"
+msgstr "Toon kinderen van voorouders"
 
 #: resources/views/lists/families-table.phtml:205
 msgid "Show couples where either partner married more than once."
@@ -13231,11 +13231,11 @@ msgstr "Toon namen van privépersonen"
 #: resources/xml/reports/individual_ext_report.xml:10
 #: resources/xml/reports/individual_report.xml:7
 msgid "Show notes"
-msgstr "Notities weergeven"
+msgstr "Toon notities"
 
 #: resources/xml/reports/ahnentafel_report.xml:10
 msgid "Show occupations"
-msgstr "Beroepen weergeven"
+msgstr "Toon beroepen"
 
 #: resources/views/modules/todays_events/config.phtml:19
 #: resources/views/modules/upcoming_events/config.phtml:31
@@ -13296,7 +13296,7 @@ msgstr "Toon onderzoekstaken die een datum in de toekomst hebben"
 
 #: resources/xml/reports/ahnentafel_report.xml:11
 msgid "Show residences"
-msgstr "Woonplaatsen weergeven"
+msgstr "Toon woonplaatsen"
 
 #: resources/views/modules/random_media/config.phtml:39
 msgid "Show slide show controls"
@@ -13308,7 +13308,7 @@ msgstr "Besturingsknoppen diavoorstelling tonen"
 #: resources/xml/reports/individual_ext_report.xml:9
 #: resources/xml/reports/individual_report.xml:6
 msgid "Show sources"
-msgstr "Bronnen weergeven"
+msgstr "Toon bronnen"
 
 #: resources/views/modules/family-book-chart/page.phtml:61
 #: resources/views/modules/hourglass-chart/page.phtml:51
