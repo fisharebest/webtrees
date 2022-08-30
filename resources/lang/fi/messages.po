@@ -1,17 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:59+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
-"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
-"Language: fi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-09-05 12:36+0000\nLast-Translator: Meliza Amity <meliza@amitys.com>\nLanguage-Team: Finnish <https://translate.webtrees.net/projects/webtrees/webtrees/fi/>\nLanguage: fi\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -1843,7 +1831,7 @@ msgstr "Vaihtoehtoinen paikannimi"
 
 #: app/Gedcom.php:1035
 msgid "Alternative spelling of surname"
-msgstr ""
+msgstr "Sukunimen vaihtoehtoinen kirjoitusasu"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:60
@@ -3507,7 +3495,7 @@ msgstr "Tarkista onko virheitä"
 
 #: app/Module/CheckForNewVersion.php:65
 msgid "Check for new version"
-msgstr ""
+msgstr "Tarkista uusi versio"
 
 #: app/Http/RequestHandlers/UpgradeWizardPage.php:121
 msgid "Check for pending changes…"
@@ -3911,7 +3899,7 @@ msgstr "Sisällys"
 
 #: app/Gedcom.php:772
 msgid "Continuation"
-msgstr ""
+msgstr "Jatko"
 
 #: app/Http/RequestHandlers/ControlPanel.php:150
 #: app/Http/RequestHandlers/MapDataAdd.php:93
@@ -3978,7 +3966,7 @@ msgstr "Ohjauspaneeli"
 #: app/Module/FixPrimaryTag.php:59 app/Module/FixWtObjeSortTag.php:62
 #, php-format
 msgid "Convert %s tags to GEDCOM 5.5.1"
-msgstr ""
+msgstr "Muunna %s tunnisteet (tagit) GEDCOM 5.5.1:ksi"
 
 #. I18N: Label for option
 #: resources/views/modules/fix-ceme-tag/options.phtml:16
@@ -4167,7 +4155,7 @@ msgstr "Luomispäivä"
 #: app/Gedcom.php:925 app/Gedcom.php:954 app/Gedcom.php:969 app/Gedcom.php:973
 #: app/Gedcom.php:982 app/Gedcom.php:990 app/Gedcom.php:999
 msgid "Creation time"
-msgstr ""
+msgstr "Luomisen aika"
 
 #: app/Gedcom.php:639 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
@@ -4605,7 +4593,7 @@ msgstr "Asuinpaikan päivämäärä"
 
 #: app/Gedcom.php:960
 msgid "Date of status change"
-msgstr ""
+msgstr "Tilan muutospäivä"
 
 #: resources/views/help/date.phtml:105
 msgid "Date period"
@@ -5313,7 +5301,7 @@ msgstr "(mormoni) Kuollut lapsena: vapautettu"
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Kuoli alle 1-vuotiaana, sinetöintiä ei tarvita."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -5900,7 +5888,7 @@ msgstr "Ulkoiset tiedostot"
 #: app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:938 app/Gedcom.php:956
 #: app/Gedcom.php:974 app/Gedcom.php:983 app/Gedcom.php:991 app/Gedcom.php:1000
 msgid "External identifier"
-msgstr ""
+msgstr "Ulkoinen tunniste"
 
 #: app/Gedcom.php:1238 app/Gedcom.php:1843
 msgid "External link"
@@ -7407,7 +7395,7 @@ msgstr "Piilota salasana"
 #: resources/views/admin/trees-check.phtml:53
 #: resources/views/admin/trees-check.phtml:69
 msgid "Hide these errors"
-msgstr ""
+msgstr "Piilota nämä virheet"
 
 #: resources/views/admin/locations.phtml:35
 msgid "Hide unused locations"
@@ -7660,7 +7648,7 @@ msgstr "Jos olet tuonut mediakohteita webtreesiin ja sitten muuttanut gedcom-suk
 #: app/Elements/MultimediaFileReference.php:76
 #: resources/views/edit/raw-gedcom-record.phtml:48
 msgid "If you modify the filename, you should also rename the file."
-msgstr ""
+msgstr "Jos muutat tiedostonimen, sinun tulee myös nimetä tiedosto uudelleen."
 
 #: resources/views/admin/site-preferences.phtml:37
 msgid "If you select a different folder, you must also move all files (except config.ini.php, index.php, and .htaccess) from the existing folder to the new folder."
@@ -8392,7 +8380,7 @@ msgstr "MAP-endaumentti"
 #. I18N: GEDCOM tag INIL - an LDS ceremony
 #: app/Gedcom.php:958 app/Gedcom.php:1067
 msgid "LDS initiatory"
-msgstr ""
+msgstr "MAP-aloite"
 
 #: app/Gedcom.php:485
 msgid "LDS spouse sealing"
@@ -8586,7 +8574,7 @@ msgstr "Perinnönsaaja"
 
 #: app/Gedcom.php:1028
 msgid "Length"
-msgstr ""
+msgstr "Pituus"
 
 #: resources/views/modules/statistics-chart/marriage-length.phtml:10
 msgid "Length of marriage"
@@ -9916,7 +9904,7 @@ msgstr "muharram"
 #. I18N: twin, triplet, etc.
 #: app/Elements/RelationIsDescriptor.php:116
 msgid "Multiple birth"
-msgstr ""
+msgstr "Monisikiön syntymä"
 
 #: resources/views/lists/families-table.phtml:212
 msgid "Multiple marriages"
@@ -10333,7 +10321,7 @@ msgstr "Ei kirjautuneita eikä tuntemattomia käyttäjiä"
 #: resources/views/lists/surnames-compact-list.phtml:19
 #: resources/views/lists/surnames-table.phtml:62
 msgid "No surname"
-msgstr ""
+msgstr "Ei sukunimeä"
 
 #: app/Elements/TempleCode.php:211
 msgid "No temple - living ordinance"
@@ -10419,7 +10407,7 @@ msgstr "Naimaton"
 #: app/Elements/AbstractXrefElement.php:70
 #: resources/views/fact-association-structure.phtml:102
 msgid "Not recorded"
-msgstr ""
+msgstr "Ei tallennettu"
 
 #: resources/views/admin/control-panel.phtml:483
 msgid "Not verified by the user"
@@ -10449,44 +10437,44 @@ msgstr "Huomautus"
 #: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
 #: app/Gedcom.php:1891
 msgid "Note on association"
-msgstr ""
+msgstr "Huomautus yhdistyksestä"
 
 #: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
 #: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
 #: app/Gedcom.php:1388
 msgid "Note on last change"
-msgstr ""
+msgstr "Huomautus viimeisestä muutoksesta"
 
 #: app/Gedcom.php:693
 msgid "Note on phonetic name"
-msgstr ""
+msgstr "Huomautus foneettisesta nimestä"
 
 #: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
 msgid "Note on place"
-msgstr ""
+msgstr "Huomautus paikasta"
 
 #: app/Gedcom.php:853
 msgid "Note on repository reference"
-msgstr ""
+msgstr "Huomautus tietovaraston viittauksesta"
 
 #: app/Gedcom.php:707
 msgid "Note on romanized name"
-msgstr ""
+msgstr "Huomautus romanisoidusta nimestä"
 
 #: app/Gedcom.php:845
 msgid "Note on source"
-msgstr ""
+msgstr "Huomautus lähteestä"
 
 #: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
 #: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
 #: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
 #: app/Gedcom.php:1885 app/Gedcom.php:1899
 msgid "Note on source citation"
-msgstr ""
+msgstr "Huomautus lähdeviittauksesta"
 
 #: app/Gedcom.php:844
 msgid "Note on source data"
-msgstr ""
+msgstr "Huomautus lähdetiedoista"
 
 #: resources/views/help/restriction.phtml:11
 msgid "Note that if a user account is linked to a record, then that user will always be able to view that record."
@@ -10961,7 +10949,7 @@ msgstr "Paraguay"
 
 #: app/Gedcom.php:1454
 msgid "Parent location"
-msgstr ""
+msgstr "Vanhemman sijainti"
 
 #: app/Gedcom.php:747 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
@@ -11125,7 +11113,7 @@ msgstr "Valokuva"
 #: app/Gedcom.php:922 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:941
 #: app/Gedcom.php:945 app/Gedcom.php:946 app/Gedcom.php:948 app/Gedcom.php:950
 msgid "Phrase"
-msgstr ""
+msgstr "Fraasi"
 
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:177
@@ -11769,7 +11757,7 @@ msgstr "Järjestä media uudelleen"
 
 #: resources/views/media-page-menu.phtml:38
 msgid "Re-order media files"
-msgstr ""
+msgstr "Järjestä mediatiedostot uudelleen"
 
 #: app/Http/RequestHandlers/ReorderNamesPage.php:49
 #: resources/views/individual-page-menu.phtml:49
@@ -12018,7 +12006,7 @@ msgstr "Reno, Nevada, Yhdysvallat"
 #: resources/views/admin/trees-merge.phtml:40
 #: resources/views/admin/trees.phtml:199
 msgid "Renumber XREFs"
-msgstr ""
+msgstr "Numeroi viitenumerot (XREF) uudelleen"
 
 #: resources/views/modules/fix-place-names/options.phtml:21
 msgid "Replace"
@@ -12052,7 +12040,7 @@ msgstr "Raportti"
 #. I18N: ''GEDCOM tag _RPT_PHRS
 #: app/Gedcom.php:1634 app/Gedcom.php:1635
 msgid "Report phrase"
-msgstr ""
+msgstr "Ilmoita fraasi"
 
 #. I18N: Name of a module
 #: app/Http/RequestHandlers/ModulesReportsPage.php:43
@@ -12615,7 +12603,7 @@ msgstr "Lähetä testisähköpostiviesti näiden asetusten avulla"
 
 #: app/Module/CheckForNewVersion.php:75
 msgid "Send an email to all administrators when an upgrade is available."
-msgstr ""
+msgstr "Lähetä sähköposti kaikille järjestelmänvalvojille, kun päivitys on saatavilla."
 
 #. I18N: Label for a configuration option
 #: resources/views/modules/review_changes/config.phtml:18
@@ -13344,7 +13332,7 @@ msgstr "Sisään kirjautuminen ja rekisteröinti"
 
 #: app/Gedcom.php:1605
 msgid "Signature"
-msgstr ""
+msgstr "Allekirjoitus"
 
 #: resources/views/help/date.phtml:136
 msgid "Simple dates are assumed to be in the gregorian calendar. To specify a date in another calendar, add a keyword before the date. This keyword is optional if the month or year format make the date unambiguous."
@@ -13538,7 +13526,7 @@ msgstr "Järjestys"
 
 #: app/Gedcom.php:916 app/Gedcom.php:942
 msgid "Sort time"
-msgstr ""
+msgstr "Lajitteluaika"
 
 #. I18N: Abbreviation for “Sosa-Stradonitz number”. This is an individual’s surname, so may need transliterating into non-latin alphabets.
 #: resources/views/lists/individuals-table.phtml:245
@@ -14130,7 +14118,7 @@ msgstr "Teksti"
 
 #: app/Gedcom.php:1739
 msgid "Text direction"
-msgstr ""
+msgstr "Tekstin suunta"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:482
@@ -14364,7 +14352,7 @@ msgstr "Seuraavassa listassa tyypilliset vaatimukset."
 
 #: app/Http/Middleware/CheckCsrf.php:70
 msgid "The form data is incomplete. Perhaps you need to increase max_input_vars on your server?"
-msgstr ""
+msgstr "Lomakkeen tiedot ovat puutteellisia. Ehkä sinun täytyy nostaa max_input_vars-arvoa palvelimellasi?"
 
 #: app/Http/RequestHandlers/HelpText.php:294
 msgid "The help text has not been written for this item."
@@ -15250,15 +15238,15 @@ msgstr "Aika"
 
 #: app/Gedcom.php:951 app/Gedcom.php:1027
 msgid "Time of birth"
-msgstr ""
+msgstr "Syntymäaika"
 
 #: resources/views/admin/tags.phtml:953
 msgid "Time of birth and time of death"
-msgstr ""
+msgstr "Syntymä- ja kuolinaika"
 
 #: app/Gedcom.php:955 app/Gedcom.php:1030 app/Gedcom.php:1482
 msgid "Time of death"
-msgstr ""
+msgstr "Kuolinaika"
 
 #: app/Gedcom.php:455 app/Gedcom.php:622 app/Gedcom.php:769 app/Gedcom.php:790
 #: app/Gedcom.php:821 app/Gedcom.php:837 app/Gedcom.php:868 app/Gedcom.php:884
@@ -15268,7 +15256,7 @@ msgstr "Viimeisen muutoksen aika"
 
 #: app/Gedcom.php:961
 msgid "Time of status change"
-msgstr ""
+msgstr "Tilanmuutoksen aika"
 
 #. I18N: A configuration setting
 #: app/Gedcom.php:1738 resources/views/admin/site-preferences.phtml:48
@@ -16720,7 +16708,7 @@ msgstr "Loitonna"
 #. I18N: Description of a “Data fix” module
 #: app/Module/FixWtObjeSortTag.php:73
 msgid "_WT_OBJE_SORT tags were used by old versions of webtrees to indicate the preferred image for an individual. An alternative is to re-order the images so that the preferred one is listed first."
-msgstr ""
+msgstr "webtrees-puiden vanhat versiot käyttivät _WT_OBJE_SORT-tunnisteita yksilöimään henkilön ensisijaisen kuvan. Vaihtoehto on järjestää kuvat uudelleen niin, että ensisijainen kuva on ensimmäinen."
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:185
