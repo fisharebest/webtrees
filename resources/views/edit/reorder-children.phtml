@@ -1,9 +1,11 @@
 <?php
 
+use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\Http\RequestHandlers\ReorderChildrenAction;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\View;
 
 /**
@@ -17,7 +19,7 @@ use Fisharebest\Webtrees\View;
 
 <form method="post" action="<?= e(route(ReorderChildrenAction::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>" class="wt-page-content">
     <div class="wt-sortable-list">
-        <?php foreach ($family->facts(['CHIL']) as $fact) : ?>
+        <?php foreach ($family->facts(['CHIL'])->filter(static fn (Fact $fact): bool => $fact->target() instanceof Individual) as $fact) : ?>
             <div class="card my-2 wt-sortable-item" data-wt-sort-by-date="<?= $fact->target()->getBirthDate()->julianDay() ?>">
                 <input type="hidden" name="order[]" value="<?= $fact->id() ?>">
                 <div class="card-header">
