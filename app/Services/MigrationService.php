@@ -84,26 +84,28 @@ class MigrationService
      */
     private function transactionalTables(): void
     {
-        $connection = DB::connection();
+        return;
 
-        if ($connection->getDriverName() !== 'mysql') {
+        if (DB::driverName() !== 'mysql') {
             return;
         }
+
+        $connection = DB::getDBALConnection();
 
         $sql = "SELECT table_name FROM information_schema.tables JOIN information_schema.engines USING (engine) WHERE table_schema = ? AND LEFT(table_name, ?) = ? AND transactions <> 'YES'";
 
         $bindings = [
             $connection->getDatabaseName(),
-            mb_strlen($connection->getTablePrefix()),
-            $connection->getTablePrefix(),
+            mb_strlen(DB::prefix()),
+            DB::prefix(),
         ];
 
-        $rows = DB::connection()->select($sql, $bindings);
+        $rows = DB::getDBALConnection()->select($sql, $bindings);
 
         foreach ($rows as $row) {
             $table = $row->TABLE_NAME ?? $row->table_name;
             $alter_sql = 'ALTER TABLE `' . $table . '` ENGINE=InnoDB';
-            DB::connection()->statement($alter_sql);
+            DB::getDBALConnection()->statement($alter_sql);
         }
     }
 

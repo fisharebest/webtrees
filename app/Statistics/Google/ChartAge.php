@@ -57,12 +57,10 @@ class ChartAge
      */
     private function queryRecords(): Collection
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         return DB::table('individuals')
             ->select([
-                new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) / 365.25 AS age'),
-                new Expression('ROUND((' . $prefix . 'death.d_year + 49) / 100, 0) AS century'),
+                new Expression('AVG(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') / 365.25 AS age'),
+                new Expression('ROUND((' . DB::prefix('death.d_year') . ' + 49) / 100, 0) AS century'),
                 'i_sex AS sex'
             ])
             ->join('dates AS birth', static function (JoinClause $join): void {

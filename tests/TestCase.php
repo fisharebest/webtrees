@@ -32,6 +32,7 @@ use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Services\TimeoutService;
 use Fisharebest\Webtrees\Services\TreeService;
+use Illuminate\Database\Capsule\Manager;
 use PHPUnit\Framework\Constraint\Callback;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestFactoryInterface;
@@ -65,12 +66,14 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     private static function createTestDatabase(): void
     {
-        $capsule = new DB();
+        $capsule = new Manager();
         $capsule->addConnection([
             'driver'   => 'sqlite',
             'database' => ':memory:',
         ]);
         $capsule->setAsGlobal();
+
+        DB::connect($capsule->getConnection()->getPdo(), '');
 
         // Create tables
         $migration_service = new MigrationService();

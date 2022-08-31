@@ -17,36 +17,40 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Schema;
+namespace Fisharebest\Webtrees\DB\Drivers;
 
-use Fisharebest\Webtrees\DB;
+use Doctrine\DBAL\Driver\AbstractSQLiteDriver;
+use Doctrine\DBAL\Driver\PDO\Connection;
+use PDO;
+use SensitiveParameter;
 
 /**
- * Populate the gedcom table
+ * Driver for SQLite.
  */
-class SeedGedcomTable implements SeedInterface
+class SQLiteDriver extends AbstractSQLiteDriver implements DriverInterface
 {
-    /**
-     *  Run the seeder.
-     *
-     * @return void
-     */
-    public function run(): void
+    use DriverTrait;
+
+    public function __construct(private readonly PDO $pdo)
     {
-        // Add a "default" tree, to store default settings
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] ON');
-        }
+    public function connect(
+        #[SensitiveParameter]
+        array $params,
+    ): Connection {
+        $this->pdo->exec('PRAGMA foreign_keys = ON');
 
-        DB::table('gedcom')->updateOrInsert([
-            'gedcom_id'   => -1,
-        ], [
-            'gedcom_name'  => 'DEFAULT_TREE',
-        ]);
+        return new Connection($this->pdo);
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] OFF');
-        }
+    public function collationASCII(): string
+    {
+        return 'C';
+    }
+
+    public function collationUTF8(): string
+    {
+        return 'nocase';
     }
 }

@@ -17,36 +17,21 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Schema;
+namespace Fisharebest\Webtrees\DB;
 
-use Fisharebest\Webtrees\DB;
+use Stringable;
 
 /**
- * Populate the gedcom table
+ * Extend the PDO database connection to support prefixes and introspection.
  */
-class SeedGedcomTable implements SeedInterface
+class Expression implements Stringable
 {
-    /**
-     *  Run the seeder.
-     *
-     * @return void
-     */
-    public function run(): void
+    public function __construct(private readonly string $sql)
     {
-        // Add a "default" tree, to store default settings
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] ON');
-        }
-
-        DB::table('gedcom')->updateOrInsert([
-            'gedcom_id'   => -1,
-        ], [
-            'gedcom_name'  => 'DEFAULT_TREE',
-        ]);
-
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] OFF');
-        }
+    public function __toString()
+    {
+        return $this->sql;
     }
 }

@@ -450,7 +450,7 @@ class SetupWizard implements RequestHandlerInterface
                     'username'                => $data['dbuser'],
                     'password'                => $data['dbpass'],
                 ], 'temp');
-                $capsule->getConnection('temp')->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
+                $capsule->getDBALConnection('temp')->statement('CREATE DATABASE IF NOT EXISTS `' . $data['dbname'] . '` COLLATE utf8_unicode_ci');
                 break;
         }
 

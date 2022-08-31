@@ -17,36 +17,41 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Schema;
+namespace Fisharebest\Webtrees\DB\Drivers;
 
-use Fisharebest\Webtrees\DB;
+use Doctrine\DBAL\Driver\AbstractSQLServerDriver;
+use Doctrine\DBAL\Driver\PDO\Connection;
+use PDO;
+use SensitiveParameter;
 
 /**
- * Populate the gedcom table
+ * Driver for SQL-Server.
  */
-class SeedGedcomTable implements SeedInterface
+class SQLServerDriver extends AbstractSQLServerDriver implements DriverInterface
 {
-    /**
-     *  Run the seeder.
-     *
-     * @return void
-     */
-    public function run(): void
+    use DriverTrait;
+
+    public function __construct(private readonly PDO $pdo)
     {
-        // Add a "default" tree, to store default settings
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] ON');
-        }
+    public function connect(
+        #[SensitiveParameter]
+        array $params,
+    ): Connection {
+        // For timestamp columns
+        $this->pdo->exec('SET language us_english');
 
-        DB::table('gedcom')->updateOrInsert([
-            'gedcom_id'   => -1,
-        ], [
-            'gedcom_name'  => 'DEFAULT_TREE',
-        ]);
+        return new Connection($this->pdo);
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] OFF');
-        }
+    public function collationASCII(): string
+    {
+        return 'Latin1_General_Bin';
+    }
+
+    public function collationUTF8(): string
+    {
+        return 'utf8_CI_AI';
     }
 }

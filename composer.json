@@ -28,6 +28,8 @@
         "sort-packages": true,
         "process-timeout": 3600
     },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "require": {
         "php": "8.2 - 8.4",
         "ext-ctype": "*",
@@ -82,6 +84,7 @@
         "ext-pdo_sqlite": "*",
         "ext-sqlite3": "*",
         "composer/composer": "2.7.2",
+        "icanhazstring/composer-unused": "dev-main",
         "league/flysystem-memory": "3.25.1",
         "php-coveralls/php-coveralls": "2.7.0",
         "phpunit/phpunit": "11.0.8"
@@ -133,7 +136,7 @@
         "webtrees:phpstan-baseline": [
             "@composer global require --quiet phpstan/phpstan=* phpstan/extension-installer=* phpstan/phpstan-deprecation-rules=* phpstan/phpstan-strict-rules=* phpstan/phpstan-phpunit=*",
             "@composer install --quiet",
-            "~/.composer/vendor/bin/phpstan analyze --memory-limit=-1 --level=max --generate-baseline=phpstan-baseline.php",
+            "~/.composer/vendor/bin/phpstan analyze --level=max --generate-baseline=phpstan-baseline.php",
 						"sed -i -e 's/\\t/    /' phpstan-baseline.php",
 						"sed -i -e 's/ declare(strict_types = 1)/\\n\\ndeclare(strict_types=1)/' phpstan-baseline.php",
             "@composer install --no-dev --quiet"

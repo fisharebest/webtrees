@@ -67,7 +67,7 @@ class TreePage implements RequestHandlerInterface
             $this->home_page_service->checkDefaultTreeBlocksExist();
 
             // Copy the defaults
-            (new Builder(DB::connection()))->from('block')->insertUsing(
+            DB::query()->from('block')->insertUsing(
                 ['gedcom_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($tree): void {
                     $query

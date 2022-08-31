@@ -362,7 +362,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleCon
                 'block_order' => $block_order,
             ]);
 
-            $block_id = (int) DB::connection()->getPdo()->lastInsertId();
+            $block_id = DB::lastInsertId();
         }
 
         $this->setBlockSetting($block_id, 'faqbody', $body);

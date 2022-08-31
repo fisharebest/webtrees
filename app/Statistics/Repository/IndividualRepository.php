@@ -800,8 +800,6 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     public function statsAgeQuery(string $related = 'BIRT', string $sex = 'BOTH', int $year1 = -1, int $year2 = -1): array
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $query = $this->birthAndDeathQuery($sex);
 
         if ($year1 >= 0 && $year2 >= 0) {
@@ -817,7 +815,7 @@ class IndividualRepository implements IndividualRepositoryInterface
         }
 
         return $query
-            ->select([new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
+            ->select([new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
             ->orderBy('days', 'desc')
             ->get()
             ->all();
@@ -843,11 +841,9 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function longlifeQuery(string $type, string $sex): string
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $row = $this->birthAndDeathQuery($sex)
             ->orderBy('days', 'desc')
-            ->select(['individuals.*', new Expression($prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1 AS days')])
+            ->select(['individuals.*', new Expression(DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ' AS days')])
             ->first();
 
         if ($row === null) {
@@ -996,12 +992,10 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function topTenOldestQuery(string $sex, int $total): array
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $rows = $this->birthAndDeathQuery($sex)
             ->groupBy(['i_id', 'i_file'])
             ->orderBy('days', 'desc')
-            ->select(['individuals.*', new Expression('MAX(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
+            ->select(['individuals.*', new Expression('MAX(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
             ->take($total)
             ->get();
 
@@ -1288,10 +1282,8 @@ class IndividualRepository implements IndividualRepositoryInterface
      */
     private function averageLifespanQuery(string $sex, bool $show_years): string
     {
-        $prefix = DB::connection()->getTablePrefix();
-
         $days = (int) $this->birthAndDeathQuery($sex)
-            ->select([new Expression('AVG(' . $prefix . 'death.d_julianday2 - ' . $prefix . 'birth.d_julianday1) AS days')])
+            ->select([new Expression('AVG(' . DB::prefix('death.d_julianday2') . ' - ' . DB::prefix('birth.d_julianday1') . ') AS days')])
             ->value('days');
 
         if ($show_years) {

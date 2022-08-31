@@ -379,7 +379,7 @@ class UpgradeService
             Site::setPreference('SITE_UUID', $site_uuid);
         }
 
-        $database_type = DB::connection()->getDriverName();
+        $database_type = DB::driverName();
 
         return [
             'w' => Webtrees::VERSION,

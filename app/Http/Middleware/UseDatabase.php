@@ -114,10 +114,13 @@ class UseDatabase implements MiddlewareInterface
 
         try {
             // Eager-load the connection, to prevent database credentials appearing in error logs.
-            DB::connection()->getPdo();
+            $pdo = DB::connection()->getPdo();
         } catch (PDOException $exception) {
             throw new RuntimeException($exception->getMessage());
         }
+
+        $prefix = Validator::attributes($request)->string('tblpfx', '');
+        DB::connect(pdo: $pdo, prefix: $prefix);
 
         return $handler->handle($request);
     }

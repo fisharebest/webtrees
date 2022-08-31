@@ -55,7 +55,7 @@ class Migration44 implements MigrationInterface
 
             // SQL-server cannot cascade-delete/update on self-relations.
             // Users will need to delete all child locations before deleting the parent.
-            if (DB::connection()->getDriverName() === 'sqlsrv') {
+            if (DB::driverName() === 'sqlsrv') {
                 // SQL-Server doesn't support 'RESTRICT'
                 $action = 'NO ACTION';
             } else {
@@ -74,7 +74,7 @@ class Migration44 implements MigrationInterface
         // This table should only exist if we are upgrading an old installation, which would have been
         // created with MySQL.  Therefore we can safely use MySQL-specific SQL.
         if (DB::schema()->hasTable('placelocation')) {
-            if (DB::connection()->getDriverName() === 'mysql') {
+            if (DB::driverName() === 'mysql') {
                 DB::table('placelocation')
                     ->where('pl_lati', '=', '')
                     ->orWhere('pl_long', '=', '')

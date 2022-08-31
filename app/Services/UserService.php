@@ -321,7 +321,7 @@ class UserService
             'password'  => password_hash($password, PASSWORD_DEFAULT),
         ]);
 
-        $user_id = (int) DB::connection()->getPdo()->lastInsertId();
+        $user_id = DB::lastInsertId();
 
         return new User($user_id, $user_name, $real_name, $email);
     }

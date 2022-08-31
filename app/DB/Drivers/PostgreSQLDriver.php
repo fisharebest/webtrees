@@ -17,36 +17,38 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Schema;
+namespace Fisharebest\Webtrees\DB\Drivers;
 
-use Fisharebest\Webtrees\DB;
+use Doctrine\DBAL\Driver\AbstractPostgreSQLDriver;
+use Doctrine\DBAL\Driver\PDO\Connection;
+use PDO;
+use SensitiveParameter;
 
 /**
- * Populate the gedcom table
+ * Driver for PostgreSQL.
  */
-class SeedGedcomTable implements SeedInterface
+class PostgreSQLDriver extends AbstractPostgreSQLDriver implements DriverInterface
 {
-    /**
-     *  Run the seeder.
-     *
-     * @return void
-     */
-    public function run(): void
+    use DriverTrait;
+
+    public function __construct(private readonly PDO $pdo)
     {
-        // Add a "default" tree, to store default settings
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] ON');
-        }
+    public function connect(
+        #[SensitiveParameter]
+        array $params,
+    ): Connection {
+        return new Connection($this->pdo);
+    }
 
-        DB::table('gedcom')->updateOrInsert([
-            'gedcom_id'   => -1,
-        ], [
-            'gedcom_name'  => 'DEFAULT_TREE',
-        ]);
+    public function collationASCII(): string
+    {
+        return 'C';
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] OFF');
-        }
+    public function collationUTF8(): string
+    {
+        return 'und-x-icu';
     }
 }

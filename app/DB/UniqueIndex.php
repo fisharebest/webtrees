@@ -17,36 +17,33 @@
 
 declare(strict_types=1);
 
-namespace Fisharebest\Webtrees\Schema;
+namespace Fisharebest\Webtrees\DB;
 
+use Doctrine\DBAL\Schema\Index as DBALIndex;
 use Fisharebest\Webtrees\DB;
 
+use function implode;
+
 /**
- * Populate the gedcom table
+ * Simplify constructor arguments for doctrine/dbal.
+ *
+ * @internal - use DB::uniqueIndex()
  */
-class SeedGedcomTable implements SeedInterface
+final class UniqueIndex implements ComponentInterface
 {
     /**
-     *  Run the seeder.
-     *
-     * @return void
+     * @param array<array-key,string> $columns
      */
-    public function run(): void
+    public function __construct(private readonly array $columns)
     {
-        // Add a "default" tree, to store default settings
+    }
 
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] ON');
-        }
-
-        DB::table('gedcom')->updateOrInsert([
-            'gedcom_id'   => -1,
-        ], [
-            'gedcom_name'  => 'DEFAULT_TREE',
-        ]);
-
-        if (DB::driverName() === 'sqlsrv') {
-            DB::getDBALConnection()->unprepared('SET IDENTITY_INSERT [' . DB::prefix() . 'gedcom] OFF');
-        }
+    public function toDBAL(string $table): DBALIndex
+    {
+        return new DBALIndex(
+            name: DB::prefix(implode('_', ['ux', $table, ...$this->columns])),
+            columns: $this->columns,
+            isUnique: true
+        );
     }
 }

@@ -66,7 +66,7 @@ class UserPage implements RequestHandlerInterface
             $this->home_page_service->checkDefaultUserBlocksExist();
 
             // Copy the defaults
-            (new Builder(DB::connection()))->from('block')->insertUsing(
+            DB::query()->from('block')->insertUsing(
                 ['user_id', 'location', 'block_order', 'module_name'],
                 static function (Builder $query) use ($user): void {
                     $query

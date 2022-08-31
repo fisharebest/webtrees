@@ -80,7 +80,7 @@ class FixLevel0MediaData implements RequestHandlerInterface
             'INDI:RESN',
         ];
 
-        $prefix = DB::connection()->getTablePrefix();
+        $prefix = DB::prefix();
 
         $search = Validator::queryParams($request)->array('search')['value'] ?? '';
 

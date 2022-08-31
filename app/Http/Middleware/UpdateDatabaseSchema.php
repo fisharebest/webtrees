@@ -19,12 +19,23 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Http\Middleware;
 
+use Doctrine\DBAL\Driver\AbstractMySQLDriver;
+use Fisharebest\Webtrees\DB;
+use Fisharebest\Webtrees\DB\WebtreesSchema;
 use Fisharebest\Webtrees\Services\MigrationService;
 use Fisharebest\Webtrees\Webtrees;
+use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Throwable;
+
+use function array_map;
+use function implode;
+use function microtime;
+use function str_contains;
+use function usort;
 
 /**
  * Middleware to update the database automatically, after an upgrade.
@@ -53,6 +64,55 @@ class UpdateDatabaseSchema implements MiddlewareInterface
     {
         $this->migration_service
             ->updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', Webtrees::SCHEMA_VERSION);
+
+        $platform = DB::getDBALConnection()->getDatabasePlatform();
+        $platform->registerDoctrineTypeMapping(dbType: 'enum', doctrineType: 'string');
+
+        $schema_manager = DB::getDBALConnection()->createSchemaManager();
+        $comparator     = $schema_manager->createComparator();
+        $source         = $schema_manager->introspectSchema();
+        $target         = WebtreesSchema::schema();
+
+        // doctrine/dbal 4.0 does not have the concept of "saveSQL"
+        foreach ($source->getTables() as $table) {
+            if (!$target->hasTable($table->getName())) {
+                $source->dropTable($table->getName());
+            }
+        }
+
+        $schema_diff = $comparator->compareSchemas(oldSchema: $source, newSchema: $target);
+        $queries     = $platform->getAlterSchemaSQL(diff: $schema_diff);
+
+        // Workaround for https://github.com/doctrine/dbal/issues/6092
+        $phase = static fn (string $query): int => match (true) {
+            str_contains(haystack: $query, needle: 'DROP FOREIGN KEY') => 1,
+            default                                                    => 2,
+            str_contains(haystack: $query, needle: 'FOREIGN KEY')      => 3,
+        };
+        $fn = static fn (string $query1, string $query2): int => $phase(query: $query1) <=> $phase(query: $query2);
+        usort(array: $queries, callback: $fn);
+
+        // SQLite, PostgreSQL and SQL-Server all support DDL in transactions
+        if (DB::getDBALConnection()->getDriver() instanceof AbstractMySQLDriver) {
+            $queries = [
+                'SET FOREIGN_KEY_CHECKS := 0',
+                ...$queries,
+                'SET FOREIGN_KEY_CHECKS := 1',
+            ];
+        } else {
+            $queries = [
+                'START TRANSACTION',
+                ...$queries,
+                'COMMIT',
+            ];
+        }
+
+
+        foreach ($queries as $query) {
+            DB::getDBALConnection()->executeStatement(sql: $query);
+        }
+
+        //exit;
 
         return $handler->handle($request);
     }
