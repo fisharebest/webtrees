@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Slovak (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
+"PO-Revision-Date: 2022-09-05 12:36+0000\n"
 "Last-Translator: Ladislav Rosival <lacoros@gmail.com>\n"
 "Language-Team: Slovak <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/sk/>\n"
@@ -17274,7 +17274,7 @@ msgstr "Naposledy zmenil(a)"
 #: app/Date.php:346
 #, php-format
 msgid "calculated %s"
-msgstr "pravdepodobne %s"
+msgstr "vypočítané %s"
 
 #. I18N: A button label.
 #: resources/views/admin/analytics-edit.phtml:45
