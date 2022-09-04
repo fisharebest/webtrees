@@ -1,5 +1,5 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-08-13 13:17+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-09-05 12:36+0000\nLast-Translator: Gudjon Sigurdsson <gudjon@pm.me>\nLanguage-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/webtrees/is/>\nLanguage: is\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -2206,7 +2206,7 @@ msgstr "Mætir"
 #. I18N: Type of media object
 #: app/Elements/SourceMediaType.php:79 app/Gedcom.php:1715
 msgid "Audio"
-msgstr "Hljóð"
+msgstr "Hljóðskrá"
 
 #: app/Date/AbstractGregorianJulianDate.php:238
 msgctxt "Abbreviation for August"
@@ -15921,7 +15921,7 @@ msgstr "Flytja inn gagnaskrár"
 
 #: resources/views/admin/media-upload.phtml:23
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
-msgstr "Flytjið inn eina eða fleiri gagnaskrár frá staðbundinni tölvu þinni. Gagnaskrár geta verið myndir, myndbönd, hljóð eða önnur skráarsnið."
+msgstr "Flytjið inn eina eða fleiri gagnaskrár frá staðbundinni tölvu þinni. Gagnaskrár geta verið myndir, myndbönd, hljóðskrár eða önnur skráarsnið."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
