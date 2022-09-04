@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-02-27 08:59+0000\n"
-"PO-Revision-Date: 2022-07-17 04:40+0000\n"
+"PO-Revision-Date: 2022-09-05 12:36+0000\n"
 "Last-Translator: Gudjon Sigurdsson <gudjon@pm.me>\n"
 "Language-Team: Icelandic <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/is/>\n"
@@ -2295,7 +2295,7 @@ msgstr "Mætir"
 #: app/Factories/ElementFactory.php:478 app/Factories/ElementFactory.php:504
 #: app/Factories/ElementFactory.php:519
 msgid "Audio"
-msgstr "Hljóð"
+msgstr "Hljóðskrá"
 
 #: app/Date/AbstractGregorianJulianDate.php:208
 msgctxt "Abbreviation for August"
@@ -16377,7 +16377,7 @@ msgstr "Flytja inn gagnaskrár"
 msgid "Upload one or more media files from your local computer. Media files can be pictures, video, audio, or other formats."
 msgstr ""
 "Flytjið inn eina eða fleiri gagnaskrár frá staðbundinni tölvu þinni. "
-"Gagnaskrár geta verið myndir, myndbönd, hljóð eða önnur skráarsnið."
+"Gagnaskrár geta verið myndir, myndbönd, hljóðskrár eða önnur skráarsnið."
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:512
