@@ -34,7 +34,7 @@ class Migration40 implements MigrationInterface
      */
     public function upgrade(): void
     {
-        // This table was previously created by the favorites module in 1.7.9.
+        // This table was previously created by the news module in 1.7.9.
         // These migrations are now part of the core code.
 
         if (!DB::schema()->hasTable('news')) {
