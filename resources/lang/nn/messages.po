@@ -1,5 +1,21 @@
 msgid ""
-msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-07-27 13:59+0100\nPO-Revision-Date: 2022-09-05 12:36+0000\nLast-Translator: HRN <hogne.roed.nilsen@gmail.com>\nLanguage-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\nLanguage: nn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: UTF-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
+msgstr ""
+"Project-Id-Version: webtrees\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2022-09-05 13:38+0100\n"
+"PO-Revision-Date: 2022-09-05 12:36+0000\n"
+"Last-Translator: HRN <hogne.roed.nilsen@gmail.com>\n"
+"Language-Team: Norwegian Nynorsk <https://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.9.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -111,8 +127,8 @@ msgstr "%1$s × %2$s pikslar"
 #. I18N: e.g. "Occupation: farmer"
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #. I18N: e.g. "Occupation: farmer"
-#: app/Elements/AbstractElement.php:237 app/Elements/NoteStructure.php:130
-#: app/Elements/NoteStructure.php:154 app/Elements/NoteStructure.php:166
+#: app/Elements/AbstractElement.php:237 app/Elements/NoteStructure.php:134
+#: app/Elements/NoteStructure.php:158 app/Elements/NoteStructure.php:170
 #: app/Exceptions/FileUploadException.php:101 app/Fact.php:635
 #: app/GedcomRecord.php:554 app/Http/RequestHandlers/CheckTree.php:418
 #: app/Http/RequestHandlers/CheckTree.php:420
@@ -121,7 +137,7 @@ msgstr "%1$s × %2$s pikslar"
 #: resources/views/fact-association-structure.phtml:103
 #: resources/views/fact-association-structure.phtml:107
 #: resources/views/fact-gedcom-fields.phtml:66
-#: resources/views/modules/media-list/page.phtml:143
+#: resources/views/modules/media-list/page.phtml:142
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
@@ -197,7 +213,7 @@ msgstr[1] "%s anonyme brukarar logga på"
 #: resources/views/modules/ancestors-chart/tree.phtml:42
 #: resources/views/modules/descendancy_chart/tree.phtml:40
 #: resources/views/statistics/families/top10-list.phtml:20
-#: resources/views/statistics/families/top10-nolist.phtml:16
+#: resources/views/statistics/families/top10-nolist.phtml:17
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
@@ -792,7 +808,7 @@ msgid "A list of submitters."
 msgstr "Ei liste over bidragsytarar."
 
 #. I18N: Description of “Research tasks” module
-#: app/Module/ResearchTaskModule.php:84
+#: app/Module/ResearchTaskModule.php:82
 msgid "A list of tasks and activities that are linked to the family tree."
 msgstr "Liste over oppgåver og aktivitetar knytte til slektstreet."
 
@@ -1107,8 +1123,8 @@ msgstr "Aban"
 msgid "Abbreviate place names"
 msgstr "Forkort stadsnamn"
 
-#: app/Gedcom.php:833 app/Gedcom.php:1422 app/Gedcom.php:1594
-#: app/Gedcom.php:1849 resources/views/lists/sources-table.phtml:95
+#: app/CustomTags/GedcomL.php:261 app/CustomTags/RootsMagic.php:80
+#: app/Gedcom.php:854 resources/views/lists/sources-table.phtml:95
 #: resources/views/modals/source-fields.phtml:22
 msgid "Abbreviation"
 msgstr "Korting"
@@ -1458,33 +1474,29 @@ msgstr "Legg inn eigne tekstar og bileter."
 msgid "Add/edit a journal/news entry"
 msgstr "Legg til/endre journal/nyhende"
 
-#: app/Gedcom.php:1521 app/Gedcom.php:1534 app/Gedcom.php:1536
-#: app/Gedcom.php:1537 app/Gedcom.php:1545 app/Gedcom.php:1546
-#: app/Gedcom.php:1553 app/Gedcom.php:1566 app/Gedcom.php:1568
-#: app/Gedcom.php:1569 app/Gedcom.php:1579 app/Gedcom.php:1580
-msgid "Additional information"
-msgstr "Ytterlegare informasjon"
-
-#: app/Gedcom.php:407 app/Gedcom.php:520 app/Gedcom.php:540 app/Gedcom.php:811
-#: app/Gedcom.php:858 app/Gedcom.php:1022 app/Gedcom.php:1404
-#: app/Gedcom.php:1761 app/Http/RequestHandlers/CreateRepositoryModal.php:50
+#: app/CustomTags/Aldfaer.php:66 app/CustomTags/GedcomL.php:225
+#: app/CustomTags/PersonalAncestralFile.php:67 app/Gedcom.php:428
+#: app/Gedcom.php:541 app/Gedcom.php:561 app/Gedcom.php:832 app/Gedcom.php:879
+#: app/Http/RequestHandlers/CreateRepositoryModal.php:50
 #: app/Module/FixCemeteryTag.php:84
 #: resources/views/modals/submitter-fields.phtml:33
 msgid "Address"
 msgstr "Adresse"
 
-#: app/Gedcom.php:408 app/Gedcom.php:521 app/Gedcom.php:541 app/Gedcom.php:812
-#: app/Gedcom.php:859 app/Gedcom.php:1405 app/Gedcom.php:1762
+#: app/CustomTags/GedcomL.php:226 app/CustomTags/PersonalAncestralFile.php:68
+#: app/Gedcom.php:429 app/Gedcom.php:542 app/Gedcom.php:562 app/Gedcom.php:833
+#: app/Gedcom.php:880
 msgid "Address line 1"
 msgstr "Adresselinje 1"
 
-#: app/Gedcom.php:409 app/Gedcom.php:522 app/Gedcom.php:542 app/Gedcom.php:813
-#: app/Gedcom.php:860 app/Gedcom.php:1406 app/Gedcom.php:1763
+#: app/CustomTags/GedcomL.php:227 app/CustomTags/PersonalAncestralFile.php:69
+#: app/Gedcom.php:430 app/Gedcom.php:543 app/Gedcom.php:563 app/Gedcom.php:834
+#: app/Gedcom.php:881
 msgid "Address line 2"
 msgstr "Adresselinje 2"
 
-#: app/Gedcom.php:410 app/Gedcom.php:523 app/Gedcom.php:543 app/Gedcom.php:814
-#: app/Gedcom.php:861 app/Gedcom.php:1407
+#: app/CustomTags/GedcomL.php:228 app/Gedcom.php:431 app/Gedcom.php:544
+#: app/Gedcom.php:564 app/Gedcom.php:835 app/Gedcom.php:882
 msgid "Address line 3"
 msgstr "Adresselinje 3"
 
@@ -1497,7 +1509,7 @@ msgstr "Adresser"
 msgid "Adelaide, Australia"
 msgstr "Adelaide, Australia"
 
-#: app/Gedcom.php:1444
+#: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
 msgstr "Administrativ ID"
 
@@ -1537,19 +1549,22 @@ msgstr "Adoptert"
 msgid "Adopted by both parents"
 msgstr "Adoptert av begge foreldre"
 
-#: app/Elements/AdoptedByWhichParent.php:58 app/Gedcom.php:1119
+#: app/CustomTags/BrothersKeeper.php:92
+#: app/Elements/AdoptedByWhichParent.php:58
 msgid "Adopted by father"
 msgstr "Adoptert av far"
 
-#: app/Elements/AdoptedByWhichParent.php:59 app/Gedcom.php:1120
+#: app/CustomTags/BrothersKeeper.php:93
+#: app/Elements/AdoptedByWhichParent.php:59
 msgid "Adopted by mother"
 msgstr "Adoptert av mor"
 
-#: app/Gedcom.php:1098 app/Gedcom.php:1758
+#: app/CustomTags/BrothersKeeper.php:71
+#: app/CustomTags/PersonalAncestralFile.php:64
 msgid "Adopted name"
 msgstr "Adopsjonsnamn"
 
-#: app/Gedcom.php:581 app/Gedcom.php:584
+#: app/Gedcom.php:602 app/Gedcom.php:605
 #: app/Module/IndividualFactsTabModule.php:155
 msgid "Adoption"
 msgstr "Adopsjon"
@@ -1624,11 +1639,11 @@ msgstr "Adopsjon av ei syster"
 msgid "Adoption of a son"
 msgstr "Adopsjon av ein son"
 
-#: app/Gedcom.php:583 app/Module/IndividualFactsTabModule.php:154
+#: app/Gedcom.php:604 app/Module/IndividualFactsTabModule.php:154
 msgid "Adoptive parents"
 msgstr "Adoptivforeldre"
 
-#: app/Gedcom.php:628
+#: app/Gedcom.php:649
 msgid "Adult christening"
 msgstr "Voksendåp"
 
@@ -1650,7 +1665,7 @@ msgstr "Afrika"
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr "Etter å ha oppretta slektstreet, vil du kunne importere data frå ei GEDCOM-fil."
 
-#: app/Gedcom.php:548 app/Statistics/Google/ChartAge.php:137
+#: app/Gedcom.php:569 app/Statistics/Google/ChartAge.php:137
 #: app/Statistics/Google/ChartMarriageAge.php:160
 #: resources/views/fact-date.phtml:137
 #: resources/views/lists/chart-by-age.phtml:32
@@ -1716,7 +1731,8 @@ msgstr "Foreldre sin alder ved sia av barnet sin fødselsdato"
 msgid "Age related to death year"
 msgstr "Alder jamført med dødsår"
 
-#: app/Gedcom.php:415 app/Gedcom.php:549 app/Gedcom.php:840 app/Gedcom.php:1403
+#: app/CustomTags/GedcomL.php:233 app/Gedcom.php:436 app/Gedcom.php:570
+#: app/Gedcom.php:861
 msgid "Agency"
 msgstr "Avdeling"
 
@@ -1731,7 +1747,7 @@ msgid "Albania"
 msgstr "Albania"
 
 #. I18N: Name of a module
-#: app/Gedcom.php:1163 app/Module/AlbumModule.php:42
+#: app/CustomTags/FamilyTreeBuilder.php:57 app/Module/AlbumModule.php:42
 msgid "Album"
 msgstr "Album"
 
@@ -1745,7 +1761,7 @@ msgstr "Albuquerque, New Mexico, USA"
 msgid "Algeria"
 msgstr "Algerie"
 
-#: app/Gedcom.php:587
+#: app/Gedcom.php:608
 msgid "Alias"
 msgstr "Alias"
 
@@ -1819,17 +1835,14 @@ msgstr "Tillat brukarar å sjå GEDCOM-postar"
 msgid "Allow visitors to request a new user account"
 msgstr "Tillat besøkjande å be om brukarkonto"
 
-#: app/Gedcom.php:1099 app/Gedcom.php:1162 app/Gedcom.php:1239
-#: app/Gedcom.php:1485 app/Gedcom.php:1486 app/Gedcom.php:1581
-#: app/Gedcom.php:1759 app/Gedcom.php:1760
+#: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/Geneatique.php:59 app/CustomTags/PersonalAncestralFile.php:65
+#: app/CustomTags/PersonalAncestralFile.php:66
 msgid "Also known as"
 msgstr "Også kjend som"
 
-#: app/Gedcom.php:1523 app/Gedcom.php:1555
-msgid "Alternative place name"
-msgstr "Alternativt stadnamn"
-
-#: app/Gedcom.php:1035
+#: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
 msgstr "Alternativ skrivemåte for etternamn"
 
@@ -1903,7 +1916,7 @@ msgstr "Ei oppdatering er tilgjengeleg."
 msgid "Ancestors"
 msgstr "Forfedre"
 
-#: app/Gedcom.php:588
+#: app/Gedcom.php:609
 msgid "Ancestors interest"
 msgstr "Interesse for ane"
 
@@ -1917,17 +1930,17 @@ msgstr "Forfedrar til "
 msgid "Ancestors of %s"
 msgstr "Forfedrar til %s"
 
-#: app/Gedcom.php:586
+#: app/Gedcom.php:607
 msgid "Ancestral file number"
 msgstr "AFN nummer"
 
 #. I18N: GEDCOM tag _APID
-#: app/Gedcom.php:1063
+#: app/CustomTags/Ancestry.php:64
 msgid "Ancestry PID"
 msgstr "Ancestry PID"
 
 #. I18N: GEDCOM tag _APID
-#: app/Gedcom.php:1237
+#: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
 msgstr "Ancestry.com kildeidentifikator"
 
@@ -1964,7 +1977,7 @@ msgstr "Årsdag"
 msgid "Anniversary calendar"
 msgstr "Kalender over årsdagar"
 
-#: app/Gedcom.php:451
+#: app/Gedcom.php:472
 msgid "Annulment"
 msgstr "Annullert ekteskap"
 
@@ -1991,11 +2004,11 @@ msgstr "Alle med brukarkonto har tilgjenge til denne nettstaden."
 msgid "Apia, Samoa"
 msgstr "Apia, Samoa"
 
-#: app/Gedcom.php:518
+#: app/Gedcom.php:539
 msgid "Application ID"
 msgstr "Applikasjons-ID"
 
-#: app/Gedcom.php:535
+#: app/Gedcom.php:556
 msgid "Application name"
 msgstr "Applikasjonsnamn"
 
@@ -2060,7 +2073,7 @@ msgstr "Havblå"
 msgid "Are you sure you want to delete the link to “%s”?"
 msgstr "Er du sikker på at du vil slette lenka til “%s”?"
 
-#: resources/views/individual-page-name.phtml:86
+#: resources/views/individual-page-name.phtml:88
 #: resources/views/media-page-details.phtml:38
 msgid "Are you sure you want to delete this fact?"
 msgstr "Er du sikker på at du vil slette denne posten?"
@@ -2143,10 +2156,11 @@ msgstr "Aske"
 msgid "Asia"
 msgstr "Asia"
 
-#: app/Gedcom.php:589 app/Gedcom.php:907 app/Gedcom.php:919 app/Gedcom.php:933
-#: app/Gedcom.php:947 app/Gedcom.php:1284 app/Gedcom.php:1298
-#: app/Gedcom.php:1338 app/Gedcom.php:1538 app/Gedcom.php:1570
-#: app/Gedcom.php:1788 app/Gedcom.php:1876 app/Gedcom.php:1890
+#: app/CustomTags/Gedcom7.php:72 app/CustomTags/Gedcom7.php:84
+#: app/CustomTags/Gedcom7.php:98 app/CustomTags/Gedcom7.php:112
+#: app/CustomTags/GedcomL.php:119 app/CustomTags/GedcomL.php:133
+#: app/CustomTags/GedcomL.php:173 app/CustomTags/PhpGedView.php:63
+#: app/Gedcom.php:610 app/Gedcom.php:929 app/Gedcom.php:943
 #: resources/views/fact-association-structure.phtml:101
 #: resources/views/fact-association-structure.phtml:105
 msgid "Associate"
@@ -2204,7 +2218,7 @@ msgid "Attending"
 msgstr "Observatør"
 
 #. I18N: Type of media object
-#: app/Elements/SourceMediaType.php:79 app/Gedcom.php:1715
+#: app/CustomTags/Legacy.php:147 app/Elements/SourceMediaType.php:79
 msgid "Audio"
 msgstr "Lyd"
 
@@ -2245,16 +2259,16 @@ msgstr "Australia"
 msgid "Austria"
 msgstr "Austerrike"
 
-#: app/Gedcom.php:834 resources/views/lists/sources-table.phtml:96
+#: app/Gedcom.php:855 resources/views/lists/sources-table.phtml:96
 #: resources/views/modals/source-fields.phtml:30
 msgid "Author"
 msgstr "Forfattar"
 
-#: app/Gedcom.php:1786 app/Gedcom.php:1792 app/Gedcom.php:1798
-#: app/Gedcom.php:1799 app/Gedcom.php:1801 app/Gedcom.php:1802
-#: app/Gedcom.php:1873 app/Gedcom.php:1889 app/Gedcom.php:1903
-#: app/Gedcom.php:1905 app/Gedcom.php:1907 app/Gedcom.php:1909
-#: app/Gedcom.php:1911 app/Gedcom.php:1913
+#: app/CustomTags/PhpGedView.php:61 app/CustomTags/PhpGedView.php:67
+#: app/CustomTags/PhpGedView.php:73 app/CustomTags/PhpGedView.php:74
+#: app/CustomTags/PhpGedView.php:76 app/CustomTags/PhpGedView.php:77
+#: app/Gedcom.php:926 app/Gedcom.php:942 app/Gedcom.php:956 app/Gedcom.php:958
+#: app/Gedcom.php:960 app/Gedcom.php:962 app/Gedcom.php:964 app/Gedcom.php:966
 msgid "Author of last change"
 msgstr "Brukar for siste endring"
 
@@ -2432,7 +2446,7 @@ msgstr "Bahrain"
 msgid "Bangladesh"
 msgstr "Bangladesh"
 
-#: app/Gedcom.php:597 resources/views/calendar-page.phtml:187
+#: app/Gedcom.php:618 resources/views/calendar-page.phtml:187
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
 msgstr "Truandedåp"
@@ -2509,7 +2523,7 @@ msgstr "Syster sin truandedåp"
 msgid "Baptism of a son"
 msgstr "Son sin truandedåp"
 
-#: app/Gedcom.php:600 resources/xml/reports/missing_facts_report.xml:17
+#: app/Gedcom.php:621 resources/xml/reports/missing_facts_report.xml:17
 msgid "Bar mitzvah"
 msgstr "Bar mitzvah"
 
@@ -2518,11 +2532,11 @@ msgstr "Bar mitzvah"
 msgid "Barbados"
 msgstr "Barbados"
 
-#: app/Gedcom.php:1319
+#: app/CustomTags/GedcomL.php:154
 msgid "Base GEDCOM tag"
 msgstr "Basis GEDCOM-kode"
 
-#: app/Gedcom.php:603 resources/xml/reports/missing_facts_report.xml:18
+#: app/Gedcom.php:624 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
 msgstr "Bat mitzvah"
 
@@ -2579,7 +2593,7 @@ msgstr "Forlovar til brudgomen"
 msgid "Bhutan"
 msgstr "Bhutan"
 
-#: app/Gedcom.php:1848
+#: app/CustomTags/RootsMagic.php:79
 msgid "Bibliography"
 msgstr "Bibliografi"
 
@@ -2588,7 +2602,7 @@ msgstr "Bibliografi"
 msgid "Billings, Montana, United States"
 msgstr "Billings, Montana, USA"
 
-#: app/Gedcom.php:787
+#: app/Gedcom.php:808
 msgid "Binary data object"
 msgstr "Binært dataobjekt"
 
@@ -2605,7 +2619,7 @@ msgstr "Bing™ webmaster tools"
 msgid "Birmingham, Alabama, United States"
 msgstr "Birmingham, Alabama, USA"
 
-#: app/Gedcom.php:606 app/Http/RequestHandlers/IndividualPage.php:197
+#: app/Gedcom.php:627 app/Http/RequestHandlers/IndividualPage.php:197
 #: resources/views/calendar-page.phtml:184
 #: resources/views/lists/individuals-table.phtml:217
 #: resources/views/lists/individuals-table.phtml:222
@@ -2762,7 +2776,7 @@ msgstr "Seinaste fødselsdato"
 msgid "Birth date range start"
 msgstr "Tidlegaste fødselssdato"
 
-#: app/Gedcom.php:1100
+#: app/CustomTags/BrothersKeeper.php:73
 msgid "Birth name"
 msgstr "Fødenamn"
 
@@ -2839,7 +2853,7 @@ msgstr "Syster sin fødsel"
 msgid "Birth of a son"
 msgstr "Son sin fødsel"
 
-#: app/Gedcom.php:608
+#: app/Gedcom.php:629
 msgid "Birth parents"
 msgstr "Fødeforeldre"
 
@@ -2869,11 +2883,11 @@ msgstr "Fødslar etter hundreår"
 msgid "Bismarck, North Dakota, United States"
 msgstr "Bismarck, North Dakota, USA"
 
-#: app/Gedcom.php:610
+#: app/Gedcom.php:631
 msgid "Blessing"
 msgstr "Velsigning"
 
-#: app/Gedcom.php:1806 resources/views/edit-blocks-block.phtml:22
+#: app/CustomTags/PhpGedView.php:81 resources/views/edit-blocks-block.phtml:22
 msgid "Block"
 msgstr "Blokk"
 
@@ -2984,7 +2998,7 @@ msgstr "Brigham City, Utah, USA"
 msgid "Brisbane, Australia"
 msgstr "Brisbane, Australia"
 
-#: app/Gedcom.php:1121
+#: app/CustomTags/BrothersKeeper.php:94
 msgid "Brit milah"
 msgstr "Brit Mila"
 
@@ -3042,7 +3056,7 @@ msgstr "Buenos Aires, Argentina"
 msgid "Bulgaria"
 msgstr "Bulgaria"
 
-#: app/Gedcom.php:613 resources/views/calendar-page.phtml:199
+#: app/Gedcom.php:634 resources/views/calendar-page.phtml:199
 #: resources/xml/reports/family_group_report.xml:351
 #: resources/xml/reports/family_group_report.xml:705
 #: resources/xml/reports/family_group_report.xml:1049
@@ -3247,7 +3261,7 @@ msgstr "Kalenderkonvertering"
 msgid "Calgary, Alberta, Canada"
 msgstr "Calgary, Alberta, Canada"
 
-#: app/Gedcom.php:851 resources/views/modals/source-fields.phtml:50
+#: app/Gedcom.php:872 resources/views/modals/source-fields.phtml:50
 msgid "Call number"
 msgstr "Katalognummer"
 
@@ -3291,7 +3305,7 @@ msgstr "Kort"
 msgid "Cardston, Alberta, Canada"
 msgstr "Cardston, Alberta, Canada"
 
-#: app/Gedcom.php:616
+#: app/Gedcom.php:637
 msgid "Caste"
 msgstr "Kaste"
 
@@ -3299,15 +3313,16 @@ msgstr "Kaste"
 msgid "Categories"
 msgstr "Kategoriar"
 
-#: app/Gedcom.php:1309 app/Gedcom.php:1365 app/Gedcom.php:1706
+#: app/CustomTags/GedcomL.php:144 app/CustomTags/GedcomL.php:200
+#: app/CustomTags/Legacy.php:138
 msgid "Category"
 msgstr "Kategori"
 
-#: app/Gedcom.php:416 app/Gedcom.php:550 app/Gedcom.php:1412
+#: app/CustomTags/GedcomL.php:234 app/Gedcom.php:437 app/Gedcom.php:571
 msgid "Cause"
 msgstr "Årsak"
 
-#: app/Gedcom.php:643 app/Gedcom.php:1242
+#: app/CustomTags/FamilyTreeMaker.php:114 app/Gedcom.php:664
 msgid "Cause of death"
 msgstr "Dødsårsak"
 
@@ -3327,11 +3342,11 @@ msgstr "Caymanøyane"
 msgid "Cebu City, Philippines"
 msgstr "Cebu City, Filippinene"
 
-#: app/Gedcom.php:1791
+#: app/CustomTags/PhpGedView.php:66
 msgid "Cemetery"
 msgstr "Gravstad"
 
-#: app/Gedcom.php:617
+#: app/Gedcom.php:638
 msgid "Census"
 msgstr "Folketeljing"
 
@@ -3340,7 +3355,7 @@ msgstr "Folketeljing"
 msgid "Census assistant"
 msgstr "Folketeljingshjelp"
 
-#: app/Gedcom.php:618
+#: app/Gedcom.php:639
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:14
 msgid "Census date"
 msgstr "Dato for folketeljing"
@@ -3349,7 +3364,7 @@ msgstr "Dato for folketeljing"
 msgid "Census date and place"
 msgstr "Dato og stad for folketeljing"
 
-#: app/Gedcom.php:619
+#: app/Gedcom.php:640
 msgid "Census place"
 msgstr "Stad for folketeljing"
 
@@ -3388,10 +3403,6 @@ msgstr "Hundreår"
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "Sertifikat"
-
-#: app/Gedcom.php:1539 app/Gedcom.php:1571
-msgid "Certificate number"
-msgstr "Sertifikatnummer"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:478
@@ -3456,7 +3467,7 @@ msgstr "Endringslogg"
 msgid "Character encoding"
 msgstr "Teiknsett"
 
-#: app/Gedcom.php:504
+#: app/Gedcom.php:525
 msgid "Character set"
 msgstr "Teiknsett"
 
@@ -3514,7 +3525,7 @@ msgstr "Kontrollerar serverinnstillingar"
 msgid "Chicago, Illinois, United States"
 msgstr "Chicago, Illinois, USA"
 
-#: app/Gedcom.php:457 resources/views/edit/change-family-members.phtml:65
+#: app/Gedcom.php:478 resources/views/edit/change-family-members.phtml:65
 #: resources/views/edit/change-family-members.phtml:76
 #: resources/views/modules/pedigree-chart/previous.phtml:40
 msgid "Child"
@@ -3605,7 +3616,7 @@ msgstr "Velg slektninger"
 msgid "Choose user defined welcome text typed below"
 msgstr "Bruk eigendefinert velkomsttekst skive i feltet nedanfor"
 
-#: app/Gedcom.php:624 resources/xml/reports/family_group_report.xml:206
+#: app/Gedcom.php:645 resources/xml/reports/family_group_report.xml:206
 #: resources/xml/reports/family_group_report.xml:560
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
@@ -3691,7 +3702,7 @@ msgstr "Christmas Island"
 msgid "Circumciser"
 msgstr "Omskjærar"
 
-#: app/Gedcom.php:1241
+#: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
 msgstr "Omskjering"
 
@@ -3699,23 +3710,24 @@ msgstr "Omskjering"
 msgid "Citation"
 msgstr "Kjeldetilvising"
 
-#: app/Gedcom.php:445 app/Gedcom.php:499 app/Gedcom.php:577 app/Gedcom.php:688
-#: app/Gedcom.php:760 app/Gedcom.php:784 app/Gedcom.php:808 app/Gedcom.php:1295
-#: app/Gedcom.php:1349 app/Gedcom.php:1438 app/Gedcom.php:1471
-#: app/Gedcom.php:1887 app/Gedcom.php:1901
-#: resources/xml/reports/fact_sources.xml:74
+#: app/CustomTags/GedcomL.php:130 app/CustomTags/GedcomL.php:184
+#: app/CustomTags/GedcomL.php:277 app/CustomTags/GedcomL.php:310
+#: app/Gedcom.php:466 app/Gedcom.php:520 app/Gedcom.php:598 app/Gedcom.php:709
+#: app/Gedcom.php:781 app/Gedcom.php:805 app/Gedcom.php:829 app/Gedcom.php:940
+#: app/Gedcom.php:954 resources/xml/reports/fact_sources.xml:74
 #: resources/xml/reports/fact_sources.xml:161
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
 msgid "Citation details"
 msgstr "Kjeldetilvising"
 
-#: app/Gedcom.php:1821
+#: app/CustomTags/Reunion.php:55
 msgid "Citizenship"
 msgstr "Statsborgarskap"
 
-#: app/Gedcom.php:411 app/Gedcom.php:524 app/Gedcom.php:544 app/Gedcom.php:815
-#: app/Gedcom.php:862 app/Gedcom.php:1408 app/Gedcom.php:1764
+#: app/CustomTags/GedcomL.php:229 app/CustomTags/PersonalAncestralFile.php:70
+#: app/Gedcom.php:432 app/Gedcom.php:545 app/Gedcom.php:565 app/Gedcom.php:836
+#: app/Gedcom.php:883
 msgid "City"
 msgstr "By"
 
@@ -3724,7 +3736,7 @@ msgstr "By"
 msgid "Ciudad Juarez, Mexico"
 msgstr "Ciudad Juarez, Mexico"
 
-#: app/Elements/MarriageType.php:63 app/Gedcom.php:1017
+#: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:63
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
 msgstr "Borgarleg vigsel"
@@ -3773,10 +3785,6 @@ msgstr "Kokosøyane"
 msgid "Coffee and Cream"
 msgstr "Kaffe og fløte"
 
-#: app/Gedcom.php:1548
-msgid "Cohabitation"
-msgstr "Sambuarskap"
-
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
 msgid "Cold Day"
@@ -3807,8 +3815,7 @@ msgstr "Columbia, South Carolina, USA"
 msgid "Columbus, Ohio, United States"
 msgstr "Columbus, Ohio, USA"
 
-#: app/Gedcom.php:1540 app/Gedcom.php:1572 app/Gedcom.php:1787
-#: app/Gedcom.php:1793
+#: app/CustomTags/PhpGedView.php:62 app/CustomTags/PhpGedView.php:68
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -3819,7 +3826,7 @@ msgstr "Kommentar"
 msgid "Comments"
 msgstr "Kommentarar"
 
-#: app/Gedcom.php:1090
+#: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
 msgstr "Samvitsekteskap"
 
@@ -3865,11 +3872,12 @@ msgstr "Gjennomført før 1970: dato ikkje tilgjengelig"
 msgid "Completed; date unknown"
 msgstr "Fullført; ukjent dato"
 
-#: app/Gedcom.php:1310 app/Gedcom.php:1366 app/Gedcom.php:1707
+#: app/CustomTags/GedcomL.php:145 app/CustomTags/GedcomL.php:201
+#: app/CustomTags/Legacy.php:139
 msgid "Completion date"
 msgstr "Fullføringsdato"
 
-#: app/Gedcom.php:630 resources/xml/reports/missing_facts_report.xml:19
+#: app/Gedcom.php:651 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
 msgstr "Konfirmasjon"
 
@@ -3897,7 +3905,7 @@ msgstr "Inneheld"
 msgid "Content"
 msgstr "Innhald"
 
-#: app/Gedcom.php:772
+#: app/Gedcom.php:793
 msgid "Continuation"
 msgstr "Fortsettelse"
 
@@ -3982,8 +3990,8 @@ msgstr "Cook Islands"
 msgid "Cookies"
 msgstr "Informasjonskapslar"
 
-#: app/Gedcom.php:429 app/Gedcom.php:561 app/Gedcom.php:1395
-#: app/Gedcom.php:1418
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/GedcomL.php:257
+#: app/Gedcom.php:450 app/Gedcom.php:582
 msgid "Coordinates"
 msgstr "Koordinatar"
 
@@ -3994,8 +4002,8 @@ msgstr "København, Danmark"
 
 #: resources/views/edit/icon-fact-copy.phtml:13
 #: resources/views/edit/icon-fact-copy.phtml:15
-#: resources/views/individual-page-name.phtml:80
 #: resources/views/individual-page-name.phtml:82
+#: resources/views/individual-page-name.phtml:84
 #: resources/views/modules/share-url/share.phtml:16
 msgid "Copy"
 msgstr "Kopier"
@@ -4014,7 +4022,7 @@ msgstr "Kopierer filer…"
 msgid "Copy the URL of the record to the clipboard"
 msgstr "Kopier posten sin URL til utklippsmappa"
 
-#: app/Gedcom.php:506 app/Gedcom.php:533
+#: app/Gedcom.php:527 app/Gedcom.php:554
 msgid "Copyright"
 msgstr "Opphavsrett"
 
@@ -4023,7 +4031,7 @@ msgstr "Opphavsrett"
 msgid "Cordoba, Argentina"
 msgstr "Cordoba, Argentina"
 
-#: app/Gedcom.php:519
+#: app/Gedcom.php:540
 msgid "Corporation"
 msgstr "Firma"
 
@@ -4055,9 +4063,9 @@ msgstr "Kunne ikkje rettkjenne opplysningene du skreiv inn! Gå attende og prøv
 msgid "Count the visits to each page"
 msgstr "Tel vitjingar av kvar side"
 
-#: app/Gedcom.php:412 app/Gedcom.php:525 app/Gedcom.php:545 app/Gedcom.php:816
-#: app/Gedcom.php:863 app/Gedcom.php:1409 app/Gedcom.php:1765
-#: app/Statistics/Google/ChartDistribution.php:108
+#: app/CustomTags/GedcomL.php:230 app/CustomTags/PersonalAncestralFile.php:71
+#: app/Gedcom.php:433 app/Gedcom.php:546 app/Gedcom.php:566 app/Gedcom.php:837
+#: app/Gedcom.php:884 app/Statistics/Google/ChartDistribution.php:108
 msgid "Country"
 msgstr "Land"
 
@@ -4139,25 +4147,29 @@ msgid "Create, update, and delete a family tree for every GEDCOM file in the dat
 msgstr "Opprett, oppdater, og slett eit slektstre for kvar GEDCOM-fil i datamappa."
 
 #. I18N: GEDCOM tag _CREA
-#: app/Gedcom.php:923 app/Gedcom.php:952 app/Gedcom.php:967 app/Gedcom.php:971
-#: app/Gedcom.php:980 app/Gedcom.php:988 app/Gedcom.php:997 app/Gedcom.php:1073
+#: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:88
+#: app/CustomTags/Gedcom7.php:117 app/CustomTags/Gedcom7.php:132
+#: app/CustomTags/Gedcom7.php:136 app/CustomTags/Gedcom7.php:145
+#: app/CustomTags/Gedcom7.php:153 app/CustomTags/Gedcom7.php:162
 msgid "Created at"
 msgstr "Oppretta"
 
-#: app/Gedcom.php:924 app/Gedcom.php:953 app/Gedcom.php:968 app/Gedcom.php:972
-#: app/Gedcom.php:981 app/Gedcom.php:989 app/Gedcom.php:998 app/Gedcom.php:1303
-#: app/Gedcom.php:1359 app/Gedcom.php:1547 app/Gedcom.php:1584
-#: app/Gedcom.php:1587 app/Gedcom.php:1589 app/Gedcom.php:1591
-#: app/Gedcom.php:1593
+#: app/CustomTags/Gedcom7.php:89 app/CustomTags/Gedcom7.php:118
+#: app/CustomTags/Gedcom7.php:133 app/CustomTags/Gedcom7.php:137
+#: app/CustomTags/Gedcom7.php:146 app/CustomTags/Gedcom7.php:154
+#: app/CustomTags/Gedcom7.php:163 app/CustomTags/GedcomL.php:138
+#: app/CustomTags/GedcomL.php:194
 msgid "Creation date"
 msgstr "Opprettingsdato"
 
-#: app/Gedcom.php:925 app/Gedcom.php:954 app/Gedcom.php:969 app/Gedcom.php:973
-#: app/Gedcom.php:982 app/Gedcom.php:990 app/Gedcom.php:999
+#: app/CustomTags/Gedcom7.php:90 app/CustomTags/Gedcom7.php:119
+#: app/CustomTags/Gedcom7.php:134 app/CustomTags/Gedcom7.php:138
+#: app/CustomTags/Gedcom7.php:147 app/CustomTags/Gedcom7.php:155
+#: app/CustomTags/Gedcom7.php:164
 msgid "Creation time"
 msgstr "Tid for oppretting"
 
-#: app/Gedcom.php:639 resources/xml/reports/family_group_report.xml:315
+#: app/Gedcom.php:660 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
 #: resources/xml/reports/family_group_report.xml:669
 #: resources/xml/reports/family_group_report.xml:696
@@ -4347,7 +4359,7 @@ msgstr "Tsjekkia"
 msgid "DKIM digital signature"
 msgstr "DKIM digital signatur"
 
-#: app/Gedcom.php:1244 app/Gedcom.php:1841
+#: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
 msgstr "DNA-profil"
 
@@ -4362,11 +4374,12 @@ msgstr "Daitch-Mokotoff"
 msgid "Dallas, Texas, United States"
 msgstr "Dallas, Texas, USA"
 
-#: app/Gedcom.php:438 app/Gedcom.php:492 app/Gedcom.php:532 app/Gedcom.php:570
-#: app/Gedcom.php:681 app/Gedcom.php:753 app/Gedcom.php:777 app/Gedcom.php:801
-#: app/Gedcom.php:839 app/Gedcom.php:1288 app/Gedcom.php:1342
-#: app/Gedcom.php:1431 app/Gedcom.php:1464 app/Gedcom.php:1880
-#: app/Gedcom.php:1894 resources/views/admin/changes-log.phtml:137
+#: app/CustomTags/GedcomL.php:123 app/CustomTags/GedcomL.php:177
+#: app/CustomTags/GedcomL.php:270 app/CustomTags/GedcomL.php:303
+#: app/Gedcom.php:459 app/Gedcom.php:513 app/Gedcom.php:553 app/Gedcom.php:591
+#: app/Gedcom.php:702 app/Gedcom.php:774 app/Gedcom.php:798 app/Gedcom.php:822
+#: app/Gedcom.php:860 app/Gedcom.php:933 app/Gedcom.php:947
+#: resources/views/admin/changes-log.phtml:137
 msgid "Data"
 msgstr "Data"
 
@@ -4408,14 +4421,16 @@ msgstr "Datamappe"
 msgid "Database connection"
 msgstr "Databasetilknyting"
 
-#: app/Gedcom.php:1807 resources/views/setup/step-4-database-mysql.phtml:109
+#: app/CustomTags/PhpGedView.php:82
+#: resources/views/setup/step-4-database-mysql.phtml:109
 #: resources/views/setup/step-4-database-pgsql.phtml:95
 #: resources/views/setup/step-4-database-sqlite.phtml:52
 #: resources/views/setup/step-4-database-sqlsvr.phtml:95
 msgid "Database name"
 msgstr "Databasenamn"
 
-#: app/Gedcom.php:1808 resources/views/setup/step-4-database-mysql.phtml:95
+#: app/CustomTags/PhpGedView.php:83
+#: resources/views/setup/step-4-database-mysql.phtml:95
 #: resources/views/setup/step-4-database-pgsql.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:83
 msgid "Database password"
@@ -4425,21 +4440,25 @@ msgstr "Passord for database"
 msgid "Database type"
 msgstr "Database type"
 
-#: app/Gedcom.php:1810 resources/views/setup/step-4-database-mysql.phtml:81
+#: app/CustomTags/PhpGedView.php:85
+#: resources/views/setup/step-4-database-mysql.phtml:81
 #: resources/views/setup/step-4-database-pgsql.phtml:71
 #: resources/views/setup/step-4-database-sqlsvr.phtml:71
 msgid "Database user account"
 msgstr "Brukarnamn for database"
 
-#: app/Gedcom.php:417 app/Gedcom.php:507 app/Gedcom.php:534 app/Gedcom.php:551
-#: app/Gedcom.php:1036 app/Gedcom.php:1071 app/Gedcom.php:1164
-#: app/Gedcom.php:1283 app/Gedcom.php:1337 app/Gedcom.php:1380
-#: app/Gedcom.php:1424 app/Gedcom.php:1441 app/Gedcom.php:1445
-#: app/Gedcom.php:1449 app/Gedcom.php:1455 app/Gedcom.php:1461
-#: app/Gedcom.php:1626 app/Gedcom.php:1651 app/Gedcom.php:1690
-#: app/Gedcom.php:1712 app/Gedcom.php:1861
+#: app/CustomTags/Aldfaer.php:80 app/CustomTags/Ancestry.php:72
+#: app/CustomTags/FamilyTreeBuilder.php:58 app/CustomTags/GedcomL.php:118
+#: app/CustomTags/GedcomL.php:172 app/CustomTags/GedcomL.php:215
+#: app/CustomTags/GedcomL.php:263 app/CustomTags/GedcomL.php:280
+#: app/CustomTags/GedcomL.php:284 app/CustomTags/GedcomL.php:288
+#: app/CustomTags/GedcomL.php:294 app/CustomTags/GedcomL.php:300
+#: app/CustomTags/Legacy.php:58 app/CustomTags/Legacy.php:83
+#: app/CustomTags/Legacy.php:122 app/CustomTags/Legacy.php:144
+#: app/CustomTags/TheMasterGenealogist.php:53 app/Gedcom.php:438
+#: app/Gedcom.php:528 app/Gedcom.php:555 app/Gedcom.php:572
 #: app/Http/RequestHandlers/HelpText.php:219
-#: app/Module/ResearchTaskModule.php:65 app/Module/ResearchTaskModule.php:68
+#: app/Module/ResearchTaskModule.php:63 app/Module/ResearchTaskModule.php:66
 #: resources/views/help/date.phtml:29 resources/views/help/date.phtml:143
 #: resources/views/lists/anniversaries-table.phtml:35
 #: resources/views/modules/todo/research-tasks.phtml:27
@@ -4460,138 +4479,139 @@ msgstr "Dato"
 msgid "Date differences"
 msgstr "Datoskilnader"
 
-#: app/Gedcom.php:592
+#: app/Gedcom.php:613
 msgid "Date of LDS baptism"
 msgstr "Dato for mormondåp"
 
-#: app/Gedcom.php:746
+#: app/Gedcom.php:767
 msgid "Date of LDS child sealing"
 msgstr "Dato for barns besegling (mormon)"
 
-#: app/Gedcom.php:634
+#: app/Gedcom.php:655
 msgid "Date of LDS confirmation"
 msgstr "Dato for LDS-konfirmasjon"
 
-#: app/Gedcom.php:654
+#: app/Gedcom.php:675
 msgid "Date of LDS endowment"
 msgstr "Dato for LDS endowment"
 
-#: app/Gedcom.php:486
+#: app/Gedcom.php:507
 msgid "Date of LDS spouse sealing"
 msgstr "Dato for ektefelles besegling (mormon)"
 
-#: app/Gedcom.php:582
+#: app/Gedcom.php:603
 msgid "Date of adoption"
 msgstr "Dato for adopsjon"
 
-#: app/Gedcom.php:598 resources/xml/reports/missing_facts_report.xml:129
+#: app/Gedcom.php:619 resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
 msgstr "Dato for truandedåp"
 
-#: app/Gedcom.php:601 resources/xml/reports/missing_facts_report.xml:212
+#: app/Gedcom.php:622 resources/xml/reports/missing_facts_report.xml:212
 msgid "Date of bar mitzvah"
 msgstr "Dato for bar mitzvah"
 
-#: app/Gedcom.php:604 resources/xml/reports/missing_facts_report.xml:253
+#: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:253
 msgid "Date of bat mitzvah"
 msgstr "Dato for bat mitzvah"
 
-#: app/Gedcom.php:607 resources/xml/reports/fact_sources.xml:68
+#: app/Gedcom.php:628 resources/xml/reports/fact_sources.xml:68
 #: resources/xml/reports/fact_sources.xml:272
 #: resources/xml/reports/missing_facts_report.xml:81
 #: resources/xml/reports/occupation_report.xml:49
 msgid "Date of birth"
 msgstr "Fødselsdato"
 
-#: app/Gedcom.php:611
+#: app/Gedcom.php:632
 msgid "Date of blessing"
 msgstr "Dato for velsigning"
 
-#: app/Gedcom.php:1122
+#: app/CustomTags/BrothersKeeper.php:95
 msgid "Date of brit milah"
 msgstr "Dato for Brit Mila"
 
-#: app/Gedcom.php:614 resources/xml/reports/missing_facts_report.xml:546
+#: app/Gedcom.php:635 resources/xml/reports/missing_facts_report.xml:546
 msgid "Date of burial"
 msgstr "Dato for gravlegging"
 
-#: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:170
+#: app/Gedcom.php:646 resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
 msgstr "Dato for dåp"
 
-#: app/Gedcom.php:631 resources/xml/reports/missing_facts_report.xml:294
+#: app/Gedcom.php:652 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
 msgstr "Dato for konfirmasjon"
 
-#: app/Gedcom.php:640
+#: app/Gedcom.php:661
 msgid "Date of cremation"
 msgstr "Dato for kremering"
 
-#: app/Gedcom.php:644 resources/xml/reports/cemetery_report.xml:46
+#: app/Gedcom.php:665 resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
 #: resources/xml/reports/missing_facts_report.xml:505
 msgid "Date of death"
 msgstr "Dato for dødsfall"
 
-#: app/Gedcom.php:459
+#: app/Gedcom.php:480
 msgid "Date of divorce"
 msgstr "Dato for skilsmisse"
 
-#: app/Gedcom.php:651
+#: app/Gedcom.php:672
 msgid "Date of emigration"
 msgstr "Emigrasjonsdato"
 
-#: app/Gedcom.php:462 resources/xml/reports/missing_facts_report.xml:336
+#: app/Gedcom.php:483 resources/xml/reports/missing_facts_report.xml:336
 msgid "Date of engagement"
 msgstr "Dato for truloving"
 
-#: app/Gedcom.php:439 app/Gedcom.php:493 app/Gedcom.php:571 app/Gedcom.php:682
-#: app/Gedcom.php:754 app/Gedcom.php:778 app/Gedcom.php:802 app/Gedcom.php:1289
-#: app/Gedcom.php:1343 app/Gedcom.php:1432 app/Gedcom.php:1465
-#: app/Gedcom.php:1881 app/Gedcom.php:1895
+#: app/CustomTags/GedcomL.php:124 app/CustomTags/GedcomL.php:178
+#: app/CustomTags/GedcomL.php:271 app/CustomTags/GedcomL.php:304
+#: app/Gedcom.php:460 app/Gedcom.php:514 app/Gedcom.php:592 app/Gedcom.php:703
+#: app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:823 app/Gedcom.php:934
+#: app/Gedcom.php:948
 msgid "Date of entry in original source"
 msgstr "Dato for innføring i original kilde"
 
-#: app/Gedcom.php:660 app/Gedcom.php:1390
+#: app/CustomTags/GedcomL.php:235 app/Gedcom.php:681
 msgid "Date of event"
 msgstr "Dato for hending"
 
-#: app/Gedcom.php:670 resources/xml/reports/missing_facts_report.xml:378
+#: app/Gedcom.php:691 resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
 msgstr "Dato for fyrste altergang"
 
-#: app/Gedcom.php:677
+#: app/Gedcom.php:698
 msgid "Date of immigration"
 msgstr "Immigrasjonsdato"
 
-#: app/Gedcom.php:454 app/Gedcom.php:621 app/Gedcom.php:768 app/Gedcom.php:789
-#: app/Gedcom.php:820 app/Gedcom.php:836 app/Gedcom.php:867 app/Gedcom.php:883
-#: app/Gedcom.php:1386
+#: app/CustomTags/GedcomL.php:221 app/Gedcom.php:475 app/Gedcom.php:642
+#: app/Gedcom.php:789 app/Gedcom.php:810 app/Gedcom.php:841 app/Gedcom.php:857
+#: app/Gedcom.php:888 app/Gedcom.php:904
 msgid "Date of last change"
 msgstr "Dato for siste endring"
 
-#: app/Gedcom.php:473 resources/xml/reports/fact_sources.xml:319
+#: app/Gedcom.php:494 resources/xml/reports/fact_sources.xml:319
 #: resources/xml/reports/missing_facts_report.xml:463
 msgid "Date of marriage"
 msgstr "Dato for vigsel"
 
-#: app/Gedcom.php:468 resources/xml/reports/missing_facts_report.xml:420
+#: app/Gedcom.php:489 resources/xml/reports/missing_facts_report.xml:420
 msgid "Date of marriage banns"
 msgstr "Dato for lysing"
 
-#: app/Gedcom.php:719
+#: app/Gedcom.php:740
 msgid "Date of naturalization"
 msgstr "Dato for Statsborgarskap"
 
-#: app/Gedcom.php:729
+#: app/Gedcom.php:750
 msgid "Date of ordination"
 msgstr "Dato for ordinasjon"
 
-#: app/Gedcom.php:737
+#: app/Gedcom.php:758
 msgid "Date of residence"
 msgstr "Dato for bustad"
 
-#: app/Gedcom.php:960
+#: app/CustomTags/Gedcom7.php:125
 msgid "Date of status change"
 msgstr "Dato for statusendring"
 
@@ -4603,7 +4623,7 @@ msgstr "Tidbolk"
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr "Tidbolkar nyttast for å angi at fakta, til dømes ein yrkestittel, varte over ein viss periode."
 
-#: app/Gedcom.php:842 resources/views/help/date.phtml:67
+#: app/Gedcom.php:863 resources/views/help/date.phtml:67
 #: resources/views/modules/statistics-chart/custom.phtml:94
 msgid "Date range"
 msgstr "Tidsrom"
@@ -4662,7 +4682,7 @@ msgstr "Dag:"
 msgid "Dead"
 msgstr "Døde"
 
-#: app/Gedcom.php:642 app/Http/RequestHandlers/IndividualPage.php:206
+#: app/Gedcom.php:663 app/Http/RequestHandlers/IndividualPage.php:206
 #: resources/views/calendar-page.phtml:196
 #: resources/views/lists/individuals-table.phtml:204
 #: resources/views/lists/individuals-table.phtml:209
@@ -4938,7 +4958,7 @@ msgstr "Ektefelles død"
 msgid "Death of a wife"
 msgstr "Hustrus død"
 
-#: app/Gedcom.php:1183
+#: app/CustomTags/FamilyTreeMaker.php:55
 msgid "Death of one spouse"
 msgstr "Ein ektefelles død"
 
@@ -5032,12 +5052,13 @@ msgstr "Standard person"
 msgid "Default theme"
 msgstr "Standard tema"
 
-#: app/Gedcom.php:1325 app/Gedcom.php:1326 app/Gedcom.php:1327
-#: app/Gedcom.php:1328 app/Gedcom.php:1329
+#: app/CustomTags/GedcomL.php:160 app/CustomTags/GedcomL.php:161
+#: app/CustomTags/GedcomL.php:162 app/CustomTags/GedcomL.php:163
+#: app/CustomTags/GedcomL.php:164
 msgid "Definition"
 msgstr "Definisjon"
 
-#: app/Gedcom.php:1243
+#: app/CustomTags/FamilyTreeMaker.php:115
 msgid "Degree"
 msgstr "Akademisk grad"
 
@@ -5100,8 +5121,8 @@ msgstr "Slett meldingar som er merka"
 msgid "Delete the preferences for this module."
 msgstr "Slett innstillingar for denne modulen."
 
-#: resources/views/individual-page-name.phtml:88
 #: resources/views/individual-page-name.phtml:90
+#: resources/views/individual-page-name.phtml:92
 msgid "Delete this name"
 msgstr "Slett namn"
 
@@ -5126,7 +5147,7 @@ msgstr "Slettar…"
 msgid "Democratic Republic of the Congo"
 msgstr "Kongo"
 
-#: app/Gedcom.php:1448
+#: app/CustomTags/GedcomL.php:287
 msgid "Demographic data"
 msgstr "Demografiske data"
 
@@ -5163,7 +5184,7 @@ msgstr "Generasjonar etterkomarar"
 msgid "Descendants"
 msgstr "Etterkomarar"
 
-#: app/Gedcom.php:646
+#: app/Gedcom.php:667
 msgid "Descendants interest"
 msgstr "Interesse for etterkomarar"
 
@@ -5177,13 +5198,14 @@ msgstr "Etterkomarar etter "
 msgid "Descendants of %s"
 msgstr "Etterkomarar etter %s"
 
-#: app/Gedcom.php:647 app/Gedcom.php:1304 app/Gedcom.php:1360
-#: app/Gedcom.php:1652 app/Gedcom.php:1744
-#: resources/views/admin/modules.phtml:74 resources/views/admin/tags.phtml:48
-#: resources/views/admin/tags.phtml:178 resources/views/admin/tags.phtml:270
-#: resources/views/admin/tags.phtml:332 resources/views/admin/tags.phtml:407
-#: resources/views/admin/tags.phtml:446 resources/views/admin/tags.phtml:730
-#: resources/views/admin/tags.phtml:784 resources/views/admin/tags.phtml:888
+#: app/CustomTags/GedcomL.php:139 app/CustomTags/GedcomL.php:195
+#: app/CustomTags/Legacy.php:84 app/CustomTags/MyHeritage.php:62
+#: app/Gedcom.php:668 resources/views/admin/modules.phtml:74
+#: resources/views/admin/tags.phtml:48 resources/views/admin/tags.phtml:178
+#: resources/views/admin/tags.phtml:270 resources/views/admin/tags.phtml:332
+#: resources/views/admin/tags.phtml:407 resources/views/admin/tags.phtml:446
+#: resources/views/admin/tags.phtml:730 resources/views/admin/tags.phtml:784
+#: resources/views/admin/tags.phtml:888
 #: resources/views/report-setup-page.phtml:23
 msgid "Description"
 msgstr "Skildring"
@@ -5193,7 +5215,7 @@ msgstr "Skildring"
 msgid "Description META tag"
 msgstr "META tag: Skildring"
 
-#: app/Gedcom.php:509 app/Gedcom.php:1070
+#: app/CustomTags/Ancestry.php:71 app/Gedcom.php:530
 msgid "Destination"
 msgstr "Mål"
 
@@ -5344,12 +5366,12 @@ msgstr "Syn og administrer favorittsider i eit slektstre."
 msgid "Display and manage a user’s favorite pages."
 msgstr "Syne og administrere ein brukar sine favorittsider."
 
-#: app/Gedcom.php:458 resources/views/calendar-page.phtml:193
+#: app/Gedcom.php:479 resources/views/calendar-page.phtml:193
 #: resources/views/lists/families-table.phtml:207
 msgid "Divorce"
 msgstr "Skilsmisse"
 
-#: app/Gedcom.php:460
+#: app/Gedcom.php:481
 msgid "Divorce filed"
 msgstr "Begjæring skilsmisse"
 
@@ -5524,8 +5546,8 @@ msgstr "Endre kjønn"
 
 #: resources/views/edit/input-addon-edit-name.phtml:12
 #: resources/views/edit/input-addon-edit-name.phtml:15
-#: resources/views/individual-page-name.phtml:75
 #: resources/views/individual-page-name.phtml:77
+#: resources/views/individual-page-name.phtml:79
 msgid "Edit the name"
 msgstr "Endre navn"
 
@@ -5573,7 +5595,7 @@ msgstr "Redaktør"
 msgid "Edmonton, Alberta, Canada"
 msgstr "Edmonton, Alberta, Canada"
 
-#: app/Gedcom.php:648
+#: app/Gedcom.php:669
 msgid "Education"
 msgstr "Utdanning"
 
@@ -5616,15 +5638,16 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr "Elul"
 
-#: app/Gedcom.php:1024 app/Gedcom.php:1677
+#: app/CustomTags/Aldfaer.php:68 app/CustomTags/Legacy.php:109
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:21
 msgid "Email"
 msgstr "E-post"
 
-#: app/Gedcom.php:418 app/Gedcom.php:528 app/Gedcom.php:552 app/Gedcom.php:823
-#: app/Gedcom.php:870 app/Gedcom.php:1124 app/Gedcom.php:1769
-#: app/Gedcom.php:1822 resources/views/admin/users-create.phtml:69
+#: app/CustomTags/BrothersKeeper.php:97 app/CustomTags/GedcomL.php:236
+#: app/CustomTags/PersonalAncestralFile.php:75 app/CustomTags/Reunion.php:56
+#: app/Gedcom.php:439 app/Gedcom.php:549 app/Gedcom.php:573 app/Gedcom.php:844
+#: app/Gedcom.php:891 resources/views/admin/users-create.phtml:69
 #: resources/views/admin/users-edit.phtml:80
 #: resources/views/admin/users.phtml:28 resources/views/contact-page.phtml:49
 #: resources/views/edit-account-page.phtml:121
@@ -5640,7 +5663,7 @@ msgstr "E-postadresse"
 msgid "Email verified"
 msgstr "E.post stadfesta"
 
-#: app/Gedcom.php:650 resources/views/calendar-page.phtml:202
+#: app/Gedcom.php:671 resources/views/calendar-page.phtml:202
 msgid "Emigration"
 msgstr "Emigrasjon"
 
@@ -5658,8 +5681,8 @@ msgctxt "MALE"
 msgid "Employee"
 msgstr "Arbeidstakar"
 
-#: app/Elements/RelationIsDescriptor.php:102 app/Gedcom.php:726
-#: app/Gedcom.php:741
+#: app/Elements/RelationIsDescriptor.php:102 app/Gedcom.php:747
+#: app/Gedcom.php:762
 msgid "Employer"
 msgstr "Arbeidsgjevar"
 
@@ -5705,7 +5728,7 @@ msgstr "Endringar til og med"
 msgid "Endowment House"
 msgstr "Endowment House"
 
-#: app/Gedcom.php:461 resources/xml/reports/missing_facts_report.xml:20
+#: app/Gedcom.php:482 resources/xml/reports/missing_facts_report.xml:20
 msgid "Engagement"
 msgstr "Truloving"
 
@@ -5771,7 +5794,7 @@ msgstr "Esfand"
 msgid "Esri/ArcGIS"
 msgstr "Esri/ArcGIS"
 
-#: app/Gedcom.php:1104
+#: app/CustomTags/BrothersKeeper.php:77
 msgid "Estate name"
 msgstr "Eigedomsnamn"
 
@@ -5794,19 +5817,19 @@ msgstr "Etiopia"
 msgid "Europe"
 msgstr "Europa"
 
-#: app/Gedcom.php:441 app/Gedcom.php:464 app/Gedcom.php:495 app/Gedcom.php:573
-#: app/Gedcom.php:659 app/Gedcom.php:684 app/Gedcom.php:756 app/Gedcom.php:780
-#: app/Gedcom.php:804 app/Gedcom.php:1291 app/Gedcom.php:1345
-#: app/Gedcom.php:1389 app/Gedcom.php:1434 app/Gedcom.php:1467
-#: app/Gedcom.php:1883 app/Gedcom.php:1897
-#: resources/views/lists/anniversaries-table.phtml:42
+#: app/CustomTags/GedcomL.php:126 app/CustomTags/GedcomL.php:180
+#: app/CustomTags/GedcomL.php:224 app/CustomTags/GedcomL.php:273
+#: app/CustomTags/GedcomL.php:306 app/Gedcom.php:462 app/Gedcom.php:485
+#: app/Gedcom.php:516 app/Gedcom.php:594 app/Gedcom.php:680 app/Gedcom.php:705
+#: app/Gedcom.php:777 app/Gedcom.php:801 app/Gedcom.php:825 app/Gedcom.php:936
+#: app/Gedcom.php:950 resources/views/lists/anniversaries-table.phtml:42
 #: resources/xml/reports/fact_sources.xml:70
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
 msgid "Event"
 msgstr "Hending"
 
-#: app/Gedcom.php:841 resources/views/calendar-page.phtml:176
+#: app/Gedcom.php:862 resources/views/calendar-page.phtml:176
 #: resources/views/modules/gedcom_stats/statistics.phtml:133
 #: resources/views/modules/html/template-statistics.phtml:56
 #: resources/views/modules/statistics-chart/individual-events.phtml:10
@@ -5885,12 +5908,14 @@ msgstr "Utvid personvernsinnstillingar til avlidne personar"
 msgid "External files"
 msgstr "Eksterne filer"
 
-#: app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:938 app/Gedcom.php:956
-#: app/Gedcom.php:974 app/Gedcom.php:983 app/Gedcom.php:991 app/Gedcom.php:1000
+#: app/CustomTags/Gedcom7.php:77 app/CustomTags/Gedcom7.php:91
+#: app/CustomTags/Gedcom7.php:103 app/CustomTags/Gedcom7.php:121
+#: app/CustomTags/Gedcom7.php:139 app/CustomTags/Gedcom7.php:148
+#: app/CustomTags/Gedcom7.php:156 app/CustomTags/Gedcom7.php:165
 msgid "External identifier"
 msgstr "Ekstern identifikator"
 
-#: app/Gedcom.php:1238 app/Gedcom.php:1843
+#: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
 msgstr "Ekstern lenke"
 
@@ -5899,12 +5924,11 @@ msgid "External media files have a URL instead of a filename."
 msgstr "Eksterne mediefiler har URL istaden for eit filnamn."
 
 #. I18N: Name of a module/sidebar
-#: app/Gedcom.php:1541 app/Gedcom.php:1573
 #: app/Module/IndividualMetadataModule.php:60
 msgid "Extra information"
 msgstr "Ekstra informasjon"
 
-#: app/Gedcom.php:1125
+#: app/CustomTags/BrothersKeeper.php:98
 msgid "Eye color"
 msgstr "Augefarge"
 
@@ -5923,78 +5947,78 @@ msgstr "FAQ"
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr "Ein FAQ (Frequently Asked Questions - Ofte stilte spørsmål) er ei liste med spørsmål og svar der ein kan informere om nettstaden sine retningslinjer, praksis og framgangsmåtar. Spørsmåla kan til dømes omhandle personvern, eigedomsrett, brukarkonti, upassande innhald, krav om kjeldetilvisingar, osb."
 
-#. I18N: https://foko.genealogy.net
-#: app/Gedcom.php:1525 app/Gedcom.php:1527 app/Gedcom.php:1557
-#: app/Gedcom.php:1559
-msgid "FOKO country"
-msgstr "FOKO land"
-
-#: app/Gedcom.php:663 app/Gedcom.php:928 app/Gedcom.php:1874
+#: app/CustomTags/Gedcom7.php:93 app/Gedcom.php:684 app/Gedcom.php:927
 msgid "Fact"
 msgstr "Faktum"
 
-#: app/Gedcom.php:1184 app/Gedcom.php:1203 app/Gedcom.php:1221
-#: app/Gedcom.php:1248
+#: app/CustomTags/FamilyTreeMaker.php:56 app/CustomTags/FamilyTreeMaker.php:75
+#: app/CustomTags/FamilyTreeMaker.php:93 app/CustomTags/FamilyTreeMaker.php:120
 msgid "Fact 1"
 msgstr "Fakta 1"
 
-#: app/Gedcom.php:1185 app/Gedcom.php:1204 app/Gedcom.php:1222
-#: app/Gedcom.php:1249
+#: app/CustomTags/FamilyTreeMaker.php:57 app/CustomTags/FamilyTreeMaker.php:76
+#: app/CustomTags/FamilyTreeMaker.php:94 app/CustomTags/FamilyTreeMaker.php:121
 msgid "Fact 10"
 msgstr "Fakta 10"
 
-#: app/Gedcom.php:1186 app/Gedcom.php:1205 app/Gedcom.php:1223
-#: app/Gedcom.php:1250
+#: app/CustomTags/FamilyTreeMaker.php:58 app/CustomTags/FamilyTreeMaker.php:77
+#: app/CustomTags/FamilyTreeMaker.php:95 app/CustomTags/FamilyTreeMaker.php:122
 msgid "Fact 11"
 msgstr "Fakta 11"
 
-#: app/Gedcom.php:1187 app/Gedcom.php:1206 app/Gedcom.php:1224
-#: app/Gedcom.php:1251
+#: app/CustomTags/FamilyTreeMaker.php:59 app/CustomTags/FamilyTreeMaker.php:78
+#: app/CustomTags/FamilyTreeMaker.php:96 app/CustomTags/FamilyTreeMaker.php:123
 msgid "Fact 12"
 msgstr "Fakta 12"
 
-#: app/Gedcom.php:1188 app/Gedcom.php:1207 app/Gedcom.php:1225
-#: app/Gedcom.php:1252
+#: app/CustomTags/FamilyTreeMaker.php:60 app/CustomTags/FamilyTreeMaker.php:79
+#: app/CustomTags/FamilyTreeMaker.php:97 app/CustomTags/FamilyTreeMaker.php:124
 msgid "Fact 13"
 msgstr "Fakta 13"
 
-#: app/Gedcom.php:1189 app/Gedcom.php:1208 app/Gedcom.php:1226
-#: app/Gedcom.php:1253
+#: app/CustomTags/FamilyTreeMaker.php:61 app/CustomTags/FamilyTreeMaker.php:80
+#: app/CustomTags/FamilyTreeMaker.php:98 app/CustomTags/FamilyTreeMaker.php:125
 msgid "Fact 2"
 msgstr "Fakta 2"
 
-#: app/Gedcom.php:1190 app/Gedcom.php:1209 app/Gedcom.php:1227
-#: app/Gedcom.php:1254
+#: app/CustomTags/FamilyTreeMaker.php:62 app/CustomTags/FamilyTreeMaker.php:81
+#: app/CustomTags/FamilyTreeMaker.php:99 app/CustomTags/FamilyTreeMaker.php:126
 msgid "Fact 3"
 msgstr "Fakta 3"
 
-#: app/Gedcom.php:1191 app/Gedcom.php:1210 app/Gedcom.php:1228
-#: app/Gedcom.php:1255
+#: app/CustomTags/FamilyTreeMaker.php:63 app/CustomTags/FamilyTreeMaker.php:82
+#: app/CustomTags/FamilyTreeMaker.php:100
+#: app/CustomTags/FamilyTreeMaker.php:127
 msgid "Fact 4"
 msgstr "Fakta 4"
 
-#: app/Gedcom.php:1192 app/Gedcom.php:1211 app/Gedcom.php:1229
-#: app/Gedcom.php:1256
+#: app/CustomTags/FamilyTreeMaker.php:64 app/CustomTags/FamilyTreeMaker.php:83
+#: app/CustomTags/FamilyTreeMaker.php:101
+#: app/CustomTags/FamilyTreeMaker.php:128
 msgid "Fact 5"
 msgstr "Fakta 5"
 
-#: app/Gedcom.php:1193 app/Gedcom.php:1212 app/Gedcom.php:1230
-#: app/Gedcom.php:1257
+#: app/CustomTags/FamilyTreeMaker.php:65 app/CustomTags/FamilyTreeMaker.php:84
+#: app/CustomTags/FamilyTreeMaker.php:102
+#: app/CustomTags/FamilyTreeMaker.php:129
 msgid "Fact 6"
 msgstr "Fakta 6"
 
-#: app/Gedcom.php:1194 app/Gedcom.php:1213 app/Gedcom.php:1231
-#: app/Gedcom.php:1258
+#: app/CustomTags/FamilyTreeMaker.php:66 app/CustomTags/FamilyTreeMaker.php:85
+#: app/CustomTags/FamilyTreeMaker.php:103
+#: app/CustomTags/FamilyTreeMaker.php:130
 msgid "Fact 7"
 msgstr "Fakta 7"
 
-#: app/Gedcom.php:1195 app/Gedcom.php:1214 app/Gedcom.php:1232
-#: app/Gedcom.php:1259
+#: app/CustomTags/FamilyTreeMaker.php:67 app/CustomTags/FamilyTreeMaker.php:86
+#: app/CustomTags/FamilyTreeMaker.php:104
+#: app/CustomTags/FamilyTreeMaker.php:131
 msgid "Fact 8"
 msgstr "Fakta 8"
 
-#: app/Gedcom.php:1196 app/Gedcom.php:1215 app/Gedcom.php:1233
-#: app/Gedcom.php:1260
+#: app/CustomTags/FamilyTreeMaker.php:68 app/CustomTags/FamilyTreeMaker.php:87
+#: app/CustomTags/FamilyTreeMaker.php:105
+#: app/CustomTags/FamilyTreeMaker.php:132
 msgid "Fact 9"
 msgstr "Fakta 9"
 
@@ -6075,7 +6099,7 @@ msgid "Families with sources"
 msgstr "Familiar med kjelder"
 
 #. I18N: Name of a module/report
-#: app/Gedcom.php:406 app/Gedcom.php:1201
+#: app/CustomTags/FamilyTreeMaker.php:73 app/Gedcom.php:427
 #: app/Http/RequestHandlers/CheckTree.php:350
 #: app/Module/FamilyGroupReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:165
@@ -6093,11 +6117,11 @@ msgstr "Familiar med kjelder"
 msgid "Family"
 msgstr "Familie"
 
-#: app/Gedcom.php:665
+#: app/Gedcom.php:686
 msgid "Family as a child"
 msgstr "Familie som barn"
 
-#: app/Gedcom.php:668
+#: app/Gedcom.php:689
 msgid "Family as a spouse"
 msgstr "Person i familie som ektefelle"
 
@@ -6112,7 +6136,7 @@ msgstr "Familiebok"
 msgid "Family book of %s"
 msgstr "Familiebok for %s"
 
-#: app/Gedcom.php:452
+#: app/Gedcom.php:473
 msgid "Family census"
 msgstr "Folketeljing for familie"
 
@@ -6120,7 +6144,7 @@ msgstr "Folketeljing for familie"
 msgid "Family facts and events"
 msgstr "Familiefakta og hendingar"
 
-#: app/Gedcom.php:887
+#: app/Gedcom.php:908
 msgid "Family file"
 msgstr "Familiefil"
 
@@ -6139,15 +6163,15 @@ msgstr "Nyhende og kunngjeringar."
 msgid "Family of %s"
 msgstr "Familie til %s"
 
-#: app/Gedcom.php:482
+#: app/Gedcom.php:503
 msgid "Family residence"
 msgstr "Bustad for familie"
 
-#: app/Gedcom.php:1300
+#: app/CustomTags/GedcomL.php:135
 msgid "Family status"
 msgstr "Familiestatus"
 
-#: app/Gedcom.php:1060 app/Module/TreesMenuModule.php:95
+#: app/CustomTags/Ancestry.php:61 app/Module/TreesMenuModule.php:95
 #: resources/views/admin/changes-log.phtml:90
 #: resources/views/admin/changes-log.phtml:139
 #: resources/views/admin/control-panel.phtml:318
@@ -6232,7 +6256,7 @@ msgid "Family with wife"
 msgstr "Familie med hustru"
 
 #. I18N: familysearch.org
-#: app/Gedcom.php:1151
+#: app/CustomTags/FamilySearch.php:52 app/CustomTags/GenPlusWin.php:52
 msgid "FamilySearch ID"
 msgstr "FamilySearch ID"
 
@@ -6317,8 +6341,9 @@ msgstr "Fars familie med ein ukjend person"
 msgid "Favorites"
 msgstr "Favorittar"
 
-#: app/Gedcom.php:419 app/Gedcom.php:529 app/Gedcom.php:553 app/Gedcom.php:824
-#: app/Gedcom.php:871 app/Gedcom.php:1025 app/Gedcom.php:1770
+#: app/CustomTags/Aldfaer.php:69 app/CustomTags/GedcomL.php:237
+#: app/CustomTags/PersonalAncestralFile.php:76 app/Gedcom.php:440
+#: app/Gedcom.php:550 app/Gedcom.php:574 app/Gedcom.php:845 app/Gedcom.php:892
 msgid "Fax"
 msgstr "Faks"
 
@@ -6373,13 +6398,30 @@ msgstr "Kvinne"
 msgid "Females"
 msgstr "Kvinner"
 
+#. I18N: Data entry field
+#: app/CustomTags/RootsMagic.php:56
+msgid "Field"
+msgstr ""
+
+#. I18N: Data entry field
+#: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
+#: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
+msgid "Field name"
+msgstr ""
+
+#. I18N: Data entry field
+#: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
+#: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
+msgid "Field value"
+msgstr ""
+
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
 msgid "Fiji"
 msgstr "Fiji"
 
-#: app/Gedcom.php:1165 app/Http/RequestHandlers/ManageMediaData.php:362
-#: app/MediaFile.php:315
+#: app/CustomTags/FamilyTreeBuilder.php:59
+#: app/Http/RequestHandlers/ManageMediaData.php:362 app/MediaFile.php:315
 msgid "File size"
 msgstr "Filstorleik"
 
@@ -6387,8 +6429,8 @@ msgstr "Filstorleik"
 msgid "File successfully uploaded"
 msgstr "Fila er lasta opp"
 
-#: app/Exceptions/FileUploadException.php:101 app/Gedcom.php:510
-#: app/Gedcom.php:792 app/Http/RequestHandlers/ManageMediaData.php:344
+#: app/Exceptions/FileUploadException.php:101 app/Gedcom.php:531
+#: app/Gedcom.php:813 app/Http/RequestHandlers/ManageMediaData.php:344
 #: resources/views/admin/gedcom-export-options.phtml:64
 #: resources/views/admin/trees-export.phtml:33
 #: resources/views/modals/media-file-fields.phtml:69
@@ -6472,7 +6514,7 @@ msgstr "Finn ikkjerelaterte personar"
 msgid "Finland"
 msgstr "Finland"
 
-#: app/Gedcom.php:669 resources/xml/reports/missing_facts_report.xml:21
+#: app/Gedcom.php:690 resources/xml/reports/missing_facts_report.xml:21
 msgid "First communion"
 msgstr "Fyrste altergang"
 
@@ -6618,9 +6660,9 @@ msgstr "For sider med fleire enn eitt slektstre, vil dette valet syne ei liste o
 msgid "Forgot password?"
 msgstr "Gløymt passord?"
 
-#: app/Gedcom.php:428 app/Gedcom.php:512 app/Gedcom.php:517 app/Gedcom.php:560
-#: app/Gedcom.php:793 app/Gedcom.php:1394 app/Gedcom.php:1483
-#: resources/views/admin/gedcom-export-options.phtml:22
+#: app/CustomTags/GedcomL.php:244 app/CustomTags/Geneatique.php:56
+#: app/Gedcom.php:449 app/Gedcom.php:533 app/Gedcom.php:538 app/Gedcom.php:581
+#: app/Gedcom.php:814 resources/views/admin/gedcom-export-options.phtml:22
 #: resources/views/help/date.phtml:32 resources/views/help/date.phtml:70
 #: resources/views/help/date.phtml:108 resources/views/help/date.phtml:146
 #: resources/views/report-setup-page.phtml:52
@@ -6802,11 +6844,11 @@ msgstr "Fructidor"
 msgid "Fukuoka, Japan"
 msgstr "Fukuoka, Japan"
 
-#: app/Gedcom.php:1066 app/Gedcom.php:1126
+#: app/CustomTags/Ancestry.php:67 app/CustomTags/BrothersKeeper.php:99
 msgid "Funeral"
 msgstr "Bisetjing"
 
-#: app/Gedcom.php:511 resources/views/admin/gedcom-export-options.phtml:30
+#: app/Gedcom.php:532 resources/views/admin/gedcom-export-options.phtml:30
 msgid "GEDCOM"
 msgstr "GEDCOM"
 
@@ -6834,7 +6876,7 @@ msgid "GEDCOM tags"
 msgstr "GEDCOM-kodar"
 
 #. I18N: https://genealogy.net/GEDCOM/
-#: app/Gedcom.php:1314 resources/views/admin/tags.phtml:973
+#: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:973
 msgid "GEDCOM-L"
 msgstr "GEDCOM-L"
 
@@ -6844,12 +6886,12 @@ msgid "GEDZIP"
 msgstr "GEDZIP"
 
 #. I18N: https://gov.genealogy.net
-#: app/Gedcom.php:1278 app/Gedcom.php:1332 app/Gedcom.php:1453
-#: app/Gedcom.php:1529 app/Gedcom.php:1561
+#: app/CustomTags/GedcomL.php:113 app/CustomTags/GedcomL.php:167
+#: app/CustomTags/GedcomL.php:292
 msgid "GOV identifier"
 msgstr "GOV identifikator"
 
-#: app/Gedcom.php:1443
+#: app/CustomTags/GedcomL.php:282
 msgid "GOV identifier type"
 msgstr "GOV identifikatortype"
 
@@ -6863,7 +6905,7 @@ msgstr "Gabon"
 msgid "Gambia"
 msgstr "Gambia"
 
-#: app/Gedcom.php:744 app/Gedcom.php:1356
+#: app/CustomTags/GedcomL.php:191 app/Gedcom.php:765
 #: resources/views/individual-page-sex.phtml:28
 #: resources/xml/reports/family_group_report.xml:844
 #: resources/xml/reports/individual_ext_report.xml:399
@@ -6931,11 +6973,11 @@ msgstr "Generasjon "
 msgid "Generations"
 msgstr "Generasjonar"
 
-#: app/Gedcom.php:881
+#: app/Gedcom.php:902
 msgid "Generations of ancestors"
 msgstr "Generasjonar av forfedre"
 
-#: app/Gedcom.php:886
+#: app/Gedcom.php:907
 msgid "Generations of descendants"
 msgstr "Generasjonar av etterkomarar"
 
@@ -7025,7 +7067,7 @@ msgstr "Gilbert, Arizona, USA"
 msgid "Given name"
 msgstr "Førenamn"
 
-#: app/Gedcom.php:691 app/Gedcom.php:700 app/Gedcom.php:705
+#: app/Gedcom.php:712 app/Gedcom.php:721 app/Gedcom.php:726
 #: resources/views/lists/families-table.phtml:219
 #: resources/views/lists/families-table.phtml:222
 #: resources/views/lists/given-names-table.phtml:21
@@ -7056,8 +7098,8 @@ msgstr "Gudmor"
 msgid "Godparent"
 msgstr "Gudforeldre"
 
-#: app/Gedcom.php:626 app/Gedcom.php:1352 app/Gedcom.php:1353
-#: app/Gedcom.php:1575 app/Gedcom.php:1576
+#: app/CustomTags/GedcomL.php:187 app/CustomTags/GedcomL.php:188
+#: app/Gedcom.php:647
 msgid "Godparents"
 msgstr "Gudforeldre"
 
@@ -7078,7 +7120,7 @@ msgstr "Google™ maps"
 msgid "Google™ webmaster tools"
 msgstr "Google™ webmaster tools"
 
-#: app/Gedcom.php:672
+#: app/Gedcom.php:693
 msgid "Graduation"
 msgstr "Eksamen"
 
@@ -7184,7 +7226,7 @@ msgstr "Guyana"
 msgid "HTML"
 msgstr "HTML"
 
-#: app/Gedcom.php:1127
+#: app/CustomTags/BrothersKeeper.php:100
 msgid "Hair color"
 msgstr "Hårfarge"
 
@@ -7241,7 +7283,7 @@ msgstr "Han blei døypt"
 msgid "He was cremated"
 msgstr "Han vart kremert"
 
-#: app/Gedcom.php:503 app/Header.php:42 app/Header.php:43 app/Header.php:44
+#: app/Gedcom.php:524 app/Header.php:42 app/Header.php:43 app/Header.php:44
 #: app/Http/RequestHandlers/CheckTree.php:351
 msgid "Header"
 msgstr "Topptekst"
@@ -7255,11 +7297,11 @@ msgstr "Heard- og McDonaldøyane"
 msgid "Hebrew"
 msgstr "Hebraisk"
 
-#: app/Gedcom.php:1108 app/Gedcom.php:1109
+#: app/CustomTags/BrothersKeeper.php:81 app/CustomTags/BrothersKeeper.php:82
 msgid "Hebrew name"
 msgstr "Hebraisk namn"
 
-#: app/Gedcom.php:1128
+#: app/CustomTags/BrothersKeeper.php:101
 msgid "Height"
 msgstr "Høgde"
 
@@ -7401,13 +7443,12 @@ msgstr "Skjul desse feila"
 msgid "Hide unused locations"
 msgstr "Skjul ubrukte stadnamn"
 
-#: app/Gedcom.php:1457
+#: app/CustomTags/GedcomL.php:296
 msgid "Hierarchical relationship"
 msgstr "Hierarkisk relasjon"
 
-#: app/Gedcom.php:1169 app/Gedcom.php:1355 app/Gedcom.php:1371
-#: app/Gedcom.php:1522 app/Gedcom.php:1543 app/Gedcom.php:1554
-#: app/Gedcom.php:1577 app/Gedcom.php:1713
+#: app/CustomTags/FamilyTreeBuilder.php:63 app/CustomTags/GedcomL.php:190
+#: app/CustomTags/GedcomL.php:206 app/CustomTags/Legacy.php:145
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Highlighted image"
@@ -7440,7 +7481,7 @@ msgstr "Historiske hendingar"
 msgid "Hit counters"
 msgstr "Teljar for syning av sider"
 
-#: app/Gedcom.php:1795
+#: app/CustomTags/PhpGedView.php:70
 msgid "Holocaust"
 msgstr "Holocaust"
 
@@ -7476,10 +7517,6 @@ msgstr "Timeglasdiagram"
 msgid "Hourglass chart of %s"
 msgstr "Timeglasdiagram for %s"
 
-#: app/Gedcom.php:1519 app/Gedcom.php:1551
-msgid "House number"
-msgstr "Husnummer"
-
 #: resources/views/modules/census-assistant.phtml:110
 msgid "Household"
 msgstr "Hushald"
@@ -7499,7 +7536,7 @@ msgstr "Grad av rekursjon som skal nyttast ved søk av slektskap"
 msgid "Hungary"
 msgstr "Ungarn"
 
-#: app/Gedcom.php:420 app/Gedcom.php:466
+#: app/Gedcom.php:441 app/Gedcom.php:487
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:74
 #: resources/views/edit/change-family-members.phtml:30
 #: resources/views/edit/change-family-members.phtml:45
@@ -7518,7 +7555,7 @@ msgstr "Ungarn"
 msgid "Husband"
 msgstr "Ektemann"
 
-#: app/Gedcom.php:421 resources/views/modules/timeline-chart/chart.phtml:355
+#: app/Gedcom.php:442 resources/views/modules/timeline-chart/chart.phtml:355
 msgid "Husband’s age"
 msgstr "Ektemannen sin alder"
 
@@ -7542,7 +7579,7 @@ msgstr "Islandsk"
 msgid "Idaho Falls, Idaho, United States"
 msgstr "Idaho Falls, Idaho, United States"
 
-#: app/Gedcom.php:674
+#: app/Gedcom.php:695
 msgid "Identification number"
 msgstr "Identifikasjonsnummer"
 
@@ -7680,7 +7717,7 @@ msgstr "Dimensjonar på bilete"
 msgid "Images without watermarks"
 msgstr "Bileter utan vassmerke"
 
-#: app/Gedcom.php:676
+#: app/Gedcom.php:697
 msgid "Immigration"
 msgstr "Immigrasjon"
 
@@ -7789,7 +7826,7 @@ msgid "Indianapolis, Indiana, United States"
 msgstr "Indianapolis, Indiana, USA"
 
 #. I18N: Name of a module/report
-#: app/Gedcom.php:539 app/Gedcom.php:1219
+#: app/CustomTags/FamilyTreeMaker.php:91 app/Gedcom.php:560
 #: app/Http/RequestHandlers/CheckTree.php:352
 #: app/Module/IndividualReportModule.php:40
 #: resources/views/admin/fix-level-0-media.phtml:37
@@ -7947,7 +7984,7 @@ msgstr "Interaktivt tre"
 msgid "Interactive tree of %s"
 msgstr "Interaktivt tre for %s"
 
-#: app/Gedcom.php:1129
+#: app/CustomTags/BrothersKeeper.php:102
 msgid "Interment"
 msgstr "Jordfesting"
 
@@ -8111,10 +8148,6 @@ msgstr "Johannesburg, Sør-Afrika"
 #: app/Services/TreeService.php:226
 msgid "John /DOE/"
 msgstr "Ole /Olsen/"
-
-#: app/Gedcom.php:1549
-msgid "Joint family name"
-msgstr "Felles familienamn"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:270
@@ -8357,11 +8390,11 @@ msgstr "Kiev, Ukraina"
 msgid "Kyrgyzstan"
 msgstr "Kirgistan"
 
-#: app/Gedcom.php:591
+#: app/Gedcom.php:612
 msgid "LDS baptism"
 msgstr "Mormondåp"
 
-#: app/Gedcom.php:745
+#: app/Gedcom.php:766
 msgid "LDS child sealing"
 msgstr "Barns besegling (mormon)"
 
@@ -8369,33 +8402,33 @@ msgstr "Barns besegling (mormon)"
 msgid "LDS church"
 msgstr "LDS-kyrkje"
 
-#: app/Gedcom.php:633
+#: app/Gedcom.php:654
 msgid "LDS confirmation"
 msgstr "Mormonkonfirmasjon"
 
-#: app/Gedcom.php:653
+#: app/Gedcom.php:674
 msgid "LDS endowment"
 msgstr "LDS endowment"
 
 #. I18N: GEDCOM tag INIL - an LDS ceremony
-#: app/Gedcom.php:958 app/Gedcom.php:1067
+#: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:123
 msgid "LDS initiatory"
 msgstr "LDS initiatory"
 
-#: app/Gedcom.php:485
+#: app/Gedcom.php:506
 msgid "LDS spouse sealing"
 msgstr "Ektefelles besegling (mormon)"
 
-#: app/Gedcom.php:1202 app/Gedcom.php:1216 app/Gedcom.php:1220
-#: app/Gedcom.php:1235
+#: app/CustomTags/FamilyTreeMaker.php:74 app/CustomTags/FamilyTreeMaker.php:88
+#: app/CustomTags/FamilyTreeMaker.php:92 app/CustomTags/FamilyTreeMaker.php:107
 msgid "Label"
 msgstr "Etikett"
 
-#: app/Gedcom.php:1633
+#: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
 msgstr "Etikett for ektemann"
 
-#: app/Gedcom.php:1637
+#: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
 msgstr "Etikett for hustru"
 
@@ -8405,12 +8438,12 @@ msgid "Laie, Hawaii, United States"
 msgstr "Laie, Hawaii, USA"
 
 #. I18N: GEDCOM tag _PURC
-#: app/Gedcom.php:1825
+#: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
 msgstr "Kjøp av eigedom"
 
 #. I18N: GEDCOM tag _SALE
-#: app/Gedcom.php:1826
+#: app/CustomTags/Reunion.php:60
 msgid "Land sale"
 msgstr "Sal av eigedom"
 
@@ -8422,7 +8455,7 @@ msgid "Landscape"
 msgstr "Liggjande"
 
 #. I18N: A configuration setting
-#: app/Gedcom.php:514 app/Gedcom.php:872 app/Gedcom.php:1425
+#: app/CustomTags/GedcomL.php:264 app/Gedcom.php:535 app/Gedcom.php:893
 #: app/Module/ModuleLanguageTrait.php:49 app/Module/ModuleThemeTrait.php:252
 #: resources/views/admin/modules.phtml:278
 #: resources/views/admin/modules.phtml:281
@@ -8465,9 +8498,10 @@ msgstr "Høgste tal på barnebarn"
 msgid "Las Vegas, Nevada, United States"
 msgstr "Las Vegas, Nevada, United States"
 
-#: app/Gedcom.php:453 app/Gedcom.php:620 app/Gedcom.php:767 app/Gedcom.php:788
-#: app/Gedcom.php:819 app/Gedcom.php:835 app/Gedcom.php:866 app/Gedcom.php:882
-#: app/Gedcom.php:1385 resources/views/lists/families-table.phtml:233
+#: app/CustomTags/GedcomL.php:220 app/Gedcom.php:474 app/Gedcom.php:641
+#: app/Gedcom.php:788 app/Gedcom.php:809 app/Gedcom.php:840 app/Gedcom.php:856
+#: app/Gedcom.php:887 app/Gedcom.php:903
+#: resources/views/lists/families-table.phtml:233
 #: resources/views/lists/individuals-table.phtml:264
 #: resources/views/lists/locations-table.phtml:66
 #: resources/views/lists/media-table.phtml:82
@@ -8516,8 +8550,9 @@ msgstr "Seinaste skilsmisse"
 msgid "Latest marriage"
 msgstr "Seinaste vigsel"
 
-#: app/Gedcom.php:430 app/Gedcom.php:562 app/Gedcom.php:1396
-#: app/Gedcom.php:1419 resources/views/admin/location-edit.phtml:44
+#: app/CustomTags/GedcomL.php:246 app/CustomTags/GedcomL.php:258
+#: app/Gedcom.php:451 app/Gedcom.php:583
+#: resources/views/admin/location-edit.phtml:44
 #: resources/views/admin/locations.phtml:43
 #: resources/views/edit/input-addon-coordinates.phtml:12
 #: resources/views/edit/input-addon-coordinates.phtml:15
@@ -8568,11 +8603,11 @@ msgstr "Libanon"
 msgid "Legacy URLs"
 msgstr "Vidareføring av URL"
 
-#: app/Gedcom.php:1823
+#: app/CustomTags/Reunion.php:57
 msgid "Legatee"
 msgstr "Arving"
 
-#: app/Gedcom.php:1028
+#: app/CustomTags/Aldfaer.php:72
 msgid "Length"
 msgstr "Lengde"
 
@@ -8724,8 +8759,9 @@ msgstr "Laster…"
 msgid "Local files"
 msgstr "Lokale filer"
 
-#: app/Gedcom.php:1279 app/Gedcom.php:1333 app/Gedcom.php:1376
-#: app/Gedcom.php:1384 app/Gedcom.php:1401 app/Gedcom.php:1708
+#: app/CustomTags/GedcomL.php:114 app/CustomTags/GedcomL.php:168
+#: app/CustomTags/GedcomL.php:211 app/CustomTags/GedcomL.php:219
+#: app/CustomTags/GedcomL.php:251 app/CustomTags/Legacy.php:140
 #: app/Http/RequestHandlers/CheckTree.php:353
 #: resources/views/lists/locations-table.phtml:63
 msgid "Location"
@@ -8776,8 +8812,9 @@ msgstr "Lange lister over personar med same etternamn kan brytast opp i kortare 
 msgid "Longest marriage"
 msgstr "Lengste ekteskap"
 
-#: app/Gedcom.php:431 app/Gedcom.php:563 app/Gedcom.php:1397
-#: app/Gedcom.php:1420 resources/views/admin/location-edit.phtml:55
+#: app/CustomTags/GedcomL.php:247 app/CustomTags/GedcomL.php:259
+#: app/Gedcom.php:452 app/Gedcom.php:584
+#: resources/views/admin/location-edit.phtml:55
 #: resources/views/admin/locations.phtml:44
 #: resources/views/edit/input-addon-coordinates.phtml:12
 #: resources/views/edit/input-addon-coordinates.phtml:15
@@ -8832,8 +8869,8 @@ msgid "Magazine"
 msgstr "Magasin"
 
 #. I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
-#: app/Gedcom.php:1281 app/Gedcom.php:1335 app/Gedcom.php:1378
-#: app/Gedcom.php:1459 app/Gedcom.php:1531 app/Gedcom.php:1563
+#: app/CustomTags/GedcomL.php:116 app/CustomTags/GedcomL.php:170
+#: app/CustomTags/GedcomL.php:213 app/CustomTags/GedcomL.php:298
 msgid "Maidenhead location code"
 msgstr "Maidenhead lokalisasjonskode"
 
@@ -9019,7 +9056,8 @@ msgstr "mars"
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia. It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
 msgstr "Markdown er eit enkelt system for formattering, nytta på websider som til dømes Wikipedia. Det vert nytta enkel teiknsetting for å danne overskrifter, tjukk og utheva tekst, lister, tabellar, osb."
 
-#: app/Gedcom.php:472 app/Gedcom.php:1020 app/Module/BranchesListModule.php:445
+#: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:493
+#: app/Module/BranchesListModule.php:445
 #: resources/views/calendar-page.phtml:190
 #: resources/views/lists/families-table.phtml:197
 #: resources/views/lists/families-table.phtml:202
@@ -9078,15 +9116,15 @@ msgstr "Markdown er eit enkelt system for formattering, nytta på websider som t
 msgid "Marriage"
 msgstr "Vigsel"
 
-#: app/Gedcom.php:467 resources/xml/reports/missing_facts_report.xml:22
+#: app/Gedcom.php:488 resources/xml/reports/missing_facts_report.xml:22
 msgid "Marriage banns"
 msgstr "Lysing"
 
-#: app/Gedcom.php:1198 app/Gedcom.php:1218
+#: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
 msgid "Marriage beginning status"
 msgstr "Status for start på ekteskap"
 
-#: app/Gedcom.php:1092
+#: app/CustomTags/BrothersKeeper.php:65
 msgid "Marriage bond"
 msgstr "Ekteskapslovnad"
 
@@ -9094,7 +9132,7 @@ msgstr "Ekteskapslovnad"
 msgid "Marriage by country"
 msgstr "Vigslar etter land"
 
-#: app/Gedcom.php:470
+#: app/Gedcom.php:491
 msgid "Marriage contract"
 msgstr "Ekteskapskontrakt"
 
@@ -9106,15 +9144,15 @@ msgstr "Seinaste dato for vigsel"
 msgid "Marriage date range start"
 msgstr "Tidlegaste dato for vigsel"
 
-#: app/Gedcom.php:1197 app/Gedcom.php:1217
+#: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:89
 msgid "Marriage ending status"
 msgstr "Status for slutt på ekteskap"
 
-#: app/Gedcom.php:1091
+#: app/CustomTags/BrothersKeeper.php:64
 msgid "Marriage intention"
 msgstr "Ekteskaps-intensjon"
 
-#: app/Gedcom.php:471
+#: app/Gedcom.php:492
 msgid "Marriage license"
 msgstr "Lisens for ekteskap"
 
@@ -9216,7 +9254,7 @@ msgstr "Stad for vigsel inneheld"
 msgid "Marriage places"
 msgstr "Vigselstadar"
 
-#: app/Gedcom.php:476
+#: app/Gedcom.php:497
 msgid "Marriage settlement"
 msgstr "Ektepakt"
 
@@ -9233,7 +9271,8 @@ msgstr "Vigslar"
 msgid "Marriages by century"
 msgstr "Vigslar etter hundreår"
 
-#: app/Gedcom.php:1240 resources/views/lists/families-table.phtml:250
+#: app/CustomTags/FamilyTreeMaker.php:112
+#: resources/views/lists/families-table.phtml:250
 #: resources/views/lists/families-table.phtml:285
 #: resources/views/lists/individuals-table.phtml:277
 #: resources/xml/reports/cemetery_report.xml:7
@@ -9329,8 +9368,8 @@ msgid "Medford, Oregon, United States"
 msgstr "Medford, Oregon, United States"
 
 #. I18N: Name of a module
-#: app/Gedcom.php:1428 app/Media.php:156 app/Module/MediaListModule.php:224
-#: app/Module/MediaTabModule.php:59
+#: app/CustomTags/GedcomL.php:267 app/Media.php:156
+#: app/Module/MediaListModule.php:224 app/Module/MediaTabModule.php:59
 #: resources/views/admin/control-panel.phtml:324
 #: resources/views/admin/control-panel.phtml:778
 #: resources/views/admin/media.phtml:102
@@ -9368,12 +9407,13 @@ msgstr "Mediemappe"
 msgid "Media folders"
 msgstr "Mediemapper"
 
-#: app/Gedcom.php:423 app/Gedcom.php:444 app/Gedcom.php:479 app/Gedcom.php:498
-#: app/Gedcom.php:555 app/Gedcom.php:576 app/Gedcom.php:687 app/Gedcom.php:724
-#: app/Gedcom.php:759 app/Gedcom.php:783 app/Gedcom.php:786 app/Gedcom.php:807
-#: app/Gedcom.php:846 app/Gedcom.php:875 app/Gedcom.php:1294
-#: app/Gedcom.php:1348 app/Gedcom.php:1417 app/Gedcom.php:1437
-#: app/Gedcom.php:1470 app/Gedcom.php:1886 app/Gedcom.php:1900
+#: app/CustomTags/GedcomL.php:129 app/CustomTags/GedcomL.php:183
+#: app/CustomTags/GedcomL.php:239 app/CustomTags/GedcomL.php:276
+#: app/CustomTags/GedcomL.php:309 app/Gedcom.php:444 app/Gedcom.php:465
+#: app/Gedcom.php:500 app/Gedcom.php:519 app/Gedcom.php:576 app/Gedcom.php:597
+#: app/Gedcom.php:708 app/Gedcom.php:745 app/Gedcom.php:780 app/Gedcom.php:804
+#: app/Gedcom.php:807 app/Gedcom.php:828 app/Gedcom.php:867 app/Gedcom.php:896
+#: app/Gedcom.php:939 app/Gedcom.php:953
 #: app/Http/RequestHandlers/CheckTree.php:354
 #: app/Http/RequestHandlers/HelpText.php:246
 #: resources/views/admin/fix-level-0-media.phtml:35
@@ -9411,13 +9451,14 @@ msgstr "Medieobjekt funne"
 msgid "Media objects per page"
 msgstr "Medieobjekt pr. side"
 
-#: app/Gedcom.php:794 app/Gedcom.php:852
+#: app/Gedcom.php:815 app/Gedcom.php:873
 #: resources/views/modals/create-media-from-file.phtml:41
 #: resources/views/modals/media-file-fields.phtml:115
 msgid "Media type"
 msgstr "Medietype"
 
-#: app/Gedcom.php:1130 app/Gedcom.php:1261 app/Gedcom.php:1824
+#: app/CustomTags/BrothersKeeper.php:103 app/CustomTags/FamilyTreeMaker.php:133
+#: app/CustomTags/Reunion.php:58
 msgid "Medical"
 msgstr "Helse"
 
@@ -9588,11 +9629,11 @@ msgstr "Mikronesiaføderasjonen"
 msgid "Middle East"
 msgstr "Midtausten"
 
-#: app/Gedcom.php:1796
+#: app/CustomTags/PhpGedView.php:71
 msgid "Military"
 msgstr "Militærteneste"
 
-#: app/Gedcom.php:1131 app/Gedcom.php:1262
+#: app/CustomTags/BrothersKeeper.php:104 app/CustomTags/FamilyTreeMaker.php:134
 msgid "Military service"
 msgstr "Militærteneste"
 
@@ -9944,12 +9985,12 @@ msgstr "Mine anar"
 msgid "Myanmar"
 msgstr "Myanmar"
 
-#: app/Gedcom.php:679 app/Gedcom.php:873
+#: app/Gedcom.php:700 app/Gedcom.php:894
 #: app/Http/RequestHandlers/HelpText.php:236
 #: app/Statistics/Google/ChartCommonGiven.php:69
 #: app/Statistics/Google/ChartCommonSurname.php:127
 #: resources/views/individual-page-name.phtml:40
-#: resources/views/individual-page-name.phtml:52
+#: resources/views/individual-page-name.phtml:54
 #: resources/views/modals/location-fields.phtml:9
 #: resources/views/modals/submitter-fields.phtml:9
 #: resources/views/modules/yahrzeit/table.phtml:26
@@ -9974,26 +10015,27 @@ msgstr "Myanmar"
 msgid "Name"
 msgstr "Namn"
 
-#: app/Gedcom.php:825 app/Http/RequestHandlers/CreateRepositoryModal.php:49
+#: app/Gedcom.php:846 app/Http/RequestHandlers/CreateRepositoryModal.php:49
 msgctxt "Repository"
 msgid "Name"
 msgstr "Namn"
 
-#: app/Gedcom.php:1794
+#: app/CustomTags/PhpGedView.php:69
 msgid "Name in Hebrew"
 msgstr "Namn på hebraisk"
 
-#: app/Gedcom.php:1276 app/Gedcom.php:1317 app/Gedcom.php:1330
-#: app/Gedcom.php:1373 app/Gedcom.php:1381 app/Gedcom.php:1684
-#: app/Gedcom.php:1768
+#: app/CustomTags/GedcomL.php:111 app/CustomTags/GedcomL.php:152
+#: app/CustomTags/GedcomL.php:165 app/CustomTags/GedcomL.php:208
+#: app/CustomTags/GedcomL.php:216 app/CustomTags/Legacy.php:116
+#: app/CustomTags/PersonalAncestralFile.php:74
 msgid "Name of addressee"
 msgstr "Namn på adressat"
 
-#: app/Gedcom.php:694 app/Gedcom.php:702 app/Gedcom.php:708
+#: app/Gedcom.php:715 app/Gedcom.php:723 app/Gedcom.php:729
 msgid "Name prefix"
 msgstr "Namneprefiks"
 
-#: app/Gedcom.php:695 app/Gedcom.php:703 app/Gedcom.php:709
+#: app/Gedcom.php:716 app/Gedcom.php:724 app/Gedcom.php:730
 msgid "Name suffix"
 msgstr "Namnesuffiks"
 
@@ -10005,7 +10047,7 @@ msgstr "Namnesuffiks"
 msgid "Names"
 msgstr "Namn"
 
-#: app/Gedcom.php:1265
+#: app/CustomTags/FamilyTreeMaker.php:137
 msgid "Namesake"
 msgstr "Oppkalling"
 
@@ -10027,11 +10069,11 @@ msgstr "Forteljande framstilling"
 msgid "Nashville, Tennessee, United States"
 msgstr "Nashville, Tennessee, United States"
 
-#: app/Gedcom.php:717
+#: app/Gedcom.php:738
 msgid "Nationality"
 msgstr "Nasjonalitet"
 
-#: app/Gedcom.php:718
+#: app/Gedcom.php:739
 msgid "Naturalization"
 msgstr "Statsborgarskap"
 
@@ -10065,7 +10107,7 @@ msgstr "Nederland"
 msgid "Never"
 msgstr "Aldri"
 
-#: app/Elements/FamilyStatusText.php:72 app/Gedcom.php:1133
+#: app/CustomTags/BrothersKeeper.php:106 app/Elements/FamilyStatusText.php:72
 msgid "Never married"
 msgstr "Aldri gift"
 
@@ -10074,8 +10116,9 @@ msgstr "Aldri gift"
 msgid "New Caledonia"
 msgstr "Ny Kaledonia"
 
-#: app/Gedcom.php:1320 app/Gedcom.php:1321 app/Gedcom.php:1322
-#: app/Gedcom.php:1323 app/Gedcom.php:1324
+#: app/CustomTags/GedcomL.php:155 app/CustomTags/GedcomL.php:156
+#: app/CustomTags/GedcomL.php:157 app/CustomTags/GedcomL.php:158
+#: app/CustomTags/GedcomL.php:159
 msgid "New GEDCOM tag"
 msgstr "Ny GEDCOM-kode"
 
@@ -10135,7 +10178,7 @@ msgstr "Neste bilete"
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: app/Gedcom.php:692 app/Gedcom.php:701 app/Gedcom.php:706
+#: app/Gedcom.php:713 app/Gedcom.php:722 app/Gedcom.php:727
 msgid "Nickname"
 msgstr "Kallenamn"
 
@@ -10220,7 +10263,7 @@ msgstr "Ingen GEDCOM-filer vart funne."
 msgid "No calendar conversion"
 msgstr "Ingen kalenderkonvertering"
 
-#: app/Gedcom.php:1638 app/Module/DescendancyModule.php:267
+#: app/CustomTags/Legacy.php:70 app/Module/DescendancyModule.php:267
 #: resources/views/family-page-children.phtml:17
 msgid "No children"
 msgstr "Ingen registrerte born"
@@ -10393,11 +10436,11 @@ msgstr "Noreg"
 msgid "Not approved by an administrator"
 msgstr "Ikkje stadfesta av administrator"
 
-#: app/Gedcom.php:1132
+#: app/CustomTags/BrothersKeeper.php:105
 msgid "Not living"
 msgstr "Ikkje i live"
 
-#: app/Elements/FamilyStatusText.php:71 app/Gedcom.php:1093
+#: app/CustomTags/BrothersKeeper.php:66 app/Elements/FamilyStatusText.php:71
 #: app/Module/BranchesListModule.php:447
 #: resources/views/lists/families-table.phtml:192
 msgid "Not married"
@@ -10413,11 +10456,12 @@ msgstr "Ikkje registrert"
 msgid "Not verified by the user"
 msgstr "Ikkje stadfesta av brukar"
 
-#: app/Elements/NoteStructure.php:146 app/Gedcom.php:422 app/Gedcom.php:478
-#: app/Gedcom.php:515 app/Gedcom.php:554 app/Gedcom.php:723 app/Gedcom.php:771
-#: app/Gedcom.php:796 app/Gedcom.php:826 app/Gedcom.php:874 app/Gedcom.php:888
-#: app/Gedcom.php:1061 app/Gedcom.php:1064 app/Gedcom.php:1305
-#: app/Gedcom.php:1361 app/Gedcom.php:1416 app/Gedcom.php:1427
+#: app/CustomTags/Ancestry.php:62 app/CustomTags/Ancestry.php:65
+#: app/CustomTags/GedcomL.php:140 app/CustomTags/GedcomL.php:196
+#: app/CustomTags/GedcomL.php:238 app/CustomTags/GedcomL.php:266
+#: app/Elements/NoteStructure.php:150 app/Gedcom.php:443 app/Gedcom.php:499
+#: app/Gedcom.php:536 app/Gedcom.php:575 app/Gedcom.php:744 app/Gedcom.php:792
+#: app/Gedcom.php:817 app/Gedcom.php:847 app/Gedcom.php:895 app/Gedcom.php:909
 #: app/Http/RequestHandlers/CheckTree.php:355
 #: resources/views/admin/trees-privacy.phtml:168
 #: resources/views/modals/create-media-from-file.phtml:49
@@ -10434,45 +10478,46 @@ msgstr "Ikkje stadfesta av brukar"
 msgid "Note"
 msgstr "Notat"
 
-#: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
-#: app/Gedcom.php:1891
+#: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
+#: app/Gedcom.php:930 app/Gedcom.php:944
 msgid "Note on association"
 msgstr "Notat til tilknytning"
 
-#: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
-#: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
-#: app/Gedcom.php:1388
+#: app/CustomTags/GedcomL.php:223 app/Gedcom.php:477 app/Gedcom.php:644
+#: app/Gedcom.php:791 app/Gedcom.php:812 app/Gedcom.php:843 app/Gedcom.php:859
+#: app/Gedcom.php:890 app/Gedcom.php:906
 msgid "Note on last change"
 msgstr "Notat til siste endring"
 
-#: app/Gedcom.php:693
+#: app/Gedcom.php:714
 msgid "Note on phonetic name"
 msgstr "Notat til fonetisk namn"
 
-#: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
+#: app/CustomTags/GedcomL.php:248 app/Gedcom.php:453 app/Gedcom.php:585
 msgid "Note on place"
 msgstr "Notat til stadnamn"
 
-#: app/Gedcom.php:853
+#: app/Gedcom.php:874
 msgid "Note on repository reference"
 msgstr "Notat til arkivreferanse"
 
-#: app/Gedcom.php:707
+#: app/Gedcom.php:728
 msgid "Note on romanized name"
 msgstr "Notat til namn skrive på latin"
 
-#: app/Gedcom.php:845
+#: app/Gedcom.php:866
 msgid "Note on source"
 msgstr "Notat til kjelde"
 
-#: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
-#: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
-#: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
-#: app/Gedcom.php:1885 app/Gedcom.php:1899
+#: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
+#: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
+#: app/Gedcom.php:464 app/Gedcom.php:518 app/Gedcom.php:596 app/Gedcom.php:707
+#: app/Gedcom.php:779 app/Gedcom.php:803 app/Gedcom.php:827 app/Gedcom.php:938
+#: app/Gedcom.php:952
 msgid "Note on source citation"
 msgstr "Notat til kjeldesitering"
 
-#: app/Gedcom.php:844
+#: app/Gedcom.php:865
 msgid "Note on source data"
 msgstr "Notat til kjeldedata"
 
@@ -10542,7 +10587,7 @@ msgstr "november"
 msgid "Nuku’Alofa, Tonga"
 msgstr "Nuku'Alofa, Tonga"
 
-#: app/Gedcom.php:477 app/Gedcom.php:721
+#: app/Gedcom.php:498 app/Gedcom.php:742
 #: app/Module/StatisticsChartModule.php:714
 #: app/Statistics/Google/ChartChildren.php:107
 #: resources/views/modules/statistics-chart/custom.phtml:51
@@ -10565,7 +10610,7 @@ msgstr "Tal på familiar utan born"
 msgid "Number of given names"
 msgstr "Tal fornamn"
 
-#: app/Gedcom.php:722
+#: app/Gedcom.php:743
 msgid "Number of marriages"
 msgstr "Tal på ekteskap"
 
@@ -10604,7 +10649,7 @@ msgstr "Oakland, California, USA"
 msgid "Oaxaca, Mexico"
 msgstr "Oaxaca, Mexico"
 
-#: app/Gedcom.php:725 app/Gedcom.php:1065
+#: app/CustomTags/Ancestry.php:66 app/Gedcom.php:746
 #: resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
@@ -10776,11 +10821,11 @@ msgctxt "NOMINATIVE"
 msgid "Ordibehesht"
 msgstr "Ordibehesht"
 
-#: app/Gedcom.php:889
+#: app/Gedcom.php:910
 msgid "Ordinance"
 msgstr "Ordinans (mormon)"
 
-#: app/Gedcom.php:727 app/Gedcom.php:1068
+#: app/CustomTags/Ancestry.php:69 app/Gedcom.php:748
 msgid "Ordination"
 msgstr "Ordinasjon"
 
@@ -10794,13 +10839,12 @@ msgstr "Ordnance Survey historiske kart"
 msgid "Orientation"
 msgstr "Orientering"
 
-#: app/Gedcom.php:1069
+#: app/CustomTags/Ancestry.php:70
 msgid "Origin"
 msgstr "Opphav"
 
 #. I18N: GEDCOM tag _ORIG
-#: app/Gedcom.php:1074 app/Gedcom.php:1535 app/Gedcom.php:1544
-#: app/Gedcom.php:1567 app/Gedcom.php:1578
+#: app/CustomTags/Ancestry.php:75
 msgid "Original text"
 msgstr "Original tekst"
 
@@ -10947,11 +10991,11 @@ msgstr "Papua New Guinea"
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: app/Gedcom.php:1454
+#: app/CustomTags/GedcomL.php:293
 msgid "Parent location"
 msgstr "Overordna stadnamn"
 
-#: app/Gedcom.php:747 app/Http/RequestHandlers/IndividualPage.php:212
+#: app/Gedcom.php:768 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
 #: resources/views/modules/ancestors-chart/tree.phtml:33
 #: resources/views/modules/family_nav/sidebar-family.phtml:41
@@ -11043,7 +11087,7 @@ msgstr "Ventande endringar"
 msgid "Pending changes are only shown when your account has permission to edit. When you sign out, you will no longer be able to see them. Also, pending changes are only shown on certain pages. For example, they are not shown in lists, reports, or search results."
 msgstr "Ventande endringar synast kun til brukarar med redigeringsrettar. Om du logger ut, vil du ikkje lenger kunne sjå dei. Ventande endringar synast berre på visse sider. Dei synast til dømes ikkje i lister, rapportar eller søkjeresultat."
 
-#: app/Gedcom.php:1094 app/Gedcom.php:1134
+#: app/CustomTags/BrothersKeeper.php:67 app/CustomTags/BrothersKeeper.php:107
 msgid "Permanent number"
 msgstr "Permanent nummer"
 
@@ -11076,8 +11120,9 @@ msgstr "Filippinane"
 msgid "Phoenix, Arizona, United States"
 msgstr "Phoenix, Arizona, USA"
 
-#: app/Gedcom.php:424 app/Gedcom.php:530 app/Gedcom.php:556 app/Gedcom.php:827
-#: app/Gedcom.php:876 app/Gedcom.php:1023 app/Gedcom.php:1771
+#: app/CustomTags/Aldfaer.php:67 app/CustomTags/GedcomL.php:240
+#: app/CustomTags/PersonalAncestralFile.php:77 app/Gedcom.php:445
+#: app/Gedcom.php:551 app/Gedcom.php:577 app/Gedcom.php:848 app/Gedcom.php:897
 #: resources/views/modals/submitter-fields.phtml:25
 msgid "Phone"
 msgstr "Telefonnummer"
@@ -11086,11 +11131,11 @@ msgstr "Telefonnummer"
 msgid "Phonetic algorithm"
 msgstr "Fonetisk algoritme"
 
-#: app/Gedcom.php:690
+#: app/Gedcom.php:711
 msgid "Phonetic name"
 msgstr "Fonetisk namn"
 
-#: app/Gedcom.php:426 app/Gedcom.php:558 app/Gedcom.php:1392
+#: app/CustomTags/GedcomL.php:242 app/Gedcom.php:447 app/Gedcom.php:579
 msgid "Phonetic place"
 msgstr "Stad (fonetisk)"
 
@@ -11100,18 +11145,25 @@ msgstr "Stad (fonetisk)"
 msgid "Phonetic search"
 msgstr "Fonetisk søk"
 
-#: app/Gedcom.php:699
+#: app/Gedcom.php:720
 msgid "Phonetic type"
 msgstr "Fonetisk type"
 
 #. I18N: Type of media object
-#: app/Elements/SourceMediaType.php:94 app/Gedcom.php:1168
+#: app/CustomTags/FamilyTreeBuilder.php:62 app/Elements/SourceMediaType.php:94
 msgid "Photo"
 msgstr "Fotografi"
 
-#: app/Gedcom.php:908 app/Gedcom.php:910 app/Gedcom.php:915 app/Gedcom.php:920
-#: app/Gedcom.php:922 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:941
-#: app/Gedcom.php:945 app/Gedcom.php:946 app/Gedcom.php:948 app/Gedcom.php:950
+#: app/CustomTags/MyHeritage.php:63
+msgid "Photograph"
+msgstr ""
+
+#: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:75
+#: app/CustomTags/Gedcom7.php:80 app/CustomTags/Gedcom7.php:85
+#: app/CustomTags/Gedcom7.php:87 app/CustomTags/Gedcom7.php:99
+#: app/CustomTags/Gedcom7.php:101 app/CustomTags/Gedcom7.php:106
+#: app/CustomTags/Gedcom7.php:110 app/CustomTags/Gedcom7.php:111
+#: app/CustomTags/Gedcom7.php:113 app/CustomTags/Gedcom7.php:115
 msgid "Phrase"
 msgstr "Frase"
 
@@ -11125,8 +11177,9 @@ msgstr "Rosa plastikk"
 msgid "Pitcairn"
 msgstr "Pitcairnøyane"
 
-#: app/Gedcom.php:425 app/Gedcom.php:557 app/Gedcom.php:843 app/Gedcom.php:1072
-#: app/Gedcom.php:1167 app/Gedcom.php:1421 app/Gedcom.php:1653
+#: app/CustomTags/Ancestry.php:73 app/CustomTags/FamilyTreeBuilder.php:61
+#: app/CustomTags/GedcomL.php:260 app/CustomTags/Legacy.php:85
+#: app/Gedcom.php:446 app/Gedcom.php:578 app/Gedcom.php:864
 #: app/Http/RequestHandlers/HelpText.php:251 app/Module/FixCemeteryTag.php:85
 #: resources/views/admin/location-edit.phtml:35
 #: resources/views/admin/location-edit.phtml:122
@@ -11150,13 +11203,13 @@ msgid "Place"
 msgstr "Stad"
 
 #. I18N: Name of a module/list
-#: app/Gedcom.php:516 app/Module/PlaceHierarchyListModule.php:102
+#: app/Gedcom.php:537 app/Module/PlaceHierarchyListModule.php:102
 #: app/Module/PlaceHierarchyListModule.php:245
 #: resources/views/place-hierarchy.phtml:16
 msgid "Place hierarchy"
 msgstr "Stadnamn"
 
-#: app/Gedcom.php:1790
+#: app/CustomTags/PhpGedView.php:65
 msgid "Place in Hebrew"
 msgstr "Sted (hebraisk)"
 
@@ -11177,120 +11230,115 @@ msgstr "Stadnamn kan endre seg over tid.  I genealogi er det tradisjon for å br
 msgid "Place names should be entered as a comma-separated list, starting with the smallest place and ending with the country. For example, “Westminster, London, England”."
 msgstr "Stadnamn bør registrerast som ei kommaseparert liste, ved å starte med minste eining og ende med land. Til dømes “Gardsnamn, Kommune, Fylke, Land”."
 
-#: app/Gedcom.php:593
+#: app/Gedcom.php:614
 msgid "Place of LDS baptism"
 msgstr "Stad for mormondåp"
 
-#: app/Gedcom.php:748
+#: app/Gedcom.php:769
 msgid "Place of LDS child sealing"
 msgstr "Stad for barns besegling (mormon)"
 
-#: app/Gedcom.php:635
+#: app/Gedcom.php:656
 msgid "Place of LDS confirmation"
 msgstr "Stad for LDS-konfirmasjon"
 
-#: app/Gedcom.php:655
+#: app/Gedcom.php:676
 msgid "Place of LDS endowment"
 msgstr "Stad for LDS endowment"
 
-#: app/Gedcom.php:487
+#: app/Gedcom.php:508
 msgid "Place of LDS spouse sealing"
 msgstr "Stad for ektefelles besegling (mormon)"
 
-#: app/Gedcom.php:585
+#: app/Gedcom.php:606
 msgid "Place of adoption"
 msgstr "Stad for adopsjon"
 
-#: app/Gedcom.php:599 resources/xml/reports/missing_facts_report.xml:140
+#: app/Gedcom.php:620 resources/xml/reports/missing_facts_report.xml:140
 msgid "Place of baptism"
 msgstr "Stad for truandedåp"
 
-#: app/Gedcom.php:602 resources/xml/reports/missing_facts_report.xml:223
+#: app/Gedcom.php:623 resources/xml/reports/missing_facts_report.xml:223
 msgid "Place of bar mitzvah"
 msgstr "Stad for bar mitzvah"
 
-#: app/Gedcom.php:605 resources/xml/reports/missing_facts_report.xml:264
+#: app/Gedcom.php:626 resources/xml/reports/missing_facts_report.xml:264
 msgid "Place of bat mitzvah"
 msgstr "Stad for bat mitzvah"
 
-#: app/Gedcom.php:609 resources/xml/reports/fact_sources.xml:273
+#: app/Gedcom.php:630 resources/xml/reports/fact_sources.xml:273
 #: resources/xml/reports/missing_facts_report.xml:93
 msgid "Place of birth"
 msgstr "Fødestad"
 
-#: app/Gedcom.php:612
+#: app/Gedcom.php:633
 msgid "Place of blessing"
 msgstr "Stad for velsigning"
 
-#: app/Gedcom.php:1123
+#: app/CustomTags/BrothersKeeper.php:96
 msgid "Place of brit milah"
 msgstr "Stad for Brit Mila"
 
-#: app/Gedcom.php:615 resources/xml/reports/missing_facts_report.xml:557
+#: app/Gedcom.php:636 resources/xml/reports/missing_facts_report.xml:557
 msgid "Place of burial"
 msgstr "Stad for gravlegging"
 
-#: app/Gedcom.php:627 app/Gedcom.php:629
+#: app/Gedcom.php:648 app/Gedcom.php:650
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
 msgstr "Stad for dåp"
 
-#. I18N: German Bürgerort
-#: app/Gedcom.php:1585
-msgid "Place of citizenship"
-msgstr "Heimstad"
-
-#: app/Gedcom.php:632 resources/xml/reports/missing_facts_report.xml:305
+#: app/Gedcom.php:653 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
 msgstr "Stad for konfirmasjon"
 
-#: app/Gedcom.php:641
+#: app/Gedcom.php:662
 msgid "Place of cremation"
 msgstr "Stad for kremering"
 
-#: app/Gedcom.php:645 resources/xml/reports/fact_sources.xml:275
+#: app/Gedcom.php:666 resources/xml/reports/fact_sources.xml:275
 #: resources/xml/reports/missing_facts_report.xml:516
 msgid "Place of death"
 msgstr "Stad for dødsfall"
 
-#: app/Gedcom.php:652
+#: app/Gedcom.php:673
 msgid "Place of emigration"
 msgstr "Stad for emigrasjon"
 
-#: app/Gedcom.php:463 resources/xml/reports/missing_facts_report.xml:347
+#: app/Gedcom.php:484 resources/xml/reports/missing_facts_report.xml:347
 msgid "Place of engagement"
 msgstr "Stad for truloving"
 
-#: app/Gedcom.php:661 app/Gedcom.php:1391
+#: app/CustomTags/GedcomL.php:241 app/Gedcom.php:682
 msgid "Place of event"
 msgstr "Stad for hending"
 
-#: app/Gedcom.php:671 resources/xml/reports/missing_facts_report.xml:389
+#: app/Gedcom.php:692 resources/xml/reports/missing_facts_report.xml:389
 msgid "Place of first communion"
 msgstr "Stad for fyrste altergang"
 
-#: app/Gedcom.php:678
+#: app/Gedcom.php:699
 msgid "Place of immigration"
 msgstr "Stad for immigrasjon"
 
-#: app/Gedcom.php:474 resources/xml/reports/fact_sources.xml:321
+#: app/Gedcom.php:495 resources/xml/reports/fact_sources.xml:321
 #: resources/xml/reports/missing_facts_report.xml:474
 msgid "Place of marriage"
 msgstr "Stad for vigsel"
 
-#: app/Gedcom.php:469 resources/xml/reports/missing_facts_report.xml:431
+#: app/Gedcom.php:490 resources/xml/reports/missing_facts_report.xml:431
 msgid "Place of marriage banns"
 msgstr "Stad for lysing"
 
-#: app/Gedcom.php:720
+#: app/Gedcom.php:741
 msgid "Place of naturalization"
 msgstr "Stad for Statsborgarskap"
 
-#: app/Gedcom.php:730
+#: app/Gedcom.php:751
 msgid "Place of ordination"
 msgstr "Stad for ordinasjon"
 
-#: app/Gedcom.php:738
+#: app/Gedcom.php:759
 msgid "Place of residence"
 msgstr "Namn på bustad"
 
@@ -11388,10 +11436,11 @@ msgctxt "Surname tradition"
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: app/Gedcom.php:413 app/Gedcom.php:526 app/Gedcom.php:546 app/Gedcom.php:817
-#: app/Gedcom.php:864 app/Gedcom.php:1282 app/Gedcom.php:1336
-#: app/Gedcom.php:1379 app/Gedcom.php:1410 app/Gedcom.php:1460
-#: app/Gedcom.php:1532 app/Gedcom.php:1564 app/Gedcom.php:1766
+#: app/CustomTags/GedcomL.php:117 app/CustomTags/GedcomL.php:171
+#: app/CustomTags/GedcomL.php:214 app/CustomTags/GedcomL.php:231
+#: app/CustomTags/GedcomL.php:299 app/CustomTags/PersonalAncestralFile.php:72
+#: app/Gedcom.php:434 app/Gedcom.php:547 app/Gedcom.php:567 app/Gedcom.php:838
+#: app/Gedcom.php:885
 msgid "Postal code"
 msgstr "Postnummer"
 
@@ -11491,7 +11540,8 @@ msgstr "Primidi"
 msgid "Print basic events when blank"
 msgstr "Skriv ut grunnleggjande hendingar når dei er utan innhald"
 
-#: app/Gedcom.php:1311 app/Gedcom.php:1367 app/Gedcom.php:1705
+#: app/CustomTags/GedcomL.php:146 app/CustomTags/GedcomL.php:202
+#: app/CustomTags/Legacy.php:137
 msgid "Priority"
 msgstr "Prioritet"
 
@@ -11515,8 +11565,9 @@ msgstr "Personvernrestriksjonar"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "Personvernrestriksjonar - desse påverkar postar og fakta som ikkje inneheld ein GEDCOM RESN-kode"
 
-#: app/Gedcom.php:1624 app/Gedcom.php:1628 app/Gedcom.php:1650
-#: app/Gedcom.php:1685 app/Gedcom.php:1692 app/GedcomRecord.php:359
+#: app/CustomTags/Legacy.php:56 app/CustomTags/Legacy.php:60
+#: app/CustomTags/Legacy.php:82 app/CustomTags/Legacy.php:117
+#: app/CustomTags/Legacy.php:124 app/GedcomRecord.php:359
 #: app/GedcomRecord.php:465 app/Report/ReportParserGenerate.php:1006
 #: app/Statistics/Repository/EventRepository.php:414
 msgid "Private"
@@ -11526,11 +11577,11 @@ msgstr "Privat"
 msgid "Private key"
 msgstr "Personleg kode"
 
-#: app/Gedcom.php:731
+#: app/Gedcom.php:752
 msgid "Probate"
 msgstr "Skifte"
 
-#: app/Gedcom.php:732
+#: app/Gedcom.php:753
 msgid "Property"
 msgstr "Eigedom"
 
@@ -11549,7 +11600,7 @@ msgstr "Provo, Utah, United States"
 msgid "Proxy"
 msgstr "Representant"
 
-#: app/Gedcom.php:847 resources/views/lists/sources-table.phtml:97
+#: app/Gedcom.php:868 resources/views/lists/sources-table.phtml:97
 #: resources/views/modals/source-fields.phtml:36
 msgid "Publication"
 msgstr "Publikasjon"
@@ -11564,10 +11615,11 @@ msgstr "Puerto Rico"
 msgid "Qatar"
 msgstr "Qatar"
 
-#: app/Gedcom.php:446 app/Gedcom.php:500 app/Gedcom.php:578 app/Gedcom.php:689
-#: app/Gedcom.php:761 app/Gedcom.php:785 app/Gedcom.php:809 app/Gedcom.php:1296
-#: app/Gedcom.php:1350 app/Gedcom.php:1439 app/Gedcom.php:1472
-#: app/Gedcom.php:1888 app/Gedcom.php:1902
+#: app/CustomTags/GedcomL.php:131 app/CustomTags/GedcomL.php:185
+#: app/CustomTags/GedcomL.php:278 app/CustomTags/GedcomL.php:311
+#: app/Gedcom.php:467 app/Gedcom.php:521 app/Gedcom.php:599 app/Gedcom.php:710
+#: app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:830 app/Gedcom.php:941
+#: app/Gedcom.php:955
 msgid "Quality of data"
 msgstr "Datakvalitet"
 
@@ -11747,7 +11799,8 @@ msgstr "Endre rekkefølgje på born"
 msgid "Re-order families"
 msgstr "Endre rekkefylgje på familiar"
 
-#: app/Gedcom.php:1797 app/Http/RequestHandlers/ReorderMediaFilesPage.php:49
+#: app/CustomTags/PhpGedView.php:72
+#: app/Http/RequestHandlers/ReorderMediaFilesPage.php:49
 #: app/Http/RequestHandlers/ReorderMediaPage.php:49
 #: app/Module/FixPrimaryTag.php:119
 #: resources/views/individual-page-menu.phtml:102
@@ -11801,14 +11854,15 @@ msgstr "Recife, Brasil"
 msgid "Record"
 msgstr "Post"
 
-#: app/Gedcom.php:484 app/Gedcom.php:743 app/Gedcom.php:775 app/Gedcom.php:799
-#: app/Gedcom.php:830 app/Gedcom.php:854 app/Gedcom.php:878 app/Gedcom.php:890
-#: app/Gedcom.php:1062 app/Gedcom.php:1166 app/Gedcom.php:1737
-#: app/Gedcom.php:1740 app/Gedcom.php:1746
+#: app/CustomTags/Ancestry.php:63 app/CustomTags/FamilyTreeBuilder.php:60
+#: app/CustomTags/MyHeritage.php:55 app/CustomTags/MyHeritage.php:58
+#: app/CustomTags/MyHeritage.php:65 app/Gedcom.php:505 app/Gedcom.php:764
+#: app/Gedcom.php:796 app/Gedcom.php:820 app/Gedcom.php:851 app/Gedcom.php:875
+#: app/Gedcom.php:899 app/Gedcom.php:911
 msgid "Record ID number"
 msgstr "Registreringsnummer (ID)"
 
-#: app/Gedcom.php:742 app/Gedcom.php:877
+#: app/Gedcom.php:763 app/Gedcom.php:898
 msgid "Record file number"
 msgstr "Postnummer i fil"
 
@@ -11828,9 +11882,12 @@ msgstr "Omdiriger gamle URL frå webtrees versjon 1."
 msgid "Redlands, California, United States"
 msgstr "Redlands, California, USA"
 
-#: app/Gedcom.php:480 app/Gedcom.php:733 app/Gedcom.php:773 app/Gedcom.php:797
-#: app/Gedcom.php:828 app/Gedcom.php:848 app/Gedcom.php:929 app/Gedcom.php:963
-#: app/Gedcom.php:976 app/Gedcom.php:985 app/Gedcom.php:993 app/Gedcom.php:1002
+#: app/CustomTags/Gedcom7.php:94 app/CustomTags/Gedcom7.php:128
+#: app/CustomTags/Gedcom7.php:141 app/CustomTags/Gedcom7.php:150
+#: app/CustomTags/Gedcom7.php:158 app/CustomTags/Gedcom7.php:167
+#: app/CustomTags/ProGen.php:53 app/CustomTags/ProGen.php:54
+#: app/CustomTags/ProGen.php:55 app/Gedcom.php:501 app/Gedcom.php:754
+#: app/Gedcom.php:794 app/Gedcom.php:818 app/Gedcom.php:849 app/Gedcom.php:869
 msgid "Reference number"
 msgstr "Referansenummer"
 
@@ -11839,7 +11896,7 @@ msgstr "Referansenummer"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "Regina, Saskatchewan, Canada"
 
-#: app/Elements/MarriageType.php:64 app/Gedcom.php:1018
+#: app/CustomTags/Aldfaer.php:62 app/Elements/MarriageType.php:64
 #: resources/xml/reports/fact_sources.xml:205
 msgid "Registered partnership"
 msgstr "Registrert partnarskap"
@@ -11888,16 +11945,16 @@ msgstr "Nært slekta familier"
 msgid "Related individuals"
 msgstr "Nære slektningar"
 
-#: app/Gedcom.php:590 app/Gedcom.php:1286 app/Gedcom.php:1299
-#: app/Gedcom.php:1340 app/Gedcom.php:1789 app/Gedcom.php:1878
-#: app/Gedcom.php:1892 app/Module/BranchesListModule.php:398
-#: app/Module/BranchesListModule.php:436
+#: app/CustomTags/GedcomL.php:121 app/CustomTags/GedcomL.php:134
+#: app/CustomTags/GedcomL.php:175 app/CustomTags/PhpGedView.php:64
+#: app/Gedcom.php:611 app/Gedcom.php:931 app/Gedcom.php:945
+#: app/Module/BranchesListModule.php:398 app/Module/BranchesListModule.php:436
 #: resources/views/fact-association-structure.phtml:85
 msgid "Relationship"
 msgstr "Forbindelse"
 
-#: app/Gedcom.php:1088 app/Gedcom.php:1181 app/Gedcom.php:1234
-#: app/Gedcom.php:1629
+#: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:53
+#: app/CustomTags/FamilyTreeMaker.php:106 app/CustomTags/Legacy.php:61
 msgid "Relationship to father"
 msgstr "Slektskap til far"
 
@@ -11905,12 +11962,12 @@ msgstr "Slektskap til far"
 msgid "Relationship to me"
 msgstr "Slektskap til meg"
 
-#: app/Gedcom.php:1089 app/Gedcom.php:1182 app/Gedcom.php:1236
-#: app/Gedcom.php:1630
+#: app/CustomTags/BrothersKeeper.php:62 app/CustomTags/FamilyTreeMaker.php:54
+#: app/CustomTags/FamilyTreeMaker.php:108 app/CustomTags/Legacy.php:62
 msgid "Relationship to mother"
 msgstr "Slektskap til mor"
 
-#: app/Gedcom.php:666
+#: app/Gedcom.php:687
 msgid "Relationship to parents"
 msgstr "Slektskap til foreldre"
 
@@ -11934,21 +11991,18 @@ msgstr "Slektskapsband"
 msgid "Relationships between %1$s and %2$s"
 msgstr "Slektskapsband mellom %1$s og %2$s"
 
-#: app/Gedcom.php:1533 app/Gedcom.php:1565
-msgid "Reliability of the information"
-msgstr "Informasjonens pålitelegheit"
-
-#: app/Gedcom.php:435 app/Gedcom.php:567 app/Gedcom.php:735 app/Gedcom.php:1413
-#: app/Gedcom.php:1429 resources/xml/reports/missing_facts_report.xml:26
+#: app/CustomTags/GedcomL.php:252 app/CustomTags/GedcomL.php:268
+#: app/Gedcom.php:456 app/Gedcom.php:588 app/Gedcom.php:756
+#: resources/xml/reports/missing_facts_report.xml:26
 #: resources/xml/reports/missing_facts_report.xml:587
 msgid "Religion"
 msgstr "Religion"
 
-#: app/Gedcom.php:728
+#: app/Gedcom.php:749
 msgid "Religious institution"
 msgstr "Religiøs institusjon"
 
-#: app/Elements/MarriageType.php:65 app/Gedcom.php:1019
+#: app/CustomTags/Aldfaer.php:63 app/Elements/MarriageType.php:65
 #: resources/xml/reports/fact_sources.xml:199
 msgid "Religious marriage"
 msgstr "Religiøs vigsel"
@@ -11957,7 +12011,8 @@ msgstr "Religiøs vigsel"
 msgid "Reload map"
 msgstr "Last kart på ny"
 
-#: app/Gedcom.php:1312 app/Gedcom.php:1368 app/Gedcom.php:1709
+#: app/CustomTags/GedcomL.php:147 app/CustomTags/GedcomL.php:203
+#: app/CustomTags/Legacy.php:141
 msgid "Reminder date"
 msgstr "Påminningsdato"
 
@@ -11965,7 +12020,7 @@ msgstr "Påminningsdato"
 msgid "Reminder email frequency (days)"
 msgstr "Kor ofte skal påminning sandast? (dagar)"
 
-#: app/Gedcom.php:1803
+#: app/CustomTags/PhpGedView.php:78
 msgid "Remote server"
 msgstr "Ekstern server"
 
@@ -12038,7 +12093,7 @@ msgid "Report"
 msgstr "Rapport"
 
 #. I18N: ''GEDCOM tag _RPT_PHRS
-#: app/Gedcom.php:1634 app/Gedcom.php:1635
+#: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
 msgid "Report phrase"
 msgstr "Rapportfrase"
 
@@ -12068,8 +12123,9 @@ msgstr "Rapportar"
 msgid "Repositories"
 msgstr "Arkiv"
 
-#: app/Gedcom.php:810 app/Gedcom.php:850 app/Gedcom.php:1306
-#: app/Gedcom.php:1362 app/Http/RequestHandlers/CheckTree.php:356
+#: app/CustomTags/GedcomL.php:141 app/CustomTags/GedcomL.php:197
+#: app/Gedcom.php:831 app/Gedcom.php:871
+#: app/Http/RequestHandlers/CheckTree.php:356
 #: resources/views/admin/trees-privacy.phtml:167
 #: resources/views/admin/trees.phtml:240
 #: resources/views/modals/source-fields.phtml:44
@@ -12104,15 +12160,16 @@ msgstr "Søk om brukarkonto"
 msgid "Research"
 msgstr "Gransking"
 
-#: app/Gedcom.php:1096 app/Gedcom.php:1135 app/Gedcom.php:1301
-#: app/Gedcom.php:1357 app/Gedcom.php:1704 app/Module/ResearchTaskModule.php:64
-#: app/Module/ResearchTaskModule.php:67
+#: app/CustomTags/BrothersKeeper.php:69 app/CustomTags/BrothersKeeper.php:108
+#: app/CustomTags/GedcomL.php:136 app/CustomTags/GedcomL.php:192
+#: app/CustomTags/Legacy.php:136 app/Module/ResearchTaskModule.php:62
+#: app/Module/ResearchTaskModule.php:65
 #: resources/views/modules/todo/research-tasks.phtml:36
 msgid "Research task"
 msgstr "Granskingsoppgåve"
 
 #. I18N: Name of a module. Tasks that need further research.
-#: app/Module/ResearchTaskModule.php:209
+#: app/Module/ResearchTaskModule.php:207
 msgid "Research tasks"
 msgstr "Granskingsoppgåver"
 
@@ -12124,7 +12181,7 @@ msgstr "Granskingsoppgåver er særskilde hendingar knytte til personar i slekts
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other genealogy applications may not recognize this tag."
 msgstr "Granskingsoppgåver vert lagra under koden «_TODO». Sidan denne ikkje finnast i GEDCOM-standarden, er det ikkje sikkert at andre slektsforskningsprogram vil forstå den."
 
-#: app/Gedcom.php:736
+#: app/Gedcom.php:757
 msgid "Residence"
 msgstr "Bustad"
 
@@ -12139,10 +12196,10 @@ msgid "Restrict to immediate family"
 msgstr "Avgrens til nær familie"
 
 #. I18N: a restriction on viewing data
-#: app/Gedcom.php:436 app/Gedcom.php:483 app/Gedcom.php:568 app/Gedcom.php:739
-#: app/Gedcom.php:1414 app/Gedcom.php:1809 app/Gedcom.php:1904
-#: app/Gedcom.php:1906 app/Gedcom.php:1908 app/Gedcom.php:1910
-#: app/Gedcom.php:1912 app/Gedcom.php:1914
+#: app/CustomTags/GedcomL.php:253 app/CustomTags/PhpGedView.php:84
+#: app/Gedcom.php:457 app/Gedcom.php:504 app/Gedcom.php:589 app/Gedcom.php:760
+#: app/Gedcom.php:957 app/Gedcom.php:959 app/Gedcom.php:961 app/Gedcom.php:963
+#: app/Gedcom.php:965 app/Gedcom.php:967
 #: app/Http/RequestHandlers/HelpText.php:256
 #: resources/views/modals/restriction-fields.phtml:9
 msgid "Restriction"
@@ -12156,7 +12213,7 @@ msgstr "Restriksjonar kan leggjast på postar og/eller fakta. Dei avgrensar kven
 msgid "Results"
 msgstr "Resultat"
 
-#: app/Gedcom.php:740
+#: app/Gedcom.php:761
 msgid "Retirement"
 msgstr "Pensjonering"
 
@@ -12170,12 +12227,13 @@ msgstr "Reunion"
 msgid "Rexburg, Idaho, United States"
 msgstr "Rexburg, Idaho, USA"
 
-#: app/Gedcom.php:442 app/Gedcom.php:496 app/Gedcom.php:574 app/Gedcom.php:685
-#: app/Gedcom.php:757 app/Gedcom.php:781 app/Gedcom.php:805 app/Gedcom.php:909
-#: app/Gedcom.php:921 app/Gedcom.php:935 app/Gedcom.php:949 app/Gedcom.php:1292
-#: app/Gedcom.php:1346 app/Gedcom.php:1435 app/Gedcom.php:1468
-#: app/Gedcom.php:1884 app/Gedcom.php:1898
-#: resources/views/admin/users-edit.phtml:287
+#: app/CustomTags/Gedcom7.php:74 app/CustomTags/Gedcom7.php:86
+#: app/CustomTags/Gedcom7.php:100 app/CustomTags/Gedcom7.php:114
+#: app/CustomTags/GedcomL.php:127 app/CustomTags/GedcomL.php:181
+#: app/CustomTags/GedcomL.php:274 app/CustomTags/GedcomL.php:307
+#: app/Gedcom.php:463 app/Gedcom.php:517 app/Gedcom.php:595 app/Gedcom.php:706
+#: app/Gedcom.php:778 app/Gedcom.php:802 app/Gedcom.php:826 app/Gedcom.php:937
+#: app/Gedcom.php:951 resources/views/admin/users-edit.phtml:287
 msgid "Role"
 msgstr "Rolle"
 
@@ -12188,15 +12246,15 @@ msgstr "Romania"
 msgid "Romanized"
 msgstr "Latinsk form"
 
-#: app/Gedcom.php:704
+#: app/Gedcom.php:725
 msgid "Romanized name"
 msgstr "Namn (latinsk form)"
 
-#: app/Gedcom.php:433 app/Gedcom.php:565 app/Gedcom.php:1399
+#: app/CustomTags/GedcomL.php:249 app/Gedcom.php:454 app/Gedcom.php:586
 msgid "Romanized place"
 msgstr "Stad (latinsk form)"
 
-#: app/Gedcom.php:713
+#: app/Gedcom.php:734
 msgid "Romanized type"
 msgstr "Type (latinsk form)"
 
@@ -12205,7 +12263,7 @@ msgstr "Type (latinsk form)"
 msgid "Roots"
 msgstr "Stamforeldre"
 
-#: app/Gedcom.php:1354 app/Gedcom.php:1583
+#: app/CustomTags/GedcomL.php:189
 msgid "Rufname"
 msgstr "Kallenamn"
 
@@ -12381,11 +12439,11 @@ msgstr "laurdag"
 msgid "Saudi Arabia"
 msgstr "Saudi Arabia"
 
-#: app/Gedcom.php:1200 app/Gedcom.php:1318
+#: app/CustomTags/FamilyTreeMaker.php:72 app/CustomTags/GedcomL.php:153
 msgid "Schema"
 msgstr "Skjema"
 
-#: app/Gedcom.php:649 app/Gedcom.php:673
+#: app/Gedcom.php:670 app/Gedcom.php:694
 msgid "School or college"
 msgstr "Skule eller universitet"
 
@@ -12394,7 +12452,7 @@ msgstr "Skule eller universitet"
 msgid "Scotland"
 msgstr "Skottland"
 
-#: app/Gedcom.php:1714
+#: app/CustomTags/Legacy.php:146
 msgid "Scrapbook"
 msgstr "Utklippsbok"
 
@@ -12645,11 +12703,11 @@ msgctxt "Abbreviation for September"
 msgid "Sep"
 msgstr "sep"
 
-#: app/Gedcom.php:1095
+#: app/CustomTags/BrothersKeeper.php:68
 msgid "Separated"
 msgstr "Separert"
 
-#: app/Gedcom.php:1199
+#: app/CustomTags/FamilyTreeMaker.php:71
 msgid "Separation"
 msgstr "Separasjon"
 
@@ -12809,9 +12867,11 @@ msgstr "Del URL"
 msgid "Share the anniversary of an event"
 msgstr "Del merkedag for ei hending"
 
-#: app/Elements/NoteStructure.php:121 app/Fact.php:452 app/Gedcom.php:766
-#: app/Gedcom.php:917 app/Gedcom.php:931 app/Gedcom.php:943 app/Gedcom.php:965
-#: app/Gedcom.php:970 app/Gedcom.php:978 app/Gedcom.php:995 app/Gedcom.php:1004
+#: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:96
+#: app/CustomTags/Gedcom7.php:108 app/CustomTags/Gedcom7.php:130
+#: app/CustomTags/Gedcom7.php:135 app/CustomTags/Gedcom7.php:143
+#: app/CustomTags/Gedcom7.php:160 app/CustomTags/Gedcom7.php:169
+#: app/Elements/NoteStructure.php:125 app/Fact.php:452 app/Gedcom.php:787
 #: resources/views/admin/trees.phtml:257
 #: resources/views/edit/shared-note.phtml:21
 #: resources/views/modules/notes/tab.phtml:63
@@ -13330,7 +13390,7 @@ msgstr "Logg ut"
 msgid "Sign-in and registration"
 msgstr "Innlogging og registrering"
 
-#: app/Gedcom.php:1605
+#: app/CustomTags/Heredis.php:52
 msgid "Signature"
 msgstr "Signatur"
 
@@ -13349,7 +13409,8 @@ msgid "Sister"
 msgstr "Syster"
 
 #. I18N: A configuration setting
-#: app/Gedcom.php:1743 resources/views/modules/google-analytics/form.phtml:9
+#: app/CustomTags/MyHeritage.php:61
+#: resources/views/modules/google-analytics/form.phtml:9
 #: resources/views/modules/matomo-analytics/form.phtml:9
 #: resources/views/modules/statcounter/form.phtml:9
 msgid "Site identification code"
@@ -13450,7 +13511,7 @@ msgstr "Små system (500 personar): 16-32MB, 10-20 sekund"
 msgid "Snowflake, Arizona, United States"
 msgstr "Snowflake, Arizona, United States"
 
-#: app/Gedcom.php:762
+#: app/Gedcom.php:783
 msgid "Social security number"
 msgstr "Personnummer"
 
@@ -13501,7 +13562,8 @@ msgstr "Son"
 msgid "Son of %s"
 msgstr "Son til %s"
 
-#: app/Gedcom.php:914 app/Gedcom.php:940 app/Gedcom.php:1860
+#: app/CustomTags/Gedcom7.php:79 app/CustomTags/Gedcom7.php:105
+#: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
 msgstr "Dato for sortering"
 
@@ -13524,7 +13586,7 @@ msgstr "Dato for sortering"
 msgid "Sort order"
 msgstr "Sorteringsrekkefølgje"
 
-#: app/Gedcom.php:916 app/Gedcom.php:942
+#: app/CustomTags/Gedcom7.php:81 app/CustomTags/Gedcom7.php:107
 msgid "Sort time"
 msgstr "Tid for sortering"
 
@@ -13542,9 +13604,10 @@ msgid "Sounds like"
 msgstr "Høyrast ut som"
 
 #. I18N: Name of a module/report
-#: app/Gedcom.php:832 app/Gedcom.php:1426 app/Gedcom.php:1430
-#: app/Gedcom.php:1442 app/Gedcom.php:1446 app/Gedcom.php:1450
-#: app/Gedcom.php:1456 app/Gedcom.php:1462
+#: app/CustomTags/GedcomL.php:265 app/CustomTags/GedcomL.php:269
+#: app/CustomTags/GedcomL.php:281 app/CustomTags/GedcomL.php:285
+#: app/CustomTags/GedcomL.php:289 app/CustomTags/GedcomL.php:295
+#: app/CustomTags/GedcomL.php:301 app/Gedcom.php:853
 #: app/Http/RequestHandlers/CheckTree.php:357
 #: app/Module/FactSourcesReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:166
@@ -13578,10 +13641,11 @@ msgstr "Høyrast ut som"
 msgid "Source"
 msgstr "Kjelde"
 
-#: app/Gedcom.php:437 app/Gedcom.php:491 app/Gedcom.php:569 app/Gedcom.php:680
-#: app/Gedcom.php:696 app/Gedcom.php:710 app/Gedcom.php:752 app/Gedcom.php:776
-#: app/Gedcom.php:800 app/Gedcom.php:1287 app/Gedcom.php:1341
-#: app/Gedcom.php:1415 app/Gedcom.php:1879 app/Gedcom.php:1893
+#: app/CustomTags/GedcomL.php:122 app/CustomTags/GedcomL.php:176
+#: app/CustomTags/GedcomL.php:254 app/Gedcom.php:458 app/Gedcom.php:512
+#: app/Gedcom.php:590 app/Gedcom.php:701 app/Gedcom.php:717 app/Gedcom.php:731
+#: app/Gedcom.php:773 app/Gedcom.php:797 app/Gedcom.php:821 app/Gedcom.php:932
+#: app/Gedcom.php:946
 msgid "Source citation"
 msgstr "Kjeldetilvising"
 
@@ -13732,8 +13796,9 @@ msgstr "Endringar frå og med"
 msgid "Statcounter™"
 msgstr "Statcounter™"
 
-#: app/Gedcom.php:414 app/Gedcom.php:527 app/Gedcom.php:547 app/Gedcom.php:818
-#: app/Gedcom.php:865 app/Gedcom.php:1411 app/Gedcom.php:1767
+#: app/CustomTags/GedcomL.php:232 app/CustomTags/PersonalAncestralFile.php:73
+#: app/Gedcom.php:435 app/Gedcom.php:548 app/Gedcom.php:568 app/Gedcom.php:839
+#: app/Gedcom.php:886
 msgid "State"
 msgstr "Fylke/Region/Stat"
 
@@ -13747,16 +13812,17 @@ msgstr "Fylke/Region/Stat"
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: app/Gedcom.php:488 app/Gedcom.php:594 app/Gedcom.php:636 app/Gedcom.php:656
-#: app/Gedcom.php:667 app/Gedcom.php:749 app/Gedcom.php:959 app/Gedcom.php:1307
-#: app/Gedcom.php:1363 app/Gedcom.php:1631 app/Gedcom.php:1636
+#: app/CustomTags/Gedcom7.php:124 app/CustomTags/GedcomL.php:142
+#: app/CustomTags/GedcomL.php:198 app/CustomTags/Legacy.php:63
+#: app/CustomTags/Legacy.php:68 app/Gedcom.php:509 app/Gedcom.php:615
+#: app/Gedcom.php:657 app/Gedcom.php:677 app/Gedcom.php:688 app/Gedcom.php:770
 #: resources/views/admin/changes-log.phtml:53
 #: resources/views/admin/changes-log.phtml:135
 msgid "Status"
 msgstr "Status"
 
-#: app/Gedcom.php:489 app/Gedcom.php:595 app/Gedcom.php:637 app/Gedcom.php:657
-#: app/Gedcom.php:750
+#: app/Gedcom.php:510 app/Gedcom.php:616 app/Gedcom.php:658 app/Gedcom.php:678
+#: app/Gedcom.php:771
 msgid "Status change date"
 msgstr "Endringsdato for status"
 
@@ -13796,10 +13862,6 @@ msgstr "Artikkel"
 msgid "Story title"
 msgstr "Tittel på artikkel"
 
-#: app/Gedcom.php:1520 app/Gedcom.php:1552
-msgid "Street name"
-msgstr "Gatenamn"
-
 #: resources/views/admin/broadcast.phtml:43
 #: resources/views/admin/email-page.phtml:48
 #: resources/views/contact-page.phtml:58 resources/views/message-page.phtml:46
@@ -13807,7 +13869,7 @@ msgstr "Gatenamn"
 msgid "Subject"
 msgstr "Emne"
 
-#: app/Gedcom.php:538 app/Gedcom.php:880
+#: app/Gedcom.php:559 app/Gedcom.php:901
 #: app/Http/RequestHandlers/CheckTree.php:358 app/Submission.php:44
 #: app/Submission.php:45 app/Submission.php:46
 msgid "Submission"
@@ -13822,8 +13884,8 @@ msgstr "Bidrag"
 msgid "Submitted but not yet cleared"
 msgstr "Innsendt, men enno ikkje godkjent"
 
-#: app/Gedcom.php:501 app/Gedcom.php:537 app/Gedcom.php:763 app/Gedcom.php:857
-#: app/Gedcom.php:891 app/Http/RequestHandlers/CheckTree.php:359
+#: app/Gedcom.php:522 app/Gedcom.php:558 app/Gedcom.php:784 app/Gedcom.php:878
+#: app/Gedcom.php:912 app/Http/RequestHandlers/CheckTree.php:359
 #: resources/views/admin/trees.phtml:265
 #: resources/views/modals/submission-fields.phtml:14
 #: resources/views/modules/recent_changes/changes-table.phtml:74
@@ -13879,7 +13941,7 @@ msgstr "Støtte for SQL Server er eksperimentell."
 msgid "Suriname"
 msgstr "Surinam"
 
-#: app/Gedcom.php:698 app/Gedcom.php:712 app/Gedcom.php:715
+#: app/Gedcom.php:719 app/Gedcom.php:733 app/Gedcom.php:736
 #: app/Http/RequestHandlers/HelpText.php:241
 #: resources/views/branches-page.phtml:25
 #: resources/views/lists/families-table.phtml:220
@@ -13903,7 +13965,7 @@ msgstr "Utsjånad på liste over etternamn"
 msgid "Surname option"
 msgstr "Alternativ for etternamn"
 
-#: app/Gedcom.php:697 app/Gedcom.php:711 app/Gedcom.php:714
+#: app/Gedcom.php:718 app/Gedcom.php:732 app/Gedcom.php:735
 msgid "Surname prefix"
 msgstr "Prefiks for etternamn"
 
@@ -14072,13 +14134,17 @@ msgstr "Kontaktperson for teknisk hjelp"
 msgid "Tegucigalpa, Honduras"
 msgstr "Tegucigalpa, Honduras"
 
+#: app/CustomTags/RootsMagic.php:55
+msgid "Template"
+msgstr ""
+
 #: resources/views/modules/html/config.phtml:27
 msgid "Templates"
 msgstr "Malar"
 
 #. I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)
-#: app/Gedcom.php:490 app/Gedcom.php:596 app/Gedcom.php:638 app/Gedcom.php:658
-#: app/Gedcom.php:751 app/Gedcom.php:892 app/Gedcom.php:962
+#: app/CustomTags/Gedcom7.php:127 app/Gedcom.php:511 app/Gedcom.php:617
+#: app/Gedcom.php:659 app/Gedcom.php:679 app/Gedcom.php:772 app/Gedcom.php:913
 #: resources/xml/reports/individual_report.xml:208
 msgid "Temple"
 msgstr "Tempel"
@@ -14107,16 +14173,17 @@ msgctxt "NOMINATIVE"
 msgid "Tevet"
 msgstr "Tevet"
 
-#: app/Gedcom.php:440 app/Gedcom.php:494 app/Gedcom.php:572 app/Gedcom.php:683
-#: app/Gedcom.php:755 app/Gedcom.php:779 app/Gedcom.php:803 app/Gedcom.php:855
-#: app/Gedcom.php:1290 app/Gedcom.php:1344 app/Gedcom.php:1433
-#: app/Gedcom.php:1466 app/Gedcom.php:1844 app/Gedcom.php:1882
-#: app/Gedcom.php:1896 resources/views/admin/trees-preferences.phtml:576
+#: app/CustomTags/GedcomL.php:125 app/CustomTags/GedcomL.php:179
+#: app/CustomTags/GedcomL.php:272 app/CustomTags/GedcomL.php:305
+#: app/CustomTags/RootsMagic.php:75 app/Gedcom.php:461 app/Gedcom.php:515
+#: app/Gedcom.php:593 app/Gedcom.php:704 app/Gedcom.php:776 app/Gedcom.php:800
+#: app/Gedcom.php:824 app/Gedcom.php:876 app/Gedcom.php:935 app/Gedcom.php:949
+#: resources/views/admin/trees-preferences.phtml:576
 #: resources/views/modals/source-fields.phtml:58
 msgid "Text"
 msgstr "Tekst"
 
-#: app/Gedcom.php:1739
+#: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
 msgstr "Tekstretning"
 
@@ -14302,7 +14369,7 @@ msgstr "Fila blei berre delvis lasta opp, forsøk på ny."
 
 #. I18N: %s is a filename
 #: resources/views/media-page-details.phtml:56
-#: resources/views/modules/media-list/page.phtml:147
+#: resources/views/modules/media-list/page.phtml:146
 #, php-format
 msgid "The file “%s” does not exist."
 msgstr "Fila «%s» eksisterar ikkje."
@@ -14574,7 +14641,7 @@ msgstr "Serveren si tidsgrense blei nådd."
 msgid "The size of the family tree, earliest and latest events, common names, etc."
 msgstr "Størrelse på slektstreet, tidlegaste og seinaste hendelsar, mest nytta namn, osb."
 
-#: app/Gedcom.php:1302 app/Gedcom.php:1358
+#: app/CustomTags/GedcomL.php:137 app/CustomTags/GedcomL.php:193
 msgid "The solution"
 msgstr "Løysinga"
 
@@ -14708,7 +14775,7 @@ msgstr "Det finnast ingen notat for denne personen."
 msgid "There are no pending changes."
 msgstr "Det finnast ingen ventande endringar."
 
-#: app/Module/ResearchTaskModule.php:131
+#: app/Module/ResearchTaskModule.php:129
 msgid "There are no research tasks in this family tree."
 msgstr "Det er ingen granskingsoppgåver knytte til slektstreet."
 
@@ -14905,13 +14972,13 @@ msgstr "Denne personen vil verte nytta som utgangspunkt for diagram og rapportar
 #: resources/views/statistics/families/top10-list-grand.phtml:27
 #: resources/views/statistics/families/top10-list-spouses.phtml:25
 #: resources/views/statistics/families/top10-list.phtml:27
-#: resources/views/statistics/individuals/top10-list.phtml:25
+#: resources/views/statistics/individuals/top10-list.phtml:26
 #: resources/views/statistics/other/charts/column.phtml:19
 #: resources/views/statistics/other/charts/combo.phtml:18
 #: resources/views/statistics/other/charts/custom.phtml:17
 #: resources/views/statistics/other/charts/geo.phtml:21
 #: resources/views/statistics/other/charts/pie.phtml:19
-#: resources/views/statistics/other/top10-list.phtml:26
+#: resources/views/statistics/other/top10-list.phtml:25
 msgid "This information is not available."
 msgstr "Denne informasjonen er ikkje tilgjengeleg."
 
@@ -15214,7 +15281,8 @@ msgstr "Dette vil slette alle slektsdata frå «%s» og erstatte dei med data fr
 msgid "Thu"
 msgstr "tor"
 
-#: app/Gedcom.php:1800 resources/views/admin/webtrees1-thumbnails.phtml:39
+#: app/CustomTags/PhpGedView.php:75
+#: resources/views/admin/webtrees1-thumbnails.phtml:39
 msgid "Thumbnail image"
 msgstr "Miniatyrbilete"
 
@@ -15232,11 +15300,13 @@ msgstr "torsdag"
 msgid "Tijuana, Mexico"
 msgstr "Tijuana, Mexico"
 
-#: app/Gedcom.php:508 app/Gedcom.php:911 app/Gedcom.php:937
+#: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:102
+#: app/Gedcom.php:529
 msgid "Time"
 msgstr "Tid"
 
-#: app/Gedcom.php:951 app/Gedcom.php:1027
+#: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:116
+#: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
 msgstr "Tidspunkt for fødsel"
 
@@ -15244,22 +15314,24 @@ msgstr "Tidspunkt for fødsel"
 msgid "Time of birth and time of death"
 msgstr "Tidspunkt for fødsel og tidspunkt for død"
 
-#: app/Gedcom.php:955 app/Gedcom.php:1030 app/Gedcom.php:1482
+#: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:120
+#: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
 msgstr "Tidspunkt for død"
 
-#: app/Gedcom.php:455 app/Gedcom.php:622 app/Gedcom.php:769 app/Gedcom.php:790
-#: app/Gedcom.php:821 app/Gedcom.php:837 app/Gedcom.php:868 app/Gedcom.php:884
-#: app/Gedcom.php:1387
+#: app/CustomTags/GedcomL.php:222 app/Gedcom.php:476 app/Gedcom.php:643
+#: app/Gedcom.php:790 app/Gedcom.php:811 app/Gedcom.php:842 app/Gedcom.php:858
+#: app/Gedcom.php:889 app/Gedcom.php:905
 msgid "Time of last change"
 msgstr "Tid for siste endring"
 
-#: app/Gedcom.php:961
+#: app/CustomTags/Gedcom7.php:126
 msgid "Time of status change"
 msgstr "Tid for statusendring"
 
 #. I18N: A configuration setting
-#: app/Gedcom.php:1738 resources/views/admin/site-preferences.phtml:48
+#: app/CustomTags/MyHeritage.php:56
+#: resources/views/admin/site-preferences.phtml:48
 #: resources/views/admin/users-edit.phtml:135
 #: resources/views/edit-account-page.phtml:109
 msgid "Time zone"
@@ -15333,8 +15405,8 @@ msgctxt "NOMINATIVE"
 msgid "Tishrei"
 msgstr "Tishrei"
 
-#: app/Gedcom.php:764 app/Gedcom.php:795 app/Gedcom.php:856 app/Gedcom.php:1484
-#: resources/views/admin/fix-level-0-media.phtml:36
+#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:785 app/Gedcom.php:816
+#: app/Gedcom.php:877 resources/views/admin/fix-level-0-media.phtml:36
 #: resources/views/lists/media-table.phtml:78
 #: resources/views/lists/notes-table.phtml:89
 #: resources/views/lists/sources-table.phtml:94
@@ -15605,7 +15677,7 @@ msgstr "Tal på brukarar"
 msgid "Tracking and analytics"
 msgstr "Sporing og analyse"
 
-#: app/Gedcom.php:893
+#: app/Gedcom.php:914
 msgid "Trailer"
 msgstr "Sluttkode GEDCOM"
 
@@ -15676,13 +15748,17 @@ msgstr "Tuxtla Gutierrez, Mexico"
 msgid "Twin Falls, Idaho, United States"
 msgstr "Twin Falls, Idaho, USA"
 
-#: app/Gedcom.php:427 app/Gedcom.php:434 app/Gedcom.php:447 app/Gedcom.php:559
-#: app/Gedcom.php:566 app/Gedcom.php:579 app/Gedcom.php:913 app/Gedcom.php:927
-#: app/Gedcom.php:930 app/Gedcom.php:939 app/Gedcom.php:957 app/Gedcom.php:964
-#: app/Gedcom.php:975 app/Gedcom.php:977 app/Gedcom.php:984 app/Gedcom.php:986
-#: app/Gedcom.php:992 app/Gedcom.php:994 app/Gedcom.php:1001
-#: app/Gedcom.php:1003 app/Gedcom.php:1393 app/Gedcom.php:1400
-#: app/Gedcom.php:1716 app/Gedcom.php:1805
+#: app/CustomTags/Gedcom7.php:78 app/CustomTags/Gedcom7.php:92
+#: app/CustomTags/Gedcom7.php:95 app/CustomTags/Gedcom7.php:104
+#: app/CustomTags/Gedcom7.php:122 app/CustomTags/Gedcom7.php:129
+#: app/CustomTags/Gedcom7.php:140 app/CustomTags/Gedcom7.php:142
+#: app/CustomTags/Gedcom7.php:149 app/CustomTags/Gedcom7.php:151
+#: app/CustomTags/Gedcom7.php:157 app/CustomTags/Gedcom7.php:159
+#: app/CustomTags/Gedcom7.php:166 app/CustomTags/Gedcom7.php:168
+#: app/CustomTags/GedcomL.php:243 app/CustomTags/GedcomL.php:250
+#: app/CustomTags/Legacy.php:148 app/CustomTags/PhpGedView.php:80
+#: app/Gedcom.php:448 app/Gedcom.php:455 app/Gedcom.php:468 app/Gedcom.php:580
+#: app/Gedcom.php:587 app/Gedcom.php:600
 #: app/Statistics/Google/ChartFamilyLargest.php:89
 #: app/Statistics/Google/ChartFamilyWithSources.php:64
 #: app/Statistics/Google/ChartIndividualWithSources.php:64
@@ -15696,57 +15772,58 @@ msgstr "Twin Falls, Idaho, USA"
 msgid "Type"
 msgstr "Type"
 
-#: app/Gedcom.php:1423
+#: app/CustomTags/GedcomL.php:262
 msgid "Type of abbreviation"
 msgstr "Type avkorting"
 
-#: app/Gedcom.php:1447
+#: app/CustomTags/GedcomL.php:286
 msgid "Type of administrative ID"
 msgstr "Type administrativ ID"
 
-#: app/Gedcom.php:1451
+#: app/CustomTags/GedcomL.php:290
 msgid "Type of demographic data"
 msgstr "Type demografisk data"
 
-#: app/Gedcom.php:465 app/Gedcom.php:662 app/Gedcom.php:1402
+#: app/CustomTags/GedcomL.php:255 app/Gedcom.php:486 app/Gedcom.php:683
 msgid "Type of event"
 msgstr "Type hending"
 
-#: app/Gedcom.php:664 app/Gedcom.php:1875
+#: app/Gedcom.php:685 app/Gedcom.php:928
 msgid "Type of fact"
 msgstr "Type fakta"
 
-#: app/Gedcom.php:675
+#: app/Gedcom.php:696
 msgid "Type of identification number"
 msgstr "Type identifikasjonsnummer"
 
-#: app/Gedcom.php:1440
+#: app/CustomTags/GedcomL.php:279
 msgid "Type of location"
 msgstr "Type lokalisasjon"
 
-#: app/Gedcom.php:475
+#: app/Gedcom.php:496
 msgid "Type of marriage"
 msgstr "Type ekteskap"
 
-#: app/Gedcom.php:716
+#: app/Gedcom.php:737
 msgid "Type of name"
 msgstr "Type namn"
 
-#: app/Gedcom.php:481 app/Gedcom.php:734 app/Gedcom.php:774 app/Gedcom.php:798
-#: app/Gedcom.php:829 app/Gedcom.php:849
+#: app/Gedcom.php:502 app/Gedcom.php:755 app/Gedcom.php:795 app/Gedcom.php:819
+#: app/Gedcom.php:850 app/Gedcom.php:870
 msgid "Type of reference number"
 msgstr "Type referansenummer"
 
-#: app/Gedcom.php:1308 app/Gedcom.php:1364
+#: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
 msgstr "Type granskingsoppgave"
 
 #. I18N: A configuration setting
-#: app/Gedcom.php:450 app/Gedcom.php:531 app/Gedcom.php:580 app/Gedcom.php:831
-#: app/Gedcom.php:879 app/Gedcom.php:1026 app/Gedcom.php:1075
-#: app/Gedcom.php:1316 app/Gedcom.php:1711 app/Gedcom.php:1772
-#: app/Gedcom.php:1804 app/Gedcom.php:1845
-#: app/Http/RequestHandlers/CreateRepositoryModal.php:51
+#: app/CustomTags/Aldfaer.php:70 app/CustomTags/Ancestry.php:76
+#: app/CustomTags/GedcomL.php:151 app/CustomTags/GedcomL.php:256
+#: app/CustomTags/Legacy.php:143 app/CustomTags/PersonalAncestralFile.php:78
+#: app/CustomTags/PhpGedView.php:79 app/CustomTags/RootsMagic.php:76
+#: app/Gedcom.php:471 app/Gedcom.php:552 app/Gedcom.php:601 app/Gedcom.php:852
+#: app/Gedcom.php:900 app/Http/RequestHandlers/CreateRepositoryModal.php:51
 #: resources/views/admin/trees-create.phtml:31
 #: resources/views/admin/trees-preferences.phtml:68
 #: resources/views/modals/media-file-fields.phtml:97
@@ -15788,21 +15865,29 @@ msgstr "Ukraina"
 msgid "Uncleared: insufficient data"
 msgstr "Ikkje godkjent: utilstrekkelege data"
 
-#: app/Gedcom.php:918 app/Gedcom.php:932 app/Gedcom.php:944 app/Gedcom.php:966
-#: app/Gedcom.php:979 app/Gedcom.php:987 app/Gedcom.php:996 app/Gedcom.php:1005
-#: app/Gedcom.php:1313 app/Gedcom.php:1369 app/Gedcom.php:1370
-#: app/Gedcom.php:1372 app/Gedcom.php:1374 app/Gedcom.php:1375
-#: app/Gedcom.php:1382 app/Gedcom.php:1383 app/Gedcom.php:1463
-#: app/Gedcom.php:1550 app/Gedcom.php:1586 app/Gedcom.php:1588
-#: app/Gedcom.php:1590 app/Gedcom.php:1592 app/Gedcom.php:1595
-#: app/Gedcom.php:1648 app/Gedcom.php:1710 app/Gedcom.php:1717
-#: app/Gedcom.php:1718 app/Gedcom.php:1726 app/Gedcom.php:1736
-#: app/Gedcom.php:1741 app/Gedcom.php:1742 app/Gedcom.php:1745
-#: app/Gedcom.php:1757 app/Gedcom.php:1773 app/Gedcom.php:1774
-#: app/Gedcom.php:1775 app/Gedcom.php:1776 app/Gedcom.php:1820
-#: app/Gedcom.php:1827 app/Gedcom.php:1828 app/Gedcom.php:1829
-#: app/Gedcom.php:1830 app/Gedcom.php:1840 app/Gedcom.php:1842
-#: app/Gedcom.php:1846 app/Gedcom.php:1847 app/Gedcom.php:1850
+#: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:97
+#: app/CustomTags/Gedcom7.php:109 app/CustomTags/Gedcom7.php:131
+#: app/CustomTags/Gedcom7.php:144 app/CustomTags/Gedcom7.php:152
+#: app/CustomTags/Gedcom7.php:161 app/CustomTags/Gedcom7.php:170
+#: app/CustomTags/GedcomL.php:148 app/CustomTags/GedcomL.php:204
+#: app/CustomTags/GedcomL.php:205 app/CustomTags/GedcomL.php:207
+#: app/CustomTags/GedcomL.php:209 app/CustomTags/GedcomL.php:210
+#: app/CustomTags/GedcomL.php:217 app/CustomTags/GedcomL.php:218
+#: app/CustomTags/GedcomL.php:302 app/CustomTags/Legacy.php:80
+#: app/CustomTags/Legacy.php:142 app/CustomTags/Legacy.php:149
+#: app/CustomTags/Legacy.php:150 app/CustomTags/Legacy.php:158
+#: app/CustomTags/MyHeritage.php:54 app/CustomTags/MyHeritage.php:59
+#: app/CustomTags/MyHeritage.php:60 app/CustomTags/MyHeritage.php:64
+#: app/CustomTags/PersonalAncestralFile.php:63
+#: app/CustomTags/PersonalAncestralFile.php:79
+#: app/CustomTags/PersonalAncestralFile.php:80
+#: app/CustomTags/PersonalAncestralFile.php:81
+#: app/CustomTags/PersonalAncestralFile.php:82 app/CustomTags/Reunion.php:54
+#: app/CustomTags/Reunion.php:61 app/CustomTags/Reunion.php:62
+#: app/CustomTags/Reunion.php:63 app/CustomTags/Reunion.php:64
+#: app/CustomTags/RootsMagic.php:63 app/CustomTags/RootsMagic.php:73
+#: app/CustomTags/RootsMagic.php:77 app/CustomTags/RootsMagic.php:78
+#: app/CustomTags/RootsMagic.php:81
 msgid "Unique identifier"
 msgstr "Globalt Unik ID (GUID)"
 
@@ -15827,7 +15912,7 @@ msgid "United States"
 msgstr "USA"
 
 #. I18N: Name of a country or state
-#: app/Elements/FamilyStatusText.php:73 app/Gedcom.php:1266
+#: app/CustomTags/FamilyTreeMaker.php:138 app/Elements/FamilyStatusText.php:73
 #: app/GedcomRecord.php:739 app/GedcomRecord.php:744
 #: app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
@@ -15896,7 +15981,7 @@ msgid "Update the higher-level parts of place names, while keeping the lower-lev
 msgstr "Oppdater høgaste nivå i stadnamn, men behalde dei lavare nivåa."
 
 #. I18N: GEDCOM tag _UPD
-#: app/Gedcom.php:1161 app/Gedcom.php:1747
+#: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
 msgstr "Oppdatert"
 
@@ -16005,7 +16090,7 @@ msgstr "Bruk \"redigere\"-menyen for å kopiere dette inn i ein annan post."
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Nytt dette feltet for å fortelje administratoren til nettstaden kvifor du ber om ein konto, og kva slektskap du har til personar i denne slektsbasen. Du kan òg nytte dette feltet til å skrive andre kommentarar til administrator."
 
-#: app/Module/ResearchTaskModule.php:66 app/Module/ResearchTaskModule.php:69
+#: app/Module/ResearchTaskModule.php:64 app/Module/ResearchTaskModule.php:67
 #: resources/views/admin/changes-log.phtml:83
 #: resources/views/admin/changes-log.phtml:138
 #: resources/views/admin/site-logs.phtml:74
@@ -16157,8 +16242,9 @@ msgstr "Ventôse"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Mexico"
 
-#: app/Gedcom.php:1625 app/Gedcom.php:1627 app/Gedcom.php:1689
-#: app/Gedcom.php:1691 app/Gedcom.php:1694 resources/views/admin/users.phtml:34
+#: app/CustomTags/Legacy.php:57 app/CustomTags/Legacy.php:59
+#: app/CustomTags/Legacy.php:121 app/CustomTags/Legacy.php:123
+#: app/CustomTags/Legacy.php:126 resources/views/admin/users.phtml:34
 msgid "Verified"
 msgstr "Stadfesta"
 
@@ -16167,7 +16253,8 @@ msgstr "Stadfesta"
 msgid "Vernal, Utah, United States"
 msgstr "Vernal, Utah, United States"
 
-#: app/Gedcom.php:505 app/Gedcom.php:513 app/Gedcom.php:536 app/Gedcom.php:1315
+#: app/CustomTags/GedcomL.php:150 app/Gedcom.php:526 app/Gedcom.php:534
+#: app/Gedcom.php:557
 msgid "Version"
 msgstr "Versjon"
 
@@ -16313,7 +16400,7 @@ msgstr "ons"
 msgid "Wednesday"
 msgstr "onsdag"
 
-#: app/Gedcom.php:1029 app/Gedcom.php:1136
+#: app/CustomTags/Aldfaer.php:73 app/CustomTags/BrothersKeeper.php:109
 msgid "Weight"
 msgstr "Vekt"
 
@@ -16395,7 +16482,7 @@ msgstr "Enkje"
 msgid "Widower"
 msgstr "Enkjemann"
 
-#: app/Gedcom.php:448 app/Gedcom.php:502
+#: app/Gedcom.php:469 app/Gedcom.php:523
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:77
 #: resources/views/edit/change-family-members.phtml:32
 #: resources/views/edit/change-family-members.phtml:47
@@ -16412,11 +16499,11 @@ msgstr "Enkjemann"
 msgid "Wife"
 msgstr "Hustru"
 
-#: app/Gedcom.php:449 resources/views/modules/timeline-chart/chart.phtml:353
+#: app/Gedcom.php:470 resources/views/modules/timeline-chart/chart.phtml:353
 msgid "Wife’s age"
 msgstr "Hustru sin alder"
 
-#: app/Gedcom.php:765
+#: app/Gedcom.php:786
 msgid "Will"
 msgstr "Testamente"
 
@@ -16439,8 +16526,7 @@ msgstr "Utan kjelder"
 msgid "Witness"
 msgstr "Vitne"
 
-#: app/Gedcom.php:1297 app/Gedcom.php:1351 app/Gedcom.php:1542
-#: app/Gedcom.php:1574
+#: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
 msgstr "Vitner"
 
@@ -16457,7 +16543,8 @@ msgstr "Kona tek ektemannens etternamn."
 msgid "World"
 msgstr "Verda"
 
-#: app/Gedcom.php:1137 resources/views/modules/yahrzeit/table.phtml:34
+#: app/CustomTags/BrothersKeeper.php:110
+#: resources/views/modules/yahrzeit/table.phtml:34
 msgid "Yahrzeit"
 msgstr "Yartzeit (Jødisk fødselsdag)"
 
@@ -16976,7 +17063,7 @@ msgstr "berekna %s"
 #: resources/views/edit/new-individual.phtml:53
 #: resources/views/edit/raw-gedcom-fact.phtml:45
 #: resources/views/edit/raw-gedcom-record.phtml:73
-#: resources/views/edit/reorder-children.phtml:48
+#: resources/views/edit/reorder-children.phtml:50
 #: resources/views/edit/reorder-families.phtml:102
 #: resources/views/edit/reorder-media-files.phtml:42
 #: resources/views/edit/reorder-media.phtml:41
@@ -19913,7 +20000,7 @@ msgstr "høgre"
 #: resources/views/edit/new-individual.phtml:43
 #: resources/views/edit/raw-gedcom-fact.phtml:41
 #: resources/views/edit/raw-gedcom-record.phtml:69
-#: resources/views/edit/reorder-children.phtml:38
+#: resources/views/edit/reorder-children.phtml:40
 #: resources/views/edit/reorder-families.phtml:97
 #: resources/views/edit/reorder-media-files.phtml:37
 #: resources/views/edit/reorder-media.phtml:36
@@ -20325,7 +20412,7 @@ msgid "sort by date"
 msgstr "sorter etter dato"
 
 #. I18N: A button label.
-#: resources/views/edit/reorder-children.phtml:43
+#: resources/views/edit/reorder-children.phtml:45
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/change_report.xml:7
@@ -21088,6 +21175,9 @@ msgstr "…"
 #~ msgid "Add watermarks to thumbnails"
 #~ msgstr "Legg til vassmerke på miniatyrbilete"
 
+#~ msgid "Additional information"
+#~ msgstr "Ytterlegare informasjon"
+
 #~ msgctxt "FEMALE"
 #~ msgid "Adopted by both parents"
 #~ msgstr "Adoptert av begge foreldre"
@@ -21164,6 +21254,9 @@ msgstr "…"
 #~ msgctxt "MALE"
 #~ msgid "Also known as"
 #~ msgstr "Også kjend som"
+
+#~ msgid "Alternative place name"
+#~ msgstr "Alternativt stadnamn"
 
 #~ msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
 #~ msgstr "Ein tilslutta person er ein annan person som var involvert i denne hendinga, til dømes ein fadder eller ein prest."
@@ -21288,6 +21381,9 @@ msgstr "…"
 #~ msgid "Center map here"
 #~ msgstr "Sentrer kart her"
 
+#~ msgid "Certificate number"
+#~ msgstr "Sertifikatnummer"
+
 #~ msgid "Change"
 #~ msgstr "Endre"
 
@@ -21350,6 +21446,9 @@ msgstr "…"
 
 #~ msgid "Click to choose individual as head of family."
 #~ msgstr "Klikk for å velje person som familieoverhovud."
+
+#~ msgid "Cohabitation"
+#~ msgstr "Sambuarskap"
 
 #~ msgid "Columns per page"
 #~ msgstr "Kolonner pr. side"
@@ -21564,6 +21663,9 @@ msgstr "…"
 #~ msgid "FAQ visibility"
 #~ msgstr "FAQ syning"
 
+#~ msgid "FOKO country"
+#~ msgstr "FOKO land"
+
 #~ msgid "Facts for repository records"
 #~ msgstr "Fakta for arkivregistreringar"
 
@@ -21661,6 +21763,9 @@ msgstr "…"
 #~ msgid "House"
 #~ msgstr "Hus"
 
+#~ msgid "House number"
+#~ msgstr "Husnummer"
+
 #~ msgid "Hybrid"
 #~ msgstr "Hybrid"
 
@@ -21743,6 +21848,9 @@ msgstr "…"
 
 #~ msgid "Invalid GEDCOM format"
 #~ msgstr "Ugyldig GEDCOM 5.5 format"
+
+#~ msgid "Joint family name"
+#~ msgstr "Felles familienamn"
 
 #~ msgid "Keep"
 #~ msgstr "Ta vare på"
@@ -22047,6 +22155,9 @@ msgstr "…"
 #~ msgid "Place contains"
 #~ msgstr "Stadnamn inneheld"
 
+#~ msgid "Place of citizenship"
+#~ msgstr "Heimstad"
+
 #~ msgid "Place the website offline, by creating the file %s…"
 #~ msgstr "Gjer nettstaden offline, ved å opprette fila %s…"
 
@@ -22118,6 +22229,9 @@ msgstr "…"
 
 #~ msgid "Redraw map"
 #~ msgstr "Teikn kart på ny"
+
+#~ msgid "Reliability of the information"
+#~ msgstr "Informasjonens pålitelegheit"
 
 #~ msgid "Religious name"
 #~ msgstr "Religiøst namn"
@@ -22351,6 +22465,9 @@ msgstr "…"
 
 #~ msgid "Store watermarked thumbnails on server"
 #~ msgstr "Lagre vassmerka miniatyrbileter på serveren"
+
+#~ msgid "Street name"
+#~ msgstr "Gatenamn"
 
 #~ msgid "Subdivision"
 #~ msgstr "Område"
