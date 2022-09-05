@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Contracts\CustomTagInterface;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\CustomElement;
+use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Elements\PafUid;
 use Fisharebest\Webtrees\I18N;
 
@@ -51,17 +52,33 @@ class RootsMagic implements CustomTagInterface
     public function tags(): array
     {
         return [
-            'FAM:_UID'          => new PafUid(I18N::translate('Unique identifier')),
-            'INDI:_DNA'         => new CustomElement(I18N::translate('DNA markers')),
-            'INDI:_UID'         => new PafUid(I18N::translate('Unique identifier')),
-            'INDI:_WEBTAG'      => new CustomElement(I18N::translate('External link')),
-            'INDI:_WEBTAG:NAME' => new CustomElement(I18N::translate('Text')),
-            'INDI:_WEBTAG:URL'  => new AddressWebPage(I18N::translate('URL')),
-            'OBJE:_UID'         => new PafUid(I18N::translate('Unique identifier')),
-            'REPO:_UID'         => new PafUid(I18N::translate('Unique identifier')),
-            'SOUR:_BIBL'        => new CustomElement(I18N::translate('Bibliography')),
-            'SOUR:_SUBQ'        => new CustomElement(I18N::translate('Abbreviation')),
-            'SOUR:_UID'         => new PafUid(I18N::translate('Unique identifier')),
+            'FAM:*:SOUR:_TMPLT'              => new EmptyElement(I18N::translate('Template')),
+            'FAM:*:SOUR:_TMPLT:FIELD'        => /* I18N: Data entry field */ new EmptyElement(I18N::translate('Field')),
+            'FAM:*:SOUR:_TMPLT:FIELD:NAME'   => /* I18N: Data entry field */ new CustomElement(I18N::translate('Field name')),
+            'FAM:*:SOUR:_TMPLT:FIELD:VALUE'  => /* I18N: Data entry field */ new CustomElement(I18N::translate('Field value')),
+            'FAM:SOUR:_TMPLT'                => new EmptyElement(''),
+            'FAM:SOUR:_TMPLT:FIELD'          => new EmptyElement(''),
+            'FAM:SOUR:_TMPLT:FIELD:NAME'     => new CustomElement(I18N::translate('Field name')),
+            'FAM:SOUR:_TMPLT:FIELD:VALUE'    => new CustomElement(I18N::translate('Field value')),
+            'FAM:_UID'                       => new PafUid(I18N::translate('Unique identifier')),
+            'INDI:*:SOUR:_TMPLT'             => new EmptyElement(''),
+            'INDI:*:SOUR:_TMPLT:FIELD'       => new EmptyElement(''),
+            'INDI:*:SOUR:_TMPLT:FIELD:NAME'  => new CustomElement(I18N::translate('Field name')),
+            'INDI:*:SOUR:_TMPLT:FIELD:VALUE' => new CustomElement(I18N::translate('Field value')),
+            'INDI:SOUR:_TMPLT'               => new EmptyElement(''),
+            'INDI:SOUR:_TMPLT:FIELD'         => new EmptyElement(''),
+            'INDI:SOUR:_TMPLT:FIELD:NAME'    => new CustomElement(I18N::translate('Field name')),
+            'INDI:SOUR:_TMPLT:FIELD:VALUE'   => new CustomElement(I18N::translate('Field value')),
+            'INDI:_DNA'                      => new CustomElement(I18N::translate('DNA markers')),
+            'INDI:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+            'INDI:_WEBTAG'                   => new CustomElement(I18N::translate('External link')),
+            'INDI:_WEBTAG:NAME'              => new CustomElement(I18N::translate('Text')),
+            'INDI:_WEBTAG:URL'               => new AddressWebPage(I18N::translate('URL')),
+            'OBJE:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+            'REPO:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
+            'SOUR:_BIBL'                     => new CustomElement(I18N::translate('Bibliography')),
+            'SOUR:_SUBQ'                     => new CustomElement(I18N::translate('Abbreviation')),
+            'SOUR:_UID'                      => new PafUid(I18N::translate('Unique identifier')),
         ];
     }
 }
