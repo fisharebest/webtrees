@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2021-10-12 10:33+0100\n"
-"PO-Revision-Date: 2022-09-05 12:36+0000\n"
+"PO-Revision-Date: 2022-09-05 19:50+0000\n"
 "Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
 "Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/"
 "webtrees-20/nl/>\n"
@@ -5441,7 +5441,7 @@ msgstr "Dhu al-Qi'dah"
 #: app/Elements/LdsEndowmentDateStatus.php:66
 #: app/GedcomCode/GedcomCodeStat.php:111
 msgid "Died as a child: exempt"
-msgstr "Gestorven als kind: vrijgesteld"
+msgstr "Overleden als kind: vrijgesteld"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/GedcomCode/GedcomCodeStat.php:130
@@ -13205,11 +13205,11 @@ msgstr "Toon overleden personen, of paren waarvan beide partners zijn overleden.
 
 #: resources/views/lists/individuals-table.phtml:197
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Toon personen, meer dan 100 jaar geleden gestorven."
+msgstr "Toon personen die meer dan 100 jaar geleden zijn overleden."
 
 #: resources/views/lists/individuals-table.phtml:201
 msgid "Show individuals who died within the last 100 years."
-msgstr "Toon personen, gestorven in de laatste 100 jaar."
+msgstr "Toon personen die in de laatste 100 jaar zijn overleden."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:99
@@ -17257,7 +17257,7 @@ msgstr "geboortenaam"
 #: resources/views/admin/trees-privacy.phtml:121
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "geboren in de laatste %1$s jaar of gestorven in de laatste %2$s jaar"
+msgstr "geboren in de laatste %1$s jaar of overleden in de laatste %2$s jaar"
 
 #: app/Functions/Functions.php:722
 msgid "brother"
