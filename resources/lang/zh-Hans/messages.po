@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chinese (Simplified) (webtrees)\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-07-27 13:59+0100\n"
+"POT-Creation-Date: 2022-09-05 13:38+0100\n"
 "PO-Revision-Date: 2022-07-17 04:41+0000\n"
 "Last-Translator: olor <olor@foxmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.webtrees.net/projects/webtrees/webtrees/zh_Hans/>\n"
@@ -136,8 +136,8 @@ msgstr "%1$s × %2$s 像素"
 #. I18N: e.g. "Occupation: farmer"
 #. I18N: a label/value pair, such as “Occupation: Farmer”. Some languages may need to change the punctuation.
 #. I18N: e.g. "Occupation: farmer"
-#: app/Elements/AbstractElement.php:237 app/Elements/NoteStructure.php:130
-#: app/Elements/NoteStructure.php:154 app/Elements/NoteStructure.php:166
+#: app/Elements/AbstractElement.php:237 app/Elements/NoteStructure.php:134
+#: app/Elements/NoteStructure.php:158 app/Elements/NoteStructure.php:170
 #: app/Exceptions/FileUploadException.php:101 app/Fact.php:635
 #: app/GedcomRecord.php:554 app/Http/RequestHandlers/CheckTree.php:418
 #: app/Http/RequestHandlers/CheckTree.php:420
@@ -146,7 +146,7 @@ msgstr "%1$s × %2$s 像素"
 #: resources/views/fact-association-structure.phtml:103
 #: resources/views/fact-association-structure.phtml:107
 #: resources/views/fact-gedcom-fields.phtml:66
-#: resources/views/modules/media-list/page.phtml:143
+#: resources/views/modules/media-list/page.phtml:142
 #, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s:%2$s"
@@ -227,7 +227,7 @@ msgstr[0] "%s 匿名登录的用户"
 #: resources/views/modules/ancestors-chart/tree.phtml:42
 #: resources/views/modules/descendancy_chart/tree.phtml:40
 #: resources/views/statistics/families/top10-list.phtml:20
-#: resources/views/statistics/families/top10-nolist.phtml:16
+#: resources/views/statistics/families/top10-nolist.phtml:17
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
@@ -848,7 +848,7 @@ msgstr "提交者列表。"
 
 # I18N: Description of “Research tasks” module
 #. I18N: Description of “Research tasks” module
-#: app/Module/ResearchTaskModule.php:84
+#: app/Module/ResearchTaskModule.php:82
 msgid "A list of tasks and activities that are linked to the family tree."
 msgstr "与家谱有关的任务和活动清单。"
 
@@ -1205,8 +1205,8 @@ msgid "Abbreviate place names"
 msgstr "地名简称"
 
 # I18N: gedcom tag ABBR
-#: app/Gedcom.php:833 app/Gedcom.php:1422 app/Gedcom.php:1594
-#: app/Gedcom.php:1849 resources/views/lists/sources-table.phtml:95
+#: app/CustomTags/GedcomL.php:261 app/CustomTags/RootsMagic.php:80
+#: app/Gedcom.php:854 resources/views/lists/sources-table.phtml:95
 #: resources/views/modals/source-fields.phtml:22
 msgid "Abbreviation"
 msgstr "简称"
@@ -1575,36 +1575,32 @@ msgstr "添加您自己的文字和图形。"
 msgid "Add/edit a journal/news entry"
 msgstr "添加日记或新闻"
 
-#: app/Gedcom.php:1521 app/Gedcom.php:1534 app/Gedcom.php:1536
-#: app/Gedcom.php:1537 app/Gedcom.php:1545 app/Gedcom.php:1546
-#: app/Gedcom.php:1553 app/Gedcom.php:1566 app/Gedcom.php:1568
-#: app/Gedcom.php:1569 app/Gedcom.php:1579 app/Gedcom.php:1580
-msgid "Additional information"
-msgstr ""
-
 # I18N: gedcom tag ADDR
-#: app/Gedcom.php:407 app/Gedcom.php:520 app/Gedcom.php:540 app/Gedcom.php:811
-#: app/Gedcom.php:858 app/Gedcom.php:1022 app/Gedcom.php:1404
-#: app/Gedcom.php:1761 app/Http/RequestHandlers/CreateRepositoryModal.php:50
+#: app/CustomTags/Aldfaer.php:66 app/CustomTags/GedcomL.php:225
+#: app/CustomTags/PersonalAncestralFile.php:67 app/Gedcom.php:428
+#: app/Gedcom.php:541 app/Gedcom.php:561 app/Gedcom.php:832 app/Gedcom.php:879
+#: app/Http/RequestHandlers/CreateRepositoryModal.php:50
 #: app/Module/FixCemeteryTag.php:84
 #: resources/views/modals/submitter-fields.phtml:33
 msgid "Address"
 msgstr "详细地址"
 
 # I18N: gedcom tag ADR1
-#: app/Gedcom.php:408 app/Gedcom.php:521 app/Gedcom.php:541 app/Gedcom.php:812
-#: app/Gedcom.php:859 app/Gedcom.php:1405 app/Gedcom.php:1762
+#: app/CustomTags/GedcomL.php:226 app/CustomTags/PersonalAncestralFile.php:68
+#: app/Gedcom.php:429 app/Gedcom.php:542 app/Gedcom.php:562 app/Gedcom.php:833
+#: app/Gedcom.php:880
 msgid "Address line 1"
 msgstr "地址一"
 
 # I18N: gedcom tag ADR2
-#: app/Gedcom.php:409 app/Gedcom.php:522 app/Gedcom.php:542 app/Gedcom.php:813
-#: app/Gedcom.php:860 app/Gedcom.php:1406 app/Gedcom.php:1763
+#: app/CustomTags/GedcomL.php:227 app/CustomTags/PersonalAncestralFile.php:69
+#: app/Gedcom.php:430 app/Gedcom.php:543 app/Gedcom.php:563 app/Gedcom.php:834
+#: app/Gedcom.php:881
 msgid "Address line 2"
 msgstr "地址二"
 
-#: app/Gedcom.php:410 app/Gedcom.php:523 app/Gedcom.php:543 app/Gedcom.php:814
-#: app/Gedcom.php:861 app/Gedcom.php:1407
+#: app/CustomTags/GedcomL.php:228 app/Gedcom.php:431 app/Gedcom.php:544
+#: app/Gedcom.php:564 app/Gedcom.php:835 app/Gedcom.php:882
 msgid "Address line 3"
 msgstr "地址三"
 
@@ -1618,7 +1614,7 @@ msgstr ""
 msgid "Adelaide, Australia"
 msgstr "阿德莱德，澳大利亚"
 
-#: app/Gedcom.php:1444
+#: app/CustomTags/GedcomL.php:283
 msgid "Administrative ID"
 msgstr ""
 
@@ -1659,21 +1655,24 @@ msgid "Adopted by both parents"
 msgstr "被父母双方收养"
 
 # I18N: gedcom tag _ADPF
-#: app/Elements/AdoptedByWhichParent.php:58 app/Gedcom.php:1119
+#: app/CustomTags/BrothersKeeper.php:92
+#: app/Elements/AdoptedByWhichParent.php:58
 msgid "Adopted by father"
 msgstr "被父亲收养"
 
 # I18N: gedcom tag _ADPM
-#: app/Elements/AdoptedByWhichParent.php:59 app/Gedcom.php:1120
+#: app/CustomTags/BrothersKeeper.php:93
+#: app/Elements/AdoptedByWhichParent.php:59
 msgid "Adopted by mother"
 msgstr "被母亲收养"
 
-#: app/Gedcom.php:1098 app/Gedcom.php:1758
+#: app/CustomTags/BrothersKeeper.php:71
+#: app/CustomTags/PersonalAncestralFile.php:64
 msgid "Adopted name"
 msgstr "过继姓名"
 
 # I18N: gedcom tag ADOP
-#: app/Gedcom.php:581 app/Gedcom.php:584
+#: app/Gedcom.php:602 app/Gedcom.php:605
 #: app/Module/IndividualFactsTabModule.php:155
 msgid "Adoption"
 msgstr "收养/过继"
@@ -1748,12 +1747,12 @@ msgstr "养姐妹"
 msgid "Adoption of a son"
 msgstr "养子"
 
-#: app/Gedcom.php:583 app/Module/IndividualFactsTabModule.php:154
+#: app/Gedcom.php:604 app/Module/IndividualFactsTabModule.php:154
 msgid "Adoptive parents"
 msgstr "养父母"
 
 # I18N: gedcom tag CHRA
-#: app/Gedcom.php:628
+#: app/Gedcom.php:649
 msgid "Adult christening"
 msgstr "成人洗礼"
 
@@ -1777,7 +1776,7 @@ msgid "After creating the family tree, you will be able to import data from a GE
 msgstr "创建家谱后，您可以通过GEDCOM文件导入数据。"
 
 # I18N: gedcom tag AGE
-#: app/Gedcom.php:548 app/Statistics/Google/ChartAge.php:137
+#: app/Gedcom.php:569 app/Statistics/Google/ChartAge.php:137
 #: app/Statistics/Google/ChartMarriageAge.php:160
 #: resources/views/fact-date.phtml:137
 #: resources/views/lists/chart-by-age.phtml:32
@@ -1845,7 +1844,8 @@ msgid "Age related to death year"
 msgstr "去世年龄"
 
 # I18N: gedcom tag AGNC
-#: app/Gedcom.php:415 app/Gedcom.php:549 app/Gedcom.php:840 app/Gedcom.php:1403
+#: app/CustomTags/GedcomL.php:233 app/Gedcom.php:436 app/Gedcom.php:570
+#: app/Gedcom.php:861
 msgid "Agency"
 msgstr "办理机构"
 
@@ -1864,7 +1864,7 @@ msgstr "阿尔巴尼亚"
 # I18N: gedcom tag _ALBUM
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Gedcom.php:1163 app/Module/AlbumModule.php:42
+#: app/CustomTags/FamilyTreeBuilder.php:57 app/Module/AlbumModule.php:42
 msgid "Album"
 msgstr "相册"
 
@@ -1881,7 +1881,7 @@ msgid "Algeria"
 msgstr "阿尔及利亚"
 
 # I18N: gedcom tag ALIA
-#: app/Gedcom.php:587
+#: app/Gedcom.php:608
 msgid "Alias"
 msgstr "别名"
 
@@ -1959,17 +1959,14 @@ msgid "Allow visitors to request a new user account"
 msgstr "允许注册新的账户"
 
 # I18N: gedcom tag _AKA
-#: app/Gedcom.php:1099 app/Gedcom.php:1162 app/Gedcom.php:1239
-#: app/Gedcom.php:1485 app/Gedcom.php:1486 app/Gedcom.php:1581
-#: app/Gedcom.php:1759 app/Gedcom.php:1760
+#: app/CustomTags/BrothersKeeper.php:72 app/CustomTags/FamilyTreeBuilder.php:56
+#: app/CustomTags/FamilyTreeMaker.php:111 app/CustomTags/Geneatique.php:58
+#: app/CustomTags/Geneatique.php:59 app/CustomTags/PersonalAncestralFile.php:65
+#: app/CustomTags/PersonalAncestralFile.php:66
 msgid "Also known as"
 msgstr "或称为"
 
-#: app/Gedcom.php:1523 app/Gedcom.php:1555
-msgid "Alternative place name"
-msgstr ""
-
-#: app/Gedcom.php:1035
+#: app/CustomTags/Aldfaer.php:79
 msgid "Alternative spelling of surname"
 msgstr ""
 
@@ -2055,7 +2052,7 @@ msgid "Ancestors"
 msgstr "祖先树"
 
 # I18N: gedcom tag ANCI
-#: app/Gedcom.php:588
+#: app/Gedcom.php:609
 msgid "Ancestors interest"
 msgstr "祖先兴趣"
 
@@ -2071,17 +2068,17 @@ msgid "Ancestors of %s"
 msgstr "%s 的祖先"
 
 # I18N: gedcom tag AFN
-#: app/Gedcom.php:586
+#: app/Gedcom.php:607
 msgid "Ancestral file number"
 msgstr "祖先文件编号 (AFN)"
 
 #. I18N: GEDCOM tag _APID
-#: app/Gedcom.php:1063
+#: app/CustomTags/Ancestry.php:64
 msgid "Ancestry PID"
 msgstr "祖先PID"
 
 #. I18N: GEDCOM tag _APID
-#: app/Gedcom.php:1237
+#: app/CustomTags/FamilyTreeMaker.php:109
 msgid "Ancestry.com source identifier"
 msgstr ""
 
@@ -2123,7 +2120,7 @@ msgid "Anniversary calendar"
 msgstr "周年纪念日历"
 
 # I18N: gedcom tag ANUL
-#: app/Gedcom.php:451
+#: app/Gedcom.php:472
 msgid "Annulment"
 msgstr "取消婚姻"
 
@@ -2153,11 +2150,11 @@ msgstr "已注册用户都可以访问网站。"
 msgid "Apia, Samoa"
 msgstr "阿皮亚，萨摩亚"
 
-#: app/Gedcom.php:518
+#: app/Gedcom.php:539
 msgid "Application ID"
 msgstr ""
 
-#: app/Gedcom.php:535
+#: app/Gedcom.php:556
 msgid "Application name"
 msgstr ""
 
@@ -2225,7 +2222,7 @@ msgstr "碧海蓝天"
 msgid "Are you sure you want to delete the link to “%s”?"
 msgstr "确实要删除指向“%s”的链接吗？"
 
-#: resources/views/individual-page-name.phtml:86
+#: resources/views/individual-page-name.phtml:88
 #: resources/views/media-page-details.phtml:38
 msgid "Are you sure you want to delete this fact?"
 msgstr "您确定要删除这个事实？"
@@ -2314,10 +2311,11 @@ msgstr "亚洲"
 
 # I18N: gedcom tag ASSO
 # I18N: gedcom tag _ASSO
-#: app/Gedcom.php:589 app/Gedcom.php:907 app/Gedcom.php:919 app/Gedcom.php:933
-#: app/Gedcom.php:947 app/Gedcom.php:1284 app/Gedcom.php:1298
-#: app/Gedcom.php:1338 app/Gedcom.php:1538 app/Gedcom.php:1570
-#: app/Gedcom.php:1788 app/Gedcom.php:1876 app/Gedcom.php:1890
+#: app/CustomTags/Gedcom7.php:72 app/CustomTags/Gedcom7.php:84
+#: app/CustomTags/Gedcom7.php:98 app/CustomTags/Gedcom7.php:112
+#: app/CustomTags/GedcomL.php:119 app/CustomTags/GedcomL.php:133
+#: app/CustomTags/GedcomL.php:173 app/CustomTags/PhpGedView.php:63
+#: app/Gedcom.php:610 app/Gedcom.php:929 app/Gedcom.php:943
 #: resources/views/fact-association-structure.phtml:101
 #: resources/views/fact-association-structure.phtml:105
 msgid "Associate"
@@ -2379,7 +2377,7 @@ msgstr "男随从"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/Elements/SourceMediaType.php:79 app/Gedcom.php:1715
+#: app/CustomTags/Legacy.php:147 app/Elements/SourceMediaType.php:79
 msgid "Audio"
 msgstr "录音"
 
@@ -2423,17 +2421,17 @@ msgid "Austria"
 msgstr "奥地利"
 
 # I18N: gedcom tag AUTH
-#: app/Gedcom.php:834 resources/views/lists/sources-table.phtml:96
+#: app/Gedcom.php:855 resources/views/lists/sources-table.phtml:96
 #: resources/views/modals/source-fields.phtml:30
 msgid "Author"
 msgstr "作者"
 
 # I18N: gedcom tag CHAN:_WT_USER
-#: app/Gedcom.php:1786 app/Gedcom.php:1792 app/Gedcom.php:1798
-#: app/Gedcom.php:1799 app/Gedcom.php:1801 app/Gedcom.php:1802
-#: app/Gedcom.php:1873 app/Gedcom.php:1889 app/Gedcom.php:1903
-#: app/Gedcom.php:1905 app/Gedcom.php:1907 app/Gedcom.php:1909
-#: app/Gedcom.php:1911 app/Gedcom.php:1913
+#: app/CustomTags/PhpGedView.php:61 app/CustomTags/PhpGedView.php:67
+#: app/CustomTags/PhpGedView.php:73 app/CustomTags/PhpGedView.php:74
+#: app/CustomTags/PhpGedView.php:76 app/CustomTags/PhpGedView.php:77
+#: app/Gedcom.php:926 app/Gedcom.php:942 app/Gedcom.php:956 app/Gedcom.php:958
+#: app/Gedcom.php:960 app/Gedcom.php:962 app/Gedcom.php:964 app/Gedcom.php:966
 msgid "Author of last change"
 msgstr "最后一次更改的作者"
 
@@ -2632,7 +2630,7 @@ msgid "Bangladesh"
 msgstr "孟加拉共和国"
 
 # I18N: gedcom tag BAPM
-#: app/Gedcom.php:597 resources/views/calendar-page.phtml:187
+#: app/Gedcom.php:618 resources/views/calendar-page.phtml:187
 #: resources/xml/reports/missing_facts_report.xml:16
 msgid "Baptism"
 msgstr "洗礼"
@@ -2710,7 +2708,7 @@ msgid "Baptism of a son"
 msgstr "儿子的洗礼"
 
 # I18N: gedcom tag BARM
-#: app/Gedcom.php:600 resources/xml/reports/missing_facts_report.xml:17
+#: app/Gedcom.php:621 resources/xml/reports/missing_facts_report.xml:17
 msgid "Bar mitzvah"
 msgstr "受诫礼"
 
@@ -2720,12 +2718,12 @@ msgstr "受诫礼"
 msgid "Barbados"
 msgstr "巴巴多斯岛"
 
-#: app/Gedcom.php:1319
+#: app/CustomTags/GedcomL.php:154
 msgid "Base GEDCOM tag"
 msgstr "基本GEDCOM标签"
 
 # I18N: gedcom tag BASM
-#: app/Gedcom.php:603 resources/xml/reports/missing_facts_report.xml:18
+#: app/Gedcom.php:624 resources/xml/reports/missing_facts_report.xml:18
 msgid "Bat mitzvah"
 msgstr "犹太女孩成人仪式"
 
@@ -2792,7 +2790,7 @@ msgid "Bhutan"
 msgstr "不丹"
 
 # I18N: gedcom tag _BIBL
-#: app/Gedcom.php:1848
+#: app/CustomTags/RootsMagic.php:79
 msgid "Bibliography"
 msgstr "书目"
 
@@ -2803,7 +2801,7 @@ msgid "Billings, Montana, United States"
 msgstr "比林斯，蒙大纳"
 
 # I18N: gedcom tag BLOB
-#: app/Gedcom.php:787
+#: app/Gedcom.php:808
 msgid "Binary data object"
 msgstr "数码资料"
 
@@ -2822,7 +2820,7 @@ msgid "Birmingham, Alabama, United States"
 msgstr "伯明翰，阿拉巴马州"
 
 # I18N: gedcom tag BIRT
-#: app/Gedcom.php:606 app/Http/RequestHandlers/IndividualPage.php:197
+#: app/Gedcom.php:627 app/Http/RequestHandlers/IndividualPage.php:197
 #: resources/views/calendar-page.phtml:184
 #: resources/views/lists/individuals-table.phtml:217
 #: resources/views/lists/individuals-table.phtml:222
@@ -2979,7 +2977,7 @@ msgstr "出生日期范围的结束"
 msgid "Birth date range start"
 msgstr "出生日期范围的开始"
 
-#: app/Gedcom.php:1100
+#: app/CustomTags/BrothersKeeper.php:73
 msgid "Birth name"
 msgstr "出生姓名"
 
@@ -3056,7 +3054,7 @@ msgstr "姐妹出生"
 msgid "Birth of a son"
 msgstr "儿子出生"
 
-#: app/Gedcom.php:608
+#: app/Gedcom.php:629
 msgid "Birth parents"
 msgstr "亲生父母"
 
@@ -3089,11 +3087,11 @@ msgid "Bismarck, North Dakota, United States"
 msgstr "俾斯麦，北达科他州"
 
 # I18N: gedcom tag BLES
-#: app/Gedcom.php:610
+#: app/Gedcom.php:631
 msgid "Blessing"
 msgstr "祝福"
 
-#: app/Gedcom.php:1806 resources/views/edit-blocks-block.phtml:22
+#: app/CustomTags/PhpGedView.php:81 resources/views/edit-blocks-block.phtml:22
 msgid "Block"
 msgstr "区块"
 
@@ -3222,7 +3220,7 @@ msgid "Brisbane, Australia"
 msgstr "布里斯班澳大利亚"
 
 # I18N: gedcom tag _BRTM
-#: app/Gedcom.php:1121
+#: app/CustomTags/BrothersKeeper.php:94
 msgid "Brit milah"
 msgstr "割礼"
 
@@ -3290,7 +3288,7 @@ msgid "Bulgaria"
 msgstr "保加利亚"
 
 # I18N: gedcom tag BURI
-#: app/Gedcom.php:613 resources/views/calendar-page.phtml:199
+#: app/Gedcom.php:634 resources/views/calendar-page.phtml:199
 #: resources/xml/reports/family_group_report.xml:351
 #: resources/xml/reports/family_group_report.xml:705
 #: resources/xml/reports/family_group_report.xml:1049
@@ -3505,7 +3503,7 @@ msgid "Calgary, Alberta, Canada"
 msgstr "卡尔加里,艾伯塔,加拿大"
 
 # I18N: gedcom tag CALN
-#: app/Gedcom.php:851 resources/views/modals/source-fields.phtml:50
+#: app/Gedcom.php:872 resources/views/modals/source-fields.phtml:50
 msgid "Call number"
 msgstr "书号"
 
@@ -3558,7 +3556,7 @@ msgid "Cardston, Alberta, Canada"
 msgstr "卡德斯顿，阿尔伯塔，加拿大"
 
 # I18N: gedcom tag CAST
-#: app/Gedcom.php:616
+#: app/Gedcom.php:637
 msgid "Caste"
 msgstr "社会地位"
 
@@ -3566,16 +3564,17 @@ msgstr "社会地位"
 msgid "Categories"
 msgstr "类别"
 
-#: app/Gedcom.php:1309 app/Gedcom.php:1365 app/Gedcom.php:1706
+#: app/CustomTags/GedcomL.php:144 app/CustomTags/GedcomL.php:200
+#: app/CustomTags/Legacy.php:138
 msgid "Category"
 msgstr "类别"
 
 # I18N: gedcom tag CAUS
-#: app/Gedcom.php:416 app/Gedcom.php:550 app/Gedcom.php:1412
+#: app/CustomTags/GedcomL.php:234 app/Gedcom.php:437 app/Gedcom.php:571
 msgid "Cause"
 msgstr "死因"
 
-#: app/Gedcom.php:643 app/Gedcom.php:1242
+#: app/CustomTags/FamilyTreeMaker.php:114 app/Gedcom.php:664
 msgid "Cause of death"
 msgstr "死因"
 
@@ -3598,12 +3597,12 @@ msgid "Cebu City, Philippines"
 msgstr "宾宿务市,菲律"
 
 # I18N: gedcom tag CEME
-#: app/Gedcom.php:1791
+#: app/CustomTags/PhpGedView.php:66
 msgid "Cemetery"
 msgstr "墓地"
 
 # I18N: gedcom tag CENS
-#: app/Gedcom.php:617
+#: app/Gedcom.php:638
 msgid "Census"
 msgstr "人口普查"
 
@@ -3613,7 +3612,7 @@ msgstr "人口普查"
 msgid "Census assistant"
 msgstr "普查员"
 
-#: app/Gedcom.php:618
+#: app/Gedcom.php:639
 #: resources/views/modules/GEDFact_assistant/select-census.phtml:14
 msgid "Census date"
 msgstr "人口普查时间"
@@ -3622,7 +3621,7 @@ msgstr "人口普查时间"
 msgid "Census date and place"
 msgstr ""
 
-#: app/Gedcom.php:619
+#: app/Gedcom.php:640
 msgid "Census place"
 msgstr "普查地"
 
@@ -3663,10 +3662,6 @@ msgstr "世纪"
 #: app/Elements/SourceMediaType.php:82
 msgid "Certificate"
 msgstr "证书"
-
-#: app/Gedcom.php:1539 app/Gedcom.php:1571
-msgid "Certificate number"
-msgstr ""
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -3735,7 +3730,7 @@ msgid "Character encoding"
 msgstr ""
 
 # I18N: gedcom tag CHAR
-#: app/Gedcom.php:504
+#: app/Gedcom.php:525
 msgid "Character set"
 msgstr "字符集"
 
@@ -3797,7 +3792,7 @@ msgid "Chicago, Illinois, United States"
 msgstr "芝加哥伊利诺斯"
 
 # I18N: gedcom tag CHIL
-#: app/Gedcom.php:457 resources/views/edit/change-family-members.phtml:65
+#: app/Gedcom.php:478 resources/views/edit/change-family-members.phtml:65
 #: resources/views/edit/change-family-members.phtml:76
 #: resources/views/modules/pedigree-chart/previous.phtml:40
 msgid "Child"
@@ -3900,7 +3895,7 @@ msgid "Choose user defined welcome text typed below"
 msgstr "在下面输入用户定义的欢迎文本"
 
 # I18N: gedcom tag CHR
-#: app/Gedcom.php:624 resources/xml/reports/family_group_report.xml:206
+#: app/Gedcom.php:645 resources/xml/reports/family_group_report.xml:206
 #: resources/xml/reports/family_group_report.xml:560
 #: resources/xml/reports/family_group_report.xml:904
 #: resources/xml/reports/missing_facts_report.xml:16
@@ -3987,7 +3982,7 @@ msgstr "圣诞岛"
 msgid "Circumciser"
 msgstr "执行"
 
-#: app/Gedcom.php:1241
+#: app/CustomTags/FamilyTreeMaker.php:113
 msgid "Circumcision"
 msgstr ""
 
@@ -3996,11 +3991,11 @@ msgid "Citation"
 msgstr "引用"
 
 # I18N: gedcom tag PAGE
-#: app/Gedcom.php:445 app/Gedcom.php:499 app/Gedcom.php:577 app/Gedcom.php:688
-#: app/Gedcom.php:760 app/Gedcom.php:784 app/Gedcom.php:808 app/Gedcom.php:1295
-#: app/Gedcom.php:1349 app/Gedcom.php:1438 app/Gedcom.php:1471
-#: app/Gedcom.php:1887 app/Gedcom.php:1901
-#: resources/xml/reports/fact_sources.xml:74
+#: app/CustomTags/GedcomL.php:130 app/CustomTags/GedcomL.php:184
+#: app/CustomTags/GedcomL.php:277 app/CustomTags/GedcomL.php:310
+#: app/Gedcom.php:466 app/Gedcom.php:520 app/Gedcom.php:598 app/Gedcom.php:709
+#: app/Gedcom.php:781 app/Gedcom.php:805 app/Gedcom.php:829 app/Gedcom.php:940
+#: app/Gedcom.php:954 resources/xml/reports/fact_sources.xml:74
 #: resources/xml/reports/fact_sources.xml:161
 #: resources/xml/reports/fact_sources.xml:277
 #: resources/xml/reports/fact_sources.xml:323
@@ -4008,13 +4003,14 @@ msgid "Citation details"
 msgstr "原文所在页码"
 
 # I18N: gedcom tag CITN
-#: app/Gedcom.php:1821
+#: app/CustomTags/Reunion.php:55
 msgid "Citizenship"
 msgstr "公民身份"
 
 # I18N: gedcom tag CITY
-#: app/Gedcom.php:411 app/Gedcom.php:524 app/Gedcom.php:544 app/Gedcom.php:815
-#: app/Gedcom.php:862 app/Gedcom.php:1408 app/Gedcom.php:1764
+#: app/CustomTags/GedcomL.php:229 app/CustomTags/PersonalAncestralFile.php:70
+#: app/Gedcom.php:432 app/Gedcom.php:545 app/Gedcom.php:565 app/Gedcom.php:836
+#: app/Gedcom.php:883
 msgid "City"
 msgstr "城市"
 
@@ -4024,7 +4020,7 @@ msgstr "城市"
 msgid "Ciudad Juarez, Mexico"
 msgstr "墨西哥华雷斯城"
 
-#: app/Elements/MarriageType.php:63 app/Gedcom.php:1017
+#: app/CustomTags/Aldfaer.php:61 app/Elements/MarriageType.php:63
 #: resources/xml/reports/fact_sources.xml:202
 msgid "Civil marriage"
 msgstr "公证结婚"
@@ -4078,10 +4074,6 @@ msgstr "可可(吉林)群岛"
 msgid "Coffee and Cream"
 msgstr "咖啡和奶油"
 
-#: app/Gedcom.php:1548
-msgid "Cohabitation"
-msgstr ""
-
 # I18N: The name of a colour-scheme
 #. I18N: The name of a colour-scheme
 #: app/Module/ColorsTheme.php:165
@@ -4119,8 +4111,7 @@ msgid "Columbus, Ohio, United States"
 msgstr "俄亥俄州哥伦布市"
 
 # I18N: gedcom tag COMM
-#: app/Gedcom.php:1540 app/Gedcom.php:1572 app/Gedcom.php:1787
-#: app/Gedcom.php:1793
+#: app/CustomTags/PhpGedView.php:62 app/CustomTags/PhpGedView.php:68
 msgid "Comment"
 msgstr "评论"
 
@@ -4132,7 +4123,7 @@ msgid "Comments"
 msgstr "备注"
 
 # I18N: gedcom tag _COML
-#: app/Gedcom.php:1090
+#: app/CustomTags/BrothersKeeper.php:63
 msgid "Common law marriage"
 msgstr "合法结婚"
 
@@ -4184,12 +4175,13 @@ msgstr "在1970年之前完成,日期不可用"
 msgid "Completed; date unknown"
 msgstr "完成;日期未知"
 
-#: app/Gedcom.php:1310 app/Gedcom.php:1366 app/Gedcom.php:1707
+#: app/CustomTags/GedcomL.php:145 app/CustomTags/GedcomL.php:201
+#: app/CustomTags/Legacy.php:139
 msgid "Completion date"
 msgstr "完成日期"
 
 # I18N: gedcom tag CONF
-#: app/Gedcom.php:630 resources/xml/reports/missing_facts_report.xml:19
+#: app/Gedcom.php:651 resources/xml/reports/missing_facts_report.xml:19
 msgid "Confirmation"
 msgstr "确认"
 
@@ -4218,7 +4210,7 @@ msgstr "包含"
 msgid "Content"
 msgstr "内容"
 
-#: app/Gedcom.php:772
+#: app/Gedcom.php:793
 msgid "Continuation"
 msgstr ""
 
@@ -4304,8 +4296,8 @@ msgstr "库克群岛"
 msgid "Cookies"
 msgstr "Cookies"
 
-#: app/Gedcom.php:429 app/Gedcom.php:561 app/Gedcom.php:1395
-#: app/Gedcom.php:1418
+#: app/CustomTags/GedcomL.php:245 app/CustomTags/GedcomL.php:257
+#: app/Gedcom.php:450 app/Gedcom.php:582
 msgid "Coordinates"
 msgstr "坐标"
 
@@ -4317,8 +4309,8 @@ msgstr "丹麦哥本哈根"
 
 #: resources/views/edit/icon-fact-copy.phtml:13
 #: resources/views/edit/icon-fact-copy.phtml:15
-#: resources/views/individual-page-name.phtml:80
 #: resources/views/individual-page-name.phtml:82
+#: resources/views/individual-page-name.phtml:84
 #: resources/views/modules/share-url/share.phtml:16
 msgid "Copy"
 msgstr "复制"
@@ -4339,7 +4331,7 @@ msgid "Copy the URL of the record to the clipboard"
 msgstr ""
 
 # I18N: gedcom tag COPR
-#: app/Gedcom.php:506 app/Gedcom.php:533
+#: app/Gedcom.php:527 app/Gedcom.php:554
 msgid "Copyright"
 msgstr "版权"
 
@@ -4350,7 +4342,7 @@ msgid "Cordoba, Argentina"
 msgstr "阿根廷科尔多瓦"
 
 # I18N: gedcom tag CORP
-#: app/Gedcom.php:519
+#: app/Gedcom.php:540
 msgid "Corporation"
 msgstr "公司"
 
@@ -4386,9 +4378,9 @@ msgid "Count the visits to each page"
 msgstr "每个页面的访问计数"
 
 # I18N: gedcom tag CTRY
-#: app/Gedcom.php:412 app/Gedcom.php:525 app/Gedcom.php:545 app/Gedcom.php:816
-#: app/Gedcom.php:863 app/Gedcom.php:1409 app/Gedcom.php:1765
-#: app/Statistics/Google/ChartDistribution.php:108
+#: app/CustomTags/GedcomL.php:230 app/CustomTags/PersonalAncestralFile.php:71
+#: app/Gedcom.php:433 app/Gedcom.php:546 app/Gedcom.php:566 app/Gedcom.php:837
+#: app/Gedcom.php:884 app/Statistics/Google/ChartDistribution.php:108
 msgid "Country"
 msgstr "国家"
 
@@ -4470,26 +4462,30 @@ msgid "Create, update, and delete a family tree for every GEDCOM file in the dat
 msgstr "创建，更新和删除家谱中的数据文件夹中的每个GEDCOM文件。"
 
 #. I18N: GEDCOM tag _CREA
-#: app/Gedcom.php:923 app/Gedcom.php:952 app/Gedcom.php:967 app/Gedcom.php:971
-#: app/Gedcom.php:980 app/Gedcom.php:988 app/Gedcom.php:997 app/Gedcom.php:1073
+#: app/CustomTags/Ancestry.php:74 app/CustomTags/Gedcom7.php:88
+#: app/CustomTags/Gedcom7.php:117 app/CustomTags/Gedcom7.php:132
+#: app/CustomTags/Gedcom7.php:136 app/CustomTags/Gedcom7.php:145
+#: app/CustomTags/Gedcom7.php:153 app/CustomTags/Gedcom7.php:162
 msgid "Created at"
 msgstr ""
 
-#: app/Gedcom.php:924 app/Gedcom.php:953 app/Gedcom.php:968 app/Gedcom.php:972
-#: app/Gedcom.php:981 app/Gedcom.php:989 app/Gedcom.php:998 app/Gedcom.php:1303
-#: app/Gedcom.php:1359 app/Gedcom.php:1547 app/Gedcom.php:1584
-#: app/Gedcom.php:1587 app/Gedcom.php:1589 app/Gedcom.php:1591
-#: app/Gedcom.php:1593
+#: app/CustomTags/Gedcom7.php:89 app/CustomTags/Gedcom7.php:118
+#: app/CustomTags/Gedcom7.php:133 app/CustomTags/Gedcom7.php:137
+#: app/CustomTags/Gedcom7.php:146 app/CustomTags/Gedcom7.php:154
+#: app/CustomTags/Gedcom7.php:163 app/CustomTags/GedcomL.php:138
+#: app/CustomTags/GedcomL.php:194
 msgid "Creation date"
 msgstr "建立日期"
 
-#: app/Gedcom.php:925 app/Gedcom.php:954 app/Gedcom.php:969 app/Gedcom.php:973
-#: app/Gedcom.php:982 app/Gedcom.php:990 app/Gedcom.php:999
+#: app/CustomTags/Gedcom7.php:90 app/CustomTags/Gedcom7.php:119
+#: app/CustomTags/Gedcom7.php:134 app/CustomTags/Gedcom7.php:138
+#: app/CustomTags/Gedcom7.php:147 app/CustomTags/Gedcom7.php:155
+#: app/CustomTags/Gedcom7.php:164
 msgid "Creation time"
 msgstr ""
 
 # I18N: gedcom tag CREM
-#: app/Gedcom.php:639 resources/xml/reports/family_group_report.xml:315
+#: app/Gedcom.php:660 resources/xml/reports/family_group_report.xml:315
 #: resources/xml/reports/family_group_report.xml:342
 #: resources/xml/reports/family_group_report.xml:669
 #: resources/xml/reports/family_group_report.xml:696
@@ -4687,7 +4683,7 @@ msgid "DKIM digital signature"
 msgstr "DKIM数字签名"
 
 # I18N: gedcom tag _DNA (from FTM 2010)
-#: app/Gedcom.php:1244 app/Gedcom.php:1841
+#: app/CustomTags/FamilyTreeMaker.php:116 app/CustomTags/RootsMagic.php:72
 msgid "DNA markers"
 msgstr "DNA标记"
 
@@ -4705,11 +4701,12 @@ msgid "Dallas, Texas, United States"
 msgstr "达拉斯德克萨斯"
 
 # I18N: gedcom tag DATA
-#: app/Gedcom.php:438 app/Gedcom.php:492 app/Gedcom.php:532 app/Gedcom.php:570
-#: app/Gedcom.php:681 app/Gedcom.php:753 app/Gedcom.php:777 app/Gedcom.php:801
-#: app/Gedcom.php:839 app/Gedcom.php:1288 app/Gedcom.php:1342
-#: app/Gedcom.php:1431 app/Gedcom.php:1464 app/Gedcom.php:1880
-#: app/Gedcom.php:1894 resources/views/admin/changes-log.phtml:137
+#: app/CustomTags/GedcomL.php:123 app/CustomTags/GedcomL.php:177
+#: app/CustomTags/GedcomL.php:270 app/CustomTags/GedcomL.php:303
+#: app/Gedcom.php:459 app/Gedcom.php:513 app/Gedcom.php:553 app/Gedcom.php:591
+#: app/Gedcom.php:702 app/Gedcom.php:774 app/Gedcom.php:798 app/Gedcom.php:822
+#: app/Gedcom.php:860 app/Gedcom.php:933 app/Gedcom.php:947
+#: resources/views/admin/changes-log.phtml:137
 msgid "Data"
 msgstr "资料"
 
@@ -4752,14 +4749,16 @@ msgstr "数据文件夹"
 msgid "Database connection"
 msgstr "数据库连接"
 
-#: app/Gedcom.php:1807 resources/views/setup/step-4-database-mysql.phtml:109
+#: app/CustomTags/PhpGedView.php:82
+#: resources/views/setup/step-4-database-mysql.phtml:109
 #: resources/views/setup/step-4-database-pgsql.phtml:95
 #: resources/views/setup/step-4-database-sqlite.phtml:52
 #: resources/views/setup/step-4-database-sqlsvr.phtml:95
 msgid "Database name"
 msgstr "数据库名称"
 
-#: app/Gedcom.php:1808 resources/views/setup/step-4-database-mysql.phtml:95
+#: app/CustomTags/PhpGedView.php:83
+#: resources/views/setup/step-4-database-mysql.phtml:95
 #: resources/views/setup/step-4-database-pgsql.phtml:83
 #: resources/views/setup/step-4-database-sqlsvr.phtml:83
 msgid "Database password"
@@ -4769,22 +4768,26 @@ msgstr "数据库密码"
 msgid "Database type"
 msgstr "数据库名称"
 
-#: app/Gedcom.php:1810 resources/views/setup/step-4-database-mysql.phtml:81
+#: app/CustomTags/PhpGedView.php:85
+#: resources/views/setup/step-4-database-mysql.phtml:81
 #: resources/views/setup/step-4-database-pgsql.phtml:71
 #: resources/views/setup/step-4-database-sqlsvr.phtml:71
 msgid "Database user account"
 msgstr "数据库用户账户"
 
 # I18N: gedcom tag DATE
-#: app/Gedcom.php:417 app/Gedcom.php:507 app/Gedcom.php:534 app/Gedcom.php:551
-#: app/Gedcom.php:1036 app/Gedcom.php:1071 app/Gedcom.php:1164
-#: app/Gedcom.php:1283 app/Gedcom.php:1337 app/Gedcom.php:1380
-#: app/Gedcom.php:1424 app/Gedcom.php:1441 app/Gedcom.php:1445
-#: app/Gedcom.php:1449 app/Gedcom.php:1455 app/Gedcom.php:1461
-#: app/Gedcom.php:1626 app/Gedcom.php:1651 app/Gedcom.php:1690
-#: app/Gedcom.php:1712 app/Gedcom.php:1861
+#: app/CustomTags/Aldfaer.php:80 app/CustomTags/Ancestry.php:72
+#: app/CustomTags/FamilyTreeBuilder.php:58 app/CustomTags/GedcomL.php:118
+#: app/CustomTags/GedcomL.php:172 app/CustomTags/GedcomL.php:215
+#: app/CustomTags/GedcomL.php:263 app/CustomTags/GedcomL.php:280
+#: app/CustomTags/GedcomL.php:284 app/CustomTags/GedcomL.php:288
+#: app/CustomTags/GedcomL.php:294 app/CustomTags/GedcomL.php:300
+#: app/CustomTags/Legacy.php:58 app/CustomTags/Legacy.php:83
+#: app/CustomTags/Legacy.php:122 app/CustomTags/Legacy.php:144
+#: app/CustomTags/TheMasterGenealogist.php:53 app/Gedcom.php:438
+#: app/Gedcom.php:528 app/Gedcom.php:555 app/Gedcom.php:572
 #: app/Http/RequestHandlers/HelpText.php:219
-#: app/Module/ResearchTaskModule.php:65 app/Module/ResearchTaskModule.php:68
+#: app/Module/ResearchTaskModule.php:63 app/Module/ResearchTaskModule.php:66
 #: resources/views/help/date.phtml:29 resources/views/help/date.phtml:143
 #: resources/views/lists/anniversaries-table.phtml:35
 #: resources/views/modules/todo/research-tasks.phtml:27
@@ -4806,142 +4809,143 @@ msgid "Date differences"
 msgstr "日期差异"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:592
+#: app/Gedcom.php:613
 msgid "Date of LDS baptism"
 msgstr "LDS 洗礼的日期"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:746
+#: app/Gedcom.php:767
 msgid "Date of LDS child sealing"
 msgstr "LDS 儿童密封的日期"
 
-#: app/Gedcom.php:634
+#: app/Gedcom.php:655
 msgid "Date of LDS confirmation"
 msgstr "确认LDS的日期"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:654
+#: app/Gedcom.php:675
 msgid "Date of LDS endowment"
 msgstr "LDS 捐贈的日期"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:486
+#: app/Gedcom.php:507
 msgid "Date of LDS spouse sealing"
 msgstr "LDS 配偶密封的日期"
 
-#: app/Gedcom.php:582
+#: app/Gedcom.php:603
 msgid "Date of adoption"
 msgstr "过继日期"
 
-#: app/Gedcom.php:598 resources/xml/reports/missing_facts_report.xml:129
+#: app/Gedcom.php:619 resources/xml/reports/missing_facts_report.xml:129
 msgid "Date of baptism"
 msgstr "洗礼的日期"
 
-#: app/Gedcom.php:601 resources/xml/reports/missing_facts_report.xml:212
+#: app/Gedcom.php:622 resources/xml/reports/missing_facts_report.xml:212
 msgid "Date of bar mitzvah"
 msgstr "受诫礼的日期"
 
-#: app/Gedcom.php:604 resources/xml/reports/missing_facts_report.xml:253
+#: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:253
 msgid "Date of bat mitzvah"
 msgstr "成人仪式的日期"
 
-#: app/Gedcom.php:607 resources/xml/reports/fact_sources.xml:68
+#: app/Gedcom.php:628 resources/xml/reports/fact_sources.xml:68
 #: resources/xml/reports/fact_sources.xml:272
 #: resources/xml/reports/missing_facts_report.xml:81
 #: resources/xml/reports/occupation_report.xml:49
 msgid "Date of birth"
 msgstr "出生日期"
 
-#: app/Gedcom.php:611
+#: app/Gedcom.php:632
 msgid "Date of blessing"
 msgstr "祝福的日期"
 
-#: app/Gedcom.php:1122
+#: app/CustomTags/BrothersKeeper.php:95
 msgid "Date of brit milah"
 msgstr "割礼的日期"
 
-#: app/Gedcom.php:614 resources/xml/reports/missing_facts_report.xml:546
+#: app/Gedcom.php:635 resources/xml/reports/missing_facts_report.xml:546
 msgid "Date of burial"
 msgstr "埋葬的日期"
 
-#: app/Gedcom.php:625 resources/xml/reports/missing_facts_report.xml:170
+#: app/Gedcom.php:646 resources/xml/reports/missing_facts_report.xml:170
 msgid "Date of christening"
 msgstr "洗礼的日期"
 
-#: app/Gedcom.php:631 resources/xml/reports/missing_facts_report.xml:294
+#: app/Gedcom.php:652 resources/xml/reports/missing_facts_report.xml:294
 msgid "Date of confirmation"
 msgstr "确认的日期"
 
-#: app/Gedcom.php:640
+#: app/Gedcom.php:661
 msgid "Date of cremation"
 msgstr "火葬的日期"
 
-#: app/Gedcom.php:644 resources/xml/reports/cemetery_report.xml:46
+#: app/Gedcom.php:665 resources/xml/reports/cemetery_report.xml:46
 #: resources/xml/reports/fact_sources.xml:274
 #: resources/xml/reports/missing_facts_report.xml:505
 msgid "Date of death"
 msgstr "去世的时间"
 
-#: app/Gedcom.php:459
+#: app/Gedcom.php:480
 msgid "Date of divorce"
 msgstr "离婚的日期"
 
-#: app/Gedcom.php:651
+#: app/Gedcom.php:672
 msgid "Date of emigration"
 msgstr "移民的日期"
 
-#: app/Gedcom.php:462 resources/xml/reports/missing_facts_report.xml:336
+#: app/Gedcom.php:483 resources/xml/reports/missing_facts_report.xml:336
 msgid "Date of engagement"
 msgstr "订婚的日期"
 
-#: app/Gedcom.php:439 app/Gedcom.php:493 app/Gedcom.php:571 app/Gedcom.php:682
-#: app/Gedcom.php:754 app/Gedcom.php:778 app/Gedcom.php:802 app/Gedcom.php:1289
-#: app/Gedcom.php:1343 app/Gedcom.php:1432 app/Gedcom.php:1465
-#: app/Gedcom.php:1881 app/Gedcom.php:1895
+#: app/CustomTags/GedcomL.php:124 app/CustomTags/GedcomL.php:178
+#: app/CustomTags/GedcomL.php:271 app/CustomTags/GedcomL.php:304
+#: app/Gedcom.php:460 app/Gedcom.php:514 app/Gedcom.php:592 app/Gedcom.php:703
+#: app/Gedcom.php:775 app/Gedcom.php:799 app/Gedcom.php:823 app/Gedcom.php:934
+#: app/Gedcom.php:948
 msgid "Date of entry in original source"
 msgstr "原始的输入日期"
 
-#: app/Gedcom.php:660 app/Gedcom.php:1390
+#: app/CustomTags/GedcomL.php:235 app/Gedcom.php:681
 msgid "Date of event"
 msgstr "事件的日期"
 
-#: app/Gedcom.php:670 resources/xml/reports/missing_facts_report.xml:378
+#: app/Gedcom.php:691 resources/xml/reports/missing_facts_report.xml:378
 msgid "Date of first communion"
 msgstr "第一圣餐日期"
 
-#: app/Gedcom.php:677
+#: app/Gedcom.php:698
 msgid "Date of immigration"
 msgstr "移民的日期"
 
 # I18N: gedcom tag CHAN:DATE
-#: app/Gedcom.php:454 app/Gedcom.php:621 app/Gedcom.php:768 app/Gedcom.php:789
-#: app/Gedcom.php:820 app/Gedcom.php:836 app/Gedcom.php:867 app/Gedcom.php:883
-#: app/Gedcom.php:1386
+#: app/CustomTags/GedcomL.php:221 app/Gedcom.php:475 app/Gedcom.php:642
+#: app/Gedcom.php:789 app/Gedcom.php:810 app/Gedcom.php:841 app/Gedcom.php:857
+#: app/Gedcom.php:888 app/Gedcom.php:904
 msgid "Date of last change"
 msgstr "最近更改日期"
 
-#: app/Gedcom.php:473 resources/xml/reports/fact_sources.xml:319
+#: app/Gedcom.php:494 resources/xml/reports/fact_sources.xml:319
 #: resources/xml/reports/missing_facts_report.xml:463
 msgid "Date of marriage"
 msgstr "结婚的日期"
 
-#: app/Gedcom.php:468 resources/xml/reports/missing_facts_report.xml:420
+#: app/Gedcom.php:489 resources/xml/reports/missing_facts_report.xml:420
 msgid "Date of marriage banns"
 msgstr "婚姻的结婚通告的日期"
 
-#: app/Gedcom.php:719
+#: app/Gedcom.php:740
 msgid "Date of naturalization"
 msgstr "移入的日期"
 
-#: app/Gedcom.php:729
+#: app/Gedcom.php:750
 msgid "Date of ordination"
 msgstr "祝圣礼的日期"
 
-#: app/Gedcom.php:737
+#: app/Gedcom.php:758
 msgid "Date of residence"
 msgstr "居住日期"
 
-#: app/Gedcom.php:960
+#: app/CustomTags/Gedcom7.php:125
 msgid "Date of status change"
 msgstr ""
 
@@ -4953,7 +4957,7 @@ msgstr "日期"
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
 msgstr "日期时间是用来表明一个事实,如一个工作/岗位,持续一段时间。"
 
-#: app/Gedcom.php:842 resources/views/help/date.phtml:67
+#: app/Gedcom.php:863 resources/views/help/date.phtml:67
 #: resources/views/modules/statistics-chart/custom.phtml:94
 msgid "Date range"
 msgstr "日期范围"
@@ -5015,7 +5019,7 @@ msgid "Dead"
 msgstr "去世的"
 
 # I18N: gedcom tag DEAT
-#: app/Gedcom.php:642 app/Http/RequestHandlers/IndividualPage.php:206
+#: app/Gedcom.php:663 app/Http/RequestHandlers/IndividualPage.php:206
 #: resources/views/calendar-page.phtml:196
 #: resources/views/lists/individuals-table.phtml:204
 #: resources/views/lists/individuals-table.phtml:209
@@ -5292,7 +5296,7 @@ msgid "Death of a wife"
 msgstr "妻子的去世"
 
 # I18N: gedcom tag _DETS
-#: app/Gedcom.php:1183
+#: app/CustomTags/FamilyTreeMaker.php:55
 msgid "Death of one spouse"
 msgstr "配偶的去世"
 
@@ -5390,13 +5394,14 @@ msgstr "默认的个体"
 msgid "Default theme"
 msgstr "默认主题"
 
-#: app/Gedcom.php:1325 app/Gedcom.php:1326 app/Gedcom.php:1327
-#: app/Gedcom.php:1328 app/Gedcom.php:1329
+#: app/CustomTags/GedcomL.php:160 app/CustomTags/GedcomL.php:161
+#: app/CustomTags/GedcomL.php:162 app/CustomTags/GedcomL.php:163
+#: app/CustomTags/GedcomL.php:164
 msgid "Definition"
 msgstr "解释"
 
 # I18N: gedcom tag _DEG
-#: app/Gedcom.php:1243
+#: app/CustomTags/FamilyTreeMaker.php:115
 msgid "Degree"
 msgstr "学位"
 
@@ -5459,8 +5464,8 @@ msgstr "删除选择的消息"
 msgid "Delete the preferences for this module."
 msgstr "删除这个模块的偏好。"
 
-#: resources/views/individual-page-name.phtml:88
 #: resources/views/individual-page-name.phtml:90
+#: resources/views/individual-page-name.phtml:92
 msgid "Delete this name"
 msgstr "删除此名称"
 
@@ -5486,7 +5491,7 @@ msgstr ""
 msgid "Democratic Republic of the Congo"
 msgstr "刚果(金沙萨)"
 
-#: app/Gedcom.php:1448
+#: app/CustomTags/GedcomL.php:287
 msgid "Demographic data"
 msgstr ""
 
@@ -5530,7 +5535,7 @@ msgid "Descendants"
 msgstr "后代图"
 
 # I18N: gedcom tag DESI
-#: app/Gedcom.php:646
+#: app/Gedcom.php:667
 msgid "Descendants interest"
 msgstr "后代调查"
 
@@ -5546,13 +5551,14 @@ msgid "Descendants of %s"
 msgstr "%s 的后代"
 
 # I18N: gedcom tag DSCR
-#: app/Gedcom.php:647 app/Gedcom.php:1304 app/Gedcom.php:1360
-#: app/Gedcom.php:1652 app/Gedcom.php:1744
-#: resources/views/admin/modules.phtml:74 resources/views/admin/tags.phtml:48
-#: resources/views/admin/tags.phtml:178 resources/views/admin/tags.phtml:270
-#: resources/views/admin/tags.phtml:332 resources/views/admin/tags.phtml:407
-#: resources/views/admin/tags.phtml:446 resources/views/admin/tags.phtml:730
-#: resources/views/admin/tags.phtml:784 resources/views/admin/tags.phtml:888
+#: app/CustomTags/GedcomL.php:139 app/CustomTags/GedcomL.php:195
+#: app/CustomTags/Legacy.php:84 app/CustomTags/MyHeritage.php:62
+#: app/Gedcom.php:668 resources/views/admin/modules.phtml:74
+#: resources/views/admin/tags.phtml:48 resources/views/admin/tags.phtml:178
+#: resources/views/admin/tags.phtml:270 resources/views/admin/tags.phtml:332
+#: resources/views/admin/tags.phtml:407 resources/views/admin/tags.phtml:446
+#: resources/views/admin/tags.phtml:730 resources/views/admin/tags.phtml:784
+#: resources/views/admin/tags.phtml:888
 #: resources/views/report-setup-page.phtml:23
 msgid "Description"
 msgstr "外貌特征"
@@ -5564,7 +5570,7 @@ msgid "Description META tag"
 msgstr "描述元标记"
 
 # I18N: gedcom tag DEST
-#: app/Gedcom.php:509 app/Gedcom.php:1070
+#: app/CustomTags/Ancestry.php:71 app/Gedcom.php:530
 msgid "Destination"
 msgstr "目的地"
 
@@ -5734,13 +5740,13 @@ msgid "Display and manage a user’s favorite pages."
 msgstr "显示和管理用户收藏的页面。"
 
 # I18N: gedcom tag DIV
-#: app/Gedcom.php:458 resources/views/calendar-page.phtml:193
+#: app/Gedcom.php:479 resources/views/calendar-page.phtml:193
 #: resources/views/lists/families-table.phtml:207
 msgid "Divorce"
 msgstr "诉讼离婚"
 
 # I18N: gedcom tag DIVF
-#: app/Gedcom.php:460
+#: app/Gedcom.php:481
 msgid "Divorce filed"
 msgstr "协议离婚"
 
@@ -5926,8 +5932,8 @@ msgstr "更改性别"
 
 #: resources/views/edit/input-addon-edit-name.phtml:12
 #: resources/views/edit/input-addon-edit-name.phtml:15
-#: resources/views/individual-page-name.phtml:75
 #: resources/views/individual-page-name.phtml:77
+#: resources/views/individual-page-name.phtml:79
 msgid "Edit the name"
 msgstr "编辑姓名"
 
@@ -5978,7 +5984,7 @@ msgid "Edmonton, Alberta, Canada"
 msgstr "埃德蒙顿,加拿大阿尔伯塔省"
 
 # I18N: gedcom tag EDUC
-#: app/Gedcom.php:648
+#: app/Gedcom.php:669
 msgid "Education"
 msgstr "学历"
 
@@ -6028,7 +6034,7 @@ msgctxt "NOMINATIVE"
 msgid "Elul"
 msgstr "第十二月"
 
-#: app/Gedcom.php:1024 app/Gedcom.php:1677
+#: app/CustomTags/Aldfaer.php:68 app/CustomTags/Legacy.php:109
 #: resources/views/modals/submitter-fields.phtml:17
 #: resources/views/password-request-page.phtml:21
 msgid "Email"
@@ -6036,9 +6042,10 @@ msgstr "电子邮件"
 
 # I18N: gedcom tag EMAIL
 # I18N: gedcom tag _EMAIL
-#: app/Gedcom.php:418 app/Gedcom.php:528 app/Gedcom.php:552 app/Gedcom.php:823
-#: app/Gedcom.php:870 app/Gedcom.php:1124 app/Gedcom.php:1769
-#: app/Gedcom.php:1822 resources/views/admin/users-create.phtml:69
+#: app/CustomTags/BrothersKeeper.php:97 app/CustomTags/GedcomL.php:236
+#: app/CustomTags/PersonalAncestralFile.php:75 app/CustomTags/Reunion.php:56
+#: app/Gedcom.php:439 app/Gedcom.php:549 app/Gedcom.php:573 app/Gedcom.php:844
+#: app/Gedcom.php:891 resources/views/admin/users-create.phtml:69
 #: resources/views/admin/users-edit.phtml:80
 #: resources/views/admin/users.phtml:28 resources/views/contact-page.phtml:49
 #: resources/views/edit-account-page.phtml:121
@@ -6055,7 +6062,7 @@ msgid "Email verified"
 msgstr "验证电子邮件"
 
 # I18N: gedcom tag EMIG
-#: app/Gedcom.php:650 resources/views/calendar-page.phtml:202
+#: app/Gedcom.php:671 resources/views/calendar-page.phtml:202
 msgid "Emigration"
 msgstr "移民"
 
@@ -6073,8 +6080,8 @@ msgctxt "MALE"
 msgid "Employee"
 msgstr "男员工"
 
-#: app/Elements/RelationIsDescriptor.php:102 app/Gedcom.php:726
-#: app/Gedcom.php:741
+#: app/Elements/RelationIsDescriptor.php:102 app/Gedcom.php:747
+#: app/Gedcom.php:762
 msgid "Employer"
 msgstr "工作单位"
 
@@ -6123,7 +6130,7 @@ msgid "Endowment House"
 msgstr "养老的房子"
 
 # I18N: gedcom tag ENGA
-#: app/Gedcom.php:461 resources/xml/reports/missing_facts_report.xml:20
+#: app/Gedcom.php:482 resources/xml/reports/missing_facts_report.xml:20
 msgid "Engagement"
 msgstr "订婚"
 
@@ -6196,7 +6203,7 @@ msgstr "第十二月"
 msgid "Esri/ArcGIS"
 msgstr ""
 
-#: app/Gedcom.php:1104
+#: app/CustomTags/BrothersKeeper.php:77
 msgid "Estate name"
 msgstr "庄园名称"
 
@@ -6223,19 +6230,19 @@ msgid "Europe"
 msgstr "欧洲"
 
 # I18N: gedcom tag EVEN
-#: app/Gedcom.php:441 app/Gedcom.php:464 app/Gedcom.php:495 app/Gedcom.php:573
-#: app/Gedcom.php:659 app/Gedcom.php:684 app/Gedcom.php:756 app/Gedcom.php:780
-#: app/Gedcom.php:804 app/Gedcom.php:1291 app/Gedcom.php:1345
-#: app/Gedcom.php:1389 app/Gedcom.php:1434 app/Gedcom.php:1467
-#: app/Gedcom.php:1883 app/Gedcom.php:1897
-#: resources/views/lists/anniversaries-table.phtml:42
+#: app/CustomTags/GedcomL.php:126 app/CustomTags/GedcomL.php:180
+#: app/CustomTags/GedcomL.php:224 app/CustomTags/GedcomL.php:273
+#: app/CustomTags/GedcomL.php:306 app/Gedcom.php:462 app/Gedcom.php:485
+#: app/Gedcom.php:516 app/Gedcom.php:594 app/Gedcom.php:680 app/Gedcom.php:705
+#: app/Gedcom.php:777 app/Gedcom.php:801 app/Gedcom.php:825 app/Gedcom.php:936
+#: app/Gedcom.php:950 resources/views/lists/anniversaries-table.phtml:42
 #: resources/xml/reports/fact_sources.xml:70
 #: resources/xml/reports/fact_sources.xml:157
 #: resources/xml/reports/missing_facts_report.xml:55
 msgid "Event"
 msgstr "事件"
 
-#: app/Gedcom.php:841 resources/views/calendar-page.phtml:176
+#: app/Gedcom.php:862 resources/views/calendar-page.phtml:176
 #: resources/views/modules/gedcom_stats/statistics.phtml:133
 #: resources/views/modules/html/template-statistics.phtml:56
 #: resources/views/modules/statistics-chart/individual-events.phtml:10
@@ -6318,12 +6325,14 @@ msgstr "扩展隐私到死人"
 msgid "External files"
 msgstr "外部文件"
 
-#: app/Gedcom.php:912 app/Gedcom.php:926 app/Gedcom.php:938 app/Gedcom.php:956
-#: app/Gedcom.php:974 app/Gedcom.php:983 app/Gedcom.php:991 app/Gedcom.php:1000
+#: app/CustomTags/Gedcom7.php:77 app/CustomTags/Gedcom7.php:91
+#: app/CustomTags/Gedcom7.php:103 app/CustomTags/Gedcom7.php:121
+#: app/CustomTags/Gedcom7.php:139 app/CustomTags/Gedcom7.php:148
+#: app/CustomTags/Gedcom7.php:156 app/CustomTags/Gedcom7.php:165
 msgid "External identifier"
 msgstr ""
 
-#: app/Gedcom.php:1238 app/Gedcom.php:1843
+#: app/CustomTags/FamilyTreeMaker.php:110 app/CustomTags/RootsMagic.php:74
 msgid "External link"
 msgstr ""
 
@@ -6333,13 +6342,12 @@ msgstr "外部多媒体文件是URL，而不是一个文件名。"
 
 # I18N: Name of a module/sidebar
 #. I18N: Name of a module/sidebar
-#: app/Gedcom.php:1541 app/Gedcom.php:1573
 #: app/Module/IndividualMetadataModule.php:60
 msgid "Extra information"
 msgstr "额外信息"
 
 # I18N: gedcom tag _EYEC
-#: app/Gedcom.php:1125
+#: app/CustomTags/BrothersKeeper.php:98
 msgid "Eye color"
 msgstr "眼睛的颜色"
 
@@ -6361,79 +6369,79 @@ msgstr "常见问题"
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors. Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
 msgstr "常见问题解答的问题和答案清单，它允许您向访客解释网站的规则，政策和程序。问题通常涉及隐私权，著作权，用户账户，不合适的内容，为引用源的要求等。"
 
-#. I18N: https://foko.genealogy.net
-#: app/Gedcom.php:1525 app/Gedcom.php:1527 app/Gedcom.php:1557
-#: app/Gedcom.php:1559
-msgid "FOKO country"
-msgstr ""
-
 # I18N: gedcom tag FACT
-#: app/Gedcom.php:663 app/Gedcom.php:928 app/Gedcom.php:1874
+#: app/CustomTags/Gedcom7.php:93 app/Gedcom.php:684 app/Gedcom.php:927
 msgid "Fact"
 msgstr "事实"
 
-#: app/Gedcom.php:1184 app/Gedcom.php:1203 app/Gedcom.php:1221
-#: app/Gedcom.php:1248
+#: app/CustomTags/FamilyTreeMaker.php:56 app/CustomTags/FamilyTreeMaker.php:75
+#: app/CustomTags/FamilyTreeMaker.php:93 app/CustomTags/FamilyTreeMaker.php:120
 msgid "Fact 1"
 msgstr "事实1"
 
-#: app/Gedcom.php:1185 app/Gedcom.php:1204 app/Gedcom.php:1222
-#: app/Gedcom.php:1249
+#: app/CustomTags/FamilyTreeMaker.php:57 app/CustomTags/FamilyTreeMaker.php:76
+#: app/CustomTags/FamilyTreeMaker.php:94 app/CustomTags/FamilyTreeMaker.php:121
 msgid "Fact 10"
 msgstr "事实10"
 
-#: app/Gedcom.php:1186 app/Gedcom.php:1205 app/Gedcom.php:1223
-#: app/Gedcom.php:1250
+#: app/CustomTags/FamilyTreeMaker.php:58 app/CustomTags/FamilyTreeMaker.php:77
+#: app/CustomTags/FamilyTreeMaker.php:95 app/CustomTags/FamilyTreeMaker.php:122
 msgid "Fact 11"
 msgstr "事实11"
 
-#: app/Gedcom.php:1187 app/Gedcom.php:1206 app/Gedcom.php:1224
-#: app/Gedcom.php:1251
+#: app/CustomTags/FamilyTreeMaker.php:59 app/CustomTags/FamilyTreeMaker.php:78
+#: app/CustomTags/FamilyTreeMaker.php:96 app/CustomTags/FamilyTreeMaker.php:123
 msgid "Fact 12"
 msgstr "事实12"
 
-#: app/Gedcom.php:1188 app/Gedcom.php:1207 app/Gedcom.php:1225
-#: app/Gedcom.php:1252
+#: app/CustomTags/FamilyTreeMaker.php:60 app/CustomTags/FamilyTreeMaker.php:79
+#: app/CustomTags/FamilyTreeMaker.php:97 app/CustomTags/FamilyTreeMaker.php:124
 msgid "Fact 13"
 msgstr "事实13"
 
-#: app/Gedcom.php:1189 app/Gedcom.php:1208 app/Gedcom.php:1226
-#: app/Gedcom.php:1253
+#: app/CustomTags/FamilyTreeMaker.php:61 app/CustomTags/FamilyTreeMaker.php:80
+#: app/CustomTags/FamilyTreeMaker.php:98 app/CustomTags/FamilyTreeMaker.php:125
 msgid "Fact 2"
 msgstr "事实2"
 
-#: app/Gedcom.php:1190 app/Gedcom.php:1209 app/Gedcom.php:1227
-#: app/Gedcom.php:1254
+#: app/CustomTags/FamilyTreeMaker.php:62 app/CustomTags/FamilyTreeMaker.php:81
+#: app/CustomTags/FamilyTreeMaker.php:99 app/CustomTags/FamilyTreeMaker.php:126
 msgid "Fact 3"
 msgstr "事实3"
 
-#: app/Gedcom.php:1191 app/Gedcom.php:1210 app/Gedcom.php:1228
-#: app/Gedcom.php:1255
+#: app/CustomTags/FamilyTreeMaker.php:63 app/CustomTags/FamilyTreeMaker.php:82
+#: app/CustomTags/FamilyTreeMaker.php:100
+#: app/CustomTags/FamilyTreeMaker.php:127
 msgid "Fact 4"
 msgstr "事实4"
 
-#: app/Gedcom.php:1192 app/Gedcom.php:1211 app/Gedcom.php:1229
-#: app/Gedcom.php:1256
+#: app/CustomTags/FamilyTreeMaker.php:64 app/CustomTags/FamilyTreeMaker.php:83
+#: app/CustomTags/FamilyTreeMaker.php:101
+#: app/CustomTags/FamilyTreeMaker.php:128
 msgid "Fact 5"
 msgstr "事实5"
 
-#: app/Gedcom.php:1193 app/Gedcom.php:1212 app/Gedcom.php:1230
-#: app/Gedcom.php:1257
+#: app/CustomTags/FamilyTreeMaker.php:65 app/CustomTags/FamilyTreeMaker.php:84
+#: app/CustomTags/FamilyTreeMaker.php:102
+#: app/CustomTags/FamilyTreeMaker.php:129
 msgid "Fact 6"
 msgstr "事实6"
 
-#: app/Gedcom.php:1194 app/Gedcom.php:1213 app/Gedcom.php:1231
-#: app/Gedcom.php:1258
+#: app/CustomTags/FamilyTreeMaker.php:66 app/CustomTags/FamilyTreeMaker.php:85
+#: app/CustomTags/FamilyTreeMaker.php:103
+#: app/CustomTags/FamilyTreeMaker.php:130
 msgid "Fact 7"
 msgstr "事实7"
 
-#: app/Gedcom.php:1195 app/Gedcom.php:1214 app/Gedcom.php:1232
-#: app/Gedcom.php:1259
+#: app/CustomTags/FamilyTreeMaker.php:67 app/CustomTags/FamilyTreeMaker.php:86
+#: app/CustomTags/FamilyTreeMaker.php:104
+#: app/CustomTags/FamilyTreeMaker.php:131
 msgid "Fact 8"
 msgstr "事实8"
 
-#: app/Gedcom.php:1196 app/Gedcom.php:1215 app/Gedcom.php:1233
-#: app/Gedcom.php:1260
+#: app/CustomTags/FamilyTreeMaker.php:68 app/CustomTags/FamilyTreeMaker.php:87
+#: app/CustomTags/FamilyTreeMaker.php:105
+#: app/CustomTags/FamilyTreeMaker.php:132
 msgid "Fact 9"
 msgstr "事实9"
 
@@ -6521,7 +6529,7 @@ msgstr "家庭来源信息"
 # I18N: gedcom tag FAM
 # I18N: Name of a module/report
 #. I18N: Name of a module/report
-#: app/Gedcom.php:406 app/Gedcom.php:1201
+#: app/CustomTags/FamilyTreeMaker.php:73 app/Gedcom.php:427
 #: app/Http/RequestHandlers/CheckTree.php:350
 #: app/Module/FamilyGroupReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:165
@@ -6540,12 +6548,12 @@ msgid "Family"
 msgstr "家庭"
 
 # I18N: gedcom tag FAMC
-#: app/Gedcom.php:665
+#: app/Gedcom.php:686
 msgid "Family as a child"
 msgstr "他(她)的父母"
 
 # I18N: gedcom tag FAMS
-#: app/Gedcom.php:668
+#: app/Gedcom.php:689
 msgid "Family as a spouse"
 msgstr "是这个家庭中的配偶"
 
@@ -6562,7 +6570,7 @@ msgstr "家庭薄"
 msgid "Family book of %s"
 msgstr "%s 的家庭薄"
 
-#: app/Gedcom.php:452
+#: app/Gedcom.php:473
 msgid "Family census"
 msgstr "家庭普查"
 
@@ -6571,7 +6579,7 @@ msgid "Family facts and events"
 msgstr ""
 
 # I18N: gedcom tag FAMF
-#: app/Gedcom.php:887
+#: app/Gedcom.php:908
 msgid "Family file"
 msgstr "家庭文件"
 
@@ -6592,15 +6600,15 @@ msgstr "家庭的新闻和网站公告。"
 msgid "Family of %s"
 msgstr "%s 的家庭"
 
-#: app/Gedcom.php:482
+#: app/Gedcom.php:503
 msgid "Family residence"
 msgstr "家庭寓所"
 
-#: app/Gedcom.php:1300
+#: app/CustomTags/GedcomL.php:135
 msgid "Family status"
 msgstr "家庭状况"
 
-#: app/Gedcom.php:1060 app/Module/TreesMenuModule.php:95
+#: app/CustomTags/Ancestry.php:61 app/Module/TreesMenuModule.php:95
 #: resources/views/admin/changes-log.phtml:90
 #: resources/views/admin/changes-log.phtml:139
 #: resources/views/admin/control-panel.phtml:318
@@ -6689,7 +6697,7 @@ msgid "Family with wife"
 msgstr "妻子的家庭"
 
 #. I18N: familysearch.org
-#: app/Gedcom.php:1151
+#: app/CustomTags/FamilySearch.php:52 app/CustomTags/GenPlusWin.php:52
 msgid "FamilySearch ID"
 msgstr "FamilySearch ID"
 
@@ -6786,8 +6794,9 @@ msgid "Favorites"
 msgstr "收藏"
 
 # I18N: gedcom tag FAX
-#: app/Gedcom.php:419 app/Gedcom.php:529 app/Gedcom.php:553 app/Gedcom.php:824
-#: app/Gedcom.php:871 app/Gedcom.php:1025 app/Gedcom.php:1770
+#: app/CustomTags/Aldfaer.php:69 app/CustomTags/GedcomL.php:237
+#: app/CustomTags/PersonalAncestralFile.php:76 app/Gedcom.php:440
+#: app/Gedcom.php:550 app/Gedcom.php:574 app/Gedcom.php:845 app/Gedcom.php:892
 msgid "Fax"
 msgstr "传真"
 
@@ -6842,14 +6851,31 @@ msgstr "女性"
 msgid "Females"
 msgstr "女性"
 
+#. I18N: Data entry field
+#: app/CustomTags/RootsMagic.php:56
+msgid "Field"
+msgstr ""
+
+#. I18N: Data entry field
+#: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
+#: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
+msgid "Field name"
+msgstr ""
+
+#. I18N: Data entry field
+#: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
+#: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
+msgid "Field value"
+msgstr ""
+
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
 msgid "Fiji"
 msgstr "斐济"
 
-#: app/Gedcom.php:1165 app/Http/RequestHandlers/ManageMediaData.php:362
-#: app/MediaFile.php:315
+#: app/CustomTags/FamilyTreeBuilder.php:59
+#: app/Http/RequestHandlers/ManageMediaData.php:362 app/MediaFile.php:315
 msgid "File size"
 msgstr "文件大小"
 
@@ -6858,8 +6884,8 @@ msgid "File successfully uploaded"
 msgstr "文件成功上传"
 
 # I18N: gedcom tag FILE
-#: app/Exceptions/FileUploadException.php:101 app/Gedcom.php:510
-#: app/Gedcom.php:792 app/Http/RequestHandlers/ManageMediaData.php:344
+#: app/Exceptions/FileUploadException.php:101 app/Gedcom.php:531
+#: app/Gedcom.php:813 app/Http/RequestHandlers/ManageMediaData.php:344
 #: resources/views/admin/gedcom-export-options.phtml:64
 #: resources/views/admin/trees-export.phtml:33
 #: resources/views/modals/media-file-fields.phtml:69
@@ -6945,7 +6971,7 @@ msgid "Finland"
 msgstr "芬兰"
 
 # I18N: gedcom tag FCOM
-#: app/Gedcom.php:669 resources/xml/reports/missing_facts_report.xml:21
+#: app/Gedcom.php:690 resources/xml/reports/missing_facts_report.xml:21
 msgid "First communion"
 msgstr "第一個圣餐"
 
@@ -7099,9 +7125,9 @@ msgid "Forgot password?"
 msgstr "忘记密码？"
 
 # I18N: gedcom tag FORM
-#: app/Gedcom.php:428 app/Gedcom.php:512 app/Gedcom.php:517 app/Gedcom.php:560
-#: app/Gedcom.php:793 app/Gedcom.php:1394 app/Gedcom.php:1483
-#: resources/views/admin/gedcom-export-options.phtml:22
+#: app/CustomTags/GedcomL.php:244 app/CustomTags/Geneatique.php:56
+#: app/Gedcom.php:449 app/Gedcom.php:533 app/Gedcom.php:538 app/Gedcom.php:581
+#: app/Gedcom.php:814 resources/views/admin/gedcom-export-options.phtml:22
 #: resources/views/help/date.phtml:32 resources/views/help/date.phtml:70
 #: resources/views/help/date.phtml:108 resources/views/help/date.phtml:146
 #: resources/views/report-setup-page.phtml:52
@@ -7304,11 +7330,11 @@ msgid "Fukuoka, Japan"
 msgstr "日本福冈"
 
 # I18N: gedcom tag _FNRL
-#: app/Gedcom.php:1066 app/Gedcom.php:1126
+#: app/CustomTags/Ancestry.php:67 app/CustomTags/BrothersKeeper.php:99
 msgid "Funeral"
 msgstr "葬礼"
 
-#: app/Gedcom.php:511 resources/views/admin/gedcom-export-options.phtml:30
+#: app/Gedcom.php:532 resources/views/admin/gedcom-export-options.phtml:30
 msgid "GEDCOM"
 msgstr "GEDCOM"
 
@@ -7339,7 +7365,7 @@ msgid "GEDCOM tags"
 msgstr ""
 
 #. I18N: https://genealogy.net/GEDCOM/
-#: app/Gedcom.php:1314 resources/views/admin/tags.phtml:973
+#: app/CustomTags/GedcomL.php:149 resources/views/admin/tags.phtml:973
 msgid "GEDCOM-L"
 msgstr ""
 
@@ -7349,12 +7375,12 @@ msgid "GEDZIP"
 msgstr ""
 
 #. I18N: https://gov.genealogy.net
-#: app/Gedcom.php:1278 app/Gedcom.php:1332 app/Gedcom.php:1453
-#: app/Gedcom.php:1529 app/Gedcom.php:1561
+#: app/CustomTags/GedcomL.php:113 app/CustomTags/GedcomL.php:167
+#: app/CustomTags/GedcomL.php:292
 msgid "GOV identifier"
 msgstr "政府标识符"
 
-#: app/Gedcom.php:1443
+#: app/CustomTags/GedcomL.php:282
 msgid "GOV identifier type"
 msgstr ""
 
@@ -7371,7 +7397,7 @@ msgid "Gambia"
 msgstr "冈比亚"
 
 # I18N: gedcom tag SEX
-#: app/Gedcom.php:744 app/Gedcom.php:1356
+#: app/CustomTags/GedcomL.php:191 app/Gedcom.php:765
 #: resources/views/individual-page-sex.phtml:28
 #: resources/xml/reports/family_group_report.xml:844
 #: resources/xml/reports/individual_ext_report.xml:399
@@ -7444,11 +7470,11 @@ msgid "Generations"
 msgstr "几代人"
 
 # I18N: gedcom tag ANCE
-#: app/Gedcom.php:881
+#: app/Gedcom.php:902
 msgid "Generations of ancestors"
 msgstr "祖先"
 
-#: app/Gedcom.php:886
+#: app/Gedcom.php:907
 msgid "Generations of descendants"
 msgstr "后代的世系"
 
@@ -7549,7 +7575,7 @@ msgid "Given name"
 msgstr "教名"
 
 # I18N: gedcom tag GIVN
-#: app/Gedcom.php:691 app/Gedcom.php:700 app/Gedcom.php:705
+#: app/Gedcom.php:712 app/Gedcom.php:721 app/Gedcom.php:726
 #: resources/views/lists/families-table.phtml:219
 #: resources/views/lists/families-table.phtml:222
 #: resources/views/lists/given-names-table.phtml:21
@@ -7581,8 +7607,8 @@ msgstr "教母"
 msgid "Godparent"
 msgstr "教父母"
 
-#: app/Gedcom.php:626 app/Gedcom.php:1352 app/Gedcom.php:1353
-#: app/Gedcom.php:1575 app/Gedcom.php:1576
+#: app/CustomTags/GedcomL.php:187 app/CustomTags/GedcomL.php:188
+#: app/Gedcom.php:647
 msgid "Godparents"
 msgstr "教父教母"
 
@@ -7604,7 +7630,7 @@ msgid "Google™ webmaster tools"
 msgstr "谷歌™ 网站管理员工具"
 
 # I18N: gedcom tag GRAD
-#: app/Gedcom.php:672
+#: app/Gedcom.php:693
 msgid "Graduation"
 msgstr "毕业典礼"
 
@@ -7727,7 +7753,7 @@ msgid "HTML"
 msgstr "HTML"
 
 # I18N: gedcom tag _HAIR
-#: app/Gedcom.php:1127
+#: app/CustomTags/BrothersKeeper.php:100
 msgid "Hair color"
 msgstr "头发颜色"
 
@@ -7789,7 +7815,7 @@ msgid "He was cremated"
 msgstr "他被火化"
 
 # I18N: gedcom tag HEAD
-#: app/Gedcom.php:503 app/Header.php:42 app/Header.php:43 app/Header.php:44
+#: app/Gedcom.php:524 app/Header.php:42 app/Header.php:43 app/Header.php:44
 #: app/Http/RequestHandlers/CheckTree.php:351
 msgid "Header"
 msgstr "标头"
@@ -7806,12 +7832,12 @@ msgid "Hebrew"
 msgstr "犹太人"
 
 # I18N: gedcom tag _HNM
-#: app/Gedcom.php:1108 app/Gedcom.php:1109
+#: app/CustomTags/BrothersKeeper.php:81 app/CustomTags/BrothersKeeper.php:82
 msgid "Hebrew name"
 msgstr "犹太"
 
 # I18N: gedcom tag _HEIG
-#: app/Gedcom.php:1128
+#: app/CustomTags/BrothersKeeper.php:101
 msgid "Height"
 msgstr "高度"
 
@@ -7959,14 +7985,13 @@ msgstr ""
 msgid "Hide unused locations"
 msgstr "隐藏未使用的位置"
 
-#: app/Gedcom.php:1457
+#: app/CustomTags/GedcomL.php:296
 msgid "Hierarchical relationship"
 msgstr "层次关系"
 
 # I18N: gedcom tag _PRIM
-#: app/Gedcom.php:1169 app/Gedcom.php:1355 app/Gedcom.php:1371
-#: app/Gedcom.php:1522 app/Gedcom.php:1543 app/Gedcom.php:1554
-#: app/Gedcom.php:1577 app/Gedcom.php:1713
+#: app/CustomTags/FamilyTreeBuilder.php:63 app/CustomTags/GedcomL.php:190
+#: app/CustomTags/GedcomL.php:206 app/CustomTags/Legacy.php:145
 #: resources/xml/reports/individual_ext_report.xml:11
 #: resources/xml/reports/individual_report.xml:8
 msgid "Highlighted image"
@@ -8003,7 +8028,7 @@ msgid "Hit counters"
 msgstr "点击数"
 
 # I18N: gedcom tag _HOL
-#: app/Gedcom.php:1795
+#: app/CustomTags/PhpGedView.php:70
 msgid "Holocaust"
 msgstr "大屠杀"
 
@@ -8044,10 +8069,6 @@ msgstr "沙漏图"
 msgid "Hourglass chart of %s"
 msgstr "%s 的沙漏图"
 
-#: app/Gedcom.php:1519 app/Gedcom.php:1551
-msgid "House number"
-msgstr ""
-
 #: resources/views/modules/census-assistant.phtml:110
 msgid "Household"
 msgstr "家庭"
@@ -8071,7 +8092,7 @@ msgid "Hungary"
 msgstr "匈牙利"
 
 # I18N: gedcom tag HUSB
-#: app/Gedcom.php:420 app/Gedcom.php:466
+#: app/Gedcom.php:441 app/Gedcom.php:487
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:74
 #: resources/views/edit/change-family-members.phtml:30
 #: resources/views/edit/change-family-members.phtml:45
@@ -8090,7 +8111,7 @@ msgstr "匈牙利"
 msgid "Husband"
 msgstr "丈夫"
 
-#: app/Gedcom.php:421 resources/views/modules/timeline-chart/chart.phtml:355
+#: app/Gedcom.php:442 resources/views/modules/timeline-chart/chart.phtml:355
 msgid "Husband’s age"
 msgstr "丈夫的年龄"
 
@@ -8117,7 +8138,7 @@ msgid "Idaho Falls, Idaho, United States"
 msgstr "爱达荷瀑布,爱达荷州"
 
 # I18N: gedcom tag IDNO
-#: app/Gedcom.php:674
+#: app/Gedcom.php:695
 msgid "Identification number"
 msgstr "标识号"
 
@@ -8262,7 +8283,7 @@ msgid "Images without watermarks"
 msgstr "无水印图片"
 
 # I18N: gedcom tag IMMI
-#: app/Gedcom.php:676
+#: app/Gedcom.php:697
 msgid "Immigration"
 msgstr "迁入"
 
@@ -8380,7 +8401,7 @@ msgstr "美国印第安纳州印第安纳波利斯"
 # I18N: gedcom tag INDI
 # I18N: Name of a module/report
 #. I18N: Name of a module/report
-#: app/Gedcom.php:539 app/Gedcom.php:1219
+#: app/CustomTags/FamilyTreeMaker.php:91 app/Gedcom.php:560
 #: app/Http/RequestHandlers/CheckTree.php:352
 #: app/Module/IndividualReportModule.php:40
 #: resources/views/admin/fix-level-0-media.phtml:37
@@ -8542,7 +8563,7 @@ msgstr "交互树"
 msgid "Interactive tree of %s"
 msgstr "%s 的交互树"
 
-#: app/Gedcom.php:1129
+#: app/CustomTags/BrothersKeeper.php:102
 msgid "Interment"
 msgstr "安葬"
 
@@ -8722,10 +8743,6 @@ msgstr "约翰内斯堡,南非"
 #: app/Services/TreeService.php:226
 msgid "John /DOE/"
 msgstr "乔 /布洛格斯/"
-
-#: app/Gedcom.php:1549
-msgid "Joint family name"
-msgstr ""
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
@@ -9000,12 +9017,12 @@ msgid "Kyrgyzstan"
 msgstr "吉尔吉斯斯坦"
 
 # I18N: gedcom tag BAPL. LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:591
+#: app/Gedcom.php:612
 msgid "LDS baptism"
 msgstr "LDS 洗礼"
 
 # I18N: gedcom tag SLGC. LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:745
+#: app/Gedcom.php:766
 msgid "LDS child sealing"
 msgstr "LDS 儿童密封"
 
@@ -9014,35 +9031,35 @@ msgid "LDS church"
 msgstr ""
 
 # I18N: gedcom tag CONL. LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:633
+#: app/Gedcom.php:654
 msgid "LDS confirmation"
 msgstr "LDS 确认"
 
 # I18N: gedcom tag ENDL. LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:653
+#: app/Gedcom.php:674
 msgid "LDS endowment"
 msgstr "LDS 捐贈"
 
 #. I18N: GEDCOM tag INIL - an LDS ceremony
-#: app/Gedcom.php:958 app/Gedcom.php:1067
+#: app/CustomTags/Ancestry.php:68 app/CustomTags/Gedcom7.php:123
 msgid "LDS initiatory"
 msgstr ""
 
 # I18N: gedcom tag SLGS. LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:485
+#: app/Gedcom.php:506
 msgid "LDS spouse sealing"
 msgstr "LDS 配偶密封"
 
-#: app/Gedcom.php:1202 app/Gedcom.php:1216 app/Gedcom.php:1220
-#: app/Gedcom.php:1235
+#: app/CustomTags/FamilyTreeMaker.php:74 app/CustomTags/FamilyTreeMaker.php:88
+#: app/CustomTags/FamilyTreeMaker.php:92 app/CustomTags/FamilyTreeMaker.php:107
 msgid "Label"
 msgstr "标签"
 
-#: app/Gedcom.php:1633
+#: app/CustomTags/Legacy.php:65
 msgid "Label for husband"
 msgstr ""
 
-#: app/Gedcom.php:1637
+#: app/CustomTags/Legacy.php:69
 msgid "Label for wife"
 msgstr ""
 
@@ -9053,12 +9070,12 @@ msgid "Laie, Hawaii, United States"
 msgstr "Laie,夏威夷"
 
 #. I18N: GEDCOM tag _PURC
-#: app/Gedcom.php:1825
+#: app/CustomTags/Reunion.php:59
 msgid "Land purchase"
 msgstr ""
 
 #. I18N: GEDCOM tag _SALE
-#: app/Gedcom.php:1826
+#: app/CustomTags/Reunion.php:60
 msgid "Land sale"
 msgstr ""
 
@@ -9073,7 +9090,7 @@ msgstr "横图表"
 # I18N: gedcom tag LANG
 # I18N: A configuration setting
 #. I18N: A configuration setting
-#: app/Gedcom.php:514 app/Gedcom.php:872 app/Gedcom.php:1425
+#: app/CustomTags/GedcomL.php:264 app/Gedcom.php:535 app/Gedcom.php:893
 #: app/Module/ModuleLanguageTrait.php:49 app/Module/ModuleThemeTrait.php:252
 #: resources/views/admin/modules.phtml:278
 #: resources/views/admin/modules.phtml:281
@@ -9119,9 +9136,10 @@ msgid "Las Vegas, Nevada, United States"
 msgstr "拉斯维加斯,内华达州"
 
 # I18N: gedcom tag CHAN
-#: app/Gedcom.php:453 app/Gedcom.php:620 app/Gedcom.php:767 app/Gedcom.php:788
-#: app/Gedcom.php:819 app/Gedcom.php:835 app/Gedcom.php:866 app/Gedcom.php:882
-#: app/Gedcom.php:1385 resources/views/lists/families-table.phtml:233
+#: app/CustomTags/GedcomL.php:220 app/Gedcom.php:474 app/Gedcom.php:641
+#: app/Gedcom.php:788 app/Gedcom.php:809 app/Gedcom.php:840 app/Gedcom.php:856
+#: app/Gedcom.php:887 app/Gedcom.php:903
+#: resources/views/lists/families-table.phtml:233
 #: resources/views/lists/individuals-table.phtml:264
 #: resources/views/lists/locations-table.phtml:66
 #: resources/views/lists/media-table.phtml:82
@@ -9171,8 +9189,9 @@ msgid "Latest marriage"
 msgstr "最近婚姻"
 
 # I18N: gedcom tag LATI
-#: app/Gedcom.php:430 app/Gedcom.php:562 app/Gedcom.php:1396
-#: app/Gedcom.php:1419 resources/views/admin/location-edit.phtml:44
+#: app/CustomTags/GedcomL.php:246 app/CustomTags/GedcomL.php:258
+#: app/Gedcom.php:451 app/Gedcom.php:583
+#: resources/views/admin/location-edit.phtml:44
 #: resources/views/admin/locations.phtml:43
 #: resources/views/edit/input-addon-coordinates.phtml:12
 #: resources/views/edit/input-addon-coordinates.phtml:15
@@ -9226,11 +9245,11 @@ msgid "Legacy URLs"
 msgstr "遗留URL"
 
 # I18N: gedcom tag LEGA
-#: app/Gedcom.php:1823
+#: app/CustomTags/Reunion.php:57
 msgid "Legatee"
 msgstr "遗产受赠人"
 
-#: app/Gedcom.php:1028
+#: app/CustomTags/Aldfaer.php:72
 msgid "Length"
 msgstr ""
 
@@ -9394,8 +9413,9 @@ msgstr "本地文件"
 
 # I18N: gedcom tag MAP
 # I18N: gedcom tag _LOC
-#: app/Gedcom.php:1279 app/Gedcom.php:1333 app/Gedcom.php:1376
-#: app/Gedcom.php:1384 app/Gedcom.php:1401 app/Gedcom.php:1708
+#: app/CustomTags/GedcomL.php:114 app/CustomTags/GedcomL.php:168
+#: app/CustomTags/GedcomL.php:211 app/CustomTags/GedcomL.php:219
+#: app/CustomTags/GedcomL.php:251 app/CustomTags/Legacy.php:140
 #: app/Http/RequestHandlers/CheckTree.php:353
 #: resources/views/lists/locations-table.phtml:63
 msgid "Location"
@@ -9450,8 +9470,9 @@ msgid "Longest marriage"
 msgstr "最长久的婚姻"
 
 # I18N: gedcom tag LONG
-#: app/Gedcom.php:431 app/Gedcom.php:563 app/Gedcom.php:1397
-#: app/Gedcom.php:1420 resources/views/admin/location-edit.phtml:55
+#: app/CustomTags/GedcomL.php:247 app/CustomTags/GedcomL.php:259
+#: app/Gedcom.php:452 app/Gedcom.php:584
+#: resources/views/admin/location-edit.phtml:55
 #: resources/views/admin/locations.phtml:44
 #: resources/views/edit/input-addon-coordinates.phtml:12
 #: resources/views/edit/input-addon-coordinates.phtml:15
@@ -9515,8 +9536,8 @@ msgid "Magazine"
 msgstr "杂志"
 
 #. I18N: https://en.wikipedia.org/wiki/Maidenhead_Locator_System
-#: app/Gedcom.php:1281 app/Gedcom.php:1335 app/Gedcom.php:1378
-#: app/Gedcom.php:1459 app/Gedcom.php:1531 app/Gedcom.php:1563
+#: app/CustomTags/GedcomL.php:116 app/CustomTags/GedcomL.php:170
+#: app/CustomTags/GedcomL.php:213 app/CustomTags/GedcomL.php:298
 msgid "Maidenhead location code"
 msgstr ""
 
@@ -9717,7 +9738,8 @@ msgid "Markdown is a simple system of formatting, used on websites such as Wikip
 msgstr "Markdown是一个简单格式化系统，就如维基百科网站就在使用。它使用不显眼的标点字符创建的标题和小标题，粗体和斜体文字，列表，表格等。"
 
 # I18N: gedcom tag MARR
-#: app/Gedcom.php:472 app/Gedcom.php:1020 app/Module/BranchesListModule.php:445
+#: app/CustomTags/Aldfaer.php:64 app/Gedcom.php:493
+#: app/Module/BranchesListModule.php:445
 #: resources/views/calendar-page.phtml:190
 #: resources/views/lists/families-table.phtml:197
 #: resources/views/lists/families-table.phtml:202
@@ -9777,17 +9799,17 @@ msgid "Marriage"
 msgstr "结婚"
 
 # I18N: gedcom tag MARB
-#: app/Gedcom.php:467 resources/xml/reports/missing_facts_report.xml:22
+#: app/Gedcom.php:488 resources/xml/reports/missing_facts_report.xml:22
 msgid "Marriage banns"
 msgstr "婚姻的结婚通告"
 
 # I18N: gedcom tag _MSTAT
-#: app/Gedcom.php:1198 app/Gedcom.php:1218
+#: app/CustomTags/FamilyTreeMaker.php:70 app/CustomTags/FamilyTreeMaker.php:90
 msgid "Marriage beginning status"
 msgstr "婚姻的开启"
 
 # I18N: gedcom tag _MBON
-#: app/Gedcom.php:1092
+#: app/CustomTags/BrothersKeeper.php:65
 msgid "Marriage bond"
 msgstr "婚姻纽带"
 
@@ -9796,7 +9818,7 @@ msgid "Marriage by country"
 msgstr "按世纪统计结婚"
 
 # I18N: gedcom tag MARC
-#: app/Gedcom.php:470
+#: app/Gedcom.php:491
 msgid "Marriage contract"
 msgstr "结婚协议"
 
@@ -9809,17 +9831,17 @@ msgid "Marriage date range start"
 msgstr "婚姻的日期范围开始"
 
 # I18N: gedcom tag _MEND
-#: app/Gedcom.php:1197 app/Gedcom.php:1217
+#: app/CustomTags/FamilyTreeMaker.php:69 app/CustomTags/FamilyTreeMaker.php:89
 msgid "Marriage ending status"
 msgstr "婚姻结局"
 
 # I18N: gedcom tag _MARI
-#: app/Gedcom.php:1091
+#: app/CustomTags/BrothersKeeper.php:64
 msgid "Marriage intention"
 msgstr "婚姻的意图"
 
 # I18N: gedcom tag MARL
-#: app/Gedcom.php:471
+#: app/Gedcom.php:492
 msgid "Marriage license"
 msgstr "结婚登记证"
 
@@ -9926,7 +9948,7 @@ msgid "Marriage places"
 msgstr "结婚地"
 
 # I18N: gedcom tag MARS
-#: app/Gedcom.php:476
+#: app/Gedcom.php:497
 msgid "Marriage settlement"
 msgstr "婚姻财产契约"
 
@@ -9945,7 +9967,8 @@ msgid "Marriages by century"
 msgstr "按世纪统计结婚"
 
 # I18N: gedcom tag _MARNM
-#: app/Gedcom.php:1240 resources/views/lists/families-table.phtml:250
+#: app/CustomTags/FamilyTreeMaker.php:112
+#: resources/views/lists/families-table.phtml:250
 #: resources/views/lists/families-table.phtml:285
 #: resources/views/lists/individuals-table.phtml:277
 #: resources/xml/reports/cemetery_report.xml:7
@@ -10050,8 +10073,8 @@ msgstr "梅德福,俄勒冈州"
 
 # I18N: Name of a module
 #. I18N: Name of a module
-#: app/Gedcom.php:1428 app/Media.php:156 app/Module/MediaListModule.php:224
-#: app/Module/MediaTabModule.php:59
+#: app/CustomTags/GedcomL.php:267 app/Media.php:156
+#: app/Module/MediaListModule.php:224 app/Module/MediaTabModule.php:59
 #: resources/views/admin/control-panel.phtml:324
 #: resources/views/admin/control-panel.phtml:778
 #: resources/views/admin/media.phtml:102
@@ -10091,12 +10114,13 @@ msgid "Media folders"
 msgstr "多媒体文件夹"
 
 # I18N: gedcom tag OBJE
-#: app/Gedcom.php:423 app/Gedcom.php:444 app/Gedcom.php:479 app/Gedcom.php:498
-#: app/Gedcom.php:555 app/Gedcom.php:576 app/Gedcom.php:687 app/Gedcom.php:724
-#: app/Gedcom.php:759 app/Gedcom.php:783 app/Gedcom.php:786 app/Gedcom.php:807
-#: app/Gedcom.php:846 app/Gedcom.php:875 app/Gedcom.php:1294
-#: app/Gedcom.php:1348 app/Gedcom.php:1417 app/Gedcom.php:1437
-#: app/Gedcom.php:1470 app/Gedcom.php:1886 app/Gedcom.php:1900
+#: app/CustomTags/GedcomL.php:129 app/CustomTags/GedcomL.php:183
+#: app/CustomTags/GedcomL.php:239 app/CustomTags/GedcomL.php:276
+#: app/CustomTags/GedcomL.php:309 app/Gedcom.php:444 app/Gedcom.php:465
+#: app/Gedcom.php:500 app/Gedcom.php:519 app/Gedcom.php:576 app/Gedcom.php:597
+#: app/Gedcom.php:708 app/Gedcom.php:745 app/Gedcom.php:780 app/Gedcom.php:804
+#: app/Gedcom.php:807 app/Gedcom.php:828 app/Gedcom.php:867 app/Gedcom.php:896
+#: app/Gedcom.php:939 app/Gedcom.php:953
 #: app/Http/RequestHandlers/CheckTree.php:354
 #: app/Http/RequestHandlers/HelpText.php:246
 #: resources/views/admin/fix-level-0-media.phtml:35
@@ -10137,14 +10161,15 @@ msgstr "每页几个多媒体文件"
 
 # I18N: gedcom tag MEDI
 # I18N: gedcom tag _TYPE
-#: app/Gedcom.php:794 app/Gedcom.php:852
+#: app/Gedcom.php:815 app/Gedcom.php:873
 #: resources/views/modals/create-media-from-file.phtml:41
 #: resources/views/modals/media-file-fields.phtml:115
 msgid "Media type"
 msgstr "多媒体类型"
 
 # I18N: gedcom tag _MDCL
-#: app/Gedcom.php:1130 app/Gedcom.php:1261 app/Gedcom.php:1824
+#: app/CustomTags/BrothersKeeper.php:103 app/CustomTags/FamilyTreeMaker.php:133
+#: app/CustomTags/Reunion.php:58
 msgid "Medical"
 msgstr "医疗"
 
@@ -10338,12 +10363,12 @@ msgid "Middle East"
 msgstr "中东"
 
 # I18N: gedcom tag _MILI
-#: app/Gedcom.php:1796
+#: app/CustomTags/PhpGedView.php:71
 msgid "Military"
 msgstr "军事服务"
 
 # I18N: gedcom tag _MILT
-#: app/Gedcom.php:1131 app/Gedcom.php:1262
+#: app/CustomTags/BrothersKeeper.php:104 app/CustomTags/FamilyTreeMaker.php:134
 msgid "Military service"
 msgstr "兵役"
 
@@ -10729,12 +10754,12 @@ msgid "Myanmar"
 msgstr "缅甸"
 
 # I18N: gedcom tag NAME
-#: app/Gedcom.php:679 app/Gedcom.php:873
+#: app/Gedcom.php:700 app/Gedcom.php:894
 #: app/Http/RequestHandlers/HelpText.php:236
 #: app/Statistics/Google/ChartCommonGiven.php:69
 #: app/Statistics/Google/ChartCommonSurname.php:127
 #: resources/views/individual-page-name.phtml:40
-#: resources/views/individual-page-name.phtml:52
+#: resources/views/individual-page-name.phtml:54
 #: resources/views/modals/location-fields.phtml:9
 #: resources/views/modals/submitter-fields.phtml:9
 #: resources/views/modules/yahrzeit/table.phtml:26
@@ -10760,28 +10785,29 @@ msgid "Name"
 msgstr "姓名"
 
 # I18N: gedcom tag REPO:NAME
-#: app/Gedcom.php:825 app/Http/RequestHandlers/CreateRepositoryModal.php:49
+#: app/Gedcom.php:846 app/Http/RequestHandlers/CreateRepositoryModal.php:49
 msgctxt "Repository"
 msgid "Name"
 msgstr "名称"
 
-#: app/Gedcom.php:1794
+#: app/CustomTags/PhpGedView.php:69
 msgid "Name in Hebrew"
 msgstr "犹太名称"
 
-#: app/Gedcom.php:1276 app/Gedcom.php:1317 app/Gedcom.php:1330
-#: app/Gedcom.php:1373 app/Gedcom.php:1381 app/Gedcom.php:1684
-#: app/Gedcom.php:1768
+#: app/CustomTags/GedcomL.php:111 app/CustomTags/GedcomL.php:152
+#: app/CustomTags/GedcomL.php:165 app/CustomTags/GedcomL.php:208
+#: app/CustomTags/GedcomL.php:216 app/CustomTags/Legacy.php:116
+#: app/CustomTags/PersonalAncestralFile.php:74
 msgid "Name of addressee"
 msgstr ""
 
 # I18N: gedcom tag NPFX
-#: app/Gedcom.php:694 app/Gedcom.php:702 app/Gedcom.php:708
+#: app/Gedcom.php:715 app/Gedcom.php:723 app/Gedcom.php:729
 msgid "Name prefix"
 msgstr "姓名前缀"
 
 # I18N: gedcom tag NSFX
-#: app/Gedcom.php:695 app/Gedcom.php:703 app/Gedcom.php:709
+#: app/Gedcom.php:716 app/Gedcom.php:724 app/Gedcom.php:730
 msgid "Name suffix"
 msgstr "姓名后缀"
 
@@ -10794,7 +10820,7 @@ msgid "Names"
 msgstr "姓名"
 
 # I18N: gedcom tag _NAMS
-#: app/Gedcom.php:1265
+#: app/CustomTags/FamilyTreeMaker.php:137
 msgid "Namesake"
 msgstr "同名同姓"
 
@@ -10819,12 +10845,12 @@ msgid "Nashville, Tennessee, United States"
 msgstr "田纳西州纳什维尔"
 
 # I18N: gedcom tag NATI
-#: app/Gedcom.php:717
+#: app/Gedcom.php:738
 msgid "Nationality"
 msgstr "国籍"
 
 # I18N: gedcom tag NATU
-#: app/Gedcom.php:718
+#: app/Gedcom.php:739
 msgid "Naturalization"
 msgstr "移入"
 
@@ -10864,7 +10890,7 @@ msgid "Never"
 msgstr "从未"
 
 # I18N: gedcom tag _NMAR
-#: app/Elements/FamilyStatusText.php:72 app/Gedcom.php:1133
+#: app/CustomTags/BrothersKeeper.php:106 app/Elements/FamilyStatusText.php:72
 msgid "Never married"
 msgstr "未婚"
 
@@ -10874,8 +10900,9 @@ msgstr "未婚"
 msgid "New Caledonia"
 msgstr "新喀里多尼亚"
 
-#: app/Gedcom.php:1320 app/Gedcom.php:1321 app/Gedcom.php:1322
-#: app/Gedcom.php:1323 app/Gedcom.php:1324
+#: app/CustomTags/GedcomL.php:155 app/CustomTags/GedcomL.php:156
+#: app/CustomTags/GedcomL.php:157 app/CustomTags/GedcomL.php:158
+#: app/CustomTags/GedcomL.php:159
 msgid "New GEDCOM tag"
 msgstr "新GEDCOM标签"
 
@@ -10944,7 +10971,7 @@ msgid "Nicaragua"
 msgstr "尼加拉瓜"
 
 # I18N: gedcom tag NICK
-#: app/Gedcom.php:692 app/Gedcom.php:701 app/Gedcom.php:706
+#: app/Gedcom.php:713 app/Gedcom.php:722 app/Gedcom.php:727
 msgid "Nickname"
 msgstr "昵称"
 
@@ -11040,7 +11067,7 @@ msgstr "没有找到GEDCOM文件。"
 msgid "No calendar conversion"
 msgstr "没有日历转换"
 
-#: app/Gedcom.php:1638 app/Module/DescendancyModule.php:267
+#: app/CustomTags/Legacy.php:70 app/Module/DescendancyModule.php:267
 #: resources/views/family-page-children.phtml:17
 msgid "No children"
 msgstr "沒有孩子"
@@ -11221,12 +11248,12 @@ msgid "Not approved by an administrator"
 msgstr "管理员没有确认"
 
 # I18N: gedcom tag _NLIV
-#: app/Gedcom.php:1132
+#: app/CustomTags/BrothersKeeper.php:105
 msgid "Not living"
 msgstr "已故"
 
 # I18N: gedcom tag _NMR
-#: app/Elements/FamilyStatusText.php:71 app/Gedcom.php:1093
+#: app/CustomTags/BrothersKeeper.php:66 app/Elements/FamilyStatusText.php:71
 #: app/Module/BranchesListModule.php:447
 #: resources/views/lists/families-table.phtml:192
 msgid "Not married"
@@ -11243,11 +11270,12 @@ msgid "Not verified by the user"
 msgstr "用户没有确认"
 
 # I18N: gedcom tag NOTE
-#: app/Elements/NoteStructure.php:146 app/Gedcom.php:422 app/Gedcom.php:478
-#: app/Gedcom.php:515 app/Gedcom.php:554 app/Gedcom.php:723 app/Gedcom.php:771
-#: app/Gedcom.php:796 app/Gedcom.php:826 app/Gedcom.php:874 app/Gedcom.php:888
-#: app/Gedcom.php:1061 app/Gedcom.php:1064 app/Gedcom.php:1305
-#: app/Gedcom.php:1361 app/Gedcom.php:1416 app/Gedcom.php:1427
+#: app/CustomTags/Ancestry.php:62 app/CustomTags/Ancestry.php:65
+#: app/CustomTags/GedcomL.php:140 app/CustomTags/GedcomL.php:196
+#: app/CustomTags/GedcomL.php:238 app/CustomTags/GedcomL.php:266
+#: app/Elements/NoteStructure.php:150 app/Gedcom.php:443 app/Gedcom.php:499
+#: app/Gedcom.php:536 app/Gedcom.php:575 app/Gedcom.php:744 app/Gedcom.php:792
+#: app/Gedcom.php:817 app/Gedcom.php:847 app/Gedcom.php:895 app/Gedcom.php:909
 #: app/Http/RequestHandlers/CheckTree.php:355
 #: resources/views/admin/trees-privacy.phtml:168
 #: resources/views/modals/create-media-from-file.phtml:49
@@ -11264,45 +11292,46 @@ msgstr "用户没有确认"
 msgid "Note"
 msgstr "记录"
 
-#: app/Gedcom.php:1285 app/Gedcom.php:1339 app/Gedcom.php:1877
-#: app/Gedcom.php:1891
+#: app/CustomTags/GedcomL.php:120 app/CustomTags/GedcomL.php:174
+#: app/Gedcom.php:930 app/Gedcom.php:944
 msgid "Note on association"
 msgstr ""
 
-#: app/Gedcom.php:456 app/Gedcom.php:623 app/Gedcom.php:770 app/Gedcom.php:791
-#: app/Gedcom.php:822 app/Gedcom.php:838 app/Gedcom.php:869 app/Gedcom.php:885
-#: app/Gedcom.php:1388
+#: app/CustomTags/GedcomL.php:223 app/Gedcom.php:477 app/Gedcom.php:644
+#: app/Gedcom.php:791 app/Gedcom.php:812 app/Gedcom.php:843 app/Gedcom.php:859
+#: app/Gedcom.php:890 app/Gedcom.php:906
 msgid "Note on last change"
 msgstr ""
 
-#: app/Gedcom.php:693
+#: app/Gedcom.php:714
 msgid "Note on phonetic name"
 msgstr ""
 
-#: app/Gedcom.php:432 app/Gedcom.php:564 app/Gedcom.php:1398
+#: app/CustomTags/GedcomL.php:248 app/Gedcom.php:453 app/Gedcom.php:585
 msgid "Note on place"
 msgstr ""
 
-#: app/Gedcom.php:853
+#: app/Gedcom.php:874
 msgid "Note on repository reference"
 msgstr ""
 
-#: app/Gedcom.php:707
+#: app/Gedcom.php:728
 msgid "Note on romanized name"
 msgstr ""
 
-#: app/Gedcom.php:845
+#: app/Gedcom.php:866
 msgid "Note on source"
 msgstr ""
 
-#: app/Gedcom.php:443 app/Gedcom.php:497 app/Gedcom.php:575 app/Gedcom.php:686
-#: app/Gedcom.php:758 app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:1293
-#: app/Gedcom.php:1347 app/Gedcom.php:1436 app/Gedcom.php:1469
-#: app/Gedcom.php:1885 app/Gedcom.php:1899
+#: app/CustomTags/GedcomL.php:128 app/CustomTags/GedcomL.php:182
+#: app/CustomTags/GedcomL.php:275 app/CustomTags/GedcomL.php:308
+#: app/Gedcom.php:464 app/Gedcom.php:518 app/Gedcom.php:596 app/Gedcom.php:707
+#: app/Gedcom.php:779 app/Gedcom.php:803 app/Gedcom.php:827 app/Gedcom.php:938
+#: app/Gedcom.php:952
 msgid "Note on source citation"
 msgstr ""
 
-#: app/Gedcom.php:844
+#: app/Gedcom.php:865
 msgid "Note on source data"
 msgstr ""
 
@@ -11375,7 +11404,7 @@ msgid "Nuku’Alofa, Tonga"
 msgstr "汤加努库阿洛法"
 
 # I18N: gedcom tag NCHI
-#: app/Gedcom.php:477 app/Gedcom.php:721
+#: app/Gedcom.php:498 app/Gedcom.php:742
 #: app/Module/StatisticsChartModule.php:714
 #: app/Statistics/Google/ChartChildren.php:107
 #: resources/views/modules/statistics-chart/custom.phtml:51
@@ -11400,7 +11429,7 @@ msgid "Number of given names"
 msgstr "名字的数量"
 
 # I18N: gedcom tag NMR
-#: app/Gedcom.php:722
+#: app/Gedcom.php:743
 msgid "Number of marriages"
 msgstr "婚姻次数"
 
@@ -11444,7 +11473,7 @@ msgid "Oaxaca, Mexico"
 msgstr "瓦哈卡州,墨西哥"
 
 # I18N: gedcom tag OCCU
-#: app/Gedcom.php:725 app/Gedcom.php:1065
+#: app/CustomTags/Ancestry.php:66 app/Gedcom.php:746
 #: resources/xml/reports/occupation_report.xml:5
 #: resources/xml/reports/occupation_report.xml:54
 msgid "Occupation"
@@ -11630,12 +11659,12 @@ msgid "Ordibehesht"
 msgstr "第二月"
 
 # I18N: gedcom tag ORDI
-#: app/Gedcom.php:889
+#: app/Gedcom.php:910
 msgid "Ordinance"
 msgstr "条例"
 
 # I18N: gedcom tag ORDN
-#: app/Gedcom.php:727 app/Gedcom.php:1068
+#: app/CustomTags/Ancestry.php:69 app/Gedcom.php:748
 msgid "Ordination"
 msgstr "祝圣礼"
 
@@ -11649,13 +11678,12 @@ msgstr ""
 msgid "Orientation"
 msgstr "方向"
 
-#: app/Gedcom.php:1069
+#: app/CustomTags/Ancestry.php:70
 msgid "Origin"
 msgstr ""
 
 #. I18N: GEDCOM tag _ORIG
-#: app/Gedcom.php:1074 app/Gedcom.php:1535 app/Gedcom.php:1544
-#: app/Gedcom.php:1567 app/Gedcom.php:1578
+#: app/CustomTags/Ancestry.php:75
 msgid "Original text"
 msgstr ""
 
@@ -11816,11 +11844,11 @@ msgstr "巴布亚新几内亚"
 msgid "Paraguay"
 msgstr "巴拉圭"
 
-#: app/Gedcom.php:1454
+#: app/CustomTags/GedcomL.php:293
 msgid "Parent location"
 msgstr ""
 
-#: app/Gedcom.php:747 app/Http/RequestHandlers/IndividualPage.php:212
+#: app/Gedcom.php:768 app/Http/RequestHandlers/IndividualPage.php:212
 #: resources/views/edit/reorder-families.phtml:70
 #: resources/views/modules/ancestors-chart/tree.phtml:33
 #: resources/views/modules/family_nav/sidebar-family.phtml:41
@@ -11921,7 +11949,7 @@ msgid "Pending changes are only shown when your account has permission to edit. 
 msgstr "当您的账户有权限编辑时才显示待定的更改。当你退出，你将不再能够看到它们。同时，只有在特定的页面显示待定的更改。例如，他们不出现在名单，报告，或搜索结果页面中。"
 
 # I18N: gedcom tag _PRMN
-#: app/Gedcom.php:1094 app/Gedcom.php:1134
+#: app/CustomTags/BrothersKeeper.php:67 app/CustomTags/BrothersKeeper.php:107
 msgid "Permanent number"
 msgstr "永久号码"
 
@@ -11959,8 +11987,9 @@ msgid "Phoenix, Arizona, United States"
 msgstr "凤凰城,亚利桑那州,美国"
 
 # I18N: gedcom tag PHON
-#: app/Gedcom.php:424 app/Gedcom.php:530 app/Gedcom.php:556 app/Gedcom.php:827
-#: app/Gedcom.php:876 app/Gedcom.php:1023 app/Gedcom.php:1771
+#: app/CustomTags/Aldfaer.php:67 app/CustomTags/GedcomL.php:240
+#: app/CustomTags/PersonalAncestralFile.php:77 app/Gedcom.php:445
+#: app/Gedcom.php:551 app/Gedcom.php:577 app/Gedcom.php:848 app/Gedcom.php:897
 #: resources/views/modals/submitter-fields.phtml:25
 msgid "Phone"
 msgstr "电话号码"
@@ -11969,11 +11998,11 @@ msgstr "电话号码"
 msgid "Phonetic algorithm"
 msgstr "语音算法"
 
-#: app/Gedcom.php:690
+#: app/Gedcom.php:711
 msgid "Phonetic name"
 msgstr "拼音名"
 
-#: app/Gedcom.php:426 app/Gedcom.php:558 app/Gedcom.php:1392
+#: app/CustomTags/GedcomL.php:242 app/Gedcom.php:447 app/Gedcom.php:579
 msgid "Phonetic place"
 msgstr "语音的地方"
 
@@ -11984,19 +12013,26 @@ msgstr "语音的地方"
 msgid "Phonetic search"
 msgstr "语音搜索"
 
-#: app/Gedcom.php:699
+#: app/Gedcom.php:720
 msgid "Phonetic type"
 msgstr "语音类型"
 
 # I18N: Type of media object
 #. I18N: Type of media object
-#: app/Elements/SourceMediaType.php:94 app/Gedcom.php:1168
+#: app/CustomTags/FamilyTreeBuilder.php:62 app/Elements/SourceMediaType.php:94
 msgid "Photo"
 msgstr "照片"
 
-#: app/Gedcom.php:908 app/Gedcom.php:910 app/Gedcom.php:915 app/Gedcom.php:920
-#: app/Gedcom.php:922 app/Gedcom.php:934 app/Gedcom.php:936 app/Gedcom.php:941
-#: app/Gedcom.php:945 app/Gedcom.php:946 app/Gedcom.php:948 app/Gedcom.php:950
+#: app/CustomTags/MyHeritage.php:63
+msgid "Photograph"
+msgstr ""
+
+#: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:75
+#: app/CustomTags/Gedcom7.php:80 app/CustomTags/Gedcom7.php:85
+#: app/CustomTags/Gedcom7.php:87 app/CustomTags/Gedcom7.php:99
+#: app/CustomTags/Gedcom7.php:101 app/CustomTags/Gedcom7.php:106
+#: app/CustomTags/Gedcom7.php:110 app/CustomTags/Gedcom7.php:111
+#: app/CustomTags/Gedcom7.php:113 app/CustomTags/Gedcom7.php:115
 msgid "Phrase"
 msgstr ""
 
@@ -12013,8 +12049,9 @@ msgid "Pitcairn"
 msgstr "皮特克恩"
 
 # I18N: gedcom tag PLAC
-#: app/Gedcom.php:425 app/Gedcom.php:557 app/Gedcom.php:843 app/Gedcom.php:1072
-#: app/Gedcom.php:1167 app/Gedcom.php:1421 app/Gedcom.php:1653
+#: app/CustomTags/Ancestry.php:73 app/CustomTags/FamilyTreeBuilder.php:61
+#: app/CustomTags/GedcomL.php:260 app/CustomTags/Legacy.php:85
+#: app/Gedcom.php:446 app/Gedcom.php:578 app/Gedcom.php:864
 #: app/Http/RequestHandlers/HelpText.php:251 app/Module/FixCemeteryTag.php:85
 #: resources/views/admin/location-edit.phtml:35
 #: resources/views/admin/location-edit.phtml:122
@@ -12039,13 +12076,13 @@ msgstr "地点"
 
 # I18N: Name of a module/list
 #. I18N: Name of a module/list
-#: app/Gedcom.php:516 app/Module/PlaceHierarchyListModule.php:102
+#: app/Gedcom.php:537 app/Module/PlaceHierarchyListModule.php:102
 #: app/Module/PlaceHierarchyListModule.php:245
 #: resources/views/place-hierarchy.phtml:16
 msgid "Place hierarchy"
 msgstr "地方分布"
 
-#: app/Gedcom.php:1790
+#: app/CustomTags/PhpGedView.php:65
 msgid "Place in Hebrew"
 msgstr "犹太语中地方"
 
@@ -12068,123 +12105,118 @@ msgid "Place names should be entered as a comma-separated list, starting with th
 msgstr "地名应以逗号分隔的列表形式输入，从最小的地方开始，以国家结束。例如，“威斯敏斯特,伦敦,英国”。"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:593
+#: app/Gedcom.php:614
 msgid "Place of LDS baptism"
 msgstr "LDS 洗礼的地点"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:748
+#: app/Gedcom.php:769
 msgid "Place of LDS child sealing"
 msgstr "LDS 儿童密封的地点"
 
-#: app/Gedcom.php:635
+#: app/Gedcom.php:656
 msgid "Place of LDS confirmation"
 msgstr "确认LDS的地点"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:655
+#: app/Gedcom.php:676
 msgid "Place of LDS endowment"
 msgstr "LDS 捐贈的地点"
 
 # I18N: LDS = Church of Latter Day Saints.
-#: app/Gedcom.php:487
+#: app/Gedcom.php:508
 msgid "Place of LDS spouse sealing"
 msgstr "LDS 配偶密封的地点"
 
-#: app/Gedcom.php:585
+#: app/Gedcom.php:606
 msgid "Place of adoption"
 msgstr "过继的地方"
 
-#: app/Gedcom.php:599 resources/xml/reports/missing_facts_report.xml:140
+#: app/Gedcom.php:620 resources/xml/reports/missing_facts_report.xml:140
 msgid "Place of baptism"
 msgstr "洗礼的地点"
 
-#: app/Gedcom.php:602 resources/xml/reports/missing_facts_report.xml:223
+#: app/Gedcom.php:623 resources/xml/reports/missing_facts_report.xml:223
 msgid "Place of bar mitzvah"
 msgstr "受诫礼的地点"
 
-#: app/Gedcom.php:605 resources/xml/reports/missing_facts_report.xml:264
+#: app/Gedcom.php:626 resources/xml/reports/missing_facts_report.xml:264
 msgid "Place of bat mitzvah"
 msgstr "成人仪式的地点"
 
-#: app/Gedcom.php:609 resources/xml/reports/fact_sources.xml:273
+#: app/Gedcom.php:630 resources/xml/reports/fact_sources.xml:273
 #: resources/xml/reports/missing_facts_report.xml:93
 msgid "Place of birth"
 msgstr "出生地"
 
-#: app/Gedcom.php:612
+#: app/Gedcom.php:633
 msgid "Place of blessing"
 msgstr "祝福地"
 
-#: app/Gedcom.php:1123
+#: app/CustomTags/BrothersKeeper.php:96
 msgid "Place of brit milah"
 msgstr "割礼地"
 
-#: app/Gedcom.php:615 resources/xml/reports/missing_facts_report.xml:557
+#: app/Gedcom.php:636 resources/xml/reports/missing_facts_report.xml:557
 msgid "Place of burial"
 msgstr "埋葬地"
 
-#: app/Gedcom.php:627 app/Gedcom.php:629
+#: app/Gedcom.php:648 app/Gedcom.php:650
 #: resources/xml/reports/missing_facts_report.xml:181
 msgid "Place of christening"
 msgstr "洗礼地"
 
-#. I18N: German Bürgerort
-#: app/Gedcom.php:1585
-msgid "Place of citizenship"
-msgstr ""
-
-#: app/Gedcom.php:632 resources/xml/reports/missing_facts_report.xml:305
+#: app/Gedcom.php:653 resources/xml/reports/missing_facts_report.xml:305
 msgid "Place of confirmation"
 msgstr "确认地"
 
-#: app/Gedcom.php:641
+#: app/Gedcom.php:662
 msgid "Place of cremation"
 msgstr "火葬地"
 
-#: app/Gedcom.php:645 resources/xml/reports/fact_sources.xml:275
+#: app/Gedcom.php:666 resources/xml/reports/fact_sources.xml:275
 #: resources/xml/reports/missing_facts_report.xml:516
 msgid "Place of death"
 msgstr "去世地"
 
-#: app/Gedcom.php:652
+#: app/Gedcom.php:673
 msgid "Place of emigration"
 msgstr "移民地"
 
-#: app/Gedcom.php:463 resources/xml/reports/missing_facts_report.xml:347
+#: app/Gedcom.php:484 resources/xml/reports/missing_facts_report.xml:347
 msgid "Place of engagement"
 msgstr "订婚地"
 
-#: app/Gedcom.php:661 app/Gedcom.php:1391
+#: app/CustomTags/GedcomL.php:241 app/Gedcom.php:682
 msgid "Place of event"
 msgstr "事件地"
 
-#: app/Gedcom.php:671 resources/xml/reports/missing_facts_report.xml:389
+#: app/Gedcom.php:692 resources/xml/reports/missing_facts_report.xml:389
 msgid "Place of first communion"
 msgstr "第一圣餐地点"
 
-#: app/Gedcom.php:678
+#: app/Gedcom.php:699
 msgid "Place of immigration"
 msgstr "移民地"
 
-#: app/Gedcom.php:474 resources/xml/reports/fact_sources.xml:321
+#: app/Gedcom.php:495 resources/xml/reports/fact_sources.xml:321
 #: resources/xml/reports/missing_facts_report.xml:474
 msgid "Place of marriage"
 msgstr "结婚地"
 
-#: app/Gedcom.php:469 resources/xml/reports/missing_facts_report.xml:431
+#: app/Gedcom.php:490 resources/xml/reports/missing_facts_report.xml:431
 msgid "Place of marriage banns"
 msgstr "婚姻的结婚通告的地点"
 
-#: app/Gedcom.php:720
+#: app/Gedcom.php:741
 msgid "Place of naturalization"
 msgstr "移入地"
 
-#: app/Gedcom.php:730
+#: app/Gedcom.php:751
 msgid "Place of ordination"
 msgstr "祝圣礼地"
 
-#: app/Gedcom.php:738
+#: app/Gedcom.php:759
 msgid "Place of residence"
 msgstr "居住地"
 
@@ -12295,10 +12327,11 @@ msgid "Portuguese"
 msgstr "葡萄牙"
 
 # I18N: gedcom tag POST
-#: app/Gedcom.php:413 app/Gedcom.php:526 app/Gedcom.php:546 app/Gedcom.php:817
-#: app/Gedcom.php:864 app/Gedcom.php:1282 app/Gedcom.php:1336
-#: app/Gedcom.php:1379 app/Gedcom.php:1410 app/Gedcom.php:1460
-#: app/Gedcom.php:1532 app/Gedcom.php:1564 app/Gedcom.php:1766
+#: app/CustomTags/GedcomL.php:117 app/CustomTags/GedcomL.php:171
+#: app/CustomTags/GedcomL.php:214 app/CustomTags/GedcomL.php:231
+#: app/CustomTags/GedcomL.php:299 app/CustomTags/PersonalAncestralFile.php:72
+#: app/Gedcom.php:434 app/Gedcom.php:547 app/Gedcom.php:567 app/Gedcom.php:838
+#: app/Gedcom.php:885
 msgid "Postal code"
 msgstr "邮编"
 
@@ -12406,7 +12439,8 @@ msgstr "周一"
 msgid "Print basic events when blank"
 msgstr "当空白时显示基本事件"
 
-#: app/Gedcom.php:1311 app/Gedcom.php:1367 app/Gedcom.php:1705
+#: app/CustomTags/GedcomL.php:146 app/CustomTags/GedcomL.php:202
+#: app/CustomTags/Legacy.php:137
 msgid "Priority"
 msgstr "优先事项"
 
@@ -12431,8 +12465,9 @@ msgstr "隐私限制"
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
 msgstr "隐私限制—这些适用于不包含一个标记RESN GEDCOM的记录和事实"
 
-#: app/Gedcom.php:1624 app/Gedcom.php:1628 app/Gedcom.php:1650
-#: app/Gedcom.php:1685 app/Gedcom.php:1692 app/GedcomRecord.php:359
+#: app/CustomTags/Legacy.php:56 app/CustomTags/Legacy.php:60
+#: app/CustomTags/Legacy.php:82 app/CustomTags/Legacy.php:117
+#: app/CustomTags/Legacy.php:124 app/GedcomRecord.php:359
 #: app/GedcomRecord.php:465 app/Report/ReportParserGenerate.php:1006
 #: app/Statistics/Repository/EventRepository.php:414
 msgid "Private"
@@ -12443,12 +12478,12 @@ msgid "Private key"
 msgstr "私钥"
 
 # I18N: gedcom tag PROB
-#: app/Gedcom.php:731
+#: app/Gedcom.php:752
 msgid "Probate"
 msgstr "遗嘱"
 
 # I18N: gedcom tag PROP
-#: app/Gedcom.php:732
+#: app/Gedcom.php:753
 msgid "Property"
 msgstr "财产信息"
 
@@ -12470,7 +12505,7 @@ msgid "Proxy"
 msgstr "代理人"
 
 # I18N: gedcom tag PUBL
-#: app/Gedcom.php:847 resources/views/lists/sources-table.phtml:97
+#: app/Gedcom.php:868 resources/views/lists/sources-table.phtml:97
 #: resources/views/modals/source-fields.phtml:36
 msgid "Publication"
 msgstr "出版"
@@ -12488,10 +12523,11 @@ msgid "Qatar"
 msgstr "卡塔尔"
 
 # I18N: gedcom tag QUAY
-#: app/Gedcom.php:446 app/Gedcom.php:500 app/Gedcom.php:578 app/Gedcom.php:689
-#: app/Gedcom.php:761 app/Gedcom.php:785 app/Gedcom.php:809 app/Gedcom.php:1296
-#: app/Gedcom.php:1350 app/Gedcom.php:1439 app/Gedcom.php:1472
-#: app/Gedcom.php:1888 app/Gedcom.php:1902
+#: app/CustomTags/GedcomL.php:131 app/CustomTags/GedcomL.php:185
+#: app/CustomTags/GedcomL.php:278 app/CustomTags/GedcomL.php:311
+#: app/Gedcom.php:467 app/Gedcom.php:521 app/Gedcom.php:599 app/Gedcom.php:710
+#: app/Gedcom.php:782 app/Gedcom.php:806 app/Gedcom.php:830 app/Gedcom.php:941
+#: app/Gedcom.php:955
 msgid "Quality of data"
 msgstr "资料质量"
 
@@ -12693,7 +12729,8 @@ msgid "Re-order families"
 msgstr "重新排列家庭"
 
 # I18N: gedcom tag _WT_OBJE_SORT
-#: app/Gedcom.php:1797 app/Http/RequestHandlers/ReorderMediaFilesPage.php:49
+#: app/CustomTags/PhpGedView.php:72
+#: app/Http/RequestHandlers/ReorderMediaFilesPage.php:49
 #: app/Http/RequestHandlers/ReorderMediaPage.php:49
 #: app/Module/FixPrimaryTag.php:119
 #: resources/views/individual-page-menu.phtml:102
@@ -12750,15 +12787,16 @@ msgid "Record"
 msgstr "记录"
 
 # I18N: gedcom tag RIN
-#: app/Gedcom.php:484 app/Gedcom.php:743 app/Gedcom.php:775 app/Gedcom.php:799
-#: app/Gedcom.php:830 app/Gedcom.php:854 app/Gedcom.php:878 app/Gedcom.php:890
-#: app/Gedcom.php:1062 app/Gedcom.php:1166 app/Gedcom.php:1737
-#: app/Gedcom.php:1740 app/Gedcom.php:1746
+#: app/CustomTags/Ancestry.php:63 app/CustomTags/FamilyTreeBuilder.php:60
+#: app/CustomTags/MyHeritage.php:55 app/CustomTags/MyHeritage.php:58
+#: app/CustomTags/MyHeritage.php:65 app/Gedcom.php:505 app/Gedcom.php:764
+#: app/Gedcom.php:796 app/Gedcom.php:820 app/Gedcom.php:851 app/Gedcom.php:875
+#: app/Gedcom.php:899 app/Gedcom.php:911
 msgid "Record ID number"
 msgstr "记录ID号码"
 
 # I18N: gedcom tag RFN
-#: app/Gedcom.php:742 app/Gedcom.php:877
+#: app/Gedcom.php:763 app/Gedcom.php:898
 msgid "Record file number"
 msgstr "记录文件号"
 
@@ -12780,9 +12818,12 @@ msgid "Redlands, California, United States"
 msgstr "雷德兰加利福尼亚"
 
 # I18N: gedcom tag REFN
-#: app/Gedcom.php:480 app/Gedcom.php:733 app/Gedcom.php:773 app/Gedcom.php:797
-#: app/Gedcom.php:828 app/Gedcom.php:848 app/Gedcom.php:929 app/Gedcom.php:963
-#: app/Gedcom.php:976 app/Gedcom.php:985 app/Gedcom.php:993 app/Gedcom.php:1002
+#: app/CustomTags/Gedcom7.php:94 app/CustomTags/Gedcom7.php:128
+#: app/CustomTags/Gedcom7.php:141 app/CustomTags/Gedcom7.php:150
+#: app/CustomTags/Gedcom7.php:158 app/CustomTags/Gedcom7.php:167
+#: app/CustomTags/ProGen.php:53 app/CustomTags/ProGen.php:54
+#: app/CustomTags/ProGen.php:55 app/Gedcom.php:501 app/Gedcom.php:754
+#: app/Gedcom.php:794 app/Gedcom.php:818 app/Gedcom.php:849 app/Gedcom.php:869
 msgid "Reference number"
 msgstr "参考编码"
 
@@ -12792,7 +12833,7 @@ msgstr "参考编码"
 msgid "Regina, Saskatchewan, Canada"
 msgstr "里贾纳，萨斯喀彻温省，加拿大"
 
-#: app/Elements/MarriageType.php:64 app/Gedcom.php:1018
+#: app/CustomTags/Aldfaer.php:62 app/Elements/MarriageType.php:64
 #: resources/xml/reports/fact_sources.xml:205
 msgid "Registered partnership"
 msgstr "注册合作伙伴"
@@ -12845,17 +12886,17 @@ msgid "Related individuals"
 msgstr "相关个人报告"
 
 # I18N: gedcom tag RELA
-#: app/Gedcom.php:590 app/Gedcom.php:1286 app/Gedcom.php:1299
-#: app/Gedcom.php:1340 app/Gedcom.php:1789 app/Gedcom.php:1878
-#: app/Gedcom.php:1892 app/Module/BranchesListModule.php:398
-#: app/Module/BranchesListModule.php:436
+#: app/CustomTags/GedcomL.php:121 app/CustomTags/GedcomL.php:134
+#: app/CustomTags/GedcomL.php:175 app/CustomTags/PhpGedView.php:64
+#: app/Gedcom.php:611 app/Gedcom.php:931 app/Gedcom.php:945
+#: app/Module/BranchesListModule.php:398 app/Module/BranchesListModule.php:436
 #: resources/views/fact-association-structure.phtml:85
 msgid "Relationship"
 msgstr "关系"
 
 # I18N: gedcom tag _FREL
-#: app/Gedcom.php:1088 app/Gedcom.php:1181 app/Gedcom.php:1234
-#: app/Gedcom.php:1629
+#: app/CustomTags/BrothersKeeper.php:61 app/CustomTags/FamilyTreeMaker.php:53
+#: app/CustomTags/FamilyTreeMaker.php:106 app/CustomTags/Legacy.php:61
 msgid "Relationship to father"
 msgstr "和父亲的关系"
 
@@ -12864,13 +12905,13 @@ msgid "Relationship to me"
 msgstr "与我的关系"
 
 # I18N: gedcom tag _MREL
-#: app/Gedcom.php:1089 app/Gedcom.php:1182 app/Gedcom.php:1236
-#: app/Gedcom.php:1630
+#: app/CustomTags/BrothersKeeper.php:62 app/CustomTags/FamilyTreeMaker.php:54
+#: app/CustomTags/FamilyTreeMaker.php:108 app/CustomTags/Legacy.php:62
 msgid "Relationship to mother"
 msgstr "和母亲的的关系"
 
 # I18N: gedcom tag PEDI
-#: app/Gedcom.php:666
+#: app/Gedcom.php:687
 msgid "Relationship to parents"
 msgstr "和父母的关系"
 
@@ -12897,22 +12938,19 @@ msgstr "关系图"
 msgid "Relationships between %1$s and %2$s"
 msgstr "%1$s 和 %2$s 的关系"
 
-#: app/Gedcom.php:1533 app/Gedcom.php:1565
-msgid "Reliability of the information"
-msgstr ""
-
 # I18N: gedcom tag RELI
-#: app/Gedcom.php:435 app/Gedcom.php:567 app/Gedcom.php:735 app/Gedcom.php:1413
-#: app/Gedcom.php:1429 resources/xml/reports/missing_facts_report.xml:26
+#: app/CustomTags/GedcomL.php:252 app/CustomTags/GedcomL.php:268
+#: app/Gedcom.php:456 app/Gedcom.php:588 app/Gedcom.php:756
+#: resources/xml/reports/missing_facts_report.xml:26
 #: resources/xml/reports/missing_facts_report.xml:587
 msgid "Religion"
 msgstr "宗教信仰"
 
-#: app/Gedcom.php:728
+#: app/Gedcom.php:749
 msgid "Religious institution"
 msgstr "宗教机构"
 
-#: app/Elements/MarriageType.php:65 app/Gedcom.php:1019
+#: app/CustomTags/Aldfaer.php:63 app/Elements/MarriageType.php:65
 #: resources/xml/reports/fact_sources.xml:199
 msgid "Religious marriage"
 msgstr "宗教婚姻"
@@ -12921,7 +12959,8 @@ msgstr "宗教婚姻"
 msgid "Reload map"
 msgstr "重新加载地图"
 
-#: app/Gedcom.php:1312 app/Gedcom.php:1368 app/Gedcom.php:1709
+#: app/CustomTags/GedcomL.php:147 app/CustomTags/GedcomL.php:203
+#: app/CustomTags/Legacy.php:141
 msgid "Reminder date"
 msgstr "提醒日期"
 
@@ -12930,7 +12969,7 @@ msgid "Reminder email frequency (days)"
 msgstr "提醒邮件频率(天)"
 
 # I18N: gedcom tag SERV
-#: app/Gedcom.php:1803
+#: app/CustomTags/PhpGedView.php:78
 msgid "Remote server"
 msgstr "远程服务器"
 
@@ -13005,7 +13044,7 @@ msgid "Report"
 msgstr "报告"
 
 #. I18N: ''GEDCOM tag _RPT_PHRS
-#: app/Gedcom.php:1634 app/Gedcom.php:1635
+#: app/CustomTags/Legacy.php:66 app/CustomTags/Legacy.php:67
 msgid "Report phrase"
 msgstr ""
 
@@ -13038,8 +13077,9 @@ msgid "Repositories"
 msgstr "存储库"
 
 # I18N: gedcom tag REPO
-#: app/Gedcom.php:810 app/Gedcom.php:850 app/Gedcom.php:1306
-#: app/Gedcom.php:1362 app/Http/RequestHandlers/CheckTree.php:356
+#: app/CustomTags/GedcomL.php:141 app/CustomTags/GedcomL.php:197
+#: app/Gedcom.php:831 app/Gedcom.php:871
+#: app/Http/RequestHandlers/CheckTree.php:356
 #: resources/views/admin/trees-privacy.phtml:167
 #: resources/views/admin/trees.phtml:240
 #: resources/views/modals/source-fields.phtml:44
@@ -13076,16 +13116,17 @@ msgid "Research"
 msgstr "研究"
 
 # I18N: gedcom tag _TODO
-#: app/Gedcom.php:1096 app/Gedcom.php:1135 app/Gedcom.php:1301
-#: app/Gedcom.php:1357 app/Gedcom.php:1704 app/Module/ResearchTaskModule.php:64
-#: app/Module/ResearchTaskModule.php:67
+#: app/CustomTags/BrothersKeeper.php:69 app/CustomTags/BrothersKeeper.php:108
+#: app/CustomTags/GedcomL.php:136 app/CustomTags/GedcomL.php:192
+#: app/CustomTags/Legacy.php:136 app/Module/ResearchTaskModule.php:62
+#: app/Module/ResearchTaskModule.php:65
 #: resources/views/modules/todo/research-tasks.phtml:36
 msgid "Research task"
 msgstr "考证任务"
 
 # I18N: Name of a module. Tasks that need further research.
 #. I18N: Name of a module. Tasks that need further research.
-#: app/Module/ResearchTaskModule.php:209
+#: app/Module/ResearchTaskModule.php:207
 msgid "Research tasks"
 msgstr "考证任务"
 
@@ -13098,7 +13139,7 @@ msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”. Other 
 msgstr "考证任务存储使用自定义GEDCOM 标记 “_TODO”。其他应用程序可能无法识别这个谱系标记。"
 
 # I18N: gedcom tag RESI
-#: app/Gedcom.php:736
+#: app/Gedcom.php:757
 msgid "Residence"
 msgstr "居住地"
 
@@ -13114,10 +13155,10 @@ msgstr "直系亲属限制"
 
 # I18N: gedcom tag RESN
 #. I18N: a restriction on viewing data
-#: app/Gedcom.php:436 app/Gedcom.php:483 app/Gedcom.php:568 app/Gedcom.php:739
-#: app/Gedcom.php:1414 app/Gedcom.php:1809 app/Gedcom.php:1904
-#: app/Gedcom.php:1906 app/Gedcom.php:1908 app/Gedcom.php:1910
-#: app/Gedcom.php:1912 app/Gedcom.php:1914
+#: app/CustomTags/GedcomL.php:253 app/CustomTags/PhpGedView.php:84
+#: app/Gedcom.php:457 app/Gedcom.php:504 app/Gedcom.php:589 app/Gedcom.php:760
+#: app/Gedcom.php:957 app/Gedcom.php:959 app/Gedcom.php:961 app/Gedcom.php:963
+#: app/Gedcom.php:965 app/Gedcom.php:967
 #: app/Http/RequestHandlers/HelpText.php:256
 #: resources/views/modals/restriction-fields.phtml:9
 msgid "Restriction"
@@ -13132,7 +13173,7 @@ msgid "Results"
 msgstr "结果"
 
 # I18N: gedcom tag RETI
-#: app/Gedcom.php:740
+#: app/Gedcom.php:761
 msgid "Retirement"
 msgstr "退休"
 
@@ -13148,12 +13189,13 @@ msgid "Rexburg, Idaho, United States"
 msgstr "雷克斯堡, 爱达荷州, 美国"
 
 # I18N: gedcom tag ROLE
-#: app/Gedcom.php:442 app/Gedcom.php:496 app/Gedcom.php:574 app/Gedcom.php:685
-#: app/Gedcom.php:757 app/Gedcom.php:781 app/Gedcom.php:805 app/Gedcom.php:909
-#: app/Gedcom.php:921 app/Gedcom.php:935 app/Gedcom.php:949 app/Gedcom.php:1292
-#: app/Gedcom.php:1346 app/Gedcom.php:1435 app/Gedcom.php:1468
-#: app/Gedcom.php:1884 app/Gedcom.php:1898
-#: resources/views/admin/users-edit.phtml:287
+#: app/CustomTags/Gedcom7.php:74 app/CustomTags/Gedcom7.php:86
+#: app/CustomTags/Gedcom7.php:100 app/CustomTags/Gedcom7.php:114
+#: app/CustomTags/GedcomL.php:127 app/CustomTags/GedcomL.php:181
+#: app/CustomTags/GedcomL.php:274 app/CustomTags/GedcomL.php:307
+#: app/Gedcom.php:463 app/Gedcom.php:517 app/Gedcom.php:595 app/Gedcom.php:706
+#: app/Gedcom.php:778 app/Gedcom.php:802 app/Gedcom.php:826 app/Gedcom.php:937
+#: app/Gedcom.php:951 resources/views/admin/users-edit.phtml:287
 msgid "Role"
 msgstr "角色"
 
@@ -13168,15 +13210,15 @@ msgstr "罗马尼亚"
 msgid "Romanized"
 msgstr "罗马化"
 
-#: app/Gedcom.php:704
+#: app/Gedcom.php:725
 msgid "Romanized name"
 msgstr "罗马化姓名"
 
-#: app/Gedcom.php:433 app/Gedcom.php:565 app/Gedcom.php:1399
+#: app/CustomTags/GedcomL.php:249 app/Gedcom.php:454 app/Gedcom.php:586
 msgid "Romanized place"
 msgstr "罗马的地方"
 
-#: app/Gedcom.php:713
+#: app/Gedcom.php:734
 msgid "Romanized type"
 msgstr "罗马化类型"
 
@@ -13185,7 +13227,7 @@ msgstr "罗马化类型"
 msgid "Roots"
 msgstr "未录入父母的"
 
-#: app/Gedcom.php:1354 app/Gedcom.php:1583
+#: app/CustomTags/GedcomL.php:189
 msgid "Rufname"
 msgstr "点名"
 
@@ -13388,11 +13430,11 @@ msgstr "星期六"
 msgid "Saudi Arabia"
 msgstr "沙特阿拉伯"
 
-#: app/Gedcom.php:1200 app/Gedcom.php:1318
+#: app/CustomTags/FamilyTreeMaker.php:72 app/CustomTags/GedcomL.php:153
 msgid "Schema"
 msgstr "架构"
 
-#: app/Gedcom.php:649 app/Gedcom.php:673
+#: app/Gedcom.php:670 app/Gedcom.php:694
 msgid "School or college"
 msgstr "学校或学院"
 
@@ -13403,7 +13445,7 @@ msgid "Scotland"
 msgstr "苏格兰"
 
 # I18N: gedcom tag _SCBK
-#: app/Gedcom.php:1714
+#: app/CustomTags/Legacy.php:146
 msgid "Scrapbook"
 msgstr "剪贴簿"
 
@@ -13671,11 +13713,11 @@ msgid "Sep"
 msgstr "九月"
 
 # I18N: gedcom tag _SEPR
-#: app/Gedcom.php:1095
+#: app/CustomTags/BrothersKeeper.php:68
 msgid "Separated"
 msgstr "分离"
 
-#: app/Gedcom.php:1199
+#: app/CustomTags/FamilyTreeMaker.php:71
 msgid "Separation"
 msgstr "分居"
 
@@ -13848,9 +13890,11 @@ msgstr ""
 msgid "Share the anniversary of an event"
 msgstr ""
 
-#: app/Elements/NoteStructure.php:121 app/Fact.php:452 app/Gedcom.php:766
-#: app/Gedcom.php:917 app/Gedcom.php:931 app/Gedcom.php:943 app/Gedcom.php:965
-#: app/Gedcom.php:970 app/Gedcom.php:978 app/Gedcom.php:995 app/Gedcom.php:1004
+#: app/CustomTags/Gedcom7.php:82 app/CustomTags/Gedcom7.php:96
+#: app/CustomTags/Gedcom7.php:108 app/CustomTags/Gedcom7.php:130
+#: app/CustomTags/Gedcom7.php:135 app/CustomTags/Gedcom7.php:143
+#: app/CustomTags/Gedcom7.php:160 app/CustomTags/Gedcom7.php:169
+#: app/Elements/NoteStructure.php:125 app/Fact.php:452 app/Gedcom.php:787
 #: resources/views/admin/trees.phtml:257
 #: resources/views/edit/shared-note.phtml:21
 #: resources/views/modules/notes/tab.phtml:63
@@ -14401,7 +14445,7 @@ msgstr "注销"
 msgid "Sign-in and registration"
 msgstr "登录和注册"
 
-#: app/Gedcom.php:1605
+#: app/CustomTags/Heredis.php:52
 msgid "Signature"
 msgstr ""
 
@@ -14422,7 +14466,8 @@ msgstr "姐妹"
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
-#: app/Gedcom.php:1743 resources/views/modules/google-analytics/form.phtml:9
+#: app/CustomTags/MyHeritage.php:61
+#: resources/views/modules/google-analytics/form.phtml:9
 #: resources/views/modules/matomo-analytics/form.phtml:9
 #: resources/views/modules/statcounter/form.phtml:9
 msgid "Site identification code"
@@ -14538,7 +14583,7 @@ msgid "Snowflake, Arizona, United States"
 msgstr "斯诺弗莱克,亚利桑那州"
 
 # I18N: gedcom tag SSN
-#: app/Gedcom.php:762
+#: app/Gedcom.php:783
 msgid "Social security number"
 msgstr "社会安全号码"
 
@@ -14595,7 +14640,8 @@ msgstr "儿子"
 msgid "Son of %s"
 msgstr "%s 的儿子"
 
-#: app/Gedcom.php:914 app/Gedcom.php:940 app/Gedcom.php:1860
+#: app/CustomTags/Gedcom7.php:79 app/CustomTags/Gedcom7.php:105
+#: app/CustomTags/TheMasterGenealogist.php:52
 msgid "Sort date"
 msgstr ""
 
@@ -14619,7 +14665,7 @@ msgstr ""
 msgid "Sort order"
 msgstr "排列顺序"
 
-#: app/Gedcom.php:916 app/Gedcom.php:942
+#: app/CustomTags/Gedcom7.php:81 app/CustomTags/Gedcom7.php:107
 msgid "Sort time"
 msgstr ""
 
@@ -14640,9 +14686,10 @@ msgstr "听起来像"
 # I18N: gedcom tag SOUR
 # I18N: Name of a module/report
 #. I18N: Name of a module/report
-#: app/Gedcom.php:832 app/Gedcom.php:1426 app/Gedcom.php:1430
-#: app/Gedcom.php:1442 app/Gedcom.php:1446 app/Gedcom.php:1450
-#: app/Gedcom.php:1456 app/Gedcom.php:1462
+#: app/CustomTags/GedcomL.php:265 app/CustomTags/GedcomL.php:269
+#: app/CustomTags/GedcomL.php:281 app/CustomTags/GedcomL.php:285
+#: app/CustomTags/GedcomL.php:289 app/CustomTags/GedcomL.php:295
+#: app/CustomTags/GedcomL.php:301 app/Gedcom.php:853
 #: app/Http/RequestHandlers/CheckTree.php:357
 #: app/Module/FactSourcesReportModule.php:44
 #: resources/views/admin/trees-privacy.phtml:166
@@ -14676,10 +14723,11 @@ msgstr "听起来像"
 msgid "Source"
 msgstr "信息来源"
 
-#: app/Gedcom.php:437 app/Gedcom.php:491 app/Gedcom.php:569 app/Gedcom.php:680
-#: app/Gedcom.php:696 app/Gedcom.php:710 app/Gedcom.php:752 app/Gedcom.php:776
-#: app/Gedcom.php:800 app/Gedcom.php:1287 app/Gedcom.php:1341
-#: app/Gedcom.php:1415 app/Gedcom.php:1879 app/Gedcom.php:1893
+#: app/CustomTags/GedcomL.php:122 app/CustomTags/GedcomL.php:176
+#: app/CustomTags/GedcomL.php:254 app/Gedcom.php:458 app/Gedcom.php:512
+#: app/Gedcom.php:590 app/Gedcom.php:701 app/Gedcom.php:717 app/Gedcom.php:731
+#: app/Gedcom.php:773 app/Gedcom.php:797 app/Gedcom.php:821 app/Gedcom.php:932
+#: app/Gedcom.php:946
 msgid "Source citation"
 msgstr "来源引用"
 
@@ -14844,8 +14892,9 @@ msgid "Statcounter™"
 msgstr "Statcounter™"
 
 # I18N: gedcom tag STAE
-#: app/Gedcom.php:414 app/Gedcom.php:527 app/Gedcom.php:547 app/Gedcom.php:818
-#: app/Gedcom.php:865 app/Gedcom.php:1411 app/Gedcom.php:1767
+#: app/CustomTags/GedcomL.php:232 app/CustomTags/PersonalAncestralFile.php:73
+#: app/Gedcom.php:435 app/Gedcom.php:548 app/Gedcom.php:568 app/Gedcom.php:839
+#: app/Gedcom.php:886
 msgid "State"
 msgstr "状态"
 
@@ -14862,16 +14911,17 @@ msgid "Statistics"
 msgstr "统计表"
 
 # I18N: gedcom tag STAT
-#: app/Gedcom.php:488 app/Gedcom.php:594 app/Gedcom.php:636 app/Gedcom.php:656
-#: app/Gedcom.php:667 app/Gedcom.php:749 app/Gedcom.php:959 app/Gedcom.php:1307
-#: app/Gedcom.php:1363 app/Gedcom.php:1631 app/Gedcom.php:1636
+#: app/CustomTags/Gedcom7.php:124 app/CustomTags/GedcomL.php:142
+#: app/CustomTags/GedcomL.php:198 app/CustomTags/Legacy.php:63
+#: app/CustomTags/Legacy.php:68 app/Gedcom.php:509 app/Gedcom.php:615
+#: app/Gedcom.php:657 app/Gedcom.php:677 app/Gedcom.php:688 app/Gedcom.php:770
 #: resources/views/admin/changes-log.phtml:53
 #: resources/views/admin/changes-log.phtml:135
 msgid "Status"
 msgstr "状态"
 
-#: app/Gedcom.php:489 app/Gedcom.php:595 app/Gedcom.php:637 app/Gedcom.php:657
-#: app/Gedcom.php:750
+#: app/Gedcom.php:510 app/Gedcom.php:616 app/Gedcom.php:658 app/Gedcom.php:678
+#: app/Gedcom.php:771
 msgid "Status change date"
 msgstr "状态更改日期"
 
@@ -14914,10 +14964,6 @@ msgstr "传记"
 msgid "Story title"
 msgstr "传记标题"
 
-#: app/Gedcom.php:1520 app/Gedcom.php:1552
-msgid "Street name"
-msgstr ""
-
 #: resources/views/admin/broadcast.phtml:43
 #: resources/views/admin/email-page.phtml:48
 #: resources/views/contact-page.phtml:58 resources/views/message-page.phtml:46
@@ -14926,7 +14972,7 @@ msgid "Subject"
 msgstr "主题"
 
 # I18N: gedcom tag SUBN
-#: app/Gedcom.php:538 app/Gedcom.php:880
+#: app/Gedcom.php:559 app/Gedcom.php:901
 #: app/Http/RequestHandlers/CheckTree.php:358 app/Submission.php:44
 #: app/Submission.php:45 app/Submission.php:46
 msgid "Submission"
@@ -14943,8 +14989,8 @@ msgid "Submitted but not yet cleared"
 msgstr "提交但尚未清理"
 
 # I18N: gedcom tag SUBM
-#: app/Gedcom.php:501 app/Gedcom.php:537 app/Gedcom.php:763 app/Gedcom.php:857
-#: app/Gedcom.php:891 app/Http/RequestHandlers/CheckTree.php:359
+#: app/Gedcom.php:522 app/Gedcom.php:558 app/Gedcom.php:784 app/Gedcom.php:878
+#: app/Gedcom.php:912 app/Http/RequestHandlers/CheckTree.php:359
 #: resources/views/admin/trees.phtml:265
 #: resources/views/modals/submission-fields.phtml:14
 #: resources/views/modules/recent_changes/changes-table.phtml:74
@@ -15005,7 +15051,7 @@ msgid "Suriname"
 msgstr "苏里南"
 
 # I18N: gedcom tag SURN
-#: app/Gedcom.php:698 app/Gedcom.php:712 app/Gedcom.php:715
+#: app/Gedcom.php:719 app/Gedcom.php:733 app/Gedcom.php:736
 #: app/Http/RequestHandlers/HelpText.php:241
 #: resources/views/branches-page.phtml:25
 #: resources/views/lists/families-table.phtml:220
@@ -15030,7 +15076,7 @@ msgid "Surname option"
 msgstr "姓氏选项"
 
 # I18N: gedcom tag SPFX
-#: app/Gedcom.php:697 app/Gedcom.php:711 app/Gedcom.php:714
+#: app/Gedcom.php:718 app/Gedcom.php:732 app/Gedcom.php:735
 msgid "Surname prefix"
 msgstr "姓氏前缀"
 
@@ -15221,14 +15267,18 @@ msgstr "技术支持联系方式"
 msgid "Tegucigalpa, Honduras"
 msgstr "特古西加尔巴,洪都拉斯"
 
+#: app/CustomTags/RootsMagic.php:55
+msgid "Template"
+msgstr ""
+
 #: resources/views/modules/html/config.phtml:27
 msgid "Templates"
 msgstr "模板"
 
 # I18N: gedcom tag TEMP
 #. I18N: https://en.wikipedia.org/wiki/Temple_(LDS_Church)
-#: app/Gedcom.php:490 app/Gedcom.php:596 app/Gedcom.php:638 app/Gedcom.php:658
-#: app/Gedcom.php:751 app/Gedcom.php:892 app/Gedcom.php:962
+#: app/CustomTags/Gedcom7.php:127 app/Gedcom.php:511 app/Gedcom.php:617
+#: app/Gedcom.php:659 app/Gedcom.php:679 app/Gedcom.php:772 app/Gedcom.php:913
 #: resources/xml/reports/individual_report.xml:208
 msgid "Temple"
 msgstr "寺庙"
@@ -15262,16 +15312,17 @@ msgid "Tevet"
 msgstr "第四月"
 
 # I18N: gedcom tag TEXT
-#: app/Gedcom.php:440 app/Gedcom.php:494 app/Gedcom.php:572 app/Gedcom.php:683
-#: app/Gedcom.php:755 app/Gedcom.php:779 app/Gedcom.php:803 app/Gedcom.php:855
-#: app/Gedcom.php:1290 app/Gedcom.php:1344 app/Gedcom.php:1433
-#: app/Gedcom.php:1466 app/Gedcom.php:1844 app/Gedcom.php:1882
-#: app/Gedcom.php:1896 resources/views/admin/trees-preferences.phtml:576
+#: app/CustomTags/GedcomL.php:125 app/CustomTags/GedcomL.php:179
+#: app/CustomTags/GedcomL.php:272 app/CustomTags/GedcomL.php:305
+#: app/CustomTags/RootsMagic.php:75 app/Gedcom.php:461 app/Gedcom.php:515
+#: app/Gedcom.php:593 app/Gedcom.php:704 app/Gedcom.php:776 app/Gedcom.php:800
+#: app/Gedcom.php:824 app/Gedcom.php:876 app/Gedcom.php:935 app/Gedcom.php:949
+#: resources/views/admin/trees-preferences.phtml:576
 #: resources/views/modals/source-fields.phtml:58
 msgid "Text"
 msgstr "文本内容"
 
-#: app/Gedcom.php:1739
+#: app/CustomTags/MyHeritage.php:57
 msgid "Text direction"
 msgstr ""
 
@@ -15471,7 +15522,7 @@ msgstr "文件只是部分上传,请重新上传。"
 # I18N: %s is a filename
 #. I18N: %s is a filename
 #: resources/views/media-page-details.phtml:56
-#: resources/views/modules/media-list/page.phtml:147
+#: resources/views/modules/media-list/page.phtml:146
 #, php-format
 msgid "The file “%s” does not exist."
 msgstr "文件“%s”不存在。"
@@ -15755,7 +15806,7 @@ msgstr "已达到服务器的访问限制。"
 msgid "The size of the family tree, earliest and latest events, common names, etc."
 msgstr "家谱的大小，最早、最新事件，常见的姓名等。"
 
-#: app/Gedcom.php:1302 app/Gedcom.php:1358
+#: app/CustomTags/GedcomL.php:137 app/CustomTags/GedcomL.php:193
 msgid "The solution"
 msgstr "解决办法"
 
@@ -15892,7 +15943,7 @@ msgstr "这有个人没有注释说明。"
 msgid "There are no pending changes."
 msgstr "没有待定的更改。"
 
-#: app/Module/ResearchTaskModule.php:131
+#: app/Module/ResearchTaskModule.php:129
 msgid "There are no research tasks in this family tree."
 msgstr "这个家庭里没有考证任务。"
 
@@ -16099,13 +16150,13 @@ msgstr "在浏览图表和报告时，默认显示这个人的数据。"
 #: resources/views/statistics/families/top10-list-grand.phtml:27
 #: resources/views/statistics/families/top10-list-spouses.phtml:25
 #: resources/views/statistics/families/top10-list.phtml:27
-#: resources/views/statistics/individuals/top10-list.phtml:25
+#: resources/views/statistics/individuals/top10-list.phtml:26
 #: resources/views/statistics/other/charts/column.phtml:19
 #: resources/views/statistics/other/charts/combo.phtml:18
 #: resources/views/statistics/other/charts/custom.phtml:17
 #: resources/views/statistics/other/charts/geo.phtml:21
 #: resources/views/statistics/other/charts/pie.phtml:19
-#: resources/views/statistics/other/top10-list.phtml:26
+#: resources/views/statistics/other/top10-list.phtml:25
 msgid "This information is not available."
 msgstr "没有可用的升级的信息。"
 
@@ -16425,7 +16476,8 @@ msgstr "从%s删除所有的家谱资料并用另一个GEDCOM取代它的数据�
 msgid "Thu"
 msgstr "星期四"
 
-#: app/Gedcom.php:1800 resources/views/admin/webtrees1-thumbnails.phtml:39
+#: app/CustomTags/PhpGedView.php:75
+#: resources/views/admin/webtrees1-thumbnails.phtml:39
 msgid "Thumbnail image"
 msgstr "缩略图"
 
@@ -16445,11 +16497,13 @@ msgid "Tijuana, Mexico"
 msgstr "蒂华纳,墨西哥"
 
 # I18N: gedcom tag TIME
-#: app/Gedcom.php:508 app/Gedcom.php:911 app/Gedcom.php:937
+#: app/CustomTags/Gedcom7.php:76 app/CustomTags/Gedcom7.php:102
+#: app/Gedcom.php:529
 msgid "Time"
 msgstr "时间"
 
-#: app/Gedcom.php:951 app/Gedcom.php:1027
+#: app/CustomTags/Aldfaer.php:71 app/CustomTags/Gedcom7.php:116
+#: app/CustomTags/ProGen.php:56
 msgid "Time of birth"
 msgstr ""
 
@@ -16457,23 +16511,25 @@ msgstr ""
 msgid "Time of birth and time of death"
 msgstr ""
 
-#: app/Gedcom.php:955 app/Gedcom.php:1030 app/Gedcom.php:1482
+#: app/CustomTags/Aldfaer.php:74 app/CustomTags/Gedcom7.php:120
+#: app/CustomTags/Geneatique.php:55
 msgid "Time of death"
 msgstr ""
 
-#: app/Gedcom.php:455 app/Gedcom.php:622 app/Gedcom.php:769 app/Gedcom.php:790
-#: app/Gedcom.php:821 app/Gedcom.php:837 app/Gedcom.php:868 app/Gedcom.php:884
-#: app/Gedcom.php:1387
+#: app/CustomTags/GedcomL.php:222 app/Gedcom.php:476 app/Gedcom.php:643
+#: app/Gedcom.php:790 app/Gedcom.php:811 app/Gedcom.php:842 app/Gedcom.php:858
+#: app/Gedcom.php:889 app/Gedcom.php:905
 msgid "Time of last change"
 msgstr "最后更改的时间"
 
-#: app/Gedcom.php:961
+#: app/CustomTags/Gedcom7.php:126
 msgid "Time of status change"
 msgstr ""
 
 # I18N: A configuration setting
 #. I18N: A configuration setting
-#: app/Gedcom.php:1738 resources/views/admin/site-preferences.phtml:48
+#: app/CustomTags/MyHeritage.php:56
+#: resources/views/admin/site-preferences.phtml:48
 #: resources/views/admin/users-edit.phtml:135
 #: resources/views/edit-account-page.phtml:109
 msgid "Time zone"
@@ -16558,8 +16614,8 @@ msgid "Tishrei"
 msgstr "第一月"
 
 # I18N: gedcom tag TITL
-#: app/Gedcom.php:764 app/Gedcom.php:795 app/Gedcom.php:856 app/Gedcom.php:1484
-#: resources/views/admin/fix-level-0-media.phtml:36
+#: app/CustomTags/Geneatique.php:57 app/Gedcom.php:785 app/Gedcom.php:816
+#: app/Gedcom.php:877 resources/views/admin/fix-level-0-media.phtml:36
 #: resources/views/lists/media-table.phtml:78
 #: resources/views/lists/notes-table.phtml:89
 #: resources/views/lists/sources-table.phtml:94
@@ -16844,7 +16900,7 @@ msgid "Tracking and analytics"
 msgstr "跟踪和分析"
 
 # I18N: gedcom tag TRLR
-#: app/Gedcom.php:893
+#: app/Gedcom.php:914
 msgid "Trailer"
 msgstr "拖车"
 
@@ -16925,13 +16981,17 @@ msgid "Twin Falls, Idaho, United States"
 msgstr "双子瀑布, 爱达荷州, 美国"
 
 # I18N: gedcom tag TYPE
-#: app/Gedcom.php:427 app/Gedcom.php:434 app/Gedcom.php:447 app/Gedcom.php:559
-#: app/Gedcom.php:566 app/Gedcom.php:579 app/Gedcom.php:913 app/Gedcom.php:927
-#: app/Gedcom.php:930 app/Gedcom.php:939 app/Gedcom.php:957 app/Gedcom.php:964
-#: app/Gedcom.php:975 app/Gedcom.php:977 app/Gedcom.php:984 app/Gedcom.php:986
-#: app/Gedcom.php:992 app/Gedcom.php:994 app/Gedcom.php:1001
-#: app/Gedcom.php:1003 app/Gedcom.php:1393 app/Gedcom.php:1400
-#: app/Gedcom.php:1716 app/Gedcom.php:1805
+#: app/CustomTags/Gedcom7.php:78 app/CustomTags/Gedcom7.php:92
+#: app/CustomTags/Gedcom7.php:95 app/CustomTags/Gedcom7.php:104
+#: app/CustomTags/Gedcom7.php:122 app/CustomTags/Gedcom7.php:129
+#: app/CustomTags/Gedcom7.php:140 app/CustomTags/Gedcom7.php:142
+#: app/CustomTags/Gedcom7.php:149 app/CustomTags/Gedcom7.php:151
+#: app/CustomTags/Gedcom7.php:157 app/CustomTags/Gedcom7.php:159
+#: app/CustomTags/Gedcom7.php:166 app/CustomTags/Gedcom7.php:168
+#: app/CustomTags/GedcomL.php:243 app/CustomTags/GedcomL.php:250
+#: app/CustomTags/Legacy.php:148 app/CustomTags/PhpGedView.php:80
+#: app/Gedcom.php:448 app/Gedcom.php:455 app/Gedcom.php:468 app/Gedcom.php:580
+#: app/Gedcom.php:587 app/Gedcom.php:600
 #: app/Statistics/Google/ChartFamilyLargest.php:89
 #: app/Statistics/Google/ChartFamilyWithSources.php:64
 #: app/Statistics/Google/ChartIndividualWithSources.php:64
@@ -16945,48 +17005,48 @@ msgstr "双子瀑布, 爱达荷州, 美国"
 msgid "Type"
 msgstr "类型"
 
-#: app/Gedcom.php:1423
+#: app/CustomTags/GedcomL.php:262
 msgid "Type of abbreviation"
 msgstr "缩写类型"
 
-#: app/Gedcom.php:1447
+#: app/CustomTags/GedcomL.php:286
 msgid "Type of administrative ID"
 msgstr "管理ID的类型"
 
-#: app/Gedcom.php:1451
+#: app/CustomTags/GedcomL.php:290
 msgid "Type of demographic data"
 msgstr "人口统计数据的类型"
 
-#: app/Gedcom.php:465 app/Gedcom.php:662 app/Gedcom.php:1402
+#: app/CustomTags/GedcomL.php:255 app/Gedcom.php:486 app/Gedcom.php:683
 msgid "Type of event"
 msgstr "事件类型"
 
-#: app/Gedcom.php:664 app/Gedcom.php:1875
+#: app/Gedcom.php:685 app/Gedcom.php:928
 msgid "Type of fact"
 msgstr "事实类型"
 
-#: app/Gedcom.php:675
+#: app/Gedcom.php:696
 msgid "Type of identification number"
 msgstr "识别号的类型"
 
-#: app/Gedcom.php:1440
+#: app/CustomTags/GedcomL.php:279
 msgid "Type of location"
 msgstr "地点类型"
 
-#: app/Gedcom.php:475
+#: app/Gedcom.php:496
 msgid "Type of marriage"
 msgstr "婚姻类型"
 
-#: app/Gedcom.php:716
+#: app/Gedcom.php:737
 msgid "Type of name"
 msgstr "姓名类型"
 
-#: app/Gedcom.php:481 app/Gedcom.php:734 app/Gedcom.php:774 app/Gedcom.php:798
-#: app/Gedcom.php:829 app/Gedcom.php:849
+#: app/Gedcom.php:502 app/Gedcom.php:755 app/Gedcom.php:795 app/Gedcom.php:819
+#: app/Gedcom.php:850 app/Gedcom.php:870
 msgid "Type of reference number"
 msgstr "参考号的类型"
 
-#: app/Gedcom.php:1308 app/Gedcom.php:1364
+#: app/CustomTags/GedcomL.php:143 app/CustomTags/GedcomL.php:199
 msgid "Type of research task"
 msgstr "研究任务类型"
 
@@ -16995,11 +17055,12 @@ msgstr "研究任务类型"
 # I18N: gedcom tag _URL
 # I18N: A configuration setting
 #. I18N: A configuration setting
-#: app/Gedcom.php:450 app/Gedcom.php:531 app/Gedcom.php:580 app/Gedcom.php:831
-#: app/Gedcom.php:879 app/Gedcom.php:1026 app/Gedcom.php:1075
-#: app/Gedcom.php:1316 app/Gedcom.php:1711 app/Gedcom.php:1772
-#: app/Gedcom.php:1804 app/Gedcom.php:1845
-#: app/Http/RequestHandlers/CreateRepositoryModal.php:51
+#: app/CustomTags/Aldfaer.php:70 app/CustomTags/Ancestry.php:76
+#: app/CustomTags/GedcomL.php:151 app/CustomTags/GedcomL.php:256
+#: app/CustomTags/Legacy.php:143 app/CustomTags/PersonalAncestralFile.php:78
+#: app/CustomTags/PhpGedView.php:79 app/CustomTags/RootsMagic.php:76
+#: app/Gedcom.php:471 app/Gedcom.php:552 app/Gedcom.php:601 app/Gedcom.php:852
+#: app/Gedcom.php:900 app/Http/RequestHandlers/CreateRepositoryModal.php:51
 #: resources/views/admin/trees-create.phtml:31
 #: resources/views/admin/trees-preferences.phtml:68
 #: resources/views/modals/media-file-fields.phtml:97
@@ -17047,21 +17108,29 @@ msgid "Uncleared: insufficient data"
 msgstr "未清理:数据不足"
 
 # I18N: gedcom tag _UID
-#: app/Gedcom.php:918 app/Gedcom.php:932 app/Gedcom.php:944 app/Gedcom.php:966
-#: app/Gedcom.php:979 app/Gedcom.php:987 app/Gedcom.php:996 app/Gedcom.php:1005
-#: app/Gedcom.php:1313 app/Gedcom.php:1369 app/Gedcom.php:1370
-#: app/Gedcom.php:1372 app/Gedcom.php:1374 app/Gedcom.php:1375
-#: app/Gedcom.php:1382 app/Gedcom.php:1383 app/Gedcom.php:1463
-#: app/Gedcom.php:1550 app/Gedcom.php:1586 app/Gedcom.php:1588
-#: app/Gedcom.php:1590 app/Gedcom.php:1592 app/Gedcom.php:1595
-#: app/Gedcom.php:1648 app/Gedcom.php:1710 app/Gedcom.php:1717
-#: app/Gedcom.php:1718 app/Gedcom.php:1726 app/Gedcom.php:1736
-#: app/Gedcom.php:1741 app/Gedcom.php:1742 app/Gedcom.php:1745
-#: app/Gedcom.php:1757 app/Gedcom.php:1773 app/Gedcom.php:1774
-#: app/Gedcom.php:1775 app/Gedcom.php:1776 app/Gedcom.php:1820
-#: app/Gedcom.php:1827 app/Gedcom.php:1828 app/Gedcom.php:1829
-#: app/Gedcom.php:1830 app/Gedcom.php:1840 app/Gedcom.php:1842
-#: app/Gedcom.php:1846 app/Gedcom.php:1847 app/Gedcom.php:1850
+#: app/CustomTags/Gedcom7.php:83 app/CustomTags/Gedcom7.php:97
+#: app/CustomTags/Gedcom7.php:109 app/CustomTags/Gedcom7.php:131
+#: app/CustomTags/Gedcom7.php:144 app/CustomTags/Gedcom7.php:152
+#: app/CustomTags/Gedcom7.php:161 app/CustomTags/Gedcom7.php:170
+#: app/CustomTags/GedcomL.php:148 app/CustomTags/GedcomL.php:204
+#: app/CustomTags/GedcomL.php:205 app/CustomTags/GedcomL.php:207
+#: app/CustomTags/GedcomL.php:209 app/CustomTags/GedcomL.php:210
+#: app/CustomTags/GedcomL.php:217 app/CustomTags/GedcomL.php:218
+#: app/CustomTags/GedcomL.php:302 app/CustomTags/Legacy.php:80
+#: app/CustomTags/Legacy.php:142 app/CustomTags/Legacy.php:149
+#: app/CustomTags/Legacy.php:150 app/CustomTags/Legacy.php:158
+#: app/CustomTags/MyHeritage.php:54 app/CustomTags/MyHeritage.php:59
+#: app/CustomTags/MyHeritage.php:60 app/CustomTags/MyHeritage.php:64
+#: app/CustomTags/PersonalAncestralFile.php:63
+#: app/CustomTags/PersonalAncestralFile.php:79
+#: app/CustomTags/PersonalAncestralFile.php:80
+#: app/CustomTags/PersonalAncestralFile.php:81
+#: app/CustomTags/PersonalAncestralFile.php:82 app/CustomTags/Reunion.php:54
+#: app/CustomTags/Reunion.php:61 app/CustomTags/Reunion.php:62
+#: app/CustomTags/Reunion.php:63 app/CustomTags/Reunion.php:64
+#: app/CustomTags/RootsMagic.php:63 app/CustomTags/RootsMagic.php:73
+#: app/CustomTags/RootsMagic.php:77 app/CustomTags/RootsMagic.php:78
+#: app/CustomTags/RootsMagic.php:81
 msgid "Unique identifier"
 msgstr "全局唯一标识符"
 
@@ -17091,7 +17160,7 @@ msgstr "美国"
 
 # I18N: Name of a country or state
 #. I18N: Name of a country or state
-#: app/Elements/FamilyStatusText.php:73 app/Gedcom.php:1266
+#: app/CustomTags/FamilyTreeMaker.php:138 app/Elements/FamilyStatusText.php:73
 #: app/GedcomRecord.php:739 app/GedcomRecord.php:744
 #: app/Statistics/Google/ChartSex.php:72
 #: app/Statistics/Service/CountryService.php:38
@@ -17162,7 +17231,7 @@ msgid "Update the higher-level parts of place names, while keeping the lower-lev
 msgstr "更新地名的级别较高部分，同时保留级别较低部分。"
 
 #. I18N: GEDCOM tag _UPD
-#: app/Gedcom.php:1161 app/Gedcom.php:1747
+#: app/CustomTags/FamilyTreeBuilder.php:55 app/CustomTags/MyHeritage.php:66
 msgid "Updated at"
 msgstr ""
 
@@ -17279,7 +17348,7 @@ msgstr ""
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site. You can also use this to enter any other comments you may have for the site administrator."
 msgstr "请在这里输入你与本网站上家谱的关系。您也可以使用此输入你可能对网站管理员有其他意见。"
 
-#: app/Module/ResearchTaskModule.php:66 app/Module/ResearchTaskModule.php:69
+#: app/Module/ResearchTaskModule.php:64 app/Module/ResearchTaskModule.php:67
 #: resources/views/admin/changes-log.phtml:83
 #: resources/views/admin/changes-log.phtml:138
 #: resources/views/admin/site-logs.phtml:74
@@ -17446,8 +17515,9 @@ msgstr "第六月"
 msgid "Veracruz, Mexico"
 msgstr "韦拉克鲁斯州，墨西哥"
 
-#: app/Gedcom.php:1625 app/Gedcom.php:1627 app/Gedcom.php:1689
-#: app/Gedcom.php:1691 app/Gedcom.php:1694 resources/views/admin/users.phtml:34
+#: app/CustomTags/Legacy.php:57 app/CustomTags/Legacy.php:59
+#: app/CustomTags/Legacy.php:121 app/CustomTags/Legacy.php:123
+#: app/CustomTags/Legacy.php:126 resources/views/admin/users.phtml:34
 msgid "Verified"
 msgstr "验证"
 
@@ -17458,7 +17528,8 @@ msgid "Vernal, Utah, United States"
 msgstr "韦纳尔，犹他州"
 
 # I18N: gedcom tag VERS
-#: app/Gedcom.php:505 app/Gedcom.php:513 app/Gedcom.php:536 app/Gedcom.php:1315
+#: app/CustomTags/GedcomL.php:150 app/Gedcom.php:526 app/Gedcom.php:534
+#: app/Gedcom.php:557
 msgid "Version"
 msgstr "版本"
 
@@ -17617,7 +17688,7 @@ msgid "Wednesday"
 msgstr "星期三"
 
 # I18N: gedcom tag _WEIG
-#: app/Gedcom.php:1029 app/Gedcom.php:1136
+#: app/CustomTags/Aldfaer.php:73 app/CustomTags/BrothersKeeper.php:109
 msgid "Weight"
 msgstr "体重"
 
@@ -17709,7 +17780,7 @@ msgid "Widower"
 msgstr "鳏夫"
 
 # I18N: gedcom tag WIFE
-#: app/Gedcom.php:448 app/Gedcom.php:502
+#: app/Gedcom.php:469 app/Gedcom.php:523
 #: app/Http/RequestHandlers/LinkSpouseToIndividualPage.php:77
 #: resources/views/edit/change-family-members.phtml:32
 #: resources/views/edit/change-family-members.phtml:47
@@ -17726,12 +17797,12 @@ msgstr "鳏夫"
 msgid "Wife"
 msgstr "妻子"
 
-#: app/Gedcom.php:449 resources/views/modules/timeline-chart/chart.phtml:353
+#: app/Gedcom.php:470 resources/views/modules/timeline-chart/chart.phtml:353
 msgid "Wife’s age"
 msgstr "妻子的年龄"
 
 # I18N: gedcom tag WILL
-#: app/Gedcom.php:765
+#: app/Gedcom.php:786
 msgid "Will"
 msgstr "遗书"
 
@@ -17756,8 +17827,7 @@ msgstr "没有来源"
 msgid "Witness"
 msgstr "见证"
 
-#: app/Gedcom.php:1297 app/Gedcom.php:1351 app/Gedcom.php:1542
-#: app/Gedcom.php:1574
+#: app/CustomTags/GedcomL.php:132 app/CustomTags/GedcomL.php:186
 msgid "Witnesses"
 msgstr ""
 
@@ -17778,7 +17848,8 @@ msgid "World"
 msgstr "世界"
 
 # I18N: gedcom tag _YART - A yahrzeit is a special anniversary of death in the Hebrew faith/calendar.
-#: app/Gedcom.php:1137 resources/views/modules/yahrzeit/table.phtml:34
+#: app/CustomTags/BrothersKeeper.php:110
+#: resources/views/modules/yahrzeit/table.phtml:34
 msgid "Yahrzeit"
 msgstr "逝世周年纪念"
 
@@ -18323,7 +18394,7 @@ msgstr "计算出 %s"
 #: resources/views/edit/new-individual.phtml:53
 #: resources/views/edit/raw-gedcom-fact.phtml:45
 #: resources/views/edit/raw-gedcom-record.phtml:73
-#: resources/views/edit/reorder-children.phtml:48
+#: resources/views/edit/reorder-children.phtml:50
 #: resources/views/edit/reorder-families.phtml:102
 #: resources/views/edit/reorder-media-files.phtml:42
 #: resources/views/edit/reorder-media.phtml:41
@@ -21332,7 +21403,7 @@ msgstr "向右"
 #: resources/views/edit/new-individual.phtml:43
 #: resources/views/edit/raw-gedcom-fact.phtml:41
 #: resources/views/edit/raw-gedcom-record.phtml:69
-#: resources/views/edit/reorder-children.phtml:38
+#: resources/views/edit/reorder-children.phtml:40
 #: resources/views/edit/reorder-families.phtml:97
 #: resources/views/edit/reorder-media-files.phtml:37
 #: resources/views/edit/reorder-media.phtml:36
@@ -21758,7 +21829,7 @@ msgstr "按日期排序"
 
 # I18N: A button label.
 #. I18N: A button label.
-#: resources/views/edit/reorder-children.phtml:43
+#: resources/views/edit/reorder-children.phtml:45
 #: resources/xml/reports/bdm_report.xml:11
 #: resources/xml/reports/birth_report.xml:9
 #: resources/xml/reports/change_report.xml:7
