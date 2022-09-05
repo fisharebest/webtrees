@@ -1,21 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-09-05 13:38+0100\n"
-"PO-Revision-Date: 2022-09-05 12:36+0000\n"
-"Last-Translator: TheDutchJewel <thedutchjewel@gmail.com>\n"
-"Language-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+msgstr "Project-Id-Version: webtrees\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-09-05 13:38+0100\nPO-Revision-Date: 2022-09-05 19:50+0000\nLast-Translator: TheDutchJewel <thedutchjewel@gmail.com>\nLanguage-Team: Dutch <https://translate.webtrees.net/projects/webtrees/webtrees/nl/>\nLanguage: nl\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-SourceCharset: utf-8\nX-Poedit-Basepath: ..\nX-Poedit-KeywordsList: translate;noop;plural:1,2\nX-Poedit-SearchPath-0: .\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -5318,12 +5302,12 @@ msgstr "Dhu al-Qi'dah"
 #: app/Elements/LdsEndowmentDateStatus.php:66
 #: app/Elements/LdsOrdinanceStatus.php:65
 msgid "Died as a child: exempt"
-msgstr "Gestorven als kind: vrijgesteld"
+msgstr "Overleden als kind: vrijgesteld"
 
 #. I18N: LDS sealing status; see https://en.wikipedia.org/wiki/Sealing_(Mormonism)
 #: app/Elements/LdsOrdinanceStatus.php:75
 msgid "Died less than 1 year old, sealing not required."
-msgstr ""
+msgstr "Overleden minder dan 1 jaar oud, verzegeling niet vereist."
 
 #: resources/xml/reports/change_report.xml:60
 msgid "Differences"
@@ -6401,19 +6385,19 @@ msgstr "Vrouwen"
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:56
 msgid "Field"
-msgstr ""
+msgstr "Veld"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:57 app/CustomTags/RootsMagic.php:61
 #: app/CustomTags/RootsMagic.php:66 app/CustomTags/RootsMagic.php:70
 msgid "Field name"
-msgstr ""
+msgstr "Veldnaam"
 
 #. I18N: Data entry field
 #: app/CustomTags/RootsMagic.php:58 app/CustomTags/RootsMagic.php:62
 #: app/CustomTags/RootsMagic.php:67 app/CustomTags/RootsMagic.php:71
 msgid "Field value"
-msgstr ""
+msgstr "Veldwaarde"
 
 #. I18N: Name of a country or state
 #: app/Statistics/Service/CountryService.php:187
@@ -11156,7 +11140,7 @@ msgstr "Foto"
 
 #: app/CustomTags/MyHeritage.php:63
 msgid "Photograph"
-msgstr ""
+msgstr "Foto"
 
 #: app/CustomTags/Gedcom7.php:73 app/CustomTags/Gedcom7.php:75
 #: app/CustomTags/Gedcom7.php:80 app/CustomTags/Gedcom7.php:85
@@ -13112,11 +13096,11 @@ msgstr "Toon overleden personen, of paren waarvan beide partners zijn overleden.
 
 #: resources/views/lists/individuals-table.phtml:203
 msgid "Show individuals who died more than 100 years ago."
-msgstr "Toon personen, meer dan 100 jaar geleden gestorven."
+msgstr "Toon personen die meer dan 100 jaar geleden zijn overleden."
 
 #: resources/views/lists/individuals-table.phtml:208
 msgid "Show individuals who died within the last 100 years."
-msgstr "Toon personen, gestorven in de laatste 100 jaar."
+msgstr "Toon personen die in de laatste 100 jaar zijn overleden."
 
 #. I18N: A configuration setting
 #: resources/views/admin/site-preferences.phtml:96
@@ -14136,7 +14120,7 @@ msgstr "Tegucigalpa, Honduras"
 
 #: app/CustomTags/RootsMagic.php:55
 msgid "Template"
-msgstr ""
+msgstr "Sjabloon"
 
 #: resources/views/modules/html/config.phtml:27
 msgid "Templates"
@@ -16953,7 +16937,7 @@ msgstr "geboortenaam"
 #: resources/views/admin/trees-privacy.phtml:106
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "geboren in de laatste %1$s jaar of gestorven in de laatste %2$s jaar"
+msgstr "geboren in de laatste %1$s jaar of overleden in de laatste %2$s jaar"
 
 #: app/Services/RelationshipService.php:451
 msgid "brother"
