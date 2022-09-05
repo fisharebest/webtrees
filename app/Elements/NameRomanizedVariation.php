@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\Tree;
 
+use function e;
 use function view;
 
 /**
@@ -47,6 +48,24 @@ class NameRomanizedVariation extends NamePersonal
     ];
 
     /**
+     * Convert a value to a canonical form.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    public function canonical(string $value): string
+    {
+        $value = parent::canonical($value);
+
+        if ($value === '//') {
+            return '';
+        }
+
+        return $value;
+    }
+
+    /**
      * Should we collapse the children of this element when editing?
      *
      * @return bool
@@ -70,7 +89,9 @@ class NameRomanizedVariation extends NamePersonal
     {
         return
             '<div class="input-group">' .
-            parent::edit($id, $name, $value, $tree) .
+            view('edit/input-addon-edit-name', ['id' => $id]) .
+            '<input class="form-control" type="text" id="' . e($id) . '" name="' . e($name) . '" value="' . e($value) . '" readonly="readonly" />' .
+            view('edit/input-addon-keyboard', ['id' => $id]) .
             view('edit/input-addon-help', ['topic' => 'ROMN']) .
             '</div>';
     }
