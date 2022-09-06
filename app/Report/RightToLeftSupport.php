@@ -307,10 +307,10 @@ class RightToLeftSupport
                             $openParDirection[$closeParIndex] = '';
                             break;
                         }
+                        self::$waitingText .= $currentLetter;
+                        $workingText       = substr($workingText, $currentLen);
                         if ($openParIndex !== false) {
                             // Opening parentheses always inherit the following directionality
-                            self::$waitingText .= $currentLetter;
-                            $workingText       = substr($workingText, $currentLen);
                             while (true) {
                                 if ($workingText === '') {
                                     break;
@@ -340,8 +340,6 @@ class RightToLeftSupport
                         //
                         // Exceptions to this rule will be handled later during final clean-up.
                         //
-                        self::$waitingText .= $currentLetter;
-                        $workingText       = substr($workingText, $currentLen);
                         if (self::$currentState !== '') {
                             $result            .= self::$waitingText;
                             self::$waitingText = '';
