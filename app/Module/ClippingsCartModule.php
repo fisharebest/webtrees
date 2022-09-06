@@ -259,7 +259,6 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface
      * @param ServerRequestInterface $request
      *
      * @return ResponseInterface
-     * @throws FilesystemException
      */
     public function postDownloadAction(ServerRequestInterface $request): ResponseInterface
     {
