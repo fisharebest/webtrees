@@ -60,21 +60,15 @@ class BaseUrl implements MiddlewareInterface
             $request     = $request->withAttribute('base_url', $base_url);
             $base_path   = parse_url($base_url, PHP_URL_PATH) ?? '';
             $request_url = $request_url->withPath($base_path);
-
-            $request = $request->withUri($request_url);
         } else {
             // Update the request URL from the base URL.
             $base_scheme = parse_url($base_url, PHP_URL_SCHEME) ?? 'http';
             $base_host   = parse_url($base_url, PHP_URL_HOST) ?? 'localhost';
             $base_port   = parse_url($base_url, PHP_URL_PORT);
-
-            $request_url = $request_url
-                ->withScheme($base_scheme)
-                ->withHost($base_host)
-                ->withPort($base_port);
-
-            $request = $request->withUri($request_url);
+            $request_url = $request_url->withScheme($base_scheme)->withHost($base_host)->withPort($base_port);
         }
+
+        $request = $request->withUri($request_url);
 
         return $handler->handle($request);
     }

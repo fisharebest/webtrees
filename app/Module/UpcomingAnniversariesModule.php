@@ -176,18 +176,15 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
                 } else {
                     $message = I18N::translate('No events exist for tomorrow.');
                 }
-
-                $content = view('modules/upcoming_events/empty', ['message' => $message]);
             } else {
                 if ($filter && Auth::check()) {
-                    /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */
                     $message = I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
                 } else {
-                    /* I18N: translation for %s==1 is unused; it is translated separately as “tomorrow” */
                     $message = I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd - $startjd + 1, I18N::number($endjd - $startjd + 1));
                 }
-                $content = view('modules/upcoming_events/empty', ['message' => $message]);
             }
+
+            $content = view('modules/upcoming_events/empty', ['message' => $message]);
         } elseif ($infoStyle === 'list') {
             $content = view('lists/anniversaries-list', [
                 'id'         => $block_id,

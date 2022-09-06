@@ -276,11 +276,10 @@ class ReportPdfTextBox extends ReportBaseTextbox
                 } else {
                     $renderer->tcpdf->setLeftMargin($cX + $cM['cell']);
                 }
-                $renderer->tcpdf->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
             } else {
                 $renderer->tcpdf->setLeftMargin($cX);
-                $renderer->tcpdf->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
             }
+            $renderer->tcpdf->setRightMargin($renderer->getRemainingWidthPDF() - $cW + $cM['right']);
         } elseif ($this->padding) {
             if (is_array($cM['cell'])) {
                 $renderer->tcpdf->setRightMargin($cX + $cM['padding_right']);

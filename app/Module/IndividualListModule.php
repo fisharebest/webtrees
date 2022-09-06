@@ -225,9 +225,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         // Make sure selections are consistent.
         // i.e. can’t specify show_all and surname at the same time.
         if ($show_all === 'yes') {
+            $alpha   = '';
+            $surname = '';
+
             if ($show_all_firstnames === 'yes') {
-                $alpha   = '';
-                $surname = '';
                 $legend  = I18N::translate('All');
                 $params  = [
                     'tree'     => $tree->name(),
@@ -235,8 +236,6 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 ];
                 $show    = 'indi';
             } elseif ($falpha !== '') {
-                $alpha   = '';
-                $surname = '';
                 $legend  = I18N::translate('All') . ', ' . e($falpha) . '…';
                 $params  = [
                     'tree'     => $tree->name(),
@@ -244,8 +243,6 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 ];
                 $show    = 'indi';
             } else {
-                $alpha   = '';
-                $surname = '';
                 $legend  = I18N::translate('All');
                 $show    = $params['show'] ?? 'surn';
                 $params  = [

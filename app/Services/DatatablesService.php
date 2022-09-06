@@ -94,13 +94,11 @@ class DatatablesService
         }
 
         // Paginating
-        if ($length > 0) {
-            $recordsFiltered = $collection->count();
+        $recordsFiltered = $collection->count();
 
+        if ($length > 0) {
             $data = $collection->slice($start, $length);
         } else {
-            $recordsFiltered = $collection->count();
-
             $data = $collection;
         }
 
