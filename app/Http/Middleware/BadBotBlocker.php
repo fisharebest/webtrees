@@ -103,11 +103,12 @@ class BadBotBlocker implements MiddlewareInterface
      *
      * @see https://help.baidu.com/question?prod_id=99&class=0&id=3001
      * @see https://napoveda.seznam.cz/en/full-text-search/seznambot-crawler
+     * @see https://www.ionos.de/terms-gtc/faq-crawler
      */
     private const ROBOT_REV_ONLY_DNS = [
         'Baiduspider' => ['.baidu.com', '.baidu.jp'],
         'FreshBot'    => ['.seznam.cz'],
-        'Seznam'      => ['.seznam.cz'],
+        'IonCrawl'    => ['.1und1.org'],
     ];
 
     /**
