@@ -426,7 +426,7 @@ parameters:
 			path: app/Http/Middleware/BaseUrl.php
 
 		-
-			message: "#^Parameter \\#1 \\$port of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPort\\(\\) expects int\\|null, int\\|false\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$port of method Psr\\\\Http\\\\Message\\\\UriInterface\\:\\:withPort\\(\\) expects int\\|null, int\\<0, 65535\\>\\|false\\|null given\\.$#"
 			count: 1
 			path: app/Http/Middleware/BaseUrl.php
 
@@ -861,32 +861,12 @@ parameters:
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
-			message: "#^Offset int\\<\\-3, max\\> does not exist on array\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: "#^Offset int\\<\\-4, max\\> does not exist on array\\|null\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string\\|null, string\\|false given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
 		-
-			message: "#^Parameter \\#1 \\$input of function array_slice expects array, array\\|null given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
 			message: "#^Parameter \\#1 \\$json of function json_decode expects string, string\\|false given\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/MapDataImportAction.php
-
-		-
-			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, array\\|null given\\.$#"
 			count: 1
 			path: app/Http/RequestHandlers/MapDataImportAction.php
 
@@ -1002,7 +982,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method push\\(\\) on mixed\\.$#"
-			count: 3
+			count: 2
 			path: app/Http/RequestHandlers/SetupWizard.php
 
 		-
@@ -1166,7 +1146,7 @@ parameters:
 			path: app/Individual.php
 
 		-
-			message: "#^Binary operation \"\\.\" between non\\-empty\\-string and array\\|string results in an error\\.$#"
+			message: "#^Binary operation \"\\.\" between non\\-falsy\\-string and array\\|string results in an error\\.$#"
 			count: 1
 			path: app/Individual.php
 
@@ -2221,7 +2201,7 @@ parameters:
 			path: app/Report/ReportParserGenerate.php
 
 		-
-			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\{\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), non\\-empty\\-string\\} given\\.$#"
+			message: "#^Parameter \\#1 \\$function of function call_user_func expects callable\\(\\)\\: mixed, array\\{\\$this\\(Fisharebest\\\\Webtrees\\\\Report\\\\ReportParserGenerate\\), non\\-falsy\\-string\\} given\\.$#"
 			count: 2
 			path: app/Report/ReportParserGenerate.php
 
@@ -2372,6 +2352,11 @@ parameters:
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float, 0\\|2, int\\<0, max\\>\\}\\.$#"
+			count: 1
+			path: app/Report/ReportPdfText.php
+
+		-
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Report\\\\ReportPdfText\\:\\:getWidth\\(\\) should return array\\{float, int, float\\} but returns array\\{array\\<float\\>\\|float\\|int, 1, int\\<0, max\\>\\}\\.$#"
 			count: 1
 			path: app/Report/ReportPdfText.php
 
