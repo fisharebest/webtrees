@@ -28,6 +28,7 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 use League\Flysystem\StorageAttributes;
 
 use function basename;
+use function count;
 use function dirname;
 use function file_put_contents;
 use function glob;

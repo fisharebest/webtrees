@@ -56,6 +56,7 @@ use function array_shift;
 use function array_slice;
 use function array_walk;
 use function arsort;
+use function assert;
 use function e;
 use function explode;
 use function implode;

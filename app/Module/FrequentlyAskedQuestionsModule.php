@@ -32,6 +32,7 @@ use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function in_array;
 use function redirect;
 use function route;
 

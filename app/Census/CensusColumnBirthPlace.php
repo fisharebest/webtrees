@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Census;
 
 use Fisharebest\Webtrees\Individual;
 
+use function strlen;
+
 /**
  * The individual's birth place.
  */

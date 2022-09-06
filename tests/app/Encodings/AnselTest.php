@@ -25,11 +25,13 @@ use Normalizer;
 use PHPUnit\Framework\TestCase;
 
 use function bin2hex;
+use function count;
 use function ctype_alpha;
 use function dechex;
 use function in_array;
 use function preg_split;
 use function range;
+use function strlen;
 
 use const PREG_SPLIT_NO_EMPTY;
 

@@ -27,6 +27,9 @@ use Fisharebest\Webtrees\Http\RequestHandlers\IndividualPage;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 
+use function array_key_exists;
+use function count;
+use function in_array;
 use function preg_match;
 
 /**

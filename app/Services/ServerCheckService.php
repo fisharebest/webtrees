@@ -137,13 +137,13 @@ class ServerCheckService
      */
     private function checkPhpIni(string $varname, bool $expected): string
     {
-        $ini_get = (bool) ini_get($varname);
+        $actual = (bool) ini_get($varname);
 
-        if ($expected && $ini_get !== $expected) {
+        if ($expected && !$actual) {
             return I18N::translate('The PHP.INI setting “%1$s” is disabled.', $varname);
         }
 
-        if (!$expected && $ini_get !== $expected) {
+        if (!$expected && $actual) {
             return I18N::translate('The PHP.INI setting “%1$s” is enabled.', $varname);
         }
 

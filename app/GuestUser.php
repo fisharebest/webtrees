@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Contracts\UserInterface;
 
+use function is_string;
+
 /**
  * A site visitor.
  */

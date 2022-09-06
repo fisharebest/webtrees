@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 
-use function implode;
 use function str_contains;
 
 use const PHP_INT_MAX;

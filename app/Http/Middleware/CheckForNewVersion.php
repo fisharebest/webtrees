@@ -20,19 +20,11 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Http\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\EmailService;
 use Fisharebest\Webtrees\Services\UpgradeService;
-use Fisharebest\Webtrees\Services\UserService;
-use Fisharebest\Webtrees\Site;
-use Fisharebest\Webtrees\SiteUser;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Throwable;
-
-use function view;
 
 /**
  * Middleware to check if a new version of webtrees is available.

@@ -19,6 +19,10 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees;
 
+use function array_slice;
+use function count;
+use function strlen;
+
 /**
  * Phonetic matching of strings.
  */

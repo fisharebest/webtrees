@@ -27,6 +27,8 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function count;
+
 /**
  * Class TopPageViewsModule
  */

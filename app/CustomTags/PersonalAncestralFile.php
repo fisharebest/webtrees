@@ -31,7 +31,6 @@ use Fisharebest\Webtrees\Elements\AddressLine2;
 use Fisharebest\Webtrees\Elements\AddressPostalCode;
 use Fisharebest\Webtrees\Elements\AddressState;
 use Fisharebest\Webtrees\Elements\CustomElement;
-use Fisharebest\Webtrees\Elements\FamilySearchFamilyTreeId;
 use Fisharebest\Webtrees\Elements\NamePersonal;
 use Fisharebest\Webtrees\Elements\PafUid;
 use Fisharebest\Webtrees\Elements\PhoneNumber;

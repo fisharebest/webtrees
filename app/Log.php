@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees;
 use Illuminate\Database\Capsule\Manager as DB;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
+
 /**
  * Record webtrees events in the database
  */

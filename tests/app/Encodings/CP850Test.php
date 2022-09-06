@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\Encodings\CP850;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use PHPUnit\Framework\TestCase;
 
+use function chr;
 use function iconv;
 
 /**

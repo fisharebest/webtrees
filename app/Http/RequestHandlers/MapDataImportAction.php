@@ -83,8 +83,6 @@ class MapDataImportAction implements RequestHandlerInterface
 
         $url = route(MapDataList::class, ['parent_id' => 0]);
 
-        $fp = false;
-
         try {
             $file_exists = $data_filesystem->fileExists(MapDataService::PLACES_FOLDER . $serverfile);
         } catch (FilesystemException | UnableToCheckFileExistence $ex) {

@@ -21,6 +21,8 @@ namespace Fisharebest\Webtrees\Elements;
 
 use Fisharebest\Webtrees\I18N;
 
+use function is_int;
+
 /**
  * GOV ID, for TYPE_OF_LOCATION
  */

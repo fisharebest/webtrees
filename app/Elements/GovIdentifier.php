@@ -23,7 +23,6 @@ use Fisharebest\Webtrees\Tree;
 
 use function e;
 use function rawurlencode;
-use function strtoupper;
 
 /**
  * A custom field used in _LOC records

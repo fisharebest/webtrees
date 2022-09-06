@@ -24,6 +24,9 @@ use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
+use function is_float;
+use function is_string;
 use function view;
 
 /**

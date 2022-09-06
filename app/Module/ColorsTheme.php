@@ -29,6 +29,7 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function array_key_exists;
 use function assert;
 use function asset;
 use function is_string;

@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Transliterator;
 
 use function extension_loaded;
+use function in_array;
 use function preg_replace;
 use function strip_tags;
 use function trim;

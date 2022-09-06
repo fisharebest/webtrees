@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
 
+use function count;
+
 use const JSON_THROW_ON_ERROR;
 
 /**

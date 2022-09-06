@@ -40,6 +40,7 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 
 use function array_merge;
+use function assert;
 use function in_array;
 use function preg_match_all;
 use function range;
