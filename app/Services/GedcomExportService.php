@@ -332,32 +332,6 @@ class GedcomExportService
     }
 
     /**
-     * Prepend a media path, such as might have been removed during import.
-     *
-     * @param string $gedcom
-     * @param string $media_path
-     *
-     * @return string
-     */
-    private function convertMediaPath(string $gedcom, string $media_path): string
-    {
-        if (preg_match('/^0 @[^@]+@ OBJE/', $gedcom)) {
-            return preg_replace_callback('/\n1 FILE (.+)/', static function (array $match) use ($media_path): string {
-                $filename = $match[1];
-
-                // Don’t modify external links
-                if (!str_contains($filename, '://')) {
-                    $filename = $media_path . $filename;
-                }
-
-                return "\n1 FILE " . $filename;
-            }, $gedcom);
-        }
-
-        return $gedcom;
-    }
-
-    /**
      * Wrap long lines using concatenation records.
      *
      * @param string $gedcom

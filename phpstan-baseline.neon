@@ -2546,11 +2546,6 @@ parameters:
 			path: app/Services/GedcomEditService.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Services\\\\GedcomExportService\\:\\:convertMediaPath\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: app/Services/GedcomExportService.php
-
-		-
 			message: "#^Parameter \\#1 \\$fp of function stream_get_meta_data expects resource, resource\\|false given\\.$#"
 			count: 1
 			path: app/Services/GedcomExportService.php
