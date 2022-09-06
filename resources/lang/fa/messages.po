@@ -1,19 +1,5 @@
 msgid ""
-msgstr ""
-"Project-Id-Version: webtrees 1.0\n"
-"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2022-09-05 13:38+0100\n"
-"PO-Revision-Date: 2022-08-13 13:17+0000\n"
-"Last-Translator: bijan borjian borujeni <borjian1344@yahoo.com>\n"
-"Language-Team: Persian <https://translate.webtrees.net/projects/webtrees/webtrees/fa/>\n"
-"Language: fa\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
-"X-Poedit-Language: Persian\n"
-"X-Poedit-SourceCharset: utf-8\n"
+msgstr "Project-Id-Version: webtrees 1.0\nReport-Msgid-Bugs-To: i18n@webtrees.net\nPOT-Creation-Date: 2022-09-05 13:38+0100\nPO-Revision-Date: 2022-09-06 10:59+0000\nLast-Translator: Greg Roach <greg@subaqua.co.uk>\nLanguage-Team: Persian <https://translate.webtrees.net/projects/webtrees/webtrees/fa/>\nLanguage: fa\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 3.9.1\nX-Poedit-Language: Persian\nX-Poedit-SourceCharset: utf-8\n"
 
 #: resources/xml/reports/ahnentafel_report.xml:161
 #: resources/xml/reports/ahnentafel_report.xml:189
@@ -13439,7 +13425,7 @@ msgstr "نقشه سایت"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. https://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: resources/views/modules/sitemap/config.phtml:23
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling. All major search engines support sitemaps. For more information, see <a href=\"https://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "نقشه سایت راهی برای وب مسترها است که صفحات موجود در وب سایت را که برای خزیدن در دسترس هستند به موتورهای جستجومعرفی کنند. همه موتورهای جستجوگر اصلی از نقشه های سایت پشتیبانی می کنند. برای اطلاعات بیشتر ، به <a href=\"http://www.sitemaps.org/ \"> www.sitemaps.org </a> مراجعه کنید."
+msgstr "نقشه سایت راهی برای وب مسترها است که صفحات موجود در وب سایت را که برای خزیدن در دسترس هستند به موتورهای جستجومعرفی کنند. همه موتورهای جستجوگر اصلی از نقشه های سایت پشتیبانی می کنند. برای اطلاعات بیشتر ، به <a href=\"https://www.sitemaps.org/ \"> www.sitemaps.org </a> مراجعه کنید."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:211
