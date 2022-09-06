@@ -509,13 +509,13 @@ class Auth
         throw new HttpAccessDeniedException($message);
     }
 
-    /*
+    /**
      * @param Submitter|null $submitter
      * @param bool           $edit
      *
      * @return Submitter
-     * @throws HttpFoundException
-     * @throws HttpDeniedException
+     * @throws HttpNotFoundException
+     * @throws HttpAccessDeniedException
      */
     public static function checkSubmitterAccess(?Submitter $submitter, bool $edit = false): Submitter
     {
@@ -538,7 +538,7 @@ class Auth
         throw new HttpAccessDeniedException($message);
     }
 
-    /*
+    /**
      * @param Submission|null $submission
      * @param bool            $edit
      *
