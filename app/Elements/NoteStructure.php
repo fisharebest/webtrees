@@ -19,17 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Factories\MarkdownFactory;
 use Fisharebest\Webtrees\Gedcom;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 
 use function e;
-use function explode;
 use function preg_match;
 use function strip_tags;
 use function substr_count;

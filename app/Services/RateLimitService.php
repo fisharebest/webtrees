@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Site;
 use LogicException;
 
 use function array_filter;
+use function count;
 use function explode;
 use function intdiv;
 use function strlen;

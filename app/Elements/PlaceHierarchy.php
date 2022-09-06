@@ -20,7 +20,6 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Elements;
 
 use function preg_replace;
-use function strtoupper;
 use function trim;
 
 /**

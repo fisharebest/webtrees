@@ -19,15 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Contracts;
 
-use Fisharebest\Webtrees\SurnameTradition\DefaultSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\IcelandicSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\LithuanianSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\MatrilinealSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\PaternalSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\PatrilinealSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\PolishSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\PortugueseSurnameTradition;
-use Fisharebest\Webtrees\SurnameTradition\SpanishSurnameTradition;
 use Fisharebest\Webtrees\SurnameTradition\SurnameTraditionInterface;
 
 /**

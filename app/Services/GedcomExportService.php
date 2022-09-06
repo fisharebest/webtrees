@@ -51,6 +51,7 @@ use function explode;
 use function fclose;
 use function fopen;
 use function fwrite;
+use function is_string;
 use function pathinfo;
 use function preg_match_all;
 use function rewind;

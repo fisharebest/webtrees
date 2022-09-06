@@ -52,7 +52,6 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Illuminate\Support\Collection;
-use League\Flysystem\FilesystemException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -62,6 +61,7 @@ use function array_keys;
 use function array_map;
 use function array_search;
 use function assert;
+use function count;
 use function date;
 use function extension_loaded;
 use function in_array;

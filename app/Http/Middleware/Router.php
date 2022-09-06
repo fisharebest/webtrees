@@ -37,7 +37,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 use function app;
 use function implode;
-use function response;
 use function str_contains;
 
 /**

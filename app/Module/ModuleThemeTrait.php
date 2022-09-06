@@ -43,11 +43,12 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
-use PhpParser\Node\Expr\AssignOp\Mod;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
 use function assert;
+use function count;
+use function in_array;
 use function route;
 use function view;
 

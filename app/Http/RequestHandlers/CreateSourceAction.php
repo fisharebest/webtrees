@@ -26,6 +26,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
+use function in_array;
+
 /**
  * Process a form to create a new source.
  */

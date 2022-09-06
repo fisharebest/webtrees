@@ -25,6 +25,7 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Str;
 
 use function app;
+use function assert;
 use function view;
 
 /**

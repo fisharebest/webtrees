@@ -37,7 +37,7 @@ class MarkdownFactoryTest extends TestCase
         $factory  = new MarkdownFactory();
 
         static::assertSame(
-            "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>",
+            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->autolink('FOO https://example.com BAR')
         );
     }
@@ -52,7 +52,7 @@ class MarkdownFactoryTest extends TestCase
         $tree    = $this->createStub(Tree::class);
 
         static::assertSame(
-            "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>",
+            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->autolink('FOO https://example.com BAR', $tree)
         );
     }
@@ -66,7 +66,7 @@ class MarkdownFactoryTest extends TestCase
         $factory  = new MarkdownFactory();
 
         static::assertSame(
-            "<p>&lt;b&gt; <a href=\"https://example.com\">https://example.com</a> &lt;/b&gt;</p>",
+            '<p>&lt;b&gt; <a href="https://example.com">https://example.com</a> &lt;/b&gt;</p>',
             $factory->autolink('<b> https://example.com </b>')
         );
     }
@@ -79,12 +79,12 @@ class MarkdownFactoryTest extends TestCase
         $factory = new MarkdownFactory();
 
         static::assertSame(
-            "<p>FOO https://example.com BAR</p>",
+            '<p>FOO https://example.com BAR</p>',
             $factory->markdown('FOO https://example.com BAR')
         );
 
         static::assertSame(
-            "<p>FOO <a href=\"https://example.com\">https://example.com</a> BAR</p>",
+            '<p>FOO <a href="https://example.com">https://example.com</a> BAR</p>',
             $factory->markdown('FOO <https://example.com> BAR')
         );
     }

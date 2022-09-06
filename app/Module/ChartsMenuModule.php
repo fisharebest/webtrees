@@ -27,6 +27,8 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
+use function assert;
+
 /**
  * Class ChartsMenuModule - provide a menu option for the charts
  */

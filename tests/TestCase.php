@@ -229,7 +229,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $tree_service->importGedcomFile($tree, $stream, $gedcom_file, '');
 
         $timeout_service = new TimeoutService();
-        $controller      = new GedcomLoad($gedcom_import_service, $timeout_service, $tree_service);
+        $controller      = new GedcomLoad($gedcom_import_service, $timeout_service);
         $request         = self::createRequest()->withAttribute('tree', $tree);
 
         do {

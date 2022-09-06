@@ -24,6 +24,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\Session;
 use Illuminate\Support\Collection;
 
+use function array_slice;
 use function explode;
 use function is_array;
 

@@ -171,8 +171,8 @@ class MessageService
     public function sendEmail(UserInterface $user): bool
     {
         return in_array($user->getPreference(UserInterface::PREF_CONTACT_METHOD), [
-            MessageService::CONTACT_METHOD_INTERNAL_AND_EMAIL,
-            MessageService::CONTACT_METHOD_EMAIL,
+            self::CONTACT_METHOD_INTERNAL_AND_EMAIL,
+            self::CONTACT_METHOD_EMAIL,
             self::CONTACT_METHOD_MAILTO,
             self::CONTACT_METHOD_NONE,
         ], true);

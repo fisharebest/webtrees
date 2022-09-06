@@ -23,6 +23,8 @@ use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Contracts\UserInterface;
 
+use function function_exists;
+
 /**
  * Test harness for the class EmailService
  *

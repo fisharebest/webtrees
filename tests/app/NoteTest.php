@@ -56,7 +56,7 @@ class NoteTest extends TestCase
     {
         $tree = $this->createStub(Tree::class);
         $text = '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt." "a quote"';
-        $note = new Note('X123', "0 @X123@ NOTE " . $text, null, $tree);
+        $note = new Note('X123', '0 @X123@ NOTE ' . $text, null, $tree);
 
         self::assertSame('<bdi>&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.&quot; &quot;a quot…</bdi>', $note->fullName());
     }

@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 
 use function app;
+use function assert;
 use function e;
 use function preg_replace_callback;
 use function view;

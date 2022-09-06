@@ -235,6 +235,7 @@ class ControlPanel implements RequestHandlerInterface
             })
             ->groupBy(['gedcom.gedcom_id'])
             ->pluck(new Expression('COUNT(change_id) AS aggregate'), 'gedcom.gedcom_id')
+            ->map(static fn (string $count): int => (int) $count)
             ->all();
     }
 
@@ -249,9 +250,7 @@ class ControlPanel implements RequestHandlerInterface
             ->leftJoin('individuals', 'i_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(i_id) AS aggregate'), 'gedcom_id')
-            ->map(static function (string $count) {
-                return (int) $count;
-            });
+            ->map(static fn (string $count): int => (int) $count);
     }
 
     /**
@@ -265,9 +264,7 @@ class ControlPanel implements RequestHandlerInterface
             ->leftJoin('families', 'f_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(f_id) AS aggregate'), 'gedcom_id')
-            ->map(static function (string $count) {
-                return (int) $count;
-            });
+            ->map(static fn (string $count): int => (int) $count);
     }
 
     /**
@@ -281,9 +278,7 @@ class ControlPanel implements RequestHandlerInterface
             ->leftJoin('sources', 's_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(s_id) AS aggregate'), 'gedcom_id')
-            ->map(static function (string $count) {
-                return (int) $count;
-            });
+            ->map(static fn (string $count): int => (int) $count);
     }
 
     /**
@@ -297,9 +292,7 @@ class ControlPanel implements RequestHandlerInterface
             ->leftJoin('media', 'm_file', '=', 'gedcom_id')
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(m_id) AS aggregate'), 'gedcom_id')
-            ->map(static function (string $count) {
-                return (int) $count;
-            });
+            ->map(static fn (string $count): int => (int) $count);
     }
 
     /**
@@ -317,9 +310,7 @@ class ControlPanel implements RequestHandlerInterface
             })
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(o_id) AS aggregate'), 'gedcom_id')
-            ->map(static function (string $count) {
-                return (int) $count;
-            });
+            ->map(static fn (string $count): int => (int) $count);
     }
 
     /**
@@ -337,9 +328,7 @@ class ControlPanel implements RequestHandlerInterface
             })
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(o_id) AS aggregate'), 'gedcom_id')
-            ->map(static function (string $count) {
-                return (int) $count;
-            });
+            ->map(static fn (string $count): int => (int) $count);
     }
 
     /**
@@ -357,8 +346,6 @@ class ControlPanel implements RequestHandlerInterface
             })
             ->groupBy(['gedcom_id'])
             ->pluck(new Expression('COUNT(o_id) AS aggregate'), 'gedcom_id')
-            ->map(static function (string $count) {
-                return (int) $count;
-            });
+            ->map(static fn (string $count): int => (int) $count);
     }
 }

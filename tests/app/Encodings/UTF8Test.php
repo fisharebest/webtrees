@@ -22,6 +22,8 @@ namespace Fisharebest\Webtrees\Tests\Encodings;
 use Fisharebest\Webtrees\Encodings\UTF8;
 use PHPUnit\Framework\TestCase;
 
+use function chr;
+
 /**
  * Tests for class UTF8.
  */

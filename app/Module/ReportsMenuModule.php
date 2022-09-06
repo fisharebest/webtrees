@@ -28,6 +28,7 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function app;
+use function assert;
 
 /**
  * Class ReportsMenuModule - provide a menu option for the reports

@@ -19,17 +19,6 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Elements;
 
-use Fisharebest\Webtrees\Tree;
-use Ramsey\Uuid\Exception\RandomSourceException;
-use Ramsey\Uuid\Uuid;
-
-use function dechex;
-use function hexdec;
-use function strtolower;
-use function strtoupper;
-use function strtr;
-use function substr;
-
 /**
  * EXID:TYPE fields
  */

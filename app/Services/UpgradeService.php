@@ -38,7 +38,6 @@ use League\Flysystem\StorageAttributes;
 use League\Flysystem\UnableToDeleteFile;
 use League\Flysystem\ZipArchive\FilesystemZipArchiveProvider;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use Ramsey\Uuid\Uuid;
 use RuntimeException;
 use ZipArchive;
 
@@ -55,7 +54,6 @@ use function time;
 use function unlink;
 use function version_compare;
 
-use const DIRECTORY_SEPARATOR;
 use const PHP_VERSION;
 
 /**
