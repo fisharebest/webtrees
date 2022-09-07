@@ -532,6 +532,7 @@ class IndividualRepository implements IndividualRepositoryInterface
                 ->orderBy('n_surn')
                 ->get()
                 ->pluck('count', 'n_surn')
+                ->map(static fn (string $count): int => (int) $count)
                 ->all();
         }
 
