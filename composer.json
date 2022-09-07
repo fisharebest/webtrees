@@ -28,7 +28,7 @@
         "process-timeout": 3600
     },
     "require": {
-        "php": "7.4 - 8.1",
+        "php": "7.4 - 8.2",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-exif": "*",
