@@ -283,7 +283,7 @@ class CheckTree implements RequestHandlerInterface
                         $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-inline');
                     } else {
                         $message  = I18N::translate('Invalid GEDCOM value.');
-                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-value-' . $value);
+                        $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-value-' . e($value));
                     }
                 } elseif ($element->canonical($value) !== $value) {
                     $expected = e($element->canonical($value));
@@ -298,14 +298,14 @@ class CheckTree implements RequestHandlerInterface
 
                     if ($mime === Mime::DEFAULT_TYPE) {
                         $message    = I18N::translate('webtrees does not recognise this file format.');
-                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $mime);
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . e($value));
                     } elseif (str_starts_with($mime, 'image/') && !array_key_exists($mime, ImageFactory::SUPPORTED_FORMATS)) {
                         $message    = I18N::translate('webtrees cannot create thumbnails for this file format.');
-                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . $mime);
+                        $warnings[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '-' . e($value));
                     }
                 } elseif ($element instanceof MultimediaFileReference && $value === 'gedcom.ged') {
                     $message  = I18N::translate('This filename is not compatible with the GEDZIP file format.');
-                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '_' . $value);
+                    $errors[] = $this->lineError($tree, $record->type, $record->xref, $line_number, $line, $message, $full_tag . '_' . e($value));
                 }
             }
 
