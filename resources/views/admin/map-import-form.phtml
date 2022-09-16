@@ -6,6 +6,7 @@ use Fisharebest\Webtrees\Http\RequestHandlers\ControlPanel;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataImportAction;
 use Fisharebest\Webtrees\Http\RequestHandlers\MapDataList;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\View;
 
 /**
  * @var array<string> $files
@@ -20,19 +21,29 @@ use Fisharebest\Webtrees\I18N;
 <h3><?= $title ?></h3>
 
 <form method="post" action="<?= e(route(MapDataImportAction::class)) ?>" id="upload_form" enctype="multipart/form-data">
-    <!-- Server file -->
     <div class="row mb-3">
-        <label class="col-form-label col-sm-4" for="serverfile">
+        <label class="col-form-label col-sm-4">
+            <input type="radio" name="source" id="import-client" value="client" checked>
+            <?= I18N::translate('A file on your computer') ?>
+        </label>
+        <div class="col-sm-8">
+            <input id="import-client-file" type="file" name="client_file" class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-form-label col-sm-4">
+            <input type="radio" name="source" id="import-server" value="server">
             <?= I18N::translate('A file on the server') ?>
         </label>
         <div class="col-sm-8">
             <div class="input-group" dir="ltr">
-                <span class="input-group-text">
+                <span class="input-group-text" dir="ltr">
                     <?= e($folder) ?>
                 </span>
 
-                <select id="serverfile" name="serverfile" class="form-select">
-                    <option selected value=""></option>
+                <select name="server_file" class="form-select" dir="ltr" id="import-server-file">
+                    <option selected="selected" value="">&nbsp;</option>
                     <?php foreach ($files as $file) : ?>
                         <option value="<?= e($file) ?>">
                             <?= e($file) ?>
@@ -43,23 +54,13 @@ use Fisharebest\Webtrees\I18N;
         </div>
     </div>
 
-    <!-- local file -->
-    <div class="row mb-3">
-        <label class="col-form-label col-sm-4" for="localfile">
-            <?= I18N::translate('A file on your computer') ?>
-        </label>
-        <div class="col-sm-8">
-            <input id="localfile" type="file" name="localfile" class="form-control">
-        </div>
-    </div>
-
     <!-- Import options -->
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-4">
             <?= I18N::translate('Import') ?>
         </legend>
         <div class="col-sm-8">
-            <?= view('components/select', ['name' => 'import-options', 'selected' => '', 'options' => ['update' => I18N::translate('Only update existing records'), 'add' => I18N::translate('Only add new records'), 'addupdate' => I18N::translate('Add new, and update existing records')]]) ?>
+            <?= view('components/select', ['name' => 'options', 'selected' => '', 'options' => ['update' => I18N::translate('Only update existing records'), 'add' => I18N::translate('Only add new records'), 'addupdate' => I18N::translate('Add new, and update existing records')]]) ?>
         </div>
     </fieldset>
 
@@ -79,3 +80,15 @@ use Fisharebest\Webtrees\I18N;
 
     <?= csrf_field() ?>
 </form>
+
+<?php View::push('javascript') ?>
+<script>
+  document.getElementById('import-client-file').addEventListener('focus', function () {
+    document.getElementById('import-client').checked = true;
+  });
+
+  document.getElementById('import-server-file').addEventListener('focus', function () {
+    document.getElementById('import-server').checked = true;
+  });
+</script>
+<?php View::endpush() ?>

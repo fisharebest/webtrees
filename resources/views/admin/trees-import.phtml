@@ -30,34 +30,34 @@ use Illuminate\Support\Collection;
     <?= /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file.', e($tree->title())) ?>
 </div>
 
-<form method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" class="form form-horizontal" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
+<form method="post" action="<?= e(route(ImportGedcomAction::class, ['tree' => $tree->name()])) ?>" enctype="multipart/form-data" onsubmit="return checkGedcomImportForm('<?= e(I18N::translate('You have selected a GEDCOM file with a different name. Is this correct?')) ?>');">
     <input type="hidden" id="gedcom_filename" value="<?= e($default_gedcom_file) ?>">
 
     <h2><?= I18N::translate('Select a GEDCOM file to import') ?></h2>
 
     <div class="row mb-3">
-        <label class="col-sm-3">
-            <input type="radio" name="source" id="import-computer" value="client" checked>
+        <label class="col-form-label col-sm-4">
+            <input type="radio" name="source" id="import-client" value="client" checked>
             <?= I18N::translate('A file on your computer') ?>
         </label>
-        <div class="col-sm-9">
-            <input type="file" class="form-control" name="tree_name" id="import-computer-file">
+        <div class="col-sm-8">
+            <input id="import-client-file" type="file" name="client_file" class="form-control">
         </div>
     </div>
 
-    <div class="row">
-        <label class="col-sm-3" for="import-server-file">
+    <div class="row mb-3">
+        <label class="col-form-label col-sm-4">
             <input type="radio" name="source" id="import-server" value="server">
             <?= I18N::translate('A file on the server') ?>
         </label>
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <div class="input-group" dir="ltr">
-                        <span class="input-group-text" dir="ltr">
-                            <?= e($data_folder) ?>
-                        </span>
+                <span class="input-group-text" dir="ltr">
+                    <?= e($data_folder) ?>
+                </span>
 
-                <select name="tree_name" class="form-select" dir="ltr" id="import-server-file">
-                    <option value="">&nbsp;</option>
+                <select name="server_file" class="form-select" dir="ltr" id="import-server-file">
+                    <option selected="selected" value="">&nbsp;</option>
                     <?php foreach ($gedcom_files as $gedcom_file) : ?>
                         <option value="<?= e($gedcom_file) ?>" <?= $gedcom_file === $default_gedcom_file ? 'selected' : '' ?>>
                             <?= e($gedcom_file) ?>
@@ -145,7 +145,7 @@ use Illuminate\Support\Collection;
   function checkGedcomImportForm (message) {
     let oldFile = $('#gedcom_filename').val();
     let method = $('input[name=source]:checked').val();
-    let newFile = method === 'server' ? $('#import-server-file').val() : $('#import-computer-file').val();
+    let newFile = method === 'server' ? $('#import-server-file').val() : $('#import-client-file').val();
 
     // Some browsers include c:\fakepath\ in the filename.
     newFile = newFile.replace(/.*[/\\]/, '');
@@ -156,12 +156,12 @@ use Illuminate\Support\Collection;
     }
   }
 
-  document.getElementById("import-computer-file").addEventListener("click", function () {
-    document.getElementById("import-computer").checked = true;
+  document.getElementById('import-client-file').addEventListener('focus', function () {
+    document.getElementById('import-client').checked = true;
   });
 
-  document.getElementById("import-server-file").addEventListener("focus", function () {
-    document.getElementById("import-server").checked = true;
+  document.getElementById('import-server-file').addEventListener('focus', function () {
+    document.getElementById('import-server').checked = true;
   });
 </script>
 <?php View::endpush() ?>

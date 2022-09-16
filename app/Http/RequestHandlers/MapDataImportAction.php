@@ -27,13 +27,11 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\PlaceLocation;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Services\MapDataService;
+use Fisharebest\Webtrees\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
-use League\Flysystem\FilesystemException;
-use League\Flysystem\UnableToCheckFileExistence;
-use League\Flysystem\UnableToReadFile;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\UploadedFileInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 use function array_filter;
@@ -52,6 +50,7 @@ use function str_contains;
 use function stream_get_contents;
 
 use const JSON_THROW_ON_ERROR;
+use const UPLOAD_ERR_NO_FILE;
 use const UPLOAD_ERR_OK;
 
 /**
@@ -59,6 +58,16 @@ use const UPLOAD_ERR_OK;
  */
 class MapDataImportAction implements RequestHandlerInterface
 {
+    private StreamFactoryInterface $stream_factory;
+
+    /**
+     * @param StreamFactoryInterface $stream_factory
+     */
+    public function __construct(StreamFactoryInterface $stream_factory)
+    {
+        $this->stream_factory = $stream_factory;
+    }
+
     /**
      * This function assumes the input file layout is
      * level followed by a variable number of placename fields
@@ -71,41 +80,44 @@ class MapDataImportAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $data_filesystem = Registry::filesystem()->data();
-
-        $params = (array) $request->getParsedBody();
-
-        $serverfile     = $params['serverfile'] ?? '';
-        $options        = $params['import-options'] ?? '';
-        $local_file     = $request->getUploadedFiles()['localfile'] ?? null;
+        $source  = Validator::parsedBody($request)->isInArray(['client', 'server'])->string('source');
+        $options = Validator::parsedBody($request)->isInArray(['add', 'addupdate', 'update'])->string('options');
 
         $places = [];
+        $url    = route(MapDataList::class, ['parent_id' => 0]);
+        $fp     = null;
 
-        $url = route(MapDataList::class, ['parent_id' => 0]);
+        if ($source === 'client') {
+            $client_file = $request->getUploadedFiles()['client_file'] ?? null;
 
-        try {
-            $file_exists = $data_filesystem->fileExists(MapDataService::PLACES_FOLDER . $serverfile);
-        } catch (FilesystemException | UnableToCheckFileExistence $ex) {
-            $file_exists = false;
-        }
+            if ($client_file === null || $client_file->getError() === UPLOAD_ERR_NO_FILE) {
+                FlashMessages::addMessage(I18N::translate('No file was received.'), 'danger');
 
-
-        if ($serverfile !== '' && $file_exists) {
-            // first choice is file on server
-            try {
-                $fp = $data_filesystem->readStream(MapDataService::PLACES_FOLDER . $serverfile);
-            } catch (FilesystemException | UnableToReadFile $ex) {
-                $fp = false;
+                return redirect(route(MapDataImportPage::class));
             }
-        } elseif ($local_file instanceof UploadedFileInterface && $local_file->getError() === UPLOAD_ERR_OK) {
-            // 2nd choice is local file
-            $fp = $local_file->getStream()->detach();
-        } else {
-            throw new FileUploadException($local_file);
+
+            if ($client_file->getError() !== UPLOAD_ERR_OK) {
+                throw new FileUploadException($client_file);
+            }
+
+            $fp = $client_file->getStream()->detach();
         }
 
-        if ($fp === false || $fp === null) {
-            return redirect($url);
+        if ($source === 'server') {
+            $server_file = Validator::parsedBody($request)->string('server_file');
+
+            if ($server_file === '') {
+                FlashMessages::addMessage(I18N::translate('No file was received.'), 'danger');
+
+                return redirect(route(MapDataImportPage::class));
+            }
+
+            $resource = Registry::filesystem()->data()->readStream('places/' . $server_file);
+            $fp       = $this->stream_factory->createStreamFromResource($resource)->detach();
+        }
+
+        if ($fp === null) {
+            return redirect(route(MapDataImportPage::class));
         }
 
         $string = stream_get_contents($fp);
