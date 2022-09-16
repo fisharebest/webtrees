@@ -67,48 +67,49 @@ class ImportGedcomAction implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $tree = Validator::attributes($request)->tree();
-
-        $data_filesystem = Registry::filesystem()->data();
-
-        $params             = (array) $request->getParsedBody();
-        $source             = $params['source'];
-        $keep_media         = (bool) ($params['keep_media'] ?? false);
-        $WORD_WRAPPED_NOTES = (bool) ($params['WORD_WRAPPED_NOTES'] ?? false);
-        $GEDCOM_MEDIA_PATH  = $params['GEDCOM_MEDIA_PATH'];
-        $encoding           = $params['encoding'] ?? '';
+        $tree               = Validator::attributes($request)->tree();
+        $keep_media         = Validator::parsedBody($request)->boolean('keep_media', false);
+        $word_wrapped_notes = Validator::parsedBody($request)->boolean('WORD_WRAPPED_NOTES', false);
+        $gedcom_media_path  = Validator::parsedBody($request)->string('GEDCOM_MEDIA_PATH');
+        $encodings          = ['' => ''] + Registry::encodingFactory()->list();
+        $encoding           = Validator::parsedBody($request)->isInArrayKeys($encodings)->string('encoding');
+        $source             = Validator::parsedBody($request)->isInArray(['client', 'server'])->string('source');
 
         // Save these choices as defaults
         $tree->setPreference('keep_media', $keep_media ? '1' : '0');
-        $tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES ? '1' : '0');
-        $tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
+        $tree->setPreference('WORD_WRAPPED_NOTES', $word_wrapped_notes ? '1' : '0');
+        $tree->setPreference('GEDCOM_MEDIA_PATH', $gedcom_media_path);
 
         if ($source === 'client') {
-            $upload = $request->getUploadedFiles()['tree_name'] ?? null;
+            $client_file = $request->getUploadedFiles()['client_file'] ?? null;
 
-            if ($upload === null || $upload->getError() === UPLOAD_ERR_NO_FILE) {
+            if ($client_file === null || $client_file->getError() === UPLOAD_ERR_NO_FILE) {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
-            } elseif ($upload->getError() !== UPLOAD_ERR_OK) {
-                throw new FileUploadException($upload);
-            } else {
-                $this->tree_service->importGedcomFile($tree, $upload->getStream(), basename($upload->getClientFilename()), $encoding);
+
+                return redirect(route(ImportGedcomPage::class, ['tree' => $tree->name()]));
             }
+
+            if ($client_file->getError() !== UPLOAD_ERR_OK) {
+                throw new FileUploadException($client_file);
+            }
+
+            $this->tree_service->importGedcomFile($tree, $client_file->getStream(), basename($client_file->getClientFilename()), $encoding);
         }
 
         if ($source === 'server') {
-            $basename = basename($params['tree_name'] ?? '');
+            $server_file = Validator::parsedBody($request)->string('server_file');
 
-            if ($basename === '') {
+            if ($server_file === '') {
                 FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
-            } else {
-                $resource = $data_filesystem->readStream($basename);
-                $stream   = $this->stream_factory->createStreamFromResource($resource);
-                $this->tree_service->importGedcomFile($tree, $stream, $basename, $encoding);
+
+                return redirect(route(ImportGedcomPage::class, ['tree' => $tree->name()]));
             }
+
+            $resource = Registry::filesystem()->data()->readStream($server_file);
+            $stream   = $this->stream_factory->createStreamFromResource($resource);
+            $this->tree_service->importGedcomFile($tree, $stream, $server_file, $encoding);
         }
 
-        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
-
-        return redirect($url);
+        return redirect(route(ManageTrees::class, ['tree' => $tree->name()]));
     }
 }
