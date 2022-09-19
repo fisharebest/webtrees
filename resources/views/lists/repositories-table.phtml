@@ -31,6 +31,7 @@ $count_sources = DB::table('sources')
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
+    ->map(static fn (string $n) => (int) $n)
     ->all();
 ?>
 
