@@ -23,6 +23,8 @@ use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\TestCase;
 
+use Nyholm\Psr7\Factory\Psr17Factory;
+
 use function dirname;
 
 /**
@@ -40,8 +42,8 @@ class MapDataImportActionTest extends TestCase
     public function testImportAction(): void
     {
         $csv              = $this->createUploadedFile(dirname(__DIR__, 3) . '/data/places.csv', 'text/csv');
-        $handler          = new MapDataImportAction();
-        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], [], ['localfile' => $csv]);
+        $handler          = new MapDataImportAction(new Psr17Factory());
+        $request          = self::createRequest(RequestMethodInterface::METHOD_POST, [], ['options' => 'add', 'source' => 'client'], ['localfile' => $csv]);
         $response         = $handler->handle($request);
 
         self::assertSame(StatusCodeInterface::STATUS_FOUND, $response->getStatusCode());
