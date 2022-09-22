@@ -699,12 +699,10 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         bool $fams,
         LocaleInterface $locale
     ): array {
-        $collation = $this->localization_service->collation($locale);
-
         $query = DB::table('name')
             ->where('n_file', '=', $tree->id())
             ->select([
-                new Expression('UPPER(n_surn /*! COLLATE ' . $collation . ' */) AS n_surn'),
+                new Expression('n_surn /*! COLLATE utf8_bin */ AS n_surn'),
                 new Expression('n_surname /*! COLLATE utf8_bin */ AS n_surname'),
                 new Expression('COUNT(*) AS total'),
             ]);
@@ -724,16 +722,21 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             // All surnames
             $query->whereNotIn('n_surn', ['', Individual::NOMEN_NESCIO]);
         }
-        $query
-            ->groupBy(['n_surn'])
-            ->groupBy(['n_surname'])
-            ->orderBy('n_surname');
+        $query->groupBy([
+            new Expression('n_surn /*! COLLATE utf8_bin */'),
+            new Expression('n_surname /*! COLLATE utf8_bin */'),
+        ]);
 
         $list = [];
 
         foreach ($query->get() as $row) {
+            $row->n_surn = I18N::strtoupper($row->n_surn);
+            $row->total += $list[$row->n_surn][$row->n_surname] ?? 0;
+
             $list[$row->n_surn][$row->n_surname] = (int) $row->total;
         }
+
+        uksort($list, I18N::comparator());
 
         return $list;
     }
