@@ -335,9 +335,14 @@ class I18N
 
         // Create a collator
         try {
+            // Symfony provides a very incomplete polyfill - which cannot be used.
             if (class_exists('Collator')) {
-                // Symfony provides a very incomplete polyfill - which cannot be used.
-                self::$collator = new Collator(self::$locale->code());
+                // Need phonebook collation rules for German Ä, Ö and Ü.
+                if (str_contains(self::$locale->code(), '@')) {
+                    self::$collator = new Collator(self::$locale->code() . ';collation=phonebook');
+                } else {
+                    self::$collator = new Collator(self::$locale->code() . '@collation=phonebook');
+                }
                 // Ignore upper/lower case differences
                 self::$collator->setStrength(Collator::SECONDARY);
             }
