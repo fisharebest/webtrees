@@ -1527,17 +1527,17 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$n_surn on mixed\\.$#"
-			count: 2
+			count: 5
 			path: app/Module/IndividualListModule.php
 
 		-
 			message: "#^Cannot access property \\$n_surname on mixed\\.$#"
-			count: 1
+			count: 2
 			path: app/Module/IndividualListModule.php
 
 		-
 			message: "#^Cannot access property \\$total on mixed\\.$#"
-			count: 1
+			count: 2
 			path: app/Module/IndividualListModule.php
 
 		-
