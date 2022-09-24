@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\ExtCalendar\ArabicCalendar;
+use Fisharebest\ExtCalendar\CalendarInterface;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleUr;
 
@@ -28,6 +30,26 @@ use Fisharebest\Localization\Locale\LocaleUr;
 class LanguageUrdu extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی'];
+    }
+
+    /**
+     * Default calendar used by this language.
+     *
+     * @return CalendarInterface
+     */
+    public function calendar(): CalendarInterface
+    {
+        return new ArabicCalendar();
+    }
 
     /**
      * Should this module be enabled when it is first installed?

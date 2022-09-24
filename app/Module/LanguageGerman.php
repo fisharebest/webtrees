@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleDe;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class LanguageGerman.
@@ -28,6 +29,28 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 class LanguageGerman extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Some languages treat certain letter-combinations as equivalent.
+     *
+     * @return array<string,string>
+     */
+    public function equivalentLetters(): array
+    {
+        return ['ä' => 'ae', 'ö' => 'oe',  'ü' => 'ue', 'ẞ' => 'ss', 'Ä' => 'AE', 'Ö' => 'OE',  'Ü' => 'UE', 'ß' => 'SS'];
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_german2_ci */', 'LIKE', '\\' . $letter . '%');
+    }
 
     /**
      * @return LocaleInterface

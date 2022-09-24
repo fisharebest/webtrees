@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleLv;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class LanguageLatvian.
@@ -37,6 +38,18 @@ class LanguageLatvian extends AbstractModule implements ModuleLanguageInterface
     public function isEnabledByDefault(): bool
     {
         return false;
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_latvian_ci */', 'LIKE', '\\' . $letter . '%');
     }
 
     /**

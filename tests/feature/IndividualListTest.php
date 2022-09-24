@@ -22,7 +22,6 @@ namespace Fisharebest\Webtrees;
 use Fig\Http\Message\RequestMethodInterface;
 use Fig\Http\Message\StatusCodeInterface;
 use Fisharebest\Webtrees\Module\IndividualListModule;
-use Fisharebest\Webtrees\Services\LocalizationService;
 
 /**
  * Test the individual lists.
@@ -40,7 +39,7 @@ class IndividualListTest extends TestCase
     public function testIndividualList(): void
     {
         $tree        = $this->importTree('demo.ged');
-        $list_module = new IndividualListModule(new LocalizationService());
+        $list_module = new IndividualListModule();
 
         $request  = self::createRequest(RequestMethodInterface::METHOD_GET, [], [], [], ['tree' => $tree]);
         $response = $list_module->handle($request);

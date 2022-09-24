@@ -21,6 +21,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleDa;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Illuminate\Database\Query\Builder;
+
+use function mb_substr;
+use function str_starts_with;
 
 /**
  * Class LanguageDanish.
@@ -28,6 +32,54 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 class LanguageDanish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å'];
+    }
+
+    /**
+     * Some languages treat certain letter-combinations as equivalent.
+     *
+     * @return array<string,string>
+     */
+    public function equivalentLetters(): array
+    {
+        return ['aa' => 'å', 'aA' => 'å', 'Aa' => 'Å', 'AA' => 'Å'];
+    }
+
+    /**
+     * Some languages use digraphs and trigraphs.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public function initialLetter(string $string): string
+    {
+        if (str_starts_with($string, 'AA')) {
+            return 'Å';
+        }
+
+        return mb_substr($string, 0, 1);
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_danish_ci */', 'LIKE', '\\' . $letter . '%');
+    }
 
     /**
      * @return LocaleInterface

@@ -30,6 +30,16 @@ class LanguageGreek extends AbstractModule implements ModuleLanguageInterface
     use ModuleLanguageTrait;
 
     /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'];
+    }
+
+    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface

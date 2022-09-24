@@ -22,11 +22,8 @@ namespace Fisharebest\Webtrees\Elements;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Html;
 use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Tree;
 
-use function app;
-use function assert;
 use function e;
 use function preg_replace_callback;
 use function view;
@@ -59,10 +56,7 @@ class DateValue extends AbstractElement
     public function edit(string $id, string $name, string $value, Tree $tree): string
     {
         // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
-        $localization_service = app(LocalizationService::class);
-        assert($localization_service instanceof LocalizationService);
-
-        $dmy = $localization_service->dateFormatToOrder(I18N::dateFormat());
+        $dmy = I18N::language()->dateOrder();
 
         $attributes = [
             'class'     => 'form-control',

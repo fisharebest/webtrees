@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\ModuleReportInterface;
 use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Services\ModuleService;
 use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ResponseInterface;
@@ -43,19 +42,15 @@ class ReportSetupPage implements RequestHandlerInterface
 {
     use ViewResponseTrait;
 
-    private LocalizationService $localization_service;
-
     private ModuleService $module_service;
 
     /**
      * ReportEngineController constructor.
      *
-     * @param LocalizationService $localization_service
-     * @param ModuleService       $module_service
+     * @param ModuleService $module_service
      */
-    public function __construct(LocalizationService $localization_service, ModuleService $module_service)
+    public function __construct(ModuleService $module_service)
     {
-        $this->localization_service = $localization_service;
         $this->module_service = $module_service;
     }
 
@@ -135,7 +130,7 @@ class ReportSetupPage implements RequestHandlerInterface
 
                 case 'DATE':
                     // Need to know if the user prefers DMY/MDY/YMD so we can validate dates properly.
-                    $dmy = $this->localization_service->dateFormatToOrder(I18N::dateFormat());
+                    $dmy = I18N::language()->dateOrder();
 
                     $attributes += [
                         'type'     => 'text',

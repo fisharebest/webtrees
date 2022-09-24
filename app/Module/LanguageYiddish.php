@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\ExtCalendar\CalendarInterface;
+use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleYi;
 
@@ -28,6 +30,26 @@ use Fisharebest\Localization\Locale\LocaleYi;
 class LanguageYiddish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת'];
+    }
+
+    /**
+     * Default calendar used by this language.
+     *
+     * @return CalendarInterface
+     */
+    public function calendar(): CalendarInterface
+    {
+        return new JewishCalendar();
+    }
 
     /**
      * Should this module be enabled when it is first installed?
