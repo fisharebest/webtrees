@@ -21,6 +21,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleHu;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Illuminate\Database\Query\Builder;
+
+use function mb_substr;
+use function str_starts_with;
 
 /**
  * Class LanguageHungarian.
@@ -28,6 +32,56 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 class LanguageHungarian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'Á', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'É', 'F', 'G', 'GY', 'H', 'I', 'Í', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ó', 'Ö', 'Ő', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ú', 'Ü', 'Ű', 'V', 'W', 'X', 'Y', 'Z', 'ZS'];
+    }
+
+    /**
+     * One of: 'DMY', 'MDY', 'YMD'.
+     *
+     * @return string
+     */
+    public function dateOrder(): string
+    {
+        return 'YMD';
+    }
+
+    /**
+     * Some languages use digraphs and trigraphs.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public function initialLetter(string $string): string
+    {
+        foreach (['DZS', 'DZ', 'GY', 'LY', 'NY', 'SZ', 'TY', 'ZS'] as $digraph) {
+            if (str_starts_with($string, $digraph)) {
+                return $digraph;
+            }
+        }
+
+        return mb_substr($string, 0, 1);
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_hungarian_ci */', 'LIKE', '\\' . $letter . '%');
+    }
 
     /**
      * @return LocaleInterface

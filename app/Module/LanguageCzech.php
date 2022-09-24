@@ -21,6 +21,10 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleCs;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Illuminate\Database\Query\Builder;
+
+use function mb_substr;
+use function str_starts_with;
 
 /**
  * Class LanguageCzech.
@@ -28,6 +32,48 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 class LanguageCzech extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'Á', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'Ě', 'F', 'G', 'H', 'CH', 'I', 'Í', 'J', 'K', 'L', 'M', 'N', 'Ň', 'O', 'Ó', 'P', 'Q', 'R', 'Ř', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'Ů', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'];
+    }
+
+    /**
+     * Some languages use digraphs and trigraphs.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public function initialLetter(string $string): string
+    {
+        if (str_starts_with($string, 'CS')) {
+            return 'CS';
+        }
+
+        return mb_substr($string, 0, 1);
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_czech_ci */', 'LIKE', '\\' . $letter . '%');
+
+        if ($letter === 'C') {
+            $query->where($column . ' /*! COLLATE utf8_czech_ci */', 'NOT LIKE', 'CS%');
+        }
+    }
 
     /**
      * @return LocaleInterface

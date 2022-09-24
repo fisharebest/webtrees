@@ -23,7 +23,9 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleSk;
 use Fisharebest\Webtrees\Relationship;
 
+use function mb_substr;
 use function str_repeat;
+use function str_starts_with;
 
 /**
  * Class LanguageSlovakian.
@@ -73,6 +75,34 @@ class LanguageSlovakian extends AbstractModule implements ModuleLanguageInterfac
         ['sesternica zo 16. kolena', '%s sesternice zo 16. kolena'],
         ['sesternica zo 17. kolena', '%s sesternice zo 17. kolena'],
     ];
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'DZ', 'DŽ', 'E', 'É', 'F', 'G', 'H', 'CH', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'];
+    }
+
+    /**
+     * Some languages use digraphs and trigraphs.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public function initialLetter(string $string): string
+    {
+        foreach (['CH', 'DZ', 'DŽ'] as $digraph) {
+            if (str_starts_with($string, $digraph)) {
+                return $digraph;
+            }
+        }
+
+        return mb_substr($string, 0, 1);
+    }
 
     /**
      * @return LocaleInterface

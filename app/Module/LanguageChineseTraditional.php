@@ -30,6 +30,16 @@ class LanguageChineseTraditional extends AbstractModule implements ModuleLanguag
     use ModuleLanguageTrait;
 
     /**
+     * One of: 'DMY', 'MDY', 'YMD'.
+     *
+     * @return string
+     */
+    public function dateOrder(): string
+    {
+        return 'YMD';
+    }
+
+    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface

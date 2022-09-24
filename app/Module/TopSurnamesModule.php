@@ -116,7 +116,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
             $variants = DB::table('name')
                 ->where('n_file', '=', $tree->id())
                 ->where(new Expression('n_surn /*! COLLATE utf8_bin */'), '=', $top_surname)
-                ->groupBy(['surname'])
+                ->groupBy([new Expression('n_surname /*! COLLATE utf8_bin */')])
                 ->select([new Expression('n_surname /*! COLLATE utf8_bin */ AS surname'), new Expression('count(*) AS total')])
                 ->pluck('total', 'surname')
                 ->map(static fn (string $n): int => (int) $n)
@@ -168,6 +168,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface
 
             case 'table':
             default:
+                uksort($all_surnames, I18N::comparator());
                 $content = view('lists/surnames-table', [
                     'families' => false,
                     'module'   => $module,

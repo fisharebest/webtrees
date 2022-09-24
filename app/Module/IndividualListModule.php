@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Registry;
-use Fisharebest\Webtrees\Services\LocalizationService;
 use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\Validator;
@@ -59,18 +58,6 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
     use ModuleListTrait;
 
     protected const ROUTE_URL = '/tree/{tree}/individual-list';
-
-    private LocalizationService $localization_service;
-
-    /**
-     * IndividualListModule constructor.
-     *
-     * @param LocalizationService $localization_service
-     */
-    public function __construct(LocalizationService $localization_service)
-    {
-        $this->localization_service = $localization_service;
-    }
 
     /**
      * Initialization.
@@ -251,7 +238,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                 ];
             }
         } elseif ($surname !== '') {
-            $alpha    = $this->localization_service->initialLetter($surname, I18N::locale()); // so we can highlight the initial letter
+            $alpha    = I18N::language()->initialLetter($surname); // so we can highlight the initial letter
             $show_all = 'no';
             if ($surname === Individual::NOMEN_NESCIO) {
                 $legend = I18N::translateContext('Unknown surname', '…');
@@ -400,7 +387,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
                             echo view('lists/surnames-table', [
                                 'families' => $families,
                                 'module'   => $this,
-                                'order'    => [[1, 'desc']],
+                                'order'    => [[0, 'asc']],
                                 'surnames' => $surns,
                                 'tree'     => $tree,
                             ]);
@@ -562,9 +549,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function surnameAlpha(Tree $tree, bool $marnm, bool $fams, LocaleInterface $locale): array
     {
-        $collation = $this->localization_service->collation($locale);
-
-        $n_surn = $this->fieldWithCollation('n_surn', $collation);
+        $n_surn = $this->fieldWithCollation('n_surn');
         $alphas = [];
 
         $query = DB::table('name')->where('n_file', '=', $tree->id());
@@ -575,7 +560,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         // Fetch all the letters in our alphabet, whether or not there
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X.
-        foreach ($this->localization_service->alphabet($locale) as $letter) {
+        foreach (I18N::language()->alphabet() as $letter) {
             $query2 = clone $query;
 
             $this->whereInitial($query2, 'n_surn', $letter, $locale);
@@ -585,7 +570,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
 
         // Now fetch initial letters that are not in our alphabet,
         // including "@" (for "@N.N.") and "" for no surname.
-        foreach ($this->localization_service->alphabet($locale) as $letter) {
+        foreach (I18N::language()->alphabet() as $letter) {
             $query->where($n_surn, 'NOT LIKE', $letter . '%');
         }
 
@@ -626,8 +611,6 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      */
     public function givenAlpha(Tree $tree, string $surn, string $salpha, bool $marnm, bool $fams, LocaleInterface $locale): array
     {
-        $collation = $this->localization_service->collation($locale);
-
         $alphas = [];
 
         $query = DB::table('name')
@@ -637,7 +620,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $this->whereMarriedName($marnm, $query);
 
         if ($surn !== '') {
-            $n_surn = $this->fieldWithCollation('n_surn', $collation);
+            $n_surn = $this->fieldWithCollation('n_surn');
             $query->where($n_surn, '=', $surn);
         } elseif ($salpha === ',') {
             $query->where('n_surn', '=', '');
@@ -653,7 +636,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         // Fetch all the letters in our alphabet, whether or not there
         // are any names beginning with that letter. It looks better to
         // show the full alphabet, rather than omitting rare letters such as X
-        foreach ($this->localization_service->alphabet($locale) as $letter) {
+        foreach (I18N::language()->alphabet() as $letter) {
             $query2 = clone $query;
 
             $this->whereInitial($query2, 'n_givn', $letter, $locale);
@@ -730,7 +713,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $list = [];
 
         foreach ($query->get() as $row) {
-            $row->n_surn = I18N::strtoupper($row->n_surn);
+            $row->n_surn = strtr(I18N::strtoupper($row->n_surn), I18N::language()->equivalentLetters());
             $row->total += $list[$row->n_surn][$row->n_surname] ?? 0;
 
             $list[$row->n_surn][$row->n_surname] = (int) $row->total;
@@ -765,11 +748,9 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         bool $fams,
         LocaleInterface $locale
     ): Collection {
-        $collation = $this->localization_service->collation($locale);
-
         // Use specific collation for name fields.
-        $n_givn = $this->fieldWithCollation('n_givn', $collation);
-        $n_surn = $this->fieldWithCollation('n_surn', $collation);
+        $n_givn = $this->fieldWithCollation('n_givn');
+        $n_surn = $this->fieldWithCollation('n_surn');
 
         $query = DB::table('individuals')
             ->join('name', static function (JoinClause $join): void {
@@ -859,13 +840,12 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
      * Use MySQL-specific comments so we can run these queries on other RDBMS.
      *
      * @param string $field
-     * @param string $collation
      *
      * @return Expression
      */
-    protected function fieldWithCollation(string $field, string $collation): Expression
+    protected function fieldWithCollation(string $field): Expression
     {
-        return new Expression($field . ' /*! COLLATE ' . $collation . ' */');
+        return new Expression($field . ' /*! COLLATE ' . I18N::collation() . ' */');
     }
 
     /**
@@ -885,10 +865,8 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         string $letter,
         LocaleInterface $locale
     ): void {
-        $collation = $this->localization_service->collation($locale);
-
         // Use MySQL-specific comments so we can run these queries on other RDBMS.
-        $field_with_collation = $this->fieldWithCollation($field, $collation);
+        $field_with_collation = $this->fieldWithCollation($field);
 
         switch ($locale->languageTag()) {
             case 'cs':

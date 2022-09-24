@@ -19,16 +19,85 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
+use Fisharebest\ExtCalendar\CalendarInterface;
+use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Relationship;
+use Illuminate\Database\Query\Builder;
+
+use function mb_substr;
 
 /**
  * Trait ModuleLanguageEventsTrait - default implementation of ModuleLanguageInterface.
  */
 trait ModuleLanguageTrait
 {
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    }
+
+    /**
+     * Default calendar used by this language.
+     *
+     * @return CalendarInterface
+     */
+    public function calendar(): CalendarInterface
+    {
+        return new GregorianCalendar();
+    }
+
+    /**
+     * One of: 'DMY', 'MDY', 'YMD'.
+     *
+     * @return string
+     */
+    public function dateOrder(): string
+    {
+        return 'DMY';
+    }
+
+    /**
+     * Some languages treat certain letter-combinations as equivalent.
+     *
+     * @return array<string,string>
+     */
+    public function equivalentLetters(): array
+    {
+        return [];
+    }
+
+    /**
+     * Some languages use digraphs and trigraphs.
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public function initialLetter(string $string): string
+    {
+        return mb_substr($string, 0, 1);
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column, 'LIKE', '\\' . $letter . '%');
+    }
+
     /**
      * How should this module be identified in the control panel, etc.?
      *

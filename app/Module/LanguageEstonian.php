@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleEt;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class LanguageEstonian.
@@ -28,6 +29,28 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 class LanguageEstonian extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y'];
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_estonian_ci */', 'LIKE', '\\' . $letter . '%');
+    }
 
     /**
      * @return LocaleInterface

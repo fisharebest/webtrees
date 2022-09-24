@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleEs;
 use Fisharebest\Localization\Locale\LocaleInterface;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class LanguageSpanish.
@@ -28,6 +29,28 @@ use Fisharebest\Localization\Locale\LocaleInterface;
 class LanguageSpanish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_spanish2_ci */', 'LIKE', '\\' . $letter . '%');
+    }
 
     /**
      * @return LocaleInterface

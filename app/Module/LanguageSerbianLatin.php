@@ -30,6 +30,16 @@ class LanguageSerbianLatin extends AbstractModule implements ModuleLanguageInter
     use ModuleLanguageTrait;
 
     /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'];
+    }
+
+    /**
      * Should this module be enabled when it is first installed?
      *
      * @return bool

@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Locale\LocaleTr;
+use Illuminate\Database\Query\Builder;
 
 /**
  * Class LanguageTurkish.
@@ -28,6 +29,28 @@ use Fisharebest\Localization\Locale\LocaleTr;
 class LanguageTurkish extends AbstractModule implements ModuleLanguageInterface
 {
     use ModuleLanguageTrait;
+
+    /**
+     * Phone-book ordering of letters.
+     *
+     * @return array<int,string>
+     */
+    public function alphabet(): array
+    {
+        return ['A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z'];
+    }
+
+    /**
+     * @param string  $column
+     * @param string  $letter
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function initialLetterSQL(string $column, string $letter, Builder $query): void
+    {
+        $query->where($column . ' /*! COLLATE utf8_turkish_ci */', 'LIKE', '\\' . $letter . '%');
+    }
 
     /**
      * @return LocaleInterface

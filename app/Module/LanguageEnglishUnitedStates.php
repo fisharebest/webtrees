@@ -108,6 +108,16 @@ class LanguageEnglishUnitedStates extends AbstractModule implements ModuleLangua
     ];
 
     /**
+     * One of: 'DMY', 'MDY', 'YMD'.
+     *
+     * @return string
+     */
+    public function dateOrder(): string
+    {
+        return 'MDY';
+    }
+
+    /**
      * @return LocaleInterface
      */
     public function locale(): LocaleInterface
