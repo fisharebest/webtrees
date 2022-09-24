@@ -196,8 +196,8 @@ class Place
         return DB::table('places')
             ->where('p_file', '=', $this->tree->id())
             ->where('p_parent_id', '=', $this->id())
-            ->orderBy(new Expression('p_place /*! COLLATE ' . I18N::collation() . ' */'))
             ->pluck('p_place')
+            ->sortBy(I18N::comparator())
             ->map(function (string $place) use ($parent_text): Place {
                 return new self($place . $parent_text, $this->tree);
             })
