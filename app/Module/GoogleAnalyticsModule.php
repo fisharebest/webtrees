@@ -26,6 +26,7 @@ use Fisharebest\Webtrees\Validator;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;
+use function view;
 
 /**
  * Class GoogleAnalyticsModule - add support for Google analytics.
@@ -105,12 +106,19 @@ class GoogleAnalyticsModule extends AbstractModule implements ModuleAnalyticsInt
         $tree = Validator::attributes($request)->treeOptional();
         $user = Validator::attributes($request)->user();
 
-        $parameters['dimensions'] = (object) [
-            'dimension1' => $tree instanceof Tree ? $tree->name() : '-',
-            'dimension2' => $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-',
-        ];
+        if (str_starts_with($parameters['GOOGLE_ANALYTICS_ID'], 'UA-')) {
+            $parameters['dimensions'] = (object) [
+                'dimension1' => $tree instanceof Tree ? $tree->name() : '-',
+                'dimension2' => $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-',
+            ];
 
-        return view('modules/google-analytics/snippet', $parameters);
+            return view('modules/google-analytics/snippet', $parameters);
+        }
+
+        $parameters['tree_name'] = $tree instanceof Tree ? $tree->name() : '-';
+        $parameters['access_level'] = $tree instanceof Tree ? Auth::accessLevel($tree, $user) : '-';
+
+        return view('modules/google-analytics/snippet-v4', $parameters);
     }
 
     /**
