@@ -166,9 +166,7 @@ class Tree
      */
     public static function rowMapper(): Closure
     {
-        return static function (object $row): Tree {
-            return new Tree((int) $row->tree_id, $row->tree_name, $row->tree_title);
-        };
+        return static fn (object $row): Tree => new Tree((int) $row->tree_id, $row->tree_name, $row->tree_title);
     }
 
     /**

@@ -86,6 +86,11 @@ parameters:
 			path: app/Fact.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Family but returns Fisharebest\\\\Webtrees\\\\Family\\|null\\.$#"
+			count: 1
+			path: app/Factories/FamilyFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\FamilyFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/FamilyFactory.php
@@ -106,6 +111,11 @@ parameters:
 			path: app/Factories/FamilyFactory.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\GedcomRecord but returns Fisharebest\\\\Webtrees\\\\GedcomRecord\\|null\\.$#"
+			count: 1
+			path: app/Factories/GedcomRecordFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
@@ -124,6 +134,11 @@ parameters:
 			message: "#^Parameter \\#4 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\GedcomRecordFactory\\:\\:newGedcomRecord\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/GedcomRecordFactory.php
+
+		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Header but returns Fisharebest\\\\Webtrees\\\\Header\\|null\\.$#"
+			count: 1
+			path: app/Factories/HeaderFactory.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\HeaderFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
@@ -151,6 +166,11 @@ parameters:
 			path: app/Factories/IdFactory.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Individual but returns Fisharebest\\\\Webtrees\\\\Individual\\|null\\.$#"
+			count: 1
+			path: app/Factories/IndividualFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
@@ -169,6 +189,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\IndividualFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/IndividualFactory.php
+
+		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Location but returns Fisharebest\\\\Webtrees\\\\Location\\|null\\.$#"
+			count: 1
+			path: app/Factories/LocationFactory.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\LocationFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
@@ -191,6 +216,11 @@ parameters:
 			path: app/Factories/LocationFactory.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Media but returns Fisharebest\\\\Webtrees\\\\Media\\|null\\.$#"
+			count: 1
+			path: app/Factories/MediaFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/MediaFactory.php
@@ -209,6 +239,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\MediaFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/MediaFactory.php
+
+		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Note but returns Fisharebest\\\\Webtrees\\\\Note\\|null\\.$#"
+			count: 1
+			path: app/Factories/NoteFactory.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\NoteFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
@@ -251,6 +286,11 @@ parameters:
 			path: app/Factories/RepositoryFactory.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\SharedNote but returns Fisharebest\\\\Webtrees\\\\SharedNote\\|null\\.$#"
+			count: 1
+			path: app/Factories/SharedNoteFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SharedNoteFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/SharedNoteFactory.php
@@ -276,6 +316,11 @@ parameters:
 			path: app/Factories/SlugFactory.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Source but returns Fisharebest\\\\Webtrees\\\\Source\\|null\\.$#"
+			count: 1
+			path: app/Factories/SourceFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SourceFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/SourceFactory.php
@@ -296,6 +341,11 @@ parameters:
 			path: app/Factories/SourceFactory.php
 
 		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Submission but returns Fisharebest\\\\Webtrees\\\\Submission\\|null\\.$#"
+			count: 1
+			path: app/Factories/SubmissionFactory.php
+
+		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmissionFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"
 			count: 1
 			path: app/Factories/SubmissionFactory.php
@@ -314,6 +364,11 @@ parameters:
 			message: "#^Parameter \\#3 \\$pending of method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmissionFactory\\:\\:new\\(\\) expects string\\|null, mixed given\\.$#"
 			count: 1
 			path: app/Factories/SubmissionFactory.php
+
+		-
+			message: "#^Anonymous function should return Fisharebest\\\\Webtrees\\\\Submitter but returns Fisharebest\\\\Webtrees\\\\Submitter\\|null\\.$#"
+			count: 1
+			path: app/Factories/SubmitterFactory.php
 
 		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Factories\\\\SubmitterFactory\\:\\:gedcom\\(\\) should return string\\|null but returns mixed\\.$#"

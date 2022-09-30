@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
-use function assert;
 use function preg_match;
 
 /**
@@ -69,12 +68,7 @@ class IndividualFactory extends AbstractGedcomRecordFactory implements Individua
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (object $row) use ($tree): Individual {
-            $individual = $this->make($row->i_id, $tree, $row->i_gedcom);
-            assert($individual instanceof Individual);
-
-            return $individual;
-        };
+        return fn (object $row): Individual => $this->make($row->i_id, $tree, $row->i_gedcom);
     }
 
     /**
