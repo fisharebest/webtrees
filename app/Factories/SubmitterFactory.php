@@ -26,7 +26,6 @@ use Fisharebest\Webtrees\Submitter;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
-use function assert;
 use function preg_match;
 
 /**
@@ -70,12 +69,7 @@ class SubmitterFactory extends AbstractGedcomRecordFactory implements SubmitterF
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (object $row) use ($tree): Submitter {
-            $submitter = $this->make($row->o_id, $tree, $row->o_gedcom);
-            assert($submitter instanceof Submitter);
-
-            return $submitter;
-        };
+        return fn (object $row): Submitter => $this->make($row->o_id, $tree, $row->o_gedcom);
     }
 
     /**

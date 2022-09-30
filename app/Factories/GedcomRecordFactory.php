@@ -38,8 +38,6 @@ use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 use InvalidArgumentException;
 
-use function assert;
-
 /**
  * Make a GedcomRecord object.
  */
@@ -135,12 +133,7 @@ class GedcomRecordFactory extends AbstractGedcomRecordFactory implements GedcomR
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (object $row) use ($tree): GedcomRecord {
-            $record = $this->make($row->o_id, $tree, $row->o_gedcom);
-            assert($record instanceof GedcomRecord);
-
-            return $record;
-        };
+        return fn (object $row): GedcomRecord => $this->make($row->o_id, $tree, $row->o_gedcom);
     }
 
     /**

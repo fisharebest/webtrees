@@ -255,8 +255,6 @@ class User implements UserInterface
      */
     public static function rowMapper(): Closure
     {
-        return static function (object $row): User {
-            return new self((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
-        };
+        return static fn (object $row): User => new self((int) $row->user_id, $row->user_name, $row->real_name, $row->email);
     }
 }

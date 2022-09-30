@@ -27,7 +27,6 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Database\Capsule\Manager as DB;
 
-use function assert;
 use function preg_match;
 
 /**
@@ -79,12 +78,7 @@ class FamilyFactory extends AbstractGedcomRecordFactory implements FamilyFactory
      */
     public function mapper(Tree $tree): Closure
     {
-        return function (object $row) use ($tree): Family {
-            $family = $this->make($row->f_id, $tree, $row->f_gedcom);
-            assert($family instanceof Family);
-
-            return $family;
-        };
+        return fn (object $row): Family => $this->make($row->f_id, $tree, $row->f_gedcom);
     }
 
     /**
