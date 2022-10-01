@@ -20,52 +20,60 @@ use Fisharebest\Webtrees\I18N;
 </span>
 
 <script>
-    document.getElementById('<?= e($id) ?>-edit').addEventListener('click', function (event) {
-        event.preventDefault();
-        let element = document.getElementById('<?= e($id) ?>');
-        element.readOnly = false;
-        element.focus();
+  document.getElementById('<?= e($id) ?>-edit').addEventListener('click', function (event) {
+    event.preventDefault();
+    let element = document.getElementById('<?= e($id) ?>');
+    element.readOnly = false;
+    element.focus();
 
-        let input_addon = this.parentNode;
-        input_addon.parentNode.removeChild(input_addon);
-    });
-    document.addEventListener('DOMContentLoaded', function () {
-        let container = document.getElementById('<?= e($id) ?>').parentNode.parentNode.parentNode.parentNode;
-        let NAME = container.querySelector('[id$="INDI:NAME"]');
-        let NPFX = container.querySelector('[id$="INDI:NAME:NPFX"]');
-        let GIVN = container.querySelector('[id$="INDI:NAME:GIVN"]');
-        let SPFX = container.querySelector('[id$="INDI:NAME:SPFX"]');
-        let SURN = container.querySelector('[id$="INDI:NAME:SURN"]');
-        let NSFX = container.querySelector('[id$="INDI:NAME:NSFX"]');
+    let input_addon = this.parentNode;
+    input_addon.removeChild(input_addon);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    let NAME = document.getElementById('<?= e($id) ?>');
+    let container = NAME.parentNode.parentNode.parentNode;
 
-        if (NAME.value !== webtrees.buildNameFromParts(
+    if (NAME.id.endsWith('-INDI:NAME')) {
+      // NAME has children at the same level.
+      container = container.parentNode;
+    } else {
+      // ROMN/FONE have children in a collapsable panel
+      container = container.nextSibling.nextSibling;
+    }
+    let NPFX = container.querySelector('[id$=":NPFX"]');
+    let GIVN = container.querySelector('[id$=":GIVN"]');
+    let SPFX = container.querySelector('[id$=":SPFX"]');
+    let SURN = container.querySelector('[id$=":SURN"]');
+    let NSFX = container.querySelector('[id$=":NSFX"]');
+
+    if (NAME.value !== webtrees.buildNameFromParts(
+      NPFX ? NPFX.value : '',
+      GIVN ? GIVN.value : '',
+      SPFX ? SPFX.value : '',
+      SURN ? SURN.value : '',
+      NSFX ? NSFX.value : '',
+      'U',
+    )) {
+      document.getElementById('<?= e($id) ?>-edit').click();
+    } else {
+      let fn = function () {
+        if (NAME.readOnly === true) {
+          NAME.value = webtrees.buildNameFromParts(
             NPFX ? NPFX.value : '',
             GIVN ? GIVN.value : '',
             SPFX ? SPFX.value : '',
             SURN ? SURN.value : '',
             NSFX ? NSFX.value : '',
-            'U'
-        )) {
-            document.getElementById('<?= e($id) ?>-edit').click();
-        } else {
-            let fn = function () {
-                if (NAME.readOnly === true) {
-                    NAME.value = webtrees.buildNameFromParts(
-                        NPFX ? NPFX.value : '',
-                        GIVN ? GIVN.value : '',
-                        SPFX ? SPFX.value : '',
-                        SURN ? SURN.value : '',
-                        NSFX ? NSFX.value : '',
-                        'U'
-                    );
-                }
-            }
-            NPFX && NPFX.addEventListener('input', fn);
-            GIVN && GIVN.addEventListener('input', fn);
-            SPFX && SPFX.addEventListener('input', fn);
-            SURN && SURN.addEventListener('input', fn);
-            SURN && SURN.addEventListener('blur', fn); // For autocompleted entries
-            NSFX && NSFX.addEventListener('input', fn);
+            'U',
+          );
         }
-    });
+      };
+      NPFX && NPFX.addEventListener('input', fn);
+      GIVN && GIVN.addEventListener('input', fn);
+      SPFX && SPFX.addEventListener('input', fn);
+      SURN && SURN.addEventListener('input', fn);
+      SURN && SURN.addEventListener('blur', fn); // For autocompleted entries
+      NSFX && NSFX.addEventListener('input', fn);
+    }
+  });
 </script>
