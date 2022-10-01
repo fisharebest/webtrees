@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\I18N;
         element.focus();
 
         let input_addon = this.parentNode;
-        input_addon.removeChild(input_addon);
+        input_addon.parentNode.removeChild(input_addon);
     });
     document.addEventListener('DOMContentLoaded', function () {
         let container = document.getElementById('<?= e($id) ?>').parentNode.parentNode.parentNode.parentNode;
