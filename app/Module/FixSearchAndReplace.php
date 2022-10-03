@@ -449,7 +449,7 @@ class FixSearchAndReplace extends AbstractModule implements ModuleDataFixInterfa
                         $query->where($column, '~', $search);
                         break;
 
-                    case 'sqlsvr':
+                    case 'sqlsrv':
                         // Not available
                         break;
                 }
