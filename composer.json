@@ -94,7 +94,7 @@
         "ext-pdo_mysql": "Required to use MySQL for database storage",
         "ext-pdo_sqlite": "Required to use SQLite for database storage",
         "ext-pdo_pgsql": "Required to use PostgreSQL for database storage",
-        "ext-pdo_sqlsvr": "Required to use SQL Server for database storage",
+        "ext-pdo_sqlsrv": "Required to use SQL Server for database storage",
         "ext-zip": "Required to compress downloads and use the upgrade wizard",
         "ext-zlib": "Required to compress HTTP responses"
     },

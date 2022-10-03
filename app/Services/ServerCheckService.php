@@ -299,7 +299,7 @@ class ServerCheckService
                     $this->checkPhpExtension('pdo_pgsql'),
                 ]);
 
-            case 'sqlsvr':
+            case 'sqlsrv':
                 return Collection::make([
                     $this->checkPhpExtension('pdo'),
                     $this->checkPhpExtension('pdo_odbc'),
@@ -328,7 +328,7 @@ class ServerCheckService
                     I18N::translate('Support for PostgreSQL is experimental.'),
                 ]);
 
-            case 'sqlsvr':
+            case 'sqlsrv':
                 return new Collection([
                     I18N::translate('Support for SQL Server is experimental.'),
                 ]);

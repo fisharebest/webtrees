@@ -85,7 +85,7 @@ class SetupWizard implements RequestHandlerInterface
         'mysql'  => '3306',
         'pgsql'  => '5432',
         'sqlite' => '',
-        'sqlsvr' => '1433',
+        'sqlsrv' => '1433',
     ];
 
     private MigrationService $migration_service;
