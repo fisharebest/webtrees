@@ -85,7 +85,7 @@ class SetupWizard implements RequestHandlerInterface
         'mysql'  => '3306',
         'pgsql'  => '5432',
         'sqlite' => '',
-        'sqlsrv' => '1433',
+        'sqlsrv' => '', // Do not use default, as it is valid to have no port number.
     ];
 
     private MigrationService $migration_service;
