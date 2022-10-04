@@ -577,7 +577,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $rows = $query
             ->groupBy(['initial'])
             ->orderBy('initial')
-            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('SUBSTR(n_surn, 1, 1) AS initial'));
+            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('SUBSTRING(n_surn, 1, 1) AS initial'));
 
         $specials = ['@', ''];
 
@@ -647,7 +647,7 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
         $rows = $query
             ->groupBy(['initial'])
             ->orderBy('initial')
-            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('UPPER(SUBSTR(n_givn, 1, 1)) AS initial'));
+            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('UPPER(SUBSTRING(n_givn, 1, 1)) AS initial'));
 
         foreach ($rows as $alpha => $count) {
             if ($alpha !== '@') {
