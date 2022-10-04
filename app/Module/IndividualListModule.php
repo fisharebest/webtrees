@@ -574,10 +574,12 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $query->where($n_surn, 'NOT LIKE', $letter . '%');
         }
 
+        $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+
         $rows = $query
             ->groupBy(['initial'])
             ->orderBy('initial')
-            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('SUBSTRING(n_surn, 1, 1) AS initial'));
+            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression($substring_function . '(n_surn, 1, 1) AS initial'));
 
         $specials = ['@', ''];
 
@@ -644,10 +646,12 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $alphas[$letter] = $query2->distinct()->count('n_id');
         }
 
+        $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+
         $rows = $query
             ->groupBy(['initial'])
             ->orderBy('initial')
-            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('UPPER(SUBSTRING(n_givn, 1, 1)) AS initial'));
+            ->pluck(new Expression('COUNT(*) AS aggregate'), new Expression('' . $substring_function . '(n_givn, 1, 1) AS initial'));
 
         foreach ($rows as $alpha => $count) {
             if ($alpha !== '@') {
@@ -1018,6 +1022,30 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $query->where($field, 'LIKE', 'Å%')->where($field, 'NOT LIKE', 'AA%');
         } else {
             $query->where($field, 'LIKE', '\\' . $letter . '%');
+        }
+    }
+
+    /**
+     * @param string $expression
+     * @param int    $start
+     * @param int    $length
+     * @param string $alias
+     *
+     * @return Expression
+     */
+    private function substringExpression(string $expression, int $start, int $length, string $alias): Expression
+    {
+        switch (DB::connection()->getDriverName()) {
+            case 'sqlite':
+                // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
+                return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ') AS ' . $alias);
+
+            case 'sqlsrv':
+                return new Expression('SUBSTRING(' . $expression . ',' . $start . ',' . $length . ') AS ' . $alias);
+
+            default:
+                // SQL-92 standard
+                return new Expression('SUBSTRING(' . $expression . ' FROM ' . $start . ' FOR ' . $length . ') AS ' . $alias);
         }
     }
 }
