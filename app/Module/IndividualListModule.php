@@ -1024,28 +1024,4 @@ class IndividualListModule extends AbstractModule implements ModuleListInterface
             $query->where($field, 'LIKE', '\\' . $letter . '%');
         }
     }
-
-    /**
-     * @param string $expression
-     * @param int    $start
-     * @param int    $length
-     * @param string $alias
-     *
-     * @return Expression
-     */
-    private function substringExpression(string $expression, int $start, int $length, string $alias): Expression
-    {
-        switch (DB::connection()->getDriverName()) {
-            case 'sqlite':
-                // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
-                return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ') AS ' . $alias);
-
-            case 'sqlsrv':
-                return new Expression('SUBSTRING(' . $expression . ',' . $start . ',' . $length . ') AS ' . $alias);
-
-            default:
-                // SQL-92 standard
-                return new Expression('SUBSTRING(' . $expression . ' FROM ' . $start . ' FOR ' . $length . ') AS ' . $alias);
-        }
-    }
 }
