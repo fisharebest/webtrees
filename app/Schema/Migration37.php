@@ -105,14 +105,17 @@ class Migration37 implements MigrationInterface
      */
     private function substring(string $expression, int $start, int $length): Expression
     {
-        $driver = DB::connection()->getDriverName();
+        switch (DB::connection()->getDriverName()) {
+            case 'sqlite':
+                // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
+                return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ')');
 
-        // Non-standard
-        if ($driver === 'sqlite' || $driver === 'sqlsrv') {
-            return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ')');
+            case 'sqlsrv':
+                return new Expression('SUBSTRING(' . $expression . ',' . $start . ',' . $length . ')');
+
+            default:
+                // SQL-92 standard
+                return new Expression('SUBSTRING(' . $expression . ' FROM ' . $start . ' FOR ' . $length . ')');
         }
-
-        // SQL-92 standard
-        return new Expression('SUBSTRING(' . $expression . ' FROM ' . $start . ' FOR ' . $length . ')');
     }
 }
