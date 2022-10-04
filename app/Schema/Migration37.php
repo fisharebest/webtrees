@@ -70,13 +70,16 @@ class Migration37 implements MigrationInterface
                 'source_media_type',
                 'descriptive_title',
             ], function (Builder $query): void {
+                // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
+                $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+
                 $query->select([
                     'm_id',
                     'm_file',
-                    $this->substring('m_filename', 1, 248),
-                    $this->substring('m_ext', 1, 4),
-                    $this->substring('m_type', 1, 15),
-                    $this->substring('m_titl', 1, 248),
+                    new Expression($substring_function . '(m_filename, 1, 248)'),
+                    new Expression($substring_function . '(m_ext, 1, 4)'),
+                    new Expression($substring_function . '(m_type, 1, 15)'),
+                    new Expression($substring_function . '(m_titl, 1, 248)'),
                 ])->from('media');
             });
 
@@ -93,29 +96,6 @@ class Migration37 implements MigrationInterface
             DB::schema()->table('media', static function (Blueprint $table): void {
                 $table->dropColumn('m_titl');
             });
-        }
-    }
-
-    /**
-     * @param string $expression
-     * @param int    $start
-     * @param int    $length
-     *
-     * @return Expression
-     */
-    private function substring(string $expression, int $start, int $length): Expression
-    {
-        switch (DB::connection()->getDriverName()) {
-            case 'sqlite':
-                // SQLite also supports SUBSTRING() from 3.34.0 (2020-12-01)
-                return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ')');
-
-            case 'sqlsrv':
-                return new Expression('SUBSTRING(' . $expression . ',' . $start . ',' . $length . ')');
-
-            default:
-                // SQL-92 standard
-                return new Expression('SUBSTRING(' . $expression . ' FROM ' . $start . ' FOR ' . $length . ')');
         }
     }
 }

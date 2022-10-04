@@ -100,9 +100,11 @@ class Migration44 implements MigrationInterface
                 // Already deleted, or does not exist;
             }
 
+            $substring_function = DB::connection()->getDriverName() === 'sqlite' ? 'SUBSTR' : 'SUBSTRING';
+
             DB::table('placelocation')
                 ->update([
-                    'pl_place' => new Expression('SUBSTRING(pl_place, 1, 120)'),
+                    'pl_place' => new Expression($substring_function . '(pl_place, 1, 120)'),
                 ]);
 
             // The lack of unique key constraints means that there may be duplicates...
