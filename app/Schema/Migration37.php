@@ -105,8 +105,10 @@ class Migration37 implements MigrationInterface
      */
     private function substring(string $expression, int $start, int $length): Expression
     {
+        $driver = DB::connection()->getDriverName();
+
         // Non-standard
-        if (DB::connection()->getDriverName() === 'sqlite') {
+        if ($driver === 'sqlite' || $driver === 'sqlsrv') {
             return new Expression('SUBSTR(' . $expression . ',' . $start . ',' . $length . ')');
         }
 
