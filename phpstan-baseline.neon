@@ -636,11 +636,6 @@ parameters:
 			path: app/Http/RequestHandlers/CreateRepositoryAction.php
 
 		-
-			message: "#^Cannot access offset 'data_fix' on array\\|object\\.$#"
-			count: 1
-			path: app/Http/RequestHandlers/DataFixSelect.php
-
-		-
 			message: "#^Cannot access property \\$xref on mixed\\.$#"
 			count: 2
 			path: app/Http/RequestHandlers/DataFixUpdateAll.php
