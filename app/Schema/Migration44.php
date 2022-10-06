@@ -56,7 +56,8 @@ class Migration44 implements MigrationInterface
             // SQL-server cannot cascade-delete/update on self-relations.
             // Users will need to delete all child locations before deleting the parent.
             if (DB::connection()->getDriverName() === 'sqlsrv') {
-                $action = 'RESTRICT';
+                // SQL-Server doesn't support 'RESTRICT'
+                $action = 'NO ACTION';
             } else {
                 $action = 'CASCADE';
             }
