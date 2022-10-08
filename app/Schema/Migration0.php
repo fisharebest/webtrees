@@ -244,7 +244,8 @@ class Migration0 implements MigrationInterface
 
             $table->primary(['m_file', 'm_id']);
             $table->unique(['m_id', 'm_file']);
-            $table->index(['m_ext', 'm_type']);
+            // Originally, this migration created an index on m_ext and m_type,
+            // but we drop those columns in migration 37.
         });
 
         DB::schema()->create('next_id', static function (Blueprint $table): void {
