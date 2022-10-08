@@ -84,28 +84,18 @@ class Migration37 implements MigrationInterface
             });
 
             // The Laravel database library for SQLite can only drop one column at a time.
-            // But SQL-Server needs to delete them together, due to the compound index.ZZ
-            if (DB::connection()->getDriverName() === 'sqlite') {
-                DB::schema()->table('media', static function (Blueprint $table): void {
-                    $table->dropColumn('m_filename');
-                });
-                DB::schema()->table('media', static function (Blueprint $table): void {
-                    $table->dropColumn('m_ext');
-                });
-                DB::schema()->table('media', static function (Blueprint $table): void {
-                    $table->dropColumn('m_type');
-                });
-                DB::schema()->table('media', static function (Blueprint $table): void {
-                    $table->dropColumn('m_titl');
-                });
-            } else {
-                DB::schema()->table('media', static function (Blueprint $table): void {
-                    $table->dropColumn('m_filename');
-                    $table->dropColumn('m_ext');
-                    $table->dropColumn('m_type');
-                    $table->dropColumn('m_titl');
-                });
-            }
+            DB::schema()->table('media', static function (Blueprint $table): void {
+                $table->dropColumn('m_filename');
+            });
+            DB::schema()->table('media', static function (Blueprint $table): void {
+                $table->dropColumn('m_ext');
+            });
+            DB::schema()->table('media', static function (Blueprint $table): void {
+                $table->dropColumn('m_type');
+            });
+            DB::schema()->table('media', static function (Blueprint $table): void {
+                $table->dropColumn('m_titl');
+            });
         }
     }
 }
