@@ -30,6 +30,7 @@ use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 use function array_diff;
 use function array_filter;
@@ -69,7 +70,8 @@ class GedcomEditService
     public function newFamilyFacts(Tree $tree): Collection
     {
         $dummy = Registry::familyFactory()->new('', '0 @@ FAM', null, $tree);
-        $tags  = new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS')));
+        $tags  = (new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FAMFACTS'))))
+            ->filter(static fn (string $tag): bool => Str::length($tag) > 0);
         $facts = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
 
         return Fact::sortFacts($facts);
@@ -85,7 +87,8 @@ class GedcomEditService
     public function newIndividualFacts(Tree $tree, string $sex, array $names): Collection
     {
         $dummy      = Registry::individualFactory()->new('', '0 @@ INDI', null, $tree);
-        $tags       = new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS')));
+        $tags       = (new Collection(explode(',', $tree->getPreference('QUICK_REQUIRED_FACTS'))))
+            ->filter(static fn (string $tag): bool => Str::length($tag) > 0);
         $facts      = $tags->map(fn (string $tag): Fact => $this->createNewFact($dummy, $tag));
         $sex_fact   = new Collection([new Fact('1 SEX ' . $sex, $dummy, '')]);
         $name_facts = Collection::make($names)->map(static fn (string $gedcom): Fact => new Fact($gedcom, $dummy, ''));
