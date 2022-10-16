@@ -20,6 +20,7 @@ declare(strict_types=1);
 namespace Fisharebest\Webtrees\Services;
 
 use Fisharebest\Webtrees\TestCase;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Test harness for the class GedcomEditService
@@ -108,5 +109,83 @@ class GedcomEditServiceTest extends TestCase
                 ['Y', 'England', '', '123', 'Y', 'Scotland', '', '123']
             )
         );
+    }
+
+    /**
+     * @dataProvider newFamilyFactsData
+     *
+     * @param string $required_famfacts
+     * @param array<string> $expected_new_facts
+     */
+    public function testNewFamilyFacts(string $required_famfacts, array $expected_new_facts): void
+    {
+        $gedcom_edit_service = new GedcomEditService();
+
+        $tree = $this->createMock(Tree::class);
+        $tree->method('getPreference')->with('QUICK_REQUIRED_FAMFACTS')->willReturn($required_famfacts);
+
+        $new_facts = $gedcom_edit_service->newFamilyFacts($tree);
+        self::assertSameSize($expected_new_facts, $new_facts);
+        for ($i = 0; $i < count($expected_new_facts); $i++) {
+            /** @var \Fisharebest\Webtrees\Fact $new_fact */
+            $new_fact = $new_facts->get($i);
+            self::assertSame($expected_new_facts[$i], $new_fact->tag());
+        }
+    }
+
+    /**
+     * @dataProvider newIndividualFactsData
+     *
+     * @param string $required_facts
+     * @param string $sex
+     * @param array<string> $names
+     * @param array<string> $expected_new_facts
+     */
+    public function testNewIndividualFactsWithNoFacts(
+        string $required_facts,
+        string $sex,
+        array $names,
+        array $expected_new_facts
+    ): void {
+        $gedcom_edit_service = new GedcomEditService();
+
+        $tree = $this->createMock(Tree::class);
+        $tree->method('getPreference')->with('QUICK_REQUIRED_FACTS')->willReturn($required_facts);
+
+        $new_facts = $gedcom_edit_service->newIndividualFacts($tree, $sex, $names);
+        self::assertSameSize($expected_new_facts, $new_facts);
+        for ($i = 0; $i < count($expected_new_facts); $i++) {
+            /** @var \Fisharebest\Webtrees\Fact $new_fact */
+            $new_fact = $new_facts->get($i);
+            self::assertSame($expected_new_facts[$i], $new_fact->tag());
+        }
+    }
+
+    /**
+     * Data provider for new family facts tests
+     * @return array<array<string|array<string>>>
+     */
+    public function newFamilyFactsData(): array
+    {
+        return [
+            ['', []],
+            ['MARR', ['FAM:MARR']],
+            ['FOOTAG', ['FAM:FOOTAG']],
+            ['MARR,DIV', ['FAM:MARR', 'FAM:DIV']],
+        ];
+    }
+
+    /**
+     * Data provider for new inidvidual facts tests
+     * @return array<array<string|array<string>>>
+     */
+    public function newIndividualFactsData(): array
+    {
+        return [
+            ['', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME']],
+            ['BIRT', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT']],
+            ['FOOTAG', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:FOOTAG']],
+            ['BIRT,DEAT', 'F', ['1 NAME FOONAME'], ['INDI:SEX', 'INDI:NAME', 'INDI:BIRT', 'INDI:DEAT']],
+        ];
     }
 }
