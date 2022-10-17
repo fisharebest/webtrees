@@ -31,7 +31,7 @@ $count_individuals = DB::table('individuals')
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
-    ->map(static fn (string $n) => (int) $n)
+    ->map(static fn ($n) => (int) $n)
     ->all();
 
 $count_families = DB::table('families')
@@ -44,7 +44,7 @@ $count_families = DB::table('families')
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
-    ->map(static fn (string $n) => (int) $n)
+    ->map(static fn ($n) => (int) $n)
     ->all();
 
 $count_media = DB::table('media')
@@ -57,7 +57,7 @@ $count_media = DB::table('media')
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
-    ->map(static fn (string $n) => (int) $n)
+    ->map(static fn ($n) => (int) $n)
     ->all();
 
 $count_sources = DB::table('sources')
@@ -70,7 +70,7 @@ $count_sources = DB::table('sources')
     ->groupBy(['l_to'])
     ->select(['l_to', new Expression('COUNT(*) AS total')])
     ->pluck('total', 'l_to')
-    ->map(static fn (string $n) => (int) $n)
+    ->map(static fn ($n) => (int) $n)
     ->all();
 ?>
 
