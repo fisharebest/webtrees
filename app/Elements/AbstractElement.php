@@ -322,11 +322,16 @@ abstract class AbstractElement implements ElementInterface
 
         if (str_contains($canonical, 'http://') || str_contains($canonical, 'https://')) {
             $html = Registry::markdownFactory()->autolink($canonical);
-
-            return strip_tags($html, ['a']);
+            $html = strip_tags($html, ['a', 'br']);
+        } else {
+            $html = nl2br(e($canonical), false);
         }
 
-        return e($canonical);
+        if (str_contains($html, '<br>')) {
+            return '<span class="ut d-inline-block">' . $html . '</span>';
+        }
+
+        return '<span class="ut">' . $html . '</span>';
     }
 
     /**

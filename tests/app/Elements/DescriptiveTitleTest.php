@@ -36,4 +36,14 @@ class DescriptiveTitleTest extends AbstractElementTest
 
         self::$element = new DescriptiveTitle('label');
     }
+
+    /**
+     * @return void
+     */
+    public function testCanonical(): void
+    {
+        self::assertSame('Foo  bAr  baZ', self::$element->canonical('Foo  bAr  baZ'));
+        self::assertSame('  Foo  bAr  baZ  ', self::$element->canonical("\t Foo\t bAr \tbaZ\t "));
+        self::assertSame("Foo \n\n bAr \n baZ", self::$element->canonical("\nFoo \n\r bAr \r\n baZ\r"));
+    }
 }
