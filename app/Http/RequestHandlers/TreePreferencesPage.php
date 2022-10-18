@@ -137,7 +137,7 @@ class TreePreferencesPage implements RequestHandlerInterface
             return Auth::isMember($tree, $user);
         });
 
-        $ignore_facts = ['CHAN', 'CHIL', 'FAMC', 'FAMS', 'HUSB', 'NOTE', 'OBJE', 'SOUR', 'SUBM', 'WIFE', 'NAME', 'SEX'];
+        $ignore_facts = ['CHAN', 'CHIL', 'FAMC', 'FAMS', 'HUSB', 'SUBM', 'WIFE', 'NAME', 'SEX'];
 
         $all_family_facts = Collection::make(Registry::elementFactory()->make('FAM')->subtags())
             ->filter(static fn (string $value, string $key): bool => !in_array($key, $ignore_facts, true))
