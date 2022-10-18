@@ -72,7 +72,6 @@ class Tree
         'META_TITLE'                   => Webtrees::NAME,
         'NO_UPDATE_CHAN'               => '0',
         'PEDIGREE_ROOT_ID'             => '',
-        'PREFER_LEVEL2_SOURCES'        => '1',
         'QUICK_REQUIRED_FACTS'         => 'BIRT,DEAT',
         'QUICK_REQUIRED_FAMFACTS'      => 'MARR',
         'REQUIRE_AUTHENTICATION'       => '0',

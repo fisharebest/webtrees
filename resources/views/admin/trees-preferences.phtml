@@ -700,19 +700,6 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <!-- PREFER_LEVEL2_SOURCES -->
-    <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
-            <?= /* I18N: A configuration setting */ I18N::translate('Source type') ?>
-        </legend>
-        <div class="col-sm-9">
-            <?= view('components/radios-inline', ['name' => 'PREFER_LEVEL2_SOURCES', 'options' => $source_types, 'selected' => (int) $tree->getPreference('PREFER_LEVEL2_SOURCES')]) ?>
-            <div class="form-text">
-                <?= /* I18N: Help text for the “Source type” configuration setting */ I18N::translate('When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death). This option controls whether records or facts will be selected by default.') ?>
-            </div>
-        </div>
-    </fieldset>
-
     <!-- NO_UPDATE_CHAN -->
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-3">

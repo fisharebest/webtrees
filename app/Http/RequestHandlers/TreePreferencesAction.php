@@ -72,7 +72,6 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('META_TITLE', $params['META_TITLE'] ?? '');
         $tree->setPreference('NO_UPDATE_CHAN', $params['NO_UPDATE_CHAN'] ?? '');
         $tree->setPreference('PEDIGREE_ROOT_ID', $params['PEDIGREE_ROOT_ID'] ?? '');
-        $tree->setPreference('PREFER_LEVEL2_SOURCES', $params['PREFER_LEVEL2_SOURCES'] ?? '');
         $tree->setPreference('QUICK_REQUIRED_FACTS', implode(',', $params['QUICK_REQUIRED_FACTS'] ?? []));
         $tree->setPreference('QUICK_REQUIRED_FAMFACTS', implode(',', $params['QUICK_REQUIRED_FAMFACTS'] ?? []));
         $tree->setPreference('SHOW_COUNTER', $params['SHOW_COUNTER'] ?? '');
