@@ -19,13 +19,13 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Factories;
 
-use Fisharebest\Flysystem\Adapter\ChrootAdapter;
 use Fisharebest\Webtrees\Contracts\FilesystemFactoryInterface;
 use Fisharebest\Webtrees\Site;
 use Fisharebest\Webtrees\Tree;
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\Local\LocalFilesystemAdapter;
+use League\Flysystem\PathPrefixing\PathPrefixedAdapter;
 
 use function realpath;
 
@@ -45,15 +45,14 @@ class FilesystemFactory implements FilesystemFactoryInterface
      */
     public function data(string $path_prefix = ''): FilesystemOperator
     {
-        $folder     = Site::getPreference('INDEX_DIRECTORY');
-        $adapter    = new LocalFilesystemAdapter($folder);
-        $filesystem = new Filesystem($adapter);
+        $folder  = Site::getPreference('INDEX_DIRECTORY');
+        $adapter = new LocalFilesystemAdapter($folder);
 
-        if ($path_prefix === '') {
-            return $filesystem;
+        if ($path_prefix !== '') {
+            $adapter = new PathPrefixedAdapter($adapter, $path_prefix);
         }
 
-        return new Filesystem(new ChrootAdapter($filesystem, $path_prefix));
+        return new Filesystem($adapter);
     }
 
     /**
@@ -91,13 +90,12 @@ class FilesystemFactory implements FilesystemFactoryInterface
     {
         $folder     = self::ROOT_DIR;
         $adapter    = new LocalFilesystemAdapter($folder);
-        $filesystem = new Filesystem($adapter);
 
-        if ($path_prefix === '') {
-            return $filesystem;
+        if ($path_prefix !== '') {
+            $adapter = new PathPrefixedAdapter($adapter, $path_prefix);
         }
 
-        return new Filesystem(new ChrootAdapter($filesystem, $path_prefix));
+        return new Filesystem($adapter);
     }
 
     /**
