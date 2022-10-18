@@ -700,19 +700,6 @@ use Illuminate\Support\Collection;
         </div>
     </fieldset>
 
-    <!-- FULL_SOURCES -->
-    <fieldset class="row mb-3">
-        <legend class="col-form-label col-sm-3">
-            <?= /* I18N: A configuration setting */ I18N::translate('Use full source citations') ?>
-        </legend>
-        <div class="col-sm-9">
-            <?= view('components/radios-inline', ['name' => 'FULL_SOURCES', 'options' => [I18N::translate('no'), I18N::translate('yes')], 'selected' => (int) $tree->getPreference('FULL_SOURCES')]) ?>
-            <div class="form-text">
-                <?= /* I18N: Help text for the “Use full source citations” configuration setting */ I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source. If you don’t use these fields, you can disable them when creating new source citations.') ?>
-            </div>
-        </div>
-    </fieldset>
-
     <!-- PREFER_LEVEL2_SOURCES -->
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-3">

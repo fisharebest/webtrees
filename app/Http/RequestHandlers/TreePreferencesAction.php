@@ -63,7 +63,6 @@ class TreePreferencesAction implements RequestHandlerInterface
         $tree->setPreference('EXPAND_NOTES', $params['EXPAND_NOTES'] ?? '');
         $tree->setPreference('EXPAND_SOURCES', $params['EXPAND_SOURCES'] ?? '');
         $tree->setPreference('FAM_FACTS_QUICK', implode(',', $params['FAM_FACTS_QUICK'] ?? []));
-        $tree->setPreference('FULL_SOURCES', $params['FULL_SOURCES'] ?? '');
         $tree->setPreference('FORMAT_TEXT', $params['FORMAT_TEXT'] ?? '');
         $tree->setPreference('GENERATE_UIDS', $params['GENERATE_UIDS'] ?? '');
         $tree->setPreference('HIDE_GEDCOM_ERRORS', $params['HIDE_GEDCOM_ERRORS'] ?? '');
