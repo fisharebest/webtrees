@@ -57,7 +57,6 @@ class Tree
         'EXPAND_SOURCES'               => '0',
         'FAM_FACTS_QUICK'              => 'ENGA,MARR,DIV',
         'FORMAT_TEXT'                  => 'markdown',
-        'FULL_SOURCES'                 => '0',
         'GEDCOM_MEDIA_PATH'            => '',
         'GENERATE_UIDS'                => '0',
         'HIDE_GEDCOM_ERRORS'           => '1',
