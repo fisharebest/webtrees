@@ -9,14 +9,14 @@
     "autoprefixer": "10.4.12",
     "cross-env": "7.0.3",
     "laravel-mix": "6.0.49",
-    "postcss": "8.4.17",
+    "postcss": "8.4.18",
     "postcss-custom-properties": "12.1.9",
     "postcss-image-inliner": "6.0.1",
     "postcss-import": "15.0.0",
     "postcss-rtlcss": "4.0.1",
     "resolve-url-loader": "5.0.0",
     "sass": "1.55.0",
-    "sass-loader": "13.0.2"
+    "sass-loader": "13.1.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.2.0",
@@ -31,7 +31,7 @@
     "hideshowpassword": "2.2.0",
     "jquery": "3.6.1",
     "jquery-colorbox": "1.6.4",
-    "leaflet": "1.9.1",
+    "leaflet": "1.9.2",
     "leaflet-bing-layer": "3.3.1",
     "leaflet-control-geocoder": "2.4.0",
     "leaflet.control.layers.tree": "1.1.0",
@@ -39,7 +39,7 @@
     "moment": "2.29.4",
     "pinch-zoom-element": "1.1.1",
     "sortablejs": "1.15.0",
-    "tom-select": "2.2.1",
+    "tom-select": "2.2.2",
     "typeahead.js-bootstrap4-css": "1.0.0"
   },
   "browserslist": [
