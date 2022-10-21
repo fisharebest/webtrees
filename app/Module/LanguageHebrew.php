@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\ExtCalendar\CalendarInterface;
+use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Localization\Locale\LocaleHe;
 use Fisharebest\Localization\Locale\LocaleInterface;
 

@@ -19,8 +19,8 @@ declare(strict_types=1);
 
 namespace Fisharebest\Webtrees\Tests\Encodings;
 
-use Fisharebest\Webtrees\Encodings\Windows1252;
 use Fisharebest\Webtrees\Encodings\UTF8;
+use Fisharebest\Webtrees\Encodings\Windows1252;
 use PHPUnit\Framework\TestCase;
 
 use function chr;

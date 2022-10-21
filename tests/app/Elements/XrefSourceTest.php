@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees\Elements;
 
 use DOMDocument;
 use Fisharebest\Webtrees\Factories\SourceFactory;
-use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 use Psr\Http\Message\ServerRequestInterface;

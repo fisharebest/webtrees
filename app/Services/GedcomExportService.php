@@ -55,7 +55,6 @@ use function is_string;
 use function pathinfo;
 use function preg_match_all;
 use function rewind;
-use function str_contains;
 use function stream_filter_append;
 use function stream_get_meta_data;
 use function strlen;

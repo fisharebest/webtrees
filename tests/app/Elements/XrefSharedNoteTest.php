@@ -21,8 +21,8 @@ namespace Fisharebest\Webtrees\Elements;
 
 use DOMDocument;
 use Fisharebest\Webtrees\Factories\SharedNoteFactory;
-use Fisharebest\Webtrees\SharedNote;
 use Fisharebest\Webtrees\Registry;
+use Fisharebest\Webtrees\SharedNote;
 use Fisharebest\Webtrees\TestCase;
 use Fisharebest\Webtrees\Tree;
 
