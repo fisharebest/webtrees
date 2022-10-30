@@ -88,7 +88,6 @@ class AddSpouseToFamilyPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url'          => $family->url(),
             'facts'               => $facts,
             'gedcom_edit_service' => $this->gedcom_edit_service,
             'post_url'            => route(AddSpouseToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref]),

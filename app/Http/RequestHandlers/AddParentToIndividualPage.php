@@ -80,7 +80,6 @@ class AddParentToIndividualPage implements RequestHandlerInterface
         }
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url'          => $individual->url(),
             'facts'               => $facts,
             'gedcom_edit_service' => $this->gedcom_edit_service,
             'post_url'            => route(AddParentToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),

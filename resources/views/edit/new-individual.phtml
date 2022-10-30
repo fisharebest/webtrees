@@ -7,7 +7,6 @@ use Fisharebest\Webtrees\Services\GedcomEditService;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * @var string            $cancel_url
  * @var GedcomEditService $gedcom_edit_service
  * @var string            $post_url
  * @var string            $title
@@ -49,7 +48,7 @@ use Fisharebest\Webtrees\Tree;
                 <?= /* I18N: A button label. */
                 I18N::translate('go to new individual') ?>
             </button>
-            <a class="btn btn-secondary" href="<?= e($cancel_url) ?>">
+            <a class="btn btn-secondary" href="<?= e($url) ?>">
                 <?= view('icons/cancel') ?>
                 <?= /* I18N: A button label. */
                 I18N::translate('cancel') ?>
