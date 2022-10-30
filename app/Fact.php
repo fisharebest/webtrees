@@ -448,7 +448,7 @@ class Fact
      */
     public function label(): string
     {
-        if (str_ends_with($this->tag(), ':NOTE') && preg_match('/@' . Gedcom::REGEX_XREF . '@/', $this->value())) {
+        if (str_ends_with($this->tag(), ':NOTE') && preg_match('/^@' . Gedcom::REGEX_XREF . '@$/', $this->value())) {
             return I18N::translate('Shared note');
         }
 
