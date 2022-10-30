@@ -50,6 +50,7 @@ class ReorderChildrenAction implements RequestHandlerInterface
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
+        $url    = Validator::parsedBody($request)->isLocalUrl()->string('url', $family->url());
 
         $params = (array) $request->getParsedBody();
         $order  = $params['order'];
@@ -77,6 +78,6 @@ class ReorderChildrenAction implements RequestHandlerInterface
 
         $family->updateRecord($gedcom, false);
 
-        return redirect($family->url());
+        return redirect($url);
     }
 }
