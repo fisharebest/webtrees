@@ -231,7 +231,7 @@ use Fisharebest\Webtrees\Services\RelationshipService;
 
                     <?php if ($family->children()->count() > 1) : ?>
                         <br>
-                        <a href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref()])) ?>">
+                        <a href="<?= e(route(ReorderChildrenPage::class, ['tree' => $family->tree()->name(), 'xref' => $family->xref(), 'url' => $individual->url() . '#tab-relatives'])) ?>">
                             <?= I18N::translate('Re-order children') ?>
                         </a>
                     <?php endif; ?>

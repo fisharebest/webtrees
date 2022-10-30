@@ -46,6 +46,7 @@ class ReorderChildrenPage implements RequestHandlerInterface
         $xref   = Validator::attributes($request)->isXref()->string('xref');
         $family = Registry::familyFactory()->make($xref, $tree);
         $family = Auth::checkFamilyAccess($family, true);
+        $url    = Validator::queryParams($request)->isLocalUrl()->string('url', $family->url());
 
         $title = $family->fullName() . ' — ' . I18N::translate('Re-order children');
 
@@ -53,6 +54,7 @@ class ReorderChildrenPage implements RequestHandlerInterface
             'family' => $family,
             'title'  => $title,
             'tree'   => $tree,
+            'url'    => $url,
         ]);
     }
 }
