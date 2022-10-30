@@ -82,7 +82,6 @@ class AddChildToFamilyPage implements RequestHandlerInterface
         $title = $titles[$sex] ?? $titles['U'];
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url'          => $family->url(),
             'facts'               => $facts,
             'gedcom_edit_service' => $this->gedcom_edit_service,
             'post_url'            => route(AddChildToFamilyAction::class, ['tree' => $tree->name(), 'xref' => $xref]),

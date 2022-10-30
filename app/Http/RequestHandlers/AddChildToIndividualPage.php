@@ -87,7 +87,6 @@ class AddChildToIndividualPage implements RequestHandlerInterface
         $title = I18N::translate('Add a child to create a one-parent family');
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url'          => $individual->url(),
             'facts'               => $facts,
             'gedcom_edit_service' => $this->gedcom_edit_service,
             'post_url'            => route(AddChildToIndividualAction::class, ['tree' => $tree->name(), 'xref' => $xref]),

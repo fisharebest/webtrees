@@ -64,16 +64,15 @@ class AddUnlinkedPage implements RequestHandlerInterface
             'i' => $this->gedcom_edit_service->newIndividualFacts($tree, $sex, ['1 NAME ' . $name]),
         ];
 
-        $cancel_url = route(ManageTrees::class, ['tree' => $tree->name()]);
+        $url = route(ManageTrees::class, ['tree' => $tree->name()]);
 
         return $this->viewResponse('edit/new-individual', [
-            'cancel_url'          => $cancel_url,
             'facts'               => $facts,
             'gedcom_edit_service' => $this->gedcom_edit_service,
             'post_url'            => route(AddUnlinkedAction::class, ['tree' => $tree->name()]),
             'tree'                => $tree,
             'title'               => I18N::translate('Create an individual'),
-            'url'                 => Validator::queryParams($request)->isLocalUrl()->string('url', $cancel_url),
+            'url'                 => Validator::queryParams($request)->isLocalUrl()->string('url', $url),
         ]);
     }
 }
