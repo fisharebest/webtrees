@@ -57,7 +57,7 @@ foreach ($keys as $key) {
     <?php if ($source instanceof Source) : ?>
         <?php $id = Registry::idFactory()->id() ?>
         <?php $expanded = $tree->getPreference('EXPAND_SOURCES') === '1' ?>
-        <div class="fact_SOUR">
+        <div>
             <button type="button" class="btn btn-text p-0" href="#<?= e($id) ?>" data-bs-toggle="collapse" aria-controls="<?= e($id) ?>" aria-expanded="<?= $expanded ? 'true' : 'false' ?>">
                 <?= view('icons/expand') ?>
                 <?= view('icons/collapse') ?>
