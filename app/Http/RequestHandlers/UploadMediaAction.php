@@ -75,7 +75,7 @@ class UploadMediaAction implements RequestHandlerInterface
         $all_folders = $this->media_file_service->allMediaFolders($data_filesystem);
 
         foreach ($request->getUploadedFiles() as $key => $uploaded_file) {
-            if ($uploaded_file->getError() == UPLOAD_ERR_NO_FILE) {
+            if ($uploaded_file->getError() === UPLOAD_ERR_NO_FILE) {
                 continue;
             }
 
