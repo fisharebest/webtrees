@@ -226,35 +226,35 @@ class Fact
         switch ($this->tag) {
             case 'FAMC':
             case 'FAMS':
-                return Registry::familyFactory()->make($xref, $this->record()->tree());
+                return Registry::familyFactory()->make($xref, $this->record->tree());
             case 'HUSB':
             case 'WIFE':
             case 'ALIA':
             case 'CHIL':
             case '_ASSO':
-                return Registry::individualFactory()->make($xref, $this->record()->tree());
+                return Registry::individualFactory()->make($xref, $this->record->tree());
             case 'ASSO':
                 return
-                    Registry::individualFactory()->make($xref, $this->record()->tree()) ??
-                    Registry::submitterFactory()->make($xref, $this->record()->tree());
+                    Registry::individualFactory()->make($xref, $this->record->tree()) ??
+                    Registry::submitterFactory()->make($xref, $this->record->tree());
             case 'SOUR':
-                return Registry::sourceFactory()->make($xref, $this->record()->tree());
+                return Registry::sourceFactory()->make($xref, $this->record->tree());
             case 'OBJE':
-                return Registry::mediaFactory()->make($xref, $this->record()->tree());
+                return Registry::mediaFactory()->make($xref, $this->record->tree());
             case 'REPO':
-                return Registry::repositoryFactory()->make($xref, $this->record()->tree());
+                return Registry::repositoryFactory()->make($xref, $this->record->tree());
             case 'NOTE':
-                return Registry::noteFactory()->make($xref, $this->record()->tree());
+                return Registry::noteFactory()->make($xref, $this->record->tree());
             case 'ANCI':
             case 'DESI':
             case 'SUBM':
-                return Registry::submitterFactory()->make($xref, $this->record()->tree());
+                return Registry::submitterFactory()->make($xref, $this->record->tree());
             case 'SUBN':
-                return Registry::submissionFactory()->make($xref, $this->record()->tree());
+                return Registry::submissionFactory()->make($xref, $this->record->tree());
             case '_LOC':
-                return Registry::locationFactory()->make($xref, $this->record()->tree());
+                return Registry::locationFactory()->make($xref, $this->record->tree());
             default:
-                return Registry::gedcomRecordFactory()->make($xref, $this->record()->tree());
+                return Registry::gedcomRecordFactory()->make($xref, $this->record->tree());
         }
     }
 
@@ -382,7 +382,7 @@ class Fact
      */
     public function place(): Place
     {
-        $this->place ??= new Place($this->attribute('PLAC'), $this->record()->tree());
+        $this->place ??= new Place($this->attribute('PLAC'), $this->record->tree());
 
         return $this->place;
     }
@@ -535,7 +535,7 @@ class Fact
         preg_match_all('/\n(2 SOUR @(' . Gedcom::REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->gedcom(), $matches, PREG_SET_ORDER);
         $citations = [];
         foreach ($matches as $match) {
-            $source = Registry::sourceFactory()->make($match[2], $this->record()->tree());
+            $source = Registry::sourceFactory()->make($match[2], $this->record->tree());
             if ($source && $source->canShow()) {
                 $citations[] = $match[1];
             }
@@ -556,7 +556,7 @@ class Fact
         foreach ($matches[1] as $match) {
             $note = preg_replace("/\n3 CONT ?/", "\n", $match);
             if (preg_match('/@(' . Gedcom::REGEX_XREF . ')@/', $note, $nmatch)) {
-                $note = Registry::noteFactory()->make($nmatch[1], $this->record()->tree());
+                $note = Registry::noteFactory()->make($nmatch[1], $this->record->tree());
                 if ($note && $note->canShow()) {
                     // A note object
                     $notes[] = $note;
@@ -580,7 +580,7 @@ class Fact
         $media = [];
         preg_match_all('/\n2 OBJE @(' . Gedcom::REGEX_XREF . ')@/', $this->gedcom(), $matches);
         foreach ($matches[1] as $match) {
-            $obje = Registry::mediaFactory()->make($match, $this->record()->tree());
+            $obje = Registry::mediaFactory()->make($match, $this->record->tree());
             if ($obje && $obje->canShow()) {
                 $media[] = $obje;
             }
@@ -609,8 +609,8 @@ class Fact
             // Fact date
             $date = $this->date();
             if ($date->isOK()) {
-                if ($this->record() instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record()->tree()->getPreference('SHOW_PARENTS_AGE')) {
-                    $attributes[] = $date->display() . view('fact-parents-age', ['individual' => $this->record(), 'birth_date' => $date]);
+                if ($this->record instanceof Individual && in_array($this->tag, Gedcom::BIRTH_EVENTS, true) && $this->record->tree()->getPreference('SHOW_PARENTS_AGE')) {
+                    $attributes[] = $date->display() . view('fact-parents-age', ['individual' => $this->record, 'birth_date' => $date]);
                 } else {
                     $attributes[] = $date->display();
                 }
