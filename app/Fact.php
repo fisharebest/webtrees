@@ -716,7 +716,7 @@ class Fact
             // Keep MARR and DIV from the same families from mixing with events from other FAMs
             // Use the original order in which the facts were added
             if ($a->record instanceof Family && $b->record instanceof Family && $a->record !== $b->record) {
-                return $a->sortOrder - $b->sortOrder;
+                return $a->sortOrder <=> $b->sortOrder;
             }
 
             $atag = $a->tag;
@@ -741,10 +741,8 @@ class Fact
                 $btag = 'BURI';
             }
 
-            $ret = $factsort[$atag] - $factsort[$btag];
-
             // If facts are the same then put dated facts before non-dated facts
-            if ($ret === 0) {
+            if ($atag === $btag) {
                 if ($a->attribute('DATE') !== '' && $b->attribute('DATE') === '') {
                     return -1;
                 }
@@ -754,10 +752,10 @@ class Fact
                 }
 
                 // If no sorting preference, then keep original ordering
-                $ret = $a->sortOrder - $b->sortOrder;
+                return $a->sortOrder <=> $b->sortOrder;
             }
 
-            return $ret;
+            return $factsort[$atag] <=> $factsort[$btag];
         };
     }
 

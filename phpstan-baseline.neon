@@ -76,11 +76,6 @@ parameters:
 			path: app/Encodings/AbstractEncoding.php
 
 		-
-			message: "#^Anonymous function should return int but returns float\\|int\\.$#"
-			count: 1
-			path: app/Fact.php
-
-		-
 			message: "#^Method Fisharebest\\\\Webtrees\\\\Fact\\:\\:getNotes\\(\\) should return array\\<Fisharebest\\\\Webtrees\\\\Note\\|string\\> but returns array\\<int, array\\|Fisharebest\\\\Webtrees\\\\Note\\|string\\|null\\>\\.$#"
 			count: 1
 			path: app/Fact.php
