@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees\Elements;
 /**
  * Ordination
  */
-class Ordination extends AbstractElement
+class Ordination extends AbstractEventElement
 {
     protected const SUBTAGS = [
         'TYPE'  => '0:1:?',
