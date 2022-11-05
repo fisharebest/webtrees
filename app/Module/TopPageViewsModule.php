@@ -81,6 +81,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
         $query = DB::table('hit_counter')
             ->where('gedcom_id', '=', $tree->id())
             ->whereIn('page_name', self::PAGES)
+            ->select(['page_parameter', 'page_count'])
             ->orderByDesc('page_count');
 
         $results = [];
@@ -90,7 +91,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface
             if ($record instanceof GedcomRecord && $record->canShow()) {
                 $results[] = [
                     'record' => $record,
-                    'count'  => $row->page_count,
+                    'count'  => (int) $row->page_count,
                 ];
             }
 
